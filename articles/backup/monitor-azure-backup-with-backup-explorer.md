@@ -4,11 +4,12 @@ description: In dit artikel wordt beschreven hoe u met back-up-Verkenner realtim
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092793"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Uw back-ups controleren met backup Explorer
 
@@ -93,8 +94,8 @@ U kunt het pictogram ' vastmaken ' boven aan elke tabel of grafiek selecteren om
 
 ## <a name="cross-tenant-views"></a>Cross-Tenant weergaven
 
-Als u een Azure Lighthouse-gebruiker bent met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken. U geeft de abonnementen weer waarvoor u gegevens wilt weer geven door in de rechter bovenhoek van het Azure Portal het pictogram filter te selecteren. Wanneer u deze functie gebruikt, wordt in back-upverkenner informatie geaggregeerd over alle kluizen in de geselecteerde abonnementen. Zie [Wat is Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview)voor meer informatie.
+Als u een Azure Lighthouse-gebruiker bent met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken. U geeft de abonnementen weer waarvoor u gegevens wilt weer geven door in de rechter bovenhoek van het Azure Portal het pictogram filter te selecteren. Wanneer u deze functie gebruikt, wordt in back-upverkenner informatie geaggregeerd over alle kluizen in de geselecteerde abonnementen. Zie [Wat is Azure Lighthouse?](../lighthouse/overview.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over het gebruik van Azure Monitor voor het verkrijgen van inzichten in uw back-upgegevens](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[Meer informatie over het gebruik van Azure Monitor voor het verkrijgen van inzichten in uw back-upgegevens](./backup-azure-monitoring-use-azuremonitor.md)

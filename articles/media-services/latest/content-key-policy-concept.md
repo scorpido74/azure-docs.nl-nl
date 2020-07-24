@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49226ba703e8ade963b368616102db035b3c07ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092062"
 ---
 # <a name="content-key-policies"></a>Beleid voor inhoudssleutels
 
 Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. 
 
-Als u versleutelings opties wilt opgeven voor uw stream, moet u een [streaming-beleid](streaming-policy-concept.md) maken en dit koppelen aan uw [streaming-Locator](streaming-locators-concept.md). U maakt het [beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies) om te configureren hoe de inhouds sleutel (die beveiligde toegang tot uw [assets](assets-concept.md)biedt) wordt geleverd aan de eind clients. U moet de vereisten (beperkingen) instellen voor het beleid voor de inhouds sleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het beleid voor inhoudssleutels is niet nodig voor het wissen van streams of downloaden. 
+Als u versleutelings opties wilt opgeven voor uw stream, moet u een [streaming-beleid](streaming-policy-concept.md) maken en dit koppelen aan uw [streaming-Locator](streaming-locators-concept.md). U maakt het [beleid voor inhouds sleutels](/rest/api/media/contentkeypolicies) om te configureren hoe de inhouds sleutel (die beveiligde toegang tot uw [assets](assets-concept.md)biedt) wordt geleverd aan de eind clients. U moet de vereisten (beperkingen) instellen voor het beleid voor de inhouds sleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het beleid voor inhoudssleutels is niet nodig voor het wissen van streams of downloaden. 
 
 Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-Locator](streaming-locators-concept.md). U kunt ook het beleid voor de inhouds sleutel binnen een [streaming-beleid](streaming-policy-concept.md) opgeven (bij het maken van een aangepast streaming-beleid voor geavanceerde scenario's). 
 
@@ -43,7 +43,7 @@ Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-
 * Als u een nieuw beleid moet maken, moet u een nieuwe streaming-Locator voor de Asset maken.
 * Het wordt aanbevolen Media Services automatisch de inhouds sleutel te genereren. 
 
-   Normaal gesp roken gebruikt u een langdurige sleutel en controleert u of het beleid voor de inhouds sleutel met [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get). Als u de sleutel wilt ophalen, moet u een afzonderlijke actie methode aanroepen om geheimen of referenties op te halen. Zie het volgende voor beeld.
+   Normaal gesp roken gebruikt u een langdurige sleutel en controleert u of het beleid voor de inhouds sleutel met [Get](/rest/api/media/contentkeypolicies/get). Als u de sleutel wilt ophalen, moet u een afzonderlijke actie methode aanroepen om geheimen of referenties op te halen. Zie het volgende voor beeld.
 
 ## <a name="example"></a>Voorbeeld
 

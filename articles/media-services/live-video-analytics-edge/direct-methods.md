@@ -3,15 +3,16 @@ title: Gebruik directe methoden in live video Analytics op IoT Edge-Azure
 description: Met live video Analytics op IoT Edge worden verschillende directe methoden getoond. De directe methoden zijn gebaseerd op de conventies die in dit onderwerp worden beschreven.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091824"
 ---
 # <a name="direct-methods"></a>Directe methoden
 
-Live video Analytics op IoT Edge biedt verschillende directe methoden die kunnen worden aangeroepen vanuit IoT Hub. Directe methoden vertegenwoordigen een aanvraag/antwoord-interactie met een apparaat dat vergelijkbaar is met een HTTP-aanroep wanneer deze slagen of direct mislukken (na een door de gebruiker opgegeven time-out). Deze aanpak is nuttig voor scenario's waarbij de uitvoering van directe actie afwijkt, afhankelijk van of het apparaat kan reageren. Zie voor meer informatie [direct methoden begrijpen en aanroepen vanuit IOT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+Live video Analytics op IoT Edge biedt verschillende directe methoden die kunnen worden aangeroepen vanuit IoT Hub. Directe methoden vertegenwoordigen een aanvraag/antwoord-interactie met een apparaat dat vergelijkbaar is met een HTTP-aanroep wanneer deze slagen of direct mislukken (na een door de gebruiker opgegeven time-out). Deze aanpak is nuttig voor scenario's waarbij de uitvoering van directe actie afwijkt, afhankelijk van of het apparaat kan reageren. Zie voor meer informatie [direct methoden begrijpen en aanroepen vanuit IOT hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 In dit onderwerp worden deze methoden en conventies beschreven.
 
@@ -97,7 +98,7 @@ Gedetailleerde validatie fout, zoals validaties van de module Graph, worden toeg
 }
 ```
 
-|Status|    Gedetailleerde code   |Description|
+|Status|    Gedetailleerde code   |Beschrijving|
 |---|---|---|
 |400|   GraphValidationError|   Algemene grafiek fouten, zoals cycli of partitioneren, enzovoort.|
 |400|   ModuleValidationError|  Module-specifieke validatie fouten.|
@@ -123,7 +124,7 @@ Deze directe methode haalt een topologie met één grafiek op.
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -174,7 +175,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -215,7 +216,7 @@ Hiermee verwijdert u een topologie met één grafiek.
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -254,7 +255,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek-topologieën die overeenkomen
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -279,7 +280,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek-topologieën die overeenkomen
 
 |Bewerking      |Veld (en)   |Operators|
 |---|---|---|
-|$orderby|naam  |ASC|
+|$orderby|name  |ASC|
 
 
 #### <a name="status-codes"></a>Statuscodes
@@ -306,7 +307,7 @@ Hiermee wordt één exemplaar van een grafiek opgehaald:
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -356,7 +357,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ````
 {
@@ -402,7 +403,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -442,7 +443,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek exemplaren die overeenkomen m
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -467,7 +468,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek exemplaren die overeenkomen m
 
 |Bewerking  |   Veld (en)|   Operators|
 |---|---|---|
-|$orderby|  naam|   ASC|
+|$orderby|  name|   ASC|
 
 #### <a name="status-codes"></a>Statuscodes
 
@@ -504,7 +505,7 @@ Belang rijke aspecten
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {
@@ -555,7 +556,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```
 {

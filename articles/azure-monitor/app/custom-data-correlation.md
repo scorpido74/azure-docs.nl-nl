@@ -6,11 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79082758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092912"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights gegevens correleren met aangepaste gegevens bronnen
 
@@ -34,15 +35,15 @@ Als u er nog geen hebt, kunt u een nieuwe Log Analytics-werk ruimte inrichten do
 
 Om het verzenden van logboek gegevens naar Azure Monitor te starten. Er zijn verschillende opties:
 
-- Voor een synchroon mechanisme kunt u de [Data Collector-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) rechtstreeks aanroepen of de logische app-connector gebruiken – gewoon zoeken naar ' Azure log Analytics ' en de optie ' gegevens verzenden ' kiezen:
+- Voor een synchroon mechanisme kunt u de [Data Collector-API](../platform/data-collector-api.md) rechtstreeks aanroepen of de logische app-connector gebruiken – gewoon zoeken naar ' Azure log Analytics ' en de optie ' gegevens verzenden ' kiezen:
 
   ![Scherm opname kiezen en actie](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Voor een asynchrone optie gebruikt u de Data Collector API om een verwerkings pijplijn te bouwen. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) voor meer informatie.
+- Voor een asynchrone optie gebruikt u de Data Collector API om een verwerkings pijplijn te bouwen. Raadpleeg [dit artikel](../platform/create-pipeline-datacollector-api.md) voor meer informatie.
 
 ## <a name="correlating-data"></a>Correleren van gegevens
 
-Application Insights is gebaseerd op het Azure Monitor-logboek platform. We kunnen daarom [Cross-resource join's](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) gebruiken voor het correleren van gegevens die zijn opgenomen in azure monitor met onze Application Insights-gegevens.
+Application Insights is gebaseerd op het Azure Monitor-logboek platform. We kunnen daarom [Cross-resource join's](../log-query/cross-workspace-query.md) gebruiken voor het correleren van gegevens die zijn opgenomen in azure monitor met onze Application Insights-gegevens.
 
 We kunnen bijvoorbeeld onze Lab-inventaris en-locaties opnemen in een tabel met de naam ' LabLocations_CL ' in een Log Analytics werk ruimte met de naam ' myLA '. Als we de aanvragen die in Application Insights-app worden bijgehouden, vervolgens willen bekijken en de computer namen die de aanvragen aan de locaties van deze machines hebben aangeboden die zijn opgeslagen in de eerder vermelde aangepaste tabel, kunnen de volgende query uitvoeren vanuit de Application Insights of Azure Monitor context:
 
@@ -56,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de naslag informatie voor de [Data Collector-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) .
-- Voor meer informatie over [Cross-resource-samen voegingen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+- Bekijk de naslag informatie voor de [Data Collector-API](../platform/data-collector-api.md) .
+- Voor meer informatie over [Cross-resource-samen voegingen](../log-query/cross-workspace-query.md).

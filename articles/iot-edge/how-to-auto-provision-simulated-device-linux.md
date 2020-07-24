@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d6e60329f3c61811aa8a42528244b2883ff4b685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834094"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092384"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Een IoT Edge apparaat maken en inrichten met een TPM in Linux
 
-In dit artikel wordt beschreven hoe u automatische inrichting op een Linux IoT Edge apparaat kunt testen met behulp van een Trusted Platform Module (TPM). U kunt Azure IoT Edge apparaten automatisch inrichten als [Device Provisioning Service](../iot-dps/index.yml). Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
+In dit artikel wordt beschreven hoe u automatische inrichting op een Linux IoT Edge apparaat kunt testen met behulp van een Trusted Platform Module (TPM). U kunt Azure IoT Edge apparaten automatisch inrichten met de [Device Provisioning Service](../iot-dps/index.yml). Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
 
 De taken zijn als volgt:
 
@@ -55,7 +55,7 @@ Met een virtuele switch kan de virtuele machine verbinding maken met een fysiek 
 
 4. Geef de nieuwe virtuele switch een naam, bijvoorbeeld **EdgeSwitch**. Zorg ervoor dat het verbindings type is ingesteld op **extern netwerk**en selecteer **OK**.
 
-5. In een pop-upvenster wordt u gewaarschuwd dat de netwerk verbinding mogelijk wordt verstoord. Selecteer **Ja** om door te gaan.
+5. In een pop-upvenster wordt u gewaarschuwd dat de netwerk verbinding mogelijk wordt verstoord. Selecteer **Ja** ter bevestiging.
 
 Als er fouten worden weer geven tijdens het maken van de nieuwe virtuele switch, moet u ervoor zorgen dat er geen andere switches gebruikmaken van de Ethernet-adapter en dat er geen andere switches dezelfde naam gebruiken.
 

@@ -3,15 +3,16 @@ title: Release aantekeningen voor Application Insights | Microsoft Docs
 description: Voeg implementatie-of build markeringen toe aan uw grafieken met metrische gegevens Verkenner in Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093031"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Aantekeningen op metrische grafieken in Application Insights
 
-Aantekeningen laten zien waar u een nieuwe build of andere belang rijke gebeurtenissen hebt geïmplementeerd. Aantekeningen maken het eenvoudig om te zien of uw wijzigingen van invloed zijn op de prestaties van uw toepassing. Ze kunnen automatisch worden gemaakt door het build-systeem van [Azure pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) . U kunt ook aantekeningen maken om elke gewenste gebeurtenis te markeren door ze te maken vanuit Power shell.
+Aantekeningen laten zien waar u een nieuwe build of andere belang rijke gebeurtenissen hebt geïmplementeerd. Aantekeningen maken het eenvoudig om te zien of uw wijzigingen van invloed zijn op de prestaties van uw toepassing. Ze kunnen automatisch worden gemaakt door het build-systeem van [Azure pipelines](/azure/devops/pipelines/tasks/) . U kunt ook aantekeningen maken om elke gewenste gebeurtenis te markeren door ze te maken vanuit Power shell.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Release annotaties with Azure pipelines build
 

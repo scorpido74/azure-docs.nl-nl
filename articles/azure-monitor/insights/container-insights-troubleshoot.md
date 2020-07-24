@@ -2,19 +2,19 @@
 title: Problemen met Azure Monitor voor containers oplossen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u problemen met Azure Monitor voor containers kunt oplossen en oplossen.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: bc4105dc23445c29364961501f93e42f8c3b683d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: fcd799c63e4afb68d96f67d1c03016a4d3b10f34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092827"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problemen met Azure Monitor voor containers oplossen
 
 Wanneer u de bewaking van uw Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers configureert, kunt u een probleem tegen komen bij het verzamelen of rapporteren van gegevens. In dit artikel vindt u informatie over enkele veelvoorkomende problemen en stappen voor probleem oplossing.
 
-## <a name="authorization-error-during-onboarding-or-update-operation"></a>Autorisatie fout tijdens onboarding of update bewerking
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Verificatiefout tijdens onboarding of updatebewerking
 
 Wanneer u Azure Monitor voor containers inschakelt of een cluster bijwerkt ter ondersteuning van het verzamelen van metrische gegevens, wordt mogelijk een fout bericht weer gegeven met de volgende strekking: *de client <identiteit van de gebruiker> ' with object id ' <de objectId> van de gebruiker heeft geen machtiging om de actie ' micro soft. Authorization/roleAssignments/write ' over te voeren*
 
@@ -37,7 +37,7 @@ Als Azure Monitor voor containers is ingeschakeld en geconfigureerd, maar u geen
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    De uitvoer moet er als volgt uitzien, wat aangeeft dat het goed is geïmplementeerd:
+    De uitvoer moet er ongeveer uitzien als in het volgende voor beeld, wat aangeeft dat het goed is geïmplementeerd:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
@@ -48,7 +48,7 @@ Als Azure Monitor voor containers is ingeschakeld en geconfigureerd, maar u geen
 
     `kubectl get ds omsagent-win --namespace=kube-system`
 
-    De uitvoer moet er als volgt uitzien, wat aangeeft dat het goed is geïmplementeerd:
+    De uitvoer moet er ongeveer uitzien als in het volgende voor beeld, wat aangeeft dat het goed is geïmplementeerd:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
@@ -82,33 +82,6 @@ Als Azure Monitor voor containers is ingeschakeld en geconfigureerd, maar u geen
     omsagent-win-6drwq                  1/1       Running   0          1d
     ```
 
-5. Raadpleeg de logboeken van de agent. Wanneer de container agent wordt geïmplementeerd, wordt een snelle controle uitgevoerd door OMI-opdrachten uit te voeren en wordt de versie van de agent en provider weer gegeven.
-
-6. Als u wilt controleren of de agent is geïmplementeerd, voert u de volgende opdracht uit:`kubectl logs omsagent-484hw --namespace=kube-system`
-
-    De status moet er ongeveer uitzien als in het volgende voor beeld:
-
-    ```
-    User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-    :
-    :
-    instance of Container_HostInventory
-    {
-        [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-        Computer=aks-nodepool1-39773055-0
-        DockerVersion=1.13.1
-        OperatingSystem=Ubuntu 16.04.3 LTS
-        Volume=local
-        Network=bridge host macvlan null overlay
-        NodeRole=Not Orchestrated
-        OrchestratorType=Kubernetes
-    }
-    Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc    Status: Onboarded(OMSAgent Running)
-    omi 1.4.2.2
-    omsagent 1.6.0.23
-    docker-cimprov 1.0.0.31
-    ```
-
 ## <a name="error-messages"></a>Foutberichten
 
 De volgende tabel bevat een overzicht van bekende fouten die kunnen optreden bij het gebruik van Azure Monitor voor containers.
@@ -117,7 +90,7 @@ De volgende tabel bevat een overzicht van bekende fouten die kunnen optreden bij
 | ---- | --- |
 | Fout bericht`No data for selected filters`  | Het kan enige tijd duren voordat de bewakingsgegevensstroom voor nieuwe clusters tot stand is gebracht. Sta ten minste 10 tot 15 minuten toe dat er gegevens voor uw cluster worden weer gegeven. |
 | Fout bericht`Error retrieving data` | Terwijl Azure Kubernetes service-cluster wordt ingesteld voor de status-en prestatie bewaking, wordt er een verbinding tot stand gebracht tussen het cluster en de Azure Log Analytics-werk ruimte. Een Log Analytics-werk ruimte wordt gebruikt om alle bewakings gegevens voor uw cluster op te slaan. Deze fout kan optreden als uw Log Analytics-werk ruimte is verwijderd. Controleer of de werk ruimte is verwijderd. als dat het geval is, moet u de bewaking van het cluster opnieuw inschakelen met Azure Monitor voor containers en een bestaande of een nieuwe werk ruimte maken. Als u het opnieuw wilt inschakelen, moet u de bewaking voor het cluster [uitschakelen](container-insights-optout.md) en de Azure monitor voor containers weer [inschakelen](container-insights-enable-new-cluster.md) . |
-| `Error retrieving data`na het toevoegen van Azure Monitor voor containers via AZ AKS cli | Als u controle inschakelt met `az aks cli` , worden Azure monitor voor containers mogelijk niet op de juiste wijze geïmplementeerd. Controleer of de oplossing is geïmplementeerd. Als u dit wilt doen, gaat u naar uw Log Analytics-werk ruimte en bekijkt u of de oplossing beschikbaar is door **oplossingen** te selecteren in het deel venster aan de linkerkant. Als u dit probleem wilt oplossen, moet u de oplossing opnieuw implementeren door de instructies te volgen voor [het implementeren van Azure monitor voor containers](container-insights-onboard.md) |
+| `Error retrieving data`na het toevoegen van Azure Monitor voor containers via AZ AKS cli | Als u controle inschakelt met `az aks cli` , worden Azure monitor voor containers mogelijk niet op de juiste wijze geïmplementeerd. Controleer of de oplossing is geïmplementeerd. Als u wilt controleren, gaat u naar uw Log Analytics-werk ruimte en controleert u of de oplossing beschikbaar is door **oplossingen** te selecteren in het deel venster aan de linkerkant. Als u dit probleem wilt oplossen, moet u de oplossing opnieuw implementeren door de instructies te volgen voor [het implementeren van Azure monitor voor containers](container-insights-onboard.md) |
 
 Om het probleem op te lossen, is er [hier](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)een script voor het oplossen van problemen beschikbaar.
 

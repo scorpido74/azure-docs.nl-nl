@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad4c60d6a3facd49f08749b2b3f4b01242d3844c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159400"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091790"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybride ontwerp van DRM-subsystemen 
 
@@ -99,11 +99,11 @@ Op basis van de uitleg in de vorige sectie gebruiken de volgende vijf hybride sc
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Ja|Ja|Voorbeeld 1|
 |AMS|AMS|Van derden|Ja|Ja|Voorbeeld 2|
-|AMS|Van derden|AMS|Ja|Nee|Voorbeeld 3|
+|AMS|Van derden|AMS|Yes|No|Voorbeeld 3|
 |AMS|Van derden|Deel|Nee|Nee|Voorbeeld 4|
-|Van derden|Van derden|AMS|Ja|Nee|    
+|Van derden|Van derden|AMS|Yes|No|    
 
-In de voor beelden werkt PlayReady Protection voor zowel het streepje als het smooth streaming. De onderstaande video-Url's zijn smooth streaming Url's. Als u de bijbehorende streepje-Url's wilt ophalen, voegt u ' (Format = mpd-time-KVP) ' toe. U kunt de [Azure media test Player](https://aka.ms/amtest) gebruiken om te testen in een browser. Hiermee kunt u configureren welk streaming-protocol moet worden gebruikt, waaronder tech. IE11 en micro soft Edge in Windows 10 ondersteunen PlayReady tot en met EME. Zie [Details over het test programma](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/)voor meer informatie.
+In de voor beelden werkt PlayReady Protection voor zowel het streepje als het smooth streaming. De onderstaande video-Url's zijn smooth streaming Url's. Als u de bijbehorende streepje-Url's wilt ophalen, voegt u ' (Format = mpd-time-KVP) ' toe. U kunt de [Azure media test Player](https://aka.ms/amtest) gebruiken om te testen in een browser. Hiermee kunt u configureren welk streaming-protocol moet worden gebruikt, waaronder tech. IE11 en micro soft Edge in Windows 10 ondersteunen PlayReady tot en met EME. Zie [Details over het test programma](/azure/media-services/previous/offline-playready-streaming-windows-10)voor meer informatie.
 
 ### <a name="sample-1"></a>Voorbeeld 1
 
@@ -142,4 +142,3 @@ Media Services leer trajecten weer geven.
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

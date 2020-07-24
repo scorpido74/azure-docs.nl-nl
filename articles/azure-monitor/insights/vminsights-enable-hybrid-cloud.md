@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480739"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092844"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Azure Monitor voor VM's inschakelen voor een hybride omgeving
 
@@ -18,7 +19,7 @@ ms.locfileid: "79480739"
 
 In dit artikel wordt uitgelegd hoe u Azure Monitor voor VM's inschakelt voor virtuele machines of fysieke computers die worden gehost in uw Data Center of een andere cloud omgeving. Aan het einde van dit proces hebt u uw virtuele machines in uw omgeving kunnen bewaken en leert u of er problemen zijn met de prestaties of de beschik baarheid.
 
-Voordat u aan de slag gaat, moet u de [vereisten](vminsights-enable-overview.md) controleren en controleren of uw abonnement en resources voldoen aan de vereisten. Bekijk de vereisten en implementatie methoden voor de [log Analytics Linux en Windows-agent](../../log-analytics/log-analytics-agent-overview.md).
+Voordat u aan de slag gaat, moet u de [vereisten](vminsights-enable-overview.md) controleren en controleren of uw abonnement en resources voldoen aan de vereisten. Bekijk de vereisten en implementatie methoden voor de [log Analytics Linux en Windows-agent](../platform/log-analytics-agent.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -155,7 +156,7 @@ Als u niet weet hoe u resources kunt implementeren met behulp van een sjabloon, 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Een sjabloon maken en uitvoeren
 
@@ -234,7 +235,7 @@ Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer
 
     **Linux**: zoek naar het actieve proces ' micro soft-dependency-agent '.
 
-2. Bevindt u zich op de [prijs categorie gratis van log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Het gratis abonnement staat Maxi maal vijf unieke computers toe. Eventuele volgende computers worden niet weer gegeven op de kaart, zelfs als de voor gaande vijf geen gegevens meer verzenden.
+2. Bevindt u zich op de [prijs categorie gratis van log Analytics](./solutions.md)? Het gratis abonnement staat Maxi maal vijf unieke computers toe. Eventuele volgende computers worden niet weer gegeven op de kaart, zelfs als de voor gaande vijf geen gegevens meer verzenden.
 
 3. Stuurt de computer logboek-en prestatie gegevens naar Azure Monitor logboeken? Voer de volgende query uit voor uw computer:
 

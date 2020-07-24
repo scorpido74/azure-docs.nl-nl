@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: aed35ec583af83e6ee6cb81c4e59e694cef493e1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092419"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Gegevens verplaatsen van een SQL Server Data Base naar SQL Database met Azure Data Factory
 
@@ -53,7 +53,7 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
 * Een **Azure-opslag account**. U gebruikt een Azure-opslag account voor het opslaan van de gegevens in deze zelf studie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
 * Toegang tot een **Azure SQL database**. Als u een Azure SQL Database moet instellen, bevat het onderwerp aan de [slag met Microsoft Azure SQL database](../../sql-database/sql-database-get-started.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
-* **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies.
+* **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
 > [!NOTE]
 > Deze procedure maakt gebruik van de [Azure Portal](https://portal.azure.com/).
@@ -87,7 +87,7 @@ De stapsgewijze procedure voor het maken van gekoppelde services vindt u in [gek
 Maak tabellen waarmee de structuur, locatie en beschik baarheid van de gegevens sets worden opgegeven met de volgende procedures op basis van een script. JSON-bestanden worden gebruikt voor het definiëren van de tabellen. Zie [gegevens sets](../../data-factory/concepts-datasets-linked-services.md)voor meer informatie over de structuur van deze bestanden.
 
 > [!NOTE]
-> U moet de `Add-AzureAccount` cmdlet uitvoeren voordat u de cmdlet [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) uitvoert om te bevestigen dat het juiste Azure-abonnement is geselecteerd voor het uitvoeren van de opdracht. Zie [add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)voor documentatie van deze cmdlet.
+> U moet de `Add-AzureAccount` cmdlet uitvoeren voordat u de cmdlet [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) uitvoert om te bevestigen dat het juiste Azure-abonnement is geselecteerd voor het uitvoeren van de opdracht. Zie [add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)voor documentatie van deze cmdlet.
 >
 >
 

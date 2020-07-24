@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 48d9990115a0e786d12915acf1eaadc196a00b0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c9ece4860f8babba110da8536e5028f337fbc772
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170034"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092946"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -235,7 +235,7 @@ Verbinding maken met SFTP-servers die u via het internet kunt openen met behulp 
 
 Maak verbinding met share point online, zodat u bestanden, bijlagen, mappen en meer kunt beheren.
 
-[![API-pictogram ][dynamics-365-icon]<br> **Dynamics <br> 365**][dynamics-365-doc]
+[! [API-pictogram] [Dynamics-365-pictogram]<br>**Dynamics 365 <br> **] [Dynamics-365-doc]
 
 Maak verbinding met uw Dynamics 365-account zodat u records, items en meer kunt maken en beheren.
 
@@ -259,14 +259,9 @@ Gebeurtenissen gebruiken en publiceren via een event hub. U kunt bijvoorbeeld ui
 
 Gebeurtenissen bewaken die zijn gepubliceerd door een Event Grid, bijvoorbeeld wanneer Azure-resources of bronnen van derden worden gewijzigd.
 
-
 [![API-pictogram ][salesforce-icon]<br> **Sales Force**][salesforce-doc]
 
 Maak verbinding met uw Sales Force-account zodat u items zoals records, taken, objecten en meer kunt maken en beheren.
-
-[![API-pictogram ][twitter-icon]<br> **Twitter**][twitter-doc]
-
-Maak verbinding met uw Twitter-account zodat u tweets, volgers, uw tijd lijn en meer kunt beheren. Sla uw tweets op in SQL, Excel of SharePoint.
 
 <a name="on-premises-connectors"></a>
 
@@ -400,7 +395,7 @@ Raadpleeg de volgende onderwerpen voor meer informatie:
 
 ## <a name="triggers-and-action-types"></a>Triggers en actie typen
 
-Connectors kunnen *Triggers*, *acties*of beide bieden. Een *trigger* is de eerste stap in elke logische app, die meestal de gebeurtenis specificeert waarmee de trigger wordt geactiveerd en de logische app wordt uitgevoerd. De FTP-connector heeft bijvoorbeeld een trigger waarmee uw logische app wordt gestart wanneer een bestand wordt toegevoegd of gewijzigd. Sommige triggers controleren regel matig op de opgegeven gebeurtenis of gegevens en worden geactiveerd wanneer ze de opgegeven gebeurtenis of gegevens detecteren. Andere triggers wachten zich onmiddellijk wanneer een specifieke gebeurtenis plaatsvindt of wanneer er nieuwe gegevens beschikbaar zijn. Triggers geven ook de vereiste gegevens door aan uw logische app. Uw logische app kan deze gegevens lezen en gebruiken in de werk stroom. De Twitter-connector heeft bijvoorbeeld een trigger, ' wanneer een nieuwe tweet wordt gepost ', waarmee de inhoud van de Tweet wordt door gegeven aan de werk stroom van uw logische app.
+Connectors kunnen *Triggers*, *acties*of beide bieden. Een *trigger* is de eerste stap in elke logische app, die meestal de gebeurtenis specificeert waarmee de trigger wordt geactiveerd en de logische app wordt uitgevoerd. De FTP-connector heeft bijvoorbeeld een trigger waarmee uw logische app wordt gestart wanneer een bestand wordt toegevoegd of gewijzigd. Sommige triggers controleren regel matig op de opgegeven gebeurtenis of gegevens en worden geactiveerd wanneer ze de opgegeven gebeurtenis of gegevens detecteren. Andere triggers wachten zich onmiddellijk wanneer een specifieke gebeurtenis plaatsvindt of wanneer er nieuwe gegevens beschikbaar zijn. Triggers geven ook de vereiste gegevens door aan uw logische app. Uw logische app kan deze gegevens lezen en gebruiken in de werk stroom. De Office 365 Outlook-Connector heeft bijvoorbeeld de trigger ' wanneer een nieuwe e-mail binnenkomt ', waarmee de inhoud van die e-mail kan worden door gegeven aan de werk stroom van uw logische app.
 
 Wanneer een trigger wordt geactiveerd, wordt door Azure Logic Apps een exemplaar van uw logische app gemaakt en worden de *acties* in de werk stroom van de logische app uitgevoerd. Acties zijn de stappen die de trigger volgen en taken uitvoeren in de werk stroom van uw logische app. U kunt bijvoorbeeld een logische app maken die klant gegevens ophaalt uit een SQL database en die gegevens in latere acties verwerken.
 
@@ -416,7 +411,7 @@ Hier volgen de algemene soorten triggers die Azure Logic Apps biedt:
 
 ## <a name="connector-configuration"></a>Connector configuratie
 
-De triggers en acties van elke connector bieden hun eigen eigenschappen die u kunt configureren. Voor veel connectors moet u eerst een *verbinding* met de doel service of het systeem maken en verificatie referenties of andere configuratie gegevens opgeven voordat u een trigger of actie in uw logische app kunt gebruiken. U moet bijvoorbeeld een verbinding met een Twitter-account voor toegang tot gegevens toestaan of namens u posten.
+De triggers en acties van elke connector bieden hun eigen eigenschappen die u kunt configureren. Voor veel connectors moet u eerst een *verbinding* met de doel service of het systeem maken en verificatie referenties of andere configuratie gegevens opgeven voordat u een trigger of actie in uw logische app kunt gebruiken. Voordat u uw Office 365 Outlook-e-mail account kunt openen en gebruiken, moet u bijvoorbeeld een verbinding met dat account toestaan.
 
 Voor connectors die gebruikmaken van Azure Active Directory (Azure AD) OAuth, wordt een verbinding gemaakt bij het aanmelden bij de service, zoals Office 365, Sales Force of GitHub, waarbij uw toegangs token is [versleuteld](../security/fundamentals/encryption-overview.md) en veilig wordt opgeslagen in een Azure-geheim archief. Andere connectors, zoals FTP en SQL, vereisen een verbinding met configuratie details, zoals het server adres, de gebruikers naam en het wacht woord. Deze gegevens over de configuratie van de verbinding zijn ook versleuteld en veilig opgeslagen. Meer informatie over [versleuteling in azure](../security/fundamentals/encryption-overview.md).
 
@@ -479,6 +474,7 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [azure-cognitive-services-text-analytics-icon]: ./media/apis-list/azure-cognitive-services-text-analytics.png
 [azure-cosmos-db-icon]: ./media/apis-list/azure-cosmos-db.png
 [azure-data-lake-icon]: ./media/apis-list/azure-data-lake.png
+[azure-devops-icon]: ./media/apis-list/azure-devops.png
 [azure-document-db-icon]: ./media/apis-list/azure-document-db.png
 [azure-event-grid-icon]: ./media/apis-list/azure-event-grid.png
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
@@ -497,15 +493,11 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [bitly-icon]: ./media/apis-list/bitly.png
 [biztalk-server-icon]: ./media/apis-list/biztalk.png
 [blogger-icon]: ./media/apis-list/blogger.png
-[box-icon]: ./media/apis-list/box.png
 [campfire-icon]: ./media/apis-list/campfire.png
 [common-data-service-icon]: ./media/apis-list/common-data-service.png
-[dropbox-icon]: ./media/apis-list/dropbox.png
-[dynamics-365-icon]: ./media/apis-list/dynamics-crm-online.png
 [dynamics-365-financials-icon]: ./media/apis-list/dynamics-365-financials.png
 [dynamics-365-operations-icon]: ./media/apis-list/dynamics-365-operations.png
 [easy-redmine-icon]: ./media/apis-list/easyredmine.png
-[facebook-icon]: ./media/apis-list/facebook.png
 [file-system-icon]: ./media/apis-list/file-system.png
 [ftp-icon]: ./media/apis-list/ftp.png
 [github-icon]: ./media/apis-list/github.png
@@ -522,11 +514,9 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [instagram-icon]: ./media/apis-list/instagram.png
 [instapaper-icon]: ./media/apis-list/instapaper.png
 [jira-icon]: ./media/apis-list/jira.png
-[mailchimp-icon]: ./media/apis-list/mailchimp.png
 [mandrill-icon]: ./media/apis-list/mandrill.png
 [mysql-icon]: ./media/apis-list/mysql.png
 [office-365-outlook-icon]: ./media/apis-list/office-365.png
-[office-365-users-icon]: ./media/apis-list/office-365-users.png
 [onedrive-icon]: ./media/apis-list/onedrive.png
 [onedrive-for-business-icon]: ./media/apis-list/onedrive-business.png
 [oracle-db-icon]: ./media/apis-list/oracle-db.png
@@ -536,7 +526,6 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [postgre-sql-icon]: ./media/apis-list/postgre-sql.png
 [project-online-icon]: ./media/apis-list/projecton-line.png
 [redmine-icon]: ./media/apis-list/redmine.png
-[rss-icon]: ./media/apis-list/rss.png
 [salesforce-icon]: ./media/apis-list/salesforce.png
 [sap-icon]: ./media/apis-list/sap.png
 [send-grid-icon]: ./media/apis-list/sendgrid.png
@@ -550,13 +539,9 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [sql-server-icon]: ./media/apis-list/sql.png
 [teradata-icon]: ./media/apis-list/teradata.png
 [todoist-icon]: ./media/apis-list/todoist.png
-[trello-icon]: ./media/apis-list/trello.png
 [twilio-icon]: ./media/apis-list/twilio.png
-[twitter-icon]: ./media/apis-list/twitter.png
 [vimeo-icon]: ./media/apis-list/vimeo.png
-[visual-studio-team-services-icon]: ./media/apis-list/visual-studio-team-services.png
 [wordpress-icon]: ./media/apis-list/wordpress.png
-[yammer-icon]: ./media/apis-list/yammer.png
 [youtube-icon]: ./media/apis-list/youtube.png
 
 <!-- Enterprise Integration Pack icons -->
@@ -614,15 +599,10 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "Verbinding maken met Azure SQL Data Warehouse zodat u uw gegevens kunt bekijken"
 [azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "Maak verbinding met uw Azure Storage-account zodat u tabellen en meer kunt maken, bijwerken en opvragen."
 [biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "Maak verbinding met uw BizTalk Server zodat u op BizTalk gebaseerde toepassingen naast elkaar kunt uitvoeren met Azure Logic Apps"
-[box-doc]: ./connectors-create-api-box.md "Vak verbinden met. Uw bestanden uploaden, ophalen, verwijderen, weer geven, en meer"
-[dropbox-doc]: ./connectors-create-api-dropbox.md "Verbinding maken met Dropbox. Uw bestanden uploaden, ophalen, verwijderen, weer geven, en meer"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "Verbinding maken met Dynamics CRM Online zodat u kunt werken met CRM Online-gegevens"
-[facebook-doc]: ./connectors-create-api-facebook.md "Verbinding maken met Facebook. Een bericht op een tijd lijn plaatsen, een pagina-feed ophalen en meer"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Verbinding maken met een on-premises bestandssysteem"
 [ftp-doc]: ./connectors-create-api-ftp.md "Verbinding maken met een FTP-/FTPS-server voor FTP-taken, zoals het uploaden, ophalen en verwijderen van bestanden, en meer."
 [github-doc]: ./connectors-create-api-github.md "Verbinding maken met GitHub en problemen bijhouden"
 [google-calendar-doc]: ./connectors-create-api-googlecalendar.md "Maakt verbinding met Google Calendar en kan agenda beheren"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "Verbinding maken met Google Drive zodat u met uw gegevens kunt werken"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "Verbinding maken met Google spread sheets zodat u uw bladen kunt aanpassen"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "Hiermee maakt u verbinding met Google tasks zodat u uw taken kunt beheren"
 [ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Verbinding maken met 3270-apps op IBM-mainframes"
@@ -630,18 +610,14 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [ibm-informix-doc]: ./connectors-create-api-informix.md "Verbinding maken met Informix in de Cloud of on-premises. Een rij lezen, de tabellen weer geven en meer"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "Verbinding maken met IBM MQ on-premises of in azure om berichten te verzenden en te ontvangen"
 [instagram-doc]: ./connectors-create-api-instagram.md "Verbinding maken met Insta gram. Gebeurtenissen activeren of actie ondernemen"
-[mailchimp-doc]: ./connectors-create-api-mailchimp.md "Maak verbinding met uw MailChimp-account. E-mail berichten beheren en automatiseren"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "Verbinding maken met Mandrill voor communicatie"
 [mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "Verbinding maken met uw on-premises MySQL-data base, zodat u gegevens kunt lezen en schrijven"
 [office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Maak verbinding met uw Office 365-account zodat u e-mail berichten kunt verzenden en ontvangen, uw agenda en contact personen beheren, en meer"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md
 [onedrive-doc]: ./connectors-create-api-onedrive.md "Maak verbinding met uw persoonlijke micro soft OneDrive, zodat u bestanden kunt uploaden, verwijderen, weer geven en meer"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "Maak verbinding met uw zakelijke micro soft OneDrive zodat u uw bestanden kunt uploaden, verwijderen, weer geven en meer"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Verbinding maken met een Oracle-data base zodat u rijen kunt toevoegen, invoegen, verwijderen en meer"
 [outlook.com-doc]: ./connectors-create-api-outlook.md "Verbinding maken met uw Outlook-postvak zodat u uw e-mail, agenda's, contact personen en meer kunt beheren"
 [postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "Verbinding maken met uw PostgreSQL-data base zodat u gegevens uit tabellen kunt lezen"
-[project-online-doc]: ./connectors-create-api-projectonline.md "Verbinding maken met micro soft project online zodat u uw projecten, taken, resources en meer kunt beheren"
-[rss-doc]: ./connectors-create-api-rss.md "Feed-items publiceren en ophalen, bewerkingen activeren wanneer een nieuw item wordt gepubliceerd in een RSS-feed"
 [salesforce-doc]: ./connectors-create-api-salesforce.md "Maak verbinding met uw Sales Force-account. Accounts, leads, verkoop kansen en meer beheren"
 [sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "Verbinding maken met een on-premises SAP-systeem"
 [sendgrid-doc]: ./connectors-create-api-sendgrid.md "Verbinding maken met SendGrid. E-mail verzenden en ontvangers lijsten beheren"
@@ -653,10 +629,7 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 [sparkpost-doc]: ./connectors-create-api-sparkpost.md "Maakt verbinding met SparkPost voor communicatie"
 [sql-server-doc]: ./connectors-create-api-sqlazure.md "Verbinding maken met Azure SQL Database of SQL Server. Vermeldingen in een SQL database tabel maken, bijwerken, ophalen en verwijderen"
 [teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "Verbinding maken met uw Teradata-Data Base voor het lezen van gegevens uit tabellen"
-[trello-doc]: ./connectors-create-api-trello.md "Verbinding maken met Trello. Beheer uw projecten en Organiseer alles met iedereen"
 [twilio-doc]: ./connectors-create-api-twilio.md "Verbinding maken met Twilio. Berichten verzenden en ontvangen, beschik bare nummers ophalen, binnenkomende telefoon nummers beheren en meer"
-[twitter-doc]: ./connectors-create-api-twitter.md "Verbinding maken met Twitter. Tijd lijnen ophalen, tweets plaatsen en meer"
-[yammer-doc]: ./connectors-create-api-yammer.md "Verbinding maken met Yammer. Berichten posten, nieuwe berichten ophalen en meer"
 [youtube-doc]: ./connectors-create-api-youtube.md "Verbinding maken met YouTube. Uw Video's en kanalen beheren"
 
 <!--Enterprise Intregation Pack doc links-->

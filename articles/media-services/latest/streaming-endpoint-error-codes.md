@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091977"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Fouten van streaming-eind punt (oorsprong) 
+# <a name="streaming-endpoint-origin-errors"></a>Fouten met streaming-eindpunten (oorsprong) 
 
 In dit onderwerp worden fouten beschreven die mogelijk van de Azure Media Services [streaming endpoint-service](streaming-endpoint-concept.md)worden weer gegeven.
 
-## <a name="400-bad-request"></a>400 ongeldige aanvraag
+## <a name="400-bad-request"></a>400 Ongeldige aanvraag
 
 De aanvraag bevat ongeldige gegevens en wordt geweigerd met deze fout codes en om een van de volgende redenen:
 
@@ -66,7 +66,7 @@ De bewerking probeert uit te voeren op een resource die niet meer bestaat. De re
 |MPE_METADATA_NOT_FOUND |0x80890257 |Kan bepaalde meta gegevens niet vinden in het manifest of kan niet worden teruggevonden uit de opslag. |
 |MPE_STORAGE_RESOURCE_NOT_FOUND |0x808900ED |Opslag bewerkings fout, bron niet gevonden. |
 
-## <a name="409-conflict"></a>409 conflict
+## <a name="409-conflict"></a>409 Conflict
 
 De ID die voor een resource voor een `PUT` of `POST` bewerking is gegeven, is door een bestaande resource genomen. Gebruik een andere ID voor de resource om dit probleem op te lossen.
 
@@ -82,7 +82,7 @@ De ID die voor een resource voor een `PUT` of `POST` bewerking is gegeven, is do
 
 ## <a name="412-precondition-failure"></a>412 voorwaardes fout
 
-Met de bewerking is een eTag opgegeven die afwijkt van de versie die beschikbaar is op de server, dat wil zeggen een optimistische gelijktijdigheids fout. Voer de aanvraag opnieuw uit nadat u de meest recente versie van de resource hebt gelezen en de eTag op de aanvraag hebt bijgewerkt.
+Met de bewerking is een eTag opgegeven die afwijkt van de versie die beschikbaar is op de server, dat wil zeggen een optimistische gelijktijdigheids fout. Voer de aanvraag opnieuw uit nadat u de meest recente versie van de resource hebt gelezen en de eTag voor de aanvraag hebt bijgewerkt.
 
 |Foutcode|Hexadecimale waarde |Foutbeschrijving|
 |---|---|---|
@@ -163,7 +163,7 @@ Voor Live-artikelen en voor beelden raadpleegt u:
 - [Concept: live-evenementen en live uitvoer](live-events-outputs-concept.md)
 - [Voor beeld: zelf studie voor live streamen](stream-live-tutorial-with-api.md)
 
-## <a name="416-range-not-satisfiable"></a>416-bereik is niet Satisfiable
+## <a name="416-range-not-satisfiable"></a>416 Het aangevraagde bereik is niet geldig
 
 |Foutcode|Hexadecimale waarde |Foutbeschrijving|
 |---|---|---|
@@ -184,10 +184,10 @@ Tijdens de verwerking van de aanvraag wordt door Media Services een fout aangetr
 
 ## <a name="503-service-unavailable"></a>503 Service niet beschikbaar
 
-De server kan momenteel geen aanvragen ontvangen. Deze fout kan worden veroorzaakt door buitensporige aanvragen voor de service. Media Services beperkings mechanisme beperkt het resource gebruik voor toepassingen die een buitensporige aanvraag voor de service doen.
+De server kan momenteel geen aanvragen ontvangen. Deze fout kan zijn veroorzaakt door een uitzonderlijk hoog aantal aanvragen bij de service. Het resourceverbruik wordt met het beperkingsmechanisme van Media Services beperkt voor toepassingen die een uitzonderlijk hoog aantal aanvragen doen bij de service.
 
 > [!NOTE]
-> Controleer het fout bericht en de fout code reeks voor meer gedetailleerde informatie over de reden waarom u de 503-fout hebt ontvangen. Deze fout betekent niet altijd vertraging.
+> Controleer het foutbericht en de tekenreeks voor de foutcode voor meer gedetailleerde informatie over de reden waarom u de 503-fout hebt ontvangen. Deze fout duidt niet altijd op beperking.
 > 
 
 |Foutcode|Hexadecimale waarde |Foutbeschrijving|
@@ -196,11 +196,11 @@ De server kan momenteel geen aanvragen ontvangen. Deze fout kan worden veroorzaa
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
-- [Foutcodes voor codering](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [Foutcodes voor codering](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services concepten](concepts-overview.md)
 - [Quota en limieten](limits-quotas-constraints.md)
 

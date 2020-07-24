@@ -4,13 +4,14 @@ description: Meer informatie over het configureren van door de klant beheerde sl
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092598"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -227,7 +228,15 @@ Het draaien van de door de klant beheerde sleutel die wordt gebruikt door uw Azu
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Een nieuwe sleutel versie maken":::
 
-- Wissel de sleutel die momenteel wordt gebruikt door een volledig andere toe door de `keyVaultKeyUri` eigenschap van uw account bij te werken. Ga als volgt te werk in Power shell:
+- Wissel de sleutel die momenteel wordt gebruikt door een volledig andere toe door de sleutel-URI in uw account bij te werken. Ga vanuit het Azure Portal naar uw Azure Cosmos-account en selecteer **gegevens versleuteling** in het menu links:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="De menu vermelding voor gegevens versleuteling":::
+
+    Vervang vervolgens de **sleutel-URI** door de nieuwe sleutel die u wilt gebruiken en selecteer **Opslaan**:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="De sleutel-URI bijwerken":::
+
+    Ga als volgt te werk om hetzelfde resultaat te krijgen in Power shell:
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -286,7 +295,11 @@ Momenteel worden er geen sleutels op container niveau overwogen.
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Hoe kan ik zien of door de klant beheerde sleutels zijn ingeschakeld op mijn Azure Cosmos-account?
 
-U kunt de gegevens van uw Azure Cosmos-account programmatisch ophalen en zoeken naar de aanwezigheid van de `keyVaultKeyUri` eigenschap. Zie hierboven voor manieren om dit te doen [in Power shell](#using-powershell) en [de Azure CLI te gebruiken](#using-azure-cli).
+Ga vanuit het Azure Portal naar uw Azure Cosmos-account en Bekijk de **gegevens versleutelings** vermelding in het menu links. Als dit item bestaat, worden door de klant beheerde sleutels ingeschakeld voor uw account:
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="De menu vermelding voor gegevens versleuteling":::
+
+U kunt de gegevens van uw Azure Cosmos-account ook programmatisch ophalen en zoeken naar de aanwezigheid van de `keyVaultKeyUri` eigenschap. Zie hierboven voor manieren om dit te doen [in Power shell](#using-powershell) en [de Azure CLI te gebruiken](#using-azure-cli).
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Wat is de invloed van door de klant beheerde sleutels op een back-up?
 

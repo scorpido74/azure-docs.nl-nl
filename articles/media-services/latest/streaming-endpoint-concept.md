@@ -12,16 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091994"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
-In Microsoft Azure Media Services vertegenwoordigt een [streaming-eind punt](https://docs.microsoft.com/rest/api/media/streamingendpoints) een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren met behulp van een van de algemene protocollen voor streaming media (HLS of Dash). Daarnaast biedt het **streaming-eind punt** dynamische code ring (just-in-time) voor toonaangevende DRMs. 
+In Microsoft Azure Media Services vertegenwoordigt een [streaming-eind punt](/rest/api/media/streamingendpoints) een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren met behulp van een van de algemene protocollen voor streaming media (HLS of Dash). Daarnaast biedt het **streaming-eind punt** dynamische code ring (just-in-time) voor toonaangevende DRMs. 
 
 Wanneer u een Media Services account maakt, wordt er een **standaard** streaming-eind punt voor u gemaakt met de status gestopt. U kunt het **standaard** streaming-eind punt niet verwijderen. Er kunnen meer streaming-eind punten worden gemaakt onder het account (Zie [quota's en limieten](limits-quotas-constraints.md)).
 
@@ -41,7 +41,7 @@ Wanneer het standaard streaming-eind punt `servicename` wordt gebruikt, wordt we
 ### <a name="limitations"></a>Beperkingen
 
 * De naam van het streaming-eind punt heeft een maximale waarde van 24 tekens.
-* De naam moet volgen op dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -patroon: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
+* De naam moet volgen op dit [regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) -patroon: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 ## <a name="types"></a>Typen
 
@@ -77,7 +77,7 @@ Aanbevolen gebruik |Aanbevolen voor de meeste streaming-scenario's.|Professionee
 
 ## <a name="streaming-endpoint-properties"></a>Eigenschappen van streaming-eind punt
 
-Deze sectie bevat informatie over een aantal eigenschappen van het streaming-eind punt. Zie [streaming-eind punt](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)voor voor beelden van het maken van een nieuw streaming-eind punt en beschrijvingen van alle eigenschappen.
+Deze sectie bevat informatie over een aantal eigenschappen van het streaming-eind punt. Zie [streaming-eind punt](/rest/api/media/streamingendpoints/create)voor voor beelden van het maken van een nieuw streaming-eind punt en beschrijvingen van alle eigenschappen.
 
 - `accessControl`: Wordt gebruikt voor het configureren van de volgende beveiligings instellingen voor dit streaming-eind punt: Akamai-handtekening header verificatie sleutels en IP-adressen die verbinding mogen maken met dit eind punt. Deze eigenschap kan alleen worden ingesteld als deze `cdnEnabled` is ingesteld op false.
 
@@ -92,7 +92,7 @@ Deze sectie bevat informatie over een aantal eigenschappen van het streaming-ein
 
 - `cdnProfile`: Wanneer `cdnEnabled` is ingesteld op waar, kunt u ook waarden door geven `cdnProfile` . `cdnProfile`is de naam van het CDN-profiel waar het CDN-eind punt wordt gemaakt. U kunt een bestaande cdnProfile opgeven of een nieuwe maken. Als de waarde NULL is en `cdnEnabled` waar is, wordt de standaard waarde ' AzureMediaStreamingPlatformCdnProfile ' gebruikt. Als de gegeven `cdnProfile` al bestaat, wordt er een eind punt gemaakt. Als het profiel niet bestaat, wordt er automatisch een nieuw profiel gemaakt.
 - `cdnProvider`: Wanneer CDN is ingeschakeld, kunt u ook waarden door geven `cdnProvider` . `cdnProvider`Hiermee wordt bepaald welke provider wordt gebruikt. Op dit moment worden drie waarden ondersteund: "StandardVerizon", "PremiumVerizon" en "StandardAkamai". Als er geen waarde wordt gegeven en `cdnEnabled` waar is, wordt "StandardVerizon" gebruikt (dat is de standaard waarde).
-- `crossSiteAccessPolicies`: Wordt gebruikt om beleid voor meerdere sites op te geven voor verschillende clients. Zie voor meer informatie [beleid voor meerdere domein beleids regels](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) en [het beschikbaar maken van een service over domein grenzen](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx). De instellingen zijn alleen van toepassing op Smooth Streaming.
+- `crossSiteAccessPolicies`: Wordt gebruikt om beleid voor meerdere sites op te geven voor verschillende clients. Zie voor meer informatie [beleid voor meerdere domein beleids regels](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) en [het beschikbaar maken van een service over domein grenzen](/previous-versions/azure/azure-services/gg185950(v=azure.100)). De instellingen zijn alleen van toepassing op Smooth Streaming.
 - `customHostNames`: Wordt gebruikt om een streaming-eind punt te configureren voor het accepteren van verkeer dat naar een aangepaste hostnaam wordt gestuurd. Deze eigenschap is geldig voor standaard-en Premium-streaming-eind punten en kan worden ingesteld als `cdnEnabled` : False.
 
     Het eigendom van de domein naam moet worden bevestigd door Media Services. Media Services controleert het eigendom van de domein naam door een `CName` record te vereisen met de Media Services-account-id als onderdeel dat moet worden toegevoegd aan het domein dat in gebruik is. Een voor beeld: voor ' sports.contoso.com ' die moet worden gebruikt als aangepaste hostnaam voor het streaming-eind punt, moet een record voor `<accountId>.contoso.com` worden geconfigureerd om te verwijzen naar een van Media Services-namen van verificatie-hosts. De naam van de verificatie-host bestaat uit verifydns. \<mediaservices-dns-zone> .
@@ -161,9 +161,9 @@ Zie de volgende artikelen:
 
 ## <a name="ask-questions-and--get-updates"></a>Vragen stellen en updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Dynamische verpakking](dynamic-packaging-overview.md)
 

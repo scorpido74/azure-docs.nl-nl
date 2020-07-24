@@ -4,17 +4,18 @@ description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/10/2020
 ms.author: v-erkel
-ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092487"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
-Gebruik de Azure Portal om uw cache te maken.
+Gebruik de Azure Portal of de Azure CLI om uw cache te maken.
 
 ![scherm opname van het cache-overzicht in Azure Portal, met de knop maken onderaan](media/hpc-cache-home-page.png)
 
@@ -22,11 +23,13 @@ Klik op de onderstaande afbeelding om een [video demonstratie](https://azure.mic
 
 [![Video miniatuur: Azure HPC cache: Setup (Klik om de video pagina te bezoeken)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
+## <a name="portal"></a>[Portal](#tab/azure-portal)
+
 ## <a name="define-basic-details"></a>Basis Details definiëren
 
 ![scherm afbeelding van de pagina project details in Azure Portal](media/hpc-cache-create-basics.png)
 
-Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache. Zorg ervoor dat het abonnement op de [toegangs](hpc-cache-prereqs.md#azure-subscription) lijst staat.
+Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache. Zorg ervoor dat het abonnement op de [toegangs](hpc-cache-prerequisites.md#azure-subscription) lijst staat.
 
 Stel in **service Details**de naam van de cache en de andere kenmerken in:
 
@@ -56,9 +59,9 @@ Met Azure HPC cache kunt u beheren welke bestanden in de cache worden opgeslagen
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Versleuteling van Azure Key Vault inschakelen (optioneel)
 
-Als uw cache deel uitmaakt van een regio die door de klant beheerde versleutelings sleutels ondersteunt, wordt de pagina **schijf versleutelings sleutels** weer gegeven tussen de tabbladen **cache** en **Tags** . Op het moment van publicatie wordt deze optie ondersteund in VS-Oost, Zuid-Centraal en VS-West 2.
+Als uw cache deel uitmaakt van een regio die door de klant beheerde versleutelings sleutels ondersteunt, wordt de pagina **schijf versleutelings sleutels** weer gegeven tussen de tabbladen **cache** en **Tags** . Lees [regionale Beschik baarheid](hpc-cache-overview.md#region-availability) voor meer informatie over regio ondersteuning.
 
-Als u de versleutelings sleutels wilt beheren die bij uw cache opslag worden gebruikt, geeft u uw Azure Key Vault informatie op de pagina **schijf versleutelings sleutels** . De sleutel kluis moet zich in dezelfde regio en in hetzelfde abonnement bevinden als de cache.
+Als u de versleutelings sleutels wilt beheren die voor uw cache opslag worden gebruikt, geeft u uw Azure Key Vault informatie op de pagina **schijf versleutelings sleutels** . De sleutel kluis moet zich in dezelfde regio en in hetzelfde abonnement bevinden als de cache.
 
 U kunt deze sectie overs Laan als u geen door de klant beheerde sleutels nodig hebt. Azure versleutelt standaard gegevens met door micro soft beheerde sleutels. Lees de [Azure Storage-versleuteling](../storage/common/storage-service-encryption.md) voor meer informatie.
 
@@ -94,6 +97,99 @@ Wanneer het maken is voltooid, wordt er een melding weer gegeven met een koppeli
 
 > [!NOTE]
 > Als uw cache door de klant beheerde versleutelings sleutels gebruikt, kan de cache worden weer gegeven in de lijst met resources voordat de implementatie status wordt gewijzigd in voltooid. Zodra de status van de cache wacht op de sleutel, kunt u [deze machtigen](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) voor het gebruik **van** de sleutel kluis.
+
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+## <a name="create-the-cache-with-azure-cli"></a>De cache maken met Azure CLI
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+> [!NOTE]
+> De Azure CLI biedt momenteel geen ondersteuning voor het maken van een cache met door de klant beheerde versleutelings sleutels. Gebruik de Azure Portal.
+
+Gebruik de opdracht [AZ HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) om een nieuwe Azure HPC-cache te maken.
+
+Geef deze waarden op:
+
+* Naam van de resource groep in de cache
+* Cache naam
+* Azure-regio
+* Cache-subnet, in deze indeling:
+
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"``
+
+  Het cache-subnet heeft ten minste 64 IP-adressen (/24) nodig en kan geen andere resources bevatten.
+
+* Cache capaciteit. Met twee waarden is de maximale door Voer van uw Azure HPC-cache ingesteld:
+
+  * De cache grootte (in GB)
+  * De SKU van de virtuele machines die worden gebruikt in de cache-infra structuur
+
+  [AZ HPC-cache sku's lijst](/cli/azure/ext/hpc-cache/hpc-cache/skus) toont de beschik bare sku's en de geldige opties voor cache grootte voor elke SKU. Opties voor cache grootte variëren van 3 TB tot 48 TB, maar slechts enkele waarden worden ondersteund.
+
+  In dit diagram ziet u welke cache grootte en SKU-combi Naties geldig zijn op het moment dat dit document wordt voor bereid (juli 2020).
+
+  | Cachegrootte | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | ja         | nee          | nee          |
+  | 6144 GB    | ja         | ja         | nee          |
+  | 12288 GB   | ja         | ja         | ja         |
+  | 24576 GB   | nee          | ja         | ja         |
+  | 49152 GB   | nee          | nee          | ja         |
+
+  Lees de sectie **cache capaciteit instellen** in het tabblad Portal-instructies voor belang rijke informatie over prijzen, door Voer en de grootte van uw cache op de juiste manier voor uw werk stroom.
+
+Voor beeld van het maken van cache:
+
+```azurecli
+az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
+    --location "eastus" --cache-size-gb "3072" \
+    --subnet "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default" \
+    --sku-name "Standard_2G"
+```
+
+Het maken van de cache duurt enkele minuten. Als de opdracht maken is voltooid, wordt de uitvoer als volgt geretourneerd:
+
+```azurecli
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+  "id": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619",
+  "location": "eastus",
+  "mountAddresses": [
+    "10.3.0.17",
+    "10.3.0.18",
+    "10.3.0.19"
+  ],
+  "name": "my-cache-0619",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "doc-demo-rg",
+  "sku": {
+    "name": "Standard_2G"
+  },
+  "subnet": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default",
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.42",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-04-01T15:19:54.068299+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+```
+
+Het bericht bevat nuttige informatie, waaronder de volgende items:
+
+* Client koppel adressen: gebruik deze IP-adressen wanneer u klaar bent om clients te verbinden met de cache. Lees [de Azure HPC-cache koppelen](hpc-cache-mount.md) voor meer informatie.
+* Upgrade status: dit bericht wordt gewijzigd wanneer een software-update wordt uitgebracht. U kunt de [cache software](hpc-cache-manage.md#upgrade-cache-software) hand matig bijwerken op een geschikt tijdstip, of deze wordt na enkele dagen automatisch toegepast.
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,0 +1,97 @@
+---
+title: Beheerd virtueel netwerk & beheerde privé-eind punten
+description: Meer informatie over beheerde virtuele netwerken en beheerde privé-eind punten in Azure Data Factory.
+services: data-factory
+ms.author: abnarain
+author: nabhishek
+manager: shwang
+ms.reviewer: douglasl
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 03/26/2020
+ms.openlocfilehash: f6868e3a77cbc4b262180b47ed3b387840062969
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87096672"
+---
+# <a name="azure-data-factory-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Data Factory (preview-versie)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+In dit artikel worden beheerde Virtual Network en beheerde privé-eind punten in Azure Data Factory uitgelegd.
+
+
+## <a name="managed-virtual-network"></a>Beheerd virtueel netwerk
+
+Wanneer u een Azure Integration Runtime (IR) in Azure Data Factory Managed Virtual Network (VNET) maakt, wordt de Integration runtime ingericht met de beheerde Virtual Network en worden privé-eind punten gebruikt om een veilige verbinding te maken met ondersteunde gegevens archieven. 
+
+Het maken van een Azure IR binnen beheerde Virtual Network zorgt ervoor dat het gegevens integratie proces wordt geïsoleerd en beveiligd. 
+
+Voor delen van het gebruik van beheerde Virtual Network:
+
+- Met een beheerde Virtual Network, kunt u de last van het beheren van de Virtual Network naar Azure Data Factory verenigen. U hoeft geen subnet te maken voor Azure Integration Runtime die uiteindelijk veel privé Ip's van uw Virtual Network kunnen gebruiken en hiervoor eerdere planning van de netwerk infrastructuur nodig had. 
+- Er is geen grondige kennis van Azure Networking nodig om gegevens integraties veilig uit te voeren. In plaats daarvan is het uitvoeren van beveiligde ETL veel vereenvoudigd voor gegevens technici. 
+- Beheerde Virtual Network worden samen met beheerde persoonlijke eind punten beschermd tegen gegevens exfiltration. 
+
+> [!IMPORTANT]
+>Op dit moment wordt het beheerde VNet alleen ondersteund in dezelfde regio als Azure Data Factory regio.
+ 
+
+![Virtual Network architectuur voor gebeheerde ADF](./media/managed-vnet/managed-vnet-architecture-diagram.png)
+
+## <a name="managed-private-endpoints"></a>Beheerde privé-eindpunten
+
+Beheerde privé-eind punten zijn particuliere eind punten die zijn gemaakt in de Azure Data Factory beheerde Virtual Network een persoonlijke koppeling naar Azure-resources tot stand brengen. Azure Data Factory deze privé-eind punten in uw naam beheert. 
+
+![Nieuw beheerd persoonlijk eind punt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
+
+Azure Data Factory ondersteunt persoonlijke koppelingen. Met persoonlijke koppeling kunt u Azure-Services (PaaS) gebruiken (zoals Azure Storage, Azure Cosmos DB Azure SQL Data Warehouse).
+
+Wanneer u een persoonlijke koppeling gebruikt, loopt het verkeer tussen uw gegevens archieven en beheerde Virtual Network volledig over het micro soft backbone-netwerk. Private Link beschermt tegen exfiltratie van gegevens. U kunt een privé-koppeling naar een resource tot stand brengen door een privé-eindpunt te maken.
+
+Persoonlijk eind punt maakt gebruik van een privé-IP-adres in de beheerde Virtual Network om de service effectief in te zetten. Privé-eindpunten worden toegewezen aan een specifieke resource in Azure, en niet de volledige service. Klanten kunnen de connectiviteit beperken tot een specifieke resource die is goedgekeurd door hun organisatie. Meer informatie over [privé-koppelingen en privé-eindpunten](https://docs.microsoft.com/azure/private-link/).
+
+> [!NOTE]
+> Het wordt aanbevolen dat u beheerde persoonlijke eind punten maakt om verbinding te maken met al uw Azure-gegevens bronnen. 
+ 
+> [!WARNING]
+> Als voor een PaaS-gegevens archief (BLOB, ADLS Gen2, SQL DW) een persoonlijk eind punt is gemaakt, en zelfs als het toegang tot alle netwerken toestaat, zou ADF alleen toegang kunnen krijgen met een beheerd privé-eind punt. Zorg ervoor dat u in dergelijke scenario's een persoonlijk eind punt maakt. 
+
+Een VPN-verbinding wordt gemaakt met de status ' in behandeling ' wanneer u een beheerd privé-eind punt maakt in Azure Data Factory. Er wordt een goedkeuringswerkstroom geïnitieerd. De eigenaar van de privékoppelingsresource is verantwoordelijk voor het goedkeuren of afwijzen van de verbinding.
+
+![Privé-eind punt beheren](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
+
+Als de eigenaar de verbinding goedkeurt, wordt de privé-koppeling tot stand gebracht. Anders wordt de privé-koppeling niet tot stand gebracht. In beide gevallen wordt het beheerde privé-eindpunt bijgewerkt met de status van de verbinding.
+
+![Beheerd privé-eind punt goed keuren](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+
+Alleen een beheerd privé-eindpunt met een goedgekeurde status kan verkeer verzenden naar een gegeven privé-koppelingsresource.
+
+## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
+### <a name="supported-data-sources"></a>Ondersteunde gegevensbronnen
+De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via een persoonlijke koppeling vanuit de Virtual Network van ADF die wordt beheerd.
+- Azure Blob Storage
+- Azure Table Storage
+- Azure Files
+- Azure Data Lake Gen2
+- Azure SQL Database (exclusief Azure SQL Managed instance)
+- Azure SQL Data Warehouse
+- Azure CosmosDB SQL
+- Azure Key Vault
+
+### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Uitgaande communicatie via het open bare eind punt van de Virtual Network voor ADF beheerd
+- Alleen poort 443 wordt geopend voor uitgaande communicatie.
+- Azure Storage en Azure Data Lake Gen2 worden niet ondersteund om te worden verbonden via een openbaar eind punt van Virtual Network met ADF-beheer.
+
+### <a name="other-known-issues"></a>Andere bekende problemen
+Fout opsporing voor CosmosDB-connectiviteit werkt niet zoals fout opsporing voor gegevens stroom en fout opsporing voor pijp lijnen.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Zelf studie: [een Kopieer pijplijn bouwen met beheerde Virtual Network en privé-eind punten](tutorial-copy-data-portal-private.md) 
+- Zelf studie: een [pijp lijn voor toewijzings gegevensstroom maken met beheerde Virtual Network en privé-eind punten](tutorial-data-flow-private.md)

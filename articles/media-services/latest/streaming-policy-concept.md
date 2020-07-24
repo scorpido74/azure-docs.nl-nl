@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091943"
 ---
 # <a name="streaming-policies"></a>Beleid voor streaming
 
-In Azure Media Services v3 kunt u met [streaming-beleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) streaming-protocollen en versleutelings opties definiëren voor uw [Stream-Locators](streaming-locators-concept.md). Media Services V3 biedt een aantal vooraf gedefinieerde streaming-beleids regels, zodat u ze rechtstreeks kunt gebruiken voor proef-of productie doeleinden. 
+In Azure Media Services v3 kunt u met [streaming-beleid](/rest/api/media/streamingpolicies) streaming-protocollen en versleutelings opties definiëren voor uw [Stream-Locators](streaming-locators-concept.md). Media Services V3 biedt een aantal vooraf gedefinieerde streaming-beleids regels, zodat u ze rechtstreeks kunt gebruiken voor proef-of productie doeleinden. 
 
 Het momenteel beschik bare vooraf gedefinieerde beleid voor streaming:<br/>
 * ' Predefined_DownloadOnly '
@@ -44,11 +44,11 @@ Klik op de afbeelding om deze in volledig formaat weer te geven.
 
 Als u uw inhoud versleutelt, moet u een [beleid voor inhouds sleutels](content-key-policy-concept.md)maken, het **beleid voor inhouds sleutels** is niet nodig voor het wissen van streams of downloaden. 
 
-Als u speciale vereisten hebt (bijvoorbeeld als u verschillende protocollen wilt opgeven, een aangepaste key delivery service wilt gebruiken of een leeg audio spoor wilt gebruiken), kunt u een aangepast streaming-beleid [maken](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) . 
+Als u speciale vereisten hebt (bijvoorbeeld als u verschillende protocollen wilt opgeven, een aangepaste key delivery service wilt gebruiken of een leeg audio spoor wilt gebruiken), kunt u een aangepast streaming-beleid [maken](/rest/api/media/streamingpolicies/create) . 
 
 ## <a name="get-a-streaming-policy-definition"></a>Een streaming-beleids definitie ophalen  
 
-Als u de definitie van een streaming-beleid wilt zien, gebruikt u [ophalen](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) en geeft u de naam van het beleid op. Bijvoorbeeld:
+Als u de definitie van een streaming-beleid wilt zien, gebruikt u [ophalen](/rest/api/media/streamingpolicies/get) en geeft u de naam van het beleid op. Bijvoorbeeld:
 
 ### <a name="rest"></a>REST
 

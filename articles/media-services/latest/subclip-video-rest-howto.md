@@ -13,15 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b112b3844ddb3758b79a086b624a227127e65ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76514320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091875"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Een video bijsnijden bij het coderen met Media Services-REST
 
-U kunt een video knippen of subfragmenteren wanneer u deze codeert met behulp van een [taak](https://docs.microsoft.com/rest/api/media/jobs). Deze functionaliteit werkt met elke [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden. 
+U kunt een video knippen of subfragmenteren wanneer u deze codeert met behulp van een [taak](/rest/api/media/jobs). Deze functionaliteit werkt met elke [trans formatie](/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden. 
 
 In het REST-voor beeld in dit onderwerp wordt een taak gemaakt die een video bijsnijdt bij het verzenden van een coderings taak. 
 
@@ -29,7 +30,7 @@ In het REST-voor beeld in dit onderwerp wordt een taak gemaakt die een video bij
 
 Voor het uitvoeren van de stappen die in dit onderwerp worden beschreven, moet u het volgende doen:
 
-- [Maak een Azure Media Services-account](create-account-cli-how-to.md).
+- [Maak een Azure Media Services-account](./create-account-howto.md).
 - [Postman configureren voor Azure Media Services rest API-aanroepen](media-rest-apis-with-postman.md).
     
     Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 

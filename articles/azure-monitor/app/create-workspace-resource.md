@@ -5,11 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18d3460804528d736cfc74c1c2d358eb08013513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647890"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092963"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Application Insights resources op basis van een werk ruimte (preview)
 
@@ -22,9 +23,9 @@ Dit biedt ook algemene op rollen gebaseerde Access Control (RBAC) in uw resource
 
 Als u de nieuwe ervaring wilt testen, meldt u zich aan bij de [Azure Portal](https://portal.azure.com)en maakt u een Application Insights resource:
 
-![Application Insights resource op basis van werk ruimte](./media/create-workspace-resource/create-workspace-based.png)
+![Op werkruimte gebaseerde Application Insights-resource](./media/create-workspace-resource/create-workspace-based.png)
 
-Als u nog geen bestaande Log Analytics-werk ruimte hebt, [raadpleegt u de documentatie voor het maken van log Analytics werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Als u nog geen bestaande Log Analytics-werk ruimte hebt, [raadpleegt u de documentatie voor het maken van log Analytics werk ruimte](../learn/quick-create-workspace.md).
 
 Voor de open bare preview **-werk ruimte zijn op dit moment beperkt tot vs-West 2, VS-Oost en Zuid-Centraal vs.**
 
@@ -39,7 +40,7 @@ Als u op de tekst van de blauwe koppeling klikt, gaat u naar de gekoppelde Log A
 
 ## <a name="copy-the-connection-string"></a>De verbindingsreeks kopiëren
 
-De [Connection String](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) identificeert de resource waaraan u de telemetriegegevens wilt koppelen. U kunt ook de eind punten wijzigen die door de resource worden gebruikt als een bestemming voor uw telemetrie. U moet de connection string kopiëren en toevoegen aan de code van uw toepassing of aan een omgevings variabele.
+De [Connection String](./sdk-connection-string.md?tabs=net) identificeert de resource waaraan u de telemetriegegevens wilt koppelen. U kunt ook de eind punten wijzigen die door de resource worden gebruikt als een bestemming voor uw telemetrie. U moet de connection string kopiëren en toevoegen aan de code van uw toepassing of aan een omgevings variabele.
 
 ## <a name="monitoring-configuration"></a>Bewakings configuratie
 
@@ -51,14 +52,14 @@ Voor het bewaken van toepassingen op basis van code installeert u gewoon de juis
 
 Raadpleeg de Language/Framework-specifieke documentatie voor gedetailleerde documentatie over het instellen van een Application Insights SDK voor bewaking op basis van code.
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [Achtergrond taken & moderne console toepassingen (.NET/.NET core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [Klassieke console toepassingen (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Diagnostisch](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core](./asp-net-core.md)
+- [Achtergrond taken & moderne console toepassingen (.NET/.NET core)](./worker-service.md)
+- [Klassieke console toepassingen (.NET)](./console.md) 
+- [Diagnostisch](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>Bewaking en het maken van Visual Studio-resources op code
 
@@ -101,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Raadpleeg de [documentatie van Azure cli](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)voor de volledige Azure cli-documentatie voor deze opdracht.
+Raadpleeg de [documentatie van Azure cli](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)voor de volledige Azure cli-documentatie voor deze opdracht.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -197,7 +198,7 @@ De verouderde functionaliteit voor continue export wordt niet ondersteund voor o
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Metrische gegevens verkennen](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-query's schrijven](../../azure-monitor/app/analytics.md)
+* [Analytics-query's schrijven](../log-query/log-query-overview.md)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md

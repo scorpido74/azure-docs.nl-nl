@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092725"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Een aangepaste domeinnaam configureren voor een Azure-cloudservice
 Wanneer u een Cloud service maakt, wijst Azure deze toe aan een subdomein van **cloudapp.net**. Als uw Cloud service bijvoorbeeld de naam Contoso heeft, hebben uw gebruikers toegang tot uw toepassing op een URL, zoals `http://contoso.cloudapp.net` . Azure wijst ook een virtueel IP-adres toe.
@@ -42,7 +43,7 @@ Een CNAME-record wijst een *specifiek* domein, zoals **contoso.com** of **www \.
 > [!NOTE]
 > Bij sommige domein registraties kunt u alleen subdomeinen toewijzen wanneer u een CNAME-record gebruikt, zoals www- \. contoso.com en geen hoofd namen, zoals contoso.com. Voor meer informatie over CNAME-records raadpleegt u de documentatie van uw registratie service, [de Wikipedia-vermelding in de CNAME-record](https://en.wikipedia.org/wiki/CNAME_record)of het [IETF-domein namen-implementatie en specificatie](https://tools.ietf.org/html/rfc1035) document.
 
-### <a name="a-record"></a>Een record
+### <a name="a-record"></a>A-record
 Een *a* -record wijst een domein, zoals **contoso.com** of **www \. contoso.com**, *of een Joker teken domein* , zoals ** \* . contoso.com**, toe aan een IP-adres. In het geval van een Azure-Cloud service is dit het virtuele IP-adres van de service. Het belangrijkste voor deel van een A-record over een CNAME-record is dat u één vermelding kunt hebben die gebruikmaakt van een Joker teken, zoals \* **. contoso.com**, waarmee aanvragen voor meerdere subdomeinen, zoals **mail.contoso.com**, **login.contoso.com**of **www \. contso.com**, worden afgehandeld.
 
 > [!NOTE]
@@ -62,7 +63,7 @@ Als u een CNAME-record wilt maken, moet u een nieuwe vermelding toevoegen aan de
        ![sectie quickis waarin de site-URL wordt weer gegeven][csurl]
 
        **OF**
-   * Installeer en configureer [Azure Power shell](/powershell/azure/overview)en gebruik vervolgens de volgende opdracht:
+   * Installeer en configureer [Azure Power shell](/powershell/azure/)en gebruik vervolgens de volgende opdracht:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -95,7 +96,7 @@ Als u een A-record wilt maken, moet u eerst het virtuele IP-adres van uw Cloud s
        ![sectie quickis waarin het VIP wordt weer gegeven][vip]
 
        **OF**
-   * Installeer en configureer [Azure Power shell](/powershell/azure/overview)en gebruik vervolgens de volgende opdracht:
+   * Installeer en configureer [Azure Power shell](/powershell/azure/)en gebruik vervolgens de volgende opdracht:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -111,7 +112,7 @@ Als u een A-record wilt maken, moet u eerst het virtuele IP-adres van uw Cloud s
 
 De volgende A-record stuurt bijvoorbeeld alle verkeer van **contoso.com** naar **137.135.70.239**, het IP-adres van uw geïmplementeerde toepassing:
 
-| Hostnaam/subdomein | IP-adres |
+| Hostnaam/subdomein | Het IP-adres |
 | --- | --- |
 | \@ |137.135.70.239 |
 

@@ -4,18 +4,19 @@ description: Wijzig de standaard Azure Monitor Application Insights SDK-eind pun
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194837"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092861"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
 
 Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen vereisen het aanpassen van de voorbeeld code en het vervangen van de waarden van de tijdelijke aanduidingen voor `QuickPulse_Endpoint_Address` , `TelemetryChannel_Endpoint_Address` en `Profile_Query_Endpoint_address` met de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
 
 > [!NOTE]
-> [Verbindings reeksen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) zijn de nieuwe voorkeurs methode voor het instellen van aangepaste eind punten in Application Insights.
+> [Verbindings reeksen](./sdk-connection-string.md?tabs=net) zijn de nieuwe voorkeurs methode voor het instellen van aangepaste eind punten in Application Insights.
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Voor Azure Functions wordt u nu aangeraden [verbindings reeksen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) te gebruiken die zijn ingesteld in de toepassings instellingen van de functie. Als u de toepassings instellingen voor de functie wilt openen vanuit het deel venster functies, selecteert u **instellingen**  >  **configuratie**  >  **Toepassings instellingen**. 
+Voor Azure Functions wordt u nu aangeraden [verbindings reeksen](./sdk-connection-string.md?tabs=net) te gebruiken die zijn ingesteld in de toepassings instellingen van de functie. Als u de toepassings instellingen voor de functie wilt openen vanuit het deel venster functies, selecteert u **instellingen**  >  **configuratie**  >  **Toepassings instellingen**. 
 
 Naam: `APPLICATIONINSIGHTS_CONNECTION_STRING` waarde:`Connection String Value`
 
@@ -155,7 +156,7 @@ Raadpleeg de [opentellingen-python opslag plaats](https://github.com/census-inst
 
 ## <a name="regions-that-require-endpoint-modification"></a>Regio's waarvoor wijziging van het eind punt is vereist
 
-Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist, [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) en [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist, [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) en [Azure China](/azure/china/resources-developer-guide).
 
 |Regio |  Naam van eind punt | Waarde |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ Als u momenteel de [Application Insights rest API](https://dev.applicationinsigh
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de gedetailleerde richt lijnen voor [controle en beheer van Azure](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)voor meer informatie over de aangepaste wijzigingen voor Azure Government.
-- Raadpleeg de [Azure China Playbook](https://docs.microsoft.com/azure/china/)voor meer informatie over Azure China.
+- Raadpleeg de gedetailleerde richt lijnen voor [controle en beheer van Azure](../../azure-government/compare-azure-government-global-azure.md#application-insights)voor meer informatie over de aangepaste wijzigingen voor Azure Government.
+- Raadpleeg de [Azure China Playbook](/azure/china/)voor meer informatie over Azure China.

@@ -3,11 +3,12 @@ title: Live video-analyses op IoT Edge quota's-Azure
 description: In dit artikel wordt de analyse van live video op IoT Edge quota's en beperkingen beschreven.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091807"
 ---
 # <a name="quotas-and-limitations"></a>Quota en beperkingen
 
@@ -46,11 +47,8 @@ Met de preview-versie zijn er beperkingen op verschillende knoop punten die kunn
 * Signal Gate-processor
    * Moet direct worden downstream van de RTSP-bron.
 * Asset Sink 
-   * Er kan Maxi maal één knoop punt per grafiek topologie zijn.
-      * Als er een Asset sink wordt gebruikt, kan er geen bestands Sink aanwezig zijn of andersom.
    * Moet direct worden downstream van de RTSP-bron-of signaal Gate-processor.
 * Bestands Sink
-   * Er kan Maxi maal één knoop punt per grafiek topologie zijn (zie boven notitie over Asset Sink).
    * Moet direct worden downstream van de Signal Gate-processor.
    * Kan niet direct voorbij de HTTP-uitbreidings processor of de bewegings detectie processor
 * IoT Hub Sink

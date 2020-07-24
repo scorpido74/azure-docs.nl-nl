@@ -3,21 +3,24 @@ title: Een commercieel Marketplace-account maken in het partner centrum
 description: Meer informatie over het maken van een micro soft-account voor commerciële Marketplace in het partner centrum.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: 5a55d66bfed19f6d88d4ff13a9f59d7e791664cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092181"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een commercieel Marketplace-account maken in het partner centrum
 
 Als u uw aanbiedingen naar [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [Microsoft AppSource](https://appsource.microsoft.com/)wilt publiceren, moet u een account maken in het Commercial Marketplace-programma in Partner Center. In dit artikel wordt beschreven hoe u een partner centrum-account maakt en hoe u nieuwe uitgevers kunt toevoegen aan het programma voor commerciële Marketplace.
 
 >[!IMPORTANT]
->Als u een account hebt in de [Cloud Partner-Portal](https://cloudpartner.azure.com) dat is verplaatst naar het partner centrum, hoeft u geen nieuw account te maken. Zie [voor uitgevers die van de Cloud Partner-Portal verplaatsen](#for-publishers-who-are-moving-from-the-cloud-partner-portal)voor meer informatie.
+>Voor het publiceren van aanbiedingen in de commerciële Marketplace moet u een werk account gebruiken dat is gekoppeld aan een bedrijf of organisatie. Persoonlijke accounts worden niet ondersteund.
+
+>[!IMPORTANT]
+>Als u een account in de Cloud Partner-portal (CPP) had, is het in het partner centrum verhuisd. u hoeft geen nieuw account te maken. Zie [voor uitgevers die zijn verplaatst van de Cloud Partner-Portal](#for-publishers-who-moved-from-the-cloud-partner-portal)voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -43,7 +46,7 @@ Gebruik deze methode als u geen ervaring hebt met het partner centrum en dat nie
 - [Uw Publisher-profiel opgeven](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->Als u een [Cloud Partner-Portal](https://cloudpartner.azure.com) account hebt dat is verplaatst naar het partner centrum, hoeft u geen nieuw account te maken. Zie [voor uitgevers die van de Cloud Partner-Portal verplaatsen](#for-publishers-who-are-moving-from-the-cloud-partner-portal)voor meer informatie.
+>Als u een account in de Cloud Partner-portal had, is het in het partner centrum verhuisd. u hoeft geen nieuw account te maken. Zie [voor uitgevers die zijn verplaatst van de Cloud Partner-Portal](#for-publishers-who-moved-from-the-cloud-partner-portal)voor meer informatie.
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Registreren op de inschrijvings pagina van het partner centrum
 
@@ -94,7 +97,7 @@ Voor beide inschrijvings typen gaat u als volgt te werkt:
 Zorg ervoor dat u uw account gegevens handig hebt.
 
 >[!IMPORTANT]
->Als u een account hebt in de [Cloud Partner-Portal](https://cloudpartner.azure.com/) dat is verplaatst naar het partner centrum, hoeft u geen nieuw account te maken. Zie [voor uitgevers die van de Cloud Partner-Portal verplaatsen](#for-publishers-who-are-moving-from-the-cloud-partner-portal)voor meer informatie.
+>Als u een account in de Cloud Partner-portal had, is het in het partner centrum verhuisd. u hoeft geen nieuw account te maken. Zie [voor uitgevers die zijn verplaatst van de Cloud Partner-Portal](#for-publishers-who-moved-from-the-cloud-partner-portal)voor meer informatie.
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>Wat gebeurt er als ik al bij de Microsoft Partner Network Inge schreven?
 
@@ -154,15 +157,13 @@ Nadat u zich hebt aangemeld bij partner centrum, voltooit u het instellen van uw
 
 U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [Commercial Marketplace Overview](./commercial-marketplace-overview.md)(Engelstalig) voor meer informatie. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>Voor uitgevers die van de Cloud Partner-portal verplaatsen
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Voor uitgevers die zijn verplaatst van de Cloud Partner-portal
 
-Als uw account is gemigreerd vanuit het [Cloud Partner-Portal](https://cloudpartner.azure.com), hoeft u geen nieuw partner centrum-account te maken. U moet een aangepaste koppeling hebben ontvangen naar uw nieuwe partner Center-account in e-mail en in een banner melding nadat u zich hebt aangemeld bij uw bestaande Cloud Partner-portal-account.
+Als u een Cloud Partner-portal-account had, is dit naar het partner centrum verplaatst. U hoeft geen nieuw partner centrum-account te maken. U moet een aangepaste koppeling hebben ontvangen naar uw nieuwe partner Center-account in e-mail en in een banner melding nadat u zich hebt aangemeld bij uw bestaande Cloud Partner-portal-account.
 
 Nadat u de aangepaste koppeling hebt geselecteerd en uw nieuwe partner centrum-account hebt ingeschakeld, kunt u teruggaan naar uw account door naar het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in het partner centrum te gaan.
 
-De gegevens voor de publicatie overeenkomst en het bedrijfs profiel worden gemigreerd naar uw nieuwe partner centrum-account, samen met alle eerder ingestelde account gegevens van het profiel voor uitbetaling, gebruikers accounts en machtigingen en actieve aanbiedingen die aan uw Cloud Partner-portal-account zijn gekoppeld.
-
-Nadat uw account gegevens zijn verplaatst van de Cloud Partner-portal naar het partner centrum, kunt u de Cloud Partner-portal niet meer gebruiken voor het maken van account updates of voor het beheren van gebruikers, machtigingen en facturering. Voor een beperkte periode worden de account updates die u in het partner centrum maakt, automatisch bijgewerkt in uw Cloud Partner-portal-account met het kenmerk alleen-lezen totdat deze uiteindelijk wordt afgeschaft.
+De publicatie overeenkomst en het profiel gegevens van het bedrijf worden overgezet naar uw nieuwe partner centrum-account, samen met alle eerder ingestelde account gegevens van het profiel voor uitbetaling, gebruikers accounts en machtigingen en actieve aanbiedingen die aan uw Cloud Partner-portal-account zijn gekoppeld.
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Nieuwe uitgevers toevoegen aan het commerciële Marketplace-programma
 

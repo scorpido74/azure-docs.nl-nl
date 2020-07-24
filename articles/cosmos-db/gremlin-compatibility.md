@@ -7,11 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092504"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Gremlin-compatibiliteit Azure Cosmos DB
 Azure Cosmos DB Graph engine voldoet aan de specificaties van [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) traversal, maar er zijn verschillen in de implementatie die specifiek zijn voor Azure Cosmos db. Zie het artikel [GREMLIN API wire protocol support](gremlin-support.md) voor meer informatie over de lijst met ondersteunde Gremlin-stappen.
@@ -68,7 +69,7 @@ Azure Cosmos DB Graph engine voldoet aan de specificaties van [Apache TinkerPop]
     g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
     ```
 
-    U kunt de prestaties van de query's controleren met behulp van de [Gremlin `executionProfile()` stap] (Graph-Execution-profile.MD.
+    U kunt de prestaties van de query's controleren met behulp van de [ `executionProfile()` stap Gremlin](graph-execution-profile.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 * Ga naar [Cosmos DB gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db) pagina om feedback te delen en de focus te geven aan functies die voor u belang rijk zijn.

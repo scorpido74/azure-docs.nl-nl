@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092810"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>De diagnostische gegevens voor de Cloud service, virtuele machine of Service Fabric verzenden naar Application Insights
 Cloud Services, Virtual Machines, Virtual Machine Scale Sets en Service Fabric gebruiken allemaal de Azure Diagnostics extensie voor het verzamelen van gegevens.  Diagnostische gegevens van Azure worden verzonden naar Azure Storage tabellen.  U kunt echter ook alle of een subset van de gegevens naar andere locaties pipeen met Azure Diagnostics extensie 1,5 of hoger.
@@ -212,7 +213,6 @@ In de vorige configuratie hebben de volgende regels de volgende betekenis:
 - **U kunt geen BLOB-gegevens verzenden die zijn verzameld door de Azure Diagnostics-extensie naar Application Insights.** Bijvoorbeeld iets dat is opgegeven onder het knoop punt *directory's* . Voor crash dumps wordt de daad werkelijke crash dump verzonden naar de Blob-opslag en alleen een melding dat de crash dump is gegenereerd, wordt verzonden naar Application Insights.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het weer geven van uw Azure diagnostische gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) in Application Insights.
+* Meer informatie over [het weer geven van uw Azure diagnostische gegevens](../app/cloudservices.md) in Application Insights.
 * Gebruik [Power shell](../../cloud-services/cloud-services-diagnostics-powershell.md) om de Azure Diagnostics-extensie voor uw toepassing in te scha kelen.
 * [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) gebruiken om de Azure Diagnostics-extensie voor uw toepassing in te scha kelen
-

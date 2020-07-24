@@ -1,6 +1,6 @@
 ---
-title: machine learning modellen bijwerken met behulp van Azure Data Factory
-description: Hierin wordt beschreven hoe u voorspellende pijp lijnen maakt met behulp van Azure Data Factory en machine learning
+title: Azure Machine Learning Studio-modellen (klassiek) bijwerken met behulp van Azure Data Factory
+description: Hierin wordt beschreven hoe u voorspellende pijp lijnen maakt met behulp van Azure Data Factory en Azure Machine Learning Studio (klassiek)
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -10,33 +10,34 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2018
-ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092538"
 ---
-# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>ML Studio (klassieke) v-modellen bijwerken met resource activiteit bijwerken
+# <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Azure Machine Learning Studio-modellen (klassiek) bijwerken met resource activiteit bijwerken
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-ML Studio (klassiek) integratie artikel: [Maak voorspellende pijp lijnen met behulp van Azure machine learning en Azure Data Factory](transform-data-using-machine-learning.md). Als u dit nog niet hebt gedaan, raadpleegt u het hoofd artikel voordat u dit artikel leest.
+Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure Machine Learning Studio (klassiek) integratie artikel: [Maak voorspellende pijp lijnen met behulp van Azure machine learning Studio (klassiek) en Azure Data Factory](transform-data-using-machine-learning.md). Als u dit nog niet hebt gedaan, raadpleegt u het hoofd artikel voordat u dit artikel leest.
 
 ## <a name="overview"></a>Overzicht
-Als onderdeel van het proces van de inzet-modellen (klassieke ML Studio) wordt uw model getraind en opgeslagen. Vervolgens gebruikt u het om een voorspellende webservice te maken. De webservice kan vervolgens worden gebruikt in websites, Dash boards en mobiele apps.
+Als onderdeel van het proces van de inzet-modellen (klassieke Azure Machine Learning Studio) wordt uw model getraind en opgeslagen. Vervolgens gebruikt u het om een voorspellende webservice te maken. De webservice kan vervolgens worden gebruikt in websites, Dash boards en mobiele apps.
 
-Modellen die u maakt met behulp van Machine Learning zijn doorgaans niet statisch. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de consumer van de API hun eigen gegevens heeft, moet het model opnieuw worden getraind. 
+Modellen die u maakt met behulp van Azure Machine Learning Studio (klassiek) zijn doorgaans niet statisch. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de consumer van de API hun eigen gegevens heeft, moet het model opnieuw worden getraind. 
 
-Het opnieuw trainen kan regel matig worden uitgevoerd. Met de activiteit batch-uitvoering en update resource kunt u het Azure Machine Learning model opnieuw trainen en de voorspellende webservice bijwerken met behulp van Data Factory.
+Het opnieuw trainen kan regel matig worden uitgevoerd. Met Azure Machine Learning Studio de activiteit batch-uitvoering en update resource kunt u het operationeel maken-model (klassiek) opnieuw trainen en de voorspellende webservice bijwerken met behulp van Data Factory.
 
 In de volgende afbeelding ziet u de relatie tussen training en voorspellende webservices.
 
 ![Webservices](./media/update-machine-learning-models/web-services.png)
 
-## <a name="ml-studio-classic-update-resource-activity"></a>Resource-activiteit voor het bijwerken van ML Studio (klassiek)
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)
 
-In het volgende JSON-code fragment wordt een ML Studio (klassieke) batch uitvoerings activiteit gedefinieerd.
+In het volgende JSON-code fragment wordt een Azure Machine Learning Studio (klassieke) batch uitvoerings activiteit gedefinieerd.
 
 ```json
 {
@@ -60,10 +61,10 @@ In het volgende JSON-code fragment wordt een ML Studio (klassieke) batch uitvoer
 
 | Eigenschap                      | Beschrijving                              | Vereist |
 | :---------------------------- | :--------------------------------------- | :------- |
-| naam                          | Naam van de activiteit in de pijp lijn     | Yes      |
+| name                          | Naam van de activiteit in de pijp lijn     | Yes      |
 | description                   | Tekst die beschrijft wat de activiteit doet.  | No       |
-| type                          | Voor Azure Machine Learning bron activiteit bijwerken is het type activiteit **AzureMLUpdateResource**. | Yes      |
-| linkedServiceName             | Azure Machine Learning gekoppelde service die de eigenschap updateResourceEndpoint bevat. | Yes      |
+| type                          | Voor Azure Machine Learning Studio (klassieke) resource activiteit bijwerken is het activiteitstype **AzureMLUpdateResource**. | Yes      |
+| linkedServiceName             | Azure Machine Learning Studio (klassieke) gekoppelde service die de eigenschap updateResourceEndpoint bevat. | Yes      |
 | trainedModelName              | De naam van de getrainde model module in het web service-experiment dat moet worden bijgewerkt | Yes      |
 | trainedModelLinkedServiceName | De naam van Azure Storage gekoppelde service die het ilearner-bestand bewaart dat door de update bewerking is geüpload | Yes      |
 | trainedModelFilePath          | Het relatieve bestandspad in trainedModelLinkedService dat het ilearner-bestand vertegenwoordigt dat door de update bewerking is geüpload | Yes      |
@@ -72,17 +73,17 @@ In het volgende JSON-code fragment wordt een ML Studio (klassieke) batch uitvoer
 
 Het hele proces van inzet het opnieuw trainen van een model en het bijwerken van de voorspellende webservices omvat de volgende stappen:
 
-- Roep de **training-webservice** aan met behulp van de **batch Execution-activiteit**. Het aanroepen van een trainings-webservice is hetzelfde als het aanroepen van een voorspellende webservice die wordt beschreven in [voorspellende pijp lijnen maken met behulp van Azure machine learning en Data Factory batch Execution-activiteit](transform-data-using-machine-learning.md). De uitvoer van de training-webservice is een iLearner-bestand dat u kunt gebruiken om de voorspellende webservice bij te werken.
+- Roep de **training-webservice** aan met behulp van de **batch Execution-activiteit**. Het aanroepen van een trainings-webservice is hetzelfde als het aanroepen van een voorspellende webservice die wordt beschreven in [voorspellende pijp lijnen maken met behulp van Azure machine learning Studio (klassiek) en Data Factory batch-uitvoerings activiteit](transform-data-using-machine-learning.md). De uitvoer van de training-webservice is een iLearner-bestand dat u kunt gebruiken om de voorspellende webservice bij te werken.
 - Roep het **resource-eind punt** voor het bijwerken van de **voorspellende webservice** aan met de **activiteit resource bijwerken** om de webservice bij te werken met het nieuwe getrainde model.
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning gekoppelde service
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Gekoppelde service Azure Machine Learning Studio (klassiek)
 
-Voor de hierboven genoemde end-to-end werk stroom werkt, moet u twee Azure Machine Learning gekoppelde services maken:
+Voor de hierboven genoemde end-to-end werk stroom werkt, moet u twee Azure Machine Learning Studio (klassieke) gekoppelde services maken:
 
-1. Een Azure Machine Learning gekoppelde service aan de training-webservice, deze gekoppelde service wordt gebruikt door de activiteit voor batch uitvoering op dezelfde manier als wat wordt vermeld in [voorspellende pijp lijnen maken met behulp van Azure machine learning en Data Factory batch uitvoering](transform-data-using-machine-learning.md). Verschil is de uitvoer van de training-webservice is een iLearner-bestand dat vervolgens wordt gebruikt door de activiteit resource bijwerken om de voorspellende webservice bij te werken.
-2. Een Azure Machine Learning gekoppelde service aan het resource-eind punt van de update van de voorspellende webservice. Deze gekoppelde service wordt gebruikt door resource activiteit bijwerken om de voorspellende webservice bij te werken met het iLearner-bestand dat is geretourneerd door de bovenstaande stap.
+1. Een aan de trainings-webservice gekoppelde Azure Machine Learning Studio-Service (klassiek), wordt deze gekoppelde service gebruikt door activiteiten voor batch uitvoering op dezelfde manier als wat wordt vermeld in [voorspellende pijp lijnen maken met behulp van Azure machine learning Studio (klassiek) en Data Factory batch uitvoering](transform-data-using-machine-learning.md). Verschil is de uitvoer van de training-webservice is een iLearner-bestand dat vervolgens wordt gebruikt door de activiteit resource bijwerken om de voorspellende webservice bij te werken.
+2. Een gekoppelde Azure Machine Learning Studio-Service (klassiek) aan het resource-eind punt van de update van de voorspellende webservice. Deze gekoppelde service wordt gebruikt door resource activiteit bijwerken om de voorspellende webservice bij te werken met het iLearner-bestand dat is geretourneerd door de bovenstaande stap.
 
-Voor de tweede Azure Machine Learning gekoppelde service is de configuratie anders wanneer uw Azure Machine Learning-webservice een klassieke webservice of een nieuwe webservice is. De verschillen worden afzonderlijk beschreven in de volgende secties.
+Voor de tweede Azure Machine Learning Studio (klassieke) gekoppelde service is de configuratie anders wanneer uw Azure Machine Learning Studio (klassieke) webservice een klassieke webservice of een nieuwe webservice is. De verschillen worden afzonderlijk beschreven in de volgende secties.
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web service is nieuw Azure Resource Manager-webservice
 
@@ -92,7 +93,7 @@ Als de webservice het nieuwe type webservice is dat een Azure Resource Manager-e
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-U kunt in de URL waarden ophalen voor de plaatsings houders bij het uitvoeren van een query op de webservice op de [Portal Azure machine learning](https://services.azureml.net/)-webservices.
+U kunt in de URL waarden ophalen voor de plaatsings houders bij het uitvoeren van query's op de webservice op de webservices van [Azure machine learning Studio (klassiek)](https://services.azureml.net/).
 
 Voor het nieuwe type update resource-eind punt is Service-Principal-verificatie vereist. Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en geeft u deze de rol **Inzender** of **eigenaar** van het abonnement of de resource groep waarvan de webservice deel uitmaakt. De Zie [Service-Principal maken en machtigingen toewijzen om Azure-resources te beheren](../active-directory/develop/howto-create-service-principal-portal.md). Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 
@@ -126,18 +127,18 @@ Hier volgt een voor beeld van een gekoppelde service definitie:
 }
 ```
 
-Het volgende scenario bevat meer informatie. Het bevat een voor beeld voor het opnieuw trainen en bijwerken van Azure Machine Learning Studio-modellen van een Azure Data Factory-pijp lijn.
+Het volgende scenario bevat meer informatie. Het bevat een voor beeld voor het opnieuw trainen en bijwerken van Azure Machine Learning Studio (klassieke) modellen van een Azure Data Factory-pijp lijn.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Voor beeld: een Azure Machine Learning model opnieuw trainen en bijwerken
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>Voor beeld: een model voor Azure Machine Learning Studio (klassiek) opnieuw trainen en bijwerken
 
-Deze sectie bevat een voorbeeld pijplijn die gebruikmaakt van de **Azure machine learning Studio batch Execution-activiteit** om een model opnieuw te trainen. De pijp lijn gebruikt ook de **activiteit resource van Azure machine learning Studio update** om het model bij te werken in de Score-webservice. De sectie bevat ook JSON-fragmenten voor alle gekoppelde services, gegevens sets en pijp lijnen in het voor beeld.
+Deze sectie bevat een voor beeld van een pijp lijn die gebruikmaakt van de activiteit voor het **uitvoeren van Azure machine learning Studio (klassiek)** voor het opnieuw trainen van een model. De pijp lijn gebruikt ook de activiteit voor het bijwerken van de **resource voor Azure machine learning Studio (klassiek)** om het model in de Score-webservice bij te werken. De sectie bevat ook JSON-fragmenten voor alle gekoppelde services, gegevens sets en pijp lijnen in het voor beeld.
 
 ### <a name="azure-blob-storage-linked-service"></a>Gekoppelde Azure Blob Storage-service:
 De Azure Storage bevatten de volgende gegevens:
 
-* trainings gegevens. De invoer gegevens voor de Azure Machine Learning Studio-trainings-webservice.
-* iLearner-bestand. De uitvoer van de Azure Machine Learning Studio-trainings-webservice. Dit bestand is ook de invoer voor de activiteit resource bijwerken.
+* trainings gegevens. De invoer gegevens voor de webservice van de Azure Machine Learning Studio (klassieke) training.
+* iLearner-bestand. De uitvoer van de webservice voor de Azure Machine Learning Studio (klassieke) training. Dit bestand is ook de invoer voor de activiteit resource bijwerken.
 
 Hier volgt een voor beeld van de JSON-definitie van de gekoppelde service:
 
@@ -153,8 +154,8 @@ Hier volgt een voor beeld van de JSON-definitie van de gekoppelde service:
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Gekoppelde service voor Azure Machine Learning Studio-trainings eindpunt
-Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde service die naar het standaard eindpunt van de training-webservice verwijst.
+### <a name="linked-service-for-azure-machine-learning-studio-classic-training-endpoint"></a>Trainings eindpunt van de gekoppelde service voor Azure Machine Learning Studio (klassiek)
+Het volgende JSON-code fragment definieert een gekoppelde Azure Machine Learning Studio-Service (klassiek) die verwijst naar het standaard eindpunt van de training-webservice.
 
 ```JSON
 {
@@ -169,16 +170,16 @@ Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde
 }
 ```
 
-In **Azure machine learning Studio**gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
+In **Azure machine learning Studio (klassiek)** gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
 
 1. Klik op **WEBservices** in het menu links.
 2. Klik op de training-webservice in de lijst met **webservices** .
 3. Klik op Kopiëren naast tekstvak **API-sleutel** . Plak de sleutel in het klem bord in de Data Factory JSON-editor.
-4. Klik in de **Azure machine learning Studio**op **batch-uitvoerings** koppeling.
+4. Klik in de **Azure machine learning Studio (klassiek)** op **batch-uitvoerings** koppeling.
 5. Kopieer de **aanvraag-URI** uit de sectie **Request** en plak deze in de Data Factory JSON-editor.
 
-### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Gekoppelde service voor het bij te werken Score eindpunt van Azure Machine Learning studio:
-Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde service die verwijst naar het bijwerk bare eind punt van de Score-webservice.
+### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Gekoppelde service voor Azure Machine Learning Studio (klassiek) bij te werken Score-eind punt:
+Het volgende JSON-code fragment definieert een gekoppelde Azure Machine Learning Studio-Service (klassiek) die verwijst naar het bijwerk bare eind punt van de Score-webservice.
 
 ```JSON
 {

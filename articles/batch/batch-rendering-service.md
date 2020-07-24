@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092759"
 ---
 # <a name="rendering-using-azure"></a>Weergeven met Azure
 
@@ -79,7 +79,7 @@ Er zijn verschillende manieren om Azure Batch te gebruiken, die allemaal ook van
 * API's:
   * Code schrijven met behulp van de [rest](/rest/api/batchservice)-, [.net](/dotnet/api/overview/azure/batch)-, [python](/python/api/overview/azure/batch)-, [Java](/java/api/overview/azure/batch)-of andere ondersteunde api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.  De [Autodesk Maya-invoeg toepassing](https://github.com/Azure/azure-batch-maya) maakt bijvoorbeeld gebruik van de batch PYTHON-API voor het aanroepen van batch, het maken en beheren van groepen, het verzenden van taken en taken en het controleren van de status.
 * Opdracht regel Programma's:
-  * De [Azure-opdracht regel](/cli/azure/) of- [Azure PowerShell](/powershell/azure/overview) kan worden gebruikt voor het uitvoeren van scripts voor batch gebruik.
+  * De [Azure-opdracht regel](/cli/azure/) of- [Azure PowerShell](/powershell/azure/) kan worden gebruikt voor het uitvoeren van scripts voor batch gebruik.
   * Met name de batch-CLI-sjabloon ondersteuning maakt het veel eenvoudiger om Pools te maken en taken te verzenden.
 * UIs:
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) is een platform voor meerdere platforms waarmee batch-accounts ook kunnen worden beheerd en bewaakt, maar biedt een aantal rijkere mogelijkheden in vergelijking met de Azure Portal-gebruikers interface.  Er zijn een set groeps-en taak sjablonen beschikbaar die zijn afgestemd op elke ondersteunde toepassing en kunnen worden gebruikt om eenvoudig Pools te maken en taken te verzenden.

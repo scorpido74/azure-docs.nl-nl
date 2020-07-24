@@ -7,18 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75387017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092708"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services-rollen koppelen aan een aangepaste AD-domein controller die wordt gehost in azure
 We gaan eerst een Virtual Network (VNet) in azure instellen. We gaan vervolgens een Active Directory-domein controller (gehost op een virtuele machine van Azure) toevoegen aan het VNet. Daarna gaan we bestaande Cloud service rollen toevoegen aan het vooraf gemaakte VNet en vervolgens verbinden met de domein controller.
 
 Voordat we aan de slag gaan, moet u zich op een paar dingen herinneren:
 
-1. In deze zelf studie wordt Power shell gebruikt. Zorg er dus voor dat Azure PowerShell is geïnstalleerd en gereed is voor gebruik. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor hulp bij het instellen van Azure PowerShell.
+1. In deze zelf studie wordt Power shell gebruikt. Zorg er dus voor dat Azure PowerShell is geïnstalleerd en gereed is voor gebruik. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor hulp bij het instellen van Azure PowerShell.
 2. De AD-domein controller en Web/Worker-rollen moeten zich in het VNet bevindt.
 
 Volg deze stapsgewijze hand leiding en als u problemen ondervindt, kunt u aan het einde van het artikel een opmerking ontvangen. Iemand krijgt een antwoord (Ja, we lezen opmerkingen).

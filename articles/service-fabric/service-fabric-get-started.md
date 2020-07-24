@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1dcb2095416b74eb8dd805d811ecc7142a6bafb8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091620"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Uw ontwikkelomgeving voorbereiden in Windows
 
@@ -68,8 +68,8 @@ Als u alleen de SDK nodig hebt, kunt u dit pakket installeren:
 
 De huidige versies zijn:
 
-* Service Fabric SDK en Hulpprogram Ma's 4.1.416
-* Service Fabric runtime-7.1.417
+* Service Fabric SDK en Hulpprogram Ma's 4.1.428
+* Service Fabric runtime-7.1.428
 
 Zie [service Fabric versies](service-fabric-versions.md) voor een lijst met ondersteunde versies
 

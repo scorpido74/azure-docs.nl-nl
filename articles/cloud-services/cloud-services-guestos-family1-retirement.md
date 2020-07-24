@@ -9,11 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f08352d4a79b8c27b2c163516f44edf578fbe3a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092640"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Kennisgeving van buitengebruikstelling van serie 1 van gastbesturingssysteem
 De buiten gebruiks telling van besturingssysteem familie 1 werd voor het eerst aangekondigd op 1 juni 2013.
@@ -31,7 +32,7 @@ Uw Cloud Services worden beïnvloed als een van de volgende van toepassing is:
 2. U hebt geen waarde voor osFamily expliciet opgegeven in het bestand ServiceConfiguration. cscfg voor uw Cloud service. Op dit moment gebruikt het systeem de standaard waarde ' 1 ' in dit geval.
 3. De Azure Portal bevat een lijst met de waarde van uw gast besturingssysteem familie als ' Windows Server 2008 '.
 
-Als u wilt weten welke van uw Cloud Services worden uitgevoerd, kunt u het volgende script uitvoeren in Azure PowerShell, maar u moet [Azure PowerShell eerst instellen](/powershell/azureps-cmdlets-docs) . Meer informatie over het script vindt u in [Azure Guest OS Family 1 end of Life: juni 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Als u wilt weten welke van uw Cloud Services worden uitgevoerd, kunt u het volgende script uitvoeren in Azure PowerShell, maar u moet [Azure PowerShell eerst instellen](/powershell/azure/) . Meer informatie over het script vindt u in [Azure Guest OS Family 1 end of Life: juni 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

@@ -4,11 +4,12 @@ description: Een korte inleiding in de Azure PowerShell-cmdlets die u kunt gebru
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c80da92c7acad5180c763d259357f5369f225f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83779611"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092776"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-resources beheren met PowerShell-cmdlets
 
@@ -20,7 +21,7 @@ Dit artikel is gebaseerd op cmdlets in Azure Batch-module 1.0.0. Het wordt aange
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [De Azure PowerShell-module installeren en configureren](/powershell/azure/overview). Zie de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.Batch/1.0.0) voor het installeren van een specifieke Azure Batch-module, zoals een prerelease-module.
+* [De Azure PowerShell-module installeren en configureren](/powershell/azure/). Zie de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.Batch/1.0.0) voor het installeren van een specifieke Azure Batch-module, zoals een prerelease-module.
 
 * Voer de cmdlet **Connect-AzAccount** uit om verbinding te maken met uw abonnement (de Azure Batch-cmdlets zijn meegeleverd in de Azure Resource Manager-module):
 
@@ -191,7 +192,7 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 Toepassingspakketten bieden een vereenvoudigde manier om toepassingen te implementeren op de rekenknooppunten in groepen. Met de Batch PowerShell-cmdlets kunt u toepassingspakketten in uw Batch-account uploaden en beheren, en pakketversies implementeren op rekenknooppunten.
 
-Een toepassing **maken**:
+Een toepassing **maken** :
 
 ```powershell
 New-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"

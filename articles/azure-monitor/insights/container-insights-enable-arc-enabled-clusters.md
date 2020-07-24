@@ -3,12 +3,12 @@ title: Azure Arc enabled Kubernetes-cluster configureren met Azure Monitor voor 
 description: In dit artikel wordt beschreven hoe u bewaking configureert met Azure Monitor voor containers op Azure Arc ingeschakelde Kubernetes-clusters.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092878"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Bewaking van Azure Arc enabled Kubernetes-cluster inschakelen
 
@@ -63,7 +63,7 @@ Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
     >[!IMPORTANT]
     >De minimale agent versie die wordt ondersteund voor het bewaken van Kubernetes-clusters met Arc-functionaliteit is ciprod04162020 of hoger.
 
-- [Power shell core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) is vereist als u controle inschakelt met behulp van de Power shell-methode script.
+- [Power shell core](/powershell/scripting/install/installing-powershell?view=powershell-6) is vereist als u controle inschakelt met behulp van de Power shell-methode script.
 
 - [Bash versie 4](https://www.gnu.org/software/bash/) is vereist als u controle inschakelt met behulp van de script methode bash.
 

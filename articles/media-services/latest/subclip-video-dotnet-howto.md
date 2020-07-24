@@ -13,16 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67305096"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091892"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Een video afspelen tijdens het coderen met Media Services-.NET
 
-U kunt een video knippen of subfragmenteren wanneer u deze codeert met behulp van een [taak](https://docs.microsoft.com/rest/api/media/jobs). Deze functionaliteit werkt met elke [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden.
+U kunt een video knippen of subfragmenteren wanneer u deze codeert met behulp van een [taak](/rest/api/media/jobs). Deze functionaliteit werkt met elke [trans formatie](/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden.
 
 In het volgende C#-voor beeld wordt een taak gemaakt die een video in een activum bijsnijdt bij het verzenden van een coderings taak. 
 
@@ -30,7 +30,7 @@ In het volgende C#-voor beeld wordt een taak gemaakt die een video in een activu
 
 Voor het uitvoeren van de stappen die in dit onderwerp worden beschreven, moet u het volgende doen:
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md)
+- [Een Azure Media Services-account maken](./create-account-howto.md)
 - Maak een trans formatie en een invoer-en uitvoer activa. U kunt zien hoe u een trans formatie-en invoer-en uitvoer assets maakt in de zelf studie [video uploaden, coderen en streamen met behulp van .net](stream-files-tutorial-with-api.md) .
 - Bekijk het [Codeer concept](encoding-concept.md) onderwerp.
 

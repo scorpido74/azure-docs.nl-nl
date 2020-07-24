@@ -3,15 +3,16 @@ title: Gids voor onboarding bij Microsoft Business Applications ISV Connect-prog
 description: U kunt als volgt onboarding uitvoeren op het Business Applications ISV Connect-programma.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
+ms.topic: article
+author: qianw211
 ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 7/14/2020
+ms.openlocfilehash: 65d18bca4f8f7b5d655d91ece1c9d966311b701b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092215"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Gids voor onboarding bij Microsoft Business Applications ISV Connect-programma
 
@@ -38,7 +39,7 @@ Voor deelname aan dit programma moet u de [Business Applications addendum](https
 
 1.  Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
 2.  Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars**.
-3.  **Overeenkomsten**selecteren. 
+3.  **Overeenkomsten**selecteren.
 4.  Selecteer de versie koppeling en Bekijk de overeenkomst.
 5.  Selecteer **overeenkomst accepteren**om akkoord te gaan en de overeenkomst te accepteren.
 
@@ -75,9 +76,8 @@ De laatste stap voor inschrijving in het Business Applications ISV Connect-progr
 
 Vraag uw account manager of neem contact op met de [ondersteuning van micro soft-partners](https://aka.ms/marketplacepublishersupport) voor hulp met uw account. Zie voor algemene informatie over het Business Applications ISV Connect-programma:
 
-- **[Business Applications voor Isv's (online artikel)](https://aka.ms/bizappsisvweb)**
-
-- **[Overzicht van het nieuwe programma voor Business Applications Isv's (PDF)](https://aka.ms/bizappsisvprogram)**
-
-- **[Beleid voor ISV Connect-Program Ma's](https://aka.ms/bizappsisvpolicies)**
-
+- [Business Applications voor isv's](https://partner.microsoft.com/solutions/business-applications/isv-overview) (online artikel)
+- [Overzicht van het nieuwe programma voor Business Applications isv's](https://aka.ms/BizAppsISVProgram) (PDF)
+- [Veelgestelde vragen over het Business Applications ISV Connect-programma](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF)
+- [Binnenkort programma voor Business Applications isv's](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (blog bericht)
+- [Beleid voor ISV Connect-Program ma's](https://aka.ms/bizappsisvpolicies) (PDF)

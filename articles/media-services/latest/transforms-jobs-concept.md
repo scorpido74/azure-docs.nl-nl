@@ -12,15 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73571241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091925"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Trans formaties en taken in Media Services
 
-Dit onderwerp bevat gedetailleerde informatie over [trans formaties](https://docs.microsoft.com/rest/api/media/transforms) en [taken](https://docs.microsoft.com/rest/api/media/jobs) en een uitleg van de relatie tussen deze entiteiten.
+Dit onderwerp bevat gedetailleerde informatie over [trans formaties](/rest/api/media/transforms) en [taken](/rest/api/media/jobs) en een uitleg van de relatie tussen deze entiteiten.
 
 ## <a name="overview"></a>Overzicht
 
@@ -57,7 +58,7 @@ Met een **trans formatie** kunt u het recept eenmaal maken (stap 1) en taken ver
 
 ### <a name="viewing-schema"></a>Schema weer geven
 
-In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de API zelf. U kunt de definitie ' schema ' voor deze objecten vinden in de [open API-specificatie (of Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). U kunt ook de vooraf gedefinieerde definities (zoals **StandardEncoderPreset**) bekijken in de [rest API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)of andere Media Services v3 SDK-referentie documentatie.
+In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de API zelf. U kunt de definitie ' schema ' voor deze objecten vinden in de [open API-specificatie (of Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). U kunt ook de vooraf gedefinieerde definities (zoals **StandardEncoderPreset**) bekijken in de [rest API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)of andere Media Services v3 SDK-referentie documentatie.
 
 ### <a name="creating-transforms"></a>Trans formaties maken
 
@@ -65,7 +66,7 @@ U kunt trans formaties maken met behulp van REST, CLI of een van de gepubliceerd
 
 ### <a name="updating-transforms"></a>Trans formaties bijwerken
 
-Als u uw [trans formatie](https://docs.microsoft.com/rest/api/media/transforms)wilt bijwerken, gebruikt u de bewerking **bijwerken** . Het is bedoeld voor het aanbrengen van wijzigingen in de beschrijving of de prioriteiten van de onderliggende TransformOutputs. Het is raadzaam dat dergelijke updates worden uitgevoerd wanneer alle taken in uitvoering zijn voltooid. Als u van plan bent het recept opnieuw te schrijven, moet u een nieuwe trans formatie maken.
+Als u uw [trans formatie](/rest/api/media/transforms)wilt bijwerken, gebruikt u de bewerking **bijwerken** . Het is bedoeld voor het aanbrengen van wijzigingen in de beschrijving of de prioriteiten van de onderliggende TransformOutputs. Het is raadzaam dat dergelijke updates worden uitgevoerd wanneer alle taken in uitvoering zijn voltooid. Als u van plan bent het recept opnieuw te schrijven, moet u een nieuwe trans formatie maken.
 
 ### <a name="transform-object-diagram"></a>Object diagram transformeren
 
@@ -77,7 +78,7 @@ Selecteer de afbeelding om de volledige grootte weer te geven.
 
 ## <a name="jobs"></a>Taken
 
-Een **taak** is de daad werkelijke aanvraag om Media Services om de **trans formatie** toe te passen op een gegeven video-of audio-inhoud. Zodra de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. De **taak** geeft informatie op zoals de locatie van de invoer video en de locatie voor de uitvoer. U kunt de locatie van uw invoer video opgeven met behulp van: HTTPS-Url's, SAS-Url's of [activa](https://docs.microsoft.com/rest/api/media/assets).  
+Een **taak** is de daad werkelijke aanvraag om Media Services om de **trans formatie** toe te passen op een gegeven video-of audio-inhoud. Zodra de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer. U kunt de locatie van uw invoer video opgeven met behulp van: HTTPS-Url's, SAS-Url's of [activa](/rest/api/media/assets).  
 
 ### <a name="job-input-from-https"></a>Taak invoer van HTTPS
 
@@ -93,7 +94,7 @@ De voortgang en de status van taken kunnen worden verkregen door gebeurtenissen 
 
 ### <a name="updating-jobs"></a>Taken bijwerken
 
-De update bewerking voor de [taak](https://docs.microsoft.com/rest/api/media/jobs) entiteit kan worden gebruikt om de *Beschrijving* en de *prioriteits* eigenschappen te wijzigen nadat de taak is verzonden. Een wijziging in de *prioriteits* eigenschap is alleen effectief als de taak in de wachtrij staat. Als de verwerking van de taak is begonnen of is voltooid, heeft het wijzigen van de prioriteit geen effect.
+De update bewerking voor de [taak](/rest/api/media/jobs) entiteit kan worden gebruikt om de *Beschrijving* en de *prioriteits* eigenschappen te wijzigen nadat de taak is verzonden. Een wijziging in de *prioriteits* eigenschap is alleen effectief als de taak in de wachtrij staat. Als de verwerking van de taak is begonnen of is voltooid, heeft het wijzigen van de prioriteit geen effect.
 
 ### <a name="job-object-diagram"></a>Taak object diagram
 
@@ -111,11 +112,11 @@ Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor m
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="see-also"></a>Zie tevens
 
-* [Fout codes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [Foutcodes](/rest/api/media/jobs/get#joberrorcode)
 * [Filteren, ordenen, paginering van Media Services entiteiten](entities-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -125,4 +126,4 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
     - [Zelf studie: een extern bestand coderen op basis van URL en de video streamen](stream-files-tutorial-with-rest.md)
     - [Zelf studie: Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md)
-    - [Zelf studie: Video's analyseren met Media Services v3](analyze-videos-tutorial-with-api.md)
+    - [Zelfstudie: Video's analyseren met Media Services v3](analyze-videos-tutorial-with-api.md)

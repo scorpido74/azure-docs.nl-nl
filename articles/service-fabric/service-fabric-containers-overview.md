@@ -2,13 +2,13 @@
 title: Overzicht van Service Fabric en containers
 description: Een overzicht van Service Fabric en het gebruik van containers voor het implementeren van micro service-toepassingen. Dit artikel bevat een overzicht van de manier waarop containers kunnen worden gebruikt en de beschik bare mogelijkheden in Service Fabric.
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091654"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric en containers
 
@@ -53,7 +53,7 @@ Zie [uw eerste service Fabric-container toepassing maken in Linux](service-fabri
 
 #### <a name="windows-server-containers"></a>Windows Server-containers
 
-Windows Server 2016 biedt twee verschillende typen containers die verschillen per isolatie niveau. Windows Server-containers en docker-containers zijn vergelijkbaar omdat beide een naam ruimte en een bestandssysteem isolatie hebben, terwijl de kernel wordt gedeeld met de host waarop ze worden uitgevoerd. In Linux is deze isolatie traditioneel gegeven door cgroups en naam ruimten, en Windows Server-containers gedragen zich op dezelfde manier.
+Windows Server 2016 en hoger bieden twee verschillende typen containers die verschillen per isolatie niveau. Windows Server-containers en docker-containers zijn vergelijkbaar omdat beide een naam ruimte en een bestandssysteem isolatie hebben, terwijl de kernel wordt gedeeld met de host waarop ze worden uitgevoerd. In Linux is deze isolatie traditioneel gegeven door cgroups en naam ruimten, en Windows Server-containers gedragen zich op dezelfde manier.
 
 Windows-containers met Hyper-V-ondersteuning bieden meer isolatie en beveiliging omdat geen enkele container de kernel van het besturings systeem deelt met een andere container of met de host. Met dit hogere beveiligings isolatie niveau worden voor Hyper-V ingeschakelde containers mogelijk vijandige scenario's met meerdere tenants bedoeld.
 Zie [uw eerste service Fabric-container toepassing maken in Windows](service-fabric-get-started-containers.md)voor een zelf studie op basis van Windows.
@@ -73,7 +73,10 @@ Hier volgen enkele typische voor beelden waarin een container een goede keuze is
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-ondersteuning voor containers
 
-Service Fabric ondersteunt de implementatie van docker-containers op Linux en Windows Server-containers in Windows Server 2016, samen met ondersteuning voor de isolatie modus van Hyper-V. 
+Service Fabric ondersteunt de implementatie van docker-containers op Linux en Windows Server-containers op Windows Server 2016 en hoger, samen met ondersteuning voor de isolatie modus van Hyper-V.
+
+> [!NOTE]
+> Containers worden niet ondersteund op een lokaal Service Fabric cluster met één knoop punt (geen Linux-clusters op OneBox of Windows-clusters op lokale Service Fabric-installaties).
 
 Service Fabric biedt een [toepassings model](service-fabric-application-model.md) waarin een container een toepassingshost vertegenwoordigt waarin meerdere service replica's worden geplaatst. Service Fabric biedt ook ondersteuning voor een [uitvoerbaar gast scenario](service-fabric-guest-executables-introduction.md) waarin u geen gebruik maakt van de ingebouwde service Fabric programmeer modellen, maar in plaats daarvan een bestaande toepassing verpakken, geschreven met behulp van een wille keurige taal of elk Framework, binnen een container. Dit scenario is gebruikelijk voor containers.
 

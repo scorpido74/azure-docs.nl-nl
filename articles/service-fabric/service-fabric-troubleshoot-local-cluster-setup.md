@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75465504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091603"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Problemen met de instellingen van uw lokale ontwikkelingscluster oplossen
 Als u een probleem ondervindt tijdens de interactie met uw lokale Azure Service Fabric Development-cluster, raadpleegt u de volgende suggesties voor mogelijke oplossingen.
@@ -19,12 +20,13 @@ Als u een probleem ondervindt tijdens de interactie met uw lokale Azure Service 
 #### <a name="problem"></a>Probleem
 Tijdens het uitvoeren van het DevClusterSetup-script ziet u de volgende fout:
 
-    Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
-    At line:1 char:1 + .\DevClusterSetup.ps1
-    + ~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
-
+```output
+Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
+At line:1 char:1 + .\DevClusterSetup.ps1
++ ~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo : NotSpecified: (:) [Write-Error], WriteErrorException
++ FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
+```
 
 #### <a name="solution"></a>Oplossing
 Sluit het huidige Power shell-venster en open een nieuw Power shell-venster als beheerder. U kunt het script nu uitvoeren.
@@ -42,12 +44,14 @@ De padvariabele is niet juist ingesteld tijdens de installatie. Meld u af bij Wi
 #### <a name="problem"></a>Probleem
 Een aanroep van Connect-ServiceFabricCluster mislukt met een fout als de volgende:
 
-    Connect-ServiceFabricCluster : The object is closed.
-    At line:1 char:1
-    + Connect-ServiceFabricCluster
-    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo : InvalidOperation: (:) [Connect-ServiceFabricCluster], FabricObjectClosedException
-    + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
+```output
+Connect-ServiceFabricCluster : The object is closed.
+At line:1 char:1
++ Connect-ServiceFabricCluster
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo : InvalidOperation: (:) [Connect-ServiceFabricCluster], FabricObjectClosedException
++ FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
+```
 
 #### <a name="solution"></a>Oplossing
 Sluit het huidige Power shell-venster en open een nieuw Power shell-venster als beheerder.

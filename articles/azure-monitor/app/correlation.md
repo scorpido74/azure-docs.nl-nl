@@ -7,11 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092980"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -33,7 +34,7 @@ In een micro Services-omgeving kunnen traceringen van onderdelen naar verschille
 
 ## <a name="example"></a>Voorbeeld
 
-Laten we eens naar een voorbeeld kijken. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
+We kijken naar een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
 
 U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
@@ -45,7 +46,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` . Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID ( `qJSXU` ) toegewezen aan de telemetrie van de afhankelijkheid en wordt de id van de pagina weergave gebruikt als `operation_ParentId` . De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId` .
 
-| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
+| Item type   | name                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
@@ -301,15 +302,15 @@ Wanneer deze code wordt uitgevoerd, worden de volgende afdrukken in de-console:
 ```
 U ziet dat er een `spanId` bericht is dat zich binnen de reeks bevindt. Dit is hetzelfde `spanId` als bij de reeks met de naam `hello` .
 
-U kunt de logboek gegevens exporteren met behulp van `AzureLogHandler` . Zie [dit artikel](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)voor meer informatie.
+U kunt de logboek gegevens exporteren met behulp van `AzureLogHandler` . Zie [dit artikel](./opencensus-python.md#logs)voor meer informatie.
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetrie-correlatie in .NET
 
 In de loop van de tijd heeft .NET verschillende manieren gedefinieerd voor het correleren van telemetrie-en Diagnostische logboeken:
 
-- `System.Diagnostics.CorrelationManager`staat het volgen van [LogicalOperationStack en ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)toe.
-- `System.Diagnostics.Tracing.EventSource`en Event Tracing for Windows (ETW) definiëren de methode [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) .
-- `ILogger`maakt gebruik van [logboek bereiken](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes).
+- `System.Diagnostics.CorrelationManager`staat het volgen van [LogicalOperationStack en ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)toe.
+- `System.Diagnostics.Tracing.EventSource`en Event Tracing for Windows (ETW) definiëren de methode [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
+- `ILogger`maakt gebruik van [logboek bereiken](/aspnet/core/fundamentals/logging#log-scopes).
 - Windows Communication Foundation (WCF) en HTTP-updoorgifte van de huidige context.
 
 Deze methoden hebben echter geen automatische ondersteuning voor gedistribueerde tracering ingeschakeld. `DiagnosticSource`ondersteunt automatische correlatie tussen computers. .NET-bibliotheken ondersteunen `DiagnosticSource` en toestaan dat de correlatie context automatisch wordt door gegeven via het Trans Port, zoals http.
@@ -327,7 +328,7 @@ De Application Insights SDK, te beginnen met versie 2.4.0-beta1, gebruikt `Diagn
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetrie-correlatie in Java
 
-[Java-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) en [Java SDK](../../azure-monitor/app/java-get-started.md) versie 2.0.0 of hoger ondersteunt automatische correlatie van telemetrie. De gegevens worden automatisch gevuld `operation_id` voor alle telemetrie (zoals traceringen, uitzonde ringen en aangepaste gebeurtenissen) die binnen het bereik van een aanvraag worden uitgegeven. Ook worden de correlatie headers (eerder beschreven) door gegeven voor service-naar-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
+[Java-Agent](./java-in-process-agent.md) en [Java SDK](../../azure-monitor/app/java-get-started.md) versie 2.0.0 of hoger ondersteunt automatische correlatie van telemetrie. De gegevens worden automatisch gevuld `operation_id` voor alle telemetrie (zoals traceringen, uitzonde ringen en aangepaste gebeurtenissen) die binnen het bereik van een aanvraag worden uitgegeven. Ook worden de correlatie headers (eerder beschreven) door gegeven voor service-naar-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
 
 > [!NOTE]
 > Application Insights de Java-agent automatisch aanvragen en afhankelijkheden voor JMS, Kafka, Netty/webstroom en meer. Voor Java SDK worden alleen aanroepen via Apache httpclient maakt ondersteund voor de correlatie functie. Automatische context doorgifte via berichten technologieën (zoals Kafka, RabbitMQ en Azure Service Bus) wordt niet ondersteund in de SDK. 
