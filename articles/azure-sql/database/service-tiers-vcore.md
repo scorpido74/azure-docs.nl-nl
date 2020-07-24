@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/27/2019
-ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/21/2020
+ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007738"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Het Virtual core (vCore)-aankoop model dat wordt gebruikt door Azure SQL Databas
 - Hogere reken-, geheugen-, I/O-en opslag limieten.
 - Controle over de hardware-generatie om beter te voldoen aan de reken-en geheugen vereisten van de werk belasting.
 - Prijs kortingen voor [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) en [gereserveerde instanties (RI)](reserved-capacity-overview.md).
-- Grotere transparantie in de hardware-details die de reken kracht stroomt; vereenvoudigt het plannen van migraties van on-premises implementaties.
+- Grotere transparantie in de hardware-details die de reken kracht verzorgen, waardoor het plannen van migraties van on-premises implementaties wordt vergemakkelijkt.
 
 ## <a name="service-tiers"></a>Servicelagen
 
@@ -69,7 +69,7 @@ Met de [serverloze Compute-laag](serverless-tier-overview.md) worden reken resou
 
 ## <a name="hardware-generations"></a>Hardware gegenereerd
 
-Opties voor het genereren van hardware in het vCore-model zijn gen 4/5, M-Series (preview) en Fsv2-Series (preview). Het genereren van de hardware definieert doorgaans de reken-en geheugen limieten en andere kenmerken die van invloed zijn op de prestaties van de werk belasting.
+Opties voor het genereren van hardware in het vCore-model omvatten gen 4/5, M-series en Fsv2-Series. Het genereren van de hardware definieert doorgaans de reken-en geheugen limieten en andere kenmerken die van invloed zijn op de prestaties van de werk belasting.
 
 ### <a name="gen4gen5"></a>Gen4/Gen5
 
@@ -77,21 +77,21 @@ Opties voor het genereren van hardware in het vCore-model zijn gen 4/5, M-Series
 
 Zie [Gen4/Gen5 Beschik baarheid](#gen4gen5-1)voor regio's waar Gen4/Gen5 beschikbaar is.
 
-### <a name="fsv2-seriespreview"></a>Fsv2-serie (preview-versie)
+### <a name="fsv2-series"></a>Fsv2-serie
 
 - Fsv2-serie is een hardwarematige Compute-optie die lage CPU-latentie en hoge klok snelheid levert voor de meeste CPU-werk belastingen.
 - Afhankelijk van de werk belasting, kan de Fsv2-serie meer CPU-prestaties leveren per vCore dan GEN5, en de grootte van 72 vCore kan meer CPU-prestaties bieden voor minder kosten dan 80 vCores op GEN5. 
 - Fsv2 biedt minder geheugen en tempdb per vCore dan andere hardware, zodat werk belastingen die gevoelig zijn voor deze limieten wellicht in plaats daarvan Gen5 of M-serie willen overwegen.  
 
-De Fsv2-serie wordt alleen ondersteund in de laag Algemeen.  Zie de [Beschik baarheid van Fsv2-Series](#fsv2-series)voor regio's waar Fsv2-serie beschikbaar is.
+De Fsv2-serie wordt alleen ondersteund in de laag Algemeen. Zie de [Beschik baarheid van Fsv2-Series](#fsv2-series)voor regio's waar Fsv2-serie beschikbaar is.
 
 
-### <a name="m-seriespreview"></a>M-serie (preview-versie)
+### <a name="m-series"></a>M-serie
 
 - M-serie is een optie voor geoptimaliseerd voor geheugen voor werk belastingen die meer geheugen en hogere reken limieten hebben dan wordt verzorgd door GEN5.
-- De M-serie biedt 29 GB per vCore en 128 vCores, waardoor de geheugen limiet wordt verhoogd ten opzichte van GEN5 van 8x tot bijna 4 TB.
+- De M-serie biedt 29 GB per vCore en Maxi maal 128 vCores, waardoor de geheugen limiet wordt verhoogd ten opzichte van GEN5, 8x tot bijna 4 TB.
 
-De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA).  Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
+De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA). Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
@@ -104,8 +104,8 @@ To enable M-series hardware for a subscription and region, a support request mus
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-processors<br>-Tot 24 vCores (1 vCore = 1 fysieke kern) inrichten  |-7 GB per vCore<br>-Maxi maal 168 GB inrichten|
 |GEN5     |**Ingerichte compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake) * processors<br>-Maxi maal 80 vCores (1 vCore = 1 Hyper Thread) inrichten<br><br>**Serverloze compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake) * processors<br>-Schaal automatisch naar 16 vCores (1 vCore = 1 Hyper Thread)|**Ingerichte compute**<br>-5,1 GB per vCore<br>-Maxi maal 408 GB inrichten<br><br>**Serverloze compute**<br>-Automatisch schalen naar 24 GB per vCore<br>-Maxi maal 48 GB automatisch schalen|
-|Fsv2-serie     |-Intel Xeon Platinum 8168-processors (SkyLake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Provision 72 vCores (1 vCore = 1 Hyper Thread)|-1,9 GB per vCore<br>-Inrichting van 136 GB|
-|M-serie     |-Intel Xeon E7-8890 v3 2,5 GHz en Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)-processors<br>-Provision 128 vCores (1 vCore = 1 Hyper Thread)|-29 GB per vCore<br>-Inrichting van 3,7 TB|
+|Fsv2-serie     |-Intel Xeon Platinum 8168-processors (Skylake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Maxi maal 72 vCores (1 vCore = 1 Hyper Thread) inrichten|-1,9 GB per vCore<br>-Maxi maal 136 GB inrichten|
+|M-serie     |-Intel Xeon E7-8890 v3 2,5 GHz en Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)-processors<br>-Maxi maal 128 vCores (1 vCore = 1 Hyper Thread) inrichten|-29 GB per vCore<br>-Maxi maal 3,7 TB inrichten|
 
 \*In de weer gave [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) Dynamic Management worden de hardware-generatie voor GEN5-data bases met Intel SP-8160 (Skylake)-processors weer gegeven als Gen6. Resource limieten voor alle GEN5-data bases zijn hetzelfde, ongeacht het processor type (Broadwell of Skylake).
 
@@ -154,7 +154,7 @@ Selecteer op de pagina SQL Managed instance de **prijs categorie** koppeling die
 
 ![hardware voor SQL Managed instance wijzigen](./media/service-tiers-vcore/change-managed-instance-hardware.png)
 
-Op de pagina **prijs categorie** kunt u de generatie van de hardware wijzigen, zoals beschreven in de vorige stappen.
+Op de pagina prijs categorie kunt u de hardware-generatie wijzigen zoals beschreven in de vorige stappen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

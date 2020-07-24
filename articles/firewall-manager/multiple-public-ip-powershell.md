@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 87af7f0f9b446fb3a54a600f61409c2cfc1a2494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006957"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>Een Azure Firewall met meerdere open bare IP-adressen implementeren
 
@@ -37,9 +37,9 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
      -VirtualHubId $vHubId 
 ```
 
-### <a name="delete-a-public-ip-address"></a>Een openbaar IP-adres verwijderen
+### <a name="update-a-public-ip-address"></a>Een openbaar IP-adres bijwerken
 
-U kunt Azure PowerShell gebruiken om een openbaar IP-adres te verwijderen uit een Azure Firewall. In het volgende voor beeld wordt één openbaar IP-adres uit een firewall verwijderd. Het begint met drie open bare IP-adressen.
+U kunt Azure PowerShell gebruiken om een openbaar IP-adres voor een Azure Firewall bij te werken. In het volgende voor beeld wordt één openbaar IP-adres uit een firewall verwijderd. Het begint met drie open bare IP-adressen.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>
