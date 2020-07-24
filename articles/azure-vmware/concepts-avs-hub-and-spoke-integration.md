@@ -3,16 +3,16 @@ title: 'Concept: een implementatie van een Azure VMware-oplossing (AVS) integrer
 description: Meer informatie over de aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing (AVS) in een bestaande of een nieuwe hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85375039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062924"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing (AVS) integreren in een hub-en spoke-architectuur
 
-In dit artikel bieden we aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing (AVS) in een bestaande of een nieuwe [hub-en spoke-architectuur](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services) in Azure. 
+In dit artikel bieden we aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing (AVS) in een bestaande of een nieuwe [hub-en spoke-architectuur](/azure/architecture/reference-architectures/hybrid-networking/shared-services) in Azure. 
 
 In het hub-en-spoke-scenario wordt uitgegaan van een hybride cloud omgeving met workloads op:
 
@@ -24,7 +24,7 @@ In het hub-en-spoke-scenario wordt uitgegaan van een hybride cloud omgeving met 
 
 De *hub* is een Azure-Virtual Network die fungeert als een centraal punt van connectiviteit met uw persoonlijke cloud van on-premises en AVS. De *spokes* zijn virtuele netwerken die zijn gekoppeld aan de hub om intervirtuele netwerk communicatie in te scha kelen.
 
-Verkeer tussen het on-premises Data Center, de privécloud en de hub loopt via ExpressRoute-verbindingen. Spoke Virtual Networks bevatten doorgaans IaaS werk belastingen, maar kunnen PaaS-services zoals [app service Environment](../app-service/environment/intro.md)hebben, die directe integratie met Virtual Network hebben, of andere PaaS-services waarvoor [Azure private link](https://docs.microsoft.com/azure/private-link/) is ingeschakeld. 
+Verkeer tussen het on-premises Data Center, de privécloud en de hub loopt via ExpressRoute-verbindingen. Spoke Virtual Networks bevatten doorgaans IaaS werk belastingen, maar kunnen PaaS-services zoals [app service Environment](../app-service/environment/intro.md)hebben, die directe integratie met Virtual Network hebben, of andere PaaS-services waarvoor [Azure private link](../private-link/index.yml) is ingeschakeld. 
 
 In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure die is verbonden met on-premises en AVS via ExpressRoute.
 
@@ -50,7 +50,7 @@ De architectuur heeft de volgende hoofd onderdelen:
 
     -   **IaaS Spaak:** Een IaaS-spoke fungeert als host voor Azure IaaS-werk belastingen, waaronder VM-beschikbaarheids sets en schaal sets voor virtuele machines en de bijbehorende netwerk onderdelen.
 
-    -   **PaaS Spaak:** Een PaaS Spaak fungeert als host voor Azure PaaS Services met privé-adres Sering dankzij het [persoonlijke eind punt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) en de [persoonlijke koppeling](https://docs.microsoft.com/azure/private-link/private-link-overview).
+    -   **PaaS Spaak:** Een PaaS Spaak fungeert als host voor Azure PaaS Services met privé-adres Sering dankzij het [persoonlijke eind punt](../private-link/private-endpoint-overview.md) en de [persoonlijke koppeling](../private-link/private-link-overview.md).
 
 -   **Azure firewall:** Fungeert als het centrale stuk om het verkeer tussen de spokes, de on-premises en de AVS te segmenteren.
 
@@ -58,7 +58,7 @@ De architectuur heeft de volgende hoofd onderdelen:
 
 ## <a name="network-and-security-considerations"></a>Netwerk-en beveiligings overwegingen
 
-Met ExpressRoute-verbindingen kunnen verkeer tussen on-premises, AVS en de Azure-netwerk infrastructuur worden geplaatst. AVS maakt gebruik van [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) voor het implementeren van deze verbinding.
+Met ExpressRoute-verbindingen kunnen verkeer tussen on-premises, AVS en de Azure-netwerk infrastructuur worden geplaatst. AVS maakt gebruik van [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) voor het implementeren van deze verbinding.
 
 On-premises connectiviteit kan ook gebruikmaken van ExpressRoute Global Reach, maar dit is niet verplicht.
 
@@ -72,11 +72,11 @@ On-premises connectiviteit kan ook gebruikmaken van ExpressRoute Global Reach, m
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Automatische synchronisatie van AVS naar hub verkeer van virtueel netwerk":::
 
 
-Meer informatie over AVS-netwerken en interconnectiviteit-concepten vindt u in de [AVS-product documentatie](https://docs.microsoft.com/azure/azure-vmware/concepts-networking).
+Meer informatie over AVS-netwerken en interconnectiviteit-concepten vindt u in de [AVS-product documentatie](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Segmentatie van verkeer
 
-[Azure firewall](https://docs.microsoft.com/azure/firewall/) is het centrale gedeelte van de hub-en spoke-topologie, geïmplementeerd op het virtuele hub-netwerk. Gebruik Azure Firewall of een ander door Azure ondersteund virtueel netwerk apparaat om verkeers regels vast te leggen en de communicatie tussen de verschillende spokes, on-premises en AVS-workloads te segmenteren.
+[Azure firewall](../firewall/index.yml) is het centrale gedeelte van de hub-en spoke-topologie, geïmplementeerd op het virtuele hub-netwerk. Gebruik Azure Firewall of een ander door Azure ondersteund virtueel netwerk apparaat om verkeers regels vast te leggen en de communicatie tussen de verschillende spokes, on-premises en AVS-workloads te segmenteren.
 
 Maak route tabellen om het verkeer naar Azure Firewall te sturen.  Voor de spoke-virtuele netwerken maakt u een route waarmee de standaard route wordt ingesteld op de interne interface van Azure Firewall, op deze manier wanneer een werk belasting in de Virtual Network de AVS-adres ruimte moet bereiken, kan de firewall deze evalueren en de bijbehorende verkeers regel Toep assen om deze toe te staan of te weigeren.  
 
@@ -104,7 +104,7 @@ Azure-toepassing gateway v1 en v2 zijn getest met web apps die worden uitgevoerd
 
 Toegang tot de AVS-omgeving met JumpBox, een Windows 10-of Windows Server-VM die is geïmplementeerd in het subnet van de gedeelde service binnen het virtuele hub-netwerk.
 
-Implementeer [Microsoft Azure Bastion](https://docs.microsoft.com/azure/bastion/) -service in het virtuele netwerk van de hub als beveiligings best practice. Azure Bastion biedt naadloze RDP-en SSH-toegang tot Vm's die zijn geïmplementeerd op Azure zonder dat open bare IP-adressen op deze resources hoeven te worden ingericht. Nadat u de Azure Bastion-service hebt ingericht, kunt u vanuit de Azure Portal toegang krijgen tot de geselecteerde VM. Nadat de verbinding tot stand is gebracht, wordt er een nieuw tabblad geopend, waarin het JumpBox-bureau blad wordt weer gegeven, en op dat bureau blad hebt u toegang tot het beheer vlak van de privécloud.
+Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het virtuele netwerk van de hub als beveiligings best practice. Azure Bastion biedt naadloze RDP-en SSH-toegang tot Vm's die zijn geïmplementeerd op Azure zonder dat open bare IP-adressen op deze resources hoeven te worden ingericht. Nadat u de Azure Bastion-service hebt ingericht, kunt u vanuit de Azure Portal toegang krijgen tot de geselecteerde VM. Nadat de verbinding tot stand is gebracht, wordt er een nieuw tabblad geopend, waarin het JumpBox-bureau blad wordt weer gegeven, en op dat bureau blad hebt u toegang tot het beheer vlak van de privécloud.
 
 > [!IMPORTANT]
 > Geef geen openbaar IP-adres aan de JumpBox-VM of open de poort 3389/TCP voor het open bare Internet. 
@@ -137,21 +137,19 @@ On-premises en AVS-servers kunnen worden geconfigureerd met voorwaardelijke door
 
 ## <a name="identity-considerations"></a>Identiteits overwegingen
 
-Voor identiteits doeleinden is de beste benadering om ten minste één AD-domein controller op de hub te implementeren, met behulp van het subnet van de gedeelde service, in het ideale niveau twee in een zone-gedistribueerde mode of een VM-beschikbaarheidsset. Zie [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain) voor het uitbreiden van uw on-PREMISes AD-domein naar Azure.
+Voor identiteits doeleinden is de beste benadering om ten minste één AD-domein controller op de hub te implementeren, met behulp van het subnet van de gedeelde service, in het ideale niveau twee in een zone-gedistribueerde mode of een VM-beschikbaarheidsset. Zie [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) voor het uitbreiden van uw on-PREMISes AD-domein naar Azure.
 
 Implementeer daarnaast een andere domein controller op de AVS-zijde om te fungeren als identiteits-en DNS-bron binnen de vSphere-omgeving.
 
 Voor vCenter en SSO stelt u een identiteits bron in het Azure Portal in, op identiteits-identiteits ** \> \> bronnen beheren**.
 
-Als aanbevolen best practice kunt u het [AD-domein integreren met Azure Active Directory](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad).
+Als aanbevolen best practice kunt u het [AD-domein integreren met Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad).
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a7d12a2be7f2e3d3556d6c8c3303b2ddb8b8738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 999c443a63ceb2ebb59fc0de72ecb09d1ccc3905
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062626"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -480,7 +480,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft s
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: op Azure Role gebaseerde Access Control (RBAC) is een nauw keurig toegangs beheer voor Azure mogelijk. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
+**Richt lijnen**: toegangs beheer op basis van rollen (Azure RBAC) maakt verfijnd toegang tot Azure. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 
 Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen voor back-upbeheer: back-upinzender, back-upoperator en back-uplezer. U kunt ingebouwde rollen van back-ups toewijzen aan diverse acties voor back-upbeheer.
 

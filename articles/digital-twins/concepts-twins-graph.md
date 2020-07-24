@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258206"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062067"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
@@ -23,7 +23,7 @@ In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgevi
 
 ## <a name="digital-twins"></a>Digitale apparaatdubbels
 
-Voordat u een digitale dubbele in uw Azure Digital Apparaatdubbels-exemplaar kunt maken, moet u een *model* hebben dat naar de service wordt geüpload. Een model beschrijft de set eigenschappen, telemetrie-berichten en relaties die een bepaalde dubbele kan hebben, onder andere. Zie [concepten: Custom modelers](concepts-models.md)(Engelstalig) voor informatie over de typen die in een model zijn gedefinieerd.
+Voordat u een digitale dubbele in uw Azure Digital Apparaatdubbels-exemplaar kunt maken, moet u een *model* hebben dat naar de service wordt geüpload. Een model beschrijft de set eigenschappen, telemetrie-berichten en relaties die een bepaalde dubbele kan hebben, onder andere. Zie [*concepten: Custom modelers*](concepts-models.md)(Engelstalig) voor informatie over de typen die in een model zijn gedefinieerd.
 
 Na het maken en uploaden van een model, kan uw client-app een exemplaar van het type maken. Dit is een digitale dubbele. Nadat u bijvoorbeeld een model van de *vloer*hebt gemaakt, kunt u een of meer digitale apparaatdubbels maken die gebruikmaken van dit type (zoals een *Floor*-type met dubbele naam *GroundFloor*, een andere met de naam *Floor2*, enzovoort). 
 
@@ -197,8 +197,8 @@ Hier volgt een voor beeld van een relatie die is opgemaakt als een JSON-object:
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie grafiek elementen beheren met Azure Digital-Api's:
-* [Instructies: digitale apparaatdubbels beheren](how-to-manage-twin.md)
-* [Instructies: de dubbele grafiek met relaties beheren](how-to-manage-graph.md)
+* [*Instructies: digitale apparaatdubbels beheren*](how-to-manage-twin.md)
+* [*Instructies: de dubbele grafiek met relaties beheren*](how-to-manage-graph.md)
 
 U kunt ook meer informatie vinden over het uitvoeren van query's op de Azure Digital Apparaatdubbels-grafiek:
-* [Concepten: query taal](concepts-query-language.md)
+* [*Concepten: query taal*](concepts-query-language.md)

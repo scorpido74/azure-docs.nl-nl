@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087542"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063353"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Micro soft. ManagedIdentity. IdentitySelector UI-element
 
@@ -19,15 +20,15 @@ Een besturings element voor het toewijzen van [beheerde identiteiten](../../acti
 
 Het besturings element bestaat uit de volgende elementen:
 
-![Micro soft. ManagedIdentity. IdentitySelector eerste stap](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Micro soft. ManagedIdentity. IdentitySelector eerste stap](./media/managed-application-elements/microsoft-managedidentity-identityselector-1.png)
 
 Wanneer de gebruiker **toevoegen**selecteert, wordt het volgende formulier geopend. De gebruiker kan een of meer door de gebruiker toegewezen identiteiten voor de resource selecteren.
 
-![Micro soft. ManagedIdentity. IdentitySelector tweede stap](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Micro soft. ManagedIdentity. IdentitySelector tweede stap](./media/managed-application-elements/microsoft-managedidentity-identityselector-2.png)
 
 De geselecteerde identiteiten worden weer gegeven in de tabel. De gebruiker kan items uit deze tabel toevoegen of verwijderen.
 
-![Micro soft. ManagedIdentity. IdentitySelector derde stap](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Micro soft. ManagedIdentity. IdentitySelector derde stap](./media/managed-application-elements/microsoft-managedidentity-identityselector-3.png)
 
 ## <a name="schema"></a>Schema
 

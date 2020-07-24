@@ -3,14 +3,14 @@ title: Door de klant beheerde sleutels voor uw Azure Batch account configureren 
 description: Meer informatie over het versleutelen van batch-gegevens met behulp van sleutels
 author: pkshultz
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: d0dcb79d5e319abd46515162ce5a17e935d9693b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062537"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Door de klant beheerde sleutels voor uw Azure Batch account configureren met Azure Key Vault en beheerde identiteit
 
@@ -20,7 +20,8 @@ De sleutels die u opgeeft, moeten worden gegenereerd in [Azure Key Vault](../key
 
 > [!IMPORTANT]
 > Ondersteuning voor door de klant beheerde sleutels in Azure Batch is momenteel beschikbaar als open bare Preview voor de West-Centraal VS, VS-Oost, Zuid-Centraal VS, VS-West 2, US Gov-Virginia en US Gov-Arizona regio's.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>Een batch-account maken met door het systeem toegewezen beheerde identiteit
 
@@ -57,6 +58,9 @@ az batch account show \
     -g $resourceGroupName \
     --query identity
 ```
+
+> [!NOTE]
+> De door het systeem toegewezen beheerde identiteit die is gemaakt in een batch-account wordt alleen gebruikt voor het ophalen van door de klant beheerde sleutels van de Key Vault. Deze identiteit is niet beschikbaar in batch-Pools.
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Uw Azure Key Vault-exemplaar configureren
 
@@ -145,4 +149,5 @@ az batch account set \
   * **Hoe lang duurt het voordat de toegang tot het batch-account is hersteld?** Het kan tot tien minuten duren voordat het account weer toegankelijk is nadat de toegang is hersteld.
   * **Wat gebeurt er met mijn resources terwijl het batch-account niet beschikbaar is?** Alle groepen die worden uitgevoerd wanneer batch toegang tot door de klant beheerde sleutels verloren gaat, blijven actief. De knoop punten gaan echter over naar een niet-beschik bare status en taken worden niet meer uitgevoerd (en worden opnieuw in de wachtrij gezet). Zodra de toegang is hersteld, worden knoop punten weer beschikbaar en worden de taken opnieuw gestart.
   * **Is dit versleutelings mechanisme van toepassing op VM-schijven in een batch-pool?** Nee. Voor Cloud service-configuratie groepen wordt er geen versleuteling toegepast voor het besturings systeem en de tijdelijke schijf. Voor virtuele-machine configuratie groepen worden het besturings systeem en de opgegeven gegevens schijven standaard versleuteld met een door micro soft platform beheerde sleutel. Op dit moment kunt u niet uw eigen sleutel opgeven voor deze schijven. Als u de tijdelijke schijf van Vm's voor een batch-pool wilt versleutelen met een door micro soft platform beheerde sleutel, moet u de eigenschap [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) in de configuratie groep van de [virtuele machine](/rest/api/batchservice/pool/add#virtualmachineconfiguration) inschakelen. Voor zeer gevoelige omgevingen wordt u aangeraden tijdelijke schijf versleuteling in te scha kelen en te voor komen dat gevoelige gegevens worden opgeslagen op het besturings systeem en gegevens schijven.
+  * **Is de door het systeem toegewezen beheerde identiteit voor het batch-account dat beschikbaar is op de reken knooppunten?** Nee. Deze beheerde identiteit wordt momenteel alleen gebruikt voor toegang tot de Azure Key Vault voor de door de klant beheerde sleutel.
   

@@ -2,67 +2,51 @@
 title: Concepten-netwerk-interconnectiviteit
 description: Meer informatie over belang rijke aspecten en gebruiks voorbeelden van netwerken en interconnectiviteit in azure VMware-oplossing (AVS)
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 2378ad56e2754b2d2fde7f895f6673e7d7d561c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/23/2020
+ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062834"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-oplossing (AVS) Preview-netwerken en interconnectiviteit-concepten
 
-Met netwerk interconnectiviteit tussen uw persoonlijke Clouds van Azure VMware (AVS) en on-premises omgevingen of virtuele netwerken in azure kunt u uw privécloud openen en gebruiken. In dit artikel worden enkele belang rijke netwerk-en interconnectiviteit-concepten beschreven die de basis vormen van interconnectiviteit.
+Met netwerk interconnectiviteit tussen uw persoonlijke Clouds van Azure VMware (AVS) en on-premises omgevingen of virtuele netwerken in azure kunt u uw privécloud openen en gebruiken. In dit artikel worden enkele belang rijke concepten besproken die de basis vormen van netwerken en interconnectiviteit.
 
-Een handig perspectief op interconnectiviteit is het overwegen van de twee typen AVS-implementaties voor privécloud: implementaties met eenvoudige Azure-interconnectiviteit en-implementaties, met volledige on-premises naar privécloud interconnectiviteit.
+Een handig perspectief op interconnectiviteit is het overwegen van de twee typen AVS-implementaties voor privécloud:
+
+1. Met [**eenvoudige Azure-interconnectiviteit**](#azure-virtual-network-interconnectivity) kunt u uw privécloud beheren en gebruiken met slechts één virtueel netwerk in Azure. Deze implementatie is het meest geschikt voor AVS-evaluaties of-implementaties die geen toegang nodig hebben van on-premises omgevingen.
+
+1. [**Volledig on-premises naar privécloud interconnectiviteit**](#on-premises-interconnectivity) breidt de basis implementatie van alleen Azure uit om interconnectiviteit toe te voegen tussen on-premises en geavse persoonlijke Clouds.
+ 
+In de onderstaande secties vindt u meer informatie over de vereisten en de twee typen automatische AVS-Cloud interconnectiviteit-implementaties die worden beschreven.
+
+## <a name="avs-private-cloud-use-cases"></a>Gebruiks voorbeelden van privécloud in de Cloud
 
 De use cases voor de persoonlijke Clouds van AVS zijn:
 - nieuwe workloads voor virtuele VMware-machines in de Cloud
-- VM-werk belasting bursting naar de Cloud
-- Migratie VM-werk belasting naar de Cloud
-- herstel na nood geval
+- VM-werk belasting die is opbursteerd naar de Cloud (alleen voor automatische AVS)
+- Migratie van VM-workloads naar de Cloud (alleen on-premises naar AVS)
+- herstel na nood geval (AVS naar AVS of on-premises naar AVS)
 - verbruik van Azure-Services
 
- Alle use cases voor de AVS-service zijn ingeschakeld met on-premises verbindingen met de privécloud. Het basis interconnectiviteit model is het meest geschikt voor AVS-evaluaties of-implementaties die geen toegang nodig hebben tot on-premises omgevingen.
+ Alle use cases voor de AVS-service zijn ingeschakeld met on-premises verbindingen met de privécloud. 
 
-De twee typen AVS-interconnectiviteit worden in de onderstaande secties beschreven.  De meest eenvoudige interconnectiviteit is ' Azure Virtual Network-connectiviteit '; u kunt hiermee uw privécloud beheren en gebruiken met slechts één virtueel netwerk in Azure. De interconnectiviteit die wordt beschreven in ' on-premises connectiviteit ', breidt de connectiviteit van het virtuele netwerk uit om ook interconnectiviteit te omvatten tussen on-premises omgevingen en persoonlijke Clouds van AVS.
+## <a name="virtual-network-and-expressroute-circuit-requirements"></a>Vereisten voor het virtuele netwerk en het ExpressRoute-circuit
+ 
+Wanneer u een verbinding maakt vanuit een virtueel netwerk in uw abonnement, wordt het ExpressRoute-circuit tot stand gebracht via peering, een autorisatie sleutel en een peering-ID die u in de Azure Portal aanvraagt. De peering is een particuliere, een-op-een-verbinding tussen uw privécloud en het virtuele netwerk.
 
-## <a name="azure-virtual-network-interconnectivity"></a>Azure Virtual Network interconnectiviteit
+> [!NOTE] 
+> Het ExpressRoute-circuit maakt geen deel uit van een implementatie van een privécloud. Het on-premises ExpressRoute-circuit valt buiten het bereik van dit document. Als u een on-premises verbinding met uw privécloud nodig hebt, kunt u een van uw bestaande ExpressRoute-circuits gebruiken of deze in de Azure Portal aanschaffen.
 
-Het basis netwerk interconnectiviteit dat is ingesteld op het moment van een implementatie van een privécloud, wordt weer gegeven in het onderstaande diagram. Hierin wordt het logische, op ExpressRoute gebaseerde netwerk weer gegeven tussen een virtueel netwerk in Azure en een privécloud. De interconnectiviteit voldoet aan drie van de primaire use cases:
-- Inkomende toegang tot beheer netwerken waarin de vCenter-Server en NSX-T-beheer zich bevinden.
-    - Toegankelijk vanaf Vm's binnen uw Azure-abonnement, niet vanaf uw on-premises systemen.
-- Uitgaande toegang van Vm's naar Azure-Services.
-- Inkomende toegang en verbruik van werk belastingen met een privécloud.
+Wanneer u een privécloud implementeert, ontvangt u IP-adressen voor vCenter en NSX-T-beheer. Voor toegang tot deze beheer interfaces moet u extra resources maken in een virtueel netwerk in uw abonnement. U vindt de procedures voor het maken van deze resources en het tot stand brengen van ExpressRoute-persoonlijke peering in de zelf studies.
 
-![Eenvoudige virtuele netwerk-naar-particuliere cloud connectiviteit](./media/concepts/adjacency-overview-drawing-single.png)
+Het logische netwerk van de privécloud wordt geleverd met vooraf ingerichte NSX-T. Een laag-0-gateway en een laag-1-gateway is vooraf ingericht voor u. U kunt een segment maken en dit koppelen aan de bestaande gateway van de Tier-1 of koppelen aan de nieuwe laag-1-gateway die u definieert. NSX-T-onderdelen voor logische netwerken bieden Oost-West-connectiviteit tussen workloads en bieden ook een Noord-Zuid-verbinding met het internet en Azure-Services. 
 
-Het ExpressRoute-circuit in dit virtuele netwerk naar een privécloud wordt gemaakt wanneer u een verbinding maakt van een virtueel netwerk in uw abonnement op het ExpressRoute-circuit van uw privécloud. De peering gebruikt een autorisatie sleutel en een circuit-ID die u aanvraagt in de Azure Portal. De ExpressRoute-verbinding die via de peering tot stand is gebracht, is een particuliere, een-op-een-verbinding tussen uw privécloud en het virtuele netwerk. U kunt uw privécloud beheren, werk belastingen gebruiken in uw privécloud en toegang krijgen tot Azure-Services via die ExpressRoute-verbinding.
+## <a name="routing-and-subnet-requirements"></a>Routerings-en netwerk vereisten
 
-Wanneer u een automatische AVS-Cloud implementeert, is één/22 adres ruimte voor privé-netwerken vereist. Deze adres ruimte mag niet overlappen met adres ruimten die worden gebruikt in andere virtuele netwerken in uw abonnement. Binnen deze adres ruimte worden beheer-, inrichting-en vMotion-netwerken automatisch ingericht. De route ring is gebaseerd op BGP en wordt automatisch ingericht en ingeschakeld voor elke implementatie van een privécloud.
-
-Wanneer er een privécloud wordt geïmplementeerd, krijgt u de IP-adressen voor vCenter en NSX-T-beheer. Voor toegang tot deze beheer interfaces maakt u extra resources in een virtueel netwerk in uw abonnement. De procedures voor het maken van deze resources en het tot stand brengen van ExpressRoute persoonlijke peering zijn opgenomen in de zelf studies.
-
-U ontwerpt de logische netwerken voor de privécloud en implementeert deze met NSX-T. De privécloud wordt geleverd met vooraf ingerichte NSX-T. Een laag-0-gateway & laag-1-gateway is vooraf ingericht voor de u. U kunt een segment maken en dit koppelen aan de bestaande gateway van de laag 1 of koppelen aan een nieuwe gateway voor laag 1 die u kunt definiëren. NSX-T-onderdelen voor logische netwerken bieden Oost-West-connectiviteit tussen workloads en bieden ook een Noord-Zuid-verbinding met het internet en Azure-Services. 
-
-## <a name="on-premises-interconnectivity"></a>On-premises interconnectiviteit
-
-U kunt ook on-premises omgevingen verbinden met uw persoonlijke AVS-Clouds. Dit type interconnectiviteit is een uitbrei ding van de Basic-interconnectiviteit die wordt beschreven in de vorige sectie.
-
-![virtuele netwerken en on-premises volledige particuliere cloud connectiviteit](./media/concepts/adjacency-overview-drawing-double.png)
-
-Als u een volledige interconnectiviteit wilt instellen voor een privécloud, gebruikt u de Azure Portal om ExpressRoute Global Reach in te scha kelen tussen een ExpressRoute circuit van de privécloud en een on-premises ExpressRoute-circuit. Deze configuratie breidt de basis connectiviteit uit om toegang te bieden tot persoonlijke Clouds vanuit on-premises omgevingen.
-
-Er is een on-premises naar Azure Virtual Network ExpressRoute-circuit vereist om verbinding te maken tussen on-premises omgevingen en uw privécloud in Azure. Dit ExpressRoute-circuit bevindt zich in uw abonnement en maakt geen deel uit van een implementatie van een privécloud. Het on-premises ExpressRoute-circuit valt buiten het bereik van dit document. Als u een on-premises verbinding met uw privécloud nodig hebt, kunt u een van uw bestaande ExpressRoute-circuits gebruiken of deze in de Azure Portal aanschaffen.
-
-Als de twee ExpressRoute-circuits zijn gekoppeld aan Global Reach, routert het netwerk verkeer tussen uw on-premises omgevingen en uw privécloud. De on-premises naar de privécloud interconnectiviteit wordt weer gegeven in het voor gaande diagram. De interconnectiviteit die in het diagram wordt weer gegeven, maakt gebruik van de volgende gebruiks voorbeelden:
-
-- Warme/koude cross-vCenter vMotion
-- On-premises to AVS Private Cloud Management Access
-
-Als u de volledige connectiviteit wilt inschakelen, kunt u in de Azure Portal een autorisatie sleutel en een privé-peering-ID voor Global Reach aanvragen. U gebruikt de sleutel en ID om Global Reach te maken tussen een ExpressRoute-circuit in uw abonnement en het ExpressRoute-circuit voor uw nieuwe privécloud. De [zelf studie voor het maken van een privécloud](tutorial-create-private-cloud.md) bevat de procedures voor het aanvragen en gebruiken van de sleutel en id.
-
-Voor de routerings vereisten van de oplossing moet u particuliere-cloud netwerk adres ruimten plannen, zodat u geen overlapt met andere virtuele netwerken en on-premises netwerken. Voor persoonlijke Clouds van AVS is mini maal een `/22` CIDR-netwerk adres blok vereist voor subnetten, zoals hieronder wordt weer gegeven. Dit netwerk vormt een aanvulling op uw on-premises netwerken. Als u verbinding wilt maken met on-premises omgevingen en virtuele netwerken, moet dit een niet-overlappend netwerk adres blok zijn.
+De route ring is op basis van Border Gateway Protocol (BGP), die automatisch wordt ingericht en ingeschakeld voor elke implementatie van een privécloud. Voor de persoonlijke Clouds van AVS bent u verplicht om particuliere cloud netwerk adres ruimten te plannen met een mini maal/22 prefix lengte CIDR-netwerk adres blokken voor subnetten, zoals in de onderstaande tabel wordt weer gegeven. Het adres blok mag niet overlappen met de adres blokken die worden gebruikt in andere virtuele netwerken die zich in uw abonnement en on-premises netwerken bevinden. Binnen dit adres blok worden beheer, inrichting en vMotion-netwerken automatisch ingericht.
 
 Voor beeld van een `/22` CIDR-netwerk adres blok:`10.10.0.0/22`
 
@@ -70,10 +54,35 @@ De subnetten:
 
 | Netwerkgebruik             | Subnet | Voorbeeld        |
 | ------------------------- | ------ | -------------- |
-| Privécloudbeheer            | `/24`    | `10.10.0.0/24`   |
-| vMotion-netwerk       | `/24`    | `10.10.1.0/24`   |
-| VM-workloads | `/24`   | `10.10.2.0/24`   |
-| ExpressRoute-peering | `/24`    | `10.10.3.8/30`   |
+| Privécloudbeheer  | `/24`  | `10.10.0.0/24` |
+| vMotion-netwerk           | `/24`  | `10.10.1.0/24` |
+| VM-workloads              | `/24`  | `10.10.2.0/24` |
+| ExpressRoute-peering      | `/24`  | `10.10.3.8/30` |
+
+
+## <a name="azure-virtual-network-interconnectivity"></a>Azure Virtual Network interconnectiviteit
+
+In het virtuele netwerk naar de privécloud-implementatie kunt u de privécloud van uw AVS beheren, workloads gebruiken in uw privécloud en toegang krijgen tot Azure-Services via de ExpressRoute-verbinding. 
+
+In het onderstaande diagram ziet u de basis netwerk interconnectiviteit die zijn ingesteld op het moment van een implementatie van een privécloud. Hierin wordt het logische, op ExpressRoute gebaseerde netwerk weer gegeven tussen een virtueel netwerk in Azure en een privécloud. De interconnectiviteit voldoet aan drie van de primaire use cases:
+* Inkomende toegang tot de vCenter-Server en NSX-T-beheer die toegankelijk is vanaf virtuele machines in uw Azure-abonnement en niet vanaf uw on-premises systemen. 
+* Uitgaande toegang van Vm's naar Azure-Services. 
+* Inkomende toegang en verbruik van werk belastingen met een privécloud.
+
+:::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="Basis-virtueel netwerk naar connectiviteit in de privécloud" border="false":::
+
+## <a name="on-premises-interconnectivity"></a>On-premises interconnectiviteit
+
+In het virtuele netwerk en on-premises naar de volledige implementatie van een privécloud, hebt u toegang tot uw persoonlijke Clouds van uw AVS vanuit on-premises omgevingen. Deze implementatie is een uitbrei ding van de basis implementatie die wordt beschreven in de vorige sectie. Net als bij de basis implementatie is een ExpressRoute-circuit vereist, maar bij deze implementatie wordt het gebruikt om vanuit on-premises omgevingen verbinding te maken met uw privécloud in Azure. 
+
+In het onderstaande diagram ziet u de interconnectiviteit on-premises naar de privécloud, waarmee de volgende gebruiks voorbeelden worden ingeschakeld:
+* Warme/koude cross-vCenter vMotion
+* On-premises toegang tot beheer van privé-Clouds
+
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Virtuele netwerken en on-premises volledige particuliere cloud connectiviteit" border="false":::
+
+Voor een volledige interconnectiviteit in uw privécloud schakelt u ExpressRoute Global Reach in en vraagt u een autorisatie sleutel en een privé-peering-ID voor Global Reach op in de Azure Portal. De autorisatie sleutel en de peering-ID worden gebruikt om Global Reach te maken tussen een ExpressRoute-circuit in uw abonnement en het ExpressRoute-circuit voor uw nieuwe privécloud. Zodra de twee ExpressRoute-circuits zijn gekoppeld, worden netwerk verkeer tussen uw on-premises omgevingen gerouteerd naar uw privécloud.  Raadpleeg de [zelf studie voor het maken van een ExpressRoute Global Reach peering naar een privécloud](tutorial-expressroute-global-reach-private-cloud.md) voor de procedures om de autorisatie sleutel en de PEERING-id aan te vragen en te gebruiken.
+
 
 ## <a name="next-steps"></a>Volgende stappen 
 

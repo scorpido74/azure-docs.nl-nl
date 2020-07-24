@@ -2,13 +2,13 @@
 title: Virtuele Azure-machines verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Gebruik Azure Resource Manager om virtuele machines te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: c85ec175d802a29de7a8a87ee7a51c0916762a5a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/21/2020
+ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063104"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Richt lijnen voor het verplaatsen van virtuele machines
 
@@ -20,7 +20,7 @@ De volgende scenario's worden nog niet ondersteund:
 
 * Managed Disks in Beschikbaarheidszones kan niet worden verplaatst naar een ander abonnement.
 * Virtual Machine Scale Sets met een standaard-SKU Load Balancer of een open bare standaard-SKU kan niet worden verplaatst.
-* Virtuele machines die zijn gemaakt op basis van Marketplace-resources met plannen die zijn gekoppeld, kunnen niet worden verplaatst over resource groepen of-abonnementen. De inrichting van de virtuele machine in het huidige abonnement ongedaan maken en de implementatie opnieuw uitvoeren in het nieuwe abonnement.
+* Virtuele machines die zijn gemaakt op basis van Marketplace-resources waarvoor plannen zijn gekoppeld, kunnen niet worden verplaatst naar abonnementen. De inrichting van de virtuele machine in het huidige abonnement ongedaan maken en de implementatie opnieuw uitvoeren in het nieuwe abonnement.
 * Virtuele machines in een bestaand virtueel netwerk kunnen niet worden verplaatst naar een nieuw abonnement wanneer u niet alle resources in het virtuele netwerk verplaatst.
 * Virtuele machines met lage prioriteit en virtuele-machine schaal sets met lage prioriteit kunnen niet worden verplaatst over resource groepen of-abonnementen.
 * Virtuele machines in een beschikbaarheidsset kunnen niet afzonderlijk worden verplaatst.

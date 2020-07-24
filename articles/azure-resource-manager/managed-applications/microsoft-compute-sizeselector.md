@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063615"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Micro soft. compute. SizeSelector UI-element
 
@@ -19,11 +20,11 @@ Een besturings element voor het selecteren van een grootte voor een of meer exem
 
 De gebruiker ziet een selector met de standaard waarden van de element definitie.
 
-![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector.png)
 
 Nadat het besturings element is geselecteerd, ziet de gebruiker een uitgebreid overzicht van de beschik bare grootten.
 
-![Micro soft. compute. SizeSelector uitgebreid](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![Micro soft. compute. SizeSelector uitgebreid](./media/managed-application-elements/microsoft-compute-sizeselector-expanded.png)
 
 ## <a name="schema"></a>Schema
 

@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063284"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Gebruikers interface-element van micro soft. Network. PublicIpAddressCombo
 
@@ -17,7 +18,7 @@ Een groep besturings elementen voor het selecteren van een nieuw of bestaand ope
 
 ## <a name="ui-sample"></a>UI-voor beeld
 
-![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
+![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft-network-publicipaddresscombo.png)
 
 - Als de gebruiker geen selecteert voor het open bare IP-adres, wordt het tekstvak domeinnaam label verborgen.
 - Als de gebruiker een bestaand openbaar IP-adres selecteert, wordt het tekstvak domeinnaam label uitgeschakeld. De waarde is het domein naam label van het geselecteerde IP-adres.
