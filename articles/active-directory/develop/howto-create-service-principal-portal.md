@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 12389484f63d35eb31b38d5067061dc99b7284f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115932"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
 
@@ -29,7 +29,7 @@ In dit artikel leest u hoe u de-portal kunt gebruiken om de service-principal te
 > In plaats van een service-principal te maken, kunt u overwegen beheerde identiteiten te gebruiken voor Azure-resources voor uw toepassings identiteit. Als uw code wordt uitgevoerd op een service die beheerde identiteiten ondersteunt en toegang krijgt tot bronnen die ondersteuning bieden voor Azure AD-verificatie, zijn beheerde identiteiten een betere optie voor u. Zie [Wat is beheerde identiteiten voor Azure-resources?](../managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten voor Azure-resources, waaronder de services die momenteel door worden ondersteund.
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>App-registratie, app-objecten en service-principals
-Het is niet mogelijk om rechtstreeks een service-principal te maken met behulp van de Azure Portal.  Wanneer u een toepassing registreert via de Azure Portal, worden er automatisch een toepassings object en service-principal gemaakt voor uw basis directory of Tenant.  Lees voor meer informatie over de relatie tussen app-registratie, toepassings objecten en service-principals de [objecten Application and Service Principal in azure Active Directory](app-objects-and-service-principals.md).
+Het is niet mogelijk om rechtstreeks een service-principal te maken met behulp van de Azure Portal.  Wanneer u een toepassing registreert via de Azure Portal, worden er automatisch een toepassings object en service-principal gemaakt in uw basismap of Tenant.  Lees voor meer informatie over de relatie tussen app-registratie, toepassings objecten en service-principals de [objecten Application and Service Principal in azure Active Directory](app-objects-and-service-principals.md).
 
 ## <a name="permissions-required-for-registering-an-app"></a>Benodigde machtigingen voor het registreren van een app
 
@@ -55,7 +55,7 @@ Uw abonnements machtigingen controleren:
 
 1. Zoek en selecteer **abonnementen**of selecteer **abonnementen** op de **Start** pagina.
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Zoeken](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Selecteer het abonnement waarin u de Service-Principal wilt maken.
 
@@ -178,7 +178,7 @@ Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings g
    ![Kopieer de geheime waarde omdat u deze later niet kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Toegangs beleid voor resources configureren
-Houd er rekening mee dat u extra machtigingen moet configureren voor bronnen waartoe uw toepassing toegang moet hebben. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  
+Houd er rekening mee dat u aanvullende machtigingen moet configureren voor bronnen die voor uw toepassing toegankelijk moeten zijn. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  
 
 1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw sleutel kluis en selecteer **toegangs beleid**.  
 1. Selecteer **toegangs beleid toevoegen**en selecteer vervolgens de sleutel, het geheim en de certificaat machtigingen die u uw toepassing wilt verlenen.  Selecteer de service-principal die u eerder hebt gemaakt.

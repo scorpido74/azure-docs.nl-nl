@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333510"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117060"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Problemen met de Log Analytics-agent voor Windows oplossen 
 
@@ -34,11 +34,12 @@ Controleer of de firewall of proxy is geconfigureerd voor het toestaan van de vo
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |  
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |  
+|*. agentsvc.azure-automation.net |Poort 443 |Uitgaand|Yes |  
 
-Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met de Automation-Service voor het gebruik van runbooks of beheer oplossingen in uw omgeving, moet deze toegang hebben tot het poort nummer en de Url's die worden beschreven in [uw netwerk configureren voor de Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met de Automation-Service voor het gebruik van runbooks of beheer oplossingen in uw omgeving, moet deze toegang hebben tot het poort nummer en de Url's die worden beschreven in [uw netwerk configureren voor de Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
 Er zijn verschillende manieren waarop u kunt controleren of de agent met succes communiceert met Azure Monitor.
 
@@ -103,4 +104,3 @@ Als de query resultaten retourneert, moet u bepalen of een bepaald gegevens type
     |8000 |HealthService |Met deze gebeurtenis wordt aangegeven of een werk stroom die is gerelateerd aan prestaties, gebeurtenis of ander gegevens type dat is verzameld, niet kan worden doorgestuurd naar de service voor opname naar de werk ruimte. | Gebeurtenis-ID 2136 van de bron HealthService wordt samen met deze gebeurtenis geschreven en kan erop wijzen dat de agent niet kan communiceren met de service, mogelijk vanwege een onjuiste configuratie van de proxy-en verificatie-instellingen, netwerk storing of de netwerk firewall/-proxy geen TCP-verkeer van de computer naar de service toestaat.| 
     |10102 en 10103 |Health Service modules |De gegevens bron kan niet worden omgezet met de werk stroom. |Dit kan gebeuren als het opgegeven prestatie meter item of exemplaar niet aanwezig is op de computer of onjuist is gedefinieerd in de instellingen voor de werkruimte gegevens. Als dit een door de gebruiker opgegeven [prestatie meter item](data-sources-performance-counters.md#configuring-performance-counters)is, controleert u of de opgegeven informatie de juiste indeling heeft en aanwezig is op de doel computers. |
     |26002 |Health Service modules |De gegevens bron kan niet worden omgezet met de werk stroom. |Dit kan gebeuren als het opgegeven Windows-gebeurtenis logboek niet aanwezig is op de computer. Deze fout kan veilig worden genegeerd als er niet wordt verwacht dat dit gebeurtenis logboek is geregistreerd op de computer, anders als dit een door de gebruiker opgegeven [gebeurtenis logboek](data-sources-windows-events.md#configuring-windows-event-logs)is, controleert u of de opgegeven informatie juist is. |
-

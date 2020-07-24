@@ -3,14 +3,14 @@ title: Geo-replicatie toepassen voor een register
 description: Ga aan de slag met het maken en beheren van een geo-gerepliceerd Azure container Registry, waarmee het REGI ster meerdere regio's met regionale replica's voor meerdere masters kan verwerken. Geo-replicatie is een functie van de service-laag Premium.
 author: stevelas
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116786"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
@@ -95,7 +95,7 @@ ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica
 * Wanneer u installatie kopieën vanuit een geo-gerepliceerd REGI ster pusht of pullt, verzendt Azure Traffic Manager op de achtergrond de aanvraag naar het REGI ster in de regio die het dichtst bij u in de buurt is van de netwerk latentie.
 * Nadat u een installatie kopie of label update naar de dichtstbijzijnde regio hebt gepusht, duurt het enige tijd voor Azure Container Registry om de manifesten en lagen te repliceren naar de overige regio's waarin u zich hebt aangemeld. Grotere afbeeldingen nemen meer tijd in beslag dan kleinere bestanden. Afbeeldingen en tags worden gesynchroniseerd over de replicatie regio's met een mogelijk consistentie model.
 * Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd REGI ster, wordt u aangeraden [webhooks](container-registry-webhook.md) zodanig te configureren dat deze reageert op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
-* Azure Container Registry gebruikt gegevens eindpunten als u blobs wilt leveren die inhouds lagen vertegenwoordigen. U kunt [specifieke gegevens eindpunten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) voor uw REGI ster inschakelen in elk van de geo-replicatie regio's van uw REGI ster. Met deze eind punten kan de nauw keurig bereik van Firewall toegangs regels worden geconfigureerd.
+* Azure Container Registry gebruikt gegevens eindpunten als u blobs wilt leveren die inhouds lagen vertegenwoordigen. U kunt [specifieke gegevens eindpunten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) voor uw REGI ster inschakelen in elk van de geo-replicatie regio's van uw REGI ster. Met deze eind punten kan de nauw keurig bereik van Firewall toegangs regels worden geconfigureerd. Voor het oplossen van problemen kunt u eventueel [route ring naar een replicatie uitschakelen](#temporarily-disable-routing-to-replication) terwijl u gerepliceerde gegevens bijhoudt.
 * Als u een [persoonlijke koppeling](container-registry-private-link.md) voor uw REGI ster configureert met behulp van privé-eind punten in een virtueel netwerk, worden toegewezen gegevens eindpunten in elk van de geo-gerepliceerde regio's standaard ingeschakeld. 
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen
@@ -127,9 +127,36 @@ Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, 
 
 Als u de DNS-omzetting naar de dichtstbijzijnde replica tijdens het pushen van installatie kopieën wilt optimaliseren, configureert u een geo-gerepliceerd REGI ster in dezelfde Azure-regio's als de bron van de push bewerkingen of de dichtstbijzijnde regio bij het werken buiten Azure.
 
+### <a name="temporarily-disable-routing-to-replication"></a>Route ring naar replicatie tijdelijk uitschakelen
+
+Als u bewerkingen wilt uitvoeren met een geo-gerepliceerd REGI ster, wilt u Traffic Manager route ring mogelijk tijdelijk uitschakelen voor een of meer replicaties. Vanaf Azure CLI versie 2,8 kunt u een `--region-endpoint-enabled` optie (preview) configureren wanneer u een gerepliceerde regio maakt of bijwerkt. Wanneer u de optie van een replicatie instelt `--region-endpoint-enabled` op `false` , stuurt Traffic Manager geen push-of pull-aanvragen meer naar die regio. Standaard wordt route ring naar alle replicaties ingeschakeld en wordt de gegevens synchronisatie voor alle replicaties uitgevoerd, ongeacht of route ring is in-of uitgeschakeld.
+
+Als u route ring naar een bestaande replicatie wilt uitschakelen, voert u eerst [AZ ACR Replication List][az-acr-replication-list] uit om de replicaties in het REGI ster weer te geven. Vervolgens voert u [AZ ACR-replicatie update][az-acr-replication-update] uit en stelt u deze `--region-endpoint-enabled false` in voor een specifieke replicatie. Als u bijvoorbeeld de instelling voor de *westus* -replicatie in *myregistry*wilt configureren:
+
+```azurecli
+# Show names of existing replications
+az acr replication list --registry --output table
+
+# Disable routing to replication
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled false
+```
+
+Route ring naar een replicatie herstellen:
+
+```azurecli
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled true
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk de driedelige zelfstudiereeks [Geo-replicatie in Azure Container Registry](container-registry-tutorial-prepare-registry.md). Ontdek hoe u een geo-gerepliceerd register maakt, een container bouwt en het vervolgens met één `docker push`-opdracht implementeert naar meerdere regionale Web App for Containers-instanties.
 
 > [!div class="nextstepaction"]
 > [Geo-replicatie in Azure Container Registry](container-registry-tutorial-prepare-registry.md)
+
+[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
+[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update

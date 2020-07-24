@@ -6,14 +6,14 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 044786d6a6aa4f9f3d163090c0edfa3832023b10
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116955"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
@@ -52,9 +52,9 @@ Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw
 
 Als u de werkmappen-ervaring wilt verkennen, gaat u eerst naar de Azure Monitor-service. U kunt dit doen door **monitor** te typen in het zoekvak in de Azure Portal.
 
-Selecteer vervolgens **werkmappen (preview)**.
+Selecteer vervolgens **werkmappen**.
 
-![Scherm afbeelding van de knop voor beeld van werkmappen gemarkeerd in een rood vak](./media/workbooks-overview/workbooks-preview.png)
+![Scherm afbeelding van de knop werkmappen gemarkeerd in een rood vak](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>Galerie
 

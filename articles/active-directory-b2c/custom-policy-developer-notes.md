@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 05/19/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7defc33f8e3e2daca60fa5c15c41c62333ffc2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 255e0e38d8dc434843452308d2eebc2fd4774c50
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116518"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -62,7 +63,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="protocols-and-authorization-flows"></a>Protocollen en autorisatie stromen
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-autorisatie code](authorization-code-flow.md) |  |  | X |  |
 | OAuth2-verificatie code met PKCE |  |  | X | Alleen mobiele toepassingen  |
@@ -75,7 +76,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="identify-providers-federation"></a>Providers Federatie identificeren 
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Bijvoorbeeld Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Bijvoorbeeld Facebook.  |
@@ -86,7 +87,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="rest-api-integration"></a>Integratie van REST API
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [REST API met basis verificatie](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [REST API met verificatie van client certificaat](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -94,7 +95,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="component-support"></a>Onderdeel ondersteuning
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Verificatie op de telefoon factor](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure MFA-verificatie](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -109,7 +110,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="page-layout-versions"></a>Versie van pagina-indeling
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [2.0.0](page-layout.md#200) |  | X |  |  |
 | [1.2.0](page-layout.md#120) |  | X |  |  |
@@ -119,7 +120,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="app-ief-integration"></a>App-IEF-integratie
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Query teken reeks parameter`domain_hint` |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
 | Query teken reeks parameter`login_hint` |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
@@ -129,7 +130,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="session-management"></a>Sessie beheer
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Standaard-SSO-sessie provider](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Externe aanmeldings sessie provider](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
@@ -139,7 +140,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="security"></a>Beveiliging
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Beleids sleutels: genereren, hand matig, uploaden |  |  | X |  |
 | Beleids sleutels-RSA/cert, geheimen |  |  | X |  |
@@ -147,7 +148,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 ### <a name="developer-interface"></a>Ontwikkelaars interface
 
-| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Notities |
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal-IEF UX |  |  | X |  |
 | Beleid uploaden |  |  | X |  |

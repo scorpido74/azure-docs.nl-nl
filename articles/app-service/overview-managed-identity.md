@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116914"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -46,7 +46,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 > Als u de beheerde identiteit voor de web-app of de app wilt vinden in de Azure Portal, gaat u naar de sectie **gebruikers instellingen** onder **bedrijfs toepassingen**. Normaal gesp roken is de naam van de sleuf gelijk aan `<app name>/slots/<slot name>` .
 
 
-### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
 Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, moet u de opdracht gebruiken voor `az webapp identity assign` een bestaande toepassing. Er zijn drie opties voor het uitvoeren van de voor beelden in deze sectie:
 
@@ -84,7 +84,7 @@ De volgende stappen helpen u bij het maken van een app en het toewijzen van een 
 
 #### <a name="using-azure-powershell-for-a-web-app"></a>Azure PowerShell gebruiken voor een web-app
 
-1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/overview)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
+1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
 
 2. Maak een webtoepassing met behulp van Azure PowerShell. Zie voor meer voor beelden van het gebruik van Azure PowerShell met App Service [app Service Power shell](../app-service/samples-powershell.md)-voor beelden:
 
@@ -107,7 +107,7 @@ De volgende stappen helpen u bij het maken van een app en het toewijzen van een 
 
 #### <a name="using-azure-powershell-for-a-function-app"></a>Azure PowerShell gebruiken voor een functie-app
 
-1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/overview)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
+1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
 
 2. Maak een functie-app met behulp van Azure PowerShell. Zie voor meer voor beelden van het gebruik van Azure PowerShell met Azure Functions de [verwijzing AZ. functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
 
@@ -208,7 +208,7 @@ De volgende stappen helpen u bij het maken van een app en het toewijzen van een 
 > [!NOTE]
 > De huidige versie van de Azure PowerShell Commandlets voor Azure App Service biedt geen ondersteuning voor door de gebruiker toegewezen identiteiten. De onderstaande instructies zijn voor Azure Functions.
 
-1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/overview)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
+1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
 
 2. Maak een functie-app met behulp van Azure PowerShell. Zie de [Naslag informatie over AZ. functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)(Engelstalig) voor meer voor beelden van het gebruik van Azure PowerShell met Azure functions. Het onderstaande script maakt ook gebruik van `New-AzUserAssignedIdentity` dat afzonderlijk moet worden geïnstalleerd als per [Create, lijst of een door de gebruiker toegewezen beheerde identiteit te verwijderen met behulp van Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
@@ -312,11 +312,11 @@ Er zijn twee omgevings variabelen gedefinieerd voor een app met een beheerde ide
 
 De **IDENTITY_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvragen. Als u een token voor een resource wilt ophalen, maakt u een HTTP GET-aanvraag naar dit eind punt, met inbegrip van de volgende para meters:
 
-> | Parameternaam    | In     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Parameternaam    | In     | Beschrijving                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | Query’s uitvoeren  | De Azure AD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.    |
 > | api-versie       | Query’s uitvoeren  | De versie van de token-API die moet worden gebruikt. Gebruik 2019-08-01 of hoger.                                                                                                                                                                                                                                                                 |
-> | X-IDENTITEIT-HEADER | Koptekst | De waarde van de omgevings variabele IDENTITY_HEADER. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.                                                                                                                                                                                                    |
+> | X-IDENTITEIT-HEADER | Header | De waarde van de omgevings variabele IDENTITY_HEADER. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.                                                                                                                                                                                                    |
 > | client_id         | Query’s uitvoeren  | Beschrijving De client-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt voor een aanvraag met `principal_id` , `mi_res_id` of `object_id` . Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt.                                             |
 > | principal_id      | Query’s uitvoeren  | Beschrijving De principal-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. `object_id`is een alias die in plaats daarvan kan worden gebruikt. Kan niet worden gebruikt voor een aanvraag die client_id, mi_res_id of object_id bevat. Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt. |
 > | mi_res_id         | Query’s uitvoeren  | Beschrijving De Azure-Resource-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt voor een aanvraag met `principal_id` , `client_id` of `object_id` . Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt.                                      |
@@ -326,7 +326,7 @@ De **IDENTITY_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvrag
 
 Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigenschappen:
 
-> | Naam van eigenschap | Description                                                                                                                                                                                                                                        |
+> | Naam van eigenschap | Beschrijving                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Het aangevraagde toegangs token. De aanroepende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice.                                                                                                                               |
 > | client_id     | De client-ID van de identiteit die is gebruikt.                                                                                                                                                                                                       |
@@ -431,7 +431,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>De bibliotheek micro soft. Azure. Services. AppAuthentication voor .NET gebruiken
 
-Voor .NET-toepassingen en-functies is de eenvoudigste manier om te werken met een beheerde identiteit via het pakket micro soft. Azure. Services. AppAuthentication. Met deze bibliotheek kunt u uw code ook lokaal op uw ontwikkel computer testen met behulp van uw gebruikers account uit Visual Studio, de [Azure cli](/cli/azure)of Active Directory geïntegreerde verificatie. Zie de [referentie micro soft. Azure. Services. AppAuthentication]voor meer informatie over de lokale ontwikkelings opties voor deze bibliotheek. In deze sectie wordt beschreven hoe u aan de slag kunt met de bibliotheek in uw code.
+Voor .NET-toepassingen en-functies is de eenvoudigste manier om te werken met een beheerde identiteit via het pakket micro soft. Azure. Services. AppAuthentication. Met deze bibliotheek kunt u uw code ook lokaal op uw ontwikkel computer testen met behulp van uw gebruikers account uit Visual Studio, de [Azure cli](/cli/azure)of Active Directory geïntegreerde verificatie. Als deze in de cloud worden gehost, wordt standaard een door het systeem toegewezen identiteit gebruikt, maar u kunt dit gedrag aanpassen met behulp van een connection string omgevings variabele die verwijst naar de client-ID van een door de gebruiker toegewezen identiteit. Voor meer informatie over de ontwikkelings opties voor deze bibliotheek raadpleegt u de [Naslag informatie voor micro soft. Azure. Services. AppAuthentication]. In deze sectie wordt beschreven hoe u aan de slag kunt met de bibliotheek in uw code.
 
 1. Voeg verwijzingen naar [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en alle andere benodigde NuGet-pakketten toe aan uw toepassing. In het onderstaande voor beeld wordt ook gebruikgemaakt van [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)de sleutel kluis.
 
@@ -447,7 +447,17 @@ Voor .NET-toepassingen en-functies is de eenvoudigste manier om te werken met ee
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
 
-Zie voor meer informatie over micro soft. Azure. Services. AppAuthentication en de bewerkingen die worden weer gegeven, de naslag informatie over [micro soft. Azure. Services. AppAuthentication] en het [app service en de sleutel kluis met MSI .net-voor beeld](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Als u een door de gebruiker toegewezen beheerde identiteit wilt gebruiken, kunt u de `AzureServicesAuthConnectionString` toepassings instelling instellen op `RunAs=App;AppId=<clientId-guid>` . Vervang door `<clientId-guid>` de client-id van de identiteit die u wilt gebruiken. U kunt meerdere dergelijke verbindings reeksen definiëren door aangepaste toepassings instellingen te gebruiken en hun waarden door te geven aan de AzureServiceTokenProvider-constructor.
+
+```csharp
+    var identityConnectionString1 = Environment.GetEnvironmentVariable("UA1_ConnectionString");
+    var azureServiceTokenProvider1 = new AzureServiceTokenProvider(identityConnectionString1);
+    
+    var identityConnectionString2 = Environment.GetEnvironmentVariable("UA2_ConnectionString");
+    var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
+```
+
+Zie voor meer informatie over het configureren van AzureServiceTokenProvider en de bewerkingen die worden weer gegeven de naslag informatie over [micro soft. Azure. Services. AppAuthentication] en het [app service en de sleutel kluis met MSI .net-voor beeld](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ### <a name="using-the-azure-sdk-for-java"></a>De Azure SDK voor Java gebruiken
 
