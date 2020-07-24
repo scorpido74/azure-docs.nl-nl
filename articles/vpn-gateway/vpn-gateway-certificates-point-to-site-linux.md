@@ -3,17 +3,17 @@ title: 'Certificaten genereren en exporteren voor punt-naar-site: Linux: CLI'
 description: Maak een zelfondertekend basis certificaat, Exporteer de open bare sleutel en Genereer client certificaten met behulp van de Linux-CLI (strongSwan).
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: alzam
-ms.openlocfilehash: 89f6014b548bd3dd66622d15149051e6b28e94b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c55c304ae71cba396266c83bcaaa727351dcd677
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064618"
 ---
 # <a name="generate-and-export-certificates"></a>Certificaten genereren en exporteren
 

@@ -1,18 +1,19 @@
 ---
 title: Aanbevolen procedures voor het Azure Maps van Search Service | Microsoft Azure kaarten
 description: Meer informatie over het Toep assen van de aanbevolen procedures voor het gebruik van de Search Service van Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84264363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064263"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Aanbevolen procedures voor het Azure Maps van Search Service
 
@@ -27,7 +28,7 @@ In dit artikel wordt uitgelegd hoe u geluids procedures toepast wanneer u gegeve
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u aanroepen naar de Azure Maps-service-Api's wilt maken, hebt u een Azure Maps account en een sleutel nodig. Zie [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en [een primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)voor meer informatie. 
+Als u aanroepen naar de Azure Maps-service-Api's wilt maken, hebt u een Azure Maps account en een sleutel nodig. Zie [een account maken](quick-demo-map-app.md#create-an-azure-maps-account) en [een primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)voor meer informatie. 
 
 Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
@@ -84,7 +85,7 @@ U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Reverse-Geocode en filter voor het entiteits type Geografie
 
-Wanneer u een omgekeerde Geocode zoekt in de [Reverse API voor zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), kan de service veelhoeken retour neren voor administratieve gebieden. Yoi kan bijvoorbeeld de gebieds veelhoek voor een stad ophalen.Als u de zoek opdracht wilt beperken tot specifieke typen geografie entiteiten, neemt u de `entityType` para meter op in uw aanvragen. 
+Wanneer u een omgekeerde Geocode zoekt in de [Reverse API voor zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), kan de service veelhoeken retour neren voor administratieve gebieden. U kunt bijvoorbeeld de gebieds veelhoek voor een stad ophalen.Als u de zoek opdracht wilt beperken tot specifieke typen geografie entiteiten, neemt u de `entityType` para meter op in uw aanvragen. 
 
 De resulterende reactie bevat de geografie-ID en het entiteits type dat overeenkomt. Als u meer dan één entiteit opgeeft, wordt met het eind punt de *kleinste beschik bare entiteit*geretourneerd. U kunt de geretourneerde geometrie-ID gebruiken om de geometrie van het geografie te verkrijgen via de [Search veelhoek-service](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 
@@ -94,7 +95,7 @@ De resulterende reactie bevat de geografie-ID en het entiteits type dat overeenk
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```JSON
 {
@@ -146,7 +147,7 @@ In de volgende voorbeeld query wordt de service Search Address opgevraagd voor *
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```JSON
 {
@@ -495,7 +496,7 @@ We gaan een zoek aanvraag voor een [POI categorie](https://docs.microsoft.com/re
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```JSON
 {
@@ -776,7 +777,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Kruis straat**: snij punten. Kruis straten vertegenwoordigen verbindings lijnen waarbij twee straten INTERSECT.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Laten we eens kijken naar de structuur van de reactie. In het antwoord dat volgt, zijn de typen resultaat objecten verschillend. Als u zorgvuldig zoekt, ziet u drie typen resultaat objecten:
 

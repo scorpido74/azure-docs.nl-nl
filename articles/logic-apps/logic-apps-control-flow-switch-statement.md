@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066222"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-instructies maken waarmee werk stroom acties worden uitgevoerd op basis van specifieke waarden in Azure Logic Apps
 
@@ -109,7 +110,7 @@ Nu u een logische app hebt gemaakt met behulp van een instructie switch, kijken 
 }
 ```
 
-| Label | Description |
+| Label | Beschrijving |
 |-------|-------------|
 | `"Switch"`         | De naam van de instructie switch, die u de naam van de Lees baarheid kunt wijzigen |
 | `"type": "Switch"` | Geeft aan dat de actie een switch instructie is |
@@ -120,7 +121,7 @@ Nu u een logische app hebt gemaakt met behulp van een instructie switch, kijken 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies of suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

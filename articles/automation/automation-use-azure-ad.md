@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u Azure AD in Azure Automation kunt gebr
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c81e3389f2cc96f2581b8edee5f528237cb9eca
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064382"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD gebruiken voor verificatie bij Azure
 
@@ -92,11 +92,11 @@ U kunt de Azure Portal gebruiken om de referentie-Asset te maken. Voer deze bewe
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>Het referentie-element maken met Windows Power shell
 
-Als u een nieuw referentie-element wilt voorbereiden in Windows Power shell, maakt uw script eerst een- `PSCredential` object met behulp van de toegewezen gebruikers naam en het bijbehorende wacht woord. Het script gebruikt vervolgens dit object om het activum te maken via een aanroep van de cmdlet [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) . Het script kan de cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) ook aanroepen om de gebruiker te vragen om een naam en wacht woord in te voeren. Zie [referentie-assets in azure Automation](shared-resources/credentials.md). 
+Als u een nieuw referentie-element wilt voorbereiden in Windows Power shell, maakt uw script eerst een- `PSCredential` object met behulp van de toegewezen gebruikers naam en het bijbehorende wacht woord. Het script gebruikt vervolgens dit object om het activum te maken via een aanroep van de cmdlet [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) . Het script kan de cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) ook aanroepen om de gebruiker te vragen om een naam en wacht woord in te voeren. Zie [referentie-assets in azure Automation](shared-resources/credentials.md). 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Azure-resources beheren vanuit een Azure Automation-runbook
 
-U kunt Azure-resources beheren vanuit Azure Automation runbooks met behulp van de referentie-Asset. Hieronder ziet u een voor beeld van een Power shell-runbook waarmee de referentie-Asset wordt verzameld die moet worden gebruikt voor het stoppen en starten van virtuele machines in een Azure-abonnement. Dit runbook wordt eerst gebruikt `Get-AutomationPSCredential` om de referentie op te halen die moet worden gebruikt om te verifiëren bij Azure. Vervolgens wordt de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) aangeroepen om verbinding te maken met Azure met behulp van de referentie. Het script maakt gebruik van de [Select-abonnement-](/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) cmdlet om het abonnement te kiezen waarmee u wilt werken. 
+U kunt Azure-resources beheren vanuit Azure Automation runbooks met behulp van de referentie-Asset. Hieronder ziet u een voor beeld van een Power shell-runbook waarmee de referentie-Asset wordt verzameld die moet worden gebruikt voor het stoppen en starten van virtuele machines in een Azure-abonnement. Dit runbook wordt eerst gebruikt `Get-AutomationPSCredential` om de referentie op te halen die moet worden gebruikt om te verifiëren bij Azure. Vervolgens wordt de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) aangeroepen om verbinding te maken met Azure met behulp van de referentie. Het script maakt gebruik van de [Select-abonnement-](/powershell/module/servicemanagement/azure.service/select-azuresubscription?view=azuresmps-4.0.0) cmdlet om het abonnement te kiezen waarmee u wilt werken. 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 

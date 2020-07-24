@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065495"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine-streaming voor Android  
 
@@ -29,7 +29,7 @@ ms.locfileid: "80294340"
 > * [Versie 2](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Naast het beveiligen van inhoud voor online streaming bieden media-inhouds abonnementen en verhuur Services Download bare inhoud die werkt wanneer u niet met internet verbonden bent. Mogelijk moet u inhoud downloaden naar uw telefoon of Tablet voor het afspelen in de vliegtuig modus wanneer de verbinding met het netwerk is verbroken. Aanvullende scenario's waarin u mogelijk inhoud wilt downloaden:
 
@@ -181,7 +181,7 @@ Dit betekent dat de Secure token service (STS) de bedrijfs logica en de gegevens
 
 ### <a name="question"></a>Vraag
 
-Voor Widevine-beveiligings niveaus, in de documentatie over het [WIDEVINE DRM-architectuur overzicht](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) van Google, worden er drie verschillende beveiligings niveaus gedefinieerd. In Azure Media Services- [documentatie over de licentie sjabloon Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)worden echter vijf verschillende beveiligings niveaus beschreven. Wat is de relatie of toewijzing tussen de twee verschillende sets beveiligings niveaus?
+Voor Widevine-beveiligings niveaus, in de documentatie over het [WIDEVINE DRM-architectuur overzicht](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) van Google, worden er drie verschillende beveiligings niveaus gedefinieerd. In Azure Media Services- [documentatie over de licentie sjabloon Widevine](./media-services-widevine-license-template-overview.md)worden echter vijf verschillende beveiligings niveaus beschreven. Wat is de relatie of toewijzing tussen de twee verschillende sets beveiligings niveaus?
 
 ### <a name="answer"></a>Antwoord
 
@@ -191,7 +191,7 @@ In het overzicht van de [WIDEVINE DRM-architectuur](https://storage.googleapis.c
 2.  Beveiligings niveau 2: voert crypto grafie (maar geen video verwerking) uit in de TEE: ontsleutelde buffers worden geretourneerd naar het toepassings domein en verwerkt via afzonderlijke video-hardware of software. Op niveau 2 wordt echter alleen cryptografische informatie verwerkt in het TEE.
 3.  Beveiligings niveau 3 heeft geen TEE op het apparaat. Er kunnen passende maat regelen worden getroffen ter bescherming van de cryptografische informatie en ontsleutelde inhoud op het hostbesturingssysteem. Een level 3-implementatie kan ook een hardware-cryptografische engine omvatten, maar dat biedt alleen betere prestaties, niet voor beveiliging.
 
-Op hetzelfde moment kan de eigenschap security_level van content_key_specs de volgende vijf verschillende waarden hebben (in [Azure Media Services documentatie op de Widevine-licentie sjabloon](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview):
+Op hetzelfde moment kan de eigenschap security_level van content_key_specs de volgende vijf verschillende waarden hebben (in [Azure Media Services documentatie op de Widevine-licentie sjabloon](./media-services-widevine-license-template-overview.md):
 
 1.  Crypto grafie op basis van software-WhiteBox is vereist.
 2.  Software-crypto en een verborgen decoder zijn vereist.

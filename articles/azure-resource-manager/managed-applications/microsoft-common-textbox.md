@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063826"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Gebruikers interface-element van micro soft. common. TextBox
 
@@ -17,38 +18,79 @@ Een besturings element dat kan worden gebruikt voor het bewerken van niet-opgema
 
 ## <a name="ui-sample"></a>UI-voor beeld
 
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft-common-textbox.png)
 
 ## <a name="schema"></a>Schema
 
 ```json
 {
-  "name": "element1",
-  "type": "Microsoft.Common.TextBox",
-  "label": "Example text box 1",
-  "defaultValue": "my text value",
-  "toolTip": "Use only allowed characters",
-  "constraints": {
-    "required": true,
-    "regex": "^[a-z0-9A-Z]{1,30}$",
-    "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
-  },
-  "visible": true
+    "name": "nameInstance",
+    "type": "Microsoft.Common.TextBox",
+    "label": "Name",
+    "defaultValue": "contoso123",
+    "toolTip": "Use only allowed characters",
+    "constraints": {
+        "required": true,
+        "validations": [
+            {
+                "regex": "^[a-z0-9A-Z]{1,30}$",
+                "message": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+            },
+            {
+                "isValid": "[startsWith(steps('resourceConfig').nameInstance, 'contoso')]",
+                "message": "Must start with 'contoso'."
+            }
+        ]
+    },
+    "visible": true
 }
 ```
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
 ```json
-"my text value"
+"contoso123"
 ```
 
 ## <a name="remarks"></a>Opmerkingen
 
 - Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaardwaarde is **onwaar**.
-- `constraints.regex`is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
-- `constraints.validationMessage`is een teken reeks die moet worden weer gegeven wanneer de validatie van de waarde van het tekstvak mislukt. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
-- Het is mogelijk om een waarde op te geven voor `constraints.regex` Wanneer `constraints.required` is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
+- De `validations` eigenschap is een matrix waarin u voor waarden toevoegt voor het controleren van de waarde die is opgegeven in het tekstvak.
+- De `regex` eigenschap is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
+- De `isValid` eigenschap bevat een expressie die resulteert in waar of onwaar. Binnen de expressie definieert u de voor waarde die bepaalt of het tekstvak geldig is.
+- De `message` eigenschap is een teken reeks die moet worden weer gegeven wanneer de validatie van de waarde van het tekstvak mislukt.
+- Het is mogelijk om een waarde op te geven voor `regex` Wanneer `required` is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
+
+## <a name="example"></a>Voorbeeld
+
+In het volgende voor beeld wordt een tekstvak met het [micro soft. Solutions. ArmApiControl](microsoft-solutions-armapicontrol.md) -besturings element gebruikt om de beschik baarheid van een resource naam te controleren.
+
+```json
+"basics": [
+    {
+        "name": "nameApi",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+            "method": "POST",
+            "path": "[concat(subscription().id, '/providers/Microsoft.Storage/checkNameAvailability?api-version=2019-06-01')]",
+            "body": "[parse(concat('{\"name\": \"', basics('txtStorageName'), '\", \"type\": \"Microsoft.Storage/storageAccounts\"}'))]"
+        }
+    },
+    {
+        "name": "txtStorageName",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Storage account name",
+        "constraints": {
+            "validations": [
+                {
+                    "isValid": "[not(equals(basics('nameApi').nameAvailable, false))]",
+                    "message": "[concat('Name unavailable: ', basics('txtStorageName'))]"
+                }
+            ]
+        }
+    }
+]
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,23 +1,31 @@
 ---
-title: Aan de slag met het besturings element web map | Microsoft Azure kaarten
-description: Meer informatie over het gebruik van de Microsoft Azure Maps map-beheer de Java script-bibliotheek aan de client zijde om kaarten en Inge sloten Azure Maps functionaliteit in uw web-of mobiele toepassing weer te geven.
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Aan de slag met Microsoft Azure Maps web map-besturings element
+description: Meer informatie over het gebruik van de Microsoft Azure Maps web map-Webkaart Control-client-side java script-bibliotheek voor het weer geven van kaarten en Inge sloten Azure Maps functionaliteit in uw web-of mobiele toepassing.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: bdbdbfada3c7c4cfb4350bb11a33defd743b7195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064205"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het kaartbesturingselement in Azure Maps gebruiken
 
 Met de Map Control java script-bibliotheek aan de client zijde kunt u kaarten en Inge sloten Azure Maps functionaliteit weer geven in uw web-of mobiele toepassing.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u de Map Control op een webpagina wilt gebruiken, moet u beschikken over een van de volgende vereisten:
+
+* [Maak een Azure Maps-account](quick-demo-map-app.md#create-an-azure-maps-account) en [Verkrijg een sleutel voor een primair abonnement](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnements sleutel.
+
+* Vraag uw Azure Active Directory-referenties (AAD) aan met [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Een nieuwe kaart maken op een webpagina
 
@@ -36,19 +44,18 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
     * Laad de Azure Maps Web SDK-bron code lokaal met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en host dit met uw app. Dit pakket bevat ook TypeScript-definities.
 
-        > **NPM Azure-Maps-beheer installeren**
+    > **NPM Azure-Maps-beheer installeren**
 
-       Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en de script bron verwijzingen naar het `<head>` element van het bestand toe:
+    Voeg vervolgens verwijzingen naar het Azure Maps opmaak model toe aan het `<head>` element van het bestand:
 
-        ```HTML
-        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-        ```
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+     ```
 
-    > [!Note]
+    > [!NOTE]
     > Type script definities kunnen in uw toepassing worden geïmporteerd door de volgende code toe te voegen:
     >
-    > ```Javascript
+    > ```javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
@@ -70,54 +77,59 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het de naam `id` **myMap**.
 
    ```HTML
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
     </body>
    ```
 
-5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe script code in de HTML-hoofd tekst. Geef de `id` naam van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld) door `document.getElementById('myMap')` als de eerste para meter bij het maken van een instantie van de `Map` klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
+5. Nu gaan we het kaart besturings element initialiseren. Als u het besturings element wilt verifiëren, moet u eigenaar zijn van een Azure Maps-abonnements sleutel of gebruikmaken van de referenties van Azure Active Directory (AAD) met [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
-   Als u een account wilt maken of uw sleutel wilt vinden, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) . 
+    Als u een abonnements sleutel voor verificatie gebruikt, kopieert en plakt u het volgende script-element in het `<head>` -element en onder het eerste `<script>` element. Vervang door `<Your Azure Maps Key>` uw Azure Maps primaire abonnements sleutel.
 
-   De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie, gebruikt u het volgende:
-
-   ```HTML
+     ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'subscriptionKey',
-                subscriptionKey: '<Your Azure Maps Key>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
             }
         });
     </script>
     ```
 
-   Als u Azure Active Directory (AAD) gebruikt voor verificatie, gebruikt u het volgende:
+    Als u Azure Active Directory (AAD) gebruikt voor verificatie, kopieert en plakt u het volgende script-element in het `<head>` -element en onder het eerste `<script>` element.
 
-   ```HTML
+      ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'aad',
-                clientId: '<Your AAD Client Id>',
-                aadAppId: '<Your AAD App Id>',
-                aadTenant: '<Your AAD Tenant Id>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'aad',
+                    clientId: '<Your AAD Client Id>',
+                    aadAppId: '<Your AAD App Id>',
+                    aadTenant: '<Your AAD Tenant Id>'
+                }
             }
         });
     </script>
    ```
 
-   [Hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)vindt u een lijst met voor beelden van de integratie van Azure Active Directory (Aad) met Azure Maps. 
-    
-   Zie voor meer informatie de [verificatie met Azure Maps](azure-maps-authentication.md) document en ook de voor [beelden van de Azure Maps voor Azure AD-verificatie](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+    Zie [verificatie met Azure Maps](azure-maps-authentication.md) document voor meer informatie over verificatie met Azure Maps. Daarnaast vindt u [hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)een lijst met voor beelden waarin wordt getoond hoe u Azure Active Directory (Aad) met Azure Maps kunt integreren.
 
-6. U kunt eventueel de volgende metatag elementen toevoegen aan het hoofd van de pagina:
+    >[!TIP]
+    >In dit voor beeld zijn we door gegeven in de `id` kaart `<div>` . Een andere manier om dit te doen, is door door te geven in het `HTMLElement` object door door te geven `document.getElementById('myMap')` als de eerste para meter.
+
+6. U kunt er ook voor kiezen om de volgende elementen toe te voegen `meta` aan het `head` element van de pagina:
 
    ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -127,7 +139,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    ```
 
-7. Het samen stellen van uw HTML-bestand moet er ongeveer als volgt uitzien:
+7. Het HTML-bestand moet er ongeveer als volgt uitzien:
 
    ```HTML
     <!DOCTYPE html>
@@ -147,6 +159,23 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
+
+        <script type="text/javascript">
+            //Create an instance of the map control and set some options.
+            function InitMap()
+            {
+                var map = new atlas.Map('myMap', {
+                    center: [-122.33, 47.6],
+                    zoom: 12,
+                    language: 'en-US',
+                    authOptions: {
+                        authType: 'subscriptionKey',
+                        subscriptionKey: '<Your Azure Maps Key>'
+                    }
+                });
+            }
+        </script>
+
         <style>
             html, body {
                 margin: 0;
@@ -158,21 +187,8 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
             }
         </style>
     </head>
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
-
-        <script type="text/javascript">
-            //Create an instance of the map control and set some options.
-            var map = new atlas.Map('myMap', {
-                center: [-122.33, 47.6],
-                zoom: 12,
-                language: 'en-US',
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: '<Your Azure Maps Key>'
-                }
-            });
-        </script>
     </body>
     </html>
     ```
@@ -206,8 +222,8 @@ map = new atlas.Map('myMap', {
 });
 ```
 
-> [!Note]
-> Met de Web-SDK is het mogelijk meerdere toewijzings exemplaren op dezelfde pagina te laden met andere taal-en regio-instellingen. Deze instellingen kunnen bovendien worden bijgewerkt na de kaart belasting met behulp `setStyle` van de functie van de kaart. 
+> [!NOTE]
+> Het is mogelijk om meerdere toewijzings exemplaren op dezelfde pagina met andere taal-en regio-instellingen te laden. Deze instellingen kunnen bovendien worden bijgewerkt na de kaart belasting met behulp `setStyle` van de functie van de kaart.
 
 Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op "fr-FR" en de regionale weer gave ingesteld op ' auto '.
 
@@ -219,7 +235,7 @@ Een volledige lijst met ondersteunde talen en regionale weer gaven wordt [hier](
 
 De Azure Maps Web-SDK ondersteunt de Azure Government Cloud. Alle Java script-en CSS-Url's die worden gebruikt voor toegang tot de Azure Maps Web-SDK blijven hetzelfde. De volgende taken moeten worden uitgevoerd om verbinding te maken met de Azure Government Cloud versie van het Azure Maps platform.
 
-Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een instantie van de `Map` klasse maakt. 
+Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een instantie van de `Map` klasse maakt.
 
 ```javascript
 atlas.setDomain('atlas.azure.us');

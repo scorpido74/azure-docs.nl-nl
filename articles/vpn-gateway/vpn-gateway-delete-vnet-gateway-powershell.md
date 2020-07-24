@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: c9b6c915fe986e0a953a4e5c503e79f39f3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54fe4486d43a40e54a0aeae36963c0271fae6c2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064531"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Een virtuele netwerk gateway verwijderen met Power shell
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Er zijn een aantal verschillende benaderingen die u kunt nemen wanneer u een vir
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. down load de nieuwste Azure Resource Manager Power shell-cmdlets.
 
-Down load en installeer de nieuwste versie van de Azure Resource Manager Power shell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over het downloaden en installeren van Power shell-cmdlets.
+Down load en installeer de nieuwste versie van de Azure Resource Manager Power shell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor meer informatie over het downloaden en installeren van Power shell-cmdlets.
 
 ### <a name="2-connect-to-your-azure-account"></a>2. Maak verbinding met uw Azure-account.
 

@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a6dd70bf57cabe8014c49e2cd3ee38c8de72b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064779"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP configureren op een Azure VPN-gateway met behulp van CLI
 
@@ -302,4 +303,4 @@ Nadat u deze stappen hebt voltooid, wordt de verbinding in een paar minuten tot 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de verbinding is voltooid, kunt u virtuele machines toevoegen aan uw virtuele netwerken. Zie [een virtuele machine maken voor een](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)overzicht van de stappen.
+Nadat de verbinding is voltooid, kunt u virtuele machines toevoegen aan uw virtuele netwerken. Zie [een virtuele machine maken voor een](../virtual-machines/windows/quick-create-portal.md)overzicht van de stappen.

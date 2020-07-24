@@ -1,38 +1,40 @@
 ---
-title: Uw Azure Stack edge-apparaat retour neren of vervangen | Microsoft Docs
-description: Hierin wordt beschreven hoe u het Azure Stack edge-apparaat retourneert of vervangt.
+title: Uw Azure Stack edge-apparaat retour neren | Microsoft Docs
+description: Hierin wordt beschreven hoe u het Azure Stack edge-apparaat retourneert.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067072"
 ---
-# <a name="return-or-replace-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren of vervangen
+# <a name="return-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren
 
-In dit artikel wordt beschreven hoe u de gegevens wist en vervolgens uw Azure Stack edge-apparaat retourneert. Nadat u het apparaat hebt geretourneerd, kunt u ook de resource die aan het apparaat is gekoppeld, verwijderen of een vervangend apparaat best Ellen.
+In dit artikel wordt beschreven hoe u de gegevens wist en vervolgens uw Azure Stack edge-apparaat retourneert. Nadat u het apparaat hebt geretourneerd, kunt u ook de resource verwijderen die aan het apparaat is gekoppeld.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 >
 > * De gegevens van de gegevens schijven op het apparaat wissen
-> * Een ondersteunings ticket openen om uw apparaat te retour neren
+> * Retour neren van apparaat initiëren in Azure Portal
 > * Het apparaat inpakken en een ophaling plannen
 > * De resource in Azure Portal verwijderen
-> * Een vervangend apparaat ophalen
 
 ## <a name="erase-data-from-the-device"></a>Gegevens wissen van het apparaat
 
 Als u de gegevens van de gegevens schijven van uw apparaat wilt wissen, moet u uw apparaat opnieuw instellen. U kunt uw apparaat opnieuw instellen met behulp van de lokale webgebruikersinterface of de Power shell-interface.
 
 Voordat u opnieuw instelt, maakt u indien nodig een kopie van de lokale gegevens op het apparaat. U kunt de gegevens van het apparaat naar een Azure Storage-container kopiëren.
+
+U kunt het retour neren van het apparaat starten, zelfs voordat het apparaat opnieuw wordt ingesteld. 
 
 Voer de volgende stappen uit om uw apparaat opnieuw in te stellen met behulp van de lokale web-UI.
 
@@ -53,19 +55,50 @@ U kunt ook verbinding maken met de Power shell-interface van het apparaat en de 
 > - Als u uitwisselt of een upgrade naar een nieuw apparaat uitvoert, raden wij u aan uw apparaat opnieuw in te stellen nadat u het nieuwe apparaat hebt ontvangen.
 > - Bij het opnieuw instellen van het apparaat worden alleen alle lokale gegevens van het apparaat verwijderd. De gegevens die zich in de Cloud bevindt, worden niet verwijderd en er worden [kosten](https://azure.microsoft.com/pricing/details/storage/)in rekening gebracht. Deze gegevens moeten afzonderlijk worden verwijderd met behulp van een beheer programma voor Cloud opslag, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="open-a-support-ticket"></a>Een ondersteunings ticket openen
+## <a name="initiate-device-return"></a>Retour neren van apparaat starten
 
 Voer de volgende stappen uit om het retour proces te starten.
 
-1. Open een ondersteunings ticket met Microsoft Ondersteuning dat aangeeft dat u het apparaat wilt retour neren. Selecteer het probleem type als **Azure stack edge-hardware**.
+1. Ga naar de Azure Stack EDGE/Data Box Gateway resource in Azure Portal. In het **overzicht**gaat u naar de opdracht balk in het rechterdeel venster en selecteert u **apparaat retour neren**. 
 
-    ![Ondersteuningsticket openen](media/azure-stack-edge-return-device/open-support-ticket-1.png)  
+    ![Apparaat 1 retour neren](media/azure-stack-edge-return-device/return-device-1.png)  
 
-2. Een Microsoft Ondersteuning-Engineer neemt contact met u op. Geef de verzend gegevens op.
-3. Als u een verzend doos nodig hebt, kunt u deze aanvragen. Antwoord **Ja** op de vraag **moet een leeg vak zijn om te retour neren**.
+2. Op de Blade **retour apparaat** , onder **basis Details**:
 
+    1. Geef het serie nummer van het apparaat op. Als u het serie nummer van het apparaat wilt ophalen, gaat u naar de lokale web-UI van het apparaat en gaat u naar **overzicht**.  
+    
+    ![Serie nummer 1 van apparaat](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+
+    2. Voer het servicetag nummer in dat een unieke teken-id voor uw apparaat is. De servicetag bevindt zich in de rechter benedenhoek van het apparaat (als u het apparaat bewaart). Haal het informatie label uit (dit is een deel venster voor een uitgaand label). Dit paneel bevat systeem informatie zoals service tags, NIC, MAC-adres, enzovoort. 
+    
+    ![Servicetag nummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+
+    3. Kies in de vervolg keuzelijst een reden voor de retour nering.
+
+    ![Apparaat 2 retour neren](media/azure-stack-edge-return-device/return-device-2.png) 
+
+3. Onder **Verzend gegevens**:
+
+    1. Geef uw naam, bedrijfs naam en volledig bedrijfs adres op. Voer een werk telefoonnummer in, inclusief het netnummer en een e-mail-ID voor de melding.
+    2. Als u een verzend doos nodig hebt, kunt u deze aanvragen. Antwoord **Ja** op de vraag **moet een leeg vak zijn om te retour neren**.
+
+    ![Apparaat 3 retour neren](media/azure-stack-edge-return-device/return-device-3.png)
+
+4. Lees de **Privacy-voor waarden** en schakel het selectie vakje in voor de opmerking die u hebt bekeken en ga akkoord met de voor waarden van de privacyverklaring.
+
+5. Selecteer **return starten**.
+
+    ![Apparaat 4 retour neren](media/azure-stack-edge-return-device/return-device-4.png) 
+
+6. Zodra de retour gegevens van uw apparaat zijn vastgelegd, kunt u het Azure Stack Edge-team via een e-mail op de hoogte stellen. U kunt uw e-mail toepassing gebruiken als u ervan uitgaat dat de e-mail toepassing is geïnstalleerd en geconfigureerd. U kunt ook de gegevens kopiëren om deze te maken en een e-mail te verzenden.
+
+    ![Apparaat 5 retour neren](media/azure-stack-edge-return-device/return-device-5.png) 
+
+7. Zodra het Azure Stack Edge Operations-team het e-mail bericht ontvangt, stuurt hij u een terugkerend verzend label. Wanneer u dit label ontvangt, kunt u het ophalen van het apparaat plannen met de provider. 
 
 ## <a name="schedule-a-pickup"></a>Een ophaling plannen
+
+Als u een ophaling wilt plannen, voert u de volgende stappen uit.
 
 1. Schakel het apparaat uit. Ga in de lokale web-UI naar **onderhoud > energie-instellingen**.
 2. Selecteer **Afsluiten**. Wanneer u om bevestiging wordt gevraagd, klikt u op **Ja** om door te gaan. Zie [energie beheren](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)voor meer informatie.
@@ -74,7 +107,7 @@ Voer de volgende stappen uit om het retour proces te starten.
 5. Breng het verzend label op dat u hebt ontvangen van Azure op het pakket.
 6. Maak een afspraak met een transportbedrijf voor het ophalen van de zending. Als u het apparaat in ons retourneert, kan uw provider UPS of FedEx zijn. Een ophaling plannen met UPS:
 
-    1. Bel met UPS in de buurt (gratis land-/regiospecifiek nummer).
+    1. Bel met UPS (gratis land-/regiospecifiek nummer).
     2. Neem in uw gesprek het tracerings nummer van omgekeerde verzen ding op zoals op het afgedrukte label wordt weer gegeven.
     3. Als het tracking nummer niet wordt vermeld, moet u een extra kosten betalen tijdens het ophalen.
 
@@ -84,13 +117,14 @@ Voer de volgende stappen uit om het retour proces te starten.
 
 Nadat het apparaat is ontvangen in het Azure-Data Center, wordt het apparaat geïnspecteerd op beschadiging of op een geknoeid tijdstip.
 
-- Als het apparaat intact en goed inkomt, wordt de facturerings meter voor die resource gestopt. Microsoft Ondersteuning neemt dan contact met u op om te bevestigen dat het apparaat is geretourneerd. U kunt vervolgens de resource die aan het apparaat is gekoppeld, verwijderen in de Azure Portal.
+- Als het apparaat intact is en een goede vorm heeft, stopt de facturerings meter voor die bron. Microsoft Ondersteuning neemt dan contact met u op om te bevestigen dat het apparaat is geretourneerd. U kunt vervolgens de resource die aan het apparaat is gekoppeld, verwijderen in de Azure Portal.
 - Als het apparaat aanzienlijk is aangekomen, kunnen de verfijningen van toepassing zijn. Raadpleeg de [Veelgestelde vragen op verloren of beschadigd apparaat](https://azure.microsoft.com/pricing/details/databox/edge/) en [product service voorwaarden](https://www.microsoft.com/licensing/product-licensing/products)voor meer informatie.  
 
 
 U kunt het apparaat verwijderen in de Azure Portal:
--    Nadat u de order hebt geplaatst en voordat het apparaat door micro soft wordt voor bereid.
--    Nadat u het apparaat hebt geretourneerd naar micro soft, wordt de fysieke inspectie op het Azure-Data Center door gegeven en worden Microsoft Ondersteuning-aanroepen om te bevestigen dat het apparaat is geretourneerd.
+
+- Nadat u de order hebt geplaatst en voordat het apparaat door micro soft wordt voor bereid.
+- Nadat u het apparaat hebt geretourneerd naar micro soft, wordt de fysieke inspectie op het Azure-Data Center door gegeven en worden Microsoft Ondersteuning-aanroepen om te bevestigen dat het apparaat is geretourneerd.
 
 Als u het apparaat hebt geactiveerd op basis van een ander abonnement of een andere locatie, zal micro soft uw bestelling binnen één werkdag naar het nieuwe abonnement of deze locatie verplaatsen. Nadat de order is verplaatst, kunt u deze resource verwijderen.
 
@@ -107,21 +141,7 @@ Voer de volgende stappen uit om het apparaat en de resource in Azure Portal te v
 
 U wordt gewaarschuwd wanneer het apparaat en de bijbehorende resource zijn verwijderd.
 
-## <a name="get-a-replacement-device"></a>Een vervangend apparaat ophalen
-
-Er is een vervangend apparaat nodig wanneer het bestaande apparaat een hardwarestoring heeft of een upgrade nodig heeft. Voer de volgende stappen uit wanneer het apparaat een hardwareprobleem heeft:
-
-1. [Open een ondersteunings ticket voor hardware-probleem](#open-a-support-ticket). Microsoft Ondersteuning stelt vast dat een vervangende eenheid voor een veld (FRU) niet beschikbaar is voor dit exemplaar of dat het apparaat een hardware-upgrade nodig heeft. In beide gevallen zal ondersteuning een vervangend apparaat best Ellen.
-2. [Maak een nieuwe resource](azure-stack-edge-deploy-prep.md#create-a-new-resource) voor het vervangende apparaat. Zorg ervoor dat u het selectie vakje inschakelt voor **een Azure stack edge-apparaat**. 
-3. Nadat u een vervangend apparaat hebt ontvangen, [installeert](azure-stack-edge-deploy-install.md) en [activeert](azure-stack-edge-deploy-connect-setup-activate.md) u het vervangende apparaat op basis van de nieuwe bron.
-4. Volg alle stappen om het oorspronkelijke apparaat te retour neren:
-    1. Open een ander ticket om het oorspronkelijke apparaat te retour neren.
-    2. [De gegevens op het apparaat wissen](#erase-data-from-the-device).
-    3. [Een ophaling plannen](#schedule-a-pickup).
-    5. [Verwijder de resource](#delete-the-resource) die aan het geretourneerde apparaat is gekoppeld.
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Bandbreedte beheren](azure-stack-edge-manage-bandwidth-schedules.md).
+- Meer informatie over het [verkrijgen van een vervangend Azure stack edge-apparaat](azure-stack-edge-replace-device.md).

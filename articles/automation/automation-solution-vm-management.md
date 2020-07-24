@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064448"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Overzicht van VM's buiten bedrijfsuren starten/stoppen
 
@@ -49,7 +49,7 @@ U hoeft geen machtigingen te configureren als u een bijdrager aan het abonnement
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>Machtigingen voor bestaande Automation-accounts en Log Analytics werk ruimte
 
-Als u Vm's wilt inschakelen voor de functie VM's buiten bedrijfsuren starten/stoppen met behulp van een bestaand Automation-account en Log Analytics werk ruimte, hebt u de volgende machtigingen nodig voor het bereik van de resource groep. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over rollen.
+Als u Vm's wilt inschakelen voor de functie VM's buiten bedrijfsuren starten/stoppen met behulp van een bestaand Automation-account en Log Analytics werk ruimte, hebt u de volgende machtigingen nodig voor het bereik van de resource groep. Zie [aangepaste rollen in azure](../role-based-access-control/custom-roles.md)voor meer informatie over rollen.
 
 | Machtiging | Bereik|
 | --- | --- |
@@ -117,7 +117,7 @@ Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap
 |ScheduledStartStop_Parent | Actie: starten of stoppen <br>VMList <br> WhatIf: True of False | Hiermee worden alle virtuele machines in het abonnement gestart of gestopt. Bewerk de variabelen `External_Start_ResourceGroupNames` en `External_Stop_ResourceGroupNames` alleen voor het uitvoeren van deze doel resource groepen. U kunt ook specifieke Vm's uitsluiten door de variabele bij te werken `External_ExcludeVMNames` .|
 |SequencedStartStop_Parent | Actie: starten of stoppen <br> WhatIf: True of False<br>VMList| Maakt labels met de naam **sequencestart** en **sequencestop** op elke virtuele machine waarvoor u de activiteit start/stop wilt sequentieren. Deze label namen zijn hoofdletter gevoelig. De waarde van het label moet een lijst met positieve gehele getallen zijn, bijvoorbeeld `1,2,3` , die overeenkomt met de volg orde waarin u wilt starten of stoppen. <br>**Opmerking**: vm's moeten zich in resource groepen bezien die zijn gedefinieerd in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` variabelen. Ze moeten de juiste labels hebben om de acties van kracht te laten worden.|
 
-### <a name="variables"></a>Variables
+### <a name="variables"></a>Variabelen
 
 De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account. Wijzig variabelen alleen met de voor voegsels `External` . Het wijzigen van variabelen die met een probleem worden opgelost, `Internal` leidt tot ongewenste effecten.
 
@@ -150,7 +150,7 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 
 In alle scenario's, de variabelen `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` zijn nodig voor het richten op vm's, met uitzonde ring van de lijsten met door komma's gescheiden vm's voor de **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**en **ScheduledStartStop_Parent** runbooks. Dat wil zeggen dat uw Vm's deel moeten uitmaken van de doel resource groepen voor het starten en stoppen van de acties. De logica werkt op soort gelijke wijze als Azure Policy, in dat u het abonnement of de resource groep kunt bereiken en acties moet hebben overgenomen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
 
-### <a name="schedules"></a>Planningen
+### <a name="schedules"></a>Schema's
 
 De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt in uw Automation-account.U kunt ze wijzigen of uw eigen aangepaste schema's maken.Standaard zijn alle schema's uitgeschakeld, met uitzonde ring van de **Scheduled_StartVM** -en **Scheduled_StopVM** -schema's.
 

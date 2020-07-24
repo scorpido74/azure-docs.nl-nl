@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065090"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Welke SAP-software wordt ondersteund voor Azure-implementaties
 In dit artikel wordt beschreven hoe u kunt zien welke SAP-software wordt ondersteund voor Azure-implementaties en wat de nood zakelijke releases van het besturings systeem of DBMS-releases zijn.
@@ -87,12 +87,12 @@ Als u de DBMS-releases wilt weten die worden ondersteund met de beoogde Azure-in
 In azure zijn er twee services die kunnen worden gebruikt om de HANA-data base uit te voeren:
 
 - Azure Virtual Machines
-- [HANA grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [HANA grote instanties](./hana-overview-architecture.md)
 
 Voor het uitvoeren van SAP HANA moet SAP meer en sterkere voor waarden hebben om te voldoen aan de infra structuur om netweave of andere SAP-toepassingen en DBMS uit te voeren. Als gevolg hiervan is een kleiner aantal Azure-Vm's in aanmerking voor het uitvoeren van de SAP HANA DBMS. De lijst met ondersteunde Azure-infra structuur die wordt ondersteund voor SAP HANA, vindt u in de [map SAP Hana hardware](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). 
 
 > [!NOTE]
-> De eenheden die beginnen met de letter ' zijn [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) eenheden. 
+> De eenheden die beginnen met de letter ' zijn [Hana grote instanties](./hana-overview-architecture.md) eenheden. 
 
 > [!NOTE]
 > SAP heeft geen specifieke certificering die afhankelijk is van de SAP HANA primaire releases. In tegens telling tot een gemeen schappelijk advies, het scenario voor de kolom **certificering** in de [Hana-gecertificeerde IaaS-platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure), biedt de kolom **geen instructie over de Hana-primaire of secundaire release gecertificeerd**. U moet ervan uitgaan dat alle eenheden vermeld die kunnen worden gebruikt voor HANA 1,0 en HANA 2,0, zolang de gecertificeerde besturingssysteem releases voor de specifieke eenheden ook worden ondersteund door HANA 1,0-releases. 
@@ -138,12 +138,11 @@ Ondersteuning voor SAP BPC 10,1 SP08 wordt beschreven in [SAP-ondersteunings opm
 Ondersteuning voor SAP Hybris commerce platform op Azure wordt beschreven in de [Hybris-documentatie](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html). Vanaf een ondersteund DBMS voor het SAP Hybris-commerce platform, worden er lijsten weer gegeven zoals:
 
 - SQL Server en Oracle op het Windows-besturings systeem. Voor SAP NetWeaver gelden dezelfde minimale releases. Zie [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533) voor meer informatie
-- SAP HANA op Red Hat en SUSE Linux. SAP HANA gecertificeerde VM-typen zijn vereist zoals eerder in [dit document](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)is beschreven. SAP (Hybris) commerce platform wordt beschouwd als OLTP-werk belasting
+- SAP HANA op Red Hat en SUSE Linux. SAP HANA gecertificeerde VM-typen zijn vereist zoals eerder in [dit document](#sap-hana-support)is beschreven. SAP (Hybris) commerce platform wordt beschouwd als OLTP-werk belasting
 - SQL Azure DB vanaf SAP (Hybris) commerce platform versie 1811
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-De volgende stappen in de [Azure virtual machines planning en implementatie van de SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) lezen
-
+De volgende stappen in de [Azure virtual machines planning en implementatie van de SAP net-Weaver](./planning-guide.md) lezen

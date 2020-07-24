@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066346"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Herhalingen maken waarmee werkstroomacties worden herhaald of matrices worden verwerkt in Azure Logic Apps
 
@@ -162,7 +162,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
 > [!NOTE]
 > In deze stappen wordt Office 365 Outlook gebruikt, maar u kunt elke e-mail provider die Logic Apps ondersteunt gebruiken. 
-> [Raadpleeg de lijst met connectors hier](https://docs.microsoft.com/connectors/). Als u een ander e-mail account gebruikt, blijven de algemene stappen hetzelfde, maar uw gebruikers interface kan er iets anders uitzien. 
+> [Raadpleeg de lijst met connectors hier](/connectors/). Als u een ander e-mail account gebruikt, blijven de algemene stappen hetzelfde, maar uw gebruikers interface kan er iets anders uitzien. 
 
 1. Een lege, logische app maken. In de ontwerp functie voor logische apps selecteert u in het zoekvak **alle**. Zoek naar "recurrence". 
    Selecteer in de lijst triggers deze trigger: **herhalings schema**
@@ -189,7 +189,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
    ![Eigenschappen van variabele instellen](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | Eigenschap | Waarde | Description |
+   | Eigenschap | Waarde | Beschrijving |
    | -------- | ----- | ----------- |
    | **Naam** | Limiet | De naam van de variabele | 
    | **Type** | Geheel getal | Het gegevens type van uw variabele | 
@@ -250,7 +250,7 @@ Een ' until '-lus heeft standaard limieten die de uitvoering stoppen als een van
 | Eigenschap | Standaardwaarde | Beschrijving | 
 | -------- | ------------- | ----------- | 
 | **Aantal** | 60 | Het hoogste aantal lussen dat wordt uitgevoerd voordat de lus wordt afgesloten. De standaard waarde is 60 cycli. | 
-| **Time-out** | PT1H | De meeste tijd voor het uitvoeren van een lus voordat de lus wordt afgesloten. De standaard waarde is één uur en wordt opgegeven in de ISO 8601-indeling. <p>De time-outwaarde wordt geëvalueerd voor elke lus-cyclus. Als een actie in de lus langer duurt dan de time-outlimiet, wordt de huidige cyclus niet gestopt. De volgende cyclus wordt echter niet gestart omdat niet wordt voldaan aan de limiet voorwaarde. | 
+| **Out** | PT1H | De meeste tijd voor het uitvoeren van een lus voordat de lus wordt afgesloten. De standaard waarde is één uur en wordt opgegeven in de ISO 8601-indeling. <p>De time-outwaarde wordt geëvalueerd voor elke lus-cyclus. Als een actie in de lus langer duurt dan de time-outlimiet, wordt de huidige cyclus niet gestopt. De volgende cyclus wordt echter niet gestart omdat niet wordt voldaan aan de limiet voorwaarde. | 
 |||| 
 
 Als u deze standaard limieten wilt wijzigen, kiest u **Geavanceerde opties weer geven** in de vorm van de lus.
@@ -335,7 +335,7 @@ In dit voor beeld ' until ' wordt een HTTP-eind punt aangeroepen, waardoor een r
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html).
 * [Azure Logic apps site voor gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

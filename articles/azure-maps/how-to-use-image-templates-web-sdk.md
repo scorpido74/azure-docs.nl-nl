@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064686"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
 
@@ -119,7 +119,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de 
 
 Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogrammen of als u een module maakt waarmee extra afbeeldings sjablonen worden toegevoegd, kunt u deze pictogrammen eenvoudig toevoegen en ophalen uit de Azure Maps Web-SDK. Gebruik de volgende statische functies in de `atlas` naam ruimte.
 
-| Name | Retour type | Description | 
+| Naam | Retour type | Beschrijving | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hiermee voegt u een aangepaste SVG-afbeeldings sjabloon toe aan de Atlas-naam ruimte. |
 |  `getImageTemplate(templateName: string, scale?: number)`| tekenreeks | Hiermee wordt een SVG-sjabloon met de naam opgehaald. |
@@ -127,7 +127,7 @@ Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogr
 
 SVG-afbeeldings sjablonen ondersteunen de volgende waarden voor de tijdelijke aanduiding:
 
-| Tijdelijke aanduiding | Description |
+| Tijdelijke aanduiding | Beschrijving |
 |-|-|
 | `{color}` | De primaire kleur. | 
 | `{secondaryColor}` | De secundaire kleur. | 
@@ -148,44 +148,337 @@ Deze tabel bevat alle afbeeldings sjablonen die momenteel beschikbaar zijn in de
 
 **Symbool pictogram sjablonen**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| tijdlijnmarkeerteken | markering-dik | markering-cirkel | markering-plat |
-|![markerings pictogram](./media/image-templates/marker.png)|![markering-dik pictogram](./media/image-templates/marker-thick.png)|![markering: cirkel pictogram](./media/image-templates/marker-circle.png)|![markering-vlak pictogram](./media/image-templates/marker-flat.png)|
-||||
-| markering-vier kant | markering-vier kant-cluster | markering-pijl | markering-bal-PIN | 
-|![pictogram markering-vier kant](./media/image-templates/marker-square.png)|![markering-vier kant-cluster pictogram](./media/image-templates/marker-square-cluster.png)|![pictogram voor markering-pijl](./media/image-templates/marker-arrow.png)|![markering-bal-PIN-pictogram](./media/image-templates/marker-ball-pin.png)|
-||||
-| markering-vier kant rond | markering-vier kant-afgerond-cluster | flag | vlag: drie hoek |
-| ![markering: vier kant pictogram](./media/image-templates/marker-square-rounded.png) | ![markering-vier kant-afgerond-cluster pictogram](./media/image-templates/marker-square-rounded-cluster.png) | ![vlag pictogram](./media/image-templates/flag.png) | ![pictogram voor de vlag-drie hoek](./media/image-templates/flag-triangle.png) |
-||||
-| driehoek | drie hoek: dik | drie hoek omlaag | drie hoekje-pijl-links |
-| ![pictogram drie hoek](./media/image-templates/triangle.png) | ![drie hoek-dik pictogram](./media/image-templates/triangle-thick.png) | ![pictogram met drie hoek omlaag](./media/image-templates/triangle-arrow-up.png) | ![pictogram met drie hoekje-pijl-links](./media/image-templates/triangle-arrow-left.png) |
-||||
-| zeshoek | zeshoek-dik | zeshoek-afgerond | zeshoek-afgerond-dik |
-| ![pictogram van zeshoek](./media/image-templates/hexagon.png) | ![pictogram van zeshoek-dik](./media/image-templates/hexagon-thick.png) | ![pictogram met zeshoek afgerond](./media/image-templates/hexagon-rounded.png) | ![pictogram van zeshoek-afgerond-dik](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| vastmaken | vastmaken en afronden | afgerond vier kant | afgerond-vier kant-dik |
-| ![Speldpictogram](./media/image-templates/pin.png) | ![pictogram voor een afronding](./media/image-templates/pin-round.png) | ![pictogram afgerond op vier kant](./media/image-templates/rounded-square.png) | ![pictogram rond afgerond-vier kant](./media/image-templates/rounded-square-thick.png) |
-||||
-| pijl-omhoog | pijl-omhoog-dun | car ||
-| ![pictogram pijl omhoog](./media/image-templates/arrow-up.png) | ![pijl-omhoog-dun pictogram](./media/image-templates/arrow-up-thin.png) | ![pictogram auto](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      tijdlijnmarkeerteken
+   :::column-end:::
+   :::column span="":::
+      markering-dik
+   :::column-end:::
+   :::column span="":::
+      markering-cirkel
+   :::column-end:::
+   :::column span="":::
+      markering-plat
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![markerings pictogram](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![markering-dik pictogram](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![markering: cirkel pictogram](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![markering-vlak pictogram](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      markering-vier kant
+   :::column-end:::
+   :::column span="":::
+      markering-vier kant-cluster
+   :::column-end:::
+   :::column span="":::
+      markering-pijl
+   :::column-end:::
+   :::column span="":::
+      markering-bal-PIN
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram markering-vier kant](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![markering-vier kant-cluster pictogram](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram voor markering-pijl](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![markering-bal-PIN-pictogram](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      markering-vier kant rond
+   :::column-end:::
+   :::column span="":::
+      markering-vier kant-afgerond-cluster
+   :::column-end:::
+   :::column span="":::
+      flag
+   :::column-end:::
+   :::column span="":::
+      vlag: drie hoek
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![markering: vier kant pictogram](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![markering-vier kant-afgerond-cluster pictogram](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![vlag pictogram](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram voor de vlag-drie hoek](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      driehoek
+   :::column-end:::
+   :::column span="":::
+      drie hoek: dik
+   :::column-end:::
+   :::column span="":::
+      drie hoek omlaag
+   :::column-end:::
+   :::column span="":::
+      drie hoekje-pijl-links
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram drie hoek](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![drie hoek-dik pictogram](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram met drie hoek omlaag](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram met drie hoekje-pijl-links](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      zeshoek
+   :::column-end:::
+   :::column span="":::
+      zeshoek-dik
+   :::column-end:::
+   :::column span="":::
+      zeshoek-afgerond
+   :::column-end:::
+   :::column span="":::
+      zeshoek-afgerond-dik
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram van zeshoek](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram van zeshoek-dik](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram met zeshoek afgerond](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram van zeshoek-afgerond-dik](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      vastmaken
+   :::column-end:::
+   :::column span="":::
+      vastmaken en afronden
+   :::column-end:::
+   :::column span="":::
+      afgerond vier kant
+   :::column-end:::
+   :::column span="":::
+      afgerond-vier kant-dik
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Speldpictogram](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram voor een afronding](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram afgerond op vier kant](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram rond afgerond-vier kant](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      pijl-omhoog
+   :::column-end:::
+   :::column span="":::
+      pijl-omhoog-dun
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram pijl omhoog](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![pijl-omhoog-dun pictogram](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram auto](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **Opvul patroon Sjablonen voor veelhoek**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| blok | controle-gedraaid | kring | cirkels-gespatieerd |
-| ![pictogram van de controle](./media/image-templates/checker.png) | ![pictogram van de controle functie](./media/image-templates/checker-rotated.png) | ![pictogram cirkels](./media/image-templates/circles.png) | ![cirkels pictogram](./media/image-templates/circles-spaced.png) |
-|||||
-| diagonaal omhoog | diagonale lijnen-omlaag | diagonale strepen-omhoog | diagonale strepen-omlaag |
-| ![pictogram voor diagonale lijnen](./media/image-templates/diagonal-lines-up.png) | ![pictogram diagonale lijnen/omlaag](./media/image-templates/diagonal-lines-down.png) | ![pictogram met diagonale strepen naar boven](./media/image-templates/diagonal-stripes-up.png) | ![pictogram met diagonale strepen-omlaag](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| raster lijnen | gedraaid-raster-lijnen | gedraaid-raster-stroken | x-Fill |
-| ![pictogram raster lijnen](./media/image-templates/grid-lines.png) | ![pictogram voor gedraaid raster-lijnen](./media/image-templates/rotated-grid-lines.png) | ![pictogram voor gedraaid raster-strepen](./media/image-templates/rotated-grid-stripes.png) | ![pictogram x-opvul](./media/image-templates/x-fill.png) |
-|||||
-| zigzag | zigzag-zigzag-Vertical | wijzen |  |
-| ![zigzag-/-pictogram](./media/image-templates/zig-zag.png) | ![het pictogram zigzag-zigzag-Vertical](./media/image-templates/zig-zag-vertical.png) | ![pictogram punten](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      blok
+   :::column-end:::
+   :::column span="":::
+      controle-gedraaid
+   :::column-end:::
+   :::column span="":::
+      kring
+   :::column-end:::
+   :::column span="":::
+      cirkels-gespatieerd
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram van de controle](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram van de controle functie](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram cirkels](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![cirkels pictogram](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      diagonaal omhoog
+   :::column-end:::
+   :::column span="":::
+      diagonale lijnen-omlaag
+   :::column-end:::
+   :::column span="":::
+      diagonale strepen-omhoog
+   :::column-end:::
+   :::column span="":::
+      diagonale strepen-omlaag
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram voor diagonale lijnen](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram diagonale lijnen/omlaag](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram met diagonale strepen naar boven](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram met diagonale strepen-omlaag](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      raster lijnen
+   :::column-end:::
+   :::column span="":::
+      gedraaid-raster-lijnen
+   :::column-end:::
+   :::column span="":::
+      gedraaid-raster-stroken
+   :::column-end:::
+   :::column span="":::
+      x-Fill
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![pictogram raster lijnen](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram voor gedraaid raster-lijnen](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram voor gedraaid raster-strepen](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram x-opvul](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      zigzag
+   :::column-end:::
+   :::column span="":::
+      zigzag-zigzag-Vertical
+   :::column-end:::
+   :::column span="":::
+      wijzen
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![zigzag-/-pictogram](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![het pictogram zigzag-zigzag-Vertical](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![pictogram punten](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **Vooraf geladen afbeeldings pictogrammen**
 

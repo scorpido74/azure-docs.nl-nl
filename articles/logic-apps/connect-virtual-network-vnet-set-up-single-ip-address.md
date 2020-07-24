@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066398"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Stel één IP-adres in voor een of meer integratie service omgevingen in Azure Logic Apps
 
@@ -51,7 +52,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Routenaam** | <*unieke route naam*> | Een unieke naam voor de route in de route tabel |
-   | **Adres voorvoegsel** | <*doel adres*> | Het adres voorvoegsel voor het doel systeem waar u uitgaand verkeer wilt doen. Zorg ervoor dat u [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. In dit voor beeld is dit adres voorvoegsel voor een SFTP-server, die wordt beschreven in de sectie [netwerk regel instellen](#set-up-network-rule). |
+   | **Adresvoorvoegsel** | <*doel adres*> | Het adres voorvoegsel voor het doel systeem waar u uitgaand verkeer wilt doen. Zorg ervoor dat u [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. In dit voor beeld is dit adres voorvoegsel voor een SFTP-server, die wordt beschreven in de sectie [netwerk regel instellen](#set-up-network-rule). |
    | **Volgend hoptype** | **Virtueel apparaat** | Het [type hop](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) dat wordt gebruikt door uitgaand verkeer |
    | **Adres van de volgende hop** | <*Firewall-persoonlijk IP-adres*> | Het privé-IP-adres voor uw firewall |
    |||
@@ -95,8 +96,8 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    * [Een netwerkregel configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Regels voor de logicaverwerking in Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Veelgestelde vragen over Azure Firewall](../firewall/firewall-faq.md)
-   * [Azure PowerShell: New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: AZ Network Firewall Network-Rule](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+   * [Azure CLI: AZ Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>Volgende stappen
 

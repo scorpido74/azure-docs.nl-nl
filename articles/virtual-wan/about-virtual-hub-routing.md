@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259181"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064921"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -60,6 +60,9 @@ Er is ook een **route tabel geen** beschikbaar voor elke virtuele hub. Door door
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Doorgifte":::
 
+### <a name="labels"></a><a name="static"></a>Labels
+Labels bieden een mechanisme voor het logisch groeperen van route tabellen. Dit is met name handig tijdens het door geven van routes van verbindingen naar meerdere route tabellen. De standaard route tabel heeft bijvoorbeeld een ingebouwd label met de naam default. Wanneer gebruikers verbindings routes door geven naar een standaard label, wordt deze automatisch toegepast op alle standaard route tabellen voor elke hub in het virtuele WAN. 
+
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Statische routes configureren in een virtuele netwerk verbinding
 
 Het configureren van statische routes biedt een mechanisme voor het stuur verkeer via een volgende hop-IP. Dit kan een virtueel netwerk apparaat (NVA) zijn dat is ingericht in een spoke-VNet dat is gekoppeld aan een virtuele hub. De statische route bestaat uit een route naam, een lijst met doel voorvoegsels en het volgende hop-IP-adres.
@@ -69,13 +72,13 @@ Deze optie is alleen beschikbaar in de Azure Portal, maar biedt de gebruiker een
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Route tabellen in de Basic-en Standard-standaard-virtuele Wan's vóór de functieset van koppeling en doorgifte
 
-Route tabellen hebben nu functies voor koppeling en doorgifte. Een vooraf bestaande route tabel is een route tabel zonder deze functies. Als u al bestaande routes in hub-route ring hebt en u de nieuwe mogelijkheden wilt gebruiken, moet u rekening houden met het volgende:
+Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf bestaande routeringstabel is een routeringstabel die deze functies niet heeft. Als u al bestaande routes in Hub Routing hebt en u de nieuwe mogelijkheden wilt gebruiken, moet u rekening houden met het volgende:
 
 * **Standaard virtuele WAN-klanten met al bestaande routes in de virtuele hub**:
 
 Als u nieuwe mogelijkheden voor de route tabel wilt gebruiken, moet u tot de week augustus wachten tot de implementatie in Azure is voltooid. Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens proberen nieuwe route tabellen te maken (beschikbaar in de sectie route tabellen van de hub in Azure Portal)
 
-* **Eenvoudige virtuele WAN-klanten met reeds bestaande routes in de virtuele hub**: als u de nieuwe mogelijkheden van de route tabel wilt gebruiken, moet u tot een week van augustus wachten tot de implementatie in Azure is voltooid. Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens een **upgrade uitvoeren** van uw virtuele standaard WAN naar een standaard virtueel WAN. Zie [een virtuele WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
+* **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

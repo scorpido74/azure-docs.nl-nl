@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066367"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Voorwaardelijke instructies maken waarmee werk stroom acties in Azure Logic Apps worden beheerd
 
-Als u specifieke acties in uw logische app pas wilt uitvoeren nadat u een opgegeven voor waarde hebt door gegeven, voegt u een *voorwaardelijke instructie*toe. Deze controle structuur vergelijkt de gegevens in uw werk stroom met specifieke waarden of velden. U kunt vervolgens verschillende acties opgeven die worden uitgevoerd op basis van het feit of de gegevens voldoen aan de voor waarde. U kunt voor waarden in elkaar nesten.
+Als u specifieke acties in uw logische app pas wilt uitvoeren nadat u een opgegeven voor waarde hebt door gegeven, voegt u een *voorwaardelijke instructie*toe. Met dit beheermechanisme vergelijkt u de gegevens in uw werkstroom met specifieke waarden of velden. U kunt vervolgens verschillende acties opgeven die worden uitgevoerd op basis van het feit of de gegevens voldoen aan de voor waarde. U kunt voor waarden in elkaar nesten.
 
 Stel dat u een logische app hebt die te veel e-mail berichten verzendt wanneer nieuwe items worden weer gegeven op de RSS-feed van een website. U kunt een voorwaardelijke instructie toevoegen om een e-mail te verzenden wanneer het nieuwe item een specifieke teken reeks bevat. 
 
@@ -109,7 +110,7 @@ Hier volgt de code definitie op hoog niveau achter een voorwaardelijke instructi
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

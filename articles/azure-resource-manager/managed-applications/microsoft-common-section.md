@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652253"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063977"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Gebruikers interface-element van micro soft. common. Section
 
@@ -17,7 +18,7 @@ Een besturings element dat een of meer elementen onder een kop groepeert.
 
 ## <a name="ui-sample"></a>UI-voor beeld
 
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft-common-section.png)
 
 ## <a name="schema"></a>Schema
 
@@ -48,7 +49,7 @@ Een besturings element dat een of meer elementen onder een kop groepeert.
 - Dit element biedt geen ondersteuning voor de `toolTip` eigenschap.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
-Als u de uitvoer waarden van elementen in wilt openen `elements` , gebruikt u de functies [()](create-uidefinition-functions.md#basics) of [stappen (](create-uidefinition-functions.md#steps) ) en punt notatie:
+Als u de uitvoer waarden van elementen in wilt openen `elements` , gebruikt u de functies [()](create-ui-definition-referencing-functions.md#basics) of [stappen (](create-ui-definition-referencing-functions.md#steps) ) en punt notatie:
 
 ```json
 steps('configuration').section1.text1

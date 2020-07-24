@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 785054222dc3281b11b5e6abe1b82f67e2fc5ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066651"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Een interne load balancer maken met behulp van een sjabloon
 
@@ -40,7 +40,7 @@ De voorbeeldsjabloon in de openbare opslagplaats maakt gebruik van een parameter
 
 Volg onderstaande stappen als u de sjabloon die u hebt gedownload, wilt implementeren met PowerShell.
 
-1. Als u Azure PowerShell nooit hebt gebruikt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/overview) en volgt u de instructies helemaal tot aan het einde om u aan te melden bij Azure en uw abonnement te selecteren.
+1. Als u Azure PowerShell nooit hebt gebruikt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/) en volgt u de instructies helemaal tot aan het einde om u aan te melden bij Azure en uw abonnement te selecteren.
 2. Download het parameterbestand naar de lokale schijf.
 3. Bewerk het bestand en sla het op.
 4. Voer de cmdlet **New-AzResourceGroupDeployment** uit om een resource groep te maken met behulp van de sjabloon.
@@ -56,7 +56,7 @@ Volg onderstaande stappen als u de sjabloon die u hebt gedownload, wilt implemen
 Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 
 1. Als u Azure CLI nog nooit hebt gebruikt, raadpleegt u [de Azure cli installeren en configureren](../cli-install-nodejs.md) en volgt u de instructies tot het punt waar u uw Azure-account en-abonnement selecteert.
-2. Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen. Voer de opdracht **azure config mode** uit om over te schakelen naar de modus Resource Manager, zoals hieronder weergegeven.
+2. Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud Shell in uw browser te openen. Voer de opdracht **azure config mode** uit om over te schakelen naar de modus Resource Manager, zoals hieronder weergegeven.
 
     ```console
     azure config mode arm

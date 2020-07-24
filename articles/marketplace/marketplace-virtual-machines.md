@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065654"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Publicatie handleiding voor aanbiedingen van virtuele machines
 
@@ -47,7 +47,7 @@ Gebruik het type *virtuele machine* -aanbieding wanneer u een virtueel apparaat 
 > Op dit moment kunnen de monetaire toezeg gingen die aan een Enterprise Agreement zijn gekoppeld, worden gebruikt voor het Azure-gebruik van uw virtuele machine, maar niet op basis van uw software licentie kosten.  
 > 
 > [!NOTE]
-> U kunt de detectie en implementatie van uw virtuele machine beperken tot een specifieke set klanten door de installatie kopie en prijzen als een persoonlijke aanbieding te publiceren. Persoonlijke aanbiedingen bieden u de mogelijkheid om exclusieve aanbiedingen voor uw dichtstbijzijnde klanten te maken en om aangepaste software en voor waarden te leveren. Met de aangepaste voor waarden kunt u een groot aantal scenario's markeren, met inbegrip van veld LED-deals met gespecialiseerde prijzen en voor waarden, en vroegtijdige toegang tot beperkte release software. Met persoonlijke aanbiedingen kunt u specifieke prijzen of producten aan een beperkt aantal klanten geven door een nieuwe SKU te maken met deze gegevens.  
+> U kunt de detectie en implementatie van uw virtuele machine beperken tot een specifieke set klanten door de installatie kopie en prijzen als een persoonlijke aanbieding te publiceren. Persoonlijke aanbiedingen bieden u de mogelijkheid om exclusieve aanbiedingen voor uw dichtstbijzijnde klanten te maken en om aangepaste software en voor waarden te leveren. Met de aangepaste voor waarden kunt u een groot aantal scenario's markeren, met inbegrip van veld LED-deals met gespecialiseerde prijzen en voor waarden, en vroegtijdige toegang tot beperkte release software. Met persoonlijke aanbiedingen kunt u specifieke prijzen of producten aan een beperkt aantal klanten geven door een nieuw abonnement te maken met deze gegevens.  
 >
 > Zie voor meer informatie [persoonlijke aanbiedingen op Azure Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 

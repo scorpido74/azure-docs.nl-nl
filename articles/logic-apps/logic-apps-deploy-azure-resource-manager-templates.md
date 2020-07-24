@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 814cc1116ca8ac924beaaea8c7bb3dbb8d6ae1ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066041"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps
 
@@ -64,8 +64,8 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 
 Raadpleeg de volgende onderwerpen voor meer informatie:
 
-* [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
-* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [`New-AzResourceGroupDeployment`](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
 
 <a name="cli"></a>
 
@@ -80,23 +80,23 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az group deployment create`](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
 
 ## <a name="deploy-with-azure-devops"></a>Implementeren met Azure DevOps
 
-Voor het implementeren van sjablonen voor logische apps en het beheren van omgevingen, gebruiken teams meestal een hulp programma zoals [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) in [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services). Azure-pijp lijnen bieden een [implementatie taak voor een Azure-resource groep](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) die u kunt toevoegen aan een pijp lijn van een build of release. Voor autorisatie om de release pijplijn te implementeren en te genereren, hebt u ook een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md)voor Azure Active Directory (AD) nodig. Meer informatie over het [gebruik van service-principals met Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure).
+Voor het implementeren van sjablonen voor logische apps en het beheren van omgevingen, gebruiken teams meestal een hulp programma zoals [Azure-pijp lijnen](/azure/devops/pipelines/get-started/what-is-azure-pipelines) in [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops-services). Azure-pijp lijnen bieden een [implementatie taak voor een Azure-resource groep](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) die u kunt toevoegen aan een pijp lijn van een build of release. Voor autorisatie om de release pijplijn te implementeren en te genereren, hebt u ook een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md)voor Azure Active Directory (AD) nodig. Meer informatie over het [gebruik van service-principals met Azure-pijp lijnen](/azure/devops/pipelines/library/connect-to-azure).
 
 Zie de volgende onderwerpen en voor beelden voor meer informatie over doorlopende integratie en doorlopende implementatie (CI/CD) voor Azure Resource Manager sjablonen met Azure-pijp lijnen:
 
 * [Resource Manager-sjablonen integreren met Azure-pijp lijnen](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
-* [Zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
-* [Voor beeld: verbinding maken met Azure Service Bus wacht rijen van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Voor beeld: een actie van een functie-app instellen voor Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Voor beeld: verbinding maken met een integratie account van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [Voor beeld: Azure-pijp lijnen organiseren met behulp van Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure-pijplijnen](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
+* [Voor beeld: verbinding maken met Azure Service Bus wacht rijen van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Voor beeld: een actie van een functie-app instellen voor Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Voor beeld: verbinding maken met een integratie account van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Voor beeld: Azure-pijp lijnen organiseren met behulp van Azure Logic Apps](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 Hier volgen de algemene stappen op hoog niveau voor het gebruik van Azure-pijp lijnen:
 
@@ -108,7 +108,7 @@ Hier volgen de algemene stappen op hoog niveau voor het gebruik van Azure-pijp l
 
    ![Taak voor de implementatie van een Azure-resource groep toevoegen](./media/logic-apps-deploy-azure-resource-manager-templates/add-azure-resource-group-deployment-task.png)
 
-1. Configureren met een [Service-Principal](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure).
+1. Configureren met een [Service-Principal](/azure/devops/pipelines/library/connect-to-azure).
 
 1. Verwijzingen toevoegen aan de sjabloon voor logische apps en sjabloon parameter bestanden.
 
@@ -118,7 +118,7 @@ Hier volgen de algemene stappen op hoog niveau voor het gebruik van Azure-pijp l
 
 ## <a name="authorize-oauth-connections"></a>OAuth-verbindingen autoriseren
 
-Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds OAuth-verbindingen autoriseren om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-scenarios.md). Hier volgen manieren waarop u OAuth-verbindingen kunt autoriseren:
+Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds OAuth-verbindingen autoriseren om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-vs-authorization.md). Hier volgen manieren waarop u OAuth-verbindingen kunt autoriseren:
 
 * Voor automatische implementaties kunt u een script gebruiken dat toestemming geeft voor elke OAuth-verbinding. Hier volgt een voor beeld van een script in GitHub in het [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) -project.
 

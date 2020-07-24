@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066529"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic Apps
 
@@ -157,7 +157,7 @@ Wanneer uw logische app wordt geactiveerd en wordt gestart, wordt de status van 
 
 Als u het aantal afgebroken werk stroom exemplaren wilt minimaliseren, kunt u kiezen uit verschillende bericht patronen die u kunt implementeren, bijvoorbeeld:
 
-* [Patroon vaste circulatie lijst](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [Patroon vaste circulatie lijst](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   Dit ondernemings bericht patroon waarmee een bedrijfs proces in kleinere fasen wordt gesplitst. Voor elke fase stelt u een logische app in waarmee de werk belasting voor die fase wordt afgehandeld. Om met elkaar te communiceren, gebruiken uw Logic apps een asynchroon berichten protocol, zoals Azure Service Bus wacht rijen of onderwerpen. Wanneer u een proces in kleinere stadia verdeelt, verkleint u het aantal bedrijfs processen dat kan vastlopen op een mislukt logische app-exemplaar. Zie [Enter prise Integration Patterns-Routing Slip (](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html)Engelstalig) voor meer algemene informatie over dit patroon.
 
@@ -165,7 +165,7 @@ Als u het aantal afgebroken werk stroom exemplaren wilt minimaliseren, kunt u ki
 
   ![Een bedrijfs proces splitsen in fasen die worden vertegenwoordigd door Logic apps, die met elkaar communiceren met behulp van Azure Service Bus wachtrijen](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  Als zowel de primaire als de secundaire Logic-app-exemplaren hetzelfde circulatie lijst patroon op hun locaties volgen, kunt u het [patroon voor concurrerende gebruikers](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) implementeren door [actief-actief rollen](#roles) voor die instanties in te stellen.
+  Als zowel de primaire als de secundaire Logic-app-exemplaren hetzelfde circulatie lijst patroon op hun locaties volgen, kunt u het [patroon voor concurrerende gebruikers](/azure/architecture/patterns/competing-consumers) implementeren door [actief-actief rollen](#roles) voor die instanties in te stellen.
 
 * [Patroon van proces beheerder (Broker)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ Wanneer u de primaire en secundaire exemplaren van de logische app instelt, moet
   Als u bijvoorbeeld een bericht wachtrij leest, zoals een Azure Service Bus wachtrij, wordt de status aan server zijde gebruikt, omdat de Queuing-service vergrendelde berichten bijhoudt om te voor komen dat andere clients dezelfde berichten lezen.
 
   > [!NOTE]
-  > Als uw logische app berichten in een specifieke volg orde moet lezen, bijvoorbeeld van een Service Bus wachtrij, kunt u het concurrerende consumenten patroon gebruiken, maar alleen in combi natie met Service Bus-sessies, ook wel bekend als het [ *sequentiële verwerkings* patroon](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy). Anders moet u de logische app-exemplaren instellen met de actieve passieve rollen.
+  > Als uw logische app berichten in een specifieke volg orde moet lezen, bijvoorbeeld van een Service Bus wachtrij, kunt u het concurrerende consumenten patroon gebruiken, maar alleen in combi natie met Service Bus-sessies, ook wel bekend als het [ *sequentiële verwerkings* patroon](/azure/architecture/patterns/sequential-convoy). Anders moet u de logische app-exemplaren instellen met de actieve passieve rollen.
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Vanuit een nood herstel perspectief is de aanvraag trigger een passieve ontvange
 
 * [Actief-passief](#roles): alleen het primaire exemplaar is actief en verwerkt alle werk, terwijl het secundaire exemplaar wacht totdat de primaire storing optreedt of de fout optreedt. De aanroeper of router bepaalt wanneer het secundaire exemplaar moet worden aangeroepen.
 
-Als een aanbevolen architectuur kunt u Azure API Management gebruiken als proxy voor de Logic apps die gebruikmaken van aanvraag triggers. API Management biedt [ingebouwde Kruis-regionale tolerantie en de mogelijkheid om verkeer te routeren over meerdere eind punten](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region).
+Als een aanbevolen architectuur kunt u Azure API Management gebruiken als proxy voor de Logic apps die gebruikmaken van aanvraag triggers. API Management biedt [ingebouwde Kruis-regionale tolerantie en de mogelijkheid om verkeer te routeren over meerdere eind punten](../api-management/api-management-howto-deploy-multi-region.md).
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Voor deze taak maakt u op de secundaire locatie een watchdog Logic-app waarmee u
 
 ### <a name="activate-your-secondary-instance"></a>Activeer uw secundaire exemplaar
 
-Als u de secundaire instantie automatisch wilt activeren, kunt u een logische app maken die de beheer-API aanroept, zoals de [Azure Resource Manager connector](https://docs.microsoft.com/connectors/arm/) om de juiste Logic apps te activeren op de secundaire locatie. U kunt uw watchdog-app uitbreiden om deze activerings logische app aan te roepen nadat een bepaald aantal fouten is opgetreden.
+Als u de secundaire instantie automatisch wilt activeren, kunt u een logische app maken die de beheer-API aanroept, zoals de [Azure Resource Manager connector](/connectors/arm/) om de juiste Logic apps te activeren op de secundaire locatie. U kunt uw watchdog-app uitbreiden om deze activerings logische app aan te roepen nadat een bepaald aantal fouten is opgetreden.
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ U kunt logboek registratie instellen voor uw logische app-uitvoeringen en de res
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van tolerantie voor Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [Controlelijst voor tolerantie voor specifieke Azure-services](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Gegevens beheer voor tolerantie in azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Back-ups en herstel na nood gevallen voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Herstel na een serviceonderbreking in de gehele regio](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Overzicht van tolerantie voor Azure](/azure/architecture/framework/resiliency/overview)
+* [Controlelijst voor tolerantie voor specifieke Azure-services](/azure/architecture/checklist/resiliency-per-service)
+* [Gegevens beheer voor tolerantie in azure](/azure/architecture/framework/resiliency/data-management)
+* [Back-ups en herstel na nood gevallen voor Azure-toepassingen](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Herstel na een serviceonderbreking in de gehele regio](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Micro soft Service Level Agreements (Sla's) voor Azure-Services](https://azure.microsoft.com/support/legal/sla/)

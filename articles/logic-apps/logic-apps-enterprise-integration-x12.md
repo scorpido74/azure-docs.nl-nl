@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83739529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066114"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
@@ -87,7 +87,7 @@ Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren
 
 ![Schema's voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) voor elk transactie type (ST01) en Sender Application (GS02). De EDI receive-pijp lijn ontleedt het inkomende bericht door te voldoen aan de waarden en het schema dat u in deze sectie hebt ingesteld met de waarden voor ST01 en GS02 in het inkomende bericht en met het schema van het binnenkomende bericht. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
+Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](./logic-apps-enterprise-integration-create-integration-account.md) voor elk transactie type (ST01) en Sender Application (GS02). De EDI receive-pijp lijn ontleedt het inkomende bericht door te voldoen aan de waarden en het schema dat u in deze sectie hebt ingesteld met de waarden voor ST01 en GS02 in het inkomende bericht en met het schema van het binnenkomende bericht. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 | Eigenschap | Beschrijving |
 |----------|-------------|
@@ -174,7 +174,7 @@ Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren
    * [Versie nummer van besturings element](#outbound-control-version-number)
    * [Controle nummers](#outbound-control-numbers)
    * [Teken sets en scheidings tekens](#outbound-character-sets-separators)
-   * [/Categorievalidatie](#outbound-validation)
+   * [Validatie](#outbound-validation)
 
 1. Wanneer u klaar bent, moet u de instellingen opslaan door **OK**te selecteren.
 
@@ -210,7 +210,7 @@ Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren
 
 ![Schema's voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) voor elk transactie type (ST01). Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
+Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](./logic-apps-enterprise-integration-create-integration-account.md) voor elk transactie type (ST01). Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 | Eigenschap | Beschrijving |
 |----------|-------------|
@@ -236,7 +236,7 @@ Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-inte
 
 ![Het versie nummer van het besturings element voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) voor elke uitwisseling. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
+Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](./logic-apps-enterprise-integration-create-integration-account.md) voor elke uitwisseling. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 | Eigenschap | Beschrijving |
 |----------|-------------|
@@ -316,7 +316,7 @@ Wanneer u werkt met HIPAA-schema's en de 277-of 837-bericht typen, moet u een pa
 
 Deze tabel bevat de betrokken bericht typen, varianten en de document versie nummers die zijn toegewezen aan deze bericht typen:
 
-| Bericht type of-variant |  Description | Document versie nummer (GS8) |
+| Bericht type of-variant |  Beschrijving | Document versie nummer (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Melding van status van informatie over gezondheids zorg | 005010X212 |
 | 837_I | Gezondheids zorg claim institutionele | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
@@ -381,7 +381,7 @@ Voer de volgende stappen uit om deze document versie nummers en bericht typen op
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/x12/)voor aanvullende technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector.
+Zie de [referentie pagina van de connector](/connectors/x12/)voor aanvullende technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector.
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), gebruikt de ISE-label versie van deze connector de [limieten voor B2B-berichten voor ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).

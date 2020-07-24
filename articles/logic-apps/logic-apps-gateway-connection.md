@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065954"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevensbronnen vanuit Azure Logic Apps
 
@@ -47,7 +48,7 @@ De on-premises gegevens gateway in Azure Logic Apps ondersteunt de [on-premises 
 * SQL Server
 * Teradata
 
-Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). Hoewel de gateway zelf geen extra kosten in rekening brengt, is het [Logic apps prijs model](../logic-apps/logic-apps-pricing.md) van toepassing op deze connectors en andere bewerkingen in azure Logic apps.
+Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](/data-integration/gateway/service-gateway-onprem#considerations). Hoewel de gateway zelf geen extra kosten in rekening brengt, is het [Logic apps prijs model](../logic-apps/logic-apps-pricing.md) van toepassing op deze connectors en andere bewerkingen in azure Logic apps.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -78,11 +79,11 @@ Nadat u de gateway op een lokale computer hebt geïnstalleerd, maakt u de Azure-
 
    ![Nieuwe Azure-resource toevoegen voor gegevens gateway](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. Geef onder **verbindings gateway maken**deze informatie voor uw gateway bron op. Selecteer **Maken** als u klaar bent.
+1. Geef onder **verbindings gateway maken**deze informatie voor uw gateway bron op. Als u gereed bent, selecteert u **Maken**.
 
    | Eigenschap | Beschrijving |
    |----------|-------------|
-   | **Resource naam** | Geef een naam op voor de gateway resource die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ), haakjes ( `(` , `)` ) of punten ( `.` ) bevat. |
+   | **Resourcenaam** | Geef een naam op voor de gateway resource die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ), haakjes ( `(` , `)` ) of punten ( `.` ) bevat. |
    | **Abonnement** | Selecteer het Azure-abonnement voor het Azure-account dat is gebruikt voor de installatie van de gateway. Het standaard abonnement is gebaseerd op het Azure-account dat u hebt gebruikt om u aan te melden. |
    | **Resourcegroep** | De [Azure-resource groep](../azure-resource-manager/management/overview.md) die u wilt gebruiken |
    | **Locatie** | Dezelfde regio of locatie die is geselecteerd voor de gateway-Cloud service tijdens de installatie van de [Gateway](../logic-apps/logic-apps-gateway-install.md). Anders wordt de installatie van de gateway niet weer gegeven in de lijst **installatie naam** . De locatie van de logische app kan verschillen van de resource locatie van uw gateway. |
@@ -120,7 +121,7 @@ Nadat u de gateway resource hebt gemaakt en uw Azure-abonnement aan deze resourc
 
    ![Verbinding maken tussen logische app en gegevens gateway](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. Selecteer **Maken** als u klaar bent.
+1. Als u gereed bent, selecteert u **Maken**.
 
 Uw gateway verbinding is nu klaar voor gebruik door uw logische app.
 
