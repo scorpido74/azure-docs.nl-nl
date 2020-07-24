@@ -3,11 +3,12 @@ title: Bewaken met webtests met meerdere stappen-Azure-toepassing inzichten
 description: Webtests met meerdere stappen instellen om uw webtoepassingen te bewaken met Azure-toepassing Insights
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873350"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024770"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
 
@@ -16,7 +17,7 @@ U kunt een vastgelegde reeks Url's en interacties bewaken met een website via we
 > [!NOTE]
 > Webtests met meerdere stappen zijn afhankelijk van bestanden van Visual Studio Web testen. Het werd [aangekondigd](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) dat Visual Studio 2019 de laatste versie is met de webtest-functionaliteit. Het is belang rijk om te begrijpen dat er geen nieuwe functies worden toegevoegd, maar dat de webtest-functionaliteit in Visual Studio 2019 nog steeds wordt ondersteund en wordt ondersteund tijdens de levens cyclus van het product. Het Azure Monitor-product team heeft [hier](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)vragen gesteld over de toekomst van Beschik baarheid van meerdere stappen.  
 > </br>
-> Webtests met meerdere stappen **worden niet ondersteund** in de [Azure Government](https://docs.microsoft.com/azure/azure-government/) Cloud.
+> Webtests met meerdere stappen **worden niet ondersteund** in de [Azure Government](../../azure-government/index.yml) Cloud.
 
 
 ## <a name="pre-requisites"></a>Vereisten
@@ -36,7 +37,7 @@ Om de vereiste voor de test hulpprogramma's te vinden. Start de afzonderlijke on
 > [!WARNING]
 > Het gebruik van de meervoudige-stap recorder wordt niet meer aanbevolen. De recorder is ontwikkeld voor statische HTML-pagina's met eenvoudige interacties en biedt geen functionele ervaring voor moderne webpagina's.
 
-Raadpleeg de [officiële documentatie voor Visual studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)voor hulp bij het maken van Visual Studio-webtests.
+Raadpleeg de [officiële documentatie voor Visual studio 2019](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)voor hulp bij het maken van Visual Studio-webtests.
 
 ## <a name="upload-the-web-test"></a>De webtest uploaden
 
@@ -105,7 +106,7 @@ In alle gevallne moet u een account maken in uw toepassing voor testdoeleinden. 
 
 **SAML-verificatie**
 
-|Naam van eigenschap| Description|
+|Naam van eigenschap| Beschrijving|
 |----|-----|
 | Doel groep-URI | De doel groep-URI voor het SAML-token.  Dit is de URI voor de Access Control Service (ACS), met inbegrip van de ACS-naam ruimte en de hostnaam. |
 | Certificaat wachtwoord | Het wacht woord voor het client certificaat waarmee toegang wordt verleend aan de Inge sloten persoonlijke sleutel. |

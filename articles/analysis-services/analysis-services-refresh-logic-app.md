@@ -6,11 +6,13 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79127017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025316"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 
@@ -65,7 +67,7 @@ Configureer de HTTP-activiteit als volgt:
 |---------|---------|
 |**Methode**     |POST         |
 |**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https: \/ /westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/refreshes|
-|**Headers**     |   Content-type, Application/JSON <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Kopteksten**     |   Content-type, Application/JSON <br /> <br />  ![Kopteksten](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Hoofdtekst**     |   Zie voor meer informatie over het maken van de aanvraag tekst [asynchroon vernieuwen met de rest API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Verificatie**     |Active Directory OAuth         |
 |**Tenant**     |Vul uw Azure Active Directory TenantId in         |

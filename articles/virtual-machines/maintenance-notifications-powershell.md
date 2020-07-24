@@ -7,17 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028582"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Verwerken van gepland onderhoud met behulp van Power shell
 
 **Dit artikel is van toepassing op virtuele machines met Linux en Windows.**
 
-U kunt Azure PowerShell gebruiken om te zien wanneer Vm's zijn gepland voor [onderhoud](maintenance-notifications.md). Informatie over gepland onderhoud is beschikbaar via de cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) wanneer u de `-status` para meter gebruikt.
+U kunt Azure PowerShell gebruiken om te zien wanneer Vm's zijn gepland voor [onderhoud](maintenance-notifications.md). Informatie over gepland onderhoud is beschikbaar via de cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm) wanneer u de `-status` para meter gebruikt.
   
 Onderhouds informatie wordt alleen geretourneerd als er onderhoud wordt gepland. Als er geen onderhoud is gepland dat van invloed is op de virtuele machine, retourneert de cmdlet geen onderhouds informatie. 
 
@@ -39,7 +40,7 @@ De volgende eigenschappen worden geretourneerd onder MaintenanceRedeployStatus:
 
 
 
-U kunt ook de onderhouds status voor alle virtuele machines in een resource groep ophalen met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) en geen virtuele machine opgeven.
+U kunt ook de onderhouds status voor alle virtuele machines in een resource groep ophalen met behulp van [Get-AzVM](/powershell/module/az.compute/get-azvm) en geen virtuele machine opgeven.
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status

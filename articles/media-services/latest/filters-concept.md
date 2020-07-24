@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023225"
 ---
 # <a name="filters"></a>Filters
 
@@ -38,8 +38,8 @@ Met Media Services kunt u **account filters** en **activa filters** maken voor u
 
 Er zijn twee soorten filters: 
 
-* [Account filters](https://docs.microsoft.com/rest/api/media/accountfilters) (globaal): kan worden toegepast op alle activa in het Azure Media Services account, een levens duur van het account hebben.
-* [Asset filters](https://docs.microsoft.com/rest/api/media/assetfilters) (lokaal): kan alleen worden toegepast op een Asset waaraan het filter is gekoppeld bij het maken, een levens duur van de Asset heeft. 
+* [Account filters](/rest/api/media/accountfilters) (globaal): kan worden toegepast op alle activa in het Azure Media Services account, een levens duur van het account hebben.
+* [Asset filters](/rest/api/media/assetfilters) (lokaal): kan alleen worden toegepast op een Asset waaraan het filter is gekoppeld bij het maken, een levens duur van de Asset heeft. 
 
 De typen **account filters** en **activa filters** hebben precies dezelfde eigenschappen voor het definiëren/beschrijven van het filter. Behalve wanneer u het **activa filter**maakt, moet u de naam van het activum opgeven waaraan u het filter wilt koppelen.
 
@@ -139,7 +139,7 @@ In het volgende voor beeld wordt een filter voor live streams gedefinieerd:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Filters koppelen aan de streaming-Locator
 
-U kunt een lijst met [Asset-of account filters](filters-concept.md) opgeven voor uw [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). Met de [dynamische packager](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de records die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft op de streaming-Locator. 
+U kunt een lijst met [Asset-of account filters](filters-concept.md) opgeven voor uw [streaming-Locator](/rest/api/media/streaminglocators/create#request-body). Met de [dynamische packager](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de records die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft op de streaming-Locator. 
 
 Zie de volgende voorbeelden:
 
@@ -161,4 +161,3 @@ In de volgende artikelen ziet u hoe u via een programma filters maakt.
 - [Filters maken met REST-Api's](filters-dynamic-manifest-rest-howto.md)
 - [Filters maken met .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Filters maken met CLI](filters-dynamic-manifest-cli-howto.md)
-

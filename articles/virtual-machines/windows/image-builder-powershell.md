@@ -7,12 +7,12 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028138"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Voor beeld: een Windows-VM met Azure Image Builder maken met behulp van Power shell
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u een aangepaste Windows-installatie kopie k
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
 
 > [!IMPORTANT]
 > Hoewel de Power shell-modules **AZ. ImageBuilder** en **AZ. ManagedServiceIdentity** in de preview-versie zijn, moet u ze afzonderlijk installeren met de `Install-Module` cmdlet met de `AllowPrerelease` para meter. Zodra deze Power shell-modules algemeen beschikbaar worden, worden ze onderdeel van toekomstige AZ Power shell-module releases en zijn deze standaard beschikbaar vanuit Azure Cloud Shell.
@@ -36,7 +36,7 @@ Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifiek abonnement met de cmdlet [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) .
+Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifiek abonnement met de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +100,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met de cmdlet [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
+Maak een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md) met de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
 In het volgende voor beeld wordt een resource groep gemaakt op basis van de naam in de `$imageResourceGroup` variabele in de regio die is opgegeven in de `$location` variabele. Deze resource groep wordt gebruikt voor het opslaan van het sjabloon artefact van de installatie kopie en de installatie kopie.
 
@@ -168,7 +168,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> Als het volgende fout bericht wordt weer gegeven: '_New-AzRoleDefinition: de roldefinitie limiet is overschreden. Er kunnen geen roldefinities meer worden gemaakt._ Zie [problemen met Azure RBAC oplossen](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting).
+> Als het volgende fout bericht wordt weer gegeven: '_New-AzRoleDefinition: de roldefinitie limiet is overschreden. Er kunnen geen roldefinities meer worden gemaakt._ Zie [problemen met Azure RBAC oplossen](../../role-based-access-control/troubleshooting.md).
 
 ## <a name="create-a-shared-image-gallery"></a>Een gedeelde installatiekopiegalerie maken
 
@@ -200,7 +200,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>Een installatiekopie maken
 
-Maak een Azure Image Builder-bron object. Zie [Windows VM-installatie kopieën zoeken in azure Marketplace met Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) voor geldige parameter waarden.
+Maak een Azure Image Builder-bron object. Zie [Windows VM-installatie kopieën zoeken in azure Marketplace met Azure PowerShell](./cli-ps-findimage.md) voor geldige parameter waarden.
 
 ```azurepowershell-interactive
 $SrcObjParams = @{

@@ -8,11 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758507"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028937"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken om toegang te krijgen tot GRUB en de modus voor één gebruiker
 GRUB is de GRand Unified Bootloader. Vanuit GRUB kunt u de opstart configuratie wijzigen om onder andere de modus voor één gebruiker op te starten.
@@ -77,7 +78,7 @@ Als u GRUB en toegang tot de hoofdmap hebt ingesteld met de bovenstaande instruc
 1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen
 1. U wordt gevraagd om het beheerders wachtwoord voordat de modus voor één gebruiker kan worden opgegeven. Dit is het wacht woord dat u hebt gemaakt in de bovenstaande instructies    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Afbeelding met animatie met een opdracht regel interface. De gebruiker selecteert een server, zoekt het einde van de kernel-regel en voert vervolgens de opgegeven tekst in.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>De modus voor één gebruiker opgeven zonder dat het hoofd account is ingeschakeld in RHEL
 Als u de bovenstaande stappen niet hebt door lopen om de hoofd gebruiker in te scha kelen, kunt u uw basis wachtwoord nog steeds opnieuw instellen. Gebruik de volgende instructies:
@@ -94,7 +95,7 @@ Als u de bovenstaande stappen niet hebt door lopen om de hoofd gebruiker in te s
 1. Wanneer u de modus voor één gebruiker opstart, typt `chroot /sysroot` u in om over te scha kelen naar de `sysroot` jailbroken
 1. U bent nu het hoofd. U kunt uw basis wachtwoord opnieuw instellen met `passwd` en vervolgens de bovenstaande instructies gebruiken om de modus voor één gebruiker in te voeren. Typ `reboot -f` om opnieuw op te starten wanneer u klaar bent.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Afbeelding met animatie met een opdracht regel interface. De gebruiker selecteert een server, zoekt het einde van de kernel-regel en voert de opgegeven opdrachten in.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Opmerking: door de bovenstaande instructies uit te voeren, gaat u naar de nood shell, zodat u ook taken zoals bewerken kunt uitvoeren `fstab` . De algemeen geaccepteerde suggestie is het opnieuw instellen van uw basis wachtwoord en gebruiken om de modus voor één gebruiker in te voeren. 
 
@@ -119,7 +120,7 @@ Standaard worden in Ubuntu-afbeeldingen niet automatisch het scherm GRUB weer ge
 1. Wijzig de `GRUB_TIMEOUT` waarde in een andere waarde dan nul
 1. Open `/etc/default/grub` in een tekst editor naar keuze
 1. Commentaar toevoegen aan de `GRUB_HIDDEN_TIMEOUT=1` regel
-1. Voer `sudo update-grub` uit.
+1. `sudo update-grub` uitvoeren
 
 ### <a name="single-user-mode-in-ubuntu"></a>Modus voor één gebruiker in Ubuntu
 Ubuntu gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Gebruik de volgende instructies om de modus voor één gebruiker hand matig in te voeren:
@@ -156,7 +157,7 @@ GRUB-toegang in SLES vereist configuratie van bootloader via YaST. Volg hiervoor
 1. Als u GRUB wilt invoeren, start u de virtuele machine opnieuw op en drukt u op een wille keurige toets tijdens de opstart procedure om GRUB op het scherm
     - De standaardtime-outwaarde voor GRUB is 1S. U kunt dit wijzigen door de `GRUB_TIMEOUT` variabele in te wijzigen in`/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![Afbeelding met animatie met een opdracht regel interface. De gebruiker voert de opgegeven tekst in, selecteert de opgegeven optie en slaat de instellingen op.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Modus voor één gebruiker in SUSE SLES
 Als SLES niet normaal kan worden opgestart, wordt u automatisch verwijderd naar de nood situatie. Gebruik de volgende instructies om de nood-shell hand matig in te voeren:
@@ -177,7 +178,7 @@ Oracle Linux is GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnie
 Volg de instructies voor RHEL hierboven om de modus voor één gebruiker in Oracle Linux in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* De documentatie pagina voor de hoofd console Linux bevindt zich [hier](serial-console.md).
+* De documentatie pagina voor de hoofd console Linux bevindt zich [hier](../troubleshooting/serial-console-linux.md).
 * Seriële console gebruiken voor [NMI-en SYSRQ-aanroepen](serial-console-nmi-sysrq.md)
-* De seriële console is ook beschikbaar voor virtuele [Windows](../windows/serial-console.md) -machines
-* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md)
+* De seriële console is ook beschikbaar voor virtuele [Windows](../troubleshooting/serial-console-windows.md) -machines
+* Meer informatie over [Diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md)

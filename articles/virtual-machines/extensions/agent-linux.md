@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 560ae8d837cf57e471a9f39d5ccdcf152a156b1e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029073"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
 
@@ -110,7 +110,7 @@ Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](http
 * uitgebreid: Verhoog de uitgebreide waarde van de opgegeven opdracht
 * geforceerd: interactieve bevestiging voor sommige opdrachten overs Laan
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 * Help: geeft een lijst van de ondersteunde opdrachten en vlaggen.
 * inrichting opheffen: Probeer het systeem op te schonen en maak het geschikt voor opnieuw inrichten. De volgende bewerking wordt verwijderd:
   
@@ -344,5 +344,4 @@ Ubuntu Cloud-installatie kopieën maken gebruik van [Cloud-init](https://launchp
 * Raadpleeg de volgende bronnen voor meer informatie over het configureren van het koppel punt voor de bron schijf en het wisselen van ruimte op Ubuntu Cloud installatie kopieën tijdens het inrichten:
   
   * [Ubuntu-wiki: swap-partities configureren](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Aangepaste gegevens injecteren in een virtuele Azure-machine](../windows/classic/inject-custom-data.md)
-
+  * [Aangepaste gegevens injecteren in een virtuele Azure-machine](../windows/tutorial-automate-vm-deployment.md)

@@ -1,25 +1,25 @@
 ---
 title: Geef een versleutelings sleutel op voor een aanvraag voor Blob-opslag
 titleSuffix: Azure Storage
-description: Clients die aanvragen indienen voor Azure Blob-opslag hebben de mogelijkheid om een versleutelings sleutel op basis van per aanvraag (preview) op te geven. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen.
+description: Clients die aanvragen indienen voor Azure Blob-opslag hebben de mogelijkheid om per aanvraag een versleutelings sleutel op te geven. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec3d760450fb5cc20deed14dac03f58f23c2b4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029736"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Geef een versleutelings sleutel op voor een aanvraag voor Blob-opslag (preview-versie)
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Geef een versleutelings sleutel op voor een aanvraag voor Blob-opslag
 
-Clients die aanvragen indienen voor Azure Blob-opslag hebben de mogelijkheid om een versleutelings sleutel op basis van per aanvraag (preview) op te geven. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen. Door de klant verschafte sleutels kunnen worden opgeslagen in Azure Key Vault of in een andere sleutel opslag.
+Clients die aanvragen indienen voor Azure Blob-opslag hebben de mogelijkheid om per aanvraag een versleutelings sleutel op te geven. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen. Door de klant verschafte sleutels kunnen worden opgeslagen in Azure Key Vault of in een andere sleutel opslag.
 
 ## <a name="encrypting-read-and-write-operations"></a>Lees-en schrijf bewerkingen versleutelen
 
@@ -39,7 +39,7 @@ Elke BLOB-moment opname kan een eigen versleutelings sleutel hebben.
 
 Voor REST-aanroepen kunnen clients de volgende headers gebruiken om informatie over de versleutelings sleutel op een aanvraag voor Blob-opslag veilig door te geven:
 
-|Aanvraagkoptekst | Description |
+|Aanvraagkoptekst | Beschrijving |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vereist voor zowel schrijf-als Lees aanvragen. Een met base64 gecodeerde AES-256-versleutelings sleutel waarde. |
 |`x-ms-encryption-key-sha256`| Vereist voor zowel schrijf-als Lees aanvragen. De met base64 gecodeerde SHA256 van de versleutelings sleutel. |
@@ -61,7 +61,7 @@ De volgende bewerkingen voor Blob Storage ondersteunen het verzenden van door de
 - [BLOB-eigenschappen instellen](/rest/api/storageservices/set-blob-properties)
 - [BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
 - [BLOB ophalen](/rest/api/storageservices/get-blob)
-- [BLOB-eigenschappen ophalen](/rest/api/storageservices/get-blob-properties)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties) (Blob-eigenschappen ophalen)
 - [BLOB-meta gegevens ophalen](/rest/api/storageservices/get-blob-metadata)
 - [Moment opname-BLOB](/rest/api/storageservices/snapshot-blob)
 

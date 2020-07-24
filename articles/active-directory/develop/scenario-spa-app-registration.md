@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026506"
 ---
 # <a name="single-page-application-app-registration"></a>Toepassing met één pagina: app-registratie
 
@@ -37,7 +38,7 @@ Configureer vervolgens de app-registratie met een **omleidings-URI** om op te ge
 - [MSAL.js 2,0 met verificatie code stroom](#redirect-uri-msaljs-20-with-auth-code-flow) (aanbevolen)
 - [MSAL.js 1,0 met impliciete stroom](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Omleidings-URI: MSAL.js 2,0 met verificatie code stroom
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Omleidings-URI: [MSAL.js 2,0 met verificatie code stroom](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 Volg deze stappen om een omleidings-URI toe te voegen voor een app die gebruikmaakt van MSAL.js 2,0 of hoger. MSAL.js 2.0 + ondersteunt de autorisatie code stroom met PKCE en CORS als reactie op [Cookie beperkingen van derden](reference-third-party-cookies-spas.md). De impliciete toekennings stroom wordt niet ondersteund in MSAL.js 2.0 +.
 
@@ -49,7 +50,9 @@ Volg deze stappen om een omleidings-URI toe te voegen voor een app die gebruikma
 
 U hebt nu de registratie van uw toepassing met één pagina (SPA) voltooid en een omleidings-URI geconfigureerd waarnaar de client wordt omgeleid en eventuele beveiligings tokens worden verzonden. Door de omleidings-URI te configureren met behulp van de tegel **toepassing met één pagina** in het deel venster **een platform toevoegen** , wordt de registratie van de toepassing geconfigureerd ter ondersteuning van de autorisatie code stroom met PKCE en CORS.
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Omleidings-URI: MSAL.js 1,0 met impliciete stroom
+Volg de [zelf studie](tutorial-v2-javascript-auth-code.md) voor meer informatie.
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Omleidings-URI: [MSAL.js 1,0 met impliciete stroom](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 Volg deze stappen om een omleidings-URI toe te voegen voor een app met één pagina die gebruikmaakt van MSAL.js 1,3 of eerder en de impliciete toekennings stroom. Toepassingen die gebruikmaken van MSAL.js 1,3 of eerder, bieden geen ondersteuning voor de verificatie code stroom.
 
@@ -63,6 +66,8 @@ Volg deze stappen om een omleidings-URI toe te voegen voor een app met één pag
 1. Selecteer **configureren** om het toevoegen van de omleidings-URI te volt ooien.
 
 U hebt nu de registratie van uw toepassing met één pagina (SPA) voltooid en een omleidings-URI geconfigureerd waarnaar de client wordt omgeleid en eventuele beveiligings tokens worden verzonden. Als u een of beide **id-tokens** en **toegangs tokens**selecteert, hebt u de impliciete toekennings stroom ingeschakeld.
+
+Volg de [zelf studie](tutorial-v2-javascript-spa.md) voor meer informatie. 
 
 ## <a name="note-about-authorization-flows"></a>Opmerking over autorisatie stromen
 

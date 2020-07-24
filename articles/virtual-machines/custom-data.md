@@ -7,17 +7,18 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029141"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Aangepaste gegevens en Cloud-init op Azure Virtual Machines
 
 Mogelijk moet u op het tijdstip van de inrichting een script of andere meta gegevens in een Microsoft Azure virtuele machine injecteren.  In andere Clouds wordt dit concept vaak gebruikers gegevens genoemd.  In Microsoft Azure hebben we een vergelijk bare functie met de naam aangepaste gegevens. 
 
-Aangepaste gegevens worden alleen beschikbaar gesteld voor de virtuele machine tijdens de eerste keer opstarten/initiële installatie. deze worden aangeroepen. Inrichting is het proces waarbij VM-para meters (bijvoorbeeld hostname, gebruikers naam, wacht woord, certificaten, aangepaste gegevens, sleutels enz.) beschikbaar worden gemaakt voor de virtuele machine en een inrichtings agent verwerkt, zoals de [Linux-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) en [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init). 
+Aangepaste gegevens worden alleen beschikbaar gesteld voor de virtuele machine tijdens de eerste keer opstarten/initiële installatie. deze worden aangeroepen. Inrichting is het proces waarbij VM-para meters (bijvoorbeeld hostname, gebruikers naam, wacht woord, certificaten, aangepaste gegevens, sleutels enz.) beschikbaar worden gemaakt voor de virtuele machine en een inrichtings agent verwerkt, zoals de [Linux-agent](./extensions/agent-linux.md) en [Cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init). 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>Aangepaste gegevens door geven aan de VM
@@ -33,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-In Azure Resource Manager (ARM) bevindt zich een [Base64-functie](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64).
+In Azure Resource Manager (ARM) bevindt zich een [Base64-functie](../azure-resource-manager/templates/template-functions-string.md#base64).
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -73,21 +74,21 @@ Wanneer u aangepaste gegevens inschakelt en een script uitvoert, wordt de VM-rap
 
 Raadpleeg */var/log/waagent.log* voor informatie over het oplossen van aangepaste gegevens uitvoering
 
-* Cloud-init: standaard worden aangepaste gegevens verwerkt. Cloud-init accepteert meerdere aangepaste gegevens [indelingen](https://cloudinit.readthedocs.io/en/latest/topics/format.html) , zoals Cloud-init-configuratie, scripts, enzovoort. Vergelijkbaar met de Linux-agent, wanneer Cloud-init de aangepaste gegevens verwerkt. Als er fouten zijn opgetreden tijdens de uitvoering van de configuratie verwerking of-scripts, wordt er geen fatale inrichtings fout beschouwd en moet u een aanmeldingsscriptpad maken om u te waarschuwen voor de voltooiings status van het script. Cloud-init wordt echter niet door de Linux-agent gewacht op aangepaste gegevens configuraties voor gebruikers voordat ze rapporteren aan het platform dat de VM gereed is. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)voor meer informatie over Cloud-init op Azure.
+* Cloud-init: standaard worden aangepaste gegevens verwerkt. Cloud-init accepteert meerdere aangepaste gegevens [indelingen](https://cloudinit.readthedocs.io/en/latest/topics/format.html) , zoals Cloud-init-configuratie, scripts, enzovoort. Vergelijkbaar met de Linux-agent, wanneer Cloud-init de aangepaste gegevens verwerkt. Als er fouten zijn opgetreden tijdens de uitvoering van de configuratie verwerking of-scripts, wordt er geen fatale inrichtings fout beschouwd en moet u een aanmeldingsscriptpad maken om u te waarschuwen voor de voltooiings status van het script. Cloud-init wordt echter niet door de Linux-agent gewacht op aangepaste gegevens configuraties voor gebruikers voordat ze rapporteren aan het platform dat de VM gereed is. Raadpleeg de [documentatie](./linux/using-cloud-init.md)voor meer informatie over Cloud-init op Azure.
 
 
-Raadpleeg de [documentatie](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)voor probleem oplossing om problemen met het uitvoeren van aangepaste gegevens op te lossen.
+Raadpleeg de [documentatie](./linux/using-cloud-init.md#troubleshooting-cloud-init)voor probleem oplossing om problemen met het uitvoeren van aangepaste gegevens op te lossen.
 
 
 ## <a name="faq"></a>Veelgestelde vragen
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Kan ik aangepaste gegevens bijwerken nadat de virtuele machine is gemaakt?
-Voor één virtuele machine kunnen aangepaste gegevens in het VM-model niet worden bijgewerkt, maar voor VMSS kunt u VMSS aangepaste gegevens bijwerken via [rest API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) (niet van toepassing op PS-of AZ cli-clients). Wanneer u aangepaste gegevens in het VMSS-model bijwerkt:
+Voor één virtuele machine kunnen aangepaste gegevens in het VM-model niet worden bijgewerkt, maar voor VMSS kunt u VMSS aangepaste gegevens bijwerken via [rest API](/rest/api/compute/virtualmachinescalesets/update) (niet van toepassing op PS-of AZ cli-clients). Wanneer u aangepaste gegevens in het VMSS-model bijwerkt:
 * Bestaande exemplaren in de VMSS krijgen alleen de bijgewerkte aangepaste gegevens, totdat de installatie kopie wordt gewijzigd.
 * Bestaande exemplaren in de VMSS die worden bijgewerkt, krijgen niet de bijgewerkte aangepaste gegevens.
 * Nieuwe exemplaren ontvangen de nieuwe aangepaste gegevens.
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>Kan ik gevoelige waarden in aangepaste gegevens plaatsen?
-We raden u aan om gevoelige gegevens **niet** op te slaan in aangepaste gegevens. Zie [Aanbevolen procedures voor Azure-beveiliging en-versleuteling](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices)voor meer informatie.
+We raden u aan om gevoelige gegevens **niet** op te slaan in aangepaste gegevens. Zie [Aanbevolen procedures voor Azure-beveiliging en-versleuteling](../security/fundamentals/data-encryption-best-practices.md)voor meer informatie.
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>Worden aangepaste gegevens beschikbaar gemaakt in IMDS?

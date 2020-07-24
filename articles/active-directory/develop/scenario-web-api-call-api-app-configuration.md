@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff5f68569d1878e1b802f2db4151d246bcc07c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026421"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-Api's aanroept: code configuratie
 
@@ -26,120 +27,74 @@ De code die u gebruikt om uw web-API te configureren, zodat downstream Web-Api's
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-## <a name="code-subscribed-to-ontokenvalidated"></a>Code geabonneerd op OnTokenValidated
+## <a name="client-secrets-or-client-certificates"></a>Client geheimen of client certificaten
 
-Boven op de code configuratie voor beveiligde web-Api's moet u zich abonneren op de validatie van het Bearer-token dat u ontvangt wanneer uw API wordt aangeroepen:
+Gezien dat uw web-API nu een stroomafwaartse Web-API aanroept, moet u een client geheim of client certificaat opgeven in de *appsettings.jsin* het bestand.
 
-```csharp
-/// <summary>
-/// Protects the web API with the Microsoft identity platform, or Azure Active Directory (Azure AD) developer platform
-/// This supposes that the configuration files have a section named "AzureAD"
-/// </summary>
-/// <param name="services">The service collection to which to add authentication</param>
-/// <param name="configuration">Configuration</param>
-/// <returns></returns>
-public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollection services,
-                                                             IConfiguration configuration,
-                                                             IEnumerable<string> scopes)
+```JSON
 {
-    services.AddTokenAcquisition();
-    services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-    {
-        // When an access token for our own web API is validated, we add it
-        // to the MSAL.NET cache so that it can be used from the controllers.
-        options.Events = new JwtBearerEvents();
-
-        options.Events.OnTokenValidated = async context =>
-        {
-            context.Success();
-
-            // Adds the token to the cache and handles the incremental consent
-            // and claim challenges
-            AddAccountToCacheFromJwt(context, scopes);
-            await Task.FromResult(0);
-        };
-    });
-    return services;
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+  
+   // To call an API
+   "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
+   "ClientCertificates": [
+  ]
+ }
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>Namens-stroom
+In plaats van een client geheim kunt u een client certificaat opgeven. Het volgende code fragment toont het gebruik van een certificaat dat is opgeslagen in Azure Key Vault.
 
-De methode AddAccountToCacheFromJwt () moet:
-
-- Exemplaar een vertrouwelijke client toepassing van micro soft Authentication Library (MSAL).
-- Roep de `AcquireTokenOnBehalf` methode aan. Deze aanroep is een uitwisseling van het Bearer-token dat is verkregen door de client voor de Web-API op basis van een Bearer-token voor dezelfde gebruiker, maar heeft de API-aanroep een downstream API.
-
-### <a name="instantiate-a-confidential-client-application"></a>Een vertrouwelijke client toepassing instantiëren
-
-Deze stroom is alleen beschikbaar in de vertrouwelijke client stroom, zodat de beveiligde web-API client referenties (client Secret of Certificate) aan de [ConfidentialClientApplicationBuilder-klasse](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) verstrekt via de `WithClientSecret` or- `WithCertificate` methode.
-
-![Lijst met IConfidentialClientApplication-methoden](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
-
-```csharp
-IConfidentialClientApplication app;
-
-#if !VariationWithCertificateCredentials
-app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
-           .WithClientSecret(config.ClientSecret)
-           .Build();
-#else
-// Building the client credentials from a certificate
-X509Certificate2 certificate = ReadCertificate(config.CertificateName);
-app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
-    .WithCertificate(certificate)
-    .Build();
-#endif
-```
-
-Ten slotte, in plaats van de identiteit te bewijzen via een client geheim of een certificaat, kunnen vertrouwelijke client toepassingen hun identiteit bewijzen door gebruik te maken van client verklaringen.
-Zie voor meer informatie over dit geavanceerde scenario [vertrouwelijke client verklaringen](msal-net-client-assertions.md).
-
-### <a name="how-to-call-on-behalf-of"></a>Namens aanroepen
-
-U kunt de OBO-aanroep (on-naam) uitvoeren door de [methode AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) op de interface aan te roepen `IConfidentialClientApplication` .
-
-De `UserAssertion` klasse is gebaseerd op het Bearer-token dat door de Web-API van de eigen clients wordt ontvangen. Er zijn [twee constructors](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
-* Een JSON Web Token (JWT) Bearer-token
-* Een van de verschillende soorten gebruikers verklaringen, een ander soort beveiligings token, waarvan het type wordt opgegeven in een extra para meter met de naam`assertionType`
-
-![UserAssertion-eigenschappen en-methoden](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
-
-In de praktijk wordt de OBO-stroom vaak gebruikt voor het verkrijgen van een token voor een downstream API en deze op te slaan in de cache van de MSAL.NET-gebruikers token. U doet dit zodat andere onderdelen van de Web-API later kunnen worden aangeroepen op de [onderdrukkingen](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) van ``AcquireTokenOnSilent`` om de downstream-api's aan te roepen. Deze aanroep heeft gevolgen voor het vernieuwen van de tokens, indien nodig.
-
-```csharp
-private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
+```JSON
 {
-    try
-    {
-        UserAssertion userAssertion;
-        IEnumerable<string> requestedScopes;
-        if (jwtToken != null)
-        {
-            userAssertion = new UserAssertion(jwtToken.RawData, "urn:ietf:params:oauth:grant-type:jwt-bearer");
-            requestedScopes = scopes ?? jwtToken.Audiences.Select(a => $"{a}/.default");
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException("tokenValidationContext.SecurityToken should be a JWT Token");
-        }
-
-        // Create the application
-        var application = BuildConfidentialClientApplication(httpContext, principal);
-
-        // .Result to make sure that the cache is filled in before the controller tries to get access tokens
-        var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
-                                                        userAssertion)
-                                .ExecuteAsync()
-                                .GetAwaiter().GetResult();
-     }
-     catch (MsalException ex)
-     {
-         Debug.WriteLine(ex.Message);
-         throw;
-     }
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+  
+   // To call an API
+   "ClientCertificates": [
+      {
+        "SourceType": "KeyVault",
+        "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
+        "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
+      }
+  ]
+ }
 }
 ```
+
+Micro soft. Identity. Web biedt verschillende manieren om certificaten te beschrijven, hetzij per configuratie of per code. Zie voor meer informatie [micro soft. Identity. Web wiki-certificaten gebruiken](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates) op github.
+
+## <a name="startupcs"></a>Startup.cs
+
+Gebruik micro soft. Identity. web als u wilt dat uw web-API downstream Web-Api's aanroept, voeg de `.AddMicrosoftWebApiCallsWebApi()` regel na `.AddMicrosoftWebApiAuthentication(Configuration)` en kies vervolgens een implementatie van de token cache, bijvoorbeeld `.AddInMemoryTokenCaches()` in *Startup.cs*:
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+   // ...
+   services.AddMicrosoftWebApiAuthentication(Configuration)
+           .AddMicrosoftWebApiCallsWebApi()
+           .AddInMemoryTokenCaches();
+  // ...
+  }
+  // ...
+}
+```
+
+Net als bij Web apps, kunt u verschillende implementaties van de token-cache kiezen. Zie voor meer informatie [micro soft Identity Web wiki-token cache serialisatie](https://aka.ms/ms-id-web/token-cache-serialization) op github.
+
+Als u zeker weet dat uw web-API specifieke bereiken nodig heeft, kunt u deze optioneel als argumenten door geven aan `AddMicrosoftWebApiCallsWebApi` .
+
 # <a name="java"></a>[Java](#tab/java)
 
 De stroom namens-of (OBO) wordt gebruikt om een token op te halen voor het aanroepen van de stroomafwaartse Web-API. In deze stroom ontvangt uw web-API een Bearer-token met door de gebruiker gedelegeerde machtigingen van de client toepassing. vervolgens wordt dit token door gegeven aan een ander toegangs token om de stroomafwaartse Web-API aan te roepen.

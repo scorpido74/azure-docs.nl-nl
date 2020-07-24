@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023819"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel worden algemene probleemoplossings methoden besproken voor zelf-hostende Integration runtime in Azure Data Factory.
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Zelf-hostende Integration runtime-logboeken van Azure Data Factory verzamelen
+
+Azure Data Factory ondersteunt het weer geven en uploaden van fouten logboeken voor mislukte activiteiten die worden uitgevoerd op zelf-hostende IR/gedeelde IR. U kunt de onderstaande stappen volgen om de fout rapport-ID op te halen en vervolgens de rapport-ID in te voeren om verwante bekende problemen op te sporen.
+
+1. Ga naar de pagina **activiteiten uitvoeren** .
+
+1. Klik onder de kolom **fout** op de knop onder.
+
+    ![Pagina uitvoeringen van activiteit](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. U ziet gerelateerde logboeken voor de uitvoering van de mislukte activiteit. Klik op de knop **Logboeken verzenden** voor verdere ondersteuning.
+
+    ![Logboeken verzenden](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. U kunt Logboeken kiezen die u wilt verzenden. Voor *zelf-hostende IR*kunt u Logboeken uploaden die betrekking hebben op mislukte activiteiten of voor alle logboeken op zelf-hostend IR-knoop punt. Voor *gedeelde IR*kunt u alleen logboeken uploaden die betrekking hebben op mislukte activiteiten.
+
+    ![Logboeken kiezen](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. Wanneer de logboeken worden geüpload, kunt u een record van de rapport-ID bijhouden als u meer hulp nodig hebt om het probleem op te lossen.
+
+    ![Logboeken uploaden](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> Logboek weer geven en upload aanvragen worden uitgevoerd op alle online zelf-hostende IR-exemplaren. Zorg ervoor dat alle zelf-hostende IR-instanties online zijn in het geval van eventuele ontbrekende Logboeken. 
+
 
 ## <a name="common-errors-and-resolutions"></a>Veelvoorkomende fouten en oplossingen
 
@@ -281,7 +307,7 @@ Voor meer informatie over het oplossen van problemen kunt u de volgende bronnen 
 
 *  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack overflow-forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)

@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389969"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025401"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
@@ -64,7 +64,10 @@ De service-principal die u maakt, moet Server Administrator-machtigingen hebben 
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Blader naar het **Refresh-Model.ps1** bestand, geef een **naam** en **Beschrijving**op en klik vervolgens op **maken**.
+4. Blader naar het [Refresh-Model.ps1](#sample-powershell-runbook) bestand, geef een **naam** en **Beschrijving**op en klik vervolgens op **maken**.
+
+    > [!NOTE]
+    > Gebruik script uit de sectie voor [beeld van Power shell-Runbook](#sample-powershell-runbook) onder aan dit document om een bestand met de naam Refresh-Model.ps1 te maken en op te slaan op de lokale computer om te importeren in Runbook.
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/9.png)
 

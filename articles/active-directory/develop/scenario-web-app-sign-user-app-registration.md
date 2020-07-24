@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026242"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-app die zich aanmeldt bij gebruikers: app-registratie
 
@@ -40,25 +41,27 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
 > De te gebruiken Portal verschilt, afhankelijk van of uw toepassing wordt uitgevoerd in de Microsoft Azure open bare Cloud of in een nationale of soevereine Cloud. Zie [National Clouds](./authentication-national-cloud.md#app-registration-endpoints)(Engelstalig) voor meer informatie.
 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account. U kunt zich ook aanmelden bij de Azure Portal keuze voor de nationale Cloud.
-1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek. Stel vervolgens uw portal-sessie in op de gewenste Azure Active Directory-Tenant (Azure AD).
-1. Selecteer in het linkerdeel venster de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**  >  **nieuwe registratie**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account. U kunt zich ook aanmelden bij de [Azure Portal keuze](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) voor de nationale Cloud.
+2. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek. Stel vervolgens uw portal-sessie in op de gewenste Azure Active Directory-Tenant (Azure AD).
+3. Selecteer in het linkerdeel venster de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**  >  **nieuwe registratie**.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
    1. Kies de ondersteunde account typen voor uw toepassing. (Zie [ondersteunde account typen](./v2-supported-account-types.md).)
    1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in. Deze wordt zichtbaar voor gebruikers van de app. Voer bijvoorbeeld **AspNetCore-webapp**in.
-   1. Voor **omleidings-URI**voegt u het type toepassing toe en de URI-bestemming die geretourneerde token Reacties accepteert na een geslaagde verificatie. Voer bijvoorbeeld in **https://localhost:44321** . Selecteer vervolgens **registreren**.
+   1. Voor **omleidings-URI**voegt u het type toepassing toe en de URI-bestemming die geretourneerde token Reacties accepteert na een geslaagde verificatie. Voer bijvoorbeeld in **https://localhost:44321** . Selecteer vervolgens **Registreren**.
+   ![inschrijving](media/scenario-webapp/scenario-webapp-app-registration-1.png)
 1. Selecteer het menu **Verificatie** en voeg dan de volgende gegevens toe:
    1. Voor **antwoord-URL**, add **https://localhost:44321/signin-oidc** van het type **Web**.
    1. In de sectie **Geavanceerde instellingen** stelt u de **Afmeldings-URL** in op **https://localhost:44321/signout-oidc** .
    1. Selecteer **id-tokens** onder **Impliciete toekenning**.
    1. Selecteer **Opslaan**.
-
+  ![inschrijving](media/scenario-webapp/scenario-webapp-app-registration-2.png)
+ 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-1. Wanneer de **pagina een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in:
+1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
    1. Kies de ondersteunde account typen voor uw toepassing. (Zie [ondersteunde account typen](./v2-supported-account-types.md).)
    1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in. Deze wordt zichtbaar voor gebruikers van de app. Voer bijvoorbeeld **MailApp-openidconnect-v2**in.
    1. Selecteer in de sectie de **omleidings-URI (optioneel)** **Web** in de keuze lijst met invoervak en voer de volgende omleidings-URI in: **https://localhost:44326/** .
@@ -93,7 +96,7 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
 
 # <a name="python"></a>[Python](#tab/python)
 
-1. Wanneer de **pagina een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in:
+1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
    1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in. Deze wordt zichtbaar voor gebruikers van de app. Voer bijvoorbeeld **python-webapp**in.
    1. Wijzig **ondersteunde account typen** **in accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)**.
    1. Selecteer in de sectie de **omleidings-URI (optioneel)** **Web** in de keuze lijst met invoervak en voer de volgende omleidings-URI in: **http://localhost:5000/getAToken** .
@@ -116,7 +119,7 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
 > - MyOrg (alleen accounts in deze organisatie Directory)
 > - AnyOrg (accounts in elke organisatie Directory)
 >
-> U kunt een toepassing maken die zich aanmeldt bij gebruikers met hun persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox of Outlook.com). Maak eerst een multi tenant-toepassing. Ondersteunde account typen zijn accounts in elke organisatie Directory. Wijzig vervolgens de `signInAudience` eigenschap in het manifest van de toepassing uit het Azure Portal. Zie [stap 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) in de ASP.net core zelf studie voor meer informatie. U kunt deze stap generaliseren voor web-apps in elke gewenste taal.
+> U kunt een toepassing maken die zich aanmeldt bij gebruikers met hun persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox of Outlook.com). Maak eerst een multi tenant-toepassing. Ondersteunde account typen zijn accounts in elke organisatie Directory. Wijzig vervolgens de [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) eigenschap in **2** en de [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) eigenschap `AzureADandPersonalMicrosoftAccount` in het manifest van de [toepassing](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) van de Azure Portal. Zie [stap 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) in de ASP.net core zelf studie voor meer informatie. U kunt deze stap generaliseren voor web-apps in elke gewenste taal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029311"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Een schaalset voor virtuele machines maken die gebruikmaakt van Beschikbaarheidszones
 
@@ -60,7 +61,7 @@ Als u Beschikbaarheidszones wilt gebruiken, moet uw schaalset worden gemaakt in 
 - [Azure-portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager-sjablonen](#use-azure-resource-manager-templates)
+- [Azure Resource Manager sjablonen](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
@@ -91,7 +92,7 @@ Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bro
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Als u een zone-redundante schaalset wilt maken, gebruikt u een openbaar IP-adres en load balancer voor de *standaard* -SKU. Voor uitgebreide redundantie maakt de *standaard* -SKU zone-redundante netwerk bronnen. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
+Als u een zone-redundante schaalset wilt maken, gebruikt u een openbaar IP-adres en load balancer voor de *standaard* -SKU. Voor uitgebreide redundantie maakt de *standaard* -SKU zone-redundante netwerk bronnen. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
 Als u een zone-redundante schaalset wilt maken, geeft u meerdere zones op met de `--zones` para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* voor de zones *1, 2, 3*:
 
@@ -208,7 +209,7 @@ Als u een zone-redundante schaalset wilt maken, geeft u meerdere waarden op in d
 }
 ```
 
-Als u een openbaar IP-adres of een load balancer maakt, geeft u de eigenschap *"SKU": {"naam": "Standard"} "* op om zone-redundante netwerk bronnen te maken. U moet ook een netwerk beveiligings groep en-regels maken om verkeer toe te staan. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
+Als u een openbaar IP-adres of een load balancer maakt, geeft u de eigenschap *"SKU": {"naam": "Standard"} "* op om zone-redundante netwerk bronnen te maken. U moet ook een netwerk beveiligings groep en-regels maken om verkeer toe te staan. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
 Zie voor een volledig voor beeld van een zone-redundante schaalset en netwerk bronnen [deze voorbeeld sjabloon voor Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

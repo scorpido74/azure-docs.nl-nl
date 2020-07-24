@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771193"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025877"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwingstoken?
 
@@ -64,7 +65,7 @@ De PRT wordt uitgegeven tijdens de gebruikers verificatie op een Windows 10-appa
 In azure AD-scenario's voor geregistreerde apparaten is de Azure AD WAM-invoeg toepassing de primaire instantie voor de PRT, omdat Windows-aanmelding niet is gebeurd met dit Azure AD-account.
 
 > [!NOTE]
-> externe ID-providers moeten ondersteuning bieden voor het WS-Trust-protocol om PRT-uitgifte op Windows 10-apparaten in te scha kelen. Zonder WS-Trust kan PRT niet worden verleend aan gebruikers op hybride Azure AD join-of Azure AD gekoppelde apparaten
+> externe ID-providers moeten ondersteuning bieden voor het WS-Trust-protocol om PRT-uitgifte op Windows 10-apparaten in te scha kelen. Zonder WS-Trust kan PRT niet worden verleend aan gebruikers op hybride Azure AD gekoppelde of Azure AD gekoppelde apparaten. Op ADFS zijn alleen usernamemixed-eind punten vereist. ADFS/Services/Trust/2005/windowstransport en ADFS/Services/Trust/13/windowstransport moeten alleen worden ingeschakeld als intranet gerichte eind punten en **mogen niet worden weer gegeven** als aan een extranet gerichte eind punten via de Web Application proxy
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Wat is de levens duur van een PRT?
 
@@ -166,6 +167,9 @@ In de volgende diagrammen ziet u de onderliggende details van het uitgeven, vern
 | E | De CloudAP-invoeg toepassing bouwt de verificatie aanvraag met de referenties van de gebruiker, nonce en de bestaande PRT, ondertekent de aanvraag met de sessie sleutel en verzendt deze naar Azure AD. In een federatieve omgeving gebruikt CloudAP plugin het SAML-token dat door de Federatie provider wordt geretourneerd in plaats van de referenties van de gebruiker. |
 | F | Azure AD valideert de hand tekening van de sessie sleutel door deze te vergelijken met de sessie sleutel Inge sloten in de PRT, de nonce te valideren en te controleren of het apparaat geldig is in de Tenant en dat er een nieuwe PRT wordt uitgegeven. Zoals eerder gezien, wordt de PRT opnieuw gecombineerd met de sessie sleutel die is versleuteld met de transport sleutel (tkpub). |
 | G | De CloudAP-invoeg toepassing geeft de versleutelde PRT en de sessie sleutel door aan CloudAP. CloudAP vraagt de TPM om de sessie sleutel te ontsleutelen met de transport sleutel (tkpriv) en versleutelt deze opnieuw met de eigen sleutel van de TPM. De versleutelde sessie sleutel wordt in de cache van CloudAP opgeslagen samen met de PRT. |
+
+> [!NOTE]
+> Een PRT kan extern worden vernieuwd zonder dat er een VPN-verbinding nodig is wanneer usernamemixed-eind punten extern worden ingeschakeld.
 
 ### <a name="prt-usage-during-app-token-requests"></a>PRT-gebruik tijdens app-token aanvragen
 

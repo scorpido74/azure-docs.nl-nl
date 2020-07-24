@@ -7,12 +7,12 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: e1a866799a62c457c2734524c58bb848b8f067e6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024364"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -32,12 +32,12 @@ Installeer de Azure Monitor Exporters van opentellingen:
 python -m pip install opencensus-ext-azure
 ```
 
-Zie [pakket met Opentellingen](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)voor een volledige lijst met pakketten en integraties.
+Zie [pakket met Opentellingen](./nuget.md#common-packages-for-python-using-opencensus)voor een volledige lijst met pakketten en integraties.
 
 > [!NOTE]
 > De `python -m pip install opencensus-ext-azure` opdracht gaat ervan uit dat u een `PATH` omgevings variabele hebt ingesteld voor uw python-installatie. Als u deze variabele niet hebt geconfigureerd, moet u het volledige mappad opgeven waar uw python-uitvoerbaar bestand zich bevindt. Het resultaat is een opdracht die er als volgt uitziet: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillende soorten telemetrie naar Azure Monitor. Ze zijn Trace, metrische gegevens en Logboeken. Zie [het overzicht van het gegevens platform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)voor meer informatie over deze typen telemetrie. Gebruik de volgende instructies om deze typen telemetrie via de drie Exporters te verzenden.
+De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillende soorten telemetrie naar Azure Monitor. Ze zijn Trace, metrische gegevens en Logboeken. Zie [het overzicht van het gegevens platform](../platform/data-platform.md)voor meer informatie over deze typen telemetrie. Gebruik de volgende instructies om deze typen telemetrie via de drie Exporters te verzenden.
 
 ## <a name="telemetry-type-mappings"></a>Toewijzingen van het type telemetrie
 
@@ -111,7 +111,7 @@ Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen t
 1. De exporteur stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens vinden onder `traces` . 
 
     > [!NOTE]
-    > In deze context `traces` is niet hetzelfde als `tracing` . Hier wordt `traces` verwezen naar het type telemetrie dat u ziet in azure monitor wanneer u gebruikt `AzureLogHandler` . Maar `tracing` verwijst naar een concept in Opentelling en is gekoppeld aan [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+    > In deze context `traces` is niet hetzelfde als `tracing` . Hier wordt `traces` verwezen naar het type telemetrie dat u ziet in azure monitor wanneer u gebruikt `AzureLogHandler` . Maar `tracing` verwijst naar een concept in Opentelling en is gekoppeld aan [gedistribueerde tracering](./distributed-tracing.md).
 
     > [!NOTE]
     > De hoofd logboek registratie is geconfigureerd met het WAARSCHUWINGS niveau. Dit betekent dat de logboeken die u verzendt met een minder ernst worden genegeerd en op zijn beurt niet naar Azure Monitor worden verzonden. Zie de [documentatie](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel)voor meer informatie.
@@ -216,11 +216,11 @@ Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonsterin
 
 #### <a name="log-correlation"></a>Logboekcorrelatie
 
-Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
+Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](./correlation.md#log-correlation).
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
-Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden, de python- [telemetrie-processors](./api-filtering-sampling.md#opencensus-python-telemetry-processors)van opentellingen.
 
 
 ### <a name="metrics"></a>Metrische gegevens
@@ -347,16 +347,16 @@ Deze prestatie meter items worden momenteel verzonden:
 - CPU-gebruik verwerken (percentage)
 - Privé bytes verwerken (bytes)
 
-U kunt deze metrische gegevens weer geven in `performanceCounters` . Zie [prestatie meter items](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)voor meer informatie.
+U kunt deze metrische gegevens weer geven in `performanceCounters` . Zie [prestatie meter items](./performance-counters.md)voor meer informatie.
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
-Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden, de python- [telemetrie-processors](./api-filtering-sampling.md#opencensus-python-telemetry-processors)van opentellingen.
 
 ### <a name="tracing"></a>Tracering
 
 > [!NOTE]
-> In opentellingen `tracing` verwijst naar [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). De `AzureExporter` verzonden `requests` en `dependency` telemetrie naar Azure monitor.
+> In opentellingen `tracing` verwijst naar [gedistribueerde tracering](./distributed-tracing.md). De `AzureExporter` verzonden `requests` en `dependency` telemetrie naar Azure monitor.
 
 1. Eerst gaan we een aantal tracerings gegevens lokaal genereren. Voer in python niet-actief of uw editor van keuze de volgende code in:
 
@@ -420,8 +420,8 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
         main()
     ```
 
-1. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De gemaakt `SpanData` wordt verzonden naar Azure monitor. U vindt de verzonden gegevens over het bereik onder `dependencies` . Zie voor meer informatie over uitgaande aanvragen opentellingen python- [afhankelijkheden](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
-Zie voor meer informatie over inkomende aanvragen opentellingen python- [aanvragen](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
+1. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De gemaakt `SpanData` wordt verzonden naar Azure monitor. U vindt de verzonden gegevens over het bereik onder `dependencies` . Zie voor meer informatie over uitgaande aanvragen opentellingen python- [afhankelijkheden](./opencensus-python-dependency.md).
+Zie voor meer informatie over inkomende aanvragen opentellingen python- [aanvragen](./opencensus-python-request.md).
 
 #### <a name="sampling"></a>Steekproeven
 
@@ -429,11 +429,11 @@ Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonsterin
 
 #### <a name="trace-correlation"></a>Correlatie traceren
 
-Bekijk voor meer informatie over de correlatie van de telemetrie in uw tracerings gegevens, de python-correlatie van opentellingen van de [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python).
+Bekijk voor meer informatie over de correlatie van de telemetrie in uw tracerings gegevens, de python-correlatie van opentellingen van de [telemetrie](./correlation.md#telemetry-correlation-in-opencensus-python).
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
-Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden, de python- [telemetrie-processors](./api-filtering-sampling.md#opencensus-python-telemetry-processors)van opentellingen.
 
 ## <a name="configure-azure-monitor-exporters"></a>Azure Monitor-Exporters configureren
 
@@ -442,7 +442,7 @@ Zoals u ziet, zijn er drie verschillende Azure Monitor Exporters die ondersteuni
 Elke exporteur accepteert dezelfde argumenten voor de configuratie, door gegeven via de constructors. U kunt hier de details van deze informatie bekijken:
 
 - `connection_string`: De connection string die wordt gebruikt om verbinding te maken met uw Azure Monitor resource. Krijgt voor rang op `instrumentation_key` .
-- `enable_standard_metrics`: Gebruikt voor `AzureMetricsExporter` . Geeft de export functie de metrische gegevens van het [prestatie meter item](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) automatisch naar Azure monitor verzenden. Wordt standaard ingesteld op `True` .
+- `enable_standard_metrics`: Gebruikt voor `AzureMetricsExporter` . Geeft de export functie de metrische gegevens van het [prestatie meter item](../platform/app-insights-metrics.md#performance-counters) automatisch naar Azure monitor verzenden. Wordt standaard ingesteld op `True` .
 - `export_interval`: Wordt gebruikt om de frequentie in seconden van het exporteren op te geven.
 - `instrumentation_key`: De instrumentatie sleutel die wordt gebruikt om verbinding te maken met uw Azure Monitor-resource.
 - `logging_sampling_rate`: Gebruikt voor `AzureLogHandler` . Geeft een sampling frequentie [0, 1.0] voor het exporteren van Logboeken. De standaard waarde is 1,0.
@@ -462,7 +462,7 @@ In de lijst onder **actief**:
 - Voor telemetrie die met de export functie voor metrische gegevens van Azure Monitor worden verzonden, worden verzonden metrische gegevens weer gegeven onder `customMetrics` .
 - Voor telemetrie die wordt verzonden met de export functie van de Azure Monitor logboeken, worden logboeken weer gegeven onder `traces` . Uitzonde ringen worden weer gegeven onder `exceptions` .
 
-Zie [Logboeken in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)voor meer gedetailleerde informatie over het gebruik van query's en Logboeken.
+Zie [Logboeken in azure monitor](../platform/data-platform-logs.md)voor meer gedetailleerde informatie over het gebruik van query's en Logboeken.
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Meer informatie over opentellingen voor python
 

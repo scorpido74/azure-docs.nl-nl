@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083271"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028189"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-client in Azure gebruiken voor scenario's voor ontwikkelen/testen
 U kunt Windows 7, Windows 8 of Windows 10 Enter prise (x64) gebruiken in azure voor ontwikkel-en test scenario's met de juiste Visual Studio (voorheen MSDN)-abonnement. In dit artikel vindt u een overzicht van de vereisten voor het uitvoeren van Windows 7, Windows 8,1, Windows 10 Enter prise in Azure en het gebruik van de volgende Azure Gallery-installatie kopieën.
@@ -58,5 +58,4 @@ U kunt ook de aanbiedings-ID weer geven op het [tabblad abonnementen](https://ac
 ![Details van aanbiedings-ID vanuit de Azure-account Portal](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt nu uw Vm's implementeren met behulp van [Power shell](quick-create-powershell.md), [Resource Manager-sjablonen](ps-template.md)of [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
-
+U kunt nu uw Vm's implementeren met behulp van [Power shell](quick-create-powershell.md), [Resource Manager-sjablonen](ps-template.md)of [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

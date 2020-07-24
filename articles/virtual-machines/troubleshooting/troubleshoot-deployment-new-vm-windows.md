@@ -15,11 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120960"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028393"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Implementatie problemen oplossen bij het maken van een nieuwe Windows-VM in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +37,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 [Implementatiebewerkingen bekijken](../../azure-resource-manager/templates/deployment-history.md)
 
-[Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
+[Activiteiten logboeken weer geven om Azure-resources te beheren](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -52,7 +53,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 **Afsluiting**
 
-Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VHD te uploaden](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), die on-premises beschikbaar is, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst Sysprep uitvoeren.
+Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VHD te uploaden](/powershell/module/az.compute/add-azvhd), die on-premises beschikbaar is, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst Sysprep uitvoeren.
 
 **Fouten vastleggen:**
 
@@ -89,5 +90,3 @@ Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster
 
 ## <a name="next-steps"></a>Volgende stappen
 Als u problemen ondervindt bij het starten van een gestopt Windows-VM of het wijzigen van het formaat van een bestaande Windows-VM in azure, raadpleegt u problemen met [de implementatie van Resource Manager oplossen met het opnieuw opstarten of wijzigen van het formaat van een bestaande virtuele machine in azure](restart-resize-error-troubleshooting.md).
-
-

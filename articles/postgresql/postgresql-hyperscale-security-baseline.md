@@ -1,20 +1,20 @@
 ---
-title: Azure Database for PostgreSQL-grootschalige beveiligings basislijn voor Azure Security-Bench Mark
+title: Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige
 description: De Azure Database for PostgreSQL-grootschalige beveiligings basislijn biedt procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-benchmark test.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030042"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>Azure Database for PostgreSQL-grootschalige beveiligings basislijn voor Azure Security-Bench Mark
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige
 
 De Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige bevat aanbevelingen waarmee u de beveiligings-postuur van uw implementatie kunt verbeteren.
 
@@ -414,7 +414,7 @@ U kunt ook logboeken opnemen in azure Sentinel voor verder onderzoek.
 
 **Verantwoordelijkheid**: momenteel niet beschikbaar
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028546"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>VM-extensie voor Windows voor diagnostische gegevens over Azure-prestaties
 
@@ -233,7 +233,7 @@ Het hulp programma PerfInsights verzamelt diverse logboeken, configuratie en dia
 
 ## <a name="view-and-share-the-results"></a>De resultaten weer geven en delen
 
-Uitvoer van de uitbrei ding kan worden gevonden in een zip-bestand dat is geüpload naar het opslag account dat is opgegeven tijdens de installatie en wordt 30 dagen gedeeld met behulp van [Shared Access signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Dit zip-bestand bevat Diagnostische logboeken en een rapport met bevindingen en aanbevelingen. Een SAS-koppeling naar het zip-uitvoer bestand kan worden gevonden in een tekst bestand met de naam *zipfilename*_saslink.txt onder de map **C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **. Iedereen met deze koppeling kan het zip-bestand downloaden.
+Uitvoer van de uitbrei ding kan worden gevonden in een zip-bestand dat is geüpload naar het opslag account dat is opgegeven tijdens de installatie en wordt 30 dagen gedeeld met behulp van [Shared Access signatures (SAS)](../../storage/common/storage-sas-overview.md). Dit zip-bestand bevat Diagnostische logboeken en een rapport met bevindingen en aanbevelingen. Een SAS-koppeling naar het zip-uitvoer bestand kan worden gevonden in een tekst bestand met de naam *zipfilename*_saslink.txt onder de map **C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **. Iedereen met deze koppeling kan het zip-bestand downloaden.
 
 Micro soft kan deze SAS-koppeling gebruiken om de diagnostische gegevens te downloaden om de ondersteunings technicus te helpen werken aan uw ondersteunings ticket.
 

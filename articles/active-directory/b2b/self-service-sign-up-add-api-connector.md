@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386739"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027509"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Een API-connector toevoegen aan een gebruikers stroom
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Als een claim voor verzenden geen waarde heeft op het moment dat het API-eind pu
 Aangepaste kenmerken kunnen worden gemaakt voor de gebruiker met behulp van de indeling **extension_ \<extensions-app-id> _AttributeName** . Uw API moet verwachten dat er claims in dezelfde geserialiseerde indeling worden ontvangen. Uw API kan claims retour neren met of zonder de `<extensions-app-id>` . Zie voor meer informatie over aangepaste kenmerken [aangepaste kenmerken definiëren voor Self-service aanmeldingen](user-flow-add-custom-attributes.md).
 
 > [!TIP] 
-> claims [**(' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) en het **e-mail adres (' email_address ')** kunnen worden gebruikt om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker wordt geverifieerd met Google of Facebook en ' email_address ' altijd wordt verzonden.
+> [**identiteiten (' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker wordt geverifieerd met een Google-of Facebook-en e-mail bericht wordt altijd verzonden.
 
 ## <a name="expected-response-types-from-the-web-api"></a>Verwachte antwoord typen van de Web-API
 
@@ -136,15 +136,15 @@ Content-type: application/json
 | Parameter                                          | Type              | Vereist | Beschrijving                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | versie                                            | Tekenreeks            | Ja      | De versie van de API.                                                                                                                                                                                                                                                                |
-| action                                             | Tekenreeks            | Ja      | Waarde moet zijn `Continue` .                                                                                                                                                                                                                                                              |
+| actie                                             | Tekenreeks            | Ja      | Waarde moet zijn `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | No       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | De geretourneerde claim kan eventueel niet bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | De geretourneerde claim hoeft niet te bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
 
 ### <a name="blocking-response"></a>Antwoord blok keren
 
 Een blokkerende reactie sluit de gebruikers stroom af. Het kan worden uitgegeven door de API om de voortzetting van de gebruikers stroom te stoppen door een blok pagina voor de gebruiker weer te geven. Op de pagina blok keren wordt de weer gegeven `userMessage` van de API.
 
-Hier volgt een voor beeld van het blokkerende antwoord:
+Voor beeld van het blokkerende antwoord:
 
 ```http
 HTTP/1.1 200 OK
@@ -162,11 +162,11 @@ Content-type: application/json
 | Parameter   | Type   | Vereist | Beschrijving                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | versie     | Tekenreeks | Ja      | De versie van de API.                                                    |
-| action      | Tekenreeks | Ja      | Waarde moet`ShowBlockPage`                                              |
+| actie      | Tekenreeks | Ja      | Waarde moet`ShowBlockPage`                                              |
 | userMessage | Tekenreeks | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
 | code        | Tekenreeks | No       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
-#### <a name="end-user-experience-with-a-blocking-response"></a>Ervaring van eind gebruikers met een blokkerend antwoord
+#### <a name="end-user-experience-with-a-blocking-response"></a>Eind gebruikers ervaring met een blokkerend antwoord
 
 ![Voor beeld blok pagina](./media/api-connectors-overview/blocking-page-response.png)
 
@@ -192,12 +192,12 @@ Content-type: application/json
 | Parameter   | Type    | Vereist | Beschrijving                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | versie     | Tekenreeks  | Ja      | De versie van de API.                                                    |
-| action      | Tekenreeks  | Ja      | Waarde moet zijn `ValidationError` .                                           |
+| actie      | Tekenreeks  | Ja      | Waarde moet zijn `ValidationError` .                                           |
 | status      | Geheel getal | Yes      | Dit moet een waarde zijn `400` voor een ValidationError-antwoord.                        |
 | userMessage | Tekenreeks  | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
 | code        | Tekenreeks  | No       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>Ervaring van eind gebruikers met validatie-fout bericht
+#### <a name="end-user-experience-with-a-validation-error-response"></a>Eind gebruikers ervaring met validatie-fout bericht
 
 ![Voorbeeld validatie pagina](./media/api-connectors-overview/validation-error-postal-code.png)
 

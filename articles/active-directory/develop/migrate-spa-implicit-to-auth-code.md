@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 0c7fe0629724217f36d3b28e74aaafdfd15c9a61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027084"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Een JavaScript-app met één pagina migreren van impliciete toekenning naar autorisatiecodestroom
-
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 Microsoft Authentication Library voor JavaScript (MSAL.js) v2.0 biedt ondersteuning voor de autorisatiecodestroom met PKCE en CORS voor toepassingen met één pagina op het Microsoft Identity-platform. Volg de stappen in de onderstaande secties om de MSAL.js 1.x-toepassing met impliciete toekenning te migreren naar MSAL.js 2.0+ (hierna *2. x*) en de authenticatiecodestroom.
 
@@ -95,7 +92,7 @@ Schakel de impliciete toekenningsstroom **niet** uit voordat u al uw toepassinge
 
 Voor meer informatie over de autorisatiecodestroom, met inbegrip van de verschillen tussen de impliciete en autorisatiecodestromen, raadpleegt u [Microsoft-identiteitsplatform en de OAuth 2.0-autorisatiecodestroom](v2-oauth2-auth-code-flow.md).
 
-Als u meer wilt weten over het ontwikkelen van toepassingen met één pagina op het Microsoft-identiteitsplatform, is de reeks artikelen [Scenario: Een toepassing met één pagina](scenario-spa-overview.md) nuttig om mee aan de slag te gaan.
+Als u meer wilt weten over het ontwikkelen van toepassingen met één pagina op het Microsoft-identiteitsplatform, is de reeks artikelen [Scenario: Een toepassing met één pagina](scenario-spa-overview.md)-serie artikelen is nuttig om mee aan de slag te gaan.
 
 <!-- LINKS - external -->
 [msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html

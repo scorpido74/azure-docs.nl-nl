@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026336"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-app die gebruikers aanmeldt: code configuratie
 
@@ -28,7 +29,7 @@ De bibliotheken die worden gebruikt voor het beveiligen van een web-app (en een 
 
 | Platform | Bibliotheek | Beschrijving |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [Identiteits model-uitbrei dingen voor .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Micro soft Identity model-extensies voor .NET, die rechtstreeks worden gebruikt door ASP.NET en ASP.NET Core, stelt een reeks dll-bestanden voor die worden uitgevoerd op zowel .NET Framework als .NET core. Vanuit een ASP.NET-of ASP.NET Core-Web-App kunt u de token validatie controleren met behulp van de **TokenValidationParameters** -klasse (met name in sommige partner scenario's). |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [Identiteits model-uitbrei dingen voor .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Micro soft Identity model-extensies voor .NET, die rechtstreeks worden gebruikt door ASP.NET en ASP.NET Core, stelt een reeks dll-bestanden voor die worden uitgevoerd op zowel .NET Framework als .NET core. Vanuit een ASP.NET-of ASP.NET Core-Web-App kunt u de token validatie controleren met behulp van de **TokenValidationParameters** -klasse (met name in sommige partner scenario's). In de praktijk wordt de complexiteit ingekapseld in de [micro soft. Identity. Web](https://aka.ms/ms-identity-web) -bibliotheek |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Ondersteuning voor Java-webtoepassingen |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Ondersteuning voor python-webtoepassingen |
 
@@ -62,7 +63,7 @@ U kunt voor meer informatie over de volledige implementatie verwijzen naar dit v
 
 ## <a name="configuration-files"></a>Configuratie bestanden
 
-Webtoepassingen die gebruikers aanmelden met behulp van het micro soft-identiteits platform, worden meestal geconfigureerd via configuratie bestanden. De instellingen die u moet invullen zijn:
+Webtoepassingen die gebruikers aanmelden met behulp van het micro soft-identiteits platform, worden geconfigureerd via configuratie bestanden. De instellingen die u moet invullen zijn:
 
 - De Cloud instantie ( `Instance` ) als u wilt dat uw app in nationale Clouds wordt uitgevoerd, bijvoorbeeld
 - De doel groep in de Tenant-ID ( `TenantId` )
@@ -210,13 +211,21 @@ In ASP.NET Core web-apps (en Web-Api's) is de toepassing beveiligd omdat u een `
 Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorheen Azure AD v 2.0), moet u de volgende code toevoegen. De opmerkingen in de code moeten zichzelf verklaren.
 
 > [!NOTE]
-> Als u uw project start met het standaard ASP.NET Core-webproject in Visual Studio of met `dotnet new mvc --auth SingleAuth` of `dotnet new webapp --auth SingleAuth` , ziet u code zoals in het volgende voor beeld: `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` .
-> 
+> Als u rechtstreeks wilt beginnen met de nieuwe ASP.NET Core sjablonen voor micro soft Identity platform, die gebruikmaken van micro soft. Identity. Web, kunt u een preview NuGet-pakket downloaden met Project sjablonen voor .NET Core 3,1 en .NET 5,0. Na de installatie kunt u ASP.NET Core webtoepassingen (MVC of razendsnelle) rechtstreeks instantiëren. Zie de [Project sjablonen voor micro soft. Identity. Web Web-app](https://aka.ms/ms-id-web/webapp-project-templates) voor meer informatie. Dit is de eenvoudigste manier om alle onderstaande stappen voor u uit te voeren.
+>
+> Als u liever uw project start met het huidige standaard ASP.NET Core webproject in Visual Studio of met `dotnet new mvc --auth SingleAuth` of `dotnet new webapp --auth SingleAuth` , ziet u code zoals in het volgende voor beeld:
+>
+>```c#
+>  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+>          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+> ```
+>
 > Deze code maakt gebruik van het verouderde pakket **micro soft. AspNetCore. Authentication. AzureAD. UI** NuGet, dat wordt gebruikt voor het maken van een Azure AD v 1.0-toepassing. In dit artikel wordt uitgelegd hoe u een micro soft Identity platform (Azure AD v 2.0)-toepassing maakt waarmee die code wordt vervangen.
+>
 
 1. Voeg de NuGet-pakketten [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) en [micro soft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) toe aan uw project. Verwijder het NuGet-pakket micro soft. AspNetCore. Authentication. AzureAD. UI als dit aanwezig is.
 
-2. Werk de code in `ConfigureServices` zodat deze gebruikmaakt van de `AddSignIn` `AddMicrosoftIdentityUI` methoden en.
+2. Werk de code in `ConfigureServices` zodat deze gebruikmaakt van de `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` methoden en.
 
    ```c#
    public class Startup
@@ -225,7 +234,7 @@ Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorhe
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddSignIn(Configuration, "AzureAd");
+     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -250,18 +259,23 @@ Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorhe
    ```
 
 In de bovenstaande code:
-- De `AddSignIn` extensie methode is gedefinieerd in **micro soft. Identity. Web**. ,
+- De `AddMicrosoftWebAppAuthentication` extensie methode is gedefinieerd in **micro soft. Identity. Web**. ,
   - Hiermee voegt u de verificatie service toe.
   - Hiermee configureert u opties voor het lezen van het configuratie bestand (hier uit de sectie ' AzureAD ')
   - Hiermee configureert u de OpenID Connect Connect-opties, zodat de instantie het micro soft Identity platform-eind punt is.
   - Valideert de uitgever van het token.
   - Zorgt ervoor dat de claims die overeenkomen met de naam, zijn toegewezen uit de `preferred_username` claim in het ID-token.
 
-- Naast het configuratie object kunt u de naam van de configuratie sectie opgeven tijdens het aanroepen van `AddSignIn` . Standaard is dit `AzureAd` .
+- Naast het configuratie object kunt u de naam van de configuratie sectie opgeven tijdens het aanroepen van `AddMicrosoftWebAppAuthentication` . Standaard is dit `AzureAd` .
 
-- `AddSignIn`heeft andere para meters voor geavanceerde scenario's. U kunt bijvoorbeeld bij het traceren van middleware-gebeurtenissen voor OpenID Connect verbinden u helpen bij het oplossen van problemen met uw webtoepassing als verificatie niet werkt. Als u de optionele para meter instelt `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` op `true` , ziet u hoe informatie wordt verwerkt door de set ASP.net core middleware, terwijl deze wordt uitgevoerd op basis van de HTTP-reactie op de identiteit van de gebruiker in `HttpContext.User` .
+- `AddMicrosoftWebAppAuthentication`heeft andere para meters voor geavanceerde scenario's. U kunt bijvoorbeeld bij het traceren van middleware-gebeurtenissen voor OpenID Connect verbinden u helpen bij het oplossen van problemen met uw webtoepassing als verificatie niet werkt. Als u de optionele para meter instelt `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` op `true` , ziet u hoe informatie wordt verwerkt door de set ASP.net core middleware, terwijl deze wordt uitgevoerd op basis van de HTTP-reactie op de identiteit van de gebruiker in `HttpContext.User` .
 
-- De `AddMicrosoftIdentityUI` extensie methode is gedefinieerd in **micro soft. Identity. Web. UI**. Het bevat een standaard controller voor het afmelden.
+- De `AddMicrosoftIdentityUI` extensie methode is gedefinieerd in **micro soft. Identity. Web. UI**. Het bevat een standaard controller voor het afhandelen van aanmelden en afmelden.
+
+U kunt meer informatie vinden over hoe u met micro soft. Identity. Web Web-apps kunt maken in<https://aka.ms/ms-id-web/webapp>
+
+> [!WARNING]
+> Micro soft. Identity. Web biedt momenteel geen ondersteuning voor het scenario van **afzonderlijke gebruikers accounts** (waarbij gebruikers accounts in-app worden opgeslagen) wanneer u Azure AD als en externe aanmeldings provider gebruikt. Zie voor meer informatie: [AzureAD/micro soft-Identity-Web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

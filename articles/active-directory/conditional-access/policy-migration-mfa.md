@@ -1,5 +1,5 @@
 ---
-title: Beleid voor voorwaardelijke toegang migreren-Azure Active Directory
+title: Beleid voor voorwaardelijke toegang migreren met multi-factor Authentication-Azure Active Directory
 description: In dit artikel wordt beschreven hoe u een klassiek beleid migreert waarvoor multi-factor Authentication is vereist in de Azure Portal.
 services: active-directory
 ms.service: active-directory
@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027390"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Een klassiek beleid migreren in de Azure Portal
 
@@ -47,15 +48,15 @@ Het migratie proces bestaat uit de volgende stappen:
    1. Als u alle gebruikers hebt geselecteerd in het klassieke beleid, klikt u op **alle gebruikers**. 
    1. Als u groepen hebt geselecteerd in het klassieke beleid, klikt u op **gebruikers en groepen selecteren**en selecteert u vervolgens de vereiste gebruikers en groepen.
    1. Als u de uitgesloten groepen hebt, klikt u op het tabblad **uitsluiten** en selecteert u vervolgens de vereiste gebruikers en groepen. 
-   1. Selecteer **gereed**
+   1. Selecteer **Gereed**
 1. Klik in het gedeelte **toewijzing** op **Cloud-apps of-acties**.
 1. Voer de volgende stappen uit op de pagina **Cloud-apps of acties** :
-   1. Klik op **apps selecteren**.
+   1. Klik op **Apps selecteren**.
    1. Klik op **Selecteren**.
    1. Selecteer uw Cloud-app op de pagina **selecteren** en klik vervolgens op **selecteren**.
-   1. Klik op de pagina **Cloud-apps** op **gereed**.
+   1. Klik op de pagina **Cloud-apps** op **Gereed**.
 1. Als u **multi-factor Authentication vereisen** hebt ingeschakeld:
-   1. Klik in de sectie **toegangs beheer** op **verlenen**.
+   1. Klik in de sectie**Besturingselementen voor toegang** op **Toekennen**.
    1. Klik op de pagina **Grant** op **toegang verlenen**en klik vervolgens op **multi-factor Authentication vereisen**.
    1. Klik op **Selecteren**.
 1. Klik **op aan om uw** beleid in te scha kelen en selecteer vervolgens **Opslaan**.

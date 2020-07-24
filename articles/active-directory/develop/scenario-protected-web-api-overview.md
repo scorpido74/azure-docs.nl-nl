@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026625"
 ---
 # <a name="scenario-protected-web-api"></a>Scenario: beveiligde web-API
 
@@ -32,8 +33,12 @@ Als u uw web-API wilt gebruiken, moet u geverifieerde gebruikers met zowel werk-
 
 Hier vindt u specifieke informatie die u moet kennen om Web-Api's te beveiligen:
 
-- De registratie van uw app moet ten minste één bereik weer geven. De token versie die door de Web-API wordt geaccepteerd, is afhankelijk van de aanmeldings doel groep.
+- De registratie van uw app moet ten minste één *bereik* of een *toepassingsrol weer geven.*
+  - Bereiken worden weer gegeven door Web-Api's die namens een gebruiker worden genoemd.
+  - Toepassings rollen worden weer gegeven door Web-Api's die worden aangeroepen door daemon-toepassingen (die uw web-API op eigen naam aanroepen).
+- Als u een nieuwe web API-app-registratie maakt, kiest u de versie van het [toegangs token](reference-app-manifest.md#accesstokenacceptedversion-attribute) die door uw web-API is geaccepteerd `2` . Voor verouderde web-Api's kan de geaccepteerde token versie zijn `null` , maar deze waarde beperkt de aanmeld doel groep tot alleen organisaties en persoonlijke micro soft-accounts (MSA) worden niet ondersteund.
 - De code configuratie voor de Web-API moet het token valideren dat wordt gebruikt wanneer de Web-API wordt aangeroepen.
+- De code in de controller acties moet de rollen of bereiken in het token valideren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

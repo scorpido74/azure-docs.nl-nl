@@ -8,11 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a14fafde8ecea0370c74cdbfd39a85d8dfb15612
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0210b3bf13bc852e2ace0e8b490b3ddf952dc288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83651079"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028971"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Shell scripts uitvoeren in uw virtuele Linux-machine met behulp van de opdracht uitvoeren
 
@@ -81,7 +82,7 @@ Nadat u de opdracht hebt gekozen, selecteert u **uitvoeren** om het script uit t
 
 ### <a name="powershell"></a>PowerShell
 
-In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de `-ScriptPath` para meter, lokaal is waar de cmdlet wordt uitgevoerd.
+In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de `-ScriptPath` para meter, lokaal is waar de cmdlet wordt uitgevoerd.
 
 ```powershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

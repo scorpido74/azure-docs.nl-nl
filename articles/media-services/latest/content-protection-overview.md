@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023259"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
 
@@ -243,7 +244,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId`heeft een waarde van de aangevraagde sleutel. U kunt gebruiken `AlternativeMediaId` Als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. `AlternativeMediaId`Kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
 
-Zie [streaming-beleid-maken](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)voor rest-voor beelden die gebruikmaken van url's voor aangepaste licentie/sleutel overname.
+Zie [streaming-beleid-maken](/rest/api/media/streamingpolicies/create)voor rest-voor beelden die gebruikmaken van url's voor aangepaste licentie/sleutel overname.
 
 > [!NOTE]
 > Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
@@ -256,7 +257,7 @@ Als er fouten optreden die eindigen op `_NOT_SPECIFIED_IN_URL` , zorg er dan voo
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -265,4 +266,4 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 * [Multi-DRM-inhouds beschermings systeem ontwerpen met toegangs beheer](design-multi-drm-system-with-access-control.md)
 * [Versleuteling van opslag side](storage-account-concept.md#storage-side-encryption)
 * [Veelgestelde vragen](frequently-asked-questions.md)
-* [JSON Web Token-handler](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
+* [JSON Web Token-handler](/dotnet/framework/security/json-web-token-handler)

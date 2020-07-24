@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029430"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
 **Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze:: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
@@ -73,7 +73,7 @@ Hieronder vindt u enkele dingen die u moet overwegen:
     Als er geen gegevens zijn, wordt het probleem veroorzaakt door de diagnostische uitbrei ding die in de Vm's wordt uitgevoerd. Als de gegevens daar zich bevinden, is er een probleem met uw schaal regels of met de Insights-service. Controleer de [status van Azure](https://azure.microsoft.com/status/).
     
     Als u deze stappen hebt uitgevoerd, kunt u, als u nog steeds problemen hebt met automatisch schalen, de volgende resources proberen: 
-    * Lees de forums op [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)of [stack overflow](https://stackoverflow.com/questions/tagged/azure) 
+    * Lees de forums op [micro soft Q&een vraag pagina](/answers/topics/azure-virtual-machines.html)of [stack overflow](https://stackoverflow.com/questions/tagged/azure) 
     * Een ondersteunings oproep registreren. Bereid u voor op het delen van de sjabloon en een weer gave van uw prestatie gegevens.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

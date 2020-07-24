@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029005"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>End-to-end-versleuteling inschakelen met versleuteling op host-Azure CLI
 
@@ -23,7 +23,7 @@ Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Ondersteunde regio’s
+### <a name="supported-regions"></a>Ondersteunde regio's
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -43,34 +43,144 @@ Zodra de functie is ingeschakeld, moet u een Azure Key Vault en een DiskEncrypti
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-## <a name="enable-encryption-at-host-for-disks-attached-to-vm-and-virtual-machine-scale-sets"></a>Versleuteling inschakelen op de host voor schijven die zijn gekoppeld aan VM-en virtuele-machine schaal sets
+## <a name="examples"></a>Voorbeelden
 
-U kunt versleuteling inschakelen op de host door een nieuwe eigenschap EncryptionAtHost onder securityProfile van Vm's of virtuele-machine schaal sets in te stellen met behulp van de API-versie **2020-06-01** en hoger.
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Maak een virtuele machine met versleuteling op host die is ingeschakeld met door de klant beheerde sleutels. 
 
-`"securityProfile": { "encryptionAtHost": "true" }`
-
-## <a name="example-scripts"></a>Voorbeeld scripts
-
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>Versleuteling op de host inschakelen voor schijven die zijn gekoppeld aan een virtuele machine met door de klant beheerde sleutels
-
-Maak een virtuele machine met Managed disks met behulp van de resource-URI van de DiskEncryptionSet die u eerder hebt gemaakt.
-
-Vervang,,,,, `<yourPassword>` `<yourVMName>` `<yourVMSize>` `<yourDESName>` `<yoursubscriptionID>` `<yourResourceGroupName>` en `<yourRegion>` Voer het script uit.
+Maak een virtuele machine met Managed disks met behulp van de resource-URI van de DiskEncryptionSet die eerder is gemaakt voor het versleutelen van de cache van besturings systemen en gegevens schijven met door de klant beheerde sleutels De tijdelijke schijven worden versleuteld met door het platform beheerde sleutels. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "diskEncryptionSetId=/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 128 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>Versleuteling op de host inschakelen voor schijven die zijn gekoppeld aan een virtuele machine met door het platform beheerde sleutels
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Maak een virtuele machine met versleuteling op host die is ingeschakeld met door het platform beheerde sleutels. 
 
-Vervang `<yourPassword>` ,,, `<yourVMName>` `<yourVMSize>` `<yourResourceGroupName>` en `<yourRegion>` Voer het script uit.
+Maak een virtuele machine met versleuteling op de host en schakel deze in voor het versleutelen van cache van besturings systeem/gegevens schijven en tijdelijke schijven met door het platform beheerde sleutels. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 128 \
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>Werk een virtuele machine bij om versleuteling op de host in te scha kelen. 
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>Controleer de status van versleuteling op de host voor een VM
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm show -n $vmName \
+-g $rgName \
+--query [securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Een schaalset voor virtuele machines maken met versleuteling op host die is ingeschakeld met door de klant beheerde sleutels. 
+
+Maak een schaalset voor virtuele machines met Managed disks met behulp van de resource-URI van de DiskEncryptionSet die eerder is gemaakt voor het versleutelen van de cache van besturings systemen en gegevens schijven met door de klant beheerde sleutels. De tijdelijke schijven worden versleuteld met door het platform beheerde sleutels. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 64 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Een schaalset voor virtuele machines maken met versleuteling op host die is ingeschakeld met door het platform beheerde sleutels. 
+
+Een schaalset voor virtuele machines maken met versleuteling op de host ingeschakeld voor het versleutelen van cache van OS/gegevens schijven en tijdelijke schijven met door het platform beheerde sleutels. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--data-disk-sizes-gb 64 128 \
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>Een schaalset voor virtuele machines bijwerken om versleuteling op de host in te scha kelen. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>Controleer de status van versleuteling op de host voor een schaalset voor virtuele machines
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss show -n $vmssName \
+-g $rgName \
+--query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Ondersteunde VM-grootten zoeken

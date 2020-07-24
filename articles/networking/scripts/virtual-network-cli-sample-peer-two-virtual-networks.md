@@ -12,13 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c301c66c3b668ae48314c4d1eb06657d8573209c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030399"
 ---
-# <a name="peer-two-virtual-networks"></a>Peering van twee virtuele netwerken
+# <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>Een Azure CLI-voorbeeld script gebruiken om twee virtuele netwerken te verbinden
 
 Met dit script maakt en verbindt u twee virtuele netwerken in dezelfde regio via het Azure-netwerk. Nadat het script is uitgevoerd, maakt u een peering tussen twee virtuele netwerken.
 

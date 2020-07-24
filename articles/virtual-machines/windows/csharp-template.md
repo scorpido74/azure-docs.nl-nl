@@ -8,18 +8,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d8dc467ce8f7e34faaeaa2c61fd0c5da1da4e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027951"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Een virtuele machine van Azure implementeren met behulp van C# en een resource manager-sjabloon
 
 In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon implementeert met behulp van C#. Met de sjabloon die u maakt, wordt één virtuele machine met Windows Server geïmplementeerd in een nieuw virtueel netwerk met één subnet.
 
-Zie [virtuele machines in een Azure Resource Manager sjabloon](template-description.md)voor een gedetailleerde beschrijving van de bron van de virtuele machine. Zie [Azure Resource Manager-sjabloon scenario](../../azure-resource-manager/resource-manager-template-walkthrough.md)voor meer informatie over alle resources in een sjabloon.
+Zie [virtuele machines in een Azure Resource Manager sjabloon](template-description.md)voor een gedetailleerde beschrijving van de bron van de virtuele machine. Zie [Azure Resource Manager-sjabloon scenario](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)voor meer informatie over alle resources in een sjabloon.
 
 Het duurt ongeveer 10 minuten om deze stappen uit te voeren.
 
@@ -27,7 +27,7 @@ Het duurt ongeveer 10 minuten om deze stappen uit te voeren.
 
 In deze stap zorgt u ervoor dat Visual Studio is geïnstalleerd en dat u een console toepassing maakt die wordt gebruikt voor het implementeren van de sjabloon.
 
-1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
+1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
 2. Klik in Visual Studio op **File** > **New** > **Project**.
 3. In **sjablonen**  >  **Visual C#** selecteert u **console-app (.NET Framework)**, voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
 
@@ -325,5 +325,5 @@ Het duurt ongeveer vijf minuten voordat deze console toepassing volledig van beg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als er problemen zijn met de implementatie, moet u een volgende stap bekijken bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+* Als er problemen zijn met de implementatie, moet u een volgende stap bekijken bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
 * Meer informatie over hoe u een virtuele machine en de ondersteunende resources implementeert door [een virtuele Azure-machine implementeren met C#](csharp.md)te controleren.

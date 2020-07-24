@@ -3,15 +3,16 @@ title: Prestatie meter items in Application Insights | Microsoft Docs
 description: Systeem-en aangepaste .NET-prestatie meter items bewaken in Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701476"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024415"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systeem prestatie meter items in Application Insights
 
-Windows biedt een grote verscheidenheid aan [prestatiemeteritems](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters), bijvoorbeeld voor CPU-bezetting, geheugen, schijfruimte en netwerkgebruik. U kunt ook uw eigen prestatie meter items definiëren. Verzameling van prestatie meter items wordt ondersteund zolang uw toepassing wordt uitgevoerd onder IIS op een on-premises host of virtuele machine waartoe u beheerders toegang hebt. Hoewel toepassingen die als Azure worden uitgevoerd Web Apps geen directe toegang tot prestatie meter items hebben, wordt een subset van de beschik bare items verzameld door Application Insights.
+Windows biedt een grote verscheidenheid aan [prestatiemeteritems](/windows/desktop/perfctrs/about-performance-counters), bijvoorbeeld voor CPU-bezetting, geheugen, schijfruimte en netwerkgebruik. U kunt ook uw eigen prestatie meter items definiëren. Verzameling van prestatie meter items wordt ondersteund zolang uw toepassing wordt uitgevoerd onder IIS op een on-premises host of virtuele machine waartoe u beheerders toegang hebt. Hoewel toepassingen die als Azure worden uitgevoerd Web Apps geen directe toegang tot prestatie meter items hebben, wordt een subset van de beschik bare items verzameld door Application Insights.
 
 ## <a name="view-counters"></a>Items weer geven
 
@@ -39,7 +40,7 @@ Als het gewenste prestatie meter item niet is opgenomen in de lijst met metrisch
 
     `Get-Counter -ListSet *`
 
-    (Zie [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
+    (Zie [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1) .)
 2. Open ApplicationInsights.config.
 
    * Als u tijdens de ontwikkeling Application Insights aan uw app hebt toegevoegd, bewerkt u ApplicationInsights.config in uw project en implementeert u het vervolgens opnieuw op uw servers.
@@ -108,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Prestatie meter items in Analytics
-U kunt rapporten over prestatie meter items zoeken en weer geven in [Analytics](../../azure-monitor/app/analytics.md).
+U kunt rapporten over prestatie meter items zoeken en weer geven in [Analytics](../log-query/log-query-overview.md).
 
 Het **Performance Counters** -schema stelt de `category` , `counter` naam en `instance` naam van elk prestatie meter item in.  In de telemetrie voor elke toepassing ziet u alleen de items voor die toepassing. Als u bijvoorbeeld wilt zien welke items beschikbaar zijn: 
 
@@ -152,4 +153,3 @@ Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../
 
 * [Afhankelijkheden bijhouden](../../azure-monitor/app/asp-net-dependencies.md)
 * [Uitzonde ringen bijhouden](../../azure-monitor/app/asp-net-exceptions.md)
-

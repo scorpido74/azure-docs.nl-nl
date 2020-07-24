@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023463"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
 
@@ -26,7 +26,7 @@ In dit artikel vindt u een aantal algemene termen die in de IoT Hub-artikelen wo
 
 [Advanced Message queueing Protocol (AMQP)](https://www.amqp.org/) is een van de berichten protocollen die [IOT hub](#iot-hub) ondersteunt voor het communiceren met apparaten. Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie over de berichten protocollen die door IOT hub worden ondersteund.
 
-## <a name="automatic-device-management"></a>Automatisch Apparaatbeheer
+## <a name="automatic-device-management"></a>Automatisch apparaatbeheer
 
 Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde en complexe taken van het beheer van grote apparaat vloots in de hele levens cyclus. Met automatisch Apparaatbeheer kunt u een set apparaten op basis van hun eigenschappen richten, een gewenste configuratie definiëren en apparaten IoT Hub bijwerken wanneer deze binnen het bereik vallen.  Bestaat uit [automatische configuraties van apparaten](iot-hub-auto-device-config.md) en [IOT Edge automatische implementaties](../iot-edge/how-to-deploy-at-scale.md).
 
@@ -64,7 +64,7 @@ De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie wa
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) is een verzameling cmdlets die u kunt gebruiken om Azure te beheren met Windows Power shell. U kunt de-cmdlets gebruiken voor het maken, testen, implementeren en beheren van oplossingen en services die via het Azure-platform worden geleverd.
+[Azure PowerShell](/powershell/azure/) is een verzameling cmdlets die u kunt gebruiken om Azure te beheren met Windows Power shell. U kunt de-cmdlets gebruiken voor het maken, testen, implementeren en beheren van oplossingen en services die via het Azure-platform worden geleverd.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -306,7 +306,7 @@ SASL PLAIN is een protocol dat het AMQP-protocol gebruikt voor het overdragen va
 
 U kunt de [Service rest API](https://docs.microsoft.com/rest/api/iothub/service/configuration) van de back-end van de oplossing gebruiken om uw apparaten te beheren. Met de API kunt u dubbele eigenschappen van het [apparaat](#device-twin) ophalen en bijwerken, [direct methoden](#direct-method)aanroepen en [taken](#job)plannen. Normaal gesp roken moet u een van de high-level [service-sdk's](#azure-iot-service-sdks) gebruiken, zoals weer gegeven in de IOT hub zelf studies.
 
-## <a name="shared-access-signature"></a>Handtekening voor gedeelde toegang
+## <a name="shared-access-signature"></a>Shared Access Signature
 
 Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. SAS-verificatie heeft twee onderdelen: een _gedeeld toegangs beleid_ en een _Shared Access Signature_ (vaak een token genoemd). Een apparaat gebruikt SAS om te verifiëren bij een IoT-hub. [Back-end-apps](#back-end-app) maken ook gebruik van SAS om te verifiëren bij de service gerichte eind punten op een IOT-hub. Normaal gesp roken neemt u het SAS-token op in het [Connection String](#connection-string) dat een app gebruikt om een verbinding met een IOT-hub tot stand te brengen.
 

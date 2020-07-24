@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc81cca10bacc581e72c7caa70a0b74b7ae99f9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025335"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
 
@@ -85,7 +85,7 @@ Het wijzigen van de abonnements Directory is een bewerking op service niveau. Di
 
 Nadat u een abonnement aan een andere map hebt gekoppeld, moet u mogelijk de volgende taken uitvoeren om de bewerkingen te hervatten:
 
-- Als u sleutel kluizen hebt, moet u de Tenant-ID van de sleutel kluis wijzigen. Zie voor meer informatie [een sleutel kluis Tenant-id wijzigen nadat een abonnement is verplaatst](../../key-vault/general/subscription-move-fix.md).
+- Als u sleutel kluizen hebt, moet u de Tenant-ID van de sleutel kluis wijzigen. Zie voor meer informatie [een sleutel kluis Tenant-id wijzigen nadat een abonnement is verplaatst](../../key-vault/general/move-subscription.md).
 
 - Als u door het systeem toegewezen beheerde identiteiten voor bronnen hebt gebruikt, moet u deze identiteiten weer inschakelen. Als u door de gebruiker toegewezen beheerde identiteiten hebt gebruikt, moet u deze identiteiten opnieuw maken. Nadat u de beheerde identiteiten opnieuw hebt ingeschakeld of opnieuw hebt gemaakt, moet u de machtigingen die zijn toegewezen aan deze identiteiten opnieuw instellen. Zie [Wat zijn beheerde identiteiten voor Azure-resources?](../managed-identities-azure-resources/overview.md) voor meer informatie.
 

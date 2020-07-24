@@ -4,11 +4,12 @@ description: Talen, platforms en integraties die beschikbaar zijn voor Applicati
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5403162a2511862dd1c649dc273a35a550abaaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024279"
 ---
 # <a name="supported-languages"></a>Ondersteunde talen
 
@@ -25,7 +26,7 @@ ms.locfileid: "82891114"
 * [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - voor apps die al live zijn](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Cloud Services](../../azure-monitor/app/cloudservices.md), inclusief de web-en werk rollen
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+* [Azure Functions](../../azure-functions/functions-monitoring.md)
 ### <a name="instrumentation-through-code-sdks"></a>Instrumentatie via code (Sdk's)
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
@@ -38,11 +39,11 @@ ms.locfileid: "82891114"
 * [Windows-bureaubladtoepassingen, -services en -werkrollen](../../azure-monitor/app/windows-desktop.md)
 
 ## <a name="logging-frameworks"></a>Frameworks voor logboekregistratie
-* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
+* [ILogger](./ilogger.md)
 * [Log4Net, NLog of System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java, Log4J of Logback](../../azure-monitor/app/java-trace-logs.md)
 * [LogStash-invoegtoepassing](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
+* [Azure Monitor](/archive/blogs/msoms/application-insights-connector-in-oms)
 
 ## <a name="export-and-data-analysis"></a>Exporteren en gegevens analyse
 * [Power BI](https://powerbi.microsoft.com/blog/explore-your-application-insights-data-with-power-bi/)

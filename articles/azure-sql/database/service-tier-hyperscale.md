@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023990"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -198,7 +198,7 @@ Ingeschakelde regio's:
 - Noorwegen - oost
 - Noorwegen - west
 - Zuid-Afrika - noord
-- VS - zuid-centraal
+- South Central US
 - Azië - zuidoost
 - Zwitserland - west
 - Verenigd Koninkrijk Zuid
@@ -208,7 +208,7 @@ Ingeschakelde regio's:
 - VS Govt Arizona
 - VS Govt Texas
 - VS - west-centraal
-- Europa -west
+- Europa - west
 - VS - west
 - VS - west 2
 
@@ -218,7 +218,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 
 | Probleem | Beschrijving |
 | :---- | :--------- |
-| In het deel venster Back-ups beheren voor een server worden geen grootschalige-data bases weer gegeven. Deze worden gefilterd op basis van de weer gave.  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups, zodat de Bewaar instellingen voor lange termijn en tijdstippen voor het bewaren van back-ups niet van toepassing zijn. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren.|
+| In het deel venster Back-ups beheren voor een server worden geen grootschalige-data bases weer gegeven. Deze worden gefilterd op basis van de weer gave.  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups, zodat de Bewaar instellingen voor lange termijn en tijdstippen voor het bewaren van back-ups niet van toepassing zijn. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren.<br><br>Voor data bases die zijn gemigreerd naar grootschalige van andere Azure SQL Database Service lagen, worden back-ups vóór de migratie bewaard voor de duur van de [back-](automated-backups-overview.md#backup-retention) upperiode van de bron database. Deze back-ups kunnen worden gebruikt om de bron database te [herstellen](recovery-using-backups.md#programmatic-recovery-using-automated-backups) naar een tijdstip vóór de migratie.|
 | Terugzetten naar eerder tijdstip | Een niet-grootschalige-data base kan niet worden hersteld als een grootschalige-data base en een grootschalige-data base kan niet worden hersteld als een niet-grootschalige-data base. Voor een niet-grootschalige-data base die is gemigreerd naar grootschalige door de servicelaag te wijzigen, herstelt u een tijdstip voordat de migratie en binnen de Bewaar periode voor back-ups van de data base mogelijk [is.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) De herstelde data base is niet-grootschalige. |
 | Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | Azure SQL Managed instance wordt momenteel niet ondersteund met grootschalige-data bases. |

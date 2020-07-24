@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027611"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Maak een flexibele toegangs beheer strategie met Azure Active Directory
 
@@ -220,7 +221,7 @@ NPS-uitbrei ding uitschakelen:
 -   Bepaal of de primaire verificatie voor VPN is geslaagd.
 
 Zodra de service is hersteld en u klaar bent om MFA af te dwingen voor uw gebruikers, schakelt u de NPS-extensie in: 
--   Belang rijk de register sleutel van back-HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   De register sleutel importeren uit een back-up HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   Start de service Network Policy service opnieuw op om de wijzigingen van kracht te laten worden 
 -   Bepaal of primaire authenticatie en secundaire verificatie voor VPN geslaagd zijn.
 -   Controleer de NPS-server en het VPN-logboek om te bepalen welke gebruikers zich hebben aangemeld tijdens het nood venster.
@@ -281,7 +282,7 @@ Als uw organisatie verouderd beleid voor MFA per gebruiker gebruikt, kunt u het 
 >[!NOTE]
  > Het configureren van [vertrouwde IP-adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) voor Azure MFA is alleen beschikbaar met [Azure AD Premium-licenties](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
 * [Documentatie voor Azure AD-verificatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Beheer accounts voor toegang in nood gevallen beheren in azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

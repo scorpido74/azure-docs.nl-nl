@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024568"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Functions met Azure Monitor bewaken Application Insights
 
-[Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) biedt ingebouwde integratie met Azure-toepassing inzichten om functies te bewaken. 
+[Azure functions](../../azure-functions/functions-overview.md) biedt ingebouwde integratie met Azure-toepassing inzichten om functies te bewaken. 
 
 Application Insights verzamelt logboek-, prestatie-en fout gegevens en detecteert automatisch prestatie afwijkingen. Application Insights bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht kunt krijgen in de manier waarop uw functies worden gebruikt. Wanneer u de zicht baarheid van uw toepassings gegevens hebt, kunt u de prestaties en bruikbaarheid continu verbeteren. U kunt zelfs Application Insights gebruiken tijdens de ontwikkeling van een lokale functie-app-project. 
 
-De vereiste Application Insights instrumentatie is ingebouwd in Azure Functions. Het enige wat u nodig hebt, is een geldige instrumentatie sleutel om uw functie-app te verbinden met een Application Insights bron. De instrumentatie sleutel moet worden toegevoegd aan de toepassings instellingen wanneer de resource van de functie-app wordt gemaakt in Azure. Als uw functie-app deze sleutel nog niet heeft, kunt u deze hand matig instellen. Lees voor meer informatie over het [bewaken van Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd).
+De vereiste Application Insights instrumentatie is ingebouwd in Azure Functions. Het enige wat u nodig hebt, is een geldige instrumentatie sleutel om uw functie-app te verbinden met een Application Insights bron. De instrumentatie sleutel moet worden toegevoegd aan de toepassings instellingen wanneer de resource van de functie-app wordt gemaakt in Azure. Als uw functie-app deze sleutel nog niet heeft, kunt u deze hand matig instellen. Lees voor meer informatie over het [bewaken van Azure functions](../../azure-functions/functions-monitoring.md?tabs=cmd).
 
 ## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Gedistribueerde tracering voor Java-toepassingen in Windows (open bare preview)
 
@@ -40,8 +40,8 @@ ApplicationInsightsAgent_EXTENSION_VERSION -> ~2
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer instructies en informatie over het controleren van bewakings [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
-* Een overzicht van [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing) weer geven
-* Bekijk welke [toepassings toewijzing](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net) voor uw bedrijf kan worden uitgevoerd
-* Meer informatie over [aanvragen en afhankelijkheden voor java-apps](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* Meer informatie over [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) en [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* Meer instructies en informatie over het controleren van bewakings [Azure functions](../../azure-functions/functions-monitoring.md)
+* Een overzicht van [gedistribueerde tracering](./distributed-tracing.md) weer geven
+* Bekijk welke [toepassings toewijzing](./app-map.md?tabs=net) voor uw bedrijf kan worden uitgevoerd
+* Meer informatie over [aanvragen en afhankelijkheden voor java-apps](./java-in-process-agent.md)
+* Meer informatie over [Azure monitor](../overview.md) en [Application Insights](./app-insights-overview.md)

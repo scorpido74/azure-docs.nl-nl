@@ -3,11 +3,12 @@ title: Node.js-services bewaken met Azure Application Insights | Microsoft Docs
 description: Prestaties bewaken en problemen detecteren in Node.js-services met Application Insights.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024381"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
@@ -28,7 +29,7 @@ Voltooi de volgende taken om de bewaking voor een app of service in te stellen.
 Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u [een gratis nieuw abonnement aanvragen][azure-free-offer]. Als uw organisatie al een Azure-abonnement heeft, kan een beheerder [deze instructies][add-aad-user] volgen om u eraan toe te voegen.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
-[add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
+[add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights resource instellen
 
@@ -419,4 +420,4 @@ Deze eigenschappen zijn specifiek voor de client, zodat u `appInsights.defaultCl
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
+[FAQ]: ../faq.md

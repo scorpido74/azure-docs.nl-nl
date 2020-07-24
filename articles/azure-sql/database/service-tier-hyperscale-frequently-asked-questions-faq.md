@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024014"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -204,7 +204,9 @@ Ja. De gegevens pagina's die aan een bepaalde tabel zijn gekoppeld, kunnen eindi
 
 ### <a name="can-i-move-my-existing-databases-in-azure-sql-database-to-the-hyperscale-service-tier"></a>Kan ik mijn bestaande data bases in Azure SQL Database verplaatsen naar de servicelaag grootschalige
 
-Ja. U kunt uw bestaande data bases in Azure SQL Database verplaatsen naar grootschalige. Dit is een eenrichtings migratie. U kunt geen data bases van grootschalige naar een andere servicelaag verplaatsen. Voor testen van concept (POCs) raden wij u aan een kopie te maken van de data base en de kopie te migreren naar grootschalige.
+Ja. U kunt uw bestaande data bases in Azure SQL Database verplaatsen naar grootschalige. Dit is een eenrichtings migratie. U kunt geen data bases van grootschalige naar een andere servicelaag verplaatsen. Voor testen van concept (POCs) raden wij u aan een kopie te maken van de data base en de kopie te migreren naar grootschalige. 
+
+De tijd die nodig is om een bestaande Data Base te verplaatsen naar grootschalige, bestaat uit de tijd voor het kopiëren van gegevens en de tijd voor het opnieuw afspelen van de wijzigingen die in de bron database zijn aangebracht tijdens het kopiëren van gegevens. De tijd voor het kopiëren van gegevens is evenredig met de gegevens grootte. De tijd voor het opnieuw afspelen van wijzigingen is korter als de verplaatsing plaatsvindt tijdens een periode van een lage schrijf activiteit.
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>Kan ik mijn grootschalige-data bases verplaatsen naar andere service lagen
 

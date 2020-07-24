@@ -3,15 +3,16 @@ title: Prestaties bewaken op virtuele machines van Azure-Azure-toepassing Insigh
 description: Bewaking van toepassings prestaties voor Azure VM en virtuele-machine schaal sets van Azure. Grafiek belasting en respons tijd, afhankelijkheids informatie en waarschuwingen instellen voor prestaties.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661325"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024629"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>De Azure Monitor Application Insights-agent implementeren op virtuele machines van Azure en virtuele-machine schaal sets van Azure
 
-Het inschakelen van bewaking op uw .NET-webtoepassingen die worden uitgevoerd op [virtuele machines van Azure](https://azure.microsoft.com/services/virtual-machines/) en [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) is nu nog eenvoudiger dan ooit. Profiteer van de voor delen van het gebruik van Application Insights zonder uw code te wijzigen.
+Het inschakelen van bewaking op uw .NET-webtoepassingen die worden uitgevoerd op [virtuele machines van Azure](https://azure.microsoft.com/services/virtual-machines/) en [virtuele-machine schaal sets van Azure](../../virtual-machine-scale-sets/index.yml) is nu nog eenvoudiger dan ooit. Profiteer van de voor delen van het gebruik van Application Insights zonder uw code te wijzigen.
 
 Dit artikel helpt u bij het inschakelen van Application Insights bewaking met behulp van de Application Insights agent en voorziet in voorlopige richt lijnen voor het automatiseren van het proces voor grootschalige implementaties.
 
@@ -29,15 +30,15 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor virtuele mac
 
     * Voor virtuele machines van Azure en virtuele-machine schaal sets van Azure wordt het ten minste aanbevolen dit bewakings niveau in te scha kelen. Daarna kunt u op basis van uw specifieke scenario evalueren of hand matige instrumentatie nodig is.
 
-    * De Application Insights-agent verzamelt automatisch dezelfde afhankelijkheids signalen als de .NET-SDK. Zie de [Automatische verzameling van afhankelijkheden](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) voor meer informatie.
+    * De Application Insights-agent verzamelt automatisch dezelfde afhankelijkheids signalen als de .NET-SDK. Zie de [Automatische verzameling van afhankelijkheden](./auto-collect-dependencies.md#net) voor meer informatie.
         > [!NOTE]
         > Momenteel worden alleen door .NET IIS gehoste toepassingen ondersteund. Gebruik een SDK om ASP.NET Core-, Java-en Node.js-toepassingen te instrumenteren die worden gehost op virtuele machines van Azure en virtuele-machine schaal sets.
 
 * **Code gebaseerd** via SDK
 
-    * Deze benadering is veel meer aanpasbaar, maar het is wel nodig om [een afhankelijkheid toe te voegen aan de Application INSIGHTS SDK NuGet-pakketten](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Deze methode betekent ook dat u de updates voor de meest recente versie van de pakketten zelf moet beheren.
+    * Deze benadering is veel meer aanpasbaar, maar het is wel nodig om [een afhankelijkheid toe te voegen aan de Application INSIGHTS SDK NuGet-pakketten](./asp-net.md). Deze methode betekent ook dat u de updates voor de meest recente versie van de pakketten zelf moet beheren.
 
-    * Als u aangepaste API-aanroepen wilt maken voor het bijhouden van gebeurtenissen/afhankelijkheden die niet standaard worden vastgelegd met bewaking op basis van agents, moet u deze methode gebruiken. Bekijk de [API voor het artikel aangepaste gebeurtenissen en metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) voor meer informatie.
+    * Als u aangepaste API-aanroepen wilt maken voor het bijhouden van gebeurtenissen/afhankelijkheden die niet standaard worden vastgelegd met bewaking op basis van agents, moet u deze methode gebruiken. Bekijk de [API voor het artikel aangepaste gebeurtenissen en metrische gegevens](./api-custom-events-metrics.md) voor meer informatie.
 
 > [!NOTE]
 > Als zowel bewaking op basis van de agent als hand matige instrumentatie op basis van SDK wordt gedetecteerd, worden alleen de instellingen voor hand matige instrumentatie gehonoreerd. Dit is om te voor komen dat dubbele gegevens worden verzonden. Raadpleeg de [sectie probleem oplossing](#troubleshooting) hieronder voor meer informatie.
@@ -45,10 +46,10 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor virtuele mac
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Application Insights agent voor .NET-toepassingen op Azure virtual machines beheren met Power shell
 
 > [!NOTE]
-> Voordat u de Application Insights-Agent installeert, hebt u een connection string nodig. [Maak een nieuwe Application Insights resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) of kopieer de Connection String van een bestaande Application Insights-resource.
+> Voordat u de Application Insights-Agent installeert, hebt u een connection string nodig. [Maak een nieuwe Application Insights resource](./create-new-resource.md) of kopieer de Connection String van een bestaande Application Insights-resource.
 
 > [!NOTE]
-> Nieuw in Power shell? Bekijk de [aan de slag-hand leiding](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Nieuw in Power shell? Bekijk de [aan de slag-hand leiding](/powershell/azure/get-started-azureps?view=azps-2.5.0).
 
 De Application Insights-agent installeren of bijwerken als een uitbrei ding voor virtuele Azure-machines
 ```powershell
@@ -98,7 +99,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-U kunt geïnstalleerde uitbrei dingen ook bekijken op de [Blade virtuele Azure-machine](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) in de portal.
+U kunt geïnstalleerde uitbrei dingen ook bekijken op de [Blade virtuele Azure-machine](../../virtual-machines/extensions/overview.md) in de portal.
 
 > [!NOTE]
 > Controleer de installatie door op Live Metrics Stream te klikken in de Application Insights resource die is gekoppeld aan het connection string dat u hebt gebruikt om de uitbrei ding voor de Application Insights agent te implementeren. Als u gegevens van meerdere Virtual Machines verzendt, selecteert u de virtuele Azure-doel machines onder Server naam. Het kan tot een minuut duren voordat gegevens worden gefloweerd.

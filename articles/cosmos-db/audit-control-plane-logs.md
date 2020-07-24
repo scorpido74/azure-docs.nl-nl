@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023684"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
 
@@ -26,9 +27,9 @@ Hier volgen enkele voor beelden van scenario's waarbij acties voor het beheren v
 
 ## <a name="disable-key-based-metadata-write-access"></a>Schrijf toegang op basis van sleutels uitschakelen
 
-Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#preventing-changes-from-cosmos-sdk) voor meer informatie over het instellen van deze eigenschap. 
+Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#prevent-sdk-changes) voor meer informatie over het instellen van deze eigenschap. 
 
-Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure PowerShell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` Onwaar wijzigt in plaats van waar.
+Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure PowerShell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` Onwaar wijzigt in plaats van waar.
 
 Houd rekening met de volgende punten wanneer u de schrijf toegang voor meta gegevens uitschakelt:
 

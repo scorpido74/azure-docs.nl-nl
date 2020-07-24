@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 6560bf452f04ae5d88168b8d3fad300feb90b16f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5898177c546fd2ba7d0802afe0334089d6a05e67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028818"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Galerie-VM-installatie kopieën delen in azure-tenants
 
-Met de galerie met gedeelde afbeeldingen kunt u afbeeldingen delen met RBAC. U kunt RBAC gebruiken om installatie kopieën te delen binnen uw Tenant, en zelfs voor personen buiten uw Tenant. Zie de [Galerie delen](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery)voor meer informatie over deze eenvoudige optie voor delen.
+Met de galerie met gedeelde afbeeldingen kunt u afbeeldingen delen met RBAC. U kunt RBAC gebruiken om installatie kopieën te delen binnen uw Tenant, en zelfs voor personen buiten uw Tenant. Zie de [Galerie delen](./shared-images-portal.md#share-the-gallery)voor meer informatie over deze eenvoudige optie voor delen.
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 

@@ -9,16 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82926711"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027101"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -50,7 +51,7 @@ Bekijk dit v 2.0-voorbeeld token in [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOi
 
 ### <a name="header-claims"></a>Header claims
 
-|Claim | Indeling | Description |
+|Claim | Indeling | Beschrijving |
 |-----|--------|-------------|
 |`typ` | Teken reeks-altijd "JWT" | Geeft aan dat het token een JWT-token is.|
 |`alg` | Tekenreeks | Hiermee wordt het algoritme aangegeven dat is gebruikt om het token te ondertekenen. Voor beeld: "RS256" |
@@ -61,7 +62,7 @@ Bekijk dit v 2.0-voorbeeld token in [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOi
 
 In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens standaard zijn (tenzij anders vermeld).  Uw app kan echter gebruikmaken van [optionele claims](active-directory-optional-claims.md) om aanvullende JWT-claims in de id_token aan te vragen.  Deze kunnen variëren van de `groups` claim tot informatie over de naam van de gebruiker.
 
-|Claim | Indeling | Description |
+|Claim | Indeling | Beschrijving |
 |-----|--------|-------------|
 |`aud` |  Teken reeks, een app-ID-URI | Identificeert de beoogde ontvanger van het token. In `id_tokens` is de doel groep de toepassings-id van uw app, toegewezen aan uw app in de Azure Portal. Uw app moet deze waarde valideren en het token afwijzen als de waarde niet overeenkomt. |
 |`iss` |  Teken reeks, een STS-URI | Identificeert de Security Token Service (STS) die het token bouwt en retourneert en de Azure AD-Tenant waarin de gebruiker is geverifieerd. Als het token is uitgegeven door het v 2.0-eind punt, loopt de URI af in `/v2.0` .  De GUID waarmee wordt aangegeven dat de gebruiker een consumenten gebruiker van een Microsoft-account is `9188040d-6c67-4c5b-b112-36a304b66dad` . Uw app moet het GUID-gedeelte van de claim gebruiken om de set tenants te beperken die zich kunnen aanmelden bij de app, indien van toepassing. |
@@ -86,10 +87,10 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 |`ver` | Teken reeks, ofwel 1,0 of 2,0 | Hiermee wordt de versie van de id_token. |
 
 > [!NOTE]
-> De id_token v1 en v2 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) is door de jaren ontwikkeld. Momenteel hebben we twee verschillende oAuth-eind punten voor AzureAD-toepassingen. U kunt elk van de nieuwe eind punten die zijn gecategoriseerd als v2 of de oude, gebruiken als v1. De OAuth-eind punten voor beide verschillen. Het v2-eind punt is de nieuwere versie van alle functies van v1-eind punt en raadt nieuwe ontwikkel aars aan om het v2-eind punt te gebruiken.
+> De id_token v 1.0 en v 22.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](about-microsoft-identity-platform.md) is door de jaren ontwikkeld. Er zijn momenteel twee verschillende Outh-eind punten voor Azure AD-toepassingen. U kunt een van de nieuwe eind punten gebruiken die zijn gecategoriseerd als v 2.0 of v 1.0. De OAuth-eind punten voor beide zijn verschillend. Het v 2.0-eind punt is nieuwer en de functies van het eind punt v 1.0 worden naar dit eind punt gemigreerd. Nieuwe ontwikkel aars moeten het v 2.0-eind punt gebruiken.
 >
-> - V1: Azure Active Directory eind punten:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - V2: micro soft Identity platform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 1.0: Azure AD-eind punten:`https://login.microsoftonline.com/common/oauth2/authorize`
+> - v 2.0: micro soft identitypPlatform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Een id_token valideren
 

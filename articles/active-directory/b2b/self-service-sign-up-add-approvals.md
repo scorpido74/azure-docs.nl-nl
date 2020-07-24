@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027458"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Een aangepaste goedkeurings werk stroom toevoegen aan self-service registratie
 
@@ -61,11 +61,11 @@ U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Ten
 
 Vervolgens maakt u [de API-connectors](self-service-sign-up-add-api-connector.md#create-an-api-connector) voor uw Self-service voor het registreren van uw gebruikers. Uw goedkeurings systeem-API heeft twee connectors en de bijbehorende eind punten nodig, zoals hieronder wordt weer gegeven. Deze API-connectors doen het volgende:
 
-- **Goedkeurings status controleren**. Een oproep verzenden naar het goedkeurings systeem direct nadat een gebruiker zich heeft aangemeld met een id-provider om te controleren of de gebruiker een bestaande goedkeurings aanvraag heeft of al is geweigerd. Als uw goedkeurings systeem alleen automatische goedkeurings beslissingen heeft, is deze API-connector mogelijk niet nodig. Hier volgt een voor beeld van de API-connector ' goedkeurings status controleren '.
+- **Goedkeurings status controleren**. Een oproep verzenden naar het goedkeurings systeem direct nadat een gebruiker zich heeft aangemeld met een id-provider om te controleren of de gebruiker een bestaande goedkeurings aanvraag heeft of al is geweigerd. Als uw goedkeurings systeem alleen automatische goedkeurings beslissingen heeft, is deze API-connector mogelijk niet nodig. Voor beeld van de API-connector "goedkeurings status controleren".
 
   ![De configuratie van de goedkeurings status API-connector controleren](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Goed keuring aanvragen** : een aanroep naar het goedkeurings systeem verzenden nadat een gebruiker de pagina kenmerk verzameling heeft voltooid, maar voordat het gebruikers account is gemaakt, om goed keuring aan te vragen. De goedkeurings aanvraag kan automatisch worden verleend of hand matig worden gecontroleerd. Hier volgt een voor beeld van een API-connector voor het goed keuren van aanvragen. Selecteer **claims om te verzenden** dat het goedkeurings systeem een goedkeurings beslissing moet nemen.
+- **Goed keuring aanvragen** : een aanroep naar het goedkeurings systeem verzenden nadat een gebruiker de pagina kenmerk verzameling heeft voltooid, maar voordat het gebruikers account is gemaakt, om goed keuring aan te vragen. De goedkeurings aanvraag kan automatisch worden verleend of hand matig worden gecontroleerd. Voor beeld van een API-connector voor het goed keuren van aanvragen. Selecteer **claims om te verzenden** dat het goedkeurings systeem een goedkeurings beslissing moet nemen.
 
   ![Configuratie van API-connector voor goed keuring aanvragen](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -94,14 +94,14 @@ Uw goedkeurings systeem kan de [API-antwoord typen](self-service-sign-up-add-api
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>Aanvraag en antwoorden voor de API-connector ' goedkeurings status controleren '
 
-Hieronder volgt een voor beeld van de aanvraag die wordt ontvangen door de API van de API-connector ' goedkeurings status controleren ':
+Voor beeld van de aanvraag die wordt ontvangen door de API van de API-connector ' goedkeurings status controleren ':
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -119,7 +119,7 @@ Het API-eind punt van de **goedkeurings status** moet een vervolg reactie retour
 
 - De gebruiker heeft eerder geen goed keuring aangevraagd.
 
-Hier volgt een voor beeld van het vervolg antwoord:
+Voor beeld van de vervolg reactie:
 
 ```http
 HTTP/1.1 200 OK
@@ -166,14 +166,14 @@ Content-type: application/json
 
 ### <a name="request-and-responses-for-the-request-approval-api-connector"></a>Aanvraag en antwoorden voor de API-connector aanvraag goed keuren
 
-Hier volgt een voor beeld van een HTTP-aanvraag die is ontvangen door de API van de API-connector ' goed keuring aanvragen ':
+Voor beeld van een HTTP-aanvraag die wordt ontvangen door de API van de API-connector ' goed keuring aanvragen ':
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -194,7 +194,7 @@ Het API-eind punt voor het **goed keuren van aanvragen** moet een vervolg reacti
 
 - De gebruiker kan **_automatisch worden goedgekeurd_**.
 
-Hier volgt een voor beeld van het vervolg antwoord:
+Voor beeld van de vervolg reactie:
 
 ```http
 HTTP/1.1 200 OK
@@ -257,14 +257,14 @@ Na het verkrijgen van hand matige goed keuring maakt het aangepaste goedkeurings
 
 Als uw gebruiker zich heeft aangemeld met een Google-of Facebook-account, kunt u de API voor het [maken van gebruikers](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)gebruiken.
 
-1. Met het goedkeurings systeem wordt de HTTP-aanvraag van de gebruikers stroom ontvangen.
+1. Het goedkeurings systeem ontvangt de HTTP-aanvraag van de gebruikers stroom.
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -305,9 +305,9 @@ Content-type: application/json
 
 | Parameter                                           | Vereist | Beschrijving                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Yes      | Kan worden gegenereerd door de `email_address` claim te verzenden naar de API, het teken te vervangen door `@` `_` en vooraf in behandeling te nemen tot `#EXT@<tenant-name>.onmicrosoft.com` . |
+| userPrincipalName                                   | Yes      | Kan worden gegenereerd door de `email` claim te verzenden naar de API, het teken te vervangen door `@` `_` en vooraf in behandeling te nemen tot `#EXT@<tenant-name>.onmicrosoft.com` . |
 | accountEnabled                                      | Yes      | Moet worden ingesteld op `true` .                                                                                                                                                 |
-| mail                                                | Yes      | Gelijk aan de `email_address` claim die wordt verzonden naar de API.                                                                                                               |
+| mail                                                | Yes      | Gelijk aan de `email` claim die wordt verzonden naar de API.                                                                                                               |
 | User type                                            | Yes      | Moet zijn `Guest` . Hiermee wordt deze gebruiker aangeduid als een gast gebruiker.                                                                                                                 |
 | identiteit                                          | Yes      | De gegevens voor federatieve identiteiten.                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | No       | Andere ingebouwde kenmerken `displayName` , zoals, `city` en anderen. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                            |
@@ -324,7 +324,7 @@ POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
  "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
@@ -332,7 +332,7 @@ Content-type: application/json
 }
 ```
 
-2. Het goedkeurings systeem maakt de uitnodiging met behulp van de `email_address` API-connector.
+2. Het goedkeurings systeem maakt de uitnodiging met behulp van de `email` API-connector.
 
 ```http
 POST https://graph.microsoft.com/v1.0/invitations
@@ -344,7 +344,7 @@ Content-type: application/json
 }
 ```
 
-Hier volgt een voor beeld van het antwoord:
+Voor beeld van het antwoord:
 
 ```http
 HTTP/1.1 201 OK

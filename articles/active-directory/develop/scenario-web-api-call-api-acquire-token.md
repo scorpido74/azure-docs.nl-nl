@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026455"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-API die web-Api's aanroept: een Token ophalen voor de app
 
@@ -26,46 +27,38 @@ Nadat u een client toepassings object hebt gemaakt, gebruikt u dit om een token 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
+Hier volgt een voor beeld van code met behulp van micro soft. Identity. Web dat wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen. Als u een token wilt ophalen voor het aanroepen van de stroomafwaartse API, kunt u de service injecteren `ITokenAcquisition` door de afhankelijkheids injectie in de constructor van uw controller (of uw pagina-constructor als u een razendsnelle functie gebruikt) en u deze gebruiken in de controller acties, waarbij een token wordt opgehaald voor de gebruiker ( `GetAccessTokenForUserAsync` ) of voor de toepassing zelf ( `GetAccessTokenForAppAsync` ) in het geval van een daemon-scenario
 
 ```csharp
-private async Task GetTodoList(bool isAppStarting)
+[Authorize]
+public class MyApiController : Controller
 {
- ...
- //
- // Get an access token to call the To Do service.
- //
- AuthenticationResult result = null;
- try
- {
-  app = BuildConfidentialClient(HttpContext, HttpContext.User);
-  result = await app.AcquireTokenSilent(Scopes, account)
-                     .ExecuteAsync()
-                     .ConfigureAwait(false);
- }
-...
+    /// <summary>
+    /// The web API will accept only tokens 1) for users, 2) that have the `access_as_user` scope for
+    /// this API.
+    /// </summary>
+    static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
+
+     static readonly string[] scopesToAccessDownstreamApi = new string[] { "api://MyTodolistService/access_as_user" };
+
+    private readonly ITokenAcquisition _tokenAcquisition;
+
+    public MyApiController(ITokenAcquisition tokenAcquisition)
+    {
+        _tokenAcquisition = tokenAcquisition;
+    }
+
+    public IActionResult Index()
+    {
+        HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+
+        string accessToken = _tokenAcquisition.GetAccessTokenForUserAsync(scopesToAccessDownstreamApi);
+        return await callTodoListService(accessToken);
+    }
 }
 ```
 
-`BuildConfidentialClient()`is vergelijkbaar met het scenario in [een web-API die web-api's aanroept: app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`instantiëren `IConfidentialClientApplication` met een cache die informatie voor slechts één account bevat. Het account wordt door de- `GetAccountIdentifier` methode verschaft.
-
-De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker voor wie de Web-API de JSON Web token (JWT) heeft ontvangen:
-
-```csharp
-public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
-{
- string userObjectId = GetObjectId(claimsPrincipal);
- string tenantId = GetTenantId(claimsPrincipal);
-
- if (    !string.IsNullOrWhiteSpace(userObjectId)
-      && !string.IsNullOrWhiteSpace(tenantId))
- {
-  return $"{userObjectId}.{tenantId}";
- }
-
- return null;
-}
-```
+Zie voor meer informatie over de `callTodoListService` -methode [een web-API die web-api's aanroept: roep een API](scenario-web-api-call-api-call-api.md)aan.
 
 # <a name="java"></a>[Java](#tab/java)
 Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers. Het roept de downstream API-Microsoft Graph aan.

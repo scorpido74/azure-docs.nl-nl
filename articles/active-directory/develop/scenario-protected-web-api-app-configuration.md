@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 992c29cb8380cf6acbe970b2fd5e958b6b2b33dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026710"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
@@ -90,11 +91,33 @@ In deze sectie wordt beschreven hoe u een Bearer-token configureert.
 }
 ```
 
+#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>Als u een aangepaste App-ID-URI hebt gebruikt voor uw web-API
+
+Als u de URI voor de App-ID hebt geaccepteerd die is voorgesteld door de app-registratie Portal, hoeft u de doel groep niet op te geven (Zie [URI en bereiken van de toepassings-id](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)). Anders moet u een eigenschap toevoegen `Audience` waarvan de waarde de URI van de app-id voor uw web-API is.
+
+```Json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common",
+    "Audience": "custom App ID URI for your web API"
+  },
+  // more lines
+}
+```
+
 ### <a name="code-initialization"></a>Code-initialisatie
 
 Wanneer een app wordt aangeroepen voor een controller actie met een kenmerk **[autoriseren]** , ASP.NET en ASP.net core het toegangs token uit het Bearer-token van de autorisatie-header ophalen. Het toegangs token wordt vervolgens doorgestuurd naar de JwtBearer-middleware, die micro soft Identity model-extensies aanroept voor .NET.
 
-In ASP.NET Core wordt deze middleware geïnitialiseerd in het Startup.cs-bestand.
+#### <a name="using-microsoftidentityweb-templates"></a>Micro soft. Identity. Web sjablonen gebruiken
+
+U kunt een volledig nieuwe web-API maken met behulp van micro soft. Identity. web project-sjablonen. Zie [micro soft. Identity. Web-Web API project Temp late (Engelstalig)](https://aka.ms/ms-id-web/webapi-project-templates) voor meer informatie.
+
+#### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Beginnen met een bestaande ASP.NET Core 3,1-toepassing
+
+Momenteel gebruikt ASP.NET Core 3,1 de bibliotheek micro soft. AspNetCore. AzureAD. UI. De middleware wordt geïnitialiseerd in het Startup.cs-bestand.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -103,33 +126,37 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 De middleware wordt toegevoegd aan de Web-API met behulp van deze instructie:
 
 ```csharp
- services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+}
 ```
 
- Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. Maar u kunt de sjablonen wijzigen om het micro soft Identity platform-eind punt te gebruiken door deze code toe te voegen aan Startup.cs:
+ Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. U kunt de sjablonen echter wijzigen om het micro soft Identity platform-eind punt te gebruiken met behulp van [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web), beschikbaar als een NuGet-pakket, waarbij u de code in *Startup.cs*vervangt:
 
 ```csharp
-services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-{
-    // This is a Microsoft identity platform web API.
-    options.Authority += "/v2.0";
-
-    // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
-    options.TokenValidationParameters.ValidAudiences = new []
-    {
-     options.Audience,
-     $"api://{options.Audience}"
-    };
-
-    // Instead of using the default validation (validating against a single tenant,
-    // as we do in line-of-business apps),
-    // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
-});
+using Microsoft.Identity.Web;
 ```
 
-Het vorige code fragment wordt geëxtraheerd uit de stapsgewijze zelf studie voor de ASP.NET Core Web-API in [micro soft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63). De methode **AddProtectedWebApi** , waarmee meer dan het fragment wordt weer gegeven, wordt aangeroepen vanuit startup.cs.
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+> [!NOTE]
+> Als u micro soft. Identity. web gebruikt en de `Audience` in- *appsettings.js*niet hebt ingesteld op, wordt het volgende gebruikt:
+> -  `$"{ClientId}"`Als u de [geaccepteerde versie van het toegangs token](scenario-protected-web-api-app-registration.md#accepted-token-version) hebt ingesteld op `2` of voor Azure AD B2C Web-api's.
+> - `$"api://{ClientId}`in alle andere gevallen (voor [toegangs tokens](access-tokens.md)van v 1.0).
+> Zie micro soft. Identity. web [Source code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)(Engelstalig) voor meer informatie.
+
+Het vorige code fragment wordt geëxtraheerd uit de [Stapsgewijze zelf studie voor de ASP.net core web-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). De details van **AddMicrosoftWebApiAuthentication** zijn beschikbaar in [micro soft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27). Met deze methode wordt [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)aangeroepen, die zelf de middleware geeft over het valideren van het token. Raadpleeg de [bron code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)voor meer informatie.
 
 ## <a name="token-validation"></a>Token validatie
 
@@ -149,7 +176,7 @@ De validatie stappen worden vastgelegd in validators, die worden weer gegeven in
 
 In deze tabel worden de validatie functies beschreven:
 
-| Validator | Description |
+| Validator | Beschrijving |
 |---------|---------|
 | **ValidateAudience** | Zorgt ervoor dat het token voor de toepassing is die het token voor u valideert. |
 | **ValidateIssuer** | Hiermee zorgt u ervoor dat het token is uitgegeven door een vertrouwde STS, wat inhoudt dat u vertrouwt. |
@@ -158,13 +185,40 @@ In deze tabel worden de validatie functies beschreven:
 | **ValidateSignature** | Hiermee wordt gegarandeerd dat er niet met het token is geknoeid. |
 | **ValidateTokenReplay** | Hiermee zorgt u ervoor dat het token niet opnieuw is afgespeeld. Er is een speciaal geval voor sommige eenmalige-protocollen. |
 
+#### <a name="customizing-token-validation"></a>Token validatie aanpassen
+
 De validators zijn gekoppeld aan eigenschappen van de klasse **TokenValidationParameters** . De eigenschappen worden geïnitialiseerd vanuit de configuratie ASP.NET en ASP.NET Core.
 
-In de meeste gevallen hoeft u de para meters niet te wijzigen. Apps die geen enkele Tenant zijn, zijn uitzonde ringen. Deze web-apps accepteren gebruikers van elke organisatie of van persoonlijke micro soft-accounts. Uitgevers in dit geval moeten worden gevalideerd.
+In de meeste gevallen hoeft u de para meters niet te wijzigen. Apps die geen enkele Tenant zijn, zijn uitzonde ringen. Deze web-apps accepteren gebruikers van elke organisatie of van persoonlijke micro soft-accounts. Uitgevers in dit geval moeten worden gevalideerd. Micro soft. Identity. Web zorgt voor een goede validatie van de verlener. Zie micro soft. Identity. web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)voor meer informatie.
+
+Als u in ASP.NET Core de para meters voor token validatie wilt aanpassen, gebruikt u het volgende code fragment in uw *Startup.cs*:
+
+```c#
+services.AddMicrosoftWebApiAuthentication(Configuration);
+services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+  var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;
+  options.Events.OnTokenValidated = async context =>
+  {
+       await existingOnTokenValidatedHandler(context);
+      // Your code to add extra configuration that will be executed after the current event implementation.
+      options.TokenValidationParameters.ValidIssuers = new[] { /* list of valid issuers */ };
+      options.TokenValidationParameters.ValidAudiences = new[] { /* list of valid audiences */};
+  }
+});
+```
+
+Voor ASP.NET MVC laat het volgende code voorbeeld zien hoe u aangepaste token validatie kunt uitvoeren:
+
+https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation
 
 ## <a name="token-validation-in-azure-functions"></a>Token validatie in Azure Functions
 
-U kunt ook binnenkomende toegangs tokens in Azure Functions valideren. Voor beelden van dergelijke validatie vindt u in [Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)en [python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions).
+U kunt ook binnenkomende toegangs tokens in Azure Functions valideren. Voor beelden van dergelijke validatie vindt u in de volgende code voorbeelden op GitHub:
+
+- .NET: [Azure-samples/MS-Identity-DotNet-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
+- Node.js: [Azure-samples/MS-Identity-nodejs-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
+- Python: [Azure-samples/MS-Identity-python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
 ## <a name="next-steps"></a>Volgende stappen
 

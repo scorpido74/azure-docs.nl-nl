@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2019
+ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be8208c7b2b67610f8d579b1bc0094bf09b3033e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026285"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Een web-app die web-Api's aanroept: verwijdert accounts uit de token cache op Global Sign-out
 
@@ -30,7 +30,7 @@ Als u de token-cache vermelding wilt wissen die is gekoppeld aan het account waa
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Micro soft. Identity. Web zorgt voor het implementeren van afmeldingen voor u.
+Micro soft. Identity. Web zorgt voor het implementeren van afmeldingen voor u. Zie [micro soft. Identity. web source code](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L168-L176) voor meer informatie.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

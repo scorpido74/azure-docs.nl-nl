@@ -4,11 +4,12 @@ description: Stel webtests in Application Insights in. Ontvang een waarschuwing 
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670029"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024585"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
@@ -22,7 +23,7 @@ Er zijn drie soorten beschikbaarheids tests:
 
 * [URL-pingtest](#create-a-url-ping-test): een eenvoudige test die u in Azure Portal kunt instellen.
 * [Webtest met meerdere stappen](availability-multistep.md): een opname van een reeks webaanvragen, die kunnen worden afgespeeld om complexe scenario's te testen. Webtests met meerdere stappen worden gemaakt in Visual Studio Enter prise en geüpload naar de portal voor uitvoering.
-* [Aangepaste beschikbaarheids testen](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): als u besluit een aangepaste toepassing te maken om beschikbaarheids tests uit te voeren, `TrackAvailability()` kunt u de methode gebruiken om de resultaten naar Application Insights te verzenden.
+* [Aangepaste beschikbaarheids testen](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): als u besluit een aangepaste toepassing te maken om beschikbaarheids tests uit te voeren, `TrackAvailability()` kunt u de methode gebruiken om de resultaten naar Application Insights te verzenden.
 
 **U kunt Maxi maal 100 beschik bare beschikbaarheids tests maken per Application Insights resource.**
 
@@ -50,7 +51,7 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |**Test frequentie**| Hiermee stelt u in hoe vaak de test wordt uitgevoerd vanaf elke test locatie. Met een standaardfrequentie van vijf minuten en vijf testlocaties wordt uw site gemiddeld per minuut getest.|
 |**Test locaties**| Zijn de locaties waar onze servers webaanvragen verzenden naar uw URL. Het **minimum aantal aanbevolen test locaties is vijf** om ervoor te zorgen dat u problemen in uw website kunt onderscheiden van netwerk problemen. U kunt maximaal 16 locaties selecteren.
 
-**Als uw URL niet zichtbaar is via het open bare Internet, kunt u ervoor kiezen om de firewall selectief te openen, zodat alleen de test transacties via worden toegestaan**. Raadpleeg de [hand leiding voor IP-adressen](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)voor meer informatie over de firewall uitzonderingen voor onze beschikbaarheids test agents.
+**Als uw URL niet zichtbaar is via het open bare Internet, kunt u ervoor kiezen om de firewall selectief te openen, zodat alleen de test transacties via worden toegestaan**. Raadpleeg de [hand leiding voor IP-adressen](./ip-addresses.md#availability-tests)voor meer informatie over de firewall uitzonderingen voor onze beschikbaarheids test agents.
 
 > [!NOTE]
 > We raden u ten zeerste aan te testen vanaf meerdere locaties met **Mini maal vijf locaties**. Dit is om te voor komen dat er valse waarschuwingen optreden die kunnen leiden tot tijdelijke problemen met een specifieke locatie. Daarnaast hebben we vastgesteld dat de optimale configuratie het **aantal test locaties moet hebben dat gelijk is aan de drempel waarde voor de waarschuwings locatie + 2**.
@@ -112,7 +113,7 @@ Klik op de rij met de uitzonde ring om de details van de uitzonde ring aan de se
 
 ![Diagnostische gegevens aan de server zijde](./media/monitor-web-app-availability/open-instance-4.png)
 
-Naast de onbewerkte resultaten kunt u ook twee belang rijke metrische gegevens over beschik baarheid in [Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)bekijken:
+Naast de onbewerkte resultaten kunt u ook twee belang rijke metrische gegevens over beschik baarheid in [Metrics Explorer](../platform/metrics-getting-started.md)bekijken:
 
 1. Beschikbaarheid: percentage van de tests die zijn geslaagd, bekeken over alle testuitvoeringen.
 2. Testduur: gemiddelde testduur van alle testuitvoeringen.
@@ -130,5 +131,3 @@ Speciaal [artikel voor probleem oplossing](troubleshoot-availability.md).
 
 * [Beschikbaarheids waarschuwingen](availability-alerts.md)
 * [Webtests met meerdere stappen](availability-multistep.md)
-
-

@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028461"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-opdrachten-CMD en Power shell
 
 Deze sectie bevat voor beelden van opdrachten voor het uitvoeren van veelvoorkomende taken in scenario's waarbij u SAC wellicht moet gebruiken om toegang te krijgen tot uw Windows-VM, bijvoorbeeld wanneer u problemen met de RDP-verbinding moet oplossen.
 
-SAC is opgenomen in alle versies van Windows sinds Windows Server 2003, maar is standaard uitgeschakeld. SAC is afhankelijk van het `sacdrv.sys` kernelstuurprogramma, de `Special Administration Console Helper` service ( `sacsvr` ) en het `sacsess.exe` proces. Zie [Hulpprogram ma's en instellingen voor noodsituatie beheer Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))voor meer informatie.
+SAC is opgenomen in alle versies van Windows sinds Windows Server 2003, maar is standaard uitgeschakeld. SAC is afhankelijk van het `sacdrv.sys` kernelstuurprogramma, de `Special Administration Console Helper` service ( `sacsvr` ) en het `sacsess.exe` proces. Zie [Hulpprogram ma's en instellingen voor noodsituatie beheer Services](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))voor meer informatie.
 
 Met SAC kunt u verbinding maken met uw actieve besturings systeem via seriële poort. Wanneer u CMD vanuit SAC start, wordt `sacsess.exe` gestart `cmd.exe` binnen het besturings systeem dat wordt uitgevoerd. U kunt in taak beheer zien of u RDP naar uw virtuele machine tegelijk hebt verbonden met SAC via de seriële console-functie. De CMD-verbinding die u via SAC hebt, is hetzelfde `cmd.exe` als die u gebruikt wanneer u verbinding maakt via RDP. Alle dezelfde opdrachten en hulpprogram ma's zijn beschikbaar, inclusief de mogelijkheid om Power shell vanuit dat CMD-exemplaar te starten. Dit is een belang rijk verschil tussen SAC en de Windows Recovery Environment (WinRE) in die SAC stelt u in staat om uw actieve besturings systeem te beheren, waarbij WinRE wordt opgestart in een ander, mini maal besturings systeem. Azure-Vm's bieden geen ondersteuning voor de mogelijkheid om toegang te krijgen tot WinRE, met de functie seriële console kunnen virtuele Azure-machines worden beheerd via SAC.
 
@@ -90,7 +91,7 @@ of
 ### <a name="set-nic-to-use-dhcp"></a>NIC instellen voor gebruik van DHCP
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-`netsh` [Klik hier](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts)voor meer informatie over.
+`netsh` [Klik hier](/windows-server/networking/technologies/netsh/netsh-contexts)voor meer informatie over.
 
 Virtuele Azure-machines moeten altijd in het gast besturingssysteem worden geconfigureerd om DHCP te gebruiken voor het verkrijgen van een IP-adres. De statische IP-instelling van Azure maakt nog steeds gebruik van DHCP om het statische IP-adres aan de virtuele machine toe te wijzen.
 ### <a name="ping"></a>Ping
@@ -182,11 +183,11 @@ In dit voor beeld wordt de bestands versie van het stuur programma voor de virtu
 ### <a name="scan-for-system-file-corruption"></a>Controleren op beschadiging van het systeem bestand
 `sfc /scannow`
 
-Zie ook [een Windows-installatie kopie herstellen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Zie ook [een Windows-installatie kopie herstellen](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="scan-for-system-file-corruption"></a>Controleren op beschadiging van het systeem bestand
 `dism /online /cleanup-image /scanhealth`
 
-Zie ook [een Windows-installatie kopie herstellen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Zie ook [een Windows-installatie kopie herstellen](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="export-file-permissions-to-text-file"></a>Bestands machtigingen exporteren naar tekst bestand
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>Bestands machtigingen voor ACL-bestand opslaan
@@ -435,7 +436,7 @@ U kunt de meta gegevens van Azure-exemplaren vanuit uw Azure-VM opvragen om de d
 
 Voor het opvragen van meta gegevens van exemplaren is een goede gast netwerk verbinding vereist, omdat het een REST-aanroep doet via de Azure-host naar de meta gegevens service van het exemplaar. Dus als u wel de meta gegevens van het exemplaar kunt opvragen, geeft u aan dat de gast via het netwerk kan communiceren met een door Azure gehoste service.
 
-Zie [Azure instance meta data service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)(Engelstalig) voor meer informatie.
+Zie [Azure instance meta data service](../windows/instance-metadata-service.md)(Engelstalig) voor meer informatie.
 
 ### <a name="instance-metadata"></a>Meta gegevens van instantie
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

@@ -4,32 +4,28 @@ description: bestand opnemen
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df78133f602466681da64d2666a311e1649c598f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028789"
 ---
 Met behulp van spot Vm's kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
 De hoeveelheid beschik bare capaciteit kan variëren op basis van grootte, regio, tijd van de dag en meer. Bij het implementeren van spot-Vm's worden de Vm's door Azure toegewezen als er capaciteit beschikbaar is, maar er is geen SLA voor deze Vm's. Een spot-VM biedt geen garanties voor hoge Beschik baarheid. Op elk moment dat Azure de capaciteit nodig heeft, worden virtuele machines met de Azure-infra structuur met een kennisgeving van 30 seconden verwijderd. 
 
 
-## <a name="eviction-policy"></a>Verwijderings beleid
+## <a name="eviction-policy"></a>Verwijderingsbeleid
 
 Vm's kunnen worden verwijderd op basis van de capaciteit of de maximale prijs die u hebt ingesteld. Bij het maken van een spot-VM kunt u het verwijderings beleid zo instellen dat de *toewijzing wordt opheffen* (standaard) of *verwijderen*. 
 
 Het beleid voor het ongedaan maken van de *toewijzing* verplaatst de virtuele machine naar de status stopped-deallocated, zodat u deze later opnieuw kunt implementeren. Er is echter geen garantie dat de toewijzing slaagt. De toegewezen Vm's worden geteld bij uw quotum en er worden kosten in rekening gebracht voor de onderliggende schijven. 
 
 Als u wilt dat de virtuele machine wordt verwijderd wanneer deze wordt gewist, kunt u het verwijderings beleid instellen op *verwijderen*. De verwijderde Vm's worden samen met de onderliggende schijven verwijderd, zodat er geen kosten in rekening worden gebracht voor de opslag. 
-
-> [!NOTE]
->
-> De portal biedt momenteel geen ondersteuning voor `Delete` verwijderings opties. u kunt alleen instellen `Delete` met behulp van Power shell, CLI en sjablonen.
 
 U kunt zich aanmelden om in-VM-meldingen te ontvangen via [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). Hiermee wordt u op de hoogte gesteld als uw Vm's worden verwijderd en u 30 seconden hebt om taken te volt ooien en afsluit taken uit te voeren vóór de verwijdering. 
 
@@ -54,19 +50,14 @@ De volgende VM-grootten worden niet ondersteund voor spot-Vm's:
 
 Spot-Vm's kunnen worden geïmplementeerd in elke regio, met uitzonde ring van Microsoft Azure-China 21Vianet.
 
-Sommige abonnements kanalen worden niet ondersteund:
-
 <a name="channel"></a>
 
-| Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
-|------------------------------|-----------------------------------|
-| Enterprise Agreement         | Yes                               |
-| Betalen naar gebruik                | Yes                               |
-| Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Yes                               |
-| Gratis proefversie                   | Niet beschikbaar                     |
+De volgende [aanbiedings typen](https://azure.microsoft.com/support/legal/offer-details/) worden momenteel ondersteund:
 
+-   Enterprise Agreement
+-   Betalen per gebruik
+-   Gesponsorde
+- Neem contact op met uw partner voor Cloud service provider (CSP)
 
 
 ## <a name="pricing"></a>Prijzen

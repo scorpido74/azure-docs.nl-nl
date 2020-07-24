@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027934"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Voor beeld: een Windows-VM maken met Azure Image Builder
 
@@ -102,7 +102,7 @@ az group create -n $imageResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Een door de gebruiker toegewezen identiteit maken en machtigingen instellen voor de resource groep
-De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) voor het injecteren van de installatie kopie in de resource groep. In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
+De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) voor het injecteren van de installatie kopie in de resource groep. In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
 
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Door de gebruiker toegewezen beheerde identiteit maken en machtigingen verlenen 
 ```bash
@@ -237,7 +237,7 @@ Tijdens het aanpassen van de installatie kopie ziet u deze twee directory's:
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Wanneer u klaar bent, verwijdert u de resources.
 

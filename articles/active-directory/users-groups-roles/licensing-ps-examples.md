@@ -14,15 +14,16 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025214"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Power shell en Graph-voor beelden voor op groepen gebaseerde licentie verlening in azure AD
 
-De volledige functionaliteit voor op groepen gebaseerde licentie verlening is beschikbaar via de [Azure Portal](https://portal.azure.com), en de ondersteuning voor Power shell en Microsoft Graph is beperkt tot alleen-lezen bewerkingen. Er zijn echter enkele nuttige taken die kunnen worden uitgevoerd met behulp van de bestaande [MSOnline Power shell-cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) en Microsoft Graph. In dit document vindt u voor beelden van wat er mogelijk is.
+De volledige functionaliteit voor op groepen gebaseerde licentie verlening is beschikbaar via de [Azure Portal](https://portal.azure.com), en de ondersteuning voor Power shell en Microsoft Graph is beperkt tot alleen-lezen bewerkingen. Er zijn echter enkele nuttige taken die kunnen worden uitgevoerd met behulp van de bestaande [MSOnline Power shell-cmdlets](/powershell/module/msonline) en Microsoft Graph. In dit document vindt u voor beelden van wat er mogelijk is.
 
 > [!NOTE]
 > Voordat u begint met het uitvoeren van cmdlets, moet u eerst verbinding maken met uw organisatie door de cmdlet uit te voeren `Connect-MsolService`   .

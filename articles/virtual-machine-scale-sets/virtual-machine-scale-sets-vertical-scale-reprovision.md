@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029277"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Verticaal automatisch schalen met schaal sets voor virtuele machines
 
@@ -89,7 +89,7 @@ U kunt verticaal schalen instellen om te worden geactiveerd op basis van waarsch
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Een Azure Automation-account maken met de functie uitvoeren als
 Het eerste wat u moet doen, is het maken van een Azure Automation account dat als host fungeert voor de runbooks die worden gebruikt om de instanties van de virtuele-machine schaalset te schalen. Onlangs [Azure Automation](https://azure.microsoft.com/services/automation/) de functie ' uitvoeren als-account ' geïntroduceerd waardoor het instellen van de service-principal voor het automatisch uitvoeren van runbooks namens de gebruiker wordt uitgevoerd. Zie voor meer informatie:
 
-* [Runbooks verifiëren met Azure Uitvoeren als-account](../automation/automation-sec-configure-azure-runas-account.md)
+* [Runbooks verifiëren met Azure Uitvoeren als-account](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Automation verticaal schalen van runbooks importeren in uw abonnement
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2f08c4788c90f8bdb2af9c6ef95fd1ac43b994
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028665"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Offline een lokaal Windows-wachtwoord opnieuw instellen voor een virtuele Azure-machine
 U kunt het lokale Windows-wacht woord van een virtuele machine in azure opnieuw instellen met behulp van de [Azure portal of Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , op voor waarde dat de Azure-gast agent is geïnstalleerd. Deze methode is de belangrijkste manier om een wacht woord opnieuw in te stellen voor een Azure-VM. Als u problemen ondervindt met de Azure Guest agent die niet reageert of als u niet kunt installeren na het uploaden van een aangepaste installatie kopie, kunt u een Windows-wacht woord hand matig opnieuw instellen. In dit artikel wordt beschreven hoe u een wacht woord voor een lokaal account opnieuw instelt door de virtuele schijf van het bron besturingssysteem te koppelen aan een andere virtuele machine. De stappen die in dit artikel worden beschreven, zijn niet van toepassing op Windows-domein controllers. 
@@ -106,7 +107,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
 > [!NOTE]
 > De stappen zijn niet van toepassing op Windows-domein controllers. Het werkt alleen op een zelfstandige server of op een server die lid is van een domein.
 
-Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure portal of Azure PowerShell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) voordat u de volgende stappen uitvoert. Zorg ervoor dat u een back-up van uw VM hebt voordat u begint. 
+Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure portal of Azure PowerShell](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) voordat u de volgende stappen uitvoert. Zorg ervoor dat u een back-up van uw VM hebt voordat u begint. 
 
 1. Verwijder de betrokken VM in Azure Portal. Als u de virtuele machine verwijdert, worden alleen de meta gegevens, de verwijzing van de virtuele machine in azure, verwijderd. De virtuele schijven blijven behouden wanneer de virtuele machine wordt verwijderd:
    

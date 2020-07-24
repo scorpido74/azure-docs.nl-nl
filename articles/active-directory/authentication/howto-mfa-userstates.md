@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027492"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Microsoft Azure Multi-Factor Authentication per gebruiker inschakelen om aanmeldingsgebeurtenissen te beveiligen
 
@@ -55,7 +55,7 @@ Gebruik de volgende stappen om toegang te krijgen tot de Azure Portal pagina waa
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
 1. Zoek en selecteer *Azure Active Directory*en selecteer vervolgens **gebruikers**  >  **alle gebruikers**.
-1. Selecteer **multi-factor Authentication**. Mogelijk moet u naar rechts schuiven om deze menu optie weer te geven. Selecteer de onderstaande scherm afbeelding om het volledige Azure Portal venster en de menu locatie weer te geven:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication selecteren in het venster gebruikers in azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Selecteer **Multi-Factor Authentication**. Mogelijk moet u naar rechts schuiven om deze menu optie weer te geven. Selecteer de onderstaande scherm afbeelding om het volledige Azure Portal venster en de menu locatie weer te geven:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication selecteren in het venster gebruikers in azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Er wordt een nieuwe pagina geopend waarin de gebruikers status wordt weer gegeven, zoals in het volgende voor beeld wordt weer gegeven.
    ![Scherm afbeelding met voor beeld van informatie over de gebruikers status voor Azure Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
 
@@ -78,7 +78,7 @@ Nadat u gebruikers hebt ingeschakeld, stelt u deze via e-mail op de hoogte. Vert
 
 ## <a name="change-state-using-powershell"></a>Status wijzigen met behulp van Power shell
 
-Als u de gebruikers status wilt wijzigen met behulp van [Azure AD Power shell](/powershell/azure/overview), wijzigt u de `$st.State` para meter voor een gebruikers account. Er zijn drie mogelijke statussen voor een gebruikers account:
+Als u de gebruikers status wilt wijzigen met behulp van [Azure AD Power shell](/powershell/azure/), wijzigt u de `$st.State` para meter voor een gebruikers account. Er zijn drie mogelijke statussen voor een gebruikers account:
 
 * *Ingeschakeld*
 * *Afgedwongen*
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> We hebben het gedrag en dit Power shell-script onlangs gewijzigd. Voorheen werd het script bespaard op de MFA-methoden, uitgeschakeld MFA en de methoden hersteld. Dit is nu niet langer nodig om de methoden niet te wissen met het standaard gedrag voor uitschakelen.
->
 > Als MFA opnieuw wordt ingeschakeld voor een gebruikers object dat al registratie details, zoals een telefoon of e-mail adres, heeft, moeten beheerders die gebruiker MFA opnieuw registreren via Azure Portal of Power shell. Als de gebruiker zich niet opnieuw registreert, wordt de MFA-status niet overgezet van *ingeschakeld* om te worden *afgedwongen* in de gebruikers interface voor MFA-beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [azure multi-factor Authentication-instellingen configureren](howto-mfa-mfasettings.md)als u Azure multi-factor Authentication-instellingen wilt configureren, zoals vertrouwde IP-adressen, aangepaste spraak berichten en fraude waarschuwingen. Zie [Manage User Settings with azure multi-factor Authentication](howto-mfa-userdevicesettings.md)om gebruikers instellingen voor Azure multi-factor Authentication te beheren.
+Zie [instellingen van Azure-multi-factor Authentication configureren](howto-mfa-mfasettings.md)als u Azure multi-factor Authentication-instellingen wilt configureren.
+
+Zie [Manage User Settings with azure multi-factor Authentication](howto-mfa-userdevicesettings.md)om gebruikers instellingen voor Azure multi-factor Authentication te beheren.
 
 Zie [Azure multi-factor Authentication-rapporten](howto-mfa-reporting.md)als u wilt weten waarom een gebruiker is gevraagd of niet wordt gevraagd MFA uit te voeren.

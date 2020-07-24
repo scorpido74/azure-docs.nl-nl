@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030076"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -32,7 +32,11 @@ Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/postgres
 
 ## <a name="restore"></a>Herstellen
 
-In Azure Database for PostgreSQL maakt het herstellen van een grootschalige-cluster (Citus) een nieuw cluster op basis van de back-ups van de oorspronkelijke knoop punten.
+In Azure Database for PostgreSQL maakt het herstellen van een grootschalige-cluster (Citus) een nieuw cluster op basis van de back-ups van de oorspronkelijke knoop punten. 
+
+> [!IMPORTANT]
+>U kunt het grootschalige-cluster alleen herstellen binnen hetzelfde abonnement en dezelfde resource groep en met een andere cluster naam.
+
 
 > [!IMPORTANT]
 > Verwijderde grootschalige-clusters (Citus) kunnen niet worden hersteld. Als u het cluster verwijdert, worden alle knoop punten die deel uitmaken van het cluster, verwijderd en kunnen ze niet worden hersteld. Voor het beveiligen van cluster bronnen, na implementatie, van onbedoeld verwijderen of onverwachte wijzigingen, kunnen beheerders gebruikmaken van [beheer vergrendelingen](/azure/azure-resource-manager/management/lock-resources).

@@ -1,5 +1,6 @@
 ---
 title: Informatie over het Azure Active Directory app-manifest
+titleSuffix: Microsoft identity platform
 description: Gedetailleerde dekking van het app-manifest van de Azure Active Directory, dat de identiteits configuratie van een toepassing vertegenwoordigt in een Azure AD-Tenant, en wordt gebruikt om de OAuth-autorisatie, de toestemmings ervaring en nog veel meer te vergemakkelijken.
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026744"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-app-manifest
 
-Het manifest van de toepassing bevat een definitie van alle kenmerken van een toepassings object in het micro soft Identity-platform. Het fungeert ook als mechanisme voor het bijwerken van het toepassings object. Zie de documentatie van de [Graph API toepassings entiteit](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)voor meer informatie over de toepassings entiteit en het bijbehorende schema.
+Het manifest van de toepassing bevat een definitie van alle kenmerken van een toepassings object in het micro soft Identity-platform. Het fungeert ook als mechanisme voor het bijwerken van het toepassings object. Zie de documentatie van de [Graph API toepassings entiteit](/graph/api/resources/application)voor meer informatie over de toepassings entiteit en het bijbehorende schema.
 
-U kunt de kenmerken van een app configureren via de Azure Portal of programmatisch met behulp van [rest API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) of [Power shell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Er zijn echter enkele scenario's waarin u het app-manifest moet bewerken om het kenmerk van een app te configureren. Deze scenario's omvatten:
+U kunt de kenmerken van een app configureren via de Azure Portal of programmatisch met behulp van [rest API](/graph/api/resources/application) of [Power shell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Er zijn echter enkele scenario's waarin u het app-manifest moet bewerken om het kenmerk van een app te configureren. Deze scenario's omvatten:
 
 * Als u de app als Azure AD-multi tenant en persoonlijke micro soft-accounts hebt geregistreerd, kunt u de ondersteunde micro soft-accounts in de gebruikers interface niet wijzigen. In plaats daarvan moet u de Application manifest editor gebruiken om het ondersteunde account type te wijzigen.
 * Als u machtigingen en rollen wilt definiëren die door uw app worden ondersteund, moet u het toepassings manifest wijzigen.
@@ -104,7 +105,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| allowPublicClient | Boolean-waarde |
+| allowPublicClient | Boolean |
 
 Hiermee wordt het type terugval toepassing opgegeven. Azure AD leidt het toepassings type standaard af van de replyUrlsWithType. Er zijn bepaalde scenario's waarin het app-type van de client niet kan worden bepaald door Azure AD. Een voor beeld hiervan is de [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) -stroom waarbij een HTTP-aanvraag wordt uitgevoerd zonder URL-omleiding). In dergelijke gevallen interpreteert Azure AD het toepassings type op basis van de waarde van deze eigenschap. Als deze waarde is ingesteld op True, wordt het type terugval toepassing ingesteld als open bare client, zoals een geïnstalleerde app die wordt uitgevoerd op een mobiel apparaat. De standaard waarde is False. Dit betekent dat het type terugval toepassing vertrouwelijk is, zoals web-app.
 
@@ -118,7 +119,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| availableToOtherTenants | Boolean-waarde |
+| availableToOtherTenants | Boolean |
 
 Stel deze waarde in op True als de toepassing wordt gedeeld met andere tenants. anders false.
 
@@ -349,7 +350,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| naam | Tekenreeks |
+| name | Tekenreeks |
 
 De weergave naam voor de app.
 
@@ -363,7 +364,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | Boolean-waarde |
+| oauth2AllowImplicitFlow | Boolean |
 
 Hiermee geeft u op of deze web-app OAuth 2.0 impliciet flow-toegangs tokens kan aanvragen. De standaard waarde is False. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina. Als u meer wilt weten, voert u `OAuth 2.0 implicit grant flow` in de inhouds opgave in en raadpleegt u de onderwerpen over impliciete stroom.
 
@@ -377,7 +378,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | Boolean-waarde |
+| oauth2AllowIdTokenImplicitFlow | Boolean |
 
 Hiermee geeft u op of deze web-app OAuth 2.0 impliciete stroom-ID-tokens kan aanvragen. De standaard waarde is False. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina.
 
@@ -416,7 +417,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| oauth2RequiredPostResponse | Boolean-waarde |
+| oauth2RequiredPostResponse | Boolean |
 
 Hiermee geeft u op of door Azure AD POST-aanvragen worden toegestaan als onderdeel van OAuth 2,0-token aanvragen. De standaard waarde is False. Hiermee wordt aangegeven dat alleen GET-aanvragen worden toegestaan.
 
@@ -433,7 +434,7 @@ Voorbeeld:
 | parentalControlSettings | Tekenreeks |
 
 - `countriesBlockedForMinors`Hiermee geeft u de landen/regio's op waarin de app is geblokkeerd voor minder jarigen.
-- `legalAgeGroupRule`Hiermee geeft u de regel voor de juridische leeftijds groep op die van toepassing is op gebruikers van de app. Kan worden ingesteld op `Allow` , `RequireConsentForPrivacyServices` , `RequireConsentForMinors` , `RequireConsentForKids` of `BlockMinors` .  
+- `legalAgeGroupRule`Hiermee geeft u de regel voor de juridische leeftijds groep op die van toepassing is op gebruikers van de app. Kan worden ingesteld op `Allow` , `RequireConsentForPrivacyServices` , `RequireConsentForMinors` , `RequireConsentForKids` of `BlockMinors` .
 
 Voorbeeld:
 
@@ -491,9 +492,9 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| publicClient | Boolean-waarde|
+| publicClient | Boolean|
 
-Hiermee geeft u op of deze toepassing een open bare client is (zoals een geïnstalleerde toepassing die wordt uitgevoerd op een mobiel apparaat). 
+Hiermee geeft u op of deze toepassing een open bare client is (zoals een geïnstalleerde toepassing die wordt uitgevoerd op een mobiel apparaat).
 
 Deze eigenschap is alleen beschikbaar in de ervaring **app-registraties (verouderd)** . Vervangen door `allowPublicClient` in de [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring.
 
@@ -669,7 +670,7 @@ Wanneer u een eerder gedownload manifest probeert te uploaden, ziet u mogelijk e
 
 Wanneer u een van deze fouten ziet, raden we u aan de volgende acties uit te voeren:
 
-1. Bewerk de kenmerken afzonderlijk in de manifest editor in plaats van een eerder gedownload manifest te uploaden. Gebruik de [verwijzings](#manifest-reference) tabel van het manifest om inzicht te krijgen in de syntaxis en semantiek van oude en nieuwe kenmerken, zodat u de kenmerken kunt bewerken waarin u bent geïnteresseerd. 
+1. Bewerk de kenmerken afzonderlijk in de manifest editor in plaats van een eerder gedownload manifest te uploaden. Gebruik de [verwijzings](#manifest-reference) tabel van het manifest om inzicht te krijgen in de syntaxis en semantiek van oude en nieuwe kenmerken, zodat u de kenmerken kunt bewerken waarin u bent geïnteresseerd.
 1. Als uw werk stroom vereist dat u de manifesten in uw bron opslagplaats opslaat voor later gebruik, wordt u aangeraden om de opgeslagen manifesten in uw opslag plaats te herbaseren met de map die u ziet in de **app-registraties** -ervaring.
 
 ## <a name="next-steps"></a>Volgende stappen

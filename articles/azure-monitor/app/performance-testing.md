@@ -4,16 +4,17 @@ description: Prestatie-en belasting tests instellen met Azure-toepassing Insight
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024347"
 ---
 # <a name="performance-testing"></a>Prestaties testen
 
 > [!NOTE]
-> De Cloud service voor belasting tests is afgeschaft. Meer informatie over de afschaffing, de beschik baarheid van de service en alternatieve Services vindt u [hier](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
+> De Cloud service voor belasting tests is afgeschaft. Meer informatie over de afschaffing, de beschik baarheid van de service en alternatieve Services vindt u [hier](/azure/devops/test/load-test/overview?view=azure-devops).
 
 Met Application Insights kunt u belasting tests voor uw websites genereren. Net als bij [beschikbaarheids tests](monitor-web-app-availability.md)kunt u basis aanvragen of [aanvragen voor meerdere stappen](availability-multistep.md) verzenden van Azure test agents over de hele wereld. Met prestatie tests kunt u Maxi maal 20.000 gelijktijdige gebruikers gedurende Maxi maal 60 minuten simuleren.
 

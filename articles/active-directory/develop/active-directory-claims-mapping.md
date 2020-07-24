@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027169"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -175,7 +175,7 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
-| UPN |
+| upn |
 | user_setting_sync_url |
 | gebruikersnaam |
 | uti's |
@@ -299,7 +299,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | onpremisesecurityidentifier | Lokale beveiligings-id |
 | Gebruiker | CompanyName| Organisatienaam |
 | Gebruiker | streetaddress | Adres |
-| Gebruiker | code | Postcode |
+| Gebruiker | postalcode | Postcode |
 | Gebruiker | preferredlanguange | Voorkeurstaal |
 | Gebruiker | onpremisesuserprincipalname | On-premises UPN |
 | Gebruiker | mailNickname | E-mail bijnaam |
@@ -321,8 +321,8 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Staat |
-| Gebruiker | JobTitle | Functie |
+| Gebruiker | state | Status |
+| Gebruiker | jobtitle | Functie |
 | Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
 | Gebruiker | assignedroles | lijst met app-rollen die aan de gebruiker zijn toegewezen|
@@ -362,7 +362,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 |TransformationMethod|Verwachte invoer|Verwachte uitvoer|Beschrijving|
 |-----|-----|-----|-----|
 |Koppelen|tekenreeks1, tekenreeks2, scheidings teken|Output claim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: " foo@bar.com ", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim: " foo@bar.com.sandbox "|
-|ExtractMailPrefix|e-mail of UPN|UPN|ExtensionAttributes 1-15 of andere schema-uitbrei dingen die een UPN-of e-mailadres waarde voor de gebruiker opslaan, bijvoorbeeld johndoe@contoso.com . Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: " foo@bar.com " resulteert in output claim: "foo". Als er geen \@ teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
+|ExtractMailPrefix|E-mail of UPN|geëxtraheerde teken reeks|ExtensionAttributes 1-15 of andere schema-uitbrei dingen die een UPN-of e-mailadres waarde voor de gebruiker opslaan, bijvoorbeeld johndoe@contoso.com . Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: " foo@bar.com " resulteert in output claim: "foo". Als er geen \@ teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
 
 **InputClaims:** Gebruik een InputClaims-element om de gegevens van een claim schema vermelding door te geven aan een trans formatie. Het heeft twee kenmerken: **ClaimTypeReferenceId** en **TransformationClaimType**.
 
@@ -525,6 +525,6 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.

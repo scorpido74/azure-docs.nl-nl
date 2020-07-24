@@ -8,11 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: bd1022079b382353591857eacdedff344ed49f63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 028ac730396c71549bfc338d3496109c98dfdc73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027832"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Geforceerde tunneling met het implementatiemodel van Azure Resource Manager configureren
 
@@ -61,7 +62,7 @@ De procedure stappen stellen de ' DefaultSiteHQ ' in als de standaard site verbi
 
 ## <a name="before-you-begin"></a><a name="before"></a>Voordat u begint
 
-Installeer de meest recente versie van de PowerShell-cmdlets van Azure Resource Manager. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets.
+Installeer de meest recente versie van de PowerShell-cmdlets van Azure Resource Manager. Zie [How to install and configure Azure PowerShell](/powershell/azure/) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets.
 
 > [!IMPORTANT]
 > De meest recente versie van de Power shell-cmdlets moet worden geïnstalleerd. Anders worden er validatie fouten weer gegeven wanneer u een aantal van de cmdlets uitvoert.

@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 511c3aa65bf0a10e42d7a54c98662cc388a5d711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028221"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Het D: station gebruiken als gegevens station op een Windows-VM
 Als uw toepassing het D-station moet gebruiken om gegevens op te slaan, volgt u deze instructies om een andere stationsletter voor de tijdelijke schijf te gebruiken. Gebruik nooit de tijdelijke schijf om gegevens op te slaan die u wilt bewaren.
 
 Als u het formaat van een virtuele machine wijzigt of **stopt (toewijzing opheffen)** , wordt de plaatsing van de virtuele machine naar een nieuwe Hyper Visor geactiveerd. Deze plaatsing kan ook worden geactiveerd door een geplande of niet-geplande onderhouds gebeurtenis. In dit scenario wordt de tijdelijke schijf opnieuw toegewezen aan de eerste beschik bare stationsletter. Als u een toepassing hebt die specifiek het station D: vereist, moet u deze stappen volgen om de pagefile.sys tijdelijk te verplaatsen, een nieuwe gegevens schijf toe te voegen en de letter D toe te wijzen en vervolgens de pagefile.sys weer naar het tijdelijke station te verplaatsen. Zodra het proces is voltooid, wordt de D niet meer teruggebracht door Azure als de VM naar een andere Hyper Visor wordt verplaatst.
 
-Zie [inzicht in het tijdelijke station op Microsoft Azure virtual machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) voor meer informatie over hoe Azure de tijdelijke schijf gebruikt.
+Zie [inzicht in het tijdelijke station op Microsoft Azure virtual machines](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) voor meer informatie over hoe Azure de tijdelijke schijf gebruikt.
 
 ## <a name="attach-the-data-disk"></a>De gegevens schijf koppelen
 Eerst moet u de gegevens schijf aan de virtuele machine koppelen. Zie [een beheerde gegevens schijf koppelen in de Azure Portal](attach-managed-disk-portal.md)om dit te doen met behulp van de portal.
@@ -59,4 +59,3 @@ Eerst moet u de gegevens schijf aan de virtuele machine koppelen. Zie [een behee
 
 ## <a name="next-steps"></a>Volgende stappen
 * U kunt de opslag ruimte die beschikbaar is voor uw virtuele machine verhogen door [een extra gegevens schijf te koppelen](attach-managed-disk-portal.md).
-

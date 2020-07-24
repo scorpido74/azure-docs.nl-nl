@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029532"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Toegang tot gegevens in Azure Storage autoriseren
 
@@ -23,8 +23,8 @@ Telkens wanneer u toegang hebt tot gegevens in uw opslag account, stuurt uw clie
 
 In de volgende tabel worden de opties beschreven die Azure Storage biedt om toegang tot resources te verlenen:
 
-|  |Gedeelde sleutel (sleutel van het opslag account)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |On-premises Active Directory Domain Services (preview-versie) |Anonieme open bare Lees toegang  |
-|---------|---------|---------|---------|---------|---------|
+| Azure-artefact | Gedeelde sleutel (sleutel van het opslag account) | Shared Access Signature (SAS) | Azure Active Directory (Azure AD) | On-premises Active Directory Domain Services (preview-versie) | Anonieme open bare Lees toegang |
+| -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
 |Azure-blobs     |[Ondersteund](/rest/api/storageservices/authorize-with-shared-key/)         |[Ondersteund](storage-sas-overview.md)         |[Ondersteund](storage-auth-aad.md)         |Niet ondersteund|[Ondersteund](../blobs/storage-manage-access-to-resources.md)         |
 |Azure Files (SMB)     |[Ondersteund](/rest/api/storageservices/authorize-with-shared-key/)         |Niet ondersteund         |[Ondersteund, alleen met AAD Domain Services](../files/storage-files-active-directory-overview.md)         |[Ondersteund, referenties moeten worden gesynchroniseerd met Azure AD](../files/storage-files-active-directory-overview.md)|Niet ondersteund         |
 |Azure Files (REST)     |[Ondersteund](/rest/api/storageservices/authorize-with-shared-key/)         |[Ondersteund](storage-sas-overview.md)         |Niet ondersteund         |Niet ondersteund |Niet ondersteund         |

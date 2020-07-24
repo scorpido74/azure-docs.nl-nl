@@ -12,15 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027696"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
-Als u de gebruikers ervaring voor Azure Multi-Factor Authentication wilt aanpassen, kunt u opties configureren voor instellingen zoals de drempel waarden voor account vergrendeling of fraude waarschuwingen en meldingen. Sommige instellingen zijn rechtstreeks in de Azure Portal voor Azure Active Directory (Azure AD) en sommige in een afzonderlijke Azure Multi-Factor Authentication Portal.]
+Als u de gebruikers ervaring voor Azure Multi-Factor Authentication wilt aanpassen, kunt u opties configureren voor instellingen zoals de drempel waarden voor account vergrendeling of fraude waarschuwingen en meldingen. Sommige instellingen zijn rechtstreeks in de Azure Portal voor Azure Active Directory (Azure AD) en sommige in een afzonderlijke Azure Multi-Factor Authentication Portal.
 
 De volgende Azure Multi-Factor Authentication-instellingen zijn beschikbaar in de Azure Portal:
 
@@ -293,7 +294,7 @@ Voer de volgende stappen uit om vertrouwde IP-adressen in te scha kelen met behu
 Als u geen beleid voor voorwaardelijke toegang wilt gebruiken om vertrouwde IP-adressen in te scha kelen, kunt u de *Service-instellingen* voor Azure multi-factor Authentication configureren met behulp van de volgende stappen:
 
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
-1. Selecteer **multi-factor Authentication**.
+1. Selecteer **Multi-Factor Authentication**.
 1. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 1. Kies op de pagina **Service-instellingen** onder **betrouw bare ip's**een (of beide) van de volgende twee opties:
 
@@ -328,7 +329,7 @@ Zie [welke verificatie-en verificatie methoden zijn er beschikbaar in azure AD?]
 Voer de volgende stappen uit om verificatie methoden in of uit te scha kelen:
 
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
-1. Selecteer **multi-factor Authentication**.
+1. Selecteer **Multi-Factor Authentication**.
 1. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 1. Selecteer op de pagina **Service-instellingen** onder **verificatie opties**de methoden die aan uw gebruikers moeten worden verstrekt.
 1. Klik op **Opslaan**.
@@ -363,7 +364,7 @@ De functie beperkt het aantal authenticaties op Web-apps, die Norma liter elke k
 Voer de volgende stappen uit om de optie in te scha kelen en zo te configureren dat gebruikers hun MFA-status en bypass prompts kunnen onthouden:
 
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
-1. Selecteer **multi-factor Authentication**.
+1. Selecteer **Multi-Factor Authentication**.
 1. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 1. Op de pagina **service** -instellingen **beheert u multi-factor Authentication onthouden**en selecteert **u de optie gebruikers toestaan om multi-factor Authentication te onthouden op apparaten die ze vertrouwen** .
 1. Stel het aantal dagen in zodat vertrouwde apparaten de verificatie in twee stappen kunnen overs Laan. De standaard waarde is 14 dagen.

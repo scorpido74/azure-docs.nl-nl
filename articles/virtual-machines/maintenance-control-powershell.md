@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675839"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028648"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Updates beheren met onderhouds beheer en Azure PowerShell
 
@@ -46,7 +47,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-Gebruik [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) om een onderhouds configuratie te maken. In dit voor beeld wordt een onderhouds configuratie gemaakt met de naam *myConfig* scoped to the host. 
+Gebruik [New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration) om een onderhouds configuratie te maken. In dit voor beeld wordt een onderhouds configuratie gemaakt met de naam *myConfig* scoped to the host. 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -60,7 +61,7 @@ Met `-MaintenanceScope host` kunt u ervoor zorgen dat de onderhouds configuratie
 
 Als u probeert een configuratie met dezelfde naam te maken, maar op een andere locatie, krijgt u een fout melding. Configuratie namen moeten uniek zijn voor uw abonnement.
 
-U kunt een query uitvoeren voor beschik bare onderhouds configuraties met [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration).
+U kunt een query uitvoeren voor beschik bare onderhouds configuraties met [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration).
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -68,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>De configuratie toewijzen
 
-Gebruik [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) om de configuratie toe te wijzen aan uw geïsoleerde virtuele machine of uw toegewezen Azure-host.
+Gebruik [New-AzConfigurationAssignment](/powershell/module/az.maintenance/new-azconfigurationassignment) om de configuratie toe te wijzen aan uw geïsoleerde virtuele machine of uw toegewezen Azure-host.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -105,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Controleren op updates die nog niet zijn uitgevoerd
 
-Gebruik [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) om te zien of er updates in behandeling zijn. Gebruik `-subscription` om het Azure-abonnement van de virtuele machine op te geven als deze afwijkt van de VM die u bent aangemeld.
+Gebruik [Get-AzMaintenanceUpdate](/powershell/module/az.maintenance/get-azmaintenanceupdate) om te zien of er updates in behandeling zijn. Gebruik `-subscription` om het Azure-abonnement van de virtuele machine op te geven als deze afwijkt van de VM die u bent aangemeld.
 
 Als er geen updates zijn om weer te geven, retourneert deze opdracht niets. Anders wordt een PSApplyUpdate-object geretourneerd:
 
@@ -151,7 +152,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Updates toepassen
 
-Gebruik [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) om in behandeling zijnde updates toe te passen.
+Gebruik [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) om in behandeling zijnde updates toe te passen.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -182,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>Update status controleren
-Gebruik [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) om de status van een update te controleren. Met de onderstaande opdrachten wordt de status van de meest recente update weer gegeven met `default` voor de `-ApplyUpdateName` para meter. U kunt de naam van de update vervangen (geretourneerd door de opdracht [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) om de status van een specifieke update op te halen.
+Gebruik [Get-AzApplyUpdate](/powershell/module/az.maintenance/get-azapplyupdate) om de status van een update te controleren. Met de onderstaande opdrachten wordt de status van de meest recente update weer gegeven met `default` voor de `-ApplyUpdateName` para meter. U kunt de naam van de update vervangen (geretourneerd door de opdracht [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) ) om de status van een specifieke update op te halen.
 
 ```text
 Status         : Completed
@@ -226,7 +227,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>Een onderhouds configuratie verwijderen
 
-Gebruik [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) om een onderhouds configuratie te verwijderen.
+Gebruik [Remove-AzMaintenanceConfiguration](/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) om een onderhouds configuratie te verwijderen.
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `

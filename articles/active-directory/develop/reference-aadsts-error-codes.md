@@ -12,13 +12,14 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d18a50a21c41830796c913a424707897d277218
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026761"
 ---
-# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fout codes voor Azure AD-verificatie en-autorisatie
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Verificatie- en autorisatiefoutcodes in Azure AD
 
 Zoeken naar informatie over de AADSTS-fout codes die worden geretourneerd door de Azure Active Directory (de Azure AD) Security Token Service (STS)? Lees dit document om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.
 
@@ -59,7 +60,7 @@ Hier volgt een voor beeld van een fout bericht:
 
 Het `error` veld heeft verschillende mogelijke waarden: Controleer de koppelingen van de protocol documentatie en de OAuth 2,0-specificaties voor meer informatie over specifieke fouten (bijvoorbeeld `authorization_pending` in de [code stroom](v2-oauth2-device-code.md)van het apparaat) en hoe u deze kunt reageren.  Hier vindt u enkele veelvoorkomende items:
 
-| Foutcode         | Description        | Client actie    |
+| Foutcode         | Beschrijving        | Client actie    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protocol fout, zoals een ontbrekende vereiste para meter. | Corrigeer en verzend de aanvraag opnieuw.|
 | `invalid_grant`    | Sommige van de verificatie materiaal (auth-code, vernieuwings token, toegangs token, PKCE Challenge) is ongeldig, niet-geparseerd, ontbreekt of anderszins onbruikbaar | Probeer een nieuwe aanvraag naar het `/authorize` eind punt uit om een nieuwe autorisatie code op te halen.  Overweeg het gebruik van de protocollen te controleren en te valideren. |
@@ -77,7 +78,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 
 ## <a name="aadsts-error-codes"></a>AADSTS-fout codes
 
-| Fout | Description |
+| Fout | Beschrijving |
 |---|---|
 | AADSTS16000 | SelectUserAccount: dit is een interrupt veroorzaakt door Azure AD, wat resulteert in de gebruikers interface, waarmee de gebruiker kan kiezen uit meerdere geldige SSO-sessies. Deze fout is tamelijk gebruikelijk en kan worden geretourneerd naar de toepassing als deze `prompt=none` is opgegeven. |
 | AADSTS16001 | UserAccountSelectionInvalid: deze fout wordt weer geven als de gebruiker op een tegel klikt die de logica voor het selecteren van de sessie heeft geweigerd. Als u deze fout hebt geactiveerd, kan de gebruiker met behulp van een bijgewerkte lijst met tegels/sessies herstellen door een ander account te kiezen. Deze fout kan optreden vanwege een code defect of een race voorwaarde. |
@@ -93,7 +94,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS40015 | OAuth2IdPAuthCodeRedemptionUserError: er is een probleem met uw federatieve id-provider. Neem contact op met uw IDP om dit probleem op te lossen. |
 | AADSTS50000 | TokenIssuanceError: er is een probleem met de aanmeldings service. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om dit probleem op te lossen. |
 | AADSTS50001 | InvalidResource: de resource is uitgeschakeld of bestaat niet. Controleer de code van de app om te controleren of u de exacte resource-URL hebt opgegeven voor de resource die u wilt openen.  |
-| AADSTS50002 | NotAllowedTenant-aanmelden is mislukt vanwege een beperkte proxy toegang op de Tenant. Als het uw eigen Tenant beleid is, kunt u de instellingen voor de beperkte Tenant wijzigen om dit probleem op te lossen. |
+| AADSTS50002 | NotAllowedTenant-aanmelden is mislukt vanwege een beperkte proxy toegang op de Tenant. Als het uw eigen tenantbeleid is, kunt u de instellingen voor de beperkte tenant wijzigen om dit probleem op te lossen. |
 | AADSTS50003 | MissingSigningKey-aanmelden is mislukt vanwege een ontbrekende handtekening sleutel of certificaat. Dit kan zijn omdat er geen handtekening sleutel is geconfigureerd in de app. Bekijk de oplossingen die worden beschreven op [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) . Als u nog steeds problemen ziet, neemt u contact op met de eigenaar van de app of een app-beheerder. |
 | AADSTS50005 | DevicePolicyError: gebruiker heeft geprobeerd zich aan te melden bij een apparaat vanaf een platform dat momenteel niet wordt ondersteund via het beleid voor voorwaardelijke toegang. |
 | AADSTS50006 | InvalidSignature-handtekening verificatie is mislukt vanwege een ongeldige hand tekening. |
@@ -120,7 +121,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50053 | IdsLocked: het account is vergrendeld omdat de gebruiker te vaak heeft geprobeerd zich aan te melden met een onjuiste gebruikers-ID of een onjuist wacht woord. |
 | AADSTS50055 | InvalidPasswordExpiredPassword-het wacht woord is verlopen. |
 | AADSTS50056 | Ongeldig of leeg wacht woord: het wacht woord bestaat niet in het Archief voor deze gebruiker. |
-| AADSTS50057 | UserDisabled-het gebruikers account is uitgeschakeld. Het account is uitgeschakeld door een beheerder. |
+| AADSTS50057 | UserDisabled-het gebruikers account is uitgeschakeld. Het account is uitgeschakeld door een gebruiker met beheerdersrechten. |
 | AADSTS50058 | UserInformationNotProvided: Dit betekent dat een gebruiker niet is aangemeld. Dit is een veelvoorkomende fout die wordt verwacht wanneer een gebruiker niet is geverifieerd en nog niet is aangemeld.</br>Als deze fout wordt aangemoedigd in een SSO-context waarin de gebruiker zich eerder heeft aangemeld, betekent dit dat de SSO-sessie niet is gevonden of ongeldig is.</br>Deze fout kan worden geretourneerd naar de toepassing als prompt = none is opgegeven. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: door Tenant geïdentificeerde gegevens zijn niet gevonden in de aanvraag of geïmpliceerd door de verstrekte referenties. De gebruiker kan contact opnemen met de Tenant beheerder om het probleem op te lossen. |
 | AADSTS50061 | SignoutInvalidRequest-de afmeldings aanvraag is ongeldig. |
@@ -263,6 +264,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90093 | GraphUserUnauthorized-Graph heeft een niet-toegestane fout code voor de aanvraag geretourneerd. |
 | AADSTS90094 | AdminConsentRequired-toestemming van de beheerder is vereist. |
 | AADSTS900382 | De vertrouwelijke client wordt niet ondersteund in een cross-Cloud aanvraag. |
+| AADSTS90099 | De toepassing {appId} ({appName}) is niet geautoriseerd in de Tenant {Tenant}. Toepassingen moeten worden gemachtigd om toegang te krijgen tot de Tenant van de klant voordat de beheerder van de partner deze kan gebruiken. Geef vooraf toestemming of voer de juiste partner centrum-API uit om de toepassing te autoriseren. |
 | AADSTS90100 | InvalidRequestParameter-de para meter is leeg of ongeldig. |
 | AADSTS901002 | AADSTS901002: de aanvraag parameter ' resource ' wordt niet ondersteund. |
 | AADSTS90101 | InvalidEmailAddress: de opgegeven gegevens zijn geen geldig e-mail adres. Het e-mail adres moet de indeling hebben `someone@example.com` . |

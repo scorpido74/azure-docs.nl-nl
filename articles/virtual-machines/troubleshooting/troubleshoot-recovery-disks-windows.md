@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c7b6ee73513c7e51e3bb18c3835a1d395a4c516
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75374129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028258"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van Azure PowerShell
 Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor het oplossen van problemen op de schijf zelf uitvoeren. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om de schijf te verbinden met een andere Windows-VM om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM te herstellen. 
@@ -41,7 +42,7 @@ Het probleemoplossingsproces is als volgt:
 
 U kunt de opdrachten voor het herstellen van de virtuele machine gebruiken om stap 1, 2, 3, 4, 6 en 7 te automatiseren. Zie [een Windows-VM herstellen met behulp van de opdrachten voor het herstellen van virtuele Azure-machines](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer documentatie en instructies.
 
-Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/overview) hebt geïnstalleerd en bent aangemeld bij uw abonnement:
+Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/) hebt geïnstalleerd en bent aangemeld bij uw abonnement:
 
 ```powershell
 Connect-AzAccount

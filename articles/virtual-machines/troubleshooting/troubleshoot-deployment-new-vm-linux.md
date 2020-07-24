@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83118223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028444"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Problemen met de implementatie van Resource Manager oplossen met het maken van een nieuwe virtuele Linux-machine in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +36,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 [Implementatiebewerkingen bekijken](../../azure-resource-manager/templates/deployment-history.md)
 
-[Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
+[Activiteiten logboeken weer geven om Azure-resources te beheren](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -87,5 +88,4 @@ Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster
   * Voeg de nieuwe virtuele machine toe aan hetzelfde virtuele netwerk.
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u problemen ondervindt bij het starten van een gestopt Linux-VM of het formaat van een bestaande virtuele Linux-machine in azure wijzigt, raadpleegt u problemen met [de implementatie van Resource Manager oplossen bij het opnieuw starten of wijzigen van het formaat van een bestaande Linux-vm in azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
+Als u problemen ondervindt bij het starten van een gestopt Linux-VM of het formaat van een bestaande virtuele Linux-machine in azure wijzigt, raadpleegt u problemen met [de implementatie van Resource Manager oplossen bij het opnieuw starten of wijzigen van het formaat van een bestaande Linux-vm in azure](./troubleshoot-deploy-vm-linux.md?toc=/azure/virtual-machines/linux/toc.json).

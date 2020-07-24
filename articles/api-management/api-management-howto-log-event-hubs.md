@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024959"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen vastleggen in azure Event Hubs in azure API Management
 Azure Event Hubs is een zeer schaalbare service voor inkomende gegevens die miljoenen gebeurtenissen per seconde kan opnemen, voor verwerking en analyse van de enorme hoeveelheden gegevens die worden geproduceerd door verbonden apparaten en toepassingen. Event Hubs fungeert als de "front deur" voor een gebeurtenis pijplijn en wanneer gegevens worden verzameld in een Event Hub, kan deze worden getransformeerd en opgeslagen met behulp van een realtime analyse provider of batches/opslag adapters. Event Hubs koppelt de productie van een gebeurtenissenstroom los van het gebruik van deze gebeurtenissen, zodat de consumenten ervan toegang hebben tot de gebeurtenissen op basis van hun eigen planning.
@@ -66,6 +66,9 @@ Vervang door `logger-id` de waarde die u hebt gebruikt `{loggerId}` in de aanvra
 U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van het `log-to-eventhub` element. In dit voor beeld wordt een teken reeks in JSON-indeling met de datum en tijd, de service naam, de aanvraag-id, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
 
 Klik op **Opslaan** om de bijgewerkte beleids configuratie op te slaan. Zodra het beleid is opgeslagen, is het actief en worden gebeurtenissen geregistreerd in de aangewezen Event hub.
+
+> [!NOTE]
+> De Maxi maal ondersteunde bericht grootte die kan worden verzonden naar een Event Hub van dit API Management beleid is 200 kB (KB). Als een bericht dat wordt verzonden naar een Event Hub groter is dan 200 KB, wordt het automatisch afgekapt en wordt het afgekapte bericht overgebracht naar Event hubs.
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Bekijk een voor beeld van het logboek in Event Hubs met behulp van Azure Stream Analytics
 

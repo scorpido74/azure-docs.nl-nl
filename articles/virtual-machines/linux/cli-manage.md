@@ -6,17 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c0838c06207435934e36d421b2cafc12ee39bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029022"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Algemene Azure CLI-opdrachten voor het beheren van Azure-resources
 
 Met de Azure CLI kunt u uw Azure-resources maken en beheren op macOS, Linux en Windows. In dit artikel vindt u meer informatie over de meest voorkomende opdrachten voor het maken en beheren van virtuele machines (Vm's).
 
-Voor dit artikel is de Azure CLI-versie 2.0.4 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli). U kunt [Cloud shell](/azure/cloud-shell/quickstart) ook gebruiken vanuit uw browser.
+Voor dit artikel is de Azure CLI-versie 2.0.4 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli). U kunt [Cloud shell](../../cloud-shell/quickstart.md) ook gebruiken vanuit uw browser.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Basisopdrachten van Azure Resource Manager in Azure CLI
 Voor gedetailleerde hulp bij specifieke opdracht regel opties en-opties kunt u de online opdracht Help en-opties gebruiken door te typen `az <command> <subcommand> --help` .
@@ -59,6 +60,3 @@ Voor gedetailleerde hulp bij specifieke opdracht regel opties en-opties kunt u d
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Linux Vm's maken en beheren met de Azure cli](tutorial-manage-vm.md) -zelf studie voor meer voor beelden van de CLI-opdrachten.
-
-
-

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49554c053af0ceecf2b7f0b1162b7212694239db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028087"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een virtuele Windows-machine maken vanaf een speciale schijf met PowerShell
 
@@ -32,7 +33,7 @@ We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 vir
 
 ## <a name="option-1-use-an-existing-disk"></a>Optie 1: een bestaande schijf gebruiken
 
-Als u een virtuele machine hebt verwijderd en u de besturingssysteem schijf opnieuw wilt gebruiken om een nieuwe virtuele machine te maken, gebruikt u [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
+Als u een virtuele machine hebt verwijderd en u de besturingssysteem schijf opnieuw wilt gebruiken om een nieuwe virtuele machine te maken, gebruikt u [Get-AzDisk](/powershell/module/az.compute/get-azdisk).
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -67,7 +68,7 @@ Als u een bestaande VM wilt kopiëren naar een andere regio, wilt u mogelijk azc
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Een moment opname maken van de besturingssysteem schijf
 
-U kunt een moment opname maken van een volledige virtuele machine (inclusief alle schijven) of van slechts één schijf. De volgende stappen laten zien hoe u een moment opname maakt van de besturingssysteem schijf van de virtuele machine met de cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
+U kunt een moment opname maken van een volledige virtuele machine (inclusief alle schijven) of van slechts één schijf. De volgende stappen laten zien hoe u een moment opname maakt van de besturingssysteem schijf van de virtuele machine met de cmdlet [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) . 
 
 Stel eerst een aantal para meters in. 
 
@@ -115,7 +116,7 @@ Als u deze moment opname wilt gebruiken om een virtuele machine te maken die hoo
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Een nieuwe schijf maken op basis van de moment opname
 
-Een beheerde schijf maken op basis van de moment opname met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk* gebruikt voor de naam van de schijf.
+Een beheerde schijf maken op basis van de moment opname met behulp van [New-AzDisk](/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk* gebruikt voor de naam van de schijf.
 
 Maak een nieuwe resource groep voor de nieuwe virtuele machine.
 
@@ -235,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>De besturingssysteem schijf toevoegen 
 
-Voeg de besturingssysteem schijf toe aan de configuratie met behulp van [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk). In dit voor beeld wordt de grootte van de schijf ingesteld op *128 GB* en wordt de beheerde schijf als een *Windows* -besturingssysteem schijf gekoppeld.
+Voeg de besturingssysteem schijf toe aan de configuratie met behulp van [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk). In dit voor beeld wordt de grootte van de schijf ingesteld op *128 GB* en wordt de beheerde schijf als een *Windows* -besturingssysteem schijf gekoppeld.
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -244,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>De virtuele machine volt ooien 
 
-Maak de virtuele machine met behulp van [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) met de configuraties die we zojuist hebben gemaakt.
+Maak de virtuele machine met behulp van [New-AzVM](/powershell/module/az.compute/new-azvm) met de configuraties die we zojuist hebben gemaakt.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -269,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Volgende stappen
 Meld u aan bij de nieuwe virtuele machine. Zie [verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](connect-logon.md)voor meer informatie.
-

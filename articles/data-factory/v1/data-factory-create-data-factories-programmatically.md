@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248298"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023480"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-gegevens fabrieken maken, bewaken en beheren met behulp van Azure Data Factory .NET SDK
 > [!NOTE]
@@ -34,7 +34,7 @@ U kunt Azure-gegevens fabrieken programmatisch maken, bewaken en beheren met beh
 
 * Visual Studio 2012 of 2013 of 2015
 * Down load en Installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Azure PowerShell. Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren op uw computer. Azure PowerShell wordt gebruikt om een Azure Active Directory-toepassing te maken.
+* Azure PowerShell. Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/) om Azure PowerShell te installeren op uw computer. Azure PowerShell wordt gebruikt om een Azure Active Directory-toepassing te maken.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Een toepassing maken in Azure Active Directory
 Maak een Azure Active Directory-toepassing, maak een service-principal voor de toepassing en wijs deze toe aan de rol **Inzender Data Factory**.

@@ -5,25 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027594"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hoe werkt de write-back van self-service voor wacht woord opnieuw instellen in Azure Active Directory?
 
 Met Azure Active Directory (Azure AD) self-service voor het opnieuw instellen van wacht woorden (SSPR) kunnen gebruikers hun wacht woord opnieuw instellen in de Cloud, maar de meeste bedrijven hebben ook een on-premises Active Directory Domain Services (AD DS)-omgeving waarin hun gebruikers zich bevinden. Wacht woord terugschrijven is een functie ingeschakeld met [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) waarmee wachtwoord wijzigingen in de cloud in realtime naar een bestaande on-premises Directory kunnen worden geschreven. In deze configuratie, wanneer gebruikers hun wacht woord wijzigen of opnieuw instellen met behulp van SSPR in de Cloud, worden de bijgewerkte wacht woorden ook teruggeschreven naar de on-premises AD DS omgeving
 
+> [!IMPORTANT]
+> In dit conceptuele artikel wordt uitgelegd hoe een beheerder de functie write-back van wacht woord opnieuw instellen werkt. Als u een eindgebruiker bent die al is geregistreerd voor self-service voor wachtwoordherstel en u weer toegang tot uw account wilt hebben, gaat u naar https://aka.ms/sspr.
+>
+> Als uw IT-team u de mogelijkheid niet heeft gegeven uw eigen wachtwoord opnieuw in te stellen, kunt u contact opnemen met de helpdesk voor meer informatie.
+
 Wacht woord terugschrijven wordt ondersteund in omgevingen die gebruikmaken van de volgende hybride identiteits modellen:
 
-* [Synchronisatie van wachtwoord-hashes](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [Wachtwoord-hashsynchronisatie](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Pass-through-verificatie](../hybrid/how-to-connect-pta.md)
 * [Active Directory Federation Services](../hybrid/how-to-connect-fed-management.md)
 
@@ -36,7 +42,12 @@ Het terugschrijven van wacht woorden biedt de volgende functies:
 * Geen **binnenkomende firewall regels vereist**: wacht woord terugschrijven gebruikt een Azure service bus relay als een onderliggend communicatie kanaal. Alle communicatie is uitgaand via poort 443.
 
 > [!NOTE]
-> Beheerders accounts die zich in beveiligde groepen in on-premises AD bevinden, kunnen worden gebruikt bij het terugschrijven van wacht woorden. Beheerders kunnen hun wacht woord wijzigen in de Cloud, maar kunnen geen wacht woord opnieuw instellen gebruiken om een verg eten wacht woord opnieuw in te stellen. Zie voor meer informatie over beveiligde groepen [beveiligde accounts en groepen in Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Beheerders accounts die zich in beveiligde groepen in on-premises AD bevinden, kunnen worden gebruikt bij het terugschrijven van wacht woorden. Beheerders kunnen hun wacht woord wijzigen in de Cloud, maar kunnen geen wacht woord opnieuw instellen gebruiken om een verg eten wacht woord opnieuw in te stellen. Zie voor meer informatie over beveiligde groepen [beveiligde accounts en groepen in AD DS](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+
+Voltooi de volgende zelf studie om aan de slag te gaan met SSPR write-back:
+
+> [!div class="nextstepaction"]
+> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](tutorial-enable-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Hoe wachtwoord terugschrijven werkt
 
@@ -52,14 +63,14 @@ Wanneer een federatieve of wacht woord-hash gesynchroniseerde gebruiker probeert
 1. Nadat het bericht de service bus heeft bereikt, wordt het eind punt voor het opnieuw instellen van het wacht woord automatisch geactiveerd en ziet u dat er een aanvraag voor opnieuw instellen in behandeling is.
 1. De service zoekt vervolgens naar de gebruiker met behulp van het anker kenmerk Cloud. Deze zoek actie slaagt alleen als aan de volgende voor waarden wordt voldaan:
 
-   * Het gebruikers object moet bestaan in de ruimte van de Active Directory-connector.
+   * Het gebruikers object moet bestaan in de ruimte van de AD DS-connector.
    * Het gebruikers object moet worden gekoppeld aan het bijbehorende omgekeerde-object (MV).
-   * Het gebruikers object moet worden gekoppeld aan het bijbehorende Azure Active Directory Connector-object.
-   * De koppeling van het Active Directory Connector-object naar de MV moet de synchronisatie regel hebben `Microsoft.InfromADUserAccountEnabled.xxx` op de koppeling.
+   * Het gebruikers object moet worden gekoppeld aan het bijbehorende Azure AD connector-object.
+   * De koppeling van het AD DS connector-object naar de MV moet de synchronisatie regel hebben `Microsoft.InfromADUserAccountEnabled.xxx` op de koppeling.
 
-   Wanneer de oproep afkomstig is uit de Cloud, gebruikt de synchronisatie-engine het kenmerk **cloudAnchor** om het Azure Active Directory Connector Space-object op te zoeken. Vervolgens volgt u de koppeling terug naar het MV-object en volgt u de koppeling terug naar het Active Directory-object. Omdat er meerdere Active Directory objecten (meerdere forests) voor dezelfde gebruiker kunnen zijn, is de synchronisatie-engine afhankelijk van de `Microsoft.InfromADUserAccountEnabled.xxx` koppeling om de juiste te kiezen.
+   Wanneer de oproep afkomstig is uit de Cloud, gebruikt de synchronisatie-engine het kenmerk **cloudAnchor** om het Azure AD connector Space-object op te zoeken. Vervolgens volgt u de koppeling terug naar het MV-object en volgt u de koppeling terug naar het AD DS-object. Omdat er meerdere AD DS objecten (meerdere forests) voor dezelfde gebruiker kunnen zijn, is de synchronisatie-engine afhankelijk van de `Microsoft.InfromADUserAccountEnabled.xxx` koppeling om de juiste te kiezen.
 
-1. Nadat het gebruikers account is gevonden, wordt er een poging gedaan om het wacht woord rechtstreeks opnieuw in te stellen in het juiste Active Directory-forest.
+1. Nadat het gebruikers account is gevonden, wordt er een poging gedaan om het wacht woord rechtstreeks opnieuw in te stellen in het juiste AD DS-forest.
 1. Als de wachtwoord set is geslaagd, wordt het wacht woord van de gebruiker gewijzigd.
 
    > [!NOTE]
@@ -68,7 +79,7 @@ Wanneer een federatieve of wacht woord-hash gesynchroniseerde gebruiker probeert
 1. Als de bewerking voor het instellen van een wacht woord mislukt, wordt de gebruiker door een fout gevraagd om het opnieuw te proberen. De bewerking kan niet worden uitgevoerd om de volgende redenen:
     * De service is niet actief.
     * Het wacht woord dat ze hebben geselecteerd, voldoet niet aan het beleid van de organisatie.
-    * Kan de gebruiker niet vinden in de lokale Active Directory.
+    * Kan de gebruiker niet vinden in de lokale AD DS omgeving.
 
    De fout berichten bevatten richt lijnen aan gebruikers, zodat ze kunnen proberen om op te lossen zonder tussen komst van de beheerder.
 
@@ -85,7 +96,7 @@ Het terugschrijven van wacht woorden is een zeer veilige service. Om ervoor te z
    1. Het versleutelde wacht woord wordt in een HTTPS-bericht geplaatst dat via een versleuteld kanaal wordt verzonden met behulp van micro soft TLS/SSL-certificaten naar uw service bus relay.
    1. Nadat het bericht in de service bus arriveert, wordt de on-premises agent geactiveerd en wordt de service bus geverifieerd met behulp van het sterke wacht woord dat eerder is gegenereerd.
    1. De on-premises agent haalt het versleutelde bericht op en ontsleutelt het met behulp van de persoonlijke sleutel.
-   1. De on-premises agent probeert het wacht woord in te stellen via de AD DS SetPassword-API. Deze stap is wat het afdwingen van uw Active Directory on-premises wachtwoord beleid (zoals de complexiteit, leeftijd, geschiedenis en filters) in de Cloud mogelijk maakt.
+   1. De on-premises agent probeert het wacht woord in te stellen via de AD DS SetPassword-API. Deze stap is wat het afdwingen van uw AD DS on-premises wachtwoord beleid (zoals de complexiteit, leeftijd, geschiedenis en filters) in de Cloud mogelijk maakt.
 * **Verloop beleid voor berichten**
    * Als het bericht zich in service bus bevindt omdat uw on-premises service niet beschikbaar is, wordt er een time-out en na enkele minuten verwijderd. De time-out en het verwijderen van het bericht verhoogt de beveiliging nog verder.
 
@@ -94,9 +105,9 @@ Het terugschrijven van wacht woorden is een zeer veilige service. Om ervoor te z
 Wanneer een gebruiker een wacht woord opnieuw instelt, wordt de aanvraag opnieuw ingesteld via verschillende versleutelings stappen voordat deze in uw on-premises omgeving arriveren. Deze versleutelings stappen garanderen maximale betrouw baarheid en beveiliging van de service. Deze worden als volgt beschreven:
 
 1. **Wachtwoord versleuteling met 2048-bits RSA-sleutel**: wanneer een gebruiker een wacht woord verzendt om terug te schrijven naar on-premises, wordt het wacht woord zelf versleuteld met een 2048-bits RSA-sleutel.
-1. **Versleuteling op pakket niveau met AES-GCM**: het hele pakket, het wacht woord plus de vereiste meta gegevens, wordt versleuteld met AES-GCM. Deze versleuteling voor komt dat iedereen met directe toegang tot het onderliggende ServiceBus-kanaal de inhoud kan weer geven of knoeit.
-1. **Alle communicatie vindt plaats via TLS/SSL**: alle communicatie met ServiceBus gebeurt in een SSL/TLS-kanaal. Deze versleuteling beveiligt de inhoud van niet-gemachtigde externe partijen.
-1. **Automatische sleutel Rolling over elke zes maanden**: alle sleutels worden elke zes maanden gespreid, of telkens wanneer het terugschrijven van wacht woorden is uitgeschakeld en vervolgens weer wordt ingeschakeld op Azure AD Connect, om te zorgen voor maximale service beveiliging en veiligheid.
+1. **Versleuteling op pakket niveau met AES-GCM**: het hele pakket, het wacht woord plus de vereiste meta gegevens, wordt versleuteld met AES-GCM. Met deze versleuteling voor komt u dat iedereen met directe toegang tot het onderliggende Service Bus kanaal de inhoud kan weer geven of knoeien.
+1. **Alle communicatie vindt plaats via TLS/SSL**: alle communicatie met Service bus gebeurt in een SSL/TLS-kanaal. Deze versleuteling beveiligt de inhoud van niet-gemachtigde externe partijen.
+1. **Automatische rollover elke zes maanden**: alle sleutels worden elke zes maanden gekanteld, of telkens wanneer het terugschrijven van wacht woorden is uitgeschakeld en vervolgens weer wordt ingeschakeld op Azure AD Connect om te zorgen voor maximale service beveiliging en veiligheid.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Gebruik van bandbreedte voor wacht woord terugschrijven
 

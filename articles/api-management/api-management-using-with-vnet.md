@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e3acfb9552db9fa972b0a407e52cece014b45389
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025010"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -119,7 +119,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 | */5671, 5672, 443          | Uitgaand           | TCP                | VIRTUAL_NETWORK-EventHub            | Afhankelijkheid voor [logboek registratie van Event hub-beleid](api-management-howto-log-event-hubs.md) en bewakings agent | Externe & intern  |
 | */445                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/opslag             | Afhankelijkheid van de Azure-bestands share voor [Git](api-management-configuration-repository-git.md)                      | Externe & intern  |
 | */443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-Cloud            | Status-en bewakings uitbreiding         | Externe & intern  |
-| */1886, 443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | [Diagnostische logboeken en metrische gegevens](api-management-howto-use-azure-monitor.md) en [resource Health](../service-health/resource-health-overview.md) publiceren                     | Externe & intern  |
+| */1886, 443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | [Diagnostische logboeken en metrische gegevens](api-management-howto-use-azure-monitor.md), [resource Health](../service-health/resource-health-overview.md) en [Application Insights](api-management-howto-app-insights.md) publiceren                   | Externe & intern  |
 | */25, 587, 25028                       | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
 | */6381-6383              | Binnenkomende &-uitgaand | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Toegang tot de redis-service voor [cache](api-management-caching-policies.md) beleidsregels tussen computers         | Externe & intern  |
 | */4290              | Binnenkomende &-uitgaand | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synchronisatie tellers voor beleids regels voor [frequentie limiet](api-management-access-restriction-policies.md#LimitCallRateByKey) tussen computers         | Externe & intern  |
@@ -152,6 +152,8 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 + **Azure Portal diagnostische gegevens**: als u de stroom van Diagnostische logboeken van Azure Portal wilt inschakelen wanneer u de extensie API management binnen een Virtual Network gebruikt, is uitgaande toegang tot `dc.services.visualstudio.com` op poort 443 vereist. Dit helpt bij het oplossen van problemen die u kunt tegen komen wanneer u uitbrei ding gebruikt.
 
 + **Azure Load Balancer**: het toestaan van een inkomend verzoek van een service label `AZURE_LOAD_BALANCER` is geen vereiste voor de `Developer` SKU, omdat er slechts één reken eenheid achter wordt geïmplementeerd. Maar inkomend van [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) wordt van cruciaal belang bij het schalen naar een hogere SKU, `Premium` zoals bij het mislukken van de status test van Load Balancer, mislukt een implementatie.
+
++ **Application Insights**: als [Azure-toepassing Insights](api-management-howto-app-insights.md) -bewaking is ingeschakeld op API Management, moeten er vanaf de Virtual Network een uitgaande verbinding met het [telemetrische eind punt](/azure/azure-monitor/app/ip-addresses#outgoing-ports) worden toegestaan. 
 
 + **Verkeer naar een on-premises firewall forceren via Express route of virtueel netwerk apparaat**: een algemene klant configuratie is het definiëren van een eigen standaard route (0.0.0.0/0) die ervoor zorgt dat alle verkeer van het API Management overgedragen subnet wordt gestroomd via een on-premises firewall of een virtueel netwerk apparaat. Deze verkeers stroom invariably verbreekt de connectiviteit met Azure API Management, omdat het uitgaande verkeer on-premises of NAT zou worden geblokkeerd door een niet-herken bare set adressen die niet meer werken met verschillende Azure-eind punten. Voor de oplossing moet u een aantal dingen doen:
 
@@ -214,8 +216,8 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Openbare Azure-peering| VS - noord-centraal| 40.81.47.216|
 | Openbare Azure-peering| Verenigd Koninkrijk Zuid| 51.145.56.125|
 | Openbare Azure-peering| India - west| 40.81.89.24|
-| Openbare Azure-peering| East US| 52.224.186.99|
-| Openbare Azure-peering| West Europe| 51.145.179.78|
+| Openbare Azure-peering| VS - oost| 52.224.186.99|
+| Openbare Azure-peering| Europa - west| 51.145.179.78|
 | Openbare Azure-peering| Japan East| 52.140.238.179|
 | Openbare Azure-peering| Frankrijk - centraal| 40.66.60.111|
 | Openbare Azure-peering| Canada - oost| 52.139.80.117|

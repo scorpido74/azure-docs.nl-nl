@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83665136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028359"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Problemen oplossen met Windows stop error – initialisatie fout van Directory service
 
@@ -26,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij een Active Dir
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u in de scherm afbeelding dat de virtuele machine opnieuw moet worden opgestart vanwege een fout, waarbij de stop code **0XC00002E1** in Windows Server 2008 R2 of **0xC00002E2** in Windows Server 2012 of hoger wordt weer gegeven.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u in de scherm afbeelding dat de virtuele machine opnieuw moet worden opgestart vanwege een fout, waarbij de stop code **0XC00002E1** in Windows Server 2008 R2 of **0xC00002E2** in Windows Server 2012 of hoger wordt weer gegeven.
 
 ![In het opstart scherm van Windows Server 2012 staat dat er een probleem is opgetreden in de computer en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens wordt de computer opnieuw opgestart. ".](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -61,7 +62,7 @@ Deze fout kan worden veroorzaakt door een van de volgende voor waarden:
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om een herstel-VM voor te bereiden.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om een herstel-VM voor te bereiden.
 1. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 ### <a name="free-up-space-on-disk"></a>Ruimte vrijmaken op schijf
@@ -69,11 +70,11 @@ Deze fout kan worden veroorzaakt door een van de volgende voor waarden:
 Als de schijf nu is gekoppeld aan een herstel-VM, controleert u of de schijf die de interne data base van Active Directory heeft, voldoende ruimte heeft om correct te worden uitgevoerd.
 
 1. Controleer of de schijf vol is door met de rechter muisknop op het station te klikken en **Eigenschappen**te selecteren.
-1. Als de schijf minder dan 300 MB beschik bare ruimte heeft, kunt u [deze uitbreiden tot Maxi maal 1 TB met behulp van Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Als de schijf minder dan 300 MB beschik bare ruimte heeft, kunt u [deze uitbreiden tot Maxi maal 1 TB met behulp van Power shell](../windows/expand-os-disk.md).
 1. Als de schijf 1 TB aan gebruikte ruimte heeft bereikt, voert u een schijf opruiming uit.
 
-   1. [De gegevens schijf loskoppelen](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell) van de verbroken virtuele machine met Power shell.
-   1. Wanneer u [de gegevens schijf](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm) hebt losgekoppeld van de verbroken virtuele machine, koppelt u deze aan een werkende VM.
+   1. [De gegevens schijf loskoppelen](../windows/detach-disk.md#detach-a-data-disk-using-powershell) van de verbroken virtuele machine met Power shell.
+   1. Wanneer u [de gegevens schijf](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm) hebt losgekoppeld van de verbroken virtuele machine, koppelt u deze aan een werkende VM.
    1. Gebruik het [hulp programma schijf opruiming](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) om meer ruimte vrij te maken.
 
 1. **Optioneel** : als er meer ruimte nodig is, opent u een cmd-exemplaar en voert `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` u de opdracht voor het uitvoeren van een defragmentatie op het station uit:
@@ -182,7 +183,7 @@ Als u geheugen dump verzameling en seriële console wilt inschakelen, voert u he
 
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-1. Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+1. Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>Het Storage Area Network-beleid opnieuw configureren
 

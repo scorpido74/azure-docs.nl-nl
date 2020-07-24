@@ -12,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024857"
 ---
-# <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
+# <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Een aangepaste domein naam configureren voor uw Azure API Management-exemplaar
 
 Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan een subdomein van toe `azure-api.net` (bijvoorbeeld `apim-service-name.azure-api.net` ). U kunt uw API Management-eind punten echter beschikbaar maken met uw eigen aangepaste domein naam, zoals **contoso.com**. Deze zelf studie laat zien hoe u een bestaande aangepaste DNS-naam toewijst aan eind punten die door een API Management-exemplaar worden weer gegeven.
 

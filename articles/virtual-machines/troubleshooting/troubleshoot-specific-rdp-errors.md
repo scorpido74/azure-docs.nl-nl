@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028240"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Specifieke RDP-foutberichten oplossen naar een virtuele Windows-machine in Azure
 Er wordt mogelijk een specifiek fout bericht weer gegeven wanneer Extern bureaublad verbinding met een virtuele machine van Windows (VM) in azure wordt gebruikt. In dit artikel worden enkele veelvoorkomende fout berichten beschreven, samen met de stappen voor probleem oplossing om deze op te lossen. Als u problemen ondervindt met het maken van verbinding met uw virtuele machine via RDP, maar geen specifiek fout bericht tegen komt, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md).
@@ -46,7 +46,7 @@ mstsc <File name>.RDP /admin
 
 Als u niet echt meer dan twee gelijktijdige Extern bureaublad verbindingen met de virtuele machine nodig hebt, kunt u Serverbeheer gebruiken om de Extern bureaublad server functie te verwijderen.
 
-Zie het blog bericht [Azure VM mislukt met ' geen extern bureaublad licentie servers beschikbaar '](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)voor meer informatie.
+Zie het blog bericht [Azure VM mislukt met ' geen extern bureaublad licentie servers beschikbaar '](/archive/blogs/mast/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available)voor meer informatie.
 
 <a id="rdpname"></a>
 
@@ -111,6 +111,5 @@ Zorg ervoor dat het account dat u gebruikt om verbinding te maken, Extern bureau
 ## <a name="next-steps"></a>Volgende stappen
 Als er geen fouten zijn opgetreden en u een onbekend probleem hebt met het maken van verbinding met RDP, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-* Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)een virtuele machine van Azure voor informatie over het oplossen van problemen bij het openen van toepassingen die op een VM worden uitgevoerd.
-* Zie [problemen met ssh-verbindingen met een virtuele Linux-machine in azure oplossen](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt met het gebruik van Secure Shell (SSH) om verbinding te maken met een virtuele Linux-machine in Azure.
-
+* Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)een virtuele machine van Azure voor informatie over het oplossen van problemen bij het openen van toepassingen die op een VM worden uitgevoerd.
+* Zie [problemen met ssh-verbindingen met een virtuele Linux-machine in azure oplossen](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)als u problemen ondervindt met het gebruik van Secure Shell (SSH) om verbinding te maken met een virtuele Linux-machine in Azure.

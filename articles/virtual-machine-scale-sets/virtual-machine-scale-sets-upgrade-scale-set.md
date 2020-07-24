@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029294"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset wijzigen
 
@@ -319,13 +320,13 @@ Er is één type wijziging in eigenschappen van globale schaal sets die het upgr
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Azure PowerShell met [set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
+- Azure PowerShell met [set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm):
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI met [AZ vmss Reimage](https://docs.microsoft.com/cli/azure/vmss):
+- Azure CLI met [AZ vmss Reimage](/cli/azure/vmss):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -368,12 +369,12 @@ Als een toepassing wordt geïmplementeerd naar een schaalset via uitbrei dingen,
 Het is ook gebruikelijk dat toepassingen worden geïmplementeerd via een aangepaste installatie kopie. Dit scenario wordt behandeld in de volgende sectie.
 
 ### <a name="os-updates"></a>Updates van het besturings systeem
-Als u installatie kopieën van het Azure-platform gebruikt, kunt u de installatie kopie bijwerken door de *imageReference* te wijzigen (zie de [rest API-documentatie](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) voor meer informatie.
+Als u installatie kopieën van het Azure-platform gebruikt, kunt u de installatie kopie bijwerken door de *imageReference* te wijzigen (zie de [rest API-documentatie](/rest/api/compute/virtualmachinescalesets/createorupdate)) voor meer informatie.
 
 >[!NOTE]
 > Bij platform installatie kopieën is het gebruikelijk om "meest recente" op te geven voor de versie van de installatie kopie. Wanneer u een installatie kopie maakt, uitschaalt en opnieuw bewaart, worden virtuele machines gemaakt met de meest recente beschik bare versie. Het betekent echter **niet** dat de installatie kopie van het besturings systeem na verloop van tijd automatisch wordt bijgewerkt wanneer er nieuwe versies van de installatie kopieën worden uitgebracht. Een afzonderlijke functie is momenteel beschikbaar als preview-versie die automatische upgrades van het besturings systeem biedt. Zie de [documentatie voor automatische besturingssysteem upgrades](virtual-machine-scale-sets-automatic-upgrade.md)voor meer informatie.
 
-Als u aangepaste installatie kopieën gebruikt, kunt u de installatie kopie bijwerken door de *imageReference* -id bij te werken (zie de [rest API-documentatie](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) voor meer informatie.
+Als u aangepaste installatie kopieën gebruikt, kunt u de installatie kopie bijwerken door de *imageReference* -id bij te werken (zie de [rest API-documentatie](/rest/api/compute/virtualmachinescalesets/createorupdate)) voor meer informatie.
 
 ## <a name="examples"></a>Voorbeelden
 

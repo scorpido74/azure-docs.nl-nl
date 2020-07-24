@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029940"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Scoreprofielen toevoegen aan een Azure Cognitive Search-index
 
@@ -254,7 +254,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>Interpolatie instellen  
  Met interpolatie kunt u de vorm instellen van de helling die wordt gebruikt voor scores. Omdat score hoog naar laag is, is de helling altijd afnemen, maar de interpolatie bepaalt de curve van de neerwaartse helling. De volgende interpolatie kunnen worden gebruikt:  
 
-|||  
+| Interpolatie | Beschrijving |  
 |-|-|  
 |`linear`|Voor items die binnen het bereik Max en min zijn, wordt de Boost toegepast op het item in een voortdurend dalende hoeveelheid. Lineair is de standaard interpolatie voor een score profiel.|  
 |`constant`|Voor items die zich binnen het begin-en eind bereik bevinden, wordt een constante Boost toegepast op de positie resultaten.|  
@@ -281,6 +281,6 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
 ## <a name="see-also"></a>Zie tevens  
 
-+ [REST API referentie](https://docs.microsoft.com/rest/api/searchservice/)   
++ [Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
 + [Index-API maken](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

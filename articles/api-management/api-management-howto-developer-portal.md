@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025078"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -29,6 +29,9 @@ In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde
 ![API Management ontwikkelaars Portal](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+> [!NOTE]
+> <a name="migrate-from-legacy"></a>De nieuwe ontwikkelaars Portal is niet compatibel met de verouderde ontwikkelaars Portal en de geautomatiseerde migratie is niet mogelijk. U moet de inhoud hand matig opnieuw maken (pagina's, tekst, media bestanden) en het uiterlijk van de nieuwe portal aanpassen. Raadpleeg [de zelf studie over de ontwikkelaars Portal](api-management-howto-developer-portal-customize.md) voor hulp.
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Beheerde en zelf-hostende versies
 
@@ -82,19 +85,13 @@ Als u de inhoud van de portal niet opnieuw wilt instellen, kunt u eventueel pas 
 
 Als uw portal is ingericht na de aankondiging van de algemene Beschik baarheid, moet deze al de nieuwe standaard inhoud gebruiken. Aan uw zijde is geen actie vereist.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Hoe kan ik migreren van de oude ontwikkelaars Portal naar de ontwikkelaars Portal?
-
-Portals zijn incompatibel en u moet de inhoud hand matig migreren.
-
-### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Beschikt de portal over alle functies van de oude Portal?
+### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Beschikt de portal over alle functies van de verouderde Portal?
 
 De ontwikkelaars Portal biedt geen ondersteuning meer voor *toepassingen* en *problemen*.
 
-Verificatie met OAuth in de interactieve ontwikkelaars console wordt nog niet ondersteund. U kunt de voortgang volgen via [het github-probleem](https://github.com/Azure/api-management-developer-portal/issues/208).
+### <a name="has-the-legacy-portal-been-deprecated"></a>Is de verouderde Portal afgeschaft?
 
-### <a name="has-the-old-portal-been-deprecated"></a>Is de oude Portal afgeschaft?
-
-De oude portals voor ontwikkel aars en uitgevers zijn nu *verouderde* functies. ze ontvangen alleen beveiligings updates. Nieuwe functies worden alleen geïmplementeerd in de nieuwe ontwikkelaars Portal.
+De verouderde portals voor ontwikkel aars en uitgevers zijn nu *verouderde* functies. ze ontvangen alleen beveiligings updates. Nieuwe functies worden alleen geïmplementeerd in de nieuwe ontwikkelaars Portal.
 
 Afschaffing van de verouderde portals wordt afzonderlijk aangekondigd. Als u vragen of opmerkingen hebt, kunt u deze [in een specifiek github-probleem](https://github.com/Azure/api-management-developer-portal/issues/121)opheffen.
 

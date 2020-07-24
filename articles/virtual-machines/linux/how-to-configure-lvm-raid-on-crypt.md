@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029226"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>LVM en RAID op versleutelde apparaten configureren
 
@@ -44,11 +45,11 @@ Op soort gelijke wijze wordt het RAID-apparaat boven op de versleutelde laag op 
 
 U wordt aangeraden LVM-on-cryptografie te gebruiken. RAID is een optie wanneer LVM niet kan worden gebruikt vanwege specifieke beperkingen voor toepassingen of omgevingen.
 
-U gebruikt de **EncryptFormatAll** -optie. Zie [de functie EncryptFormatAll gebruiken voor gegevens schijven op virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms)voor meer informatie over deze optie.
+U gebruikt de **EncryptFormatAll** -optie. Zie [de functie EncryptFormatAll gebruiken voor gegevens schijven op virtuele Linux-machines](./disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)voor meer informatie over deze optie.
 
 Hoewel u deze methode kunt gebruiken wanneer u ook het besturings systeem versleutelt, worden de gegevens stations hier gewoon versleuteld.
 
-In de procedures wordt ervan uitgegaan dat u de vereisten in [Azure Disk Encryption scenario's voor Linux-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) en in Quick start al hebt bekeken [: een virtuele Linux-machine maken en versleutelen met de Azure cli](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
+In de procedures wordt ervan uitgegaan dat u de vereisten in [Azure Disk Encryption scenario's voor Linux-vm's](./disk-encryption-linux.md) en in Quick start al hebt bekeken [: een virtuele Linux-machine maken en versleutelen met de Azure cli](./disk-encryption-cli-quickstart.md).
 
 De Azure Disk Encryption Dual-Pass-versie bevindt zich op een afschaffing-pad en mag niet meer worden gebruikt voor nieuwe versleuteling.
 
@@ -459,4 +460,3 @@ df -h
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Problemen met Azure Disk Encryption oplossen](disk-encryption-troubleshooting.md)
-

@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3b2684122e7de97282b1054fa9ad0390469b0f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169541"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030263"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Notification Hubs van Java gebruiken
 
@@ -30,7 +30,7 @@ ms.locfileid: "86169541"
 In dit onderwerp worden de belangrijkste functies van de nieuwe volledig ondersteunde officiële Azure notification hub Java SDK beschreven.
 Dit project is een open-source project en u kunt de volledige SDK-code weer geven op de [Java-SDK].
 
-Over het algemeen hebt u toegang tot alle Notification Hubs-functies van een Java/PHP/python/ruby-back-end met behulp van de REST-interface van de notification hub, zoals beschreven in het MSDN-onderwerp [Notification hubs rest-api's](https://msdn.microsoft.com/library/dn223264.aspx). Deze Java-SDK biedt een smalle wrapper voor deze REST-interfaces in Java.
+Over het algemeen hebt u toegang tot alle Notification Hubs-functies van een Java/PHP/python/ruby-back-end met behulp van de REST-interface van de notification hub, zoals beschreven in het MSDN-onderwerp [Notification hubs rest-api's](/previous-versions/azure/reference/dn223264(v=azure.100)). Deze Java-SDK biedt een smalle wrapper voor deze REST-interfaces in Java.
 
 De SDK biedt momenteel ondersteuning voor:
 
@@ -387,7 +387,7 @@ In dit onderwerp wordt uitgelegd hoe u een eenvoudige Java-REST-client maakt voo
   * [Kruis platform meldingen verzenden naar geverifieerde gebruikers]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Get started tutorial]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Aan de slag met Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Laatste nieuws verzenden]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Gelokaliseerd afgebroken Nieuws verzenden]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md

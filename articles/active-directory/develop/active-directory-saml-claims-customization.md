@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027305"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -54,7 +54,7 @@ Als de SAML-aanvraag geen element voor NameIDPolicy bevat, wordt het NameID door
 
 U kunt een van de volgende opties selecteren in de vervolg keuzelijst **Kies naam-id-indeling** .
 
-| NameID-indeling | Description |
+| NameID-indeling | Beschrijving |
 |---------------|-------------|
 | **Standaard** | Azure AD gebruikt de standaard indeling voor de bron. |
 | **Permanent** | Azure AD gebruikt persistent als de NameID-indeling. |
@@ -68,7 +68,7 @@ Tijdelijke NameID wordt ook ondersteund, maar is niet beschikbaar in de vervolg 
 
 Selecteer de gewenste bron voor de `NameIdentifier` claim (of NameID). U kunt kiezen uit de volgende opties.
 
-| Naam | Description |
+| Naam | Beschrijving |
 |------|-------------|
 | E-mail | Het e-mailadres van de gebruiker |
 | userprincipalName | UPN (User Principal Name) van de gebruiker |
@@ -164,7 +164,7 @@ Een claim voorwaarde toevoegen:
 
 1. Vouw in **claim beheren**de claim voorwaarden uit.
 2. Selecteer het gebruikers type.
-3. Selecteer de groep (en) waarvan de gebruiker deel moet uitmaken. U kunt Maxi maal 10 unieke groepen selecteren voor alle claims voor een bepaalde toepassing. 
+3. Selecteer de groep (en) waarvan de gebruiker deel moet uitmaken. U kunt Maxi maal 50 unieke groepen selecteren voor alle claims voor een bepaalde toepassing. 
 4. Selecteer de **bron** waar de claim de waarde gaat ophalen. U kunt een gebruikers kenmerk selecteren in de vervolg keuzelijst bron kenmerk of een trans formatie Toep assen op het kenmerk gebruiker voordat u het als een claim verzendt.
 
 De volg orde waarin u de voor waarden toevoegt, is belang rijk. Azure AD evalueert de voor waarden van boven naar beneden om te beslissen welke waarde moet worden opgegeven in de claim. 
