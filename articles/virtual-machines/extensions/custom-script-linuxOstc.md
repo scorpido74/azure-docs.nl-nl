@@ -1,5 +1,5 @@
 ---
-title: Aangepaste scripts uitvoeren op Linux-Vm's in azure
+title: Aangepaste script extensie versie 1 (afgeschaft) uitvoeren op virtuele Linux-machines in azure
 description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v1
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594709"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085704"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 1 van Azure met virtuele Linux-machines
 
@@ -124,9 +124,9 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 | publisher | Micro soft. OSTCExtensions | tekenreeks |
 | type | CustomScriptForLinux | tekenreeks |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | matrix |
+| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (bijvoorbeeld) | python-MyPythonScript.py\<my-param1\> | tekenreeks |
-| enableInternalDNSCheck | true | booleaans |
+| enableInternalDNSCheck | true | boolean |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
 | storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | tekenreeks |
 

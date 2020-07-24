@@ -7,17 +7,18 @@ ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930655"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085551"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Een installatie kopie maken en een door de gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in Azure Storage 
 
 Azure Image Builder ondersteunt het gebruik van scripts of het kopiëren van bestanden vanaf meerdere locaties, zoals GitHub en Azure Storage, enzovoort. Als u deze wilt gebruiken, moeten ze extern toegankelijk zijn voor Azure Image Builder, maar kunt u Azure Storage-blobs beveiligen met SAS-tokens.
 
-In dit artikel wordt beschreven hoe u een aangepaste installatie kopie maakt met behulp van de opbouw functie voor installatie kopieën van Azure VM, waarbij de service een door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) gebruikt voor toegang tot bestanden in azure Storage voor het aanpassen van de installatie kopie, zonder dat u de bestanden openbaar toegankelijk wilt maken of SAS-tokens kunt instellen.
+In dit artikel wordt beschreven hoe u een aangepaste installatie kopie maakt met behulp van de opbouw functie voor installatie kopieën van Azure VM, waarbij de service een door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) gebruikt voor toegang tot bestanden in azure Storage voor het aanpassen van de installatie kopie, zonder dat u de bestanden openbaar toegankelijk wilt maken of SAS-tokens kunt instellen.
 
 In het onderstaande voor beeld maakt u twee resource groepen, die worden gebruikt voor de aangepaste installatie kopie, en de andere zal fungeren als host voor een Azure Storage account dat een script bestand bevat. Dit simuleert een scenario voor een echt leven, waar u artefacten kunt bouwen, of afbeeldings bestanden in verschillende opslag accounts, buiten de opbouw functie voor installatie kopieën. U maakt een door de gebruiker toegewezen identiteit en verleent vervolgens die lees machtigingen voor het script bestand, maar u kunt geen open bare toegang tot dat bestand instellen. Vervolgens gebruikt u de shell-aanpassings programma om dat script uit het opslag account te downloaden en uit te voeren.
 
@@ -94,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 Maak een door de gebruiker toegewezen identiteit en stel machtigingen in voor de resource groep.
 
-De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) voor het injecteren van de installatie kopie in de resource groep. In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
+De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) voor het injecteren van de installatie kopie in de resource groep. In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -232,7 +233,7 @@ U ziet dat de installatie kopie is aangepast met een bericht van de dag zodra uw
 *******************************************************
 ```
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Wanneer u klaar bent, kunt u de resources verwijderen als ze niet meer nodig zijn.
 

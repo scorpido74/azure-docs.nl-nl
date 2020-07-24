@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086214"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Herstel na nood geval instellen voor virtuele Hyper-V-machines naar een secundaire site met behulp van Power shell (Resource Manager)
 
@@ -47,8 +47,8 @@ Bereid Virtual Machine Manager als volgt voor:
 
 Zorg ervoor dat u beschikt over Azure PowerShell Ready to go:
 
-- Als u Power shell al gebruikt, moet u een upgrade uitvoeren naar versie 0.8.10 of hoger. Meer [informatie](/powershell/azureps-cmdlets-docs) over het instellen van Power shell.
-- Nadat u Power shell hebt ingesteld en geconfigureerd, controleert u de [service-cmdlets](/powershell/azure/overview).
+- Als u Power shell al gebruikt, moet u een upgrade uitvoeren naar versie 0.8.10 of hoger. Meer [informatie](/powershell/azure/) over het instellen van Power shell.
+- Nadat u Power shell hebt ingesteld en geconfigureerd, controleert u de [service-cmdlets](/powershell/azure/).
 - Lees de aan de [slag](/powershell/azure/get-started-azureps) -hand leiding voor meer informatie over het gebruik van parameter waarden, invoer en uitvoer in Power shell.
 
 ## <a name="set-up-a-subscription"></a>Een abonnement instellen

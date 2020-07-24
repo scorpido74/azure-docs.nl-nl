@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086435"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Omgaan met beperkings problemen (429-"te veel aanvragen") in Azure Logic Apps
 
@@ -76,7 +77,7 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 ## <a name="connector-throttling"></a>Beperking van de connector
 
-Elke connector heeft zijn eigen beperkings limieten, die u kunt vinden op de pagina met technische Naslag informatie over de connector. De [Azure service bus-connector](https://docs.microsoft.com/connectors/servicebus/) heeft bijvoorbeeld een beperkings limiet die maxi maal 6.000 aanroepen per minuut toestaat, terwijl de SQL Server-connector [beperkingen heeft die variëren op basis van het bewerkings type](https://docs.microsoft.com/connectors/sql/).
+Elke connector heeft zijn eigen beperkings limieten, die u kunt vinden op de pagina met technische Naslag informatie over de connector. De [Azure service bus-connector](/connectors/servicebus/) heeft bijvoorbeeld een beperkings limiet die maxi maal 6.000 aanroepen per minuut toestaat, terwijl de SQL Server-connector [beperkingen heeft die variëren op basis van het bewerkings type](/connectors/sql/).
 
 Sommige triggers en acties, zoals HTTP, hebben een [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies) die u kunt aanpassen op basis van de [limieten voor het beleid voor opnieuw proberen](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) voor het implementeren van uitzonderings verwerking. Dit beleid bepaalt of en hoe vaak een trigger of actie een aanvraag opnieuw probeert wanneer de oorspronkelijke aanvraag is mislukt of een time-out optreedt, en resulteert in een 408, 429 of 5xx respons. Als de beperking wordt gestart en er wordt een 429-fout geretourneerd, Logic Apps het beleid voor opnieuw proberen op te starten wanneer dit wordt ondersteund.
 

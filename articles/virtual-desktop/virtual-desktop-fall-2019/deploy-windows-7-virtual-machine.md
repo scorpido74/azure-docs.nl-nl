@@ -1,5 +1,5 @@
 ---
-title: Windows 7 virtuele machine implementeren Windows virtueel bureau blad-Azure
+title: Windows 7 virtual machine implementeren Windows virtueel bureau blad najaar 2019-Azure
 description: Een virtuele machine met Windows 7 configureren en implementeren op het virtuele bureau blad van Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 92ab8e006ab7fef3c7e856cc34467b4510055174
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 3d8ce67f129844c09a93b29c8100fe28096c520c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085874"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop---fall-2019"></a>Een virtuele machine met Windows 7 implementeren op virtueel bureau blad van Windows-najaar 2019
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../deploy-windows-7-virtual-machine.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

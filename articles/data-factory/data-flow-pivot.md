@@ -6,12 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086656"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Draai transformatie in toewijzings gegevens stroom
 
@@ -19,6 +20,8 @@ ms.locfileid: "83683294"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Gebruik de draai transformatie om meerdere kolommen te maken op basis van de unieke rijwaarden van één kolom. Pivot is een aggregatie transformatie waarbij u groeperen op kolommen selecteert en draai tabel kolommen genereert met behulp van [statistische functies](data-flow-expression-functions.md#aggregate-functions).
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
 
 ## <a name="configuration"></a>Configuratie
 
@@ -68,7 +71,7 @@ Als er specifieke waarden van de draai tabel worden ingesteld, worden de gedraai
 
 Met Pivot worden nieuwe kolom namen dynamisch gegenereerd op basis van rijwaarden. U kunt deze nieuwe kolommen toevoegen aan de meta gegevens waarnaar later in uw gegevens stroom kan worden verwezen. U doet dit door de snelle actie [toewijzen](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) in de voorbeeld gegevens te gebruiken. 
 
-![Kolommen draaien](media/data-flow/newpivot1.png "Geplaatste draai kolommen toewijzen")
+![Draaikolommen](media/data-flow/newpivot1.png "Geplaatste draai kolommen toewijzen")
 
 ### <a name="sinking-pivoted-columns"></a>Zinkt gedraaide kolommen
 

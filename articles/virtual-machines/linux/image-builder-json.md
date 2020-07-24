@@ -3,17 +3,17 @@ title: Een Azure Image Builder-sjabloon maken (preview)
 description: Meer informatie over het maken van een sjabloon voor gebruik met Azure Image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
+ms.date: 07/09/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d48153fa747ed9757eb8467eaf1d7c17cde3630e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085585"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -24,7 +24,7 @@ Dit is de basis indeling van de sjabloon:
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Dit is de basis indeling van de sjabloon:
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,11 +53,11 @@ Dit is de basis indeling van de sjabloon:
 
 ## <a name="type-and-api-version"></a>Type en API-versie
 
-Het `type` is het resource type, dat moet zijn `"Microsoft.VirtualMachineImages/imageTemplates"` . De `apiVersion` wordt na verloop van tijd gewijzigd wanneer de API wordt gewijzigd, maar moet `"2019-05-01-preview"` voor preview zijn.
+Het `type` is het resource type, dat moet zijn `"Microsoft.VirtualMachineImages/imageTemplates"` . De `apiVersion` wordt na verloop van tijd gewijzigd wanneer de API wordt gewijzigd, maar moet `"2020-02-14"` voor preview zijn.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
 ## <a name="location"></a>Locatie
@@ -71,7 +70,7 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 - VS - west
 - VS - west 2
 - Europa - noord
-- West Europe
+- Europa - west
 
 
 ```json
@@ -101,9 +100,8 @@ Als u geen VNET-eigenschappen opgeeft, maakt de opbouw functie voor installatie 
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Tags
@@ -121,9 +119,8 @@ Deze optionele sectie kan worden gebruikt om ervoor te zorgen dat afhankelijkhed
 Zie [resource afhankelijkheden definiëren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)voor meer informatie.
 
 ## <a name="identity"></a>Identiteit
-Standaard ondersteunt Image Builder het gebruik van scripts of het kopiëren van bestanden vanaf meerdere locaties, zoals GitHub en Azure Storage. Als u deze wilt gebruiken, moeten ze openbaar toegankelijk zijn.
 
-U kunt ook een door u gedefinieerde door de gebruiker toegewezen beheerde identiteit gebruiken om de toegang tot de installatie kopie functie toe te staan Azure Storage, zolang aan de identiteit een minimum van ' Storage BLOB data Reader ' is toegekend op het Azure-opslag account. Dit betekent dat u de opslag-blobs niet extern toegankelijk moet maken of SAS-tokens kunt instellen.
+Vereist: voor de opbouw functie voor installatie kopieën die machtigingen voor lezen/schrijven moeten hebben, leest u in scripts van Azure Storage u moet een door een gebruiker toegewezen Azure-identiteit maken die machtigingen voor de afzonderlijke resources heeft. Raadpleeg de [documentatie](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)voor meer informatie over de werking van de opbouw functie voor installatie kopieën en de relevante stappen.
 
 
 ```json
@@ -135,9 +132,10 @@ U kunt ook een door u gedefinieerde door de gebruiker toegewezen beheerde identi
         },
 ```
 
-Zie een door de [gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)voor een volledig voor beeld.
 
-Image Builder-ondersteuning voor een door de gebruiker toegewezen identiteit: • ondersteunt slechts één identiteit. • biedt geen ondersteuning voor aangepaste domein namen
+Image Builder-ondersteuning voor een door de gebruiker toegewezen identiteit:
+* Ondersteunt slechts één identiteit
+* Biedt geen ondersteuning voor aangepaste domein namen
 
 Zie [Wat is beheerde identiteiten voor Azure-resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie.
 Voor meer informatie over het implementeren van deze functie raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Azure cli](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
@@ -153,11 +151,6 @@ Voor de API is een source type vereist dat de bron voor de build van de installa
 
 > [!NOTE]
 > Wanneer u bestaande Windows-aangepaste installatie kopieën gebruikt, kunt u de Sysprep-opdracht Maxi maal acht keer uitvoeren op één Windows-installatie kopie. Raadpleeg de documentatie van [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) voor meer informatie.
-
-### <a name="iso-source"></a>ISO-bron
-We nemen deze functionaliteit uit de opbouw functie voor afbeeldingen af, omdat [u nu RHEL uw eigen abonnements installatie kopieën meenemen](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos), raadpleegt u de onderstaande tijd lijnen:
-    * 31 maart 2020-afbeeldings sjablonen met RHEL ISO-bronnen worden nu langer geaccepteerd door de resource provider.
-    * 30 april 2020-afbeeldings sjablonen die RHEL ISO-bronnen bevatten, worden niet meer verwerkt.
 
 ### <a name="platformimage-source"></a>PlatformImage-bron 
 Azure Image Builder biedt ondersteuning voor Windows Server-en client-en Linux Azure Marketplace-installatie kopieën. Zie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) voor de volledige lijst. 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 U kunt ' meest recent ' gebruiken in de versie, de versie wordt geëvalueerd wanneer de installatie kopie wordt gemaakt, niet wanneer de sjabloon wordt verzonden. Als u deze functie gebruikt met het doel van de gedeelde installatie kopie galerie, kunt u voor komen dat de sjabloon opnieuw wordt verzonden en de installatie kopie met intervallen opnieuw uitvoeren, zodat uw installatie kopieën opnieuw worden gemaakt uit de meest recente installatie kopieën.
 
+#### <a name="support-for-market-place-plan-information"></a>Ondersteuning voor informatie over het marktplaats plan
+U kunt ook plan gegevens opgeven, bijvoorbeeld:
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage-bron
 
 Hiermee stelt u de bron installatie kopie als een bestaande beheerde installatie kopie van een gegeneraliseerde VHD of virtuele machine. De door de bron beheerde installatie kopie moet van een ondersteund besturings systeem zijn en moet zich in dezelfde regio bevinden als de Azure Image Builder-sjabloon. 
@@ -206,6 +214,7 @@ Hiermee stelt u de bron afbeelding een versie van een bestaande installatie kopi
 ```
 
 De `imageVersionId` moet de ResourceID van de versie van de installatie kopie zijn. Gebruik [AZ sig installatie kopie](/cli/azure/sig/image-version#az-sig-image-version-list) van de lijst met installatie kopieën om versie-versies weer te geven.
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>Eigenschappen: buildTimeoutInMinutes
 
@@ -254,7 +263,9 @@ Bij gebruik van `customize` :
 
  
 De sectie Customize is een matrix. De opbouw functie voor installatie kopieën van Azure wordt door de aanpassings functies in sequentiële volg orde uitgevoerd. Als er een fout optreedt in een aanpassings proces, mislukt het buildproces. 
- 
+
+> [!NOTE]
+> Inline-opdrachten kunnen worden weer gegeven in de definitie van de afbeeldings sjabloon en door Microsoft Ondersteuning bij het helpen bij een ondersteunings aanvraag. Als u gevoelige informatie hebt, moet deze worden verplaatst naar scripts in Azure Storage, waar toegang vereist is.
  
 ### <a name="shell-customizer"></a>Shell-aanpassing
 
@@ -293,7 +304,7 @@ Eigenschappen aanpassen:
 Om opdrachten uit te voeren met super gebruikers bevoegdheden, moeten ze worden voorafgegaan door `sudo` .
 
 > [!NOTE]
-> Wanneer u de shell-aanpassing uitvoert met de ISO-bron RHEL, moet u ervoor zorgen dat uw eerste aanpassings shell wordt geregistreerd met een Red Hat-rechten server voordat er aanpassingen worden uitgevoerd. Zodra de aanpassing is voltooid, moet het script de registratie bij de rechten server ongedaan maken.
+> Inline-opdrachten worden opgeslagen als onderdeel van de definitie van de afbeeldings sjabloon, maar u kunt deze zien wanneer u de definitie van de installatie kopie dumpen. deze zijn ook zichtbaar voor Microsoft Ondersteuning in het geval van een ondersteunings aanvraag voor het oplossen van problemen. Als u gevoelige opdrachten of waarden hebt, wordt het ten zeerste aangeraden deze naar scripts te verplaatsen en een gebruikers-id te gebruiken voor het verifiëren van Azure Storage.
 
 ### <a name="windows-restart-customizer"></a>Aanpassings venster voor Windows opnieuw starten 
 Met de aanpassings functie voor opnieuw opstarten kunt u een Windows-VM opnieuw opstarten en wachten totdat deze weer online is. Hierdoor kunt u software installeren waarvoor opnieuw moet worden opgestart.  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 Uitvoer:
@@ -569,13 +580,22 @@ Voordat u naar de galerie met installatie kopieën kunt distribueren, moet u een
 Eigenschappen voor gedeelde afbeeldings galerieën distribueren:
 
 - **type** -sharedImage  
-- **galleryImageId** : id van de galerie met gedeelde afbeeldingen. De indeling is:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
+- **galleryImageId** : id van de galerie met gedeelde afbeeldingen kan in twee indelingen worden opgegeven:
+    * Automatisch versie beheer: met de opbouw functie voor installatie kopieën wordt een monoton versie nummer voor u gegenereerd. Dit is handig als u wilt dat de installatie kopieën van dezelfde sjabloon opnieuw worden samengesteld: de volgende indeling: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
+    * Expliciete versie beheer: u kunt het versie nummer door geven dat door de opbouw functie voor installatie kopieën moet worden gebruikt. De indeling is:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **artifactTags** -optionele door de gebruiker opgegeven sleutel waarde-paar tags.
-- **replicationRegions** : matrix van regio's voor replicatie. Een van de regio's moet de regio zijn waarin de galerie wordt geïmplementeerd.
- 
+- **replicationRegions** : matrix van regio's voor replicatie. Een van de regio's moet de regio zijn waarin de galerie wordt geïmplementeerd. Het toevoegen van regio's resulteert in een toename van de bouw tijd, omdat de build niet kan worden voltooid totdat de replicatie is voltooid.
+- **excludeFromLatest** (optioneel) Hiermee kunt u de versie van de installatie kopie die u maakt, markeren als de meest recente versie in de definitie van de SIG. de standaard waarde is ' false '.
+- **storageAccountType** (optioneel) AIB ondersteunt het opgeven van deze typen opslag voor de installatie kopie versie die moet worden gemaakt:
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> U kunt Azure image builder in een andere regio gebruiken voor de galerie, maar de installatie kopie van de Azure Image Builder-service moet worden overgedragen tussen de data centers. dit duurt langer. De installatie kopie wordt door de opbouw functie voor installatie kopieën automatisch een versie op basis van een monotone integer opgegeven. u kunt deze op dit moment niet opgeven. 
+> Als de afbeeldings sjabloon en waarnaar wordt verwezen `image definition` , zich niet op dezelfde locatie bevinden, wordt er meer tijd voor het maken van installatie kopieën weer geven. De opbouw functie voor installatie kopieën heeft momenteel geen `location` para meter voor de bron van de afbeeldings versie `image definition` . Als de definitie van een installatie kopie zich bijvoorbeeld in westus bevindt en u wilt dat de versie van de installatie kopie wordt gerepliceerd naar oostus, wordt een BLOB gekopieerd naar westus, hiervan wordt een afbeeldings versie bron in westus gemaakt en vervolgens gerepliceerd naar oostus. Zorg ervoor dat de `image definition` sjabloon en de installatie kopie zich op dezelfde locatie bevinden om de extra replicatie tijd te voor komen.
+
 
 ### <a name="distribute-vhd"></a>Distribueren: VHD  
 U kunt naar een VHD uitvoeren. U kunt de VHD vervolgens kopiëren en gebruiken om te publiceren naar Azure MarketPlace of gebruiken met Azure Stack.  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > Zodra de VHD is gemaakt, kopieert u deze naar een andere locatie, zo snel mogelijk. De VHD wordt opgeslagen in een opslag account in de tijdelijke resource groep die is gemaakt wanneer de installatie kopie sjabloon wordt verzonden naar de Azure Image Builder-service. Als u de afbeeldings sjabloon verwijdert, gaat de VHD verloren. 
- 
+
+## <a name="image-template-operations"></a>Bewerkingen voor installatie kopie sjablonen
+
+### <a name="starting-an-image-build"></a>Genereren van een installatie kopie starten
+Als u een build wilt starten, moet u uitvoeren op de bron van de afbeeldings sjabloon, voor beelden van `run` opdrachten:
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>Genereren van een installatie kopie annuleren
+Als u een installatie kopie-build uitvoert waarvan u denkt dat ze onjuist zijn, wordt gewacht op invoer van de gebruiker of dat u het probleem nooit kunt volt ooien. vervolgens annuleert u de build.
+
+De build kan op elk gewenst moment worden geannuleerd. Als de distributie fase is gestart, kunt u nog steeds annuleren, maar u moet alle installatie kopieën opschonen die mogelijk niet zijn voltooid. De Annuleer opdracht wacht niet op Annuleren om te volt ooien. Controleer of de `lastrunstatus.runstate` voortgang is geannuleerd met behulp van deze status [opdrachten](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status).
+
+
+Voor beelden van `cancel` opdrachten:
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Er zijn voor beelden van json-bestanden voor verschillende scenario's in de [Azure Image Builder-github](https://github.com/danielsollondon/azvmimagebuilder).
- 

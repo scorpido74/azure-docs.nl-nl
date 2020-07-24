@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087008"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naamomzetting voor resources in virtuele Azure-netwerken
 
@@ -176,7 +177,7 @@ Wanneer u door Azure geleverde naam omzetting gebruikt, biedt Azure Dynamic Host
 Indien nodig kunt u het interne DNS-achtervoegsel bepalen met behulp van Power shell of de API:
 
 * Voor virtuele netwerken in Azure Resource Manager-implementatie modellen is het achtervoegsel beschikbaar via de [netwerk interface rest API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), de Power shell [-cmdlet Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) en de opdracht [AZ Network NIC Azure cli weer geven](/cli/azure/network/nic#az-network-nic-show) .
-* In klassieke implementatie modellen is het achtervoegsel beschikbaar via de [Get-API](https://msdn.microsoft.com/library/azure/ee460804.aspx) -aanroep voor de implementatie of met de cmdlet [Get-AzureVM-debug](/powershell/module/servicemanagement/azure/get-azurevm) .
+* In klassieke implementatie modellen is het achtervoegsel beschikbaar via de [Get-API](https://msdn.microsoft.com/library/azure/ee460804.aspx) -aanroep voor de implementatie of met de cmdlet [Get-AzureVM-debug](/powershell/module/servicemanagement/azure.service/get-azurevm) .
 
 Als het door sturen van query's naar Azure niet aan uw behoeften voldoet, moet u uw eigen DNS-oplossing opgeven. Uw DNS-oplossing moet:
 
@@ -214,7 +215,7 @@ Wanneer u het Azure Resource Manager-implementatie model gebruikt, kunt u DNS-se
 > [!NOTE]
 > Als u een aangepaste DNS-server voor uw virtuele netwerk kiest, moet u ten minste één IP-adres van de DNS-server opgeven. anders wordt de configuratie door het virtuele netwerk genegeerd en wordt in plaats daarvan Azure-DNS gebruikt.
 
-Wanneer u het klassieke implementatie model gebruikt, kunt u DNS-servers voor het virtuele netwerk opgeven in het Azure Portal of het [netwerk configuratie bestand](https://msdn.microsoft.com/library/azure/jj157100). Voor Cloud Services kunt u DNS-servers opgeven via het [Service configuratie bestand](https://msdn.microsoft.com/library/azure/ee758710) of met behulp van Power shell, met [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
+Wanneer u het klassieke implementatie model gebruikt, kunt u DNS-servers voor het virtuele netwerk opgeven in het Azure Portal of het [netwerk configuratie bestand](https://msdn.microsoft.com/library/azure/jj157100). Voor Cloud Services kunt u DNS-servers opgeven via het [Service configuratie bestand](https://msdn.microsoft.com/library/azure/ee758710) of met behulp van Power shell, met [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm).
 
 > [!NOTE]
 > Als u de DNS-instellingen voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, wijzigt, moet u de DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het virtuele netwerk om de nieuwe DNS-instellingen van kracht te laten worden. Voor Vm's waarop het Windows-besturings systeem wordt uitgevoerd, kunt u dit doen door `ipconfig /renew` rechtstreeks in de virtuele machine te typen. De stappen variëren afhankelijk van het besturings systeem. Raadpleeg de relevante documentatie voor het type besturings systeem.

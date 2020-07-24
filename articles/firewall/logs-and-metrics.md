@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 07/21/2020
 ms.author: victorh
-ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76315028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086588"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-logboeken en metrische gegevens
 
@@ -98,9 +99,13 @@ De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
 
     Eenheid: aantal
 
-- **Verwerkte gegevens** -hoeveelheid gegevens waarmee de firewall wordt gepasseerd.
+- **Verwerkte gegevens** : som van de gegevens die de firewall in een bepaald tijd venster passeren.
 
     Eenheid: bytes
+
+- **Doorvoer** snelheid van de gegevens die de firewall per seconde passeren.
+
+    Eenheid: bits per seconde
 
 - Status van **firewall** : geeft de status van de firewall aan op basis van de beschik baarheid van de SNAT-poort.
 

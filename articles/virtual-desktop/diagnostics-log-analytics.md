@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ceb58182b34a4eccbed0dc1cdd1c351ae7868da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085908"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
@@ -133,52 +133,16 @@ Log Analytics alleen rapporten in deze tussenliggende status voor verbindings ac
 
 ## <a name="example-queries"></a>Voorbeelden van query's
 
-De volgende voorbeeld query's laten zien hoe de diagnostische functie een rapport genereert voor de meest voorkomende activiteiten in uw systeem.
+Access-voorbeeld query's via de Azure Monitor Log Analytics gebruikers interface:
+1. Ga naar uw Log Analytics-werk ruimte en selecteer vervolgens **Logboeken**. De voorbeeld query gebruikers interface wordt automatisch weer gegeven.
+1. Wijzig het filter in **categorie**.
+1. Selecteer **virtueel bureau blad voor Windows** om beschik bare query's te controleren.
+1. Selecteer **uitvoeren** om de geselecteerde query uit te voeren. 
 
-Voer de volgende cmdlet uit om een lijst op te halen met de verbindingen die uw gebruikers hebben gemaakt:
+Meer informatie over de voorbeeld query interface in [opgeslagen query's in Azure Monitor Log Analytics](../azure-monitor/log-query/saved-queries.md).
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+Met de volgende query lijst kunt u verbindings gegevens of-problemen voor één gebruiker controleren. U kunt deze query's uitvoeren in de [log Analytics query-editor](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries). Vervang elke query door `userupn` de UPN van de gebruiker die u wilt zoeken.
 
-De feed-activiteit van uw gebruikers weer geven:
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 Alle verbindingen voor één gebruiker zoeken:
 
@@ -199,7 +163,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 Sessie duur zoeken op gebruiker:
 
@@ -224,7 +187,7 @@ WVDErrors
 |take 100
 ```
 
-Nagaan of er een specifieke fout is opgetreden:
+Controleren of er een specifieke fout is opgetreden voor andere gebruikers:
 
 ```kusto
 WVDErrors
@@ -232,27 +195,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-Zoeken naar een fout voor alle gebruikers:
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-Voer de volgende query uit om query's uit te voeren op apps:
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- Wanneer een gebruiker volledig bureau blad opent, wordt het app-gebruik in de sessie niet bijgehouden als controle punten in de tabel WVDCheckpoints.
 >- De kolom ResourcesAlias in de tabel WVDConnections geeft aan of een gebruiker verbinding heeft met een volledig bureau blad of een gepubliceerde app. In de kolom wordt alleen de eerste app weer gegeven die wordt geopend tijdens de verbinding. Alle gepubliceerde apps die de gebruiker opent, worden bijgehouden in WVDCheckpoints.

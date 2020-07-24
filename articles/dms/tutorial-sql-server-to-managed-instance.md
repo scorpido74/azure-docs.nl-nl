@@ -3,8 +3,8 @@ title: 'Zelf studie: SQL Server migreren naar een beheerd exemplaar van SQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het migreren van SQL Server naar een door Azure SQL beheerd exemplaar met behulp van Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: f20b9236631057449a337e4e161b7468f995e306
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 79bfb0510aba3a77b720748aaafd83e837500e87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086724"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Zelf studie: SQL Server naar een Azure SQL Managed instance offline migreren met behulp van DMS
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > - Maak een exemplaar van de Azure Database Migration Service.
 > - Een migratie project maken met behulp van Azure Database Migration Service.
 > - De migratie uitvoeren.
-> - De migratie controleren.
+> - Houd de migratie in de gaten.
 > - Een migratierapport downloaden.
 
 > [!IMPORTANT]
@@ -123,7 +123,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 7. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Azure-portal, opent u het en maakt u vervolgens een nieuw migratieproject.
 
@@ -204,7 +204,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
     |**De netwerksharelocatie waarheen back-ups van databases kunnen worden verplaatst door Azure Database Migration Service** | De lokale SMB-netwerk share die Azure Database Migration Service, kan de back-ups van de bron database maken. Het serviceaccount waarmee het SQL Server-bronexemplaar wordt uitgevoerd, moet schrijfbevoegdheid op deze netwerkshare hebben. Geef een FQDN-naam of IP-adressen op van de server in de netwerkshare, bijvoorbeeld '\\\servernaam.domeinnaam.com\back-upmap' of '\\\IP-adres\back-upmap'.|
     |**Gebruikersnaam** | Zorg ervoor dat de Windows-gebruiker volledig beheer heeft over de netwerkshare die u hierboven hebt opgegeven. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar Azure Storage container voor de herstel bewerking. Als TDE-compatibele databases zijn geselecteerd voor migratie, moet de bovenstaande Windows-gebruiker het ingebouwde administratoraccount zijn en moet [Gebruikersaccountbeheer](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview) zijn uitgeschakeld om Azure Database Migration Service in staat te stellen de certificaatbestanden te uploaden en verwijderen. |
     |**Wachtwoord** | Het wachtwoord voor de gebruiker. |
-    |**Opslagaccountinstellingen** | De SAS-URI waarmee Azure Database Migration Service toegang krijgt tot uw opslag account container waarnaar de-service de back-upbestanden uploadt en die wordt gebruikt voor het migreren van data bases naar SQL Managed instance. [Lees hier meer over het verkrijgen van de SAS-URI voor de blob-container](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Deze SAS URI moet voor de BLOB-container zijn, niet voor het opslag account.|
+    |**Instellingen voor een opslagaccount** | De SAS-URI waarmee Azure Database Migration Service toegang krijgt tot uw opslag account container waarnaar de-service de back-upbestanden uploadt en die wordt gebruikt voor het migreren van data bases naar SQL Managed instance. [Lees hier meer over het verkrijgen van de SAS-URI voor de blob-container](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Deze SAS URI moet voor de BLOB-container zijn, niet voor het opslag account.|
     |**TDE-instellingen** | Als u de bron databases met Transparent Data Encryption (TDE) die zijn ingeschakeld, migreert, moet u schrijf bevoegdheden hebben op het door SQL beheerde doel exemplaar.  Selecteer het abonnement waarin de door SQL beheerde instantie is ingericht in de vervolg keuzelijst.  Selecteer het **beheerde doelexemplaar voor Azure SQL Database** in de vervolgkeuzelijst. |
 
     ![Migratie-instellingen configureren](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)

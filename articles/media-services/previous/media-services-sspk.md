@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086231"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft &reg; Smooth streaming client Porting kit 
 ## <a name="overview"></a>Overzicht
@@ -28,7 +29,7 @@ Hieronder vindt u een architectuur op hoog niveau en het vak IIS Smooth Streamin
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 SSPK wordt in licentie gegeven voor termen die uitstekende bedrijfs waarde bieden. SSPK-licentie biedt de branche de volgende mogelijkheden:
 
 * Smooth Streaming Porting kit-bron in C++ 
@@ -123,6 +124,7 @@ Interim-en definitieve SSPK-licenties kunnen technische vragen verzenden naar [s
 * Hongkong Konka Ltd
 * Innolux Corporation
 * Innopia Technologies, Inc
+* K-Tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia co., Ltd.
 * KDDI Corporation
 * Mega Fame Electronics Co. Limited

@@ -3,12 +3,12 @@ title: Veelgestelde vragen over VMware-nood herstel met Azure Site Recovery
 description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086146"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
 
@@ -182,6 +182,10 @@ Nee. Een wijziging van VMware vCenter of migratie is van invloed op voortdurende
 
 Nee, Site Recovery biedt geen ondersteuning voor replicatie naar Azure Storage op virtuele netwerken.
 
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>Wat is de frequentie van het genereren van crash-consistente herstel punten?
+
+Site Recovery worden elke vijf minuten crash-consistente herstel punten gegenereerd.
+
 ## <a name="component-upgrade"></a>Upgrade van onderdelen
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat moet ik doen?
@@ -292,7 +296,7 @@ Ja, een enkele configuratie server kan Vm's beveiligen over meerdere vCenter.  E
 
 Ja, Azure Site Recovery kunnen Vm's in verschillende clusters beveiligen.
 
-## <a name="process-server"></a>Processerver
+## <a name="process-server"></a>Proces server
 
 ### <a name="why-am-i-unable-to-select-the-process-server-when-i-enable-replication"></a>Waarom kan ik de proces server niet selecteren wanneer ik replicatie inschakel?
 

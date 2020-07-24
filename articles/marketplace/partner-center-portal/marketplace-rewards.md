@@ -5,29 +5,31 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/18/2019
-ms.openlocfilehash: e393b6a499ad2b84f25ca1a1c062ca4ef2eec21c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: MaggiePucciEvans
+ms.author: evansma
+ms.date: 07/14/2020
+ms.openlocfilehash: 853aeb03dc1a19c1960709aedf09e71164ed62d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086367"
 ---
-# <a name="marketplace-rewards"></a>Marketplace-beloningen
+# <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Marketplace-beloningen zijn ontworpen ter ondersteuning van uw specifieke groei fase, te beginnen met bewustmakings activiteiten om u te helpen uw eerste klanten te krijgen. Wanneer u door de Marketplace groeit, ontgrendelt u nieuwe voor delen die zijn ontworpen om u te helpen klanten te converteren en deals te sluiten. 
+Marketplace-beloningen bieden ondersteuning voor uw specifieke groei fase, te beginnen met bewustmakings activiteiten om u te helpen uw eerste klanten te krijgen. Wanneer u de commerciële Marketplace groeit, kunt u nieuwe voor delen opheffen die u helpen bij het converteren van klanten en het sluiten van deals.
 
-Er wordt een positieve feedback lus gemaakt: de voor delen van elke groei fase zijn ontworpen om u te laten profiteren van de volgende fase, zodat u uw bedrijf kunt uitbreiden naar klanten van micro soft, met het veld van micro soft en via het kanaal van micro soft door gebruik te maken van de commerciële Marketplace als uw platform. 
+Er wordt een positieve feedback lus gemaakt: de voor delen van elke fase van groei helpen u bij de volgende fase, zodat u uw bedrijf kunt uitbreiden naar klanten van micro soft, met het veld van micro soft en via het kanaal van micro soft door gebruik te maken van de commerciële Marketplace als uw platform.
 
 Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](../determine-your-listing-type.md#choose-a-publishing-option)is.
 
-U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aanbieding live gaat, op basis van uw geschiktheid. 
+U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aanbieding live gaat, op basis van uw geschiktheid.
 
-Voor Transact-partners, wanneer u uw gefactureerde verkoop via het Marketplace-platform hebt uitgebreid, kunt u meer voor delen per laag ontgrendelen. 
+Voor Transact-partners, wanneer u uw gefactureerde verkoop via het Marketplace-platform hebt uitgebreid, kunt u meer voor delen per laag ontgrendelen.
 
-De minimale vereiste voor het publiceren op de winkel is een MPNID. deze voor delen zijn daarom beschikbaar voor alle partners, ongeacht de MPN-competentie status of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien als een platform. 
+De minimale vereiste voor het publiceren op de winkel is een MPNID. deze voor delen zijn daarom beschikbaar voor alle partners, ongeacht de MPN-competentie status of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien als een platform.
 
-U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook [op uw eigen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)manier kunt controleren. 
+U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook [op uw eigen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)manier kunt controleren.
 
 Controleer [hier](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)uw geschiktheid voor het programma voor Marketplace-beloningen.
 
@@ -43,15 +45,12 @@ De stappen om aan de slag te gaan zijn eenvoudig:
     1. Geef het telefoonnummer en de voorkeurstaal van de contactpersoon voor deze marketing-contactpersoon op. Wanneer u klaar bent met het invoeren van deze gegevens, selecteert u **Gebruiker toewijzen**.
     1. Nadat u de marketing contactpersoon hebt bijgewerkt, selecteert u **activeren** voor het voor deel dat u wilt gaan gebruiken. Zodra u een voordeel hebt geactiveerd, neemt een lid van het team Beloningen binnen een week contact op met uw marketing-contactpersoon.
 
-**Technische voordelen**
+## <a name="technical-benefits"></a>Technische voordelen
 
-1. U kunt uw technische voor deel gebruiken om technische hulp te vragen tijdens de ontwikkelings fase van de voor-en implementatie van uw Cloud en hybride oplossingen. Als u hulp wilt aanvragen, vult u het aanvraag formulier in en selecteert u vervolgens **aanvraag verzenden**.
+1. U kunt uw technische voor deel gebruiken om technische hulp te vragen tijdens de ontwikkelings fase vóór verkoop, ontwerp, implementatie en apps van uw Cloud-en hybride oplossingen. Als u hulp wilt aanvragen, vult u het aanvraag formulier in en selecteert u vervolgens **aanvraag verzenden**.
 2. Het gebruik van de voor delen van Azure sponsor wordt gedeeld via een e-mail wanneer u deze voor delen ontgrendelt.
 
->[!Note]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd.
-
->[!Note] 
->Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren op https://aka.ms/marketplacepublishersupport .
+>[!NOTE]
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, checkt u het partner centrum in om te vinden wie in uw organisatie eigenaar van de aanbieding is. De communicatie en de volgende stappen moeten worden uitgevoerd. Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, opent u een ondersteunings ticket op https://aka.ms/marketplacepublishersupport .
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.

@@ -1,5 +1,5 @@
 ---
-title: Aangepaste scripts uitvoeren op Linux-Vm's in azure
+title: Aangepaste script extensie uitvoeren op virtuele Linux-machines in azure
 description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v2
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085721"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>De aangepaste scriptextensie van Azure versie 2 gebruiken met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -38,14 +38,14 @@ Schakel de nieuwe en bestaande implementaties uit om in plaats daarvan de nieuwe
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De aangepaste script extensie voor Linux wordt uitgevoerd op de extensie die wordt ondersteund door de extensie van het besturings systeem. Zie dit [artikel](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor meer informatie.
+De aangepaste script extensie voor Linux wordt uitgevoerd op de extensie die wordt ondersteund door de extensie van het besturings systeem. Zie dit [artikel](../linux/endorsed-distros.md)voor meer informatie.
 
 ### <a name="script-location"></a>Locatie van script
 
 U kunt de extensie gebruiken om uw Azure Blob Storage-referenties te gebruiken voor toegang tot Azure Blob-opslag. Het is ook mogelijk dat de locatie van het script een wille keurige waar is, zolang de virtuele machine kan worden doorgestuurd naar dat eind punt, zoals GitHub, interne bestands server, enzovoort.
 
 ### <a name="internet-connectivity"></a>Internet verbinding
-Als u een script extern moet downloaden, zoals GitHub of Azure Storage, moeten er extra poorten voor de firewall/netwerk beveiligings groep worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Als u een script extern moet downloaden, zoals GitHub of Azure Storage, moeten er extra poorten voor de firewall/netwerk beveiligings groep worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/security-overview.md#service-tags).
 
 Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extra firewall-of netwerk beveiligings groep poorten openen.
 
@@ -56,7 +56,8 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * Er is 90 minuten om het script uit te voeren, wat langer resulteert in een mislukte inrichting van de uitbrei ding.
 * Start de computer niet opnieuw op in het script, waardoor er problemen zijn met andere uitbrei dingen die worden geïnstalleerd en na het opnieuw opstarten. de uitbrei ding wordt na het opnieuw opstarten niet voortgezet. 
 * Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart, installeert u toepassingen en voert u scripts, enz. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
-* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
+* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
+* Er kan slechts één versie van een uitbrei ding op de VM worden toegepast. Als u een tweede aangepast script wilt uitvoeren, moet u de aangepaste script extensie verwijderen en opnieuw Toep assen met het bijgewerkte script. 
 * Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een cron-taak te maken. 
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
 * Aangepaste script extensie biedt geen systeem eigen ondersteuning voor proxy servers, maar u kunt wel een hulp programma voor bestands overdracht gebruiken dat proxy servers in uw script ondersteunt, zoals *krul*. 
@@ -116,10 +117,10 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 | publisher | Micro soft. compute. Extensions | tekenreeks |
 | type | CustomScript | tekenreeks |
 | typeHandlerVersion | 2.1 | int |
-| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | matrix |
+| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (bijvoorbeeld) | python-MyPythonScript.py\<my-param1> | tekenreeks |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | tekenreeks |
-| skipDos2Unix (bijvoorbeeld) | false | booleaans |
+| skipDos2Unix (bijvoorbeeld) | false | boolean |
 | tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
 | storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | tekenreeks |
@@ -134,7 +135,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
 * `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, `fileUris` moeten alle url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
-* `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestand (en)
+* `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het downloaden van bestand (en)
   * `clientId`: (optioneel, String) de client-ID van de beheerde identiteit
   * `objectId`: (optioneel, String) de object-ID van de beheerde identiteit
 
@@ -212,9 +213,9 @@ CustomScript maakt gebruik van de volgende algoritme om een script uit te voeren
 > [!NOTE]
 > Deze eigenschap **moet** alleen worden opgegeven in beveiligde instellingen.
 
-CustomScript (versie 2,1 en hoger) ondersteunt [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestanden van url's die zijn opgenomen in de instelling ' fileUris '. Hiermee kan CustomScript toegang krijgen tot Azure Storage persoonlijke blobs of containers zonder dat de gebruiker geheimen zoals SAS-tokens of opslag account-sleutels hoeft door te geven.
+CustomScript (versie 2,1 en hoger) ondersteunt [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het downloaden van bestanden van url's die zijn opgenomen in de instelling ' fileUris '. Hiermee kan CustomScript toegang krijgen tot Azure Storage persoonlijke blobs of containers zonder dat de gebruiker geheimen zoals SAS-tokens of opslag account-sleutels hoeft door te geven.
 
-Als u deze functie wilt gebruiken, moet de gebruiker een door het [systeem toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) of door de [gebruiker toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identiteit toevoegen aan de virtuele machine of VMSS waar CustomScript naar verwachting wordt uitgevoerd en [de beheerde identiteit toegang verlenen aan de Azure storage container of BLOB](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Als u deze functie wilt gebruiken, moet de gebruiker een door het [systeem toegewezen](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) of door de [gebruiker toegewezen](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) identiteit toevoegen aan de virtuele machine of VMSS waar CustomScript naar verwachting wordt uitgevoerd en [de beheerde identiteit toegang verlenen aan de Azure storage container of BLOB](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
 
 Als u de door het systeem toegewezen identiteit op de doel-VM-VMSS wilt gebruiken, stelt u het veld managedidentity in op een leeg JSON-object. 
 

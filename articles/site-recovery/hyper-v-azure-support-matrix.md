@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/10/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 465b0ca3fdc5dd96b03ec7ab53bf453c4cdc083d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086163"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
-
 In dit artikel vindt u een overzicht van de ondersteunde onderdelen en instellingen voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure met behulp van [Azure site Recovery](site-recovery-overview.md).
 
-
+>[!NOTE]
+> Met Site Recovery worden klant gegevens niet uit de doel regio verplaatst of opgeslagen, waarin nood herstel voor de bron machines is ingesteld. Klanten kunnen een Recovery Services kluis uit een andere regio selecteren als ze dat doen. De Recovery Services kluis bevat meta gegevens, maar geen werkelijke klant gegevens.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
@@ -68,11 +68,12 @@ Hostcluster: IPv4 | Ja | Ja
 Hostnetwerkadapter: IPv6 | Nee | Nee
 VM-netwerk van de gast: NIC-koppeling | Nee | Nee
 VM-netwerk van gast: IPv4 | Ja | Ja
-VM-netwerk van de gast: IPv6 | Nee | Ja
+VM-netwerk van de gast: IPv6 | No | Yes
 VM-netwerk van de gast: statisch IP-adres (Windows) | Ja | Ja
 VM-netwerk van de gast: statisch IP-adres (Linux) | Nee | Nee
 VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
 HTTPS-proxy | Nee | Nee
+Persoonlijke koppelings toegang tot Site Recovery service | Ja. [Meer informatie](hybrid-how-to-enable-replication-private-endpoints.md). | Ja. [Meer informatie](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 
@@ -95,7 +96,7 @@ Versneld netwerken | Nee | Nee
 
 ## <a name="hyper-v-host-storage"></a>Opslag voor Hyper-V-host
 
-**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | Ja | Ja
@@ -104,7 +105,7 @@ Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM-gast opslag
 
-**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | Ja | Ja
@@ -142,8 +143,8 @@ Premium Storage | Ja | Ja
 Standard Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
-Optie voor beveiligde overdracht | Ja
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No
+Optie voor beveiligde overdracht | Yes
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies
@@ -152,7 +153,7 @@ Optie voor beveiligde overdracht | Ja
 --- | --- | ---
 Beschikbaarheidssets | Ja | Ja
 HUB | Ja | Ja  
-Beheerde schijven | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund. | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund.
+Managed Disks | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund. | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund.
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure-VM's
 

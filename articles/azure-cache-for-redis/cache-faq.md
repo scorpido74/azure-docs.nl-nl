@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 89a87e1658f413b0a8cd757525450de30277d943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086877"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -19,7 +19,6 @@ Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevole
 ## <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden.
 
-* U kunt een vraag stellen in de opmerkingen aan het einde van deze veelgestelde vragen en samen werken met het Azure cache-team en andere leden van de community over dit artikel.
 * Als u een breder publiek wilt bereiken, kunt u een vraag stellen op de [pagina micro soft Q&een vraag voor Azure cache](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) en het Azure cache-team en andere leden van de community te benaderen.
 * Als u een functie aanvraag wilt maken, kunt u uw aanvragen en ideeën voor [redis gebruikers Voice verzenden naar Azure cache](https://feedback.azure.com/forums/169382-cache).
 * U kunt ook een e-mail verzenden naar ons via de [externe feedback van Azure cache](mailto:azurecache@microsoft.com).
@@ -43,7 +42,7 @@ De volgende veelgestelde vragen hebben betrekking op basis concepten en vragen o
 * [In welke regio moet ik mijn cache vinden?](#in-what-region-should-i-locate-my-cache)
 * [Waar bevinden de gegevens zich in de cache?](#where-do-my-cached-data-reside)
 * [Hoe word ik gefactureerd voor Azure-cache voor redis?](#how-am-i-billed-for-azure-cache-for-redis)
-* [Kan ik Azure cache gebruiken voor redis met Azure Government Cloud, Azure China Cloud of Microsoft Azure Duitsland?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Kan ik Azure cache gebruiken voor redis met Azure Government Cloud, Azure China 21Vianet Cloud of Microsoft Azure Duitsland?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Veelgestelde vragen over ontwikkel aars
 * [Wat doen de configuratie opties voor stack Exchange. redis?](#what-do-the-stackexchangeredis-configuration-options-do)
@@ -73,10 +72,10 @@ In deze sectie vindt u veelgestelde vragen over veelvoorkomende controles en opl
 * [Waarom is de verbinding tussen mijn client en de cache verbroken?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Veelgestelde vragen over eerdere cache aanbiedingen
-* [Welke Azure-cache aanbieding is geschikt voor mij?](#which-azure-cache-offering-is-right-for-me)
+* [Welke Azure-cache aanbiedingen zijn geschikt voor mij?](#which-azure-cache-offerings-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Wat is Azure Cache voor Redis?
-Azure cache voor redis is gebaseerd op de populaire open-source software [redis](https://redis.io/). Hiermee krijgt u toegang tot een beveiligde, toegewezen Azure-cache voor redis, die wordt beheerd door micro soft en toegankelijk vanuit elke toepassing in Azure. Zie de product pagina [van Azure cache for redis](https://azure.microsoft.com/services/cache/) op Azure.com voor een gedetailleerder overzicht.
+[Azure cache voor redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) is gebaseerd op de populaire open-source software [redis](https://redis.io/). Hiermee krijgt u toegang tot een beveiligde, toegewezen Azure-cache voor redis, die wordt beheerd door micro soft en toegankelijk vanuit elke toepassing in Azure. Zie de product pagina [van Azure cache voor redis](https://azure.microsoft.com/services/cache/) voor een gedetailleerder overzicht.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Hoe kan ik aan de slag met Azure cache voor redis?
 Er zijn verschillende manieren om aan de slag te gaan met Azure cache voor redis.
@@ -160,9 +159,9 @@ U moet Azure-cache expliciet configureren voor redis om deze functies te kunnen 
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Hoe word ik gefactureerd voor Azure-cache voor redis?
-Azure cache voor redis-prijzen is [hier](https://azure.microsoft.com/pricing/details/cache/). Op de pagina met prijzen worden prijzen weer gegeven als uurtarief. Caches worden per minuut in rekening gebracht vanaf het moment dat de cache wordt gemaakt tot het moment dat een cache wordt verwijderd. Er is geen optie voor het stoppen of onderbreken van de facturering van een cache.
+Azure cache voor redis-prijzen is [hier](https://azure.microsoft.com/pricing/details/cache/). De prijzen pagina vermeldt prijs per uur en maandelijks tarief. Caches worden per minuut in rekening gebracht vanaf het moment dat de cache wordt gemaakt tot het moment dat een cache wordt verwijderd. Er is geen optie voor het stoppen of onderbreken van de facturering van een cache.
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Kan ik Azure cache gebruiken voor redis met Azure Government Cloud, Azure China Cloud of Microsoft Azure Duitsland?
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>Kan ik Azure cache gebruiken voor redis met Azure Government Cloud, Azure China 21Vianet Cloud of Microsoft Azure Duitsland?
 Ja, Azure cache voor redis is beschikbaar in Azure Government Cloud, Azure China 21Vianet-Cloud en Microsoft Azure Duitsland. De Url's voor toegang tot en beheer van Azure cache voor redis verschillen in de clouds in vergelijking met de open bare Azure-Cloud.
 
 | Cloud   | DNS-achtervoegsel voor redis            |
@@ -260,7 +259,7 @@ U kunt elk van de opdrachten die worden weer gegeven op [redis opdrachten](https
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Waarom heeft Azure cache voor redis geen verwijzing naar een MSDN Class-bibliotheek, zoals een aantal andere Azure-Services?
-Microsoft Azure Cache voor Redis is gebaseerd op de populaire open source Azure Cache voor Redis. Het kan worden gebruikt door een groot aantal [redis-clients](https://redis.io/clients) voor veel programmeer talen. Elke client heeft zijn eigen API die aanroepen naar de Azure-cache voor redis-exemplaar met behulp van [redis-opdrachten](https://redis.io/commands).
+Microsoft Azure cache voor redis is gebaseerd op de populaire open-source gegevens opslag in het geheugen, redis. Het kan worden gebruikt door een groot aantal [redis-clients](https://redis.io/clients) voor veel programmeer talen. Elke client heeft zijn eigen API die aanroepen naar de Azure-cache voor redis-exemplaar met behulp van [redis-opdrachten](https://redis.io/commands).
 
 Omdat elke client verschilt, is er niet één gecentraliseerde klassen verwijzing op MSDN en houdt elke client zijn eigen referentie documentatie bij. Naast de referentie documentatie zijn er verschillende zelf studies die laten zien hoe u aan de slag gaat met Azure cache voor redis met behulp van verschillende talen en cache-clients. Voor toegang tot deze zelf studies raadpleegt u [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en de artikelen in de inhouds opgave op hetzelfde niveau.
 
@@ -467,9 +466,9 @@ Hier volgen enkele veelvoorkomende redenen voor het verbreken van een cache.
   * Het exemplaar waarop de cache is geïmplementeerd, is door Azure bijgewerkt
     * Dit kan zijn voor redis-server updates of algemeen VM-onderhoud.
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>Welke Azure-cache aanbieding is geschikt voor mij?
+### <a name="which-azure-cache-offerings-is-right-for-me"></a>Welke Azure-cache aanbiedingen zijn geschikt voor mij?
 > [!IMPORTANT]
-> Na de [aankondiging](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)van vorig jaar zijn de Azure Managed cache service-en Azure in-Role cache-Services **buiten gebruik gesteld** op 30 november 2016. Onze aanbeveling is [Azure cache te gebruiken voor redis](https://azure.microsoft.com/services/cache/). Zie [migreren van Managed cache service naar Azure cache voor redis](cache-migrate-to-redis.md)voor informatie over het migreren van.
+> Met ingang van de 2016- [aankondiging](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)zijn Azure Managed cache service-en Azure in-Role cache-Services **buiten gebruik gesteld** op 30 november 2016. Onze aanbeveling is [Azure cache te gebruiken voor redis](https://azure.microsoft.com/services/cache/). Zie [migreren van Managed cache service naar Azure cache voor redis](cache-migrate-to-redis.md)voor informatie over het migreren van.
 >
 >
 

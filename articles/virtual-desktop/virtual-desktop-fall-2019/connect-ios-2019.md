@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met het virtuele bureau blad van Windows vanuit iOS-Azure
+title: 'Verbinding maken met het virtuele bureau blad van Windows: 2019 van iOS-Azure'
 description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de iOS-client.
 services: virtual-desktop
 author: heidilohr
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10ad1e3fdcccce4eb0ce97806f67486ce5cc391b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c031710c96c42b1d5236332e445992de87616e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087132"
 ---
 # <a name="connect-with-the-ios-client"></a>Verbinding maken met de iOS-client
 

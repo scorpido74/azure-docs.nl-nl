@@ -1,6 +1,6 @@
 ---
-title: Windows-virtueel bureau blad Power shell-Azure
-description: Problemen met Power shell oplossen bij het instellen van een virtuele Windows Desktop-Tenant omgeving.
+title: Windows Virtual Desktop Power shell (najaar 2019)-Azure
+description: Het oplossen van problemen met Power shell bij het instellen van een Windows Virtual Desktop (versie van 2019)-Tenant omgeving.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085806"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
+# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Windows Power shell voor virtueel bureau blad (najaar 2019-versie)
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-powershell.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

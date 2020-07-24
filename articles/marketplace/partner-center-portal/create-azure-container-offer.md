@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109649"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086469"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure-container aanbieding maken in azure Marketplace
 
@@ -133,7 +133,7 @@ Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegev
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -151,7 +151,7 @@ Een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn
 
 Een gedetailleerde beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -250,13 +250,13 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ### <a name="plan-overview"></a>Overzicht van plan
 
-Op dit tabblad kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Deze plannen werden voorheen Sku's of Stock Keeping Units genoemd. Plannen kunnen verschillen in wat voor Clouds beschikbaar zijn, zoals globale Clouds, overheids Clouds en de afbeelding waarnaar wordt verwezen door het plan. Als u uw aanbieding in de commerciële Marketplace wilt aanbieden, moet u ten minste één abonnement instellen.
+Op dit tabblad kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Plannen (voorheen Sku's) kunnen verschillen in wat voor Clouds beschikbaar zijn, zoals globale Clouds, overheids Clouds en de afbeelding waarnaar wordt verwezen door het plan. Als u uw aanbieding in de commerciële Marketplace wilt aanbieden, moet u ten minste één abonnement instellen.
 
 Nadat u uw plannen hebt gemaakt, wordt op het tabblad Overzicht van het **plan** het volgende weer gegeven:
 
 - Namen van plannen
 - Prijsmodel
-- Beschik baarheid in de Cloud (Global of Government)
+- Azure-regio's (wereld wijd of overheid)
 - Huidige publicatie status
 - Beschik bare acties
 
@@ -293,7 +293,7 @@ Voordat u naar Azure Government [publiceert](../../azure-government/documentatio
 
 #### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie kan alleen worden gezien als **Azure Government** is geselecteerd onder **Beschik baarheid**in de Cloud.
+Deze optie kan alleen worden gezien als **Azure Government** is geselecteerd onder **Azure-regio's**.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS.
 
@@ -382,7 +382,7 @@ Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X.
 > [!NOTE]
 > Vergeet niet om een test code toe te voegen aan uw installatie kopie, zodat u de afbeelding tijdens het testen kunt identificeren.
 
-## <a name="review-and-publish"></a>Controleren en publiceren
+## <a name="review-and-publish"></a>Beoordelen en publiceren
 
 Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze verzenden om te controleren en te publiceren.
 

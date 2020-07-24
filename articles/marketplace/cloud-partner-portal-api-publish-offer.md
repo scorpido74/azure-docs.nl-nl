@@ -4,18 +4,20 @@ description: API voor het publiceren van de opgegeven aanbieding.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: e3bc420a60c514e704a6caa38acee155b4981552
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086401"
 ---
 # <a name="publish-an-offer"></a>Een aanbieding publiceren
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een langlopende bewerking.
 
@@ -24,14 +26,14 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 ## <a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**      |    **Beschrijving**                               |  **Gegevenstype** |
+|  **Naam**      |    **Beschrijving**                               |  **Gegevens type** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | Uitgevers-id, bijvoorbeeld`contoso`      |   Tekenreeks       |
 |  offerId       | Aanbiedings-id                                 |   Tekenreeks       |
 |  api-versie   | Nieuwste versie van de API                        |   Datum         |
 |  |  |
 
-## <a name="header"></a>Koptekst
+## <a name="header"></a>Header
 ------
 
 |  **Naam**        |    **Waarde**          |
@@ -62,8 +64,7 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 |  melding-e-mail berichten    | Een door komma's gescheiden lijst met e-mail adressen die moeten worden geïnformeerd over de voortgang van de publicatie bewerking. |
 |  |  |
 
-
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 #### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 
@@ -73,14 +74,12 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 
 `Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
-
 ### <a name="response-header"></a>Reactieheader
 
 |  **Naam**             |    **Waarde**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Locatie    | Het relatieve pad om de status van deze bewerking op te halen     |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Antwoord status codes
 

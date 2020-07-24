@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9c4b133ae74438def30f4fcd9e49a5ca5e6f9cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1153b58063f85b57fba99da495d6842a75a819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086282"
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 Single Bitrate 4K Audio 5.1
 `Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een gebruiken om aan te `preset name` geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden ondersteund door dit `Media Encoder Standard` coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
@@ -29,7 +29,7 @@ ms.locfileid: "61463562"
  Deze standaard instelling produceert één MP4-bestand met een bitrate van 18000 kbps en AAC 5,1-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het [Media Encoder Standard schema](media-services-mes-schema.md)voor uitleg over wat elk element betekent en de geldige waarden voor elk element.  
   
 > [!NOTE]
->  U moet het type Premium gereserveerde eenheid ophalen met de code van 4.000 kB. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
+>  U moet het type Premium gereserveerde eenheid ophalen met de code van 4.000 kB. Zie [How to scale encoding](./media-services-scale-media-processing-overview.md)(Engelstalig) voor meer informatie.  
   
  XML  
   

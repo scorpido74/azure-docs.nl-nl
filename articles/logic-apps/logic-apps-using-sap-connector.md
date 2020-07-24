@@ -7,13 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85323151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086605"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
 
@@ -113,7 +114,7 @@ Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in ee
    
    1. Plak in het deel venster **een nieuwe beheerde connector toevoegen** , in het vak **SAP package** , de URL voor het zip-bestand dat de SAP-assembly's bevat. *Zorg ervoor dat u het SAS-token opneemt.*
 
-   1. Selecteer **Maken** als u klaar bent.
+   1. Als u gereed bent, selecteert u **Maken**.
 
    Zie [ISE-connectors toevoegen](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)voor meer informatie.
 
@@ -133,7 +134,7 @@ Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in ee
 
   * Als uw SAP-verbinding mislukt met het fout bericht "Controleer de account gegevens en/of de machtigingen en probeer het opnieuw", de assembly bestanden kunnen zich op de verkeerde locatie bevindt. Zorg ervoor dat u de assembly bestanden hebt gekopieerd naar de installatiemap van de gegevens gateway.
 
-    Om u te helpen problemen op te lossen, [gebruikt u de logboek viewer voor .NET-assembly-binding](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), waarmee u kunt controleren of de assembly bestanden zich op de juiste locatie bevinden. U kunt eventueel de optie **globale assembly-cache registratie** selecteren wanneer u de SAP-client bibliotheek installeert.
+    Om u te helpen problemen op te lossen, [gebruikt u de logboek viewer voor .NET-assembly-binding](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), waarmee u kunt controleren of de assembly bestanden zich op de juiste locatie bevinden. U kunt eventueel de optie **globale assembly-cache registratie** selecteren wanneer u de SAP-client bibliotheek installeert.
 
 <a name="sap-library-versions"></a>
 
@@ -186,7 +187,7 @@ In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een H
 In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
 
 > [!NOTE]
-> Wanneer een logische app IDoc pakketten van SAP ontvangt, wordt het ' Plain ' XML-schema dat door SAP WE60 IDoc-documentatie is gegenereerd niet door de [aanvraag trigger](https://docs.microsoft.com/azure/connectors/connectors-native-reqres) ondersteund. Het ' Plain ' XML-schema wordt echter ondersteund voor scenario's waarin berichten van Logic apps *naar SAP worden* verzonden. U kunt de aanvraag trigger met SAP IDoc XML gebruiken, maar niet met IDoc via RFC. Of u kunt de XML omzetten in de gewenste indeling. 
+> Wanneer een logische app IDoc pakketten van SAP ontvangt, wordt het ' Plain ' XML-schema dat door SAP WE60 IDoc-documentatie is gegenereerd niet door de [aanvraag trigger](../connectors/connectors-native-reqres.md) ondersteund. Het ' Plain ' XML-schema wordt echter ondersteund voor scenario's waarin berichten van Logic apps *naar SAP worden* verzonden. U kunt de aanvraag trigger met SAP IDoc XML gebruiken, maar niet met IDoc via RFC. Of u kunt de XML omzetten in de gewenste indeling. 
 
 In dit voor beeld maakt u een logische app met een eind punt in azure, zodat u *http post-aanvragen* kunt verzenden naar uw logische app. Wanneer uw logische app deze HTTP-aanvragen ontvangt, wordt de trigger geactiveerd en wordt de volgende stap in uw werk stroom uitgevoerd.
 
@@ -261,7 +262,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
       > [!TIP]
       > Geef de waarde voor **SAP-actie** op via de expressie-editor. Op die manier kunt u dezelfde actie voor verschillende bericht typen gebruiken.
 
-      Zie [bericht schema's voor IDOC-bewerkingen](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)voor meer informatie over IDOC-bewerkingen.
+      Zie [bericht schema's voor IDOC-bewerkingen](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)voor meer informatie over IDOC-bewerkingen.
 
    1. Klik in het vak **invoer bericht** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in deze lijst, onder **Wanneer een HTTP-aanvraag wordt ontvangen**, het veld **hoofd tekst** .
 
@@ -290,6 +291,29 @@ Voeg nu een reactie actie toe aan de werk stroom van uw logische app en neem de 
    ![SAP-actie volt ooien](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
 1. Sla uw logische app op.
+
+#### <a name="add-rfc-request-response"></a>RFC-aanvraag toevoegen-antwoord
+
+> [!NOTE]
+> De SAP-trigger ontvangt IDocs via tRFC, waarvoor geen antwoord parameter is ontworpen. 
+
+U moet een aanvraag-en reactie patroon maken als u antwoorden moet ontvangen met behulp van een externe functie aanroep (RFC) voor het Logic Apps van SAP-ABAP. Als u IDocs in uw logische app wilt ontvangen, moet u de eerste actie een [HTTP-aanvraag](../connectors/connectors-native-reqres.md#add-a-response-action) met de status code `200 OK` en geen inhoud maken. Deze aanbevolen stap voltooit de SAP LUW asynchrone overdracht via tRFC onmiddellijk, waardoor de SAP CPIC-conversatie weer beschikbaar blijft. U kunt vervolgens verdere acties in uw logische app toevoegen om de ontvangen IDoc te verwerken zonder verdere overdrachten te blok keren.
+
+Als u een aanvraag-en antwoord patroon wilt implementeren, moet u eerst het RFC-schema detecteren met behulp van de [ `generate schema` opdracht](#generate-schemas-for-artifacts-in-sap). Het gegenereerde schema heeft twee mogelijke hoofd knooppunten: 
+
+1. Het aanvraag knooppunt, dat de oproep is die u van SAP ontvangt.
+1. Het antwoord knooppunt, dat uw antwoord terugstuurt naar SAP.
+
+In het volgende voor beeld wordt een aanvraag-en antwoord patroon gegenereerd vanuit de `STFC_CONNECTION` RFC-module. De XML van de aanvraag wordt geparseerd om een knooppunt waarde met SAP-aanvragen uit te pakken `<ECHOTEXT>` . Met het antwoord wordt de huidige tijds tempel ingevoegd als een dynamische waarde. U ontvangt een soortgelijk antwoord wanneer u een `STFC_CONNECTION` RFC van een logische app naar SAP verzendt.
+
+```http
+
+<STFC_CONNECTIONResponse xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <ECHOTEXT>@{first(xpath(xml(triggerBody()?['Content']), '/*[local-name()="STFC_CONNECTION"]/*[local-name()="REQUTEXT"]/text()'))}</ECHOTEXT>
+  <RESPTEXT>Azure Logic Apps @{utcNow()}</RESPTEXT>
+
+
+```
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
@@ -378,7 +402,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
    ![Trigger voorbeeld dat meerdere berichten ontvangt](media/logic-apps-using-sap-connector/example-trigger.png)
 
-   Zie [bericht schema's voor IDOC-bewerkingen](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) voor meer informatie over de SAP-actie.
+   Zie [bericht schema's voor IDOC-bewerkingen](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) voor meer informatie over de SAP-actie.
 
 1. Sla de logische app nu op zodat u berichten van uw SAP-systeem kunt ontvangen. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
@@ -421,11 +445,11 @@ Als u geen IDoc-pakketten van SAP kunt verzenden naar de trigger van de logische
 
 <a name="find-extended-error-logs"></a>
 
-#### <a name="find-extended-error-logs"></a>Uitgebreide fout logboeken zoeken
+## <a name="find-extended-error-logs"></a>Uitgebreide fout logboeken zoeken
 
 Controleer de uitgebreide logboeken van de SAP-adapter voor volledige fout berichten. 
 
-Voor on-premises gegevens gateway releases van juni 2020 en hoger kunt u [Gateway logboeken inschakelen in de app-instellingen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+Voor on-premises gegevens gateway releases van juni 2020 en hoger kunt u [Gateway logboeken inschakelen in de app-instellingen](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
 
 Voor on-premises gegevens gateway releases van 2020 april en eerder zijn Logboeken standaard uitgeschakeld. Als u uitgebreide logboeken wilt ophalen, voert u de volgende stappen uit:
 
@@ -480,7 +504,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 #### <a name="create-rfc-destination"></a>RFC-doel maken
 
-1. Als u de **configuratie van instellingen voor een RFC-verbinding** wilt openen, gebruikt u in uw SAP-interface de **sm59** -transactie code (T code) met het voor voegsel **/n** .
+1. Als u de **configuratie van instellingen voor een RFC-verbinding** wilt openen, gebruikt u in uw SAP-interface de **sm59** -transactie code (T-code) met het voor voegsel **/n** .
 
 1. Selecteer **TCP/IP-verbindingen**  >  **maken**.
 
@@ -500,7 +524,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 #### <a name="create-abap-connection"></a>ABAP-verbinding maken
 
-1. Als u de **configuratie van instellingen voor een RFC-verbinding** wilt openen, gebruikt u in uw SAP-interface de **sm59***-transactie code (T code) met het voor voegsel **/n** .
+1. Als u de **configuratie van instellingen voor een RFC-verbinding** wilt openen, gebruikt u in uw SAP-interface de **sm59***-transactie code (T-code) met het voor voegsel **/n** .
 
 1. Selecteer **ABAP-verbindingen**  >  **maken**.
 
@@ -512,7 +536,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 #### <a name="create-receiver-port"></a>Ontvanger poort maken
 
-1. Als u de **poorten in de IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we21** -transactie code (T code) met het voor voegsel **/n** .
+1. Als u de **poorten in IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we21** -transactie code (T-code) met het voor voegsel **/n** .
 
 1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
 
@@ -524,7 +548,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 #### <a name="create-sender-port"></a>Poort van afzender maken
 
-1.  Als u de **poorten in de IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we21** -transactie code (T code) met het voor voegsel **/n** .
+1.  Als u de **poorten in IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we21** -transactie code (T-code) met het voor voegsel **/n** .
 
 1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
 
@@ -552,7 +576,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 Voor productie omgevingen moet u twee partner profielen maken. Het eerste profiel is voor de afzender, dat wil zeggen uw organisatie en het SAP-systeem. Het tweede profiel is voor de ontvanger, de logische app.
 
-1. Als u de instellingen van de **partner profielen** wilt openen, gebruikt u in uw SAP-interface de **we20** -transactie code (T code) met het voor voegsel **/n** .
+1. Als u de instellingen van de **partner profielen** wilt openen, gebruikt u in uw SAP-interface de **we20** -transactie code (T-code) met het voor voegsel **/n** .
 
 1. Onder **partner profielen**selecteert u **partner type LS**  >  **Create**.
 
@@ -580,7 +604,7 @@ Voor productie omgevingen moet u twee partner profielen maken. Het eerste profie
 
 #### <a name="test-sending-messages"></a>Testen van berichten verzenden
 
-1. Als u het **test programma voor IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we19** -transactie code (T code) met het voor voegsel **/n** .
+1. Als u het **test programma voor IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we19** -transactie code (T-code) met het voor voegsel **/n** .
 
 1. Selecteer onder **sjabloon voor testen**de optie **via bericht type**en voer uw bericht type in, bijvoorbeeld **CREMAS**. Selecteer **Maken**.
 
@@ -592,7 +616,7 @@ Voor productie omgevingen moet u twee partner profielen maken. Het eerste profie
 
 1. Selecteer **door gaan**als u de verwerking van uitgaande IDOC wilt starten. Wanneer de verwerking is voltooid, wordt de **IDOC verzonden naar het SAP-systeem of het externe programma** bericht weer gegeven.
 
-1.  Als u de verwerkings fouten wilt controleren, gebruikt u de **SM58** -transactie code (T code) met het voor voegsel **/n** .
+1.  Als u de verwerkings fouten wilt controleren, gebruikt u de **SM58** -transactie code (T-code) met het voor voegsel **/n** .
 
 ## <a name="receive-idoc-packets-from-sap"></a>IDoc pakketten ontvangen van SAP
 
@@ -632,12 +656,262 @@ U kunt de Quick Start-sjabloon voor dit patroon gebruiken door deze sjabloon te 
 
 In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een HTTP-aanvraag. Voor het genereren van de schema's voor de opgegeven IDoc en BAPI, verzendt het SAP-actie **schema** een aanvraag naar een SAP-systeem.
 
-Deze SAP-actie retourneert een XML-schema, niet de inhoud of gegevens van het XML-document zelf. Schema's die in het antwoord worden geretourneerd, worden geüpload naar een integratie account met behulp van de Azure Resource Manager-connector. Schema's bevatten de volgende onderdelen:
+Deze SAP-actie retourneert een [XML-schema](#sample-xml-schemas), niet de inhoud of gegevens van het XML-document zelf. Schema's die in het antwoord worden geretourneerd, worden geüpload naar een integratie account met behulp van de Azure Resource Manager-connector. Schema's bevatten de volgende onderdelen:
 
 * De structuur van het aanvraag bericht. Gebruik deze informatie om uw BAPI- `get` lijst te maken.
 * De structuur van het antwoord bericht. Gebruik deze informatie voor het parseren van het antwoord. 
 
 Als u het aanvraag bericht wilt verzenden, gebruikt u de algemene SAP-actie **bericht verzenden naar SAP**of de BAPI-acties van de doel **oproep** .
+
+### <a name="sample-xml-schemas"></a>XML-voor beeld-schema's
+
+Als u een XML-schema voor het maken van een voorbeeld document wilt genereren, raadpleegt u de volgende voor beelden. In deze voor beelden ziet u hoe u kunt werken met veel typen nettoladingen, waaronder:
+
+* [RFC-aanvragen](#xml-samples-for-rfc-requests)
+* [BAPI-aanvragen](#xml-samples-for-bapi-requests)
+* [IDoc aanvragen](#xml-samples-for-idoc-requests)
+* Eenvoudige of complexe XML-schema gegevens typen
+* Tabel parameters
+* Optioneel XML-gedrag
+
+U kunt beginnen met het XML-schema met een optionele XML-begin. De SAP-connector werkt met of zonder de XML-begin.
+
+```xml
+
+<?xml version="1.0" encoding="utf-8">
+
+```
+
+#### <a name="xml-samples-for-rfc-requests"></a>XML-voor beelden voor RFC-aanvragen
+
+Het volgende voor beeld is een eenvoudige RFC-aanroep. De RFC-naam is `STFC_CONNECTION` . Deze aanvraag gebruikt de standaard naam ruimte `xmlns=` , maar u kunt wel naam ruimte aliassen toewijzen en gebruiken, zoals `xmmlns:exampleAlias=` . De naam ruimte waarde is de naam ruimte voor alle Rfc's in SAP voor micro soft-Services. De aanvraag bevat een eenvoudige invoer parameter `<REQUTEXT>` .
+
+```xml
+
+<STFC_CONNECTION xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <REQUTEXT>exampleInput</REQUTEXT>
+</STFC_CONNECTION>
+
+```
+
+Het volgende voor beeld is een RFC-aanroep met een tabel parameter. Deze voorbeeld aanroep en de bijbehorende groep test Rfc's zijn beschikbaar als onderdeel van alle SAP-systemen. De naam van de tabel parameter is `TCPICDAT` . Het tabel regel type is `ABAPTEXT` en dit element wordt herhaald voor elke rij in de tabel. Dit voor beeld bevat één regel, die wordt genoemd `LINE` . Aanvragen met een tabel parameter kunnen een wille keurig aantal velden bevatten, waarbij het getal een positief geheel getal is (*n*). 
+
+```xml
+
+<STFC_WRITE_TO_TCPIC xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <RESTART_QNAME>exampleQName</RESTART_QNAME>
+    <TCPICDAT>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput1</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput2</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput3</LINE>
+      </ABAPTEXT>
+    </TCPICDAT>
+</STFC_WRITE_TO_TCPIC>
+
+```
+
+Het volgende voor beeld is een RFC-aanroep met een tabel parameter die een anoniem veld heeft. Een anoniem veld is wanneer aan het veld geen naam is toegewezen. Complexe typen worden gedeclareerd onder een afzonderlijke naam ruimte, waarbij de declaratie een nieuwe standaard waarde voor het huidige knoop punt en alle onderliggende elementen definieert. In het voor beeld wordt de hex-code gebruikt `x002F` als escape teken voor het symbool */* , omdat dit symbool wordt gereserveerd in de SAP-veld naam.
+
+```xml
+
+<RFC_XML_TEST_1 xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <IM_XML_TABLE>
+    <RFC_XMLCNT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+      <_x002F_AnonymousField>exampleFieldInput</_x002F_AnonymousField>
+    </RFC_XMLCNT>
+  </IM_XML_TABLE>
+</RFC_XML_TEST_1>
+
+```
+
+Het volgende voor beeld bevat voor voegsels voor de naam ruimten. U kunt alle voor voegsels tegelijk declareren, maar u kunt ook een wille keurig aantal voor voegsels declareren als kenmerken van een knoop punt. De naam ruimte-alias van de RFC `ns0` wordt gebruikt als de hoofd-en-para meters voor het basis type. Houd er rekening mee dat complexe typen worden gedeclareerd onder een andere naam ruimte voor typen RFC'S met de alias `ns3` in plaats van de reguliere RFC-naam ruimte met de alias `ns0` .
+
+```xml
+
+<ns0:BBP_RFC_READ_TABLE xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Rfc/" xmlns:ns3="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc/">
+  <ns0:DELIMITER>0</ns0:DELIMITER>
+  <ns0:QUERY_TABLE>KNA1</ns0:QUERY_TABLE>
+  <ns0:ROWCOUNT>250</ns0:ROWCOUNT>
+  <ns0:ROWSKIPS>0</ns0:ROWSKIPS>
+  <ns0:FIELDS>
+    <ns3:RFC_DB_FLD>
+      <ns3:FIELDNAME>KUNNR</ns3:FIELDNAME>
+    </ns3:RFC_DB_FLD>
+  </ns0:FIELDS>
+</ns0:BBP_RFC_READ_TABLE>
+
+```
+
+#### <a name="xml-samples-for-bapi-requests"></a>XML-voor beelden voor BAPI-aanvragen
+
+> [!TIP]
+> Als u de Logic Apps Designer gebruikt om uw BAPI-aanvraag te bewerken, kunt u de volgende zoek functies gebruiken: 
+> 
+> * Selecteer een object in de ontwerp functie om een vervolg keuzelijst met beschik bare methoden weer te geven.
+> * Zakelijke object typen filteren op tref woord met behulp van de Doorzoek bare lijst van de BAPI API-aanroep.
+
+> [!NOTE]
+> Met SAP kunnen zakelijke objecten beschikbaar worden gesteld aan externe systemen door ze te beschrijven in reactie op RFC `RPY_BOR_TREE_INIT` , die Logic apps problemen zonder invoer filter. Logic Apps inspecteert de uitvoer tabel `BOR_TREE` . Het `SHORT_TEXT` veld wordt gebruikt voor namen van bedrijfs objecten. Bedrijfs objecten die niet door SAP in de uitvoer tabel worden geretourneerd, zijn niet toegankelijk voor Logic Apps.
+> Als u aangepaste zakelijke objecten gebruikt, moet u ervoor zorgen dat u deze zakelijke objecten publiceert en vrijgeeft in SAP. Als u dit niet doet, worden uw aangepaste bedrijfs objecten niet vermeld in de uitvoer tabel `BOR_TREE` . U hebt geen toegang tot uw aangepaste bedrijfs objecten in Logic Apps totdat u de zakelijke objecten van SAP beschikbaar maakt. 
+
+In het volgende voor beeld wordt een lijst met banken opgehaald met behulp van de BAPI-methode `GETLIST` . Dit voor beeld bevat het zakelijke object voor een bank, `BUS1011` . 
+
+```xml
+
+<GETLIST xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_CTRY>US</BANK_CTRY>
+  <MAX_ROWS>10</MAX_ROWS>
+</GETLIST>
+
+```
+
+In het volgende voor beeld wordt een bank object gemaakt met behulp van de- `CREATE` methode. In dit voor beeld wordt hetzelfde zakelijk object gebruikt als in het vorige voor beeld `BUS1011` . Wanneer u de `CREATE` methode gebruikt om een bank te maken, moet u ervoor zorgen dat u de wijzigingen doorvoert, omdat deze methode niet standaard wordt doorgevoerd.
+
+> [!TIP]
+> Zorg ervoor dat uw XML-document een validatie regel volgt die in uw SAP-systeem is geconfigureerd. In dit voorbeeld document moet de Bank sleutel ( `<BANK_KEY>` ) bijvoorbeeld een bank Routeringnummer zijn, ook wel een ABA nummer genoemd, in de Verenigde Staten.
+
+```xml
+
+<CREATE xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_ADDRESS>
+    <BANK_NAME xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleBankName</BANK_NAME>
+    <REGION xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleRegionName</REGION>
+    <STREET xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleStreetAddress</STREET>
+    <CITY xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">Redmond</CITY>
+  </BANK_ADDRESS>
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</CREATE>
+
+```
+
+In het volgende voor beeld worden Details voor een bank opgehaald met behulp van het SWIFT-nummer, de waarde voor `<BANK_KEY>` . 
+
+```xml
+
+<GETDETAIL xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</GETDETAIL>
+
+```
+
+#### <a name="xml-samples-for-idoc-requests"></a>XML-voor beelden voor IDoc-aanvragen
+
+Als u een gewoon SAP IDoc XML-schema wilt genereren, gebruikt u de **SAP-aanmeldings** toepassing en de T-code `WE-60` . Open de SAP-documentatie via de grafische gebruikers interface en Genereer XML-schema's in XSD-indeling voor uw IDoc-typen en-extensies. Raadpleeg de [SAP-documentatie](https://help.sap.com/viewer/index)voor een uitleg van algemene SAP-indelingen en-nettoladingen en de ingebouwde dialoog vensters.
+
+In dit voor beeld worden het hoofd knooppunt en de naam ruimten gedeclareerd. De URI in de voorbeeld code, `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` en declareert de volgende configuratie:
+
+* `/IDoc`is de hoofd notitie voor alle IDocs
+* `/3`is de record type versie voor algemene segment definities
+* `/ORDERS05`is het type IDoc
+* `//`is een leeg segment, omdat er geen IDoc-extensie is
+* `/700`is de SAP-versie
+* `/Send`is de actie voor het verzenden van de informatie naar SAP
+
+```xml
+
+<ns0:Send xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send" xmlns:ns3="http://schemas.microsoft.com/2003/10/Serialization" xmlns:ns1="http://Microsoft.LobServices.Sap/2007/03/Types/Idoc/Common/" xmlns:ns2="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700">
+  <ns0:idocData>
+
+```
+
+U kunt het `idocData` knoop punt herhalen om een batch IDocs te verzenden in één aanroep. In het onderstaande voor beeld is er één besturings record, `EDI_DC40` en meerdere gegevens records.
+
+```xml
+
+<...>
+  <ns0:idocData>
+    <ns2:EDI_DC40>
+      <ns1:TABNAM>EDI_DC40</ns1:TABNAM>
+<...>
+      <ns1:ARCKEY>Cor1908207-5</ns1:ARCKEY>
+    </ns2:EDI_DC40>
+    <ns2:E2EDK01005>
+      <ns2:DATAHEADERCOLUMN_SEGNAM>E23DK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:CURCY>USD</ns2:CURCY>
+    </ns2:E2EDK01005>
+    <ns2:E2EDK03>
+<...>
+  </ns0:idocData>
+
+```
+
+Het volgende voor beeld is een voor beeld van een IDoc-besturings record, die gebruikmaakt van het voor voegsel `EDI_DC` . U moet de waarden bijwerken zodat deze overeenkomen met uw SAP-installatie-en IDoc-type. Uw IDoc-client code kan bijvoorbeeld niet worden `800` . Neem contact op met uw SAP-team om ervoor te zorgen dat u de juiste waarden voor uw SAP-installatie gebruikt.
+
+```xml
+
+<ns2:EDI_DC40>
+  <ns:TABNAM>EDI_DC40</ns1:TABNAM>
+  <ns:MANDT>800</ns1:MANDT>
+  <ns:DIRECT>2</ns1:DIRECT>
+  <ns:IDOCTYP>ORDERS05</ns1:IDOCTYP>
+  <ns:CIMTYP></ns1:CIMTYP>
+  <ns:MESTYP>ORDERS</ns1:MESTYP>
+  <ns:STD>X</ns1:STD>
+  <ns:STDVRS>004010</ns1:STDVRS>
+  <ns:STDMES></ns1:STDMES>
+  <ns:SNDPOR>SAPENI</ns1:SNDPOR>
+  <ns:SNDPRT>LS</ns1:SNDPRT>
+  <ns:SNDPFC>AG</ns1:SNDPFC>
+  <ns:SNDPRN>ABAP1PXP1</ns1:SNDPRN>
+  <ns:SNDLAD></ns1:SNDLAD>
+  <ns:RCVPOR>BTSFILE</ns1:RCVPOR>
+  <ns:RCVPRT>LI</ns1:RCVPRT>
+
+```
+
+Het volgende voor beeld is een voorbeeld gegevens record met gewone segmenten. In dit voor beeld wordt de SAP-datum notatie gebruikt. Documenten met een sterk wacht woord kunnen gebruikmaken van systeem eigen XML-datum notaties, zoals `2020-12-31 23:59:59` .
+
+```xml
+
+<ns2:E2EDK01005>
+  <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+    <ns2:CURCY>USD</ns2:CURCY>
+    <ns2:BSART>OR</ns2:BSART>
+    <ns2:BELNR>1908207-5</ns2:BELNR>
+    <ns2:ABLAD>CC</ns2:ABLAD>
+  </ns2>
+  <ns2:E2EDK03>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK03</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:IDDAT>002</ns2:IDDAT>
+      <ns2:DATUM>20160611</ns2:DATUM>
+  </ns2:E2EDK03>
+
+```
+
+Het volgende voor beeld is een gegevens record met gegroepeerde segmenten. Dit omvat een bovenliggend knoop punt van de groep, `E2EDKT1002GRP` en meerdere onderliggende knoop punten, inclusief `E2EDKT1002` en `E2EDKT2001` . 
+
+```xml
+
+<ns2:E2EDKT1002GRP>
+  <ns2:E2EDKT1002>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT1002</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <NS2:TDID>ZONE</ns2:TDID>
+  </ns2:E2EDKT1002>
+  <ns2:E2EDKT2001>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT2001</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:TDLINE>CRSD</ns2:TDLINE>
+  </ns2:E2EDKT2001>
+</ns2:E2EDKT1002GRP>
+
+```
+
+De aanbevolen methode is om een IDoc-id te maken voor gebruik met tRFC. U kunt deze trans actie-id instellen `tid` met behulp van de [bewerking IDOC verzenden](https://docs.microsoft.com/connectors/sap/#send-idoc) in de API van de SAP-connector.
+
+Het volgende voor beeld is een alternatieve methode voor het instellen van de trans actie-id of `tid` . In dit voor beeld worden het laatste knoop punt van het gegevens record segment en het gegevens knooppunt IDoc gesloten. Vervolgens wordt de GUID, `guid` , die wordt gebruikt als de tRFC-id voor het detecteren van duplicaten. 
+
+```xml
+
+    </E2STZUM002GRP>
+  </idocData>
+  <guid>8820ea40-5825-4b2f-ac3c-b83adc34321c</guid>
+</Send>
+
+```
 
 ### <a name="add-an-http-request-trigger"></a>Een HTTP-aanvraag trigger toevoegen
 
@@ -708,7 +982,7 @@ Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    ![Twee items weer geven](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   Zie [bericht schema's voor IDOC-bewerkingen](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)voor meer informatie over de SAP-actie.
+   Zie [bericht schema's voor IDOC-bewerkingen](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)voor meer informatie over de SAP-actie.
 
 1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
@@ -867,11 +1141,36 @@ Hier volgt een voor beeld waarin dit patroon wordt weer gegeven:
 
    ![Eigenschappen van IDOC-actie verzenden](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. Als u de trans actie-ID expliciet wilt bevestigen, voegt u de actie **trans actie-id bevestigen** toe. Klik in het vak **trans actie-id** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst de waarde voor de **trans actie-id** die wordt geretourneerd door de actie **IDOC verzenden** .
+1. Als u de trans actie-ID expliciet wilt bevestigen, voegt u de actie **trans actie-id bevestigen** toe en zorgt u ervoor dat u [geen dubbele IDocs naar SAP verzendt](#avoid-sending-duplicate-idocs). Klik in het vak **trans actie-id** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst de waarde voor de **trans actie-id** die wordt geretourneerd door de actie **IDOC verzenden** .
 
    ![Bewerking trans actie-ID bevestigen](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
    Nadat deze stap is uitgevoerd, wordt de huidige trans actie als voltooid aan beide uiteinden, aan de zijde van de SAP-connector en aan SAP-systeem zijde gemarkeerd.
+
+#### <a name="avoid-sending-duplicate-idocs"></a>Vermijd het verzenden van dubbele IDocs
+
+Als u een probleem ondervindt met dubbele IDocs die worden verzonden naar SAP vanuit uw logische app, voert u de volgende stappen uit om een teken reeks variabele te maken die als uw IDoc-trans actie-id fungeert. Het maken van deze trans actie-id helpt dubbele netwerk verzendingen te voor komen wanneer er problemen optreden, zoals tijdelijke storingen, netwerk problemen of verloren bevestigingen.
+
+> [!NOTE]
+> SAP-systemen verg eten een trans actie-id na een opgegeven periode of 24 uur standaard. Als gevolg hiervan kan SAP nooit een trans actie-id bevestigen als de ID of de GUID onbekend is.
+> Als de bevestiging voor een trans actie-id mislukt, wordt met deze fout aangegeven dat communicatie met het SAP-systeem is mislukt voordat SAP de bevestiging kon bevestigen.
+
+1. Voeg in de ontwerp functie voor Logic Apps de bewerking actie **variabele initialiseren** toe aan uw logische app. 
+1. Configureer de volgende instellingen in de editor voor de actie **variabele initialiseren**. Sla vervolgens uw wijzigingen op.
+    1. Voer bij **naam**een naam in voor de variabele. Bijvoorbeeld `IDOCtransferID`.
+    2. Selecteer bij **type**de optie **teken reeks** als het type variabele.
+    3. Voor **waarde**, selecteert u in het tekstvak **begin waarde invoeren** om het menu dynamische inhoud te openen. Selecteer het tabblad **expressies** . Voer de functie in de lijst met functies in `guid()` . Selecteer **OK** om uw wijzigingen op te slaan. Het veld **waarde** is nu ingesteld op de `guid()` functie, waardoor een GUID wordt gegenereerd.
+1. Nadat u de variabele actie hebt **geïnitialiseerd** , voegt u de actie **IDOC verzenden**toe.
+1. Configureer de volgende instellingen in de editor voor de actie **IDOC verzenden**. Sla vervolgens uw wijzigingen op.
+    1. Voor het **type IDOC** selecteert u uw bericht type en geeft u in het **bericht invoer IDOC**het bericht op.
+    1. Voor **SAP release versie**selecteert u de waarden van uw SAP-configuratie.
+    1. Selecteer de waarden van uw SAP-configuratie voor de versie van de **record typen**.
+    1. Selecteer **Nee**bij **TID bevestigen**.
+    1. Selecteer **nieuwe para meter toevoegen**  >  **trans actie-ID-GUID**. Selecteer het tekstvak om het menu met dynamische inhoud te openen. Selecteer op het tabblad **variabelen** de naam van de variabele die u hebt gemaakt. Bijvoorbeeld `IDOCtransferID`.
+1. Selecteer op de titel balk van de actie **IDOC verzenden** **...**  >  **Instellingen**. Selecteer voor **beleid voor opnieuw proberen** **geen**  >  **gedaan**te maken.
+1. Nadat de actie **IDOC heeft verzonden**, moet u de actie **-id bevestigen**.
+1. Configureer de volgende instellingen in de editor voor de actie **trans actie-id bevestigen**. Sla vervolgens uw wijzigingen op.
+    1. Voer voor **trans actie-id**de naam van de variabele opnieuw in. Bijvoorbeeld `IDOCtransferID`.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
@@ -883,7 +1182,7 @@ Dit zijn de bekende problemen en beperkingen voor de beheerde SAP-connector (nie
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sap/).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/sap/).
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.

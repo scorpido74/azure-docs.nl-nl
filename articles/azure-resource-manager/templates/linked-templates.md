@@ -2,13 +2,13 @@
 title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086809"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
@@ -315,6 +315,11 @@ Bij het verwijzen naar een gekoppelde sjabloon, mag de waarde van `uri` niet een
 > U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden omgezet in iets waarbij gebruik wordt gemaakt van **http** of **https**, bijvoorbeeld met behulp van de `_artifactsLocation` para meter als volgt:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Resource Manager moet toegang hebben tot de sjabloon. U kunt ook de gekoppelde sjabloon in een opslag account plaatsen en de URI voor dat item gebruiken.
+
+Met [sjabloon specificaties](./template-specs.md) (momenteel in private preview) kunt u arm-Sjablonen delen met andere gebruikers in uw organisatie. Sjabloon specificaties kunnen ook worden gebruikt om een hoofd sjabloon en de gekoppelde sjablonen te inpakken. Zie voor meer informatie:
+
+- [Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken](./template-specs-create-linked.md).
+- [Zelf studie: een sjabloon specificatie als gekoppelde sjabloon implementeren](./template-specs-deploy-linked-template.md).
 
 ### <a name="parameters-for-linked-template"></a>Para meters voor gekoppelde sjabloon
 

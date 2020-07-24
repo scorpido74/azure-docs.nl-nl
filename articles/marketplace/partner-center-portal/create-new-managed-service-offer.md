@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JnHs
 ms.author: jenhayes
 ms.date: 07/07/2020
-ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086384"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -90,7 +90,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Handige koppelingen
 4. Schermopnamen
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -102,7 +102,7 @@ Geef een korte beschrijving van uw aanbieding (Maxi maal 100 tekens), die kan wo
 
 Geef een langere beschrijving van uw aanbieding (Maxi maal 256 tekens). Deze lange samen vatting kan ook worden gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -177,7 +177,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="plan-overview"></a>Overzicht van plan
 
-Elke aanbieding moet een of meer abonnementen hebben (ook wel Sku's genoemd). U kunt meerdere plannen toevoegen om verschillende functie sets tegen verschillende prijzen te ondersteunen of om een specifiek abonnement voor een beperkt publiek van specifieke klanten aan te passen. Klanten kunnen de plannen weer geven die voor hen beschikbaar zijn onder de bovenliggende aanbieding.
+Elke aanbieding moet een of meer abonnementen hebben (voorheen Sku's genoemd). U kunt meerdere plannen toevoegen om verschillende functie sets tegen verschillende prijzen te ondersteunen of om een specifiek abonnement voor een beperkt publiek van specifieke klanten aan te passen. Klanten kunnen de plannen weer geven die voor hen beschikbaar zijn onder de bovenliggende aanbieding.
 
 Op de **overzichts** pagina van het abonnement selecteert u **+ nieuw plan maken**. Voer vervolgens een **plan-id** en een **plan naam**in. Beide waarden mogen alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. Deze waarden zijn mogelijk zichtbaar voor klanten en kunnen niet worden gewijzigd nadat u de aanbieding hebt gepubliceerd.
 

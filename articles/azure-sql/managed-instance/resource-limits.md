@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086826"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -119,7 +119,7 @@ Een SQL Managed instance kan alleen worden gemaakt in [ondersteunde regio's](htt
 SQL Managed instance biedt momenteel alleen ondersteuning voor de implementatie van de volgende typen abonnementen:
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Cloud serviceprovider (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
@@ -128,7 +128,7 @@ SQL Managed instance biedt momenteel alleen ondersteuning voor de implementatie 
 ## <a name="regional-resource-limitations"></a>Regionale resource beperkingen
 
 > [!Note]
-> Voor de meest recente informatie over de beschik baarheid van regio's voor abonnementen raadpleegt u eerst [officiële COVID-19 blog post](https://aka.ms/sqlcapacity).
+> Voor de meest recente informatie over de beschik baarheid van regio's voor abonnementen, controleert u eerst op [een regio selecteren](https://aka.ms/sqlcapacity).
 
 Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. SQL Managed instance heeft twee standaard limieten per Azure-regio (die op aanvraag kan worden verhoogd door een speciale [ondersteunings aanvraag in de Azure Portal](../database/quota-increase-request.md) te maken, afhankelijk van een type abonnements type:
 
@@ -142,7 +142,7 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 
 |Abonnementstype| Maximum aantal subnetten voor SQL-beheerde exemplaren | Maximum aantal vCore-eenheden * |
 | :---| :--- | :--- |
-|Betalen naar gebruik|3|320|
+|Betalen per gebruik|3|320|
 |CSP |8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
 |Dev/test met betalen per gebruik|3|320|
 |Enterprise Dev/Test|3|320|

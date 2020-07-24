@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b077dc2fe3ba7528d03490a19312de946647a522
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086299"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
 `Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een gebruiken om aan te `preset name` geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden ondersteund door dit `Media Encoder Standard` coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
@@ -28,7 +29,7 @@ ms.locfileid: "74887014"
  Deze standaard instelling produceert een set van 12 GOP terug-afgevulde MP4-bestanden, variërend van 20000 kbps tot 1000 kbps en stereo AAC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
 > [!NOTE]
->  U moet het type Premium gereserveerde eenheid ophalen met de code van 4.000 kB. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
+>  U moet het type Premium gereserveerde eenheid ophalen met de code van 4.000 kB. Zie [How to scale encoding](./media-services-scale-media-processing-overview.md)(Engelstalig) voor meer informatie.  
   
 > [!NOTE]
 >  `Width` `Height` Zorg ervoor dat de hoogte-breedte verhouding consistent blijft wanneer u de-en-waarden in lagen wijzigt. Bijvoorbeeld: 1920, 1280x720, 1080x576, 640 x 360. Gebruik geen combi natie van hoogte-breedte verhoudingen, zoals: 1280x720, 720x480, 640 x 360.  

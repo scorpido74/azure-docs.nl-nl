@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 5d32c130205420ef8f20d7ce8cb97f9a2595e978
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087047"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -191,7 +191,7 @@ Ja. Alle Vm's en Cloud Services rolinstanties die in een VNet zijn geïmplemente
 ## <a name="azure-services-that-connect-to-vnets"></a>Azure-Services die verbinding maken met VNets
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Kan ik Azure App Service Web Apps met een VNet gebruiken?
-Ja. U kunt Web Apps implementeren in een VNet met behulp van een ASE (App Service Environment), de back-end van uw apps verbinden met uw VNets met VNet-integratie en het inkomende verkeer naar uw app vergren delen met Service-eind punten. Raadpleeg de volgende artikelen voor meer informatie:
+Ja. U kunt Web Apps implementeren in een VNet met behulp van een ASE (App Service Environment), de back-end van uw apps verbinden met uw VNets met VNet-integratie en het inkomende verkeer naar uw app vergren delen met Service-eind punten. Raadpleeg voor meer informatie de volgende artikelen:
 
 * [App Service-netwerk functies](../app-service/networking-features.md)
 * [Web Apps maken in een App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -236,7 +236,7 @@ Ja. U kunt REST-Api's gebruiken voor VNets in de [Azure Resource Manager](/rest/
 ### <a name="is-there-tooling-support-for-vnets"></a>Is er hulp programma beschikbaar voor VNets?
 Ja. Meer informatie over het gebruik van:
 - Het Azure Portal om VNets te implementeren via de [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) en [klassieke](virtual-networks-create-vnet-classic-pportal.md) implementatie modellen.
-- Power shell voor het beheren van VNets die zijn geïmplementeerd via de [Resource Manager](/powershell/module/az.network) en de [klassieke](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) implementatie modellen.
+- Power shell voor het beheren van VNets die zijn geïmplementeerd via de [Resource Manager](/powershell/module/az.network) en de [klassieke](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) implementatie modellen.
 - De Azure-opdracht regel interface (CLI) voor het implementeren en beheren van VNets die zijn geïmplementeerd via de [Resource Manager](/cli/azure/network/vnet) en de [klassieke](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) implementatie modellen.  
 
 ## <a name="vnet-peering"></a>VNet-peering

@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085687"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
 In dit document wordt versie 3,0 en nieuwer van de Linux Diagnostic-extensie beschreven.
 
 > [!IMPORTANT]
-> Zie [dit document](../linux/classic/diagnostic-extension-v2.md)voor meer informatie over versie 2,3 en ouder.
+> Zie [dit document](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)voor meer informatie over versie 2,3 en ouder.
 
 ## <a name="introduction"></a>Inleiding
 
@@ -67,8 +67,8 @@ Ondersteunde distributies en versies:
 
 ### <a name="prerequisites"></a>Vereisten
 
-* **Azure Linux-agent versie 2.2.0 of hoger**. De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer uit `/usr/sbin/waagent -version` om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) om de app bij te werken.
-* **Azure cli**. [Stel de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) -omgeving in op uw machine.
+* **Azure Linux-agent versie 2.2.0 of hoger**. De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer uit `/usr/sbin/waagent -version` om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](./update-linux-agent.md) om de app bij te werken.
+* **Azure CLI**. [Stel de Azure cli](/cli/azure/install-azure-cli) -omgeving in op uw machine.
 * De wget-opdracht als u deze nog niet hebt: Voer uit `sudo apt-get install wget` .
 * Een bestaand Azure-abonnement en een bestaand opslag account voor het opslaan van de gegevens.
 
@@ -173,7 +173,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Name | Waarde
+Naam | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -213,7 +213,7 @@ In deze optionele sectie worden extra bestemmingen gedefinieerd waarnaar de uitb
 
 Element | Waarde
 ------- | -----
-naam | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
+name | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
 type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
 
 Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: EventHub en JsonBlob.
@@ -243,7 +243,7 @@ Als u een goede SAS hebt gemaakt tot middernacht UTC op 1 januari 2018, kan de w
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Zie [deze webpagina](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)voor meer informatie over het genereren en ophalen van informatie over SAS-tokens voor Event hubs.
+Zie [deze webpagina](/rest/api/eventhub/generate-sas-token#powershell)voor meer informatie over het genereren en ophalen van informatie over SAS-tokens voor Event hubs.
 
 #### <a name="the-jsonblob-sink"></a>De JsonBlob-Sink
 
@@ -432,7 +432,7 @@ Element | Waarde
 ------- | -----
 naamruimte | Beschrijving De OMI-naam ruimte waarbinnen de query moet worden uitgevoerd. Als u deze niet opgeeft, is de standaard waarde ' root/SCx ', geïmplementeerd door de [System Center-providers voor meerdere platforms](https://github.com/Microsoft/SCXcore).
 query | De OMI-query die moet worden uitgevoerd.
-tabel | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (Zie [beveiligde instellingen](#protected-settings)).
+table | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (Zie [beveiligde instellingen](#protected-settings)).
 frequency | Beschrijving Het aantal seconden tussen de uitvoering van de query. De standaard waarde is 300 (5 minuten); de minimum waarde is 15 seconden.
 wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarmee de resultaten van onbewerkte voorbeeld gegevens moeten worden gepubliceerd. Geen aggregatie van deze onbewerkte voor beelden wordt berekend door de uitbrei ding of door de metrische gegevens van Azure.
 
@@ -458,7 +458,7 @@ Hiermee bepaalt u het vastleggen van logboek bestanden. LAD legt nieuwe tekst re
 Element | Waarde
 ------- | -----
 file | De volledige padnaam van het logboek bestand dat moet worden bekeken en vastgelegd. De padnaam moet een naam hebben van één bestand; de naam van een map kan niet worden genoemd of joker tekens bevatten. Het gebruikers account ' omsagent ' moet lees toegang hebben tot het bestandspad.
-tabel | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (zoals opgegeven in de beveiligde configuratie), waarin nieuwe regels van de "staart" van het bestand worden geschreven.
+table | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (zoals opgegeven in de beveiligde configuratie), waarin nieuwe regels van de "staart" van het bestand worden geschreven.
 wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarnaar logboek regels worden verzonden.
 
 U moet ' Table ' of ' sinks ' of beide opgeven.
@@ -580,7 +580,7 @@ Als uw beveiligde instellingen zich in het bestand bevinden ProtectedSettings.js
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-De opdracht gaat ervan uit dat u gebruikmaakt van de ARM-modus (Azure Resource Management) van de Azure CLI. Als u LAD wilt configureren voor Vm's van het klassieke implementatie model (ASM), schakelt u over naar de modus ASM ( `azure config mode asm` ) en laat u de naam van de resource groep weg in de opdracht. Zie de [documentatie over PLATFORMOVERSCHRIJDENDE cli](https://docs.microsoft.com/azure/xplat-cli-connect)voor meer informatie.
+De opdracht gaat ervan uit dat u gebruikmaakt van de ARM-modus (Azure Resource Management) van de Azure CLI. Als u LAD wilt configureren voor Vm's van het klassieke implementatie model (ASM), schakelt u over naar de modus ASM ( `azure config mode asm` ) en laat u de naam van de resource groep weg in de opdracht. Zie de [documentatie over PLATFORMOVERSCHRIJDENDE cli](/azure/xplat-cli-connect)voor meer informatie.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -763,10 +763,10 @@ Deze moment opname van een Microsoft Azure Storage Explorer-sessie toont de gege
 
 ![image](./media/diagnostics-linux/stg_explorer.png)
 
-Raadpleeg de relevante [Event hubs-documentatie](../../event-hubs/event-hubs-what-is-event-hubs.md) voor meer informatie over het gebruiken van berichten die zijn gepubliceerd op een event hubs-eind punt.
+Raadpleeg de relevante [Event hubs-documentatie](../../event-hubs/event-hubs-about.md) voor meer informatie over het gebruiken van berichten die zijn gepubliceerd op een event hubs-eind punt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Maak metrische waarschuwingen in [Azure monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) voor de metrische gegevens die u verzamelt.
-* Maak [bewakings grafieken](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) voor uw metrische gegevens.
+* Maak metrische waarschuwingen in [Azure monitor](../../azure-monitor/platform/alerts-classic-portal.md) voor de metrische gegevens die u verzamelt.
+* Maak [bewakings grafieken](../../azure-monitor/platform/data-platform.md) voor uw metrische gegevens.
 * Informatie over het [maken van een schaalset voor virtuele machines](../linux/tutorial-create-vmss.md) met behulp van uw metrische gegevens voor het beheren van automatisch schalen.

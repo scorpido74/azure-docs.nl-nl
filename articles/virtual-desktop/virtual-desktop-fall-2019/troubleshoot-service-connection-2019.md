@@ -1,5 +1,5 @@
 ---
-title: Problemen met de service verbinding oplossen Windows virtueel bureau blad-Azure
+title: Problemen met de service verbinding oplossen Windows virtueel bureau blad over 2019-Azure
 description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085789"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop service-verbindingen
+# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>Problemen oplossen met Windows Virtual Desktop service-verbindingen
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-service-connection.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
