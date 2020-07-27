@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276631"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171593"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server bewaken en afstemmen
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for PostgreSQL biedt verschillende bewakings opties om inzicht te krijgen in het gedrag van uw server.
@@ -33,11 +33,11 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for PostgreSQL:
 |serverlog_storage_percent|Percentage server logboek opslag|Percentage|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
 |serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
-|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
-|connections_failed|Mislukte verbindingen|Count|Het aantal gemaakte verbindingen dat is mislukt.|
+|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
+|connections_failed|Mislukte verbindingen|Aantal|Het aantal gemaakte verbindingen dat is mislukt.|
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
-|backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt.|
+|backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups wordt beheerd door de service en uitgelegd in het [artikel concepten](concepts-backup.md). Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag.|
 |pg_replica_log_delay_in_bytes|Maximale vertraging in Replica's|Bytes|De vertraging in bytes tussen het hoofd en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de hoofd server.|
 |pg_replica_log_delay_in_seconds|Replica vertraging|Seconden|De tijd sinds de laatste geplayte trans actie. Deze metriek is alleen beschikbaar voor replica servers.|
 

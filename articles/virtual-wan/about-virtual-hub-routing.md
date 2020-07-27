@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064921"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171871"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
-De routerings mogelijkheden in een virtuele hub worden geboden door een router die alle route ring beheert tussen gateways met behulp van Border Gateway Protocol (BGP). Een virtuele hub kan meerdere gateways bevatten, zoals een site-naar-site-VPN-gateway, ExpressRoute-gateway, punt-naar-site-gateway Azure Firewall. Deze router biedt ook transit connectiviteit tussen virtuele netwerken die verbinding maken met een virtuele hub en die een geaggregeerde door Voer van 50 Gbps kan ondersteunen. Deze routerings mogelijkheden zijn van toepassing op standaard virtuele WAN-klanten.
+De routerings mogelijkheden in een virtuele hub worden geboden door een router die alle route ring beheert tussen gateways met behulp van Border Gateway Protocol (BGP). Een virtuele hub kan meerdere gateways bevatten, zoals een site-naar-site-VPN-gateway, ExpressRoute-gateway, punt-naar-site-gateway Azure Firewall. Deze router biedt ook transit connectiviteit tussen virtuele netwerken die verbinding maken met een virtuele hub en die een geaggregeerde door Voer van 50 Gbps kan ondersteunen. Deze routerings mogelijkheden zijn van toepassing op standaard virtuele WAN-klanten. 
 
 Zie [route ring van virtuele hub configureren voor meer informatie over het](how-to-virtual-hub-routing.md)configureren van route ring.
 
@@ -79,6 +80,15 @@ Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf be
 Als u nieuwe mogelijkheden voor de route tabel wilt gebruiken, moet u tot de week augustus wachten tot de implementatie in Azure is voltooid. Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens proberen nieuwe route tabellen te maken (beschikbaar in de sectie route tabellen van de hub in Azure Portal)
 
 * **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Aandachtspunten voor virtuele WAN-route ring
+
+Houd rekening met het volgende bij het configureren van virtuele WAN-route ring:
+
+* Alle vertakkings verbindingen (punt-naar-site, site-naar-site-en ExpressRoute) moeten aan de standaard route tabel zijn gekoppeld. Op die manier komen alle branches overeen met dezelfde voor voegsels.
+* Alle vertakkings verbindingen moeten hun routes door geven aan dezelfde set route tabellen. Als u bijvoorbeeld besluit dat vertakkingen moeten worden door gegeven aan de standaard route tabel, moet deze configuratie consistent zijn voor alle vertakkingen. Als gevolg hiervan kunnen alle verbindingen die aan de standaard route tabel zijn gekoppeld, alle vertakkingen bereiken.
+* Vertakking-naar-vertakking via Azure Firewall wordt momenteel niet ondersteund.
+* Wanneer u Azure Firewall in meerdere regio's gebruikt, moeten alle spoke-virtuele netwerken aan dezelfde route tabel zijn gekoppeld. Als er bijvoorbeeld een subset van de VNets door de Azure Firewall, terwijl andere VNets overs Laan, is het niet mogelijk om de Azure Firewall in dezelfde virtuele hub over te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

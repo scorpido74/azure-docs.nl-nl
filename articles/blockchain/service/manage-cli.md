@@ -1,210 +1,195 @@
 ---
 title: Azure Block Chain service beheren met Azure CLI
 description: Azure Block Chain service beheren met Azure CLI
-ms.date: 11/22/2019
+ms.date: 07/23/2020
 ms.topic: how-to
-ms.reviewer: janders
-ms.openlocfilehash: 4b41bc44c9efbf71621fcfba06e668f42caa0f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076933"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170851"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure Block Chain service beheren met Azure CLI
 
 Naast de Azure Portal, kunt u Azure CLI gebruiken voor het beheren van Block Chain leden en transactie knooppunten voor uw Azure Block Chain-service.
 
-Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account in met `az login` .
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
-Vervang in de volgende voor beelden door `<parameter names>` uw eigen waarden.
+Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
+
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+
+Als u liever de CLI lokaal installeert en gebruikt, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli).
+
+## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
+
+1. Meld u aan.
+
+    Meld u aan met behulp van de opdracht [az login](/cli/azure/reference-index#az-login) als u een lokale installatie van de CLI gebruikt.
+
+    ```azurecli
+    az login
+    ```
+
+    Volg de weergegeven stappen in uw terminal om het verificatieproces te voltooien.
+
+1. Installeer de Azure CLI-extensie.
+
+    Wanneer u met extensieverwijzingen voor de Azure-CLI werkt, moet u eerst de extensie installeren.  Azure CLI-extensies geven u toegang tot experimentele opdrachten en opdrachten in een evaluatieversie die nog niet zijn verzonden als onderdeel van de kern-CLI.  Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie over extensies, waaronder het bijwerken en verwijderen ervan.
+
+    Installeer de [uitbrei ding voor de Azure Block Chain-Service](/cli/azure/ext/blockchain/blockchain) door de volgende opdracht uit te voeren:
+
+    ```azurecli-interactive
+    az extension add --name blockchain
+    ```
 
 ## <a name="create-blockchain-member"></a>Block Chain-lid maken
 
-In het voor beeld wordt een Block Chain-lid gemaakt in de Azure Block Chain-service die het quorum grootboek protocol in een nieuw consortium uitvoert.
+In het voor beeld [wordt een Block Chain-lid gemaakt](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create) in de Azure Block Chain-service die het quorum grootboek protocol in een nieuw consortium uitvoert.
 
 ```azurecli
-az resource create \
-                     --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --is-full-object \
-                     --properties '{ "location":"<myBlockchainLocation>", "properties": {"password":"<myStrongPassword>", "protocol":"Quorum","consortium":"<myConsortiumName>", "consortiumManagementAccountPassword":"<myConsortiumManagementAccountPassword>", "firewallRules":[{"ruleName":"<myRuleName>","startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}, "sku":{"name":"<skuName>"}}'
+az blockchain member create \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName> \
+                            --location <myBlockchainLocation> \
+                            --password <strongMemberAccountPassword> \
+                            --protocol "Quorum" \
+                            --consortium <myConsortiumName> \
+                            --consortium-management-account-password <strongConsortiumManagementPassword> \
+                            --sku <skuName>
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
 | **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam wordt gebruikt voor het adres van het open bare eind punt. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`. |
-| **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. |
-| **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord van het lid-account wordt gebruikt voor de verificatie van het open bare eind punt van het block Chain-lid met behulp van basis verificatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
-| **Protocolsubstatus** | Open bare preview ondersteunt quorum. |
-| **verband** | Naam van het consortium dat u wilt toevoegen of maken. |
-| **consortiumManagementAccountPassword** | Het consortium beheer wachtwoord. Het wacht woord wordt gebruikt voor deelname aan een consortium. |
-| **ruleName** | Regel naam voor white list een IP-adres bereik. Optionele para meter voor firewall regels.|
-| **startIpAddress** | Begin van het IP-adres bereik voor white list. Optionele para meter voor firewall regels. |
-| **u** | Het einde van het IP-adres bereik voor white list. Optionele para meter voor firewall regels. |
-| **skuName** | Type laag. Gebruik S0 voor Standard en B0 voor Basic. |
+| **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. Functies zijn mogelijk niet beschikbaar in sommige regio's. |
+| **wachtwoord** | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
+| **Protocolsubstatus** | Block Chain-protocol. Op dit moment wordt het *quorum* protocol ondersteund. |
+| **verband** | Naam van het consortium dat u wilt toevoegen of maken. Zie [Azure Blockchain Service-consortium](consortium.md) voor meer informatie over consortiums. |
+| **consortium-Management-account-wacht woord** | Het wacht woord van het consortium account wordt ook wel het wacht woord van het lid-account genoemd. Het wachtwoord van het lidaccount wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor het lid wordt gemaakt. U gebruikt het lidaccount en het wachtwoord van het lidaccount voor het beheer van consortiums. |
+| **SKU** | Type laag. *Standard* of *Basic*. Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Gebruik de categorie *Standard* voor implementaties van productiekwaliteit. U moet de categorie *Standard* ook gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privé transacties verzendt. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom. |
 
-## <a name="change-blockchain-member-password"></a>Block Chain lid van wacht woord wijzigen
+## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Wacht woorden of firewall regels voor Block Chain wijzigen
 
-In het voor beeld wordt het wacht woord van een Block Chain-lid gewijzigd.
+Voor beeld wordt het wacht woord van het [Block Chain-lid](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update), het consortium beheer wachtwoord en de firewall regel bijgewerkt.
 
 ```azurecli
-az resource update \
+az blockchain member update \
                      --resource-group <myResourceGroup> \
                      --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.password='<myStrongPassword>' \
-                     --remove properties.consortiumManagementAccountAddress
+                     --password <strongMemberAccountPassword> \
+                     --consortium-management-account-password <strongConsortiumManagementPassword> \
+                     --firewall-rules <firewallRules>
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
 | **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
-| **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
+| **wachtwoord** | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
+| **consortium-Management-account-wacht woord** | Het wacht woord van het consortium account wordt ook wel het wacht woord van het lid-account genoemd. Het wachtwoord van het lidaccount wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor het lid wordt gemaakt. U gebruikt het lidaccount en het wachtwoord van het lidaccount voor het beheer van consortiums. |
+| **firewall-regels** | Begin-en eind-IP-adres voor de lijst met toegestane IP-adressen. |
 
 ## <a name="create-transaction-node"></a>Transactie knooppunt maken
 
-Maak een transactie knooppunt in een bestaand Block Chain-lid. Door transactie knooppunten toe te voegen, kunt u de beveiligings isolatie verhogen en de belasting distribueren. U kunt bijvoorbeeld een eind punt voor een trans actie-knoop punt hebben voor verschillende client toepassingen.
+[Maak een transactie knooppunt](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) in een bestaand Block Chain-lid. Door transactie knooppunten toe te voegen, kunt u de beveiligings isolatie verhogen en de belasting distribueren. U kunt bijvoorbeeld een eind punt voor een trans actie-knoop punt hebben voor verschillende client toepassingen.
 
 ```azurecli
-az resource create \
+az blockchain transaction-node create \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --is-full-object \
-                     --properties '{"location":"<myRegion>", "properties":{"password":"<myStrongPassword>", "firewallRules":[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}}'
+                     --member-name <myMemberName> \
+                     --password <strongTransactionNodePassword> \
+                     --name <myTransactionNodeName>
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
 | **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
-| **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
-| **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. |
-| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
-| **ruleName** | Regel naam voor white list een IP-adres bereik. Optionele para meter voor firewall regels. |
-| **startIpAddress** | Begin van het IP-adres bereik voor white list. Optionele para meter voor firewall regels. |
-| **u** | Het einde van het IP-adres bereik voor white list. Optionele para meter voor firewall regels.|
+| **locatie** | Azure-regio van het block Chain-lid. |
+| **lid-naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
+| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
+| **naam** | Naam van het transactie knooppunt. |
 
 ## <a name="change-transaction-node-password"></a>Wacht woord van transactie knooppunt wijzigen
 
-Voor beeld wijzigt u het wacht woord van een transactie knooppunt.
+Voor beeld wordt het wacht woord van [een transactie knooppunt bijgewerkt](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update) .
 
 ```azurecli
-az resource update \
+az blockchain transaction-node update \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.password='<myStrongPassword>'
+                     --member-name <myMemberName> \
+                     --password <strongTransactionNodePassword> \
+                     --name <myTransactionNodeName>
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
 | **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
-| **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
-| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
+| **lid-naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
+| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
+| **naam** | Naam van het transactie knooppunt. |
 
-## <a name="change-consortium-management-account-password"></a>Wacht woord van consortium beheer account wijzigen
+## <a name="list-api-keys"></a>API-sleutels weer geven
 
-Het consortium beheer-account wordt gebruikt voor het lidmaatschaps beheer van het consortium. Elk lid wordt uniek geïdentificeerd door een consortium beheer account en u kunt het wacht woord van dit account wijzigen met de volgende opdracht.
+API-sleutels kunnen worden gebruikt voor toegang tot knoop punten, vergelijkbaar met de gebruikers naam en het wacht woord. Er zijn twee API-sleutels ter ondersteuning van het draaien van sleutels. Gebruik de volgende opdracht om [de API-sleutels weer te geven](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key).
 
 ```azurecli
-az resource update \
-                     --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.consortiumManagementAccountPassword='<myConsortiumManagementAccountPassword>' \
-                     --remove properties.consortiumManagementAccountAddress
+az blockchain member list-api-key \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName>
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
-| **naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
-| **consortiumManagementAccountPassword** | Het account wachtwoord voor het consortium beheer. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
-  
-## <a name="update-firewall-rules"></a>Firewall regels bijwerken
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **naam** | Naam van het block Chain-lid van de Azure Block Chain-Service |
+
+## <a name="regenerate-api-keys"></a>API-sleutels opnieuw genereren
+
+Gebruik de volgende opdracht om [uw API-sleutels opnieuw te genereren](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key).
 
 ```azurecli
-az resource update \
-                     --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.firewallRules='[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]' \
-                     --remove properties.consortiumManagementAccountAddress
+az blockchain member regenerate-api-key \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName> \
+                            [--key-name {<keyValue1>, <keyValue2>}]
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
 | **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service. |
-| **ruleName** | Regel naam voor white list een IP-adres bereik. Optionele para meter voor firewall regels.|
-| **startIpAddress** | Begin van het IP-adres bereik voor white list. Optionele para meter voor firewall regels.|
-| **u** | Het einde van het IP-adres bereik voor white list. Optionele para meter voor firewall regels.|
-
-## <a name="list-api-keys"></a>API-sleutels weer geven
-
-API-sleutels kunnen worden gebruikt voor toegang tot knoop punten, vergelijkbaar met de gebruikers naam en het wacht woord. Er zijn twee API-sleutels ter ondersteuning van het draaien van sleutels. Gebruik de volgende opdracht om de API-sleutels weer te geven.
-
-```azurecli
-az resource invoke-action \
-                            --resource-group <myResourceGroup> \
-                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                            --action "listApiKeys" \
-                            --resource-type Microsoft.Blockchain/blockchainMembers
-```
-
-| Parameter | Beschrijving |
-|---------|-------------|
-| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
-| **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
-
-## <a name="regenerate-api-keys"></a>API-sleutels opnieuw genereren
-
-Gebruik de volgende opdracht om uw API-sleutels opnieuw te genereren.
-
-```azurecli
-az resource invoke-action \
-                            --resource-group <myResourceGroup> \
-                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                            --action "regenerateApiKeys" \
-                            --resource-type Microsoft.Blockchain/blockchainMembers \
-                            --request-body '{"keyName":"<keyValue>"}'
-```
-
-| Parameter | Beschrijving |
-|---------|-------------|
-| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
-| **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
-| **keyName** | Vervang door \<keyValue\> key1 of Key2. |
+| **keyName** | Vervang door \<keyValue\> Key1, Key2 of beide. |
 
 ## <a name="delete-a-transaction-node"></a>Een transactie knooppunt verwijderen
 
-Voor beeld wordt een trans actie-knoop punt van het block Chain-lid verwijderd.
+Voor beeld wordt [een trans actie-knoop punt van het block Chain-lid verwijderd](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete).
 
 ```azurecli
-az resource delete \
+az blockchain transaction-node delete \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers
+                     --member-name <myMemberName> \
+                     --name <myTransactionNode>
 ```
 
 | Parameter | Beschrijving |
 |---------|-------------|
 | **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
-| **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de naam van het transactie knooppunt bevat dat moet worden verwijderd. |
+| **lid-naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de naam van het transactie knooppunt bevat dat moet worden verwijderd. |
+| **naam** | Naam van het transactie knooppunt dat moet worden verwijderd. |
 
 ## <a name="delete-a-blockchain-member"></a>Een Block Chain-lid verwijderen
 
-Voor beeld wordt een Block Chain-lid verwijderd.
+Voor beeld wordt [een Block Chain-lid verwijderd](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete).
 
 ```azurecli
-az resource delete \
+az blockchain member delete \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers
+                     --name <myMemberName>
+
 ```
 
 | Parameter | Beschrijving |
@@ -227,7 +212,7 @@ az role assignment create \
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **toegewezen gebruiker** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
-| **bereik** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
+| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 **Voorbeeld:**
 
@@ -263,7 +248,7 @@ az role assignment create \
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **toegewezen gebruiker-object-id** | Groeps-ID of toepassings-ID van Azure AD. |
-| **bereik** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
+| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 **Voorbeeld:**
 
@@ -289,7 +274,7 @@ az role assignment delete \
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **toegewezen gebruiker** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
-| **bereik** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
+| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

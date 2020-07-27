@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 91371999429304ab0bf3c124001a282410123a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b931519abb1af48ce139193366649ad3f355569
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037828"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172031"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 **Implementatie** |  **Ondersteuning**
 --- | ---
-**Azure-portal** | Ondersteund.
+**Azure Portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
 **REST API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
@@ -120,12 +120,12 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/),[9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/)| 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 14,04 LTS | 9,31 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 |||
-16,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-algemeen naar 4.4.0-184-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-106-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1089-Azure |
+16,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-algemeen naar 4.4.0-184-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-106-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1089-Azure</br> 4.15.0-107-generic, 4.4.0-195-generic & 4.15.0-1091-Azure tot en met 9,35 Hot Fix patch * * |
 16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-algemeen naar 4.4.0-178-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-99-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1082-Azure </br> 4.15.0-101-generic & 4.4.0-179-generic tot en met 9,33 patch voor warme reparatie * *|
 16,04 LTS | 9,32 | 4.4.0-21-algemeen naar 4.4.0-171-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-74-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1.066-Azure|
 16,04 LTS | 9,31 | 4.4.0-21-generic naar 4.4.0-170-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-72-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1063-Azure|
 |||
-18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-algemeen naar 4.15.0-108-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-52-generic </br> 5.3.0-19-Gene riek tot 5.3.0-61-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1089-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1031-Azure|
+18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-algemeen naar 4.15.0-108-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-52-generic </br> 5.3.0-19-Gene riek tot 5.3.0-61-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1089-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1031-Azure </br> 4.15.0-109-generic, 5.0.0-53-generic, 5.3.0-62-generic, 4.15.0-1091-Azure & 5.3.0-1032-Azure tot en met 9,35 Hot Fix patch * *|
 18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-algemeen naar 4.15.0-99-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-47-generic </br> 5.3.0-19-generic tot 5.3.0-51-generic </br> 4.15.0-1009-Azure naar 4.15.0-1082-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1020-Azure </br> 4.15.0-101-generic, 5.0.0-48-algemeen, 5.3.0-1022-Azure & 5.3.0-53-generic tot en met 9,33 Hot Fix patch * *|
 18,04 LTS | 9,32| 4.15.0-20-algemeen naar 4.15.0-74-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-37-generic </br> 5.3.0-19-generic tot 5.3.0-24-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1028-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1009-Azure|
 18,04 LTS | 9,31| 4.15.0-20-algemeen naar 4.15.0-72-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-37-generic </br> 5.3.0-19-generic tot 5.3.0-24-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1025-Azure </br> 5.3.0-1007-Azure|

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/01/2019
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483632"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169448"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Een NFS-volume maken voor Azure NetApp Files
 
@@ -70,13 +70,13 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.
 
-    * **Quota**  
+    * **Quotum**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
 
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.  
 
     * **Virtueel netwerk**  
-        Geef het virtuele Azure-netwerk (Vnet) op dat u wilt gebruiken om het volume te benaderen.  
+        Geef het virtuele Azure-netwerk (VNet) op van waaruit u toegang wilt krijgen tot het volume.  
 
         Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. De Azure NetApp Files-service is alleen toegankelijk vanuit hetzelfde VNet, of vanuit een VNet in dezelfde regio als het volume via VNet-peering. U kunt het volume ook openen vanuit uw on-premises netwerk via een snelle route.   
 
@@ -89,6 +89,12 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
         ![ Een volume maken](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Subnet maken](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Als u een bestaand momentopname beleid wilt Toep assen op het volume, klikt u op de **sectie Geavanceerd weer geven** om deze uit te vouwen en selecteert u een beleid voor moment opnamen in de vervolg keuzelijst. 
+
+        Zie [moment opnamen beheren](azure-netapp-files-manage-snapshots.md)voor meer informatie over het maken van een momentopname beleid.
+
+        ![Geavanceerde selectie weer geven](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. Klik op **Protocol** en voer de volgende acties uit:  
     * Selecteer **NFS** als protocoltype voor het volume.   

@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: Fouten vaststellen tijdens verificatie
           href: vs-active-directory-error.md
+    - name: Een app op de markt brengen
+      items:
+        - name: Publiceren naar een app-bron
+          href: v2-howto-get-appsource-certified.md
+        - name: Publiceren naar de Azure AD-app-galerie
+          href: v2-howto-app-gallery-listing.md
+        - name: Publiceren naar het Office 365-verkopersdashboard
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: Naslaginformatie
   items:
     - name: Manifest van de toepassing

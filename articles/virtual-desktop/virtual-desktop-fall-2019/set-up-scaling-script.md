@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442dfc1667027bd39b138d59a28542138cc4a1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085941"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172063"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -60,10 +60,10 @@ Het hulp programma heeft echter ook de volgende beperkingen:
 
 - Deze oplossing geldt alleen voor gegroepeerde Vm's met meerdere sessies.
 - Deze oplossing beheert Vm's in een wille keurige regio, maar kan alleen worden gebruikt in hetzelfde abonnement als uw Azure Automation-account en Azure Logic-app.
-- De maximale runtime van een taak in het runbook is 3 uur. Als het starten of stoppen van de virtuele machines in de hostgroep langer duurt dan dat, mislukt de taak. Zie voor meer informatie [gedeelde bronnen](../../automation/automation-runbook-execution.md#fair-share)
+- De maximale runtime van een taak in het runbook is 3 uur. Als het starten of stoppen van de virtuele machines in de hostgroep langer duurt dan dat, mislukt de taak. Zie [gedeelde bronnen](../../automation/automation-runbook-execution.md#fair-share)voor meer informatie.
 
 >[!NOTE]
->Het hulp programma voor schalen bepaalt de taakverdelings modus van de hostgroep die wordt geschaald. Deze wordt ingesteld op breedte-eerste taak verdeling voor zowel de piek als de piek uren.
+>Het hulp programma voor schalen bepaalt de taakverdelings modus van de hostgroep die momenteel wordt geschaald. Het hulp programma maakt gebruik van de modus breedte-eerste taak verdeling voor zowel de piek als de piek uren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -140,7 +140,7 @@ Nu u een Azure Automation account hebt, moet u ook een Azure Automation uitvoere
 
 Een [Azure Automation uitvoeren als-account](../../automation/manage-runas-account.md) biedt verificatie voor het beheren van resources in azure met Azure-cmdlets. Wanneer u een uitvoeren als-account maakt, wordt er in Azure Active Directory een nieuwe Service-Principal-gebruiker gemaakt en wordt de rol Inzender toegewezen aan de gebruiker van de Service-Principal op het abonnements niveau. Een uitvoeren als-account van Azure is een uitstekende manier om veilig te verifiëren met certificaten en een Service Principal Name zonder dat u een gebruikers naam en wacht woord hoeft op te slaan in een referentie object. Zie machtigingen voor het [uitvoeren als](../../automation/manage-runas-account.md#limit-run-as-account-permissions)-account beperken voor meer informatie over run as-account authenticatie.
 
-Elke gebruiker die lid is van de rol abonnements beheerders en mede beheerder van het abonnement kan een uitvoeren als-account maken door de instructies in de volgende sectie te volgen.
+Elke gebruiker die lid is van de rol abonnements beheerders en mede beheerder van het abonnement kan een uitvoeren als-account maken.
 
 Een uitvoeren als-account maken in uw Azure Automation-account:
 

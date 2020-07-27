@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 226f49dc2a1603aba5eaa2f03ead32b815ac34b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e28c1fd3dd117491360a1671955a6ec028033c01
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101687"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171625"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -34,7 +34,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** U moet een domein beheerder zijn op alle Windows-servers die u wilt detecteren. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. |
+| **Machtigingen**           | **Windows:** Gebruik een domein account voor computers die lid zijn van een domein en een lokaal account voor computers die lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. |
 | **Besturingssysteem** | Alle besturings systemen behalve Windows Server 2003 en SUSE Linux kunnen worden geëvalueerd voor migratie. |
 
 

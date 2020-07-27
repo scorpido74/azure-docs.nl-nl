@@ -10,13 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112641"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171254"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +32,7 @@ De volgende functionaliteit is beschikbaar in de controle stroom:
 - U kunt de uitvoer van de activiteit meta gegevens ophalen in voorwaardelijke expressies gebruiken om validatie uit te voeren.
 - U kunt een pijp lijn activeren wanneer aan een voor waarde wordt voldaan via do until-lus.
 
-## <a name="capabilities"></a>Functies
+## <a name="capabilities"></a>Functionaliteit
 
 De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is 2 MB.
 
@@ -40,7 +41,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 ### <a name="supported-connectors"></a>Ondersteunde connectors
 
-**Bestands opslag**
+**File Storage**
 
 | Connector/meta gegevens | itemName<br>(bestand/map) | Item type<br>(bestand/map) | grootte<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structuur<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -59,6 +60,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 - Voor Azure Blob Storage `lastModified` geldt voor de container en de blob, maar niet voor de virtuele map.
 - `lastModified`filter is momenteel van toepassing op het filteren van onderliggende items, maar niet voor de opgegeven map/bestand zelf.
 - Het Joker teken filter voor mappen/bestanden wordt niet ondersteund voor de activiteit meta gegevens ophalen.
+- `structure`en `columnCount` worden niet ondersteund bij het ophalen van meta gegevens van binaire, JSON-of XML-bestanden.
 
 **Relationele database**
 
@@ -73,7 +75,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit meta gegevens ophalen om de bijbehorende gegevens op te halen:
 
-| Meta gegevens type | Description |
+| Meta gegevens type | Beschrijving |
 |:--- |:--- |
 | itemName | De naam van het bestand of de map. |
 | Item type | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder` . |
@@ -92,7 +94,7 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 >[!NOTE]
 >Wanneer u meta gegevens ophaalt uit het bestand archieven en configureren `modifiedDatetimeStart` of `modifiedDatetimeEnd` , `childItems` bevat de uitvoer alleen bestanden in het opgegeven pad met een tijd die het laatst is gewijzigd binnen het opgegeven bereik. In zijn geen items in submappen inbegrepen.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 **Activiteit meta gegevens ophalen**
 
@@ -138,10 +140,10 @@ Op dit moment kunnen met de activiteit meta gegevens ophalen de volgende typen m
 
 Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-Velden | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Yes 
-sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Yes
-formatSettings | Toep assen bij gebruik van gegevensset voor indelings type. | No
-storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | No
+Velden | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
+sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Ja
+formatSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
+storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
@@ -199,5 +201,5 @@ Meer informatie over andere controle stroom activiteiten die door Data Factory w
 
 - [Pijplijn activiteit uitvoeren](control-flow-execute-pipeline-activity.md)
 - [Activiteit ForEach](control-flow-for-each-activity.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit Web](control-flow-web-activity.md)

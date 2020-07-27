@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b99e5f7d079e580ad8fcd30a311c24a55ef7fc5b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121619"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171145"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
 U kunt een Azure Database for PostgreSQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de PostgreSQL-server. Een server kan een of meer data bases bevatten.
 
-| Resource/laag | **Standaard** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Resource/laag | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderli
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
-| Opslag kenmerken | **Standaard** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Opslag kenmerken | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Opslagtype | Basis opslag | Opslag Algemeen | Opslag Algemeen |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
@@ -85,11 +85,11 @@ Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik m
 
 Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Back-upopslag
 
-De service maakt automatisch back-ups van uw server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups. Meer informatie over back-ups vindt u in het [artikel concepten](concepts-backup.md).
+Azure Database for PostgreSQL biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Back-upopslag die u voor dit bedrag overschrijdt, wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server met 250 GB opslag ruimte inricht, hebt u 250 GB extra opslag ruimte beschikbaar voor Server back-ups. Opslag voor back-ups die groter is dan 250 GB, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/postgresql/). U kunt de [back-updocumentatie](concepts-backup.md)raadplegen voor meer informatie over factoren die van invloed zijn op het gebruik van back-ups, het bewaken en beheren van back-upopslag.
 
-## <a name="scale-resources"></a>Resources omhoog/omlaag schalen
+## <a name="scale-resources"></a>Resources schalen
 
 Nadat u de server hebt gemaakt, kunt u de vCores, de generatie van de hardware, de prijs categorie (met uitzonde ring van en van basis), de hoeveelheid opslag en de Bewaar periode voor back-ups afzonderlijk wijzigen. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Het aantal vCores kan omhoog of omlaag worden geschaald. De Bewaar periode van de back-up kan worden uitgebreid of omlaag van 7 tot 35 dagen. De opslag grootte kan alleen worden verhoogd. U kunt de resources verg Roten of verkleinen via de portal of Azure CLI. Zie [een Azure database for postgresql server bewaken en schalen met behulp van Azure cli](scripts/sample-scale-server-up-or-down.md)voor een voor beeld van schalen met behulp van Azure cli.
 

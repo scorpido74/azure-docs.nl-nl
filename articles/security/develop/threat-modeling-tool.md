@@ -7,11 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75548753"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169358"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -34,7 +35,7 @@ Hier vindt u enkele hulp middelen en vernieuwingen, alleen om een paar te noemen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende tabel bevat belang rijke koppelingen om aan de slag te gaan met de Threat Modeling Tool:
+De volgende tabel bevat belang rijke koppelingen om aan de slag te gaan met de Threat Modeling Tool: Zie ook: [systeem vereisten](threat-modeling-tool-releases.md)
 
 | Stap  | Beschrijving                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |

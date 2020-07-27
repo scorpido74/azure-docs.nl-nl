@@ -3,12 +3,12 @@ title: Een groot aantal virtuele VMware-machines evalueren voor migratie naar Az
 description: Hierin wordt beschreven hoe u een groot aantal virtuele VMware-machines kunt beoordelen voor migratie naar Azure met behulp van de Azure Migrate-service. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336858"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171913"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Een groot aantal virtuele VMware-machines beoordelen voor migratie naar Azure
 
@@ -34,8 +34,10 @@ Bij het plannen van de beoordeling van een groot aantal virtuele VMware-machines
 
 - **Azure migrate projecten plannen**: Ontdek hoe u Azure migrate projecten implementeert. Als uw data centers zich bijvoorbeeld in verschillende geografische grafieken bevinden, of als u de meta gegevens voor detectie, analyses of migratie wilt opslaan in een andere geografie, hebt u mogelijk meerdere projecten nodig. 
 - **Toestellen plannen**: Azure migrate gebruikt een on-premises Azure migrate apparaat, geïmplementeerd als een VMware-VM, om voortdurend vm's te detecteren. Het apparaat bewaakt omgevings wijzigingen, zoals het toevoegen van Vm's, schijven of netwerk adapters. Ook worden er meta gegevens en prestatie gegevens naar Azure verzonden. U moet bepalen hoeveel apparaten er moeten worden geïmplementeerd.
-- **Accounts voor detectie plannen**: het Azure migrate-apparaat maakt gebruik van een account met toegang tot VCenter server om vm's te ontdekken voor evaluatie en migratie. Als u meer dan 10.000 Vm's wilt detecteren, stelt u meerdere accounts in.
+- **Accounts voor detectie plannen**: het Azure migrate-apparaat maakt gebruik van een account met toegang tot VCenter server om vm's te ontdekken voor evaluatie en migratie. Als u meer dan 10.000 Vm's detecteert, moet u meerdere accounts instellen, omdat er geen overlap ping is tussen virtuele machines die zijn gedetecteerd op twee apparaten in een project. 
 
+> [!NOTE]
+> Als u meerdere apparaten instelt, zorg er dan voor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in dubbele waarden in detectie en in problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
 
 ## <a name="planning-limits"></a>Plannings limieten
  
@@ -45,18 +47,19 @@ Gebruik de limieten in deze tabel voor de planning.
 --- | --- 
 **Azure Migrate projecten** | Evalueer Maxi maal 35.000 Vm's in een project.
 **Azure Migrate-apparaat** | Een apparaat kan Maxi maal 10.000 Vm's op een vCenter Server detecteren.<br/> Een apparaat kan alleen verbinding maken met één vCenter Server.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/>  Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
-**Gegroepeerd** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
+**Groep** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
 **Azure Migrate beoordeling** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 Hieronder volgen enkele voor beelden van implementaties:
 
 
 **vCenter-Server** | **Vm's op server** | **Aanbeveling** | **Actie**
----|---|---
+---|---|---|---
 Eén | < 10.000 | Eén Azure Migrate-project.<br/> Eén apparaat.<br/> Een vCenter-account voor detectie. | Apparaat instellen, verbinding maken met vCenter Server met een account.
-Eén | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Stel het apparaat in voor elke 10.000 Vm's.<br/><br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
+Eén | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Stel het apparaat in voor elke 10.000 Vm's.<br/><br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten. <br/> <br/> Zorg ervoor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in een duplicaat van de detectie en problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
 Meerdere | < 10.000 |  Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Een vCenter-account voor detectie. | Toestellen instellen, verbinding maken met vCenter Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
-Meerdere | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Als vCenter Server detectie < 10.000 Vm's, moet u voor elke vCenter Server een apparaat instellen.<br/><br/> Als vCenter Server detectie > 10.000 Vm's, stelt u een apparaat in voor elke 10.000 Vm's.<br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
+Meerdere | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Als vCenter Server detectie < 10.000 Vm's, moet u voor elke vCenter Server een apparaat instellen.<br/><br/> Als vCenter Server detectie > 10.000 Vm's, stelt u een apparaat in voor elke 10.000 Vm's.<br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten. <br/><br/> Zorg ervoor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in een duplicaat van de detectie en problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
+
 
 
 ## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Detectie plannen in een omgeving met meerdere tenants

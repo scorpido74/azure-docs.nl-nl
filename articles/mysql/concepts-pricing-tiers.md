@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119885"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171015"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL prijs Categorieën
 
 U kunt een Azure Database for MySQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MySQL-server. Een server kan een of meer data bases bevatten.
 
-| Kenmerk   | **Standaard** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Kenmerk   | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -83,11 +83,11 @@ Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik m
 
 Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Back-upopslag 
 
-De service maakt automatisch back-ups van uw server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups. Meer informatie over back-ups vindt u in het [artikel concepten](concepts-backup.md).
+Azure Database for MySQL biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Back-upopslag die u voor dit bedrag overschrijdt, wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server met 250 GB opslag ruimte inricht, hebt u 250 GB extra opslag ruimte beschikbaar voor Server back-ups. Opslag voor back-ups die groter is dan 250 GB, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/mysql/). U kunt de [back-updocumentatie](concepts-backup.md)raadplegen voor meer informatie over factoren die van invloed zijn op het gebruik van back-ups, het bewaken en beheren van back-upopslag.
 
-## <a name="scale-resources"></a>Resources omhoog/omlaag schalen
+## <a name="scale-resources"></a>Resources schalen
 
 Nadat u de server hebt gemaakt, kunt u de vCores, de generatie van de hardware, de prijs categorie (met uitzonde ring van en van basis), de hoeveelheid opslag en de Bewaar periode voor back-ups afzonderlijk wijzigen. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Het aantal vCores kan omhoog of omlaag worden geschaald. De Bewaar periode van de back-up kan worden uitgebreid of omlaag van 7 tot 35 dagen. De opslag grootte kan alleen worden verhoogd. U kunt de resources verg Roten of verkleinen via de portal of Azure CLI. Zie [een Azure database for mysql server bewaken en schalen met behulp van Azure cli](scripts/sample-scale-server.md)voor een voor beeld van schalen met behulp van Azure cli.
 

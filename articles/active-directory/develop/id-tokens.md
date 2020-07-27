@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027101"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170518"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -87,7 +87,7 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 |`ver` | Teken reeks, ofwel 1,0 of 2,0 | Hiermee wordt de versie van de id_token. |
 
 > [!NOTE]
-> De id_token v 1.0 en v 22.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](about-microsoft-identity-platform.md) is door de jaren ontwikkeld. Er zijn momenteel twee verschillende Outh-eind punten voor Azure AD-toepassingen. U kunt een van de nieuwe eind punten gebruiken die zijn gecategoriseerd als v 2.0 of v 1.0. De OAuth-eind punten voor beide zijn verschillend. Het v 2.0-eind punt is nieuwer en de functies van het eind punt v 1.0 worden naar dit eind punt gemigreerd. Nieuwe ontwikkel aars moeten het v 2.0-eind punt gebruiken.
+> De id_token v 1.0 en v 2.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](about-microsoft-identity-platform.md) is door de jaren ontwikkeld. Er zijn momenteel twee verschillende Outh-eind punten voor Azure AD-toepassingen. U kunt een van de nieuwe eind punten gebruiken die zijn gecategoriseerd als v 2.0 of v 1.0. De OAuth-eind punten voor beide zijn verschillend. Het v 2.0-eind punt is nieuwer en de functies van het eind punt v 1.0 worden naar dit eind punt gemigreerd. Nieuwe ontwikkel aars moeten het v 2.0-eind punt gebruiken.
 >
 > - v 1.0: Azure AD-eind punten:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: micro soft identitypPlatform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

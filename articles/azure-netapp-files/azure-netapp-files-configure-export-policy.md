@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483649"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169826"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportbeleid voor een NFS-volume configureren
 
-U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp Files-volume te beheren. Azure NetApp Files export beleid ondersteunt alleen NFS-volumes.  Zowel NFSv3 als NFSv4 worden ondersteund. 
+U kunt beleid voor exporteren configureren om de toegang tot een Azure NetApp Files volume te beheren. Azure NetApp Files export beleid ondersteunt volumes die gebruikmaken van het NFS-protocol (zowel NFSv3 als NFSv 4.1) als het dubbele Protocol (NFSv3 en SMB). 
+
+U kunt Maxi maal vijf export beleids regels maken.
 
 ## <a name="steps"></a>Stappen 
 
-1.  Klik op **beleid exporteren** in het navigatie deel venster Azure NetApp files. 
+1.  Selecteer op de pagina volumes het volume waarvoor u het export beleid wilt configureren en klik op **beleid exporteren**. 
+
+    U kunt het export beleid ook configureren tijdens het maken van het volume.
 
 2.  Geef voor de volgende velden informatie op om een exportbeleidsregel te maken:   
     *  **TabIndex**   
@@ -39,7 +43,11 @@ U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp F
         * Lezen en schrijven
         * Alleen-lezen
 
-    ![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **Hoofd toegang**  
+        Geef op of het `root` account toegang heeft tot het volume.  Hoofd toegang is standaard ingesteld **op aan**en het `root` account heeft toegang tot het volume.
+
+        ![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>Volgende stappen 

@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65ff0ab03abdbd3b403d37700dc8df4fa5eee73a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116586"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169426"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -87,7 +87,7 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app
 
 Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 
-1. Onder **beheren**selecteert u **een API zichtbaar**maken.
+1. Selecteer in het linkermenu onder **beheren** **een API zichtbaar**maken.
 1. Selecteer **een bereik toevoegen**en selecteer vervolgens **opslaan en ga door met** het accepteren van de standaard toepassings-id-URI.
 1. Voer de volgende waarden in om een bereik te maken waarmee aangepaste beleids regels kunnen worden uitgevoerd in uw Azure AD B2C-Tenant:
     * **Scope naam**:`user_impersonation`
@@ -110,13 +110,13 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 
 Geef vervolgens op dat de toepassing moet worden behandeld als een open bare client:
 
-1. Selecteer **Verificatie** onder **Beheren**.
+1. Selecteer in het menu links onder **beheren**de optie **verificatie**.
 1. Schakel onder **Geavanceerde instellingen** **de optie toepassing behandelen als een open bare client** in (Selecteer **Ja**). Zorg ervoor dat **' allowPublicClient ': True '** is ingesteld in het manifest van de toepassing. 
 1. Selecteer **Opslaan**.
 
 Ken nu machtigingen toe aan het API-bereik dat u eerder hebt weer gegeven in de *IdentityExperienceFramework* -registratie:
 
-1. Selecteer onder **Beheren** de optie **API-machtigingen**.
+1. Selecteer in het menu links onder **beheren**de optie **API-machtigingen**.
 1. Selecteer onder **Geconfigureerde machtigingen** de optie **Een machtiging toevoegen**.
 1. Selecteer het tabblad **mijn api's** en selecteer vervolgens de toepassing **IdentityExperienceFramework** .
 1. Selecteer onder **machtiging**het **user_impersonation** bereik dat u eerder hebt gedefinieerd.

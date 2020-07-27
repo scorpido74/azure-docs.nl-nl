@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: 6cd06c31b56ce89a13af9bae8c77dc73efd69ef7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097294"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171710"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migreren naar nieuwe Azure Time Series Insights API-versies Gen2
 
@@ -23,30 +23,30 @@ ms.locfileid: "87097294"
 
 Als u een Azure Time Series Insights Gen2-omgeving hebt gemaakt op het moment dat deze in open bare Preview was (vóór 16 juli 2020), moet u de omgeving van de TSI bijwerken met de nieuwe algemene beschik bare versies van Api's door de stappen te volgen die in dit artikel worden beschreven.
 
-De nieuwe API-versie is `2020-07-31` en gebruikt een bijgewerkte syntaxis van de [expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax). 
+De nieuwe API-versie is `2020-07-31` en gebruikt een bijgewerkte syntaxis van de [expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 Gebruikers moeten de [tijdreeks model variabelen](./concepts-variables.md), opgeslagen query's, Power bi query's en aangepaste hulp middelen voor het maken van aanroepen naar de API-eind punten migreren. Als u vragen hebt of problemen hebt met betrekking tot het migratie proces, verzendt u een ondersteunings ticket via de Azure Portal en vermeldt u dit document.
 
 > [!IMPORTANT]
-> De preview API `2018-11-01-preview` -versie wordt nog steeds ondersteund tot en met 31 oktober 2020. Voltooi alle van toepassing zijnde stappen van deze migratie voordat u onderbrekingen in de service kunt voor komen. 
+> De preview API `2018-11-01-preview` -versie wordt nog steeds ondersteund tot en met 31 oktober 2020. Voltooi alle van toepassing zijnde stappen van deze migratie voordat u onderbrekingen in de service kunt voor komen.
 
 ## <a name="migrate-time-series-model-and-saved-queries"></a>Time Series model en opgeslagen query's migreren
 
-Om gebruikers te helpen hun [Time Series-model variabelen](./concepts-variables.md) en opgeslagen query's te migreren, is er een ingebouwd hulp programma beschikbaar via de [Azure time series Insights Explorer](https://insights.timeseries.azure.com). Ga naar de omgeving die u wilt migreren en voer de onderstaande stappen uit. **U kunt de migratie gedeeltelijk volt ooien en teruggaan om deze later te volt ooien, maar geen van de updates kan worden teruggedraaid.** 
+Om gebruikers te helpen hun [Time Series-model variabelen](./concepts-variables.md) en opgeslagen query's te migreren, is er een ingebouwd hulp programma beschikbaar via de [Azure time series Insights Explorer](https://insights.timeseries.azure.com). Ga naar de omgeving die u wilt migreren en voer de onderstaande stappen uit. **U kunt de migratie gedeeltelijk volt ooien en teruggaan om deze later te volt ooien, maar geen van de updates kan worden teruggedraaid.**
 
 > [!NOTE]
 > U moet een bijdrager aan de omgeving zijn om updates te kunnen aanbrengen in het tijdreeks model en opgeslagen query's. Als u geen bijdrager bent, kunt u uw persoonlijke opgeslagen query's alleen migreren. Controleer het [toegangs beleid](./concepts-access-policies.md) voor de omgeving en uw toegangs niveau voordat u verdergaat.
 
-1. U wordt gevraagd om de syntaxis bij te werken die wordt gebruikt door uw time series model-variabelen en opgeslagen query's. 
-   
+1. U wordt gevraagd om de syntaxis bij te werken die wordt gebruikt door uw time series model-variabelen en opgeslagen query's.
+
     [![Vragen](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
-    
-    Als u de melding per ongeluk hebt gesloten, kunt u deze vinden in het deel venster meldingen. 
+
+    Als u de melding per ongeluk hebt gesloten, kunt u deze vinden in het deel venster meldingen.
 
 1. Klik op **updates weer geven** om het migratie programma te openen.
-    
-1. Klik op **typen downloaden**. Aangezien de huidige typen door de migratie worden overschreven om de syntaxis van variabelen te wijzigen, moet u een kopie van uw huidige typen opslaan. Het hulp programma waarschuwt u wanneer er typen zijn gedownload. 
-   
+
+1. Klik op **typen downloaden**. Aangezien de huidige typen door de migratie worden overschreven om de syntaxis van variabelen te wijzigen, moet u een kopie van uw huidige typen opslaan. Het hulp programma waarschuwt u wanneer er typen zijn gedownload.
+
     [![Download typen](media/api-migration/ux-migration-tool.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 1. Klik op **variabelen bijwerken**. Het hulp programma waarschuwt u wanneer er variabelen zijn bijgewerkt.
@@ -56,39 +56,38 @@ Om gebruikers te helpen hun [Time Series-model variabelen](./concepts-variables.
 
     [![Variabelen bijwerken](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-2. Klik op **opgeslagen Query's bijwerken**. Het hulp programma waarschuwt u wanneer er variabelen zijn bijgewerkt.
-   
+1. Klik op **opgeslagen Query's bijwerken**. Het hulp programma waarschuwt u wanneer er variabelen zijn bijgewerkt.
+
     [![Opgeslagen query's bijwerken](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-3. Klik op **Gereed**.
+1. Klik op **Gereed**.
 
     [![Migratie is voltooid](media/api-migration/ux-migration-tool-updated-saved-queries.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-
-Controleer de bijgewerkte omgeving door een aantal van de nieuwe variabelen en opgeslagen query's te maken. Als u een onverwacht gedrag tijdens het maken van grafieken ziet, kunt u ons feedback sturen met het feedback-hulp programma in de Explorer. 
+Controleer de bijgewerkte omgeving door een aantal van de nieuwe variabelen en opgeslagen query's te maken. Als u een onverwacht gedrag tijdens het maken van grafieken ziet, kunt u ons feedback sturen met het feedback-hulp programma in de Explorer.
 
 ## <a name="migrate-power-bi-queries"></a>Power BI query's migreren
 
-Als u query's hebt gegenereerd met behulp van de Power BI-connector, worden deze aanroepen naar Azure Time Series Insights met behulp van de API-preview-versie en de syntaxis van de expressie voor de oude tijd reeks. Deze query's blijven gegevens ophalen totdat de preview-API is afgeschaft. 
+Als u query's hebt gegenereerd met behulp van de Power BI-connector, worden deze aanroepen naar Azure Time Series Insights met behulp van de API-preview-versie en de syntaxis van de expressie voor de oude tijd reeks. Deze query's blijven gegevens ophalen totdat de preview-API is afgeschaft.
 
-Voor het bijwerken van de query's voor het gebruik van de nieuwe API-versie en de syntaxis van de nieuwe time series-expressie moeten query's opnieuw worden gegenereerd vanuit de Explorer. Lees meer over [het maken van query's met behulp van de Power bi-connector](./how-to-connect-power-bi.md). 
+Voor het bijwerken van de query's voor het gebruik van de nieuwe API-versie en de syntaxis van de nieuwe time series-expressie moeten query's opnieuw worden gegenereerd vanuit de Explorer. Lees meer over [het maken van query's met behulp van de Power bi-connector](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> U moet de versie van Power BI Desktop van juli 2020 gebruiken. Als dat niet het geval is, ziet u mogelijk een [Ongeldige query Payload-versie fout](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect). 
+> U moet de versie van Power BI Desktop van juli 2020 gebruiken. Als dat niet het geval is, ziet u mogelijk een [Ongeldige query Payload-versie fout](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect).
 
 ## <a name="migrate-custom-applications"></a>Aangepaste toepassingen migreren
 
-Als uw aangepaste toepassing aanroepen naar de volgende REST-eind punten aanroept, is het voldoende om de API-versie bij te werken naar `2020-07-31` in de URI: 
+Als uw aangepaste toepassing aanroepen naar de volgende REST-eind punten aanroept, is het voldoende om de API-versie bij te werken naar `2020-07-31` in de URI:
 
 - Api's voor time series model
   - Api's voor model instellingen
-    - [Toevoegen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Bijwerken](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
-  - Exemplaar-Api's 
+  - Exemplaar-Api's
     - [Alle batch bewerkingen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [List](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
     - [Zoeken](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [Maken](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [Voorstellen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Hiërarchie-Api's
     - [Alle batch bewerkingen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
     - [List](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
@@ -96,8 +95,7 @@ Als uw aangepaste toepassing aanroepen naar de volgende REST-eind punten aanroep
     - [Verwijderen, bewerkingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [List](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-
-Voor de volgende REST-eind punten moet u de API-versie bijwerken naar `2020-07-31` in de URI en zorgen dat alle exemplaren van de `tsx` eigenschap de bijgewerkte syntaxis van de [expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)gebruiken. 
+Voor de volgende REST-eind punten moet u de API-versie bijwerken naar `2020-07-31` in de URI en zorgen dat alle exemplaren van de `tsx` eigenschap de bijgewerkte syntaxis van de [expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)gebruiken.
 
 - Typen-Api's
   - [Put-bewerking](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -106,12 +104,12 @@ Voor de volgende REST-eind punten moet u de API-versie bijwerken naar `2020-07-3
   - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
-
 ### <a name="examples"></a>Voorbeelden
 
 #### <a name="typesbatchput"></a>TypesBatchPut
 
-Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ): 
+Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
+
 ```JSON
 {
   "put": [
@@ -139,6 +137,7 @@ Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
 ```
 
 Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
+
 ```JSON
 {
   "put": [
@@ -169,7 +168,8 @@ U `filter` kunt de ook `$event.Mode.String = 'outdoor'` . De `value` moet de haa
 
 #### <a name="getevents"></a>GetEvents
 
-Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ): 
+Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
+
 ```JSON
 {
   "getEvents": {
@@ -195,6 +195,7 @@ Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
 ```
 
 Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
+
 ```JSON
 {
   "getEvents": {
@@ -219,10 +220,12 @@ Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
 }
 ```
 
-U `filter` kunt de ook `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` . 
+U `filter` kunt de ook `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` .
 
 #### <a name="getseries"></a>GetSeries
-Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ): 
+
+Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
+
 ```JSON
 {
   "getSeries": {
@@ -252,6 +255,7 @@ Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
 ```
 
 Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
+
 ```JSON
 {
   "getSeries": {
@@ -280,10 +284,12 @@ Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
 }
 ```
 
-U `value` kunt de ook `$event['Bar-Pressure-Offset'].Double` . Als er geen gegevens type is opgegeven, wordt ervan uitgegaan dat het gegevens type Double is. De haakjes notatie moet worden gebruikt om het speciale teken () te escapeel `-` . 
+U `value` kunt de ook `$event['Bar-Pressure-Offset'].Double` . Als er geen gegevens type is opgegeven, wordt ervan uitgegaan dat het gegevens type Double is. De haakjes notatie moet worden gebruikt om het speciale teken () te escapeel `-` .
 
 #### <a name="getaggregateseries"></a>GetAggregateSeries
-Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ): 
+
+Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
+
 ```JSON
 {
   "aggregateSeries": {
@@ -314,6 +320,7 @@ Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
 ```
 
 Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
+
 ```JSON
   "aggregateSeries": {
     "timeSeriesId": [

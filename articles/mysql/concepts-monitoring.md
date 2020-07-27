@@ -6,11 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bb4a6c0f37ceaf1e9fc6c28f08b98bb4449e65
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414110"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171307"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Bewaking in Azure Database for MySQL
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MySQL biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
@@ -21,7 +22,7 @@ Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elk
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Description|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Het percentage CPU-gebruik.|
 |memory_percent|Geheugen percentage|Percentage|Het percentage geheugen dat in gebruik is.|
@@ -32,12 +33,12 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
 |serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
 |storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
-|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
-|connections_failed|Mislukte verbindingen|Count|Het aantal mislukte verbindingen met de server.|
-|seconds_behind_master|Replicatie vertraging in seconden|Count|Het aantal seconden dat de replica server bewaart tegen de hoofd server.|
+|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
+|connections_failed|Mislukte verbindingen|Aantal|Het aantal mislukte verbindingen met de server.|
+|seconds_behind_master|Replicatie vertraging in seconden|Aantal|Het aantal seconden dat de replica server bewaart tegen de hoofd server.|
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
-|backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt.|
+|backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups wordt beheerd door de service en uitgelegd in het [artikel concepten](concepts-backup.md). Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag.|
 
 ## <a name="server-logs"></a>Serverlogboeken
 U kunt langzame query-en controle logboek registratie inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in Azure Monitor-logboeken, Event Hubs en opslag account. Ga voor meer informatie over logboek registratie naar de artikelen [audit logs](concepts-audit-logs.md) en [Slow query logs](concepts-server-logs.md) .

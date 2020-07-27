@@ -5,19 +5,25 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd4ddc5b6b685813740aed63cc6f446bc66e8169
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123605"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170097"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Uw eerste functie maken in Azure Portal
 
 Met Azure Functions kunt u uw code in een serverloze omgeving uitvoeren zonder dat u eerst een virtuele machine (VM) hoeft te maken of een webtoepassing moet publiceren. In dit artikel leert u hoe u Azure Functions kunt gebruiken om een ' Hallo wereld ' HTTP-trigger functie te maken in de Azure Portal.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+We raden u aan [uw functies lokaal te ontwikkelen](functions-develop-local.md) en te publiceren naar een functie-app in Azure.  
+Gebruik een van de volgende koppelingen om aan de slag te gaan met de gekozen lokale ontwikkel omgeving en-taal:
 
-Als u C#-ontwikkel aars bent, kunt u [uw eerste functie maken in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) in plaats van in de portal. 
+| Visual Studio Code | Terminal/opdracht prompt | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[Aan de slag met C #](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Aan de slag met Java](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[Aan de slag met Java script](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[Aan de slag met Power shell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Aan de slag met python](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[Aan de slag met C #](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Aan de slag met Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[Aan de slag met Java script](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[Aan de slag met Power shell](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Aan de slag met python](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [Aan de slag met C #](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

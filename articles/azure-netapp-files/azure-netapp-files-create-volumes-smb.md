@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483700"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169976"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -196,7 +196,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.
 
-    * **Quota**  
+    * **Quotum**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
 
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.  
@@ -215,6 +215,12 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
         ![ Een volume maken](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Subnet maken](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Als u een bestaand momentopname beleid wilt Toep assen op het volume, klikt u op de **sectie Geavanceerd weer geven** om deze uit te vouwen en selecteert u een beleid voor moment opnamen in de vervolg keuzelijst. 
+
+        Zie [moment opnamen beheren](azure-netapp-files-manage-snapshots.md)voor meer informatie over het maken van een momentopname beleid.
+
+        ![Geavanceerde selectie weer geven](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. Klik op **protocol** en voer de volgende informatie uit:  
     * Selecteer **SMB** als het protocol type voor het volume. 
