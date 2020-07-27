@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 2cfd376f595ae70daf9ab468d464dd9c8ff13d74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 994a7726adec07f2f6533d460d05469a0f3c7bf3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102612"
 ---
 | Resource | Limiet |
 | --- | --- |
-| [Virtuele machines](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) per Cloud service<sup>1</sup> |50 |
-| Invoer eindpunten per Cloud service<sup>2</sup> |150 |
+| Virtuele machines per cloudservice <sup>1</sup> |50 |
+| Invoereindpunten per cloudservice <sup>2</sup> |150 |
 
-<sup>1</sup> Virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model in plaats van Azure Resource Manager, worden automatisch opgeslagen in een Cloud service. U kunt meer virtuele machines toevoegen aan die Cloud service voor taak verdeling en beschik baarheid. 
+<sup>1</sup> Virtuele machines die zijn gemaakt met behulp van het klassieke implementatiemodel in plaats van Azure Resource Manager worden automatisch opgeslagen in een cloudservice. U kunt meer virtuele machines toevoegen aan die cloudservice voor taakverdeling en beschikbaarheid. 
 
-<sup>2</sup> Met invoer eindpunten kunnen berichten van buiten de Cloud service van de virtuele machine worden gecommuniceerd naar een virtuele machine. Virtuele machines in dezelfde Cloud service of een virtueel netwerk kunnen automatisch met elkaar communiceren. Zie [eind punten instellen voor een virtuele machine](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer informatie. 
+<sup>2</sup> Invoereindpunten staan communicatie toe naar een virtuele machine buiten de cloudservice van die virtuele machine. Virtuele machines in dezelfde cloudservice of een virtueel netwerk kunnen automatisch met elkaar communiceren.  

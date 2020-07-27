@@ -60,6 +60,8 @@
         - name: Kies uw marketplace-voordelen
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Voordeel van Azure-verbruikstoezegging
+              href: ./azure-consumption-commitment-benefit.md
             - name: Betrokkenheid van partner bij collectieve verkoop
               href: ./marketplace-co-sell.md
             - name: Voorkeursoplossingen

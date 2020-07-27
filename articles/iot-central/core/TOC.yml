@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: Wat zijn apparaatsjablonen?
       href: concepts-device-templates.md
+    - name: Berichten sturen naar nettoladingen
+      href: concepts-telemetry-properties-commands.md
     - name: Connectiviteit van apparaten
       href: concepts-get-connected.md
     - name: IoT Edge-apparaten verbinden

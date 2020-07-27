@@ -6,7 +6,7 @@
       href: stream-analytics-introduction.md
     - name: End-to-end-oplossingspatronen
       href: stream-analytics-solution-patterns.md
-- name: Snelstartgidsen
+- name: Snelstarts
   expanded: true
   items:
     - name: Een taak maken
@@ -53,6 +53,9 @@
       href: develop-locally.md
     - name: Beveiliging
       items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Invoertypen voor een taak

@@ -2,32 +2,58 @@
   href: index.yml
 - name: Overzicht
   items:
-    - name: Meer informatie over Time Series Insights
-      href: time-series-insights-update-overview.md
-- name: Snelstartgidsen
+    - name: Wat is Time Series Insights Gen2?
+      href: overview-what-is-tsi.md
+    - name: Gebruiksvoorbeelden
+      href: overview-use-cases.md
+- name: Snelstarts
   expanded: true
   items:
-    - name: Azure Time Series Insights GA
-      items:
-        - name: Time Series Insights verkennen
-          href: time-series-quickstart.md
-    - name: Azure Time Series Insights preview
-      items:
-        - name: Time Series Insights preview verkennen
-          href: time-series-insights-update-quickstart.md
+    - name: Time Series Insights Gen 2 verkennen
+      href: quickstart-explore-tsi.md
 - name: Zelfstudies
   items:
-    - name: Azure Time Series Insights GA
-      items:
-        - name: Een Time Series Insights-omgeving maken
-          href: tutorial-create-populate-tsi-environment.md
-    - name: Azure Time Series Insights preview
-      items:
-        - name: Een voorbeeldomgeving instellen
-          href: time-series-insights-update-create-environment.md
+    - name: Een Time Series Insights Gen 2-omgeving instellen
+      href: tutorials-set-up-tsi-environment.md
 - name: Concepten
   items:
-    - name: Azure Time Series Insights GA
+    - name: Azure Time Series Insights Gen2
+      items:
+        - name: Opname en opslag
+          items:
+            - name: Overzicht van gegevensopname
+              href: concepts-ingestion-overview.md
+            - name: Ondersteunde gegevenstypen
+              href: concepts-supported-data-types.md
+            - name: Gebeurtenisbronnen voor streamingopname
+              href: concepts-streaming-ingestion-event-sources.md
+            - name: JSON-afvlakking en escape-regels
+              href: concepts-json-flattening-escaping-rules.md
+            - name: Doorvoerbeperking voor streamingopname
+              href: concepts-streaming-ingress-throughput-limits.md
+            - name: Storage
+              href: concepts-storage.md
+        - name: Model
+          items:
+            - name: Overzicht van modellen
+              href: concepts-model-overview.md
+            - name: Variabelen
+              href: concepts-variables.md
+        - name: Query’s uitvoeren
+          items:
+            - name: Overzicht van query's
+              href: concepts-query-overview.md
+        - name: Visualiseren in Explorer
+          items:
+            - name: UX-panelen
+              href: concepts-ux-panels.md
+        - name: Wijzigingen die fouten veroorzaken
+          items:
+            - name: Ondersteuning toevoegen voor lang gegevenstype
+              href: breaking-changes-long-data-type.md
+            - name: Wijzigingen in JSON-afvlakking en -opslag
+              href: ingestion-rules-update.md
+    - name: Azure Time Series Insights Gen1
       items:
         - name: Meer informatie over Time Series Insights
           href: time-series-insights-overview.md
@@ -37,61 +63,61 @@
           href: time-series-insights-explorer.md
         - name: Inzicht in gegevensretentie
           href: time-series-insights-concepts-retention.md
-        - name: Ontwikkelen
-          items:
-            - name: Verifiëren en autoriseren
-              href: time-series-insights-authentication-and-authorization.md
-            - name: Gegevens opvragen met C#
-              href: time-series-insights-query-data-csharp.md
-            - name: Referentiegegevens beheren in C#
-              href: time-series-insights-manage-reference-data-csharp.md
-            - name: Een aangepaste weergave delen
-              href: time-series-insights-parameterized-urls.md
-    - name: Azure Time Series Insights preview
+    - name: Ontwikkelen
       items:
-        - name: Gebruiksvoorbeelden
-          href: time-series-insights-update-use-cases.md
-        - name: Uw omgeving plannen
-          href: time-series-insights-update-plan.md
-        - name: Overzicht van gegevensopname
-          href: concepts-ingestion-overview.md
-        - name: Ondersteunde gegevenstypen
-          href: concepts-supported-data-types.md
-        - name: Gebeurtenisbronnen voor streamingopname
-          href: concepts-streaming-ingestion-event-sources.md
-        - name: JSON-afvlakking en escape-regels
-          href: concepts-json-flattening-escaping-rules.md
-        - name: Doorvoerbeperking voor streamingopname
-          href: concepts-streaming-throughput-limitations.md
-        - name: Storage
-          href: concepts-storage.md
-        - name: Time Series-model
-          href: concepts-model-overview.md
-        - name: Time Series-query
-          href: concepts-query-overview.md
-        - name: Gegevens visualiseren in de verkenner - preview
-          href: time-series-insights-update-explorer.md
-        - name: Ontwikkelen
-          items:
-            - name: Verifiëren en autoriseren
-              href: time-series-insights-authentication-and-authorization.md
-            - name: Gegevens opvragen met C#
-              href: time-series-insights-update-query-data-csharp.md
-            - name: Integratie met Power BI
-              href: concepts-power-bi.md
+        - name: Verifiëren en autoriseren
+          href: time-series-insights-authentication-and-authorization.md
+        - name: Gegevens opvragen met C#
+          href: time-series-insights-query-data-csharp.md
+        - name: Referentiegegevens beheren in C#
+          href: time-series-insights-manage-reference-data-csharp.md
+        - name: Een aangepaste weergave delen
+          href: time-series-insights-parameterized-urls.md
 - name: Instructiegidsen
   items:
     - name: Gegevenstoegang verlenen
-      href: time-series-insights-data-access.md
+      href: concepts-access-policies.md
     - name: Verbinding maken met Event Hubs
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: Verbinding maken met IoT Hub
       href: time-series-insights-how-to-add-an-event-source-iothub.md
     - name: Resources beheren met sjablonen
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
-    - name: Azure Time Series Insights GA
+    - name: Azure Time Series Insights Gen2
       items:
-        - name: Een omgeving maken
+        - name: Aanbevolen procedures
+          items:
+            - name: Uw omgeving plannen
+              href: how-to-plan-your-environment.md
+        - name: Omgevingsbeheer
+          items:
+            - name: Inrichten en beheer
+              href: how-to-provision-manage.md
+            - name: Problemen vaststellen en oplossen
+              href: how-to-diagnose-troubleshoot.md
+        - name: Opname en opslag
+          items:
+            - name: Een TSID selecteren
+              href: how-to-select-tsid.md
+        - name: Model
+          items:
+            - name: Uw model bewerken
+              href: how-to-edit-your-model.md
+        - name: Connectors
+          items:
+            - name: Verbinding maken met Power BI
+              href: how-to-connect-power-bi.md
+        - name: Migraties
+          items:
+            - name: Migreren naar nieuwe API-versies
+              href: how-to-api-migration.md
+    - name: Azure Time Series Insights Gen1
+      items:
+        - name: Time Series Insights verkennen
+          href: time-series-quickstart.md
+        - name: Een omgeving maken en vullen
+          href: tutorial-create-populate-tsi-environment.md
+        - name: Een omgeving maken in Azure-portal
           href: time-series-insights-get-started.md
         - name: Gegevensretentie configureren
           href: time-series-insights-how-to-configure-retention.md
@@ -107,60 +133,86 @@
           href: time-series-insights-environment-mitigate-latency.md
         - name: Problemen vaststellen en oplossen
           href: time-series-insights-diagnose-and-solve-problems.md
-    - name: Azure Time Series Insights preview
-      items:
-        - name: Inrichten en beheren
-          href: time-series-insights-update-how-to-manage.md
-        - name: Een Time Series-id kiezen
-          href: time-series-insights-update-how-to-id.md
-        - name: Problemen vaststellen en oplossen
-          href: time-series-insights-update-how-to-troubleshoot.md
-        - name: Gegevensmodellering
-          href: time-series-insights-update-how-to-tsm.md
-        - name: JSON vormen voor opname en query's
-          href: time-series-insights-update-how-to-shape-events.md
-        - name: Verbinding maken met Power BI
-          href: how-to-connect-power-bi.md
-- name: Wijzigingen die fouten veroorzaken
-  items:
-    - name: Azure Time Series Insights preview
-      items:
-        - name: Ondersteuning toevoegen voor lang gegevenstype
-          href: time-series-insights-long-data-type.md
-        - name: Wijzigingen in JSON-afvlakking en -opslag
-          href: ingestion-rules-update.md
 - name: Naslaginformatie
   items:
     - name: Time Series Insights
       items:
-        - name: Azure Time Series Insights
-          href: /rest/api/time-series-insights/index
-        - name: Gegevenstoegang GA
-          href: /rest/api/time-series-insights/ga
+        - name: Overzicht van REST-API’s
+          href: 'https://docs.microsoft.com/rest/api/time-series-insights/'
+        - name: Data Access Gen2
           items:
-            - name: Query’s uitvoeren
-              href: /rest/api/time-series-insights/ga-query
+            - name: Overzicht
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/preview'
+            - name: Modelinstellingen
               items:
+                - name: Overzicht
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings'
+                - name: Ophalen
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get'
+                - name: Bijwerken
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update'
+            - name: Query’s uitvoeren
+              items:
+                - name: Overzicht
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query'
+                - name: Uitvoeren
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute'
+                - name: Beschikbaarheid ophalen
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability'
+                - name: Gebeurtenisschema ophalen
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema'
+            - name: Tijdsreekshiërarchieën
+              items:
+                - name: Overzicht
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies'
+                - name: Batch uitvoeren
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch'
+                - name: Ophalen
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
+            - name: Tijdreeksinstanties
+              items:
+                - name: Overzicht
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances'
+                - name: Batch uitvoeren
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch'
+                - name: Ophalen
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
+                - name: Search
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search'
+                - name: Voorstellen
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest'
+            - name: Time Series-types
+              items:
+                - name: Overzicht
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes'
+                - name: Batch uitvoeren
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch'
+                - name: Ophalen
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list'
+        - name: Data Access Gen1
+          items:
+            - name: Overzicht
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga'
+            - name: Query’s uitvoeren
+              items:
+                - name: Query’s uitvoeren
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query'
                 - name: API
-                  href: /rest/api/time-series-insights/ga-query-api
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api'
                 - name: Syntaxis
-                  href: /rest/api/time-series-insights/ga-query-syntax
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax'
             - name: API voor verwijzingsgegevens
-              href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Preview van concepten voor gegevenstoegang
-          href: /rest/api/time-series-insights/preview
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api'
     - name: Client-SDK
       items:
         - name: JavaScript-client-SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
-      displayName: az iot
+      href: 'https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest'
 - name: Resources
-  expanded: true
   items:
     - name: Opties voor ondersteuning en hulp
-      href: /azure/iot-fundamentals/iot-support-help
+      href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
     - name: Aanvragen van klantgegevens
       href: time-series-insights-customer-data-requests.md
     - name: Bronnen voor ontwikkelaars
@@ -181,6 +233,22 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Beschikbaarheid in regio’s
           href: 'https://azure.microsoft.com/regions/services/'
+    - name: Opties voor ondersteuning en hulp
+      items:
+        - name: Ondersteuningsopties in Azure
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Opties voor ondersteuning en hulp voor Azure IoT
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN-forum
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: Feedback en forums
+      items:
+        - name: MSDN-forum
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Productaanvragen en -suggesties
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure-video's
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9-video's

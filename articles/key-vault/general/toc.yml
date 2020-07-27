@@ -1,20 +1,28 @@
 - name: Algemeen
   href: index.yml
 - name: Overzicht
-  expanded: true
   items:
     - name: Over Azure Key Vault
       href: overview.md
     - name: 'Over sleutels, geheimen en certificaten'
       href: about-keys-secrets-certificates.md
+- name: Snelstarts
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Portal
+      href: quick-create-portal.md
 - name: Zelfstudies
   items:
     - name: Virtuele Azure-machine
       items:
-        - name: Azure Key Vault gebruiken met een Windows-VM in .NET
-          href: tutorial-net-windows-virtual-machine.md
-        - name: Azure Key Vault gebruiken met een Windows-VM in Python
-          href: tutorial-python-windows-virtual-machine.md
+        - name: Azure Key Vault gebruiken met een virtuele machine in .NET
+          href: tutorial-net-virtual-machine.md
+        - name: Azure Key Vault gebruiken met een virtuele machine in Python
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: Azure Key Vault integreren met Kubernetes
@@ -117,15 +125,11 @@
     - name: Azure Key Vault verplaatsen
       items:
         - name: Key Vault verplaatsen naar een andere resourcegroep
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: Key Vault verplaatsen naar een ander abonnement
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: Key Vault verplaatsen naar een andere regio
-          href: keyvault-moveregion.md
-    - name: Problemen oplossen
-      items:
-        - name: De tenant-id van de sleutelkluis wijzigen na verplaatsing van een abonnement
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: Naslaginformatie
   items:
     - name: REST API-foutcodes - Azure Key Vault

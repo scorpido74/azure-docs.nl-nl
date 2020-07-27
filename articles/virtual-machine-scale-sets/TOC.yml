@@ -5,7 +5,6 @@
     - name: Wat zijn schaalsets voor virtuele machines?
       href: overview.md
 - name: Snelstartgidsen
-  expanded: true
   items:
     - name: Maken in Azure Portal
       href: quick-create-portal.md
@@ -21,6 +20,7 @@
         - name: Windows-schaalset
           displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
+  expanded: true
 - name: Zelfstudies
   items:
     - name: 1 - Schaalset maken/beheren
@@ -102,65 +102,71 @@
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Regio's
-      href: ../virtual-machines/windows/regions.md
+      href: ../virtual-machines/regions.md
     - name: Beschikbaarheid en prestaties
-      maintainContext: true
       items:
         - name: Beschikbaarheid
-          href: availability.md
+          href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: Co-locatie
           href: co-location.md
         - name: Netwerkprestaties
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Foutdomeinen beheren in schaalsets
           href: virtual-machine-scale-sets-manage-fault-domains.md
+      maintainContext: true
     - name: Installatiekopieën
       href: shared-image-galleries.md
     - name: VM-typen en -groottes
       href: ../virtual-machines/windows/sizes.md
-      maintainContext: true
       items:
         - name: Algemeen doel
-          href: ../virtual-machines/windows/sizes-general.md
+          href: ../virtual-machines/sizes-general.md
           maintainContext: true
           items:
             - name: B-serie 'burstable'
-              href: ../virtual-machines/windows/b-series-burstable.md
+              href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
         - name: Geoptimaliseerde rekenkracht
-          href: ../virtual-machines/windows/sizes-compute.md
+          href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Geoptimaliseerd geheugen
-          href: ../virtual-machines/windows/sizes-memory.md
+          href: ../virtual-machines/sizes-memory.md
           maintainContext: true
           items:
             - name: Beperkte vCPU's
               href: ../virtual-machines/windows/constrained-vcpu.md
               maintainContext: true
         - name: Geoptimaliseerde opslag
-          href: ../virtual-machines/windows/sizes-storage.md
+          href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: Geoptimaliseerde GPU
-          href: ../virtual-machines/windows/sizes-gpu.md
+          href: ../virtual-machines/sizes-gpu.md
           maintainContext: true
           items:
             - name: NVIDIA GPU-stuurprogramma's instellen
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Krachtig rekenvermogen
-          href: ../virtual-machines/windows/sizes-hpc.md
+          href: ../virtual-machines/sizes-hpc.md
+          maintainContext: true
+        - name: Virtuele Azure-machines zonder tijdelijke schijf
+          href: ../virtual-machines/azure-vms-no-temp-disk.md
+          maintainContext: true
+        - name: Naamconventies van Azure VM-groottes
+          href: ../virtual-machines/vm-naming-conventions.md
           maintainContext: true
         - name: Azure Compute Units (ACU)
-          href: ../virtual-machines/windows/acu.md
+          href: ../virtual-machines/acu.md
           maintainContext: true
         - name: Benchmarkscores
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+      maintainContext: true
     - name: Goedgekeurde Linux-versies
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: Onderhoud en updates
-      href: ../virtual-machines/windows/maintenance-and-updates.md
+      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
     - name: Indelingsmodi
       href: orchestration-modes.md
@@ -198,11 +204,13 @@
           href: ../virtual-machines/windows/security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Basislijn voor Azure-beveiliging
+          href: security-baseline.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: Bewaking
-      href: ../virtual-machines/windows/monitor.md
+      href: ../azure-monitor/insights/monitor-vm-azure.md
       maintainContext: true
     - name: Overwegingen bij de implementatie
       items:
@@ -381,9 +389,7 @@
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure CLI
-      href: ../virtual-machines/azure-cli-arm-commands.md
+      href: /powershell/azure/
     - name: REST
       href: /rest/api/virtualmachinescalesets/
     - name: Azure-sjablonen

@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: App-groepen beheren met PowerShell
           href: manage-app-groups-powershell.md
+    - name: Een hostgroep verwijderen
+      href: delete-host-pool.md
     - name: Een profielcontainer maken
       items:
         - name: Een bestandsshare op VM-basis gebruiken
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: Office installeren op een master-VHD-installatiekopie
           href: install-office-on-wvd-master-image.md
+    - name: Sessiehosts automatisch schalen
+      href: set-up-scaling-script.md
     - name: Feed aanpassen
       href: customize-feed-for-virtual-desktop-users.md
     - name: Diagnostische gegevens van de service gebruiken
@@ -108,6 +112,8 @@
       href: store-fslogix-profile.md
     - name: Partnerintegraties
       href: partners.md
+    - name: Veelgestelde vragen over Windows Virtual Desktop
+      href: faq.md
     - name: Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
       href: windows-10-multisession-faq.md
     - name: Gegevenslocaties

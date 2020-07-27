@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Sjablonen maken - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Sjabloonspecificatie maken en implementeren
+      href: quickstart-create-template-specs.md
     - name: Azure-services
       items:
         - name: AI + Machine Learning
@@ -28,6 +30,8 @@
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databricks
               href: /azure/databricks/scenarios/quickstart-create-databricks-workspace-resource-manager-template?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Data Factory
+              href: ../../data-factory/quickstart-create-data-factory-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Event Hubs
               href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: HDInsight - Hadoop
@@ -114,6 +118,8 @@
           items:
             - name: Advisor
               href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Automation
+              href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Backup
               href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Cost Management + Facturering
@@ -201,6 +207,12 @@
         - name: 3 - Een pijplijn maken
           displayName: Devop
           href: deployment-tutorial-pipeline.md
+    - name: Sjabloonspecificaties
+      items:
+        - name: Met gekoppelde sjablonen maken
+          href: template-specs-create-linked.md
+        - name: Als gekoppelde sjabloon implementeren
+          href: template-specs-deploy-linked-template.md
     - name: Geavanceerde sjablonen
       items:
         - name: Sjabloonverwijzing gebruiken
@@ -240,6 +252,8 @@
       href: template-best-practices.md
     - name: Veelgestelde vragen
       href: frequently-asked-questions.md
+    - name: Sjabloonspecificaties
+      href: template-specs.md
     - name: Sjablonen voor de consistentie van de cloud
       href: templates-cloud-consistency.md
     - name: Implementatiemodi

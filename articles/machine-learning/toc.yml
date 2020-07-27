@@ -96,6 +96,7 @@
     - name: Enterprise- versus Basic-edities
       href: concept-editions.md
     - name: Kosten voorspellen en beheren
+      displayName: low priority VM
       href: concept-plan-manage-cost.md
     - name: Designer (ML slepen en neerzetten)
       items:
@@ -166,6 +167,9 @@
             - name: Webservices beveiligen met TLS
               displayName: ssl
               href: how-to-secure-web-service.md
+            - name: Tolerantie verhogen
+              displayName: 'high availability, disaster recovery'
+              href: how-to-high-availability-machine-learning.md
             - name: Azure AD-identiteit gebruiken in AKS-implementaties
               href: how-to-use-azure-ad-identity.md
             - name: Opslagtoegangssleutels opnieuw genereren
@@ -217,6 +221,9 @@
         - name: Softwareomgevingen instellen
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
+        - name: Privépakketten van Python gebruiken
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-private-python-packages.md
         - name: Logboekregistratie inschakelen
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
@@ -356,6 +363,9 @@
           href: how-to-deploy-and-where.md
         - name: Implementatiescenario's
           items:
+            - name: Bestaande modellen gebruiken
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
             - name: Azure ML-rekeninstanties
               href: how-to-deploy-local-container-notebook-vm.md
             - name: Azure Kubernetes Service
@@ -374,18 +384,15 @@
               href: how-to-deploy-functions.md
             - name: Azure Cognitive Search
               href: how-to-deploy-model-cognitive-search.md
-            - name: Azure IoT Edge-apparaten
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+            - name: Aangepaste Docker-afbeelding gebruiken
+              href: how-to-deploy-custom-docker-image.md
+            - name: IoT Edge
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-interferentie
               href: how-to-deploy-fpga-web-service.md
-            - name: Aangepaste Docker-installatiekopieën
-              href: how-to-deploy-custom-docker-image.md
-            - name: Niet-Azure ML-modellen
-              displayName: publish existing model
-              href: how-to-deploy-existing-model.md
         - name: Problemen oplossen en fouten opsporen
           href: how-to-troubleshoot-deployment.md
-        - name: Service-eindpunt van aanroep
+        - name: Clients maken
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Modellen bewaken
@@ -393,8 +400,6 @@
             - name: Modelgegevens verzamelen en evalueren
               displayName: track production
               href: how-to-enable-data-collection.md
-            - name: Gegevensafwijkingen detecteren
-              href: how-to-monitor-data-drift.md
             - name: Controleren met behulp van Application Insights
               href: how-to-enable-app-insights.md
         - name: Service voor versleutelde deductie implementeren

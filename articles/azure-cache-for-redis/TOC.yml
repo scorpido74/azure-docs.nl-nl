@@ -54,18 +54,20 @@
       href: cache-best-practices.md
     - name: Best practices voor architectuur voor caching
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: Instructiegidsen
+- name: Procedures
   items:
     - name: Plannen
       items:
         - name: Een cachelaag selecteren
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
         - name: Uw cache distribueren via clustering
           href: cache-how-to-premium-clustering.md
         - name: Uw cache behouden met Redis-gegevenspersistentie
           href: cache-how-to-premium-persistence.md
         - name: Uw cache beveiligen met een virtueel netwerk
           href: cache-how-to-premium-vnet.md
+        - name: Privéverbinding maken met een cache
+          href: cache-private-link.md
         - name: Geo-replicatie instellen
           href: cache-how-to-geo-replication.md
         - name: Besparen met gereserveerde capaciteit
@@ -101,9 +103,9 @@
         - name: Gegevens importeren/exporteren
           href: cache-how-to-import-export-data.md
         - name: Opnieuw opstarten
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: Updates plannen
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: Toegang tot redis-cli.exe configureren
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 en 1.1 verwijderen
@@ -113,7 +115,7 @@
         - name: Bewaken in Azure Portal
           href: cache-how-to-monitor.md
         - name: Waarschuwingen instellen voor uitzonderingen
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
     - name: Problemen vaststellen en oplossen
       items:
         - name: Problemen met Redis-server oplossen

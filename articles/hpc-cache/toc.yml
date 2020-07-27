@@ -11,7 +11,7 @@
 - name: Instructiegidsen
   items:
     - name: Vereisten
-      href: hpc-cache-prereqs.md
+      href: hpc-cache-prerequisites.md
     - name: De cache maken
       href: hpc-cache-create.md
     - name: Opslag toevoegen
@@ -46,6 +46,8 @@
   items:
     - name: Een ondersteuningsticket openen
       href: hpc-cache-support-ticket.md
+    - name: Azure CLI for Azure DNS HPC Cache instellen
+      href: az-cli-prerequisites.md
     - name: Rond firewallinstellingen van Blob-opslag werken
       href: hpc-cache-blob-firewall-fix.md
     - name: Problemen met NFS-opslagdoel maken oplossen

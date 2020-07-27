@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: Wat is Azure AD Monitoring?
       href: overview-monitoring.md
-- name: Snelstartgidsen
+- name: Snelstarts
   expanded: true
   items:
     - name: Een aanmeldrapport downloaden
@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: Geen toegang tot Graph API's voor rapportage
           href: troubleshoot-graph-api.md
+        - name: Gegevens controleren op geverifieerde domeinwijziging
+          href: troubleshoot-audit-data-verified-domain.md
 - name: Naslaginformatie
   expanded: true
   items:

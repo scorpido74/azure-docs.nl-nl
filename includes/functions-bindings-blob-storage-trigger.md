@@ -9,27 +9,26 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 4a879c4041fe317955a07eda9dd8a3ef9f542275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77202110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056054"
 ---
-U kunt de volgende parameter typen voor de activerings-BLOB gebruiken:
+U kunt de volgende typen parameters gebruiken voor de activeringsblob:
 
 * `Stream`
 * `TextReader`
 * `string`
 * `Byte[]`
-* Een POCO serialiseerbaar als JSON
-* `ICloudBlob`<sup>i</sup>
-* `CloudBlockBlob`<sup>i</sup>
-* `CloudPageBlob`<sup>i</sup>
-* `CloudAppendBlob`<sup>i</sup>
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> vereist de binding ' InOut ' `direction` in *function.js* in `FileAccess.ReadWrite` of in een C#-klassebibliotheek.
+<sup>1</sup> vereist 'inout'-binding `direction` in *function.json* of `FileAccess.ReadWrite` in een C#-klassebibliotheek.
 
-Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)hebt.
+Als u probeert verbinding te maken met een van de typen Storage-SDK en er een foutbericht wordt weergegeven, moet u ervoor zorgen dat u een verwijzing hebt naar [de juiste Storage-SDK-versie](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x).
 
-Binding met `string` , `Byte[]` , of poco wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een of-type te gebruiken `Stream` `CloudBlockBlob` . Zie gelijktijdigheid [en geheugen gebruik](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) verderop in dit artikel voor meer informatie.
+Binding met `string` of `Byte[]` wordt alleen aanbevolen als de blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een type `Stream` of `CloudBlockBlob` te gebruiken. Zie voor meer informatie [Gelijktijdigheid en geheugengebruik](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) verderop in dit artikel.

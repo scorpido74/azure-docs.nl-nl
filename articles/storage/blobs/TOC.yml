@@ -280,6 +280,8 @@
           href: storage-blob-pageblob-overview.md
         - name: Statische websites
           href: storage-blob-static-website.md
+        - name: Ondersteuning voor NFS 3.0-protocol
+          href: network-file-system-protocol-support.md
     - name: Procedures
       items:
         - name: Opslagaccounts maken en beheren
@@ -469,12 +471,12 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Blob-opslag koppelen als bestandssysteem in Linux
+            - name: Opslag koppelen vanuit Linux met NFS
+              href: network-file-system-protocol-support-how-to.md
+            - name: Opslag koppelen vanuit Linux met blobfuse
               href: storage-how-to-mount-container-linux.md
             - name: Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Veelgestelde vragen over opslagmigratie
-              href: ../common/storage-migration-faq.md
         - name: Ontwikkelen met blobs
           items:
             - name: C++
@@ -662,6 +664,9 @@
               href: security-recommendations.md
             - name: Toegangsbeheer (mappen en bestanden)
               href: data-lake-storage-access-control.md
+            - name: Besturingselementen voor beveiliging van Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Compatibiliteit
           items:
             - name: Toegang met meerdere protocollen
@@ -710,7 +715,7 @@
               href: data-lake-storage-directory-file-acl-java.md
             - name: Python
               href: data-lake-storage-directory-file-acl-python.md
-            - name: Javascript
+            - name: JavaScript
               href: data-lake-storage-directory-file-acl-javascript.md
             - name: PowerShell
               href: data-lake-storage-directory-file-acl-powershell.md

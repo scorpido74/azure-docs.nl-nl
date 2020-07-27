@@ -157,6 +157,11 @@
       href: visualizations.md
     - name: Partnerintegraties
       href: platform/partners.md
+    - name: Beveiliging
+      items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./platform/security-controls-policy.md
 - name: Instructiegidsen
   items:
     - name: Scenario's
@@ -244,8 +249,6 @@
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Versiegeschiedenis
                       href: platform/diagnostics-extension-versions.md
-                    - name: Indelingen van resourcelogboeken van JSON-regels
-                      href: platform/resource-logs-append-blobs.md
                     - name: Problemen oplossen
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -264,9 +267,9 @@
                 - name: Linux-agents
                   href: platform/agent-linux.md
                 - name: VM-extensie voor Windows
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
                 - name: VM-extensie voor Linux
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics-gateway
                   href: platform/gateway.md
                 - name: Agents beheren
@@ -430,7 +433,7 @@
         - name: Schaal aanpassen met aangepaste metrische gegevens
           href: platform/autoscale-custom-metric.md
         - name: VM-schaalsets schalen
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: VM-schaalsets schalen met Resource Manager-sjablonen
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: Webhooks en e-mailmeldingen gebruiken
@@ -446,7 +449,7 @@
             - name: Beschikbaarheid
               href: app/monitor-web-app-availability.md
             - name: Metrische waarschuwingen
-              href: app/alerts.md
+              href: ./platform/alerts-log.md
         - name: Regels voor metrische waarschuwingen
           items:
             - name: Metrische waarschuwingen beheren
@@ -474,19 +477,20 @@
             - name: Waarschuwingen voor gebeurtenissen van het activiteitenlogboek
               href: platform/alerts-activity-log.md
             - name: Beheergebeurtenissen migreren naar waarschuwingen voor activiteitenlogboeken
-              href: platform/migrate-management-alerts.md
+              href: ./platform/activity-log-alerts.md
             - name: Webhook-schema
               href: platform/activity-log-alerts-webhook.md
         - name: Waarschuwingen voor servicestatus
           items:
             - name: Meldingen weergeven
-              href: platform/service-notifications.md
+              href: ../service-health/service-notifications.md
             - name: Waarschuwingen voor meldingsgebeurtenissen configureren
               href: platform/alerts-activity-log-service-notifications.md
         - name: Meldingen en acties
           items:
             - name: Actieregels (preview)
               href: platform/alerts-action-rules.md
+              displayName: 'Azure CLI, az monitor action rule'
             - name: Een actiegroep maken
               href: platform/action-groups.md
             - name: Algemeen waarschuwingsschema
@@ -556,7 +560,7 @@
         - name: Overzicht van Application Insights
           href: app/app-insights-overview.md
         - name: Veelgestelde vragen
-          href: app/troubleshoot-faq.md
+          href: ./faq.md
         - name: Bewaking op basis van code
           items:
             - name: ASP.NET Core
@@ -970,7 +974,11 @@
         - name: Gegevens analyseren met logboekquery's
           href: insights/container-insights-log-search.md
         - name: Waarschuwingen
-          href: insights/container-insights-alerts.md
+          items:
+            - name: Regels voor logboekwaarschuwingen maken
+              href: insights/container-insights-log-alerts.md
+            - name: Regels voor metrische waarschuwingen maken
+              href: insights/container-insights-metric-alerts.md
         - name: Agents beheren
           href: insights/container-insights-manage-agent.md
         - name: Scraping van metrische gegevens instellen voor Prometheus
@@ -1016,6 +1024,7 @@
       items:
         - name: Overzicht
           href: insights/solutions.md
+          displayName: 'Azure CLI, az monitor log-analytics'
         - name: Doeloplossingen
           href: insights/solution-targeting.md
         - name: Beschikbare oplossingen
@@ -1028,8 +1037,6 @@
               href: insights/capacity-performance.md
             - name: Docker- en Windows-containers bewaken
               href: insights/containers.md
-            - name: Key Vault-analyse
-              href: insights/azure-key-vault.md
             - name: Netwerken
               items:
                 - name: Networking Analytics
@@ -1173,7 +1180,7 @@
     - name: Terminologiewijzigingen
       href: terminology.md
     - name: Verwijzing naar gegevens
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+      href: /azure/azure-monitor/reference/
     - name: Ondersteunde metrische gegevens
       items:
         - name: Metrische platformgegevens
@@ -1288,6 +1295,8 @@
         - name: Wijzigingen in de blobopslagindeling
           displayname: Diagnostic settings
           href: platform/resource-logs-blob-format.md
+        - name: Key Vault Analytics (afgeschaft)
+          href: insights/azure-key-vault-deprecated.md
 - name: Resources
   items:
     - name: Azure-roadmap

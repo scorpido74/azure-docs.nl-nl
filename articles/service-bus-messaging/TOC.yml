@@ -7,13 +7,13 @@
     - name: Berichtenservices vergelijken
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-- name: Snelstartgidsen
+- name: Snelstarts
   items:
     - name: Service Bus-wachtrijen
       items:
         - name: Een Service Bus-wachtrij maken
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -110,6 +110,9 @@
                   href: authenticate-application.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: service-bus-messaging-security-controls.md
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Netwerkbeveiliging
           href: network-security.md
 - name: Instructiegidsen

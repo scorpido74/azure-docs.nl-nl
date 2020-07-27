@@ -2,19 +2,19 @@
 title: Azure Arc
 summary: Azure Arc breidt de mogelijkheden van Azure Resource Manager uit naar Linux- en Windows-servers, en naar Kubernetes-clusters op elke infrastructuur in on-premises, multi-cloud en Edge. Daarnaast stelt Azure Arc klanten in staat om Azure-gegevensservices overal uit te voeren, zodat ze kunnen profiteren van de voordelen van cloudinnovatie, waaronder altijd actuele gegevensmogelijkheden, implementatie in seconden (in plaats van uren) en dynamische schaalbaarheid in elke infrastructuur.
 metadata:
-  title: Azure Arc voor servers
+  title: Azure Arc
   description: Meer informatie over het beheren van on-premises machines in Azure
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 8493a5d90656206c5498fafbc2b0a2743cd973a7
-  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 06/27/2020
-  ms.locfileid: "85482340"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87008486"
 landingContent:
 - title: Overzicht van Azure Arc
   linkLists:
@@ -22,11 +22,11 @@ landingContent:
     links:
     - text: Meer informatie over Azure Arc
       url: https://aka.ms/Azure-Arc-Info
-- title: Computers verbinden met Azure met behulp van Azure Arc voor servers
+- title: Computers verbinden met Azure met behulp van Azure Arc voor ingeschakelde servers
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure Arc voor servers?
+    - text: Wat zijn servers met Azure Arc?
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
@@ -42,19 +42,21 @@ landingContent:
     links:
     - text: Wat is Kubernetes met Azure Arc?
       url: ./kubernetes/overview.md
-  - linkListType: how-to-guide
+  - linkListType: quickstart
     links:
     - text: Cluster verbinden
       url: ./kubernetes/connect-cluster.md
-    - text: GitOps gebruiken in een verbonden cluster
+  - linkListType: how-to-guide
+    links:
+    - text: Configuraties implementeren met GitOps
       url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: GitOps gebruiken met Helm
+    - text: Helm-grafieken implementeren met GitOps
       url: ./kubernetes/use-gitops-with-helm.md
-    - text: Azure Monitor voor containers gebruiken
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
-    - text: Azure Policy gebruiken
+    - text: GitOps afdwingen met Azure Policy
       url: ./kubernetes/use-azure-policy.md
+    - text: Bewaken met Azure Monitor voor containers
+      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+    - text: Toegangsbeheer beleid met Azure Policy
+      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
     - text: Azure IoT Edge-workloads implementeren
       url: ./kubernetes/deploy-azure-iot-edge-workloads.md
-    - text: Onboarding van een service-principal
-      url: ./kubernetes/create-onboarding-service-principal.md

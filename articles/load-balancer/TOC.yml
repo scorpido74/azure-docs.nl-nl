@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Load balancer maken - ARM-sjabloon
       href: quickstart-load-balancer-standard-public-template.md
-    - name: Een interne load balancer maken - Portal
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: Een interne load balancer maken - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: Een interne load balancer maken - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: Een interne load balancer maken - ARM-sjabloon
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Zelfstudies
   items:
+    - name: Interne load balancer
+      items:
+        - name: Een interne load balancer maken - Portal
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: Een interne load balancer maken - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: Een interne load balancer maken - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Een interne load balancer maken - ARM-sjabloon
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: Taken over VM's in meerdere beschikbaarheidszones verdelen
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Taken over VM's binnen een specifieke beschikbaarheidszone verdelen
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: Beheer van back-end-pools
       href: backend-pool-management.md
+    - name: Standard Load Balancer en Virtual Machine Scale Sets
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Procedures
   items:
     - name: Virtuele-machineschaalsets

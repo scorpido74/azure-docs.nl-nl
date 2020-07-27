@@ -40,9 +40,11 @@
       items:
         - name: De Azure Digital Twins-CLI gebruiken
           href: how-to-use-cli.md
-        - name: Een Azure Digital Twins-exemplaar maken
-          href: how-to-set-up-instance.md
-        - name: Een clienttoepassing verifiëren
+        - name: Een exemplaar en verificatie instellen (met een script)
+          href: how-to-set-up-instance-scripted.md
+        - name: Een exemplaar en verificatie instellen (handmatig)
+          href: how-to-set-up-instance-manual.md
+        - name: Verificatiecode voor app schrijven
           href: how-to-authenticate-client.md
     - name: Modellen ontwerpen
       items:
@@ -50,6 +52,8 @@
           href: how-to-manage-model.md
         - name: Modellen parseren en valideren
           href: how-to-use-parser.md
+        - name: Tags toevoegen
+          href: how-to-use-tags.md
     - name: Live uitvoeringsomgeving gebruiken
       items:
         - name: Digitale tweelingen beheren
@@ -72,10 +76,16 @@
           href: how-to-manage-routes.md
         - name: Integreren met Azure Maps
           href: how-to-integrate-maps.md
+        - name: Integreren met Azure Time Series Insights
+          href: how-to-integrate-time-series-insights.md
     - name: Problemen oplossen
       items:
         - name: Bekende problemen
           href: troubleshoot-known-issues.md
+        - name: Probleemoplossing
+          items:
+            - name: 403 (verboden)
+              href: troubleshoot-error-403.md
 - name: Naslaginformatie
   items:
     - name: Digital Twins-servicelimieten
@@ -145,7 +155,7 @@
         - name: Azure Digital Twins-voorbeelden
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure Digital Twins-verkenner (voorbeeld)
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL-validatie (voorbeeld)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
     - name: Azure-hulpprogramma's

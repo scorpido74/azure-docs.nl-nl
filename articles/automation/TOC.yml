@@ -6,7 +6,7 @@
       href: automation-intro.md
     - name: Veelgestelde vragen
       href: automation-faq.md
-- name: Snelstartgidsen
+- name: Snelstarts
   items:
     - name: Een Automation-account maken
       href: automation-quickstart-create-account.md
@@ -14,6 +14,9 @@
       href: automation-quickstart-create-runbook.md
     - name: Desired State Configuration voor een computer inschakelen
       href: automation-quickstart-dsc-configuration.md
+    - name: Automation-account maken - ARM-sjabloon
+      displayName: Resource Manager
+      href: quickstart-create-automation-account-template.md
 - name: Zelfstudies
   items:
     - name: Een grafisch runbook maken
@@ -51,14 +54,14 @@
           href: automation-secure-asset-encryption.md
         - name: Beheer van Azure Automation-gegevens
           href: automation-managing-data.md
-- name: Instructiegidsen
+- name: Procedures
   items:
     - name: Automation-account
       items:
         - name: Een Automation-account maken met Azure-portal
           href: automation-create-standalone-account.md
         - name: Een Automation-account maken met een Resource Manager-sjabloon
-          href: automation-create-account-template.md
+          href: quickstart-create-automation-account-template.md
         - name: Verificatie configureren met Amazon Web Services
           href: automation-config-aws-account.md
         - name: Verificatie configureren met Azure AD
@@ -177,6 +180,18 @@
               href: automation-dsc-extension-history.md
             - name: Problemen met State Configuration oplossen
               href: troubleshoot/desired-state-configuration.md
+            - name: Scenario's
+              items:
+                - name: Gegevens configureren op basis van STIG
+                  href: automation-dsc-configuration-based-on-stig.md
+                - name: Gegevens configureren op schaal
+                  href: automation-dsc-config-data-at-scale.md
+                - name: Configuratie maken op basis van bestaande servers
+                  href: automation-dsc-config-from-server.md
+                - name: Configuraties converteren naar samengestelde resources
+                  href: automation-dsc-create-composite.md
+                - name: Niet-compatibele servers herstellen
+                  href: automation-dsc-remediate.md
         - name: Wijzigingen bijhouden en inventaris
           items:
             - name: Overzicht

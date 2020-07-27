@@ -6,7 +6,7 @@
       href: backup-overview.md
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/backup/'
-- name: Snelstartgidsen
+- name: Snelstarts
   expanded: true
   items:
     - name: Back-up maken van een VM - Portal
@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Back-up maken van architectuur
       href: backup-architecture.md
+    - name: Richtlijnen en aanbevolen procedures
+      href: guidance-best-practices.md
 - name: Handleidingen
   items:
     - name: Recovery Services-kluis
@@ -375,6 +377,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: backup-security-controls.md
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Problemen oplossen

@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: Regressie beslissingsforest
           href: decision-forest-regression.md
+        - name: Regressie snelle forestkwantiel
+          href: fast-forest-quantile-regression.md
         - name: Lineaire regressie
           href: linear-regression.md
         - name: Regressie neuraal netwerk
           href: neural-network-regression.md
+        - name: Regressie Poisson
+          href: poisson-regression.md
     - name: Clustering
       items:
         - name: K-means-clustering

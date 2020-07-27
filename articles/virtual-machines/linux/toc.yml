@@ -170,7 +170,7 @@
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Regio's
-      href: regions.md
+      href: ../regions.md
     - name: Extensies
       items:
         - name: Over Azure-extensies
@@ -182,7 +182,7 @@
     - name: Beschikbaarheid en prestaties
       items:
         - name: Beschikbaarheid
-          href: availability.md
+          href: ../availability.md
         - name: Co-locatie
           href: co-location.md
         - name: Netwerkprestaties
@@ -290,7 +290,7 @@
             - name: Vooruitbetalen voor toegewezen hosts
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Wat zijn Azure-reserveringen?
-              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Flexibiliteit van de VM-instantiegrootte
               href: reserved-vm-instance-size-flexibility.md
         - name: Spot-VM's
@@ -298,10 +298,12 @@
           displayName: 'pre-empt, preempt'
         - name: Virtuele Azure-machines zonder tijdelijke schijf
           href: ../azure-vms-no-temp-disk.md
+        - name: Naamconventies van Azure VM-groottes
+          href: ../vm-naming-conventions.md
         - name: Vorige generaties
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Geïsoleerde grootten
-          href: isolation.md
+          href: ../isolation.md
         - name: Azure Compute Units (ACU)
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU-quota
@@ -311,7 +313,7 @@
             - name: Vooruitbetalen voor VM's
               href: prepay-reserved-vm-instances.md
             - name: Wat zijn Azure-reserveringen?
-              href: ../../billing/billing-save-compute-costs-reservations.md
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibiliteit van de VM-instantiegrootte
               href: reserved-vm-instance-size-flexibility.md
         - name: Benchmarkscores
@@ -345,17 +347,22 @@
         - name: Kortstondige besturingssysteemschijven
           href: ephemeral-os-disks.md
     - name: Netwerken
-      href: network-overview.md
+      href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Schaalsets
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Automatisering van infrastructuur
-      href: infrastructure-automation.md
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Beveiliging
       items:
         - name: Beveiliging en beleid
           href: security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Beveiligingsbasislijn voor Azure Security Benchmark
+          href: security-baseline.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: virtual-machines-linux-security-controls.md
         - name: Bastion
@@ -367,9 +374,9 @@
     - name: Back-ups maken en herstellen
       href: backup-recovery.md
     - name: Cloud Adoption Framework
-      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
+      href: /azure/cloud-adoption-framework/get-started/
     - name: Architecturencentrum
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: Richtlijnen voor infrastructuur
       href: infrastructure-example.md
 - name: Instructiegidsen
@@ -427,22 +434,24 @@
           items:
             - name: Algemene stappen
               href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
             - name: CentOS
               href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
             - name: Debian
               href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
             - name: Oracle Linux
               href: oracle-create-upload-vhd.md
             - name: OpenBSD
               href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
         - name: Cloud-init gebruiken
           items:
             - name: Overzicht van cloud-init
@@ -632,7 +641,7 @@
         - name: Herstel na noodgeval
           href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Back-ups maken van virtuele machines
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
           items:
             - name: Een back-up maken van één virtuele machine
               href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -694,7 +703,7 @@
             - name: Overzicht
               href: ../extensions/agent-linux.md
             - name: Update van agent
-              href: update-agent.md
+              href: ../extensions/update-linux-agent.md
         - name: Speculatieve uitvoering beperken
           href: mitigate-se.md
         - name: Metagegevens bewaken
@@ -726,7 +735,6 @@
         - name: Geplande gebeurtenissen
           href: scheduled-events.md
     - name: Virtuele machines bewaken
-      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
       items:
         - name: Agents
           items:
@@ -763,7 +771,7 @@
                       href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: Aangepaste JSON-gegevens
                       href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                    - name: Verzamelde prestatiegegevens
+                    - name: verzamelde prestatiegegevens
                       href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: Syslog
                       href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -820,7 +828,7 @@
     - name: Beschikbaarheid en schaal
       items:
         - name: Automatisch schalen
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: Hoge beschikbaarheid
           href: manage-availability.md
         - name: Een beschikbaarheidsset wijzigen
@@ -865,7 +873,7 @@
     - name: Containers uitvoeren
       items:
         - name: Een Docker-host maken
-          href: dockerextension.md
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
         - name: Docker Machine gebruiken
           href: docker-machine.md
         - name: Docker Compose gebruiken
@@ -873,9 +881,9 @@
     - name: Toepassingen uitvoeren
       items:
         - name: Cloud Foundry
-          href: 'https://docs.microsoft.com/azure/cloudfoundry/'
+          href: ../../cloudfoundry/index.yml
         - name: Cassandra
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json'
+          href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: OpenShift
           items:
             - name: Overzicht van OpenShift
@@ -913,7 +921,7 @@
             - name: MS SQL in Linux
               href: /sql/linux/sql-server-linux-azure-virtual-machine
         - name: HPC (High Performance Computing)
-          href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+          href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
             - name: Architectuur
@@ -937,6 +945,10 @@
           href: disks-shared-enable.md
         - name: Een VHD uploaden naar een schijf - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: Een schijf veilig importeren/exporteren - CLI
+          href: disks-export-import-private-links-cli.md
+        - name: Een schijf veilig importeren/exporteren - Portal
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: De grootte van een schijf wijzigen
           href: expand-disks.md
         - name: Storage Explorer gebruiken om schijven te beheren
@@ -955,12 +967,16 @@
           items:
             - name: Versleuteling op de host inschakelen - CLI
               href: disks-enable-host-based-encryption-cli.md
+            - name: Versleuteling op de host inschakelen - Portal
+              href: disks-enable-host-based-encryption-portal.md
             - name: Door de klant beheerde sleutels inschakelen - CLI
               href: disks-enable-customer-managed-keys-cli.md
             - name: Door de klant beheerde sleutels inschakelen - Portal
               href: disks-enable-customer-managed-keys-portal.md
-            - name: Dubbele versleuteling-at-rest inschakelen
+            - name: Dubbele versleuteling-at-rest inschakelen - CLI
               href: disks-enable-double-encryption-at-rest-cli.md
+            - name: Dubbele versleuteling-at-rest inschakelen - Portal
+              href: disks-enable-double-encryption-at-rest-portal.md
         - name: Migratie en conversie
           items:
             - name: Migreren naar Premium Storage met Azure Site Recovery
@@ -996,7 +1012,7 @@
     - name: Netwerken beheren
       items:
         - name: Virtueel netwerk maken
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../virtual-network/quick-create-cli.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: Poorten naar een VM openen
           href: nsg-quickstart.md
         - name: Een openbaar IP-adres toewijzen
@@ -1017,18 +1033,18 @@
     - name: Beheerde identiteiten configureren
       items:
         - name: Portal
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Resource Manager-sjabloon
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure-SDK's
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM-extensies gebruiken
       items:
         - name: Installatie van extensie beperken
@@ -1098,13 +1114,13 @@
             - name: Een on-premises VM uploaden
               href: upload-vhd.md
             - name: Azure Site Recovery gebruiken
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Naslaginformatie
   items:
     - name: Azure CLI
       href: /cli/azure/vm
     - name: PowerShell
-      href: /powershell/azureps-cmdlets-docs
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute
     - name: Java
@@ -1121,10 +1137,10 @@
 - name: Resources
   items:
     - name: Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+      href: /answers/topics/azure-virtual-machines.html
     - name: ARM-sjablonen ontwerpen
       displayName: 'Azure Resource Manager, ARM'
-      href: /azure/azure-resource-manager/
+      href: ../../azure-resource-manager/index.yml
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-roadmap

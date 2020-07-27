@@ -18,6 +18,8 @@
   items:
     - name: Een Azure Red Hat OpenShift 4-privécluster maken
       href: howto-create-private-cluster-4x.md
+    - name: Pullgeheim bijwerken voor een Azure Red Hat OpenShift 4-cluster
+      href: howto-add-update-pull-secret.md
     - name: DNS forwarding configureren voor een Azure Red Hat OpenShift 4-cluster
       href: dns-forwarding.md
     - name: Azure Active Directory-verificatie configureren voor een Azure Red Hat OpenShift 4-cluster
@@ -67,6 +69,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: 2 - Beperkingen in beveiligingscontext in Azure Red Hat OpenShift 3.11
               href: cluster-administration-security-context-constraints.md
+- name: Concepten
+  items:
+    - name: Netwerken in Azure Red Hat OpenShift 4-clusters
+      href: concepts-networking.md
 - name: Naslaginformatie
   items:
     - name: CLI voor Azure Red Hat OpenShift

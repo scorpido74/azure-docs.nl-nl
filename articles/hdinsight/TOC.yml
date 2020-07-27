@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: Vereiste IP-adressen voor NSG's en UDR's
           href: ./hdinsight-management-ip-addresses.md
-        - name: Servicetags voor Azure Firewall
-          href: ./hdinsight-service-tags.md
         - name: Schijfversleuteling met behulp van door klant beheerde sleutel
           href: ./disk-encryption.md
         - name: LDAP-synchronisatie in Ranger en Apache Ambari
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Firewall gebruiken om uitgaand verkeer te beperken
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Beleid voor service-eindpunten maken
+          href: ./service-endpoint-policies.md
         - name: Virtueel netwerkapparaat configureren
           href: ./network-virtual-appliance.md
+        - name: Servicetags voor Azure Firewall
+          href: ./hdinsight-service-tags.md
         - name: Problemen oplossen
           items:
             - name: ESP-verificatieproblemen

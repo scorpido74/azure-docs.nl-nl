@@ -351,6 +351,8 @@
           items:
             - name: Waarschuwingen maken op basis van metrische gegevens
               href: howto-hyperscale-alert-on-metric.md
+            - name: Toegang tot logboeken van database
+              href: howto-hyperscale-logging.md
         - name: Problemen oplossen
           items:
             - name: Verbindingsfouten oplossen
