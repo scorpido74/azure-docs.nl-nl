@@ -95,14 +95,6 @@
           href: upgrade-basicInternal-standard.md
         - name: Een interne load balancer upgraden - uitgaande verbinding vereist
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: Regels voor uitgaand verkeer configureren
-      items:
-        - name: Portal
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: Een openbare load balancer maken met IPv6
       items:
         - name: Azure CLI

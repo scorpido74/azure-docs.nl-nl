@@ -345,7 +345,7 @@
         - name: Gedeelde schijven
           href: disks-shared.md
         - name: Kortstondige besturingssysteemschijven
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: Netwerken
       href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Schaalsets

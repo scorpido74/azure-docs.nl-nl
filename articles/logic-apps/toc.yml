@@ -49,8 +49,13 @@
       href: connect-virtual-network-vnet-isolated-environment-overview.md
     - name: Bedrijfscontinuïteit en herstel na noodgevallen
       href: business-continuity-disaster-recovery-guidance.md
-    - name: Beveiligingsbasislijn
-      href: security-baseline.md
+    - name: Beveiliging
+      items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
 - name: Instructiegidsen
   items:
     - name: Ontwikkelen
