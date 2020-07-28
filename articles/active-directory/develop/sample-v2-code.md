@@ -14,7 +14,7 @@ ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 42b7cf88942fb9b54b1292ece18cf14eb0d21958
 ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/09/2020
 ms.locfileid: "86165959"
