@@ -1020,6 +1020,10 @@
           href: insights/resource-group-insights.md
         - name: Problemen met inzichten oplossen
           href: insights/troubleshoot-workbooks.md
+    - name: Wijzigingsanalyse
+      items:
+        - name: Wijzigingsanalyse
+          href: app/change-analysis.md
     - name: Oplossingen
       items:
         - name: Overzicht
@@ -1073,30 +1077,6 @@
               href: insights/vmware.md
             - name: Oplossing voor bedradingsgegevens
               href: insights/wire-data.md
-        - name: Weergaven
-          items:
-            - name: Weergaven converteren naar workbooks
-              items:
-                - name: Conversieoverzicht
-                  href: platform/view-designer-conversion-overview.md
-                - name: Conversieopties
-                  href: platform/view-designer-conversion-options.md
-                - name: Overzicht en toegang
-                  href: platform/view-designer-conversion-access.md
-                - name: Algemene taken
-                  href: platform/view-designer-conversion-tasks.md
-                - name: Tegelconversies
-                  href: platform/view-designer-conversion-tiles.md
-                - name: Voorbeelden
-                  href: platform/view-designer-conversion-examples.md
-            - name: Designer weergeven
-              href: platform/view-designer.md
-            - name: Naslaginformatie voor tegels
-              href: platform/view-designer-tiles.md
-            - name: Naslaginformatie voor visualisatieonderdelen
-              href: platform/view-designer-parts.md
-            - name: Filters
-              href: platform/view-designer-filters.md
     - name: Werkmappen
       items:
         - name: Overzicht
@@ -1124,6 +1104,20 @@
                   href: platform/workbooks-time.md
                 - name: Tekstparameters
                   href: platform/workbooks-text.md
+        - name: Weergaven converteren naar workbooks
+          items:
+            - name: Conversieoverzicht
+              href: platform/view-designer-conversion-overview.md
+            - name: Conversieopties
+              href: platform/view-designer-conversion-options.md
+            - name: Overzicht en toegang
+              href: platform/view-designer-conversion-access.md
+            - name: Algemene taken
+              href: platform/view-designer-conversion-tasks.md
+            - name: Tegelconversies
+              href: platform/view-designer-conversion-tiles.md
+            - name: Voorbeelden
+              href: platform/view-designer-conversion-examples.md
     - name: Andere visualisaties
       items:
         - name: Power BI
@@ -1217,6 +1211,8 @@
           href: app/azure-functions-supported-features.md
         - name: Releaseopmerkingen
           items:
+            - name: SDK's voor bewaking op basis van code
+              href: app/release-notes.md
             - name: Web-appuitbreiding
               href: app/web-app-extension-release-notes.md
         - name: Gegevensmodel
@@ -1297,6 +1293,16 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault Analytics (afgeschaft)
           href: insights/azure-key-vault-deprecated.md
+        - name: Weergaven
+          items:
+            - name: Designer weergeven
+              href: platform/view-designer.md
+            - name: Naslaginformatie voor tegels
+              href: platform/view-designer-tiles.md
+            - name: Naslaginformatie voor visualisatieonderdelen
+              href: platform/view-designer-parts.md
+            - name: Filters
+              href: platform/view-designer-filters.md
 - name: Resources
   items:
     - name: Azure-roadmap

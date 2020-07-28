@@ -1,10 +1,10 @@
-- name: Release van Windows Virtual Desktop van najaar 2019
+- name: Windows Virtual Desktop (klassieke versie)
   href: ../index.yml
 - name: Overzicht
   items:
     - name: Wat is Windows Virtual Desktop?
       href: ../overview.md
-    - name: Documentatie voor de release van lente 2020
+    - name: Documentatie over Windows Virtual Desktop
       href: ../create-host-pools-azure-marketplace.md
 - name: Zelfstudies
   items:

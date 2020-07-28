@@ -1,4 +1,4 @@
-- name: Release van Windows Virtual Desktop van lente 2020
+- name: Windows Virtual Desktop
   href: index.yml
 - name: Overzicht
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: Wat is nieuw?
       href: whats-new.md
-    - name: Documentatie voor de release van najaar 2019
+    - name: Documentatie over Windows Virtual Desktop (klassieke versie)
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Zelfstudies
   items:

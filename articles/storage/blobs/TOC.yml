@@ -405,11 +405,11 @@
                   href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Firewalls en virtuele netwerken configureren
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Transport Layer Security (TLS) configureren
+                - name: Transport Layer Security (TLS) beheren
                   items:
-                    - name: Minimale TLS-versie voor een opslagaccount configureren
+                    - name: Minimale TLS-versie voor binnenkomende aanvragen afdwingen
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: TLS voor een clienttoepassing configureren
+                    - name: TLS-versie voor een clienttoepassing configureren
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Beleid voor onveranderbaarheid instellen en beheren
               href: storage-blob-immutability-policies-manage.md
@@ -525,6 +525,10 @@
               href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs show
               href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy load
+              href: ../common/storage-ref-azcopy-load.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy load clfs
+              href: ../common/storage-ref-azcopy-load-avere-cloud-file-system.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy list
               href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy login

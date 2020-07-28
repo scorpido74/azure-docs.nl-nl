@@ -54,7 +54,7 @@
       href: cache-best-practices.md
     - name: Best practices voor architectuur voor caching
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: Procedures
+- name: Instructiegidsen
   items:
     - name: Plannen
       items:
@@ -72,7 +72,9 @@
           href: cache-how-to-geo-replication.md
         - name: Besparen met gereserveerde capaciteit
           href: cache-reserved-pricing.md
-        - name: Migreren vanuit Managed Cache Service
+        - name: Migreren naar Azure Cache voor Redis
+          href: cache-migration-guide.md
+        - name: Migreren vanuit Managed Cache Service (afgeschaft)
           href: cache-migrate-to-redis.md
     - name: Automatiseren
       items:

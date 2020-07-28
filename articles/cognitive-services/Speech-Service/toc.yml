@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: Taalgeneratiesjablonen toevoegen voor spraakreacties
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: Custom Voice gebruiken
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: Integreren
               items:
                 - name: Integreren met een client-app met de Speech-SDK
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: Speech-SDK
               href: speech-sdk.md
+            - name: Versleuteling van data-at-rest met aangepaste opdrachten
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line-spraak
       items:
         - name: Wat is Direct Line-spraak?

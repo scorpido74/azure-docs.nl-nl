@@ -121,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Veelgestelde vragen over technische assets van Azure-VM
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Een Azure-VM-installatiekopie certificeren
+                - name: Virtuele machine geïmplementeerd vanaf VHD testen
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS-URI
                   items:

@@ -251,11 +251,11 @@
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Veilige overdracht vereisen
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Transport Layer Security (TLS) configureren
+        - name: Transport Layer Security (TLS) beheren
           items:
-            - name: Minimale TLS-versie voor een opslagaccount configureren
+            - name: Minimale TLS-versie voor binnenkomende aanvragen afdwingen
               href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: TLS voor een clienttoepassing configureren
+            - name: TLS-versie voor een clienttoepassing configureren
               href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Overdragen
       items:

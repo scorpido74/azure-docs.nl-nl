@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: Voorwaardelijke toegang
                   href: database/conditional-access-configure.md
+                - name: Service-principals (toepassingen)
+                  href: database/authentication-aad-service-principal.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: Overzicht
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: Beveiliging
           items:
+            - name: Azure AD-gastgebruikers maken en instellen als Azure AD-beheerder
+              href: database/authentication-aad-guest-users.md
             - name: TDE met BYOK (Bring Your Own Key) configureren
               href: database/transparent-data-encryption-byok-configure.md
             - name: Scans van beveiligingsproblemen bewaren in de opslag
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE-beveiliging verwijderen
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: Gebruikers maken met service-principals
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: Gegevens verplaatsen
           items:
             - name: Migreren met behulp van DMS

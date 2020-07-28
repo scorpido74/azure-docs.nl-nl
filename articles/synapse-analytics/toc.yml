@@ -10,19 +10,19 @@
       items:
         - name: Inleiding
           href: get-started.md
-        - name: Stap 1 Een Synapse-werkruimte maken
+        - name: 1 Een Synapse-werkruimte maken
           href: get-started-create-workspace.md
-        - name: Stap 2 Analyseren met behulp van een SQL-pool
+        - name: 2 Analyseren met behulp van een SQL-pool
           href: get-started-analyze-sql-pool.md
-        - name: Stap 3 Analyseren met Spark
+        - name: 3 Analyseren met Spark
           href: get-started-analyze-spark.md
-        - name: Stap 4 Analyseren met behulp van SQL on-demand
+        - name: 4 Analyseren met behulp van SQL on demand
           href: get-started-analyze-sql-on-demand.md
-        - name: Stap 5 Gegevens analyseren in een opslagaccount
+        - name: 5 Gegevens analyseren in een opslagaccount
           href: get-started-analyze-storage.md
-        - name: Stap 6 Organiseren met pijplijnen
+        - name: 6 Organiseren met pijplijnen
           href: get-started-pipelines.md
-        - name: Stap 7 Visualiseren met Power BI
+        - name: 7 Visualiseren met Power BI
           href: get-started-visualize-power-bi.md
     - name: Cheatsheet
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Caching van resultatenset
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine learning-voorspellingen
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: Tabellen
               items:
                 - name: Overzicht

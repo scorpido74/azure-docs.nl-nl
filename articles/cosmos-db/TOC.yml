@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Geavanceerde beveiliging tegen bedreigingen
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Gereedheid voor bedrijven
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: Unieke sleutels definiëren
           href: how-to-define-unique-keys.md
-    - name: Prestaties en probleemoplossing
+    - name: Prestaties
       items:
         - name: Query’s uitvoeren
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: Queryprestaties afstemmen
               href: sql-api-query-metrics.md
-            - name: Prestatieproblemen van query's oplossen
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: Prestatietips voor .NET SDK v3
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: Prestatietips voor .NET SDK v2
               href: performance-tips.md
-            - name: Problemen met .NET SDK oplossen
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: Tips voor betere prestaties voor de Java-SDK v4
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Problemen met Java-SDK v4 oplossen
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Async Java-SDK v2
               href: performance-tips-async-java.md
             - name: Sync Java-SDK v2
               href: performance-tips-java.md
-            - name: Problemen oplossen - Async Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: Prestatietest - voorbeeld-app
           href: performance-testing.md
         - name: Rendabele lees- en schrijfbewerkingen
@@ -1026,6 +1021,36 @@
       items:
         - name: Migreren naar Java v4-SDK
           href: migrate-java-v4-sdk.md
+    - name: Problemen oplossen
+      items:
+        - name: Algemene fouten
+          items:
+            - name: Prestatieproblemen van query's oplossen
+              href: troubleshoot-query-performance.md
+            - name: Problemen met time-out van serviceaanvraag oplossen
+              href: troubleshoot-request-timeout.md
+            - name: Problemen met te hoge aanvraagsnelheid oplossen
+              href: troubleshoot-request-rate-too-large.md
+            - name: Probleem 'Niet gevonden' oplossen
+              href: troubleshoot-not-found.md
+            - name: Probleem 'Niet geautoriseerd' oplossen
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: Algemene problemen met .NET SDK oplossen
+              href: troubleshoot-dot-net-sdk.md
+            - name: Problemen met te grote aanvraagheader oplossen
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: Problemen met time-out van aanvraag oplossen
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: Probleem 'Service niet beschikbaar' oplossen
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: Problemen met Java-SDK v4 oplossen
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Problemen oplossen - Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: Feed wijzigen
       items:
         - name: Azure Cosmos DB-triggerlogboeken
