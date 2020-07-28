@@ -9,7 +9,7 @@ ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390836"
