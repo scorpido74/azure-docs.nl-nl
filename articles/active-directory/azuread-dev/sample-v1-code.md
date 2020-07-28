@@ -16,7 +16,7 @@ ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387606"
