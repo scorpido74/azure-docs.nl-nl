@@ -9,7 +9,7 @@ ms.date: 06/03/2020
 ms.author: mjbrown
 ms.openlocfilehash: 01e46d144c287569687bb79e7e9cb67b4923b78a
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85552894"

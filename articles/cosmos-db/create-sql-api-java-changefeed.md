@@ -10,7 +10,7 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: ccbafcfcbf13809b84883352c5a31835c6988d51
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85962693"

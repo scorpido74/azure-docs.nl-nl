@@ -7,7 +7,7 @@ ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
 ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/09/2020
 ms.locfileid: "86186126"

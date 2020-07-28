@@ -5,7 +5,7 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
 ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83780181"

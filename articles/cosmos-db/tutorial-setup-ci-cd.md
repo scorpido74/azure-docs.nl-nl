@@ -9,7 +9,7 @@ ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 447f999f48edb9696c74ec5decb1109eefb964d7
 ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/09/2020
 ms.locfileid: "86206972"

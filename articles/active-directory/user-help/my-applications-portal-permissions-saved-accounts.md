@@ -14,7 +14,7 @@ ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83744035"
