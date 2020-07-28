@@ -10,7 +10,7 @@ ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 80a590ff97cc6595f2da6d1e573820324a46c2d5
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "82231497"

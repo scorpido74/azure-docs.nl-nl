@@ -13,6 +13,7 @@ ms.author: kenwith
 ms.reviewer: arvinh, celested
 ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781087"
