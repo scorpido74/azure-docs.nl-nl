@@ -3,12 +3,12 @@ title: DevTest Labs-concepten | Microsoft Docs
 description: Meer informatie over de basis concepten van DevTest Labs en hoe u Azure virtual machines eenvoudig kunt maken, beheren en bewaken
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074968"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283840"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-concepten
 ## <a name="overview"></a>Overzicht
@@ -20,7 +20,7 @@ Een Lab is de infra structuur die een groep resources omvat, zoals Virtual Machi
 ## <a name="virtual-machine"></a>Virtuele machine
 Een Azure-VM is een van de verschillende soorten [schaal bare computer bronnen op aanvraag](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Met Azure Vm's beschikt u over de flexibiliteit van virtualisatie zonder dat u de fysieke hardware hoeft te kopen en onderhouden, hoewel u de virtuele machine nog steeds moet onderhouden door bepaalde taken uit te voeren, zoals het configureren, patchen en installeren van de software die erop wordt uitgevoerd.
 
-[Overzicht van virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) geeft u informatie over wat u moet overwegen voordat u een virtuele machine maakt, hoe u deze maakt en hoe u deze beheert.
+[Overzicht van virtuele Windows-machines in azure](../virtual-machines/windows/overview.md) geeft u informatie over wat u moet overwegen voordat u een virtuele machine maakt, hoe u deze maakt en hoe u deze beheert.
 
 ## <a name="claimable-vm"></a>Claim bare VM
 Een Azure-claim bare VM is een virtuele machine die beschikbaar is voor gebruik door een test gebruiker met machtigingen. Een test beheerder kan Vm's voorbereiden met specifieke basis installatie kopieën en artefacten en deze opslaan in een gedeelde groep. Een test gebruiker kan vervolgens een werkende VM op basis van de pool claimen wanneer ze deze nodig hebben met die specifieke configuratie.
@@ -28,7 +28,7 @@ Een Azure-claim bare VM is een virtuele machine die beschikbaar is voor gebruik 
 Een virtuele machine die claimbaar is, wordt in eerste instantie niet toegewezen aan een bepaalde gebruiker, maar wordt weer gegeven in de lijst van elke gebruiker onder ' claim bare virtuele machines '. Nadat een virtuele machine door een gebruiker is geclaimd, wordt deze naar het gebied mijn virtuele machines verplaatst en is deze niet langer claimbaar voor een andere gebruiker.
 
 ## <a name="environment"></a>Omgeving
-In DevTest Labs verwijst een omgeving naar een verzameling Azure-resources in een lab. In [dit blog bericht](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) wordt beschreven hoe u multi-VM-omgevingen maakt op basis van uw Azure Resource Manager sjablonen.
+In DevTest Labs verwijst een omgeving naar een verzameling Azure-resources in een lab. In [dit blog bericht](./devtest-lab-faq.md#blog-post) wordt beschreven hoe u multi-VM-omgevingen maakt op basis van uw Azure Resource Manager sjablonen.
 
 ## <a name="base-images"></a>Basisinstallatiekopieën
 Basis kopieën zijn VM-installatie kopieën met alle hulpprogram ma's en instellingen die vooraf zijn geïnstalleerd en geconfigureerd om snel een virtuele machine te maken. U kunt een virtuele machine inrichten door een bestaande basis te kiezen en een artefact toe te voegen om uw test agent te installeren. U kunt de ingerichte virtuele machine vervolgens als basis opslaan, zodat de basis kan worden gebruikt zonder dat de test agent opnieuw moet worden geïnstalleerd voor elke inrichting van de virtuele machine.
@@ -74,7 +74,7 @@ Aangezien de scopes hiërarchisch zijn, worden deze machtigingen automatisch ver
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 Alle concepten die in dit artikel worden besproken, kunnen worden geconfigureerd met behulp van Azure Resource Manager sjablonen, waarmee u de infra structuur/configuratie van uw Azure-oplossing kunt definiëren en deze herhaaldelijk in een consistente status implementeert.
 
-[Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) beschrijft de structuur van een Azure Resource Manager sjabloon en de eigenschappen die beschikbaar zijn in de verschillende secties van een sjabloon.
+[Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md#template-format) beschrijft de structuur van een Azure Resource Manager sjabloon en de eigenschappen die beschikbaar zijn in de verschillende secties van een sjabloon.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

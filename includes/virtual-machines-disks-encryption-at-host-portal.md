@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5ea31217bd3088ec123281b36f8578b08ea25b2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f0a706cc51027bc503da9ee3bc637216e9e52853
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136133"
+ms.locfileid: "87171352"
 ---
 ## <a name="restrictions"></a>Beperkingen
 
@@ -50,12 +50,12 @@ U moet een nieuwe VM implementeren om versleuteling op de host in te scha kelen 
 1. Maak een nieuwe virtuele machine, selecteer een geschikte regio en een ondersteunde VM-grootte.
 1. Vul de andere waarden op de Blade **basis** naar wens in en ga vervolgens door naar de Blade **schijven** .
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="voorbeeld tekst":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Scherm opname van de Blade basis beginselen voor het maken van virtuele machines, de regio en de grootte van V M zijn gemarkeerd.":::
 
 1. Selecteer op **Disks** de Blade schijven **Ja** voor **versleuteling op host**.
 1. Breng de resterende selecties naar wens aan.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="voorbeeld tekst":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Scherm opname van de Blade schijven voor het maken van virtuele machines, versleuteling op host is gemarkeerd.":::
 
 1. Voltooi het implementatie proces van de VM en maak selecties die passen bij uw omgeving.
 

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517740"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281562"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 
@@ -35,7 +35,7 @@ Een primaire methode voor het beheren van de reken bronnen binnen een AKS-cluste
     * Wanneer de Kubernetes scheduler probeert een pod op een knoop punt te plaatsen, worden de pod-aanvragen gebruikt om te bepalen welk knoop punt voldoende bronnen beschikbaar heeft voor de planning.
     * Als u geen pod-aanvraag instelt, wordt deze standaard ingesteld op de limiet die is gedefinieerd.
     * Het is belang rijk om de prestaties van uw toepassing te bewaken om deze aanvragen aan te passen. Als er onvoldoende aanvragen worden gedaan, kan uw toepassing slechte prestaties ontvangen, omdat er een knoop punt wordt gepland. Als er sprake is van een overschatting van aanvragen, is de toepassing mogelijk niet meer gepland.
-* **Pod CPU-en geheugen limieten** zijn de maximale hoeveelheid CPU en geheugen die een pod kan gebruiken. Deze limieten helpen te bepalen welke peulen in het geval van instabiliteit van het knoop punt moeten worden gedood vanwege onvoldoende bronnen. Zonder dat de juiste limieten van Peul worden afgetrokken, wordt de belasting van de resource afgebroken.
+* **Pod CPU-en geheugen limieten** zijn de maximale hoeveelheid CPU en geheugen die een pod kan gebruiken. Geheugen beperkingen bepalen welke peulen in het geval van instabiliteit van het knoop punt moeten worden gedood vanwege onvoldoende bronnen. Zonder dat de juiste limieten van Peul worden afgetrokken, wordt de belasting van de resource afgebroken. Het is mogelijk dat een pod de CPU-limiet voor een bepaalde tijd niet overschrijdt, maar dat de pod niet wordt beëindigd om de CPU-limiet te overschrijden. 
     * Pod beperkt de hulp bij het bepalen wanneer een pod het beheer van het resource gebruik heeft verloren gegaan. Wanneer een limiet wordt overschreden, wordt de pod prioriteit gegeven voor doden om de status van het knoop punt te hand haven en zo weinig mogelijk gevolgen te hebben voor het delen van het knoop punt.
     * Als u geen pod-limiet instelt, wordt deze standaard ingesteld op de hoogste beschik bare waarde op een bepaald knoop punt.
     * Stel geen pod-limiet in die hoger is dan uw knoop punten kunnen ondersteunen. Elk AKS-knoop punt reserveert een ingestelde hoeveelheid CPU en geheugen voor de kern Kubernetes-onderdelen. Het kan voor komen dat uw toepassing te veel resources in het knoop punt gebruikt om het andere peul te kunnen uitvoeren.

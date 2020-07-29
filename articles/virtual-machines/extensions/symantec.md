@@ -1,25 +1,19 @@
 ---
 title: Symantec Endpoint Protection installeren op een Windows-VM in azure
 description: Meer informatie over het installeren en configureren van de Symantec Endpoint Protection Security-extensie op een nieuwe of bestaande virtuele Azure-machine die is gemaakt met het klassieke implementatie model.
-services: virtual-machines-windows
-documentationcenter: ''
 author: roiyz
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 985aa094a2761483e682cdfc576891affab68547
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080332"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292422"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec-Endpoint Protection installeren en configureren op een Windows-VM
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -65,7 +59,7 @@ U kunt als volgt controleren of de Symantec-beveiligings uitbreiding is geïnsta
 2. Klik voor Windows Server 2008 R2 op **Start > Symantec Endpoint Protection**. Voor Windows Server 2012 of Windows Server 2012 R2 typt u **Symantec**in het Start scherm en klikt u vervolgens op **Symantec Endpoint Protection**.
 3. Op het tabblad **status** van het venster **status-Symantec Endpoint Protection** past u updates of opnieuw opstarten toe, indien nodig.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 [Aanmelden bij een virtuele machine met Windows Server][Logon]
 
 [Azure VM-extensies en-functies][Ext]
@@ -81,4 +75,4 @@ U kunt als volgt controleren of de Symantec-beveiligings uitbreiding is geïnsta
 
 [Logon]:../windows/classic/connect-logon.md
 
-[Ext]: https://go.microsoft.com/fwlink/p/?linkid=390493
+[Ext]: features-windows.md

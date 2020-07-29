@@ -4,15 +4,15 @@ description: Overzicht van Azure-ondersteuning voor virtuele machines van de 2e 
 author: ju-shim
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: e84d4d147490cd3b9d136f25a3707f5a74999f3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2a40c6158b5d29f695360c04a0d4376efd4238f9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288464"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -104,7 +104,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).
