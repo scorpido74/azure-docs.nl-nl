@@ -3,15 +3,15 @@ title: Een Debian Linux-VHD voorbereiden
 description: Meer informatie over het maken van Debian-VHD-installatie kopieën voor implementaties van VM'S in Azure.
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 4c2edddb8eec4a2f8300077bb00df72d7e2b00de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510716"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368197"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian-VHD voorbereiden voor Azure
 ## <a name="prerequisites"></a>Vereisten

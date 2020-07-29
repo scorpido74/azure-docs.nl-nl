@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adc0d63a51535b27b42abbe0115ff25594eb2b4f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086922"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292487"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
@@ -102,6 +102,6 @@ De Store-app uitschakelen:
 
 Meer informatie over Windows Virtual Desktop en Windows 10 Enter prise multi-session:
 
-- Lees de [documentatie voor Windows Virtual Desktop Preview](overview.md)
+- Lees onze [documentatie voor virtueel Windows-bureau blad](overview.md)
 - Bezoek onze [Windows-TechCommunity voor virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 - Uw Windows-implementatie voor virtueel bureau blad instellen met de [zelf studies voor virtueel Windows-bureau blad](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)

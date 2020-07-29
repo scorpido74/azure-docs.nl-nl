@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499219"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318110"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -655,7 +655,7 @@ Zie de [netwerk firewall vereisten](insights/container-insights-onboard.md#netwo
 Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor voor VM's. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kan ik onboarding uitvoeren op een bestaande werk ruimte?
-Als uw virtuele machines al zijn verbonden met een Log Analytics-werk ruimte, kunt u deze werk ruimte blijven gebruiken bij onboarding naar Azure Monitor voor VM's, mits deze zich in een van de ondersteunde regio's bevindt die [hier](insights/vminsights-enable-overview.md#prerequisites)worden vermeld.
+Als uw virtuele machines al zijn verbonden met een Log Analytics-werk ruimte, kunt u deze werk ruimte blijven gebruiken bij onboarding naar Azure Monitor voor VM's, op voor waarde dat deze zich in een van de [ondersteunde regio's](insights/vminsights-configure-workspace.md#supported-regions)bevindt.
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kan ik onboarding uitvoeren op een nieuwe werk ruimte? 

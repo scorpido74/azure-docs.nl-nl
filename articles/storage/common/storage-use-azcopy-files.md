@@ -4,15 +4,15 @@ description: Gegevens overdragen met AzCopy en file storage.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292722"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en bestandopslag 
 
@@ -54,7 +54,7 @@ Deze sectie bevat de volgende voor beelden:
 > |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--behoud-SMB-machtigingen** = \[ waar \| Onwaar\]|
 > |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--behoud-SMB-info** = \[ waar \| Onwaar\]|
 > |Upload bestanden als toevoeg-blobs of pagina-blobs.|**--BLOB-type** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
-> |Upload naar een specifieke Access-laag (zoals de laag archief).|**--Block-BLOB-tier** = \[ Geen \| Hot- \| koud \| Archief\]|
+> |Upload naar een specifieke toegangslaag (zoals de archieflaag).|**--Block-BLOB-tier** = \[ Geen \| Hot- \| koud \| Archief\]|
 > 
 > Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
@@ -101,7 +101,7 @@ U kunt de inhoud van een map uploaden zonder de bovenliggende map zelf te kopië
 
 ### <a name="upload-specific-files"></a>Specifieke bestanden uploaden
 
-U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Joker tekens (*).
+U kunt specifieke bestanden uploaden met behulp van volledige bestands namen, gedeeltelijke namen met Joker tekens (*) of met datums en tijden.
 
 #### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
@@ -128,6 +128,17 @@ Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include
 U kunt ook bestanden uitsluiten met behulp van de `--exclude-pattern` optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
 De `--include-pattern` `--exclude-pattern` Opties en zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de `–recursive` optie om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft `*.txt` u op om alle tekst bestanden op te halen.
+
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Bestanden uploaden die na een datum en tijd zijn gewijzigd 
+
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-after` optie. Geef een datum en tijd op in de ISO 8601-indeling (bijvoorbeeld: `2020-08-19T15:04:00Z` ). 
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **Voorbeeld** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-after '2020-08-19T15:04:00Z'` |
+
+Zie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs (Engelstalig) voor meer informatie.
 
 ## <a name="download-files"></a>Bestanden downloaden
 
@@ -185,7 +196,7 @@ U kunt de inhoud van een map downloaden zonder de bovenliggende map zelf te kopi
 
 ### <a name="download-specific-files"></a>Specifieke bestanden downloaden
 
-U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Joker tekens (*).
+U kunt specifieke bestanden downloaden met behulp van volledige bestands namen, gedeeltelijke namen met Joker tekens (*) of met datums en tijden.
 
 #### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
@@ -212,6 +223,18 @@ Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include
 U kunt ook bestanden uitsluiten met behulp van de `--exclude-pattern` optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
 De `--include-pattern` `--exclude-pattern` Opties en zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de `–recursive` optie om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft `*.txt` u op om alle tekst bestanden op te halen.
+
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>Bestanden downloaden die na een datum en tijd zijn gewijzigd 
+
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-after` optie. Geef een datum en tijd op in de ISO-8601-indeling (bijvoorbeeld: `2020-08-19T15:04:00Z` ). 
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>/*<SAS-token>' '<local-directory-path>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory' --include-after '2020-08-19T15:04:00Z'` |
+
+
+Zie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs (Engelstalig) voor meer informatie.
 
 ## <a name="copy-files-between-storage-accounts"></a>Bestanden kopiëren tussen opslagaccounts
 

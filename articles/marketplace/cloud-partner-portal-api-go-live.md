@@ -4,15 +4,15 @@ description: De Go Live API initieert het Live-aanbiedings proces van de aanbied
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535940"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292935"
 ---
 # <a name="go-live"></a>Live gaan
 
@@ -26,11 +26,11 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 ## <a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**      |   **Beschrijving**                                                           | **Gegevens type** |
+|  **Naam**      |   **Beschrijving**                                                           | **Gegevenstype** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | De uitgevers-id van de aanbieding die u wilt ophalen, bijvoorbeeld`contoso`       |  Tekenreeks       |
 | offerId        | Id van de aanbieding die moet worden opgehaald                                   |  Tekenreeks       |
-| api-versie    | Nieuwste versie van de API                                                   |  Datum         |
+| api-versie    | Nieuwste versie van de API                                                   |  Date         |
 |  |  |  |
 
 ## <a name="header"></a>Header

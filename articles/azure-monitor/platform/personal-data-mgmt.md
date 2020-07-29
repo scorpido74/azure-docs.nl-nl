@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539326"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318314"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 
@@ -48,7 +48,7 @@ Log Analytics is een flexibele Store, waarmee u een schema voor uw gegevens voor
     ```
   Zoek niet alleen naar gebruikers namen met een lees bare naam, maar ook GUID'S die rechtstreeks naar een bepaalde gebruiker kunnen worden getraceerd.
 * *Apparaat-id's*: zoals gebruikers-id's, worden apparaat-id's soms als ' privé ' beschouwd. Gebruik dezelfde methode als hierboven hierboven voor gebruikers-Id's om tabellen te identificeren waarin dit probleem kan optreden. 
-* *Aangepaste gegevens*: met log Analytics kunt u de verzameling op diverse manieren toestaan: aangepaste logboeken en aangepaste velden, de [http-gegevens verzamelaar-API](../../azure-monitor/platform/data-collector-api.md) en aangepaste gegevens die zijn verzameld als onderdeel van systeem gebeurtenis Logboeken. Al deze zijn gevoelig voor persoonlijke gegevens en moeten worden onderzocht om te controleren of dergelijke gegevens bestaan.
+* *Aangepaste gegevens*: met log Analytics kunt u de verzameling op diverse manieren toestaan: aangepaste logboeken en aangepaste velden, de [http-gegevens verzamelaar-API](./data-collector-api.md) en aangepaste gegevens die zijn verzameld als onderdeel van systeem gebeurtenis Logboeken. Al deze zijn gevoelig voor persoonlijke gegevens en moeten worden onderzocht om te controleren of dergelijke gegevens bestaan.
 * Door oplossingen *vastgelegde gegevens*: omdat het oplossings mechanisme een open-end is, raden we u aan alle tabellen te controleren die zijn gegenereerd door een oplossing om te voldoen aan de vereisten.
 
 ### <a name="application-data"></a>Toepassingsgegevens
@@ -124,5 +124,6 @@ Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden
 >  Hoewel het meren deel van de opschoon bewerkingen veel sneller kan worden uitgevoerd dan de SLA Application Insights, **wordt de formele sla voor het volt ooien van de opschoon bewerking op 30 dagen ingesteld**.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [log Analytics Data Security](../../azure-monitor/platform/data-security.md)(Engelstalig) voor meer informatie over hoe log Analytics gegevens worden verzameld, verwerkt en beveiligd.
-- Zie [Application Insights Data Security](../../azure-monitor/app/data-retention-privacy.md)(Engelstalig) voor meer informatie over hoe Application Insights gegevens worden verzameld, verwerkt en beveiligd.
+- Zie [log Analytics Data Security](./data-security.md)(Engelstalig) voor meer informatie over hoe log Analytics gegevens worden verzameld, verwerkt en beveiligd.
+- Zie [Application Insights Data Security](../app/data-retention-privacy.md)(Engelstalig) voor meer informatie over hoe Application Insights gegevens worden verzameld, verwerkt en beveiligd.
+

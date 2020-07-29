@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 487177b4a114ba7537ac4f1aa74a4e2472455d4b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518093"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369557"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -289,6 +289,12 @@ Deze rol heette voorheen ' Wachtwoord beheerder ' in de [Azure Portal](https://p
 
 Gebruikers met deze rol kunnen services en instellingen met betrekking tot het inschakelen van hybride identiteit in azure AD inschakelen, configureren en beheren. Deze rol biedt de mogelijkheid om Azure AD te configureren voor een van de drie ondersteunde verificatie methoden, wacht woord-hash-synchronisatie (PHS), Pass-Through-verificatie (PTA) of Federatie (AD FS of externe Federatie provider), en om gerelateerde on-premises infra structuur te implementeren om deze in te scha kelen. On-premises infra structuur omvat provisioning-en PTA-agents. Deze rol biedt de mogelijkheid om naadloze eenmalige aanmelding (S-SSO) in te scha kelen voor naadloze verificatie op niet-Windows 10-apparaten of niet-Windows Server 2016-computers. Daarnaast biedt deze rol de mogelijkheid om aanmeldings logboeken te bekijken en toegang te krijgen tot de status en analyses voor het bewaken en oplossen van problemen. 
 
+### <a name="insights-administrator"></a>[Insights-beheerder](#insights-administrator-permissions)
+Gebruikers met deze rol hebben toegang tot de volledige set beheer mogelijkheden in de [M365 Insights-toepassing](https://go.microsoft.com/fwlink/?linkid=2129521). Deze rol heeft de mogelijkheid om mapgegevens te lezen, de service status te bewaken, tickets voor bestands ondersteuning en toegang te krijgen tot de aspecten van de Insights-beheer instellingen.
+
+### <a name="insights-business-leader"></a>[Zakelijke leider inzichten](#insights-business-leader-permissions)
+Gebruikers met deze rol hebben toegang tot een set Dash boards en inzichten via de [M365 Insights-toepassing](https://go.microsoft.com/fwlink/?linkid=2129521). Dit omvat volledige toegang tot alle Dash boards en weer gegeven inzicht in de functionaliteit voor het verkennen van gegevens. Gebruikers met deze rol hebben geen toegang tot de configuratie-instellingen van het product. Dit is de verantwoordelijkheid van de rol Insights-beheerder.
+
 ### <a name="intune-administrator"></a>[InTune-beheerder](#intune-service-administrator-permissions)
 
 Gebruikers met deze rol hebben algemene machtigingen binnen Microsoft Intune online, wanneer de service aanwezig is. Daarnaast bevat deze rol de mogelijkheid om gebruikers en apparaten te beheren om het beleid te koppelen, en om groepen te maken en te beheren. Meer informatie over op [rollen gebaseerd beheer beheer (RBAC) met Microsoft intune](https://docs.microsoft.com/intune/role-based-access-control).
@@ -314,22 +320,22 @@ Gebruikers met deze rol kunnen alle meldingen in het berichten centrum bewaken, 
 
 Gebruikers met deze rol kunnen meldingen en advies status updates in [Office 365 Message Center](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) voor hun organisatie controleren op geconfigureerde services zoals Exchange, intune en micro soft teams. Berichten centrum-lezers ontvangen wekelijkse e-mail samenvattingen van berichten, updates en kunnen berichten centrum berichten delen in Office 365. In azure AD hebben gebruikers die aan deze rol zijn toegewezen alleen alleen-lezen toegang tot Azure AD-services zoals gebruikers en groepen. Deze rol heeft geen toegang voor het weer geven, maken of beheren van ondersteunings tickets.
 
-### <a name="modern-commerce-administrator"></a>[Moderne commerce-beheerder](#modern-commerce-administrator-permissions)
+### <a name="modern-commerce-user"></a>[Moderne commerce gebruiker](#modern-commerce-user-permissions)
 
 Niet gebruiken. Deze rol wordt automatisch toegewezen vanuit commerce en is niet bedoeld of wordt niet ondersteund voor andere gebruik. Zie hieronder voor meer informatie.
 
-De rol moderne commerce beheerder geeft bepaalde gebruikers toestemming om toegang te krijgen tot Microsoft 365-beheer centrum en de linkernavigatiebalk te bekijken voor **thuis**, **facturering**en **ondersteuning**. De inhoud die beschikbaar is op deze gebieden wordt beheerd door de [Commerce-specifieke rollen](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) die aan gebruikers zijn toegewezen voor het beheren van producten die ze voor zichzelf of uw organisatie hebben gekocht. Dit kunnen taken zijn zoals het betalen van facturen of voor toegang tot facturerings accounts en facturerings profielen. 
+De moderne commerce-gebruikersrol geeft bepaalde gebruikers toestemming om toegang te krijgen tot Microsoft 365-beheer centrum en de linkernavigatiebalk te bekijken voor **thuis**, **facturering**en **ondersteuning**. De inhoud die beschikbaar is op deze gebieden wordt beheerd door de [Commerce-specifieke rollen](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) die aan gebruikers zijn toegewezen voor het beheren van producten die ze voor zichzelf of uw organisatie hebben gekocht. Dit kunnen taken zijn zoals het betalen van facturen of voor toegang tot facturerings accounts en facturerings profielen. 
 
-Gebruikers met de rol moderne commerce beheerder hebben doorgaans beheerders machtigingen in andere micro soft-aankoop systemen, maar hebben geen globale beheerder of facturerings beheerders rollen die worden gebruikt voor toegang tot het beheer centrum. 
+Gebruikers met de moderne commerce-gebruikersrol hebben doorgaans beheerders machtigingen in andere micro soft-aankoop systemen, maar hebben geen globale beheerder of facturerings beheerders rollen die worden gebruikt voor toegang tot het beheer centrum. 
 
-**Wanneer is de rol moderne commerce-beheerder toegewezen?**
+**Wanneer is de moderne commerce-gebruikersrol toegewezen?**
 
-* **Self-service aankopen in Microsoft 365-beheer centrum** : met self-service aankopen kunnen gebruikers nieuwe producten uitproberen door ze te kopen of zich zelf aan te melden. Deze producten worden beheerd in het beheer centrum. Gebruikers die een self-service aankoop doen, krijgen een rol in het commerce-systeem en de rol van moderne commerce-beheerder zodat ze hun aankopen kunnen beheren in het beheer centrum. Beheerders kunnen de inkopen van self-service (voor Power BI, Power apps, energie automatisering) blok keren via [Power shell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Zie [Veelgestelde vragen over aankopen via self-service](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide) voor meer informatie.  
-* **Aankopen van micro soft Commercial Marketplace** : net als bij self-service aankopen, wanneer een gebruiker een product of service koopt van Microsoft AppSource of Azure Marketplace, wordt de rol van moderne commerce-beheerder toegewezen als ze niet de rol van globale beheerder of facturerings beheerder hebben. In sommige gevallen kunnen gebruikers worden geblokkeerd voor het aanbrengen van deze aankopen. Zie [micro soft Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)(Engelstalig) voor meer informatie.
-* **Voorst Ellen van micro soft** : een voor stel is een formeel aanbod van micro soft voor uw organisatie om micro soft-producten en-services te kopen. Wanneer de persoon die het voor stel accepteert, geen globale beheerder of facturerings beheerdersrol heeft in azure AD, krijgen ze zowel een bedrijfsspecifieke rol toegewezen om het voor stel als de moderne commerce-beheerdersrol voor toegang tot het beheer centrum te volt ooien. Wanneer ze toegang krijgen tot het beheer centrum, kunnen ze alleen functies gebruiken die zijn geautoriseerd door hun specifieke commerce rol.
-* **Commerce-specifieke rollen** : aan sommige gebruikers worden commerce-specifieke rollen toegewezen. Als een gebruiker geen globale of facturerings beheerder is, krijgen ze de rol van moderne commerce-beheerder, zodat ze toegang hebben tot het beheer centrum.  
+* **Self-service aankopen in Microsoft 365-beheer centrum** : met self-service aankopen kunnen gebruikers nieuwe producten uitproberen door ze te kopen of zich zelf aan te melden. Deze producten worden beheerd in het beheer centrum. Gebruikers die een self-service aankoop doen, krijgen een rol in het commerce-systeem en de moderne commerce gebruikersrol, zodat ze hun aankopen kunnen beheren in het beheer centrum. Beheerders kunnen de inkopen van self-service (voor Power BI, Power apps, energie automatisering) blok keren via [Power shell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Zie [Veelgestelde vragen over aankopen via self-service](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide) voor meer informatie.  
+* **Aankopen van micro soft Commercial Marketplace** : net als bij self-service aankopen, wanneer een gebruiker een product of service koopt van Microsoft AppSource of Azure Marketplace, wordt de moderne commerce-gebruikersrol toegewezen als deze niet de rol van globale beheerder of facturerings beheerder hebben. In sommige gevallen kunnen gebruikers worden geblokkeerd voor het aanbrengen van deze aankopen. Zie [micro soft Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)(Engelstalig) voor meer informatie.
+* **Voorst Ellen van micro soft** : een voor stel is een formeel aanbod van micro soft voor uw organisatie om micro soft-producten en-services te kopen. Wanneer de persoon die het voor stel accepteert, geen globale beheerder of facturerings beheerdersrol heeft in azure AD, krijgen ze zowel een bedrijfsspecifieke rol toegewezen om het voor stel als de moderne commerce-gebruikersrol voor toegang tot het beheer centrum te volt ooien. Wanneer ze toegang krijgen tot het beheer centrum, kunnen ze alleen functies gebruiken die zijn geautoriseerd door hun specifieke commerce rol.
+* **Commerce-specifieke rollen** : aan sommige gebruikers worden commerce-specifieke rollen toegewezen. Als een gebruiker geen globale of facturerings beheerder is, krijgen ze de moderne commerce-gebruikersrol, zodat ze toegang hebben tot het beheer centrum.  
 
-Als de rol van moderne commerce-beheerder niet is toegewezen aan een gebruiker, verliest deze toegang tot Microsoft 365-beheer centrum. Als ze producten voor zichzelf of voor uw organisatie beheren, kunnen ze deze niet beheren. Dit kunnen bijvoorbeeld het toewijzen van licenties zijn, het wijzigen van de betalings methoden, het betalen van facturen of andere taken voor het beheren van abonnementen.
+Als de moderne commerce-gebruikersrol niet is toegewezen aan een gebruiker, verliest deze toegang tot Microsoft 365-beheer centrum. Als ze producten voor zichzelf of voor uw organisatie beheren, kunnen ze deze niet beheren. Dit kunnen bijvoorbeeld het toewijzen van licenties zijn, het wijzigen van de betalings methoden, het betalen van facturen of andere taken voor het beheren van abonnementen.
 
 ### <a name="network-administrator"></a>[Netwerk beheerder](#network-administrator-permissions)
 
@@ -421,7 +427,7 @@ Windows Defender ATP en EDR | Rollen toewijzen<br>Computer groepen beheren<br>De
 [Slimme vergrendeling](../authentication/howto-password-smart-lockout.md) | Definieer de drempel en duur voor vergren delingen wanneer mislukte aanmeldings gebeurtenissen plaatsvinden.
 [Wachtwoord beveiliging](../authentication/concept-password-ban-bad.md) | Aangepaste lijst met verboden wacht woorden of on-premises wachtwoord beveiliging configureren.
 
-### <a name="security-operator"></a>[Beveiligingsoperator](#security-operator-permissions)
+### <a name="security-operator"></a>[Beveiligings operator](#security-operator-permissions)
 
 Gebruikers met deze rol kunnen waarschuwingen beheren en algemene alleen-lezen toegang hebben voor beveiligings functies, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management en Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
@@ -500,7 +506,7 @@ Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers 
 | --- | --- |
 |Algemene machtigingen|<p>Gebruikers en groepen maken</p><p>Gebruikersweergaven maken en beheren</p><p>Office-ondersteunings tickets beheren<p>Verloop beleid voor wacht woorden bijwerken|
 | <p>Voor alle gebruikers, inclusief alle beheerders</p>|<p>Licenties beheren</p><p>Alle gebruikers eigenschappen beheren, met uitzonde ring van Principal-naam van gebruiker</p>
-| Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikersbeheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
+| Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikers beheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -1224,6 +1230,27 @@ Cloud inrichting en verificatie services inschakelen, implementeren, configurere
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 
+### <a name="insights-administrator-permissions"></a>Insights-beheerders machtigingen
+
+Heeft sdministrative-toegang in de M365 Insights-app. 
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
+| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Insights/allTasks | Beheer alle aspecten van inzichten. |
+| micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
+| micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
+
+### <a name="insights-business-leader-permissions"></a>Business Leader-machtigingen voor inzichten
+
+Kan Dash boards en inzichten bekijken en delen via de M365 Insights-app.
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. Insights/rapporten/lezen | Rapporten en dash board in Insights-app weer geven. |
+| micro soft. Insights/Program ma's/bijwerken | Program ma's implementeren en beheren in Insights-apps. |
 
 ### <a name="intune-service-administrator-permissions"></a>Machtigingen voor de intune-service beheerder
 
@@ -1338,7 +1365,7 @@ Kan berichten en updates voor hun organisatie alleen in het Office 365-berichten
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
 
-### <a name="modern-commerce-administrator-permissions"></a>Moderne commerce-beheerders machtigingen
+### <a name="modern-commerce-user-permissions"></a>Moderne commerce-gebruikers machtigingen
 Kan commerciële aankopen voor een bedrijf, afdeling of team beheren. 
 
 > [!NOTE]
@@ -1619,24 +1646,26 @@ Kan beveiligings gegevens en-rapporten lezen en configuratie beheren in azure AD
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
+| micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
+| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | micro soft. Directory/toepassingen/beleid/update | Werk de eigenschap Applications. policies bij in Azure Active Directory. |
 | micro soft. map/audit logs bevat/allProperties/lezen | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op audit logs bevat in Azure Active Directory. |
 | micro soft. Directory/apparaten/bitLockerRecoveryKeys/lezen | Lees de eigenschap devices. bitLockerRecoveryKeys in Azure Active Directory. |
+| micro soft. map/identityProtection/allProperties/lezen | Alle resources in micro soft. Aad. identityProtection lezen. |
+| micro soft. Directory/identityProtection/allProperties/update | Alle resources in micro soft. Aad. identityProtection bijwerken. |
 | micro soft. Directory/policies/Basic/update | Basis eigenschappen van beleid in Azure Active Directory bijwerken. |
 | micro soft. Directory/beleid/maken | Beleids regels maken in Azure Active Directory. |
 | micro soft. Directory/beleid/verwijderen | Beleids regels verwijderen in Azure Active Directory. |
 | micro soft. Directory/policies/eigen aren/bijwerken | Werk de eigenschap policies. Owners bij in Azure Active Directory. |
 | micro soft. Directory/policies/tenantDefault/update | Werk de eigenschap policies. tenantDefault bij in Azure Active Directory. |
+| micro soft. map/privilegedIdentityManagement/allProperties/lezen | Alle resources in micro soft. Aad. privilegedIdentityManagement lezen. |
 | micro soft. Directory/servicePrincipals/policies/update | Werk de eigenschap servicePrincipals. policies bij in Azure Active Directory. |
 | micro soft. map/signInReports/allProperties/lezen | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op signInReports in Azure Active Directory. |
-| micro soft. Aad. identityProtection/aldaar/Lees | Alle resources in micro soft. Aad. identityProtection lezen. |
-| micro soft. Aad. identityProtection/conacties/update | Alle resources in micro soft. Aad. identityProtection bijwerken. |
-| micro soft. Aad. privilegedIdentityManagement/aldaar/Lees | Alle resources in micro soft. Aad. privilegedIdentityManagement lezen. |
-| micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. protectionCenter/de aflezingen/lezen | Lees alle aspecten van Office 365 Protection Center. |
 | micro soft. office365. protectionCenter/cons/update | Werk alle resources in micro soft. office365. protectionCenter bij. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
+| micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="security-operator-permissions"></a>Machtigingen voor beveiligings operator
 
@@ -1649,12 +1678,13 @@ Maakt en beheert beveiligings gebeurtenissen.
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
-| micro soft. Aad. cloudAppSecurity/allTasks | Microsoft Cloud App Security lezen en configureren. |
-| micro soft. Aad. identityProtection/aldaar/Lees | Alle resources in micro soft. Aad. identityProtection lezen. |
-| micro soft. Aad. privilegedIdentityManagement/aldaar/Lees | Alle resources in micro soft. Aad. privilegedIdentityManagement lezen. |
 | micro soft. Azure. advancedThreatProtection/Alvan de aflezingen/lezen | Lees en configureer Azure AD Advanced Threat Protection. |
+| micro soft. Directory/cloudAppSecurity/allProperties/allTasks | Microsoft Cloud App Security lezen en configureren. |
+| micro soft. map/identityProtection/allProperties/lezen | Alle resources in micro soft. Aad. identityProtection lezen. |
+| micro soft. map/privilegedIdentityManagement/allProperties/lezen | Alle resources in micro soft. Aad. privilegedIdentityManagement lezen. |
 | micro soft. intune/toestemmingen/allTasks | Beheer alle aspecten van intune. |
 | micro soft. office365. securityComplianceCenter/cons/allTasks | Lees en configureer beveiliging & compliance Center. |
+| micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 | micro soft. Windows. defenderAdvancedThreatProtection/geleenheden/lezen | Lees en configureer Windows Defender Advanced Threat Protection. |
 
 ### <a name="security-reader-permissions"></a>Machtigingen voor beveiligings lezer
@@ -1872,13 +1902,15 @@ Groeps beheerder | Groeps beheerder | fdd7a751-b60b-444a-984c-02652fe8fa1c
 Gast uitnodiging | Gast uitnodiging | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Helpdesk beheerder | Helpdesk beheerder | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Hybride identiteits beheerder | Hybride identiteits beheerder | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
+Insights-beheerder | Insights-beheerder | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
+Zakelijke leider inzichten | Zakelijke leider inzichten | 31e939ad-9672-4796-9c2e-873181342d2d
 Intune-servicebeheerder | Intune-beheerder | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-beheerder | Kaizala-beheerder | 74ef975b-6605-40af-a5d2-b9539d836353
 Licentie beheerder | Licentiebeheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync-service beheerder | Skype voor Bedrijven-beheerder | 75941009-915a-4869-abe7-691bff18279e
 Berichten centrum-privacy-lezer | Berichten centrum-privacy-lezer | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Berichten centrum-lezer | Berichten centrum-lezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-Moderne commerce-beheerder | Moderne commerce-beheerder | d24aef57-1500-4070-84db-2666f29cf966
+Moderne commerce gebruiker | Moderne commerce gebruiker | d24aef57-1500-4070-84db-2666f29cf966
 Netwerk beheerder | Netwerk beheerder | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office-Apps beheerder | Office-Apps beheerder | 2b745bdf-0803-4d80-aa65-822c4493daac
 Ondersteuning voor partner Tier1 | Niet weer gegeven omdat deze niet mag worden gebruikt | 4ba39ca4-527c-499a-b93d-d9b492c50246
@@ -1922,7 +1954,7 @@ De volgende rollen mogen niet worden gebruikt. Ze zijn afgeschaft en worden in d
 
 Niet elke rol die wordt geretourneerd door Power shell of MS Graph API is zichtbaar in Azure Portal. In de volgende tabel worden deze verschillen ingedeeld.
 
-API-naam | Azure Portal naam | Notities
+API-naam | Azure Portal naam | Opmerkingen
 -------- | ------------------- | -------------
 Company Administratoristrain opr | Globale beheerder | [De naam is gewijzigd voor betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
 CRM Service-beheerder | Dynamics 365-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)
@@ -1931,12 +1963,12 @@ Apparaatbeheer | Afgeschaft | [Documentatie over afgeschafte functies](directory
 Gebruikers van het apparaat | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 Directory-synchronisatie accounts | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor Directory Synchronization accounts](directory-assign-admin-roles.md#directory-synchronization-accounts)
 Schrijvers van mappen | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie over Directory schrijvers](directory-assign-admin-roles.md#directory-writers)
-Gastgebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt  | N.v.t.
+Gastgebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt  | NA
 Lync-service beheerder | Skype voor Bedrijven-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)
 Ondersteuning voor partner Tier 1 | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor partner Tier1-ondersteuning](directory-assign-admin-roles.md#partner-tier1-support)
 Ondersteuning voor partner Tier 2 | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor partner Tier2-ondersteuning](directory-assign-admin-roles.md#partner-tier2-support)
-Beperkte gast gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | N.v.t.
-Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | N.v.t.
+Beperkte gast gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | NA
+Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | NA
 Werkplek apparaat toevoegen | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Volgende stappen

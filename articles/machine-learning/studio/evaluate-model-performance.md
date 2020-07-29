@@ -1,6 +1,5 @@
 ---
-title: '& modellen van meerdere validaties evalueren'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): Evalueer & Kruis validatie modellen-Azure'
 description: Meer informatie over de metrische gegevens die u kunt gebruiken om de model prestaties in Azure Machine Learning Studio (klassiek) te bewaken.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945100"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318637"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Prestaties van model in Azure Machine Learning Studio evalueren (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 In dit artikel vindt u meer informatie over de metrische gegevens die u kunt gebruiken om de model prestaties in Azure Machine Learning Studio (klassiek) te bewaken.  Het evalueren van de prestaties van een model is een van de belangrijkste fasen in het data Science-proces. Hiermee wordt aangegeven hoe de Score (voor spellingen) van een gegevensset is geslaagd door een getraind model. Azure Machine Learning Studio (klassiek) ondersteunt model evaluatie via twee van de belangrijkste machine learning modules: 
 + [Model evalueren][evaluate-model] 

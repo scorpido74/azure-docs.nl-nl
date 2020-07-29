@@ -1,6 +1,5 @@
 ---
-title: Python-scripts uitvoeren
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): python-scripts uitvoeren-Azure'
 description: Meer informatie over het gebruik van de script module python uitvoeren voor het gebruik van python-code in Machine Learning Studio (klassiek) experimenten en webservices.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2652e3b5be108985557427b99fa7841b88bf28ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696300"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318603"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Python is een waardevol hulp middel in de hulp middelen van veel gegevens wetenschappers. Deze wordt gebruikt in elke fase van typische machine learning werk stromen, inclusief gegevens exploratie, extractie van functies, model training en-implementatie.
 

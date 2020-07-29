@@ -4,16 +4,16 @@ description: Geeft een lijst van de verschillende beschik bare grootten voor vir
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 04f139e7e747d2c0566ffada9e080bf4abb1ac86
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: f6ed5fee8e6d4f1f0575df733b8b95d1d6990513
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171673"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289684"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Grootten voor virtuele machines in azure
 
@@ -21,9 +21,9 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 
 | Type | Grootten | Beschrijving |
 |------|-------|-------------|
-| [Algemeen gebruik](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC, DCv2, Dv4, Dsv4, Ddv4, Ddsv4  | Evenwichtige CPU-geheugen verhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
+| [Algemeen doel](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC, DCv2, Dv4, Dsv4, Ddv4, Ddsv4  | Evenwichtige CPU-geheugen verhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
 | [Geoptimaliseerde rekenkracht](sizes-compute.md) | Fsv2 | Hoge CPU-geheugen verhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
-| [Geoptimaliseerd voor geheugen](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, dv2 | Hoge geheugen-naar-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerd geheugen](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, dv2 | Hoge geheugen-naar-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
 | [Geoptimaliseerd voor opslag](sizes-storage.md) | Lsv2 | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
 | [GPU](sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3, NVv4 | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere GPU's. |
 | [Krachtig rekenvermogen](sizes-hpc.md) | HB, HBv2, HC, H | Onze snelste en krach tigste virtuele CPU-machines met optionele netwerk interfaces (RDMA) met hoge door voer. |
@@ -61,10 +61,10 @@ Meer informatie over reken prestaties voor Windows-Vm's met behulp van de [SPECI
 
 Meer informatie over de verschillende beschik bare VM-grootten:
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
-- [Geoptimaliseerd voor geheugen](sizes-memory.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Geoptimaliseerd geheugen](sizes-memory.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - Controleer de [vorige generatie](sizes-previous-gen.md) pagina voor een standaard, Dv1 (D1-4 en D11-14 v1) en A8-A11-serie

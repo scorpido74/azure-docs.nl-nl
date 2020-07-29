@@ -1,5 +1,5 @@
 ---
-title: Een gebruiker op aanvraag inrichten met Azure Active Directory
+title: Een gebruiker op aanvraag inrichten met behulp van Azure Active Directory
 description: Synchronisatie afdwingen
 services: active-directory
 author: msmimart
@@ -11,106 +11,142 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051583"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313605"
 ---
 # <a name="on-demand-provisioning"></a>Inrichting op aanvraag
-Met inrichten op aanvraag kunt u binnen enkele seconden een gebruiker inrichten in een toepassing. U kunt de mogelijkheid gebruiken om snel configuratie problemen op te lossen, expressies te valideren die u hebt gedefinieerd, filters voor bereik te testen en nog veel meer. 
+Inrichting op aanvraag gebruiken om binnen enkele seconden een gebruiker in te richten in een toepassing. U kunt met behulp van deze mogelijkheid onder andere het volgende:
 
-## <a name="how-to-use-on-demand-provisioning"></a>Instructies voor het gebruik van on-demand inrichten 
+* Configuratie problemen snel op te lossen.
+* Expressies valideren die u hebt gedefinieerd.
+* Test bereik filters.
+
+## <a name="how-to-use-on-demand-provisioning"></a>Inrichting op aanvraag gebruiken
 
 1. Meld u aan bij de **Azure-portal**.
-2. Navigeer naar **bedrijfs toepassingen**.
-3. Selecteer uw toepassing en navigeer naar de pagina inrichtings configuratie.
+2. Ga naar **alle services**  >  **bedrijfs toepassingen**.
+3. Selecteer uw toepassing en ga vervolgens naar de pagina inrichtings configuratie.
 4. Configureer inrichting door uw beheerders referenties op te geven.
-5. Klik op **aanvraag inrichten**.
+5. Selecteer **inrichten op aanvraag**.
 6. Zoek naar een gebruiker op voor naam, achternaam, weergave naam, user principal name of e-mail adres.
-7. Selecteer aan de onderkant van de pagina inrichten.
+7. Selecteer aan de onderkant van de pagina **inrichten** .
 
-:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Een gebruiker inrichten op aanvraag.":::
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Scherm opname van de Azure Portal gebruikers interface voor het inrichten van een gebruiker op aanvraag.":::
 
-## <a name="understanding-the-provisioning-steps"></a>Informatie over de inrichtings stappen
-De functie voor inrichting op aanvraag probeert de stappen weer te geven die de inrichtings service onderneemt bij het inrichten van een gebruiker. Er zijn meestal vijf stappen voor het inrichten van een gebruiker en een of meer van de onderstaande stappen worden weer gegeven in de ervaring op aanvraag inrichten.
+## <a name="understand-the-provisioning-steps"></a>De inrichtings stappen begrijpen
+
+Het inrichtings proces op aanvraag probeert de stappen weer te geven die de inrichtings service onderneemt bij het inrichten van een gebruiker. Er zijn meestal vijf stappen voor het inrichten van een gebruiker. Een of meer van deze stappen, die in de volgende secties worden uitgelegd, worden weer gegeven tijdens de inrichtings ervaring op aanvraag.
 
 ### <a name="step-1-test-connection"></a>Stap 1: de verbinding testen
-De inrichtings service probeert toegang te verlenen tot de doel toepassing door een aanvraag voor een test gebruiker te maken. De inrichtings service verwacht een antwoord dat aangeeft dat het toestemming heeft om door te gaan met de inrichtings stappen. Deze stap wordt alleen weer gegeven als er een fout is opgetreden in de stap. Het wordt niet weer gegeven in de inrichtings ervaring op aanvraag wanneer de stap is geslaagd. 
 
-**Tips voor probleemoplossing**
-* Zorg ervoor dat u geldige referenties hebt ingevoerd voor de doel toepassing, zoals het geheim token en de Tenant-URL. De vereiste referenties variëren per toepassing. Gedetailleerde zelf studies voor configuratie vindt u [hier](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
-* Zorg ervoor dat de doel toepassing filteren ondersteunt op de overeenkomende kenmerk (en) die zijn gedefinieerd op de Blade kenmerk toewijzingen. Mogelijk moet u de API-documentatie van de ontwikkelaar van de toepassing controleren om inzicht te krijgen in de filters die ze ondersteunen.  
-* Voor SCIM-toepassingen kunt u een hulp programma zoals postman gebruiken om ervoor te zorgen dat de toepassing reageert op de autorisatie aanvragen wanneer de Azure AD-inrichtings service verwacht. [Hier](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3)vindt u een voor beeld van een aanvraag.
+De inrichtings service probeert toegang te verlenen tot de doel toepassing door een aanvraag voor een test gebruiker te maken. De inrichtings service verwacht een antwoord dat aangeeft dat de service is gemachtigd om door te gaan met de inrichtings stappen. Deze stap wordt alleen weer gegeven wanneer het mislukt. Het wordt niet weer gegeven tijdens de inrichtings ervaring op aanvraag wanneer de stap is geslaagd.
+
+#### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+
+* Zorg ervoor dat u geldige referenties hebt ingevoerd, zoals het geheime token en de Tenant-URL, naar de doel toepassing. De vereiste referenties variëren per toepassing. Zie de [lijst met zelf](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)studies voor gedetailleerde configuratie handleidingen. 
+* Zorg ervoor dat de doel toepassing filteren ondersteunt op de overeenkomende kenmerken die zijn gedefinieerd in het deel venster **kenmerk toewijzingen** . Mogelijk moet u de API-documentatie van de ontwikkelaar van de toepassing controleren om de ondersteunde filters te begrijpen.
+* Voor systeem voor SCIM-toepassingen (Cross-Domain Identity Management) kunt u een hulp programma zoals postman gebruiken. Met deze hulpprogram ma's kunt u ervoor zorgen dat de toepassing reageert op autorisatie aanvragen op de manier waarop de inrichtings service van Azure Active Directory (Azure AD) verwacht. Bekijk een [voor beeld](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3)van een aanvraag.
 
 ### <a name="step-2-import-user"></a>Stap 2: gebruiker importeren
-Vervolgens haalt de inrichtings service de gebruiker op uit het bron systeem. De gebruikers kenmerken die door de service worden opgehaald, worden later gebruikt om te evalueren of de gebruiker binnen het bereik is van het inrichten, het doel systeem controleren op een bestaande gebruiker en om te bepalen welke gebruikers kenmerken naar het doel systeem moeten worden geëxporteerd. 
 
-**Details weergeven**
+Vervolgens haalt de inrichtings service de gebruiker op uit het bron systeem. De gebruikers kenmerken die door de service worden opgehaald, worden later gebruikt voor het volgende:
 
-In het gedeelte weergave Details worden de eigenschappen van de gebruiker weer gegeven die zijn geïmporteerd uit het bron systeem (bijvoorbeeld Azure AD).
+* Evalueren of de gebruiker binnen het bereik van de inrichting valt.
+* Controleer het doel systeem voor een bestaande gebruiker.
+* Bepaal welke gebruikers kenmerken er naar het doel systeem moeten worden geëxporteerd.
 
-**Tips voor probleemoplossing**
-* Het importeren van de gebruiker kan mislukken als het overeenkomende kenmerk ontbreekt voor het gebruikers object in het bron systeem. U kunt deze fout oplossen door het gebruikers object bij te werken met een waarde voor het overeenkomende kenmerk of door het overeenkomende kenmerk in uw inrichtings configuratie te wijzigen.  
-* Als een kenmerk dat u verwacht, ontbreekt in de lijst die is geïmporteerd, moet u ervoor zorgen dat het kenmerk een waarde heeft voor het gebruikers object in het bron systeem. De inrichtings service biedt momenteel geen ondersteuning voor het inrichten van Null-kenmerken. 
-* Zorg ervoor dat de toewijzings pagina van uw inrichtings configuratie kenmerk het kenmerk bevat dat u verwacht. 
+#### <a name="view-details"></a>Details weergeven
+
+
+In het gedeelte **weergave Details** worden de eigenschappen van de gebruiker weer gegeven die zijn geïmporteerd uit het bron systeem (bijvoorbeeld Azure AD).
+
+#### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+
+* Het importeren van de gebruiker kan mislukken als het overeenkomende kenmerk ontbreekt voor het gebruikers object in het bron systeem. Probeer een van de volgende benaderingen om dit probleem op te lossen:
+
+  * Werk het gebruikers object bij met een waarde voor het overeenkomende kenmerk.
+  * Wijzig het overeenkomende kenmerk in uw inrichtings configuratie.
+
+* Als een kenmerk dat u verwacht, ontbreekt in de geïmporteerde lijst, moet u ervoor zorgen dat het kenmerk een waarde heeft voor het gebruikers object in het bron systeem. De inrichtings service biedt momenteel geen ondersteuning voor het inrichten van Null-kenmerken.
+* Zorg ervoor dat de pagina **kenmerk toewijzing** van uw inrichtings configuratie het kenmerk bevat dat u verwacht.
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>Stap 3: bepalen of de gebruiker binnen het bereik ligt
-Vervolgens bepaalt de inrichtings service of de gebruiker binnen het [bereik](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) van de inrichting valt. De service houdt rekening met aspecten zoals of de gebruiker aan de toepassing is toegewezen, of het bereik is ingesteld op synchroniseren of alles synchroniseren, en de bereik filters die zijn gedefinieerd in uw inrichtings configuratie.  
 
-**Details weergeven**
+Vervolgens bepaalt de inrichtings service of de gebruiker binnen het [bereik](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) van de inrichting valt. De service beschouwt aspecten als:
 
-De sectie Details weer geven toont de scope voorwaarden die zijn geëvalueerd. U ziet mogelijk een van de volgende eigenschappen:
-* **Actief in bron systeem** geeft aan dat de eigenschap actief is ingesteld op True in azure AD.
-* **Toegewezen aan toepassing** geeft aan dat de gebruiker is toegewezen aan de toepassing in azure AD
+* Hiermee wordt aangegeven of de gebruiker aan de toepassing is toegewezen.
+* Hiermee wordt aangegeven of het bereik is ingesteld op **synchroniseren** of **Alles synchroniseren**.
+* De bereik filters die in de inrichtings configuratie zijn gedefinieerd.  
+
+#### <a name="view-details"></a>Details weergeven
+
+De sectie **Details weer geven** toont de scope voorwaarden die zijn geëvalueerd. U ziet mogelijk een of meer van de volgende eigenschappen:
+
+* **Actief in bron systeem** geeft aan dat de eigenschap is `IsActive` ingesteld op **waar** voor de gebruiker in azure AD.
+* **Toegewezen aan toepassing** geeft aan dat de gebruiker is toegewezen aan de toepassing in azure AD.
 * **Scope Sync All** geeft aan dat de bereik instelling alle gebruikers en groepen in de Tenant toestaat.
 * **Gebruiker heeft vereiste rol** geeft aan dat de gebruiker de benodigde rollen heeft die moeten worden ingericht in de toepassing. 
-* **Bereik filters** worden ook weer gegeven als u bereik filters hebt gedefinieerd voor uw toepassing. Het filter wordt weer gegeven met de volgende indeling: {bereik filter titel} {filter kenmerk bereik} {bereik filter operator} {waarde filter bereik}. 
+* **Bereik filters** worden ook weer gegeven als u bereik filters hebt gedefinieerd voor uw toepassing. Het filter wordt weer gegeven met de volgende indeling: {filter titel voor bereik} {bereik filter kenmerk} {filter operator bereik} {filter waarde bereik}.
 
-**Tips voor probleemoplossing**
-* Zorg ervoor dat u een geldige bereik functie hebt gedefinieerd. Vermijd het gebruik van de operator [' groter dan '](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) met een niet-geheel getal. 
-* Als de gebruiker niet de vereiste rol heeft, raadpleegt u de [hier](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role)beschreven tips. 
+#### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+
+* Zorg ervoor dat u een geldige bereik functie hebt gedefinieerd. Vermijd het gebruik van de [operator Greater_Than](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) met een niet-geheel getal.
+* Als de gebruiker niet de vereiste rol heeft, raadpleegt [u de tips voor het inrichten van gebruikers die zijn toegewezen aan de standaard-Access-rol](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role).
 
 ### <a name="step-4-match-user-between-source-and-target"></a>Stap 4: identieke gebruikers tussen de bron en het doel
-In deze stap. de service probeert te voldoen aan de gebruiker die in de import stap is opgehaald met een gebruiker in het doel systeem. 
 
-**Details weergeven**
+In deze stap probeert de service te voldoen aan de gebruiker die in de import stap is opgehaald met een gebruiker in het doel systeem.
 
-Op de pagina's details weer geven ziet u de eigenschappen van de gebruiker (s) die overeenkomen met het doel systeem. De eigenschappen die u in het context deel venster ziet, verschillen als volgt:
+#### <a name="view-details"></a>Details weergeven
+
+Op de pagina **Details weer geven** ziet u de eigenschappen van de gebruikers die overeenkomen met het doel systeem. De eigenschappen die u in het context deel venster ziet, zijn als volgt afhankelijk:
+
 * Als er geen gebruikers overeenkomen in het doel systeem, worden er geen eigenschappen weer geven.
-* Als er sprake is van een gebruiker die overeenkomt met het doel systeem, worden de eigenschappen van die overeenkomende gebruiker van het doel systeem weer geven.
+* Als er sprake is van een gebruiker die overeenkomt met het doel systeem, ziet u de eigenschappen van die overeenkomende gebruiker van het doel systeem.
 * Als er meerdere gebruikers overeenkomen, worden de eigenschappen van beide overeenkomende gebruikers weer geven.
-* Als meerdere overeenkomende kenmerken deel uitmaken van uw kenmerk toewijzingen, wordt elk kenmerk dat overeenkomt sequentief geëvalueerd en worden de overeenkomende gebruikers weer gegeven. 
+* Als meerdere overeenkomende kenmerken deel uitmaken van uw kenmerk toewijzingen, wordt elk overeenkomend kenmerk opeenvolgend geëvalueerd en worden de overeenkomende gebruikers voor dat kenmerk weer gegeven.
 
-**Details voor probleem oplossing**
-* De inrichtings service kan geen unieke id hebben die overeenkomt met een gebruiker in de bron met een gebruiker in het doel. Dit kan worden opgelost door ervoor te zorgen dat het overeenkomende kenmerk uniek is. 
+#### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+
+* De inrichtings service kan mogelijk niet overeenkomen met een gebruiker in het bron systeem die uniek is voor een gebruiker in het doel. Los dit probleem op door ervoor te zorgen dat het overeenkomende kenmerk uniek is.
 * Zorg ervoor dat de doel toepassing filteren ondersteunt op het kenmerk dat is gedefinieerd als het overeenkomende kenmerk.  
 
 ### <a name="step-5-perform-action"></a>Stap 5: actie uitvoeren
-Ten slotte neemt de inrichtings service een actie, zoals het maken, bijwerken, verwijderen of overs laan van de gebruiker. 
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Het inrichten van de gebruiker is geslaagd.":::
+Ten slotte neemt de inrichtings service een actie, zoals het maken, bijwerken, verwijderen of overs laan van de gebruiker.
 
-**Details weergeven**
+Hier volgt een voor beeld van wat u kunt zien nadat het inrichten van een gebruiker op aanvraag is voltooid:
 
-In het gedeelte weer gave Details worden de kenmerken weer gegeven die zijn gewijzigd in de doel toepassing. Dit vertegenwoordigt de uiteindelijke uitvoer van de inrichtings service activiteit en de kenmerken die zijn geëxporteerd. Als deze stap mislukt, vertegenwoordigen de weer gegeven kenmerken de kenmerken die de inrichtings service heeft geprobeerd te wijzigen.  
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Scherm afbeelding met de geslaagde on-demand inrichting van een gebruiker.":::
 
-**Tips voor probleemoplossing**
-* De fouten voor het exporteren van wijzigingen kunnen aanzienlijk verschillen. Bekijk de [documentatie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) voor inrichtings logboeken voor veelvoorkomende fouten.
+#### <a name="view-details"></a>Details weergeven
 
+In het gedeelte **weer gave Details** worden de kenmerken weer gegeven die zijn gewijzigd in de doel toepassing. Dit weer gave vertegenwoordigt de uiteindelijke uitvoer van de inrichtings service activiteit en de kenmerken die zijn geëxporteerd. Als deze stap mislukt, vertegenwoordigen de weer gegeven kenmerken de kenmerken die de inrichtings service heeft geprobeerd te wijzigen.
+
+#### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+
+* Fouten voor het exporteren van wijzigingen kunnen aanzienlijk verschillen. Raadpleeg de [documentatie voor het inrichtings logboek](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) voor veelvoorkomende fouten.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
-**Moet u het inrichten uitschakelen voor het gebruik van on-demand inrichting?** Voor toepassingen die een Long-Bearer-token of-gebruikers naam en-wacht woord gebruiken voor autorisatie, zijn geen extra stappen vereist. Voor toepassingen waarvoor OAuth voor autorisatie wordt gebruikt, moet de inrichtings taak worden gestopt voordat het inrichten op aanvraag wordt gebruikt. Toepassingen zoals G suite, box, werk plek op Facebook en toegestane vertraging vallen in deze categorie. Het werk wordt uitgevoerd om het inrichten op aanvraag uit te voeren voor alle toepassingen, zonder dat het inrichten hoeft te worden gestopt. 
 
-**Hoe lang duurt het inrichten op aanvraag?** Het duurt over het algemeen minder dan 30 seconden. 
+* **Moet u het inrichten uitschakelen voor het gebruik van on-demand inrichting?** Voor toepassingen die gebruikmaken van een Long-Bearer-token of een gebruikers naam en wacht woord voor autorisatie, zijn geen extra stappen vereist. Voor toepassingen waarvoor OAuth voor autorisatie wordt gebruikt, moet de inrichtings taak worden gestopt voordat het inrichten op aanvraag wordt gebruikt. Toepassingen zoals G suite, box, werk plek op Facebook en toegestane vertraging vallen in deze categorie. Er wordt gewerkt aan het ondersteunen van on-demand inrichten voor alle toepassingen, zonder dat het inrichten van taken hoeft te worden gestopt.
+
+* **Hoe lang duurt het inrichten op aanvraag?** Inrichting op aanvraag duurt doorgaans minder dan 30 seconden.
 
 ## <a name="known-limitations"></a>Bekende beperkingen
-Er zijn momenteel enkele bekende beperkingen. Neem contact op met de [gebruikers stem](https://aka.ms/appprovisioningfeaturerequest) zodat we beter kunnen bepalen welke verbeteringen er nu moeten worden gemaakt. Houd er rekening mee dat deze beperkingen specifiek zijn voor de inrichtings mogelijkheid op aanvraag. Raadpleeg de zelf studie over toepassingen voor specifieke informatie over of een toepassing inrichtings groepen, verwijderingen, enzovoort ondersteunt. 
 
-* De toepassingen workday, AWS en SuccessFactors bieden geen ondersteuning voor inrichting op aanvraag.
-* Inrichtings groepen en rollen op aanvraag worden niet ondersteund.
-* Inrichtings inrichting op aanvraag biedt ondersteuning voor het uitschakelen van gebruikers die niet zijn toegewezen uit de toepassing, maar die geen ondersteuning biedt voor het uitschakelen of verwijderen van gebruikers die zijn uitgeschakeld of verwijderd uit Azure Active Directory (die gebruikers worden niet weer gegeven bij het zoeken naar een gebruiker).
+Er zijn momenteel enkele bekende beperkingen voor het inrichten op aanvraag. Post uw [suggesties en feedback](https://aka.ms/appprovisioningfeaturerequest) zodat we beter kunnen bepalen welke verbeteringen er nu moeten worden gemaakt.
+
+> [!NOTE]
+> De volgende beperkingen zijn specifiek voor de inrichtings mogelijkheid op aanvraag. Raadpleeg de zelf studie voor de desbetreffende toepassing voor informatie over of een toepassing inrichtings groepen, verwijderingen of andere mogelijkheden ondersteunt.
+
+* Werk dagen, Amazon Web Services (AWS) en SuccessFactors-toepassingen bieden geen ondersteuning voor het inrichten op aanvraag. 
+* Inrichting op aanvraag van groepen en rollen wordt niet ondersteund.
+* Inrichting op aanvraag biedt ondersteuning voor het uitschakelen van gebruikers die de toewijzing van de toepassing ongedaan hebben gemaakt. Het is echter niet mogelijk om gebruikers uit te scha kelen of te verwijderen die zijn uitgeschakeld of verwijderd uit Azure AD. Deze gebruikers worden niet weer gegeven wanneer u zoekt naar een gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
 

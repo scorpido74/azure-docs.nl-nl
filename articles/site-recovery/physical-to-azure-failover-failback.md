@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497857"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292813"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Failover en failback van fysieke servers die zijn gerepliceerd naar Azure
 
@@ -41,9 +42,9 @@ Controleer de server eigenschappen en controleer of deze voldoet aan de [Azure-v
 
 ### <a name="fail-over-to-azure"></a>Failover naar Azure
 
-1. Klik in **instellingen**  >  **gerepliceerde items** op de machine > **failover**.
+1. Klik in **Instellingen** > **Gerepliceerde items** op de machine > **Failover**.
 2. Selecteer in **Failover** een **Herstelpunt** waarnaar u de failover wilt uitvoeren. U kunt een van de volgende opties gebruiken:
-   - **Laatste**: met deze optie worden eerst alle gegevens naar Site Recovery verzonden gegevens verwerkt. Dit biedt het laagste RPO (Recovery Point Objective), omdat de na de failover gemaakte Azure-VM alle gegevens heeft die naar Site Recovery is gerepliceerd toen de failover werd geactiveerd.
+   - **Laatste**: Met deze optie worden eerst alle gegevens verwerkt die naar Site Recovery zijn verzonden. Dit biedt het laagste RPO (Recovery Point Objective), omdat de na de failover gemaakte Azure-VM alle gegevens heeft die naar Site Recovery is gerepliceerd toen de failover werd geactiveerd.
    - **Laatst verwerkte**: met deze optie wordt er een failover uitgevoerd van de machine naar het laatste herstel punt dat is verwerkt door site Recovery. Deze optie heeft een lage RTO (Recovery Time Objective), omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.
    - **Nieuwste app-consistent**: met deze optie kan de computer worden overgeschakeld naar het nieuwste toepassings consistente herstel punt dat is verwerkt door site Recovery.
    - **Aangepast**: geef een herstelpunt op.
@@ -53,7 +54,7 @@ Controleer de server eigenschappen en controleer of deze voldoet aan de [Azure-v
 5. Na het verifiëren kunt u de failover **Doorvoeren**. Hiermee verwijdert u alle beschikbare herstelpunten.
 
 > [!WARNING]
-> Een failover wordt niet geannuleerd. Voordat de failover wordt gestart, wordt de machine replicatie gestopt. Als u de failover annuleert, wordt deze gestopt, maar de computer wordt niet opnieuw gerepliceerd.
+> Annuleer nooit een failover die in uitvoering is. Voordat de failover wordt gestart, wordt de machine replicatie gestopt. Als u de failover annuleert, wordt deze gestopt, maar de computer wordt niet opnieuw gerepliceerd.
 > Voor fysieke servers kan een extra failover-verwerking rond acht tot tien minuten duren.
 
 ## <a name="automate-actions-during-failover"></a>Acties automatiseren tijdens failover
@@ -83,7 +84,7 @@ Na een failover naar Azure, kunt u Azure-Vm's opnieuw beveiligen door ze te repl
 10. Controleer de volgende scenario's waarin u geen failback kunt uitvoeren:
     - Als u gebruikmaakt van de ESXi 5,5 Free Edition of de gratis versie van vSphere 6 Hyper Visor. Voer een upgrade uit naar een andere versie.
     - Als u een fysieke server met Windows Server 2008 R2 SP1 hebt.
-    - Vm's die zijn [gemigreerd](migrate-overview.md#what-do-we-mean-by-migration).
+    - Vm's die zijn gemigreerd.
     - Een virtuele machine die is verplaatst naar een andere resource groep.
     - Een replica van een virtuele machine van Azure die is verwijderd.
     - Een replica van een virtuele machine van Azure die niet is beveiligd (repliceren naar de on-premises site).

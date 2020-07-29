@@ -4,12 +4,13 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Ja
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 636df121ea5b09a421ae7bedaf9e30cbbd1966f5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280865"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -132,7 +133,7 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    };
    ```
 
-### <a name="outputs"></a>Uitvoerwaarden
+### <a name="outputs"></a>Uitvoer
 Uitvoer (bindingen van `direction === "out"` ) kan op een aantal manieren worden geschreven naar een functie. In alle gevallen komt de `name` eigenschap van de binding, zoals gedefinieerd in *function.js* , overeen met de naam van het object lid dat is geschreven in uw functie. 
 
 U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen (deze methoden niet combi neren):

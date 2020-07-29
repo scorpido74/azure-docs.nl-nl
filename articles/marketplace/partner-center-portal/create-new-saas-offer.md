@@ -5,16 +5,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2c5394dce503a6fa00e2a3e6ff73a683d3d2e76f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012090"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317712"
 ---
 # <a name="create-a-saas-offer"></a>Een SaaS-aanbieding maken
 
 Als u wilt beginnen met het maken van SaaS-aanbiedingen (Software as a Service) in de commerciële Marketplace, moet u eerst [een partner centrum-account maken](./create-account.md) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, met het tabblad **overzicht** geselecteerd.
+
+> [!NOTE]
+> Als u een voor transactable SaaS-aanbieding maakt, zorg er dan voor dat u integratie implementeert met [SaaS-fulfillment-api's](./pc-saas-fulfillment-apis.md).  Integratie met de Api's is de enige manier om de trans acties op Marketplace goed te laten werken. U moet er ook voor zorgen dat uw app gebruikmaakt van Azure AD-verificatie met eenmalige aanmelding (SSO). Zie [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](../azure-ad-saas.md).
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
@@ -40,10 +45,6 @@ Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
 - De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-<!---
-![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
--->
-
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 ## <a name="offer-overview"></a>Overzicht van aanbieding
@@ -62,8 +63,8 @@ Het menu overzicht van de **aanbieding** bevat een lijst met koppelingen voor he
 Op deze pagina wordt u gevraagd om de volgende informatie op te vragen.
 
 - **Wilt u door micro soft verkopen?** (Ja/Nee)
-    - **Ja**, ik wil graag door micro soft verkopen en micro soft host-trans acties voor mijn naam hebben
-    - **Nee**, ik wil liever alleen mijn aanbieding via de marketplaces en trans acties afzonderlijk verwerken.
+  - **Ja**, ik wil graag door micro soft verkopen en micro soft host-trans acties voor mijn naam hebben
+  - **Nee**, ik wil liever alleen mijn aanbieding via de marketplaces en trans acties afzonderlijk verwerken.
 
 ### <a name="sell-through-microsoft"></a>Verkopen via micro soft
 
@@ -102,8 +103,6 @@ Dit is een voor beeld van een uitsplitsing van kosten en uitbetalingen om het ag
 
 Promoot uw bedrijf met micro soft door een Marketplace-vermelding te maken. Als u een lijst wilt maken met alleen uw aanbieding en niet via micro soft, betekent dit dat micro soft niet rechtstreeks deelneemt aan software licentie transacties. Er zijn geen kosten verbonden aan de trans actie en de uitgever houdt 100% van alle software licentie kosten bij die van de klant zijn verzameld. De uitgever is echter verantwoordelijk voor de ondersteuning van alle aspecten van de software licentie transactie, inclusief, maar niet beperkt tot: order verwerking, meting, facturering, facturering, betaling en incasso.
 
-<!-- - **How do you want potential customers to interact with this listing offer?** -->
-
 #### <a name="get-it-now-free"></a>Nu downloaden (gratis)
 
 Bied uw aanbod aan klanten gratis aan door een geldig adres op te geven (te beginnen met *http* of *https*), waar ze een proef versie kunnen krijgen met [één klik op verificatie met behulp van Azure Active Directory (Azure AD)](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)). Bijvoorbeeld `https://contoso.com/saas-app`.
@@ -120,8 +119,6 @@ Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versi
 Contact gegevens van klanten verzamelen door verbinding te maken met uw CRM-systeem (Customer Relationship Management). De klant wordt gevraagd om toestemming te krijgen om hun gegevens te delen. Deze klant gegevens, samen met de naam van de aanbieding, ID en Marketplace-bron waar ze uw aanbieding vinden, worden verzonden naar het CRM-systeem dat u hebt geconfigureerd. Zie [leads van klanten](#customer-leads)voor meer informatie over het configureren van uw CRM.
 
 #### <a name="example-marketplace-offer-listing"></a>Voorbeeld van een lijst met Marketplace-aanbiedingen
-
-<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
 
 Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeven in Microsoft AppSource:
 
@@ -278,19 +275,19 @@ Dit veld is vereist.
 
 - **Contact personen** : voor elke contact persoon van de klant geeft u de **naam**, het **telefoon nummer**en het **e-mail** adres van de werk nemer op (deze worden *niet* openbaar weer gegeven). Een **ondersteunings-URL** is vereist voor de **contact persoon van de ondersteunings** groep (dit *wordt* openbaar weer gegeven).
 
-    - **Ondersteunings contact** (vereist) – voor algemene ondersteunings vragen.
-    - Technisch **contact** (vereist) – voor technische vragen.
-    - **Channel Manager-contact** (vereist): voor wederverkoper-vragen met betrekking tot het CSP-programma.
+  - **Ondersteunings contact** (vereist) – voor algemene ondersteunings vragen.
+  - Technisch **contact** (vereist) – voor technische vragen.
+  - **Channel Manager-contact** (vereist): voor wederverkoper-vragen met betrekking tot het CSP-programma.
 
 #### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
 - **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, van ten minste één en Maxi maal drie documenten per aanbieding.
 - **Afbeeldingen** (optioneel): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven in de Marketplace ('s), zodat de volgende pixel grootten in de PNG-indeling zijn vereist:
 
-    - **Klein** (48 x 48, vereist)
-    - **Gemiddeld** (90 x 90, vereist)
-    - **Groot** (216 x 216, vereist)
-    - **Breed** (255 x 115)
+  - **Klein** (48 x 48, vereist)
+  - **Gemiddeld** (90 x 90, vereist)
+  - **Groot** (216 x 216, vereist)
+  - **Breed** (255 x 115)
 
 - **Scherm afbeeldingen** (vereist): Voeg een maximum van vijf scherm opnamen toe, met een grootte van 1280 x 720 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.
@@ -322,32 +319,32 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="technical-configuration"></a>Technische configuratie
 
-Het tabblad **technische configuratie** definieert de technische details die door Marketplace worden gebruikt om te communiceren met uw SaaS-service. Met deze verbinding kan ons uw aanbieding voor de eind klant inrichten als ze ervoor kiezen om deze te verkrijgen en te beheren. 
+Het tabblad **technische configuratie** definieert de technische details die door Marketplace worden gebruikt om te communiceren met uw SaaS-service. Met deze verbinding kan ons uw aanbieding voor de eind klant inrichten als ze ervoor kiezen om deze te verkrijgen en te beheren.
 
->[!Note]
->U moet integratie met [SaaS-fulfillment-api's](./pc-saas-fulfillment-api-v2.md) implementeren voordat u deze details in de details van de aanbieding configureert.
+>[!NOTE]
+>U moet integratie met [SaaS-fulfillment-api's](./pc-saas-fulfillment-api-v2.md) implementeren voordat u deze details in de details van de aanbieding configureert. U moet ook een landings pagina maken en uw app moet gebruikmaken van Azure AD-verificatie met eenmalige aanmelding (SSO). Zie voor meer informatie [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](../azure-ad-saas.md).
 
 Diagrammen en gedetailleerde uitleg die het gebruik van de verzamelde velden beschrijven, zijn beschikbaar in de documentatie voor [de api's](./pc-saas-fulfillment-api-v2.md).
 
 - **URL van de landings pagina** (vereist): DEFINIEER de URL van de SaaS-site (bijvoorbeeld: `https://contoso.com/signup` ) waarmee eind klanten hun aanbieding van de Marketplace kunnen binnenhalen en het configuratie proces vanuit het zojuist gemaakte SaaS-abonnement kunnen activeren.  Deze URL wordt aangeroepen met de para meter voor het kopen van id-tokens voor Marketplace waarmee de specifieke SaaS-aankoop van de eind klant wordt geïdentificeerd.  U moet dit token omruilen voor de bijbehorende details van het SaaS-abonnement met behulp van de API voor [omzetten](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) .  Deze details en andere personen die u wilt verzamelen, moeten worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gebouwd om de eind klant te registreren en hun aankoop te activeren.  Op deze pagina moet de gebruiker zich aanmelden met één klik om te verifiëren met behulp van Azure Active Directory (Azure AD). <br> <br> Deze URL met Marketplace-aankoop identificatie token para meter wordt ook aangeroepen wanneer de eind klant beheerde SaaS-ervaring vanuit Azure Portal of M365-beheer centrum start. U moet beide stromen afhandelen wanneer het token de eerste keer wordt ingevoerd na aankoop voor nieuwe klanten en wanneer het wordt verschaft voor een bestaande klant die zijn SaaS beheert. <br> <br> De landings pagina die u hier configureert, moet 24/7 zijn. Dit is de enige manier waarop u wordt gewaarschuwd over nieuwe aankopen van uw SaaS-aanbiedingen op Marketplace of configuratie aanvragen van een actief abonnement op een aanbieding.
 
-- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft naar u moet sturen (bijvoorbeeld SaaS-abonnement is geannuleerd), moet u een URL voor de verbindings-webhook opgeven. Deze URL wordt gebeld om u op de hoogte te stellen van de gebeurtenis. <br> <br> De webhook die u opgeeft, moet 24/7 zijn, omdat dit de enige manier is waarop u wordt gewaarschuwd over updates van de SaaS-abonnementen van uw klanten die zijn gekocht via Marketplace. Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld `https://prod-1westus.logic.azure.com:443/work` ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](../../logic-apps/logic-apps-http-endpoint.md)voor meer informatie.
+- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft naar u moet sturen (bijvoorbeeld SaaS-abonnement is geannuleerd), moet u een URL voor de verbindings-webhook opgeven. Deze URL wordt gebeld om u op de hoogte te stellen van de gebeurtenis. <br> <br> De webhook die u opgeeft, moet 24/7 zijn, omdat dit de enige manier is waarop u wordt gewaarschuwd over updates van de SaaS-abonnementen van uw klanten die zijn gekocht via Marketplace.  Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld `https://prod-1westus.logic.azure.com:443/work` ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](../../logic-apps/logic-apps-http-endpoint.md)voor meer informatie.
 
 - **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](../../active-directory/develop/howto-create-service-principal-portal.md) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u wilt zoeken naar de [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)), gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e).
 
 - **Azure AD-App-ID** (vereist): u hebt de [toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)ook nodig). Als u de waarde wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
 
->[!Note]
->De Azure AD-App-ID is gekoppeld aan uw uitgevers-ID in uw partner centrum-account. Zorg ervoor dat u dezelfde toepassings-ID gebruikt in al uw aanbiedingen.
+>[!NOTE]
+>De Azure AD-App-ID is gekoppeld aan uw uitgevers-ID in uw partner centrum-account.  Zorg ervoor dat dezelfde toepassings-ID wordt gebruikt in al uw aanbiedingen.
 
->[!Note]
+>[!NOTE]
 >Als de uitgever twee of meer verschillende accounts in het partner centrum heeft, moeten er twee of meer verschillende Azure AD-App-Id's worden gebruikt, elk voor een van de accounts. Elk partner account in het partner centrum moet een unieke Azure AD-App-ID gebruiken voor alle SaaS-aanbiedingen die via dit account worden gepubliceerd.
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="plan-overview"></a>Overzicht van plan
 
-Op deze pagina kunt u een verscheidenheid aan plan opties bieden binnen dezelfde aanbieding. Deze plannen (voorheen Sku's genoemd) kunnen verschillen qua versie, verdiensten maximaliseren of service lagen. U moet ten minste één abonnement instellen om uw aanbieding in Marketplace te verkopen.
+Op deze pagina kunt u een verscheidenheid aan plan opties bieden binnen dezelfde aanbieding. Deze plannen (ook wel Sku's genoemd) kunnen verschillen qua versie, verdiensten maximaliseren of service lagen. U moet ten minste één abonnement instellen om uw aanbieding in Marketplace te verkopen.
 
 Zodra u een abonnement hebt gemaakt, ziet u de namen, Id's, prijs modellen, Beschik baarheid (openbaar of privé), de huidige publicatie status en eventuele beschik bare acties.
 
@@ -380,7 +377,7 @@ Op deze pagina kunt u de markten configureren waarop dit abonnement beschikbaar 
 
 #### <a name="markets-optional"></a>Markten (optioneel)
 
-Elk plan moet beschikbaar zijn op ten minste één markt. Selecteer **markten bewerken** en schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Deze pagina bevat een zoekvak en een optie voor het selecteren van de [landen/regio's waarvoor ' BTW is geremitteerd '](tax-details-paid-transactions.md), waarbij micro soft namens u verkoop-en gebruiks belasting verkent.
+Elk plan moet beschikbaar zijn op ten minste één markt. Selecteer **markten bewerken** en schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Deze pagina bevat een zoekvak en een optie voor het selecteren van de landen/regio's waarvoor ' BTW is geremitteerd ', waarbij micro soft namens u verkoop-en gebruiks belasting verkent.
 
 Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. Bekijk de prijs voor elke markt voordat u deze publiceert. Bekijk de prijzen op basis van de koppeling export prijzen (XLSX) nadat u uw wijzigingen hebt opgeslagen.
 
@@ -462,8 +459,6 @@ Selecteer **concept opslaan** voordat u doorgaat.
 1. Plan naam
 2. Plan beschrijving
 
-<br>
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Dealer-doel groep van Cloud Solution Provider (CSP)
 
 Als u ervoor kiest om uw aanbieding beschikbaar te maken in het CSP-programma, kunnen Cloud solution providers uw product verkopen als onderdeel van een gebundelde oplossing voor hun klanten. Zie [Cloud Solution Providers](https://go.microsoft.com/fwlink/?linkid=2111109)(Engelstalig) voor meer informatie.
@@ -477,12 +472,12 @@ Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **cont
 Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende doen:
 
 - Bekijk de voltooiings status voor elke sectie van de aanbieding.
-    - **Niet gestart** : de sectie is niet gerakend en moet worden voltooid.
-    - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. U moet terugkeren naar de sectie en deze bijwerken.
-    - **Voltooid** : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
+  - **Niet gestart** : de sectie is niet gerakend en moet worden voltooid.
+  - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. U moet terugkeren naar de sectie en deze bijwerken.
+  - **Voltooid** : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 - Geef test instructies op het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
 - Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
 
-## <a name="next-step"></a>Volgende stap
+## <a name="next-steps"></a>Volgende stappen
 
 - [Een bestaande aanbieding bijwerken in Commerciële Marketplace](./update-existing-offer.md)

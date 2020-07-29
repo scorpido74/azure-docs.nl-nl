@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcd73a5bb6de162fc258d93398b7d00044429588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097576"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289928"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Een Azure Time Series Insights Gen2-omgeving diagnosticeren en problemen oplossen
 
@@ -121,7 +121,7 @@ Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Probleem: al mijn instanties in de Gen2 Explorer hebben geen bovenliggend item
 
-Dit probleem kan zich voordoen als in uw omgeving geen hiërarchie voor tijdreeks modellen is gedefinieerd. Lees voor meer informatie over het [werken met Time Series-modellen](./time-series-insights-update-how-to-tsm.md).
+Dit probleem kan zich voordoen als in uw omgeving geen hiërarchie voor tijdreeks modellen is gedefinieerd. Lees voor meer informatie over het [werken met Time Series-modellen](/azure/time-series-insights/time-series-insights-overview).
 
   [![Bij niet-bovenliggende instanties wordt een waarschuwing weer gegeven.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,7 +135,7 @@ Dit probleem kan optreden als u geen gebruik maakt van de nieuwste versie van de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [werken met Time Series-modellen](./time-series-insights-update-how-to-tsm.md).
+- Meer informatie over het [werken met Time Series-modellen](/azure/time-series-insights/time-series-insights-overview).
 
 - Meer informatie over [ondersteunde JSON-vormen](./how-to-shape-query-json.md).
 

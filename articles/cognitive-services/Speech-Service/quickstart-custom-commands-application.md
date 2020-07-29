@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362139"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289418"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Een spraakassistent maken met aangepaste opdrachten
 
 In deze Quick Start maakt en test u een basis toepassing voor aangepaste opdrachten met behulp van speech Studio. U kunt deze toepassing ook openen vanuit een Windows-client-app. Met **aangepaste opdrachten** kunt u eenvoudig geavanceerde spraak opdrachten maken die zijn geoptimaliseerd voor spraak-eerste interactie. Het biedt een uniforme ontwerp-ervaring, een automatisch hosting model en relatief lagere complexiteit, waarmee u zich kunt richten op het bouwen van de beste oplossing voor uw spraak-opdracht scenario's.
 
+## <a name="region-availability"></a>Beschik baarheid van regio
+Op dit moment ondersteunt aangepaste opdrachten spraak abonnementen die in deze regio's worden gemaakt:
+* VS - west
+* VS - west 2
+* VS - oost
+* VS - oost 2
+* Europa - noord
+* Europa -west
+* VS - west-centraal
+* India - centraal
+* Azië - oost
+* Azië - zuidoost
+
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Maak een Azure-spraak bron in een regio die aangepaste opdrachten ondersteunt.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Maak een Azure-spraak bron in een regio die aangepaste opdrachten ondersteunt.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Raadpleeg de sectie **Beschik baarheid van regio's** hierboven voor een lijst met ondersteunde regio's.
 > * Down load het voor beeld van een [Smart room Lite](https://aka.ms/speech/cc-quickstart) JSON-bestand.
 > * Down load de nieuwste versie van de [Windows Voice Assistant-client](https://aka.ms/speech/va-samples-wvac).
-
-> [!NOTE]
-> Op dit moment ondersteunt aangepaste opdrachten alleen spraak abonnementen in de regio's westus, westus2 en northeurope.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ga naar de speech Studio voor aangepaste opdrachten
 

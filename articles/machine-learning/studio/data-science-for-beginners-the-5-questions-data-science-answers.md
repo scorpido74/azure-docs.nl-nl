@@ -1,6 +1,5 @@
 ---
-title: Wetenschappelijke gegevens voor beginners
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): gegevens wetenschap voor beginners-Azure'
 description: Data wetenschappen voor beginners is de basis concepten van vijf korte Video's, beginnend met de 5 vragen data Science-antwoorden. Van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,15 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930145"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318722"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Gegevenswetenschap voor beginners, video 1: de 5 vragen waarop gegevenswetenschap antwoord geeft
+
 Krijg een korte inleiding tot data Science van *Data Science voor beginners* in vijf korte Video's van een top data wetenschapper. Deze Video's zijn basis, maar handig, of u graag zeker weet of u wilt weten hoe u uw data wetenschappen gaat gebruiken of dat u met gegevens wetenschappers werkt.
 
 Deze eerste video is ongeveer het soort vragen dat door data Science kan worden beantwoord. Bekijk alles om alles uit de serie te halen. [Ga naar de lijst met Video's](#other-videos-in-this-series)

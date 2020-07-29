@@ -1,6 +1,6 @@
 ---
 title: Een Azure Virtual Network-peering maken, wijzigen of verwijderen | Microsoft Docs
-description: Meer informatie over het maken, wijzigen of verwijderen van peering op een virtueel netwerk.
+description: Maken, wijzigen of verwijderen van de peering van een virtueel netwerk. Met Virtual Network-peering verbindt u virtuele netwerken in dezelfde regio en in verschillende regio's.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291867"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -72,7 +72,7 @@ Voordat u een peering maakt, moet u vertrouwd raken met de vereisten en beperkin
 
 Zie [volgende stappen](#next-steps)voor stapsgewijze instructies voor het implementeren van peering tussen virtuele netwerken in verschillende abonnementen en implementatie modellen.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 - **Azure cli**: [AZ Network vnet peering Create](/cli/azure/network/vnet/peering)
 - **Power shell**: [add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
@@ -146,7 +146,7 @@ De accounts die u gebruikt om te werken met de peering van het virtuele netwerk 
 
 Als uw account niet is toegewezen aan een van de vorige rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Bewerking                                                          | Name |
+| Bewerking                                                          | Naam |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vereist voor het maken van een peering van een virtueel netwerk A naar een virtueel netwerk B. virtueel netwerk A moet een virtueel netwerk zijn (Resource Manager)          |
 | Micro soft. Network/virtualNetworks/peer/Action                   | Vereist voor het maken van een peering van een virtueel netwerk B (Resource Manager) naar een virtueel netwerk                                                       |

@@ -1,6 +1,5 @@
 ---
-title: Uw gegevens exporteren en verwijderen
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): Exporteer & uw gegevens te verwijderen-Azure'
 description: In-product gegevens die zijn opgeslagen door Azure Machine Learning Studio (klassiek), kunnen worden geëxporteerd en verwijderd via de Azure Portal en ook via geverifieerde REST-Api's. Telemetriegegevens kunnen worden geopend via de Azure-privacybeleid. In dit artikel wordt beschreven hoe u dit kunt doen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9f623357dfbc8fab8a2967df65cc53abc4bc9d57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fd0fb62b2a94667620904a070e386256b8e321c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696130"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318569"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Gebruikers gegevens in het product exporteren en verwijderen uit Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 

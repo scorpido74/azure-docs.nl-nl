@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 97e687acba0c94f72ca571c498fb54531118714b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096987"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318042"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -34,7 +34,7 @@ Als u de oplossing wilt gebruiken, moet u logboek registratie van Azure Key Vaul
 ## <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
 Gebruik de volgende instructies voor het installeren en configureren van de Azure Key Vault oplossing:
 
-1. Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md) om de Azure Key Vault oplossing toe te voegen aan uw log Analytics-werk ruimte.
+1. Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](./solutions.md) om de Azure Key Vault oplossing toe te voegen aan uw log Analytics-werk ruimte.
 2. Logboek registratie van diagnostische gegevens inschakelen voor de Key Vault resources die moeten worden bewaakt met behulp van de [Portal](#enable-key-vault-diagnostics-in-the-portal) of [Power shell](#enable-key-vault-diagnostics-using-powershell)
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Diagnostische gegevens van Key Vault inschakelen in de portal
@@ -132,7 +132,7 @@ In januari 2017 wordt de ondersteunde manier voor het verzenden van logboeken va
 De bijgewerkte oplossing gebruiken:
 
 1. [Configureren dat diagnostische gegevens rechtstreeks naar een Log Analytics-werk ruimte worden verzonden vanuit Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
-2. Schakel de Azure Key Vault-oplossing in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md)
+2. Schakel de Azure Key Vault-oplossing in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](./solutions.md)
 3. Alle opgeslagen query's, Dash boards of waarschuwingen bijwerken voor gebruik van het nieuwe gegevens type
    + Type is gewijzigd van: AzureDiagnostics. U kunt het resource type gebruiken om te filteren op Logboeken Key Vault.
    + Gebruik in plaats van: `KeyVaults``AzureDiagnostics | where ResourceType'=="VAULTS"`
@@ -149,4 +149,5 @@ Gegevens die vóór de wijziging zijn verzameld, zijn niet zichtbaar in de nieuw
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-* Gebruik [logboek query's in azure monitor](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde Azure Key Vault gegevens weer te geven.
+* Gebruik [logboek query's in azure monitor](../log-query/log-query-overview.md) om gedetailleerde Azure Key Vault gegevens weer te geven.
+

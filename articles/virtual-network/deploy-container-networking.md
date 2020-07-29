@@ -1,6 +1,6 @@
 ---
 title: Container Network Interface-invoegtoepassing Azure Virtual Network implementeren | Microsoft Docs
-description: Leer hoe u de Container Network Interface-invoegtoepassing (CNI) Azure Virtual Network implementeert voor Kubernetes-clusters die u zelf implementeert, die u implementeert met behulp van de ACS-engine en voor Docker-containers.
+description: Meer informatie over het implementeren van de Azure Virtual Network container Network Interface (CNI)-invoeg toepassing voor Kubernetes-clusters.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710011"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289595"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>De Container Network Interface-invoegtoepassing (CNI) Azure Virtual Network implementeren
 

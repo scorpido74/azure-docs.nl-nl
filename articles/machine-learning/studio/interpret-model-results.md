@@ -1,6 +1,5 @@
 ---
-title: Model resultaten interpreteren
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): model resultaten interpreteren-Azure'
 description: De optimale parameterset voor een algoritme kiezen met behulp van en het visualiseren van score model uitvoer.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +8,17 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: a99c1d71ed7e718d4d47ba55573a16466f62de5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77704750344df7ae24b7f81bde6088762a00c86d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687766"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318586"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
 

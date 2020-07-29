@@ -1,6 +1,6 @@
 ---
-title: 'Gedelegeerde toegang in virtueel bureau blad van Windows: 2019-Azure'
-description: Beheer mogelijkheden delegeren voor een implementatie van Windows virtueel bureau blad, met inbegrip van voor beelden.
+title: Gedelegeerde toegang in virtueel bureau blad van Windows (klassiek)-Azure
+description: Beheer mogelijkheden delegeren op een Windows-implementatie op virtueel bureau blad (klassiek), met inbegrip van voor beelden.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbb8c6e100a9f72c20bcfaba7049b6724ee458b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292534"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Gedelegeerde toegang in Windows virtueel bureau blad tot 2019
+# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Gedelegeerde toegang in het virtuele bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../delegated-access-virtual-desktop.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../delegated-access-virtual-desktop.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Het virtuele bureau blad van Windows beschikt over een gedelegeerd toegangs model waarmee u de hoeveelheid toegang kunt definiëren die een bepaalde gebruiker mag hebben door hen een rol toe te wijzen. Een roltoewijzing heeft drie onderdelen: beveiligingsprincipal, roldefinitie en bereik. Het Windows-model voor gedelegeerde toegang voor virtueel bureau blad is gebaseerd op het Azure RBAC-model. Voor meer informatie over specifieke roltoewijzingen en de bijbehorende onderdelen raadpleegt u [het overzicht van toegangs beheer op basis van rollen in azure](../../role-based-access-control/built-in-roles.md).
 

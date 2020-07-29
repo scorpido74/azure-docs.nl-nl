@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: cd6ea6d4967e024ddf88fb9572d5efae8b7a7815
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289895"
 ---
 ### <a name="property-limits"></a>Eigenschaps limieten
 
@@ -33,7 +33,7 @@ Er worden Maxi maal twee gebeurtenis bronnen per instantie ondersteund.
 * Meer informatie over het [toevoegen van een event hub bron](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [Een IOT hub-bron](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)configureren.
 
-Standaard [ondersteunen Gen2-omgevingen ingangs snelheden](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-throughput-limitations) van Maxi maal **1 MB per seconde (MB/s) per omgeving**. Klanten kunnen hun omgevingen zo nodig schalen tot een door Voer van **16 MB/s** . Er is ook een limiet van **0,5 MB/s**per partitie.
+Standaard [ondersteunen Gen2-omgevingen ingangs snelheden](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) van Maxi maal **1 MB per seconde (MB/s) per omgeving**. Klanten kunnen hun omgevingen zo nodig schalen tot een door Voer van **16 MB/s** . Er is ook een limiet van **0,5 MB/s**per partitie.
 
 ### <a name="api-limits"></a>API-limieten
 

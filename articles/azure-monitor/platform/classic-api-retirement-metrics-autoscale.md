@@ -4,12 +4,12 @@ description: Metrische gegevens en klassieke Api's automatisch schalen, ook wel 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317379"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
 
@@ -21,7 +21,7 @@ Dezelfde bewerkingen worden gedurende een jaar ondersteund via een reeks Azure R
 
 Als u automatisch schalen beheert via de Azure Portal, de [nieuwe Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), Power shell, CLI of Resource Manager-sjablonen, is geen actie nodig.  
 
-Als u metrische gegevens gebruikt via de Azure Portal of via verschillende [bewakings partner services](../../azure-monitor/platform/partners.md), is er geen actie vereist. Micro soft werkt samen met het controleren van partners om te migreren naar de nieuwe Api's.
+Als u metrische gegevens gebruikt via de Azure Portal of via verschillende [bewakings partner services](./partners.md), is er geen actie vereist. Micro soft werkt samen met het controleren van partners om te migreren naar de nieuwe Api's.
 
 ## <a name="who-is-affected"></a>Die worden beïnvloed
 
@@ -85,7 +85,8 @@ Er is een pensioen melding verzonden naar e-mail adressen voor de volgende accou
 
 Als u vragen hebt, kunt u contact met ons opnemen via MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 - [Nieuwere REST-Api's voor Azure Monitor](/rest/api/monitor/) 
 - [Nieuwere Azure Monitor-SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

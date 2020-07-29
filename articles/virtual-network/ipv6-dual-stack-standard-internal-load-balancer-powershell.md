@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289581"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Een IPv6-toepassing met dubbele stack implementeren met behulp van standaard interne Load Balancer in azure-Power shell (preview)
 
 In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure met een virtueel netwerk en subnet van twee stacks, een standaard interne Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, netwerk beveiligings groep en open bare Ip's.
-
-> [!Important]
-> IPv6-ondersteuning voor Azure Virtual Network is momenteel beschikbaar als open bare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 De procedure voor het maken van een intern Load Balancer die geschikt is voor IPv6, is bijna identiek aan het proces voor het maken van een Internet gerichte IPv6-Load Balancer die [hier](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)wordt beschreven. De enige verschillen bij het maken van een interne load balancer bevinden zich in de front-end-configuratie, zoals geïllustreerd in het onderstaande voor beeld van Power shell:
 

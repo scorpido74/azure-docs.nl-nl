@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
-ms.author: mikeray
-ms.openlocfilehash: d697f9edf8d5e57f051c23eaa2807704b2f7771e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: mathoma
+ms.openlocfilehash: 0b90f61bcf2698c200e16eb6f6d3fe98cc05d827
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669188"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293067"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage gebruiken voor SQL Server back-up en herstel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,7 +56,7 @@ De volgende Azure-onderdelen worden gebruikt bij het maken van een back-up naar 
 ## <a name="sql-server-components"></a>SQL Server onderdelen
 De volgende SQL Server onderdelen worden gebruikt bij het maken van een back-up naar Azure Blob Storage.
 
-| Onderdeel | Description |
+| Onderdeel | Beschrijving |
 | --- | --- |
 | **URL** |Met een URL wordt een Uniform Resource Identifier (URI) naar een uniek back-upbestand opgegeven. De URL wordt gebruikt om de locatie en naam van het back-upbestand van SQL Server op te geven. De URL moet verwijzen naar een echte blob, niet alleen een container. Als de BLOB niet bestaat, wordt deze gemaakt. Als een bestaande blob is opgegeven, mislukt de back-up, tenzij de > met de optie FORMAT is opgegeven. Hier volgt een voor beeld van de URL die u in de back-upopdracht zou opgeven: **http [s]://[Storage account]. blob. core. Windows. net/[container]/[filename. bak]**. HTTPS wordt aanbevolen, maar is niet vereist. |
 | **Referentie** |De gegevens die nodig zijn om verbinding te maken en te verifiëren met Azure Blob Storage, worden opgeslagen als referentie. Als SQL Server back-ups naar een Azure-Blob wilt schrijven of van deze wilt herstellen, moet u een SQL Server referentie maken. Zie [SQL Server referentie](https://msdn.microsoft.com/library/ms189522.aspx)voor meer informatie. |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516784"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318076"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replicatie status controleren met Azure Monitor
 
@@ -34,13 +34,13 @@ Gebruik de volgende informatie om de oplossing te installeren en configureren.
 
 
 ### <a name="install-agents-on-domain-controllers"></a>Agents installeren op domein controllers
-U moet agents installeren op domein controllers die lid zijn van het domein om te kunnen worden geëvalueerd. Of u moet agents op lidservers installeren en de agents configureren voor het verzenden van AD-replicatie gegevens naar Azure Monitor. Zie [Windows-computers verbinden met Azure monitor](../../azure-monitor/platform/agent-windows.md)als u wilt weten hoe u Windows-computers verbindt met Azure monitor. Zie [Operations Manager verbinden om te Azure monitor](../../azure-monitor/platform/om-agents.md)als uw domein controller al deel uitmaakt van een bestaande System Center Operations Manager omgeving die u wilt verbinden met Azure monitor.
+U moet agents installeren op domein controllers die lid zijn van het domein om te kunnen worden geëvalueerd. Of u moet agents op lidservers installeren en de agents configureren voor het verzenden van AD-replicatie gegevens naar Azure Monitor. Zie [Windows-computers verbinden met Azure monitor](../platform/agent-windows.md)als u wilt weten hoe u Windows-computers verbindt met Azure monitor. Zie [Operations Manager verbinden om te Azure monitor](../platform/om-agents.md)als uw domein controller al deel uitmaakt van een bestaande System Center Operations Manager omgeving die u wilt verbinden met Azure monitor.
 
 ### <a name="enable-non-domain-controller"></a>Niet-domein controller inschakelen
 Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers met Azure Monitor, kunt u een andere computer in uw domein gebruiken die verbonden is met Azure Monitor om gegevens te verzamelen voor het AD-replicatiestatus Solution Pack en de gegevens te verzenden.
 
 1. Controleer of de computer lid is van het domein dat u wilt bewaken met behulp van de AD-replicatiestatus-oplossing.
-2. [Verbind de Windows-computer met Azure monitor](../../azure-monitor/platform/om-agents.md) of [Maak verbinding met uw bestaande Operations Manager omgeving om Azure monitor](../../azure-monitor/platform/om-agents.md)als deze nog niet is verbonden.
+2. [Verbind de Windows-computer met Azure monitor](../platform/om-agents.md) of [Maak verbinding met uw bestaande Operations Manager omgeving om Azure monitor](../platform/om-agents.md)als deze nog niet is verbonden.
 3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management groups \<ManagementGroupName> \Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
 
    > [!NOTE]
@@ -112,7 +112,7 @@ Wanneer u op een item in een van de lijsten klikt, ziet u aanvullende informatie
 
 ![AD-replicatie status fouten in query resultaten](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Hier kunt u verder filteren, de logboek query wijzigen, enzovoort. Zie [logboek gegevens analyseren in azure monitor](../../azure-monitor/log-query/log-query-overview.md)voor meer informatie over het gebruik van de logboek query's in azure monitor.
+Hier kunt u verder filteren, de logboek query wijzigen, enzovoort. Zie [logboek gegevens analyseren in azure monitor](../log-query/log-query-overview.md)voor meer informatie over het gebruik van de logboek query's in azure monitor.
 
 In het veld **helpLink** wordt de URL van een TechNet-pagina weer gegeven met aanvullende informatie over die specifieke fout. U kunt deze koppeling kopiëren en plakken in uw browser venster om informatie over het oplossen van problemen te bekijken en de fout te verhelpen.
 
@@ -152,9 +152,10 @@ A: normale gebruikers machtigingen voor Active Directory zijn voldoende.
 ## <a name="troubleshoot-data-collection-problems"></a>Problemen met gegevens verzameling oplossen
 Voor het verzamelen van gegevens moet voor het AD-replicatiestatus Solution Pack ten minste één domein controller zijn verbonden met uw Log Analytics-werk ruimte. Totdat u verbinding maakt met een domein controller, wordt er een bericht weer gegeven dat aangeeft dat de **gegevens nog worden verzameld**.
 
-Als u hulp nodig hebt bij het verbinden van een van uw domein controllers, kunt u de documentatie weer geven op [Windows-computers verbinden met Azure monitor](../../azure-monitor/platform/om-agents.md). Als uw domein controller al is verbonden met een bestaande System Center Operations Manager omgeving, kunt u ook de documentatie bekijken in [Connect System Center Operations Manager om Azure monitor](../../azure-monitor/platform/om-agents.md).
+Als u hulp nodig hebt bij het verbinden van een van uw domein controllers, kunt u de documentatie weer geven op [Windows-computers verbinden met Azure monitor](../platform/om-agents.md). Als uw domein controller al is verbonden met een bestaande System Center Operations Manager omgeving, kunt u ook de documentatie bekijken in [Connect System Center Operations Manager om Azure monitor](../platform/om-agents.md).
 
 Zie [niet-domein controller inschakelen](#enable-non-domain-controller)als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers met Azure Monitor of System Center Operations Manager.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Gebruik [logboek query's in azure monitor](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde Active Directory replicatie status gegevens weer te geven.
+* Gebruik [logboek query's in azure monitor](../log-query/log-query-overview.md) om gedetailleerde Active Directory replicatie status gegevens weer te geven.
+

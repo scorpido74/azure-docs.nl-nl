@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 465b0ca3fdc5dd96b03ec7ab53bf453c4cdc083d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 268d8f3b43809e02476757cfe36b1ee52d4eaef1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086163"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317481"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -32,13 +32,11 @@ Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren 
 
 **Server** | **Vereisten** | **Details**
 --- | --- | ---
-Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de nieuwste updates (inclusief Server Core-installatie van deze besturings systemen, met uitzonde ring van Windows Server 2019) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen.
+Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de meest recente updates (inclusief Server Core-installatie van deze besturings systemen) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen.
 Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (inclusief Server Core-installatie van deze besturings systemen, met uitzonde ring van Virtual Machine Manager 2019) | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.
 
 > [!NOTE]
->
-> - Zorg ervoor dat .NET Framework 4.6.2 of hoger aanwezig is op de on-premises server.
-> - Failover en failback naar een alternatieve locatie of oorspronkelijke locatie, met of zonder Virtual Machine Manager, wordt niet ondersteund voor Windows Server 2019 server core-versie.
+> Zorg ervoor dat .NET Framework 4.6.2 of hoger aanwezig is op de on-premises server.
 
 ## <a name="replicated-vms"></a>Gerepliceerde Vm's
 
@@ -55,8 +53,8 @@ Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor A
 
 **Actie** | **Details**
 --- | ---
-Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Wordt niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
-Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Wordt niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
+Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
+Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
 
 ## <a name="hyper-v-network-configuration"></a>Configuratie van Hyper-V-netwerk
 
@@ -68,7 +66,7 @@ Hostcluster: IPv4 | Ja | Ja
 Hostnetwerkadapter: IPv6 | Nee | Nee
 VM-netwerk van de gast: NIC-koppeling | Nee | Nee
 VM-netwerk van gast: IPv4 | Ja | Ja
-VM-netwerk van de gast: IPv6 | No | Yes
+VM-netwerk van de gast: IPv6 | Nee | Ja
 VM-netwerk van de gast: statisch IP-adres (Windows) | Ja | Ja
 VM-netwerk van de gast: statisch IP-adres (Linux) | Nee | Nee
 VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
@@ -143,8 +141,8 @@ Premium Storage | Ja | Ja
 Standard Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No
-Optie voor beveiligde overdracht | Yes
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
+Optie voor beveiligde overdracht | Ja
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies

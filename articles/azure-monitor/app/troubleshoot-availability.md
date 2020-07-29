@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318144"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -81,7 +81,7 @@ De fout 'Schending van protocol... CR moet worden gevolgd door LF' geeft een pro
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Ik zie geen verwante telemetrie aan de server zijde voor het vaststellen van test fouten? *
 
-Als u Application Insights hebt ingesteld voor uw app aan serverzijde, kan dit komen doordat er [steekproeven](../../azure-monitor/app/sampling.md) worden uitgevoerd. Selecteer een ander beschikbaarheids resultaat.
+Als u Application Insights hebt ingesteld voor uw app aan serverzijde, kan dit komen doordat er [steekproeven](./sampling.md) worden uitgevoerd. Selecteer een ander beschikbaarheids resultaat.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Kan ik code aanroepen via mijn webtest?
 
@@ -96,7 +96,7 @@ De twee voorwaarden kunnen door elkaar worden gebruikt. 'Beschikbaarheidstest' i
 
    Er zijn twee mogelijke oplossingen:
 
-   * Configureer uw firewall om binnenkomende aanvragen van de [IP-adressen van onze webtestagents](../../azure-monitor/app/ip-addresses.md) toe te staan.
+   * Configureer uw firewall om binnenkomende aanvragen van de [IP-adressen van onze webtestagents](./ip-addresses.md) toe te staan.
    * Schrijf uw eigen code om uw interne server periodiek te testen. Voer de code uit als achtergrondproces op een testserver achter de firewall. De resultaten van het testproces kunnen worden verzonden naar Application Insights door de API [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) te gebruiken in het SDK-kernpakket. Hiervoor moet uw testserver uitgaande toegang hebben tot het opname-eindpunt van Application Insights, maar dit is een veel kleiner beveiligingsrisico dan wanneer u binnenkomende aanvragen toestaat. De resultaten worden weer gegeven op de Blades voor beschik baarheids webtests, maar de ervaring is enigszins vereenvoudigd, wat beschikbaar is voor testen die zijn gemaakt via de portal. Aangepaste beschikbaarheids tests worden ook weer gegeven als beschikbaarheids resultaten in analyses, zoek acties en metrische gegevens.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Het uploaden van een webtest met meerdere stappen mislukt
@@ -134,3 +134,4 @@ Gebruik de nieuwe waarschuwings ervaring/bijna realtime waarschuwingen als u geb
 
 * [Webtest met meerdere stappen](availability-multistep.md)
 * [URL-ping-tests](monitor-web-app-availability.md)
+

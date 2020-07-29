@@ -7,12 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 06/01/2020
 ms.custom: include file
-ms.openlocfilehash: 38f97f8f3397eb1737c2414f5bbbccf99503711e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: f07be72c556640ae1e0de52e961eeedb790a734c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121878"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317710"
 ---
 Maak rechtstreeks verbinding met klanten door uw aanbieding in de Marketplace te vermelden en uw CRM-systeem (Customer Relationship Management) te koppelen zodat u meteen contact informatie van klanten kunt ontvangen nadat een klant rente heeft ingedrukt of uw product implementeert.
 

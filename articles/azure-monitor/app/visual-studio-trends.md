@@ -7,11 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744136"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318161"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trends analyseren in Visual Studio
 Het hulpprogramma Application Insights Trends visualiseert hoe belangrijke telemetriegebeurtenissen van uw webtoepassing wijzigen gedurende een periode, zodat u snel problemen en afwijkingen kunt identificeren. Met koppelingen naar gedetailleerdere diagnostische gegevens kan Trends u helpen de prestaties van uw app te verbeteren, de oorzaken van uitzonderingen te achterhalen en inzichten op basis van aangepaste gebeurtenissen te bieden.
@@ -20,7 +21,7 @@ Het hulpprogramma Application Insights Trends visualiseert hoe belangrijke telem
 
 ## <a name="configure-your-web-app-for-application-insights"></a>Uw web-app configureren voor Application Insights
 
-[Configureer uw web-app voor Application Insights](../../azure-monitor/app/app-insights-overview.md) als u dit nog hebt gedaan. U kunt dan telemetrie naar de Application Insights-portal verzenden. Het hulpprogramma Trends leest daar de telemetrie.
+[Configureer uw web-app voor Application Insights](./app-insights-overview.md) als u dit nog hebt gedaan. U kunt dan telemetrie naar de Application Insights-portal verzenden. Het hulpprogramma Trends leest daar de telemetrie.
 
 Application Insights Trends is beschikbaar in Visual Studio 2015 Update 3 en hoger.
 
@@ -97,7 +98,7 @@ Het hulpprogramma Trends kan bellen markeren van gebeurtenissen die afwijken ten
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 |  |  |
 | --- | --- |
-| **[Met Application Insights werken in Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Telemetrie zoeken, data in CodeLens bekijken en configureren van Application Insights. Allen vanuit Visual Studio. |![Klik met de rechtermuisknop op het project en kies Application Insights > Zoeken.](./media/visual-studio-trends/34.png) |
-| **[Meer gegevens toevoegen](../../azure-monitor/app/asp-net-more.md)**<br/>Bewaak het gebruik, de beschikbaarheid, de afhankelijkheden en de uitzonderingen. Integreer bijgehouden informatie uit frameworks voor logboekregistratie. Schrijf aangepaste telemetrie. |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[Werken met de Application Insights-portal](../../azure-monitor/app/overview-dashboard.md)**<br/>Dashboards, krachtige hulpprogramma's voor diagnose en analyse, waarschuwingen, een live afhankelijkheidskaart van uw toepassing en exportmogelijkheden voor telemetrie. |![Visual Studio](./media/visual-studio-trends/62.png) |
+| **[Met Application Insights werken in Visual Studio](./visual-studio.md)**<br/>Telemetrie zoeken, data in CodeLens bekijken en configureren van Application Insights. Allen vanuit Visual Studio. |![Klik met de rechtermuisknop op het project en kies Application Insights > Zoeken.](./media/visual-studio-trends/34.png) |
+| **[Meer gegevens toevoegen](./asp-net-more.md)**<br/>Bewaak het gebruik, de beschikbaarheid, de afhankelijkheden en de uitzonderingen. Integreer bijgehouden informatie uit frameworks voor logboekregistratie. Schrijf aangepaste telemetrie. |![Visual Studio](./media/visual-studio-trends/64.png) |
+| **[Werken met de Application Insights-portal](./overview-dashboard.md)**<br/>Dashboards, krachtige hulpprogramma's voor diagnose en analyse, waarschuwingen, een live afhankelijkheidskaart van uw toepassing en exportmogelijkheden voor telemetrie. |![Visual Studio](./media/visual-studio-trends/62.png) |
 

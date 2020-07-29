@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 5b3dbee7d0ac928c4f18f25348e714aba9c1cd13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ce8034e8c028e3f385baf455c44c6ea33fe6f8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84898057"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290371"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Power shell gebruiken om toegestane VM-grootten in Azure Lab Services in te stellen
 
@@ -47,6 +47,6 @@ In dit script worden de volgende opdrachten gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
 Aanvullende Azure Lab Services Power shell-voorbeeld scripts vindt u in de [Azure Lab Services Power shell](../samples-powershell.md)-voor beelden.

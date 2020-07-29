@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037845"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292780"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Opnieuw beveiligen van Azure naar on-premises
 
@@ -33,7 +33,7 @@ Na een [failover](site-recovery-failover.md) van on-premises virtuele VMware-mac
     - Als u gebruikmaakt van de ESXi 5,5 Free Edition of de gratis versie van vSphere 6 Hyper Visor. Voer een upgrade uit naar een andere versie.
     - Als u een fysieke server met Windows Server 2008 R2 SP1 hebt.
     - VMware-Vm's kunnen niet worden teruggedraaid naar Hyper-V.
-    - Vm's die zijn [gemigreerd](migrate-overview.md#what-do-we-mean-by-migration).
+    - Vm's die zijn gemigreerd.
     - Een virtuele machine die is verplaatst naar een andere resource groep.
     - Een replica van een virtuele machine van Azure die is verwijderd.
     - Een replica van een virtuele machine van Azure die niet is beveiligd (repliceren naar de on-premises site).

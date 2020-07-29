@@ -3,16 +3,16 @@ title: Een Windows VM-resource labelen in azure
 description: Meer informatie over het coderen van een virtuele Windows-machine die is gemaakt in azure met behulp van het Resource Manager-implementatie model
 author: mmccrory
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 4b4f1a078615ffe0656d4e995c961902992c9389
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84fc6e6fee0b4a85b909c9b43a17381b31f39abf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042752"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291987"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Een virtuele Windows-machine coderen in azure
 In dit artikel worden verschillende manieren beschreven om een virtuele Windows-machine in azure te coderen via het Resource Manager-implementatie model. Tags zijn door de gebruiker gedefinieerde sleutel/waarde-paren die rechtstreeks kunnen worden geplaatst op een resource of resource groep. Azure ondersteunt momenteel Maxi maal 50 Tags per resource en resource groep. Labels kunnen worden geplaatst op een resource op het moment dat ze worden gemaakt of worden toegevoegd aan een bestaande resource. Tags worden alleen ondersteund voor resources die zijn gemaakt via het Resource Manager-implementatie model. Als u een virtuele Linux-machine wilt labelen, raadpleegt [u een virtuele Linux-machine in azure labelen](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -8,20 +8,17 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65a36e21d346e08ebe09f8c4b34f6af529d2a0f0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292561"
 ---
 # <a name="host-pool-creation"></a>Hostgroepen maken
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
->
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
 
 In dit artikel komen problemen aan bod tijdens de eerste installatie van de virtuele bureau blad-Tenant van Windows en de gerelateerde infra structuur van de sessie-hostgroep.
 

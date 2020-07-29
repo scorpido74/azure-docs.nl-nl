@@ -5,26 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318263"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Kosten van query's optimaliseren in Azure Cosmos DB
 
-Azure Cosmos DB biedt een uitgebreide set databasebewerkingen, waaronder relationele en hiërarchische query's die worden uitgevoerd op de items in een container. De kosten die gepaard gaan met elke bewerking hangen af van de CPU, de IO en het geheugen, vereist om de bewerking uit te voeren. In plaats van dat u zich bezighoudt met hardware, kunt u zich een aanvraageenheid (RU) voorstellen als één maat voor de bronnen die vereist zijn om verschillende databasebewerkingen uit te voeren om een aanvraag in te dienen. In dit artikel wordt beschreven hoe u de kosten voor aanvraageenheden voor een query kunt evalueren en de query kunt optimaliseren in termen van prestaties en kosten. 
+Azure Cosmos DB biedt een uitgebreide set databasebewerkingen, waaronder relationele en hiërarchische query's die worden uitgevoerd op de items in een container. De kosten die gepaard gaan met elke bewerking hangen af van de CPU, de IO en het geheugen, vereist om de bewerking uit te voeren. In plaats van dat u zich bezighoudt met hardware, kunt u zich een aanvraageenheid (RU) voorstellen als één maat voor de bronnen die vereist zijn om verschillende databasebewerkingen uit te voeren om een aanvraag in te dienen. In dit artikel wordt beschreven hoe u de kosten voor aanvraageenheden voor een query kunt evalueren en de query kunt optimaliseren in termen van prestaties en kosten.
 
-Query's in Azure Cosmos DB meestal worden besteld van snelst/meest efficiënte naar trage/minder efficiënte manier van door Voer als volgt:  
+Lees bewerkingen in Azure Cosmos DB meestal worden besteld van snelst/meest efficiënte naar trage/minder efficiënte manier van door Voer als volgt:  
 
-* GET-bewerking op één partitie sleutel en item sleutel.
+* Punt lezen (sleutel/waarde zoeken op één item-ID en partitie sleutel).
 
 * Query met een filter component binnen één partitie sleutel.
 
 * Query zonder een gelijkheids-of bereik filter component voor een eigenschap.
 
 * Query zonder filters.
+
+Omdat sleutel/waarde-zoek acties voor de item-ID het meest efficiënte soort Lees bewerking zijn, moet u ervoor zorgen dat de item-ID een zinvolle waarde heeft.
 
 Query's waarmee gegevens van een of meer partities worden gelezen, hebben een hogere latentie en nemen een hoger aantal aanvraag eenheden in beslag. Omdat elke partitie automatische indexering voor alle eigenschappen heeft, kan de query efficiënt vanuit de index worden bediend. U kunt query's die gebruikmaken van meerdere partities sneller maken met behulp van de parallelle opties. Zie [partitioneren in azure Cosmos DB](partitioning-overview.md)voor meer informatie over partitioneren en partitie sleutels.
 
@@ -35,7 +38,7 @@ Zodra u enkele gegevens in uw Azure Cosmos-containers hebt opgeslagen, kunt u de
 U kunt de kosten van query's ook programmatisch ophalen met behulp van de Sdk's. Als u de overhead van elke bewerking wilt meten, zoals maken, bijwerken of verwijderen, moet u de `x-ms-request-charge` koptekst controleren bij gebruik van rest API. Als u .NET of de Java SDK gebruikt, `RequestCharge` is de eigenschap de equivalente eigenschap om de aanvraag kosten op te halen en deze eigenschap is aanwezig in de ResourceResponse of FeedResponse.
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

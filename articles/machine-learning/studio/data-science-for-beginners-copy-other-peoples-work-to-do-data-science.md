@@ -1,6 +1,5 @@
 ---
-title: Andere voor beelden van gegevens wetenschap kopiëren
-titleSuffix: ML Studio (classic) - Azure
+title: Copy data Science-voor beelden-ML Studio (klassiek)-Azure
 description: 'Handels geheim van gegevens wetenschap: neem anderen uw werk voor u. Machine learning-voor beelden ophalen uit de Azure AI Gallery.'
 services: machine-learning
 ms.service: machine-learning
@@ -10,11 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 91f1f69db7f3faa9e1bbdae7966716c974a4dfa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59343c500f50430530b24fbfb7d747108377efd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930281"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318773"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Werk van anderen kopiëren om gegevenswetenschap uit te voeren
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: gegevens wetenschap voor beginners-serie

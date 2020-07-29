@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315442"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor logboeken voor service providers
 
@@ -19,7 +19,7 @@ Log Analytics-werk ruimten in Azure Monitor kunnen Msp's (Managed Service Provid
 
 Grote bedrijven delen veel overeenkomsten met service providers, met name wanneer er sprake is van een gecentraliseerd IT-team dat verantwoordelijk is voor het beheer van een groot aantal verschillende bedrijfs eenheden. Voor het gemak gebruikt dit document de term *service provider* , maar dezelfde functionaliteit is ook beschikbaar voor ondernemingen en andere klanten.
 
-Voor partners en service providers die deel uitmaken van het programma [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) , is Log Analytics in azure monitor een van de Azure-Services die beschikbaar zijn in azure CSP-abonnementen.
+Voor partners en service providers die deel uitmaken van het programma [Cloud Solution Provider (CSP)](https://partner.microsoft.com/membership/cloud-solution-provider) , is Log Analytics in azure monitor een van de Azure-Services die beschikbaar zijn in azure CSP-abonnementen.
 
 Log Analytics in Azure Monitor kunnen ook worden gebruikt door een service provider die klant resources beheert via de Azure-beheer functie voor gedelegeerde resources in [Azure Lighthouse](../../lighthouse/overview.md).
 
@@ -36,7 +36,7 @@ In deze architectuur wordt een werk ruimte geïmplementeerd in de Tenant van de 
 Er zijn twee manieren om toegang te krijgen tot een Log Analytics werkruimte in een Tenant van de klant:
 
 - Een klant kan afzonderlijke gebruikers van de service provider toevoegen als [Azure Active Directory gast gebruikers (B2B)](../../active-directory/b2b/what-is-b2b.md). De beheerder van de service provider moet zich aanmelden bij de directory van elke klant in het Azure Portal om toegang te kunnen krijgen tot deze werk ruimten. Dit vereist ook dat de klanten afzonderlijke toegang beheren voor elke beheerder van de service provider.
-- Voor een grotere schaal baarheid en flexibiliteit kunnen service providers de Azure-functie voor [gedelegeerde resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md) van [Azure Lighthouse](../../lighthouse/overview.md) gebruiken om toegang te krijgen tot de Tenant van de klant. Met deze methode worden de service provider beheerders opgenomen in een Azure AD-gebruikers groep in de Tenant van de service provider en krijgt deze groep toegang tijdens het voorbereidings proces voor elke klant. Deze beheerders hebben vervolgens vanaf hun eigen Tenant van de service provider toegang tot de werk ruimten van elke klant, in plaats van zich afzonderlijk aan te melden bij de Tenant van elke klant. Door toegang te krijgen tot de resources van de Log Analytics-werk ruimte van uw klanten op deze manier vermindert u het werk dat aan de klant is vereist en kunt u gemakkelijker gegevens verzamelen en analyseren voor meerdere klanten die worden beheerd door dezelfde service provider via hulpprogram ma's als [Azure monitor werkmappen](../..//azure-monitor/platform/workbooks-overview.md). Zie voor meer informatie [klant resources op schaal bewaken](../../lighthouse/how-to/monitor-at-scale.md).
+- Voor een grotere schaal baarheid en flexibiliteit kunnen service providers de Azure-functie voor [gedelegeerde resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md) van [Azure Lighthouse](../../lighthouse/overview.md) gebruiken om toegang te krijgen tot de Tenant van de klant. Met deze methode worden de service provider beheerders opgenomen in een Azure AD-gebruikers groep in de Tenant van de service provider en krijgt deze groep toegang tijdens het voorbereidings proces voor elke klant. Deze beheerders hebben vervolgens vanaf hun eigen Tenant van de service provider toegang tot de werk ruimten van elke klant, in plaats van zich afzonderlijk aan te melden bij de Tenant van elke klant. Door toegang te krijgen tot de resources van de Log Analytics-werk ruimte van uw klanten op deze manier vermindert u het werk dat aan de klant is vereist en kunt u gemakkelijker gegevens verzamelen en analyseren voor meerdere klanten die worden beheerd door dezelfde service provider via hulpprogram ma's als [Azure monitor werkmappen](./workbooks-overview.md). Zie voor meer informatie [klant resources op schaal bewaken](../../lighthouse/how-to/monitor-at-scale.md).
 
 De voor delen van de gedistribueerde architectuur zijn:
 
@@ -75,18 +75,19 @@ De derde architectuur mix tussen de twee opties. Het is gebaseerd op de eerste g
 
 Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie:
 
-1. Centrale werk ruimte: de service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de [API voor gegevens verzameling](../../azure-monitor/platform/data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, behalve een script, is het gebruik van [Azure Logic apps](../../logic-apps/logic-apps-overview.md).
+1. Centrale werk ruimte: de service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de [API voor gegevens verzameling](./data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, behalve een script, is het gebruik van [Azure Logic apps](../../logic-apps/logic-apps-overview.md).
 
-2. Power BI als centrale locatie: Power BI kunnen fungeren als centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](../../azure-monitor/platform/powerbi.md).
+2. Power BI als centrale locatie: Power BI kunnen fungeren als centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](./powerbi.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Het maken en configureren van werk ruimten automatiseren met behulp van [Resource Manager-sjablonen](template-workspace-configuration.md)
 
-* Het maken van werk ruimten automatiseren met [Power shell](../../azure-monitor/platform/powershell-workspace-configuration.md)
+* Het maken van werk ruimten automatiseren met [Power shell](./powershell-workspace-configuration.md)
 
-* [Waarschuwingen](../../azure-monitor/platform/alerts-overview.md) gebruiken om te integreren met bestaande systemen
+* [Waarschuwingen](./alerts-overview.md) gebruiken om te integreren met bestaande systemen
 
-* Samenvattings rapporten genereren met behulp van [Power bi](../../azure-monitor/platform/powerbi.md)
+* Samenvattings rapporten genereren met behulp van [Power bi](./powerbi.md)
 
 * Onboarding van klanten naar [Azure gedelegeerd resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md).
+

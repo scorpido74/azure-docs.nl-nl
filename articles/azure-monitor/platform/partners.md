@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077328"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318331"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -268,7 +268,7 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over Azure Monitor](../../azure-monitor/overview.md)
+- [Meer informatie over Azure Monitor](../overview.md)
 - [Toegang tot metrische gegevens met behulp van de REST API](rest-api-walkthrough.md)
 - [Het activiteiten logboek streamen naar een niet-micro soft-service](./activity-log.md#legacy-collection-methods)
 - [Bron logboeken streamen naar een niet-micro soft-service](./resource-logs.md#send-to-azure-event-hubs)
@@ -281,13 +281,13 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Introductie van Botmetric."
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
+[cloudhealth-doc]: https://www.cloudhealthtech.com/products/azure-management
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "Introductie van CloudMonix."
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog-documentatie."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace-documentatie."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastische documentatie."
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana-integratie."
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor instroom-gegevens-telegrafe-integratie."
+[influxdata-doc]: ./collect-custom-metrics-linux-telegraf.md "Azure Monitor instroom-gegevens-telegrafe-integratie."
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Documentatie over Logic monitor."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft-documentatie."
 [newrelic-doc]: https://newrelic.com/azure "NewRelic-documentatie."
@@ -302,3 +302,4 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk-documentatie."
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic-documentatie."
 [turbonomic-doc]: https://turbonomic.com/ "Introductie van Turbonomic."
+
