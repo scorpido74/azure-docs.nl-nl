@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539462"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321136"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) kunt gebruiken om [nieuwe metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te configureren in azure monitor. Met Resource Manager-sjablonen kunt u via programma code waarschuwingen instellen op een consistente en reproduceer bare manier in uw omgevingen. Er zijn momenteel nieuwere metrische waarschuwingen beschikbaar voor [Deze set met resource typen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) kunt gebruiken om [nieuwe metrische waarschuwingen](./alerts-metric-near-real-time.md) te configureren in azure monitor. Met Resource Manager-sjablonen kunt u via programma code waarschuwingen instellen op een consistente en reproduceer bare manier in uw omgevingen. Er zijn momenteel nieuwere metrische waarschuwingen beschikbaar voor [Deze set met resource typen](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Resourcesjabloon om waarschuwingen voor metrische gegevens te maken voor resourcetype: Voor Azure Log Analytics-werkruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces`zijn aanvullende stappen vereist. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
+> Resourcesjabloon om waarschuwingen voor metrische gegevens te maken voor resourcetype: Voor Azure Log Analytics-werkruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces`zijn aanvullende stappen vereist. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
 
 De basis stappen zijn als volgt:
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Sjabloon voor een beschikbaarheids test samen met een metrische waarschuwing
 
-[Beschikbaarheidstests voor Application Insights](../../azure-monitor/app/monitor-web-app-availability.md) helpen u om de beschikbaarheid van uw website/app vanaf verschillende locaties wereldwijd te controleren. U ontvangt een waarschuwing van de beschikbaarheidstest wanneer deze mislukt vanaf een bepaald aantal locaties.
+[Beschikbaarheidstests voor Application Insights](../app/monitor-web-app-availability.md) helpen u om de beschikbaarheid van uw website/app vanaf verschillende locaties wereldwijd te controleren. U ontvangt een waarschuwing van de beschikbaarheidstest wanneer deze mislukt vanaf een bepaald aantal locaties.
 Waarschuwingen van beschikbaarheidstests van hetzelfde resourcetype als waarschuwingen voor metrische gegevens (Microsoft.Insights/metricAlerts). De volgende voorbeeld Azure Resource Manager sjabloon kan worden gebruikt om een eenvoudige beschikbaarheids test en een bijbehorende waarschuwing in te stellen.
 
 Sla de JSON hieronder op als availabilityalert.jsvoor het doel van deze procedure.
@@ -3628,3 +3628,4 @@ az group deployment create \
 - Meer informatie over [waarschuwingen in azure](alerts-overview.md)
 - Meer informatie over het [maken van een actie groep met Resource Manager-sjablonen](action-groups-create-resource-manager-template.md)
 - Zie [micro soft. Insights/metricAlerts-](/azure/templates/microsoft.insights/metricalerts) sjabloon Naslag informatie voor de JSON-syntaxis en-eigenschappen.
+

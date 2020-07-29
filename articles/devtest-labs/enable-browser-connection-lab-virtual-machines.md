@@ -3,15 +3,15 @@ title: Browser verbinding inschakelen op Azure DevTest Labs virtuele machines
 description: DevTest Labs kan nu worden geïntegreerd met Azure Bastion. als eigenaar van het lab kunt u toegang tot alle virtuele lab-machines via een browser inschakelen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2ff55aa033ee9a024c8bc89cc9d39bc8d3ad25da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c78b872855b3fe21f2cb41d394c599aeca7a790
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272348"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Browser verbinding inschakelen op Azure DevTest Labs virtuele machines 
-DevTest Labs kan worden geïntegreerd met [Azure Bastion](https://docs.microsoft.com/azure/bastion/), waarmee u via een browser verbinding kunt maken met uw virtuele machines. U moet eerst de browser verbinding inschakelen op de virtuele lab-machines.
+DevTest Labs kan worden geïntegreerd met [Azure Bastion](../bastion/index.yml), waarmee u via een browser verbinding kunt maken met uw virtuele machines. U moet eerst de browser verbinding inschakelen op de virtuele lab-machines.
 
 Als eigenaar van een lab kunt u de toegang tot alle virtuele lab-machines inschakelen via een browser. U hebt geen aanvullende client, agent of software nodig. Azure Bastion biedt rechtstreeks een veilige en naadloze RDP/SSH-verbinding met uw virtuele machines in de Azure Portal via TLS. Wanneer u verbinding maakt via Azure Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines. Zie [Wat is Azure Bastion?](../bastion/bastion-overview.md) voor meer informatie.
 

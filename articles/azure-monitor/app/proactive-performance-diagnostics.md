@@ -4,18 +4,18 @@ description: Application Insights voert een slimme analyse uit van de telemetrie
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045789"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321306"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Slimme detectie-prestatie afwijkingen
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) analyseert automatisch de prestaties van uw webtoepassing en kan u waarschuwen over mogelijke problemen. U kunt dit lezen omdat u een van onze slimme detectie meldingen hebt ontvangen.
+[Application Insights](./app-insights-overview.md) analyseert automatisch de prestaties van uw webtoepassing en kan u waarschuwen over mogelijke problemen. U kunt dit lezen omdat u een van onze slimme detectie meldingen hebt ontvangen.
 
-Voor deze functie is geen speciale configuratie vereist, anders dan het configureren van uw app voor Application Insights voor uw [ondersteunde taal](../../azure-monitor/app/platforms.md). Het is actief wanneer uw app voldoende telemetrie genereert.
+Voor deze functie is geen speciale configuratie vereist, anders dan het configureren van uw app voor Application Insights voor uw [ondersteunde taal](./platforms.md). Het is actief wanneer uw app voldoende telemetrie genereert.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Wanneer krijg ik een melding over een slimme detectie?
 
@@ -43,7 +43,7 @@ De meldingen bevatten diagnostische gegevens. Hier volgt een voorbeeld:
 2. **Bereik**. Is het probleem van invloed op alle verkeer of alleen op sommige pagina's? Is het beperkt tot bepaalde browsers of locaties? Deze informatie kan worden opgehaald uit de melding.
 3. **Diagnose stellen**. Vaak wordt de aard van het probleem voorgesteld door de diagnostische gegevens in de melding. Als de reactie tijd bijvoorbeeld langzaam verloopt wanneer het aanvraag aantal hoog is, wordt er een suggestie voor uw server of afhankelijkheden overbelast. 
 
-    Als dat niet het geval is, opent u de Blade prestaties in Application Insights. Daar vindt u [profilerings](profiler.md) gegevens. Als er uitzonde ringen worden gegenereerd, kunt u ook de [fout opsporing voor de moment opname](../../azure-monitor/app/snapshot-debugger.md)proberen.
+    Als dat niet het geval is, opent u de Blade prestaties in Application Insights. Daar vindt u [profilerings](profiler.md) gegevens. Als er uitzonde ringen worden gegenereerd, kunt u ook de [fout opsporing voor de moment opname](./snapshot-debugger.md)proberen.
 
 
 
@@ -60,18 +60,18 @@ E-mail berichten over fouten met betrekking tot Slimme detectie van prestaties z
 ## <a name="faq"></a>Veelgestelde vragen
 
 * *Dus bekijken micro soft-mede werkers mijn gegevens?*
-  * Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](../../azure-monitor/app/data-retention-privacy.md).
+  * Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](./data-retention-privacy.md).
 * *Analyseert u alle gegevens die worden verzameld door Application Insights?*
   * Momenteel niet. Op dit moment analyseren we de reactie tijd van de aanvraag, de reactie tijd van de afhankelijkheid en de laad tijd van de pagina. De analyse van extra metrische gegevens vindt u op onze achterstand.
 
 * Voor welk type toepassing werkt dit?
-  * Deze degradaties worden gedetecteerd in alle toepassingen die de juiste telemetrie genereren. Als u Application Insights in uw web-app hebt geïnstalleerd, worden aanvragen en afhankelijkheden automatisch bijgehouden. Maar in back-end-services of andere apps als u aanroepen hebt ingevoegd in [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency), werkt Slimme detectie op dezelfde manier.
+  * Deze degradaties worden gedetecteerd in alle toepassingen die de juiste telemetrie genereren. Als u Application Insights in uw web-app hebt geïnstalleerd, worden aanvragen en afhankelijkheden automatisch bijgehouden. Maar in back-end-services of andere apps als u aanroepen hebt ingevoegd in [TrackRequest ()](./api-custom-events-metrics.md#trackrequest) of [TrackDependency](./api-custom-events-metrics.md#trackdependency), werkt Slimme detectie op dezelfde manier.
 
 * *Kan ik mijn eigen anomalie detectie regels maken of bestaande regels aanpassen?*
 
   * Nog niet, maar u kunt het volgende doen:
     * [Stel waarschuwingen](../platform/alerts-log.md) in waarmee u wordt gewaarschuwd wanneer een metriek een drempel waarde overschrijdt.
-    * [Telemetrie exporteren](../../azure-monitor/app/export-telemetry.md) naar een [Data base](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar Power bi](../../azure-monitor/app/export-power-bi.md ), waar u deze zelf kunt analyseren.
+    * [Telemetrie exporteren](./export-telemetry.md) naar een [Data base](./code-sample-export-sql-stream-analytics.md) of [naar Power bi](./export-power-bi.md), waar u deze zelf kunt analyseren.
 * *Hoe vaak wordt de analyse uitgevoerd?*
 
   * We voeren de analyse dagelijks uit op de telemetrie van de vorige dag (volle dag in UTC-tijd zone).
@@ -92,16 +92,16 @@ Ten eerste is het belang rijk? Als een pagina altijd langzaam moet worden gelade
 
 Gebruik de impact-instructie (betrokken gebruikers of verkeer) als een algemene hand leiding, maar houd er rekening mee dat dit niet het hele verhaal is. Verzamel andere gegevens om te bevestigen.
 
-Houd rekening met de para meters van het probleem. Als het geografie afhankelijke is, stelt u [beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) in, waaronder die regio: er kunnen zich gewoon netwerk problemen in dat gebied voordoen.
+Houd rekening met de para meters van het probleem. Als het geografie afhankelijke is, stelt u [beschikbaarheids tests](./monitor-web-app-availability.md) in, waaronder die regio: er kunnen zich gewoon netwerk problemen in dat gebied voordoen.
 
 ### <a name="diagnose-slow-page-loads"></a>Diagnose van langzame pagina laden
 Waar is het probleem? Reageert de server traag, is de pagina erg lang, of heeft de browser veel werk om deze weer te geven?
 
 Open de Blade metric voor browsers. De gesegmenteerde weer gave van de laad tijd van een browser pagina geeft aan waar de tijd naartoe gaat. 
 
-* Als de **aanvraag tijd** hoog is, reageert de server langzaam of de aanvraag is een bericht dat veel gegevens bevat. Bekijk de [metrische gegevens voor prestaties](../../azure-monitor/app/web-monitor-performance.md#metrics) om reactie tijden te onderzoeken.
-* Stel het [bijhouden van afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) in om te zien of de vertraging wordt veroorzaakt door externe services of uw data base.
-* Als **antwoord wordt ontvangen** , zijn uw pagina en de afhankelijke onderdelen: Java script, CSS, afbeeldingen enzovoort (maar niet asynchroon geladen gegevens) lang. Stel een [beschikbaarheids test](../../azure-monitor/app/monitor-web-app-availability.md)in en zorg ervoor dat u de optie voor het laden van afhankelijke onderdelen hebt ingesteld. Wanneer u een aantal resultaten krijgt, opent u de details van een resultaat en vouwt u het uit om de laad tijden van verschillende bestanden weer te geven.
+* Als de **aanvraag tijd** hoog is, reageert de server langzaam of de aanvraag is een bericht dat veel gegevens bevat. Bekijk de [metrische gegevens voor prestaties](./web-monitor-performance.md#metrics) om reactie tijden te onderzoeken.
+* Stel het [bijhouden van afhankelijkheden](./asp-net-dependencies.md) in om te zien of de vertraging wordt veroorzaakt door externe services of uw data base.
+* Als **antwoord wordt ontvangen** , zijn uw pagina en de afhankelijke onderdelen: Java script, CSS, afbeeldingen enzovoort (maar niet asynchroon geladen gegevens) lang. Stel een [beschikbaarheids test](./monitor-web-app-availability.md)in en zorg ervoor dat u de optie voor het laden van afhankelijke onderdelen hebt ingesteld. Wanneer u een aantal resultaten krijgt, opent u de details van een resultaat en vouwt u het uit om de laad tijden van verschillende bestanden weer te geven.
 * De hoge **client verwerkings tijd** voor komt dat scripts langzaam worden uitgevoerd. Als dit niet het geval is, kunt u een timing code toevoegen en de tijden in trackMetric-aanroepen verzenden.
 
 ### <a name="improve-slow-pages"></a>Langzame pagina's verbeteren
@@ -174,11 +174,12 @@ Wijzig het tijds bereik en de filters om de telemetrie te verkennen.
 Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecteren:
 
 * [Profiler](profiler.md) 
-* [Fout opsporing voor moment opnamen](../../azure-monitor/app/snapshot-debugger.md)
-* [Analyse](../../azure-monitor/log-query/get-started-portal.md)
+* [fout opsporing voor moment opnamen](./snapshot-debugger.md)
+* [Analyse](../log-query/get-started-portal.md)
 * [Slimme diagnostische gegevens over analyse](../log-query/log-query-overview.md)
 
 Slimme detecties zijn volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
 * [Hand matig geconfigureerde metrische waarschuwingen](../platform/alerts-log.md)
-* [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Webtests voor beschikbaarheid](./monitor-web-app-availability.md)
+

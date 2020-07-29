@@ -4,15 +4,16 @@ description: Application Insights gegevens model voor uitzonderings-telemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6732fb3dde79abd5c69e2b0a91710bdd2356d6aa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671933"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320592"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie van uitzonde ring: Application Insights gegevens model
 
-In [Application Insights](../../azure-monitor/app/app-insights-overview.md)vertegenwoordigt een exemplaar van uitzonde ring een verwerkte of onverwerkte uitzonde ring die is opgetreden tijdens de uitvoering van de bewaakte toepassing.
+In [Application Insights](./app-insights-overview.md)vertegenwoordigt een exemplaar van uitzonde ring een verwerkte of onverwerkte uitzonde ring die is opgetreden tijdens de uitvoering van de bewaakte toepassing.
 
 ## <a name="problem-id"></a>Probleem-id
 
@@ -39,5 +40,6 @@ Niveau van de ernst van de tracering. Waarde kan,,, `Verbose` `Information` `War
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- Meer informatie over het [opsporen van uitzonde ringen in uw web-apps met Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- Meer informatie over het [opsporen van uitzonde ringen in uw web-apps met Application Insights](./asp-net-exceptions.md).
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

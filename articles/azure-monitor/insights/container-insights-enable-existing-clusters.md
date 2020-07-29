@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen van bewaking van een Azure Kub
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 033e6e5e78d59cf4c1048ff63a6d19fee66c7841
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516648"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320337"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -119,7 +119,7 @@ Ga als volgt te werk om de bewaking van uw AKS-cluster in de Azure Portal van Az
     ![AKS container Insights-bewaking inschakelen](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement waarin de AKS-container is geïmplementeerd.
+    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement waarin de AKS-container is geïmplementeerd.
 
 Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven.
 
@@ -145,7 +145,7 @@ Ga als volgt te werk om bewaking rechtstreeks vanuit een van uw AKS-clusters in 
     ![Status controle van AKS-container inschakelen](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement waarin de AKS-container is geïmplementeerd.
+    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement waarin de AKS-container is geïmplementeerd.
 
 Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de operationele gegevens voor het cluster kunt weer geven.
 
@@ -160,7 +160,7 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configurat
 >De sjabloon moet worden geïmplementeerd in dezelfde resource groep als het cluster.
 >
 
-De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Als u de werk ruimte wilt maken, kunt u deze instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Als u de werk ruimte wilt maken, kunt u deze instellen via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
 
 Als u niet bekend bent met het concept van het implementeren van resources met behulp van een sjabloon, raadpleegt u:
 
@@ -383,3 +383,4 @@ Na enkele minuten is de opdracht voltooid en retourneert deze informatie over de
 * Als u problemen ondervindt bij het voorbereiden van de oplossing, raadpleegt u de [hand leiding](container-insights-troubleshoot.md) voor het oplossen van problemen
 
 * Als controle is ingeschakeld voor het verzamelen van het status-en resource gebruik van uw AKS-cluster en werk belastingen die erop worden uitgevoerd, leert [u hoe u Azure monitor gebruikt](container-insights-analyze.md) voor containers.
+

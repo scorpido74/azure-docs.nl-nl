@@ -3,19 +3,19 @@ title: .NET-traceer Logboeken in Application Insights verkennen
 description: Zoek logboeken die zijn gegenereerd door Trace, NLog of Log4Net.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: aad81855b58ee96789d097fbfbd3e7f9b17f6900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c192ae8fad6cf463af892018fcac385b3bdcd345
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014572"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321323"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>.NET/.NET core-en python-traceer Logboeken in Application Insights verkennen
 
 Verzend Diagnostische logboeken voor uw ASP.NET/ASP.NET-kern toepassing vanuit ILogger, NLog, log4Net of System. Diagnostics. trace naar [Azure-toepassing Insights][start]. Voor python-toepassingen verzendt u diagnostische tracerings logboeken met behulp van AzureLogHandler in opentellingen python voor Azure Monitor. U kunt ze verkennen en doorzoeken. Deze logboeken worden samengevoegd met de andere logboek bestanden van uw toepassing, zodat u traceringen kunt identificeren die zijn gekoppeld aan elke gebruikers aanvraag en ze kunnen correleren met andere gebeurtenissen en uitzonderings rapporten.
 
 > [!NOTE]
-> Hebt u de module logboek registratie nodig? Het is een handige adapter voor logboeken van derden. Als u NLog, log4Net of System. Diagnostics. trace niet al gebruikt, kunt u het beste direct [**Application Insights TrackTrace ()**](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aanroepen.
+> Hebt u de module logboek registratie nodig? Het is een handige adapter voor logboeken van derden. Als u NLog, log4Net of System. Diagnostics. trace niet al gebruikt, kunt u het beste direct [**Application Insights TrackTrace ()**](./api-custom-events-metrics.md#tracktrace) aanroepen.
 >
 >
 ## <a name="install-logging-on-your-app"></a>Logboek registratie voor uw app installeren
@@ -34,7 +34,7 @@ Installeer uw gekozen Framework voor logboek registratie in uw project. dit moet
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>Application Insights configureren voor het verzamelen van Logboeken
-[Voeg Application Insights toe aan uw project](../../azure-monitor/app/asp-net.md) als u dat nog niet hebt gedaan. U ziet een optie voor het toevoegen van de logboek verzamelaar.
+[Voeg Application Insights toe aan uw project](./asp-net.md) als u dat nog niet hebt gedaan. U ziet een optie voor het toevoegen van de logboek verzamelaar.
 
 Of klik met de rechter muisknop op uw project in Solution Explorer om **Application Insights te configureren**. Selecteer de optie **tracerings verzameling configureren** .
 
@@ -84,7 +84,7 @@ Als u liever log4net of NLog, gebruikt u:
 ```
 
 ## <a name="use-eventsource-events"></a>Event source-gebeurtenissen gebruiken
-U kunt [System. Diagnostics. tracing. Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EventSourceListener` pakket NuGet. Bewerk vervolgens de `TelemetryModules` sectie van het [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand.
+U kunt [System. Diagnostics. tracing. Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EventSourceListener` pakket NuGet. Bewerk vervolgens de `TelemetryModules` sectie van het [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) -bestand.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -100,7 +100,7 @@ Voor elke bron kunt u de volgende para meters instellen:
  * **Tref woorden** (optioneel) Geef de integere waarde op van trefwoord combinaties die moeten worden gebruikt.
 
 ## <a name="use-diagnosticsource-events"></a>DiagnosticSource-gebeurtenissen gebruiken
-U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand.
+U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) -bestand.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -113,7 +113,7 @@ U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/
 Voor elke DiagnosticSource die u wilt traceren, voegt u een vermelding toe met het kenmerk **name** ingesteld op de naam van uw DiagnosticSource.
 
 ## <a name="use-etw-events"></a>ETW-gebeurtenissen gebruiken
-U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Application Insights worden verzonden als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EtwCollector` pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand.
+U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Application Insights worden verzonden als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EtwCollector` pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) -bestand.
 
 > [!NOTE] 
 > ETW-gebeurtenissen kunnen alleen worden verzameld als het proces dat als host fungeert voor de SDK wordt uitgevoerd onder een identiteit die lid is van prestatie logboek gebruikers of beheerders.
@@ -158,7 +158,7 @@ Zo kunt u eenvoudig filteren op het [zoeken][diagnostic] in alle berichten van e
 ## <a name="azureloghandler-for-opencensus-python"></a>AzureLogHandler voor opentellingen python
 Met de handler voor Azure Monitor-Logboeken kunt u python-logboeken exporteren naar Azure Monitor.
 
-Instrumenteer uw toepassing met de [Opentellingen PYTHON SDK](../../azure-monitor/app/opencensus-python.md) voor Azure monitor.
+Instrumenteer uw toepassing met de [Opentellingen PYTHON SDK](./opencensus-python.md) voor Azure monitor.
 
 In dit voor beeld ziet u hoe u een logboek op waarschuwings niveau verzendt naar Azure Monitor.
 
@@ -185,14 +185,14 @@ U kunt bijvoorbeeld het volgende doen:
 * Sla de configuratie van een pagina op als favoriet.
 
 > [!NOTE]
->Als uw toepassing veel gegevens verzendt en u de Application Insights SDK voor ASP.NET versie 2.0.0-beta3 of hoger gebruikt, kan de *adaptieve bemonsterings* functie werken en slechts een deel van uw telemetrie verzenden. [Meer informatie over steekproeven.](../../azure-monitor/app/sampling.md)
+>Als uw toepassing veel gegevens verzendt en u de Application Insights SDK voor ASP.NET versie 2.0.0-beta3 of hoger gebruikt, kan de *adaptieve bemonsterings* functie werken en slechts een deel van uw telemetrie verzenden. [Meer informatie over steekproeven.](./sampling.md)
 >
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 ### <a name="how-do-i-do-this-for-java"></a>Hoe kan ik doe dit voor Java?
 In Java-instrumentatie zonder code (aanbevolen) de logboeken worden verzameld uit het vak. Gebruik de [java 3,0-agent](./java-in-process-agent.md).
 
-Als u de Java-SDK gebruikt, gebruikt u de [Java-logboek adapters](../../azure-monitor/app/java-trace-logs.md).
+Als u de Java-SDK gebruikt, gebruikt u de [Java-logboek adapters](./java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Er is geen optie Application Insights in het context menu van het project
 * Zorg ervoor dat Developer Analytics-Hulpprogram Ma's op de ontwikkel computer zijn geïnstalleerd. Zoek in de **Tools**  >  **extensies en updates**van Visual Studio-hulpprogram ma's naar **Developer Analytics-hulpprogram ma's**. Als dit **niet het geval** is, opent u het tabblad **online** en installeert u het.
@@ -210,10 +210,10 @@ Waarschijnlijk hebt u het Nuget-pakket voor de logboek registratie adapter geïn
 Het kan even duren voordat alle gebeurtenissen en aanvragen worden ontvangen via de pijp lijn.
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>Hoeveel gegevens worden er bewaard?
-Verschillende factoren zijn van invloed op de hoeveelheid gegevens die wordt bewaard. Zie de sectie [limieten](../../azure-monitor/app/api-custom-events-metrics.md#limits) van de pagina metrische gegevens van klant gebeurtenis voor meer informatie.
+Verschillende factoren zijn van invloed op de hoeveelheid gegevens die wordt bewaard. Zie de sectie [limieten](./api-custom-events-metrics.md#limits) van de pagina metrische gegevens van klant gebeurtenis voor meer informatie.
 
 ### <a name="i-dont-see-some-log-entries-that-i-expected"></a>Ik zie enkele logboek vermeldingen die ik had verwacht
-Als uw toepassing Voluminous hoeveel heden gegevens verzendt en u de Application Insights SDK voor ASP.NET-versie 2.0.0-beta3 of hoger gebruikt, kan de adaptieve bemonsterings functie werken en slechts een deel van uw telemetrie verzenden. [Meer informatie over steekproeven.](../../azure-monitor/app/sampling.md)
+Als uw toepassing Voluminous hoeveel heden gegevens verzendt en u de Application Insights SDK voor ASP.NET-versie 2.0.0-beta3 of hoger gebruikt, kan de adaptieve bemonsterings functie werken en slechts een deel van uw telemetrie verzenden. [Meer informatie over steekproeven.](./sampling.md)
 
 ## <a name="next-steps"></a><a name="add"></a>Volgende stappen
 
@@ -224,9 +224,10 @@ Als uw toepassing Voluminous hoeveel heden gegevens verzendt en u de Application
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

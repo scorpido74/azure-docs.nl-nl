@@ -3,19 +3,19 @@ title: Gebruik en prestaties bewaken voor Windows-bureaublad-apps
 description: Analyseer het gebruik en de prestaties van uw Windows-bureaublad-app met Application Insights.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323414"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Gebruik en prestaties bewaken in Klassieke Windows-bureaublad-apps
 
-Toepassingen die on-premises worden gehost, in Azure, en in andere clouds, kunnen allemaal profiteren van Application Insights. De enige beperking is de noodzaak om [communicatie toe te staan](../../azure-monitor/app/ip-addresses.md) met de Application Insights-service. Voor het bewaken van UWP-toepassingen (Universal Windows Platform), raden we [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) aan.
+Toepassingen die on-premises worden gehost, in Azure, en in andere clouds, kunnen allemaal profiteren van Application Insights. De enige beperking is de noodzaak om [communicatie toe te staan](./ip-addresses.md) met de Application Insights-service. Voor het bewaken van UWP-toepassingen (Universal Windows Platform), raden we [Visual Studio App Center](../learn/mobile-center-quickstart.md) aan.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Telemetrie verzenden naar Application Insights vanuit een Klassieke Windows-toepassing
-1. Maak in de [Azure Portal](https://portal.azure.com)[een Application Insights-resource](../../azure-monitor/app/create-new-resource.md ). 
+1. Maak in de [Azure Portal](https://portal.azure.com)[een Application Insights-resource](./create-new-resource.md). 
 2. Kopieer de instrumentatiesleutel.
 3. Bewerk in Visual Studio de NuGet-pakketten van uw app-project en voeg Microsoft.ApplicationInsights.WindowsServer toe. (Of kies micro soft. ApplicationInsights als u alleen de basis-API wilt, zonder de standaard telemetrie-verzamelings modules.)
 4. Stel de instrumentatiesleutel in uw code in:
@@ -27,7 +27,7 @@ Toepassingen die on-premises worden gehost, in Azure, en in andere clouds, kunne
     `<InstrumentationKey>`*uw sleutel*`</InstrumentationKey>` 
    
     Als u ApplicationInsights.config gebruikt, moet u ervoor zorgen dat de bijbehorende eigenschappen in Solution Explorer zijn ingesteld op **Buildactie = Inhoud, Naar uitvoermap kopiëren = Kopiëren**.
-5. [Gebruik de API](../../azure-monitor/app/api-custom-events-metrics.md) om telemetrie te verzenden.
+5. [Gebruik de API](./api-custom-events-metrics.md) om telemetrie te verzenden.
 6. Voer uw app uit en Bekijk de telemetrie in de resource die u hebt gemaakt in de Azure Portal.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Voorbeeldcode
@@ -175,7 +175,8 @@ namespace WindowsFormsApp2
 > Hoewel u technisch gebruik kunt maken van een telemetrie-processor zoals hierboven wordt beschreven, zelfs als u zich in de [prijs categorie verouderde onderneming (per knoop punt)](./pricing.md#legacy-enterprise-per-node-pricing-tier)bevindt, leidt dit ertoe dat het mogelijk is om te voor komen dat knoop punten goed kunnen worden onderscheiden voor prijzen per knoop punt.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een dashboard maken](../../azure-monitor/app/overview-dashboard.md)
-* [Diagnostische gegevens doorzoeken](../../azure-monitor/app/diagnostic-search.md)
-* [Metrische gegevens verkennen](../../azure-monitor/platform/metrics-charts.md)
+* [Een dashboard maken](./overview-dashboard.md)
+* [Diagnostische gegevens doorzoeken](./diagnostic-search.md)
+* [Metrische gegevens verkennen](../platform/metrics-charts.md)
 * [Analytics-query's schrijven](../log-query/log-query-overview.md)
+

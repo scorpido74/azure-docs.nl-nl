@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e83d53122b3f80d73a573f0eff8c13888cbee11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325199"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Probleemoplossings gids voor Azure Disk Encryption voor Linux Vm's
 
@@ -70,30 +70,54 @@ In sommige gevallen lijkt de schijf versleuteling van Linux te blijven op ' schi
 
 De versleutelings volgorde van de Linux-besturingssysteem schijf ontkoppelt tijdelijk het station van het besturings systeem. Vervolgens wordt er een blok-by-Block-versleuteling uitgevoerd van de volledige besturingssysteem schijf, voordat het opnieuw wordt gekoppeld aan de versleutelde status. Linux-schijf versleuteling staat niet toe dat de virtuele machine gelijktijdig wordt gebruikt terwijl de versleuteling wordt uitgevoerd. De prestatie kenmerken van de virtuele machine kunnen aanzienlijk verschillen in de tijd die nodig is om versleuteling te volt ooien. Deze kenmerken omvatten de grootte van de schijf en of het opslag account een Standard-of Premium-opslag (SSD) is.
 
-Als u de versleutelings status wilt controleren, controleert u het veld **ProgressMessage** dat wordt geretourneerd door de opdracht [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) . Terwijl het station van het besturings systeem wordt versleuteld, wordt door de virtuele machine een onderhouds status geactiveerd en wordt SSH uitgeschakeld om onderbreking van het doorlopende proces te voor komen. Het **EncryptionInProgress** -bericht rapporteert voor het meren deel van de tijd terwijl de versleuteling wordt uitgevoerd. Enkele uren later, een **VMRestartPending** -bericht wordt u gevraagd de VM opnieuw op te starten. Bijvoorbeeld:
-
+Terwijl het station van het besturings systeem wordt versleuteld, wordt door de virtuele machine een onderhouds status geactiveerd en wordt SSH uitgeschakeld om onderbreking van het doorlopende proces te voor komen.  Als u de versleutelings status wilt controleren, gebruikt u de opdracht Azure PowerShell [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) en schakelt u het veld **ProgressMessage** in. **ProgressMessage** rapporteert een reeks statussen wanneer de gegevens en besturingssysteem schijven zijn versleuteld:
 
 ```azurepowershell
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings :
+ProgressMessage            : Transitioning
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for data volumes
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Provisioning succeeded
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
-
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
-OsVolumeEncrypted          : VMRestartPending
-DataVolumesEncrypted       : Encrypted
-OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-Nadat u wordt gevraagd de virtuele machine opnieuw op te starten en nadat de VM opnieuw is opgestart, moet u 2-3 minuten wachten totdat de computer opnieuw is opgestart en moeten de laatste stappen op het doel worden uitgevoerd. Het status bericht wordt gewijzigd wanneer de versleuteling definitief is voltooid. Nadat dit bericht beschikbaar is, wordt verwacht dat het versleutelde OS-station gereed is voor gebruik en de VM opnieuw kan worden gebruikt.
+De **ProgressMessage** blijft aanwezig in de **schijf versleuteling van het besturings systeem, die is gestart** voor het grootste deel van het versleutelings proces.  Wanneer de versleuteling is voltooid, wordt **ProgressMessage** geretourneerd:
 
-In de volgende gevallen wordt u aangeraden de virtuele machine terug te zetten naar de moment opname of de back-up die direct vóór de versleuteling is gemaakt:
-   - Als de herstart sequentie, die eerder wordt beschreven, niet plaatsvindt.
-   - Als de opstart gegevens, het voortgangs bericht of andere fout indicatoren rapporteren dat de versleuteling van het besturings systeem is mislukt in het midden van dit proces. Een voor beeld van een bericht is de fout ' kan niet worden ontkoppeld ' die in deze hand leiding wordt beschreven.
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
 
-Voordat de volgende poging wordt gedaan, evalueert u de kenmerken van de virtuele machine opnieuw en zorgt u ervoor dat aan alle vereisten wordt voldaan.
+OsVolumeEncrypted          : Encrypted
+DataVolumesEncrypted       : NotMounted
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for all volumes
+```
+
+Nadat dit bericht beschikbaar is, wordt verwacht dat het versleutelde OS-station gereed is voor gebruik en de VM opnieuw kan worden gebruikt.
+
+Als de opstart informatie, het voortgangs bericht of een fout rapport bevat dat de versleuteling van het besturings systeem is mislukt in het midden van dit proces, herstelt u de virtuele machine naar de moment opname of back-up die direct vóór de versleuteling is gemaakt. Een voor beeld van een bericht is de fout ' kan niet worden ontkoppeld ' die in deze hand leiding wordt beschreven.
+
+Voordat u de versleuteling opnieuw probeert te versleutelen, moet u de kenmerken van de virtuele machine opnieuw evalueren en ervoor zorgen dat aan alle vereisten wordt voldaan.
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Problemen met Azure Disk Encryption achter een firewall oplossen
 
@@ -101,11 +125,11 @@ Zie [schijf versleuteling op een geïsoleerd netwerk](disk-encryption-isolated-n
 
 ## <a name="troubleshooting-encryption-status"></a>Problemen met de versleutelings status oplossen 
 
-De portal kan een schijf weer geven als versleuteld, zelfs nadat deze is ontsleuteld in de virtuele machine.  Dit kan gebeuren wanneer opdrachten op laag niveau worden gebruikt om de schijf rechtstreeks van de virtuele machine te ontsleutelen, in plaats van de Azure Disk Encryption beheer opdrachten op een hoger niveau te gebruiken.  Met de opdrachten op een hoger niveau wordt de schijf niet alleen ontsleuteld vanuit de virtuele machine, maar buiten de virtuele machine worden ook belang rijke versleutelings instellingen en extensie-instellingen van het platform bijgewerkt die zijn gekoppeld aan de virtuele machine.  Als deze niet in de uitlijning worden bewaard, kan het platform geen versleutelings status rapporteren of de virtuele machine op de juiste wijze inrichten.   
+De portal kan een schijf weer geven als versleuteld, zelfs nadat deze is ontsleuteld in de virtuele machine.  Dit kan gebeuren wanneer opdrachten op laag niveau worden gebruikt om de schijf rechtstreeks van de virtuele machine te ontsleutelen, in plaats van de Azure Disk Encryption beheer opdrachten op een hoger niveau te gebruiken.  Met de opdrachten op een hoger niveau wordt de schijf niet alleen ontsleuteld vanuit de virtuele machine, maar buiten de virtuele machine worden ook belang rijke versleutelings instellingen en extensie-instellingen van het platform bijgewerkt die zijn gekoppeld aan de virtuele machine.  Als deze niet in de uitlijning worden bewaard, kan het platform geen versleutelings status rapporteren of de virtuele machine op de juiste wijze inrichten.
 
 Als u Azure Disk Encryption wilt uitschakelen met Power shell, gebruikt u [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) gevolgd door [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Het uitvoeren van Remove-AzVMDiskEncryptionExtension voordat de versleuteling is uitgeschakeld, mislukt.
 
-Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryption uit te scha KELEN met cli. 
+Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryption uit te scha KELEN met cli.
 
 ## <a name="next-steps"></a>Volgende stappen
 

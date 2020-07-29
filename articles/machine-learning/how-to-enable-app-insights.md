@@ -5,18 +5,18 @@ description: Webservices die zijn geïmplementeerd met Azure Machine Learning be
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320218"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eindpunten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -153,15 +153,20 @@ U kunt ook Azure-toepassing Insights inschakelen vanuit Azure Machine Learning S
 1. Selecteer **Application Insights diagnose en gegevens verzameling inschakelen**
 
     ![App Insights inschakelen](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>Gegevens evalueren
+
+## <a name="view-metrics-and-logs"></a>Metrische gegevens en logboeken weer geven
+
 De gegevens van uw service worden opgeslagen in uw Azure-toepassing Insights-account, in dezelfde resource groep als Azure Machine Learning.
 Om het weer te geven:
 
-1. Ga in de [Azure Portal](https://ms.portal.azure.com/) naar uw Azure machine learning-werk ruimte en klik op de koppeling Application Insights
+1. Ga naar uw Azure Machine Learning-werk ruimte in de [Studio](https://ml.azure.com/).
+1. Selecteer **eind punten**.
+1. Selecteer de geïmplementeerde service.
+1. Schuif omlaag om de **Application Insights URL** te vinden en klik op de koppeling.
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Application Insights URL zoeken](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Klik op het tabblad **overzicht** of de sectie __bewaking__ in de lijst aan de linkerkant op __Logboeken__.
+1. In Application Isights selecteert u op het tabblad **overzicht** of de sectie __bewaking__ in de lijst aan de linkerkant __Logboeken__.
 
     [![Tabblad Overzicht van bewaking](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +191,7 @@ U kunt met behulp van Azure-toepassing Insights [doorlopend exporteren](https://
 
 Azure Data Factory, Azure ML-pijp lijnen of andere hulpprogram ma's voor gegevens verwerking kunnen worden gebruikt om de gegevens naar behoefte te transformeren. Wanneer u de gegevens hebt getransformeerd, kunt u deze registreren bij de Azure Machine Learning-werk ruimte als een gegevensset. Zie [gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.
 
-   [![Continue export](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Continue export":::
 
 
 ## <a name="example-notebook"></a>Voorbeeld van notebook

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/22/2020
-ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 4ac95fa81fdbee237cacaa1541e333bb70c370fa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323295"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -154,7 +154,7 @@ Maak in uw werk ruimte in Azure Machine Learning Studio een nieuw reken exemplaa
 U kunt ook een exemplaar maken
 * Rechtstreeks vanuit de [ervaring met geïntegreerde notebooks](tutorial-1st-experiment-sdk-setup.md#azure)
 * In Azure Portal
-* Van Azure Resource Manager sjabloon
+* Van Azure Resource Manager sjabloon. Zie de [sjabloon Create a Azure machine learning Compute instance](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)voor een voorbeeld sjabloon.
 * Met [Azure machine learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
 * Vanuit de [cli-uitbrei ding voor Azure machine learning](reference-azure-machine-learning-cli.md#computeinstance)
 

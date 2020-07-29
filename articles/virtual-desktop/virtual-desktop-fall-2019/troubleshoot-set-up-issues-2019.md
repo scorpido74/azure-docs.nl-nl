@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop Tenant-hostgroep maken-Azure
-description: Problemen met Tenant-en hostgroepen oplossen tijdens de installatie van een Windows Virtual Desktop-Tenant omgeving.
+title: Virtueel bureau blad van Windows (klassiek) maken van Tenant-hostgroep-Azure
+description: Problemen met Tenant-en hostgroepen oplossen tijdens de installatie van een virtueel bureau blad-Tenant omgeving (klassiek) van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269594"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Tenant en hostgroep maken in Windows virtueel bureau blad (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-set-up-issues.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../troubleshoot-set-up-issues.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 In dit artikel komen problemen aan bod tijdens de eerste installatie van de virtuele bureau blad-Tenant van Windows en de gerelateerde infra structuur van de sessie-hostgroep.
 

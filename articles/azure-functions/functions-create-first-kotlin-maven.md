@@ -1,32 +1,32 @@
 ---
-title: Maak uw eerste functie in azure met Kotlin en Maven
-description: Een door HTTP geactiveerde functie maken en publiceren naar Azure met Kotlin en Maven.
+title: Uw eerste functie maken in Azure met behulp van Kotlin en Maven
+description: Lees hier hoe u een door HTTP getriggerde functie maakt en publiceert naar Azure met Kotlin en Maven.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506295"
 ---
-# <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Snelstartgids: uw eerste functie maken met Kotlin en Maven
+# <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Quickstart: Uw eerste functie maken met behulp van Kotlin en Maven
 
-Dit artikel begeleidt u bij het gebruik van het opdracht regel programma maven om een Kotlin-functie project te bouwen en publiceren naar Azure Functions. Wanneer u klaar bent, wordt uw functiecode uitgevoerd in het [Verbruiksabonnement](functions-scale.md#consumption-plan) in Azure en kan deze worden geactiveerd met behulp van een HTTP-aanvraag.
+In dit artikel wordt uitgelegd hoe u met behulp van het opdrachtregelprogramma Maven een Kotlin-functieproject voor Azure Functions kunt bouwen en publiceren. Wanneer u klaar bent, wordt uw functiecode uitgevoerd in het [Verbruiksabonnement](functions-scale.md#consumption-plan) in Azure en kan deze worden geactiveerd met behulp van een HTTP-aanvraag.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u functies wilt ontwikkelen met behulp van Kotlin, moet u het volgende hebben geïnstalleerd:
+Als u functies wilt ontwikkelen met behulp van Kotlin, moet het volgende zijn geïnstalleerd:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
 - [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
-- [Azure-CLI](https://docs.microsoft.com/cli/azure)
-- [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
+- [Azure-CLI](/cli/azure)
+- [Azure Functions Core Tools](./functions-run-local.md#v2), versie 2.6.666 of hoger
 
 > [!IMPORTANT]
 > De omgevingsvariabele JAVA_HOME moet zijn ingesteld op de installatielocatie van de JDK om deze quickstart te kunnen voltooien.
@@ -43,7 +43,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Als u problemen ondervindt met het uitvoeren van de opdracht, bekijkt u de `maven-archetype-plugin` versie die wordt gebruikt. Omdat u de opdracht uitvoert in een lege map zonder `.pom` bestand, probeert deze mogelijk een invoeg toepassing van de oudere versie te gebruiken `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` als u een upgrade hebt uitgevoerd van uw maven van een oudere versie. Als dit het geval is, `maven-archetype-plugin` verwijdert u de map en voert u de opdracht opnieuw uit.
+> Als u problemen ondervindt met het uitvoeren van de opdracht, controleert u welke versie van `maven-archetype-plugin` er wordt gebruikt. Omdat u de opdracht uitvoert in een lege map zonder `.pom`-bestand, wordt er mogelijk geprobeerd om een invoegtoepassing met de oudere versie te gebruiken van `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` als u Maven hebt bijgewerkt op basis van een oudere versie. Als dit het geval is, verwijdert u de map `maven-archetype-plugin` en voert u de opdracht opnieuw uit.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
@@ -60,9 +60,9 @@ mvn archetype:generate ^
 ```
 ---
 
-Maven vraagt u om de waarden die nodig zijn om het project te kunnen genereren. Informatie over de waarden voor _groupId_, _artifactId_ en _version_ kunt u vinden in de Engelstalige [naslag van Maven over naamconventies](https://maven.apache.org/guides/mini/guide-naming-conventions.html). De waarde voor _appName_ moet uniek zijn binnen Azure. Om die reden genereert Maven standaard een app-naam op basis van de eerder opgegeven waarde voor _artifactId_. De waarde _packagenaam_ bepaalt het Kotlin-pakket voor de gegenereerde functie code.
+U wordt door Maven gevraagd om de waarden die nodig zijn om het project te kunnen genereren. Informatie over de waarden voor _groupId_, _artifactId_ en _version_ kunt u vinden in de Engelstalige [naslag van Maven over naamconventies](https://maven.apache.org/guides/mini/guide-naming-conventions.html). De waarde voor _appName_ moet uniek zijn binnen Azure. Om die reden genereert Maven standaard een app-naam op basis van de eerder opgegeven waarde voor _artifactId_. De waarde voor _packageName_ bepaalt het Kotlin-pakket voor de gegenereerde functiecode.
 
-De id's `com.fabrikam.functions` en `fabrikam-functions` hieronder worden gebruikt als een voorbeeld en om latere stappen in deze snelstart makkelijker te kunnen lezen. U wordt aangeraden uw eigen waarden aan te bieden voor maven in deze stap.
+De id's `com.fabrikam.functions` en `fabrikam-functions` hieronder worden gebruikt als een voorbeeld en om latere stappen in deze snelstart makkelijker te kunnen lezen. In deze stap wordt u aangeraden om Maven van uw eigen waarden te voorzien.
 
 <pre>
 [INFO] Parameter: groupId, Value: com.fabrikam.function
@@ -79,7 +79,7 @@ De id's `com.fabrikam.functions` en `fabrikam-functions` hieronder worden gebrui
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_; in dit voorbeeld `fabrikam-functions`. De gegenereerde code in het project kan meteen worden uitgevoerd en is een eenvoudige, [door HTTP getriggerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofdtekst van de aanvraag weergeeft:
+Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_; in dit voorbeeld `fabrikam-functions`. De gegenereerde code in het project kan meteen worden uitgevoerd en is een eenvoudige, [door HTTP getriggerde](./functions-bindings-http-webhook.md) functie die de hoofdtekst van de aanvraag weergeeft:
 
 ```kotlin
 class Function {
@@ -157,7 +157,7 @@ Gebruik `Ctrl-C` in de terminal om de functiecode te stoppen.
 
 ## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 
-Bij het implementeren naar Azure Functions worden accountreferenties uit de Azure CLI gebruikt. [Meld u aan met de Azure cli](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u doorgaat.
+Bij het implementeren naar Azure Functions worden accountreferenties uit de Azure CLI gebruikt. [Meld u aan met Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u doorgaat.
 
 ```azurecli
 az login
@@ -166,7 +166,7 @@ az login
 Implementeer de code in een nieuwe functie-app met behulp van de Maven-target `azure-functions:deploy`.
 
 > [!NOTE]
-> Wanneer u Visual Studio code gebruikt om uw functie-app te implementeren, moet u een niet-gratis abonnement kiezen of wordt er een fout melding weer gegeven. U kunt uw abonnement aan de linkerkant van de IDE bekijken.
+> Wanneer u Visual Studio Code gebruikt om uw functie-app te implementeren, moet u een niet-gratis abonnement kiezen om te voorkomen dat er een foutmelding wordt weergegeven. U kunt uw abonnement aan de linkerkant van de IDE bekijken.
 
 ```
 mvn azure-functions:deploy
@@ -185,7 +185,7 @@ Als het implementeren is voltooid, ziet u de URL die u kunt gebruiken voor toega
 Test de functie-app in Azure met behulp van `cURL`. Wijzig de URL in onderstaand voorbeeld om deze overeen te laten komen met de geïmplementeerde URL voor uw eigen functie-app uit de vorige stap.
 
 > [!NOTE]
-> Zorg ervoor dat u de **toegangs rechten** instelt `Anonymous`op. Wanneer u het standaard niveau van `Function`kiest, moet u de [functie sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) in aanvragen voor toegang tot uw functie-eind punt presen teren.
+> Zorg ervoor dat u **Toegangsrechten** instelt op `Anonymous`. Wanneer u het standaardniveau `Function` kiest, moet u de [functiesleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) opnemen in aanvragen om toegang te krijgen tot het eindpunt van de functie.
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
@@ -206,7 +206,7 @@ return request
         .build()
 ```
 
-Met de volgende code:
+In de volgende code:
 
 ```kotlin
 return request
@@ -228,17 +228,17 @@ Hi, AzureFunctionsTest
 </pre>
 
 
-## <a name="reference-bindings"></a>Verwijzings bindingen
+## <a name="reference-bindings"></a>Verwijzingsbindingen
 
-Als u wilt werken met [functions-triggers en-bindingen](functions-triggers-bindings.md) , met uitzonde ring van http-trigger en timer trigger, moet u bindings uitbreidingen installeren. Hoewel dit artikel niet is vereist, moet u weten hoe u uitbrei dingen kunt inschakelen wanneer u met andere bindings typen werkt.
+Als u wilt werken met andere [functietriggers en -bindingen](functions-triggers-bindings.md) dan HTTP-trigger en Timer-trigger, moet u bindingsuitbreidingen installeren. Hoewel dit niet vereist is voor dit artikel, moet u weten hoe u uitbreidingen kunt inschakelen wanneer u met andere bindingstypen gaat werken.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een Kotlin-functie-app met een eenvoudige HTTP-trigger gemaakt en deze geïmplementeerd op Azure Functions.
+U hebt een Kotlin-functie-app gemaakt met een eenvoudige HTTP-trigger en deze geïmplementeerd naar Azure Functions.
 
-- Raadpleeg de [ontwikkelaars handleiding voor Java-functies](functions-reference-java.md) voor meer informatie over het ontwikkelen van Java-en Kotlin-functies.
+- Neem de [Azure Functions Java-handleiding voor ontwikkelaars](functions-reference-java.md) door voor meer informatie over het ontwikkelen van Java- en Kotlin-functies. Deze handleiding is vooralsnog door een vertaalmachine vertaald.
 - U kunt extra functies met verschillende triggers toevoegen aan uw project met behulp van de Maven-target `azure-functions:add`.
 - Gebruik [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) en [Eclipse](functions-create-maven-eclipse.md) om functies lokaal te schrijven en fouten op te sporen. 
 - Gebruik Visual Studio Code om fouten op te sporen in functies die zijn geïmplementeerd in Azure. Raadpleeg de Visual Studio Code-documentatie over [serverloze Java-toepassingen](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) voor instructies.

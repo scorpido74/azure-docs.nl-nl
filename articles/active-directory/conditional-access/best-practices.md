@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253372"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275425"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
 
@@ -33,13 +33,13 @@ Wanneer u een nieuw beleid maakt, zijn er geen gebruikers, groepen, apps of toeg
 
 ![Cloud-apps](./media/best-practices/02.png)
 
-Als u uw beleid wilt laten werken, moet u het volgende configureren:
+U moet het volgende configureren om uw beleid te laten werken:
 
-| Wat           | Procedure                                  | Waarom |
+| Wat           | Hoe                                  | Waarom |
 | :--            | :--                                  | :-- |
 | **Cloud-apps** |Selecteer een of meer apps.  | Het doel van een beleid voor voorwaardelijke toegang is om u te laten bepalen hoe geautoriseerde gebruikers toegang hebben tot Cloud-apps.|
-| **Gebruikers en groepen** | Selecteer ten minste één gebruiker of groep die is gemachtigd om toegang te krijgen tot uw geselecteerde Cloud-apps. | Een beleid voor voorwaardelijke toegang waaraan geen gebruikers en groepen zijn toegewezen, wordt nooit geactiveerd. |
-| **Toegangs beheer** | Selecteer ten minste één toegangs beheer. | Als aan uw voor waarden wordt voldaan, moet uw beleids processor weten wat er moet gebeuren. |
+| **Gebruikers en groepen** | Selecteer ten minste één gebruiker of groep die gemachtigd is voor toegang tot uw geselecteerde cloud-apps. | Een beleid voor voorwaardelijke toegang waaraan geen gebruikers en groepen zijn toegewezen, wordt nooit geactiveerd. |
+| **Besturingselementen voor toegang** | Selecteer ten minste één besturingselement voor toegang. | Als aan uw voorwaarden wordt voldaan, moet bij de beleidsprocessor bekend zijn wat er moet gebeuren. |
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 
@@ -49,14 +49,21 @@ Er kunnen meer dan één beleid voor voorwaardelijke toegang van toepassing zijn
 
 Alle beleids regels worden in twee fasen afgedwongen:
 
-- Fase 1: 
-   - Detail verzameling: Details verzamelen om het beleid te identificeren waaraan al wordt voldaan.
-   - Tijdens deze fase kunnen gebruikers een certificaat prompt zien als de naleving van het apparaat deel uitmaakt van uw beleid voor voorwaardelijke toegang. Deze prompt kan optreden voor browser-apps wanneer het besturings systeem van het apparaat niet Windows 10 is.
-   - Fase 1 van de beleids evaluatie wordt uitgevoerd voor alle ingeschakelde beleids regels en beleids regels in de [modus alleen rapport](concept-conditional-access-report-only.md).
-- Fase 2:
-   - Afdwinging: als u de in fase 1 verzamelde gegevens wilt bekijken, moet u de gebruiker vragen om te voldoen aan aanvullende vereisten waaraan niet is voldaan.
-   - Resultaten Toep assen op sessie. 
-   - Fase 2 van de beleids evaluatie wordt uitgevoerd voor alle ingeschakelde beleids regels.
+- Fase 1: sessie details verzamelen 
+   - Details van de sessie verzamelen, zoals de gebruikers locatie en de apparaat-id die nodig is voor de beleids evaluatie. 
+   - Tijdens deze fase kunnen gebruikers een certificaat prompt zien als de naleving van het apparaat deel uitmaakt van uw beleid voor voorwaardelijke toegang. Deze prompt kan optreden voor browser-apps wanneer het besturings systeem van het apparaat niet Windows 10 is. 
+   - Fase 1 van de beleids evaluatie vindt plaats voor ingeschakelde beleids regels en beleids regels in de [modus alleen rapport](concept-conditional-access-report-only.md).
+- Fase 2: afdwingen 
+   - Gebruik de sessie details die in fase 1 zijn verzameld om te bepalen of er niet is voldaan aan de vereisten. 
+   - Als er een beleid is geconfigureerd voor het blok keren van de toegang, wordt afdwinging door de blok kering van het besturings element geblokkeerd en wordt de gebruiker geblokkeerd. 
+   - De gebruiker wordt vervolgens gevraagd aanvullende vereisten voor de toekennings controle uit te voeren die tijdens fase 1 in de volgende volg orde niet aan het beleid zijn voldaan:  
+      - Meervoudige verificatie 
+      - Goedgekeurde client-app/beveiligings beleid voor apps 
+      - Beheerd apparaat (compatibel of hybride Azure AD-deelname) 
+      - Gebruiksvoorwaarden 
+      - Aangepaste besturingselementen  
+      - Nadat de machtigings besturings elementen zijn voldaan, kunt u de sessie besturings elementen Toep assen (app afgedwongen, Microsoft Cloud App Security en levens duur van het token) 
+   - Fase 2 van de beleids evaluatie wordt uitgevoerd voor alle ingeschakelde beleids regels. 
 
 ### <a name="how-are-assignments-evaluated"></a>Hoe worden toewijzingen geëvalueerd?
 

@@ -2,15 +2,16 @@
 title: Java-en Gradle gebruiken om een functie te publiceren in azure
 description: Een door HTTP geactiveerde functie maken en publiceren naar Azure met Java en Gradle.
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 906f3d45edef6180557c54f0ff29cd11a1c96fa3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055667"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322173"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java en Gradle gebruiken voor het maken en publiceren van een functie in azure
 
@@ -24,8 +25,8 @@ In dit artikel wordt beschreven hoe u een Java-functie project bouwt en publicee
 Als u functies wilt ontwikkelen met behulp van Java, moet het volgende zijn geïnstalleerd:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
-- [Azure CLI]
-- [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
+- [Azure-CLI]
+- [Azure Functions Core Tools](./functions-run-local.md#v2), versie 2.6.666 of hoger
 - [Gradle](https://gradle.org/), versie 4,10 en hoger
 
 U hebt ook een actief Azure-abonnement nodig. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -174,5 +175,5 @@ U hebt een Java-functies project gemaakt met een door HTTP geactiveerde functie,
 > [Een Azure Storage wachtrij-uitvoer binding toevoegen](functions-add-output-binding-storage-queue-java.md)
 
 
-[Azure CLI]: /cli/azure
+[Azure-CLI]: /cli/azure
 [Azure-portal]: https://portal.azure.com

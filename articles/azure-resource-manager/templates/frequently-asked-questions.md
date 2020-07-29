@@ -2,15 +2,15 @@
 title: Veelgestelde vragen over ARM-sjablonen
 description: Veelgestelde vragen over Azure Resource Manager sjablonen.
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327256"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Veelgestelde vragen over ARM-sjablonen
 
@@ -48,7 +48,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
   Meld u aan [voor meldingen voor](https://aka.ms/armLangUpdates)meer informatie over de taal van de nieuwe sjabloon.
 
-  Neem voor de preview van sjabloon specificaties [lid van de wacht lijst](https://aka.ms/templateSpecsWaitlist).
+  Zie [Azure Resource Manager-sjabloon specificaties (preview-versie)](template-specs.md)voor meer informatie over sjabloon specificaties.
 
 ## <a name="creating-and-testing-templates"></a>Sjablonen maken en testen
 
@@ -64,7 +64,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
 * **Kan ik een resource groep maken in een ARM-sjabloon en daar resources op implementeren?**
 
-  Ja, u kunt een resource groep maken in een sjabloon wanneer u de sjabloon implementeert op het niveau van uw Azure-abonnement. Zie [resource groep en resources](deploy-to-subscription.md#resource-group-and-resources)voor een voor beeld van het maken van een resource groep en het implementeren van resources.
+  Ja, u kunt een resource groep maken in een sjabloon wanneer u de sjabloon implementeert op het niveau van uw Azure-abonnement. Zie [resource groep en resources](deploy-to-subscription.md#resource-groups)voor een voor beeld van het maken van een resource groep en het implementeren van resources.
 
 * **Kan ik een abonnement in een ARM-sjabloon maken?**
 
@@ -102,7 +102,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
   Ja.
 
-## <a name="template-specs"></a>Sjabloon specificaties
+## <a name="template-specs"></a>Sjabloonspecificaties
 
 * **Hoe kan ik deel nemen aan de preview-versie van sjabloon specificaties?**
 

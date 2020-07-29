@@ -3,24 +3,27 @@ title: Azure-kosten analyseren met de Power BI-app
 description: In dit artikel wordt uitgelegd hoe de Azure Cost Management Power BI-app wordt geïnstalleerd en gebruikt.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/16/2020
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bd5e2c999df180c80c58711a6428678b2bb4fefa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888204"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537915"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analyseer kosten met de Azure Cost Management Power BI-app voor Enterprise Agreements (EA)
 
 In dit artikel wordt uitgelegd hoe de Azure Cost Management Power BI-app wordt geïnstalleerd en gebruikt. De app helpt u bij het analyseren en beheren van uw Azure-kosten in Power BI. U kunt de app gebruiken voor het bewaken van kosten, het volgen van gebruikstrends en het vaststellen van opties voor kostenoptimalisatie om uw uitgaven te reduceren.
 
-U kunt de app downloaden naar Power BI Desktop. U kunt de app ongewijzigd gebruiken, maar deze ook wijzigen om de standaardfilters, weergaven en visualisaties uit te breiden naar gelang uw behoeften. Vervolgens kunt u met de app extra gegevens toevoegen om aangepaste rapporten te maken voor het genereren van holistische weergaven van uw totale bedrijfskosten.
+U kunt de app ongewijzigd gebruiken, maar deze ook wijzigen om de standaardfilters, weergaven en visualisaties uit te breiden naar gelang uw behoeften. Vervolgens kunt u met de app extra gegevens toevoegen om aangepaste rapporten te maken voor het genereren van holistische weergaven van uw totale bedrijfskosten.
 
 De Azure Cost Management Power BI-app ondersteunt momenteel alleen klanten met een [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/).
+
+> [!NOTE]
+> Power BI-sjabloon-apps bieden geen ondersteuning voor het downloaden van het PBIX-bestand.
 
 ## <a name="prerequisites"></a>Vereisten
 

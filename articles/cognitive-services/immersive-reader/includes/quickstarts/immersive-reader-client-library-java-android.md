@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038197"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544111"
 ---
 De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om leesvaardigheid te verbeteren.
 
-In deze Quickstart maakt u een nieuwe Android-app en integreert u de insluitende lezer. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) een volledig werkend voorbeeld van deze Quickstart.
+In deze Quickstart maakt u een nieuwe Android-app en integreert u de insluitende lezer. U vindt [op GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) een volledig werkend voorbeeld van deze quickstart.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
-* [Git](https://git-scm.com/)
-* [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. Enkele waarden die u hier maakt, hebt u nodig bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* [Git](https://git-scm.com/).
+* [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Een Android-project maken
 
-Start een nieuw project in Android Studio. De broncode voor dit voorbeeld is beschikbaar als onderdeel van de [SDK voor insluitende lezers](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)
+Start een nieuw project in Android Studio. De broncode voor dit voorbeeld is beschikbaar als onderdeel van de [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
 ![Nieuw project](../../media/android/java/android-studio-create-project.png)
 
-Selecteer in het venster Kies uw project **Lege activiteit** en klik vervolgens op volgende.
+Selecteer **Empty Activity** in het venster **Choose your project** en selecteer **Next**.
 
 ![Project met lege activiteit](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Het project configureren
 
-Geef het project de naam 'QuickstartJava', selecteer een opslaglocatie en kies 'Java' als de programmeertaal en klik vervolgens op Voltooien.
+Geef het project de naam **QuickstartJava** en selecteer een locatie om het op te slaan. Selecteer **Java** als de programmeertaal en selecteer **Finish**.
 
 ![Het project configureren](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Activa en verificatie instellen
 
-Nieuwe map **/assets** maken
+Maak een nieuwe map **/assets**.
 
-![Een nieuwe map Assets maken](../../media/android/java/android-studio-assets-folder.png)
+![Een nieuwe map assets maken](../../media/android/java/android-studio-assets-folder.png)
 
- Maak een bestand met de naam **env** in de map Assets. Voeg de volgende waarden toe, indien van toepassing. Zorg ervoor dat u dit env-bestand niet doorvoert in broncodebeheer, omdat deze geheimen bevat die niet openbaar moeten worden gemaakt.
+ Maak een bestand met de naam **env** in de map Assets. Voeg de volgende namen en waarden toe en geef waar nodig waarden op. Zorg ervoor dat u dit env-bestand niet doorvoert in broncodebeheer, omdat er geheimen in staan die niet openbaar mogen worden gemaakt.
 
 ![Een nieuw env-bestand maken](../../media/android/java/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-Vervang de bestaande afhankelijkheden in het **build.gradle**-bestand door de onderstaande implementaties om gson (JSON parseren en serialisatie) en dotenv te gebruiken om te verwijzen naar de variabelen die zijn gedefinieerd in het env-bestand. Mogelijk moet u het project opnieuw synchroniseren bij het implementeren van activiteiten verderop in deze quickstart.
+Vervang de bestaande afhankelijkheden in het **build.gradle**-bestand door de volgende implementaties om gson (JSON parseren en serialisatie) en dotenv te gebruiken om te verwijzen naar de variabelen die zijn gedefinieerd in het env-bestand. Mogelijk moet u het project opnieuw synchroniseren bij het implementeren van activiteiten verderop in deze quickstart.
 
 ```build.gradle
 dependencies {
@@ -84,7 +84,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>App-tekenreeksen en indelingsresources bijwerken
 
-Vervang de inhoud in **res/strings/strings.xml** met de onderstaande tekenreeksen die moeten worden gebruikt in de app.
+Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen die moeten worden gebruikt in de app.
 
 ![App strings.xml](../../media/android/java/android-studio-strings.png)
 
@@ -102,7 +102,7 @@ Vervang de inhoud in **res/strings/strings.xml** met de onderstaande tekenreekse
 </resources>
 ```
 
-Vervang de inhoud in **res/layout/activity_main.xml** met de onderstaande XML die moet worden gebruikt in de app. Dit is de indeling van de gebruikersinterface van de app.
+Vervang de inhoud in **res/layout/activity_main.xml** door de volgende XML die moet worden gebruikt in de app. Deze XML bepaalt de indeling van de gebruikersinterface van de app.
 
 ![App activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -201,9 +201,9 @@ Vervang de inhoud in **res/layout/activity_main.xml** met de onderstaande XML di
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-## <a name="add-the-web-view-layout"></a>De indeling van de webweergave toevoegen
+## <a name="add-the-web-view-layout"></a>De indeling voor de webweergave toevoegen
 
-Maak in de map **res/layout/** een nieuw indelingsbronbestand en geef het de naam **activity_immersive_reader**. Vervang vervolgens de inhoud van het bestand door de onderstaande XML. Hiermee voegt u het WebView-onderdeel toe dat moet worden gebruikt door de IRActivity Java-code die in een latere stap wordt gemaakt. Deze code is nu niet gedefinieerd en veroorzaakt fouten.
+Maak in de map **res/layout/** een nieuw indelingsbronbestand en geef het de naam **activity_immersive_reader**. Vervang vervolgens de inhoud van het bestand door de volgende XML. Met deze XML voegt u het WebView-onderdeel toe dat moet worden gebruikt door de IRActivity Java-code die in een latere stap wordt gemaakt. Deze code is nu niet gedefinieerd en veroorzaakt fouten.
 
 ![Nieuw indelingsbronbestand maken](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -232,7 +232,7 @@ Maak in de map **res/layout/** een nieuw indelingsbronbestand en geef het de naa
 
 ## <a name="set-up-the-app-java-code"></a>De Java-code van de app instellen
 
-In de map **/Java/com.example.quickstartjava** ziet u een bestaand Java Class-bestand **MainActivity.java**. In deze map wordt de logica van de app gemaakt.
+In de map **/Java/com.example.quickstartjava** ziet u een bestaand Java-klassebestand **MainActivity.java**. In deze map wordt de logica van de app gemaakt.
 
 ![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-U maakt later nog 16 Java Class-bestanden in de map **/Java/com.example.quickstartjava** gemaakt. Elk van deze klassen wordt gebruikt door de app voor het integreren van de SDK voor de insluitende lezer. Bij elk nieuw bestand wordt in de code naar een aantal klassen verwezen die nog niet bestaan en later worden gemaakt. Als alle klassen zijn gemaakt, mogen er geen null-referentiefouten zijn.
+U maakt later nog 16 Java-klassebestanden in de map **/Java/com.example.quickstartjava**. Elk van deze klassen wordt gebruikt door de app voor het integreren van de SDK voor Insluitende lezer. Bij elk nieuw bestand wordt in de code naar een aantal klassen verwezen die nog niet bestaan en die later worden gemaakt. Als alle klassen zijn gemaakt, mogen er geen null-referentiefouten meer optreden.
 
-Maak een nieuw Java Class-bestand **ImmersiveReader.java** door met de rechtermuisknop op de map in Android Studio te klikken en vervolgens Nieuw en Java Class te selecteren. U gebruikt dezelfde methode voor het maken van Java Class-bestanden voor elk nieuw Java Class-bestand dat wordt gemaakt.
+Als u een nieuw Java-klassebestand **ImmersiveReader.java** wilt maken, klikt u met de rechtermuisknop op de map in Android Studio, selecteert u **New** en vervolgens **Java Class**. U gebruikt dezelfde methode voor het maken van Java-klassebestanden voor elk nieuw Java-klassebestand dat u maakt.
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-Vervang de inhoud van **ImmersiveReader.java** door de volgende code.
+Vervang de inhoud van **ImmersiveReader.java** door de volgende code:
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -373,11 +373,11 @@ public class ImmersiveReader {
 }
 ```
 
-Maak een nieuw Java Class-bestand **IRActivity.java**.
+Maak een nieuw Java-klassebestand **IRActivity.java**.
 
 ![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
 
-Vervang de inhoud van **IRActivity.java** door de volgende code.
+Vervang de inhoud van **IRActivity.java** door de volgende code:
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -457,11 +457,11 @@ public class ImmersiveReader {
 }
 ```
 
-Maak een nieuw Java Class-bestand **IRError.java**.
+Maak een nieuw Java-klassebestand **IRError.java**.
 
 ![IRError](../../media/android/java/android-studio-irerror-java.png)
 
-Vervang de inhoud van **IRError.java** door de volgende code.
+Vervang de inhoud van **IRError.java** door de volgende code:
 
 ```IRError.java
 /**
@@ -536,11 +536,11 @@ public class IRError implements Parcelable {
 }
 ```
 
-Maak een nieuw Java Class-bestand **Error.java**.
+Maak een nieuw Java-klassebestand **Error.java**.
 
 ![Fout](../../media/android/java/android-studio-error-java.png)
 
-Vervang de inhoud van **Error.java** door de volgende code.
+Vervang de inhoud van **Error.java** door de volgende code:
 
 ```Error.java
 /**
@@ -567,11 +567,11 @@ public class Error {
 }
 ```
 
-Maak een nieuw Java Class-bestand **ReadableContent.java**.
+Maak een nieuw Java-klassebestand **ReadableContent.java**.
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-Vervang de inhoud van **ReadableContent.java** door de volgende code.
+Vervang de inhoud van **ReadableContent.java** door de volgende code:
 
 ```ReadableContent.java
 /**
@@ -611,11 +611,11 @@ public class ReadableContent {
 }
 ```
 
-Maak een nieuw Java Class-bestand **ReadableTextChunk.java**.
+Maak een nieuw Java-klassebestand **ReadableTextChunk.java**.
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-Vervang de inhoud van **ReadableTextChunk.java** door de volgende code.
+Vervang de inhoud van **ReadableTextChunk.java** door de volgende code:
 
 ```ReadableTextChunk.java
 /**
@@ -643,11 +643,11 @@ public class ReadableTextChunk {
 }
 ```
 
-Maak een nieuw Java Class-bestand **IRDataHolder.java**.
+Maak een nieuw Java-klassebestand **IRDataHolder.java**.
 
 ![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
 
-Vervang de inhoud van **IRDataHolder.java** door de volgende code.
+Vervang de inhoud van **IRDataHolder.java** door de volgende code:
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -708,11 +708,11 @@ public class IRDataHolder {
 }
 ```
 
-Maak een nieuw Java Class-bestand **IRAuthenticator.java**.
+Maak een nieuw Java-klassebestand **IRAuthenticator.java**.
 
 ![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
 
-Vervang de inhoud van **IRAuthenticator.java** door de volgende code.
+Vervang de inhoud van **IRAuthenticator.java** door de volgende code:
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -819,11 +819,11 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 }
 ```
 
-Maak een nieuw Java Class-bestand **IRLauncher.java**.
+Maak een nieuw Java-klassebestand **IRLauncher.java**.
 
 ![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-Vervang de inhoud van **IRLauncher.java** door de volgende code.
+Vervang de inhoud van **IRLauncher.java** door de volgende code:
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1012,11 +1012,11 @@ public class IRLauncher {
 }
 ```
 
-Maak een nieuw Java Class-bestand **IRStore.java**.
+Maak een nieuw Java-klassebestand **IRStore.java**.
 
 ![IRStore](../../media/android/java/android-studio-irstore-java.png)
 
-Vervang de inhoud van **IRStore.java** door de volgende code.
+Vervang de inhoud van **IRStore.java** door de volgende code:
 
 ```IRStore.java
 /**
@@ -1037,11 +1037,11 @@ public final class IRStore {
 }
 ```
 
-Maak een nieuw Java Class-bestand **AuthenticationTask.java**.
+Maak een nieuw Java-klassebestand **AuthenticationTask.java**.
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-Vervang de inhoud van **AuthenticationTask.java** door de volgende code.
+Vervang de inhoud van **AuthenticationTask.java** door de volgende code:
 
 ```AuthenticationTask.java
 /**
@@ -1094,11 +1094,11 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 }
 ```
 
-Maak een nieuw Java Class-bestand **Chunk.java**.
+Maak een nieuw Java-klassebestand **Chunk.java**.
 
 ![Chunk](../../media/android/java/android-studio-chunk-java.png)
 
-Vervang de inhoud van **Chunk.java** door de volgende code.
+Vervang de inhoud van **Chunk.java** door de volgende code:
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1131,11 +1131,11 @@ public class Chunk {
 }
 ```
 
-Maak een nieuw Java Class-bestand **Content.java**.
+Maak een nieuw Java-klassebestand **Content.java**.
 
 ![Inhoud](../../media/android/java/android-studio-content-java.png)
 
-Vervang de inhoud van **Content.java** door de volgende code.
+Vervang de inhoud van **Content.java** door de volgende code:
 
 ```Content.java
 /**
@@ -1167,11 +1167,11 @@ public class Content {
 }
 ```
 
-Maak een nieuw Java Class-bestand **Options.java**.
+Maak een nieuw Java-klassebestand **Options.java**.
 
 ![Opties](../../media/android/java/android-studio-options-java.png)
 
-Vervang de inhoud van **Options.java** door de volgende code.
+Vervang de inhoud van **Options.java** door de volgende code:
 
 ```Options.java
 /**
@@ -1201,11 +1201,11 @@ public class Options {
 }
 ```
 
-Maak een nieuw Java Class-bestand **Message.java**.
+Maak een nieuw Java-klassebestand **Message.java**.
 
 ![Bericht](../../media/android/java/android-studio-message-java.png)
 
-Vervang de inhoud van **Message.java** door de volgende code.
+Vervang de inhoud van **Message.java** door de volgende code:
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1239,11 +1239,11 @@ public class Message {
 }
 ```
 
-Maak een nieuw Java Class-bestand **WebAppInterface.java**.
+Maak een nieuw Java-klassebestand **WebAppInterface.java**.
 
 ![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-Vervang de inhoud van **WebAppInterface.java** door de volgende code.
+Vervang de inhoud van **WebAppInterface.java** door de volgende code:
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1290,13 +1290,13 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>De HTML-code van de app toevoegen aan de webweergave
 
-Voor de implementatie van de webweergave moet HTML worden uitgevoerd. Klik met de rechtermuisknop op de map **/assets** en maak een nieuw bestand met de naam **immersiveReader.html**.
+Voor de implementatie van de webweergave moet de HTML goed werken. Klik met de rechtermuisknop op de map **/assets** en maak een nieuw bestand met de naam **immersiveReader.html**.
 
 ![Een nieuw HTML-bestand maken](../../media/android/java/android-studio-immersive-reader-html.png)
 
 ![Locatie van HTML-asset](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-Voeg hieronder de HTML en Javascript toe. Hiermee wordt de SDK voor insluitende lezers aan de app toegevoegd en gebruikt om de insluitende lezer te starten met de app-code die we hebben geschreven.
+Voeg de volgende HTML en JavaScript toe. Met deze code wordt de SDK voor Insluitende lezer aan de app toegevoegd en gebruikt om de insluitende lezer te openen met de app-code die we hebben geschreven.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet maken om te kunnen functioneren, moeten we ervoor zorgen dat de app-machtigingen zijn geconfigureerd om netwerktoegang toe te staan. Vervang de inhoud van **/manifests/AndroidManifest.xml** door de onderstaande XML.
+Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet maken om te kunnen functioneren, moeten we ervoor zorgen dat de app-machtigingen zijn geconfigureerd om netwerktoegang toe te staan. Vervang de inhoud van **/manifests/AndroidManifest.xml** door de volgende XML:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet ma
 </manifest>
 ```
 
-## <a name="running-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
-Gebruik Android Studio om de app op een apparaat-emulator uit te voeren. Wanneer u op de knop **insluitende lezer** klikt, ziet u dat de insluitende lezer wordt gestart met de inhoud van de app.
+Gebruik Android Studio om de app op een apparaat-emulator uit te voeren. Wanneer u **Insluitende lezer** selecteert, wordt de insluitende lezer geopend met de inhoud van de app.
 
 ![Insluitende lezer](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De [SDK voor insluitende lezers](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor insluitende lezers](../../reference.md) verkennen
+Verken de [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](../../reference.md).

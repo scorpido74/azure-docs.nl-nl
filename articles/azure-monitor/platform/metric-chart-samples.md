@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320252"
 ---
 # <a name="metric-chart-examples"></a>Voor beelden van metrische grafieken 
 
@@ -52,5 +52,6 @@ Selecteer uw opslag account en de metrische gegevens voor de **trans acties** in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over Azure Monitor [werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+* Meer informatie over Azure Monitor [werkmappen](./workbooks-overview.md)
 * Meer informatie over [metrische Explorer](metrics-charts.md)
+

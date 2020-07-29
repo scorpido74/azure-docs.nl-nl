@@ -32,9 +32,9 @@
       href: release-notes.md
 - name: Snelstartgidsen
   items:
-    - name: Een Azure Synapse-werkruimte maken
+    - name: Een Synapse-werkruimte maken
       href: quickstart-create-workspace.md
-    - name: Azure Synapse Studio gebruiken
+    - name: Synapse Studio gebruiken
       href: quickstart-synapse-studio.md
     - name: Een Power BI-werkruimte koppelen
       href: quickstart-power-bi.md

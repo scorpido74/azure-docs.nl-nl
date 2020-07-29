@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met het virtuele bureau blad van Windows 2019 van macOS-Azure
-description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de macOS-client.
+title: Verbinding maken met het virtuele bureau blad van Windows (klassiek) van macOS-Azure
+description: Verbinding maken met het virtuele bureau blad van Windows (klassiek) met behulp van de macOS-client.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1d8f9e3a5f4c529e3574be7dbeae8bd385f85367
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4aac80f7e4ef93b6503398c225b2aeffe566dbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087104"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270563"
 ---
-# <a name="connect-with-the-macos-client"></a>Verbinding maken met de macOS-client
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>Verbinding maken met het virtuele bureau blad van Windows (klassiek) met de macOS-client
 
 > Van toepassing op: macOS 10,12 of hoger
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-macos.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../connect-macos.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw macOS-apparaten met onze Download bare client. In deze hand leiding wordt uitgelegd hoe u de-client kunt instellen.
 

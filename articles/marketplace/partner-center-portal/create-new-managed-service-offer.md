@@ -4,15 +4,15 @@ description: Het maken van een nieuwe, beheerde service aanbieding voor een verm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326615"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -42,7 +42,7 @@ Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw a
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 * Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
-* De alias van het do-aanbod kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+* De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 

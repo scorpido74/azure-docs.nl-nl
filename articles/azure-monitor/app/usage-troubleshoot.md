@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670913"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323499"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problemen oplossen met hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights
 Hebt u vragen over de [hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights](usage-overview.md): [gebruikers, sessies, gebeurtenissen](usage-segmentation.md), [trechters](usage-funnels.md), [Gebruikersstromen](usage-flows.md), [retentie](usage-retention.md)of cohorten? Hier volgen enkele antwoorden.
@@ -18,13 +19,13 @@ Hebt u vragen over de [hulpprogram ma's voor analyse van gebruikers gedrag in Ap
 ## <a name="counting-users"></a>Gebruikers tellen
 **De analyse hulpprogramma's voor gebruikers gedrag tonen dat mijn app één gebruiker/sessie heeft, maar ik weet dat mijn app veel gebruikers/sessies heeft. Hoe kan ik het verkeerde aantal herstellen?**
 
-Alle telemetrie-gebeurtenissen in Application Insights hebben een [anonieme gebruikers-id](../../azure-monitor/app/data-model-context.md) en een [sessie-id](../../azure-monitor/app/data-model-context.md) als twee van de standaard eigenschappen. Standaard tellen alle hulpprogram ma's voor gebruiks analyse gebruikers en sessies op basis van deze Id's. Als deze standaard eigenschappen niet worden gevuld met unieke Id's voor elke gebruiker en sessie van uw app, wordt in de gebruiks analyse hulpprogramma's een onjuist aantal gebruikers en sessies weer geven.
+Alle telemetrie-gebeurtenissen in Application Insights hebben een [anonieme gebruikers-id](./data-model-context.md) en een [sessie-id](./data-model-context.md) als twee van de standaard eigenschappen. Standaard tellen alle hulpprogram ma's voor gebruiks analyse gebruikers en sessies op basis van deze Id's. Als deze standaard eigenschappen niet worden gevuld met unieke Id's voor elke gebruiker en sessie van uw app, wordt in de gebruiks analyse hulpprogramma's een onjuist aantal gebruikers en sessies weer geven.
 
-Als u een web-app bewaken, is de eenvoudigste oplossing om de [Application Insights java script SDK](../../azure-monitor/app/javascript.md) toe te voegen aan uw app en ervoor te zorgen dat het script fragment wordt geladen op elke pagina die u wilt bewaken. Met de Java script SDK worden automatisch anonieme gebruikers-en sessie-Id's gegenereerd. vervolgens worden telemetrie-gebeurtenissen met deze Id's gevuld wanneer ze vanuit uw app worden verzonden.
+Als u een web-app bewaken, is de eenvoudigste oplossing om de [Application Insights java script SDK](./javascript.md) toe te voegen aan uw app en ervoor te zorgen dat het script fragment wordt geladen op elke pagina die u wilt bewaken. Met de Java script SDK worden automatisch anonieme gebruikers-en sessie-Id's gegenereerd. vervolgens worden telemetrie-gebeurtenissen met deze Id's gevuld wanneer ze vanuit uw app worden verzonden.
 
 Als u een webservice bewaken (geen gebruikers interface), [maakt u een telemetrie-initialisatie functie waarmee de eigenschappen van de anonieme gebruikers-id en de sessie-id worden ingevuld](usage-send-user-context.md) op basis van de begrippen van de service van unieke gebruikers en sessies.
 
-Als uw app [geverifieerde gebruikers-id's](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)verzendt, kunt u tellen op basis van geverifieerde gebruikers-id's in het hulp programma gebruikers. Kies in de vervolg keuzelijst weer geven de optie geverifieerde gebruikers.
+Als uw app [geverifieerde gebruikers-id's](./api-custom-events-metrics.md#authenticated-users)verzendt, kunt u tellen op basis van geverifieerde gebruikers-id's in het hulp programma gebruikers. Kies in de vervolg keuzelijst weer geven de optie geverifieerde gebruikers.
 
 De hulpprogram ma's voor analyse van gebruikers gedrag bieden momenteel geen ondersteuning voor het tellen van gebruikers of sessies op basis van andere eigenschappen dan een anonieme gebruikers-ID, een geverifieerde gebruikers-ID of een sessie-ID.
 
@@ -47,6 +48,6 @@ Als uw app te veel aangepaste gebeurtenis namen verzendt, wijzigt u de naam in d
 
 * [Overzicht van analyse hulpprogramma's voor gebruikers gedrag](usage-overview.md)
 
-## <a name="get-help"></a>Hulp vragen
+## <a name="get-help"></a>Help opvragen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

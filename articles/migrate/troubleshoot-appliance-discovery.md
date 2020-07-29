@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114054"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171868"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -98,7 +98,7 @@ Fout 60028: detectie kan niet worden gestart wegens een fout. De bewerking is mi
 - Als er een validatie fout optreedt, raadpleegt u de richt lijnen voor herstel om de fouten op te lossen en probeert u het opnieuw met de optie **detectie opslaan en starten** .
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>Fout 60025: de Azure AD-bewerking is mislukt 
-Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens het maken of bijwerken van de Azure AD-toepassing "treedt op wanneer het Azure-gebruikers account dat wordt gebruikt om de detectie te initiëren, afwijkt van het account dat wordt gebruikt om het apparaat te registreren. Doe een van de volgende dingen:
+Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens het maken of bijwerken van de Azure AD-toepassing "treedt op wanneer het Azure-gebruikers account dat wordt gebruikt om de detectie te initiëren, afwijkt van het account dat wordt gebruikt om het apparaat te registreren. Voer een van de volgende handelingen uit:
 
 - Zorg ervoor dat het gebruikers account dat de detectie initieert, hetzelfde is als dat waarmee het apparaat wordt geregistreerd.
 - Geef Azure Active Directory machtigingen voor toegang tot de toepassing op voor het gebruikers account waarvoor de detectie bewerking is mislukt.
@@ -164,6 +164,9 @@ De detectie van de toepassing wordt elke 24 uur uitgevoerd. Als u de details onm
 
 ## <a name="unable-to-export-application-inventory"></a>Kan de toepassings inventaris niet exporteren
 Zorg ervoor dat de gebruiker die de inventaris van de portal downloadt, over Inzender bevoegdheden beschikt voor het abonnement.
+
+## <a name="no-suitable-authentication-method-found-to-complete-authentication-publickey"></a>Er is geen geschikte verificatie methode gevonden voor het volt ooien van de authenticatie (PUBLICKEY)
+Verificatie op basis van sleutels werkt niet, wachtwoord verificatie gebruiken.
 
 ## <a name="common-app-discovery-errors"></a>Veelvoorkomende fouten bij app-detectie
 

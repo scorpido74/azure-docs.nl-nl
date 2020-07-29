@@ -7,14 +7,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 6d3661128008c13e5d4d459f6f8e7925aa18a9a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025064"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322768"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische IoT-apparaat-en module beheer met de Azure Portal
+# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatisch beheer van IoT-apparaat en module met Azure Portal
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
@@ -127,7 +130,7 @@ SELECT deviceId, moduleId FROM devices.modules
   WHERE properties.reported.lastDesiredStatus.code = 200
 ```
 
-### <a name="target-devices"></a>Doel apparaten
+### <a name="target-devices"></a>Doelapparaten
 
 Gebruik de eigenschap Tags van uw apparaatdubbels om te richten op de specifieke apparaten of modules die deze configuratie moeten ontvangen. U kunt ook op dubbele gerapporteerde eigenschappen richten.
 

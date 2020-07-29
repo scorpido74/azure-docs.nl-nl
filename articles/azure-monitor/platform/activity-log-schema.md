@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073677"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327273"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure-gebeurtenisschema in het activiteitenlogboek
 Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel worden de categorieën en het schema voor activiteiten Logboeken beschreven. 
@@ -31,7 +31,7 @@ Elke gebeurtenis in het activiteiten logboek heeft een bepaalde categorie die wo
 |:---|:---|
 | [Administratief](#administrative-category) | Bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van beheer gebeurtenissen zijn het maken van een _virtuele machine_ en het verwijderen van de _netwerk beveiligings groep_.<br><br>Elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager, is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type _schrijven_, _verwijderen_of _actie_is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. Beheer gebeurtenissen omvatten ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement. |
 | [Status van service](#service-health-category) | Bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van een Service Health gebeurtenis _SQL Azure in VS-Oost_ondervindt downtime. <br><br>Service Health gebeurtenissen zijn beschikbaar in zes rassen: _actie vereist_, _assistentie herstel_, _incident_, _onderhoud_, _informatie_of _beveiliging_. Deze gebeurtenissen worden alleen gemaakt als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
-| [Resource Health](#resource-health-category) | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: _beschikbaar, niet_ _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
+| [Status van resources](#resource-health-category) | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: _beschikbaar, niet_ _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
 | [Waarschuwing](#alert-category) | Bevat de registratie van activeringen voor Azure-waarschuwingen. Een voor beeld van een waarschuwings gebeurtenis is _CPU% op myVM heeft de afgelopen vijf minuten meer dan 80_.|
 | [Automatisch schalen](#autoscale-category) | Bevat de record van gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van een automatisch schalen-gebeurtenis is het _Omhoog schalen van de actie voor schalen is mislukt_. |
 | [Aanbeveling](#recommendation-category) | Bevat aanbevelings gebeurtenissen van Azure Advisor. |
@@ -137,7 +137,7 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 | detailhandelkanalen |Een van de volgende waarden: ' admin ', ' Operation ' |
 | claims |Het JWT-token dat wordt gebruikt door Active Directory om de gebruiker of toepassing te verifiëren om deze bewerking uit te voeren in Resource Manager. |
 | correlationId |Meestal een GUID in de teken reeks indeling. Gebeurtenissen die een correlationId delen, horen bij dezelfde uber-actie. |
-| description |Statische tekst beschrijving van een gebeurtenis. |
+| beschrijving |Statische tekst beschrijving van een gebeurtenis. |
 | eventDataId |De unieke id van een gebeurtenis. |
 | eventName | Beschrijvende naam van de beheer gebeurtenis. |
 | category | Altijd ' beheer ' |
@@ -281,7 +281,7 @@ Deze categorie bevat de record van de resource status gebeurtenissen die zijn op
 | --- | --- |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
-| description |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
+| beschrijving |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
 | eventDataId |De unieke id van de waarschuwings gebeurtenis. |
 | category | Altijd "ResourceHealth" |
 | eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
@@ -376,7 +376,7 @@ Deze categorie bevat de registratie van alle activeringen van klassieke Azure-wa
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
 | claims | JSON-blob met de SPN (Service Principal Name) of het resource type van de waarschuwings-engine. |
 | correlationId | Een GUID in de teken reeks indeling. |
-| description |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
+| beschrijving |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
 | eventDataId |De unieke id van de waarschuwings gebeurtenis. |
 | category | Altijd "waarschuwing" |
 | niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
@@ -486,7 +486,7 @@ Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
 | claims | JSON-blob met de SPN (Service Principal Name) of het resource type van de engine voor automatisch schalen. |
 | correlationId | Een GUID in de teken reeks indeling. |
-| description |Statische tekst beschrijving van de gebeurtenis automatisch schalen. |
+| beschrijving |Statische tekst beschrijving van de gebeurtenis automatisch schalen. |
 | eventDataId |De unieke id van de gebeurtenis voor automatisch schalen. |
 | niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
 | resourceGroupName |De naam van de resource groep voor de instelling voor automatisch schalen. |
@@ -574,7 +574,7 @@ Deze categorie bevat alle waarschuwingen die door Azure Security Center worden g
 | --- | --- |
 | detailhandelkanalen | Altijd ' bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
-| description |Statische tekst beschrijving van de beveiligings gebeurtenis. |
+| beschrijving |Statische tekst beschrijving van de beveiligings gebeurtenis. |
 | eventDataId |De unieke id van de beveiligings gebeurtenis. |
 | eventName |Beschrijvende naam van de beveiligings gebeurtenis. |
 | category | Altijd ' Beveiliging ' |
@@ -655,7 +655,7 @@ Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services wor
 | --- | --- |
 | detailhandelkanalen | Altijd ' bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
-| description |Statische tekst beschrijving van de gebeurtenis recommender |
+| beschrijving |Statische tekst beschrijving van de gebeurtenis recommender |
 | eventDataId | De unieke id van de aanbevelings gebeurtenis. |
 | category | Altijd ' aanbeveling ' |
 | Id |De unieke resource-id van de aanbevelings gebeurtenis. |
@@ -768,7 +768,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 | detailhandelkanalen | Beleids gebeurtenissen gebruiken alleen het kanaal ' bewerking '. |
 | claims | Het JWT-token dat wordt gebruikt door Active Directory om de gebruiker of toepassing te verifiëren om deze bewerking uit te voeren in Resource Manager. |
 | correlationId | Meestal een GUID in de teken reeks indeling. Gebeurtenissen die een correlationId delen, horen bij dezelfde uber-actie. |
-| description | Dit veld is leeg voor beleids gebeurtenissen. |
+| beschrijving | Dit veld is leeg voor beleids gebeurtenissen. |
 | eventDataId | De unieke id van een gebeurtenis. |
 | eventName | ' BeginRequest ' of ' EndRequest '. "BeginRequest" wordt gebruikt voor uitgestelde auditIfNotExists-en deployIfNotExists-evaluaties en wanneer een deployIfNotExists effect een sjabloon implementatie start. Alle andere bewerkingen retour neren ' EndRequest '. |
 | category | Declareert de gebeurtenis in het activiteiten logboek als onderdeel van het beleid. |
@@ -796,7 +796,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hub, volgen de gegevens het schema van het [resource logboek](./resource-logs-schema.md). De volgende tabel bevat een overzicht van de eigenschappen van de bovenstaande schema's aan het schema voor bron Logboeken.
 
 > [!IMPORTANT]
-> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](./resource-logs-append-blobs.md) voor meer informatie over deze indelings wijziging.
+> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](/azure/azure-monitor/platform/resource-logs-blob-format) voor meer informatie over deze indelings wijziging.
 
 
 | Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
@@ -807,7 +807,7 @@ Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Even
 | category | Onderdeel van de naam van de bewerking | Groepen van het bewerkings type-"schrijven"/"verwijderen"/"actie" |
 | resultType | status. waarde | |
 | resultSignature | substatus. waarde | |
-| resultDescription | description |  |
+| resultDescription | beschrijving |  |
 | durationMs | N.v.t. | Altijd 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
@@ -885,3 +885,4 @@ Hieronder volgt een voor beeld van een gebeurtenis die gebruikmaakt van dit sche
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over het activiteiten logboek](platform-logs-overview.md)
 * [Een diagnostische instelling maken om het activiteiten logboek te verzenden naar Log Analytics-werk ruimte, Azure-opslag of event hubs](diagnostic-settings.md)
+

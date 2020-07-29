@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041475"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323703"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Impact analyse met Application Insights
 
@@ -28,7 +28,7 @@ Maar het analyseren van prestaties is slechts een subset van de mogelijkheden va
 ![Scherm afbeeldings conversie per browser](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Uw Application Insights-resource moet pagina weergaven of aangepaste gebeurtenissen bevatten voor het gebruik van het hulp programma impact. [Meer informatie over het instellen van uw app voor het automatisch verzamelen van pagina weergaven met de Application Insights java script SDK](../../azure-monitor/app/javascript.md). Denk er ook aan dat u bij het analyseren van de correlatie, voor beelden van de grootte.
+> Uw Application Insights-resource moet pagina weergaven of aangepaste gebeurtenissen bevatten voor het gebruik van het hulp programma impact. [Meer informatie over het instellen van uw app voor het automatisch verzamelen van pagina weergaven met de Application Insights java script SDK](./javascript.md). Denk er ook aan dat u bij het analyseren van de correlatie, voor beelden van de grootte.
 >
 >
 
@@ -85,5 +85,6 @@ Hoe invloed wordt uiteindelijk berekend, is afhankelijk van het feit of er wordt
     - [Trechters](usage-funnels.md)
     - [Bewaartermijn](usage-retention.md)
     - [Gebruikersstromen](usage-flows.md)
-    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Werkmappen](../platform/workbooks-overview.md)
     - [Gebruikers context toevoegen](usage-send-user-context.md)
+

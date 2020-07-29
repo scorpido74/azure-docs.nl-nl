@@ -4,16 +4,16 @@ description: Application Insights gegevens model voor metrische telemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540006"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320575"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrische telemetrie: Application Insights gegevens model
 
-Er zijn twee soorten metrische telemetriegegevens die worden ondersteund door [Application Insights](../../azure-monitor/app/app-insights-overview.md): single meet en vooraf geaggregeerde metriek. Eén meting is slechts een naam en waarde. Statistische metrische gegevens Hiermee geeft u de minimum-en maximum waarde op van de metriek in het aggregatie-interval en de standaard deviatie van de metriek.
+Er zijn twee soorten metrische telemetriegegevens die worden ondersteund door [Application Insights](./app-insights-overview.md): single meet en vooraf geaggregeerde metriek. Eén meting is slechts een naam en waarde. Statistische metrische gegevens Hiermee geeft u de minimum-en maximum waarde op van de metriek in het aggregatie-interval en de standaard deviatie van de metriek.
 
 Bij een vooraf samengestelde metrische telemetriegegevens wordt ervan uitgegaan dat de aggregatie periode één minuut was.
 
@@ -65,6 +65,7 @@ Metriek met de aangepaste eigenschap `CustomPerfCounter` ingesteld om `true` aan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het gebruik [van Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
+- Meer informatie over het gebruik [van Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](./api-custom-events-metrics.md#trackmetric).
 - Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

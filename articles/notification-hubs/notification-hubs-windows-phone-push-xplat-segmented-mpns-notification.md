@@ -1,5 +1,5 @@
 ---
-title: Push meldingen verzenden naar specifieke Windows-telefoons met behulp van Azure Notification Hubs | Microsoft Docs
+title: Pushmeldingen verzenden naar specifieke Windows-telefoons met Azure Notification Hubs | Microsoft Docs
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushmeldingen verzendt naar specifieke (niet alle) apparaten met Windows Phone 8 of Windows Phone 8.1 die zijn geregistreerd bij de app-back-end.
 services: notification-hubs
 documentationcenter: windows
@@ -17,20 +17,20 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: fd8b1478b6e5112092349eddb5f24d20f6902621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80126947"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520252"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke Windows-telefoons met Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Windows-telefoons met Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 In deze zelfstudie ziet u hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar specifieke apparaten met Windows Phone 8 of Windows Phone 8.1. Als u ontwikkelt voor Windows Phone 8.1 (zonder Silverlight), raadpleegt u de [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)-versie van deze zelfstudie.
 
-U maakt dit scenario mogelijk door een of meer *tags* (of labels) toe te voegen wanneer u een registratie maakt in Notifications Hub. Wanneer meldingen worden verzonden naar een tag, ontvangen alle apparaten die zich hebben geregistreerd voor de tag de melding. Zie [Tags in registraties](notification-hubs-tags-segment-push-message.md)voor meer informatie over tags.
+U maakt dit scenario mogelijk door een of meer *tags* (of labels) toe te voegen wanneer u een registratie maakt in Notifications Hub. Wanneer meldingen worden verzonden naar een tag, ontvangen alle apparaten die zich hebben geregistreerd voor de tag de melding. Zie [Tags in registraties](notification-hubs-tags-segment-push-message.md) voor meer informatie over tags.
 
 > [!NOTE]
 > De Notification Hubs Windows Phone SDK biedt geen ondersteuning voor het gebruik van Windows Push Notification Service (WNS) met Windows Phone 8.1 Silverlight-apps. Als u WNS (in plaats van MPNS) met Windows Phone 8.1 Silverlight-apps wilt gebruiken, raadpleegt u de Notification Hubs - Windows Phone Silverlight tutorial (Notification Hubs: zelfstudie voor Windows Phone Silverlight) waarin REST API's worden gebruikt.
@@ -45,7 +45,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De zelfstudie [Pushmeldingen verzenden naar Windows Phone-apps met Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md) uitvoeren. In deze zelfstudie werkt u de mobiele toepassing zij, zodat u zich kunt registreren voor nieuwscategorieën waarin u geïnteresseerd bent en u alleen voor die categorieën pushmeldingen ontvangt als er belangrijk nieuws is.
+U moet de [Zelfstudie: Pushmeldingen verzenden naar Windows Phone-apps met Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md). In deze zelfstudie werkt u de mobiele toepassing zij, zodat u zich kunt registreren voor nieuwscategorieën waarin u geïnteresseerd bent en u alleen voor die categorieën pushmeldingen ontvangt als er belangrijk nieuws is.
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>Categorieselectie toevoegen aan de mobiele app
 
@@ -332,5 +332,5 @@ In deze zelfstudie hebt u geleerd hoe u pushmeldingen kunt verzenden naar specif
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Windows Phone]: ??

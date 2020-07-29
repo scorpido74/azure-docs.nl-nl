@@ -3,11 +3,12 @@ title: Java-traceer logboeken verkennen in Azure-toepassing Insights
 description: Log4J-of logback-traceringen zoeken in Application Insights
 ms.topic: conceptual
 ms.date: 05/18/2019
-ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 417462da431d8fe2ba878c93c6f4b467bdde2670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657211"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324162"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
 Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
@@ -192,7 +193,6 @@ Uitzonde ringen die via Logboeken worden verzonden, worden in de portal weer geg
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[diagnostic]: ./diagnostic-search.md
 [java]: java-get-started.md
-
 

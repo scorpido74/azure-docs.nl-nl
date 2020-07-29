@@ -5,18 +5,18 @@ description: Meer informatie over het trainen en registreren van een Keras diepe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 61e92d33cf4ec54881ab7794e503cfaeb6397e8d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: ab0b90e08d51602979e31486a1a446731f66e5ba
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320932"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Een Keras-classificatie model trainen en registreren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

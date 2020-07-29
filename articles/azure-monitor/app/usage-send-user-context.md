@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499236"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327902"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Gebruikers context-Id's verzenden om gebruiks ervaringen in Azure-toepassing Insights in te scha kelen
 
@@ -30,7 +30,7 @@ Application Insights moet een ID voor elke gebruiker of sessie hebben om bij te 
 - Sessies: Neem de sessie-ID op.
 
 > [!NOTE]
-> Dit is een geavanceerd artikel met een overzicht van de hand matige stappen voor het bijhouden van gebruikers activiteiten met Application Insights. Bij veel webtoepassingen **kunnen deze stappen niet worden**uitgevoerd, omdat de standaard sdk's aan de server zijde in combi natie met de [client/browser-side java script SDK](../../azure-monitor/app/website-monitoring.md ), vaak voldoende zijn om automatisch gebruikers activiteiten bij te houden. Als u naast de SDK aan de server zijde nog geen [bewaking aan client zijde](../../azure-monitor/app/website-monitoring.md ) hebt geconfigureerd, moet u dat eerst doen en testen om te controleren of de analyse hulpprogramma's van het gebruikers gedrag zoals verwacht worden uitgevoerd.
+> Dit is een geavanceerd artikel met een overzicht van de hand matige stappen voor het bijhouden van gebruikers activiteiten met Application Insights. Bij veel webtoepassingen **kunnen deze stappen niet worden**uitgevoerd, omdat de standaard sdk's aan de server zijde in combi natie met de [client/browser-side java script SDK](./website-monitoring.md), vaak voldoende zijn om automatisch gebruikers activiteiten bij te houden. Als u naast de SDK aan de server zijde nog geen [bewaking aan client zijde](./website-monitoring.md) hebt geconfigureerd, moet u dat eerst doen en testen om te controleren of de analyse hulpprogramma's van het gebruikers gedrag zoals verwacht worden uitgevoerd.
 
 ## <a name="choosing-user-ids"></a>Gebruikers-Id's kiezen
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Bewaartermijn](usage-retention.md)
-    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Werkmappen](../platform/workbooks-overview.md)
+

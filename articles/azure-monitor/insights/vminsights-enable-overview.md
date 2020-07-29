@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539615"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323941"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
 
@@ -43,22 +43,22 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 
 - VS - west-centraal
 - VS - west
-- US - west 2
+- West US 2
 - South Central US
 - VS - oost
 - VS - oost 2
-- US - centraal
+- Central US
 - VS - noord-centraal
 - US Gov AZ
 - US Gov VA
 - Canada - midden
 - Verenigd Koninkrijk Zuid
 - Europa - noord
-- Europa - west
+- Europa -west
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
-- Japan - oost
+- Japan East
 - Australië - oost
 - Australië - zuidoost
 
@@ -67,26 +67,20 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 >
 
 Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van een van de volgende resources:
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure-CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure-portal](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure-portal](../learn/quick-create-workspace.md)
+* [Azure Resource Manager](../platform/template-workspace-configuration.md)
 
-U kunt ook een werk ruimte maken terwijl u controle inschakelt voor één virtuele machine in azure of voor de schaalset van VM'S in de Azure Portal.
+- Azure virtuele machine
+- Schaalset voor virtuele Azure-machines
+- Hybride virtuele machine verbonden met Azure-boog
 
-Als u een schaal scenario wilt instellen dat gebruikmaakt van Azure Policy-, Azure PowerShell-of Azure Resource Manager-sjablonen, moet u de *VMInsights* -oplossing installeren. U kunt dit op een van de volgende manieren doen:
-
-* Gebruik [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace).
-* Selecteer op de pagina dekking van Azure Monitor voor VM's [**beleid**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) de optie **werk ruimte configureren**. 
-
-### <a name="azure-arc-machines"></a>Azure-Arc-machines
-Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld in regio's waar de Arc extension-service beschikbaar is. Gebruikers moeten versie 0,9 of hoger van de Arc-agent uitvoeren om Azure Monitor voor VM's in te scha kelen op hun Arc-servers.
-
-### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
+## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen die Azure Monitor voor VM's ondersteunt. Verderop in dit gedeelte vindt u een volledige lijst met informatie over de belangrijkste en secundaire versie van het Linux-besturings systeem en de ondersteunde kernel-versies.
 
-|Besturingssysteemversie |Prestaties |Maps |
+|Besturingssysteemversie |Prestaties |Kaarten |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
@@ -158,54 +152,40 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 |:--|:--|
 | 9 | 4,9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>De micro soft-afhankelijkheids agent
-
-De functie map in Azure Monitor voor VM's haalt gegevens op uit de micro soft-afhankelijkheids agent. De afhankelijkheids agent is afhankelijk van de Log Analytics-agent voor de verbinding met Log Analytics. Daarom moet op uw systeem de Log Analytics-agent zijn geïnstalleerd en geconfigureerd met de afhankelijkheids agent.
-
-Of u Azure Monitor voor VM's voor één virtuele Azure-machine inschakelt of u de implementatie methode op schaal gebruikt, gebruikt u de Azure VM dependency agent-extensie voor [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) of [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) om de agent te installeren als onderdeel van de ervaring.
-
->[!NOTE]
->De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicetoewijzing oplossing](service-map.md).  
-
-In een hybride omgeving kunt u de afhankelijkheids agent hand matig downloaden en installeren of een geautomatiseerde methode gebruiken.
-
-De volgende tabel beschrijft de verbonden bronnen die de kaart functie ondersteunt in een hybride omgeving.
+## <a name="supported-azure-arc-machines"></a>Ondersteunde Azure-Arc-machines
+Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld in regio's waar de Arc extension-service beschikbaar is. U moet versie 0,9 of hoger van de Arc-agent uitvoeren.
 
 | Verbonden bron | Ondersteund | Beschrijving |
 |:--|:--|:--|
-| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
 | Beheergroep System Center Operations Manager | Nee | |
 
-U kunt de afhankelijkheids agent downloaden van de volgende locaties:
+## <a name="agents"></a>Agents
+Azure Monitor voor VM's moeten de volgende twee agents zijn geïnstalleerd op elke virtuele machine of schaalset voor virtuele machines die moet worden bewaakt. Het installeren van deze agents en het verbinden ervan met de werk ruimte is de enige vereiste voor het onboarden van de resource.
 
-| Bestand | OS | Versie | SHA-256 |
-|:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+- [Log Analytics-agent](../platform/log-analytics-agent.md). Verzamelt gebeurtenissen en prestatie gegevens van de virtuele machine of virtuele-machine schaal sets en levert deze aan de Log Analytics-werk ruimte. Voor de implementatie methoden voor de Log Analytics agent op Azure-resources wordt de VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) en [Linux](../../virtual-machines/extensions/oms-linux.md)gebruikt.
+- Afhankelijkheids agent. Verzamelt gedetecteerde gegevens over processen die worden uitgevoerd op de virtuele machine en de afhankelijkheden van het externe proces, die worden gebruikt door de [toewijzings functie in azure monitor voor VM's](vminsights-maps.md). De afhankelijkheids agent is afhankelijk van de Log Analytics-agent om de bijbehorende gegevens te leveren aan Azure Monitor. Voor de implementatie methoden voor de afhankelijkheids agent op Azure-resources wordt de VM-extensie voor [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) en [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)gebruikt.
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+> [!NOTE]
+> De Log Analytics-agent is dezelfde agent die wordt gebruikt door System Center Operations Manager. Azure Monitor voor VM's kunt agents bewaken die ook worden bewaakt door Operations Manager als deze rechtstreeks zijn verbonden en u de afhankelijkheids agent erop installeert. Agents die zijn verbonden met Azure Monitor via een [beheer groep-verbinding](../tform/../platform/om-agents.md) , kunnen niet worden bewaakt door Azure monitor voor VM's.
 
-Als u de functies in Azure Monitor voor VM's wilt inschakelen en gebruiken, moet u de rol *log Analytics Inzender* hebben. Als u de prestaties, de status en de kaart gegevens wilt bekijken, moet u de rol *bewakings lezer* hebben voor de Azure-VM. De Log Analytics-werk ruimte moet zijn geconfigureerd voor Azure Monitor voor VM's.
+Hier volgen meerdere methoden voor het implementeren van deze agents. 
 
-Zie [werk ruimten beheren](../../azure-monitor/platform/manage-access.md)voor meer informatie over het controleren van de toegang tot een log Analytics-werk ruimte.
+| Methode | Beschrijving |
+|:---|:---|
+| [Azure-portal](vminsights-enable-single-vm.md) | Installeer beide agents op één virtuele machine, virtuele-machine schaalset of hybride virtuele machines die zijn verbonden met Azure Arc. |
+| [Resource Manager-sjablonen](vminsights-enable-powershell.md) | Installeer beide agents met behulp van een van de ondersteunde methoden om een resource manager-sjabloon te implementeren, waaronder CLI en Power shell. |
+| [Azure Policy](vminsights-enable-at-scale-policy.md) | Wijs Azure Policy initiatief toe om automatisch de agents te installeren wanneer een virtuele machine of virtuele-machine schaalset wordt gemaakt. |
+| [Hand matige installatie](vminsights-enable-hybrid-cloud.md) | Installeer de agents in het gast besturingssysteem op computers die buiten Azure worden gehost, inclusief in uw Data Center of andere Cloud omgevingen. |
 
-## <a name="how-to-enable-azure-monitor-for-vms"></a>Azure Monitor voor VM's inschakelen
 
-Schakel Azure Monitor voor VM's in met een van de methoden die in deze tabel worden beschreven:
 
-| Implementatie status | Methode | Beschrijving |
-|------------------|--------|-------------|
-| Eén Azure VM, Azure VMSS of Azure Arc machine | [Inschakelen vanuit de portal](vminsights-enable-single-vm.md) | Selecteer **inzichten** direct in het menu van de Azure Portal. |
-| Meerdere virtuele machines van Azure, Azure VMSS of Azure Arc | [Inschakelen via Azure Policy](vminsights-enable-at-scale-policy.md) | Gebruik Azure Policy om automatisch in te scha kelen wanneer er een virtuele machine of VMSS wordt gemaakt. |
-| | [Azure PowerShell-of Azure Resource Manager-sjablonen inschakelen](vminsights-enable-at-scale-powershell.md) | Gebruik Azure PowerShell-of Azure Resource Manager sjablonen om meerdere virtuele Azure-machines, Azure-Arc-VM'S of Azure VMSS in te scha kelen voor een opgegeven abonnement of resource groep op. |
-| Hybride cloud | [Inschakelen voor de hybride omgeving](vminsights-enable-hybrid-cloud.md) | Implementeren op Vm's of fysieke computers die worden gehost in uw Data Center of in andere Cloud omgevingen. |
 
 ## <a name="management-packs"></a>Management packs
+Wanneer een Log Analytics-werk ruimte is geconfigureerd voor Azure Monitor voor VM's, worden twee Management Packs doorgestuurd naar alle Windows-computers die zijn verbonden met die werk ruimte. De Management Packs heten *micro soft. intelligence packs. ApplicationDependencyMonitor* en *micro soft. intelligence packs. VMInsights* en zijn geschreven naar *%ProgramFiles%\Microsoft monitoring Agent\Agent\Health service State\Management packs \* . 
 
-Wanneer Azure Monitor voor VM's is ingeschakeld en geconfigureerd met een Log Analytics-werk ruimte, wordt een management pack doorgestuurd naar alle Windows-computers die aan die werk ruimte rapporteren. Als u [uw System Center Operations Manager-beheer groep hebt geïntegreerd](../../azure-monitor/platform/om-agents.md) met de log Analytics-werk ruimte, wordt de servicetoewijzing Management Pack van de beheer groep geïmplementeerd naar de Windows-computers die rapporteren aan de beheer groep.  
-
-De management pack heet *micro soft. intelligence packs. ApplicationDependencyMonitor*. De map die is geschreven naar `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` . De gegevens bron die de management pack gebruikt, is `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` .
+De gegevens bron die wordt gebruikt door de *ApplicationDependencyMonitor* -Management Pack is **% Program Files%\Microsoft monitoring Agent\Agent\Health service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. De gegevens bron die wordt gebruikt door de *VMInsights* -Management Pack is *% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiks gegevens
 
@@ -217,8 +197,7 @@ Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-Nu u bewaking hebt ingeschakeld voor uw virtuele machine, zijn bewakings gegevens beschikbaar voor analyse in Azure Monitor voor VM's.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Azure monitor voor VM's prestaties weer geven](vminsights-performance.md)voor meer informatie over het gebruik van de functie voor prestatie bewaking. Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven.
+

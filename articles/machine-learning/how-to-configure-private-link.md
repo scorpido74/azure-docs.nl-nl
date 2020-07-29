@@ -5,17 +5,18 @@ description: Persoonlijke Azure-koppeling gebruiken om veilig toegang te krijgen
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/14/2020
-ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a723c76f04c85bffd7ae4d1d1e8bf5b65ad4619
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031215"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326491"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
@@ -30,6 +31,8 @@ Met de persoonlijke Azure-koppeling kunt u verbinding maken met uw werk ruimte m
 > Persoonlijke Azure-koppeling heeft geen invloed op Azure Control-vlak (beheer bewerkingen), zoals het verwijderen van de werk ruimte of het beheren van reken resources. Bijvoorbeeld maken, bijwerken of verwijderen van een berekenings doel. Deze bewerkingen worden normaal gesp roken uitgevoerd via het open bare Internet.
 >
 > De preview-versie van Azure Machine Learning Compute-exemplaren wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling is ingeschakeld.
+>
+> Er kunnen problemen optreden bij het openen van het persoonlijke eind punt voor uw werk ruimte als u gebruikmaakt van Mozilla Firefox. Dit probleem kan betrekking hebben op DNS via HTTPS in Mozilla. We raden u aan micro soft Edge van Google Chrome als tijdelijke oplossing te gebruiken.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Een werk ruimte maken die gebruikmaakt van een persoonlijk eind punt
 
@@ -54,7 +57,7 @@ Bij het implementeren van een sjabloon moet u de volgende informatie opgeven:
 
 Zodra een sjabloon is verzonden en de inrichting is voltooid, bevat de resource groep die uw werk ruimte bevat drie nieuwe artefact typen die betrekking hebben op persoonlijke koppeling:
 
-* Persoonlijk eind punt
+* Privé-eindpunt
 * Netwerkinterface
 * Privé-DNS-zone
 

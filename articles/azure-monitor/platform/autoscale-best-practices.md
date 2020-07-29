@@ -4,12 +4,12 @@ description: Patronen automatisch schalen in azure voor Web Apps, schaal sets vo
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539530"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327052"
 ---
 # <a name="best-practices-for-autoscale"></a>Aanbevolen procedures voor Automatisch schalen
 Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](../../api-management/api-management-key-concepts.md).
@@ -22,7 +22,7 @@ Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine S
   Een instelling voor automatisch schalen heeft een maximum-, minimum-en standaard waarde van instanties.
 * Met een taak voor automatisch schalen wordt altijd de bijbehorende metriek gelezen om te schalen, en wordt gecontroleerd of de geconfigureerde drempel waarde voor uitschalen of schalen is overschreden. U kunt een lijst met metrische gegevens weer geven waarmee automatisch schalen kan worden geschaald op basis van [Azure monitor automatische schaling van algemene gegevens](autoscale-common-metrics.md).
 * Alle drempel waarden worden berekend op instantie niveau. Bijvoorbeeld: ' uitschalen op basis van één instantie wanneer gemiddeld CPU-> 80% wanneer aantal exemplaren 2 ' is, betekent uitschalen wanneer de gemiddelde CPU voor alle exemplaren groter is dan 80%.
-* Alle fouten voor automatisch schalen worden vastgelegd in het activiteiten logboek. U kunt vervolgens een waarschuwing voor een [activiteiten logboek](./../../azure-monitor/platform/activity-log-alerts.md) configureren, zodat u via E-mail, SMS of webhooks kunt worden gewaarschuwd wanneer er een fout automatisch kan worden geschaald.
+* Alle fouten voor automatisch schalen worden vastgelegd in het activiteiten logboek. U kunt vervolgens een waarschuwing voor een [activiteiten logboek](./activity-log-alerts.md) configureren, zodat u via E-mail, SMS of webhooks kunt worden gewaarschuwd wanneer er een fout automatisch kan worden geschaald.
 * Op dezelfde manier worden alle geslaagde schaal acties in het activiteiten logboek geplaatst. U kunt vervolgens een waarschuwing voor een activiteiten logboek configureren, zodat u via e-mail, SMS of webhooks kunt worden gewaarschuwd wanneer er een actie voor automatisch schalen is uitgevoerd. U kunt ook e-mail berichten of webhook-meldingen configureren om op de hoogte te worden gesteld van geslaagde schaal acties via het tabblad meldingen in de instelling voor automatisch schalen.
 
 ## <a name="autoscale-best-practices"></a>Aanbevolen procedures voor automatisch schalen
@@ -151,3 +151,4 @@ Naast het gebruik van waarschuwingen voor het activiteiten logboek kunt u ook e-
 ## <a name="next-steps"></a>Volgende stappen
 - [Maak een waarschuwing voor een activiteiten logboek om alle bewerkingen voor het automatisch schalen van de engine voor uw abonnement te bewaken.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Een waarschuwing voor een activiteiten logboek maken voor het bewaken van alle mislukte werk schalen voor automatisch schalen in-en uitschalen voor uw abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

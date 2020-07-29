@@ -3,24 +3,24 @@ title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
 description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014062"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323550"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
-Welke functies van uw web-of mobiele app zijn het meest populair? Bereiken uw gebruikers hun doel stellingen met uw app? Vallen ze op bepaalde punten uit en retour neren ze later?  [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) helpt u krachtige inzichten te krijgen in de manier waarop mensen uw app gebruiken. Telkens wanneer u uw app bijwerkt, kunt u bepalen hoe goed het werkt voor gebruikers. Met deze kennis kunt u op gegevens gebaseerde beslissingen nemen over uw volgende ontwikkelings cycli.
+Welke functies van uw web-of mobiele app zijn het meest populair? Bereiken uw gebruikers hun doel stellingen met uw app? Vallen ze op bepaalde punten uit en retour neren ze later?  [Azure-toepassing Insights](./app-insights-overview.md) helpt u krachtige inzichten te krijgen in de manier waarop mensen uw app gebruiken. Telkens wanneer u uw app bijwerkt, kunt u bepalen hoe goed het werkt voor gebruikers. Met deze kennis kunt u op gegevens gebaseerde beslissingen nemen over uw volgende ontwikkelings cycli.
 
 ## <a name="send-telemetry-from-your-app"></a>Telemetrie verzenden vanuit uw app
 
 De beste ervaring wordt verkregen door Application Insights te installeren in de code van uw app-server en op uw webpagina's. De client-en Server onderdelen van uw app sturen telemetrie terug naar de Azure Portal voor analyse.
 
-1. **Server code:** Installeer de juiste module voor uw [ASP.net](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md)of een [andere](../../azure-monitor/app/platforms.md) app.
+1. **Server code:** Installeer de juiste module voor uw [ASP.net](./asp-net.md), [Azure](./app-insights-overview.md), [Java](./java-get-started.md), [Node.js](./nodejs.md)of een [andere](./platforms.md) app.
 
-    * *Wilt u geen server code installeren? U hoeft alleen maar [een Azure-toepassing Insights-resource te maken](../../azure-monitor/app/create-new-resource.md ).*
+    * *Wilt u geen server code installeren? U hoeft alleen maar [een Azure-toepassing Insights-resource te maken](./create-new-resource.md).*
 
 2. **Webpagina code:** Voeg het volgende script toe aan de webpagina voordat deze wordt gesloten ``</head>`` . Vervang de instrumentatie sleutel door de juiste waarde voor uw Application Insights Bron:
     
@@ -36,7 +36,7 @@ De beste ervaring wordt verkregen door Application Insights te installeren in de
 
     Raadpleeg het [naslag artikel over Java script SDK](./javascript.md)voor meer informatie over geavanceerde configuraties voor het controleren van websites.
 
-3. **Mobiele app-code:** Gebruik de App Center SDK voor het verzamelen van gebeurtenissen uit uw app en verzend vervolgens kopieën van deze gebeurtenissen naar Application Insights voor analyse door [deze hand leiding te volgen](../../azure-monitor/learn/mobile-center-quickstart.md).
+3. **Mobiele app-code:** Gebruik de App Center SDK voor het verzamelen van gebeurtenissen uit uw app en verzend vervolgens kopieën van deze gebeurtenissen naar Application Insights voor analyse door [deze hand leiding te volgen](../learn/mobile-center-quickstart.md).
 
 4. **Telemetrie ophalen:** Voer uw project gedurende enkele minuten uit in de foutopsporingsmodus en zoek vervolgens naar resultaten op de Blade overzicht in Application Insights.
 
@@ -103,7 +103,7 @@ Of aan de server zijde:
 
 U kunt eigenschaps waarden aan deze gebeurtenissen koppelen, zodat u de gebeurtenissen kunt filteren of splitsen wanneer u ze in de portal inspecteert. Daarnaast is er een standaardset eigenschappen gekoppeld aan elke gebeurtenis, zoals een anonieme gebruikers-ID, waarmee u de volg orde van de activiteiten van een afzonderlijke gebruiker kunt traceren.
 
-Meer informatie over [aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) en [Eigenschappen](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+Meer informatie over [aangepaste gebeurtenissen](./api-custom-events-metrics.md#trackevent) en [Eigenschappen](./api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Segment-en dobbel stenen gebeurtenissen
 
@@ -121,7 +121,7 @@ Voor deze techniek koppelt u afzonderlijke eigenschaps waarden aan alle telemetr
 
 Filter en Splits uw gegevens op de eigenschaps waarden in de Application Insights Portal, zodat u de verschillende versies kunt vergelijken.
 
-[Stel hiervoor een initialisatie functie voor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)in:
+[Stel hiervoor een initialisatie functie voor telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)in:
 
 **ASP.NET-apps**
 
@@ -175,5 +175,6 @@ Alle nieuwe TelemetryClients voegen automatisch de eigenschaps waarde toe die u 
    - [Trechters](usage-funnels.md)
    - [Bewaartermijn](usage-retention.md)
    - [Gebruikersstromen](usage-flows.md)
-   - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+   - [Werkmappen](../platform/workbooks-overview.md)
    - [Gebruikers context toevoegen](usage-send-user-context.md)
+

@@ -5,15 +5,16 @@ author: mimckitt
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 1e9cce7adc6dbc9062dd133d690fbce92c3190fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7cb2667f8e653b4e71844cd849e691a7c5bcd81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783313"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325437"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemene doel einden
 
@@ -34,9 +35,9 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
 
 - [Dv3 en Dsv3-serie](dv3-dsv3-series.md) Vm's worden uitgevoerd op de tweede generatie Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors in een Hyper-Threaded configuratie, waardoor u een betere waarde hebt voor de meeste werk belastingen Het geheugen is uitgevouwen (van ~ 3,5 GiB/vCPU naar 4 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading. De Dv3-serie heeft niet langer de VM-grootten van het hoge geheugen van de D/dv2-serie, die zijn verplaatst naar de Ev3 voor geoptimaliseerd geheugen [en de Esv3-serie](ev3-esv3-series.md).
 
-- [Dv4 en Dsv4-serie](dv4-dsv4-series.md) Vm's worden uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. Dv4-en Dsv4-Vm's zijn een nieuwe categorie virtuele machines, die afhankelijk zijn van externe schijven en geen tijdelijke lokale opslag bieden. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en biedt een [Intel &reg; Turbo Boost-technologie van 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+- [Dv4 en Dsv4-serie](dv4-dsv4-series.md) De Dv4-en Dsv4-serie worden uitgevoerd op de Intel® Xeon® Platinum 8272CL (Cascade Lake)-processors in een Hyper-Threaded configuratie, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-functie heeft een zeer hoge Turbo klok snelheid van 3,4 GHz.
 
-- [Ddv4 en Ddsv4-serie](ddv4-ddsv4-series.md) Vm's worden uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. Vm's uit de Ddv4-en Ddsv4-serie zijn een nieuwe categorie virtuele machines, waaronder lokale gegevens schijven. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en biedt een [Intel &reg; Turbo Boost-technologie van 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+- [Ddv4 en Ddsv4-serie](ddv4-ddsv4-series.md) De Ddv4-en Ddsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz, [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Ze ondersteunen ook [Intel &reg; diepe leer versterking](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Deze nieuwe VM-grootten hebben 50% grotere lokale opslag, evenals een betere lokale schijf-IOPS voor zowel lees-als schrijf bewerkingen in vergelijking met de [Dv3/Dsv3-](./dv3-dsv3-series.md) grootten met [Gen2-vm's](./linux/generation-2.md).
 
 ## <a name="other-sizes"></a>Andere grootten
 

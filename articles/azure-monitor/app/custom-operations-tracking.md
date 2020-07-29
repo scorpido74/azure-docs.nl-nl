@@ -4,12 +4,12 @@ description: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540040"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320371"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -206,14 +206,14 @@ public async Task Process(BrokeredMessage message)
 In het volgende voor beeld ziet u hoe u de [Azure Storage wachtrij](../../storage/queues/storage-dotnet-how-to-use-queues.md) bewerkingen kunt volgen en telemetrie kunt correleren tussen de producent, de consument en Azure Storage. 
 
 De opslag wachtrij heeft een HTTP-API. Alle aanroepen naar de wachtrij worden bijgehouden door de Application Insights dependency collector voor HTTP-aanvragen.
-Het is standaard geconfigureerd voor ASP.NET-en ASP.NET Core-toepassingen, met andere soorten toepassingen. Raadpleeg ook de [documentatie van console toepassingen](../../azure-monitor/app/console.md)
+Het is standaard geconfigureerd voor ASP.NET-en ASP.NET Core-toepassingen, met andere soorten toepassingen. Raadpleeg ook de [documentatie van console toepassingen](./console.md)
 
 Het is ook mogelijk dat u de Application Insights bewerkings-ID met de ID van de opslag aanvraag wilt correleren. Zie [Azure Storage controleren, diagnosticeren en problemen oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)voor meer informatie over het instellen en ophalen van een aanvraag-client voor aanvragen en een server aanvraag-id.
 
 #### <a name="enqueue"></a>Schedul
 Omdat opslag wachtrijen de HTTP-API ondersteunen, worden alle bewerkingen met de wachtrij automatisch bijgehouden door Application Insights. In veel gevallen moet deze instrumentatie voldoende zijn. Voor het correleren van traceringen aan de gebruiker met producenten traceringen moet u echter een correlatie context door geven aan de hand van de manier waarop we dit doen in het HTTP-protocol voor correlatie. 
 
-In dit voor beeld ziet u hoe u de bewerking kunt volgen `Enqueue` . U kunt:
+In dit voor beeld ziet u hoe u de bewerking kunt volgen `Enqueue` . U kunt het volgende doen:
 
  - **Nieuwe pogingen (indien van toepassing)**: ze hebben allemaal een gemeen schappelijk bovenliggend item dat de `Enqueue` bewerking is. Anders worden ze bijgehouden als onderliggende items van de inkomende aanvraag. Als er meerdere logische aanvragen naar de wachtrij zijn, kan het lastig zijn om te ontdekken welke aanroep een nieuwe poging heeft gedaan.
  - **Correlatie van opslag Logboeken (als en wanneer nodig)**: ze zijn gerelateerd aan Application Insights telemetrie.
@@ -478,8 +478,9 @@ Elke Application Insights bewerking (aanvraag of afhankelijkheid) omvat `Activit
 ## <a name="next-steps"></a>Volgende stappen
 
 - Leer de basis beginselen van de correlatie tussen de [telemetrie](correlation.md) in Application Insights.
-- Bekijk hoe gecorreleerde gegevens over de werking van [trans acties](../../azure-monitor/app/transaction-diagnostics.md) en [toepassings overzicht](../../azure-monitor/app/app-map.md).
-- Zie het [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en het gegevens model.
-- Aangepaste [gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md) rapporteren aan Application Insights.
+- Bekijk hoe gecorreleerde gegevens over de werking van [trans acties](./transaction-diagnostics.md) en [toepassings overzicht](./app-map.md).
+- Zie het [gegevens model](./data-model.md) voor Application Insights typen en het gegevens model.
+- Aangepaste [gebeurtenissen en metrische gegevens](./api-custom-events-metrics.md) rapporteren aan Application Insights.
 - Bekijk de standaard [configuratie](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) voor de verzameling context eigenschappen.
 - Raadpleeg de [Gebruikers handleiding van System. Diagnostics. activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) om te zien hoe we telemetrie correleren.
+

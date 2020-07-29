@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3eefb97c85b3865abbf116b9912dc45f6db8ce8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326865"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Overzicht van inzichten in Azure Monitor
 Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en services. Ze slaan gegevens op in het [Azure monitor-gegevens platform](../platform/data-platform.md) en maken gebruik van andere Azure monitor functies voor analyse en waarschuwingen, maar kunnen ook extra gegevens verzamelen en een unieke gebruikers ervaring bieden in de Azure Portal. Krijg toegang tot inzichten via de sectie **inzichten** van het menu Azure monitor in het Azure Portal.
@@ -28,14 +29,14 @@ Zie [Wat is Application Insights?](../app/app-insights-overview.md).
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 Azure Monitor voor containers bewaakt de prestaties van container werkbelastingen die zijn geïmplementeerd op Azure Container Instances of beheerde Kubernetes-clusters die worden gehost op de Azure Kubernetes-service (AKS). Het bewaken van uw containers is van cruciaal belang, vooral wanneer u een productie cluster op schaal uitvoert met meerdere toepassingen.
 
-Zie [Azure monitor voor containers Overview](../insights/container-insights-overview.md)(Engelstalig).
+Zie [Azure monitor voor containers Overview](./container-insights-overview.md)(Engelstalig).
 
 ![Azure Monitor voor containers](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor voor resource groepen (preview-versie)
 Azure Monitor voor resource groepen helpt bij het sorteren en diagnosticeren van eventuele problemen die uw afzonderlijke bronnen ondervinden, terwijl de status en prestaties van de resource groep als geheel worden geboden.
 
-Zie [resource groepen bewaken met Azure monitor (preview)](../insights/resource-group-insights.md).
+Zie [resource groepen bewaken met Azure monitor (preview)](./resource-group-insights.md).
 
 ![Azure Monitor voor resource groepen](media/insights-overview/resource-group-insights.png)
 
@@ -54,3 +55,4 @@ Zie [Wat is Azure monitor voor VM's?](vminsights-overview.md)
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [Azure monitor-gegevens platform](../platform/data-platform.md) dat wordt gebruikt door inzichten.
 * Meer informatie over de verschillende [gegevens bronnen die worden gebruikt door Azure monitor](../platform/data-sources.md) en de verschillende soorten gegevens die worden verzameld door elk van de inzichten.
+

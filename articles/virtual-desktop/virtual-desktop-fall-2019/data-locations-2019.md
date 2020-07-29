@@ -1,6 +1,6 @@
 ---
-title: 'Gegevens locaties voor virtueel bureau blad van Windows: 2019-Azure'
-description: Een kort overzicht van de locaties waar de gegevens en meta gegevens van Windows virtueel bureau blad zijn opgeslagen.
+title: Gegevens locaties voor virtueel bureau blad van Windows (klassiek)-Azure
+description: Een beknopt overzicht van de locaties waar Windows-gegevens en meta gegevens worden opgeslagen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fa998ddf8225475bbcf657ed9feee951263d2743
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e12e17914374a64ecd2d17a8e73c6ebf20328d9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077582"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270036"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Gegevens locaties voor virtueel bureau blad van Windows
+# <a name="data-locations-for-windows-virtual-desktop-classic"></a>Gegevens locaties voor virtueel bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../data-locations.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../data-locations.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Virtueel bureau blad van Windows is momenteel beschikbaar voor alle geografische locaties. In eerste instantie kunnen meta gegevens van de service alleen worden opgeslagen in de Geografie van Verenigde Staten (Verenigde Staten). Beheerders kunnen de locatie kiezen voor het opslaan van gebruikers gegevens wanneer ze de virtuele machines van de hostgroep en gekoppelde services, zoals bestands servers, maken. Meer informatie over Azure-geografi op de [Azure Data Center-kaart](https://azuredatacentermap.azurewebsites.net/).
 

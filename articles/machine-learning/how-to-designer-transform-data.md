@@ -5,17 +5,17 @@ description: Meer informatie over het transformeren van gegevens in Azure Machin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: 68ed1b83b1e82daa9c4578a6b3bec24792a8268d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203795"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326984"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Gegevens transformeren in Azure Machine Learning Designer (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,6 +32,8 @@ In dit artikel leert u het volgende:
 
 Deze procedure is een vereiste voor het artikel over het opnieuw [trainen van Designer-modellen](how-to-retrain-designer.md) . In dat artikel leert u hoe u de getransformeerde gegevens sets kunt gebruiken om meerdere modellen met pijplijn parameters te trainen.
 
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
+
 ## <a name="transform-a-dataset"></a>Een gegevensset transformeren
 
 In deze sectie vindt u informatie over het importeren van de voor beeld-gegevensset en het splitsen van de gegevens in de data sets Verenigde Staten en niet-Amerikaanse. Zie [gegevens importeren](how-to-designer-import-data.md)voor meer informatie over het importeren van uw eigen gegevens in de ontwerp functie.
@@ -40,7 +42,7 @@ In deze sectie vindt u informatie over het importeren van de voor beeld-gegevens
 
 Gebruik de volgende stappen om de voor beeld-gegevensset te importeren.
 
-1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waar u mee wilt werken.
+1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waarmee u wilt werken.
 
 1. Ga naar de ontwerp functie. Selecteer **eenvoudig te gebruiken-modules voor prebuild** om een nieuwe pijp lijn te maken.
 

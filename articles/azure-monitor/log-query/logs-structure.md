@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e36a21e9dbab6f9bf814cdeb86f175ded38ea8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516189"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327290"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor-logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
@@ -89,4 +89,5 @@ Elke tabel in Azure Monitor logboeken heeft een eigen schema, maar er zijn stand
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [het gebruik van log Analytics om Zoek opdrachten in Logboeken te maken en te bewerken](./log-query-overview.md).
-- Bekijk een [zelf studie over het schrijven van query's](../log-query/get-started-queries.md) met behulp van de nieuwe query taal.
+- Bekijk een [zelf studie over het schrijven van query's](./get-started-queries.md) met behulp van de nieuwe query taal.
+

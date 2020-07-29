@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b5de26afceb1127b42c937f1cb1005a660881d4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355842"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273419"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Configuratie van op SAML gebaseerde SSO-app automatiseren met Microsoft Graph-API
 
@@ -69,7 +70,7 @@ Toepassingen in de Azure AD-toepassings galerie hebben elk een [toepassings sjab
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -128,7 +129,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 
 <!-- {
@@ -209,7 +210,7 @@ Content-type: servicePrincipal/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -246,7 +247,7 @@ Content-type: applications/json
     ]    
 }
 ```
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -314,7 +315,7 @@ Content-type: serviceprincipals/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -335,7 +336,7 @@ Naast de basis claims configureert u de volgende claims voor Azure AD voor het v
 | `https://aws.amazon.com/SAML/Attributes/Role` | assignedroles| 
 | `https://aws.amazon.com/SAML/Attributes/RoleSessionName` | userPrincipalName |
 | `https://aws.amazon.com/SAML/Attributes/SessionDuration` | "900" |
-| rolls | assignedroles |
+| rollen | assignedroles |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | userPrincipalName |
 
 Zie voor meer informatie [claims aanpassen die zijn verzonden in token](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
@@ -392,7 +393,7 @@ Content-type: claimsMappingPolicies/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -434,7 +435,7 @@ Content-type: claimsMappingPolicies/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -550,7 +551,7 @@ Content-type: servicePrincipals/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -580,7 +581,7 @@ Content-type: servicePrincipals/json
 }
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -595,12 +596,12 @@ HTTP/1.1 204
 
 Wijs de volgende gebruiker toe aan de Service-Principal en wijs de AWS_Role1 toe. 
 
-| Name  | Id  |
+| Naam  | Id  |
 |---------|---------|
 | Gebruikers-ID (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Type (principalType) | Gebruiker |
 | App-functie-ID (appRoleId) | 454dc4c2-8176-498e-99df-8c4efcde41ef |
-| servicePrincipalID (resourceId) | 515f62cb-d18a-4dca-bec3-bb0bf31deeea |
+| servicePrincipalID (resourceId) | f47a6776-bca7-4f2e-bc6c-eec59d058e3e |
 
 #### <a name="request"></a>Aanvraag
 
@@ -617,10 +618,10 @@ Content-type: appRoleAssignments/json
   "principalId": "6cad4079-4e79-4a3f-9efb-ea30a14bdb26",
   "principalType": "User",
   "appRoleId":"454dc4c2-8176-498e-99df-8c4efcde41ef",
-  "resourceId":"515f62cb-d18a-4dca-bec3-bb0bf31deeea"
+  "resourceId":"f47a6776-bca7-4f2e-bc6c-eec59d058e3e"
 }
 ```
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 <!-- {
   "blockType": "response",
@@ -638,7 +639,7 @@ Content-type: appRoleAssignments/json
     "principalId": "6cad4079-4e79-4a3f-9efb-ea30a14bdb26",
     "principalType": "User",
     "resourceDisplayName": "AWS API Created",
-    "resourceId": "515f62cb-d18a-4dca-bec3-bb0bf31deeea"
+    "resourceId": "f47a6776-bca7-4f2e-bc6c-eec59d058e3e"
 }
 ```
 

@@ -5,17 +5,18 @@ description: Meer informatie over het Toep assen van aanbevolen procedures voor 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206338"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320201"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Differentiële privacy in Azure Machine Learning gebruiken (preview-versie)
 
@@ -30,7 +31,7 @@ Differentiële privacy is de Gold-Standard-definitie van privacy. Systemen die v
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+- Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>WhiteNoise-pakketten installeren
@@ -148,12 +149,12 @@ U kunt de bibliotheek gebruiken voor het opstellen van complexere analyse grafie
 
 | statistieken    | Mechanismen | Hulpprogramma's  |
 | ------------- |------------|------------|
-| Count         | Gaussiaans   | Omgezet       |
+| Aantal         | Gaussiaans   | Omgezet       |
 | Histogram     | Geometrisch  | MSS   |
 | Gemiddelde          | Laplace    | Digitaliseren   |
 | Quantiles     |            | Filteren     |
 | Som           |            | Toerekening |
-| Variantie/covariantie |      | Transformatie  |
+| Variantie/covariantie |      | Transformeren  |
 
 Raadpleeg de [Basic-notebook voor gegevens analyse](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) voor meer informatie.
 

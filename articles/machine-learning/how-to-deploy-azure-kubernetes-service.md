@@ -5,16 +5,18 @@ description: Meer informatie over het implementeren van uw Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 16465ff823fab1b13f43aec33cb41f9b26b5c054
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392553"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325879"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,6 +37,11 @@ Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AK
 
 > [!IMPORTANT]
 > Het maken of verzenden van een bijlage is een eenmalige taak. Zodra een AKS-cluster is verbonden met de werk ruimte, kunt u het gebruiken voor implementaties. U kunt het AKS-cluster loskoppelen of verwijderen als u het niet meer nodig hebt. Zodra de verbinding is verbroken of verwijderd, kunt u niet meer implementeren naar het cluster.
+
+> [!IMPORTANT]
+> Het wordt ten zeerste aanbevolen om lokaal fouten op te sporen voordat u de webservice implementeert, voor meer informatie. Raadpleeg [lokaal fouten opsporen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> U kunt ook verwijzen naar Azure Machine Learning- [implementeren naar lokale notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate server migratie
 description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure Migrate server migratie om machines te migreren.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224125"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321221"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
@@ -80,7 +80,7 @@ Nee. Azure Migrate ondersteunt alleen migratie naar Managed disks (Standard-HDD 
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hoeveel Vm's kan ik op één keer repliceren met behulp van migratie zonder agent?
 
-Op dit moment kunt u 100 Vm's per exemplaar van vCenter Server tegelijk migreren. Migreer in batches van tien Vm's.
+Op dit moment kunt u 300 Vm's per exemplaar van vCenter Server tegelijk migreren. Migreer in batches van tien Vm's.
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hoe kan ik beperking van de replicatie in het gebruik van Azure Migrate apparaat voor VMware-replicatie zonder agent?  
 
@@ -106,7 +106,7 @@ Machines migreren door ze te behandelen als fysieke servers is handig in een aan
 
 ## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Ik heb twee (of meer) apparaten geïmplementeerd om Vm's in mijn vCenter Server te detecteren. Als ik de Vm's echter probeer te migreren, zie ik alleen Vm's die overeenkomen met een van de apparaten.
 
-Dit kan een goed gebruiks voorbeeld zijn, maar dit wordt momenteel niet ondersteund. Het implementeren van twee (of meer) apparaten om dezelfde set virtuele machines te detecteren, veroorzaakt een service probleem waarbij het eigendom van de virtuele machine tussen de twee apparaten kan scha kelen. Dit is de reden waarom er Vm's worden weer gegeven en weer gegeven. In dergelijke gevallen moet u één apparaat verwijderen en een harde vernieuwing doen om het probleem op te lossen.
+Als er meerdere toestellen zijn ingesteld, is het vereist dat er geen overlap is tussen de virtuele machines op de opgegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Heb ik VMware vCenter nodig voor het migreren van virtuele VMware-machines?
 Als u [virtuele VMware-machines wilt migreren](server-migrate-overview.md) met behulp van een VMware-agent of een agentloze migratie, moeten ESXi-hosts waarop vm's zich bevinden, worden beheerd door vCenter Server. Als u niet beschikt over vCenter Server, kunt u virtuele VMware-machines migreren door ze te migreren als fysieke servers. [Meer informatie](migrate-support-matrix-physical-migration.md).

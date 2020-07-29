@@ -8,15 +8,15 @@ ms.author: larryfr
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 06/17/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, has-adal-ref
+ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326950"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ De meeste voor beelden in de documentatie en voor beelden gebruiken interactieve
     ws = Workspace.from_config()
     ```
 
-    De `from_config()` functie zoekt naar een JSON-bestand met de verbindings gegevens van de werk ruimte.
+    De functie `from_config()` zoekt naar een JSON-bestand met de verbindingsgegevens van de werkruimte.
 
 * Met de `Workspace` constructor om abonnements-, resource groep-en werkruimte gegevens op te geven, wordt u ook gevraagd om interactieve verificatie uit te voeren.
 
@@ -328,7 +328,7 @@ Zie [een client maken voor een model dat is geïmplementeerd als een webservice]
 
 ### <a name="token-based-web-service-authentication"></a>Verificatie op basis van tokens-based web-service
 
-Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers een Azure Machine Learning JSON Web Token aan de webservice aanbieden om deze te openen. Het token verloopt na een opgegeven tijds kader en moet worden vernieuwd om aanroepen voort te zetten.
+Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers een Azure Machine Learning JSON Web Token aan de webservice aanbieden om deze te openen. Het token verloopt na bepaalde tijd, en moet worden vernieuwd om aanroepen te kunnen blijven doen.
 
 * Token verificatie is **standaard uitgeschakeld** wanneer u implementeert in azure Kubernetes service.
 * Verificatie van tokens **wordt niet ondersteund** wanneer u implementeert in azure container instances.
@@ -370,7 +370,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> U moet een nieuw token aanvragen na de tijd van de token `refresh_by` . Als u tokens wilt vernieuwen buiten de python-SDK, kunt u het beste de REST API met Service-Principal-verificatie gebruiken om de oproep periodiek `service.get_token()` uit te voeren, zoals eerder is besproken.
+> U moet een nieuw token aanvragen nadat de `refresh_by`-tijd van het token is verstreken. Als u tokens wilt vernieuwen buiten de python-SDK, kunt u het beste de REST API met Service-Principal-verificatie gebruiken om de oproep periodiek `service.get_token()` uit te voeren, zoals eerder is besproken.
 >
 > We raden u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster.
 >

@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage, C#-Speech Service'
+title: 'Quickstart: Spraak herkennen die is opgeslagen in blobopslag, C# - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 72e9f6b0e1e29c48f2d8192bad1cb144d2836077
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: b1a0b7325b4fae898f69b6b75523d74964166b6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544092"
 ---
-Als u liever direct aan de slag gaat, kunt u alle <a href="https://aka.ms/speech/github-csharp">Speech SDK C#</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-csharp">C#-voorbeelden van de Speech SDK</a> op GitHub bekijken of downloaden. 

@@ -1,6 +1,5 @@
 ---
-title: Logboek registratie van webservice inschakelen
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): logboek registratie van webservice inschakelen-Azure'
 description: Meer informatie over het inschakelen van logboek registratie voor Machine Learning Studio (klassieke) webservices. Logboek registratie biedt aanvullende informatie over het oplossen van de Api's.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705828"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326236"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Logboek registratie inschakelen voor Azure Machine Learning Studio (klassieke) webservices
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Dit document bevat informatie over de logboek registratie van Machine Learning Studio (klassieke) webservices. Logboek registratie biedt aanvullende informatie, behalve een fout nummer en een bericht, waarmee u uw aanroepen naar de Machine Learning Studio (klassieke) Api's kunt oplossen.  
 
@@ -50,7 +52,7 @@ U schakelt logboek registratie in via de [Web Services-portal van Azure machine 
 
    1. Ga in het [Azure Portal](https://portal.azure.com)naar het opslag account dat is gekoppeld aan de webservice.
 
-   2. Klik onder **Blob Service** op **Containers**.
+   2. Klik onder **BLOB-service**op **containers**.
 
    3. Als de container **ml-diagnostische gegevens** niet aanwezig is, klikt u op **+ container**, geeft u de container de naam ' ml-Diagnostics ' en selecteert u het **toegangs type** als ' BLOB '. Klik op **OK**.
 

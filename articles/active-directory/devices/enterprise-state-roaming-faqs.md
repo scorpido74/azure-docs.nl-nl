@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672380"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274082"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Veelgestelde vragen over instellingen en gegevensroaming
 
@@ -25,18 +26,18 @@ In dit artikel vindt u antwoorden op enkele vragen die beheerders kunnen hebben 
 
 **Windows-instellingen**: de PC-instellingen die zijn ingebouwd in het Windows-besturings systeem. Over het algemeen zijn dit instellingen die uw PC personaliseren en bevatten de volgende algemene categorieën:
 
-* *Theme*, met functies zoals bureaublad thema en taak balk instellingen.
+* *Thema*, met functies zoals het bureaubladthema en taakbalkinstellingen.
 * *Instellingen voor Internet Explorer*, inclusief onlangs geopende tabbladen en favorieten.
 * *Micro soft Edge-browser instellingen*, zoals Favorieten en de Lees lijst.
 * *Wacht woorden*, waaronder Internet wachtwoorden, Wi-Fi-profielen en anderen.
-* *Taal voorkeuren*, waaronder instellingen voor toetsenbord indelingen, systeem taal, datum en tijd, enzovoort.
-* *Toegankelijkheids functies*, zoals een thema met een hoog contrast, Verteller en vergroot glas.
-* *Andere Windows-instellingen*, zoals muis instellingen.
+* *Taalvoorkeuren*, met onder meer instellingen voor toetsenbordindelingen, systeemtaal en datum en tijd.
+* *Toegankelijkheidsfuncties*, zoals thema met een hoog contrast, Verteller en vergrootglas.
+* *Andere Windows-instellingen*, zoals muisinstellingen.
 
 > [!NOTE]
 > Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
-**Toepassings gegevens**: universele Windows-apps kunnen instellingen gegevens schrijven naar een zwervende map en alle gegevens die naar deze map worden geschreven, worden automatisch gesynchroniseerd. Het is aan te melden dat een app door de ontwikkelaar van de app kan worden ontworpen om gebruik te maken van deze mogelijkheid. Voor meer informatie over het ontwikkelen van een universele Windows-app die gebruikmaakt van roaming, raadpleegt u de [Opslag-API van AppData](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) en de [Windows 8 AppData-blog voor ontwikkel aars](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Toepassings gegevens**: universele Windows-apps kunnen instellingen gegevens schrijven naar een zwervende map en alle gegevens die naar deze map worden geschreven, worden automatisch gesynchroniseerd. Het is aan te melden dat een app door de ontwikkelaar van de app kan worden ontworpen om gebruik te maken van deze mogelijkheid. Voor meer informatie over het ontwikkelen van een universele Windows-app die gebruikmaakt van roaming, raadpleegt u de [Opslag-API van AppData](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) en de [Windows 8 AppData-blog voor ontwikkel aars](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Welk account wordt gebruikt voor de synchronisatie van instellingen?
 

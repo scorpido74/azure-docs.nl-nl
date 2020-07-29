@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505122"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325590"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitoring REST API-overzicht
 
@@ -733,7 +733,8 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk het [overzicht van bewaking](../../azure-monitor/overview.md).
+* Bekijk het [overzicht van bewaking](../overview.md).
 * Bekijk de [ondersteunde metrische gegevens met Azure monitor](metrics-supported.md).
 * Raadpleeg de [rest API-naslag informatie over Microsoft Azure controle](/rest/api/monitor/).
 * Bekijk de [Azure Management Library](/previous-versions/azure/reference/mt417623(v=azure.100)).
+

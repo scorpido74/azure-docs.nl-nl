@@ -8,19 +8,19 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 530ddf7af5b95cfec948270affbd13b6d61d08ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323397"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Gebruik en geschatte kosten in Azure Monitor bewaken
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u het gebruik en de geschatte kosten kunt weer geven voor meerdere Azure-bewakings functies. Verwante artikelen voor specifieke onderdelen van Azure Monitor zijn onder andere:
 > - [Gebruik en kosten beheren met Azure monitor logboeken](manage-cost-storage.md) beschrijft hoe u uw kosten kunt bepalen door de Bewaar periode van uw gegevens te wijzigen en hoe u uw gegevens gebruik kunt analyseren en waarschuwen.
-> - [Gebruik en kosten beheren voor Application Insights](../../azure-monitor/app/pricing.md) beschrijft hoe u het gebruik van gegevens in Application Insights kunt analyseren.
+> - [Gebruik en kosten beheren voor Application Insights](../app/pricing.md) beschrijft hoe u het gebruik van gegevens in Application Insights kunt analyseren.
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Monitor prijs model
 
@@ -96,3 +96,4 @@ Afhankelijk van het aantal knoop punten van de suite die uw organisatie heeft aa
 > [!WARNING]
 > Als uw organisatie actuele Microsoft Operations Management Suite E1 en E2 heeft, is het meestal het beste om uw Log Analytics-werk ruimten in de prijs categorie ' per knoop punt (OMS) ' en uw Application Insights resources in de prijs categorie onderneming te blijven gebruiken. 
 >
+

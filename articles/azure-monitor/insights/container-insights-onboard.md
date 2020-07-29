@@ -3,12 +3,12 @@ title: Azure Monitor inschakelen voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt zien hoe uw container presteert en welke problemen met betrekking tot de prestaties zijn geïdentificeerd.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499032"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320303"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -28,7 +28,7 @@ U kunt Azure Monitor voor containers inschakelen voor een nieuwe implementatie o
 - Azure Portal
 - Azure PowerShell
 - De Azure CLI
-- [Terraform en AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- [Terraform en AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -131,3 +131,4 @@ Als u Azure Monitor voor containers wilt inschakelen, gebruikt u een van de meth
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u bewaking hebt ingeschakeld, kunt u beginnen met het analyseren van de prestaties van uw Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS), Azure Stack of een andere omgeving. Zie [Kubernetes-cluster prestaties weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor voor containers.
+

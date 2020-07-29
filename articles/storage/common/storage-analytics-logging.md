@@ -5,17 +5,18 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 061c7f6a45b8667b7fd03d62bee67c695bec5e68
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83675917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276785"
 ---
-# <a name="azure-storage-analytics-logging"></a>Azure Storage-analyselogboeken
+# <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-logboek registratie
 
 Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
 
@@ -63,7 +64,7 @@ Als u een groot aantal logboek gegevens met meerdere bestanden per uur hebt, kun
 Met de meeste hulpprogram ma's voor opslag navigatie kunt u de meta gegevens van blobs weer geven. u kunt deze informatie ook lezen met behulp van Power shell of via een programma. Het volgende Power shell-fragment is een voor beeld van het filteren van de lijst met logboek-blobs op naam om een tijd op te geven en door meta gegevens om alleen die logboeken te identificeren die **Schrijf** bewerkingen bevatten.  
 
  ```powershell
- Get-AzureStorageBlob -Container '$logs' |  
+ Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
@@ -136,20 +137,20 @@ U kunt de opslag services opgeven die u wilt registreren en de retentie periode 
 
 ### <a name="enable-storage-logging-using-powershell"></a>Logboek registratie van opslag inschakelen met Power shell  
 
- U kunt Power shell op uw lokale machine gebruiken om opslag logboek registratie te configureren in uw opslag account met behulp van de cmdlet **Get-AzureStorageServiceLoggingProperty** van Azure PowerShell om de huidige instellingen op te halen en de cmdlet **set-AzureStorageServiceLoggingProperty** om de huidige instellingen te wijzigen.  
+ U kunt Power shell op uw lokale machine gebruiken om opslag logboek registratie te configureren in uw opslag account met behulp van de cmdlet **Get-AzStorageServiceLoggingProperty** van Azure PowerShell om de huidige instellingen op te halen en de cmdlet **set-AzStorageServiceLoggingProperty** om de huidige instellingen te wijzigen.  
 
  De cmdlets die de logboek registratie van opslag regelen, gebruiken een **LoggingOperations** -para meter die een teken reeks is met een door komma's gescheiden lijst met aanvraag typen die moeten worden geregistreerd. De drie mogelijke aanvraag typen zijn **lezen**, **schrijven**en **verwijderen**. Als u logboek registratie wilt uitschakelen, gebruikt u de waarde **geen** voor de para meter **LoggingOperations** .  
 
  Met de volgende opdracht wordt de logboek registratie voor lees-, schrijf-en verwijder aanvragen in het Queue-service in uw standaard-opslag account met Bewaar termijn ingesteld op vijf dagen:  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Met de volgende opdracht schakelt u de logboek registratie voor de tabel service in uw standaard-opslag account uit:  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
+Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525208"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171653"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -88,7 +88,7 @@ Zie voor informatie over de integratie tussen Azure Active Directory (Azure AD) 
 
 - [Zelf studie: integratie Azure Active Directory met SAP-Cloud voor klant](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Zelf studie: integratie met SAP Cloud platform identiteits verificatie Azure Active Directory](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelf studie: integratie met SAP-Cloud platform Azure Active Directory](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Zelfstudie: Azure Active Directory-integratie met SAP Cloud Platform](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Zelfstudie: Azure Active Directory-integratie met SAP NetWeaver](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Zelfstudie: Azure Active Directory-integratie met SAP Business ByDesign](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Zelf studie: integratie Azure Active Directory met SAP HANA](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
@@ -104,6 +104,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 07/23/2020: de functie [opslaan op SAP Hana large instances is toegevoegd aan een Azure reservation](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) -artikel waarin wordt uitgelegd wat u moet weten voordat u een SAP Hana large instances reservering koopt en hoe u de aankoop kunt doen
 - 07/16/2020: beschrijving van het gebruik van Azure PowerShell voor het installeren van een nieuwe VM-extensie voor SAP in de [implementatie handleiding](deployment-guide.md)
 - 7/04/2020: release van [Azure monitor voor SAP-oplossingen (preview-versie)](./azure-monitor-overview.md)
 - 07/01/2020: minder dure opslag configuratie voorgesteld op basis van Azure Premium Storage burst-functionaliteit in document [SAP Hana opslag configuraties voor virtuele Azure-machines](./hana-vm-operations-storage.md) 

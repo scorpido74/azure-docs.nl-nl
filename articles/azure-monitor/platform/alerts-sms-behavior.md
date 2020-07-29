@@ -7,13 +7,14 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327086"
 ---
-# <a name="sms-alert-behavior-in-action-groups"></a>Gedrag van SMS-waarschuwingen in actie groepen
+# <a name="sms-alert-behavior-in-action-groups"></a>Gedrag van waarschuwingen via sms in actiegroepen
 
 ## <a name="overview"></a>Overzicht 
 Met actie groepen kunt u een lijst met acties configureren. Deze groepen worden gebruikt bij het definiëren van waarschuwingen. controleren of een bepaalde actie groep wordt gewaarschuwd wanneer de waarschuwing wordt geactiveerd. Een van de ondersteunde acties is SMS; SMS-meldingen bieden ondersteuning voor bidirectionele communicatie. Een gebruiker kan reageren op een SMS om:
@@ -29,7 +30,7 @@ Een SMS-ontvanger die is geconfigureerd als onderdeel van een actie groep ontvan
 * De kortenaam van de actie groep waaraan deze waarschuwing is verzonden
 * Titel van de waarschuwing
 
-| REPLY | Description |
+| REPLY | Beschrijving |
 | ----- | ----------- |
 | SCHA`<Action Group Short name>` | Schakelt verdere SM'S uit van de actie groep |
 | KUNT`<Action Group Short name>` | Hiermee schakelt u SMS opnieuw in voor de actie groep |
@@ -43,5 +44,5 @@ Een SMS-ontvanger die is geconfigureerd als onderdeel van een actie groep ontvan
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](alerts-overview.md) en lees hoe u waarschuwingen ontvangt  
 Meer informatie over de [limiet voor SMS-tarieven](alerts-rate-limiting.md)  
-Meer informatie over [actie groepen](../../azure-monitor/platform/action-groups.md)
+Meer informatie over [actie groepen](./action-groups.md)
 

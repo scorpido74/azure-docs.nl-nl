@@ -7,11 +7,16 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Technical Support'
+ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890458"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327681"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Streams van IoT Hub-apparaten (preview-versie)
 
@@ -189,7 +194,7 @@ De installatie maakt gebruik van twee *lokale proxy* Programma's die worden weer
 
 4. De service-Local proxy luistert op een aangewezen poort, in afwachting van nieuwe SSH-verbindingen van de gebruiker (poort 2222 gebruikt in het voor beeld, maar dit kan worden geconfigureerd voor elke andere beschik bare poort). De gebruiker wijst de SSH-client naar de service-lokale Proxy poort op localhost.
 
-### <a name="notes"></a>Notities
+### <a name="notes"></a>Opmerkingen
 
 * De bovenstaande stappen volt ooien een end-to-end-tunnel tussen de SSH-client (rechts) naar de SSH-daemon (aan de linkerkant). Onderdeel van deze end-to-end-connectiviteit is het verzenden van verkeer via een apparaat stroom naar IoT Hub.
 

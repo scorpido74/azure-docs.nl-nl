@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520626"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,6 +33,7 @@ In dit artikel komen de volgende taken aan bod:
 > * Uw deductiescript schrijven.
 > * Een [pijplijn voor machine learning](concept-ml-pipelines.md) maken met ParallelRunStep en batchdeductie uitvoeren op MNIST-testafbeeldingen. 
 > * Een batchdeductie opnieuw verzenden met nieuwe gegevensinvoer en parameters. 
+> * Bekijk de resultaten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -159,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>Het model voorbereiden
@@ -266,17 +265,17 @@ Nu hebt u alles wat u nodig hebt: de gegevensinvoerwaarden, het model, de uitvoe
 
 ### <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
-Geef eerst de afhankelijkheden voor uw script op. Hierdoor kunt u PIP-pakketten installeren en de omgeving configureren. Neem altijd **azureml-core**- en **azureml-dataprep[pandas, fuse]** -pakketten op.
+Geef eerst de afhankelijkheden voor uw script op. Hierdoor kunt u PIP-pakketten installeren en de omgeving configureren.
 
-Als u een aangepaste docker-installatiekopie (user_managed_dependencies = True) gebruikt, installeer dan ook conda.
+Neem altijd **azureml-core** en **azureml-dataset-runtime[pandas, fuse]** op in de lijst met PIP-pakketten. Als u een aangepaste docker-installatiekopie (user_managed_dependencies = True) gebruikt, installeer dan ook conda.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -286,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>De parameters opgeven met ParallelRunConfig
 
-`ParallelRunConfig` is de voornaamste configuratie voor `ParallelRunStep`-exemplaar in de Azure Machine Learning-pijplijn. U gebruikt het om uw script te verpakken en de nodige parameters te configureren, waaronder de volgende:
+`ParallelRunConfig` is de voornaamste configuratie voor `ParallelRunStep`-exemplaar in de Azure Machine Learning-pijplijn. U gebruikt dit om uw script te verpakken en de nodige parameters te configureren, waaronder alle volgende vermeldingen:
 - `entry_script`: Een gebruikersscript als een lokaal bestandspad dat parallel wordt uitgevoerd op meerdere knooppunten. Als `source_directory` aanwezig is, gebruikt dan een relatief pad. Zoniet, gebruik dan een pad dat toegankelijk is op de machine.
 - `mini_batch_size`: De grootte van de mini-batch die is doorgegeven aan een enkele `run()`-aanroep. (optioneel; de standaardwaarde is `10` bestanden voor FileDataset en `1MB` voor TabularDataset.)
     - Voor `FileDataset` is dit het aantal bestanden met een minimumwaarde `1`. U kunt meerdere bestanden combineren in één mini-batch.
@@ -392,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>De resultaten bekijken
+
+De resultaten van de bovenstaande uitvoering worden als uitvoergegevens geschreven naar het gegevensarchief dat is opgegeven in het PipelineData-object, dat in dit geval de naam *inferences* heeft. De resultaten worden opgeslagen in de standaard-blobcontainer. U kunt naar uw opslagaccount navigeren en de resultaten bekijken via Storage Explorer. Het bestandspad is azureml-blobstore-*GUID*/azureml/*RunId*/*uitvoermap*.
+
+U kunt deze gegevens ook downloaden om de resultaten te bekijken. Hieronder ziet u de voorbeeldcode om de eerste tien rijen weer te geven.
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

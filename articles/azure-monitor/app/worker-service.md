@@ -3,12 +3,12 @@ title: Application Insights voor Worker-service-apps (niet-HTTP-apps)
 description: Niet-HTTP-apps van .NET core/. NET bewaken met Azure Monitor Application Insights.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325403"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -353,10 +353,10 @@ Veelgebruikte instellingen in`ApplicationInsightsServiceOptions`
 
 |Instelling | Beschrijving | Standaard
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | true
-|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | true
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | true
-|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
+|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
+|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
+|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
 
@@ -542,7 +542,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gebruik de API](../../azure-monitor/app/api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een gedetailleerde weer gave van de prestaties en het gebruik van uw app.
-* [Houd extra afhankelijkheden bij die niet automatisch worden bijgehouden](../../azure-monitor/app/auto-collect-dependencies.md).
-* [Telemetrie van het automatisch verzamelen van gegevens verrijken of filteren](../../azure-monitor/app/api-filtering-sampling.md).
+* [Gebruik de API](./api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een gedetailleerde weer gave van de prestaties en het gebruik van uw app.
+* [Houd extra afhankelijkheden bij die niet automatisch worden bijgehouden](./auto-collect-dependencies.md).
+* [Telemetrie van het automatisch verzamelen van gegevens verrijken of filteren](./api-filtering-sampling.md).
 * [Afhankelijkheids injectie in ASP.net core](/aspnet/core/fundamentals/dependency-injection).
+
