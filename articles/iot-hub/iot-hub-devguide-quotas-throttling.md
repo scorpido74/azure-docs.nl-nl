@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322955"
+ms.locfileid: "87335559"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -30,9 +30,9 @@ Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. 
 
 De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
 
-### <a name="iot-plug-and-play"></a>IoT Plug en Play
+## <a name="iot-plug-and-play"></a>IoT Plug en Play
 
-Tijdens de open bare preview verzenden IoT Plug en Play-apparaten afzonderlijke berichten per interface, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum, kan toenemen.
+IoT Plug en Play-apparaten verzenden ten minste één telemetrie-bericht voor elke interface, met inbegrip van de hoofdmap, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum kan toenemen.
 
 ## <a name="operation-throttles"></a>Bewerking beperken
 

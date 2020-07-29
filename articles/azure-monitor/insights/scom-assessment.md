@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045686"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326049"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>De omgeving optimaliseren met behulp van System Center Operations Manager-statuscontrole (preview)
 
@@ -203,7 +203,7 @@ Elke aanbeveling bevat richt lijnen over waarom het belang rijk is. Gebruik deze
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Aanbevelingen voor het focus gebied status controleren gebruiken
 
-Voordat u een health check-oplossing in Log Analytics kunt gebruiken, moet u de oplossing hebben geïnstalleerd. Zie [een beheer oplossing installeren](../../azure-monitor/insights/solutions.md)voor meer informatie over het installeren van oplossingen. Nadat deze is geïnstalleerd, kunt u de samen vatting van aanbevelingen bekijken met behulp van de tegel System Center Operations Manager-statuscontrole op de pagina **overzicht** voor uw werk ruimte in de Azure Portal.
+Voordat u een health check-oplossing in Log Analytics kunt gebruiken, moet u de oplossing hebben geïnstalleerd. Zie [een beheer oplossing installeren](./solutions.md)voor meer informatie over het installeren van oplossingen. Nadat deze is geïnstalleerd, kunt u de samen vatting van aanbevelingen bekijken met behulp van de tegel System Center Operations Manager-statuscontrole op de pagina **overzicht** voor uw werk ruimte in de Azure Portal.
 
 Bekijk de samen vatting van de nalevings evaluaties voor uw infra structuur en vervolgens inzoomen op aanbevelingen.
 
@@ -229,7 +229,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
     ```
 
     >[!NOTE]
-    > Als uw werk ruimte is bijgewerkt naar de [nieuwe log Analytics query taal](../../azure-monitor/log-query/log-query-overview.md), wordt de bovenstaande query gewijzigd in het volgende.
+    > Als uw werk ruimte is bijgewerkt naar de [nieuwe log Analytics query taal](../log-query/log-query-overview.md), wordt de bovenstaande query gewijzigd in het volgende.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
     ```
 
     >[!NOTE]
-    > Als uw werk ruimte is bijgewerkt naar de [nieuwe log Analytics query taal](../../azure-monitor/log-query/log-query-overview.md), wordt de bovenstaande query gewijzigd in het volgende.
+    > Als uw werk ruimte is bijgewerkt naar de [nieuwe log Analytics query taal](../log-query/log-query-overview.md), wordt de bovenstaande query gewijzigd in het volgende.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,4 +295,5 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) voor meer informatie over het analyseren van gedetailleerde System Center Operations Manager-statuscontrole gegevens en aanbevelingen.
+- [Zoek logboeken](../log-query/log-query-overview.md) voor meer informatie over het analyseren van gedetailleerde System Center Operations Manager-statuscontrole gegevens en aanbevelingen.
+

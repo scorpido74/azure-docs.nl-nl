@@ -4,12 +4,12 @@ description: Overzicht van waarschuwingen in Azure. Waarschuwingen, klassieke wa
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327120"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371597"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -178,7 +178,7 @@ De pagina waarschuwings Details bevat de volgende secties:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor uw waarschuwings instanties
 
-Voor het gebruik en het beheer van waarschuwings instanties moet de gebruiker beschikken over de ingebouwde RBAC-rollen van de bewaking van de [Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) of [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader). Deze rollen worden met elk Azure Resource Manager bereik ondersteund, van het abonnements niveau tot gedetailleerde toewijzingen op het niveau van een resource. Als een gebruiker bijvoorbeeld alleen toegang voor de bewaking van inzenders voor de virtuele machine heeft `ContosoVM1` , kan die gebruiker alleen waarschuwingen gebruiken en beheren die zijn gegenereerd op `ContosoVM1` .
+Voor het gebruik en het beheer van waarschuwings instanties moet de gebruiker beschikken over de ingebouwde rollen van Azure voor het [bewaken van Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) of [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader). Deze rollen worden met elk Azure Resource Manager bereik ondersteund, van het abonnements niveau tot gedetailleerde toewijzingen op het niveau van een resource. Als een gebruiker bijvoorbeeld alleen toegang voor de bewaking van inzenders voor de virtuele machine heeft `ContosoVM1` , kan die gebruiker alleen waarschuwingen gebruiken en beheren die zijn gegenereerd op `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uw waarschuwings instanties programmatisch beheren
 
@@ -212,4 +212,3 @@ Gebruik de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) 
 - [Uw waarschuwings instanties in azure beheren](https://aka.ms/managing-alert-instances)
 - [Slimme groepen beheren](https://aka.ms/managing-smart-groups)
 - [Meer informatie over prijzen voor Azure-abonnementen](https://azure.microsoft.com/pricing/details/monitor/)
-

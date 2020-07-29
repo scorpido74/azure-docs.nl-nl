@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751637"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371682"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
 
@@ -240,7 +240,7 @@ Schakel ook geavanceerde beveiliging tegen bedreigingen in voor uw Azure Storage
 
 - [Een waarschuwing over logboek gegevens van log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure Security Center bewaking**: Ja
 
@@ -428,7 +428,7 @@ Een efficiënte manier om het risico van onvermoede gebruikers accounts te beper
 
 Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken, de audit logboeken en aanmeldings logboeken verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste waarschuwingen configureren in Log Analytics werk ruimte. Als u verificatie fouten wilt controleren op Azure Storage accounts, kunt u waarschuwingen maken om u te waarschuwen wanneer bepaalde drempel waarden zijn bereikt voor metrische gegevens van de opslag resource. Daarnaast kunt u met behulp van Azure Monitor op anonieme toegang waarschuwen voor opslag accounts met behulp van anonieme verificatie.
 
-- [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -512,7 +512,7 @@ Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitga
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
-**Richt lijnen**: u kunt het gebruik van HTTPS afdwingen door de vereiste beveiligde overdracht voor het opslag account in te scha kelen. Als u deze optie hebt ingeschakeld, worden verbindingen die gebruikmaken van HTTP geweigerd. Daarnaast kunt u Azure Security Center en Azure Policy gebruiken om een veilige overdracht af te dwingen voor uw opslag account.
+**Richt lijnen**: u kunt het gebruik van HTTPS afdwingen door de vereiste beveiligde overdracht voor het opslag account in te scha kelen. Als u deze optie inschakelt, worden verbindingen via HTTP geweigerd. Daarnaast kunt u Azure Security Center en Azure Policy gebruiken om een veilige overdracht af te dwingen voor uw opslag account.
 
 - [Veilige overdracht vereisen in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
 
@@ -534,7 +534,7 @@ Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitga
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via op rollen gebaseerd toegangs beheer (RBAC). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens. 
+**Hulp**: met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via op rollen gebaseerd toegangs beheer (RBAC). Azure Storage definieert een set ingebouwde Azure-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens. 
 
 - [RBAC-rollen toewijzen voor Azure Storage account](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
 
@@ -574,7 +574,7 @@ Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitga
 
 - [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Metrische waarschuwingen voor Azure Storage accounts configureren](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
@@ -689,7 +689,7 @@ Gebruik Advanced Threat Protection voor Azure Storage ook om niet-geautoriseerde
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities: 
 
- - Niet toegestane brontypen 
+ - Niet toegestane resourcetypen 
  - Toegestane brontypen 
 
 Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren van resources binnen een of meer abonnementen. Dit kan helpen bij omgevingen met hoge beveiliging, zoals die met opslag accounts. 
@@ -732,7 +732,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities: 
 
-- Niet toegestane brontypen 
+- Niet toegestane resourcetypen 
 - Toegestane brontypen 
 
 - [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
@@ -785,7 +785,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Storage ' om aangepaste beleids regels te maken om de configuratie van uw opslag account-exemplaren te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities voor Azure Storage account gebruiken, zoals: 
 
-Onbeperkte netwerktoegang tot opslagaccounts controleren  
+Netwerktoegang tot opslagaccounts moet zijn beperkt  
 Advanced Threat Protection implementeren voor opslagaccounts  
 Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources  
 Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld  
@@ -1049,7 +1049,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 - [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-- [Tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 

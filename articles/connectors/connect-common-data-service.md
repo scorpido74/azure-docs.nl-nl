@@ -7,15 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997098"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284112"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Records in Common Data Service maken en beheren met behulp van Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [common data service-connector](https://docs.microsoft.com/connectors/commondataservice/)kunt u geautomatiseerde werk stromen maken waarmee records in uw [common data service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro) -Data Base worden beheerd. Met deze werk stromen kunnen records worden gemaakt, records worden bijgewerkt en andere bewerkingen worden uitgevoerd. U kunt ook gegevens uit uw Common Data Service-data base ophalen en de uitvoer beschikbaar maken voor andere acties die u in uw logische app kunt gebruiken. Wanneer bijvoorbeeld een record wordt bijgewerkt in uw Common Data Service-data base, kunt u een e-mail bericht verzenden met behulp van de Office 365 Outlook-Connector.
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [common data service-connector](/connectors/commondataservice/)kunt u geautomatiseerde werk stromen maken waarmee records in uw [common data service](/powerapps/maker/common-data-service/data-platform-intro) -Data Base worden beheerd. Met deze werk stromen kunnen records worden gemaakt, records worden bijgewerkt en andere bewerkingen worden uitgevoerd. U kunt ook gegevens uit uw Common Data Service-data base ophalen en de uitvoer beschikbaar maken voor andere acties die u in uw logische app kunt gebruiken. Wanneer bijvoorbeeld een record wordt bijgewerkt in uw Common Data Service-data base, kunt u een e-mail bericht verzenden met behulp van de Office 365 Outlook-Connector.
 
 Dit artikel laat zien hoe u een logische app kunt maken waarmee een taak record wordt gemaakt wanneer er een nieuwe lead record wordt aangemaakt.
 
@@ -23,10 +24,10 @@ Dit artikel laat zien hoe u een logische app kunt maken waarmee een taak record 
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [common data service omgeving](https://docs.microsoft.com/power-platform/admin/environments-overview), een ruimte waar uw organisatie Bedrijfs gegevens en een common data service data base opslaat, beheert en deelt. Zie de volgende bronnen voor meer informatie:<p>
+* Een [common data service omgeving](/power-platform/admin/environments-overview), een ruimte waar uw organisatie Bedrijfs gegevens en een common data service data base opslaat, beheert en deelt. Zie de volgende bronnen voor meer informatie:<p>
 
-  * [Meer informatie: aan de slag met Common Data Service](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power platform-overzicht van omgevingen](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [Meer informatie: aan de slag met Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power platform-overzicht van omgevingen](/power-platform/admin/environments-overview)
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) en de logische app van waaruit u toegang wilt krijgen tot de records in uw common data service-data base. Als u uw logische app wilt starten met een Common Data Service trigger, hebt u een lege logische app nodig. Als u niet bekend bent met Azure Logic Apps, raadpleegt u [Quick Start: uw eerste werk stroom maken met behulp van Azure Logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -50,9 +51,9 @@ Voor dit voor beeld voegt u de trigger Common Data Service toe die wordt geactiv
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Omgeving** | Yes | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](https://docs.microsoft.com/power-platform/admin/environments-overview)voor meer informatie. |
-   | **Naam van entiteit** | Yes | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
-   | **Bereik** | Yes | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
+   | **Omgeving** | Ja | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](/power-platform/admin/environments-overview)voor meer informatie. |
+   | **Naam van entiteit** | Ja | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
+   | **Bereik** | Ja | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service actie toevoegen
@@ -71,8 +72,8 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Organisatie naam** | Yes | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
-   | **Naam van entiteit** | Yes | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
+   | **Naam van organisatie** | Ja | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
+   | **Naam van entiteit** | Ja | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
    | **Onderwerp** | Ja, op basis van de entiteit die in dit voor beeld is geselecteerd | Een korte beschrijving van de doel stelling voor deze taak |
    ||||
 
@@ -86,7 +87,7 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
       ![Trigger uitvoer selecteren voor gebruik in taak record](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Uitvoer activeren | Description |
+      | Uitvoer activeren | Beschrijving |
       |----------------|-------------|
       | **Voornaam** | De voor naam van de lead record die moet worden gebruikt als de primaire contact persoon in de taak record |
       | **Achternaam** | De achternaam van de lead record die moet worden gebruikt als de primaire contact persoon in de taak record |
@@ -125,7 +126,7 @@ Voor acties die records retour neren, zoals de actie **records weer** geven, kun
 
    ![ODATA-filter query voor het filteren van records invoeren](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-`$filter`Zie [common data service-filter resultaten](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)voor meer informatie over opties voor systeem query's.
+`$filter`Zie [common data service-filter resultaten](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)voor meer informatie over opties voor systeem query's.
 
 ## <a name="list-records-based-on-an-order"></a>Records weer geven op basis van een order
 
@@ -139,7 +140,7 @@ Voor acties die records retour neren, zoals de actie **records lijst** , kunt u 
 
    ![ODATA-filter query voor het ordenen van records invoeren](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-`$orderby`Zie [common data service-order resultaten](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)voor meer informatie over opties voor systeem query's.
+`$orderby`Zie [common data service-order resultaten](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)voor meer informatie over opties voor systeem query's.
 
 ## <a name="field-data-types"></a>Veld gegevens typen
 
@@ -147,7 +148,7 @@ Ongeacht of u hand matig een waarde invoert of een waarde selecteert uit de lijs
 
 In deze tabel worden enkele veld typen en de gegevens typen beschreven die voor deze velden zijn vereist.
 
-| Veld | Gegevenstype | Description |
+| Veld | Gegevenstype | Beschrijving |
 |-------|-----------|-------------|
 | Tekst veld | Eén tekstregel | Vereist een enkele tekst regel of dynamische inhoud met het gegevens type Text, bijvoorbeeld deze eigenschappen: <p><p>- **Beschrijvingen** <br>- **Rubriek** |
 | Veld met gehele getallen | Geheel getal | Vereist een geheel getal of dynamische inhoud met het gegevens type geheel getal, bijvoorbeeld deze eigenschappen: <p><p>- **Percentage voltooid** <br>- **Hebben** |
@@ -165,7 +166,7 @@ Dit voor beeld laat zien hoe met de actie **een nieuwe record maken** een nieuwe
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/commondataservice/)voor technische informatie op basis van de Swagger-beschrijving van de connector, zoals triggers, acties, limieten en andere details.
+Zie de [referentie pagina van de connector](/connectors/commondataservice/)voor technische informatie op basis van de Swagger-beschrijving van de connector, zoals triggers, acties, limieten en andere details.
 
 ## <a name="next-steps"></a>Volgende stappen
 

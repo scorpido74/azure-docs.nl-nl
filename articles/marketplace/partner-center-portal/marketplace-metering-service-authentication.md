@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: e24dcdc2de94fe73f6bb83dcc03bbd1139503784
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120752"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319963"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Verificatie strategieën voor Marketplace-meet service
 
@@ -42,7 +44,7 @@ Zie [Azure Active Directory toegangs tokens](../../active-directory/develop/acce
 
 #### <a name="http-method"></a>HTTP-methode
 
-**Verzenden**
+**POST**
 
 #### <a name="request-url"></a>*Aanvraag-URL*
 
@@ -52,27 +54,27 @@ Zie [Azure Active Directory toegangs tokens](../../active-directory/develop/acce
 
 |  **Parameternaam** |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   True         | De Tenant-ID van de geregistreerde Azure AD-toepassing.   |
+|  `tenantId`         |   Waar         | De Tenant-ID van de geregistreerde Azure AD-toepassing.   |
 | | | |
 
-#### <a name="request-header"></a>*Aanvraag header*
+#### <a name="request-header"></a>*Aanvraagheader*
 
 |  **Headernaam**    |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   True         | Het inhouds type dat is gekoppeld aan de aanvraag. De standaardwaarde is `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Waar         | Het inhouds type dat is gekoppeld aan de aanvraag. De standaardwaarde is `application/x-www-form-urlencoded`.  |
 | | | |
 
-#### <a name="request-body"></a>*Aanvraag tekst*
+#### <a name="request-body"></a>*Aanvraagbody*
 
-|  **Naam van eigenschap**  |  **Vereist**  |  **Beschrijving**          |
+|  **Eigenschapsnaam**  |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | Toekennings type. Gebruik `client_credentials`. |
-|  `Client_id`        |   True         | Client/App-ID die is gekoppeld aan de Azure AD-app.|
-|  `client_secret`    |   True         | Geheim dat is gekoppeld aan de Azure AD-app.  |
-|  `Resource`         |   True         | Doel resource waarvoor het token wordt aangevraagd. Gebruik `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
+|  `Grant_type`       |   Waar         | Toekennings type. Gebruik `client_credentials`. |
+|  `Client_id`        |   Waar         | Client/App-ID die is gekoppeld aan de Azure AD-app.|
+|  `client_secret`    |   Waar         | Geheim dat is gekoppeld aan de Azure AD-app.  |
+|  `Resource`         |   Waar         | Doel resource waarvoor het token wordt aangevraagd. Gebruik `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
 | | | |
 
-#### <a name="response"></a>*Beantwoord*
+#### <a name="response"></a>*Response*
 
 |  **Naam**    |  **Type**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ----------------------  |

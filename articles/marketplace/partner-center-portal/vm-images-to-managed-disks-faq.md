@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 3d64bb176f79a0c15c15e425df18a22c9c4f423e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.openlocfilehash: c9f6d5d2649aff03d4bfb2770ec97053e70027da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319878"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Er worden installatie kopieën van virtuele machines (VM) op Azure Marketplace verplaatst naar Managed Disk Storage
 

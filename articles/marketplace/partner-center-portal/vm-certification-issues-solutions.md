@@ -4,15 +4,15 @@ description: In dit artikel worden veelvoorkomende fout berichten voor VM-instal
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: v-miegge
-ms.author: v-krmall
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120650"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319895"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problemen en oplossingen tijdens de certificering van virtuele machines 
 
@@ -154,7 +154,7 @@ Verzend de aanvraag opnieuw met een grootte die kleiner is dan of gelijk is aan 
 
 Raadpleeg de volgende regels voor beperkingen op de schijf grootte van het besturings systeem. Wanneer u een aanvraag indient, controleert u of de grootte van de besturingssysteem schijf binnen de limiet voor Linux of Windows valt.
 
-|OS|Aanbevolen grootte voor VHD|
+|Besturingssysteem|Aanbevolen grootte voor VHD|
 |---|---|
 |Linux|30 GB tot 1023 GB|
 |Windows|30 GB tot 250 GB|
@@ -180,7 +180,7 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 > [!NOTE]
 > Windows Server 2019 heeft geen verplichte versie vereisten.
 
-|OS|Versie|
+|Besturingssysteem|Versie|
 |---|---|
 |Windows met 2008 R2|6.1.7601.23689|
 |Windows Server 2012|6.2.9200.22099|

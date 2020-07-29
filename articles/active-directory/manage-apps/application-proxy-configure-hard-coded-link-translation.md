@@ -16,13 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764839"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282922"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Hardcoded koppelingen omleiden voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>In code vastgelegde koppelingen omleiden voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy
 
 Azure AD-toepassingsproxy maakt uw on-premises apps beschikbaar voor gebruikers die zich op afstand of op hun eigen apparaten bevinden. Sommige apps zijn echter ontwikkeld met lokale koppelingen die zijn Inge sloten in de HTML. Deze koppelingen werken niet naar behoren wanneer de app op afstand wordt gebruikt. Wanneer u meerdere on-premises toepassingen naar elkaar wijst, verwachten uw gebruikers dat de koppelingen blijven werken wanneer ze niet op kantoor zijn. 
 
@@ -34,11 +35,11 @@ Als u geen aangepaste domeinen in uw Tenant kunt gebruiken, zijn er enkele ander
 > [!NOTE]
 > Koppelings vertalingen worden niet ondersteund voor in code vastgelegde interne Url's die via Java script worden gegenereerd.
 
-**Optie 1: gebruik de Managed browser of micro soft Edge** : deze oplossing is alleen van toepassing als u van plan bent om aan te bevelen of gebruikers toegang tot de toepassing te geven via de intune Managed browser of micro soft Edge-browser. Alle gepubliceerde Url's worden verwerkt. 
+**Optie 1: micro soft Edge gebruiken** : deze oplossing is alleen van toepassing als u van plan bent om aan te bevelen of vereist dat gebruikers toegang tot de toepassing krijgen via de micro soft Edge-browser. Alle gepubliceerde Url's worden verwerkt. 
 
 **Optie 2: de MyApps-extensie gebruiken** : voor deze oplossing moeten gebruikers een browser extensie aan client zijde installeren, maar alle gepubliceerde url's worden verwerkt en werkt met de meeste populaire browsers. 
 
-**Optie 3: gebruik de instelling voor het converteren van koppelingen** : dit is een instelling aan de beheerder zijde die onzichtbaar is voor gebruikers. Er worden echter alleen Url's verwerkt in HTML en CSS.   
+**Optie 3: gebruik de instelling voor het converteren van koppelingen** : dit is een instelling aan de beheerder zijde die onzichtbaar is voor gebruikers. Url's worden echter alleen verwerkt in HTML en CSS.   
 
 Deze drie functies zorgen ervoor dat uw koppelingen werken, ongeacht waar uw gebruikers zich bevinden. Wanneer u apps hebt die rechtstreeks naar interne eind punten of poorten verwijzen, kunt u deze interne Url's toewijzen aan de Url's van de gepubliceerde externe toepassings proxy. 
 
@@ -49,11 +50,11 @@ Deze drie functies zorgen ervoor dat uw koppelingen werken, ongeacht waar uw geb
 > Als de toepassing die u wilt configureren met koppelings omzetting share point is, raadpleegt u [alternatieve toegangs toewijzingen voor share point 2013 configureren](https://technet.microsoft.com/library/cc263208.aspx) voor een andere benadering voor het toewijzen van koppelingen. 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>Optie 1: integratie van Intune Managed Browser en micro soft Edge 
+### <a name="option-1-microsoft-edge-integration"></a>Optie 1: integratie met micro soft Edge 
 
-U kunt de Intune Managed Browser of micro soft Edge gebruiken om uw toepassing en inhoud verder te beveiligen. Als u deze oplossing wilt gebruiken, moet u gebruikers verplichten om toegang te krijgen tot de toepassing via de Intune Managed Browser. Alle interne Url's die zijn gepubliceerd met toepassings proxy, worden herkend door de Managed Browser en omgeleid naar de bijbehorende externe URL. Dit zorgt ervoor dat alle hardcoded interne Url's werken, en als een gebruiker naar de browser gaat en rechtstreeks de interne URL typt, werkt deze zelfs als de gebruiker extern is.  
+U kunt micro soft Edge gebruiken om uw toepassing en inhoud verder te beveiligen. Als u deze oplossing wilt gebruiken, moet u gebruikers verplichten om toegang te krijgen tot de toepassing via micro soft Edge. Alle interne Url's die zijn gepubliceerd met toepassings proxy, worden herkend door Edge en omgeleid naar de bijbehorende externe URL. Dit zorgt ervoor dat alle hardcoded interne Url's werken, en als een gebruiker naar de browser gaat en rechtstreeks de interne URL typt, werkt deze zelfs als de gebruiker extern is.  
 
-Raadpleeg de documentatie van [Managed browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) voor meer informatie over het configureren van deze optie.  
+Zie voor meer informatie, inclusief hoe u deze optie configureert, de [webtoegang beheren door gebruik te maken van Edge voor IOS en Android met Microsoft intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge) documentatie.  
 
 ### <a name="option-2-myapps-browser-extension"></a>Optie 2: browser uitbreiding MyApps 
 
@@ -72,7 +73,7 @@ Wanneer koppelings vertalingen is ingeschakeld, zoekt de Application proxy-servi
 
 ## <a name="how-link-translation-works"></a>De werking van koppelings vertalingen
 
-Na verificatie, wanneer de proxy server de toepassings gegevens door geven aan de gebruiker, scant de toepassings proxy de toepassing op vastgelegde koppelingen en worden deze vervangen door hun respectieve, gepubliceerde externe Url's.
+Na verificatie, wanneer de proxy server de toepassings gegevens door gegeven aan de gebruiker, scant de toepassings proxy de toepassing op in code vastgelegde koppelingen en vervangt deze door hun respectieve, gepubliceerde externe Url's.
 
 Toepassings proxy gaat ervan uit dat toepassingen zijn gecodeerd in UTF-8. Als dat niet het geval is, geeft u het type code ring op in een HTTP-antwoord header, zoals `Content-Type:text/html;charset=utf-8` .
 
@@ -83,10 +84,10 @@ De functie voor het omzetten van koppelingen zoekt alleen naar koppelingen in co
 Er zijn twee algemene typen interne koppelingen in on-premises toepassingen:
 
 - **Relatieve interne koppelingen** die verwijzen naar een gedeelde bron in een lokale bestands structuur, zoals `/claims/claims.html` . Deze koppelingen werken automatisch in apps die zijn gepubliceerd via toepassings proxy en blijven werken met of zonder koppelings conversie. 
-- **Hardcoded interne koppelingen** naar andere on-premises apps zoals `http://expenses` of gepubliceerde bestanden zoals `http://expenses/logo.jpg` . De functie voor het vertalen van koppelingen werkt op hardcoded interne koppelingen en wijzigt deze zodat ze verwijzen naar de externe Url's die externe gebruikers nodig hebben om door te gaan.
+- **Hardcoded interne koppelingen** naar andere on-premises apps zoals `http://expenses` of gepubliceerde bestanden zoals `http://expenses/logo.jpg` . De functie voor het vertalen van koppelingen werkt op in code vastgelegde interne koppelingen en wijzigt ze zodat ze verwijzen naar de externe Url's die externe gebruikers nodig hebben om door te gaan.
 
 De volledige lijst met HTML-code tags die toepassings proxy ondersteunt koppelings vertalingen voor zijn onder andere:
-* a
+* een
 * audio
 * base
 * knop

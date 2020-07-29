@@ -3,16 +3,17 @@ title: Node.js-services bewaken met Azure Application Insights | Microsoft Docs
 description: Prestaties bewaken en problemen detecteren in Node.js-services met Application Insights.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024381"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371614"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) controleert uw back-end-services en-onderdelen na de implementatie, zodat u de prestaties en andere problemen snel kunt ontdekken en analyseren. U kunt Application Insights gebruiken voor Node.js-services die worden gehost in uw Data Center, Azure-Vm's en web-apps, en zelfs in andere open bare Clouds.
+[Application Insights](./app-insights-overview.md) controleert uw back-end-services en-onderdelen na de implementatie, zodat u de prestaties en andere problemen snel kunt ontdekken en analyseren. U kunt Application Insights gebruiken voor Node.js-services die worden gehost in uw Data Center, Azure-Vm's en web-apps, en zelfs in andere open bare Clouds.
 
 Neem de SDK op in de code en stel vervolgens een bijbehorende Application Insights-resource in Azure in om uw bewakingsgegevens te ontvangen, op te slaan en te onderzoeken. Met de SDK worden gegevens naar deze resource verzonden voor verdere analyse en onderzoek.
 
@@ -33,7 +34,7 @@ Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights resource instellen
 
-1. Meld u aan bij [Azure Portal][portal].
+1. Meld u aan bij de [Azure-portal][portal].
 2. [Create an Application Insights resource](create-new-resource.md) (Een Application Insights-resource maken)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> De Node.ja SDK instellen
@@ -80,8 +81,8 @@ Er kan vertraging optreden voordat items worden weergegeven in de portal omdat m
 
 * Ga door met het gebruiken van de toepassing. Neem meer acties om meer telemetrie te genereren.
 * Klik op **Vernieuwen** in de resourceweergave van de portal. Grafieken worden periodiek automatisch gegeneerd, maar als u ze handmatig vernieuwt, worden ze onmiddellijk vernieuwd.
-* Controleer of de [vereiste uitgaande poorten](../../azure-monitor/app/ip-addresses.md) open zijn.
-* Gebruik [Zoeken](../../azure-monitor/app/diagnostic-search.md) om naar specifieke gebeurtenissen te zoeken.
+* Controleer of de [vereiste uitgaande poorten](./ip-addresses.md) open zijn.
+* Gebruik [Zoeken](./diagnostic-search.md) om naar specifieke gebeurtenissen te zoeken.
 * Raadpleeg de [Veelgestelde vragen][FAQ].
 
 ## <a name="basic-usage"></a>Basis gebruik
@@ -216,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient-API
 
-Zie [Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md) voor een volledige beschrijving van de TelemetryClient-API.
+Zie [Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](./api-custom-events-metrics.md) voor een volledige beschrijving van de TelemetryClient-API.
 
 U kunt elke aanvraag, gebeurtenis, metriek of uitzondering traceren met behulp van de Node.js SDK van Application Insights. Het volgende codevoorbeeld toont enkele API's die u kunt gebruiken:
 
@@ -414,10 +415,11 @@ Deze eigenschappen zijn specifiek voor de client, zodat u `appInsights.defaultCl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw telemetrie in de portal bewaken](../../azure-monitor/app/overview-dashboard.md)
-* [Analysequery’s schrijven over uw telemetrie](../../azure-monitor/log-query/get-started-portal.md)
+* [Uw telemetrie in de portal bewaken](./overview-dashboard.md)
+* [Analysequery’s schrijven over uw telemetrie](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
+
