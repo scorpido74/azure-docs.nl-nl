@@ -1,6 +1,5 @@
 ---
-title: REST API fout codes
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): REST API fout codes-Azure'
 description: Deze fout codes kunnen worden geretourneerd door een bewerking op een Azure Machine Learning-webservice.
 keywords: ''
 services: machine-learning
@@ -12,13 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dd736428e6a3a24de382be34904d78af0168081
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84115436"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326270"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klassiek) REST API fout codes
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 De volgende fout codes kunnen worden geretourneerd door een bewerking op een webservice Azure Machine Learning Studio (klassiek).
  

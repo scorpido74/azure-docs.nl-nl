@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073573"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327069"
 ---
 # <a name="application-insights-log-based-metrics"></a>Metrische gegevens op basis van het logboek Application Insights
 
 Met Application Insights metrische gegevens op basis van een logboek kunt u de status van uw bewaakte apps analyseren, krachtige Dash boards maken en waarschuwingen configureren. Er zijn twee soorten metrische gegevens:
 
-* [Metrische gegevens op basis](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) van een logboek achter de scène worden omgezet in [Kusto-query's](/azure/kusto/query/) van opgeslagen gebeurtenissen.
-* [Standaard metrische gegevens](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) worden opgeslagen als vooraf samengestelde tijd reeksen.
+* [Metrische gegevens op basis](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) van een logboek achter de scène worden omgezet in [Kusto-query's](/azure/kusto/query/) van opgeslagen gebeurtenissen.
+* [Standaard metrische gegevens](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) worden opgeslagen als vooraf samengestelde tijd reeksen.
 
 Aangezien *standaard metrische gegevens* vooraf worden geaggregeerd tijdens het verzamelen, hebben ze betere prestaties op het moment van de query. Dit maakt ze een betere keuze voor het maken van Dash boards en in realtime waarschuwingen. De *metrische gegevens op basis van een logboeken* hebben meer dimensies, waardoor ze de superieure optie zijn voor het analyseren van analyses en ad-hoc diagnostiek. Gebruik de [naam ruimte kiezer](metrics-getting-started.md#create-your-first-metric-chart) om te scha kelen tussen op logboek gebaseerde en standaard metrische gegevens in [Metrics Explorer](metrics-getting-started.md).
 
@@ -38,18 +38,18 @@ Wanneer u dezelfde metriek in [Metrics Explorer](metrics-getting-started.md)uitz
 - De geselecteerde dimensie voor **gesplitste grafieken** wordt vertaald naar een extra samenvattings eigenschap. Als u bijvoorbeeld uw grafiek op *locatie*splitst en uitgeeft met een tijd granulatie van 5 minuten, wordt *de component samenvatten* samenvatten *... per bak (tijds tempel, 5 m), locatie*.
 
 > [!NOTE]
-> Als u geen ervaring hebt met de Kusto-query taal, kunt u beginnen met het kopiëren en plakken van Kusto-instructies in het query deel venster Log Analytics zonder dat u wijzigingen hoeft aan te brengen. Klik op **uitvoeren** om de basis grafiek weer te geven. U begint met het maken van de syntaxis van de query taal, maar u kunt nu kleine wijzigingen aanbrengen en de gevolgen van de wijziging bekijken. Het verkennen van uw eigen gegevens is een uitstekende manier om te beginnen met het realiseren van de volledige kracht van [log Analytics](../../azure-monitor/log-query/get-started-portal.md) en [Azure monitor](../../azure-monitor/overview.md).
+> Als u geen ervaring hebt met de Kusto-query taal, kunt u beginnen met het kopiëren en plakken van Kusto-instructies in het query deel venster Log Analytics zonder dat u wijzigingen hoeft aan te brengen. Klik op **uitvoeren** om de basis grafiek weer te geven. U begint met het maken van de syntaxis van de query taal, maar u kunt nu kleine wijzigingen aanbrengen en de gevolgen van de wijziging bekijken. Het verkennen van uw eigen gegevens is een uitstekende manier om te beginnen met het realiseren van de volledige kracht van [log Analytics](../log-query/get-started-portal.md) en [Azure monitor](../overview.md).
 
 ## <a name="availability-metrics"></a>Metrische beschikbaarheids gegevens
 
-Met metrische gegevens in de beschikbaarheids categorie kunt u de status van uw webtoepassing zien, zoals wordt waargenomen door punten over de hele wereld. [Configureer de beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) om alle metrische gegevens uit deze categorie te gebruiken.
+Met metrische gegevens in de beschikbaarheids categorie kunt u de status van uw webtoepassing zien, zoals wordt waargenomen door punten over de hele wereld. [Configureer de beschikbaarheids tests](../app/monitor-web-app-availability.md) om alle metrische gegevens uit deze categorie te gebruiken.
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>Beschik baarheid (availabilityResults/availabilityPercentage)
 De metrische *beschikbaarheids* gegevens tonen het percentage van de webtest-runs waarvoor geen problemen zijn gedetecteerd. De laagst mogelijke waarde is 0, wat aangeeft dat alle uitvoeringen van de webtest zijn mislukt. De waarde van 100 betekent dat alle webtest uitvoeringen de validatie criteria heeft door gegeven.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
-|Percentage|Average|Uitvoerings locatie, naam van test|
+|Percentage|Gemiddeld|Uitvoerings locatie, naam van test|
 
 ```Kusto
 availabilityResults 
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>Duur van beschikbaarheids test (availabilityResults/duur)
 
-De metrische gegevens voor de *beschikbaarheids test* geven aan hoe lang het duurt voordat de webtest wordt uitgevoerd. Voor de [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md)weerspiegelt de metriek de totale uitvoerings tijd van alle stappen.
+De metrische gegevens voor de *beschikbaarheids test* geven aan hoe lang het duurt voordat de webtest wordt uitgevoerd. Voor de [webtests met meerdere stappen](../app/availability-multistep.md)weerspiegelt de metriek de totale uitvoerings tijd van alle stappen.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ availabilityResults
 De metrische gegevens van de browser worden verzameld door de Application Insights java script SDK van echte gebruikers browsers. Ze bieden fantastische inzichten in de ervaring van uw gebruikers met uw web-app. De metrische gegevens van de browser worden doorgaans niet bemonsterd. Dit betekent dat ze een grotere nauw keurigheid van de gebruiks cijfers bieden ten opzichte van metrische gegevens aan de server zijde die kunnen worden schuingetrokken door steek proeven.
 
 > [!NOTE]
-> Als u metrische gegevens voor de browser wilt verzamelen, moet uw toepassing worden geinstrumenteerd met de [Application Insights java script SDK](../../azure-monitor/app/javascript.md).
+> Als u metrische gegevens voor de browser wilt verzamelen, moet uw toepassing worden geinstrumenteerd met de [Application Insights java script SDK](../app/javascript.md).
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Laad tijd van browser pagina (browserTimings/totalDuration)
 
@@ -210,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Uitzonde ringen (uitzonde ringen/aantal)
 
-Telkens wanneer u een uitzonde ring registreert op Application Insights, wordt er een aanroep naar de [methode trackException ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) van de SDK. De metriek uitzonde ringen toont het aantal geregistreerde uitzonde ringen.
+Telkens wanneer u een uitzonde ring registreert op Application Insights, wordt er een aanroep naar de [methode trackException ()](../app/api-custom-events-metrics.md#trackexception) van de SDK. De metriek uitzonde ringen toont het aantal geregistreerde uitzonde ringen.
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
@@ -224,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Mislukte aanvragen (aanvragen/mislukt)
 
-Het aantal bijgehouden server aanvragen dat is gemarkeerd als *mislukt*. Standaard markeert de Application Insights SDK automatisch elke server aanvraag die de 5xx of 4xx van HTTP-antwoorden als een mislukte aanvraag heeft geretourneerd. U kunt deze logica aanpassen door de eigenschap *success* van het aanvraag-telemetrie in een [aangepaste telemetrie-initialisatie functie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)te wijzigen.
+Het aantal bijgehouden server aanvragen dat is gemarkeerd als *mislukt*. Standaard markeert de Application Insights SDK automatisch elke server aanvraag die de 5xx of 4xx van HTTP-antwoorden als een mislukte aanvraag heeft geretourneerd. U kunt deze logica aanpassen door de eigenschap *success* van het aanvraag-telemetrie in een [aangepaste telemetrie-initialisatie functie](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)te wijzigen.
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>Prestatiemeteritems
 
-Gebruik metrische gegevens in de categorie **prestatie meter items** om toegang te krijgen tot [systeem prestatie meter items die door Application Insights zijn verzameld](../../azure-monitor/app/performance-counters.md).
+Gebruik metrische gegevens in de categorie **prestatie meter items** om toegang te krijgen tot [systeem prestatie meter items die door Application Insights zijn verzameld](../app/performance-counters.md).
 
 ### <a name="available-memory-performancecountersavailablememory"></a>Beschikbaar geheugen (Performance Counters/availableMemory)
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

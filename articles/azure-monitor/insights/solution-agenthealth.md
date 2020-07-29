@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 5e7fcde86c9bbf017ac3fca6025a025104b0d864
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081573"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326015"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Status van agent oplossing in Azure Monitor
 De Status van agent oplossing in azure helpt u te begrijpen, voor alle agents die rechtstreeks aan de Log Analytics-werk ruimte rapporteren in Azure Monitor of een System Center Operations Manager beheer groep die is verbonden met Azure Monitor, die niet reageert en geen operationele gegevens verzenden.  U kunt ook bijhouden hoeveel agents er zijn geïmplementeerd en waar deze zich geografisch gezien bevinden. Bovendien kunt u query's uitvoeren om op de hoogte te blijven van de verdeling van agents over Azure, andere cloudomgevingen of on-premises.    
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u deze oplossing implementeert, moet u controleren of u momenteel ondersteunde [Windows-agents](../platform/agent-windows.md) rapporteert aan de log Analytics-werk ruimte of dat u rapporteert aan een [Operations Manager-beheer groep](../../azure-monitor/platform/om-agents.md) die is geïntegreerd met uw werk ruimte.
+Voordat u deze oplossing implementeert, moet u controleren of u momenteel ondersteunde [Windows-agents](../platform/agent-windows.md) rapporteert aan de log Analytics-werk ruimte of dat u rapporteert aan een [Operations Manager-beheer groep](../platform/om-agents.md) die is geïntegreerd met uw werk ruimte.
 
 ## <a name="solution-components"></a>Oplossingsonderdelen
 Deze oplossing bestaat uit de volgende resources die worden toegevoegd aan uw werkruimte en rechtstreeks verbonden agents of verbonden Operations Manager-beheergroepen.
@@ -28,9 +28,9 @@ Als uw System Center Operations Manager-beheer groep is verbonden met een Log An
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack  (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-Zie [Operations Manager koppelen aan Log Analytics](../../azure-monitor/platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
+Zie [Operations Manager koppelen aan Log Analytics](../platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 Voeg de Status van agent oplossing toe aan uw Log Analytics-werk ruimte met behulp van het proces dat wordt beschreven in [oplossingen toevoegen](solutions.md). Er is geen verdere configuratie nodig.
 
 
@@ -40,8 +40,8 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents | Yes | Er worden heartbeat-gebeurtenissen verzameld van direct verbonden Windows-agents.|
-| Beheergroep System Center Operations Manager | Yes | Heartbeat-gebeurtenissen worden elke 60 seconden verzameld van agents die rapporteren aan de beheer groep en vervolgens doorgestuurd naar Azure Monitor. Een directe verbinding van Operations Manager agents naar Azure Monitor is niet vereist. Heartbeat-gebeurtenis gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte.|
+| Windows-agents | Ja | Er worden heartbeat-gebeurtenissen verzameld van direct verbonden Windows-agents.|
+| Beheergroep System Center Operations Manager | Ja | Heartbeat-gebeurtenissen worden elke 60 seconden verzameld van agents die rapporteren aan de beheer groep en vervolgens doorgestuurd naar Azure Monitor. Een directe verbinding van Operations Manager agents naar Azure Monitor is niet vereist. Heartbeat-gebeurtenis gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte.|
 
 ## <a name="using-the-solution"></a>De oplossing gebruiken
 Wanneer u de oplossing toevoegt aan uw Log Analytics-werk ruimte, wordt de tegel **status van agent** toegevoegd aan het dash board. Op deze tegel ziet u het totale aantal agents en het aantal agents dat de afgelopen 24 uur niet heeft gereageerd.<br><br> ![De tegel Status van agent in het dashboard](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -111,3 +111,4 @@ De volgende tabel bevat voorbeelden van zoekopdrachten in logboeken voor records
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [waarschuwingen in azure monitor](../platform/alerts-overview.md) voor meer informatie over het genereren van waarschuwingen uit logboek query's. 
+

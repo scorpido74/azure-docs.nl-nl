@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 69342e59e99dd588b2c2cee9d02af5370ddb3af2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086939"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322870"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Een Apache Storm topologie maken in Java
 
@@ -219,7 +219,7 @@ Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configura
 
 ### <a name="configure-resources"></a>Resources configureren
 
-In het gedeelte resources kunt u niet-code resources toevoegen, zoals configuratie bestanden die nodig zijn voor onderdelen in de topologie. Voor dit voor beeld voegt u de volgende tekst toe aan de `<resources>` sectie van het `pom.xml` bestand. Sla het bestand op en sluit het.
+In het gedeelte resources kunt u niet-code resources toevoegen, zoals configuratie bestanden die nodig zijn voor onderdelen in de topologie. Voor dit voor beeld voegt u de volgende tekst toe aan de `<resources>` sectie van het `pom.xml` bestand. Sla het bestand vervolgens op en sluit het.
 
 ```xml
 <resource>

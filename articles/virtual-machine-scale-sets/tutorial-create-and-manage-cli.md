@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een schaalset voor virtuele Azure-machines maken en beheren
+title: 'Zelfstudie: Een virtuele-Azure-machineschaalset maken en beheren - Azure CLI'
 description: Ontdek hoe u met Azure CLI een schaalset voor virtuele Azure-machines maakt. Leer daarnaast hoe u enkele veelvoorkomende beheertaken uitvoert, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 57b24c7703ac8c0095fa4aaf24b9fbebdac33533
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736438"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503112"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Een virtuele-machineschaalset maken en beheren met Azure CLI
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. In deze zelfstudie leert u het volgende:
@@ -190,12 +190,12 @@ In de volgende tabel worden enkele veelgebruikte VM-grootten gecategoriseerd naa
 
 | Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Algemeen doel](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
-| [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](../virtual-machines/linux/sizes-storage.md)      | Ls                | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
-| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV, NC            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
-| [Hoge prestaties](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. 
+| [Algemeen doel](../virtual-machines/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/sizes-compute.md)   | Fs, F             | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
+| [Geoptimaliseerd geheugen](../virtual-machines/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerde opslag](../virtual-machines/sizes-storage.md)      | Ls                | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
+| [Hoge prestaties](../virtual-machines/sizes-hpc.md) | H, A8-11          | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Beschikbare VM-exemplaargrootten zoeken
 Als u een lijst wilt weergeven met de VM-exemplaargrootten die beschikbaar zijn in een bepaalde regio, gebruikt u de opdracht [az vm list-sizes](/cli/azure/vm).

@@ -3,12 +3,12 @@ title: Docker-toepassingen bewaken in Azure-toepassing Insights | Microsoft Docs
 description: Docker-prestatie meter items, gebeurtenissen en uitzonde ringen kunnen worden weer gegeven op Application Insights, samen met de telemetrie van de apps in de container.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539921"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324417"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-toepassingen in Application Insights bewaken (afgeschaft)
 
@@ -23,15 +23,15 @@ Wanneer u de [Application Insights-installatie kopie](https://hub.docker.com/r/m
 
 * Levenscyclus telemetrie over alle containers die worden uitgevoerd op de host-starten, stoppen, enzovoort.
 * Prestatie meter items voor alle containers. CPU, geheugen, netwerk gebruik en meer.
-* Als u [Application INSIGHTS SDK voor Java hebt geïnstalleerd](../../azure-monitor/app/java-get-started.md) in de apps die worden uitgevoerd in de containers, hebben alle telemetrie van deze apps aanvullende eigenschappen die de container en de hostmachine identificeren. Als er bijvoorbeeld exemplaren van een app worden uitgevoerd op meer dan één host, kunt u eenvoudig uw app-telemetrie filteren op host.
+* Als u [Application INSIGHTS SDK voor Java hebt geïnstalleerd](./java-get-started.md) in de apps die worden uitgevoerd in de containers, hebben alle telemetrie van deze apps aanvullende eigenschappen die de container en de hostmachine identificeren. Als er bijvoorbeeld exemplaren van een app worden uitgevoerd op meer dan één host, kunt u eenvoudig uw app-telemetrie filteren op host.
 
 ## <a name="set-up-your-application-insights-resource"></a>Uw Application Insights resource instellen
 
-1. Meld u aan bij [Microsoft Azure-Portal](https://azure.com) en open de Application Insights resource voor uw app. of [Maak een nieuwe](../../azure-monitor/app/create-new-resource.md ). 
+1. Meld u aan bij [Microsoft Azure-Portal](https://azure.com) en open de Application Insights resource voor uw app. of [Maak een nieuwe](./create-new-resource.md). 
    
-    *Welke resource moet ik gebruiken?* Als de apps die u op uw host uitvoert, zijn ontwikkeld door iemand anders, moet u [een nieuwe Application Insights-resource maken](../../azure-monitor/app/create-new-resource.md ). Hier kunt u de telemetrie weer geven en analyseren. (Selecteer algemeen voor het app-type.)
+    *Welke resource moet ik gebruiken?* Als de apps die u op uw host uitvoert, zijn ontwikkeld door iemand anders, moet u [een nieuwe Application Insights-resource maken](./create-new-resource.md). Hier kunt u de telemetrie weer geven en analyseren. (Selecteer algemeen voor het app-type.)
    
-    Maar als u de ontwikkelaar van de apps bent, hopen we dat u [Application INSIGHTS SDK](../../azure-monitor/app/java-get-started.md) aan elk daarvan hebt toegevoegd. Als ze alle onderdelen van één zakelijke toepassing zijn, kunt u deze allemaal zo configureren dat telemetrie naar één resource wordt verzonden. u gebruikt dezelfde resource voor het weer geven van de gegevens van de docker-levens cyclus en de prestaties. 
+    Maar als u de ontwikkelaar van de apps bent, hopen we dat u [Application INSIGHTS SDK](./java-get-started.md) aan elk daarvan hebt toegevoegd. Als ze alle onderdelen van één zakelijke toepassing zijn, kunt u deze allemaal zo configureren dat telemetrie naar één resource wordt verzonden. u gebruikt dezelfde resource voor het weer geven van de gegevens van de docker-levens cyclus en de prestaties. 
    
     Een derde scenario is dat u de meeste apps hebt ontwikkeld, maar u gebruikt afzonderlijke resources om de telemetrie weer te geven. In dat geval wilt u waarschijnlijk ook een afzonderlijke resource maken voor de docker-gegevens.
 
@@ -54,7 +54,7 @@ Nu u de telemetrie hebt weer gegeven, kunt u de in de container geplaatste app i
 Er is slechts één Application Insights installatie kopie vereist per docker-host. Als uw toepassing is geïmplementeerd op meerdere docker-hosts, herhaalt u de opdracht op elke host.
 
 ## <a name="update-your-app"></a>Uw app bijwerken
-Als uw toepassing is voorzien van de [Application INSIGHTS SDK voor Java](../../azure-monitor/app/java-get-started.md), voegt u de volgende regel toe aan het ApplicationInsights.xml bestand in uw project, onder het `<TelemetryInitializers>` element:
+Als uw toepassing is voorzien van de [Application INSIGHTS SDK voor Java](./java-get-started.md), voegt u de volgende regel toe aan het ApplicationInsights.xml bestand in uw project, onder het `<TelemetryInitializers>` element:
 
 ```xml
 
@@ -73,7 +73,7 @@ U ziet binnenkort gegevens die arriveren vanuit de docker-app, met name als u an
 ### <a name="docker-container-events"></a>Docker-container gebeurtenissen
 ![Hierbij](./media/docker/13.png)
 
-Klik op [zoeken](../../azure-monitor/app/diagnostic-search.md)om afzonderlijke gebeurtenissen te onderzoeken. Zoek en filter om de gewenste gebeurtenissen te vinden. Klik op een gebeurtenis om meer details weer te geven.
+Klik op [zoeken](./diagnostic-search.md)om afzonderlijke gebeurtenissen te onderzoeken. Zoek en filter om de gewenste gebeurtenissen te vinden. Klik op een gebeurtenis om meer details weer te geven.
 
 ### <a name="exceptions-by-container-name"></a>Uitzonde ringen op container naam
 ![Hierbij](./media/docker/14.png)
@@ -90,7 +90,7 @@ Aanvraag-telemetrie die is verzonden vanuit de toepassings instrument met AI SDK
 
 *Hoe kan ik telemetrie ophalen uit de app zelf?*
 
-* Installeer de Application Insights SDK in de app. Meer informatie over: [Java Web apps](../../azure-monitor/app/java-get-started.md), [Windows Web apps](../../azure-monitor/app/asp-net.md).
+* Installeer de Application Insights SDK in de app. Meer informatie over: [Java Web apps](./java-get-started.md), [Windows Web apps](./asp-net.md).
 
 ## <a name="video"></a>Video
 
@@ -98,6 +98,7 @@ Aanvraag-telemetrie die is verzonden vanuit de toepassings instrument met AI SDK
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Application Insights voor Java](../../azure-monitor/app/java-get-started.md)
-* [Application Insights voor Node.js](../../azure-monitor/app/nodejs.md)
-* [Application Insights voor ASP.NET](../../azure-monitor/app/asp-net.md)
+* [Application Insights voor Java](./java-get-started.md)
+* [Application Insights voor Node.js](./nodejs.md)
+* [Application Insights voor ASP.NET](./asp-net.md)
+

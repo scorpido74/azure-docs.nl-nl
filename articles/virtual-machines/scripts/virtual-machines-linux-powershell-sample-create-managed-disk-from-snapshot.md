@@ -1,5 +1,5 @@
 ---
-title: Een beheerde schijf maken op basis van een moment opname-Power shell-voor beeld
+title: Beheerde schijf maken op basis van een momentopname (Linux) - PowerShell-voorbeeld
 description: 'Azure PowerShell-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 services: virtual-machines-linux
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 89ab1a388aa6497e559a1746ee8165ccd8cae1ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2faa98ec21d260e6a7cbdf9eceba24baf4b13c61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501126"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Een beheerde schijf maken met PowerShell op basis van een momentopname
+# <a name="create-a-managed-disk-from-a-snapshot-with-powershell-linux"></a>Een beheerde schijf maken met PowerShell op basis van een momentopname (Linux)
 
 Met dit script maakt u een beheerde schijf op basis van een momentopname. Gebruik het script om een virtuele machine te herstellen op basis van momentopnamen van het besturingssysteem en gegevensschijven. Maak beheerde OS- en gegevensschijven op basis van de respectieve momentopnamen en maak vervolgens een nieuwe virtuele machine door beheerde schijven te koppelen. U kunt ook gegevensschijven van een bestaande virtuele machine herstellen door het koppelen van gegevensschijven die zijn gemaakt op basis van momentopnamen.
 
@@ -34,18 +34,18 @@ Met dit script maakt u een beheerde schijf op basis van een momentopname. Gebrui
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een momentopname. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een momentopname. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | Hiermee worden de eigenschappen van de momentopname opgehaald.  |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Hiermee wordt de schijfconfiguratie gemaakt die voor het maken van de schijf wordt gebruikt. Het bevat de resource-id van momentopname, de locatie (die dezelfde is als de locatie van de bovenliggende momentopname) en het opslagtype.  |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Hiermee maakt u een schijf die de schijfconfiguratie, de schijfnaam en de naam van de resourcegroep als parameters gebruikt. |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | Hiermee worden de eigenschappen van de momentopname opgehaald.  |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Hiermee wordt de schijfconfiguratie gemaakt die voor het maken van de schijf wordt gebruikt. Het bevat de resource-id van momentopname, de locatie (die dezelfde is als de locatie van de bovenliggende momentopname) en het opslagtype.  |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Hiermee maakt u een schijf die de schijfconfiguratie, de schijfnaam en de naam van de resourcegroep als parameters gebruikt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 
-[Een virtuele machine maken van een beheerde schijf](./virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Een virtuele machine maken op basis van een beheerde schijf](./virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
 

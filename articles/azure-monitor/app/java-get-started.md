@@ -3,14 +3,15 @@ title: 'Snelstartgids: analyse van Java-Web-apps met Azure-toepassing Insights'
 description: 'Toepassingsprestaties bewaken met Application Insights voor Java-web-apps. '
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326916"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstartgids: aan de slag met Application Insights in een Java-webproject
 
@@ -25,7 +26,7 @@ Application Insights is een uitbreidbare analyseservice voor webontwikkelaars di
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Een Application Insights-instrumentatiesleutel ophalen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Maak in de Azure Portaleen Application Insights-resource. Stel het toepassingstype in op Java-webtoepassing.
 
 3. Zoek de instrumentatiesleutel van de nieuwe resource. U moet deze sleutel zo dadelijk in de code van uw project plakken.
@@ -131,7 +132,7 @@ De Application Insights-SDK zoekt in deze volgorde naar de sleutel:
 2. Omgevings variabele: APPINSIGHTS_INSTRUMENTATIONKEY
 3. Configuratie bestand: *ApplicationInsights.xml*
 
-U kunt de instrumentatiesleutel ook [instellen in code](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
+U kunt de instrumentatiesleutel ook [instellen in code](./api-custom-events-metrics.md#ikey):
 
 ```java
     String instrumentationKey = "00000000-0000-0000-0000-000000000000";
@@ -307,16 +308,17 @@ Application Insights kan uw website regelmatig testen om te controleren of deze 
 * [Afhankelijkheidsaanroepen bewaken](java-agent.md)
 * [Unix-prestatiemeteritems bewaken](java-collectd.md)
 * Voeg [bewaking toe aan uw webpagina's](javascript.md) om de laadtijden, AJAX-aanroepen en browseruitzonderingen te bewaken.
-* Typ [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) om het gebruik in de browser of op de server bij te houden.
+* Typ [aangepaste telemetrie](./api-custom-events-metrics.md) om het gebruik in de browser of op de server bij te houden.
 * Gebruik [analyses](../log-query/log-query-overview.md) voor krachtige query's via telemetrie van uw app
 * Voor meer informatie gaat u naar [Azure voor Java-ontwikkelaars](/java/azure).
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#trackexception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
+

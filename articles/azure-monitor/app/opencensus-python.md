@@ -7,12 +7,12 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024364"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322547"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -474,13 +474,14 @@ Zie [Logboeken in azure monitor](../platform/data-platform-logs.md)voor meer ged
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Binnenkomende aanvragen bijhouden](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [Lopende aanvragen bijhouden](./../../azure-monitor/app/opencensus-python-request.md)
-* [Toepassings overzicht](./../../azure-monitor/app/app-map.md)
-* [End-to-end prestatie bewaking](./../../azure-monitor/learn/tutorial-performance.md)
+* [Binnenkomende aanvragen bijhouden](./opencensus-python-dependency.md)
+* [Lopende aanvragen bijhouden](./opencensus-python-request.md)
+* [Toepassings overzicht](./app-map.md)
+* [End-to-end prestatie bewaking](../learn/tutorial-performance.md)
 
 ### <a name="alerts"></a>Waarschuwingen
 
-* [Beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md): maak tests om ervoor te zorgen dat uw site zichtbaar is op internet.
-* [Slimme diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
-* [Metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
+* [Beschikbaarheidstests](./monitor-web-app-availability.md): maak tests om ervoor te zorgen dat uw site zichtbaar is op internet.
+* [Slimme diagnostische gegevens](./proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
+* [Metrische waarschuwingen](../platform/alerts-log.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
+

@@ -3,18 +3,18 @@ title: 'Hoe kunt u uw Application Insights-implementatie ontwerpen: een VS veel 
 description: Telemetrie omleiden naar verschillende bronnen voor ontwikkelings-, test-en productie tempels.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 159a1c5554c0ac017bc9eeb2e9df65fddba334ba
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516716"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326542"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hoeveel Application Insights resources moeten worden geïmplementeerd
 
-Wanneer u de volgende versie van een webtoepassing ontwikkelt, wilt u niet de [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrie uit de nieuwe versie en de reeds uitgebrachte versie samen stellen. Om Verwar ring te voor komen, verzendt u de telemetrie vanuit verschillende ontwikkelings fasen om Application Insights resources te scheiden, met afzonderlijke instrumentatie sleutels (ikeys). Om het gemakkelijker te maken om de instrumentatie sleutel te wijzigen wanneer een versie van de ene fase naar een andere gaat, kan het nuttig zijn om de iKey in te stellen in code in plaats van in het configuratie bestand.
+Wanneer u de volgende versie van een webtoepassing ontwikkelt, wilt u niet de [Application Insights](./app-insights-overview.md) telemetrie uit de nieuwe versie en de reeds uitgebrachte versie samen stellen. Om Verwar ring te voor komen, verzendt u de telemetrie vanuit verschillende ontwikkelings fasen om Application Insights resources te scheiden, met afzonderlijke instrumentatie sleutels (ikeys). Om het gemakkelijker te maken om de instrumentatie sleutel te wijzigen wanneer een versie van de ene fase naar een andere gaat, kan het nuttig zijn om de iKey in te stellen in code in plaats van in het configuratie bestand.
 
-(Als uw systeem een Azure-Cloud service is, is er [een andere methode voor het instellen van afzonderlijke ikeys](../../azure-monitor/app/cloudservices.md).)
+(Als uw systeem een Azure-Cloud service is, is er [een andere methode voor het instellen van afzonderlijke ikeys](./cloudservices.md).)
 
 ## <a name="about-resources-and-instrumentation-keys"></a>Over resources en instrumentatie sleutels
 
@@ -58,7 +58,7 @@ protected void Application_Start()
 In dit voor beeld worden de ikeys voor de verschillende bronnen in verschillende versies van het webconfiguratiebestand geplaatst. Het webconfiguratiebestand: dat u kunt doen als onderdeel van het release script, wordt de doel resource vervangen.
 
 ### <a name="web-pages"></a>Webpagina's
-De iKey wordt ook gebruikt in de webpagina's van uw app, in het [script dat u hebt ontvangen in het deel venster Quick](../../azure-monitor/app/javascript.md)start. In plaats van de consistentie in het script te maken, moet u deze genereren op basis van de server status. Bijvoorbeeld in een ASP.NET-app:
+De iKey wordt ook gebruikt in de webpagina's van uw app, in het [script dat u hebt ontvangen in het deel venster Quick](./javascript.md)start. In plaats van de consistentie in het script te maken, moet u deze genereren op basis van de server status. Bijvoorbeeld in een ASP.NET-app:
 
 ```javascript
 <script type="text/javascript">
@@ -86,14 +86,14 @@ U hebt de instrumentatie sleutels nodig van alle resources waarnaar de app gegev
 ## <a name="filter-on-build-number"></a>Filteren op build-nummer
 Wanneer u een nieuwe versie van uw app publiceert, wilt u de telemetrie van verschillende builds kunnen scheiden.
 
-U kunt de eigenschap toepassings versie instellen, zodat u [Zoek opdrachten](../../azure-monitor/app/diagnostic-search.md) en [metrische Explorer](../../azure-monitor/platform/metrics-charts.md) -resultaten kunt filteren.
+U kunt de eigenschap toepassings versie instellen, zodat u [Zoek opdrachten](./diagnostic-search.md) en [metrische Explorer](../platform/metrics-charts.md) -resultaten kunt filteren.
 
 Er zijn verschillende methoden voor het instellen van de eigenschap toepassings versie.
 
 * Direct instellen:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Verpakken die regel in een [telemetrie-initialisatie functie](../../azure-monitor/app/api-custom-events-metrics.md#defaults) om ervoor te zorgen dat alle TelemetryClient-instanties consistent zijn ingesteld.
+* Verpakken die regel in een [telemetrie-initialisatie functie](./api-custom-events-metrics.md#defaults) om ervoor te zorgen dat alle TelemetryClient-instanties consistent zijn ingesteld.
 * [ASP.NET] Stel de versie in `BuildInfo.config` . De WEBMODULE haalt de versie op uit het BuildLabel-knoop punt. Neem dit bestand op in uw project en vergeet niet om de eigenschap Copy always in te stellen in Solution Explorer.
 
     ```XML
@@ -132,14 +132,15 @@ Als u de toepassingsversie wilt bijhouden, zorgt u ervoor dat `buildinfo.config`
 </PropertyGroup>
 ```
 
-Wanneer de buildgegevens beschikbaar zijn, voegt de Application Insights-webmodule automatisch **Toepassingsversie** als eigenschap toe aan elk telemetrie-item. Dit biedt de mogelijkheid om op versie te filteren wanneer u [diagnostische zoekopdrachten](../../azure-monitor/app/diagnostic-search.md) uitvoert of [metrische gegevens verkent](../../azure-monitor/platform/metrics-charts.md).
+Wanneer de buildgegevens beschikbaar zijn, voegt de Application Insights-webmodule automatisch **Toepassingsversie** als eigenschap toe aan elk telemetrie-item. Dit biedt de mogelijkheid om op versie te filteren wanneer u [diagnostische zoekopdrachten](./diagnostic-search.md) uitvoert of [metrische gegevens verkent](../platform/metrics-charts.md).
 
 U ziet echter dat het build-versie nummer alleen wordt gegenereerd door de micro soft build engine, niet door de ontwikkel aars versie van Visual Studio.
 
 ### <a name="release-annotations"></a>Release-aantekeningen
-Als u Azure DevOps gebruikt, kunt u [een aantekeningen markering](../../azure-monitor/app/annotations.md) toevoegen aan uw diagrammen wanneer u een nieuwe versie uitgeeft. 
+Als u Azure DevOps gebruikt, kunt u [een aantekeningen markering](./annotations.md) toevoegen aan uw diagrammen wanneer u een nieuwe versie uitgeeft. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gedeelde bronnen voor meerdere rollen](../../azure-monitor/app/app-map.md)
-* [Maak een telemetrie-initialisatie functie om onderscheid te maken tussen een | B varianten](../../azure-monitor/app/api-filtering-sampling.md#add-properties)
+* [Gedeelde bronnen voor meerdere rollen](./app-map.md)
+* [Maak een telemetrie-initialisatie functie om onderscheid te maken tussen een | B varianten](./api-filtering-sampling.md#add-properties)
+

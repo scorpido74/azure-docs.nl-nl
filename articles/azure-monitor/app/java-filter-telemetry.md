@@ -3,11 +3,12 @@ title: Azure-toepassing Insights-telemetrie in uw Java-Web-app filteren
 description: Verminder telemetrie-verkeer door de gebeurtenissen die u niet hoeft te bewaken, te filteren.
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659914"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322581"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-Web-app
 
@@ -22,7 +23,7 @@ De out-of-the-box filters zijn:
 
 > [!NOTE]
 > Filters scheefen de metrische gegevens van uw app. U kunt bijvoorbeeld bepalen dat u bij het vaststellen van langzame reacties een filter wilt instellen om snelle reactie tijden te negeren. Maar u moet er rekening mee houden dat de gemiddelde reactie tijd die wordt gerapporteerd door Application Insights lager is dan de werkelijke snelheid en dat het aantal aanvragen kleiner is dan het werkelijke aantal.
-> Als dit een probleem is, gebruikt u in plaats daarvan [steek proeven](../../azure-monitor/app/sampling.md) .
+> Als dit een probleem is, gebruikt u in plaats daarvan [steek proeven](./sampling.md) .
 
 ## <a name="setting-filters"></a>Filters instellen
 
@@ -151,7 +152,7 @@ Telemetrie filteren op specifieke synthetische bronnen:
 
 ### <a name="telemetry-event-filter"></a>Telemetrie-gebeurtenis Filter
 
-Filtert aangepaste gebeurtenissen (geregistreerd met behulp van [track Event ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
+Filtert aangepaste gebeurtenissen (geregistreerd met behulp van [track Event ()](./api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -167,7 +168,7 @@ Filtert aangepaste gebeurtenissen (geregistreerd met behulp van [track Event ()]
 
 ### <a name="trace-telemetry-filter"></a>Telemetrie-filter traceren
 
-Filtert logboek traceringen (geregistreerd met behulp van [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) of een [logboek registratie van de Framework-logging](java-trace-logs.md)).
+Filtert logboek traceringen (geregistreerd met behulp van [TrackTrace ()](./api-custom-events-metrics.md#tracktrace) of een [logboek registratie van de Framework-logging](java-trace-logs.md)).
 
 ```XML
 
@@ -267,4 +268,5 @@ U moet uw eigen filter parameters maken in `application.properties` en gebruikma
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Bemonsteren](../../azure-monitor/app/sampling.md) : beschouw de steek proeven als een alternatief die uw metrische gegevens niet scheef stelt.
+* [Bemonsteren](./sampling.md) : beschouw de steek proeven als een alternatief die uw metrische gegevens niet scheef stelt.
+

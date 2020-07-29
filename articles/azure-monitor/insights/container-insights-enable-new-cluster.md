@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen van bewaking voor een nieuw Az
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516631"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320320"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Bewaking van een nieuw Azure Kubernetes service (AKS)-cluster inschakelen
 
@@ -29,7 +29,7 @@ Als u de bewaking van een nieuw AKS-cluster dat is gemaakt met Azure CLI wilt in
 
 ## <a name="enable-using-terraform"></a>Inschakelen met behulp van terraform
 
-Als u [een nieuw AKS-cluster implementeert met behulp van terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), geeft u de vereiste argumenten in het profiel [op om een log Analytics-werk ruimte te maken](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) als u geen bestaande hebt opgegeven. 
+Als u [een nieuw AKS-cluster implementeert met behulp van terraform](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks), geeft u de vereiste argumenten in het profiel [op om een log Analytics-werk ruimte te maken](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) als u geen bestaande hebt opgegeven. 
 
 >[!NOTE]
 >Als u ervoor kiest om terraform te gebruiken, moet u de terraform Azure RM-provider versie 1.17.0 of hoger uitvoeren.
@@ -118,3 +118,4 @@ Na enkele minuten is de opdracht voltooid en retourneert deze informatie over de
 * Als u problemen ondervindt bij het voorbereiden van de oplossing, raadpleegt u de [hand leiding](container-insights-troubleshoot.md) voor het oplossen van problemen
 
 * Als controle is ingeschakeld voor het verzamelen van het status-en resource gebruik van uw AKS-cluster en werk belastingen die erop worden uitgevoerd, leert [u hoe u Azure monitor gebruikt](container-insights-analyze.md) voor containers.
+

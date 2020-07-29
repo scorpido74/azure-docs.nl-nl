@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a5829057aed913ea824cbd2fd6b52369b5e70d88
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801836"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536518"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat
 
@@ -63,7 +63,7 @@ Begin met de snelstart door een IoT Hub met Azure CLI te maken.
 
 Het gratis niveau van IoT Hub werkt voor deze snelstart. Als u in het verleden IoT Hub hebt gebruikt en al een hub hebt gemaakt, kunt u die IoT-hub gebruiken.
 
-Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **IoTEdgeResources**. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub.
+Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **IoTEdgeResources**. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub. Het kan enkele minuten duren voordat een IoT-hub is gemaakt.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -87,7 +87,7 @@ Omdat IoT Edge-apparaten zich anders gedragen en anders kunnen worden beheerd da
    az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
-   Als u een foutbericht over iothubowner-beleidssleutels ontvangt, controleer dan of in de cloudshell de meest recente versie van de azure-iot-extensie wordt uitgevoerd.
+   Als u een foutbericht over iothubowner-beleidssleutels ontvangt, controleert u of in Cloud Shell de meest recente versie van de azure-iot-extensie wordt uitgevoerd.
 
 2. Bekijk de verbindingsreeks voor uw apparaat. Hiermee wordt uw fysieke apparaat aan de bijbehorende identiteit in IoT Hub gekoppeld. De verbindingsreeks bevat de naam van uw IoT-hub, de naam van uw apparaat en vervolgens een gedeelde sleutel waarmee verbindingen tussen de twee worden geverifieerd. Deze verbindingsreeks wordt in de volgende sectie opnieuw gebruikt om uw IoT Edge-apparaat in te stellen.
 
@@ -233,10 +233,19 @@ Als u wilt doorgaan met de IoT Edge-zelfstudies, kunt u het apparaat gebruiken d
 
 Als u uw virtuele machine en IoT-hub in een nieuwe resourcegroep hebt gemaakt, kunt u die groep en alle bijbehorende resources verwijderen. Controleer de inhoud van de resourcegroep zorgvuldig om te na te gaan of er niets is dat u wilt behouden. Als u niet de hele groep wilt verwijderen, kunt u in plaats daarvan afzonderlijke resources verwijderen.
 
-Verwijder de groep **IoTEdgeResources**.
+> [!IMPORTANT]
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt.
+
+Verwijder de groep **IoTEdgeResources**. Het kan enkele minuten duren voordat een resourcegroep is verwijderd.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+U kunt controleren of de resourcegroep is verwijderd door de lijst met resourcegroepen te bekijken.
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499457"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321289"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Afhankelijkheden bijhouden met opentellingen python
 
 Een afhankelijkheid is een extern onderdeel dat wordt aangeroepen via uw toepassing. Afhankelijkheids gegevens worden verzameld met opentellingen python en de verschillende integraties. De gegevens worden vervolgens naar Application Insights onder Azure Monitor als `dependencies` telemetrie verzonden.
 
-Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](../../azure-monitor/app/opencensus-python.md).
+Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](./opencensus-python.md).
 
 ## <a name="in-process-dependencies"></a>In-process afhankelijkheden
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Toepassingskaart](../../azure-monitor/app/app-map.md)
-* [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Zoeken](../../azure-monitor/app/diagnostic-search.md)
-* [Logboek query (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
-* [Diagnostische gegevens voor transacties](../../azure-monitor/app/transaction-diagnostics.md)
+* [Toepassingskaart](./app-map.md)
+* [Beschikbaarheid](./monitor-web-app-availability.md)
+* [Zoeken](./diagnostic-search.md)
+* [Logboek query (Analytics)](../log-query/log-query-overview.md)
+* [Diagnostische gegevens voor transacties](./transaction-diagnostics.md)
+

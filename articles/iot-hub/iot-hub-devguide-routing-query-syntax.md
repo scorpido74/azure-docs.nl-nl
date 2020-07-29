@@ -7,13 +7,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 34ffa7a9fe9bd129fa3fd572bc8ef4d80b43ab9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688956"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322972"
 ---
-# <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor IoT Hub-berichtroutering
+# <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor het routeren van IoT Hub-berichten
 
 Met bericht routering kunnen gebruikers verschillende gegevens typen routeren, namelijk telemetrie-berichten van apparaten, levenscyclus gebeurtenissen van apparaten en gebeurtenissen voor het wijzigen van het apparaat naar verschillende eind punten. U kunt ook uitgebreide query's Toep assen op deze gegevens voordat u deze doorstuurt om de gegevens te ontvangen die voor u van belang zijn. In dit artikel wordt de query taal voor het routeren van berichten IoT Hub beschreven en vindt u enkele veelgebruikte query patronen.
 
@@ -49,7 +53,7 @@ Met de IoT Hub definieert u een [algemene indeling](iot-hub-devguide-messages-co
 
 Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren. 
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | Invoer | tekenreeks | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
 | contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |

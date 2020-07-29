@@ -6,13 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83846525"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325318"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure verbinden met ITSM-hulpprogramma's met behulp van IT Service Management Connector
 
 ![IT Service Management-connector-symbool](media/itsmc-overview/itsmc-symbol.png)
 
@@ -77,10 +78,10 @@ Voor het maken van een verbinding moet u uw ITSM-hulp programma voorbereiden om 
 
 Gebruik de volgende stappen, afhankelijk van het ITSM-product waarmee u verbinding maakt:
 
-- [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om een verbinding te maken:
 
@@ -93,7 +94,7 @@ Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om ee
 
    ![ITSM-verbinding toevoegen](media/itsmc-overview/add-new-itsm-connection.png)
 
-4. Geef de verbindings instellingen op, zoals beschreven in [de ITSMC-verbinding configureren met het artikel ITSM Products/Services](../../azure-monitor/platform/itsmc-connections.md).
+4. Geef de verbindings instellingen op, zoals beschreven in [de ITSMC-verbinding configureren met het artikel ITSM Products/Services](./itsmc-connections.md).
 
    > [!NOTE]
    >
@@ -150,13 +151,13 @@ Het dash board bevat ook informatie over connector status die kan worden gebruik
 
 U kunt de incidenten die zijn gesynchroniseerd met de betrokken computers ook visualiseren binnen de Servicetoewijzing oplossing.
 
-Servicetoewijzing detecteert automatisch de toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. Zo kunt u uw servers beschouwen zoals u ze voor ogen ziet: als onderling verbonden systemen die kritieke services verlenen. Servicetoewijzing toont verbindingen tussen servers, processen en poorten in alle via TCP verbonden architectuur. U hoeft hiervoor niets meer te doen dan het installeren van een agent. [Meer informatie](../../azure-monitor/insights/service-map.md).
+Servicetoewijzing detecteert automatisch de toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. Zo kunt u uw servers beschouwen zoals u ze voor ogen ziet: als onderling verbonden systemen die kritieke services verlenen. Servicetoewijzing toont verbindingen tussen servers, processen en poorten in alle via TCP verbonden architectuur. U hoeft hiervoor niets meer te doen dan het installeren van een agent. [Meer informatie](../insights/service-map.md).
 
 Als u de Servicetoewijzing oplossing gebruikt, kunt u de Service Desk-items weer geven die zijn gemaakt in de ITSM-oplossingen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ![Log Analytics scherm](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Meer informatie: [servicetoewijzing](../../azure-monitor/insights/service-map.md)
+Meer informatie: [servicetoewijzing](../insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Aanvullende informatie
@@ -227,14 +228,14 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Geplande eind datum
 - Begin datum van werk
 - Eind datum van werk
-- Description
+- Beschrijving
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Uitvoer gegevens voor een ServiceNow-incident
 
 | Log Analytics veld | Het veld ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Aantal |
+| ServiceDeskId_s| Getal |
 | IncidentState_s | Status |
 | Urgency_s |Urgentie |
 | Impact_s |Impact|
@@ -246,7 +247,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Category_s | Categorie |
 | Title_s|  Korte beschrijving |
-| Description_s|  Notities |
+| Description_s|  Opmerkingen |
 | CreatedDate_t|  Had |
 | ClosedDate_t| gesloten|
 | ResolvedDate_t|Opgelost|
@@ -256,7 +257,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 | Log Analytics | Het veld ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Aantal |
+| ServiceDeskId_s| Getal |
 | CreatedBy_s | Aangevraagd door |
 | ClosedBy_s | Gesloten door |
 | AssignedTo_s | Toegewezen aan  |
@@ -274,7 +275,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  |   Geplande eind datum |
 | WorkStartDate_t  | Werkelijke begin datum |
 | WorkEndDate_t | Werkelijke eind datum|
-| Description_s | Description |
+| Description_s | Beschrijving |
 | Computer  | Configuratie-item |
 
 
@@ -284,7 +285,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
    - Zorg ervoor dat u de gebruikers naam, het wacht woord, de client-ID en het client geheim correct hebt ingevoerd voor elk van de verbindingen.  
    - Controleer of u voldoende bevoegdheden hebt in het bijbehorende ITSM-product om de verbinding tot stand te brengen.  
    - Voor Service Manager verbindingen,  
-   - Zorg ervoor dat de web-app is geïmplementeerd en dat er een hybride verbinding is gemaakt. Als u wilt controleren of de verbinding tot stand is gebracht met behulp van de on-premises Service Manager machine, gaat u naar de web-app-URL zoals beschreven in de documentatie voor het maken van de [hybride verbinding](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
+   - Zorg ervoor dat de web-app is geïmplementeerd en dat er een hybride verbinding is gemaakt. Als u wilt controleren of de verbinding tot stand is gebracht met behulp van de on-premises Service Manager machine, gaat u naar de web-app-URL zoals beschreven in de documentatie voor het maken van de [hybride verbinding](./itsmc-connections.md#configure-the-hybrid-connection).  
 
 2. Als gegevens van ServiceNow niet worden gesynchroniseerd met Log Analytics, moet u ervoor zorgen dat het ServiceNow-exemplaar niet in de slaap stand staat. ServiceNow dev-instanties gaan soms naar de slaap stand als deze gedurende een lange periode niet actief zijn. Anders meldt u het probleem.
 3. Als Log Analytics waarschuwingen wordt geactiveerd, maar er geen werk items worden gemaakt in ITSM product of configuratie-items niet zijn gemaakt/gekoppeld aan werk items of voor andere algemene informatie, kijkt u op de volgende locaties:
@@ -294,7 +295,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problemen met de implementatie van Service Manager web-app oplossen
 1.  In het geval van problemen met de implementatie van web-apps, moet u ervoor zorgen dat u voldoende machtigingen hebt in het abonnement dat wordt vermeld voor het maken/implementeren van resources.
 2.  Als u de fout **' object verwijzing is niet ingesteld op exemplaar van een object '** krijgt wanneer u het [script](itsmc-service-manager-script.md)uitvoert, moet u ervoor zorgen dat u geldige waarden hebt opgegeven onder **gebruikers configuratie** .
-3.  Als u de service bus relay-naam ruimte niet hebt gemaakt, moet u ervoor zorgen dat de vereiste resource provider is geregistreerd in het abonnement. Als u dit niet hebt geregistreerd, maakt u hand matig een service bus relay-naam ruimte vanuit het Azure Portal. U kunt deze ook maken tijdens [het maken van de hybride verbinding](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) van de Azure Portal.
+3.  Als u de service bus relay-naam ruimte niet hebt gemaakt, moet u ervoor zorgen dat de vereiste resource provider is geregistreerd in het abonnement. Als u dit niet hebt geregistreerd, maakt u hand matig een service bus relay-naam ruimte vanuit het Azure Portal. U kunt deze ook maken tijdens [het maken van de hybride verbinding](./itsmc-connections.md#configure-the-hybrid-connection) van de Azure Portal.
 
 
 ## <a name="contact-us"></a>Contact opnemen
@@ -302,4 +303,5 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 Neem voor eventuele query's of feedback over de IT Service Management-connector contact met ons op [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Volgende stappen
-[Voeg ITSM-producten/-services toe aan IT Service Management-connector](../../azure-monitor/platform/itsmc-connections.md).
+[Voeg ITSM-producten/-services toe aan IT Service Management-connector](./itsmc-connections.md).
+

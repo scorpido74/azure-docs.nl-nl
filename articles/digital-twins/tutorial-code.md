@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b1039bb94626dec35eff040e023a84283d9d3a4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537412"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Coderen met de Azure Digital Twins-API's
 
@@ -47,7 +47,7 @@ Hiermee maakt u een aantal bestanden in uw map, met daarin de naam *Program.cs* 
 Voeg vervolgens twee vereiste afhankelijkheden toe voor het werken met Azure Digital Twins:
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
@@ -174,7 +174,7 @@ Maak in de map waar u het project hebt gemaakt een nieuw *.json*-bestand met de 
 > Als u Visual Studio voor deze zelfstudie gebruikt, wilt u mogelijk het zojuist gemaakte JSON-bestand selecteren en de eigenschap *Kopiëren naar uitvoermap* instellen in de Eigenschappencontrole naar te *Kopiëren als nieuwer* of *Altijd kopiëren*. Hierdoor kan Visual Studio het JSON-bestand met het standaardpad vinden wanneer u het programma uitvoert met **F5** tijdens de rest van de zelfstudie.
 
 > [!TIP] 
-> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [Instructies: Modellen parseren en valideren](how-to-use-parser.md).
+> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-use-parser.md).
 
 Voeg vervolgens wat meer code toe aan *Program.cs* om het model dat u zojuist hebt gemaakt, te uploaden naar uw Azure Digital Twins-exemplaar.
 
@@ -185,7 +185,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 ```
 
 Vervolgens bereidt u het gebruik van de asynchrone methoden in de C# service-SDK voor door de handtekening van de `Main` methode te wijzigen zodat asynchrone uitvoering kan worden uitgevoerd. 
@@ -531,7 +530,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>Resources opschonen
  
-Het exemplaar dat in deze zelfstudie wordt gebruikt, kan opnieuw worden gebruikt in de volgende zelfstudie [Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app](tutorial-command-line-app.md). Als u van plan bent om door te gaan naar de volgende zelfstudie, kunt u het Azure Digital Twins-exemplaar dat u hier instelt, behouden.
+Het exemplaar dat in deze zelfstudie wordt gebruikt, kan opnieuw worden gebruikt in de volgende zelfstudie, [*Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app*](tutorial-command-line-app.md). Als u van plan bent om door te gaan naar de volgende zelfstudie, kunt u het Azure Digital Twins-exemplaar dat u hier instelt, behouden.
  
 Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen.
 
@@ -561,8 +560,8 @@ In deze zelfstudie hebt u een volledig nieuwe .NET-console-clienttoepassing gema
 Ga verder met de volgende zelfstudie om de dingen te bekijken die u kunt doen met een dergelijke voorbeeld-client-app: 
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app](tutorial-command-line-app.md)
+> [*Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app*](tutorial-command-line-app.md)
 
 U kunt ook de code uitbreiden die u in deze zelfstudie hebt geschreven door meer beheerbewerkingen te leren in de artikelen met procedures of door te kijken naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt.
-* [Uitleg: Aangepaste modellen beheren](how-to-manage-model.md)
-* [Concepten: Aangepaste modellen](concepts-models.md)
+* [*Instructies: Aangepaste modellen beheren*](how-to-manage-model.md)
+* [*Concepten: Aangepaste modellen*](concepts-models.md)

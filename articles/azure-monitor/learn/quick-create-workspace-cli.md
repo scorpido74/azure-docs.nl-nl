@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516512"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324298"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Een Log Analytics-werk ruimte maken met Azure CLI 2,0
 
@@ -24,8 +24,8 @@ De Azure CLI 2.0 wordt gebruikt voor het maken en beheren van Azure-resources va
 
 Zie de volgende onderwerpen voor andere bronnen, zoals virtuele Azure-machines en Windows-of Linux-Vm's in uw omgeving:
 
-* [Gegevens verzamelen van virtuele machines van Azure](../learn/quick-collect-azurevm.md)
-* [Gegevens verzamelen van een hybride Linux-computer](../learn/quick-collect-linux-computer.md)
+* [Gegevens verzamelen van virtuele machines van Azure](./quick-collect-azurevm.md)
+* [Gegevens verzamelen van een hybride Linux-computer](./quick-collect-linux-computer.md)
 * [Gegevens verzamelen van de hybride Windows-computer](quick-collect-windows-computer.md)
 
 Als u nog geen abonnement op Azure hebt, maak dan [een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
@@ -133,3 +133,4 @@ Nu u een werk ruimte beschikbaar hebt, kunt u een verzameling van de telemetrie-
 * Voeg [System Center Operations Manager als gegevens bron](../platform/om-agents.md) toe om gegevens te verzamelen van agents die uw Operations Manager beheer groep rapporteren en op te slaan in uw log Analytics-werk ruimte.  
 * Verbind [Configuration Manager](../platform/collect-sccm.md) om computers te importeren die lid zijn van verzamelingen in de hiërarchie.  
 * Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.
+

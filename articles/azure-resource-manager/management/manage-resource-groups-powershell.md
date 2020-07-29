@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6f18eea697e875cc926e8fbaa0f61cf2d4639be0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 79674b359bc2058f11895b3291c0ce16ef5b1a16
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326831"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager resource groepen beheren met Azure PowerShell
 
@@ -27,7 +27,7 @@ Een resourcegroep is een container met gerelateerde resources voor een Azure-opl
 
 De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom u moet aangeven waar die metagegevens moeten worden opgeslagen als u een locatie voor de resourcegroep opgeeft. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
 
-De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie voor de resource groep opgeeft, geeft u op waar de meta gegevens worden opgeslagen.
+De resourcegroep slaat metagegevens op over de resources. Als u een locatie voor de resourcegroep opgeeft, geeft u op waar deze metagegevens worden opgeslagen.
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
@@ -78,7 +78,7 @@ Zie [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzReso
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Een resource groep en-resources implementeren
 
-U kunt een resource groep maken en resources voor de groep implementeren met behulp van een resource manager-sjabloon. Zie [resource groep maken en resources implementeren](../templates/deploy-to-subscription.md#resource-group-and-resources)voor meer informatie.
+U kunt een resource groep maken en resources voor de groep implementeren met behulp van een resource manager-sjabloon. Zie [resource groep maken en resources implementeren](../templates/deploy-to-subscription.md#resource-groups)voor meer informatie.
 
 ## <a name="redeploy-when-deployment-fails"></a>Opnieuw implementeren wanneer de implementatie mislukt
 

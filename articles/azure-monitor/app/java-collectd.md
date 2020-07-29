@@ -3,21 +3,22 @@ title: Prestaties van Java-Web-apps op Linux bewaken-Azure | Microsoft Docs
 description: Uitgebreide bewaking van de toepassings prestaties van uw Java-website met de verzamelde-invoeg toepassing voor Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322598"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: metrische gegevens voor Linux-prestaties in Application Insights
 
 
-Als u de metrische gegevens voor Linux-systeem prestaties in [Application Insights](../../azure-monitor/app/app-insights-overview.md)wilt verkennen, installeert u [verzamelde](https://collectd.org/)samen met de Application Insights-invoeg toepassing. Deze open source-oplossing verzamelt diverse systeem-en netwerk statistieken.
+Als u de metrische gegevens voor Linux-systeem prestaties in [Application Insights](./app-insights-overview.md)wilt verkennen, installeert u [verzamelde](https://collectd.org/)samen met de Application Insights-invoeg toepassing. Deze open source-oplossing verzamelt diverse systeem-en netwerk statistieken.
 
 Normaal gesp roken gebruikt u verzamelde als u [uw Java-webservice al hebt instrumenteert met Application Insights][java]. Het biedt u meer gegevens om u te helpen bij het verbeteren van de prestaties van uw app of het vaststellen van problemen. 
 
 ## <a name="get-your-instrumentation-key"></a>De instrumentatie sleutel ophalen
-Open in de [Microsoft Azure-Portal](https://portal.azure.com)de [Application Insights](../../azure-monitor/app/app-insights-overview.md) resource waar u de gegevens wilt weer geven. (Of [Maak een nieuwe resource](../../azure-monitor/app/create-new-resource.md ).)
+Open in de [Microsoft Azure-Portal](https://portal.azure.com)de [Application Insights](./app-insights-overview.md) resource waar u de gegevens wilt weer geven. (Of [Maak een nieuwe resource](./create-new-resource.md).)
 
 Neem een kopie van de instrumentatie sleutel, die de resource identificeert.
 
@@ -104,7 +105,7 @@ Afzonderlijke instructies met een nieuwe regel.
 *Ik zie geen gegevens in de portal*
 
 * Open [zoeken][diagnostic] om te zien of de onbewerkte gebeurtenissen zijn aangekomen. Soms duurt het langer om weer te geven in Metrics Explorer.
-* Mogelijk moet u [firewall-uitzonde ringen voor uitgaande gegevens instellen](../../azure-monitor/app/ip-addresses.md)
+* Mogelijk moet u [firewall-uitzonde ringen voor uitgaande gegevens instellen](./ip-addresses.md)
 * Schakel tracering in de Application Insights-invoeg toepassing in. Deze regel toevoegen in `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Open een Terminal en start verzamelde in de uitgebreide modus om te zien welke problemen er worden gerapporteerd:
@@ -120,13 +121,12 @@ Tijdelijke oplossing: Sluit de gegevens die door het probleem zijn verzameld, ui
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

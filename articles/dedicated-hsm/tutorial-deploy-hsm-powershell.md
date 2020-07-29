@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79474421"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512500"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Zelfstudie: PowerShell gebruiken om HSM's te implementeren in een bestaand virtueel netwerk
 
@@ -40,7 +40,7 @@ Deze zelfstudie richt zich op twee HSM's en de vereiste ExpressRoute-gateway (zi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal, dus alle interactie met de service loopt via de opdrachtregel of PowerShell. In deze zelfstudie wordt PowerShell in de Azure Cloud Shell gebruikt. Als u niet bekend bent met PowerShell, volg dan de instructies in [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal, dus alle interactie met de service loopt via de opdrachtregel of PowerShell. In deze zelfstudie wordt PowerShell in de Azure Cloud Shell gebruikt. Als u niet bekend bent met PowerShell, volg dan de instructies in: [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Veronderstellingen:
 
@@ -62,13 +62,7 @@ Zoals hierboven is uitgelegd, vereist elke inrichtingsactiviteit dat de Toegewez
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Met de volgende opdracht worden de netwerkfuncties voor de Toegewezen HSM-service geverifieerd.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-Beide opdrachten moeten de status 'Geregistreerd' retourneren (zoals hieronder wordt weergegeven) voordat u een verder gaat.  Als u zich voor deze service moet registreren, neemt u contact op met de vertegenwoordiger van uw Microsoft-account.
+De opdracht moet de status 'Geregistreerd' retourneren (zoals hieronder wordt weergegeven) voordat u verdergaat.  Als u niet voor deze service bent geregistreerd, neem dan contact op met de vertegenwoordiger van uw Microsoft-account.
 
 ![abonnementsstatus](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
@@ -217,7 +211,7 @@ Het SSH-hulpprogramma wordt gebruikt om verbinding te maken met de virtuele mach
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Gebruik het wachtwoord uit het parameterbestand.
-Zodra u bent aangemeld bij de virtuele Linux-machine, kunt u zich aanmelden bij de HSM met behulp van het privé-IP \<-adres dat is gevonden in de portal voor het resource voorvoegsel>hsm_vnic.
+Wanneer u bent aangemeld op de Linux-VM, kunt u zich bij de HSM aanmelden met behulp van het privé IP-adres dat u in de portal kunt vinden voor de resource \<prefix>hsm_vnic.
 
 ```powershell
 
@@ -245,12 +239,12 @@ Op dit moment hebt u alle resources toegewezen voor een implementatie van twee H
 
 ## <a name="delete-or-clean-up-resources"></a>Resources verwijderen of opschonen
 
-Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en worden geretourneerd aan de vrije pool. Uiteraard moet u zorg dragen voor eventuele vertrouwelijke gegevens van klanten die zich op het apparaat bevinden. De beste manier om ' zeroize ' een apparaat te verkrijgen, is het wacht woord voor de HSM-beheerder niet de juiste drie keer op te halen (Opmerking: dit is geen apparaat beheerder, het is de daad werkelijke HSM-beheerder). Als veiligheids maatregel om belang rijk materiaal te beschermen, kan het apparaat niet worden verwijderd als Azure-resource totdat het de status in nul heeft.
+Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en worden geretourneerd aan de vrije pool. Uiteraard moet u zorg dragen voor eventuele vertrouwelijke gegevens van klanten die zich op het apparaat bevinden. De snelste manier om een apparaat op nul te zetten is het HSM-beheerderswachtwoord 3 keer fout in te voeren. (Opmerking: dit is niet de apparaatbeheerder, maar de HSM-beheerder zelf.) Als veiligheidsmaatregel om belangrijk materiaal te beschermen, kan het apparaat pas worden verwijderd als Azure-resource als het de nulstatus heeft.
 
 > [!NOTE]
 > Als u problemen hebt met de configuratie van een Gemalto-apparaat, neemt u contact op met [Gemalto-klantondersteuning](https://safenet.gemalto.com/technical-support/).
 
-Als u de HSM-resource in azure wilt verwijderen, kunt u de volgende opdracht gebruiken om de variabelen "$" te vervangen door uw unieke para meters:
+Als u de HSM-resource in Azure wilt verwijderen, kunt u de volgende opdracht gebruiken om de '$'-variabelen te vervangen door uw unieke parameters:
 
 ```powershell
 
@@ -268,5 +262,5 @@ Wanneer u de stappen in de zelfstudie hebt voltooid, zijn toegewezen HSM-resourc
 * [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
-* [Bewaking](monitoring.md)
+* [Controle](monitoring.md)
 * [Ondersteuning](supportability.md)

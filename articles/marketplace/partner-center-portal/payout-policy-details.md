@@ -4,15 +4,15 @@ description: Details over het uitzonderings beleid, waaronder schema's en rekopp
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118287"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324825"
 ---
 # <a name="payout-policy-details"></a>Details van betaalbeleid
 
@@ -40,7 +40,7 @@ Vanaf 1 mei 2020 wordt ons beleid voor uitbetalingen bijgewerkt met betrekking t
 > [!NOTE]
 > Zie de onderstaande procedure voor het [verwerken van niet-betaalde klanten](#process-for-customer-non-payment) voor de acties die we ondernemen als de klant niet kan betalen, maar we al een uitbetaling aan u hebben verzonden.
 
-| Gebeurtenis  | Datum  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\* |
+| Gebeurtenis  | Date  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\* |
 | --- | --- | --- | --- |
 | Trans actie of gebruiks maand | 8/1/2020 – 8/31/2020 | N.v.t. | **Gebruiks rapport**: nieuw verbruik wordt weer gegeven (elke vier uur vernieuwd)<br>**Bestel rapport**: n.v.t. |
 | Einde van de term (maand) | 8/31/2020 | N.v.t. | **Gebruiks rapport**: weer gegeven maand einde verbruik<br>**Bestel rapport**: n.v.t. |
@@ -57,7 +57,7 @@ Vanaf 1 mei 2020 wordt ons beleid voor uitbetalingen bijgewerkt met betrekking t
 
 Voor alle aankopen met een credit card of een maandelijkse factuur geldt een periode van 30 dagen om ervoor te zorgen dat de fondsen worden gewist en er geen terugstortingen of verdachte fraude zijn.
 
-| Gebeurtenis  | Datum  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
+| Gebeurtenis  | Date  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
 | --- | --- | --- | --- |
 | Trans actie of gebruiks maand | 8/1/2019 - 8/31/2019 | N.v.t. | **Gebruiks rapport**: nieuw verbruik wordt weer gegeven (elke vier uur vernieuwd)<br>**Bestel rapport**: n.v.t. |
 | Einde van de term (maand) | 8/31/2019 | N.v.t. | **Gebruiks rapport**: weer gegeven maand einde verbruik<br>**Bestel rapport**: n.v.t. |
@@ -74,7 +74,7 @@ Voor alle aankopen met een credit card of een maandelijkse factuur geldt een per
 
 Alle aankopen die vóór deze datum plaatsvinden, worden verwerkt en betaald volgens onderstaande planning, nadat micro soft de betaling van klanten heeft verzameld en de kosten voor Marketplace heeft verwerkt.
 
-| Gebeurtenis  | Datum  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
+| Gebeurtenis  | Date  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
 | --- | --- | --- | --- |
 | Trans actie of gebruiks maand | 8/1/2019 – 8/31/2019 | N.v.t. | **Gebruiks rapport**: nieuw verbruik wordt weer gegeven (elke vier uur vernieuwd)<br>**Bestel rapport**: n.v.t. |
 | Einde van de term (maand) | 8/31/2019 | N.v.t. | **Gebruiks rapport**: weer gegeven maand einde verbruik<br>**Bestel rapport**: n.v.t. |

@@ -5,20 +5,20 @@ description: Meer informatie over het aanroepen van een webservice-eind punt dat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: ced9453982615485e25b56be9b7a36dc8f6ce988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 991ad3afc51cc2f6dc1853a6b26f53bcb2fd1503
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974667"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326406"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Als u een Azure Machine Learning model implementeert als webservice, wordt een REST API-eind punt gemaakt. U kunt gegevens naar dit eind punt verzenden en de voor spelling ontvangen die door het model wordt geretourneerd. In dit document leest u hoe u clients voor de webservice maakt met behulp van C#, go, Java en python.

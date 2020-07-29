@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516342"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321867"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure-activiteiten logboeken verzamelen in Azure Monitor over Azure Active Directory tenants (verouderd)
 
@@ -291,7 +291,7 @@ De [Azure log Analytics Data Collector](/connectors/azureloganalyticsdatacollect
 
    ![De actie Gegevens verzenden van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Maken**.
+3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Create**.
 
    ![De actie Verbinding van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -340,4 +340,5 @@ De laatste stap bestaat uit het controleren van de Log Analytics-werkruimte om e
 In dit artikel hebt u een logische app gemaakt om Azure-activiteiten logboeken van een event hub te lezen en deze naar de Log Analytics-werk ruimte te verzenden voor analyse. Raadpleeg de zelf studie voor het visualiseren van gegevens voor meer informatie over het visualiseren van gegevens in een werk ruimte, inclusief het maken van Dash boards.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie over het visualiseren van gegevens uit Zoeken in logboeken](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [Zelfstudie over het visualiseren van gegevens uit Zoeken in logboeken](../learn/tutorial-logs-dashboards.md)
+

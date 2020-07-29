@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80283851"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320507"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>De kaart functie van Azure Monitor voor VM's gebruiken om inzicht te krijgen in toepassings onderdelen
 In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. U kunt de virtuele machines op twee manieren bekijken. Een kaart rechtstreeks vanuit een virtuele machine weer geven of een kaart van Azure Monitor weer geven om de onderdelen van verschillende Vm's te bekijken. In dit artikel vindt u meer informatie over deze twee weergave methoden en over het gebruik van de kaart functie. 
@@ -49,7 +49,7 @@ Als u de kaart functie relevante waarschuwingen wilt laten weer geven, maakt u e
 - Neem een component op voor het groeperen van waarschuwingen per computer (bijvoorbeeld **per computer interval van 1 minuut**).
 - De waarschuwing baseren op een metrieke waarde.
 
-Zie [Unified Alerts in azure monitor](../../azure-monitor/platform/alerts-overview.md)voor meer informatie over Azure-waarschuwingen en het maken van waarschuwings regels.
+Zie [Unified Alerts in azure monitor](../platform/alerts-overview.md)voor meer informatie over Azure-waarschuwingen en het maken van waarschuwings regels.
 
 In de rechter bovenhoek worden de symbolen en rollen op de kaart in de **legenda** -optie beschreven. Voor een beter overzicht van uw kaart en om deze te verplaatsen, gebruikt u de Zoom knoppen in de rechter benedenhoek. U kunt het zoom niveau instellen en de kaart passend maken voor de grootte van de pagina.  
 
@@ -128,10 +128,11 @@ In Azure Monitor biedt de kaart functie een globaal overzicht van uw Vm's en de 
 
 Kies een werk ruimte met behulp van de **werkruimte** kiezer boven aan de pagina. Als u meer dan één Log Analytics-werk ruimte hebt, kiest u de werk ruimte die is ingeschakeld met de oplossing en waar u Vm's aan rapporteert. 
 
-De **groeps** kiezer retourneert abonnementen, resource groepen, [computer groepen](../../azure-monitor/platform/computer-groups.md)en virtuele-machine schaal sets van computers die zijn gerelateerd aan de geselecteerde werk ruimte. Uw selectie is alleen van toepassing op de kaart functie en heeft geen betrekking op de prestaties of de status.
+De **groeps** kiezer retourneert abonnementen, resource groepen, [computer groepen](../platform/computer-groups.md)en virtuele-machine schaal sets van computers die zijn gerelateerd aan de geselecteerde werk ruimte. Uw selectie is alleen van toepassing op de kaart functie en heeft geen betrekking op de prestaties of de status.
 
 Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkheden in het verleden worden weer geven, kunt u een query uitvoeren voor historische Peri Oden van Maxi maal één uur. Als u de query wilt uitvoeren, gebruikt u de **time Range** kiezer. U kunt een query uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging bekijken.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [prestatie status weer geven voor Azure monitor voor VM's](vminsights-performance.md)om knel punten te identificeren, prestaties te controleren en het algehele gebruik van uw vm's te begrijpen. 
+

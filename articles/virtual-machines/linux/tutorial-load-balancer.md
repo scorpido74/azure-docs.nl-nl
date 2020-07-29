@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: taak verdeling voor virtuele Linux-machines in azure'
+title: 'Zelfstudie: Taakverdelingen maken voor virtuele Linux-machines in Azure'
 description: In deze zelfstudie leert u hoe u Azure CLI kunt gebruiken om een load balancer te maken voor een maximaal beschikbare en veilige toepassing op drie virtuele Linux-machines
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 89ed39d1cd18fc97cec06dce4313271731b23b90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1bd6e9280acdbde105876a6c0e8e0bc45735a558
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510137"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Zelfstudie: Taakverdelingen maken voor virtuele Linux-machines in Azure om een maximaal beschikbare toepassing te maken met Azure CLI
 
-Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u meer over de verschillende onderdelen van Azure Load Balancer die het verkeer verdelen en zorgen voor hoge beschikbaarheid. Procedures voor:
+Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u meer over de verschillende onderdelen van Azure Load Balancer die het verkeer verdelen en zorgen voor hoge beschikbaarheid. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een Azure-load balancer maken
@@ -35,9 +35,9 @@ Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen
 > * Een load balancer in actie zien
 > * VM's toevoegen aan en verwijderen uit een load balancer
 
-In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
+In deze zelfstudie wordt gebruikgemaakt van de CLI in de [Azure Cloud Shell](../../cloud-shell/overview.md), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **Probeer het** bovenaan een willekeurig codeblok.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="azure-load-balancer-overview"></a>Overzicht van Azure Load Balancer
 Een Azure-load balancer is een Layer-4-load balancer (TCP, UDP) die zorgt voor hoge beschikbaarheid door inkomend verkeer te distribueren tussen correct werkende virtuele machines. Tijdens een statustest van een load balancer wordt een bepaalde poort op elke VM gecontroleerd en wordt verkeer alleen naar een werkende VM gedistribueerd.
@@ -217,7 +217,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 Verbeter de hoge beschikbaarheid van uw app door uw VM's in een beschikbaarheidsset te plaatsen. Zie de vorige zelfstudie [How to create highly available virtual machines](tutorial-availability-sets.md) (Maximaal beschikbare virtuele machines maken) voor meer informatie over beschikbaarheidssets.
 
-Maak een beschikbaarheidsset met [AZ VM Availability-set Create](/cli/azure/vm/availability-set). In het volgende voorbeeld wordt een beschikbaarheidsset met de naam *myAvailabilitySet* gemaakt:
+Maak een beschikbaarheidsset met behulp van [az vm availability-set create](/cli/azure/vm/availability-set). In het volgende voorbeeld wordt een beschikbaarheidsset met de naam *myAvailabilitySet* gemaakt:
 
 ```azurecli-interactive 
 az vm availability-set create \

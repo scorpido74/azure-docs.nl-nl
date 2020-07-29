@@ -37,6 +37,11 @@
       href: best-practices.md
     - name: Voorwaardelijke toegang voor Azure-beheer
       href: conditional-access-azure-management.md
+    - name: Beveiliging
+      items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Instructiegidsen
   items:
     - name: Lijst met roldefinities weergeven

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081607"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327341"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Uw opslag service controleren met Azure Monitor voor opslag
 
@@ -46,7 +46,7 @@ Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens va
 
 Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts**.
 
@@ -242,7 +242,7 @@ Voor het aantal geselecteerde opslag accounts geldt een limiet van 200, ongeacht
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Hoe wijzigt u de kleur en drempel waarde voor Beschik baarheid?
 
-Raadpleeg de sectie [de drempel waarde voor Beschik baarheid wijzigen](storage-insights-overview.md#modify-the-availability-threshold) voor gedetailleerde stappen voor het wijzigen van de kleur en drempel waarden voor Beschik baarheid.
+Raadpleeg de sectie [de drempel waarde voor Beschik baarheid wijzigen](#modify-the-availability-threshold) voor gedetailleerde stappen voor het wijzigen van de kleur en drempel waarden voor Beschik baarheid.
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Hoe kunt u de gegevens die worden weer gegeven in Azure Monitor voor opslag analyseren en problemen oplossen?
 
@@ -274,3 +274,4 @@ Elke werkmap wordt opgeslagen in het opslag account waarin u deze hebt opgeslage
 * Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.
 
 * Zie [Microsoft Azure Storage controleren, diagnosticeren en problemen oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)voor meer informatie over het gebruik van Opslaganalyse en andere hulpprogram ma's voor het identificeren, vaststellen en oplossen van problemen met Azure Storage.
+

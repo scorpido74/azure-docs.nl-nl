@@ -4,16 +4,16 @@ description: In dit artikel vindt u tips voor het oplossen van problemen met Mic
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4d16edae3b41bc9c3b4a849935fe8c6f94504ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b3b83899ad21cf125105881a7ffb526f5c607c6d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088424"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322207"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Disk Encryption
 
@@ -24,8 +24,6 @@ Voordat u een van de volgende stappen uitvoert, moet u eerst controleren of de v
 - [Netwerk vereisten](disk-encryption-overview.md#networking-requirements)
 - [Groeps beleids vereisten](disk-encryption-overview.md#group-policy-requirements)
 - [Opslag vereisten voor de versleutelings sleutel](disk-encryption-overview.md#encryption-key-storage-requirements)
-
- 
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Problemen met Azure Disk Encryption achter een firewall oplossen
 
@@ -78,11 +76,15 @@ DISKPART> list vol
 
 ## <a name="troubleshooting-encryption-status"></a>Problemen met de versleutelings status oplossen 
 
-De portal kan een schijf weer geven als versleuteld, zelfs nadat deze is ontsleuteld in de virtuele machine.  Dit kan gebeuren wanneer opdrachten op laag niveau worden gebruikt om de schijf rechtstreeks van de virtuele machine te ontsleutelen, in plaats van de Azure Disk Encryption beheer opdrachten op een hoger niveau te gebruiken.  Met de opdrachten op een hoger niveau wordt de schijf niet alleen ontsleuteld vanuit de virtuele machine, maar buiten de virtuele machine worden ook belang rijke versleutelings instellingen en extensie-instellingen van het platform bijgewerkt die zijn gekoppeld aan de virtuele machine.  Als deze niet in de uitlijning worden bewaard, kan het platform geen versleutelings status rapporteren of de virtuele machine op de juiste wijze inrichten.   
+De portal kan een schijf weer geven als versleuteld, zelfs nadat deze is ontsleuteld in de virtuele machine.  Dit kan gebeuren wanneer opdrachten op laag niveau worden gebruikt om de schijf rechtstreeks van de virtuele machine te ontsleutelen, in plaats van de Azure Disk Encryption beheer opdrachten op een hoger niveau te gebruiken.  Met de opdrachten op een hoger niveau wordt de schijf niet alleen ontsleuteld vanuit de virtuele machine, maar buiten de virtuele machine worden ook belang rijke versleutelings instellingen en extensie-instellingen van het platform bijgewerkt die zijn gekoppeld aan de virtuele machine.  Als deze niet in de uitlijning worden bewaard, kan het platform geen versleutelings status rapporteren of de virtuele machine op de juiste wijze inrichten.
 
 Als u Azure Disk Encryption wilt uitschakelen met Power shell, gebruikt u [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) gevolgd door [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Het uitvoeren van Remove-AzVMDiskEncryptionExtension voordat de versleuteling is uitgeschakeld, mislukt.
 
 Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryption uit te scha KELEN met cli. 
+
+## 
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

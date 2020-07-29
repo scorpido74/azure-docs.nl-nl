@@ -1,6 +1,5 @@
 ---
-title: Beheer van toepassingslevenscyclus
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): toepassings levenscyclus beheer-Azure'
 description: Best practices voor toepassings levenscyclus beheer Toep assen in Azure Machine Learning Studio (klassiek)
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 2eb5f3acc07f04ba2102ea25fbad89d73514444a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47f72e1844f6fe34f129d40130a3dba0383dd094
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705913"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326287"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Beheer van toepassings levenscyclus in Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Azure Machine Learning Studio (klassiek) is een hulp programma voor het ontwikkelen van machine learning experimenten die operationeel zijn in het Azure-Cloud platform. Het is vergelijkbaar met de Visual Studio IDE en de schaal bare Cloud service die is samengevoegd met één platform. U kunt standaard ALM-procedures (Application Lifecycle Management) opnemen van het versie beheer van verschillende assets tot geautomatiseerde uitvoering en implementatie, in Azure Machine Learning Studio (klassiek). In dit artikel worden enkele van de opties en benaderingen besproken.
 

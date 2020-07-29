@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327103"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-connector-beheer oplossing (afgeschaft)
 
 ![Application Insights-symbool](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Met de ondersteuning van [query's voor meerdere bronnen](../../azure-monitor/log-query/cross-workspace-query.md)is de Application Insights-connector beheer oplossing niet meer nodig. Het is afgeschaft en verwijderd uit Azure Marketplace, samen met de OMS-portal die officieel werd afgeschaft op 15 januari 2019 voor de commerciële cloud van Azure. Deze wordt ingetrokken op 30 maart 2019 voor Azure US Government-Cloud.
+> Met de ondersteuning van [query's voor meerdere bronnen](../log-query/cross-workspace-query.md)is de Application Insights-connector beheer oplossing niet meer nodig. Het is afgeschaft en verwijderd uit Azure Marketplace, samen met de OMS-portal die officieel werd afgeschaft op 15 januari 2019 voor de commerciële cloud van Azure. Deze wordt ingetrokken op 30 maart 2019 voor Azure US Government-Cloud.
 >
 >Bestaande verbindingen blijven werken tot en met 30 juni 2019.  In de OMS-Portal is het niet mogelijk om bestaande verbindingen te configureren en te verwijderen vanuit de portal. Zie [de onderstaande connector verwijderen met Power shell](#removing-the-connector-with-powershell) voor een script in Power shell gebruiken om bestaande verbindingen te verwijderen.
 >
->Zie [meerdere Azure Monitor Application Insights resources](../log-query/unify-app-resource-data.md)samen voegen voor hulp bij het opvragen van Application Insights logboek gegevens voor meerdere toepassingen. Voor meer informatie over de afschaffing van de OMS-Portal raadpleegt [u OMS Portal verplaatsen naar Azure](../../azure-monitor/platform/oms-portal-transition.md).
+>Zie [meerdere Azure Monitor Application Insights resources](../log-query/unify-app-resource-data.md)samen voegen voor hulp bij het opvragen van Application Insights logboek gegevens voor meerdere toepassingen. Voor meer informatie over de afschaffing van de OMS-Portal raadpleegt [u OMS Portal verplaatsen naar Azure](./oms-portal-transition.md).
 >
 > 
 
-De oplossing van de Application Insights-connector helpt u bij het diagnosticeren van prestatie problemen en inzicht te krijgen in wat gebruikers met uw app doen wanneer deze worden bewaakt met [Application Insights](../../azure-monitor/app/app-insights-overview.md). Weer gaven van dezelfde telemetrie van de toepassing die ontwikkel aars in Application Insights zien, zijn beschikbaar in Log Analytics. Wanneer u echter uw Application Insights-apps integreert met Log Analytics, wordt de zicht baarheid van uw toepassingen verhoogd door de bewerkings-en toepassings gegevens op één plek te hebben. Met dezelfde weer gaven kunt u samen werken met uw app-ontwikkel aars. De algemene weer gaven kunnen helpen de tijd te verminderen voor het detecteren en oplossen van problemen met toepassingen en platforms.
+De oplossing van de Application Insights-connector helpt u bij het diagnosticeren van prestatie problemen en inzicht te krijgen in wat gebruikers met uw app doen wanneer deze worden bewaakt met [Application Insights](../app/app-insights-overview.md). Weer gaven van dezelfde telemetrie van de toepassing die ontwikkel aars in Application Insights zien, zijn beschikbaar in Log Analytics. Wanneer u echter uw Application Insights-apps integreert met Log Analytics, wordt de zicht baarheid van uw toepassingen verhoogd door de bewerkings-en toepassings gegevens op één plek te hebben. Met dezelfde weer gaven kunt u samen werken met uw app-ontwikkel aars. De algemene weer gaven kunnen helpen de tijd te verminderen voor het detecteren en oplossen van problemen met toepassingen en platforms.
 
 Wanneer u de oplossing gebruikt, kunt u het volgende doen:
 
@@ -44,10 +44,10 @@ In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | No | De oplossing verzamelt geen gegevens van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | De oplossing verzamelt geen gegevens van Linux-agents. |
-| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | No | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
-| [Azure-opslag account](./resource-logs.md#send-to-log-analytics-workspace) | No | De oplossing verzamelt geen gegevens uit Azure Storage. |
+| [Windows-agents](./agent-windows.md) | Nee | De oplossing verzamelt geen gegevens van Windows-agents. |
+| [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen gegevens van Linux-agents. |
+| [SCOM-beheer groep](./om-agents.md) | Nee | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
+| [Azure-opslag account](./resource-logs.md#send-to-log-analytics-workspace) | Nee | De oplossing verzamelt geen gegevens uit Azure Storage. |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -55,9 +55,9 @@ In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen
 - U moet ten minste één geconfigureerde Application Insights Resource hebben.
 - U moet de eigenaar of bijdrager zijn van de Application Insights resource.
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
-1. Schakel de Azure Web Apps-analyse-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) of via het proces dat wordt beschreven in [log Analytics oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+1. Schakel de Azure Web Apps-analyse-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) of via het proces dat wordt beschreven in [log Analytics oplossingen toevoegen van de Oplossingengalerie](../insights/solutions.md).
 2. Blader naar [Azure Portal](https://portal.azure.com). Selecteer **alle services** om Application Insights te openen. Zoek vervolgens naar Application Insights. 
 3. Onder **abonnementen**selecteert u een abonnement met Application Insights resources en selecteert u vervolgens een of meer toepassingen onder **naam**.
 4. Klik op **Opslaan**.
@@ -144,7 +144,7 @@ Als u wilt draaien, klikt u op de weglatings tekens (**...**) die aan het einde 
 
 ### <a name="sample-corrected-data"></a>Voor beeld: gecorrigeerde gegevens
 
-Application Insights biedt een *[steekproef correctie](../../azure-monitor/app/sampling.md)* om het telemetrische verkeer te verminderen. Wanneer u steek proeven inschakelt voor uw Application Insights-app, krijgt u een beperkt aantal vermeldingen dat zowel in Application Insights als in Log Analytics is opgeslagen. Hoewel gegevens consistentie wordt bewaard op de **Application Insights-connector** pagina en perspectieven, moet u de voorbeeld gegevens voor uw aangepaste query's hand matig corrigeren.
+Application Insights biedt een *[steekproef correctie](../app/sampling.md)* om het telemetrische verkeer te verminderen. Wanneer u steek proeven inschakelt voor uw Application Insights-app, krijgt u een beperkt aantal vermeldingen dat zowel in Application Insights als in Log Analytics is opgeslagen. Hoewel gegevens consistentie wordt bewaard op de **Application Insights-connector** pagina en perspectieven, moet u de voorbeeld gegevens voor uw aangepaste query's hand matig corrigeren.
 
 Hier volgt een voor beeld van een voorbeeld correctie in een zoek opdracht in Logboeken:
 
@@ -163,8 +163,8 @@ De oplossing ontvangt de volgende telemetriegegevens van gegevens van uw verbond
 - Beschikbaarheid
 - Uitzonderingen
 - Aanvragen
-- Pagina weergaven: voor uw werk ruimte om pagina weergaven te ontvangen, moet u uw apps configureren om die informatie te verzamelen. Zie [page views](../../azure-monitor/app/api-custom-events-metrics.md#page-views)voor meer informatie.
-- Aangepaste gebeurtenissen: voor uw werk ruimte om aangepaste gebeurtenissen te ontvangen, moet u uw apps configureren om die informatie te verzamelen. Zie [track Event](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)voor meer informatie.
+- Pagina weergaven: voor uw werk ruimte om pagina weergaven te ontvangen, moet u uw apps configureren om die informatie te verzamelen. Zie [page views](../app/api-custom-events-metrics.md#page-views)voor meer informatie.
+- Aangepaste gebeurtenissen: voor uw werk ruimte om aangepaste gebeurtenissen te ontvangen, moet u uw apps configureren om die informatie te verzamelen. Zie [track Event](../app/api-custom-events-metrics.md#trackevent)voor meer informatie.
 
 Gegevens worden ontvangen door Log Analytics van Application Insights zodra deze beschikbaar wordt.
 
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Gebruik [Zoeken in Logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie weer te geven voor uw Application Insights-apps.
+- Gebruik [Zoeken in Logboeken](../log-query/log-query-overview.md) om gedetailleerde informatie weer te geven voor uw Application Insights-apps.
+

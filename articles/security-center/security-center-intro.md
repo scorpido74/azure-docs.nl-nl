@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bb75405a1cd1e282023936673aa73be25556e0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044274"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529349"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -53,7 +53,7 @@ Security Center beveiligt bovendien andere servers dan Azure-servers en virtuele
 
 De gebeurtenissen die worden verzameld van de agents en van Azure worden aan elkaar gerelateerd in de engine voor beveiligingsanalyses. Op basis hiervan worden u aanbevelingen op maat (beveiligingstaken), die u moet opvolgen om ervoor te zorgen dat uw workloads veilig zijn, en beveiligingswaarschuwingen geboden. U moet zulke waarschuwingen zo snel mogelijk onderzoeken om ervoor te zorgen dat uw workloads niet het doelwit worden van schadelijke aanvallen.
 
-Wanneer u Security Center inschakelt, wordt het beveiligingsbeleid dat is ingebouwd in Security Center in Azure Policy als een ingebouwd initiatief onder de Security Center-categorie weergegeven. Het ingebouwde initiatief wordt automatisch toegewezen aan alle abonnementen die bij Security Center zijn geregistreerd (gratis of Standard-categorie). Het ingebouwde initiatief bevat alleen controlebeleid. Zie [Werken met beveiligingsbeleid](tutorial-security-policy.md) voor meer informatie over Security Center-beleid in Azure Policy.
+Wanneer u Security Center inschakelt, wordt het beveiligingsbeleid dat is ingebouwd in Security Center in Azure Policy als een ingebouwd initiatief onder de Security Center-categorie weergegeven. Het ingebouwde initiatief wordt automatisch toegewezen aan alle abonnementen die bij Security Center zijn geregistreerd (Gratis of Standard-prijscategorie). Het ingebouwde initiatief bevat alleen controlebeleid. Zie [Werken met beveiligingsbeleid](tutorial-security-policy.md) voor meer informatie over Security Center-beleid in Azure Policy.
 
 ## <a name="strengthen-security-posture"></a>Beveiligingspostuur verbeteren
 

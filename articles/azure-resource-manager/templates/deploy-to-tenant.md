@@ -2,13 +2,13 @@
 title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321748"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
@@ -16,15 +16,32 @@ Als uw organisatie is gerijpt, moet u mogelijk [beleid](../../governance/policy/
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
-U kunt de volgende bron typen implementeren op Tenant niveau:
+Niet alle resource typen kunnen op het Tenant niveau worden geïmplementeerd. In deze sectie wordt een overzicht gegeven van de resource typen die worden ondersteund.
 
-* [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op beheer groepen of-abonnementen.
-* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+Gebruik voor Azure-beleid:
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+
+Gebruik voor op rollen gebaseerd toegangs beheer:
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+Voor geneste sjablonen die worden geïmplementeerd op beheer groepen,-abonnementen of-resource groepen, gebruikt u:
+
+* [implementaties](/azure/templates/microsoft.resources/deployments)
+
+Voor het maken van beheer groepen gebruikt u:
+
+* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+
+Voor het beheren van kosten gebruikt u:
+
+* [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
+* [Schriften](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>Schema
 
@@ -93,6 +110,56 @@ Voor implementaties op Tenant niveau moet u een locatie opgeven voor de implemen
 U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy.jsop** implementeert, maakt de standaard implementatie naam **azuredeploy**.
 
 Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code krijgt `InvalidDeploymentLocation` , moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
+
+## <a name="deployment-scopes"></a>Implementatie bereiken
+
+Wanneer u implementeert naar een Tenant, kunt u de Tenant-of beheer groepen, abonnementen en resource groepen in de Tenant richten. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+Resources die zijn gedefinieerd in de sectie resources van de sjabloon worden toegepast op de Tenant.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        tenant-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+Als u een beheer groep in de Tenant wilt richten, voegt u een geneste implementatie toe en geeft u de `scope` eigenschap op.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedMG",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 

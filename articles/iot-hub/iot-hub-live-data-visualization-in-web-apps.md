@@ -8,11 +8,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327562"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
 
@@ -48,7 +52,7 @@ In deze zelf studie leert u hoe u real-time sensor gegevens visualiseren die uw 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. Met de IoT-extensie worden IoT Hub-, IoT Edge- en IoT DPS-specifieke (Device Provisioning Service) opdrachten toegevoegd aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw CLI Shell-instantie toe te voegen. Met de IoT-extensie worden IoT Hub-, IoT Edge- en IoT DPS-specifieke (Device Provisioning Service) opdrachten toegevoegd aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -123,7 +127,7 @@ set IotHubConnectionString=YourIoTHubConnectionString
 set EventHubConsumerGroup=YourConsumerGroupName
 ```
 
-## <a name="run-the-web-app"></a>De web-app uitvoeren
+## <a name="run-the-web-app"></a>Voer de web-app uit
 
 1. Zorg ervoor dat het apparaat wordt uitgevoerd en dat er gegevens worden verzonden.
 

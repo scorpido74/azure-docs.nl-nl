@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Computer Vision 2,1 en 3,0-pak gedrukte en handgeschreven tekst-REST, java'
+title: 'Quickstart:  Computer Vision 2.1 en 3.0 - Gedrukte en handgeschreven tekst extraheren - REST, Java'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met Java.
+description: In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e68c56901616cfb2ea90fd67e5d08f09bb1adb92
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: bbd41c147b582eac2a28fdcf73a7d4dbc725f3b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987324"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538085"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision REST API en Java
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Quickstart: Gedrukte en handgeschreven tekst extraheren met behulp van de Computer Vision REST API en Java
 
-In deze Quick Start haalt u gedrukte en handgeschreven tekst uit een afbeelding op met behulp van de Computer Vision REST API. Met de [methoden lezen en](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) [Lees resultaat ophalen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine Lees bare teken stroom.
+In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 
 
 > [!IMPORTANT]
-> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het `Operation-Location` veld Antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API [Get Lees resultaat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) wordt aangegeven om de status te controleren en de resultaten van de aanroep van de methode Read te retour neren.
+> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
 
 ---
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* [Java &trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
+* [Java&trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -64,9 +64,8 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
     import org.json.JSONObject;
     ```
 
-1. Vervang de `Main` open bare klasse door de volgende code.
-1. U kunt eventueel de waarde van `language` met de taal die u wilt herkennen, vervangen. Geaccepteerde waarden zijn "en" voor Engels en "ES" voor Spaans.
-1. U kunt de waarde van vervangen door `imageToAnalyze` de URL van een andere afbeelding waaruit u tekst wilt extra heren.
+1. Vervang de openbare klasse `Main` door de volgende code.
+1. Vervang desgewenst de waarde van `imageToAnalyze` door de URL van een andere afbeelding waaruit u tekst wilt extraheren.
 1. Sla vervolgens het Java-project op en bouw het.
 1. Als u een IDE gebruikt, voert u `Main` uit. Open anders een opdrachtpromptvenster en gebruik de opdracht `java` om de compilatieklasse uit te voeren. Bijvoorbeeld `java Main`.
 
@@ -79,15 +78,10 @@ public class Main {
     private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
     private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
-    // Set the language that you want to recognize
-    // Accepted values are "en" for English, or "es" for Spanish
-    private static String language = "en";  
-
     private static String uriBase = endpoint + "/vision/v3.0/read/analyze";
 
     private static String imageToAnalyze =
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
-                    "Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg";
+            "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg";
 
     public static void main(String[] args) {
         CloseableHttpClient httpTextClient = HttpClientBuilder.create().build();
@@ -95,14 +89,12 @@ public class Main {
 
         System.out.println("Endpoint:         " + endpoint);
         System.out.println("Subscription key: " + subscriptionKey);
-        System.out.println("Language:         " + language);
 
         try {
             // This operation requires two REST API calls. One to submit the image
             // for processing, the other to retrieve the text found in the image.
 
             URIBuilder builder = new URIBuilder(uriBase);
-            builder.setParameter("language", language);
 
             // Prepare the URI for the REST API method.
             URI uri = builder.build();
@@ -389,7 +381,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldtoepassi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Daarna kunt u een Java-Swing-toepassing verkennen die gebruikmaakt van Computer Vision voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen.
+Een Java Swing-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren; slim bijgesneden miniaturen maken; en visuele kenmerken in een afbeelding detecteren, categoriseren, labelen en beschrijven.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met Java](../Tutorials/java-tutorial.md)

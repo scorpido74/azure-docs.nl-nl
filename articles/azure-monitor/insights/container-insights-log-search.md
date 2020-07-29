@@ -3,15 +3,16 @@ title: Logboeken van Azure Monitor voor containers opvragen | Microsoft Docs
 description: Azure Monitor voor containers worden metrische gegevens en logboek registraties verzameld, en in dit artikel worden de records beschreven en worden voorbeeld query's opgenomen.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298300"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320286"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Logboeken van Azure Monitor voor containers opvragen
 
-Azure Monitor voor containers verzamelt prestatie gegevens, inventaris gegevens en informatie over de status van container hosts en containers. De gegevens worden elke drie minuten verzameld en doorgestuurd naar de Log Analytics-werk ruimte in Azure Monitor. Deze gegevens zijn beschikbaar voor [query's](../../azure-monitor/log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
+Azure Monitor voor containers verzamelt prestatie gegevens, inventaris gegevens en informatie over de status van container hosts en containers. De gegevens worden elke drie minuten verzameld en doorgestuurd naar de Log Analytics-werk ruimte in Azure Monitor. Deze gegevens zijn beschikbaar voor [query's](../log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
 
 ## <a name="container-records"></a>Container records
 
@@ -47,7 +48,7 @@ De container logboeken uitvoer die wordt doorgestuurd naar uw werk ruimte zijn S
 
 Het is vaak handig om query's te bouwen die beginnen met een voor beeld of twee en deze vervolgens te wijzigen zodat ze aan uw vereisten voldoen. Om geavanceerdere query's te kunnen bouwen, kunt u experimenteren met de volgende voorbeeld query's:
 
-| Query’s uitvoeren | Description | 
+| Query’s uitvoeren | Beschrijving | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project computer, name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; weergave tabel | Alle levenscyclus gegevens van een container weer geven| 
 | KubeEvents_CL<br> &#124; waar niet (IsEmpty (Namespace_s))<br> &#124; sorteren op TimeGenerated desc<br> &#124; weergave tabel | Kubernetes-gebeurtenissen|
@@ -111,3 +112,4 @@ De uitvoer toont resultaten die vergelijkbaar zijn met het volgende voor beeld:
 ## <a name="next-steps"></a>Volgende stappen
 
 Azure Monitor voor containers bevat geen vooraf gedefinieerde set met waarschuwingen. Raadpleeg de procedures [voor het maken van prestatie waarschuwingen met Azure monitor voor containers](container-insights-alerts.md) voor meer informatie over het maken van aanbevolen waarschuwingen voor hoog CPU-en geheugen gebruik ter ondersteuning van uw DevOps-of operationele processen en procedures. 
+

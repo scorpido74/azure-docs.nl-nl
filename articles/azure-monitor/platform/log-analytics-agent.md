@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 9f8850b83b2af7f0d3007cd716f9e077361a02e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091110"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325284"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
@@ -72,15 +72,15 @@ Er zijn meerdere methoden om de Log Analytics-agent te installeren en uw compute
 
 |Bron | Methode | Beschrijving|
 |-------|-------------|-------------|
-|Azure VM| [Hand matig van de Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Geef Vm's op die u wilt implementeren vanuit de Log Analytics-werk ruimte. |
+|Azure VM| [Hand matig van de Azure Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Geef Vm's op die u wilt implementeren vanuit de Log Analytics-werk ruimte. |
 | | Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) of [Linux](../../virtual-machines/extensions/oms-linux.md) met behulp van Azure CLI of met een Azure Resource Manager sjabloon | Met de uitbrei ding wordt de Log Analytics agent op virtuele machines van Azure geïnstalleerd en Inge schreven in een bestaande Azure Monitor-werk ruimte. |
 | | [Azure Monitor voor virtuele machines](../insights/vminsights-enable-overview.md) | Wanneer u bewaking met Azure Monitor voor VM's inschakelt, wordt de Log Analytics extensie en agent geïnstalleerd. |
 | | [Automatische inrichting Azure Security Center](../../security-center/security-center-enable-data-collection.md) | Azure Security Center kunt de Log Analytics agent inrichten op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt als u deze inschakelt om te controleren op beveiligings problemen en bedreigingen. Als deze functie is ingeschakeld, wordt er een nieuwe of bestaande virtuele machine zonder geïnstalleerde agent ingericht. |
 | Hybride Windows-computer| [Hand matige installatie](agent-windows.md) | Installeer de micro soft Monitoring Agent vanaf de opdracht regel. |
 | | [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | Automatiseer de installatie met Azure Automation DSC. |
 | | [Resource Manager-sjabloon met Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | Gebruik een Azure Resource Manager sjabloon als u Microsoft Azure Stack in uw Data Center hebt geïmplementeerd.| 
-| Hybride Linux-computer| [Hand matige installatie](../../azure-monitor/learn/quick-collect-linux-computer.md)|Installeer de agent voor Linux die een wrapper-script aanroept dat wordt gehost op GitHub. | 
-| System Center Operations Manager|[Operations Manager integreren met Log Analytics](../../azure-monitor/platform/om-agents.md) | Configureer de integratie tussen Operations Manager en Azure Monitor logboeken voor het door sturen van verzamelde gegevens van Windows-computers die rapporteren aan een beheer groep.|  
+| Hybride Linux-computer| [Hand matige installatie](../learn/quick-collect-linux-computer.md)|Installeer de agent voor Linux die een wrapper-script aanroept dat wordt gehost op GitHub. | 
+| System Center Operations Manager|[Operations Manager integreren met Log Analytics](./om-agents.md) | Configureer de integratie tussen Operations Manager en Azure Monitor logboeken voor het door sturen van verzamelde gegevens van Windows-computers die rapporteren aan een beheer groep.|  
 
 
 ## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturingssystemen
@@ -189,10 +189,10 @@ De volgende tabel bevat de proxy-en firewall configuratie-informatie die is vere
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |
-|*.azure-automation.net |Poort 443 |Uitgaand|Yes |
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
+|*.azure-automation.net |Poort 443 |Uitgaand|Ja |
 
 Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
 
@@ -229,3 +229,4 @@ Bijvoorbeeld: `https://user01:password@proxy01.contoso.com:30443`
 * Bekijk [gegevens bronnen](agent-data-sources.md) om inzicht te krijgen in de gegevens bronnen die beschikbaar zijn voor het verzamelen van gegevens uit uw Windows-of Linux-systeem. 
 * Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 
 * Meer informatie over het [controleren van oplossingen](../insights/solutions.md) voor het toevoegen van functionaliteit aan Azure monitor en het verzamelen van gegevens in de log Analytics-werk ruimte.
+

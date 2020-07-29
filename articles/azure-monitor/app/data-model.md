@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671831"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320524"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie-gegevens model
 
-[Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) verzendt telemetrie van uw webtoepassing naar de Azure Portal, zodat u de prestaties en het gebruik van uw toepassing kunt analyseren. Het telemetrie-model is standaard, zodat het mogelijk is om platform-en taal onafhankelijke bewaking te maken. 
+[Azure-toepassing Insights](./app-insights-overview.md) verzendt telemetrie van uw webtoepassing naar de Azure Portal, zodat u de prestaties en het gebruik van uw toepassing kunt analyseren. Het telemetrie-model is standaard, zodat het mogelijk is om platform-en taal onafhankelijke bewaking te maken. 
 
 Gegevens die worden verzameld door Application Insights modellen dit typische toepassings uitvoerings patroon:
 
@@ -27,7 +28,7 @@ De volgende typen telemetrie worden gebruikt voor het bewaken van de uitvoering 
 
 * [**Aanvraag**](data-model-request-telemetry.md) -gegenereerd om een aanvraag te registreren die door uw app is ontvangen. Zo genereert de Application Insights Web SDK automatisch een telemetrie-aanvraag voor elke HTTP-aanvraag die uw web-app ontvangt. 
 
-    Een **bewerking** is de threads van de uitvoering waarmee een aanvraag wordt verwerkt. U kunt ook [code schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) voor het bewaken van andere soorten bewerkingen, zoals een ' Wake up ' in een Webtaak of functie waarmee periodiek gegevens worden verwerkt.  Elke bewerking heeft een ID. Deze ID die kan worden gebruikt voor het [groeperen](../../azure-monitor/app/correlation.md) van alle telemetrie die zijn gegenereerd tijdens de verwerking van de aanvraag door uw app. Elke bewerking slaagt of mislukt en heeft een tijds duur.
+    Een **bewerking** is de threads van de uitvoering waarmee een aanvraag wordt verwerkt. U kunt ook [code schrijven](./api-custom-events-metrics.md#trackrequest) voor het bewaken van andere soorten bewerkingen, zoals een ' Wake up ' in een Webtaak of functie waarmee periodiek gegevens worden verwerkt.  Elke bewerking heeft een ID. Deze ID die kan worden gebruikt voor het [groeperen](./correlation.md) van alle telemetrie die zijn gegenereerd tijdens de verwerking van de aanvraag door uw app. Elke bewerking slaagt of mislukt en heeft een tijds duur.
 * [**Uitzonde ring**](data-model-exception-telemetry.md) -geeft meestal een uitzonde ring aan die ervoor zorgt dat een bewerking mislukt.
 * [**Afhankelijkheid**](data-model-dependency-telemetry.md) : vertegenwoordigt een aanroep van uw app naar een externe service of opslag, zoals een rest API of SQL. In ASP.NET worden afhankelijkheids aanroepen naar SQL gedefinieerd door `System.Data` . Aanroepen van HTTP-eind punten worden gedefinieerd door `System.Net` . 
 
@@ -39,7 +40,7 @@ Application Insights biedt drie extra gegevens typen voor aangepaste telemetrie:
 
 Elk telemetrie-item kan de [context informatie](data-model-context.md) definiëren, zoals de toepassings versie of de gebruikers sessie-id. Context is een set sterk getypeerde velden waarmee bepaalde scenario's worden gedeblokkeerd. Wanneer de versie van de toepassing correct is geïnitialiseerd, kunnen Application Insights nieuwe patronen detecteren in het toepassings gedrag, gecorreleerd met een nieuwe implementatie. Sessie-id kan worden gebruikt voor het berekenen van de storing of het effect van een probleem op gebruikers. Het berekenen van het unieke aantal sessie-id-waarden voor een bepaalde mislukte afhankelijkheid, fout tracering of kritieke uitzonde ring geeft een goed beeld van een impact.
 
-Application Insights telemetrie-model definieert een manier om telemetrie te [correleren](../../azure-monitor/app/correlation.md) aan de bewerking waarvan het deel uitmaakt. Een aanvraag kan bijvoorbeeld een SQL Database aanroepen en vastgelegde diagnostische gegevens worden gemaakt. U kunt de correlatie context instellen voor de telemetrie-items die deze weer koppelen aan de telemetrie van de aanvraag.
+Application Insights telemetrie-model definieert een manier om telemetrie te [correleren](./correlation.md) aan de bewerking waarvan het deel uitmaakt. Een aanvraag kan bijvoorbeeld een SQL Database aanroepen en vastgelegde diagnostische gegevens worden gemaakt. U kunt de correlatie context instellen voor de telemetrie-items die deze weer koppelen aan de telemetrie van de aanvraag.
 
 ## <a name="schema-improvements"></a>Verbeteringen in het schema
 
@@ -49,7 +50,8 @@ Voor het rapporteren van gegevens model-of schema problemen en suggesties gebrui
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aangepaste telemetrie schrijven](../../azure-monitor/app/api-custom-events-metrics.md)
-- Meer informatie over hoe u [telemetrie kunt uitbreiden en filteren](../../azure-monitor/app/api-filtering-sampling.md).
-- Gebruik [steek proeven](../../azure-monitor/app/sampling.md) om de hoeveelheid telemetrie op basis van het gegevens model te minimaliseren.
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- [Aangepaste telemetrie schrijven](./api-custom-events-metrics.md)
+- Meer informatie over hoe u [telemetrie kunt uitbreiden en filteren](./api-filtering-sampling.md).
+- Gebruik [steek proeven](./sampling.md) om de hoeveelheid telemetrie op basis van het gegevens model te minimaliseren.
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

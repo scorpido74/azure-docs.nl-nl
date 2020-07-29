@@ -1,6 +1,6 @@
 ---
-title: Windows virtueel bureau blad Personal Desktop toewijzing (najaar 2019)-Azure
-description: Meer informatie over het configureren van het toewijzings type voor een virtueel bureau blad van Windows (najaar 2019 release) persoonlijk bureau blad-hostgroep.
+title: Windows virtueel bureau blad (klassiek) persoonlijk bureaublad toewijzings type-Azure
+description: Het toewijzings type voor een persoonlijk bureau blad-hostgroep voor een virtueel bureau blad (klassiek) configureren.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087183"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271039"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren (najaar 2019 release)
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren voor het virtuele bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../configure-host-pool-personal-desktop-assignment-type.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../configure-host-pool-personal-desktop-assignment-type.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 U kunt het toewijzings type van uw persoonlijke bureau blad-hostgroep zodanig configureren dat uw Windows Virtual Desktop-omgeving beter aansluit bij uw behoeften. In dit onderwerp wordt uitgelegd hoe u een automatische of directe toewijzing voor uw gebruikers kunt configureren.
 

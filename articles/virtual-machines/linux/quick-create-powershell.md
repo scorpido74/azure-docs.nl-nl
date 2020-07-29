@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een virtuele Linux-machine maken met Azure PowerShell'
+title: 'Quickstart: Een virtuele Linux-machine maken met Azure PowerShell'
 description: In deze snelstart leert u hoe u Azure PowerShell gebruikt om een virtuele Linux-machine te maken
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 397fac7609d9527165a1a0a35215a2e2bac23c6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510324"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Snelstart: Een virtuele Linux-machine maken in Azure met PowerShell
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Quickstart: Een virtuele Linux-machine maken in Azure met PowerShell
 
 De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze snelstart wordt beschreven hoe u de Azure PowerShell-module gebruikt voor het implementeren van een virtuele Linux-machine (VM) in Azure. In deze snelstart wordt de Marketplace-installatiekopie voor Ubuntu 16.04 LTS van Canonical gebruikt. Wanneer u uw virtuele machine in actie wilt zien, voert u ook SSH voor de virtuele machine uit en installeert u de NGINX-webserver.
 
@@ -39,11 +39,11 @@ ssh-keygen -t rsa -b 2048
 
 Zie [SSH-sleutels gebruiken met Windows](ssh-from-windows.md) voor gedetailleerde informatie over het maken van SSH-sleutelparen, waaronder het gebruik van PuTTy.
 
-Als u uw SSH-sleutelpaar met behulp van de Cloud Shell maakt, wordt deze opgeslagen in een containerinstallatiekopie in een [opslagaccount dat automatisch wordt gemaakt door Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Verwijder het opslagaccount of de bestanden die het bevat niet totdat u uw sleutels hebt opgehaald. Anders verliest u toegang tot de virtuele machine. 
+Als u uw SSH-sleutelpaar met behulp van de Cloud Shell maakt, wordt deze opgeslagen in een containerinstallatiekopie in een [opslagaccount dat automatisch wordt gemaakt door Cloud Shell](../../cloud-shell/persisting-shell-storage.md). Verwijder het opslagaccount of de bestanden die het bevat niet totdat u uw sleutels hebt opgehaald. Anders verliest u toegang tot de virtuele machine. 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een Azure-resourcegroep met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd:
+Maak een Azure-resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -111,7 +111,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Een virtuele netwerkinterfacekaart (NIC) maken met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). De virtuele NIC verbindt de virtuele machine met een subnet, netwerkbeveiligingsgroep en openbaar IP-adres.
+Een virtuele netwerkinterfacekaart (NIC) maken met [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). De virtuele NIC verbindt de virtuele machine met een subnet, netwerkbeveiligingsgroep en openbaar IP-adres.
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -160,7 +160,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Combineer nu de vorige configuratiedefinities met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+Combineer nu de vorige configuratiedefinities met [New-AzVM](/powershell/module/az.compute/new-azvm):
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -172,7 +172,7 @@ Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Maak een SSH-verbinding met de virtuele machine met behulp van het openbare IP-adres. Gebruik de cmdlet [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van de virtuele machine te bekijken:
+Maak een SSH-verbinding met de virtuele machine met behulp van het openbare IP-adres. Gebruik de cmdlet [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van de virtuele machine te bekijken:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -203,11 +203,11 @@ Wanneer u klaar bent, typt u `exit` om de SSH-sessie te verlaten.
 
 Gebruik een webbrowser naar keuze om de standaard NGINX-welkomstpagina weer te geven. Gebruik het openbare IP-adres van uw VM als het webadres. Het openbare IP-adres kan worden gevonden op de overzichtspagina van de virtuele machine of als onderdeel van de SSH-verbindingsreeks die u eerder hebt gebruikt.
 
-![NGINX standaard welkomst pagina](./media/quick-create-cli/nginix-welcome-page.png)
+![Standaard welkomstpagina van NGINX](./media/quick-create-cli/nginix-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep, de VM en alle gerelateerde resources te verwijderen wanneer u ze niet meer nodig hebt:
+U kunt de cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep, de VM en alle gerelateerde resources te verwijderen wanneer u ze niet meer nodig hebt:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

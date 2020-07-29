@@ -1,7 +1,7 @@
 ---
 title: Azure VM-netwerk doorvoer testen
 titlesuffix: Azure Virtual Network
-description: Meer informatie over het testen van de netwerk doorvoer voor virtuele Azure-machines.
+description: Gebruik NTTTCP om het netwerk te richten op het testen en Minimaliseer het gebruik van andere bronnen die van invloed kunnen zijn op de prestaties.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708243"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265174"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bandbreedte/doorvoer testen (NTTTCP)
 

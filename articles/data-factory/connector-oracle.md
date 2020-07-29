@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416829"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171258"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Oracle met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze Oracle-Connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit een Oracle-data base kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar een Oracle-data base. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit.
 
@@ -76,6 +76,8 @@ De gekoppelde Oracle-Service ondersteunt de volgende eigenschappen:
 
 >[!TIP]
 >Als er een fout optreedt, wordt de waarde ' ORA-01025: UPI-para meter buiten bereik ' weer geven en is uw Oracle-versie 8i `WireProtocolMode=1` . Voeg aan uw connection string toe. Probeer het opnieuw.
+
+Als u meerdere Oracle-exemplaren voor failover-scenario hebt, kunt u een gekoppelde Oracle-service maken en de primaire host, poort, gebruikers naam, wacht woord, enzovoort, toevoegen en een nieuwe '**aanvullende verbindings eigenschappen**' met de naam van de eigenschap en `AlternateServers` de waarde als `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` -niet missen en de dubbele punten ( `:` ) als scheidings teken best uren. De volgende waarde van alternatieve servers definieert bijvoorbeeld twee alternatieve database servers voor de failover van de verbinding: `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` .
 
 Meer verbindings eigenschappen die u in connection string per case kunt instellen:
 
@@ -177,7 +179,7 @@ Als u gegevens wilt kopiëren van en naar Oracle, stelt u de eigenschap type van
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op `OracleTable` . | Ja |
 | schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
 | tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik en voor nieuwe werk `schema` belasting `table` . | Nee voor bron, ja voor Sink |
 
 **Voorbeeld:**
@@ -369,7 +371,7 @@ Wanneer u gegevens van en naar Oracle kopieert, zijn de volgende toewijzingen va
 | Neem |DateTime |
 | TIJDS TEMPEL MET LOKALE TIJD ZONE |Tekenreeks |
 | TIJDS TEMPEL MET TIJD ZONE |Tekenreeks |
-| NIET-ONDERTEKEND GEHEEL GETAL |Aantal |
+| NIET-ONDERTEKEND GEHEEL GETAL |Getal |
 | VARCHAR2 |Tekenreeks |
 | XML |Tekenreeks |
 

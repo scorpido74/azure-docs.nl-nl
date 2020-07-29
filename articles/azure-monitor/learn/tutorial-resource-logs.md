@@ -1,73 +1,73 @@
 ---
-title: Resource logboeken verzamelen van een Azure-resource en analyseren met Azure Monitor
-description: Zelf studie voor het configureren van diagnostische instellingen om bron logboeken te verzamelen van een Azure-resource in een Log Analytics-werk ruimte, waar ze kunnen worden geanalyseerd met een logboek query.
+title: Resourcelogboeken verzamelen van een Azure-resource en analyseren met Azure Monitor
+description: Zelfstudie voor het configureren van diagnostische instellingen voor het verzamelen van resourcelogboeken van een Azure-resource in een werkruimte van Log Analytics waar ze kunnen worden geanalyseerd met een logboekquery.
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505836"
 ---
-# <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Zelf studie: resource logboeken verzamelen en analyseren vanuit een Azure-resource
+# <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Zelfstudie: Resourcelogboeken van een Azure-resource verzamelen en analyseren
 
-Bron logboeken bieden inzicht in de gedetailleerde werking van een Azure-resource en zijn nuttig voor het bewaken van hun status en beschik baarheid. Azure-resources genereren automatisch resource logboeken, maar u moet configureren waar ze moeten worden verzameld. In deze zelf studie wordt u begeleid bij het maken van een diagnostische instelling voor het verzamelen van resource logboeken voor een resource in uw Azure-abonnement en het analyseren van de gegevens met een logboek query.
+Resourcelogboeken bieden inzicht in de gedetailleerde werking van een Azure-resource en zijn handig om de status en beschikbaarheid van een resource te controleren. Azure-resources genereren automatisch resourcelogboeken, maar u moet instellen waar ze moeten worden verzameld. In deze zelfstudie gaat u een diagnostische instelling definiëren voor het verzamelen van resourcelogboeken voor een resource in uw Azure-abonnement, waarna u de logboeken analyseert met behulp van een logboekquery.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Log Analytics-werk ruimte maken in Azure Monitor
-> * Een diagnostische instelling maken om bron logboeken te verzamelen 
-> * Een eenvoudige logboek query maken voor het analyseren van Logboeken
+> * Een Log Analytics-werkruimte maken in Azure Monitor
+> * Een diagnostische instelling definiëren voor het verzamelen van resourcelogboeken 
+> * Een eenvoudige logboekquery maken voor het analyseren van logboeken
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze zelf studie hebt u een Azure-resource nodig om te bewaken. U kunt elke resource in uw Azure-abonnement gebruiken die Diagnostische instellingen ondersteunt. Als u wilt bepalen of een resource Diagnostische instellingen ondersteunt, gaat u naar het menu van het Azure Portal en controleert u of er een **Diagnostische instellingen** optie is in de sectie **bewaking** van het menu.
+Voor deze zelfstudie hebt u een Azure-resource nodig die kan worden gecontroleerd. U kunt hiervoor elke resource in uw Azure-abonnement gebruiken die ondersteuning biedt voor diagnostische instellingen. Dit kunt u vaststellen door in de Azure-portal naar het menu van de resource te gaan en te kijken of er een optie **Diagnostische instellingen** staat in de sectie **Controle** van het menu.
 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
-Meld u aan bij de Azure Portal [https://portal.azure.com](https://portal.azure.com)op.
+Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
 
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
-Met een Log Analytics-werk ruimte in Azure Monitor worden logboek gegevens uit verschillende bronnen verzameld en geïndexeerd en kunnen geavanceerde analyses worden gebruikt met een krachtige query taal. De Log Analytics-werk ruimte moet bestaan voordat u een diagnostische instelling kunt maken om gegevens te verzenden. U kunt een bestaande werk ruimte in uw Azure-abonnement gebruiken of er een maken met de volgende procedure. 
+Een Log Analytics-werkruimte in Azure Monitor verzamelt en indexeert logboekgegevens uit verschillende bronnen en maakt geavanceerde analyses mogelijk met behulp van een krachtige querytaal. De Log Analytics-werkruimte moet bestaan voordat u een diagnostische instelling maakt om gegevens naar de werkruimte te verzenden. U kunt een bestaande werkruimte gebruiken uit uw Azure-abonnement of er een maken met de volgende procedure. 
 
 > [!NOTE]
-> U kunt werken met gegevens in Log Analytics werk ruimten in het menu **Azure monitor** door werk ruimten te maken en te beheren in het menu **log Analytics-werk ruimten** .
+> Hoewel u kunt werken met gegevens in werkruimten van Log Analytics via het menu **Azure Monitor**, maakt en beheert u werkruimten via het menu **Log Analytics-werkruimten**.
 
-1. Selecteer in **alle services** **log Analytics-werk ruimten**.
-2. Klik boven aan het scherm op **toevoegen** en geef de volgende details op voor de werk ruimte:
-   - **Log Analytics werk ruimte**: naam voor de nieuwe werk ruimte. Deze naam moet globaal uniek zijn in alle Azure Monitor-abonnementen.
-   - **Abonnement**: Selecteer het abonnement om de werk ruimte op te slaan. Dit hoeft niet hetzelfde abonnement te zijn als de resource die wordt bewaakt.
-   - **Resource groep**: Selecteer een bestaande resource groep of klik op **Nieuw maken** om een nieuwe te maken. Dit hoeft niet dezelfde resource groep te zijn als de resource die wordt bewaakt.
-   - **Locatie**: Selecteer een Azure-regio of maak een nieuwe. Dit hoeft niet dezelfde locatie te zijn als de bron die wordt bewaakt.
-   - **Prijs categorie**: Selecteer *betalen per gebruik* als prijs categorie. U kunt deze prijs categorie later wijzigen. Klik op de **log Analytics prijs** koppeling voor meer informatie over de verschillende prijs categorieën.
+1. Ga naar **Alle services** en selecteer **Log Analytics-werkruimten**.
+2. Klik bovenaan het scherm op **Toevoegen** en geef de volgende gegevens op voor de werkruimte:
+   - **Log Analytics-werkruimte**: Een naam voor de nieuwe werkruimte. Deze naam moet uniek zijn binnen alle Azure Monitor-abonnementen.
+   - **Abonnement**: Selecteer het abonnement voor het opslaan van de werkruimte. Dit hoeft niet hetzelfde abonnement te zijn als dat van de resource die u wilt controleren.
+   - **Resourcegroep**: Selecteer een bestaande resourcegroep of klik op **Nieuw** om er een te maken. Dit hoeft niet dezelfde resourcegroep te zijn als die van de resource die u wilt controleren.
+   - **Locatie**: Selecteer een Azure-regio of maak er een. Dit hoeft niet dezelfde locatie te zijn als die van de resource die u wilt controleren.
+   - **Prijscategorie**: Selecteer *Betalen per gebruik* als de prijscategorie. U kunt deze prijscategorie later wijzigen. Klik op de koppeling **Log Analytics-prijzen** voor meer informatie over de verschillende prijscategorieën.
 
     ![Nieuwe werkruimte](media/tutorial-resource-logs/new-workspace.png)
 
-3. Klik op **OK** om de werk ruimte te maken.
+3. Klik op **OK** om de werkruimte te maken.
 
 ## <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken
-[Diagnostische instellingen](../platform/diagnostic-settings.md) bepalen waar bron logboeken voor een bepaalde resource moeten worden verzonden. Eén diagnostische instelling kan meerdere [bestemmingen](../platform/diagnostic-settings.md#destinations)hebben, maar in deze zelf studie wordt alleen een log Analytics-werk ruimte gebruikt.
+[Diagnostische instellingen](../platform/diagnostic-settings.md) bepalen waarnaar resourcelogboeken moeten worden verzonden voor een bepaalde resource. Een diagnostische instelling kan meerdere [bestemmingen](../platform/diagnostic-settings.md#destinations) hebben, maar in deze zelfstudie gebruiken we alleen een Log Analytics-werkruimte.
 
-1. Selecteer **Diagnostische instellingen**in het gedeelte **bewaking** van het menu van de resource.
-2. U moet een bericht ' geen diagnostische instellingen gedefinieerd ' hebben. Klik op **Diagnostische instelling toevoegen**.
+1. Selecteer in de sectie **Controle** van uw resourcemenu de optie **Diagnostische instellingen**.
+2. U ziet een bericht dat er geen diagnostische instellingen zijn gedefinieerd. Klik op **Diagnostische instelling toevoegen**.
 
     ![Diagnostische instellingen](media/tutorial-resource-logs/diagnostic-settings.png)
 
-3. Elke diagnostische instelling heeft drie basis onderdelen:
+3. Elke diagnostische instelling bestaat uit drie basisonderdelen:
  
-   - **Naam**: dit heeft geen significant effect en moet alleen voor u een beschrijving zijn.
-   - **Doelen**: een of meer bestemmingen voor het verzenden van de logboeken. Alle Azure-Services delen dezelfde set van drie mogelijke bestemmingen. Elke diagnostische instelling kan een of meer bestemmingen definiëren, maar niet meer dan één bestemming van een bepaald type. 
-   - **Categorieën**: logboeken die moeten worden verzonden naar elke bestemming. De set categorieën varieert per Azure-service.
+   - **Naam**: Dit onderdeel is niet zo belangrijk en u kunt hier een beschrijvende naam opgeven.
+   - **Bestemmingen**: Een of meer bestemmingen voor de logboeken. Alle Azure-services delen dezelfde set van drie mogelijke bestemmingen. Elke diagnostische instelling kan een of meer bestemmingen hebben, maar niet meer dan één bestemming van een bepaald type. 
+   - **Categorieën**: Categorieën van logboeken voor verzending naar elk van de bestemmingen. De set categorieën verschilt per Azure-service.
 
-4. Selecteer **verzenden naar log Analytics werk ruimte** en selecteer vervolgens de werk ruimte die u hebt gemaakt.
-5. Selecteer de categorieën die u wilt verzamelen. Raadpleeg de documentatie voor elke service voor een definitie van de beschik bare categorieën.
+4. Selecteer **Verzenden naar Log Analytics-werkruimte** en selecteer vervolgens de werkruimte die u hebt gemaakt.
+5. Selecteer de categorieën die u wilt verzamelen. Raadpleeg de documentatie voor elke service voor een definitie van de beschikbare categorieën.
 
     ![Diagnostische instelling](media/tutorial-resource-logs/diagnostic-setting.png)
 
@@ -75,33 +75,33 @@ Met een Log Analytics-werk ruimte in Azure Monitor worden logboek gegevens uit v
 
     
  
- ## <a name="use-a-log-query-to-retrieve-logs"></a>Een logboek query gebruiken om logboeken op te halen
-Gegevens worden opgehaald uit een Log Analytics-werk ruimte met behulp van een logboek query die is geschreven in Kusto query language (KQL). Inzichten en oplossingen in Azure Monitor bieden logboek query's om gegevens voor een bepaalde service op te halen, maar u kunt rechtstreeks werken met logboek query's en de resultaten daarvan in de Azure Portal met Log Analytics. 
+ ## <a name="use-a-log-query-to-retrieve-logs"></a>Logboeken ophalen met een logboekquery
+U kunt gegevens ophalen uit een Log Analytics-werkruimte met behulp van een logboekquery die is geschreven in Kusto Query Language (KQL). Inzichten en oplossingen in Azure Monitor bieden logboekquery's voor het ophalen van gegevens voor een bepaalde service, maar u kunt ook rechtstreeks met logboekquery's werken en met hun resultaten in de Azure-portal met Log Analytics. 
 
-1. Selecteer **Logboeken**onder de sectie **bewaking** van het menu van de resource.
-2. Log Analytics wordt geopend met een leeg query venster met het bereik dat is ingesteld op uw resource. Alle query's bevatten alleen records van die resource.
+1. Selecteer in de sectie **Controle** van uw resourcemenu de optie **Logboeken**.
+2. Log Analytics wordt geopend met een leeg queryvenster met het bereik ingesteld op uw resource. Alle query's retourneren alleen records uit die resource.
 
     > [!NOTE]
-    > Als u Logboeken vanuit het Azure Monitor menu hebt geopend, wordt de scope ingesteld op de Log Analytics-werk ruimte. In dit geval bevatten alle query's alle records in de werk ruimte.
+    > Als u Logboeken hebt geopend via het menu Azure Monitor, is het bereik ingesteld op de Log Analytics-werkruimte. In dit geval bevatten alle query's alle records in de werkruimte.
    
     ![Logboeken](media/tutorial-resource-logs/logs.png)
 
-4. Met de service die in het voor beeld wordt weer gegeven, worden bron logboeken naar de tabel **AzureDiagnostics** geschreven, maar andere services kunnen naar andere tabellen schrijven. Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](../platform/diagnostic-logs-schema.md) voor tabellen die worden gebruikt door verschillende Azure-Services.
+4. De service in het voorbeeld schrijft resourcelogboeken weg naar de tabel **AzureDiagnostics**, maar andere services kunnen gegevens wegschrijven naar andere tabellen. Zie [Ondersteunde services, schema's en categorieën voor Azure-resourcelogboeken](../platform/resource-logs-schema.md) voor de tabellen die worden gebruikt door de verschillende Azure-services.
 
     > [!NOTE]
-    > Meerdere services schrijven resource logboeken naar de tabel AzureDiagnostics. Als u Log Analytics start vanuit het menu Azure Monitor, moet u een `where` instructie toevoegen met de `ResourceProvider` kolom om uw specifieke service op te geven. Wanneer u Log Analytics start vanuit het menu van een resource, wordt de scope ingesteld op alleen records van deze resource, zodat deze kolom niet vereist is. Raadpleeg de documentatie van de service voor voorbeeld query's.
+    > Er zijn diverse services die resourcelogboeken wegschrijven naar de tabel AzureDiagnostics. Als u Log Analytics start vanuit het menu Azure Monitor, moet u een instructie `where` met de kolom `ResourceProvider` toevoegen om de specifieke service aan te geven. Wanneer u Log Analytics start via het menu van een resource, wordt het bereik ingesteld op alleen records uit deze resource. U hoeft deze kolom dan niet toe te voegen. Raadpleeg de documentatie van de service voor voorbeeldquery's.
 
 
-5. Typ een query en klik op **uitvoeren** om de resultaten te controleren. 
-6. Zie [aan de slag met logboek query's in azure monitor](../log-query/get-started-queries.md) voor een zelf studie over het schrijven van logboek query's.
+5. Typ een query en klik op **Uitvoeren** om de resultaten te bekijken. 
+6. Zie [Aan de slag met logboekquery's in Azure Monitor](../log-query/get-started-queries.md) voor een zelfstudie over het schrijven van logboekquery's.
 
-    ![Logboek query](media/tutorial-resource-logs/log-query-1.png)
+    ![Logboekquery](media/tutorial-resource-logs/log-query-1.png)
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u hebt geleerd hoe u resource Logboeken kunt verzamelen in een Log Analytics-werk ruimte, voltooit u een zelf studie over het schrijven van logboek query's voor het analyseren van deze gegevens.
+U weet nu hoe u resourcelogboeken kunt verzamelen in een Log Analytics-werkruimte. De volgende stap is het volgen van een zelfstudie voor het schrijven van logboekquery's om deze gegevens te analyseren.
 
 > [!div class="nextstepaction"]
-> [Aan de slag met logboek query's in Azure Monitor](../log-query/get-started-queries.md)
+> [Aan de slag met logboekquery’s in Azure Monitor](../log-query/get-started-queries.md)

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c7e6733a9149008f6ed98ae7a7e0103f92f79f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325267"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standaard eigenschappen in Azure Monitor logboeken
 Gegevens in Azure Monitor logboeken worden [opgeslagen als een set records in een log Analytics werk ruimte of Application Insights toepassing](../log-query/logs-structure.md), elk met een bepaald gegevens type met een unieke set eigenschappen. Veel gegevens typen hebben standaard eigenschappen die gemeen schappelijk zijn voor meerdere typen. In dit artikel worden deze eigenschappen beschreven en vindt u voor beelden van hoe u deze kunt gebruiken in query's.
@@ -210,5 +211,6 @@ union withsource = tt *
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees meer over hoe [Azure monitor logboek gegevens worden opgeslagen](../log-query/log-query-overview.md).
-- Lees een les over het [schrijven van logboek query's](../../azure-monitor/log-query/get-started-queries.md).
-- Maak een les over het [koppelen van tabellen in logboek query's](../../azure-monitor/log-query/joins.md).
+- Lees een les over het [schrijven van logboek query's](../log-query/get-started-queries.md).
+- Maak een les over het [koppelen van tabellen in logboek query's](../log-query/joins.md).
+

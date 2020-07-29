@@ -3,12 +3,12 @@ title: De Azure Resource Manager-sjabloon van een virtuele machine weer geven en
 description: Meer informatie over het gebruik van de Azure Resource Manager-sjabloon van een virtuele machine om andere Vm's te maken
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a53a6ad44cac59bd925e6d200ca50074a2fcd963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272688"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Virtuele machines maken met behulp van een Azure Resource Manager sjabloon 
 
@@ -35,7 +35,7 @@ Er zijn twee manieren om Vm's in DevTest Labs te maken met behulp van een resour
 
 In de rest van dit artikel worden Resource Manager-sjablonen beschreven die gebruikmaken van micro soft. DevTestLab/Labs/informatie. Deze worden gebruikt door Lab-beheerders voor het automatiseren van het maken van Lab-VM'S (bijvoorbeeld claim bare Vm's) of het genereren van gouden installatie kopieën (bijvoorbeeld image Factory).
 
-[Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) bieden tal van richt lijnen en suggesties om u te helpen bij het maken van Azure Resource Manager sjablonen die betrouwbaar en gemakkelijk te gebruiken zijn.
+[Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-best-practices.md) bieden tal van richt lijnen en suggesties om u te helpen bij het maken van Azure Resource Manager sjablonen die betrouwbaar en gemakkelijk te gebruiken zijn.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>De Resource Manager-sjabloon van een virtuele machine weer geven en opslaan
 1. Volg de stappen bij het [maken van uw eerste vm in een Lab](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) om te beginnen met het maken van een virtuele machine.

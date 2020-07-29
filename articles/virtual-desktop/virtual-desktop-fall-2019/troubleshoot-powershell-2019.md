@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop Power shell (najaar 2019)-Azure
-description: Het oplossen van problemen met Power shell bij het instellen van een Windows Virtual Desktop (versie van 2019)-Tenant omgeving.
+title: Virtueel bureau blad van Windows (klassiek) Power shell-Azure
+description: Problemen met Power shell oplossen bij het instellen van een Windows-Tenant omgeving (virtueel bureau blad).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ef12d6de8820740be687bd09ffaa5a8e69eb86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085806"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269611"
 ---
-# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Windows Power shell voor virtueel bureau blad (najaar 2019-versie)
+# <a name="windows-virtual-desktop-classic-powershell"></a>Windows virtueel bureau blad (klassiek) Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-powershell.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../troubleshoot-powershell.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Gebruik dit artikel om fouten en problemen op te lossen bij het gebruik van Power shell met Windows virtueel bureau blad. Zie [Windows Virtual Desktop Power shell](/powershell/module/windowsvirtualdesktop/)(Engelstalig) voor meer informatie over Extern bureaublad-services Power shell.
 

@@ -3,16 +3,16 @@ title: PowerShell gebruiken om Application Insights in te stellen in Azure | Mic
 description: Automatisch configureren van Azure Diagnostics om gegevens te pipeen op Application Insights.
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 20f5a5c61c65b476a98c59b24283a2d15c39ddae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111181"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320354"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Power shell gebruiken voor het instellen van Application Insights voor Azure Cloud Services
 
-[Microsoft Azure](https://azure.com) kan zo [worden geconfigureerd dat er diagnostische Azure-gegevens worden verzonden](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) naar [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). De diagnostische gegevens hebben betrekking op Azure Cloud Services en virtuele Azure-machines. Ze vormen een aanvulling op de telemetrie die u vanuit de app verzendt met behulp van de Application Insights-SDK. Als onderdeel van het automatiseringsproces voor het maken van nieuwe resources in Azure kunt u het verzenden van diagnostische gegevens configureren met PowerShell.
+[Microsoft Azure](https://azure.com) kan zo [worden geconfigureerd dat er diagnostische Azure-gegevens worden verzonden](../platform/diagnostics-extension-to-application-insights.md) naar [Azure Application Insights](./app-insights-overview.md). De diagnostische gegevens hebben betrekking op Azure Cloud Services en virtuele Azure-machines. Ze vormen een aanvulling op de telemetrie die u vanuit de app verzendt met behulp van de Application Insights-SDK. Als onderdeel van het automatiseringsproces voor het maken van nieuwe resources in Azure kunt u het verzenden van diagnostische gegevens configureren met PowerShell.
 
 ## <a name="azure-template"></a>Azure-sjabloon
 Als de web-app in Azure wordt uitgevoerd en u uw resources maakt met een Azure Resource Manager-sjabloon, kunt u Application Insights configureren door dit aan het resource-knooppunt toe te voegen:
@@ -123,8 +123,8 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 
-## <a name="see-also"></a>Zie ook
-* [Azure Cloud Services-apps bewaken met Application Insights](../../azure-monitor/app/cloudservices.md)
-* [Diagnostische Azure-gegevens verzenden naar Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+## <a name="see-also"></a>Zie tevens
+* [Azure Cloud Services-apps bewaken met Application Insights](./cloudservices.md)
+* [Diagnostische Azure-gegevens verzenden naar Application Insights](../platform/diagnostics-extension-to-application-insights.md)
 * [Het configureren van waarschuwingen automatiseren](powershell-alerts.md)
 

@@ -4,17 +4,17 @@ description: Meer informatie over het installeren en configureren van PostgreSQL
 author: cynthn
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 6efc8a7e6478ed874caf925e10ef43c04343d254
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267248"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL op Azure installeren en configureren
 PostgreSQL is een geavanceerde open source-data base, vergelijkbaar met Oracle en DB2. Het bevat bedrijfs klare functies, zoals volwaardige naleving, betrouw bare transactionele verwerking en gelijktijdigheids beheer met meerdere versies. Het biedt ook ondersteuning voor standaarden zoals ANSI SQL en SQL/MED (waaronder Foreign data-wrappers voor Oracle, MySQL, MongoDB en vele andere). Het is zeer uitbreidbaar met ondersteuning voor meer dan 12 procedurele talen, EGINNEN-en concept indexen, ondersteuning voor ruimtelijke gegevens en meerdere NoSQL functies voor JSON of op sleutel waarde gebaseerde toepassingen.
@@ -259,7 +259,7 @@ Voeg eerst gegevens in een rij in:
 INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 ```
 
-U hoort deze uitvoer te zien:
+De uitvoer moet er ongeveer als volgt uitzien:
 
 ![image](./media/postgresql-install/no6.png)
 

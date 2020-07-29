@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321884"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Complexe acties met Azure Monitor waarschuwingen activeren
 
@@ -19,7 +19,7 @@ Dit artikel laat u zien hoe u een logische app kunt instellen en activeren om ee
 
 ## <a name="overview"></a>Overzicht
 
-Wanneer een Azure Monitor waarschuwing wordt geactiveerd, wordt een [actie groep](../../azure-monitor/platform/action-groups.md)aangeroepen. Met actie groepen kunt u een of meer acties activeren om anderen op de hoogte te stellen van een waarschuwing en deze ook te herstellen.
+Wanneer een Azure Monitor waarschuwing wordt geactiveerd, wordt een [actie groep](./action-groups.md)aangeroepen. Met actie groepen kunt u een of meer acties activeren om anderen op de hoogte te stellen van een waarschuwing en deze ook te herstellen.
 
 Het algemene proces is:
 
@@ -294,6 +294,7 @@ Het proces voor het maken van een metrische waarschuwing is vergelijkbaar met he
 Logic Apps heeft een aantal verschillende connectors waarmee u acties kunt activeren in een breed scala aan toepassingen en data bases. Toegestane vertraging, SQL Server, Oracle, Sales Force, zijn slechts enkele voor beelden. Zie [Logic app-connectors](../../connectors/apis-list.md)voor meer informatie over connectors.  
 
 ## <a name="next-steps"></a>Volgende stappen
-* Bekijk een [overzicht van de waarschuwingen voor Azure-activiteiten logboeken](../../azure-monitor/platform/alerts-overview.md) en lees hoe u waarschuwingen kunt ontvangen.  
+* Bekijk een [overzicht van de waarschuwingen voor Azure-activiteiten logboeken](./alerts-overview.md) en lees hoe u waarschuwingen kunt ontvangen.  
 * Meer informatie over het [configureren van waarschuwingen wanneer een Azure service Health-melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* Meer informatie over [actie groepen](../../azure-monitor/platform/action-groups.md).
+* Meer informatie over [actie groepen](./action-groups.md).
+

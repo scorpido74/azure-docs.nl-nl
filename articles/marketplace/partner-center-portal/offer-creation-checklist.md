@@ -5,30 +5,32 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101705"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327392"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Controle lijst voor het maken van SaaS-aanbiedingen in partner centrum
 
-Het proces voor het maken van SaaS-aanbiedingen leidt u door meerdere pagina's.  Hier vindt u de details die u op elke pagina kunt opgeven, met koppelingen voor meer informatie over elk item.
+Het proces voor het maken van SaaS-aanbiedingen gaat door meerdere pagina's.  In dit artikel worden de details beschreven die u op elke pagina kunt opgeven, met koppelingen voor meer informatie over elk item.
+
+> [!NOTE]
+> Als u een voor transactable SaaS-aanbieding maakt, zorg er dan voor dat u integratie implementeert met [SaaS-fulfillment-api's](./pc-saas-fulfillment-apis.md).  Integratie met de Api's is de enige manier om de trans acties op Marketplace goed te laten werken. U moet er ook voor zorgen dat uw app gebruikmaakt van Azure AD-verificatie met eenmalige aanmelding (SSO). Zie [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](../azure-ad-saas.md).
 
 De items die u moet opgeven of opgeven, worden hieronder vermeld.  Sommige gebieden zijn optioneel of bevatten standaard waarden, die u naar wens kunt wijzigen.  U hoeft niet aan deze secties te werken in de volg orde die hier wordt vermeld.
 
->[!Note]
->Als u een voor transactable SaaS-aanbieding maakt, zorg er dan voor dat u integratie implementeert met [SaaS-fulfillment-api's](./pc-saas-fulfillment-apis.md).  Integratie met de Api's is de enige manier om de trans acties op Marketplace goed te laten werken.
-
-| **Item**    | **Functie**  |
+| **Item**    | **Doel**  |
 | :---------- | :-------------------|
 | [**Nieuwe aanbieding modaal**](#new-offer-modal) | Verzamelt identiteits gegevens van de aanbieding.  |
 | [Pagina aanbieding instellen](#offer-setup-page) | Met kunt u zich aanmelden voor belang rijke functies en kiezen hoe u uw aanbieding via micro soft wilt verkopen.  |
 | [Eigenschappen pagina](#properties-page) | Definieer de categorieën en industrieën die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, de juridische contracten die uw aanbieding ondersteunen en uw app-versie. |
 | [Aanbiedings pagina](#offer-listing-page) | Definieer de details van de aanbieding die moeten worden weer gegeven op Marketplace, inclusief beschrijvingen van uw aanbieding en marketing assets.|
 | [Voorbeeld pagina](#preview-page) | Definieer een beperkte preview-doel groep voor het vrijgeven van uw aanbieding voordat u uw aanbieding Live publiceert naar de bredere doel groep (en) van de Marketplace.|
-| [Pagina technische configuratie aanbieding](#technical-configuration-page)  |  Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen.  Definieer de technische details (URL van de landings pagina, de URL van de verbindings webhook, de Azure AD-Tenant-ID en de Azure AD-App-ID) die wordt gebruikt door Marketplace om verbinding te maken met uw aanbieding.  Deze para meters zijn vereist om correct te kunnen integreren met SaaS-uitvoering en de Marketplace-Api's met gemeetde facturering.|
+| [Pagina technische configuratie](#technical-configuration-page)  |  Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen.  Definieer de technische details (URL van de landings pagina, de URL van de verbindings webhook, de Azure AD-Tenant-ID en de Azure AD-App-ID) die wordt gebruikt door Marketplace om verbinding te maken met uw aanbieding.  Deze para meters zijn vereist om correct te kunnen integreren met SaaS-uitvoering en de Marketplace-Api's met gemeetde facturering.|
 | [**Nieuw plan modaal**](#plan-identity-modal) | Verzamelt informatie over plan identiteit.  |
 | [Aanbiedings pagina plannen](#plan-listing-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen. Definieer de details die worden gebruikt om het abonnement in de Marketplace weer te geven.  |
 | [Pagina met prijs & Beschik baarheid plannen](#plan-pricing--availability-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen.  Verzamelt de bedrijfs kenmerken (prijs model), de beschik baarheid van de doel groep en de markt voor elk abonnement (versie) van uw aanbieding.  |
@@ -36,10 +38,9 @@ De items die u moet opgeven of opgeven, worden hieronder vermeld.  Sommige gebie
 | Pagina voor technische configuratie van test station  | Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbiedt. Definieer de technische Details voor de demonstratie (of ' test drive ') waarmee klanten uw aanbieding kunnen proberen voordat ze zich door voeren om deze aan te schaffen.  |
 | [Pagina controleren en publiceren](#review-and-publish-page)  | Selecteer de wijzigingen die u wilt publiceren, Bekijk de status van elke pagina en geef notities op het certificerings team.  |
 
+## <a name="new-offer-modal"></a>Nieuwe aanbieding modaal
 
-## <a name="new-offer-modal"></a>Nieuwe aanbieding modaal 
-
-De eerste informatie die u moet opgeven, is een ID en alias voor uw aanbieding. 
+De eerste informatie die u moet opgeven, is een ID en alias voor uw aanbieding.
 
 | **Veldnaam**    | **Opmerkingen**   |  
 | :---------------- | :-----------| 
@@ -79,9 +80,9 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 | **Veldnaam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Name  | Vereist, Maxi maal 50 tekens. |
+| Naam  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
-| Description  | Vereist, Maxi maal 3000 tekens. |
+| Beschrijving  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Tref woorden zoeken  | Optioneel, aanbevolen, Maxi maal 3 tref woorden. |
@@ -106,6 +107,9 @@ Op de voorbeeld pagina kunt u opgeven dat de doel groep toegang heeft tot uw Pre
 ## <a name="technical-configuration-page"></a>Pagina technische configuratie 
 
 Op de pagina technische configuratie kunt u de technische gegevens opgeven die door micro soft worden gebruikt om verbinding te maken met uw aanbieding. Deze pagina is niet zichtbaar voor u als u ervoor hebt gekozen om niet via micro soft te verkopen.
+
+> [!NOTE]
+> Voor aanbiedingen die kunnen worden gebruikt, moet u een landings pagina maken en moet uw app gebruikmaken van Azure AD-verificatie met eenmalige aanmelding (SSO). Zie voor meer informatie [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](../azure-ad-saas.md).
 
 | **Veldnaam**    | **Opmerkingen**   |  
 | :---------------- | :-----------| 
@@ -151,7 +155,7 @@ Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbied
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Description  | Vereist. |
+| Beschrijving  | Vereist. |
 | Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. moet PDF-indeling hebben. |
 | Video naam, URL + miniatuur  | Optioneel, aanbevolen. De miniatuur moet 533 x 324 zijn in JPGP-of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 

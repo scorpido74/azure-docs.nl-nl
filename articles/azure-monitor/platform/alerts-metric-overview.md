@@ -4,16 +4,16 @@ description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt do
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327137"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
-Metrische waarschuwingen in Azure Monitor werken bovenop meerdere dimensies. Deze metrische gegevens zijn mogelijk [platform metrieken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [aangepaste metrische gegevens](../../azure-monitor/platform/metrics-custom-overview.md), [populaire logboeken van Azure monitor geconverteerd naar metrische gegevens](../../azure-monitor/platform/alerts-metric-logs.md) en Application Insights metrische gegevens. Metrische waarschuwingen bepalen regel matig of er voor waarden in een of meer metrische time-series waar zijn en u wordt gewaarschuwd wanneer aan de evaluaties wordt voldaan. Metrische waarschuwingen zijn stateful, dat wil zeggen dat ze alleen meldingen verzenden wanneer de status wordt gewijzigd.
+Metrische waarschuwingen in Azure Monitor werken bovenop meerdere dimensies. Deze metrische gegevens zijn mogelijk [platform metrieken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [aangepaste metrische gegevens](./metrics-custom-overview.md), [populaire logboeken van Azure monitor geconverteerd naar metrische gegevens](./alerts-metric-logs.md) en Application Insights metrische gegevens. Metrische waarschuwingen bepalen regel matig of er voor waarden in een of meer metrische time-series waar zijn en u wordt gewaarschuwd wanneer aan de evaluaties wordt voldaan. Metrische waarschuwingen zijn stateful, dat wil zeggen dat ze alleen meldingen verzenden wanneer de status wordt gewijzigd.
 
 ## <a name="how-do-metric-alerts-work"></a>Hoe werken metrische waarschuwingen?
 
@@ -152,7 +152,7 @@ U kunt op een van de drie manieren het bewakings bereik opgeven voor één metri
 >
 > Het bereik van een waarschuwings regel voor metrische gegevens met meerdere resources moet ten minste één resource van het geselecteerde resource type bevatten.
 
-Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke bewaakte resource.
+Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke bewaakte resource.
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ Voor metrische waarschuwingen krijgt u doorgaans binnen vijf minuten een melding
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Ondersteunde resource typen voor metrische waarschuwingen
 
-In dit [artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)vindt u de volledige lijst met ondersteunde resource typen.
+In dit [artikel](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)vindt u de volledige lijst met ondersteunde resource typen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Meer informatie over het maken, weer geven en beheren van metrische waarschuwingen in azure](alerts-metric.md)
-- [Meer informatie over het implementeren van metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Meer informatie over het implementeren van metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](./alerts-metric-create-templates.md)
 - [Meer informatie over actie groepen](action-groups.md)
 - [Meer informatie over het type voor waarde van dynamische drempel waarden](alerts-dynamic-thresholds.md)
+

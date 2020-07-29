@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499017"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326899"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Container bewakings oplossing in Azure Monitor
 
@@ -31,7 +31,7 @@ De oplossing laat zien welke containers worden uitgevoerd, welke container insta
 
 Als u containers hebt geïmplementeerd in [Azure service Fabric](../../service-fabric/service-fabric-overview.md), raden we u aan om zowel de [service Fabric oplossing](../../service-fabric/service-fabric-diagnostics-oms-setup.md) als deze oplossing in te scha kelen voor de bewaking van cluster gebeurtenissen. Voordat u de Service Fabric-oplossing inschakelt, raadpleegt u [de service Fabric-oplossing](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) om te begrijpen wat deze biedt en hoe u deze kunt gebruiken.
 
-Zie de [Azure Kubernetes-service bewaken](../../azure-monitor/insights/container-insights-overview.md)als u geïnteresseerd bent in het bewaken van de prestaties van uw workloads die zijn geïmplementeerd in Kubernetes-omgevingen die worden gehost op Azure Kubernetes service (AKS). De container bewakings oplossing biedt geen ondersteuning voor het bewaken van het platform.  
+Zie de [Azure Kubernetes-service bewaken](./container-insights-overview.md)als u geïnteresseerd bent in het bewaken van de prestaties van uw workloads die zijn geïmplementeerd in Kubernetes-omgevingen die worden gehost op Azure Kubernetes service (AKS). De container bewakings oplossing biedt geen ondersteuning voor het bewaken van het platform.  
 
 In het volgende diagram ziet u de relaties tussen verschillende container-hosts en-agents met Azure Monitor.
 
@@ -92,11 +92,11 @@ De volgende tabel bevat een overzicht van de ondersteuning van docker-indeling e
 
 Gebruik de volgende informatie om de oplossing te installeren en configureren.
 
-1. Voeg de container bewakings oplossing toe aan uw Log Analytics-werk ruimte vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) of door gebruik te maken van het proces dat wordt beschreven in [bewakings oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+1. Voeg de container bewakings oplossing toe aan uw Log Analytics-werk ruimte vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) of door gebruik te maken van het proces dat wordt beschreven in [bewakings oplossingen toevoegen van de Oplossingengalerie](./solutions.md).
 
 2. Installeer en gebruik docker met een Log Analytics-agent. Op basis van uw besturings systeem en docker Orchestrator kunt u de volgende methoden gebruiken om uw agent te configureren.
    - Voor zelfstandige hosts:
-     - Op ondersteunde Linux-besturings systemen installeert en voert u docker en installeert en configureert u vervolgens de [log Analytics-agent voor Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+     - Op ondersteunde Linux-besturings systemen installeert en voert u docker en installeert en configureert u vervolgens de [log Analytics-agent voor Linux](../learn/quick-collect-linux-computer.md).  
      - Op CoreOS kunt u de Log Analytics-agent voor Linux niet uitvoeren. In plaats daarvan voert u een container versie van de Log Analytics-agent voor Linux uit. Bekijk de Linux-container hosts, waaronder CoreOS of Azure Government Linux-container hosts, inclusief CoreOS als u met containers in Azure Government Cloud werkt.
      - Installeer op Windows Server 2016 en Windows 10 de docker-engine en de client vervolgens verbinding maken met een agent om informatie te verzamelen en deze naar Azure Monitor te verzenden. Controleer de [installatie en configuratie van Windows-container-hosts](#install-and-configure-windows-container-hosts) als u een Windows-omgeving hebt.
    - Voor de indeling van docker multi-host:
@@ -112,7 +112,7 @@ Gebruik de volgende informatie om de oplossing te installeren en configureren.
 Raadpleeg de [docker-engine in Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon) -artikel voor meer informatie over het installeren en configureren van uw docker-engines op computers met Windows.
 
 > [!IMPORTANT]
-> Docker moet worden uitgevoerd **voordat** u de [log Analytics-agent voor Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) installeert op de container-hosts. Als u de agent al hebt geïnstalleerd voordat u docker installeert, moet u de Log Analytics-agent voor Linux opnieuw installeren. Zie de [docker-website](https://www.docker.com)voor meer informatie over docker.
+> Docker moet worden uitgevoerd **voordat** u de [log Analytics-agent voor Linux](../learn/quick-collect-linux-computer.md) installeert op de container-hosts. Als u de agent al hebt geïnstalleerd voordat u docker installeert, moet u de Log Analytics-agent voor Linux opnieuw installeren. Zie de [docker-website](https://www.docker.com)voor meer informatie over docker.
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux-container-hosts installeren en configureren
 
@@ -120,7 +120,7 @@ Nadat u docker hebt geïnstalleerd, gebruikt u de volgende instellingen voor de 
 
 **Voor alle Linux-container hosts, met uitzonde ring van CoreOS:**
 
-- Zie [log Analytics agent Overview](../../azure-monitor/platform/log-analytics-agent.md)voor meer informatie en de stappen voor het installeren van de log Analytics-agent voor Linux.
+- Zie [log Analytics agent Overview](../platform/log-analytics-agent.md)voor meer informatie en de stappen voor het installeren van de log Analytics-agent voor Linux.
 
 **Voor alle Linux-container hosts, waaronder CoreOS:**
 
@@ -140,7 +140,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Overschakelen van het gebruik van een geïnstalleerde Linux-agent naar een in een container**
 
-Als u eerder de rechtstreeks geïnstalleerde agent hebt gebruikt en in plaats daarvan een agent wilt gebruiken die in een container wordt uitgevoerd, moet u eerst de Log Analytics-agent voor Linux verwijderen. Zie [de log Analytics-agent voor Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) verwijderen voor meer informatie over het verwijderen van de agent.  
+Als u eerder de rechtstreeks geïnstalleerde agent hebt gebruikt en in plaats daarvan een agent wilt gebruiken die in een container wordt uitgevoerd, moet u eerst de Log Analytics-agent voor Linux verwijderen. Zie [de log Analytics-agent voor Linux](../learn/quick-collect-linux-computer.md) verwijderen voor meer informatie over het verwijderen van de agent.  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Een Log Analytics-agent configureren voor docker Swarm
 
@@ -185,8 +185,8 @@ Gebruik voor docker Swarm de volgende informatie om uw geheime gegevens te maken
 
 Er zijn drie manieren om de Log Analytics-agent toe te voegen aan Red Hat open Shift om het verzamelen van gegevens over container bewaking te starten.
 
-* [De log Analytics-agent voor Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) rechtstreeks op elk open Shift-knoop punt installeren  
-* [Log Analytics VM-extensie inschakelen](../../azure-monitor/learn/quick-collect-azurevm.md) op elk open Shift-knoop punt dat zich bevindt in azure  
+* [De log Analytics-agent voor Linux](../learn/quick-collect-linux-computer.md) rechtstreeks op elk open Shift-knoop punt installeren  
+* [Log Analytics VM-extensie inschakelen](../learn/quick-collect-azurevm.md) op elk open Shift-knoop punt dat zich bevindt in azure  
 * De Log Analytics-agent installeren als een open Shift-daemon-set  
 
 In deze sectie worden de stappen beschreven die nodig zijn om de Log Analytics-agent te installeren als een open Shift-daemon-set.  
@@ -509,9 +509,9 @@ Zie [docker-engine in Windows](/virtualization/windowscontainers/manage-docker/c
 
 #### <a name="install-windows-agents"></a>Windows-agents installeren
 
-Als u Windows-en Hyper-V-container bewaking wilt inschakelen, installeert u micro soft Monitoring Agent (MMA) op Windows-computers die als container worden gehost. Zie [Windows-computers verbinden met Azure monitor](../../azure-monitor/platform/agent-windows.md)voor computers met Windows in uw on-premises omgeving. Voor virtuele machines die worden uitgevoerd in azure verbindt u deze met Azure Monitor met behulp van de extensie van de [virtuele machine](../../azure-monitor/learn/quick-collect-azurevm.md).
+Als u Windows-en Hyper-V-container bewaking wilt inschakelen, installeert u micro soft Monitoring Agent (MMA) op Windows-computers die als container worden gehost. Zie [Windows-computers verbinden met Azure monitor](../platform/agent-windows.md)voor computers met Windows in uw on-premises omgeving. Voor virtuele machines die worden uitgevoerd in azure verbindt u deze met Azure Monitor met behulp van de extensie van de [virtuele machine](../learn/quick-collect-azurevm.md).
 
-U kunt Windows-containers bewaken die worden uitgevoerd op Service Fabric. Alleen [virtuele machines die worden uitgevoerd in azure](../../azure-monitor/learn/quick-collect-azurevm.md) en [computers met Windows in uw on-premises omgeving](../../azure-monitor/platform/agent-windows.md) worden momenteel ondersteund voor service Fabric.
+U kunt Windows-containers bewaken die worden uitgevoerd op Service Fabric. Alleen [virtuele machines die worden uitgevoerd in azure](../learn/quick-collect-azurevm.md) en [computers met Windows in uw on-premises omgeving](../platform/agent-windows.md) worden momenteel ondersteund voor service Fabric.
 
 U kunt controleren of de container monitoring-oplossing correct is ingesteld voor Windows. Zoek naar *ContainerManagement.xxx*om te controleren of de Management Pack correct is gedownload. De bestanden moeten zich in de map C:\Program Files\Microsoft monitoring Agent\Agent\Health service State\Management packs bevindt.
 
@@ -527,9 +527,9 @@ De oplossing voor container bewaking verzamelt diverse metrische gegevens over p
 
 De gegevens worden om de drie minuten verzameld door de volgende agent typen.
 
-- [Log Analytics-agent voor Linux](../../azure-monitor/learn/quick-collect-linux-computer.md)
-- [Windows-agent](../../azure-monitor/platform/agent-windows.md)
-- [VM-extensie Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Log Analytics-agent voor Linux](../learn/quick-collect-linux-computer.md)
+- [Windows-agent](../platform/agent-windows.md)
+- [VM-extensie Log Analytics](../learn/quick-collect-azurevm.md)
 
 ### <a name="container-records"></a>Container records
 
@@ -640,3 +640,4 @@ Nadat u een query hebt gemaakt die u nuttig vindt, slaat u deze op door te klikk
 ## <a name="next-steps"></a>Volgende stappen
 
 [Query logboeken](../log-query/log-query-overview.md) om gedetailleerde container gegevens records weer te geven.
+

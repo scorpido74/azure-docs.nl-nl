@@ -2,13 +2,13 @@
 title: Label resources, resource groepen en abonnementen voor logische organisatie
 description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323873"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en-beheer hiërarchie te organiseren
 
@@ -438,7 +438,7 @@ Als u veel waarden wilt opslaan in een enkele tag, past u een JSON-tekenreeks to
 
 ### <a name="apply-tags-from-resource-group"></a>Tags Toep assen vanuit de resource groep
 
-Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup](../templates/template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt u de `tags[tag-name]` syntaxis in plaats van de `tags.tag-name` syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
+Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup ()](../templates/template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt u de `tags[tag-name]` syntaxis in plaats van de `tags.tag-name` syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
 
 ```json
 {
@@ -578,7 +578,7 @@ Labels die worden toegepast op de resource groep of het abonnement, worden niet 
 
 U kunt tags gebruiken om uw factureringsgegevens te groeperen. Als u bijvoorbeeld meerdere VM's voor verschillende organisaties uitvoert, kunt u de tags gebruiken om het gebruiker te groeperen op basis van de kostenplaats. U kunt ook tags gebruiken om de kosten te categoriseren op basis van de runtimeomgeving, zoals de facturering van het gebruik voor VM's die worden uitgevoerd in de productieomgeving.
 
-U kunt informatie over Tags ophalen via het [Azure resource usage-en RateCard-api's](../../cost-management-billing/manage/usage-rate-card-overview.md) of het gebruik van CSV-bestand (Comma Separated Values). U downloadt het gebruiks bestand van de [Azure-Accountcentrum](https://account.azure.com/Subscriptions) of Azure Portal. Zie uw Azure-factuur [en dagelijks gebruiks gegevens downloaden of weer geven](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**bij het downloaden van het gebruiks bestand van de Azure-Accountcentrum. Voor services die Tags ondersteunen met facturering, worden de tags weer gegeven in de kolom **Tags** .
+U kunt informatie over Tags ophalen via de [Azure resource usage-en rate-api's](../../cost-management-billing/manage/usage-rate-card-overview.md) of het bestand met door komma's gescheiden waarden (CSV). U downloadt het gebruiks bestand van de [Azure-Accountcentrum](https://account.azure.com/Subscriptions) of Azure Portal. Zie uw Azure-factuur [en dagelijks gebruiks gegevens downloaden of weer geven](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**bij het downloaden van het gebruiks bestand van de Azure-Accountcentrum. Voor services die Tags ondersteunen met facturering, worden de tags weer gegeven in de kolom **Tags** .
 
 Zie voor REST API bewerkingen de [Naslag informatie voor Azure billing rest API](/rest/api/billing/).
 
@@ -596,6 +596,8 @@ Voor tags gelden de volgende beperkingen:
    > Op dit moment staat Azure DNS-zones en Traffic Manager services ook niet toe dat spaties in het label worden gebruikt.
    >
    > De front-deur van Azure biedt geen ondersteuning voor het gebruik van `#` in de label naam.
+   >
+   > Azure Automation en Azure CDN bieden alleen ondersteuning voor 15 labels op resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 

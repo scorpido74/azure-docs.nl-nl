@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515220"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321714"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Een Azure Stream Analytics-taak in Azure SQL Edge maken (preview) 
 
@@ -43,7 +43,6 @@ Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als inv
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
 | SQL Database | N | Y | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
-| Azure Blob Storage | N | Y | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
 | Kafka | Y | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel-of AMD-versies van Azure SQL Edge. Het is niet beschikbaar voor de ARM64-versie van Azure SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Voor beeld: een extern stream-invoer/uitvoer-object maken voor Azure IoT Edge hub
@@ -54,7 +53,8 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor Azure IoT
 
     ```sql
     Create External file format InputFileFormat
-    WITH (  
+    WITH 
+    (  
        format_type = JSON,
     )
     go
@@ -63,8 +63,10 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor Azure IoT
 2. Een externe gegevens bron maken voor Azure IoT Edge hub. Met het volgende T-SQL-script wordt een gegevens bron verbinding gemaakt met een IoT Edge hub die wordt uitgevoerd op dezelfde docker-host als Azure SQL Edge.
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
-    LOCATION = 'edgehub://'
+    CREATE EXTERNAL DATA SOURCE EdgeHubInput 
+    WITH 
+    (
+        LOCATION = 'edgehub://'
     )
     go
     ```
@@ -72,13 +74,15 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor Azure IoT
 3. Maak het externe Stream-object voor Azure IoT Edge hub. Met het volgende T-SQL-script wordt een Stream-object gemaakt voor de IoT Edge hub. In het geval van een IoT Edge hub-stroom object is de locatie parameter de naam van het onderwerp van de IoT Edge hub of het kanaal dat wordt gelezen of geschreven.
 
     ```sql
-    CREATE EXTERNAL STREAM MyTempSensors WITH (
-    DATA_SOURCE = EdgeHubInput,
-    FILE_FORMAT = InputFileFormat,
-    LOCATION = N'TemperatureSensors',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
-    )
+    CREATE EXTERNAL STREAM MyTempSensors 
+    WITH 
+    (
+        DATA_SOURCE = EdgeHubInput,
+        FILE_FORMAT = InputFileFormat,
+        LOCATION = N'TemperatureSensors',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
     go
     ```
 
@@ -107,9 +111,11 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
     * Maakt gebruik van de referentie die eerder is gemaakt.
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
-    LOCATION = 'sqlserver://tcp:.,1433'
-    ,CREDENTIAL = SQLCredential
+    CREATE EXTERNAL DATA SOURCE LocalSQLOutput 
+    WITH 
+    (
+        LOCATION = 'sqlserver://tcp:.,1433',
+        CREDENTIAL = SQLCredential
     )
     go
     ```
@@ -117,12 +123,52 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
 4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements*, in de Data Base- *MySQLDatabase*.
 
     ```sql
-    CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
-    DATA_SOURCE = LocalSQLOutput,
-    LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
+    CREATE EXTERNAL STREAM TemperatureMeasurements 
+    WITH 
+    (
+        DATA_SOURCE = LocalSQLOutput,
+        LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
+    ```
+
+### <a name="example-create-an-external-stream-object-for-kafka"></a>Voor beeld: een extern Stream-object maken voor Kafka
+
+In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale data base in Azure SQL Edge. In dit voor beeld wordt ervan uitgegaan dat de Kafka-server is geconfigureerd voor anonieme toegang. 
+
+1. Een externe gegevens bron maken met externe gegevens bron maken. Het volgende voor beeld:
+
+    ```sql
+    Create EXTERNAL DATA SOURCE [KafkaInput] 
+    With
+    (
+        LOCATION = N'kafka://<kafka_bootstrap_server_name_ip>:<port_number>'
     )
+    GO
+    ```
+2. Maak een externe bestands indeling voor de Kafka-invoer. In het volgende voor beeld is een JSON-bestands indeling met GZipped-compressie gemaakt. 
+
+   ```sql
+   CREATE EXTERNAL FILE FORMAT JsonGzipped  
+    WITH 
+    (  
+        FORMAT_TYPE = JSON , 
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
+    )
+   ```
+    
+3. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar het onderwerp Kafka `*TemperatureMeasurement*` .
+
+    ```sql
+    CREATE EXTERNAL STREAM TemperatureMeasurement 
+    WITH 
+    (  
+        DATA_SOURCE = KafkaInput, 
+        FILE_FORMAT = JsonGzipped,
+        LOCATION = 'TemperatureMeasurement',     
+        INPUT_OPTIONS = 'PARTITIONS: 10' 
+    ); 
     ```
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>De streaming-taak en de streaming-query's maken

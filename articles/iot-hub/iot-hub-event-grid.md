@@ -11,15 +11,17 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732505"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327647"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
-Azure IoT Hub integreert met Azure Event Grid, zodat u gebeurtenis meldingen kunt verzenden naar andere services en downstream-processen triggert. Configureer uw zakelijke toepassingen om te Luis teren naar IoT Hub-gebeurtenissen zodat u op een betrouw bare, schaal bare en veilige manier op kritieke gebeurtenissen kunt reageren.U kunt bijvoorbeeld een toepassing bouwen waarmee een Data Base wordt bijgewerkt, een werk ticket wordt gemaakt en een e-mail melding wordt bezorgd wanneer een nieuw IoT-apparaat wordt geregistreerd bij uw IoT-hub.
+Azure IoT Hub kan worden geïntegreerd met Azure Event Grid zodat u gebeurtenismeldingen kunt verzenden naar andere services en downstreamprocessen kunt activeren. Configureer uw zakelijke toepassingen om op IoT Hub-gebeurtenissen te letten zodat u op een betrouwbare, schaalbare en veilige manier op kritieke gebeurtenissen kunt reageren.U kunt bijvoorbeeld een toepassing maken waarmee een database wordt bijgewerkt, een orderticket wordt gemaakt en een e-mailmelding wordt bezorgd wanneer een nieuw IoT-apparaat wordt geregistreerd bij uw IoT-hub.
 
 [Azure Event grid](../event-grid/overview.md) is een volledig beheerde service voor gebeurtenis routering die gebruikmaakt van een model voor publiceren en abonneren. Event Grid heeft ingebouwde ondersteuning voor Azure-Services, zoals [Azure functions](../azure-functions/functions-overview.md) en [Azure Logic apps](../logic-apps/logic-apps-what-are-logic-apps.md), en kan gebeurtenis waarschuwingen leveren aan niet-Azure-Services met behulp van webhooks. Zie [Inleiding tot Azure Event grid](../event-grid/overview.md)voor een volledige lijst met gebeurtenis-handlers die Event grid ondersteunt.
 
@@ -33,19 +35,19 @@ De Event Grid-integratie is beschikbaar voor IoT-hubs in de regio's waar Event G
 
 IoT Hub publiceert de volgende gebeurtenis typen:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Micro soft. devices. DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
-| Micro soft. devices. DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. |
-| Micro soft. devices. DeviceConnected | Gepubliceerd wanneer een apparaat is verbonden met een IoT-hub. |
-| Micro soft. devices. DeviceDisconnected | Gepubliceerd wanneer een apparaat wordt losgekoppeld van een IoT-hub. |
-| Micro soft. devices. DeviceTelemetry | Gepubliceerd wanneer een telemetrie-bericht van een apparaat wordt verzonden naar een IoT-hub |
+| Microsoft.Devices.DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
+| Microsoft.Devices.DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. |
+| Microsoft.Devices.DeviceConnected | Gepubliceerd wanneer een apparaat is verbonden met een IoT-hub. |
+| Microsoft.Devices.DeviceDisconnected | Gepubliceerd wanneer een apparaat wordt losgekoppeld van een IoT-hub. |
+| Microsoft.Devices.DeviceTelemetry | Gepubliceerd wanneer een telemetriebericht van een apparaat wordt verzonden naar een IoT-hub |
 
 Gebruik de Azure Portal of de Azure CLI om te configureren welke gebeurtenissen van elke IoT-hub moeten worden gepubliceerd. Voor een voor beeld kunt u de zelf studie [gebruiken om e-mail meldingen over Azure IOT hub-gebeurtenissen te verzenden met Logic apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="event-schema"></a>Gebeurtenisschema
 
-IoT Hub gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in de levens cyclus van uw apparaat. U kunt een IoT Hub gebeurtenis identificeren door te controleren of de eigenschap Event type wordt gestart met **micro soft. devices**. Zie het [Event grid-gebeurtenis schema](../event-grid/event-schema.md)voor meer informatie over het gebruik van Event grid gebeurtenis eigenschappen.
+IoT Hub gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in de levens cyclus van uw apparaat. U kunt een IoT Hub-gebeurtenis identificeren door te controleren of de eigenschap eventType begint met **Microsoft.Devices**. Zie het [Event grid-gebeurtenis schema](../event-grid/event-schema.md)voor meer informatie over het gebruik van Event grid gebeurtenis eigenschappen.
 
 ### <a name="device-connected-schema"></a>Met apparaat verbonden schema
 
@@ -192,15 +194,15 @@ De koppeling D2C is open als u telemetrie verzendt.
 
 Als de verbinding met het apparaat Flik keert, wat betekent dat het apparaat regel matig verbinding maakt en de verbinding verbreekt, worden er niet elke verbindings status verzonden, maar wordt de huidige verbindings status gepubliceerd die is gemaakt op een periodieke moment opname, waarna de Flik kering wordt vervolgd. Als u dezelfde verbindings status gebeurtenis met andere Volg nummers of verschillende verbindings status gebeurtenissen ontvangt, betekent dit dat er een wijziging is opgetreden in de verbindings status van het apparaat.
 
-## <a name="tips-for-consuming-events"></a>Tips voor het gebruiken van gebeurtenissen
+## <a name="tips-for-consuming-events"></a>Tips voor het gebruik van gebeurtenissen
 
-Toepassingen die IoT Hub gebeurtenissen verwerken, moeten de volgende aanbevolen procedures volgen:
+Toepassingen die IoT Hub-gebeurtenissen verwerken, moeten de volgende aanbevolen procedures volgen:
 
-* Meerdere abonnementen kunnen worden geconfigureerd voor het routeren van gebeurtenissen naar dezelfde gebeurtenis-handler, dus stel dat er geen gebeurtenissen van een bepaalde bron zijn. Controleer altijd het onderwerp van het bericht om er zeker van te zijn dat het afkomstig is van de IoT-hub die u verwacht.
+* Meerdere abonnementen kunnen worden geconfigureerd voor het routeren van gebeurtenissen naar dezelfde gebeurtenis-handler, dus ga er niet van uit dat gebeurtenissen van een bepaalde bron afkomstig zijn. Controleer altijd het onderwerp van het bericht om er zeker van te zijn dat het afkomstig is van de IoT-hub die u verwacht.
 
 * Ga er niet van uit dat alle gebeurtenissen die u ontvangt, de typen zijn die u verwacht. Controleer altijd het gebeurtenis type voordat het bericht wordt verwerkt.
 
-* Berichten kunnen buiten de juiste volg orde of na een vertraging arriveren. Gebruik het veld ETAG om te begrijpen of uw informatie over objecten up-to-date is voor het apparaat dat is gemaakt of door een apparaat verwijderde gebeurtenissen.
+* Berichten arriveren soms in de verkeerde volgorde of na een vertraging. Gebruik het veld ETAG om te begrijpen of uw informatie over objecten up-to-date is voor het apparaat dat is gemaakt of door een apparaat verwijderde gebeurtenissen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

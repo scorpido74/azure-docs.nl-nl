@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325998"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
@@ -46,7 +46,7 @@ Klik op de naam van een oplossing om de bijbehorende pagina samen vatting te ope
 
 ![Eigenschappen van oplossing](media/solutions/solution-properties.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik de opdracht [AZ monitor log-Analytics oplossingen List](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) om de bewakings oplossingen weer te geven die in uw abonnement zijn geïnstalleerd.   Voordat u de `list` opdracht uitvoert, volgt u de vereisten voor het [installeren van een bewakings oplossing](#install-a-monitoring-solution).
 
@@ -89,7 +89,7 @@ Leden van de community kunnen beheer oplossingen verzenden naar Azure Quick Star
 6. U wordt gevraagd om informatie op te geven, zoals de resource groep en de locatie, naast de waarden voor eventuele para meters in de oplossing.
 7. Klik op **kopen** om de oplossing te installeren.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ### <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
@@ -125,7 +125,7 @@ Leden van de community kunnen beheer oplossingen verzenden naar Azure Quick Star
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Een oplossing met Azure CLI installeren
 
-Wanneer u een oplossing installeert, moet u een [log Analytics-werk ruimte](/azure/azure-monitor/platform/manage-access) selecteren waarin de oplossing wordt geïnstalleerd en waar de gegevens worden verzameld.  Met de Azure CLI beheert u werk ruimten met behulp van de opdracht [AZ monitor log-Analytics werk ruimte](/cli/azure/monitor/log-analytics/workspace) .  Volg het proces dat wordt beschreven in [log Analytics werk ruimte en het Automation-account](#log-analytics-workspace-and-automation-account) om een werk ruimte en een account te koppelen.
+Wanneer u een oplossing installeert, moet u een [log Analytics-werk ruimte](../platform/manage-access.md) selecteren waarin de oplossing wordt geïnstalleerd en waar de gegevens worden verzameld.  Met de Azure CLI beheert u werk ruimten met behulp van de opdracht [AZ monitor log-Analytics werk ruimte](/cli/azure/monitor/log-analytics/workspace) .  Volg het proces dat wordt beschreven in [log Analytics werk ruimte en het Automation-account](#log-analytics-workspace-and-automation-account) om een werk ruimte en een account te koppelen.
 
 Gebruik de [AZ monitor log-Analytics oplossing Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) om een bewakings oplossing te installeren.  Para meters tussen vier Kante haken zijn optioneel.
 
@@ -177,7 +177,7 @@ U kunt de koppeling tussen een Log Analytics-werk ruimte en een Automation-accou
 
 Als u een geïnstalleerde oplossing wilt verwijderen met behulp van de portal, zoekt u deze in de [lijst met geïnstalleerde oplossingen](#list-installed-monitoring-solutions). Klik op de naam van de oplossing om de bijbehorende overzichts pagina te openen en klik vervolgens op **verwijderen**.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een geïnstalleerde oplossing wilt verwijderen met behulp van de Azure CLI, gebruikt u de opdracht [AZ monitor log-Analytics Solution delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) .
 
@@ -192,6 +192,7 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een [lijst met bewakings oplossingen van micro soft](solutions-inventory.md)ophalen.
+* Een [lijst met bewakings oplossingen van micro soft](/azure/azure-monitor/monitor-reference)ophalen.
 * Meer informatie over het [maken van query's](../log-query/log-query-overview.md) voor het analyseren van gegevens die zijn verzameld door bewakings oplossingen.
 * Bekijk alle [Azure cli-opdrachten voor Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
+

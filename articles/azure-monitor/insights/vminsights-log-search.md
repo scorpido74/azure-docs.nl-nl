@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803971"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325182"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Logboeken van Azure Monitor voor VM's opvragen
 
-Azure Monitor voor VM's verzamelt metrische gegevens over prestaties en verbindingen, computer-en proces inventarisgegevens en status gegevens, en stuurt deze door naar de werk ruimte Log Analytics in Azure Monitor.  Deze gegevens zijn beschikbaar voor [query's](../../azure-monitor/log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
+Azure Monitor voor VM's verzamelt metrische gegevens over prestaties en verbindingen, computer-en proces inventarisgegevens en status gegevens, en stuurt deze door naar de werk ruimte Log Analytics in Azure Monitor.  Deze gegevens zijn beschikbaar voor [query's](../log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
 
 ## <a name="map-records"></a>Records toewijzen
 
@@ -112,10 +112,10 @@ Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis
 |:--|:--|
 |MaliciousIp |Het RemoteIp-adres |
 |IndicatorThreadType |Gedetecteerde bedreigings indicator is een van de volgende waarden: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *pua's geblokkeerd*, *Watch list*.   |
-|Description |Beschrijving van de waargenomen bedreiging. |
+|Beschrijving |Beschrijving van de waargenomen bedreiging. |
 |TLPLevel |TLP-niveau (Traffic Light Protocol) is een van de gedefinieerde waarden, *wit*, *groen*, *geel*, *rood*. |
 |Betrouwbaarheid |De waarden zijn *0 – 100*. |
-|Severity |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
+|Ernst |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
 |FirstReportedDateTime |De eerste keer dat de provider de indicator heeft gerapporteerd. |
 |LastReportedDateTime |De laatste keer dat de indicator door de stroom is gezien. |
 |IsActive |Hiermee wordt aangegeven dat indica toren worden gedeactiveerd met de waarde *True* of *False* . |
@@ -233,7 +233,7 @@ Records met een type *VMProcess* hebben inventaris gegevens voor met TCP verbond
 |Groep | Naam van de proces groep. Processen in dezelfde groep zijn logisch gerelateerd, bijvoorbeeld een deel van hetzelfde product of systeem onderdeel. |
 |StartTime | De begin tijd van de proces groep |
 |FirstPid | De eerste pincode in de proces groep |
-|Description | De proces beschrijving |
+|Beschrijving | De proces beschrijving |
 |CompanyName | De naam van het bedrijf |
 |Internenaam | De interne naam |
 |ProductName | De naam van het product |
@@ -442,7 +442,7 @@ Records met een type *InsightsMetrics* hebben prestatie gegevens van het gast be
 |Computer | De FQDN van de computer | 
 |Oorsprong | *vm.azm.ms* |
 |Naamruimte | Categorie van het prestatie meter item | 
-|Name | Naam van het prestatie meter item |
+|Naam | Naam van het prestatie meter item |
 |Waa | Verzamelde waarde | 
 |Tags | Gerelateerde Details over de record. Zie de onderstaande tabel voor labels die worden gebruikt met verschillende record typen.  |
 |AgentId | Unieke id voor de agent van elke computer |
@@ -473,6 +473,7 @@ De prestatie meter items die momenteel zijn verzameld in de tabel *InsightsMetri
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u geen logboek query's in Azure Monitor kunt schrijven, raadpleegt u [hoe u log Analytics](../../azure-monitor/log-query/get-started-portal.md) in de Azure Portal gebruikt om logboek query's te schrijven.
+* Als u geen logboek query's in Azure Monitor kunt schrijven, raadpleegt u [hoe u log Analytics](../log-query/get-started-portal.md) in de Azure Portal gebruikt om logboek query's te schrijven.
 
-* Meer informatie over het [schrijven van zoek query's](../../azure-monitor/log-query/search-queries.md).
+* Meer informatie over het [schrijven van zoek query's](../log-query/search-queries.md).
+

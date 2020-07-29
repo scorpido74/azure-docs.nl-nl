@@ -7,15 +7,15 @@ author: NilsPohlmann
 ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/16/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 6a4a32db18b881b702aacf7bb669ffa14f9d103e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: c2218d9ec641f1edba4caff09666436fc8928558
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201245"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326338"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>machine learning pijplijn logboek bestanden verzamelen in Application Insights voor waarschuwingen en fout opsporing
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,7 +155,7 @@ In het resultaat van Application Insights worden het logboek bericht en het nive
 
 In enkele van de onderstaande query's wordt gebruikgemaakt van ' customDimensions. level '. Deze ernst niveaus komen overeen met het niveau waarmee het python-logboek oorspronkelijk is verzonden. Zie [Azure monitor-logboek query's](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)voor meer informatie over query's.
 
-| Gebruiksvoorbeeld                                                               | Query                                                                                              |
+| Toepassing                                                               | Query’s uitvoeren                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | De resultaten vastleggen voor een specifieke aangepaste dimensie, bijvoorbeeld ' parent_run_id ' | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
 | De resultaten van de logboeken voor alle trainingen worden in de afgelopen 7 dagen uitgevoerd                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |

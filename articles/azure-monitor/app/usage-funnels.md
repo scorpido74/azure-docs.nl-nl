@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797820"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323720"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Ontdek hoe klanten uw toepassing gebruiken met Application Insights trechters
 
@@ -36,7 +37,7 @@ De volgende scherm afbeelding toont een voor beeld van het soort gegevens dat he
 ### <a name="funnels-features"></a>Functies van trechters
 De vorige scherm afbeelding bevat vijf gemarkeerde gebieden. Dit zijn de functies van trechters. In de volgende lijst vindt u meer informatie over elk corresponderende gebied in de scherm afbeelding:
 1. Als uw app wordt voor bereid, wordt er een voorbeeld banner weer geven. Als u de banner selecteert, wordt er een context venster geopend, waarin wordt uitgelegd hoe u de steek proeven kunt uitschakelen. 
-2. U kunt uw trechter exporteren naar [Power bi](../../azure-monitor/app/export-power-bi.md ).
+2. U kunt uw trechter exporteren naar [Power bi](./export-power-bi.md).
 3. Selecteer een stap om meer informatie aan de rechter kant weer te geven. 
 4. De historische conversie grafiek toont de conversie tarieven gedurende de afgelopen 90 dagen. 
 5. Krijg meer inzicht in uw gebruikers door het hulp programma gebruikers te gebruiken. U kunt in elke stap filters gebruiken. 
@@ -45,7 +46,7 @@ De vorige scherm afbeelding bevat vijf gemarkeerde gebieden. Dit zijn de functie
   * [Overzicht van gebruik](usage-overview.md)
   * [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)
   * [Bewaartermijn](usage-retention.md)
-  * [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+  * [Werkmappen](../platform/workbooks-overview.md)
   * [Gebruikers context toevoegen](usage-send-user-context.md)
-  * [Exporteren naar Power BI](../../azure-monitor/app/export-power-bi.md )
+  * [Exporteren naar Power BI](./export-power-bi.md)
 

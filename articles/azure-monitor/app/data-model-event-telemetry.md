@@ -4,19 +4,20 @@ description: Application Insights gegevens model voor telemetrie van gebeurtenis
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69685afa14352a22b58bccbea342038e4273696e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320609"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Telemetrie van gebeurtenissen: Application Insights gegevens model
 
-U kunt telemetrie-items (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) voor een gebeurtenis maken die een gebeurtenis vertegenwoordigen die in uw toepassing is opgetreden. Normaal gesp roken is het een gebruikers interactie, zoals het klikken op de knop of het afhandelen van de order. Het kan ook een levens cyclus gebeurtenis van een toepassing zijn, zoals initialisatie of configuratie-update. 
+U kunt telemetrie-items (in [Application Insights](./app-insights-overview.md)) voor een gebeurtenis maken die een gebeurtenis vertegenwoordigen die in uw toepassing is opgetreden. Normaal gesp roken is het een gebruikers interactie, zoals het klikken op de knop of het afhandelen van de order. Het kan ook een levens cyclus gebeurtenis van een toepassing zijn, zoals initialisatie of configuratie-update. 
 
-Semantisch, gebeurtenissen kunnen of kunnen niet worden gecorreleerd aan aanvragen. Als er echter goed wordt gebruikt, is de telemetrie van de gebeurtenis belang rijker dan aanvragen of traceringen. Gebeurtenissen vertegenwoordigen bedrijfs-telemetrie en moeten een onderliggend object zijn, waarbij minder agressieve [steek proeven](../../azure-monitor/app/api-filtering-sampling.md)worden genomen.
+Semantisch, gebeurtenissen kunnen of kunnen niet worden gecorreleerd aan aanvragen. Als er echter goed wordt gebruikt, is de telemetrie van de gebeurtenis belang rijker dan aanvragen of traceringen. Gebeurtenissen vertegenwoordigen bedrijfs-telemetrie en moeten een onderliggend object zijn, waarbij minder agressieve [steek proeven](./api-filtering-sampling.md)worden genomen.
 
-## <a name="name"></a>Name
+## <a name="name"></a>Naam
 
 Gebeurtenis naam. Als u de juiste groepering en bruikbare metrische gegevens wilt toestaan, beperkt u uw toepassing zodat er een klein aantal afzonderlijke gebeurtenis namen wordt gegenereerd. Gebruik bijvoorbeeld geen afzonderlijke naam voor elk gegenereerd exemplaar van een gebeurtenis.
 
@@ -33,5 +34,6 @@ Maximale lengte: 512 tekens
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- [Telemetrie van aangepaste gebeurtenissen schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- [Telemetrie van aangepaste gebeurtenissen schrijven](./api-custom-events-metrics.md#trackevent)
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

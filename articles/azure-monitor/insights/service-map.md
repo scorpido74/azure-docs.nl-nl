@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539768"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326066"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing gebruiken in Azure
 
 Serviceoverzicht ontdekt automatisch toepassingsonderdelen op Windows- en Linux-systemen en wijst de communicatie tussen services toe. Met Servicetoewijzing kunt u uw servers weergeven op de manier zoals u ze ziet: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
 
-In dit artikel worden de details van het voorbereiden en gebruiken van Servicetoewijzing beschreven. Zie [het overzicht van Azure monitor voor VM's inschakelen](vminsights-enable-overview.md#prerequisites)voor meer informatie over het configureren van de vereisten voor deze oplossing. Als u wilt samenvatten, hebt u het volgende nodig:
+In dit artikel worden de details van het voorbereiden en gebruiken van Servicetoewijzing beschreven. De vereisten van de oplossing zijn als volgt:
 
-* Een Log Analytics-werk ruimte om deze oplossing in te scha kelen.
+* Een Log Analytics-werk ruimte in een [ondersteunde regio](vminsights-configure-workspace.md#supported-regions).
 
-* De Log Analytics-agent die is geïnstalleerd op de Windows-computer of Linux-server die is geconfigureerd voor rapportage van dezelfde werk ruimte als waarmee u de oplossing hebt ingeschakeld.
+* De [log Analytics-agent](vminsights-enable-overview.md#agents) die is geïnstalleerd op de Windows-computer of Linux-server, is verbonden met dezelfde werk ruimte als waarmee u de oplossing hebt ingeschakeld.
 
-* De afhankelijkheids agent die is geïnstalleerd op de Windows-computer of de Linux-server.
+* De [afhankelijkheids agent](vminsights-enable-overview.md#agents) die is geïnstalleerd op de Windows-computer of de Linux-server.
 
 >[!NOTE]
->Als u Servicetoewijzing al hebt geïmplementeerd, kunt u nu ook uw Maps in Azure Monitor voor VM's weer geven, inclusief aanvullende functies voor het controleren van de status en prestaties van de virtuele machine. Zie [Azure monitor voor VM's-overzicht](../../azure-monitor/insights/vminsights-overview.md)voor meer informatie. Zie de volgende [Veelgestelde vragen](../faq.md#azure-monitor-for-vms)voor meer informatie over de verschillen tussen de functie servicetoewijzing solution en Azure monitor voor VM's map.
+>Als u Servicetoewijzing al hebt geïmplementeerd, kunt u nu ook uw Maps in Azure Monitor voor VM's weer geven, inclusief aanvullende functies voor het controleren van de status en prestaties van de virtuele machine. Zie [Azure monitor voor VM's-overzicht](./vminsights-overview.md)voor meer informatie. Zie de volgende [Veelgestelde vragen](../faq.md#azure-monitor-for-vms)voor meer informatie over de verschillen tussen de functie servicetoewijzing solution en Azure monitor voor VM's map.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -304,7 +304,7 @@ In het deel venster **computer updates** worden gegevens van de updatebeheer opl
 
 ## <a name="log-analytics-records"></a>Log Analytics-records
 
-Servicetoewijzing computer-en proces inventaris gegevens kunnen worden [doorzocht](../../azure-monitor/log-query/log-query-overview.md) in log Analytics. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
+Servicetoewijzing computer-en proces inventaris gegevens kunnen worden [doorzocht](../log-query/log-query-overview.md) in log Analytics. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
 
 Er wordt één record per uur gegenereerd voor elke unieke computer en elk proces, naast de records die worden gegenereerd wanneer een proces of computer wordt gestart of aan Servicetoewijzing. Deze records hebben de eigenschappen in de volgende tabellen. De velden en waarden in de ServiceMapComputer_CL gebeurtenissen worden toegewezen aan velden van de machine resource in de ServiceMap Azure Resource Manager-API. De velden en waarden in de ServiceMapProcess_CL gebeurtenissen worden toegewezen aan de velden van de proces resource in de ServiceMap Azure Resource Manager-API. Het veld ResourceName_s komt overeen met het veld naam in de bijbehorende resource manager-resource. 
 
@@ -550,7 +550,7 @@ Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Zoek opdrachten in Logboeken](../../azure-monitor/log-query/log-query-overview.md) in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
+Meer informatie over [Zoek opdrachten in Logboeken](../log-query/log-query-overview.md) in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -603,3 +603,4 @@ Controleer de `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file
 ## <a name="suggestions"></a>Suggesties
 
 Hebt u feedback over Servicetoewijzing of deze documentatie?  Bezoek onze [pagina met gebruikers spraak](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), waar u de functies kunt Voorst Ellen of bestaande suggesties aan het stemt.
+

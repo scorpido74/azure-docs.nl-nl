@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd66bc742d0832cba5d6f302bfe30c85e2d82716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d3df4eee14e5ce2f0638058efde0f80d0e5b051
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253338"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275476"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -84,7 +85,7 @@ Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst b
 
 1. Navigeer naar het **Azure Portal**  >  **Azure Active Directory**  >  **-Azure Active Directory aanmeldingen**.
 1. Voeg de kolom client toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**  >  **Client App**.
-1. **Filters toevoegen**  >  **Client-App** > Selecteer alle verouderde verificatie protocollen en klik op **Toep assen**.
+1. **Filters toevoegen**  >  **Client-App** > alle verouderde verificatie protocollen selecteren. Selecteer buiten het dialoog venster filteren blox om uw selecties toe te passen en sluit het dialoog venster.
 
 Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt door verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In het veld **client-app** onder het tabblad **basis informatie** wordt aangegeven welk verouderde verificatie protocol is gebruikt.
 
