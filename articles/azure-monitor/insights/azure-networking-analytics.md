@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041598"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318059"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-netwerk bewakings oplossingen in Azure Monitor
 
@@ -79,7 +79,7 @@ De volgende metrische gegevens worden ondersteund voor toepassings gateways: opn
 ### <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
 Gebruik de volgende instructies om de Azure-toepassing gateway Analytics-oplossing te installeren en configureren:
 
-1. Schakel de Azure-toepassing gateway Analytics-oplossing in op [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) of gebruik het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+1. Schakel de Azure-toepassing gateway Analytics-oplossing in op [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) of gebruik het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](./solutions.md).
 2. Schakel logboek registratie van diagnostische gegevens in voor de [toepassings gateways](../../application-gateway/application-gateway-diagnostics.md) die u wilt bewaken.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Diagnostische gegevens van Azure-toepassing gateway inschakelen in de portal
@@ -150,7 +150,7 @@ De volgende logboeken worden ondersteund voor netwerk beveiligings groepen:
 ### <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
 Gebruik de volgende instructies voor het installeren en configureren van de Azure Networking Analytics-oplossing:
 
-1. Schakel de analyse oplossing van de Azure-netwerk beveiligings groep in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+1. Schakel de analyse oplossing van de Azure-netwerk beveiligings groep in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](./solutions.md).
 2. Schakel de diagnostische logboek registratie in voor de resources van de [netwerk beveiligings groep](../../virtual-network/virtual-network-nsg-manage-log.md) die u wilt bewaken.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Diagnostische gegevens van Azure Network-beveiligings groep inschakelen in de portal
@@ -230,3 +230,4 @@ Gegevens die vóór de wijziging zijn verzameld, zijn niet zichtbaar in de nieuw
 
 ## <a name="next-steps"></a>Volgende stappen
 * Gebruik [logboek query's in azure monitor](../log-query/log-query-overview.md) om gedetailleerde Azure Diagnostics-gegevens weer te geven.
+

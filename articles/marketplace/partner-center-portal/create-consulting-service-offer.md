@@ -1,18 +1,18 @@
 ---
 title: Een advies service-aanbieding maken-micro soft Commercial Marketplace
 description: Meer informatie over het publiceren van een advies service-aanbieding naar Microsoft AppSource of Azure Marketplace met behulp van partner centrum.
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203812"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317770"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -100,10 +100,10 @@ Op deze pagina kunt u het primaire product instellen dat door uw consulting serv
 
     - Analyse
     - App-modernisatie
-    - Archief
+    - Archiveren
     - AI + Machine Learning
     - Backup
-    - Big Data
+    - Big data
     - Gegevens platform
     - Data Center-beheer
     - DevOps
@@ -138,7 +138,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 1. Logo
 2. Prijs
 3. Oplossings gebieden
-4. Bedrijfstakken
+4. Branches
 5. Naam van aanbieding
 6. Samenvatting
 7. Beschrijving
@@ -153,7 +153,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 1. Logo
 2. Prijs
 3. Producten
-4. Bedrijfstakken
+4. Branches
 5. Naam van aanbieding
 6. Samenvatting
 7. Beschrijving

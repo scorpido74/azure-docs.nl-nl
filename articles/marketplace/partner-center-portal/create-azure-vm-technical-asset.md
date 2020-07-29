@@ -4,15 +4,15 @@ description: Meer informatie over het maken en configureren van technische asset
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: dannyevers
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053571"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317753"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische bedrijfs middelen voor virtuele Azure-machines maken
 

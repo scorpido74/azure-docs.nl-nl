@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 949347d07fe120c6900f49499e78595b540718a7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212617"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368996"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -26,7 +27,7 @@ Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van 
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Een rol toewijzen aan een Azure AD-beveiligings-principal
 
-Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde RBAC-rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de RBAC-rol is toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
+Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde Azure-rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de RBAC-rol is toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-Tenant
 

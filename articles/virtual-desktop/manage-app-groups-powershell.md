@@ -8,20 +8,17 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c286a3795cc7cb4c1925ff06b3da19952e7f0b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186c6e455fa4d2ab578d6ab2a37f8f8f0d038e02
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209331"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291426"
 ---
 # <a name="manage-app-groups-using-powershell"></a>App-groepen beheren met Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
->
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
 
 De standaard app-groep die is gemaakt voor een nieuwe Windows Virtual Desktop-hostgroep publiceert ook het volledige bureau blad. Daarnaast kunt u een of meer RemoteApp-toepassings groepen maken voor de hostgroep. Volg deze zelf studie voor het maken van een RemoteApp-app-groep en het publiceren van afzonderlijke apps in het **Start** menu.
 

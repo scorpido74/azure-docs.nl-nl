@@ -1,6 +1,5 @@
 ---
-title: Webservices beheren met API Management
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): webservices beheren met API Management-Azure'
 description: Een hand leiding waarin wordt getoond hoe u AzureML-webservices beheert met behulp van API Management. Beheer uw REST API-eind punten door gebruikers toegang, gebruiks beperking en dashboard bewaking te definiëren.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: c397c52b39cd8056122424a5bcf6736edcfdbaa5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dcbf9ba00592a9f4e25f9355549629f7eeb9b92a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086815"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318484"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klassieke) webservices beheren met API Management
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 ## <a name="overview"></a>Overzicht
 In deze hand leiding wordt beschreven hoe u snel aan de slag kunt met API Management voor het beheren van uw Azure Machine Learning Studio (klassieke) webservices.

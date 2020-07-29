@@ -4,19 +4,19 @@ description: Meer informatie over de ondersteunde services en het gebeurtenis sc
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 7a97afa3f960393637b8af63c56fba419f853465
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6504f28b891fb16bd588b899b7a0402b65b4e44
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077059"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318280"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Algemeen en specifiek service schema voor Azure-resource logboeken
 
 > [!NOTE]
 > Bron logboeken zijn voorheen bekend als Diagnostische logboeken. De naam is in oktober 2019 gewijzigd, omdat de typen logboeken die door Azure Monitor zijn verzameld, meer dan alleen de Azure-resource bevatten. De lijst met bron logboek categorieën die u kunt verzamelen, wordt ook gebruikt om in dit artikel te worden weer gegeven. Ze zijn verplaatst naar [resource logboek categorieën](resource-logs-categories.md). 
 
-[Azure monitor bron logboeken](../../azure-monitor/platform/platform-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle bron logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
+[Azure monitor bron logboeken](./platform-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle bron logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
 
 Een combi natie van het resource type (beschikbaar in de `resourceId` eigenschap) en de `category` unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor resource logboeken en koppelingen naar de schema's voor elke service beschreven.
 
@@ -88,7 +88,8 @@ Het schema voor resource logboeken varieert afhankelijk van de categorie resourc
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Raadpleeg de resource logboek categorieën die u kunt verzamelen](resource-logs-categories.md)
-* [Meer informatie over bron logboeken](../../azure-monitor/platform/platform-logs-overview.md)
+* [Meer informatie over bron logboeken](./platform-logs-overview.md)
 * [Resource bron logboeken streamen naar **Event hubs**](./resource-logs.md#send-to-azure-event-hubs)
 * [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)
 * [Logboeken analyseren vanuit Azure Storage met Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
+

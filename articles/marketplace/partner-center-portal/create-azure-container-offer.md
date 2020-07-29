@@ -4,15 +4,15 @@ description: Meer informatie over het maken en publiceren van een container aanb
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 103a5534c143e5edf87f70570eb941dfa72bd45b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086469"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317821"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure-container aanbieding maken in azure Marketplace
 

@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: bc30275b2ee24af7bb526b3b43618c706bc027ca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502092"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368146"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Open Shift container platform 3,11 implementeren in azure
 
@@ -264,9 +264,9 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `dataDiskSize` | Grootte van de gegevens schijf die moet worden gekoppeld aan knoop punten voor docker-volume (in GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
 | `cnsGlusterDiskSize` | Grootte van de gegevens schijf die moet worden gekoppeld aan CNS-knoop punten voor gebruik door glusterfs (in GB | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
 | `adminUsername` | Gebruikers naam van de beheerder voor de aanmelding van zowel het besturings systeem (VM) als de eerste openshift-gebruiker |  | ocpadmin |
-| `enableMetrics` | Metrieken inschakelen. Voor metrische gegevens zijn meer resources nodig, dus Selecteer de juiste grootte voor infra structuur-VM | true <br> false | false |
-| `enableLogging` | Schakel logboek registratie in. voor elasticsearch Pod is 8 GB RAM vereist. Selecteer de juiste grootte voor infra structuur-VM | true <br> false | false |
-| `enableCNS` | Native opslag in container inschakelen | true <br> false | false |
+| `enableMetrics` | Metrieken inschakelen. Voor metrische gegevens zijn meer resources nodig, dus Selecteer de juiste grootte voor infra structuur-VM | waar <br> onjuist | onjuist |
+| `enableLogging` | Schakel logboek registratie in. voor elasticsearch Pod is 8 GB RAM vereist. Selecteer de juiste grootte voor infra structuur-VM | waar <br> onjuist | onjuist |
+| `enableCNS` | Native opslag in container inschakelen | waar <br> onjuist | onjuist |
 | `rhsmUsernameOrOrgId` | Gebruikers naam of organisatie-ID van Red Hat Subscription Manager |  |  |
 | `rhsmPoolId` | De groeps-ID van Red Hat Subscription Manager met de rechten van open Shift voor reken knooppunten |  |  |
 | `rhsmBrokerPoolId` | De groeps-ID van Red Hat Subscription Manager met de rechten van open Shift voor modellen en infra structuur knooppunten. Als u geen andere groeps-Id's hebt, voert u dezelfde groeps-ID in als ' rhsmPoolId ' |  |
@@ -274,7 +274,7 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `keyVaultSubscriptionId` | De abonnements-ID van het abonnement dat de Key Vault bevat |  |  |
 | `keyVaultResourceGroup` | De naam van de resource groep die de Key Vault bevat |  |  |
 | `keyVaultName` | De naam van de Key Vault die u hebt gemaakt |  |  |
-| `enableAzure` | Azure Cloud provider inschakelen | true <br> false | true |
+| `enableAzure` | Azure Cloud provider inschakelen | waar <br> onjuist | waar |
 | `aadClientId` | Azure Active Directory client-ID ook bekend als toepassings-ID voor Service-Principal |  |  |
 | `domainName` | De naam van de aangepaste domein naam die moet worden gebruikt (indien van toepassing). Ingesteld op ' geen ' als er geen volledig particulier cluster wordt geïmplementeerd |  | geen |
 | `masterClusterDnsType` | Domein type voor open Shift-webconsole. ' default ' maakt gebruik van het DNS-label van het Master-infra structuur openbaar IP-adres. met aangepast kunt u uw eigen naam definiëren | standaardinstelling <br> aangepast | standaardinstelling |

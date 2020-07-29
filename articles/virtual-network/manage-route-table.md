@@ -1,7 +1,7 @@
 ---
 title: Een Azure-route tabel maken, wijzigen of verwijderen
 titlesuffix: Azure Virtual Network
-description: Meer informatie over het maken, wijzigen of verwijderen van een route tabel.
+description: Informatie over het vinden van informatie over route ring van virtueel netwerk verkeer en het maken, wijzigen of verwijderen van een route tabel.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708260"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291002"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Een route tabel maken, wijzigen of verwijderen
 
@@ -41,18 +41,18 @@ Het account waarmee u zich aanmeldt of verbinding maakt met Azure, moet worden t
 
 Er is een limiet voor het aantal route tabellen dat u per Azure-locatie en-abonnement kunt maken. Zie [netwerk limieten-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.
 
-1. Selecteer in het menu [Azure Portal](https://portal.azure.com) of op de **Start** pagina de optie **een resource maken**.
+1. Selecteer in het menu van de [Azure-portal](https://portal.azure.com) of op de **startpagina** de optie **Een resource maken**.
 
-1. Voer in het zoekvak *route tabel*in. Wanneer **route tabel** wordt weer gegeven in de zoek resultaten, selecteert u deze.
+1. Voer in het zoekvak *Routeringstabel* in. Wanneer **Routeringstabel** wordt weergegeven in de zoekresultaten, selecteert u dit.
 
-1. Selecteer op de pagina **route tabel** de optie **maken**.
+1. Selecteer op de pagina **Routeringstabel** de optie **Maken**.
 
 1. In het dialoog venster **route tabel maken** :
 
     1. Voer een **naam** in voor de route tabel.
     1. Kies uw **abonnement**.
     1. Kies een bestaande **resource groep** of selecteer **nieuwe maken** om een nieuwe resource groep te maken.
-    1. Kies een **locatie**.
+    1. Kies een **Locatie**.
     1. Als u van plan bent om de route tabel te koppelen aan een subnet in een virtueel netwerk dat is verbonden met uw on-premises netwerk via een VPN-gateway en u uw on-premises routes niet wilt door geven aan de netwerk interfaces in het subnet, stelt u de **doorgifte van Gateway routes van het virtuele netwerk** in op **uitgeschakeld**.
 
 1. Selecteer **maken** om uw nieuwe route tabel te maken.
@@ -66,7 +66,7 @@ Er is een limiet voor het aantal route tabellen dat u per Azure-locatie en-abonn
 
 ## <a name="view-route-tables"></a>Route tabellen weer geven
 
-Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **route tabellen**. De route tabellen die in uw abonnement aanwezig zijn, worden weer gegeven.
+Ga naar de [Azure-portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **Routeringstabellen**. De route tabellen die in uw abonnement aanwezig zijn, worden weer gegeven.
 
 ### <a name="view-route-table---commands"></a>Route tabel weer geven-opdrachten
 
@@ -77,7 +77,7 @@ Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerk te be
 
 ## <a name="view-details-of-a-route-table"></a>Details van een route tabel weer geven
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel waarvan u de details wilt weer geven.
 
@@ -88,7 +88,7 @@ Voor meer informatie over algemene Azure-instellingen raadpleegt u de volgende i
 - [Activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md)
 - [Toegangsbeheer (IAM)](../role-based-access-control/overview.md)
 - [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Vergrendelingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automation-script](../azure-resource-manager/templates/export-template-portal.md)
 
 ### <a name="view-details-of-route-table---commands"></a>Details van route tabel-opdrachten weer geven
@@ -100,7 +100,7 @@ Voor meer informatie over algemene Azure-instellingen raadpleegt u de volgende i
 
 ## <a name="change-a-route-table"></a>Een route tabel wijzigen
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel die u wilt wijzigen.
 
@@ -117,7 +117,7 @@ De meest voorkomende wijzigingen zijn het [toevoegen](#create-a-route) van route
 
 U kunt eventueel een route tabel koppelen aan een subnet. Een route tabel kan worden gekoppeld aan nul of meer subnetten. Omdat route tabellen niet aan virtuele netwerken zijn gekoppeld, moet u een route tabel koppelen aan elk subnet waaraan de route tabel is gekoppeld. Azure stuurt al het verkeer dat het subnet verlaat op basis van routes die u hebt gemaakt in route tabellen, [standaard routes](virtual-networks-udr-overview.md#default)en routes die worden door gegeven vanuit een on-premises netwerk, als het virtuele netwerk is verbonden met een virtuele Azure-netwerk gateway (EXPRESSROUTE of VPN). U kunt routetabellen alleen koppelen aan subnetten in virtuele netwerken die zich op dezelfde Azure-locatie en in hetzelfde abonnement bevinden als de routetabel.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **virtuele netwerken**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **Virtuele netwerken**.
 
 1. Kies in de lijst virtueel netwerk het virtuele netwerk dat het subnet bevat waaraan u een route tabel wilt koppelen.
 
@@ -142,7 +142,7 @@ Als uw virtuele netwerk is verbonden met een Azure VPN-gateway, koppelt u een ro
 
 Wanneer u een route tabel loskoppelt van een subnet, routeert Azure verkeer op basis van de [standaard routes](virtual-networks-udr-overview.md#default).
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **virtuele netwerken**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om uw virtuele netwerk te beheren. Zoek en selecteer **Virtuele netwerken**.
 
 1. Kies in de lijst virtueel netwerk het virtuele netwerk dat het subnet bevat dat u wilt loskoppelen van een route tabel.
 
@@ -165,7 +165,7 @@ Wanneer u een route tabel loskoppelt van een subnet, routeert Azure verkeer op b
 
 U kunt een route tabel die is gekoppeld aan een subnet, niet verwijderen. [Koppel een routetabel los](#dissociate-a-route-table-from-a-subnet) van alle subnetten voordat u deze probeert te verwijderen.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel die u wilt verwijderen.
 
@@ -182,7 +182,7 @@ U kunt een route tabel die is gekoppeld aan een subnet, niet verwijderen. [Koppe
 
 Er is een limiet voor het aantal routes per route tabel dat per Azure-locatie en-abonnement kan worden gemaakt. Zie [netwerk limieten-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel waaraan u een route wilt toevoegen.
 
@@ -209,7 +209,7 @@ Er is een limiet voor het aantal routes per route tabel dat per Azure-locatie en
 
 Een route tabel bevat nul of meer routes. Zie [virtueel netwerk verkeer routeren](virtual-networks-udr-overview.md)voor meer informatie over de informatie die wordt weer gegeven wanneer u routes bekijkt.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel waarvoor u routes wilt weer geven.
 
@@ -224,7 +224,7 @@ Een route tabel bevat nul of meer routes. Zie [virtueel netwerk verkeer routeren
 
 ## <a name="view-details-of-a-route"></a>Details van een route weergeven
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel met de route waarvan u de details wilt weer geven.
 
@@ -241,7 +241,7 @@ Een route tabel bevat nul of meer routes. Zie [virtueel netwerk verkeer routeren
 
 ## <a name="change-a-route"></a>Een route wijzigen
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel met de route die u wilt wijzigen.
 
@@ -260,7 +260,7 @@ Een route tabel bevat nul of meer routes. Zie [virtueel netwerk verkeer routeren
 
 ## <a name="delete-a-route"></a>Een route verwijderen
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **route tabellen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw route tabellen te beheren. Zoek en selecteer **Routeringstabellen**.
 
 1. Kies in de lijst route tabel de route tabel met de route die u wilt verwijderen.
 
@@ -333,7 +333,7 @@ Na een korte wacht tijd geeft Azure u het type van de volgende hop en de ID van 
 
 Om taken uit te voeren op route tabellen en routes, moet uw account worden toegewezen aan de [rol netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties in de volgende tabel worden toegewezen:
 
-| Bewerking                                                          |   Name                                                  |
+| Bewerking                                                          |   Naam                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Micro soft. Network/routeTables/lezen                              |   Een route tabel lezen                                    |
 | Micro soft. Network/routeTables/schrijven                             |   Een route tabel maken of bijwerken                        |

@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039989"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290612"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Aan de slag met de Oracle Database-connector
 
@@ -122,10 +122,11 @@ Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventue
 
 ## <a name="get-some-help"></a>Hulp krijgen
 
-De [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) is een goede plaats om vragen te stellen, vragen te beantwoorden en te zien wat andere Logic Apps gebruikers doen. 
+De [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html) is een goede plaats om vragen te stellen, vragen te beantwoorden en te zien wat andere Logic Apps gebruikers doen. 
 
 U kunt Logic Apps en connectors verbeteren door te stemmen en uw ideeën in te dienen [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 [Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)en verken de beschik bare connectors in Logic apps in de [lijst api's](apis-list.md).
+

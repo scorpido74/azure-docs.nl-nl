@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659659"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318382"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problemen met grafieken met metrische gegevens oplossen
 
@@ -67,7 +68,7 @@ Door [de grenzen van de y-as van de grafiek te vergrendelen](metrics-charts.md#l
 
 Het verzamelen van metrische gegevens van een **gastbesturingssysteem** is alleen mogelijk als Azure Diagnostic Extension is geconfigureerd of als u de extensie hebt ingeschakeld met behulp van het venster **Diagnostische instellingen** voor uw resource.
 
-**Oplossing:** Als Azure Diagnostics extensie is ingeschakeld, maar u nog steeds niet uw metrische gegevens kunt zien, volgt u de stappen die worden beschreven in de [hand leiding voor het oplossen van problemen met de Azure Diagnostics extensie](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Zie ook de stappen voor het oplossen van problemen met het [niet kiezen van naam ruimte en metrische gegevens voor het gast besturingssysteem](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) .
+**Oplossing:** Als Azure Diagnostics extensie is ingeschakeld, maar u nog steeds niet uw metrische gegevens kunt zien, volgt u de stappen die worden beschreven in de [hand leiding voor het oplossen van problemen met de Azure Diagnostics extensie](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Zie ook de stappen voor het oplossen van problemen met het [niet kiezen van naam ruimte en metrische gegevens voor het gast besturingssysteem](#cannot-pick-guest-os-namespace-and-metrics) .
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Bericht ' fout bij het ophalen van gegevens ' op het dash board
 
@@ -105,7 +106,7 @@ Metrische gegevens van het gastbesturingssysteem worden standaard opgeslagen in 
     > [!WARNING]
     > U kunt geen gebruikmaken van de [Log Analytics-agent](agents-overview.md#log-analytics-agent) (ook wel de Microsoft Monitoring Agent of 'MMA' genoemd) voor het verzenden van **Gastbesturingssysteem** naar een opslagaccount.
 
-1. Zorg ervoor dat de resource provider van **micro soft. Insights** is [geregistreerd voor uw abonnement](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
+1. Zorg ervoor dat de resource provider van **micro soft. Insights** is [geregistreerd voor uw abonnement](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
 1. Controleer of het opslagaccount niet is beveiligd door de firewall. De Azure-portal moet toegang hebben tot het opslagaccount om metrische gegevens op te halen en de grafieken te tekenen.
 
@@ -117,3 +118,4 @@ Metrische gegevens van het gastbesturingssysteem worden standaard opgeslagen in 
 * [Meer informatie over geavanceerde functies van metrische Explorer](metrics-charts.md)
 * [Een lijst met beschikbare metrische gegevens voor Azure-services zien](metrics-supported.md)
 * [Voorbeelden van geconfigureerde grafieken zien](metric-chart-samples.md)
+

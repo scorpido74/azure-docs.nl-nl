@@ -2,13 +2,13 @@
 title: Aandachtspunten voor de opslag van Azure Functions
 description: Meer informatie over de opslag vereisten van Azure Functions en over het versleutelen van opgeslagen gegevens.
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079601"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318178"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
 
@@ -18,12 +18,12 @@ Azure Functions moet een Azure Storage-account zijn wanneer u een exemplaar van 
 |Opslag service  | Functie gebruik  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | Bestands share gebruikt om de code van uw functie-app op te slaan en uit te voeren in een [verbruiks abonnement](functions-scale.md#consumption-plan). |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Bestands share gebruikt om de code van uw functie-app op te slaan en uit te voeren in een [verbruiks abonnement](functions-scale.md#consumption-plan) en een [Premium-abonnement](functions-scale.md#premium-plan). |
 | [Azure-wachtrij opslag](../storage/queues/storage-queues-introduction.md)     | Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
-> Als u gebruikmaakt van het hostingabonnement Consumption worden uw functiecode en uw bindingsconfiguratiebestanden opgeslagen in het belangrijkste opslagaccount in Azure File Storage. Wanneer u het belangrijkste opslagaccount verwijdert, wordt de inhoud verwijderd en kan deze niet worden hersteld.
+> Wanneer u gebruikmaakt van het hosting abonnement voor verbruik/Premium, worden uw functie code en bindings configuratie bestanden opgeslagen in azure file storage in het hoofd-opslag account. Wanneer u het belangrijkste opslagaccount verwijdert, wordt de inhoud verwijderd en kan deze niet worden hersteld.
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 

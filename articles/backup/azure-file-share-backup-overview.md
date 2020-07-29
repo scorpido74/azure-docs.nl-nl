@@ -3,16 +3,16 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7441157d6346eefc256e9e7c29f9bb1fa5c13b79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539088"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289520"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
-Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplossing die uw gegevens in de Cloud beschermt en extra onderhouds overhead voor on-premises back-upoplossingen verwijdert. De Azure Backup-service kan naadloos worden geïntegreerd met Azure file sync en biedt u de mogelijkheid om uw bestands share gegevens en uw back-ups te centraliseren. Met deze eenvoudige, betrouw bare en veilige oplossing kunt u de beveiliging van uw zakelijke bestands shares in een paar eenvoudige stappen configureren met een garantie dat u uw gegevens kunt herstellen in het geval van een nood geval.
+Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplossing die uw gegevens in de Cloud beschermt en extra onderhouds overhead voor on-premises back-upoplossingen verwijdert. De Azure Backup-service kan probleemloos worden geïntegreerd met Azure File Sync en Hiermee kunt u uw bestands share gegevens en uw back-ups centraliseren. Met deze eenvoudige, betrouw bare en veilige oplossing kunt u de beveiliging van uw zakelijke bestands shares in een paar eenvoudige stappen configureren met een garantie dat u uw gegevens kunt herstellen in het geval van een nood geval.
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Belangrijkste voor delen van back-ups van Azure-bestands share
 
@@ -42,9 +42,11 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
     >[!NOTE]
     >De bestands share gegevens worden niet overgebracht naar de back-upservice omdat de back-upservice moment opnamen maakt en beheert die deel uitmaken van uw opslag account en back-ups niet worden overgedragen naar de kluis.
 
-6. U kunt de inhoud van de Azure-bestands share (afzonderlijke bestanden of de volledige share) herstellen op basis van moment opnamen die beschikbaar zijn op de bron bestands share. Zodra de bewerking is geactiveerd, wordt de URL van de moment opname opgehaald uit het meta gegevens archief en worden de gegevens weer gegeven en overgebracht van de bron momentopname naar de doel bestands share van uw keuze.
+6. U kunt de inhoud van de Azure-bestands share (afzonderlijke bestanden of de volledige share) herstellen op basis van moment opnamen die beschikbaar zijn op de bron bestands share. Zodra de bewerking is geactiveerd, wordt de URL van de moment opname opgehaald uit het meta gegevens archief en worden de gegevens weer gegeven en overgebracht van de bron momentopname naar de doel bestands share van uw keuze. 
 
-7. De bewakings gegevens van de taak back-up en herstel worden gepusht naar de Azure Backup monitoring-service. Hierdoor kunt u Cloud back-ups voor uw bestands shares in één dash board bewaken. Daarnaast kunt u ook waarschuwingen of e-mail meldingen configureren wanneer de status van de back-up wordt beïnvloed. E-mails worden verzonden via de e-mail service van Azure.
+7. Als u Azure File Sync gebruikt, geeft de back-upservice aan de Azure File Sync-Service de paden van de bestanden die worden teruggezet, waardoor een detectie proces voor de achtergrond wijzigingen op deze bestanden wordt geactiveerd. Alle bestanden die zijn gewijzigd, worden naar het eind punt van de server gesynchroniseerd. Dit proces gebeurt parallel met de oorspronkelijke terugzet bewerking naar de Azure-bestands share. 
+
+8. De bewakings gegevens van de taak back-up en herstel worden gepusht naar de Azure Backup monitoring-service. Hierdoor kunt u Cloud back-ups voor uw bestands shares in één dash board bewaken. Daarnaast kunt u ook waarschuwingen of e-mail meldingen configureren wanneer de status van de back-up wordt beïnvloed. E-mails worden verzonden via de e-mail service van Azure.
 
 ## <a name="backup-costs"></a>Back-upkosten
 

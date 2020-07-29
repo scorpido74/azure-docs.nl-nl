@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a367e819ab9f12d9adcb448848c80eaeea73d113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317175"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Gegevens verzamelen van de Azure Diagnostics-extensie naar Azure Monitor-logboeken
 Azure Diagnostics-extensie is een [agent in azure monitor](agents-overview.md) die bewakings gegevens verzamelt van het gast besturingssysteem van Azure Compute-resources, waaronder virtuele machines. In dit artikel wordt beschreven hoe u gegevens verzamelt die worden verzameld door de uitbrei ding van de diagnose van Azure Storage naar Azure Monitor-Logboeken.
@@ -24,13 +24,13 @@ Met de Azure Diagnostics-extensie worden gegevens opgeslagen in een Azure Storag
 
 | Logboek type | Resourcetype | Locatie |
 | --- | --- | --- |
-| IIS-logboeken |Virtual Machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
-| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
+| IIS-logboeken |Virtuele machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
+| Syslog |Virtuele machines |LinuxsyslogVer2v0 (Table Storage) |
 | Operationele gebeurtenissen Service Fabric |Service Fabric knooppunten |WADServiceFabricSystemEventTable |
 | Service Fabric betrouw bare actor gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableActorEventTable |
 | Service Fabric betrouw bare service gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableServiceEventTable |
-| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
+| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Gegevens typen worden niet ondersteund
 
@@ -64,5 +64,6 @@ In ongeveer 30 minuten kunt u de gegevens van het opslag account in de werk ruim
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Verzamel logboeken en metrische gegevens voor Azure-Services](./resource-logs.md#send-to-log-analytics-workspace) voor ondersteunde Azure-Services.
-* [Schakel oplossingen](../../azure-monitor/insights/solutions.md) in om inzicht te krijgen in de gegevens.
-* [Gebruik Zoek query's](../../azure-monitor/log-query/log-query-overview.md) om de gegevens te analyseren.
+* [Schakel oplossingen](../insights/solutions.md) in om inzicht te krijgen in de gegevens.
+* [Gebruik Zoek query's](../log-query/log-query-overview.md) om de gegevens te analyseren.
+

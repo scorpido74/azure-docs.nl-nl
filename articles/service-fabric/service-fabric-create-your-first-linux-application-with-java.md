@@ -3,12 +3,13 @@ title: Een Java-toepassing met Azure Service Fabric reliable actors maken in Lin
 description: Lees hoe u een betrouwbare Service Fabric Java-actortoepassing in vijf minuten kunt maken en implementeren.
 ms.topic: conceptual
 ms.date: 06/18/2018
-ms.openlocfilehash: 4d09666bad7b4e03b8598191d99a9db717c277d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368928"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Uw eerste betrouwbare Service Fabric Java-actortoepassing maken in Linux
 > [!div class="op_single_selector"]

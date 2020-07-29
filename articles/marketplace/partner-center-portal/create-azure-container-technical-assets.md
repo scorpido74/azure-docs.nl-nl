@@ -4,15 +4,15 @@ description: Technische bronnen en richt lijnen om u te helpen bij het configure
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: da0fa53567e5c58db8e8394ef5562255d8a7142d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104263"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317787"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
 
@@ -39,11 +39,11 @@ Naast uw oplossings domein moet uw technische team kennis hebben van de volgende
 Kies een of beide van de volgende script omgevingen om uw container installatie kopie te beheren:
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
-- [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 U wordt aangeraden deze hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
-- [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure-opslagverkenner](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

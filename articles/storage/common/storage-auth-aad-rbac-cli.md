@@ -10,20 +10,20 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7c74bc8bd92e2d210c8fe5deaff30d55a36bb5e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: afa48c07e628eaeb013c24fa38fcda1adea2555a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127210"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368966"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure CLI gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
-Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens.
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde Azure-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens.
 
 Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde RBAC-rollen weer te geven en toe te wijzen aan gebruikers. Zie [Azure-opdracht regel interface (CLI)](/cli/azure)voor meer informatie over het gebruik van Azure cli.
+In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde rollen van Azure op te geven en ze toe te wijzen aan gebruikers. Zie [Azure-opdracht regel interface (CLI)](/cli/azure)voor meer informatie over het gebruik van Azure cli.
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-rollen voor blobs en wacht rijen
 
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde RBAC-roll
 
 ## <a name="list-available-rbac-roles"></a>Beschik bare RBAC-rollen weer geven
 
-Als u beschik bare ingebouwde RBAC-rollen met Azure CLI wilt weer geven, gebruikt u de opdracht [AZ Role definition List](/cli/azure/role/definition#az-role-definition-list) :
+Als u beschik bare ingebouwde Azure-rollen wilt weer geven met Azure CLI, gebruikt u de opdracht [AZ Role definition List](/cli/azure/role/definition#az-role-definition-list) :
 
 ```azurecli-interactive
 az role definition list --out table

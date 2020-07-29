@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f35968156e787b844d28f866a832940cc8ef64
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d3630b631944befaf8a8c3d32e90e775dd6d63fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171613"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292864"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
 
@@ -32,19 +32,15 @@ Voor servers die Maxi maal 4 TB aan maximale opslag ondersteunen, worden er éé
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Servers met Maxi maal 16 TB opslag
 
-In een subset van [Azure-regio's](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)kan alle nieuw ingerichte servers Maxi maal 16 TB opslag ondersteunen. Back-ups op deze grote opslag servers zijn gebaseerd op moment opnamen. De eerste volledige back-up van de moment opname wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende back-ups voor moment opnamen zijn alleen differentiële back-ups. 
-
-Back-ups van differentiële moment opnamen worden minstens één keer per dag uitgevoerd. Back-ups van differentiële moment opnamen worden niet uitgevoerd volgens een vast schema. Back-ups van differentiële moment opnamen worden elke 24 uur uitgevoerd, tenzij het transactie logboek (binlog in MySQL) 50-GB overschrijdt sinds de laatste differentiële back-up. In een dag zijn Maxi maal zes differentiële moment opnamen toegestaan. 
-
-Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. 
+In een subset van [Azure-regio's](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)kan alle nieuw ingerichte servers Maxi maal 16 TB opslag ondersteunen. Back-ups op deze grote opslag servers zijn gebaseerd op moment opnamen. De eerste volledige back-up van de moment opname wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende back-ups voor moment opnamen zijn alleen differentiële back-ups. Back-ups van differentiële moment opnamen worden niet uitgevoerd volgens een vast schema. Op een dag worden er drie back-ups van differentiële moment opnamen uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. 
 
 ### <a name="backup-retention"></a>Retentie van back-ups
 
 Back-ups worden bewaard op basis van de instelling voor de Bewaar periode voor back-ups op de server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. De standaard Bewaar periode is 7 dagen. U kunt de Bewaar periode instellen tijdens het maken van de server of later door de back-upconfiguratie bij te werken met [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) of [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration). 
 
 De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel naar een bepaald tijdstip kan worden opgehaald, omdat het is gebaseerd op back-ups die beschikbaar zijn. De Bewaar periode voor back-ups kan ook worden behandeld als een herstel venster van een Restore-perspectief. Alle back-ups die zijn vereist voor het uitvoeren van een herstel naar een bepaald tijdstip binnen de Bewaar periode voor back-ups, worden bewaard in back-upopslag. Bijvoorbeeld: als de Bewaar periode voor back-ups is ingesteld op 7 dagen, wordt het herstel venster beschouwd als laatste 7 dagen. In dit scenario blijven alle back-ups die nodig zijn om de server in de afgelopen 7 dagen te herstellen, behouden. Met een Bewaar periode voor back-ups van zeven dagen:
-- Oudere servers met een opslag van 4 TB behouden Maxi maal twee volledige back-ups van de data base, alle differentiële back-ups en back-ups van transactie logboeken die zijn uitgevoerd sinds de eerste volledige back-up van de data base.
--   Servers met grote opslag (16 TB) behouden de volledige database momentopname, alle differentiële moment opnamen en back-ups van transactie Logboeken in de afgelopen 8 dagen.
+- Servers met Maxi maal 4 TB opslag behouden Maxi maal twee volledige back-ups van de data base, alle differentiële back-ups en back-ups van transactie logboeken die zijn uitgevoerd sinds de eerste volledige back-up van de data base.
+-   Servers met Maxi maal 16 TB opslag behouden de volledige database momentopname, alle differentiële moment opnamen en back-ups van transactie Logboeken in de afgelopen 8 dagen.
 
 ### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
 

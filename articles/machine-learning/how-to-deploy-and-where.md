@@ -5,18 +5,18 @@ description: Meer informatie over hoe en waar u uw Azure Machine Learning-modell
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
-ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536382"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317872"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,11 @@ De werk stroom is vergelijkbaar, [waar u uw model implementeert](#target) :
 1. Test het geïmplementeerde model, ook wel webservice genoemd.
 
 Zie [modellen beheren, implementeren en bewaken met Azure machine learning](concept-model-management-and-deployment.md)voor meer informatie over de concepten die zijn betrokken bij de implementatie werk stroom.
+
+> [!IMPORTANT]
+> Het wordt ten zeerste aanbevolen om lokaal fouten op te sporen voordat u de webservice implementeert, voor meer informatie. Raadpleeg [lokaal fouten opsporen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> U kunt ook verwijzen naar Azure Machine Learning- [implementeren naar lokale notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>Vereisten
 

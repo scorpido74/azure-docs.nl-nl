@@ -8,26 +8,23 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083569"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292550"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Probleemoplossings overzicht, feedback en ondersteuning voor virtueel bureau blad van Windows
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
->
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
 
 Dit artikel bevat een overzicht van de problemen die zich kunnen voordoen bij het instellen van een virtuele Windows-desktop omgeving en biedt manieren om de problemen op te lossen.
 
-## <a name="report-issues-during-public-preview"></a>Problemen melden tijdens de open bare preview
+## <a name="report-issues"></a>Problemen melden
 
-Als u problemen wilt melden of functies wilt voors Ellen tijdens de open bare preview van de lente 2020-release, gaat u naar de [technische community van Windows Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop). U kunt de technische community gebruiken voor het bespreken van aanbevolen procedures of suggesties en stemmen voor nieuwe functies. Wanneer u een probleem met betrekking tot de open bare preview-versie rapporteert, moet u ervoor zorgen dat u het probleem type labelt als **lente 2020-update (preview)**.
+Ga naar de [tech-community van Windows virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)voor het melden van problemen of Voorst Ellen voor Windows virtueel bureau blad met Azure Resource Manager-integratie. U kunt de technische community gebruiken voor het bespreken van aanbevolen procedures of suggesties en stemmen voor nieuwe functies.
 
 Wanneer u een bericht voor hulp vraagt of een nieuwe functie voor stelt, zorg er dan voor dat u het onderwerp in zoveel mogelijk details beschrijft. Gedetailleerde informatie kan andere gebruikers helpen bij het beantwoorden van uw vraag of het begrijpen van de functie waarvoor u een stem voor stelt.
 

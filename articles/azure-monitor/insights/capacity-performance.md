@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317991"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Virtuele Hyper-V-machine capaciteit plannen met de Capaciteit en prestaties oplossing (afgeschaft)
 
@@ -41,9 +41,9 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 
 | Verbonden bron | Ondersteuning | Beschrijving |
 |---|---|---|
-| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Ja | De oplossing verzamelt informatie over capaciteits-en prestatie gegevens van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee    | De oplossing verzamelt geen gegevens over de capaciteits-en prestatie gegevens van direct Linux-agents.|
-| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | Ja |De oplossing verzamelt capaciteits-en prestatie gegevens van agents in een verbonden SCOM-beheer groep. Er is geen rechtstreekse verbinding van de SCOM-agent naar Log Analytics vereist.|
+| [Windows-agents](../platform/agent-windows.md) | Ja | De oplossing verzamelt informatie over capaciteits-en prestatie gegevens van Windows-agents. |
+| [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen gegevens over de capaciteits-en prestatie gegevens van direct Linux-agents.|
+| [SCOM-beheer groep](../platform/om-agents.md) | Ja |De oplossing verzamelt capaciteits-en prestatie gegevens van agents in een verbonden SCOM-beheer groep. Er is geen rechtstreekse verbinding van de SCOM-agent naar Log Analytics vereist.|
 | [Azure-opslag account](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nee | Azure Storage omvat geen capaciteits-en prestatie gegevens.|
 
 ## <a name="prerequisites"></a>Vereisten
@@ -55,7 +55,7 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 
 Voer de volgende stap uit om de Capaciteit en prestaties oplossing toe te voegen aan uw werk ruimte.
 
-- Voeg de Capaciteit en prestaties oplossing toe aan uw Log Analytics-werk ruimte met behulp van het proces beschreven in [log Analytics-oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+- Voeg de Capaciteit en prestaties oplossing toe aan uw Log Analytics-werk ruimte met behulp van het proces beschreven in [log Analytics-oplossingen toevoegen van de Oplossingengalerie](./solutions.md).
 
 ## <a name="management-packs"></a>Management packs
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Wanneer de Capaciteit en prestaties oplossing wordt bijgewerkt, wordt het versie nummer gewijzigd.
 
-Zie [Operations Manager koppelen aan Log Analytics](../../azure-monitor/platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
+Zie [Operations Manager koppelen aan Log Analytics](../platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
 
 ## <a name="using-the-solution"></a>De oplossing gebruiken
 
@@ -129,4 +129,5 @@ De volgende tabel bevat voor beelden van zoek opdrachten in het logboek voor de 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Gebruik [Zoek opdrachten in Logboeken in log Analytics](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde capaciteit en prestaties gegevens weer te geven.
+* Gebruik [Zoek opdrachten in Logboeken in log Analytics](../log-query/log-query-overview.md) om gedetailleerde capaciteit en prestaties gegevens weer te geven.
+

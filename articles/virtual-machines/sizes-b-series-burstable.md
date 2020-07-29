@@ -5,14 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292067"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 
@@ -134,7 +135,7 @@ bijvoorbeeld: in het bovenstaande exemplaar is uw basis lijn 20%. Als u 10% van 
 
 **A** : B1ls biedt alleen ondersteuning voor Linux-installatie kopieën en als u een andere installatie kopie van het besturings systeem implementeert, is het mogelijk dat u niet de beste klant ervaring krijgt.
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
@@ -142,6 +143,10 @@ bijvoorbeeld: in het bovenstaande exemplaar is uw basis lijn 20%. Als u 10% van 
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
+
+Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
+
+Meer informatie over schijven typen: [schijf typen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Volgende stappen
 

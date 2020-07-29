@@ -3,15 +3,15 @@ title: Een Linux-omgeving maken met de Azure CLI
 description: Maak opslag, een virtuele Linux-machine, een virtueel netwerk en een subnet, een load balancer, een NIC, een openbaar IP-adres en een netwerk beveiligings groep, helemaal vanaf het begin met behulp van de Azure CLI.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9613cdf38eecd750eb8ca3e9f3046112c558ea2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511123"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368333"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Een volledige virtuele Linux-machine maken met de Azure CLI
 Als u snel een virtuele machine (VM) in azure wilt maken, kunt u één Azure CLI-opdracht gebruiken die standaard waarden gebruikt voor het maken van vereiste ondersteunende resources. Resources, zoals een virtueel netwerk, een openbaar IP-adres en een netwerk beveiligings groep, worden automatisch gemaakt. Als u meer controle hebt over uw omgeving in productie gebruik, kunt u deze resources van tevoren maken en vervolgens uw Vm's toevoegen. Dit artikel helpt u bij het maken van een virtuele machine en elk van de ondersteunende bronnen één voor één.

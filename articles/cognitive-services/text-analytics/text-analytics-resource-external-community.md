@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251308"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291653"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe & Community-inhoud voor de Text Analytics cognitieve service
 
@@ -23,7 +23,7 @@ ms.locfileid: "78251308"
 
 ## <a name="blogs"></a>Blogs
 
-+ [Text Analytics-API oorspronkelijke aankondiging (Azure-blog)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Text Analytics-API oorspronkelijke aankondiging (Azure-blog)](https://azure.microsoft.com/blog/using-text-analytics-in-call-centers/)
 
 + [Text Analytics sleutel woordgroep gebruiken Cognitive Services API van Power shell (AutomationNext blog)](https://automationnext.wordpress.com/tag/text-analytics/)
 
@@ -51,7 +51,7 @@ ms.locfileid: "78251308"
 
 Zoekt u informatie over een functie of een gebruiks voorbeeld die niet wordt behandeld? Overweeg om IT te vragen of te stemmen op [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
  [Stack overflow: Azure Text Analytics-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [Stack overflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

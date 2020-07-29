@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008197"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317281"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -47,12 +47,12 @@ De IT-organisaties zijn tegenwoordig gemodelleerd volgens een gecentraliseerd, g
 
 Wanneer u de Log Analytics-agents gebruikt om gegevens te verzamelen, moet u het volgende weten om de implementatie van de agent te plannen:
 
-* Als u gegevens van Windows-agents wilt verzamelen, kunt u [elke agent configureren om te rapporteren aan een of meer werk ruimten](../../azure-monitor/platform/agent-windows.md), zelfs wanneer deze wordt gerapporteerd aan een System Center Operations Manager-beheer groep. De Windows-agent kan Maxi maal vier werk ruimten rapporteren.
+* Als u gegevens van Windows-agents wilt verzamelen, kunt u [elke agent configureren om te rapporteren aan een of meer werk ruimten](./agent-windows.md), zelfs wanneer deze wordt gerapporteerd aan een System Center Operations Manager-beheer groep. De Windows-agent kan Maxi maal vier werk ruimten rapporteren.
 * De Linux-agent biedt geen ondersteuning voor multi-multihoming en kan slechts aan één werk ruimte rapporteren.
 
 Als u System Center Operations Manager 2012 R2 of hoger gebruikt:
 
-* Elke Operations Manager-beheer groep kan worden [verbonden met slechts één werk ruimte](../platform/om-agents.md). 
+* Elke Operations Manager-beheer groep kan worden [verbonden met slechts één werk ruimte](./om-agents.md). 
 * Linux-computers die rapporteren aan een beheer groep moeten worden geconfigureerd om rechtstreeks te rapporteren aan een Log Analytics-werk ruimte. Als uw Linux-computers al rechtstreeks aan een werk ruimte rapporteren en u deze wilt controleren met Operations Manager, voert u de volgende stappen uit om [aan een Operations Manager beheer groep te rapporteren](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * U kunt de Log Analytics Windows-agent op de Windows-computer installeren en deze rapporteren aan zowel Operations Manager geïntegreerd met een werk ruimte als een andere werk ruimte.
 
@@ -166,3 +166,4 @@ Houd bij het plannen van de migratie naar dit model rekening met het volgende:
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u de beveiligings machtigingen en-besturings elementen wilt implementeren die worden aanbevolen in deze hand leiding, raadpleegt u de [toegang tot logboeken beheren](manage-access.md).
+

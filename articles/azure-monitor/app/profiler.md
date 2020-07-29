@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4c9907555301c55cd5e55f421f27518fd4a9960d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085054"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315634"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Live Azure App Service-apps met Application Insights profiel
 
@@ -19,9 +19,9 @@ U kunt Profiler uitvoeren op ASP.NET en ASP.NET Core apps die worden uitgevoerd 
 
 ## <a name="enable-profiler-for-your-app"></a><a id="installation"></a>Profiler voor uw app inschakelen
 Als u Profiler voor een app wilt inschakelen, volgt u de onderstaande instructies. Als u een ander type Azure-service gebruikt, zijn hier instructies voor het inschakelen van Profiler op andere ondersteunde platforms:
-* [Cloudservices](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric toepassingen](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Cloudservices](./profiler-cloudservice.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Service Fabric toepassingen](./profiler-servicefabric.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Virtual Machines](./profiler-vm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Application Insights Profiler wordt vooraf geïnstalleerd als onderdeel van de App Services runtime. In de onderstaande stappen ziet u hoe u deze functie inschakelt voor uw App Service. Volg deze stappen, zelfs als u de app Insights-SDK in uw toepassing hebt opgenomen tijdens het bouwen.
 
@@ -50,7 +50,7 @@ Dit zijn de instellingen die nodig zijn om de Profiler in te scha kelen:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-U kunt deze waarden instellen met behulp van [Azure Resource Manager sjablonen](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp), [Azure cli](/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+U kunt deze waarden instellen met behulp van [Azure Resource Manager sjablonen](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp), [Azure cli](/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>Profiler hand matig inschakelen voor andere Clouds
 
@@ -79,3 +79,4 @@ Bestanden van Profiler kunnen worden verwijderd wanneer u Web implementeren gebr
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png
 [disable-profiler-webjob]: ./media/profiler/disable-profiler-webjob.png
+

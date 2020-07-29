@@ -3,12 +3,12 @@ title: Azure Red Hat open Shift v3. x configureren met Azure Monitor voor contai
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open Shift versie 3 en hoger.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092895"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317974"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers
 
@@ -159,7 +159,7 @@ Voer de volgende stappen uit om de bewaking in te scha kelen van een Azure Red H
 
 ### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer in het menu Azure Portal of op de start pagina **Azure monitor**. Selecteer in de sectie **insightss** de optie **containers**.
 
@@ -173,7 +173,7 @@ Voer de volgende stappen uit om de bewaking in te scha kelen van een Azure Red H
     ![Bewaking voor niet-bewaakte clusters inschakelen](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement dat het RedHat open Shift-cluster is geïmplementeerd.
+    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement dat het RedHat open Shift-cluster is geïmplementeerd.
 
 Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven.
 
@@ -244,3 +244,4 @@ Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal inst
 - Als u Prometheus-metrische gegevens uit uw cluster wilt opwaarderen en analyseren, raadpleegt u [Prometheus metrische gegevens](container-insights-prometheus-integration.md) weer geven
 
 - Zie [het bewaken van uw Azure Red Hat open Shift-cluster stoppen](./container-insights-optout-openshift-v3.md)voor meer informatie over het stoppen van het bewaken van uw cluster met Azure monitor voor containers.
+

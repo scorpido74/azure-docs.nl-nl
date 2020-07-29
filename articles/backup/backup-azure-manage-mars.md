@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054980"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317345"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -112,7 +112,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 1. Controleer de gegevens in **geplande back-ups onderbreken**en klik op **volt ooien**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. In **back-upproces wijzigen**, controleert u of de back-up van uw planning is geslaagd en klikt u op **sluiten** om te volt ooien.
+1. Controleer in de voortgang van het wijzigen van de **back-up**de optie back-up plannen onderbreken in geslaagd en klik op **sluiten** om te volt ooien.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Beveiliging stoppen en back-upgegevens verwijderen
 

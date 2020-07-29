@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704706"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317124"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -84,7 +84,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 > [!NOTE]
 > Veel van de onderstaande Cognitive Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de gratis laag wilt gebruiken, gebruikt u `F0` als de SKU voor uw resource.
 
-### <a name="vision"></a>Vision
+### <a name="vision"></a>Gezichtsvermogen
 
 | Service                    | Soort                      |
 |----------------------------|---------------------------|
@@ -100,16 +100,16 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Service            | Soort                  |
 |--------------------|-----------------------|
 | Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
+| Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
+| Bing Entiteiten zoeken | `Bing.EntitySearch`   |
+| Bing Zoeken        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Spraak
 
 | Service            | Soort                 |
 |--------------------|----------------------|
-| Spraakservices    | `SpeechServices`     |
+| Speech Services    | `SpeechServices`     |
 | Spraakherkenning | `SpeakerRecognition` |
 
 ### <a name="language"></a>Taal
@@ -151,6 +151,8 @@ az cognitiveservices account create \
     --location westus2 \
     --yes
 ```
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>De sleutels voor uw resource ophalen
 
@@ -198,7 +200,7 @@ Als u de resource groep en de bijbehorende resources wilt verwijderen, gebruikt 
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Aanvragen verifiëren voor Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)

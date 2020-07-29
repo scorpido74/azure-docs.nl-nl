@@ -11,16 +11,16 @@ keywords: VM-isolatie, geïsoleerde VM, isolatie, geïsoleerd
 ms.assetid: ''
 ms.service: virtual-machines
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: bf2b4ac189e0e1eff77c2aae98a1fb53268821ab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed49f5299129d16ecdd31f537064e67a4e8965a4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289724"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines geoptimaliseerd voor geheugen
 
@@ -46,9 +46,9 @@ Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een spec
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)

@@ -1,6 +1,6 @@
 ---
-title: Problemen met de service verbinding oplossen Windows virtueel bureau blad over 2019-Azure
-description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
+title: Problemen met de service verbinding oplossen Windows virtueel bureau blad (klassiek)-Azure
+description: Problemen oplossen bij het instellen van client verbindingen in een Tenant omgeving van virtueel bureau blad (klassiek) van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 213f7843e4896f8c7c9234e2c94433afbed1d565
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085789"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292521"
 ---
-# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>Problemen oplossen met Windows Virtual Desktop service-verbindingen
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Virtuele Windows-bureau blad-service verbindingen (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-service-connection.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../troubleshoot-service-connection.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Gebruik dit artikel voor het oplossen van problemen met Windows-client verbindingen met virtueel bureau blad.
 
