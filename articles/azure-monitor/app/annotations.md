@@ -3,12 +3,12 @@ title: Release aantekeningen voor Application Insights | Microsoft Docs
 description: Voeg implementatie-of build markeringen toe aan uw grafieken met metrische gegevens Verkenner in Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093031"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320660"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Aantekeningen op metrische grafieken in Application Insights
 
@@ -34,7 +34,7 @@ U hoeft de uitbrei ding slechts eenmaal te installeren voor uw Azure DevOps-orga
 
 Maak een afzonderlijke API-sleutel voor elk van de release sjablonen van Azure pipelines.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en open de Application Insights resource waarmee uw toepassing wordt bewaakt. Of als u er geen hebt, [maakt u een nieuwe Application Insights resource](../../azure-monitor/app/app-insights-overview.md).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en open de Application Insights resource waarmee uw toepassing wordt bewaakt. Of als u er geen hebt, [maakt u een nieuwe Application Insights resource](./app-insights-overview.md).
    
 1. Open het tabblad **API-toegang** en kopieer de **Application Insights-id**.
    
@@ -115,5 +115,6 @@ U kunt het script wijzigen, bijvoorbeeld om aantekeningen voor het verleden te m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Werkitems maken](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automatisering met PowerShell](../../azure-monitor/app/powershell.md)
+* [Werkitems maken](./diagnostic-search.md#create-work-item)
+* [Automatisering met PowerShell](./powershell.md)
+

@@ -4,19 +4,20 @@ description: Application Insights gegevens model voor aanvraag-telemetrie
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320558"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie aanvragen: Application Insights gegevens model
 
-Een telemetrie van aanvragen (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt de logische volg orde van uitvoering die door een externe aanvraag naar uw toepassing wordt geactiveerd. Elke aanvraag uitvoering wordt geïdentificeerd met unieke `ID` en `url` bevat alle uitvoerings parameters. U kunt aanvragen groeperen op logische `name` en de `source` van deze aanvraag definiëren. Uitvoering van code kan resulteren in `success` of `fail` en heeft een bepaalde `duration` . Geslaagde en mislukte uitvoeringen kunnen verder worden gegroepeerd door `resultCode` . Begin tijd voor de telemetrie van de aanvraag die is gedefinieerd op het envelop niveau.
+Een telemetrie van aanvragen (in [Application Insights](./app-insights-overview.md)) vertegenwoordigt de logische volg orde van uitvoering die door een externe aanvraag naar uw toepassing wordt geactiveerd. Elke aanvraag uitvoering wordt geïdentificeerd met unieke `ID` en `url` bevat alle uitvoerings parameters. U kunt aanvragen groeperen op logische `name` en de `source` van deze aanvraag definiëren. Uitvoering van code kan resulteren in `success` of `fail` en heeft een bepaalde `duration` . Geslaagde en mislukte uitvoeringen kunnen verder worden gegroepeerd door `resultCode` . Begin tijd voor de telemetrie van de aanvraag die is gedefinieerd op het envelop niveau.
 
 Telemetrie aanvragen ondersteunt het model voor standaard uitbreid baarheid met behulp van aangepast `properties` en `measurements` .
 
-## <a name="name"></a>Name
+## <a name="name"></a>Naam
 
 De naam van de aanvraag vertegenwoordigt het codepad dat is gemaakt om de aanvraag te verwerken. Lage kardinaliteit waarde om een betere groepering van aanvragen mogelijk te maken. Voor HTTP-aanvragen vertegenwoordigt het de sjabloon HTTP-methode en URL-pad, zoals `GET /values/{id}` zonder de werkelijke `id` waarde.
 
@@ -26,7 +27,7 @@ Maximale lengte: 1024 tekens
 
 ## <a name="id"></a>Id
 
-Id van een exemplaar van een aanvraag aanroep. Wordt gebruikt voor correlatie tussen aanvraag en andere telemetrie-items. De ID moet globaal uniek zijn. Zie [correlatie](../../azure-monitor/app/correlation.md) pagina voor meer informatie.
+Id van een exemplaar van een aanvraag aanroep. Wordt gebruikt voor correlatie tussen aanvraag en andere telemetrie-items. De ID moet globaal uniek zijn. Zie [correlatie](./correlation.md) pagina voor meer informatie.
 
 Maximale lengte: 128 tekens
 
@@ -38,7 +39,7 @@ Maximale lengte: 2048 tekens
 
 ## <a name="source"></a>Bron
 
-De bron van de aanvraag. Voor beelden zijn de instrumentatie sleutel van de aanroeper of het IP-adres van de aanroeper. Zie [correlatie](../../azure-monitor/app/correlation.md) pagina voor meer informatie.
+De bron van de aanvraag. Voor beelden zijn de instrumentatie sleutel van de aanroeper of het IP-adres van de aanroeper. Zie [correlatie](./correlation.md) pagina voor meer informatie.
 
 Maximale lengte: 1024 tekens
 
@@ -72,7 +73,8 @@ Meer informatie over de aanvraag resultaat code en status code vindt u in het [b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Telemetrie van aangepaste aanvraag schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [Telemetrie van aangepaste aanvraag schrijven](./api-custom-events-metrics.md#trackrequest)
 - Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- Meer informatie over het [configureren van ASP.net core](../../azure-monitor/app/asp-net.md) toepassing met Application Insights.
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- Meer informatie over het [configureren van ASP.net core](./asp-net.md) toepassing met Application Insights.
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

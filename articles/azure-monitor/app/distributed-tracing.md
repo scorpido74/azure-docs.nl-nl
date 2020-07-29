@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 142daec93724fe4c25fd5c65dd387856dfb582c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539989"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324434"
 ---
 # <a name="what-is-distributed-tracing"></a>Wat is gedistribueerde tracering?
 
@@ -55,5 +55,6 @@ De opentellings website houdt API-referentie documentatie voor [python](https://
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gebruiks overzicht van opentellingen python](https://opencensus.io/api/python/trace/usage.html)
-* [Toepassings overzicht](./../../azure-monitor/app/app-map.md)
-* [End-to-end prestatie bewaking](./../../azure-monitor/learn/tutorial-performance.md)
+* [Toepassings overzicht](./app-map.md)
+* [End-to-end prestatie bewaking](../learn/tutorial-performance.md)
+

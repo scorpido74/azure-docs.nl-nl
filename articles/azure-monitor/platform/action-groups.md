@@ -1,19 +1,19 @@
 ---
-title: Actiegroepen maken en beheren in Azure Portal
+title: Actiegroepen maken en beheren in de Azure-portal
 description: Meer informatie over het maken en beheren van actie groepen in de Azure Portal.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321850"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in Azure Portal
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
 
 U configureert een actie om een persoon op de hoogte te stellen per e-mail of SMS, waarna een bevestiging wordt gegeven dat de gebruiker aan de actie groep is toegevoegd.
@@ -26,7 +26,7 @@ Elke actie bestaat uit de volgende eigenschappen:
 * **Actie type**: de uitgevoerde actie. Voor beelden hiervan zijn het verzenden van een spraak oproep, SMS, e-mail; of het activeren van verschillende typen geautomatiseerde acties. Zie typen verderop in dit artikel.
 * **Details**: de bijbehorende details die per *actie type*verschillen.
 
-Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen voor het configureren van actie groepen de [actie groep Resource Manager-sjablonen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen voor het configureren van actie groepen de [actie groep Resource Manager-sjablonen](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Een actie groep maken met behulp van de Azure Portal
 
@@ -86,12 +86,12 @@ E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./alerts-rate-limiting.md) .
 
 ### <a name="email-azure-resource-manager-role"></a>E-mailadres voor Azure Resource Manager-rol
 E-mail verzenden naar de leden van de rol van het abonnement. E-mail wordt alleen verzonden naar **Azure AD-gebruikers** leden van de rol. Er wordt geen e-mail verzonden naar Azure AD-groepen of service-principals.
 
-Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./alerts-rate-limiting.md) .
 
 ### <a name="function"></a>Functie
 Hiermee wordt een bestaand HTTP trigger-eind punt aangeroepen in [Azure functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
@@ -99,7 +99,7 @@ Hiermee wordt een bestaand HTTP trigger-eind punt aangeroepen in [Azure function
 Mogelijk hebt u een beperkt aantal functie acties in een actie groep.
 
 ### <a name="itsm"></a>ITSM
-Voor de actie ITSM is een ITSM-verbinding vereist. Meer informatie over het maken van een [ITSM-verbinding](../../azure-monitor/platform/itsmc-overview.md).
+Voor de actie ITSM is een ITSM-verbinding vereist. Meer informatie over het maken van een [ITSM-verbinding](./itsmc-overview.md).
 
 Mogelijk hebt u een beperkt aantal ITSM-acties in een actie groep. 
 
@@ -109,8 +109,8 @@ Mogelijk hebt u een beperkt aantal logische app-acties in een actie groep.
 ### <a name="secure-webhook"></a>Beveiligde webhook
 Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om de verbinding tussen uw actie groep en de beveiligde web-API (webhook-eind punt) te beveiligen. De algemene werk stroom voor het gebruik van deze functionaliteit wordt hieronder beschreven. Zie [overzicht van micro soft Identity platform (v 2.0)](../../active-directory/develop/v2-overview.md)voor een overzicht van Azure AD-toepassingen en-service-principals.
 
-1. Maak een Azure AD-toepassing voor uw beveiligde web-API. Zie de [beveiligde web-API: app-registratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration).
-    - Configureer uw beveiligde API om te worden [aangeroepen door een daemon-app](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app).
+1. Maak een Azure AD-toepassing voor uw beveiligde web-API. Zie de [beveiligde web-API: app-registratie](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
+    - Configureer uw beveiligde API om te worden [aangeroepen door een daemon-app](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
     
 2. Schakel actie groepen in voor het gebruik van uw Azure AD-toepassing.
 
@@ -196,7 +196,7 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>Sms
-Zie de [informatie over het beperken](./../../azure-monitor/platform/alerts-rate-limiting.md) van de frequentie en het [gedrag van SMS-berichten](../../azure-monitor/platform/alerts-sms-behavior.md) voor aanvullende belang rijke informatie. 
+Zie de [informatie over het beperken](./alerts-rate-limiting.md) van de frequentie en het [gedrag van SMS-berichten](./alerts-sms-behavior.md) voor aanvullende belang rijke informatie. 
 
 Mogelijk hebt u een beperkt aantal SMS-acties in een actie groep.
 
@@ -207,7 +207,7 @@ Prijzen voor ondersteunde landen/regio's worden vermeld op de [pagina met Azure 
   
 
 ### <a name="voice"></a>Spraak
-Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) voor meer belang rijk gedrag.
+Zie het artikel [informatie over de frequentie beperking](./alerts-rate-limiting.md) voor meer belang rijk gedrag.
 
 Mogelijk hebt u een beperkt aantal spraak acties in een actie groep.
 
@@ -248,9 +248,10 @@ Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [gedrag van SMS-waarschuwingen](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Krijg [inzicht in het webhook-schema van waarschuwingen voor activiteiten logboeken](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Meer informatie over [ITSM-connector](../../azure-monitor/platform/itsmc-overview.md).
-* Meer informatie over de [frequentie limiet](../../azure-monitor/platform/alerts-rate-limiting.md) voor waarschuwingen.
-* Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](../../azure-monitor/platform/alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
+* Meer informatie over het [gedrag van SMS-waarschuwingen](./alerts-sms-behavior.md).  
+* Krijg [inzicht in het webhook-schema van waarschuwingen voor activiteiten logboeken](./activity-log-alerts-webhook.md).  
+* Meer informatie over [ITSM-connector](./itsmc-overview.md).
+* Meer informatie over de [frequentie limiet](./alerts-rate-limiting.md) voor waarschuwingen.
+* Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](./alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
 * Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).
+

@@ -3,19 +3,20 @@ title: Exporteren naar Power BI vanuit Azure-toepassing inzichten | Microsoft Do
 description: Analytische query's kunnen worden weer gegeven in Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663994"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324366"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Feed Power BI van Application Insights
-[Power bi](https://www.powerbi.com/) is een suite met zakelijke hulp middelen waarmee u gegevens kunt analyseren en inzichten deelt. Uitgebreide Dash boards zijn beschikbaar op elk apparaat. U kunt gegevens uit een groot aantal bronnen combi neren, met inbegrip van analyse query's van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md).
+[Power bi](https://www.powerbi.com/) is een suite met zakelijke hulp middelen waarmee u gegevens kunt analyseren en inzichten deelt. Uitgebreide Dash boards zijn beschikbaar op elk apparaat. U kunt gegevens uit een groot aantal bronnen combi neren, met inbegrip van analyse query's van [Azure-toepassing Insights](./app-insights-overview.md).
 
 Er zijn drie methoden voor het exporteren van Application Insights gegevens naar Power BI:
 
 * [**Analytics-Query's exporteren**](#export-analytics-queries). Dit is de voorkeursmethode. Schrijf elke gewenste query en exporteer deze naar Power BI. U kunt deze query op een dash board plaatsen, samen met andere gegevens.
-* [**Continue export en Azure stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Deze methode is handig als u uw gegevens lange tijd wilt opslaan. Als u geen uitgebreide gegevens Bewaar vereist, gebruikt u de methode voor het exporteren van analyse query's. Continue export en Stream Analytics vergt meer werk voor het instellen en extra opslag overhead.
+* [**Continue export en Azure stream Analytics**](./export-stream-analytics.md). Deze methode is handig als u uw gegevens lange tijd wilt opslaan. Als u geen uitgebreide gegevens Bewaar vereist, gebruikt u de methode voor het exporteren van analyse query's. Continue export en Stream Analytics vergt meer werk voor het instellen en extra opslag overhead.
 * **Power bi adapter**. De set met grafieken is vooraf gedefinieerd, maar u kunt uw eigen query's vanuit andere bronnen toevoegen.
 
 > [!NOTE]
@@ -30,7 +31,7 @@ Als u uw Application Insights query wilt importeren, gebruikt u de bureaublad ve
 Installeer [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Een Analytics-query exporteren
-1. [Open Analytics en schrijf uw query](../../azure-monitor/log-query/get-started-portal.md).
+1. [Open Analytics en schrijf uw query](../log-query/get-started-portal.md).
 2. U kunt de query testen en verfijnen totdat u tevreden bent met de resultaten. Zorg ervoor dat de query correct wordt uitgevoerd in Analytics voordat u deze exporteert.
 3. Kies in het menu **exporteren** de optie **Power bi (M)**. Sla het tekstbestand op.
    
@@ -55,7 +56,7 @@ Installeer [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 8. Vernieuw het rapport hand matig met intervallen of stel een geplande vernieuwing in op de pagina opties.
 
 ### <a name="export-a-funnel"></a>Een trechter exporteren
-1. [Maak uw trechter](../../azure-monitor/app/usage-funnels.md).
+1. [Maak uw trechter](./usage-funnels.md).
 2. Selecteer **Power bi**.
 
    ![Scherm afbeelding van de knop Power BI](./media/export-power-bi/button.png)
@@ -111,7 +112,7 @@ Als het verminderen van de gegevensset die afkomstig is uit de analyse query nie
  ```
 
 ## <a name="about-sampling"></a>Over steek proeven
-Afhankelijk van de hoeveelheid gegevens die door uw toepassing wordt verzonden, wilt u mogelijk de adaptieve sampling functie gebruiken. deze verzendt alleen een percentage van uw telemetrie. Dit geldt ook als u hand matig steek proeven hebt ingesteld in de SDK of op opname. Meer [informatie over steek proeven](../../azure-monitor/app/sampling.md).
+Afhankelijk van de hoeveelheid gegevens die door uw toepassing wordt verzonden, wilt u mogelijk de adaptieve sampling functie gebruiken. deze verzendt alleen een percentage van uw telemetrie. Dit geldt ook als u hand matig steek proeven hebt ingesteld in de SDK of op opname. Meer [informatie over steek proeven](./sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI adapter (afgeschaft)
 Met deze methode maakt u een volledig dash board van telemetrie. De eerste gegevensset is vooraf gedefinieerd, maar u kunt er meer gegevens aan toevoegen.
@@ -145,5 +146,5 @@ Na de eerste import blijven het dash board en de rapporten dagelijks worden bijg
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Power BI-meer informatie](https://www.powerbi.com/learning/)
-* [Zelf studie voor analyse](../../azure-monitor/log-query/get-started-portal.md)
+* [Zelf studie voor analyse](../log-query/get-started-portal.md)
 

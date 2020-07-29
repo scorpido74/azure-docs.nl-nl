@@ -3,12 +3,12 @@ title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Doc
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517226"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321391"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -203,16 +203,16 @@ Volledige lijst met instellingen in`ApplicationInsightsServiceOptions`
 
 |Instelling | Beschrijving | Standaard
 |---------------|-------|-------
-|EnablePerformanceCounterCollectionModule  | Inschakelen/uitschakelen`PerformanceCounterCollectionModule` | true
-|EnableRequestTrackingTelemetryModule   | Inschakelen/uitschakelen`RequestTrackingTelemetryModule` | true
-|EnableEventCounterCollectionModule   | Inschakelen/uitschakelen`EventCounterCollectionModule` | true
-|EnableDependencyTrackingTelemetryModule   | Inschakelen/uitschakelen`DependencyTrackingTelemetryModule` | true
-|EnableAppServicesHeartbeatTelemetryModule  |  Inschakelen/uitschakelen`AppServicesHeartbeatTelemetryModule` | true
-|EnableAzureInstanceMetadataTelemetryModule   |  Inschakelen/uitschakelen`AzureInstanceMetadataTelemetryModule` | true
-|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | true
-|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | true
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartbeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | true
-|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
+|EnablePerformanceCounterCollectionModule  | Inschakelen/uitschakelen`PerformanceCounterCollectionModule` | waar
+|EnableRequestTrackingTelemetryModule   | Inschakelen/uitschakelen`RequestTrackingTelemetryModule` | waar
+|EnableEventCounterCollectionModule   | Inschakelen/uitschakelen`EventCounterCollectionModule` | waar
+|EnableDependencyTrackingTelemetryModule   | Inschakelen/uitschakelen`DependencyTrackingTelemetryModule` | waar
+|EnableAppServicesHeartbeatTelemetryModule  |  Inschakelen/uitschakelen`AppServicesHeartbeatTelemetryModule` | waar
+|EnableAzureInstanceMetadataTelemetryModule   |  Inschakelen/uitschakelen`AzureInstanceMetadataTelemetryModule` | waar
+|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
+|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartbeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
+|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
 |RequestCollectionOptions.TrackExceptions | Rapportage van niet-verwerkte uitzonderings tracering door de verzamelings module voor aanvragen in-of uitschakelen. | False in netstandard 2.0 (omdat uitzonde ringen worden bijgehouden met ApplicationInsightsLoggerProvider), anders waar.
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
@@ -221,7 +221,7 @@ Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](h
 
 De Application Insights SDK voor ASP.NET Core ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. 
 
-Zie [adaptieve steek proeven voor ASP.net core toepassingen configureren](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)voor meer informatie.
+Zie [adaptieve steek proeven voor ASP.net core toepassingen configureren](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)voor meer informatie.
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers toevoegen
 
@@ -459,8 +459,9 @@ Deze SDK vereist `HttpContext` en werkt daarom niet in niet-HTTP-toepassingen, w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verken de gebruikers stromen](../../azure-monitor/app/usage-flows.md) om te begrijpen hoe gebruikers door uw app navigeren.
+* [Verken de gebruikers stromen](./usage-flows.md) om te begrijpen hoe gebruikers door uw app navigeren.
 * [Configureer een momentopname verzameling](./snapshot-debugger.md) om de status van de bron code en variabelen weer te geven op het moment dat een uitzonde ring wordt gegenereerd.
-* [Gebruik de API](../../azure-monitor/app/api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een gedetailleerde weer gave van de prestaties en het gebruik van uw app.
-* Gebruik [beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) om uw app voortdurend van over de hele wereld te controleren.
+* [Gebruik de API](./api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een gedetailleerde weer gave van de prestaties en het gebruik van uw app.
+* Gebruik [beschikbaarheids tests](./monitor-web-app-availability.md) om uw app voortdurend van over de hele wereld te controleren.
 * [Afhankelijkheids injectie in ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
+

@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bf4e2b04c540ee5672bea6e097496ced5a0d622a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115386"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528873"
 ---
-# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI gebruiken om een Azure SQL Managed Instance toe te voegen aan een failover-groep
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI gebruiken om een Azure SQL Managed Instance te maken in een failover-groep
 
 Dit Azure CLI-voorbeeldscript maakt twee beheerde exemplaren, voegt ze toe aan een failover-groep en test de failover van het primaire beheerde exemplaar naar het secundaire beheerde exemplaar.
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
-| | |
+| Opdracht | Beschrijving |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | Opdrachten virtueel netwerk.  |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | Opdrachten virtueel netwerk subnet. |
@@ -56,7 +56,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az sql mi](/cli/azure/sql/mi) | Opdrachten voor een met SQL beheerd exemplaar. |
 | [az network public-ip](/cli/azure/network/public-ip) | Opdrachten voor openbare IP-adressen van netwerk. |
 | [az network vnet-gateway](/cli/azure/network/vnet-gateway) | Opdrachten voor virtuele-netwerkgateway. |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | Opdrachten voor met SQL beheerd exemplaarfailover-groep. |
+| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | Opdrachten voor SQL Managed Instance-failovergroep. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

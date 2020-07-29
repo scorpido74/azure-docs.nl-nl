@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202567"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325335"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -76,7 +76,7 @@ Met de [extensie Azure Diagnostics](diagnostics-extension-overview.md) worden be
 Gebruik de diagnostische extensie van Azure als u het volgende moet doen:
 
 - Gegevens verzenden naar Azure Storage voor archivering of het analyseren met hulpprogram ma's zoals [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
-- Gegevens verzenden naar [Azure monitor metrieken](data-platform-metrics.md) om deze te analyseren met [metrische gegevens Verkenner](metrics-getting-started.md) en te profiteren van functies zoals bijna realtime [waarschuwingen](../../azure-monitor/platform/alerts-metric-overview.md) en [automatisch schalen](autoscale-overview.md) (alleen Windows).
+- Gegevens verzenden naar [Azure monitor metrieken](data-platform-metrics.md) om deze te analyseren met [metrische gegevens Verkenner](metrics-getting-started.md) en te profiteren van functies zoals bijna realtime [waarschuwingen](./alerts-metric-overview.md) en [automatisch schalen](autoscale-overview.md) (alleen Windows).
 - Gegevens verzenden naar hulpprogram ma's van derden met behulp van [Azure Event hubs](diagnostics-extension-stream-event-hubs.md).
 - Verzamel de [Diagnostische gegevens over opstarten](../../virtual-machines/troubleshooting/boot-diagnostics.md) om opstart problemen met de virtuele machine te onderzoeken.
 
@@ -91,7 +91,7 @@ De [InfluxData-telegrafe-agent](collect-custom-metrics-linux-telegraf.md) wordt 
 
 Gebruik telegrafie agent als u het volgende moet doen:
 
-* Verzend gegevens naar [Azure monitor metrieken](data-platform-metrics.md) om deze te analyseren met [metrische gegevens Verkenner](metrics-getting-started.md) en gebruik te maken van functies zoals bijna realtime [waarschuwingen](../../azure-monitor/platform/alerts-metric-overview.md) en [automatisch schalen](autoscale-overview.md) (alleen Linux). 
+* Verzend gegevens naar [Azure monitor metrieken](data-platform-metrics.md) om deze te analyseren met [metrische gegevens Verkenner](metrics-getting-started.md) en gebruik te maken van functies zoals bijna realtime [waarschuwingen](./alerts-metric-overview.md) en [automatisch schalen](autoscale-overview.md) (alleen Linux). 
 
 
 
@@ -120,3 +120,4 @@ Meer informatie over elk van de agents vindt u op het volgende:
 - [Overzicht van de Log Analytics-agent](log-analytics-agent.md)
 - [Overzicht van Azure Diagnostics extensie](diagnostics-extension-overview.md)
 - [Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
+

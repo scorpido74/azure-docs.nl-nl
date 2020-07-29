@@ -4,15 +4,16 @@ description: Application Insights gegevens model voor het traceren van telemetri
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fea4bbf590816b2ef168a2ed16f197389ee282e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320541"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Telemetrie traceren: Application Insights gegevens model
 
-Telemetrie traceren (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt `printf` opmaak overzichten die met tekst worden doorzocht. `Log4Net`, `NLog` en andere vermeldingen op basis van tekst logboek bestanden worden omgezet in exemplaren van dit type. De tracering heeft geen metingen als een uitbreid baarheid.
+Telemetrie traceren (in [Application Insights](./app-insights-overview.md)) vertegenwoordigt `printf` opmaak overzichten die met tekst worden doorzocht. `Log4Net`, `NLog` en andere vermeldingen op basis van tekst logboek bestanden worden omgezet in exemplaren van dit type. De tracering heeft geen metingen als een uitbreid baarheid.
 
 ## <a name="message"></a>Bericht
 
@@ -30,8 +31,9 @@ Niveau van de ernst van de tracering. Waarde kan,,, `Verbose` `Information` `War
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verken .net-traceer Logboeken in Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Verken Java-traceer Logboeken in Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- [Verken .net-traceer Logboeken in Application Insights](./asp-net-trace-logs.md).
+- [Verken Java-traceer Logboeken in Application Insights](./java-trace-logs.md).
 - Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- [Telemetrie van aangepaste tracering schrijven](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- [Telemetrie van aangepaste tracering schrijven](./api-custom-events-metrics.md#tracktrace)
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

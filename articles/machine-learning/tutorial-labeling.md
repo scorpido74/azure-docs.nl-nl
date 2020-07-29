@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628396"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536161"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Zelfstudie: Een labelproject (preview) maken voor een afbeeldingsclassificatie met meerdere klassen 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Zelfstudie: Een labelproject maken voor een afbeeldingsclassificatie met meerdere klassen 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In deze zelfstudie leert u hoe u het proces van afbeeldingen labelen (ook wel Tags toevoegen genoemd) kunt beheren als gegevens voor het compileren van machine learning-modellen. Gegevens labelen in Azure Machine Learning bevindt zich in de openbare preview.
@@ -130,7 +130,7 @@ Selecteer **Volgende** om door te gaan.
 
 1. Selecteer **Next**.
 
-1. Schakel het selectievakje op het formulier **Door ML ondersteund labelen** niet in. Voor labelen met ML-ondersteuning zijn meer gegevens nodig dan in deze zelfstudie worden gebruikt.
+1. Als u een Enterprise-werkruimte gebruikt, ziet u een sectie **Door ML ondersteund labelen**.  Laat het selectievakje uitgeschakeld. Voor labelen met ML-ondersteuning zijn meer gegevens nodig dan in deze zelfstudie worden gebruikt.
 
 1. Selecteer **Project maken**.
 

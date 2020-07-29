@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 06/24/2020
+ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 151e7d286dac91ddd0e988027968f2e44a83e35e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362642"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536919"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren met de Azure-portal
 
@@ -26,15 +26,14 @@ Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren van
 
 Netwerkverkeer is onderhevig aan de geconfigureerde firewallregels wanneer u het routeert naar de firewall als standaardgateway van het subnet.
 
-Voor deze zelfstudie maakt u één vereenvoudigd VNet met drie subnetten voor eenvoudige implementatie.
+Voor deze zelfstudie maakt u een vereenvoudigd VNet met twee subnetten voor eenvoudige implementatie.
 
 Voor productie-implementaties wordt een [hub en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen, waarbij de firewall zich in een eigen VNet bevindt. De werkbelastingservers bevinden zich in gepeerde VNets in dezelfde regio met een of meer subnetten.
 
 * **AzureFirewallSubnet** – De firewall bevindt zich in dit subnet.
 * **Workload-SN** – De workloadserver bevindt zich in dit subnet. Het netwerkverkeer van dit subnet gaat via de firewall.
-* **Jump-SN** – De "jumpserver" bevindt zich in dit subnet. De jumpserver heeft een openbaar IP-adres waarmee u verbinding kunt maken via een extern bureaublad. Van daaruit kunt u vervolgens (via een ander extern bureaublad) verbinding maken met de workloadserver.
 
-![Netwerkinfrastructuur van zelfstudie](media/tutorial-firewall-rules-portal/Tutorial_network.png)
+![Netwerkinfrastructuur van zelfstudie](media/tutorial-firewall-deploy-portal/tutorial-network.png)
 
 In deze zelfstudie leert u het volgende:
 
@@ -44,6 +43,7 @@ In deze zelfstudie leert u het volgende:
 > * Een standaardroute maken
 > * Een toepassingsregel configureren om toegang tot www.google.com toe te staan
 > * Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
+> * Een NAT-regel configureren om een extern bureaublad op de testserver toe te staan
 > * De firewall testen
 
 U kunt deze zelfstudie desgewenst volgen met behulp van [Azure PowerShell](deploy-ps.md).
@@ -52,7 +52,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="set-up-the-network"></a>Het netwerk instellen
 
-Maak eerst een resourcegroep met de resources die nodig zijn om de firewall te implementeren. Maak vervolgens een VNet, subnetten en testservers.
+Maak eerst een resourcegroep met de resources die nodig zijn om de firewall te implementeren. Maak vervolgens een VNet, subnetten en een testserver.
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -74,62 +74,52 @@ Dit VNet bevat drie subnetten.
 
 1. Selecteer in het menu van de Azure-portal of op de **startpagina** de optie **Een resource maken**.
 1. Selecteer **Netwerk** > **Virtueel netwerk**.
-1. Bij **Naam** typt u **Test-FW-VN**.
-1. Bij **Adresruimte** typt u **10.0.0.0/16**.
-1. Bij **Abonnement** selecteert u uw abonnement.
-1. Bij **Resourcegroep** selecteert u **Test-FW-RG**.
-1. Bij **Locatie** selecteert u dezelfde locatie die u eerder hebt gebruikt.
-1. Onder **Subnet** typt u bij **Naam** de naam **AzureFirewallSubnet**. De firewall zal zich in dit subnet bevinden, en de subnetnaam **moet** AzureFirewallSubnet zijn.
-1. Bij **Adresbereik** typt u **10.0.1.0/26**.
-1. Accepteer de standaardwaarden voor de overige instellingen en selecteer **Maken**.
+2. Bij **Abonnement** selecteert u uw abonnement.
+3. Bij **Resourcegroep** selecteert u **Test-FW-RG**.
+4. Bij **Naam** typt u **Test-FW-VN**.
+5. Bij **Regio** selecteert u dezelfde locatie die u eerder hebt gebruikt.
+6. Selecteer **Volgende: IP-adressen**.
+7. Bij **IPv4-adresruimte** typt u **10.0.0.0/16**.
+8. Onder **Subnet** selecteert u **standaard**.
+9. Bij **Subnetnaam** typt u **AzureFirewallSubnet**. De firewall zal zich in dit subnet bevinden, en de subnetnaam **moet** AzureFirewallSubnet zijn.
+10. Bij **Adresbereik** typt u **10.0.1.0/26**.
+11. Selecteer **Opslaan**.
 
-### <a name="create-additional-subnets"></a>Extra subnetten maken
+   Maak hierna een subnet voor de werkbelastingserver.
 
-Maak vervolgens subnetten voor de jumpserver en een subnet voor de workloadservers.
+1. Selecteer **Subnet toevoegen**.
+4. Bij **Subnetnaam** typt u **Workload-SN**.
+5. Als **Subnetadresbereik** typt u **10.0.2.0/24**.
+6. Selecteer **Toevoegen**.
+7. Selecteer **Controleren en maken**.
+8. Selecteer **Maken**.
 
-1. Selecteer in het menu van Azure-portal de optie **Resourcegroepen** of zoek ernaar en selecteer *Resourcegroepen* vanaf een willekeurige pagina. Selecteer vervolgens **Test-FW-RG**.
-2. Selecteer het virtuele netwerk **Test-FW-VN**.
-3. Selecteer **Subnetten** >  **+Subnet**.
-4. Bij **Naam** typt u **Workload-SN**.
-5. Bij **Adresbereik** typt u **10.0.2.0/24**.
-6. Selecteer **OK**.
+### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-Maak nog een subnet met **Jump-SN** als naam en **10.0.3.0/24** als adresbereik.
-
-### <a name="create-virtual-machines"></a>Virtuele machines maken
-
-Maak nu de virtuele jump- en workloadmachines en plaats ze in de toepasselijke subnetten.
+Maak nu de virtuele machine voor de werkbelasting en plaats deze in het subnet **Workload-SN**.
 
 1. Selecteer in het menu van de Azure-portal of op de **startpagina** de optie **Een resource maken**.
-2. Selecteer **Compute** en selecteer vervolgens **Windows Server 2016 Datacenter** in de lijst Aanbevolen.
-3. Voer deze waarden in voor de virtuele machine:
+2. Selecteer **Compute** en vervolgens **Virtuele machine**.
+3. **Windows Server 2016 Datacenter** in the de lijst Aanbevolen.
+4. Voer deze waarden in voor de virtuele machine:
 
    |Instelling  |Waarde  |
    |---------|---------|
    |Resourcegroep     |**Test-FW-RG**|
-   |Naam van de virtuele machine     |**Srv-Jump**|
+   |Naam van de virtuele machine     |**Srv-Work**|
    |Regio     |Hetzelfde als vorige|
-   |Beheerdersgebruikersnaam     |**azureuser**|
-   |Wachtwoord     |**Azure123456!**|
+   |Installatiekopie|Windows Server 2019 Datacenter|
+   |Beheerdersgebruikersnaam     |Typ een gebruikersnaam|
+   |Wachtwoord     |Typ een wachtwoord|
 
-4. Selecteer voor **Openbare binnenkomende poorten** onder **Regels voor binnenkomende poort** de optie **Geselecteerde poorten toestaan**.
-5. Selecteer **RDP (3389)** voor **Binnenkomende poorten selecteren**.
-
+4. Selecteer onder **Regels voor binnenkomende poort**, **Openbare binnenkomende poorten** de optie **Geen**.
 6. Accepteer de overige standaardwaarden en selecteer **Volgende: Schijven**.
 7. Accepteer de standaardwaarden voor schijven en selecteer **Volgende: Netwerken**.
-8. Zorg ervoor dat **Test-FW-VN** is geselecteerd voor het virtuele netwerk en dat het subnet **Jump-SN** is.
-9. Accepteer bij **Openbare IP** de standaardnaam van het nieuwe openbare IP-adres (Srv-Jump-ip).
+8. Zorg ervoor dat **Test-FW-VN** is geselecteerd voor het virtuele netwerk en dat het subnet **Workload-SN** is.
+9. Selecteer **Geen** voor **Openbaar IP**.
 11. Accepteer de overige standaardwaarden en selecteer **Volgende: Beheer**.
 12. Selecteer **Uit** om diagnostische gegevens over opstarten uit te schakelen. Accepteer de overige standaardwaarden en selecteer **Beoordelen en maken**.
 13. Controleer de instellingen op de overzichtspagina en selecteer **Maken**.
-
-Gebruik de informatie in de volgende tabel om een andere virtuele machine, **Srv-Work**, te configureren. De rest van de configuratie is hetzelfde als voor de virtuele machine Srv-Jump.
-
-|Instelling  |Waarde  |
-|---------|---------|
-|Subnet|**Workload-SN**|
-|Openbare IP|**Geen**|
-|Openbare poorten voor inkomend verkeer|**Geen**|
 
 ## <a name="deploy-the-firewall"></a>De firewall implementeren
 
@@ -147,14 +137,14 @@ Implementeer de firewall in het VNet.
    |Naam     |**Test-FW01**|
    |Locatie     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
    |Een virtueel netwerk kiezen     |**Bestaande gebruiken**: **Test-FW-VN**|
-   |Openbaar IP-adres     |**Nieuw** Het openbare IP-adres moet van het type Standaard-SKU zijn.|
+   |Openbaar IP-adres     |**Nieuwe toevoegen**<br>**Naam**:  **fw-pip**|
 
 5. Selecteer **Controleren + maken**.
 6. Controleer de samenvatting en selecteer vervolgens **Maken** om de firewall te maken.
 
    Het duurt enkele minuten voordat deze is geïmplementeerd.
 7. Zodra de implementatie is voltooid, gaat u naar de resourcegroep **Test-FW-RG** en selecteert u de firewall **Test-FW01**.
-8. Noteer het privé-IP-adres. U zult het later gebruiken wanneer u de standaardroute maakt.
+8. Noteer het privé- en openbare IP-adres van de firewall. U hebt deze later nodig.
 
 ## <a name="create-a-default-route"></a>Een standaardroute maken
 
@@ -185,7 +175,7 @@ Voor het subnet **Workload-SN** configureert u de standaardroute voor uitgaand v
 
 ## <a name="configure-an-application-rule"></a>Een toepassingsregel configureren
 
-Dit is de toepassingsregel waarmee uitgaande toegang wordt toegestaan tot www.google.com.
+Dit is de toepassingsregel waarmee uitgaande toegang tot `www.google.com` wordt toegestaan.
 
 1. Open de resourcegroep **Test-FW-RG** en selecteer de firewall **Test-FW01**.
 2. Selecteer op de pagina **Test-FW01** onder **Instellingen** de optie **Regels**.
@@ -198,7 +188,7 @@ Dit is de toepassingsregel waarmee uitgaande toegang wordt toegestaan tot www.go
 9. Selecteer **IP-adres** bij **Brontype**.
 10. Typ bij **Bron** **10.0.2.0/24**.
 11. Bij **Protocol:poort** typt u **http, https**.
-12. Bij **Doel-FQDN’s** typt u **www.google.com**.
+12. Bij **Doel-FQDN's** typt u **`www.google.com`**
 13. Selecteer **Toevoegen**.
 
 Azure Firewall bevat een ingebouwde regelverzameling voor infrastructuur-FQDN’s die standaard zijn toegestaan. Deze FQDN’s zijn specifiek voor het platform en kunnen niet voor andere doeleinden worden gebruikt. Zie [FQDN's voor infrastructuur](infrastructure-fqdns.md) voor meer informatie.
@@ -216,11 +206,31 @@ Dit is de netwerkregel waarmee uitgaande toegang tot twee IP-adressen op poort 5
 7. Bij **Protocol** selecteert u **UDP**.
 9. Selecteer **IP-adres** bij **Brontype**.
 1. Typ bij **Bron** **10.0.2.0/24**.
-2. Typ bij **Doeladres** **209.244.0.3,209.244.0.4**
+2. Bij **Doeltype** selecteert u **IP-adres**.
+3. Typ bij **Doeladres** **209.244.0.3,209.244.0.4**
 
    Dit zijn openbare DNS-servers die worden beheerd door CenturyLink.
 1. Bij **Doelpoorten** typt u **53**.
 2. Selecteer **Toevoegen**.
+
+## <a name="configure-a-dnat-rule"></a>Een DNAT-regel configureren
+
+Met deze regel kunt u een extern bureaublad via de firewall verbinden met de virtuele machine Srv-Work.
+
+1. Selecteer het tabblad **Verzameling van NAT-regels**.
+2. Selecteer **Verzameling van NAT-regels toevoegen**.
+3. Typ **rdp** bij **Naam**.
+4. Bij **Prioriteit** typt u **200**.
+5. Onder **Regels** typt u bij **Naam** de naam **rdp-nat**.
+6. Bij **Protocol** selecteert u **TCP**.
+7. Selecteer **IP-adres** bij **Brontype**.
+8. Typ bij **Bron** **\*** .
+9. Bij **Doeladressen** typt u het openbare IP-adres van de firewall.
+10. Typ bij **Doelpoorten** **3389**.
+11. Bij **Omgezet adres** typt u het privé-IP-adres voor **Srv-work**.
+12. Bij **Vertaalde poort** typt u **3389**.
+13. Selecteer **Toevoegen**.
+
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Het primaire en secundaire DNS-adres voor de netwerkinterface **Srv-Work** wijzigen
 
@@ -238,14 +248,13 @@ Voor testdoeleinden in deze zelfstudie configureert u het primaire en secundaire
 
 Test nu de firewall om te controleren of deze werkt zoals verwacht.
 
-1. Controleer in de Azure-portal de netwerkinstellingen voor de virtuele machine **Srv-Work** en noteer het privé-IP-adres.
-2. Verbind een extern bureaublad met de virtuele machine **Srv-Jump** en meld u aan. Open vervolgens een verbinding met een extern bureaublad met het privé-IP-adres **Srv-Work**.
-3. Open Internet Explorer en blader naar https://www.google.com.
+1. Verbind een extern bureaublad met het openbare IP-adres van de firewall en meld u aan bij de virtuele machine **Srv-Work**. 
+3. Open Internet Explorer en blader naar `https://www.google.com`.
 4. Selecteer **OK** > **Sluiten** in de beveiligingswaarschuwingen van Internet Explorer.
 
    U zou nu de startpagina van Google moeten zien.
 
-5. Blader naar https://www.microsoft.com.
+5. Blader naar `https://www.microsoft.com`.
 
    U zou nu door de firewall moeten worden geblokkeerd.
 

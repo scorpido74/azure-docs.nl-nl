@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081352"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325522"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Gegevens van Azure Monitor visualiseren
 Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiseren van logboek-en metrische gegevens die zijn opgeslagen in Azure Monitor.
@@ -19,7 +19,7 @@ Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiser
 Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren van uw bewakings gegevens om in te zoomen op problemen en patronen te identificeren. Afhankelijk van het hulp programma dat u gebruikt, hebt u mogelijk ook de mogelijkheid om visualisaties te delen met andere gebruikers binnen en buiten uw organisatie.
 
 ## <a name="workbooks"></a>Werkmappen
-[Werkmappen](../azure-monitor/platform/workbooks-overview.md) zijn interactieve documenten die diep inzicht geven in uw gegevens, onderzoek en samen werking binnen het team. Specifieke voor beelden waarin werkmappen handig zijn, zijn probleemoplossings richtlijnen en incident postmortem.
+[Werkmappen](./platform/workbooks-overview.md) zijn interactieve documenten die diep inzicht geven in uw gegevens, onderzoek en samen werking binnen het team. Specifieke voor beelden waarin werkmappen handig zijn, zijn probleemoplossings richtlijnen en incident postmortem.
 
 ![Werkmap](media/visualizations/workbook.png)
 
@@ -141,7 +141,7 @@ Met [weer gaven in azure monitor](platform/view-designer.md) kunt u aangepaste v
 - Meer informatie over de [gegevens die worden verzameld door Azure monitor](platform/data-platform.md).
 - Meer informatie over [Azure-Dash boards](../azure-portal/azure-portal-dashboards.md).
 - Meer informatie over [weer gaven in azure monitor](platform/view-designer.md).
-- Meer informatie over [werkmappen](../azure-monitor/platform/workbooks-overview.md).
-- Meer informatie over het [importeren van logboek gegevens in Power bi](../azure-monitor/platform/powerbi.md).
-- Meer informatie over de [Grafana Azure monitor-invoeg toepassing voor gegevens bronnen](../azure-monitor/platform/grafana-plugin.md).
+- Meer informatie over [werkmappen](./platform/workbooks-overview.md).
+- Meer informatie over het [importeren van logboek gegevens in Power bi](./platform/powerbi.md).
+- Meer informatie over de [Grafana Azure monitor-invoeg toepassing voor gegevens bronnen](./platform/grafana-plugin.md).
 

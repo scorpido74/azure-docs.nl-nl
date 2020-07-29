@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103620"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323261"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integreer uw commerciële Marketplace-vermelding met Azure Active Directory
 
@@ -35,15 +35,16 @@ De verschillende [aanbiedings opties en aanbiedings typen](determine-your-listin
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | Virtuele machine | N.v.t. | Nee | Nee | Nee |
 | Azure-apps (oplossings sjabloon)  | N.v.t. | N.v.t. | N.v.t. | N.v.t. |
-| Beheerde apps  | N.v.t. | N.v.t. | N.v.t. | No |
-| SaaS  | No | Ja | Ja | Ja |
-| Containers  | N.v.t. | N.v.t. | N.v.t. | No |
-| Adviesservices  | No | N.v.t. | N.v.t. | N.v.t. |
+| Beheerde apps  | N.v.t. | N.v.t. | N.v.t. | Nee |
+| SaaS  | Nee | Ja | Ja | Ja |
+| Containers  | N.v.t. | N.v.t. | N.v.t. | Nee |
+| Adviesservices  | Nee | N.v.t. | N.v.t. | N.v.t. |
 
-Zie voor meer informatie over SaaS technische vereisten de [hand leiding voor SaaS-toepassingen](marketplace-saas-applications-technical-publishing-guide.md)die u publiceert.
+Zie voor meer informatie over SaaS technische vereisten [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](./azure-ad-saas.md).
 
 ## <a name="azure-ad-integration"></a>Azure AD-integratie
 
+- Zie voor meer informatie over het integreren van Azure AD voor uw Program ma's voor het afhandelen van SaaS-aanbiedingen [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](./azure-ad-saas.md).
 - Zie [Azure Active Directory voor ontwikkel aars](../active-directory/develop/index.yml)voor meer informatie over het inschakelen van eenmalige aanmelding door Azure ad te integreren in uw vermelding.
 - Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md)voor meer informatie over eenmalige aanmelding voor Azure AD.
 

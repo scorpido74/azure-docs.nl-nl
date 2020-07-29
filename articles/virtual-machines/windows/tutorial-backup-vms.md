@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een back-up maken van virtuele Windows-machines in de Azure Portal'
+title: 'Zelfstudie: Back-ups maken van virtuele Windows-machines in de Azure-portal'
 description: In deze zelfstudie leert u hoe u Azure Portal gebruikt om uw virtuele Windows-machines te beschermen met Azure Backup.
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100427"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500392"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Windows-machines in Azure
 
@@ -27,7 +27,7 @@ U kunt uw gegevens beschermen door regelmatig back-ups te maken. Azure Backup ma
 
 ## <a name="backup-overview"></a>Overzicht van Backup
 
-Wanneer er een back-uptaak wordt gestart met de Azure Backup-service, wordt de back-upextensie geactiveerd om een momentopname van een bepaald tijdstip te maken. De Azure Backup-service maakt gebruik van de [VMSnapshot-extensie](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows). De extensie is geïnstalleerd tijdens de eerste VM-back-up als de VM actief is. Als de VM niet actief is, wordt met de Backup-service een momentopname gemaakt van de onderliggende opslag (aangezien er geen schrijfbewerkingen van toepassingen plaatsvinden als de VM is gestopt).
+Wanneer er een back-uptaak wordt gestart met de Azure Backup-service, wordt de back-upextensie geactiveerd om een momentopname van een bepaald tijdstip te maken. De Azure Backup-service maakt gebruik van de [VMSnapshot-extensie](../extensions/vmsnapshot-windows.md). De extensie is geïnstalleerd tijdens de eerste VM-back-up als de VM actief is. Als de VM niet actief is, wordt met de Backup-service een momentopname gemaakt van de onderliggende opslag (aangezien er geen schrijfbewerkingen van toepassingen plaatsvinden als de VM is gestopt).
 
 Wanneer er een momentopname van virtuele Windows-machines wordt gemaakt, werkt de Backup-service samen met de Volume Shadow Copy Service (VSS) om een consistente momentopname van de schijven van de virtuele machine op te halen. Nadat de momentopname is gemaakt met de Azure Backup-service, worden de gegevens overgedragen naar de kluis. Voor maximale efficiëntie wordt met de service geïdentificeerd welke gegevensblokken sinds de vorige back-up zijn gewijzigd. Alleen deze worden vervolgens overgedragen.
 
@@ -39,12 +39,12 @@ U plant als volgt een eenvoudige dagelijkse back-up naar een Recovery Services-k
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 1. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
-1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. De Blade **back-up inschakelen** wordt geopend.
-1. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Er wordt een nieuwe kluis gemaakt in dezelfde resource groep en locatie als de virtuele machine.
-1. Behoud onder **back-upbeleid kiezen**de standaard **(nieuwe) DailyPolicy**en klik vervolgens op **back-up inschakelen**.
+1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. De blade **Back-up inschakelen** wordt geopend.
+1. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Een nieuwe kluis wordt gemaakt in dezelfde resourcegroep en op dezelfde locatie als de virtuele machine.
+1. Behoud onder **Back-upbeleid kiezen** de standaardinstelling **(New) DailyPolicy** en klik vervolgens op **Back-up inschakelen**.
 1. Klik op de blade **Back-up** op **Nu een back-up maken** om een initieel herstelpunt te maken.
-1. Klik op de Blade **nu een back-up maken** op het kalender pictogram, gebruik het kalender besturings element om te kiezen hoe lang het herstel punt moet worden bewaard en klik op **OK**.
-1. Op de Blade **back-up** voor uw virtuele machine ziet u het aantal herstel punten dat is voltooid.
+1. Klik op de blade **Nu een back-up maken** op het kalenderpictogram en selecteer in de kalender hoe lang het herstelpunt wordt bewaard. Klik vervolgens op **OK**.
+1. Op de blade **Backup** voor uw VM ziet u het aantal voltooide herstelpunten.
 
 
     ![Herstelpunten](./media/tutorial-backup-vms/backup-complete.png)
@@ -71,15 +71,15 @@ In dit voorbeeld laten we zien hoe u het installatiekopiebestand dat voor de sta
 1. Selecteer **Virtuele machines** in het menu aan de linkerkant en selecteer de VM in de lijst.
 1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. De blade **Back-up** wordt geopend. 
 1. Selecteer in het menu boven aan de blade de optie **Bestandsherstel**. De blade **Bestandsherstel** wordt geopend.
-1. Selecteer in **Stap 1: Herstelpunt selecteren** een herstelpunt in de vervolgkeuzelijst.
-1. Klik in **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** op de knop **Uitvoerbaar bestand downloaden**. Kopieer het wacht woord voor het bestand en sla het op een veilige plek op.
+1. In **Stap 1: Herstelpunt selecteren** selecteert u een herstelpunt in de vervolgkeuzelijst.
+1. In **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** klikt u op de knop **Uitvoerbaar bestand downloaden**. Kopieer het wachtwoord voor het bestand en sla het op een veilige plek op.
 1. Open **Verkenner** op uw lokale computer, navigeer naar uw map **Downloads** en kopieer het gedownloade .exe-bestand. De bestandsnaam wordt voorafgegaan door de naam van uw virtuele machine. 
-1. Plak op uw virtuele machine (via de RDP-verbinding) het exe-bestand naar het bureau blad van de virtuele machine. 
-1. Navigeer naar het bureaublad van uw VM en dubbelklik op het .exe-bestand. Er wordt een opdracht prompt gestart. Het-programma koppelt het herstel punt als een bestands share waartoe u toegang hebt. Wanneer de share is gemaakt, typt u **q** om de opdrachtprompt te sluiten.
+1. Ga weer naar uw VM (via de RDP-verbinding) en plak het .exe-bestand op het bureaublad van uw VM. 
+1. Navigeer naar het bureaublad van uw VM en dubbelklik op het .exe-bestand. Er wordt een opdrachtprompt gestart. Het programma koppelt het herstelpunt als een bestandsshare waartoe u toegang hebt. Wanneer de share is gemaakt, typt u **q** om de opdrachtprompt te sluiten.
 1. Open **Verkenner** op uw VM en navigeer naar de stationsletter die voor de bestandsshare is gebruikt.
 1. Navigeer naar \inetpub\wwwroot, kopieer **iisstart.png** uit de bestandsshare en plak het in \inetpub\wwwroot. U kopieert bijvoorbeeld F:\inetpub\wwwroot\iisstart.png en plakt het in c:\inetpub\wwwroot om het bestand te herstellen.
 1. Open op de lokale computer het browsertabblad waardoor u verbonden bent met het IP-adres van de VM waarop de standaard IIS-webpagina wordt weergegeven. Druk op Ctrl+F5 om de browserpagina te vernieuwen. Nu ziet u dat de installatiekopie is hersteld.
-1. Ga op de lokale computer terug naar het browsertabblad voor Azure Portal en klik in **Stap 3: De schijven ontkoppelen na het herstel** op de knop **Schijven ontkoppelen**. Als u deze stap vergeet uit te voeren, wordt de verbinding met het koppelpunt na 12 uur automatisch verbroken. Na deze 12 uur moet u een nieuw script downloaden om een nieuw koppel punt te maken.
+1. Ga op de lokale computer terug naar het browsertabblad voor Azure Portal en klik in **Stap 3: De schijven ontkoppelen na het herstel** op de knop **Schijven ontkoppelen**. Als u deze stap vergeet uit te voeren, wordt de verbinding met het koppelpunt na 12 uur automatisch verbroken. Na deze 12 uur moet u een nieuw script downloaden voor het maken van een nieuw koppelpunt.
 
 
 
@@ -98,12 +98,3 @@ Ga naar de volgende zelfstudie voor meer informatie over het controleren van vir
 
 > [!div class="nextstepaction"]
 > [Virtuele machines beheren](tutorial-govern-resources.md)
-
-
-
-
-
-
-
-
-

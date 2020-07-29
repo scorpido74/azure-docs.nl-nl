@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662175"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324553"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Geavanceerde aggregaties in Azure Monitor-logboek query's
 
@@ -183,7 +184,8 @@ Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/
 - [Tekenreeksbewerkingen](string-operations.md)
 - [Datum- en tijdbewerkingen](datetime-operations.md)
 - [Aggregatiefuncties](aggregations.md)
-- [Geavanceerde aggregaties](advanced-aggregations.md)
+- [Geavanceerde aggregaties]()
 - [JSON en gegevensstructuren](json-data-structures.md)
 - [Samenvoegingen](joins.md)
 - [Grafieken](charts.md)
+

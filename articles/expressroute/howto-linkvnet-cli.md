@@ -5,13 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 07/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325250"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van CLI
 
@@ -152,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 Het bereik van *RoutingWeight* is 0 tot en met 32000. De standaardwaarde is 0.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath configureren 
-U kunt [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) inschakelen als uw ExpressRoute-circuit zich op [ExpressRoute direct](expressroute-erdirect-about.md) bevindt en uw virtuele netwerk-gateway zeer presteert of ErGw3AZ. FastPath verbetert de preformiteit van het gegevenspad, zoals pakketten per seconde, en verbindingen per seconde tussen uw on-premises netwerk en het virtuele netwerk. 
+U kunt [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) inschakelen als uw virtuele netwerk gateway Ultra Performance of ErGw3AZ is. FastPath verbetert de preformiteit van het gegevenspad, zoals pakketten per seconde, en verbindingen per seconde tussen uw on-premises netwerk en het virtuele netwerk. 
 
 **FastPath configureren voor een nieuwe verbinding**
 

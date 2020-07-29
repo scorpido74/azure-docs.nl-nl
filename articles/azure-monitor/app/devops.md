@@ -3,12 +3,12 @@ title: Bewaking van web-app-prestaties-Azure-toepassing Insights
 description: Hoe Application Insights past in de devOps-cyclus
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033679"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324485"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Diepe diagnostische gegevens voor web-apps en services met Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Waarom heb ik Application Insights nodig?
@@ -85,7 +85,7 @@ Real Madrid gebruikt de Power BI-module om hun telemetrie weer te geven.
 ![Power BI weer gave van Application Insights telemetrie](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>Slimme detectie
-[Proactieve diagnoses](../../azure-monitor/app/proactive-diagnostics.md) is een recente functie. Als u geen speciale configuratie door u hebt, Application Insights detecteert en waarschuwt u automatisch over ongebruikelijke stijgingen in fout tarieven in uw app. Het is slim genoeg om een achtergrond van af en toe fouten te negeren en is ook groter dan een toename in aanvragen. Als er bijvoorbeeld een fout is opgetreden in een van de services waarvan u afhankelijk bent, of als de nieuwe build die u zojuist hebt geïmplementeerd, niet goed werkt, weet u zeker dat u deze ontvangt zodra u uw e-mail bericht bekijkt. (En er zijn webhooks, zodat u andere apps kunt activeren.)
+[Proactieve diagnoses](./proactive-diagnostics.md) is een recente functie. Als u geen speciale configuratie door u hebt, Application Insights detecteert en waarschuwt u automatisch over ongebruikelijke stijgingen in fout tarieven in uw app. Het is slim genoeg om een achtergrond van af en toe fouten te negeren en is ook groter dan een toename in aanvragen. Als er bijvoorbeeld een fout is opgetreden in een van de services waarvan u afhankelijk bent, of als de nieuwe build die u zojuist hebt geïmplementeerd, niet goed werkt, weet u zeker dat u deze ontvangt zodra u uw e-mail bericht bekijkt. (En er zijn webhooks, zodat u andere apps kunt activeren.)
 
 Een ander aspect van deze functie voert een dagelijkse diep gaande analyse uit van uw telemetrie en zoekt naar ongebruikelijke prestatie patronen die moeilijk te detecteren zijn. Het is bijvoorbeeld mogelijk dat er trage prestaties worden gevonden die zijn gekoppeld aan een bepaald geografisch gebied of met een bepaalde browser versie.
 
@@ -145,9 +145,9 @@ Tijdens de fout opsporing hebt u de mogelijkheid om de telemetrie in uw ontwikke
 Wanneer een waarschuwing wordt gegenereerd, kan Application Insights automatisch een werk item in uw werk systeem bijhouden.
 
 ## <a name="but-what-about"></a>Maar wat over...?
-* [Privacy en opslag](../../azure-monitor/app/data-retention-privacy.md) : uw telemetrie wordt bewaard op beveiligde Azure-servers.
+* [Privacy en opslag](./data-retention-privacy.md) : uw telemetrie wordt bewaard op beveiligde Azure-servers.
 * Prestaties: de impact is zeer laag. Telemetrie is gebatcheerd.
-* [Prijzen](../../azure-monitor/app/pricing.md) : u kunt gratis aan de slag, en dat gaat zo door als u een laag volume hebt.
+* [Prijzen](./pricing.md) : u kunt gratis aan de slag, en dat gaat zo door als u een laag volume hebt.
 
 
 ## <a name="video"></a>Video
@@ -157,6 +157,7 @@ Wanneer een waarschuwing wordt gegenereerd, kan Application Insights automatisch
 ## <a name="next-steps"></a>Volgende stappen
 Het is eenvoudig om aan de slag te gaan met Application Insights. De belangrijkste opties zijn:
 
-* [IIS-servers](../../azure-monitor/app/monitor-performance-live-website-now.md)en ook voor [Azure app service](../../azure-monitor/app/app-insights-overview.md).
-* Instrumenteer uw project tijdens de ontwikkeling. U kunt dit doen voor [ASP.net](../../azure-monitor/app/asp-net.md) -of [Java](../../azure-monitor/app/java-get-started.md) -apps, evenals [Node.js](../../azure-monitor/app/nodejs.md) en een host van [andere typen](../../azure-monitor/app/platforms.md). 
-* Een [wille keurige webpagina](../../azure-monitor/app/javascript.md) instrumenteren door een korte code fragment toe te voegen.
+* [IIS-servers](./monitor-performance-live-website-now.md)en ook voor [Azure app service](./app-insights-overview.md).
+* Instrumenteer uw project tijdens de ontwikkeling. U kunt dit doen voor [ASP.net](./asp-net.md) -of [Java](./java-get-started.md) -apps, evenals [Node.js](./nodejs.md) en een host van [andere typen](./platforms.md). 
+* Een [wille keurige webpagina](./javascript.md) instrumenteren door een korte code fragment toe te voegen.
+

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77116160"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279216"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple for Cloud solutions provider-programma: veelgestelde vragen
 
@@ -62,7 +63,7 @@ Er zijn meerdere oplossingen:
 - Ze kunnen ook nieuwe bedrijfs modellen ontdekken door beheerde services te leveren.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>Wat zijn de prikkels die beschikbaar zijn voor StorSimple CSP-partners? Kom ik in aanmerking voor de prikkel van een cryptografie programma?
-Voor meer informatie over stimulansen gaat u naar het [cryptografie programma](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details).
+Voor meer informatie over stimulansen gaat u naar het [cryptografie programma](https://partner.microsoft.com/cloud-solution-provider/program-details).
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>StorSimple implementeren en beheren als een partner

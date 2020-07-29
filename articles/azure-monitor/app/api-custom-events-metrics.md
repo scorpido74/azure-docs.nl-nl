@@ -3,16 +3,16 @@ title: Application Insights-API voor aangepaste gebeurtenissen en metrische gege
 description: Voeg een paar regels code toe aan de apparaat-of bureau blad-app, de webpagina of de service om het gebruik en de diagnose problemen op te sporen.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 43951a415256577144b93c7deea168e30e7a13ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d263c99af7793acbe1f939f64c5cc2dcadd3a054
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014725"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323227"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
-Voeg een paar regels code in uw toepassing toe om erachter te komen wat gebruikers mee doen, of om problemen te diagnosticeren. U kunt telemetrie verzenden vanaf apparaat-en desktop-apps, webclients en webservers. Gebruik de [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) core-telemetrie-API om aangepaste gebeurtenissen en metrische gegevens en uw eigen versies van standaard-telemetrie te verzenden. Deze API is dezelfde API als de standaard Application Insights gegevens verzamelaars gebruiken.
+Voeg een paar regels code in uw toepassing toe om erachter te komen wat gebruikers mee doen, of om problemen te diagnosticeren. U kunt telemetrie verzenden vanaf apparaat-en desktop-apps, webclients en webservers. Gebruik de [Azure-toepassing Insights](./app-insights-overview.md) core-telemetrie-API om aangepaste gebeurtenissen en metrische gegevens en uw eigen versies van standaard-telemetrie te verzenden. Deze API is dezelfde API als de standaard Application Insights gegevens verzamelaars gebruiken.
 
 ## <a name="api-summary"></a>API-overzicht
 
@@ -37,11 +37,11 @@ Als u nog geen verwijzing hebt over Application Insights SDK:
 
 * Voeg de Application Insights SDK toe aan uw project:
 
-  * [ASP.NET-project](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core project](../../azure-monitor/app/asp-net-core.md)
-  * [Java-project](../../azure-monitor/app/java-get-started.md)
-  * [Node.js project](../../azure-monitor/app/nodejs.md)
-  * [Java script in elke webpagina](../../azure-monitor/app/javascript.md) 
+  * [ASP.NET-project](./asp-net.md)
+  * [ASP.NET Core project](./asp-net-core.md)
+  * [Java-project](./java-get-started.md)
+  * [Node.js project](./nodejs.md)
+  * [Java script in elke webpagina](./javascript.md) 
 * In uw apparaat-of webservercode neemt u het volgende op:
 
     *C#:*`using Microsoft.ApplicationInsights;`
@@ -107,7 +107,7 @@ In Node.js projecten kunt u gebruiken `new applicationInsights.TelemetryClient(i
 
 ## <a name="trackevent"></a>Track Event
 
-In Application Insights is een *aangepaste gebeurtenis* een gegevens punt dat u kunt weer geven in [Metrics Explorer](../../azure-monitor/platform/metrics-charts.md) als een geaggregeerd aantal en in [Diagnostische Zoek opdrachten](../../azure-monitor/app/diagnostic-search.md) als afzonderlijke exemplaren. (Deze heeft geen betrekking op de gebeurtenissen van MVC of ander Framework.)
+In Application Insights is een *aangepaste gebeurtenis* een gegevens punt dat u kunt weer geven in [Metrics Explorer](../platform/metrics-charts.md) als een geaggregeerd aantal en in [Diagnostische Zoek opdrachten](./diagnostic-search.md) als afzonderlijke exemplaren. (Deze heeft geen betrekking op de gebeurtenissen van MVC of ander Framework.)
 
 Voeg `TrackEvent` aanroepen in uw code in om verschillende gebeurtenissen te tellen. Hoe vaak gebruikers een bepaalde functie kiezen, hoe vaak ze bepaalde doel stellingen bereiken of misschien hoe vaak ze bepaalde soorten fouten maken.
 
@@ -147,11 +147,11 @@ telemetry.trackEvent({name: "WinGame"});
 
 De telemetrie is beschikbaar in de `customEvents` tabel in [Application Insights Analytics](../log-query/log-query-overview.md). Elke rij vertegenwoordigt een aanroep naar `trackEvent(..)` in uw app.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar track Event (), het steekproef proces slechts een van deze toegezonden. Als u een correct aantal aangepaste gebeurtenissen wilt ontvangen, moet u dus code gebruiken, zoals `customEvents | summarize sum(itemCount)` .
+Als er [steek proeven](./sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar track Event (), het steekproef proces slechts een van deze toegezonden. Als u een correct aantal aangepaste gebeurtenissen wilt ontvangen, moet u dus code gebruiken, zoals `customEvents | summarize sum(itemCount)` .
 
 ## <a name="getmetric"></a>GetMetric
 
-Ga naar de [GetMetric](../../azure-monitor/app/get-metric.md) -documentatie voor meer informatie over het effectief gebruiken van de GetMetric ()-aanroep voor het vastleggen van lokale vooraf samengestelde metrische gegevens voor .net-en .net core-toepassingen.
+Ga naar de [GetMetric](./get-metric.md) -documentatie voor meer informatie over het effectief gebruiken van de GetMetric ()-aanroep voor het vastleggen van lokale vooraf samengestelde metrische gegevens voor .net-en .net core-toepassingen.
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -307,9 +307,9 @@ De aanbevolen methode voor het verzenden van telemetrie aanvragen is echter waar
 
 ## <a name="operation-context"></a>Bewerkings context
 
-U kunt telemetrie-items samen correleren door ze te koppelen aan de bewerkings context. De standaard module voor aanvraag tracering doet dit voor uitzonde ringen en andere gebeurtenissen die worden verzonden terwijl een HTTP-aanvraag wordt verwerkt. In [Search](../../azure-monitor/app/diagnostic-search.md) en [Analytics](../log-query/log-query-overview.md)kunt u eenvoudig alle gebeurtenissen vinden die zijn gekoppeld aan de aanvraag met behulp van de bewerkings-id.
+U kunt telemetrie-items samen correleren door ze te koppelen aan de bewerkings context. De standaard module voor aanvraag tracering doet dit voor uitzonde ringen en andere gebeurtenissen die worden verzonden terwijl een HTTP-aanvraag wordt verwerkt. In [Search](./diagnostic-search.md) en [Analytics](../log-query/log-query-overview.md)kunt u eenvoudig alle gebeurtenissen vinden die zijn gekoppeld aan de aanvraag met behulp van de bewerkings-id.
 
-Zie de [correlatie van telemetrie in Application Insights](../../azure-monitor/app/correlation.md) voor meer informatie over correlatie.
+Zie de [correlatie van telemetrie in Application Insights](./correlation.md) voor meer informatie over correlatie.
 
 Bij het hand matig bijhouden van telemetrie, de eenvoudigste manier om een telemetrie-correlatie te garanderen met behulp van dit patroon:
 
@@ -341,13 +341,13 @@ In de zoek actie wordt de context van de bewerking gebruikt voor het maken van d
 
 ![Verwante items](./media/api-custom-events-metrics/21.png)
 
-Zie [aangepaste bewerkingen bijhouden met Application Insights .NET SDK](../../azure-monitor/app/custom-operations-tracking.md) voor meer informatie over het bijhouden van aangepaste bewerkingen.
+Zie [aangepaste bewerkingen bijhouden met Application Insights .NET SDK](./custom-operations-tracking.md) voor meer informatie over het bijhouden van aangepaste bewerkingen.
 
 ### <a name="requests-in-analytics"></a>Aanvragen in Analytics
 
 In [Application Insights Analytics](../log-query/log-query-overview.md)worden aanvragen weer gegeven in de `requests` tabel.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackRequest (), het steekproef proces slechts een van deze toegezonden. Als u het juiste aantal aanvragen en gemiddelde duur wilt ophalen op basis van aanvraag namen, gebruikt u de volgende code:
+Als er [steek proeven](./sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackRequest (), het steekproef proces slechts een van deze toegezonden. Als u het juiste aantal aanvragen en gemiddelde duur wilt ophalen op basis van aanvraag namen, gebruikt u de volgende code:
 
 ```kusto
 requests
@@ -358,8 +358,8 @@ requests
 
 Uitzonde ringen verzenden naar Application Insights:
 
-* Om [ze te tellen](../../azure-monitor/platform/metrics-charts.md)als een indicatie van de frequentie van een probleem.
-* Om [afzonderlijke instanties te controleren](../../azure-monitor/app/diagnostic-search.md).
+* Om [ze te tellen](../platform/metrics-charts.md)als een indicatie van de frequentie van een probleem.
+* Om [afzonderlijke instanties te controleren](./diagnostic-search.md).
 
 De rapporten bevatten de stack traceringen.
 
@@ -414,8 +414,8 @@ catch (ex)
 
 De Sdk's ondervangen veel uitzonde ringen automatisch, zodat u TrackException niet altijd expliciet hoeft aan te roepen.
 
-* ASP.NET: [Schrijf code voor het afvangen van uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md).
-* Java EE: [uitzonde ringen worden automatisch afgevangen](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* ASP.NET: [Schrijf code voor het afvangen van uitzonde ringen](./asp-net-exceptions.md).
+* Java EE: [uitzonde ringen worden automatisch afgevangen](./java-get-started.md#exceptions-and-request-failures).
 * Java script: uitzonde ringen worden automatisch afgevangen. Als u automatische verzameling wilt uitschakelen, voegt u een regel toe aan het code fragment dat u op uw webpagina's invoegt:
 
 ```javascript
@@ -429,7 +429,7 @@ De Sdk's ondervangen veel uitzonde ringen automatisch, zodat u TrackException ni
 
 In [Application Insights Analytics](../log-query/log-query-overview.md)worden uitzonde ringen in de `exceptions` tabel weer gegeven.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, `itemCount` wordt in de eigenschap een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackException (), het steekproef proces slechts een van deze toegezonden. Als u het aantal uitzonde ringen dat is gesegmenteerd per type uitzonde ring, wilt ophalen, gebruikt u de volgende code:
+Als er [steek proeven](./sampling.md) worden uitgevoerd, `itemCount` wordt in de eigenschap een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackException (), het steekproef proces slechts een van deze toegezonden. Als u het aantal uitzonde ringen dat is gesegmenteerd per type uitzonde ring, wilt ophalen, gebruikt u de volgende code:
 
 ```kusto
 exceptions
@@ -452,11 +452,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-Gebruik TrackTrace om problemen te diagnosticeren door het verzenden van een ' breadcrumb trail ' naar Application Insights. U kunt segmenten met diagnostische gegevens verzenden en deze in [Diagnostische Zoek opdrachten](../../azure-monitor/app/diagnostic-search.md)controleren.
+Gebruik TrackTrace om problemen te diagnosticeren door het verzenden van een ' breadcrumb trail ' naar Application Insights. U kunt segmenten met diagnostische gegevens verzenden en deze in [Diagnostische Zoek opdrachten](./diagnostic-search.md)controleren.
 
-In .NET- [logboek adapters](../../azure-monitor/app/asp-net-trace-logs.md) gebruiken deze API om logboeken van derden naar de portal te verzenden.
+In .NET- [logboek adapters](./asp-net-trace-logs.md) gebruiken deze API om logboeken van derden naar de portal te verzenden.
 
-In Java voor [standaard logboeken, zoals Log4J, gebruiken Logback](../../azure-monitor/app/java-trace-logs.md) Application Insights log4j of logback-toevoeg modules om logboeken van derden naar de portal te verzenden.
+In Java voor [standaard logboeken, zoals Log4J, gebruiken Logback](./java-trace-logs.md) Application Insights log4j of logback-toevoeg modules om logboeken van derden naar de portal te verzenden.
 
 *C#*
 
@@ -518,13 +518,13 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-In de [Zoek opdracht](../../azure-monitor/app/diagnostic-search.md)kunt u vervolgens eenvoudig alle berichten met een bepaald Ernst niveau filteren die betrekking hebben op een bepaalde data base.
+In de [Zoek opdracht](./diagnostic-search.md)kunt u vervolgens eenvoudig alle berichten met een bepaald Ernst niveau filteren die betrekking hebben op een bepaalde data base.
 
 ### <a name="traces-in-analytics"></a>Traces in Analytics
 
 In [Application Insights Analytics](../log-query/log-query-overview.md)worden aanroepen naar TrackTrace weer gegeven in de `traces` tabel.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat bij 10 aanroepen naar `trackTrace()` het steekproef proces slechts één daarvan wordt verzonden. Als u het juiste aantal tracerings aanroepen wilt krijgen, moet u dus code gebruiken, zoals `traces | summarize sum(itemCount)` .
+Als er [steek proeven](./sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat bij 10 aanroepen naar `trackTrace()` het steekproef proces slechts één daarvan wordt verzonden. Als u het juiste aantal tracerings aanroepen wilt krijgen, moet u dus code gebruiken, zoals `traces | summarize sum(itemCount)` .
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -591,19 +591,19 @@ finally
 }
 ```
 
-Houd er rekening mee dat de Sdk's van de server een [afhankelijkheids module](../../azure-monitor/app/asp-net-dependencies.md) bevatten waarmee bepaalde afhankelijkheids aanroepen automatisch worden gedetecteerd en bijgehouden, bijvoorbeeld in data bases en rest-api's. U moet een agent op de server installeren om de module te laten werken. 
+Houd er rekening mee dat de Sdk's van de server een [afhankelijkheids module](./asp-net-dependencies.md) bevatten waarmee bepaalde afhankelijkheids aanroepen automatisch worden gedetecteerd en bijgehouden, bijvoorbeeld in data bases en rest-api's. U moet een agent op de server installeren om de module te laten werken. 
 
-In Java kunnen bepaalde afhankelijkheids aanroepen automatisch worden gevolgd met behulp van [Java-Agent](../../azure-monitor/app/java-agent.md).
+In Java kunnen bepaalde afhankelijkheids aanroepen automatisch worden gevolgd met behulp van [Java-Agent](./java-agent.md).
 
 U gebruikt deze aanroep als u aanroepen wilt bijhouden die niet worden onderschept door automatische tracking of als u de agent niet wilt installeren.
 
-Als u de standaard module voor het bijhouden van afhankelijkheden in C# wilt uitschakelen, bewerkt u [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) en verwijdert u de verwijzing naar `DependencyCollector.DependencyTrackingTelemetryModule` . In Java moet u de Java-Agent niet installeren als u niet automatisch standaard afhankelijkheden wilt verzamelen.
+Als u de standaard module voor het bijhouden van afhankelijkheden in C# wilt uitschakelen, bewerkt u [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) en verwijdert u de verwijzing naar `DependencyCollector.DependencyTrackingTelemetryModule` . In Java moet u de Java-Agent niet installeren als u niet automatisch standaard afhankelijkheden wilt verzamelen.
 
 ### <a name="dependencies-in-analytics"></a>Afhankelijkheden in Analytics
 
 In [Application Insights Analytics](../log-query/log-query-overview.md)worden trackDependency-aanroepen weer gegeven in de `dependencies` tabel.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackDependency (), het steekproef proces slechts een van deze toegezonden. Als u het juiste aantal afhankelijkheden wilt ophalen dat is gesegmenteerd door het doel onderdeel, gebruikt u de volgende code:
+Als er [steek proeven](./sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackDependency (), het steekproef proces slechts een van deze toegezonden. Als u het juiste aantal afhankelijkheden wilt ophalen dat is gesegmenteerd door het doel onderdeel, gebruikt u de volgende code:
 
 ```kusto
 dependencies
@@ -649,7 +649,7 @@ De methode idea, flush () moet worden gebruikt voor de afsluit activiteit van de
 
 ## <a name="authenticated-users"></a>Geverifieerde gebruikers
 
-In een web-app worden gebruikers (standaard) [geïdentificeerd door cookies](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool). Een gebruiker kan meer dan één keer worden geteld als ze toegang hebben tot uw app vanaf een andere computer of browser, of als ze cookies verwijderen.
+In een web-app worden gebruikers (standaard) [geïdentificeerd door cookies](./usage-segmentation.md#the-users-sessions-and-events-segmentation-tool). Een gebruiker kan meer dan één keer worden geteld als ze toegang hebben tot uw app vanaf een andere computer of browser, of als ze cookies verwijderen.
 
 Als gebruikers zich aanmelden bij uw app, kunt u een nauw keuriger aantal aanvragen door de geverifieerde gebruikers-ID in de browser code in te stellen:
 
@@ -689,9 +689,9 @@ Als uw app gebruikers in accounts groepeert, kunt u ook een id voor het account 
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-In [Metrics Explorer](../../azure-monitor/platform/metrics-charts.md)kunt u een grafiek maken waarin **gebruikers, geverifieerde**en **gebruikers accounts**worden geteld.
+In [Metrics Explorer](../platform/metrics-charts.md)kunt u een grafiek maken waarin **gebruikers, geverifieerde**en **gebruikers accounts**worden geteld.
 
-U kunt ook [zoeken](../../azure-monitor/app/diagnostic-search.md) naar client gegevens punten met specifieke gebruikers namen en accounts.
+U kunt ook [zoeken](./diagnostic-search.md) naar client gegevens punten met specifieke gebruikers namen en accounts.
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>Gegevens filteren, zoeken en segmenteren met behulp van eigenschappen
 
@@ -822,7 +822,7 @@ requests
 U ziet dat:
 
 * Wanneer u een waarde ophaalt uit de JSON customDimensions of customMeasurements, heeft deze een dynamisch type en daarom moet u deze casten `tostring` of `todouble` .
-* Gebruik, om rekening te houden met de mogelijkheid van [steek proeven](../../azure-monitor/app/sampling.md) `sum(itemCount)` `count()` .
+* Gebruik, om rekening te houden met de mogelijkheid van [steek proeven](./sampling.md) `sum(itemCount)` `count()` .
 
 ## <a name="timing-events"></a><a name="timed"></a>Timing gebeurtenissen
 
@@ -919,19 +919,19 @@ Afzonderlijke telemetrie-aanroepen kunnen de standaard waarden in de bijbehorend
 
 Gebruik *voor Java script-webclients*java script-telemetrie-initialisatie functies.
 
-*Om eigenschappen toe te voegen aan alle telemetrie*, met inbegrip van de gegevens uit de standaard verzamelings modules, [implementeert `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
+*Om eigenschappen toe te voegen aan alle telemetrie*, met inbegrip van de gegevens uit de standaard verzamelings modules, [implementeert `ITelemetryInitializer` ](./api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Telemetrie bemonsteren, filteren en verwerken
 
 U kunt code schrijven voor het verwerken van uw telemetrie voordat deze wordt verzonden vanuit de SDK. De verwerking omvat gegevens die worden verzonden vanuit de standaard-telemetrie-modules, zoals verzameling van HTTP-aanvragen en afhankelijkheids verzamelingen.
 
-[Eigenschappen](../../azure-monitor/app/api-filtering-sampling.md#add-properties) aan telemetrie toevoegen door de implementatie uit te voeren `ITelemetryInitializer` . U kunt bijvoorbeeld versie nummers of waarden toevoegen die worden berekend op basis van andere eigenschappen.
+[Eigenschappen](./api-filtering-sampling.md#add-properties) aan telemetrie toevoegen door de implementatie uit te voeren `ITelemetryInitializer` . U kunt bijvoorbeeld versie nummers of waarden toevoegen die worden berekend op basis van andere eigenschappen.
 
-Door [te implementeren kunt u](../../azure-monitor/app/api-filtering-sampling.md#filtering) telemetrie wijzigen of verwijderen voordat deze vanuit de SDK wordt verzonden `ITelemetryProcessor` . U bepaalt wat er wordt verzonden of verwijderd, maar u moet rekening houden met het effect van uw metrische gegevens. Afhankelijk van hoe u items verwijdert, kan de mogelijkheid om te navigeren tussen verwante items verloren gaan.
+Door [te implementeren kunt u](./api-filtering-sampling.md#filtering) telemetrie wijzigen of verwijderen voordat deze vanuit de SDK wordt verzonden `ITelemetryProcessor` . U bepaalt wat er wordt verzonden of verwijderd, maar u moet rekening houden met het effect van uw metrische gegevens. Afhankelijk van hoe u items verwijdert, kan de mogelijkheid om te navigeren tussen verwante items verloren gaan.
 
-[Steek proeven](../../azure-monitor/app/api-filtering-sampling.md) zijn een verpakte oplossing om het volume aan gegevens te beperken dat vanuit uw app naar de portal wordt verzonden. Dit gebeurt zonder dat dit van invloed is op de weer gegeven metrische gegevens. En dit heeft geen invloed op de mogelijkheid om problemen op te lossen door te navigeren tussen verwante items, zoals uitzonde ringen, aanvragen en pagina weergaven.
+[Steek proeven](./api-filtering-sampling.md) zijn een verpakte oplossing om het volume aan gegevens te beperken dat vanuit uw app naar de portal wordt verzonden. Dit gebeurt zonder dat dit van invloed is op de weer gegeven metrische gegevens. En dit heeft geen invloed op de mogelijkheid om problemen op te lossen door te navigeren tussen verwante items, zoals uitzonde ringen, aanvragen en pagina weergaven.
 
-[Meer informatie](../../azure-monitor/app/api-filtering-sampling.md).
+[Meer informatie](./api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetrie uitschakelen
 
@@ -951,7 +951,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-*Geselecteerde standaard verzamelaars uitschakelen*: bijvoorbeeld prestatie meter items, HTTP-aanvragen of afhankelijkheden--verwijderen of opmerkingen maken uit de relevante regels in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). U kunt dit bijvoorbeeld doen als u uw eigen TrackRequest-gegevens wilt verzenden.
+*Geselecteerde standaard verzamelaars uitschakelen*: bijvoorbeeld prestatie meter items, HTTP-aanvragen of afhankelijkheden--verwijderen of opmerkingen maken uit de relevante regels in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). U kunt dit bijvoorbeeld doen als u uw eigen TrackRequest-gegevens wilt verzenden.
 
 *Node.js*
 
@@ -1012,7 +1012,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamische instrumentatie sleutel
 
-Om te voor komen dat telemetrie wordt gemengd vanuit ontwikkelings-, test-en productie omgevingen, kunt u [afzonderlijke Application Insights resources maken](../../azure-monitor/app/create-new-resource.md ) en de sleutels wijzigen, afhankelijk van de omgeving.
+Om te voor komen dat telemetrie wordt gemengd vanuit ontwikkelings-, test-en productie omgevingen, kunt u [afzonderlijke Application Insights resources maken](./create-new-resource.md) en de sleutels wijzigen, afhankelijk van de omgeving.
 
 In plaats van de instrumentatie sleutel op te halen uit het configuratie bestand, kunt u deze in uw code instellen. Stel de sleutel in een initialisatie methode in, zoals global.aspx.cs in een ASP.NET-service:
 
@@ -1068,7 +1068,7 @@ TelemetryClient heeft een context eigenschap, die waarden bevat die samen met al
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-Als u een van deze waarden zelf instelt, kunt u overwegen om de relevante regel te verwijderen uit [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), zodat uw waarden en de standaard waarden niet worden verward.
+Als u een van deze waarden zelf instelt, kunt u overwegen om de relevante regel te verwijderen uit [ApplicationInsights.config](./configuration-with-applicationinsights-config.md), zodat uw waarden en de standaard waarden niet worden verward.
 
 * **Onderdeel**: de app en de versie.
 * **Apparaat**: gegevens over het apparaat waarop de app wordt uitgevoerd. (In web apps is dit de server of het client apparaat waarvan de telemetrie is verzonden.)
@@ -1086,9 +1086,9 @@ Als u een van deze waarden zelf instelt, kunt u overwegen om de relevante regel 
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Gebruik [steek proeven](../../azure-monitor/app/sampling.md)om te voor komen dat de gegevens frequentie limiet wordt bereikt.
+Gebruik [steek proeven](./sampling.md)om te voor komen dat de gegevens frequentie limiet wordt bereikt.
 
-Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privacy.md)om te bepalen hoe lang de gegevens worden bewaard.
+Zie [gegevens retentie en privacy](./data-retention-privacy.md)om te bepalen hoe lang de gegevens worden bewaard.
 
 ## <a name="reference-docs"></a>Referentie documenten
 
@@ -1112,9 +1112,10 @@ Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privac
     Geen. U hoeft ze niet op te slaan in de component try-catch. Als de SDK problemen ondervindt, worden berichten in de uitvoer van de console voor fout opsporing en--als de berichten in de diagnostische zoek opdracht komen, geregistreerd.
 * *Is er een REST API voor het ophalen van gegevens uit de portal?*
 
-    Ja, de [API voor gegevens toegang](https://dev.applicationinsights.io/). Andere manieren om gegevens te extra heren, zijn onder andere [exporteren vanuit Analytics naar Power bi](../../azure-monitor/app/export-power-bi.md ) en [doorlopend exporteren](../../azure-monitor/app/export-telemetry.md).
+    Ja, de [API voor gegevens toegang](https://dev.applicationinsights.io/). Andere manieren om gegevens te extra heren, zijn onder andere [exporteren vanuit Analytics naar Power bi](./export-power-bi.md) en [doorlopend exporteren](./export-telemetry.md).
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
-* [Zoeken naar gebeurtenissen en Logboeken](../../azure-monitor/app/diagnostic-search.md)
+* [Zoeken naar gebeurtenissen en Logboeken](./diagnostic-search.md)
 * [Problemen oplossen](../faq.md)
+

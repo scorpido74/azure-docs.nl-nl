@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met DocuSign | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en DocuSign.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met DocuSign | Microsoft Docs'
+description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en DocuSign configureert.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,240 +15,243 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499950"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met DocuSign
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met DocuSign
 
-In deze zelf studie leert u hoe u DocuSign integreert met Microsoft Azure Active Directory (Azure AD). Wanneer u DocuSign integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u DocuSign kunt integreren met Microsoft Azure Active Directory (Azure AD). Wanneer u DocuSign integreert met Azure AD, kunt u:
 
-* Gebruik Azure AD om te bepalen wie toegang heeft tot DocuSign.
-* Schakel automatisch aanmelden in voor DocuSign voor uw gebruikers via hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Azure AD gebruiken om te bepalen wie toegang heeft tot DocuSign.
+* Automatisch aanmelden bij DocuSign inschakelen voor uw gebruikers via hun Azure AD-account.
+* Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [eenmalige aanmelding bij toepassingen in azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
+Zie voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD [Eenmalige aanmelding voor toepassingen in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Een DocuSign-abonnement dat eenmalige aanmelding (SSO) is ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een DocuSign-abonnement waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
+
+> [!NOTE]
+> Deze integratie is ook beschikbaar voor gebruik vanuit de Azure AD US Government Cloud-omgeving. U kunt deze toepassing vinden in de toepassingsgalerie van Azure AD US Government Cloud en deze op dezelfde manier configureren als vanuit een openbare cloud.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving om te controleren of:
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen om het volgende te controleren:
 
-* DocuSign ondersteunt SSO die door de service provider (SP) is gestart.
+* DocuSign ondersteunt SSO die door de serviceprovider (SP) is gestart.
 
-* DocuSign biedt ondersteuning **voor Just-in-time** -gebruikers inrichting.
+* DocuSign biedt ondersteuning voor het **just-in-time** inrichten van gebruikers.
 
-* DocuSign ondersteunt [automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
-* Nadat u DocuSign hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* DocuSign biedt ondersteuning voor het [automatisch inrichten van gebruikers](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
+* Nadat u DocuSign hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-docusign-from-the-gallery"></a>DocuSign toevoegen uit de galerie
+## <a name="adding-docusign-from-the-gallery"></a>DocuSign toevoegen vanuit de galerie
 
-Als u de integratie van DocuSign in azure AD wilt configureren, moet u DocuSign uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps:
+Voor het configureren van de integratie van DocuSign in Azure Active Directory, moet u DocuSign uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps:
 
-1. Meld u met een werk-of school account aan bij de [Azure Portal](https://portal.azure.com) of gebruik een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **DocuSign** in het zoekvak.
-1. Selecteer **DocuSign** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of met een persoonlijk Microsoft-account.
+1. Selecteer in het navigatiedeelvenster aan de linkerkant de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **DocuSign** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **DocuSign** in het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor DocuSign
+## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>Eenmalige aanmelding van Azure AD configureren en testen voor DocuSign
 
-Azure AD SSO met DocuSign configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in DocuSign.
+Configureer en test eenmalige aanmelding van Azure AD met DocuSign met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in DocuSign.
 
-Als u Azure AD SSO wilt configureren en testen met DocuSign, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met DocuSign te configureren en te testen:
 
-1. [Configureer Azure AD SSO](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
-    1. [Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user) eenmalige aanmelding van Azure ad te testen met B. Simon.
-    1. [Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user) toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-1. [Configureer DOCUSIGN SSO](#configure-docusign-sso) voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. [Maak een DocuSign-test gebruiker](#create-docusign-test-user) voor het genereren van een tegen partij B. Simon in DocuSign dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. [Test SSO](#test-sso) om te controleren of de configuratie werkt.
+1. [Configureer eenmalige aanmelding van Azure AD](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
+    1. [Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user) om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. [Wijs de Azure AD-testgebruiker toe](#assign-the-azure-ad-test-user) zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. [Configureer eenmalige aanmelding bij DocuSign](#configure-docusign-sso) om de instellingen voor eenmalige aanmelding aan de toepassingszijde te configureren.
+    1. [Maak een DocuSign-testgebruiker](#create-docusign-test-user) om in DocuSign een tegenhanger van B.Simon te genereren die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. [Eenmalige aanmelding testen](#test-sso) om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal:
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal:
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **DocuSign** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Op de pagina **eenmalige aanmelding met SAML instellen** selecteert u het pictogram voor de pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **DocuSign** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het penpictogram voor **Standaard SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer de volgende stappen uit in de sectie **basis configuratie van SAML** :
+1. Voer deze stappen uit in het gedeelte **Standaard SAML-configuratie**:
 
-    a. Voer in het tekstvak **URL voor aanmelden** een URL in met het volgende patroon:
+    a. Voer in het tekstvak **Aanmeldings-URL** een URL in met het volgende patroon:
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
-    b. Voer in het tekstvak **id (Entiteits-ID)** een URL in met het volgende patroon:
+    b. Voer in het tekstvak **Id (Entiteits-id)** een URL in met het volgende patroon:
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. Voer in het tekstvak **antwoord-URL** een URL in met het volgende patroon:
+    c. Voer in het tekstvak **Antwoord-URL** een URL in met het volgende patroon:
     
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
-    > Deze waarden tussen haakjes zijn tijdelijke aanduidingen. Vervang deze door de waarden in de URL voor de werkelijke aanmelding, de id en de antwoord-URL. Deze details worden beschreven in de sectie ' SAML 2,0-eind punten weer geven ' verderop in deze zelf studie.
+    > Deze waarden tussen punthaken zijn tijdelijke aanduidingen. Vervang ze door de waarden in de werkelijke aanmeldings-URL, id en Antwoord-URL. Deze details worden uitgelegd in de sectie 'SAML 2.0-eindpunten bekijken' verderop in deze zelfstudie.
 
-1. Ga op de pagina **eenmalige aanmelding met SAML instellen** naar **certificaat (base64)** in het gedeelte **SAML-handtekening certificaat** . Selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga naar de pagina **Eenmalige aanmelding met SAML instellen** en zoek in de sectie **SAML-handtekeningcertificaat** de optie **Certificaat (Base64)** . Selecteer **Downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer in de sectie **DocuSign instellen** de juiste URL (of url's) op basis van uw vereisten.
+1. In de sectie **Set up DocuSign** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker met de naam B. Simon in de Azure Portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer aan de bovenkant van het scherm de optie **nieuwe gebruiker**.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **naam** **B. Simon**in.  
-   1. Typ `<username>@<companydomain>.<extension>`in het veld **gebruikers naam** . Bijvoorbeeld: `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer bovenaan het scherm **Nieuwe gebruiker**.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+   1. Typ **B.Simon** in het veld **Naam**.  
+   1. Voer `<username>@<companydomain>.<extension>` in in het veld **Gebruikersnaam**. Bijvoorbeeld: `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie verleent u B. Simon toegang tot DocuSign, zodat deze gebruiker de eenmalige aanmelding van Azure kan gebruiken.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **DocuSign**.
-1. Zoek op de pagina overzicht van de app de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **DocuSign** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens in het dialoog venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst met **gebruikers** en druk op de knop **selecteren** aan de onderkant van het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Selecteer de knop **toewijzen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de naam **B.Simon** in de lijst **Gebruikers** en klik op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Selecteer in het dialoogvenster **Toewijzing toevoegen** de knop **Toewijzen**.
 
 ## <a name="configure-docusign-sso"></a>DocuSign SSO configureren
 
-1. Als u de configuratie in DocuSign wilt automatiseren, moet u de uitbrei ding mijn apps Secure Sign-in browser installeren door **de extensie installeren**te selecteren.
+1. Als u de configuratie in DocuSign wilt automatiseren, moet u de browseruitbreiding My Apps Secure Sign-in installeren door op **De extensie installeren** te klikken.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u de uitbrei ding aan de browser hebt toegevoegd, selecteert u **Setup DocuSign**. U wordt omgeleid naar de DocuSign-toepassing. Geef de beheerders referenties op om u aan te melden bij DocuSign. Met de browser extensie wordt de toepassing automatisch geconfigureerd en wordt stap 3 t/m 5 geautomatiseerd.
+2. Nadat u de extensie aan de browser hebt toegevoegd, selecteert u **Setup DocuSign**. U wordt omgeleid naar de DocuSign-toepassing. Geef hier de Administrator-referenties op om u aan te melden bij DocuSign. In de browserextensie wordt de toepassing automatisch geconfigureerd en worden stappen 3 t/m 5 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Instelling configureren](common/setup-sso.png)
 
-3. Als u DocuSign hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw DocuSign-bedrijfs site als beheerder.
+3. Als u DocuSign handmatig wilt instellen, opent u een nieuw webbrowservenster en meldt u zich bij uw DocuSign-bedrijfssite aan als beheerder.
 
-4. Selecteer in de rechter bovenhoek van de pagina het profiel logo en selecteer vervolgens **Go to admin**.
+4. Selecteer in de rechterbovenhoek van de pagina het profiellogo en selecteer vervolgens **Go to Admin** (Ga naar Beheer).
   
-    ![Ga naar de beheerder onder profiel][51]
+    ![Go to Admin onder profiel][51]
 
-5. Selecteer op de pagina domein oplossingen de optie **domeinen**.
+5. Selecteer **Domains** (Domeinen) op de pagina met domeinoplossingen.
 
-    ![Domein oplossingen/domeinen][50]
+    ![Domain Solutions/Domains][50]
 
-6. Selecteer in de sectie **domeinen** de optie **claim domein**.
+6. Selecteer in de sectie **Domains** (Domeinen) **CLAIM DOMAIN** (Domein claimen).
 
-    ![Claim domein optie][52]
+    ![De optie Claim Domain][52]
 
-7. Typ in het dialoog venster **een domein claimen** in het vak **domein naam** het bedrijfs domein en selecteer vervolgens **claim**. Zorg ervoor dat u het domein verifieert en of de status actief is.
+7. Typ in het dialoogvenster **Claim a Domain** (Een domein claimen) in het vak **Domain Name** (Domeinnaam) de domeinnaam van uw bedrijf en selecteer **CLAIM**. Zorg ervoor dat u verifieert of het domein bestaat en of de status actief is.
 
-    ![Dialoog venster domein/domein naam claimen][53]
+    ![Dialoogvenster Claim a Domain/Domain Name][53]
 
-8. Selecteer op de pagina domein oplossingen de optie **id-providers**.
+8. Selecteer op de pagina met domeinoplossingen **Identity Providers** (Id-providers).
   
-    ![Optie id-providers][54]
+    ![De optie Identity Providers][54]
 
-9. Selecteer in de sectie **id-providers** de optie **ID-provider toevoegen**.
+9. Selecteer in de sectie **Identity Providers** **ADD IDENTITY PROVIDER** (Id-provider toevoegen).
 
-    ![Optie ID-provider toevoegen][55]
+    ![Optie voor het toevoegen van een id-provider][55]
 
-10. Voer de volgende stappen uit op de pagina instellingen van de **identiteits provider** :
+10. Voer de volgende stappen uit op de pagina **Identity Provider Settings** (id-providerinstellingen):
 
-    ![Velden met instellingen voor de identiteits provider][56]
+    ![Velden van Identity Provider Settings][56]
 
-    a. Typ in het vak **naam** een unieke naam voor uw configuratie. Gebruik geen spaties.
+    a. Typ in het tekstvak **Name** (Naam) een unieke naam voor de configuratie. Gebruik geen spaties.
 
-    b. Plak in het **vak Uitgever van de identiteits provider**de waarde van de **Azure ad-id** , die u hebt gekopieerd uit de Azure Portal.
+    b. Plak in het vak **Identity Provider Issuer** (Verlener id-provider) de waarde van de **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
-    c. Plak in het vak aanmeldings-URL van de **identiteits provider** de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit Azure Portal.
+    c. Plak in het vak **Identity Provider Login URL** (Aanmeldings-URL id-provider) de waarde van de **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    d. Plak in het vak **Afmeldings-URL van de identiteits provider** de waarde van de **afmeldings-URL**, die u van Azure Portal hebt gekopieerd.
+    d. Plak in het vak **Identity Provider Logout URL** (Aanmeldings-URL id-provider) de waarde van de **URL voor afmelden** die u hebt gekopieerd uit de Azure-portal.
 
-    e. Selecteer **authn-aanvraag ondertekenen**.
+    e. Selecteer **Sign AuthN request** (Verificatieaanvraag ondertekenen).
 
-    f. Selecteer voor **verificatie aanvraag verzenden via** **post**.
+    f. Selecteer **POST** bij **Send AuthN request by** (Verificatieaanvraag verzenden per).
 
-    g. Selecteer **ophalen**voor **afmeldings aanvraag door**.
+    g. Selecteer **GET** bij **Send AuthN request by** (Afmeldingsaanvraag verzenden per).
 
-    h. Selecteer in de sectie **toewijzing van aangepast kenmerk** de optie **nieuwe toewijzing toevoegen**.
+    h. Selecteer **ADD NEW MAPPING** (Nieuwe toewijzing toevoegen) in de sectie **Custom Attribute Mapping** (Aangepaste attribuuttoewijzing).
 
-       ![Gebruikers interface voor aangepaste kenmerk toewijzing][62]
+       ![Gebruikersinterface voor aangepaste attribuuttoewijzing][62]
 
-    i. Kies het veld dat u wilt toewijzen aan de Azure AD-claim. In dit voor beeld wordt de claim **EmailAddress** toegewezen aan de waarde van `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`. Dit is de standaard naam van de claim van Azure AD voor de e-mail claim. Selecteer **Opslaan**.
+    i. Kies het veld dat u wilt toewijzen aan de Azure AD-claim. In dit voorbeeld wordt de claim **emailaddress** toegewezen aan de waarde `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`. Dit is de standaardclaimnaam van Azure AD voor de e-mail-claim. Selecteer **SAVE** (Opslaan).
 
-       ![Toewijzings velden voor aangepaste kenmerken][57]
+       ![Velden voor aangepaste attribuuttoewijzing][57]
 
        > [!NOTE]
-       > Gebruik de juiste **gebruikers-id** om de gebruiker toe te wijzen vanuit Azure AD aan DocuSign-gebruikers toewijzing. Selecteer het juiste veld en voer de juiste waarde in op basis van de instellingen van uw organisatie.
+       > Gebruik de juiste **Gebruikers-id** om de gebruiker van Azure AD toe te wijzen aan de DocuSign-gebruikerstoewijzing. Selecteer het juiste veld en voer de juiste waarde in op basis van de instellingen van uw organisatie.
 
-    j. Selecteer **certificaat toevoegen**in de sectie **identiteits provider certificaten** , upload het certificaat dat u hebt gedownload van de Azure AD-Portal en selecteer **Opslaan**.
+    j. Selecteer in de sectie **Identity Provider Certificates** (id-providercerticificaten) **ADD CERTIFICATE** (Certificaat toevoegen), upload het certificaat dat u hebt gedownload uit de Azure AD-portal en selecteer **SAVE** (Opslaan).
 
-       ![Identiteits provider certificaten/certificaat toevoegen][58]
+       ![Id-providercertificaten/Certificaat toevoegen][58]
 
-    k. Selecteer in de sectie **id-providers** de optie **acties**en selecteer vervolgens **eind punten**.
+    k. Selecteer in de sectie **Identity Providers** (Id-providers) **ACTIONS** (Acties) en vervolgens **Endpoints** (Eindpunten).
 
-       ![Id-providers/-eind punten][59]
+       ![Id-providers/Eindpunten][59]
 
-    l. Voer de volgende stappen uit in de sectie **SAML 2,0-eind punten weer geven** van de beheer portal van DocuSign:
+    l. Voer in de sectie **SAML 2.0-eindpunten bekijken** van de beheerportal van DocuSign de volgende stappen uit:
 
-       ![SAML 2,0-eind punten weer geven][60]
+       ![SAML 2.0-eindpunten bekijken][60]
        
-       1. Kopieer de URL van de uitgever van de **service provider**en plak deze in het vak **id** in de sectie **basis configuratie van SAML** in de Azure Portal.
+       1. Kopieer de **Service Provider Issuer URL** (URL serviceprovideruitgever) en plak deze in het vak **Id** in de sectie **Basis-SAML-configuratie** in de Azure-portal.
        
-       1. Kopieer de service **provider Assertion Consumer Service-URL**en plak deze in het vak **antwoord-URL** in de sectie **basis configuratie van SAML** in de Azure Portal.
+       1. Kopieer de **Service Provider Assertion Consumer Service URL** (Serviceprovider-URL voor Assertion Consumer Service) en plak deze in het vak **Antwoord-URL** in de sectie **Basis-SAML-configuratie** in de Azure-portal.
        
-       1. Kopieer de **aanmeldings-URL van de service provider**en plak deze in het vak **Sign on URL** in het gedeelte **basis configuratie van SAML** in de Azure Portal. Aan het einde van de **aanmeldings-URL van de service provider** krijgt u de waarde IDPID.
+       1. Kopieer de **Service Provider Login URL** (Aanmeldings-URL serviceprovideruitgever) en plak deze in het vak **Aanmeldings-URL** in de sectie **Basis-SAML-configuratie** in de Azure-portal. Aan het einde van de **Service Provider Login URL** krijgt u de IDPID-waarde.
 
        1. Selecteer **Sluiten**.
 
-### <a name="create-docusign-test-user"></a>DocuSign-test gebruiker maken
+### <a name="create-docusign-test-user"></a>DocuSign-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in DocuSign. DocuSign biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in DocuSign, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in DocuSign. DocuSign biedt ondersteuning voor just-In-Time-inrichting van gebruikers, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in DocuSign bestaat, wordt er een nieuwe gemaakt na authenticatie.
 
 > [!Note]
-> Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van DocuSign](https://support.docusign.com/).
+> Neem contact op met het [ondersteuningsteam van DocuSign](https://support.docusign.com/) als u handmatig een gebruiker moet maken.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel DocuSign in het toegangs venster selecteert, wordt u automatisch aangemeld bij het DocuSign-exemplaar waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel DocuSign selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de instantie van DocuSign waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Zelfstudies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding in azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding in Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Wat is voorwaardelijke toegang in azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer DocuSign met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

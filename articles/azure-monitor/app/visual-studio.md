@@ -7,16 +7,17 @@ ms.author: daviste
 ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670879"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323465"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Fouten opsporen in uw toepassingen met Azure-toepassing Insights in Visual Studio
-In Visual Studio (2015 en hoger) kunt u de prestaties analyseren en problemen in uw ASP.NET web-app identificeren tijdens de foutopsporing en algemeen gebruik. Dit gebeurt aan de hand van telemetrie uit [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+In Visual Studio (2015 en hoger) kunt u de prestaties analyseren en problemen in uw ASP.NET web-app identificeren tijdens de foutopsporing en algemeen gebruik. Dit gebeurt aan de hand van telemetrie uit [Azure Application Insights](./app-insights-overview.md).
 
-Als u uw ASP.NET-web-app hebt gemaakt met Visual Studio 2017 of hoger, beschikt deze al over de Application Insights-SDK. Anders [voegt u Application Insights aan uw app toe](../../azure-monitor/app/asp-net.md) als u dit nog niet hebt gedaan.
+Als u uw ASP.NET-web-app hebt gemaakt met Visual Studio 2017 of hoger, beschikt deze al over de Application Insights-SDK. Anders [voegt u Application Insights aan uw app toe](./asp-net.md) als u dit nog niet hebt gedaan.
 
 Als uw app wilt bewaken wanneer deze in live productie is, bekijkt u normaal gesproken de Application Insights-telemetrie in de [Azure-portal](https://portal.azure.com), waar u waarschuwingen kunt instellen en krachtige bewakingsprogramma's kunt toepassen. Voor foutopsporing kunt u echter ook de telemetrie in Visual Studio zoeken en analyseren. U kunt Visual Studio gebruiken om telemetrie te analyseren van uw productie site en van fout opsporing wordt uitgevoerd op uw ontwikkel computer. In het laatste geval kunt u foutopsporingsruns al analyseren nog voordat u de SDK hebt geconfigureerd om telemetrie naar de Azure-portal te verzenden. 
 
@@ -51,7 +52,7 @@ U kunt ook de Verwante items openen om mislukte aanvragen of uitzonderingen te d
 ![Blader onder Aanvraagdetails naar beneden, naar gerelateerde items](./media/visual-studio/41.png)
 
 ## <a name="view-exceptions-and-failed-requests"></a>Uitzonde ringen en mislukte aanvragen weer geven
-Uitzonderingsrapporten worden weergegeven in het venster Zoeken. (In enkele oudere typen ASP.NET-toepassingen moet u [uitzonderingencontrole instellen](../../azure-monitor/app/asp-net-exceptions.md) om te zien welke uitzonderingen door het framework worden afgehandeld.)
+Uitzonderingsrapporten worden weergegeven in het venster Zoeken. (In enkele oudere typen ASP.NET-toepassingen moet u [uitzonderingencontrole instellen](./asp-net-exceptions.md) om te zien welke uitzonderingen door het framework worden afgehandeld.)
 
 Klik op een uitzondering voor een stack-trace. Als de code van de app in Visual Studio is geopend, kunt u via de stack-trace doorklikken naar de relevante coderegel.
 
@@ -63,10 +64,10 @@ In de lens regel van de code boven elke handler-methode ziet u het aantal aanvra
 ![Uitzondering voor stack-trace](./media/visual-studio/21.png)
 
 > [!NOTE] 
-> Code Lens toont alleen Application Insights-gegevens als u [uw app hebt geconfigureerd om telemetrie te verzenden naar de Application Insights-portal](../../azure-monitor/app/asp-net.md).
+> Code Lens toont alleen Application Insights-gegevens als u [uw app hebt geconfigureerd om telemetrie te verzenden naar de Application Insights-portal](./asp-net.md).
 >
 
-[Meer informatie over Application Insights in Code Lens](../../azure-monitor/app/visual-studio-codelens.md)
+[Meer informatie over Application Insights in Code Lens](./visual-studio-codelens.md)
 
 ## <a name="trends"></a>Trends
 Trends is een hulpprogramma waarmee u de werking van uw app gedurende een bepaalde periode kunt visualiseren. 
@@ -77,14 +78,14 @@ Als u wilt zoeken naar afwijkingen in uw gegevens, kiest u een van de afwijkings
 
 ![Trends](./media/visual-studio/51.png)
 
-[Meer informatie over Trends](../../azure-monitor/app/visual-studio-trends.md).
+[Meer informatie over Trends](./visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Lokale bewaking
 (Uit Visual Studio 2015 update 2) Als u de SDK niet hebt geconfigureerd voor het verzenden van telemetrie naar de Application Insights Portal (zodat er geen instrumentatie sleutel in ApplicationInsights.config is), wordt in het venster diagnostische gegevens telemetrie van uw nieuwste foutopsporingssessie weer gegeven. 
 
 Dit is handig als u al een eerdere versie van uw app hebt gepubliceerd. Zo voorkomt u dat de telemetrie van uw foutopsporingssessies in de Application Insights-portal wordt verward met de telemetrie over de gepubliceerde app.
 
-Ook als u beschikt over [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) waarin u fouten wilt opsporen voordat u deze naar de portal verzendt, komt deze functie van pas.
+Ook als u beschikt over [aangepaste telemetrie](./api-custom-events-metrics.md) waarin u fouten wilt opsporen voordat u deze naar de portal verzendt, komt deze functie van pas.
 
 * *In eerste instantie heb ik Application Insights voor het verzenden van telemetrie naar de portal volledig geconfigureerd. Maar nu wil ik de telemetrie alleen bekijken in Visual Studio.*
   
@@ -95,6 +96,6 @@ Ook als u beschikt over [aangepaste telemetrie](../../azure-monitor/app/api-cust
 ## <a name="next-steps"></a>Volgende stappen
 |  |  |
 | --- | --- |
-| **[Meer gegevens toevoegen](../../azure-monitor/app/asp-net-more.md)**<br/>Bewaak het gebruik, de beschikbaarheid, de afhankelijkheden en de uitzonderingen. Integreer bijgehouden informatie uit frameworks voor logboekregistratie. Schrijf aangepaste telemetrie. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Werken met de Application Insights-portal](../../azure-monitor/app/overview-dashboard.md)**<br/>Bekijk Dash boards, krachtige hulpprogram ma's voor diagnose en analyse, waarschuwingen, een live afhankelijkheids kaart van uw toepassing en geëxporteerde telemetriegegevens. |![Visual Studio](./media/visual-studio/62.png) |
+| **[Meer gegevens toevoegen](./asp-net-more.md)**<br/>Bewaak het gebruik, de beschikbaarheid, de afhankelijkheden en de uitzonderingen. Integreer bijgehouden informatie uit frameworks voor logboekregistratie. Schrijf aangepaste telemetrie. |![Visual Studio](./media/visual-studio/64.png) |
+| **[Werken met de Application Insights-portal](./overview-dashboard.md)**<br/>Bekijk Dash boards, krachtige hulpprogram ma's voor diagnose en analyse, waarschuwingen, een live afhankelijkheids kaart van uw toepassing en geëxporteerde telemetriegegevens. |![Visual Studio](./media/visual-studio/62.png) |
 

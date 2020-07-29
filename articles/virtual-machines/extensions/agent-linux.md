@@ -1,26 +1,19 @@
 ---
 title: Overzicht van Azure Linux VM-agent
 description: Meer informatie over het installeren en configureren van Linux-agent (waagent) voor het beheren van de interactie van uw virtuele machine met de Azure Fabric-controller.
-services: virtual-machines-linux
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 560ae8d837cf57e471a9f39d5ccdcf152a156b1e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029073"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269118"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
 
@@ -72,7 +65,7 @@ De informatiestroom van het platform naar de agent vindt plaats via twee kanalen
 De volgende systemen zijn getest en bekend bij het werken met de Azure Linux-agent:
 
 > [!NOTE]
-> Deze lijst kan afwijken van de officiële lijst met ondersteunde systemen op het Microsoft Azure-platform, zoals hier wordt beschreven:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Deze lijst kan afwijken van de officiële lijst met [ondersteunde distributies](../linux/endorsed-distros.md).
 > 
 > 
 
@@ -131,7 +124,7 @@ Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](http
 * daemon: Voer waagent uit als een daemon om de interactie met het platform te beheren. Dit argument is opgegeven voor waagent in het waagent init-script.
 * starten: Voer waagent uit als achtergrond proces
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Hieronder ziet u een voor beeld van een configuratie bestand:
 
 ```config

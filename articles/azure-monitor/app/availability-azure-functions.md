@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320626"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 
-In dit artikel wordt beschreven hoe u een Azure-functie maakt met TrackAvailability () die regel matig wordt uitgevoerd op basis van de configuratie die is opgegeven in de timer trigger-functie met uw eigen bedrijfs logica. De resultaten van deze test worden verzonden naar uw Application Insights-resource, waar u de gegevens van beschikbaarheids resultaten kunt opvragen en waarschuwen. Zo kunt u aangepaste tests maken die vergelijkbaar zijn met wat u kunt doen met behulp van [beschikbaarheids controle](../../azure-monitor/app/monitor-web-app-availability.md) in de portal. Aangepaste tests bieden u de mogelijkheid om complexere beschikbaarheids tests te schrijven dan mogelijk is met behulp van de portal-gebruikers interface, een app te bewaken in uw Azure VNET, het eindpunt adres te wijzigen of een beschikbaarheids test te maken, zelfs als deze functie niet beschikbaar is in uw regio.
+In dit artikel wordt beschreven hoe u een Azure-functie maakt met TrackAvailability () die regel matig wordt uitgevoerd op basis van de configuratie die is opgegeven in de timer trigger-functie met uw eigen bedrijfs logica. De resultaten van deze test worden verzonden naar uw Application Insights-resource, waar u de gegevens van beschikbaarheids resultaten kunt opvragen en waarschuwen. Zo kunt u aangepaste tests maken die vergelijkbaar zijn met wat u kunt doen met behulp van [beschikbaarheids controle](./monitor-web-app-availability.md) in de portal. Aangepaste tests bieden u de mogelijkheid om complexere beschikbaarheids tests te schrijven dan mogelijk is met behulp van de portal-gebruikers interface, een app te bewaken in uw Azure VNET, het eindpunt adres te wijzigen of een beschikbaarheids test te maken, zelfs als deze functie niet beschikbaar is in uw regio.
 
 > [!NOTE]
 > Dit voor beeld is uitsluitend bedoeld om u te laten zien hoe de API-aanroep van TrackAvailability () in een Azure-functie werkt. Het schrijven van de onderliggende HTTP-test code/bedrijfs logica die is vereist om deze in te scha kelen in een volledig functionele beschikbaarheids test, is niet mogelijk. Als u dit voor beeld doorloopt, maakt u standaard een beschikbaarheids test waarbij er altijd een fout wordt gegenereerd.
@@ -177,7 +177,7 @@ Als u alles hebt uitgevoerd als is (zonder bedrijfs logica toe te voegen), ziet 
 
 ## <a name="query-in-logs-analytics"></a>Query in Logboeken (analyse)
 
-U kunt Logboeken (analyse) gebruiken om de beschikbaarheids resultaten, afhankelijkheden en meer weer te geven. Ga voor meer informatie over Logboeken naar het [overzicht van logboek query's](../../azure-monitor/log-query/log-query-overview.md).
+U kunt Logboeken (analyse) gebruiken om de beschikbaarheids resultaten, afhankelijkheden en meer weer te geven. Ga voor meer informatie over Logboeken naar het [overzicht van logboek query's](../log-query/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Beschikbaarheids resultaten](media/availability-azure-functions/availabilityresults.png)
@@ -187,5 +187,6 @@ U kunt Logboeken (analyse) gebruiken om de beschikbaarheids resultaten, afhankel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassingskaart](../../azure-monitor/app/app-map.md)
-- [Diagnostische gegevens voor transacties](../../azure-monitor/app/transaction-diagnostics.md)
+- [Toepassingskaart](./app-map.md)
+- [Diagnostische gegevens voor transacties](./transaction-diagnostics.md)
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 20175e252d009620585e20cf76cdb634549b4f1d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323907"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmatisch Azure-abonnementen maken (preview)
 
@@ -94,7 +94,7 @@ ObjectId                               | PrincipalName
 ```
 Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het SignUpEngineering@contoso.com inschrijvings account, kopieert u dit ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Plak deze object-ID ergens anders zodat u deze in de volgende stap als de kunt gebruiken `enrollmentAccountObjectId` .
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik de opdracht [AZ facturering Enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) voor een lijst met alle inschrijvings accounts waartoe u toegang hebt.
 
@@ -160,7 +160,7 @@ Als onderdeel van de koptekst wordt in het antwoord `Location` een URL weer gege
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Installeer eerst deze preview-module door uit te voeren `Install-Module Az.Subscription -AllowPrerelease` . Om ervoor te zorgen dat u `-AllowPrerelease` werkt, installeert u een recente versie van PowerShellGet van de [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget).
+Voer uit om de meest recente versie van de module te installeren die de `New-AzSubscription` cmdlet bevat `Install-Module Az.Subscription` . Zie [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget)voor informatie over het installeren van een recente versie van PowerShellGet.
 
 Voer de opdracht [New-AzSubscription](/powershell/module/az.subscription) hieronder uit, waarbij u vervangt `<enrollmentAccountObjectId>` door de `ObjectId` verzamelde in de eerste stap ( ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
 
@@ -177,9 +177,10 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | Nee       | Tekenreeks | Het e-mail adres van elke gebruiker die u wilt toevoegen als een RBAC-eigenaar van het abonnement wanneer het wordt gemaakt. U kunt deze para meter gebruiken in plaats van `OwnerObjectId` .|
 | `OwnerApplicationId` | Nee       | Tekenreeks | De toepassings-ID van elke service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze para meter gebruiken in plaats van `OwnerObjectId` . Wanneer u deze para meter gebruikt, moet de Service-Principal [Lees toegang hebben tot de map](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
-Zie [New-AzSubscription](/powershell/module/az.subscription)voor een volledige lijst met alle para meters.
+Zie [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription)voor een volledige lijst met alle para meters.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Installeer eerst deze preview-extensie door uit te voeren `az extension add --name subscription` .
 

@@ -4,15 +4,15 @@ description: API voor het ophalen van een overzicht van aanbiedingen onder een P
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535889"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271957"
 ---
 # <a name="retrieve-offers"></a>Aanbiedingen ophalen
 
@@ -25,10 +25,10 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 
 ## <a name="uri-parameters"></a>URI-para meters
 
-| **Naam**         |  **Beschrijving**                         |  **Gegevens type** |
+| **Naam**         |  **Beschrijving**                         |  **Gegevenstype** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks    |
-|  api-versie     | Nieuwste versie van API                    |    Datum        |
+|  api-versie     | Nieuwste versie van API                    |    Date        |
 |  |  |
 
 ## <a name="header"></a>Header
@@ -90,7 +90,7 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 |  NeverPublished              | De aanbieding is nooit gepubliceerd.                  |
 |  NotStarted                  | De aanbieding is nieuw, maar is niet gestart.                 |
 |  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.         |
-|  Wordt uitgevoerd                     | Verzen ding van aanbieding wordt verwerkt.             |
+|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.             |
 |  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.       |
 |  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                   |
 |  Mislukt                      | Kan de aanbieding niet verzenden.                         |

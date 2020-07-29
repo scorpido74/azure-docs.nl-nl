@@ -4,15 +4,15 @@ description: API om de opgegeven aanbieding binnen de naam ruimte van de uitgeve
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271838"
 ---
 # <a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
 
@@ -37,13 +37,13 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 
 ## <a name="uri-parameters"></a>URI-para meters
 
-| **Naam**    | **Beschrijving**                                                                          | **Gegevens type** |
+| **Naam**    | **Beschrijving**                                                                          | **Gegevenstype** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Bijvoorbeeld contoso                                                        | Tekenreeks        |
 | offerId     | De GUID die de aanbieding uniek identificeert.                                                 | Tekenreeks        |
 | versie     | De versie van de aanbieding die wordt opgehaald. Standaard wordt de meest recente versie van de aanbieding opgehaald. | Geheel getal       |
 | slotId      | De sleuf van waaruit de aanbieding wordt opgehaald, kan een van de volgende zijn:      <br/>  - `Draft`(standaard) haalt de aanbiedings versie op die momenteel in concept wordt aangeboden.  <br/>  -  `Preview`haalt de aanbiedings versie op die momenteel in preview is.     <br/>  -  `Production`haalt de aanbiedings versie op die momenteel in productie is.          |      vaste |
-| api-versie | Nieuwste versie van API                                                                    | Datum          |
+| api-versie | Nieuwste versie van API                                                                    | Date          |
 |  |  |  |
 
 ## <a name="header"></a>Header
@@ -199,7 +199,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  NeverPublished             | De aanbieding is nooit gepubliceerd.               |
 |  NotStarted                 | De aanbieding is nieuw, maar is niet gestart.              |
 |  WaitingForPublisherReview  | Aanbieding wacht op goed keuring van de uitgever.      |
-|  Wordt uitgevoerd                    | Verzen ding van aanbieding wordt verwerkt.          |
+|  In uitvoering                    | Verzen ding van aanbieding wordt verwerkt.          |
 |  Geslaagd                  | Het verzenden van aanbiedingen is voltooid.    |
 |  Geannuleerd                   | Het verzenden van het aanbod is geannuleerd.                |
 |  Mislukt                     | Kan de aanbieding niet verzenden.                      |

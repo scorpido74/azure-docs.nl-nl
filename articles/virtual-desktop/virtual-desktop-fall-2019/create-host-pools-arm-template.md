@@ -1,6 +1,6 @@
 ---
-title: Windows-hostgroep voor virtuele Bureau bladen Azure Resource Manager-Azure
-description: Het maken van een hostgroep in virtueel bureau blad van Windows met een Azure Resource Manager sjabloon.
+title: Windows Virtual Desktop (klassieke) hostgroep Azure Resource Manager-Azure
+description: Het maken van een hostgroep in virtueel bureau blad van Windows (klassiek) met een Azure Resource Manager sjabloon.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204758"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270257"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Een hostpool maken met een Azure Resource Manager-sjabloon
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Een hostgroep maken in virtueel bureau blad van Windows (klassiek) met een Azure Resource Manager sjabloon
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
 
 Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-tenantomgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureaublad.
 
@@ -38,7 +38,7 @@ Wanneer u een Windows Virtual Desktop-hostgroep maakt met de Azure Resource Mana
 
 Ga naar [deze github-URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)om te starten.
 
-### <a name="deploy-the-template-to-azure"></a>De sjabloon implementeren in azure
+### <a name="deploy-the-template-to-azure"></a>De sjabloon implementeren in Azure
 
 Als u in een bedrijfs abonnement implementeert, schuift u naar beneden en selecteert u **implementeren naar Azure**. Ga vervolgens verder met het invullen van de para meters op basis van uw installatie kopie bron.
 

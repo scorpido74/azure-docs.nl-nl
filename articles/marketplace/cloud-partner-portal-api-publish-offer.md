@@ -4,15 +4,15 @@ description: API voor het publiceren van de opgegeven aanbieding.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272042"
 ---
 # <a name="publish-an-offer"></a>Een aanbieding publiceren
 
@@ -26,11 +26,11 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 ## <a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**      |    **Beschrijving**                               |  **Gegevens type** |
+|  **Naam**      |    **Beschrijving**                               |  **Gegevenstype** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | Uitgevers-id, bijvoorbeeld`contoso`      |   Tekenreeks       |
 |  offerId       | Aanbiedings-id                                 |   Tekenreeks       |
-|  api-versie   | Nieuwste versie van de API                        |   Datum         |
+|  api-versie   | Nieuwste versie van de API                        |   Date         |
 |  |  |
 
 ## <a name="header"></a>Header

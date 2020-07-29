@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 9a5c03664205676d53c083bddcfa6833ace641d2
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457147"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505819"
 ---
 # <a name="azure-monitor-overview"></a>Overzicht van Azure Monitor
 
@@ -44,7 +44,7 @@ Voor veel Azure-resources worden de gegevens die door Azure Monitor zijn verzame
 
 ![Metrische gegevens](media/overview/metrics.png)
 
-De logboekgegevens die door Azure Monitor zijn verzameld, kunnen worden geanalyseerd met [query's](log-query/log-query-overview.md) om snel verzamelde gegevens op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen door [Log Analytics](log-query/portals.md) in Azure Portal te gebruiken. Vervolgens kunt u de gegevens onmiddellijk analyseren met deze hulpprogramma's, maar u kunt de query's ook opslaan om deze te gebruiken met [visualisaties](visualizations.md) of [waarschuwingsregels](platform/alerts-overview.md).
+De logboekgegevens die door Azure Monitor zijn verzameld, kunnen worden geanalyseerd met [query's](log-query/log-query-overview.md) om snel verzamelde gegevens op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen door [Log Analytics](./log-query/log-query-overview.md) in Azure Portal te gebruiken. Vervolgens kunt u de gegevens onmiddellijk analyseren met verschillende hulpprogramma's, maar u kunt de query's ook opslaan om deze te gebruiken met [visualisaties](visualizations.md) of [waarschuwingsregels](platform/alerts-overview.md).
 
 Azure Monitor gebruikt een versie van de [Kusto-querytaal](/azure/kusto/query/) (KQL) die door Azure Data Explorer wordt gebruikt en die geschikt is voor eenvoudige logboekquery's maar die ook geavanceerde functies bevat, zoals aggregaties, joins en slimme analyse. Via [diverse lessen](log-query/get-started-queries.md) kunt u de querytaal snel leren.  Er worden specifieke richtlijnen gegeven voor gebruikers die al bekend zijn met [SQL](log-query/sql-cheatsheet.md) en [Splunk](log-query/splunk-cheatsheet.md).
 
@@ -90,7 +90,7 @@ Met [Application Insights](app/app-insights-overview.md) kunt u de beschikbaarhe
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Bewakingsoplossingen
-[Bewakingsoplossingen](insights/solutions.md) in Azure Monitor zijn verpakte logicasets die inzichten bieden voor een bepaalde toepassing of service. Ze bevatten logica voor het verzamelen van controlegegevens voor de toepassing of service, [query's](log-query/log-query-overview.md) om die gegevens te analyseren en [weergaven](../log-analytics/log-analytics-view-designer.md) om de uitkomsten te visualiseren. Er zijn bewakingsoplossingen [beschikbaar via Microsoft](insights/solutions-inventory.md) en zijn partners waarmee allerlei Azure-services en andere toepassingen kunnen worden gecontroleerd.
+[Bewakingsoplossingen](insights/solutions.md) in Azure Monitor zijn verpakte logicasets die inzichten bieden voor een bepaalde toepassing of service. Ze bevatten logica voor het verzamelen van controlegegevens voor de toepassing of service, [query's](log-query/log-query-overview.md) om die gegevens te analyseren en [weergaven](./platform/view-designer.md) om de uitkomsten te visualiseren. Er zijn bewakingsoplossingen [beschikbaar via Microsoft](./monitor-reference.md) en zijn partners waarmee allerlei Azure-services en andere toepassingen kunnen worden gecontroleerd.
 
 ![Bewakingsoplossingen](media/overview/solutions-overview.png)
 
@@ -119,12 +119,12 @@ Met [Azure-dashboards](../azure-portal/azure-portal-dashboards.md) kunt u versch
 ![Dashboard](media/overview/dashboard.png)
 
 ### <a name="views"></a>Weergaven
-[Weergaven](../log-analytics/log-analytics-view-designer.md) vormen een visuele presentatie van logboekgegevens in Azure Monitor.  Elke weergave bevat één tegel die inzoomt op een combinatie van visualisaties, zoals staaf- en lijndiagrammen, aangevuld met lijsten waarin kritieke gegevens worden samengevat.  Bewakingsoplossingen bevatten weergaven waarin gegevens voor een bepaalde toepassing worden samengevat. U kunt uw eigen weergaven maken om de resultaten van een logboekquery weer te geven. Net als andere elementen in Azure Monitor kunnen weergaven worden toegevoegd aan Azure-dashboards.
+[Weergaven](./platform/view-designer.md) vormen een visuele presentatie van logboekgegevens in Azure Monitor.  Elke weergave bevat één tegel die inzoomt op een combinatie van visualisaties, zoals staaf- en lijndiagrammen, aangevuld met lijsten waarin kritieke gegevens worden samengevat.  Bewakingsoplossingen bevatten weergaven waarin gegevens voor een bepaalde toepassing worden samengevat. U kunt uw eigen weergaven maken om de resultaten van een logboekquery weer te geven. Net als andere elementen in Azure Monitor kunnen weergaven worden toegevoegd aan Azure-dashboards.
 
 ![Weergave](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) is een Business Analytics-service die interactieve visualisaties voor verschillende gegevensbronnen levert en vormt een effectieve manier om gegevens beschikbaar te maken voor anderen binnen en buiten uw organisatie. U kunt Power BI zodanig configureren dat er [automatisch logboekgegevens vanuit Azure Monitor worden geïmporteerd](../log-analytics/log-analytics-powerbi.md) om te profiteren van deze extra visualisaties.
+[Power BI](https://powerbi.microsoft.com) is een Business Analytics-service die interactieve visualisaties voor verschillende gegevensbronnen levert en vormt een effectieve manier om gegevens beschikbaar te maken voor anderen binnen en buiten uw organisatie. U kunt Power BI zodanig configureren dat er [automatisch logboekgegevens vanuit Azure Monitor worden geïmporteerd](./platform/powerbi.md) om te profiteren van deze extra visualisaties.
 
 
 ![Power BI](media/overview/power-bi.png)
@@ -134,7 +134,7 @@ Met [Azure-dashboards](../azure-portal/azure-portal-dashboards.md) kunt u versch
 U moet Azure Monitor waarschijnlijk vaak integreren met andere systemen en aangepaste oplossingen bouwen die gebruikmaken van uw controlegegevens. Andere Azure-services werken met Azure Monitor om deze integratie te bieden.
 
 ### <a name="event-hub"></a>Event Hub
-[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) is een streamingplatform en een service voor gebeurtnisopname waarmee gegevens kunnen worden getransformeerd en opgeslagen via een realtime analyseprovider of batching-/opslagadapters. Gebruik Event Hubs voor het [streamen van Azure Monitor-gegevens](platform/stream-monitoring-data-event-hubs.md) naar de SIEM-voorziening van een partner en bewakingshulpprogramma's.
+[Azure Event Hubs](../event-hubs/index.yml) is een streamingplatform en een service voor gebeurtnisopname waarmee gegevens kunnen worden getransformeerd en opgeslagen via een realtime analyseprovider of batching-/opslagadapters. Gebruik Event Hubs voor het [streamen van Azure Monitor-gegevens](platform/stream-monitoring-data-event-hubs.md) naar de SIEM-voorziening van een partner en bewakingshulpprogramma's.
 
 
 ### <a name="logic-apps"></a>Logic Apps
@@ -150,4 +150,4 @@ Meer informatie over:
 * [Metrische gegevens en logboeken](platform/data-platform.md) voor de gegevens die worden verzameld door Azure Monitor.
 * [Gegevensbronnen](platform/data-sources.md) voor de manier waarop de verschillende onderdelen van uw toepassing telemetrie verzenden.
 * [Logboekquery's](log-query/log-query-overview.md) voor het analyseren van verzamelde gegevens.
-* [Aanbevolen procedures](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) voor het bewaken van cloudtoepassingen en -services.
+* [Aanbevolen procedures](/azure/architecture/best-practices/monitoring) voor het bewaken van cloudtoepassingen en -services.

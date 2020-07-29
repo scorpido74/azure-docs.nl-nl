@@ -10,12 +10,12 @@ ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d6fa4bbaf9b37c93ef4efbe405087c39395df63d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d54a8bf9fb5a1f31a29e41ecea545b43dbe58cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086010"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276683"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI
 
@@ -97,7 +97,7 @@ Wanneer u versleuteling met door de klant beheerde sleutels configureert, kunt u
 
 ### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Versleuteling configureren voor automatische rotatie van door de klant beheerde sleutels
 
-Als u versleuteling wilt configureren voor automatische rotatie van door de klant beheerde sleutels, installeert u [Azure CLI versie 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) of hoger. Zie [de Azure cli installeren](/azure/install-azure-cli)voor meer informatie.
+Als u versleuteling wilt configureren voor automatische rotatie van door de klant beheerde sleutels, installeert u [Azure CLI versie 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) of hoger. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie.
 
 Als u automatisch door de klant beheerde sleutels wilt draaien, laat u de sleutel versie weg wanneer u door de klant beheerde sleutels voor het opslag account configureert. Roep [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan om de versleutelings instellingen van het opslag account bij te werken, zoals wordt weer gegeven in het volgende voor beeld. Neem de `--encryption-key-source` para meter op en stel deze in om door `Microsoft.Keyvault` de klant beheerde sleutels voor het account in te scha kelen. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
 

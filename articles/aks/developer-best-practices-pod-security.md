@@ -2,16 +2,15 @@
 title: Best practices voor ontwikkel aars-pod Security in azure Kubernetes Services (AKS)
 description: Meer informatie over de aanbevolen procedures voor ontwikkel aars voor het beveiligen van Peul in azure Kubernetes service (AKS)
 services: container-service
-author: zr-msft
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 21ee65e6a4e51e91b23d9634917ec3f0267f1771
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115605"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320677"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
@@ -52,15 +51,16 @@ kind: Pod
 metadata:
   name: security-context-demo
 spec:
+  securityContext:
+    fsGroup: 2000
   containers:
     - name: security-context-demo
       image: nginx:1.15.5
-    securityContext:
-      runAsUser: 1000
-      fsGroup: 2000
-      allowPrivilegeEscalation: false
-      capabilities:
-        add: ["NET_ADMIN", "SYS_TIME"]
+      securityContext:
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
 Werk samen met uw cluster operator om te bepalen welke beveiligings context instellingen u nodig hebt. Probeer uw toepassingen te ontwerpen om extra machtigingen te minimaliseren en de toegang tot de Pod vereist. Er zijn aanvullende beveiligings functies om de toegang te beperken met behulp van AppArmor en seccomp (veilig Computing) die kunnen worden geïmplementeerd door cluster operators. Zie [Secure container Access to resources][apparmor-seccomp](Engelstalig) voor meer informatie.

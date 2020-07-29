@@ -3,12 +3,12 @@ title: Gebeurtenis tellers in Application Insights | Microsoft Docs
 description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324400"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
@@ -124,7 +124,7 @@ customMetrics
 Net als bij andere telemetrie heeft **customMetrics** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
 
 ## <a name="alerts"></a>Waarschuwingen
-Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/platform/alerts-log.md) om u te waarschuwen als een gebeurtenis teller buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
+Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../platform/alerts-log.md) om u te waarschuwen als een gebeurtenis teller buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -148,4 +148,5 @@ Event Counter vereist geen speciale machtigingen en wordt ondersteund in alle pl
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
-* [Afhankelijkheden bijhouden](../../azure-monitor/app/asp-net-dependencies.md)
+* [Afhankelijkheden bijhouden](./asp-net-dependencies.md)
+

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321272"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
@@ -28,7 +28,7 @@ Aangepaste metrische gegevens kunnen via verschillende methoden naar Azure Monit
 - Instrumenteer uw toepassing met behulp van de Azure-toepassing Insights-SDK en verzend aangepaste telemetrie naar Azure Monitor. 
 - Installeer de Windows Azure Diagnostics (WAD)-extensie op [uw Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassieke virtuele](collect-custom-metrics-guestos-vm-classic.md)machine of [klassieke Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) en verzend prestatie meter items naar Azure monitor. 
 - Installeer de [InfluxData-telegrafa-agent](collect-custom-metrics-linux-telegraf.md) op uw virtuele Azure Linux-machine en verzend metrische gegevens met behulp van de invoeg toepassing Azure monitor-uitvoer.
-- Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
+- Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](./metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
 ## <a name="pricing-model-and-retention"></a>Prijs model en retentie
 
@@ -192,14 +192,14 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 |VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com |
 |West US 2       | https: \/ /westus2.monitoring.Azure.com |
 |VS - noord-centraal | https: \/ /northcentralus.monitoring.Azure.com
-|South Central US| https: \/ /southcentralus.monitoring.Azure.com |
+|VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com |
 |Central US      | https: \/ /centralus.monitoring.Azure.com |
 |Canada - midden | https: \/ /canadacentral.monitoring.Azure.com |
 |VS - oost| https: \/ /eastus.monitoring.Azure.com |
 |US - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
 | **Europa** | |
 |Europa - noord    | https: \/ /northeurope.monitoring.Azure.com |
-|Europa - west     | https: \/ /westeurope.monitoring.Azure.com |
+|Europa -west     | https: \/ /westeurope.monitoring.Azure.com |
 |Verenigd Koninkrijk Zuid | https: \/ /uksouth.monitoring.Azure.com
 |Frankrijk - centraal | https: \/ /francecentral.monitoring.Azure.com |
 | **Afrika** | |
@@ -235,6 +235,7 @@ Aangepaste metrische gegevens van verschillende services gebruiken:
  - [Schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassiek)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuele Linux-machine met behulp van de Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](./metrics-store-custom-rest-api.md)
  - [Klassieke Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

@@ -1,17 +1,17 @@
 ---
 title: Rolmachtigingen en beveiliging in Azure Automation beheren
-description: In dit artikel leest u hoe u op rollen gebaseerd toegangs beheer (RBAC) kunt gebruiken om toegang te krijgen tot Azure-resources.
+description: In dit artikel wordt beschreven hoe u op rollen gebaseerd toegangs beheer (RBAC) kunt gebruiken om toegang te krijgen tot Azure-resources.
 keywords: automatisering rbac, rolgebaseerde toegangscontrole, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2018
+ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279879"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rolmachtigingen en beveiliging beheren
 
@@ -69,7 +69,12 @@ Een lezer kan alle resources in een Automation-account weer geven, maar kan geen
 
 ### <a name="automation-operator"></a>Automation-operator
 
-Een Automation-operator kan taken maken en beheren, en de namen en eigenschappen van runbook lezen voor alle runbooks in een Automation-account.  Opmerking: als u operator toegang tot afzonderlijke runbooks wilt beheren, stelt u deze rol niet in en gebruikt u in plaats daarvan de rollen ' Automation job operator ' en ' Automation Runbook Opera tors ' in combi natie. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
+Een Automation-operator kan taken maken en beheren, en de namen en eigenschappen van runbook lezen voor alle runbooks in een Automation-account.
+
+>[!NOTE]
+>Als u de toegang van Opera tors tot afzonderlijke runbooks wilt beheren, moet u deze rol niet instellen. Gebruik in plaats daarvan de rollen **Automation-taak operator** en **Automation Runbook-operator** in combi natie.
+
+In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
 
 |**Acties**  |**Beschrijving**  |
 |---------|---------|
@@ -96,7 +101,9 @@ Een Automation-operator kan taken maken en beheren, en de namen en eigenschappen
 
 ### <a name="automation-job-operator"></a>Automation-taak operator
 
-Er wordt een rol voor Automation-taak operator verleend voor het Automation-account bereik.Hierdoor kunnen de operator machtigingen voor het maken en beheren van taken voor alle runbooks in het account. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
+Er wordt een rol voor Automation-taak operator verleend voor het Automation-account bereik.Hierdoor kunnen de operator machtigingen voor het maken en beheren van taken voor alle runbooks in het account. Als de rol van de taak operator Lees machtigingen heeft voor de resource groep met het Automation-account, hebben leden van de rol de mogelijkheid om runbooks te starten. Ze kunnen ze echter niet maken, bewerken of verwijderen.
+
+In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
 
 |**Acties**  |**Beschrijving**  |
 |---------|---------|
@@ -114,7 +121,7 @@ Er wordt een rol voor Automation-taak operator verleend voor het Automation-acco
 
 ### <a name="automation-runbook-operator"></a>Automation-Runbook-operator
 
-Er wordt een Automation Runbook-operator functie verleend op het Runbook-bereik. Een Automation-Runbook-operator kan de naam en eigenschappen van het Runbook weer geven.Deze rol in combi natie met de rol ' Automation-taak operator ' stelt de operator in staat om ook taken voor het runbook te maken en te beheren. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
+Er wordt een Automation Runbook-operator functie verleend op het Runbook-bereik. Een Automation-Runbook-operator kan de naam en eigenschappen van het Runbook weer geven.Deze rol in combi natie met de rol **Automation-taak operator** stelt de operator in staat om ook taken voor het runbook te maken en te beheren. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
 
 |**Acties**  |**Beschrijving**  |
 |---------|---------|
@@ -254,7 +261,7 @@ In de volgende secties worden de minimale vereiste machtigingen beschreven die n
 
 Update beheer bereikt meerdere services voor het leveren van de service. De volgende tabel bevat de machtigingen die nodig zijn voor het beheren van implementaties van update beheer:
 
-|**Resource**  |**Role**  |**Scope**  |
+|**Resource**  |**Role**  |**Bereik**  |
 |---------|---------|---------|
 |Automation-account     | Inzender van Log Analytics       | Automation-account        |
 |Automation-account    | Inzender voor virtuele machines        | Resource groep voor het account        |
@@ -290,6 +297,7 @@ In de volgende sectie ziet u hoe u RBAC kunt configureren voor uw Automation-acc
    ![Gebruikers weergeven](media/automation-role-based-access-control/automation-05-list-users.png)
 
    U kunt ook een rol aan de gebruiker toewijzen via de pagina Rollen.
+
 4. Klik op **functies** op de pagina toegangs beheer (IAM) om de pagina rollen te openen. U kunt de naam van de rol en het aantal gebruikers en groepen weer geven die aan die rol zijn toegewezen.
 
     ![Rol toewijzen vanaf pagina Gebruikers](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
@@ -353,7 +361,7 @@ ObjectType         : User
 ```
 
 Gebruik [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) om toegang te verlenen aan gebruikers, groepen en toepassingen aan een bepaald bereik.
-    
+
 **Voor beeld:** Gebruik de volgende opdracht om de rol ' Automation-operator ' toe te wijzen voor een gebruiker in het Automation-account bereik.
 
 ```azurepowershell-interactive

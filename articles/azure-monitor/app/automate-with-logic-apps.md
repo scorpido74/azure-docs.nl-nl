@@ -3,12 +3,12 @@ title: Azure-toepassing Insights-processen automatiseren met behulp van Logic Ap
 description: Meer informatie over hoe u Herhaal bare processen snel kunt automatiseren door de Application Insights-connector toe te voegen aan uw logische app.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079618"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323193"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights processen automatiseren met behulp van Logic Apps
 
@@ -26,7 +26,7 @@ U kunt ook extra acties toevoegen. De functie Logic Apps van Azure App Service m
 In deze zelf studie leert u hoe u een logische app maakt die gebruikmaakt van het algoritme van de analyse van de analytische methode voor het groeperen van kenmerken in de gegevens voor een webtoepassing. De stroom verzendt de resultaten automatisch per e-mail, maar één voor beeld van hoe u Application Insights Analytics en Logic Apps samen kunt gebruiken. 
 
 ### <a name="step-1-create-a-logic-app"></a>Stap 1: een logische app maken
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik op **een resource maken**, selecteer **Web en mobiel**en selecteer vervolgens **logische app**.
 
     ![Venster nieuwe logische app](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -130,9 +130,10 @@ Wanneer de logische app wordt uitgevoerd, krijgen de ontvangers die u in de e-ma
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het maken van [Analytics-query's](../../azure-monitor/log-query/get-started-queries.md).
+- Meer informatie over het maken van [Analytics-query's](../log-query/get-started-queries.md).
 - Meer informatie over [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 
 
 <!--Link references-->
+

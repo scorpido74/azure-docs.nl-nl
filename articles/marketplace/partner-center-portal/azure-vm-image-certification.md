@@ -1,28 +1,57 @@
 ---
-title: Certificering van Azure virtual machine-Azure Marketplace
+title: Test virtuele machine (VM) die is geïmplementeerd vanaf VHD-Azure Marketplace
 description: Meer informatie over het testen en verzenden van een aanbieding voor de virtuele machine in de commerciële Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d3b89945c077b9c26bab1709bd6d1def20959e33
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3d4ec077ac0e92d26cf82ba96593a76a21ed885f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324672"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Certificering van installatie kopie van virtuele Azure-machine (VM)
+# <a name="test-virtual-machine-vm-deployed-from-vhd"></a>Test virtuele machine (VM) geïmplementeerd vanaf VHD
 
-In dit artikel wordt beschreven hoe u een installatie kopie van een virtuele machine (VM) in de commerciële Marketplace kunt testen en verzenden om te controleren of deze voldoet aan de meest recente publicatie vereisten voor Azure Marketplace.
+In dit artikel wordt beschreven hoe u een virtuele machine van Azure implementeert en test op basis van de gegeneraliseerde VHD-installatie kopie die in de vorige sectie is gemaakt ([Azure VM Technical Asset maken)](create-azure-vm-technical-asset.md) om ervoor te zorgen dat de VHD-installatie kopie voldoet aan de publicatie vereisten voor Azure Marketplace.
 
-Voer de volgende stappen uit voordat u uw VM-aanbieding verzendt:
+Voer deze stappen uit om een compatibiliteits rapport te genereren dat verklaart dat uw VHD-installatie kopie kan worden gebruikt op Azure Marketplace.
 
-1. Certificaten maken en implementeren.
-2. Implementeer een Azure VM met behulp van uw gegeneraliseerde installatie kopie.
-3. Voer validaties uit.
+1. Maak en implementeer een certificaat dat vereist is voor extern VM-beheer om te Azure Key Vault.
+2. Implementeer een Azure-VM op basis van uw gegeneraliseerde VHD-installatie kopie die is gemaakt in een [technische Asset voor Azure VM maken](create-azure-vm-technical-asset.md).
+3. Voer tests op de geïmplementeerde VM uit om ervoor te zorgen dat de VHD-installatie kopie gereed is om te worden gepubliceerd en wordt gebruikt voor het implementeren van Vm's.
+
+## <a name="running-scripts"></a>Scripts uitvoeren
+
+Dit artikel bevat drie scripts die moeten worden uitgevoerd in Power shell. De bureau blad-Power shell werkt het beste, maar de Azure Cloud Shell kan ook worden gebruikt met de geselecteerde Power shell-optie (linksboven in het venster).
+
+1. Zorg ervoor dat Power shell is geconfigureerd voor het uitvoeren van scripts.
+
+    - Open Power shell altijd met de optie **als administrator uitvoeren** .
+    - Zorg ervoor dat u deze scripts kunt uitvoeren: `Set-ExecutionPolicy` en `RemoteSigned` .
+
+2. [Installeer Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+3. Installeer Azure PowerShell AZ-module.
+    1. **Optie A**: er zijn nog geen modules geïnstalleerd.
+        - `Install-Module -Name Az -AllowClobber -Scope AllUsers`
+
+        Zie [Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.2.0)voor meer informatie.
+
+    2. **Optie B**: momenteel de AzureRM-module gebruiken.
+
+        - Uninstall-AzureRM
+        - Install-module-name AZ-AllowClobber-Scope AllUsers
+        - Enable-AzureRmAlias-Scope CurrentUser
+
+        Zie [Azure PowerShell migreren van AzureRM naar AZ](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-4.2.0)voor meer informatie.
+
+4. Sla de sessie parameters op.
+
+De scripts in deze sectie gebruiken sessie variabelen/para meters. Als u de sessie sluit, worden de para meters gewist. U kunt het beste één sessie gebruiken om alle scripts uit te voeren om parameter fouten te voor komen. Als dit niet mogelijk is, moet u de para meters opnieuw initialiseren bij het openen van een nieuwe sessie, met name voor de volgende scripts.
 
 ## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Certificaten voor Azure Key Vault maken en implementeren
 
@@ -40,7 +69,7 @@ U kunt een nieuwe of een bestaande Azure-resource groep gebruiken voor dit werk.
 
 #### <a name="create-the-security-certificate"></a>Het beveiligings certificaat maken
 
-Bewerk en voer het volgende Azure PowerShell script uit om het certificaat bestand (. pfx) in een lokale map te maken. Vervang de waarden voor de para meters die in de volgende tabel worden weer gegeven.
+Voer dit script uit om het certificaat bestand (. pfx) in een lokale map te maken. Het certificaat hoort bij de geplande Azure-VM die wordt geïmplementeerd vanuit uw VHD-installatie kopie. De virtuele machine heeft een naam, locatie en wacht woord nodig, zoals opgegeven door de script parameters. Bewerk het volgende Azure PowerShell **script** voor het maken van certificering om de juiste waarden op te geven voor de script parameters die in de tabel worden weer gegeven.
 
 | **Parameter** | **Beschrijving** |
 | --- | --- |
@@ -88,7 +117,7 @@ Bewerk en voer het volgende Azure PowerShell script uit om het certificaat besta
 
 Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale computer. In het onderstaande voorbeeld script is deze bron `C:\certLocation\keyvault.json` .
 
-```json
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -278,13 +307,13 @@ Bewerk en voer het volgende Azure PowerShell script uit om een Azure Key Vault e
 
     # Create a resource group
      Write-Host "Creating Resource Group $rgName"
-     Create-ResourceGroup -rgName $rgName -location $location
+     az group create --name $rgName --location $location
      Write-Host "-----------------------------------"
 
     # Create key vault and configure access
     New-AzResourceGroupDeployment -Name "kvdeploy$postfix" -ResourceGroupName $rgName -TemplateFile $kvTemplateJson -keyVaultName $kvname -tenantId $mytenantId -objectId $myobjectId
 
-    Set-AzKeyVaultAccessPolicy -VaultName $kvname -ObjectId $myobjectId -PermissionsToKeys all -PermissionsToSecrets all
+    Set-AzKeyVaultAccessPolicy -VaultName $kvname -ObjectId $myobjectId -PermissionsToKeys Decrypt,Encrypt,UnwrapKey,WrapKey,Verify,Sign,Get,List,Update,Create,Import,Delete,Backup,Restore,Recover,Purge -PermissionsToSecrets Get,List,Set,Delete,Backup,Restore,Recover,Purge
 
 ```
 
@@ -314,13 +343,15 @@ Sla de certificaten in het pfx-bestand op in de nieuwe sleutel kluis met behulp 
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Een Azure-VM implementeren met behulp van uw gegeneraliseerde installatie kopie
+## <a name="deploy-an-azure-vm-from-your-generalized-vhd-image"></a>Een Azure-VM implementeren vanuit uw gegeneraliseerde VHD-installatie kopie
 
 In deze sectie wordt beschreven hoe u een gegeneraliseerde VHD-installatie kopie implementeert voor het maken van een nieuwe Azure VM-resource. Voor dit proces gebruiken we de meegeleverde Azure Resource Manager sjabloon en Azure PowerShell script.
 
 ### <a name="prepare-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon voorbereiden
 
-Kopieer de volgende Azure Resource Manager sjabloon voor VHD-implementatie naar een lokaal bestand met de naam VHDtoImage.jsop. Het volgende script vraagt de locatie op de lokale computer aan om deze JSON te gebruiken.
+Kopieer een van de volgende Azure Resource Manager sjablonen voor de implementatie van de virtuele harde schijf (voor Windows of Linux) naar een lokaal bestand met de naam VHDtoImage.jsop. Het volgende script vraagt de locatie op de lokale computer aan om deze JSON te gebruiken.
+
+#### <a name="for-windows-based-vms"></a>Voor Vm's op basis van Windows
 
 ```JSON
 {
@@ -555,7 +586,242 @@ Kopieer de volgende Azure Resource Manager sjabloon voor VHD-implementatie naar 
 
 ```
 
-Bewerk dit bestand om waarden op te geven voor deze para meters:
+#### <a name="for-linux-based-vms"></a>Voor Vm's op basis van Linux
+
+```JSON
+{
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "userStorageAccountName": {
+            "type": "string"
+        },
+        "userStorageContainerName": {
+            "type": "string",
+            "defaultValue": "vhds"
+        },
+        "dnsNameForPublicIP": {
+            "type": "string"
+        },
+        "adminUserName": {
+            "defaultValue": "isv",
+            "type": "string"
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "defaultValue": "Password@123"
+        },
+        "osType": {
+            "type": "string",
+            "defaultValue": "linux",
+            "allowedValues": [
+                "windows",
+                "linux"
+            ]
+        },
+        "subscriptionId": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "vmSize": {
+            "type": "string"
+        },
+        "publicIPAddressName": {
+            "type": "string"
+        },
+        "vmName": {
+            "type": "string"
+        },
+        "virtualNetworkName": {
+            "type": "string"
+        },
+        "nicName": {
+            "type": "string"
+        },
+        "vaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the KeyVault"
+            }
+        },
+        "vaultResourceGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource Group of the KeyVault"
+            }
+        },
+        "certificateUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "Url of the certificate with version in KeyVault e.g. https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7"
+            }
+        },
+        "vhdUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "VHD Url..."
+            }
+        }
+    },
+        "variables": {
+            "addressPrefix": "10.0.0.0/16",
+            "subnet1Name": "Subnet-1",
+            "subnet2Name": "Subnet-2",
+            "subnet1Prefix": "10.0.0.0/24",
+            "subnet2Prefix": "10.0.1.0/24",
+            "publicIPAddressType": "Dynamic",
+            "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+            "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
+            "osDiskVhdName": "[concat('http://',parameters('userStorageAccountName'),'.blob.core.windows.net/',parameters('userStorageContainerName'),'/',parameters('vmName'),'osDisk.vhd')]"
+        },
+        "resources": [
+            {
+                "apiVersion": "2015-05-01-preview",
+                "type": "Microsoft.Network/publicIPAddresses",
+                "name": "[parameters('publicIPAddressName')]",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                    "dnsSettings": {
+                        "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                    }
+                }
+            },
+            {
+                "apiVersion": "2015-05-01-preview",
+                "type": "Microsoft.Network/virtualNetworks",
+                "name": "[parameters('virtualNetworkName')]",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "addressSpace": {
+                        "addressPrefixes": [
+                            "[variables('addressPrefix')]"
+                        ]
+                    },
+                    "subnets": [
+                        {
+                            "name": "[variables('subnet1Name')]",
+                            "properties": {
+                                "addressPrefix": "[variables('subnet1Prefix')]"
+                            }
+                        },
+                        {
+                            "name": "[variables('subnet2Name')]",
+                            "properties": {
+                                "addressPrefix": "[variables('subnet2Prefix')]"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "apiVersion": "2015-05-01-preview",
+                "type": "Microsoft.Network/networkInterfaces",
+                "name": "[parameters('nicName')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
+                    "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+                ],
+                "properties": {
+                    "ipConfigurations": [
+                        {
+                            "name": "ipconfig1",
+                            "properties": {
+                                "privateIPAllocationMethod": "Dynamic",
+                                "publicIPAddress": {
+                                    "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
+                                },
+                                "subnet": {
+                                    "id": "[variables('subnet1Ref')]"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "apiVersion": "2015-06-15",
+                "type": "Microsoft.Compute/virtualMachines",
+                "name": "[parameters('vmName')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
+                ],
+                "properties": {
+                    "hardwareProfile": {
+                        "vmSize": "[parameters('vmSize')]"
+                    },
+                    "osProfile": {
+                        "computername": "[parameters('vmName')]",
+                        "adminUsername": "[parameters('adminUsername')]",
+                        "adminPassword": "[parameters('adminPassword')]",
+                        "secrets": [
+                            {
+                                "sourceVault": {
+                                    "id": "[resourceId(parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+                                },
+                                "vaultCertificates": [
+                                    {
+                                        "certificateUrl": "[parameters('certificateUrl')]",
+                                        "certificateStore": "My"
+                                    }
+                                ]
+                            }
+                        ],
+                        "windowsConfiguration": {
+                            "provisionVMAgent": "true",
+                            "winRM": {
+                                "listeners": [
+                                    {
+                                        "protocol": "http"
+                                    },
+                                    {
+                                        "protocol": "https",
+                                        "certificateUrl": "[parameters('certificateUrl')]"
+                                    }
+                                ]
+                            },
+                            "enableAutomaticUpdates": "true"
+                        }
+                    },
+                    "storageProfile": {
+                        "osDisk": {
+                            "name": "[concat(parameters('vmName'),'-osDisk')]",
+                            "osType": "[parameters('osType')]",
+                            "caching": "ReadWrite",
+                            "image": {
+                                "uri": "[parameters('vhdUrl')]"
+                            },
+                            "vhd": {
+                                "uri": "[variables('osDiskVhdName')]"
+                            },
+                            "createOption": "FromImage"
+                        }
+                    },
+                    "networkProfile": {
+                        "networkInterfaces": [
+                            {
+                                "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
+                            }
+                        ]
+                    },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": false,
+                        "storageUri": "[concat('http://', parameters('userStorageAccountName'), '.blob.core.windows.net')]"
+                    }
+                }
+                }
+            }
+        ]
+    }
+
+```
+
+Kopieer en bewerk het volgende script om waarden voor deze para meters op te geven:
 
 | **Parameter** | **Beschrijving** |
 | --- | --- |
@@ -592,24 +858,40 @@ $storageaccount = "testwinrm11815"
 
 $vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
 
-echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id  -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
+# Full pathname to the file VHDtoImage.json. inserted these highlighted lines
+$templateFile = "$certroopath\VHDtoImage.json"
+
+# Size of the virtual machine instance.
+$vmSize = "Standard_D2s_v3"
+
+# Name of the public IP address.
+$publicIPAddressName = "myPublicIP1"
+
+# Name of the virtual network
+$virtualNetworkName = "myVNET1"
+
+# Name of the network interface card for the virtual network
+$nicName = "myNIC1"
+
+# Username of the administrator account
+$adminUserName = "isv"
+
+# The OS of the virtual machine
+$osType = "windows"
+
+echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
 
 # deploying VM with existing VHD
 
-New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName" -TemplateFile"C:\certLocation\VHDtoImage.json" -userStorageAccountName"$storageaccount" -dnsNameForPublicIP"$vmName" -subscriptionId"$mysubid" -location"$location" -vmName"$vmName" -vaultName"$kvname" -vaultResourceGroup"$rgName" -certificateUrl$objAzureKeyVaultSecret.Id  -vhdUrl"$vhdUrl" -vmSize"Standard\_A2" -publicIPAddressName"myPublicIP1" -virtualNetworkName"myVNET1" -nicName"myNIC1" -adminUserName"isv" -adminPassword$pwd
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl “$objAzureKeyVaultSecret.Id” -vhdUrl "$vhdUrl" -vmSize "Standard_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName"myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword “$pwd"
 
 ```
 
-## <a name="run-validations"></a>Validaties uitvoeren
-
-Er zijn twee manieren om validaties uit te voeren op de geïmplementeerde installatie kopie:
-
-- Certificerings test hulpprogramma gebruiken voor Azure Certified
-- De zelf test-API gebruiken
+## <a name="run-tests-on-the-deployed-vm"></a>Tests uitvoeren op de geïmplementeerde VM
 
 ### <a name="download-and-run-the-certification-test-tool"></a>Het hulp programma voor certificerings test downloaden en uitvoeren
 
-Het certificerings test hulpprogramma voor Azure Certified wordt uitgevoerd op een lokale Windows-computer, maar test een op Azure gebaseerde Windows-of Linux-VM. Het verklaart dat uw VM-installatie kopie van uw gebruiker kan worden gebruikt met Microsoft Azure en dat aan de richt lijnen en vereisten rond het voorbereiden van uw VHD is voldaan. De uitvoer van het hulp programma is een compatibiliteits rapport dat u uploadt naar de partner centrum-Portal om een VM-certificering aan te vragen.
+Het certificerings test hulpprogramma voor Azure Certified is een zelf test programma dat wordt uitgevoerd op een lokale Windows-computer, maar test een op Azure gebaseerde Windows-of Linux-VM. Het verklaart dat uw VM-installatie kopie van uw gebruiker kan worden gebruikt met Microsoft Azure en dat aan de richt lijnen en vereisten rond het voorbereiden van uw VHD is voldaan. Met dit hulp programma kunt u ervoor zorgen dat uw virtuele machine gereed is voor publicatie per Azure Marketplace-vereisten. "
 
 1. Down load en installeer het meest recente [certificerings test programma voor Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299).
 2. Open het certificerings programma en selecteer vervolgens **nieuwe test starten**.
@@ -619,9 +901,9 @@ Het certificerings test hulpprogramma voor Azure Certified wordt uitgevoerd op e
 
 ### <a name="connect-the-certification-tool-to-a-vm-image"></a>Het certificerings hulpprogramma verbinden met een VM-installatie kopie
 
-Het hulp programma maakt verbinding met Vm's op basis van Windows met [Azure PowerShell](https://docs.microsoft.com/powershell/) en maakt verbinding met virtuele Linux-machines via [SSH.net](https://www.ssh.com/ssh/protocol/).
+Het hulp programma maakt verbinding met Vm's op basis van Windows met [Azure PowerShell](https://docs.microsoft.com/powershell/) en maakt verbinding met virtuele Linux-machines via [SSH.net](https://www.ssh.com/ssh/protocol/). Kies een van de volgende twee opties: Linux of Windows.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Verbind het certificerings programma met een Linux VM-installatie kopie
+#### <a name="option-1-connect-the-certification-tool-to-a-linux-vm-image"></a>Optie 1: Verbind het certificerings programma met een Linux VM-installatie kopie
 
 1. Selecteer de **SSH-verificatie** modus: wachtwoord verificatie of sleutel bestands verificatie.
 2. Als u verificatie op basis van wacht woorden gebruikt, voert u waarden in voor de **DNS-naam van de virtuele machine**, de **gebruikers naam**en het **wacht woord**. U kunt ook het standaard **SSH-poort** nummer wijzigen.
@@ -630,7 +912,7 @@ Het hulp programma maakt verbinding met Vm's op basis van Windows met [Azure Pow
 
 3. Als u gebruikmaakt van verificatie op basis van een sleutel bestand, voert u waarden in voor de **DNS-naam van de virtuele machine**, de **gebruikers naam**en de locatie van de **persoonlijke sleutel** . U kunt ook een **wachtwoordzin** toevoegen of het standaard- **SSH-poort** nummer wijzigen.
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Het certificerings hulpprogramma verbinden met een VM-installatie kopie op basis van Windows**
+#### <a name="option-2-connect-the-certification-tool-to-a-windows-based-vm-image"></a>Optie 2: het certificerings hulpprogramma verbinden met een VM-installatie kopie op basis van Windows
 
 1. Voer de volledig gekwalificeerde **VM-DNS-naam** in (bijvoorbeeld MyVMName.Cloudapp.net).
 2. Voer waarden in voor de **gebruikers naam** en het **wacht woord**.

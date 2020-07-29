@@ -3,12 +3,12 @@ title: Prestatie meter items in Application Insights | Microsoft Docs
 description: Systeem-en aangepaste .NET-prestatie meter items bewaken in Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024415"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322513"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systeem prestatie meter items in Application Insights
 
@@ -131,7 +131,7 @@ Net als bij andere telemetrie heeft **Performance Counters** ook een kolom `clou
 
 * *Uitzonderings snelheid* is een systeem prestatie meter item. De CLR telt alle verwerkte en onverwerkte uitzonde ringen die worden gegenereerd en deelt het totaal in een steekproef interval met de lengte van het interval. De Application Insights SDK verzamelt dit resultaat en verzendt het naar de portal.
 
-* *Uitzonde ringen* is een telling van de TrackException-rapporten die worden ontvangen door de portal in het steekproef interval van de grafiek. Het bevat alleen de verwerkte uitzonde ringen waarin u TrackException-aanroepen hebt geschreven in uw code en bevat geen niet-verwerkte [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md). 
+* *Uitzonde ringen* is een telling van de TrackException-rapporten die worden ontvangen door de portal in het steekproef interval van de grafiek. Het bevat alleen de verwerkte uitzonde ringen waarin u TrackException-aanroepen hebt geschreven in uw code en bevat geen niet-verwerkte [uitzonde ringen](./asp-net-exceptions.md). 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Prestatie meter items voor toepassingen die worden uitgevoerd in azure Web Apps
 
@@ -147,9 +147,10 @@ De ondersteuning voor prestatie meter items in ASP.NET Core is beperkt:
 * SDK-versies 2.8.0 en hoger ondersteunen CPU/geheugen teller in Linux. Er wordt geen ander item ondersteund in Linux. De aanbevolen manier om systeem tellers op te halen in Linux (en andere niet-Windows-omgevingen) is met behulp van [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Waarschuwingen
-Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/platform/alerts-log.md) om u te waarschuwen als een prestatie meter item buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
+Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../platform/alerts-log.md) om u te waarschuwen als een prestatie meter item buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
-* [Afhankelijkheden bijhouden](../../azure-monitor/app/asp-net-dependencies.md)
-* [Uitzonde ringen bijhouden](../../azure-monitor/app/asp-net-exceptions.md)
+* [Afhankelijkheden bijhouden](./asp-net-dependencies.md)
+* [Uitzonde ringen bijhouden](./asp-net-exceptions.md)
+

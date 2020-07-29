@@ -3,11 +3,12 @@ title: Prestatie bewaking Java Web apps-Azure-toepassing Insights
 description: Uitgebreide prestaties en gebruiks bewaking van uw Java-website met Application Insights.
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2ce02c3ec9fbbc762b7919ee31d9b69306a008a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322615"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Afhankelijkheden, onderschepte uitzonde ringen en methode-uitvoerings tijden in Java-Web-apps bewaken
 
@@ -119,19 +120,20 @@ In de Application Insights resource worden de geaggregeerde externe afhankelijkh
 
 Als u wilt zoeken naar afzonderlijke exemplaren van de rapporten afhankelijkheid, uitzonde ring en methode, opent u [zoeken][diagnostic].
 
-[Afhankelijkheids problemen vaststellen-meer informatie](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
+[Afhankelijkheids problemen vaststellen-meer informatie](./asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Vragen? Problemen?
-* Zijn er geen gegevens? [Firewall-uitzonde ringen instellen](../../azure-monitor/app/ip-addresses.md)
+* Zijn er geen gegevens? [Firewall-uitzonde ringen instellen](./ip-addresses.md)
 * [Problemen met Java oplossen](java-troubleshoot.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
+

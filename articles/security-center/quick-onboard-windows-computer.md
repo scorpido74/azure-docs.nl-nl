@@ -1,6 +1,6 @@
 ---
 title: Windows-computers onboarden naar Azure Security Center
-description: In deze Quick start ziet u hoe u de Log Analytics-agent op een Windows-computer inricht.
+description: In deze quickstart leert u hoe u de Log Analytics-agent op een Windows-computer inricht.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435929"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519759"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Snelstart: Windows-computers onboarden naar Azure Security Center
-Nadat u uw Azure-abonnementen hebt voor bereid, kunt u Security Center inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere Clouds, door de Log Analytics-agent in te richten.
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Quickstart: Windows-computers onboarden naar Azure Security Center
+Nadat u de onboarding van uw Azure-abonnementen hebt uitgevoerd, kunt u Security Center inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere clouds, door de Log Analytics-agent in te richten.
 
-In deze Quick start ziet u hoe u de Log Analytics-Agent installeert op een Windows-computer.
+In deze quickstart ziet u hoe u de Log Analytics-agent op een Windows-computer installeert.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet over een abonnement op Microsoft Azure beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
 
-U moet u zich in de Standard-prijscategorie van Security Center bevinden voordat u aan deze snelstart kunt beginnen. Zie [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) voor upgrade-instructies. U kunt Security Center Standard kosteloos uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+U moet u zich in de Standard-prijscategorie van Security Center bevinden voordat u aan deze quickstart kunt beginnen. Zie [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) voor upgrade-instructies. U kunt Security Center Standard kosteloos uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
 ## <a name="add-new-windows-computer"></a>Nieuwe Windows-computer toevoegen
 
 1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. Selecteer **Security Center**in het menu **Microsoft Azure** . **Security Center - Overzicht** wordt geopend.
+2. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
 
    ![Overzicht van Security Center][2]
 
@@ -72,7 +72,7 @@ U dient nu het gedownloade bestand op de doelcomputer te installeren.
 9. Controleer op de pagina **Gereed om te installeren** uw keuzes en selecteer **Installeren**.
 10. Selecteer op de pagina **Configuratie voltooid** de optie **Voltooien**
 
-Als u klaar bent, wordt de **log Analytics-agent** weer gegeven in het **configuratie scherm**. U kunt hier de configuratie controleren en verifiëren of de agent is verbonden.
+Als u klaar bent wordt de **Log Analytics-agent** in het **Configuratiescherm** weergegeven. U kunt hier de configuratie controleren en verifiëren of de agent is verbonden.
 
 Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent.
 
@@ -91,15 +91,15 @@ Wanneer de agent niet langer nodig is, kunt u deze verwijderen van de Windows-co
 
 De agent verwijderen:
 
-1. Open **het configuratie scherm**.
+1. Open het **Configuratiescherm**.
 2. Open **Programma's en onderdelen**.
-3. In **Program ma's en onderdelen**selecteert u **log Analytics agent** en klikt u op **verwijderen**.
+3. Selecteer in **Programma's en onderdelen** de optie **Log Analytics-agent** en klik op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u de Log Analytics-agent op een Windows-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
+In deze quickstart richt u de Log Analytics-agent in op een Windows-computer. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Beveiligingsbeleidsregels opstellen en beoordelen](tutorial-security-policy.md)
+> [Zelfstudie: Beveiligingsbeleid opstellen en beoordelen](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png

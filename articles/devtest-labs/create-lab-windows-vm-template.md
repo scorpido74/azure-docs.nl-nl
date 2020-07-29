@@ -1,21 +1,22 @@
 ---
-title: Een lab maken met Azure DevTest Labs en een Resource Manager-sjabloon
-description: In deze zelfstudie maakt u een lab in Azure DevTest Labs met behulp van een Azure Resource Manager-sjabloon. Een labbeheerder stelt een lab in, maakt virtuele machines in het lab en configureert beleidsregels.
-ms.topic: tutorial
+title: Een lab maken met Azure DevTest Labs en een Azure Resource Manager-sjabloon
+description: In deze quickstart maakt u een lab in Azure DevTest Labs met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon). Een labbeheerder stelt een lab in, maakt virtuele machines in het lab en configureert beleidsregels.
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ba4ffeec22a45c07b096b0a754d08c8230dd8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537544"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs-resource-manager-template"></a>Zelfstudie: Een lab instellen met Azure DevTest Labs (Resource Manager-sjabloon)
-In deze zelfstudie maakt u een lab met een VM met Windows Server 2019 Datacenter met behulp van een Azure Resource Manager-sjabloon. 
+# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Quickstart: Een lab instellen met een ARM-sjabloon van Azure DevTest Labs
+In deze quickstart maakt u een lab met een VM met Windows Server 2019 Datacenter met behulp van een ARM-sjabloon (Azure Resource Manager). 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-In deze zelfstudie voert u de volgende acties uit:
+In deze quickstart voert u de volgende acties uit:
 
 > [!div class="checklist"]
 > * De sjabloon controleren 
@@ -23,15 +24,17 @@ In deze zelfstudie voert u de volgende acties uit:
 > * De sjabloon controleren
 > * Resources opruimen
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/).
 
 :::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json" range="1-97" highlight="51-85":::
 
@@ -46,7 +49,7 @@ Zie [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/?
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 Klik op de volgende knop om de implementatie automatisch uit te voeren. 
 
-[![Implementeren in Azure](./media/create-lab-windows-vm-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 1. Maak een **nieuwe resourcegroep** zodat het later gemakkelijk op te schonen is.
 1. Selecteer een **locatie** voor de resourcegroep. 
@@ -59,7 +62,7 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren.
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="Pagina Sjabloon implementeren":::
 
-## <a name="verify-the-deployment"></a>De implementatie controleren
+## <a name="validate-the-deployment"></a>De implementatie valideren
 1. Selecteer **Meldingen** boven aan de pagina om de implementatiestatus en klik op de koppeling **De implementatie wordt uitgevoerd**.
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Implementatiemelding":::
@@ -76,7 +79,7 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren.
     > [!IMPORTANT] 
     > Houd deze pagina open en volg de instructies in het volgende onderdeel om resources op te schonen en zo kostenvoor de uitvoering van het lab en de VM in Azure te vermijden. Als u verder wilt gaan naar de volgende zelfstudie om de toegang tot n de VM in het lab te testen, schoon dan resources op na afloop van die zelfstudie. 
 
-## <a name="cleanup-resources"></a>Resources opruimen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 1. Verwijder eerst het lab zodat u de resourcegroep kunt verwijderen. U kunt de resourcegroep niet verwijderen als deze een lab bevat. Selecteer **Verwijderen** in de taakbalk om het lab te verwijderen. 
 
@@ -90,8 +93,7 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren.
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Knop Resourcegroep verwijderen":::
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u een lab gemaakt met een VM. Voor meer informatie over toegang tot het lab gaat u door naar de volgende zelfstudie:
+In deze quickstart hebt u een lab gemaakt met een VM. Voor meer informatie over toegang tot het lab gaat u door naar de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Toegang tot het lab](tutorial-use-custom-lab.md)
-

@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop-hostgroep voor service-updates - Azure
-description: Een validatiehostgroep maken om service-updates te bewaken voordat updates worden geïmplementeerd voor productie.
+title: Service-updates hostgroep Windows Virtual Desktop (najaar 2019) - Azure
+description: Lees hoe u een validatiehostgroep maakt om service-updates te controleren voordat updates worden uitgerold naar productie.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe6b047d10b8aef8faf81365cae940b05b3d798c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 806c3396d9188ea6abc5f779a26d99247d802ebe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117746"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527578"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelfstudie: Een hostpool voor het valideren van service-updates maken
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates-fall-2019-release"></a>Zelfstudie: Een hostgroep maken voor het valideren van service-updates (release van najaar 2019)
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../create-validation-host-pool.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren die zijn geïntroduceerd tijdens de update uit het voorjaar van 2020.

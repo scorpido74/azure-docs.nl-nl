@@ -3,20 +3,20 @@ title: Power shell gebruiken om waarschuwingen in te stellen in Application Insi
 description: De configuratie van Application Insights automatiseren om e-mails over metrische wijzigingen te ontvangen.
 ms.topic: conceptual
 ms.date: 07/23/2016
-ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322462"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-U kunt de configuratie van [waarschuwingen](../../azure-monitor/platform/alerts-log.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md)automatiseren.
+U kunt de configuratie van [waarschuwingen](../platform/alerts-log.md) in [Application Insights](./app-insights-overview.md)automatiseren.
 
-Daarnaast kunt u [webhooks instellen om uw reactie op een waarschuwing te automatiseren](../../azure-monitor/platform/alerts-webhooks.md).
+Daarnaast kunt u [webhooks instellen om uw reactie op een waarschuwing te automatiseren](../platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Als u op hetzelfde moment resources en waarschuwingen wilt maken, kunt u overwegen [een Azure Resource Manager sjabloon te gebruiken](powershell.md).
@@ -82,7 +82,7 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>Voorbeeld 2
-Ik heb een toepassing waarin ik [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) gebruik om een metrische waarde met de naam ' salesPerHour ' te rapporteren. Een e-mail verzenden naar mijn collega's als "salesPerHour" onder 100 daalt, gemiddeld meer dan 24 uur.
+Ik heb een toepassing waarin ik [TrackMetric ()](./api-custom-events-metrics.md#trackmetric) gebruik om een metrische waarde met de naam ' salesPerHour ' te rapporteren. Een e-mail verzenden naar mijn collega's als "salesPerHour" onder 100 daalt, gemiddeld meer dan 24 uur.
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
@@ -98,7 +98,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerapporteerd met behulp van de [para meter meet](../../azure-monitor/app/api-custom-events-metrics.md#properties) van een andere tracerings aanroep, zoals track event of trackPageView.
+Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerapporteerd met behulp van de [para meter meet](./api-custom-events-metrics.md#properties) van een andere tracerings aanroep, zoals track event of trackPageView.
 
 ## <a name="metric-names"></a>Metrische namen
 | Naam van meetwaarde | Scherm naam | Beschrijving |
@@ -124,22 +124,23 @@ Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerappo
 | `request.rate` |Aanvraag frequentie |Het aantal aanvragen per seconde voor de toepassing. |
 | `requestFailed.count` |Mislukte aanvragen |Aantal HTTP-aanvragen dat heeft geresulteerd in een reactie code >= 400 |
 | `view.count` |Pagina weergaven |Aantal client gebruikers aanvragen voor een webpagina. Synthetisch verkeer wordt gefilterd. |
-| {uw aangepaste metrische naam} |{Uw metrische naam} |Uw metrische waarde die wordt gerapporteerd door [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) of in de [meet parameter van een tracerings aanroep](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
+| {uw aangepaste metrische naam} |{Uw metrische naam} |Uw metrische waarde die wordt gerapporteerd door [TrackMetric](./api-custom-events-metrics.md#trackmetric) of in de [meet parameter van een tracerings aanroep](./api-custom-events-metrics.md#properties). |
 
 De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 
 | Metrische groep | Verzamel module |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>weergave |[Browser-Java script](../../azure-monitor/app/javascript.md) |
-| Performance Counter |[Prestaties](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Afhankelijkheid](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| schot<br/>requestFailed |[Server aanvraag](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>weergave |[Browser-Java script](./javascript.md) |
+| Performance Counter |[Prestaties](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Afhankelijkheid](./configuration-with-applicationinsights-config.md) |
+| schot<br/>requestFailed |[Server aanvraag](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooks
-U kunt [uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
+U kunt [uw reactie op een waarschuwing automatiseren](../platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
 ## <a name="see-also"></a>Zie tevens
 * [Script voor het configureren van Application Insights](./create-new-resource.md#creating-a-resource-automatically)
 * [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
 * [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)
-* [Uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md)
+* [uw reactie op een waarschuwing automatiseren](../platform/alerts-webhooks.md)
+

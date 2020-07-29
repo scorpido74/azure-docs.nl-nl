@@ -4,16 +4,16 @@ description: Bewaak uw web-app in realtime met aangepaste metrische gegevens en 
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166481"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321935"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
-Bewaak uw Live, in-productie webtoepassing met behulp van Live Metrics Stream van [Application Insights](../../azure-monitor/app/app-insights-overview.md). Selecteer en filter metrische gegevens en prestatie meter items die u in realtime wilt bekijken, zonder dat u uw service hoeft te verstoren. Inspecteer stack traceringen van voor beelden van mislukte aanvragen en uitzonde ringen. In combi natie met [Profiler](../../azure-monitor/app/profiler.md) -en [momentopname debugger](../../azure-monitor/app/snapshot-debugger.md)biedt live Metrics Stream een krachtig en niet-invasief diagnostisch hulp programma voor uw Live website.
+Bewaak uw Live, in-productie webtoepassing met behulp van Live Metrics Stream van [Application Insights](./app-insights-overview.md). Selecteer en filter metrische gegevens en prestatie meter items die u in realtime wilt bekijken, zonder dat u uw service hoeft te verstoren. Inspecteer stack traceringen van voor beelden van mislukte aanvragen en uitzonde ringen. In combi natie met [Profiler](./profiler.md) -en [momentopname debugger](./snapshot-debugger.md)biedt live Metrics Stream een krachtig en niet-invasief diagnostisch hulp programma voor uw Live website.
 
 Met Live Metrics Stream kunt u het volgende doen:
 
@@ -31,7 +31,7 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 ## <a name="get-started"></a>Aan de slag
 
-1. [Installeer Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) in uw toepassing.
+1. [Installeer Application Insights](../azure-monitor-app-hub.yml) in uw toepassing.
 2. Naast de Standard Application Insights-pakketten [micro soft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) is vereist voor het inschakelen van Live Metrics stream.
 3. **Update naar de nieuwste versie** van het Application Insights-pakket. Klik in Visual Studio met de rechter muisknop op het project en kies **NuGet-pakketten beheren**. Open het tabblad **updates** en selecteer alle micro soft. ApplicationInsights. *-pakketten.
 
@@ -43,17 +43,17 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 ### <a name="no-data-check-your-server-firewall"></a>Zijn er geen gegevens? Controleer de firewall van uw server
 
-Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers.
+Controleer of de [uitgaande poorten voor Live Metrics stream](./ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Hoe verschilt Live Metrics Stream van Metrics Explorer en Analytics?
 
 | |Live Stream | Metrics Explorer en analyse |
 |---|---|---|
 |**Latentie**|Gegevens die binnen één seconde worden weer gegeven|Geaggregeerd over minuten|
-|**Geen Bewaar periode**|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**Geen Bewaar periode**|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**Op aanvraag**|Gegevens worden alleen gestreamd wanneer het deel venster Live Metrics is geopend. |Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
-|**Gratis**|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
-|**Steekproeven**|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
+|**Gratis**|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](./pricing.md)
+|**Steekproeven**|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](./api-filtering-sampling.md)|
 |**Besturings kanaal**|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie is een manier, naar de portal|
 
 ## <a name="select-and-filter-your-metrics"></a>Uw metrische gegevens selecteren en filteren
@@ -64,7 +64,7 @@ U kunt een aangepaste KPI Live bewaken door wille keurige filters toe te passen 
 
 ![Frequentie van filter aanvragen](./media/live-stream/filter-request.png)
 
-U kunt een andere waarde dan aantal bewaken. De opties zijn afhankelijk van het type stream. Dit kan elke Application Insights telemetrie zijn: aanvragen, afhankelijkheden, uitzonde ringen, traceringen, gebeurtenissen of metrische gegevens. Dit kan uw eigen [aangepaste meting](../../azure-monitor/app/api-custom-events-metrics.md#properties)zijn:
+U kunt een andere waarde dan aantal bewaken. De opties zijn afhankelijk van het type stream. Dit kan elke Application Insights telemetrie zijn: aanvragen, afhankelijkheden, uitzonde ringen, traceringen, gebeurtenissen of metrische gegevens. Dit kan uw eigen [aangepaste meting](./api-custom-events-metrics.md#properties)zijn:
 
 ![Opbouw functie voor query's op aanvraag frequentie met aangepaste metrische gegevens](./media/live-stream/query-builder-request.png)
 
@@ -206,10 +206,11 @@ Dynamische metrische gegevens worden standaard uitgeschakeld in de Node.js SDK. 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Zijn er geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
+Zijn er geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](./ip-addresses.md) zijn geopend in uw firewall.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Gebruik controleren met Application Insights](../../azure-monitor/app/usage-overview.md)
-* [Diagnostische Zoek opdrachten gebruiken](../../azure-monitor/app/diagnostic-search.md)
-* [Profiler](../../azure-monitor/app/profiler.md)
-* [Fout opsporing voor moment opnamen](../../azure-monitor/app/snapshot-debugger.md)
+* [Gebruik controleren met Application Insights](./usage-overview.md)
+* [Diagnostische Zoek opdrachten gebruiken](./diagnostic-search.md)
+* [Profiler](./profiler.md)
+* [Fout opsporing voor moment opnamen](./snapshot-debugger.md)
+

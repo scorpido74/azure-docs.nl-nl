@@ -3,14 +3,15 @@ title: Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 description: Een stapsgewijze hand leiding voor het gebruik van micrometer met uw Application Insights Spring-en non-veer boot-toepassingen.
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322564"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op JVM gebaseerde toepassings code en kunt u deze exporteren naar uw favoriete bewakings systemen. In dit artikel leert u hoe u micrometer kunt gebruiken met Application Insights voor zowel veer boot-als niet-veer boot-toepassingen.
@@ -20,7 +21,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand:
 * [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
 * [Micrometer lente verouderde](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 of hoger (dit backports de AutoConfig-code in het lente-Framework).
-* [ApplicationInsights-resource](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights-resource](./create-new-resource.md)
 
 Stappen
 
@@ -58,7 +59,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand:
 
 * Application Insights veer boot-starter 2.1.2 of hoger
 * Azure-veer-boot-metrische gegevens-starters 2.0.7 of hoger
-* [Application Insights resource](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights resource](./create-new-resource.md)
 
 Stappen:
 
@@ -117,7 +118,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand:
 
 * Application Insights Web auto 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
-* [Application Insights resource](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights resource](./create-new-resource.md)
 
 Stappen:
 
@@ -272,3 +273,4 @@ Voeg de volgende bindings code toe aan het configuratie bestand:
 
 * Zie de officiële [micrometer-documentatie](https://micrometer.io/docs)voor meer informatie over micrometer.
 * Zie de [documentatie van de officiële lente op Azure](/java/azure/spring-framework/?view=azure-java-stable)voor meer informatie over de lente op Azure.
+

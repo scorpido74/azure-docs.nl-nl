@@ -3,11 +3,12 @@ title: Problemen met Application Insights in een Java-webproject oplossen
 description: 'Probleemoplossings handleiding: Live java-apps bewaken met Application Insights.'
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324145"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.
@@ -23,7 +24,7 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 * Wacht een minuut en klik op vernieuwen. De grafieken worden regel matig vernieuwd, maar u kunt ook hand matig vernieuwen. Het Vernieuwings interval is afhankelijk van het tijds bereik van de grafiek.
 * Controleer of er een instrumentatie sleutel is gedefinieerd in het ApplicationInsights.xml bestand (in de map resources in uw project) of is geconfigureerd als omgevings variabele.
 * Controleer of er zich geen `<DisableTelemetry>true</DisableTelemetry>` knoop punt in het XML-bestand bevindt.
-* In uw firewall moet u mogelijk TCP-poorten 80 en 443 voor uitgaand verkeer naar dc.services.visualstudio.com openen. Bekijk de [volledige lijst met Firewall uitzonderingen](../../azure-monitor/app/ip-addresses.md)
+* In uw firewall moet u mogelijk TCP-poorten 80 en 443 voor uitgaand verkeer naar dc.services.visualstudio.com openen. Bekijk de [volledige lijst met Firewall uitzonderingen](./ip-addresses.md)
 * Ga in het Microsoft Azure start bord naar de kaart status van de service. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
 * [Schakel logboek registratie](#debug-data-from-the-sdk) in door een element toe te voegen `<SDKLogger />` onder het hoofd knooppunt in het ApplicationInsights.xml-bestand (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: info/waarschuwing/fout voor verdachte Logboeken. 
 * Controleer of het juiste ApplicationInsights.xml bestand door de Java-SDK is geladen door te kijken naar de uitvoer berichten van de console voor een configuratie bestand is gevonden.
@@ -37,7 +38,7 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 * Gaat u naar de juiste AI-resource? Zorg dat de iKey van uw toepassing overeenkomt met de resource waar u telemetrie verwacht. Ze moeten hetzelfde zijn.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Ik zie niet alle gegevens die ik verwacht
-* Open de pagina gebruik en geschatte kosten en controleer of er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd. (100% verzen ding houdt in dat steek proeven niet worden uitgevoerd.) De Application Insights-service kan zo worden ingesteld dat er slechts een fractie van de telemetrie van uw app wordt ontvangen. Dit helpt u binnen uw maandelijkse quota van telemetrie te blijven.
+* Open de pagina gebruik en geschatte kosten en controleer of er [steek proeven](./sampling.md) worden uitgevoerd. (100% verzen ding houdt in dat steek proeven niet worden uitgevoerd.) De Application Insights-service kan zo worden ingesteld dat er slechts een fractie van de telemetrie van uw app wordt ontvangen. Dit helpt u binnen uw maandelijkse quota van telemetrie te blijven.
 * Hebt u SDK-steek proeven ingeschakeld? Als dat het geval is, worden de gegevens als steek proef bemonsterd op basis van de snelheid die voor alle toepasselijke typen is opgegeven.
 * Voert u een oudere versie van Java SDK uit? Vanaf versie 2.0.1 hebben we fout tolerantie mechanisme geïntroduceerd voor het afhandelen van terugkerende netwerk-en back-endservers en gegevens persistentie op lokale schijven.
 * Krijgt u een beperking door buitensporige telemetrie? Als u INFO logboek registratie inschakelt, wordt er een logboek bericht weer gegeven dat de app wordt beperkt. Onze huidige limiet is 32-telemetrieprocessor-items per seconde.
@@ -165,7 +166,7 @@ Ja, de server kan via het open bare internet telemetrie verzenden naar de Applic
 
 In uw firewall moet u mogelijk TCP-poorten 80 en 443 openen voor uitgaand verkeer naar dc.services.visualstudio.com en f5.services.visualstudio.com.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 **Hoe lang worden gegevens in de portal bewaard? Is het veilig?**
 
 Zie [gegevens retentie en privacy][data].
@@ -186,17 +187,17 @@ Application Insights gebruikt `org.apache.http` . Dit wordt verplaatst binnen Ap
 * [Code schrijven om het gebruik van uw app bij te houden][track]
 * [Diagnostische logboeken vastleggen][javalogs]
 
-## <a name="get-help"></a>Hulp vragen
+## <a name="get-help"></a>Help opvragen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Een probleem in GitHub bestand oplossen](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

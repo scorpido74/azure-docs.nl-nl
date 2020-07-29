@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753215"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324587"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Inkomende aanvragen bijhouden met opentellingen python
 
 Gegevens van binnenkomende aanvragen worden verzameld met opentellingen python en de verschillende integraties. Spoor gegevens op die worden verzonden naar uw webtoepassingen die zijn gemaakt boven op de populaire web Frameworks `django` `flask` en `pyramid` . De gegevens worden vervolgens naar Application Insights onder Azure Monitor als `requests` telemetrie verzonden.
 
-Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](../../azure-monitor/app/opencensus-python.md).
+Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](./opencensus-python.md).
 
 ## <a name="tracking-django-applications"></a>Django-toepassingen bijhouden
 
@@ -119,8 +119,9 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Toepassingskaart](../../azure-monitor/app/app-map.md)
-* [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Zoeken](../../azure-monitor/app/diagnostic-search.md)
-* [Logboek query (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
-* [Diagnostische gegevens voor transacties](../../azure-monitor/app/transaction-diagnostics.md)
+* [Toepassingskaart](./app-map.md)
+* [Beschikbaarheid](./monitor-web-app-availability.md)
+* [Zoeken](./diagnostic-search.md)
+* [Logboek query (Analytics)](../log-query/log-query-overview.md)
+* [Diagnostische gegevens voor transacties](./transaction-diagnostics.md)
+

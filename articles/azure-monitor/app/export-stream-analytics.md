@@ -3,12 +3,12 @@ title: Exporteren met behulp van Stream Analytics vanuit Azure-toepassing inzich
 description: Stream Analytics kunt de gegevens die u exporteert, continu transformeren, filteren en routeren vanuit Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539955"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324349"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
 [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is het ideale hulp programma voor het verwerken van gegevens die zijn [geëxporteerd vanuit Application Insights](export-telemetry.md). Stream Analytics kunnen gegevens uit verschillende bronnen ophalen. De gegevens kunnen worden getransformeerd en gefilterd en vervolgens worden doorgestuurd naar verschillende Sinks.
@@ -16,7 +16,7 @@ ms.locfileid: "86539955"
 In dit voor beeld maken we een adapter die gegevens van Application Insights neemt, de naam van een deel van de velden bijwerkt en verwerkt, en deze in Power BI.
 
 > [!WARNING]
-> Er zijn veel betere en eenvoudiger [aanbevolen manieren om Application Insights gegevens in Power bi weer te geven](../../azure-monitor/app/export-power-bi.md ). Het pad dat hier wordt beschreven, is slechts een voor beeld van het verwerken van geëxporteerde gegevens.
+> Er zijn veel betere en eenvoudiger [aanbevolen manieren om Application Insights gegevens in Power bi weer te geven](./export-power-bi.md). Het pad dat hier wordt beschreven, is slechts een voor beeld van het verwerken van geëxporteerde gegevens.
 > 
 > 
 
@@ -55,7 +55,7 @@ Met [doorlopend exporteren](export-telemetry.md) worden gegevens verplaatst van 
 
     ![Gebeurtenis typen kiezen](./media/export-stream-analytics/080.png)
 
-1. Laat sommige gegevens samen voegen. U kunt de toepassing een tijdje gebruiken. Telemetrie is beschikbaar in en u ziet statistische grafieken in [metrische Explorer](../../azure-monitor/platform/metrics-charts.md) en afzonderlijke gebeurtenissen in [Diagnostische Zoek opdrachten](../../azure-monitor/app/diagnostic-search.md). 
+1. Laat sommige gegevens samen voegen. U kunt de toepassing een tijdje gebruiken. Telemetrie is beschikbaar in en u ziet statistische grafieken in [metrische Explorer](../platform/metrics-charts.md) en afzonderlijke gebeurtenissen in [Diagnostische Zoek opdrachten](./diagnostic-search.md). 
    
     Daarnaast worden de gegevens naar uw opslag geëxporteerd. 
 2. Inspecteer de geëxporteerde gegevens. In Visual Studio kiest u **weer gave/Cloud Verkenner**en opent u Azure/Storage. (Als u deze menu optie niet hebt, moet u de Azure SDK installeren: Open het dialoog venster New project en open Visual C#/Cloud/Get Microsoft Azure SDK voor .NET.)
@@ -95,7 +95,7 @@ Het voorvoegsel patroon van het pad geeft aan waar Stream Analytics de invoer be
 
 `webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
-In dit voorbeeld geldt het volgende:
+In dit voorbeeld:
 
 * `webapplication27`is de naam van de Application Insights resource **alle kleine letters**.
 * `1234...`is de instrumentatie sleutel van de Application Insights resource, waarbij **streepjes worden wegge laten**. 
@@ -186,7 +186,7 @@ Wacht totdat de taak wordt uitgevoerd.
 
 ## <a name="see-results-in-power-bi"></a>Resultaten weer geven in Power BI
 > [!WARNING]
-> Er zijn veel betere en eenvoudiger [aanbevolen manieren om Application Insights gegevens in Power bi weer te geven](../../azure-monitor/app/export-power-bi.md ). Het pad dat hier wordt beschreven, is slechts een voor beeld van het verwerken van geëxporteerde gegevens.
+> Er zijn veel betere en eenvoudiger [aanbevolen manieren om Application Insights gegevens in Power bi weer te geven](./export-power-bi.md). Het pad dat hier wordt beschreven, is slechts een voor beeld van het verwerken van geëxporteerde gegevens.
 > 
 > 
 
@@ -211,4 +211,5 @@ Noam ben Zeev laat zien hoe u geëxporteerde gegevens kunt verwerken met Stream 
 ## <a name="next-steps"></a>Volgende stappen
 * [Continue export](export-telemetry.md)
 * [Gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
+

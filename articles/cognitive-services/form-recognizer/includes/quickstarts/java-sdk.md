@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor Java'
-description: In deze Snelstartgids gaat u aan de slag met de formulier Recognizer-client bibliotheek voor Java.
+title: 'Quickstart: Clientbibliotheek van Form Recognizer voor Java'
+description: In deze quickstart gaat u aan de slag met de clientbibliotheek van Form Recognizer voor Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,25 +9,25 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 6ff56ca61304bdacb3512156babd637afd337c7e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: 479891513eb48e4ced4c1dff2feb3215b3c8ea57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242188"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544045"
 ---
-[Referentie documentatie](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)  |  [Bron code](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  van bibliotheek [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensverzameling bouwen voor een aangepast model](../../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevensverzameling. Voor deze Quick Start kunt u de bestanden in de map **Train** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
 * De huidige versie van de [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Het [hulp programma Gradle build](https://gradle.org/install/)of een andere afhankelijkheids Manager.
+* Het [hulpprogramma Gradle](https://gradle.org/install/) of een andere afhankelijkheidsbeheerder.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor een formulier herkenning maken
+### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor Form Recognizer maken
 
 [!INCLUDE [create resource](../create-resource.md)]
 
@@ -38,13 +38,13 @@ ms.locfileid: "85242188"
 ### <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
 
 
-Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
+Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor de app, en navigeer naar deze map. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voer de `gradle init` opdracht uit vanuit de werkmap. Met deze opdracht worden essentiële build-bestanden gemaakt voor Gradle, waaronder *Build. Gradle. KTS* , dat tijdens runtime wordt gebruikt om uw toepassing te maken en te configureren.
+Voer de opdracht `gradle init` uit vanuit uw werkmap. Met deze opdracht maakt u essentiële buildbestanden voor Gradle, inclusief *build.gradle.kts*, dat tijdens runtime wordt gebruikt om de toepassing te maken en te configureren.
 
 ```console
 gradle init --type basic
@@ -52,13 +52,13 @@ gradle init --type basic
 
 Wanneer u wordt gevraagd om een **DSL** te kiezen, selecteert u **Kotlin**.
 
-Maak een map voor uw voor beeld-app. Voer de volgende opdracht uit in de werkmap:
+Maak een map voor de voorbeeld-app. Voer de volgende opdracht uit vanuit uw werkmap:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Ga naar de nieuwe map en maak een bestand met de naam *formrecognizer-QuickStart. java*. Open het bestand in uw voorkeurs editor of IDE en voeg de volgende- `import` instructies toe:
+Ga naar de nieuwe map en maak een bestand met de naam *formrecognizer-quickstart.java*. Open het bestand in uw voorkeurseditor of IDE en voeg de volgende `import`-instructies toe:
 
 ```java
 import Azure.AI.FormRecognizer;
@@ -69,7 +69,7 @@ import com.azure.core.http.rest.PagedIterable;
 import com.azure.core.util.Context;
 ```
 
-Maak in de methode van de toepassing `main` variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele. U definieert de methoden later.
+Maak in de methode `main` van de toepassing variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele. U definieert later de methoden.
 
 
 ```java
@@ -80,11 +80,11 @@ public static void Main(string[] args)
 }
 ```
 
-### <a name="install-the-client-library"></a>De client bibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Deze Snelstartgids maakt gebruik van de Gradle dependency Manager. U vindt de client bibliotheek en informatie voor andere afhankelijkheids managers in de [centrale maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer).
+Deze quickstart maakt gebruik van de Gradle-afhankelijkheidsmanager. U vindt de clientbibliotheek en informatie voor andere afhankelijkheidsbeheerders in de [Maven Central Repository](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer).
 
-Zorg er in het bestand *Build. gradle. KTS* van het project voor dat u de client bibliotheek als een instructie opneemt `implementation` . 
+Zorg ervoor dat u in het bestand *build.gradle.kts* de clientbibliotheek opneemt als een `implementation`-instructie. 
 
 ```kotlin
 dependencies {
@@ -98,18 +98,18 @@ dependencies {
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de formulier Recognizer-client bibliotheek voor Java:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de clientbibliotheek van Form Recognizer voor Java:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Formulier inhoud herkennen](#recognize-form-content)
-* [Bevestigingen herkennen](#recognize-receipts)
+* [Formulierinhoud herkennen](#recognize-form-content)
+* [Ontvangstbewijzen herkennen](#recognize-receipts)
 * [Aangepast model trainen](#train-a-custom-model)
 * [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
 * [Uw aangepaste modellen beheren](#manage-your-custom-models)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-`Main`Voeg de volgende code toe in de-methode. Hier verifieert u twee client objecten met de abonnements variabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential** -object, zodat u, indien nodig, de API-sleutel kunt bijwerken zonder nieuwe client objecten te maken.
+Voeg de volgende code toe binnen de `Main`-methode. Hier gaat u twee clientobjecten verifiëren met behulp van de abonnementsvariabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential**-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
 
 ```java
 FormRecognizerClient recognizerClient = new FormRecognizerClientBuilder()
@@ -120,17 +120,17 @@ FormRecognizerClient recognizerClient = new FormRecognizerClientBuilder()
 FormTrainingClient trainingClient = recognizerClient.getFormTrainingClient();
 ```
 
-### <a name="call-client-specific-methods"></a>Client-specifieke methoden aanroepen
+### <a name="call-client-specific-methods"></a>Clientspecifieke methodes aanroepen
 
-In het volgende code blok wordt gebruikgemaakt van de client-objecten voor het aanroepen van methoden voor elk van de belangrijkste taken in de formulier Recognizer SDK. U definieert deze methoden later op.
+In het volgende codeblok worden de clientobjecten gebruikt voor het aanroepen van methodes voor elk van de hoofdtaken in de Form Recognizer-SDK. U gaat deze methodes later definiëren.
 
-U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens testen. 
-* Als u de SAS-URL voor uw aangepaste model trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
-* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL van een document naar een andere locatie halen.
-* Gebruik de bovenstaande methode om ook de URL van een kwitantie-installatie kopie op te halen.
+U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens. 
+* Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL gebruiken van een document dat zich elders bevindt.
+* Gebruik de bovenstaande methode ook om de URL te verkrijgen van een kopie van een ontvangstbewijs.
 
 > [!NOTE]
-> De code fragmenten in deze hand leiding gebruiken externe formulieren die worden gebruikt voor Url's. Als u in plaats daarvan lokale formulier documenten wilt verwerken, raadpleegt u de bijbehorende methoden in de [referentie documentatie](https://docs.microsoft.com/java/api/overview/azure/formrecognizer).
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview).
 
 ```java
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -156,11 +156,11 @@ U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens test
 ```
 
 
-## <a name="recognize-form-content"></a>Formulier inhoud herkennen
+## <a name="recognize-form-content"></a>Formulierinhoud herkennen
 
-U kunt de formulier Recognizer gebruiken om tabellen, lijnen en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
+U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
 
-Gebruik de methode **beginRecognizeContentFromUrl** om de inhoud van een bestand op een bepaalde URI te herkennen.
+Als u de inhoud van een bestand op een bepaalde URI wilt herkennen, gebruikt u de methode **beginRecognizeContentFromUrl**.
 
 ```java
 private static void GetContent(
@@ -173,7 +173,7 @@ private static void GetContent(
     List<FormPage> contentResult = recognizeContentPoller.getFinalResult();
 ```
 
-De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor elke pagina in het verzonden document. Met de volgende code worden deze objecten door lopen en worden de geëxtraheerde sleutel-waardeparen en tabel gegevens afgedrukt.
+De geretourneerde waarde is een verzameling **FormPage**-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-/waardeparen en tabelgegevens afgedrukt.
 
 ```java
     contentResult.forEach(formPage -> {
@@ -194,11 +194,11 @@ De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor e
 }
 ```
 
-## <a name="recognize-receipts"></a>Bevestigingen herkennen
+## <a name="recognize-receipts"></a>Ontvangstbewijzen herkennen
 
-In deze sectie wordt beschreven hoe u algemene velden van Amerikaanse ontvangsten kunt herkennen en extra heren met behulp van een vooraf getraind ontvangst model.
+In deze sectie wordt beschreven hoe u algemene velden in Amerikaanse ontvangstbewijzen kunt herkennen en uitpakken met behulp van een vooraf getraind ontvangstmodel.
 
-Als u ontvangst bewijzen wilt herkennen vanuit een URI, gebruikt u de methode **beginRecognizeReceiptsFromUrl** . De geretourneerde waarde is een verzameling **RecognizedReceipt** -objecten: één voor elke pagina in het verzonden document.
+Om ontvangstbewijzen te herkennen vanuit een URI, gebruikt u de methode **beginRecognizeReceiptsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedReceipt**-objecten: één voor elke pagina in het ingediende document.
 
 ```java
 private static void AnalyzeReceipt(
@@ -209,7 +209,7 @@ private static void AnalyzeReceipt(
     List<RecognizedReceipt> receiptPageResults = syncPoller.getFinalResult();
 ```
 
-In het volgende code blok wordt door de bevestigingen herhaald en worden de details ervan naar de console afgedrukt.
+In het volgende codeblok worden de ontvangstbewijzen doorlopen en worden de details ervan naar de console afgedrukt.
 
 ```java
     for (int i = 0; i < receiptPageResults.size(); i++) {
@@ -241,7 +241,7 @@ In het volgende code blok wordt door de bevestigingen herhaald en worden de deta
             }
         }
 ```
-In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvangst zijn gedetecteerd en worden de details ervan naar de console afgedrukt.
+In het volgende codeblok worden de afzonderlijke items die op het ontvangstbewijs zijn gedetecteerd doorlopen en worden de details ervan naar de console afgedrukt.
 
 ```java
         FormField receiptItemsField = recognizedFields.get("Items");
@@ -290,16 +290,16 @@ In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvan
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
-In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd die de sleutel/waarde-relaties in het oorspronkelijke formulier document bevatten. Nadat u het model hebt getraind, kunt u het testen en opnieuw trainen en uiteindelijk gebruiken om gegevens te extra heren uit meer formulieren, afhankelijk van uw behoeften.
+In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de sleutel-waarderelaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk gegevens naar behoefte extraheren uit meer formulieren.
 
 > [!NOTE]
-> U kunt ook modellen trainen met een Graphical User Interface zoals het [hulp programma voor het labelen](../../quickstarts/label-tool.md)van het voor beeld van de formulier herkenning.
+> U kunt ook modellen trainen met een grafische gebruikersinterface, zoals het [voorbeeldhulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Een model trainen zonder labels
 
-Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder hand matig labels te krijgen voor de trainings documenten.
+Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder de trainingsdocumenten handmatig te labelen.
 
-Met de volgende methode wordt een model voor een gegeven reeks documenten treinen en wordt de status van het model in de-console afgedrukt. 
+Met de volgende methode wordt een model voor een bepaalde set documenten getraind en wordt de status van het model in de console weergegeven. 
 
 ```java
 private static String TrainModel(
@@ -317,7 +317,7 @@ private static String TrainModel(
     System.out.printf("Model created on: %s%n", customFormModel.getCreatedOn());
     System.out.printf("Model last updated: %s%n%n", customFormModel.getCompletedOn());
 ```
-Het geretourneerde **CustomFormModel** -object bevat informatie over de typen die het model kan herkennen en de velden die het kan ophalen van elk formulier type. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormModel**-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```java 
     System.out.println("Recognized Fields:");
@@ -331,7 +331,7 @@ Het geretourneerde **CustomFormModel** -object bevat informatie over de typen di
     });
 ```
 
-Ten slotte retourneert deze methode de unieke ID van het model.
+Ten slotte retourneert deze methode de unieke id van het model.
 
 ```java
     return customFormModel.getModelId();
@@ -340,7 +340,7 @@ Ten slotte retourneert deze methode de unieke ID van het model.
 
 ### <a name="train-a-model-with-labels"></a>Een model trainen met labels
 
-U kunt ook aangepaste modellen trainen door de trainings documenten hand matig te labelen. Training met labels leidt tot betere prestaties in sommige scenario's. Als u met labels wilt trainen, moet u in uw Blob Storage-container, naast de trainings documenten, speciale label-informatie bestanden (* \<filename\>.pdf.labels.jsaan*) hebben. Het [hulp programma voor het labelen](../../quickstarts/label-tool.md) van het voor beeld van een formulier herkenning biedt een gebruikers interface die u kan helpen bij het maken van deze label bestanden. Zodra u deze hebt, kunt u de **beginTraining** -methode aanroepen met de para meter *useTrainingLabels* ingesteld op `true` .
+U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale bestanden met labelinformatie ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de methode **beginTraining** aanroepen met de parameter *useTrainingLabels* ingesteld op `true`.
 
 ```java
 private static String TrainModelWithLabels(
@@ -359,7 +359,7 @@ private static String TrainModelWithLabels(
     System.out.printf("Model last updated: %s%n%n", customFormModel.getCompletedOn());
 ```
 
-De geretourneerde **CustomFormModel** geeft aan welke velden het model kan ophalen, samen met de geschatte nauw keurigheid van elk veld. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormModel** geeft aan welke velden het model kan extraheren, samen met de geschatte nauwkeurigheid van elk veld. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```java
     // looping through the sub-models, which contains the fields they were trained on
@@ -378,12 +378,12 @@ De geretourneerde **CustomFormModel** geeft aan welke velden het model kan ophal
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
-In deze sectie wordt gedemonstreerd hoe u sleutel/waarde-informatie en andere inhoud uit uw aangepaste formulier typen kunt extra heren met behulp van modellen die u hebt getraind met uw eigen formulieren.
+In deze sectie ziet u hoe u belangrijke/waardevolle informatie en andere inhoud uit uw aangepaste formuliertypen kunt ophalen met behulp van modellen die u hebt getraind met uw eigen formulieren.
 
 > [!IMPORTANT]
-> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de ID ervan kunt door geven naar de onderstaande methode. Zie de sectie [een model trainen](#train-a-model-without-labels) .
+> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode. Zie de sectie [Een model trainen](#train-a-model-without-labels).
 
-U gebruikt de methode **beginRecognizeCustomFormsFromUrl** . De geretourneerde waarde is een verzameling **RecognizedForm** -objecten: één voor elke pagina in het verzonden document.
+U gebruikt de methode **beginRecognizeCustomFormsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedForm**-objecten: één voor elke pagina in het ingediende document.
 
 ```java
 // Analyze PDF form data
@@ -397,7 +397,7 @@ private static void AnalyzePdfForm(
     List<RecognizedForm> recognizedForms = recognizeFormPoller.getFinalResult();
 ```
 
-Met de volgende code worden de resultaten van de analyse naar de console afgedrukt. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheids Score.
+Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
 ```java
     recognizedForms.forEach(form -> {
@@ -415,7 +415,7 @@ Met de volgende code worden de resultaten van de analyse naar de console afgedru
 
 ## <a name="manage-your-custom-models"></a>Uw aangepaste modellen beheren
 
-In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Met de volgende code worden alle model beheer taken in één methode als voor beeld gebruikt. Kopieer eerst de volgende methode hand tekening:
+In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Als voorbeeld worden met de volgende code alle modelbeheertaken in één methode uitgevoerd. Begin met het kopiëren van de onderstaande methodehandtekening:
 
 ```java
 private static void ManageModels(
@@ -423,9 +423,9 @@ private static void ManageModels(
 {
 ```
 
-### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resource account controleren
+### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resourceaccount controleren
 
-In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opgeslagen in uw formulier Recognizer-account en vergelijkt deze met de limiet voor het account.
+In het volgende codeblok wordt het aantal modellen gecontroleerd dat u in uw Form Recognizer-account hebt opgeslagen en wordt dit aantal vergeleken met de limiet voor het account.
 
 ```java
     AtomicReference<String> modelId = new AtomicReference<>();
@@ -436,9 +436,9 @@ In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opg
         accountProperties.getCustomModelCount(), accountProperties.getCustomModelLimit());
 ```
 
-### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weer geven die momenteel zijn opgeslagen in het resource-account
+### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weergeven die momenteel zijn opgeslagen in het resource-account
 
-In het volgende code blok worden de huidige modellen in uw account vermeld en worden de details ervan in de-console weer gegeven.
+In het volgende codeblok worden de huidige modellen in uw account vermeld en worden de details ervan in de console weergegeven.
 
 ```java    
     // Next, we get a paged list of all of our custom models
@@ -467,9 +467,9 @@ In het volgende code blok worden de huidige modellen in uw account vermeld en wo
     });
 ```
 
-### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resource-account verwijderen
+### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resourceaccount verwijderen
 
-U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID.
+U kunt een model ook uit uw account verwijderen door naar de id te verwijzen.
 
 ```java
     // Delete Custom Model
@@ -481,13 +481,13 @@ U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-U kunt de app bouwen met:
+U kunt de app maken met:
 
 ```console
 gradle build
 ```
 
-Voer de toepassing uit met het `run` doel:
+De toepassing uitvoeren met het doel `run`:
 
 ```console
 gradle run
@@ -495,14 +495,14 @@ gradle run
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Van Recognizer-clients veroorzaken `ErrorResponseException` uitzonde ringen. Als u bijvoorbeeld probeert een ongeldige bestands bron-URL op te geven, `ErrorResponseException` treedt er een fout op die aangeeft dat de oorzaak van de fout is mislukt. In het volgende code fragment wordt de fout op de juiste wijze verwerkt door de uitzonde ring op te vangen en de aanvullende informatie over de fout weer te geven.
+Clients van Form Recognizer veroorzaken `ErrorResponseException`-uitzonderingen. Als u bijvoorbeeld een ongeldige URL voor een bestandsbron opgeeft, wordt er een `ErrorResponseException` gegenereerd met een melding die de oorzaak van de fout aangeeft. In het volgende codefragment wordt de fout mooi verwerkt door de uitzondering vast te leggen en aanvullende informatie over de fout weer te geven.
 
 ```java Snippet:FormRecognizerBadRequest
 try {
@@ -512,15 +512,15 @@ try {
 }
 ```
 
-### <a name="enable-client-logging"></a>Client logboek registratie inschakelen
-Azure Sdk's voor java bieden een consistent verhaal van de logboek registratie om hulp te helpen bij het oplossen van toepassings fouten en het versnellen van de oplossing. Met de logboeken die zijn geproduceerd, wordt de stroom van een toepassing vastgelegd voordat de Terminal status wordt bereikt om het basis probleem te vinden. Raadpleeg de [wiki logboek registratie](https://github.com/Azure/azure-sdk-for-java/wiki/Logging-with-Azure-SDK) voor meer informatie over het inschakelen van logboek registratie.
+### <a name="enable-client-logging"></a>Logboekregistratie op de client inschakelen
+Azure-SDK's voor Java bieden een consistente logboekervaring om u te helpen bij het oplossen van toepassingsfouten en snel vinden van een oplossing. De vastgelegde logboeken bieden een overzicht van een toepassing voordat deze wordt beëindigd om zo de oorzaak van het probleem te vinden. Bekijk de [wiki over logboeken en logboekregistratie](https://github.com/Azure/azure-sdk-for-java/wiki/Logging-with-Azure-SDK) voor hulp bij het inschakelen van logboekregistratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u de Java-client bibliotheek van de formulier herkenning gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainings gegevens en het produceren van nauw keurige modellen.
+In deze quickstart hebt u de clientbibliotheek van Form Recognizer voor Java gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainingsgegevens en het produceren van nauwkeurigere modellen.
 
 > [!div class="nextstepaction"]
 > [Een set met trainingsgegevens samenstellen](../../build-training-data-set.md)
 
 * [Wat is Form Recognizer?](../../overview.md)
-* De voorbeeld code uit deze hand leiding is te vinden op [github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples).
+* De voorbeeldcode uit deze gids (en meer) is te vinden op [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples).

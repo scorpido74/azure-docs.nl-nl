@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteem schijf-CLI-voor beeld
+title: Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteemschijf - CLI-voorbeeld
 description: Voorbeeld van Azure CLI-script - Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteemschijf
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 83f0ea094c26a1ff664ef27729731b77d987e7ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501490"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Een virtuele machine maken met behulp van een bestaande beheerde besturingssysteemschijf met CLI
 
@@ -52,10 +52,10 @@ Dit script gebruikt de volgende opdrachten voor het opvragen van de eigenschappe
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk) | Hiermee haalt u de eigenschappen van de beheerde schijf op door de naam van de schijf en de naam van de resourcegroep op te geven. De eigenschap Id wordt gebruikt om een beheerde schijf te koppelen aan een nieuwe virtuele machine. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Hiermee maakt u een virtuele machine die gebruikmaakt van een beheerde besturingssysteemschijf. |
+| [az disk show](/cli/azure/disk) | Hiermee haalt u de eigenschappen van de beheerde schijf op door de naam van de schijf en de naam van de resourcegroep op te geven. De eigenschap Id wordt gebruikt om een beheerde schijf te koppelen aan een nieuwe virtuele machine. |
+| [az vm create](/cli/azure/vm) | Hiermee maakt u een virtuele machine die gebruikmaakt van een beheerde besturingssysteemschijf. |
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

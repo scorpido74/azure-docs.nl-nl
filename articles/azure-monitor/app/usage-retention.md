@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499304"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323533"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analyse van gebruikers retentie voor webtoepassingen met Application Insights
 
-De functie voor het bewaren van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) helpt u bij het analyseren van het aantal gebruikers dat naar uw app terugkeert, en hoe vaak ze bepaalde taken uitvoeren of doel stellingen bereiken. Als u bijvoorbeeld een spel site uitvoert, kunt u het aantal gebruikers dat terugkeert naar de site vergelijken nadat een spel is verloren met het nummer dat als resultaat heeft gegeven na de hoogste bieder. Deze kennis kan u helpen om zowel uw gebruikers ervaring als uw bedrijfs strategie te verbeteren.
+De functie voor het bewaren van [Azure-toepassing Insights](./app-insights-overview.md) helpt u bij het analyseren van het aantal gebruikers dat naar uw app terugkeert, en hoe vaak ze bepaalde taken uitvoeren of doel stellingen bereiken. Als u bijvoorbeeld een spel site uitvoert, kunt u het aantal gebruikers dat terugkeert naar de site vergelijken nadat een spel is verloren met het nummer dat als resultaat heeft gegeven na de hoogste bieder. Deze kennis kan u helpen om zowel uw gebruikers ervaring als uw bedrijfs strategie te verbeteren.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -54,7 +54,7 @@ Of in ASP.NET-Server code:
    telemetry.TrackEvent("won game");
 ```
 
-Meer [informatie over het schrijven van aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+Meer [informatie over het schrijven van aangepaste gebeurtenissen](./api-custom-events-metrics.md#trackevent).
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -63,5 +63,6 @@ Meer [informatie over het schrijven van aangepaste gebeurtenissen](../../azure-m
     - [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Gebruikersstromen](usage-flows.md)
-    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Werkmappen](../platform/workbooks-overview.md)
     - [Gebruikers context toevoegen](usage-send-user-context.md)
+

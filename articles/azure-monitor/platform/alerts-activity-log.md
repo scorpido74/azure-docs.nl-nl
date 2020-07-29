@@ -4,12 +4,12 @@ description: Waarschuwingen voor activiteiten logboeken maken met behulp van de 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516053"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322411"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor  
 
@@ -92,7 +92,7 @@ Gebruik de volgende procedure.
     - **Beschrijving**: de beschrijving van de nieuwe waarschuwings regel.
     - **Waarschuwing opslaan in resource groep**: Selecteer de resource groep waar u deze nieuwe regel wilt opslaan.
 
-5. Geef onder **actie groep**in de vervolg keuzelijst de actie groep op die u wilt toewijzen aan deze nieuwe waarschuwings regel. Of [Maak een nieuwe actie groep](../../azure-monitor/platform/action-groups.md) en wijs deze toe aan de nieuwe regel. Als u een nieuwe groep wilt maken, selecteert u **+ nieuwe groep**.
+5. Geef onder **actie groep**in de vervolg keuzelijst de actie groep op die u wilt toewijzen aan deze nieuwe waarschuwings regel. Of [Maak een nieuwe actie groep](./action-groups.md) en wijs deze toe aan de nieuwe regel. Als u een nieuwe groep wilt maken, selecteert u **+ nieuwe groep**.
 
 6. Als u de regels wilt inschakelen nadat u ze hebt gemaakt, selecteert u **Ja** voor de optie **regel inschakelen bij het maken** .
 7. Selecteer **Waarschuwingsregel maken**.
@@ -285,7 +285,8 @@ Regel resources voor waarschuwings logboeken kunnen worden verwijderd met behulp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [webhook-schema voor activiteiten logboeken](../../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Lees een [overzicht van activiteiten logboeken](../../azure-monitor/platform/activity-log-alerts.md).
-- Meer informatie over [actie groepen](../../azure-monitor/platform/action-groups.md).  
+- Meer informatie over [webhook-schema voor activiteiten logboeken](./activity-log-alerts-webhook.md).
+- Lees een [overzicht van activiteiten logboeken](./activity-log-alerts.md).
+- Meer informatie over [actie groepen](./action-groups.md).  
 - Meer informatie over [service status meldingen](../../service-health/service-notifications.md).
+

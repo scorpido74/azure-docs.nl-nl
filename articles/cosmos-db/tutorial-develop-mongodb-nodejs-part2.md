@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119168"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523482"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Een Angular-app maken met de API van Azure Cosmos DB voor MongoDB - een Node.js Express-app maken
 
@@ -147,11 +147,11 @@ Voor deze zelfstudie hebt u verder nodig:
 
 7. Sla al uw gewijzigde bestanden op. 
 
-8. In Visual Studio Code klikt u op de knop **Debug**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), klik u op de knop Gear ![knop Gear in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Het nieuwe bestand launch.json wordt geopend in Visual Studio Code.
+8. Klik in Visual Studio Code op de knop **Fouten opsporen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::, en klik op de knop Tandwiel :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png":::. Het nieuwe bestand launch.json wordt geopend in Visual Studio Code. 
 
 8. Wijzig in regel 11 van het bestand launch.json `"${workspaceFolder}\\server"` in `"program": "${workspaceRoot}/src/server/index.js"` en sla het bestand op.
 
-9. Klik op de knop **Start Debugging**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) om de app uit te voeren.
+9. Klik op de knop **Foutopsporing starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png"::: om de app uit te voeren.
 
     De app moet nu foutloos worden uitgevoerd.
 

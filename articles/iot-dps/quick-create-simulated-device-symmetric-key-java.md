@@ -1,6 +1,6 @@
 ---
-title: Snelstartgids-symmetrische sleutel gebruiken om gesimuleerd apparaat in te richten op Azure IoT Hub met behulp van Java
-description: In deze Snelstartgids gebruikt u de Java-apparaat-SDK om een gesimuleerd apparaat te maken dat gebruikmaakt van symmetrische sleutel met de Azure-IoT Hub Device Provisioning Service (DPS)
+title: Quickstart - Symmetrische sleutel gebruiken om een apparaat in te richten op Azure IoT Hub met Java
+description: In deze snelstartgids gebruikt u het Apparaat-SDK voor Java om een gesimuleerd apparaat te maken dat gebruikmaakt van een symmetrische sleutel met de Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/30/2020
@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8b54f216850b77473ea8c272311e3f135f256518
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76941400"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536501"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels
+# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Quickstart: Een gesimuleerd apparaat inrichten in IoT Hub met symmetrische sleutels
 
-In deze snelstartgids leert u hoe u een apparaatsimulator kunt maken en uitvoeren op een Windows-ontwikkelcomputer. U configureert dit gesimuleerde apparaat voor het gebruik van een symmetrische sleutel voor verificatie met een DPS-exemplaar (Device Provisioning Service) en worden toegewezen aan een IoT-hub. Voorbeeld code van de [Microsoft Azure IOT sdk's voor Java](https://github.com/Azure/azure-iot-sdk-java) wordt gebruikt voor het simuleren van een opstart procedure voor het apparaat dat het inrichten initieert. Het apparaat wordt herkend op basis van een afzonderlijke inschrijving met een DPS service-exemplaar en toegewezen aan een IoT-hub.
+In deze snelstartgids leert u hoe u een apparaatsimulator kunt maken en uitvoeren op een Windows-ontwikkelcomputer. U configureert dit gesimuleerde apparaat om een symmetrische sleutel te gebruiken voor een verificatie met een DPS-exemplaar (Device Provisioning Service) en voor toewijzing aan een IoT-hub. Er wordt voorbeeldcode van de [Microsoft Azure IoT SDK's voor Java](https://github.com/Azure/azure-iot-sdk-java) gebruikt voor het simuleren van een opstartprocedure voor het apparaat die de inrichting initieert. Het apparaat wordt herkend op basis van een afzonderlijke inschrijving met een exemplaar van DPS en wordt toegewezen aan een IoT-hub.
 
-Hoewel in dit artikel wordt gedemonstreerd met het inrichten met een individuele inschrijving, kunt u registratie groepen gebruiken. Er zijn enkele verschillen bij het gebruik van registratie groepen. U moet bijvoorbeeld een afgeleide-apparaatwachtwoord gebruiken met een unieke registratie-ID voor het apparaat. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
+Hoewel dit artikel laat zien hoe u een inrichting maakt met een afzonderlijke inschrijving, kunt u dezelfde procedures ook gebruiken voor inschrijvingsgroepen. Er zijn enkele verschillen bij het gebruik van inschrijvingsgroepen. U moet bijvoorbeeld een afgeleide apparaatsleutel gebruiken met een unieke registratie-ID voor het apparaat. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
 
 Als u niet bekend bent met het proces van automatische inrichting, bekijk dan de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). 
 
@@ -34,7 +34,7 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Controleer of [Java SE Development Kit 8](https://aka.ms/azure-jdks) of hoger op uw computer is geïnstalleerd.
+* Zorg ervoor dat [Java SE Development Kit 8](https://aka.ms/azure-jdks) of hoger is geïnstalleerd op de computer.
 
 * Download en installeer [Maven](https://maven.apache.org/install.html).
 
@@ -51,52 +51,52 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
-3. Ga naar de hoofdmap `azure-iot-sdk-java` en bouw het project om alle benodigde pakketten te downloaden.
+3. Navigeer naar de hoofdmap van `azure-iot-sdk-java` en compileer het project om alle benodigde pakketten te downloaden.
    
    ```cmd/sh
    cd azure-iot-sdk-java
    mvn install -DskipTests=true
    ```
 
-## <a name="create-a-device-enrollment"></a>Een apparaatregistratie maken
+## <a name="create-a-device-enrollment"></a>Een apparaatinschrijving maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com), selecteer de knop **alle resources** in het menu aan de linkerkant en open de instantie van uw Device Provisioning Service (DPS).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com), selecteer in het linkermenu de knop **Alle resources** en open uw exemplaar van Device Provisioning Service.
 
-2. Selecteer het tabblad **inschrijvingen beheren** en selecteer vervolgens de knop **afzonderlijke registratie toevoegen** bovenaan. 
+2. Selecteer het tabblad **Inschrijvingen beheren** en klik vervolgens op de knop **Afzonderlijke inschrijvingen toevoegen** bovenaan. 
 
-3. Voer in het deel venster **registratie toevoegen** de volgende informatie in en klik op de knop **Opslaan** .
+3. Voer in het deelvenster **Inschrijving toevoegen** de volgende informatie in en druk op de knop **Opslaan**.
 
-   - **Mechanisme:** selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
+   - **Mechanisme**: selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
 
-   - **Sleutels automatisch genereren**: Schakel dit selectie vakje in.
+   - **Sleutels automatisch genereren**: schakel dit selectievakje in.
 
-   - **Registratie-ID**: voer een registratie-ID voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-Key-Java-Device-007**.
+   - **Registratie-id**: voer een registratie-id in voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-java-device-007**.
 
-   - **IoT Hub apparaat-ID:** voer een apparaat-ID in. Bijvoorbeeld **Java-apparaat-007**.
+   - **Apparaat-id voor IoT Hub:** voer een apparaat-id in. Bijvoorbeeld **java-device-007**.
 
      ![Afzonderlijke inschrijving toevoegen voor attestation met symmetrische sleutel in de portal](./media/quick-create-simulated-device-symm-key-java/create-individual-enrollment-java.png)
 
-4. Zodra u uw inschrijving hebt opgeslagen, worden de **primaire sleutel** en **secundaire sleutel** gegenereerd en toegevoegd aan de inschrijvings vermelding. De registratie van uw symmetrische-sleutel apparaat wordt weer gegeven als **symm-Key-Java-apparaat-007** onder de kolom *registratie-id* op het tabblad *afzonderlijke inschrijvingen* . 
+4. Zodra u uw inschrijving heeft opgeslagen, worden de **primaire sleutel** en **secundaire sleutel** gegenereerd en aan de inschrijvingsvermelding toegevoegd. De inschrijving met symmetrische sleutel van uw apparaat wordt weergegeven als **symm-key-java-device-007** in de kolom *Registratie-ID* op het tabblad *Afzonderlijke registraties*. 
 
-    Open de inschrijving en kopieer de waarde van uw gegenereerde **primaire sleutel**. U gebruikt deze sleutel waarde en de **registratie-id** later wanneer u de Java-code voor het apparaat bijwerkt.
+    Open de inschrijving en kopieer de waarde van uw gegenereerde **primaire sleutel**. U gebruikt deze sleutelwaarde en de **registratie-id** later wanneer u de Java-code voor het apparaat bijwerkt.
 
 
 
 <a id="firstbootsequence"></a>
 
-## <a name="simulate-device-boot-sequence"></a>Opstart volgorde van apparaat simuleren
+## <a name="simulate-device-boot-sequence"></a>Opstartvolgorde van apparaat simuleren
 
-In deze sectie gaat u de voorbeeld code van het apparaat bijwerken om de opstart procedure van het apparaat naar uw DPS-exemplaar te verzenden. Als gevolg van deze opstart procedure wordt het apparaat herkend, geverifieerd en toegewezen aan een IoT-hub die is gekoppeld aan het DPS-exemplaar.
+In deze sectie werkt u de voorbeeldcode voor het apparaat bij om de opstartvolgorde van het apparaat te verzenden naar uw DPS-exemplaar. Deze opstartvolgorde zorgt ervoor dat het apparaat kan worden herkend, geverifieerd en toegewezen aan een IoT-hub die is gekoppeld aan het DPS-exemplaar.
 
-1. Selecteer **overzicht** in het menu Device Provisioning Service en noteer uw _id-bereik_ en het _Global-eind punt_voor het inrichten van de service.
+1. Selecteer **Overzicht** in het menu Device Provisioning Service en noteer de waarden voor _Id-bereik_ en _Globaal eindpunt voor inrichtingsservice_.
 
     ![Service-informatie](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
-2. Open de voorbeeld code van het Java-apparaat om het te bewerken. Het volledige pad naar de voorbeeld code van het apparaat is:
+2. Open de Java-voorbeeldcode voor het apparaat om deze te bewerken. Het volledige pad naar de voorbeeldcode voor het apparaat is:
 
     `azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningSymmetricKeySampleSample.java`
 
-   - Voeg het _id-bereik_ en het _Provisioning Service Global-eind punt_ van uw DPS-exemplaar toe. Neem ook de primaire symmetrische sleutel en de registratie-ID op die u voor de afzonderlijke inschrijving hebt gekozen. Sla uw wijzigingen op. 
+   - Voeg de waarden voor _Id-bereik_ en _Globaal eindpunt voor inrichtingsservice_ van uw DPS-exemplaar toe. Vermeld ook de primaire symmetrische sleutel en de registratie-id die u voor de specifieke inschrijving hebt gekozen. Sla uw wijzigingen op. 
 
       ```java
         private static final String SCOPE_ID = "[Your scope ID here]";
@@ -105,13 +105,13 @@ In deze sectie gaat u de voorbeeld code van het apparaat bijwerken om de opstart
         private static final String REGISTRATION_ID = "[Enter your Registration ID here]";
       ```
 
-3. Open een opdracht prompt om te maken. Navigeer naar de map voor beeld van een project voor het inrichten van de Java-SDK-opslag plaats.
+3. Open een opdrachtprompt voor compileren. Ga naar de map met het voorbeeldproject van de Java SDK-opslagplaats.
 
     ```cmd/sh
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample
     ```
 
-4. Bouw het voor beeld en navigeer naar `target` de map om het gemaakte jar-bestand uit te voeren.
+4. Compileer het voorbeeld en navigeer naar de map `target` om het gemaakte JAR-bestand uit te voeren.
 
     ```cmd/sh
     mvn clean install
@@ -119,7 +119,7 @@ In deze sectie gaat u de voorbeeld code van het apparaat bijwerken om de opstart
     java -jar ./provisioning-symmetrickey-sample-{version}-with-deps.jar
     ```
 
-5. De verwachte uitvoer moet er ongeveer als volgt uitzien:
+5. De uitvoer moet er ongeveer als volgt uitzien:
 
     ```cmd/sh
       Starting...
@@ -132,26 +132,26 @@ In deze sectie gaat u de voorbeeld code van het apparaat bijwerken om de opstart
       Message received! Response status: OK_EMPTY
     ```
 
-6. Navigeer in Azure Portal naar de IoT-hub die is gekoppeld aan uw inrichtingsservice en open de blade **Device Explorer**. Nadat het gesimuleerde symmetrische-sleutel apparaat is ingericht op de hub, wordt de apparaat-ID weer gegeven op de Blade **device Explorer** , met de *status* **ingeschakeld**.  Mogelijk moet u bovenaan op de knop **vernieuwen** klikken als u de Blade al hebt geopend voordat u de voorbeeld toepassing uitvoert. 
+6. Navigeer in Azure Portal naar de IoT-hub die is gekoppeld aan uw inrichtingsservice en open de blade **Device Explorer**. Wanneer het inrichten van het gesimuleerde apparaat met symmetrische sleutel voor de hub is voltooid, wordt de apparaat-id weergegeven op de blade **Device Explorer** met de *STATUS* **ingeschakeld**.  U moet mogelijk op de knop **Vernieuwen** bovenaan drukken als u de blade vóór het uitvoeren van de voorbeeldapparaattoepassing al hebt geopend. 
 
     ![Apparaat wordt geregistreerd voor de IoT-hub](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 
 > [!NOTE]
-> Als u de standaardwaarde van de *initiële status van de apparaatdubbel* hebt gewijzigd in de inschrijvingsvermelding voor uw apparaat, kan de gewenste status van de dubbel uit de hub worden gehaald en er dienovereenkomstig naar worden gehandeld. Zie voor meer informatie [apparaat Apparaatdubbels begrijpen en gebruiken in IOT hub](../iot-hub/iot-hub-devguide-device-twins.md).
+> Als u de standaardwaarde van de *initiële status van de apparaatdubbel* hebt gewijzigd in de inschrijvingsvermelding voor uw apparaat, kan de gewenste status van de dubbel uit de hub worden gehaald en er dienovereenkomstig naar worden gehandeld. Zie [Apparaatdubbels begrijpen en gebruiken in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md) voor meer informatie.
 >
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met het voor beeld van de apparaatclient, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
+Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze beter wilt leren kennen, wis de resources die in deze quickstart zijn gemaakt dan niet. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources te verwijderen die via deze quickstart zijn gemaakt.
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
-1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** en selecteer vervolgens uw Device Provisioning Service. Open **inschrijvingen beheren** voor uw service en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Schakel het selectie vakje in naast de *registratie-id* van het apparaat dat u in deze Quick Start hebt Inge schreven en klik boven aan het deel venster op de knop **verwijderen** . 
-1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** en selecteer vervolgens uw IOT-hub. Open **IOT-apparaten** voor uw hub, schakel het selectie vakje in naast de *apparaat-id* van het apparaat dat u in deze Quick Start hebt geregistreerd en druk op de knop **verwijderen** boven aan het deel venster.
+1. Selecteer in het linkermenu in Azure Portal **Alle resources** en selecteer uw Device Provisioning Service. Open het tabblad **Inschrijvingen beheren** voor uw service en klik vervolgens op het tabblad **Afzonderlijke inschrijvingen**. Schakel het selectievakje naast de *Registratie-id* in van het apparaat dat u hebt ingeschreven in deze quickstart. Druk vervolgens op de knop **Verwijderen** bovenaan het deelvenster. 
+1. Selecteer in het linkermenu in Azure Portal **Alle resources** en selecteer vervolgens uw IoT-hub. Open **IoT-apparaten** voor uw hub, schakel het selectievakje *DEVICE ID* in van het apparaat dat u hebt geregistreerd in deze quickstart en druk vervolgens bovenaan op de knop **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een gesimuleerd apparaat op uw Windows-computer gemaakt en dit ingericht voor uw IoT-hub met behulp van de symmetrische sleutel met de Azure-IoT Hub Device Provisioning Service op de portal. Als u wilt weten hoe u uw apparaat programmatisch kunt registreren, gaat u verder met de Quick start voor programmatische inschrijving van X. 509-apparaten. 
+In deze quickstart hebt u een gesimuleerd apparaat op uw Windows-computer gemaakt en het ingericht voor uw IoT-hub met behulp van een symmetrische sleutel met de Azure IoT Hub Device Provisioning Service in de portal. Als u wilt weten hoe u uw apparaat programmatisch kunt inschrijven, gaat u verder met de quickstart voor programmatische inschrijving van X.509-apparaten. 
 
 > [!div class="nextstepaction"]
-> [Azure Quick start-X. 509-apparaten inschrijven bij Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Azure-quickstart: X.509-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)

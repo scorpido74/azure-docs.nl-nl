@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: a5613198b404f629727f3040b308c030763a10b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7e1073817013d45558a9679a4f70db0c002cfaa9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515798"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324077"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Switch-API-voor keur voor logboek waarschuwingen
 
@@ -115,4 +115,5 @@ Als de opgegeven log analytic-werk ruimte nog niet is overgeschakeld om alleen [
 
 - Meer informatie over de [waarschuwingen voor Azure monitor logboeken](alerts-unified-log.md).
 - Meer informatie over het maken [van logboek waarschuwingen in azure-waarschuwingen](alerts-log.md).
-- Meer informatie over de [Azure Alerts-ervaring](../../azure-monitor/platform/alerts-overview.md).
+- Meer informatie over de [Azure Alerts-ervaring](./alerts-overview.md).
+

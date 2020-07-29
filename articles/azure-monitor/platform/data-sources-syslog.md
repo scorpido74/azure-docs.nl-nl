@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322309"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-gegevensbronnen in Azure Monitor
 Syslog is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. Toepassingen zullen berichten verzenden die kunnen worden opgeslagen op de lokale computer of worden geleverd aan een syslog-Collector. Wanneer de Log Analytics-agent voor Linux is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent. De agent verzendt het bericht vervolgens naar Azure Monitor waar een corresponderende record wordt gemaakt.  
@@ -54,7 +54,7 @@ U kunt een nieuwe faciliteit toevoegen door eerst de optie **op de onderstaande 
 Standaard worden alle configuratie wijzigingen automatisch naar alle agents gepusht. Als u syslog hand matig op elke Linux-agent wilt configureren, schakelt u het selectie vakje de *onderstaande configuratie Toep assen op mijn machines*uit.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Syslog op Linux-agent configureren
-Wanneer de [log Analytics-agent is geïnstalleerd op een Linux-client](../../azure-monitor/learn/quick-collect-linux-computer.md), wordt een standaard-syslog-configuratie bestand geïnstalleerd waarmee de faciliteit en ernst van de verzamelde berichten worden gedefinieerd. U kunt dit bestand wijzigen om de configuratie te wijzigen. Het configuratie bestand verschilt, afhankelijk van de syslog-daemon die de-client heeft geïnstalleerd.
+Wanneer de [log Analytics-agent is geïnstalleerd op een Linux-client](../learn/quick-collect-linux-computer.md), wordt een standaard-syslog-configuratie bestand geïnstalleerd waarmee de faciliteit en ernst van de verzamelde berichten worden gedefinieerd. U kunt dit bestand wijzigen om de configuratie te wijzigen. Het configuratie bestand verschilt, afhankelijk van de syslog-daemon die de-client heeft geïnstalleerd.
 
 > [!NOTE]
 > Als u de syslog-configuratie bewerkt, moet u de syslog-daemon opnieuw opstarten om de wijzigingen van kracht te laten worden.
@@ -227,6 +227,7 @@ De volgende tabel bevat verschillende voor beelden van logboek query's waarmee s
 | Syslog &#124; samenvatte AggregatedValue = Count () door faciliteit |Aantal syslog-records per faciliteit. |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [logboek query's](../../azure-monitor/log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.
-* Gebruik [aangepaste velden](../../azure-monitor/platform/custom-fields.md) voor het parseren van gegevens van syslog-records in afzonderlijke velden.
-* [Configureer Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) om andere typen gegevens te verzamelen.
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.
+* Gebruik [aangepaste velden](./custom-fields.md) voor het parseren van gegevens van syslog-records in afzonderlijke velden.
+* [Configureer Linux-agents](../learn/quick-collect-linux-computer.md) om andere typen gegevens te verzamelen.
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322904"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Oplossing VMWare-bewaking (afgeschaft) in Azure Monitor
 
@@ -27,7 +27,7 @@ De oplossing maakt gebruik van systeem eigen syslog-functionaliteit van de ESXi-
 ## <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
 Gebruik de volgende informatie om de oplossing te installeren en configureren.
 
-* Voeg de VMWare-bewaking oplossing toe aan uw abonnement met behulp van het proces dat wordt beschreven in [een bewakings oplossing installeren](../insights/solutions.md#install-a-monitoring-solution).
+* Voeg de VMWare-bewaking oplossing toe aan uw abonnement met behulp van het proces dat wordt beschreven in [een bewakings oplossing installeren](./solutions.md#install-a-monitoring-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Ondersteunde VMware ESXi hosts
 vSphere ESXi host 5,5, 6,0 en 6,5
@@ -83,7 +83,7 @@ De volgende tabel toont methoden voor gegevens verzameling en andere informatie 
 
 In de volgende tabel ziet u voor beelden van gegevens velden die door de VMWare-bewaking oplossing zijn verzameld:
 
-| veld naam | description |
+| veld naam | beschrijving |
 | --- | --- |
 | Device_s |VMware-opslag apparaten |
 | ESXIFailure_s |fout typen |
@@ -202,3 +202,4 @@ Er kunnen meerdere redenen zijn:
 * Gebruik [logboek query's](../log-query/log-query-overview.md) in log Analytics om gedetailleerde VMware-hostgegevens weer te geven.
 * [Maak uw eigen Dash boards](../learn/tutorial-logs-dashboards.md) waarin VMware-hostgegevens worden weer gegeven.
 * [Waarschuwingen maken](../platform/alerts-overview.md) wanneer specifieke VMware-host-gebeurtenissen optreden.
+

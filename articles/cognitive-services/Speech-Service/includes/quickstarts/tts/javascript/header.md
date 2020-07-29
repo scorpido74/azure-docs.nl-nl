@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: de herkenning van spraak, java script-spraak service'
+title: 'Quickstart: Spraak synthetiseren, JavaScript - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ac33a701c9aa72c0794952038462586fc0ca9ec
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: eb9f2567425f254235753e7207cee36a3f1228c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544692"
 ---
-Als u liever direct aan de slag gaat, kunt u alle <a href="https://aka.ms/speech/github-javascript">Speech SDK java script</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-javascript">JavaScript-voorbeelden van de Speech SDK</a> bekijken of downloaden op GitHub. 

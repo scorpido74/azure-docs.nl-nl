@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: vertalen van spraak naar tekst, java script-spraak service'
+title: 'Quickstart: Spraak-naar-tekst vertalen, JavaScript - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b362a5ab627714f106a9528e25474c9f3c33b81a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 113bc137a0be657c0920f45a3f1c90ec11ee9e10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978816"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544474"
 ---
-Als u liever direct aan de slag gaat, kunt u alle <a href="https://aka.ms/speech/github-javascript">Speech SDK java script</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-javascript">JavaScript-voorbeelden van de Speech SDK</a> bekijken of downloaden op GitHub. 
