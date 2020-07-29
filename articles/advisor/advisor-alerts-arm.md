@@ -1,48 +1,48 @@
 ---
-title: Azure Advisor waarschuwingen maken voor nieuwe aanbevelingen met behulp van Resource Manager-sjabloon
-description: Azure Advisor waarschuwingen voor nieuwe aanbeveling maken
+title: Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen met behulp van Resource Manager-sjabloon
+description: Azure Advisor-waarschuwingen maken voor nieuwe aanbeveling
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: ef15891cc01d0481c6253023de262f14dce0ec81
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921078"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057830"
 ---
-# <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Snelstartgids: Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen met behulp van een ARM-sjabloon
+# <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Quickstart: Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen met behulp van een ARM-sjabloon
 
-In dit artikel wordt beschreven hoe u een waarschuwing instelt voor nieuwe aanbevelingen van Azure Advisor met behulp van een Azure Resource Manager sjabloon (ARM-sjabloon).
+In dit artikel wordt beschreven hoe u een waarschuwing instelt voor nieuwe aanbevelingen van Azure Advisor met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteert, wordt een gebeurtenis opgeslagen in het [activiteiten logboek van Azure](/azure/azure-monitor/platform/activity-logs-overview). U kunt waarschuwingen instellen voor deze gebeurtenissen van Azure Advisor met behulp van een aanbevelings gerichte waarschuwing voor het maken van waarschuwingen. U kunt een abonnement en optioneel een resource groep selecteren om de resources op te geven waarvoor u waarschuwingen wilt ontvangen.
+Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteert, wordt een gebeurtenis opgeslagen in het [Azure-activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md). U kunt waarschuwingen instellen voor deze gebeurtenissen van Azure Advisor met behulp van een functie voor het maken van aanbevelingsgerichte waarschuwingen. U kunt een abonnement en optioneel een resourcegroep selecteren om de resources op te geven waarvoor u waarschuwingen wilt ontvangen.
 
 U kunt ook de typen aanbevelingen vaststellen met behulp van de volgende eigenschappen:
 
 - Categorie
-- Impact niveau
-- Type aanbeveling
+- Impactniveau
+- Aanbevelingstype
 
 U kunt ook de actie configureren die wordt uitgevoerd wanneer een waarschuwing wordt geactiveerd door:  
 
-- Een bestaande actie groep selecteren
-- Een nieuwe actie groep maken
+- Een bestaande actiegroep te selecteren
+- Een nieuwe actiegroep te maken
 
 Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
 
 > [!NOTE]
-> Advisor-waarschuwingen zijn momenteel alleen beschikbaar voor aanbevelingen voor hoge Beschik baarheid, prestaties en kosten. Beveiligings aanbevelingen worden niet ondersteund.
+> Advisor-waarschuwingen zijn momenteel alleen beschikbaar voor aanbevelingen voor hoge beschikbaarheid, prestaties en kosten. Aanbevelingen voor beveiliging worden niet ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Als u de opdrachten vanaf uw lokale computer wilt uitvoeren, installeert u Azure CLI of de Azure PowerShell-modules. Zie [de Azure cli installeren](/cli/azure/install-azure-cli) en [Azure PowerShell installeren](/powershell/azure/install-az-ps)voor meer informatie.
+- Als u de opdrachten vanaf uw lokale computer wilt uitvoeren, installeert u Azure CLI of de Azure PowerShell-modules. Zie [De Azure CLI installeren](/cli/azure/install-azure-cli) en [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie.
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
-Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt u alle service status meldingen in voor het doel abonnement. Sla deze sjabloon *op alsCreateAdvisorAlert.jsop*.
+Met de volgende sjabloon maakt u een actiegroep met een e-maildoel en schakelt u alle servicestatusmeldingen voor het doelabonnement in. Sla deze sjabloon op als *CreateAdvisorAlert.json*.
 
 ```json
 {
@@ -139,14 +139,14 @@ Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt
 }
 ```
 
-De sjabloon definieert twee resources:
+In de sjabloon zijn twee resources gedefinieerd:
 
-- [Micro soft. Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
-- [Micro soft. Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
+- [Microsoft.Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
+- [Microsoft.Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Implementeer de sjabloon met een standaard methode voor het [implementeren van een arm-sjabloon](../azure-resource-manager/templates/deploy-portal.md) , zoals de volgende voor beelden met CLI en Power shell. Vervang de voorbeeld waarden voor de **resource groep**en het **emailAddress** met de juiste waarden voor uw omgeving. De naam van de werk ruimte moet uniek zijn voor alle Azure-abonnementen.
+Implementeer de sjabloon met een standaardmethode voor [het implementeren van een ARM-sjabloon](../azure-resource-manager/templates/deploy-portal.md), zoals in de volgende voorbeelden waarin CLI en PowerShell wordt gebruikt. Vervang de voorbeeldwaarden voor **Resourcegroep** en **E-mailadres** door de juiste waarden voor uw omgeving. De naam van de werkruimte moet uniek zijn voor alle Azure-abonnementen.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -167,7 +167,7 @@ New-AzResourceGroupDeployment -Name CreateAdvisorAlert -ResourceGroupName my-res
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Controleer of de werk ruimte is gemaakt met behulp van een van de volgende opdrachten. Vervang de voorbeeld waarden voor de **resource groep** door de waarde die u hierboven hebt gebruikt.
+Controleer of de werkruimte is gemaakt met behulp van een van de volgende opdrachten. Vervang de voorbeeldwaarden voor **Resourcegroep** door de waarde die u hierboven hebt gebruikt.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -185,7 +185,7 @@ Get-AzActivityLogAlert -ResourceGroupName my-resource-group -Name AdvisorAlertsT
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met volgende snelstarts en zelfstudies, kunt u deze resources het beste intact laten. Als u deze niet meer nodig hebt, verwijdert u de resource groep, waarmee de waarschuwings regel en de gerelateerde resources worden verwijderd. De resource groep verwijderen met behulp van Azure CLI of Azure PowerShell
+Als u van plan bent om verder te gaan met volgende snelstarts en zelfstudies, kunt u deze resources het beste intact laten. Als u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee worden ook de waarschuwingsregel en de gerelateerde resources verwijderd. De resourcegroep verwijderen met behulp van Azure CLI of Azure PowerShell
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -203,5 +203,5 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](../azure-monitor/platform/alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.
-- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).
+- Een [overzicht van waarschuwingen voor het activiteitenlogboek](../azure-monitor/platform/alerts-overview.md) en meer informatie over het ontvangen van waarschuwingen.
+- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).

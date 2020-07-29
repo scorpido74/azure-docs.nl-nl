@@ -1,45 +1,46 @@
 ---
-title: Gedistribueerde tracering gebruiken met Azure veer Cloud
-description: Meer informatie over het gebruik van de gedistribueerde tracering van Lente Clouds via Azure-toepassing Insights
+title: Gedistribueerde tracering gebruiken met Azure Spring Cloud
+description: Meer informatie over het gebruik van gedistribueerde tracering van Spring Cloud via Azure Application Insights
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
-ms.translationtype: MT
+ms.custom: devx-track-java
+ms.openlocfilehash: 1e3579f79f9daa80c3d3f2206be7a76cc5505e80
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037016"
 ---
-# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Gedistribueerde tracering gebruiken met Azure veer Cloud
+# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Gedistribueerde tracering gebruiken met Azure Spring Cloud
 
-Met de gedistribueerde hulpprogram ma's voor tracering in azure lente-Cloud kunt u eenvoudig complexe problemen opsporen en bewaken. Azure lente Cloud integreert [lente Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met de [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)van Azure. Deze integratie biedt krachtige functies voor gedistribueerde tracering van de Azure Portal.
+Met de hulpprogramma's voor gedistribueerde tracering in Azure Spring Cloud kunt u eenvoudig complexe problemen opsporen en bewaken. Azure Spring Cloud integreert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) van Azure. Deze integratie biedt krachtige functies voor gedistribueerde tracering via de Azure-portal.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Schakel gedistribueerde tracering in de Azure Portal in.
-> * Een lente Cloud Sleuth toevoegen aan uw toepassing.
-> * Afhankelijkheids kaarten voor uw micro service-toepassingen weer geven.
-> * Zoek gegevens traceren met verschillende filters.
+> * Gedistribueerde tracering in de Azureportal inschakelen.
+> * Spring Cloud Sleuth toevoegen aan uw toepassing.
+> * Afhankelijkheidskaarten voor uw microservicetoepassingen weergeven.
+> * Traceringsgegevens zoeken met verschillende filters.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze procedures wilt volgen, hebt u een Azure lente-Cloud service nodig die al is ingericht en actief is. Voltooi de [Snelstartgids voor het implementeren van een app via de Azure cli](spring-cloud-quickstart-launch-app-cli.md) om een Azure lente-Cloud service in te richten en uit te voeren.
+Voor het volgen van deze procedures hebt u een Azure Spring Cloud-service nodig die al is ingericht en actief is. Voltooi de [quickstart voor het implementeren van een app via de Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om een Azure Spring Cloud-service in te richten en uit te voeren.
     
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-1. Voeg de volgende regel toe aan het bestand Application. Properties:
+1. Voeg de volgende regel toe aan het bestand application.properties:
 
    ```xml
    spring.zipkin.sender.type = web
    ```
 
-   Na deze wijziging kan de Zipkin-afzender naar het web worden verzonden.
+   Na deze wijziging kan de Zipkin-afzender naar het web verzenden.
 
-1. Sla deze stap over als u onze [hand leiding voor het voorbereiden van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u uw pom.xml-bestand voor het toevoegen van de volgende bron Sleuth afhankelijkheid:
+1. Sla deze stap over als u onze [gids voor het voorbereiden van een Azure Spring Cloud-toepassing](spring-cloud-tutorial-prepare-app-deployment.md) hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkelomgeving en bewerkt u het bestand pom.xml om de volgende Spring Cloud Sleuth-afhankelijkheid toe te voegen:
 
     ```xml
     <dependencyManagement>
@@ -61,45 +62,45 @@ Als u deze procedures wilt volgen, hebt u een Azure lente-Cloud service nodig di
     </dependencies>
     ```
 
-1. Bouw en implementeer opnieuw voor de Azure lente-Cloud service om deze wijzigingen weer te geven.
+1. Bouw en implementeer opnieuw voor de Azure Spring Cloud-service om deze wijzigingen weer te geven.
 
-## <a name="modify-the-sample-rate"></a>De sample frequentie wijzigen
+## <a name="modify-the-sample-rate"></a>De samplefrequentie wijzigen
 
-U kunt de snelheid waarmee uw telemetrie wordt verzameld, wijzigen door de sample frequentie aan te passen. Als u bijvoorbeeld de helft wilt bemonsteren, opent u het bestand Application. Properties en wijzigt u de volgende regel:
+U kunt de snelheid waarmee uw telemetrie wordt verzameld, wijzigen door de samplefrequentie aan te passen. Als u bijvoorbeeld een sample van de helft wilt uitvoeren, opent u het bestand application.properties en wijzigt u de volgende regel:
 
 ```xml
 spring.sleuth.sampler.probability=0.5
 ```
 
-Als u een toepassing al hebt gemaakt en geïmplementeerd, kunt u de sample frequentie wijzigen. Dit doet u door de vorige regel als een omgevings variabele in de Azure CLI of de Azure Portal toe te voegen.
+Als u al een toepassing hebt gemaakt en geïmplementeerd, kunt u de samplefrequentie wijzigen. Dit doet u door de vorige regel als een omgevingsvariabele in de Azure CLI of de Azure-portal toe te voegen.
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
-1. Ga naar de pagina Azure lente-Cloud service in de Azure Portal.
-1. Selecteer op de pagina **controle** de optie **gedistribueerde tracering**.
-1. Selecteer **instelling bewerken** om een nieuwe instelling te bewerken of toe te voegen.
-1. Maak een nieuwe Application Insights query of selecteer een bestaande.
-1. Kies welke logboek registratie categorie u wilt bewaken en geef de Bewaar tijd op in dagen.
-1. Selecteer **Toep assen** om de nieuwe tracering toe te passen.
+1. Ga naar de pagina van Azure Spring Cloud in de Azure-portal.
+1. Selecteer op de pagina **Bewaking** de optie **Gedistribueerde tracering**.
+1. Selecteer **Instelling bewerken** om een nieuwe instelling te bewerken of toe te voegen.
+1. Maak een nieuwe Application Insights-query of selecteer een bestaande.
+1. Kies welke logboekregistratiecategorie u wilt bewaken en geef de bewaartijd op in dagen.
+1. Selecteer **Toepassen** om de nieuwe tracering toe te passen.
 
-## <a name="view-the-application-map"></a>De toepassings toewijzing weer geven
+## <a name="view-the-application-map"></a>Het toepassingsoverzicht weergeven
 
-Ga terug naar de pagina **gedistribueerde tracering** en selecteer **toepassings toewijzing weer geven**. Bekijk de visuele weer gave van uw toepassings-en bewakings instellingen. Zie [Application map: sorteren Distributed Applications](https://docs.microsoft.com/azure/azure-monitor/app/app-map)(Engelstalig) voor meer informatie over het gebruik van de toepassings toewijzing.
+Ga terug naar de pagina **Gedistribueerde tracering** en selecteer **Toepassingsoverzicht weergeven**. Bekijk de visuele weergave van uw toepassings- en bewakingsinstellingen. Zie voor meer informatie over het gebruik van het toepassingsoverzicht [Toepassingsoverzicht: Gedistribueerde toepassingen classificeren](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="use-search"></a>Zoek opdracht gebruiken
+## <a name="use-search"></a>De zoekfunctie gebruiken
 
-Gebruik de zoek functie om te zoeken naar andere specifieke telemetrie-items. Selecteer op de pagina **gedistribueerde tracering** **zoeken**. Zie [zoeken gebruiken in Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)voor meer informatie over het gebruik van de zoek functie.
+Gebruik de zoekfunctie om te zoeken naar andere specifieke telemetrie-items. Selecteer op de pagina **Gedistribueerde tracering** de optie **Zoeken**. Zie [Zoeken in Application Insights gebruiken](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search) voor meer informatie over het gebruik van de zoekfunctie.
 
 ## <a name="use-application-insights"></a>Application Insights gebruiken
 
-Application Insights biedt bewakings mogelijkheden naast het toepassings overzicht en de zoek functie. Zoek in het Azure Portal naar de naam van uw toepassing en open vervolgens een Application Insights pagina om controle-informatie te vinden. Raadpleeg [Azure monitor-logboek query's](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)voor meer informatie over het gebruik van deze hulpprogram ma's.
+Application Insights biedt naast het toepassingsoverzicht en de zoekfunctie ook bewakingsmogelijkheden. Zoek in de Azure-portal naar de naam van uw toepassing en open vervolgens een Application Insights-pagina om bewakingsinformatie te vinden. Zie [Azure Monitor-logboekquery's](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language) voor meer informatie over het gebruik van deze hulpprogramma's.
 
 ## <a name="disable-application-insights"></a>Application Insights uitschakelen
 
-1. Ga naar de pagina Azure lente-Cloud service in de Azure Portal.
-1. Selecteer bij **bewaking** **gedistribueerde tracering**.
-1. Selecteer **uitschakelen** om Application Insights uit te scha kelen.
+1. Ga naar de pagina van Azure Spring Cloud in de Azure-portal.
+1. Selecteer in **Bewaking** de optie **Gedistribueerde tracering**.
+1. Selecteer **Uitschakelen** om Application Insights uit te schakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u gedistribueerde tracering in azure lente-Cloud kunt inschakelen en begrijpen. Zie [een Azure Cosmos DB Data Base binden aan een Azure lente-Cloud toepassing](spring-cloud-tutorial-bind-cosmos.md)voor meer informatie over bindings Services voor een toepassing.
+In dit artikel hebt u geleerd hoe u gedistribueerde tracering in Azure Spring Cloud kunt inschakelen en begrijpen. Zie [Een Azure Cosmos DB-database verbinden met een Azure Spring Cloud-toepassing](spring-cloud-tutorial-bind-cosmos.md) voor meer informatie over het verbinden van services met een toepassing.

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102595"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voordelen van beheerde schijven
 
@@ -45,22 +45,30 @@ U kunt [op rollen gebaseerd toegangsbeheer (RBAC)](../articles/role-based-access
 
 ### <a name="upload-your-vhd"></a>Uw vhd uploaden
 
- Direct uploaden maakt het eenvoudig om uw vhd over te zetten naar een door Azure beheerde schijf. Voorheen moest u een complexer proces volgen dat de fasering van uw gegevens in een opslagaccount bevatte. Nu zijn er minder stappen. Het is nu eenvoudiger om on-premises VM's naar Azure te uploaden, te uploaden naar grote beheerde schijven en het back-up- en herstelproces is vereenvoudigd. Het vermindert ook de kosten omdat u gegevens rechtstreeks naar beheerde schijven kunt uploaden zonder ze aan VM's toe te voegen. U kunt direct uploaden gebruiken om vhd's met een grootte van maximaal 32 TiB te uploaden.
+Direct uploaden maakt het eenvoudig om uw vhd over te zetten naar een door Azure beheerde schijf. Voorheen moest u een complexer proces volgen dat de fasering van uw gegevens in een opslagaccount bevatte. Nu zijn er minder stappen. Het is nu eenvoudiger om on-premises VM's naar Azure te uploaden, te uploaden naar grote beheerde schijven en het back-up- en herstelproces is vereenvoudigd. Het vermindert ook de kosten omdat u gegevens rechtstreeks naar beheerde schijven kunt uploaden zonder ze aan VM's toe te voegen. U kunt direct uploaden gebruiken om vhd's met een grootte van maximaal 32 TiB te uploaden.
 
- Zie de [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md)- of [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)-artikelen voor meer informatie over het overdragen van uw vhd naar Azure.
+Zie de [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md)- of [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)-artikelen voor meer informatie over het overdragen van uw vhd naar Azure.
 
-## <a name="encryption"></a>Versleuteling
+## <a name="security"></a>Beveiliging
+
+### <a name="private-links"></a>Privékoppelingen
+
+Beheerde schijven bieden ondersteuning voor het gebruik van privékoppelingen voor het importeren of exporteren van een interne beheerde schijf naar uw netwerk. Met privékoppelingen kunt u een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen die u kunt gebruiken voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van on-premises te uploaden. U kunt [Privékoppelingen](../articles/private-link/private-link-overview.md) nu gebruiken om het exporteren en importeren van beheerde schijven te beperken zodat dit alleen kan worden uitgevoerd in uw virtuele Azure-netwerk. Met privékoppelingen kunt u ervoor zorgen dat uw gegevens alleen binnen het beveiligde Microsoft-backbone-netwerk worden verplaatst.
+
+Zie de artikelen over de [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) of [Portal](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) voor meer informatie over het inschakelen van privékoppelingen voor het importeren of exporteren van een beheerde schijf.
+
+### <a name="encryption"></a>Versleuteling
 
 Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is SSE (Server Side Encryption), die door de opslagservice wordt uitgevoerd. De tweede is Azure Disk Encryption (ADE), dat u kunt inschakelen op het besturingssysteem en de gegevensschijven voor uw virtuele machines.
 
-### <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
+#### <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
 
-Met [Azure SSE](../articles/virtual-machines/windows/disk-encryption.md) (Server-side Encryption) kunt u inactieve gegevens versleutelen en kunt u uw gegevens zodanig beschermen dat wordt voldaan aan de beveiligings- en nalevingsverplichtingen van de organisatie. SSE is standaard ingeschakeld voor alle beheerde schijven, momentopnamen en installatiekopieën in alle regio's waar beheerde schijven beschikbaar zijn. (Tijdelijke schijven worden daarentegen niet versleuteld door Storage Service Encryption; zie [Schijfrollen: tijdelijke schijven](#temporary-disk)).
+Met versleuteling aan serverzijde kunt u inactieve gegevens versleutelen en kunt u uw gegevens zodanig beschermen dat wordt voldaan aan de beveiligings- en nalevingsverplichtingen van de organisatie. SSE is standaard ingeschakeld voor alle beheerde schijven, momentopnamen en installatiekopieën in alle regio's waar beheerde schijven beschikbaar zijn. (Tijdelijke schijven worden daarentegen niet versleuteld door versleuteling aan serverzijde tenzij u versleuteling inschakelt op de host; zie [Schijfrollen: tijdelijke schijven](#temporary-disk)).
 
-U kunt Azure toestaan uw sleutels voor u te beheren (dit zijn door het platform beheerde sleutels) of u kunt de sleutels zelf beheren (door de klant beheerde sleutels). Zie de pagina met [veelgestelde vragen over beheerde schijven](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
+U kunt Azure toestaan uw sleutels voor u te beheren (dit zijn door het platform beheerde sleutels) of u kunt de sleutels zelf beheren (door de klant beheerde sleutels). Lees het artikel [Versleuteling aan serverzijde van Azure Disk Storage](../articles/virtual-machines/windows/disk-encryption.md) voor meer informatie.
 
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Met Azure Disk Encryption kunt u het besturingssysteem en de gegevensschijven versleutelen die worden gebruikt door een virtuele IaaS-machine. Deze versleuteling omvat beheerde schijven. Voor Windows worden de stations versleuteld met behulp van de standaard BitLocker-versleutelingstechnologie. Voor Linux worden de schijven versleuteld met behulp van de DM-Crypt-technologie. Het versleutelingsproces is geïntegreerd met Azure Key Vault zodat u de schijfversleutelingssleutels kunt controleren en beheren. Zie [Azure Disk Encryption voor virtuele Linux-machines](../articles/virtual-machines/linux/disk-encryption-overview.md) of [Azure Disk Encryption voor virtuele Windows-machines](../articles/virtual-machines/windows/disk-encryption-overview.md) voor meer informatie.
 
@@ -82,9 +90,9 @@ Deze gegevensschijf heeft een maximale capaciteit van 2.048 GiB.
 
 ### <a name="temporary-disk"></a>Tijdelijke schijf
 
-Elke VM bevat een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke schijf biedt langdurige opslag voor toepassingen en processen en is alleen bedoeld om gegevens op te slaan, zoals pagina- of wisselbestanden. Gegevens op de tijdelijke schijf kunnen verloren gaan tijdens een [onderhoudsgebeurtenis](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) of wanneer u een [VM opnieuw implementeert](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Tijdens een geslaagde standaardherstart van de virtuele machine blijven de gegevens op de tijdelijke schijf behouden.  
+Elke VM bevat een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke schijf biedt langdurige opslag voor toepassingen en processen en is alleen bedoeld om gegevens op te slaan, zoals pagina- of wisselbestanden. Gegevens op de tijdelijke schijf kunnen verloren gaan tijdens een [onderhoudsgebeurtenis](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) of wanneer u een [virtuele machine opnieuw implementeert](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Tijdens een geslaagde standaardherstart van de virtuele machine blijven de gegevens op de tijdelijke schijf behouden.  
 
-Op virtuele machines van Azure Linux is de tijdelijke schijf doorgaans /dev/sdb en op virtuele Windows-machines is de tijdelijke schijf standaard D:. De tijdelijke schijf wordt niet versleuteld door SSE (Zie [Versleuteling](#encryption)).
+Op virtuele machines van Azure Linux is de tijdelijke schijf doorgaans /dev/sdb en op virtuele Windows-machines is de tijdelijke schijf standaard D:. De tijdelijke schijf wordt niet versleuteld door versleuteling aan serverzijde tenzij u versleuteling inschakelt op de host.
 
 ## <a name="managed-disk-snapshots"></a>Momentopnamen van beheerde schijf
 

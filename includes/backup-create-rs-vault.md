@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
-ms.translationtype: MT
+ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003731"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Een Recovery Services kluis is een beheer entiteit waarmee herstel punten worden opgeslagen die in de loop van de tijd zijn gemaakt en die een interface biedt voor het uitvoeren van back-upbewerkingen. Dit omvat het maken van back-ups op aanvraag, het uitvoeren van herstel bewerkingen en het maken van back-upbeleid.
+Een Recovery Services-kluis is een beheerentiteit waarmee herstelpunten worden opgeslagen die in de loop van de tijd zijn gemaakt en die een interface biedt voor het uitvoeren van back-upbewerkingen. Dit omvat het maken van back-ups op aanvraag, het uitvoeren van herstelbewerkingen en het maken van back-upbeleid.
 
-Voer de volgende stappen uit om een Recovery Services kluis te maken.
+Voer de volgende stappen uit om een Recovery Services-kluis te maken.
 
 1. Meld u aan bij uw abonnement in [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer in het menu links **alle services**.
+1. Selecteer in het menu links **Alle services**.
 
     ![Alle services selecteren](./media/backup-create-rs-vault/click-all-services.png)
 
@@ -34,31 +34,35 @@ Voer de volgende stappen uit om een Recovery Services kluis te maken.
 
     De lijst met Recovery Services-kluizen in het abonnement wordt weergeven.
 
-1. Selecteer **toevoegen**op het **Recovery Services kluizen** -dash board.
+1. Op het dashboard van de **Recovery Services**-kluizen selecteert u **Toevoegen**.
 
-    ![Een Recovery Services kluis toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
+    ![Een Recovery Services-kluis toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    Het dialoogvenster **Recovery Service-kluis** wordt geopend. Geef waarden op voor de **naam**, het **abonnement**, de **resource groep**en de **locatie**.
+    Het dialoogvenster **Recovery Service-kluis** wordt geopend. Geef waarden op voor **Naam**, **Abonnement**, **Resourcegroep** en **Locatie**.
 
-    ![De Recovery Services kluis configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![De Recovery Services-kluis configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op van ten minste 2, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen uit letters, cijfers en afbreekstreepjes bestaan.
+   - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op van minimaal 2 en maximaal 50 tekens. De naam moet beginnen met een letter en mag alleen uit letters, cijfers en afbreekstreepjes bestaan.
    - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van maar één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaardabonnement (voorgesteld). Er zijn alleen meerdere mogelijkheden als uw werk- of schoolaccount is gekoppeld aan meerdere Azure-abonnementen.
-   - **Resourcegroep**: Gebruik een bestaande resourcegroep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u een resource in de vervolg keuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md)voor meer informatie over resource groepen.
-   - **Locatie**: Selecteer de geografische regio voor de kluis. De kluis *moet* zich in dezelfde regio bevinden als de gegevens bron om een kluis te maken om gegevens bronnen te beveiligen.
+   - **Resourcegroep**: Gebruik een bestaande resourcegroep of maak een nieuwe. Als u de lijst met beschikbare resourcegroepen in uw abonnement wilt weergeven, selecteert u **Bestaande gebruiken** en vervolgens selecteert u een resource in de vervolgkeuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/management/overview.md) voor meer informatie over resourcegroepen.
+   - **Locatie**: Selecteer de geografische regio voor de kluis. Als u een kluis voor het beveiligen van elke willekeurige gegevensbron wilt maken, *moet* de kluis zich in dezelfde regio bevinden als de gegevensbron.
 
       > [!IMPORTANT]
-      > Als u niet zeker bent van de locatie van de gegevens bron, sluit u het dialoog venster. Ga naar de lijst met resources in de portal. Als u gegevens bronnen in meerdere regio's hebt, maakt u een Recovery Services kluis voor elke regio. Maak de kluis op de eerste locatie voordat u de kluis maakt voor een andere locatie. U hoeft geen opslag accounts op te geven om de back-upgegevens op te slaan. De Recovery Services kluis en Azure Backup die automatisch worden verwerkt.
+      > Als u niet zeker bent van de locatie van de gegevensbron, sluit u het dialoogvenster. Ga naar de lijst met uw resources in de portal. Als u gegevensbronnen in meerdere regio's hebt, moet u voor elke regio een Recovery Services-kluis maken. Maak de kluis op de eerste locatie voordat u de kluis maakt voor een andere locatie. U hoeft geen opslagaccounts op te geven om de back-upgegevens op te slaan. De Recovery Services-kluis en Azure Backup verwerken dat automatisch.
       >
       >
 
-1. Wanneer u klaar bent om de Recovery Services kluis te maken, selecteert u **maken**.
+1. Selecteer **Beoordelen en maken** nadat u de waarden hebt opgegeven.
 
-    ![De Recovery Services kluis maken](./media/backup-create-rs-vault/click-create-button.png)
+    ![De Recovery Services-kluis maken](./media/backup-create-rs-vault/review-and-create.png)
 
-    Het kan even duren om de Recovery Services kluis te maken. Bewaak de status meldingen in het gebied **meldingen** in de rechter bovenhoek van de portal. Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst met Recovery Services kluizen. Als uw kluis niet wordt weer geven, selecteert u **vernieuwen**.
+1. Wanneer u klaar bent om de Recovery Services-kluis te maken, selecteert u **Maken**.
+
+    ![De Recovery Services-kluis maken](./media/backup-create-rs-vault/click-create-button.png)
+
+    Het kan even duren voordat de Recovery Services-kluis is gemaakt. Controleer de statusmeldingen rechtsboven in het gebied **Meldingen** in de rechterbovenhoek van de portal. Als de kluis is gemaakt, is deze zichtbaar in de lijst met Recovery Services-kluizen. Als uw kluis niet wordt weergegeven, selecteert u **Vernieuwen**.
 
      ![De lijst met back-upkluizen vernieuwen](./media/backup-create-rs-vault/refresh-button.png)
 
 >[!IMPORTANT]
-> We raden u ten zeerste aan de standaard instellingen voor het **type opslag replicatie** en de **beveiligings instellingen** te controleren voordat u back-ups in de kluis configureert. Zie de sectie [opslag redundantie instellen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) voor meer informatie.
+> We raden u ten zeerste aan de standaardinstellingen voor **Type opslagreplicatie** en **Beveiligingsinstellingen** te controleren voordat u back-ups in de kluis configureert. Zie de sectie [Opslagredundantie instellen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) voor meer informatie.

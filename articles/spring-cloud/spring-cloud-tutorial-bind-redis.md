@@ -1,33 +1,34 @@
 ---
-title: Azure-cache voor redis aan uw Azure lente-Cloud toepassing binden
-description: Meer informatie over hoe u Azure-cache kunt binden voor redis aan uw Azure lente-Cloud toepassing
+title: Azure Cache voor Redis verbinden met uw Azure Spring Cloud-toepassing
+description: Meer informatie over het verbinden van Azure Cache voor Redis met uw Azure Spring Cloud-toepassing
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: ddf239fc6415b3dbee6051d4199cd29e5244e4d2
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
-ms.translationtype: MT
+ms.custom: devx-track-java
+ms.openlocfilehash: 6bbd54be46effe324199639477f9ca4ab31bea98
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091399"
 ---
-# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure-cache voor redis aan uw Azure lente-Cloud toepassing binden 
+# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure Cache voor Redis verbinden met uw Azure Spring Cloud-toepassing 
 
-In plaats van uw Spring-opstart toepassingen hand matig te configureren, kunt u de geselecteerde Azure-Services automatisch binden aan uw toepassingen met behulp van Azure veer Cloud. In dit artikel wordt uitgelegd hoe u uw toepassing verbindt met Azure cache voor redis.
+In plaats van uw Spring Boot-toepassingen handmatig te configureren, kunt u de geselecteerde Azure-services automatisch met uw toepassingen verbinden met behulp van Azure Spring Cloud. In dit artikel wordt uitgelegd hoe u uw toepassing verbindt met Azure Cache voor Redis.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een geïmplementeerd Azure veer Cloud-exemplaar
-* Een Azure-cache voor redis service-exemplaar
-* De Azure veer Cloud-extensie voor de Azure CLI
+* Een geïmplementeerd Azure Spring Cloud-exemplaar
+* Een exemplaar van de Azure Cache voor Redis-service
+* De Azure Spring Cloud-extensie voor de Azure CLI
 
-Als u geen geïmplementeerd Azure lente-Cloud exemplaar hebt, volgt u de stappen in de [Snelstartgids voor het implementeren van een Azure lente-Cloud-app](spring-cloud-quickstart-launch-app-portal.md).
+Als u geen geïmplementeerd Azure Spring Cloud-exemplaar hebt, volgt u de stappen in de [quickstart voor het implementeren van een Azure Spring Cloud-toepassing](spring-cloud-quickstart-launch-app-portal.md).
 
-## <a name="bind-azure-cache-for-redis"></a>Azure-cache binden voor redis
+## <a name="bind-azure-cache-for-redis"></a>Azure Cache voor Redis verbinden
 
-1. Voeg de volgende afhankelijkheden toe aan het pom.xml-bestand van uw project:
+1. Voeg de volgende afhankelijkheid toe aan het bestand pom.xml van uw project:
 
     ```xml
     <dependency>
@@ -35,17 +36,17 @@ Als u geen geïmplementeerd Azure lente-Cloud exemplaar hebt, volgt u de stappen
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. `spring.redis.*`Eigenschappen uit het bestand verwijderen `application.properties`
+1. Verwijder alle `spring.redis.*`-eigenschappen uit het bestand `application.properties`
 
-1. Werk de huidige implementatie bij met `az spring-cloud app update` of maak een nieuwe implementatie met `az spring-cloud app deployment create` .
+1. Werk de huidige implementatie bij met `az spring-cloud app update` of maak een nieuwe implementatie met `az spring-cloud app deployment create`.
 
-1. Ga naar de pagina Azure lente-Cloud service in de Azure Portal. Ga naar het **dash board** van de toepassing en selecteer de toepassing die u wilt verbinden met Azure cache voor redis. Deze toepassing is hetzelfde als die u in de vorige stap hebt bijgewerkt of geïmplementeerd.
+1. Ga naar de pagina van Azure Spring Cloud in de Azure-portal. Ga naar **Toepassingsdashboard** en selecteer de toepassing die u met Azure Cache voor Redis wilt verbinden. Dit is dezelfde toepassing als die u in de vorige stap hebt bijgewerkt of geïmplementeerd.
 
-1. Selecteer **service binding** en selecteer **service binding maken**. Vul het formulier in en zorg ervoor dat u de waarde voor het **bindings type** **Azure cache selecteert voor redis**, uw Azure cache voor redis-server en de **primaire** -sleutel optie.
+1. Selecteer **Servicebinding** en selecteer de knop **Servicebinding maken**. Vul het formulier in en selecteer bij **Bindingstype** de optie **Azure Cache voor Redis**, en selecteer uw Azure Cache voor Redis-server en de sleuteloptie **Primair**.
 
-1. De app opnieuw starten. De binding moet nu worden uitgevoerd.
+1. De app opnieuw starten. De binding moet nu werken.
 
-1. Om ervoor te zorgen dat de service binding juist is, selecteert u de naam van de binding en controleert u de gegevens. Het `property` veld moet er als volgt uitzien:
+1. Als u wilt controleren of de servicebinding juist is, selecteert u de naam van de binding en verifieert u de details ervan. Het veld `property` moet er als volgt uitzien:
     ```
     spring.redis.host=some-redis.redis.cache.windows.net
     spring.redis.port=6380
@@ -55,4 +56,4 @@ Als u geen geïmplementeerd Azure lente-Cloud exemplaar hebt, volgt u de stappen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u uw Azure lente-Cloud toepassing kunt binden aan Azure cache voor redis. Zie [verbinding maken met een Azure database for MySQL-exemplaar](spring-cloud-tutorial-bind-mysql.md)voor meer informatie over bindings Services voor uw toepassing.
+In dit artikel hebt u meer geleerd over het verbinden van uw Azure Spring Cloud-toepassing met Azure Cache voor Redis. Zie [Verbinden met een Azure Database for MySQL-exemplaar](spring-cloud-tutorial-bind-mysql.md) voor meer informatie over bindingsservices voor uw toepassing.

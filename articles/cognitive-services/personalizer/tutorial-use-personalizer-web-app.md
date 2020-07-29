@@ -1,56 +1,55 @@
 ---
-title: Web-app-persoonlijker gebruiken
-description: Een C# .NET-Web-App aanpassen met een Personaler-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en context functies.
+title: Web-app gebruiken - Personalizer
+description: Een C# .NET-web-app aanpassen met een Personalizer-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en contextfuncties.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.author: diberry
-ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
-ms.translationtype: MT
+ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207608"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133126"
 ---
-# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Zelf studie: een persoonlijker toevoegen aan een .NET-Web-app
+# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Zelfstudie: Personalizer toevoegen aan een .NET-web-app
 
-Een C# .NET-Web-App aanpassen met een Personaler-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en context functies.
+Een C# .NET-web-app aanpassen met een Personalizer-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en contextfuncties.
 
 **In deze zelfstudie leert u het volgende:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Persoonlijke sleutel en eind punt instellen
+> * Personalizer-sleutel en -eindpunt instellen
 > * Functies verzamelen
-> * Classificatie-en belonings-Api's aanroepen
-> * Meest voorkomende actie weer geven, aangeduid als _rewardActionId_
+> * Rank- en Reward-API's aanroepen
+> * Beste actie weergeven, aangeduid als _rewardActionId_
 
 
 
 ## <a name="select-the-best-content-for-a-web-app"></a>De beste inhoud voor een web-app selecteren
 
-Een web-app moet Personaler gebruiken als er een lijst met _acties_ (een type inhoud) op de webpagina moet worden aangepast aan één topitem (rewardActionId) om weer te geven. Voor beelden van actie lijsten zijn nieuws artikelen, knoppen plaatsen en woord keuzes voor product namen.
+Een web-app moet Personalizer gebruiken als er een lijst is met _acties_ (een bepaald type inhoud) op de webpagina die moet worden aangepast aan één topitem (rewardActionId) dat moet worden weergegeven. Voorbeelden van actielijsten zijn nieuwsartikelen, locaties voor het plaatsen van knoppen en woordkeuzes voor productnamen.
 
-U verzendt de lijst met acties, samen met context functies, naar de aangepaste lus. Met persoonlijke instellingen selecteert u één beste actie, waarna uw web-app die actie weergeeft.
+U verzendt de lijst met acties, samen met contextfuncties, naar de Personalizer-lus. Personalizer selecteert één beste actie, en daarna geeft uw web-app die actie weer.
 
-In deze zelf studie zijn de volgende typen voedings middelen:
+In deze zelfstudie zijn de acties typen voedingsmiddelen:
 
 * pasta
-* ijs
-* SAP
+* ice cream
+* juice
 * salad
 * popcorn
-* koffie
-* soep
+* coffee
+* soup
 
-Als u persoonlijker wilt weten over uw acties, kunt u beide __acties verzenden met functies_ en _context functies_ met elke rangorde API-aanvraag.
+Om Personalizer te helpen meer te weten te komen over uw acties, verzendt u zowel _acties met functies_ als _contextfuncties_ bij elke Rank API-aanvraag.
 
-Een **functie** van het model is informatie over de actie of context die kan worden geaggregeerd (gegroepeerd) voor leden van de gebruikers database van uw web-app. Een functie _is niet_ afzonderlijk specifiek (zoals een gebruikers-id) of zeer specifiek (zoals een exacte tijd van de dag).
+Een **functie** van het model is informatie over de actie of context die kan worden geaggregeerd (gegroepeerd) voor leden van de gebruikersdatabase van uw web-app. Een functie _is niet_ individueel specifiek (zoals een gebruikers-ID) of uiterst specifiek (zoals een exacte tijdstip op de dag).
 
 ### <a name="actions-with-features"></a>Acties met functies
 
-Elke actie (inhouds item) heeft functies waarmee u het voedings middel kunt onderscheiden.
+Elke actie (inhoudsitem) heeft functies waarmee u het voedingsmiddel kunt onderscheiden.
 
-De functies zijn niet geconfigureerd als onderdeel van de configuratie van de lus in de Azure Portal. In plaats daarvan worden ze verzonden als een JSON-object met elke Rank API-aanroep. Dit biedt flexibiliteit voor de acties en hun functies om de tijd te verg Roten, te wijzigen en te verkleinen, waardoor uw persoonlijke voor keuren trends kunnen volgen.
+De functies zijn niet geconfigureerd als onderdeel van de lusconfiguratie in de Azure Portal. In plaats daarvan worden ze verzonden als een JSON-object met elke Rank API-aanroep. Dit biedt flexibiliteit voor de acties en hun functies om in de loop van de tijd te groeien, te wijzigen en te krimpen, waardoor Personalizer trends kan volgen.
 
 ```csharp
  /// <summary>
@@ -116,13 +115,13 @@ De functies zijn niet geconfigureerd als onderdeel van de configuratie van de lu
 ```
 
 
-## <a name="context-features"></a>Context functies
+## <a name="context-features"></a>Contextfuncties
 
-Context functies helpen persoonlijker de context van de acties te begrijpen. De context voor deze voorbeeld toepassing omvat:
+Contextfuncties helpen Personalizer om de context van de acties te begrijpen. De context voor deze voorbeeldtoepassing omvat:
 
-* tijdstip van de dag-morgen, middag, avond, nacht
-* voor keur van de gebruiker voor smaak-zouty, zoete, bitter, zure of Savory
-* context gebruikers agent van de browser, geografische locatie, verwijzende site
+* tijdstip van de dag: morning, afternoon, evening, night
+* voorkeur van de gebruiker voor smaak: salty, sweet, bitter, sour of savory
+* context van de browser: user agent, geographical location, referrer
 
 ```csharp
 /// <summary>
@@ -150,42 +149,42 @@ private string GetUsersTastePreference()
 }
 ```
 
-## <a name="how-does-the-web-app-use-personalizer"></a>Hoe wordt persoonlijker gebruikt de web-app?
+## <a name="how-does-the-web-app-use-personalizer"></a>Hoe wordt Personalizer gebruikt door de web-app?
 
-De web-app gebruikt persoonlijke instellingen om de beste actie te selecteren in de lijst met voedings opties. Dit doet u door de volgende informatie te verzenden bij elke rangorde API-aanroep:
-* **acties** met hun functies, zoals `taste` en`spiceLevel`
-* **context** functies, zoals `time` de dag, de `taste` voor keur van de gebruiker en de gegevens van de gebruikers agent van de browser en de context functies
-* **acties die moeten worden uitgesloten** , zoals SAP
-* **eventId**voor elke aanroep naar Rank API.
+De web-app gebruikt Personalizer om de beste actie te selecteren in de lijst met opties voor voedingsmiddelen. Dit doet de web-app door de volgende informatie te verzenden bij elke Rank API-aanroep:
+* **acties** met hun functies, zoals `taste` en `spiceLevel`
+* **context**functies, zoals `time` van de dag, de voorkeuren voor `taste` van de gebruiker en de gegevens van de gebruikersagent van de browser en contextfuncties
+* **uit te sluiten acties**, zoals juice
+* **eventId**, die verschillend is voor elke aanroep van de Rank API.
 
-## <a name="personalizer-model-features-in-a-web-app"></a>Model functies personaliseren in een web-app
+## <a name="personalizer-model-features-in-a-web-app"></a>Personalizer-modelfuncties in een web-app
 
-Personaler vereist functies voor de acties (inhoud) en de huidige context (gebruiker en omgeving). Functies worden gebruikt om acties uit te lijnen op de huidige context in het model. Het model is een weer gave van de laatste kennis over acties, context en hun functies van Personaler, waarmee IT getrainde beslissingen kan nemen.
+Personalizer vereist functies voor de acties (inhoud) en de huidige context (gebruiker en omgeving). Functies worden gebruikt om acties af te stemmen met de huidige context in het model. Het model is een weergave van de laatste kennis van Personalizer over acties, context en hun functies, waarmee deze gefundeerde beslissingen kan nemen.
 
-Het model, inclusief functies, wordt bijgewerkt volgens een schema op basis van de instelling van uw **model update frequentie** in de Azure Portal.
+Het model, inclusief functies, wordt bijgewerkt volgens een schema op basis van de updatefrequentie van uw **model** in Azure Portal.
 
 > [!CAUTION]
-> Functies in deze toepassing zijn bedoeld om functies en onderdeel waarden te illustreren, maar niet noodzakelijkerwijs de beste functies die in een web-app kunnen worden gebruikt.
+> Functies in deze toepassing zijn bedoeld om functies en functiewaarden te illustreren, maar niet noodzakelijkerwijs de beste functies om in een web-app te gebruiken.
 
-### <a name="plan-for-features-and-their-values"></a>Plannen voor functies en hun waarden
+### <a name="plan-for-features-and-their-values"></a>Functies en hun waarden plannen
 
-Functies moeten worden geselecteerd met dezelfde planning en hetzelfde ontwerp die u zou Toep assen op elk schema of model in uw technische architectuur. De functie waarden kunnen worden ingesteld met bedrijfs logica of systemen van derden. Onderdeel waarden moeten niet zo zeer specifiek zijn dat ze niet van toepassing zijn op een groep of een klasse van functies.
+Functies moeten worden geselecteerd met dezelfde planning en hetzelfde ontwerp als u zou toepassen op elk schema of model in uw technische architectuur. De functiewaarden kunnen worden ingesteld met bedrijfslogica of systemen van derden. Functiewaarden moeten niet zo uiterst specifiek zijn dat ze niet van toepassing zijn op een groep of een klasse van functies.
 
-### <a name="generalize-feature-values"></a>Functie waarden generaliseren
+### <a name="generalize-feature-values"></a>Functiewaarden generaliseren
 
 #### <a name="generalize-into-categories"></a>Generaliseren in categorieën
 
-Deze app maakt gebruik van `time` als een functie, maar groeps tijd in categorieën zoals `morning` , `afternoon` , en `evening` `night` . Dit is een voor beeld van het gebruik van de informatie over tijd, maar niet op een zeer specifieke manier, zoals `10:05:01 UTC+2` .
+Deze app maakt gebruik van `time` als een functie, maar groepeert tijd in categorieën als `morning`, `afternoon`, `evening` en `night`. Dit is een voorbeeld van het gebruik van de informatie over tijd, maar niet op een uiterst specifieke manier, zoals `10:05:01 UTC+2`.
 
-#### <a name="generalize-into-parts"></a>Generaliseren in onderdelen
+#### <a name="generalize-into-parts"></a>Generaliseren in delen
 
-Deze app maakt gebruik van de functies van de HTTP-aanvraag vanuit de browser. Dit begint met een zeer specifieke teken reeks met alle gegevens, bijvoorbeeld:
+Deze app maakt gebruik van de HTTP-aanvraagfuncties vanuit de browser. Dit begint met een zeer specifieke tekenreeks met alle gegevens, bijvoorbeeld:
 
 ```http
 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko) Chrome/80.0.3900.140 Safari/537.36
 ```
 
-De **HttpRequestFeatures** -klassebibliotheek generaliseert deze teken reeks in een **userAgentInfo** -object met afzonderlijke waarden. Waarden die te specifiek zijn, worden ingesteld op een lege teken reeks. Wanneer de context functies voor de aanvraag worden verzonden, heeft deze de volgende JSON-indeling:
+De klassebibliotheek **HttpRequestFeatures** generaliseert deze tekenreeks in een **userAgentInfo**-object met afzonderlijke waarden. Waarden die te specifiek zijn, worden ingesteld op een lege tekenreeks. Wanneer de contextfuncties voor de aanvraag worden verzonden, heeft deze de volgende JSON-indeling:
 
 ```JSON
 {
@@ -206,37 +205,37 @@ De **HttpRequestFeatures** -klassebibliotheek generaliseert deze teken reeks in 
 ```
 
 
-## <a name="using-sample-web-app"></a>Voor beeld-web-app gebruiken
+## <a name="using-sample-web-app"></a>De voorbeeld-web-app gebruiken
 
-De voor beeld-web-app op basis van een browser (alle code wordt meegeleverd) vereist de volgende toepassingen die zijn geïnstalleerd om de app uit te voeren.
+Voor de voorbeeld-web-app op basis van een browser (alle code wordt meegeleverd) moeten de volgende toepassingen zijn geïnstalleerd om de app uit te voeren.
 
 Installeer de volgende software:
 
-* [.Net core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1) -de voor beeld-back-end-server maakt gebruik van .net core
-* [Node.js](https://nodejs.org/) -de client-front-end is afhankelijk van deze toepassing
-* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)of [.net core SLI](https://docs.microsoft.com/dotnet/core/tools/) : gebruik de ontwikkel omgeving van Visual studio 2019 of de .net core SLI om de app te bouwen en uit te voeren
+* [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1): de voorbeeld-back-endserver gebruikt .NET core
+* [Node. js](https://nodejs.org/): de client/front-end is afhankelijk van deze toepassing
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) of [.NET Core SLI](https://docs.microsoft.com/dotnet/core/tools/): gebruik de ontwikkelomgeving van Visual Studio 2019 of de .NET Core SLI om de app te bouwen en uit te voeren
 
-### <a name="set-up-the-sample"></a>Het voor beeld instellen
-1. Kloon de Azure Personaler-voor beelden opslag plaats.
+### <a name="set-up-the-sample"></a>Het voorbeeld instellen
+1. Kloon de opslagplaats met Azure Personalizer-voorbeelden.
 
     ```bash
     git clone https://github.com/Azure-Samples/cognitive-services-personalizer-samples.git
     ```
 
-1. Navigeer naar _samples/HttpRequestFeatures_ om de oplossing te openen `HttpRequestFeaturesExample.sln` .
+1. Navigeer naar _samples/HttpRequestFeatures_ om de oplossing te openen, `HttpRequestFeaturesExample.sln`.
 
-    Indien aangevraagd, kan Visual Studio het .NET-pakket voor Personaler bijwerken.
+    Sta Visual Studio toe het .NET-pakket voor Personalizer bij te werken als u hierom wordt gevraagd.
 
-### <a name="set-up-azure-personalizer-service"></a>Azure Personaler service instellen
+### <a name="set-up-azure-personalizer-service"></a>Azure Personalizer-service instellen
 
-1. [Maak een persoonlijke resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) in de Azure Portal.
+1. [Maak een Personalizer-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) in de Azure-portal.
 
-1. Zoek in de Azure Portal de `Endpoint` en een `Key1` of `Key2` (werk) op het tabblad **sleutels en eind punten** . Dit zijn je `PersonalizerServiceEndpoint` en je `PersonalizerApiKey` .
-1. Vul de `PersonalizerServiceEndpoint` in **appsettings.js**in.
-1. Configureer de certificaat `PersonalizerApiKey` geheimen als een [app](https://docs.microsoft.com/aspnet/core/security/app-secrets) op een van de volgende manieren:
+1. Zoek in de Azure-portal de `Endpoint` en een `Key1` of `Key2` (beide werken) op het tabblad **Sleutels en eindpunten**. Dit zijn uw `PersonalizerServiceEndpoint` en uw `PersonalizerApiKey`.
+1. Vul de `PersonalizerServiceEndpoint` in **appsettings.json** in.
+1. Configureer de `PersonalizerApiKey` als een [app-geheim](https://docs.microsoft.com/aspnet/core/security/app-secrets) op een van de volgende manieren:
 
-    * Als u de .NET Core SLI gebruikt, kunt u de opdracht gebruiken `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` .
-    * Als u Visual Studio gebruikt, kunt u met de rechter muisknop op het project klikken en de menu optie **gebruikers geheimen beheren** selecteren om de sleutels van de persoonlijker te configureren. Als u dit doet, wordt in Visual Studio een `secrets.json` bestand geopend waarin u de sleutels als volgt kunt toevoegen:
+    * Als u de .NET Core CLI gebruikt, kunt u de opdracht `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` gebruiken.
+    * Als u Visual Studio gebruikt, kunt u met de rechtermuisknop op het project klikken en de menuoptie **Gebruikersgeheimen beheren** selecteren om de Personalizer-sleutels te configureren. Als u dit doet, wordt in Visual Studio een `secrets.json`-bestand geopend waaraan u de sleutels als volgt kunt toevoegen:
 
     ```JSON
     {
@@ -248,53 +247,53 @@ Installeer de volgende software:
 
 Bouw en voer HttpRequestFeaturesExample uit met een van de volgende methoden:
 
-* Visual Studio 2019: druk op **F5**
-* .NET Core SLI: `dotnet build` then`dotnet run`
+* Visual Studio 2019: Druk op **F5**
+* .NET Core CLI: `dotnet build` en vervolgens `dotnet run`
 
-U kunt via een webbrowser een rang aanvraag en een belonings aanvraag verzenden en hun antwoorden zien, evenals de functies van de HTTP-aanvraag die zijn geëxtraheerd uit uw omgeving.
+U kunt via een webbrowser een Rank-aanvraag en een Reward-aanvraag verzenden en de antwoorden zien, evenals de HTTP-aanvraagfuncties die zijn geëxtraheerd uit uw omgeving.
 
 > [!div class="mx-imgBorder"]
-> ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browser venster geopend waarin de toepassing met één pagina wordt weer gegeven.](./media/tutorial-web-app/web-app-single-page.png)
+> ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browservenster geopend waarin de toepassing met één pagina wordt weergegeven.](./media/tutorial-web-app/web-app-single-page.png)
 
-## <a name="demonstrate-the-personalizer-loop"></a>De Personaler-lus demonstreren
+## <a name="demonstrate-the-personalizer-loop"></a>De Personalizer-lus tonen
 
-1. Selecteer de knop **nieuwe positie aanvragen genereren** om een nieuw JSON-object te maken voor de positie-API-aanroep. Hiermee worden de acties (met functies) en context functies gemaakt en worden de waarden weer gegeven, zodat u kunt zien hoe de JSON eruit ziet.
+1. Selecteer de knop **Generate new Rank Request** om een nieuw JSON-object te maken voor de Rank API-aanroep. Hiermee worden de acties (met functies) en contextfuncties gemaakt en worden de waarden weergegeven, zodat u kunt zien hoe de JSON eruitziet.
 
-    Voor uw eigen toekomstige toepassing kunnen er acties en functies worden gegenereerd op de client, op de server, een combi natie van de twee of met aanroepen naar andere services.
+    Voor uw eigen toekomstige toepassing kunnen er acties en functies worden gegenereerd op de client, op de server, een combinatie van de twee of met aanroepen naar andere services.
 
-1. Selecteer **positie aanvraag verzenden** om het JSON-object naar de server te verzenden. De server roept de Personaler Rank-API aan. De server ontvangt het antwoord en retourneert de bovenste geclassificeerde actie naar de client om weer te geven.
+1. Selecteer **Send Rank Request** om het JSON-object naar de server te verzenden. De server roept de Rank API van de Personalizer aan. De server ontvangt het antwoord en retourneert de hoogst geclassificeerde actie aan de client voor weergave.
 
-1. Stel de belonings waarde in en selecteer vervolgens de knop **belonings aanvraag verzenden** . Als u de belonings waarde niet wijzigt, verzendt de client toepassing altijd de waarde `1` naar personaler.
+1. Stel de beloningswaarde in en selecteer de knop **Send Reward Request**. Als u de beloningswaarde niet wijzigt, verzendt de clienttoepassing altijd de waarde `1` naar Personalizer.
 
     > [!div class="mx-imgBorder"]
-    > ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browser venster geopend waarin de toepassing met één pagina wordt weer gegeven.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browservenster geopend waarin de toepassing met één pagina wordt weergegeven.](./media/tutorial-web-app/reward-score-api-call.png)
 
-    Voor uw eigen toepassing is het mogelijk dat er een belonings score wordt gegenereerd na het verzamelen van informatie van het gedrag van de gebruiker op de client, samen met de bedrijfs logica op de server.
+    Voor uw eigen toepassing is het mogelijk dat er een beloningsscore wordt gegenereerd na het verzamelen van informatie van het gedrag van de gebruiker op de client, samen met de bedrijfslogica op de server.
 
-## <a name="understand-the-sample-web-app"></a>Meer informatie over de voor beeld-web-app
+## <a name="understand-the-sample-web-app"></a>De voorbeeld-web-app begrijpen
 
-De voor beeld-web-app heeft een **C# .net** -server, die het verzamelen van functies beheert en http-aanroepen naar uw personaler-eind punt verzendt en ontvangt.
+De voorbeeld-web-app bevat een **C# .NET**-server, die het verzamelen van functies en het verzenden en ontvangen van HTTP-aanroepen naar uw Personalizer-eindpunt beheert.
 
-De voor beeld-Web-App maakt gebruik van een **afdek front-end-client toepassing** voor het vastleggen van functies en het verwerken van gebruikers interface acties, zoals het klikken op knoppen en het verzenden van gegevens naar de .NET-Server.
+De voorbeeld-web-app maakt gebruik van een **knockout front-end clienttoepassing** om functies vast te leggen en acties voor de gebruikersinterface te verwerken, zoals het klikken op knoppen en het verzenden van gegevens naar de .NET-server.
 
-In de volgende secties worden de onderdelen van de server en client uitgelegd die een ontwikkelaar nodig heeft om persoonlijker te gebruiken.
+In de volgende secties worden de onderdelen van de server en client uitgelegd die een ontwikkelaar nodig heeft om Personalizer te gebruiken.
 
-## <a name="rank-api-client-application-sends-context-to-server"></a>Rank API: client toepassing stuurt context naar server
+## <a name="rank-api-client-application-sends-context-to-server"></a>Rank API: Clienttoepassing verzendt context naar server
 
-De client toepassing verzamelt de _gebruikers agent_van de browser van de gebruiker.
+De clienttoepassing haalt de _gebruikersagent_ van de browser van de gebruiker op.
 
 > [!div class="mx-imgBorder"]
-> ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browser venster geopend waarin de toepassing met één pagina wordt weer gegeven.](./media/tutorial-web-app/user-agent.png)
+> ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browservenster geopend waarin de toepassing met één pagina wordt weergegeven.](./media/tutorial-web-app/user-agent.png)
 
-## <a name="rank-api-server-application-calls-personalizer"></a>Rank API: Server toepassing aanroepen persoonlijker
+## <a name="rank-api-server-application-calls-personalizer"></a>Rank API: Servertoepassing roept Personalizer aan
 
-Dit is een typische .NET-Web-app met een client toepassing. veel van de code van de ketel plaat wordt voor u gegeven. Code die niet specifiek is voor Personaler, wordt verwijderd uit de volgende code fragmenten, zodat u zich kunt concentreren op de code van uw persoonlijke voor keur.
+Dit is een typische .NET-web-app met een clienttoepassing, waarvan veel van de standaardcode aan u wordt verstrekt. Code die niet specifiek is voor Personalizer wordt verwijderd uit de volgende codefragmenten, zodat u zich kunt concentreren op de voor Personalizer specifieke code.
 
-### <a name="create-personalizer-client"></a>Personaler-client maken
+### <a name="create-personalizer-client"></a>Personalizer-client maken
 
-In de **Startup.cs**van de server worden de personaler-eind punt en-sleutel gebruikt om de personaler-client te maken. De client toepassing hoeft niet te communiceren met Personaler in deze app, in plaats van op de server te vertrouwen om deze SDK-aanroepen uit te voeren.
+In de **Startup.cs** van de server worden het Personalizer-eindpunt en de Personalizer-sleutel gebruikt om de Personalizer-client te maken. De clienttoepassing hoeft niet te communiceren met Personalizer in deze app, en vertrouwt in plaats daarvan op de server om deze SDK-aanroepen uit te voeren.
 
-De .NET-opstart code van de webserver is:
+De .NET-opstartcode van de webserver is:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;
@@ -336,15 +335,15 @@ namespace HttpRequestFeaturesExample
 }
 ```
 
-### <a name="select-best-action"></a>Selecteer de aanbevolen actie
+### <a name="select-best-action"></a>Beste actie selecteren
 
-In de **PersonalizerController.cs**van de server wordt de **GenerateRank** -Server-API samen vatting gegeven van de voor bereiding om de positie-API aan te roepen
+In de **PersonalizerController.cs** van de server, geeft de server-API **GenerateRank** de voorbereiding voor het aanroepen van de Rank API weer
 
-* Nieuwe maken `eventId` voor de classificatie oproep
+* Nieuwe `eventId` maken voor de Rank-aanroep
 * De lijst met acties ophalen
-* De lijst met functies van de gebruiker ophalen en context functies maken
-* Eventueel uitgesloten acties instellen
-* Aanroep van de classificatie-API, retour neren van resultaten naar client
+* De lijst met functies van de gebruiker ophalen en contextfuncties maken
+* Desgewenst uitgesloten acties instellen
+* Rank API aanroepen, resultaten aan client retourneren
 
 ```csharp
 /// <summary>
@@ -380,7 +379,7 @@ public RankRequest GenerateRank()
 }
 ```
 
-De JSON die wordt verzonden naar Personaler, met beide acties (met functies) en de huidige context functies, ziet er als volgt uit:
+De JSON die wordt verzonden naar Personalizer, die beide acties (met functies) en de huidige contextfuncties bevat, ziet er als volgt uit:
 
 ```json
 {
@@ -511,11 +510,11 @@ De JSON die wordt verzonden naar Personaler, met beide acties (met functies) en 
 }
 ```
 
-### <a name="return-personalizer-rewardactionid-to-client"></a>Personaler rewardActionId retour neren aan client
+### <a name="return-personalizer-rewardactionid-to-client"></a>rewardActionId van Personalizer retourneren aan client
 
-De positie-API retourneert de geselecteerde best mogelijke actie **rewardActionId** naar de server.
+De Rank API retourneert de geselecteerde beste actie **rewardActionId** aan de server.
 
-De actie weer geven die is geretourneerd in **rewardActionId**.
+De actie weergeven die is geretourneerd in **rewardActionId**.
 
 ```json
 {
@@ -554,41 +553,41 @@ De actie weer geven die is geretourneerd in **rewardActionId**.
 }
 ```
 
-### <a name="client-displays-the-rewardactionid-action"></a>Client geeft de rewardActionId-actie
+### <a name="client-displays-the-rewardactionid-action"></a>Client geeft de actie rewardActionId weer
 
-In deze zelf studie `rewardActionId` wordt de waarde weer gegeven.
+In deze zelfstudie wordt de waarde `rewardActionId` weergegeven.
 
-In uw eigen toekomstige toepassing is dit mogelijk een exacte tekst, een knop of een sectie van de webpagina gemarkeerd. De lijst wordt geretourneerd voor een post analyse van scores, niet voor het ordenen van de inhoud. Alleen de `rewardActionId` inhoud moet worden weer gegeven.
+In uw eigen toekomstige toepassing is dit mogelijk een exacte tekst, een knop of een gemarkeerde sectie van de webpagina. De lijst wordt geretourneerd voor een post-analyse van scores, niet voor het ordenen van de inhoud. Alleen de inhoud van `rewardActionId` moet worden weergegeven.
 
-## <a name="reward-api-collect-information-for-reward"></a>Belonings-API: informatie verzamelen voor beloning
+## <a name="reward-api-collect-information-for-reward"></a>Reward API: informatie voor beloning verzamelen
 
-De [belonings Score](concept-rewards.md) moet zorgvuldig worden gepland, net zoals de functies gepland zijn. De belonings score moet meestal een waarde tussen 0 en 1 zijn. De waarde _kan_ gedeeltelijk worden berekend in de client toepassing, op basis van gedrag van gebruikers en gedeeltelijk op de server, op basis van bedrijfs logica en doel stellingen.
+De [beloningsscore](concept-rewards.md) moet zorgvuldig worden gepland, net zoals de functies zijn gepland. De beloningsscore moet meestal een waarde tussen 0 en 1 zijn. De waarde _kan_ gedeeltelijk worden berekend in de clienttoepassing, op basis van gedrag van gebruikers, en gedeeltelijk op de server, op basis van bedrijfslogica en doelstellingen.
 
-Als de server geen belonings-API aanroept binnen de **tijd** die is geconfigureerd in de Azure portal voor uw personaler-resource, wordt de **standaard beloning** (ook geconfigureerd in de Azure Portal) gebruikt voor die gebeurtenis.
+Als de server de Reward API niet aanroept binnen de **beloningswachttijd** die voor uw Personalizer-resource in de Azure-portal is geconfigureerd, wordt de **standaardbeloning** (ook in de Azure-portal geconfigureerd) voor die gebeurtenis gebruikt.
 
-In deze voorbeeld toepassing kunt u een waarde selecteren om te zien hoe de beloning van invloed is op de selecties.
+In deze voorbeeldtoepassing kunt u een waarde selecteren om te zien hoe de beloning van invloed is op de selecties.
 
-## <a name="additional-ways-to-learn-from-this-sample"></a>Meer manieren om te leren van dit voor beeld
+## <a name="additional-ways-to-learn-from-this-sample"></a>Meer manieren om te leren van dit voorbeeld
 
-In het voor beeld wordt gebruikgemaakt van verschillende op tijd gebaseerde gebeurtenissen die zijn geconfigureerd in de Azure Portal voor uw persoonlijke resource. Als u met deze waarden speelt, keert u terug naar deze voor beeld-web-app om te zien hoe de wijzigingen van invloed zijn op de rang en beloningen:
+In het voorbeeld wordt gebruikgemaakt van verschillende op tijd gebaseerde gebeurtenissen die voor uw Personalizer-resource zijn geconfigureerd in Azure Portal. Als u met deze waarden oefent, keert u terug naar deze voorbeeld-web-app om te zien hoe de wijzigingen van invloed zijn op de Rank- en Reward-aanroepen:
 
-* Wacht tijd op beloning
-* Frequentie van model updates
+* Wachttijd voor beloning
+* Bijwerkfrequentie voor model
 
-Aanvullende instellingen voor afspelen met zijn onder andere:
-* Standaard beloning
-* Exploratie percentage
+Aanvullende instellingen om mee te oefenen zijn onder meer:
+* Standaardbeloning
+* Verkenningspercentage
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze zelf studie, moet u de volgende resources opschonen:
+Wanneer u klaar bent met deze zelfstudie, moet u de volgende resources opschonen:
 
-* Verwijder uw voor beeld-projectmap.
-* Verwijder uw persoonlijke resource-beschouw een persoonlijker resource als toegewezen aan de acties en pas de resource alleen opnieuw toe als u nog steeds het domein levens middelen als acties gebruikt.
+* Verwijder de map met uw voorbeeldproject.
+* Verwijder uw Personalizer-resource. Zie een Personalizer-resource als toegewezen aan de acties en context. Gebruik de resource alleen opnieuw als u nog steeds de levensmiddelen als onderwerpdomein voor acties gebruikt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Hoe Personalizer werkt](how-personalizer-works.md)
-* [Functies](concepts-features.md): concepten leren over functies met behulp van acties en context
+* [Functies](concepts-features.md): meer informatie over concepten over functies met behulp van acties en context
 * [Beloningen](concept-rewards.md): meer informatie over het berekenen van beloningen
