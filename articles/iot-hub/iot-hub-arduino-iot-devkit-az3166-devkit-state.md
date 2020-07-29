@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73483952"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337939"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -114,7 +114,4 @@ U hebt het volgende geleerd:
 - Verbind een MXChip IoT DevKit-apparaat met uw Azure IoT-oplossing voor externe controle.
 - Gebruik de Azure IoT-functie voor apparaatdubbels om de kleur van de RGB-LED van DevKit te bedenken en te beheren.
 
-Hier volgen de voorgestelde volgende stappen:
-
-* [Overzicht van de oplossing voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](/azure/iot-central/core/howto-connect-devkit)
+Hier volgt de voorgestelde volgende stap: [overzicht van de Azure IOT-oplossing voor externe controle](https://docs.microsoft.com/azure/iot-suite/)

@@ -1,6 +1,6 @@
 ---
 title: Wat is het IP-adres 168.63.129.16? | Microsoft Docs
-description: Meer informatie over IP-adres 168.63.129.16 en hoe het werkt met uw resources.
+description: Meer informatie over IP-adres 168.63.129.16, met name voor het gebruik van een communicatie kanaal naar Azure-platform bronnen.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: bae1fbc89564ca17938e6a630146be5e5fb5b11f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286033"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Wat is het IP-adres 168.63.129.16?
 
@@ -44,5 +44,5 @@ In een scenario met een niet-virtueel netwerk (klassiek), wordt de status test g
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beveiligingsgroepen](security-overview.md)
+- [Beveiligings groepen](security-overview.md)
 - [Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen](manage-network-security-group.md)

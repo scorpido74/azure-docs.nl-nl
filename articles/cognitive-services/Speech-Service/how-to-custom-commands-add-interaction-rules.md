@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851308"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289039"
 ---
 # <a name="add-interaction-rules"></a>Interactieregels toevoegen
 
-In dit artikel vindt u informatie over *interactie regels*. Deze extra regels verwerken meer specifieke of complexe situaties. U kunt uw eigen aangepaste interactie regels schrijven, maar in dit artikel maakt u gebruik van interactie regels voor de volgende doel scenario's:
+In dit artikel vindt u meer informatie over **interactie regels**. Dit zijn aanvullende regels voor het afhandelen van specifieke of complexe situaties. Wanneer u uw eigen aangepaste interactie regels wilt maken, in dit artikel kunt u het gebruik van interactie regels voor de volgende doel scenario's gebruiken:
 
 * Opdrachten bevestigen
 * Een correctie met één stap toevoegen aan opdrachten
@@ -30,8 +30,8 @@ Ga voor meer informatie over interactie regels naar het gedeelte [verwijzingen](
 
 U moet de stappen in de volgende artikelen hebben voltooid:
 > [!div class="checklist"]
-> * [Toepassing met eenvoudige opdrachten maken](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Parameters toevoegen aan opdrachten](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Procedure: een toepassing maken met eenvoudige opdrachten](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Procedure: para meters toevoegen aan opdrachten](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Bevestigingen toevoegen aan een opdracht
 
@@ -40,7 +40,7 @@ Als u een bevestiging wilt toevoegen, gebruikt u de opdracht **SetTemperature** 
 1. Selecteer de opdracht **SetTemperature** in het linkerdeel venster.
 1. Voeg interactie regels toe door **toevoegen** te selecteren in het middelste deel venster. Selecteer vervolgens de opdracht regels bevestigen van de **interactie**  >  **Confirm command**.
 
-    Met deze actie worden drie interactie regels toegevoegd. Deze regel vraagt de gebruiker om de datum en tijd van het alarm te bevestigen en verwacht een bevestiging (Ja/Nee) voor de volgende beurt.
+    Met deze actie worden drie interactie regels toegevoegd waarmee de gebruiker wordt gevraagd om de datum en tijd van de waarschuwing te bevestigen en verwacht een bevestiging (Ja/Nee) voor de volgende beurt.
 
     1. Wijzig de interactie regel voor de **bevestigings opdracht** volgens de volgende configuratie:
         1. Wijzig **naam** om de **Tempe ratuur te bevestigen**.
@@ -75,14 +75,14 @@ Als u een bevestiging wilt toevoegen, gebruikt u de opdracht **SetTemperature** 
 
 Selecteer **trainen**, wacht totdat de training is voltooid en selecteer **testen**.
 
-- **Invoer**: Stel de Tempe ratuur in op 80 graden.
-- **Output**: OK 80?
-- **Invoer**: Nee.
+- **Invoer**: Stel de Tempe ratuur in op 80 graden
+- **Uitvoer**: weet u zeker dat u de Tempe ratuur wilt instellen op 80 graden?
+- **Invoer**: Nee
 - **Uitvoer**: geen probleem. Wat is de Tempe ratuur?
-- **Invoer**: 83 graden.
-- **Output**: OK 83?
-- **Invoer**: Ja.
-- **Uitvoer**: OK, instellen van de Tempe ratuur op 83 graden.
+- **Invoer**: 72 graden
+- **Uitvoer**: weet u zeker dat u de Tempe ratuur wilt instellen op 72 graden?
+- **Invoer**: Ja
+- **Uitvoer**: OK, Tempe ratuur instellen op 83 graden
 
 
 ## <a name="implement-corrections-in-a-command"></a>Correcties implementeren in een opdracht

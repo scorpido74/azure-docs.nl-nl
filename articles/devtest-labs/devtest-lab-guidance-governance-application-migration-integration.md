@@ -4,12 +4,12 @@ description: Dit artikel bevat richt lijnen voor de governance van Azure DevTest
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481575"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289354"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance van Azure DevTest Labs-infra structuur-toepassings migratie en-integratie
 Als uw ontwikkel-en test omgeving eenmaal tot stand is gebracht, moet u rekening houden met de volgende vragen:
@@ -50,14 +50,14 @@ Een extra te noteren factor is echter de frequentie van wijzigingen in uw softwa
 Hoe kan ik een eenvoudig herhaalbaar proces instellen om mijn aangepaste organisatie-installatie kopieën naar een DevTest Labs-omgeving te brengen?
 
 ### <a name="answer"></a>Antwoord
-Bekijk [deze video over het patroon van de afbeeldings fabriek](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Dit scenario is een geavanceerd scenario en de meegeleverde scripts zijn alleen voorbeeld scripts. Als er wijzigingen zijn vereist, moet u de scripts die in uw omgeving worden gebruikt, beheren en onderhouden.
+Bekijk [deze video over het patroon van de afbeeldings fabriek](./devtest-lab-faq.md#blog-post). Dit scenario is een geavanceerd scenario en de meegeleverde scripts zijn alleen voorbeeld scripts. Als er wijzigingen zijn vereist, moet u de scripts die in uw omgeving worden gebruikt, beheren en onderhouden.
 
 DevTest Labs gebruiken om een aangepaste afbeeldings pijplijn in azure-pijp lijnen te maken:
 
-- [Inleiding: Vm's in een paar minuten voorbereiden door een installatie kopie-Factory in te stellen in Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Image Factory: deel 2! Azure-pijp lijnen en het fabrieks omgeving instellen om Vm's te maken](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Image Factory – deel 3: aangepaste installatie kopieën opslaan en naar meerdere lessen distribueren](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: aangepaste installatie kopie fabriek met Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [Inleiding: Vm's in een paar minuten voorbereiden door een installatie kopie-Factory in te stellen in Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
+- [Image Factory: deel 2! Azure-pijp lijnen en het fabrieks omgeving instellen om Vm's te maken](./devtest-lab-faq.md#blog-post)
+- [Image Factory – deel 3: aangepaste installatie kopieën opslaan en naar meerdere lessen distribueren](./devtest-lab-faq.md#blog-post)
+- [Video: aangepaste installatie kopie fabriek met Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Patronen voor het instellen van de netwerk configuratie
 

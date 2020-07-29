@@ -12,12 +12,12 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019247"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285897"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Tenant beperkingen gebruiken om de toegang tot SaaS-Cloud toepassingen te beheren
 
@@ -29,7 +29,7 @@ Met Tenant beperkingen kunnen organisaties de lijst met tenants opgeven waartoe 
 
 Dit artikel richt zich op de beperkingen van de Tenant voor Office 365, maar de functie zou moeten werken met elke SaaS-Cloud-app die moderne verificatie protocollen met Azure AD gebruikt voor eenmalige aanmelding. Als u SaaS-apps gebruikt met een andere Azure AD-Tenant van de Tenant die wordt gebruikt door Office 365, moet u ervoor zorgen dat alle vereiste tenants zijn toegestaan. Zie de [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)voor meer informatie over SaaS-Cloud-apps.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 De algemene oplossing bestaat uit de volgende onderdelen:
 
@@ -65,9 +65,14 @@ De volgende configuratie is vereist om Tenant beperkingen via uw proxy-infra str
 
 - Deze functie is opgenomen in Office 365-abonnementen, maar als u Tenant beperkingen wilt gebruiken om de toegang tot andere SaaS-apps te beheren, zijn Azure AD Premium 1 licenties vereist.
 
-#### <a name="configuration"></a>Configuratie
+#### <a name="configuration"></a>Configuration
 
 Plaats voor elke inkomende aanvraag voor login.microsoftonline.com, login.microsoft.com en login.windows.net twee HTTP-headers: *beperken tot tenants* en *beperkende toegang-context*.
+
+> [!NOTE]
+> Wanneer u SSL-interceptie en header-injectie configureert, moet u ervoor zorgen dat verkeer https://device.login.microsoftonline.com wordt uitgesloten. Deze URL wordt gebruikt voor het verifiëren van apparaten en het uitvoeren van TLS-inchecken en-inspectie kan de verificatie van client certificaten belemmeren, wat kan leiden tot problemen met apparaatregistratie en voorwaardelijke toegang op basis van een apparaat.
+
+
 
 De headers moeten de volgende elementen bevatten:
 
@@ -81,6 +86,9 @@ De headers moeten de volgende elementen bevatten:
 Als u wilt voor komen dat gebruikers hun eigen HTTP-header invoegen met niet-goedgekeurde tenants, moet de proxy de header voor het *beperken van toegang tot tenants* vervangen als deze al aanwezig is in de binnenkomende aanvraag.
 
 Clients moeten worden gedwongen de proxy te gebruiken voor alle aanvragen van login.microsoftonline.com, login.microsoft.com en login.windows.net. Als er bijvoorbeeld een PAC-bestand wordt gebruikt om clients te leiden om de proxy te gebruiken, moeten eind gebruikers de PAC-bestanden niet kunnen bewerken of uitschakelen.
+
+> [!NOTE]
+> Neem geen subdomeinen onder *. login.microsoftonline.com op in uw proxy configuratie. Dit omvat device.login.microsoftonline.com en kan de verificatie van client certificaten belemmeren, die wordt gebruikt bij apparaatregistratie en scenario's voor voorwaardelijke toegang op basis van apparaten. Configureer uw proxy server om device.login.microsoftonline.com uit te sluiten van TLS-uitzonde ring en inspectie en koptekst injectie.
 
 ## <a name="the-user-experience"></a>De gebruikers ervaring
 

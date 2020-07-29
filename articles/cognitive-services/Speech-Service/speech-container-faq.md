@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81383084"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289027"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Speech-Service containers
 
@@ -30,7 +30,7 @@ Wanneer u de speech-service met containers gebruikt, moet u vertrouwen op deze v
 
 **Antwoord:** Bij het instellen van het productie cluster zijn er verschillende zaken die u moet overwegen. Ten eerste, het instellen van één taal, meerdere containers op dezelfde computer, mag geen groot probleem zijn. Als u problemen ondervindt, kan dit een hardwareprobleem zijn, dus we moeten eerst de resource bekijken. CPU-en geheugen specificaties.
 
-Neem even de tijd, de `ja-JP` container en het meest recente model. Het akoestische model is het meest veeleisende gedeelte CPU-and, terwijl het taal model het meeste geheugen vereist. Toen we het gebruik hebben gebenchmarkd, neemt het ongeveer 0,6 CPU-kernen in beslag om één spraak-naar-tekst-aanvraag te verwerken wanneer audio in realtime wordt doorgelopen (bijvoorbeeld van de microfoon). Als u audio sneller doorstuurt dan in realtime (zoals bij een bestand), kan dat gebruik dubbele (1,2 x kernen) zijn. Ondertussen is het geheugen dat hieronder wordt weer gegeven, werk geheugen voor het decoderen van spraak. Er wordt *geen* rekening gehouden met de werkelijke volledige grootte van het taal model, dat zich in de bestands cache bevindt. Voor `ja-JP` dat is 2 GB extra; voor `en-US`is dit mogelijk meer (6-7 GB).
+Neem even de tijd, de `ja-JP` container en het meest recente model. Het akoestische model is het meest veeleisende gedeelte CPU-and, terwijl het taal model het meeste geheugen vereist. Toen we het gebruik hebben gebenchmarkd, neemt het ongeveer 0,6 CPU-kernen in beslag om één spraak-naar-tekst-aanvraag te verwerken wanneer audio in realtime wordt doorgelopen (bijvoorbeeld van de microfoon). Als u audio sneller doorstuurt dan in realtime (zoals bij een bestand), kan dat gebruik dubbele (1,2 x kernen) zijn. Ondertussen is het geheugen dat hieronder wordt weer gegeven, werk geheugen voor het decoderen van spraak. Er wordt *geen* rekening gehouden met de werkelijke volledige grootte van het taal model, dat zich in de bestands cache bevindt. Voor `ja-JP` een extra 2 GB; voor is `en-US` het mogelijk meer (6-7 GB).
 
 Als u een computer hebt waarop het geheugen schaar is en u er meerdere talen mee probeert te implementeren, is het mogelijk dat de bestands cache vol is en dat het besturings systeem wordt uitgevoerd op pagina modellen in en uit. Voor een actief transcriptie kan dat disastrous zijn, en kan dit leiden tot vertragingen en andere gevolgen voor de prestaties.
 
@@ -42,19 +42,19 @@ Bovendien verpakken we uitvoer bare bestanden voor machines met de [AVX2-instruc
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Ten slotte kunt u het aantal decoders instellen dat u binnen *één* container wilt gebruiken met behulp van `DECODER MAX_COUNT` een variabele. In principe moeten we beginnen met uw SKU (CPU/geheugen), en we kunnen Voorst Ellen hoe u deze optimaal kunt benutten. Een geweldig start punt verwijst naar de aanbevolen resource specificaties van de host.
+Ten slotte kunt u het aantal decoders instellen dat u binnen *één* container wilt gebruiken met behulp van een `DECODER MAX_COUNT` variabele. In principe moeten we beginnen met uw SKU (CPU/geheugen), en we kunnen Voorst Ellen hoe u deze optimaal kunt benutten. Een geweldig start punt verwijst naar de aanbevolen resource specificaties van de host.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Kunt u helpen bij het plannen van de capaciteit en de schatting van de kosten van on-premises spraak containers?</b>
+<b>Kunt u helpen bij het plannen van de capaciteit en de schatting van de kosten voor on-premises spraak-naar-tekst containers?</b>
 </summary>
 
 **Antwoord:** Voor container capaciteit in de batch verwerkings modus kan elke decoder 2-3x in realtime verwerken, met twee CPU-kernen voor één herkenning. Het is niet raadzaam om meer dan twee gelijktijdige Recognitions per container exemplaar te bewaren, maar het wordt aangeraden om meer exemplaren van containers te maken voor betrouw baarheid/beschikbaarheids redenen, achter een load balancer.
 
-Hoewel er al een container exemplaar met meer decoders kan worden uitgevoerd. Het is bijvoorbeeld mogelijk dat er op een acht kern machine 7-decoders per container exemplaar worden ingesteld (op meer dan 2x elke), waardoor de 15x-door Voer wordt verkregen. Er is een para `DECODER_MAX_COUNT` meter waarmee u rekening moet houden. In het uitzonderlijke geval ontstaan er problemen met de betrouw baarheid en latentie bij een aanzienlijke toename van de door voer. Voor een microfoon wordt deze in 1x real time. Het totale gebruik moet ongeveer één kern zijn voor één herkenning.
+Hoewel er al een container exemplaar met meer decoders kan worden uitgevoerd. Het is bijvoorbeeld mogelijk dat er op een acht kern machine 7-decoders per container exemplaar worden ingesteld (op meer dan 2x elke), waardoor de 15x-door Voer wordt verkregen. Er is een para meter `DECODER_MAX_COUNT` waarmee u rekening moet houden. In het uitzonderlijke geval ontstaan er problemen met de betrouw baarheid en latentie bij een aanzienlijke toename van de door voer. Voor een microfoon wordt deze in 1x real time. Het totale gebruik moet ongeveer één kern zijn voor één herkenning.
 
 Voor het scenario van het verwerken van 1 K uur per dag in de batch verwerkings modus in een extreem geval kunnen drie Vm's binnen 24 uur worden verwerkt, maar niet gegarandeerd. Voor het afhandelen van piek dagen, failover, update en het bieden van minimale back-ups/BCP raden wij 4-5-computers aan in plaats van 3 per cluster en met 2 + clusters.
 
@@ -168,7 +168,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Antwoord 2:** U moet de juiste spraak naam opgeven in de aanvraag. Dit is hoofdletter gevoelig. Raadpleeg de volledige toewijzing van de service naam. U moet gebruiken `en-US-JessaRUS`, omdat `en-US-JessaNeural` deze nu niet beschikbaar is in container versie van tekst naar spraak.
+**Antwoord 2:** U moet de juiste spraak naam opgeven in de aanvraag. Dit is hoofdletter gevoelig. Raadpleeg de volledige toewijzing van de service naam. U moet gebruiken `en-US-JessaRUS` , omdat deze `en-US-JessaNeural` nu niet beschikbaar is in container versie van tekst naar spraak.
 
 **Fout 3:**
 
@@ -299,8 +299,8 @@ Helpt u bij het invullen van de volgende metrische test gegevens, waaronder welk
 **Antwoord:** Dit is een fusie van:
 - Personen die het dicteer eindpunt voor containers proberen, (ik weet niet hoe ze een URL hebben gekregen)
 - Het eind punt van<sup>de partij van</sup> de eerste is in een container.
-- Het eind punt van<sup>de partij die</sup> spraak. fragmenteert, stuurt `speech.hypothesis` berichten in plaats van de berichten die door de drie eind punten van de<sup>extern bureau blad</sup> -onderdelen worden geretourneerd voor het dicteer eindpunt.
-- Alle gebruik `RecognizeOnce` van Carbon Quick starts (interactieve modus)
+- Het eind punt van<sup>de partij die</sup> spraak. fragmenteert, stuurt berichten in plaats van de `speech.hypothesis` berichten die door de drie eind punten van de<sup>extern bureau blad</sup> -onderdelen worden geretourneerd voor het dicteer eindpunt.
+- Alle gebruik van Carbon Quick starts `RecognizeOnce` (interactieve modus)
 - Carbon met een bevestiging dat voor `speech.fragment` berichten die worden vereist, niet worden geretourneerd in de interactieve modus.
 - Kool waarbij de bevestigingen in de release worden geactiveerd (het proces wordt gedoden).
 
@@ -366,7 +366,7 @@ Mijn huidige plan is om een bestaand audio bestand te maken en te splitsen in ti
 
 In het document wordt aangegeven dat er een andere poort beschikbaar is, maar de LUIS-container luistert nog steeds op poort 5000?
 
-**Antwoord:** Probeer `-p <outside_unique_port>:5000`het opnieuw. Bijvoorbeeld `-p 5001:5000`.
+**Antwoord:** Probeer het opnieuw `-p <outside_unique_port>:5000` . Bijvoorbeeld `-p 5001:5000`.
 
 
 <br>
@@ -376,10 +376,10 @@ In het document wordt aangegeven dat er een andere poort beschikbaar is, maar de
 
 <details>
 <summary>
-<b>Hoe kan ik voor komen dat niet-batch-Api's &lt;15 seconden lang worden afgehandeld?</b>
+<b>Hoe kan ik voor komen dat niet-batch-Api's &lt; 15 seconden lang worden afgehandeld?</b>
 </summary>
 
-**Antwoord:** `RecognizeOnce()` in de interactieve modus worden alleen Maxi maal 15 seconden audio verwerkt, omdat de modus is bedoeld voor spraak opdrachten waarbij uitingen naar verwachting worden beperkt. Als u voor `StartContinuousRecognition()` dicteer of gesprek gebruikt, is er geen limiet van 15 seconden.
+**Antwoord:** `RecognizeOnce()` in de interactieve modus worden alleen Maxi maal 15 seconden audio verwerkt, omdat de modus is bedoeld voor spraak opdrachten waarbij uitingen naar verwachting worden beperkt. Als u `StartContinuousRecognition()` voor dicteer of gesprek gebruikt, is er geen limiet van 15 seconden.
 
 
 <br>
@@ -392,7 +392,7 @@ In het document wordt aangegeven dat er een andere poort beschikbaar is, maar de
 
 Hoeveel gelijktijdige aanvragen wordt een 4-core, 4 GB RAM-ingang? Als we een voor beeld hebben van 50 gelijktijdige aanvragen, hoeveel kern geheugen en RAM wordt aanbevolen?
 
-**Antwoord:** In realtime, 8 met onze nieuwste `en-US`, raden we u aan om meer docker-containers te gebruiken dan zes gelijktijdige aanvragen. De Crazier wordt groter dan 16 kernen en wordt niet-uniforme NUMA-knoop punt (Non-Uniform Memory Access). In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources voor elke spraak container beschreven.
+**Antwoord:** In realtime, 8 met onze nieuwste `en-US` , raden we u aan om meer docker-containers te gebruiken dan zes gelijktijdige aanvragen. De Crazier wordt groter dan 16 kernen en wordt niet-uniforme NUMA-knoop punt (Non-Uniform Memory Access). In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources voor elke spraak container beschreven.
 
 # <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
@@ -422,7 +422,7 @@ Hoeveel gelijktijdige aanvragen wordt een 4-core, 4 GB RAM-ingang? Als we een vo
 
 - Elke kern moet ten minste 2,6 GHz of sneller zijn.
 - Voor bestanden is de beperking in de Speech SDK, op 2x (eerste 5 seconden aan audio worden niet beperkt).
-- De decoder kan twee tot drie keer in realtime worden uitgevoerd. Hiervoor wordt het totale CPU-gebruik dicht bij twee kernen voor één herkenning. Daarom raden we u aan om meer dan twee actieve verbindingen te houden per container exemplaar. De meeste kant is om ongeveer 10 decoders op 2x realtime te plaatsen op een acht kern computer zoals `DS13_V2`. Voor container versie 1,3 en hoger is er een para meter die u kunt proberen in `DECODER_MAX_COUNT=20`te stellen.
+- De decoder kan twee tot drie keer in realtime worden uitgevoerd. Hiervoor wordt het totale CPU-gebruik dicht bij twee kernen voor één herkenning. Daarom raden we u aan om meer dan twee actieve verbindingen te houden per container exemplaar. De meeste kant is om ongeveer 10 decoders op 2x realtime te plaatsen op een acht kern computer zoals `DS13_V2` . Voor container versie 1,3 en hoger is er een para meter die u kunt proberen in te stellen `DECODER_MAX_COUNT=20` .
 - Voor microfoons is deze in 1x real time. Het totale gebruik moet ongeveer één kern zijn voor één herkenning.
 
 Houd rekening met het totale aantal uur aan audio dat u hebt. Als het aantal groot is, om de betrouw baarheid/Beschik baarheid te verbeteren, wordt u aangeraden meer exemplaren van containers uit te voeren, hetzij op één doos of op meerdere vakjes achter een load balancer. Indeling kan worden uitgevoerd met behulp van Kubernetes (K8S) en helm, of met docker opstellen.
@@ -439,7 +439,7 @@ Voor een voor beeld: 1000 uur/24 uur, hebben we geprobeerd 3-4 Vm's in te stelle
 
 **Antwoord:** We hebben kapitalisatie (ITN) beschikbaar in de on-premises container. Interpunctie is taal afhankelijk en wordt niet ondersteund voor sommige talen, waaronder Chinees en Japans.
 
-We *hebben* impliciete en eenvoudige interpunctie ondersteuning voor de bestaande containers, maar dit `off` is standaard. Dat betekent dat u het `.` teken in uw voor beeld kunt ophalen, maar niet het `。` teken. Als u deze impliciete logica wilt inschakelen, volgt u hier een voor beeld van hoe u dit in python kunt doen met behulp van onze spraak-SDK (dit is vergelijkbaar in andere talen):
+We *hebben* impliciete en eenvoudige interpunctie ondersteuning voor de bestaande containers, maar dit is `off` standaard. Dat betekent dat u het `.` teken in uw voor beeld kunt ophalen, maar niet het `。` teken. Als u deze impliciete logica wilt inschakelen, volgt u hier een voor beeld van hoe u dit in python kunt doen met behulp van onze spraak-SDK (dit is vergelijkbaar in andere talen):
 
 ```python
 speech_config.set_service_property(
@@ -525,7 +525,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Hieronder ziet u een voor beeld van `FromEndpoint` het gebruik van de API:
+Hieronder ziet u een voor beeld van het gebruik van de `FromEndpoint` API:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/cognitiveservices/v1";
@@ -553,11 +553,11 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 Ze zijn voor verschillende doel einden en worden anders gebruikt.
 
 Python-voor [beelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
-- Voor eenmalige herkenning (interactieve modus) met een aangepast eind punt (dat wil zeggen: `SpeechConfig` met een eindpunt parameter), Zie `speech_recognize_once_from_file_with_custom_endpoint_parameters()`.
-- Zie `speech_recognize_continuous_from_file()`voor continue herkenning (conversatie modus) en pas een aangepast eind punt te gebruiken als hierboven.
-- Als u in voor beelden zoals hierboven een dicteer functie wilt inschakelen (alleen als u deze echt nodig hebt) `speech_config`, voegt u `speech_config.enable_dictation()`code toe nadat u deze hebt gemaakt.
+- Zie voor eenmalige herkenning (interactieve modus) met een aangepast eind punt (dat wil zeggen, `SpeechConfig` met een para meter van een eind punt) `speech_recognize_once_from_file_with_custom_endpoint_parameters()` .
+- Zie voor continue herkenning (conversatie modus) en pas een aangepast eind punt te gebruiken als hierboven `speech_recognize_continuous_from_file()` .
+- Als u in voor beelden zoals hierboven een dicteer functie wilt inschakelen (alleen als u deze echt nodig hebt), voegt u code toe nadat u deze hebt gemaakt `speech_config` `speech_config.enable_dictation()` .
 
-In C# moet u de `SpeechConfig.EnableDictation()` functie aanroepen.
+In C# moet u de functie aanroepen `SpeechConfig.EnableDictation()` .
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint`APIs
 | Taal | API-details |
@@ -592,15 +592,15 @@ In C# moet u de `SpeechConfig.EnableDictation()` functie aanroepen.
 
 > Para meters: host (verplicht), abonnements sleutel (optioneel, als u de service zonder IT kunt gebruiken).
 
-De indeling voor de `protocol://hostname:port` host `:port` is optioneel (zie hieronder):
-- Als de container lokaal wordt uitgevoerd, is `localhost`de hostnaam.
+De indeling voor de host is `protocol://hostname:port` `:port` optioneel (zie hieronder):
+- Als de container lokaal wordt uitgevoerd, is de hostnaam `localhost` .
 - Als de container wordt uitgevoerd op een externe server, gebruikt u de hostnaam of het IPv4-adres van die server.
 
 Voor beelden van host-para meters voor spraak naar tekst:
 - `ws://localhost:5000`-niet-beveiligde verbinding met een lokale container via poort 5000
 - `ws://some.host.com:5000`-niet-beveiligde verbinding met een container die wordt uitgevoerd op een externe server
 
-Python-voor beelden van bovenstaande, `host` maar gebruik de `endpoint`para meter in plaats van:
+Python-voor beelden van bovenstaande, maar gebruik de `host` para meter in plaats van `endpoint` :
 
 ```python
 speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")

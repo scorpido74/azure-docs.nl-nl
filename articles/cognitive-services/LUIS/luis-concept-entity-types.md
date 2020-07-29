@@ -3,12 +3,12 @@ title: Entiteits typen-LUIS
 description: Een entiteit extraheert gegevens uit een utterance tijdens de Voorspellings runtime. Een _optioneel_, secundair doel is het verhogen van de voor spelling van de intentie of andere entiteiten door gebruik te maken van de entiteit als een functie.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337616"
 ---
 # <a name="extract-data-with-entities"></a>Gegevens ophalen met entiteiten
 
@@ -51,7 +51,7 @@ Houd rekening met de volgende vier uitingen:
 
 |Utterance|Intentie voor speld|Geëxtraheerde entiteiten|Uitleg|
 |--|--|--|--|
-|Help|Help|-|Niets te extra heren.|
+|Help|help|-|Niets te extra heren.|
 |Iets verzenden|sendSomething|-|Niets te extra heren. Het model bevat geen vereiste functie om `something` in deze context op te halen en er is geen ontvanger opgegeven.|
 |Bob een huidige verzenden|sendSomething|`Bob`, `present`|Het model wordt uitgepakt `Bob` door een vereiste functie van vooraf gedefinieerde entiteit toe te voegen `personName` . Er is een machine learning-entiteit gebruikt om uit te pakken `present` .|
 |Een doos van Choco lade verzenden|sendSomething|`Bob`, `box of chocolates`|De twee belang rijke gegevens, `Bob` en de `box of chocolates` , zijn geëxtraheerd door de machine learning-entiteiten.|
@@ -78,6 +78,12 @@ Voor het effectief bouwen van de door de machine geleerde entiteiten:
 * Als u een door een machine geleerde entiteit met subentiteiten hebt, moet u ervoor zorgen dat de verschillende orders en varianten van de entiteit en subentiteiten worden weer gegeven in de gelabelde uitingen. Het label voorbeeld uitingen moet alle geldige formulieren bevatten en entiteiten bevatten die worden weer gegeven en die zich niet in de utterance bevinden.
 * Vermijd het aanpassen van de entiteiten tot een zeer vaste set. De **overmontage** vindt plaats wanneer het model niet goed kan worden gegeneraliseerd en een veelvoorkomend probleem is in machine learning modellen. Dit betekent dat de app niet voldoende goed werkt voor nieuwe gegevens. U moet op zijn beurt het gelabelde voor beeld uitingen, zodat de app kan generaliseren buiten de beperkte voor beelden die u opgeeft. U moet de verschillende subentiteiten met voldoende wijziging voor het model variëren om meer van het concept te zien in plaats van alleen de voor beelden die worden weer gegeven.
 
+## <a name="effective-prebuilt-entities"></a>Efficiënte, vooraf gemaakte entiteiten
+
+Voor het bouwen van doel matige entiteiten die algemene gegevens extra heren, zoals die van de [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md), wordt het volgende proces aangeraden.
+
+Verbeter het uitpakken van gegevens door uw eigen gegevens als een functie naar een entiteit te brengen. Op die manier krijgen alle extra labels van uw gegevens de context van waar persoons namen in uw toepassing bestaan.
+
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
 <a name="patternany-entity"></a>
@@ -91,7 +97,7 @@ Een subentiteit naar een bovenliggend item moet een machine learning-entiteit zi
 
 Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtraheerd en hoe deze moeten worden weer gegeven nadat deze is geëxtraheerd.
 
-|Entiteitstype|Functie|
+|Entiteitstype|Doel|
 |--|--|
 |[**Machine-geleerd**](tutorial-machine-learned-entity.md)|Extraheer geneste, complexe gegevens die zijn geleerd van voor beelden met labels. |
 |[**Lijst**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|

@@ -3,16 +3,16 @@ title: Azure DevTest Labs gebruik in meerdere Labs en abonnementen
 description: Meer informatie over het rapporteren van Azure DevTest Labs gebruik over meerdere Labs en abonnementen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287283"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Rapport Azure DevTest Labs gebruik in meerdere Labs en abonnementen
 
-De meeste grote organisaties willen het resource gebruik volgen om effectiever te zijn met deze resources door trends en uitschieters in het gebruik te visualiseren. Op basis van resource gebruik kunnen de Lab-eigen aren of-managers de Labs aanpassen om het [resource gebruik en de kosten te verbeteren](https://docs.microsoft.com/azure/billing/billing-getting-started). In Azure DevTest Labs kunt u het resource gebruik per Lab downloaden zodat een diep gaande historisch inzicht in de gebruiks patronen kan worden weer geven. Deze gebruiks patronen kunnen helpen bij het lokaliseren van wijzigingen om de efficiëntie te verbeteren. De meeste ondernemingen willen zowel het individuele Lab-gebruik als het algehele gebruik over [meerdere Labs en abonnementen](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+De meeste grote organisaties willen het resource gebruik volgen om effectiever te zijn met deze resources door trends en uitschieters in het gebruik te visualiseren. Op basis van resource gebruik kunnen de Lab-eigen aren of-managers de Labs aanpassen om het [resource gebruik en de kosten te verbeteren](../cost-management-billing/manage/getting-started.md). In Azure DevTest Labs kunt u het resource gebruik per Lab downloaden zodat een diep gaande historisch inzicht in de gebruiks patronen kan worden weer geven. Deze gebruiks patronen kunnen helpen bij het lokaliseren van wijzigingen om de efficiëntie te verbeteren. De meeste ondernemingen willen zowel het individuele Lab-gebruik als het algehele gebruik over [meerdere Labs en abonnementen](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 In dit artikel wordt beschreven hoe u gegevens over resource gebruik kunt afhandelen in meerdere Labs en abonnementen.
 
@@ -24,8 +24,8 @@ In deze sectie wordt beschreven hoe u resource gebruik voor één Lab exporteert
 
 Voordat u het resource gebruik van DevTest Labs kunt exporteren, moet u een Azure Storage-account instellen om de verschillende bestanden met de gebruiks gegevens te kunnen opslaan. Er zijn twee algemene manieren om het exporteren van gegevens uit te voeren:
 
-* [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* De Power shell AZ. resource module [invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) met de actie `exportResourceUsage` , de test resource-id en de benodigde para meters. 
+* [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
+* De Power shell AZ. resource module [invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) met de actie `exportResourceUsage` , de test resource-id en de benodigde para meters. 
 
     Het artikel [persoonlijke gegevens exporteren of verwijderen](personal-data-delete-export.md) bevat een Power shell-voorbeeld script met gedetailleerde informatie over de gegevens die worden geëxporteerd. 
 
@@ -48,8 +48,8 @@ Deze bestanden worden opgeslagen in de *labresourceusage* -BLOB-container onder 
 
 Als u de gebruiks gegevens voor meerdere Labs wilt exporteren, moet u 
 
-* [Azure functions](https://docs.microsoft.com/azure/azure-functions/), beschikbaar in veel talen, waaronder Power shell, of 
-* [Azure Automation runbook](https://docs.microsoft.com/azure/automation/), Power shell, python of een aangepaste grafische Designer gebruiken om de export code te schrijven.
+* [Azure functions](../azure-functions/index.yml), beschikbaar in veel talen, waaronder Power shell, of 
+* [Azure Automation runbook](../automation/index.yml), Power shell, python of een aangepaste grafische Designer gebruiken om de export code te schrijven.
 
 Met deze technologieën kunt u de afzonderlijke Lab-exports uitvoeren op alle Labs op een specifieke datum en tijd. 
 
@@ -69,7 +69,7 @@ Enkele veelvoorkomende opslag oplossingen zijn: [SQL Server](https://azure.micro
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Gegevens visualiseren en inzichten verzamelen
 
-Gebruik een hulp programma voor gegevens visualisatie van uw keuze om verbinding te maken met uw lange termijn opslag om de gebruiks gegevens weer te geven en inzichten te verzamelen om de efficiëntie van het gebruik te controleren. [Power bi](https://docs.microsoft.com/power-bi/power-bi-overview) kan bijvoorbeeld worden gebruikt om de gebruiks gegevens te organiseren en weer te geven. 
+Gebruik een hulp programma voor gegevens visualisatie van uw keuze om verbinding te maken met uw lange termijn opslag om de gebruiks gegevens weer te geven en inzichten te verzamelen om de efficiëntie van het gebruik te controleren. [Power bi](/power-bi/power-bi-overview) kan bijvoorbeeld worden gebruikt om de gebruiks gegevens te organiseren en weer te geven. 
 
 U kunt [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) gebruiken om uw resources te maken, te koppelen en te beheren binnen één locatie-interface. Als meer controle nodig is, kan de afzonderlijke resource binnen één resource groep worden gemaakt en onafhankelijk van de Data Factory service worden beheerd.  
 

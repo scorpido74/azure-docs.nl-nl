@@ -10,11 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337854"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Berichten verzenden naar een MQTT-server
 
@@ -87,7 +88,4 @@ Als u problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT DevKit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u uw MXChip IOT DevKit als een MQTT-client configureert en de MQTT-client bibliotheek gebruikt om berichten te verzenden naar een MQTT-Broker, kunt u de volgende stappen volgen:
-
-* [Overzicht van de oplossing voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](/azure/iot-central/core/howto-connect-devkit)
+Nu u hebt geleerd hoe u uw MXChip IOT DevKit als een MQTT-client configureert en de MQTT-client bibliotheek gebruikt voor het verzenden van berichten naar een MQTT-Broker, volgt u de voorgestelde volgende stap: overzicht van de [Azure IOT-oplossing voor externe controle](https://docs.microsoft.com/azure/iot-suite/)

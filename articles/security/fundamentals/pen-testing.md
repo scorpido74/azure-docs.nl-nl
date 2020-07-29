@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6e25b6304ee9ac41ca95d5a3a6eac0e91eb41b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80549255"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287767"
 ---
 # <a name="penetration-testing"></a>Penetratietesten
 Een van de voor delen van het gebruik van Azure voor het testen en implementeren van toepassingen is dat u snel omgevingen kunt maken. U hoeft zich geen zorgen te maken over uw eigen on-premises hardware voor het aanvragen van opdrachten, voor het verkrijgen en ' rekken en stapelen '.
@@ -41,8 +41,6 @@ U kunt onder andere de volgende standaard tests uitvoeren:
 * Testen op uw eind punten om de [OWASP (open Web Application Security project) van de Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) van beveiligings problemen op te slaan
 * [Fuzzy tests](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) van uw eind punten
 * [Poort scans](https://en.wikipedia.org/wiki/Port_scanner) van uw eind punten
-
-Een soort test die u niet kunt uitvoeren, is een [DOS-aanval (Denial of service)](https://en.wikipedia.org/wiki/Denial-of-service_attack) . Dit omvat het initiëren van een DoS-aanval zelf of het uitvoeren van gerelateerde tests die het type DoS-aanval kunnen bepalen, demonstreren of simuleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

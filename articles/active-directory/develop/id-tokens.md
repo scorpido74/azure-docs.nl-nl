@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170518"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313333"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -27,11 +27,11 @@ ms.locfileid: "87170518"
 
 ## <a name="using-the-id_token"></a>De id_token gebruiken
 
-ID-tokens moeten worden gebruikt om te controleren of een gebruiker aan wie ze beweren te zijn en meer nuttige informatie hierover kan krijgen, moet worden gebruikt voor autorisatie in plaats van een [toegangs token](access-tokens.md). De claims die het biedt, kunnen worden gebruikt voor UX in uw toepassing, als sleutels in een Data Base en toegang bieden tot de client toepassing.  Wanneer u sleutels voor een Data Base maakt, `idp` moet u deze niet gebruiken, omdat deze gast scenario's ophoopt.  Keying moet worden uitgevoerd op `sub` zichzelf (dit is altijd uniek), met `tid` voor route ring, als dat nodig is.  Als u gegevens in verschillende services moet delen, `oid` + `sub` + `tid` werkt dit omdat meerdere services hetzelfde zijn `oid` .
+ID-tokens moeten worden gebruikt om te controleren of een gebruiker aan wie ze beweren te zijn en meer nuttige informatie hierover kan krijgen, moet worden gebruikt voor autorisatie in plaats van een [toegangs token](access-tokens.md). De claims die het biedt, kunnen worden gebruikt voor UX in uw toepassing, als [sleutels in een Data Base](#using-claims-to-reliably-identify-a-user-subject-and-object-id)en toegang bieden tot de client toepassing.  
 
 ## <a name="claims-in-an-id_token"></a>Claims in een id_token
 
-`id_tokens`voor een micro soft-identiteit zijn [JWTs](https://tools.ietf.org/html/rfc7519) (JSON-webtokens), wat betekent dat ze bestaan uit een header, lading en hand tekening gedeelte. U kunt de header en hand tekening gebruiken om de authenticiteit van het token te controleren. de payload bevat de informatie over de gebruiker die door de client is aangevraagd. Tenzij anders vermeld, worden alle hier vermelde JWT-claims weer gegeven in de tokens v 1.0 en v 2.0.
+`id_tokens`zijn [JWTs](https://tools.ietf.org/html/rfc7519) (JSON-webtokens), wat betekent dat ze bestaan uit een header, lading en hand tekening gedeelte. U kunt de header en hand tekening gebruiken om de authenticiteit van het token te controleren. de payload bevat de informatie over de gebruiker die door de client is aangevraagd. Tenzij anders vermeld, worden alle hier vermelde JWT-claims weer gegeven in de tokens v 1.0 en v 2.0.
 
 ### <a name="v10"></a>v1.0
 
@@ -87,14 +87,25 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 |`ver` | Teken reeks, ofwel 1,0 of 2,0 | Hiermee wordt de versie van de id_token. |
 
 > [!NOTE]
-> De id_token v 1.0 en v 2.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](about-microsoft-identity-platform.md) is door de jaren ontwikkeld. Er zijn momenteel twee verschillende Outh-eind punten voor Azure AD-toepassingen. U kunt een van de nieuwe eind punten gebruiken die zijn gecategoriseerd als v 2.0 of v 1.0. De OAuth-eind punten voor beide zijn verschillend. Het v 2.0-eind punt is nieuwer en de functies van het eind punt v 1.0 worden naar dit eind punt gemigreerd. Nieuwe ontwikkel aars moeten het v 2.0-eind punt gebruiken.
+> De id_token v 1.0 en v 2.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. De versie is gebaseerd op het eind punt van waaruit het is aangevraagd. Hoewel bestaande toepassingen waarschijnlijk gebruikmaken van het Azure AD-eind punt, moeten nieuwe toepassingen het eind punt van het micro soft Identity-platform ' v 2.0 ' gebruiken.
 >
 > - v 1.0: Azure AD-eind punten:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v 2.0: micro soft identitypPlatform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 2.0: micro soft Identity platform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Claims gebruiken om een gebruiker op een betrouw bare wijze te identificeren (onderwerp en object-ID)
+
+Bij het identificeren van een gebruiker (bijvoorbeeld het zoeken in een Data Base of het bepalen van de machtigingen), is het essentieel om informatie te gebruiken die constant en uniek blijft.  Oudere toepassingen gebruiken soms het veld zoals het e-mail adres, een telefoon nummer of de UPN.  Deze kunnen worden gewijzigd in de loop van de tijd en kunnen ook opnieuw worden gebruikt wanneer een werk nemer hun naam wijzigt, of een werk nemer krijgt een e-mail adres dat overeenkomt met dat van een vorige, niet meer werk nemer. Het is dus **belang rijk** dat uw toepassing geen gebruik maakt van Human-Lees bare gegevens voor het identificeren van een door de gebruiker gelezen Lees bewerking. Dit betekent dat iemand deze leest en deze wil wijzigen.  Gebruik in plaats daarvan de claims die worden verschaft door de OIDC-standaard of de uitbrei ding claims die door micro soft worden verschaft, `sub` en `oid` claims.
+
+Als u gegevens op de juiste manier per gebruiker wilt opslaan, kunt u `sub` of `oid` alleen gebruiken (zoals guid's uniek), waarbij u `tid` indien nodig wordt gebruikt voor route ring of sharding.  Als u gegevens wilt delen tussen services, `oid` + `tid` is het beste omdat alle apps dezelfde `oid` en `tid` claims voor een bepaalde gebruiker krijgen.  De `sub` claim in het micro soft Identity-platform is ' pair-goed ': het is uniek op basis van een combi natie van de token ontvanger, de Tenant en de gebruiker.  Daarom ontvangen twee apps waarvoor ID-tokens voor een bepaalde gebruiker aanvragen een andere `sub` claim, maar dezelfde `oid` claims voor die gebruiker.
+
+>[!NOTE]
+> Gebruik niet de `idp` claim om informatie over een gebruiker op te slaan in een poging om gebruikers te correleren tussen tenants.  Deze functie werkt niet, omdat de `oid` en `sub` claims voor een gebruiker door een Tenant worden gewijzigd, om ervoor te zorgen dat toepassingen geen gebruikers kunnen traceren tussen tenants.  
+>
+> Gast scenario's, waarbij een gebruiker zich in één Tenant bevindt en zich in een andere persoon verifieert, dient de gebruiker te behandelen alsof ze een gloed nieuwe gebruiker van de service zijn.  Uw documenten en bevoegdheden in de contoso-Tenant mogen niet worden toegepast in de fabrikam-Tenant. Dit is belang rijk om te voor komen dat gegevens per ongeluk worden gelekt via tenants.
 
 ## <a name="validating-an-id_token"></a>Een id_token valideren
 
-Het valideren van een `id_token` is vergelijkbaar met de eerste stap bij het [valideren van een toegangs token](access-tokens.md#validating-tokens) . uw client moet controleren of de juiste uitgever het token terugstuurde en dat er niet mee is geknoeid. Omdat er `id_tokens` altijd een JWT-token is, bestaan er veel bibliotheken om deze tokens te valideren. u wordt aangeraden een van deze te gebruiken in plaats van dit zelf te doen.
+Het valideren van een `id_token` is vergelijkbaar met de eerste stap bij het [valideren van een toegangs token](access-tokens.md#validating-tokens) . de client kan valideren of de juiste uitgever het token terugstuurde en dat er niet mee is geknoeid. Omdat er `id_tokens` altijd een JWT-token is, bestaan er veel bibliotheken om deze tokens te valideren. u wordt aangeraden een van deze te gebruiken in plaats van dit zelf te doen.  Houd er rekening mee dat alleen vertrouwelijke clients (die met een geheim) ID-tokens moeten valideren.  Open bare toepassingen (code die volledig wordt uitgevoerd op een apparaat of netwerk dat u niet beheert: de browser van een gebruiker of hun thuis netwerk) is niet van toepassing op het valideren van het ID-token, omdat een kwaadwillende gebruiker de sleutels die worden gebruikt voor validatie van het token kan onderscheppen en bewerken.
 
 Als u het token hand matig wilt valideren, raadpleegt u de stappen voor het [valideren van een toegangs token](access-tokens.md#validating-tokens). Nadat de hand tekening op het token is gevalideerd, moeten de volgende JWT-claims worden gevalideerd in de id_token (dit kan ook worden gedaan door de bibliotheek voor token validatie):
 

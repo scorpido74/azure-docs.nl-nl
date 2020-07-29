@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/01/2020
+ms.date: 07/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8d6c9ab2bacf94b3a27bfd1de0189d8b89b5efaf
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287214"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Problemen met Azure-roltoewijzingen
 
 - Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** **omdat de**  >  optie**toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout ' de client met object-id heeft geen toestemming hebt om actie uit te voeren ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de machtiging heeft `Microsoft.Authorization/roleAssignments/write` , zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
+- Als u een Service-Principal gebruikt om rollen toe te wijzen, kunt u het volgende fout bericht krijgen: onvoldoende bevoegdheden om de bewerking te volt ooien. Stel bijvoorbeeld dat u een Service-Principal hebt waaraan de rol eigenaar is toegewezen en u probeert de volgende roltoewijzing te maken als service-principal met behulp van Azure CLI:
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    Als u het fout bericht ' onvoldoende bevoegdheden om de bewerking te volt ooien ' krijgt, komt dit waarschijnlijk doordat Azure CLI probeert de identiteit van de toegewezen gebruiker te zoeken in azure AD en de Service-Principal standaard geen Azure AD kan lezen.
+
+    Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen. U kunt ook de [machtiging Directory. Read. all](https://docs.microsoft.com/graph/permissions-reference) toekennen aan de Microsoft Graph.
+
+    De tweede manier om deze fout op te lossen is door de roltoewijzing te maken met behulp `--assignee-object-id` van de para meter in plaats van `--assignee` . Als u `--assignee-object-id` Azure cli gebruikt, wordt de Azure AD-zoek opdracht overs Laan. U moet de object-ID van de gebruiker, groep of toepassing ophalen waaraan u de rol wilt toewijzen. Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure cli](role-assignments-cli.md#new-service-principal)voor meer informatie.
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>Problemen met aangepaste rollen
 

@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477257"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311752"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>ITP in Safari en andere browsers waar cookies van derden worden geblokkeerd, afhandelen
 
@@ -46,7 +46,7 @@ Voor de micro soft Identity platform, SPAs en native-clients volgen vergelijk ba
 
 SPAs hebben twee extra beperkingen:
 
-* [De omleidings-URI moet worden `spa` gemarkeerd als type](v2-oauth2-auth-code-flow.md#setup-required-for-single-page-apps) CORS inschakelen voor eind punten van de aanmelding.
+* [De omleidings-URI moet worden `spa` gemarkeerd als type](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) CORS inschakelen voor eind punten van de aanmelding.
 * Vernieuwings tokens die zijn uitgegeven via de autorisatie code stroom naar `spa` omleidings-uri's, hebben een levens duur van 24 uur in plaats van een levens duur van 90 dagen.
 
 ![Code stroom voor SPA-apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)

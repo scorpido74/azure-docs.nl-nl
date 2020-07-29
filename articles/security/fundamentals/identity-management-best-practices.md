@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089665"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367398"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control
 
@@ -204,7 +204,7 @@ Uw beveiligings team moet inzicht hebben in uw Azure-resources om Risico's te ku
 U kunt [RBAC](/azure/role-based-access-control/overview) gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik. Het bereik van een roltoewijzing kan een abonnement, een resourcegroep of een enkele resource zijn.
 
 **Best Practice**: Verdeel taken binnen uw team en ken alleen de hoeveelheid toegang toe aan gebruikers die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen te geven in uw Azure-abonnement of-resources, mag u alleen bepaalde acties in een bepaald bereik toestaan.
-**Details**: gebruik [Ingebouwde RBAC-rollen](/azure/role-based-access-control/built-in-roles) in azure om machtigingen toe te wijzen aan gebruikers.
+**Details**: gebruik [Azure ingebouwde rollen](/azure/role-based-access-control/built-in-roles) in azure om machtigingen toe te wijzen aan gebruikers.
 
 > [!Note]
 > Specifieke machtigingen maken overbodige complexiteit en verwar ring en kunnen worden gecumuleerd in een ' legacy ' configuratie die moeilijk te herstellen is zonder dat u iets hoeft te verbreken. Vermijd resourcespecifieke bevoegdheden. Gebruik in plaats daarvan beheer groepen voor machtigingen voor het hele onderneming en resource groepen voor de bevoegdheden binnen abonnementen. Vermijd gebruikersspecifieke machtigingen. Wijs in plaats daarvan toegang toe aan groepen in Azure AD.

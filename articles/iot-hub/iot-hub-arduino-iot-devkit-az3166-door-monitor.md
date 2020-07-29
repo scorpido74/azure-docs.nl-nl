@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75977305"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337871"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitor voor deuren: e-mail met Azure Functions en SendGrid verzenden wanneer een deur wordt geopend           
 
@@ -172,7 +173,7 @@ VS code controleert vervolgens de Arduino-schets en uploadt deze naar de DevKit.
 
 ![apparaat uploaden](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
-De DevKit wordt opnieuw opgestart en de code wordt gestart.
+De DevKit wordt opnieuw opgestart en het uitvoeren van de code wordt gestart.
 
 > [!NOTE]
 > In sommige gevallen wordt het fout bericht ' fout: AZ3166: onbekend pakket ' weer gegeven. Deze fout treedt op wanneer de pakket index van het board niet correct wordt vernieuwd. Raadpleeg de [sectie ontwikkeling van de veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)om deze fout op te lossen.
@@ -196,7 +197,4 @@ Als u problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT DevKit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller van Azure IoT voor externe controle en de SendGrid-service gebruikt om een e-mail te verzenden. Hier volgen de voorgestelde volgende stappen:
-
-* [Overzicht van de oplossing voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](/azure/iot-central/core/howto-connect-devkit)
+U hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller van Azure IoT voor externe controle en de SendGrid-service gebruikt om een e-mail te verzenden. Hier volgt de voorgestelde volgende stap:[overzicht van de Azure IOT-oplossing voor externe controle](https://docs.microsoft.com/azure/iot-suite/)

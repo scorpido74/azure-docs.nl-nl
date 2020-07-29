@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048191"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337837"
 ---
 # <a name="execute-r-script-module"></a>R-script module uitvoeren
 
@@ -119,6 +119,22 @@ Nadat de pijplijn uitvoering is voltooid, kunt u een voor beeld van de afbeeldin
 > [!div class="mx-imgBorder"]
 > ![Voor beeld van geüploade afbeelding](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>Toegang tot geregistreerde gegevensset
+
+U kunt de volgende voorbeeld code [gebruiken om toegang te krijgen tot de geregistreerde gegevens sets](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) in uw werk ruimte:
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>Het uitvoeren van een R-script configureren
 
 De module voor het uitvoeren van R-scripts bevat voorbeeld code die u als uitgangs punt kunt gebruiken. Als u de module voor het uitvoeren van een R-script wilt configureren, geeft u een aantal invoer en code op om uit te voeren.
@@ -177,6 +193,25 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
  
     > [!NOTE]
     > Voor bestaande R-code zijn mogelijk kleine wijzigingen nodig om te worden uitgevoerd in een designer-pijp lijn. Invoer gegevens die u in CSV-indeling opgeeft, moeten bijvoorbeeld expliciet worden geconverteerd naar een gegevensset voordat u deze in uw code kunt gebruiken. Gegevens-en kolom typen die in de R-taal worden gebruikt, verschillen ook op een aantal manieren van de gegevens-en kolom typen die in de ontwerp functie worden gebruikt.
+
+    Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
+    
+    Bundel het script en andere aangepaste resources aan een zip-bestand en upload het zip-bestand als een **Bestands gegevensset** naar de Studio. Vervolgens kunt u de module gegevensset slepen vanuit de lijst *mijn gegevens sets* in het deel venster met de linker module op de ontwerp pagina ontwerpen. Verbind de module gegevensset met de **script bundel** poort van de **script module Execute R** .
+    
+    Hieronder ziet u de voorbeeld code voor het gebruik van het script in de script bundel:
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
 
 1.  Voer voor **wille keurige Seed**een waarde in die in de R-omgeving moet worden gebruikt als de wille keurige Seed-waarde. Deze para meter is gelijk aan het aanroepen `set.seed(value)` van de R-code.  
 

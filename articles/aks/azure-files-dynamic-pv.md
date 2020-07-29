@@ -5,12 +5,12 @@ description: Meer informatie over het dynamisch maken van een permanent volume m
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: e6735bba4a84a694e4cf6a58f695f2d89afe8994
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e9e686d8da420c650709d3bedc103d0043fa679
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057269"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287102"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure Files in azure Kubernetes service (AKS)
 
@@ -186,6 +186,8 @@ parameters:
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Aanbevolen procedures voor opslag en back-ups in AKS][operator-best-practices-storage]voor gekoppelde aanbevolen procedures.
+
+Zie [Dynamic Provisioning](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision)(Engelstalig) voor para meters voor de opslag klasse.
 
 Meer informatie over Kubernetes permanente volumes met behulp van Azure Files.
 

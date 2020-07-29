@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/28/2020
+ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048157"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337820"
 ---
 # <a name="export-data-module"></a>Gegevens module exporteren
 
@@ -41,6 +41,9 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
 1. Selecteer **gegevens exporteren** om het deel venster **Eigenschappen** te openen.
 
 1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Raadpleeg de informatie [in azure Storage-services om toegang te krijgen tot de gegevens](../how-to-access-data.md).
+
+    > [!NOTE]
+    > Het exporteren van gegevens van een bepaald gegevens type naar een SQL database-kolom die is opgegeven als een ander gegevens type, wordt niet ondersteund.
 
 1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
 

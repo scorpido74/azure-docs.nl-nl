@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b3ed5d6605097b31dfaa58a2d37e71d3a6702bee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7e9a76309b4d9dcd010b85d1b55f340374be5c4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337922"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Over de query taal voor Azure Digital Apparaatdubbels
 
@@ -28,7 +28,7 @@ Azure Digital Apparaatdubbels biedt uitgebreide query mogelijkheden tegen het du
 > Alle Azure Digital Apparaatdubbels-query bewerkingen zijn hoofdletter gevoelig.
 
 Hier volgen de bewerkingen die beschikbaar zijn in de Azure Digital Apparaatdubbels query Store-taal:
-* De eigenschappen van apparaatdubbels worden opgehaald via Digital apparaatdubbels.
+* Get apparaatdubbels by Digital apparaatdubbels eigenschappen (inclusief [Tags](how-to-use-tags.md)).
 * Haal apparaatdubbels op door de interfaces van Digital apparaatdubbels.
 * Apparaatdubbels op basis van relatie-eigenschappen ophalen.
 * Apparaatdubbels ophalen via meerdere relatie typen ( `JOIN` query's). Er gelden beperkingen voor het toegestane aantal `JOIN` s (één niveau voor de open bare preview).

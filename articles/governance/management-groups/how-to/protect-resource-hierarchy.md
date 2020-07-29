@@ -3,12 +3,12 @@ title: Uw resource hiërarchie beveiligen-Azure governance
 description: Meer informatie over het beveiligen van uw resource hiërarchie met hiërarchie-instellingen, zoals het instellen van de standaard beheer groep.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127993"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366769"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
 
@@ -23,7 +23,7 @@ Voor het configureren van een van de hiërarchie-instellingen zijn de volgende t
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Met deze bewerkingen kan een gebruiker de hiërarchie-instellingen niet lezen en bijwerken. De bewerkingen bieden geen andere toegang tot de hiërarchie van de beheer groep of resources in de hiërarchie. Beide bewerkingen zijn beschikbaar in de ingebouwde **instellingen beheerder**voor de hiërarchie van RBAC-rollen.
+Met deze bewerkingen kan een gebruiker de hiërarchie-instellingen niet lezen en bijwerken. De bewerkingen bieden geen andere toegang tot de hiërarchie van de beheer groep of resources in de hiërarchie. Beide bewerkingen zijn beschikbaar in de beheerder van de ingebouwde rol hiërarchie- **instellingen**van Azure.
 
 ## <a name="setting---default-management-group"></a>Instelling: standaard beheer groep
 

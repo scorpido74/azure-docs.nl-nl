@@ -3,12 +3,12 @@ title: Azure DevTest Labs integreren in uw Azure-pijp lijnen
 description: Meer informatie over het integreren van Azure DevTest Labs in uw Azure pipelines continue integratie en leverings pijplijn
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 080577a74a1cb168453c6a027d77ae395072ccc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480572"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288930"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integreren in uw CI/CD-pijp lijn van Azure pipelines
 
@@ -96,7 +96,7 @@ Het script bestand maken:
 Een nieuwe release pijplijn maken:
 
 1. Selecteer op de pagina Azure DevOps-project **pijp lijnen**  >  **Releases** in het linkernavigatievenster.
-1. Selecteer **Nieuwe pijplijn**.
+1. Selecteer **nieuwe pijp lijn**.
 1. Schuif onder **Selecteer een sjabloon**omlaag, selecteer **lege taak**en selecteer vervolgens **Toep assen**.
 
 ### <a name="add-and-set-variables"></a>Variabelen toevoegen en instellen
@@ -109,7 +109,7 @@ Variabelen toevoegen voor de waarden:
    
 1. Selecteer voor elke variabele **toevoegen** en voer de naam en waarde in:
    
-   |Name|Waarde|
+   |Naam|Waarde|
    |---|---|
    |*vmName*|De naam van de virtuele machine die u hebt toegewezen in de Resource Manager-sjabloon|
    |*userName*|Gebruikers naam voor toegang tot de virtuele machine|
@@ -218,5 +218,5 @@ U kunt de aangepaste installatie kopie gebruiken om Vm's te maken wanneer u ze n
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het [maken van omgevingen met meerdere vm's met Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md).
 - Verken meer Quick Start-sjablonen voor DevTest Labs Automation van de [open bare DevTest Labs github opslag plaats](https://github.com/Azure/azure-quickstart-templates).
-- Ga indien nodig naar de pagina voor het [oplossen van problemen met Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) .
+- Ga indien nodig naar de pagina voor het [oplossen van problemen met Azure DevOps](/azure/devops/pipelines/troubleshooting) .
  

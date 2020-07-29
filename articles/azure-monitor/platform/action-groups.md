@@ -3,28 +3,26 @@ title: Actiegroepen maken en beheren in de Azure-portal
 description: Meer informatie over het maken en beheren van actie groepen in de Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321850"
+ms.locfileid: "87337726"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
-
-U configureert een actie om een persoon op de hoogte te stellen per e-mail of SMS, waarna een bevestiging wordt gegeven dat de gebruiker aan de actie groep is toegevoegd.
 
 In dit artikel wordt beschreven hoe u actie groepen maakt en beheert in de Azure Portal.
 
 Elke actie bestaat uit de volgende eigenschappen:
 
-* **Naam**: een unieke id in de actie groep.  
-* **Actie type**: de uitgevoerde actie. Voor beelden hiervan zijn het verzenden van een spraak oproep, SMS, e-mail; of het activeren van verschillende typen geautomatiseerde acties. Zie typen verderop in dit artikel.
-* **Details**: de bijbehorende details die per *actie type*verschillen.
+* **Type**: de melding of actie die is uitgevoerd. Voor beelden hiervan zijn het verzenden van een spraak oproep, SMS, e-mail; of het activeren van verschillende typen geautomatiseerde acties. Zie typen verderop in dit artikel.
+* **Naam**: een unieke id in de actie groep.
+* **Details**: de bijbehorende details die per *type*verschillen.
 
 Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen voor het configureren van actie groepen de [actie groep Resource Manager-sjablonen](./action-groups-create-resource-manager-template.md).
 
@@ -32,33 +30,75 @@ Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen v
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **monitor**. In het deel venster **monitor** worden al uw bewakings instellingen en-gegevens in één weer gave geconsolideerd.
 
-1. Selecteer **Waarschuwingen** en vervolgens **Acties beheren**.
+1. Selecteer **waarschuwingen**en selecteer vervolgens **acties beheren**.
 
     ![Knop acties beheren](./media/action-groups/manage-action-groups.png)
     
-1. Selecteer **actie groep toevoegen**en vul de velden in.
+1. Selecteer **actie groep toevoegen**en vul de relevante velden in de wizard ervaring in.
 
-    ![De opdracht ' actie groep toevoegen '](./media/action-groups/add-action-group.png)
+    ![De opdracht ' actie groep toevoegen '](./media/action-groups/add-action-group.PNG)
+
+### <a name="configure-basic-action-group-settings"></a>Basis instellingen voor de actie groep configureren
+
+Onder **Project Details**:
+
+Selecteer het **abonnement** en de **resource groep** waarin de actie groep wordt opgeslagen.
+
+Geef onder **Exemplaardetails** het volgende op:
+
+1. Voer een naam in voor de **actie groep**.
+
+1. Voer een **weergave naam**in. De weergave naam wordt gebruikt in plaats van de naam van een volledige actie groep wanneer er meldingen worden verzonden met behulp van deze groep.
+
+      ![Het dialoog venster actie groep toevoegen](./media/action-groups/action-group-1-basics.png)
+
+
+### <a name="configure-notifications"></a>Meldingen configureren
+
+1. Klik op de knop **volgende: meldingen >** om naar het tabblad **meldingen** te gaan of selecteer het tabblad **meldingen** boven aan het scherm.
+
+1. Definieer een lijst met meldingen die moeten worden verzonden wanneer een waarschuwing wordt geactiveerd. Geef het volgende op voor elke melding:
+
+    a. **Meldings type**: Selecteer het type melding dat u wilt verzenden. De beschikbare opties zijn:
+      * Rol e-mail Azure Resource Manager: een e-mail verzenden naar gebruikers die zijn toegewezen aan bepaalde ARM-rollen op abonnements niveau.
+      * E-mail/SMS/push/Voice: verzend deze meldings typen naar specifieke ontvangers.
     
-1. Voer een naam in het vak Naam van de **actie groep** in en voer een naam in het vak **korte naam** in. De korte naam wordt gebruikt in plaats van een volledige naam van de actiegroep als er meldingen via deze groep worden verzonden.
+    b. **Naam**: Voer een unieke naam in voor de melding.
 
-      ![Het dialoog venster actie groep toevoegen](./media/action-groups/action-group-define.png)
-
-1. Het vak **abonnement** wordt aangevuld met uw huidige abonnement. Dit is de naam van het abonnement waarin de actie groep wordt opgeslagen.
-
-1. Selecteer de **resource groep** waarin de actie groep wordt opgeslagen.
-
-1. Definieer een lijst met acties. Geef het volgende op voor elke actie:
-
-    1. **Naam**: Voer een unieke id in voor deze actie.
-
-    1. **Actie type**: Selecteer Automation-Runbook, Azure function, E-mail Azure Resource Manager rol, E-mail/SMS/push/Voice, ITSM, Logic app, beveiligde webhook, webhook.
-
-    1. **Details**: Voer een telefoon nummer, e-mail adres, webhook-URI, Azure-app, ITSM-verbinding of Automation-runbook in op basis van het actie type. Geef voor ITSM-actie ook **werk item** en andere velden op die nodig zijn voor het ITSM-hulp programma.
+    c. **Details**: Voer een e-mail adres, telefoon nummer, enzovoort in op basis van het geselecteerde meldings type.
     
-    1. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
+    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
 
-1. Selecteer **OK** om de actie groep te maken.
+    ![Het tabblad meldingen](./media/action-groups/action-group-2-notifications.png)
+    
+### <a name="configure-actions"></a>Acties configureren
+
+1. Klik op de knop **volgende: acties >** om naar het tabblad **acties** te gaan of selecteer het tabblad **acties** boven aan het scherm.
+
+1. Definieer een lijst met acties die moeten worden geactiveerd wanneer een waarschuwing wordt geactiveerd. Geef het volgende op voor elke actie:
+
+    a. **Actie type**: Selecteer Automation-Runbook, Azure function, ITSM, Logic app, beveiligde webhook, webhook.
+    
+    b. **Naam**: Voer een unieke naam in voor de actie.
+
+    c. **Details**: Voer een webhook-URI, een Azure-app, ITSM-verbinding of een Automation-runbook in op basis van het actie type. Geef voor ITSM-actie ook **werk item** en andere velden op die nodig zijn voor het ITSM-hulp programma.
+    
+    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
+    
+    ![Het tabblad acties](./media/action-groups/action-group-3-actions.png)
+
+### <a name="create-the-action-group"></a>De actie groep maken
+
+1. U kunt indien gewenst de instellingen voor **tags** bekijken. Hiermee kunt u sleutel-waardeparen koppelen aan de actie groep voor uw categorisatie en is deze een functie die beschikbaar is voor elke Azure-resource.
+
+    ![Het tabblad Labels](./media/action-groups/action-group-4-tags.png)
+    
+1. Klik op **Controleren + maken** om de instellingen te controleren. Er wordt een snelle validatie uitgevoerd van uw invoer om ervoor te zorgen dat alle vereiste velden zijn geselecteerd. Als er problemen zijn, worden deze hier vermeld. Zodra u de instellingen hebt gecontroleerd, klikt u op **maken** om de actie groep in te richten.
+    
+    ![Het tabblad controleren en maken](./media/action-groups/action-group-5-review.png)
+
+> [!NOTE]
+> Wanneer u een actie configureert om een persoon op de hoogte te stellen per e-mail of SMS, ontvangt de gebruiker een bevestiging dat deze is toegevoegd aan de actie groep.
 
 ## <a name="manage-your-action-groups"></a>Uw actie groepen beheren
 

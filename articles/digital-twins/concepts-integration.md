@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129726"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367432"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Apparaatdubbels integreren met andere services
 
@@ -20,11 +20,11 @@ Azure Digital Apparaatdubbels wordt doorgaans samen met andere services gebruikt
 
 ## <a name="data-ingress"></a>Gegevens binnenkomend
 
-Azure Digital Apparaatdubbels kan worden geactiveerd met gegevens uit IoT Hub. Zo kunt u telemetrie van fysieke apparaten in uw omgeving verzamelen en deze gegevens verwerken met behulp van de Azure Digital Apparaatdubbels-grafiek in de Cloud.
+Azure Digital Apparaatdubbels kan worden aangedreven met gegevens en gebeurtenissen van elke service: IoT Hub, Logic Apps, uw eigen aangepaste service, enzovoort. Zo kunt u telemetrie van fysieke apparaten in uw omgeving verzamelen en deze gegevens verwerken met behulp van de Azure Digital Apparaatdubbels-grafiek in de Cloud.
 
 Azure Digital Apparaatdubbels heeft geen ingebouwde IoT Hub. U kunt een bestaande IoT Hub gebruiken die momenteel in productie is of een nieuwe implementeren. Hiermee hebt u volledige toegang tot alle functies van het beheer van het apparaat van IoT Hub.
 
-Als u gegevens wilt opnemen van IoT Hub in azure Digital Apparaatdubbels, gebruikt u een [Azure-functie](../azure-functions/functions-overview.md). Meer informatie over dit patroon vindt [*u in procedures: opname telemetrie van IOT hub*](how-to-ingest-iot-hub-data.md)of probeer het zelf in de Azure Digital Apparaatdubbels [*zelf studie: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
+Gebruik een [Azure-functie](../azure-functions/functions-overview.md)om gegevens uit een wille keurige bron op te nemen in azure Digital apparaatdubbels. Meer informatie over dit patroon vindt [*u in procedures: opname telemetrie van IOT hub*](how-to-ingest-iot-hub-data.md)of probeer het zelf in de Azure Digital Apparaatdubbels [*zelf studie: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Services voor gegevens uitgaand verkeer
 

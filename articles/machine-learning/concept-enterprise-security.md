@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012863"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366924"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -75,7 +75,7 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 | Modellen/afbeeldingen weer geven | ✓ | ✓ | ✓ |
 | Webservice aanroepen | ✓ | ✓ | ✓ |
 
-Als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste rollen maken. Aangepaste rollen worden alleen ondersteund voor bewerkingen in de werk ruimte en Machine Learning Compute. Aangepaste rollen kunnen Lees-, schrijf-of verwijder machtigingen hebben voor de werk ruimte en op de reken resource in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van de resource groep of op een specifiek abonnements niveau. Zie [gebruikers en rollen beheren in een Azure machine learning-werk ruimte](how-to-assign-roles.md)voor meer informatie.
+Als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste rollen maken. Aangepaste rollen worden ondersteund voor het beheren van alle bewerkingen binnen een werk ruimte, zoals het maken van een berekening, het indienen van een uitvoering, het registreren van een Data Store of het implementeren van een model. Aangepaste rollen kunnen Lees-, schrijf-of verwijder machtigingen hebben voor de verschillende resources van een werk ruimte, zoals clusters, gegevens opslag, modellen en eind punten. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van de resource groep of op een specifiek abonnements niveau. Zie [gebruikers en rollen beheren in een Azure machine learning-werk ruimte](how-to-assign-roles.md)voor meer informatie.
 
 > [!WARNING]
 > Azure Machine Learning wordt ondersteund met Azure Active Directory Business-to-Business-samen werking, maar wordt momenteel niet ondersteund met Azure Active Directory Business-to-Consuming-samen werking.
@@ -154,10 +154,6 @@ Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om de Azure Cosm
 Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw abonnement met door de klant beheerde sleutels in te scha kelen:
 
 * Registreer de resource providers micro soft. MachineLearning en Microsoft.DocumentDB in uw abonnement, als u dit nog niet hebt gedaan.
-
-* Machtig de Machine Learning-app (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
-
-    ![De app ' Azure Machine Learning ' machtigen voor identiteits-en toegangs beheer in de portal](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
 
 * Gebruik de volgende para meters bij het maken van de Azure Machine Learning-werk ruimte. Beide para meters zijn verplicht en worden ondersteund in SDK, CLI, REST Api's en Resource Manager-sjablonen.
 

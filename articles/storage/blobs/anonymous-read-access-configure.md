@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: a153a3735bbc46dbbce7e58374e1015ac1ec0bfb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133177"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289248"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
 
-Azure Storage ondersteunt optionele anonieme lees toegang voor containers en blobs. Anonieme toegang tot uw gegevens is standaard nooit toegestaan. Tenzij u anonieme toegang expliciet inschakelt, moeten alle aanvragen naar een container en de bijbehorende blobs worden geautoriseerd met behulp van een Azure Active Directory (Azure AD) of een gedeelde sleutel autorisatie. Wanneer u de instelling van het open bare toegangs niveau van een container configureert om anonieme toegang toe te staan, kunnen clients gegevens in die container lezen zonder de aanvraag te autoriseren.
+Azure Storage ondersteunt optionele anonieme lees toegang voor containers en blobs. Anonieme toegang tot uw gegevens is standaard nooit toegestaan. Tenzij u anonieme toegang expliciet inschakelt, moeten alle aanvragen naar een container en de bijbehorende blobs worden geautoriseerd. Wanneer u de instelling van het open bare toegangs niveau van een container configureert om anonieme toegang toe te staan, kunnen clients gegevens in die container lezen zonder de aanvraag te autoriseren.
 
 > [!WARNING]
 > Wanneer een container voor open bare toegang is geconfigureerd, kan elke client gegevens in die container lezen. Open bare toegang geeft een potentieel beveiligings risico, dus als u dit niet nodig hebt, raadt micro soft u aan het niet toe te staan voor het opslag account. Zie [anonieme open bare Lees toegang tot containers en blobs voor komen](anonymous-read-access-prevent.md)voor meer informatie.
@@ -41,7 +41,7 @@ De volgende tabel bevat een overzicht van de manier waarop beide instellingen va
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>Open bare Lees toegang voor een opslag account toestaan of weigeren
 
-Open bare toegang is standaard toegestaan voor afzonderlijke containers in een opslag account. Wanneer open bare toegang is toegestaan, kan een gebruiker met de juiste machtigingen de open bare toegangs instelling van een container wijzigen om anonieme open bare toegang tot de gegevens in die container in te scha kelen.
+Een opslag account is standaard zo geconfigureerd dat een gebruiker met de juiste machtigingen open bare toegang tot een container mogelijk maakt. Wanneer open bare toegang is toegestaan, kan een gebruiker met de juiste machtigingen de open bare toegangs instelling van een container wijzigen om anonieme toegang tot de gegevens in die container in te scha kelen. BLOB-gegevens zijn nooit beschikbaar voor open bare toegang, tenzij de gebruiker de extra stap nodig heeft om de open bare toegangs instelling van de container expliciet te configureren.
 
 Houd er rekening mee dat open bare toegang tot een container standaard altijd is uitgeschakeld en moet expliciet worden geconfigureerd om anonieme aanvragen toe te staan. Ongeacht de instelling van het opslag account zijn uw gegevens nooit beschikbaar voor open bare toegang, tenzij een gebruiker met de juiste machtigingen deze extra stap gebruikt om open bare toegang tot de container mogelijk te maken.
 
@@ -62,7 +62,7 @@ Ga als volgt te werk om open bare toegang voor een opslag account in de Azure Po
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Scherm opname van het toestaan of weigeren van open bare BLOB-toegang voor het account":::
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u open bare toegang wilt toestaan of weigeren voor een opslag account met Azure CLI, moet u eerst de resource-ID voor uw opslag account ophalen door de opdracht [AZ resource show](/cli/azure/resource#az-resource-show) aan te roepen. Vervolgens roept u de opdracht [AZ resource update](/cli/azure/resource#az-resource-update) aan om de eigenschap **allowBlobPublicAccess** voor het opslag account in te stellen. Als u open bare toegang wilt toestaan, stelt u de eigenschap **allowBlobPublicAccess** in op True (waar). Als u dit niet wilt toestaan, stelt u deze in op **False**.
 
@@ -151,7 +151,7 @@ Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het op
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Scherm opname waarin wordt getoond dat het open bare toegangs niveau van de container wordt geblokkeerd wanneer open bare toegang niet is toegestaan":::
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u het niveau van de open bare toegang voor een of meer containers met Azure CLI wilt bijwerken, roept u de opdracht [AZ storage container set permission](/cli/azure/storage/container#az-storage-container-set-permission) aan. Machtig deze bewerking door de account sleutel, een connection string of een Shared Access Signature (SAS) door te geven. De [set container-ACL](/rest/api/storageservices/set-container-acl) -bewerking waarmee het open bare toegangs niveau van de container wordt ingesteld, biedt geen ondersteuning voor autorisatie met Azure AD. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens bewerkingen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie.
 

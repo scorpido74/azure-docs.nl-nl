@@ -4,15 +4,16 @@ description: In dit artikel vindt u Naslag informatie voor de opdracht azcopy-ta
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a06e428908777c526602166f127a28304b595ba0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3e9d70ced0d2974a66717436c28c5b6914f6745
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220087"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287137"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy jobs clean
 
@@ -26,8 +27,8 @@ azcopy jobs clean [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -37,13 +38,13 @@ azcopy jobs clean [flags]
 
 ## <a name="options"></a>Opties
 
-**-h,--Help**                Help voor schonen.
+**--Help**                Help voor schonen.
 
-**--met-status** teken reeks verwijdert alleen de taken met deze status, beschik bare waarden: geannuleerd, voltooid, mislukt, InProgress, alle (standaard ' all ')
+**--met-status** teken reeks verwijdert alleen de taken met deze status, beschik bare waarden: `Canceled` ,, `Completed` `Failed` , `InProgress` , `All` (standaard `All` )
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-**--Cap-Mbps uint32**      De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
+**--Cap-Mbps-float**      De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
 
 **--** de teken reeks indeling van het uitvoer type van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is ' text '. (standaard tekst)
 

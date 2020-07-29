@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 06/16/2020
-ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: d07681798cadf1d983942d681b910e26ea48d6d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147250"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285931"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -30,124 +30,16 @@ Met python kunt u taken uitvoeren die niet worden ondersteund door bestaande mod
 + Gegevens lezen, laden en bewerken vanuit bronnen die niet worden ondersteund door de module [gegevens importeren](./import-data.md) .
 + Voer uw eigen diepe leer code uit. 
 
+## <a name="supported-python-packages"></a>Ondersteunde Python-pakketten
 
 Azure Machine Learning maakt gebruik van de Anaconda-distributie van python, met veel algemene hulpprogram ma's voor gegevens verwerking. De Anaconda-versie wordt automatisch bijgewerkt. De huidige versie is:
  -  Anaconda 4.5 + Distribution voor python 3,6 
 
-De vooraf geïnstalleerde pakketten zijn:
--    adal = = 1.2.2
--    applicationinsights = = 0.11.9
--    attr = = 19.3.0
--    Azure-common = = 1.1.25
--    Azure-Core = = 1.3.0
--    Azure-graphrbac = = 0.61.1
--    Azure-Identity = = 1.3.0
--    Azure-beheer-autorisatie = = 0.60.0
--    Azure-beheer-containerregistry = = 2.8.0
--    Azure-beheer-sleutel kluis = = 2.2.0
--    Azure-beheer-resource = = 8.0.1
--    Azure-beheer-opslag = = 8.0.0
--    Azure-Storage-BLOB = = 1.5.0
--    Azure-opslag-common = = 1.4.2
--    azureml-Core = = 1.1.5.5
--    azureml-dataprep-native = = 14.1.0
--    azureml-dataprep = = 1.3.5
--    azureml-defaults = = 1.1.5.1
--    azureml-Designer-Classic-modules = = 0.0.118
--    azureml-Designer-core = = 0.0.31
--    azureml-Designer-Internal = = 0.0.18
--    azureml-Model-Management-SDK = = 1.0.1 B6. post1
--    azureml-pijp lijn-Core = = 1.1.5
--    azureml-telemetrie = = 1.1.5.3
--    backports. tempfile = = 1.0
--    backports. weakref = = 1.0. post1
--    boto3 = = 1.12.29
--    botocore = = 1.15.29
--    cache-werkset = = 4.0.0
--    Certificeer = = 2019.11.28
--    cffi = = 1.12.3
--    chardet = = 3.0.4
--    Klik = = 7.1.1
--    cloudpickle = = 1.3.0
--    configparser = = 3.7.4
--    contextlib2 = = 0.6.0. post1
--    crypto grafie = = 2.8
--    Cycle = = 0.10.0
--    Dill = = 0.3.1.1
--    distributie = = 1.4.0
--    docker = = 4.2.0
--    docutils = = 0.15.2
--    dotnetcore2 = = 2.1.13
--    kolf = = 1.0.3
--    fusepy = = 3.0.1
--    gensim = = 3.8.1
--    Google-API-Core = = 1.16.0
--    Google-auth = = 1.12.0
--    Google-Cloud-Core = = 1.3.0
--    Google-Cloud-Storage = = 1.26.0
--    Google-hervattingable-media = = 0.5.0
--    googleapis-algemeen-proto = = 1.51.0
--    gunicorn = = 19.9.0
--    IDNA = = 2,9
--    niet in evenwicht: meer informatie = = 0.4.3
--    isodate = = 0.6.0
--    itsdangerous = = 1.1.0
--    jeepney = = 0.4.3
--    jinja2 = = 2.11.1
--    jmespath = = 0.9.5
--    joblib = = 0.14.0
--    JSON-logboek registratie-py = = 0,2
--    jsonpickle = = 1.3
--    jsonschema = = 3.0.1
--    kiwisolver = = 1.1.0
--    Liac-ARFF = = 2.4.0
--    lightgbm = = 2.2.3
--    markupsafe = = 1.1.1
--    matplotlib = = 3.1.3
--    meer-ITER-extra = = 6.0.0
--    msal-Extensions = = 0.1.3
--    msal = = 1.1.0
--    msrest = = 0.6.11
--    msrestazure = = 0.6.3
--    NDG-httpsclient = = 0.5.1
--    nimbusml = = 1.6.1
--    numpy = = 1.18.2
--    oauthlib = = 3.1.0
--    Pandas = = 0.25.3
--    pathspec = = 0.7.0
--    PIP = = 20.0.2
--    portalocker = = 1.6.0
--    protobuf = = 3.11.3
--    pyarrow = = 0.16.0
--    pyasn1-modules = = 0.2.8
--    pyasn1 = = 0.4.8
--    pycparser = = 2.20
--    pycryptodomex = = 3.7.3
--    pyjwt = = 1.7.1
--    pyopenssl = = 19.1.0
--    pyparsing = = 2.4.6
--    pyrsistent = = 0.16.0
--    python-dateutil = = 2.8.1
--    pytz = = 2019.3
--    aanvragen-oauthlib = = 1.3.0
--    aanvragen = = 2.23.0
--    RSA = = 4.0
--    ruamel. yaml = = 0.15.89
--    s3transfer = = 0.3.3
--    scikit-Learn = = 0.22.2
--    scipy = = 1.4.1
--    secretstorage = = 3.1.2
--    installatie-instellingen = = 46.1.1. post20200323
--    zes = = 1.14.0
--    Smart-open = = 1.10.0
--    urllib3 = = 1.25.8
--    WebSocket-client = = 0.57.0
--    werkzeug = = 0.16.1
--    wiel = = 0.34.2
+Zie de sectie [vooraf geïnstalleerde Python-pakketten](#preinstalled-python-packages)voor een volledige lijst.
 
- Als u pakketten wilt installeren die zich niet in de vooraf geïnstalleerde lijst bevinden (bijvoorbeeld *scikit-misc*), voegt u de volgende code toe aan het script: 
+Als u pakketten wilt installeren die zich niet in de vooraf geïnstalleerde lijst bevinden (bijvoorbeeld *scikit-misc*), voegt u de volgende code toe aan het script: 
 
- ```python
+```python
 import os
 os.system(f"pip install scikit-misc")
 ```
@@ -262,6 +154,117 @@ De module retourneert twee gegevens sets:
 
 + **Resulterende gegevensset 2**, gedefinieerd door het tweede geretourneerde gegevens frame van Panda, in een python-script.
 
+## <a name="preinstalled-python-packages"></a>Vooraf geïnstalleerde Python-pakketten
+De vooraf geïnstalleerde pakketten zijn:
+-    adal = = 1.2.2
+-    applicationinsights = = 0.11.9
+-    attr = = 19.3.0
+-    Azure-common = = 1.1.25
+-    Azure-Core = = 1.3.0
+-    Azure-graphrbac = = 0.61.1
+-    Azure-Identity = = 1.3.0
+-    Azure-beheer-autorisatie = = 0.60.0
+-    Azure-beheer-containerregistry = = 2.8.0
+-    Azure-beheer-sleutel kluis = = 2.2.0
+-    Azure-beheer-resource = = 8.0.1
+-    Azure-beheer-opslag = = 8.0.0
+-    Azure-Storage-BLOB = = 1.5.0
+-    Azure-opslag-common = = 1.4.2
+-    azureml-Core = = 1.1.5.5
+-    azureml-dataprep-native = = 14.1.0
+-    azureml-dataprep = = 1.3.5
+-    azureml-defaults = = 1.1.5.1
+-    azureml-Designer-Classic-modules = = 0.0.118
+-    azureml-Designer-core = = 0.0.31
+-    azureml-Designer-Internal = = 0.0.18
+-    azureml-Model-Management-SDK = = 1.0.1 B6. post1
+-    azureml-pijp lijn-Core = = 1.1.5
+-    azureml-telemetrie = = 1.1.5.3
+-    backports. tempfile = = 1.0
+-    backports. weakref = = 1.0. post1
+-    boto3 = = 1.12.29
+-    botocore = = 1.15.29
+-    cache-werkset = = 4.0.0
+-    Certificeer = = 2019.11.28
+-    cffi = = 1.12.3
+-    chardet = = 3.0.4
+-    Klik = = 7.1.1
+-    cloudpickle = = 1.3.0
+-    configparser = = 3.7.4
+-    contextlib2 = = 0.6.0. post1
+-    crypto grafie = = 2.8
+-    Cycle = = 0.10.0
+-    Dill = = 0.3.1.1
+-    distributie = = 1.4.0
+-    docker = = 4.2.0
+-    docutils = = 0.15.2
+-    dotnetcore2 = = 2.1.13
+-    kolf = = 1.0.3
+-    fusepy = = 3.0.1
+-    gensim = = 3.8.1
+-    Google-API-Core = = 1.16.0
+-    Google-auth = = 1.12.0
+-    Google-Cloud-Core = = 1.3.0
+-    Google-Cloud-Storage = = 1.26.0
+-    Google-hervattingable-media = = 0.5.0
+-    googleapis-algemeen-proto = = 1.51.0
+-    gunicorn = = 19.9.0
+-    IDNA = = 2,9
+-    niet in evenwicht: meer informatie = = 0.4.3
+-    isodate = = 0.6.0
+-    itsdangerous = = 1.1.0
+-    jeepney = = 0.4.3
+-    jinja2 = = 2.11.1
+-    jmespath = = 0.9.5
+-    joblib = = 0.14.0
+-    JSON-logboek registratie-py = = 0,2
+-    jsonpickle = = 1.3
+-    jsonschema = = 3.0.1
+-    kiwisolver = = 1.1.0
+-    Liac-ARFF = = 2.4.0
+-    lightgbm = = 2.2.3
+-    markupsafe = = 1.1.1
+-    matplotlib = = 3.1.3
+-    meer-ITER-extra = = 6.0.0
+-    msal-Extensions = = 0.1.3
+-    msal = = 1.1.0
+-    msrest = = 0.6.11
+-    msrestazure = = 0.6.3
+-    NDG-httpsclient = = 0.5.1
+-    nimbusml = = 1.6.1
+-    numpy = = 1.18.2
+-    oauthlib = = 3.1.0
+-    Pandas = = 0.25.3
+-    pathspec = = 0.7.0
+-    PIP = = 20.0.2
+-    portalocker = = 1.6.0
+-    protobuf = = 3.11.3
+-    pyarrow = = 0.16.0
+-    pyasn1-modules = = 0.2.8
+-    pyasn1 = = 0.4.8
+-    pycparser = = 2.20
+-    pycryptodomex = = 3.7.3
+-    pyjwt = = 1.7.1
+-    pyopenssl = = 19.1.0
+-    pyparsing = = 2.4.6
+-    pyrsistent = = 0.16.0
+-    python-dateutil = = 2.8.1
+-    pytz = = 2019.3
+-    aanvragen-oauthlib = = 1.3.0
+-    aanvragen = = 2.23.0
+-    RSA = = 4.0
+-    ruamel. yaml = = 0.15.89
+-    s3transfer = = 0.3.3
+-    scikit-Learn = = 0.22.2
+-    scipy = = 1.4.1
+-    secretstorage = = 3.1.2
+-    installatie-instellingen = = 46.1.1. post20200323
+-    zes = = 1.14.0
+-    Smart-open = = 1.10.0
+-    urllib3 = = 1.25.8
+-    WebSocket-client = = 0.57.0
+-    werkzeug = = 0.16.1
+-    wiel = = 0.34.2
 
 ## <a name="next-steps"></a>Volgende stappen
 
