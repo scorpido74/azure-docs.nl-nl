@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 854421452228a54833da4b0f05669c6d5f1c842f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501735"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289758"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -117,7 +117,7 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>De VM maken
+## <a name="create-the-vm"></a>De virtuele machine maken
 
 Maak een virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create) en attach (--attach-OS-disk) de beheerde schijf als de besturingssysteem schijf. In het volgende voor beeld wordt een VM gemaakt met de naam *myNewVM* met behulp van de beheerde schijf die u hebt gemaakt op basis van de GEÜPLOADe VHD
 

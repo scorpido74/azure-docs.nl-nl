@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102596"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292387"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die ertoe kunnen leiden dat een virtuele machine in Azure wordt beïnvloed: niet-gepland hardwareonderhoud, onverwachte downtime, en gepland onderhoud.
@@ -32,7 +32,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 
 * [Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie]
 * [Beheerde schijven voor virtuele machines in een beschikbaarheidsset gebruiken]
-* [Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's](../articles/virtual-machines/linux/scheduled-events.md)
 * [Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets]
 * [Combineer het gebruik van een load balancer met beschikbaarheidssets]
 * [Beschikbaarheidszones gebruiken om te beschermen tegen fouten op datacenterniveau]
@@ -95,7 +95,7 @@ Als u VM's met niet-beheerde schijven wilt gebruiken, volgt u onderstaande aanbe
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's
 
-Wanneer u zich abonneert op [geplande gebeurtenissen](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), wordt uw virtuele machine op de hoogte gesteld van aanstaande onderhoudsgebeurtenissen die van invloed kunnen zijn op uw VM. Wanneer geplande gebeurtenissen zijn ingeschakeld, krijgt de virtuele machine een minimale hoeveelheid tijd voordat de onderhoudsactiviteit wordt uitgevoerd. Zo kunnen host-OS-updates die van invloed zijn op uw virtuele machine, in de wachtrij worden geplaatst als gebeurtenissen waarvoor de impact wordt aangegeven, evenals een tijd waarop het onderhoud wordt uitgevoerd als er geen actie wordt ondernomen. Planningsgebeurtenissen worden ook in de wachtrij geplaatst wanneer Azure een onmiddellijke hardwarefout detecteert die van invloed kan zijn op uw virtuele machine, zodat u kunt bepalen wanneer het herstel moet worden uitgevoerd. Klanten kunnen de gebeurtenis gebruiken om taken uit te voeren vóór het onderhoud, zoals het opslaan van de status, een failover-overschakeling uitvoeren naar de secundaire VM, enzovoort. Nadat u uw logica hebt voltooid voor het op de juiste wijze verwerken van de onderhoudsgebeurtenis, kunt u de uitstaande geplande gebeurtenis goedkeuren zodat het platform door kan gaan met onderhoud.
+Wanneer u zich abonneert op [geplande gebeurtenissen](../articles/virtual-machines/linux/scheduled-events.md), wordt uw virtuele machine op de hoogte gesteld van aanstaande onderhoudsgebeurtenissen die van invloed kunnen zijn op uw VM. Wanneer geplande gebeurtenissen zijn ingeschakeld, krijgt de virtuele machine een minimale hoeveelheid tijd voordat de onderhoudsactiviteit wordt uitgevoerd. Zo kunnen host-OS-updates die van invloed zijn op uw virtuele machine, in de wachtrij worden geplaatst als gebeurtenissen waarvoor de impact wordt aangegeven, evenals een tijd waarop het onderhoud wordt uitgevoerd als er geen actie wordt ondernomen. Planningsgebeurtenissen worden ook in de wachtrij geplaatst wanneer Azure een onmiddellijke hardwarefout detecteert die van invloed kan zijn op uw virtuele machine, zodat u kunt bepalen wanneer het herstel moet worden uitgevoerd. Klanten kunnen de gebeurtenis gebruiken om taken uit te voeren vóór het onderhoud, zoals het opslaan van de status, een failover-overschakeling uitvoeren naar de secundaire VM, enzovoort. Nadat u uw logica hebt voltooid voor het op de juiste wijze verwerken van de onderhoudsgebeurtenis, kunt u de uitstaande geplande gebeurtenis goedkeuren zodat het platform door kan gaan met onderhoud.
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Een load balancer combineren met beschikbaarheidszones of -sets

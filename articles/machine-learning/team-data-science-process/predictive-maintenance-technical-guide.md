@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682711"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290714"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische hand leiding voor het oplossings sjabloon voor predictief onderhoud in lucht vaart
 
@@ -57,7 +58,7 @@ De [Azure Event hub](https://azure.microsoft.com/services/event-hubs/) -service 
 Gebruik [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) om bijna realtime analyses te bieden op de invoer stroom vanuit de [Azure Event hub](#azure-event-hub) -service. U publiceert vervolgens resultaten naar een [Power bi](https://powerbi.microsoft.com) dash board en archiveert alle onbewerkte binnenkomende gebeurtenissen naar de [Azure Storage](https://azure.microsoft.com/services/storage/) -service voor latere verwerking door de [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service.
 
 ### <a name="hdinsight-custom-aggregation"></a>Aangepaste HDInsight-aggregatie
-Voer [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -scripts (in azure Data Factory) uit met HDInsight om aggregaties te bieden voor de onbewerkte gebeurtenissen die zijn gearchiveerd met de Azure stream Analytics-resource.
+Voer [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts (in azure Data Factory) uit met HDInsight om aggregaties te bieden voor de onbewerkte gebeurtenissen die zijn gearchiveerd met de Azure stream Analytics-resource.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Maak voor spellingen voor de resterende levens duur (resterende levens duur) van een bepaalde vliegtuig motor met behulp van de invoer ontvangen met [Azure machine learning service](https://azure.microsoft.com/services/machine-learning/) (georganiseerd door Azure Data Factory). 
@@ -112,22 +113,22 @@ In deze sectie worden de benodigde [pijp lijnen en activiteiten](../../data-fact
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Twee van de pijp lijnen van deze Factory bevatten [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -scripts die worden gebruikt om de gegevens te partitioneren en samen te voegen. De scripts bevinden zich in het [Azure Storage](https://azure.microsoft.com/services/storage/) -account dat tijdens de installatie is gemaakt. De locatie is: maintenancesascript \\ \\ \\ \\ -script Hive \\ \\ (of https://[uw oplossings naam]. blob. core. Windows. net/maintenancesascript).
+Twee van de pijp lijnen van deze Factory bevatten [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts die worden gebruikt om de gegevens te partitioneren en samen te voegen. De scripts bevinden zich in het [Azure Storage](https://azure.microsoft.com/services/storage/) -account dat tijdens de installatie is gemaakt. De locatie is: maintenancesascript \\ \\ \\ \\ -script Hive \\ \\ (of https://[uw oplossings naam]. blob. core. Windows. net/maintenancesascript).
 
-Net als bij [Azure stream Analytics](#azure-stream-analytics-1) query's hebben de [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -scripts impliciete kennis over de binnenkomende gegevens indeling en moeten ze worden gewijzigd op basis van uw gegevens indeling.
+Net als bij [Azure stream Analytics](#azure-stream-analytics-1) query's hebben de [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts impliciete kennis over de binnenkomende gegevens indeling en moeten ze worden gewijzigd op basis van uw gegevens indeling.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat één activiteit: een [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) die een [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -script uitvoert voor het partitioneren van de gegevens die in [Azure Storage](https://azure.microsoft.com/services/storage/) worden geplaatst tijdens de [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) taak.
+Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat één activiteit: een [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) die een [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script uitvoert voor het partitioneren van de gegevens die in [Azure Storage](https://azure.microsoft.com/services/storage/) worden geplaatst tijdens de [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) taak.
 
-Het [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -script voor deze partitie taak is ***AggregateFlightInfo. HQL***
+Het [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script voor deze partitie taak is ***AggregateFlightInfo. HQL***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat verschillende activiteiten waarvan het eind resultaat de gescoorde voor spelling is van het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) experiment dat is gekoppeld aan deze oplossings sjabloon.
 
 Inbegrepen activiteiten zijn:
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) die een [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -script uitvoert om aggregaties en functie-engineering uit te voeren die nodig zijn voor het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) -experiment.
-  Het [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -script voor deze partitie taak is ***PrepareMLInput. HQL***.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) die een [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script uitvoert om aggregaties en functie-engineering uit te voeren die nodig zijn voor het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) -experiment.
+  Het [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script voor deze partitie taak is ***PrepareMLInput. HQL***.
 * [Kopieer](https://msdn.microsoft.com/library/azure/dn835035.aspx) activiteit waarmee de resultaten van de [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit worden verplaatst naar een enkele [Azure Storage](https://azure.microsoft.com/services/storage/) blob die wordt geopend door de [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) -activiteit.
 * Met [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) -activiteit wordt het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) experiment aangeroepen, waarbij de resultaten in één [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB worden geplaatst.
 

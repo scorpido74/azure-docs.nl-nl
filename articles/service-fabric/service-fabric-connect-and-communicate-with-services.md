@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287747"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Verbinding maken en communiceren met Services in Service Fabric
 In Service Fabric wordt een service ergens in een Service Fabric cluster uitgevoerd, meestal verdeeld over meerdere Vm's. Het kan worden verplaatst van de ene locatie naar de andere, hetzij door de eigenaar van de service, hetzij automatisch door Service Fabric. Services zijn niet statisch gebonden aan een bepaalde machine of een bepaald adres.
@@ -58,7 +58,7 @@ De services voor omgekeerde proxy adressen in het cluster die HTTP-eind punten, 
 Zie voor meer informatie over het gebruik van de reverse proxy-service [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md) -artikel.
 
 ## <a name="connections-from-external-clients"></a>Verbindingen van externe clients
-Services die met elkaar in een cluster verbinding maken, hebben doorgaans rechtstreeks toegang tot de eind punten van andere services, omdat de knoop punten in een cluster zich op hetzelfde lokale netwerk bevinden. In sommige omgevingen kan een cluster echter achter een load balancer die extern binnenkomend verkeer via een beperkt aantal poorten routeert. In dergelijke gevallen kunnen services nog steeds communiceren met elkaar en adressen omzetten met behulp van de Naming Service, maar er moeten extra stappen worden ondernomen om externe clients toe te staan verbinding te maken met Services.
+Services die met elkaar in een cluster verbinding maken, hebben doorgaans rechtstreeks toegang tot de eind punten van andere services, omdat de knoop punten in een cluster zich op hetzelfde lokale netwerk bevinden. In sommige omgevingen kan een cluster echter achter een load balancer dat het binnenkomend verkeer via een beperkt aantal poorten routeert. In dergelijke gevallen kunnen services nog steeds communiceren met elkaar en adressen omzetten met behulp van de Naming Service, maar er moeten extra stappen worden ondernomen om externe clients toe te staan verbinding te maken met Services.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric in azure
 Een Service Fabric cluster in azure wordt achter een Azure Load Balancer geplaatst. Alle externe verkeer naar het cluster moet worden door gegeven via de load balancer. De load balancer stuurt automatisch verkeer dat binnenkomt op een bepaalde poort naar een wille keurig *knoop punt* waarop dezelfde poort is geopend. De Azure Load Balancer weet alleen over poorten die op de *knoop punten*zijn geopend. het is niet bekend over poorten die door afzonderlijke *Services*worden geopend.

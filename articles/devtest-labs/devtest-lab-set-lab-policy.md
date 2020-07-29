@@ -3,12 +3,12 @@ title: Testlab-beleids regels beheren in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het definiëren van Lab-beleid, zoals VM-grootten, maximum aantal Vm's per gebruiker en het afsluiten van de automatisering.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290427"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Alle beleids regels voor een lab in Azure DevTest Labs beheren
 
@@ -70,7 +70,7 @@ Het beleid voor automatisch afsluiten helpt Lab-afval te minimaliseren door de t
 
 1. Geef **Ja** of **Nee** op voor de optie voor het verzenden van een melding 15 minuten vóór de opgegeven tijd voor automatisch afsluiten. Als u **Ja**kiest, voert u het eind punt van de webhook-URL of een e-mail adres in om op te geven waar de melding moet worden gepost of verzonden. De gebruiker ontvangt een melding en krijgt de mogelijkheid om het afsluiten uit te stellen.
 
-   Zie [een webhook of API Azure function maken](../azure-functions/functions-create-a-web-hook-or-api-function.md)voor meer informatie over webhooks. 
+   Zie [een webhook of API Azure function maken](../azure-functions/functions-bindings-http-webhook.md)voor meer informatie over webhooks. 
 
 1. Selecteer **Opslaan**.
 
@@ -129,4 +129,3 @@ Wanneer u de verschillende VM-beleids instellingen voor uw Lab hebt gedefinieerd
 * [Aangepaste installatie kopie maken](devtest-lab-create-template.md) : wanneer u een virtuele machine maakt, geeft u een basis op. Dit kan een aangepaste installatie kopie of een Marketplace-installatie kopie zijn. In dit artikel wordt beschreven hoe u een aangepaste installatie kopie maakt op basis van een VHD-bestand.
 * [Marketplace-installatie kopieën configureren](devtest-lab-configure-marketplace-images.md) -Azure DevTest Labs ondersteunt het maken van vm's op basis van Azure Marketplace-installatie kopieën. In dit artikel wordt beschreven hoe u kunt opgeven welke Azure Marketplace-installatie kopieën kunnen worden gebruikt bij het maken van Vm's in een lab.
 * [Een virtuele machine maken in een Lab](devtest-lab-add-vm.md) : illustreert hoe u een virtuele machine maakt op basis van een standaard installatie kopie (een aangepaste of Marketplace) en hoe u met artefacten in uw virtuele machine werkt.
-

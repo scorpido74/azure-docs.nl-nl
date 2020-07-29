@@ -3,16 +3,16 @@ title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory refer
 description: Meer informatie over het maken en configureren van een virtuele Linux-machine om u aan te melden met Azure Active Directory-verificatie.
 author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088764"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291139"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 

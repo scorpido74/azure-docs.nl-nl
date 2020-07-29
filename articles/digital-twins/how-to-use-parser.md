@@ -7,41 +7,24 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5a6f05835362dbcde36b1ab9cc3782b172b43f7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5245e3740773c2be7973b26a4785982e0daa56c9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291630"
 ---
-# <a name="dtdl-client-side-parser-library"></a>Parser-bibliotheek aan client zijde DTDL
+# <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellen parseren en valideren met de DTDL parser-bibliotheek
 
-[Modellen](concepts-models.md) in azure Digital apparaatdubbels worden gedefinieerd met behulp van de op JSON-LD gebaseerde Digital apparaatdubbels Definition Language (DTDL). Voor gevallen waarin het handig is om uw modellen te parseren, wordt een DTDL-bibliotheek voor het parseren van NuGet.org als een bibliotheek aan client zijde: [micro soft. Azure. DigitalTwins. parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+[Modellen](concepts-models.md) in azure Digital apparaatdubbels worden gedefinieerd met behulp van de op JSON-LD gebaseerde Digital apparaatdubbels Definition Language (DTDL). **Het is raadzaam om uw modellen offline te valideren voordat u ze uploadt naar uw Azure Digital Apparaatdubbels-exemplaar.**
 
-Deze bibliotheek biedt model toegang tot de DTDL definities, die in wezen fungeren als het equivalent van C# reflectie voor DTDL. Deze tape wisselaar kan onafhankelijk van een [Azure Digital APPARAATDUBBELS SDK](how-to-use-apis-sdks.md)worden gebruikt, met name voor DTDL-validatie in een visuele of tekst editor. Het is handig om te controleren of uw model definitie bestanden geldig zijn voordat u deze uploadt naar de service.
-
-Als u de parser-bibliotheek wilt gebruiken, geeft u deze een set DTDL-documenten. Normaal gesp roken haalt u deze model documenten op uit de-service, maar u kunt ze ook lokaal beschikbaar stellen als uw client verantwoordelijk is voor het uploaden van ze naar de service in de eerste plaats. 
-
-Hier volgt de algemene werk stroom voor het gebruik van de parser:
-1. Haal sommige of alle DTDL-documenten op uit de service.
-2. Geef de geretourneerde, in-Memory DTDL-documenten door aan de parser.
-3. De parser valideert de set van documenten die hieraan worden door gegeven en retourneert gedetailleerde fout gegevens. Deze mogelijkheid is handig in scenario's met de editor.
-4. Gebruik de parser-Api's om door te gaan met het analyseren van de modellen die zijn opgenomen in de documentenset. 
-
-De mogelijkheden van de parser zijn onder andere:
-* Alle geïmplementeerde model interfaces ophalen (de inhoud van de sectie van de interface `extends` ).
-* Alle eigenschappen, telemetrie, opdrachten, onderdelen en relaties die in het model zijn gedeclareerd, ophalen. Met deze opdracht worden ook alle meta gegevens in deze definities opgehaald en worden de overname ( `extends` secties) in rekening gebracht.
-* Alle complexe model definities ophalen.
-* Bepaal of een model kan worden toegewezen vanuit een ander model.
-
-> [!NOTE]
-> [IoT Plug en Play-apparaten (PnP)](../iot-pnp/overview-iot-plug-and-play.md) gebruiken een kleine syntaxis variant om hun functionaliteit te beschrijven. Deze variant van de syntaxis is een semantisch compatibele subset van de DTDL die wordt gebruikt in azure Digital Apparaatdubbels. Wanneer u de parser-bibliotheek gebruikt, hoeft u niet te weten welke syntaxis variant is gebruikt voor het maken van de DTDL voor uw digitale twee. De parser retourneert altijd standaard hetzelfde model voor zowel de syntaxis van PnP-als Azure Digital Apparaatdubbels.
+U kunt dit doen door een .NET-bibliotheek voor DTDL-parsering aan de client zijde te maken op NuGet: [**micro soft. Azure. DigitalTwins. parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). U kunt de parser-bibliotheek rechtstreeks in uw C#-code gebruiken of het voorbeeld project language-neutraal code gebruiken dat is gebaseerd op de parser-bibliotheek: [**DTDL validator**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
 
 ## <a name="use-the-dtdl-validator-sample"></a>Het voor beeld van de DTDL-validator gebruiken
 
-Er is voorbeeld code beschikbaar die model documenten kan valideren om ervoor te zorgen dat de DTDL geldig is. Het is gebouwd op de DTDL parser-bibliotheek en is taal-neutraal. Vind het hier: [DTDL validator](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
+De [**validatie functie DTDL**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) is een voorbeeld project dat model documenten kan valideren om er zeker van te zijn dat de DTDL geldig is. Het is gebaseerd op de .NET parser-bibliotheek en is neutraal. U kunt het downloaden met behulp van de knop voor het laden van een *zip* -voorbeeld koppeling.
 
-Het validator-voor beeld kan worden gebruikt als een opdracht regel programma voor het valideren van een mapstructuur van DTDL-bestanden. Het biedt ook een interactieve modus. De bron code bevat voor beelden voor het gebruik van de parser-bibliotheek.
+De bron code bevat voor beelden voor het gebruik van de parser-bibliotheek. U kunt het voor beeld validator als een opdracht regel programma gebruiken om een mapstructuur van DTDL-bestanden te valideren. Het biedt ook een interactieve modus.
 
 In de map voor het voor beeld van de DTDL-validator raadpleegt u het *README.MD* -bestand voor instructies over hoe u het voor beeld kunt inpakken in een zelfstandig uitvoerbaar bestand.
 
@@ -65,9 +48,30 @@ DTDLValidator -i
 
 Zie voor meer informatie over dit voor beeld de bron code of de uitvoering `DTDLValidator --help` .
 
-## <a name="use-the-parser-library-in-code"></a>De parser-bibliotheek gebruiken in code
+## <a name="use-the-net-parser-library"></a>De .NET parser-bibliotheek gebruiken 
 
-U kunt de parser-bibliotheek ook rechtstreeks gebruiken voor zaken als het valideren van modellen in uw eigen toepassing of voor het genereren van dynamische, op modellen gebaseerde gebruikers interface, Dash boards en rapporten.
+De bibliotheek [**micro soft. Azure. DigitalTwins. parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) biedt model toegang tot de DTDL definities, die in wezen optreden als het equivalent van C# reflectie voor DTDL. Deze tape wisselaar kan onafhankelijk van een [Azure Digital APPARAATDUBBELS SDK](how-to-use-apis-sdks.md)worden gebruikt, met name voor DTDL-validatie in een visuele of tekst editor. Het is handig om te controleren of uw model definitie bestanden geldig zijn voordat u deze uploadt naar de service.
+
+Als u de parser-bibliotheek wilt gebruiken, geeft u deze een set DTDL-documenten. Normaal gesp roken haalt u deze model documenten op uit de-service, maar u kunt ze ook lokaal beschikbaar stellen als uw client verantwoordelijk is voor het uploaden van ze naar de service in de eerste plaats. 
+
+Hier volgt de algemene werk stroom voor het gebruik van de parser:
+1. Haal sommige of alle DTDL-documenten op uit de service.
+2. Geef de geretourneerde, in-Memory DTDL-documenten door aan de parser.
+3. De parser valideert de set van documenten die hieraan worden door gegeven en retourneert gedetailleerde fout gegevens. Deze mogelijkheid is handig in scenario's met de editor.
+4. Gebruik de parser-Api's om door te gaan met het analyseren van de modellen die zijn opgenomen in de documentenset. 
+
+De mogelijkheden van de parser zijn onder andere:
+* Alle geïmplementeerde model interfaces ophalen (de inhoud van de sectie van de interface `extends` ).
+* Alle eigenschappen, telemetrie, opdrachten, onderdelen en relaties die in het model zijn gedeclareerd, ophalen. Met deze opdracht worden ook alle meta gegevens in deze definities opgehaald en worden de overname ( `extends` secties) in rekening gebracht.
+* Alle complexe model definities ophalen.
+* Bepaal of een model kan worden toegewezen vanuit een ander model.
+
+> [!NOTE]
+> [IoT Plug en Play-apparaten (PnP)](../iot-pnp/overview-iot-plug-and-play.md) gebruiken een kleine syntaxis variant om hun functionaliteit te beschrijven. Deze variant van de syntaxis is een semantisch compatibele subset van de DTDL die wordt gebruikt in azure Digital Apparaatdubbels. Wanneer u de parser-bibliotheek gebruikt, hoeft u niet te weten welke syntaxis variant is gebruikt voor het maken van de DTDL voor uw digitale twee. De parser retourneert altijd standaard hetzelfde model voor zowel de syntaxis van PnP-als Azure Digital Apparaatdubbels.
+
+### <a name="code-with-the-parser-library"></a>Code met de parser-bibliotheek
+
+U kunt de parser-bibliotheek rechtstreeks gebruiken voor zaken als het valideren van modellen in uw eigen toepassing of voor het genereren van dynamische, op modellen gebaseerde gebruikers interface, Dash boards en rapporten.
 
 Voor de ondersteuning van het volgende voor beeld van de parsers code moet u rekening houden met verschillende modellen die zijn gedefinieerd in een Azure Digital Apparaatdubbels-exemplaar:
 
@@ -169,4 +173,4 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 ## <a name="next-steps"></a>Volgende stappen
 
 Wanneer u klaar bent met het schrijven van uw modellen, raadpleegt u de DigitalTwinsModels-Api's om ze te uploaden (en andere beheer bewerkingen uit te voeren):
-* [*Uitleg: Aangepaste modellen beheren*](how-to-manage-model.md)
+* [*Instructies: Aangepaste modellen beheren*](how-to-manage-model.md)

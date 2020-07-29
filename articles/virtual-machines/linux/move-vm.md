@@ -4,14 +4,15 @@ description: Verplaats een virtuele machine naar een ander Azure-abonnement of r
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944592"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291102"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Een VM verplaatsen naar een ander abonnement of een andere resource groep
 In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) verplaatst tussen resource groepen of abonnementen. Het verplaatsen van een virtuele machine tussen abonnementen kan handig zijn als u een virtuele machine in een persoonlijk abonnement hebt gemaakt en u deze nu wilt verplaatsen naar het abonnement van uw bedrijf.

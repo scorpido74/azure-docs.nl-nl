@@ -4,12 +4,12 @@ description: Veelgestelde vragen over Service Fabric, inclusief mogelijkheden, u
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258946"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292861"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Veelgestelde vragen over Service Fabric
 
@@ -36,7 +36,7 @@ Als u geïnteresseerd bent in dit scenario, raden we u aan contact op te nemen v
 
 Enkele dingen die u moet overwegen: 
 
-1. De Service Fabric cluster resource in Azure is nu regionaal, evenals de schaal sets voor virtuele machines waarop het cluster is gebaseerd. Dit betekent dat u in het geval van een regionale fout de mogelijkheid tot het beheren van het cluster via de Azure Resource Manager of de Azure Portal kan verliezen. Dit kan gebeuren, zelfs als het cluster nog steeds actief is en u rechtstreeks met de app kunt werken. Bovendien biedt Azure vandaag geen mogelijkheid om één virtueel netwerk te hebben dat kan worden gebruikt in verschillende regio's. Dit betekent dat een cluster met meerdere regio's in azure een [openbare IP-adressen vereist voor elke virtuele machine in de VM Scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) of [Azure VPN-gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md). Deze netwerk opties hebben verschillende gevolgen voor de kosten, prestaties en een zekere mate van toepassings ontwerp, dus zorgvuldige analyse en planning is vereist voordat deze omgeving wordt ingeschakeld.
+1. De Service Fabric cluster resource in Azure is nu regionaal, evenals de schaal sets voor virtuele machines waarop het cluster is gebaseerd. Dit betekent dat u in het geval van een regionale fout de mogelijkheid tot het beheren van het cluster via de Azure Resource Manager of de Azure Portal kan verliezen. Dit kan gebeuren, zelfs als het cluster nog steeds actief is en u rechtstreeks met de app kunt werken. Bovendien biedt Azure vandaag geen mogelijkheid om één virtueel netwerk te hebben dat kan worden gebruikt in verschillende regio's. Dit betekent dat een cluster met meerdere regio's in azure een [openbare IP-adressen vereist voor elke VM in de schaal sets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) of [Azure VPN-gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md). Deze netwerk opties hebben verschillende gevolgen voor de kosten, prestaties en een zekere mate van toepassings ontwerp, dus zorgvuldige analyse en planning is vereist voordat deze omgeving wordt ingeschakeld.
 2. Het onderhoud, het beheer en de bewaking van deze computers kunnen gecompliceerd worden, vooral wanneer het wordt verdeeld over verschillende _soorten_ omgevingen, zoals tussen de diverse cloud providers of tussen on-premises resources en Azure. Het is belang rijk om ervoor te zorgen dat upgrades, bewaking, beheer en diagnostische gegevens worden begrepen voor zowel het cluster als voor de toepassingen voordat productie werkbelastingen in een dergelijke omgeving worden uitgevoerd. Als u al ervaring hebt met het oplossen van deze problemen in azure of in uw eigen data centers, is het waarschijnlijk dat dezelfde oplossingen kunnen worden toegepast wanneer u uw Service Fabric-cluster bouwt of uitvoert. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Ontvangen Service Fabric knoop punten automatisch updates van het besturings systeem?
@@ -84,7 +84,7 @@ Voor werk belastingen van de productie moet u overstappen op gelijktijdige stori
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Kan ik mijn cluster 's nachts of in het weekend uitschakelen om kosten te besparen?
 
-In het algemeen niet. Als de virtuele machine wordt verplaatst naar een andere host, worden de gegevens in de lokale, tijdelijke schijven Service Fabric opgeslagen. Bij een normale werking is dat geen probleem omdat het nieuwe knoop punt up-to-date wordt gebracht door andere knoop punten. Als u echter alle knoop punten stopt en deze later opnieuw opstart, is er een aanzienlijke kans dat de meeste knoop punten op nieuwe hosts worden gestart en dat het systeem niet kan worden hersteld.
+In het algemeen niet. Als de virtuele machine wordt verplaatst naar een andere host, worden de gegevens in de lokale, tijdelijke schijven Service Fabric opgeslagen. Bij een normale werking is dat geen probleem omdat het nieuwe knoop punt op andere knoop punten up-to-date wordt gezet. Als u echter alle knoop punten stopt en deze later opnieuw opstart, is er een aanzienlijke kans dat de meeste knoop punten op nieuwe hosts worden gestart en dat het systeem niet kan worden hersteld.
 
 Als u clusters wilt maken voor het testen van uw toepassing voordat deze wordt geïmplementeerd, raden we u aan om die clusters dynamisch te maken als onderdeel van de [pijp lijn voor continue integratie/continue implementatie](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 
@@ -122,11 +122,11 @@ Nee. Vm's met een lage prioriteit worden niet ondersteund.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hoe kan mijn toepassing worden geverifieerd bij de sleutel kluis om geheimen te verkrijgen?
-Als uw toepassing referenties voor verificatie bij de sleutel kluis heeft, kunt u het volgende doen:
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>Hoe kan mijn toepassing worden geverifieerd bij Key Vault om geheimen te verkrijgen?
+Als uw toepassing referenties voor verificatie Key Vault, kunt u het volgende doen:
 
-A. Tijdens de build/Packing-taak van uw toepassingen kunt u een certificaat in het gegevens pakket van uw SF-app halen en dit gebruiken om te verifiëren bij de sleutel kluis.
-B. Voor virtuele-machine schaal sets MSI ingeschakelde hosts kunt u een eenvoudige Power shell-SetupEntryPoint voor uw SF-App ontwikkelen om [een toegangs token van het MSI-eind punt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)op te halen en vervolgens [uw geheimen uit de sleutel kluis op te halen](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Tijdens de build/Packing-taak van uw toepassingen kunt u een certificaat in het gegevens pakket van uw SF-app halen en dit gebruiken om te verifiëren bij Key Vault.
+B. Voor virtuele-machine schaal sets MSI ingeschakelde hosts kunt u een eenvoudige Power shell-SetupEntryPoint voor uw SF-App ontwikkelen om [een toegangs token van het MSI-eind punt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)op te halen en vervolgens [uw geheimen uit Key Vault op te halen](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Toepassings ontwerp
 
@@ -155,7 +155,7 @@ Stel dat u een betrouw bare verzameling hebt in een service met 100-partities en
 
 Houd er rekening mee dat elk object drie keer moet worden opgeslagen (één primaire en twee replica's), dat u voldoende geheugen hebt voor ongeveer 35.000.000 objecten in uw verzameling als u de volledige capaciteit hebt. We raden u echter aan om het gelijktijdige verlies van een fout domein en een upgrade domein te maken, die ongeveer 1/3 aan capaciteit opleveren. Dit betekent dat het aantal ongeveer 23.000.000 wordt verminderd.
 
-Houd er rekening mee dat met deze berekening ook rekening wordt gehouden met het volgende:
+Deze berekening gaat ook uit van het volgende:
 
 - Dat de distributie van gegevens over de partities ongeveer uniform is of dat u de belasting statistieken aan het cluster resource manager rapporteert. Service Fabric taak verdeling wordt standaard berekend op basis van het aantal replica's. In het voor gaande voor beeld, waarmee 10 primaire replica's en 20 secundaire replica's op elk knoop punt in het cluster worden geplaatst. Dat werkt goed voor de belasting die gelijkmatig over de partities kan worden verdeeld. Als de belasting niet even is, moet u de belasting rapporteren zodat de Resource Manager kleinere replica's kan verpakken en dat grotere replica's meer geheugen op een afzonderlijk knoop punt kunnen verbruiken.
 
@@ -166,6 +166,12 @@ Houd er rekening mee dat met deze berekening ook rekening wordt gehouden met het
 ### <a name="how-much-data-can-i-store-in-an-actor"></a>Hoeveel gegevens kan ik opslaan in een actor?
 
 Net als bij betrouw bare Services wordt de hoeveelheid gegevens die u in een actor service kunt opslaan, alleen beperkt door de totale schijf ruimte en het beschik bare geheugen over de knoop punten in uw cluster. Individuele Actors zijn echter het meest effectief wanneer ze worden gebruikt voor het inkapselen van een kleine hoeveelheid status en gekoppelde bedrijfs logica. Als algemene regel moet een individuele actor een status hebben die wordt gemeten in kilo bytes.
+
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Waar worden klant gegevens opgeslagen in azure Service Fabric resource provider?
+
+De resource provider van Azure Service Fabric verplaatst of slaat klant gegevens niet op uit de regio waarin deze is geïmplementeerd.
+
 
 ## <a name="other-questions"></a>Andere vragen
 

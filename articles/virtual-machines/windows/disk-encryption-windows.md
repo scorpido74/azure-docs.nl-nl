@@ -4,16 +4,16 @@ description: In dit artikel vindt u instructies voor het inschakelen van Microso
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291969"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
@@ -140,6 +140,33 @@ De volgende tabel bevat de para meters voor de Resource Manager-sjabloon voor be
 | resizeOSDisk | Moet de grootte van het besturings systeem worden gewijzigd om een volledige besturingssysteem-VHD te maken voordat het systeem volume wordt gesplitst. |
 | location | Locatie voor alle resources. |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>Versleuteling inschakelen op NVMe-schijven voor Lsv2-Vm's
+
+In dit scenario wordt het inschakelen van Azure Disk Encryption op NVMe-schijven voor Vm's uit de Lsv2-serie beschreven.  De Lsv2-serie bevat lokale NVMe-opslag. Lokale NVMe-schijven zijn tijdelijk en gegevens op deze schijven gaan verloren als u de toewijzing van uw virtuele machine stopt/ongedaan maakt (zie: [Lsv2-serie](../lsv2-series.md)).
+
+Versleuteling inschakelen op NVMe-schijven:
+
+1. Initialiseer de NVMe-schijven en maak NTFS-volumes.
+1. Schakel versleuteling in voor de virtuele machine waarbij de para meter VolumeType is ingesteld op alle. Hiermee schakelt u versleuteling in voor alle besturings systemen en gegevens schijven, inclusief volumes die worden ondersteund door NVMe-schijven. Zie [versleuteling inschakelen op een bestaande of actieve Windows-machine](#enable-encryption-on-an-existing-or-running-windows-vm)voor meer informatie.
+
+Versleuteling wordt op de NVMe-schijven bewaard in de volgende scenario's:
+- VM opnieuw opstarten
+- VMSS-installatie kopie
+- Besturings systeem wisselen
+
+NVMe-schijven zullen de volgende scenario's niet initialiseren:
+
+- VM starten na de toewijzing
+- Service retoucheren
+- Backup
+
+In deze scenario's moeten de NVMe-schijven worden geïnitialiseerd nadat de virtuele machine is gestart. Als u versleuteling op de NVMe-schijven wilt inschakelen, voert u de opdracht uit om Azure Disk Encryption opnieuw in te scha kelen nadat de NVMe-schijven zijn geïnitialiseerd.
+
+Naast de scenario's die worden vermeld in de sectie [niet-ondersteunde scenario's](#unsupported-scenarios) , wordt het versleutelen van NVMe-schijven niet ondersteund voor:
+
+- Vm's die zijn versleuteld met Azure Disk Encryption met AAD (vorige versie)
+- NVMe-schijven met opslag ruimten
+- Azure Site Recovery van Sku's met NVMe-schijven (Zie de [ondersteunings matrix voor Azure VM nood herstel tussen Azure-regio's: gerepliceerde machines-opslag](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)).
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Nieuwe IaaS-Vm's gemaakt op basis van door de klant versleutelde VHD-en versleutelings sleutels
 
@@ -236,7 +263,6 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 - Een versleutelde virtuele machine verplaatsen naar een ander abonnement of nieuwe regio.
 - Een installatie kopie of moment opname van een versleutelde virtuele machine maken en deze gebruiken voor het implementeren van extra Vm's.
 - Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
-- Vm's uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md))
 - Vm's uit de M-serie met Write Accelerator-schijven.
 - Het Toep assen van ADE op een virtuele machine met een gegevens schijf die is versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK), of om SSE + CMK toe te passen op een gegevens schijf op een virtuele machine die is versleuteld met ade.
 - Een virtuele machine die is versleuteld met ADE migreren naar versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).

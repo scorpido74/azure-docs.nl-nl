@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290076"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-migratie en partners voor toepassings ontwikkeling
 
@@ -26,7 +26,6 @@ Van NoSQL-migratie naar toepassings ontwikkeling, kunt u kiezen uit een groot aa
 |[Altoros Development LLC](https://www.altoros.com/)  |  IoT-, personalisatie Retail (inventarisatie), Serverloze architecturen NoSQL migratie, app-ontwikkeling|   VS |
 |[Avanade](https://www.avanade.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling | Oosten rijk, Duitsland, Zwitser land, Italië, Noor wegen, Spanje, UK, Canada |
 |[Accenture](https://www.accenture.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling |Globaal|
-|[Bluemetal](https://www.bluemetal.com/)     |  IoT, personalisatie Retail (inventarisatie), operationele analyse voor Enter prise & SMC, AI-annotatie, Asset Control, NoSQL migratie, app-ontwikkeling     |    Noord-Amerika, Azië en Stille Oceaan     |
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT, personalisatie, Retail (inventarisatie), Operational Analytics (Spark), Serverloze architectuur, app-ontwikkeling|    VS     |  
 | [Capgemini](https://www.capgemini.com/) | Retail (inventarisatie), IoT, Operational Analytics (Spark), app-ontwikkeling | USA, Frank rijk, UK, Nederland, Finland  |
 | [Cognizant](https://www.cognizant.com/) | IoT, personalisatie, Retail (inventarisatie), Operational Analytics (Spark), app-ontwikkeling |Verenigde Staten, Canada, UK, Denemarken, Nederland, Zwitser land, Australië, Japan |
@@ -51,13 +50,12 @@ Van NoSQL-migratie naar toepassings ontwikkeling, kunt u kiezen uit een groot aa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [micro soft partner site](https://partner.microsoft.com/en-US/)voor meer informatie over de andere partners van micro soft.
+Zie de [micro soft partner site](https://partner.microsoft.com/)voor meer informatie over de andere partners van micro soft.
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png
-[5]: ./media/partners-migration-cosmosdb/bluemetal_logo.png
 [6]: ./media/partners-migration-cosmosdb/capaxglobal_logo.png
 [7]: ./media/partners-migration-cosmosdb/coeo_logo.png
 [8]: ./media/partners-migration-cosmosdb/infosys_logo.png

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af70b1746b2ac847d964975aaf1b2186aa89be01
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029787"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292738"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Door de klant beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling
 
@@ -70,7 +70,7 @@ Als u door de klant beheerde sleutels wilt inschakelen voor een opslag account, 
 
 Azure Storage Encryption ondersteunt RSA-en RSA-HSM-sleutels met een grootte van 2048, 3072 en 4096. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 
-Er zijn kosten verbonden aan het gebruik van Azure Key Vault. Zie [Key Vault prijzen](/pricing/details/key-vault/)voor meer informatie.
+Er zijn kosten verbonden aan het gebruik van Azure Key Vault. Zie [Key Vault prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie.
 
 ## <a name="rotate-customer-managed-keys"></a>Door de klant beheerde sleutels draaien
 

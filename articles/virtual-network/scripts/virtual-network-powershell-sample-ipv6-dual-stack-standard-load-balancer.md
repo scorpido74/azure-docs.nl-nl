@@ -1,7 +1,7 @@
 ---
 title: 'Azure PowerShell script-voor beeld: IPv6-front-end configureren met Standard Load Balancer (preview-versie)'
 titlesuffix: Azure Virtual Network
-description: IPv6-eind punten inschakelen met behulp van Power shell in azure Virtual Network
+description: Meer informatie over het configureren van een IPv6-front-end in een virtueel netwerk script voor beeld met Standard Load Balancer.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2de93f66bdb2647bcc612322d90eb9197e0ad63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068669"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291909"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>IPv6-front-end configureren in een virtueel netwerk script voor beeld met Standard Load Balancer (preview-versie)
 

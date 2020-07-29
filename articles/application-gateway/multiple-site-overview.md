@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067943"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290977"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Meerdere sites in Application Gateway hosten
 
@@ -40,12 +40,8 @@ Als u een Joker teken in de hostnaam gebruikt, kunt u meerdere hostnamen in éé
 >[!NOTE]
 > Deze functie is in Preview en is alleen beschikbaar voor Standard_v2 en WAF_v2 SKU van Application Gateway. Zie hier voor meer informatie over het [gebruik van voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)beelden.
 
-In [Azure Portal](create-multiple-sites-portal.md)kunt u deze definiëren in afzonderlijke tekst vakken, zoals wordt weer gegeven in de onderstaande scherm afbeelding.
-
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Voorbeeld configuratie van Joker teken-listener":::
-
 >[!NOTE]
->Als u een nieuwe listener voor meerdere sites maakt of meer dan een hostnaam toevoegt aan uw bestaande listener voor meerdere sites vanuit de Azure Portal, wordt deze standaard toegevoegd aan de `HostNames` para meter van de listener-configuratie, waardoor meer mogelijkheden aan de bestaande `HostName` para meter in de configuratie worden toegevoegd.
+>Deze functie is momenteel alleen beschikbaar via [Azure PowerShell](tutorial-multiple-sites-powershell.md) en [Azure cli](tutorial-multiple-sites-cli.md). Portal ondersteuning is binnenkort beschikbaar.
 
 In [Azure PowerShell](tutorial-multiple-sites-powershell.md)moet u in `-HostNames` plaats van gebruiken `-HostName` . Met HostNamen kunt u Maxi maal 5 hostnamen als door komma's gescheiden waarden vermelden en Joker tekens gebruiken. Bijvoorbeeld: `-HostNames "*.contoso.com,*.fabrikam.com"`
 
@@ -77,7 +73,7 @@ In [Azure cli](tutorial-multiple-sites-cli.md)moet u `--host-names` in plaats va
 *   De eigenschappen ' hostname ' hebben één teken reeks als invoer, waarbij u slechts één niet-Joker teken domein naam kunt opgeven en ' hostnames ' een matrix van teken reeksen als invoer krijgt, waar u Maxi maal vijf joker tekens domein namen kunt vermelden. De eigenschappen kunnen echter niet tegelijk worden gebruikt.
 *   U kunt geen [omleidings](redirect-overview.md) regel maken met een doel-listener waarvoor joker tekens of meerdere hostnamen worden gebruikt.
 
-Zie [multi-site maken met behulp van Azure Portal](create-multiple-sites-portal.md) of [Azure POWERSHELL](tutorial-multiple-sites-powershell.md) of [Azure cli](tutorial-multiple-sites-cli.md) gebruiken voor stapsgewijze instructies over het configureren van hostnamen in een multi-site-listener.
+Zie [meerdere sites maken met behulp van Azure PowerShell](tutorial-multiple-sites-powershell.md) of [Azure CLI gebruiken](tutorial-multiple-sites-cli.md) voor stapsgewijze instructies voor het configureren van hostnamen in een multi-site-listener.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hostheaders en Servernaamindicatie (SNI)
 
@@ -95,6 +91,9 @@ Application Gateway maakt gebruik van HTTP 1.1-hostheaders voor het hosten van m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt geleerd hoe u meerdere sites kunt hosten, gaat u naar [meerdere sites maken met behulp van Azure Portal](create-multiple-sites-portal.md) of [gebruikt u Azure PowerShell](tutorial-multiple-sites-powershell.md) of [gebruikt u Azure cli](tutorial-multiple-sites-cli.md) voor stapsgewijze instructies over het maken van een Application Gateway om meerdere websites te hosten.
+Meer informatie over het configureren van meerdere hosting van sites in Application Gateway
+* [Azure Portal gebruiken](create-multiple-sites-portal.md)
+* [Azure PowerShell gebruiken](tutorial-multiple-sites-powershell.md) 
+* [Azure CLI gebruiken](tutorial-multiple-sites-cli.md)
 
 U kunt ook [Resource Manager-sjabloon met het hosten van meerdere sites](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) bezoeken voor een end-to-end implementatie op basis van sjablonen.

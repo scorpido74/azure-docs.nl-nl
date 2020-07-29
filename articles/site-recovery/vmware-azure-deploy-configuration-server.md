@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287733"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -66,7 +66,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 
 ## <a name="import-the-template-in-vmware"></a>De sjabloon in VMware importeren
 
-1. Meld u bij de VMware vCenter-server of vSphere ESXi-host met behulp van de VMWare vSphere-client.
+1. Meld u aan bij de VMware vCenter-Server of vSphere ESXi-host met behulp van de VMware vSphere-client.
 2. Selecteer in het menu **bestand** de optie **OVF-sjabloon implementeren** om de wizard **OVF-sjabloon implementeren** te starten.
 
      ![OVF-sjabloon implementeren](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
@@ -98,7 +98,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>De configuratie server registreren bij Azure Site Recovery Services
 
-1. Schakel de VM in vanuit de VMWare vSphere Client-console.
+1. Ga naar de VMware vSphere-client console en schakel de virtuele machine in.
 2. De VM wordt opgestart in een Windows Server 2016-installatie-ervaring. Accepteer de gebruiksrechtovereenkomst en voer een Administrator-wachtwoord in.
 3. Meld u nadat de installatie is voltooid bij de virtuele machine aan als de administrator.
 4. De eerste keer dat u zich aanmeldt, wordt het Azure Site Recovery-configuratie hulpprogramma binnen een paar seconden gestart.

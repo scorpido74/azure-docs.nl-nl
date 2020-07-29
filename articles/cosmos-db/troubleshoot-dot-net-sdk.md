@@ -8,11 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290908"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -48,27 +49,40 @@ Raadpleeg de [sectie met github-problemen](https://github.com/Azure/azure-cosmos
 * U kunt problemen met de connectiviteit/Beschik baarheid ondervinden als gevolg van een gebrek aan resources op de client computer. U wordt aangeraden uw CPU-gebruik te bewaken op knoop punten waarop de Azure Cosmos DB-client wordt uitgevoerd, en omhoog/omlaag te schalen als deze bij hoge belasting worden uitgevoerd.
 
 ### <a name="check-the-portal-metrics"></a>Controleer de metrische gegevens van de portal
-Door de [metrische gegevens](monitor-accounts.md) van de portal te controleren, kunt u bepalen of het een probleem aan de client zijde is of dat er een probleem is met de service. Als de metrische gegevens bijvoorbeeld een hoog aantal aanvragen met een rente beperking bevatten (HTTP-status code 429), wat betekent dat de aanvraag wordt beperkt, controleert u de sectie [aanvraag snelheid is te groot] . 
+Door de [metrische gegevens](monitor-accounts.md) van de portal te controleren, kunt u bepalen of het een probleem aan de client zijde is of dat er een probleem is met de service. Als de metrische gegevens bijvoorbeeld een hoog aantal aanvragen met een rente beperking bevatten (HTTP-status code 429), wat betekent dat de aanvraag wordt beperkt, controleert u de sectie [aanvraag snelheid is te groot](troubleshoot-request-rate-too-large.md) . 
 
-### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Time-outs van aanvragen
-RequestTimeout treedt doorgaans op wanneer u direct/TCP gebruikt, maar kan zich in de gateway modus voordoen. Deze fouten zijn de meest voorkomende bekende oorzaken en suggesties voor het oplossen van het probleem.
+## <a name="common-error-status-codes"></a>Algemene fout status codes<a id="error-codes"></a>
 
-* CPU-gebruik is hoog, waardoor latentie en/of time-outs voor aanvragen worden veroorzaakt. De klant kan de hostcomputer zo schalen dat er meer resources worden toegewezen, of de belasting kan worden gedistribueerd op meer computers.
-* Beschik baarheid van socket/poort is mogelijk laag. Bij het uitvoeren in azure kunnen clients die gebruikmaken van de .NET SDK, de poort uitputting voor Azure SNAT (PAT) aanraken. Gebruik de meest recente versie 2. x of 3. x van de .NET-SDK om te voor komen dat dit probleem optreedt. Dit is een voor beeld van waarom het wordt aanbevolen om altijd de nieuwste SDK-versie uit te voeren.
-* Het maken van meerdere DocumentClient-instanties kan leiden tot verbindings conflicten en time-outproblemen. Volg de [Tips voor prestaties](performance-tips.md)en gebruik één DocumentClient-exemplaar in een heel proces.
-* Gebruikers zien soms verhoogde latentie of time-outs van aanvragen omdat hun verzamelingen ontoereikend zijn ingericht, de back-end vertragings aanvragen en de client worden intern opnieuw geprobeerd. Controleer de [metrische gegevens](monitor-accounts.md)van de portal.
-* Azure Cosmos DB distribueert de totale ingerichte door Voer gelijkmatig over fysieke partities. Controleer de metrische gegevens van de portal om te zien of de werk belasting een Hot- [partitie sleutel](partition-data.md)tegen komt. Dit zorgt ervoor dat de geaggregeerde door Voer (RU/s) onder het ingerichte RUs lijkt, maar een door Voer (RU/s) van één partitie overschrijdt de ingerichte door voer. 
-* Daarnaast voegt de 2,0 SDK kanaal semantiek toe aan directe/TCP-verbindingen. Er wordt één TCP-verbinding gebruikt voor meerdere aanvragen tegelijk. Dit kan leiden tot twee problemen onder specifieke gevallen:
-    * Een hoge mate van gelijktijdigheid kan leiden tot conflicten op het kanaal.
-    * Grote aanvragen of antwoorden kunnen leiden tot hoofd-of-line blok kering van het kanaal en de exacerbate-inhoud, zelfs met een relatief lage mate van gelijktijdigheid.
-    * Als de aanvraag in een van deze twee categorieën valt (of als er sprake is van een hoog CPU-gebruik), zijn dit mogelijke oplossingen:
-        * Probeer de toepassing omhoog te schalen.
-        * Daarnaast kunnen SDK-logboeken worden vastgelegd via de [traceer-listener](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) om meer details te krijgen.
+| Statuscode | Beschrijving | 
+|----------|-------------|
+| 400 | Ongeldige aanvraag (afhankelijk van het fout bericht)| 
+| 401 | [Niet geautoriseerd](troubleshoot-unauthorized.md) | 
+| 404 | [Kan de resource niet vinden](troubleshoot-not-found.md) |
+| 408 | [Time-out van aanvraag](troubleshoot-dot-net-sdk-request-timeout.md) |
+| 409 | Conflict fout is opgetreden wanneer de ID van een resource voor een schrijf bewerking is genomen door een bestaande resource. Gebruik een andere ID voor de resource om dit probleem op te lossen. de ID moet uniek zijn binnen alle documenten met dezelfde partitie sleutel waarde. |
+| 410 | Verdwenen uitzonde ringen (tijdelijke storing die SLA niet overtreden) |
+| 412 | Fout voor de voor waarde is waar de bewerking een eTag heeft opgegeven die afwijkt van de versie die beschikbaar is op de server. Dit is een optimistische gelijktijdigheids fout. Voer de aanvraag opnieuw uit nadat u de meest recente versie van de resource hebt gelezen en de eTag voor de aanvraag hebt bijgewerkt.
+| 413 | [De aanvraag entiteit is te groot](concepts-limits.md#per-item-limits) |
+| 429 | [Te veel aanvragen](troubleshoot-request-rate-too-large.md) |
+| 449 | Tijdelijke fout die alleen optreedt bij schrijf bewerkingen en veilig kan worden geprobeerd |
+| 500 | De bewerking is mislukt vanwege een onverwachte service fout. Neem contact op met ondersteuning. Zie een [ondersteunings probleem voor Azure](https://aka.ms/azure-support)archiveren. |
+| 503 | [Service niet beschikbaar](troubleshoot-service-unavailable.md) | 
+
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Uitputting van de poort van Azure SNAT (PAT)
+
+Als uw app is geïmplementeerd op [Azure virtual machines zonder een openbaar IP-adres](../load-balancer/load-balancer-outbound-connections.md), worden de standaard [Azure SNAT-poorten](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Deze situatie kan leiden tot verbindings beperking, sluiting verbinding of de hierboven vermelde [time-outs van aanvragen](troubleshoot-dot-net-sdk-request-timeout.md).
+
+ Azure SNAT-poorten worden alleen gebruikt als uw virtuele machine een privé-IP-adres heeft om verbinding te maken met een openbaar IP-adres. Er zijn twee manieren om de limiet voor Azure SNAT te voor komen (als u al een exemplaar van één client gebruikt voor de hele toepassing):
+
+* Voeg uw Azure Cosmos DB Service-eind punt toe aan het subnet van uw virtuele Azure Virtual Machines-netwerk. Zie [Azure Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie. 
+
+    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](../virtual-network/virtual-networks-acl.md).
+* Wijs een [openbaar IP-adres toe aan uw Azure-VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Hoge netwerk latentie
 Hoge netwerk latentie kan worden geïdentificeerd met behulp van de [Diagnostische teken reeks](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) in de v2 SDK of [diagnoses](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) in de V3 SDK.
 
-Als er geen [time-outs](#request-timeouts) aanwezig zijn en de diagnostische gegevens afzonderlijke aanvragen weer geven waarbij de hoge latentie duidelijk is voor het verschil tussen `ResponseTime` en `RequestStartTime` , bijvoorbeeld (>300 milliseconden in dit voor beeld):
+Als er geen [time-outs](troubleshoot-dot-net-sdk-request-timeout.md) aanwezig zijn en de diagnostische gegevens afzonderlijke aanvragen weer geven waarbij de hoge latentie duidelijk is voor het verschil tussen `ResponseTime` en `RequestStartTime` , bijvoorbeeld (>300 milliseconden in dit voor beeld):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -84,59 +98,18 @@ Deze latentie kan meerdere oorzaken hebben:
     * [Versneld netwerken inschakelen op een bestaande virtuele machine](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
     * Overweeg het gebruik van een [hogere virtuele machine](../virtual-machines/windows/sizes.md).
 
-### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Uitputting van de poort van Azure SNAT (PAT)
-
-Als uw app is geïmplementeerd op [Azure virtual machines zonder een openbaar IP-adres](../load-balancer/load-balancer-outbound-connections.md), worden de standaard [Azure SNAT-poorten](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Deze situatie kan leiden tot verbindings beperking, sluiting verbinding of de hierboven vermelde [time-outs van aanvragen](#request-timeouts).
-
- Azure SNAT-poorten worden alleen gebruikt als uw virtuele machine een privé-IP-adres heeft om verbinding te maken met een openbaar IP-adres. Er zijn twee manieren om de limiet voor Azure SNAT te voor komen (als u al een exemplaar van één client gebruikt voor de hele toepassing):
-
-* Voeg uw Azure Cosmos DB Service-eind punt toe aan het subnet van uw virtuele Azure Virtual Machines-netwerk. Zie [Azure Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie. 
-
-    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](../virtual-network/virtual-networks-acl.md).
-* Wijs een [openbaar IP-adres toe aan uw Azure-VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
-
-### <a name="http-proxy"></a>HTTP-proxy
-Als u een HTTP-proxy gebruikt, moet u ervoor zorgen dat het het aantal verbindingen dat in de SDK is geconfigureerd kan ondersteunen `ConnectionPolicy` .
-Anders worden er verbindings problemen beschreven.
-
-### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Aanvraag frequentie te groot
-' De aanvraag snelheid is te groot ' of de fout code 429 geeft aan dat uw aanvragen worden beperkt, omdat de verbruikte door Voer (RU/s) de [ingerichte door](set-throughput.md)Voer heeft overschreden. De SDK voert automatisch aanvragen opnieuw uit op basis van het opgegeven [beleid voor opnieuw proberen](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet). Als deze fout vaak optreedt, kunt u overwegen de door Voer van de verzameling te verhogen. Controleer de [metrische gegevens van de portal](use-metrics.md) om te zien of er 429 fouten optreden. Controleer uw [partitie sleutel](partitioning-overview.md#choose-partitionkey) om ervoor te zorgen dat deze een gelijkmatige verdeling van de opslag en het aanvraag volume levert. 
-
 ### <a name="slow-query-performance"></a>Trage query prestaties
 Met de [metrische gegevens](sql-api-query-metrics.md) van de query kunt u bepalen waar de query de meeste tijd in bebesteding neemt. Vanuit de metrische gegevens van de query kunt u zien hoeveel er wordt uitgegeven aan de back-end van de client.
 * Als de back-end-query snel wordt geretourneerd en een grote tijd op de client wordt gespendeerd, controleert u de belasting van de computer. Het is waarschijnlijk dat er onvoldoende bronnen zijn en de SDK wacht totdat de resources beschikbaar zijn voor het verwerken van het antwoord.
 * Als de back-end-query langzaam is, [optimaliseert u de query](optimize-cost-queries.md) en bekijkt u het huidige [indexerings beleid](index-overview.md) 
 
-### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: de MAC-hand tekening die in de HTTP-aanvraag is gevonden, is niet hetzelfde als de berekende hand tekening
-Als u het volgende 401-foutbericht hebt ontvangen: 'De MAC-handtekening die in de HTTP-aanvraag is gevonden, is niet hetzelfde als de berekende handtekening.' Dit kan worden veroorzaakt door de volgende scenario's.
+## <a name="next-steps"></a>Volgende stappen
 
-1. De sleutel is omgewisseld en voldoet niet aan de [best practices](secure-access-to-data.md#key-rotation). Dit is meestal het probleem. Het omwisselen van de sleutel voor een Cosmos DB-account kan een paar seconden tot enkele dagen duren, afhankelijk van de grootte van het Cosmos DB-account.
-   1. De 401 MAC-handtekening wordt kort na het omwisselen van een sleutel weergegeven en stopt uiteindelijk zonder wijzigingen. 
-1. De sleutel wordt onjuist geconfigureerd op de toepassing, zodat de sleutel niet overeenkomt met het account.
-   1. Het 401 MAC-handtekeningprobleem is consistent en gebeurt voor alle aanroepen
-1. De toepassing gebruikt de [alleen-lezen sleutels](secure-access-to-data.md#master-keys) voor schrijf bewerkingen.
-   1. Het 401 MAC-handtekeningprobleem treedt alleen op wanneer de toepassing schrijfaanvragen uitvoert; leesaanvragen lukken wel.
-1. Er is een racevoorwaarde bij het maken van een container. Een exemplaar van de toepassing probeert toegang te krijgen tot de container voordat het maken van de container is voltooid. Het meest voorkomende scenario is dat de toepassing wordt uitgevoerd en de container wordt verwijderd en opnieuw gemaakt met dezelfde naam terwijl de toepassing wordt uitgevoerd. De SDK probeert de nieuwe container te gebruiken, maar de container wordt nog gemaakt, waardoor deze de sleutels niet bevat.
-   1. Het 401 MAC-handtekeningprobleem wordt kort weergegeven na het maken van een container en pas nadat het maken van de container is voltooid.
- 
- ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-fout 400. De grootte van de aanvraag headers is te lang.
- De grootte van de koptekst is groter geworden en overschrijdt de Maxi maal toegestane grootte. Het wordt altijd aanbevolen de nieuwste SDK te gebruiken. Zorg ervoor dat u ten minste versie [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) of [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)gebruikt, waardoor het traceren van de header grootte wordt toegevoegd aan het uitzonderings bericht.
-
-Mogelijke
- 1. Het sessie token is te groot geworden. Het sessie token groeit naarmate het aantal partities toeneemt in de container.
- 2. Het vervolg token is groter geworden. Verschillende query's hebben verschillende voortzettings tokens.
- 3. Dit wordt veroorzaakt door een combi natie van het sessie token en vervolg token.
-
-Oplossing:
-   1. Volg de [Tips voor prestaties](performance-tips.md) en converteer de toepassing naar de modus direct en TCP-verbinding. Direct + TCP heeft geen beperking voor de header grootte, zoals HTTP, waardoor dit probleem wordt voor komen.
-   2. Als het sessie token de oorzaak is, dan is een tijdelijke oplossing om de toepassing opnieuw te starten. Wanneer het toepassings exemplaar opnieuw wordt gestart, wordt het sessie token opnieuw ingesteld. Als de uitzonde ringen worden gestopt nadat de computer opnieuw is opgestart, wordt de oorzaak van het sessie token bevestigd. Uiteindelijk wordt de grootte van de uitzonde ring verg root.
-   3. Als de toepassing niet kan worden geconverteerd naar direct en TCP en het sessie token de oorzaak is, kan de oplossing worden uitgevoerd door het [consistentie niveau](consistency-levels.md)van de client te wijzigen. Het sessie token wordt alleen gebruikt voor de consistentie van de sessie, wat de standaard waarde is voor Cosmos DB. Elk ander consistentie niveau maakt geen gebruik van het sessie token. 
-   4. Als de toepassing niet kan worden geconverteerd naar direct en TCP en het vervolg token de oorzaak is, probeert u de optie ResponseContinuationTokenLimitInKb in te stellen. De optie is te vinden in de FeedOptions voor v2 of QueryRequestOptions in v3.
+* Meer informatie over prestatie richtlijnen voor [.net v3](performance-tips-dotnet-sdk-v3-sql.md) en [.NET v2](performance-tips.md)
+* Meer informatie over de [op reactor gebaseerde Java-sdk's](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[Aanvraag frequentie te groot]: #request-rate-too-large
-[Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list

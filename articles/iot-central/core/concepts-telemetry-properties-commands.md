@@ -7,12 +7,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 108a7940084e99348dc8fdfa0143d5c6855599df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097366"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291605"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie, eigenschap en opdracht-nettoladingen
 
@@ -30,6 +30,9 @@ In het artikel wordt niet elk mogelijk type telemetrie, eigenschap en opdracht P
 
 Elk voor beeld toont een fragment van het apparaatcompatibiliteit (device capability model, DCM) dat het type en de voor beeld-JSON-nettoladingen definieert om te laten zien hoe het apparaat moet communiceren met de IoT Central-toepassing.
 
+> [!NOTE]
+> IoT Central accepteert een geldige JSON, maar kan alleen worden gebruikt voor visualisaties als deze overeenkomt met een definitie in de DCM. U kunt gegevens exporteren die niet overeenkomen met een definitie. Zie [IOT-gegevens exporteren naar bestemmingen in azure](howto-export-data.md).
+
 Het JSON-bestand dat de DCM definieert, maakt gebruik van de [Digital-taal (DTDL) v1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md). Deze specificatie bevat de definitie van de `@id` eigenschaps indeling.
 
 Zie de [client toepassing maken en verbinden met uw azure IOT Central-toepassing (Node.js)](tutorial-connect-device-nodejs.md) en [een client toepassing maken en verbinden met uw python-zelf studies (Azure IOT Central Application)](tutorial-connect-device-python.md) voor een voor beeld van een apparaatcode dat enkele van deze nettoladingen bevat die in gebruik zijn.
@@ -43,9 +46,8 @@ Met IoT Central kunt u de onbewerkte gegevens weer geven die een apparaat naar e
 1. Selecteer het tabblad **onbewerkte gegevens** :
 
     :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="Onbewerkte gegevens weergave":::
-    
-    In deze weer gave kunt u de kolommen selecteren die u wilt weer geven en een tijds bereik instellen om weer te geven. In de kolom niet- **gemodelleerde gegevens** worden gegevens van het apparaat weer gegeven die niet overeenkomen met een eigenschap of telemetrie in de sjabloon voor het apparaat.
 
+    In deze weer gave kunt u de kolommen selecteren die u wilt weer geven en een tijds bereik instellen om weer te geven. In de kolom niet- **gemodelleerde gegevens** worden gegevens van het apparaat weer gegeven die niet overeenkomen met een eigenschap of telemetrie in de sjabloon voor het apparaat.
 
 ## <a name="telemetry"></a>Telemetrie
 

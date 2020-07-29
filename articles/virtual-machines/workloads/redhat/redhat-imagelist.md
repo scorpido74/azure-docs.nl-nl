@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291017"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux-installatie kopieën (RHEL) die beschikbaar zijn in azure
 Azure biedt een aantal RHEL-installatie kopieën voor verschillende use cases.
@@ -88,9 +88,17 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux-agent | RHEL 7,4 voor SAP met HA e
 RHEL-BYOS     |RHEL-lvm74| LVM    | Linux-agent | RHEL 7,4 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm75| LVM    | Linux-agent | RHEL 7,5 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm76| LVM    | Linux-agent | RHEL 7,6 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm76-Gen2| LVM    | Linux-agent | RHEL 7,6 Generation 2 BYOS installatie kopieën, die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm77| LVM    | Linux-agent | RHEL 7,7 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm77-Gen2| LVM    | Linux-agent | RHEL 7,7 Generation 2 BYOS installatie kopieën, die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm78| LVM    | Linux-agent | RHEL 7,8 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm78-Gen2| LVM    | Linux-agent | RHEL 7,8 Generation 2 BYOS installatie kopieën, die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm8 | LVM    | Linux-agent | RHEL 8,0 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm8-Gen2 | LVM    | Linux-agent | RHEL 8,0 Generation 2 BYOS installatie kopieën, die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm81 | LVM    | Linux-agent | RHEL 8,1 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm81-Gen2 | LVM    | Linux-agent | RHEL 8,1 Generation 2 BYOS installatie kopieën, die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm82 | LVM    | Linux-agent | RHEL 8,2 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm82-Gen2 | LVM    | Linux-agent | RHEL 8,2 Generation 2 BYOS installatie kopieën, die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 
 > [!NOTE]
 > De product aanbieding van RHEL-SAP-HANA wordt als einde van de levens duur beschouwd door Red Hat. Bestaande implementaties blijven normaal werken, maar Red Hat raadt aan dat klanten migreren van de RHEL-SAP-HANA-afbeeldingen naar de RHEL-SAP-HA-installatie kopieën die de SAP HANA-opslag plaatsen en de HA-invoeg toepassing bevatten. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).

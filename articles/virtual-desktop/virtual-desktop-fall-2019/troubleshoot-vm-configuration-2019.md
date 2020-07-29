@@ -1,6 +1,6 @@
 ---
-title: Problemen met Windows Virtual Desktop Session Host oplossen 2019-Azure
-description: Problemen oplossen bij het configureren van virtuele machines voor virtuele bureau blad-sessies van Windows.
+title: Problemen oplossen met Windows Virtual Desktop (klassieke) sessiehost-Azure
+description: Problemen oplossen bij het configureren van virtuele machines van het virtuele bureau blad van Windows (klassieke host).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527656"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291252"
 ---
-# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>Problemen met de virtuele-machine configuratie voor de sessie host oplossen
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Virtuele-machine configuratie van Virtual Desktop (klassiek) van Windows-sessiehost
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../troubleshoot-vm-configuration.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 

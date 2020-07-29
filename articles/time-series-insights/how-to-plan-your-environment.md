@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0a17f28f2a87ae42b552bfa07732b8b8232ef5e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531168"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289918"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Uw Azure Time Series Insights Gen2-omgeving plannen
 
@@ -78,7 +78,7 @@ Als dit veld leeg blijft, wordt de tijd voor het plaatsen van gebeurtenissen van
 
 U kunt nu het time series-model van uw Azure Time Series Insights omgeving configureren. Het nieuwe model maakt het eenvoudig om IoT-gegevens te vinden en analyseren. Hiermee wordt de inschakeling, het onderhoud en de verrijking van tijdreeks gegevens mogelijk en helpt u gegevens sets te voorbereiden. Het model maakt gebruik van Time Series-Id's, die zijn toegewezen aan een exemplaar dat de unieke resource koppelt aan variabelen, zoals typen en hiërarchieën. Lees meer informatie over het overzicht van [Time Series-modellen](./concepts-model-overview.md) .
 
-Het model is dynamisch, zodat het op elk gewenst moment kan worden gebouwd. Als u snel aan de slag wilt gaan, bouwt en uploadt u deze voordat u gegevens naar Azure Time Series Insights pusht. Lees [het time series-model gebruiken](./time-series-insights-update-how-to-tsm.md)om uw model te bouwen.
+Het model is dynamisch, zodat het op elk gewenst moment kan worden gebouwd. Als u snel aan de slag wilt gaan, bouwt en uploadt u deze voordat u gegevens naar Azure Time Series Insights pusht. Lees [het time series-model gebruiken](/azure/time-series-insights/concepts-model-overview)om uw model te bouwen.
 
 Voor veel klanten is het time series-model gekoppeld aan een bestaand Asset model of ERP-systeem dat al aanwezig is. Als u geen bestaand model hebt, wordt een vooraf ontwikkelde gebruikers ervaring [gegeven](https://github.com/Microsoft/tsiclient) om snel aan de slag te gaan. Als u wilt bepalen hoe een model u kan helpen, bekijkt u de voor [beeld-demo omgeving](https://insights.timeseries.azure.com/preview/demo).
 

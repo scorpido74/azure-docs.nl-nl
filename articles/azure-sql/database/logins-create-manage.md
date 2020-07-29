@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986280"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290107"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -110,7 +110,7 @@ U kunt met een van de volgende twee methoden accounts maken voor gebruikers die 
   Maak een SQL-aanmelding in de hoofd database. Maak vervolgens een gebruikers account in elke Data Base waartoe die gebruiker toegang nodig heeft en koppel het gebruikers account aan die aanmelding. Deze methode verdient de voor keur wanneer de gebruiker toegang moet krijgen tot meerdere data bases en u de wacht woorden gesynchroniseerd wilt laten blijven. Deze aanpak heeft echter complexer wanneer deze wordt gebruikt met geo-replicatie, aangezien de aanmelding moet worden gemaakt op zowel de primaire server als op de secundaire server (s). Zie [Azure SQL database beveiliging configureren en beheren voor geo-herstel of failover](active-geo-replication-security-configure.md)voor meer informatie.
 - **Een gebruikersaccount maken**
 
-  Maak een gebruikers account in de data base waartoe een gebruiker toegang nodig heeft (ook wel een [Inge sloten gebruiker](/sql/relational-databases/security/contained-database-users-making-your-database-portable)genoemd.
+  Maak een gebruikers account in de data base waartoe een gebruiker toegang nodig heeft (ook wel een [Inge sloten gebruiker](/sql/relational-databases/security/contained-database-users-making-your-database-portable)genoemd).
 
   - Met SQL Database kunt u altijd dit type gebruikers account maken.
   - Met SQL Managed instance die ondersteuning biedt voor [Azure ad server-principals](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities), kunt u gebruikers accounts maken om te verifiëren bij het SQL Managed instance zonder dat database gebruikers moeten worden gemaakt als Inge sloten database gebruiker.

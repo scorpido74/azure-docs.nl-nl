@@ -1,118 +1,117 @@
 ---
-title: Migratie van Azure Storage metrische gegevens | Microsoft Docs
-description: Meer informatie over het migreren van oude metrische gegevens naar nieuwe metrische gegevens die worden beheerd door Azure Monitor.
+title: Van Opslaganalyse meet waarden verplaatsen naar Azure Monitor metrische gegevens | Microsoft Docs
+description: Meer informatie over het overstappen van Opslaganalyse metrische gegevens (klassieke metrische gegevens) naar metrische gegevens in Azure Monitor.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 07/28/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 10768ca4c6fbe4afc322fa9a7045c7cc4fe6f175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681303"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374164"
 ---
-# <a name="azure-storage-metrics-migration"></a>Migratie van Azure Storage metrieken
+# <a name="transition-to-metrics-in-azure-monitor"></a>Overstappen op metrische gegevens in Azure Monitor
 
-Met de strategie voor het samen voegen van de monitor ervaring in azure Azure Storage worden metrische gegevens geïntegreerd met het Azure Monitor platform. In de toekomst wordt de service van de oude metrische gegevens beëindigd met een vroegtijdige melding op basis van Azure Policy. Als u vertrouwt over de metrische gegevens voor de opslag, moet u voorafgaand aan de eind datum van de service migreren om uw metrische informatie te behouden.
+Azure Storage integreert de metrische gegevens nu in het Azure Monitor platform. Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Als u gebruikmaakt van klassieke metrische gegevens, moet u overstappen op metrische gegevens in Azure Monitor vóór die datum. Dit artikel helpt u bij het maken van de overgang.
 
-In dit artikel wordt beschreven hoe u kunt migreren van de oude metrische gegevens naar de nieuwe metrische gegevens.
+## <a name="steps-to-complete-the-transition"></a>Stappen voor het volt ooien van de overgang
 
-## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Meer informatie over oude metrische gegevens die worden beheerd door Azure Storage
+Als u wilt overstappen op metrische gegevens in Azure Monitor, raden we u aan de volgende aanpak te volgen.
 
-Azure Storage worden oude metrische waarden verzameld en worden deze in $Metric tabellen binnen hetzelfde opslag account geaggregeerd en opgeslagen. U kunt de Azure Portal gebruiken om een bewakings grafiek in te stellen. U kunt ook de Azure Storage Sdk's gebruiken om de gegevens te lezen uit $Metric tabellen die zijn gebaseerd op het schema. Zie [Opslaganalyse](./storage-analytics.md)voor meer informatie.
+1. Meer informatie over enkele van de [belangrijkste verschillen](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor) tussen de klassieke metrische gegevens en metrische gegevens in azure monitor. 
 
-Oude metrische gegevens bieden alleen metrische gegevens over de capaciteit in Azure Blob-opslag. Oude metrische gegevens geven metrische gegevens over trans acties op Blob-opslag, tabel opslag, Azure Files en wachtrij opslag.
+2. Een lijst samen stellen met de klassieke metrische gegevens die u momenteel gebruikt.
 
-Oude metrische gegevens zijn ontworpen in een plat schema. Het ontwerp resulteert in een metrische waarde van nul wanneer u niet beschikt over de verkeers patronen om de metriek te activeren. De waarde **ServerTimeoutError** is bijvoorbeeld ingesteld op 0 in $metric tabellen, zelfs wanneer u geen server time-outfouten van het live verkeer naar een opslag account ontvangt.
+3. Bepaal [welke meet waarden in azure monitor](#metrics-mapping-between-old-metrics-and-new-metrics) dezelfde gegevens leveren als de metrische waarden die u momenteel gebruikt. 
+   
+4. Maak [grafieken](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) of [Dash boards](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) om metrische gegevens weer te geven.
 
-## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Meer informatie over nieuwe metrische gegevens die worden beheerd door Azure Monitor
+   > [!NOTE]
+   > Metrische gegevens in Azure Monitor zijn standaard ingeschakeld, zodat u niets hoeft te doen om het vastleggen van metrische gegevens te starten. U moet echter grafieken of Dash boards maken om deze metrische gegevens weer te geven. 
+ 
+5. Als u waarschuwings regels hebt gemaakt die zijn gebaseerd op de metrische gegevens voor opslag, kunt u [waarschuwings regels maken](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) die zijn gebaseerd op metrische gegevens in azure monitor. 
 
-Voor nieuwe metrische gegevens van de opslag Azure Storage worden de metrieke waarden verzonden naar de Azure Monitor back-end. Azure Monitor biedt een uniforme bewakings ervaring, met inbegrip van gegevens uit de portal en gegevens opname. Raadpleeg dit [artikel](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)voor meer informatie.
+6. Wanneer u al uw metrische gegevens in Azure Monitor kunt zien, kunt u de klassieke logboek registratie uitschakelen. 
 
-Nieuwe metrische gegevens bieden metrische gegevens over capaciteit en trans acties op blob-, tabel-, bestands-, wachtrij-en Premium-opslag.
+<a id="key-differences-between-classic-metrics-and-metrics-in-azure-monitor"></a>
 
-Meerdere dimensies is een van de functies die Azure Monitor biedt. Azure Storage stelt het ontwerp in om een nieuw metrische schema te definiëren. Voor ondersteunde dimensies op metrische gegevens vindt u informatie in [Azure Storage metrische gegevens in azure monitor](./storage-metrics-in-azure-monitor.md). Ontwerp met meerdere dimensies biedt kosten efficiëntie voor zowel de band breedte als de capaciteit van het opslaan van metrische gegevens. Als uw verkeer echter geen gerelateerde metrische gegevens heeft geactiveerd, worden de gerelateerde metrieke waarden niet gegenereerd. Als uw verkeer bijvoorbeeld geen time-outfouten van de server heeft geactiveerd, Azure Monitor geen gegevens retour neren wanneer u een query uitvoert op de waarde van metrische **trans acties** met dimensie **ResponseType** gelijk aan **ServerTimeoutError**.
+## <a name="classic-metrics-vs-metrics-in-azure-monitor"></a>Klassieke metrische gegevens versus metrische gegevens in Azure Monitor
 
-## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>Toewijzing van oude metrische gegevens aan nieuwe metrische gegevens
+In deze sectie worden enkele belang rijke verschillen tussen deze twee metrische platformen beschreven.
 
-Als u metrische gegevens programmatisch leest, moet u het nieuwe metrische schema in uw Program ma's aannemen. Raadpleeg de toewijzing die wordt vermeld in de volgende tabel voor meer informatie over de wijzigingen.
+Het belangrijkste verschil is het beheren van metrische gegevens. Klassieke metrische gegevens worden beheerd door Azure Storage terwijl de metrische gegevens in Azure Monitor door Azure Monitor worden beheerd. Met de klassieke metrische gegevens Azure Storage worden metrische waarden verzameld, geaggregeerd en opgeslagen in tabellen die zich in het opslag account bevinden. Met metrische gegevens in Azure Monitor Azure Storage naar de Azure Monitor back-end verzonden. Azure Monitor biedt een uniforme bewakings ervaring met gegevens uit de Azure Portal en gegevens die worden opgenomen. 
+
+Voor de ondersteuning van metrische gegevens bieden klassieke metrische gegevens alleen metrische gegevens over de **capaciteit** voor Azure Blob Storage. Metrische gegevens in Azure Monitor bieden capaciteits metrieken voor blob-, tabel-, bestands-, wachtrij-en Premium-opslag. Klassieke metrische gegevens geven metrische gegevens over **trans acties** op blob-, tabel-, Azure-en wachtrij opslag. Metrische gegevens in Azure Monitor Premium-opslag toevoegen aan deze lijst.
+
+Als voor de activiteit in uw account geen metrische gegevens worden geactiveerd, wordt voor de metrische gegevens een waarde van nul (0) weer gegeven in de klassieke metrische gegevens. De metrische gegevens in Azure Monitor worden volledig wegge laten, wat leidt tot schone rapporten. Als er bijvoorbeeld een time-out voor de server wordt gerapporteerd, `ServerTimeoutError` wordt de waarde in de tabel metrische gegevens ingesteld op 0. Azure Monitor retourneert geen gegevens wanneer u een query uitvoert op de waarde metric `Transactions` met dimensie `ResponseType` gelijk aan `ServerTimeoutError` . 
+
+Zie [metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)voor meer informatie over metrische gegevens in azure monitor.
+
+<a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
+
+## <a name="map-classic-metrics-to-metrics-in-azure-monitor"></a>Klassieke metrische gegevens toewijzen aan metrische gegevens in Azure Monitor
+
+ Gebruik deze tabellen om te bepalen welke meet waarden in Azure Monitor dezelfde gegevens leveren als de metrieken die u momenteel gebruikt. 
 
 **Metrische gegevens over capaciteit**
 
-| Oude metriek | Nieuwe metriek |
+| Klassieke metriek | Metrische waarde in Azure Monitor |
 | ------------------- | ----------------- |
-| **Capaciteit**            | **BlobCapacity** met de dimensie **BlobType** gelijk aan **BlockBlob** of **PageBlob** |
-| **ObjectCount**        | **BlobCount** met de dimensie **BlobType** gelijk aan **BlockBlob** of **PageBlob** |
-| **ContainerCount**      | **ContainerCount** |
+| `Capacity`            | `BlobCapacity`met de dimensie `BlobType` gelijk aan `BlockBlob` of`PageBlob` |
+| `ObjectCount`        | `BlobCount`met de dimensie `BlobType` gelijk aan `BlockBlob` of`PageBlob` |
+| `ContainerCount`      | `ContainerCount` |
 
-De volgende metrische gegevens zijn nieuwe aanbiedingen die niet worden ondersteund door de oude metrische gegevens:
-* **TableCapacity**
-* **TableCount**
-* **TableEntityCount**
-* **QueueCapacity**
-* **QueueCount**
-* **QueueMessageCount**
-* **FileCapacity**
-* **FileCount**
-* **FileShareCount**
-* **UsedCapacity**
+> [!NOTE]
+> Er zijn ook verschillende nieuwe capaciteits metrieken die niet beschikbaar waren als klassieke metrische gegevens. Zie [metrische gegevens](../common/monitor-storage-reference.md#metrics)om de volledige lijst weer te geven.
 
-**Metrische gegevens van trans actie**
+**Metrische gegevens voor transacties**
 
-| Oude metriek | Nieuwe metriek |
+| Klassieke metriek | Metrische waarde in Azure Monitor |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **AuthorizationError** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousClientOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientOtherError** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousClientTimeoutError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientTimeoutError** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousNetworkError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **NetworkError** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousServerOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerOtherError** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousServerTimeoutError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerTimeoutError** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousSuccess** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **geslaagd** en dimensie **verificatie** gelijk aan **anoniem** |
-| **AnonymousThrottlingError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientThrottlingError** of **ServerBusyError** en dimensie **verificatie** gelijk is aan **anoniem** |
-| **AuthorizationError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **AuthorizationError** |
-| **Beschikbaarheid** | **Beschikbaarheid** |
-| **AverageE2ELatency** | **SuccessE2ELatency** |
-| **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientOtherError** |
-| **ClientTimeoutError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientTimeoutError** |
-| **NetworkError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **NetworkError** |
-| **PercentAuthorizationError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **AuthorizationError** |
-| **PercentClientOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientOtherError** |
-| **PercentNetworkError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **NetworkError** |
-| **PercentServerOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerOtherError** |
-| **PercentSuccess** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **geslaagd** |
-| **Percentthrottlingerror aan** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientThrottlingError** of **ServerBusyError** |
-| **Percenttimeouterror aan** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerTimeoutError** of **ResponseType** gelijk is aan **ClientTimeoutError** |
-| **SASAuthorizationError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **AuthorizationError** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASClientOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientOtherError** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASClientTimeoutError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientTimeoutError** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASNetworkError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **NetworkError** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASServerOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerOtherError** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASServerTimeoutError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerTimeoutError** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASSuccess** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **geslaagd** en dimensie **verificatie** gelijk aan **SAS** |
-| **SASThrottlingError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ClientThrottlingError** of **ServerBusyError** en dimensie **verificatie** gelijk aan **SAS** |
-| **ServerOtherError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerOtherError** |
-| **ServerTimeoutError** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **ServerTimeoutError** |
-| **Geleverd** | Trans acties waarbij de dimensie **ResponseType** gelijk is aan **geslaagd** |
-| **ThrottlingError** | **Trans acties** waarbij de dimensie **ResponseType** gelijk is aan **ClientThrottlingError** of **ServerBusyError**|
-| **TotalBillableRequests** | **Transacties** |
-| **TotalEgress** | **Egress** |
-| **TotalIngress** | **Inkomend verkeer** |
-| **TotalRequests** | **Transacties** |
-
-## <a name="faq"></a>Veelgestelde vragen
-
-### <a name="how-should-i-migrate-existing-alert-rules"></a>Hoe migreer ik bestaande waarschuwings regels?
-
-Als u de regels voor een klassieke waarschuwing hebt gemaakt op basis van de oude metrische gegevens van de opslag, moet u nieuwe waarschuwings regels maken op basis van het nieuwe metrische schema.
-
-### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Zijn nieuwe metrische gegevens standaard opgeslagen in hetzelfde opslag account?
-
-Nee. Als u de metrische gegevens wilt archiveren naar een opslag account, gebruikt u de [API voor Azure monitor Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate).
+| `AnonymousAuthorizationError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `AuthorizationError` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousClientOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientOtherError` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousClientTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientTimeoutError` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousNetworkError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `NetworkError` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousServerOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerOtherError` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousServerTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerTimeoutError` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousSuccess` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `Success` en dimensie gelijk `Authentication` aan is`Anonymous` |
+| `AnonymousThrottlingError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError` en dimensie `Authentication` gelijk aan`Anonymous` |
+| `AuthorizationError` | Trans acties met de dimensie `ResponseType` gelijk aan`AuthorizationError` |
+| `Availability` | `Availability` |
+| `AverageE2ELatency` | `SuccessE2ELatency` |
+| `AverageServerLatency` | `SuccessServerLatency` |
+| `ClientOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ClientOtherError` |
+| `ClientTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan`ClientTimeoutError` |
+| `NetworkError` | Trans acties met de dimensie `ResponseType` gelijk aan`NetworkError` |
+| `PercentAuthorizationError` | Trans acties met de dimensie `ResponseType` gelijk aan`AuthorizationError` |
+| `PercentClientOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ClientOtherError` |
+| `PercentNetworkError` | Trans acties met de dimensie `ResponseType` gelijk aan`NetworkError` |
+| `PercentServerOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ServerOtherError` |
+| `PercentSuccess` | Trans acties met de dimensie `ResponseType` gelijk aan`Success` |
+| `PercentThrottlingError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of is`ServerBusyError` |
+| `PercentTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan `ServerTimeoutError` of `ResponseType` gelijk aan`ClientTimeoutError` |
+| `SASAuthorizationError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `AuthorizationError` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASClientOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientOtherError` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASClientTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientTimeoutError` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASNetworkError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `NetworkError` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASServerOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerOtherError` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASServerTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerTimeoutError` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASSuccess` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `Success` en dimensie gelijk `Authentication` aan is`SAS` |
+| `SASThrottlingError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError` en dimensie `Authentication` gelijk aan`SAS` |
+| `ServerOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ServerOtherError` |
+| `ServerTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan`ServerTimeoutError` |
+| `Success` | Trans acties met de dimensie `ResponseType` gelijk aan`Success` |
+| `ThrottlingError` | `Transactions`met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of`ServerBusyError`|
+| `TotalBillableRequests` | `Transactions` |
+| `TotalEgress` | `Egress` |
+| `TotalIngress` | `Ingress` |
+| `TotalRequests` | `Transactions` |
 
 ## <a name="next-steps"></a>Volgende stappen
 

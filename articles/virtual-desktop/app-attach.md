@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204469"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291508"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -29,7 +29,7 @@ In dit onderwerp vindt u instructies voor het instellen van een MSIX-app-koppeli
 Voordat u aan de slag gaat, hebt u het volgende nodig om de MSIX-app-koppeling te configureren:
 
 - Toegang tot de Windows Insider-portal voor het verkrijgen van de versie van Windows 10 met ondersteuning voor de MSIX app attach-Api's.
-- Een werkende implementatie van virtueel bureau blad in Windows. Zie [een Tenant maken in het virtuele bureau blad van Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)voor meer informatie over het implementeren van de Windows Virtual Desktop-versie van 2019. Zie [een hostgroep maken met de Azure Portal](./create-host-pools-azure-marketplace.md)voor meer informatie over het implementeren van de Windows Virtual Desktop lente 2020-release.
+- Een werkende implementatie van virtueel bureau blad in Windows. Zie [een Tenant maken in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)voor meer informatie over het implementeren van Windows virtueel bureau blad (klassiek). Zie [een hostgroep maken met de Azure Portal](./create-host-pools-azure-marketplace.md)voor meer informatie over het implementeren van Windows virtueel bureau blad met Azure Resource Manager-integratie.
 - Het MSIX-verpakkings programma.
 - Een netwerk share in uw Windows-implementatie voor virtueel bureau blad waar het MSIX-pakket wordt opgeslagen.
 
@@ -207,7 +207,7 @@ Als uw app gebruikmaakt van een certificaat dat niet openbaar of zelfondertekend
 5. Als het installatie programma u vraagt of u wilt toestaan dat de app wijzigingen in uw apparaat aanbrengt, selecteert u **Ja**.
 6. Selecteer **alle certificaten in het onderstaande archief opslaan**en selecteer vervolgens **Bladeren**.
 7. Wanneer het venster certificaat archief selecteren wordt weer gegeven, selecteert u **vertrouwde personen**en selecteert u **OK**.
-8. Selecteer **Finish**.
+8. Selecteer **Voltooien**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Power shell-scripts voorbereiden voor MSIX-app attach
 
