@@ -4,15 +4,15 @@ description: Moment opnamen van fout opsporing worden automatisch verzameld wann
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049687"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325641"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Momentopnamen voor foutopsporing over uitzonderingen in .NET-apps
-Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in uw toepassing op en Configureer eventueel verzamelings parameters in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
+Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger in [Azure-toepassing Insights](./app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in uw toepassing op en Configureer eventueel verzamelings parameters in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](./asp-net-exceptions.md) in de Application Insights Portal.
 
 U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Open moment opnamen met Visual Studio 2019 Enter prise voor een krachtigere fout opsporing met de bron code. In Visual Studio kunt u Snappoints zo [instellen dat er interactief moment opnamen worden](https://aka.ms/snappoint) gemaakt zonder dat er wordt gewacht op een uitzonde ring.
 
@@ -62,7 +62,7 @@ Nadat er een uitzonde ring is opgetreden in uw toepassing en er een moment opnam
 
 ![Pagina fouten](./media/snapshot-debugger/failures-page.png)
 
-Selecteer een bewerking of uitzonde ring in het rechterdeel venster om het deel venster **end-to-end trans actie Details** te openen en selecteer vervolgens de uitzonderings gebeurtenis. Als er een moment opname beschikbaar is voor de gegeven uitzonde ring, wordt in het rechterdeel venster een knop voor het maken van een **moment opname** met details weer gegeven met informatie over de [uitzonde ring](../../azure-monitor/app/asp-net-exceptions.md).
+Selecteer een bewerking of uitzonde ring in het rechterdeel venster om het deel venster **end-to-end trans actie Details** te openen en selecteer vervolgens de uitzonderings gebeurtenis. Als er een moment opname beschikbaar is voor de gegeven uitzonde ring, wordt in het rechterdeel venster een knop voor het maken van een **moment opname** met details weer gegeven met informatie over de [uitzonde ring](./asp-net-exceptions.md).
 
 ![Knop voor moment opname van fout opsporing openen in uitzonde ring](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -85,8 +85,8 @@ De gedownloade moment opname bevat alle symbool bestanden die op de webtoepassin
 
 ## <a name="how-snapshots-work"></a>Hoe moment opnamen werken
 
-De Snapshot Collector wordt geïmplementeerd als een [Application Insights Telemetry-processor](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Wanneer uw toepassing wordt uitgevoerd, wordt de Snapshot Collector telemetrie-processor toegevoegd aan de telemetrie-pijp lijn van uw toepassing.
-Telkens wanneer uw toepassing [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions)aanroept, wordt door de snapshot Collector een probleem-id berekend op basis van het type uitzonde ring dat wordt gegenereerd en de methode voor het activeren.
+De Snapshot Collector wordt geïmplementeerd als een [Application Insights Telemetry-processor](./configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Wanneer uw toepassing wordt uitgevoerd, wordt de Snapshot Collector telemetrie-processor toegevoegd aan de telemetrie-pijp lijn van uw toepassing.
+Telkens wanneer uw toepassing [TrackException](./asp-net-exceptions.md#exceptions)aanroept, wordt door de snapshot Collector een probleem-id berekend op basis van het type uitzonde ring dat wordt gegenereerd en de methode voor het activeren.
 Telkens wanneer uw toepassing TrackException aanroept, wordt een teller verhoogd voor de juiste probleem-ID. Wanneer het item de `ThresholdForSnapshotting` waarde bereikt, wordt de probleem-id toegevoegd aan een verzamelings plan.
 
 De Snapshot Collector bewaakt ook uitzonde ringen als deze worden gegenereerd door u te abonneren op de gebeurtenis [AppDomain. currentDomain. FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) . Wanneer deze gebeurtenis wordt geactiveerd, wordt de probleem-ID van de uitzonde ring berekend en vergeleken met de probleem-Id's in het verzamelings plan.
@@ -139,5 +139,6 @@ Application Insights Snapshot Debugger voor uw toepassing inschakelen:
 Meer dan Application Insights Snapshot Debugger:
  
 * [Stel snappoints in uw code in](/visualstudio/debugger/debug-live-azure-applications) om moment opnamen op te halen zonder dat er wordt gewacht op een uitzonde ring.
-* [Diagnose uitzonde ringen in uw web-apps](../../azure-monitor/app/asp-net-exceptions.md) wordt uitgelegd hoe u meer uitzonde ringen zichtbaar maakt voor Application Insights.
-* [Slimme detectie](../../azure-monitor/app/proactive-diagnostics.md) detecteert automatisch prestatie afwijkingen.
+* [Diagnose uitzonde ringen in uw web-apps](./asp-net-exceptions.md) wordt uitgelegd hoe u meer uitzonde ringen zichtbaar maakt voor Application Insights.
+* [Slimme detectie](./proactive-diagnostics.md) detecteert automatisch prestatie afwijkingen.
+

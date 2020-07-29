@@ -3,12 +3,12 @@ title: Overzicht van functies-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u informatie over de functies en terminologie van Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537306"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172119"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
 
@@ -39,7 +39,7 @@ De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenari
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Anders treedt er een fout op.
+Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Als deze niet overeenkomen, treedt er een fout op.
 
 ### <a name="publisher-policy"></a>Uitgeversbeleid
 
@@ -118,7 +118,7 @@ Wanneer u verbinding maakt met partities, is het gebruikelijk om een lease mecha
 - De [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) voor .net
 - De [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) voor Java
 - De [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient) voor python
-- De [EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) voor Java script/type script
+- De [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) voor Java script/type script
 
 #### <a name="read-events"></a>Gebeurtenissen lezen
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea060ec9ba755a197e2969c0bf58050eb1d62a03
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092844"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325964"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Azure Monitor voor VM's inschakelen voor een hybride omgeving
 
@@ -24,7 +24,7 @@ Voordat u aan de slag gaat, moet u de [vereisten](vminsights-enable-overview.md)
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->De Azure Monitor voor VM's kaart afhankelijke agent verzendt geen gegevens zelf, en vereist geen wijzigingen in firewalls of poorten. De kaart gegevens worden altijd door de Log Analytics agent verzonden naar de Azure Monitor-service, hetzij rechtstreeks of via de [Operations Management Suite-gateway](../../azure-monitor/platform/gateway.md) als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbinding maken met internet.
+>De Azure Monitor voor VM's kaart afhankelijke agent verzendt geen gegevens zelf, en vereist geen wijzigingen in firewalls of poorten. De kaart gegevens worden altijd door de Log Analytics agent verzonden naar de Azure Monitor-service, hetzij rechtstreeks of via de [Operations Management Suite-gateway](../platform/gateway.md) als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbinding maken met internet.
 
 De stappen om deze taak te volt ooien, zijn als volgt samenvatten:
 
@@ -79,7 +79,7 @@ Als de afhankelijkheids agent niet kan worden gestart, raadpleegt u de logboeken
 
 Bestanden voor de afhankelijkheids agent worden in de volgende directory's geplaatst:
 
-| Files | Locatie |
+| Bestanden | Locatie |
 |:--|:--|
 | Kernbestanden | /opt/microsoft/dependency-agent |
 | Logboekbestanden | /var/opt/microsoft/dependency-agent/log |
@@ -145,7 +145,7 @@ configuration VMInsights {
 ## <a name="enable-performance-counters"></a>Prestatie meter items inschakelen
 
 Als de Log Analytics werk ruimte waarnaar wordt verwezen door de oplossing nog niet is geconfigureerd voor het verzamelen van de prestatie meter items die vereist zijn voor de oplossing, moet u deze inschakelen. U kunt dit op een van de volgende twee manieren doen:
-* Hand matig, zoals beschreven in [Windows-en Linux-prestatie gegevens bronnen in log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+* Hand matig, zoals beschreven in [Windows-en Linux-prestatie gegevens bronnen in log Analytics](../platform/data-sources-performance-counters.md)
 * Een Power shell-script downloaden en uitvoeren dat beschikbaar is via de [Azure PowerShell galerie](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Azure Monitor voor VM's implementeren
@@ -259,3 +259,4 @@ Nu de bewaking voor uw virtuele machines is ingeschakeld, is deze informatie bes
 - Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven.
 
 - Zie [Azure-VM-prestaties weer geven](vminsights-performance.md)om knel punten en het algehele gebruik van de VM-prestaties te identificeren.
+

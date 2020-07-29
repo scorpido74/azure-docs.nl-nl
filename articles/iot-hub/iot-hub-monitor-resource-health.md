@@ -7,12 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: robinsh
-ms.custom: amqp
-ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: Technical Support'
+ms.openlocfilehash: 140bbc698db773f851cf03d80e8e51be9c2a21c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792015"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327545"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>De status van Azure IoT Hub bewaken en snel problemen vaststellen
 
@@ -347,7 +351,7 @@ IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigensch
 
 Hier `durationMs` wordt niet berekend wanneer de klok van het IOT hub mogelijk niet synchroon is met de klok van het apparaat en daarom kan de duur van de berekening misleidend zijn. U wordt aangeraden logica te schrijven met behulp van de tijds tempels in de `properties` sectie om pieken vast te leggen in latentie van apparaat naar Cloud.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Geheel getal | De grootte van het apparaat-naar-Cloud bericht in bytes |
 | **deviceId** | Teken reeks van ASCII 7-bits alfanumerieke tekens | De identiteit van het apparaat |
@@ -381,7 +385,7 @@ IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigensch
 
 In de `properties` sectie bevat dit logboek extra informatie over berichten binnenkomend.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Tekenreeks | Waar of onwaar, geeft aan of bericht routering is ingeschakeld in de IoT Hub |
 | **parentSpanId** | Tekenreeks | De [reeks-id](https://w3c.github.io/trace-context/#parent-id) van het bovenliggende bericht, die de D2C-bericht tracering in dit geval zou zijn |
@@ -413,7 +417,7 @@ IoT Hub registreert dit logboek wanneer [route ring](iot-hub-devguide-messages-d
 
 In de `properties` sectie bevat dit logboek extra informatie over berichten binnenkomend.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | Tekenreeks | De naam van het eind punt van de route ring |
 | **endpointType** | Tekenreeks | Het type van het eind punt van de route ring |
@@ -544,7 +548,7 @@ Met Azure IoT Hub wordt de status op een regionaal niveau aangegeven. Als een re
 
 Voer de volgende stappen uit om de status van uw IoT-hubs te controleren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Navigeer naar **service Health**  >  **resource Health**.
 

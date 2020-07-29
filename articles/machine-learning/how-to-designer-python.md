@@ -5,17 +5,17 @@ description: Meer informatie over het gebruik van python in Azure Machine Learni
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, tracking-python
+ms.openlocfilehash: c798fa3bdb6754b2d8b955efe49e208ea954f80a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326967"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning Designer
 
@@ -26,6 +26,8 @@ U kunt de ingebouwde code-editor gebruiken om snel een eenvoudige python-logica 
 De standaard uitvoerings omgeving maakt gebruik van de Anacondas-distributie van python. Voor een volledige lijst met vooraf geïnstalleerde pakketten gaat u naar de pagina overzicht van [python-script module uitvoeren](algorithm-module-reference/execute-python-script.md) .
 
 ![Python-invoer toewijzing uitvoeren](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>Python die is geschreven in de ontwerp functie uitvoeren
 

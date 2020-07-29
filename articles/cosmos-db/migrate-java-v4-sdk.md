@@ -2,17 +2,18 @@
 title: Migreer uw toepassing om de Azure Cosmos DB Java SDK v4 (com. Azure. Cosmos) te gebruiken
 description: Leer hoe u uw bestaande Java-toepassing bijwerkt van met de oudere Azure Cosmos DB Java-Sdk's naar het nieuwere Java SDK 4,0 (com. Azure. Cosmos-pakket) voor Core-API (SQL).
 author: anfeldma-ms
+ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 29b3ca267e22c8d1f349cb127efb7d2fd71e1477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263497"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327851"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uw toepassing migreren om de Azure Cosmos DB Java SDK v4 te gebruiken
 
@@ -30,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u een upgrade uitvoert van uw bestaande Java-
 
 De volgende tabel geeft een lijst van verschillende Azure Cosmos DB Java-Sdk's, de pakket naam en de release-informatie:
 
-| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-naslaginformatie   | Releaseopmerkingen  |
+| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-referentiemateriaal   | Opmerkingen bij de release  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Juni 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-async-java.md) |
 | Synchronisatie 2. x. x     | Sept 2018    | Synchroniseren   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-java.md)  |

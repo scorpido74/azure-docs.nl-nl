@@ -1,6 +1,5 @@
 ---
-title: Webservice-para meters
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): para meters van de webservice-Azure'
 description: Azure Machine Learning para meters van de webservice gebruiken om het gedrag van uw model te wijzigen wanneer de webservice wordt geopend.
 services: machine-learning
 author: likebupt
@@ -12,14 +11,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3fb4a0dab08a13327c910d1e09ecbf0afcec8c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326253"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Para meters voor de webservice Azure Machine Learning Studio (klassiek) gebruiken
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Een Azure Machine Learning-webservice wordt gemaakt door een experiment te publiceren dat modules bevat met Configureer bare para meters. In sommige gevallen wilt u mogelijk het gedrag van de module wijzigen terwijl de webservice wordt uitgevoerd. Met de *para meters* van de webservice kunt u deze taak uitvoeren. 
 
@@ -53,7 +55,7 @@ Als voor beeld gaan we ervan uit dat we een experiment hebben met een [export ge
    * Selecteer onder **verificatie type opgeven**de optie account.
    * Voer de account gegevens in voor de Azure Blob-opslag. 
 
-3. Klik op het pictogram rechts van het **pad naar de blob die begint met de container parameter**. Dit ziet er als volgt uit:
+3. Klik op het pictogram rechts van het **pad naar de blob die begint met de container parameter**. Deze ziet er als volgt uit:
    
    ![Pictogram van de webservice-para meter](./media/web-service-parameters/icon.png)
    
@@ -64,7 +66,7 @@ Als voor beeld gaan we ervan uit dat we een experiment hebben met een [export ge
 5. Als u een standaard waarde wilt opgeven voor de para meter van de webservice, klikt u op het pictogram rechts van de naam, selecteert u standaard waarde opgeven, geeft u een waarde op (bijvoorbeeld ' container1/output1.csv ') en drukt u op **Enter** .
    
    ![Webservice-para meter](./media/web-service-parameters/parameter.png)
-6. Klik op **Run**. 
+6. Klik op **Uitvoeren**. 
 7. Klik op **Deploy web service** en selecteer **Deploy web service [Classic]** of **Deploy web service [New]** om de webservice te implementeren.
 
 > [!NOTE] 

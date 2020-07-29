@@ -11,11 +11,14 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674951"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327749"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Inzicht in het identiteits register in uw IoT-hub
 
@@ -109,7 +112,7 @@ Eigenschappen: eigenschappen van het bericht systeem worden voorafgegaan door he
 
 Meldings bericht voor het apparaat:
 
-| Name | Waarde |
+| Naam | Waarde |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  Tijdstip waarop de melding is verzonden |
@@ -145,7 +148,7 @@ Hoofd tekst: deze sectie bevindt zich in JSON-indeling en vertegenwoordigt de du
 ```
 Meldings bericht voor module:
 
-| Name | Waarde |
+| Naam | Waarde |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  Tijdstip waarop de melding is verzonden |
@@ -185,7 +188,7 @@ Hoofd tekst: deze sectie bevindt zich in JSON-indeling en vertegenwoordigt de du
 
 Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschappen:
 
-| Eigenschap | Opties | Description |
+| Eigenschap | Opties | Beschrijving |
 | --- | --- | --- |
 | deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |vereist, alleen-lezen |Een met IoT-hub gegenereerde, hoofdletter gevoelige teken reeks tot 128 tekens lang. Deze waarde wordt gebruikt om apparaten met dezelfde **deviceId**te onderscheiden, wanneer ze zijn verwijderd en opnieuw gemaakt. |
@@ -209,7 +212,7 @@ Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschap
 
 Module-identiteiten worden weer gegeven als JSON-documenten met de volgende eigenschappen:
 
-| Eigenschap | Opties | Description |
+| Eigenschap | Opties | Beschrijving |
 | --- | --- | --- |
 | deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

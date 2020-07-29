@@ -5,17 +5,17 @@ description: Meer informatie over het gebruik van een Azure Resource Manager sja
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326372"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -78,7 +78,7 @@ Als u uw sjabloon wilt implementeren, moet u een resource groep maken.
 
 Zie de sectie [Azure Portal](#use-the-azure-portal) als u de Graphical User Interface wilt gebruiken.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az group create --name "examplegroup" --location "eastus"
@@ -94,7 +94,7 @@ New-AzResourceGroup -Name "examplegroup" -Location "eastus"
 
 Zodra de resource groep is gemaakt, implementeert u de sjabloon met de volgende opdracht:
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -119,7 +119,10 @@ New-AzResourceGroupDeployment `
 
 Standaard zijn alle resources die zijn gemaakt als onderdeel van de sjabloon nieuw. U hebt echter ook de mogelijkheid om bestaande resources te gebruiken. Als u aanvullende para meters voor de sjabloon opgeeft, kunt u bestaande resources gebruiken. Als u bijvoorbeeld een bestaand opslag account wilt gebruiken, stelt u de waarde **storageAccountOption** in op **bestaande** en geeft u de naam van uw opslag account op in de para meter **storageAccountName** .
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+> [!IMPORTANT]
+> Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimte wordt ondersteund met het standaard opslag account van de werk ruimte.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -172,7 +175,7 @@ Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender t
 
 1. Meld u aan bij uw Azure-account en ontvang uw abonnements-ID. Dit abonnement moet gelijk zijn aan de naam die uw Azure Machine Learning-werk ruimte bevat.  
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az account list --query '[].[name,id]' --output tsv
@@ -194,7 +197,7 @@ Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender t
 
 1. Gebruik de volgende opdracht om de object-ID van de Azure Machine Learning-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
@@ -211,7 +214,7 @@ Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender t
 
 1. Als u de object-ID als Inzender wilt toevoegen aan uw abonnement, gebruikt u de volgende opdracht. Vervang door `<object-ID>` de object-id van de Service-Principal. Vervang door `<subscription-ID>` de naam of id van uw Azure-abonnement:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
@@ -227,7 +230,7 @@ Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender t
 
 1. Gebruik een van de volgende opdrachten om een sleutel te genereren in een bestaande Azure Key Vault. Vervang door `<keyvault-name>` de naam van de sleutel kluis. Vervang door `<key-name>` de naam die u wilt gebruiken voor de sleutel:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
@@ -244,7 +247,7 @@ __Gebruik de volgende opdrachten om een toegangs beleid toe te voegen aan de sle
 
 1. Gebruik de volgende opdracht om de object-ID van de Azure Cosmos DB-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
@@ -261,7 +264,7 @@ __Gebruik de volgende opdrachten om een toegangs beleid toe te voegen aan de sle
 
 1. Als u het beleid wilt instellen, gebruikt u de volgende opdracht. Vervang door `<keyvault-name>` de naam van de bestaande Azure Key Vault. Vervang door `<object-ID>` de GUID uit de vorige stap:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
@@ -278,7 +281,7 @@ __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resourc
 
 1. Als u de Key Vault-ID wilt ophalen, gebruikt u de volgende opdracht:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az keyvault show --name <keyvault-name> --query 'id' --output tsv
@@ -295,7 +298,7 @@ __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resourc
 
 1. Als u de waarde voor de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
@@ -319,7 +322,7 @@ Nadat u de bovenstaande stappen hebt voltooid, implementeert u uw sjabloon zoals
 * **cmk_keyvault** de `cmk_keyvault` waarde die in de vorige stappen is verkregen.
 * **resource_cmk_uri** de `resource_cmk_uri` waarde die in de vorige stappen is verkregen.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -374,12 +377,12 @@ Door de `vnetOption` parameter waarde in te stellen op `new` of `existing` , kun
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Alleen werk ruimte implementeren achter een persoonlijk eind punt
 
-Als uw gekoppelde resources zich niet achter een virtueel netwerk bevinden, kunt u de **privateEndpointType** -para meter instellen op `AutoAproval` of `ManualApproval` de werk ruimte implementeren achter een persoonlijk eind punt.
+Als uw gekoppelde resources zich niet achter een virtueel netwerk bevinden, kunt u de **privateEndpointType** -para meter instellen op `AutoAproval` of `ManualApproval` de werk ruimte implementeren achter een persoonlijk eind punt. Dit kan worden gedaan voor zowel nieuwe als bestaande werk ruimten. Wanneer u een bestaande werk ruimte bijwerkt, vult u de sjabloon parameters in met de informatie van de bestaande werk ruimte.
 
 > [!IMPORTANT]
 > De implementatie is alleen geldig in regio's die persoonlijke eind punten ondersteunen.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -409,7 +412,7 @@ New-AzResourceGroupDeployment `
 
 Als u een bron achter een nieuw virtueel netwerk wilt implementeren, stelt u de **vnetOption** in op **Nieuw** samen met de instellingen van het virtuele netwerk voor de betreffende resource. In de onderstaande implementatie ziet u hoe u een werk ruimte implementeert met de opslag account bron achter een nieuw virtueel netwerk.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -443,7 +446,7 @@ New-AzResourceGroupDeployment `
 
 U kunt ook meerdere of alle afhankelijke resources achter een virtueel netwerk implementeren.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -530,7 +533,7 @@ Als u een werk ruimte wilt implementeren met bestaande gekoppelde resources, moe
 
 1. Schakel service-eind punten in voor de resources.
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.Storage"
@@ -550,7 +553,7 @@ Als u een werk ruimte wilt implementeren met bestaande gekoppelde resources, moe
 
 1. De werk ruimte implementeren
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
     ```azurecli
     az deployment group create \
@@ -753,3 +756,4 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
 * [Resources implementeren met Resource Manager-sjablonen en Resource Manager-rest API](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-resource groepen maken en implementeren via Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
+* [Raadpleeg de opslag plaats voor Azure Quick Start-sjablonen voor andere sjablonen die betrekking hebben op Azure Machine Learning.](https://github.com/Azure/azure-quickstart-templates)

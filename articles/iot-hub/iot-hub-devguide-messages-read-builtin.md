@@ -8,13 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: amqp
-ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327698"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
 
@@ -23,7 +25,7 @@ Standaard worden berichten gerouteerd naar het ingebouwde service-Facing-eind pu
 | Eigenschap            | Beschrijving |
 | ------------------- | ----------- |
 | **Aantal partities** | Stel deze eigenschap in op maken om het aantal [partities](../event-hubs/event-hubs-features.md#partitions) voor apparaat-naar-Cloud-gebeurtenis opname te definiëren. |
-| **Bewaar tijd**  | Met deze eigenschap geeft u op hoe lang in dagen berichten worden bewaard door IoT Hub. De standaard waarde is één dag, maar kan tot zeven dagen worden verhoogd. |
+| **Retentietijd**  | Met deze eigenschap geeft u op hoe lang in dagen berichten worden bewaard door IoT Hub. De standaard waarde is één dag, maar kan tot zeven dagen worden verhoogd. |
 
 Met IoT Hub is het bewaren van gegevens in de ingebouwde Event Hubs een maximum van 7 dagen toegestaan. U kunt de Bewaar periode instellen tijdens het maken van uw IoT Hub. De Bewaar tijd voor gegevens in IoT Hub is afhankelijk van uw IoT hub-laag en eenheids type. In het geval van grootte kan de ingebouwde Event Hubs berichten van de maximale bericht grootte bewaren tot ten minste 24 uur aan quotum. Bijvoorbeeld: voor 1 S1-eenheid IoT Hub voldoende opslag ruimte om ten minste 400K berichten van elke 4.000 grootte te bewaren. Als uw apparaten kleinere berichten verzenden, kunnen ze langer worden bewaard (Maxi maal 7 dagen), afhankelijk van de hoeveelheid opslag ruimte die wordt verbruikt. We garanderen dat de gegevens voor de opgegeven Bewaar tijd mini maal worden bewaard. Berichten verlopen en zijn niet toegankelijk nadat de Bewaar periode is verstreken. 
 
@@ -41,7 +43,7 @@ Sommige product integraties en Event Hubs Sdk's zijn op de hoogte van IoT Hub en
 
 Wanneer u Event Hubs Sdk's of product integraties gebruikt die niet op de hoogte zijn van IoT Hub, hebt u een event hub-compatibel eind punt en Event hub-compatibele naam nodig. U kunt deze waarden als volgt ophalen uit de portal:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
 
 2. Klik op **ingebouwde eind punten**.
 
@@ -51,7 +53,7 @@ Wanneer u Event Hubs Sdk's of product integraties gebruikt die niet op de hoogte
 
 In de portal bevat het veld met de Event hub-compatibel eind punt een volledig Event Hubs connection string dat er als volgt uitziet: **eind punt = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Als de SDK die u gebruikt andere waarden vereist, dan zou het volgende zijn:
 
-| Name | Waarde |
+| Naam | Waarde |
 | ---- | ----- |
 | Eindpunt | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostnaam | abcd1234namespace.servicebus.windows.net |

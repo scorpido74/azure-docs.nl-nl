@@ -3,14 +3,15 @@ title: Controleren van Java-toepassingen die on-premises worden uitgevoerd-Azure
 description: Bewaking van toepassings prestaties voor Java-toepassingen die on-premises worden uitgevoerd zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 author: MS-jgol
+ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: 6c083e24ce44272ef9394b8418d3dc66771ceb8a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2d35a6f379b0d7cf3c4c7d61e5e679553e5302f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014266"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326882"
 ---
 # <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen op locatie on-premises-Azure Monitor Application Insights-open bare preview
 

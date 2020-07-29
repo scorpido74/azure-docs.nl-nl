@@ -5,18 +5,19 @@ description: Meer informatie over het maken van Azure Machine Learning gegevens 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031147"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326389"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -53,7 +54,7 @@ De belangrijkste factor is hoe groot de gegevensset in het geheugen is, d.w.z. a
  
 Als u gebruikmaakt van Pandas, is er geen reden om meer dan 1 vCPU te hebben, want dat is alles. U kunt eenvoudig parallelliseren aan veel Vcpu's op één Azure Machine Learning Reken instantie/knoop punt via modi en Dask/Ray, en zo nodig uitschalen naar een groot cluster door eenvoudigweg `import pandas as pd` te wijzigen in `import modin.pandas as pd` . 
  
-Als u een groot aantal virtuele gegevens niet kunt verkrijgen, hebt u twee opties: gebruik een framework zoals Spark of Dask om de verwerking van de gegevens uit het geheugen te vervolledigen, d.w.z. de data frame wordt geladen in de RAM-partitie per partitie en verwerkt, waarbij het uiteindelijke resultaat aan het einde wordt verzameld. Als dit te langzaam is, kunt u met Spark of Dask uitschalen naar een cluster dat nog steeds interactief kan worden gebruikt. 
+Als u een groot aantal virtuele machines niet kunt verkrijgen voor de gegevens, hebt u twee opties: gebruik een framework zoals Spark of Dask om de verwerking van de gegevens uit het geheugen te vervolledigen, d.w.z. de data frame wordt in de RAM-partitie geladen door de partitie en verwerkt, waarbij het uiteindelijke resultaat aan het einde wordt verzameld. Als dit te langzaam is, kunt u met Spark of Dask uitschalen naar een cluster dat nog steeds interactief kan worden gebruikt. 
 
 ## <a name="dataset-types"></a>Typen gegevenssets
 
@@ -82,7 +83,7 @@ Gegevens sets maken op basis van een [Azure-gegevens opslag](how-to-access-data.
 
 #### <a name="create-a-tabulardataset"></a>Een TabularDataset maken
 
-Gebruik de [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) methode in de `TabularDatasetFactory` klasse om bestanden te lezen in de CSV-of. TSV-indeling en om een niet-geregistreerde TabularDataset te maken. Als u een lees bewerking uitvoert van meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave. 
+Gebruik de [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) methode in de `TabularDatasetFactory` klasse om bestanden te lezen in de CSV-of. TSV-indeling en om een niet-geregistreerde TabularDataset te maken. Als u een lees bewerking uitvoert van meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave. 
 
 Met de volgende code wordt de bestaande werk ruimte en de gewenste gegevens opslag op naam opgehaald. En vervolgens worden de gegevens opslag en bestands locaties door gegeven aan de `path` para meter om een nieuwe TabularDataset te maken `weather_ds` .
 

@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 56438389ea8a371335facd3cfd0b2d4161b421c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014135"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326559"
 ---
 # <a name="connection-strings"></a>Verbindingsreeksen
 
@@ -57,7 +57,7 @@ De verbinding heeft een maximale ondersteunde lengte van 4096 tekens.
 
 De verbindings reeks bestaat uit een lijst met instellingen die worden weer gegeven als sleutel-waardeparen, gescheiden door punt komma's:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>Syntaxis
 
 - `InstrumentationKey`(bijvoorbeeld: 00000000-0000-0000-0000-000000000000)  Het connection string is een **verplicht** veld.
 - `Authorization`(bijvoorbeeld: Ikey) (Deze instelling is optioneel, omdat we alleen iKey-autorisatie ondersteunen.)
@@ -274,14 +274,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Gebruik tijdens runtime:
 
-* [Met IIS gehoste apps in Azure-VM en virtuele-machineschaalset van Azure](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS-server](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
+* [Met IIS gehoste apps in Azure-VM en virtuele-machineschaalset van Azure](./azure-vm-vmss-apps.md)
+* [IIS-server](./monitor-performance-live-website-now.md)
+* [Azure Web Apps](./azure-web-apps.md)
 
 Gebruik tijdens het ontwikkelen:
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

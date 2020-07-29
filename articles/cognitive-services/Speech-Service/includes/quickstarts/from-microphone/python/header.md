@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een microfoon-Speech-Service'
+title: 'Quickstart: Spraak herkennen vanaf een microfoon - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 17bc5c6a76a270cac611ed2342ffe9e38d84bd7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: f6ea9ea3209e84d365706207db079a400fb7cb6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75467480"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544997"
 ---
-Als u liever meteen aan de slag gaat, kunt u alle voor <a href="https://aka.ms/speech/github-python">beelden van Speech SDK python</a> bekijken of downloaden op github. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-python">Python-voorbeelden van de Speech SDK</a> op GitHub bekijken of downloaden. 

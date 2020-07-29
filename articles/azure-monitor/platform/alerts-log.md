@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 57cc3624a38fbec1e5bef7bb281363d34acef2b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 25604bde3afbbef0d541bc21996b59e98b3090f4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505598"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327494"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
@@ -77,8 +77,8 @@ De term **logboek waarschuwing** bevat waarschuwingen waarbij een logboek query 
 1. Kies hoe vaak de waarschuwing wordt uitgevoerd in **frequentie**. 
 
     **Logboek waarschuwingen** kunnen worden gebaseerd op:
-    - [Aantal records](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): er wordt een waarschuwing gemaakt als het aantal records dat door de query wordt geretourneerd, groter is dan of kleiner is dan de opgegeven waarde.
-    - [Metrische meting](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): er wordt een waarschuwing gemaakt als elke *cumulatieve waarde* in de resultaten de opgegeven drempel waarde overschrijdt en wordt *gegroepeerd op basis van* de gekozen waarde. Het aantal schendingen voor een waarschuwing is het aantal keren dat de drempel waarde wordt overschreden in de gekozen tijds periode. U kunt het totale aantal schendingen opgeven voor elke combi natie van inbreuken in de resultatenset of opeenvolgende inbreuken om te vereisen dat de schendingen in opeenvolgende steek proeven moeten plaatsvinden.
+    - [Aantal records](./alerts-unified-log.md#number-of-results-alert-rules): er wordt een waarschuwing gemaakt als het aantal records dat door de query wordt geretourneerd, groter is dan of kleiner is dan de opgegeven waarde.
+    - [Metrische meting](./alerts-unified-log.md#metric-measurement-alert-rules): er wordt een waarschuwing gemaakt als elke *cumulatieve waarde* in de resultaten de opgegeven drempel waarde overschrijdt en wordt *gegroepeerd op basis van* de gekozen waarde. Het aantal schendingen voor een waarschuwing is het aantal keren dat de drempel waarde wordt overschreden in de gekozen tijds periode. U kunt het totale aantal schendingen opgeven voor elke combi natie van inbreuken in de resultatenset of opeenvolgende inbreuken om te vereisen dat de schendingen in opeenvolgende steek proeven moeten plaatsvinden.
 
 
 1. Klik op **Gereed**. 
@@ -100,7 +100,7 @@ De term **logboek waarschuwing** bevat waarschuwingen waarbij een logboek query 
     Er is aanvullende functionaliteit beschikbaar om de standaard acties te overschrijven:
 
     - **E-mail melding**: onderdrukt het onderwerp van de *e-mail* in het e-mail bericht dat is verzonden via de actie groep. U kunt de hoofd tekst van de e-mail niet wijzigen en dit veld is **niet** voor e-mail adres.
-    - **Aangepaste JSON-nettolading toevoegen**: overschrijft de JSON van de webhook die wordt gebruikt door actie groepen, ervan uitgaande dat de actie groep een type webhook bevat. Zie [webhook-actie voor logboek waarschuwingen](../../azure-monitor/platform/alerts-log-webhook.md)voor meer informatie over de indeling van webhooks. U kunt de optie webhook weer geven gebruiken om de indeling te controleren met behulp van JSON-voorbeeld gegevens.
+    - **Aangepaste JSON-nettolading toevoegen**: overschrijft de JSON van de webhook die wordt gebruikt door actie groepen, ervan uitgaande dat de actie groep een type webhook bevat. Zie [webhook-actie voor logboek waarschuwingen](./alerts-log-webhook.md)voor meer informatie over de indeling van webhooks. U kunt de optie webhook weer geven gebruiken om de indeling te controleren met behulp van JSON-voorbeeld gegevens.
 
         ![Actie onderdrukkingen voor waarschuwingen in Logboeken](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -212,7 +212,7 @@ De bovenstaande voorbeeld JSON kan worden opgeslagen als (zeg) sampleScheduledQu
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Logboek waarschuwing met een query tussen meerdere resources met behulp van een Azure-resource sjabloon
 
-Hieronder ziet u de structuur voor het maken van een resource sjabloon op basis van een [geplande query regel](/rest/api/monitor/scheduledqueryrules/createorupdate) met behulp van een logboek registratie voor het vastleggen van gegevens in [Logboeken](../../azure-monitor/log-query/cross-workspace-query.md) van het [metrische meet type](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), waarbij een voor beeld van gegevensset als variabelen is ingesteld.
+Hieronder ziet u de structuur voor het maken van een resource sjabloon op basis van een [geplande query regel](/rest/api/monitor/scheduledqueryrules/createorupdate) met behulp van een logboek registratie voor het vastleggen van gegevens in [Logboeken](../log-query/cross-workspace-query.md) van het [metrische meet type](./alerts-unified-log.md#metric-measurement-alert-rules), waarbij een voor beeld van gegevensset als variabelen is ingesteld.
 
 ```json
 
@@ -319,7 +319,7 @@ Azure Monitor- [geplande query regels-API](/rest/api/monitor/scheduledqueryrules
 - [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee actie parameters voor een logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) en [set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) .
 - [New-AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee actie groepen para meters voor een logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) .
 - [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee trigger voorwaarde parameters voor de logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) .
-- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : Power shell-cmdlet voor het maken of bijwerken van een object waarvoor metrische trigger voorwaarde parameters worden opgegeven voor de waarschuwing voor het [meting type van metrische](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)gegevens. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
+- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : Power shell-cmdlet voor het maken of bijwerken van een object waarvoor metrische trigger voorwaarde parameters worden opgegeven voor de waarschuwing voor het [meting type van metrische](./alerts-unified-log.md#metric-measurement-alert-rules)gegevens. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
 - [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) : Power shell-cmdlet voor het weer geven van de bestaande logboek waarschuwings regels of een specifieke waarschuwings regel voor het logboek
 - [Update-AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) : Power shell-cmdlet voor het in-of uitschakelen van de waarschuwings regel voor logboek registratie
 - [Remove-AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule): Power shell-cmdlet voor het verwijderen van een bestaande waarschuwings regel voor het logboek
@@ -363,7 +363,8 @@ Bij een geslaagde bewerking wordt 201 geretourneerd naar een status nieuwe waars
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [logboek waarschuwingen in azure-waarschuwingen](../../azure-monitor/platform/alerts-unified-log.md)
-* Informatie [over webhook-acties voor logboek waarschuwingen](../../azure-monitor/platform/alerts-log-webhook.md)
+* Meer informatie over [logboek waarschuwingen in azure-waarschuwingen](./alerts-unified-log.md)
+* Informatie [over webhook-acties voor logboek waarschuwingen](./alerts-log-webhook.md)
 * Meer informatie over [Application Insights](../log-query/log-query-overview.md)
 * Meer informatie over [logboek query's](../log-query/log-query-overview.md).
+

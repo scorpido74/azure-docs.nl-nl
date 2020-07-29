@@ -4,12 +4,12 @@ description: Overzicht van waarschuwingen in Azure. Waarschuwingen, klassieke wa
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539564"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327120"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -52,11 +52,11 @@ Hieronder vindt u belang rijke kenmerken van een waarschuwings regel:
 - Ernst 3 = informatief
 - Ernst 4 = uitgebreid 
 
-**Actie**: een specifieke actie die wordt uitgevoerd wanneer de waarschuwing wordt geactiveerd. Zie [actie groepen](../../azure-monitor/platform/action-groups.md)voor meer informatie.
+**Actie**: een specifieke actie die wordt uitgevoerd wanneer de waarschuwing wordt geactiveerd. Zie [actie groepen](./action-groups.md)voor meer informatie.
 
 ## <a name="what-you-can-alert-on"></a>Wat u kunt waarschuwen voor
 
-U kunt een waarschuwing ontvangen over metrische gegevens en Logboeken, zoals beschreven bij het [bewaken van data bronnen](../../azure-monitor/platform/data-sources.md). Deze omvatten, maar zijn niet beperkt tot:
+U kunt een waarschuwing ontvangen over metrische gegevens en Logboeken, zoals beschreven bij het [bewaken van data bronnen](./data-sources.md). Deze omvatten, maar zijn niet beperkt tot:
 
 - Metrische waarden
 - Query's voor zoeken in logboeken
@@ -68,8 +68,8 @@ Voorheen hadden Azure Monitor meet gegevens, Application Insights, Log Analytics
 
 | **Bron bewaken** | **Signaal type**  | **Beschrijving** |
 |-------------|----------------|-------------|
-| Status van service | Activiteitenlogboek  | Wordt niet ondersteund. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
-| Application Insights | Tests voor Internet beschikbaarheid | Wordt niet ondersteund. Zie [waarschuwingen voor webtests](../../azure-monitor/app/monitor-web-app-availability.md). Beschikbaar voor alle websites die zijn instrumenteel om gegevens naar Application Insights te verzenden. Ontvang een melding wanneer de beschik baarheid of reactie tijd van een website onder de verwachtingen ligt. |
+| Status van service | Activiteitenlogboek  | Niet ondersteund. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
+| Application Insights | Tests voor Internet beschikbaarheid | Niet ondersteund. Zie [waarschuwingen voor webtests](../app/monitor-web-app-availability.md). Beschikbaar voor alle websites die zijn instrumenteel om gegevens naar Application Insights te verzenden. Ontvang een melding wanneer de beschik baarheid of reactie tijd van een website onder de verwachtingen ligt. |
 
 ## <a name="manage-alerts"></a>Waarschuwingen beheren
 U kunt de status van een waarschuwing instellen om op te geven waar deze zich in het oplossings proces bevindt. Wanneer aan de criteria die zijn opgegeven in de waarschuwings regel wordt voldaan, wordt er een waarschuwing gemaakt of geactiveerd en is de status *Nieuw*. U kunt de status wijzigen wanneer u een waarschuwing bevestigt en wanneer u deze sluit. Alle status wijzigingen worden opgeslagen in de geschiedenis van de waarschuwing.
@@ -137,9 +137,9 @@ U kunt als volgt een nieuwe waarschuwings regel maken:
  
 Voor dit vereenvoudigde ontwerp proces hoeft u niet langer de bewakings bron of signalen te weten die worden ondersteund voordat u een Azure-resource selecteert. De lijst met beschik bare signalen wordt automatisch gefilterd op basis van de doel resource die u selecteert. Op basis van dat doel wordt u begeleid door de logica van de waarschuwings regel automatisch te definiëren.  
 
-Meer informatie over het maken van waarschuwings regels vindt u in [waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](../../azure-monitor/platform/alerts-metric.md).
+Meer informatie over het maken van waarschuwings regels vindt u in [waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](./alerts-metric.md).
 
-Er zijn waarschuwingen beschikbaar in verschillende Azure-bewakings Services. Zie [Azure-toepassingen en-resources bewaken](../../azure-monitor/overview.md)voor meer informatie over hoe en wanneer elk van deze services moet worden gebruikt. 
+Er zijn waarschuwingen beschikbaar in verschillende Azure-bewakings Services. Zie [Azure-toepassingen en-resources bewaken](../overview.md)voor meer informatie over hoe en wanneer elk van deze services moet worden gebruikt. 
 
 
 ## <a name="all-alerts-page"></a>Pagina alle waarschuwingen 
@@ -155,7 +155,7 @@ U kunt de weer gave filteren door de volgende waarden te selecteren in de vervol
 | Resourcegroep | Selecteer één resource groep. In de weer gave zijn alleen waarschuwingen met doelen in de geselecteerde resource groep opgenomen. |
 | Resourcetype | Selecteer een of meer resource typen. Alleen waarschuwingen met doelen van het geselecteerde type worden opgenomen in de weer gave. Deze kolom is alleen beschikbaar nadat een resource groep is opgegeven. |
 | Resource | Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
-| Severity | Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
+| Ernst | Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
 | Bewakings voorwaarde | Selecteer een Bewaak voorwaarde of selecteer **Alles** om waarschuwingen van alle voor waarden op te stellen. |
 | Waarschuwingsstatus | Selecteer een waarschuwings status of selecteer **Alles** om waarschuwingen van alle statussen op te neemt. |
 | Service bewaken | Selecteer een service of selecteer **Alles** om alle services op te laten staan. Er worden alleen waarschuwingen opgenomen die zijn gemaakt door regels die gebruikmaken van de service als doel. |
@@ -208,7 +208,8 @@ Gebruik de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Meer informatie over slimme groepen](https://aka.ms/smart-groups)
-- [Meer informatie over actie groepen](../../azure-monitor/platform/action-groups.md)
+- [Meer informatie over actie groepen](./action-groups.md)
 - [Uw waarschuwings instanties in azure beheren](https://aka.ms/managing-alert-instances)
 - [Slimme groepen beheren](https://aka.ms/managing-smart-groups)
 - [Meer informatie over prijzen voor Azure-abonnementen](https://azure.microsoft.com/pricing/details/monitor/)
+

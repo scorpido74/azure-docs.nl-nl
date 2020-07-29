@@ -4,13 +4,14 @@ description: U moet de oudere Java-toepassingen die de Service Fabric Java SDK g
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327307"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Bestaande Java Service Fabric-toepassingen bijwerken voor het ophalen van Java-bibliotheken van Maven
 Service Fabric Java binaire bestanden zijn verplaatst van de Service Fabric Java SDK naar maven hosting. U kunt **mavencentral** gebruiken om de meest recente service Fabric Java-afhankelijkheden op te halen. Deze hand leiding helpt u bij het bijwerken van bestaande Java-toepassingen die zijn gemaakt voor de Service Fabric Java-SDK met behulp van een Yeoman-sjabloon of-eclips om compatibel te zijn met de op maven gebaseerde build.

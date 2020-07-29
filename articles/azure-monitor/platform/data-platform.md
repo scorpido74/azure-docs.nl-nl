@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515526"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325573"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
 
@@ -36,7 +36,7 @@ Azure-resources genereren een aanzienlijke hoeveelheid bewakings gegevens. Azure
 
 Metrische gegevens in Azure Monitor worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van tijdgebonden data. Dit maakt metrische gegevens bijzonder geschikt voor waarschuwingen en snelle detectie van problemen. Ze kunnen u vertellen hoe uw systeem wordt uitgevoerd, maar normaal gesp roken moet worden gecombineerd met Logboeken om de hoofd oorzaak van problemen te identificeren.
 
-Metrische gegevens zijn beschikbaar voor interactieve analyse in de Azure Portal met [Azure Metrics Explorer](../platform/metrics-getting-started.md). Ze kunnen worden toegevoegd aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens en worden gebruikt voor vrijwel real time- [waarschuwingen](alerts-metric.md).
+Metrische gegevens zijn beschikbaar voor interactieve analyse in de Azure Portal met [Azure Metrics Explorer](./metrics-getting-started.md). Ze kunnen worden toegevoegd aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens en worden gebruikt voor vrijwel real time- [waarschuwingen](alerts-metric.md).
 
 Lees meer over de metrische gegevens van Azure Monitor, inclusief de brongegevens in [metrieken in azure monitor](data-platform-metrics.md).
 
@@ -90,3 +90,4 @@ Naast het gebruik van de hulpprogram ma's in azure voor het analyseren van bewak
 - Meer informatie over [metrische gegevens vindt u in azure monitor](data-platform-metrics.md).
 - Lees meer over de [Logboeken in azure monitor](data-platform-logs.md).
 - Meer informatie over de [beschik bare bewakings gegevens](data-sources.md) voor verschillende bronnen in Azure.
+
