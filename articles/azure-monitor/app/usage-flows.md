@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963419"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309266"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analyseer gebruikers navigatie patronen met Gebruikersstromen in Application Insights
 
@@ -27,7 +27,7 @@ Het hulp programma Gebruikersstromen visualiseert hoe gebruikers navigeren tusse
 Het hulp programma Gebruikersstromen wordt gestart vanuit een initiële pagina weergave, aangepaste gebeurtenis of uitzonde ring die u opgeeft. Op basis van deze eerste gebeurtenis bevat Gebruikersstromen de gebeurtenissen die voor en na de gebruikers sessies hebben plaatsgevonden. Regels van de variërende dikte geven aan hoe vaak elk pad is gevolgd door gebruikers. De knoop punten voor het starten van speciale **sessies** laten zien waar de volgende knoop punten zijn begonnen met een sessie. Knoop punten bij het beëindigen van **sessies** laten zien hoeveel gebruikers geen pagina weergaven of aangepaste gebeurtenissen hebben verzonden na het voor gaande knoop punt, waarbij gebruikers waarschijnlijk uw site verlaten.
 
 > [!NOTE]
-> Uw Application Insights resource moet pagina weergaven of aangepaste gebeurtenissen bevatten voor het gebruik van het hulp programma Gebruikersstromen. [Meer informatie over het instellen van uw app voor het automatisch verzamelen van pagina weergaven met de Application Insights java script SDK](../../azure-monitor/app/javascript.md).
+> Uw Application Insights resource moet pagina weergaven of aangepaste gebeurtenissen bevatten voor het gebruik van het hulp programma Gebruikersstromen. [Meer informatie over het instellen van uw app voor het automatisch verzamelen van pagina weergaven met de Application Insights java script SDK](./javascript.md).
 >
 >
 
@@ -52,7 +52,7 @@ Als er pagina weergaven of aangepaste gebeurtenissen ontbreken die u verwacht te
 * Controleer de sectie **uitgesloten gebeurtenissen** in het menu **bewerken** .
 * Gebruik de plus knoppen op **andere** knoop punten om minder frequente gebeurtenissen in de visualisatie op te neemt.
 * Als de door u verwachte pagina weergave of aangepaste gebeurtenis niet regel matig wordt verzonden door gebruikers, probeert u het tijds bereik van de visualisatie in het menu **bewerken** te verg Roten.
-* Zorg ervoor dat de pagina weergave, aangepaste gebeurtenis of uitzonde ring die u verwacht, is ingesteld om te worden verzameld door de Application Insights SDK in de bron code van uw site. [Meer informatie over het verzamelen van aangepaste gebeurtenissen.](../../azure-monitor/app/api-custom-events-metrics.md)
+* Zorg ervoor dat de pagina weergave, aangepaste gebeurtenis of uitzonde ring die u verwacht, is ingesteld om te worden verzameld door de Application Insights SDK in de bron code van uw site. [Meer informatie over het verzamelen van aangepaste gebeurtenissen.](./api-custom-events-metrics.md)
 
 Als u meer stappen in de visualisatie wilt zien, gebruikt u de vervolg keuzelijst voor **gaande stappen** en **volgende stappen** boven de visualisatie.
 
@@ -92,4 +92,5 @@ Gebruik de opties **splitsen** op in het menu **bewerken** :
 * [Overzicht van gebruik](usage-overview.md)
 * [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)
 * [Bewaartermijn](usage-retention.md)
-* [Aangepaste gebeurtenissen toevoegen aan uw app](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Aangepaste gebeurtenissen toevoegen aan uw app](./api-custom-events-metrics.md)
+

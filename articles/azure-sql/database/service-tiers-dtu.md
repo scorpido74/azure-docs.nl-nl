@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539173"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281494"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 
 Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action units) voor individuele data bases en elastische data base Trans Action units (Edtu's) voor elastische Pools. Zie voor meer informatie over Dtu's en Edtu's [het op DTU gebaseerde aankoop model](purchasing-models.md#dtu-based-purchasing-model).
 
-|Basic|Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | Maximale opslag grootte | 2 GB | 1 TB | 4 TB  |
 | Maximum aantal Dtu's | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU-, opslag-en gegroepeerde database limieten voor elastische Pools
 
-| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximale opslag grootte per data base  | 2 GB | 1 TB | 1 TB |
 | Maximale opslag grootte per groep | 156 GB | 4 TB | 4 TB |

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900376"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284401"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
 
@@ -40,22 +41,22 @@ In dit artikel worden de richt lijnen van micro soft behandeld voor beheerders m
 
 Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u vertrouwd raken met de ondersteunde scenario's. In de onderstaande tabel ziet u welke inrichtings scenario's worden ondersteund. Het inrichten in deze context impliceert dat een beheerder apparaat-id's op schaal kan configureren zonder dat hiervoor interactie van de eind gebruiker is vereist.
 
-| Type apparaat-id | Identiteits infrastructuur | Windows-apparaten | VDI-platform versie | Ondersteund |
+| Type apparaat-id | Id-infrastructuur | Windows-apparaten | VDI-platform versie | Ondersteund |
 | --- | --- | --- | --- | --- |
-| Hybride Azure AD-deelname | Federatie | Windows huidige * * * en Windows down level * * * * | Permanent | Yes |
-|   |   | Windows actueel | Niet-persistent | No |
-|   |   | Downlevel Windows | Niet-persistent | Yes |
-|   | Beheerd * * | Windows huidige en Windows down level | Permanent | Yes |
-|   |   | Windows actueel | Niet-persistent | No |
-|   |   | Downlevel Windows | Niet-persistent | Yes |
-| Azure AD-deelname | Federatief | Windows actueel | Permanent | No |
-|   |   |   | Niet-persistent | No |
-|   | Beheerd | Windows actueel | Permanent | No |
-|   |   |   | Niet-persistent | No |
-| Azure AD-geregistreerd | Federatief | Windows actueel | Permanent | No |
-|   |   |   | Niet-persistent | No |
-|   | Beheerd | Windows actueel | Permanent | No |
-|   |   |   | Niet-persistent | No |
+| Hybride Azure AD-deelname | Federatie | Windows huidige * * * en Windows down level * * * * | Permanent | Ja |
+|   |   | Windows actueel | Niet-persistent | Nee |
+|   |   | Downlevel Windows | Niet-persistent | Ja |
+|   | Beheerd * * | Windows huidige en Windows down level | Permanent | Ja |
+|   |   | Windows actueel | Niet-persistent | Nee |
+|   |   | Downlevel Windows | Niet-persistent | Ja |
+| Azure AD-deelname | Federatief | Windows actueel | Permanent | Nee |
+|   |   |   | Niet-persistent | Nee |
+|   | Beheerd | Windows actueel | Permanent | Nee |
+|   |   |   | Niet-persistent | Nee |
+| Azure AD-geregistreerd | Federatief | Windows actueel | Permanent | Niet van toepassing |
+|   |   |   | Niet-persistent | Nee |
+|   | Beheerd | Windows actueel | Permanent | Niet van toepassing |
+|   |   |   | Niet-persistent | Nee |
 
 \*Een **federatieve** infra structuur voor identiteiten vertegenwoordigt een omgeving met een id-provider, zoals AD FS of een andere IDP van derden.
 

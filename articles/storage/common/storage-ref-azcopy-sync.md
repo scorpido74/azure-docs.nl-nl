@@ -4,15 +4,16 @@ description: In dit artikel vindt u Naslag informatie voor de azcopy-synchronisa
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221062"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285200"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -32,14 +33,14 @@ De synchronisatie opdracht wijkt af van de Kopieer opdracht op verschillende man
 
 1. Standaard is de recursieve vlag ingesteld op True en worden alle submappen gekopieerd met Sync. Met Sync worden alleen de bestanden op het hoogste niveau in een Directory gekopieerd als de recursieve vlag is ingesteld op false.
 2. Wanneer u synchroniseert tussen virtuele mappen, voegt u een slash toe aan het pad (Zie voor beelden) als er een blob is met dezelfde naam als een van de virtuele mappen.
-3. Als de vlag ' deleteDestination ' is ingesteld op ' True ' of ' prompt ', worden de bestanden en blobs die niet aanwezig zijn in de bron, door synchronisatie verwijderd.
+3. Als de `deleteDestination` vlag is ingesteld op True of prompt, worden de bestanden en blobs die niet aanwezig zijn in de bron, door synchronisatie verwijderd.
 
 ## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>Geavanceerd
 
@@ -65,16 +66,13 @@ Eén bestand synchroniseren:
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-> [!NOTE]
-> De doel-BLOB *moet* bestaan. Gebruiken `azcopy copy` om één bestand te kopiëren dat nog niet in het doel bestaat. Anders wordt de volgende fout weer gegeven: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container` .
-
-Hetzelfde als hierboven, maar deze keer ook de MD5-hash van de bestands inhoud en sla deze op als de eigenschap content-MD5 van de blob:
+Hetzelfde als hierboven, maar ook een MD5-hash van de bestands inhoud te berekenen en vervolgens die MD5-hash op te slaan als de MD5-eigenschap van de blob. 
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-Een volledige directory met inbegrip van de submappen synchroniseren (Houd er rekening mee dat recursieve standaard is ingeschakeld):
+Een volledige directory met inbegrip van de submappen synchroniseren (Houd er rekening mee dat recursief standaard is ingeschakeld):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -86,22 +84,22 @@ of
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-Alleen de bovenste bestanden in een map, maar niet de submappen, synchroniseren:
+Alleen bestanden in een map synchroniseren, maar niet de submappen of de bestanden in submappen:
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Synchroniseer een subset van bestanden in een map (bijvoorbeeld: alleen jpg-en PDF-bestanden, of als de bestands naam "exacte") is:
+Een subset van bestanden in een map synchroniseren (bijvoorbeeld: alleen jpg-en PDF-bestanden of als de bestands naam `exactName` ):
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-Een volledige Directory synchroniseren, maar bepaalde bestanden uitsluiten van het bereik (bijvoorbeeld: elk bestand dat begint met foo of eindigt op de balk):
+Een volledige map synchroniseren, maar bepaalde bestanden uitsluiten van het bereik (bijvoorbeeld: elk bestand dat begint met foo of eindigt op de balk):
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude-pattern="foo*;*bar"
 ```
 
 Eén BLOB synchroniseren:
@@ -133,33 +131,35 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options"></a>Opties
 
-**--block-size-MB** float gebruik deze blok grootte (opgegeven in MIB) bij het uploaden naar Azure Storage of het downloaden van Azure Storage. De standaard waarde wordt automatisch berekend op basis van de bestands grootte. Decimale breuken zijn toegestaan (bijvoorbeeld: 0,25).
+**--block-size-MB** float gebruik deze blok grootte (opgegeven in MIB) bij het uploaden naar Azure Storage of het downloaden van Azure Storage. De standaard waarde wordt automatisch berekend op basis van de bestands grootte. Decimale breuken zijn toegestaan (bijvoorbeeld: `0.25` ).
 
-**--Check-MD5** teken reeks geeft aan hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden. Deze optie is alleen beschikbaar wanneer u downloadt. Beschik bare waarden zijn: nacontroleren, aanmelden, FailIfDifferent, FailIfDifferentOrMissing. (standaard ' FailIfDifferent '). (standaard "FailIfDifferent")
+**--Check-MD5** teken reeks geeft aan hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden. Deze optie is alleen beschikbaar wanneer u downloadt. Beschik bare waarden zijn: `NoCheck` , `LogOnly` , `FailIfDifferent` , `FailIfDifferentOrMissing` . (standaard `FailIfDifferent` ). (standaard `FailIfDifferent` )
 
-**--Delete-doel** teken reeks bepaalt of extra bestanden van de doel locatie die niet aanwezig zijn op de bron worden verwijderd. Kan worden ingesteld op True, False of prompt. Als deze instelling is ingesteld op vragen, wordt de gebruiker gevraagd een vraag te stellen voordat bestanden en blobs voor verwijdering worden gepland. (standaard ' false '). (standaard ingesteld op ' false ')
+**--Delete-doel** teken reeks bepaalt of extra bestanden van de doel locatie die niet aanwezig zijn op de bron worden verwijderd. Kan worden ingesteld op `true` , `false` of `prompt` . Als deze is ingesteld op `prompt` , wordt de gebruiker gevraagd om een vraag voordat bestanden en blobs voor verwijdering worden gepland. (standaard `false` ). (standaard `false` )
 
-**--exclude-kenmerken** teken reeks (alleen Windows) bestanden uitsluiten waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
+**--exclude-kenmerken** teken reeks (alleen Windows) Hiermee worden bestanden uitgesloten waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: `A;S;R`
 
-**--exclude-** teken reeks van het pad deze paden uitsluiten bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file.pdf). Bij gebruik in combi natie met account-traversal bevatten paden geen container naam.
+**--exclude-** teken reeks van het pad deze paden uitsluiten bij het vergelijken van de bron op basis van de bestemming. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: `myFolder;myFolder/subDirName/file.pdf` ).
 
-**--exclude-patroon** teken reeks bestanden uitsluiten waarbij de naam overeenkomt met de patroon lijst. Bijvoorbeeld: \* . jpg; \* . PDF; exactenaam
+**--exclude-patroon** teken reeks bestanden uitsluiten waarbij de naam overeenkomt met de patroon lijst. Bijvoorbeeld: `*.jpg;*.pdf;exactName`
 
-**-h,--Help** Help voor synchronisatie
+**--Help** Help voor synchronisatie.
 
-**--include-** kenmerk reeks (alleen Windows) bevatten alleen bestanden waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
+**--include-** kenmerk reeks (alleen Windows) bevat alleen bestanden waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: `A;S;R`
 
-**--include-patroon** teken reeks alleen bestanden opnemen waarvan de naam overeenkomt met de patroon lijst. Bijvoorbeeld: \* . jpg; \* . PDF; exactenaam
+**--include-patroon** teken reeks alleen bestanden opnemen waarvan de naam overeenkomt met de patroon lijst. Bijvoorbeeld: `*.jpg;*.pdf;exactName`
 
-**--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: info (alle aanvragen en antwoorden), waarschuwing (trage reacties), fout (alleen mislukte aanvragen) en geen (geen uitvoer Logboeken). (standaard INFO). (standaard INFO)
+**--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: `INFO` (alle aanvragen en antwoorden), `WARNING` (trage reacties), `ERROR` (alleen mislukte aanvragen) en `NONE` (geen uitvoer Logboeken). (standaard `INFO` ). 
 
-**--put-MD5**                     Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
+**--put-MD5**     Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
 
-**--recursief**                   In de meeste gevallen wordt standaard in submappen gezocht bij het synchroniseren tussen directory's. (standaard instelling waar). (standaard instelling waar)
+**--recursief** `True` Standaard wordt recursief in submappen weer geven bij het synchroniseren tussen directory's.     (standaard `True` ). 
+
+**--S2S-pres Erve-Access-tier**  De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Description|
+|Optie|Beschrijving|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|

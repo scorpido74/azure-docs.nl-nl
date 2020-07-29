@@ -2,15 +2,15 @@
 title: Benchmark scores berekenen voor virtuele machines van Azure Linux
 description: Vergelijkende scores voor de berekening van coopmerkingen vergelijken voor Azure-Vm's waarop Linux wordt uitgevoerd.
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: afe1bddd5822b506dcf2c177fc308b717ddc2129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580443"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373416"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Benchmark scores berekenen voor virtuele Linux-machines
 De volgende coopmerkingen-benchmark scores tonen reken prestaties voor de hoge prestaties van de VM-reeks van Azure waarop Ubuntu wordt uitgevoerd. Er zijn ook Compute-benchmark scores beschikbaar voor [virtuele Windows-machines](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

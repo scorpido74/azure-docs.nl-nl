@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536620"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281018"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
@@ -26,7 +26,7 @@ Zorg ervoor dat u [FarmBeats hebt geïnstalleerd](https://aka.ms/farmbeatsinstal
 
 Als u wilt beginnen met het ophalen van weer gegevens op uw FarmBeats-Datahub:
 
-1. Ga naar uw FarmBeats Datahub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger).
+1. Ga naar uw FarmBeats Datahub Swagger `https://farmbeatswebsite-api.azurewebsites.net/swagger` .
 
 2. Ga naar de/partner-API en maak een POST-aanvraag. Gebruik de volgende invoer lading:
 
@@ -222,8 +222,8 @@ In het vorige voor beeld toont het antwoord gegevens voor twee tijds tempels. He
 |    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    SKU-ID van Azure Batch node-agent. Op dit moment wordt alleen de batch-knooppunt agent batch. node. Ubuntu 18,04 ondersteund.    |
 | DockerDetails - partnerCredentials | Referenties voor het aanroepen van de partner-API in docker. De partner verstrekt deze informatie op basis van het ondersteunde autorisatie mechanisme; bijvoorbeeld gebruikers naam en wacht woord, of API-sleutels. |
 | partnerType | "Weer". Andere partner typen in FarmBeats zijn "sensor" en "installatie kopie".  |
-|  naam   |   Gewenste naam van de partner in het FarmBeats systeem.   |
-|  description |  Beschrijving   |
+|  name   |   Gewenste naam van de partner in het FarmBeats systeem.   |
+|  beschrijving |  Beschrijving   |
 
 ## <a name="next-steps"></a>Volgende stappen
 

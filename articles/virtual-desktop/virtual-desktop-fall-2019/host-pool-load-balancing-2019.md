@@ -1,6 +1,6 @@
 ---
-title: Taak verdeling van hostgroep voor Windows Virtual Desktop (najaar 2019)-Azure
-description: Meer informatie over methoden voor het verdelen van de hostgroep voor een Windows-omgeving met een virtueel bureau blad (een versie van 2019).
+title: Virtuele Windows-bureau blad (klassieke) hostgroep taak verdeling-Azure
+description: Methoden voor het verdelen van de hostgroep voor een virtueel-bureaublad omgeving van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284996"
 ---
-# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Methoden voor taak verdeling van hostgroep (najaar 2019 versie)
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Taakverdelings methoden van hostgroep in Windows virtueel bureau blad (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../host-pool-load-balancing.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../host-pool-load-balancing.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Virtueel bureau blad van Windows ondersteunt twee methoden voor taak verdeling. Elke methode bepaalt welke sessie-host als host fungeert voor de sessie van een gebruiker wanneer deze verbinding maakt met een bron in een hostgroep.
 

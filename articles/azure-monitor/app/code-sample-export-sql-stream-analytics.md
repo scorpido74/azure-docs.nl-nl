@@ -3,12 +3,12 @@ title: Exporteren naar SQL vanuit Azure-toepassing Insights | Microsoft Docs
 description: Application Insights gegevens doorlopend naar SQL exporteren met behulp van Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540091"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311225"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met behulp van Stream Analytics
 In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar Azure SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -24,9 +24,9 @@ In dit voor beeld gebruiken we de pagina weergave gegevens, maar hetzelfde patro
 ## <a name="add-application-insights-to-your-application"></a>Application Insights toevoegen aan uw toepassing
 Aan de slag:
 
-1. [Application Insights instellen voor uw webpagina's](../../azure-monitor/app/javascript.md). 
+1. [Application Insights instellen voor uw webpagina's](./javascript.md). 
    
-    (In dit voor beeld richten we zich op het verwerken van pagina weergave gegevens van de client browsers, maar u kunt ook Application Insights instellen voor de server zijde van uw [Java](../../azure-monitor/app/java-get-started.md) -of [ASP.net](../../azure-monitor/app/asp-net.md) -app, en proces aanvraag, afhankelijkheid en andere server-telemetrie.)
+    (In dit voor beeld richten we zich op het verwerken van pagina weergave gegevens van de client browsers, maar u kunt ook Application Insights instellen voor de server zijde van uw [Java](./java-get-started.md) -of [ASP.net](./asp-net.md) -app, en proces aanvraag, afhankelijkheid en andere server-telemetrie.)
 2. Uw app publiceren en telemetrie-gegevens bekijken die worden weer gegeven in uw Application Insights-resource.
 
 ## <a name="create-storage-in-azure"></a>Opslag maken in azure
@@ -61,7 +61,7 @@ Doorlopend exporteren voert altijd gegevens uit naar een Azure Storage-account, 
     ![Gebeurtenis typen kiezen](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Laat sommige gegevens samen voegen. U kunt de toepassing een tijdje gebruiken. Telemetrie is beschikbaar in en u ziet statistische grafieken in [metrische Explorer](../../azure-monitor/platform/metrics-charts.md) en afzonderlijke gebeurtenissen in [Diagnostische Zoek opdrachten](../../azure-monitor/app/diagnostic-search.md). 
+1. Laat sommige gegevens samen voegen. U kunt de toepassing een tijdje gebruiken. Telemetrie is beschikbaar in en u ziet statistische grafieken in [metrische Explorer](../platform/metrics-charts.md) en afzonderlijke gebeurtenissen in [Diagnostische Zoek opdrachten](./diagnostic-search.md). 
    
     Daarnaast worden de gegevens naar uw opslag geëxporteerd. 
 2. Inspecteer de geëxporteerde gegevens in de portal: Kies **Bladeren**, selecteer uw opslag account en vervolgens **containers** of in Visual Studio. In Visual Studio kiest u **weer gave/Cloud Verkenner**en opent u Azure/Storage. (Als u deze menu optie niet hebt, moet u de Azure SDK installeren: Open het dialoog venster New project en open Visual C#/Cloud/Get Microsoft Azure SDK voor .NET.)
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![PageViewsTable maken](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-In dit voor beeld gebruiken we gegevens uit pagina weergaven. Als u de overige beschik bare gegevens wilt bekijken, inspecteert u de JSON-uitvoer en bekijkt u het [gegevens model exporteren](../../azure-monitor/app/export-data-model.md).
+In dit voor beeld gebruiken we gegevens uit pagina weergaven. Als u de overige beschik bare gegevens wilt bekijken, inspecteert u de JSON-uitvoer en bekijkt u het [gegevens model exporteren](./export-data-model.md).
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Een Azure Stream Analytics-exemplaar maken
 Selecteer in de [Azure Portal](https://portal.azure.com/)de Azure stream Analytics-service en maak een nieuwe stream Analytics taak:
@@ -161,11 +161,11 @@ Het voor voegsel van het pad geeft aan hoe Stream Analytics de invoer bestanden 
 webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 ```
 
-In dit voorbeeld geldt het volgende:
+In dit voorbeeld:
 
 * `webapplication27`is de naam van de Application Insights resource, **in kleine letters**. 
 * `1234...`is de instrumentatie sleutel van de Application Insights resource **waarvoor streepjes zijn verwijderd**. 
-* `PageViews`is het type gegevens dat we willen analyseren. Welke typen beschikbaar zijn, is afhankelijk van het filter dat u in continue export hebt ingesteld. Controleer de geëxporteerde gegevens om de andere beschik bare typen te bekijken en Bekijk het [gegevens model exporteren](../../azure-monitor/app/export-data-model.md).
+* `PageViews`is het type gegevens dat we willen analyseren. Welke typen beschikbaar zijn, is afhankelijk van het filter dat u in continue export hebt ingesteld. Controleer de geëxporteerde gegevens om de andere beschik bare typen te bekijken en Bekijk het [gegevens model exporteren](./export-data-model.md).
 * `/{date}/{time}`is een patroon dat letterlijk is geschreven.
 
 Als u de naam en iKey van uw Application Insights resource wilt ophalen, opent u essentiële elementen op de pagina overzicht of opent u de instellingen.
@@ -215,7 +215,7 @@ Vervang de standaard query door:
 
 ```
 
-U ziet dat de eerste paar eigenschappen specifiek zijn voor pagina weergave gegevens. De export van andere telemetrie-typen heeft andere eigenschappen. Zie de [Naslag informatie over het gedetailleerde gegevens model voor de eigenschaps typen en-waarden.](../../azure-monitor/app/export-data-model.md)
+U ziet dat de eerste paar eigenschappen specifiek zijn voor pagina weergave gegevens. De export van andere telemetrie-typen heeft andere eigenschappen. Zie de [Naslag informatie over het gedetailleerde gegevens model voor de eigenschaps typen en-waarden.](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>Uitvoer instellen op Data Base
 Selecteer SQL als uitvoer.
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Exporteren naar Power BI met behulp van Stream Analytics](../../azure-monitor/app/export-power-bi.md )
-* [Gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](../../azure-monitor/app/export-data-model.md)
-* [Continue export in Application Insights](../../azure-monitor/app/export-telemetry.md)
+* [Exporteren naar Power BI met behulp van Stream Analytics](./export-power-bi.md)
+* [gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](./export-data-model.md)
+* [Continue export in Application Insights](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036468"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284707"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken om toegang te krijgen tot de GRUB en de modus voor één gebruiker
 GRand Unified Bootloader (GRUB) is waarschijnlijk het eerste wat u ziet wanneer u een virtuele machine opstart (VM). Omdat deze wordt weer gegeven voordat het besturings systeem is gestart, is GRUB niet toegankelijk via SSH. In GRUB kunt u de opstart configuratie wijzigen zodat deze wordt opgestart in de modus voor één gebruiker, onder andere.
@@ -241,7 +241,7 @@ Volg de eerdere instructies voor RHEL om de modus voor één gebruiker in Oracle
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over seriële console:
 * [Documentatie voor Linux-seriële console](serial-console-linux.md)
-* [Seriële console gebruiken om GRUB in diverse distributies in te scha kelen](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
+* [Seriële console gebruiken om GRUB in diverse distributies in te scha kelen](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [Seriële console gebruiken voor NMI-en SysRq-aanroepen](serial-console-nmi-sysrq.md)
 * [Seriële console voor Windows-Vm's](serial-console-windows.md)
 * [Diagnostische gegevens over opstarten](boot-diagnostics.md)

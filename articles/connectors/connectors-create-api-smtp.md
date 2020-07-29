@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657005"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283942"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanuit uw SMTP-account met Azure Logic Apps
 
@@ -50,12 +51,12 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Verbindingsnaam** | Yes | Een naam voor de verbinding met de SMTP-server | 
-   | **SMTP-server adres** | Yes | Het adres voor de SMTP-server | 
-   | **Gebruikers naam** | Yes | Uw gebruikers naam voor uw SMTP-account | 
-   | **Wachtwoord** | Yes | Uw wacht woord voor uw SMTP-account | 
-   | **SMTP-server poort** | No | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
-   | **SSL inschakelen?** | No | Schakel TLS/SSL-versleuteling in of uit. | 
+   | **Verbindingsnaam** | Ja | Een naam voor de verbinding met de SMTP-server | 
+   | **SMTP-server adres** | Ja | Het adres voor de SMTP-server | 
+   | **Gebruikersnaam** | Ja | Uw gebruikers naam voor uw SMTP-account | 
+   | **Wachtwoord** | Ja | Uw wacht woord voor uw SMTP-account | 
+   | **SMTP-server poort** | Nee | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
+   | **SSL inschakelen?** | Nee | Schakel TLS/SSL-versleuteling in of uit. | 
    |||| 
 
 1. Geef de benodigde gegevens op voor de geselecteerde actie. 
@@ -64,7 +65,7 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/smtpconnector/).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/smtpconnector/).
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.

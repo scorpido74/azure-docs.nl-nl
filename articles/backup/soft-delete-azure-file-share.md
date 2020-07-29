@@ -4,18 +4,16 @@ description: Meer informatie over hoe u met zacht verwijderen uw Azure-bestands 
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282701"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Onbedoeld verwijderen van beveiliging voor Azure-bestands shares met behulp van Azure Backup
 
-Voor beveiliging tegen Cyber aanvallen of per ongeluk verwijderen is de functie voor het uitvoeren van een [tijdelijke](../storage/files/storage-files-prevent-file-share-deletion.md) verwijdering ingeschakeld voor alle bestands shares in een opslag account wanneer u een back-up configureert voor een bestands share in het betreffende opslag account. Met zacht verwijderen, zelfs als een schadelijke actor de bestands share verwijdert, worden de inhoud van de bestands share en de herstel punten (moment opnamen) gedurende mini maal 14 extra dagen bewaard, waardoor bestands shares zonder gegevens verlies kunnen worden hersteld.  
-
-Voorlopig verwijderen wordt alleen ondersteund voor standaard-en Premium Storage-accounts en is momenteel ingeschakeld vanaf de Azure Backup zijde in [deze regio's](azure-file-share-support-matrix.md).
+Voor beveiliging tegen Cyber aanvallen of per ongeluk verwijderen is de functie voor het uitvoeren van een [tijdelijke](../storage/files/storage-files-prevent-file-share-deletion.md) verwijdering ingeschakeld voor alle bestands shares in een opslag account wanneer u een back-up configureert voor een bestands share in het betreffende opslag account. Met zacht verwijderen, zelfs als een schadelijke actor de bestands share verwijdert, worden de inhoud van de bestands share en de herstel punten (moment opnamen) gedurende mini maal 14 extra dagen bewaard, waardoor bestands shares zonder gegevens verlies kunnen worden hersteld.  Voorlopig verwijderen wordt ondersteund voor Standard-en Premium Storage-accounts en de instelling wordt ingeschakeld door Azure Backup voor alle opslag accounts die als host fungeren voor back-ups van bestands shares.
 
 In het volgende stroom diagram ziet u de verschillende stappen en statussen van een back-upitem wanneer zacht verwijderen is ingeschakeld voor bestands shares in een opslag account:
 
@@ -63,4 +61,4 @@ Op het moment van de registratie controleert Azure Backup de instelling voor de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het maken van back-ups van Azure-bestands shares via de Azure Portal](backup-afs.md)
+Lees meer over het [maken van back-ups van Azure-bestandsshares via de Azure-portal](backup-afs.md).

@@ -6,17 +6,18 @@ ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 7f922275e5541baabc77a1efb19e48fa8be4c5ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289421"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285404"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Migratie partners Azure Database for MySQL
 Als u uw Azure Database for MySQL-oplossing breed wilt ondersteunen, kunt u kiezen uit een groot aantal toonaangevende partners en hulpprogram ma's. In dit artikel worden micro soft-partners beschreven met migratie oplossingen die ondersteuning bieden voor Azure Database for MySQL.
 
 ## <a name="migration-partners"></a>Migratie partners
-| Partner | Description | Koppelingen | Video's |
+| Partner | Beschrijving | Koppelingen | Video's |
 | --- | --- | --- | --- |
 | ![SNP-technologieën][1] |**SNP-technologieën**<br>SNP-technologieën zijn een alleen-Cloud service provider, die veilige en betrouw bare oplossingen bouwt voor bedrijven van de toekomst. Het bedrijf is van mening dat er echte waarde wordt gegenereerd voor uw bedrijf. SNP-technologieën delen een gemeen schappelijk doel met clients, waardoor ze hun investering in een voor deel kunnen omzetten.|[Website][snp_website]<br>[Twitter][snp_twitter]<br>[Contactpersoon][snp_contact] | |
 | ![Data base-aanbevolen technologieën, LLC][2] |**Data base-aanbevolen technologieën, LLC**<br>Met DB kunt u het beste profiteren van een beheerde Azure-database service. Het bedrijf biedt verschillende manieren om aan de slag te gaan, met inbegrip van het ontwerp van een [nieuwe architectuur](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Gegevensbeheer optimalisatie voor micro soft-gegevens platform](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure Deployment Planning Services](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)en [Azure data platform Readiness-Training](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Website][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Contactpersoon][dbbest_contact] | |
@@ -26,7 +27,7 @@ Als u uw Azure Database for MySQL-oplossing breed wilt ondersteunen, kunt u kiez
 | ![Pactera][6] |**Pactera**<br>Pactera is een wereld wijd bedrijf dat advies, digitale, technologie en operationele Services biedt aan de toonaangevende ondernemingen ter wereld. Van hun eigen hoofd in engineering tot de nieuwste in digitale trans formatie geven klanten een competitieve rand. Hun bewezen methodologieën en hulp middelen zorgen ervoor dat uw gegevens veilig, authentiek en nauw keurig zijn.|[Website][pactera_website]<br>[Twitter][pactera_twitter]<br>[Contactpersoon][pactera_contact] | |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de [micro soft partner site](https://partner.microsoft.com/en-US/)voor meer informatie over de andere partners van micro soft.
+Zie de [micro soft partner site](https://partner.microsoft.com/)voor meer informatie over de andere partners van micro soft.
 
 <!--Image references-->
 [1]: ./media/partner-migration-mysql/SNP_Logo.png

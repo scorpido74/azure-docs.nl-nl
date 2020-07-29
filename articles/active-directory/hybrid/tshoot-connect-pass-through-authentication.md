@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 4/15/2019
+ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281817"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
 
@@ -43,7 +44,7 @@ Zorg ervoor dat de functie Pass-Through-verificatie nog steeds is **ingeschakeld
 
 Als de gebruiker zich niet kan aanmelden met behulp van Pass-Through-verificatie, zien ze mogelijk een van de volgende gebruikers fouten in het aanmeldings scherm van Azure AD: 
 
-|Fout|Description|Oplossing
+|Fout|Beschrijving|Oplossing
 | --- | --- | ---
 |AADSTS80001|Kan geen verbinding maken met Active Directory|Zorg ervoor dat de agent servers lid zijn van hetzelfde AD-forest als de gebruikers waarvan de wacht woorden moeten worden gevalideerd en dat ze verbinding kunnen maken met Active Directory.  
 |AADSTS8002|Er is een time-out opgetreden tijdens het verbinden met Active Directory|Controleer of Active Directory beschikbaar is en reageert op aanvragen van de agents.
@@ -62,7 +63,7 @@ U kunt controleren of dit het probleem is door eerst te testen of de Pass-Throug
 2. Importeer de Power shell-module op de agent computer:
  
  ```powershell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
 3. Voer de opdracht voor het aanroepen van Power shell uit: 
 

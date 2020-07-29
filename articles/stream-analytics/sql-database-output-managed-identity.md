@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045617"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305921"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot Azure SQL Database vanuit een Azure Stream Analytics-taak (preview-versie)
 
@@ -102,7 +102,7 @@ Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is 
 
 ## <a name="grant-stream-analytics-job-permissions"></a>Stream Analytics taak machtigingen verlenen
 
-Zodra u een Inge sloten database gebruiker hebt gemaakt en toegang hebt gekregen tot Azure-Services in de portal, zoals beschreven in de vorige sectie, is uw Stream Analytics-taak gemachtigd van beheerde identiteit om **verbinding te maken** met uw SQL database Resource via een beheerde identiteit. U wordt aangeraden de machtigingen voor selecteren en invoegen toe te kennen aan de Stream Analytics-taak, omdat deze later in de Stream Analytics werk stroom nodig zijn. Met de machtiging **selecteren** kunt u de verbinding van de taak naar de tabel in de SQL database testen. Met de machtiging **Invoegen** kunt u end-to-end-stream Analytics query's testen zodra u een invoer en de SQL database uitvoer hebt geconfigureerd. U kunt deze machtigingen toewijzen aan de Stream Analytics-taak met behulp van SQL Server Management Studio. Zie de referentie [Grant (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) voor meer informatie.
+Zodra u een Inge sloten database gebruiker hebt gemaakt en toegang hebt gekregen tot Azure-Services in de portal, zoals beschreven in de vorige sectie, is uw Stream Analytics-taak gemachtigd van beheerde identiteit om **verbinding te maken** met uw SQL database Resource via een beheerde identiteit. U wordt aangeraden de machtigingen voor selecteren en invoegen toe te kennen aan de Stream Analytics-taak, omdat deze later in de Stream Analytics werk stroom nodig zijn. Met de machtiging **selecteren** kunt u de verbinding van de taak naar de tabel in de SQL database testen. Met de machtiging **Invoegen** kunt u end-to-end-stream Analytics query's testen zodra u een invoer en de SQL database uitvoer hebt geconfigureerd. U kunt deze machtigingen toewijzen aan de Stream Analytics-taak met behulp van SQL Server Management Studio. Zie de referentie GRANT (Transact-SQL) voor meer informatie.
 
 Als u alleen machtigingen wilt verlenen voor een bepaalde tabel of object in de data base, gebruikt u de volgende T-SQL-syntaxis en voert u de query uit. 
 

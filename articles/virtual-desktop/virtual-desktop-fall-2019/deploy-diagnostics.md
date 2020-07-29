@@ -1,6 +1,6 @@
 ---
-title: Het hulp programma voor diagnostische gegevens implementeren voor het virtuele bureau blad van Windows-Azure
-description: Het hulp programma Diagnostics UX voor Windows Virtual Desktop implementeren.
+title: Het diagnostische hulp programma voor Windows virtueel bureau blad (klassiek) implementeren-Azure
+description: Het hulp programma Diagnostics UX implementeren voor het virtuele bureau blad van Windows (klassiek).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362336"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285098"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Het Windows-hulp programma voor virtueel bureau blad (klassiek) implementeren
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
 
 >[!IMPORTANT]
 >Vanaf 16 maart 2020 hebben we de diagnostische query's die van invloed zijn op de gebruikers ervaring tijdelijk uitgeschakeld vanwege een verhoogde vraag naar de service. Dit zorgt ervoor dat het hulp programma niet meer werkt omdat het afhankelijk is van deze query's. Dit artikel wordt bijgewerkt wanneer diagnostische query's weer beschikbaar zijn.
@@ -164,7 +164,7 @@ Als u de status van virtuele machines wilt kunnen bekijken, moet u de Log Analyt
 2. Ga naar uw Log Analytics-werk ruimte.
 3. Selecteer in het linkerdeel venster onder gegevens bronnen voor werk ruimte de optie **virtuele machines**.
 4. Selecteer de naam van de virtuele machine waarmee u verbinding wilt maken.
-5. Selecteer **Verbinding maken**.
+5. Selecteer **Verbinden**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 

@@ -8,14 +8,14 @@ ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
-ms.custom: tracking-python
-ms.openlocfilehash: c67ddf2d82a1cebaaa43a90111f4a42edb20058e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 7af69b90228514db14ce3feecd4ad5cc8a84f567
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206783"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307077"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Een gecodeerde webservice voor het afwijzen van een versleutelings service implementeren (preview)
 
@@ -160,12 +160,12 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 
 ### <a name="deploy-to-azure-container-instances"></a>Implementeren naar Azure Container Instances
 
-Geschatte tijd om te volt ooien: **ongeveer 2-5 minuten**
+Geschatte duur: **ongeveer 2 tot 5 minuten**
 
 Configureer en implementeer de installatiekopie. De volgende code doorloopt de volgende stappen:
 
 1. Maak een omgevings object met afhankelijkheden die nodig zijn voor het model met behulp van het omgevings bestand ( `myenv.yml` )
-1. Maak een benodigde configuratie voor het afnemen van een aanvraag om het model als een webservice te implementeren met behulp van:
+1. Maak de deductieconfiguratie die nodig is voor het implementeren van het model als een webservice met behulp van:
    * Het scoring-bestand (`score.py`)
    * Het omgevings object dat u in de vorige stap hebt gemaakt
 1. Implementeer het model in de ACI-container.

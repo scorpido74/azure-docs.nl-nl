@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141990"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283993"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -44,7 +45,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
@@ -155,7 +156,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
 ## <a name="send-correlated-messages-in-order"></a>Gecorreleerde berichten in de juiste volg orde verzenden
 
-Wanneer u verwante berichten in een specifieke volg orde wilt verzenden, kunt u het [ *sequentiële verwerkings* patroon](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) gebruiken met behulp van de [Azure service bus-connector](../connectors/connectors-create-api-servicebus.md). Gerelateerde berichten hebben een eigenschap die de relatie tussen deze berichten definieert, zoals de ID van de [sessie](../service-bus-messaging/message-sessions.md) in service bus.
+Wanneer u verwante berichten in een specifieke volg orde wilt verzenden, kunt u het [ *sequentiële verwerkings* patroon](/azure/architecture/patterns/sequential-convoy) gebruiken met behulp van de [Azure service bus-connector](../connectors/connectors-create-api-servicebus.md). Gerelateerde berichten hebben een eigenschap die de relatie tussen deze berichten definieert, zoals de ID van de [sessie](../service-bus-messaging/message-sessions.md) in service bus.
 
 Wanneer u een logische app maakt, kunt u de **gecorreleerde order levering selecteren met behulp van service bus-sessie** sjabloon, waarmee het sequentiële verwerkings-patroon wordt geïmplementeerd. Zie [Verwante berichten verzenden in de aangegeven volg orde](../logic-apps/send-related-messages-sequential-convoy.md)voor meer informatie.
 
@@ -170,3 +171,4 @@ Raadpleeg de [referentie pagina](/connectors/servicebus/)voor de connector voor 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+

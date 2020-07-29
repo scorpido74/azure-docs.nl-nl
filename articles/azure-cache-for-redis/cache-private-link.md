@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 59d5c6c4a9c3af70eb08e9d5a05d516f4b8b8bdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337259"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (preview-versie)
 Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met Azure cache voor redis die worden aangestuurd door een persoonlijke Azure-koppeling. 
@@ -69,11 +69,11 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
-    | **Project Details**  |                                                                 |
+    | **Projectgegevens**  |                                                                 |
     | Abonnement     | Open de vervolgkeuzelijst en selecteer uw abonnement.                                  |
     | Resourcegroep   | Vervolg keuzelijst en selecteer een resource groep. |
     | **Exemplaardetails** |                                                                 |
-    | Naam             | Voer**\<virtual-network-name>**                                    |
+    | Naam             | **\<virtual-network-name>** invoeren                                    |
     | Regio           | Uitgeschakeld**\<region-name>** |
 
 4. Selecteer het tabblad **IP-adressen** of selecteer de knop **volgende: IP-adressen** aan de onderkant van de pagina.
@@ -82,7 +82,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | IPv4-adres ruimte | Voer**\<IPv4-address-space>** |
+    | IPv4-adres ruimte | **\<IPv4-address-space>** invoeren |
 
 6. Selecteer bij **subnetnaam**het woord **standaard**.
 
@@ -90,8 +90,8 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | Subnetnaam | Voer**\<subnet-name>** |
-    | Subnetadresbereik | Voer**\<subnet-address-range>**
+    | Subnetnaam | **\<subnet-name>** invoeren |
+    | Subnetadresbereik | **\<subnet-address-range>** invoeren
 
 8. Selecteer **Opslaan**.
 
@@ -149,3 +149,9 @@ In deze sectie maakt u een persoonlijk eind punt en verbindt u het met de cache 
 11. Selecteer **controleren + maken**. U gaat naar het tabblad **controleren + maken**,   waar Azure uw configuratie valideert.
 
 12. Zodra het bericht groene **validatie is voltooid** wordt weer gegeven, selecteert u **maken**.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie de [documentatie van Azure private link](https://docs.microsoft.com/azure/private-link/private-link-overview)voor meer informatie over persoonlijke koppelingen. 
+

@@ -1,6 +1,6 @@
 ---
-title: Windows 7 virtual machine implementeren Windows virtueel bureau blad najaar 2019-Azure
-description: Een virtuele machine met Windows 7 configureren en implementeren op het virtuele bureau blad van Windows.
+title: Windows 7 virtuele machine implementeren Windows virtueel bureau blad (klassiek)-Azure
+description: Een virtuele machine met Windows 7 configureren en implementeren op het virtuele bureau blad van Windows (klassiek).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d8ce67f129844c09a93b29c8100fe28096c520c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99c82f63e88815edba13bf88ba23c18493649dd9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285081"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop---fall-2019"></a>Een virtuele machine met Windows 7 implementeren op virtueel bureau blad van Windows-najaar 2019
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Een virtuele machine met Windows 7 implementeren op het virtuele bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../deploy-windows-7-virtual-machine.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../deploy-windows-7-virtual-machine.md)als u probeert Azure Resource Manager virtuele bureau blad-objecten die zijn geïntroduceerd in de huidige versie van Windows virtueel bureau blad, te beheren.
 
 Het proces voor het implementeren van een virtuele machine met Windows 7 op Windows virtueel bureau blad wijkt enigszins af van de virtuele machines waarop latere versies van Windows worden uitgevoerd. In deze hand leiding wordt uitgelegd hoe u Windows 7 implementeert.
 

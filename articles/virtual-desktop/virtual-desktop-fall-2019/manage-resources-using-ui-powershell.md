@@ -1,6 +1,6 @@
 ---
-title: Een beheer programma voor virtueel bureau blad van Windows implementeren met Service-Principal-Azure
-description: Het beheer programma voor Windows virtueel bureau blad implementeren met behulp van Power shell.
+title: Een beheer programma voor Windows virtueel bureau blad (klassiek) implementeren met Service-Principal-Azure
+description: Het beheer programma voor het virtuele bureau blad van Windows (klassiek) implementeren met behulp van Power shell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6947e5ebf91ee65145c7a5042fb1ee6968c19c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513400"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284962"
 ---
-# <a name="deploy-a-management-tool-with-powershell"></a>Een beheer programma implementeren met Power shell
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Een beheer hulpprogramma voor virtueel bureau blad (klassiek) van Windows implementeren met Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
 
 In dit artikel wordt uitgelegd hoe u het beheer programma implementeert met behulp van Power shell.
 

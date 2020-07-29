@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524298"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284146"
 ---
 # <a name="add-parameters-to-commands"></a>Parameters toevoegen aan opdrachten
 
@@ -47,7 +47,7 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
        > [!div class="mx-imgBorder"]
        > ![Vereist parameter antwoord maken](media/custom-commands/add-required-on-off-parameter-response.png)
    
-   1. Nu gaan we de eigenschappen van de para meters configureren. Ga naar [verwijzingen](./custom-commands-references.md)voor uitleg van alle configuratie-eigenschappen van een opdracht. Configureer de overige eigenschappen van de para meter als volgt:
+   1. Nu gaan we de eigenschappen van de para meters configureren. Ga naar [verwijzingen](./custom-commands-references.md)voor uitleg van alle configuratie-eigenschappen van een opdracht. Configureer de eigenschappen van de para meter als volgt:
       
 
        | Configuration      | Voorgestelde waarde     | Beschrijving                                                      |
@@ -61,11 +61,10 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
        | Vooraf gedefinieerde invoer waarden     | `on`, `off`           | Set mogelijke waarden en hun aliassen         |
        
         
-   1. Voor het toevoegen van vooraf gedefinieerde invoer waarden selecteert u **een vooraf gedefinieerde invoer toevoegen** en in het venster **Nieuw item** typt u **naam** zoals opgegeven in de bovenstaande tabel. In dit geval gebruiken we geen aliassen, zodat u deze leeg kunt laten. 
-
-    > [!div class="mx-imgBorder"]
-
-    > ![Para meter maken](media/custom-commands/create-on-off-parameter.png)
+   1. Voor het toevoegen van vooraf gedefinieerde invoer waarden selecteert u **een vooraf gedefinieerde invoer toevoegen** en in het venster **Nieuw item** typt u **naam** zoals opgegeven in de bovenstaande tabel. In dit geval gebruiken we geen aliassen, zodat u deze leeg kunt laten.
+   
+      > [!div class="mx-imgBorder"]
+      > ![Para meter maken](media/custom-commands/create-on-off-parameter.png)
 
    1. Selecteer **Opslaan** om alle configuraties van de para meter op te slaan.
  
@@ -118,6 +117,7 @@ Wijzig de bestaande **ConfirmationResponse**van de voltooiings regel.
 
 1. Selecteer **een voor waarde toevoegen**in de sectie **voor waarden** .
 1. Selecteer in het venster **nieuwe voor waarde** in de lijst **type** de **vereiste para meters**. Controleer in de onderstaande check list zowel **ONOFF** als **SubjectDevice**.
+1. Zorg ervoor dat **IsGlobal** niet is ingeschakeld.
 1. Selecteer **Maken**.
 1. Bewerk de bestaande actie voor het verzenden van een **antwoord** in de sectie **acties** door over de actie te bewegen en de knop bewerken te selecteren. Gebruik de zojuist gemaakte para meters **ONOFF** en **SubjectDevice** om deze tijd te gebruiken
 
@@ -127,7 +127,7 @@ Wijzig de bestaande **ConfirmationResponse**van de voltooiings regel.
 1. Selecteer **Opslaan**.
 
 ### <a name="try-it-out"></a>Probeer het eens
-1. Selecteer een **trein** pictogram boven in het rechterdeel venster.
+1. Selecteer het pictogram **trein** boven in het rechterdeel venster.
 
 1. Wanneer de training is voltooid, selecteert u **testen**. Er wordt een **test-app** -venster weer gegeven.
  Probeer enkele interacties.

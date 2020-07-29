@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077283"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305207"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -89,7 +89,7 @@ De Log Analytics gateway is beschikbaar in de volgende talen:
 
 De Log Analytics-gateway ondersteunt alleen Transport Layer Security (TLS) 1,0, 1,1 en 1,2.  Secure Sockets Layer (SSL) wordt niet ondersteund.  Configureer de gateway voor het gebruik van ten minste TLS 1,2 om te zorgen voor de beveiliging van gegevens die onderweg zijn naar Log Analytics. Oudere versies van TLS of SSL zijn kwetsbaar. Hoewel ze momenteel achterwaartse compatibiliteit toestaan, kunt u ze beter niet gebruiken.  
 
-Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](./data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Ondersteund aantal agent verbindingen
 
@@ -388,4 +388,5 @@ Als u hulp wilt krijgen, selecteert u het pictogram vraag teken in de rechter bo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Voeg gegevens bronnen](../../azure-monitor/platform/agent-data-sources.md) toe om gegevens te verzamelen van verbonden bronnen en sla de gegevens op in uw log Analytics-werk ruimte.
+[Voeg gegevens bronnen](./agent-data-sources.md) toe om gegevens te verzamelen van verbonden bronnen en sla de gegevens op in uw log Analytics-werk ruimte.
+

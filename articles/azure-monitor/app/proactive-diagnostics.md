@@ -3,15 +3,15 @@ title: Slimme detectie in Azure-toepassing Insights | Microsoft Docs
 description: Application Insights voert een automatische diep gaande analyse van uw app-telemetrie uit en waarschuwt u mogelijke problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305870"
 ---
 # <a name="smart-detection-in-application-insights"></a>Slimme detectie in Application Insights
- Slimme detectie waarschuwt automatisch mogelijke prestatie problemen en fout afwijkingen in uw webtoepassing. Er wordt proactieve analyse uitgevoerd van de telemetrie die uw app naar [Application Insights](../../azure-monitor/app/app-insights-overview.md)verzendt. Als er sprake is van een plotselinge toename van de fout frequentie of abnormale patronen in de prestaties van de client of server, ontvangt u een waarschuwing. Deze functie heeft geen configuratie nodig. Het werkt als uw toepassing voldoende telemetrie verzendt.
+ Slimme detectie waarschuwt automatisch mogelijke prestatie problemen en fout afwijkingen in uw webtoepassing. Er wordt proactieve analyse uitgevoerd van de telemetrie die uw app naar [Application Insights](./app-insights-overview.md)verzendt. Als er sprake is van een plotselinge toename van de fout frequentie of abnormale patronen in de prestaties van de client of server, ontvangt u een waarschuwing. Deze functie heeft geen configuratie nodig. Het werkt als uw toepassing voldoende telemetrie verzendt.
 
 U hebt toegang tot de detecties die zijn uitgegeven door slimme detectie, zowel van het e-mail bericht dat u ontvangt, als op de Blade Slimme detectie.
 
@@ -32,8 +32,8 @@ Selecteer een detectie om de details ervan weer te geven.
 ## <a name="what-problems-are-detected"></a>Welke problemen worden gedetecteerd?
 Slimme detectie detecteert en waarschuwt over diverse problemen, zoals:
 
-* [Slimme detectie-fout afwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md). We gebruiken machine learning om het verwachte aantal mislukte aanvragen voor uw app in te stellen en te correleren met belasting en andere factoren. Als het uitval aantal buiten de verwachte envelop komt, verzenden we een waarschuwing.
-* [Slimme detectie: prestatie afwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md). U ontvangt meldingen als de reactie tijd van een bewerking of afhankelijkheids duur verloopt ten opzichte van de historische basis lijn of als we een afwijkend patroon identificeren in reactie tijd of pagina laadtijd.   
+* [Slimme detectie-fout afwijkingen](./proactive-failure-diagnostics.md). We gebruiken machine learning om het verwachte aantal mislukte aanvragen voor uw app in te stellen en te correleren met belasting en andere factoren. Als het uitval aantal buiten de verwachte envelop komt, verzenden we een waarschuwing.
+* [Slimme detectie: prestatie afwijkingen](./proactive-performance-diagnostics.md). U ontvangt meldingen als de reactie tijd van een bewerking of afhankelijkheids duur verloopt ten opzichte van de historische basis lijn of als we een afwijkend patroon identificeren in reactie tijd of pagina laadtijd.   
 * Algemene degradatie en problemen, zoals [tracering afbraak](./proactive-trace-severity.md), [geheugenlek,](./proactive-potential-memory-leak.md) [abnormaal stijgen in uitzonderings volume](./proactive-exception-volume.md) en [beveiligings anti patronen](./proactive-application-security-detection-pack.md).
 
 (De Help-koppelingen in elke melding nemen u naar de relevante artikelen.)
@@ -53,11 +53,12 @@ U kunt de configuratie ook wijzigen met Azure Resource Manager sjablonen. [Zie A
 ## <a name="next-steps"></a>Volgende stappen
 Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecteren:
 
-* [Metrische Explorer](../../azure-monitor/platform/metrics-charts.md)
-* [Zoek Verkenner](../../azure-monitor/app/diagnostic-search.md)
-* [Analyse-krachtige query taal](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrische Explorer](../platform/metrics-charts.md)
+* [Zoek Verkenner](./diagnostic-search.md)
+* [Analyse-krachtige query taal](../log-query/get-started-portal.md)
 
 Slimme detectie is volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md)
-* [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md) 
+* [Hand matig geconfigureerde metrische waarschuwingen](../platform/alerts-log.md)
+* [Webtests voor beschikbaarheid](./monitor-web-app-availability.md) 
+

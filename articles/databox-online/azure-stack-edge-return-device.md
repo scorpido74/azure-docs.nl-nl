@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067072"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283857"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren
 
@@ -117,14 +117,14 @@ Als u een ophaling wilt plannen, voert u de volgende stappen uit.
 
 Nadat het apparaat is ontvangen in het Azure-Data Center, wordt het apparaat geïnspecteerd op beschadiging of op een geknoeid tijdstip.
 
-- Als het apparaat intact is en een goede vorm heeft, stopt de facturerings meter voor die bron. Microsoft Ondersteuning neemt dan contact met u op om te bevestigen dat het apparaat is geretourneerd. U kunt vervolgens de resource die aan het apparaat is gekoppeld, verwijderen in de Azure Portal.
+- Als het apparaat intact is en een goede vorm heeft, stopt de facturerings meter voor die bron. Azure Stack Edge-team neemt contact met u op om te bevestigen dat het apparaat is geretourneerd. U kunt vervolgens de resource die aan het apparaat is gekoppeld, verwijderen in de Azure Portal.
 - Als het apparaat aanzienlijk is aangekomen, kunnen de verfijningen van toepassing zijn. Raadpleeg de [Veelgestelde vragen op verloren of beschadigd apparaat](https://azure.microsoft.com/pricing/details/databox/edge/) en [product service voorwaarden](https://www.microsoft.com/licensing/product-licensing/products)voor meer informatie.  
 
 
 U kunt het apparaat verwijderen in de Azure Portal:
 
 - Nadat u de order hebt geplaatst en voordat het apparaat door micro soft wordt voor bereid.
-- Nadat u het apparaat hebt geretourneerd naar micro soft, wordt de fysieke inspectie op het Azure-Data Center door gegeven en worden Microsoft Ondersteuning-aanroepen om te bevestigen dat het apparaat is geretourneerd.
+- Nadat u het apparaat hebt geretourneerd naar micro soft, wordt de fysieke inspectie op het Azure-Data Center door gegeven en worden Azure Stack Edge-team aanroepen om te bevestigen dat het apparaat is geretourneerd.
 
 Als u het apparaat hebt geactiveerd op basis van een ander abonnement of een andere locatie, zal micro soft uw bestelling binnen één werkdag naar het nieuwe abonnement of deze locatie verplaatsen. Nadat de order is verplaatst, kunt u deze resource verwijderen.
 

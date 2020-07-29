@@ -3,12 +3,12 @@ title: Machines starten met Automation-runbooks in Azure DevTest Labs
 description: Meer informatie over het starten van virtuele machines in een lab in Azure DevTest Labs met behulp van Azure Automation runbooks.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 72ce964b451fb6bcd1e93d75e6ae674c7608d63a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481898"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282259"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuele machines in een lab op volg orde starten met Azure Automation runbooks
 Met de functie [automatisch starten](devtest-lab-set-lab-policy.md#set-autostart) van DevTest Labs kunt u vm's zodanig configureren dat deze automatisch worden gestart op een opgegeven tijdstip. Deze functie biedt echter geen ondersteuning voor machines om in een specifieke volg orde te starten. Er zijn verschillende scenario's waarbij dit type automatisering nuttig zou zijn.  In één scenario moet een JumpBox-VM binnen een Lab eerst worden gestart, vóór de andere virtuele machines, omdat de JumpBox wordt gebruikt als het toegangs punt voor de andere Vm's.  In dit artikel wordt beschreven hoe u een Azure Automation account instelt met een Power shell-runbook dat een script uitvoert. Het script maakt gebruik van labels op Vm's in het Lab zodat u de opstart volgorde kunt beheren zonder het script te hoeven wijzigen.
@@ -20,7 +20,7 @@ In dit voor beeld moet de virtuele machine in het lab de tag **StartupOrder** to
 Maak een Azure Automation-account door de instructies in [dit artikel](../automation/automation-create-standalone-account.md)te volgen. Kies de optie **uitvoeren als-accounts** bij het maken van het account. Zodra het Automation-account is gemaakt, opent u de pagina **modules** en selecteert u **Azure-modules bijwerken** op de menu balk. De standaard modules zijn verschillende versies oud en zonder de update kan het script niet worden gebruikt.
 
 ## <a name="add-a-runbook"></a>Een runbook toevoegen
-Als u nu een runbook wilt toevoegen aan het Automation-account, selecteert u **Runbooks** in het menu links. Selecteer **een Runbook toevoegen** in het menu en volg de instructies voor [het maken van een Power shell-runbook](../automation/automation-first-runbook-textual-powershell.md).
+Als u nu een runbook wilt toevoegen aan het Automation-account, selecteert u **Runbooks** in het menu links. Selecteer **een Runbook toevoegen** in het menu en volg de instructies voor [het maken van een Power shell-runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
 
 ## <a name="powershell-script"></a>PowerShell-script
 Het volgende script neemt de naam van het abonnement, de naam van het Lab als para meters. De stroom van het script bestaat uit het ophalen van alle virtuele machines in het lab en vervolgens het parseren van de label gegevens om een lijst met de namen van de virtuele machines en de bijbehorende opstart volgorde te maken. Het script doorloopt de Vm's in de juiste volg orde en start de Vm's. Als er meerdere Vm's in een specifiek Volg nummer staan, worden ze asynchroon met Power shell-taken gestart. Voor de virtuele machines die geen tag hebben, stelt u de opstart waarde in op de laatste (10). de waarden worden standaard als laatste gestart.  Als de virtuele machine niet automatisch moet worden gestart door de Lab, stelt u de waarde van de tag in op 11 en wordt deze genegeerd.

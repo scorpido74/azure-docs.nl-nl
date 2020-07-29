@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van een commerciële Marketplace-a
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 04/27/2020
-ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8362019365aab002929cc3414e6ca742952fc8ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112847"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320014"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -225,7 +225,7 @@ Als u meer dan één groep selecteert om aan uw partner Center-account toe te vo
 
 Wanneer u een bestaande groep toevoegt, kan elke gebruiker die lid is van deze groep, toegang krijgen tot uw partner centrum-account, met de machtigingen die zijn gekoppeld aan de toegewezen rol van de groep.
 
-### <a name="add-a-new-group"></a>Een nieuwe groep toevoegen
+### <a name="add-a-new-group"></a>Een nieuwe groep maken
 
 Een gloed nieuwe groep toevoegen aan uw partner centrum-account:
 
@@ -291,7 +291,7 @@ De gebruikers van uw bedrijf kunnen de volgende rollen en machtigingen toewijzen
 - **Manager**
   - Heeft toegang tot alle Microsoft-account functies behalve de instellingen voor belasting en betaling
   - Kan gebruikers, rollen en werk accounts (tenants) beheren
-- **Ontwikkelaar**
+- **Developer**
   - Kan aanbiedingen beheren en publiceren
   - Kan sommige uitgevers rapporten weer geven
 
@@ -316,7 +316,7 @@ Een andere Azure AD-Tenant koppelen aan uw partner centrum-account:
 
 Als de koppeling is geslaagd, kunt u account gebruikers toevoegen en beheren in de sectie **gebruikers** van het partner centrum.
 
-### <a name="create-a-new-tenant"></a>Een nieuwe Tenant maken
+### <a name="create-a-new-tenant"></a>Een nieuwe tenant maken
 
 Een gloed nieuwe Azure AD-Tenant maken met uw partner centrum-account:
 

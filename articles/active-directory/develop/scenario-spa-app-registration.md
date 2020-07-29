@@ -12,22 +12,24 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026506"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311565"
 ---
 # <a name="single-page-application-app-registration"></a>Toepassing met één pagina: app-registratie
 
 Voer de volgende stappen uit als u een toepassing met één pagina (SPA) wilt registreren in het micro soft-identiteits platform. De registratie stappen verschillen van MSAL.js 1,0, die ondersteuning biedt voor de impliciete toekennings stroom en MSAL.js 2,0, waarmee de autorisatie code stroom met PKCE wordt ondersteund.
 
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
 ## <a name="create-the-app-registration"></a>De app-registratie maken
 
 Voor zowel MSAL.js 1,0-als 2,0-toepassingen moet u eerst de volgende stappen uitvoeren om de eerste app-registratie te maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als uw account toegang heeft tot meerdere tenants, selecteert u het filter voor **adres lijst en abonnementen** in het bovenste menu en selecteert u vervolgens de Tenant die de app-registratie bevat die u op het punt staat te maken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als uw account toegang heeft tot meerdere tenants, selecteert u het filter voor **adres lijst en abonnementen** in het bovenste menu en selecteert u vervolgens de Tenant die de app-registratie bevat die u op het punt staat te maken.
 1. Zoek naar **Azure Active Directory** en selecteer deze optie.
 1. Selecteer **App-registraties** onder **Beheren**.
 1. Selecteer **nieuwe registratie**, voer een **naam** in voor de toepassing en kies de **ondersteunde account typen** voor de toepassing. Voer **geen** **omleidings-URI**in. Zie voor een beschrijving van de verschillende typen accounts de [nieuwe toepassing registreren met behulp van de Azure Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
@@ -67,7 +69,7 @@ Volg deze stappen om een omleidings-URI toe te voegen voor een app met één pag
 
 U hebt nu de registratie van uw toepassing met één pagina (SPA) voltooid en een omleidings-URI geconfigureerd waarnaar de client wordt omgeleid en eventuele beveiligings tokens worden verzonden. Als u een of beide **id-tokens** en **toegangs tokens**selecteert, hebt u de impliciete toekennings stroom ingeschakeld.
 
-Volg de [zelf studie](tutorial-v2-javascript-spa.md) voor meer informatie. 
+Volg de [zelf studie](tutorial-v2-javascript-spa.md) voor meer informatie.
 
 ## <a name="note-about-authorization-flows"></a>Opmerking over autorisatie stromen
 
