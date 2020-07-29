@@ -1,6 +1,5 @@
 ---
-title: Aangepaste R-modules maken & implementeren
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): Maak & aangepaste R-modules implementeren-Azure'
 description: Meer informatie over het ontwerpen en implementeren van een aangepaste R-module in ML Studio (klassiek).
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957321"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287242"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Aangepaste R-modules voor Azure Machine Learning Studio definiëren (klassiek)
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Aangepaste R-modules voor Machine Learning Studio definiëren (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
 
 In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) ontwerpt en implementeert. Hierin wordt uitgelegd wat aangepaste R-modules zijn en welke bestanden worden gebruikt om ze te definiëren. Hierin ziet u hoe u de bestanden kunt samen stellen die een module definiëren en hoe u de module kunt registreren voor implementatie in een Machine Learning-werk ruimte. De elementen en kenmerken die worden gebruikt in de definitie van de aangepaste module, worden vervolgens uitgebreid beschreven. Het gebruik van de hulp functionaliteit en bestanden en meerdere uitvoer wordt ook besproken. 
 
@@ -307,7 +309,7 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     * Label
     * Functie
     * Score
-    * Alles
+    * Alle
   * **standaard** -geldige standaard selecties voor de kolom kiezer zijn onder andere: 
     
     * Geen
@@ -330,7 +332,7 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     * AllLabel
     * AllFeature
     * AllScore
-    * Alles
+    * Alle
 
 **Dropdown**: een door de gebruiker opgegeven lijst met opsommings (vervolg keuzelijst). De vervolg keuzelijst items worden opgegeven in het **Eigenschappen** element met behulp van een **item** -element. De **id** voor elk **item** moet uniek zijn en een geldige R-variabele zijn. De waarde van de **naam** van een **item** fungeert als de tekst die u ziet en de waarde die wordt door gegeven aan de functie R.
 

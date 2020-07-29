@@ -3,12 +3,12 @@ title: Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTe
 description: Meer informatie over het inschakelen van een gelicentieerde installatie kopie in Azure DevTest Labs met behulp van de Azure Portal
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6a4023a0107acf5aa4cabc2178d17f7be40301f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481014"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286509"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTest Labs
 
@@ -17,7 +17,7 @@ In Azure DevTest Labs is een gelicentieerde installatie kopie die voor waarden b
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Bepalen of een gelicentieerde installatie kopie beschikbaar is voor gebruikers
 De eerste stap om gebruikers toe te staan Vm's te maken op basis van een gelicentieerde installatie kopie, is ervoor te zorgen dat de voor waarden zijn geaccepteerd voor de gelicentieerde installatie kopie. De volgende stappen laten zien hoe u de status van een gelicentieerde installatie kopie kunt bekijken en, indien nodig, de voor waarden van de aanbieding accepteert.
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 
@@ -50,7 +50,7 @@ U kunt de programmatische implementatie voor een gelicentieerde installatie kopi
     ![Het venster programmatische implementatie configureren](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > Data Science Vm's zijn installatie kopieën van virtuele machines van Azure, vooraf geïnstalleerd, geconfigureerd en getest met verschillende populaire hulpprogram ma's die veel worden gebruikt voor gegevens analyse, machine learning-en AI-training. [Inleiding tot Azure data Science virtual machine voor Linux en Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) biedt veel informatie over dsvm.
+   > Data Science Vm's zijn installatie kopieën van virtuele machines van Azure, vooraf geïnstalleerd, geconfigureerd en getest met verschillende populaire hulpprogram ma's die veel worden gebruikt voor gegevens analyse, machine learning-en AI-training. [Inleiding tot Azure data Science virtual machine voor Linux en Windows](../machine-learning/data-science-virtual-machine/overview.md) biedt veel informatie over dsvm.
    >
    >
 
@@ -78,7 +78,7 @@ U kunt de programmatische implementatie voor een gelicentieerde installatie kopi
 
 ## <a name="related-blog-posts"></a>Gerelateerde blog berichten
 
-- [Aangepaste afbeeldingen of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Aangepaste afbeeldingen of formules?](./devtest-lab-faq.md#blog-post)
 - [Aangepaste installatie kopieën kopiëren tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Volgende stappen

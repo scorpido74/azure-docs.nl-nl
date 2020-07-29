@@ -3,12 +3,12 @@ title: Beleid voor automatisch afsluiten beheren in Azure DevTest Labs | Microso
 description: Meer informatie over het instellen van het beleid voor automatisch afsluiten voor een lab, zodat virtuele machines worden afgesloten wanneer ze niet worden gebruikt.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287558"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Automatisch afsluiten configureren voor Lab-en Compute-virtuele machines in Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Het beleid voor automatisch afsluiten helpt Lab-afval te minimaliseren door de t
 
 Voer de volgende stappen uit om de beleids regels voor een Lab weer te geven (en te wijzigen):
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.   
 4. Selecteer **configuratie en beleid**.
@@ -71,7 +71,7 @@ Zodra automatisch afsluiten is ingesteld door de eigenaar van het lab, worden er
 - Automatisch afsluiten voor deze tijd overs Laan
 - Het automatisch afsluiten gedurende een uur of 2 uur uitstellen, zodat ze op de VM kunnen blijven werken.
 
-Er wordt een melding verzonden via het geconfigureerde webhook-eind punt of een e-mail adres dat is opgegeven door de Lab-eigen aren in de instellingen voor automatisch afsluiten. Met webhooks kunt u integraties maken of instellen voor het abonneren op bepaalde gebeurtenissen. Wanneer een van deze gebeurtenissen wordt geactiveerd, stuurt DevTest Labs een HTTP POST-Payload naar de geconfigureerde URL van de webhook. Zie [een webhook of API Azure function maken](../azure-functions/functions-create-a-web-hook-or-api-function.md)voor meer informatie over webhooks. 
+Er wordt een melding verzonden via het geconfigureerde webhook-eind punt of een e-mail adres dat is opgegeven door de Lab-eigen aren in de instellingen voor automatisch afsluiten. Met webhooks kunt u integraties maken of instellen voor het abonneren op bepaalde gebeurtenissen. Wanneer een van deze gebeurtenissen wordt geactiveerd, stuurt DevTest Labs een HTTP POST-Payload naar de geconfigureerde URL van de webhook. Zie [een webhook of API Azure function maken](../azure-functions/functions-bindings-http-webhook.md)voor meer informatie over webhooks. 
 
 We raden u aan om webhooks te gebruiken, omdat deze uitgebreid worden ondersteund door verschillende apps (bijvoorbeeld toegestane vertraging, Azure Logic Apps enzovoort) en u uw eigen manier voor het verzenden van meldingen kunt implementeren. In dit artikel wordt bijvoorbeeld uitgelegd hoe u automatisch afsluiten van e-mail berichten kunt ontvangen met behulp van Azure Logic Apps. Eerst gaan we snel de basis stappen door lopen om automatisch afsluiten in uw Lab in te scha kelen.   
 
@@ -211,4 +211,3 @@ Wanneer u de instelling voor automatisch afsluiten bijwerkt, wordt de activiteit
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Lab-beleid in azure DevTest Labs definiëren](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van alle beleids regels.
-

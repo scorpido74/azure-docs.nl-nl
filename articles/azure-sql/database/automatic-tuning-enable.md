@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982783"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373501"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen in de Azure Portal om query's te bewaken en de prestaties van de werk belasting te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Op server niveau kunt u kiezen voor het overnemen van de automatische afstemming
 
 Als u automatisch afstemmen wilt inschakelen op een [Server](logical-servers.md) in Azure SQL database, gaat u naar de-server in de Azure Portal en selecteert u vervolgens **automatisch afstemmen** in het menu.
 
-![server](./media/automatic-tuning-enable/server.png)
+![Server](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Houd er rekening mee dat de optie **DROP_INDEX** op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen moeten worden ingeschakeld. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen.
@@ -117,7 +117,7 @@ Automatisch afstemmen bewaken alle acties die ze in de Data Base uitvoeren. in s
 
 ## <a name="permissions"></a>Machtigingen
 
-Als automatische afstemming een Azure-functie is, moet u de ingebouwde RBAC-rollen van Azure gebruiken om het te gebruiken. Het gebruik van alleen SQL-verificatie is niet voldoende om de functie van de Azure Portal te gebruiken.
+Als automatische afstemming een Azure-functie is, moet u de ingebouwde rollen van Azure gebruiken om het te gebruiken. Het gebruik van alleen SQL-verificatie is niet voldoende om de functie van de Azure Portal te gebruiken.
 
 Als u automatisch afstemmen wilt gebruiken, is de mini maal vereiste machtiging voor het verlenen aan de gebruiker de ingebouwde rol [SQL database Inzender](../../role-based-access-control/built-in-roles.md#sql-db-contributor) van Azure. U kunt ook overwegen om meer bevoegdheden te gebruiken, zoals SQL Server Inzender, het door SQL beheerde exemplaar van Inzender, Inzender en de eigenaar.
 

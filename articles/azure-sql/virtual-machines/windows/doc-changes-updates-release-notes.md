@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a09a30bafa5bc9ef052b14cad29e000bbd09a48
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503780"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287378"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | Wijzigingen | Details |
 | --- | --- |
 | **Gedistribueerde netwerk naam (DNN)** | SQL Server 2019 op Windows Server 2016 + is nu een voor beeld van ondersteuning voor het routeren van verkeer naar uw FCI (failover cluster instance) door gebruik te maken van een [gedistribueerde netwerk naam](hadr-distributed-network-name-dnn-configure.md) in plaats van Azure Load Balancer te gebruiken. Deze ondersteuning vereenvoudigt en stroomlijnt het maken van verbinding met uw oplossing voor hoge Beschik baarheid (HA) in Azure. | 
-| **FCI met gedeelde Azure-schijven** | Het is nu mogelijk om uw [FCI (failover cluster instance)](failover-cluster-instance-overview.md) te implementeren met behulp van [gedeelde Azure-schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md) met SQL Server 2019 op een virtuele machine met Windows Server 2016 +. |
+| **FCI met gedeelde Azure-schijven** | Het is nu mogelijk om uw [FCI (failover cluster instance)](failover-cluster-instance-overview.md) te implementeren met behulp van [gedeelde Azure-schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md). |
 | **Opnieuw georganiseerde FCI docs** | De documentatie voor [failover-cluster exemplaren met SQL Server op Azure vm's](failover-cluster-instance-overview.md) is herschreven en opnieuw georganiseerd voor duidelijkheid. We hebben een deel van de configuratie-inhoud gescheiden, zoals de [Aanbevolen procedures voor cluster configuratie](hadr-cluster-best-practices.md), het voorbereiden [van een virtuele machine voor een SQL Server FCI](failover-cluster-instance-prepare-vm.md)en het configureren van [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md). | 
 | &nbsp; | &nbsp; |
 

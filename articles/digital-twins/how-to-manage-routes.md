@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9fbf7bc45ed2070570faf0d1dfdb15b5fd98ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132259"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373263"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
 
@@ -153,7 +153,7 @@ Dit zijn de ondersteunde route filters.
 | Bron | Naam van het Azure Digital Apparaatdubbels-exemplaar | `"filter" : "source = '<hostname>'"`|  **Voor meldingen**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Voor telemetrie**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
 | Onderwerp | Een beschrijving van de gebeurtenis in de context van de bovenstaande gebeurtenis bron | `"filter": " subject = '<subject>'"` | **Voor meldingen**: het onderwerp is`<twinid>` <br> of een URI-indeling voor onderwerpen, die uniek worden geïdentificeerd door meerdere onderdelen of Id's:<br>`<twinid>/relationships/<relationshipid>`<br> **Voor telemetrie**: het onderwerp is het pad van het onderdeel (als de telemetrie wordt verzonden vanuit een twee ledig onderdeel), zoals `comp1.comp2` . Als de telemetrie niet vanuit een onderdeel wordt verzonden, is het veld onderwerp leeg. |
 | Gegevens schema | DTDL-model-ID | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Voor telemetrie**: het gegevens schema is de model-id van de dubbele of de component die de telemetrie verzendt <br>**Voor meldingen**: gegevens schema wordt niet ondersteund|
-| Type inhoud | Inhouds type van gegevens waarde | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
+| Inhoudstype | Inhouds type van gegevens waarde | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Specificatie versie | De versie van het gebeurtenis schema dat u gebruikt | `"filter": "specversion = '<version>'"` | Moet zijn `1.0` . Dit geeft de CloudEvents-schema versie 1,0 |
 | Waar/onwaar | Hiermee kunt u een route maken zonder te filteren, of een route uitschakelen | `"filter" : "<true/false>"` | `true`= route is ingeschakeld zonder filtering <br> `false`= route is uitgeschakeld |
 <!--
@@ -184,7 +184,7 @@ Routerings metrieken, zoals aantal, latentie en fout frequentie, kunnen worden w
 
 Zoek op de start pagina van de portal naar uw Azure Digital Apparaatdubbels-exemplaar om de details ervan op te halen. Selecteer de optie **metrische gegevens** in het menu van het Azure Digital apparaatdubbels-exemplaar om de pagina *metrische gegevens* weer te geven.
 
-:::image type="content" source="media/how-to-manage-routes/metrics.png" alt-text="De pagina metrische gegevens van een Azure Digital Apparaatdubbels-instantie in de Azure Portal":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Scherm afbeelding van de pagina met metrische gegevens voor Azure Digital Apparaatdubbels":::
 
 Hier kunt u de metrische gegevens voor uw exemplaar bekijken en aangepaste weer gaven maken.
 

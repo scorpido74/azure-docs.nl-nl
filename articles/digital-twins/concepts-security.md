@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131613"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373280"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Azure Digital Apparaatdubbels beveiligen met op rollen gebaseerd toegangs beheer
 
@@ -45,7 +45,7 @@ Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U 
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Autorisatie: RBAC-rollen voor Azure Digital Apparaatdubbels
 
-Azure biedt de onderstaande ingebouwde RBAC-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
+Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
 * *Azure Digital apparaatdubbels-eigenaar (preview)* : gebruik deze rol om volledige toegang te geven tot Azure Digital apparaatdubbels-resources.
 * *Azure Digital Apparaatdubbels Reader (preview)* : gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital apparaatdubbels-resources.
 

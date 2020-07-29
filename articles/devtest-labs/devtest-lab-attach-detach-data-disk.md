@@ -3,28 +3,28 @@ title: Een gegevens schijf koppelen aan of loskoppelen van een virtuele machine 
 description: Meer informatie over het koppelen of ontkoppelen van een gegevens schijf aan een virtuele machine in Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 164c2335f0aadc08a447dd61e259786d5bfb104d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482969"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287561"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Een gegevens schijf koppelen aan of loskoppelen van een virtuele machine in Azure DevTest Labs
-[Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) beheert de opslag accounts die zijn gekoppeld aan gegevens schijven van virtuele machines. Een gebruiker koppelt een nieuwe gegevens schijf aan een virtuele machine, geeft het type en de grootte van de schijf op die nodig is, en Azure maakt en beheert de schijf automatisch. De gegevens schijf kan vervolgens worden losgekoppeld van de virtuele machine en later opnieuw worden gekoppeld aan dezelfde virtuele machine, of zijn gekoppeld aan een andere VM die tot dezelfde gebruiker behoort.
+[Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) beheert de opslag accounts die zijn gekoppeld aan gegevens schijven van virtuele machines. Een gebruiker koppelt een nieuwe gegevens schijf aan een virtuele machine, geeft het type en de grootte van de schijf op die nodig is, en Azure maakt en beheert de schijf automatisch. De gegevens schijf kan vervolgens worden losgekoppeld van de virtuele machine en later opnieuw worden gekoppeld aan dezelfde virtuele machine, of zijn gekoppeld aan een andere VM die tot dezelfde gebruiker behoort.
 
 Deze functie is handig voor het beheren van opslag of software buiten elke afzonderlijke virtuele machine. Als de opslag of software al aanwezig is in een gegevens schijf, kan deze eenvoudig worden gekoppeld, losgekoppeld en opnieuw worden gekoppeld aan een VM die eigendom is van de gebruiker die eigenaar is van die gegevens schijf.
 
 ## <a name="attach-a-data-disk"></a>Een gegevensschijf koppelen
 Lees de volgende tips voordat u een gegevens schijf aan een virtuele machine koppelt:
 
-- De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)voor meer informatie.
+- De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](../virtual-machines/sizes.md)voor meer informatie.
 - U kunt alleen een gegevens schijf koppelen aan een virtuele machine waarop wordt uitgevoerd. Zorg ervoor dat de virtuele machine wordt uitgevoerd voordat u een gegevens schijf koppelt.
 
 ### <a name="attach-a-new-disk"></a>Een nieuwe schijf koppelen
 Volg deze stappen om een nieuwe beheerde gegevens schijf te maken en te koppelen aan een virtuele machine in Azure DevTest Labs.
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het gewenste Lab. 
 1. Selecteer in de lijst met **mijn virtuele machines**een actieve virtuele machine.
@@ -90,4 +90,3 @@ Als u een niet-beheerde gegevens schijf wilt bijwerken, volgt u de stappen in di
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het beheren van gegevens schijven voor [claim bare virtuele machines](devtest-lab-add-claimable-vm.md#unclaim-a-vm).
-

@@ -2,12 +2,13 @@
 title: Resourcetypen van extensies
 description: Een lijst met de Azure-resource typen wordt gebruikt om de mogelijkheden van andere resource typen uit te breiden.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754870"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374011"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resource typen die de mogelijkheden van andere resources uitbreiden
 
@@ -27,7 +28,9 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. Authorization/permissions
 - Microsoft.Authorization/policyAssignments
 - Micro soft. Authorization/policyDefinitions
+- Micro soft. Authorization/policyExemptions
 - Micro soft. Authorization/policySetDefinitions
+- Micro soft. Authorization/privateLinkAssociations
 - Microsoft.Authorization/roleAssignments
 - Micro soft. Authorization/roleAssignmentsUsageMetrics
 - Micro soft. Authorization/roleDefinitions
@@ -38,6 +41,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. facturering/createBillingRoleAssignment
 - Micro soft. blauw druk/blueprintAssignments
 - Micro soft. blauw druk/blauw drukken
+- Micro soft. ChangeAnalysis/resourceChanges
 - Micro soft. verbruik/AggregatedCost
 - Micro soft. verbruik/saldi
 - Micro soft. verbruik/budgetten
@@ -49,6 +53,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. verbruik/OperationStatus
 - Micro soft. verbruik/Pricesheets
 - Micro soft. verbruik/ReservationDetails
+- Micro soft. verbruik/ReservationRecommendationDetails
 - Micro soft. verbruik/ReservationRecommendations
 - Micro soft. verbruik/ReservationSummaries
 - Micro soft. verbruik/ReservationTransactions
@@ -63,6 +68,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. ContainerInstance/serviceAssociationLinks
 - Micro soft. CostManagement/Alerts
 - Micro soft. CostManagement/budgetten
+- Micro soft. CostManagement/costAllocationRules
 - Micro soft. CostManagement/Dimensions
 - Micro soft. CostManagement/exports
 - Micro soft. CostManagement/ExternalSubscriptions
@@ -70,8 +76,8 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. CostManagement/query
 - Micro soft. CostManagement/Reportconfigs
 - Micro soft. CostManagement/Reports
-- Micro soft. CostManagement/views
 - Micro soft. CostManagement/showbackRules
+- Micro soft. CostManagement/views
 - Micro soft. CustomProviders/Associations
 - Micro soft. EventGrid/eventSubscriptions
 - Micro soft. EventGrid/extensionTopics
@@ -107,12 +113,13 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. ManagedServices/registrationDefinitions
 - Micro soft. OperationalInsights/storageInsightConfigs
 - Micro soft. OperationsManagement/managementassociations
+- Micro soft. PolicyInsights/verklaringen
 - Micro soft. PolicyInsights/policyEvents
 - Micro soft. PolicyInsights/policyStates
 - Micro soft. PolicyInsights/policyTrackedResources
 - Micro soft. PolicyInsights/herstel bewerkingen
 - Micro soft. Recovery Services/backupProtectedItems
-- Micro soft. Recovery Services/replicationEligibilityResults    
+- Micro soft. Recovery Services/replicationEligibilityResults
 - Micro soft. ResourceHealth/availabilityStatuses
 - Micro soft. ResourceHealth/childAvailabilityStatuses
 - Micro soft. ResourceHealth/childResources
@@ -130,11 +137,12 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. Security/complianceResults
 - Micro soft. Security/dataCollectionAgents
 - Micro soft. Security/deviceSecurityGroups
-- Micro soft. Security/networkData
+- Micro soft. Security/jitPolicies
 - Micro soft. Security/serverVulnerabilityAssessments
 - Micro soft. SecurityInsights/aggregaties
 - Micro soft. SecurityInsights/alertRuleTemplates
 - Micro soft. SecurityInsights/alertRules
+- Micro soft. SecurityInsights/automationRules
 - Micro soft. SecurityInsights/blad wijzers
 - Micro soft. SecurityInsights/cases
 - Micro soft. SecurityInsights/dataConnectors
@@ -144,6 +152,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. SecurityInsights/incidenten
 - Micro soft. SecurityInsights/officeConsents
 - Micro soft. SecurityInsights/Settings
+- Micro soft. SecurityInsights/threatIntelligence
 - Micro soft. SoftwarePlan/hybridUseBenefits
 - Micro soft. Subscription/CreateSubscription
 - micro soft. support/Supporttickets

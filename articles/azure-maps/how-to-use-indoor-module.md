@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5f7bca363e22524546e7ee46bf44ddb18dacf00d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064233"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287096"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>De module voor kaarten van Azure Maps gebruiken
 
@@ -21,9 +22,9 @@ De Azure Maps Web-SDK bevat de module *Azure Maps binnenshuis* . Met de module *
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Een Azure Maps account maken](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Een Creator-resource maken](how-to-manage-creator.md)
-3. [Verkrijg een primaire abonnements sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel de primaire sleutel of de abonnements sleutel genoemd.
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel.
 4. Vraag a `tilesetId` en a `statesetId` aan de hand van de [zelf studie voor het maken van plattegronden](tutorial-creator-indoor-maps.md).
  U moet deze id's gebruiken om kaarten weer te geven met de module Azure Maps kaarten.
 

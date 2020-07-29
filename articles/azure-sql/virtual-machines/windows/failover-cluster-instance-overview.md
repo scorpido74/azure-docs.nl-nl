@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965535"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287360"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failover-cluster exemplaren met SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,10 +48,10 @@ SQL Server op virtuele machines van Azure biedt verschillende opties als een ged
 
 ||[Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md)|[Premium-bestands shares](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Opslagruimten Direct (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Minimale versie van het besturingssysteem**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**Minimale SQL Server versie**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**Minimale versie van het besturingssysteem**| Alle |Windows Server 2012|Windows Server 2016|
+|**Minimale SQL Server versie**|Alle|SQL Server 2012|SQL Server 2016|
 |**Ondersteunde VM-Beschik baarheid** |Beschikbaarheids sets met proximity-plaatsings groepen |Beschikbaarheids sets en beschikbaarheids zones|Beschikbaarheidssets |
-|**Ondersteunt FileStream**|Nee|Nee|Ja |
+|**Ondersteunt FileStream**|Ja|Nee|Ja |
 |**Azure Blob-cache**|Nee|Nee|Ja|
 
 In de rest van deze sectie vindt u een overzicht van de voor delen en beperkingen van elke opslag optie die beschikbaar is voor SQL Server op Azure-Vm's. 
@@ -60,18 +60,18 @@ In de rest van deze sectie vindt u een overzicht van de voor delen en beperkinge
 
 [Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md) zijn een functie van [Azure Managed disks](../../../virtual-machines/windows/managed-disks-overview.md). Windows Server failover clustering ondersteunt het gebruik van gedeelde Azure-schijven met een failover-cluster exemplaar. 
 
-**Ondersteund besturings systeem**: Windows Server 2019   
-**Ondersteunde SQL-versie**: SQL Server 2019   
+**Ondersteund besturings systeem**: alle   
+**Ondersteunde SQL-versie**: alle     
 
 **Voor delen**: 
 - Dit is handig voor toepassingen die op zoek zijn naar Azure, terwijl hun architectuur met hoge Beschik baarheid en herstel na nood gevallen (HADR) behouden blijft. 
 - Kunnen geclusterde toepassingen naar Azure worden gemigreerd als gevolg van SCSI-ondersteuning voor permanente reserve ringen. 
 - Ondersteunt gedeelde Azure-Premium-SSD voor alle versies van SQL Server en gedeelde Azure Ultra Disk Storage voor SQL Server 2019. 
 - Kan één gedeelde schijf gebruiken of meerdere gedeelde schijven verwijderen om een gedeelde opslag groep te maken. 
+- Ondersteunt FileStream.
 
 
 **Beperkingen**: 
-- Alleen beschikbaar voor SQL Server 2019 en Windows Server 2019 in preview. 
 - Virtuele machines moeten worden geplaatst in dezelfde beschikbaarheidsset en proximity-plaatsings groep.
 - Beschikbaarheids zones worden niet ondersteund.
 - Premium-SSD schijf cache gebruik wordt niet ondersteund.

@@ -3,12 +3,12 @@ title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373621"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373756"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -203,7 +203,7 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
 1. Open poorten voor de invoeg toepassing. De invoeg toepassing Azure Policy gebruikt deze domeinen en poorten om beleids definities en toewijzingen op te halen en de compatibiliteit van het cluster weer te geven aan Azure Policy.
 
-   |Domain |Poort |
+   |Domein |Poort |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -371,9 +371,9 @@ De Azure Policy taal structuur voor het beheren van Kubernetes volgt de bestaand
 
 Als onderdeel van de eigenschappen _Details. constraintTemplate_ en _Details. CONSTRAINT_ in de beleids definitie Azure Policy door gegeven de uri's van deze [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) naar de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)voor meer informatie.
 
-## <a name="assign-a-built-in-policy-definition"></a>Een ingebouwde beleids definitie toewijzen
+## <a name="assign-a-built-in-policy-definition"></a>Een ingebouwde beleidsdefinitie toewijzen
 
-Als u een beleids definitie wilt toewijzen aan uw Kubernetes-cluster, moet u de juiste bewerkingen voor beleids toewijzing op basis van op rollen gebaseerde toegangs beheer (RBAC). De ingebouwde RBAC-rollen Inzender en de **eigenaar** van het **resource beleid** hebben deze bewerkingen. Zie voor meer informatie [RBAC-machtigingen in azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+Als u een beleids definitie wilt toewijzen aan uw Kubernetes-cluster, moet u de juiste bewerkingen voor beleids toewijzing op basis van op rollen gebaseerde toegangs beheer (RBAC). De ingebouwde functies van het **resource beleid** van de functie voor Azure zijn Inzender en de **eigenaar** hebben deze bewerkingen. Zie voor meer informatie [RBAC-machtigingen in azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp van de Azure Portal door de volgende stappen uit te voeren:
 
@@ -399,7 +399,7 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
    - **Uitgeschakeld** : dwing het beleid niet af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden niet geweigerd. De resultaten van de nalevings beoordeling zijn nog steeds beschikbaar. Bij het implementeren van nieuwe beleids definities voor het uitvoeren van clusters, is de optie _uitgeschakeld_ handig voor het testen van de beleids definitie als toegangs aanvragen met schendingen niet worden geweigerd.
 
-1. Selecteer **Volgende**. 
+1. Selecteer **Next**. 
 
 1. **Parameter waarden** instellen 
 

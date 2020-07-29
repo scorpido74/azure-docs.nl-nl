@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084950"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373484"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Naarmate de Azure-infra structuur wordt verbeterd, zal micro soft hardware periodiek vernieuwen om ervoor te zorgen dat we de best mogelijke klant ervaring bieden. In de komende maanden kunnen we gateways toevoegen die zijn gebouwd op nieuwere hardware-generaties, verkeer naar hen migreren en uiteindelijk buiten gebruik stellen van gateways die zijn gebouwd op oudere hardware in sommige regio's.  
 
@@ -26,7 +26,20 @@ Klanten worden op de hoogte gesteld via e-mail en in het Azure Portal goed van e
 
 ## <a name="status-updates"></a>Status updates
 
-# <a name="in-progress"></a>[Actief](#tab/in-progress-ip)
+# <a name="in-progress"></a>[Wordt uitgevoerd](#tab/in-progress-ip)
+### <a name="september-2020"></a>September 2020
+
+Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's:
+
+- Europa-noord: 13.74.104.113 
+- West-VS2:40.78.248.10 
+- Europa-west: 52.236.184.163 
+- Zuid-Centraal VS: 20.45.121.1, 20.49.88.1 
+
+Bestaande SQL-gateways gaan verkeer accepteren in de volgende regio's:
+- Japan-Oost: 40.79.184.8, 40.79.192.5
+
+Deze SQL-gateways beginnen het accepteren van klant verkeer op 1 september 2020. 
 
 ### <a name="august-2020"></a>2020 augustus
 
@@ -43,18 +56,18 @@ Deze SQL-gateways beginnen het accepteren van klant verkeer op 10 augustus 2020.
 De volgende gateway migraties zijn voltooid: 
 
 ### <a name="october-2019"></a>Oktober 2019
-- Brazilië - zuid
+- Brazil South
 - VS - west
 - Europa -west
 - VS - oost
-- VS - centraal
+- Central US
 - Azië - zuidoost
 - VS - zuid-centraal
 - Europa - noord
 - VS - noord-centraal
 - Japan - west
-- Japan - oost
-- VS - oost 2
+- Japan East
+- US - oost 2
 - Azië - oost
 
 ---

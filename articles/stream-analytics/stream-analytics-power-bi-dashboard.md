@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314217"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens
 
@@ -184,16 +184,6 @@ De stream Analytics-taak begint met zoeken naar frauduleuze aanroepen in de binn
 
      ![Voltooide Power BI dash board met twee tegels voor frauduleuze aanroepen](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>Meer informatie over Power BI
-
-In deze zelf studie wordt gedemonstreerd hoe u slechts enkele soorten visualisaties voor een gegevensset maakt. Power BI kunt u hulp middelen voor het maken van andere klanten business intelligence voor uw organisatie. Raadpleeg de volgende bronnen voor meer ideeën:
-
-* Bekijk de video aan de slag [met Power bi](https://youtu.be/L-Z_6P56aas?t=1m58s) voor een ander voor beeld van een Power bi-dash board.
-* Raadpleeg de sectie [Power bi](stream-analytics-define-outputs.md#power-bi) van het artikel [Stream Analytics outputs](stream-analytics-define-outputs.md) voor meer informatie over het configureren van de uitvoer van streaming Analytics-taken naar Power bi en het gebruik van Power bi groepen. 
-* Zie [Dash boards in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)voor meer informatie over het gebruik van Power bi over het algemeen.
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>Meer informatie over beperkingen en aanbevolen procedures
 Op dit moment kunnen Power BI ongeveer één keer per seconde worden aangeroepen. Het streamen van visuele elementen ondersteunt pakketten van 15 KB. Dit houdt in dat het streamen van visuele elementen mislukt (maar pushen blijft werken). Als gevolg van deze beperkingen heeft Power BI zichzelf het belangrijkst voor gevallen waarin Azure Stream Analytics een aanzienlijke vermindering van gegevens belasting ondergaat. We raden u aan om een Tumblingvenstertriggers-venster of verspringen-venster te gebruiken om ervoor te zorgen dat de gegevens push per seconde Maxi maal één push is en dat uw query binnen de doorvoer vereisten valt.
 
@@ -234,12 +224,9 @@ Als een taak wordt gestart nadat het token is verlopen, treedt er een fout op en
 
 Nadat de autorisatie is vernieuwd met Power BI, wordt een groene waarschuwing weer gegeven in het autorisatie gebied om aan te geven dat het probleem is opgelost.
 
-## <a name="get-help"></a>Hulp vragen
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
-
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
+* [Stream Analytics uitvoer](stream-analytics-define-outputs.md)
 * [Naslag informatie voor de query taal Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Naslag informatie over Azure Stream Analytics beheer REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

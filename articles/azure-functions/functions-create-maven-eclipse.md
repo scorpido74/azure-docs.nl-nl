@@ -5,13 +5,13 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 6f521cccdc8814fad8605460bf87c0d0fca20378
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055614"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373314"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Maak uw eerste functie met Java en eclips 
 
@@ -28,7 +28,7 @@ Als u een functions-app met Java en intereclips wilt ontwikkelen, moet u het vol
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), versie 8.
 -  [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 -  [Eclips](https://www.eclipse.org/downloads/packages/), met Java-en Maven-ondersteuning.
--  [Azure CLI](/cli/azure)
+-  [Azure-CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > De omgevingsvariabele JAVA_HOME moet zijn ingesteld op de installatielocatie van de JDK om deze quickstart te kunnen voltooien.

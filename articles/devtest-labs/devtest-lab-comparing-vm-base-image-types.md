@@ -3,12 +3,12 @@ title: Aangepaste afbeeldingen en formules vergelijken in DevTest Labs | Microso
 description: Meer informatie over de verschillen tussen aangepaste installatie kopieën en formules als VM-basis, zodat u kunt bepalen welke methode het beste past bij uw omgeving.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dac820d0600745906e4b1aeef95806ed5679488a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484023"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287532"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Aangepaste afbeeldingen en formules in DevTest Labs vergelijken
 Zowel [aangepaste installatie kopieën](devtest-lab-create-template.md) als [formules](devtest-lab-manage-formulas.md) kunnen worden gebruikt als basis voor het [maken van nieuwe vm's](devtest-lab-add-vm.md). Het belangrijkste onderscheid tussen aangepaste afbeeldingen en formules is echter dat een aangepaste installatie kopie een afbeelding is op basis van een VHD, terwijl een formule een afbeelding is op basis van een VHD *naast* vooraf geconfigureerde instellingen, zoals de VM-grootte, het virtuele netwerk, het subnet en de artefacten. Deze vooraf geconfigureerde instellingen worden ingesteld met standaard waarden die kunnen worden overschreven op het moment dat de VM wordt gemaakt. In dit artikel worden enkele voor delen (voor-en nadelen) beschreven voor het gebruik van aangepaste installatie kopieën en het gebruik van formules.
@@ -41,7 +41,7 @@ Formules bieden een dynamische manier om Vm's te maken op basis van de gewenste 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Gerelateerde blog berichten
-* [Aangepaste afbeeldingen of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [Aangepaste afbeeldingen of formules?](./devtest-lab-faq.md#blog-post)
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Veelgestelde vragen over DevTest Labs](devtest-lab-faq.md)

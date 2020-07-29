@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b76e25b2961bf3fb268da6622cbfcce3a50a3396
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097606"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372889"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Ondersteuning voor het protocol Network File System (NFS) 3,0 in Azure Blob-opslag (preview-versie)
 
@@ -87,10 +87,8 @@ De volgende Azure Storage-functies worden niet ondersteund wanneer u het NFS 3,0
 
 - De mogelijkheid om NFS 3,0-ondersteuning uit te scha kelen in een opslag account (nadat u deze hebt ingeschakeld)
 
-- De mogelijkheid om te schrijven naar blobs met behulp van NFS 3,0 en andere REST Api's of Sdk's. 
-
-  Als u REST-Api's of Sdk's wilt gebruiken om naar een BLOB te schrijven, moet u ervoor zorgen dat u NFS 3,0 alleen gebruikt om Lees bewerkingen uit te voeren, anders kunnen blobs beschadigd raken.
-
+- Mogelijkheid om te schrijven naar blobs door REST Api's of Sdk's te gebruiken. 
+  
 ## <a name="nfs-30-features-not-yet-supported"></a>NFS 3,0-functies die nog niet worden ondersteund
 
 De volgende NFS 3,0-functies worden nog niet ondersteund met Azure Data Lake Storage Gen2.

@@ -3,15 +3,15 @@ title: Een virtuele Linux-machine maken met de REST API
 description: Meer informatie over het maken van een virtuele Linux-machine in azure die gebruikmaakt van Managed Disks-en SSH-verificatie met Azure REST API.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082559"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373399"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
 
@@ -150,5 +150,5 @@ Zie het volgende voor meer informatie over de Azure REST Api's of andere beheer 
 
 - [REST API Azure Compute-provider](/rest/api/compute/)
 - [Aan de slag gaan met Azure REST API](/rest/api/azure/)
-- [Azure CLI](/cli/azure/)
+- [Azure-CLI](/cli/azure/)
 - [Azure PowerShell-module](/powershell/azure/)

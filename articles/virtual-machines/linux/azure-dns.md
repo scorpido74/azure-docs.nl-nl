@@ -3,15 +3,15 @@ title: Opties voor DNS-naam omzetting voor virtuele Linux-machines
 description: Scenario's voor naam omzetting voor virtuele Linux-machines in azure IaaS, inclusief de meegeleverde DNS-services, hybride externe DNS en uw eigen DNS-server.
 author: RicksterCDN
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494731"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372821"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
 Azure biedt standaard DNS-naam omzetting voor alle virtuele machines die zich in één virtueel netwerk bevinden. U kunt uw eigen DNS-oplossing voor naam omzetting implementeren door uw eigen DNS-services te configureren op de virtuele machines die door Azure worden gehost. De volgende scenario's kunnen u helpen bij het kiezen van het abonnement dat geschikt is voor uw situatie.
@@ -35,7 +35,7 @@ In de volgende tabel ziet u scenario's en bijbehorende oplossingen voor naam omz
 Naast de resolutie van open bare DNS-namen biedt Azure interne naam omzetting voor virtuele machines en rolinstanties die zich in hetzelfde virtuele netwerk bevinden. In virtuele netwerken die zijn gebaseerd op Azure Resource Manager, is het DNS-achtervoegsel consistent in het virtuele netwerk. de FQDN is niet nodig. DNS-namen kunnen worden toegewezen aan zowel netwerk interface kaarten (Nic's) als virtuele machines. Hoewel voor de naam omzetting die Azure biedt geen configuratie vereist is, is het niet de juiste keuze voor alle implementatie scenario's, zoals wordt weer gegeven in de voor gaande tabel.
 
 ### <a name="features-and-considerations"></a>Functies en overwegingen
-**Functies**
+**Functies:**
 
 * Er is geen configuratie vereist voor het gebruik van naam omzetting die Azure biedt.
 * De service voor naam omzetting die Azure biedt, is Maxi maal beschikbaar. U hoeft geen clusters van uw eigen DNS-servers te maken en te beheren.

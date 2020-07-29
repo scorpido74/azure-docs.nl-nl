@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055661"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373994"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
@@ -78,7 +78,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | SubnetsNotInSameVnet | Een virtuele machine kan slechts één virtueel netwerk hebben. Zorg er bij het implementeren van verschillende Nic's voor dat deze deel uitmaken van hetzelfde virtuele netwerk. | [Meerdere Nic's](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | Bij het implementeren van netwerk bronnen wordt de resource provider micro soft. Network automatisch geregistreerd in het abonnement. Soms wordt de automatische registratie niet op tijd voltooid. U kunt deze fout voor komen door de resource provider micro soft. Network te registreren vóór de implementatie. | [Registratie oplossen](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Verwijder overbodige afhankelijkheden. | [Circulaire afhankelijkheden oplossen](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Verminder het aantal resource groepen voor één implementatie. | [Implementatie in meerdere resourcegroepen](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | Verminder het aantal resource groepen voor één implementatie. | [Implementatie op meerdere scopes](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>Fout code zoeken
 

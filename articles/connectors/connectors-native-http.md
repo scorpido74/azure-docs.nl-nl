@@ -7,11 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286628"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps
 
@@ -39,11 +40,11 @@ In dit artikel wordt beschreven hoe u een HTTP-trigger of actie kunt toevoegen a
 
 Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een eind punt en retourneert een antwoord.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer in het zoekvak van de ontwerp functie **ingebouwd**. Voer in het zoekvak in `http` als uw filter. Selecteer in de lijst **Triggers** de **http-** trigger.
 
-   ![HTTP-trigger selecteren](./media/connectors-native-http/select-http-trigger.png)
+   ![Selecteer HTTP-trigger](./media/connectors-native-http/select-http-trigger.png)
 
    In dit voor beeld wordt de naam van de trigger gewijzigd in ' HTTP trigger ', zodat de stap een meer beschrijvende naam heeft. Daarnaast voegt het voor beeld een HTTP-actie toe en beide namen moeten uniek zijn.
 
@@ -68,7 +69,7 @@ Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een ein
 
 Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een eind punt gemaakt en wordt een antwoord geretourneerd.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-trigger als eerste stap gebruikt.
 
@@ -161,7 +162,7 @@ Hier volgt hetzelfde voor beeld waarin de JSON-definitie van de HTTP-actie in de
 
 ## <a name="asynchronous-request-response-behavior"></a>Asynchroon gedrag van aanvraag-antwoord
 
-Standaard volgen alle op HTTP gebaseerde acties in Azure Logic Apps het standaard [asynchrone bewerkings patroon](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Met dit patroon wordt aangegeven dat nadat een HTTP-actie een aanvraag aanroept of naar een eind punt, service, systeem of API stuurt, de ontvanger onmiddellijk een antwoord ["202 accepted"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) retourneert. Met deze code wordt bevestigd dat de ontvanger de aanvraag heeft geaccepteerd, maar nog niet is verwerkt. Het antwoord kan een `location` kop bevatten die de URL en een vernieuwings-id specificeert die de oproepende functie kan gebruiken om de status van de asynchrone aanvraag te controleren of te bekijken totdat de ontvanger de verwerking stopt en een ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) -antwoord of ander niet-202-antwoord retourneert. De aanroeper hoeft echter niet te wachten tot de verwerking is voltooid en kan de volgende actie blijven uitvoeren. Zie asynchrone micro service- [integratie dwingt micro service autonom](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)af voor meer informatie.
+Standaard volgen alle op HTTP gebaseerde acties in Azure Logic Apps het standaard [asynchrone bewerkings patroon](/azure/architecture/patterns/async-request-reply). Met dit patroon wordt aangegeven dat nadat een HTTP-actie een aanvraag aanroept of naar een eind punt, service, systeem of API stuurt, de ontvanger onmiddellijk een antwoord ["202 accepted"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) retourneert. Met deze code wordt bevestigd dat de ontvanger de aanvraag heeft geaccepteerd, maar nog niet is verwerkt. Het antwoord kan een `location` kop bevatten die de URL en een vernieuwings-id specificeert die de oproepende functie kan gebruiken om de status van de asynchrone aanvraag te controleren of te bekijken totdat de ontvanger de verwerking stopt en een ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) -antwoord of ander niet-202-antwoord retourneert. De aanroeper hoeft echter niet te wachten tot de verwerking is voltooid en kan de volgende actie blijven uitvoeren. Zie asynchrone micro service- [integratie dwingt micro service autonom](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)af voor meer informatie.
 
 * In de ontwerp functie van de logische app is de HTTP-actie, maar niet geactiveerd, een **asynchrone patroon** instelling, die standaard is ingeschakeld. Met deze instelling geeft u op dat de aanroeper niet wacht totdat de verwerking is voltooid en kan worden verplaatst naar de volgende actie, maar blijft de status controleren totdat de verwerking stopt. Als deze instelling is uitgeschakeld, wordt hiermee aangegeven dat de aanroeper wacht totdat de verwerking is voltooid voordat u verdergaat met de volgende actie.
 
@@ -252,14 +253,14 @@ Zie de volgende secties voor meer informatie over trigger-en actie parameters:
 
 Hier vindt u meer informatie over de uitvoer van een HTTP-trigger of actie, waarmee deze gegevens worden geretourneerd:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |----------|------|-------------|
 | `headers` | JSON-object | De headers van de aanvraag |
 | `body` | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
 | `status code` | Geheel getal | De status code van de aanvraag |
 |||
 
-| Statuscode | Description |
+| Statuscode | Beschrijving |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Geaccepteerd |
@@ -273,3 +274,4 @@ Hier vindt u meer informatie over de uitvoer van een HTTP-trigger of actie, waar
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+

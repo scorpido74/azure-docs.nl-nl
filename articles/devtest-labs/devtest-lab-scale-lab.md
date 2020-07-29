@@ -3,12 +3,12 @@ title: Quota en limieten in uw Lab in Azure DevTest Labs schalen | Microsoft Doc
 description: In dit artikel wordt beschreven hoe u uw Lab in Azure DevTest Labs kunt schalen. Bekijk uw gebruiks quota's en limieten en vraag om een verhoging.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9c999760a649d4df4b34221633491b8ece784f52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477088"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287304"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Quota en limieten schalen in DevTest Labs
 Wanneer u in DevTest Labs werkt, merkt u misschien dat er bepaalde standaard limieten gelden voor sommige Azure-resources, die van invloed kunnen zijn op de service DevTest Labs. Deze limieten worden **quota's**genoemd.
@@ -20,12 +20,12 @@ U kunt elke Azure-Resource gebruiken totdat u het quotum bereikt. Elk abonnement
 
 Elk abonnement heeft bijvoorbeeld een standaard quotum van 20 kernen. Als u bijvoorbeeld virtuele machines in uw Lab maakt met vier kernen, kunt u slechts vijf Vm's maken.
 
-Met de [limieten voor Azure-abonnementen en-services](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) worden enkele van de meest voorkomende Quota's voor Azure-resources vermeld. De resources die het meest worden gebruikt in een lab en waarvoor u quota kunt tegen komen, zijn onder andere VM-kernen, open bare IP-adressen, netwerk interface, beheerde schijven, RBAC-roltoewijzing en ExpressRoute-circuits.
+Met de [limieten voor Azure-abonnementen en-services](../azure-resource-manager/management/azure-subscription-service-limits.md) worden enkele van de meest voorkomende Quota's voor Azure-resources vermeld. De resources die het meest worden gebruikt in een lab en waarvoor u quota kunt tegen komen, zijn onder andere VM-kernen, open bare IP-adressen, netwerk interface, beheerde schijven, RBAC-roltoewijzing en ExpressRoute-circuits.
 
 ## <a name="view-your-usage-and-quotas"></a>Uw gebruik en quota's weer geven
 In deze stappen ziet u hoe u de huidige quota's in uw abonnement kunt weer geven voor specifieke Azure-resources en kunt u zien welk percentage van elk quotum u hebt gebruikt.
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **meer services**en selecteer vervolgens **facturering** in de lijst.
 1. Selecteer een abonnement op de Blade facturering.
 4. Selecteer **gebruik en quota's**.
@@ -37,7 +37,7 @@ In deze stappen ziet u hoe u de huidige quota's in uw abonnement kunt weer geven
    ![Quota en gebruik](./media/devtest-lab-scale-lab/devtestlab-view-quotas-new.png)
 
 ## <a name="requesting-more-resources-in-your-subscription"></a>Meer resources aanvragen in uw abonnement
-Als u een quotum limiet bereikt, kan de standaard limiet van een resource in een abonnement worden verhoogd tot een maximum limiet, zoals beschreven in [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Als u een quotum limiet bereikt, kan de standaard limiet van een resource in een abonnement worden verhoogd tot een maximum limiet, zoals beschreven in [Azure-abonnement en service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 Deze stappen laten zien hoe u een quotum verhoging kunt aanvragen via de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 

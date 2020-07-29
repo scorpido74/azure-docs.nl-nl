@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025078"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373144"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -105,7 +105,19 @@ U kunt via de REST API programmatisch toegang krijgen tot de inhoud van de ontwi
 
 De API wordt beschreven in [de sectie wiki van de GitHub-opslag plaats][2]. Het kan worden gebruikt voor het automatiseren van de migratie van Portal-inhoud tussen omgevingen, bijvoorbeeld vanuit een test omgeving naar de productie omgeving. Meer informatie over dit proces vindt u [in dit documentatie artikel](https://aka.ms/apimdocs/migrateportal) op github.
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>Hoe kan ik van het beheerde naar de zelf-hostende versie?
+
+Raadpleeg het gedetailleerde artikel in [het gedeelte wiki van de opslag plaats voor ontwikkel aars van de ontwikkelaars Portal op github][2].
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>Kan ik meerdere portals voor ontwikkel aars hebben in één API Management service?
+
+U kunt één beheerde Portal en meerdere zelf-hostende Port alen hebben. De inhoud van alle portals wordt opgeslagen in dezelfde API Management-service, zodat ze identiek zijn. Als u de vormgeving en functionaliteit van portals wilt onderscheiden, kunt u ze zelf hosten met uw eigen aangepaste widgets die de pagina's in runtime dynamisch aanpassen, bijvoorbeeld op basis van de URL.
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Ondersteunt de portal Azure Resource Manager sjablonen en/of is deze compatibel met API Management DevOps Resource Kit?
+
+Nee.
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Is de inhoud van de portal opgeslagen met de functionaliteit voor back-up/herstel in API Management?
 
 Nee.
 
@@ -205,7 +217,7 @@ De aanroep fout kan ook worden veroorzaakt door een TLS/SSL-certificaat, dat wor
 | Apple Safari                | Ja<sup>1</sup> |
 | Google Chrome               | Ja<sup>1</sup> |
 | Microsoft Edge              | Ja<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Nee              |
 | Mozilla Firefox             | Ja<sup>1</sup> |
 
  <small><sup>1</sup> wordt ondersteund in de twee nieuwste productie versies.</small>
