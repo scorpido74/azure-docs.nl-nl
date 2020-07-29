@@ -8,6 +8,7 @@ ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515672"
