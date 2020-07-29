@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855915"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281732"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 voor prestaties afstemmen
 
@@ -47,7 +47,7 @@ Nadat u de bron-en netwerk connectiviteit knelpunten hebt opgelost, bent u klaar
 | AdlCopy    | Azure Data Lake Analytics eenheden | [Koppeling](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (Mapper) | [Koppeling](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [Koppeling](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Koppeling](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Koppeling](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>De structuur van uw gegevensset instellen
 

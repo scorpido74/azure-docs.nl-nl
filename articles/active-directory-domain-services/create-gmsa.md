@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005273"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281851"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure Active Directory Domain Services
 
@@ -76,7 +76,7 @@ Maak nu een gMSA met de cmdlet [New-ADServiceAccount][New-ADServiceAccount] . De
 * **-Naam** is ingesteld op *WebFarmSvc*
 * **-Path** para meter geeft u de aangepaste OE op voor de gMSA die u in de vorige stap hebt gemaakt.
 * DNS-vermeldingen en spn's (Service Principal Names) worden ingesteld voor *WebFarmSvc.aaddscontoso.com*
-* Principals in *AADDSCONTOSO-server $* mogen het wacht woord niet ophalen met behulp van de identiteit.
+* Principals in *AADDSCONTOSO-server $* mogen het wacht woord ophalen en de identiteit gebruiken.
 
 Geef uw eigen namen en domein namen op.
 

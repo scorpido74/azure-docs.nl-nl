@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a8702f14bfb9aed5a3595203dde1d86ea56a151b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 950fd82e14902c3a7a94fddb44d50ac372ebe119
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133817"
+ms.locfileid: "87177014"
 ---
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-portal](virtual-machines-disks-encryption-create-key-vault-portal.md)]
 
@@ -42,7 +42,7 @@ Het implementatie proces van de VM is vergelijkbaar met het standaard implementa
 1. Ga naar een virtuele machine die zich in dezelfde regio bevindt als een van de schijf versleutelings sets.
 1. Open de virtuele machine en selecteer **stoppen**.
 
-    ![Scherm afbeelding van de belangrijkste overlay voor uw voorbeeld-VM. Met de knop stoppen gemarkeerd](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
+    ![Scherm afbeelding van de belangrijkste overlay voor uw voorbeeld-VM, met de knop stoppen gemarkeerd.](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
 
 1. Nadat de VM is gestopt, selecteert u **schijven** en selecteert u vervolgens de schijf die u wilt versleutelen.
 

@@ -4,15 +4,16 @@ description: In dit artikel vindt u Naslag informatie voor de opdracht azcopy Jo
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e143a5e82b817aaba37750a8cce08e3f74f0abc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd25bec04d651c01d622f0652a29a65069421786
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220031"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281953"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
@@ -28,24 +29,24 @@ azcopy jobs resume [jobID] [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Opties
 
-|Optie|Description|
+|Optie|Beschrijving|
 |--|--|
-|--doel-SAS-teken reeks|De doel-SAS van het doel voor de opgegeven JobId.|
+|--doel-SAS-teken reeks|De doel-SAS van de doel locatie voor de opgegeven taak-ID.|
 |--teken reeks uitsluiten|Filter: deze mislukte overdracht (en) uitsluiten wanneer de taak wordt hervat. Bestanden moeten worden gescheiden door '; '.|
 |-h,--Help|Help-inhoud weer geven voor de opdracht hervatten.|
 |--reeks toevoegen|Filter: deze mislukte overdracht (en) zijn alleen beschikbaar wanneer de taak wordt hervat. Bestanden moeten worden gescheiden door '; '.|
-|--SAS-teken reeks |Bron-SAS van de bron voor de opgegeven JobId.|
+|--SAS-teken reeks |Bron-SAS van de bron voor de opgegeven taak-ID.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Description|
+|Optie|Beschrijving|
 |---|---|
-|--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
+|--Cap-Mbps-float|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
 |--vertrouwd-micro soft-achtervoegsels teken reeks   |Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 

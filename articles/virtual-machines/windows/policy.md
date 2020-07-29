@@ -6,15 +6,15 @@ manager: vashan
 ms.service: virtual-machines-windows
 ms.subservice: security
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: a0ff463bd7f77f8a4a138bf41698059102809215
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb847a8935a438b4d2668733e87571aefdca26a1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098693"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288280"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Beleid Toep assen op Windows-Vm's met Azure Resource Manager
 Door gebruik te maken van beleids regels kan een organisatie verschillende conventies en regels voor de hele onderneming afdwingen. Afdwinging van het gewenste gedrag kan het risico verkleinen en bijdragen aan het succes van de organisatie. In dit artikel wordt beschreven hoe u Azure Resource Manager-beleid kunt gebruiken om het gewenste gedrag voor de Virtual Machines van uw organisatie te definiëren.

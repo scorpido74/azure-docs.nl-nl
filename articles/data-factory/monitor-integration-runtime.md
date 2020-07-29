@@ -6,25 +6,26 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 07/25/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84113692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290449"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
   
-**Integration runtime** is de reken infrastructuur die wordt gebruikt door Azure Data Factory om verschillende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Er zijn drie typen Integration runtimes die worden aangeboden door Data Factory:
+**Integration runtime** is de reken infrastructuur die door Azure Data Factory (ADF) wordt gebruikt om verschillende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Er zijn drie typen Integration runtimes die worden aangeboden door Data Factory:
 
 - Azure Integration Runtime
 - Zelf-hostende Integration Runtime
-- Azure-SSIS-integratie-runtime
+- Azure-SQL Server Integration Services (SSIS) Integration runtime
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,9 +38,11 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 De cmdlet retourneert verschillende informatie voor verschillende typen Integration runtime. In dit artikel worden de eigenschappen en statussen van elk type Integration runtime beschreven.  
 
 ## <a name="azure-integration-runtime"></a>Azure Integration Runtime
+
 De reken resource voor een Azure Integration runtime wordt volledig beheerd in Azure. De volgende tabel bevat beschrijvingen voor eigenschappen die worden geretourneerd door de opdracht **Get-AzDataFactoryV2IntegrationRuntime** :
 
 ### <a name="properties"></a>Eigenschappen
+
 De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourneerd door de cmdlet voor een Azure Integration runtime:
 
 | Eigenschap | Beschrijving |
@@ -49,9 +52,10 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 | Locatie | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
 | DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
 | ResourceGroupName | De naam van de resource groep waartoe de data factory behoort.  |
-| Description | Beschrijving van de Integration runtime.  |
+| Beschrijving | Beschrijving van de Integration runtime.  |
 
 ### <a name="status"></a>Status
+
 De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
 
 | Status | Opmerkingen/Scenario's | 
@@ -60,6 +64,7 @@ De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
 | Offline | De Azure Integration runtime is offline vanwege een interne fout. |
 
 ## <a name="self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime
+
 Deze sectie bevat beschrijvingen voor eigenschappen die door de cmdlet Get-AzDataFactoryV2IntegrationRuntime worden geretourneerd. 
 
 > [!NOTE] 
@@ -91,6 +96,7 @@ U kunt uitschalen door het aantal knoop punten te verhogen. Wanneer u het aantal
 U kunt de berekende standaard waarde in het Azure Portal overschrijven. Selecteer Auteur > verbindingen > Integration Runtimes > > knooppunten te bewerken > gelijktijdige taak waarde per knoop punt te wijzigen. U kunt ook de opdracht Power shell [Update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) gebruiken.
   
 ### <a name="status-per-node"></a>Status (per knoop punt)
+
 De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration runtime-knoop punt:
 
 | Status | Beschrijving |
@@ -104,6 +110,7 @@ De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration ru
 Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten.
 
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Status (algemene zelf-hostende Integration runtime)
+
 De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration runtime. Deze status is afhankelijk van de status van alle knoop punten die deel uitmaken van de runtime. 
 
 | Status | Beschrijving |
@@ -152,71 +159,104 @@ Voorbeeld uitvoer (er wordt van uitgegaan dat er twee knoop punten zijn gekoppel
 } 
 ```
 
-
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS-integratie-runtime
-Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azure-machines (of knoop punten) die zijn toegewezen om uw SSIS-pakketten uit te voeren. Er worden geen andere activiteiten van Azure Data Factory uitgevoerd. Zodra u het hebt ingericht, kunt u de eigenschappen opvragen en de totale/knooppunt specifieke statussen controleren.
 
-### <a name="properties"></a>Eigenschappen
+Azure-SSIS IR is een volledig beheerd cluster met virtuele Azure-machines (of knoop punten) dat is toegewezen om uw SSIS-pakketten uit te voeren. U kunt SSIS-pakket uitvoeringen aanroepen op Azure-SSIS IR met behulp van verschillende methoden, bijvoorbeeld via Azure-SQL Server Data Tools (SSDT), AzureDTExec opdracht regel hulpprogramma, T-SQL op SQL Server Management Studio (SSMS)/SQL Server Agent en SSIS-pakket activiteiten uitvoeren in ADF-pijp lijnen. Azure-SSIS IR voert geen andere ADF-activiteiten uit. Wanneer u eenmaal hebt ingericht, kunt u de algemene/knooppunt specifieke eigenschappen en statussen controleren via Azure PowerShell, Azure Portal en Azure Monitor.
 
-| Eigenschap/status | Description |
-| --------------- | ----------- |
-| CreateTime | De UTC-tijd waarop uw Azure SSIS Integration runtime is gemaakt. |
-| Knooppunten | De toegewezen/beschik bare knoop punten van uw Azure-SSIS-integratie-runtime met knooppunt statussen (gestart/beschikbaar/recycling/niet beschikbaar) en bruikbare fouten. |
-| OtherErrors | De niet-knooppunt specifieke actie fouten op uw Azure SSIS Integration runtime. |
-| LastOperation | Het resultaat van de laatste start-en stop bewerking voor uw Azure SSIS Integration runtime met een actie bare fout (en) als deze is mislukt. |
-| Status | De algehele status van uw Azure SSIS Integration runtime (begin/start/gestart/gestopt). |
-| Locatie | De locatie van uw Azure SSIS Integration runtime. |
-| NodeSize | De grootte van elk knoop punt van uw Azure SSIS Integration runtime. |
-| NodeCount | Het aantal knoop punten in uw Azure SSIS Integration runtime. |
-| MaxParallelExecutionsPerNode | Het aantal parallelle uitvoeringen per knoop punt in uw Azure SSIS Integration runtime. |
-| CatalogServerEndpoint | Het eind punt van uw bestaande door SQL Database/SQL beheerde instantie voor het hosten van SSISDB. |
-| CatalogAdminUserName | De gebruikers naam van de beheerder van uw bestaande door SQL Database/SQL beheerd exemplaar. Data Factory-service gebruikt deze informatie om namens u SSISDB voor te bereiden en te beheren. |
-| CatalogAdminPassword | Het beheerders wachtwoord van uw bestaande door SQL Database/SQL beheerd exemplaar. |
-| CatalogPricingTier | De prijs categorie voor SSISDB die worden gehost door SQL Database.  Niet van toepassing op een SQL Managed instance die als host fungeert voor SSISDB. |
-| VNetId | De resource-ID van het virtuele netwerk voor uw Azure-SSIS Integration runtime om samen te voegen. |
-| Subnet | De naam van het subnet voor uw Azure-SSIS Integration runtime om samen te voegen. |
-| Id | De resource-ID van uw Azure SSIS Integration runtime. |
-| Type | Het type (beheerd/zelf-Hostend) van uw Azure SSIS Integration runtime. |
-| ResourceGroupName | De naam van uw Azure-resource groep waarin uw data factory en Azure-SSIS Integration runtime zijn gemaakt. |
-| DataFactoryName | De naam van uw Azure-data factory. |
-| Name | De naam van uw Azure SSIS Integration runtime. |
-| Description | De beschrijving van uw Azure SSIS Integration runtime. |
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>De Azure SSIS Integration runtime bewaken met Azure PowerShell
 
-  
-### <a name="status-per-node"></a>Status (per knoop punt)
-
-| Status | Beschrijving |
-| ------ | ----------- | 
-| Starten | Dit knoop punt wordt voor bereid. |
-| Beschikbaar | Met dit knoop punt kunt u SSIS-pakketten implementeren en uitvoeren. |
-| Recycl | Dit knoop punt wordt hersteld/opnieuw gestart. |
-| Niet beschikbaar | Dit knoop punt is niet gereed voor het implementeren/uitvoeren van SSIS-pakketten en heeft actie fouten/problemen die kunnen worden opgelost. |
-
-### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (algehele Azure-SSIS Integration runtime)
-
-| Algemene status | Description | 
-| -------------- | ----------- | 
-| Eerste | De knoop punten van uw Azure SSIS Integration runtime zijn niet toegewezen/voor bereid. | 
-| Starten | De knoop punten van uw Azure SSIS Integration runtime worden toegewezen/voor bereid en de facturering is gestart. |
-| Gestart | De knoop punten van uw Azure SSIS Integration runtime zijn toegewezen/voor bereid en ze zijn klaar om SSIS-pakketten te implementeren en uit te voeren. |
-| Stoppen  | De knoop punten van uw Azure SSIS Integration runtime worden vrijgegeven. |
-| Gestopt | De knoop punten van uw Azure SSIS Integration runtime zijn vrijgegeven en de facturering is gestopt. |
-
-### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>De Azure SSIS Integration runtime bewaken in de Azure Portal
-
-In de volgende scherm afbeeldingen ziet u hoe u de Azure-SSIS IR selecteert die u wilt bewaken en een voor beeld krijgt van de informatie die wordt weer gegeven.
-
-![Selecteer de Azure SSIS Integration runtime die u wilt bewaken](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
-
-![Informatie weer geven over de Azure-SSIS Integration runtime](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
-
-### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>De Azure SSIS Integration runtime controleren met Power shell
-
-Gebruik een script zoals het volgende voor beeld om de status van de Azure-SSIS IR te controleren.
+Gebruik de volgende Azure PowerShell-cmdlet om de eigenschappen en statussen van Azure-SSIS IR voor het hele knoop punt te controleren.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
+
+#### <a name="properties"></a>Eigenschappen
+
+De volgende tabel bevat beschrijvingen van eigenschappen die door de bovenstaande cmdlet voor een Azure-SSIS IR worden geretourneerd.
+
+| Eigenschap/status              | Beschrijving                  |
+| ---------------------------- | ---------------------------- |
+| CreateTime                   | De UTC-tijd waarop uw Azure-SSIS IR is gemaakt. |
+| Knooppunten                        | De toegewezen/beschik bare knoop punten van uw Azure-SSIS IR met knooppunt-specifieke statussen (starten/beschikbaar/recyclen/niet beschikbaar) en fouten die kunnen optreden. |
+| OtherErrors                  | De niet-knooppunt specifieke actie fouten op uw Azure-SSIS IR. |
+| LastOperation                | Het resultaat van de laatste start-en stop bewerking op uw Azure-SSIS IR met een actie bare fout (en) als deze is mislukt. |
+| Status                        | De algehele status van uw Azure-SSIS IR (begin/start/gestart/gestopt). |
+| Locatie                     | De locatie van uw Azure-SSIS IR. |
+| NodeSize                     | De grootte van elk knoop punt in uw Azure-SSIS IR. |
+| NodeCount                    | Het aantal knoop punten in uw Azure-SSIS IR. |
+| MaxParallelExecutionsPerNode | Het maximum aantal parallelle uitvoeringen per knoop punt in uw Azure-SSIS IR. |
+| CatalogServerEndpoint        | Het eind punt van uw bestaande Azure SQL Database Server of Managed instance to host SSIS Catalog (SSISDB). |
+| CatalogAdminUserName         | De gebruikers naam van de beheerder voor uw bestaande Azure SQL Database Server of een beheerd exemplaar. ADF gebruikt deze informatie om namens u SSISDB voor te bereiden en te beheren. |
+| CatalogAdminPassword         | Het beheerders wachtwoord voor uw bestaande Azure SQL Database Server of beheerde instantie. |
+| CatalogPricingTier           | De prijs categorie voor SSISDB die wordt gehost door Azure SQL Database Server.  Niet van toepassing op Azure SQL Managed instance hosting SSISDB. |
+| VNetId                       | De resource-ID van het virtuele netwerk waarmee de Azure-SSIS IR moet worden toegevoegd. |
+| Subnet                       | De naam van het subnet voor de Azure-SSIS IR die u wilt toevoegen. |
+| Id                           | De resource-ID van uw Azure-SSIS IR. |
+| Type                         | Het IR-type (beheerd/zelf-Hostend) van uw Azure-SSIS IR. |
+| ResourceGroupName            | De naam van uw Azure-resource groep waarin uw ADF en Azure-SSIS IR zijn gemaakt. |
+| DataFactoryName              | De naam van de ADF. |
+| Naam                         | De naam van uw Azure-SSIS IR. |
+| Beschrijving                  | De beschrijving van uw Azure-SSIS IR. |
+  
+#### <a name="status-per-azure-ssis-ir-node"></a>Status (per Azure-SSIS IR knoop punt)
+
+De volgende tabel bevat mogelijke statussen van een Azure-SSIS IR knoop punt:
+
+| Knooppunt-specifieke status | Beschrijving |
+| -------------------- | ----------- | 
+| Starten             | Dit knoop punt wordt voor bereid. |
+| Beschikbaar            | Met dit knoop punt kunt u SSIS-pakketten implementeren en uitvoeren. |
+| Recycl            | Dit knoop punt wordt hersteld/opnieuw gestart. |
+| Niet beschikbaar          | Dit knoop punt is niet gereed voor het implementeren/uitvoeren van SSIS-pakketten en heeft actie fouten/problemen die kunnen worden opgelost. |
+
+#### <a name="status-overall-azure-ssis-ir"></a>Status (totaal Azure-SSIS IR)
+
+De volgende tabel bevat mogelijke algemene statussen van een Azure-SSIS IR. De algemene status is afhankelijk van de gecombineerde status van alle knoop punten die deel uitmaken van de Azure-SSIS IR. 
+
+| Algemene status | Beschrijving | 
+| -------------- | ----------- | 
+| Eerste        | De knoop punten van uw Azure-SSIS IR zijn niet toegewezen/voor bereid. | 
+| Starten       | De knoop punten van uw Azure-SSIS IR worden toegewezen/voor bereid en de facturering is gestart. |
+| Gestart        | De knoop punten van uw Azure-SSIS IR zijn toegewezen/voor bereid en ze zijn klaar om SSIS-pakketten te implementeren en uit te voeren. |
+| Stoppen       | De knoop punten van uw Azure-SSIS IR worden vrijgegeven. |
+| Gestopt        | De knoop punten van uw Azure-SSIS IR zijn vrijgegeven en de facturering is gestopt. |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>De Azure SSIS Integration runtime in Azure Portal bewaken
+
+Als u uw Azure-SSIS IR in Azure Portal wilt bewaken, gaat u naar de pagina **Integration Runtimes** van **monitor** hub in de ADF-gebruikers interface, waar u al uw Integration Runtimes kunt zien.
+
+![Alle Integration Runtimes bewaken](media/monitor-integration-runtime/monitor-integration-runtimes.png)
+
+Selecteer vervolgens de naam van uw Azure-SSIS IR om de pagina controle te openen, waar u de eigenschappen en statussen van de algemene/specifieke knoop punten kunt zien.
+
+![Uw Azure-SSIS IR bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
+
+Op de **status** tegel van de pagina Azure-SSIS IR bewaking ziet u de algehele status, bijvoorbeeld **actief** of **gestopt**. Als u de status actief selecteert, **wordt** er een venster weer gegeven met de knop Live **stoppen** om de Azure-SSIS IR te stoppen. Als u de status **stopped** selecteert, wordt er een venster weer gegeven met de knop Live **Start** om uw Azure-SSIS IR te starten. Het pop-upvenster bevat ook de knop **uitvoeren SSIS-pakket** om automatisch een ADF-pijp lijn te genereren met de activiteit uitvoeren SSIS-pakket die op uw Azure-SSIS IR wordt uitgevoerd (Zie [SSIS-pakketten uitvoeren als uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) en het tekstvak **Resource-ID** van waaruit u uw Azure-SSIS IR resource-id () kunt kopiëren `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` die kan worden gebruikt voor het aanschaffen van extra Premium/gelicentieerde SSIS-onderdelen van onafhankelijke software leveranciers (isv's) en deze aan uw Azure-SSIS IR te binden (Zie [Premium/gelicentieerde onderdelen op uw Azure-SSIS IR installeren](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+
+![De tegel Azure-SSIS IR STATUS bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+Als u een project implementatie model gebruikt waarbij pakketten worden opgeslagen in SSISDB die worden gehost door uw Azure SQL Database Server of beheerde instantie, ziet u de tegel **SSISDB server-eind punt** op de pagina Azure-SSIS IR bewaking (Zie [uw implementatie-instellingen voor Azure-SSIS IR configureren](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Op deze tegel kunt u een koppeling selecteren met uw Azure SQL Database Server of een beheerd exemplaar om een venster te openen, waar u het server eindpunt vanuit een tekstvak kunt kopiëren en gebruiken wanneer u verbinding maakt vanuit SSMS om uw pakketten te implementeren, te configureren, uit te voeren en te beheren. In het pop-upvenster kunt u ook de koppeling **uw Azure SQL database of beheerde exemplaar instellingen weer geven** selecteren om uw SSISDB opnieuw te configureren/verg Roten of verkleinen in azure Portal.
+
+![De tegel Azure-SSIS IR-SSISDB bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
+
+Als u uw Azure-SSIS IR aan een VNet koppelt, ziet u de tegel **VNet/SUBNET valideren** op uw Azure-SSIS IR bewakings pagina (zie [uw Azure-SSIS IR toevoegen aan een vnet](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)). Op deze tegel kunt u een koppeling selecteren voor uw VNet en subnet om een venster te openen, waar u uw VNet-Resource-ID ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` ) en de naam van het subnet kopieert vanuit tekst vakken, en uw vnet-en subnet-configuraties kunt valideren om ervoor te zorgen dat de vereiste inkomende/uitgaande netwerk verkeer en het beheer van uw Azure-SSIS IR niet worden belemmerd.
+
+![De tegel Azure-SSIS IR-validatie bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+Op de tegel connectiviteit voor het controleren van de **verbinding** van de pagina bewaking van Azure-SSIS IR kunt u de **verbindings koppeling testen** selecteren om een venster te openen. hier kunt u de verbindingen tussen uw Azure-SSIS IR en relevante pakket-en configuratie-en gegevens archieven controleren, evenals beheer Services via hun Fully Qualified Domain Name (FQDN)/IP-adres en de aangewezen poort (Zie [verbindingen testen van uw Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
+
+![De tegel Azure-SSIS IR-diagnose controleren](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+
+Als u pakket implementatie model gebruikt waarbij pakketten worden opgeslagen in het bestands systeem/Azure Files/SQL Server Data Base (MSDB) gehost door uw door Azure SQL beheerd exemplaar en worden beheerd via Azure-SSIS IR pakket winkels, ziet u de tegel **pakket archieven** op de pagina voor Azure-SSIS IR controle (zie [uw Azure-SSIS IR implementatie-instellingen configureren](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Op deze tegel kunt u een koppeling selecteren met het aantal pakket archieven dat is gekoppeld aan uw Azure-SSIS IR om een venster te openen. hier kunt u de relevante gekoppelde services voor uw Azure-SSIS IR-pakket archieven opnieuw configureren op het bestands systeem/Azure Files/MSDB gehost door uw door Azure SQL beheerd exemplaar.
+
+![De tegel Azure-SSIS IR-pakket bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
+
+Als er problemen zijn met het starten/stoppen/onderhoud/bijwerken van uw Azure-SSIS IR, ziet u een tegel met een extra **fout (en)** op de pagina voor Azure-SSIS IR bewaking. Op deze tegel kunt u een koppeling selecteren met het aantal fouten dat door uw Azure-SSIS IR is gegenereerd om een venster weer te geven, waar u deze fouten in meer details kunt zien en kopiëren om de aanbevolen oplossingen te vinden in onze probleemoplossings handleiding (Zie [problemen met uw Azure-SSIS IR oplossen](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)).
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>De Azure SSIS Integration runtime bewaken met Azure Monitor
+
+Zie [SSIS-bewerkingen controleren met Azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)om uw Azure-SSIS IR te controleren met Azure monitor.
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Meer informatie over de Azure-SSIS Integration runtime
 
