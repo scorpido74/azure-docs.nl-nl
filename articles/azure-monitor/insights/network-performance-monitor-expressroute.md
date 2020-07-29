@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77660747"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326151"
 ---
 # <a name="expressroute-monitor"></a>Monitor voor ExpressRoute
 
@@ -22,7 +23,7 @@ U kunt de Azure ExpressRoute-monitor mogelijkheid gebruiken in [Netwerkprestatie
 
 ![Monitor voor ExpressRoute](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
-## <a name="configuration"></a>Configuratie 
+## <a name="configuration"></a>Configuration 
 Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter oplossing](network-performance-monitor.md) en selecteert **u configureren**.
 
 ### <a name="configure-network-security-group-rules"></a>Regels voor netwerk beveiligings groepen configureren 
@@ -108,7 +109,7 @@ Netwerkprestatiemeter helpt u bij het vaststellen van verschillende verbindings 
 
 U kunt de meldings codes bekijken en waarschuwingen instellen via **LogAnalytics**. Op de pagina **Diagnostische gegevens over NPM** ziet u beschrijvingen voor elk geactiveerde diagnostische berichten.
 
-| Meldings code (Logboeken) | Description |
+| Meldings code (Logboeken) | Beschrijving |
 | --- | --- |
 | 5501 | Kan niet door de secundaire verbinding van het ExpressRoute-circuit bladeren |
 | 5502 | Kan niet door de primaire verbinding van het ExpressRoute-circuit bladeren |
@@ -139,4 +140,5 @@ U kunt de meldings codes bekijken en waarschuwingen instellen via **LogAnalytics
  
 
 ## <a name="next-steps"></a>Volgende stappen
-[Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.
+[Zoek logboeken](../log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.
+

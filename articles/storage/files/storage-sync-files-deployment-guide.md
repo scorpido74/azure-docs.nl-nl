@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337344"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -29,7 +30,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     $PSVersionTable.PSVersion
     ```
 
-    Als uw PSVersion-waarde lager is dan 5,1. \* , zoals het geval is bij de meeste nieuwe installaties van Windows Server 2012 R2, kunt u eenvoudig bijwerken door [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)te downloaden en te installeren. Het juiste pakket om te downloaden en te installeren voor Windows Server 2012 R2 is **win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. MSU**. 
+    Als uw **PSVersion** -waarde lager is dan 5,1. \* , zoals het geval is bij de meeste nieuwe installaties van Windows Server 2012 R2, kunt u eenvoudig bijwerken door [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)te downloaden en te installeren. Het juiste pakket om te downloaden en te installeren voor Windows Server 2012 R2 is **win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. MSU**. 
 
     Power shell 6 + kan worden gebruikt met elk ondersteund systeem en kan worden gedownload via de [github-pagina](https://github.com/PowerShell/PowerShell#get-powershell). 
 
@@ -214,6 +215,8 @@ Als u Windows Server registreert voor een opslagsynchronisatieservice, wordt er 
 
 > [!Note]
 > De registratie van de server maakt gebruik van uw Azure-referenties voor het maken van een vertrouwens relatie tussen de opslag synchronisatie service en uw Windows-Server, maar de server maakt en gebruikt de eigen identiteit die geldig is zolang de server geregistreerd blijft en de huidige Shared Access Signature-token (opslag-SA'S) geldig is. Er kan geen nieuw SAS-token aan de server worden verleend zodra de registratie van de server ongedaan is gemaakt, waardoor de server de mogelijkheid heeft om toegang te krijgen tot uw Azure-bestands shares en de synchronisatie te stoppen.
+
+De beheerder die de server registreert, moet lid zijn van de **eigenaar** van de beheer rollen of **Inzender** voor de opgegeven opslag synchronisatie service. Dit kan worden geconfigureerd onder **Access Control (IAM)** in de Azure portal voor de opslag synchronisatie service.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 De gebruikers interface voor Server registratie moet automatisch worden geopend na de installatie van de Azure File Sync-agent. Als dat niet gebeurt, kunt u deze handmatig openen vanuit de bestandslocatie: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Wanneer de gebruikers interface voor Server registratie wordt geopend, selecteert u **Aanmelden** om te beginnen.

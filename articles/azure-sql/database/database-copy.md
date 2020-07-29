@@ -10,25 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045296"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309253"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database biedt verschillende methoden voor het maken van een transactioneel consistente kopie van een bestaande [Data Base](single-database-overview.md) op dezelfde server of een andere server. U kunt een Data Base kopiëren met behulp van de Azure Portal, Power shell of T-SQL.
+Azure SQL Database biedt verschillende methoden voor het maken van een kopie van een bestaande [Data Base](single-database-overview.md) op dezelfde server of op een andere server. U kunt een Data Base kopiëren met behulp van Azure Portal, Power shell, Azure CLI of T-SQL.
 
 ## <a name="overview"></a>Overzicht
 
-Een database kopie is een moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gekopieerd. U kunt dezelfde server of een andere server selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte te hand haven of een andere reken grootte te gebruiken binnen dezelfde servicelaag (Edition). Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. Op dit moment kunt u de upgrade uitvoeren naar een wille keurige versie of deze Down graden. De aanmeldingen, gebruikers en machtigingen kunnen onafhankelijk worden beheerd. De kopie wordt gemaakt met de geo-replicatie technologie en zodra de seeding is voltooid, wordt de koppeling naar geo-replicatie automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de Kopieer bewerking van de data base. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
-
-> [!NOTE]
-> [Automatische database back-ups](automated-backups-overview.md) worden gebruikt wanneer u een kopie van een Data Base maakt.
+Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte van de bron database te hand haven of een andere reken grootte te gebruiken binnen dezelfde of een andere servicelaag. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de koppeling met geo-replicatie automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de Kopieer bewerking van de data base. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
 
 ## <a name="logins-in-the-database-copy"></a>Aanmeldingen in de database kopie
 
@@ -170,7 +168,7 @@ Zie [Azure SQL database beveiliging beheren na nood herstel](active-geo-replicat
 
 De volgende fouten zijn opgetreden tijdens het kopiëren van een data base in Azure SQL Database. Zie [Een Azure SQL Database kopiëren](database-copy.md) voor meer informatie.
 
-| Foutcode | Severity | Description |
+| Foutcode | Ernst | Beschrijving |
 | ---:| ---:|:--- |
 | 40635 |16 |De client met het IP-adres%. &#x2a;LS is tijdelijk uitgeschakeld. |
 | 40637 |16 |Het maken van de data base is momenteel uitgeschakeld. |

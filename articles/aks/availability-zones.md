@@ -5,11 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195570"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281222"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
 
@@ -27,16 +28,16 @@ U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfiguree
 
 AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de volgende regio's:
 
-* VS - centraal
-* VS - oost 2
+* US - centraal
+* US - oost 2
 * VS - oost
 * Frankrijk - centraal
-* Japan - oost
+* Japan East
 * Europa - noord
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
 * Europa -west
-* VS - west 2
+* West US 2
 
 De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met beschikbaarheids zones:
 
@@ -84,7 +85,7 @@ az aks create \
     --zones 1 2 3
 ```
 
-Het duurt een paar minuten om het AKS-cluster te maken.
+Het duurt enkele minuten om het AKS-cluster te maken.
 
 Bij het bepalen van de zone waarvan een nieuw knoop punt deel moet uitmaken, gebruikt een bepaalde AKS-knooppunt groep een [Aanbevolen zone verdeling die wordt geboden door de onderliggende Azure-virtual machine Scale sets][vmss-zone-balancing]. Een bepaalde AKS-knooppunt groep wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal Vm's of + \- 1 virtuele machine heeft in alle andere zones voor de schaalset.
 
@@ -98,7 +99,7 @@ Haal eerst de AKS-cluster referenties op met de opdracht [AZ AKS Get-credentials
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Gebruik vervolgens de opdracht [kubectl beschrijven][kubectl-describe] om de knoop punten in het cluster weer te geven. Filter op de waarde *failure-Domain.beta.kubernetes.io/zone* zoals weer gegeven in het volgende voor beeld:
+Gebruik vervolgens de opdracht [kubectl beschrijven][kubectl-describe] om de knoop punten in het cluster weer te geven en te filteren op de waarde *failure-Domain.beta.kubernetes.io/zone* . Het volgende voor beeld is voor een bash-shell.
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -130,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-Wanneer de schaal bewerking na een paar minuten is voltooid, moet de opdracht `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` een uitvoer bevatten die vergelijkbaar is met dit voor beeld:
+Wanneer de schaal bewerking na een paar minuten is voltooid, moet de opdracht `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` in een bash-shell een uitvoer bevatten die vergelijkbaar is met dit voor beeld:
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -151,7 +152,7 @@ We hebben nu twee extra knoop punten in zones 1 en 2. U kunt een toepassing impl
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-Door knoop punten weer te geven waarop uw peulen worden uitgevoerd, ziet u dat er peulen worden uitgevoerd op de knoop punten die overeenkomen met drie verschillende beschikbaarheids zones. Met de opdracht ziet u bijvoorbeeld `kubectl describe pod | grep -e "^Name:" -e "^Node:"` een uitvoer die er ongeveer als volgt uitziet:
+Door knoop punten weer te geven waarop uw peulen worden uitgevoerd, ziet u dat er peulen worden uitgevoerd op de knoop punten die overeenkomen met drie verschillende beschikbaarheids zones. Met de opdracht `kubectl describe pod | grep -e "^Name:" -e "^Node:"` in een bash-shell zou u bijvoorbeeld een uitvoer zien die er ongeveer als volgt uitziet:
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

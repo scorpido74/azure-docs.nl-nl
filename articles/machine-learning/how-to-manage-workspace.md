@@ -5,17 +5,17 @@ description: Meer informatie over het maken, weer geven en verwijderen van Azure
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: dccf8b2e9608de4f22f9782eb9f3cdb489e18be3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045702"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319708"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -90,7 +90,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Typ **machine learning**in het bovenste zoek veld.  
 

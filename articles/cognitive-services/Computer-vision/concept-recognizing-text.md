@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207049"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284248"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
@@ -24,7 +24,7 @@ De Computer Vision-API van micro soft bevat OCR-mogelijkheden (Optical Character
 
 ## <a name="read-api"></a>API lezen 
 
-De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) van computer vision is de nieuwste OCR-technologie van micro soft waarmee gedrukte tekst (zeven talen), handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst van in-the-Wild-tekst zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst (alleen Engels) in dezelfde afbeelding of hetzelfde document. Raadpleeg de volledige lijst met [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) voor de OCR-pagina.
+De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) van computer vision is de nieuwste OCR-technologie van micro soft waarmee gedrukte tekst in verschillende talen, handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's wordt geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst van in-the-Wild-tekst zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst (alleen Engels) in dezelfde afbeelding of hetzelfde document. Raadpleeg de volledige lijst met [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) voor de OCR-pagina.
 
 ### <a name="how-ocr-works"></a>Hoe OCR werkt
 
@@ -94,7 +94,7 @@ Een geslaagde reactie wordt geretourneerd in de JSON-indeling, zoals wordt weer 
 
 Volg de Snelstartgids [gedrukte en handgeschreven tekst uitpakken](./QuickStarts/CSharp-hand-text.md) om OCR te implementeren met C# en de rest API.
 
-### <a name="input-requirements"></a>Invoer vereisten
+### <a name="input-requirements"></a>Vereisten voor invoer
 
 De Lees-API heeft de volgende invoer:
 * Ondersteunde bestands indelingen: JPEG, PNG, BMP, PDF en TIFF
@@ -123,7 +123,7 @@ De Lees bewerking biedt nu alleen ondersteuning voor het extra heren van handges
 
 ### <a name="printed-text-in-supported-languages"></a>Gedrukte tekst in ondersteunde talen
 
-De Lees-API biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u het overzicht van de OCR API in dit document. Raadpleeg de lijst met alle talen die door [OCR worden ondersteund](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)
+De Lees 3,0-API biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. [Lees 3,1-Preview. 1 API open bare preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u het overzicht van de OCR API in dit document. Raadpleeg de lijst met alle talen die door [OCR worden ondersteund](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)
 
 ![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/supported-languages-example.png)
 
@@ -137,7 +137,7 @@ De Lees-API ondersteunt afbeeldingen en documenten met meerdere talen, die vaak 
 
 Net als bij alle cognitieve services moeten ontwikkel aars die de Lees service gebruiken op de hoogte zijn van het micro soft-beleid voor klant gegevens. Zie de pagina Cognitive Services in het [micro soft vertrouwens centrum](https://www.microsoft.com/en-us/trust-center/product-overview) voor meer informatie.
 
-### <a name="deploy-on-premises"></a>On-premises implementeren
+### <a name="containers-for-on-premise-deployment"></a>Containers voor on-premises implementatie
 
 Lezen is ook beschikbaar als docker-container (preview), zodat u de nieuwe OCR-mogelijkheden kunt implementeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. Zie [Lees containers installeren en uitvoeren.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
@@ -149,4 +149,5 @@ De [OCR-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [lees 3,0-rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
+- Meer informatie over de [lees 3,1-Preview. 1 rest API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees.
 - Volg de Snelstartgids voor het [uitpakken van tekst](./QuickStarts/CSharp-hand-text.md) voor het implementeren van OCR met C#, Java, java script of python samen met rest API.

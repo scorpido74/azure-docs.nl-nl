@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: e28fc3c5779f2c31abbb48a7ced448cd8f92d1a2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 3f24e3538f05ca3b6a27907e0b794705402fce7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171846"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285438"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -41,8 +41,8 @@ Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd.
 Back-ups worden bewaard op basis van de instelling voor de Bewaar periode voor back-ups op de server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. De standaard Bewaar periode is 7 dagen. U kunt de Bewaar periode instellen tijdens het maken van de server of later door de back-upconfiguratie bij te werken met [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration) of [Azure cli](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration). 
 
 De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel naar een bepaald tijdstip kan worden opgehaald, omdat het is gebaseerd op back-ups die beschikbaar zijn. De Bewaar periode voor back-ups kan ook worden behandeld als een herstel venster van een Restore-perspectief. Alle back-ups die zijn vereist voor het uitvoeren van een herstel naar een bepaald tijdstip binnen de Bewaar periode voor back-ups, worden bewaard in back-upopslag. Als de Bewaar periode voor back-ups bijvoorbeeld is ingesteld op 7 dagen, wordt het herstel venster als laatste 7 dagen beschouwd. In dit scenario blijven alle back-ups die nodig zijn om de server in de afgelopen 7 dagen te herstellen, behouden. Met een Bewaar periode voor back-ups van zeven dagen:
-- Oudere servers met een opslag van 4 TB behouden Maxi maal twee volledige back-ups van de data base, alle differentiële back-ups en back-ups van transactie logboeken die zijn uitgevoerd sinds de eerste volledige back-up van de data base.
--   Servers met grote opslag (16 TB) behouden de volledige database momentopname, alle differentiële moment opnamen en back-ups van transactie Logboeken in de afgelopen 8 dagen.
+- Servers met Maxi maal 4 TB opslag behouden Maxi maal twee volledige back-ups van de data base, alle differentiële back-ups en back-ups van transactie logboeken die zijn uitgevoerd sinds de eerste volledige back-up van de data base.
+-   Servers met Maxi maal 16 TB opslag behouden de volledige database momentopname, alle differentiële moment opnamen en back-ups van transactie Logboeken in de afgelopen 8 dagen.
 
 ### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525939"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284673"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Virtuele Linux-machine wordt opgestart naar grub-herstel
 
@@ -35,7 +35,7 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 * Als u het fout bericht **Onbekend bestands**systeem krijgt, kan deze fout optreden als gevolg van een beschadigd bestandssysteem op de opstart partitie of een onjuiste kernel-configuratie.
 
    * Voor problemen met het bestands systeem volgt u de stappen in het artikel [Linux Recovery: kan geen SSH-naar-virtuele Linux-machine uitvoeren vanwege bestandssysteem fouten (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
-   * Voor kernel-problemen voert u de stappen in het artikel [Linux Recovery uit: hand matig problemen](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)met de kernel oplossen of Linux- [herstel: problemen oplossen die betrekking hebben op kernel-problemen met behulp van chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
+   * Voor kernel-problemen voert u de stappen in het artikel [Linux Recovery uit: hand matig problemen](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)met de kernel oplossen of Linux- [herstel: problemen oplossen die betrekking hebben op kernel-problemen met behulp van chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
    
 ### <a name="error---file-not-found"></a>Fout: bestand niet gevonden
 

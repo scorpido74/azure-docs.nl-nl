@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: Een SaaS-aanbieding maken
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Verificatie met Azure AD voor SaaS
+              items:
+                - name: Overzicht van Azure AD en SaaS
+                  href: ./azure-ad-saas.md
+                - name: Landingspagina voor aanbiedingen met een transactie
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: Landingspagina voor aanbiedingen voor gratis proefversies
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS-uitvoerings-API's
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337089"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
 
@@ -213,13 +213,13 @@ Een van de belangrijkste functies van IoT Central is de mogelijkheid om automati
 
 De volgende code fragmenten tonen de indeling van de extra Payload die het apparaat moet verzenden tijdens de registratie aanroep DPS voor automatische koppeling.
 
-Dit is de indeling voor apparaten die de algemeen beschik bare apparaat-SDK gebruiken die geen ondersteuning biedt voor IoT Plug en Play:
+Dit is de indeling voor apparaten die de algemeen beschik bare apparaat-SDK gebruiken:
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-Dit is de indeling voor apparaten met een open bare preview apparaat-SDK die ondersteuning biedt voor IoT Plug en Play:
+Dit is de indeling voor apparaten met de SDK van het open bare preview-apparaat:
 
 ```javascript
 '__iot:interfaces': {
@@ -280,8 +280,6 @@ De volgende tabel bevat een overzicht van de manier waarop functies van Azure Io
 | Eigenschap | Dubbele gerapporteerde eigenschappen van het apparaat |
 | Eigenschap (schrijfbaar) | Dubbele gewenste en gerapporteerde eigenschappen van het apparaat |
 | Opdracht | Directe methoden |
-
-Zie voor meer informatie over het gebruik van de apparaat-Sdk's [een MXChip IOT DevKit-apparaat verbinden met uw Azure IOT Central-toepassing](howto-connect-devkit.md) voor voorbeeld code.
 
 ### <a name="protocols"></a>Protocollen
 

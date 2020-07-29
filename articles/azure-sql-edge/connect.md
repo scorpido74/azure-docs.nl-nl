@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252641"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373110"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Verbinding maken met Azure SQL Edge en query's uitvoeren (preview-versie)
 
@@ -29,7 +29,7 @@ In Azure SQL Edge kunt u, nadat u een container hebt geïmplementeerd, verbindin
 
 U kunt verbinding maken met een exemplaar van de Azure SQL Edge-instantie vanuit een van deze algemene hulpprogram ma's:
 
-* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): Sqlcmd-client hulpprogramma's zijn al opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan een actieve container met een interactieve bash-shell koppelt, kunt u de hulpprogram ma's lokaal uitvoeren.
+* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): Sqlcmd-client hulpprogramma's zijn al opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan een actieve container met een interactieve bash-shell koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
@@ -55,7 +55,7 @@ Als u verbinding wilt maken met een Azure SQL Edge data base-engine vanaf een ne
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Verbinding maken met de data base-engine vanuit de container
 
-De [SQL Server opdracht regel Programma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) zijn opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan de container met een interactieve opdracht prompt koppelt, kunt u de hulpprogram ma's lokaal uitvoeren.
+De [SQL Server opdracht regel Programma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) zijn opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan de container met een interactieve opdracht prompt koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
 
 1. Gebruik de `docker exec -it` opdracht om een interactieve bash-shell in de container die wordt uitgevoerd te starten. In het volgende voor beeld `e69e056c702d` is de container-ID.
 

@@ -2,19 +2,16 @@
 title: Problemen met Azure Automation runbook oplossen
 description: In dit artikel leest u hoe u problemen met Azure Automation runbooks oplost en oplost.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337293"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbooks oplossen
 
@@ -511,6 +508,24 @@ Als u meer dan 500 minuten van verwerking per maand wilt gebruiken, wijzigt u uw
 1. Selecteer **instellingen**en selecteer vervolgens **prijzen**.
 1. Selecteer op de pagina onder **inschakelen** om uw account te upgraden naar de laag basis.
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Scenario: Runbook-uitvoer stroom groter dan 1 MB
+
+### <a name="issue"></a>Probleem
+
+Het runbook dat wordt uitgevoerd in de Azure sandbox mislukt met de volgende fout:
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>Oorzaak
+
+Deze fout treedt op omdat uw runbook heeft geprobeerd te veel uitzonderings gegevens te schrijven naar de uitvoer stroom.
+
+### <a name="resolution"></a>Oplossing
+
+Er is een limiet van 1 MB voor de uitvoer stroom van de taak. Zorg ervoor dat uw runbook aanroepen naar een uitvoerbaar bestand of subproces samensluit met behulp van `try` en `catch` blokken. Als de bewerkingen een uitzonde ring veroorzaken, laat u de code het bericht van de uitzonde ring in een Automation-variabele schrijven. Met deze techniek wordt voor komen dat het bericht naar de uitvoer stroom van de taak wordt geschreven. Voor Hybrid Runbook Worker taken die worden uitgevoerd, wordt de uitvoer stroom afgekapt tot 1 MB zonder fout bericht.
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>Scenario: het starten van een Runbook-taak is drie keer gestart, maar kan niet elke keer worden gestart
 
 ### <a name="issue"></a>Probleem
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 Deze fout treedt op als gevolg van een van de volgende problemen:
 
 * **Geheugen limiet.** Een taak kan mislukken als er meer dan 400 MB aan geheugen wordt gebruikt. De gedocumenteerde limieten voor geheugen die aan een sandbox zijn toegewezen, worden gevonden bij [limieten voor Automation-Service](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). 
+
 * **Netwerk sockets.** Azure-sandboxes zijn beperkt tot 1.000 gelijktijdige netwerk sockets. Zie voor meer informatie [Automation-Service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+
 * **Module is niet compatibel.** Module-afhankelijkheden zijn mogelijk niet juist. In dit geval retourneert uw runbook meestal een `Command not found` of- `Cannot bind parameter` bericht.
+
 * **Geen verificatie met Active Directory voor sandbox.** Uw runbook heeft geprobeerd een uitvoerbaar of subproces dat wordt uitgevoerd in een Azure sandbox aan te roepen. Het configureren van runbooks om te verifiëren met Azure AD met behulp van de Azure Active Directory Authentication Library (ADAL) wordt niet ondersteund.
-* **Te veel uitzonderings gegevens.** Uw runbook heeft geprobeerd te veel uitzonderings gegevens te schrijven naar de uitvoer stroom.
 
 ### <a name="resolution"></a>Oplossing
 
 * **Geheugen limiet, netwerk sockets.** Voorgestelde manieren om binnen de geheugen limieten te werken, zijn om de werk belasting over meerdere runbooks te verdelen, minder gegevens in het geheugen te verwerken, overbodige uitvoer van runbooks te vermijden en te bepalen hoeveel controle punten worden geschreven naar uw runbooks in Power shell workflow. Gebruik de methode Clear, zoals `$myVar.clear` , om variabelen te wissen en `[GC]::Collect` direct te gebruiken om garbagecollection onmiddellijk uit te voeren. Deze acties verminderen het geheugen gebruik van uw runbook tijdens runtime.
+
 * **Module is niet compatibel.** Werk uw Azure-modules bij door de stappen te volgen in de [Azure Automation Azure PowerShell-modules bij te werken](../automation-update-azure-modules.md).
+
 * **Geen verificatie met Active Directory voor sandbox.** Wanneer u zich met een runbook verifieert bij Azure AD, moet u ervoor zorgen dat de Azure AD-module beschikbaar is in uw Automation-account. Zorg ervoor dat u het uitvoeren als-account de benodigde machtigingen verleent om de taken uit te voeren die door het runbook worden geautomatiseerd.
 
   Als uw runbook geen uitvoerbaar of subproces kan aanroepen dat wordt uitgevoerd in een Azure-sandbox, gebruikt u het runbook op een [Hybrid Runbook worker](../automation-hrw-run-runbooks.md). Hybrid Workers worden niet beperkt door de geheugen-en netwerk limieten die Azure-sandboxes hebben.
-
-* **Te veel uitzonderings gegevens.** Er is een limiet van 1 MB voor de uitvoer stroom van de taak. Zorg ervoor dat uw runbook aanroepen naar een uitvoerbaar bestand of subproces samensluit met behulp van `try` en `catch` blokken. Als de bewerkingen een uitzonde ring veroorzaken, laat u de code het bericht van de uitzonde ring in een Automation-variabele schrijven. Met deze techniek wordt voor komen dat het bericht naar de uitvoer stroom van de taak wordt geschreven.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Scenario: Power shell-taak mislukt met fout bericht ' kan methode niet aanroepen '
 

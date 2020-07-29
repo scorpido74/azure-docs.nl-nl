@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695331"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337140"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-architectuur
 
@@ -29,7 +30,7 @@ Apparaten wisselen gegevens uit met uw Azure IoT Central-toepassing. Een apparaa
 - Metingen zoals telemetrie verzenden.
 - Synchroniseer de instellingen met uw toepassing.
 
-In azure IoT Central worden de gegevens die een apparaat kan uitwisselen met uw toepassing opgegeven in een sjabloon voor een apparaat. Zie [meta gegevens beheer](#metadata-management)voor meer informatie over Apparaatinstellingen.
+De gegevens die een apparaat met uw toepassing kan uitwisselen, worden in Azure IoT Central gespecificeerd in een apparaatsjabloon. Zie [meta gegevens beheer](#metadata-management)voor meer informatie over Apparaatinstellingen.
 
 Raadpleeg [connectiviteit](concepts-get-connected.md)van apparaten voor meer informatie over de manier waarop apparaten verbinding maken met uw Azure IOT Central-toepassing.
 
@@ -134,7 +135,7 @@ In een Azure IoT Central-toepassing worden met Apparaatinstellingen het gedrag e
 
 In een IoT Central toepassings apparaat sjabloon bevat:
 
-- Met **hulp modellen voor apparaten** kunt u de mogelijkheden van een apparaat opgeven, zoals de telemetrie die het verzendt, de eigenschappen die de status van het apparaat definiëren en de opdrachten waarop het apparaat reageert. De mogelijkheden van het apparaat zijn ingedeeld in een of meer interfaces. Zie de documentatie van [IoT Plug en Play (preview)](../../iot-pnp/overview-iot-plug-and-play.md) voor meer informatie over de mogelijkheden van apparaten.
+- Met **hulp modellen voor apparaten** kunt u de mogelijkheden van een apparaat opgeven, zoals de telemetrie die het verzendt, de eigenschappen die de status van het apparaat definiëren en de opdrachten waarop het apparaat reageert. De mogelijkheden van het apparaat zijn ingedeeld in een of meer interfaces.
 - Met **Cloud eigenschappen** geeft u de eigenschappen op IOT Central winkels voor een apparaat. Deze eigenschappen worden alleen opgeslagen in IoT Central en worden nooit naar een apparaat verzonden.
 - Met **weer gaven** worden de Dash boards en formulieren opgegeven die de opbouw functie maakt, zodat de operator de apparaten kan controleren en beheren.
 - Met **aanpassingen** kunnen de opbouw functie enkele van de definities in het hulp model van het apparaat overschrijven zodat deze relevanter worden voor de IOT Central-toepassing.

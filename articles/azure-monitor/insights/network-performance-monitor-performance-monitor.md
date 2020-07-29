@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326117"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netwerkprestatiemeter oplossing: prestatie bewaking
 
@@ -26,7 +26,7 @@ Met de functie prestatie meter in [Netwerkprestatiemeter](network-performance-mo
 
 ![Netwerkprestatiemeter](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter-oplossing](network-performance-monitor.md)en selecteert **u configureren**.
 
 ![Netwerkprestatiemeter configureren](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
@@ -128,4 +128,5 @@ In de volgende afbeelding wordt de hoofd oorzaak van de probleem gebieden naar d
 ![Topologie toewijzing met geselecteerde knooppunt eigenschappen](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.
+[Zoek logboeken](../log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.
+

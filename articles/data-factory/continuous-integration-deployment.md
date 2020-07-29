@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336919"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -48,7 +49,7 @@ Hieronder volgt een voor beeld van een overzicht van de CI/CD-levens cyclus in e
 
 1.  Nadat een pull-aanvraag is goedgekeurd en wijzigingen zijn samengevoegd in de hoofd vertakking, worden de wijzigingen gepubliceerd in de ontwikkelings-Factory.
 
-1.  Wanneer het team gereed is om de wijzigingen in een test-of bedoeld-fabriek te implementeren, gaat het team naar de release van Azure pipeline en implementeert de gewenste versie van de Development Factory naar bedoeld. Deze implementatie vindt plaats als onderdeel van een Azure-pijplijn taak en maakt gebruik van Resource Manager-sjabloon parameters om de juiste configuratie toe te passen.
+1.  Wanneer het team gereed is voor het implementeren van de wijzigingen van een test-of bedoeld (acceptatie test door gebruiker), gaat het team naar de release van Azure pipeline en implementeert de gewenste versie van de Development Factory naar bedoeld. Deze implementatie vindt plaats als onderdeel van een Azure-pijplijn taak en maakt gebruik van Resource Manager-sjabloon parameters om de juiste configuratie toe te passen.
 
 1.  Nadat de wijzigingen zijn geverifieerd in de test-Factory, implementeert u deze in de productie-Factory met behulp van de volgende taak van de pijp lijnen release.
 
@@ -107,7 +108,7 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pijp lijnen 
 
     f.  Selecteren **...** Naast het vak **sjabloon parameters** om het parameter bestand te kiezen. Zoek naar het bestand `ARMTemplateParametersForFactory.json` in de <FactoryName> map van de vertakking adf_publish.
 
-    bijvoorbeeld  Selecteren **...** Naast het vak **sjabloon parameters negeren** en voer de gewenste parameter waarden in voor de doel Data Factory. Voer de naam van het geheim tussen dubbele aanhalings tekens in voor de referenties die afkomstig zijn van Azure Key Vault. Als de naam van het geheim bijvoorbeeld cred1 is, voert u **$ (cred1)** in voor deze waarde.
+    g.  Selecteren **...** Naast het vak **sjabloon parameters negeren** en voer de gewenste parameter waarden in voor de doel Data Factory. Voer de naam van het geheim tussen dubbele aanhalings tekens in voor de referenties die afkomstig zijn van Azure Key Vault. Als de naam van het geheim bijvoorbeeld cred1 is, voert u **$ (cred1)** in voor deze waarde.
 
     h. Selecteer **Incrementeel** voor de **implementatie modus**.
 
@@ -304,7 +305,7 @@ Hier volgt een voor beeld van hoe een parameterisering-sjabloon eruit kan zien:
 ```
 Hier volgt een uitleg van de manier waarop de vorige sjabloon is samengesteld, onderverdeeld op resource type.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Pijplijnen
     
 * Een eigenschap in het pad `activities/typeProperties/waitTimeInSeconds` is para meters. Alle activiteiten in een pijp lijn met de naam eigenschap `waitTimeInSeconds` (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap `headers` (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als die van de bron-Factory.

@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 42924b4ac5493fc910079ca1f89a6195ccba55e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007908"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305088"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Versies en geschiedenis van configuratie schema's voor Windows Azure Diagnostics extension (WAD)
 Dit artikel bevat de versie geschiedenis van de [wad-schema versies (Azure Diagnostics extension for Windows)](diagnostics-extension-overview.md) die als onderdeel van de Microsoft Azure SDK worden geleverd.  
@@ -47,7 +47,7 @@ Verschillende versies van Azure Diagnostics gebruiken verschillende configuratie
 ### <a name="diagnostics-extension-111"></a>Uitbrei ding voor diagnostische gegevens 1,11
 Er is ondersteuning toegevoegd voor de Azure Monitor sink. Deze sink is alleen van toepassing op prestatie meter items. Hiermee wordt het verzenden van prestatie meter items die zijn verzameld op uw virtuele machine, VMSS of Cloud service, mogelijk om Azure Monitor als aangepaste metrische gegevens. De Azure Monitor Sink ondersteunt:
 * Ophalen van alle prestatie meter items die zijn verzonden naar Azure Monitor via de [API voor Azure monitor metrische gegevens.](/rest/api/monitor/metrics/list)
-* Waarschuwingen voor alle prestatie meter items die worden verzonden naar Azure Monitor via de nieuwe [Unified Alerts-ervaring](../../azure-monitor/platform/alerts-overview.md) in azure monitor
+* Waarschuwingen voor alle prestatie meter items die worden verzonden naar Azure Monitor via de nieuwe [Unified Alerts-ervaring](./alerts-overview.md) in azure monitor
 * De operator wild behandelen in prestatie meter items als de dimensie ' instance ' op uw metrische waarde. Als u bijvoorbeeld het \* prestatie meter item ' Logical ()/DiskWrites/sec ' hebt verzameld, kunt u de dimensie ' instance ' filteren en splitsen voor het uitzetten of waarschuwen van schrijf bewerkingen per seconde voor elke logische schijf (C:, D:, enzovoort).
 
 Azure Monitor definiëren als een nieuwe sink in de configuratie van de diagnostische gegevens
@@ -155,7 +155,7 @@ Het opslag type is toegevoegd aan PublicConfig. Para kan *Table*, *BLOB*, *Table
 De mogelijkheid om naar EventHub te sturen is toegevoegd.
 
 ### <a name="diagnostics-extension-15"></a>Uitbrei ding voor diagnostische gegevens 1,5
-Het sinks-element is toegevoegd en de mogelijkheid om diagnostische gegevens naar [Application Insights](../../azure-monitor/app/cloudservices.md) te verzenden, waardoor het eenvoudiger wordt om problemen op te sporen in uw toepassing en op het niveau van het systeem en de infra structuur.
+Het sinks-element is toegevoegd en de mogelijkheid om diagnostische gegevens naar [Application Insights](../app/cloudservices.md) te verzenden, waardoor het eenvoudiger wordt om problemen op te sporen in uw toepassing en op het niveau van het systeem en de infra structuur.
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 en diagnostische uitbrei ding 1,3
 Voor Cloud service projecten in Visual Studio zijn de volgende wijzigingen aangebracht. (Deze wijzigingen zijn ook van toepassing op latere versies van de Azure SDK.)
@@ -190,3 +190,4 @@ Als u uw project bijwerkt vanuit Azure SDK 2,4 naar Azure SDK 2,5 of hoger, moet
 * **Diagnostische gegevens voor Cloud service toepassingen kunnen alleen worden geconfigureerd op het niveau van de rol, niet op het niveau van de instantie.**
 * **Elke keer dat u uw app implementeert, wordt de diagnostische configuratie bijgewerkt.** dit kan leiden tot pariteits problemen als u de diagnostische configuratie wijzigt van Server Explorer en vervolgens uw app opnieuw implementeert.
 * **In azure SDK 2,5 en hoger zijn crash dumps geconfigureerd in het configuratie bestand voor diagnostische gegevens, niet in code** – als u crash dumps in code hebt geconfigureerd, moet u de configuratie hand matig overbrengen van code naar het configuratie bestand, omdat de crash dumps niet worden overgedragen tijdens de migratie naar Azure SDK 2,6.
+

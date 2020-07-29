@@ -3,12 +3,12 @@ title: Uw app testen in azure | Microsoft Docs
 description: Meer informatie over het maken van een bestands share in een lab en het koppelen van het bestand op uw lokale computer en een virtuele machine in het lab, en het implementeren van bureau blad/webtoepassingen op de bestands share en het testen ervan.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476492"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282242"
 ---
 # <a name="test-your-app-in-azure"></a>Uw app in Azure testen 
 Dit artikel bevat stappen voor het testen van uw toepassing in azure met behulp van DevTest Labs. Eerst stelt u een bestands share in een lab in en koppelt u deze als een station op uw lokale ontwikkel computer en een virtuele machine in een lab. Vervolgens gebruikt u Visual Studio 2019 om uw app te implementeren op de bestands share, zodat u de app op de virtuele machine in het lab kunt uitvoeren.  
@@ -18,7 +18,7 @@ Dit artikel bevat stappen voor het testen van uw toepassing in azure met behulp 
 ## <a name="prerequisites"></a>Vereisten 
 1. [Maak een Azure-abonnement](https://azure.microsoft.com/free/) als u er nog geen hebt en meld u aan [Azure Portal](https://portal.azure.com).
 2. Volg de instructies in [dit artikel](devtest-lab-create-lab.md) om een lab te maken met behulp van Azure DevTest Labs. Vastmaken aan uw dash board, zodat u het eenvoudig kunt terugvinden wanneer u zich aanmeldt. Met Azure DevTest Labs kunt u snel resources maken in azure door verspilling en kosten te beperken. Zie [overzicht](devtest-lab-overview.md)voor meer informatie over DevTest Labs. 
-3. Maak een Azure Storage-account in de resource groep van het lab door de instructies in het artikel [een opslag account maken](../storage/common/storage-create-storage-account.md) te volgen. Selecteer op de pagina **opslag account maken** de optie **bestaande gebruiken** voor **resource groep**en selecteer de **resource groep van de test omgeving**. 
+3. Maak een Azure Storage-account in de resource groep van het lab door de instructies in het artikel [een opslag account maken](../storage/common/storage-account-create.md) te volgen. Selecteer op de pagina **opslag account maken** de optie **bestaande gebruiken** voor **resource groep**en selecteer de **resource groep van de test omgeving**. 
 4. Maak een bestands share in uw Azure-opslag met behulp van de instructies in het artikel [een bestands share maken in azure files](../storage/files/storage-how-to-create-file-share.md) . 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>De bestands share op uw lokale machine koppelen
@@ -75,7 +75,7 @@ In deze sectie publiceert u uw app vanuit Visual Studio naar een test-VM in de C
 
 1. Ga naar de pagina virtuele machine voor uw VM in het lab. 
 2. Selecteer **Start** op de werk balk om de VM te starten als deze de status gestopt heeft. U kunt automatisch starten en beleid voor automatisch afsluiten instellen voor uw virtuele machine om te voor komen dat elke keer wordt gestart en gestopt. 
-3. Selecteer **Verbinding maken**.
+3. Selecteer **Verbinden**.
 
     ![Pagina virtuele machine](media/test-app-in-azure/virtual-machine-page.png)
 4. Open in de virtuele machine de **bestanden Verkenner**en selecteer **deze PC** om uw bestands share te vinden.

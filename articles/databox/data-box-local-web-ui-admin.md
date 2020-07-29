@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202525"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372002"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
@@ -35,7 +35,7 @@ Dit artikel bevat de volgende zelfstudies:
 
 Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket maken vanuit het systeemlogboek. Microsoft Ondersteuning gebruikt dit pakket om het probleem op te lossen. Als u een ondersteunings pakket wilt genereren, voert u de volgende stappen uit:
 
-1. Ga in de lokale webinterface naar **Contact opnemen met de ondersteuning ** en klik op **Ondersteuningspakket maken**.
+1. Ga in de lokale web-UI naar **contact opnemen met ondersteuning** en selecteer **ondersteunings pakket maken**.
 
     ![Ondersteuningspakket maken 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket mak
 
     ![Ondersteuningspakket maken 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Nadat het maken van het ondersteuningspakket is voltooid, klikt u op **Ondersteuningspakket downloaden**. 
+3. Zodra het ondersteunings pakket is gemaakt, selecteert u het **Download ondersteunings pakket**.
 
     ![Ondersteuningspakket maken 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. Blader naar en kies de downloadlocatie. Open de map om de inhoud weer te geven.
 
     ![Ondersteuningspakket maken 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>Apparaat uitschakelen of opnieuw opstarten
 
@@ -59,7 +58,7 @@ U kunt het apparaat afsluiten of opnieuw opstarten met behulp van de lokale webg
 Voer de volgende stappen uit om uw apparaat af te sluiten.
 
 1. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
-2. Klik op **Afsluiten**.
+2. Selecteer **Afsluiten**.
 
     ![Data Box afsluiten 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,11 +71,11 @@ Nadat het apparaat is uitgeschakeld, gebruikt u de aan-uitknop op het voorpaneel
 Voer de volgende stappen uit om uw Data Box opnieuw op te starten.
 
 1. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
-2. Klik op **Opnieuw opstarten**.
+2. Selecteer **opnieuw opstarten**.
 
     ![Data Box opnieuw opstarten 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. Klik op **OK** als u om bevestiging wordt gevraagd.
+3. Wanneer u om bevestiging wordt gevraagd, selecteert u **OK** om door te gaan.
 
    Het apparaat wordt afgesloten en opnieuw opgestart.
 
@@ -90,9 +89,9 @@ Voordat u begint, moet u ervoor zorgen dat uw apparaat **voorbereiding voor verz
 
     ![Apparaat gereed voor verzending](media/data-box-portal-admin/ready-to-ship.png)
 
-2. Klik op **Lijst met bestanden downloaden** om de lijst met bestanden die naar uw Data Box zijn gekopieerd te downloaden.
+2. Selecteer **lijst met bestanden downloaden** om de lijst met bestanden te downloaden die op uw data box zijn gekopieerd.
 
-    ![Klik op Lijst met bestanden downloaden](media/data-box-portal-admin/download-list-of-files.png)
+    ![Lijst met bestanden downloaden selecteren](media/data-box-portal-admin/download-list-of-files.png)
 
 3. In Windows Verkenner ziet u dat er afzonderlijke lijsten met bestanden worden gegenereerd, afhankelijk van het protocol dat wordt gebruikt om verbinding te maken met het apparaat en het gebruikte type Azure Storage.
 
@@ -179,10 +178,51 @@ We raden u ten zeerste aan om de controlesom niet uit te schakelen, tenzij de pr
     ![Controlesom uitschakelen](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Controlesomvalidatie **Uitschakelen**
-3. Klik op **Toepassen**.
+3. Selecteer **Toepassen**.
 
 > [!NOTE]
 > De optie voor het berekenen van de controlesom overs laan is alleen beschikbaar wanneer de Azure Data Box is ontgrendeld. Deze optie wordt niet weer geven wanneer het apparaat is vergrendeld.
 
-- Meer informatie over het [beheren van de data box en het data Box Heavy via de Azure Portal](data-box-portal-admin.md).
+## <a name="enable-smb-signing"></a>SMB-ondertekening inschakelen
 
+SMB-ondertekening (Server Message Block) is een functie waarmee communicatie met SMB digitaal kan worden ondertekend op pakket niveau. Deze ondertekening voor komt aanvallen waarbij SMB-pakketten tijdens de overdracht worden gewijzigd.
+
+Zie [overzicht van Server Message Block Signing](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing)(Engelstalig) voor meer informatie over SMB-ondertekening.
+
+SMB-ondertekening inschakelen in uw Azure-apparaat:
+
+1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
+
+    ![Instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Inschakelen** Ondertekenen van SMB.
+
+    ![SMB-ondertekening inschakelen](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. Selecteer **Toepassen**.
+4. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
+5. Selecteer **opnieuw opstarten**.
+
+## <a name="enable-tls-11"></a>TLS 1,1 inschakelen
+
+Azure Data Box maakt standaard gebruik van Transport Layer Security (TLS) 1,2 voor versleuteling, omdat het veiliger is dan TSL 1,1. Als u of uw clients echter een browser gebruiken om toegang te krijgen tot gegevens die geen ondersteuning bieden voor TLS 1,2, kunt u TLS 1,1 inschakelen.
+
+Zie [Azure data Box gateway Security](../databox-online/data-box-gateway-security.md)(Engelstalig) voor meer informatie over TLS.
+
+TLS 1,1 inschakelen in uw Azure-apparaat:
+
+1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
+
+    ![Instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Inschakelen** TLS 1,1.
+
+    ![TLS 1,1 inschakelen](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. Selecteer **Toepassen**.
+4. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
+5. Selecteer **opnieuw opstarten**.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over het [beheren van de data box en het data Box Heavy via de Azure Portal](data-box-portal-admin.md).

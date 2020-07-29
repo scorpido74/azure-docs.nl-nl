@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 19f5b6c07010c82ba6675e6db031e663ef7c5cdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044949"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372379"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -36,10 +36,10 @@ Retourneert de resource-ID voor een [extensie resource](../management/extension-
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| resourceId |Yes |tekenreeks |De resource-ID voor de resource waarop de uitbreidings resource wordt toegepast. |
-| resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
-| resourceName1 |Yes |tekenreeks |De naam van de resource. |
-| resourceName2 |No |tekenreeks |Volgend resource naam segment, indien nodig. |
+| resourceId |Ja |tekenreeks |De resource-ID voor de resource waarop de uitbreidings resource wordt toegepast. |
+| resourceType |Ja |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |tekenreeks |De naam van de resource. |
+| resourceName2 |Nee |tekenreeks |Volgend resource naam segment, indien nodig. |
 
 Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
 
@@ -114,9 +114,9 @@ De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkinge
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| ResourceName of resourceIdentifier |Yes |tekenreeks |De unieke id voor de resource. |
-| apiVersion |Yes |tekenreeks |API-versie van de runtime status van de resource. Doorgaans in de notatie **jjjj-mm-dd**. |
-| functionValues |No |object | Een object met waarden voor de functie. Geef dit object alleen op voor functies die ondersteuning bieden voor het ontvangen van een object met parameter waarden, zoals **listAccountSas** op een opslag account. In dit artikel wordt een voor beeld gegeven van het door geven van functie waarden. |
+| ResourceName of resourceIdentifier |Ja |tekenreeks |De unieke id voor de resource. |
+| apiVersion |Ja |tekenreeks |API-versie van de runtime status van de resource. Doorgaans in de notatie **jjjj-mm-dd**. |
+| functionValues |Nee |object | Een object met waarden voor de functie. Geef dit object alleen op voor functies die ondersteuning bieden voor het ontvangen van een object met parameter waarden, zoals **listAccountSas** op een opslag account. In dit artikel wordt een voor beeld gegeven van het door geven van functie waarden. |
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
@@ -326,8 +326,8 @@ Retourneert informatie over een resource provider en de ondersteunde resource ty
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |tekenreeks |Naam ruimte van de provider |
-| resourceType |No |tekenreeks |Het type resource binnen de opgegeven naam ruimte. |
+| providerNamespace |Ja |tekenreeks |Naam ruimte van de provider |
+| resourceType |Nee |tekenreeks |Het type resource binnen de opgegeven naam ruimte. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -401,9 +401,9 @@ Retourneert een-object dat de runtime status van een resource aangeeft.
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| ResourceName of resourceIdentifier |Yes |tekenreeks |De naam of de unieke id van een resource. Als u naar een resource in de huidige sjabloon verwijst, geeft u alleen de resource naam op als para meter. Als er wordt verwezen naar een eerder geïmplementeerde resource of als de naam van de bron ambigu is, geeft u de resource-ID op. |
-| apiVersion |No |tekenreeks |API-versie van de opgegeven resource. **Deze para meter is vereist als de resource niet binnen dezelfde sjabloon is ingericht.** Doorgaans in de notatie **jjjj-mm-dd**. Zie voor een geldige API-versie voor uw resource [sjabloon verwijzing](/azure/templates/). |
-| Waard |No |tekenreeks |Waarde die aangeeft of het volledige Resource-object moet worden geretourneerd. Als u niet opgeeft `'Full'` , wordt alleen het eigenschappen object van de resource geretourneerd. Het volledige object bevat waarden zoals de resource-ID en de locatie. |
+| ResourceName of resourceIdentifier |Ja |tekenreeks |De naam of de unieke id van een resource. Als u naar een resource in de huidige sjabloon verwijst, geeft u alleen de resource naam op als para meter. Als er wordt verwezen naar een eerder geïmplementeerde resource of als de naam van de bron ambigu is, geeft u de resource-ID op. |
+| apiVersion |Nee |tekenreeks |API-versie van de opgegeven resource. **Deze para meter is vereist als de resource niet binnen dezelfde sjabloon is ingericht.** Doorgaans in de notatie **jjjj-mm-dd**. Zie voor een geldige API-versie voor uw resource [sjabloon verwijzing](/azure/templates/). |
+| Waard |Nee |tekenreeks |Waarde die aangeeft of het volledige Resource-object moet worden geretourneerd. Als u niet opgeeft `'Full'` , wordt alleen het eigenschappen object van de resource geretourneerd. Het volledige object bevat waarden zoals de resource-ID en de locatie. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -665,7 +665,7 @@ De eigenschap **managedBy** wordt alleen geretourneerd voor resource groepen die
 
 ### <a name="remarks"></a>Opmerkingen
 
-De `resourceGroup()` functie kan niet worden gebruikt in een sjabloon die is [geïmplementeerd op het abonnements niveau](deploy-to-subscription.md). Deze kan alleen worden gebruikt in sjablonen die zijn geïmplementeerd in een resource groep. U kunt de `resourceGroup()` functie gebruiken in een [gekoppelde of geneste sjabloon (met binnenste bereik)](linked-templates.md) die gericht is op een resource groep, zelfs wanneer de bovenliggende sjabloon wordt geïmplementeerd in het abonnement. In dat scenario wordt de gekoppelde of geneste sjabloon geïmplementeerd op het niveau van de resource groep. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie over het richten op een resource groep in een implementatie op abonnements niveau.
+De `resourceGroup()` functie kan niet worden gebruikt in een sjabloon die is [geïmplementeerd op het abonnements niveau](deploy-to-subscription.md). Deze kan alleen worden gebruikt in sjablonen die zijn geïmplementeerd in een resource groep. U kunt de `resourceGroup()` functie gebruiken in een [gekoppelde of geneste sjabloon (met binnenste bereik)](linked-templates.md) die gericht is op een resource groep, zelfs wanneer de bovenliggende sjabloon wordt geïmplementeerd in het abonnement. In dat scenario wordt de gekoppelde of geneste sjabloon geïmplementeerd op het niveau van de resource groep. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-scope-deployment.md)voor meer informatie over het richten op een resource groep in een implementatie op abonnements niveau.
 
 Een veelvoorkomend gebruik van de functie resourceGroup is het maken van resources op dezelfde locatie als de resource groep. In het volgende voor beeld wordt de locatie van de resource groep gebruikt voor een standaard parameter waarde.
 
@@ -680,7 +680,7 @@ Een veelvoorkomend gebruik van de functie resourceGroup is het maken van resourc
 
 U kunt ook de functie resourceGroup gebruiken om labels van de resource groep toe te passen op een resource. Zie [labels Toep assen op resource groep](../management/tag-resources.md#apply-tags-from-resource-group)voor meer informatie.
 
-Wanneer geneste sjablonen worden gebruikt voor het implementeren van meerdere resource groepen, kunt u het bereik opgeven voor de evaluatie van de functie resourceGroup. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie.
+Wanneer geneste sjablonen worden gebruikt voor het implementeren van meerdere resource groepen, kunt u het bereik opgeven voor de evaluatie van de functie resourceGroup. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-scope-deployment.md)voor meer informatie.
 
 ### <a name="resource-group-example"></a>Voor beeld van resource groep
 
@@ -724,11 +724,11 @@ Retourneert de unieke id van een resource. U gebruikt deze functie als de resour
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |No |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. Geef deze waarde alleen op wanneer u implementeert in het bereik van een resource groep of een abonnement. |
-| resourceGroupName |No |tekenreeks |De standaard waarde is de huidige resource groep. Geef deze waarde op wanneer u een resource in een andere resource groep wilt ophalen. Geef deze waarde alleen op wanneer u implementeert voor het bereik van een resource groep. |
-| resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
-| resourceName1 |Yes |tekenreeks |De naam van de resource. |
-| resourceName2 |No |tekenreeks |Volgend resource naam segment, indien nodig. |
+| subscriptionId |Nee |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. Geef deze waarde alleen op wanneer u implementeert in het bereik van een resource groep of een abonnement. |
+| resourceGroupName |Nee |tekenreeks |De standaard waarde is de huidige resource groep. Geef deze waarde op wanneer u een resource in een andere resource groep wilt ophalen. Geef deze waarde alleen op wanneer u implementeert voor het bereik van een resource groep. |
+| resourceType |Ja |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |tekenreeks |De naam van de resource. |
+| resourceName2 |Nee |tekenreeks |Volgend resource naam segment, indien nodig. |
 
 Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
 
@@ -890,7 +890,7 @@ De functie retourneert de volgende indeling:
 
 ### <a name="remarks"></a>Opmerkingen
 
-Wanneer geneste sjablonen worden gebruikt voor het implementeren van meerdere abonnementen, kunt u het bereik opgeven voor de evaluatie van de abonnements functie. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie.
+Wanneer geneste sjablonen worden gebruikt voor het implementeren van meerdere abonnementen, kunt u het bereik opgeven voor de evaluatie van de abonnements functie. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-scope-deployment.md)voor meer informatie.
 
 ### <a name="subscription-example"></a>Voor beeld van abonnement
 
@@ -920,10 +920,10 @@ Retourneert de unieke id voor een resource die is geïmplementeerd op het abonne
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |No |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. |
-| resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
-| resourceName1 |Yes |tekenreeks |De naam van de resource. |
-| resourceName2 |No |tekenreeks |Volgend resource naam segment, indien nodig. |
+| subscriptionId |Nee |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. |
+| resourceType |Ja |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |tekenreeks |De naam van de resource. |
+| resourceName2 |Nee |tekenreeks |Volgend resource naam segment, indien nodig. |
 
 Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
 
@@ -1002,9 +1002,9 @@ Retourneert de unieke id voor een resource die is geïmplementeerd op Tenant niv
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
-| resourceName1 |Yes |tekenreeks |De naam van de resource. |
-| resourceName2 |No |tekenreeks |Volgend resource naam segment, indien nodig. |
+| resourceType |Ja |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |tekenreeks |De naam van de resource. |
+| resourceName2 |Nee |tekenreeks |Volgend resource naam segment, indien nodig. |
 
 Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
 

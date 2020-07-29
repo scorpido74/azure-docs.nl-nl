@@ -5,18 +5,18 @@ description: Gebruik een geïsoleerde Azure-Virtual Network met Azure Machine Le
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320167"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -304,8 +304,8 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
 - Beperk het uitgaande verkeer voor een __reken instantie__ of een __berekenings cluster__tot de volgende items:
-   - Azure Storage, door gebruik te maken van het __service label__ __opslag__.
-   - Azure Container Registry, door gebruik te maken van het __service label__ __AzureContainerRegistry__.
+   - Azure Storage, door gebruik te maken van de __service tag__ __Storage. regionaam__. Waar `{RegionName}` de naam is van een Azure-regio.
+   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. regionaam__. Waar `{RegionName}` de naam is van een Azure-regio.
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
    - Azure Resource Manager, met behulp van het __service label__ __AzureResourceManager__
    - Azure Active Directory, met behulp van het __service label__ __AzureActiveDirectory__
@@ -581,7 +581,7 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+__Azure-CLI__
 
 ```azurecli-interactive
 az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
@@ -672,7 +672,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 
     :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="Azure Container Registry voor de werk ruimte" border="true":::
 
-    __Azure CLI__
+    __Azure-CLI__
 
     Als u [de machine learning extensie voor Azure cli hebt geïnstalleerd](reference-azure-machine-learning-cli.md), kunt u de `az ml workspace show` opdracht gebruiken om de werkruimte gegevens weer te geven.
 

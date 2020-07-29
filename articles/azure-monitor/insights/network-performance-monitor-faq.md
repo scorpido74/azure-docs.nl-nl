@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539666"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326134"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -19,7 +19,7 @@ ms.locfileid: "86539666"
 
 In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter (NPM) in azure vastgelegd
 
-[Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings eindpunten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) bewaken en [de prestaties van Azure ExpressRoute bewaken](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](./network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings eindpunten](./network-performance-monitor-service-connectivity.md) bewaken en [de prestaties van Azure ExpressRoute bewaken](./network-performance-monitor-expressroute.md). 
 
 Netwerkprestatiemeter detecteert netwerk problemen zoals verkeer blackholing, routerings fouten en problemen die niet kunnen worden gedetecteerd door conventionele methoden voor netwerk bewaking. De oplossing genereert waarschuwingen en waarschuwt u als een drempelwaarde voor een netwerkverbinding wordt overschreden. Bovendien worden problemen met de netwerkprestaties tijdig gedetecteerd en wordt de oorzaak van het probleem op een bepaald netwerksegment of apparaat opgespoord. 
 
@@ -40,7 +40,7 @@ De mogelijkheid om netwerken te bewaken met behulp van Linux-knoop punten is mom
 Voor het uitvoeren van de NPM-oplossing op knoop punt-Vm's voor het bewaken van netwerken, moeten de knoop punten ten minste 500 MB geheugen en één kern hebben. U hoeft geen afzonderlijke knoop punten te gebruiken voor het uitvoeren van NPM. De oplossing kan worden uitgevoerd op knoop punten waarop andere workloads worden uitgevoerd. De oplossing biedt de mogelijkheid om het bewakings proces te stoppen als er meer dan 5% CPU wordt gebruikt.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Als u NPM wilt gebruiken, moet ik mijn knoop punten verbinden als een directe agent of via System Center Operations Manager?
-Zowel de prestatie meter als de service connectiviteits monitor biedt ondersteuning voor knoop punten [die zijn verbonden als directe agents](../../azure-monitor/platform/agent-windows.md) en [verbonden via Operations Manager](../../azure-monitor/platform/om-agents.md).
+Zowel de prestatie meter als de service connectiviteits monitor biedt ondersteuning voor knoop punten [die zijn verbonden als directe agents](../platform/agent-windows.md) en [verbonden via Operations Manager](../platform/om-agents.md).
 
 Voor de functionaliteit van de ExpressRoute-monitor moeten de Azure-knoop punten alleen als directe agents zijn verbonden. Azure-knoop punten, die zijn verbonden via Operations Manager worden niet ondersteund. Voor on-premises knoop punten worden de knoop punten die zijn verbonden als directe agents en via Operations Manager ondersteund voor het bewaken van een ExpressRoute-circuit.
 
@@ -49,12 +49,12 @@ Als u uw netwerk bewaakt met behulp van knoop punten op basis van Windows Server
 
 ICMP wordt aanbevolen voor Windows-Desk tops/client besturingssystemen op basis van het besturings systeem. Dit platform staat niet toe dat TCP-gegevens worden verzonden via onbewerkte sockets, die door NPM worden gebruikt om de netwerk topologie te detecteren.
 
-U kunt [hier](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)meer informatie vinden over de relatieve voor delen van elk protocol.
+U kunt [hier](./network-performance-monitor-performance-monitor.md#choose-the-protocol)meer informatie vinden over de relatieve voor delen van elk protocol.
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hoe kan ik een knoop punt configureren voor de ondersteuning van bewaking met behulp van het TCP-protocol?
 Voor het knoop punt voor de ondersteuning van bewaking met het TCP-protocol: 
 * Zorg ervoor dat het knoop punt platform Windows Server is (2008 SP1 of hoger).
-* Voer [EnableRules.ps1](https://aka.ms/npmpowershellscript) Power shell-script uit op het knoop punt. Zie de [instructies](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) voor meer informatie.
+* Voer [EnableRules.ps1](https://aka.ms/npmpowershellscript) Power shell-script uit op het knoop punt. Zie de [instructies](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) voor meer informatie.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hoe kan ik de TCP-poort die wordt gebruikt door NPM wijzigen voor bewaking?
@@ -182,10 +182,10 @@ NetworkMonitoring
 ```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welke regio's worden ondersteund voor de prestatie meter van de NPM?
-NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
+NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](./network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Welke regio's worden ondersteund voor de service connectiviteits monitor van NPM?
-NPM kan de connectiviteit van services in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
+NPM kan de connectiviteit van services in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](./network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welke regio's worden ondersteund voor de ExpressRoute-monitor van NPM?
 Met NPM kunt u uw ExpressRoute-circuits bewaken die zich in een Azure-regio bevinden. Voor een onboarding naar NPM hebt u een Log Analytics-werk ruimte nodig die moet worden gehost in een van de [ondersteunde regio's](../../expressroute/how-to-npm.md)
@@ -299,4 +299,5 @@ NPM rondt de latentie nummers af in de gebruikers interface en in milliseconden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg [Netwerkprestatiemeter-oplossing in azure](../../azure-monitor/insights/network-performance-monitor.md)voor meer informatie over Netwerkprestatiemeter.
+- Raadpleeg [Netwerkprestatiemeter-oplossing in azure](./network-performance-monitor.md)voor meer informatie over Netwerkprestatiemeter.
+

@@ -10,17 +10,17 @@ tags: azure-virtual-machine
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 8e63ff434b4367875324a26d80c937992a8c0331
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9abb6948a91545439b429316dc2b71c14a1792d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284826"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
 Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../cost-management-billing/understand/review-individual-bill.md).
@@ -92,7 +92,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    KoreaSouth            |    KR - zuid                              |
 |    northcentralus        |    VS - noord-centraal                      |
 |    northeurope           |    Europa - noord                          |
-|    southcentralus        |    South Central US                      |
+|    southcentralus        |    VS - zuid-centraal                      |
 |    southeastasia         |    Azië - zuidoost                        |
 |    SouthIndia            |    IN - zuid                              |
 |    UKNorth               |    VS Noord                              |
@@ -106,7 +106,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    USGovTexas            |    USGov Texas                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    US - west-centraal         |    US - west-centraal                       |
-|    westeurope            |    Europa - west                           |
+|    westeurope            |    Europa -west                           |
 |    WestIndia             |    IN - west                               |
 |    westus                |    VS - west                               |
 |    westus2               |    US - west 2                             |

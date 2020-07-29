@@ -3,12 +3,12 @@ title: Service kosten verminderen met behulp van Azure Advisor
 description: Gebruik Azure Advisor om de kosten van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 6fa57726ee37d78438b4e07d329f1af00f157d7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057735"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284367"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -89,7 +89,7 @@ Voor het besparen van 60% kosten, raden we u aan om uw moment opnamen op te slaa
 Door gebruik te maken van informatie over het aantal Azure Blob Storage-objecten, de totale grootte en de trans acties, detecteert Advisor of u levenscyclus beheer moet inschakelen om gegevens op te slaan in een of meer van uw opslag accounts. U wordt gevraagd om levenscyclus beheer regels te maken om uw gegevens automatisch te voorzien van koele of archief opslag om uw opslag kosten te optimaliseren en om uw gegevens in Azure Blob-opslag te bewaren voor toepassings compatibiliteit.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Aanbeveling voor maken van een tijdelijke besturingssysteemschijf
-Met de [tijdelijke besturingssysteem schijf](../virtual-machines/windows/ephemeral-os-disks.md) kunt u het volgende doen: 
+Met de [tijdelijke besturingssysteem schijf](../virtual-machines/ephemeral-os-disks.md) kunt u het volgende doen: 
 - Bespaar op opslag kosten voor besturingssysteem schijven. 
 - Zorg voor minder lees-en schrijf latentie voor besturingssysteem schijven. 
 - Versnelde bewerkingen voor VM-installatie kopieën ophalen door het besturings systeem (en de tijdelijke schijf) opnieuw in te stellen op de oorspronkelijke staat.
@@ -99,7 +99,7 @@ Het is aan te raden tijdelijke besturingssysteem schijven te gebruiken voor IaaS
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Toegang tot kosten aanbevelingen in Azure Advisor
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer [**Advisor**](https://aka.ms/azureadvisordashboard) op elke pagina.
 

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ed9e9e4ec658fc506ad2bd449ee1a49d510503f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081335"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371767"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ PolyBase wordt vaak gebruikt voor het laden van gegevens in Azure Synapse Analyt
 1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
 
    > [!NOTE]
-   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [gids](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor verschillende ingebouwde rollen voor Azure-resources.
+   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen van Azure.
   
 1. **Poly base-verbinding met het Azure Storage-account:**
 
@@ -238,7 +238,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
-1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij de [Azure-portal][http-azure-portal-link-ref-477t].
 
 2. Zoek en selecteer **SQL-servers**en selecteer vervolgens uw server. Onder **beveiliging**selecteert u **firewalls en virtuele netwerken**.
 

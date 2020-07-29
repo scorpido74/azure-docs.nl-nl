@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965532"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285625"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Aanbevolen procedures voor cluster configuratie (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ Technisch gesp roken kan een cluster met drie knoop punten een verlies van één
 
 De quorum bron beveiligt het cluster op basis van een van deze problemen. 
 
-Als u de quorum bron wilt configureren met SQL Server op virtuele machines van Azure, kunt u deze typen Witness gebruiken: 
+De volgende tabel bevat de beschik bare quorum opties in de volg orde die wordt aanbevolen voor gebruik met een virtuele Azure-machine, waarbij de schijfwitness de voorkeurs keuze is: 
 
 
 ||[Schijfwitness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Cloudwitness](/windows-server/failover-clustering/deploy-cloud-witness)  |[Bestandsshare-witness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Ondersteund besturings systeem**| Alles |Windows Server 2016 +| Windows Server 2012 +|
-|**Ondersteunde SQL Server versie**|SQL Server 2019|SQL Server 2016 +|SQL Server 2016 +|
+|**Ondersteund besturings systeem**| Alle |Windows Server 2016 +| Windows Server 2012 +|
+
 
 
 
 ### <a name="disk-witness"></a>Schijfwitness
 
-Een schijfwitness is een kleine geclusterde schijf in het cluster beschik bare opslag groep. Deze schijf is Maxi maal beschikbaar en kan een failover tussen knoop punten uitvoeren. Het bevat een kopie van de cluster database, met een standaard grootte van meestal minder dan 1 GB. 
+Een schijfwitness is een kleine geclusterde schijf in het cluster beschik bare opslag groep. Deze schijf is Maxi maal beschikbaar en kan een failover tussen knoop punten uitvoeren. Het bevat een kopie van de cluster database, met een standaard grootte van meestal minder dan 1 GB. De schijfwitness is de voorkeurs quorum optie voor een Azure-VM, omdat de partitie in tijd probleem kan worden opgelost, in tegens telling tot de cloudwitness en de bestandssharewitness van de bestands share. 
 
 Een gedeelde Azure-schijf configureren als de schijfwitness. 
 
 Zie [een schijfwitness configureren](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)om aan de slag te gaan.
 
 
-**Ondersteund besturings systeem**: alle    
-**Ondersteunde SQL-versie**: SQL Server 2019   
+**Ondersteund besturings systeem**: alle   
 
 
 ### <a name="cloud-witness"></a>Cloudwitness
@@ -73,21 +72,18 @@ Zie [een Cloudwitness configureren](/windows-server/failover-clustering/deploy-c
 
 
 **Ondersteund besturings systeem**: Windows Server 2016 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2016 en hoger     
 
 
 ### <a name="file-share-witness"></a>Bestandsshare-witness
 
 Een bestandssharewitness is een SMB-bestands share die doorgaans is geconfigureerd op een bestands server met Windows Server. Het onderhoudt cluster informatie in een Witness. log-bestand, maar slaat geen kopie van de cluster database op. In azure kunt u een [Azure-bestands share](../../../storage/files/storage-how-to-create-file-share.md) configureren om te gebruiken als de bestandssharewitness of u kunt een bestands share gebruiken op een afzonderlijke virtuele machine.
 
-Als u een andere Azure-bestands share wilt gebruiken, kunt u deze koppelen aan hetzelfde proces dat wordt gebruikt om [de Premium-bestands share te koppelen](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
+Als u een Azure-bestands share wilt gebruiken, kunt u deze koppelen aan hetzelfde proces dat wordt gebruikt om [de Premium-bestands share te koppelen](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
 
 Zie [Configure a file share Witness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)om aan de slag te gaan.
 
 
 **Ondersteund besturings systeem**: Windows Server 2012 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2016 en hoger   
-
 
 ## <a name="connectivity"></a>Connectiviteit
 

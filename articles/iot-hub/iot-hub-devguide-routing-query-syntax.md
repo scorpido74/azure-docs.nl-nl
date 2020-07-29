@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 34ffa7a9fe9bd129fa3fd572bc8ef4d80b43ab9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322972"
+ms.locfileid: "87336494"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor het routeren van IoT Hub-berichten
 
@@ -59,9 +59,10 @@ Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren
 | contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
 | iothub-verbinding-apparaat-id | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik voor query's `$connectionDeviceId` . |
 | iothub-enqueuedtime | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik voor query's `enqueuedTime` . |
-| iothub-interface-naam | tekenreeks | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik voor query's `$interfaceName` . Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
+| DT-dataschema | tekenreeks |  Deze waarde wordt ingesteld door IoT hub op apparaat-naar-Cloud-berichten. Het bevat de apparaat model-ID die is ingesteld in de apparaat-verbinding. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). Gebruik voor query's `$dt-dataschema` . |
+| DT-onderwerp | tekenreeks | De naam van het onderdeel dat de apparaat-naar-Cloud-berichten verzendt. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). Gebruik voor query's `$dt-subject` . |
 
-Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast **Content type**, **contentEncoding**en **enqueuedTime**kan ook een query worden uitgevoerd op de **connectionDeviceId** -en **connectionModuleId** .
+Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast de bovenstaande eigenschappen in de vorige tabel kunt u ook een query uitvoeren op **connectionDeviceId**, **connectionModuleId**.
 
 ### <a name="application-properties"></a>Toepassingseigenschappen
 

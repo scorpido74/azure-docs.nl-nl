@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: 62163217862f586be7ed5c0a6000693f8e7fcdd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043183"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285455"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Problemen met live video Analytics op IoT Edge oplossen
 
@@ -136,7 +136,7 @@ Dit probleem oplossen:
     ```
 1. Zorg ervoor dat de volgende uitbrei dingen zijn geïnstalleerd. Vanaf de publicatie van dit artikel zijn de uitbrei dingen en hun versies:
 
-    | Extensie | Versie |
+    | Toestelnummer | Versie |
     |---|---|
     |azure-cli   |      2.5.1|
     |opdracht-modules-nspkg         |   2.0.3|
@@ -265,6 +265,9 @@ U wordt aangeraden directe methoden parallel *niet* te bellen. U kunt ze sequent
 ### <a name="collect-logs-for-submitting-a-support-ticket"></a>Logboeken verzamelen voor het indienen van een ondersteunings ticket
 
 Wanneer u het probleem niet kunt oplossen met de zelf-begeleide stappen voor probleem oplossing, gaat u naar Azure Portal en [opent u een ondersteunings ticket](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+
+> [!WARNING]
+> De logboeken kunnen persoons gegevens (PII) bevatten, zoals uw IP-adres. Alle lokale kopieën van de logboeken worden verwijderd zodra de beoordeling is voltooid en het ondersteunings ticket wordt gesloten.  
 
 Volg de instructies in de volgende secties om de relevante logboeken te verzamelen die aan het ticket moeten worden toegevoegd. U kunt de logboek bestanden uploaden in het **detail** venster van de ondersteunings aanvraag.
 

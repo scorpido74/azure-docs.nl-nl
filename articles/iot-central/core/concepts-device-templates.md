@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002349"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337106"
 ---
 # <a name="what-are-device-templates"></a>Wat zijn apparaatsjablonen?
 
@@ -28,6 +28,9 @@ Een sjabloon voor een apparaat bestaat uit de volgende secties:
 - _Eigenschappen_van de Cloud. In dit deel van de sjabloon kunt u de oplossings ontwikkelaar de meta gegevens van het apparaat opgeven die moeten worden opgeslagen. Cloud eigenschappen worden nooit gesynchroniseerd met apparaten en bestaan alleen in de toepassing. Cloud eigenschappen hebben geen invloed op de code die een ontwikkelaar van het apparaat schrijft om de DCM te implementeren.
 - _Aanpassingen_. In dit deel van de sjabloon voor het apparaat kan de oplossings ontwikkelaar enkele van de definities in de DCM overschrijven. Aanpassingen zijn handig als de oplossings ontwikkelaar wil verfijnen hoe de toepassing een waarde verwerkt, zoals het wijzigen van de weergave naam voor een eigenschap of de kleur die wordt gebruikt om een telemetrie-waarde weer te geven. Aanpassingen hebben geen invloed op de code die een ontwikkelaar van het apparaat schrijft om de DCM te implementeren.
 - _Weer gaven_. In dit deel van de sjabloon kunt u met de oplossings ontwikkelaar visualisaties definiëren om gegevens van het apparaat weer te geven en formulieren voor het beheren en controleren van een apparaat. De weer gaven gebruiken DCM, Cloud eigenschappen en aanpassingen. Weer gaven hebben geen invloed op de code die een ontwikkelaar van het apparaat schrijft om de DCM te implementeren.
+
+> [!NOTE]
+> De [versie van de IoT Plug en Play Public Preview-vernieuwing](../../iot-pnp/overview-iot-plug-and-play.md) streeft ontwikkel aars van het apparaat en oem's om apparaten te bouwen die ze kunnen certificeren voor IoT-Plug en Play vóór de Ga-Lance ring.
 
 ## <a name="device-capability-models"></a>Modellen voor apparaatfuncties
 

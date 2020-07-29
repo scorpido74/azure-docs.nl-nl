@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: ec516ac1cd9c2a6201bfc77bd1169bcd8ea83e44
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f64c7aa45b748bdb8174bd69dbfc25f43329c10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285336"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Virtuele Azure-machines repliceren die worden uitgevoerd in proximity-plaatsings groepen naar een andere regio
 
@@ -28,14 +28,21 @@ In een typisch scenario is het mogelijk dat uw virtuele machines worden uitgevoe
 -  Als een Beschikbaarheidsset is vastgemaakt aan een proximity-plaatsings groep en tijdens failover/failback-Vm's in de beschikbaarheidsset een toewijzings beperking hebben, worden de virtuele machines gemaakt buiten de beschikbaarheidsset en proximity-plaatsings groep.
 -  Site Recovery voor proximity-plaatsings groepen wordt niet ondersteund voor niet-beheerde schijven.
 
-> [!Note]
+> [!NOTE]
 > Azure Site Recovery biedt geen ondersteuning voor failback van beheerde schijven voor Hyper-V naar Azure-scenario's. Daarom wordt failback van proximity-plaatsings groep in azure naar Hyper-V niet ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 
 1. Zorg ervoor dat u beschikt over de Azure PowerShell AZ-module. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
+2. De minimale Azure PowerShell AZ-versie moet 4.1.0 zijn. Als u de huidige versie wilt controleren, gebruikt u de onderstaande opdracht:
+    ```
+    Get-InstalledModule -Name Az
+    ```
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Site Recovery instellen voor Virtual Machines in proximity-plaatsings groep
+
+> [!NOTE]
+> Zorg ervoor dat u beschikt over de unieke ID van de plaatsings groep voor doel gerichte nabijheid. Als u een nieuwe proximity-plaatsings groep wilt maken, controleert u de opdracht [hier](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) en als u een bestaande proximity-plaatsings groep gebruikt, gebruikt u de opdracht [hier](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups).
 
 ### <a name="azure-to-azure"></a>Azure naar Azure
 
@@ -48,7 +55,7 @@ In een typisch scenario is het mogelijk dat uw virtuele machines worden uitgevoe
 7. Maak een beveiligings container toewijzing tussen de primaire en herstel beveiligings container met behulp van [deze](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) stappen en een beveiligings container toewijzing voor failback, zoals [hier](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)wordt beschreven.
 8. Maak een cache-opslag account door [de](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) volgende stappen uit te voeren.
 9. Maak de vereiste netwerk toewijzingen zoals [hier](./azure-to-azure-powershell.md#create-network-mappings)wordt vermeld.
-10. Als u de virtuele machine van Azure wilt repliceren met Managed disks, gebruikt u de onderstaande Power shell-cmdlet: 
+10. Als u de virtuele machine van Azure wilt repliceren met Managed disks, gebruikt u de onderstaande Power shell-cmdlet:
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -77,7 +84,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 
-$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $recPpg.Id
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 Zodra de bewerking voor het starten van de replicatie is voltooid, worden de gegevens van de virtuele machine gerepliceerd naar de herstel regio.
 
@@ -85,7 +92,7 @@ Het replicatie proces wordt gestart door eerst een kopie van de replicerende sch
 
 Wanneer de initiële replicatie is voltooid, wordt de replicatie verplaatst naar de differentiële synchronisatie fase. Op dit moment wordt de virtuele machine beveiligd en kan er een testfailover worden uitgevoerd. De replicatie status van het gerepliceerde item dat de virtuele machine vertegenwoordigt, wordt naar de beveiligde status verplaatst nadat de initiële replicatie is voltooid.
 
-Controleer de replicatie status en de replicatie status voor de virtuele machine door Details van het met replicatie beveiligde item corresponderende items op te halen. 
+Controleer de replicatie status en de replicatie status voor de virtuele machine door Details van het met replicatie beveiligde item corresponderende items op te halen.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -130,7 +137,7 @@ $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Protection
 
 # Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $recPpg.Id
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 8. U kunt de replicatie status en replicatie status van de virtuele machine controleren met de cmdlet Get-ASRReplicationProtectedItem.
 
@@ -161,7 +168,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     
     ```azurepowershell
     $OSType = "Windows"          # "Windows" or "Linux"
-    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $recPpg.Id
+    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $targetPpg.Id
     ```
     c. Wacht totdat de virtuele machines een beveiligde status hebben bereikt na de initiële replicatie. Dit kan enige tijd duren, afhankelijk van factoren zoals de hoeveelheid gegevens die moeten worden gerepliceerd en de beschik bare upstream-band breedte naar Azure. Wanneer een beveiligde status is ingesteld, worden de taak status en StateDescription als volgt bijgewerkt: 
     

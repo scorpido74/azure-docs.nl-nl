@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ff7d088a80ceaf01e9434ef62beb0e771cdf6b55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081658"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309678"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -24,9 +24,9 @@ Als u vragen hebt over de werking van de prijzen voor Application Insights, kunt
 
 ## <a name="pricing-model"></a>Prijsmodel
 
-De prijzen voor [Azure-toepassing Insights][start] is een model voor **betalen naar gebruik** op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. Gegevens volume wordt gemeten als de grootte van het niet-gecomprimeerde JSON-gegevens pakket dat door Application Insights van uw toepassing wordt ontvangen. Er worden geen gegevens volumes in rekening gebracht voor het gebruik van de [Live Metrics stream](../../azure-monitor/app/live-stream.md).
+De prijzen voor [Azure-toepassing Insights][start] is een model voor **betalen naar gebruik** op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. Gegevens volume wordt gemeten als de grootte van het niet-gecomprimeerde JSON-gegevens pakket dat door Application Insights van uw toepassing wordt ontvangen. Er worden geen gegevens volumes in rekening gebracht voor het gebruik van de [Live Metrics stream](./live-stream.md).
 
-Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
+Voor [webtests met meerdere stappen](./availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
 
 De Application Insights optie om [waarschuwingen in te scha kelen op aangepaste metrische dimensies](./pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) kan ook extra kosten genereren, omdat dit kan leiden tot het maken van aanvullende preaggregatie gegevens. Meer [informatie](./pre-aggregated-metrics-log-metrics.md) over metrische gegevens op basis van het logboek en vooraf geaggregeerde metrieken in Application Insights en over de [prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor Azure monitor aangepaste metrische gegevens.
 
@@ -48,7 +48,7 @@ Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [opname sampling
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
 
-Als u in de Azure monitoring-prijs calculator voor Application Insights de functie schatting gegevens volume gebaseerd op toepassings activiteit inschakelt, kunt u invoeren over uw toepassing (aanvragen per maand en pagina weergaven per maand), voor het geval u telemetrie aan de client zijde verzamelt. vervolgens krijgt u de reken machine de gemiddelde en negen tigste percentiel hoeveelheid gegevens die worden verzameld door vergelijk bare toepassingen. Deze toepassingen omvatten het bereik van Application Insights configuratie (er zijn bijvoorbeeld standaard [steekproef](../../azure-monitor/app/sampling.md)waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen.
+Als u in de Azure monitoring-prijs calculator voor Application Insights de functie schatting gegevens volume gebaseerd op toepassings activiteit inschakelt, kunt u invoeren over uw toepassing (aanvragen per maand en pagina weergaven per maand), voor het geval u telemetrie aan de client zijde verzamelt. vervolgens krijgt u de reken machine de gemiddelde en negen tigste percentiel hoeveelheid gegevens die worden verzameld door vergelijk bare toepassingen. Deze toepassingen omvatten het bereik van Application Insights configuratie (er zijn bijvoorbeeld standaard [steekproef](./sampling.md)waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
@@ -56,10 +56,10 @@ Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschij
 
 ![Prijzen kiezen](./media/pricing/pricing-001.png)
 
-A. Controleer uw gegevens volume voor de maand. Dit omvat alle gegevens die worden ontvangen en bewaard (na [steek proeven](../../azure-monitor/app/sampling.md)) van de server en client-apps, en van beschikbaarheids testen.  
-B. Er worden afzonderlijke kosten in rekening gebracht voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md). (Dit omvat geen eenvoudige beschikbaarheids testen, die zijn opgenomen in de kosten van het gegevens volume.)  
+A. Controleer uw gegevens volume voor de maand. Dit omvat alle gegevens die worden ontvangen en bewaard (na [steek proeven](./sampling.md)) van de server en client-apps, en van beschikbaarheids testen.  
+B. Er worden afzonderlijke kosten in rekening gebracht voor [webtests met meerdere stappen](./availability-multistep.md). (Dit omvat geen eenvoudige beschikbaarheids testen, die zijn opgenomen in de kosten van het gegevens volume.)  
 C. Bekijk trends in gegevens volumes voor de afgelopen maand.  
-D. [Steek proeven](../../azure-monitor/app/sampling.md)voor gegevens opname inschakelen.
+D. [Steek proeven](./sampling.md)voor gegevens opname inschakelen.
 E. Stel de dagelijkse gegevens volume limiet in.  
 
 (Alle prijzen die in de scherm afbeeldingen in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. Zie [Application Insights prijzen][pricing]voor actuele prijzen in uw valuta en regio.)
@@ -183,11 +183,11 @@ In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekij
 
 De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de volgende technieken:
 
-* **Steek proef**: u kunt steek proeven gebruiken om de hoeveelheid telemetrie te verminderen die wordt verzonden vanaf uw server-en client-apps, met minimale verstoring van metrische gegevens. Steek proeven zijn het primaire hulp programma dat u kunt gebruiken om de hoeveelheid gegevens die u verzendt af te stemmen. Meer informatie over [sampling-functies](../../azure-monitor/app/sampling.md).
+* **Steek proef**: u kunt steek proeven gebruiken om de hoeveelheid telemetrie te verminderen die wordt verzonden vanaf uw server-en client-apps, met minimale verstoring van metrische gegevens. Steek proeven zijn het primaire hulp programma dat u kunt gebruiken om de hoeveelheid gegevens die u verzendt af te stemmen. Meer informatie over [sampling-functies](./sampling.md).
 
-* **Ajax-aanroepen beperken**: u kunt [het aantal Ajax-aanroepen beperken dat kan worden gerapporteerd](../../azure-monitor/app/javascript.md#configuration) in elke pagina weergave, of de Ajax-rapportage uitschakelen.
+* **Ajax-aanroepen beperken**: u kunt [het aantal Ajax-aanroepen beperken dat kan worden gerapporteerd](./javascript.md#configuration) in elke pagina weergave, of de Ajax-rapportage uitschakelen.
 
-* **Overbodige modules uitschakelen**: [Bewerk ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) om verzamelings modules uit te scha kelen die u niet nodig hebt. U kunt bijvoorbeeld besluiten dat prestatie meter items of afhankelijkheids gegevens inessentieel zijn.
+* **Overbodige modules uitschakelen**: [Bewerk ApplicationInsights.config](./configuration-with-applicationinsights-config.md) om verzamelings modules uit te scha kelen die u niet nodig hebt. U kunt bijvoorbeeld besluiten dat prestatie meter items of afhankelijkheids gegevens inessentieel zijn.
 
 * **Cumulatieve metrische gegevens**: als u aanroepen naar TrackMetric in uw app opneemt, kunt u het verkeer verminderen door gebruik te maken van de overbelasting die uw berekening van de gemiddelde en standaard afwijking van een batch metingen accepteert. U kunt ook een pakket met [vooraf aggregatie](https://www.myget.org/gallery/applicationinsights-sdk-labs)gebruiken.
  
@@ -207,7 +207,7 @@ De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de vol
 
 U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperken. Als de limiet is bereikt, wordt echter een verlies van alle telemetriegegevens verzonden vanuit uw toepassing voor de rest van de dag. Het is *niet raadzaam* om uw toepassing te laten overlopen op het dagelijkse kapje. U kunt de status en prestaties van uw toepassing niet volgen nadat u de dagelijkse limiet hebt bereikt.
 
-In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
+In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](./sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
 
@@ -219,7 +219,7 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
-Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), wijzigt u de eigenschap in `dailyQuota` .  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse Cap instellen `warningThreshold` .
+Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](./powershell.md), wijzigt u de eigenschap in `dailyQuota` .  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse Cap instellen `warningThreshold` .
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Waarschuwingen voor het dagelijkse kapje maken
 
@@ -230,13 +230,13 @@ De Application Insights Daily Cap maakt een gebeurtenis in het Azure-activiteite
 * Dagelijkse limiet van Application Insights onderdeel is bereikt
 
 ## <a name="sampling"></a>Steekproeven
-[Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
+[steek proeven](./sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
 
 Steek proeven zijn een efficiënte manier om kosten te verlagen en binnen uw maandelijkse quotum te blijven. De bemonsterings algoritme houdt gerelateerde items van telemetrie bij, zodat u bijvoorbeeld de aanvraag met betrekking tot een bepaalde uitzonde ring kunt vinden wanneer u zoekt. Het algoritme behoudt ook de juiste aantallen, zodat u de juiste waarden ziet in metrische Explorer voor aanvraag tarieven, uitzonderings snelheden en andere aantallen.
 
 Er zijn verschillende soorten steek proeven.
 
-* [Adaptieve steek proeven](../../azure-monitor/app/sampling.md) zijn de standaard waarde voor de ASP.NET-SDK. Adaptieve steek proeven worden automatisch aangepast aan het volume van de telemetrie dat uw app verzendt. Het wordt automatisch uitgevoerd in de SDK in uw web-app, zodat het telemetrie verkeer in het netwerk wordt gereduceerd. 
+* [Adaptieve steek proeven](./sampling.md) zijn de standaard waarde voor de ASP.NET-SDK. Adaptieve steek proeven worden automatisch aangepast aan het volume van de telemetrie dat uw app verzendt. Het wordt automatisch uitgevoerd in de SDK in uw web-app, zodat het telemetrie verkeer in het netwerk wordt gereduceerd. 
 * Het nemen van *steek proeven* is een alternatief dat werkt op het punt waar telemetrie van uw app de Application Insights-service binnenkomt. De steek proef van opname heeft geen invloed op het volume van de telemetrie die wordt verzonden vanuit uw app, maar vermindert het volume dat door de service wordt bewaard. U kunt opname sampling gebruiken om het quotum te reduceren dat wordt gebruikt door telemetrie van browsers en andere Sdk's.
 
 Ga naar het **prijs** venster om opname sampling in te stellen:
@@ -310,7 +310,7 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
   * Een *knoop punt* is een fysieke of virtuele server machine of een platform-as-a-Service Role-exemplaar dat als host fungeert voor uw app.
   * Ontwikkel machines, client browsers en mobiele apparaten tellen niet als knoop punten.
   * Als uw app verschillende onderdelen heeft die telemetrie verzenden, zoals een webservice en een back-end-werk nemer, worden de onderdelen afzonderlijk geteld.
-  * [Live Metrics stream](../../azure-monitor/app/live-stream.md) gegevens worden niet geteld voor prijs doeleinden. In een abonnement zijn uw kosten per knoop punt, niet per app. Als u vijf knoop punten hebt die telemetrie voor 12 apps verzenden, is de kosten voor vijf knoop punten.
+  * [Live Metrics stream](./live-stream.md) gegevens worden niet geteld voor prijs doeleinden. In een abonnement zijn uw kosten per knoop punt, niet per app. Als u vijf knoop punten hebt die telemetrie voor 12 apps verzenden, is de kosten voor vijf knoop punten.
 * Hoewel kosten per maand worden genoteerd, worden er alleen kosten in rekening gebracht voor elk uur dat een knoop punt telemetrie vanuit een app verzendt. De kosten per uur zijn de maandelijkse kosten per maand, gedeeld door 744 (het aantal uren in een maand van 31 dagen).
 * Er wordt een gegevensvolume toewijzing van 200 MB per dag gegeven voor elk gedetecteerd knoop punt (met granulatie per uur). Ongebruikte gegevens toewijzing wordt niet van de ene dag naar de volgende getransporteerd.
   * Als u de prijs categorie per knoop punt kiest, ontvangt elk abonnement een dagelijkse hoeveelheid gegevens op basis van het aantal knoop punten dat telemetrie verzendt naar de Application Insights resources in dat abonnement. Als u dus vijf knoop punten hebt die gegevens dagelijks verzenden, hebt u een gepoolde limiet van 1 GB toegepast op alle Application Insights resources in dat abonnement. Het maakt niet uit of bepaalde knoop punten meer gegevens verzenden dan andere knoop punten, omdat de opgenomen gegevens worden gedeeld op alle knoop punten. Als op een gegeven Application Insights dag meer gegevens worden ontvangen dan is opgenomen in de dagelijkse gegevens toewijzing voor dit abonnement, zijn de kosten voor overschrijding-gegevens per GB van toepassing. 
@@ -339,10 +339,11 @@ U kunt een script schrijven om de prijs categorie in te stellen met behulp van A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Steekproeven](../../azure-monitor/app/sampling.md)
+* [proef](./sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
+

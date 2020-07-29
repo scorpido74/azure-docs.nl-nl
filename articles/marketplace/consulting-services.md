@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103752"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280950"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -153,7 +155,7 @@ Nadat het team voor inhouds beoordeling uw aanbiedings beschrijvingen heeft geco
 |**Evaluatie**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en voeg het product uit dat door de klant kan worden verwacht.      |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Houd er rekening mee dat er persoonlijke *informatie* moet worden geleverd. Als u een virtuele service levert, kiest u een ander type aanbieding.    |  Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.       |
 |**Implementatie**    |  Neem een gedetailleerde agenda op voor implementaties met meerdere dagen of meerdere weken en verdeel de technische wijzigingen, technische artefacten of andere artefacten die een klant kan verwachten als resultaat van de betrokkenheid.       |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
-|**Testen van het concept**    |    Stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid.     | Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.        |
+|**Werkbaar concept**    |    Stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid.     | Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.        |
 |**Workshop**    |   U kunt dagelijks, wekelijks of maandelijks een gedetailleerde agenda toevoegen, afhankelijk van de duur van uw aanbieding. Stel de leer doelen of andere producten van uw workshop in.     |   Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.      |
 ||
 

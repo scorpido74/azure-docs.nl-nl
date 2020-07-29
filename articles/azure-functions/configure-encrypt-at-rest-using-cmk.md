@@ -3,19 +3,19 @@ title: Uw toepassings bron op rest versleutelen
 description: Versleutel uw toepassings gegevens in Azure Storage en implementeer deze als een pakket bestand.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081879"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282327"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Versleutel uw toepassings gegevens in rust met door de klant beheerde sleutels
 
 Voor het versleutelen van de toepassings gegevens van uw functie-app in rust zijn een Azure Storage-account en een Azure Key Vault vereist. Deze services worden gebruikt wanneer u uw app uitvoert vanuit een implementatie pakket.
 
   - [Azure Storage voorziet in rest versleuteling](../storage/common/storage-service-encryption.md). U kunt door het systeem gegeven sleutels of uw eigen door de klant beheerde sleutels gebruiken. Hier worden uw toepassings gegevens opgeslagen wanneer deze niet worden uitgevoerd in een functie-app in Azure.
-  - [Uitvoeren vanuit een implementatie pakket] ((run-functions-from-deployment-package.md) is een implementatie functie van App Service. Hiermee kunt u uw site-inhoud vanuit een Azure Storage-account implementeren met behulp van een URL voor Shared Access Signature (SAS).
+  - [Uitvoeren vanuit een implementatie pakket](run-functions-from-deployment-package.md) is een implementatie functie van app service. Hiermee kunt u uw site-inhoud vanuit een Azure Storage-account implementeren met behulp van een URL voor Shared Access Signature (SAS).
   - [Key Vault verwijzingen](../app-service/app-service-key-vault-references.md) zijn een beveiligings functie van app service. Hiermee kunt u geheimen in runtime importeren als toepassings instellingen. Gebruik deze om de SAS-URL van uw Azure Storage-account te versleutelen.
 
 ## <a name="set-up-encryption-at-rest"></a>Versleuteling op rest instellen

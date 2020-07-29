@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283483"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Beveiligde toepassingen ontwikkelen in Azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
@@ -62,7 +62,7 @@ Doe dit op de-server, niet aan de client zijde (of op de-server en aan de client
 
 ### <a name="verify-your-applications-outputs"></a>De uitvoer van uw toepassing controleren
 
-Een uitvoer die u visueel of in een document bevindt, moet altijd worden gecodeerd en ontsnapeerd. [Escapes](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), ook wel bekend als *uitvoer codering*, wordt gebruikt om ervoor te zorgen dat niet-vertrouwde gegevens geen voer tuig zijn voor een injectie aanval. Escapes, gecombineerd met gegevens validatie, bieden gelaagde beveiligingen voor een betere beveiliging van het systeem als geheel.
+Een uitvoer die u visueel of in een document bevindt, moet altijd worden gecodeerd en ontsnapeerd. [Escapes](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), ook wel bekend als *uitvoer codering*, wordt gebruikt om ervoor te zorgen dat niet-vertrouwde gegevens geen voer tuig zijn voor een injectie aanval. Escapes, gecombineerd met gegevens validatie, bieden gelaagde beveiligingen voor een betere beveiliging van het systeem als geheel.
 
 Bij het maken van een Escape wordt gecontroleerd of alles wordt weer gegeven als *uitvoer.* Bij het maken van een Escape kan de interpreter ook weten dat de gegevens niet zijn bedoeld om te worden uitgevoerd. dit voor komt dat aanvallen werken. Dit is een andere veelvoorkomende aanvals techniek die *cross-site scripting* (XSS) wordt genoemd.
 

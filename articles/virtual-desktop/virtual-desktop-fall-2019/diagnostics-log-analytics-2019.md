@@ -1,6 +1,6 @@
 ---
-title: Diagnostische logboeken van Windows virtueel bureau blad (najaar 2019)-Azure
-description: Meer informatie over het gebruik van log Analytics met de Windows-functie diagnostische gegevens over het virtuele bureau blad (versie 2019).
+title: Logboek analyse voor diagnostische gegevens van Windows virtueel bureau blad (klassiek)-Azure
+description: Log Analytics gebruiken met de Windows-functie diagnostische gegevens over virtueel bureau blad (klassiek).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285064"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens (najaar 2019 versie)
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens in Windows virtueel bureau blad (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../diagnostics-log-analytics.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../diagnostics-log-analytics.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. Met deze functie worden diagnostische gegevens vastgelegd wanneer de service wordt gebruikt door iemand die is toegewezen aan de Windows-functie virtueel bureau blad. Elk logboek bevat informatie over welke Windows-functie voor virtueel bureau blad is betrokken bij de activiteit, eventuele fout berichten die tijdens de sessie worden weer gegeven, informatie over de Tenant en gebruikers gegevens. De functie diagnostische gegevens maakt activiteiten logboeken voor gebruikers-en beheer acties. Elk activiteiten logboek valt onder drie hoofd categorieën:
 

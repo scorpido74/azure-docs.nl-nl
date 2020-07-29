@@ -10,11 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669508"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284350"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Richt een virtuele Linux-machine in met SQL Server in het Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,9 +70,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Voer bij **Naam virtuele machine** een naam in voor uw nieuwe Linux-VM.
 1. Typ of selecteer vervolgens de volgende waarden:
-   * **Regio**: Selecteer de Azure-regio die het meest geschikt is voor u.
+   * **Regio**: selecteer de Azure-regio die het beste bij u past.
    * **Beschikbaarheids opties**: Kies de optie Beschik baarheid en redundantie die het meest geschikt is voor uw apps en gegevens.
-   * **Grootte wijzigen**: Selecteer deze optie om een computer grootte te kiezen en kies **vervolgens selecteren**. Zie [Linux VM-grootten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) voor meer informatie over de grootte van VM-machines.
+   * **Grootte wijzigen**: Selecteer deze optie om een computer grootte te kiezen en kies **vervolgens selecteren**. Zie [VM-grootten](../../../virtual-machines/sizes.md)voor meer informatie over de grootte van VM-machines.
 
      ![Een VM-grootte kiezen](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -81,9 +82,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
    * **Verificatie type**: Selecteer de **open bare SSH-sleutel**.
 
      > [!Note]
-     > U hebt de keuze om voor de verificatie een openbare SSH-sleutel of een wachtwoord te gebruiken. SSH is veiliger. Zie [SSH-sleutels maken in Linux en Mac voor virtuele Linux-machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys) voor instructies over het maken van een SSH-sleutel.
+     > U hebt de keuze om voor de verificatie een openbare SSH-sleutel of een wachtwoord te gebruiken. SSH is veiliger. Zie [SSH-sleutels maken in Linux en Mac voor virtuele Linux-machines in Azure](../../../virtual-machines/linux/mac-create-ssh-keys.md) voor instructies over het maken van een SSH-sleutel.
 
-   * **Gebruikers naam**: Voer de naam van de beheerder voor de virtuele machine in.
+   * **Gebruikersnaam**: voer de naam van de beheerder voor de VM in.
    * **Open bare SSH-sleutel**: Voer uw open bare RSA-sleutel in.
    * **Open bare binnenkomende poorten**: Kies **geselecteerde poorten toestaan** en selecteer de SSH-poort **(22)** in de lijst **open bare binnenkomende poorten selecteren** . Deze stap is nodig in deze quickstart om verbinding te maken en de SQL Server-configuratie te voltooien. Als u extern verbinding wilt maken met SQL Server, moet u verkeer hand matig toestaan voor de standaard poort (1433) die door Microsoft SQL Server wordt gebruikt voor verbindingen via Internet nadat de virtuele machine is gemaakt.
 
@@ -99,7 +100,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Selecteer **Controleren + maken**.
 1. Selecteer in het deelvenster **Controleren + maken** de optie **Maken**.
 
-## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Verbinding maken met de virtuele Linux-machine
+## <a name="connect-to-the-linux-vm"></a><a id="connect"></a>Verbinding maken met de virtuele Linux-machine
 
 Als u al een BASH-shell gebruikt, moet u verbinding maken met de virtuele Azure-machine via de opdracht **ssh**. In de volgende opdracht vervangt u de VM-gebruikersnaam en het IP-adres om verbinding te maken met uw virtuele Linux-machine.
 
@@ -121,7 +122,7 @@ Als u Windows gebruikt en geen BASH-shell hebt, installeert u een SSH-client, zo
 
 1. Selecteer **Openen** en voer uw gebruikersnaam en wachtwoord in bij de prompts.
 
-Zie [Een virtuele Linux-machine in Azure maken met behulp van de portal](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal) voor meer informatie over verbinding maken met virtuele Linux-machines.
+Zie [Een virtuele Linux-machine in Azure maken met behulp van de portal](../../../virtual-machines/linux/quick-create-portal.md) voor meer informatie over verbinding maken met virtuele Linux-machines.
 
 > [!NOTE]
 > Als er een PuTTY-beveiligingswaarschuwing wordt weergegeven dat de hostsleutel van de server niet in het register wordt opgeslagen, kunt u uit de volgende opties kiezen. Als u deze host vertrouwt, selecteert u **Ja** om de sleutel aan de PuTTy-cache toe te voegen en door te gaan met verbinding maken. Als u eenmalig verbinding wilt maken, zonder de sleutel aan de cache toe te voegen, selecteert u **Nee**. Als u deze host niet vertrouwt, selecteert u **Annuleren** om de verbinding te verbreken.

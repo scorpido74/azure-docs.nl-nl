@@ -7,11 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77651378"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284044"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Toegang tot en beheer van IBM DB2-resources met behulp van Azure Logic Apps
 
@@ -81,12 +82,12 @@ Als u de verbinding wilt instellen, geeft u deze verbindings Details op wanneer 
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| **Verbinding maken via on-premises gateway** | No | Geldt alleen voor on-premises verbindingen. |
-| **Verbindingsnaam** | Yes | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' |
-| **Server** | Yes | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld ' myDB2server.cloudapp.net:50000 ' <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
-| **Database** | Yes | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
-| **Gebruikersnaam** | Yes | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
-| **Wachtwoord** | Yes | Uw wacht woord voor de data base |
+| **Verbinding maken via on-premises gateway** | Nee | Geldt alleen voor on-premises verbindingen. |
+| **Verbindingsnaam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' |
+| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld ' myDB2server.cloudapp.net:50000 ' <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
+| **Database** | Ja | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
+| **Gebruikersnaam** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
+| **Wachtwoord** | Ja | Uw wacht woord voor de data base |
 ||||
 
 Bijvoorbeeld:
@@ -101,14 +102,14 @@ Voordat u een verbinding maakt, moet uw on-premises gegevens gateway al zijn ge�
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| **Verbinding maken via on-premises gateway** | Yes | Is van toepassing wanneer u een on-premises verbinding wilt en de on-premises verbindings eigenschappen wilt weer geven. |
-| **Verbindingsnaam** | Yes | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' | 
-| **Server** | Yes | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld "myDB2server: 50.000" <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
-| **Database** | Yes | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
-| **Verificatie** | Yes | Het verificatie type voor de verbinding, bijvoorbeeld ' Basic ' <p><p>**Opmerking**: Selecteer deze waarde in de lijst, die basis of Windows (Kerberos) omvat. |
-| **Gebruikersnaam** | Yes | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
-| **Wachtwoord** | Yes | Uw wacht woord voor de data base |
-| **#B0** | Yes | De naam voor de geïnstalleerde on-premises gegevens gateway <p><p>**Opmerking**: Selecteer deze waarde uit de lijst, die alle geïnstalleerde gegevens gateways binnen uw Azure-abonnement en resource groep bevat. |
+| **Verbinding maken via on-premises gateway** | Ja | Is van toepassing wanneer u een on-premises verbinding wilt en de on-premises verbindings eigenschappen wilt weer geven. |
+| **Verbindingsnaam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' | 
+| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld "myDB2server: 50.000" <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
+| **Database** | Ja | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
+| **Verificatie** | Ja | Het verificatie type voor de verbinding, bijvoorbeeld ' Basic ' <p><p>**Opmerking**: Selecteer deze waarde in de lijst, die basis of Windows (Kerberos) omvat. |
+| **Gebruikersnaam** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
+| **Wachtwoord** | Ja | Uw wacht woord voor de data base |
+| **#B0** | Ja | De naam voor de geïnstalleerde on-premises gegevens gateway <p><p>**Opmerking**: Selecteer deze waarde uit de lijst, die alle geïnstalleerde gegevens gateways binnen uw Azure-abonnement en resource groep bevat. |
 ||||
 
 Bijvoorbeeld:
@@ -119,7 +120,7 @@ Bijvoorbeeld:
 
 Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk balk van de ontwerp functie. Nadat de logische app is uitgevoerd, kunt u de uitvoer van de uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **Overzicht** in het menu van de logische app.
 
 1. Onder **samen vatting**selecteert u in de sectie **uitvoerings geschiedenis** de meest recente uitvoering, het eerste item in de lijst.
 
@@ -152,8 +153,8 @@ Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie *
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Yes | De tabel met de gewenste record, zoals ' gebied ' in dit voor beeld |
-   | **Gebieds-ID** | Yes | De ID voor de record die u wilt, zoals ' 99999 ' in dit voor beeld |
+   | **Tabel naam** | Ja | De tabel met de gewenste record, zoals ' gebied ' in dit voor beeld |
+   | **Gebieds-ID** | Ja | De ID voor de record die u wilt, zoals ' 99999 ' in dit voor beeld |
    ||||
 
    ![Tabel selecteren](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -164,7 +165,7 @@ Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie *
 
 Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk balk van de ontwerp functie. Nadat de logische app is uitgevoerd, kunt u de uitvoer van de uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **Overzicht** in het menu van de logische app.
 
 1. Onder **samen vatting**selecteert u in de sectie **uitvoerings geschiedenis** de meest recente uitvoering, het eerste item in de lijst.
 
@@ -201,7 +202,7 @@ Als u alle records in een DB2-database tabel wilt ophalen, gebruikt u de actie *
 
 Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk balk van de ontwerp functie. Nadat de logische app is uitgevoerd, kunt u de uitvoer van de uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **Overzicht** in het menu van de logische app.
 
 1. Onder **samen vatting**selecteert u in de sectie **uitvoerings geschiedenis** de meest recente uitvoering, het eerste item in de lijst.
 
@@ -232,10 +233,10 @@ Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt 
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Yes | De tabel waar de record moet worden toegevoegd, zoals ' gebied ' |
-   | **Gebieds-ID** | Yes | De ID voor het gebied dat moet worden toegevoegd, zoals "99999" |
-   | **Beschrijving van gebied** | Yes | De beschrijving voor het gebied dat moet worden toegevoegd, zoals ' gebied 99999 ' |
-   | **Regio-ID** | Yes | De ID voor de toe te voegen regio, bijvoorbeeld "102" |
+   | **Tabel naam** | Ja | De tabel waar de record moet worden toegevoegd, zoals ' gebied ' |
+   | **Gebieds-ID** | Ja | De ID voor het gebied dat moet worden toegevoegd, zoals "99999" |
+   | **Beschrijving van gebied** | Ja | De beschrijving voor het gebied dat moet worden toegevoegd, zoals ' gebied 99999 ' |
+   | **Regio-ID** | Ja | De ID voor de toe te voegen regio, bijvoorbeeld "102" |
    |||| 
 
    Bijvoorbeeld:
@@ -248,7 +249,7 @@ Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt 
 
 Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk balk van de ontwerp functie. Nadat de logische app is uitgevoerd, kunt u de uitvoer van de uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **Overzicht** in het menu van de logische app.
 
 1. Onder **samen vatting**selecteert u in de sectie **uitvoerings geschiedenis** de meest recente uitvoering, het eerste item in de lijst.
 
@@ -279,11 +280,11 @@ Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Yes | De tabel waar de record moet worden bijgewerkt, bijvoorbeeld ' gebied ' |
-   | **Rij-ID** | Yes | De ID voor de record die moet worden bijgewerkt, bijvoorbeeld "99999" |
-   | **Gebieds-ID** | Yes | De nieuwe gebieds-ID, zoals ' 99999 ' |
-   | **Beschrijving van gebied** | Yes | De beschrijving van het nieuwe gebied, zoals "bijgewerkt 99999" |
-   | **Regio-ID** | Yes | De nieuwe regio-ID, bijvoorbeeld "102" |
+   | **Tabel naam** | Ja | De tabel waar de record moet worden bijgewerkt, bijvoorbeeld ' gebied ' |
+   | **Rij-ID** | Ja | De ID voor de record die moet worden bijgewerkt, bijvoorbeeld "99999" |
+   | **Gebieds-ID** | Ja | De nieuwe gebieds-ID, zoals ' 99999 ' |
+   | **Beschrijving van gebied** | Ja | De beschrijving van het nieuwe gebied, zoals "bijgewerkt 99999" |
+   | **Regio-ID** | Ja | De nieuwe regio-ID, bijvoorbeeld "102" |
    ||||
 
    Bijvoorbeeld:
@@ -296,7 +297,7 @@ Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie
 
 Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk balk van de ontwerp functie. Nadat de logische app is uitgevoerd, kunt u de uitvoer van de uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **Overzicht** in het menu van de logische app.
 
 1. Onder **samen vatting**selecteert u in de sectie **uitvoerings geschiedenis** de meest recente uitvoering, het eerste item in de lijst.
 
@@ -327,8 +328,8 @@ Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de ac
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Yes | De tabel waar de record moet worden verwijderd, zoals ' gebied ' |
-   | **Rij-ID** | Yes | De ID voor de record die moet worden verwijderd, bijvoorbeeld "99999" |
+   | **Tabel naam** | Ja | De tabel waar de record moet worden verwijderd, zoals ' gebied ' |
+   | **Rij-ID** | Ja | De ID voor de record die moet worden verwijderd, bijvoorbeeld "99999" |
    ||||
 
    Bijvoorbeeld:
@@ -341,7 +342,7 @@ Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de ac
 
 Als u uw logische app hand matig wilt uitvoeren, kiest u **uitvoeren**op de werk balk van de ontwerp functie. Nadat de logische app is uitgevoerd, kunt u de uitvoer van de uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **Overzicht** in het menu van de logische app.
 
 1. Onder **samen vatting**selecteert u in de sectie **uitvoerings geschiedenis** de meest recente uitvoering, het eerste item in de lijst.
 
@@ -358,7 +359,7 @@ Vouw de actie **rij verwijderen** uit.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/db2/).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/db2/).
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
@@ -366,3 +367,4 @@ Voor meer technische informatie over deze connector, zoals triggers, acties en l
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+

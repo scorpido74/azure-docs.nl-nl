@@ -4,17 +4,17 @@ description: Hierin wordt beschreven hoe afwijkings detectie werkt, wanneer meld
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320082"
 ---
-# <a name="anomaly-detection-service-for-metered-billing"></a>Afwijkings detectie service voor facturering met data limiet
+# <a name="anomaly-detection-service-for-metered-billing"></a>Afwijkingsdetectieservice voor facturering naar gebruik
 
 Met de [Marketplace-meet service](marketplace-metering-service-apis-faq.md) kunt u aanbiedingen maken in het commerciële Marketplace-programma dat wordt gefactureerd op basis van niet-standaard eenheden. Met facturering met data limieten verzendt u gebruiks gebeurtenissen voor het gebruik van uw klant naar micro soft en wordt de facturering voor bereid op basis van het gebruik.
 
@@ -58,9 +58,9 @@ Als u bevestigt dat gedetecteerde afwijkingen normaal gebruik zijn, is er geen v
 
 ## <a name="when-and-how-to-get-support"></a>Wanneer en hoe u ondersteuning krijgt
 
-Als u het verkeerde gebruik hebt verzonden naar micro soft en dit hebt gedaan, of als gevolg van de klant, zal micro soft geen factuur voor de klant initiëren voor gebruik onder het rapport of u betalen voor dat gebruik. U moet rekening houden met het verlies van inkomsten als gevolg van rapportages.
+Als u het verkeerde gebruik hebt verzonden naar micro soft en dit hebt gedaan, of als gevolg van de klant, zal micro soft geen factuur voor de klant initiëren voor gebruik onder het rapport of u betalen voor dat gebruik. Het verlies van inkomsten vanwege het te laag gemelde verbruik is voor uw rekening.
 
-Als een van de volgende gevallen van toepassing is, kunt u een ondersteunings ticket openen om terugbetaling of facturerings correctie voor uw klanten aan te vragen:
+Als een van de volgende gevallen van toepassing is, kunt u een ondersteuningsticket openen om terugbetaling of factureringscorrectie voor uw klanten aan te vragen:
 
 - U hebt bevestigd dat een van de gevonden afwijkingen een echt probleem is en het onjuiste gebruik zou leiden tot **overbelasting** van de klant.
 - U ontdekt dat u onjuist gebruik naar ons hebt verzonden en dat het onjuiste gebruik zou leiden tot **overbelasting** van de klant.

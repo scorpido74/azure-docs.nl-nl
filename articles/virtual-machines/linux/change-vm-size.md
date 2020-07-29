@@ -3,15 +3,15 @@ title: Het formaat van een virtuele Linux-machine wijzigen met de Azure CLI
 description: U kunt een virtuele Linux-machine omhoog of omlaag schalen door de VM-grootte te wijzigen.
 author: DavidCBerry13
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
-ms.openlocfilehash: 270029fa62f657af7a992ecb963108b448d310e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088815"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372260"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Het formaat van een virtuele Linux-machine wijzigen met behulp van Azure CLI 
 

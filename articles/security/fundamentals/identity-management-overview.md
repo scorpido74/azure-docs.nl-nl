@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d6c82b1070f76cedcd84b8cd8a0a7bb6f683110d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285319"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
@@ -91,10 +91,10 @@ Meer informatie:
 
 Op rollen gebaseerd toegangsbeheer is een machtigingssysteem dat is gebouwd op Azure Resource Manager dat een geavanceerd toegangsbeheer van resources in Azure biedt. Met RBAC kunt u het toegangs niveau voor gebruikers nauw keurig beheren. U kunt bijvoorbeeld een gebruiker beperken tot het beheer van virtuele netwerken en een andere gebruiker voor het beheren van alle resources in een resource groep. Azure bevat diverse ingebouwde rollen die u kunt gebruiken. Hier volgen vier fundamentele ingebouwde rollen. De eerste drie zijn op alle resourcetypen van toepassing.
 
-- [Eigenaar](/azure/role-based-access-control/built-in-roles.md#owner) : heeft volledige toegang tot alle resources, waaronder het recht om de toegang tot anderen te delegeren. 
-- [Inzender](/azure/role-based-access-control/built-in-roles.md#contributor) : kan alle typen Azure-resources maken en beheren, maar kan geen toegang verlenen aan anderen.
-- [Lezer](/azure/role-based-access-control/built-in-roles.md#reader) : kan bestaande Azure-resources weer geven.
-- [Beheerder van gebruikers toegang](/azure/role-based-access-control/built-in-roles.md#administrator) : Hiermee kunt u de gebruikers toegang tot Azure-resources beheren.
+- [Eigenaar](/azure/role-based-access-control/built-in-roles#owner) : heeft volledige toegang tot alle resources, waaronder het recht om de toegang tot anderen te delegeren. 
+- [Inzender](/azure/role-based-access-control/built-in-roles#contributor) : kan alle typen Azure-resources maken en beheren, maar kan geen toegang verlenen aan anderen.
+- [Lezer](/azure/role-based-access-control/built-in-roles#reader) : kan bestaande Azure-resources weer geven.
+- [Beheerder van gebruikers toegang](/azure/role-based-access-control/built-in-roles#user-access-administrator) : Hiermee kunt u de gebruikers toegang tot Azure-resources beheren.
 
 Meer informatie:
 
@@ -169,7 +169,7 @@ Azure AD Identity Protection is een beveiligings service die een geconsolideerde
 
 Meer informatie:
 
-* [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
+* [Azure AD-identiteitsbeveiliging](/azure/active-directory/identity-protection/overview)
 * [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybride identiteits beheer/Azure AD Connect

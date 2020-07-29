@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122317"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373467"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Procedure: Text Analytics gebruiken voor de status (preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "86122317"
 > Text Analytics status is een preview-functie die IS ingesteld op ' AS IS ' en ' WITH ALL FAULTs '. Daarom **moet Text Analytics voor status (preview) niet worden geïmplementeerd of geïmplementeerd in productie gebruik.** Text Analytics de status niet is bedoeld of beschikbaar gesteld voor gebruik als medisch apparaat, klinisch ondersteunings programma of andere technologie, bedoeld om te worden gebruikt in de diagnose, het verkrijgen, beperken, behandelen of voor komen van ziekten of andere voor waarden en er wordt geen licentie of recht verleend door micro soft om deze mogelijkheid voor dergelijke doel einden te gebruiken. Deze mogelijkheid is niet ontworpen of bedoeld om te worden geïmplementeerd of gedistribueerd als een plaatsvervanger voor professioneel medisch advies of advies, diagnose, behandeling of het klinisch arrest van een ziekte medewerker, en mag niet als zodanig worden gebruikt. De klant is alleen verantwoordelijk voor het gebruik van Text Analytics voor de status. Micro soft garandeert niet dat Text Analytics voor de gezondheid of materialen die in verband met de mogelijkheid worden geleverd, voldoende zijn voor medische doel einden of dat anderszins voldoen aan de gezondheids-en medische vereisten van een persoon. 
 
 
-Azure Text Analytics Health is een container service die relevante medische gegevens ophaalt en uitpakt vanuit ongestructureerde teksten, zoals dokters notities, samen vattingen van de afvoer, klinische documenten en elektronische status records.  
+Text Analytics status is een container service die relevante medische gegevens ophaalt en uitpakt uit ongestructureerde teksten, zoals dokters notities, samen vattingen van de afvoer, klinische documenten en elektronische status records.  
 
 ## <a name="features"></a>Functies
 
@@ -62,7 +62,7 @@ De betekenis van medische inhoud wordt sterk beïnvloed door para meters zoals n
 
 ---
 
-Bekijk de [entiteits categorieën](../named-entity-types.md?tabs=health) die worden geretourneerd door Text Analytics voor gezondheids zorg voor een volledige lijst met ondersteunde entiteiten.
+Bekijk de [entiteits categorieën](../named-entity-types.md?tabs=health) die door Text Analytics worden geretourneerd voor een volledige lijst met ondersteunde entiteiten.
 
 ## <a name="supported-languages"></a>Ondersteunde talen
 
@@ -80,8 +80,8 @@ Vul het [aanvraag formulier voor de Cognitive Services containers](https://aka.m
 
 Er zijn meerdere manieren waarop u de container kunt installeren en uitvoeren. 
 
-1. Gebruik de [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) voor het maken van een Text Analytics-resource en docker gebruiken om uw container op te halen.
-2. De onderstaande Power shell-en [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -scripts gebruiken om de configuratie van de resource-implementatie container te automatiseren.
+- Gebruik de [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) om een Text Analytics resource te maken en gebruik docker om uw container op te halen.
+- Gebruik de volgende Power shell-en [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -scripts voor het automatiseren van de configuratie van de resource-implementatie container.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>De container installeren met behulp van Azure Web App for Containers
 
@@ -223,7 +223,7 @@ Zie de documentatie van NGINX over [NGINX SSL-beëindiging](https://docs.nginx.c
 
 
 ## <a name="example-api-request"></a>Voorbeeld van API-aanvraag
-De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's.
+De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling.
 
 Gebruik de onderstaande voor beeld-krul aanvraag voor het verzenden van een query naar de container die u hebt geïmplementeerd om de variabele te vervangen `serverURL` door de juiste waarde.
 
@@ -408,4 +408,4 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
 
 * [Overzicht van Text Analytics](../overview.md)
 * [Benoemde entiteits Categorieën](../named-entity-types.md)
-* [Wat is er nieuw](../whats-new.md)
+* [Nieuwe functies](../whats-new.md)

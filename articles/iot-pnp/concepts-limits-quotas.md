@@ -1,18 +1,18 @@
 ---
 title: De preview-versie van een IoT-Plug en Play en quota beperken | Microsoft Docs
 description: Meer informatie over de limieten, quota's en beperking die van toepassing zijn wanneer u IoT Plug en Play preview gebruikt.
-author: miagdp
-ms.author: miag
-ms.date: 04/01/2020
+author: prashmo
+ms.author: prashmo
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80518176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337395"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Preview-limieten, quota's en gashendel voor IoT Plug en Play
 
@@ -24,39 +24,17 @@ Voor de open bare preview zijn de volgende limieten en quota van toepassing op e
 
 | Limieten, beperkingen en beperkingen | Waarde | Opmerkingen |
 |-----|-----|-----|
-| Aantal apparaatfuncties (DCMs) of interfaces dat per hub kan worden geregistreerd | 1500 ||
-| Maximum aantal interfaces dat per apparaat kan worden geregistreerd | 40 ||
-| Maximum aantal DCMs dat per apparaat kan worden geregistreerd | 1 ||
-| Maximale grootte van interface/DCM-bestand | 512 kB ||
-| Maximale grootte van een interface naam | 256 tekens ||
-| Maximale grootte van een eigenschaps naam  | 64 bytes, 7 niveaus diep (en het eerste niveau is gereserveerd voor `$iotin` ) | Toegestane tekens: a-z, A-Z, 0-9 (niet als het eerste teken) en onderstrepings teken. |
-| Maximale grootte van een eigenschaps waarde | 512 bytes ||
-| Maximale grootte van een opdracht naam | 100 bytes ||
+| Aantal interfaces dat per hub kan worden geregistreerd | 1500 ||
+| Maximale grootte van een onderdeel naam | 1-64 tekens | Toegestane tekens: a-z, A-Z, 0-9 (niet als het eerste teken) en het onderstrepings teken (niet als het eerste of laatste teken). |
+| Maximale grootte van een eigenschaps naam | 1-64 tekens | Toegestane tekens: a-z, A-Z, 0-9 (niet als het eerste teken) en het onderstrepings teken (niet als het eerste of laatste teken). |
+| Maximale grootte van een eigenschaps waarde | Hetzelfde als de Digital Apparaatdubbels Definition Language- [eigenschap](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property) | 5 niveaus diep en mogen geen matrix of een complex schema zijn dat een matrix bevat |
+| Maximale grootte van een opdracht naam | 1-64 tekens | Toegestane tekens: a-z, A-Z, 0-9 (niet als het eerste teken) en het onderstrepings teken (niet als het eerste of laatste teken).|
 | Dubbele grootte van apparaat | Hetzelfde als [IOT hub limieten](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
-| Resolution API-aanroepen voor alle SKU'S (ongeacht eenheden) | 100 aanvragen per seconde ||
-
-## <a name="model-repository"></a>Model opslagplaats
-
-Voor de open bare preview zijn de volgende limieten en quota van toepassing op een model opslagplaats:
-
-| Limieten, beperkingen en beperkingen | Waarde |
-|-----|-----|
-| Aantal opslag plaatsen van bedrijfs model per Azure Active Directory-Tenant | 1 |
-| Aantal autorisatie sleutels per model opslagplaats | 10  |
-| Aantal modellen (DCMs of interfaces) per bedrijfs model opslagplaats| 1500  |
-| Het aantal modellen (DCMs of interfaces) in de open bare model opslagplaats per Azure Active Directory-Tenant| 1500  |
-| Aantal DCMs of interfaces dat wordt verwijderd in een bedrijfs model opslagplaats | 10 query's per seconde (QPS)|
-| Aantal model opslagplaatsen dat door een Tenant wordt gemaakt/bijgewerkt| 1 QPS |
-| Aantal autorisatie sleutels dat wordt gemaakt/bijgewerkt/verwijderd in een model opslagplaats | 1 QPS|
-| Aantal DCMs dat wordt gemaakt in een bedrijfs model opslagplaats | 10 QPS |
-| Aantal interfaces dat wordt gemaakt in een bedrijfs model opslagplaats | 10 QPS|
-| Aantal DCMs dat wordt gemaakt in de open bare model opslagplaats | 10 QPS|
-| Aantal interfaces dat wordt gemaakt in de open bare model opslagplaats | 10 QPS|
 
 ## <a name="parser-library"></a>Parser-bibliotheek
 
-De parser-bibliotheek volgt de limieten die van toepassing zijn op de [Digital-taal voor dubbele definitie](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
+De parser-bibliotheek volgt de limieten die van toepassing zijn op de taal van de [Digital apparaatdubbels-definitie](https://github.com/Azure/opendigitaltwins-dtdl).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een voorgestelde volgende stap is om te leren hoe u [verbinding kunt maken met een IOT-Plug en Play apparaat en](./howto-develop-solution.md)hoe u deze kunt gebruiken.
+De voorgestelde volgende stap is het controleren van de [IoT Plug en Play-architectuur](concepts-architecture.md).

@@ -1,6 +1,5 @@
 ---
-title: 'Net # aangepaste Neural-netwerken'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): net # aangepaste Neural-netwerken-Azure'
 description: 'Syntaxis handleiding voor de specificatie taal net # Neural Networks. Meer informatie over het maken van aangepaste Neural-netwerk modellen in Azure Machine Learning Studio (klassiek).'
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd68be6f2611b01be7f2b262de53597c452596
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85129514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282565"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Hand leiding voor de netwerk specificatie taal net # Neural voor Azure Machine Learning Studio (klassiek)
+# <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Hand leiding voor de netwerk specificatie taal net # Neural voor Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
 
 Net # is een door micro soft ontwikkelde taal die wordt gebruikt voor het definiëren van complexe Neural-netwerk architecturen, zoals diepe Neural netwerken of convoluties van wille keurige dimensies. U kunt complexe structuren gebruiken om het leren van gegevens zoals afbeeldingen, Video's of audio te verbeteren.
 
@@ -56,7 +57,7 @@ Daarnaast ondersteunt net # de volgende vier soorten geavanceerde verbindings bu
 
 ## <a name="supported-customizations"></a>Ondersteunde aanpassingen
 
-De architectuur van Neural-netwerk modellen die u in Azure Machine Learning Studio (klassiek) maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt:
+De architectuur van Neural-netwerk modellen die u in Azure Machine Learning Studio (klassiek) maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt het volgende doen:
 
 + Maak verborgen lagen en beheer het aantal knoop punten in elke laag.
 + Opgeven hoe lagen met elkaar moeten worden verbonden.

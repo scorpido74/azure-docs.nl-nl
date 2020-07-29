@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-ms.date: 3/14/2019
-ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/28/2020
+ms.openlocfilehash: 8cd8dda807b27bc1a83176c6a46596eccfd19073
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045716"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372090"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Elastische pool-resources in Azure SQL Database schalen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +56,17 @@ De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schale
 >
 > - In het geval van het wijzigen van de servicelaag of het opnieuw schalen van de computer voor een elastische pool, moet de som van de ruimte die wordt gebruikt voor alle data bases in de pool worden gebruikt voor het berekenen van de schatting.
 > - In het geval van het verplaatsen van een Data Base naar/van een elastische pool, is alleen de ruimte die wordt gebruikt door de data base van invloed op de latentie, niet de ruimte die wordt gebruikt door de elastische pool.
->
+> - Voor standaard-en Algemeen elastische Pools wordt een latentie van het verplaatsen van een data base in/uit een elastische pool of tussen elastische Pools evenredig met de grootte van de Data Base als de elastische pool gebruikmaakt van[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)-opslag (Premium file share). Voer de volgende query uit in de context van een data base in de groep om te bepalen of een pool gebruikmaakt van PFS-opslag. Als de waarde in de kolom account type is `PremiumFileStorage` , gebruikt de groep PFS-opslag.
+
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
+
 > [!TIP]
 > Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 

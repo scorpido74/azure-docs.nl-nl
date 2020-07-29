@@ -5,16 +5,17 @@ description: Meer informatie over het gebruik van de Azure CLI om een nieuwe Azu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392706"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319691"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +26,7 @@ In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met be
 
 * Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
-* Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
+* Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving**, hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
     Als u de [Azure Cloud shell](https://azure.microsoft.com//features/cloud-shell/)gebruikt, wordt de CLI geopend via de browser en in de Cloud.
 
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 De Azure Machine Learning-werk ruimte is afhankelijk van de volgende Azure-Services of-entiteiten:
 
 > [!IMPORTANT]
-> Als u geen bestaande Azure-service opgeeft, wordt er automatisch een gemaakt tijdens het maken van de werk ruimte. U moet altijd een resource groep opgeven. Wanneer u uw eigen opslag account koppelt, moet u ervoor zorgen dat zowel Azure Blob-als Azure-bestands mogelijkheden zijn ingeschakeld en dat hiërarchische naam ruimte (ADLS gen 2) is uitgeschakeld. U kunt altijd uw eigen opslag account koppelen nadat de werk ruimte is gemaakt als gegevens opslag.
+> Als u geen bestaande Azure-service opgeeft, wordt er automatisch een gemaakt tijdens het maken van de werk ruimte. U moet altijd een resource groep opgeven. Wanneer u uw eigen opslag account koppelt, moet u ervoor zorgen dat het voldoet aan de volgende criteria:
+>
+> * Het opslag account is _geen_ Premium-account (Premium_LRS en Premium_GRS)
+> * Zowel Azure Blob-als Azure-bestands mogelijkheden zijn ingeschakeld
+> * Hiërarchische naam ruimte (ADLS gen 2) is uitgeschakeld
+>
+> Deze vereisten gelden alleen voor het _standaard_ opslag account dat wordt gebruikt door de werk ruimte.
 
 | Service | Para meter om een bestaand exemplaar op te geven |
 | ---- | ---- |
@@ -147,6 +154,9 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor uw opslag account:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimte wordt ondersteund met het _standaard_ opslag account van de werk ruimte. U kunt Premium-opslag of een hiërarchische naam ruimte gebruiken met _niet-standaard_ opslag accounts.
 
 + **Azure-toepassing Insights**:
 

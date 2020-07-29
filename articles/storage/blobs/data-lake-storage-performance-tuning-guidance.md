@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f38dc72a45d84b549baa17c34f2c64ac35b83e3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106387"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285387"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimaliseren voor prestaties
 
@@ -47,7 +47,7 @@ Als u de bovenstaande knel punten voor de bron-en netwerk connectiviteit hebt op
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (Mapper)   | [Koppeling](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Koppeling](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-m (Mapper)    |   [Koppeling](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. size,-m (Mapper)    |   [Koppeling](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>De structuur van uw gegevensset instellen
 
@@ -138,5 +138,5 @@ Naast de bovenstaande algemene richt lijnen heeft elke toepassing verschillende 
 | [MapReduce in HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. Reduc. Memory</li><li>MapReduce. job. reduceert</li></ul> |
 | [Storm op HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Aantal werk processen</li><li>Aantal exemplaren van de Spout-uitvoerder</li><li>Aantal exemplaren van de bout-uitvoerder </li><li>Aantal Spout-taken</li><li>Aantal Schicht-taken</li></ul>|
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Overzicht van Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)

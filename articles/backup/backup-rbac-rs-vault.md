@@ -4,12 +4,12 @@ description: Gebruik op rollen gebaseerde Access Control voor het beheren van de
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: dd6930a0228829f376140d515a3035afebad0f27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032422"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371699"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren
 
@@ -18,7 +18,7 @@ Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u v
 > [!IMPORTANT]
 > Rollen die door Azure Backup worden verschaft, zijn beperkt tot acties die kunnen worden uitgevoerd in Azure Portal of via REST API of Recovery Services kluis Power shell of CLI-cmdlets. Acties die worden uitgevoerd in de gebruikers interface van de Azure backup-agent of System Center Data Protection Manager gebruikers interface of Azure Backup Server gebruikers interface zijn niet van invloed op deze rollen.
 
-Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen voor back-upbeheer. Meer informatie over [ingebouwde Azure RBAC-rollen](../role-based-access-control/built-in-roles.md)
+Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen voor back-upbeheer. Meer informatie over [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)
 
 * [Back-upinzender](../role-based-access-control/built-in-roles.md#backup-contributor) : deze rol heeft alle machtigingen voor het maken en beheren van back-ups, behalve het verwijderen van Recovery Services kluis en het verlenen van toegang aan anderen. Stel deze rol in als beheerder van het back-upbeheer, die elke bewerking van het back-upbeheer kan uitvoeren.
 * [Back-upoperator](../role-based-access-control/built-in-roles.md#backup-operator) -deze rol heeft machtigingen voor alles wat een bijdrager heeft, behalve het verwijderen van back-ups en het beheer van back-upbeleid. Deze rol is gelijk aan Inzender, behalve dat er geen destructieve bewerkingen kunnen worden uitgevoerd, zoals het stoppen van back-ups met gegevens verwijderen of het verwijderen van de registratie van on-premises resources.

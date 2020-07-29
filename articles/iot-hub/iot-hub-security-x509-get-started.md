@@ -8,14 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759649"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307281"
 ---
-# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X. 509-beveiliging instellen in uw Azure IoT-hub
+# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X.509-beveiliging instellen in uw Azure IoT Hub
 
 In deze zelf studie worden de stappen beschreven die u nodig hebt om uw Azure IoT hub te beveiligen met de *X. 509-certificaat verificatie*. Voor het doel van de afbeelding gebruiken we het open source-hulp programma OpenSSL om certificaten lokaal op uw Windows-machine te maken. U wordt aangeraden deze zelf studie alleen voor test doeleinden te gebruiken. Voor de productie omgeving moet u de certificaten van een basis certificerings *instantie (CA)* aanschaffen.
 
@@ -86,7 +90,7 @@ Als u uw X. 509-apparaat wilt verifiëren, moet u het apparaat eerst ondertekene
 
 We laten nu zien hoe u een C#-toepassing kunt maken om het X. 509-apparaat te simuleren dat voor uw IoT-hub is geregistreerd. De waarden voor de Tempe ratuur en lucht vochtigheid worden verzonden vanaf het gesimuleerde apparaat naar uw hub. In deze zelf studie maakt u alleen de apparaat-app. Het is aan de lezers te blijven om de IoT Hub-service toepassing te maken die een reactie verzendt naar de gebeurtenissen die door dit gesimuleerde apparaat worden verzonden. De C#-toepassing veronderstelt dat u de stappen in het [beheer van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)hebt gevolgd.
 
-1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Volgende**.
+1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Next**.
 
 1. Geef in **uw nieuwe project**de naam project *SimulateX509Device*en selecteer vervolgens **maken**.
 

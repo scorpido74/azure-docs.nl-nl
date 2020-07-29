@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117196"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326083"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -43,7 +43,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * VS - west
 * VS - west-centraal
 * VS - noord-centraal
-* South Central US
+* VS - zuid-centraal
 * Central US
 * VS - oost
 * US - oost 2
@@ -113,7 +113,7 @@ Netwerkprestatiemeter maakt gebruik van synthetische trans acties voor het bewak
 
 ### <a name="configure-the-solution"></a>De oplossing configureren 
 
-1. Voeg de Netwerkprestatiemeter oplossing toe aan uw werk ruimte vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). U kunt ook het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md)gebruiken. 
+1. Voeg de Netwerkprestatiemeter oplossing toe aan uw werk ruimte vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). U kunt ook het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](./solutions.md)gebruiken. 
 2. Open uw Log Analytics-werk ruimte en selecteer de tegel **overzicht** . 
 3. Selecteer de **Netwerkprestatiemeter** tegel met de bericht *oplossing moet extra worden geconfigureerd*.
 
@@ -291,3 +291,4 @@ Informatie over prijzen is [online](network-performance-monitor-pricing-faq.md)b
 
 ## <a name="next-steps"></a>Volgende stappen 
 Meer informatie over [prestatie meter](network-performance-monitor-performance-monitor.md), [service Connectivity monitor](network-performance-monitor-performance-monitor.md)en [ExpressRoute monitor](network-performance-monitor-expressroute.md). 
+

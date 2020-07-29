@@ -4,14 +4,15 @@ description: Cloud-init gebruiken voor het configureren van een swap-partitie in
 author: rickstercdn
 manager: gwallace
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f8746e67ba712ac4c2c3e832fcb5ffefb170d59
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969209"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371937"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Cloud-init gebruiken voor het configureren van een swap-partitie op een Linux-VM
 Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om de swap-partitie te configureren voor diverse Linux-distributies. De swap-partitie is traditioneel geconfigureerd door de Linux-agent (WALA) op basis van welke distributies een vereiste is.  Dit document bevat een overzicht van het proces voor het bouwen van de wissel partitie op aanvraag tijdens de inrichtings tijd met behulp van Cloud-init.  Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies

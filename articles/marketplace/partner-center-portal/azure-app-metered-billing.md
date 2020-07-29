@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118933"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320048"
 ---
 # <a name="managed-application-metered-billing"></a>Factuur voor beheerde toepassing met data limiet 
 
@@ -65,7 +67,7 @@ Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding. 
 De kenmerken die de dimensie zelf definiëren, worden gedeeld met alle plannen voor een aanbieding. Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen. Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
 
 * Id
-* Name
+* Naam
 * Meeteenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het plan publiceert, kunt u deze waarden bewerken en wordt alleen dit abonnement beïnvloed. Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
@@ -91,7 +93,7 @@ Een dimensie die wordt gebruikt met de Marketplace-meet service vertegenwoordigt
 Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
 * Id
-* Name
+* Naam
 * Meeteenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
@@ -109,21 +111,13 @@ Het maximum aantal dimensies dat kan worden geconfigureerd voor een enkele aanbi
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Als een van de volgende gevallen van toepassing is, kunt u een ondersteunings ticket openen.
+Als u een van de volgende problemen hebt, kunt u een ondersteunings ticket openen.
 
 * Technische problemen met Marketplace meter Service-API.
 * Een probleem dat moet worden geëscaleerd vanwege een fout of bug aan de zijkant (bijvoorbeeld verkeerde gebruiks gebeurtenis).
 * Alle andere problemen met betrekking tot facturering met data limiet.
 
-Volg de onderstaande stappen om uw ondersteunings ticket in te dienen:
-
-1. Ga naar de [ondersteunings pagina](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). De eerste paar vervolg keuzemenu's worden automatisch ingevuld. Voor Marketplace-ondersteuning identificeert u de product familie als **Cloud en Online Services**, het product als **Marketplace-Uitgever**. Wijzig de vooraf gevulde vervolg menu selecties niet.
-2. Selecteer **Live offer Management**onder ' Selecteer de product versie '.
-3. Kies in het gedeelte een categorie selecteren dat het probleem het beste beschrijft ' **Azure Applications offer**'.
-4. Selecteer in het gedeelte Selecteer een probleem dat het beste het probleem beschrijft de optie **gefactureerd factureren**.
-5. Als u de knop **volgende** selecteert, wordt u omgeleid naar de pagina met details van het **probleem** , waar u meer informatie kunt invoeren over uw probleem.
-
-Voor meer ondersteunings opties voor Publisher raadpleegt u [ondersteuning voor het programma voor commerciële Marketplace in Partner Center](support.md).
+Volg de instructies in [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum om de](./support.md) ondersteunings opties voor Publisher te begrijpen en het ondersteunings ticket te openen met micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

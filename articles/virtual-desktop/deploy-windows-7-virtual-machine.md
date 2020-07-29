@@ -1,5 +1,5 @@
 ---
-title: Windows 7 virtual machine implementeren Windows virtueel bureau blad lente 2020-Azure
+title: Windows 7 virtuele machine implementeren Windows virtueel bureau blad-Azure
 description: Een virtuele machine met Windows 7 configureren en implementeren op het virtuele bureau blad van Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -8,20 +8,17 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b589890f7b65b41cf6b7ba4fdf53b71173ed6a38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285150"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
->
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
 
 Het proces voor het implementeren van een virtuele machine met Windows 7 op Windows virtueel bureau blad wijkt enigszins af van de virtuele machines waarop latere versies van Windows worden uitgevoerd. In deze hand leiding wordt uitgelegd hoe u Windows 7 implementeert.
 

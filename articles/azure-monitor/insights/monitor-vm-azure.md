@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539700"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326185"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
 In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings gegevens van virtuele Azure-machines te verzamelen en analyseren om hun status te behouden. Virtuele machines kunnen worden bewaakt voor Beschik baarheid en prestaties met Azure Monitor zoals elke [andere Azure-resource](monitor-azure-resource.md), maar ze zijn uniek van andere resources, aangezien u ook de gast besturingssystemen en het systeem en de werk belastingen die hierop worden uitgevoerd, moet bewaken. 
@@ -134,7 +134,7 @@ Wanneer u de verzameling van bewakings gegevens voor een virtuele machine hebt g
 |:---|:---|
 | Overzicht | Geeft de [platform metrische gegevens](../platform/data-platform-metrics.md) weer voor de host van de virtuele machine. Klik op een grafiek om met deze gegevens in [Metrics Explorer](../platform/metrics-getting-started.md)te werken. |
 | Activiteitenlogboek | Vermeldingen in het [activiteiten logboek](../platform/activity-log.md#view-the-activity-log) gefilterd op de huidige virtuele machine. |
-| Inzichten | Hiermee opent u [Azure monitor voor VM's](../insights/vminsights-overview.md) met de kaart voor de geselecteerde virtuele machine. |
+| Inzichten | Hiermee opent u [Azure monitor voor VM's](./vminsights-overview.md) met de kaart voor de geselecteerde virtuele machine. |
 | Waarschuwingen | [Waarschuwingen](../platform/alerts-overview.md) weer geven voor de huidige virtuele machine.  |
 | Metrische gegevens | Open [Metrics Explorer](../platform/metrics-getting-started.md) met de scope die is ingesteld op de huidige virtuele machine. |
 | Diagnostische instellingen | De [uitbrei ding voor diagnostische gegevens](../platform/diagnostics-extension-overview.md) voor de huidige virtuele machine inschakelen en configureren. |
@@ -242,3 +242,4 @@ Zie [Connect Operations Manager to Azure monitor](../platform/om-agents.md) voor
 
 * [Meer informatie over het analyseren van gegevens in Azure Monitor logboeken met behulp van logboek query's.](../log-query/get-started-queries.md)
 * [Meer informatie over waarschuwingen met metrische gegevens en Logboeken in Azure Monitor.](../platform/alerts-overview.md)
+

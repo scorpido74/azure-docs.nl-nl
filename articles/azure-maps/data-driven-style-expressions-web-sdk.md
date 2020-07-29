@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242607"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285710"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
@@ -87,12 +87,12 @@ Gegevens expressies bieden toegang tot de eigenschaps gegevens in een functie.
 | `['geometry-type']` | tekenreeks | Hiermee wordt het type geometrie van de functie opgehaald: Point, multi point, Lines Tring, multi line String, veelhoek, multiveelhoek. |
 | `['get', string]` | waarde | Hiermee wordt de eigenschaps waarde opgehaald uit de eigenschappen van de huidige functie. Retourneert null als de aangevraagde eigenschap ontbreekt. |
 | `['get', string, object]` | waarde | Hiermee wordt de eigenschaps waarde opgehaald uit de eigenschappen van het gegeven object. Retourneert null als de aangevraagde eigenschap ontbreekt. |
-| `['has', string]` | booleaans | Hiermee wordt bepaald of de eigenschappen van een functie de opgegeven eigenschap hebben. |
-| `['has', string, object]` | booleaans | Hiermee wordt bepaald of de eigenschappen van het object de opgegeven eigenschap hebben. |
+| `['has', string]` | boolean | Hiermee wordt bepaald of de eigenschappen van een functie de opgegeven eigenschap hebben. |
+| `['has', string, object]` | boolean | Hiermee wordt bepaald of de eigenschappen van het object de opgegeven eigenschap hebben. |
 | `['id']` | waarde | Hiermee haalt u de ID van de functie op als deze een bevat. |
 | `['length', string | array]` | getal | Hiermee wordt de lengte van een teken reeks of een matrix opgehaald. |
-| `['in', boolean | string | number, array]` | booleaans | Hiermee wordt bepaald of een item in een matrix voor komt |
-| `['in', substring, string]` | booleaans | Hiermee wordt bepaald of een subtekenreeks voor komt in een teken reeks |
+| `['in', boolean | string | number, array]` | boolean | Hiermee wordt bepaald of een item in een matrix voor komt |
+| `['in', substring, string]` | boolean | Hiermee wordt bepaald of een subtekenreeks voor komt in een teken reeks |
 
 **Voorbeelden**
 
@@ -199,14 +199,14 @@ Bij het vergelijken van waarden is de vergelijking strikt getypt. Waarden van ve
 | Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
 | `['! ', boolean]` | booleaans | Logische negatie. Retourneert `true` of de invoer is `false` en `false` of de invoer is `true` . |
-| `['!= ', value, value]` | booleaans | Retourneert `true` of de invoer waarden niet gelijk zijn, `false` anders. |
-| `['<', value, value]` | booleaans | Retourneert `true` of de eerste invoer strikt kleiner is dan de seconde, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
-| `['<=', value, value]` | booleaans | Retourneert `true` of de eerste invoer kleiner dan of gelijk aan de tweede is, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
-| `['==', value, value]` | booleaans | Retourneert `true` of de invoer waarden gelijk zijn, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
-| `['>', value, value]` | booleaans | Retourneert `true` of de eerste invoer absoluut groter is dan de tweede, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
-| `['>=' value, value]` | booleaans | Retourneert `true` of de eerste invoer groter is dan of gelijk is aan de tweede, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
-| `['all', boolean, boolean, …]` | booleaans | Retourneert `true` of alle invoer waarden `true` , `false` anders. |
-| `['any', boolean, boolean, …]` | booleaans | Retourneert `true` of een van de invoer waarden `true` is `false` . |
+| `['!= ', value, value]` | boolean | Retourneert `true` of de invoer waarden niet gelijk zijn, `false` anders. |
+| `['<', value, value]` | boolean | Retourneert `true` of de eerste invoer strikt kleiner is dan de seconde, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['<=', value, value]` | boolean | Retourneert `true` of de eerste invoer kleiner dan of gelijk aan de tweede is, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['==', value, value]` | boolean | Retourneert `true` of de invoer waarden gelijk zijn, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['>', value, value]` | boolean | Retourneert `true` of de eerste invoer absoluut groter is dan de tweede, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['>=' value, value]` | boolean | Retourneert `true` of de eerste invoer groter is dan of gelijk is aan de tweede, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['all', boolean, boolean, …]` | boolean | Retourneert `true` of alle invoer waarden `true` , `false` anders. |
+| `['any', boolean, boolean, …]` | boolean | Retourneert `true` of een van de invoer waarden `true` is `false` . |
 
 ## <a name="conditional-expressions"></a>Voorwaardelijke expressies
 
@@ -403,7 +403,7 @@ Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschil
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | matrix \| object | Retourneert een letterlijke matrix of object waarde. Gebruik deze expressie om te voor komen dat een matrix of object als een expressie wordt geëvalueerd. Dit is nodig wanneer een matrix of object moet worden geretourneerd door een expressie. |
 | `['image', string]` | tekenreeks | Hiermee wordt gecontroleerd of een opgegeven afbeeldings-ID is geladen in de Maps-installatie kopie sprite. Als dat het geval is, wordt de ID geretourneerd, anders wordt Null geretourneerd. |
-| `['to-boolean', value]` | booleaans | Hiermee wordt de invoer waarde geconverteerd naar een Boolean. Het resultaat is `false` wanneer de invoer een lege teken reeks,,, `0` `false` `null` of `NaN` ; anders is `true` . |
+| `['to-boolean', value]` | boolean | Hiermee wordt de invoer waarde geconverteerd naar een Boolean. Het resultaat is `false` wanneer de invoer een lege teken reeks,,, `0` `false` `null` of `NaN` ; anders is `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Converteert de invoer waarde naar een kleur. Als er meerdere waarden worden gegeven, wordt elke waarde in de aangegeven volg orde geëvalueerd totdat de eerste geslaagde conversie is verkregen. Als geen van de invoer kan worden geconverteerd, is de expressie een fout. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | getal | Converteert de invoer waarde indien mogelijk naar een getal. Als de invoer is `null` of `false` , is het resultaat 0. Als de invoer is `true` , is het resultaat 1. Als de invoer een teken reeks is, wordt deze geconverteerd naar een getal met behulp van de [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) -teken reeks functie van de ECMAScript Language Specification. Als er meerdere waarden worden gegeven, wordt elke waarde in de aangegeven volg orde geëvalueerd totdat de eerste geslaagde conversie is verkregen. Als geen van de invoer kan worden geconverteerd, is de expressie een fout. |
 | `['to-string', value]` | tekenreeks | Converteert de invoer waarde naar een teken reeks. Als de invoer is `null` , is het resultaat `""` . Als de invoer een Booleaanse waarde is, is het resultaat `"true"` of `"false"` . Als de invoer een getal is, wordt dit geconverteerd naar een teken reeks met behulp van de functie [toString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) -nummer van de ECMAScript Language Specification. Als de invoer een kleur is, wordt deze geconverteerd naar een CSS-kleur teken reeks `"rgba(r,g,b,a)"` . Anders wordt de invoer geconverteerd naar een teken reeks met behulp van de [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) -functie van de ECMAScript Language Specification. |

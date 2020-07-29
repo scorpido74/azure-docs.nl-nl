@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/27/2020
-ms.openlocfilehash: d8da5bb32836ff50240bf6b781227fde8839be5c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281154"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -212,7 +212,7 @@ Met de volgende opdracht wordt de Azure AD-beheerder voor het SQL Managed instan
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt ook een Azure AD-beheerder inrichten voor het beheerde exemplaar van SQL door de volgende CLI-opdrachten aan te roepen:
 
@@ -237,8 +237,6 @@ In de volgende twee procedures wordt uitgelegd hoe u een Azure Active Directory 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. Met deze stap koppelt u de Active Directory die aan het abonnement is gekoppeld aan de server om ervoor te zorgen dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als de server.
-
-    ! [Kies-AD] achtste
 
 2. Zoek en selecteer **SQL Server**.
 
@@ -320,7 +318,7 @@ In het volgende voor beeld wordt een Azure AD-beheerder verwijderd:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt een Azure AD-beheerder inrichten door de volgende CLI-opdrachten aan te roepen:
 
@@ -538,8 +536,11 @@ Meer informatie over het oplossen van problemen met Azure AD-verificatie vindt u
 - Zie [Principals](https://msdn.microsoft.com/library/ms181127.aspx) voor meer informatie over database-principals.
 - Zie [Databaserollen](https://msdn.microsoft.com/library/ms189121.aspx) voor meer informatie over databaserollen.
 - Zie [SQL Database-firewallregels](firewall-configure.md) voor meer informatie over de firewallregels in SQL Database.
+- Zie voor meer informatie over het instellen van een Azure AD-gast gebruiker als de Azure AD-beheerder [Azure AD-gast gebruikers maken en instellen als een Azure AD-beheerder](authentication-aad-guest-users.md).
+- Zie [Azure AD-gebruikers maken met Azure AD-toepassingen](authentication-aad-service-principal-tutorial.md) voor meer informatie over het gebruik van service-principals met Azure SQL
 
 <!--Image references-->
+
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png

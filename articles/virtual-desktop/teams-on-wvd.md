@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129301"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372838"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
 >[!IMPORTANT]
->Media optimalisatie voor micro soft teams is momenteel beschikbaar als open bare preview. U kunt het beste de gebruikers ervaring van geoptimaliseerde teams evalueren voordat u teams implementeert voor werk belastingen voor productie. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+>Media optimalisatie voor teams wordt niet ondersteund voor Microsoft 365-overheids omgevingen.
 
 >[!NOTE]
 >Media optimalisatie voor micro soft teams is alleen beschikbaar voor de Windows desktop-client op Windows 10-computers. Voor media optimalisaties is Windows desktop client versie 1.2.1026.0 of hoger vereist.
@@ -53,15 +53,21 @@ Als u media optimalisatie voor teams wilt inschakelen, stelt u de volgende regis
 
 ### <a name="install-the-teams-websocket-service"></a>De teams-WebSocket-service installeren
 
-Installeer de [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
+Installeer de nieuwste [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
 
 #### <a name="latest-websocket-service-versions"></a>Nieuwste versies van de WebSocket-service
 
-De volgende tabel geeft een lijst van de huidige versies die beschikbaar zijn voor elke gebruikers groep:
+De volgende tabel bevat de nieuwste versies van de WebSocket-service:
 
-|Versie    |Releasedatum  |
-|-----------|--------------|
-|0.11.0     |05/29/2020    |
+|Versie        |Releasedatum  |
+|---------------|--------------|
+|1.0.2006.11001 |07/28/2020    |
+|0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10200611001"></a>Updates voor versie 1.0.2006.11001
+
+- Er is een probleem opgelost waarbij het minimaliseren van de app teams tijdens een gesprek of vergadering ertoe leidde dat inkomende video wordt verwijderd.
+- Er is ondersteuning toegevoegd voor het selecteren van één monitor voor het delen van bureaublad sessies met meerdere monitors.
 
 ### <a name="install-microsoft-teams"></a>Micro soft teams installeren
 
@@ -117,7 +123,7 @@ Na de installatie van de WebSocket-service en de bureau blad-app teams, voert u 
 
 3. Selecteer de installatie kopie van uw gebruikers profiel en selecteer vervolgens **instellingen**.
 
-      Als media optimalisaties zijn geladen, worden de audio apparaten en camera's die lokaal beschikbaar zijn, geïnventariseerd in het menu apparaat. Als in het menu **externe audio**wordt weer gegeven, sluit u de app teams en probeert u het opnieuw. Als de apparaten nog steeds niet worden weer gegeven in het menu, gaat u terug naar [micro soft-teams installeren](#install-microsoft-teams) en zorgt u ervoor dat het installatie proces is voltooid.
+      Als media optimalisaties zijn geladen, worden de audio apparaten en camera's die lokaal beschikbaar zijn, geïnventariseerd in het menu apparaat. Als in het menu **externe audio**wordt weer gegeven, sluit u de app teams en probeert u het opnieuw. Als de apparaten nog steeds niet worden weer gegeven in het menu, controleert u de privacy-instellingen op uw lokale PC. Zorg ervoor dat de machtigingen onder **instellingen**  >  **Privacy**-  >  **app** de instelling **toestaan dat apps toegang hebben tot uw microfoon** **in**-of uitgeschakeld. Verbreek de verbinding met de externe sessie en maak opnieuw verbinding en controleer de audio-en video apparaten opnieuw. Als u aanroepen en vergaderingen wilt samen voegen met video, moet u ook toestemming geven voor apps om toegang te krijgen tot uw camera.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
@@ -133,9 +139,7 @@ Het gebruik van teams in een gevirtualiseerde omgeving verschilt van het gebruik
 ### <a name="calls-and-meetings"></a>Aanroepen en vergaderingen
 
 - De teams bureau blad-client in Windows virtual desktop-omgevingen bieden geen ondersteuning voor Live-gebeurtenissen. Voor Taan raden we u aan Live-gebeurtenissen te koppelen vanuit de [web-client voor teams](https://teams.microsoft.com) in uw externe sessie.
-- Het minimaliseren van de teams-app tijdens een aanroep of vergadering kan ertoe leiden dat de binnenkomende video-feed wordt weer gegeven wanneer u de app uitvouwt.
 - Oproepen of vergaderingen bieden momenteel geen ondersteuning voor het delen van toepassingen. Bureaublad sessies bieden ondersteuning voor het delen van bureau blad.
-- Wanneer het delen van een bureau blad in een Setup van meerdere monitors, worden alle monitors gedeeld.
 - Besturings element geven en beheer overnemen wordt momenteel niet ondersteund.
 - Teams op Windows virtueel bureau blad bieden alleen ondersteuning voor één binnenkomende video-invoer per keer. Dit betekent dat wanneer iemand het scherm probeert te delen, het scherm wordt weer gegeven in plaats van het scherm van de Voorzitter van de vergadering.
 - Vanwege WebRTC-beperkingen is de omzetting van inkomende en uitgaande video stromen beperkt tot 720p.

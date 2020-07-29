@@ -8,14 +8,15 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601447"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319589"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -200,8 +201,8 @@ Een indicator naast de vervolg keuzelijst voor **berekeningen** toont de status.
 
 |Kleur |Compute-status |
 |---------|---------| 
-| Groen | Compute running |
-| Rood |Kan niet berekenen | 
+| Green | Compute running |
+| Red |Kan niet berekenen | 
 | Zwart | Berekenen gestopt |
 |  Licht blauw |Berekenen maken, starten, opnieuw starten, instellen |
 |  Grijs |Berekening verwijderen, stoppen |
@@ -210,7 +211,7 @@ Een indicator naast de vervolg keuzelijst **kernel** toont de status.
 
 |Kleur |Kernel-status |
 |---------|---------|
-|  Groen |Kernel verbonden, niet-actief, bezet|
+|  Green |Kernel verbonden, niet-actief, bezet|
 |  Grijs |Kernel niet verbonden |
 
 ## <a name="find-compute-details"></a>Berekenings details zoeken 

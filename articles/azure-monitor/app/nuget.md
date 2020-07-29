@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights NuGet-pakketten
 description: Azure Monitor Application Insights NuGet-pakket lijsten voor ASP.NET, ASP.NET Core, python
 ms.topic: reference
 ms.date: 10/16/2018
-ms.openlocfilehash: 91b48aee64a6b6942719f7f4abfb444b894c728e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27a3d89b4a64de159535d346641c21616833e21b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309950"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-pakketten
 
@@ -16,7 +16,7 @@ Hieronder ziet u de huidige lijst met stabiele release NuGet-pakketten voor Appl
 
 ## <a name="common-packages-for-aspnet"></a>Algemene pakketten voor ASP.NET
 
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | Micro soft. ApplicationInsights | 2.12.0 | Biedt kern functionaliteit voor het verzenden van alle Application Insights Telemetry typen en is een afhankelijk pakket voor alle andere Application Insights-pakketten | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Micro soft. ApplicationInsights. agent. interceptie | 2.4.0 | Hiermee schakelt u de interceptie van methode aanroepen in | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
@@ -28,7 +28,7 @@ Hieronder ziet u de huidige lijst met stabiele release NuGet-pakketten voor Appl
 
 ## <a name="common-packages-for-aspnet-core"></a>Algemene pakketten voor ASP.NET Core
 
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | Micro soft. ApplicationInsights. AspNetCore | 2.5.0 | Application Insights voor ASP.NET Core webtoepassingen. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Micro soft. ApplicationInsights | 2.12.0 | Dit pakket biedt kern functionaliteit voor het verzenden van alle Application Insights Telemetry typen en is een afhankelijk pakket voor alle andere Application Insights-pakketten | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -38,7 +38,7 @@ Hieronder ziet u de huidige lijst met stabiele release NuGet-pakketten voor Appl
 | Micro soft. ApplicationInsights. WindowsServer. TelemetryChannel | 2.12.0 | Voorziet in een telemetrie-kanaal om een Windows Server-SDK te Application Insights die telemetrie in offline scenario's zal behouden. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>Algemene pakketten voor python met opentellingen
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | opentelling-ext-Azure | 1.0.0 | Application Insights voor python-toepassingen onder Azure Monitor via opentellingen. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-azure/) |
 | opentelling-ext-django | 0.7.2 | Dit pakket biedt integratie met de python [Django](https://pypi.org/project/django/) -bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-django/) |
@@ -55,7 +55,7 @@ Hieronder ziet u de huidige lijst met stabiele release NuGet-pakketten voor Appl
 
 ## <a name="listenerscollectorsappenders"></a>Listeners/Verzamel aars/toevoegers
 
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | Micro soft. ApplicationInsights. DiagnosticSourceListener | 2.7.2 |  Hiermee is het door sturen van gebeurtenissen van DiagnosticSource naar Application Insights toegestaan. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
 | Micro soft. ApplicationInsights. EventSourceListener | 2.7.2 | Met Application Insights EventSourceListener kunnen gegevens van Event source-gebeurtenissen worden verzonden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
@@ -67,29 +67,30 @@ Hieronder ziet u de huidige lijst met stabiele release NuGet-pakketten voor Appl
 
 ## <a name="service-fabric"></a>Service Fabric
 
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | Micro soft. ApplicationInsights. ServiceFabric | 2.2.0 | Dit pakket biedt automatische decoratie van telemetrie met de service Fabric-context waarin de toepassing wordt uitgevoerd. Gebruik deze NuGet niet voor systeem eigen Service Fabric-toepassingen. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
 | Micro soft. ApplicationInsights. ServiceFabric. native | 2.2.0 | Application Insights module voor service Fabric-toepassingen. Gebruik deze NuGet alleen voor systeem eigen Service Fabric-toepassingen. Voor toepassingen die in containers worden uitgevoerd, gebruikt u het pakket micro soft. ApplicationInsights. ServiceFabric. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>Status monitor
 
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | Micro soft. ApplicationInsights. Agent_x64 | 2.2.1 |  Hiermee wordt het verzamelen van runtime gegevens voor x64-toepassingen ingeschakeld | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Micro soft. ApplicationInsights. Agent_x86 | 2.2.1 |  Hiermee wordt het verzamelen van runtime gegevens voor x86-toepassingen ingeschakeld. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Deze pakketten vormen een deel van de kern functionaliteit van de runtime bewaking in [status monitor](../../azure-monitor/app/monitor-performance-live-website-now.md). U hoeft deze pakketten niet rechtstreeks te downloaden. gebruik gewoon het Status Monitor-installatie programma. Als u meer wilt weten over hoe deze pakketten werken onder de motorkap, kan dit [blog bericht](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/) van een van onze ontwikkel aars goed worden gestart.
+Deze pakketten vormen een deel van de kern functionaliteit van de runtime bewaking in [status monitor](./monitor-performance-live-website-now.md). U hoeft deze pakketten niet rechtstreeks te downloaden. gebruik gewoon het Status Monitor-installatie programma. Als u meer wilt weten over hoe deze pakketten werken onder de motorkap, kan dit [blog bericht](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/) van een van onze ontwikkel aars goed worden gestart.
 
 ## <a name="additional-packages"></a>Aanvullende pakketten
 
-| Pakketnaam | Stabiele versie | Description | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Downloaden |
 |-------------------------------|-----------------------|------------|----|
 | Micro soft. ApplicationInsights. AzureWebSites | beschreven | Met deze extensie wordt de Application Insights bewaking op een Azure App Service ingeschakeld. SDK-versie 2.6.1. Instructies: Voeg de toepassings instellingen APPINSIGHTS_INSTRUMENTATIONKEY toe aan uw iKey en start de webapp opnieuw om een effect te krijgen.| [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Micro soft. ApplicationInsights. Injecter | 2.6.7 | Dit pakket bevat bestanden die vereist zijn voor codeloze Application Insights injectie | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [ASP.net core](../../azure-monitor/app/asp-net-core.md)bewaken.
-- Profiel ASP.NET Core [Azure Linux-web-apps](../../azure-monitor/app/profiler-aspnetcore-linux.md).
-- Debug ASP.NET- [moment opnamen](../../azure-monitor/app/snapshot-debugger.md).
+- [ASP.net core](./asp-net-core.md)bewaken.
+- Profiel ASP.NET Core [Azure Linux-web-apps](./profiler-aspnetcore-linux.md).
+- Debug ASP.NET- [moment opnamen](./snapshot-debugger.md).
+

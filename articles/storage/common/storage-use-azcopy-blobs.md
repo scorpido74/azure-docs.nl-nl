@@ -4,16 +4,16 @@ description: Dit artikel bevat een verzameling AzCopy-voorbeeld opdrachten die u
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcb4563f7106161920b89897b706b05d2f819938
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513779"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282446"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -60,10 +60,10 @@ Deze sectie bevat de volgende voor beelden:
 > [!TIP]
 > U kunt de upload bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Upload bestanden als toevoeg-blobs of pagina-blobs.|**--BLOB-type** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
-> |Upload naar een specifieke Access-laag (zoals de laag archief).|**--Block-BLOB-tier** = \[ Geen \| Hot- \| koud \| Archief\]|
+> |Upload naar een specifieke toegangslaag (zoals de archieflaag).|**--Block-BLOB-tier** = \[ Geen \| Hot- \| koud \| Archief\]|
 > 
 > Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
@@ -111,7 +111,7 @@ U kunt de inhoud van een map uploaden zonder de bovenliggende map zelf te kopië
 
 ### <a name="upload-specific-files"></a>Specifieke bestanden uploaden
 
-U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Joker tekens (*).
+U kunt specifieke bestanden uploaden met behulp van volledige bestands namen, gedeeltelijke namen met Joker tekens (*) of met datums en tijden.
 
 #### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
@@ -141,6 +141,18 @@ U kunt ook bestanden uitsluiten met behulp van de `--exclude-pattern` optie. Zie
 
 De `--include-pattern` `--exclude-pattern` Opties en zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de `–recursive` optie om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft `*.txt` u op om alle tekst bestanden op te halen.
 
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Bestanden uploaden die na een datum en tijd zijn gewijzigd 
+
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-after` optie. Geef een datum en tijd op in de ISO-8601-indeling (bijvoorbeeld: `2020-08-19T15:04:00Z` ). 
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **Voorbeeld** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
+
+Zie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs (Engelstalig) voor meer informatie.
+
 ## <a name="download-files"></a>Bestanden downloaden
 
 U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om blobs, directory's en containers te downloaden naar uw lokale computer.
@@ -156,7 +168,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!TIP]
 > U kunt uw download bewerking aanpassen door optionele vlaggen te gebruiken. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Bestanden automatisch decomprimeren.|**--decomprimeren**|
 > |Geef op hoe gedetailleerd de logboek vermeldingen voor het kopiëren moeten zijn.|**--logboek niveau** = \[ \|fout gegevens voor waarschuwing \| \| geen\]|
@@ -202,7 +214,7 @@ U kunt de inhoud van een map downloaden zonder de bovenliggende map zelf te kopi
 
 ### <a name="download-specific-files"></a>Specifieke bestanden downloaden
 
-U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Joker tekens (*).
+U kunt specifieke bestanden downloaden met behulp van volledige bestands namen, gedeeltelijke namen met Joker tekens (*) of met datums en tijden. 
 
 #### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
@@ -232,6 +244,18 @@ U kunt ook bestanden uitsluiten met behulp van de `--exclude-pattern` optie. Zie
 
 De `--include-pattern` `--exclude-pattern` Opties en zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de `–recursive` optie om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft `*.txt` u op om alle tekst bestanden op te halen.
 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>Bestanden downloaden die na een datum en tijd zijn gewijzigd 
+
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-after` optie. Geef een datum en tijd op in de ISO-8601-indeling (bijvoorbeeld: `2020-08-19T15:04:00Z` ). 
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
+| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+
+Zie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs (Engelstalig) voor meer informatie.
+
 ## <a name="copy-blobs-between-storage-accounts"></a>Blobs kopiëren tussen opslagaccounts
 
 U kunt AzCopy gebruiken om blobs naar andere opslagaccounts te kopiëren. De kopieerbewerking is synchroon, dus wanneer de opdracht wordt geretourneerd, geeft dit aan dat alle bestanden zijn gekopieerd. 
@@ -257,7 +281,7 @@ Deze voor beelden werken ook met accounts die een hiërarchische naam ruimte heb
 > [!TIP]
 > U kunt uw Kopieer bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Kopieer bestanden als toevoeg-blobs of pagina-blobs.|**--BLOB-type** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
 > |Kopiëren naar een specifieke toegangs laag (zoals de laag archief).|**--Block-BLOB-tier** = \[ Geen \| Hot- \| koud \| Archief\]|
@@ -322,7 +346,7 @@ Als u de `--delete-destination` vlag instelt op `true` AzCopy, worden bestanden 
 > [!TIP]
 > U kunt de synchronisatie bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Opgeven hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden.|**--Check-MD5** = \[ Niet-gecontroleerd \| aanmelden \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |Bestanden uitsluiten op basis van een patroon.|**--exclude-pad**|
@@ -332,14 +356,14 @@ Als u de `--delete-destination` vlag instelt op `true` AzCopy, worden bestanden 
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Een container met wijzigingen in een lokaal bestands systeem bijwerken
 
-In dit geval is de container het doel en is het lokale bestands systeem de bron. 
+In dit geval is de container het doel, en is het lokale bestandssysteem de bron. 
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Voorbeeld** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Een lokaal bestands systeem bijwerken met wijzigingen in een container
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Een lokaal bestandssysteem bijwerken met wijzigingen in een container
 
 In dit geval is het lokale bestands systeem het doel en de container de bron.
 
@@ -374,8 +398,8 @@ Meer voor beelden vindt u in een van deze artikelen:
 
 - [Zelfstudie: on-premises gegevens migreren naar cloudopslag met behulp van AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
 
-- [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
+- [Gegevens overdragen met AzCopy en Amazon S3-opslag](storage-use-azcopy-s3.md)
 
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)

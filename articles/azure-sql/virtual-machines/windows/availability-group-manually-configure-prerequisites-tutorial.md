@@ -3,7 +3,7 @@ title: 'Zelf studie: vereisten voor een beschikbaarheids groep'
 description: In deze zelf studie ziet u hoe u de vereisten configureert voor het maken van een SQL Server AlwaysOn-beschikbaarheids groep op Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b72e894b7280a2d3e0fa978125e53ae79b2d20e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 881fa116b1a44d4714002f71e6ebd163279d8c70
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284299"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op Azure Virtual Machines
 
@@ -43,7 +44,7 @@ U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](h
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **+** deze optie om een nieuw object te maken in de portal.
 
    ![Nieuw object](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -516,7 +517,7 @@ De methode voor het openen van de poorten is afhankelijk van de firewall-oplossi
 
    ![SQL-firewall](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. Selecteer **Volgende**.
+5. Selecteer **Next**.
 6. Laat op de pagina **actie** **de optie verbinding toestaan** ingeschakeld en selecteer **volgende**.
 7. Accepteer de standaard instellingen op de **profiel** pagina en selecteer **volgende**.
 8. Geef op de pagina **naam** een regel naam op (zoals **Azure lb probe**) in het tekstvak **naam** en selecteer vervolgens **volt ooien**.

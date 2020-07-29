@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539343"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319793"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics gegevens beveiliging
 Dit document is bedoeld om informatie te verschaffen die specifiek is voor Log Analytics, een functie van Azure Monitor, om de informatie over [Vertrouwenscentrum van Azure](https://www.microsoft.com/en-us/trust-center?rtc=1)aan te vullen.  
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe data door Log Analytics wordt verzameld, verw
 De Log Analytics-service beheert uw gegevens op basis van de Cloud veilig door de volgende methoden te gebruiken:
 
 * Gegevensscheiding
-* Gegevensretentie
+* Bewaartijd voor gegevens
 * Fysieke beveiliging
 * Incidentbeheer
 * Naleving
@@ -49,7 +49,7 @@ Het wordt niet aanbevolen om uw agent expliciet in te stellen voor gebruik van T
 ## <a name="data-segregation"></a>Gegevensscheiding
 Nadat uw gegevens door de Log Analytics-service zijn opgenomen, worden de gegevens in de gehele service logisch gescheiden gehouden van elk onderdeel. Alle gegevens worden gelabeld per werk ruimte. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service. Uw gegevens worden opgeslagen in een specifieke data base in het opslag cluster in de regio die u hebt geselecteerd.
 
-## <a name="data-retention"></a>Gegevensretentie
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 Zoek gegevens voor geïndexeerde logboeken worden opgeslagen en bewaard volgens uw prijs plan. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)voor meer informatie.
 
 Als onderdeel van uw [abonnements overeenkomst](https://azure.microsoft.com/support/legal/subscription-agreement/)houdt micro soft uw gegevens volgens de voor waarden van de overeenkomst.  Wanneer klant gegevens worden verwijderd, worden er geen fysieke stations vernietigd.  
@@ -61,12 +61,12 @@ De volgende tabel bevat een aantal van de beschik bare oplossingen en biedt voor
 | Capaciteit en prestaties |Prestatie gegevens en meta gegevens |
 | Updatebeheer |Meta gegevens en status gegevens |
 | Logboek beheer |Door de gebruiker gedefinieerde gebeurtenis logboeken, Windows-gebeurtenis logboeken en/of IIS-logboeken |
-| Tracering wijzigen |Meta gegevens van software-inventaris, Windows-service en Linux-daemon en Windows/Linux-bestanden |
+| Wijzigingen bijhouden |Meta gegevens van software-inventaris, Windows-service en Linux-daemon en Windows/Linux-bestanden |
 | SQL en Active Directory-evaluatie |WMI-gegevens, register gegevens, prestatie gegevens en SQL Server dynamische beheer resultaten weer geven |
 
 De volgende tabel bevat voor beelden van gegevens typen:
 
-| **Gegevens type** | **Fields** |
+| **Gegevenstype** | **Fields** |
 | --- | --- |
 | Waarschuwing |Naam van waarschuwing, beschrijving van waarschuwing, BaseManagedEntityId, probleem-ID, IsMonitorAlert, RuleId, ResolutionState, prioriteit, Ernst, categorie, eigenaar, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Configuration |KlantId, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, Change date |
@@ -148,7 +148,7 @@ Voor Operations Manager brengt de Operations Manager beheer groep een verbinding
 
 Alle communicatie tussen verbonden systemen en de Log Analytics-service is versleuteld. Het TLS-protocol (HTTPS) wordt gebruikt voor versleuteling.  Het micro soft SDL-proces wordt gevolgd om te garanderen dat Log Analytics is bijgewerkt met de meest recente voor uitgang in cryptografische protocollen.
 
-Elk type agent verzamelt gegevens voor Log Analytics. Welk type gegevens er wordt verzameld, is afhankelijk van de gebruikte oplossingen. U kunt een samen vatting van gegevens verzameling weer geven op [log Analytics oplossingen toevoegen vanuit de Oplossingengalerie](../../azure-monitor/insights/solutions.md). Daarnaast is er meer gedetailleerde verzamelings gegevens beschikbaar voor de meeste oplossingen. Een oplossing is een bundel van vooraf gedefinieerde weer gaven, logboek zoekopdracht query's, regels voor het verzamelen van gegevens en de verwerking van logica. Alleen beheerders kunnen Log Analytics gebruiken om een oplossing te importeren. Nadat de oplossing is geïmporteerd, wordt deze verplaatst naar de Operations Manager beheerser vers (indien gebruikt) en vervolgens naar de agents die u hebt gekozen. Daarna verzamelen de agents de gegevens.
+Elk type agent verzamelt gegevens voor Log Analytics. Welk type gegevens er wordt verzameld, is afhankelijk van de gebruikte oplossingen. U kunt een samen vatting van gegevens verzameling weer geven op [log Analytics oplossingen toevoegen vanuit de Oplossingengalerie](../insights/solutions.md). Daarnaast is er meer gedetailleerde verzamelings gegevens beschikbaar voor de meeste oplossingen. Een oplossing is een bundel van vooraf gedefinieerde weer gaven, logboek zoekopdracht query's, regels voor het verzamelen van gegevens en de verwerking van logica. Alleen beheerders kunnen Log Analytics gebruiken om een oplossing te importeren. Nadat de oplossing is geïmporteerd, wordt deze verplaatst naar de Operations Manager beheerser vers (indien gebruikt) en vervolgens naar de agents die u hebt gekozen. Daarna verzamelen de agents de gegevens.
 
 ## <a name="2-send-data-from-agents"></a>2. gegevens verzenden van agents
 U registreert alle agent typen met een registratie sleutel en er wordt een beveiligde verbinding tot stand gebracht tussen de agent en de Log Analytics service met verificatie op basis van certificaten en TLS met poort 443. Log Analytics gebruikt een geheim archief om sleutels te genereren en te onderhouden. Persoonlijke sleutels worden elke 90 dagen gedraaid en worden opgeslagen in Azure en worden beheerd door de Azure-bewerkingen die voldoen aan de strikte regelgeving en nalevings procedures.
@@ -172,6 +172,7 @@ De Bewaar periode van verzamelde gegevens die zijn opgeslagen in de data base is
 Als u toegang wilt krijgen tot uw Log Analytics-werk ruimte, meldt u zich aan bij de Azure Portal met behulp van het organisatie account of Microsoft-account dat u eerder hebt ingesteld. Al het verkeer tussen de portal en de Log Analytics-service wordt verzonden via een beveiligd HTTPS-kanaal. Wanneer u de portal gebruikt, wordt er een sessie-ID gegenereerd op de gebruikers-client (webbrowser) en worden gegevens opgeslagen in een lokale cache totdat de sessie wordt beëindigd. Wanneer het is beëindigd, wordt de cache verwijderd. Cookies aan de client zijde, die geen persoons gegevens bevatten, worden niet automatisch verwijderd. Sessie cookies zijn gemarkeerd als HTTPOnly en zijn beveiligd. Na een vooraf vastgestelde niet-actieve periode wordt de Azure Portal-sessie beëindigd.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het verzamelen van gegevens met Log Analytics voor uw virtuele Azure-machines na de [Snelstartgids van Azure VM](../../azure-monitor/learn/quick-collect-azurevm.md).  
+* Meer informatie over het verzamelen van gegevens met Log Analytics voor uw virtuele Azure-machines na de [Snelstartgids van Azure VM](../learn/quick-collect-azurevm.md).  
 
-*  Als u gegevens wilt verzamelen van fysieke of virtuele Windows-of Linux-computers in uw omgeving, raadpleegt u de [Quick start voor Linux-computers](../../azure-monitor/learn/quick-collect-linux-computer.md) of [Quick start voor Windows-computers](../../azure-monitor/learn/quick-collect-windows-computer.md)
+*  Als u gegevens wilt verzamelen van fysieke of virtuele Windows-of Linux-computers in uw omgeving, raadpleegt u de [Quick start voor Linux-computers](../learn/quick-collect-linux-computer.md) of [Quick start voor Windows-computers](../learn/quick-collect-windows-computer.md)
+

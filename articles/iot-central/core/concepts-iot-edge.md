@@ -7,13 +7,14 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759101"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337072"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge apparaten verbinden met een Azure IoT Central-toepassing
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-apparaten verbinden met een Azure IoT Central-toepassing
 
 *Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
@@ -57,7 +58,7 @@ In azure IoT Central kunt u een implementatie manifest importeren om een sjabloo
 
 ![De levens cyclus van het stroom diagram van het implementatie manifest](./media/concepts-iot-edge/dmflow.png)
 
-IoT Plug en Play (preview) modelt een IoT Edge-apparaat als volgt:
+IoT Central modellen een IoT Edge apparaat als volgt:
 
 * Elke IoT Edge-apparaatprofiel heeft een hulp model voor het apparaat.
 * Voor elke aangepaste module die wordt vermeld in het implementatie manifest, wordt een module mogelijkheidsprofiel gegenereerd.
