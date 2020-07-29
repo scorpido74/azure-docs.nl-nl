@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 5393ba1b7c604ef49cee83f759ed798cfc473417
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032830"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371733"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -35,18 +35,28 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
     ![Windows Server Back-up mislukt](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Als Azure Backup is mislukt, zoekt u naar de bijbehorende fout code in de sectie veelvoorkomende fouten in VM-back-ups in dit artikel.
 
-## <a name="common-issues"></a>Algemene problemen
+## <a name="common-issues"></a>Veelvoorkomende problemen
 
 Hier volgen enkele veelvoorkomende problemen met back-upfouten op virtuele machines van Azure.
 
-## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime: er is een time-out opgetreden bij het kopiëren van back-ups van gegevens
+### <a name="vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension"></a>VMRestorePointInternalError-anti virus dat in de virtuele machine is geconfigureerd, beperkt de uitvoering van de back-upextensie
+
+Fout code: VMRestorePointInternalError
+
+Als er op het moment van de back-up de **Logboeken toepassings logboeken** de naam van het fout bericht van de toepassing worden weer gegeven **: IaaSBcdrExtension.exe** vervolgens bevestigd dat de in de virtuele machine geconfigureerde antivirus de uitvoering van de back-upextensie beperkt.
+U kunt dit probleem oplossen door de volgende mappen in de antivirus configuratie uit te sluiten en de back-upbewerking opnieuw uit te voeren.
+
+* `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+* `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+
+### <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime: er is een time-out opgetreden bij het kopiëren van back-ups van gegevens
 
 Fout code: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 Fout bericht: er is een time-out opgetreden tijdens het kopiëren van de back-upgegevens
 
 Dit kan gebeuren als gevolg van tijdelijke opslag fouten of onvoldoende opslag account-IOPS voor de back-upservice om binnen de time-outperiode gegevens over te dragen naar de kluis. Configureer VM-back-ups met behulp van deze [Aanbevolen procedures](backup-azure-vms-introduction.md#best-practices) en voer de back-upbewerking opnieuw uit.
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM heeft geen status die back-ups toestaat
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM heeft geen status die back-ups toestaat
 
 Fout code: UserErrorVmNotInDesirableState <br/>
 Fout bericht: de VM heeft geen status die back-ups mogelijk maakt.<br/>
@@ -56,7 +66,7 @@ De back-upbewerking is mislukt, omdat de VM de status Mislukt heeft. Voor een ge
 * Als de virtuele machine zich in een tijdelijke status bevindt tussen het **uitvoeren** en **Afsluiten**, wacht u totdat de status is gewijzigd. Activeer vervolgens de back-uptaak.
 * Als de virtuele machine een virtuele Linux-machine is en **gebruikmaakt van de** Security Enhanced Linux kernel-module, sluit u het pad van de Azure Linux-agent uit het beveiligings beleid uit en zorgt u ervoor dat de back-upextensie is geïnstalleerd.
 
-## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed: een of meer koppel punten van de virtuele machine kunnen niet worden geblokkeerd om een consistente moment opname van het bestands systeem te maken
+### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed: een of meer koppel punten van de virtuele machine kunnen niet worden geblokkeerd om een consistente moment opname van het bestands systeem te maken
 
 Fout code: UserErrorFsFreezeFailed <br/>
 Fout bericht: kan een of meer koppel punten van de VM niet blok keren om een consistente moment opname van het bestands systeem te maken.
@@ -65,7 +75,7 @@ Fout bericht: kan een of meer koppel punten van de VM niet blok keren om een con
 * Voer een consistentie controle van het bestands systeem op deze apparaten uit met behulp van de **fsck** -opdracht.
 * Koppel de apparaten opnieuw en voer de back-upbewerking opnieuw uit.</ol>
 
-## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC-extensie is niet geïnstalleerd/bewerking mislukt vanwege een COM+-fout
+### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC-extensie is niet geïnstalleerd/bewerking mislukt vanwege een COM+-fout
 
 Fout code: ExtensionSnapshotFailedCOM <br/>
 Fout bericht: de momentopname bewerking is mislukt vanwege een COM+-fout
@@ -88,7 +98,7 @@ De back-upbewerking is mislukt vanwege een probleem met de Windows service **com
   * Start de MSDTC-service
 * Start de Windows service **com+-systeem toepassing**. Nadat de **com+-systeem toepassing** is gestart, wordt een back-uptaak geactiveerd vanuit het Azure Portal.</ol>
 
-## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState-momentopname bewerking is mislukt omdat de status van de VSS-schrijvers ongeldig was
+### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState-momentopname bewerking is mislukt omdat de status van de VSS-schrijvers ongeldig was
 
 Fout code: ExtensionFailedVssWriterInBadState <br/>
 Fout bericht: de momentopname bewerking is mislukt, omdat de status van de VSS-schrijvers ongeldig is.
@@ -100,19 +110,19 @@ Herstart de VSS-schrijvers die een slechte status hebben. Voer uit vanaf een opd
 
 Een andere procedure die u kan helpen, is om de volgende opdracht uit te voeren vanaf een opdracht prompt met verhoogde bevoegdheid (als beheerder).
 
-```CMD
+```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
 Als u deze register sleutel toevoegt, worden de threads niet gemaakt voor BLOB-moment opnamen en wordt de time-out voor komen.
 
-## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-fout bij het parseren van de configuratie voor de back-upextensie
+### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-fout bij het parseren van de configuratie voor de back-upextensie
 
 Fout code: ExtensionConfigParsingFailure<br/>
 Fout bericht: fout bij het parseren van de configuratie voor de back-upextensie.
 
 Deze fout treedt op als gevolg van gewijzigde machtigingen voor de map **MachineKeys** : **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
-Voer de volgende opdracht uit en controleer of de machtigingen voor de map **MachineKeys** standaard zijn:**icacls%SystemDrive%\programdata\microsoft\crypto\rsa\machinekeys**.
+Voer de volgende opdracht uit en controleer of de machtigingen voor de map **MachineKeys** standaard zijn: `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys` .
 
 Standaard machtigingen zijn als volgt:
 
@@ -137,7 +147,7 @@ Als u de machtigingen in de map **MachineKeys** ziet die afwijkt van de standaar
    * Onder **persoonlijke**  >  **certificaten**verwijdert u alle certificaten waarbij **uitgegeven aan** is het klassieke implementatie model of de **Windows Azure CRP-certificaat Generator**.
 3. Activeer een VM-back-uptaak.
 
-## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>De ExtensionStuckInDeletionState-extensie status is geen ondersteuning voor de back-upbewerking
+### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>De ExtensionStuckInDeletionState-extensie status is geen ondersteuning voor de back-upbewerking
 
 Fout code: ExtensionStuckInDeletionState <br/>
 Fout bericht: de extensie status is geen ondersteuning voor de back-upbewerking
@@ -150,7 +160,7 @@ De back-upbewerking is mislukt vanwege een inconsistente status van de back-upex
 * Voer de back-upbewerking opnieuw uit nadat u de back-upextensie hebt verwijderd
 * De volgende back-upbewerking installeert de nieuwe extensie in de gewenste status
 
-## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError-momentopname bewerking mislukt omdat de limiet voor moment opnamen is overschreden voor een aantal gekoppelde schijven
+### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError-momentopname bewerking mislukt omdat de limiet voor moment opnamen is overschreden voor een aantal gekoppelde schijven
 
 Fout code: ExtensionFailedSnapshotLimitReachedError <br/>
 Fout bericht: de momentopname bewerking is mislukt omdat de limiet voor moment opnamen is overschreden voor een aantal gekoppelde schijven
@@ -164,7 +174,7 @@ De momentopname bewerking is mislukt omdat de limiet voor de moment opname is ov
   * Zorg ervoor dat de waarde van **isanysnapshotfailed** is ingesteld op False in/etc/Azure/vmbackup.conf
   * Plan Azure Site Recovery op een ander tijdstip, zodat de back-upbewerking geen conflict veroorzaakt.
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-momentopname bewerking is mislukt vanwege onvoldoende VM-resources
+### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-momentopname bewerking is mislukt vanwege onvoldoende VM-resources
 
 Fout code: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 Fout bericht: de momentopname bewerking is mislukt vanwege onvoldoende VM-resources.
@@ -175,7 +185,7 @@ De back-upbewerking op de virtuele machine is mislukt vanwege een vertraging in 
 
 Voer vanaf een opdrachtprompt met verhoogde bevoegdheid (beheerder) de onderstaande opdracht uit:
 
-```text
+```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -184,57 +194,62 @@ Deze opdracht zorgt ervoor dat de momentopnamen worden gemaakt via host in plaat
 
 **Stap 2**: Probeer het back-upschema te wijzigen in een keer wanneer de virtuele machine minder belasting heeft (minder CPU/IOps enzovoort.)
 
-**Stap 3**: [Verhoog de grootte van de virtuele machine](https://azure.microsoft.com/blog/resize-virtual-machines/) en voer de bewerking opnieuw uit
+**Stap 3**: Probeer [de grootte van de virtuele machine te verg Roten](https://azure.microsoft.com/blog/resize-virtual-machines/) en voer de bewerking opnieuw uit
 
-
-## <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: kan de bewerking niet uitvoeren omdat de VM niet meer bestaat/400094, BCMV2VMNotFound-de virtuele machine bestaat niet/er is geen virtuele machine van Azure gevonden
+### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: kan de bewerking niet uitvoeren omdat de VM niet meer bestaat/400094, BCMV2VMNotFound-de virtuele machine bestaat niet/er is geen virtuele machine van Azure gevonden
 
 Fout code: 320001, ResourceNotFound <br/> Fout bericht: kan de bewerking niet uitvoeren omdat de VM niet meer bestaat. <br/> <br/> Fout code: 400094, BCMV2VMNotFound <br/> Fout bericht: de virtuele machine bestaat niet <br/>
 Een virtuele machine van Azure is niet gevonden.
 
 Deze fout treedt op wanneer de primaire virtuele machine wordt verwijderd, maar er door het back-upbeleid wordt gezocht naar een virtuele machine waarvan een back-up moet worden gemaakt. Voer de volgende stappen uit om deze fout op te lossen:
-- Maak de virtuele machine opnieuw met dezelfde naam en dezelfde naam voor de resource groep, naam van **Cloud service**,<br>of
-- Stop de beveiliging van de virtuele machine met of zonder de back-upgegevens te verwijderen. Zie [beveiliging van virtuele machines stoppen](backup-azure-manage-vms.md#stop-protecting-a-vm)voor meer informatie.</li></ol>
 
-## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-kan de moment opname van de virtuele machine niet kopiëren omdat het opslag account onvoldoende beschik bare ruimte heeft
+* Maak de virtuele machine opnieuw met dezelfde naam en dezelfde naam voor de resource groep, naam van **Cloud service**,<br>of
+* Stop de beveiliging van de virtuele machine met of zonder de back-upgegevens te verwijderen. Zie [beveiliging van virtuele machines stoppen](backup-azure-manage-vms.md#stop-protecting-a-vm)voor meer informatie.</li></ol>
+
+### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-kan de moment opname van de virtuele machine niet kopiëren omdat het opslag account onvoldoende beschik bare ruimte heeft
 
 Fout code: UserErrorBCMPremiumStorageQuotaError<br/> Fout bericht: kan de moment opname van de virtuele machine niet kopiëren omdat het opslag account onvoldoende beschik bare ruimte heeft
 
  Voor Premium-Vm's in VM-back-upstack v1 wordt de moment opname naar het opslag account gekopieerd. Met deze stap zorgt u ervoor dat het verkeer voor back-upbeheer, dat werkt op de moment opname, het aantal IOPS dat beschikbaar is voor de toepassing niet beperkt met Premium-schijven. <br><br>We raden u aan om slechts 50 procent, 17,5 TB, van de totale opslag account ruimte toe te wijzen. Vervolgens kan de Azure Backup-service de moment opname naar het opslag account kopiëren en gegevens van deze gekopieerde locatie in het opslag account naar de kluis overdragen.
 
+### <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008, AzureVmOffline-kan de micro soft Recovery Services-uitbrei ding niet installeren omdat de virtuele machine niet actief is
 
-## <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008, AzureVmOffline-kan de micro soft Recovery Services-uitbrei ding niet installeren omdat de virtuele machine niet actief is
 Fout code: 380008, AzureVmOffline <br/> Fout bericht: kan de micro soft Recovery Services-uitbrei ding niet installeren omdat de virtuele machine niet actief is
 
 De VM-agent is een vereiste voor de Azure Recovery Services-extensie. Installeer de Azure virtual machine agent en start de registratie bewerking opnieuw. <br> <ol> <li>Controleer of de VM-agent correct is geïnstalleerd. <li>Zorg ervoor dat de vlag op de configuratie van de virtuele machine juist is ingesteld.</ol> Lees meer informatie over het installeren van de VM-agent en het valideren van de installatie van de VM-agent.
 
-## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-de momentopname bewerking is mislukt met de fout van de bewerkings Volume Shadow Copy Service (VSS)
+### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-de momentopname bewerking is mislukt met de fout van de bewerkings Volume Shadow Copy Service (VSS)
+
 Fout code: ExtensionSnapshotBitlockerError <br/> Fout bericht: de momentopname bewerking is mislukt vanwege een fout in de Volume Shadow Copy Service (VSS)-bewerking **Dit station is vergrendeld door BitLocker-stationsversleuteling. U moet dit station ontgrendelen via het configuratie scherm.**
 
 Schakel BitLocker uit voor alle stations op de VM en controleer of het VSS-probleem is opgelost.
 
-## <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState: de VM bevindt zich niet in een status waarin back-ups zijn toegestaan
+### <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState: de VM bevindt zich niet in een status waarin back-ups zijn toegestaan
+
 Fout code: VmNotInDesirableState <br/> Fout bericht: de VM bevindt zich niet in een status waarin back-ups zijn toegestaan.
-- Als de virtuele machine zich in een tijdelijke status bevindt tussen het **uitvoeren** en **Afsluiten**, wacht u totdat de status is gewijzigd. Activeer vervolgens de back-uptaak.
-- Als de virtuele machine een virtuele Linux-machine is en **gebruikmaakt van de** Security Enhanced Linux kernel-module, sluit u het pad van de Azure Linux-agent uit het beveiligings beleid uit en zorgt u ervoor dat de back-upextensie is geïnstalleerd.
 
-- De VM-agent is niet aanwezig op de virtuele machine: <br>Installeer de vereiste onderdelen en de VM-agent. Start vervolgens de bewerking opnieuw. | Meer informatie over de installatie van de [VM-agent en het valideren](#vm-agent)van de installatie van de VM-agent.
+* Als de virtuele machine zich in een tijdelijke status bevindt tussen het **uitvoeren** en **Afsluiten**, wacht u totdat de status is gewijzigd. Activeer vervolgens de back-uptaak.
+* Als de virtuele machine een virtuele Linux-machine is en **gebruikmaakt van de** Security Enhanced Linux kernel-module, sluit u het pad van de Azure Linux-agent uit het beveiligings beleid uit en zorgt u ervoor dat de back-upextensie is geïnstalleerd.
 
+* De VM-agent is niet aanwezig op de virtuele machine: <br>Installeer de vereiste onderdelen en de VM-agent. Start vervolgens de bewerking opnieuw. | Meer informatie over de installatie van de [VM-agent en het valideren](#vm-agent)van de installatie van de VM-agent.
 
-## <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-de momentopname bewerking is mislukt vanwege een fout bij het maken van een beveiligd kanaal voor netwerk communicatie
+### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-de momentopname bewerking is mislukt vanwege een fout bij het maken van een beveiligd kanaal voor netwerk communicatie
+
 Fout code: ExtensionSnapshotFailedNoSecureNetwork <br/> Fout bericht: de momentopname bewerking is mislukt vanwege een fout bij het maken van een beveiligd kanaal voor netwerk communicatie.
-- Open de REGI ster-editor door **regedit.exe** in een verhoogde modus uit te voeren.
-- Alle versies van de .NET Framework in uw systeem identificeren. Ze bevinden zich in de hiërarchie van register sleutel **HKEY_LOCAL_MACHINE \Software\Microsoft**.
-- Voor elke .NET Framework die in de register sleutel aanwezig is, voegt u de volgende sleutel toe: <br> **Schusestrongcrypto toe "= dword: 00000001**. </ol>
 
+* Open de REGI ster-editor door **regedit.exe** in een verhoogde modus uit te voeren.
+* Alle versies van de .NET Framework in uw systeem identificeren. Ze bevinden zich in de hiërarchie van register sleutel **HKEY_LOCAL_MACHINE \Software\Microsoft**.
+* Voor elke .NET Framework die in de register sleutel aanwezig is, voegt u de volgende sleutel toe: <br> **Schusestrongcrypto toe "= dword: 00000001**. </ol>
 
-## <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-de momentopname bewerking is mislukt vanwege een fout bij het installeren van Visual C++ Redistributable voor Visual Studio 2012
+### <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-de momentopname bewerking is mislukt vanwege een fout bij het installeren van Visual C++ Redistributable voor Visual Studio 2012
+
 Fout code: ExtensionVCRedistInstallationFailure <br/> Fout bericht: de momentopname bewerking is mislukt vanwege een fout bij het installeren van Visual C++ Redistributable voor Visual Studio 2012.
-- Ga naar `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` en installeer vcredist2013_x64.<br/>Zorg ervoor dat de waarde van de register sleutel die de service-installatie toestaat, is ingesteld op de juiste waarde. Stel de **begin** waarde in **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** in op **3** en niet **4**. <br><br>Als u nog steeds problemen ondervindt met de installatie, start u de installatie service opnieuw door **Msiexec/unregister** gevolgd door **Msiexec/register** vanaf een opdracht prompt met verhoogde bevoegdheid uit te voeren.
-- Controleer het gebeurtenis logboek om te controleren of u merkt problemen hebt. Bijvoorbeeld: *product: micro soft Visual C++ 2013 x64 mini maal runtime-12.0.21005--error 1401. de sleutel kan niet worden gemaakt: Software\Classes.  Systeem fout 5.  Controleer of u voldoende toegangs rechten voor deze sleutel hebt of neem contact op met het ondersteunings personeel.* <br><br> Zorg ervoor dat de beheerder of het gebruikers account voldoende machtigingen heeft om de register sleutel **HKEY_LOCAL_MACHINE \Software\Classes**bij te werken. Geef voldoende machtigingen op en start de Windows Azure-gast agent opnieuw.<br><br> <li> Als er antivirus producten aanwezig zijn, moet u ervoor zorgen dat ze beschikken over de juiste uitsluitings regels voor het toestaan van de installatie.
 
+* Ga naar `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` en installeer vcredist2013_x64.<br/>Zorg ervoor dat de waarde van de register sleutel die de service-installatie toestaat, is ingesteld op de juiste waarde. Stel de **begin** waarde in **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** in op **3** en niet **4**. <br><br>Als u nog steeds problemen ondervindt met de installatie, start u de installatie service opnieuw door **Msiexec/unregister** gevolgd door **Msiexec/register** vanaf een opdracht prompt met verhoogde bevoegdheid uit te voeren.
+* Controleer het gebeurtenis logboek om te controleren of u merkt problemen hebt. Bijvoorbeeld: *product: micro soft Visual C++ 2013 x64 mini maal runtime-12.0.21005--error 1401. de sleutel kan niet worden gemaakt: Software\Classes.  Systeem fout 5.  Controleer of u voldoende toegangs rechten voor deze sleutel hebt of neem contact op met het ondersteunings personeel.* <br><br> Zorg ervoor dat de beheerder of het gebruikers account voldoende machtigingen heeft om de register sleutel **HKEY_LOCAL_MACHINE \Software\Classes**bij te werken. Geef voldoende machtigingen op en start de Windows Azure-gast agent opnieuw.<br><br> <li> Als er antivirus producten aanwezig zijn, moet u ervoor zorgen dat ze beschikken over de juiste uitsluitings regels voor het toestaan van de installatie.
 
-## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-er is een ongeldig beleid geconfigureerd op de virtuele machine, waardoor de bewerking van de moment opname wordt voor komen
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-er is een ongeldig beleid geconfigureerd op de virtuele machine, waardoor de bewerking van de moment opname wordt voor komen
+
 Fout code: UserErrorRequestDisallowedByPolicy <BR> Fout bericht: er is een ongeldig beleid geconfigureerd op de VM, waardoor er geen momentopname bewerking kan worden uitgevoerd.
 
 Als u een Azure Policy hebt dat de [Tags in uw omgeving bepaalt](../governance/policy/tutorials/govern-tags.md), kunt u overwegen om het beleid te wijzigen van een [geweigerd effect](../governance/policy/concepts/effects.md#deny) op een [wijzigings effect](../governance/policy/concepts/effects.md#modify)of door de resource groep hand matig te maken volgens het [naamgevings schema dat door Azure Backup wordt vereist](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
@@ -312,7 +327,7 @@ VM-back-up is afhankelijk van het uitgeven van momentopname opdrachten aan onder
 
 * **Vm's met SQL Server back-up die is geconfigureerd, kunnen een vertraging voor de taak moment opname veroorzaken**. Standaard maakt VM-back-up een volledige VSS-back-up op Windows-Vm's. Vm's met SQL Server, met SQL Server back-up geconfigureerd, kunnen vertragingen in moment opnamen ondervinden. Als de vertraging van moment opnamen back-upfouten veroorzaken, stelt u de volgende register sleutel in:
 
-   ```text
+   ```console
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```

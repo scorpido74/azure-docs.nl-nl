@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 634e1866a2c3e30e0750b9e6f4b2b3f93db2f8dc
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133109"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372294"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources
 
@@ -26,7 +26,7 @@ U kunt de Azure Storage Resource provider gebruiken om acties uit te voeren, zoa
 
 Micro soft biedt twee REST-Api's voor het werken met Azure Storage-resources. Deze Api's vormen de basis van alle acties die u kunt uitvoeren op basis van Azure Storage. Met de Azure Storage REST API kunt u werken met gegevens in uw opslag account, waaronder blob-, wachtrij-, bestands-en tabel gegevens. Met de Azure Storage Resource provider REST API kunt u werken met het opslag account en gerelateerde resources.
 
-Een aanvraag die BLOB-gegevens leest of schrijft, vereist andere machtigingen dan een aanvraag die een beheer bewerking uitvoert. RBAC biedt nauw keurige controle over machtigingen voor beide typen resources. Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, zorg er dan voor dat u weet welke machtigingen voor de principal worden verleend. Zie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor een gedetailleerde Naslag informatie over de acties die zijn gekoppeld aan elke ingebouwde RBAC-rol.
+Een aanvraag die BLOB-gegevens leest of schrijft, vereist andere machtigingen dan een aanvraag die een beheer bewerking uitvoert. RBAC biedt nauw keurige controle over machtigingen voor beide typen resources. Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, zorg er dan voor dat u weet welke machtigingen voor de principal worden verleend. Zie [ingebouwde rollen in azure](../../role-based-access-control/built-in-roles.md)voor een gedetailleerde Naslag informatie over de acties die zijn gekoppeld aan elke ingebouwde rol van Azure.
 
 Azure Storage ondersteunt het gebruik van Azure AD om aanvragen voor Blob-en wachtrij opslag te autoriseren. Zie [toegang tot blobs en wacht rijen toestaan met Active Directory](storage-auth-aad.md)voor meer informatie over RBAC-rollen voor Blob-en wachtrij gegevens bewerkingen.
 

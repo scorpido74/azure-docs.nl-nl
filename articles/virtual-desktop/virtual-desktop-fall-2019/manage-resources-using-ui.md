@@ -1,6 +1,6 @@
 ---
 title: Beheer hulpprogramma implementeren met een Azure Resource Manager sjabloon-Azure
-description: Een gebruikers interface-hulp programma installeren met een Azure Resource Manager sjabloon voor het beheren van virtuele bureau blad-resources van Windows.
+description: Een hulp programma voor gebruikers interface installeren met een Azure Resource Manager sjabloon voor het beheren van klassieke Windows-resources (virtueel bureau blad).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284945"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Een beheer programma met een Azure Resource Manager-sjabloon implementeren
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Een beheer hulpprogramma voor virtueel bureau blad (klassiek) van Windows met een Azure Resource Manager-sjabloon implementeren
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
 
 In de instructies in dit artikel wordt uitgelegd hoe u de gebruikers interface implementeert met behulp van een Azure Resource Manager sjabloon.
 
@@ -51,7 +51,7 @@ Voordat u begint, moet u ervoor zorgen dat de server-en client-apps toestemming 
 Volg deze instructies voor het implementeren van de Azure resource management-sjabloon:
 
 1. Ga naar de [pagina github Azure RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
-2. Implementeer de sjabloon in Azure.
+2. De sjabloon implementeren in Azure.
     - Als u in een bedrijfs abonnement implementeert, schuift u omlaag en selecteert u **implementeren naar Azure**.
     - Als u in een Cloud Solution Provider-abonnement implementeert, volgt u deze instructies om te implementeren in Azure:
         1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
