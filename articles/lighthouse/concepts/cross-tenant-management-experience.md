@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 07/17/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: be4f9581e8a276b4296faedb65691232dee2ea95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090413"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371036"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -82,6 +82,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 - Details van het activiteiten logboek voor gedelegeerde abonnementen weer geven
 - Log Analytics: gegevens opvragen uit externe werk ruimten van klanten in meerdere tenants
 - Waarschuwingen maken in de tenants van de klant die automatisering activeren, zoals Azure Automation runbooks of Azure Functions, in de Tenant van de service provider via webhooks
+- Voor SAP-workloads [bewaakt u de metrische gegevens van SAP-oplossingen met een geaggregeerde weer gave van alle tenants van de klant](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure-netwerken](../../networking/networking-overview.md):
 

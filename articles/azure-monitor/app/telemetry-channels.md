@@ -4,16 +4,16 @@ description: Telemetrie-kanalen aanpassen in Azure-toepassing Insights-Sdk's voo
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318926"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetrie-kanalen in Application Insights
 
-Telemetrie-kanalen vormen een integraal onderdeel van de [Azure-toepassing Insights-sdk's](../../azure-monitor/app/app-insights-overview.md). Ze beheren het bufferen en verzenden van telemetrie naar de Application Insights-service. De .NET-en .NET Core-versies van de Sdk's hebben twee ingebouwde telemetrie-kanalen: `InMemoryChannel` en `ServerTelemetryChannel` . In dit artikel wordt elk kanaal in detail beschreven, met inbegrip van het gedrag van het kanaal aan te passen.
+Telemetrie-kanalen vormen een integraal onderdeel van de [Azure-toepassing Insights-sdk's](./app-insights-overview.md). Ze beheren het bufferen en verzenden van telemetrie naar de Application Insights-service. De .NET-en .NET Core-versies van de Sdk's hebben twee ingebouwde telemetrie-kanalen: `InMemoryChannel` en `ServerTelemetryChannel` . In dit artikel wordt elk kanaal in detail beschreven, met inbegrip van het gedrag van het kanaal aan te passen.
 
 ## <a name="what-are-telemetry-channels"></a>Wat zijn telemetrie-kanalen?
 
@@ -39,7 +39,7 @@ De Application Insights .NET en .NET core Sdk's worden geleverd met twee ingebou
 
 U configureert een telemetrie-kanaal door het in te stellen op de actieve telemetrie-configuratie. Voor ASP.NET-toepassingen moet de configuratie het telemetrische kanaal exemplaar instellen op `TelemetryConfiguration.Active` of door te wijzigen `ApplicationInsights.config` . Voor ASP.NET Core toepassingen moet de configuratie het kanaal toevoegen aan de container voor injectie van afhankelijkheid.
 
-In de volgende secties ziet u voor beelden van het configureren van de `StorageFolder` instelling voor het kanaal in verschillende toepassings typen. `StorageFolder`is slechts een van de Configureer bare instellingen. Zie [de sectie instellingen](telemetry-channels.md#configurable-settings-in-channels) verderop in dit artikel voor een volledige lijst met configuratie-instellingen.
+In de volgende secties ziet u voor beelden van het configureren van de `StorageFolder` instelling voor het kanaal in verschillende toepassings typen. `StorageFolder`is slechts een van de Configureer bare instellingen. Zie [de sectie instellingen](#configurable-settings-in-channels) verderop in dit artikel voor een volledige lijst met configuratie-instellingen.
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Configuratie met behulp van ApplicationInsights.config voor ASP.NET-toepassingen
 
@@ -166,5 +166,6 @@ Net als elke SDK voor Application Insights zijn kanalen open source. Lees en bij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Steekproeven](../../azure-monitor/app/sampling.md)
-* [SDK-probleem oplossing](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [Steekproeven](./sampling.md)
+* [SDK-probleem oplossing](./asp-net-troubleshoot-no-data.md)
+

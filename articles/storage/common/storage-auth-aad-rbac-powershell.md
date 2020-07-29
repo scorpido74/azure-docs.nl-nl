@@ -10,20 +10,20 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: dab10c8d7c93e130c707f6020309e5dd2440a028
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c090343e6f63a71b639e5c2f0e9c9fbd0f3e0c2d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124889"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370475"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Power shell gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
-Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot containers of wacht rijen.
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde rollen van Azure die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot containers of wacht rijen.
 
 Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om ingebouwde RBAC-rollen weer te geven en toe te wijzen aan gebruikers. Zie [overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/)voor meer informatie over het gebruik van Azure PowerShell.
+In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om ingebouwde rollen van Azure op te geven en ze toe te wijzen aan gebruikers. Zie [overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/)voor meer informatie over het gebruik van Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om ingebou
 
 ## <a name="list-available-rbac-roles"></a>Beschik bare RBAC-rollen weer geven
 
-Als u beschik bare ingebouwde RBAC-rollen met Azure PowerShell wilt weer geven, gebruikt u de opdracht [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) :
+Gebruik de opdracht [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) voor een lijst met beschik bare ingebouwde Azure-rollen met Azure PowerShell:
 
 ```powershell
 Get-AzRoleDefinition | FT Name, Description

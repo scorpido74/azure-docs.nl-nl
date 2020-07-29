@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386365"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371172"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -24,7 +24,7 @@ Als u een Windows-apparaat wilt beheren, moet u lid zijn van de lokale groep Adm
 
 In dit artikel wordt uitgelegd hoe de update van het lokale beheerders lidmaatschap werkt en hoe u deze kunt aanpassen tijdens een Azure AD-deelname. De inhoud van dit artikel is niet van toepassing op een **hybride Azure AD gekoppelde** apparaten.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 Wanneer u een Windows-apparaat met Azure AD verbindt met een Azure AD-deelname, voegt Azure AD de volgende beveiligings-principals toe aan de lokale groep Administrators op het apparaat:
 
@@ -66,6 +66,21 @@ Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten
 
 >[!NOTE]
 > De bovenstaande acties zijn niet van toepassing op gebruikers die eerder niet zijn aangemeld bij het betreffende apparaat. In dit geval worden de beheerders bevoegdheden onmiddellijk toegepast na de eerste aanmelding bij het apparaat. 
+
+## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Beheerders bevoegdheden beheren met Azure AD-groepen (preview-versie)
+
+>[!NOTE]
+> Deze functie is momenteel beschikbaar als preview-product.
+
+Vanaf de update voor Windows 10 2004 kunt u Azure AD-groepen gebruiken voor het beheren van Administrator bevoegdheden op aan Azure AD gekoppelde apparaten met het MDM-beleid [beperkte groepen] (Windows/client-management/MDM/Policy-CSP-restrictedgroups). Met dit beleid kunt u afzonderlijke gebruikers of Azure AD-groepen toewijzen aan de lokale groep Administrators op een toegevoegd Azure AD-apparaat, zodat u de granulariteit kunt configureren om afzonderlijke beheerders voor verschillende groepen apparaten in te stellen. 
+
+Er is momenteel geen gebruikers interface in intune voor het beheren van dit beleid en moet worden geconfigureerd met [aangepaste OMA-URI-instellingen] (mem/intune/configuratie/custom-settings-Windows-10). Enkele aandachtspunten voor dit beleid: 
+
+- Voor het toevoegen van Azure AD-groepen via het beleid is de SID van de groep vereist die kan worden verkregen door de groups API uit te voeren. De SID wordt gedefinieerd door de eigenschap `securityIdentifier` in de groups API.
+- Wanneer het beleid voor beperkte groepen wordt afgedwongen, wordt het huidige lid van de groep die zich niet in de lijst met leden bevindt, verwijderd. Als u dit beleid afdwingt met nieuwe leden of groepen, worden de bestaande beheerders verwijderd, namelijk de gebruiker die lid is van het apparaat, de rol van Apparaatbeheer en de rol van globale beheerder van het apparaat. Als u wilt voor komen dat bestaande leden worden verwijderd, moet u deze configureren als onderdeel van de lijst met leden in het beleid voor beperkte groepen. 
+- Dit beleid is alleen van toepassing op de volgende bekende groepen op een Windows 10-apparaat: beheerders, gebruikers, gasten, hoofd gebruikers Extern bureaublad gebruikers en gebruikers van extern beheer. 
+- Het beheren van lokale beheerders met beleid voor beperkte groepen is niet van toepassing op hybride Azure AD-gekoppelde of Azure AD-geregistreerde apparaten.
+- Hoewel het beleid voor beperkte groepen bestond vóór Windows 10 2004-Update, heeft het geen ondersteuning voor Azure AD-groepen als leden van de lokale groep Administrators van een apparaat. 
 
 ## <a name="manage-regular-users"></a>Reguliere gebruikers beheren
 

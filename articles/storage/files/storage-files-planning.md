@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659632"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370356"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -74,6 +75,30 @@ Zie [Veilige overdracht vereisen in Azure Storage](../common/storage-require-sec
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
+
+## <a name="data-protection"></a>Gegevensbeveiliging
+Azure Files beschikt over een aanpak met meerdere lagen om ervoor te zorgen dat er een back-up wordt gemaakt van uw gegevens, herstel bare en beschermd tegen beveiligings Risico's.
+
+### <a name="soft-delete"></a>Voorlopig verwijderen
+Zacht verwijderen voor bestands shares (preview) is een instelling voor het niveau van een opslag account waarmee u uw bestands share kunt herstellen wanneer deze per ongeluk wordt verwijderd. Wanneer een bestands share wordt verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van permanent te wissen. U kunt de hoeveelheid tijd waarvoor tijdelijke verwijderde gegevens kunnen worden hersteld, configureren voordat deze definitief wordt verwijderd en de share tijdens deze Bewaar periode op elk gewenst moment verwijderen. 
+
+U kunt het beste verwijderen voor de meeste bestands shares inschakelen. Als u een werk stroom hebt waarbij het verwijderen van shares gemeen schappelijk en verwacht is, kunt u ervoor kiezen om een zeer korte Bewaar periode te hebben of dat er geen tijdelijke verwijdering is ingeschakeld.
+
+Voor meer informatie over zacht verwijderen, Zie [voor komen dat onbedoelde gegevens worden verwijderd](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion).
+
+### <a name="backup"></a>Backup
+U kunt een back-up maken van uw Azure-bestands share via [moment opnamen van shares](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files), die alleen-lezen zijn, Point-in-time-kopieën van uw share. Moment opnamen zijn incrementeel, wat betekent dat ze slechts zoveel gegevens bevatten als is gewijzigd sinds de vorige moment opname. U kunt Maxi maal 200 moment opnamen per bestands share hebben en deze Maxi maal tien jaar bewaren. U kunt deze moment opnamen hand matig maken in de Azure Portal, via Power shell of via de opdracht regel interface (CLI), maar u kunt ook [Azure backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)gebruiken. Moment opnamen worden opgeslagen in uw bestands share, wat betekent dat als u de bestands share verwijdert, uw moment opnamen ook worden verwijderd. Als u back-ups van uw moment opname wilt beveiligen tegen onbedoeld verwijderen, moet u ervoor zorgen dat zacht verwijderen is ingeschakeld voor uw share.
+
+[Azure backup voor Azure-bestands shares zorgt voor](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) de planning en retentie van moment opnamen. De mogelijkheden van de groot vader-vader-zoon (GFS) betekenen dat u dagelijkse, wekelijkse, maandelijkse en jaarlijkse moment opnamen kunt maken, elk met een eigen Bewaar periode. Azure Backup wordt ook de activering van zacht verwijderen in de vorm van een opslag account in de vorm van een bestands share die is geconfigureerd voor back-up. Ten slotte biedt Azure Backup bepaalde belang rijke functies voor het bewaken en waarschuwen waarmee klanten een geconsolideerde weer gave van hun back-ups kunnen maken.
+
+U kunt op item niveau en op share niveau terugzetten in de Azure Portal met behulp van Azure Backup uitvoeren. Het enige wat u hoeft te doen, is het herstel punt (een bepaalde moment opname), het specifieke bestand of de betreffende map, indien van toepassing, en vervolgens de locatie (oorspronkelijk of alternatief) kiezen waarnaar u wilt herstellen. De back-upservice zorgt voor het kopiëren van de momentopname gegevens en toont de voortgang van de herstel bewerking in de portal.
+
+Zie [about Azure file share backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)(Engelstalig) voor meer informatie over back-ups.
+
+### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection voor Azure Files (preview-versie)
+Advanced Threat Protection (ATP) voor Azure Storage biedt een extra beveiligingslaag met waarschuwingen wanneer er afwijkende activiteiten in uw opslag account worden gedetecteerd, bijvoorbeeld ongebruikelijke pogingen om toegang te krijgen tot het opslag account. ATP voert ook malware-hash-reputatie analyse uit en geeft een waarschuwing over bekende malware. U kunt ATP op een niveau van een abonnement of opslag account configureren via Azure Security Center. 
+
+Zie [Advanced Threat Protection voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)voor meer informatie.
 
 ## <a name="storage-tiers"></a>Opslaglagen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

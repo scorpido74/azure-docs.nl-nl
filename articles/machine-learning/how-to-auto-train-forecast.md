@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 4f27fc9542d6c4e9027c7a1a0d4daeb7cb079e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b81dbce9f73c76ceea0f7842d731d00f905fb01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321544"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371512"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,7 +130,7 @@ Voor prognose taken maakt automatische machine learning gebruik van vooraf verwe
 
 * Detectie frequentie van tijds reeksen detecteren (bijvoorbeeld elk uur, dagelijks, wekelijks) en nieuwe records maken voor ontbrekende tijd punten om de reeks continu te maken.
 * Ontbrekende waarden in het doel (via voorwaartse opvulling) en functie kolommen toegerekend (met behulp van mediaan kolom waarden)
-* Op korrels gebaseerde functies maken om vaste effecten in verschillende reeksen in te scha kelen
+* Maak functies op basis van Time Series-id's om vaste effecten in verschillende reeksen in te scha kelen
 * Op tijd gebaseerde functies maken voor het leren van seizoensgebonden patronen
 * Categorische variabelen coderen naar numerieke aantallen
 
@@ -139,21 +139,21 @@ Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-
 | Parameter &nbsp; naam | Beschrijving | Vereist |
 |-------|-------|-------|
 |`time_column_name`|Wordt gebruikt om de kolom datetime op te geven in de invoer gegevens die worden gebruikt voor het bouwen van de tijd reeks en het uitstellen van de frequentie.|✓|
-|`grain_column_names`|Naam (en) die afzonderlijke reeks groepen in de invoer gegevens definiëren. Als korrel niet is gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.||
-|`max_horizon`|Definieert de maximale gewenste prognose horizon in eenheden van de time-series. Eenheden zijn gebaseerd op het tijds interval van uw trainings gegevens, bijvoorbeeld maandelijks, wekelijks dat de Forecaster moet voors pellen.|✓|
+|`time_series_id_column_names`|De kolom namen die worden gebruikt voor het uniek identificeren van de tijd reeks in gegevens die meerdere rijen met dezelfde tijds tempel hebben. Als er geen tijd reeks-id's zijn gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.||
+|`forecast_horizon`|Hiermee definieert u hoeveel Peri Oden voorwaarts u wilt ramen. De horizon ligt in eenheden van de tijd reeks frequentie. Eenheden zijn gebaseerd op het tijds interval van uw trainings gegevens, bijvoorbeeld maandelijks, wekelijks dat de Forecaster moet voors pellen.|✓|
 |`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. De vertraging wordt weer gegeven als een lijst of één geheel getal. Er moet een vertraging worden gebruikt wanneer de relatie tussen de onafhankelijke variabelen en de afhankelijke variabele standaard niet overeenkomt met of correleert. Wanneer u bijvoorbeeld de vraag voor een product wilt voors pellen, is de vraag in elke maand mogelijk afhankelijk van de prijs van specifieke producten 3 maanden vóór. In dit voor beeld wilt u mogelijk het doel (de vraag) met drie maanden uitsteld, zodat het model op de juiste relatie wordt getraind.||
 |`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, <= grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset. Geef deze para meter op als u alleen een bepaalde hoeveelheid geschiedenis wilt beschouwen bij het trainen van het model.||
 |`enable_dnn`|DNNs voor het maken van prognoses.||
 
 Raadpleeg de [referentie documentatie](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) voor meer informatie.
 
-Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op het `day_datetime` veld in de gegevensset. Definieer de `grain_column_names` para meter om ervoor te zorgen dat er **twee afzonderlijke tijdreeks groepen** worden gemaakt voor de gegevens. een voor Store A en B. Tenslotte stelt u de 50 in op om te `max_horizon` voors pellen op de hele testset. Stel een venster voor een prognose in op 10 Peri Oden met `target_rolling_window_size` , en geef een enkele vertraging op voor de doel waarden voor twee Peri Oden vooruit met de `target_lags` para meter. U kunt het beste instellen `max_horizon` op `target_rolling_window_size` `target_lags` ' auto ', waarmee deze waarden automatisch voor u worden gedetecteerd. In het onderstaande voor beeld zijn ' automatische instellingen ' gebruikt voor deze para meters. 
+Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op het `day_datetime` veld in de gegevensset. Definieer de `time_series_id_column_names` para meter om ervoor te zorgen dat er **twee afzonderlijke tijdreeks groepen** worden gemaakt voor de gegevens. een voor Store A en B. Tenslotte stelt u de 50 in op om te `forecast_horizon` voors pellen op de hele testset. Stel een venster voor een prognose in op 10 Peri Oden met `target_rolling_window_size` , en geef een enkele vertraging op voor de doel waarden voor twee Peri Oden vooruit met de `target_lags` para meter. U kunt het beste instellen `forecast_horizon` op `target_rolling_window_size` `target_lags` ' auto ', waarmee deze waarden automatisch voor u worden gedetecteerd. In het onderstaande voor beeld zijn ' automatische instellingen ' gebruikt voor deze para meters. 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
-    "grain_column_names": ["store"],
-    "max_horizon": "auto",
+    "time_series_id_column_names": ["store"],
+    "forecast_horizon": "auto",
     "target_lags": "auto",
     "target_rolling_window_size": "auto",
     "preprocess": True,
@@ -163,7 +163,7 @@ time_series_settings = {
 > [!NOTE]
 > Geautomatiseerde machine learning-voorverwerkingsstappen (kenmerknormalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarden, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model voor voorspellingen gebruikt, worden dezelfde voorverwerkingsstappen die tijdens de training zijn toegepast, automatisch toegepast op uw invoergegevens.
 
-Als u de `grain_column_names` in het bovenstaande code fragment definieert, maakt AutoML twee afzonderlijke tijdreeks groepen, ook wel bekend als meerdere tijd reeksen. Als er geen korrel is gedefinieerd, wordt ervan uitgegaan dat de gegevensset een enkele time series is. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over één time-serie.
+Als u de `time_series_id_column_names` in het bovenstaande code fragment definieert, maakt AutoML twee afzonderlijke tijdreeks groepen, ook wel bekend als meerdere tijd reeksen. Als er geen tijds reeks-id's zijn gedefinieerd, wordt in AutoML aangenomen dat de gegevensset een enkele time series is. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over één time-serie.
 
 Maak nu een standaard `AutoMLConfig` object, geef het `forecasting` taak type op en verzend het experiment. Wanneer het model is voltooid, haalt u de best mogelijke run-iteratie op.
 
@@ -221,6 +221,32 @@ Zie de documentatie over [AML Compute](how-to-set-up-training-targets.md#amlcomp
 
 Bekijk het voor beeld van de [drank productie prognose](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) voor een gedetailleerd code voorbeeld met DNNs.
 
+### <a name="customize-featurization"></a>Parametrisatie aanpassen
+U kunt uw parametrisatie-instellingen aanpassen om ervoor te zorgen dat de gegevens en functies die worden gebruikt om uw ML-model te trainen, in relevante voor spellingen resulteren. 
+
+Geef in uw object op om featurizations aan te passen `"featurization": FeaturizationConfig` `AutoMLConfig` . Als u de Azure Machine Learning Studio gebruikt voor uw experiment, raadpleegt u het [artikel](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+
+Ondersteunde aanpassingen zijn onder andere:
+
+|Aanpassing|Definitie|
+|--|--|
+|**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
+|**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Ondersteunt momenteel* toerekenings functie (fill_value en mediaan).|
+|**Kolommen neerzetten** |Hiermee geeft u kolommen op die moeten worden featurized.|
+
+Maak het `FeaturizationConfig` object door uw parametrisatie-configuraties te definiëren:
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
 ### <a name="target-rolling-window-aggregation"></a>Aggregatie van het doel venster
 De beste informatie die een Forecaster kan hebben, is vaak de recente waarde van het doel. Het maken van cumulatieve statistieken van het doel kan de nauw keurigheid van de voor spelling verg Roten. Met aggregaties van het doel venster kunt u een roulerende aggregatie van gegevens waarden toevoegen als onderdelen. Als u Rolling vensters wilt inschakelen, stelt `target_rolling_window_size` u de gewenste grootte in voor het gehele venster. 
 
@@ -271,7 +297,7 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-Nu de algehele model nauwkeurigheid is vastgesteld, is de volgende stap het model te gebruiken voor het voors pellen van onbekende toekomstige waarden. Geef een gegevensset op in dezelfde indeling als de testset `test_data` , maar met toekomstige datetimes en de resulterende Voorspellings is de voorspelde waarden voor elke stap van de tijds reeks. Stel dat de laatste tijdreeks records in de gegevensset 12/31/2018 zijn. Voor een prognose van de vraag voor de volgende dag (of zoveel Peri Oden als u nodig hebt om een prognose te maken, <= `max_horizon` ), maakt u een eenmalige reeks record voor elke Store voor 01/01/2019.
+Nu de algehele model nauwkeurigheid is vastgesteld, is de volgende stap het model te gebruiken voor het voors pellen van onbekende toekomstige waarden. Geef een gegevensset op in dezelfde indeling als de testset `test_data` , maar met toekomstige datetimes en de resulterende Voorspellings is de voorspelde waarden voor elke stap van de tijds reeks. Stel dat de laatste tijdreeks records in de gegevensset 12/31/2018 zijn. Voor een prognose van de vraag voor de volgende dag (of zoveel Peri Oden als u nodig hebt om een prognose te maken, <= `forecast_horizon` ), maakt u een eenmalige reeks record voor elke Store voor 01/01/2019.
 
 ```output
 day_datetime,store,week_of_year
@@ -282,7 +308,7 @@ day_datetime,store,week_of_year
 Herhaal de stappen die nodig zijn om deze toekomstige gegevens naar een data frame te laden en voer vervolgens uit `best_run.predict(test_data)` om toekomstige waarden te voors pellen.
 
 > [!NOTE]
-> Waarden kunnen niet worden voor speld voor het aantal Peri Oden dat groter is dan de `max_horizon` . Het model moet opnieuw worden getraind met een grotere horizon om toekomstige waarden buiten de huidige horizon te voors pellen.
+> Waarden kunnen niet worden voor speld voor het aantal Peri Oden dat groter is dan de `forecast_horizon` . Het model moet opnieuw worden getraind met een grotere horizon om toekomstige waarden buiten de huidige horizon te voors pellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Levering van gebeurtenissen met beheerde service-identiteit
 description: In dit artikel wordt beschreven hoe u de beheerde service-identiteit voor een Azure Event grid-onderwerp inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119188"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371257"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Gebeurtenis levering met een beheerde identiteit
 In dit artikel wordt beschreven hoe u een [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor Azure Event grid-onderwerpen of-domeinen inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
@@ -70,8 +70,8 @@ Op dit moment ondersteunt Azure Event grid onderwerpen of domeinen die zijn geco
 
 | Doel | RBAC-rol | 
 | ----------- | --------- | 
-| Service Bus-wacht rijen en-onderwerpen | [Afzender van Azure Service Bus gegevens](../service-bus-messaging/authenticate-application.md#built-in-rbac-roles-for-azure-service-bus) |
-| Azure Event Hubs | [Afzender van Azure Event Hubs gegevens](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
+| Service Bus-wacht rijen en-onderwerpen | [Afzender van Azure Service Bus gegevens](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
+| Azure Event Hubs | [Afzender van Azure Event Hubs gegevens](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
 | Azure Blob Storage | [Inzender voor Storage BLOB-gegevens](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
 | Azure Queue Storage |[Afzender gegevens bericht van opslag wachtrij](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
 

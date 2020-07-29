@@ -8,15 +8,15 @@ ms.author: roastala
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 07/23/2020
-ms.custom: tracking-python
-ms.openlocfilehash: c7229aaeef8b756b244e55920263eb046ed87f13
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: c1c146783d54bf2df25a130b73ab430c6edeaef7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319453"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Software omgevingen maken & gebruiken in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ In de voor beelden in dit artikel wordt uitgelegd hoe u:
 * Een omgeving gebruiken voor training.
 * Gebruik een-omgeving voor de implementatie van webservices.
 
-Zie [Wat zijn omgevingen van ml?](concept-environments.md)voor een overzicht van hoe omgevingen werken in azure machine learning.
+Zie [Wat zijn omgevingen van ml?](concept-environments.md) voor een overzicht van hoe omgevingen werken in azure machine learning. Zie [hier](how-to-configure-environment.md)voor meer informatie over het configureren van ontwikkel omgevingen.
 
 ## <a name="prerequisites"></a>Vereisten
 

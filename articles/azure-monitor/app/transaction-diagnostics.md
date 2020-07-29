@@ -4,11 +4,12 @@ description: End-to-end-diagnose van trans acties Application Insights
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671134"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318909"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Unified cross-component Trans Action Diagnostics
 
@@ -63,7 +64,7 @@ In dit samenvouw paneel worden de andere resultaten weer gegeven die voldoen aan
 
 ## <a name="profiler-and-snapshot-debugger"></a>Fout opsporing voor Profiler en moment opname
 
-[Application Insights Profiler](../../azure-monitor/app/profiler.md) of [snap shot debugger](snapshot-debugger.md) Help bij het op codeniveau diagnosticeren van prestatie-en fout problemen. Met deze ervaring kunt u Profiler-traceringen of-moment opnamen van elk onderdeel met één klik bekijken.
+[Application Insights Profiler](./profiler.md) of [snap shot debugger](snapshot-debugger.md) Help bij het op codeniveau diagnosticeren van prestatie-en fout problemen. Met deze ervaring kunt u Profiler-traceringen of-moment opnamen van elk onderdeel met één klik bekijken.
 
 Als u de Profiler niet meer kunt gebruiken, neemt u contact op met **serviceprofilerhelp \@ Microsoft.com**
 
@@ -94,3 +95,4 @@ Tijd lijnen worden aangepast voor klok scheefheden in het transactie diagram. U 
 *Waarom ontbreekt het meren deel van de query's van gerelateerde items?*
 
 Dit is standaard. Alle verwante items, in alle onderdelen, zijn al beschikbaar aan de linkerkant (bovenste en onderste gedeelten). De nieuwe ervaring heeft twee verwante items die aan de linkerkant niet worden bedekt: alle telemetrie van vijf minuten voor en na deze gebeurtenis en de tijd lijn van de gebruiker.
+

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044512"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319351"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problemen met Azure Stream Analytics oplossen met behulp van resource logboeken
 
@@ -59,7 +59,7 @@ Activiteiten logboeken zijn standaard ingeschakeld en geven inzichten op hoog ni
 
 Het inschakelen van bron logboeken en het verzenden van deze naar Azure Monitor Logboeken wordt sterk aanbevolen. Ze zijn standaard **uitgeschakeld** . Als u deze wilt inschakelen, voert u de volgende stappen uit:
 
-1.  [Maak een log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) als u er nog geen hebt. Het is raadzaam om uw Log Analytics-werk ruimte in dezelfde regio als uw Stream Analytics-taak te hebben.
+1.  Maak een Log Analytics-werk ruimte als u er nog geen hebt. Het is raadzaam om uw Log Analytics-werk ruimte in dezelfde regio als uw Stream Analytics-taak te hebben.
 
 2.  Meld u aan bij de Azure Portal en navigeer naar uw Stream Analytics-taak. Onder **bewaking**selecteert u **Diagnostische logboeken**. Selecteer vervolgens **Diagnostische gegevens inschakelen**.
 
@@ -138,12 +138,9 @@ Naam | Beschrijving
 Fout | Beschrijving Fout gegevens. Normaal gesp roken is dit uitzonderings gegevens als deze beschikbaar zijn.
 Bericht| Logboek bericht.
 Type | Type bericht. Wordt toegewezen aan interne categorisatie van fouten. Bijvoorbeeld **JobValidationError** of **BlobOutputAdapterInitializationFailure**.
-Correlatie-id | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) die de uitvoering van de taak op unieke wijze identificeert. Alle vermeldingen in het uitvoerings logboek vanaf het moment dat de taak wordt gestart totdat de taak stopt met dezelfde **correlatie-ID-** waarde.
+Correlatie-id | GUID die de uitvoering van de taak op unieke wijze identificeert. Alle vermeldingen in het uitvoerings logboek vanaf het moment dat de taak wordt gestart totdat de taak stopt met dezelfde **correlatie-ID-** waarde.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inleiding tot Stream Analytics](stream-analytics-introduction.md)
-* [Aan de slag met Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslag informatie voor de query taal Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics gegevens fouten](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Naslag informatie voor de query taal Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

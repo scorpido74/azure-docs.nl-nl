@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103395"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371121"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
@@ -23,7 +23,7 @@ De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u inform
 
 ## <a name="july-2020"></a>Juli 2020
 
-### <a name="text-analytics-for-health-container-public-gated-preview"></a>Text Analytics voor open bare gated preview van status container
+### <a name="text-analytics-for-health-container---public-gated-preview"></a>Text Analytics voor de status container-Public gated preview
 
 De Text Analytics voor de status container bevindt zich nu in Public gated preview, waarmee u informatie kunt ophalen uit ongestructureerde tekst in het Engels in klinische documenten, zoals: patiënten-formulieren, notities van dokters, onderzoek documenten en kwijtings overzichten. Er wordt momenteel geen kosten in rekening gebracht voor Text Analytics voor het gebruik van de status container. 
 
@@ -89,7 +89,7 @@ De namen van de volgende eigenschappen in het JSON-antwoord zijn gewijzigd, indi
 Als onderdeel van de [Unified Azure SDK-versie](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)is de Text Analytics-API v3 SDK nu beschikbaar als open bare Preview voor de volgende programmeer talen:
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [Java script (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [JavaScript (node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
    
    > [!div class="nextstepaction"]
@@ -104,7 +104,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Product
     * Gebeurtenis
     * Geopolitieke entiteit (GPE) als subtype onder locatie
-    * Eigen
+    * Vaardigheid
 
 * Herkenning van de volgende entiteits typen van persoonlijke gegevens (alleen Engels):
     * Person
@@ -131,7 +131,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Uitgebreide detectie en categorisatie van entiteiten gevonden in tekst. 
     * Herkenning van de volgende nieuwe entiteits typen:
         * Telefoonnummer
-        * IP-adres
+        * Het IP-adres
 
 Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type.
 
@@ -154,6 +154,6 @@ Het biedt ondersteuning voor Engels ( `en` ), Japans ( `ja` ), vereenvoudigd Chi
 * [Wat is Text Analytics-API?](overview.md)  
 * [Voorbeeldgebruikerscenario's](text-analytics-user-scenarios.md)
 * [Sentiment analyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Taal detectie](how-tos/text-analytics-how-to-language-detection.md)
-* [Entiteit herkenning](how-tos/text-analytics-how-to-entity-linking.md)
-* [Extractie van sleutel woorden](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Taaldetectie](how-tos/text-analytics-how-to-language-detection.md)
+* [Herkenning van entiteiten](how-tos/text-analytics-how-to-entity-linking.md)
+* [Sleuteltermextractie](how-tos/text-analytics-how-to-keyword-extraction.md)

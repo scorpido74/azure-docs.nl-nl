@@ -11,12 +11,14 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a1aab92bd192119f72bb057347f5a3ea2d980336
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536847"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319147"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Richt lijnen voor communicatie tussen Cloud en apparaat
 
@@ -39,7 +41,7 @@ Hier volgt een gedetailleerde vergelijking van de verschillende communicatie opt
 | Duurzaamheid | Er is geen verbinding gemaakt met apparaten die niet zijn verbonden. Er wordt een melding weer gegeven dat het apparaat niet is verbonden met de back-end van de oplossing. | Eigenschapwaarden worden bewaard in het dubbele apparaat. Het apparaat wordt tijdens de volgende keer opnieuw verbinding gelezen. Eigenschaps waarden kunnen worden opgehaald met de [IOT hub query taal](iot-hub-devguide-query-language.md). | Berichten kunnen Maxi maal 48 uur worden bewaard door IoT Hub. |
 | Doelen | Eén apparaat met behulp van **deviceId**of meerdere apparaten met behulp van [taken](iot-hub-devguide-jobs.md). | Eén apparaat met behulp van **deviceId**of meerdere apparaten met behulp van [taken](iot-hub-devguide-jobs.md). | Eén apparaat op **deviceId**. |
 | Grootte | De maximale grootte van de directe methode lading is 128 KB. | De maximale grootte van de gewenste eigenschappen is 32 KB. | Maxi maal 64 KB-berichten. |
-| Frequentie | Hoog. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Gemiddeld. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Laag. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. |
+| Frequency | Hoog. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Gemiddeld. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Laag. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. |
 | Protocol | Beschikbaar via MQTT of AMQP. | Beschikbaar via MQTT of AMQP. | Beschikbaar op alle protocollen. Het apparaat moet worden gecontroleerd wanneer HTTPS wordt gebruikt. |
 
 Meer informatie over het gebruik van directe methoden, gewenste eigenschappen en Cloud-naar-apparaat-berichten in de volgende zelf studies:

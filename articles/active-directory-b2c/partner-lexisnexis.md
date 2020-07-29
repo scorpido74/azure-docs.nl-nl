@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fa4610c925429ea59eae7399094230c1370bf2a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096996"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371189"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van LexisNexis met Azure Active Directory B2C
 
@@ -147,7 +147,7 @@ Raadpleeg dit [document](https://docs.microsoft.com/azure/active-directory-b2c/c
 
 6. De aanmeldings stroom door lopen  
 
-7. De CrossCore-puzzel wordt weer gegeven nadat u **door gaan**hebt ingevoerd.
+7. De ThreatMetrix-puzzel wordt weer gegeven nadat u **door gaan**hebt ingevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

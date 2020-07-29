@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499321"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318977"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-agent (voorheen met de naam Status Monitor v2): gedetailleerde instructies
 
@@ -231,17 +231,18 @@ Zie de [API-naslag informatie](./status-monitor-v2-api-reference.md#enable-appli
 
  Uw telemetrie weergeven:
 
-- [Bekijk metrische gegevens](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
-- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
+- [Bekijk metrische gegevens](../platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
+- [Zoek gebeurtenissen en logboeken](./diagnostic-search.md) om problemen op te sporen.
 - [Gebruik analyses](../log-query/log-query-overview.md) voor meer geavanceerde query's.
-- [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
+- [Dash boards maken](./overview-dashboard.md).
 
  Meer telemetrie toevoegen:
 
 - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
-- [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
+- [Voeg de telemetrie van de webclient](./javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+- [Voeg de Application INSIGHTS SDK toe aan uw code](./asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
 
 Meer doen met Application Insights agent:
 
 - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
+

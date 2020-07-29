@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109294"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304136"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's in micro soft Commercial Marketplace
 
@@ -45,7 +47,7 @@ In het-scenario van de wederverkoper (CSP), wordt de SaaS-aanbieding door een CS
 
 De uitgever is niet verplicht om een van de API-aanroep stromen anders te implementeren voor dit scenario.
 
-Raadpleeg voor meer informatie over CSP https://partner.microsoft.com/en-us/licensing .
+Raadpleeg voor meer informatie over CSP https://partner.microsoft.com/licensing .
 
 >[!Warning]
 >De huidige versie van deze API is versie 2, die moet worden gebruikt voor alle nieuwe SaaS-aanbiedingen. Versie 1 van de API is afgeschaft en wordt onderhouden ter ondersteuning van bestaande aanbiedingen.

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565897"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371410"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 
@@ -123,7 +123,7 @@ Hoewel de query doorvoer tijdens het toevoegen van replica's wordt bereikt, is d
 
 Het is gebruikelijk om replica's toe te voegen, maar wanneer opslag is beperkt, kunt u partities toevoegen om meer capaciteit te krijgen. De laag waarop u de service hebt ingericht, bepaalt of de partities kunnen worden toegevoegd. De laag basis is op één partitie vergrendeld. Voor de standaard lagen en de bovenstaande ondersteuning worden extra partities ondersteund.
 
-Partities worden toegevoegd in veelvouden van 12 (met name 1, 2, 3, 4, 6 of 12). Dit is een artefact van sharding. Er wordt een index gemaakt in 12 Shards, die allemaal op één partitie kan worden opgeslagen of op dezelfde manier kan worden onderverdeeld in 2, 3, 4, 6 of 12 partities (één Shard per partitie).
+Partities worden toegevoegd in de delers van 12 (met name 1, 2, 3, 4, 6 of 12). Dit is een artefact van sharding. Er wordt een index gemaakt in 12 Shards, die allemaal op één partitie kan worden opgeslagen of op dezelfde manier kan worden onderverdeeld in 2, 3, 4, 6 of 12 partities (één Shard per partitie).
 
 ### <a name="remove-replicas"></a>Replica's verwijderen
 

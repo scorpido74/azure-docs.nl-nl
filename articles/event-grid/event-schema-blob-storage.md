@@ -3,12 +3,12 @@ title: Azure Blob Storage als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Blob Storage-gebeurtenissen met Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113748"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371274"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid bron
 
@@ -24,7 +24,10 @@ In dit artikel vindt u de eigenschappen en het schema voor Blob Storage-gebeurte
 
 Deze gebeurtenissen worden geactiveerd wanneer een-client een BLOB maakt, vervangt of verwijdert door de BLOB REST-Api's aan te roepen.
 
- |Gebeurtenis naam |Description|
+> [!NOTE]
+> Als u het DFS-eind punt gebruikt *`(abfss://URI) `* voor niet-hiërarchische naam ruimte met accounts, worden er geen gebeurtenissen gegenereerd. Voor dergelijke accounts genereert alleen het BLOB-eind punt *`(wasb:// URI)`* gebeurtenissen.
+
+ |Gebeurtenis naam |Beschrijving|
  |----------|-----------|
  |**Micro soft. storage. BlobCreated** |Wordt geactiveerd wanneer een BLOB wordt gemaakt of vervangen. <br>Deze gebeurtenis wordt met name geactiveerd wanneer clients de `PutBlob` , `PutBlockList` , of bewerkingen gebruiken `CopyBlob` die beschikbaar zijn in de BLOB-rest API.   |
  |**Micro soft. storage. BlobDeleted** |Wordt geactiveerd wanneer een BLOB wordt verwijderd. <br>Deze gebeurtenis wordt met name geactiveerd wanneer clients de bewerking aanroepen `DeleteBlob` die beschikbaar is in de BLOB-rest API. |
@@ -36,7 +39,7 @@ Deze gebeurtenissen worden geactiveerd wanneer een-client een BLOB maakt, vervan
 
 Deze gebeurtenissen worden geactiveerd als u een hiërarchische naam ruimte in het opslag account inschakelt en clients Azure Data Lake Storage Gen2 REST-Api's aanroepen. Zie [Introduction to Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)voor meer informatie Abou Azure data Lake Storage Gen2.
 
-|Gebeurtenis naam|Description|
+|Gebeurtenis naam|Beschrijving|
 |----------|-----------|
 |**Micro soft. storage. BlobCreated** | Wordt geactiveerd wanneer een BLOB wordt gemaakt of vervangen. <br>Deze gebeurtenis wordt met name geactiveerd wanneer clients de `CreateFile` bewerkingen en gebruiken `FlushWithClose` die beschikbaar zijn in de Azure data Lake Storage Gen2 rest API. |
 |**Micro soft. storage. BlobDeleted** |Wordt geactiveerd wanneer een BLOB wordt verwijderd. <br>Deze gebeurtenis wordt met name ook geactiveerd wanneer clients de bewerking aanroepen `DeleteFile` die beschikbaar is in de Azure Data Lake Storage Gen2 rest API. |
@@ -288,11 +291,11 @@ Als het Blob Storage-account een hiërarchische naam ruimte heeft, zien de gegev
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Gebeurtenis gegevens van Blob-opslag. |

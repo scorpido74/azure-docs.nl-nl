@@ -3,15 +3,16 @@ title: Verbinding maken met Office 365 Outlook
 description: Taken en werk stromen automatiseren waarmee e-mail, contact personen en agenda's in Office 365 Outlook worden beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75732671"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319232"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mail, contactpersonen en agenda's beheren in Office 365 Outlook met behulp van Azure Logic Apps
 
@@ -28,9 +29,9 @@ U kunt elke trigger gebruiken om uw werk stroom te starten, bijvoorbeeld wanneer
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [Office 365-account](https://www.office.com/)
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
+* Een [Office 365-account](https://www.office.com/)
 
 * De logische app waar u toegang wilt krijgen tot uw Office 365 Outlook-account. Als u uw werk stroom wilt starten met een Office 365 Outlook-trigger, moet u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)hebben. Als u een Office 365 Outlook-actie wilt toevoegen aan uw werk stroom, moet uw logische app al een trigger hebben.
 
@@ -45,6 +46,9 @@ Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een ge
    ![Selecteer trigger om uw logische app te starten](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
 1. Als u wordt gevraagd om u aan te melden, geeft u uw Office 365-referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie voor de eigenschappen van de trigger op.
+
+   > [!NOTE]
+   > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md)voor meer informatie.
 
    In dit voor beeld wordt de agenda geselecteerd die door de trigger wordt gecontroleerd, bijvoorbeeld:
 
@@ -76,6 +80,9 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
 1. Als u wordt gevraagd om u aan te melden, geeft u uw Office 365-referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie op voor de eigenschappen van de actie.
 
+   > [!NOTE]
+   > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md)voor meer informatie.
+
    In dit voor beeld wordt de map Contacts geselecteerd waarin de actie de nieuwe contact persoon maakt, bijvoorbeeld:
 
    ![De eigenschappen van de actie configureren](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
@@ -84,9 +91,9 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
 1. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
-## <a name="connector-specific-details"></a>Connector-specifieke Details
+## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](/connectors/office365connector/)voor technische informatie over triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector. 
+Zie de [referentie pagina van de connector](/connectors/office365/)voor technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

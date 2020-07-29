@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318994"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>API-naslag informatie over Azure Monitor Application Insights agent
 
@@ -83,7 +83,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld geldt het volgende:
+In dit voorbeeld:
 - `MachineFilter`komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
 - `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
 - `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
@@ -475,7 +475,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld geldt het volgende:
+In dit voorbeeld:
 - `MachineFilter`komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
 - `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
 - `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
@@ -638,14 +638,15 @@ Timeout Reached. Stopping...
 
   Uw telemetrie weergeven:
  - [Bekijk metrische gegevens](../platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
-- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
+- [Zoek gebeurtenissen en logboeken](./diagnostic-search.md) om problemen op te sporen.
 - Gebruik [analyses](../log-query/log-query-overview.md) voor meer geavanceerde query's.
-- [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
+- [Dash boards maken](./overview-dashboard.md).
  
  Meer telemetrie toevoegen:
  - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
-- [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
+- [Voeg de telemetrie van de webclient](./javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+- [Voeg de Application INSIGHTS SDK toe aan uw code](./asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
  
  Meer doen met Application Insights agent:
  - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
+

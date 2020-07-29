@@ -1,5 +1,5 @@
 ---
-title: Een exemplaar en authenticatie instellen (hand matig)
+title: Een exemplaar en verificatie instellen (handmatig)
 titleSuffix: Azure Digital Twins
 description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen, met inbegrip van de juiste verificatie. Hand matige versie.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d0e965360caab704bcf6c8f7d29e7bba421207e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2d5ce0bc988badc6f25726206a953d87de7eaa2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125884"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371449"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-manual"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (hand matig) instellen
 
@@ -35,7 +35,7 @@ In deze sectie **maakt u een nieuw exemplaar van Azure Digital apparaatdubbels**
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Een regio voor de implementatie. Als u wilt zien welke regio's Azure Digital Apparaatdubbels ondersteunen, gaat u naar [*Azure-producten beschikbaar per regio*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* Een naam voor uw exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio (wat betekent dat als een ander Azure Digital Apparaatdubbels-exemplaar in die regio al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
+* Een naam voor uw exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio voor uw abonnement (wat betekent dat als uw abonnement een ander Azure Digital Apparaatdubbels-exemplaar heeft in de regio die al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
 
 Gebruik deze waarden in de volgende opdracht om het exemplaar te maken:
 
@@ -68,9 +68,8 @@ In deze sectie wordt uitgelegd hoe u een roltoewijzing maakt voor een gebruiker 
 
 Als u een gebruiker machtigingen wilt geven om een Azure Digital Apparaatdubbels-exemplaar te beheren, moet u de rol van de _**Azure Digital apparaatdubbels-eigenaar (preview)**_ binnen het exemplaar toewijzen. 
 
-Houd er rekening mee dat deze rol afwijkt van...
-* de rol van *eigenaar* van het hele Azure-abonnement. De *Azure Digital apparaatdubbels-eigenaar (preview)* is een rol binnen Azure Digital apparaatdubbels en is afgestemd op dit individuele Azure Digital apparaatdubbels-exemplaar.
-* de rol van *eigenaar* in azure Digital apparaatdubbels. Dit zijn twee verschillende Azure Digital Apparaatdubbels management-rollen en de *Azure Digital Apparaatdubbels Owner (preview)* is de rol die tijdens de preview-periode moet worden gebruikt voor beheer.
+> [!NOTE]
+> Houd er rekening mee dat deze rol afwijkt van de rol van Azure AD- *eigenaar* , die ook kan worden toegewezen aan het bereik van het Azure Digital apparaatdubbels-exemplaar. Dit zijn twee verschillende beheer rollen en de Azure AD- *eigenaar* verleent geen toegang tot functies van het gegevens vlak die worden verleend met de *Azure Digital apparaatdubbels-eigenaar (preview)*.
 
 Gebruik de volgende opdracht om de rol toe te wijzen (moet worden uitgevoerd door een eigenaar van het Azure-abonnement):
 
@@ -100,7 +99,7 @@ Zodra u een Azure Digital Apparaatdubbels-exemplaar hebt ingesteld, is het gebru
 Met deze app-registratie kunt u toegangs machtigingen voor de [Azure Digital apparaatdubbels-api's](how-to-use-apis-sdks.md)configureren. Later wordt de client-app geverifieerd op basis van de app-registratie, en worden daarom de geconfigureerde toegangs machtigingen voor de Api's verleend.
 
 >[!TIP]
-> Als eigenaar van een abonnement kunt u de voor keur geven aan een nieuwe app-registratie voor elke nieuwe Azure Digital Apparaatdubbels-instantie, *of* om dit slechts één keer te doen en een registratie voor één app tot stand te brengen die wordt gedeeld tussen alle Azure Digital apparaatdubbels-instanties in het abonnement. Dit is hoe het wordt gedaan binnen de eigen Tenant van micro soft.
+> Als eigenaar van een abonnement kunt u de voor keur geven aan een nieuwe app-registratie voor elke nieuwe Azure Digital Apparaatdubbels-instantie, *of* om dit slechts één keer te doen en een registratie voor één app tot stand te brengen die wordt gedeeld tussen alle Azure Digital apparaatdubbels-instanties in het abonnement.
 
 ### <a name="create-the-registration"></a>De registratie maken
 

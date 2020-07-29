@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371376"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure Storage
 In dit artikel bespreken we een verzameling Azure Storage best practices voor het beveiligen van uw PaaS-web en mobiele toepassingen (platform-as-a-Service). Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten, zoals uzelf.
@@ -58,7 +58,7 @@ Zie [using Shared Access signatures](/azure/storage/common/storage-dotnet-shared
 ## <a name="use-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer gebruiken
 Een andere manier om toegang te beheren is via op [rollen gebaseerd toegangs beheer](/azure/role-based-access-control/overview) (RBAC). Met RBAC kunt u zich richten op het geven van de exacte machtigingen die ze nodig hebben, op basis van de beveiligings principes van de nood zaak om te kennen en te voldoen aan de minimale bevoegdheden. Te veel machtigingen kunnen een account bloot stellen aan kwaadwillende personen. Te weinig machtigingen betekenen dat werk nemers hun werk niet efficiënt kunnen uitvoeren. RBAC helpt dit probleem op te lossen door nauw keurig toegangs beheer voor Azure aan te bieden. Dit is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen.
 
-U kunt ingebouwde RBAC-rollen in azure gebruiken om machtigingen toe te wijzen aan gebruikers. Gebruik bijvoorbeeld Inzender voor opslag accounts voor Cloud operators die opslag accounts en de rol Inzender voor klassieke opslag accounts moeten beheren voor het beheren van klassieke opslag account. Voor Cloud operators die virtuele machines moeten beheren, maar niet het virtuele netwerk of het opslag account waarmee ze zijn verbonden, kunt u deze toevoegen aan de rol Inzender voor virtuele machines.
+U kunt ingebouwde Azure-rollen in azure gebruiken om machtigingen toe te wijzen aan gebruikers. Gebruik bijvoorbeeld Inzender voor opslag accounts voor Cloud operators die opslag accounts en de rol Inzender voor klassieke opslag accounts moeten beheren voor het beheren van klassieke opslag account. Voor Cloud operators die virtuele machines moeten beheren, maar niet het virtuele netwerk of het opslag account waarmee ze zijn verbonden, kunt u deze toevoegen aan de rol Inzender voor virtuele machines.
 
 Organisaties die geen gegevens toegangs beheer afdwingen door gebruik te maken van mogelijkheden als RBAC, kunnen meer bevoegdheden geven dan nodig zijn voor hun gebruikers. Dit kan leiden tot inbreuk op gegevens door bepaalde gebruikers toegang te geven tot gegevens die ze niet in de eerste plaats hoeven te hebben.
 

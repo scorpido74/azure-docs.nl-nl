@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 78cdf1798d9176c9d3c7b3705a11dccde5e47e67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077098"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318892"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
 
@@ -54,7 +54,7 @@ De enige beschik bare methode voor het maken en verwijderen van koppelingen vind
 ## <a name="command-line-and-rest-api"></a>Opdracht regel en REST API
 
 ### <a name="command-line"></a>Opdrachtregel
-Als u gekoppelde opslag accounts wilt maken en beheren, gebruikt u [AZ monitor log-Analytics Workspace linked-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Met deze opdracht kunt u opslag accounts koppelen en ontkoppelen van een werk ruimte en de gekoppelde opslag accounts weer geven.
+Als u gekoppelde opslag accounts wilt maken en beheren, gebruikt u [AZ monitor log-Analytics Workspace linked-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage). Met deze opdracht kunt u opslag accounts koppelen en ontkoppelen van een werk ruimte en de gekoppelde opslag accounts weer geven.
 
 ### <a name="request-and-cli-values"></a>Aanvraag-en CLI-waarden
 
@@ -236,3 +236,4 @@ Als het geregistreerde opslag account van uw werk ruimte zich in een andere regi
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie voor meer informatie over het instellen van een persoonlijke koppeling [Azure-persoonlijke koppeling gebruiken om een beveiligde verbinding te maken tussen netwerken en Azure monitor](private-link-security.md)
+

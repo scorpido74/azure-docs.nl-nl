@@ -10,16 +10,16 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e0278329ff6b6946c4107ea048367753eaccbfd8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124983"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370645"
 ---
-# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>De Azure Portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
+# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Use the Azure portal to assign an RBAC role for access to blob and queue data (De Azure-portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens)
 
-Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens.
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde Azure-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens.
 
 Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
@@ -48,7 +48,7 @@ In de volgende secties worden deze stappen uitvoeriger beschreven.
 >
 > U kunt geen rollen bereik toewijzen aan een container of wachtrij als uw opslag account een hiërarchische naam ruimte heeft ingeschakeld.
 
-### <a name="assign-a-built-in-rbac-role"></a>Een ingebouwde RBAC-rol toewijzen
+### <a name="assign-an-azure-built-in-role"></a>Een ingebouwde Azure-rol toewijzen
 
 Voordat u een rol aan een beveiligingsprincipal toewijst, moet u rekening houden met het bereik van de machtigingen die u wilt verlenen. Raadpleeg de sectie [resource bereik bepalen](#determine-resource-scope) om het juiste bereik te kiezen.
 

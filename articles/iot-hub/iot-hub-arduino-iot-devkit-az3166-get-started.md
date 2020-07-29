@@ -8,12 +8,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.custom: mqtt
-ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714811"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319215"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 verbinden met Azure IoT Hub
 
@@ -51,9 +54,9 @@ De volgende hardware aansluiten op uw computer:
 
 Voer de volgende stappen uit om de DevKit te verbinden met uw computer:
 
-1. Sluit de USB-end op uw computer aan.
+1. Sluit de USB-kabel aan op uw computer.
 
-2. Verbind het micro USB-einde met de DevKit.
+2. Sluit de Micro-USB aan op de DevKit.
 
 3. Met de groene LED voor Power wordt de verbinding bevestigd.
 
@@ -83,7 +86,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
    > [!NOTE]
    > Als er een fout optreedt `device-identity` , installeert u de [Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
-   > Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw Cloud Shell-instantie toe te voegen. De IoT-extensie voegt opdrachten toe die specifiek zijn voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) aan Azure CLI.
+   > Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw CLI Shell-instantie toe te voegen. De IoT-extensie voegt opdrachten toe die specifiek zijn voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) aan Azure CLI.
    > 
    > ```azurecli-interactive
    > az extension add --name azure-iot
@@ -124,7 +127,7 @@ De DevKit maakt verbinding met een apparaat-specifiek eind punt op uw IoT-hub en
 
     ![De modus AP instellen](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
 
-1. Gebruik een webbrowser op een ander Wi-Fi-apparaat (computer of mobiel nummer) om verbinding te maken met de IoT DevKit SSID die in de vorige stap wordt weer gegeven. Als u wordt gevraagd om een wacht woord, laat dit leeg.
+1. Gebruik een webbrowser op een ander wifi-apparaat (computer of mobiele telefoon) om verbinding te maken met de IoT DevKit-SSID van de vorige stap. Als u wordt gevraagd om een wacht woord, laat dit leeg.
 
     ![SSID verbinden](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
 
@@ -142,7 +145,7 @@ De DevKit maakt verbinding met een apparaat-specifiek eind punt op uw IoT-hub en
     > [!NOTE]
     > Nadat Wi-Fi is geconfigureerd, blijven uw referenties voor die verbinding op het apparaat behouden, zelfs als het apparaat is ontkoppeld.
 
-1. IoT DevKit wordt binnen een paar seconden opnieuw opgestart. Op het scherm DevKit ziet u het IP-adres voor de DevKit dat wordt gevolgd door de telemetriegegevens, inclusief de waarde voor Tempe ratuur en vochtigheid met aantal berichten verzenden naar Azure IoT Hub.
+1. De IoT DevKit wordt binnen enkele seconden opnieuw opgestart. Op het scherm DevKit ziet u het IP-adres voor de DevKit dat wordt gevolgd door de telemetriegegevens, inclusief de waarde voor Tempe ratuur en vochtigheid met aantal berichten verzenden naar Azure IoT Hub.
 
     ![Wi-Fi-IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
@@ -178,7 +181,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
     Of kopieer en plak deze URL in een browser venster:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
-    > Het extensie pakket voor Azure IoT-Hulpprogram Ma's bevat de [Azure IOT-Device Workbench](https://aka.ms/iot-workbench) die wordt gebruikt voor het ontwikkelen en opsporen van fouten op verschillende IOT Devkit-apparaten. De [azure IOT hub-extensie](https://aka.ms/iot-toolkit), die ook is opgenomen in het uitbreidings pakket voor Azure IOT-hulpprogram ma's, wordt gebruikt voor het beheren en gebruiken van Azure IOT hubs.
+    > Het extensie pakket voor Azure IoT-Hulpprogram Ma's bevat de [Azure IOT-Device Workbench](https://aka.ms/iot-workbench) die wordt gebruikt voor het ontwikkelen en opsporen van fouten op verschillende IOT Devkit-apparaten. De [Azure IoT Hub-extensie](https://aka.ms/iot-toolkit), die zich ook in het Azure IoT Tools-extensiepakket bevindt, wordt gebruikt voor het beheren van en communiceren met Azure IoT Hubs.
 
 5. VS-code configureren met Arduino-instellingen.
 
@@ -204,7 +207,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
     * **Ubuntu**:
 
-        Vervang de tijdelijke aanduiding **{username}** hieronder door de gebruikers naam.
+        Vervang de tijdelijke aanduiding **{username}** hieronder met uw gebruikersnaam.
 
         ```json
         "arduino.path": "/home/{username}/Downloads/arduino-1.8.8",
@@ -217,11 +220,11 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
 ### <a name="install-st-link-drivers"></a>ST-link Stuur Programma's installeren
 
-[St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) is de USB-interface die door IOT DevKit wordt gebruikt om te communiceren met uw ontwikkel machine. U moet deze in Windows installeren om de gecompileerde apparaatcode te flashen naar het DevKit. Volg de specifieke stappen voor het besturings systeem om de computer toegang te geven tot uw apparaat.
+[St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) is de USB-interface die door IOT DevKit wordt gebruikt om te communiceren met uw ontwikkel machine. U moet deze in Windows installeren om de gecompileerde apparaatcode weer te geven op de DevKit. Volg de specifieke stappen voor uw besturingssysteem om de machine toegang te geven tot uw apparaat.
 
 * **Windows**: down load en installeer USB-stuur programma vanaf de [STMicroelectronics-website](https://www.st.com/en/development-tools/stsw-link009.html).
 * **MacOS**: er is geen stuur programma vereist voor macOS.
-* **Ubuntu**: Voer de opdrachten in Terminal uit en meld u af en meld u aan om de groeps wijziging door te voeren:
+* **Ubuntu**: Voer de opdrachten uit op de terminal en meld u af en weer aan om de groepswijziging door te voeren:
 
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
@@ -286,7 +289,7 @@ In plaats van Azure IoT Hub en het apparaat vanuit de Azure Portal in te richten
 
     ![Selecteer IoT-apparaat ingericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
 
-1. U hebt nu Azure IoT Hub ingericht en er is een apparaat gemaakt. De connection string van het apparaat wordt ook opgeslagen in VS code voor het configureren van de IoT DevKit later.
+1. Nu hebt u de Azure IoT Hub ingericht en het apparaat erin gemaakt. De connection string van het apparaat wordt ook opgeslagen in VS code voor het configureren van de IoT DevKit later.
 
     ![Gereed voor inrichting](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
 
@@ -306,7 +309,7 @@ In plaats van Azure IoT Hub en het apparaat vanuit de Azure Portal in te richten
 
     ![Arduino uploaden](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
-De DevKit wordt opnieuw opgestart en de code wordt gestart.
+De DevKit wordt opnieuw opgestart en het uitvoeren van de code wordt gestart.
 
 > [!NOTE]
 > Als er fouten of onderbrekingen zijn, kunt u deze altijd herstellen door de opdracht opnieuw uit te voeren.

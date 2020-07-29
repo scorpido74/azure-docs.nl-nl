@@ -5,21 +5,22 @@ description: Met gebeurtenis gerichte toepassingen, processen of CI/CD-machine l
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135956"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319487"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Toepassingen, processen of CI/CD-werk stromen activeren op basis van Azure Machine Learning gebeurtenissen (preview)
 
-In dit artikel leert u hoe u op gebeurtenissen gebaseerde toepassingen, processen of CI/CD-werk stromen kunt instellen op basis van Azure Machine Learning gebeurtenissen, zoals e-mail berichten over mislukte meldingen of MILLILITERs pijplijnen, wanneer bepaalde voor waarden worden gedetecteerd door [Azure Event grid](https://docs.microsoft.com/azure/event-grid/). 
+In dit artikel leert u hoe u op gebeurtenissen gebaseerde toepassingen, processen of CI/CD-werk stromen kunt instellen op basis van Azure Machine Learning gebeurtenissen, zoals e-mail berichten over mislukte meldingen of MILLILITERs pijplijnen, wanneer bepaalde voor waarden worden gedetecteerd door [Azure Event grid](https://docs.microsoft.com/azure/event-grid/).
 
 Azure Machine Learning beheert de volledige levens cyclus van machine learning proces, waaronder model training, model implementatie en bewaking. U kunt Event Grid gebruiken om te reageren op Azure Machine Learning gebeurtenissen, zoals het volt ooien van de uitvoering van de training, de registratie en implementatie van modellen en de detectie van gegevens drift, door gebruik te maken van moderne serverloze architecturen. U kunt vervolgens gebeurtenissen, zoals de uitvoerings status gewijzigd, het volt ooien van het registreren, model registratie, model implementatie en de detectie van gegevens drift in een werk ruimte, abonneren en gebruiken.
 
@@ -47,7 +48,7 @@ Zie [Wat is Event grid?](/azure/event-grid/overview)voor meer informatie over ge
 
 Azure Machine Learning biedt gebeurtenissen in de verschillende punten van machine learning levenscyclus: 
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Deze gebeurtenis treedt op wanneer de uitvoering van een machine learning experiment is voltooid |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Deze gebeurtenis treedt op wanneer een machine learning model in de werk ruimte wordt geregistreerd |

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499270"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318943"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Azure Monitor Application Insights-agent implementeren voor on-premises servers
 
@@ -76,13 +76,14 @@ Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-m
 
 Uw telemetrie weergeven:
 
-* [Bekijk metrische gegevens](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
-* [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
+* [Bekijk metrische gegevens](../platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
+* [Zoek gebeurtenissen en logboeken](./diagnostic-search.md) om problemen op te sporen.
 * [Gebruik analyses](../log-query/log-query-overview.md) voor meer geavanceerde query's.
-* [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
+* [Dash boards maken](./overview-dashboard.md).
 
 Meer telemetrie toevoegen:
 
 * [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-* [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
-* [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
+* [Voeg de telemetrie van de webclient](./javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+* [Voeg de Application INSIGHTS SDK toe aan uw code](./asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
+

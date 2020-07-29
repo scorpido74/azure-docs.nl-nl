@@ -3,12 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062608"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319300"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -42,13 +42,17 @@ U kunt nu [persoonlijke eind punten](../private-link/private-endpoint-overview.m
 
 Lees [hier](./private-endpoints.md)meer over privé-eind punten voor Azure backup.
 
-## <a name="encryption-of-data-in-transit-and-at-rest"></a>Versleuteling van gegevens die onderweg en in rust zijn
+## <a name="encryption-of-data"></a>Versleuteling van gegevens
 
-Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Binnen Azure worden gegevens in transit tussen Azure Storage en de kluis beveiligd door HTTPS. Deze gegevens blijven op het Azure-backbone-netwerk.
+Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Gegevens versleuteling vindt in veel fasen plaats in Azure Backup:
 
-* Back-upgegevens worden automatisch versleuteld met door micro soft beheerde sleutels. U kunt ook uw back-ups van beheerde schijf-Vm's in de Recovery Services kluis versleutelen met door de [klant beheerde sleutels](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) die zijn opgeslagen in de Azure Key Vault. U hoeft geen expliciete actie te ondernemen om deze versleuteling in te scha kelen. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
+* Binnen Azure worden gegevens in transit tussen Azure Storage en de kluis [beveiligd door https](backup-support-matrix.md#network-traffic-to-azure). Deze gegevens blijven op het Azure-backbone-netwerk.
 
-* Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met Azure Disk Encryption (ADE). Meer [informatie over versleutelde Azure-vm's en-Azure backup](./backup-azure-vms-encryption.md).
+* Back-upgegevens worden automatisch versleuteld met door [micro soft beheerde sleutels](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)en u hoeft geen expliciete actie uit te voeren om deze in te scha kelen. U kunt ook uw back-upgegevens versleutelen met door de [klant beheerde sleutels](encryption-at-rest-with-cmk.md) die zijn opgeslagen in de Azure Key Vault. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
+
+* Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) en [vm's met CMK versleutelde schijven](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys). Meer informatie vindt u in de [versleutelde Azure vm's en Azure backup](./backup-azure-vms-encryption.md).
+
+* Wanneer er een back-up van gegevens van on-premises servers met de MARS-agent wordt gemaakt, worden gegevens versleuteld met een wachtwoordzin voordat ze worden geüpload naar Azure Backup en ontsleuteld nadat deze is gedownload van Azure Backup. Meer informatie over [beveiligings functies voor het beveiligen van hybride back-ups](#security-features-to-help-protect-hybrid-backups).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Beveiliging van back-upgegevens tegen onbedoelde verwijderingen
 

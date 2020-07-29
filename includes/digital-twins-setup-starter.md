@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 3f19674c0e25ebf5cddc2dfb45580a15d04fad46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcc616dd8d30bfadb751df9ba24d71d72675428a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096900"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371448"
 ---
 >[!NOTE]
 >Deze bewerkingen zijn bedoeld om te worden voltooid door een gebruiker met een rol voor *eigenaar* van het Azure-abonnement. Hoewel sommige onderdelen kunnen worden voltooid zonder deze verhoogde bevoegdheid, is de samen werking van een eigenaar vereist om een bruikbaar exemplaar volledig in te stellen. Meer informatie hierover vindt u in de sectie [*vereisten: vereiste machtigingen*](#prerequisites-permission-requirements) hieronder.
@@ -38,6 +38,6 @@ Als u een eigenaar bent, `roleDefinitionName` is de waarde in de uitvoer *eigena
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/owner-role.png" alt-text="Cloud Shell venster met de uitvoer van de opdracht AZ Role Assignment List":::
 
-Als u merkt dat de waarde *Inzender* is of iets anders is dan de *eigenaar*, kunt u contact opnemen met de eigenaar van uw abonnement en op een van de volgende manieren te werk gaan:
-* Aanvraag voor de eigenaar om namens u de stappen in dit artikel uit te voeren
-* Vraag de eigenaar u ook naar de eigenaar van het abonnement te leiden, zodat u de juiste machtigingen hebt om door te gaan. Of dit geschikt is, is afhankelijk van uw organisatie en uw rol.
+Als u merkt dat de waarde *Inzender* of iets anders is dan de *eigenaar*, kunt u door gaan op een van de volgende manieren:
+* Neem contact op met de eigenaar van uw abonnement en vraag de eigenaar om de stappen in dit artikel namens u uit te voeren
+* Neem contact op met de eigenaar van uw abonnement of iemand met de rol van beheerder voor gebruikers toegang voor het abonnement en vraag om u te helpen bij de eigenaar van het abonnement, zodat u de juiste machtigingen hebt om door te gaan. Of dit geschikt is, is afhankelijk van uw organisatie en uw rol.

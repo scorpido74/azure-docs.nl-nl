@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370271"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-beveiligings basislijn voor Synapse Analytics
 
@@ -314,7 +314,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 Wanneer u Azure SQL voor het eerst implementeert, geeft u een beheerders aanmelding en een bijbehorend wacht woord op voor die aanmelding. Dit beheerders account wordt Server beheerder genoemd. U kunt de beheerders accounts voor een Data Base identificeren door de Azure Portal te openen en te navigeren naar het tabblad Eigenschappen van de server of het beheerde exemplaar. U kunt ook een Azure AD-beheerders account met volledige beheerders machtigingen configureren. Dit is vereist als u Azure Active Directory verificatie wilt inschakelen.
 
-Voor beheer bewerkingen gebruikt u de ingebouwde Azure RBAC-rollen (op rollen gebaseerd toegangs beheer) die expliciet moeten worden toegewezen. Gebruik de Azure AD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
+Voor beheer bewerkingen gebruikt u de ingebouwde rollen van Azure die expliciet moeten worden toegewezen. Gebruik de Azure AD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
 * [Verificatie voor SQL Database](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
 
@@ -328,7 +328,7 @@ Voor beheer bewerkingen gebruikt u de ingebouwde Azure RBAC-rollen (op rollen ge
 
 * [Bestaande aanmeldingen en beheerders accounts beheren in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Ingebouwde Azure RBAC-rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Ingebouwde Azure-rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -504,7 +504,7 @@ Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in d
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -1026,7 +1026,7 @@ Scan vooraf op inhoud die wordt geüpload naar niet-reken resources van Azure, z
 
 Als u een door de klant beheerde sleutel gebruikt om de database versleutelings sleutel te versleutelen, moet u controleren of er een back-up van de sleutel wordt gemaakt.
 
-* [Back-ups maken en herstellen in azure Synapse SQL-pool](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Back-ups maken en herstellen in azure Synapse SQL-pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Back-ups maken van Azure Key Vault sleutels](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

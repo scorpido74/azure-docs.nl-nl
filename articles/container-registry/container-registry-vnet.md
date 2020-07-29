@@ -3,11 +3,12 @@ title: Toegang beperken met behulp van een service-eind punt
 description: Beperk de toegang tot een Azure container Registry met behulp van een service-eind punt in een virtueel Azure-netwerk. Toegang tot het service-eind punt is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509284"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371427"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Toegang tot een container register beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
 
@@ -26,6 +27,7 @@ Het configureren van een Registry-service-eind punt is beschikbaar in de service
 * U kunt de Azure Portal niet gebruiken om service-eind punten in een REGI ster te configureren.
 * Alleen een [Azure Kubernetes service](../aks/intro-kubernetes.md) -cluster of [virtuele](../virtual-machines/linux/overview.md) Azure-machine kan worden gebruikt als een host voor toegang tot een container register met behulp van een service-eind punt. *Andere Azure-Services, waaronder Azure Container Instances, worden niet ondersteund.*
 * Elk REGI ster ondersteunt Maxi maal 100 netwerk toegangs regels.
+* Service-eind punten voor Azure Container Registry worden niet ondersteund in de Azure-Cloud voor de Amerikaanse overheid of Azure China.
 
 ## <a name="prerequisites"></a>Vereisten
 

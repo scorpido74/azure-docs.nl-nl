@@ -1,6 +1,5 @@
 ---
-title: Antwoorden voors pellen met regressie modellen
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): voor spel-antwoorden met regressie modellen-Azure'
 description: Het maken van een eenvoudig regressie model voor het voors pellen van een prijs in data Science voor beginners Video 4. Bevat een lineaire regressie met doel gegevens.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318739"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Met een eenvoudig model een antwoord voorspellen
+
+
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: data wetenschappen voor beginners-serie
 Meer informatie over het maken van een eenvoudig regressie model voor het voors pellen van de prijs van een ruit in data wetenschappen voor beginners Video 4. Er wordt een regressie model met doel gegevens getekend.
 

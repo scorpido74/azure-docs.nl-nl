@@ -1,6 +1,5 @@
 ---
-title: Excel-invoeg toepassing voor webservices
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): Excel-invoeg toepassing voor Web Services-Azure'
 description: Azure Machine Learning webservices rechtstreeks in Excel gebruiken zonder dat u code hoeft te schrijven.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee4cb3bbbe743cef06ddf1f4ac5ffaf6374de0ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211320"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318620"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-invoeg toepassing voor Azure Machine Learning Studio (klassieke) webservices
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u code hoeft te schrijven.
 

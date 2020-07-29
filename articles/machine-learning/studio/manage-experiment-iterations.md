@@ -1,6 +1,5 @@
 ---
-title: Experimenten weer geven & opnieuw uitvoeren
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): weer gave van & opnieuw uitvoeren van experimenten-Azure'
 description: Experiment-uitvoeringen beheren in Azure Machine Learning Studio (klassiek). U kunt op elk gewenst moment eerdere uitvoeringen van uw experimenten bekijken om te controleren, opnieuw te bezoeken en uiteindelijk de vorige hypo Thesen te bevestigen of te verfijnen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7858010ea43f676a43f8bf16e228c8248805bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318518"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Experiment-uitvoeringen beheren in Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Het ontwikkelen van een voorspellend analyse model is een iteratief proces: wanneer u de verschillende functies en para meters van uw experiment wijzigt, worden de resultaten geconvergeerd voordat u tevreden bent over een getraind, effectief model. De sleutel voor dit proces is het bijhouden van de verschillende iteraties van uw experiment-para meters en configuraties.
 

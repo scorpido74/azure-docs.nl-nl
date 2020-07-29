@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 9cf964b8b5ebbfe5f790a1e325b48cd4179cf4ee
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127669"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280763"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
 
@@ -31,10 +31,10 @@ U kunt ook [uw Logic apps beheren in de Azure Portal](manage-logic-apps-with-azu
 
 * Download en installeer deze hulpprogramma's als u ze nog niet hebt:
 
-  * [Visual Studio 2019, 2017 of 2015-Community Edition of hoger](https://aka.ms/download-visual-studio). Deze snelstart maakt gebruik van Visual Studio Community 2017, dit is gratis.
+  * [Visual Studio 2019, 2017 of 2015, Community edition of hoger](https://aka.ms/download-visual-studio). Deze snelstart maakt gebruik van Visual Studio Community 2017, dit is gratis.
 
     > [!IMPORTANT]
-    > Wanneer u Visual Studio 2019 of 2017 installeert, moet u ervoor zorgen dat u de **Azure Development** -werk belasting selecteert.
+    > Als u Visual Studio 2019 of 2017 installeert, selecteer dan de workload **Azure development**.
     > Zie [resources die zijn gekoppeld aan uw Azure-accounts beheren in Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer)voor meer informatie.
 
     Als u Cloud Explorer voor Visual Studio 2015 wilt installeren, [downloadt u Cloud Explorer van Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Zie [resources beheren die zijn gekoppeld aan uw Azure-accounts in Visual Studio Cloud Explorer (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)voor meer informatie.
@@ -43,7 +43,7 @@ U kunt ook [uw Logic apps beheren in de Azure Portal](manage-logic-apps-with-azu
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * De nieuwste Azure Logic Apps-Hulpprogram Ma's voor de Visual Studio-extensie voor de gewenste versie:
+  * De nieuwste Azure Logic Apps-hulpprogramma's voor de Visual Studio-extensie voor de gewenste versie:
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
@@ -90,7 +90,7 @@ In Visual Studio kunt u logische apps openen die eerder zijn gemaakt en geïmple
 1. Selecteer in het snelmenu van de logische app de optie **openen met Logic app-editor**.
 
    > [!TIP]
-   > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
+   > Als u deze opdracht niet hebt in Visual Studio 2019, controleert u of u de nieuwste updates voor Visual Studio hebt.
 
    ![Geïmplementeerde logische app openen vanuit Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
@@ -100,14 +100,14 @@ In Visual Studio kunt u logische apps openen die eerder zijn gemaakt en geïmple
 
 ## <a name="download-from-azure"></a>Downloaden van Azure
 
-U kunt Logic apps downloaden van de [Azure Portal](https://portal.azure.com) en deze opslaan als [Azure Resource Manager](../azure-resource-manager/management/overview.md) sjablonen. U kunt de sjablonen vervolgens lokaal bewerken met Visual Studio en Logic apps aanpassen voor verschillende implementatie omgevingen.  Bij het downloaden van Logic apps worden de definities in [Resource Manager-sjablonen](../azure-resource-manager/templates/overview.md)automatisch *parameterizes* , die ook JavaScript object Notation (JSON) gebruiken.
+U kunt Logic apps [downloaden](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource) van de [Azure Portal](https://portal.azure.com) en deze opslaan als [Azure Resource Manager](../azure-resource-manager/management/overview.md) sjablonen. U kunt de sjablonen vervolgens lokaal bewerken met Visual Studio en Logic apps aanpassen voor verschillende implementatie omgevingen.  Bij het downloaden van Logic apps worden de definities in [Resource Manager-sjablonen](../azure-resource-manager/templates/overview.md)automatisch *parameterizes* , die ook JavaScript object Notation (JSON) gebruiken.
 
 1. Open in Visual Studio met behulp van Cloud Explorer [de logische app die u wilt downloaden van Azure](#open-designer).
 
 1. Selecteer in het snelmenu van de logische app de optie **openen met Logic app-editor**.
 
    > [!TIP]
-   > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
+   > Als u deze opdracht niet hebt in Visual Studio 2019, controleert u of u de nieuwste updates voor Visual Studio hebt.
 
    De logische app wordt geopend in de ontwerp functie voor logische apps.
 
@@ -127,7 +127,7 @@ Als u Logic apps voor Business-to-Business (B2B) wilt bouwen, kunt u uw logische
 
 1. Open in Visual Studio het Azure-resource groep-project dat uw logische app bevat.
 
-1. Open in Solution Explorer het snelmenu **<Logic-app-name # C1.jsin** het menu bestand en selecteer **openen met Logic app Designer**. (Toetsen bord: CTRL + L)
+1. Open in Solution Explorer het snelmenu **<Logic-app-name # C1.jsin** het menu bestand en selecteer **openen met Logic app Designer**. (Toetsenbord: Ctrl + L)
 
    ![Het JSON-bestand van de logische app openen met Logic app Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -162,7 +162,7 @@ Als u het locatie type of de locatie van uw logische app wilt wijzigen, moet u h
 
 1. Open in Visual Studio het Azure-resource groep-project dat uw logische app bevat.
 
-1. Open in Solution Explorer het `<logic-app-name>.json` snelmenu van het bestand en selecteer **openen met Logic app Designer**. (Toetsen bord: CTRL + L)
+1. Open in Solution Explorer het `<logic-app-name>.json` snelmenu van het bestand en selecteer **openen met Logic app Designer**. (Toetsenbord: Ctrl + L)
 
    ![Het JSON-bestand van de logische app openen met Logic app Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 

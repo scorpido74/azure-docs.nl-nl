@@ -5,16 +5,18 @@ description: Azure Machine Learning-algoritmen selecteren voor onder Super visie
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 582d6077a4b84e5b2d8c0d69da7b00b807a355b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ad0d2c520d5347e36a9cead4ed6c5526d885ca4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433155"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319521"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Algoritmen voor Azure Machine Learning selecteren
 
@@ -48,24 +50,24 @@ De volgende tabel bevat een overzicht van de belangrijkste kenmerken van algorit
 | **Algoritme** | **Nauw keurigheid** | **Trainingstijd** | **Lineariteit** | **Parameters** | **Opmerkingen** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Classificatie familie** | | | | | |
-| [Logistiek regressie met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Goed  |Hoog |Yes |4 | |
-| [Besluitvormings forest met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |No |5 |Hiermee worden langzamere Score tijden weer gegeven. Voorst Ellen om niet te werken met One-vs-All Multiclass vanwege tragere Score tijden die worden veroorzaakt door loopvlak vergrendeling bij het accumuleren van tree-voor spellingen |
-| [Geboostte beslissings structuur met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |No |6 |Grote geheugen capaciteit |
-| [Neural-netwerk met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Goed |Matig |No |8 | |
-| [Gemiddelde Perceptron voor twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Goed |Matig |Yes |4 | |
-| [Vector computer met twee klassen ondersteuning](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Goed |Hoog |Yes |5 |Geschikt voor grote functie sets |
-| [Multiklasse-logistieke regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Goed |Hoog |Yes |4 | |
-| [Multi Class-besluitvormings forest](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |No |5 |Vertraagde Score tijden weer geven |
-| [Beslissings structuur met een geboostte klasse met klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |No |6 | Is de nauw keurigheid verbeterd met een klein risico van minder dekking |
-| [Multi Class Neural-netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Goed |Matig |No |8 | |
+| [Logistiek regressie met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Goed  |Snel |Ja |4 | |
+| [Besluitvormings forest met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Nee |5 |Hiermee worden langzamere Score tijden weer gegeven. Voorst Ellen om niet te werken met One-vs-All Multiclass vanwege tragere Score tijden die worden veroorzaakt door loopvlak vergrendeling bij het accumuleren van tree-voor spellingen |
+| [Geboostte beslissings structuur met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Nee |6 |Grote geheugen capaciteit |
+| [Neural-netwerk met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Goed |Matig |Nee |8 | |
+| [Gemiddelde Perceptron voor twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Goed |Matig |Ja |4 | |
+| [Vector computer met twee klassen ondersteuning](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Goed |Snel |Ja |5 |Geschikt voor grote functie sets |
+| [Multiklasse-logistieke regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Goed |Snel |Ja |4 | |
+| [Multi Class-besluitvormings forest](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Nee |5 |Vertraagde Score tijden weer geven |
+| [Beslissings structuur met een geboostte klasse met klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Nee |6 | Is de nauw keurigheid verbeterd met een klein risico van minder dekking |
+| [Multi Class Neural-netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Goed |Matig |Nee |8 | |
 | [Eén-VS-alle multi klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zie Eigenschappen van de methode met twee klassen geselecteerd |
 | **Regressie familie** | | | | | |
-| [Lineaire regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Goed |Hoog |Yes |4 | |
-| [Regressie voor beslissings structuur](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Uitstekend |Matig |No |5 | |
-| [Regressie verbetering van de beslissings structuur](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |No |6 |Grote geheugen capaciteit |
-| [Regressie van Neural-netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Goed |Matig |No |8 | |
+| [Lineaire regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Goed |Snel |Ja |4 | |
+| [Regressie voor beslissings structuur](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Uitstekend |Matig |Nee |5 | |
+| [Regressie verbetering van de beslissings structuur](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Nee |6 |Grote geheugen capaciteit |
+| [Regressie van Neural-netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Goed |Matig |Nee |8 | |
 | **Clustering-familie** | | | | | |
-| [k-means clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Yes |8 |Een cluster algoritme |
+| [k-means clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Uitstekend |Matig |Ja |8 |Een cluster algoritme |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>Vereisten voor een Data Science-scenario
 

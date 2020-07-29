@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319045"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-verrijking in azure Cognitive Search
 
@@ -59,7 +59,7 @@ Een [vaardig](cognitive-search-defining-skillset.md) heden die is geassembleerd 
 
 Aangepaste vaardig heden kunnen complexere scenario's ondersteunen, zoals het herkennen van formulieren of het detecteren van aangepaste entiteiten met behulp van een model dat u opgeeft en inpakt in de [aangepaste vaardigheids webinterface](cognitive-search-custom-skill-interface.md). Enkele voor beelden van aangepaste vaardig heden zijn [formulieren Recognizer](/azure/cognitive-services/form-recognizer/overview), integratie van de [Bing entiteiten zoeken-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)en [aangepaste entiteits herkenning](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-<a name="enrichment-steps"># # Stappen in een verrijkings pijplijn</a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Stappen in een verrijkings pijplijn<a name="enrichment-steps"></a>
 
 Een verrijkings pijplijn is gebaseerd op [*Indexeer functies*](search-indexer-overview.md). Indexeer functies vullen een index op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron voor het kraken van documenten. Vaardig heden, die nu zijn gekoppeld aan Indexeer functies, onderscheppen en verrijkt documenten volgens de vakkennisset (en) die u definieert. Zodra de index is geïndexeerd, hebt u toegang tot inhoud via Zoek opdrachten via alle [query typen die door Azure Cognitive Search worden ondersteund](search-query-overview.md).  Als u geen ervaring hebt met Indexeer functies, begeleidt deze sectie u stapsgewijs door de stappen.
 
@@ -121,6 +121,6 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking (C#)](cognitive-search-create-custom-skill-example.md)
 + [Quick Start: AI-verrijking in een portal door lopen](cognitive-search-quickstart-blob.md)
 + [Zelf studie: meer informatie over de AI-verrijkings Api's](cognitive-search-tutorial-blob.md)
-+ [Knowledge Store](knowledge-store-concept-intro.md)
++ [Kennisarchief](knowledge-store-concept-intro.md)
 + [Een kennis archief maken in REST](knowledge-store-create-rest.md)
 + [Tips voor probleemoplossing](cognitive-search-concept-troubleshooting.md)

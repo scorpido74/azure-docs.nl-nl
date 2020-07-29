@@ -6,18 +6,18 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877545eb22331e724520102814ec8a00b2c205e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847905"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370815"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery toegang beheren met op rollen gebaseerd toegangs beheer (RBAC)
 
 Met toegangs beheer op basis van rollen (RBAC) van Azure kunt u toegang krijgen tot het verfijnen. Met RBAC kunt u verantwoordelijkheden binnen uw team scheiden en alleen specifieke toegangs machtigingen verlenen aan gebruikers als dat nodig is om specifieke taken uit te voeren.
 
-Azure Site Recovery biedt drie ingebouwde rollen om Site Recovery beheer bewerkingen te beheren. Meer informatie over [ingebouwde Azure RBAC-rollen](../role-based-access-control/built-in-roles.md)
+Azure Site Recovery biedt drie ingebouwde rollen om Site Recovery beheer bewerkingen te beheren. Meer informatie over [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)
 
 * [Site Recovery-inzender](../role-based-access-control/built-in-roles.md#site-recovery-contributor) - deze rol bevat alle machtigingen die nodig zijn om Azure Site Recovery-bewerkingen in een Recovery Services-kluis te kunnen beheren. Een gebruiker met deze rol kan echter geen Recovery Services-kluis maken of verwijderen, noch toegangsrechten aan andere gebruikers toewijzen. Deze rol is het meest geschikt voor nood herstel beheerders die herstel na nood gevallen voor toepassingen of volledige organisaties kunnen inschakelen en beheren.
 * [Site Recovery-operator](../role-based-access-control/built-in-roles.md#site-recovery-operator): deze rol heeft machtigingen om failover- en failback-bewerkingen uit te voeren en te beheren. Een gebruiker met deze rol kan de replicatie niet in-of uitschakelen, kluizen maken of verwijderen, een nieuwe infra structuur registreren of toegangs rechten toewijzen aan andere gebruikers. Deze rol is het meest geschikt voor een nood herstel operator die virtuele machines of toepassingen kan uitvoeren wanneer deze door eigen aren van toepassingen en IT-beheerders wordt aangeraden in een werkelijke of gesimuleerde nood situatie, zoals een DR-analyse. De herstel oplossing van de nood geval kan de DR-operator opnieuw beveiligen en failback uitvoeren voor de virtuele machines.
@@ -41,7 +41,7 @@ Een gebruiker heeft de volgende machtigingen nodig om de replicatie van een nieu
 > [!NOTE]
 > Als u replicatie inschakelt voor een virtuele Azure-machine en u Site Recovery wilt toestaan om updates te beheren, terwijl u replicatie inschakelt, kunt u ook een nieuw Automation-account maken. in dat geval hebt u toestemming nodig om een Automation-account te maken in hetzelfde abonnement als de kluis.
 
-| **Resource type** | **Implementatie model** | **Machtiging** |
+| **Resourcetype** | **Implementatie model** | **Machtiging** |
 | --- | --- | --- |
 | Compute | Resource Manager | Micro soft. Compute/Availability sets/lezen |
 |  |  | Micro soft. Compute/informatie/lezen |

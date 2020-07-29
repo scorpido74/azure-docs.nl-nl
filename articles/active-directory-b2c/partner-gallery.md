@@ -1,7 +1,7 @@
 ---
-title: Partner galerie voor Azure AD B2C
+title: ISV-partner galerie voor Azure AD B2C
 titleSuffix: Azure AD B2C
-description: Leer hoe u kunt integreren met onze partners om uw eindgebruikers ervaring aan uw behoeften aan te passen. Ons partner netwerk breidt onze oplossings mogelijkheden uit; MFA inschakelen, beveiligde klant verificatie, op rollen gebaseerd Access Control; bestrij ding van fraude via verificatie op basis van identiteiten.
+description: Leer hoe u kunt integreren met onze ISV-partners om uw eindgebruikers ervaring aan uw behoeften aan te passen. Ons partner netwerk breidt onze oplossings mogelijkheden uit; MFA inschakelen, beveiligde klant verificatie, op rollen gebaseerd Access Control; bestrij ding van fraude via verificatie op basis van identiteiten.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,23 +11,23 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2336916f7d47b38a12ee0418353a249b5eaa3801
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 986abbe6c124ce1323add5b8e854973416dfcbf4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042413"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371206"
 ---
-# <a name="azure-active-directory-b2c-partners"></a>Azure Active Directory B2C partners
+# <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partners
 
-Ons partner netwerk breidt onze oplossings mogelijkheden uit om u te helpen bij het bouwen van een naadloze ervaring voor de eind gebruiker. Met Azure AD B2C kunt u integreren met partners om multi-factor Authentication-methoden in te scha kelen, veilige klant authenticatie (SCA) mogelijk te maken, op rollen gebaseerd Access Control uit te voeren en fraude te bestrijden via identiteits verificatie en controle. Gebruik onze gedetailleerde voorbeeld scenario's voor meer informatie over het integreren van apps met de hieronder vermelde partners.
+Het ISV-partner netwerk breidt onze oplossings mogelijkheden uit om u te helpen bij het bouwen van een naadloze ervaring voor de eind gebruiker. Met Azure AD B2C kunt u integreren met ISV-partners om multi-factor Authentication-methoden in te scha kelen, veilige klant authenticatie (SCA) mogelijk te maken, op rollen gebaseerd Access Control uit te voeren en fraude te bestrijden via identiteits verificatie en testen. Gebruik onze gedetailleerde voorbeeld scenario's om te leren hoe u apps kunt integreren met de ISV-partners die hieronder worden weer gegeven.
 
 >[!NOTE]
 >De [Azure Active Directory B2C community-site op github](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) biedt ook voor beelden van aangepaste beleids regels van de community.
 
-## <a name="integration-partners"></a>Integratie partners
+## <a name="integration-isv-partners"></a>ISV-partners integreren
 
-| Partner | Beschrijving en integratie scenario's  |
+| ISV-partner | Beschrijving en integratie scenario's  |
 | :--- | :--- |
 | ![logo](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) is een oplossings provider voor het voor komen van fraude die organisaties helpt bij het beveiligen tegen bot-aanvallen, inbreuk op account overname en frauduleuze account openingen.
 | ![logo](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) is een identiteits controle-provider waarmee risico beoordelingen worden uitgevoerd op basis van gebruikers kenmerken om fraude te voor komen.|

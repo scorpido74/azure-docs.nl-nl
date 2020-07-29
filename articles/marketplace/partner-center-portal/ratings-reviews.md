@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109226"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304187"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Beoordelings & beoordelingen analyse dashboard in partner centrum
 
@@ -24,7 +26,7 @@ Dit artikel bevat informatie over het dash board beoordelingen & beoordelingen i
 
 ## <a name="access-the-dashboard"></a>Het dash board openen
 
-Vouw in het [dash board commerciële Marketplace](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) in partner centrum het gedeelte **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** uit en selecteer **beoordelingen & beoordelingen**.
+Vouw in het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in partner centrum het gedeelte **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** uit en selecteer **beoordelingen & beoordelingen**.
 
 Het dash board geeft een grafische weer gave van de volgende activiteit van de klant:
 
