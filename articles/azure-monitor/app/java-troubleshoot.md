@@ -3,12 +3,13 @@ title: Problemen met Application Insights in een Java-webproject oplossen
 description: 'Probleemoplossings handleiding: Live java-apps bewaken met Application Insights.'
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324145"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372515"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.

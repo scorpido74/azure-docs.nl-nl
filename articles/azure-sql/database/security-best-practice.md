@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371784"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,7 +112,7 @@ Centraal identiteits beheer biedt de volgende voor delen:
 > - Het Azure AD-toegangs token wordt opgeslagen in de cache aan de client zijde en de levens duur is afhankelijk van de configuratie van het token. Zie het artikel [levens duur van Configureer bare tokens in azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Zie voor hulp bij het oplossen van problemen met Azure AD-verificatie de volgende blog: [problemen met Azure AD oplossen](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-multi-factor-authentication"></a>Meervoudige verificatie van Azure
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 > Vermeld in: OSA-Oefen #2, ISO-Access Control (AC)
 
@@ -255,7 +255,7 @@ De volgende aanbevolen procedures zijn optioneel, maar leiden tot betere beheers
 - Maak en gebruik aangepaste rollen met de exacte machtigingen die nodig zijn. Typische rollen die in de praktijk worden gebruikt:
   - Beveiligings implementatie
   - Beheerder
-  - Developer
+  - Ontwikkelaar
   - Ondersteunings personeel
   - Accountant
   - Geautomatiseerde processen
@@ -324,7 +324,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 
 - Zorg ervoor dat u altijd een audittrail voor beveiligings acties hebt.
 
-- U kunt de definitie van de ingebouwde RBAC-rollen ophalen om te zien welke machtigingen worden gebruikt en een aangepaste rol maken op basis van fragmenten en cumulaties van deze via Power shell.
+- U kunt de definitie van de ingebouwde Azure-rollen ophalen om de gebruikte machtigingen te bekijken en een aangepaste rol te maken op basis van fragmenten en cumulaties van deze via Power shell.
 
 - Omdat elk lid van de databaserol db_owner beveiligings instellingen kan wijzigen, zoals Transparent Data Encryption (TDE), of de SLO kan wijzigen, moet dit lidmaatschap worden verleend. Er zijn echter veel taken waarvoor db_owner bevoegdheden nodig zijn. Taak zoals het wijzigen van een database instelling, zoals het wijzigen van DB-opties. Controle speelt een belang rijke rol in een oplossing.
 
@@ -376,7 +376,7 @@ Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar beva
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 

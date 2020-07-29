@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8f4ef046221ae50d2b05525d6cea2d268282551c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097609"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372906"
 ---
 # <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Blob-opslag in Linux koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)
 
@@ -112,8 +112,8 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 |[Azure-opslagverkenner](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
-|[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure-CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
+|[Azure-portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Stap 7: de container koppelen
 
@@ -139,7 +139,6 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 |---|---|
 |`Access denied by server while mounting`|Zorg ervoor dat de client wordt uitgevoerd in een ondersteund subnet. Bekijk de [ondersteunde netwerk locaties](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Zorg ervoor dat de container die u koppelt, is gemaakt nadat u hebt gecontroleerd of de functie is geregistreerd. Zie [stap 2: controleren of de functie is geregistreerd](#step-2-verify-that-the-feature-is-registered). Zorg er ook voor dat u de koppel opdracht en de para meters rechtstreeks in de Terminal typt. Als u een deel van deze opdracht kopieert en in de Terminal plakt vanuit een andere toepassing, kunnen verborgen tekens in de geplakte gegevens ervoor zorgen dat deze fout wordt weer gegeven.|
-|Bestanden die zijn geüpload met behulp van niet-NFS 3,0-hulpprogram ma's, worden niet weer gegeven in de map. | Ontkoppel de container en koppel de container opnieuw. |
 
 ## <a name="see-also"></a>Zie tevens
 

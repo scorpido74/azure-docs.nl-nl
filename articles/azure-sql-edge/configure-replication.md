@@ -9,11 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667876"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282769"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Replicatie naar Azure SQL Edge configureren (preview-versie) 
 
@@ -23,7 +24,7 @@ U kunt een exemplaar van de Azure SQL-rand configureren als de push-abonnee voor
   
 - Het exemplaar van de Azure SQL-Edge moet een push-abonnee zijn voor een uitgever.
 - De uitgever en de Distributor kunnen een van de volgende zijn:
-   - Een exemplaar van SQL Server dat on-premises wordt uitgevoerd of een exemplaar van SQL Server dat wordt uitgevoerd op een virtuele machine van Azure. Zie [SQL Server op Azure virtual machines Overview](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)voor meer informatie. SQL Server exemplaren moeten een versie hebben die hoger is dan SQL Server 2016.
+   - Een exemplaar van SQL Server dat on-premises wordt uitgevoerd of een exemplaar van SQL Server dat wordt uitgevoerd op een virtuele machine van Azure. Zie [SQL Server op Azure virtual machines Overview](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)voor meer informatie. SQL Server exemplaren moeten een versie hebben die hoger is dan SQL Server 2016.
    - Een exemplaar van een door Azure SQL beheerd exemplaar. SQL Managed instance kan Uitgever, distributeur en abonnee database hosten. Zie [replicatie met SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)voor meer informatie.
 
 - De distributie database en de replicatie agenten kunnen niet worden geplaatst op een exemplaar van de Azure SQL-rand.  

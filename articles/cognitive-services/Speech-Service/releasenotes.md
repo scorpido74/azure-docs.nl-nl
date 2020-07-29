@@ -11,20 +11,49 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512660"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373790"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0:2020-juli release
+
+**Opmerking**: de spraak-SDK in Windows is afhankelijk van de gedeelde micro soft Visual C++ Redistributable voor visual studio 2015, 2017 en 2019. Down load en installeer deze [hier](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+
+**Nieuwe functies**
+- **C#**: er is ondersteuning toegevoegd voor asynchrone conversatie-transcriptie. Raadpleeg [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)de documentatie.  
+- **Java script**: er is speaker Recognition ondersteuning toegevoegd voor zowel [browser](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) als [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition).
+- **Java script**: ondersteuning toegevoegd voor automatische taal detectie/taal-id. Raadpleeg [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)de documentatie.
+- **Doel-C**: er is ondersteuning toegevoegd voor conversaties en conversaties voor meerdere apparaten transcriptie. 
+- **Python**: er is ondersteuning toegevoegd voor gecomprimeerde audio voor python in Windows en Linux. Raadpleeg [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)de documentatie. 
+
+**Opgeloste fouten**
+- **Alle**: er is een probleem opgelost waardoor de KeywordRecognizer de streams na een herkenning niet meer heeft door gestuurd.
+- **Alle**: er is een probleem opgelost waardoor de stroom die is verkregen van een KeywordRecognitionResult niet het sleutel woord bevat.
+- **Alle**: er is een probleem opgelost dat de SendMessageAsync het bericht niet echt via de kabel verzendt nadat de gebruikers hun wacht tijd voor het gesprek hebben opgedaan.
+- **Alle**: er is een crash in speaker Recognition api's opgelost wanneer gebruikers meerdere VoiceProfileClient:: SpeakerRecEnrollProfileAsync starten en niet hebben gewacht totdat ze zijn voltooid.
+- **Alle**: vaste logboek registratie van bestanden inschakelen in VoiceProfileClient-en SpeakerRecognizer-klassen.
+- **Java script**: er is een [probleem](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) opgelost met de beperking wanneer de browser is geminimaliseerd.
+- **Java script**: er is een [probleem](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) opgelost met een geheugenlek op streams.
+- **Java script**: cache toegevoegd voor OCSP-antwoorden van NodeJS.
+- **Java**: er is een probleem opgelost dat ertoe leidt dat BigInteger-velden altijd 0 retour neren.
+- **IOS**: opgelost en [probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) met publiceren van speech op SDK gebaseerde apps in de IOS App Store.
+
+**Voorbeelden**
+- **C++**: [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)kunt u voorbeeld code voor Speaker Recognition toevoegen.
+
+**COVID-19-verkorte tests:** Omdat we in de afgelopen paar weken op afstand werken, kunnen we zoveel hand matige verificatie tests uitvoeren als we normaal gesp roken doen. We hebben geen wijzigingen aangebracht die denken dat we niets hebben gepaard en onze geautomatiseerde tests zijn allemaal geslaagd. In het onwaarschijnlijke geval dat we iets hebben gemist, laat het ons weten op [github](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Blijf op de hoogte.
 
 ## <a name="text-to-speech-2020-july-release"></a>Tekst-naar-spraak 2020-juli release
 
 ### <a name="new-features"></a>Nieuwe functies
 
-* **NEURAL TTS, 15 nieuwe Neural stemmen**: de nieuwe stemmen die zijn toegevoegd aan de Neural TTS-Port Folio zijn Salma in het `ar-EG` Arabisch (Egypte), Zariyah in `ar-SA` Arabisch (Saoedi-Arabië), Alba in `ca-ES` Catalaans (Spanje), Christel in het `da-DK` Deens (Denemarken), Neerja in het `es-IN` Engels (India), Noora in `fi-FI` Fins (Finland), Swara in `hi-IN` Hindi (India), Colette in het `nl-NL` Nederlands (Netherland), Zofia in `pl-PL` Pools (Polen), Fernanda in het `pt-PT` Portugees (Portugal), Dariya in `ru-RU` Russisch (Rusland), Hillevi in `sv-SE` Zweeds (Zweden), Achara in `th-TH` Thai (Thai land), HiuGaai in `zh-HK` Chinees (Kantonees, traditioneel) en HsiaoYu in het `zh-TW` Chinees (Taiwan Mandarijn). Alle [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)controleren.  
+* **NEURAL TTS, 15 nieuwe Neural stemmen**: de nieuwe stemmen die zijn toegevoegd aan de Neural TTS-Port Folio zijn Salma in het `ar-EG` Arabisch (Egypte), Zariyah in `ar-SA` Arabisch (Saoedi-Arabië), Alba in `ca-ES` Catalaans (Spanje), Christel in het `da-DK` Deens (Denemarken), Neerja in het `es-IN` Engels (India), Noora in het `fi-FI` Fins (Finland), Swara in `hi-IN` Hindi (India), Colette in het `nl-NL` Nederlands (Nederland), Zofia in `pl-PL` Pools (Polen), Fernanda in het `pt-PT` Portugees (Portugal), Dariya in `ru-RU` Russisch (Rusland), Hillevi in `sv-SE` Zweeds (Zweden), Achara in `th-TH` Thai (Thai land), HiuGaai in `zh-HK` Chinees (Kantonees, traditioneel) en HsiaoYu in het `zh-TW` Chinees (Taiwan Mandarijn). Alle [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)controleren.  
 
 * **Aangepaste spraak, gestroomlijnde stem tests met de trainings stroom om de gebruikers ervaring te vereenvoudigen**: met de nieuwe test functie wordt elke stem automatisch getest met een vooraf gedefinieerde testset die is geoptimaliseerd voor elke taal om algemene en handelsassistent scenario's te kunnen behandelen. Deze test sets zijn zorgvuldig geselecteerd en getest om typische use cases en fonemen in de taal te bevatten. Daarnaast kunnen gebruikers nog steeds hun eigen test scripts uploaden bij het trainen van een model.
 
@@ -85,10 +114,10 @@ ms.locfileid: "86512660"
 
 ### <a name="samplessdk"></a>Voor beelden/SDK
 
-* Java script: Hiermee worden problemen met afspelen in FireFox en Safari in macOS en iOS opgelost. 
+* Java script: Hiermee worden problemen met afspelen in Firefox en Safari in macOS en iOS opgelost. 
 
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020-juni release
-**Speech CLI (ook wel SPX)**
+**Speech CLI (ook wel SPX genoemd)**
 -   Toegevoegde in-CLI Help zoek functies:
     -   `spx help find --text TEXT`
     -   `spx help find --topic NAME`
@@ -115,7 +144,7 @@ Blijf op de hoogte.
 
 
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020-mei release
-**Speech CLI (ook wel SPX)**
+**Speech CLI (ook bekend als SPX)**
 - **SPX** is een nieuw opdracht regel programma waarmee u herkenning, synthese, vertaling, batch transcriptie en aangepaste spraak beheer kunt uitvoeren vanaf de opdracht regel. Gebruik deze functie om de speech-service te testen of om de spraak service taken te script die u moet uitvoeren. Down load het hulp programma en lees de documentatie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview).
 
 **Nieuwe functies**

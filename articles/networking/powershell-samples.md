@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-voor beelden-netwerken
-description: Voorbeelden van Azure PowerShell
+description: Meer informatie over Azure PowerShell-voor beelden voor netwerken, waaronder een voor beeld voor het maken van een virtueel netwerk voor toepassingen met meerdere lagen.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
-ms.openlocfilehash: 98b72dbb9f3b62fd5985f6245e52293ec31fc682
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: aa3304cbabb183368f0e47415e64120854f43535
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282072"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>Voor beelden Azure PowerShell voor netwerken
 

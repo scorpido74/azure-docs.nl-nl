@@ -4,15 +4,16 @@ description: In dit artikel vindt u Naslag informatie voor de azcopy-Kopieer opd
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 04/10/2020
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281987"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -24,35 +25,35 @@ Kopieert de bron gegevens naar een doel locatie. De ondersteunde richtingen zijn
 
   - lokale <-> Azure-Blob (SAS of OAuth-verificatie)
   - lokale <-> Azure Files (share/Directory SAS-verificatie)
-  - lokale <-> ADLS gen 2 (SAS, OAuth of SharedKey-verificatie)
+  - lokale <-> Azure Data Lake Storage gen 2 (SAS-, OAuth-of Shared Key-verificatie)
   - Azure-Blob (SAS of openbaar)-> Azure-Blob (SAS of OAuth-verificatie)
   - Azure-Blob (SAS of openbaar)-> Azure Files (SAS)
   - Azure Files (SAS)-> Azure Files (SAS)
   - Azure Files (SAS)-> Azure-Blob (SAS of OAuth-verificatie)
-  - AWS S3 (toegangs sleutel)-> Azure Block BLOB (SAS of OAuth-verificatie)
+  - Amazon Web Services (AWS) S3 (toegangs sleutel)-> Azure Block BLOB (SAS of OAuth-verificatie)
 
-Raadpleeg de voor beelden voor meer informatie.
+Zie de sectie voor beelden in dit artikel voor meer informatie.
 
 ## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Geavanceerd
 
-AzCopy detecteert automatisch het inhouds type van de bestanden bij het uploaden van op de lokale schijf, op basis van de bestands extensie of inhoud (als er geen extensie is opgegeven).
+AzCopy detecteert automatisch het inhouds type van de bestanden wanneer u deze uploadt van de lokale schijf. AzCopy detecteert het inhouds type op basis van de bestands extensie of inhoud (als er geen extensie is opgegeven).
 
-De ingebouwde opzoek tabel is klein, maar op UNIX wordt deze uitgebreid met de MIME. type-bestanden van het lokale systeem, indien beschikbaar onder een of meer van deze namen:
+De ingebouwde opzoek tabel is klein, maar op UNIX wordt deze uitgebreid met de bestanden van het lokale systeem `mime.types` als deze beschikbaar zijn onder een of meer van deze namen:
 
 - /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-In Windows worden MIME-typen geëxtraheerd uit het REGI ster. Deze functie kan worden uitgeschakeld met behulp van een vlag. Raadpleeg de sectie met de vlag.
+In Windows worden MIME-typen geëxtraheerd uit het REGI ster. Deze functie kan worden uitgeschakeld met behulp van een vlag. Zie de sectie markering in dit artikel voor meer informatie.
 
-Als u een omgevings variabele instelt met behulp van de opdracht regel, wordt die variabele leesbaar in de opdracht regel geschiedenis. U kunt variabelen met referenties uit de opdracht regel geschiedenis wissen. Als u wilt voor komen dat variabelen in uw geschiedenis worden weer gegeven, kunt u een script gebruiken om de gebruiker om referenties te vragen en de omgevings variabele in te stellen.
+Als u een omgevings variabele instelt met behulp van de opdracht regel, wordt die variabele leesbaar in uw opdracht regel geschiedenis. U kunt variabelen verwijderen die referenties bevatten van uw opdracht regel geschiedenis. Als u wilt voor komen dat variabelen in uw geschiedenis worden weer gegeven, kunt u een script gebruiken om de gebruiker om referenties te vragen en de omgevings variabele in te stellen.
 
 ```
 azcopy copy [source] [destination] [flags]
@@ -60,127 +61,174 @@ azcopy copy [source] [destination] [flags]
 
 ## <a name="examples"></a>Voorbeelden
 
-Upload één bestand met behulp van OAuth-verificatie. Als u zich nog niet hebt aangemeld bij AzCopy, voert u de AzCopy-aanmeld opdracht uit voordat u de volgende opdracht uitvoert.
+Upload één bestand met behulp van OAuth-verificatie. Als u zich nog niet hebt aangemeld bij AzCopy, voert `azcopy login` u de opdracht uit voordat u de volgende opdracht uitvoert.
 
-- azcopy CP "/Path/to/file.txt" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]"
-
+```azcopy
+azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+```
 Hetzelfde als hierboven, maar deze keer ook de MD5-hash van de bestands inhoud en sla deze op als de eigenschap content-MD5 van de blob:
 
-- azcopy CP "/Path/to/file.txt" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]"--put-MD5
+```azcopy
+azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
+```
 
 Een enkel bestand uploaden met behulp van een SAS-token:
 
-- azcopy CP "/Path/to/file.txt" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "
+```azcopy
+azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
 
 Eén bestand uploaden met behulp van een SAS-token en pijpleiding (alleen blok-blobs):
   
-- kat "/Path/to/file.txt" | azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "
+```azcopy
+cat "/path/to/file.txt" | azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
+```
 
 Een volledige directory uploaden met behulp van een SAS-token:
   
-- azcopy CP "/Path/to/dir" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "--recursief = True
+```azcopy
+azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
+```
 
 of
 
-- azcopy CP "/Path/to/dir" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS]--recursieve = True--put-MD5
+```azcopy
+azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive --put-md5
+```
 
 Een set bestanden uploaden met behulp van een SAS-token en Joker tekens (*):
-
-- azcopy CP "/Path/*Foo/* bar/*. PDF" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "
+ 
+```azcopy
+azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]"
+```
 
 Bestanden en mappen uploaden met behulp van een SAS-token en Joker tekens (*):
 
-- azcopy CP "/Path/*Foo/* Bar *" "https://[account]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "--recursief = True
+```azcopy
+azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
+```
 
-Een enkel bestand downloaden met behulp van OAuth-verificatie. Als u zich nog niet hebt aangemeld bij AzCopy, voert u de AzCopy-aanmeld opdracht uit voordat u de volgende opdracht uitvoert.
+Een enkel bestand downloaden met behulp van OAuth-verificatie. Als u zich nog niet hebt aangemeld bij AzCopy, voert `azcopy login` u de opdracht uit voordat u de volgende opdracht uitvoert.
 
-- azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]" "/Path/to/file.txt"
+```azcopy
+azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]" "/path/to/file.txt"
+```
 
 Een enkel bestand downloaden met behulp van een SAS-token:
 
-- azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] ""/Path/to/file.txt "
+```azcopy
+azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "/path/to/file.txt"
+```
 
 Een enkel bestand downloaden met behulp van een SAS-token en vervolgens de uitvoer naar een bestand sluizen (alleen blok-blobs):
-  
-- azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] >/Path/to/file.txt
+ 
+```azcopy
+azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" > "/path/to/file.txt"
+``` 
 
 Een volledige directory downloaden met behulp van een SAS-token:
-  
-- azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] ""/Path/to/dir "--recursieve = True
+ 
+```azcopy
+azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive
+``` 
 
 Een opmerking over het gebruik van een Joker teken (*) in Url's:
 
 Er zijn slechts twee ondersteunde manieren om een Joker teken te gebruiken in een URL. 
 
-- U kunt een van de volgende tekens gebruiken, net na de laatste slash (/) van een URL. Hiermee worden alle bestanden in een map rechtstreeks naar de bestemming gekopieerd zonder dat ze in een submap worden geplaatst.
+- U kunt een van de volgende tekens gebruiken, net na de laatste slash (/) van een URL. Met dit Joker teken worden alle bestanden in een map rechtstreeks naar de bestemming gekopieerd zonder dat ze in een submap worden geplaatst. 
 
-- U kunt er ook een gebruiken in de naam van een container, zolang de URL alleen verwijst naar een container en niet naar een blob. U kunt deze methode gebruiken om bestanden van een subset van containers te verkrijgen.
+- U kunt ook een Joker teken in de naam van een container opgeven zolang de URL alleen verwijst naar een container en niet naar een blob. U kunt deze methode gebruiken om bestanden van een subset van containers te verkrijgen. 
 
 De inhoud van een map downloaden zonder de bovenliggende map zelf te kopiëren.
-
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net/[container]/[pad/naar/map]/*? [SAS] ""/Path/to/dir "
+ 
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/folder]/*?[SAS]" "/path/to/dir"
+```
 
 Down load een hele opslag account.
 
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net/" "/Path/to/dir"--recursief
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net/" "/path/to/dir" --recursive
+```
 
 Down load een subset van containers in een opslag account met behulp van een Joker teken (*) in de container naam.
 
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net/[container * naam]" "/Path/to/dir"--recursief
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net/[container*name]" "/path/to/dir" --recursive
+```
 
 Kopieer één BLOB naar een andere blob met behulp van een SAS-token.
 
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "" https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
 
-Kopieer één BLOB naar een andere blob met behulp van een SAS-token en een OAuth-token. U moet een SAS-token aan het einde van de URL van het bron account gebruiken, maar het doel account heeft er geen nodig als u zich aanmeldt bij AzCopy met behulp van de AzCopy-aanmeld opdracht. 
+Kopieer één BLOB naar een andere blob met behulp van een SAS-token en een verificatie token. U moet een SAS-token aan het einde van de URL van het bron account gebruiken, maar het doel account heeft er geen nodig als u zich aanmeldt bij AzCopy met behulp van de `azcopy login` opdracht. 
 
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "" https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB] "
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]"
+```
 
 Eén virtuele BLOB-map kopiëren naar een andere met behulp van een SAS-token:
 
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "" https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "--recursief = True
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
 
 Kopieer alle BLOB-containers, directory's en blobs van het opslag account naar een andere met behulp van een SAS-token:
 
-- azcopy CP "https://[srcaccount]. blob. core. Windows. net? [SAS] "" https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+```azcopy
+azcopy cp "https://[srcaccount].blob.core.windows.net?[SAS]" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
+```
 
-Kopieer een enkel object naar Blob Storage van Amazon Web Services (AWS) S3 met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
+Kopieer een enkel object naar Blob Storage van Amazon Web Services (AWS) S3 met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele `AWS_ACCESS_KEY_ID` en `AWS_SECRET_ACCESS_KEY` voor de AWS S3-bron in.
   
-- azcopy CP " https://s3.amazonaws.com/ [Bucket]/[object]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [ SAS] "
+```azcopy
+azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
 
-Kopieer een volledige directory naar Blob Storage van AWS S3 door gebruik te maken van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
+Kopieer een volledige directory naar Blob Storage van AWS S3 door gebruik te maken van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele `AWS_ACCESS_KEY_ID` en `AWS_SECRET_ACCESS_KEY` voor de AWS S3-bron in.
+ 
+```azcopy
+azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
+```
+    
+  Raadpleeg https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html de tijdelijke aanduiding voor [map] voor meer informatie.
 
-- azcopy CP " https://s3.amazonaws.com/ [Bucket]/[map]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [ SAS] "--recursief = True
+Kopieer alle buckets naar Blob Storage vanuit Amazon Web Services (AWS) met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele `AWS_ACCESS_KEY_ID` en `AWS_SECRET_ACCESS_KEY` voor de AWS S3-bron in.
+ 
+```azcopy
+azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
+```
 
-Raadpleeg https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html de tijdelijke aanduiding voor [map] voor meer informatie.
+Kopieer alle buckets naar Blob Storage vanuit een Amazon Web Services (AWS) regio met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele `AWS_ACCESS_KEY_ID` en `AWS_SECRET_ACCESS_KEY` voor de AWS S3-bron in.
+ 
+```azcopy
+- azcopy cp "https://s3-[region].amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
+```
 
-Kopieer alle buckets naar Blob Storage vanuit Amazon Web Services (AWS) met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
+Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket naam. Net als bij de vorige voor beelden hebt u een toegangs sleutel en een SAS-token nodig. Zorg ervoor dat u de omgevings variabele `AWS_ACCESS_KEY_ID` en de `AWS_SECRET_ACCESS_KEY` AWS S3-bron instelt.
 
-- azcopy CP " https://s3.amazonaws.com/ " https://[destaccount]. blob. core. Windows. net? [ SAS] "--recursief = True
-
-Kopieer alle buckets naar Blob Storage vanuit een Amazon Web Services (AWS) regio met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
-
-- azcopy CP " https://s3- [regio]. amazonaws. com/" "https://[destaccount]. blob. core. Windows. net? [ SAS] "--recursief = True
-
-Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket naam. Net als bij de vorige voor beelden hebt u een toegangs sleutel en een SAS-token nodig. Zorg ervoor dat u de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY instelt voor de bron AWS S3.
-
-- azcopy CP " https://s3.amazonaws.com/ [Bucket * naam]/" "https://[destaccount]. blob. core. Windows. net? [ SAS] "--recursief = True
+```azcopy
+- azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
+```
 
 ## <a name="options"></a>Opties
 
-**--back-up**                               Hiermee activeert u de SeBackupPrivilege van Windows voor uploads of SeRestorePrivilege voor down loads, zodat AzCopy alle bestanden, ongeacht de machtigingen van het bestands systeem, kunt zien en alle machtigingen kunt herstellen. Vereist dat het account dat AzCopy gebruikt, al deze machtigingen heeft (bijvoorbeeld beheerders rechten of lid is van de groep Back-upoperators). Met deze vlag worden de bevoegdheden geactiveerd die het account al heeft.
+**--back-up** Hiermee activeert u de SeBackupPrivilege van Windows voor uploads of SeRestorePrivilege voor down loads, zodat AzCopy alle bestanden, ongeacht hun machtigingen voor het bestands systeem, kan zien en lezen, en alle machtigingen kunt herstellen. Vereist dat het account dat AzCopy gebruikt, al over deze machtigingen beschikt (bijvoorbeeld beheerders rechten heeft of lid is van de `Backup Operators` groep). Met deze vlag worden de bevoegdheden geactiveerd die het account al heeft.
 
-**--BLOB-type** teken reeks definieert het type BLOB bij het doel. Dit wordt gebruikt voor het uploaden van blobs en bij het kopiëren tussen accounts (standaard ' detect '). Geldige waarden zijn ' detect ', ' BlockBlob ', ' PageBlob ' en ' AppendBlob '. Bij het kopiëren tussen accounts, wordt met de waarde ' detect ' AzCopy het type van de bron-BLOB gebruikt om het type van de doel-BLOB te bepalen. Bij het uploaden van een bestand wordt door ' detecteren ' bepaald of het bestand een VHD-of VHDX-bestand is op basis van de bestands extensie. Als het bestand eer een VHD-of VHDX-bestand is, wordt het bestand door AzCopy als een pagina-BLOB beschouwd. (standaard ' detecteren ')
+**--BLOB-type** teken reeks definieert het type BLOB bij het doel. Dit wordt gebruikt voor het uploaden van blobs en bij het kopiëren tussen accounts (standaard `Detect` ). Geldige waarden zijn `Detect` :,, `BlockBlob` `PageBlob` en `AppendBlob` . Bij het kopiëren tussen accounts, veroorzaakt de waarde `Detect` AzCopy dat het type bron-BLOB wordt gebruikt om het type van de doel-BLOB te bepalen. Bij het uploaden van een bestand wordt `Detect` Hiermee bepaald of het bestand een VHD-of VHDX-bestand is op basis van de bestands extensie. Als het bestand eer een VHD-of VHDX-bestand is, wordt het bestand door AzCopy als een pagina-BLOB beschouwd. (standaard ' detecteren ')
 
-**--Block-BLOB-laag** teken reeks-blok-blobs rechtstreeks naar de gewenste [toegangs laag](../blobs/storage-blob-storage-tiers.md) . (standaard ' geen '). Geldige waarden zijn ' none ', ' hot ', ' cool ' en ' Archive '. Als ' geen ' of geen enkele laag is door gegeven, neemt de BLOB de laag over van het opslag account.
+**--blok-** teken reeks-BLOB-Block-BLOB uploaden naar Azure Storage met behulp van deze BLOB-laag. (standaard ' geen ')
 
 **--blok-grootte-MB** float gebruik deze blok grootte (opgegeven in MIB) bij het uploaden naar Azure Storage en down loads van Azure Storage. De standaard waarde wordt automatisch berekend op basis van de bestands grootte. Decimale breuken zijn toegestaan (bijvoorbeeld: 0,25).
 
 **--Cache-Control** string Stel de cache-Control-header in. Geretourneerd bij het downloaden.
 
-**--Check-length**                         Controleer de lengte van een bestand op de bestemming na de overdracht. Als de bron en bestemming niet overeenkomen, wordt de overdracht als mislukt gemarkeerd. (standaard instelling waar)
+**--Check-length** Controleer de lengte van een bestand op de bestemming na de overdracht. Als de bron en bestemming niet overeenkomen, wordt de overdracht als mislukt gemarkeerd. (standaard waarde is `true` )
 
-**--Check-MD5** teken reeks geeft aan hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden. Alleen beschikbaar bij het downloaden. Beschik bare opties: geen controle, aanmelden, FailIfDifferent, FailIfDifferentOrMissing. (standaard "FailIfDifferent")
+**--Check-MD5** teken reeks geeft aan hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden. Alleen beschikbaar bij het downloaden. Beschik bare opties: `NoCheck` , `LogOnly` , `FailIfDifferent` , `FailIfDifferentOrMissing` . (standaard `FailIfDifferent` ) (standaard "FailIfDifferent")
 
 **--** de teken reeks voor de positie van de inhoud is ingesteld op de content-disposition-header. Geretourneerd bij het downloaden.
 
@@ -190,65 +238,69 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--inhouds type** teken reeks Hiermee geeft u het type inhoud van het bestand op. Impliceert geen-schatting-MIME-type. Geretourneerd bij het downloaden.
 
-**--decomprimeren**                           Bestanden automatisch uitpakken wanneer ze worden gedownload, als hun content-encoding aangeeft dat ze gecomprimeerd zijn. De ondersteunde coderings waarden voor inhoud zijn ' gzip ' en ' deflate '. Bestands extensies van '. gz '/'. gzip ' of '. ZZ ' zijn niet nodig, maar worden indien aanwezig verwijderd.
+**--decomprimeren** Bestanden automatisch uitpakken wanneer ze worden gedownload, als hun content-encoding aangeeft dat ze gecomprimeerd zijn. De ondersteunde waarden voor content-encoding zijn `gzip` en `deflate` . Bestands extensies van `.gz` / `.gzip` of `.zz` zijn niet nodig, maar worden verwijderd indien aanwezig.
 
-**--exclude-kenmerken** teken reeks (alleen Windows) bestanden uitsluiten waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
+**--exclude-kenmerken** teken reeks (alleen Windows) Hiermee worden bestanden uitgesloten waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
 
-**--exclude-BLOB-type** teken reeks geeft optioneel het type BLOB (BlockBlob/PageBlob/AppendBlob) op dat moet worden uitgesloten bij het kopiëren van blobs uit de container of het account. Het gebruik van deze vlag is niet van toepassing op het kopiëren van gegevens van niet-Azure-service naar service. Meer dan één BLOB moet worden gescheiden door '; '.
+**--exclude-BLOB-type** teken reeks geeft optioneel het type BLOB ( `BlockBlob` /  `PageBlob` /  `AppendBlob` ) op dat moet worden uitgesloten bij het kopiëren van blobs uit de container of het account. Het gebruik van deze vlag is niet van toepassing op het kopiëren van gegevens van niet-Azure-service naar de service. Er moeten meerdere blobs worden gescheiden door `;` . 
 
-**--exclude-** teken reeks van het pad deze paden uitsluiten bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file.pdf). Bij gebruik in combi natie met account-traversal bevatten paden geen container naam.
+**--exclude-** teken reeks van het pad deze paden uitsluiten bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: `myFolder;myFolder/subDirName/file.pdf` ). Bij gebruik in combi natie met account-traversal bevatten paden geen container naam.
 
-**--exclude-patroon** teken reeks deze bestanden uitsluiten bij het kopiëren. Deze optie ondersteunt joker tekens (*)
+**--exclude-patroon** teken reeks deze bestanden uitsluiten bij het kopiëren. Deze optie biedt ondersteuning voor joker tekens (*).
 
-**--follow-symlinks**                      Volg symbolische koppelingen bij het uploaden van het lokale bestands systeem.
+**--follow-symlinks**  Volg symbolische koppelingen bij het uploaden van het lokale bestands systeem.
 
-**--van-tot** teken reeks optioneel de combi natie van bron doel opgeven. Bijvoorbeeld: LocalBlob, BlobLocal, LocalBlobFS.
+**--Force-alleen-lezen** Wanneer u een bestaand bestand in Windows of Azure Files overschrijft, moet u ervoor zorgen dat de overschrijving werkt, zelfs als voor het bestaande bestand het kenmerk alleen-lezen is ingesteld.
 
-**-h,--Help** Help voor kopiëren
+**--van-tot** teken reeks optioneel de combi natie van bron doel opgeven. Bijvoorbeeld: `LocalBlob` , `BlobLocal` , `LocalBlobFS` .
 
-**--include-kenmerken** teken reeks (alleen Windows) bevatten bestanden waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
+**--Help** Help bij kopiëren.
 
-**--include-** teken reeks bevat alleen deze paden bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file.pdf).
+**--include-after-** teken reeks bevatten alleen de bestanden die zijn gewijzigd op of na de opgegeven datum/tijd. De waarde moet de indeling ISO8601 hebben. Als er geen tijd zone is opgegeven, wordt ervan uitgegaan dat de waarde zich in de lokale tijd zone bevindt van de machine waarop AzCopy wordt uitgevoerd. bijvoorbeeld `2020-08-19T15:04:00Z` voor een UTC-tijd of `2020-08-19` voor middernacht (00:00) in de lokale tijd zone. Net als bij AzCopy 10,5 is deze vlag alleen van toepassing op bestanden, niet op mappen, zodat de mapeigenschappen niet worden gekopieerd wanneer deze vlag met of wordt gebruikt `--preserve-smb-info` `--preserve-smb-permissions` .
 
-**--include-patroon** teken reeks bevatten alleen deze bestanden bij het kopiëren. Deze optie biedt ondersteuning voor joker tekens (*). Scheid bestanden met behulp van een '; '.
+**--include-** kenmerk reeks (alleen Windows) bevat bestanden waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
 
-**--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: info (alle aanvragen/antwoorden), waarschuwing (trage antwoorden), fout (alleen mislukte aanvragen) en geen (geen uitvoer Logboeken). (standaard INFO)
+**--include-** teken reeks bevat alleen deze paden bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: `myFolder;myFolder/subDirName/file.pdf` ).
+
+**--include-patroon** teken reeks bevatten alleen deze bestanden bij het kopiëren. Deze optie biedt ondersteuning voor joker tekens (*). Scheid bestanden met behulp van een `;` .
+
+**--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: info (alle aanvragen/antwoorden), waarschuwing (trage antwoorden), fout (alleen mislukte aanvragen) en geen (geen uitvoer Logboeken). (standaard `INFO` ). 
 
 **--** de teken reeks voor het uploaden van meta gegevens Azure Storage met deze sleutel-waardeparen als meta gegevens.
 
-**--no-schatting-MIME-type**                   Hiermee voor komt u dat AzCopy het inhouds type detecteert op basis van de extensie of inhoud van het bestand.
+**--no-schatting-MIME-type**  Hiermee voor komt u dat AzCopy het inhouds type detecteert op basis van de extensie of inhoud van het bestand.
 
-**--** de teken reeks overschrijven de conflicterende bestanden en blobs op de bestemming overschrijven als deze vlag is ingesteld op True. Mogelijke waarden zijn ' True ', ' false ', ' ifSourceNewer ' en ' prompt '. (standaard ingesteld op ' True ')
+**--** de teken reeks overschrijven de conflicterende bestanden en blobs op de bestemming overschrijven als deze vlag is ingesteld op True. (standaard `true` ) Mogelijke waarden zijn `true` , `false` , en `prompt` `ifSourceNewer` . Voor doelen die mappen ondersteunen, worden conflicterende eigenschappen op mapniveau overschreven deze vlag is `true` of als er een positief antwoord aan de prompt wordt gegeven. (standaard ingesteld op ' True ')
 
-**--pagina-BLOB-** teken reeks voor het uploaden van de pagina-blob naar Azure Storage met behulp van deze BLOB-laag. (standaard ' geen ')
+**--pagina-BLOB-** teken reeks voor het uploaden van de pagina-blob naar Azure Storage met behulp van deze BLOB-laag. (standaard `None` ). (standaard ' geen ')
 
-**--behoud-laatste-gewijzigd-tijd**          Alleen beschikbaar wanneer het doel bestands systeem is.
+**--behoud-laatste-gewijzigd-tijd**  Alleen beschikbaar wanneer het doel bestands systeem is.
 
-**--behoud-SMB-machtigingen** teken reeks standaard onwaar. Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files). Voor down loads moet u ook de vlag gebruiken `--backup` om machtigingen te herstellen, waarbij de nieuwe eigenaar niet de gebruiker is die AzCopy uitvoert. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld `include-pattern` ).
+**--pres Erve-eigenaar**    Heeft alleen effect op Down loads en alleen wanneer `--preserve-smb-permissions` wordt gebruikt. Als True (de standaard instelling), worden de bestands eigenaar en-groep bewaard in Down loads. Als deze eigenschap is ingesteld op False, blijven `--preserve-smb-permissions` de acl's behouden, maar de eigenaar en groep worden gebaseerd op de gebruiker die AzCopy uitvoert (standaard waarde waar)
 
-**--behoud-SMB-info** teken reeks standaard onwaar. Hiermee behoudt u SMB-eigenschaps gegevens (laatste schrijf tijd, aanmaak tijd, kenmerk bits) tussen SMB-bewuste resources (Windows en Azure Files). Alleen de kenmerk-bits die door Azure Files worden ondersteund, worden overgedragen; alle andere worden genegeerd. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld include-Pattern). De gegevens die voor mappen worden overgedragen, zijn hetzelfde als voor bestanden, met uitzonde ring van de laatste schrijf tijd die nooit voor mappen is bewaard.
+**--behoud-SMB-info**   Standaard onwaar. Hiermee behoudt u SMB-eigenschaps gegevens (laatste schrijf tijd, aanmaak tijd, kenmerk bits) tussen SMB-bewuste resources (Windows en Azure Files). Alleen de kenmerk-bits die door Azure Files worden ondersteund, worden overgedragen; alle andere worden genegeerd. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter alleen-lezen is opgegeven (bijvoorbeeld het patroon include). De gegevens die voor mappen worden overgezet, zijn hetzelfde als voor bestanden, met uitzonde ring van de laatste schrijf tijd die nooit voor mappen is bewaard.
 
-**--pres Erve-eigenaar**                       Heeft alleen effect op bij het downloaden van gegevens en alleen wanneer het `--preserve-smb-permissions` wordt gebruikt. Als True (de standaard instelling), worden de bestands eigenaar en-groep bewaard in Down loads. Als deze vlag is ingesteld op False, blijven de `--preserve-smb-permissions` acl's behouden, maar de eigenaar en groep worden gebaseerd op de gebruiker die AzCopy uitvoert.
+**--behoud-SMB-machtigingen**   Standaard onwaar. Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files). Voor down loads hebt u ook de `--backup` vlag nodig om machtigingen te herstellen, waarbij de nieuwe eigenaar niet de gebruiker is die AzCopy uitvoert. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld `include-pattern` ).
 
-**--put-MD5**                             Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
+**--put-MD5**    Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
 
-**--recursief**                            Zoek naar submappen recursief bij het uploaden van het lokale bestands systeem.
+**--recursief**    Zoek in submappen recursief bij het uploaden van het lokale bestands systeem.
 
-**--S2S-detecteren-bron-gewijzigd**           Controleer of de bron is gewijzigd na het inventariseren.
+**--S2S-detecteren-bron-gewijzigd**   Detecteren of het bron bestand of de BLOB wordt gewijzigd terwijl deze wordt gelezen. (Deze para meter geldt alleen voor service-naar-service-exemplaren, omdat de bijbehorende controle permanent is ingeschakeld voor uploads en down loads.)
 
-**--S2S-handle-ongeldig-meta gegevens** teken reeks geeft aan hoe ongeldige sleutels voor meta gegevens worden verwerkt. Beschik bare opties: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (standaard "ExcludeIfInvalid")
+**--S2S-handle-ongeldig-meta gegevens** teken reeks geeft aan hoe ongeldige sleutels voor meta gegevens worden verwerkt. Beschik bare opties: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (standaard `ExcludeIfInvalid` ). (standaard "ExcludeIfInvalid")
 
-**--S2S-pres Erve-Access-tier**             De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard instelling waar)
+**--S2S-pres Erve-Access-tier**   De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard instelling waar).  (standaard instelling waar)
 
-**--pres Erve-eigenschappen**              Volledige eigenschappen behouden tijdens service to service copy. Voor AWS S3 en Azure file-bron niet-enkelvoudige bestands bronnen retourneert de lijst bewerking geen volledige eigenschappen van objecten en bestanden. Voor het behouden van de volledige eigenschappen moet AzCopy één extra aanvraag per object of bestand verzenden. (standaard instelling waar)
+**--pres Erve-eigenschappen**   Volledige eigenschappen behouden tijdens service to service copy. Voor AWS S3 en Azure file-bron niet-enkelvoudige bestands bronnen retourneert de lijst bewerking geen volledige eigenschappen van objecten en bestanden. Voor het behouden van de volledige eigenschappen moet AzCopy één extra aanvraag per object of bestand verzenden. (standaard instelling waar)
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-**--Cap-Mbps uint32**      De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
+**--Cap-Mbps-float**   De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
 
-**--** de teken reeks indeling van het uitvoer type van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is ' text '. (standaard tekst)
+**--** de teken reeks indeling van het uitvoer type van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaardwaarde is `text`. (standaard tekst)
 
-**--vertrouwd-micro soft-achtervoegsels** teken reeks geeft aanvullende domein achtervoegsels aan waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.
+**--vertrouwd-micro soft-achtervoegsels** teken reeks geeft aanvullende domein achtervoegsels aan waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaardwaarde is `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.
 
 ## <a name="see-also"></a>Zie tevens
 

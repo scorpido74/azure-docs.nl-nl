@@ -3,7 +3,7 @@ title: Listeners voor de beschikbaarheids groep configureren & load balancer (Az
 description: Stapsgewijze instructies voor het maken van een listener voor een always on-beschikbaarheids groep voor SQL Server op virtuele machines in azure
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921683"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284282"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Een load balancer configureren voor een SQL Server AlwaysOn-beschikbaarheids groep in azure Virtual Machines
 
@@ -238,7 +239,7 @@ Voer de volgende stappen uit om een IP-adres toe te voegen aan een load balancer
    |**Protocol** |TCP
    |**Poort** |Een ongebruikte TCP-poort, die op alle virtuele machines beschikbaar moet zijn. Het kan niet voor andere doel einden worden gebruikt. Er kunnen niet twee listeners gebruikmaken van dezelfde test poort. 
    |**Interval** |De hoeveelheid tijd tussen de test pogingen. Gebruik de standaard waarde (5).
-   |**Drempelwaarde voor onjuiste status** |Het aantal opeenvolgende drempel waarden dat moet mislukken voordat een virtuele machine als een slechte status wordt beschouwd.
+   |**Drempelwaarde voor beschadigd** |Het aantal opeenvolgende drempel waarden dat moet mislukken voordat een virtuele machine als een slechte status wordt beschouwd.
 
 8. Selecteer **OK** om de test op te slaan. 
 
@@ -249,11 +250,11 @@ Voer de volgende stappen uit om een IP-adres toe te voegen aan een load balancer
     |Instelling |Waarde
     |:-----|:----
     |**Naam** |Een naam om de taakverdelings regel te identificeren. 
-    |**Frontend-IP-adres** |Selecteer het IP-adres dat u hebt gemaakt. 
+    |**Front-end-IP-adres** |Selecteer het IP-adres dat u hebt gemaakt. 
     |**Protocol** |TCP
     |**Poort** |Gebruik de poort die de SQL Server exemplaren gebruiken. Een standaard exemplaar gebruikt poort 1433, tenzij u deze hebt gewijzigd. 
-    |**Poort back-end** |Gebruik dezelfde waarde als **poort**.
-    |**Back-end-pool** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
+    |**Back-endpoort** |Gebruik dezelfde waarde als **poort**.
+    |**Back-endpool** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
     |**Statustest** |Kies de test die u hebt gemaakt.
     |**Sessiepersistentie** |Geen
     |**Time-out voor inactiviteit (minuten)** |Standaard (4)
@@ -298,11 +299,11 @@ Als een beschikbaarheids groep deelneemt aan een gedistribueerde beschikbaarheid
    |Instelling |Waarde
    |:-----|:----
    |**Naam** |Een naam voor het identificeren van de taakverdelings regel voor de gedistribueerde beschikbaarheids groep. 
-   |**Frontend-IP-adres** |Gebruik hetzelfde frontend-IP-adres als de beschikbaarheids groep.
+   |**Front-end-IP-adres** |Gebruik hetzelfde frontend-IP-adres als de beschikbaarheids groep.
    |**Protocol** |TCP
    |**Poort** |5022-de poort voor de [eind punt-listener van de gedistribueerde beschikbaarheids groep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Dit kan elke beschik bare poort zijn.  
-   |**Poort back-end** | 5022-gebruik dezelfde waarde als **poort**.
-   |**Back-end-pool** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
+   |**Back-endpoort** | 5022-gebruik dezelfde waarde als **poort**.
+   |**Back-endpool** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
    |**Statustest** |Kies de test die u hebt gemaakt.
    |**Sessiepersistentie** |Geen
    |**Time-out voor inactiviteit (minuten)** |Standaard (4)

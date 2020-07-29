@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204732"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283466"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -181,7 +182,7 @@ Ervoor zorgen dat een toepassing robuust genoeg is voor het afhandelen van een d
 
 Configureer voor Azure Cloud Services elk van uw rollen om [meerdere exemplaren](../../cloud-services/cloud-services-choose-me.md)te gebruiken.
 
-Zorg ervoor dat uw VM-architectuur meer dan één virtuele machine bevat voor [Azure virtual machines](/azure/virtual-machines/windows/overview)en dat elke virtuele machine is opgenomen in een [beschikbaarheidsset](/azure/virtual-machines/virtual-machines-windows-manage-availability). We raden u aan virtuele-machine schaal sets te gebruiken voor de mogelijkheden voor automatisch schalen.
+Zorg ervoor dat uw VM-architectuur meer dan één virtuele machine bevat voor [Azure virtual machines](../../virtual-machines/windows/overview.md)en dat elke virtuele machine is opgenomen in een [beschikbaarheidsset](../../virtual-machines/windows/tutorial-availability-sets.md). We raden u aan virtuele-machine schaal sets te gebruiken voor de mogelijkheden voor automatisch schalen.
 
 **Best Practice**: het laag brengen van beveiligings beveiliging in een toepassing vermindert de kans op een geslaagde aanval. Implementeer beveiligde ontwerpen voor uw toepassingen met behulp van de ingebouwde mogelijkheden van het Azure-platform.  
 **Details**: het risico van een aanval neemt toe met de grootte (Surface Area) van de toepassing. U kunt de surface area verminderen door White List te gebruiken om de beschik bare IP-adres ruimte te sluiten en poorten te belui Steren die niet nodig zijn op de load balancers ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) en [Azure-toepassing gateway](/azure/application-gateway/application-gateway-create-probe-portal)).

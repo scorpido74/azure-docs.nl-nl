@@ -3,15 +3,15 @@ title: Gedetailleerde stappen voor het maken van een SSH-sleutel paar
 description: Meer informatie over het maken en beheren van een open bare en persoonlijke SSH-sleutel paar voor virtuele Linux-machines in Azure.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ebce641aa7cb59deaf74490fb934b3f1536911a9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119205"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372770"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen: SSH-sleutels voor verificatie voor een virtuele Linux-machine maken en beheren in azure 
 Met een SSH-sleutel paar (Secure Shell) kunt u een virtuele Linux-machine in azure maken die standaard gebruikmaakt van SSH-sleutels voor verificatie, waardoor het niet nodig is om zich aan te melden. Vm's die zijn gemaakt met de Azure Portal, Azure CLI, Resource Manager-sjablonen of andere hulpprogram ma's, kunnen uw open bare SSH-sleutel opnemen als onderdeel van de implementatie, waarmee SSH-sleutel verificatie wordt ingesteld voor SSH-verbindingen. 

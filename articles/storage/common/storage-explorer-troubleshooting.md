@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 492f44353a9a43279afa4869640193f1baddd41c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974514"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372872"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor probleemoplossing voor Azure Storage Explorer
 
@@ -63,13 +63,13 @@ Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resou
 1. Open het dialoog venster verbinding maken.
 2. Selecteer een resource toevoegen via Azure Active Directory (Azure AD). Klik op Volgende.
 3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
-4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op verbinden.
+4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinding maken.
 
 Voor andere resource typen hebben we momenteel geen oplossing die betrekking heeft op RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
-### <a name="recommended-built-in-rbac-roles"></a>Aanbevolen geïntegreerde RBAC-rollen
+### <a name="recommended-azure-built-in-roles"></a>Aanbevolen ingebouwde rollen van Azure
 
-Er zijn verschillende ingebouwde RBAC-rollen die de machtigingen kunnen bieden die nodig zijn om Storage Explorer te gebruiken. Enkele van deze rollen zijn:
+Er zijn verschillende ingebouwde rollen van Azure die de machtigingen kunnen bieden die nodig zijn om Storage Explorer te gebruiken. Enkele van deze rollen zijn:
 - [Eigenaar](/azure/role-based-access-control/built-in-roles#owner): alles beheren, inclusief toegang tot resources. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
 - [Inzender](/azure/role-based-access-control/built-in-roles#contributor): alles beheren, met uitzonde ring van toegang tot resources. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
 - [Lezer](/azure/role-based-access-control/built-in-roles#reader): bronnen lezen en weer geven.

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025843"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282939"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -208,9 +208,9 @@ U kunt beleid voor voorwaardelijke toegang afdwingen, zoals multi-factor Authent
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Meld u aan met Azure AD-referenties voor een Windows-VM
 
 > [!IMPORTANT]
-> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn toegevoegd aan Azure AD of hybride Azure AD zijn toegevoegd aan **dezelfde** map als de virtuele machine. Daarnaast moet de gebruiker bij RDP met behulp van Azure AD-referenties lid zijn van een van de twee RBAC-rollen, de aanmelding van de virtuele-machine beheerder of de gebruikers aanmelding van de virtuele machine. Op dit moment kan Azure Bastion niet worden gebruikt om u aan te melden met behulp van Azure Active Directory-verificatie met de uitbrei ding AADLoginForWindows. Alleen directe RDP wordt ondersteund.
+> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn geregistreerd voor Azure AD (mini maal vereiste build is 20H1) of Azure AD is toegevoegd aan **dezelfde** map als de virtuele machine. Daarnaast moet de gebruiker bij RDP met behulp van Azure AD-referenties lid zijn van een van de twee RBAC-rollen, de aanmelding van de virtuele-machine beheerder of de gebruikers aanmelding van de virtuele machine. Als u een Azure AD-geregistreerde Windows 10-PC gebruikt, moet u referenties opgeven in de AzureAD\UPN-indeling (bijvoorbeeld AzureAD\john@contoso.com ). Op dit moment kan Azure Bastion niet worden gebruikt om u aan te melden met behulp van Azure Active Directory-verificatie met de uitbrei ding AADLoginForWindows. alleen directe RDP wordt ondersteund.
 
-Aanmelden bij de virtuele machine met Windows Server 2019 met Azure AD: 
+Meld u als volgt aan bij uw virtuele Windows Server 2019-machine met Azure AD: 
 
 1. Ga naar de overzichts pagina van de virtuele machine die is ingeschakeld met Azure AD-aanmelding.
 1. Selecteer **verbinding maken** om de Blade verbinding met virtuele machine maken te openen.
@@ -342,7 +342,7 @@ Als het volgende fout bericht wordt weer gegeven wanneer u een verbinding met ee
 Controleer of de Windows 10-computer die u gebruikt voor het initiëren van de verbinding met een extern bureau blad, een Azure AD-lid is, of dat hybride Azure AD is toegevoegd aan dezelfde Azure AD-directory waar de virtuele machine is gekoppeld. Zie het artikel [Wat is een apparaat-id](/azure/active-directory/devices/overview)? voor meer informatie over de identiteit van het apparaat.
 
 > [!NOTE]
-> Met Windows 10 20H1 wordt ondersteuning toegevoegd voor Azure AD geregistreerde PC om verbinding met extern bureau blad met uw VM te initiëren. Neem lid van het Windows Insider-programma om dit uit te proberen en Bekijk nieuwe functies van Windows 10.
+> Windows 10 build 20H1 heeft ondersteuning toegevoegd voor een Azure AD-geregistreerde computer om de RDP-verbinding met uw virtuele machine te initiëren. Wanneer u een Azure AD-PC (niet toegevoegd aan Azure AD of hybride Azure AD) als de RDP-client gebruikt om verbindingen met uw virtuele machine te initiëren, moet u referenties opgeven in de notatie AzureAD\UPn (bijvoorbeeld AzureAD\john@contoso.com ).
 
 Controleer ook of de AADLoginForWindows-extensie niet is verwijderd nadat de Azure AD-deelname is voltooid.
  

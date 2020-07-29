@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127193"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372315"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -91,7 +91,7 @@ Verificatie op basis van identiteit voor Azure Files biedt verschillende voor de
 -   **Back-ups maken van Windows-Acl's (ook wel NTFS genoemd) samen met uw gegevens**  
     U kunt Azure-bestands shares gebruiken om een back-up te maken van uw bestaande on-premises bestands shares. Azure Files behoudt uw Acl's samen met uw gegevens wanneer u een back-up maakt van een bestands share naar Azure-bestands shares via SMB.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 Azure-bestands shares maken gebruik van het Kerberos-protocol voor verificatie met on-premises AD DS of Azure AD DS. Wanneer een identiteit die is gekoppeld aan een gebruiker of toepassing die wordt uitgevoerd op een client, probeert toegang te krijgen tot gegevens in azure-bestands shares, wordt de aanvraag verzonden naar de domein service, een AD DS of Azure AD DS, om de identiteit te verifiëren. Als de verificatie is geslaagd, wordt een Kerberos-token geretourneerd. De client verzendt een aanvraag met het Kerberos-token en Azure-bestands shares die token gebruiken om de aanvraag te autoriseren. Azure-bestands shares ontvangen alleen het Kerberos-token, geen toegang tot referenties.
 
@@ -123,7 +123,7 @@ U kunt verificatie op basis van een identiteit inschakelen met Azure AD DS of on
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Machtigingen op share niveau voor Azure Files configureren
 
-Als Azure AD DS of een on-premises AD DS-verificatie is ingeschakeld, kunt u ingebouwde RBAC-rollen gebruiken of aangepaste rollen configureren voor Azure AD-identiteiten en toegangs rechten toewijzen aan bestands shares in uw opslag accounts. Met de toegewezen machtiging kan de verleende identiteit alleen toegang krijgen tot de share, niets anders, niet zelfs de hoofdmap. U moet nog steeds machtigingen op Directory-of bestands niveau configureren voor Azure-bestands shares.
+Als Azure AD DS of een on-premises AD DS-verificatie is ingeschakeld, kunt u de ingebouwde rollen van Azure gebruiken of aangepaste rollen configureren voor Azure AD-identiteiten en toegangs rechten toewijzen aan bestands shares in uw opslag accounts. Met de toegewezen machtiging kan de verleende identiteit alleen toegang krijgen tot de share, niets anders, niet zelfs de hoofdmap. U moet nog steeds machtigingen op Directory-of bestands niveau configureren voor Azure-bestands shares.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Machtigingen op Directory-of bestands niveau configureren voor Azure Files
 

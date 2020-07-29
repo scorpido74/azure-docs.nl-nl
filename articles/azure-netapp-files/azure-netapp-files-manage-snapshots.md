@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ebbf83e1abe6140614a45bfa89570cdf19283f8f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169757"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281545"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
@@ -46,6 +46,9 @@ U kunt op aanvraag volume momentopnamen maken.
 ## <a name="manage-snapshot-policies"></a>Momentopname beleid beheren
 
 U kunt plannen voor volume momentopnamen die automatisch moeten worden uitgevoerd met behulp van het momentopname beleid. U kunt ook een beleid voor moment opnamen naar wens aanpassen of een momentopname beleid verwijderen dat u niet meer nodig hebt.  
+
+> [!IMPORTANT] 
+> Voor het gebruik van de functie voor het momentopname beleid is white list vereist. E-mail anffeedback@microsoft.com met uw abonnements-id om deze functie aan te vragen.
 
 ### <a name="create-a-snapshot-policy"></a>Een momentopname beleid maken 
 
@@ -141,7 +144,7 @@ Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume.
 
     ![Herstellen naar nieuw volume](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Klik op **beoordeling + maken**.  Klik op **Maken**.   
+4. Klik op **beoordeling + maken**.  Klik op **Create**.   
     Het nieuwe volume gebruikt hetzelfde protocol dat door de moment opname wordt gebruikt.   
     Het nieuwe volume waarnaar de moment opname wordt teruggezet, wordt weer gegeven op de Blade volumes.
 

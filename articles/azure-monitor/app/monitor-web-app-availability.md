@@ -4,16 +4,16 @@ description: Stel webtests in Application Insights in. Ontvang een waarschuwing 
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024585"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310273"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
-Nadat u uw web-app/website hebt geïmplementeerd, kunt u terugkerende tests instellen om de beschik baarheid en reactie snelheid te bewaken. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) verzendt regelmatig webaanvragen naar uw toepassing vanaf verschillende punten over de hele wereld. U kunt hiermee een waarschuwing ontvangen als uw toepassing niet reageert of als deze te langzaam reageert.
+Nadat u uw web-app/website hebt geïmplementeerd, kunt u terugkerende tests instellen om de beschik baarheid en reactie snelheid te bewaken. [Azure Application Insights](./app-insights-overview.md) verzendt regelmatig webaanvragen naar uw toepassing vanaf verschillende punten over de hele wereld. U kunt hiermee een waarschuwing ontvangen als uw toepassing niet reageert of als deze te langzaam reageert.
 
 U kunt beschikbaarheidstests instellen voor alle HTTP- en HTTPS-eindpunten die toegankelijk zijn op het openbare internet. U hoeft geen wijzigingen aan te brengen op de website die u wilt testen. Eigenlijk hoeft het niet zelfs een eigen site te zijn. U kunt de beschik baarheid testen van een REST API waarvan uw service afhankelijk is.
 
@@ -69,7 +69,7 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |Instelling| Uitleg
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
-|**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
+|**Klassieke** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
 |**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel waarde voor **waarschuwings locaties**  =  **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="see-your-availability-test-results"></a>De resultaten van de beschikbaarheidstest bekijken
@@ -107,9 +107,9 @@ Vanuit het resultaat van een beschikbaarheids test ziet u de transactie Details 
 * Registreer een probleem of werk item in Git-of Azure-kaarten om het probleem op te sporen. De bug bevat een koppeling naar deze gebeurtenis.
 * Het webtestresultaat openen in Visual Studio.
 
-Lees [hier](../../azure-monitor/app/transaction-diagnostics.md)meer over de diagnostische gegevens over end-to-end trans acties.
+Lees [hier](./transaction-diagnostics.md)meer over de diagnostische gegevens over end-to-end trans acties.
 
-Klik op de rij met de uitzonde ring om de details van de uitzonde ring aan de server zijde te bekijken die de synthetische beschikbaarheids test heeft veroorzaakt. U kunt ook de [moment opname van de fout opsporing](../../azure-monitor/app/snapshot-debugger.md) vinden voor het uitgebreidere code niveau diagnoses.
+Klik op de rij met de uitzonde ring om de details van de uitzonde ring aan de server zijde te bekijken die de synthetische beschikbaarheids test heeft veroorzaakt. U kunt ook de [moment opname van de fout opsporing](./snapshot-debugger.md) vinden voor het uitgebreidere code niveau diagnoses.
 
 ![Diagnostische gegevens aan de server zijde](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -120,8 +120,8 @@ Naast de onbewerkte resultaten kunt u ook twee belang rijke metrische gegevens o
 
 ## <a name="automation"></a>Automation
 
-* Gebruik [PowerShell-scripts om automatisch een beschikbaarheidstest in te stellen](../../azure-monitor/app/powershell.md#add-an-availability-test).
-* Stel een [webhook](../../azure-monitor/platform/alerts-webhooks.md) in die wordt aangeroepen wanneer er een waarschuwing wordt gegenereerd.
+* Gebruik [PowerShell-scripts om automatisch een beschikbaarheidstest in te stellen](./powershell.md#add-an-availability-test).
+* Stel een [webhook](../platform/alerts-webhooks.md) in die wordt aangeroepen wanneer er een waarschuwing wordt gegenereerd.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -131,3 +131,4 @@ Speciaal [artikel voor probleem oplossing](troubleshoot-availability.md).
 
 * [Beschikbaarheids waarschuwingen](availability-alerts.md)
 * [Webtests met meerdere stappen](availability-multistep.md)
+

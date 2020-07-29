@@ -4,30 +4,41 @@ description: Meer informatie over het gebruik van SQL-query's voor het opvragen 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d292b7cfcda73cb4cd6ac2535c7e27fc675e1030
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74873332"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308182"
 ---
 # <a name="getting-started-with-sql-queries"></a>Aan de slag met SQL-query’s
 
-Azure Cosmos DB SQL-API-accounts ondersteunen het opvragen van items met behulp van Structured Query Language (SQL) als een JSON-query taal. De ontwerp doelen van de Azure Cosmos DB query taal zijn:
+In Azure Cosmos DB SQL-API-accounts zijn er twee manieren om gegevens te lezen:
 
-* Ondersteuning voor SQL, een van de meest bekende en populaire query talen, in plaats van een nieuwe query taal. SQL biedt een formeel programmeer model voor uitgebreide query's over JSON-items.  
+**Punt Lees bewerkingen** : u kunt een sleutel/waarde zoeken op één *item-id* en partitie sleutel. De combi natie van *item-id* en partitie sleutel is de sleutel en het item zelf is de waarde. Voor een 1 KB-document wordt bij het lezen van punten doorgaans de [aanvraag eenheid](request-units.md) kosten 1 berekend met een latentie van 10 MS. Punt lezen retourneert één item.
 
-* Gebruik het programmeer model java script als basis voor de query taal. Java script-type systeem, expressie-evaluatie en functie aanroep zijn de hoofd mappen van de SQL-API. Deze roots bieden een natuurlijk programmeer model voor functies zoals relationele projecties, hiërarchische navigatie in JSON-items, Self-join's, ruimtelijke query's en het aanroepen van door de gebruiker gedefinieerde functies (Udf's), die volledig zijn geschreven in Java script.
+**SQL-query's** : u kunt gegevens opvragen door query's te schrijven met behulp van de STRUCTURED query language (SQL) als een JSON-query taal. Query's kosten altijd ten minste 2,3 aanvraag eenheden en, in het algemeen, heeft een hogere en meer variabele latentie dan lees punten. Query's kunnen veel items retour neren.
+
+De meeste Lees-en zware werk belastingen op Azure Cosmos DB gebruiken een combi natie van zowel lees-als SQL-query's. Als u slechts één item hoeft te lezen, zijn punt lezen goed koper en sneller dan query's. Punt Lees bewerkingen hoeven de query-engine niet te gebruiken voor toegang tot gegevens en kunnen de gegevens rechtstreeks lezen. Het is natuurlijk niet mogelijk om alle werk belastingen exclusief gegevens te lezen met behulp van punt Lees bewerkingen, zodat SQL als query taal en [indexering](index-overview.md) van het neutraal een flexibele manier is om toegang te krijgen tot uw gegevens.
+
+Hier volgen enkele voor beelden van hoe u met elke SDK punt Lees bewerkingen kunt uitvoeren:
+
+- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet)
+- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest#read-requestoptions-)
+- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+
+In de rest van dit document ziet u hoe u SQL-query's in Azure Cosmos DB kunt schrijven. SQL-query's kunnen worden uitgevoerd via de SDK of de Azure Portal.
 
 ## <a name="upload-sample-data"></a>Voorbeeld gegevens uploaden
 
-Maak in uw SQL API-Cosmos DB account een container met de naam `Families` . Maak twee eenvoudige JSON-items in de container. U kunt de meeste voorbeeld query's uitvoeren in de Azure Cosmos DB query-documenten met behulp van deze gegevensset.
+Maak in uw SQL API-Cosmos DB account een container met de naam `Families` . Maak twee eenvoudige JSON-items in de container. U kunt de meeste voorbeeld query's uitvoeren in de Azure Cosmos DB query-documentatie met behulp van deze gegevensset.
 
 ### <a name="create-json-items"></a>JSON-items maken
 
 Met de volgende code worden twee eenvoudige JSON-onderdelen gemaakt over families. De eenvoudige JSON-items voor de families Splinter en Wakefield bevatten ouders, kinderen en hun huis dieren, adres en registratie gegevens. Het eerste item heeft teken reeksen, getallen, Booleaanse waarden, matrices en geneste eigenschappen.
-
 
 ```json
 {
@@ -71,7 +82,7 @@ Het tweede item maakt `givenName` Gebruik `familyName` van en in plaats van `fir
             { "givenName": "Shadow" }
         ]
       },
-      { 
+      {
         "familyName": "Miller",
          "givenName": "Lisa",
          "gender": "female",
@@ -87,7 +98,7 @@ Het tweede item maakt `givenName` Gebruik `familyName` van en in plaats van `fir
 
 Probeer enkele query's uit op de JSON-gegevens om inzicht te krijgen in de belangrijkste aspecten van de SQL-query taal van Azure Cosmos DB.
 
-De volgende query retourneert de items waarbij het `id` veld overeenkomt `AndersenFamily` . Omdat het een `SELECT *` query is, is de uitvoer van de query het volledige JSON-item. Zie [instructie SELECT](sql-query-select.md)voor meer informatie over de syntaxis SELECT. 
+De volgende query retourneert de items waarbij het `id` veld overeenkomt `AndersenFamily` . Omdat het een `SELECT *` query is, is de uitvoer van de query het volledige JSON-item. Zie [instructie SELECT](sql-query-select.md)voor meer informatie over de syntaxis SELECT.
 
 ```sql
     SELECT *
@@ -95,7 +106,7 @@ De volgende query retourneert de items waarbij het `id` veld overeenkomt `Anders
     WHERE f.id = "AndersenFamily"
 ```
 
-De query resultaten zijn: 
+De query resultaten zijn:
 
 ```json
     [{

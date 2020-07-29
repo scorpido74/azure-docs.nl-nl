@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711286"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284078"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobs in Azure Blob Storage maken en beheren met behulp van Azure Logic Apps
 
@@ -20,7 +20,7 @@ In dit artikel wordt uitgelegd hoe u bestanden die zijn opgeslagen als blobs in 
 
 Stel dat u een hulp programma hebt dat wordt bijgewerkt op een Azure-website. die fungeert als de trigger voor uw logische app. Als deze gebeurtenis zich voordoet, kunt u uw logische app een bestand in de BLOB storage-container laten bijwerken. Dit is een actie in uw logische app.
 
-Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
 
 > [!IMPORTANT]
 > Logic apps hebben geen directe toegang tot opslag accounts die zich achter firewalls bevinden, als ze zich in dezelfde regio. Als tijdelijke oplossing kunt u uw logische apps en opslag account in verschillende regio's hebben. Zie de sectie [toegang tot opslag accounts achter firewalls](#storage-firewalls) verderop in dit onderwerp voor meer informatie over het inschakelen van toegang vanaf Azure Logic apps voor opslag accounts achter firewalls.
@@ -123,8 +123,8 @@ In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Verbindingsnaam** | Yes | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
-   | **Opslag account** | Yes | <*opslag account*> | Selecteer uw opslag account in de lijst. |
+   | **Verbindingsnaam** | Ja | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
+   | **Opslagaccount** | Ja | <*opslag account*> | Selecteer uw opslagaccount in de lijst. |
    ||||
 
    Bijvoorbeeld:
@@ -137,7 +137,7 @@ In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/azureblobconnector/).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/azureblobconnector/).
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
@@ -194,7 +194,7 @@ Voer de volgende algemene stappen uit om de ondersteuning voor uitzonde ringen e
 1. Voeg in de werk stroom van de logische app de HTTP-actie of trigger toe en stel deze in om toegang te krijgen tot het opslag account of de entiteit.
 
    > [!IMPORTANT]
-   > Voor uitgaande HTTP-actie-of trigger aanroepen naar Azure Storage-accounts, moet u ervoor zorgen dat de aanvraag header de `x-ms-version` eigenschap en de API-versie bevat voor de bewerking die u wilt uitvoeren op het opslag account. Zie [toegang verifiëren met beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) en [versie beheer voor Azure Storage services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)voor meer informatie.
+   > Voor uitgaande HTTP-actie-of trigger aanroepen naar Azure Storage-accounts, moet u ervoor zorgen dat de aanvraag header de `x-ms-version` eigenschap en de API-versie bevat voor de bewerking die u wilt uitvoeren op het opslag account. Zie [toegang verifiëren met beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) en [versie beheer voor Azure Storage services](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)voor meer informatie.
 
 1. Selecteer bij die actie [de beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) die u voor verificatie wilt gebruiken.
 
@@ -207,3 +207,4 @@ Als u een toegewezen laag gebruikt voor [API Management](../api-management/api-m
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+

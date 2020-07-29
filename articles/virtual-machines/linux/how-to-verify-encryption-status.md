@@ -3,15 +3,16 @@ title: Versleutelings status controleren voor Linux-Azure Disk Encryption
 description: In dit artikel vindt u instructies voor het controleren van de versleutelings status van het platform-en besturingssysteem niveau.
 author: kailashmsft
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bb3f38938414f25551d0df47a50b6a8f386acc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283330"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Versleutelings status voor Linux controleren 
 
@@ -261,7 +262,7 @@ echo -ne "Disk Encryption Key: "; az disk show -g ${RGNAME} -n ${TARGETDISKNAME}
 echo -ne "key Encryption Key: "; az disk show -g ${RGNAME} -n ${TARGETDISKNAME} --query encryptionSettingsCollection.encryptionSettings[].keyEncryptionKey.keyUrl -o tsv; \
 echo "============================================================================================================================================================="
 ```
-### <a name="unmanaged-disks"></a>Niet-beheerde schijven
+### <a name="unmanaged-disks"></a>Onbeheerde schijven
 
 Onbeheerde schijven zijn VHD-bestanden die zijn opgeslagen als pagina-blobs in azure-opslag accounts.
 

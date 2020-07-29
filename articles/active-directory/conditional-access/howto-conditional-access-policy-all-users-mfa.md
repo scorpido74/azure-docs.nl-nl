@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283041"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Voorwaardelijke toegang: MFA vereisen voor alle gebruikers
 
@@ -49,10 +50,10 @@ De volgende stappen helpen u bij het maken van beleid voor voorwaardelijke toega
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**.
    1. Onder **uitsluiten**selecteert u toepassingen waarvoor multi-factor Authentication niet is vereist.
-1. Stel onder **voor waarden**  >  **client-apps (preview)** **configureren** in op **Ja**. Onder **Selecteer de client-apps waarop dit beleid van toepassing is om** alle standaard instellingen te behouden, en selecteer **gereed**.
+1. Onder **voor waarden**  >  **client-apps (preview)**, onder **Selecteer de client-apps waarop dit beleid van toepassing is om** alle geselecteerde standaard instellingen te behouden en selecteer **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
@@ -67,8 +68,8 @@ In het bovenstaande voor beeld-beleid kan een organisatie ervoor kiezen om geen 
    1. Configureer **Ja**.
    1. **Een wille keurige locatie**bevatten.
    1. **Alle vertrouwde locaties**uitsluiten.
-   1. Selecteer **Voltooid**.
-1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
+1. Selecteer **Gereed**.
 1. **Sla** de wijzigingen in het beleid op.
 
 ## <a name="next-steps"></a>Volgende stappen

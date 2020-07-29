@@ -6,50 +6,41 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: f42942d0e112aad147f78d62b5f5b43587eca9b3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: aaf01dcd63c21e4741456f4f7fccaf22b8fbfffc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281307"
 ---
 # <a name="about-migration"></a>Info over migratie
 
-Lees dit artikel voor een beknopt overzicht van de manier waarop de [Azure site Recovery](site-recovery-overview.md) -service u helpt machines te migreren. 
-
-> [!TIP]
-> U moet nu de Azure Migrate-service gebruiken om virtuele machines en servers te migreren naar Azure, in plaats van de Azure Site Recovery-service. [Meer informatie](../migrate/migrate-services-overview.md).
+Gebruik de Azure Migrate-service om Vm's en servers te migreren naar Azure, in plaats van de Azure Site Recovery-service. Meer [informatie](../migrate/migrate-services-overview.md) over Azure Migrate.
 
 
-U kunt als volgt migreren met Site Recovery:
+## <a name="why-use-azure-migrate"></a>Waarom Azure Migrate gebruiken?
 
-- **Migreren van on-premises naar Azure**: Migreer on-premises virtuele Hyper-V-machines, virtuele VMware-machines en fysieke servers naar Azure. Na de migratie worden workloads die op de on-premises machines werden uitgevoerd, op Azure-VM's uitgevoerd. 
-- **Migreren binnen Azure**: hierbij worden Azure-VM's tussen Azure-regio's gemigreerd. 
-- **AWS migreren**: hierbij worden AWS Windows-exemplaren naar Azure IaaS-VM's gemigreerd. 
+Het gebruik van Azure Migrate voor migratie biedt een aantal voor delen:
+ 
+ 
+- Azure Migrate biedt een gecentraliseerde hub voor detectie, evaluatie en migratie naar Azure.
+- Het gebruik van Azure Migrate biedt interoperabiliteit en toekomstige uitbrei ding met Azure Migrate-hulpprogram ma's, andere Azure-Services en hulpprogram ma's van derden.
+- De Azure Migrate: hulp programma voor server migratie is bedoeld voor server migratie naar Azure. Deze is geoptimaliseerd voor migratie. U hoeft niet meer te weten te komen over concepten en scenario's die niet rechtstreeks relevant zijn voor migratie. 
+- Er zijn geen kosten voor het gebruik van hulpprogram ma's voor de migratie van 180 dagen, vanaf het moment dat de replicatie voor een virtuele machine wordt gestart. Dit geeft u tijd om de migratie te volt ooien. U betaalt alleen voor de opslag-en netwerk resources die worden gebruikt tijdens de replicatie, en voor de reken kosten die tijdens de test migraties worden verbruikt.
+- Voor virtuele VMware-machines biedt Azure Migrate een migratie zonder agent, naast migratie op basis van een agent.
+- Er worden prioriteiten gegeven voor nieuwe migratie functies voor de Azure Migrate: alleen hulp programma voor server migratie.
 
-> [!NOTE]
-> U kunt nu migreren van on-premises naar Azure met behulp van de Azure Migrate-service. [Meer informatie](../migrate/migrate-services-overview.md).
+## <a name="when-to-use-site-recovery"></a>Wanneer moet ik Site Recovery gebruiken?
 
-## <a name="what-do-we-mean-by-migration"></a>Wat wordt precies bedoeld met 'migreren’?
+Site Recovery moet worden gebruikt:
 
-Naast het gebruik van Site Recovery voor herstel na nood gevallen van on-premises en virtuele Vm's van Azure, kunt u de Site Recovery-service gebruiken om ze te migreren. Wat is het verschil?
+- Voor herstel na nood gevallen van on-premises machines naar Azure.
+- Voor herstel na nood gevallen van Azure-Vm's tussen Azure-regio's.
 
-- Voor herstel na nood gevallen repliceert u machines regel matig naar Azure. Als er een storing optreedt, worden de machines van de primaire site naar de secundaire Azure-site geleid en krijgen ze daar toegang toe. Wanneer de primaire site weer beschikbaar is, wordt er een failback uitgevoerd van Azure.
-- Voor migratie repliceert u on-premises machines naar Azure of Azure-Vm's naar een secundaire regio. Vervolgens voert u de virtuele machine van de primaire site naar de secundaire uit en voltooit u het migratie proces. Hierbij is geen failback betrokken.  
-
-
-## <a name="migration-scenarios"></a>Migratiescenario's
-
-**Scenario** | **Details**
---- | ---
-**Migreren vanaf on-premises machines naar Azure** | U kunt on-premises VMware-Vm's, virtuele Hyper-V-machines en fysieke servers naar Azure migreren. Hiervoor moet u bijna dezelfde stappen uitvoeren als voor een volledig herstel na nood gevallen. U kunt geen computers van Azure terugsturen naar de on-premises site.
-**Migreren tussen Azure-regio's** | U kunt virtuele Azure-machines van de ene Azure-regio naar de andere migreren. Nadat de migratie is voltooid, kunt u herstel na nood gevallen configureren voor de virtuele Azure-machines in de secundaire regio waarnaar u hebt gemigreerd.
-**AWS migreren naar Azure** | U kunt AWS-exemplaren naar Azure-VM's migreren. Site Recovery behandelt AWS-instanties als fysieke servers voor migratie doeleinden. 
+We raden u aan Azure Migrate te gebruiken voor het migreren van on-premises servers naar Azure, als u uw migratie traject al hebt gestart met Site Recovery, kunt u deze blijven gebruiken om de migratie te volt ooien.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [On-premises machines migreren naar Azure](migrate-tutorial-on-premises-azure.md)
-- [VM's van de ene Azure-regio naar de andere migreren](azure-to-azure-tutorial-migrate.md)
-- [AWS migreren naar Azure](migrate-tutorial-aws-azure.md)
+> [Bekijk veelgestelde vragen](../migrate/resources-faq.md) over Azure Migrate.

@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281477"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Door 3270-schermen gestuurde apps op IBM-mainframes integreren met Azure met behulp van Azure Logic Apps en de IBM 3270-connector
 
@@ -182,7 +182,7 @@ In deze modus definieert u de stroom of stappen voor het navigeren door de scher
 
 1. Voer onder **nieuwe plan naam kiezen**een naam in voor uw abonnement. Selecteer in de lijst **type** het plan type:
 
-   | Type abonnement | Beschrijving |
+   | Plantype | Beschrijving |
    |-----------|-------------|
    | **Proces** | Voor zelfstandige of gecombineerde abonnementen |
    | **Verbinding maken** | Voor Connect-Abonnementen |
@@ -292,7 +292,7 @@ In deze modus definieert u een methode die is gekoppeld aan uw navigatie plan. V
    |---------------|-----------------|
    | **Gegevens type** | Byte, datum en tijd, decimaal, int, lang, kort, teken reeks |
    | **De techniek voor veld opvulling** | Para meters ondersteunen deze typen opvullingen, waarbij zo nodig lege waarden worden gevuld: <p><p>- **Type**: Voer tekens opeenvolgend in het veld in. <p>- **Fill**: Vervang de inhoud van het veld door tekens en vul zo nodig lege waarden in. <p>- **EraseEofType**: wis het veld en voer de tekens vervolgens opeenvolgend in het veld in. |
-   | **Teken reeks voor opmaak** | Sommige parameter gegevens typen gebruiken een indelings teken reeks, die de 3270-connector informeert de conversie van tekst van het scherm naar een .NET-gegevens type: <p><p>- **Datum tijd**: de notatie teken reeks voor [datum en tijd volgt de notatie teken reeksen voor .net-aangepaste datums en tijden](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De datum `06/30/2019` gebruikt bijvoorbeeld de notatie teken reeks `MM/dd/yyyy` . <p>- **Decimaal**: de teken reeks voor decimale notatie maakt gebruik van de [COBOL-component Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Het getal `100.35` gebruikt bijvoorbeeld de notatie teken reeks `999V99` . |
+   | **Teken reeks voor opmaak** | Sommige parameter gegevens typen gebruiken een indelings teken reeks, die de 3270-connector informeert de conversie van tekst van het scherm naar een .NET-gegevens type: <p><p>- **Datum tijd**: de notatie teken reeks voor [datum en tijd volgt de notatie teken reeksen voor .net-aangepaste datums en tijden](/dotnet/standard/base-types/custom-date-and-time-format-strings). De datum `06/30/2019` gebruikt bijvoorbeeld de notatie teken reeks `MM/dd/yyyy` . <p>- **Decimaal**: de teken reeks voor decimale notatie maakt gebruik van de [COBOL-component Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Het getal `100.35` gebruikt bijvoorbeeld de notatie teken reeks `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Meta gegevens opslaan en weer geven
@@ -409,7 +409,7 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/si3270/).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/si3270/).
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
@@ -417,3 +417,4 @@ Voor meer technische informatie over deze connector, zoals triggers, acties en l
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+

@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16537ba72eb9f11abd8de47256150818c121a140
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24db7981557cf76f9108a1dca37ea4c4c9f51951
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652645"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283075"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -37,7 +38,7 @@ Met de Azure AD-Portal kunt u de configuratie van on-premises specifieke ' wacht
 
 **V: hoe kan ik de voor delen van Azure AD-wachtwoord beveiliging Toep assen op een subset van mijn on-premises gebruikers?**
 
-Wordt niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
+Niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
 
 **V: wat is het verschil tussen een wachtwoord wijziging en een wachtwoordset (of opnieuw instellen)?**
 
@@ -61,11 +62,11 @@ Ja. Ondersteuning voor meerdere geregistreerde wachtwoord filter-dll's is een ke
 
 **V: hoe kan ik Azure AD-wachtwoord beveiliging in mijn Active Directory omgeving implementeren en configureren zonder Azure te gebruiken?**
 
-Wordt niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
+Niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
 
 **V: hoe kan ik de inhoud van het beleid op het Active Directory niveau wijzigen?**
 
-Wordt niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
+Niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
 
 **V: Waarom is DFSR vereist voor SYSVOL-replicatie?**
 
@@ -148,7 +149,7 @@ De volgende koppelingen maken geen deel uit van de Azure AD-documentatie voor wa
 
 [Azure AD-wachtwoord beveiliging is nu algemeen beschikbaar.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Hand leiding e-mail phishing Protection – deel 15: implementeer de Microsoft Azure AD-wachtwoord beveiligings service (voor on-premises)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Hand leiding e-mail phishing Protection – deel 15: implementeer de Microsoft Azure AD-wachtwoord beveiligings service (voor on-premises)](http://kmartins.com/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
 [Azure AD-wachtwoord beveiliging en slimme vergren delingen zijn nu beschikbaar als open bare preview.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 

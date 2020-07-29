@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 20310c6c51a2467e9389bc77dd9ada4848c69be4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538901"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371750"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -47,7 +47,7 @@ Doe voordat u begint het volgende:
 
 1. Zorg ervoor dat u een of meer virtuele [Windows](../virtual-machines/linux/disk-encryption-overview.md) -of [Linux](../virtual-machines/linux/disk-encryption-overview.md) -vm's met ade ingeschakeld hebt.
 2. [De ondersteunings matrix](backup-support-matrix-iaas.md) voor Azure VM backup bekijken
-3. [Maak](backup-azure-arm-vms-prepare.md#create-a-vault) een Recovery Services back-upkluis als u er nog geen hebt.
+3. [Maak](backup-create-rs-vault.md) een Recovery Services back-upkluis als u er nog geen hebt.
 4. Als u versleuteling inschakelt voor virtuele machines die al zijn ingeschakeld voor back-up, hoeft u alleen maar een back-up te maken met machtigingen voor toegang tot de Key Vault zodat back-ups zonder onderbrekingen kunnen worden voortgezet. Meer [informatie](#provide-permissions) over het toewijzen van deze machtigingen.
 
 Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk moet doen:
@@ -56,7 +56,7 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
 ## <a name="configure-a-backup-policy"></a>Een back-upbeleid configureren
 
-1. Als u nog geen Recovery Services back-upkluis hebt gemaakt, volgt u [deze instructies](backup-azure-arm-vms-prepare.md#create-a-vault)
+1. Als u nog geen Recovery Services back-upkluis hebt gemaakt, volgt u [deze instructies](backup-create-rs-vault.md)
 2. Open de kluis in de portal en selecteer **back-up** in de sectie **aan** de slag.
 
     ![Blade back-up](./media/backup-azure-vms-encryption/select-backup.png)

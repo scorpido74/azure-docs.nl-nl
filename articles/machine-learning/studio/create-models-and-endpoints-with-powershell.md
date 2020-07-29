@@ -1,6 +1,5 @@
 ---
-title: Meerdere modellen en eind punten maken
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): meerdere modellen maken & eind punten-Azure'
 description: Gebruik Power shell om meerdere Machine Learning modellen en web service-eind punten te maken met dezelfde algoritme, maar met verschillende trainings gegevens sets.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b158c2fbdbfba91055d64f92f64c51dc6c3d391
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9cb5b0b87b1d6adb8e0e5cda06049cfddba3d950
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955706"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283534"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Meerdere webservice-eind punten maken van een experiment met ML Studio (klassiek) en Power shell
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
 
 Hier volgt een veelvoorkomend machine learning probleem: u wilt een groot aantal modellen maken die dezelfde werk stroom hebben en dezelfde algoritme gebruiken. Maar u wilt dat ze verschillende trainings gegevens sets als invoer hebben. Dit artikel laat u zien hoe u dit kunt doen op schaal in Azure Machine Learning Studio (klassiek) door slechts één experiment te gebruiken.
 

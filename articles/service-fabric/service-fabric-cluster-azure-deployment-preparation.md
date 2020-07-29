@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-cluster implementatie plannen
 description: Meer informatie over het plannen en voorbereiden van een productie-Service Fabric cluster implementatie naar Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610588"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281324"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plannen en voorbereiden voor een cluster implementatie
 
@@ -28,7 +28,7 @@ Bij elke implementatie voor productie is capaciteitsplanning van groot belang. H
 * De betrouwbaarheid en duurzaamheid van de clusterkenmerken
 
 ### <a name="select-the-initial-number-of-node-types"></a>Het eerste aantal knooppunt typen selecteren
-Eerst moet u nagaan wat het cluster is dat u maakt, wordt gebruikt voor. Welke soorten toepassingen wilt u in dit cluster implementeren? Heeft uw toepassing meerdere services en moeten ze openbaar of Internet zijn gericht? Hebben uw services (waaruit uw toepassing bestaan) verschillende vereisten voor de infra structuur, zoals meer RAM-geheugen of hogere CPU-cycli? Een Service Fabric cluster kan bestaan uit meer dan één knooppunt type: een primair knooppunt type en een of meer niet-primaire knooppunt typen. Elk knooppunt type wordt toegewezen aan een virtuele-machine schaalset. Elk knooppunttype kan dan onafhankelijk omhoog of omlaag worden geschaald, verschillende open poorten bevatten en diverse capaciteitsstatistieken hebben. [Knooppunt eigenschappen en plaatsings beperkingen][placementconstraints] kunnen worden ingesteld om specifieke services te beperken tot specifieke knooppunt typen.  Zie [service Fabric cluster capaciteit plannen](service-fabric-cluster-capacity.md)voor meer informatie.
+Eerst moet u nagaan wat het cluster is dat u maakt, wordt gebruikt voor. Welke soorten toepassingen wilt u in dit cluster implementeren? Biedt uw toepassing meerdere services en moeten hiervan een of meer service openbaar zijn of op internet gericht? Hebben uw services (waaruit uw toepassing bestaan) verschillende vereisten voor de infra structuur, zoals meer RAM-geheugen of hogere CPU-cycli? Een Service Fabric cluster kan bestaan uit meer dan één knooppunt type: een primair knooppunt type en een of meer niet-primaire knooppunt typen. Elk knooppunt type wordt toegewezen aan een virtuele-machine schaalset. Elk knooppunttype kan dan onafhankelijk omhoog of omlaag worden geschaald, verschillende open poorten bevatten en diverse capaciteitsstatistieken hebben. [Knooppunt eigenschappen en plaatsings beperkingen][placementconstraints] kunnen worden ingesteld om specifieke services te beperken tot specifieke knooppunt typen.  Zie [service Fabric cluster capaciteit plannen](service-fabric-cluster-capacity.md)voor meer informatie.
 
 ### <a name="select-node-properties-for-each-node-type"></a>Knooppunt eigenschappen selecteren voor elk knooppunt type
 In knooppunt typen worden de SKU, het nummer en de eigenschappen van de virtuele machine van de virtuele machines in de bijbehorende schaalset gedefinieerd.
@@ -51,7 +51,7 @@ Meer dan het minimum aantal knoop punten moet zijn gebaseerd op het aantal repli
 
 Tijdelijke besturingssysteem schijven zijn geen specifieke Service Fabric-functie, maar in plaats daarvan een functie van de *virtuele-machine schaal sets* van Azure die zijn toegewezen aan service Fabric knooppunt typen. Voor het gebruik van deze met Service Fabric hebt u het volgende nodig in uw cluster Azure Resource Manager sjabloon:
 
-1. Zorg ervoor dat de typen knoop punten [ondersteunde Azure VM-grootten](../virtual-machines/windows/ephemeral-os-disks.md) voor tijdelijke besturingssysteem schijven opgeven en dat de grootte van de virtuele machine voldoende is voor de cache, zodat de grootte van de besturingssysteem schijf wordt ondersteund (Zie *Opmerking* hieronder). Bijvoorbeeld:
+1. Zorg ervoor dat de typen knoop punten [ondersteunde Azure VM-grootten](../virtual-machines/ephemeral-os-disks.md) voor tijdelijke besturingssysteem schijven opgeven en dat de grootte van de virtuele machine voldoende is voor de cache, zodat de grootte van de besturingssysteem schijf wordt ondersteund (Zie *Opmerking* hieronder). Bijvoorbeeld:
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Tijdelijke besturingssysteem schijven zijn geen specifieke Service Fabric-functi
 > Als gebruikers wilt migreren, moeten ze een nieuw nodeType [toevoegen](./virtual-machine-scale-set-scale-node-type-scale-out.md) met tijdelijke schijven, de werk belastingen verplaatsen naar de nieuwe NodeType & het bestaande NodeType [verwijderen](./service-fabric-how-to-remove-node-type.md) .
 >
 
-Zie voor meer informatie en meer configuratie opties [kortstondige besturingssysteem schijven voor virtuele Azure-machines](../virtual-machines/windows/ephemeral-os-disks.md) 
+Zie voor meer informatie en meer configuratie opties [kortstondige besturingssysteem schijven voor virtuele Azure-machines](../virtual-machines/ephemeral-os-disks.md) 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>De duurzaamheid en betrouwbaarheids niveaus voor het cluster selecteren

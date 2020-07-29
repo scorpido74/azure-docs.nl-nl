@@ -3,15 +3,15 @@ title: IBM DB2 pureScale implementeren op Azure
 description: Meer informatie over het implementeren van een voorbeeld architectuur voor het migreren van een onderneming vanuit de IBM DB2-omgeving die wordt uitgevoerd op een z/O'S naar IBM DB2 pureScale op Azure.
 author: njray
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510725"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371920"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale implementeren op Azure
 
@@ -77,7 +77,7 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 | Kies een product          |                                              | DB2-versie 11.1.3.3. Server edities met DB2 pureScale                                              |
 | Configuration             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Het installatie type selecteren                 | Standaard                                                                                               |
-|                           | Ik ga akkoord met de IBM-voor waarden                     | Geselecteerd                                                                                               |
+|                           | Ik ga akkoord met de IBM-voor waarden                     | Ingeschakeld                                                                                               |
 | Eigenaar van exemplaar            | Bestaande gebruiker voor exemplaar, gebruikers naam        | DB2sdin1                                                                                              |
 | Gebruiker met omheining               | Bestaande gebruiker, gebruikers naam                     | DB2sdfe1                                                                                              |
 | Bestands systeem van cluster       | Pad naar gedeelde schijf partitie apparaat            | /dev/dm-2                                                                                             |

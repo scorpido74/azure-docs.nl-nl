@@ -7,11 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 06/08/2020
 ms.topic: how-to
-ms.openlocfilehash: dec9abc38bc0354ef3d22994a7988bfb006f5769
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6073f71eb21ba4a6739647964d4888044d6ee59a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283618"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Een taak maken en uitvoeren in uw Azure IoT Central-toepassing
 
@@ -42,7 +43,11 @@ In deze sectie wordt beschreven hoe u een taak maakt en uitvoert. U ziet hoe u d
     > [!NOTE]
     > U kunt de geschiedenis van 30 dagen voor uw eerder uitgevoerde taken bekijken.
 
-7. Selecteer de taak die u wilt weer geven in de lijst om een overzicht van uw taak te krijgen. Dit overzicht bevat de taak Details, apparaten en status waarden van de apparaten. In dit overzicht kunt u ook **Download taak gegevens** selecteren om een CSV-bestand van uw taak details te downloaden, inclusief de apparaten en hun status waarden. Deze informatie kan nuttig zijn bij het oplossen van problemen:
+7. Klik op de opgeslagen taak en voer de taak uit door te klikken op de knop uitvoeren. Een taak venster uitvoeren wordt weer gegeven. Bevestig door te klikken op de knop taak uitvoeren. 
+
+    ![Een taak uitvoeren](./media/howto-run-a-job/run-job.png)
+
+8. De taak loopt over verschillende fasen van in behandeling, actief en voltooid. De details van de taak uitvoering bevatten gegevens over de resultaten, de duur en de lijst met apparaten. In dit overzicht kunt u ook het **resultaten logboek** selecteren om een CSV-bestand van uw taak details te downloaden, met inbegrip van de apparaten en hun status waarden. Deze informatie kan nuttig zijn bij het oplossen van problemen.
 
     ![Apparaatstatus weergeven](./media/howto-run-a-job/download-details.png)
 
@@ -50,13 +55,23 @@ In deze sectie wordt beschreven hoe u een taak maakt en uitvoert. U ziet hoe u d
 
 Als u een van de actieve taken wilt stoppen, opent u deze en selecteert u **stoppen**. De taak status wordt gewijzigd in weer spie gelen de taak wordt gestopt. In de sectie **samen vatting** ziet u welke apparaten zijn voltooid, mislukt of nog in behandeling zijn.
 
-Als u een taak wilt uitvoeren die momenteel is gestopt, selecteert u deze en selecteert u vervolgens **uitvoeren**. De taak status wordt gewijzigd in weer spie gelen de taak wordt nu opnieuw uitgevoerd. De sectie **samen vatting** blijft bijgewerkt met de laatste voortgang.
-
 ![Taak beheren](./media/howto-run-a-job/manage-job.png)
+
+Zodra de taak is gestopt, kunt u op **door gaan** klikken om de taak uitvoering te hervatten. De taak status wordt gewijzigd in weer spie gelen de taak wordt nu opnieuw uitgevoerd. De sectie **samen vatting** blijft bijgewerkt met de laatste voortgang.
+
+![Taak gestopt](./media/howto-run-a-job/stopped-job.png)
 
 ## <a name="copy-a-job"></a>Een taak kopiëren
 
-Als u een van uw bestaande taken wilt kopiëren, selecteert u deze op de pagina **taken** en selecteert u **kopiëren**. Een kopie van de taak configuratie wordt geopend, zodat u deze kunt bewerken en **kopiëren** wordt toegevoegd aan de taak naam. U kunt de nieuwe taak opslaan of uitvoeren:
+Als u een van uw bestaande taken wilt kopiëren, selecteert u deze op de pagina **taken** en selecteert u **taak Details**. De pagina taak Details wordt weer gegeven. 
+
+![Taakdetails](./media/howto-run-a-job/job-details.png)
+
+Klik op **kopiëren**
+
+![Taakdetails](./media/howto-run-a-job/job-details-copy.png)
+
+Een kopie van de taak configuratie wordt geopend, zodat u deze kunt bewerken en **kopiëren** wordt toegevoegd aan de taak naam. U kunt de nieuwe taak opslaan of uitvoeren:
 
 ![Taak kopiëren](./media/howto-run-a-job/copy-job.png)
 

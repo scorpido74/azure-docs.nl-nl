@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 9f9a84726b54569d612a94f183531567b2242ff5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 95a966799b4cb66b74d998df9c58958b9b89ecdb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127159"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374215"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
@@ -85,7 +85,7 @@ De volgende tabel bevat een overzicht van de rollen en toegestane acties in azur
 
 ## <a name="custom-roles-and-advanced-rbac"></a>Aangepaste rollen en geavanceerde RBAC
 
-- Naast of in plaats van het gebruik van ingebouwde RBAC-rollen, kunt u aangepaste Azure-rollen maken voor Azure Sentinel. Aangepaste Azure-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
+- Naast of in plaats van met behulp van ingebouwde rollen van Azure, kunt u aangepaste Azure-rollen maken voor Azure Sentinel. Aangepaste Azure-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
 - U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit omvat zowel RBAC op gegevens type als resource gerichte RBAC. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
 

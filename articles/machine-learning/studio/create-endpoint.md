@@ -1,6 +1,5 @@
 ---
-title: Webservice-eind punten maken
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): webservice-eind punten maken-Azure'
 description: Webservice-eind punten maken in Azure Machine Learning Studio (klassiek). Elk eind punt in de webservice wordt onafhankelijk aangepakt, beperkt en beheerd.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: e465d739c485009f68d6d5c5ecbb0850d73a6e60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5fa2a4eb534a4cc6e7bf9542bfb250f216401c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696419"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282497"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Eind punten maken voor geïmplementeerde Azure Machine Learning Studio (klassieke) webservices
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 > [!NOTE]
 > In dit onderwerp worden technieken beschreven die van toepassing zijn op een **klassieke** machine learning-webservice.

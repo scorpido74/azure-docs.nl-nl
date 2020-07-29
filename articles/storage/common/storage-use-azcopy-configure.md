@@ -4,31 +4,31 @@ description: AzCopy configureren, optimaliseren en problemen oplossen.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504352"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282429"
 ---
-# <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
+# <a name="configure-optimize-and-troubleshoot-azcopy"></a>Configureren, optimaliseren en problemen oplossen in AzCopy
 
 AzCopy is een opdrachtregelprogramma dat u kunt gebruiken om blobs of bestanden vanuit of naar een opslagaccount te kopiëren. Dit artikel helpt u bij het uitvoeren van geavanceerde configuratietaken en helpt u bij het oplossen van problemen die kunnen optreden tijdens het gebruik van AzCopy.
 
 > [!NOTE]
 > Als u op zoek bent naar inhoud die u helpt aan de slag te gaan met AzCopy, raadpleegt u een van de volgende artikelen:
 > - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
-> - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-> - [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-> - [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
+> - [Gegevens overdragen met AzCopy en blob-opslag](storage-use-azcopy-blobs.md)
+> - [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+> - [Gegevens overdragen met AzCopy en Amazon S3-opslag](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
 
-Stel de omgevings variabele in om de proxy-instellingen voor AzCopy te configureren `https_proxy` . Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
+Stel de omgevings variabele in om de proxy-instellingen voor AzCopy te configureren `https_proxy` . Als u AzCopy uitvoert in Windows, detecteert AzCopy proxyinstellingen automatisch. U hoeft deze instelling dus niet te gebruiken in Windows. Als u ervoor kiest om deze instelling te gebruiken in Windows, wordt automatische detectie overschreven.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
@@ -42,7 +42,7 @@ Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie me
 
 Als u AzCopy uitvoert in Windows en u wilt weten dat u _geen_ proxy kunt gebruiken (in plaats van de instellingen automatisch te detecteren), gebruikt u deze opdrachten. Met deze instellingen zal AzCopy niet zoeken naar of proberen om een proxy te gebruiken.
 
-| Besturingssysteem | Omgeving | Opdrachten  |
+| Besturingssysteem | Omgeving | Opdracht  |
 |--------|-----------|----------|
 | **Windows** | Opdracht prompt (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
 | **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
@@ -63,7 +63,7 @@ Deze sectie helpt u bij het uitvoeren van deze optimalisatie taken:
 
 ### <a name="run-benchmark-tests"></a>Bench Mark-tests uitvoeren
 
-U kunt een benchmark test voor prestaties uitvoeren op specifieke BLOB-containers of bestands shares om algemene prestatie statistieken te bekijken en knel punten met betrekking tot identiteits prestaties. 
+U kunt een benchmark test voor prestaties uitvoeren op specifieke BLOB-containers of bestands shares om algemene prestatie statistieken te bekijken en knel punten met betrekking tot identiteits prestaties. U kunt de test uitvoeren door gegenereerde test gegevens te uploaden of te downloaden. 
 
 Gebruik de volgende opdracht om een bench Mark-test voor prestaties uit te voeren.
 
@@ -77,9 +77,7 @@ Gebruik de volgende opdracht om een bench Mark-test voor prestaties uit te voere
 
 Met deze opdracht wordt een prestatie Bench Mark uitgevoerd door test gegevens naar een opgegeven bestemming te uploaden. De test gegevens worden in het geheugen gegenereerd, geüpload naar het doel en vervolgens verwijderd uit de bestemming nadat de test is voltooid. U kunt opgeven hoeveel bestanden er moeten worden gegenereerd en welke grootte u wilt gebruiken met optionele opdracht parameters.
 
-Zie [azcopy Bench Mark](storage-ref-azcopy-bench.md)voor gedetailleerde naslag documentatie.
-
-Als u gedetailleerde Help-informatie voor deze opdracht wilt weer geven, typt u `azcopy benchmark -h` en drukt u vervolgens op ENTER.
+Als u de test liever uitvoert door gegevens te downloaden, stelt u de `mode` para meter in op `download` . Zie [azcopy Bench Mark](storage-ref-azcopy-bench.md)voor gedetailleerde naslag documentatie. 
 
 ### <a name="optimize-throughput"></a>Door Voer optimaliseren
 
@@ -89,9 +87,9 @@ U kunt de `cap-mbps` vlag in uw opdrachten gebruiken om een plafond te plaatsen 
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de door Voer verhogen door de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan worden uitgevoerd.  
+De doorvoer kan afnemen wanneer kleine bestanden worden overgebracht. U kunt de door Voer verhogen door de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan plaatsvinden.  
 
-Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32` . Anders is de standaard waarde gelijk aan 16 vermenigvuldigd met het aantal Cpu's. De maximale standaard waarde van deze variabele is `3000` , maar u kunt deze waarde ook op een hoger of lager niveau instellen. 
+Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32` . Anders is de standaardwaarde gelijk aan 16 vermenigvuldigd met het aantal CPU's. De maximale standaard waarde van deze variabele is `3000` , maar u kunt deze waarde ook op een hoger of lager niveau instellen. 
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|

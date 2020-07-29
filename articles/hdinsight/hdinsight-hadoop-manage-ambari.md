@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075753"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281380"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface
 
@@ -49,7 +49,7 @@ Wanneer de pagina wordt geopend, ziet u de balk aan de bovenkant. Deze balk beva
 
 ![Overzicht van Apache Ambari-dash board](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Item |Description |
+|Item |Beschrijving |
 |---|---|
 |Ambari-logo|Hiermee opent u het dash board, dat kan worden gebruikt voor het bewaken van het cluster.|
 |Cluster naam # OPS|Hiermee wordt het aantal actieve Ambari-bewerkingen weer gegeven. Als u de cluster naam of **# OPS** selecteert, wordt een lijst met achtergrond bewerkingen weer gegeven.|
@@ -70,7 +70,7 @@ De volgende lijst bevat de algemene statussen van waarschuwingen die worden gebr
 * **OK**
 * **Waarschuwing**
 * **KRITIEKE**
-* **UNKNOWN**
+* **HERKEND**
 
 Bij andere waarschuwingen dan **OK** wordt **het aantal waarschuwingen aan** de bovenkant van de pagina weer gegeven. Als u dit item selecteert, worden de waarschuwingen en hun status weer gegeven.
 
@@ -107,6 +107,7 @@ Selecteer **hosts**voor meer informatie over de knoop punten in het cluster. Sel
 ### <a name="services"></a>Services
 
 De Sidebar **Services** in het dash board biedt een snelle inzicht in de status van de services die op het cluster worden uitgevoerd. Er worden verschillende pictogrammen gebruikt om de status of acties aan te geven die moeten worden uitgevoerd. Zo wordt bijvoorbeeld een geel recycling symbool weer gegeven als een service opnieuw moet worden gerecycled.
+
 
 ![Apache Ambari Services-zijkants balk](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
@@ -153,7 +154,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
 
 2. Gebruik het menu **acties** om de actie te selecteren die u wilt uitvoeren:
 
-    |Item |Description |
+    |Item |Beschrijving |
     |---|---|
     |Alle onderdelen starten|Start alle onderdelen op de host.|
     |Alle onderdelen stoppen|Stop alle onderdelen op de host.|
@@ -162,7 +163,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
     |Onderhouds modus uitschakelen|Retourneert de host naar normale waarschuwingen.|
     |Stoppen|Stopt DataNode of NodeManagers op de host.|
     |Starten|Start DataNode of NodeManagers op de host.|
-    |Opnieuw starten|Stopt en start DataNode of NodeManagers op de host.|
+    |Opnieuw opstarten|Stopt en start DataNode of NodeManagers op de host.|
     |Uit bedrijf nemen|Hiermee verwijdert u een host uit het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
     |Opnieuw provisie|Voegt een eerder buiten gebruik gestelde host toe aan het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
 
@@ -170,10 +171,10 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
 
 Gebruik op de pagina **dash board** of **Services** de knop **acties** onder aan de lijst met Services om alle services te stoppen en te starten.
 
-![Lijst met Apache Ambari-service acties](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png" alt-text="Lijst met Apache Ambari-service acties." border="true":::
 
 > [!WARNING]  
-> Tijdens het toevoegen van een **service** wordt deze in dit menu niet gebruikt om services aan het HDInsight-cluster toe te voegen. Er moeten nieuwe services worden toegevoegd met behulp van een script actie tijdens het inrichten van het cluster. Zie [HDInsight-clusters aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het gebruik van script acties.
+> Er moeten nieuwe services worden toegevoegd met behulp van een script actie tijdens het inrichten van het cluster. Zie [HDInsight-clusters aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het gebruik van script acties.
 
 De **actie** knop kan alle services opnieuw starten, vaak wilt u een specifieke service starten, stoppen of opnieuw starten. Gebruik de volgende stappen om acties uit te voeren voor een afzonderlijke service:
 

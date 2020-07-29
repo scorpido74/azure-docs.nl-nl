@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081590"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309338"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
@@ -192,6 +192,7 @@ Deze Azure Resource Manager sjabloon demonstreert het configureren van een waars
 
 Meer informatie over het automatisch detecteren van:
 
-- [Foutafwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Geheugen lekken](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Prestatieafwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Foutafwijkingen](./proactive-failure-diagnostics.md)
+- [Geheugen lekken](./proactive-potential-memory-leak.md)
+- [Prestatieafwijkingen](./proactive-performance-diagnostics.md)
+

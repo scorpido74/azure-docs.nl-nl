@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281358"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -65,8 +65,11 @@ Dit model definieert een naam en een unieke ID voor de patiënt kamer en eigensc
 
 U kunt aan de slag met deze methode om modellen te definiëren voor de weers huizen, zones of het zieken huis zelf.
 
-> [!TIP]
-> Er is een bibliotheek aan de client zijde beschikbaar voor het parseren en valideren van DTDL. Er wordt een C#-object model gegenereerd van de DTDL-inhoud, die kan worden gebruikt in modellen voor ontwikkel scenario's, zoals het genereren van UI-elementen. U kunt deze bibliotheek ook gebruiken om ervoor te zorgen dat uw modellen geen syntaxis fouten bevatten voordat u ze uploadt. Zie [*How-to: model parseren en valideren*](how-to-use-parser.md)voor meer informatie over deze bibliotheek en de toegang tot een geconstrueerd voor beeld voor een DTDL-validatie.
+### <a name="validate-syntax"></a>Syntaxis valideren
+
+Er is een bibliotheek aan de client zijde beschikbaar voor het parseren en valideren van DTDL. Er wordt een C#-object model gegenereerd van de DTDL-inhoud, die kan worden gebruikt in modellen voor ontwikkel scenario's, zoals het genereren van UI-elementen. U kunt deze bibliotheek ook gebruiken om ervoor te zorgen dat uw modellen geen syntaxis fouten bevatten voordat u ze uploadt. 
+
+Zie [*How-to: model parseren en valideren*](how-to-use-parser.md)voor meer informatie over deze bibliotheek en de toegang tot een geconstrueerd voor beeld voor een DTDL-validatie.
 
 ## <a name="manage-models-with-apis"></a>Modellen beheren met Api's.
 
@@ -82,7 +85,10 @@ In de volgende secties ziet u hoe u verschillende modellen beheer bewerkingen ku
 
 Zodra de modellen zijn gemaakt, kunt u deze uploaden naar het Azure Digital Apparaatdubbels-exemplaar.
 
-Hier volgt een code fragment dat laat zien hoe u dit doet:
+> [!TIP]
+> Het is raadzaam om uw modellen offline te valideren voordat u ze uploadt naar uw Azure Digital Apparaatdubbels-exemplaar. U kunt de [DTDL-client-side parser-bibliotheek](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) en [DTDL validator](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) -voor beeld gebruiken dat wordt beschreven in [*procedures: modellen parseren en valideren*](how-to-use-parser.md) om uw modellen te controleren voordat u deze uploadt naar de service.
+
+Wanneer u klaar bent voor het uploaden van een model, kunt u het volgende code fragment gebruiken:
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -126,10 +132,7 @@ Model bestanden kunnen meer dan één model bevatten. In dit geval moeten de mod
 ]
 ```
  
-Bij het uploaden worden model bestanden gevalideerd.
-
-> [!TIP] 
-> Houd er rekening mee dat u ook de DTDL aan de [client zijde](how-to-use-parser.md) kunt gebruiken om modellen aan de client zijde te valideren.
+Bij het uploaden worden model bestanden gevalideerd door de service.
 
 ### <a name="retrieve-models"></a>Modellen ophalen
 

@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4ee6a3c09d24d6968227ef4215000888c5f4af05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791007"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372073"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Toewijzingen van Azure-roltoewijzingen weer geven met Azure PowerShell
 
@@ -139,6 +140,26 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="list-role-assignments-for-a-resource"></a>Roltoewijzingen voor een resource weer geven
+
+Als u roltoewijzingen voor een specifieke resource wilt weer geven, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) en de `-Scope` para meter. Het bereik is afhankelijk van de resource. Als u het bereik wilt ophalen, kunt u `Get-AzRoleAssignment` zonder para meters uitvoeren om alle roltoewijzingen weer te geven en vervolgens het bereik te vinden dat u wilt weer geven.
+
+```azurepowershell
+Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
+```
+
+In dit volgende voor beeld ziet u hoe u de roltoewijzingen voor een opslag account kunt weer geven. Houd er rekening mee dat met deze opdracht ook roltoewijzingen in hogere bereiken worden weer gegeven, zoals resource groepen en abonnementen, die gelden voor dit opslag account.
+
+```Example
+PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
+```
+
+Als u alleen roltoewijzingen wilt weer geven die rechtstreeks aan een resource zijn toegewezen, kunt u de opdracht [where-object](/powershell/module/microsoft.powershell.core/where-object) gebruiken om de lijst te filteren.
+
+```Example
+PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}
 ```
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Roltoewijzingen voor de klassieke service beheerder en mede beheerders weer geven

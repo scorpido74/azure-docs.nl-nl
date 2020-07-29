@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd641b57cfdd7f9481e17a90dbbd81d5e43f8ad2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689787"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311106"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol
 
 Met de OAuth 2,0-client referenties toewijzen stroom kan een webservice (vertrouwelijke client) eigen referenties gebruiken, in plaats van een gebruiker te imiteren, om te verifiëren bij het aanroepen van een andere webservice. In dit scenario is de client doorgaans een middelste laag, een daemon-service of een website. Voor een hoger garantie niveau kan het micro soft Identity-platform ook een certificaat (in plaats van een gedeeld geheim) als referentie gebruiken.
 
-In de meest voorkomende *legged OAuth*wordt een client toepassing gemachtigd om toegang te krijgen tot een resource namens een specifieke gebruiker. De machtiging wordt overgedragen van de gebruiker aan de toepassing, meestal tijdens het [toestemming](v2-permissions-and-consent.md) proces. In de client referenties (*twee legged OAuth*)-stroom worden machtigingen echter rechtstreeks aan de toepassing zelf verleend. Wanneer de app een token aan een resource presenteert, dwingt de resource af dat de app zelf een actie heeft uitgevoerd en niet de gebruiker.
+In de client referenties stroom worden machtigingen rechtstreeks verleend aan de toepassing zelf door een beheerder. Wanneer de app een token aan een resource presenteert, dwingt de resource af dat de app zelf een actie heeft geautoriseerd, omdat er geen gebruiker is betrokken bij de verificatie.  In dit artikel worden de stappen besproken die nodig zijn om een [toepassing te machtigen voor het aanroepen van een API](#application-permissions), en het [verkrijgen van de tokens die nodig zijn om die API aan te roepen](#get-a-token).
 
 ## <a name="protocol-diagram"></a>Protocol diagram
 
@@ -52,6 +52,9 @@ Een veelvoorkomende use-case is het gebruik van een ACL voor het uitvoeren van t
 
 Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegang nodig hebben tot gegevens die eigendom zijn van consumenten gebruikers met persoonlijke micro soft-accounts. Voor gegevens die eigendom zijn van organisaties, raden we u aan de vereiste autorisatie te verkrijgen via toepassings machtigingen.
 
+> [!NOTE]
+> Als u dit verificatie patroon op basis van toegangs beheer lijst wilt inschakelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen, zodat alleen app-tokens kunnen worden uitgegeven zonder een `rules` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
+
 ### <a name="application-permissions"></a>Toepassings machtigingen
 
 In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set **toepassings machtigingen**beschikbaar te maken. Een toepassings machtiging wordt verleend aan een toepassing door de beheerder van een organisatie en kan alleen worden gebruikt om toegang te krijgen tot gegevens die eigendom zijn van die organisatie en haar mede werkers. Microsoft Graph biedt bijvoorbeeld verschillende toepassings machtigingen om het volgende te doen:
@@ -61,14 +64,12 @@ In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set **toepassing
 * E-mail verzenden als gebruiker
 * Mapgegevens lezen
 
-Ga naar [Microsoft Graph](https://developer.microsoft.com/graph)voor meer informatie over toepassings machtigingen.
+Raadpleeg de [documentatie voor toestemming en machtigingen](v2-permissions-and-consent.md#permission-types)voor meer informatie over toepassings machtigingen.
 
 Als u toepassings machtigingen wilt gebruiken in uw app, volgt u de stappen die in de volgende secties worden besproken.
 
-
 > [!NOTE]
 > Bij verificatie als een toepassing, in tegens telling tot een gebruiker, kunt u geen ' gedelegeerde machtigingen ' gebruiken (bereiken die worden verleend door een gebruiker).  U moet toepassings machtigingen gebruiken, ook wel ' rollen ' genoemd, die worden verleend door een beheerder voor de toepassing (of via vooraf-autorisatie door de Web-API).
-
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>De machtigingen aanvragen in de portal voor app-registratie
 

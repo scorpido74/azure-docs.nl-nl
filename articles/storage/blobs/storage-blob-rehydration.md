@@ -9,11 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: cbaa1d34eb8fe44b1c367d8fa3f84687fe7568e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d1d663dce8791b70b9fd8679730d5681d66013a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282463"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-gegevens worden opnieuw gehydrateerd op basis van de opslaglaag
 
@@ -60,7 +61,7 @@ Blobs in de archief laag moeten mini maal 180 dagen worden opgeslagen. Als u gea
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Een archief-BLOB naar een online-laag opnieuw gehydrateerd
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
 
@@ -93,7 +94,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to Hot using Standard priority rehydrate
 $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")

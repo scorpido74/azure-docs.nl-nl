@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284010"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden bewaken, maken en beheren met behulp van Azure Logic Apps
 
@@ -164,13 +165,13 @@ Als u wilt controleren of uw werk stroom de verwachte inhoud retourneert, voegt 
 
 1. Nadat de actie wordt weer gegeven, geeft u de informatie op en voegt u de eigenschappen toe die u wilt testen. Voeg bijvoorbeeld de eigenschap **Bestands inhoud** toe, die wordt weer gegeven in de lijst met dynamische inhoud nadat u in de sectie **Bestands inhoud ophalen** de optie **meer weer geven** hebt geselecteerd.
 
-   ![Informatie opgeven over e-mail actie](./media/connectors-create-api-ftp/selected-send-email-action.png)
+   ![Informatie opgeven over de e-mailactie](./media/connectors-create-api-ftp/selected-send-email-action.png)
 
 1. Sla uw logische app op. Als u de logische app wilt uitvoeren en activeren, selecteert u **uitvoeren**op de werk balk en vervolgens voegt u een bestand toe aan de FTP-map die nu door uw logische app wordt bewaakt.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/ftpconnector/).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/ftpconnector/).
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
@@ -178,3 +179,4 @@ Voor meer technische informatie over deze connector, zoals triggers, acties en l
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+

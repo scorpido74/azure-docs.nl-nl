@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282973"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>Problemen met verificatie van uitgever oplossen (preview)
 Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever (preview)](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
@@ -37,7 +37,7 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
     1. Ga naar de [registratie pagina voor MPN](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. Meld u aan met een gebruikers account in de primaire Azure AD-Tenant van de organisatie 
     1. Als er al een MPN-account bestaat, wordt dit herkend en wordt u aan het account toegevoegd 
-    1. Navigeer naar de [pagina Partner profiel](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) waar de contact persoon voor de MPN-id en het primaire account wordt weer gegeven
+    1. Navigeer naar de [pagina Partner profiel](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) waar de contact persoon voor de MPN-id en het primaire account wordt weer gegeven
 
 - **Ik weet niet wie mijn globale beheerder van Azure AD (ook wel bedrijfs beheerder of Tenant beheerder is), hoe vind ik ze? Wat is de beheerder van de app of een andere beheerdersrol?**
     1. Meld u aan bij de [Azure AD-Portal](https://aad.portal.azure.com) met behulp van een gebruikers account in de primaire Tenant van uw organisatie
@@ -45,14 +45,14 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
     1. Klik op globale beheerder of de gewenste beheerdersrol
     1. De lijst met gebruikers die zijn toegewezen aan die rol wordt weer gegeven
 
-- **Ik weet niet wie de beheerder (s) voor mijn MPN-account** Ga naar de [MPN-gebruikers beheer pagina](https://partner.microsoft.com/en-us/pcv/users) en filter de gebruikers lijst om te zien welke gebruikers zich in verschillende beheerders rollen bevinden.
+- **Ik weet niet wie de beheerder (s) voor mijn MPN-account** Ga naar de [MPN-gebruikers beheer pagina](https://partner.microsoft.com/pcv/users) en filter de gebruikers lijst om te zien welke gebruikers zich in verschillende beheerders rollen bevinden.
 
 - **Er wordt een fout bericht weer gegeven met de mede deling dat mijn MPN-ID ongeldig is of dat ik geen toegang heb.**
-    1. Ga naar uw [partner profiel](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) en controleer het volgende: 
+    1. Ga naar uw [partner profiel](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) en controleer het volgende: 
         - De MPN-ID is juist. 
         - Er zijn geen fouten of acties die in behandeling zijn, en de verificatie status onder juridisch zakelijk profiel en partner informatie hebben beide de tekst "geautoriseerd" of "geslaagd".
-    1. Ga naar de [pagina MPN Tenant beheer](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement) en bevestig dat de Tenant waarin de app is geregistreerd en dat u zich aanmeldt met een gebruikers account, zich in de lijst met gekoppelde tenants bevindt.
-    1. Ga naar de [pagina gebruikers beheer van MPN](https://partner.microsoft.com/en-us/pcv/users) en bevestig dat de gebruiker waarbij u zich aanmeldt, een globale beheerder, MPN beheerder of account beheerder is.
+    1. Ga naar de [pagina MPN Tenant beheer](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) en bevestig dat de Tenant waarin de app is geregistreerd en dat u zich aanmeldt met een gebruikers account, zich in de lijst met gekoppelde tenants bevindt.
+    1. Ga naar de [pagina gebruikers beheer van MPN](https://partner.microsoft.com/pcv/users) en bevestig dat de gebruiker waarbij u zich aanmeldt, een globale beheerder, MPN beheerder of account beheerder is.
 
 - **Wanneer ik me aanmeld in de Azure AD-Portal, zie ik geen geregistreerde apps. Waarom?** 
     Uw app-registraties zijn mogelijk gemaakt met een ander gebruikers account of een andere Tenant. Zorg ervoor dat u bent aangemeld met het juiste account in de Tenant waar de app-registraties zijn gemaakt.
@@ -84,7 +84,7 @@ POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/setVerifiedPublisher
 } 
 ```
  
-Antwoord 
+Reactie 
 ```
 204 No Content 
 ```
@@ -98,7 +98,7 @@ Aanvraag:
 POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/unsetVerifiedPublisher 
 ```
  
-Antwoord 
+Reactie 
 ```
 204 No Content 
 ```
@@ -209,7 +209,7 @@ Deze functie wordt niet ondersteund voor micro soft-consumenten accounts. Alleen
 
 Als u alle voor gaande informatie hebt gecontroleerd en nog steeds een fout ontvangt van Microsoft Graph, moet u zoveel mogelijk van de volgende informatie verzamelen die betrekking heeft op de mislukte aanvraag en [contact opnemen met micro soft ondersteuning](developer-support-help-options.md#open-a-support-request).
 
-- Tijdstempel 
+- Timestamp 
 - CorrelationId 
 - ObjectID of UserPrincipalName van aangemelde gebruiker 
 - ObjectId van doel toepassing

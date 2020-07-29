@@ -3,12 +3,12 @@ title: Implementatiemodi
 description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of incrementele implementatie modus met Azure Resource Manager wilt gebruiken.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040428"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371580"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
 
@@ -29,7 +29,7 @@ Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat de [voor w
 
 Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](copy-resources.md). Alle resources die niet zijn opgegeven in de sjabloon na het oplossen van de Kopieer-lus, worden verwijderd.
 
-Als u naar [meer dan één resource groep in een sjabloon](cross-resource-group-deployment.md)implementeert, kunnen resources in de resource groep die zijn opgegeven in de implementatie bewerking worden verwijderd. Resources in de secundaire resource groepen worden niet verwijderd.
+Als u naar [meer dan één resource groep in een sjabloon](cross-scope-deployment.md)implementeert, kunnen resources in de resource groep die zijn opgegeven in de implementatie bewerking worden verwijderd. Resources in de secundaire resource groepen worden niet verwijderd.
 
 Er zijn een aantal verschillen in de manier waarop bron typen het verwijderen van de modus volt ooien verwerken. Bovenliggende resources worden automatisch verwijderd als ze niet worden gebruikt in een sjabloon die wordt geïmplementeerd in de modus voltooid. Sommige onderliggende resources worden niet automatisch verwijderd wanneer ze niet in de sjabloon staan. Deze onderliggende resources worden echter verwijderd als de bovenliggende resource wordt verwijderd.
 

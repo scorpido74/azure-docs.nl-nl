@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090957"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284163"
 ---
 # <a name="create-application-with-simple-commands"></a>Toepassing met eenvoudige opdrachten maken
 
@@ -48,7 +48,7 @@ In de lege aangepaste opdrachten voor het maken van **Smart room-Lite-** toepass
 
 In het middelste deel venster worden de verschillende eigenschappen van de opdracht weer gegeven. U configureert de volgende eigenschappen van de opdracht. Ga naar [verwijzingen](./custom-commands-references.md)voor uitleg van alle configuratie-eigenschappen van een opdracht.
 
-| Configuratie            | Beschrijving                                                                                                                 |
+| Configuration            | Beschrijving                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Voorbeeld zinnen** | Voor beeld van uitingen de gebruiker kan zeggen dat deze opdracht wordt geactiveerd                                                                 |
 | **Parameters**       | Gegevens die nodig zijn om de opdracht te volt ooien                                                                                |
@@ -95,6 +95,7 @@ Vervolgens moet de opdracht een voltooiings regel hebben. Deze regel geeft aan d
 
 1. Selecteer **Opslaan** om de actie op te slaan.
 1. Selecteer in de sectie **voltooiings regels** de optie **Opslaan** om alle wijzigingen op te slaan. 
+
 
     > [!NOTE]
     > Het is niet nodig om de standaard voltooiings regel te gebruiken die bij de opdracht wordt geleverd. Indien nodig kunt u de bestaande standaard voltooiings regel verwijderen en uw eigen regel toevoegen.

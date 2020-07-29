@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307585"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284180"
 ---
-# <a name="add-configurations-to-commands-parameters"></a>Configuraties toevoegen aan opdracht parameters
+# <a name="add-configurations-to-commands-parameters"></a>Configuraties toevoegen aan opdrachtparameters
 
 In dit artikel vindt u meer informatie over geavanceerde parameter configuratie, waaronder:
 
@@ -43,7 +43,7 @@ Als u dit wilt doen, moet u eerst een nieuw webeind punt toevoegen. Ga naar de s
 
 | Instelling | Voorgestelde waarde |
 |----|----|
-| Name | `getDevices` |
+| Naam | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Methode | GET |
 
@@ -75,7 +75,7 @@ Ga vervolgens naar de pagina **SubjectDevice** para meter Settings en wijzig de 
 
 | Instelling | Voorgestelde waarde |
 | ----| ---- |
-| Configuratie | Vooraf gedefinieerde invoer accepteren van externe catalogus |                               
+| Configuration | Vooraf gedefinieerde invoer accepteren van externe catalogus |                               
 | Eind punt van catalogus | getDevices |
 | Methode | GET |
 
@@ -84,7 +84,7 @@ Selecteer vervolgens **Opslaan**.
 > [!IMPORTANT]
 > U ziet geen optie voor het configureren van een para meter voor het accepteren van invoer uit een externe catalogus, tenzij u het webeindpunt hebt ingesteld in het gedeelte **Web endpoint** in het linkerdeel venster.
 
-### <a name="try-it-out"></a>Uitproberen
+### <a name="try-it-out"></a>Probeer het eens
 
 Selecteer **trainen** en wacht op voltooiing van de training. Zodra de training is voltooid, selecteert u **testen** en voert u enkele interacties uit.
 
@@ -112,12 +112,12 @@ Test de validaties met behulp van de **SetTemperature** -opdracht. Voer de volge
     | ---- | ---- | ---- |
     | Minimumwaarde | `60` | Voor numerieke para meters kan de minimum waarde van deze para meter aannemen |
     | Maximumwaarde | `80` | Voor numerieke para meters kan de maximum waarde van deze para meter aannemen |
-    | Fout bericht |  Eenvoudige editor > eerste variatie >`Sorry, I can only set temperature between 60 and 80 degrees` | Vragen om een nieuwe waarde te vragen als de validatie is mislukt |
+    | Fout bericht |  Eenvoudige editor > eerste variatie >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Vragen om een nieuwe waarde te vragen als de validatie is mislukt |
 
     > [!div class="mx-imgBorder"]
     > ![Validatie van een bereik toevoegen](media/custom-commands/add-validations-temperature.png)
 
-### <a name="try-it-out"></a>Uitproberen
+### <a name="try-it-out"></a>Probeer het eens
 
 1. Selecteer een **trein** pictogram boven in het rechterdeel venster.
 

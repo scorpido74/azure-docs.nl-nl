@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: In dit artikel wordt het SAML-protocol voor eenmalige aanmelding (SSO) in Azure Active Directory beschreven
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076943"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282990"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-protocol voor eenmalige aanmelding
 
@@ -104,7 +104,7 @@ Een `Signature` element in `AuthnRequest` elementen is optioneel. Azure AD valid
 ### <a name="subject"></a>Onderwerp
 Neem geen `Subject` element op. Azure AD biedt geen ondersteuning voor het opgeven van een onderwerp voor een aanvraag en er wordt een fout geretourneerd als er een wordt opgegeven.
 
-## <a name="response"></a>Antwoord
+## <a name="response"></a>Reactie
 Wanneer een aangevraagde aanmelding is voltooid, boekt Azure AD een reactie op de Cloud service. Een reactie op een geslaagde aanmeldings poging ziet eruit als in het volgende voor beeld:
 
 ```
@@ -150,7 +150,7 @@ Wanneer een aangevraagde aanmelding is voltooid, boekt Azure AD een reactie op d
 </samlp:Response>
 ```
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het `Response` element bevat het resultaat van de autorisatie aanvraag. Azure AD stelt de `ID` en `Version` `IssueInstant` waarden in het- `Response` element in. Ook worden de volgende kenmerken ingesteld:
 

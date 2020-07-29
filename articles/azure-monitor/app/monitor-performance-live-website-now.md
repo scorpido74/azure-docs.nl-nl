@@ -3,12 +3,12 @@ title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microso
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises of in Vm's worden gehost.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499525"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310443"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
@@ -22,7 +22,7 @@ Status Monitor wordt gebruikt om een .NET-toepassing die in IIS wordt gehost on-
 - Als uw app is geïmplementeerd in azure VM of virtuele-machine schaal sets van Azure, volgt u [deze instructies](azure-vm-vmss-apps.md).
 - Als uw app in azure app Services is geïmplementeerd, volgt u [deze instructies](azure-web-apps.md).
 - Als uw app is geïmplementeerd in een Azure-VM, kunt u overschakelen op Application Insights bewaking vanuit het onderdeel Azure van het configuratie scherm.
-- (Er zijn ook afzonderlijke artikelen over het instrumenteren van [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
+- (Er zijn ook afzonderlijke artikelen over het instrumenteren van [Azure Cloud Services](./cloudservices.md).)
 
 
 ![Scherm afbeelding van de overzichts grafieken van app Insights met informatie over mislukte aanvragen, reactie tijd van de server en server aanvragen](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -40,12 +40,12 @@ Hier volgt een samenvatting van wat elke route u biedt:
 |  | Tijdens het bouwen | Tijdens het gebruik |
 | --- | --- | --- |
 | **& uitzonde ringen aanvragen** |Ja |Ja |
-| **[Meer gedetailleerde uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md)** | |Ja |
-| **[Afhankelijkheids diagnostiek](../../azure-monitor/app/asp-net-dependencies.md)** |Op .NET 4.6+, maar minder details |Ja, volledige details: resultaatcodes, SQL-opdrachttekst, HTTP-woord|
-| **[Systeemprestatiemeteritems](../../azure-monitor/app/performance-counters.md)** |Ja |Ja |
+| **[Meer gedetailleerde uitzonde ringen](./asp-net-exceptions.md)** | |Ja |
+| **[Afhankelijkheids diagnostiek](./asp-net-dependencies.md)** |Op .NET 4.6+, maar minder details |Ja, volledige details: resultaatcodes, SQL-opdrachttekst, HTTP-woord|
+| **[Systeemprestatiemeteritems](./performance-counters.md)** |Ja |Ja |
 | **[API voor aangepaste telemetrie][api]** |Ja |Nee |
-| **[Integratie traceer logboek](../../azure-monitor/app/asp-net-trace-logs.md)** |Ja |Nee |
-| **[Pagina weergave & gebruikers gegevens](../../azure-monitor/app/javascript.md)** |Ja |Nee |
+| **[Integratie traceer logboek](./asp-net-trace-logs.md)** |Ja |Nee |
+| **[Pagina weergave & gebruikers gegevens](./javascript.md)** |Ja |Nee |
 | **Code moet worden herbouwd** |Ja | Nee |
 
 
@@ -70,7 +70,7 @@ Als uw app wordt gehost op een IIS-server, kunt u Application Insights inschakel
 
 ## <a name="customize-monitoring-options"></a>Bewakingsopties aanpassen
 
-Als u Application Insights inschakelt, worden ddl-bestanden en het bestand ApplicationInsights.config toegevoegd aan uw web-app. U kunt [het bestand .config bewerken](../../azure-monitor/app/configuration-with-applicationinsights-config.md) om enkele van de opties te wijzigen.
+Als u Application Insights inschakelt, worden ddl-bestanden en het bestand ApplicationInsights.config toegevoegd aan uw web-app. U kunt [het bestand .config bewerken](./configuration-with-applicationinsights-config.md) om enkele van de opties te wijzigen.
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Wanneer u uw app opnieuw publiceert, schakelt u Application Insights opnieuw in
 
@@ -84,7 +84,7 @@ Als u opnieuw wilt publiceren zonder Application Insights toe te voegen aan de c
 4. Voer alle wijzigingen die u hebt doorgevoerd in het .config-bestand opnieuw door.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Meer
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Problemen oplossen
 
 ### <a name="confirm-a-valid-installation"></a>Een geldige installatie bevestigen 
 
@@ -106,7 +106,7 @@ Dit zijn enkele stappen die u kunt uitvoeren om te controleren of de installatie
 
 ### <a name="cant-connect-no-telemetry"></a>Kunt u geen verbinding maken? Geen telemetrie?
 
-* Open [de benodigde uitgaande poorten](../../azure-monitor/app/ip-addresses.md#outgoing-ports) in de firewall van uw server om Status Monitor uit te voeren.
+* Open [de benodigde uitgaande poorten](./ip-addresses.md#outgoing-ports) in de firewall van uw server om Status Monitor uit te voeren.
 
 ### <a name="unable-to-login"></a>Kan niet aanmelden
 
@@ -261,7 +261,7 @@ Een bureaubladtoepassing die u op uw IIS-webserver kunt installeren. Hiermee kun
 ### <a name="when-do-i-use-status-monitor"></a>Wanneer maak ik gebruik van Status Monitor?
 
 * Wanneer u web-apps wilt instrumenteren die worden uitgevoerd op uw IIS-server, zelfs als deze al worden uitgevoerd.
-* Om extra telemetrie mogelijk te maken voor web-apps die bij het compileren zijn [gebouwd met de Application Insights-SDK](../../azure-monitor/app/asp-net.md). 
+* Om extra telemetrie mogelijk te maken voor web-apps die bij het compileren zijn [gebouwd met de Application Insights-SDK](./asp-net.md). 
 
 ### <a name="can-i-close-it-after-it-runs"></a>Kan ik de applicatie sluiten nadat deze is uitgevoerd?
 
@@ -319,7 +319,7 @@ Voor toepassingen die bij het compileren al zijn geïnstrumenteerd:
 
 Uw telemetrie weergeven:
 
-* [Verken de metrische gegevens](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te bewaken
+* [Verken de metrische gegevens](../platform/metrics-charts.md) om de prestaties en het gebruik te bewaken
 * [Doorzoek gebeurtenissen en logboeken][diagnostic] om problemen te analyseren
 * [Gebruik analyses](../log-query/log-query-overview.md) voor meer geavanceerde query's
 
@@ -331,11 +331,12 @@ Meer telemetrie toevoegen:
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
+[api]: ./api-custom-events-metrics.md
 [availability]: monitor-web-app-availability.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
-[usage]: ../../azure-monitor/app/javascript.md
+[roles]: ./resources-roles-access-control.md
+[usage]: ./javascript.md
+

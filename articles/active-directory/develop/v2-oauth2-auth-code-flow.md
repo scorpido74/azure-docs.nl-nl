@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0470ab635f34291b4c92259e556329d6b2f401c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026081"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311344"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -34,9 +34,11 @@ Op hoog niveau ziet de volledige verificatie stroom voor een toepassing er ongev
 
 ![OAuth-verificatie code stroom](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="setup-required-for-single-page-apps"></a>Installatie vereist voor apps met één pagina
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Omleidings-URI-installatie vereist voor apps met één pagina
 
-De autorisatie code stroom voor toepassingen met één pagina vereist enkele aanvullende instellingen.  Wanneer u [uw toepassing maakt](howto-create-service-principal-portal.md), moet u de omleidings-URI voor uw app markeren als `spa` omleidings-URI. Dit zorgt ervoor dat de aanmeldings server CORS (cross-Origin Resource Sharing) voor uw app toestaat.  Dit is vereist voor het inwisselen van de code met behulp van XHR.
+De autorisatie code stroom voor toepassingen met één pagina vereist enkele aanvullende instellingen.  Volg de instructies voor [het maken van uw toepassing met één pagina](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) om de omleidings-URI correct te markeren als ingeschakeld voor CORS. Als u een bestaande omleidings-URI wilt bijwerken om CORS in te scha kelen, opent u de manifest editor en stelt `type` u het veld voor de omleidings-URI `spa` in in de `replyUrlsWithType` sectie. U kunt ook klikken op de omleidings-URI in het gedeelte Web van het tabblad Verificatie en de Uri's selecteren waarnaar u wilt migreren met behulp van de autorisatie code stroom.
+
+Het `spa` omleidings type is achterwaarts compatibel met de impliciete stroom. Apps die momenteel gebruikmaken van de impliciete stroom om tokens op te halen `spa` , kunnen zonder problemen naar het omleidings-URI-type worden verplaatst en blijven de impliciete stroom gebruiken.
 
 Als u probeert de autorisatie code stroom te gebruiken en deze fout te zien:
 
@@ -229,7 +231,7 @@ Fout reacties zien er als volgt uit:
 | `temporarily_unavailable` | De server is tijdelijk niet actief om de aanvraag af te handelen. | Voer de aanvraag opnieuw uit. De client toepassing kan bijvoorbeeld verklaren dat de reactie van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
 
 > [!NOTE]
-> Apps met één pagina ontvangen mogelijk een `invalid_request` fout melding die aangeeft dat het cross-Origin-token alleen is toegestaan voor de client-type toepassing met één pagina.  Dit geeft aan dat de omleidings-URI die wordt gebruikt om het token aan te vragen, niet is gemarkeerd als `spa` omleidings-URI.  Bekijk de [stappen](#setup-required-for-single-page-apps) voor het registreren van de toepassing voor informatie over het inschakelen van deze stroom.
+> Apps met één pagina ontvangen mogelijk een `invalid_request` fout melding die aangeeft dat het cross-Origin-token alleen is toegestaan voor de client-type toepassing met één pagina.  Dit geeft aan dat de omleidings-URI die wordt gebruikt om het token aan te vragen, niet is gemarkeerd als `spa` omleidings-URI.  Bekijk de [stappen](#redirect-uri-setup-required-for-single-page-apps) voor het registreren van de toepassing voor informatie over het inschakelen van deze stroom.
 
 ## <a name="use-the-access-token"></a>Het toegangs token gebruiken
 

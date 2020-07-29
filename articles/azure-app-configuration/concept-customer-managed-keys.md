@@ -6,18 +6,15 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023564"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371852"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Door de klant beheerde sleutels gebruiken voor het versleutelen van uw app-configuratie gegevens
 Met Azure-app configuratie wordt [gevoelige informatie op rest versleuteld](../security/fundamentals/encryption-atrest.md). Het gebruik van door de klant beheerde sleutels biedt verbeterde gegevens beveiliging door u de mogelijkheid te bieden om uw versleutelings sleutels te beheren.  Wanneer beheerde sleutel versleuteling wordt gebruikt, wordt alle gevoelige informatie in de app-configuratie versleuteld met een door de gebruiker verstrekte Azure Key Vault sleutel.  Dit biedt de mogelijkheid om de versleutelings sleutel op aanvraag te draaien.  Het biedt ook de mogelijkheid om de toegang tot gevoelige gegevens in de Azure-app configuratie in te trekken door de toegang tot de sleutel van het app-configuratie-exemplaar in te trekken.
-
-> [!NOTE]
-> Door de klant beheerde sleutels zijn nu algemeen beschikbaar in alle regio's *, met uitzonde ring* van Centraal-India. In de regio **Centraal-India** biedt Azure-app configuratie het gebruik van door de klant beheerde sleutels als een open bare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.
 
 ## <a name="overview"></a>Overzicht 
 Met Azure-app configuratie wordt gevoelige informatie op rest versleuteld met behulp van een 256-bits AES-versleutelings sleutel van micro soft. Elk app-configuratie-exemplaar heeft een eigen versleutelings sleutel die wordt beheerd door de service en die wordt gebruikt om gevoelige informatie te versleutelen. Gevoelige informatie bevat de waarden die worden gevonden in sleutel-waardeparen.  Wanneer door de klant beheerde sleutel mogelijkheid is ingeschakeld, gebruikt de app-configuratie een beheerde identiteit die is toegewezen aan het app-configuratie-exemplaar om te verifiëren met Azure Active Directory. De beheerde identiteit roept vervolgens Azure Key Vault en verloopt de versleutelings sleutel van het app-configuratie-exemplaar. De ingepakte versleutelings sleutel wordt vervolgens opgeslagen en de niet-gepakte versleutelings sleutel wordt gedurende één uur in de configuratie van de app opgeslagen. Met app-configuratie wordt de niet-ingepakte versie van de versleutelings sleutel van het app-configuratie-exemplaar per uur vernieuwd. Dit zorgt voor de beschik baarheid onder normale bedrijfs omstandigheden. 
@@ -49,7 +46,7 @@ Als u wilt beginnen, hebt u een correct geconfigureerd Azure-app-configuratie-ex
 - [Een Java-lente-app maken met Azure-app configuratie](quickstart-java-spring-app.md)
 
 >[!TIP]
-> De Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdracht regel instructies in dit artikel uit te voeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de .NET Core SDK. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud Shell](https://shell.azure.com) vanuit shell.azure.com.  Meer informatie over Azure Cloud Shell vindt u door [onze documentatie te lezen](../cloud-shell/overview.md)
+> Azure Cloud Shell is een gratis interactieve shell waarmee u de opdrachtregelinstructies in dit artikel kunt uitvoeren.  Deze heeft algemene Azure-hulpprogramma's die vooraf zijn geïnstalleerd, met inbegrip van de .NET Core SDK. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud Shell](https://shell.azure.com) vanuit shell.azure.com.  Meer informatie over Azure Cloud Shell vindt u door [onze documentatie te lezen](../cloud-shell/overview.md)
 
 ### <a name="create-and-configure-an-azure-key-vault"></a>Een Azure Key Vault maken en configureren
 1. Maak een Azure Key Vault met behulp van de Azure CLI.  Houd er rekening mee dat zowel als door de `vault-name` `resource-group-name` gebruiker gegeven zijn en uniek moeten zijn.  We gebruiken `contoso-vault` en `contoso-resource-group` in deze voor beelden.
@@ -81,7 +78,7 @@ Als u wilt beginnen, hebt u een correct geconfigureerd Azure-app-configuratie-ex
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    De uitvoer van deze opdracht bevat de principal-ID ("principalId") en de Tenant-ID ("tenandId") van de aan het systeem toegewezen identiteit.  Dit wordt gebruikt om de identiteit toegang tot de beheerde sleutel te verlenen.
+    De uitvoer van deze opdracht bevat de principal-ID ("principalId") en de Tenant-ID ("tenandId") van de aan het systeem toegewezen identiteit.  Deze Id's worden gebruikt voor het verlenen van toegang tot de identiteit van de beheerde sleutel.
 
     ```json
     {

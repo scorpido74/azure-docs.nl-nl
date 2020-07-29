@@ -11,11 +11,14 @@ ms.author: wesmc
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: Operations'
+ms.openlocfilehash: bfd4f783c250a7bf0ec28cff903e4c59d8570d89
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307519"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>De juiste IoT Hub-laag kiezen voor uw oplossing
 
@@ -45,11 +48,11 @@ Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/i
 | [HTTP-, AMQP-en MQTT-protocollen](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ja | Ja |
 | [Controle en diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
-| [Cloud-naar-apparaat-berichten](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Apparaat apparaatdubbels](iot-hub-devguide-device-twins.md), [module apparaatdubbels](iot-hub-devguide-module-twins.md)en [Apparaatbeheer](iot-hub-device-management-overview.md) |   | Yes |
-| [Apparaatversleuteling (preview-versie)](iot-hub-device-streams-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
-| [Preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
+| [Cloud-naar-apparaat-berichten](iot-hub-devguide-c2d-guidance.md) |   | Ja |
+| [Apparaat apparaatdubbels](iot-hub-devguide-device-twins.md), [module apparaatdubbels](iot-hub-devguide-module-twins.md)en [Apparaatbeheer](iot-hub-device-management-overview.md) |   | Ja |
+| [Apparaatversleuteling (preview-versie)](iot-hub-device-streams-overview.md) |   | Ja |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ja |
+| [Preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Ja |
 
 IoT Hub biedt ook een gratis laag die bedoeld is voor test-en evaluatie doeleinden. Het bevat alle mogelijkheden van de laag standaard, maar beperkte bericht limieten. U kunt geen upgrade uitvoeren van de gratis laag naar Basic of Standard.
 
@@ -88,23 +91,23 @@ Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard va
 | [Gebeurtenis van apparaat verzenden](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ja | Ja |
 | Module gebeurtenis verzenden | Alleen AMQP en MQTT | Alleen AMQP en MQTT |
 | [Upload status van update bestand](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
-| [Bewerking bulksgewijs apparaat](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Ja, met uitzonde ring van IoT Edge mogelijkheden | Yes |
+| [Bewerking bulksgewijs apparaat](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Ja, met uitzonde ring van IoT Edge mogelijkheden | Ja |
 | [Export taak importeren annuleren](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Ja | Ja |
 | [Import export taak maken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | Ja | Ja |
 | [Import export taak ophalen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | Ja | Ja |
 | [Import-export taken ophalen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Ja | Ja |
-| [Opdracht wachtrij leegmaken](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Yes |
-| [Apparaat dubbele ophalen](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Yes |
-| [Module dubbele ophalen](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Yes |
-| [Methode aanroepen van apparaat](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Yes |
-| [Dubbele update van apparaat](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Yes |
-| [Module bijwerken dubbele](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Yes |
-| [Melding van afhankelijkheid van apparaat afbreken](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
-| [Bevestiging van afhankelijk apparaat volt ooien](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
-| [Taak annuleren](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Yes |
-| [Taak maken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Yes |
-| [Taak ophalen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Yes |
-| [Query taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Yes |
+| [Opdracht wachtrij leegmaken](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Ja |
+| [Apparaat dubbele ophalen](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Ja |
+| [Module dubbele ophalen](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Ja |
+| [Methode aanroepen van apparaat](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Ja |
+| [Dubbele update van apparaat](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Ja |
+| [Module bijwerken dubbele](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Ja |
+| [Melding van afhankelijkheid van apparaat afbreken](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Ja |
+| [Bevestiging van afhankelijk apparaat volt ooien](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Ja |
+| [Taak annuleren](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Ja |
+| [Taak maken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Ja |
+| [Taak ophalen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Ja |
+| [Query taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Ja |
 
 ## <a name="message-throughput"></a>Bericht doorvoer
 

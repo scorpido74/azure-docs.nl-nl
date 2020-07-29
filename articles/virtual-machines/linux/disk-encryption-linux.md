@@ -4,16 +4,16 @@ description: In dit artikel vindt u instructies voor het inschakelen van Microso
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080281"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372651"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor virtuele Linux-machines
 
@@ -409,7 +409,7 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 - Kernel-crash dump (kdump).
 - Oracle-ACFS (ASM-cluster bestands systeem).
 - Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
-- Vm's uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md)).
+- De NVMe-schijven van virtuele machines uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md)).
 - Een virtuele machine met ' geneste koppel punten '; dat wil zeggen, meerdere koppel punten in één pad (zoals "/1stmountpoint/data/2stmountpoint").
 - Een virtuele machine met een gegevens station die boven op een map van het besturings systeem is geplaatst.
 - Vm's uit de M-serie met Write Accelerator-schijven.
