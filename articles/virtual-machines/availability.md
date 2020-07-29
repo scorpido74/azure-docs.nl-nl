@@ -4,14 +4,14 @@ description: Meer informatie over de beschik baarheid van functies voor het uitv
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 39674e17c16870ba170242ee17cdc17fde4e5798
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d26e1edb53f963d591b1ee1fba58b87fd454e898
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531147"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288574"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Beschikbaarheidsopties voor virtuele machines in Azure
 
@@ -25,13 +25,13 @@ Azure biedt een aantal opties die voor hoge Beschik baarheid kunnen worden gerea
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 
-[Beschikbaarheids zones](../availability-zones/az-overview.md) breiden het beheer niveau uit dat u nodig hebt om de beschik baarheid van de toepassingen en gegevens op uw vm's te behouden. Een beschikbaarheids zone is een fysiek gescheiden zone binnen een Azure-regio. Er zijn drie Beschikbaarheidszones per ondersteunde Azure-regio. 
+[Beschikbaarheidszones](../availability-zones/az-overview.md) vergroten de controle die u nodig hebt om de beschikbaarheid van de toepassingen en gegevens op uw VM's te behouden. Een beschikbaarheids zone is een fysiek gescheiden zone binnen een Azure-regio. Er zijn drie Beschikbaarheidszones per ondersteunde Azure-regio. 
 
 Elke beschikbaarheidszone heeft een afzonderlijke voedingsbron en koeling, en een afzonderlijk netwerk. Door uw oplossingen te ontwikkelen voor het gebruik van gerepliceerde Vm's in zones, kunt u uw apps en gegevens beveiligen tegen verlies van een Data Center. Als er een zone wordt aangetast, zijn de gerepliceerde apps en gegevens direct beschikbaar in een andere zone. 
 
 ![Beschikbaarheidszones](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
-Meer informatie over het implementeren van een virtuele [Windows](./windows/create-powershell-availability-zone.md) -of [Linux](./linux/create-cli-availability-zone.md) -machine in een beschikbaarheids zone.
+Meer informatie over het implementeren van een VM voor [Windows](./windows/create-powershell-availability-zone.md) of [Linux](./linux/create-cli-availability-zone.md) in een beschikbaarheidszone.
 
 
 ### <a name="fault-domains"></a>Foutdomeinen

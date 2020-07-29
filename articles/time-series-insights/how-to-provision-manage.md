@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d067d4a7fff385deea946ffa5475e1eb83548a50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e71c426fee62187bb680c7b8bd1af92d87e85274
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288807"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 inrichten en beheren
 
@@ -93,7 +93,7 @@ U kunt uw Azure Time Series Insights Gen2-omgeving beheren door gebruik te maken
 
 * De Blade **configureren** van de Azure portal wordt verwijderd omdat schaal eenheden niet van toepassing zijn op Azure time series Insights Gen2-omgevingen. U kunt echter **opslag configuratie** gebruiken om de zojuist geïntroduceerde warme Store te configureren.
 
-* De Blade **referentie gegevens** van de Azure portal wordt verwijderd in azure time series Insights Gen2 omdat referentie gegevens concept is vervangen door [TSM (Time Series model)](./time-series-insights-update-how-to-tsm.md).
+* De Blade **referentie gegevens** van de Azure portal wordt verwijderd in azure time series Insights Gen2 omdat referentie gegevens concept is vervangen door [TSM (Time Series model)](/azure/time-series-insights/concepts-model-overview).
 
 [![Azure Time Series Insights Gen2-omgeving in de Azure Portal](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 

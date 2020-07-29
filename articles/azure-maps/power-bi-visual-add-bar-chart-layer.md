@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261758"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288169"
 ---
-# <a name="add-a-bar-chart-layer"></a>Een laag met een staaf diagram toevoegen
+# <a name="add-a-bar-chart-layer"></a>Een laag met een staafdiagram toevoegen
 
-De **laag staaf diagram** is handig voor het nemen van gegevens aan de volgende dimensie door visualisatie van locatie gegevens als 3D-balken of cilinders op de kaart toe te staan. Net als bij de tekenlaag kan het staaf diagram later eenvoudig twee metrieken visualiseren met behulp van kleur en relatieve hoogte. Een meting moet worden toegevoegd aan de Bucket **grootte** van het deel venster **velden** , zodat de balken een hoogte hebben. Als er geen meting is gegeven, worden balken zonder hoogte als platte kwadraten of cirkels afhankelijk van de optie voor de **balk vorm** .
+De **laag staaf diagram** is handig voor het nemen van gegevens aan de volgende dimensie door visualisatie van locatie gegevens als 3D-balken of cilinders op de kaart toe te staan. Net als bij de tekenlaag kan het staaf diagram later eenvoudig twee metrieken visualiseren met behulp van kleur en relatieve hoogte. Een meting moet worden toegevoegd aan de Bucket **grootte** van het deel venster **velden** , zodat de balken een hoogte hebben. Als er geen meting wordt gegeven, worden balken zonder hoogte weer gegeven als platte vier kanten of cirkels, afhankelijk van de optie voor de **balk vorm** .
 
 > [!div class="mx-imgBorder"]
 > ![Een kaart waarin punt gegevens worden weer gegeven met de laag staaf diagram](media/power-bi-visual/bar-chart-layer-styled.png)
@@ -66,7 +66,7 @@ Meer context toevoegen aan de kaart:
 > [Een titellaag toevoegen](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Realtime verkeer weer geven](power-bi-visual-show-real-time-traffic.md)
+> [Realtime verkeer weergeven](power-bi-visual-show-real-time-traffic.md)
 
 De Visual aanpassen:
 

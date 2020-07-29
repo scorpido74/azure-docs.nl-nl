@@ -3,16 +3,16 @@ title: Inleiding tot FreeBSD op Azure
 description: Meer informatie over het gebruik van virtuele FreeBSD-machines in azure
 author: thomas1206
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: c7ca47e0fbb9acbac67f2cc9af6e1e7555690046
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2959904029643e5345590bd49f81b231c49771d4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085602"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286305"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Inleiding tot FreeBSD op Azure
 Dit artikel bevat een overzicht van het uitvoeren van een FreeBSD-virtuele machine in Azure.

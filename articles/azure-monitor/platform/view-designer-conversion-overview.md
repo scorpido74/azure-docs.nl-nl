@@ -6,14 +6,25 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 977dcc71fd25b19e09cfa9126bf01d380f581aca
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658690"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289114"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Overgangs gids voor Azure Monitor Designer naar werkmappen
 [View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Ze worden gefaseerd en vervangen door werkmappen die extra functionaliteit bieden. Dit artikel bevat een overzicht van het proces voor het converteren van uw bestaande weer gaven naar werkmappen.
+
+## <a name="retirement-schedule"></a>Pensioen planning
+
+| Wijziging | Wat betekent dit | Verwachte datum |
+|:---|:---|:---|
+| Het maken van nieuwe weer gaven die zijn gemaakt via de weer gave Designer uitschakelen. | U kunt geen nieuwe aangepaste weer gaven meer maken en opslaan in de Azure Portal.| November 2020 |
+| Schakel de bewerkings functie voor bestaande weer gaven met de Designer weer geven uit. | U kunt de bestaande aangepaste weer gaven niet meer wijzigen en wijzigingen opslaan. | November 2020 |
+| De implementatie van weer gaven voor Log Analytics werk ruimten uitschakelen | U kunt geen aangepaste weer gaven meer implementeren met behulp van ARM om werk ruimten te Log Analytics. | 2021 maart |
+| View Designer is niet meer beschikbaar in de Azure Portal | De portal-ervaring biedt geen ondersteuning meer voor de weer gave Designer. | Juni 2021 |
+| Aangepaste weer gaven die zijn verwijderd uit de samen vatting van de werk ruimte | U hebt geen toegang meer tot uw aangepaste weergave gegevens. | December 2021 |
 
 ## <a name="workbooks-overview"></a>Overzicht van werkmappen
 [Werkmappen](../insights/vminsights-workbooks.md) combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Team leden met dezelfde toegang tot Azure-resources kunnen ook werkmappen bewerken.

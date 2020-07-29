@@ -3,12 +3,12 @@ title: Tags toevoegen aan een lab in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het toevoegen van een tag aan een lab in Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bf835cee705012fd175a3132edde1d241311c576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483003"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287577"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Tags toevoegen aan een lab in Azure DevTest Labs
 
@@ -29,7 +29,7 @@ Elke tag bestaat uit een combi natie van een **naam** / **waarde** . U kunt bijv
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Stappen voor het beheren van tags in een bestaand Lab
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer indien nodig **alle services**en selecteer vervolgens **DevTest Labs** in de lijst. Uw Lab wordt mogelijk al weer gegeven op het dash board onder **alle resources**.
 1. Selecteer in de lijst met Labs het lab waarin u labels wilt toevoegen of beheren.
 1. Selecteer in het gedeelte **overzicht** van het lab de optie **configuratie en beleid**.
@@ -52,7 +52,7 @@ Voor tags gelden de volgende beperkingen:
 * De tagnaam is beperkt tot 512 tekens en de tagwaarde is beperkt tot 256 tekens. Voor opslagaccounts is de tagnaam beperkt tot 128 tekens en de tagwaarde beperkt tot 256 tekens.
 * Tags die zijn toegepast op de resourcegroep, worden niet overgenomen door de resources in deze resourcegroep.
 
-[Tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) , biedt meer informatie over het gebruik van tags in azure, met inbegrip van het beheren van tags met Power shell of Azure cli.
+[Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md) , biedt meer informatie over het gebruik van tags in azure, met inbegrip van het beheren van tags met Power shell of Azure cli.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

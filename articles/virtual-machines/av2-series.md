@@ -4,15 +4,15 @@ description: Specificaties voor de virtuele machines uit de Av2-serie.
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1b5b77bb9bdf679fe0fd8bf73966dd45acc80155
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085772"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288582"
 ---
 # <a name="av2-series"></a>Av2-serie
 
@@ -28,7 +28,6 @@ Livemigratie: ondersteund
 
 Updates voor geheugen behoud: ondersteund
 
-Beschik baarheid van prijs calculator en regio: <a href="https://azure.microsoft.com/en-us/pricing/calculator/">prijs calculator</a>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Maximum aantal gegevens schijven/door Voer: IOPS | Max. aantal NIC's | Verwachte netwerk bandbreedte (Mbps)
 |---|---|---|---|---|---|---|---|
@@ -44,16 +43,16 @@ Beschik baarheid van prijs calculator en regio: <a href="https://azure.microsoft
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
-- [Geoptimaliseerd voor geheugen](sizes-memory.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Algemeen doel](sizes-general.md)
+- [Geoptimaliseerd geheugen](sizes-memory.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)
 
-Beschik baarheid van prijs calculator en regio: <a href="https://azure.microsoft.com/en-us/pricing/calculator/">prijs calculator</a>
+Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
 
-Meer informatie over schijven typen: <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/">schijf typen</a>
+Meer informatie over schijven typen: [schijf typen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Volgende stappen
 

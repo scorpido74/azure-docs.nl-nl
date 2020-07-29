@@ -3,12 +3,12 @@ title: Azure Event Hubs integreren met de persoonlijke koppelings service van Az
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512249"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287960"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure-Event Hubs integreren met persoonlijke Azure-koppeling
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
@@ -26,9 +26,7 @@ Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) v
 > Vertrouwde micro soft-services worden niet ondersteund bij het gebruik van virtuele netwerken.
 >
 > Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
-> - Azure Monitor (diagnostische instelling)
 > - Azure Stream Analytics
-> - Integratie met Azure Event Grid
 > - Azure-IoT Hub routes
 > - Azure IoT-Device Explorer
 >

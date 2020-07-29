@@ -1,25 +1,19 @@
 ---
 title: Trend Micro diepe beveiliging op een virtuele machine installeren
 description: In dit artikel wordt beschreven hoe u Trend Micro beveiliging kunt installeren en configureren op een virtuele machine die is gemaakt met het klassieke implementatie model in Azure.
-services: virtual-machines-windows
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082675"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288512"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro diepe Security als een service op een Windows-VM installeren en configureren
 
@@ -88,7 +82,7 @@ Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnsta
 * Een voor beeld van een [Windows Power shell-script](https://go.microsoft.com/fwlink/?LinkId=404100) voor het configureren van de virtuele machine
 * [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voor beeld
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 [Aanmelden bij een virtuele machine met Windows Server]
 
 [Azure VM-extensies en-functies]
@@ -100,4 +94,4 @@ Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnsta
 
 <!-- Link references -->
 [Aanmelden bij een virtuele machine met Windows Server]:../windows/classic/connect-logon.md
-[Azure VM-extensies en-functies]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure VM-extensies en-functies]: features-windows.md

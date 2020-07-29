@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 8c06365531a4977b6b792e136e515b5b56c2c930
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288854"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Een evaluatie van een Azure VMware-oplossing (AVS) maken
 
@@ -31,10 +31,10 @@ In dit artikel wordt beschreven hoe u een evaluatie van een Azure VMware-oplossi
 
 Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server-evaluatie.
 
-**Beoordelings type** | **Details**
+**Evaluatietype** | **Details**
 --- | --- 
-**Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type. [Meer informatie](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Evaluaties om uw on-premises servers te migreren naar virtuele Azure-machine. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type. [Meer informatie](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Evaluaties om uw on-premises servers te migreren naar [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [VMware-VM’s](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware Solution (AVS) met dit evaluatietype. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
 > De evaluatie versie van Azure VMware Solution (AVS) is momenteel in Preview en kan alleen worden gemaakt voor virtuele VMware-machines.
@@ -60,17 +60,17 @@ Voer de evaluatie van de Azure VMware-oplossing (AVS) als volgt uit:
 
 3. In **servers beoordelen**selecteert u het beoordelings type als ' Azure VMware-oplossing (AVS) ', selecteert u de detectie bron en geeft u de naam van de evaluatie op.
 
-    ![Basis beginselen van de beoordeling](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    ![Basisprincipes evaluatie](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 
 4. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.
 
     ![Eigenschappen van AVS-evaluatie](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. Klik op **volgende** om **machines te selecteren die u wilt beoordelen**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
+5. Klik op **volgende** om **machines te selecteren om te evalueren**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
 
 6. Selecteer in **Machines toevoegen aan de groep** de VM's die aan de groep moeten worden toegevoegd.
 
-7. Klik op **volgende** om te beoordelen **+ beoordeling maken** om de details van de evaluatie te bekijken.
+7. Klik op **volgende** en **Controleren en evaluatie maken** om de details van de evaluatie te controleren.
 
 8. Klik op **Evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
 
@@ -111,7 +111,7 @@ Een evaluatie van de Azure VMware-oplossing (AVS) beschrijft:
 
 3. Bekijk het voorgestelde hulp programma:
     - **VMware HCX of ENTER prise**: voor VMware-machines is de VMware Hybrid Cloud extension (HCX)-oplossing het aanbevolen migratie programma voor het migreren van uw on-premises werk belasting naar uw Azure VMware-oplossing (AVS) Private Cloud. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
-    - **Onbekend**: voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie onbekend. Voor VMware-machines wordt u aangeraden de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. 
+    - **Onbekend**: Voor machines die zijn geïmporteerd via een CSV-bestand, is het standaardhulpprogramma voor migratie onbekend. Voor VMware-machines wordt u aangeraden de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken. 
 
 4. Klik op een **AVS-gereedheids** status. U kunt details van de VM-gereedheid weergeven en inzoomen op de details van de VM, inclusief berekenings-, opslag- en netwerkinstellingen.
 

@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: keferna
+author: keferna
+ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287946"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
@@ -68,7 +70,7 @@ U kunt een geldige naam voor de para meters gebruiken. test drive herkent parame
 
 ### <a name="accepted-parameter-metadata-types"></a>Geaccepteerde meta gegevens typen
 
-| Meta gegevens type   | Parameter type  | Description     | Voorbeeld waarde    |
+| Meta gegevens type   | Parameter type  | Beschrijving     | Voorbeeld waarde    |
 |---|---|---|---|
 | **baseuri**     | tekenreeks          | Basis-URI van uw implementatie pakket| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **gebruikers**    | tekenreeks          | Nieuwe wille keurige gebruikers naam.| admin68876      |
@@ -235,7 +237,7 @@ En gebruik deze locatie voor elke resource voor een specifiek Lab-exemplaar:
 
 Zorg ervoor dat uw abonnement alle gewenste resources in elk van de geselecteerde regio's mag implementeren. Zorg er ook voor dat uw installatie kopieën voor virtuele machines beschikbaar zijn in alle regio's die u gaat inschakelen. anders werkt uw implementatie sjabloon niet voor bepaalde regio's.
 
-### <a name="outputs"></a>Uitvoerwaarden
+### <a name="outputs"></a>Uitvoer
 
 Normaal gesp roken kunt u met Resource Manager-sjablonen implementeren zonder dat er uitvoer wordt geproduceerd. Dit komt doordat u alle waarden kent die u gebruikt om sjabloon parameters te vullen en u kunt altijd hand matig eigenschappen van een resource controleren.
 

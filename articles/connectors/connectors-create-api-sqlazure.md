@@ -7,26 +7,26 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255497"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288183"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
-In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen of werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De SQL Server-connector werkt zowel voor [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md) en [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen of werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De SQL Server-connector werkt zowel voor [SQL Server](/sql/sql-server/sql-server-technical-documentation) als [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md) en [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
 
 U kunt logische apps maken die worden uitgevoerd wanneer deze worden geactiveerd door gebeurtenissen in uw SQL database of in andere systemen, zoals Dynamics CRM Online. Uw Logic apps kunnen ook gegevens ophalen, invoegen en verwijderen, samen met het uitvoeren van SQL-query's en opgeslagen procedures. U kunt bijvoorbeeld een logische app maken die automatisch controleert op nieuwe records in Dynamics CRM Online, items toevoegt aan uw SQL database voor nieuwe records en vervolgens e-mail waarschuwingen over de toegevoegde items verzendt.
 
-Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de pagina met Naslag informatie over [SQL Server-connector](https://docs.microsoft.com/connectors/sql/)voor connector-specifieke technische gegevens, beperkingen en bekende problemen.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de pagina met Naslag informatie over [SQL Server-connector](/connectors/sql/)voor connector-specifieke technische gegevens, beperkingen en bekende problemen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database), [Azure SQL database](../azure-sql/database/single-database-create-quickstart.md)of [Azure SQL Managed instance](../azure-sql/managed-instance/instance-create-quickstart.md).
+* Een [SQL Server-Data Base](/sql/relational-databases/databases/create-a-database), [Azure SQL database](../azure-sql/database/single-database-create-quickstart.md)of [Azure SQL Managed instance](../azure-sql/managed-instance/instance-create-quickstart.md).
 
   Uw tabellen moeten gegevens bevatten zodat uw logische app resultaten kan retour neren wanneer bewerkingen worden aangeroepen. Als u Azure SQL Database gebruikt, kunt u voorbeeld databases gebruiken die zijn opgenomen.
 
@@ -71,10 +71,10 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
 1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld in uw data base in Azure SQL database of Azure SQL Managed instance:
 
-   | Verificatie | Description |
+   | Verificatie | Beschrijving |
    |----------------|-------------|
    | [**Geïntegreerd met Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige identiteit in Azure Active Directory (Azure AD) die toegang heeft tot uw data base. <p>Raadpleeg de volgende onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-geïntegreerde Azure AD-verificatie](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw data base. <p>Raadpleeg de volgende onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server-verificatie**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw data base. <p>Raadpleeg de volgende onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Dit voor beeld gaat verder met **Azure AD Integrated**:
@@ -88,8 +88,8 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Databasenaam** | Yes | De naam voor uw SQL database, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
-   | **Tabelnaam** | Yes | De tabel die u wilt gebruiken, bijvoorbeeld`SalesLT.Customer` |
+   | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
+   | **Tabel naam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld`SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,10 +115,10 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
 1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld op uw SQL Server:
 
-   | Verificatie | Description |
+   | Verificatie | Beschrijving |
    |----------------|-------------|
-   | [**Windows-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Ondersteunt alleen de niet-ISE SQL Server-connector, waarvoor een gegevens gateway resource is vereist die eerder in azure voor uw verbinding is gemaakt, ongeacht of u gebruikmaakt van multi tenant Azure of een ISE. <p><p>-Vereist een geldige Windows-gebruikers naam en-wacht woord om uw identiteit te bevestigen via uw Windows-account. <p>Zie [Windows-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) voor meer informatie. |
-   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw SQL Server. <p>Zie [SQL Server-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)voor meer informatie. |
+   | [**Windows-verificatie**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Ondersteunt alleen de niet-ISE SQL Server-connector, waarvoor een gegevens gateway resource is vereist die eerder in azure voor uw verbinding is gemaakt, ongeacht of u gebruikmaakt van multi tenant Azure of een ISE. <p><p>-Vereist een geldige Windows-gebruikers naam en-wacht woord om uw identiteit te bevestigen via uw Windows-account. <p>Zie [Windows-verificatie](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) voor meer informatie. |
+   | [**SQL Server-verificatie**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw SQL Server. <p>Zie [SQL Server-verificatie](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)voor meer informatie. |
    |||
 
    Dit voor beeld gaat door met **Windows-verificatie**:
@@ -129,12 +129,12 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **SQL Server-naam** | Yes | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL database naam** | Yes | De naam voor uw SQL Server-Data Base, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
-   | **Gebruikersnaam** | Yes | Uw gebruikers naam voor de SQL-Server en-data base |
-   | **Wachtwoord** | Yes | Uw wacht woord voor de SQL-Server en-data base |
+   | **SQL Server-naam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-databasenaam** | Ja | De naam voor uw SQL Server-Data Base, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
+   | **Gebruikersnaam** | Ja | Uw gebruikers naam voor de SQL-Server en-data base |
+   | **Wachtwoord** | Ja | Uw wacht woord voor de SQL-Server en-data base |
    | **Abonnement** |  Ja, voor Windows-verificatie | Het Azure-abonnement voor de gegevens gateway resource die u eerder hebt gemaakt in azure |
-   | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)correct hebt ingesteld. |
+   | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](../logic-apps/logic-apps-gateway-connection.md)correct hebt ingesteld. |
    |||
 
    > [!TIP]
@@ -171,7 +171,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    Deze trigger retourneert slechts één rij uit de geselecteerde tabel en niets anders. Als u andere taken wilt uitvoeren, kunt u door gaan door een [SQL-connector actie](#add-sql-action) toe te voegen of door een [andere actie](../connectors/apis-list.md) uit te voeren waarmee de volgende taak wordt uitgevoerd in de werk stroom van de logische app.
    
-   Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+   Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
 1. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
@@ -201,7 +201,7 @@ In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../co
 
    ![Tabel naam selecteren en rij-ID opgeven](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
-   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Om de gegevens in deze rij weer te geven, kunt u dus ook andere acties toevoegen die een bestand maken dat de velden uit de geretourneerde rij bevat, en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Om de gegevens in deze rij weer te geven, kunt u dus ook andere acties toevoegen die een bestand maken dat de velden uit de geretourneerde rij bevat, en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
 1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
@@ -217,13 +217,13 @@ Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resu
 
   Wanneer u meerdere rijen haalt of invoegt, kan de logische app deze rijen door lopen met behulp van een [*until-lus*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) binnen deze [grenzen](../logic-apps/logic-apps-limits-and-config.md). Als uw logische app echter moet werken met record sets zo groot is, bijvoorbeeld duizenden of miljoenen rijen, die u de kosten wilt beperken die voortvloeien uit aanroepen naar de data base.
 
-  Als u de resultaten op de gewenste manier wilt indelen, kunt u een [*opgeslagen procedure*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector.
+  Als u de resultaten op de gewenste manier wilt indelen, kunt u een [*opgeslagen procedure*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector.
 
   Raadpleeg de volgende artikelen voor meer informatie over de oplossing:
 
   * [SQL-paginering voor bulk overdracht van gegevens met Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-  * [SELECT-ORDER BY-component](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  * [SELECT-ORDER BY-component](/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ### <a name="handle-dynamic-bulk-data"></a>Dynamische bulk gegevens verwerken
 
@@ -250,8 +250,9 @@ Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connect
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)die wordt gegenereerd op basis van de Swagger-beschrijving voor technische informatie over de triggers, acties en limieten van deze connector.
+Zie de [referentie pagina van de connector](/connectors/sql/)die wordt gegenereerd op basis van de Swagger-beschrijving voor technische informatie over de triggers, acties en limieten van deze connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [connectors voor Azure Logic apps](../connectors/apis-list.md)
+

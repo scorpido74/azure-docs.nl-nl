@@ -4,15 +4,15 @@ description: AzCopy is een opdracht regel programma dat u kunt gebruiken om gege
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289238"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -32,7 +32,7 @@ Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map o
 - [Windows 64-bits](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32-bits](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
 - [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [MacOS-](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een tar-bestand (Linux). Raadpleeg de documentatie voor uw Linux-distributie om het tar-bestand in Linux te downloaden en te decomprimeren.
 
@@ -57,7 +57,7 @@ Zie [azcopy](storage-ref-azcopy.md) voor gedetailleerde Naslag informatie voor e
 > [!NOTE] 
 > Als eigenaar van uw Azure Storage-account, worden er niet automatisch machtigingen toegewezen voor toegang tot gegevens. Voordat u iets kunt doen met AzCopy, moet u bepalen hoe u autorisatie referenties voor de opslag service opgeeft. 
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Kiezen hoe u autorisatie referenties opgeeft
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Choose how you'll provide authorization credentials (Kiezen hoe u autorisatiereferenties opgeeft)
 
 U kunt autorisatie referenties opgeven door gebruik te maken van Azure Active Directory (AD) of door gebruik te maken van een Shared Access Signature SAS-token.
 
@@ -65,8 +65,8 @@ Gebruik deze tabel als richt lijn:
 
 | Opslagtype | Momenteel ondersteunde autorisatie methode |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
-|**Blob-opslag (hiërarchische naam ruimte)** | Azure AD & SAS |
+|**Blob Storage** | Azure AD en SAS |
+|**Blob-opslag (hiërarchische naam ruimte)** | Azure AD en SAS |
 |**File Storage** | Alleen SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
@@ -90,7 +90,7 @@ Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegeweze
 Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
 
 - Container (bestands systeem)
-- Opslagaccount
+- Storage-account
 - Resourcegroep
 - Abonnement
 
@@ -111,7 +111,7 @@ Nadat u hebt gecontroleerd of uw gebruikers-id het benodigde autorisatie niveau 
 azcopy login
 ```
 
-Als u deel uitmaakt van meer dan één organisatie, neemt u de Tenant-ID op van de organisatie waartoe het opslag account behoort.
+Als u een fout bericht ontvangt, kunt u de Tenant-ID van de organisatie waartoe het opslag account behoort, opnemen.
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>
@@ -119,11 +119,11 @@ azcopy login --tenant-id=<tenant-id>
 
 Vervang de `<tenant-id>` tijdelijke aanduiding door de Tenant-id van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal.
 
-Met deze opdracht worden een verificatie code en de URL van een website geretourneerd. Open de website, geef de code op en kies vervolgens de knop **volgende** .
+Met deze opdracht worden een verificatiecode en de URL van een website geretourneerd. Open de website, geef de code op en kies vervolgens de knop **Volgende**.
 
 ![Een container maken](media/storage-use-azcopy-v10/azcopy-login.png)
 
-Er wordt een aanmeldings venster weer gegeven. Meld u in dat venster aan bij uw Azure-account met behulp van de referenties van uw Azure-account. Nadat u zich hebt aangemeld, kunt u het browser venster sluiten en AzCopy gaan gebruiken.
+Er wordt een aanmeldingsvenster weergegeven. Meld u in dat venster aan bij uw Azure-account met behulp van de referenties van uw Azure-account. Nadat u bent aangemeld, kunt u het browservenster sluiten en AzCopy gebruiken.
 
 <a id="service-principal"></a>
 
@@ -253,11 +253,11 @@ Nadat u uw identiteit hebt geverifieerd of een SAS-token hebt aangeschaft, kunt 
 
 Zie een van deze artikelen om voorbeeld opdrachten te vinden.
 
-- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en blob-opslag](storage-use-azcopy-blobs.md)
 
-- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
 
-- [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
+- [Gegevens overdragen met AzCopy en Amazon S3-opslag](storage-use-azcopy-s3.md)
 
 - [Gegevens overdragen met AzCopy en Azure Stack Storage](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
@@ -314,7 +314,7 @@ Als u de vorige versie van AzCopy moet gebruiken, raadpleegt u een van de volgen
 
 - [AzCopy op Linux (V7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
-## <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
+## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Configureren, optimaliseren en problemen oplossen in AzCopy
 
 Zie [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 

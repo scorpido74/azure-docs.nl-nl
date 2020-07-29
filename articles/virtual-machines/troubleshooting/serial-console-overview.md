@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074327"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374062"
 ---
 # <a name="azure-serial-console"></a>Azure-seriële console
 
@@ -27,8 +27,7 @@ De seriële console in de Azure Portal biedt toegang tot een op tekst gebaseerde
 
 Seriële console werkt op dezelfde manier voor Vm's en exemplaren van virtuele-machine schaal sets. In dit document bevatten alle vermeldingen aan Vm's impliciet instanties voor schaal sets voor virtuele machines, tenzij anders vermeld.
 
-> [!NOTE]
-> De seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's en in de open bare preview-versie van Azure Government. Het is nog niet beschikbaar in de Azure China-Cloud.
+Seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's en in de open bare preview-versie van Azure Government. Het is nog niet beschikbaar in de Azure China-Cloud.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Vereisten voor toegang tot de Azure-seriële console
 U hebt het volgende nodig om toegang te krijgen tot de seriële console op uw VM of virtuele-machine Scale set-instantie:
@@ -36,9 +35,10 @@ U hebt het volgende nodig om toegang te krijgen tot de seriële console op uw VM
 - Diagnostische gegevens over opstarten moeten zijn ingeschakeld voor de virtuele machine
 - Er moet een gebruikers account zijn dat gebruikmaakt van wachtwoord verificatie in de virtuele machine. U kunt een gebruiker op basis van een wacht woord maken met de functie [wacht woord opnieuw instellen](../extensions/vmaccess.md#reset-password) van de extensie VM-toegang. Selecteer **wacht woord opnieuw instellen** in het gedeelte **ondersteuning en probleem oplossing** .
 - Het Azure-account voor toegang tot de seriële console moet de [rol Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) hebben voor zowel de VM als het opslag account voor [Diagnostische gegevens over opstarten](boot-diagnostics.md)
+- Klassieke implementaties worden niet ondersteund. De virtuele machine of het exemplaar van de VM-schaalset moet gebruikmaken van het Azure Resource Manager-implementatie model.
 
 > [!NOTE]
-> Klassieke implementaties worden niet ondersteund. De virtuele machine of het exemplaar van de VM-schaalset moet gebruikmaken van het Azure Resource Manager-implementatie model.
+> Seriële console is momenteel niet compatibel met een beheerd opslag account voor diagnostische gegevens over opstarten. Als u een seriële console wilt gebruiken, moet u ervoor zorgen dat u een aangepast opslag account gebruikt.
 
 ## <a name="get-started-with-the-serial-console"></a>Aan de slag met de seriële console
 De seriële console voor Vm's en schaal sets voor virtuele machines is alleen toegankelijk via de Azure Portal:

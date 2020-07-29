@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74014555"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375397"
 ---
 ## <a name="overview"></a>Overzicht
-Azure Storage biedt de mogelijkheid om moment opnamen van blobs te maken. Met moment opnamen wordt de BLOB-status op dat moment vastgelegd. In dit artikel wordt een scenario beschreven waarin u back-ups van virtuele-machine schijven kunt onderhouden met behulp van moment opnamen. U kunt deze methodologie gebruiken wanneer u ervoor kiest om Azure Backup en de herstel service niet te gebruiken en een aangepaste back-upstrategie voor de virtuele-machine schijven te maken.
+Azure Storage biedt de mogelijkheid om moment opnamen van blobs te maken. Met moment opnamen wordt de BLOB-status op dat moment vastgelegd. In dit artikel wordt een scenario beschreven waarin u back-ups van virtuele-machine schijven kunt onderhouden met behulp van moment opnamen. U kunt deze methodologie gebruiken wanneer u ervoor kiest om Azure Backup en de herstel service niet te gebruiken en een aangepaste back-upstrategie voor de virtuele-machine schijven te maken. Voor virtuele machines met bedrijfs-of essentiële werk belastingen is het raadzaam om [Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) te gebruiken als onderdeel van de back-upstrategie.  
 
 Virtuele-machine schijven van Azure worden opgeslagen als pagina-blobs in Azure Storage. Omdat we een back-upstrategie voor virtuele-machine schijven in dit artikel beschrijven, verwijzen we naar moment opnamen in de context van pagina-blobs. Zie [een moment opname van een BLOB maken](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)voor meer informatie over moment opnamen.
 
@@ -57,7 +57,8 @@ Als aan de volgende voor waarden wordt voldaan,
 * De blob is gemaakt op januari-1-2016 of hoger.
 * De blob is niet overschreven met [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) of de [BLOB kopiëren](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) tussen twee moment opnamen.
 
-**Opmerking**: deze functie is beschikbaar voor Premium-en Standard Azure-pagina-blobs.
+>[!NOTE]
+>Deze functie is beschikbaar voor Premium-en Standard Azure-pagina-blobs.
 
 Wanneer u een aangepaste back-upstrategie hebt die moment opnamen gebruikt, kan het kopiëren van de moment opnamen van het ene naar het andere opslag account traag zijn en veel opslag ruimte in beslag nemen. In plaats van de volledige moment opname te kopiëren naar een back-upopslag account, kunt u het verschil tussen opeenvolgende moment opnamen naar een BLOB van een back-uppagina schrijven. Op deze manier wordt de tijd die nodig is om te kopiëren en de ruimte voor het opslaan van back-ups aanzienlijk gereduceerd.
 

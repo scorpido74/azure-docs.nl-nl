@@ -3,12 +3,12 @@ title: Een lab configureren om Extern bureaublad-gateway te gebruiken in Azure D
 description: Informatie over het configureren van een lab in Azure DevTest Labs met een extern bureau blad-gateway om beveiligde toegang tot de Lab-Vm's te garanderen zonder dat de RDP-poort moet worden weer gegeven.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483836"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288073"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw Lab in Azure DevTest Labs configureren voor het gebruik van een extern bureau blad-gateway
 In Azure DevTest Labs kunt u een extern bureau blad-gateway voor uw lab configureren om te zorgen voor veilige toegang tot de virtuele lab-machines (Vm's) zonder dat de RDP-poort moet worden weer gegeven. Het Lab biedt een centrale locatie voor uw Lab-gebruikers om te zien en verbinding te maken met alle virtuele machines waartoe ze toegang hebben. De knop **verbinding maken** op de pagina **virtuele machine** maakt een apparaat-specifiek RDP-bestand dat u kunt openen om verbinding te maken met de computer. U kunt de RDP-verbinding verder aanpassen en beveiligen door uw Lab te koppelen aan een extern bureau blad-gateway. 
@@ -36,7 +36,7 @@ Als u wilt werken met de DevTest Labs-token verificatie, zijn er enkele configur
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Vereisten voor extern bureau blad-gateway computers
 - Er moet een TLS/SSL-certificaat op de gateway computer zijn geïnstalleerd om HTTPS-verkeer te kunnen verwerken. Het certificaat moet overeenkomen met de Fully Qualified Domain Name (FQDN) van de load balancer voor de gateway Farm of de FQDN van de computer zelf als er slechts één computer is. TLS/SSL-certificaten met Joker tekens werken niet.  
 - Een handtekening certificaat dat is geïnstalleerd op de gateway computer (s). Een handtekening certificaat maken met behulp van [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) script.
-- Installeer de module voor [Plug en authenticatie](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) die token verificatie ondersteunt voor de extern bureau blad-gateway. Een voor beeld van een dergelijke module is `RDGatewayFedAuth.msi` dat wordt geleverd met [installatie kopieën van System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807). Zie [System Center-documentatie](https://docs.microsoft.com/system-center/) en [prijs informatie](https://www.microsoft.com/cloud-platform/system-center-pricing)voor meer informatie over System Center.  
+- Installeer de module voor [Plug en authenticatie](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) die token verificatie ondersteunt voor de extern bureau blad-gateway. Een voor beeld van een dergelijke module is `RDGatewayFedAuth.msi` dat wordt geleverd met [installatie kopieën van System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807). Zie [System Center-documentatie](/system-center/) en [prijs informatie](https://www.microsoft.com/cloud-platform/system-center-pricing)voor meer informatie over System Center.  
 - De gateway server kan aanvragen afhandelen naar `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` .
 
     De gateway-hostnaam is de FQDN-naam van de load balancer van de gateway Farm of de FQDN van de computer zelf als er slechts één computer is. De `{lab-machine-name}` is de naam van de test machine waarmee u verbinding wilt maken en de `{port-number}` poort waarmee de verbinding tot stand wordt gebracht.  Deze poort is standaard 3389.  Als de virtuele machine echter de [gedeelde IP-](devtest-lab-shared-ip.md) functie in DevTest Labs gebruikt, is de poort anders.
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Configureer het lab voor het gebruik van de token verificatie met behulp van de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.
 1. Selecteer op de pagina Lab de optie **configuratie en beleid**.
@@ -84,7 +84,7 @@ Configureer het lab voor het gebruik van de token verificatie met behulp van de 
 
 Zie [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) voor een Power shell-voorbeeld script voor het instellen van de **Gateway-hostnaam** en de geheime instellingen van het **Gateway token** als u de test omgeving via Automation wilt configureren. De [github-opslag plaats van Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) biedt ook een Azure Resource Manager sjabloon waarmee een lab wordt gemaakt of bijgewerkt met de instellingen van de **Gateway-hostnaam** en het **Gateway token geheim** .
 
-## <a name="configure-network-security-group"></a>Netwerk beveiligings groep configureren
+## <a name="configure-network-security-group"></a>Netwerkbeveiligingsgroep configureren
 Om het lab verder te beveiligen, kan een netwerk beveiligings groep (NSG) worden toegevoegd aan het virtuele netwerk dat wordt gebruikt door de virtuele machines van het lab. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](../virtual-network/manage-network-security-group.md)voor instructies voor het instellen van een NSG.
 
 Hier volgt een voor beeld van een NSG die verkeer alleen toestaat die de gateway voor de eerste keer doorloopt. De bron in deze regel is het IP-adres van de afzonderlijke gateway computer of het IP-adres van de load balancer vóór de gateway-computers.
@@ -159,5 +159,3 @@ Volg deze stappen om een voor beeld van een oplossing voor de extern bureau blad
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg het volgende artikel voor meer informatie over Extern bureaublad-services: [extern bureaublad-services documentatie](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
-
-

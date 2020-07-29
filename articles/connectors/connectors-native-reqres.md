@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261382"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289430"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
@@ -24,7 +24,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 * Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
 
-De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](/azure/active-directory/develop/) (Azure AD OAuth) voor het machtigen van binnenkomende oproepen aan uw logische app. Zie voor meer informatie over het inschakelen van deze verificatie [beveiligde toegang en gegevens in azure Logic apps-Azure AD OAuth-verificatie inschakelen](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](../active-directory/develop/index.yml) (Azure AD OAuth) voor het machtigen van binnenkomende oproepen aan uw logische app. Zie voor meer informatie over het inschakelen van deze verificatie [beveiligde toegang en gegevens in azure Logic apps-Azure AD OAuth-verificatie inschakelen](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,7 +36,7 @@ De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-* Inkomende aanroepen bieden *alleen* ondersteuning voor Transport Layer Security (TLS) 1,2. Als u TLS-Handshake-fouten ontvangt, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Zie [het probleem met het TLS 1,0 oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie. Uitgaande oproepen ondersteunen TLS 1,0, 1,1 en 1,2, op basis van de mogelijkheid van het doel eindpunt.
+* Inkomende aanroepen bieden *alleen* ondersteuning voor Transport Layer Security (TLS) 1,2. Als u TLS-Handshake-fouten ontvangt, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Zie [het probleem met het TLS 1,0 oplossen](/security/solving-tls1-problem)voor meer informatie. Uitgaande oproepen ondersteunen TLS 1,0, 1,1 en 1,2, op basis van de mogelijkheid van het doel eindpunt.
 
 * Binnenkomende oproepen ondersteunen deze coderings suites:
 
@@ -62,7 +62,7 @@ De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](
 
 Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u de [aanvraag trigger type](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met https-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak in `http request` als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
 
@@ -276,7 +276,7 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
    | **Status code** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
-   | **Kopteksten** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
+   | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
    | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
    |||||
 
@@ -287,3 +287,4 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Connectors voor Logic Apps](../connectors/apis-list.md)
+

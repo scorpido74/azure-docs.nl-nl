@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194966"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288110"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Beleid voor gegevens beveiliging en privacy voor Google connectors in Azure Logic Apps
 
-Vanaf **1 mei 2020**kunnen wijzigingen worden aangebracht door het [beleid voor gegevens beveiliging en privacy](https://www.blog.google/technology/safety-security/project-strobe/) van Google, wat van invloed is op uw logische app-werk stromen die gebruikmaken van de [Gmail-connector](https://docs.microsoft.com/connectors/gmail/). Als uw Logic apps de Gmail-connector gebruiken met een Gmail-consument account (e-mail adres dat eindigt op @gmail.com of @googlemail.com ), kunnen uw Logic apps alleen specifieke [door Google goedgekeurde triggers, acties en connectors](#approved-connectors)gebruiken.
+Vanaf **1 mei 2020**kunnen wijzigingen worden aangebracht door het [beleid voor gegevens beveiliging en privacy](https://www.blog.google/technology/safety-security/project-strobe/) van Google, wat van invloed is op uw logische app-werk stromen die gebruikmaken van de [Gmail-connector](/connectors/gmail/). Als uw Logic apps de Gmail-connector gebruiken met een Gmail-consument account (e-mail adres dat eindigt op @gmail.com of @googlemail.com ), kunnen uw Logic apps alleen specifieke [door Google goedgekeurde triggers, acties en connectors](#approved-connectors)gebruiken.
 
 > [!NOTE]
 > Als uw Logic apps de Gmail-connector gebruiken met een G-Suite Business-account (e-mail adres met een aangepast domein), heeft dit geen invloed op uw Logic apps en gelden er geen beperkingen voor het gebruik van de Gmail-connector.
@@ -62,7 +62,7 @@ Hier volgen enkele voor beelden van het gebruik van de Gmail-connector met ingeb
 
   ![Niet-compatibele logische app-voor beeld 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-Raadpleeg de [technische documentatie van de Gmail-connector](https://docs.microsoft.com/connectors/gmail/)voor de meest recente informatie.
+Raadpleeg de [technische documentatie van de Gmail-connector](/connectors/gmail/)voor de meest recente informatie.
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ Als u de Gmail-connector moet gebruiken met een Gmail-Consumer-account en Google
 
 1. Gebruik in uw Gmail-connector de client-ID en client Secret-waarden uit uw Google client-app.
 
-Zie de [technische naslag documentatie van de Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)voor meer informatie.
+Zie de [technische naslag documentatie van de Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application)voor meer informatie.
 
 ### <a name="create-google-client-app"></a>Google client-app maken
 
-Als u een project voor uw client-app wilt instellen, gebruikt u de [wizard Google API-console](https://console.developers.google.com/start/api?id=gmail&credential=client_key) en volgt u de instructies. Of Raadpleeg de instructies in de [technische naslag documentatie van de Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)voor gedetailleerde stappen.
+Als u een project voor uw client-app wilt instellen, gebruikt u de [wizard Google API-console](https://console.developers.google.com/start/api?id=gmail&credential=client_key) en volgt u de instructies. Of Raadpleeg de instructies in de [technische naslag documentatie van de Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application)voor gedetailleerde stappen.
 
 Wanneer u klaar bent, ziet uw scherm eruit als in dit voor beeld, behalve dat u beschikt over uw eigen **client-id** en **client Secret** -waarden, die u later in uw logische app gebruikt.
 
@@ -117,4 +117,5 @@ Voer de volgende stappen uit om de client-ID en het client geheim te gebruiken v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [Gmail-connector](https://docs.microsoft.com/connectors/gmail/)
+Meer informatie over de [Gmail-connector](/connectors/gmail/)
+

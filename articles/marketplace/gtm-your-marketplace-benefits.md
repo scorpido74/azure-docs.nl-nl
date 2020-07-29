@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536028"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287894"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -41,7 +41,7 @@ Gedetailleerde beschrijvingen van alle programma voordelen vindt u in deze [Mark
 Het is eenvoudig om aan de slag te gaan:
 
 1. Publiceer een aanbieding in Microsoft AppSource of op Azure Marketplace.
-2. Ga naar [Marketplace-beloningen](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) in partner centrum en selecteer **inschrijven in Marketplace-belonings programma**.
+2. Ga naar [Marketplace-beloningen](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) in partner centrum en selecteer **inschrijven in Marketplace-belonings programma**.
 3. Als u de voor delen van verkoop en marketing wilt activeren, moet u een bedrijfs marketing contact toewijzen. Deze contactpersoon ontvangt opvolgingscommunicatie over uw Marketplace-beloningen.
 4. Als u uw marketing contactpersoongegevens wilt toevoegen of bijwerken, gaat u naar het tabblad voor delen van verkoop en marketing op de pagina Marketplace-beloningen en selecteert u vervolgens **toevoegen, bijwerken of wijzigen**.  Ga daarna als volgt te werk:
 

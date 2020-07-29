@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/15/2020
-ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54b34b1900fd928ea45d586bcdf6acd7d9a8a441
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287840"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>Geïntegreerde oplossingen in de commerciële Marketplace
 Met een geïntegreerde oplossing worden de beste technologieën van micro soft-partners gecombineerd, samen met raadpleging, implementatie en ondersteuning die wordt geboden door partners van de deskundige Services.
@@ -44,7 +44,7 @@ U kunt geïntegreerde oplossingen ontdekken en verbinding maken met deze waardev
 * [Portfolio analyse van lening](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
 * [Beveiligings stack van de gezondheids zorg](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
 * [DevOps-versnellings engine](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Windows Server-end-of-support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Windows Server-end-of-support](https://azuremarketplace.microsoft.com/marketplace/apps/stratum.eos_windows?tab=Overview)
 * [Snelle samen voeging van data centers](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
 * [DeviceTone IoT for Connectd Field Service](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
 * [Gelijktijdig: een uniforme marketing beheer oplossing](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
