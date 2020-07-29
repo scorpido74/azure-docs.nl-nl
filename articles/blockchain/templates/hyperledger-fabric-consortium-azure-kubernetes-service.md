@@ -1,15 +1,15 @@
 ---
 title: Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 description: Het Hyperledger Fabric consortium-netwerk implementeren en configureren op de Azure Kubernetes-service
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081271"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286050"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -29,12 +29,14 @@ Voordat u een oplossings sjabloon gaat gebruiken, moet u uw scenario vergelijken
 Optie | Service model | Algemene use-case
 -------|---------------|-----------------
 Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
-[Azure Blockchain Service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
+[Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Consortium architectuur voor Hyperledger Fabric
 
-Als u Hyperledger Fabric-netwerk op Azure wilt bouwen, moet u de order service en organisatie implementeren met peer knooppunten. De verschillende fundamentele onderdelen die worden gemaakt als onderdeel van de sjabloon implementatie zijn:
+Als u Hyperledger Fabric-netwerk op Azure wilt bouwen, moet u de order service en organisatie implementeren met peer knooppunten. Met de Hyperledger Fabric op de Azure Kubernetes-sjabloon voor de service oplossing kunt u order knooppunten of peer-knoop punten maken. U moet de sjabloon implementeren voor elk knoop punt dat u wilt maken.
+
+De verschillende fundamentele onderdelen die worden gemaakt als onderdeel van de sjabloon implementatie zijn:
 
 - **Orderer-knoop punten**: een knoop punt dat verantwoordelijk is voor transactie ordening in het groot boek. Naast andere knoop punten vormen de geordende knoop punten de bestel service van het Hyperledger-infrastructuur netwerk.
 
@@ -58,22 +60,13 @@ Met de sjabloon voor implementatie worden verschillende Azure-resources in uw ab
 - **Azure Managed Disk**: Azure Managed disk is voor een permanente opslag voor de data base in de wereld van het groot boek-en peer knooppunt
 - **Openbaar IP-adres**: een openbaar IP-eind punt van het AKS-cluster dat is geïmplementeerd voor confacing met het cluster.
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric Block chain-netwerk installatie
+## <a name="deploy-the-ordererpeer-organization"></a>De orderer/peer-organisatie implementeren
 
 Om te beginnen moet u een Azure-abonnement hebben dat ondersteuning biedt voor het implementeren van verschillende virtuele machines en standaard opslag accounts. Als u geen Azure-abonnement hebt, kunt u [een gratis Azure-account maken](https://azure.microsoft.com/free/).
 
-Stel Hyperledger Fabric Block Chain Network in met behulp van de volgende stappen:
+Om aan de slag te gaan met de implementatie van HLF-netwerk onderdelen, gaat u naar de [Azure Portal](https://portal.azure.com).
 
-- [De orderer/peer-organisatie implementeren](#deploy-the-ordererpeer-organization)
-- [Het consortium bouwen](#build-the-consortium)
-
-## <a name="deploy-the-ordererpeer-organization"></a>De orderer/peer-organisatie implementeren
-
-Om aan de slag te gaan met de implementatie van HLF-netwerk onderdelen, gaat u naar de [Azure Portal](https://portal.azure.com). Selecteer **een resource maken > block chain** > zoek naar **Hyperledger Fabric op de Azure Kubernetes-service**.
-
-1. Selecteer **maken** om de sjabloon implementatie te starten. De **Hyperledger Fabric maken op de Azure Kubernetes-service** wordt weer gegeven.
-
-    ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+1. Selecteer **een resource maken > block chain** > zoek naar **Hyperledger Fabric op de Azure Kubernetes-service (preview)**.
 
 2. Voer de project details in op de pagina **basis beginselen** .
 
@@ -90,7 +83,7 @@ Om aan de slag te gaan met de implementatie van HLF-netwerk onderdelen, gaat u n
 
 5. Voer de volgende details in:
     - **Organisatie naam**: de naam van de infrastructuur organisatie, die is vereist voor verschillende bewerkingen voor gegevenslaag. De naam van de organisatie moet uniek zijn per implementatie.
-    - **Fabric-netwerk onderdeel**: Kies service-of peer knooppunten die zijn gebaseerd op Block chain netwerk onderdeel dat u wilt instellen.
+    - **Fabric-netwerk onderdeel**: Kies service-of peer-knoop punten ordenen op basis van Block chain netwerk onderdeel dat u wilt instellen.
     - **Aantal knoop punten** -de volgende twee typen knoop punten zijn:
         - Order service: Selecteer het aantal knoop punten waarvoor fout tolerantie aan het netwerk is gegeven. Alleen 3, 5 en 7 zijn het aantal ondersteunde orderer-knoop punten.
         - Knoop punten op hetzelfde niveau: u kunt 1-10-knoop punten kiezen op basis van uw vereiste.
@@ -103,7 +96,7 @@ Om aan de slag te gaan met de implementatie van HLF-netwerk onderdelen, gaat u n
     - **Persoonlijke sleutel van het basis certificaat**: de persoonlijke sleutel van het basis certificaat uploaden. Als u een. PEM-certificaat hebt, dat zowel een open bare als een persoonlijke sleutel bevat, kunt u dit hier ook uploaden.
 
 
-6. Selecteer **AKS tabblad Cluster instellingen** om de Azure Kubernetes-cluster configuratie te definiëren die de onderliggende infra structuur is waarop de infrastructuur netwerk onderdelen moeten worden ingesteld.
+6. Selecteer **AKS tabblad Cluster instellingen** om de Azure Kubernetes-cluster configuratie te definiëren die de onderliggende infra structuur is waarop de infrastructuur netwerk onderdelen worden ingesteld.
 
     ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
@@ -136,7 +129,7 @@ Als u het block Chain consortium na het implementeren van de best maat service e
 > Azure HLF (azhlf)-script is bedoeld om u te helpen met alleen demonstratie-en DevTest-scenario's. Het door dit script gemaakte kanaal en consortium heeft een basis HLF-beleid om het scenario van de demo-DevTest te vereenvoudigen. Voor het instellen van de productie raden we u aan om het Channel/consortium HLF-beleid op te nemen in overeenstemming met de vereisten voor naleving van uw organisatie via de native HLF-Api's.
 
 
-Alle opdrachten voor het uitvoeren van het Azure HLF-script kunnen worden uitgevoerd via de Azure bash-opdracht regel. Interface (CLI). U kunt zich aanmelden bij de Azure shell-webversie via  ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) in de rechter bovenhoek van de Azure Portal. Typ bash en Enter in het opdracht prompt om over te scha kelen naar bash CLI.
+Alle opdrachten voor het uitvoeren van het Azure HLF-script kunnen worden uitgevoerd via de Azure bash-opdracht regel. Interface (CLI). U kunt zich aanmelden bij de Azure shell web version via   ![ Hyperledger Fabric op de Azure Kubernetes service-sjabloon ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) optie in de rechter bovenhoek van de Azure Portal. Typ bash en Enter in het opdracht prompt om over te scha kelen naar bash CLI of kies *bash* op de werk balk van de shell.
 
 Zie [Azure shell](../../cloud-shell/overview.md) voor meer informatie.
 
@@ -147,17 +140,17 @@ In de volgende afbeelding ziet u het stapsgewijze proces voor het bouwen van con
 
 ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-Volg de onderstaande opdrachten voor de eerste installatie van de client toepassing: 
+Voltooi de secties voor de eerste installatie van de client toepassing: 
 
-1.  [Client toepassings bestanden downloaden](#download-client-application-files)
-2.  [Omgevingsvariabelen instellen](#setup-environment-variables)
-3.  [Het verbindings Profiel van de organisatie, de gebruikers beheerder en de MSP importeren](#import-organization-connection-profile-admin-user-identity-and-msp)
+1. Client toepassings bestanden downloaden
+1. Omgevingsvariabelen instellen
+1. Het verbindings Profiel van de organisatie, de gebruikers beheerder en de MSP importeren
 
-Nadat de eerste installatie is voltooid, kunt u de-client toepassing gebruiken om de onderstaande bewerkingen te verzorgen:  
+Nadat de eerste installatie is voltooid, gebruikt u de client toepassing om de volgende bewerkingen uit te voeren:  
 
-- [Opdrachten voor kanaal beheer](#channel-management-commands)
-- [Management-opdrachten voor consortium](#consortium-management-commands)
-- [Chaincode-beheer opdrachten](#chaincode-management-commands)
+- Kanaal beheer
+- Consortiumbeheer
+- Chaincode-beheer
 
 ### <a name="download-client-application-files"></a>Client toepassings bestanden downloaden
 
@@ -168,19 +161,16 @@ curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kuberne
 cd azhlfTool
 npm install
 npm run setup
-
 ```
-Met deze opdrachten wordt de Azure HLF-client toepassings code van de open bare GitHub opslag plaats gekloond, gevolgd door het laden van alle afhankelijke NPM-pakketten. Nadat de opdracht is uitgevoerd, ziet u een node_modules map in de huidige map. Alle vereiste pakketten worden geladen in de map node_modules.
 
+Met deze opdrachten wordt de Azure HLF-client toepassings code van de open bare GitHub opslag plaats gekloond, gevolgd door het laden van alle afhankelijke NPM-pakketten. Nadat de opdracht is uitgevoerd, ziet u een node_modules map in de huidige map. Alle vereiste pakketten worden geladen in de map node_modules.
 
 ### <a name="setup-environment-variables"></a>Omgevingsvariabelen instellen
 
 > [!NOTE]
 > Alle omgevings variabelen volgen de Azure resource Naming Convention.
 
-
-**Onder omgevings variabelen instellen voor de orderer-organisatie-client**
-
+#### <a name="set-environment-variables-for-orderer-organization-client"></a>Omgevings variabelen instellen voor de orderer-organisatie-client
 
 ```bash
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
@@ -189,7 +179,8 @@ ORDERER_ORG_NAME=<ordererOrgName>
 ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-**De onderstaande omgevings variabelen instellen voor de client van de peer-organisatie**
+
+#### <a name="set-the-environment-variables-for-peer-organization-client"></a>De omgevings variabelen voor de client van de peer-organisatie instellen
 
 ```bash
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
@@ -202,7 +193,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > Op basis van het aantal peer-organisaties in uw consortium moet u mogelijk de peer-opdrachten herhalen en de omgevings variabele dienovereenkomstig instellen.
 
-**De onderstaande omgevings variabelen instellen voor het instellen van Azure Storage account**
+#### <a name="set-the-environment-variables-for-setting-up-azure-storage-account"></a>De omgevings variabelen voor het instellen van Azure Storage account instellen
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -212,7 +203,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-Volg de onderstaande stappen voor het maken van Azure Storage-account. Als u Azure Storage account al hebt gemaakt, kunt u deze stappen overs Laan
+Gebruik de volgende stappen voor het maken van Azure Storage-account. Als u Azure Storage account al hebt gemaakt, kunt u deze stappen overs Laan.
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -220,14 +211,14 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-Volg de onderstaande stappen voor het maken van een bestands share in Azure Storage-account. Als u een bestands share al hebt gemaakt, kunt u deze stappen overs Laan
+Gebruik de volgende stappen voor het maken van een bestands share in Azure Storage-account. Als u een bestands share al hebt gemaakt, kunt u deze stappen overs Laan
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
-Volg de onderstaande stappen voor het genereren van een Azure-bestands share connection string
+Gebruik de volgende stappen voor het genereren van een Azure-bestands share connection string.
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -256,39 +247,13 @@ Voor peer-organisatie:
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-### <a name="channel-management-commands"></a>Opdrachten voor kanaal beheer
-
-> [!NOTE]
-> Voordat u met een kanaal bewerking begint, moet u ervoor zorgen dat de eerste installatie van de client toepassing wordt uitgevoerd.  
-
-Hieronder ziet u de twee opdrachten voor het beheren van kanalen:
-
-1. [Kanaal maken, opdracht](#create-channel-command)
-2. [De opdracht anker peer (s) instellen](#setting-anchor-peers-command)
-
-
-#### <a name="create-channel-command"></a>Kanaal maken, opdracht
+### <a name="create-channel-command"></a>Kanaal maken, opdracht
 
 Van een orderer-client, opdracht geven om een nieuw kanaal te maken. Met deze opdracht wordt een kanaal met alleen een orderer-organisatie gemaakt.  
 
 ```bash
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
-
-#### <a name="setting-anchor-peers-command"></a>De opdracht anker peer (s) instellen
-Meld u bij de client van peer-organisatie onder de opdracht voor het instellen van anker peer (s) voor de peer-organisatie op het opgegeven kanaal.
-
->[!NOTE]
-> Voordat u deze opdracht uitvoert, moet u ervoor zorgen dat peer-organisatie wordt toegevoegd aan het kanaal met behulp van consortium beheer opdrachten.
-
-```bash
-./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
-```
-
-`<anchorPeersList>`is een door spaties gescheiden lijst met peer knooppunten die moeten worden ingesteld als een anker peer. Bijvoorbeeld:
-
-  - Stel `<anchorPeersList>` in als ' Peer1 ' als u alleen Peer1-knoop punt wilt instellen als anker peer.
-  - Stel `<anchorPeersList>` in als "Peer1" "peer3" als u het knoop punt Peer1 en peer3 wilt instellen als anker peer.
 
 ### <a name="consortium-management-commands"></a>Management-opdrachten voor consortium
 
@@ -324,6 +289,21 @@ Voer de onderstaande opdrachten in de aangegeven volg orde uit om een peer-organ
 
 Als u meer peer-organisaties in het kanaal wilt toevoegen, moet u peer-omgevings variabelen bijwerken volgens de vereiste peer-organisatie en de stappen 1 tot en met 4 uitvoeren.
 
+### <a name="set-anchor-peers-command"></a>Opdracht anker peer (s) instellen
+
+Geef vanuit de peer-client van de organisatie de opdracht om anker-peer (s) in te stellen voor de peer-organisatie op het opgegeven kanaal.
+
+>[!NOTE]
+> Voordat u deze opdracht uitvoert, moet u ervoor zorgen dat peer-organisatie wordt toegevoegd aan het kanaal met behulp van consortium beheer opdrachten.
+
+```bash
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
+```
+
+`<anchorPeersList>`is een door spaties gescheiden lijst met peer knooppunten die moeten worden ingesteld als een anker peer. Bijvoorbeeld:
+
+  - Stel `<anchorPeersList>` in als ' Peer1 ' als u alleen Peer1-knoop punt wilt instellen als anker peer.
+  - Stel `<anchorPeersList>` in als "Peer1" "peer3" als u het knoop punt Peer1 en peer3 wilt instellen als anker peer.
 
 ### <a name="chaincode-management-commands"></a>Chaincode-beheer opdrachten
 
@@ -344,7 +324,7 @@ CC_VERSION=<chaincodeVersion>
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is place.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  

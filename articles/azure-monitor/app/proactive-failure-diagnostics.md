@@ -4,19 +4,19 @@ description: Hiermee wordt u gewaarschuwd voor ongebruikelijke wijzigingen in de
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045799"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315934"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
+[Application Insights](./app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
 
-Deze functie werkt voor elke web-app, die wordt gehost in de Cloud of op uw eigen servers, waarmee toepassings aanvragen of afhankelijkheids gegevens worden gegenereerd. Als u bijvoorbeeld een werknemersrol hebt die [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency ()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)aanroept.
+Deze functie werkt voor elke web-app, die wordt gehost in de Cloud of op uw eigen servers, waarmee toepassings aanvragen of afhankelijkheids gegevens worden gegenereerd. Als u bijvoorbeeld een werknemersrol hebt die [TrackRequest ()](./api-custom-events-metrics.md#trackrequest) of [TrackDependency ()](./api-custom-events-metrics.md#trackdependency)aanroept.
 
-Na het instellen van [Application Insights voor uw project](../../azure-monitor/app/app-insights-overview.md), en als uw app een bepaalde minimale hoeveelheid gegevens genereert, neemt Slimme detectie van fout afwijkingen 24 uur in beslag om het normale gedrag van uw app te achterhalen, voordat deze wordt ingeschakeld en waarschuwingen kan verzenden.
+Na het instellen van [Application Insights voor uw project](./app-insights-overview.md), en als uw app een bepaalde minimale hoeveelheid gegevens genereert, neemt Slimme detectie van fout afwijkingen 24 uur in beslag om het normale gedrag van uw app te achterhalen, voordat deze wordt ingeschakeld en waarschuwingen kan verzenden.
 
 Hier volgt een voor beeld van een waarschuwing:
 
@@ -31,10 +31,10 @@ In de details van de waarschuwing ziet u het volgende:
 * Hiermee worden rechtstreeks koppelingen naar relevante Zoek opdrachten op de gegevens in Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Voor delen van Slimme detectie
-Normale [metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md) geven aan dat er mogelijk een probleem is. Met Slimme detectie wordt het diagnostische werk voor u gestart, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
+Normale [metrische waarschuwingen](../platform/alerts-log.md) geven aan dat er mogelijk een probleem is. Met Slimme detectie wordt het diagnostische werk voor u gestart, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
 
-## <a name="how-it-works"></a>Uitleg
-Slimme detectie bewaakt de gegevens die van uw app zijn ontvangen, met name de uitval snelheid. Deze regel telt het aantal aanvragen waarvoor de `Successful request` eigenschap False is en het aantal afhankelijkheids aanroepen waarvoor de `Successful call` eigenschap False is. Voor aanvragen standaard `Successful request == (resultCode < 400)` (tenzij u aangepaste code hebt geschreven om uw eigen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](../../azure-monitor/app/api-filtering-sampling.md#filtering) of te genereren). 
+## <a name="how-it-works"></a>Hoe het werkt
+Slimme detectie bewaakt de gegevens die van uw app zijn ontvangen, met name de uitval snelheid. Deze regel telt het aantal aanvragen waarvoor de `Successful request` eigenschap False is en het aantal afhankelijkheids aanroepen waarvoor de `Successful call` eigenschap False is. Voor aanvragen standaard `Successful request == (resultCode < 400)` (tenzij u aangepaste code hebt geschreven om uw eigen [TrackRequest](./api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](./api-filtering-sampling.md#filtering) of te genereren). 
 
 De prestaties van uw app hebben een typisch patroon van het gedrag. Sommige aanvragen of afhankelijkheids aanroepen zijn gevoelig voor fouten dan andere. en het totale aantal fouten kan optreden naarmate de belasting toeneemt. Slimme detectie maakt gebruik van machine learning om deze afwijkingen te vinden.
 
@@ -48,7 +48,7 @@ Als uw service wordt gebruikt met deze aanroepen, zoekt de Analyzer naar een uit
 
 De resulterende analyse wordt naar u verzonden als waarschuwing, tenzij u deze hebt geconfigureerd.
 
-Net als de [waarschuwingen die u hand matig hebt ingesteld](../../azure-monitor/platform/alerts-log.md), kunt u de status van de geactiveerde waarschuwing inspecteren, die kan worden opgelost als het probleem is opgelost. Configureer de waarschuwings regels op de pagina waarschuwingen van uw Application Insights-resource. Maar in tegens telling tot andere waarschuwingen hoeft u geen slimme detectie in te stellen of te configureren. Als u wilt, kunt u deze uitschakelen of de e-mail adressen van het doel wijzigen.
+Net als de [waarschuwingen die u hand matig hebt ingesteld](../platform/alerts-log.md), kunt u de status van de geactiveerde waarschuwing inspecteren, die kan worden opgelost als het probleem is opgelost. Configureer de waarschuwings regels op de pagina waarschuwingen van uw Application Insights-resource. Maar in tegens telling tot andere waarschuwingen hoeft u geen slimme detectie in te stellen of te configureren. Als u wilt, kunt u deze uitschakelen of de e-mail adressen van het doel wijzigen.
 
 ### <a name="alert-logic-details"></a>Details van waarschuwings logica
 
@@ -292,7 +292,7 @@ U kunt een waarschuwings regel voor fout afwijkingen uitschakelen of verwijderen
 
 Een waarschuwing geeft aan dat een abnormale toename van het aantal mislukte aanvragen is gedetecteerd. Waarschijnlijk is er sprake van een probleem met uw app of van de omgeving.
 
-Als u verder wilt onderzoeken, klikt u op ' volledige details weer geven in Application Insights ' op de koppelingen op deze pagina gaat u rechtstreeks naar een [Zoek pagina](../../azure-monitor/app/diagnostic-search.md) die wordt gefilterd op de relevante aanvragen, uitzonde ringen, afhankelijkheid of traceringen. 
+Als u verder wilt onderzoeken, klikt u op ' volledige details weer geven in Application Insights ' op de koppelingen op deze pagina gaat u rechtstreeks naar een [Zoek pagina](./diagnostic-search.md) die wordt gefilterd op de relevante aanvragen, uitzonde ringen, afhankelijkheid of traceringen. 
 
 U kunt ook de [Azure Portal](https://portal.azure.com)openen, naar de Application Insights resource voor uw app gaan en de pagina fouten openen.
 
@@ -317,7 +317,7 @@ Klik op **waarschuwingen** op de pagina Application Insights resource om de mees
 ## <a name="whats-the-difference-"></a>Wat is het verschil...
 Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare functies van Application Insights.
 
-* [Metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md) worden door u ingesteld en kunnen een breed scala aan metrische gegevens bewaken, zoals CPU-bezetting, aanvraag tarieven, pagina laad tijden, enzovoort. U kunt deze gebruiken om u te waarschuwen als u bijvoorbeeld meer resources wilt toevoegen. Slimme detectie van fout afwijkingen is daarentegen van toepassing op een klein aantal kritische metrische gegevens (momenteel alleen mislukte aanvragen), ontworpen om u vrijwel realtime te informeren wanneer de frequentie van de mislukte aanvragen van de web-app toeneemt in vergelijking met het normale gedrag van de web-app. In tegens telling tot metrische waarschuwingen worden door slimme detectie automatisch drempel waarden ingesteld en bijgewerkt als reactie wijzigingen in het gedrag optreden. Slimme detectie start ook het diagnostische werk voor u en bespaart u tijd bij het oplossen van problemen.
+* [metrische waarschuwingen](../platform/alerts-log.md) worden door u ingesteld en kunnen een breed scala aan metrische gegevens bewaken, zoals CPU-bezetting, aanvraag tarieven, pagina laad tijden, enzovoort. U kunt deze gebruiken om u te waarschuwen als u bijvoorbeeld meer resources wilt toevoegen. Slimme detectie van fout afwijkingen is daarentegen van toepassing op een klein aantal kritische metrische gegevens (momenteel alleen mislukte aanvragen), ontworpen om u vrijwel realtime te informeren wanneer de frequentie van de mislukte aanvragen van de web-app toeneemt in vergelijking met het normale gedrag van de web-app. In tegens telling tot metrische waarschuwingen worden door slimme detectie automatisch drempel waarden ingesteld en bijgewerkt als reactie wijzigingen in het gedrag optreden. Slimme detectie start ook het diagnostische werk voor u en bespaart u tijd bij het oplossen van problemen.
 
 * [Slimme detectie van prestatie afwijkingen](proactive-performance-diagnostics.md) maakt ook gebruik van machine Intelligence om ongebruikelijke patronen in uw metrische gegevens te ontdekken. u hoeft hiervoor geen configuratie op te nemen. Maar in tegens telling tot Slimme detectie van fout afwijkingen, is het doel van de detectie van de prestatie afwijkingen te bepalen van de segmenten van uw gebruiks fragmenten die mogelijk niet goed worden aangeboden, bijvoorbeeld door specifieke pagina's van een specifiek type browser. De analyse wordt dagelijks uitgevoerd en als er een resultaat wordt gevonden, is het waarschijnlijk veel minder urgent dan een waarschuwing. Daarentegen wordt de analyse voor fout afwijkingen doorlopend uitgevoerd op binnenkomende toepassings gegevens en wordt u binnen enkele minuten gewaarschuwd als de snelheid van de server fouten groter is dan verwacht.
 
@@ -332,7 +332,7 @@ Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare 
 
 *En nu gaat u naar mijn toepassings gegevens?*
 
-* Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](../../azure-monitor/app/data-retention-privacy.md).
+* Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](./data-retention-privacy.md).
 
 *Moet ik zich abonneren op deze waarschuwing?*
 
@@ -353,11 +353,12 @@ Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare 
 ## <a name="next-steps"></a>Volgende stappen
 Deze diagnostische hulpprogram ma's helpen u bij het controleren van de gegevens in uw app:
 
-* [Metrische Explorer](../../azure-monitor/platform/metrics-charts.md)
-* [Zoek Verkenner](../../azure-monitor/app/diagnostic-search.md)
-* [Analyse-krachtige query taal](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrische Explorer](../platform/metrics-charts.md)
+* [Zoek Verkenner](./diagnostic-search.md)
+* [Analyse-krachtige query taal](../log-query/get-started-portal.md)
 
 Slimme detecties zijn automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md)
-* [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Hand matig geconfigureerde metrische waarschuwingen](../platform/alerts-log.md)
+* [Webtests voor beschikbaarheid](./monitor-web-app-availability.md)
+

@@ -8,11 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337803"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
@@ -27,9 +28,9 @@ In dit artikel worden veelvoorkomende problemen met het ontwikkelen van Azure St
     - Selecteer op Azure Portal op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
     - U kunt [uw query ook lokaal testen](stream-analytics-live-data-local-testing.md) met Azure stream Analytics-hulpprogram Ma's voor Visual Studio of [Visual Studio code](visual-studio-code-local-run-live-input.md). 
 
-2.  [Debug-query's stap voor stap lokaal met behulp van taak diagram](debug-locally-using-job-diagram.md) in azure stream Analytics-hulpprogram Ma's voor Visual Studio. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen worden uitgevoerd en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die in het script is gedefinieerd met behulp van de instructie WITH. U kunt de gegevens in elke tussenliggende resultatenset weer geven, evenals de metrieken, om de bron van het probleem te vinden.
+2.  [Debug-query's stap voor stap lokaal met behulp van taak diagram](debug-locally-using-job-diagram-vs-code.md) in azure stream Analytics-hulpprogram Ma's voor Visual Studio code. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen worden uitgevoerd en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die in het script is gedefinieerd met behulp van de instructie WITH. U kunt de gegevens in elke tussenliggende resultatenset weer geven, evenals de metrieken, om de bron van het probleem te vinden.
 
-    ![Resultaat van voor beeld van taak diagram](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![Resultaat van voor beeld van taak diagram](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  Als u [**time stamp by**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)gebruikt, controleert u of de gebeurtenissen tijds tempels hebben die groter zijn dan de [begin tijd](stream-analytics-out-of-order-and-late-events.md)van de taak.
 
@@ -100,7 +101,7 @@ Deze keer worden de gegevens in de uitvoer opgemaakt en ingevuld zoals verwacht.
 
 ![SELECTEREN in uiteindelijke tabel Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Hulp vragen
+## <a name="get-help"></a>Help opvragen
 
 Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

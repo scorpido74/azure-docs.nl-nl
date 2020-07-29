@@ -4,15 +4,15 @@ description: Specificaties voor de Vm's van de DC-serie.
 author: susaxen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207438"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292470"
 ---
 # <a name="dcsv2-series"></a>DCsv2-serie
 
@@ -47,14 +47,18 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
-- [Geoptimaliseerd voor geheugen](sizes-memory.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Algemeen doel](sizes-general.md)
+- [Geoptimaliseerd geheugen](sizes-memory.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)
+
+Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
+
+Meer informatie over schijven typen: [schijf typen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Volgende stappen
 

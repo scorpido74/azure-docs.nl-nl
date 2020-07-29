@@ -11,17 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464161"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337446"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Procedure: risico beleid configureren en inschakelen
 
 Zoals we hebben geleerd in het vorige artikel, hebben [beleids regels voor identiteits beveiliging](concept-identity-protection-policies.md) twee risico beleidsregels die we in onze Directory kunnen inschakelen. 
 
-- Beleid voor aanmeldings Risico's
+- Beleid voor aanmeldingsrisico's
 - Beleid voor gebruikersrisico's
 
 ![Pagina beveiligings overzicht voor het inschakelen van beleid voor gebruikers-en aanmeldings Risico's](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
@@ -54,7 +55,7 @@ Voer de volgende stappen uit om het risico beleid voor gebruikers Risico's en-aa
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **identiteits beveiliging**  >  **Overview**.
-1. Selecteer **gebruikers risico beleid configureren**.
+1. Selecteer **beleid voor gebruikers Risico's**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
@@ -63,7 +64,7 @@ Voer de volgende stappen uit om het risico beleid voor gebruikers Risico's en-aa
       1. **Toegang** : aanbeveling van micro soft is **toegang toe te staan** en **wachtwoord wijziging te vereisen**.
    1. **Beleid**  -  afdwingen **Op**
    1. **Opslaan** : met deze actie keert u terug naar de pagina **overzicht** .
-1. Selecteer **beleid voor aanmeldings risico configureren**.
+1. Selecteer **beleid voor aanmeldings Risico's**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.

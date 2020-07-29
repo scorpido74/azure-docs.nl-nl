@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495377"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289966"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Time Series-model in Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ In dit artikel worden de tijdreeks modellen, de mogelijkheden en het maken en bi
 > [!TIP]
 >
 > * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
-> * Meer informatie [over het werken met een time series-model](time-series-insights-update-how-to-tsm.md) met behulp van de Azure time series Insights Gen2 Explorer.
+> * Meer informatie [over het werken met een time series-model](/azure/time-series-insights/how-to-edit-your-model) met behulp van de Azure time series Insights Gen2 Explorer.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -75,7 +75,7 @@ Deze onderdelen worden gecombineerd om een time series-model op te geven en om u
 
 [![Overzichts grafiek voor tijdreeks model](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Gen2 Explorer](time-series-insights-update-how-to-tsm.md). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
 ## <a name="time-series-model-instances"></a>Exemplaren van de time series-model
 
@@ -101,8 +101,8 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 | --- | ---|
 | timeSeriesId | De unieke ID van de tijd reeks waaraan het exemplaar is gekoppeld. In de meeste gevallen worden instanties uniek geïdentificeerd door een eigenschap zoals deviceId of assetId. In sommige gevallen kan een specifiek samengestelde ID worden gebruikt die Maxi maal drie eigenschappen combineert. |
 | typeId | De hoofdletter gevoelige unieke teken reeks-ID van het tijds reeks model waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
-| naam | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
-| description | Een tekst beschrijving van het exemplaar. |
+| name | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
+| beschrijving | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | De eigenschappen van een exemplaar en alle statische gegevens waarmee een exemplaar wordt gedefinieerd. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
 
@@ -148,7 +148,7 @@ Hiërarchieën worden gedefinieerd door de hiërarchie **-id**, **naam**en **bro
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De unieke id voor de hiërarchie die wordt gebruikt, bijvoorbeeld wanneer u een exemplaar definieert. |
-| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
+| name | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
 | source | Hiermee geeft u de organisatie hiërarchie of het pad op. Dit is een bovenliggende en onderliggende volg orde van de hiërarchie die gebruikers willen maken. De bovenliggende/onderliggende eigenschappen van het toewijzings exemplaar velden. |
 
 Hiërarchieën worden weer gegeven in JSON als:
@@ -240,8 +240,8 @@ De typen van de tijd reeks model worden gedefinieerd op basis van **id**, **naam
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De hoofdletter gevoelige unieke teken reeks-ID voor het type. |
-| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
-| description | Een beschrijving van de teken reeks voor het type. |
+| name | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
+| beschrijving | Een beschrijving van de teken reeks voor het type. |
 | variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
 
 Typen voldoen aan het volgende JSON-voor beeld:
@@ -283,12 +283,13 @@ Typen voldoen aan het volgende JSON-voor beeld:
   ]
 }
 ```
+
 De tijdreeks model typen kunnen veel variabelen hebben die formule-en verwerkings regels op gebeurtenissen opgeven. Meer informatie over [het definiëren van tijd reeks model variabelen](./concepts-variables.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de referentie documentatie voor [Time Series model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) voor meer informatie over het bewerken van het model via api's.
+* Lees de referentie documentatie voor [Time Series model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) voor meer informatie over het bewerken van het model via api's.
 
-- Verken de formules en berekeningen die u kunt maken met [Time Series model-variabelen](./concepts-variables.md)
+* Verken de formules en berekeningen die u kunt maken met [Time Series model-variabelen](./concepts-variables.md)
 
-- Meer informatie over het [opvragen van gegevens](concepts-query-overview.md) in azure time series Insights Gen2
+* Meer informatie over het [opvragen van gegevens](concepts-query-overview.md) in azure time series Insights Gen2

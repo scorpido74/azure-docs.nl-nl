@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81258453"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337956"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit verbinden met de oplossings versneller voor externe controle van Azure IoT
 
@@ -105,7 +106,7 @@ In de VS code-terminal wordt u door een interactieve opdracht regel begeleid bij
   
    ![Verificatie en upload van de Arduino-schets](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/arduino-upload.png)
 
-De DevKit wordt opnieuw opgestart en de code wordt gestart.
+De DevKit wordt opnieuw opgestart en het uitvoeren van de code wordt gestart.
 
 ## <a name="test-the-project"></a>Het project testen
 
@@ -133,7 +134,5 @@ Als u problemen ondervindt, raadpleeg dan [de veelgestelde vragen over de IOT De
 Nu u hebt geleerd hoe u een DevKit-apparaat verbindt met uw Azure IoT-oplossing voor externe controle en de sensor gegevens visualiseren, zijn dit de voorgestelde volgende stappen:
 
 * [Overzicht van de Azure IoT-oplossings Accelerators](https://docs.microsoft.com/azure/iot-suite/)
-
-* [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](/azure/iot-central/core/howto-connect-devkit)
 
 * [IoT-ontwikkelaars pakket](https://microsoft.github.io/azure-iot-developer-kit/) 

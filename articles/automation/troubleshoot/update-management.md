@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183151"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293095"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -387,7 +387,7 @@ Deze fout kan een van de volgende oorzaken hebben:
 * De computer is uitgeschakeld en kan niet worden bereikt.
 * De computer heeft een probleem met de netwerk verbinding en daarom is de Hybrid worker op de computer onbereikbaar.
 * Er is een update voor de MMA die de bron computer-ID heeft gewijzigd.
-* De update-uitvoering is beperkt als u de limiet van 2000 gelijktijdige taken in een Automation-account bereikt. Elke implementatie wordt beschouwd als een taak en elke computer in een update-implementatie telt als een taak. Alle andere Automation-taken of update-implementaties die momenteel worden uitgevoerd in uw Automation-account, tellen mee voor de limiet voor gelijktijdige taken.
+* De update-uitvoering is beperkt als u de limiet van 200 gelijktijdige taken in een Automation-account bereikt. Elke implementatie wordt beschouwd als een taak en elke computer in een update-implementatie telt als een taak. Alle andere Automation-taken of update-implementaties die momenteel worden uitgevoerd in uw Automation-account, tellen mee voor de limiet voor gelijktijdige taken.
 
 ### <a name="resolution"></a>Oplossing
 

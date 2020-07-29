@@ -7,15 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725581"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337599"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
-In dit artikel wordt dieper Inge gaan op het gebruik van de [Azure Digital Apparaatdubbels query Store-taal](concepts-query-language.md) om een query uit te zoeken op de [dubbele grafiek](concepts-twins-graph.md) voor informatie. U voert query's uit in de grafiek met behulp van de Azure Digital Apparaatdubbels- [**query-api's**](how-to-use-apis-sdks.md).
+In dit artikel vindt u voor beelden en meer Details voor het gebruik van de [Azure Digital Apparaatdubbels query Store-taal](concepts-query-language.md) om een query uit te zoeken op de [dubbele grafiek](concepts-twins-graph.md) voor informatie. U voert query's uit in de grafiek met behulp van de Azure Digital Apparaatdubbels- [**query-api's**](how-to-use-apis-sdks.md).
 
 ## <a name="query-syntax"></a>Querysyntaxis
 
@@ -40,6 +41,52 @@ AND T.roomSize > 50
 
 > [!TIP]
 > De ID van een digitale dubbele query wordt uitgevoerd met behulp van het veld meta gegevens `$dtId` .
+
+### <a name="query-based-on-relationships"></a>Query op basis van relaties
+
+Bij het uitvoeren van query's op basis van relaties van Digital apparaatdubbels heeft de Azure Digital Apparaatdubbels query Store-taal een speciale syntaxis.
+
+Relaties worden opgehaald in het query bereik in de- `FROM` component. Een belang rijk verschil van ' klassiek ' SQL-type talen is dat elke expressie in deze `FROM` component geen tabel is. in plaats daarvan wordt in de `FROM` component een kruis entiteits relatie door lopen en is deze geschreven met een Azure Digital apparaatdubbels-versie van `JOIN` . 
+
+Voor de mogelijkheden van het Azure Digital Apparaatdubbels [model](concepts-models.md) zijn relaties niet onafhankelijk van apparaatdubbels. Dit betekent dat de taal van de Azure Digital Apparaatdubbels `JOIN` -query opslag iets anders is dan de algemene SQL `JOIN` , omdat hier geen query's kunnen worden uitgevoerd en moeten ze zijn gekoppeld aan een dubbele.
+Om dit verschil op te nemen, wordt het sleutel woord `RELATED` in de- `JOIN` component gebruikt om te verwijzen naar een dubbele set relaties. 
+
+In de volgende sectie vindt u enkele voor beelden van hoe dit eruitziet.
+
+> [!TIP]
+> Deze functie imiteert de document gerichte functionaliteit van CosmosDB, waar deze `JOIN` kan worden uitgevoerd op onderliggende objecten in een document. CosmosDB maakt gebruik `IN` van het sleutel woord om aan te geven `JOIN` dat het is bedoeld om matrix elementen in het huidige context document te herhalen.
+
+#### <a name="relationship-based-query-examples"></a>Voor beelden van query's op basis van een relatie
+
+Als u een gegevensset wilt ophalen die relaties bevat, gebruikt u één `FROM` instructie gevolgd door N `JOIN` -instructies, waarbij de `JOIN` instructies Express-relaties hebben met betrekking tot het resultaat van een voor gaande `FROM` of- `JOIN` instructie.
+
+Hier volgt een voor beeld van een op relaties gebaseerde query. Dit code fragment selecteert alle digitale-apparaatdubbels met de *id-* eigenschap ' ABC ' en alle digitale apparaatdubbels met betrekking tot deze digitale apparaatdubbels via een *contains* -relatie. 
+
+```sql
+SELECT T, CT
+FROM DIGITALTWINS T
+JOIN CT RELATED T.contains
+WHERE T.$dtId = 'ABC' 
+```
+
+>[!NOTE] 
+> De ontwikkelaar hoeft dit niet te correleren `JOIN` met een sleutel waarde in de `WHERE` -component (of geef een sleutel waarde op in de `JOIN` definitie). Deze correlatie wordt automatisch berekend door het systeem, omdat de relatie-eigenschappen zelf de doel entiteit identificeren.
+
+#### <a name="query-the-properties-of-a-relationship"></a>De eigenschappen van een relatie opvragen
+
+Net zoals bij digitale apparaatdubbels eigenschappen beschreven via DTDL, kunnen relaties ook eigenschappen hebben. De Azure Digital Apparaatdubbels query Store-taal staat filteren en projectie van relaties toe door een alias toe te wijzen aan de relatie binnen de `JOIN` component. 
+
+Denk bijvoorbeeld aan een *servicedBy* -relatie die een *reportedCondition* -eigenschap heeft. In de onderstaande query krijgt deze relatie een alias van ' R ' om te kunnen verwijzen naar de eigenschap.
+
+```sql
+SELECT T, SBT, R
+FROM DIGITALTWINS T
+JOIN SBT RELATED T.servicedBy R
+WHERE T.$dtId = 'ABC' 
+AND R.reportedCondition = 'clean'
+```
+
+In het bovenstaande voor beeld ziet u hoe *reportedCondition* een eigenschap is van de *servicedBy* -relatie zelf (niet van een digitale dubbele verbinding met een *servicedBy* -relatie).
 
 ## <a name="run-queries-with-an-api-call"></a>Query's uitvoeren met een API-aanroep
 
@@ -75,53 +122,7 @@ catch (RequestFailedException e)
 }
 ```
 
-## <a name="query-based-on-relationships"></a>Query op basis van relaties
-
-Bij het uitvoeren van query's op basis van relaties van Digital apparaatdubbels heeft de Azure Digital Apparaatdubbels query Store-taal een speciale syntaxis.
-
-Relaties worden opgehaald in het query bereik in de- `FROM` component. Een belang rijk verschil van ' klassiek ' SQL-type talen is dat elke expressie in deze `FROM` component geen tabel is. in plaats daarvan wordt in de `FROM` component een kruis entiteits relatie door lopen en is deze geschreven met een Azure Digital apparaatdubbels-versie van `JOIN` . 
-
-Voor de mogelijkheden van het Azure Digital Apparaatdubbels [model](concepts-models.md) zijn relaties niet onafhankelijk van apparaatdubbels. Dit betekent dat de taal van de Azure Digital Apparaatdubbels `JOIN` -query opslag iets anders is dan de algemene SQL `JOIN` , omdat hier geen query's kunnen worden uitgevoerd en moeten ze zijn gekoppeld aan een dubbele.
-Om dit verschil op te nemen, wordt het sleutel woord `RELATED` in de- `JOIN` component gebruikt om te verwijzen naar een dubbele set relaties. 
-
-In de volgende sectie vindt u enkele voor beelden van hoe dit eruitziet.
-
-> [!TIP]
-> Deze functie imiteert de document gerichte functionaliteit van CosmosDB, waar deze `JOIN` kan worden uitgevoerd op onderliggende objecten in een document. CosmosDB maakt gebruik `IN` van het sleutel woord om aan te geven `JOIN` dat het is bedoeld om matrix elementen in het huidige context document te herhalen.
-
-### <a name="relationship-based-query-examples"></a>Voor beelden van query's op basis van een relatie
-
-Als u een gegevensset wilt ophalen die relaties bevat, gebruikt u één `FROM` instructie gevolgd door N `JOIN` -instructies, waarbij de `JOIN` instructies Express-relaties hebben met betrekking tot het resultaat van een voor gaande `FROM` of- `JOIN` instructie.
-
-Hier volgt een voor beeld van een op relaties gebaseerde query. Dit code fragment selecteert alle digitale-apparaatdubbels met de *id-* eigenschap ' ABC ' en alle digitale apparaatdubbels met betrekking tot deze digitale apparaatdubbels via een *contains* -relatie. 
-
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC' 
-```
-
->[!NOTE] 
-> De ontwikkelaar hoeft dit niet te correleren `JOIN` met een sleutel waarde in de `WHERE` -component (of geef een sleutel waarde op in de `JOIN` definitie). Deze correlatie wordt automatisch berekend door het systeem, omdat de relatie-eigenschappen zelf de doel entiteit identificeren.
-
-### <a name="query-the-properties-of-a-relationship"></a>De eigenschappen van een relatie opvragen
-
-Net zoals bij digitale apparaatdubbels eigenschappen beschreven via DTDL, kunnen relaties ook eigenschappen hebben. De Azure Digital Apparaatdubbels query Store-taal staat filteren en projectie van relaties toe door een alias toe te wijzen aan de relatie binnen de `JOIN` component. 
-
-Denk bijvoorbeeld aan een *servicedBy* -relatie die een *reportedCondition* -eigenschap heeft. In de onderstaande query krijgt deze relatie een alias van ' R ' om te kunnen verwijzen naar de eigenschap.
-
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC' 
-AND R.reportedCondition = 'clean'
-```
-
-In het bovenstaande voor beeld ziet u hoe *reportedCondition* een eigenschap is van de *servicedBy* -relatie zelf (niet van een digitale dubbele verbinding met een *servicedBy* -relatie).
-
-### <a name="query-limitations"></a>Query beperkingen
+## <a name="query-limitations"></a>Query beperkingen
 
 Er kan een vertraging van Maxi maal tien seconden zijn voordat wijzigingen in uw exemplaar worden weer gegeven in query's. Als u bijvoorbeeld een bewerking voltooit zoals het maken of verwijderen van apparaatdubbels met de DigitalTwins-API, wordt het resultaat mogelijk niet direct weer gegeven in de query-API-aanvragen. Het is voldoende om te wachten op een korte periode.
 

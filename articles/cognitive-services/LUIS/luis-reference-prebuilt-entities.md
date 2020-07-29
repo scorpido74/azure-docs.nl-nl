@@ -9,18 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/20/2020
 ms.author: diberry
-ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090940"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337973"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
 
-Language Understanding (LUIS) biedt vooraf gemaakte entiteiten. Wanneer een vooraf samengestelde entiteit is opgenomen in uw toepassing, bevat LUIS de overeenkomstige entiteit voorspellingen in het eindpunt antwoord. Alle voor beelden van uitingen worden ook aangeduid met de entiteit. Het gedrag van vooraf gemaakte entiteiten **kan niet** worden gewijzigd. Tenzij anders vermeld, zijn vooraf gebouwde entiteiten beschikbaar in alle land instellingen van de LUIS-toepassing (cultures). In de volgende tabel ziet u de vooraf gemaakte entiteiten die voor elke cultuur worden ondersteund.
+Language Understanding (LUIS) biedt vooraf gemaakte entiteiten.
+
+## <a name="entity-resolution"></a>Entiteits resolutie
+Wanneer een vooraf samengestelde entiteit is opgenomen in uw toepassing, bevat LUIS de overeenkomstige entiteits resolutie in het eindpunt antwoord. Alle voor beelden van uitingen worden ook aangeduid met de entiteit.
+
+Het gedrag van vooraf gemaakte entiteiten kan niet worden gewijzigd, maar u kunt de oplossing verbeteren door [de vooraf samengestelde entiteit als een functie toe te voegen aan een machine learning-entiteit of-subentiteit](luis-concept-entity-types.md#effective-prebuilt-entities).
+
+## <a name="availability"></a>Beschikbaarheid
+Tenzij anders vermeld, zijn vooraf gebouwde entiteiten beschikbaar in alle land instellingen van de LUIS-toepassing (cultures). In de volgende tabel ziet u de vooraf gemaakte entiteiten die voor elke cultuur worden ondersteund.
 
 |Cultuur|Subcultuur|Opmerkingen|
 |--|--|--|

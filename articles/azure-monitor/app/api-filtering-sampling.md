@@ -3,12 +3,13 @@ title: Filters en voor verwerking in de Application Insights SDK | Microsoft Doc
 description: U kunt telemetrie-processors en initialisatie functies voor telemetrie voor de SDK schrijven om eigenschappen te filteren of toe te voegen aan de gegevens voordat de telemetrie naar de Application Insights portal wordt verzonden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: a16dc7bc9f6f3c49640d320fbfbffaa7acbed6b9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323210"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366752"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Telemetrie filteren en voorverwerken in de Application Insights SDK
 

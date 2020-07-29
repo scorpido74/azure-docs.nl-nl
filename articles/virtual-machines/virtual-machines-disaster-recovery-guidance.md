@@ -3,15 +3,15 @@ title: Scenario's voor herstel na nood gevallen
 description: Meer informatie over wat u moet doen in het geval dat een Azure-service een onderbreking heeft op Azure virtual machines.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 43e7cb0906fc6008e8bdbfafec84ecfd8e8be6b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525820"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289679"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Wat gebeurt er als de onderbreking van een Azure-service gevolgen heeft voor Azure Vm's
 Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.

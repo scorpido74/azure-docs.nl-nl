@@ -4,16 +4,16 @@ description: De voor delen van Visual Studio-abonnementen gebruiken om Windows 7
 author: cynthn
 ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028189"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292062"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-client in Azure gebruiken voor scenario's voor ontwikkelen/testen
 U kunt Windows 7, Windows 8 of Windows 10 Enter prise (x64) gebruiken in azure voor ontwikkel-en test scenario's met de juiste Visual Studio (voorheen MSDN)-abonnement. In dit artikel vindt u een overzicht van de vereisten voor het uitvoeren van Windows 7, Windows 8,1, Windows 10 Enter prise in Azure en het gebruik van de volgende Azure Gallery-installatie kopieën.

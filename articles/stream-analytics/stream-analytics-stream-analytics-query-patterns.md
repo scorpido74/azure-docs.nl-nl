@@ -6,14 +6,14 @@ author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
-ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c22f028779090e735bf6f91d5ecc1fc572f190ab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313639"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Algemene query patronen in Azure Stream Analytics
 
@@ -28,200 +28,6 @@ In dit artikel vindt u een overzicht van oplossingen voor verschillende veelgebr
 Azure Stream Analytics ondersteunt het verwerken van gebeurtenissen in CSV-, JSON-en Avro-gegevens indelingen.
 
 JSON en Avro kunnen complexe typen bevatten, zoals geneste objecten (records) of matrices. Raadpleeg het artikel [JSON-en Avro-gegevens parseren](stream-analytics-parsing-json.md) voor meer informatie over het werken met deze complexe gegevens typen.
-
-## <a name="simple-pass-through-query"></a>Eenvoudige Pass Through-query
-
-Een eenvoudige Pass Through-query kan worden gebruikt om de gegevens van de invoer stroom te kopiëren naar de uitvoer. Als er bijvoorbeeld een gegevens stroom met informatie over het realtime-Voer tuig moet worden opgeslagen in een SQL database voor brief analyse, wordt de taak door een eenvoudige Pass Through-query uitgevoerd.
-
-**Invoer**:
-
-| Merk | Tijd | Gewicht |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
-
-**Uitvoer**:
-
-| Merk | Tijd | Gewicht |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
-
-**Query**:
-
-```SQL
-SELECT
-    *
-INTO Output
-FROM Input
-```
-
-Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis en verzendt deze naar de uitvoer. **Op dezelfde manier kunt u** ook gebruiken om alleen de verplichte velden van de invoer te projecteren. Als in dit voor beeld het *merk* en de *tijd* van het Voer tuig de enige vereiste velden zijn die moeten worden opgeslagen, kunnen deze velden worden opgegeven in de **Select** -instructie.
-
-**Invoer**:
-
-| Merk | Tijd | Gewicht |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
-
-**Uitvoer**:
-
-| Merk | Tijd |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |
-| Make1 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:04.0000000 Z |
-
-**Query**:
-
-```SQL
-SELECT
-    Make, Time
-INTO Output
-FROM Input
-```
-## <a name="data-aggregation-over-time"></a>Gegevens aggregatie in de loop van de tijd
-
-Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen worden geaggregeerd. In dit voor beeld wordt een telling berekend over de laatste tien seconden van de tijd voor elke specifieke auto.
-
-**Invoer**:
-
-| Merk | Tijd | Gewicht |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
-
-**Uitvoer**:
-
-| Merk | Count |
-| --- | --- |
-| Make1 | 2 |
-| Make2 | 1 |
-
-**Query**:
-
-```SQL
-SELECT
-    Make,
-    COUNT(*) AS Count
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-Deze aggregatie groepeert de auto's door deze elke 10 seconden te *maken* en te tellen. De uitvoer heeft het *merk* en *aantal* auto's dat heeft geleid door de gratis.
-
-TumblingWindow is een functie die wordt gebruikt om gebeurtenissen samen te groeperen. Een aggregatie kan worden toegepast op alle gegroepeerde gebeurtenissen. Zie [windowing functions](stream-analytics-window-functions.md)(Engelstalig) voor meer informatie.
-
-Raadpleeg [statistische functies](/stream-analytics-query/aggregate-functions-azure-stream-analytics)voor meer informatie over aggregatie.
-
-## <a name="data-conversion"></a>Gegevens conversie
-
-Gegevens kunnen in realtime worden omgezet met behulp van de **cast** -methode. Het auto gewicht kan bijvoorbeeld worden geconverteerd van het type **nvarchar (max)** naar het type **bigint** en worden gebruikt voor een numerieke berekening.
-
-**Invoer**:
-
-| Merk | Tijd | Gewicht |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
-
-**Uitvoer**:
-
-| Merk | Gewicht |
-| --- | --- |
-| Make1 |3000 |
-
-**Query**:
-
-```SQL
-SELECT
-    Make,
-    SUM(CAST(Weight AS BIGINT)) AS Weight
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-Gebruik een **cast** -instructie om het bijbehorende gegevens type op te geven. Zie de lijst met ondersteunde gegevens typen in [gegevens typen (Azure stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
-
-Voor meer informatie over [functies voor gegevens conversie](/stream-analytics-query/conversion-functions-azure-stream-analytics).
-
-## <a name="string-matching-with-like-and-not-like"></a>Teken reeks vergelijking met LIKE en niet als
-
-**Net** als bij en **niet zoals** kan worden gebruikt om te controleren of een veld overeenkomt met een bepaald patroon. U kunt bijvoorbeeld een filter maken om alleen de licentie platen te retour neren die beginnen met de letter ' A ' en eindigen met het cijfer 9.
-
-**Invoer**:
-
-| Merk | License_plate | Tijd |
-| --- | --- | --- |
-| Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
-
-**Uitvoer**:
-
-| Merk | License_plate | Tijd |
-| --- | --- | --- |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
-
-**Query**:
-
-```SQL
-SELECT
-    *
-FROM
-    Input TIMESTAMP BY Time
-WHERE
-    License_plate LIKE 'A%9'
-```
-
-Gebruik de instructie **like** om de waarde van het **License_plate** veld te controleren. Deze moet beginnen met de letter ' A ' en vervolgens een wille keurige teken reeks van nul of meer tekens hebben, eindigend op het getal 9.
-
-## <a name="specify-logic-for-different-casesvalues-case-statements"></a>Geef logica op voor verschillende cases/waarden (CASE-instructies)
-
-**Case** -instructies kunnen verschillende berekeningen bieden voor verschillende velden, op basis van een bepaald criterium. Wijs bijvoorbeeld Lane ' A ' toe aan auto's van *Make1* en Lane ' B ' naar een ander merk.
-
-**Invoer**:
-
-| Merk | Tijd |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |
-| Make2 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:03.0000000 Z |
-
-**Uitvoer**:
-
-| Merk |Dispatch_to_lane | Tijd |
-| --- | --- | --- |
-| Make1 |Één |2015-01-01T00:00:01.0000000 Z |
-| Make2 |B |2015-01-01T00:00:02.0000000 Z |
-
-**Oplossing**:
-
-```SQL
-SELECT
-    Make
-    CASE
-        WHEN Make = "Make1" THEN "A"
-        ELSE "B"
-    END AS Dispatch_to_lane,
-    System.TimeStamp() AS Time
-FROM
-    Input TIMESTAMP BY Time
-```
-
-De **Case** -expressie vergelijkt een expressie met een reeks eenvoudige expressies om het resultaat te bepalen. In dit voor beeld worden de Voer tuigen van *Make1* naar Lane ' A ' verzonden terwijl de Voer tuigen van een ander merk Lane ' B ' krijgen.
-
-Raadpleeg voor meer informatie Case- [expressie](/stream-analytics-query/case-azure-stream-analytics).
 
 ## <a name="send-data-to-multiple-outputs"></a>Gegevens verzenden naar meerdere uitvoer
 
@@ -308,40 +114,91 @@ HAVING [Count] >= 3
 
 Raadpleeg de [ **with** -component](/stream-analytics-query/with-azure-stream-analytics)voor meer informatie.
 
-## <a name="count-unique-values"></a>Unieke waarden tellen
+## <a name="simple-pass-through-query"></a>Eenvoudige Pass Through-query
 
-**Count** en **DISTINCT** kunnen worden gebruikt voor het tellen van het aantal unieke veld waarden dat binnen een tijd venster in de stroom wordt weer gegeven. U kunt een query maken om te berekenen *hoeveel unieke auto's* er worden door gegeven via de telefoon stand in een periode van twee seconden.
+Een eenvoudige Pass Through-query kan worden gebruikt om de gegevens van de invoer stroom te kopiëren naar de uitvoer. Als er bijvoorbeeld een gegevens stroom met informatie over het realtime-Voer tuig moet worden opgeslagen in een SQL database voor brief analyse, wordt de taak door een eenvoudige Pass Through-query uitgevoerd.
 
 **Invoer**:
+
+| Merk | Tijd | Gewicht |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
+
+**Uitvoer**:
+
+| Merk | Tijd | Gewicht |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
+
+**Query**:
+
+```SQL
+SELECT
+    *
+INTO Output
+FROM Input
+```
+
+Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis en verzendt deze naar de uitvoer. **Op dezelfde manier kunt u** ook gebruiken om alleen de verplichte velden van de invoer te projecteren. Als in dit voor beeld het *merk* en de *tijd* van het Voer tuig de enige vereiste velden zijn die moeten worden opgeslagen, kunnen deze velden worden opgegeven in de **Select** -instructie.
+
+**Invoer**:
+
+| Merk | Tijd | Gewicht |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
+
+**Uitvoer**:
 
 | Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:01.0000000 Z |
-| Make2 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:03.0000000 Z |
+| Make2 |2015-01-01T00:00:04.0000000 Z |
 
-**Uitvoer**
-
-| Count_make | Tijd |
-| --- | --- |
-| 2 |2015-01-01T00:00:02.000 Z |
-| 1 |2015-01-01T00:00:04.000 Z |
-
-**Ophalen**
+**Query**:
 
 ```SQL
 SELECT
-     COUNT(DISTINCT Make) AS Count_make,
-     System.TIMESTAMP() AS Time
-FROM Input TIMESTAMP BY TIME
-GROUP BY 
-     TumblingWindow(second, 2)
+    Make, Time
+INTO Output
+FROM Input
 ```
 
-**Aantal (DISTINCT maken)** retourneert het aantal afzonderlijke waarden in de kolom **maken** binnen een tijd venster.
-Raadpleeg voor meer informatie de functie [ **aantal** statistische functies](/stream-analytics-query/count-azure-stream-analytics).
+## <a name="string-matching-with-like-and-not-like"></a>Teken reeks vergelijking met LIKE en niet als
+
+**Net** als bij en **niet zoals** kan worden gebruikt om te controleren of een veld overeenkomt met een bepaald patroon. U kunt bijvoorbeeld een filter maken om alleen de licentie platen te retour neren die beginnen met de letter ' A ' en eindigen met het cijfer 9.
+
+**Invoer**:
+
+| Merk | License_plate | Tijd |
+| --- | --- | --- |
+| Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
+
+**Uitvoer**:
+
+| Merk | License_plate | Tijd |
+| --- | --- | --- |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
+
+**Query**:
+
+```SQL
+SELECT
+    *
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    License_plate LIKE 'A%9'
+```
+
+Gebruik de instructie **like** om de waarde van het **License_plate** veld te controleren. Deze moet beginnen met de letter ' A ' en vervolgens een wille keurige teken reeks van nul of meer tekens hebben, eindigend op het getal 9.
 
 ## <a name="calculation-over-past-events"></a>Berekening over eerdere gebeurtenissen
 
@@ -375,69 +232,6 @@ WHERE
 Gebruik **lag** om één gebeurtenis terug in de invoer stroom te bekijken, de waarde voor het *maken* op te halen en te vergelijken met de waarde van de huidige gebeurtenis en de gebeurtenis uit *te voeren.*
 
 Raadpleeg voor meer informatie de [**vertraging**](/stream-analytics-query/lag-azure-stream-analytics).
-
-## <a name="retrieve-the-first-event-in-a-window"></a>De eerste gebeurtenis in een venster ophalen
-
-**IsFirst** kan worden gebruikt om de eerste gebeurtenis in een tijd venster op te halen. Bijvoorbeeld: het uitvoeren van de eerste informatie over de auto op elke periode van tien minuten.
-
-**Invoer**:
-
-| License_plate | Merk | Tijd |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
-| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000 Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
-
-**Uitvoer**:
-
-| License_plate | Merk | Tijd |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
-
-**Query**:
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) = 1
-```
-
-**IsFirst** kan ook de gegevens partitioneren en de eerste gebeurtenis berekenen op elke specifieke *auto die* elke periode van tien minuten wordt gevonden.
-
-**Uitvoer**:
-
-| License_plate | Merk | Tijd |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
-
-**Query**:
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
-```
-
-Zie [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics)voor meer informatie.
 
 ## <a name="return-the-last-event-in-a-window"></a>De laatste gebeurtenis in een venster retour neren
 
@@ -492,6 +286,89 @@ In de eerste stap van de query wordt de maximale tijds tempel in Windows van 10 
 
 Raadpleeg [**join**](/stream-analytics-query/join-azure-stream-analytics)voor meer informatie over het toevoegen van streams.
 
+## <a name="data-aggregation-over-time"></a>Gegevens aggregatie in de loop van de tijd
+
+Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen worden geaggregeerd. In dit voor beeld wordt een telling berekend over de laatste tien seconden van de tijd voor elke specifieke auto.
+
+**Invoer**:
+
+| Merk | Tijd | Gewicht |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
+
+**Uitvoer**:
+
+| Merk | Count |
+| --- | --- |
+| Make1 | 2 |
+| Make2 | 1 |
+
+**Query**:
+
+```SQL
+SELECT
+    Make,
+    COUNT(*) AS Count
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+Deze aggregatie groepeert de auto's door deze elke 10 seconden te *maken* en te tellen. De uitvoer heeft het *merk* en *aantal* auto's dat heeft geleid door de gratis.
+
+TumblingWindow is een functie die wordt gebruikt om gebeurtenissen samen te groeperen. Een aggregatie kan worden toegepast op alle gegroepeerde gebeurtenissen. Zie [windowing functions](stream-analytics-window-functions.md)(Engelstalig) voor meer informatie.
+
+Raadpleeg [statistische functies](/stream-analytics-query/aggregate-functions-azure-stream-analytics)voor meer informatie over aggregatie.
+
+## <a name="periodically-output-values"></a>Periodieke uitvoer waarden
+
+Bij onregelmatig of ontbrekende gebeurtenissen kan een regel matige interval uitvoer worden gegenereerd op basis van een meer sparere gegevens invoer. Genereer bijvoorbeeld elke 5 seconden een gebeurtenis die het meest recent weer gegeven gegevens punt rapporteert.
+
+**Invoer**:
+
+| Tijd | Waarde |
+| --- | --- |
+| "2014-01-01T06:01:00" |1 |
+| "2014-01-01T06:01:05" |2 |
+| "2014-01-01T06:01:10" |3 |
+| "2014-01-01T06:01:15" |4 |
+| "2014-01-01T06:01:30" |5 |
+| "2014-01-01T06:01:35" |6 |
+
+**Uitvoer (eerste 10 rijen)**:
+
+| Window_end | Last_event. Tegelijk | Last_event. Value |
+| --- | --- | --- |
+| 2014-01-01T14:01:00.000 Z |2014-01-01T14:01:00.000 Z |1 |
+| 2014-01-01T14:01:05.000 Z |2014-01-01T14:01:05.000 Z |2 |
+| 2014-01-01T14:01:10.000 Z |2014-01-01T14:01:10.000 Z |3 |
+| 2014-01-01T14:01:15.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:20.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:25.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:30.000 Z |2014-01-01T14:01:30.000 Z |5 |
+| 2014-01-01T14:01:35.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
+
+**Query**:
+
+```SQL
+SELECT
+    System.Timestamp() AS Window_end,
+    TopOne() OVER (ORDER BY Time DESC) AS Last_event
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    HOPPINGWINDOW(second, 300, 5)
+```
+
+Met deze query worden elke vijf seconden gebeurtenissen gegenereerd en wordt de laatste gebeurtenis uitgevoerd die eerder is ontvangen. De duur van de **HOPPINGWINDOW** bepaalt hoe ver terug de query zoekt naar de meest recente gebeurtenis.
+
+Raadpleeg het [venster verspringen](/stream-analytics-query/hopping-window-azure-stream-analytics)voor meer informatie.
 
 ## <a name="correlate-events-in-a-stream"></a>Gebeurtenissen in een stroom correleren
 
@@ -565,142 +442,103 @@ WHERE
 
 De functie **last** kan worden gebruikt om de laatste gebeurtenis binnen een bepaalde voor waarde op te halen. In dit voor beeld is de voor waarde een gebeurtenis van het type start, waarbij de zoek opdracht wordt gepartitioneerd **door de gebruiker en** het onderdeel. Op deze manier worden elke gebruiker en elk onderdeel onafhankelijk behandeld bij het zoeken naar de start gebeurtenis. De **limiet duur** beperkt de zoek opdracht terug in de tijd naar 1 uur tussen de eind-en begin gebeurtenissen.
 
-## <a name="detect-the-duration-of-a-condition"></a>De duur van een voor waarde detecteren
+## <a name="count-unique-values"></a>Unieke waarden tellen
 
-De functie **lag** kan worden gebruikt om de duur van de voor waarde vast te stellen voor voor waarden die meerdere gebeurtenissen omvatten. Stel bijvoorbeeld dat een bug heeft geresulteerd in alle auto's met een onjuist gewicht (meer dan 20.000 ponden) en de duur van die fout moet worden berekend.
+**Count** en **DISTINCT** kunnen worden gebruikt voor het tellen van het aantal unieke veld waarden dat binnen een tijd venster in de stroom wordt weer gegeven. U kunt een query maken om te berekenen *hoeveel unieke auto's* er worden door gegeven via de telefoon stand in een periode van twee seconden.
 
 **Invoer**:
 
-| Merk | Tijd | Gewicht |
+| Merk | Tijd |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
+
+**Uitvoer**
+
+| Count_make | Tijd |
+| --- | --- |
+| 2 |2015-01-01T00:00:02.000 Z |
+| 1 |2015-01-01T00:00:04.000 Z |
+
+**Ophalen**
+
+```SQL
+SELECT
+     COUNT(DISTINCT Make) AS Count_make,
+     System.TIMESTAMP() AS Time
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+```
+
+**Aantal (DISTINCT maken)** retourneert het aantal afzonderlijke waarden in de kolom **maken** binnen een tijd venster.
+Raadpleeg voor meer informatie de functie [ **aantal** statistische functies](/stream-analytics-query/count-azure-stream-analytics).
+
+## <a name="retrieve-the-first-event-in-a-window"></a>De eerste gebeurtenis in een venster ophalen
+
+**IsFirst** kan worden gebruikt om de eerste gebeurtenis in een tijd venster op te halen. Bijvoorbeeld: het uitvoeren van de eerste informatie over de auto op elke periode van tien minuten.
+
+**Invoer**:
+
+| License_plate | Merk | Tijd |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
-| Make2 |2015-01-01T00:00:02.0000000 Z |25.000 |
-| Make1 |2015-01-01T00:00:03.0000000 Z |26000 |
-| Make2 |2015-01-01T00:00:04.0000000 Z |25.000 |
-| Make1 |2015-01-01T00:00:05.0000000 Z |26000 |
-| Make2 |2015-01-01T00:00:06.0000000 Z |25.000 |
-| Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
-| Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
+| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
 **Uitvoer**:
 
-| Start_fault | End_fault |
-| --- | --- |
-| 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
+| License_plate | Merk | Tijd |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 
 **Query**:
 
 ```SQL
-WITH SelectPreviousEvent AS
-(
-SELECT
-    *,
-    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
-    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
-FROM input TIMESTAMP BY [time]
-)
-
 SELECT 
-    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
-    previous_time [End_fault]
-FROM SelectPreviousEvent
-WHERE
-    [weight] < 20000
-    AND previous_weight > 20000
-```
-De eerste **Select** -instructie correleert de huidige gewichts meting met de vorige meting, waarbij deze samen met de huidige meting wordt geprojecteerd. De tweede **selecteren** zoekt terug naar de laatste gebeurtenis waarbij de *previous_weight* kleiner is dan 20000, waarbij het huidige gewicht kleiner is dan 20000 en de *previous_weight* van de huidige gebeurtenis groter is dan 20000.
-
-De End_fault is de huidige niet-fout gebeurtenis waarbij de vorige gebeurtenis is mislukt en de Start_fault de laatste niet-fout gebeurtenis vóór dat.
-
-## <a name="periodically-output-values"></a>Periodieke uitvoer waarden
-
-Bij onregelmatig of ontbrekende gebeurtenissen kan een regel matige interval uitvoer worden gegenereerd op basis van een meer sparere gegevens invoer. Genereer bijvoorbeeld elke 5 seconden een gebeurtenis die het meest recent weer gegeven gegevens punt rapporteert.
-
-**Invoer**:
-
-| Tijd | Waarde |
-| --- | --- |
-| "2014-01-01T06:01:00" |1 |
-| "2014-01-01T06:01:05" |2 |
-| "2014-01-01T06:01:10" |3 |
-| "2014-01-01T06:01:15" |4 |
-| "2014-01-01T06:01:30" |5 |
-| "2014-01-01T06:01:35" |6 |
-
-**Uitvoer (eerste 10 rijen)**:
-
-| Window_end | Last_event. Tegelijk | Last_event. Value |
-| --- | --- | --- |
-| 2014-01-01T14:01:00.000 Z |2014-01-01T14:01:00.000 Z |1 |
-| 2014-01-01T14:01:05.000 Z |2014-01-01T14:01:05.000 Z |2 |
-| 2014-01-01T14:01:10.000 Z |2014-01-01T14:01:10.000 Z |3 |
-| 2014-01-01T14:01:15.000 Z |2014-01-01T14:01:15.000 Z |4 |
-| 2014-01-01T14:01:20.000 Z |2014-01-01T14:01:15.000 Z |4 |
-| 2014-01-01T14:01:25.000 Z |2014-01-01T14:01:15.000 Z |4 |
-| 2014-01-01T14:01:30.000 Z |2014-01-01T14:01:30.000 Z |5 |
-| 2014-01-01T14:01:35.000 Z |2014-01-01T14:01:35.000 Z |6 |
-| 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
-| 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
-
-**Query**:
-
-```SQL
-SELECT
-    System.Timestamp() AS Window_end,
-    TopOne() OVER (ORDER BY Time DESC) AS Last_event
-FROM
+    License_plate,
+    Make,
+    Time
+FROM 
     Input TIMESTAMP BY Time
-GROUP BY
-    HOPPINGWINDOW(second, 300, 5)
+WHERE 
+    IsFirst(minute, 10) = 1
 ```
 
-Met deze query worden elke vijf seconden gebeurtenissen gegenereerd en wordt de laatste gebeurtenis uitgevoerd die eerder is ontvangen. De duur van de **HOPPINGWINDOW** bepaalt hoe ver terug de query zoekt naar de meest recente gebeurtenis.
-
-Raadpleeg het [venster verspringen](/stream-analytics-query/hopping-window-azure-stream-analytics)voor meer informatie.
-
-## <a name="process-events-with-independent-time-substreams"></a>Gebeurtenissen verwerken met onafhankelijke tijd (substreamen)
-
-Gebeurtenissen kunnen te laat of in onjuiste volg orde arriveren als gevolg van de klok tussen de gebeurtenissen van de producent, de klok tussen partities of netwerk latentie.
-Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van het apparaat voor *TollID* 3 is tien seconden achter *TollID* 1. Een berekening kan onafhankelijk voor elke gratis worden uitgevoerd, waarbij alleen de eigen klok gegevens worden beschouwd als een tijds tempel.
-
-**Invoer**:
-
-| LicensePlate | Merk | Tijd | TollID |
-| --- | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
-| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
-| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000 Z | 2 |
-| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000 Z | 2 |
-| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000 Z | 1 |
-| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000 Z | 3 |
-| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
-| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
+**IsFirst** kan ook de gegevens partitioneren en de eerste gebeurtenis berekenen op elke specifieke *auto die* elke periode van tien minuten wordt gevonden.
 
 **Uitvoer**:
 
-| TollID | Aantal |
-| --- | --- |
-| 1 | 2 |
-| 2 | 2 |
-| 1 | 1 |
-| 3 | 1 |
-| 2 | 1 |
-| 3 | 1 |
+| License_plate | Merk | Tijd |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
 **Query**:
 
 ```SQL
-SELECT
-      TollId,
-      COUNT(*) AS Count
-FROM input
-      TIMESTAMP BY Time OVER TollId
-GROUP BY TUMBLINGWINDOW(second, 5), TollId
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 ```
 
-De component **Time Stamp over by** kijkt op elke tijd lijn van het apparaat onafhankelijk van substreamen. De uitvoer gebeurtenis voor elke *TollID* wordt gegenereerd wanneer ze worden berekend, wat inhoudt dat de gebeurtenissen zich bevinden ten opzichte van elke *TollID* in plaats van dat ze opnieuw moeten worden gerangschikt alsof alle apparaten dezelfde klok hebben.
-
-Raadpleeg [Time Stamp](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering)voor meer informatie.
+Zie [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics)voor meer informatie.
 
 ## <a name="remove-duplicate-events-in-a-window"></a>Dubbele gebeurtenissen in een venster verwijderen
 
@@ -750,6 +588,168 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 **Aantal (DISTINCT time)** retourneert het aantal DISTINCT-waarden in de tijd kolom binnen een tijd venster. De uitvoer van de eerste stap kan vervolgens worden gebruikt om het gemiddelde per apparaat te berekenen door dubbele waarden te verwijderen.
 
 Zie [aantal (DISTINCT time)](/stream-analytics-query/count-azure-stream-analytics)voor meer informatie.
+
+## <a name="specify-logic-for-different-casesvalues-case-statements"></a>Geef logica op voor verschillende cases/waarden (CASE-instructies)
+
+**Case** -instructies kunnen verschillende berekeningen bieden voor verschillende velden, op basis van een bepaald criterium. Wijs bijvoorbeeld Lane ' A ' toe aan auto's van *Make1* en Lane ' B ' naar een ander merk.
+
+**Invoer**:
+
+| Merk | Tijd |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
+
+**Uitvoer**:
+
+| Merk |Dispatch_to_lane | Tijd |
+| --- | --- | --- |
+| Make1 |Één |2015-01-01T00:00:01.0000000 Z |
+| Make2 |B |2015-01-01T00:00:02.0000000 Z |
+
+**Oplossing**:
+
+```SQL
+SELECT
+    Make
+    CASE
+        WHEN Make = "Make1" THEN "A"
+        ELSE "B"
+    END AS Dispatch_to_lane,
+    System.TimeStamp() AS Time
+FROM
+    Input TIMESTAMP BY Time
+```
+
+De **Case** -expressie vergelijkt een expressie met een reeks eenvoudige expressies om het resultaat te bepalen. In dit voor beeld worden de Voer tuigen van *Make1* naar Lane ' A ' verzonden terwijl de Voer tuigen van een ander merk Lane ' B ' krijgen.
+
+Raadpleeg voor meer informatie Case- [expressie](/stream-analytics-query/case-azure-stream-analytics).
+
+## <a name="data-conversion"></a>Gegevens conversie
+
+Gegevens kunnen in realtime worden omgezet met behulp van de **cast** -methode. Het auto gewicht kan bijvoorbeeld worden geconverteerd van het type **nvarchar (max)** naar het type **bigint** en worden gebruikt voor een numerieke berekening.
+
+**Invoer**:
+
+| Merk | Tijd | Gewicht |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
+
+**Uitvoer**:
+
+| Merk | Gewicht |
+| --- | --- |
+| Make1 |3000 |
+
+**Query**:
+
+```SQL
+SELECT
+    Make,
+    SUM(CAST(Weight AS BIGINT)) AS Weight
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+Gebruik een **cast** -instructie om het bijbehorende gegevens type op te geven. Zie de lijst met ondersteunde gegevens typen in [gegevens typen (Azure stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
+
+Voor meer informatie over [functies voor gegevens conversie](/stream-analytics-query/conversion-functions-azure-stream-analytics).
+
+## <a name="detect-the-duration-of-a-condition"></a>De duur van een voor waarde detecteren
+
+De functie **lag** kan worden gebruikt om de duur van de voor waarde vast te stellen voor voor waarden die meerdere gebeurtenissen omvatten. Stel bijvoorbeeld dat een bug heeft geresulteerd in alle auto's met een onjuist gewicht (meer dan 20.000 ponden) en de duur van die fout moet worden berekend.
+
+**Invoer**:
+
+| Merk | Tijd | Gewicht |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:02.0000000 Z |25.000 |
+| Make1 |2015-01-01T00:00:03.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |25.000 |
+| Make1 |2015-01-01T00:00:05.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:06.0000000 Z |25.000 |
+| Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
+
+**Uitvoer**:
+
+| Start_fault | End_fault |
+| --- | --- |
+| 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
+
+**Query**:
+
+```SQL
+WITH SelectPreviousEvent AS
+(
+SELECT
+    *,
+    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
+    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
+FROM input TIMESTAMP BY [time]
+)
+
+SELECT 
+    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
+    previous_time [End_fault]
+FROM SelectPreviousEvent
+WHERE
+    [weight] < 20000
+    AND previous_weight > 20000
+```
+De eerste **Select** -instructie correleert de huidige gewichts meting met de vorige meting, waarbij deze samen met de huidige meting wordt geprojecteerd. De tweede **selecteren** zoekt terug naar de laatste gebeurtenis waarbij de *previous_weight* kleiner is dan 20000, waarbij het huidige gewicht kleiner is dan 20000 en de *previous_weight* van de huidige gebeurtenis groter is dan 20000.
+
+De End_fault is de huidige niet-fout gebeurtenis waarbij de vorige gebeurtenis is mislukt en de Start_fault de laatste niet-fout gebeurtenis vóór dat.
+
+## <a name="process-events-with-independent-time-substreams"></a>Gebeurtenissen verwerken met onafhankelijke tijd (substreamen)
+
+Gebeurtenissen kunnen te laat of in onjuiste volg orde arriveren als gevolg van de klok tussen de gebeurtenissen van de producent, de klok tussen partities of netwerk latentie.
+Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van het apparaat voor *TollID* 3 is tien seconden achter *TollID* 1. Een berekening kan onafhankelijk voor elke gratis worden uitgevoerd, waarbij alleen de eigen klok gegevens worden beschouwd als een tijds tempel.
+
+**Invoer**:
+
+| LicensePlate | Merk | Tijd | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
+| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
+| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000 Z | 2 |
+| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000 Z | 2 |
+| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000 Z | 1 |
+| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000 Z | 3 |
+| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
+| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
+
+**Uitvoer**:
+
+| TollID | Aantal |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Query**:
+
+```SQL
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+```
+
+De component **Time Stamp over by** kijkt op elke tijd lijn van het apparaat onafhankelijk van substreamen. De uitvoer gebeurtenis voor elke *TollID* wordt gegenereerd wanneer ze worden berekend, wat inhoudt dat de gebeurtenissen zich bevinden ten opzichte van elke *TollID* in plaats van dat ze opnieuw moeten worden gerangschikt alsof alle apparaten dezelfde klok hebben.
+
+Raadpleeg [Time Stamp](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering)voor meer informatie.
 
 ## <a name="session-windows"></a>Sessie Vensters
 
@@ -885,6 +885,7 @@ Geslaagd en mislukt worden gedefinieerd met behulp van Return_Code waarde en wan
 Zie [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)voor meer informatie.
 
 ## <a name="geofencing-and-geospatial-queries"></a>Geoomheiningen en georuimtelijke query's
+
 Azure Stream Analytics biedt ingebouwde georuimtelijke functies die kunnen worden gebruikt voor het implementeren van scenario's zoals vloot beheer, het delen van wijzigingen, verbonden auto's en het bijhouden van activa.
 Georuimtelijke gegevens kunnen in geojson-of WKT-indelingen worden opgenomen als onderdeel van de gebeurtenis stroom of referentie gegevens.
 Bijvoorbeeld een bedrijf dat is gespecialiseerd in productie machines voor het afdrukken van Pass ports, het leasen van hun machines aan overheden en consulates. De locatie van deze machines wordt sterk beheerd, om te voor komen dat het niet kan worden gebruikt voor het vervalsen van paspoorten. Elke machine is voorzien van een GPS-tracker en deze gegevens worden door gegeven aan een Azure Stream Analytics taak.

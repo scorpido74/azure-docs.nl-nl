@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 80edafb9cffa43f7163c1b75c9faaaefbb97c616
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127414"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288937"
 ---
 # <a name="u-sql-programmability-guide"></a>Programmeer handleiding voor U-SQL
 
@@ -125,7 +125,7 @@ Raadpleeg de [instructies van de assembly-registratie](https://blogs.msdn.micros
 
 
 ### <a name="use-assembly-versioning"></a>Assembly versie beheer gebruiken
-Op dit moment gebruikt U-SQL de .NET Framework versie 4,5. Zorg ervoor dat uw eigen assembly's compatibel zijn met deze versie van de runtime.
+Op dit moment gebruikt U-SQL de .NET Framework versie 4.7.2. Zorg ervoor dat uw eigen assembly's compatibel zijn met deze versie van de runtime.
 
 Zoals eerder vermeld, voert U-SQL-code uit in een 64-bits (x64)-indeling. Zorg er dus voor dat uw code wordt gecompileerd om te worden uitgevoerd op x64. Anders krijgt u de onjuiste indelings fout die eerder is weer gegeven.
 

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309948"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289282"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Problemen met failback naar on-premises vanuit Azure oplossen
 
@@ -19,7 +20,7 @@ In dit artikel wordt beschreven hoe u problemen oplost die kunnen optreden wanne
 
 Voor failback zijn in feite twee belang rijke stappen vereist. Voor de eerste stap moet u na een failover de Azure-Vm's opnieuw beveiligen naar on-premises zodat ze worden gerepliceerd. De tweede stap bestaat uit het uitvoeren van een failover vanuit Azure om een failback uit te voeren naar uw on-premises site.
 
-## <a name="common-issues"></a>Algemene problemen
+## <a name="common-issues"></a>Veelvoorkomende problemen
 
 - Als u een alleen-lezen gebruikers-vCenter-detectie uitvoert en virtuele machines beveiligt, is de beveiliging geslaagd en werkt failover. Tijdens het opnieuw beveiligen mislukt de failover omdat de gegevens opslag niet kan worden gedetecteerd. Een symptoom is dat de gegevens opslag niet wordt weer gegeven tijdens het opnieuw beveiligen. U kunt dit probleem oplossen door de vCenter-referenties bij te werken met een geschikt account dat machtigingen heeft en de taak vervolgens opnieuw uit te voeren.
 - Wanneer u een back-up van een virtuele Linux-machine maakt en deze on-premises uitvoert, kunt u zien dat het pakket met de netwerk beheerder is verwijderd van de computer. Dit wordt veroorzaakt doordat het pakket voor netwerk beheer wordt verwijderd wanneer de virtuele machine wordt hersteld in Azure.
@@ -28,7 +29,7 @@ Voor failback zijn in feite twee belang rijke stappen vereist. Voor de eerste st
 - Als u de configuratie server niet kunt bereiken vanaf de proces server, gebruikt u Telnet om de verbinding met de configuratie server op poort 443 te controleren. U kunt ook proberen de configuratie server te pingen vanaf de proces server. Een proces server moet ook een heartbeat hebben als deze is verbonden met de configuratie server.
 - Een Windows Server 2008 R2 SP1-server die wordt beveiligd als een fysieke on-premises server kan niet worden teruggezet van Azure naar een on-premises site.
 - U kunt geen failback uitvoeren in de volgende situaties:
-    - U hebt computers gemigreerd naar Azure. [Meer informatie](migrate-overview.md#what-do-we-mean-by-migration).
+    - U hebt computers gemigreerd naar Azure. 
     - U hebt een virtuele machine naar een andere resource groep verplaatst.
     - U hebt de Azure-VM verwijderd.
     - U hebt de beveiliging van de virtuele machine uitgeschakeld.
@@ -63,7 +64,7 @@ Dit probleem kan zich voordoen als er al een virtuele machine met dezelfde naam 
 Ga als volgt te werk om het probleem op te lossen:
 
 * Selecteer een andere Master doel server op een andere host zodat de computer op een andere host wordt gemaakt, waarbij de namen niet conflicteren.
-* U kunt vMotion ook gebruiken om het hoofd doel te verplaatsen naar een andere host waar de naam conflicten niet optreden. Als de bestaande VM een losse machine is, wijzigt u de naam zodat de nieuwe VM op dezelfde ESXi-host kan worden gemaakt.
+* U kunt VMotion ook gebruiken om het hoofd doel te verplaatsen naar een andere host waar de naam conflicten niet optreden. Als de bestaande VM een losse machine is, wijzigt u de naam zodat de nieuwe VM op dezelfde ESXi-host kan worden gemaakt.
 
 
 ### <a name="error-code-78093"></a>Fout code 78093
@@ -97,4 +98,4 @@ Dit probleem treedt op wanneer de on-premises VM wordt geactiveerd op een host w
 Ga als volgt te werk om het probleem op te lossen:
 
 * Richt meer geheugen in op de ESXi-host.
-* Daarnaast kunt u met vMotion de virtuele machine verplaatsen naar een andere ESXi-host die voldoende geheugen heeft om de virtuele machine op te starten.
+* Daarnaast kunt u met VMotion de virtuele machine verplaatsen naar een andere ESXi-host die voldoende geheugen heeft om de virtuele machine op te starten.

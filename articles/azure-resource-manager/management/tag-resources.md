@@ -3,12 +3,12 @@ title: Label resources, resource groepen en abonnementen voor logische organisat
 description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 08612831007eeba781a473ca704d92a52ab0a638
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323873"
+ms.locfileid: "87337531"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en-beheer hiërarchie te organiseren
 
@@ -17,7 +17,7 @@ U past tags toe op uw Azure-resources, resource groepen en abonnementen om ze lo
 Zie voor meer informatie over het implementeren van een coderings strategie de [hand leiding resource naam geven en Tags nemen](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> Namen van tags zijn hoofdletter gevoelig voor bewerkingen. Een tag met de naam van een tag, ongeacht het hoofdletter gebruik, wordt bijgewerkt of opgehaald. De resource provider kan echter de behuizing bewaren die u opgeeft voor de naam van de tag. U ziet dat de behuizing in kosten rapporten wordt weer gegeven.
+> Namen van tags zijn hoofdletter gevoelig voor bewerkingen. Een tag met de naam van een tag, ongeacht het hoofdletter gebruik, wordt bijgewerkt of opgehaald. De resource provider kan echter de behuizing die u opgeeft voor de naam van de tag blijven gebruiken. U ziet dat de behuizing in kosten rapporten wordt weer gegeven.
 > 
 > Label waarden zijn hoofdletter gevoelig.
 

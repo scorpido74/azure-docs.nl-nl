@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251193"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285863"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)
 
@@ -57,9 +57,9 @@ Traffic Manager DNS-Zoek opdrachten uitvoeren en retourneert het meest geschikte
 
 Voor informatie over het instellen van eind punten en route ring, Zie [de methode voor geografische verkeers routering configureren met behulp van Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Route ring van laag 7-toepassingen met de Azure front-deur service
+### <a name="application-routing-with-azure-front-door-service"></a>Toepassings routering met Azure front-deur service
 
-Traffic Manager DNS (Layer 3) gebruikt voor het vorm geven van verkeer. De [Azure front-deur service](../frontdoor/front-door-overview.md) biedt een HTTP/HTTPS-routerings optie (Layer 7). Aanvullende functies van de Azure front-deur service zijn TLS-beëindiging, aangepast domein, Web Application Firewall, URL herschrijven en sessie affiniteit. Bekijk de vereisten van uw toepassings verkeer om te begrijpen welke oplossing het meest geschikt is.
+Met behulp van een gesplitste op TCP gebaseerd anycast-protocol zorgt de [Azure front-deur service](../frontdoor/front-door-overview.md) ervoor dat uw eind gebruikers onmiddellijk verbinding maken met de dichtstbijzijnde pop met de voor deur (punt van aanwezigheid). Aanvullende functies van de Azure front-deur service zijn TLS-beëindiging, aangepast domein, Web Application Firewall, URL herschrijven en sessie affiniteit. Bekijk de vereisten van uw toepassings verkeer om te begrijpen welke oplossing het meest geschikt is.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Interconnect-regio's met globale virtuele-netwerk peering
 

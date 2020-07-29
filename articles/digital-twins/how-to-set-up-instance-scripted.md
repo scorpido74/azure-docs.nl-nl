@@ -1,5 +1,5 @@
 ---
-title: Een exemplaar en authenticatie instellen (met een script)
+title: Een exemplaar en verificatie instellen (met een script)
 titleSuffix: Azure Digital Twins
 description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen, met inbegrip van de juiste verificatie. Script versie.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125774"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337905"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -49,7 +49,7 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
     * Voor het exemplaar: de *abonnements-id* van uw Azure-abonnement dat moet worden gebruikt
     * Voor het exemplaar: een *locatie* waar u het exemplaar wilt implementeren. Als u wilt zien welke regio's Azure Digital Apparaatdubbels ondersteunen, gaat u naar [*Azure-producten beschikbaar per regio*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * Voor het exemplaar: een naam van een *resource groep* . U kunt een bestaande resource groep gebruiken of een nieuwe naam opgeven om deze te maken.
-    * Voor het exemplaar: een *naam* voor uw Azure Digital apparaatdubbels-exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio (wat betekent dat als een ander Azure Digital Apparaatdubbels-exemplaar in die regio al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
+    * Voor het exemplaar: een *naam* voor uw Azure Digital apparaatdubbels-exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio voor uw abonnement (wat betekent dat als uw abonnement een ander Azure Digital Apparaatdubbels-exemplaar heeft in de regio die al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
     * Voor de app-registratie: een *weergave naam van de Azure AD-toepassing* die u aan de registratie wilt koppelen. Met deze app-registratie kunt u toegangs machtigingen voor de [Azure Digital apparaatdubbels-api's](how-to-use-apis-sdks.md)configureren. Later wordt de client-app geverifieerd op basis van de app-registratie, en worden daarom de geconfigureerde toegangs machtigingen voor de Api's verleend.
     * Voor de app-registratie: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. U kunt gebruiken `http://localhost` .
 

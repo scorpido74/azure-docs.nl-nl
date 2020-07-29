@@ -1,6 +1,6 @@
 ---
 title: Een virtuele machine maken met een statisch openbaar IP-adres-Power shell | Microsoft Docs
-description: Meer informatie over het maken van een virtuele machine met een statisch openbaar IP-adres met behulp van Power shell.
+description: Maak een virtuele machine (VM) met een statisch openbaar IP-adres met behulp van Power shell. Statische open bare IP-adressen zijn adressen die nooit veranderen.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 03a619a647da247347492076e9fd36414565bf33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287704"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Een virtuele machine met een statisch openbaar IP-adres maken met behulp van Power shell
 

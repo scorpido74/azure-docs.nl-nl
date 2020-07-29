@@ -6,21 +6,21 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049802"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315815"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profiel Web-apps die worden uitgevoerd op een virtuele machine van Azure of een schaalset voor virtuele machines met behulp van Application Insights Profiler
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 U kunt ook Azure-toepassing Insights Profiler implementeren op deze services:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Profiler implementeren op een virtuele machine of een schaalset voor virtuele machines
 In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtuele machine met Azure virtual machine (VM) of virtuele-machinehost van Azure kunt ophalen. Profiler wordt geïnstalleerd met de Azure Diagnostics-extensie voor Vm's. Configureer de uitbrei ding voor het uitvoeren van Profiler en bouw de Application Insights SDK in uw toepassing.
@@ -67,7 +67,7 @@ In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtue
 
 1. Als de gewenste toepassing via [IIS](https://www.microsoft.com/web/downloads/platform.aspx)wordt uitgevoerd, schakelt u de `IIS Http Tracing` Windows-functie in.
 
-   a. Stel externe toegang tot de omgeving in en gebruik vervolgens het venster [Windows-onderdelen toevoegen]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) . Of voer de volgende opdracht uit in Power shell (als Administrator):  
+   a. Stel externe toegang tot de omgeving in en gebruik vervolgens het venster [Windows-onderdelen toevoegen](/iis/configuration/system.webserver/tracing/) . Of voer de volgende opdracht uit in Power shell (als Administrator):  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -117,3 +117,4 @@ Er is geen abonnement om Application Insights Profiler te ondersteunen voor on-p
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

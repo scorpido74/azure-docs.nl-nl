@@ -5,11 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443397"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285999"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Een Lab instellen met GPU virtual machines
 
@@ -27,13 +28,13 @@ In dit proces hebt u de mogelijkheid om een **visualisatie** of **reken** gpu's 
 
 Zoals beschreven in de volgende tabel is de *reken* GPU-grootte bedoeld voor computerintensieve toepassingen.  Het [diepe leer proces van het type natuurlijke taal verwerking](./class-type-deep-learning-natural-language-processing.md) maakt bijvoorbeeld gebruik van de grootte van de **kleine GPU (Compute)** .  De reken-GPU is geschikt voor dit type klasse, omdat studenten gebruikmaken van een diep geleerde frameworks en hulpprogram ma's die door de [Data Science virtual machine-afbeelding](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) worden verschaft om diepe leer modellen met grote gegevens sets te trainen.
 
-| Grootte | Kernen | RAM | Description | 
+| Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
 | Kleine GPU (Compute) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computer-intensieve toepassingen, zoals kunst matige intelligentie (AI) en diep gaande lessen. |
 
-De grootte van de *visualisatie* GPU is bedoeld voor grafische intensieve toepassingen.  Bijvoorbeeld, het [type SolidWorks engineering](./class-type-solidworks.md) wordt weer gegeven met behulp van de grootte van de **kleine GPU (visualisatie)** .  De visualisatie GPU is geschikt voor dit type klasse, omdat studenten communiceren met de SolidWorks 3D computer-aided design (CAD)-omgeving voor het model leren en visualiseren van effen objecten.
+De grootte van de *visualisatie* GPU is bedoeld voor grafische intensieve toepassingen.  Bijvoorbeeld, het [type SOLIDWORKS engineering](./class-type-solidworks.md) wordt weer gegeven met behulp van de grootte van de **kleine GPU (visualisatie)** .  De visualisatie GPU is geschikt voor dit type klasse, omdat studenten communiceren met de SOLIDWORKS 3D computer-aided design (CAD)-omgeving voor het model leren en visualiseren van effen objecten.
 
-| Grootte | Kernen | RAM | Description | 
+| Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
 | Kleine GPU (visualisatie) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
 | Gemiddelde GPU (visualisatie) | -&nbsp;12 &nbsp; kernen<br>-&nbsp;112 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
@@ -44,7 +45,7 @@ Zorg ervoor dat de juiste GPU-Stuur Programma's zijn geïnstalleerd om te profit
 ![Scherm afbeelding van de ' nieuwe Lab ' met de optie GPU-Stuur Programma's installeren](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 Zoals in de voor gaande afbeelding wordt weer gegeven, is deze optie standaard ingeschakeld, zodat u zeker weet dat de *meest recente* Stuur Programma's zijn geïnstalleerd voor het type GPU en de installatie kopie die u hebt geselecteerd.
-- Wanneer u een *Compute* GPU-grootte selecteert, worden uw Lab-vm's aangedreven door de [Nvidia Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU.  In dit geval worden de meest recente [CUDA-Stuur programma's (Unified Device Architecture)](https://www.nvidia.com/object/io_69526.html) geïnstalleerd, waardoor computers met hoge prestaties kunnen worden uitgevoerd.
+- Wanneer u een *Compute* GPU-grootte selecteert, worden uw Lab-vm's aangedreven door de [Nvidia Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU.  In dit geval worden de meest recente [CUDA-Stuur programma's (Unified Device Architecture)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) geïnstalleerd, waardoor computers met hoge prestaties kunnen worden uitgevoerd.
 - Wanneer u een grootte van een *visualisatie* -GPU selecteert, worden uw Lab-vm's aangedreven door de [Nvidia Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU en de [raster technologie](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf).  In dit geval zijn de meest recente raster Stuur Programma's geïnstalleerd, waardoor het gebruik van grafische intensieve toepassingen mogelijk wordt.
 
 ### <a name="install-the-drivers-manually"></a>De Stuur Programma's hand matig installeren
@@ -66,7 +67,7 @@ Ga als volgt te werk om stuur Programma's hand matig te installeren voor de reke
    d. Stel het **besturings systeem** in op basis van het type basis installatie kopie dat u hebt geselecteerd tijdens het maken van uw Lab.  
    e. Stel de **CUDA-werkset** in op de versie van het CUDA-stuur programma dat u nodig hebt.  
    f. Selecteer **zoeken** om uw stuur Programma's te zoeken.  
-   bijvoorbeeld Selecteer **downloaden** om het installatie programma te downloaden.  
+   g. Selecteer **downloaden** om het installatie programma te downloaden.  
    h. Voer het installatie programma uit zodat de Stuur Programma's op de sjabloon-VM worden geïnstalleerd.  
 1. Controleer of de Stuur Programma's correct zijn geïnstalleerd door de instructies in de sectie [de geïnstalleerde Stuur Programma's valideren](how-to-setup-lab-gpu.md#validate-the-installed-drivers) te volgen. 
 1. Nadat u de Stuur Programma's en andere software hebt geïnstalleerd die voor uw klasse zijn vereist, selecteert u **publiceren** om de vm's van uw studenten te maken.
@@ -112,7 +113,7 @@ Volg de instructies in de sectie ' installatie van Stuur Programma's controleren
 Zie de volgende artikelen:
 
 - [Leslokaallabs maken en beheren](how-to-manage-classroom-labs.md)
-- [Type SolidWorks computer-aided design (CAD)-klasse](class-type-solidworks.md)
+- [Type SOLIDWORKS computer-aided design (CAD)-klasse](class-type-solidworks.md)
 - [Het klassen type MATLAB (matrix laboratorium)](class-type-matlab.md)
 
 

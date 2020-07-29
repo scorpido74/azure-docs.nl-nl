@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117047"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291805"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -556,48 +556,7 @@ Uitvoering van het implementatie script is een idempotent-bewerking. Als geen va
 
 ## <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 
-U kunt een vooraf geconfigureerde docker-container installatie kopie gebruiken als uw ontwikkel omgeving voor implementatie scripts. Zie [docker ophalen](https://docs.docker.com/get-docker/)voor meer informatie over het installeren van docker.
-U moet ook het delen van bestanden configureren om de map te koppelen die de implementatie scripts bevat in docker-container.
-
-1. Haal de installatie kopie van de implementatie script container op de lokale computer op:
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    In het voor beeld wordt gebruikgemaakt van versie Power Shell 2.7.0.
-
-    Een CLI-installatie kopie ophalen uit een micro soft Container Registry (MCR):
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    In dit voor beeld wordt gebruikgemaakt van versie CLI 2.0.80. Het implementatie script maakt gebruik van de standaard installatie kopieën voor CLI-containers die [hier](https://hub.docker.com/_/microsoft-azure-cli)worden gevonden.
-
-1. Voer de docker-installatie kopie lokaal uit.
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    Vervang de stationsletter van de ** &lt; host>** en de naam van de ** &lt; Host Directory>** door een bestaande map op het gedeelde station.  De map wordt toegewezen aan de map **/Data** in de container. Voor voor beelden, om D:\docker toe te wijzen:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **-het** betekent dat de container installatie kopie actief blijft.
-
-    Een CLI-voor beeld:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. In de volgende scherm afbeelding ziet u hoe u een Power shell-script uitvoert, op voorwaarde dat u een helloworld.ps1 bestand in het gedeelde station hebt.
-
-    ![Docker-opdracht voor implementatie script van Resource Manager-sjabloon](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+U kunt een vooraf geconfigureerde container installatie kopie gebruiken als uw ontwikkel omgeving voor implementatie scripts. Zie [ontwikkelings omgeving voor implementatie scripts configureren in sjablonen](./deployment-script-template-configure-dev.md)voor meer informatie.
 
 Nadat het script is getest, kunt u dit als een implementatie script in uw sjablonen gebruiken.
 
@@ -621,7 +580,7 @@ Nadat het script is getest, kunt u dit als een implementatie script in uw sjablo
 | DeploymentScriptInvalidOutputs | De uitvoer van het implementatie script is geen geldig JSON-object. |
 | DeploymentScriptContainerInstancesServiceLoginFailure | De door de gebruiker toegewezen beheerde identiteit kan niet worden aangemeld na 10 pogingen met een interval van 1 minuut. |
 | DeploymentScriptContainerGroupNotFound | Een container groep die door de implementatie script service is gemaakt, is verwijderd door een extern hulp programma of proces. |
-| DeploymentScriptDownloadFailure | Het downloaden van een ondersteund script is mislukt. Zie [ondersteund script gebruiken](#use-supporting-scripts).|
+| DeploymentScriptDownloadFailure | Kan geen ondersteunend script downloaden. Zie [ondersteund script gebruiken](#use-supporting-scripts).|
 | DeploymentScriptError | Het gebruikers script heeft een fout gegenereerd. |
 | DeploymentScriptBootstrapScriptExecutionFailed | Het Boots trap script heeft een fout gegenereerd. Boots trap script is het systeem script waarmee de uitvoering van het implementatie script wordt georganiseerd. |
 | DeploymentScriptExecutionFailed | Onbekende fout tijdens het uitvoeren van het implementatie script. |

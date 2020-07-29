@@ -1,37 +1,37 @@
 ---
-title: Verificatiemethoden
+title: Verificatie met Microsoft Azure Maps
 titleSuffix: Azure Maps
-description: In dit artikel vindt u meer informatie over Azure Active Directory en gedeelde sleutel verificatie. Beide worden gebruikt voor Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
+description: In dit artikel vindt u meer informatie over Azure Active Directory en gedeelde sleutel verificatie.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285829"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
-Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutel en [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) . In dit artikel wordt uitgelegd hoe u deze verificatie methoden kunt gebruiken om uw implementatie van Azure Maps services te begeleiden.
+Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutel en [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) . In dit artikel worden beide verificatie methoden uitgelegd om uw implementatie van Azure Maps services te begeleiden.
 
 > [!NOTE]
-> Ter verbetering van de veilige communicatie met Azure Maps, ondersteunen we nu Transport Layer Security (TLS) 1,2. de ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld. Om service onderbrekingen te voor komen, moet u **uw servers en toepassingen bijwerken om TLS 1,2 te gebruiken vóór 2 April 2020**.  Als u momenteel TLS 1. x gebruikt, evalueert u uw TLS 1,2-gereedheid en ontwikkelt u een migratie plan met de tests die zijn beschreven in [het oplossen van het TLS 1,0-probleem](https://docs.microsoft.com/security/solving-tls1-problem).
+> Ter verbetering van de veilige communicatie met Azure Maps, ondersteunen we nu Transport Layer Security (TLS) 1,2. de ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld. Als u momenteel TLS 1. x gebruikt, evalueert u uw TLS 1,2-gereedheid en ontwikkelt u een migratie plan met de tests die zijn beschreven in [het oplossen van het TLS 1,0-probleem](https://docs.microsoft.com/security/solving-tls1-problem).
 
 ## <a name="shared-key-authentication"></a>Gedeelde sleutel verificatie
 
- Primaire en secundaire sleutels worden gegenereerd nadat het Azure Maps-account is gemaakt. U wordt aangeraden de primaire sleutel als abonnements sleutel te gebruiken bij het aanroepen van Azure Maps met behulp van gedeelde sleutel verificatie. Met gedeelde sleutel verificatie wordt een sleutel door een Azure Maps-account door gegeven aan een Azure Maps-service. Voor elke aanvraag voor het Azure Maps van services, voegt u de *abonnements sleutel* als een para meter toe aan de URL. De secundaire sleutel kan worden gebruikt in scenario's zoals wijzigingen in de Rolling sleutel.  
+ Primaire en secundaire sleutels worden gegenereerd nadat het Azure Maps-account is gemaakt. U wordt geadviseerd om de primaire sleutel als abonnements sleutel te gebruiken bij het aanroepen van Azure Maps met gedeelde sleutel verificatie. Met gedeelde sleutel verificatie wordt een sleutel door een Azure Maps-account door gegeven aan een Azure Maps-service. Voor elke aanvraag voor het Azure Maps van services, voegt u de *abonnements sleutel* als een para meter toe aan de URL. De secundaire sleutel kan worden gebruikt in scenario's zoals wijzigingen in de Rolling sleutel.  
 
 Zie [verificatie beheren](https://aka.ms/amauthdetails)voor meer informatie over het weer geven van uw sleutels in de Azure Portal.
 
-> [!Tip]
-> U wordt aangeraden de sleutels regelmatig opnieuw te genereren. U hebt twee sleutels, zodat u verbindingen met één sleutel kunt onderhouden tijdens het opnieuw genereren van de andere. Wanneer u de sleutels opnieuw genereert, moet u alle toepassingen die toegang hebben tot uw account, bijwerken met de nieuwe sleutels.
+> [!TIP]
+> Uit veiligheids overwegingen kunt u het beste wisselen tussen de primaire en secundaire sleutels. Als u sleutels wilt roteren, werkt u de app bij om de secundaire sleutel te gebruiken. Vervolgens implementeert u en drukt u op de knop voor cyclus/vernieuwen naast de primaire sleutel om een nieuwe primaire sleutel te genereren. De oude primaire sleutel wordt uitgeschakeld. Zie [Azure Key Vault instellen met wisselen en controleren van sleutels](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) voor meer informatie over het roteren van sleutels
 
 ## <a name="azure-ad-authentication"></a>Azure Active Directory-verificatie
 
@@ -64,7 +64,7 @@ Nadat de toepassing een toegangs token heeft ontvangen, verzendt de SDK en/of to
 | x-ms-client-id | 30d7cc….9f55        |
 | Autorisatie  | Bearer-token eyJ0e….HNIVN |
 
-> [!Note]
+> [!NOTE]
 > `x-ms-client-id`is de Azure Maps op een account gebaseerde GUID die wordt weer gegeven op de Azure Maps-verificatie pagina.
 
 Hier volgt een voor beeld van een Azure Maps route aanvraag die gebruikmaakt van een Azure AD OAuth Bearer-token:
@@ -108,7 +108,7 @@ Zie voor meer informatie over het weer geven van uw RBAC-instellingen [RBAC conf
 
 #### <a name="custom-role-definitions"></a>Definities voor aangepaste rollen
 
-Een aspect van toepassings beveiliging is het Toep assen van het principe van minimale bevoegdheden. Het principe impliceert dat de beveiligingsprincipal alleen de toegang mag hebben die vereist is en geen extra toegang heeft. Het maken van aangepaste Roldefinities kan use cases ondersteunen waarvoor een grotere nauw keurigheid van toegangs beheer nodig is. Als u een aangepaste roldefinitie wilt maken, kunt u specifieke gegevens acties selecteren om op te nemen of uit te sluiten voor de definitie. 
+Een aspect van toepassings beveiliging is het Toep assen van het principe van minimale bevoegdheden. Dit principe impliceert dat de beveiligingsprincipal alleen de vereiste toegang mag hebben en geen extra toegang hebben. Het maken van aangepaste Roldefinities kan use cases ondersteunen waarvoor een grotere nauw keurigheid van toegangs beheer nodig is. Als u een aangepaste roldefinitie wilt maken, kunt u specifieke gegevens acties selecteren om op te nemen of uit te sluiten voor de definitie.
 
 De definitie van de aangepaste rol kan vervolgens worden gebruikt in een roltoewijzing voor elke beveiligings-principal. Zie [aangepaste rollen in azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste roldefinities van Azure.
 
@@ -123,16 +123,22 @@ Hier volgen enkele voorbeeld scenario's waarin aangepaste rollen de beveiliging 
 
 ### <a name="understanding-scope"></a>Wat is bereik?
 
-Bij het maken van een roltoewijzing wordt deze gedefinieerd in de Azure-resource hiërarchie. Boven aan de hiërarchie bevindt zich een [beheer groep](https://docs.microsoft.com/azure/governance/management-groups/overview) en de laagste is een Azure-resource, zoals een Azure Maps-account.
+Wanneer u een roltoewijzing maakt, wordt deze gedefinieerd in de Azure-resource hiërarchie. Boven aan de hiërarchie bevindt zich een [beheer groep](https://docs.microsoft.com/azure/governance/management-groups/overview) en de laagste is een Azure-resource, zoals een Azure Maps-account.
 Als u een roltoewijzing aan een resource groep toewijst, kan toegang tot meerdere Azure Maps accounts of bronnen in de groep worden ingeschakeld.
 
-> [!Tip]
-> De algemene aanbeveling van micro soft wijst toegang toe aan het Azure Maps-account bereik, omdat hierdoor **onbedoelde toegang tot andere Azure Maps accounts** in hetzelfde Azure-abonnement wordt voor komen.
+> [!TIP]
+> De algemene aanbeveling van micro soft is het toewijzen van toegang aan het Azure Maps-account bereik, omdat hierdoor **onbedoelde toegang tot andere Azure Maps accounts** in hetzelfde Azure-abonnement wordt voor komen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/overview) voor meer informatie over RBAC
+Zie voor meer informatie over RBAC.
+> [!div class="nextstepaction"]
+> [Toegangsbeheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* Zie [verificatie beheren in azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)voor meer informatie over het verifiëren van een toepassing met Azure AD en Azure Maps.
+Zie voor meer informatie over het verifiëren van een toepassing met Azure AD en Azure Maps
+> [!div class="nextstepaction"]
+> [Verificatie in Azure Maps beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)
 
-* Zie [de Azure Maps map Control gebruiken](https://aka.ms/amaadmc)voor meer informatie over het verifiëren van de Azure Maps map Control en Azure AD.
+Zie voor meer informatie over het verifiëren van de Azure Maps Map Control met Azure AD.
+> [!div class="nextstepaction"]
+> [Azure Maps Map Control gebruiken](https://aka.ms/amaadmc)

@@ -1,29 +1,30 @@
 ---
-title: Stel een SolidWorks Lab in voor engineering met Azure Lab Services | Microsoft Docs
-description: Meer informatie over het instellen van een Lab voor technische cursussen met behulp van SolidWorks.
+title: Stel een SOLIDWORKS Lab in voor engineering met Azure Lab Services | Microsoft Docs
+description: Meer informatie over het instellen van een Lab voor technische cursussen met behulp van SOLIDWORKS.
 author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: fa1b93bd71c1319bf8705c8c84cdb3e6f9da19e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290737"
 ---
-# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Een Lab voor technische klassen instellen met behulp van SolidWorks
+# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Een Lab voor technische klassen instellen met behulp van SOLIDWORKS
 
-[SolidWorks](https://www.solidworks.com/) biedt een 3D-omgeving met computer aided design (CAD) voor het model leren van solide objecten en wordt gebruikt in diverse technische velden.  Met SolidWorks kunnen technici hun ontwerpen eenvoudig maken, visualiseren, simuleren en documenteren.
+[SOLIDWORKS](https://www.solidworks.com/) biedt een 3D-omgeving met computer aided design (CAD) voor het model leren van solide objecten en wordt gebruikt in verschillende soorten technische velden.  Met SOLIDWORKS kunnen technici hun ontwerpen eenvoudig maken, visualiseren, simuleren en documenteren.
 
-Een licentie optie die veel door universiteiten wordt gebruikt, is ' netwerk licenties van SolidWorks '.   Met deze optie delen gebruikers een pool van licenties die worden beheerd door een licentie server.  Dit type licentie wordt ook wel een ' zwevende ' licentie genoemd omdat u slechts voldoende licenties nodig hebt voor het aantal gelijktijdige gebruikers.  Wanneer een gebruiker wordt uitgevoerd met SolidWorks, gaat de licentie terug naar de centraal beheerde licentie groep zodat deze door een andere gebruiker opnieuw kan worden gebruikt.
+Een licentie optie die veel door universiteiten wordt gebruikt, is ' netwerk licenties van SOLIDWORKS '.   Met deze optie delen gebruikers een pool van licenties die worden beheerd door een licentie server.  Dit type licentie wordt ook wel een ' zwevende ' licentie genoemd omdat u slechts voldoende licenties nodig hebt voor het aantal gelijktijdige gebruikers.  Wanneer een gebruiker wordt uitgevoerd met SOLIDWORKS, gaat de licentie terug naar de centraal beheerde licentie groep zodat deze door een andere gebruiker opnieuw kan worden gebruikt.
 
-In dit artikel laten we zien hoe u een klasse instelt die gebruikmaakt van SolidWorks 2019 en netwerk licenties.
+In dit artikel laten we zien hoe u een klasse instelt die gebruikmaakt van SOLIDWORKS 2019 en netwerk licenties.
 
 ## <a name="license-server"></a>Licentie server
 
-Voor SolidWorks-netwerk licenties moet SolidNetWork License Manager zijn geïnstalleerd en geactiveerd op uw licentie server.  Deze licentie server bevindt zich doorgaans in uw on-premises netwerk of in een particulier netwerk in Azure.  Zie voor meer informatie over het instellen van SolidNetWork License Manager op uw server [een licentie Manager installeren en activeren](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) in de installatie handleiding voor SolidWorks.  Wanneer u dit instelt, onthoud dan het **poort nummer** en het [**serie nummer**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) dat wordt gebruikt, aangezien ze in latere stappen nodig zijn.
+Voor SOLIDWORKS-netwerk licenties moet SolidNetWork License Manager zijn geïnstalleerd en geactiveerd op uw licentie server.  Deze licentie server bevindt zich doorgaans in uw on-premises netwerk of in een particulier netwerk in Azure.  Zie voor meer informatie over het instellen van SolidNetWork License Manager op uw server [een licentie Manager installeren en activeren](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) in de installatie handleiding voor SOLIDWORKS.  Wanneer u dit instelt, onthoud dan het **poort nummer** en het [**serie nummer**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) dat wordt gebruikt, omdat deze in latere stappen nodig zijn.
 
-Nadat de licentie server is ingesteld, moet u het [virtuele netwerk (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) koppelen aan uw [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account).  De peering van het netwerk moet worden uitgevoerd voordat u het Lab maakt, zodat de virtuele machines van het lab toegang hebben tot de licentie server en vice versa.
+Nadat de licentie server is ingesteld, moet u het [virtuele netwerk (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) koppelen aan uw [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account).  De netwerk peering moet worden uitgevoerd voordat u het Lab maakt, zodat de virtuele machines van het lab toegang hebben tot de licentie server en de andere manier.
 
 > [!NOTE]
 > Controleer of de juiste poorten zijn geopend op de firewalls om communicatie tussen de virtuele machines van het lab en de licentie server toe te staan.  Zie bijvoorbeeld de instructies voor het wijzigen van de [computer poorten voor licentie beheer voor Windows Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) die laten zien hoe u regels voor binnenkomend en uitgaand verkeer toevoegt aan de firewall van de licentie server.  Mogelijk moet u ook poorten openen voor de virtuele lab-machines.  Volg de stappen in het artikel over [firewall instellingen voor Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) voor meer informatie hierover, inclusief het verkrijgen van het open bare IP-adres van het lab.
@@ -41,7 +42,7 @@ Schakel de instellingen die worden beschreven in de onderstaande tabel voor het 
 |Marketplace-installatie kopie| Schakel de Windows 10 Pro-installatie kopie in voor gebruik binnen uw Lab-account.|
 
 > [!NOTE]
-> Naast Windows 10 ondersteunt SolidWorks andere versies van Windows.  Raadpleeg de [systeem vereisten voor SolidWorks](https://www.solidworks.com/sw/support/SystemRequirements.html) voor meer informatie.
+> Naast Windows 10 ondersteunt SOLIDWORKS andere versies van Windows.  Raadpleeg de [systeem vereisten voor SOLIDWORKS](https://www.solidworks.com/sw/support/SystemRequirements.html) voor meer informatie.
 
 ### <a name="lab-settings"></a>Lab-instellingen
 
@@ -60,17 +61,17 @@ Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslo
 
 ## <a name="template-virtual-machine-configuration"></a>Configuratie van de virtuele machine van de sjabloon
 
-De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon kunt instellen door de installatie bestanden van de SolidWorks te downloaden en de client software te installeren:
+De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon kunt instellen door de installatie bestanden van de SOLIDWORKS te downloaden en de client software te installeren:
 
 1. Start de virtuele machine van de sjabloon en maak verbinding met de computer met behulp van RDP.
 
-1. Down load de installatie bestanden voor SolidWorks-client software. U hebt twee opties voor het downloaden:
-   - Down load van [SolidWorks Customer Portal](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F).
+1. Down load de installatie bestanden voor SOLIDWORKS-client software. U hebt twee opties voor het downloaden:
+   - Down load van [SOLIDWORKS Customer Portal](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F).
    - Down load uit een directory op een server.  Als u deze optie hebt gebruikt, moet u ervoor zorgen dat de server toegankelijk is vanaf de virtuele machine van de sjabloon.  Deze server kan zich bijvoorbeeld bevinden in hetzelfde virtuele netwerk dat is gekoppeld aan uw Lab-account.
   
     Zie [installatie op afzonderlijke computers in de SolidWorks in de](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0) installatie handleiding voor SolidWorks voor meer informatie.
 
-1. Nadat de installatie bestanden zijn gedownload, installeert u de-client software met behulp van SolidWorks Installation Manager. Zie voor meer informatie over [het installeren van een licentie-client in de](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm) installatie handleiding voor SolidWorks.
+1. Nadat de installatie bestanden zijn gedownload, installeert u de-client software met behulp van SOLIDWORKS Installation Manager. Zie voor meer informatie over [het installeren van een licentie-client in de](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm) installatie handleiding voor SOLIDWORKS.
 
     > [!NOTE]
     > In het dialoog venster **server toevoegen** wordt u gevraagd om het **poort nummer** dat wordt gebruikt voor uw licentie server en de naam of het IP-adres van de licentie server.

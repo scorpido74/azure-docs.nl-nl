@@ -6,11 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70097ad02c17f8c23bd9613487a905ccd562635e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879841"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337548"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics taken lokaal ontwikkelen en fouten opsporen
 
@@ -22,9 +23,9 @@ De manier waarop u Stream Analytics taken op uw lokale computer ontwikkelt, is a
 
 De omgevingen in de volgende tabel ondersteunen lokale ontwikkeling:
 
-|Omgeving                              |Description    |
+|Omgeving                              |Beschrijving    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Met de [uitbrei ding voor de Azure stream Analytics-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) voor Visual Studio code kunt u uw stream Analytics-taak zowel lokaal als in de Cloud ontwerpen, beheren en testen met uitgebreide IntelliSense en systeem eigen broncode beheer. Ondersteunt de ontwikkeling van Linux, MacOS en Windows. Zie [een Azure stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)voor meer informatie.|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Met de [uitbrei ding voor de Azure stream Analytics-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) voor Visual Studio code kunt u uw stream Analytics-taak zowel lokaal als in de Cloud ontwerpen, beheren en testen met uitgebreide IntelliSense en systeem eigen broncode beheer. Ondersteunt de ontwikkeling van Linux, MacOS en Windows. Zie [een Azure stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)voor meer informatie. De uitbrei ding biedt ook ondersteuning voor [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) . Dit is een in de Cloud gehoste ontwikkel omgeving.|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Stream Analytics-Hulpprogram Ma's maken deel uit van de werk belastingen voor ontwikkeling en gegevens opslag en-verwerking van Azure in Visual Studio. U kunt Visual Studio gebruiken om aangepaste door de gebruiker gedefinieerde C#-functies en-deserials te schrijven. Zie [een Azure stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)voor meer informatie.|
 |[Opdracht prompt of Terminal](stream-analytics-tools-for-visual-studio-cicd.md)|Het Azure Stream Analytics CI/CD NuGet-pakket bevat hulpprogram ma's voor Visual Studio project build, lokale tests op een wille keurige computer. Het Azure Stream Analytics CI/CD NPM-pakket bevat hulpprogram ma's voor Visual Studio code project builds (waarmee een Azure Resource Manager sjabloon wordt gegenereerd) op een wille keurige computer.|
 

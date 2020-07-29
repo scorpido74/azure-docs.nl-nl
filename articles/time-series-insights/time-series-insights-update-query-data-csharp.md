@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa3faad88fb5474b34ff6855690882141b2e4843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046296"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292665"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights Gen2-omgeving met C #
 
@@ -39,9 +39,9 @@ De voorbeeld code hieronder bevat de volgende functies:
     * [Gen2-query-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
         * [Get Events API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), [Get Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)en [Get Total Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
     * [Api's voor time series model](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-        * [Hiërarchieën ophalen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/get) en [hiërarchieën batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-        * [Typen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/get) en [typen ophalen batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-        * [Instances-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/get) en [instances-batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) ophalen
+        * [Hiërarchieën ophalen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) en [hiërarchieën batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+        * [Typen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) en [typen ophalen batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+        * [Instances-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) en [instances-batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) ophalen
 * Geavanceerde [Zoek](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) -en [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) -mogelijkheden.
 
 ## <a name="prerequisites-and-setup"></a>Vereisten en installatie

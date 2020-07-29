@@ -1,6 +1,5 @@
 ---
-title: Algoritmen optimaliseren
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): algoritmen optimaliseren-Azure'
 description: Hierin wordt uitgelegd hoe u de optimale parameterset kiest voor een algoritme in Azure Machine Learning Studio (klassiek).
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 52853bb14b49d429100dabeffc46661289f55c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0e003e7c767fb3441e26787f5687473ac51f44
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292981"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Para meters kiezen voor het optimaliseren van uw algoritmen in Azure Machine Learning Studio (klassiek)
+# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Para meters kiezen voor het optimaliseren van uw algoritmen in Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
 
 In dit onderwerp wordt beschreven hoe u de juiste afstemming kunt instellen voor een algoritme in Azure Machine Learning Studio (klassiek). Voor de meeste machine learning algoritmen zijn para meters ingesteld. Wanneer u een model traint, moet u waarden opgeven voor die para meters. De effectiviteit van het getrainde model is afhankelijk van de model parameters die u kiest. Het proces van het vinden van de optimale set para meters wordt het *model selectie*genoemd.
 

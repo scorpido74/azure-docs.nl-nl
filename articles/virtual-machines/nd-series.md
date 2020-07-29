@@ -4,15 +4,15 @@ description: Specificaties voor de Vm's uit de ND-serie.
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 243e5eafd38a35b5afd89e765c3196efbfe5362f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d39d97e598bdbd653b3c3149396f57afd43a6607
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292085"
 ---
 # <a name="nd-series"></a>ND-serie
 
@@ -52,9 +52,9 @@ Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren,
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen gebruik](sizes-general.md)
-- [Geoptimaliseerd voor geheugen](sizes-memory.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Algemeen doel](sizes-general.md)
+- [Geoptimaliseerd geheugen](sizes-memory.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)

@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b647515e9bd802673114de82089ede5f52f9016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562700"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287254"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
@@ -173,7 +173,10 @@ Geef uw IoT Edge apparaat op als het BLOB-eind punt voor opslag aanvragen die u 
   * `http://<device IP >:11002/<account name>`
   * `http://<IoT Edge device hostname>:11002/<account name>`
   * `http://<fully qualified domain name>:11002/<account name>`
-
+ 
+ > [!IMPORTANT]
+ > Azure IoT Edge is hoofdletter gevoelig wanneer u aanroepen naar modules uitvoert en de opslag-SDK is standaard ingesteld op kleine letters. Hoewel de naam van de module in [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) **AzureBlobStorageonIoTEdge**is, is het wijzigen van de naam in kleine letters handig om ervoor te zorgen dat uw verbindingen met de Azure Blob Storage op IOT Edge module niet worden onderbroken.
+ 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Voor beelden van Azure Blob Storage Quick Start
 
 De documentatie voor Azure Blob Storage bevat voorbeeld code van Quick Start in verschillende talen. U kunt deze voor beelden uitvoeren om Azure Blob Storage te testen op IoT Edge door het BLOB-eind punt te wijzigen om verbinding te maken met de lokale Blob Storage-module.
@@ -287,7 +290,7 @@ Niet-ondersteunde
 
 Deze Azure Blob Storage op IoT Edge module biedt nu integratie met Event Grid op IoT Edge. Voor gedetailleerde informatie over deze integratie raadpleegt [u de zelf studie voor het implementeren van modules, het publiceren van gebeurtenissen en het controleren van de levering van gebeurtenissen](../event-grid/edge/react-blob-storage-events-locally.md).
 
-## <a name="release-notes"></a>Releaseopmerkingen
+## <a name="release-notes"></a>Opmerkingen bij de release
 
 Dit zijn de [release opmerkingen in docker hub](https://hub.docker.com/_/microsoft-azure-blob-storage) voor deze module
 

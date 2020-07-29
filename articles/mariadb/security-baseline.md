@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 09d2fb709e21b7c1251c2caf224f4d5c3ce6aea1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026573"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366829"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-beveiligings basislijn voor Azure Database for MariaDB
 
@@ -296,7 +296,7 @@ Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 Meer informatie over toegangs beheer voor MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Informatie over ingebouwde RBAC-rollen voor Azure-abonnementen:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Meer informatie over ingebouwde rollen van Azure voor Azure-abonnementen:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Azure Security Center bewaking**: Ja
@@ -666,7 +666,7 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
@@ -712,7 +712,7 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 

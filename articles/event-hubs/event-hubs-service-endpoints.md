@@ -3,12 +3,12 @@ title: Service-eind punten Virtual Network-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het toevoegen van een service-eind punt van micro soft. EventHub aan een virtueel netwerk.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066696"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288005"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtual Network Service-eind punten gebruiken met Azure Event Hubs
 
@@ -25,7 +25,6 @@ Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen d
 >
 > Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
 > - Azure Stream Analytics
-> - Integratie met Azure Event Grid
 > - Azure-IoT Hub routes
 > - Azure IoT-Device Explorer
 >
@@ -60,7 +59,7 @@ In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service
 2. Selecteer in het linkermenu **netwerk** optie. Als u de optie **alle netwerken** selecteert, accepteert de Event hub verbindingen van elk IP-adres. Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
     ![Optie Firewall: alle netwerken geselecteerd](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Als u toegang tot specifieke netwerken wilt restrct, selecteert u de optie **geselecteerde netwerken** boven aan de pagina.
+1. Als u de toegang tot specifieke netwerken wilt beperken, selecteert u de optie **geselecteerde netwerken** boven aan de pagina.
 2. Selecteer in de sectie **Virtual Network** van de pagina * * + bestaand virtueel netwerk toevoegen * * *. Selecteer **+ nieuw virtueel netwerk maken** als u een nieuw VNet wilt maken. 
 
     ![bestaand virtueel netwerk toevoegen](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -85,9 +84,9 @@ Met de volgende Resource Manager-sjabloon kan een regel voor een virtueel netwer
 
 Sjabloon parameters:
 
-* **naam ruimte**: Event hubs naam ruimte.
-* **vnetRuleName**: de naam voor de Virtual Network regel die moet worden gemaakt.
-* **virtualNetworkingSubnetId**: volledig gekwalificeerd pad van Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor het standaard subnet van een virtueel netwerk.
+* `namespaceName`: Event Hubs naam ruimte.
+* `vnetRuleName`: Naam voor de Virtual Network regel die moet worden gemaakt.
+* `virtualNetworkingSubnetId`: Volledig gekwalificeerd pad van Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor het standaard subnet van een virtueel netwerk.
 
 > [!NOTE]
 > Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.

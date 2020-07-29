@@ -1,7 +1,7 @@
 ---
 title: Een subnet van een virtueel netwerk van Azure toevoegen, wijzigen of verwijderen
 titlesuffix: Azure Virtual Network
-description: Meer informatie over het toevoegen, wijzigen of verwijderen van een subnet van een virtueel netwerk in Azure.
+description: Informatie over het zoeken naar informatie over virtuele netwerken en het toevoegen, wijzigen of verwijderen van een subnet van een virtueel netwerk in Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711014"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286101"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Een subnet van een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -39,7 +40,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 ## <a name="add-a-subnet"></a>Een subnet toevoegen
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerken weer te geven. Zoek en selecteer **virtuele netwerken**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerken weer te geven. Zoek en selecteer **Virtuele netwerken**.
 
 2. Selecteer de naam van het virtuele netwerk waaraan u een subnet wilt toevoegen.
 
@@ -58,7 +59,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 5. Selecteer **OK**om het subnet toe te voegen aan het virtuele netwerk dat u hebt geselecteerd.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -67,7 +68,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 ## <a name="change-subnet-settings"></a>Subnet-instellingen wijzigen
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerken weer te geven. Zoek en selecteer **virtuele netwerken**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerken weer te geven. Zoek en selecteer **Virtuele netwerken**.
 
 2. Selecteer de naam van het virtuele netwerk met het subnet dat u wilt wijzigen.
 
@@ -87,7 +88,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 6. Selecteer **Opslaan**.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -98,7 +99,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 U kunt een subnet alleen verwijderen als er geen resources in het subnet aanwezig zijn. Als resources zich in het subnet bevinden, moet u deze bronnen verwijderen voordat u het subnet kunt verwijderen. De stappen die u moet nemen om een resource te verwijderen, variëren afhankelijk van de resource. Raadpleeg de documentatie voor elk van deze resource typen voor meer informatie over het verwijderen van bronnen in subnetten.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerken weer te geven. Zoek en selecteer **virtuele netwerken**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw virtuele netwerken weer te geven. Zoek en selecteer **Virtuele netwerken**.
 
 2. Selecteer de naam van het virtuele netwerk met het subnet dat u wilt verwijderen.
 
@@ -108,7 +109,7 @@ U kunt een subnet alleen verwijderen als er geen resources in het subnet aanwezi
 
 5. Selecteer **verwijderen**en selecteer vervolgens **Ja** in het bevestigings venster.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -119,7 +120,7 @@ U kunt een subnet alleen verwijderen als er geen resources in het subnet aanwezi
 
 Om taken uit te voeren op subnetten, moet uw account worden toegewezen aan de [rol netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-|Bewerking                                                                   |   Name                                       |
+|Bewerking                                                                   |   Naam                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   Een subnet van een virtueel netwerk lezen              |
 |Micro soft. Network/virtualNetworks/subnetten/schrijven                          |   Een subnet van een virtueel netwerk maken of bijwerken  |

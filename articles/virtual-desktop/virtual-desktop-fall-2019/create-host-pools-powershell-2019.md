@@ -1,6 +1,6 @@
 ---
-title: Virtuele Windows-bureau blad maken 2019 hostgroep Power shell-Azure
-description: Een hostgroep in Windows Virtual Desktop maken met Power shell-cmdlets.
+title: Virtuele Windows-bureau blad maken (klassieke) hostgroep Power shell-Azure
+description: Een hostgroep in virtueel bureau blad van Windows (klassiek) maken met Power shell-cmdlets.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bc1e229711ef24b07641c5767f5f60c17a3b97c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527639"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291297"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Een hostgroep in virtueel bureau blad van Windows (klassiek) maken met Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../create-host-pools-powershell.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren die zijn geïntroduceerd tijdens de update uit het voorjaar van 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../create-host-pools-powershell.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-tenantomgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureaublad.
 

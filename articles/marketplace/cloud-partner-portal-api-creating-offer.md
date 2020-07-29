@@ -4,15 +4,15 @@ description: API voor het maken van een nieuwe of het bijwerken van een bestaand
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292959"
 ---
 <a name="create-or-modify-an-offer"></a>Een aanbieding toevoegen of veranderen
 =========================
@@ -28,11 +28,11 @@ Met deze oproep wordt een specifieke aanbieding binnen de naam ruimte van de uit
 <a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**         |  **Beschrijving**                      |  **Gegevens type**  |
+|  **Naam**         |  **Beschrijving**                      |  **Gegevenstype**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks |
 | offerId           |  Aanbiedings-id                     |   Tekenreeks        |
-| api-versie       |  Nieuwste versie van de API            |   Datum           |
+| api-versie       |  Nieuwste versie van de API            |   Date           |
 |  |  |  |
 
 <a name="header"></a>Header

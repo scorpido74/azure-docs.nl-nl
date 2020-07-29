@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705369"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286492"
 ---
 # <a name="symmetric-key-attestation"></a>Attestation met behulp van een symmetrische sleutel
 
@@ -26,7 +26,7 @@ Symmetrische sleutel registraties bieden ook een uitstekende manier voor oudere 
 
 ## <a name="symmetric-key-creation"></a>Symmetrische sleutel maken
 
-De Device Provisioning Service maakt standaard nieuwe symmetrische sleutels met een standaard lengte van 32 bytes wanneer nieuwe inschrijvingen worden opgeslagen met de optie **sleutels automatisch genereren** ingeschakeld.
+De Device Provisioning Service maakt standaard nieuwe symmetrische sleutels met een standaard lengte van 64 bytes wanneer nieuwe inschrijvingen worden opgeslagen met de optie **sleutels automatisch genereren** ingeschakeld.
 
 ![Symmetrische sleutels automatisch genereren](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 

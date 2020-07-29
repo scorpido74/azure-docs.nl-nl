@@ -5,12 +5,12 @@ description: Leer hoe u een interne load balancer maakt en gebruikt om uw servic
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056821"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285880"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Een interne load balancer gebruiken met Azure Kubernetes service (AKS)
 
@@ -25,7 +25,9 @@ In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluste
 
 Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
-De AKS-Cluster service-principal moet machtigingen hebben om netwerk bronnen te beheren als u een bestaand subnet of een bestaande resource groep gebruikt. In het algemeen wijst u de rol *netwerk bijdrage* toe aan uw service-principal op de gedelegeerde resources. In plaats van een Service-Principal kunt u de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie. Zie [AKS toegang tot andere Azure-resources delegeren][aks-sp]voor meer informatie over machtigingen.
+De AKS-Cluster service-principal moet machtigingen hebben om netwerk bronnen te beheren als u een bestaand subnet of een bestaande resource groep gebruikt. Zie kubenet- [netwerken gebruiken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)][use-kubenet] of [Azure cni-netwerken configureren in de Azure Kubernetes-service (AKS)][advanced-networking]voor meer informatie. Als u uw load balancer configureert om een [IP-adres in een ander subnet][different-subnet]te gebruiken, moet u ervoor zorgen dat de service-principal van de AKS-cluster ook lees toegang heeft tot dat subnet.
+
+In plaats van een Service-Principal kunt u ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie. Zie [AKS toegang tot andere Azure-resources delegeren][aks-sp]voor meer informatie over machtigingen.
 
 ## <a name="create-an-internal-load-balancer"></a>Een interne load balancer maken
 
@@ -65,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>Geef een IP-adres op
 
-Als u een specifiek IP-adres met de interne load balancer wilt gebruiken, voegt u de eigenschap *loadBalancerIP* toe aan het yaml-manifest van de Load Balancer. Het opgegeven IP-adres moet zich in hetzelfde subnet bevinden als het AKS-cluster en mag niet al zijn toegewezen aan een resource. Gebruik bijvoorbeeld niet een IP-adres in het bereik dat is opgegeven voor het Kubernetes-subnet.
+Als u een specifiek IP-adres met de interne load balancer wilt gebruiken, voegt u de eigenschap *loadBalancerIP* toe aan het yaml-manifest van de Load Balancer. In dit scenario moet het opgegeven IP-adres zich in hetzelfde subnet bevinden als het AKS-cluster en moet het niet al zijn toegewezen aan een resource. Gebruik bijvoorbeeld niet een IP-adres in het bereik dat is opgegeven voor het Kubernetes-subnet.
 
 ```yaml
 apiVersion: v1
@@ -91,6 +93,8 @@ $ kubectl get service internal-app
 NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
+
+Zie [een ander subnet opgeven][different-subnet] voor meer informatie over het configureren van uw Load Balancer in een ander subnet.
 
 ## <a name="use-private-networks"></a>Particuliere netwerken gebruiken
 
@@ -153,3 +157,4 @@ Meer informatie over Kubernetes Services vindt u in de [documentatie van Kuberne
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
+[different-subnet]: #specify-a-different-subnet

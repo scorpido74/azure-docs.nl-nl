@@ -1,7 +1,7 @@
 ---
 title: Voor beeld van Azure PowerShell script-IPv6-eind punten configureren
 titlesuffix: Azure Virtual Network
-description: IPv6-eind punten inschakelen met behulp van Power shell in azure Virtual Network
+description: Configureer IPv6-eind punten in een virtueel netwerk met een Azure PowerShell script en zoek koppelingen naar opdracht-specifieke documentatie om te helpen bij het Power shell-voor beeld.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 667cf9d8a902a329b6b0cfc0d183e4f229e59372
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068648"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291881"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>IPv6-eind punten in een virtueel netwerk configureren met Azure PowerShell script voorbeeld (preview-versie)
 
