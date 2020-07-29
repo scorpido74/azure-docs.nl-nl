@@ -4,12 +4,12 @@ description: Aan de slag met Application Insights. Analyseer het gebruik, de bes
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014162"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323448"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Prestaties in webtoepassingen controleren
 
@@ -23,9 +23,9 @@ Aan de client zijde kan Application Insights telemetrie maken op basis van webpa
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Prestatie bewaking instellen
 Als u Application Insights nog niet aan uw project hebt toegevoegd (dat wil zeggen, als het geen ApplicationInsights.config heeft), kiest u een van de volgende manieren om aan de slag te gaan:
 
-* [ASP.NET-web-apps](../../azure-monitor/app/asp-net.md)
-  * [Uitzonderings bewaking toevoegen](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Afhankelijkheids bewaking toevoegen](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [ASP.NET-web-apps](./asp-net.md)
+  * [Uitzonderings bewaking toevoegen](./asp-net-exceptions.md)
+  * [Afhankelijkheids bewaking toevoegen](./monitor-performance-live-website-now.md)
 * [Java EE web apps](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Metrische prestatie gegevens verkennen
@@ -106,7 +106,7 @@ Hier volgen enkele tips voor het zoeken en diagnosticeren van prestatie probleme
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Prestatie knelpunten opsporen en oplossen met prestatie onderzoek
 
-U kunt de ervaring voor prestatie onderzoek gebruiken om trage bewerkingen in uw web-app te bekijken. U kunt snel een specifieke trage bewerking selecteren en [Profiler](../../azure-monitor/app/profiler.md) gebruiken om te zorgen dat de langzame bewerkingen worden uitgevoerd naar code. Met de nieuwe duur verdeling die voor de geselecteerde bewerking wordt weer gegeven, kunt u in één oogopslag zien hoe slecht de ervaring is voor uw klanten. U kunt zien hoeveel van uw gebruikers interacties voor elke trage bewerking zijn beïnvloed. In het volgende voor beeld hebben we besloten om de ervaring voor het ophalen van klanten/details te bekijken. In de duur van de distributie ziet u dat er drie pieken zijn. De meest linkse Prikker is ongeveer 400 MS en vormt een fantastische reactie ervaring. Middelste Prikker is ongeveer 1,2 s en vertegenwoordigt een mediocre-ervaring. Tot slot op de 3,6 s hebben we nog een kleine piek die de 99e-percentiel ervaring vertegenwoordigt, waardoor onze klanten waarschijnlijk niet meer tevreden kunnen raken. Deze ervaring is tien keer langzamer dan de geweldige ervaring voor dezelfde bewerking. 
+U kunt de ervaring voor prestatie onderzoek gebruiken om trage bewerkingen in uw web-app te bekijken. U kunt snel een specifieke trage bewerking selecteren en [Profiler](./profiler.md) gebruiken om te zorgen dat de langzame bewerkingen worden uitgevoerd naar code. Met de nieuwe duur verdeling die voor de geselecteerde bewerking wordt weer gegeven, kunt u in één oogopslag zien hoe slecht de ervaring is voor uw klanten. U kunt zien hoeveel van uw gebruikers interacties voor elke trage bewerking zijn beïnvloed. In het volgende voor beeld hebben we besloten om de ervaring voor het ophalen van klanten/details te bekijken. In de duur van de distributie ziet u dat er drie pieken zijn. De meest linkse Prikker is ongeveer 400 MS en vormt een fantastische reactie ervaring. Middelste Prikker is ongeveer 1,2 s en vertegenwoordigt een mediocre-ervaring. Tot slot op de 3,6 s hebben we nog een kleine piek die de 99e-percentiel ervaring vertegenwoordigt, waardoor onze klanten waarschijnlijk niet meer tevreden kunnen raken. Deze ervaring is tien keer langzamer dan de geweldige ervaring voor dezelfde bewerking. 
 
 ![Ontvang klanten/Details drie duur pieken](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,12 +142,13 @@ In de ervaring voor prestatie onderzoek ziet u relevante inzichten aan de kant v
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
+

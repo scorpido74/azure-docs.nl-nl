@@ -3,12 +3,12 @@ title: Azure DevTest Labs gebruiken voor VM-en PaaS-test omgevingen | Microsoft 
 description: Meer informatie over het gebruik van Azure DevTest Labs voor scenario's voor de VM-en PaaS-test omgeving.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f364c227c1b53b7887b34c8a3c92ad9045526328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272892"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Azure DevTest Labs gebruiken voor test omgevingen van de VM en de PaaS
 
@@ -48,7 +48,7 @@ In dit artikel vindt u informatie over de verschillende Azure DevTest Labs-funct
    | --- | --- |
    | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u Azure Marketplace-installatie kopieën kunt white list, zodat u alleen de gewenste installatie kopieën voor de testers beschikbaar maakt.|
    | [Een aangepaste installatiekopie maken](devtest-lab-create-template.md) |Maak een aangepaste installatie kopie door de software die u nodig hebt, vooraf te installeren, zodat testers snel een virtuele machine kunnen maken met behulp van de aangepaste installatie kopie.|
-   | [Meer informatie over image Factory](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Bekijk een video met een beschrijving van het instellen en gebruiken van een image Factory.|
+   | [Meer informatie over image Factory](./devtest-lab-faq.md#blog-post) |Bekijk een video met een beschrijving van het instellen en gebruiken van een image Factory.|
 
 3. **Herbruikbare sjablonen voor test machines maken** 
    
@@ -139,4 +139,3 @@ In dit artikel vindt u informatie over de verschillende Azure DevTest Labs-funct
    | [Een lab maken met een resource manager-sjabloon](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Maak Labs in Azure DevTest Labs met behulp van Resource Manager-sjablonen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

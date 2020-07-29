@@ -2,43 +2,65 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832811"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321765"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
-Om het beheer van resources te vereenvoudigen, kunt u resources implementeren op het niveau van uw Azure-abonnement. U kunt bijvoorbeeld [beleid](../../governance/policy/overview.md) en [op rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor uw abonnement implementeren en deze resources worden toegepast in uw abonnement. U kunt ook resource groepen maken en resources implementeren voor die resource groepen.
+Om het beheer van resources te vereenvoudigen, kunt u een Azure Resource Manager sjabloon (ARM-sjabloon) gebruiken om resources te implementeren op het niveau van uw Azure-abonnement. U kunt bijvoorbeeld [beleid](../../governance/policy/overview.md) en op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) Toep assen op uw abonnement. Dit geldt voor het hele abonnement. U kunt ook resource groepen maken binnen het abonnement en resources implementeren voor resource groepen in het abonnement.
 
 > [!NOTE]
 > U kunt implementeren op 800 verschillende resource groepen in een implementatie op abonnements niveau.
 
-Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, Power shell of REST API.
+Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, Power shell, REST API of de portal.
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
-U kunt de volgende bron typen implementeren op abonnements niveau:
+Niet alle resource typen kunnen worden geïmplementeerd op het abonnements niveau. In deze sectie wordt een overzicht gegeven van de resource typen die worden ondersteund.
 
+Gebruik voor Azure-blauw drukken:
+
+* [artefacten](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [blauw drukken](/azure/templates/microsoft.blueprint/blueprints)
-* [budgetten](/azure/templates/microsoft.consumption/budgets)
-* [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op resource groepen.
-* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
+* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [versies (blauw drukken)](/azure/templates/microsoft.blueprint/blueprints/versions)
+
+Gebruik voor Azure-beleid:
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [herstel](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
-* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+* [herstel](/azure/templates/microsoft.policyinsights/remediations)
+
+Gebruik voor op rollen gebaseerd toegangs beheer:
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
-* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+
+Voor geneste sjablonen die worden geïmplementeerd op resource groepen, gebruikt u:
+
+* [implementaties](/azure/templates/microsoft.resources/deployments)
+
+Gebruik voor het maken van nieuwe resource groepen:
+
+* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+
+Gebruik voor het beheren van uw abonnement:
+
+* [budgetten](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [Koptags](/azure/templates/microsoft.resources/tags)
-* [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
+
+Andere ondersteunde typen zijn:
+
+* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
+* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
 ### <a name="schema"></a>Schema
 
@@ -91,6 +113,47 @@ U kunt een naam opgeven voor de implementatie of de naam van de standaard implem
 
 Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code krijgt `InvalidDeploymentLocation` , moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
 
+## <a name="deployment-scopes"></a>Implementatie bereiken
+
+Wanneer u naar een abonnement implementeert, kunt u het abonnement of alle resource groepen binnen het abonnement richten. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op het abonnement.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        subscription-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+Als u een resource groep in het abonnement wilt richten, voegt u een geneste implementatie toe en neemt u de `resourceGroup` eigenschap op. In het volgende voor beeld streeft de geneste implementatie naar een resource groep met de naam `rg2` .
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedDeployment",
+            "resourceGroup": "rg2",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 
 Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtspunten bij het gebruik van sjabloon functies:
@@ -111,9 +174,11 @@ Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtsp
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
 
-## <a name="create-resource-groups"></a>Resource groepen maken
+## <a name="resource-groups"></a>Resourcegroepen
 
-Als u een resource groep in een Azure Resource Manager sjabloon wilt maken, definieert u een resource van het [micro soft. resources/resourceGroups](/azure/templates/microsoft.resources/allversions) met een naam en een locatie voor de resource groep. U kunt een resource groep maken en resources in dezelfde sjabloon implementeren voor die resource groep.
+### <a name="create-resource-groups"></a>Resource groepen maken
+
+Als u een resource groep in een ARM-sjabloon wilt maken, definieert u een resource van het [micro soft. resources/resourceGroups](/azure/templates/microsoft.resources/allversions) met een naam en een locatie voor de resource groep.
 
 Met de volgende sjabloon maakt u een lege resource groep.
 
@@ -133,7 +198,7 @@ Met de volgende sjabloon maakt u een lege resource groep.
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -164,7 +229,7 @@ Gebruik het [element Copy](copy-resources.md) met resource groepen om meer dan �
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -180,7 +245,7 @@ Gebruik het [element Copy](copy-resources.md) met resource groepen om meer dan �
 
 Zie [meer dan één exemplaar van een resource in azure Resource Manager sjablonen implementeren](./copy-resources.md)en [zelf studie: meerdere resource-instanties maken met Resource Manager-sjablonen](./template-tutorial-create-multiple-instances.md)voor meer informatie over resource iteratie.
 
-## <a name="resource-group-and-resources"></a>Resource groep en resources
+### <a name="create-resource-group-and-resources"></a>Resource groep en-resources maken
 
 Als u de resource groep wilt maken en resources hierop wilt implementeren, gebruikt u een geneste sjabloon. De geneste sjabloon definieert de resources die moeten worden geïmplementeerd in de resource groep. Stel de geneste sjabloon afhankelijk van de resource groep in om ervoor te zorgen dat de resource groep bestaat voordat u de resources implementeert. U kunt implementeren in Maxi maal 800 resource groepen.
 
@@ -208,14 +273,14 @@ In het volgende voor beeld wordt een resource groep gemaakt en wordt een opslag 
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -406,14 +471,16 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
-## <a name="template-samples"></a>Voorbeelden van sjablonen
+## <a name="access-control"></a>Toegangsbeheer
 
-* [Maak een resource groep, vergrendel deze en geef er machtigingen voor](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
-* [Maak een resource groep, een beleid en een beleids toewijzing](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
+Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
+
+In het volgende voor beeld wordt een resource groep gemaakt, wordt er een vergren deling op toegepast en wordt een rol aan een principal toegewezen.
+
+:::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
 * Zie [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.
 * Voorbeeld sjablonen vindt u op [github](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments).
 * U kunt ook sjablonen implementeren op het niveau van de [beheer groep](deploy-to-management-group.md) en het [Tenant niveau](deploy-to-tenant.md).

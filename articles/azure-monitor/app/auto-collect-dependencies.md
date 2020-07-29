@@ -5,12 +5,12 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087982"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324179"
 ---
 # <a name="dependency-auto-collection"></a>Afhankelijkheden automatisch verzamelen
 
@@ -80,17 +80,18 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
 | [Winston](https://www.npmjs.com/package/winston) | 2. x-3. x |
 
-## <a name="javascript"></a>JavaScript
+## <a name="javascript"></a>Javascript
 
 | Communicatie bibliotheken | Versies |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alles |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alle |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Aangepaste afhankelijkheden bijhouden instellen voor [.net](../../azure-monitor/app/asp-net-dependencies.md).
-- Aangepaste afhankelijkheden bijhouden instellen voor [Java](../../azure-monitor/app/java-agent.md).
-- Aangepaste afhankelijkheden bijhouden instellen voor [Opentellingen python](../../azure-monitor/app/opencensus-python-dependency.md).
-- [Aangepaste telemetrie van afhankelijkheid schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Zie [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en gegevens model.
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- Aangepaste afhankelijkheden bijhouden instellen voor [.net](./asp-net-dependencies.md).
+- Aangepaste afhankelijkheden bijhouden instellen voor [Java](./java-agent.md).
+- Aangepaste afhankelijkheden bijhouden instellen voor [Opentellingen python](./opencensus-python-dependency.md).
+- [Aangepaste telemetrie van afhankelijkheid schrijven](./api-custom-events-metrics.md#trackdependency)
+- Zie [gegevens model](./data-model.md) voor Application Insights typen en gegevens model.
+- Bekijk de [platforms](./platforms.md) die door Application Insights worden ondersteund.
+

@@ -1,7 +1,7 @@
 ---
 title: Een virtueel Azure-netwerk maken, wijzigen of verwijderen
 titlesuffix: Azure Virtual Network
-description: Meer informatie over het maken, wijzigen of verwijderen van een virtueel netwerk in Azure.
+description: Maak en verwijder een virtueel netwerk en Wijzig instellingen, zoals DNS-servers en IP-adres ruimten, voor een bestaand virtueel netwerk.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710028"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265242"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -90,7 +91,7 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
      - [Activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md)
      - [Toegangsbeheer (IAM)](../role-based-access-control/overview.md)
      - [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Vergrendelingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automation-script](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Opdrachten**
@@ -170,7 +171,7 @@ U kunt een virtueel netwerk alleen verwijderen als er geen resources zijn verbon
 
 Als u taken wilt uitvoeren op virtuele netwerken, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                  |   Name                                |
+| Bewerking                                  |   Naam                                |
 |---------------------------------------- |   --------------------------------    |
 |Micro soft. Network/virtualNetworks/lezen   |   Een virtueel netwerk lezen              |
 |Micro soft. Network/virtualNetworks/schrijven  |   Een virtueel netwerk maken of bijwerken  |

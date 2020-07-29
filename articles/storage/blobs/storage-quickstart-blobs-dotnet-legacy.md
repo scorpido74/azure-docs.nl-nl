@@ -7,16 +7,19 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 5205506e3e7a32423dd9b438b648ff4af5136caa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84455940"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528550"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Quickstart: Azure Blob Storage-clientbibliotheek v11 voor .NET
 
 Ga aan de slag met de Azure Blob Storage-clientbibliotheek v11 voor .NET. Azure Blob Storage is de oplossing voor opslag van objecten in de cloud van Microsoft. Volg de stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
+
+> [!NOTE]
+> In deze snelstart wordt gebruikgemaakt van een oudere versie van de Azure Blob Storage-clientbibliotheek. Als u aan de slag wilt gaan met de vorige versie, raadpleegt u [Quickstart: Azure Blob Storage-clientbibliotheek voor .NET](storage-quickstart-blobs-dotnet.md).
 
 Gebruik de Azure Blob Storage-clientbibliotheek voor .NET voor het volgende:
 
@@ -27,7 +30,12 @@ Gebruik de Azure Blob Storage-clientbibliotheek voor .NET voor het volgende:
 * Alle blobs in een container weergeven
 * Een container verwijderen
 
-[API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [Broncode van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Samples](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+Aanvullende bronnen:
+
+* [API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [Broncode van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [Voorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

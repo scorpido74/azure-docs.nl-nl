@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een back-up maken van virtuele Linux-machines in de Azure Portal'
+title: 'Zelfstudie: Back-ups maken van virtuele Linux-machines in de Azure-portal'
 description: In deze zelfstudie leert u hoe u Azure Portal gebruikt om uw virtuele Linux-machines te beschermen met Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460067"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526993"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Linux-machines in Azure
 
@@ -34,7 +34,7 @@ U kunt uw gegevens beschermen door regelmatig back-ups te maken. Azure Backup ma
 
 Wanneer met de Azure Backup-service een back-up wordt gestart, activeert dit de back-upextensie om een momentopname van een bepaald tijdstip te maken. De Azure Backup-service maakt gebruik van de extensie _VMSnapshotLinux_ in Linux. De extensie is geïnstalleerd tijdens de eerste VM-back-up als de VM actief is. Als de VM niet actief is, wordt met de Backup-service een momentopname gemaakt van de onderliggende opslag (aangezien er geen schrijfbewerkingen van toepassingen plaatsvinden als de VM is gestopt).
 
-Met Azure Backup wordt standaard een bestandssysteemconsistente back-up gemaakt voor Linux-VM, maar deze kan worden geconfigureerd om [toepassingsconsistente back-ups te maken met behulp van frameworks voor scripts die voorafgaan aan en scripts die volgen op back-ups](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Nadat de momentopname is gemaakt met de Azure Backup-service, worden de gegevens overgedragen naar de kluis. Voor maximale efficiëntie wordt met de service geïdentificeerd welke gegevensblokken sinds de vorige back-up zijn gewijzigd. Alleen deze worden vervolgens overgedragen.
+Met Azure Backup wordt standaard een bestandssysteemconsistente back-up gemaakt voor Linux-VM, maar deze kan worden geconfigureerd om [toepassingsconsistente back-ups te maken met behulp van frameworks voor scripts die voorafgaan aan en scripts die volgen op back-ups](../../backup/backup-azure-linux-app-consistent.md). Nadat de momentopname is gemaakt met de Azure Backup-service, worden de gegevens overgedragen naar de kluis. Voor maximale efficiëntie wordt met de service geïdentificeerd welke gegevensblokken sinds de vorige back-up zijn gewijzigd. Alleen deze worden vervolgens overgedragen.
 
 Wanneer de gegevensoverdracht is voltooid, wordt de momentopname verwijderd en wordt er een herstelpunt gemaakt.
 
@@ -45,12 +45,12 @@ U plant als volgt een dagelijkse back-up naar een Recovery Services-kluis:
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 3. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
-4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De Blade **back-up inschakelen** wordt geopend.
+4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De blade **Back-up inschakelen** wordt geopend.
 5. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Een nieuwe kluis wordt gemaakt in dezelfde resourcegroep en op dezelfde locatie als de virtuele machine.
 6. Klik op **Back-upbeleid**. Handhaaf voor dit voorbeeld de standaardwaarden en klik op **OK**.
 7. Klik op de blade **Back-up inschakelen** op **Back-up inschakelen**. Hiermee maakt u een dagelijkse back-up op basis van het standaardschema.
 10. Klik op de blade **Back-up** op **Nu een back-up maken** om een initieel herstelpunt te maken.
-11. Klik op de Blade **nu een back-up maken** op het kalender pictogram en selecteer de laatste dag dat dit herstel punt wordt bewaard en klik op **back-up**.
+11. Klik op de blade **Nu een back-up maken** op het kalenderpictogram en selecteer in de kalender de laatste dag dat dit herstelpunt wordt bewaard. Klik vervolgens op **Back-up**.
 12. Op de blade **Backup** voor uw VM ziet u het aantal herstelpunten dat is voltooid.
 
     ![Herstelpunten](./media/tutorial-backup-vms/backup-complete.png)
@@ -93,8 +93,8 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
 7. Selecteer de VM in de lijst.
 8. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De blade **Back-up** wordt geopend. 
 9. Selecteer in het menu boven aan de blade de optie **Bestandsherstel**. De blade **Bestandsherstel** wordt geopend.
-10. Selecteer in **Stap 1: Herstelpunt selecteren** een herstelpunt in de vervolgkeuzelijst.
-11. Klik in **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** op de knop **Uitvoerbaar bestand downloaden**. Sla het gedownloade bestand op de lokale computer op.
+10. In **Stap 1: Herstelpunt selecteren** selecteert u een herstelpunt in de vervolgkeuzelijst.
+11. In **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** klikt u op de knop **Uitvoerbaar bestand downloaden**. Sla het gedownloade bestand op de lokale computer op.
 7. Klik op **Script downloaden** om het scriptbestand lokaal te downloaden.
 8. Open een Bash-prompt en type het volgende, waarbij u *Linux_myVM_05-05-2017.sh* vervangt door het juiste pad en de juiste bestandsnaam voor het script dat u hebt gedownload, *azureuser* vervangt door de gebruikersnaam voor de VM en *13.69.75.209* vervangt door het openbare IP-adres voor de VM.
     
@@ -171,4 +171,3 @@ Ga naar de volgende zelfstudie voor meer informatie over het controleren van vir
 
 > [!div class="nextstepaction"]
 > [Virtuele machines beheren](tutorial-govern-resources.md)
-

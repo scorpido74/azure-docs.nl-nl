@@ -1,18 +1,18 @@
 ---
-title: Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
-description: Ontdek hoe u een Resource Manager-sjabloon kunt gebruiken om een waarschuwing voor metrische gegevens te maken.
+title: Resource Manager-sjabloonvoorbeelden voor metrische waarschuwingen
+description: Dit artikel bevat voorbeelden van Resource Manager-sjablonen voor het maken van metrische waarschuwingen in Azure Monitor.
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515373"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Voorbeelden van Resource Manager-sjablonen voor metrische waarschuwingsregels in Azure Monitor
 
@@ -20,7 +20,7 @@ In dit artikel vindt u voorbeelden van hoe [Azure Resource Manager-sjablonen](..
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-Bekijk [Ondersteunde resources voor metrische waarschuwingen in Azure Monitor](../platform/alerts-metric-near-real-time.md) voor een lijst met resources die kunnen worden gebruikt met metrische waarschuwingsregels. Een uitleg van het schema en de eigenschappen voor een waarschuwingsregel is beschikbaar op [Waarschuwingen voor metrische gegevens - maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Bekijk [Ondersteunde resources voor metrische waarschuwingen in Azure Monitor](../platform/alerts-metric-near-real-time.md) voor een lijst met resources die kunnen worden gebruikt met metrische waarschuwingsregels. Een uitleg van het schema en de eigenschappen voor een waarschuwingsregel is beschikbaar op [Waarschuwingen voor metrische gegevens - maken of bijwerken](/rest/api/monitor/metricalerts/createorupdate).
 
 > [!NOTE]
 > Resourcesjabloon om waarschuwingen voor metrische gegevens te maken voor resourcetype: Voor Azure Log Analytics-werkruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces`zijn aanvullende stappen vereist. Bekijk [Metrische waarschuwing voor logboeken - Resourcesjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs) voor details.
@@ -1094,7 +1094,7 @@ Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsreg
 
 U kunt het volgende sjabloon gebruiken om een meer geavanceerde waarschuwingsregel voor metrische gegevens met statische drempelwaarde te maken voor aangepaste metrische gegevens.
 
-Bekijk [Aangepaste metrische gegevens in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) voor meer informatie over aangepaste metrische gegevens in Azure Monitor.
+Bekijk [Aangepaste metrische gegevens in Azure Monitor](../platform/metrics-custom-overview.md) voor meer informatie over aangepaste metrische gegevens in Azure Monitor.
 
 Wanneer u een waarschuwingsregel maakt voor aangepaste metrische gegevens, moet u zowel de metrische naam als de metrische naamruimte opgeven. Zorg er ook voor dat er al over de aangepaste metrische gegevens wordt gerapporteerd, want u kunt geen waarschuwingsregel maken voor aangepaste metrische gegevens die nog niet bestaan.
 
@@ -1325,7 +1325,7 @@ Sla de onderstaande json op als customstaticmetricalert.json voor deze stapsgewi
 
 >[!NOTE]
 >
-> U vindt de metrische naamruimte van specifieke aangepaste metrische gegevens door [te zoeken naar uw aangepaste metrische gegevens via het Azure-portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> U vindt de metrische naamruimte van specifieke aangepaste metrische gegevens door [te zoeken naar uw aangepaste metrische gegevens via het Azure-portal](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="multiple-resources"></a>Meerdere resources

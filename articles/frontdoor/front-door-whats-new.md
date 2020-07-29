@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door
-description: Dit artikel bevat een doorlopende lijst met recente wijzigingen die worden aangebracht in azure front deur.
+title: Recente wijzigingen in Azure Front Door
+description: Dit artikel bevat een lijst met recente wijzigingen die zijn aangebracht in Azure Front Door. De lijst wordt steeds bijgewerkt.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26e3e242a5085e228e426ad2cba51b1f1982ad74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321517"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521476"
 ---
-# <a name="whats-new-in-azure-front-door"></a>Wat is er nieuw in azure front-deur?
+# <a name="whats-new-in-azure-front-door"></a>Wat is er nieuw in Azure Front Door?
 
-De front-deur van Azure wordt doorlopend bijgewerkt. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
+Azure Front Door wordt doorlopend bijgewerkt. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
 
 - De nieuwste releases
 - Bekende problemen
@@ -32,10 +32,10 @@ De front-deur van Azure wordt doorlopend bijgewerkt. Om u op de hoogte te houden
 
 |Functie  |Beschrijving  |Datum toegevoegd  |
 |---------|---------|---------|
-| Regel-GA | Aanpassen hoe HTTP-aanvragen aan de rand worden verwerkt. Zie voor meer informatie het overzicht van de [regel engine](front-door-rules-engine.md). |Juni 2020 |
-| Engine voor regels (preview-versie) | Aanpassen hoe HTTP-aanvragen aan de rand worden verwerkt. Zie voor meer informatie het overzicht van de [regel engine](front-door-rules-engine.md). |April 2020 |
+| Algemene beschikbaarheid van regelengine | Aanpassen hoe HTTP-aanvragen aan de rand worden verwerkt. Bekijk het [overzicht van de regelengine](front-door-rules-engine.md) voor meer informatie. |Juni 2020 |
+| Regelengine (preview-versie) | Aanpassen hoe HTTP-aanvragen aan de rand worden verwerkt. Bekijk het [overzicht van de regelengine](front-door-rules-engine.md) voor meer informatie. |April 2020 |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is Azure front](front-door-overview.md) -deur? voor meer informatie over de voor deur van Azure.
+Zie [Wat is Azure Front Door?](front-door-overview.md) voor meer informatie over Azure Front Door.

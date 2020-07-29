@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539802"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323516"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Gebruikers, sessies en gebeurtenissen analyse in Application Insights
 
-Ontdek wanneer mensen uw web-app gebruiken, op welke pagina's ze het meest geïnteresseerd zijn, waar uw gebruikers zich bevinden en welke browsers en besturings systemen ze gebruiken. Analyseer bedrijfs-en gebruiks telemetrie met behulp van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md).
+Ontdek wanneer mensen uw web-app gebruiken, op welke pagina's ze het meest geïnteresseerd zijn, waar uw gebruikers zich bevinden en welke browsers en besturings systemen ze gebruiken. Analyseer bedrijfs-en gebruiks telemetrie met behulp van [Azure-toepassing Insights](./app-insights-overview.md).
 
 ![Scherm opname van Application Insights gebruikers](./media/usage-segmentation/0001-users.png)
 
@@ -29,9 +29,9 @@ Drie van de gebruiks bladen gebruiken hetzelfde hulp programma om telemetrie van
 
 * **Hulp programma gebruikers**: hoeveel mensen hebben uw app en de bijbehorende functies gebruikt.  Gebruikers worden geteld met anonieme Id's die zijn opgeslagen in browser cookies. Eén persoon die verschillende browsers of machines gebruikt, wordt als meer dan één gebruiker geteld.
 * **Hulp programma voor sessies**: hoeveel sessies van gebruikers activiteit hebben bepaalde pagina's en functies van uw app opgenomen. Een sessie wordt geteld na een half uur van inactiviteit van de gebruiker, of na 24 uur na continu gebruik.
-* **Hulp programma voor gebeurtenissen**: hoe vaak bepaalde pagina's en functies van uw app worden gebruikt. Een pagina weergave wordt geteld wanneer een browser een pagina uit uw app laadt, op voor waarde dat u [deze hebt geinstrumenteerd](../../azure-monitor/app/javascript.md). 
+* **Hulp programma voor gebeurtenissen**: hoe vaak bepaalde pagina's en functies van uw app worden gebruikt. Een pagina weergave wordt geteld wanneer een browser een pagina uit uw app laadt, op voor waarde dat u [deze hebt geinstrumenteerd](./javascript.md). 
 
-    Een aangepaste gebeurtenis vertegenwoordigt een exemplaar van iets wat er gebeurt in uw app, vaak een gebruikers interactie zoals het klikken op de knop of het volt ooien van een taak. U voegt code in uw app in om [aangepaste gebeurtenissen te genereren](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Een aangepaste gebeurtenis vertegenwoordigt een exemplaar van iets wat er gebeurt in uw app, vaak een gebruikers interactie zoals het klikken op de knop of het volt ooien van een taak. U voegt code in uw app in om [aangepaste gebeurtenissen te genereren](./api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Query's uitvoeren voor bepaalde gebruikers
 
@@ -62,5 +62,6 @@ De sectie **aan uw gebruikers voldoen** bevat informatie over vijf voorbeeld geb
     - [Trechters](usage-funnels.md)
     - [Bewaartermijn](usage-retention.md)
     - [Gebruikersstromen](usage-flows.md)
-    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Werkmappen](../platform/workbooks-overview.md)
     - [Gebruikers context toevoegen](usage-send-user-context.md)
+

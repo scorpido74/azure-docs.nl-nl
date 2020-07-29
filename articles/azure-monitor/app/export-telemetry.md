@@ -3,18 +3,18 @@ title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014521"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324332"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
 
 > [!NOTE]
-> Continue export wordt alleen ondersteund voor klassieke Application Insights-resources. [Op werk ruimte gebaseerde Application Insights resources](./create-workspace-resource.md) moeten [Diagnostische instellingen](./create-workspace-resource.md#export-telemetry)gebruiken.
+> Continue export wordt alleen ondersteund voor klassieke Application Insights-resources. [Pp werkruimte gebaseerde Application Insights-resources](./create-workspace-resource.md) moeten [diagnostische instellingen](./create-workspace-resource.md#export-telemetry) gebruiken.
 >
 
 Voordat u doorlopend exporteren instelt, zijn er enkele alternatieven die u wellicht wilt overwegen:
@@ -22,11 +22,11 @@ Voordat u doorlopend exporteren instelt, zijn er enkele alternatieven die u well
 * Met de knop Exporteren boven aan een metriek of zoek tabblad kunt u tabellen en grafieken overdragen naar een Excel-spread sheet.
 
 * [Analytics](../log-query/log-query-overview.md) biedt een krachtige query taal voor telemetrie. Er kunnen ook resultaten worden geëxporteerd.
-* Als u [uw gegevens in Power bi wilt verkennen](../../azure-monitor/app/export-power-bi.md ), kunt u dat doen zonder doorlopend exporteren te gebruiken.
+* Als u [uw gegevens in Power bi wilt verkennen](./export-power-bi.md), kunt u dat doen zonder doorlopend exporteren te gebruiken.
 * Met de [rest API voor gegevens toegang](https://dev.applicationinsights.io/) kunt u via een programma toegang krijgen tot uw telemetrie.
 * U kunt ook instellen dat [doorlopende export via Power shell wordt uitgevoerd](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
-Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang mogelijk kunt blijven), is deze nog steeds beschikbaar in Application Insights voor de gebruikelijke [Bewaar periode](../../azure-monitor/app/data-retention-privacy.md).
+Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang mogelijk kunt blijven), is deze nog steeds beschikbaar in Application Insights voor de gebruikelijke [Bewaar periode](./data-retention-privacy.md).
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Geavanceerde opslag configuratie voor continue export
 
@@ -52,7 +52,7 @@ Continue export **biedt geen ondersteuning** voor de volgende functies/configura
 4. Maak of selecteer een container in de opslag.
 
 > [!NOTE]
-> Zodra u uw export hebt gemaakt, gaan nieuwe opgenomen gegevens naar Azure Blob-opslag stromen. Continue export verzendt alleen nieuwe telemetrie die is gemaakt/opgenomen nadat continue export is ingeschakeld. Alle gegevens die bestonden vóór het inschakelen van continue export worden niet geëxporteerd en er wordt geen ondersteunde manier geboden om eerder gemaakte gegevens te exporteren met doorlopende export.
+> Zodra u uw export hebt gemaakt, gaan nieuwe opgenomen gegevens naar Azure Blob-opslag stromen. Continue export verzendt alleen nieuwe telemetrie die is gemaakt/opgenomen nadat continue export is ingeschakeld. Alle gegevens die bestonden vóór het inschakelen van continue export worden niet geëxporteerd en er wordt geen ondersteunde manier geboden om eerder gemaakte gegevens te exporteren met continue export.
 
 Er kan een vertraging van ongeveer een uur optreden voordat de gegevens in de opslag worden weer gegeven.
 
@@ -60,13 +60,13 @@ Zodra de eerste export is voltooid, ziet u een structuur die vergelijkbaar is me
 
 |Naam | Beschrijving |
 |:----|:------|
-| [Beschikbaarheid](export-data-model.md#availability) | Rapporten over [Beschik baarheid van webtests](../../azure-monitor/app/monitor-web-app-availability.md).  |
-| [Gebeurtenis](export-data-model.md#events) | Aangepaste gebeurtenissen gegenereerd door [track Event ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
-| [Uitzonderingen](export-data-model.md#exceptions) |Rapporteert [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) op de server en in de browser.
-| [Berichten](export-data-model.md#trace-messages) | Verzonden door [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)en door de [logboek registratie-adapters](../../azure-monitor/app/asp-net-trace-logs.md).
+| [Beschikbaarheid](export-data-model.md#availability) | Rapporten over [Beschik baarheid van webtests](./monitor-web-app-availability.md).  |
+| [Gebeurtenis](export-data-model.md#events) | Aangepaste gebeurtenissen gegenereerd door [track Event ()](./api-custom-events-metrics.md#trackevent). 
+| [Uitzonderingen](export-data-model.md#exceptions) |Rapporteert [uitzonde ringen](./asp-net-exceptions.md) op de server en in de browser.
+| [Berichten](export-data-model.md#trace-messages) | Verzonden door [TrackTrace](./api-custom-events-metrics.md#tracktrace)en door de [logboek registratie-adapters](./asp-net-trace-logs.md).
 | [Metrische gegevens](export-data-model.md#metrics) | Gegenereerd door metrieke API-aanroepen.
 | [Performance Counters](export-data-model.md) | Prestatie meter items die worden verzameld door Application Insights.
-| [Aanvragen](export-data-model.md#requests)| Verzonden door [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). De standaard modules gebruiken dit om de reactie tijd van de server te rapporteren, gemeten op de server.| 
+| [Aanvragen](export-data-model.md#requests)| Verzonden door [TrackRequest](./api-custom-events-metrics.md#trackrequest). De standaard modules gebruiken dit om de reactie tijd van de server te rapporteren, gemeten op de server.| 
 
 ### <a name="to-edit-continuous-export"></a>Continue export bewerken
 
@@ -79,19 +79,19 @@ Als u het exporteren wilt stoppen, klikt u op uitschakelen. Wanneer u nogmaals o
 Als u de export permanent wilt stoppen, verwijdert u deze. Hierdoor worden uw gegevens niet verwijderd uit de opslag.
 
 ### <a name="cant-add-or-change-an-export"></a>Kunt u een export niet toevoegen of wijzigen?
-* Als u exports wilt toevoegen of wijzigen, hebt u de machtiging voor eigenaar, bijdrager of Application Insights Inzender nodig. [Meer informatie over rollen][roles].
+* Als u exports wilt toevoegen of wijzigen, hebt u de machtiging voor Eigenaar, Inzender of Application Insights-Inzender nodig. [Meer informatie over rollen][roles].
 
 ## <a name="what-events-do-you-get"></a><a name="analyze"></a>Welke gebeurtenissen krijgt u?
 De geëxporteerde gegevens zijn de ruwe telemetriegegevens die we van uw toepassing ontvangen, behalve dat er locatie gegevens worden toegevoegd die worden berekend op basis van het IP-adres van de client.
 
-Gegevens die zijn verwijderd door middel van [steek proeven](../../azure-monitor/app/sampling.md) , worden niet opgenomen in de geëxporteerde gegevens.
+Gegevens die zijn verwijderd door middel van [steek proeven](./sampling.md) , worden niet opgenomen in de geëxporteerde gegevens.
 
 Andere berekende metrische gegevens worden niet opgenomen. We exporteren bijvoorbeeld geen gemiddeld CPU-gebruik, maar we exporteren de ruwe telemetrie waarvan het gemiddelde wordt berekend.
 
-De gegevens bevatten ook de resultaten van alle [beschik bare-webtesten](../../azure-monitor/app/monitor-web-app-availability.md) die u hebt ingesteld.
+De gegevens bevatten ook de resultaten van alle [beschik bare-webtesten](./monitor-web-app-availability.md) die u hebt ingesteld.
 
 > [!NOTE]
-> **Proef.** Als uw toepassing veel gegevens verzendt, kan de bemonsterings functie worden gebruikt en kan slechts een fractie van de gegenereerde telemetrie worden verzonden. [Meer informatie over steekproeven.](../../azure-monitor/app/sampling.md)
+> **Proef.** Als uw toepassing veel gegevens verzendt, kan de steekproeffunctie worden gebruikt en kan slechts een fractie van de gegenereerde telemetrie worden verzonden. [Meer informatie over steekproeven.](./sampling.md)
 >
 >
 
@@ -162,9 +162,9 @@ Zie [een werk rollen gebruiken][exportasa]voor een groter code voorbeeld.
 U bent verantwoordelijk voor het beheren van uw opslag capaciteit en het verwijderen van de oude gegevens, indien nodig.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Als u uw opslag sleutel opnieuw genereert...
-Als u de sleutel naar uw opslag wijzigt, werkt doorlopend exporteren niet meer. U ziet een melding in uw Azure-account.
+Als u de sleutel naar uw opslag wijzigt, werkt continue export niet meer. U ziet een melding in uw Azure-account.
 
-Open het tabblad doorlopend exporteren en bewerk de export. Bewerk het export doel, maar laat dezelfde opslag geselecteerd. Klik op OK om te bevestigen.
+Open het tabblad Continue export en bewerk de export. Bewerk de Exportdoelvoorziening, maar behoudt dezelfde geselecteerde opslag. Klik op OK om te bevestigen.
 
 De continue export wordt opnieuw gestart.
 
@@ -210,5 +210,6 @@ Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdin
 
 <!--Link references-->
 
-[exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
+[exportasa]: ./code-sample-export-sql-stream-analytics.md
+[roles]: ./resources-roles-access-control.md
+

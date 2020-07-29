@@ -6,35 +6,35 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: b8edbbc397a56f4fcf5b3ae070f04ca61659d98d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321102"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Problemen met logboek waarschuwingen in Azure Monitor oplossen  
 
 In dit artikel wordt beschreven hoe u veelvoorkomende problemen met logboek waarschuwingen in Azure Monitor kunt oplossen. Het bevat ook oplossingen voor veelvoorkomende problemen met de functionaliteit en configuratie van logboek waarschuwingen.
 
-In de term *logboek waarschuwingen* worden regels beschreven die worden geactiveerd op basis van een logboek query in een [Azure log Analytics-werk ruimte](../log-query/get-started-portal.md) of in [Azure-toepassing Insights](../log-query/log-query-overview.md). Meer informatie over de functionaliteit, terminologie en typen in [logboek waarschuwingen in azure monitor](../platform/alerts-unified-log.md).
+In de term *logboek waarschuwingen* worden regels beschreven die worden geactiveerd op basis van een logboek query in een [Azure log Analytics-werk ruimte](../log-query/get-started-portal.md) of in [Azure-toepassing Insights](../log-query/log-query-overview.md). Meer informatie over de functionaliteit, terminologie en typen in [logboek waarschuwingen in azure monitor](./alerts-unified-log.md).
 
 > [!NOTE]
-> In dit artikel wordt niet in overweging genomen gevallen waarin de Azure Portal een waarschuwings regel weergeeft en er geen melding wordt uitgevoerd door een gekoppelde actie groep. Zie voor dergelijke gevallen de details in [actie groepen maken en beheren in de Azure Portal](../platform/action-groups.md).
+> In dit artikel wordt niet in overweging genomen gevallen waarin de Azure Portal een waarschuwings regel weergeeft en er geen melding wordt uitgevoerd door een gekoppelde actie groep. Zie voor dergelijke gevallen de details in [actie groepen maken en beheren in de Azure Portal](./action-groups.md).
 
 ## <a name="log-alert-didnt-fire"></a>De logboek waarschuwing is niet geactiveerd
 
-Hier volgen enkele veelvoorkomende redenen waarom de status voor een geconfigureerde [logboek waarschuwings regel in azure monitor](../platform/alerts-log.md) niet wordt weer gegeven [als verwacht *fired* ](../platform/alerts-managing-alert-states.md).
+Hier volgen enkele veelvoorkomende redenen waarom de status voor een geconfigureerde [logboek waarschuwings regel in azure monitor](./alerts-log.md) niet wordt weer gegeven [als verwacht *fired* ](./alerts-managing-alert-states.md).
 
 ### <a name="data-ingestion-time-for-logs"></a>Gegevens opname tijd voor logboeken
 
-Met een waarschuwing van een logboek wordt uw query periodiek uitgevoerd op basis van [log Analytics](../log-query/get-started-portal.md) of [Application Insights](../log-query/log-query-overview.md). Omdat Azure Monitor veel terabytes aan gegevens van duizenden klanten in verschillende bronnen wereld wijd verwerkt, is de service vatbaar voor verschillende vertragingen. Zie [gegevens opname tijd in azure monitor logboeken](../platform/data-ingestion-time.md)voor meer informatie.
+Met een waarschuwing van een logboek wordt uw query periodiek uitgevoerd op basis van [log Analytics](../log-query/get-started-portal.md) of [Application Insights](../log-query/log-query-overview.md). Omdat Azure Monitor veel terabytes aan gegevens van duizenden klanten in verschillende bronnen wereld wijd verwerkt, is de service vatbaar voor verschillende vertragingen. Zie [gegevens opname tijd in azure monitor logboeken](./data-ingestion-time.md)voor meer informatie.
 
 Om vertragingen te verhelpen, wacht het systeem en wordt de waarschuwings query meermaals herhaald als de benodigde gegevens nog niet zijn opgenomen. Het systeem heeft een exponentieel toenemende wacht tijd ingesteld. De logboek waarschuwing wordt pas geactiveerd nadat de gegevens beschikbaar zijn, waardoor de vertraging kan worden veroorzaakt door trage opname van logboek gegevens.
 
 ### <a name="incorrect-time-period-configured"></a>Onjuiste tijds periode geconfigureerd
 
-Zoals beschreven in het artikel over [terminologie voor logboek waarschuwingen](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), geeft de tijds periode die in de configuratie wordt vermeld, het tijds bereik voor de query op. De query retourneert alleen records die binnen dit bereik zijn gemaakt.
+Zoals beschreven in het artikel over [terminologie voor logboek waarschuwingen](./alerts-unified-log.md#log-search-alert-rule---definition-and-types), geeft de tijds periode die in de configuratie wordt vermeld, het tijds bereik voor de query op. De query retourneert alleen records die binnen dit bereik zijn gemaakt.
 
 De tijds periode beperkt de gegevens die zijn opgehaald voor een logboek query om misbruik te voor komen. het omzeilen van een tijd opdracht ( **zoals voorheen**) in een logboek query wordt omzeild. Als de tijds periode bijvoorbeeld is ingesteld op 60 minuten en de query wordt uitgevoerd om 1:15 uur, worden alleen records die zijn gemaakt tussen 12:15 uur en 1:15 uur, gebruikt voor de logboek query. Als de logboek query een tijd opdracht gebruikt, zoals **geleden (1d)**, gebruikt de query nog steeds gegevens tussen 12:15 en 1:15 uur, omdat de periode is ingesteld op dat interval.
 
@@ -44,7 +44,7 @@ Controleer of de tijds periode in de configuratie overeenkomt met de query. Voor
 
 ### <a name="suppress-alerts-option-is-set"></a>De optie waarschuwingen onderdrukken is ingesteld
 
-Zoals beschreven in stap 8 van het artikel over [het maken van een waarschuwings regel voor het logboek in de Azure Portal](../platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal), bieden logboek waarschuwingen een optie **waarschuwingen onderdrukken** om activerings-en meldings acties voor een ingestelde periode te onderdrukken. Als gevolg hiervan is het mogelijk dat een waarschuwing niet is geactiveerd. Eigenlijk werd het geactiveerd, maar werd dit onderdrukt.  
+Zoals beschreven in stap 8 van het artikel over [het maken van een waarschuwings regel voor het logboek in de Azure Portal](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal), bieden logboek waarschuwingen een optie **waarschuwingen onderdrukken** om activerings-en meldings acties voor een ingestelde periode te onderdrukken. Als gevolg hiervan is het mogelijk dat een waarschuwing niet is geactiveerd. Eigenlijk werd het geactiveerd, maar werd dit onderdrukt.  
 
 ![Waarschuwingen onderdrukken](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
@@ -83,11 +83,11 @@ Omdat **aggregatie** op is gedefinieerd op **tijds tempel**, worden de gegevens 
 
 ## <a name="log-alert-fired-unnecessarily"></a>De logboek waarschuwing is onnodig geactiveerd
 
-Een geconfigureerde [logboek waarschuwings regel in azure monitor](../platform/alerts-log.md) kan onverwacht worden geactiveerd wanneer u deze in azure- [waarschuwingen](../platform/alerts-managing-alert-states.md)bekijkt. In de volgende secties worden enkele veelvoorkomende redenen beschreven.
+Een geconfigureerde [logboek waarschuwings regel in azure monitor](./alerts-log.md) kan onverwacht worden geactiveerd wanneer u deze in azure- [waarschuwingen](./alerts-managing-alert-states.md)bekijkt. In de volgende secties worden enkele veelvoorkomende redenen beschreven.
 
 ### <a name="alert-triggered-by-partial-data"></a>Waarschuwing geactiveerd door gedeeltelijke gegevens
 
-Log Analytics en Application Insights zijn onderhevig aan opname vertragingen en-verwerking. Wanneer u een logboek waarschuwings query uitvoert, merkt u mogelijk dat er geen gegevens beschikbaar zijn of dat er slechts enkele gegevens beschikbaar zijn. Zie [gegevens opname tijd vastleggen in azure monitor](../platform/data-ingestion-time.md)voor meer informatie.
+Log Analytics en Application Insights zijn onderhevig aan opname vertragingen en-verwerking. Wanneer u een logboek waarschuwings query uitvoert, merkt u mogelijk dat er geen gegevens beschikbaar zijn of dat er slechts enkele gegevens beschikbaar zijn. Zie [gegevens opname tijd vastleggen in azure monitor](./data-ingestion-time.md)voor meer informatie.
 
 Afhankelijk van hoe u de waarschuwings regel hebt geconfigureerd, kan het uitvoeren van de waarschuwing mislukken als er geen gegevens of gedeeltelijke gegevens in Logboeken worden weer gegeven op het moment van de uitvoering van de waarschuwing. In dergelijke gevallen raden wij u aan om de waarschuwings query of configuratie te wijzigen.
 
@@ -103,7 +103,7 @@ In het vak **query die moet worden uitgevoerd** , wordt de service logboek waars
 
 ## <a name="log-alert-was-disabled"></a>De logboek waarschuwing is uitgeschakeld
 
-De volgende secties bevatten een aantal redenen waarom Azure Monitor de [waarschuwings regel](../platform/alerts-log.md)voor het logboek kan uitschakelen.
+De volgende secties bevatten een aantal redenen waarom Azure Monitor de [waarschuwings regel](./alerts-log.md)voor het logboek kan uitschakelen.
 
 ### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>De resource waar de waarschuwing is gemaakt, bestaat niet meer
 
@@ -179,7 +179,7 @@ De volgende voorbeeld gebeurtenis in het Azure-activiteiten logboek is voor een 
 Elke waarschuwings regel voor logboeken die in Azure Monitor is gemaakt als onderdeel van de configuratie, moet een analyse query opgeven die regel matig door de waarschuwings service wordt uitgevoerd. De analyse query heeft mogelijk de juiste syntaxis op het moment van het maken of bijwerken van de regel. Soms kan de query in de waarschuwings regel voor Logboeken echter in een bepaalde tijd syntaxis problemen ontwikkelen en kan de regel worden uitgevoerd. Enkele veelvoorkomende redenen waarom een Analytics-query in een waarschuwings regel voor logboeken fouten kan ontwikkelen:
 
 - De query is geschreven om te worden [uitgevoerd op meerdere resources](../log-query/cross-workspace-query.md). En een of meer van de opgegeven resources bestaan niet meer.
-- De waarschuwing die is geconfigureerd voor het [metings type van metrische gegevens](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) heeft een waarschuwings query die niet voldoet aan de syntaxis norm
+- De waarschuwing die is geconfigureerd voor het [metings type van metrische gegevens](./alerts-unified-log.md#metric-measurement-alert-rules) heeft een waarschuwings query die niet voldoet aan de syntaxis norm
 - Er is geen gegevens stroom naar het analyse platform. De [uitvoering van de query levert een fout](https://dev.loganalytics.io/documentation/Using-the-API/Errors) op omdat er geen gegevens voor de gegeven query zijn.
 - Wijzigingen in de [query taal](/azure/kusto/query/) bevatten een gewijzigde indeling voor opdrachten en functies. De query die eerder in een waarschuwings regel is gegeven, is dus niet meer geldig.
 
@@ -218,11 +218,12 @@ Als u de quotum limiet hebt bereikt, kunnen de volgende stappen u helpen om het 
 
 #### <a name="from-api"></a>Van API
 
-- Power shell- [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
-- REST API - [Lijst per abonnement](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/listbysubscription)
+- Power shell- [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API - [Lijst per abonnement](/rest/api/monitor/scheduledqueryrules/listbysubscription)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [logboek waarschuwingen in azure](../platform/alerts-unified-log.md).
+- Meer informatie over [logboek waarschuwingen in azure](./alerts-unified-log.md).
 - Meer informatie over [Application Insights](../log-query/log-query-overview.md).
 - Meer informatie over [logboek query's](../log-query/log-query-overview.md).
+

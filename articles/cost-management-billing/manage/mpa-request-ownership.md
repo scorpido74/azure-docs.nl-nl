@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601408"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523601"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
 
@@ -155,6 +155,12 @@ Voor bepaalde overdrachtsaanvragen kan een extra beoordelingsproces van Microsof
 De map van de Azure-abonnementen die worden overgedragen, moet overeenkomen met de map van de klant die is geselecteerd tijdens het tot stand brengen van de CSP-relatie.
 
 Als deze twee mappen niet overeenkomen, kunnen de abonnementen niet worden overgedragen. U moet een nieuwe CSP-resellerrelatie met de klant tot stand brengen door de map van de Azure-abonnementen te selecteren of de map van Azure-abonnementen zo te wijzigen dat deze overeenkomt met de map van de CSP-relatie van de klant. Zie [Een bestaand abonnement koppelen aan uw Azure AD Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>EA-abonnement in map die niet van organisatie is
+
+De EA-abonnementen in mappen die niet van de organisatie zijn, kunnen worden overgedragen op voorwaarde dat de map een resellerrelatie heeft met de CSP. Als de map geen resellerrelatie heeft, moet u ervoor zorgen dat de organisatiegebruiker zich in de map bevindt als een *globale beheerder* die de partnerrelatie kan accepteren. Het domeinnaamgedeelte van de gebruikersnaam moet bestaan uit de oorspronkelijke standaarddomeinnaam '[domeinnaam]. onmicrosoft.com' of de naam van een geverifieerd, niet-federatief aangepaste domein zoals 'contoso.com'.  
+
+Als u een nieuwe gebruiker aan de map wilt toevoegen, raadpleegt u [Quickstart: Nieuwe gebruikers toevoegen aan Azure Active Directory om de nieuwe gebruiker toe te voegen aan de AAD-directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Toegang tot een Microsoft Partner-overeenkomst controleren
 

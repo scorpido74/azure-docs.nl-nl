@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: de5b490f1ffd50e44defb1c3e3c6f0ad32ca689c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516376"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324281"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Een Log Analytics-werkruimte in Azure Portal maken
 Gebruik het menu **log Analytics werk ruimten** om een log Analytics-werk ruimte te maken met behulp van de Azure Portal. Een Log Analytics-werk ruimte is een unieke omgeving voor Azure Monitor logboek gegevens. Elke werk ruimte heeft een eigen gegevens opslagplaats en-configuratie, en gegevens bronnen en-oplossingen zijn geconfigureerd om hun gegevens op te slaan in een bepaalde werk ruimte. U hebt een Log Analytics-werk ruimte nodig als u van plan bent om gegevens te verzamelen uit de volgende bronnen:
@@ -23,8 +23,8 @@ Gebruik het menu **log Analytics werk ruimten** om een log Analytics-werk ruimte
 
 Zie de volgende onderwerpen voor andere bronnen, zoals virtuele Azure-machines en Windows-of Linux-Vm's in uw omgeving:
 
-*  [Gegevens verzamelen van virtuele machines van Azure](../learn/quick-collect-azurevm.md) 
-*  [Gegevens verzamelen van een hybride Linux-computer](../learn/quick-collect-linux-computer.md)
+*  [Gegevens verzamelen van virtuele machines van Azure](./quick-collect-azurevm.md) 
+*  [Gegevens verzamelen van een hybride Linux-computer](./quick-collect-linux-computer.md)
 *  [Gegevens verzamelen van de hybride Windows-computer](quick-collect-windows-computer.md)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
@@ -39,7 +39,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
   
 2. Klik op **toevoegen**en selecteer vervolgens opties voor de volgende items:
 
-   * Geef een naam op voor de nieuwe **Log Analytics-werkruimte**, bijvoorbeeld *StandaardLAWerkruimte*. Deze naam moet globaal uniek zijn in alle Azure Monitor-abonnementen.
+   * Geef een naam op voor de nieuwe **Log Analytics-werkruimte**, bijvoorbeeld *StandaardLAWerkruimte*. Deze naam moet uniek zijn binnen alle Azure Monitor-abonnementen.
    * Selecteer een **abonnement** om te koppelen door een selectie in de vervolgkeuzelijst te maken als de geselecteerde standaardwaarde niet juist is.
    * Kies voor **resource groep**een bestaande resource groep die al is ingesteld, of maak een nieuwe.  
    * Selecteer een beschik bare **locatie**.  Zie voor meer informatie de [regio's log Analytics beschikbaar in](https://azure.microsoft.com/regions/services/) en zoek naar Azure monitor in het veld **zoeken naar een product** .  
@@ -66,3 +66,4 @@ Nu u een werk ruimte beschikbaar hebt, kunt u een verzameling van de telemetrie-
 * [Voeg System Center Operations Manager als gegevens bron](../platform/om-agents.md) toe om gegevens te verzamelen van agents die uw Operations Manager beheer groep rapporteren en op te slaan in uw log Analytics-werk ruimte. 
 * Verbind [Configuration Manager](../platform/collect-sccm.md) om computers te importeren die lid zijn van verzamelingen in de hiërarchie.  
 * Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.
+

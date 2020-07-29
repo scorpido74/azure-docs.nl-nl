@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280219"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migreren naar Azure Kubernetes service (AKS)
 
@@ -23,6 +23,7 @@ Dit document kan worden gebruikt om de volgende scenario's te ondersteunen:
 * Migreren van [Azure container service (ACS): 31 januari 2020 wordt buiten gebruik gesteld](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) op AKS
 * Migreren van de [AKS-engine](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) naar AKS
 * Migreren van niet-Azure gebaseerde Kubernetes-clusters naar AKS
+* Bestaande resources verplaatsen naar een andere regio
 
 Zorg ervoor dat uw doel-Kubernetes-versie binnen het ondersteunde venster voor AKS ligt tijdens de migratie. Als u een oudere versie gebruikt, kan deze zich niet binnen het ondersteunde bereik bevinden en moeten upgrades van versies worden ondersteund door AKS. Zie [AKS ondersteunde Kubernetes-versies](./supported-kubernetes-versions.md) voor meer informatie.
 

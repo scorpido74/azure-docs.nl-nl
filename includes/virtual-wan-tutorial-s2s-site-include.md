@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ac23912b12bc6c7fcd40d7433cb4e2d257eeb5d0
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525152"
 ---
 1. Selecteer **VPN-sites** in het onderdeel **Connectiviteit** op de portaalpagina voor uw virtuele WAN om de pagina voor VPN-sites te openen.
 2. Op de pagina **VPN sites** klikt u op **+Site maken**.
@@ -24,7 +24,7 @@ ms.locfileid: "85563040"
     * **Regio** - voorheen locatie genoemd. Dit is de locatie waar u deze websiteresource in wilt maken.
     * **Naam** - de naam waarmee u naar uw on-premises site wilt verwijzen.
     * **Leverancier van het apparaat** - de naam van de leverancier van het VPN-apparaat (bijvoorbeeld: Citrix, Cisco, Barracuda). Hierdoor krijgt het Azure-team meer inzicht in uw omgeving, zodat het makkelijker wordt om later aanvullende optimalisatiemogelijkheden toe te voegen of u te helpen bij het oplossen van problemen.
-    * **Border Gateway Protocol**: als u dit inschakelt, wordt BGP ingeschakeld voor alle verbindingen van de site. Uiteindelijk moet u de BGP-gegevens voor elke koppeling van de VPN-site instellen in de sectie koppelingen. BGP configureren op een virtuele WAN staat gelijk aan BGP configureren op de VPN-gateway van een virtueel Azure-netwerk. Het adres van uw on-premises BGP-peer mag niet gelijk zijn aan het openbare IP-adres van uw VPN-apparaat of het de VNet-adresruimte van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw BGP-peer-IP. Het kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Het mag echter geen APIPA-adres (169.254. x. x) zijn. Specificeer dit adres in de bijbehorende VPN-site die de locatie vertegenwoordigt. Zie [Over BGP met Azure VPN-gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md) voor BGP-vereisten. U kunt altijd een VPN-verbinding bewerken om de BGP-parameters bij te werken (Peering-IP op de koppeling en het AS-nummer) zodra de BGP-instelling voor de VPN-site is ingeschakeld.
+    * **Border Gateway Protocol**: als u dit inschakelt, wordt BGP ingeschakeld voor alle verbindingen van de site. Uiteindelijk moet u de BGP-gegevens voor elke koppeling van de VPN-site instellen in de sectie koppelingen. BGP configureren op een virtuele WAN staat gelijk aan BGP configureren op de VPN-gateway van een virtueel Azure-netwerk. Het adres van uw on-premises BGP-peer mag niet gelijk zijn aan het openbare IP-adres van uw VPN-apparaat of het de VNet-adresruimte van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw BGP-peer-IP. Dit kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Geef dit adres op in de bijbehorende VPN-site die de locatie vertegenwoordigt. Zie [Over BGP met Azure VPN-gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md) voor BGP-vereisten. U kunt altijd een VPN-verbinding bewerken om de BGP-parameters bij te werken (Peering-IP op de koppeling en het AS-nummer) zodra de BGP-instelling voor de VPN-site is ingeschakeld.
     * **Privié-adresruimte** - de IP-adresruimte op uw on-premises site. Verkeer dat bestemd is voor deze adresruimte wordt doorgestuurd naar uw lokale site. Dit is vereist wanneer BGP niet is ingeschakeld voor de site.
     * **Hubs**: de hub waarmee u de site wilt verbinden. Een site kan alleen worden verbonden met hubs die een VPN-gateway hebben. Als u een hub niet ziet, maak dan eerst een VPN-gateway in die hub.
 4. Selecteer **koppelingen** om informatie over de fysieke koppelingen op de vertakking toe te voegen. Als u een CPE-apparaat van een Virtual WAN-partner heeft, vraag dan bij hen na of deze informatie wordt uitgewisseld met Azure als onderdeel van de upload van informatie over de vertakking die is ingesteld in hun systemen.

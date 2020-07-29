@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562535"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529621"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -27,11 +27,11 @@ Hebt u liever PowerShell? Gebruik de [servicesjabloon](https://azure.microsoft.c
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-De volgende service-eigenschappen staan gedurende de levensduur van de service vast. Als u ze wilt wijzigen, is er een nieuwe service vereist. Wanneer u een service maakt, moet u nadenken over hoe u deze gaat gebruiken:
+De volgende service-eigenschappen staan gedurende de levensduur van de service vast. Als een of meerdere wilt wijzigen, is er een nieuwe service vereist. Aangezien ze vast staan, is het belangrijk om na te denken over de implicaties voor het gebruik bij het invullen van de eigenschappen:
 
-* naam (bekijk [deze suggesties](#name-the-service) voor servicenamen)
-* laag (Gratis, Basic, Standard [is van invloed op facturering](search-sku-tier.md); de laag zorgt voor een opwaartse limiet op de capaciteit)
-* regio (kies een locatie met gerelateerde services. Voor de integratie met Cognitive Services of Azure Machine Learning is het niet meer nodig om services in dezelfde regio te gebruiken)
+* De servicenaam wordt onderdeel van het URL-eindpunt ([tips](#name-the-service) voor handige servicenamen).
+* De servicelaag is van [invloed op de facturering](search-sku-tier.md) en zorgt voor een opwaartse limiet op de capaciteit.
+* De serviceregio kan de beschikbaarheid van bepaalde scenario's bepalen. Als u geïnteresseerd bent in kennisanalyse en AI-verrijking, hebt u Cognitive Services en mogelijk ook Azure Machine Learning in dezelfde regio als Azure Cognitive Search nodig.
 
 ## <a name="subscribe-free-or-paid"></a>Abonneren (gratis of betaald)
 

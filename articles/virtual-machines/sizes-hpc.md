@@ -4,17 +4,17 @@ description: Geeft een lijst van de verschillende beschik bare grootten voor Hig
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 041300efd9d756f2ef8145adb23d745b2345c7eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffbe61cd84d2c543f0db97a5d70ad13193f2a68d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058774"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267112"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -114,10 +114,10 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
-- [Geoptimaliseerd voor geheugen](sizes-memory.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Geoptimaliseerd geheugen](sizes-memory.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Vorige generaties](sizes-previous-gen.md)
 

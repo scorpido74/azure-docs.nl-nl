@@ -4,11 +4,12 @@ description: Application Insights-context gegevens model voor telemetrie
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322666"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetrie-context: Application Insights gegevens model
 
@@ -38,14 +39,14 @@ Maximale lengte: 64
 
 ## <a name="operation-id"></a>Bewerkings-id
 
-Een unieke id van de hoofd bewerking. Met deze id kunt u telemetrie groeperen over meerdere onderdelen. Zie de [correlatie van telemetrie](../../azure-monitor/app/correlation.md) voor meer informatie. De bewerkings-id wordt gemaakt door een aanvraag of een pagina weergave. Alle andere telemetrie stelt dit veld in op de waarde voor de insluitende aanvraag of pagina weergave. 
+Een unieke id van de hoofd bewerking. Met deze id kunt u telemetrie groeperen over meerdere onderdelen. Zie de [correlatie van telemetrie](./correlation.md) voor meer informatie. De bewerkings-id wordt gemaakt door een aanvraag of een pagina weergave. Alle andere telemetrie stelt dit veld in op de waarde voor de insluitende aanvraag of pagina weergave. 
 
 Maximale lengte: 128
 
 
 ## <a name="parent-operation-id"></a>ID van bovenliggende bewerking
 
-De unieke id van het telemetrie-item direct Parent. Zie de [correlatie van telemetrie](../../azure-monitor/app/correlation.md) voor meer informatie.
+De unieke id van het telemetrie-item direct Parent. Zie de [correlatie van telemetrie](./correlation.md) voor meer informatie.
 
 Maximale lengte: 128
 
@@ -75,7 +76,7 @@ Maximale lengte: 64
 
 Anonieme gebruikers-id. Vertegenwoordigt de eind gebruiker van de toepassing. Wanneer telemetrie vanuit een service wordt verzonden, is de gebruikers context de gebruiker die de bewerking in de service heeft gestart.
 
-[Steek proeven](../../azure-monitor/app/sampling.md) zijn een van de technieken om de hoeveelheid verzamelde telemetrie te minimaliseren. Er wordt geprobeerd om een voor beeld van een gecorreleerde telemetrie te kiezen in of uit te steek proef algoritme. De anonieme gebruikers-id wordt gebruikt voor het genereren van de sampling Score. Anonieme gebruikers-id moet dus een wille keurige waarde hebben. 
+[Steek proeven](./sampling.md) zijn een van de technieken om de hoeveelheid verzamelde telemetrie te minimaliseren. Er wordt geprobeerd om een voor beeld van een gecorreleerde telemetrie te kiezen in of uit te steek proef algoritme. De anonieme gebruikers-id wordt gebruikt voor het genereren van de sampling Score. Anonieme gebruikers-id moet dus een wille keurige waarde hebben. 
 
 Het gebruik van een anonieme gebruikers-id voor het opslaan van de gebruikers naam is een misbruik van het veld. Geverifieerde gebruikers-id gebruiken.
 
@@ -126,6 +127,7 @@ Maximale lengte: 256
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over hoe u [telemetrie kunt uitbreiden en filteren](../../azure-monitor/app/api-filtering-sampling.md).
+- Meer informatie over hoe u [telemetrie kunt uitbreiden en filteren](./api-filtering-sampling.md).
 - Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- Bekijk de [configuratie](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)van de verzameling met standaard context eigenschappen.
+- Bekijk de [configuratie](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)van de verzameling met standaard context eigenschappen.
+

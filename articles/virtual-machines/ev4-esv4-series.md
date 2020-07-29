@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 025d41724a88b4060d2dd22308641283992a68fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28bde63bb9972b8e8de6261282007c1762fd6818
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088883"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269305"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- en Esv4-serie
 
@@ -42,16 +42,16 @@ Livemigratie: ondersteund
 
 Updates voor geheugen behoud: ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
-|---|---|---|---|---|---|
-| Standard_E2_v4  | 2 | 16   | Alleen externe opslag | 4 | 2/1000  |
-| Standard_E4_v4  | 4 | 32  | Alleen externe opslag | 8 | 2/2000  |
-| Standard_E8_v4  | 8 | 64 | Alleen externe opslag | 16 | 4/4000 |
-| Standard_E16_v4 | 16 | 128 | Alleen externe opslag | 32 | 8/8000 |
-| Standard_E20_v4 | 20 | 160 | Alleen externe opslag | 32 | 8/10000 |
-| Standard_E32_v4 | 32 | 256 | Alleen externe opslag | 32 | 8/16000 |
-| Standard_E48_v4 | 48 | 384 | Alleen externe opslag | 32 | 8/24000 |
-| Standard_E64_v4 | 64 | 504 | Alleen externe opslag | 32| 8/30000 |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Max. aantal NIC's|Verwachte netwerk bandbreedte (Mbps) |
+|---|---|---|---|---|---|---|
+| Standard_E2_v4  | 2 | 16   | Alleen externe opslag | 4 | 2|1000  |
+| Standard_E4_v4  | 4 | 32  | Alleen externe opslag | 8 | 2|2000  |
+| Standard_E8_v4  | 8 | 64 | Alleen externe opslag | 16 | 4|4000 |
+| Standard_E16_v4 | 16 | 128 | Alleen externe opslag | 32 | 8|8000 |
+| Standard_E20_v4 | 20 | 160 | Alleen externe opslag | 32 | 8|10.000 |
+| Standard_E32_v4 | 32 | 256 | Alleen externe opslag | 32 | 8|16000 |
+| Standard_E48_v4 | 48 | 384 | Alleen externe opslag | 32 | 8|24000 |
+| Standard_E64_v4 | 64 | 504 | Alleen externe opslag | 32| 8|30.000 |
 
 
 ## <a name="esv4-series"></a>Esv4-serie
@@ -71,29 +71,34 @@ Livemigratie: ondersteund
 
 Updates voor geheugen behoud: ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale door Voer in cache: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
-|---|---|---|---|---|---|---|---|
-| Standard_E2s_v4  | 2 | 16  | Alleen externe opslag | 4 | 19000/120 (50) | 3200/48 | 2/1000  |
-| Standard_E4s_v4  | 4 | 32  | Alleen externe opslag | 8 | 38500/242 (100) | 6400/96 | 2/2000  |
-| Standard_E8s_v4  | 8 | 64  | Alleen externe opslag | 16 | 77000/485 (200) | 12800/192 | 4/4000 |
-| Standard_E16s_v4 | 16 | 128 | Alleen externe opslag | 32 | 154000/968 (400) | 25600/384 | 8/8000 |
-| Standard_E20s_v4 | 20 | 160 | Alleen externe opslag | 32 | 193000/1211 (500) | 32000/480  | 8/10000 |
-| Standard_E32s_v4 | 32 | 256 | Alleen externe opslag | 32 | 308000/1936 (800) | 51200/768  | 8/16000 |
-| Standard_E48s_v4 | 48 | 384 | Alleen externe opslag | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
-| Standard_E64s_v4 <sup>1</sup> | 64 | 504| Alleen externe opslag | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale door Voer in cache: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's|Verwachte netwerk bandbreedte (Mbps) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_E2s_v4  | 2 | 16  | Alleen externe opslag | 4 | 19000/120 (50) | 3200/48 | 2|1000  |
+| Standard_E4s_v4  | 4 | 32  | Alleen externe opslag | 8 | 38500/242 (100) | 6400/96 | 2|2000  |
+| Standard_E8s_v4  | 8 | 64  | Alleen externe opslag | 16 | 77000/485 (200) | 12800/192 | 4|4000 |
+| Standard_E16s_v4 | 16 | 128 | Alleen externe opslag | 32 | 154000/968 (400) | 25600/384 | 8|8000 |
+| Standard_E20s_v4 | 20 | 160 | Alleen externe opslag | 32 | 193000/1211 (500) | 32000/480  | 8|10.000 |
+| Standard_E32s_v4 | 32 | 256 | Alleen externe opslag | 32 | 308000/1936 (800) | 51200/768  | 8|16000 |
+| Standard_E48s_v4 | 48 | 384 | Alleen externe opslag | 32 | 462000/2904 (1200) | 76800/1152 | 8|24000 |
+| Standard_E64s_v4 <sup>1</sup> | 64 | 504| Alleen externe opslag | 32 | 615000/3872 (1600) | 80000/1200 | 8|30.000 |
 
 Er zijn <sup>1</sup> [beperkte core-grootten beschikbaar](./windows/constrained-vcpu.md).
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
-- [Geoptimaliseerd voor geheugen](sizes-memory.md)
-- [Geoptimaliseerd voor opslag](sizes-storage.md)
+- [Algemeen doel](sizes-general.md)
+- [Geoptimaliseerd geheugen](sizes-memory.md)
+- [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)
+
+Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
+
+Meer informatie over schijven typen: [schijf typen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

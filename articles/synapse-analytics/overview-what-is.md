@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808043"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496044"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Wat is Azure Synapse Analytics (preview van werkruimten)?
 
@@ -40,7 +40,7 @@ Daarnaast vereenvoudigt Azure Synapse het bouwen van voorspellende modellen en g
 
 * Synapse SQL biedt zowel **serverloze** als **ingerichte** resourcemodellen, waarmee u de opties voor verbruik en facturering kunt aanpassen aan uw behoeften. Voor voorspelbare prestaties en kosten kunt u pools inrichten om verwerkingskracht te reserveren voor gegevens die zijn opgeslagen in SQL-tabellen. Voor niet-geplande of bursty werkbelastingen gebruikt u het altijd beschikbare, serverloze SQL-eindpunt.
 * Gebruik ingebouwde **streamingmogelijkheden** om gegevens van gegevensbronnen in de cloud in SQL-tabellen te plaatsen
-* Integreer AI met SQL, door **machine learning**-modellen te gebruiken om gegevens te een score te geven met behulp van de functie T-SQL PREDICT
+* Integreer AI met SQL, door **machine learning**-modellen te gebruiken om gegevens een score te geven met behulp van de [functie T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
 
 ### <a name="industry-standard-apache-spark"></a>Toonaangevende Apache Spark
 

@@ -4,17 +4,17 @@ description: Klassieke waarschuwingen worden afgeschaft. Met waarschuwingen kunt
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56dd601e8d961d65ec21eefcc2dd5fed5c75f9fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515951"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322360"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](../../azure-monitor/platform/alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. 
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](./alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. 
 >
 
 Met waarschuwingen kunt u voor waarden voor gegevens configureren en op de hoogte worden gesteld wanneer de voor waarden overeenkomen met de meest recente bewakings gegevens.
@@ -40,8 +40,8 @@ De nieuwere metrische waarschuwingen hebben de volgende voor delen ten opzichte 
 - **Ondersteuning voor multidimensionale metrische gegevens**: u kunt een waarschuwing over dimensionale metrieken om een interessant segment van de metriek te bewaken.
 - **Meer controle over metrische voor waarden**: u kunt rijkere waarschuwings regels definiëren. De nieuwere waarschuwingen bieden ondersteuning voor het bewaken van het maximum, het minimum, het gemiddelde en de totale waarde van metrische gegevens.
 - **Gecombineerde bewaking van meerdere metrische gegevens**: u kunt meerdere metrische gegevens (op dit moment, Maxi maal twee metrische gegevens) bewaken met één regel. Er wordt een waarschuwing geactiveerd als beide metrische gegevens hun respectieve drempel waarden voor de opgegeven periode hebben geschonden.
-- **Verbeterd systeem voor meldingen**: voor alle nieuwere waarschuwingen worden [actie groepen](../../azure-monitor/platform/action-groups.md)gebruikt, die groepen van meldingen en acties worden genoemd en die opnieuw kunnen worden gebruikt in meerdere waarschuwingen.  Bij klassieke metrische waarschuwingen en oudere Log Analytics waarschuwingen worden geen actie groepen gebruikt. 
-- **Metrische gegevens uit logboeken** (open bare preview-versie): het registreren van log Analytics kan nu worden oppakt en geconverteerd naar Azure monitor meet gegevens en vervolgens worden gewaarschuwd op dezelfde manier als andere gegevens. Bekijk [waarschuwingen (klassiek)](alerts-classic.overview.md) voor de terminologie die specifiek is voor klassieke waarschuwingen. 
+- **Verbeterd systeem voor meldingen**: voor alle nieuwere waarschuwingen worden [actie groepen](./action-groups.md)gebruikt, die groepen van meldingen en acties worden genoemd en die opnieuw kunnen worden gebruikt in meerdere waarschuwingen.  Bij klassieke metrische waarschuwingen en oudere Log Analytics waarschuwingen worden geen actie groepen gebruikt. 
+- **Metrische gegevens uit logboeken** (open bare preview-versie): het registreren van log Analytics kan nu worden oppakt en geconverteerd naar Azure monitor meet gegevens en vervolgens worden gewaarschuwd op dezelfde manier als andere gegevens. Bekijk [waarschuwingen (klassiek)]() voor de terminologie die specifiek is voor klassieke waarschuwingen. 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Klassieke waarschuwingen voor Azure Monitor gegevens
@@ -51,7 +51,7 @@ Er zijn twee soorten klassieke waarschuwingen beschikbaar: metrische waarschuwin
 
 * **Waarschuwingen voor klassieke activiteiten logboeken** : een streaming-logboek waarschuwing die wordt geactiveerd door een gebeurtenis vermelding in het activiteiten logboek die overeenkomt met de filter criteria. Deze waarschuwingen hebben slechts één status, "geactiveerd". Met de waarschuwings-engine worden de filter criteria toegepast op elke nieuwe gebeurtenis. Er wordt niet gezocht naar oudere vermeldingen. Deze waarschuwingen kunnen u waarschuwen wanneer een nieuw Service Health incident optreedt of wanneer een gebruiker of toepassing een bewerking in uw abonnement uitvoert, bijvoorbeeld ' virtuele machine verwijderen '.
 
-Voor resource logboek gegevens die beschikbaar zijn via Azure Monitor, de gegevens routeren naar Log Analytics en een waarschuwing voor een logboek query gebruiken. Log Analytics maakt nu gebruik van de [nieuwe methode voor waarschuwingen](../../azure-monitor/platform/alerts-overview.md) 
+Voor resource logboek gegevens die beschikbaar zijn via Azure Monitor, de gegevens routeren naar Log Analytics en een waarschuwing voor een logboek query gebruiken. Log Analytics maakt nu gebruik van de [nieuwe methode voor waarschuwingen](./alerts-overview.md) 
 
 In het volgende diagram vindt u een overzicht van de gegevens bronnen in Azure Monitor en, in het algemeen, hoe u een melding kunt ontvangen van die gegevens.
 
@@ -68,7 +68,7 @@ Azure gebruikt de volgende termen om klassieke waarschuwingen en de bijbehorende
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Hoe kan ik een melding ontvangen van een Azure Monitor klassieke waarschuwing?
 In het verleden hebben Azure-waarschuwingen van verschillende services hun eigen ingebouwde meldings methoden gebruikt. 
 
-Azure Monitor een herbruikbare meldings groepering met de naam *actie groepen*gemaakt. Actie groepen geven een set ontvangers op voor een melding. Telkens wanneer een waarschuwing wordt geactiveerd die verwijst naar de actie groep, ontvangen alle ontvangers deze melding. Met actie groepen kunt u een groep van ontvangers (bijvoorbeeld uw lijst met technici op aanroepen) opnieuw gebruiken voor verschillende waarschuwings objecten. Actie groepen bieden ondersteuning voor meldingen door te posten naar een webhook-URL naast e-mail adressen, SMS-nummers en een aantal andere acties.  Zie [actie groepen](../../azure-monitor/platform/action-groups.md)voor meer informatie. 
+Azure Monitor een herbruikbare meldings groepering met de naam *actie groepen*gemaakt. Actie groepen geven een set ontvangers op voor een melding. Telkens wanneer een waarschuwing wordt geactiveerd die verwijst naar de actie groep, ontvangen alle ontvangers deze melding. Met actie groepen kunt u een groep van ontvangers (bijvoorbeeld uw lijst met technici op aanroepen) opnieuw gebruiken voor verschillende waarschuwings objecten. Actie groepen bieden ondersteuning voor meldingen door te posten naar een webhook-URL naast e-mail adressen, SMS-nummers en een aantal andere acties.  Zie [actie groepen](./action-groups.md)voor meer informatie. 
 
 Eerdere waarschuwingen voor klassieke activiteiten Logboeken gebruiken actie groepen.
 
@@ -96,3 +96,4 @@ Informatie over waarschuwings regels ophalen en deze configureren met behulp van
 * Het [webhook-schema voor waarschuwingen in het activiteiten logboek](activity-log-alerts-webhook.md) bekijken
 * Meer informatie over [actie groepen](action-groups.md)
 * [Nieuwere waarschuwingen](alerts-metric.md) configureren
+

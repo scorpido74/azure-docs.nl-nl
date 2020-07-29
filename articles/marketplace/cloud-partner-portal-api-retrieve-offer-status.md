@@ -4,15 +4,15 @@ description: API om de huidige status van de aanbieding op te halen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272008"
 ---
 # <a name="retrieve-offer-status"></a>Aanbiedingsstatus ophalen
 
@@ -25,11 +25,11 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 
 ## <a name="uri-parameters"></a>URI-para meters
 
-|  **Naam**       |   **Beschrijving**                            |  **Gegevens type** |
+|  **Naam**       |   **Beschrijving**                            |  **Gegevenstype** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | Uitgevers-id, bijvoorbeeld`Contoso`  |     Tekenreeks     |
 |  offerId        | GUID die de aanbieding uniek identificeert      |     Tekenreeks     |
-|  api-versie    | Nieuwste versie van API                        |     Datum       |
+|  api-versie    | Nieuwste versie van API                        |     Date       |
 |  |  |
 
 ## <a name="header"></a>Header
@@ -126,7 +126,7 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 |  estimatedTimeFrame   | Schatting van de tijd die nodig is om deze stap te volt ooien, met een beschrijvende notatie                       |
 |  id                   | Id van de stap                                                                         |
 |  Stapnaam             | De naam van de stap                                                                               |
-|  description          | Beschrijving van de stap                                                                        |
+|  beschrijving          | Beschrijving van de stap                                                                        |
 |  status               | De status van de stap. Zie [stap status](#step-status) hieronder voor een lijst met mogelijke waarden.    |
 |  berichten             | Matrix van berichten met betrekking tot de stap                                                          |
 |  processPercentage    | Voltooiings percentage van de stap                                                              |
@@ -151,7 +151,7 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 |  NeverPublished              | De aanbieding is nooit gepubliceerd.                          |
 |  NotStarted                  | De aanbieding is nieuw en niet gestart.                            |
 |  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.                 |
-|  Wordt uitgevoerd                     | Verzen ding van aanbieding wordt verwerkt.                     |
+|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.                     |
 |  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.               |
 |  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                           |
 |  Mislukt                      | Kan de aanbieding niet verzenden.                                 |

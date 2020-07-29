@@ -1,30 +1,34 @@
 ---
 title: Een instantie van DMS maken (Azure Resource Manager-sjabloon)
-description: Meer informatie over het maken van een Database Migration Service met behulp van een Azure Resource Manager-sjabloon.
+description: Lees hoe u een instantie van Database Migration Service maakt met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852462"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537442"
 ---
-# <a name="create-instance-of-azure-database-migration-service-azure-resource-manager-template"></a>Een instantie van Azure Database Migration Service maken (Azure Resource Manager-sjabloon)
+# <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Quickstart: Een instantie van Azure Database Migration Service maken met behulp van een ARM-sjabloon
 
-Gebruik deze Azure Resource Manager sjabloon om een instantie van de Azure Database Migration Service te implementeren. 
+Gebruik deze Azure Resource Manager-sjabloon (ARM-sjabloon) om een instantie van de Azure Database Migration Service te implementeren. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-database-migration-simple-deploy%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor de ARM-sjabloon voor Azure Database Migration Service is het volgende vereist: 
 
-- De nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) en/of [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- De nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli) en/of [PowerShell](/powershell/scripting/install/installing-powershell). 
 - Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="review-the-template"></a>De sjabloon controleren
@@ -39,7 +43,7 @@ Er worden drie Azure-resources gedefinieerd in de sjabloon:
 - [Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets): Hiermee wordt het subnet gemaakt. 
 - [Microsoft.DataMigration/services](/azure/templates/microsoft.datamigration/services): Hiermee wordt een instantie van de Azure Database Migration Service geïmplementeerd. 
 
-Meer sjablonen voor Azure Database Migration Service zijn te vinden in de [galerie met quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration).
+Meer sjablonen voor Azure Database Migration Service zijn te vinden in de [galerie met quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
@@ -105,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste Azure Resource Manager-sjabloon maken en implementeren](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Zie voor andere manieren om Azure Database Migration Service te implementeren: 
 - [Azure-portal](quickstart-create-data-migration-service-portal.md)

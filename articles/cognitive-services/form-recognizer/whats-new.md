@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 68f7ec9aaffa2bad73d77d730749642a1b57f50b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22eab216714d45e4b8a91fd58325424d4baef95e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044847"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272943"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -26,7 +26,7 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="new-features"></a>Nieuwe functies
-* **v 2.0-verwijzing beschikbaar** Bekijk de [v 2.0 API-referentie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) en de bijgewerkte sdk's voor [.net](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer), [python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)en [Java script](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer).
+* **v 2.0-verwijzing beschikbaar** Bekijk de [v 2.0 API-referentie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) en de bijgewerkte sdk's voor [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)en [Java script](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest).
 * Verbeteringen in de **tabel en** uitbrei ding van de extractie omvatten nauw keurige verbeteringen en verbeteringen in tabel extractie, met name de mogelijkheid om tabellen en structuren in een aangepaste trein zonder labels te leren. 
 * **Valuta ondersteuning** Detectie en extractie van algemene valuta symbolen.
 * **Azure-gov** Formulier herkenning is nu ook beschikbaar in azure gov.
@@ -50,10 +50,10 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 ### <a name="new-features"></a>Nieuwe functies
 * **SDK-ondersteuning voor de open bare preview van de Form Recognizer API v 2.0** Deze maand breidden onze service ondersteuning uit om een preview-SDK voor de versie van de formulier Recognizer v 2.0 (preview) op te nemen. Gebruik de onderstaande koppelingen om aan de slag te gaan met de taal van uw keuze: 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
 
   De nieuwe SDK ondersteunt alle functies van de v 2.0 REST API voor de formulier herkenner. U kunt bijvoorbeeld een model trainen met of zonder labels en extra tekst, sleutel waardeparen en tabellen uit uw formulieren extra heren, gegevens uit de bevestigingen ophalen met de vooraf gemaakte ontvangst bevestigingen en tekst en tabellen met de lay-outservice uit uw documenten ophalen. U kunt uw feedback op de Sdk's delen via het [SDK-feedback formulier](https://aka.ms/FR_SDK_v1_feedback).
  

@@ -7,16 +7,16 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516359"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Runtime-uitzonderingen vinden en diagnosticeren met behulp van Azure Application Insights
 
-Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uitzonderingen te identificeren en diagnosticeren.  In deze zelfstudie leert u dit proces met uw toepassing.  Procedures voor:
+Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uitzonderingen te identificeren en diagnosticeren.  In deze zelfstudie leert u dit proces met uw toepassing.  In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Het wijzigen van uw project om het bijhouden van uitzonderingen in te schakelen
@@ -29,18 +29,18 @@ Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uit
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
+- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
 - Download en installeer de [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
-- [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) inschakelen
+- [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md) inschakelen
 - Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../../azure-monitor/app/asp-net.md)in. 
 - De zelfstudie volgt de identificatie van een uitzondering in uw toepassing; wijzig dus uw code in uw ontwikkelings- of testomgeving om een uitzondering te genereren. 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
-Meld u aan bij de Azure Portal [https://portal.azure.com](https://portal.azure.com)op.
+Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
 
 
 ## <a name="analyze-failures"></a>Fouten analyseren
@@ -72,7 +72,7 @@ Application Insights verzamelt fouten in uw toepassing en laat u zien hoe vaak z
     ![Details van uitzondering](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Mislukt code identificeren
-De Snapshot Debugger verzamelt momentopnamen van de meest frequente uitzonderingen in uw toepassing om u te helpen bij de diagnose van de onderliggende oorzaak in de productie.  U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Daarna hebt u de mogelijkheid om fouten in de bron code op te sporen door de moment opname te downloaden en te openen in Visual Studio 2019 Enter prise.
+De Snapshot Debugger verzamelt momentopnamen van de meest frequente uitzonderingen in uw toepassing om u te helpen bij de diagnose van de onderliggende oorzaak in de productie.  U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Hierna hebt u de mogelijkheid om fouten in de broncode op te sporen door de momentopname te downloaden en te openen in Visual Studio 2019 Enterprise.
 
 1. Klik in de eigenschappen van de uitzondering op **Momentopname voor foutopsporing openen**.
 2. Het deelvenster **Debug Snapshot** (fouten opsporen in momentopname) wordt geopend met de aanroepstack voor de aanvraag.  Klik op een methode om de waarden van alle lokale variabelen op het moment van de aanvraag weer te geven.  Te beginnen bij de bovenste methode in dit voorbeeld, zien we lokale variabelen die geen waarde hebben.

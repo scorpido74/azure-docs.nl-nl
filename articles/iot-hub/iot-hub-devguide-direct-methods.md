@@ -10,12 +10,14 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045991"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323057"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Directe methoden van IoT Hub begrijpen en aanroepen
 
@@ -115,7 +117,7 @@ Voer de gewijzigde opdracht uit om de opgegeven directe methode aan te roepen. G
 ```bash
 https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 De back-end-app ontvangt een antwoord dat bestaat uit de volgende items:
 
@@ -166,7 +168,7 @@ De hoofd tekst die het apparaat ontvangt, heeft de volgende indeling:
 
 Methode aanvragen zijn QoS 0.
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 Het apparaat verzendt reacties naar `$iothub/methods/res/{status}/?$rid={request id}` , waarbij:
 
@@ -192,7 +194,7 @@ Het AMQP-bericht arriveert op de ontvangst koppeling die de methode aanvraag ver
 
 * De bericht tekst van het AMQP met de methode payload als JSON.
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 Het apparaat maakt een verzend koppeling om de methode reactie op adres te retour neren `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 

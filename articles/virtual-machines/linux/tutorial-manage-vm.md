@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: virtuele Linux-machines maken en beheren met de Azure CLI'
+title: 'Zelfstudie: Virtuele Linux-machines maken en beheren met de Azure CLI'
 description: In deze zelfstudie leert u hoe u Azure CLI gebruikt voor het maken en beheren van virtuele Linux-machines in Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e559be82fc7c3d6b25b99319785d49e30f56287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459998"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526976"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Zelfstudie: Virtuele Linux-machines maken en beheren met de Azure CLI
 
-Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines, zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een virtuele machine. Procedures voor:
+Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines, zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een virtuele machine. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
@@ -32,13 +32,13 @@ Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele comp
 > * De grootte van een virtuele machine wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
-In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
+In deze zelfstudie wordt gebruikgemaakt van de CLI in de [Azure Cloud Shell](../../cloud-shell/overview.md), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **Probeer het** bovenaan een willekeurig codeblok.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep maken met de opdracht [az group create](https://docs.microsoft.com/cli/azure/group). 
+Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). 
 
 Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Voordat een virtuele machine wordt gemaakt, moet een resourcegroep worden gemaakt. In dit voorbeeld wordt een resourcegroep met de naam *myResourceGroupVM* gemaakt in de regio *VS - Oost*. 
 
@@ -50,9 +50,9 @@ De resourcegroep wordt opgegeven tijdens het maken of wijzigen van een virtuele 
 
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
 
-Maak een virtuele machine met de opdracht [az vm create](https://docs.microsoft.com/cli/azure/vm). 
+Maak een virtuele machine met de opdracht [az vm create](/cli/azure/vm). 
 
-Wanneer u een virtuele machine maakt, zijn er diverse opties beschikbaar zoals installatiekopie besturingssysteem, schijfgrootte en beheerdersreferenties. In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt waarop Ubuntu Server loopt. Een gebruikersaccount met de naam *azureuser* wordt gemaakt op de virtuele machine en SSH-sleutels worden gegenereerd als deze niet bestaan op de standaardlocatie van de sleutel (*~/.ssh*):
+Wanneer u een virtuele machine maakt, zijn er diverse opties beschikbaar zoals installatiekopie besturingssysteem, schijfgrootte en beheerdersreferenties. In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt waarop Ubuntu Server loopt. Een gebruikersaccount met de naam *azureuser* wordt gemaakt op de virtuele machine en SSH-sleutels worden gegenereerd als deze niet bestaan op de standaardlocatie van de sleutel ( *~/.ssh*):
 
 ```azurecli-interactive
 az vm create \
@@ -155,12 +155,12 @@ In de volgende tabel zijn grootten gecategoriseerd in use-cases.
 
 | Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Algemeen doel](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
-| [Geoptimaliseerde rekenkracht](sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
-| [Geoptimaliseerd geheugen](sizes-memory.md)    | Esv3, Ev3, M, DSv2, dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](sizes-storage.md)      | Lsv2, ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
-| [Hoge prestaties](sizes-hpc.md) | H        | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
+| [Algemeen gebruik](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
+| [Geoptimaliseerde rekenkracht](../sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
+| [Geoptimaliseerd geheugen](../sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerde opslag](../sizes-storage.md)      | Lsv2, Ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
+| [GPU](../sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
+| [Hoge prestaties](../sizes-hpc.md) | H        | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
 
 
 ### <a name="find-available-vm-sizes"></a>Beschikbare VM-grootten zoeken

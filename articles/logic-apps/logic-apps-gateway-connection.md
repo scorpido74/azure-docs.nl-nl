@@ -3,15 +3,15 @@ title: Toegang tot gegevens bronnen on-premises
 description: Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps door een Azure on-premises gegevens gateway resource te maken
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/21/2020
+ms.openlocfilehash: 94fedc5dc6c9f420fbf14f80618a6daeefe908b2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065954"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172041"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevensbronnen vanuit Azure Logic Apps
 
@@ -56,9 +56,9 @@ Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway
 
 * U gebruikt [hetzelfde Azure-account en-abonnement](../logic-apps/logic-apps-gateway-install.md#requirements) dat is gebruikt bij het installeren van die gegevens gateway. Dit Azure-account moet deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology).
 
-* De installatie van de gateway is niet al geregistreerd en geclaimd door een andere Azure gateway-resource.
+* De installatie van de gateway is niet al geregistreerd en geclaimd door een andere bestaande Azure gateway-resource in de Azure Portal.
 
-  Wanneer u een gateway bron maakt in de Azure Portal, selecteert u een gateway-installatie, die verwijst naar de bron van de gateway en alleen die gateway bron. In Azure Logic Apps moeten on-premises triggers en acties vervolgens de gateway bron gebruiken om verbinding te maken met on-premises gegevens bronnen. In deze triggers en acties selecteert u uw Azure-abonnement en de bijbehorende gateway resource die u wilt gebruiken. Elke gateway bron is gekoppeld aan slechts één gateway-installatie, die slechts aan één Azure-account is gekoppeld.
+  Wanneer u een gateway bron maakt in de Azure Portal, selecteert u een gateway-installatie die is gekoppeld aan de gateway bron en alleen die gateway bron. Elke gateway bron kan aan slechts één gateway-installatie worden gekoppeld, die slechts kan worden gekoppeld aan één Azure-account. In Azure Logic Apps gebruiken on-premises triggers en acties de gateway resource om verbinding te maken met on-premises gegevens bronnen. Als u toegang hebt tot een abonnement, kunt u kiezen uit verschillende Azure-abonnementen die elk zijn gekoppeld aan een andere gateway resource. Uw logische app en gateway resource hoeven niet hetzelfde Azure-abonnement te gebruiken.
 
   > [!NOTE]
   > Alleen de Gateway-beheerder kan de gateway bron maken in de Azure Portal. Service-principals worden momenteel niet ondersteund. 
@@ -107,6 +107,8 @@ Nadat u de gateway resource hebt gemaakt en uw Azure-abonnement aan deze resourc
 1. Selecteer **verbinding via on-premises gegevens gateway**.
 
 1. Selecteer in de lijst **abonnementen** onder **gateways**uw Azure-abonnement met de gateway resource die u wilt.
+
+   Als u toegang hebt tot een abonnement, kunt u kiezen uit verschillende Azure-abonnementen die elk zijn gekoppeld aan een andere gateway resource. Uw logische app en gateway resource hoeven niet hetzelfde Azure-abonnement te gebruiken.
 
 1. Selecteer in de lijst **verbindings gateway** , waarin de beschik bare gateway bronnen in het geselecteerde abonnement worden weer gegeven, de gateway resource die u wilt. Elke gateway bron is gekoppeld aan één gateway-installatie.
 

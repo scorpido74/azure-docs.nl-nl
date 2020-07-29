@@ -1,6 +1,6 @@
 ---
-title: 'Verbinding maken met het virtuele bureau blad van Windows: 2019 van iOS-Azure'
-description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de iOS-client.
+title: Verbinding maken met het virtuele bureau blad van Windows (klassiek) van iOS-Azure
+description: Verbinding maken met het virtuele bureau blad van Windows (klassiek) met behulp van de iOS-client.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 26c031710c96c42b1d5236332e445992de87616e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06de85e23b1d6350a48735506c8931922d40b799
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270733"
 ---
-# <a name="connect-with-the-ios-client"></a>Verbinding maken met de iOS-client
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>Verbinding maken met het virtuele bureau blad van Windows (klassiek) met de iOS-client
 
 > Van toepassing op: iOS 13,0 of hoger. Compatibel met iPhone, iPad en iPod Touch.
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-ios.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../connect-ios.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw iOS-apparaat met onze Download bare client. In deze hand leiding wordt uitgelegd hoe u de iOS-client kunt instellen.
 

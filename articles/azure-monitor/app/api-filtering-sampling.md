@@ -3,12 +3,12 @@ title: Filters en voor verwerking in de Application Insights SDK | Microsoft Doc
 description: U kunt telemetrie-processors en initialisatie functies voor telemetrie voor de SDK schrijven om eigenschappen te filteren of toe te voegen aan de gegevens voordat de telemetrie naar de Application Insights portal wordt verzonden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a16dc7bc9f6f3c49640d320fbfbffaa7acbed6b9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014623"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323210"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Telemetrie filteren en voorverwerken in de Application Insights SDK
 
@@ -17,7 +17,7 @@ U kunt invoeg toepassingen schrijven en configureren voor de Application Insight
 * Door [steek proeven](sampling.md) wordt het aantal telemetrie verminderd zonder dat dit van invloed is op uw statistieken. Er worden gerelateerde gegevens punten bijgehouden zodat u ertussen kunt navigeren tijdens het vaststellen van een probleem. In de portal worden de totale aantallen vermenigvuldigd om de steek proeven te compenseren.
 * Met filters met telemetrie-processors kunt u telemetrie in de SDK filteren voordat deze naar de server wordt verzonden. U kunt bijvoorbeeld het volume van de telemetrie verminderen door aanvragen van robots uit te sluiten. Filteren is een meer algemene benadering van het verminderen van het verkeer dan de steek proef. Hiermee hebt u meer controle over wat er wordt verzonden, maar dit is van invloed op uw statistieken. U kunt bijvoorbeeld alle voltooide aanvragen filteren.
 * Met de [initialisatie functies voor telemetrie kunt u eigenschappen toevoegen of wijzigen](#add-properties) voor alle telemetrie die vanuit uw app worden verzonden, inclusief telemetrie uit de standaard modules. U kunt bijvoorbeeld berekende waarden of versie nummers toevoegen waarmee u de gegevens in de portal kunt filteren.
-* [De SDK-API](../../azure-monitor/app/api-custom-events-metrics.md) wordt gebruikt voor het verzenden van aangepaste gebeurtenissen en metrische gegevens.
+* [De SDK-API](./api-custom-events-metrics.md) wordt gebruikt voor het verzenden van aangepaste gebeurtenissen en metrische gegevens.
 
 Voordat u begint:
 
@@ -34,7 +34,7 @@ Als u telemetrie wilt filteren, schrijft u een telemetrie-processor en registree
 > [!WARNING]
 > Het filteren van de telemetrie die via de SDK is verzonden met behulp van processors, kan de statistieken die u in de portal ziet, scheef trekken en het moeilijk maken om verwante items te volgen.
 >
-> Overweeg in plaats daarvan [steek proeven](../../azure-monitor/app/sampling.md)te gebruiken.
+> Overweeg in plaats daarvan [steek proeven](./sampling.md)te gebruiken.
 >
 >
 
@@ -352,7 +352,7 @@ Voeg direct na de initialisatie code die u hebt ontvangen van de portal, een tel
 </script>
 ```
 
-Zie [Application Insights gegevens model exporteren](../../azure-monitor/app/export-data-model.md)voor een samen vatting van de niet-aangepaste eigenschappen die beschikbaar zijn in het telemetrie-item.
+Zie [Application Insights gegevens model exporteren](./export-data-model.md)voor een samen vatting van de niet-aangepaste eigenschappen die beschikbaar zijn in het telemetrie-item.
 
 U kunt zoveel initialisatie functies toevoegen als u wilt. Ze worden aangeroepen in de volg orde waarin ze worden toegevoegd.
 
@@ -542,7 +542,7 @@ Wat is het verschil tussen telemetrie-processors en initialisatie functies voor 
 
 ## <a name="reference-docs"></a>Referentie documenten
 
-* [API-overzicht](../../azure-monitor/app/api-custom-events-metrics.md)
+* [API-overzicht](./api-custom-events-metrics.md)
 * [ASP.NET-verwijzing](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK-code
@@ -552,6 +552,7 @@ Wat is het verschil tussen telemetrie-processors en initialisatie functies voor 
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
-* [Zoeken naar gebeurtenissen en Logboeken](../../azure-monitor/app/diagnostic-search.md)
-* [Steekproeven](../../azure-monitor/app/sampling.md)
+* [Zoeken naar gebeurtenissen en Logboeken](./diagnostic-search.md)
+* [proef](./sampling.md)
 * [Problemen oplossen](../faq.md)
+

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c239c30b24ad110d71c43b31448a0f5b29574b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0e249c512825dc4c36ff3f6355a4a774934ee4e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84762544"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met BlueJeans voor Azure AD
 
@@ -38,6 +38,9 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 * Een abonnement op BlueJeans voor Azure AD met eenmalige aanmelding (SSO).
+
+> [!NOTE]
+> Deze integratie is ook beschikbaar voor gebruik vanuit de Azure AD US Government Cloud-omgeving. U kunt deze toepassing vinden in de toepassingsgalerie van Azure AD US Government Cloud en deze op dezelfde manier configureren als vanuit een openbare cloud.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -204,7 +207,7 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
 
     a. Typ in het tekstvak **First Name** de voornaam van de gebruiker, zoals **B**.
 
-    b. Typ in het tekstvak **Last Name** de achternaam van de gebruiker, zoals **Simon**.
+    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, zoals **Simon**.
 
     c. Voer in het tekstvak **Pick a BlueJeans voor Azure AD Username** de gebruikersnaam van de gebruiker in, bijvoorbeeld **Brittasimon**
 

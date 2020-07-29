@@ -3,16 +3,16 @@ title: Afhankelijkheden bijhouden in Azure-toepassing Insights | Microsoft Docs
 description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsoft Azure webtoepassing met Application Insights.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 9980db352e5d2c342131e0d6a2cd1248adb10810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067713"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321374"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
 
-Een *afhankelijkheid* is een onderdeel dat wordt aangeroepen door uw toepassing. Dit is meestal een service die wordt aangeroepen via HTTP, of een database of een bestandssysteem. [Application Insights](../../azure-monitor/app/app-insights-overview.md) meet de duur van afhankelijkheids aanroepen, of het nu niet lukt, samen met aanvullende informatie, zoals de naam van de afhankelijkheid, enzovoort. U kunt specifieke afhankelijkheids aanroepen onderzoeken en deze correleren aan aanvragen en uitzonde ringen.
+Een *afhankelijkheid* is een onderdeel dat wordt aangeroepen door uw toepassing. Dit is meestal een service die wordt aangeroepen via HTTP, of een database of een bestandssysteem. [Application Insights](./app-insights-overview.md) meet de duur van afhankelijkheids aanroepen, of het nu niet lukt, samen met aanvullende informatie, zoals de naam van de afhankelijkheid, enzovoort. U kunt specifieke afhankelijkheids aanroepen onderzoeken en deze correleren aan aanvragen en uitzonde ringen.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch bijgehouden afhankelijkheden
 
@@ -154,7 +154,7 @@ Hier ziet u het aantal mislukte afhankelijkheden. Als u meer informatie wilt ove
 
 ## <a name="logs-analytics"></a>Logboeken (Analytics)
 
-U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hier volgen enkele voorbeelden.
+U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hieronder ziet u een aantal voorbeelden.
 
 * Alle mislukte afhankelijkheids aanroepen zoeken:
 
@@ -202,6 +202,7 @@ Net als elke Application Insights SDK is de module afhankelijkheids verzameling 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md)
-* [Pagina gegevens van gebruiker &](../../azure-monitor/app/javascript.md)
-* [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Uitzonderingen](./asp-net-exceptions.md)
+* [Pagina gegevens van gebruiker &](./javascript.md)
+* [Beschikbaarheid](./monitor-web-app-availability.md)
+

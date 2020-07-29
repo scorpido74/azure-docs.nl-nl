@@ -1,7 +1,7 @@
 ---
-title: "Quick Start: profiteren van intenties met REST-Api's-LUIS"
+title: "Quickstart: Model wijzigen met REST API's - LUIS"
 titleSuffix: Azure Cognitive Services
-description: Gebruik in deze REST API Snelstartgids een beschik bare open bare LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de conversatie tekst.
+description: In deze snelstartgids voor REST API gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 06/03/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: a4d84aa6dc24bc7d293200e20d60c5fe349a769d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: cc3e0c66a018c46fcae76dea9b74735082e077aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538102"
 ---
-# <a name="quickstart-change-model-with-rest-apis"></a>Snelstartgids: model wijzigen met REST-Api's
+# <a name="quickstart-change-model-with-rest-apis"></a>Quickstart: Model wijzigen met REST API's
 
-In deze Quick start gaat u voorbeeld uitingen toevoegen aan een pizza-app en traint u de app. Voorbeeldutterances zijn teksten uit gesprekken met gebruikers die worden toegewezen aan een intentie. Door voorbeeldutterances op te geven voor intenties leert u LUIS welke soorten door de gebruiker geleverde tekst bij welke intentie horen.
+Deze quickstart laat u zien hoe u voorbeelduitingen kunt toevoegen aan een Pizza-app en de app kunt trainen. Voorbeeldutterances zijn teksten uit gesprekken met gebruikers die worden toegewezen aan een intentie. Door voorbeeldutterances op te geven voor intenties leert u LUIS welke soorten door de gebruiker geleverde tekst bij welke intentie horen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](./includes/get-started-get-model-rest-csharp.md)]

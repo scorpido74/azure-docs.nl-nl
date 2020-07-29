@@ -3,19 +3,20 @@ title: Gebruik AMQP met de API voor Java-berichten service & Azure Service Bus
 description: De Java-berichten service (JMS) gebruiken met Azure Service Bus en Advanced Message Queueing Protocol (AMQP) 1,0.
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 04d2595951640b7fe878decfeb862863f06c17a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 95558f973041a086dc66d2bebb1ce54ee58c952a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119154"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320779"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>De Java-berichten service (JMS) gebruiken met Azure Service Bus en AMQP 1,0
+In dit artikel wordt uitgelegd hoe u functies van Azure Service Bus berichten (wacht rijen en publiceren/abonneren) gebruikt vanuit Java-toepassingen met behulp van de populaire API-standaard voor Java-berichten service (JMS). Er is een [aanvullende artikel](service-bus-amqp-dotnet.md) waarin wordt uitgelegd hoe u hetzelfde kunt doen met behulp van de Azure service bus .net API. U kunt deze twee hand leidingen gebruiken om meer te weten te komen over cross-platform berichten met behulp van AMQP 1,0.
 
-Ondersteuning voor **Advanced Message queueing Protocol (AMQP) 1,0-** Protocol in azure service bus betekent dat u de wachtrij kunt gebruiken voor het publiceren en abonneren van brokered messaging-functies vanuit diverse platformen met behulp van een efficiënt binair protocol. Daarnaast kunt u toepassingen bouwen die bestaan uit onderdelen die zijn gebouwd met behulp van een combi natie van talen, frameworks en besturings systemen.
+De Advanced Message Queueing Protocol (AMQP) 1,0 is een efficiënte, betrouw bare, Wire-level berichten protocol dat u kunt gebruiken voor het bouwen van robuuste, platform onafhankelijke toepassingen voor berichten uitwisseling.
 
-In dit artikel wordt uitgelegd hoe u Azure Service Bus functies voor berichten (wacht rijen en publiceren/abonneren) gebruikt vanuit Java-toepassingen met behulp van de populaire API voor **Java-berichten service (JMS)** via het AMQP-protocol.
+Ondersteuning voor AMQP 1,0 in Azure Service Bus houdt in dat u de functie voor het maken van de wachtrij en het publiceren/abonneren van Brokered Messaging-functies kunt gebruiken vanuit diverse platformen met behulp van een efficiënt binair protocol. Daarnaast kunt u toepassingen bouwen die bestaan uit onderdelen die zijn gebouwd met behulp van een combi natie van talen, frameworks en besturings systemen.
 
 ## <a name="get-started-with-service-bus"></a>Aan de slag met Service Bus
 In deze hand leiding wordt ervan uitgegaan dat u al een Service Bus naam ruimte hebt met een wachtrij met de naam `basicqueue` . Als dat niet het geval is, kunt u [de naam ruimte en wachtrij maken](service-bus-create-namespace-portal.md) met behulp van de [Azure Portal](https://portal.azure.com). Zie [aan de slag met Service Bus wachtrijen](service-bus-dotnet-get-started-with-queues.md)voor meer informatie over het maken van service bus naam ruimten en wacht rijen.
@@ -23,143 +24,357 @@ In deze hand leiding wordt ervan uitgegaan dat u al een Service Bus naam ruimte 
 > [!NOTE]
 > Gepartitioneerde wacht rijen en onderwerpen bieden ook ondersteuning voor AMQP. Zie [gepartitioneerde Messa ging-entiteiten](service-bus-partitioning.md) en [AMQP 1,0-ondersteuning voor service bus gepartitioneerde wacht rijen en onderwerpen](service-bus-partitioned-queues-and-topics-amqp-overview.md)voor meer informatie.
 > 
->
+> 
 
-## <a name="what-jms-features-are-supported"></a>Welke JMS-functies worden ondersteund?
+## <a name="downloading-the-amqp-10-jms-client-library"></a>De AMQP 1,0 JMS-client bibliotheek downloaden
+Ga naar voor informatie over waar u de nieuwste versie van de Apache Qpid JMS AMQP 1,0-client bibliotheek kunt downloaden [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) .
 
-Hier vindt u de JMS-functies die worden ondersteund in Azure Service Bus.
+U moet de volgende vier JAR-bestanden van het Apache Qpid JMS AMQP 1,0-distributie archief toevoegen aan het Java-KLASSENPAD bij het bouwen en uitvoeren van JMS-toepassingen met Service Bus:
 
-| Functies | Azure Service Bus Standard-laag-JMS 1,1 | Azure Service Bus Premium-laag-JMS 2,0 (preview-versie) |
-|---|---|---|
-| Automatisch maken van entiteiten via AMQP | Niet ondersteund | **Ondersteund** |
-| Wachtrijen | **Ondersteund** | **Ondersteund** |
-| Onderwerpen | **Ondersteund** | **Ondersteund** |
-| Tijdelijke wacht rijen | Niet ondersteund <br/> (Maak in plaats daarvan een normale wachtrij met *AutoDeleteOnIdle* ingesteld) | **Ondersteund** |
-| Tijdelijke onderwerpen | Niet ondersteund | **Ondersteund** |
-| Bericht kiezer | Niet ondersteund | **Ondersteund** |
-| Wachtrij browsers | Niet ondersteund <br/> (Gebruik de functie *Peek* van de Service Bus-API) | **Ondersteund** |
-| Gedeelde duurzame abonnementen | **Ondersteund** | **Ondersteund**|
-| Niet-gedeelde duurzame abonnementen | Niet ondersteund | **Ondersteund** |
-| Gedeelde niet-duurzame abonnementen | Niet ondersteund | **Ondersteund** |
-| Niet-verdeelde niet-duurzame abonnementen | Niet ondersteund | **Ondersteund** |
-| Afmelden voor duurzame abonnementen | Niet ondersteund | **Ondersteund** |
-| ReceiveNoWait | Niet ondersteund | **Ondersteund** |
-| Gedistribueerde trans acties | Niet ondersteund | Niet ondersteund |
-| Duurzaam Ondersteuningabonnementen | Niet ondersteund | Niet ondersteund |
-
-### <a name="additional-caveats-for-service-bus-standard-tier"></a>Aanvullende voor behoud voor Service Bus Standard-laag
-Er is slechts één **MessageProducer** of **MessageConsumer** per **sessie**toegestaan. Als u meerdere **MessageProducers** of **MessageConsumers** in een toepassing wilt maken, maakt u een speciale **sessie** voor elk van deze.
-
-## <a name="downloading-the-java-message-service-jms-client-library"></a>De client bibliotheek van de Java-berichten service (JMS) downloaden
-
-De onderstaande bibliotheken moeten worden gebruikt om verbinding te maken met Azure Service Bus en de API van de Java-berichten service (JMS) via AMQP te gebruiken. Deze moeten worden toegevoegd aan het build-pad met behulp van het voorkeurs beheer programma voor afhankelijkheden van uw project.
-
-De vereiste client bibliotheek is afhankelijk van de prijs categorie die wordt gebruikt.
-
-### <a name="premium-tier---jms-20-over-amqp-preview"></a>Premium-laag-JMS 2,0 over AMQP (preview-versie)
-
-Als u gebruik wilt maken van alle preview-functies die beschikbaar zijn in Azure Service Bus Premium-laag, gebruikt u de [JMS-bibliotheek van Azure-servicebus](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) .
-
-### <a name="standard-tier---jms-11-over-amqp"></a>Standard-laag-JMS 1,1 via AMQP
-
-Als u de JMS-functies wilt gebruiken die worden ondersteund door Service Bus Standard-laag (Zie [welke JMS-functies worden ondersteund?](service-bus-java-how-to-use-jms-api-amqp.md#what-jms-features-are-supported)) gebruikt u de onderstaande bibliotheken:
-
-* [Geronimo JMS 1,1 spec](https://search.maven.org/artifact/org.apache.geronimo.specs/geronimo-jms_1.1_spec)
-* [QPid JMS-client](https://search.maven.org/artifact/org.apache.qpid/qpid-jms-client)
+* geronimo-jms \_ 1,1 \_ spec-1.0. jar
+* QPid-JMS-client-[versie]. jar
 
 > [!NOTE]
 > JMSe JAR-namen en-versies zijn mogelijk gewijzigd. Zie [QPID JMS-AMQP 1,0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10)voor meer informatie.
->
 
 ## <a name="coding-java-applications"></a>Java-toepassingen coderen
+### <a name="java-naming-and-directory-interface-jndi"></a>Java-naamgeving en Directory-interface (JNDI)
+JMS maakt gebruik van de Java-naamgevings-en Directory interface (JNDI) om een schei ding tussen logische namen en fysieke namen te maken. Twee typen JMS-objecten worden omgezet met behulp van JNDI: ConnectionFactory en Destination. JNDI maakt gebruik van een provider model waarin u verschillende Directory Services kunt koppelen om taken voor naam omzetting af te handelen. De Apache Qpid JMS AMQP 1,0-bibliotheek wordt geleverd met een eenvoudige JNDI provider op basis van een bestand dat is geconfigureerd met behulp van een eigenschappen bestand van de volgende indeling:
 
-Zodra de afhankelijkheden zijn geïmporteerd, kunnen de Java-toepassingen worden geschreven in een JMS provider neutraal.
+```TEXT
+# servicebus.properties - sample JNDI configuration
 
-Omdat Azure Service Bus Standard en Premium verschillen van de afhankelijkheden en het aantal JMS-functies die worden ondersteund, is het programmeer model enigszins anders voor de twee.
+# Register a ConnectionFactory in JNDI using the form:
+# connectionfactory.[jndi_name] = [ConnectionURL]
+connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 
-> [!IMPORTANT]
-> De onderstaande hand leiding laat zien hoe u verbinding maakt met Azure Service Bus op basis van een eenvoudige toepassing.
->
-> Gezien dat de meeste bedrijfs toepassings architecturen een aangepaste manier hebben om afhankelijkheden en configuraties te beheren, kunt u de onderstaande hand leiding gebruiken om te begrijpen wat er nodig is en uw toepassing op de juiste wijze aan te passen.
->
+# Register some queues in JNDI using the form
+# queue.[jndi_name] = [physical_name]
+# topic.[jndi_name] = [physical_name]
+queue.QUEUE = queue1
+```
 
-### <a name="connecting-to-azure-service-bus-using-jms"></a>Verbinding maken met Azure Service Bus met behulp van JMS
+#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>JNDI-context instellen en de ConnectionFactory configureren
 
-Als u verbinding wilt maken met Azure Service Bus met behulp van JMS-clients, hebt u de **Connections Tring** die beschikbaar is in het beleid voor gedeelde toegang in de [Azure Portal](https://portal.azure.com) onder **primaire verbindings reeks**.
+De **Connections Tring** waarnaar wordt verwezen in de beschik baarheid in het beleid voor gedeelde toegang in de [Azure Portal](https://portal.azure.com) onder **primaire verbindings reeks**
+```java
+// The connection string builder is the only part of the azure-servicebus SDK library
+// we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
+// connection string. 
+ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
+        
+// set up JNDI context
+Hashtable<String, String> hashtable = new Hashtable<>();
+hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
+hashtable.put("queue.QUEUE", "BasicQueue");
+hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+Context context = new InitialContext(hashtable);
 
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
 
-#### <a name="connecting-to-azure-service-bus-premium-over-jms-20-preview"></a>Verbinding maken met Azure Service Bus Premium via JMS 2,0 (preview-versie)
+// Look up queue
+Destination queue = (Destination) context.lookup("QUEUE");
+```
 
-1. Exemplaar maken van de`ServiceBusJmsConnectionFactorySettings`
-    ```java
-    ServiceBusJmsConnectionFactorySettings connFactorySettings = new ServiceBusJmsConnectionFactorySettings();
+#### <a name="configure-producer-and-consumer-destination-queues"></a>Producer-en consumenten doel wachtrijen configureren
+De vermelding die wordt gebruikt voor het definiëren van een bestemming in het QPid eigenschappen bestand JNDI provider heeft de volgende indeling:
 
-    connFactorySettings.setConnectionIdleTimeoutMS(20000);
-    ```
-2. Exemplaar `ServiceBusJmsConnectionFactory` met de juiste `ServiceBusConnectionString` .
-    ```java
-    String ServiceBusConnectionString = "<SERVICE_BUS_CONNECTION_STRING_WITH_MANAGE_PERMISSIONS>";
-    ConnectionFactory factory = new ServiceBusJmsConnectionFactory(ServiceBusConnectionString, connFactorySettings);
-    ```
+De doel wachtrij voor de producent maken- 
+```java
+String queueName = "queueName";
+Destination queue = (Destination) queueName;
 
-3. Gebruik de `ConnectionFactory` om een te maken `Connection` en vervolgens een`Session` 
-    ```java
-    Connection connection = factory.createConnection();
-    Session session = connection.createSession();
-    ```
-    of a `JMSContext` (voor JMS 2,0-clients)
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
 
-    ```java
-    JMSContext jmsContext = factory.createContext();
-    ```
+Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-#### <a name="connecting-to-azure-service-bus-standard-over-jms-11"></a>Verbinding maken met Azure Service Bus Standard via JMS 1,1
+// Create Producer
+MessageProducer producer = session.createProducer(queue);
+```
 
-1. Voeg Azure Service Bus configuratie in JNDI properties-bestand met de naam **servicebus. Properties**in.
-    ```properties
-    # servicebus.properties - sample JNDI configuration
-    
-    # Register a ConnectionFactory in JNDI using the form:
-    # connectionfactory.[jndi_name] = [ConnectionURL]
-    connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
-    ```
+Een doel wachtrij maken voor de Consumer- 
+```java
+String queueName = "queueName";
+Destination queue = (Destination) queueName;
 
-2. JNDI-context instellen en de ConnectionFactory configureren
-    ```java
-    ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
 
-    // set up JNDI context
-    Hashtable<String, String> hashtable = new Hashtable<>();
-    hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
-    hashtable.put("queue.QUEUE", "BasicQueue");
-    hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
-    Context context = new InitialContext(hashtable);
-    
-    ConnectionFactory factory = (ConnectionFactory) context.lookup("SBCF");
-    ```
-3. Gebruik de `ConnectionFactory` om a `Connection` en vervolgens een te maken `Session` .
-    ```java
-    Connection connection - factory.createConnection(csb.getSasKeyName(), csb.getSasKey());
-    Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-    ```
+Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+
+// Create Consumer
+MessageConsumer consumer = session.createConsumer(queue);
+```
 
 ### <a name="write-the-jms-application"></a>De JMS-toepassing schrijven
+Er zijn geen speciale Api's of opties vereist wanneer u JMS gebruikt met Service Bus. Er zijn echter enkele beperkingen die later worden besproken. Net als bij elke JMS toepassing is het eerste wat vereist is, de configuratie van de JNDI-omgeving, zodat u een **ConnectionFactory** en doelen kunt omzetten.
 
-Zodra de `Session` of `JMSContext` is geïnstantieerd, kan uw toepassing gebruikmaken van de vertrouwde JMS-api's om zowel beheer-als gegevens bewerkingen uit te voeren.
+#### <a name="configure-the-jndi-initialcontext"></a>De JNDI-InitialContext configureren
+De JNDI-omgeving wordt geconfigureerd door een hashtabel van configuratie-informatie door te geven aan de constructor van de klasse javax.naming.InitialContext. De twee vereiste elementen in de hashtabel zijn de naam van de klasse van de eerste context-Factory en de provider-URL. De volgende code laat zien hoe u de JNDI-omgeving kunt configureren voor het gebruik van de QPid-eigenschappen bestand op basis van JNDI met een eigenschappen bestand met de naam **servicebus. Properties**.
 
-Raadpleeg de lijst met [ondersteunde JMS-functies](service-bus-java-how-to-use-jms-api-amqp.md#what-jms-features-are-supported) voor de standaard-en Premium-laag om te zien welke api's in elke laag worden ondersteund.
+```java
+// set up JNDI context
+Hashtable<String, String> hashtable = new Hashtable<>();
+hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + \
+"?amqp.idleTimeout=120000&amqp.traceFrames=true");
+hashtable.put("queue.QUEUE", "BasicQueue");
+hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+Context context = new InitialContext(hashtable);
+``` 
+
+### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Een eenvoudige JMS-toepassing met behulp van een Service Bus wachtrij
+In het volgende voor beeld wordt JMS TextMessages naar een Service Bus wachtrij verzonden met de logische JNDI-naam van de wachtrij en ontvangt de berichten terug.
+
+U hebt alle toegang tot alle bron code-en configuratie gegevens van de Azure Service Bus-voor [beelden JMS-wachtrij Quick](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart) start
+
+```java
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+package com.microsoft.azure.servicebus.samples.jmsqueuequickstart;
+
+import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import org.apache.commons.cli.*;
+import org.apache.log4j.*;
+
+import javax.jms.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import java.util.Hashtable;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+
+/**
+ * This sample demonstrates how to send messages from a JMS Queue producer into
+ * an Azure Service Bus Queue, and receive them with a JMS message consumer.
+ * JMS Queue. 
+ */
+public class JmsQueueQuickstart {
+
+    // Number of messages to send
+    private static int totalSend = 10;
+    //Tracking counter for how many messages have been received; used as termination condition
+    private static AtomicInteger totalReceived = new AtomicInteger(0);
+    // log4j logger 
+    private static Logger logger = Logger.getRootLogger();
+
+    public void run(String connectionString) throws Exception {
+
+        // The connection string builder is the only part of the azure-servicebus SDK library
+        // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
+        // connection string. 
+        ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
+        
+        // set up JNDI context
+        Hashtable<String, String> hashtable = new Hashtable<>();
+        hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
+        hashtable.put("queue.QUEUE", "BasicQueue");
+        hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+        Context context = new InitialContext(hashtable);
+        ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+        
+        // Look up queue
+        Destination queue = (Destination) context.lookup("QUEUE");
+
+        // we create a scope here so we can use the same set of local variables cleanly 
+        // again to show the receive side separately with minimal clutter
+        {
+            // Create Connection
+            Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+            // Create Session, no transaction, client ack
+            Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+
+            // Create producer
+            MessageProducer producer = session.createProducer(queue);
+
+            // Send messages
+            for (int i = 0; i < totalSend; i++) {
+                BytesMessage message = session.createBytesMessage();
+                message.writeBytes(String.valueOf(i).getBytes());
+                producer.send(message);
+                System.out.printf("Sent message %d.\n", i + 1);
+            }
+
+            producer.close();
+            session.close();
+            connection.stop();
+            connection.close();
+        }
+
+        {
+            // Create Connection
+            Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+            connection.start();
+            // Create Session, no transaction, client ack
+            Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+            // Create consumer
+            MessageConsumer consumer = session.createConsumer(queue);
+            // create a listener callback to receive the messages
+            consumer.setMessageListener(message -> {
+                try {
+                    // receives message is passed to callback
+                    System.out.printf("Received message %d with sq#: %s\n",
+                            totalReceived.incrementAndGet(), // increments the tracking counter
+                            message.getJMSMessageID());
+                    message.acknowledge();
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            });
+
+            // wait on the main thread until all sent messages have been received
+            while (totalReceived.get() < totalSend) {
+                Thread.sleep(1000);
+            }
+            consumer.close();
+            session.close();
+            connection.stop();
+            connection.close();
+        }
+
+        System.out.printf("Received all messages, exiting the sample.\n");
+        System.out.printf("Closing queue client.\n");
+    }
+
+    public static void main(String[] args) {
+
+        System.exit(runApp(args, (connectionString) -> {
+            JmsQueueQuickstart app = new JmsQueueQuickstart();
+            try {
+                app.run(connectionString);
+                return 0;
+            } catch (Exception e) {
+                System.out.printf("%s", e.toString());
+                return 1;
+            }
+        }));
+    }
+
+    static final String SB_SAMPLES_CONNECTIONSTRING = "SB_SAMPLES_CONNECTIONSTRING";
+
+    public static int runApp(String[] args, Function<String, Integer> run) {
+        try {
+
+            String connectionString = null;
+
+            // parse connection string from command line
+            Options options = new Options();
+            options.addOption(new Option("c", true, "Connection string"));
+            CommandLineParser clp = new DefaultParser();
+            CommandLine cl = clp.parse(options, args);
+            if (cl.getOptionValue("c") != null) {
+                connectionString = cl.getOptionValue("c");
+            }
+
+            // get overrides from the environment
+            String env = System.getenv(SB_SAMPLES_CONNECTIONSTRING);
+            if (env != null) {
+                connectionString = env;
+            }
+
+            if (connectionString == null) {
+                HelpFormatter formatter = new HelpFormatter();
+                formatter.printHelp("run jar with", "", options, "", true);
+                return 2;
+            }
+            return run.apply(connectionString);
+        } catch (Exception e) {
+            System.out.printf("%s", e.toString());
+            return 3;
+        }
+    }
+}
+```
+
+### <a name="run-the-application"></a>De toepassing uitvoeren
+Geef de **verbindings reeks** op uit het beleid voor gedeelde toegang om de toepassing uit te voeren.
+Hieronder ziet u de uitvoer van het formulier door de toepassing uit te voeren:
+
+```Output
+> mvn clean package
+>java -jar ./target/jmsqueuequickstart-1.0.0-jar-with-dependencies.jar -c "<CONNECTION_STRING>"
+
+Sent message 1.
+Sent message 2.
+Sent message 3.
+Sent message 4.
+Sent message 5.
+Sent message 6.
+Sent message 7.
+Sent message 8.
+Sent message 9.
+Sent message 10.
+Received message 1 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-1
+Received message 2 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-2
+Received message 3 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-3
+Received message 4 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-4
+Received message 5 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-5
+Received message 6 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-6
+Received message 7 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-7
+Received message 8 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-8
+Received message 9 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-9
+Received message 10 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-10
+Received all messages, exiting the sample.
+Closing queue client.
+
+```
+
+## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>Toewijzing van AMQP-toestand en Service Bus-bewerking
+Dit is de manier waarop een AMQP-toestand wordt omgezet in een Service Bus bewerking:
+
+```Output
+ACCEPTED = 1; -> Complete()
+REJECTED = 2; -> DeadLetter()
+RELEASED = 3; (just unlock the message in service bus, will then get redelivered)
+MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
+MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
+```
+
+## <a name="jms-topics-vs-service-bus-topics"></a>Onderwerpen over JMS en Service Bus
+Het gebruik van Azure Service Bus-onderwerpen en-abonnementen via de API van de Java-berichten service (JMS) biedt eenvoudige mogelijkheden voor verzenden en ontvangen. Het is een handige keuze bij het overbrengen van toepassingen van andere bericht brokers met JMS-compatibele Api's, zelfs als Service Bus-onderwerpen verschillen van JMS-onderwerpen en enkele aanpassingen vereisen. 
+
+Azure Service Bus-onderwerpen sturen berichten naar benoemde, gedeelde, duurzame abonnementen die worden beheerd via de Azure resource management-interface, de opdracht regel Programma's van Azure of via de Azure Portal. Elk abonnement staat Maxi maal 2000 selectie regels toe, die elk een filter voorwaarde kunnen hebben en, voor SQL-filters, ook een transformatie actie voor meta gegevens. Elke overeenkomst voor de filter voorwaarde komt overeen met het invoer bericht dat in het abonnement moet worden gekopieerd.  
+
+Het ontvangen van berichten van abonnementen is gelijk aan het ontvangen van berichten uit wacht rijen. Elk abonnement beschikt over een gekoppelde wachtrij met onbestelbare berichten en de mogelijkheid om bericht automatisch door te sturen naar een andere wachtrij of onderwerpen. 
+
+Met JMS-onderwerpen kunnen clients dynamisch niet-duurzame en duurzame abonnees maken die optioneel filteren op berichten met bericht selectie vakjes. Deze niet-gedeelde entiteiten worden niet ondersteund door Service Bus. De syntaxis van de SQL-filter regel voor Service Bus is echter vergelijkbaar met de syntaxis van de bericht kiezer die wordt ondersteund door JMS. 
+
+Het JMS-onderwerp Uitgever is compatibel met Service Bus, zoals in dit voor beeld wordt weer gegeven, maar dynamische abonnees niet. De volgende topologie-gerelateerde JMS-Api's worden niet ondersteund met Service Bus. 
+
+## <a name="unsupported-features-and-restrictions"></a>Niet-ondersteunde functies en beperkingen
+De volgende beperkingen zijn van het gebruik van JMS over AMQP 1,0 met Service Bus, namelijk:
+
+* Er is slechts één **MessageProducer** of **MessageConsumer** per **sessie**toegestaan. Als u meerdere **MessageProducers** of **MessageConsumers** in een toepassing wilt maken, maakt u een speciale **sessie** voor elk van deze.
+* Tijdelijke abonnementen op onderwerpen worden momenteel niet ondersteund.
+* **MessageSelectors** worden momenteel niet ondersteund.
+* Gedistribueerde trans acties worden niet ondersteund (maar transactionele sessies worden ondersteund).
+
+Daarnaast wordt Azure Service Bus het besturings element gesplitst van het gegevens vlak en wordt daarom niet meerdere dynamische topologie functies van JMS ondersteund:
+
+| Niet-ondersteunde methode          | Vervangen door                                                                             |
+|-----------------------------|------------------------------------------------------------------------------------------|
+| createDurableSubscriber     | een onderwerp-abonnement maken poort voor de bericht kiezer                                 |
+| createDurableConsumer       | een onderwerp-abonnement maken poort voor de bericht kiezer                                 |
+| createSharedConsumer        | Service Bus-onderwerpen zijn altijd deelbaar, zie hierboven                                       |
+| createSharedDurableConsumer | Service Bus-onderwerpen zijn altijd deelbaar, zie hierboven                                       |
+| createTemporaryTopic        | een onderwerp maken via beheer-API/hulpprogram ma's/Portal waarbij *AutoDeleteOnIdle* is ingesteld op een verloop periode |
+| createTopic                 | een onderwerp maken via Management API/tools/Portal                                           |
+| afmelden                 | de topic Management API/tools/Portal verwijderen                                             |
+| createBrowser               | niet-ondersteunde. De functie Peek () van de Service Bus-API gebruiken                         |
+| createQueue                 | een wachtrij maken via Management API/tools/Portal                                           | 
+| createTemporaryQueue        | een wachtrij maken via beheer-API/hulpprogram ma's/Portal waarbij *AutoDeleteOnIdle* is ingesteld op een verloop periode |
+| receiveNoWait               | de methode receive () gebruiken die is opgegeven door de Service Bus SDK en een zeer lage of nul time-out opgeven |
 
 ## <a name="summary"></a>Samenvatting
-In deze hand leiding wordt uitgelegd hoe Java-client toepassingen die gebruikmaken van Java Message Service (JMS) via AMQP 1,0 kunnen communiceren met Azure Service Bus.
+In deze hand leiding wordt uitgelegd hoe u Service Bus Brokered Messaging functies (wacht rijen en onderwerpen voor publiceren/abonneren) kunt gebruiken vanuit Java met behulp van de populaire JMS-API en AMQP 1,0.
 
 U kunt ook Service Bus AMQP 1,0 gebruiken uit andere talen, waaronder .NET, C, python en PHP. Onderdelen die zijn gebouwd met behulp van deze verschillende talen kunnen berichten veilig en met volledige kwaliteit uitwisselen met behulp van de AMQP 1,0-ondersteuning in Service Bus.
 
 ## <a name="next-steps"></a>Volgende stappen
-
-Bekijk de onderstaande koppelingen voor meer informatie over Azure Service Bus en informatie over JMS-entiteiten (Java Message Service). 
-* [Service Bus-wacht rijen, onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md)
-* [Service Bus-Java-berichten service-entiteiten](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities-preview)
 * [Ondersteuning voor AMQP 1,0 in Azure Service Bus](service-bus-amqp-overview.md)
+* [AMQP 1,0 gebruiken met de Service Bus .NET API](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1,0-hand leiding voor ontwikkel aars](service-bus-amqp-dotnet.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
+* [Java Developer Center](https://azure.microsoft.com/develop/java/)
 

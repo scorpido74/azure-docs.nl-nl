@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549647"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325301"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager web-app maken met behulp van het geautomatiseerde script
 
-Gebruik het volgende script om de web-app voor uw Service Manager-exemplaar te maken. Meer informatie over Service Manager verbinding vindt u hier: [Service Manager web-app](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Gebruik het volgende script om de web-app voor uw Service Manager-exemplaar te maken. Meer informatie over Service Manager verbinding vindt u hier: [Service Manager web-app](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Voer het script uit door de volgende vereiste gegevens op te geven:
 
@@ -318,4 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-[Configureer de hybride verbinding](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+[Configureer de hybride verbinding](./itsmc-connections.md#configure-the-hybrid-connection).
+

@@ -1,6 +1,6 @@
 ---
 title: Syslog-gegevens verbinden met Azure-Sentinel | Microsoft Docs
-description: Verbind alle on-premises apparaten die syslog naar Azure Sentinel ondersteunen met behulp van een agent op een Linux-machine tussen het apparaat en de Sentinel. 
+description: Verbind elke computer of apparaat dat syslog ondersteunt op Azure Sentinel door gebruik te maken van een agent op een Linux-machine tussen het apparaat en de Sentinel. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,66 +12,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322836"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Verbinding maken met uw externe oplossing met behulp van syslog
+# <a name="collect-data-from-linux-based-sources-using-syslog"></a>Gegevens verzamelen van op Linux gebaseerde bronnen met behulp van syslog
 
-U kunt elk on-premises apparaat dat syslog ondersteunt, verbinden met Azure Sentinel. Dit wordt gedaan met behulp van een agent die is gebaseerd op een Linux-machine tussen het apparaat en de Azure-Sentinel. Als uw Linux-machine zich in azure bevindt, kunt u de logboeken van uw apparaat of toepassing streamen naar een toegewezen werk ruimte die u in azure maakt en er verbinding mee maken. Als uw Linux-machine zich niet in azure bevindt, kunt u de logboeken van uw apparaat streamen naar een specifieke on-premises VM of computer waarop u de agent voor Linux installeert. 
+U kunt gebeurtenissen streamen van op Linux gebaseerde machines of toestellen die met syslog worden ondersteund in azure Sentinel, met behulp van de Log Analytics-agent voor Linux (voorheen bekend als de OMS-agent). U kunt dit doen voor elke machine waarmee u de Log Analytics-agent rechtstreeks op de computer kunt installeren. Met de systeem eigen syslog-daemon van de machine worden lokale gebeurtenissen van de opgegeven typen verzameld en lokaal naar de agent doorgestuurd. deze worden naar uw Log Analytics-werk ruimte gestreamd.
 
 > [!NOTE]
-> Als uw apparaat syslog CEF ondersteunt, is de verbinding meer voltooid en moet u deze optie kiezen en de instructies volgen bij het [verbinden van gegevens van CEF](connect-common-event-format.md).
+> - Als uw apparaat **algemene gebeurtenis indeling (CEF) via syslog**ondersteunt, wordt er een meer gegevens verzameling verzameld en worden de gegevens geparseerd bij het verzamelen. Kies deze optie en volg de instructies in [verbinding maken met uw externe oplossing met behulp van CEF](connect-common-event-format.md).
+>
+> - Log Analytics ondersteunt het verzamelen van berichten die worden verzonden door de **rsyslog** of **syslog-ng-** daemons, waarbij rsyslog de standaard waarde is. De standaard syslog-daemon op versie 5 van Red Hat Enterprise Linux (RHEL), CentOS en Oracle Linux versie (**sysklog**) wordt niet ondersteund voor de verzameling syslog-gebeurtenissen. Als u syslog-gegevens uit deze versie van deze distributies wilt verzamelen, moet de rsyslog-daemon worden geïnstalleerd en geconfigureerd om sysklog te vervangen.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
-Syslog is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. Toepassingen zullen berichten verzenden die kunnen worden opgeslagen op de lokale computer of worden geleverd aan een syslog-Collector. Wanneer de Log Analytics-agent voor Linux is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent. De agent verzendt het bericht vervolgens naar Azure Monitor waar een corresponderende record wordt gemaakt.
+**Syslog** is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. Wanneer de **log Analytics-agent voor Linux** op uw virtuele machine of apparaat is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent op TCP-poort 25224. De agent verzendt het bericht vervolgens naar uw Log Analytics-werk ruimte via HTTPS, waar het wordt geparseerd in een gebeurtenis logboek vermelding in de syslog-tabel in **Azure Sentinel >-logboeken**.
 
 Zie [syslog-gegevens bronnen in azure monitor](../azure-monitor/platform/data-sources-syslog.md)voor meer informatie.
 
-> [!NOTE]
-> - De agent kan Logboeken van meerdere bronnen verzamelen, maar moet op een specifieke proxy computer worden geïnstalleerd.
-> - Als u connectors wilt ondersteunen voor zowel CEF als syslog op dezelfde VM, voert u de volgende stappen uit om te voor komen dat gegevens worden gedupliceerd:
->    1. Volg de instructies om [verbinding te maken met uw CEF](connect-common-event-format.md).
->    2. Als u de syslog-gegevens wilt verbinden, gaat u naar **instellingen**  >  **werk ruimte**instellingen  >  **Geavanceerde instellingen**  >  **gegevens**  >  **syslog** en stelt u de voorzieningen en de bijbehorende prioriteiten in, zodat ze niet dezelfde faciliteiten en eigenschappen hebben als die u in uw CEF-configuratie hebt gebruikt. <br></br>Als u **de onderstaande configuratie Toep assen op mijn machines**selecteert, worden deze instellingen toegepast op alle vm's die zijn verbonden met deze werk ruimte.
+## <a name="configure-syslog-collection"></a>Syslog-verzameling configureren
 
-
-## <a name="connect-your-syslog-appliance"></a>Uw syslog-apparaat aansluiten
+### <a name="configure-your-linux-machine-or-appliance"></a>Uw Linux-machine of-apparaat configureren
 
 1. Selecteer in azure Sentinel **Data connectors** en selecteer vervolgens de **syslog** -connector.
 
-2. Selecteer op de Blade **syslog** de optie **connector pagina openen**.
+1. Selecteer op de Blade **syslog** de optie **connector pagina openen**.
 
-3. De Linux-agent installeren:
+1. Installeer de Linux-agent. Onder **Kies waar u de agent wilt installeren:**
     
-    - Als uw virtuele Linux-machine zich in azure bevindt, selecteert u de **agent downloaden en installeren op de virtuele machine van Azure Linux**. Selecteer op de Blade **virtuele machines** de virtuele machines waarop u de agent wilt installeren en klik vervolgens op **verbinding maken**.
-    - Als uw Linux-machine zich niet in azure bevindt, selecteert u **agent op Linux niet-Azure-machine downloaden en installeren**. Kopieer op de Blade **direct-agent** de opdracht voor het **downloaden en onboarden van de agent voor Linux** en voer deze uit op uw computer. 
+    **Voor een Azure Linux-VM:**
+      
+    1. Selecteer **agent installeren op virtuele machine van Azure Linux**.
+    
+    1. Klik op de koppeling **& installatie agent voor virtuele machines van Azure Linux installeren >** . 
+    
+    1. Klik op de Blade **virtuele machines** op een virtuele machine waarop u de agent wilt installeren en klik vervolgens op **verbinding maken**. Herhaal deze stap voor elke virtuele machine die u wilt verbinden.
+    
+    **Voor elke andere Linux-machine:**
+
+    1. **Installatie agent selecteren op een niet-Azure Linux-computer**
+
+    1. Klik op de koppeling **& installatie agent downloaden voor niet-Azure Linux-machines >** . 
+
+    1. Klik op de Blade **agents beheren** op het tabblad **Linux-servers** en kopieer vervolgens de opdracht voor het **downloaden en voorbereiden van de agent voor Linux** en voer deze uit op uw Linux-computer. 
     
    > [!NOTE]
    > Zorg ervoor dat u de beveiligings instellingen voor deze computers configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld de netwerk instellingen zodanig configureren dat deze worden uitgelijnd met het netwerk beveiligings beleid van uw organisatie en de poorten en protocollen in de daemon wijzigen, zodat deze overeenkomen met de beveiligings vereisten.
 
-4. Selecteer **de configuratie geavanceerde instellingen voor de werk ruimte openen**.
+### <a name="configure-the-log-analytics-agent"></a>De Log Analytics-agent configureren
 
-5. Selecteer op de Blade **Geavanceerde instellingen** de optie **gegevens**  >  **syslog**. Voeg vervolgens de voorzieningen toe die door de connector moeten worden verzameld.
+1. Klik onder aan de Blade syslog-connector op de koppeling **configuratie van geavanceerde instellingen van uw werk ruimte openen >** .
+
+1. Selecteer op de Blade **Geavanceerde instellingen** de optie **gegevens**  >  **syslog**. Voeg vervolgens de voorzieningen toe die door de connector moeten worden verzameld.
     
-    Voeg de faciliteiten toe die uw syslog-apparaat in de logboek headers heeft opgenomen. U kunt deze configuratie bekijken in uw syslog-apparaat in **syslog-d** in de `/etc/rsyslog.d/security-config-omsagent.conf` map en in **r-syslog** van `/etc/syslog-ng/security-config-omsagent.conf` .
+    - Voeg de faciliteiten toe die uw syslog-apparaat in de logboek headers heeft opgenomen. 
     
-    Als u afwijkende SSH-aanmeldings detectie wilt gebruiken met de gegevens die u verzamelt, voegt u **auth** en **authpriv**toe. Raadpleeg de [volgende sectie](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) voor meer informatie.
+    - Als u afwijkende SSH-aanmeldings detectie wilt gebruiken met de gegevens die u verzamelt, voegt u **auth** en **authpriv**toe. Raadpleeg de [volgende sectie](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) voor meer informatie.
 
-6. Wanneer u alle faciliteiten hebt toegevoegd die u wilt bewaken en de ernst opties voor elke functie hebt aangepast, schakelt u het selectie vakje **op de onderstaande configuratie Toep assen op mijn computers in**.
+1. Wanneer u alle faciliteiten hebt toegevoegd die u wilt bewaken en de ernst opties voor elke functie hebt aangepast, schakelt u het selectie vakje **op de onderstaande configuratie Toep assen op mijn computers in**.
 
-7. Selecteer **Opslaan**. 
+1. Selecteer **Opslaan**. 
 
-8. Controleer op uw syslog-apparaat of u de door u opgegeven faciliteiten wilt verzenden.
+1. Controleer op uw virtuele machine of apparaat of u de door u opgegeven faciliteiten wilt verzenden.
 
-9. Als u het relevante schema in Azure Monitor voor de syslog-logboeken wilt gebruiken, zoekt u naar **syslog**.
+1. Als u de gegevens van het syslog-logboek in **Logboeken**wilt opvragen, typt u `Syslog` in het query venster.
 
-10. U kunt de functie Kusto die wordt beschreven in [functies gebruiken in azure monitor logboek query's](../azure-monitor/log-query/functions.md) gebruiken om uw syslog-berichten te parseren. U kunt deze vervolgens opslaan als een nieuwe Log Analytics functie om te gebruiken als een nieuw gegevens type.
+1. U kunt de query parameters die worden beschreven in [functies gebruiken in azure monitor logboek query's](../azure-monitor/log-query/functions.md) gebruiken om uw syslog-berichten te parseren. U kunt de query vervolgens opslaan als een nieuwe Log Analytics functie en deze gebruiken als een nieuw gegevens type.
+
+> [!NOTE]
+>
+> U kunt uw bestaande [CEF-logboek-doorstuur machine](connect-cef-agent.md) gebruiken voor het verzamelen en door sturen van logboeken van normale syslog-bronnen. U moet echter wel de volgende stappen uitvoeren om te voor komen dat gebeurtenissen in beide indelingen naar Azure Sentinel worden verzonden. Dit leidt ertoe dat gebeurtenissen worden gedupliceerd.
+>
+>    Het [verzamelen van gegevens is al ingesteld op basis van uw CEF-bronnen en u](connect-common-event-format.md)hebt de log Analytics agent zo geconfigureerd:
+>
+> 1. Op elke computer die Logboeken in CEF-indeling verzendt, moet u het syslog-configuratie bestand bewerken om de faciliteiten te verwijderen die worden gebruikt om CEF-berichten te verzenden. Op deze manier worden de functies die in CEF worden verzonden, ook niet in syslog verzonden. Zie [syslog op Linux-agent configureren](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) voor gedetailleerde instructies over hoe u dit doet.
+>
+> 1. U moet de volgende opdracht uitvoeren op die computers om de synchronisatie van de agent met de syslog-configuratie in azure Sentinel uit te scha kelen. Dit zorgt ervoor dat de configuratie wijziging die u in de vorige stap hebt aangebracht, niet wordt overschreven.<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>De syslog-connector configureren voor de detectie van afwijkende SSH-aanmeldingen
 

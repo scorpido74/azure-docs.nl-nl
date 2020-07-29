@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47daf331c717ebb9752644deac826330681bb31a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030688"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320813"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
 
@@ -184,7 +184,9 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
-
+Als de regel `Booting worker with pid: <pid>` meerdere keren in de logboeken wordt weer gegeven, betekent dit dat er onvoldoende geheugen is om de werk nemer te starten.
+U kunt de fout aanpakken door de waarde van in te verhogen `memory_gb``deployment_config`
+ 
 ## <a name="container-cannot-be-scheduled"></a>Kan de container niet plannen
 
 Wanneer een service wordt geïmplementeerd in een Azure Kubernetes-service Compute target, probeert Azure Machine Learning de service te plannen met de aangevraagde hoeveelheid resources. Als er na vijf minuten geen knoop punten beschikbaar zijn in het cluster met de juiste hoeveelheid beschik bare resources, mislukt de implementatie met het bericht `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . U kunt deze fout oplossen door meer knoop punten toe te voegen, de SKU van uw knoop punten te wijzigen of de resource vereisten van uw service te wijzigen. 

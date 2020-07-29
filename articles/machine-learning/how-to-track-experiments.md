@@ -8,16 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.topic: how-to
 ms.date: 07/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8a4f58423206a812dd94cc14d32aa52114c147d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 9833c0974af9a5bcc069ad41cfb57631dbed34dc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536336"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320949"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,13 +33,13 @@ Verbeter het proces voor het maken van het model door de metrische gegevens voor
 
 De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het trainen van een experiment. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)voor het uitvoeren van klassen voor een gedetailleerde lijst met wat er kan worden gevolgd bij een uitvoering.
 
-|Type| Python-functie | Notities|
+|Type| Python-functie | Opmerkingen|
 |----|:----|:----|
 |Scalaire waarden |Functieassembly<br>`run.log(name, value, description='')`<br><br>Voorbeeld:<br>run. log ("nauw keurig", 0,95) |Registreer een numerieke of teken reeks waarde voor de uitvoering met de opgegeven naam. Als u een metriek registreert voor een run, wordt de metrische waarde opgeslagen in het rapport uitvoeren in het experiment.  U kunt dezelfde metrische gegevens meerdere keren in een uitvoering registreren. het resultaat wordt gezien als een vector van die metriek.|
 |Lijsten|Functieassembly<br>`run.log_list(name, value, description='')`<br><br>Voorbeeld:<br>run. log_list ("keurigheden", [0,6, 0,7, 0,87]) | Een lijst met waarden vastleggen voor de uitvoering met de opgegeven naam.|
 |Rij|Functieassembly<br>`run.log_row(name, description=None, **kwargs)`<br>Voorbeeld:<br>run. log_row ("Y over X", X = 1, Y = 0,4) | Met *log_row* maakt u een metriek met meerdere kolommen zoals beschreven in kwargs. Elke benoemde para meter genereert een kolom met de opgegeven waarde.  *log_row* kan eenmaal worden aangeroepen om een wille keurige tupel of meerdere keren in een lus te registreren om een volledige tabel te genereren.|
 |Tabel|Functieassembly<br>`run.log_table(name, value, description='')`<br><br>Voorbeeld:<br>run. log_table ("Y over X", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Een Dictionary-object in een logboek vastleggen voor de uitvoering met de opgegeven naam. |
-|Afbeeldingen|Functieassembly<br>`run.log_image(name, path=None, plot=None)`<br><br>Voorbeeld:<br>`run.log_image("ROC", plot=plt)` | Een installatie kopie vastleggen in het rapport uitvoeren. Gebruik log_image om een te registreren. PNG-afbeeldings bestand of een matplotlib-grafiek naar de uitvoering.  Deze installatie kopieën worden weer gegeven en vergeleken in de run-record.|
+|Installatiekopieën|Functieassembly<br>`run.log_image(name, path=None, plot=None)`<br><br>Voorbeeld:<br>`run.log_image("ROC", plot=plt)` | Een installatie kopie vastleggen in het rapport uitvoeren. Gebruik log_image om een te registreren. PNG-afbeeldings bestand of een matplotlib-grafiek naar de uitvoering.  Deze installatie kopieën worden weer gegeven en vergeleken in de run-record.|
 |Een uitvoering labelen|Functieassembly<br>`run.tag(key, value=None)`<br><br>Voorbeeld:<br>run. tag ("geselecteerd", "ja") | Label de run met een teken reeks sleutel en een optionele teken reeks waarde.|
 |Bestand of map uploaden|Functieassembly<br>`run.upload_file(name, path_or_stream)`<br> <br> Voorbeeld:<br>run. upload_file (' best_model. PKL ', './model.PKL ') | Upload een bestand naar het run-record. Voert automatisch een capture-bestand uit in de opgegeven uitvoermap, die standaard wordt ingesteld op './outputs ' voor de meeste typen uitvoering.  Gebruik upload_file alleen als er extra bestanden moeten worden geüpload of als er geen uitvoermap is opgegeven. We raden `outputs` aan de naam toe te voegen, zodat deze wordt geüpload naar de uitvoer Directory. U kunt alle bestanden weer geven die zijn gekoppeld aan deze run-record door te noemen`run.get_file_names()`|
 

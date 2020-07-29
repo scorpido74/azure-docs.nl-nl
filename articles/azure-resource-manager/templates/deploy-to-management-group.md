@@ -2,27 +2,48 @@
 title: Resources implementeren in beheer groep
 description: Hierin wordt beschreven hoe u resources kunt implementeren in het bereik van de beheer groep in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460310"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321799"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Resources op het niveau van de beheer groep maken
 
-Als uw organisatie is gerijpt, moet u mogelijk [beleid](../../governance/policy/overview.md) of op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor een beheer groep definiëren en toewijzen. Met beheer groeps niveau sjablonen kunt u declaratief beleid Toep assen en rollen toewijzen op het niveau van de beheer groep.
+Als uw organisatie is gerijpt, kunt u een Azure Resource Manager sjabloon (ARM-sjabloon) implementeren om resources te maken op het niveau van de beheer groep. Het is bijvoorbeeld mogelijk dat u [beleid](../../governance/policy/overview.md) of op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor een beheer groep moet definiëren en toewijzen. Met beheer groeps niveau sjablonen kunt u declaratief beleid Toep assen en rollen toewijzen op het niveau van de beheer groep.
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
-U kunt de volgende resource typen implementeren op het niveau van de beheer groep:
+Niet alle resource typen kunnen worden geïmplementeerd op het niveau van de beheer groep. In deze sectie wordt een overzicht gegeven van de resource typen die worden ondersteund.
 
-* [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op abonnementen of resource groepen.
+Gebruik voor Azure-blauw drukken:
+
+* [artefacten](/azure/templates/microsoft.blueprint/blueprints/artifacts)
+* [blauw drukken](/azure/templates/microsoft.blueprint/blueprints)
+* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [lager](/azure/templates/microsoft.blueprint/blueprints/versions)
+
+Gebruik voor Azure-beleid:
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [herstel](/azure/templates/microsoft.policyinsights/remediations)
+
+Gebruik voor op rollen gebaseerd toegangs beheer:
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+Voor geneste sjablonen die worden geïmplementeerd op abonnementen of resource groepen, gebruikt u:
+
+* [implementaties](/azure/templates/microsoft.resources/deployments)
+
+Gebruik voor het beheren van uw resources:
+
+* [Koptags](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>Schema
 
@@ -74,6 +95,95 @@ U kunt een naam opgeven voor de implementatie of de naam van de standaard implem
 
 Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code krijgt `InvalidDeploymentLocation` , moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
 
+## <a name="deployment-scopes"></a>Implementatie bereiken
+
+Wanneer u implementeert in een beheer groep, kunt u de beheer groep die is opgegeven in de implementatie opdracht of andere beheer groepen in de Tenant richten. U kunt ook abonnementen of resource groepen binnen een beheer groep richten. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op de beheer groep via de implementatie opdracht.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        management-group-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+Als u een andere beheer groep wilt instellen, voegt u een geneste implementatie toe en geeft u de `scope` eigenschap op.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "nestedDeployment",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Gebruik een geneste implementatie en de eigenschap om een abonnement in de beheer groep te richten `subscriptionId` . Als u een resource groep in het abonnement wilt richten, voegt u een andere geneste implementatie en de `resourceGroup` eigenschap toe.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "nestedSub",
+      "location": "westus2",
+      "subscriptionId": "00000000-0000-0000-0000-000000000000",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "nestedRG",
+              "resourceGroup": "rg2",
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  nested-template
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 
 Voor implementaties van een beheer groep gelden enkele belang rijke aandachtspunten bij het gebruik van sjabloon functies:
@@ -95,7 +205,7 @@ Voor implementaties van een beheer groep gelden enkele belang rijke aandachtspun
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
 
-## <a name="create-policies"></a>Beleidsregels maken
+## <a name="azure-policy"></a>Azure Policy
 
 ### <a name="define-policy"></a>Beleid definiëren
 
@@ -165,9 +275,85 @@ In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan 
 }
 ```
 
-## <a name="template-sample"></a>Voor beeld van sjabloon
+## <a name="deploy-to-subscription-and-resource-group"></a>Implementeren naar het abonnement en de resource groep
 
-* [Maak een resource groep, een beleid en een beleids toewijzing](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+Op basis van de implementatie van een beheer groep kunt u een abonnement in de beheer groep richten. In het volgende voor beeld wordt een resource groep gemaakt binnen een abonnement en wordt een opslag account geïmplementeerd op die resource groep.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nestedsubId": {
+      "type": "string"
+    },
+    "nestedRG": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "nestedLocation": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "nestedSub",
+      "location": "[parameters('nestedLocation')]",
+      "subscriptionId": "[parameters('nestedSubId')]",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+          },
+          "variables": {
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/resourceGroups",
+              "apiVersion": "2020-06-01",
+              "name": "[parameters('nestedRG')]",
+              "location": "[parameters('nestedLocation')]",
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "nestedSubRG",
+              "resourceGroup": "[parameters('nestedRG')]",
+              "dependsOn": [
+                "[parameters('nestedRG')]"
+              ],
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2019-04-01",
+                      "name": "[parameters('storageAccountName')]",
+                      "location": "[parameters('nestedLocation')]",
+                      "sku": {
+                        "name": "Standard_LRS"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

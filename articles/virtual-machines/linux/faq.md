@@ -4,15 +4,15 @@ description: Hierin vindt u antwoorden op enkele veelgestelde vragen over virtue
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 09f34eec84deeaf76d62ae0aff881e53bf5dd13f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31755ea096724ffd314d970b2119f0d5ed31bf03
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502398"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87268421"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Veelgestelde vragen over Linux Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Linux-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Windows-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Windows virtual machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,6 +1,5 @@
 ---
-title: Ondersteunings & training verkrijgen
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (klassieke) zelf studie ondersteuning & training-Azure
 description: Ondersteuning en training ontvangen en feedback geven voor Azure Machine Learning Studio (klassiek)
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +8,17 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84aff48ad1313939761ad23b14c41d31313ebd36
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213173"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324910"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Ontvang ondersteuning en training voor Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 

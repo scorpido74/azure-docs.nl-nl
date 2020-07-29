@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325369"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Problemen met de Log Analytics-agent voor Linux oplossen 
 
@@ -43,7 +43,7 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteunings kanalen 
  Aanvullende configuraties | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >Het bewerken van configuratie bestanden voor prestatie meter items en syslog wordt overschreven als de verzameling is geconfigureerd in het [menu data log Analytics geavanceerde instellingen](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) in de Azure portal voor uw werk ruimte. Als u de configuratie voor alle agents wilt uitschakelen, schakelt u verzameling uit Log Analytics **Geavanceerde instellingen** of voor één agent het volgende uit:  
+ >Het bewerken van configuratie bestanden voor prestatie meter items en syslog wordt overschreven als de verzameling is geconfigureerd in het [menu data log Analytics geavanceerde instellingen](./agent-data-sources.md#configuring-data-sources) in de Azure portal voor uw werk ruimte. Als u de configuratie voor alle agents wilt uitschakelen, schakelt u verzameling uit Log Analytics **Geavanceerde instellingen** of voor één agent het volgende uit:  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Installatie fout codes
@@ -53,7 +53,7 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteunings kanalen 
 | NOT_DEFINED | Omdat de benodigde afhankelijkheden niet zijn geïnstalleerd, wordt de auoms-invoeg toepassing voor controle niet geïnstalleerd | De installatie van auoms is mislukt, de installatie van het pakket is gecontroleerd. |
 | 2 | Er is een ongeldige optie aan de shell-bundel door gegeven. Uitvoeren `sudo sh ./omsagent-*.universal*.sh --help` voor gebruik |
 | 3 | Er is geen optie aan de shell-bundel door gegeven. Uitvoeren `sudo sh ./omsagent-*.universal*.sh --help` voor gebruik. |
-| 4 | Ongeldig pakket type of ongeldige proxy instellingen. omsagent-*rpm*. sh-pakketten kunnen alleen worden geïnstalleerd op installaties op basis van rpm en omsagent-*deb*. sh-pakketten kunnen alleen worden geïnstalleerd op Debian-systemen. Het is raadzaam om het universele installatie programma van de [meest recente release](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)te gebruiken. Controleer ook de verificatie van uw proxy-instellingen. |
+| 4 | Ongeldig pakket type of ongeldige proxy instellingen. omsagent-*rpm*. sh-pakketten kunnen alleen worden geïnstalleerd op installaties op basis van rpm en omsagent-*deb*. sh-pakketten kunnen alleen worden geïnstalleerd op Debian-systemen. Het is raadzaam om het universele installatie programma van de [meest recente release](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)te gebruiken. Controleer ook de verificatie van uw proxy-instellingen. |
 | 5 | De shell bundel moet worden uitgevoerd als root of er is een 403-fout geretourneerd tijdens het onboarden. Voer de opdracht uit met `sudo` . |
 | 6 | Ongeldige pakket architectuur of er is een fout opgetreden 200 fout opgetreden tijdens het voorbereiden; omsagent-*x64.sh-pakketten kunnen alleen worden geïnstalleerd op 64-bits systemen en omsagent-x86.sh-* pakketten kunnen alleen worden geïnstalleerd op 32-bits systemen. Down load het juiste pakket voor uw architectuur vanuit de [nieuwste versie](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Installatie van het OMS-pakket is mislukt. Bekijk de uitvoer van de opdracht voor de hoofd fout. |
@@ -228,7 +228,7 @@ Problemen met betrekking tot prestaties doen zich niet altijd voor en ze zijn ze
 * Het aantal berichten dat per seconde wordt doorgestuurd, is te groot voor de basis configuratie van de Log Analytics-agent voor Linux dat kan worden verwerkt
 
 ### <a name="resolution"></a>Oplossing
-* Controleer of de configuratie in de werk ruimte Log Analytics voor syslog alle faciliteiten en de juiste logboek niveaus heeft. Beoordeling [van syslog-verzameling configureren in de Azure Portal](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
+* Controleer of de configuratie in de werk ruimte Log Analytics voor syslog alle faciliteiten en de juiste logboek niveaus heeft. Beoordeling [van syslog-verzameling configureren in de Azure Portal](./data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * Controleren of de systeem eigen syslog Messa ging-daemons ( `rsyslog` , `syslog-ng` ) de doorgestuurde berichten kunnen ontvangen
 * Controleer de firewall instellingen op de syslog-server om er zeker van te zijn dat berichten niet worden geblokkeerd
 * Een syslog-bericht simuleren voor het Log Analytics met behulp van de `logger` opdracht
@@ -422,7 +422,7 @@ U kunt door gaan met het gebruik van de `--purge` optie
 ### <a name="resolution"></a>Oplossing 
 Voer de volgende stappen uit om het probleem te verhelpen.
 1. Verwijder de extensie uit Azure Portal.
-2. Installeer de agent volgens de [instructies](../../azure-monitor/learn/quick-collect-linux-computer.md).
+2. Installeer de agent volgens de [instructies](../learn/quick-collect-linux-computer.md).
 3. Start de agent opnieuw door de volgende opdracht uit te voeren: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Wacht enkele minuten en de inrichtings status is gewijzigd in **inrichting geslaagd**.
 
@@ -444,3 +444,4 @@ Voer de volgende stappen uit om het probleem te verhelpen.
     ```
 
 3. Upgrade pakketten door uit te voeren `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
+

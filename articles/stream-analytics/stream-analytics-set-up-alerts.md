@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: d701a518dfa0bd21b33aa2f13f533ad6ef49430d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: de8b69cbe3117a3ec248cee4808b676b39c56658
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037814"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324791"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Waarschuwingen instellen voor Azure Stream Analytics taken
 
@@ -52,7 +53,7 @@ In het volgende voor beeld ziet u hoe u waarschuwingen instelt voor wanneer de s
 
    ![Waarschuwings regel voor Stream Analytics maken](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
-## <a name="scenarios-to-monitor"></a>Te bewaken scenario's
+## <a name="scenarios-to-monitor"></a>Scenario's om te bewaken
 
 De volgende waarschuwingen worden aanbevolen voor het bewaken van de prestaties van uw Stream Analytics-taak. Deze metrische gegevens moeten elke minuut worden geëvalueerd gedurende de laatste periode van vijf minuten.
 
@@ -63,16 +64,8 @@ De volgende waarschuwingen worden aanbevolen voor het bewaken van de prestaties 
 |Watermerk vertraging|Groter dan|Maximum|Wanneer de gemiddelde waarde van deze metriek over de laatste 15 minuten groter is dan de tolerantie voor de latere aankomst (in seconden). Als u de tolerantie voor late aankomst niet hebt gewijzigd, wordt de standaard waarde 5 seconden ingesteld.|Verhoog het aantal SUs of gelijktijdig uw query. Zie over het [begrijpen en aanpassen van streaming-eenheden](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)voor meer informatie over SUs. Zie gelijktijdig [query parallel Lise ring in azure stream Analytics](stream-analytics-parallelization.md)voor meer informatie over het uitvoeren van uw query.|
 |Fouten bij het deserialiseren van de invoer|Groter dan|Totaal|0|Bekijk de activiteiten of de logboeken van de resource en breng de gewenste wijzigingen aan in de invoer. Zie [problemen oplossen Azure stream Analytics met resource logboeken](stream-analytics-job-diagnostic-logs.md) voor meer informatie over bron logboeken|
 
-## <a name="get-help"></a>Hulp vragen
-
-Zie [waarschuwings meldingen ontvangen](../azure-monitor/platform/alerts-overview.md)voor meer informatie over het configureren van waarschuwingen in de Azure Portal.  
-
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
-
 ## <a name="next-steps"></a>Volgende stappen
-* [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
-* [Aan de slag met Azure Stream Analytics](stream-analytics-get-started.md)
+
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
 * [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

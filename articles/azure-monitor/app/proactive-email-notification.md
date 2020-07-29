@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41298be1b0288f429647d8b38a1cc75dd2c40b0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324128"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Wijziging e-mail melding voor slimme detectie
 
@@ -44,6 +44,7 @@ Als u vragen hebt of problemen hebt met betrekking tot deze wijziging, kunt u he
 
 Meer informatie over slimme detectie:
 
-- [Foutafwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Geheugen lekken](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Prestatieafwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Foutafwijkingen](./proactive-failure-diagnostics.md)
+- [Geheugen lekken](./proactive-potential-memory-leak.md)
+- [Prestatieafwijkingen](./proactive-performance-diagnostics.md)
+

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een externe installatie kopie analyseren met de REST API en Java'
+title: 'Quickstart: Een externe afbeelding analyseren met de REST API en Java'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een afbeelding met behulp van de Computer Vision-API met Java.
 services: cognitive-services
@@ -11,25 +11,25 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5dba7d51765e2597ca18b0ba6bae03e9e8227a8d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: b307e39937378aa8228d4083f1a6f709069a59f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512929"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Snelstartgids: een externe installatie kopie analyseren met behulp van de Computer Vision REST API en Java
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Quickstart: Een externe afbeelding analyseren met behulp van de Computer Vision REST API en Java
 
-In deze Snelstartgids gaat u een op afstand opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van Java en de Computer Vision REST API. Met de methode voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u visuele functies extra heren op basis van de inhoud van de installatie kopie.
+In deze snelstart analyseert u een extern opgeslagen afbeelding om visuele kenmerken te verkrijgen met behulp van Java en de REST-API van Computer Vision. Met de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-methode kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* [Java &trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
+* [Java&trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -55,7 +55,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
    import org.json.JSONObject;
    ```
 
-1. Vervang de `AnalyzeImage` open bare klasse door de volgende code.
+1. Vervang de openbare klasse `AnalyzeImage` door de volgende code.
 1. Vervang eventueel de waarde van `imageToAnalyze` door de URL van een andere afbeelding die u wilt analyseren.
 
 ```java
@@ -82,7 +82,6 @@ public class AnalyzeImage {
 
             // Request parameters. All of them are optional.
             builder.setParameter("visualFeatures", "Categories,Description,Color");
-            builder.setParameter("language", "en");
 
             // Prepare the URI for the REST API method.
             URI uri = builder.build();
@@ -121,15 +120,15 @@ public class AnalyzeImage {
 1. Sla vervolgens het Java-project op en bouw het.
 1. Als u een IDE gebruikt, voert u `Main` uit.
 
-U kunt ook de volgende opdrachten uitvoeren als u het programma uitvoert vanaf een opdracht regel venster. Deze opdrachten vermoeden dat uw bibliotheken zich in een map bevinden `libs` met de naam die zich in dezelfde map bevindt als. als dat niet het geval is `Main.java` , moet u `libs` het pad naar uw bibliotheken vervangen.
+U kunt ook de volgende opdrachten uitvoeren als u het programma uitvoert vanuit een opdrachtregelvenster. Bij deze opdrachten wordt aangenomen dat uw bibliotheken zich in een map met de naam `libs` bevinden die in dezelfde map staat als `Main.java`; als dat niet zo is, moet u `libs` vervangen door het pad naar uw bibliotheken.
 
-1. Compileer het bestand `Main.java` .
+1. Compileer het bestand `Main.java`.
 
     ```bash
     javac -cp ".;libs/*" Main.java
     ```
 
-1. Voer het programma uit. Hiermee wordt de aanvraag verzonden naar de QnA Maker-API om de KB te maken en vervolgens worden elke 30 seconden de resultaten gecontroleerd. Elk antwoord wordt afgedrukt op het opdracht regel venster.
+1. Voer het programma uit. Hiermee wordt de aanvraag verzonden naar de QnA Maker-API om de KB te maken en vervolgens worden elke 30 seconden de resultaten gecontroleerd. Elk antwoord wordt weergegeven in het opdrachtregelvenster.
 
     ```bash
     java -cp ".;libs/*" Main

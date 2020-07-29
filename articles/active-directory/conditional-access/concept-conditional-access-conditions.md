@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275000"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -28,11 +28,11 @@ Er kunnen meerdere voor waarden worden gecombineerd om een nauw keurig en specif
 
 Als er bijvoorbeeld een gevoelige toepassing wordt geopend, kan een beheerder de informatie over aanmeldings Risico's van identiteits beveiliging en locatie in hun toegangs beslissing naast andere besturings elementen zoals multi-factor Authentication.
 
-## <a name="sign-in-risk"></a>Aanmeldings risico
+## <a name="sign-in-risk"></a>Aanmeldingsrisico
 
 Voor klanten met toegang tot [identiteits beveiliging](../identity-protection/overview-identity-protection.md)kunnen aanmeldings Risico's worden geëvalueerd als onderdeel van een beleid voor voorwaardelijke toegang. Aanmeld risico geeft aan dat de kans dat een bepaalde verificatie aanvraag niet is geautoriseerd door de eigenaar van de identiteit. Meer informatie over aanmeldings Risico's vindt u in de artikelen, [Wat is Risico's](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) en [procedure: risico beleid configureren en inschakelen](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
-## <a name="user-risk"></a>Gebruikers risico 
+## <a name="user-risk"></a>Gebruikersrisico 
 
 Voor klanten met toegang tot [identiteits beveiliging](../identity-protection/overview-identity-protection.md)kan gebruikers risico worden geëvalueerd als onderdeel van een beleid voor voorwaardelijke toegang. Gebruikers risico duidt op de kans dat een gegeven identiteit of account is aangetast. Meer informatie over gebruikers risico vindt u in de artikelen, [Wat is Risico's](../identity-protection/concept-identity-protection-risks.md#user-risk) en [procedure: risico beleid configureren en inschakelen](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
@@ -64,6 +64,9 @@ Meer informatie over locaties vindt u in het artikel, [Wat is de voor waarde voo
 
 Beleid voor voorwaardelijke toegang is standaard van toepassing op browser toepassingen en toepassingen die gebruikmaken van moderne verificatie protocollen. Naast deze toepassingen kunnen beheerders kiezen voor Exchange ActiveSync-clients en andere clients die gebruikmaken van verouderde protocollen.
 
+> [!NOTE]
+> De schakel optie Ja/Nee in de voor waarde client-apps configureren is verwijderd, zodat u gemakkelijker kunt zien welke client-apps zijn geselecteerd. Dit heeft geen invloed op de client-apps waarop een bestaand beleid van toepassing is.
+
 - Browser
    - Dit zijn webtoepassingen die gebruikmaken van protocollen zoals SAML, WS-Federation, OpenID Connect Connect of services die zijn geregistreerd als een OAuth-vertrouwelijke client.
 - Mobiele apps en desktop-clients
@@ -92,7 +95,7 @@ Deze voor waarden worden meestal gebruikt voor het vereisen van een beheerd appa
 
 Deze instelling werkt met alle browsers. Om echter te voldoen aan het beleid van een apparaat, zoals een vereiste apparaat vereist, worden de volgende besturings systemen en browsers ondersteund:
 
-| OS | Browsers |
+| Besturingssysteem | Browsers |
 | :-- | :-- |
 | Windows 10 | Micro soft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |

@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Windows Virtual Desktop Web client-Azure
-description: Verbinding maken met het virtuele bureau blad van Windows via de webclient.
+title: Verbinding maken met het virtuele bureau blad van Windows (klassieke) webclient-Azure
+description: Verbinding maken met het virtuele bureau blad van Windows (klassiek) met behulp van de webclient.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e95498498fd15d7a6e73630e218f9bdd1b892f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204792"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270376"
 ---
-# <a name="connect-with-the-web-client"></a>Verbinding maken met de webclient
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Verbinding maken met het virtuele bureau blad van Windows (klassiek) met de webclient
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-web.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../connect-web.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 Met de webclient kunt u vanuit een webbrowser toegang krijgen tot uw virtuele bureau blad-resources zonder het langdurige installatie proces.
 
@@ -29,7 +29,7 @@ Met de webclient kunt u vanuit een webbrowser toegang krijgen tot uw virtuele bu
 
 Hoewel een voor HTML5 geschikte browser zou moeten werken, ondersteunen we de volgende besturings systemen en browsers officieel.
 
-| Browser           | Ondersteund besturings systeem                     | Notities               |
+| Browser           | Ondersteund besturings systeem                     | Opmerkingen               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
@@ -42,7 +42,7 @@ Hoewel een voor HTML5 geschikte browser zou moeten werken, ondersteunen we de vo
 Navigeer in een browser naar de webclient met virtueel bureau blad van Windows op <https://rdweb.wvd.microsoft.com/webclient> en meld u aan met uw gebruikers account.
 
 >[!NOTE]
->Als u de Windows Virtual Desktop lente 2020-release met Azure Resource Manager-integratie gebruikt, kunt u in plaats daarvan verbinding maken met uw resources <https://rdweb.wvd.microsoft.com/arm/webclient> .
+>Als u een virtueel bureau blad van Windows gebruikt met Azure Resource Manager integratie, kunt u in plaats daarvan verbinding maken met uw resources <https://rdweb.wvd.microsoft.com/arm/webclient> .
 
 >[!NOTE]
 >Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u zich afmelden of een persoonlijk browser venster gebruiken.

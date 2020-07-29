@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 080af271870362e6e0633aaf590820f2fadb6144
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505734"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325386"
 ---
 # <a name="azure-monitor-log-queries"></a>Query's over Azure Monitor-logboeken
 
@@ -26,15 +26,15 @@ Azure Monitor-logboeken zijn gebaseerd op Azure Data Explorer en Azure Monitor l
 
 ## <a name="concepts"></a>Concepten
 
-- Het [analyseren van logboek gegevens in azure monitor](../../azure-monitor/log-query/log-query-overview.md) biedt een beknopt overzicht van logboek query's en beschrijft hoe Azure monitor logboek gegevens zijn gestructureerd.
+- Het [analyseren van logboek gegevens in azure monitor](./log-query-overview.md) biedt een beknopt overzicht van logboek query's en beschrijft hoe Azure monitor logboek gegevens zijn gestructureerd.
 - Het [weer geven en analyseren van logboek gegevens in azure monitor](./log-query-overview.md) een uitleg van de portals waar u logboek query's maakt en uitvoert.
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Naslaginformatie
 
 - [Naslag informatie over de query taal](/azure/kusto/query) is de volledige taal verwijzing voor de Kusto-query taal.
 - [Azure monitor taal verschillen in de logboek query](data-explorer-difference.md) beschrijft de verschillen tussen versies van de query taal Kusto.
-- [In de standaard eigenschappen in azure monitor logboek records](../../azure-monitor/platform/log-standard-properties.md) worden eigenschappen beschreven die standaard zijn voor alle Azure monitor logboek gegevens.
-- [Query's voor meerdere resources uitvoeren in azure monitor](../../azure-monitor/log-query/cross-workspace-query.md) beschrijft hoe u logboek query's schrijft die gebruikmaken van gegevens uit meerdere log Analytics-werk ruimten en Application Insights toepassingen.
+- [In de standaard eigenschappen in azure monitor logboek records](../platform/log-standard-properties.md) worden eigenschappen beschreven die standaard zijn voor alle Azure monitor logboek gegevens.
+- [Query's voor meerdere resources uitvoeren in azure monitor](./cross-workspace-query.md) beschrijft hoe u logboek query's schrijft die gebruikmaken van gegevens uit meerdere log Analytics-werk ruimten en Application Insights toepassingen.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -58,3 +58,4 @@ Azure Monitor-logboeken zijn gebaseerd op Azure Data Explorer en Azure Monitor l
 ## <a name="next-steps"></a>Volgende stappen
 
 - Open de volledige [referentie documentatie voor de Kusto-query taal](/azure/kusto/query/).
+

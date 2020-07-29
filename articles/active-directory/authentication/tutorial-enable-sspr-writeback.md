@@ -5,24 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/24/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518484"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Zelfstudie: Terugschrijven van self-service voor wachtwoordherstel in Azure Active Directory inschakelen voor on-premises omgeving
 
 Met self-service voor wachtwoordherstel (SSPR) in Azure Active Directory (Azure AD) kunnen gebruikers hun wachtwoord bijwerken of hun account ontgrendelen in een webbrowser. In een hybride omgeving waarin Azure AD is gekoppeld aan een on-premises Active Directory Domain Services-omgeving (AD DS), kan dit scenario ertoe leiden dat wachtwoorden verschillend zijn in de twee directory’s.
 
 Wachtwoord terugschrijven wordt gebruikt om wachtwoordwijzigingen in Azure AD terug te synchroniseren met uw on-premises AD DS-omgeving. Azure AD Connect biedt een beveiligd mechanisme voor het terugzenden van deze wachtwoordwijzigingen naar een bestaande on-premises directory van Azure AD.
+
+> [!IMPORTANT]
+> In deze zelfstudie wordt uitgelegd hoe een beheerder het terugschrijven van self-service voor wachtwoordherstel kan inschakelen voor een on-premises omgeving. Als u een eindgebruiker bent die al is geregistreerd voor self-service voor wachtwoordherstel en u weer toegang tot uw account wilt hebben, gaat u naar https://aka.ms/sspr.
+>
+> Als uw IT-team u de mogelijkheid niet heeft gegeven uw eigen wachtwoord opnieuw in te stellen, kunt u contact opnemen met de helpdesk voor meer informatie.
 
 In deze zelfstudie leert u het volgende:
 
@@ -35,7 +40,7 @@ In deze zelfstudie leert u het volgende:
 
 Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen nodig:
 
-* Een werkende Azure AD-tenant waarop minimaal een Azure AD Premium P1- of P2-proeflicentie is ingeschakeld.
+* Een werkende Azure AD-tenant waarop minimaal een Azure Ad Premium P1-proeflicentie is ingeschakeld.
     * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
     * Zie [Licentievereisten voor Azure AD SSPR](concept-sspr-licensing.md) voor meer informatie.
 * Een account met de bevoegdheden van een *globale beheerder*.
@@ -43,7 +48,7 @@ Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen no
     * Voltooi indien nodig [de vorige zelfstudie om Azure Active Directory SSPR in te schakelen](tutorial-enable-sspr.md).
 * Een bestaande on-premises AD DS-omgeving die is geconfigureerd met een actuele versie van Azure AD Connect.
     * Configureer indien nodig Azure AD Connect met de instellingen [Express](../hybrid/how-to-connect-install-express.md) of [Aangepast](../hybrid/how-to-connect-install-custom.md).
-    * Om wachtwoord terugschrijven te kunnen gebruiken, moeten uw domeincontrollers Windows Server 2012 R2 of hoger zijn.
+    * Om wachtwoord terugschrijven te kunnen gebruiken, moeten uw domeincontrollers Windows Server 2012 of hoger zijn.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Accountmachtigingen configureren voor Azure AD Connect
 
@@ -54,9 +59,7 @@ Om terugschrijven met SSPR goed te laten werken, moeten voor het account dat is 
 * **Wachtwoord opnieuw instellen**
 * **Schrijfmachtigingen** voor `lockoutTime`
 * **Schrijfmachtigingen** voor `pwdLastSet`
-* **Uitgebreide rechten** voor het herstellen van verlopen wachtwoorden op een van de volgende:
-   * Het hoofdobject van *elk domein* in dat forest
-   * De organisatie-eenheden (OU’s) van de gebruiker die binnen het bereik van SSPR moeten liggen
+* **Uitgebreide rechten** voor Verlopen wachtwoord terugzetten op het hoofdobject van *elk domein* in dat forest, indien dit nog niet is ingesteld.
 
 Als u deze machtigingen niet toewijst, lijkt terugschrijven correct geconfigureerd, maar krijgen de gebruikers te maken met fouten bij het beheren van hun on-premises wachtwoorden in de cloud. Machtigingen moeten zijn toegepast op **dit object en alle onderliggende objecten** voordat de optie om verlopen wachtwoorden te herstellen verschijnt.  
 
@@ -74,7 +77,7 @@ Voer de volgende stappen uit om de juiste machtigingen voor het terugschrijven v
 1. Selecteer in de vervolgkeuzelijst **Van toepassing op** de optie **Onderliggende gebruikersobjecten**.
 1. Selecteer onder *Machtigingen* het selectievakje voor de volgende optie:
     * **Wachtwoord opnieuw instellen**
-1. Selecteer onder *Eigenschappen* de selectievakjes voor de volgende opties. U moet door de lijst bladeren om deze opties te vinden, die mogelijk al standaard zijn ingeschakeld:
+1. Selecteer onder *Eigenschappen* de selectievakjes voor de volgende opties. Blader door de lijst om deze opties te vinden, die mogelijk al standaard zijn ingeschakeld:
     * **Write lockoutTime**
     * **Write pwdLastSet**
 
@@ -89,7 +92,7 @@ Het wachtwoordbeleid in de on-premises AD DS-omgeving kan verhinderen dat het op
 Wanneer u het groepsbeleid bijwerkt, wacht u totdat het bijgewerkte beleid is gerepliceerd of gebruikt u de opdracht `gpupdate /force`.
 
 > [!Note]
-> Wachtwoord terugschrijven moet zijn ingesteld op 0 om ervoor te zorgen dat wachtwoorden onmiddellijk worden gewijzigd. Als gebruikers echter voldoen aan het on-premises beleid en de *Minimale wachtwoordduur* is ingesteld op een waarde die groter is dan nul, wordt het terugschrijven van wachtwoorden nog steeds uitgevoerd nadat het on-premises beleid is geëvalueerd. 
+> Wachtwoord terugschrijven moet zijn ingesteld op 0 om ervoor te zorgen dat wachtwoorden onmiddellijk worden gewijzigd. Als gebruikers echter voldoen aan het on-premises beleid en de *Minimale wachtwoordduur* is ingesteld op een waarde die groter is dan nul, wordt het terugschrijven van wachtwoorden nog steeds uitgevoerd nadat het on-premises beleid is geëvalueerd.
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Wachtwoord terugschrijven inschakelen in Azure AD Connect
 

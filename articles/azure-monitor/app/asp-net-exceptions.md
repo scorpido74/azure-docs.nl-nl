@@ -3,24 +3,24 @@ title: Fouten en uitzonde ringen diagnosticeren met Azure-toepassing Insights
 description: Uitzonde ringen vastleggen vanuit ASP.NET-Apps, samen met aanvraag-telemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321357"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonde ringen in uw web-apps diagnosticeren met Application Insights
-Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insights](../../azure-monitor/app/app-insights-overview.md). U kunt mislukte aanvragen correleren met uitzonde ringen en andere gebeurtenissen op de client en de server, zodat u snel de oorzaken kunt vaststellen.
+Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insights](./app-insights-overview.md). U kunt mislukte aanvragen correleren met uitzonde ringen en andere gebeurtenissen op de client en de server, zodat u snel de oorzaken kunt vaststellen.
 
 ## <a name="set-up-exception-reporting"></a>Uitzonderings rapportage instellen
 * Uitzonde ringen die worden gerapporteerd door uw server-app:
-  * Azure web apps: de [extensie Application Insights](../../azure-monitor/app/azure-web-apps.md) toevoegen
-  * Door IIS gehoste apps voor Azure VM en Azure virtual machine-schaal sets: de [extensie voor toepassings bewaking](../../azure-monitor/app/azure-vm-vmss-apps.md) toevoegen
-  * Installeer [Application INSIGHTS SDK](../../azure-monitor/app/asp-net.md) in uw app-code of
-  * IIS-webservers: Voer [Application Insights-agent](../../azure-monitor/app/monitor-performance-live-website-now.md)uit; of
+  * Azure web apps: de [extensie Application Insights](./azure-web-apps.md) toevoegen
+  * Door IIS gehoste apps voor Azure VM en Azure virtual machine-schaal sets: de [extensie voor toepassings bewaking](./azure-vm-vmss-apps.md) toevoegen
+  * Installeer [Application INSIGHTS SDK](./asp-net.md) in uw app-code of
+  * IIS-webservers: Voer [Application Insights-agent](./monitor-performance-live-website-now.md)uit; of
   * Java-Web-apps: de [Java-Agent](./java-in-process-agent.md) inschakelen
-* Installeer het [Java script-fragment](../../azure-monitor/app/javascript.md) in uw webpagina's om browser uitzonderingen te ondervangen.
+* Installeer het [Java script-fragment](./javascript.md) in uw webpagina's om browser uitzonderingen te ondervangen.
 * In sommige toepassings raamwerken of met sommige instellingen moet u extra stappen uitvoeren om meer uitzonde ringen te ondervangen:
   * [Webformulieren](#web-forms)
   * [MVC](#mvc)
@@ -70,31 +70,31 @@ Als u Diagnostische gegevens wilt ophalen die specifiek zijn voor uw app, kunt u
 
 U hebt verschillende mogelijkheden:
 
-* [Track Event ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) wordt meestal gebruikt voor het bewaken van gebruiks patronen, maar de gegevens die worden verzonden, worden ook weer gegeven onder aangepaste gebeurtenissen in diagnostische Zoek opdrachten. Gebeurtenissen hebben de naam en kunnen teken reeks eigenschappen en numerieke meet waarden bevatten waarop u [uw diagnostische Zoek opdrachten kunt filteren](../../azure-monitor/app/diagnostic-search.md).
-* Met [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) kunt u meer gegevens verzenden, zoals bericht gegevens.
+* [Track Event ()](./api-custom-events-metrics.md#trackevent) wordt meestal gebruikt voor het bewaken van gebruiks patronen, maar de gegevens die worden verzonden, worden ook weer gegeven onder aangepaste gebeurtenissen in diagnostische Zoek opdrachten. Gebeurtenissen hebben de naam en kunnen teken reeks eigenschappen en numerieke meet waarden bevatten waarop u [uw diagnostische Zoek opdrachten kunt filteren](./diagnostic-search.md).
+* Met [TrackTrace ()](./api-custom-events-metrics.md#tracktrace) kunt u meer gegevens verzenden, zoals bericht gegevens.
 * [TrackException ()](#exceptions) verzendt stack traceringen. [Meer informatie over uitzonde ringen](#exceptions).
 * Als u al een framework voor logboek registratie gebruikt, zoals Log4Net of NLog, kunt u [deze logboeken vastleggen](asp-net-trace-logs.md) en weer geven in diagnostische Zoek opdrachten naast aanvraag-en uitzonderings gegevens.
 
-Als u deze gebeurtenissen wilt zien, opent u in het menu links [zoeken](../../azure-monitor/app/diagnostic-search.md) , selecteert u de vervolg keuzelijst **gebeurtenis typen**en kiest u vervolgens aangepaste gebeurtenis, tracering of uitzonde ring.
+Als u deze gebeurtenissen wilt zien, opent u in het menu links [zoeken](./diagnostic-search.md) , selecteert u de vervolg keuzelijst **gebeurtenis typen**en kiest u vervolgens aangepaste gebeurtenis, tracering of uitzonde ring.
 
 ![Analyseren](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> Als uw app veel telemetriegegevens genereert, beperkt de adaptieve steekproefmodule automatisch het volume dat naar de portal wordt verzonden door alleen een representatieve fractie van de gebeurtenissen te sturen. Gebeurtenissen die deel uitmaken van dezelfde bewerking worden als groep geselecteerd of opgeheven, zodat u kunt navigeren tussen gerelateerde gebeurtenissen. [Meer informatie over steek proeven.](../../azure-monitor/app/sampling.md)
+> Als uw app veel telemetriegegevens genereert, beperkt de adaptieve steekproefmodule automatisch het volume dat naar de portal wordt verzonden door alleen een representatieve fractie van de gebeurtenissen te sturen. Gebeurtenissen die deel uitmaken van dezelfde bewerking worden als groep geselecteerd of opgeheven, zodat u kunt navigeren tussen gerelateerde gebeurtenissen. [Meer informatie over steek proeven.](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>BERICHT gegevens weer geven
 De aanvraag details bevatten niet de gegevens die in een POST-aanroep naar uw app worden verzonden. Deze gegevens moeten worden gerapporteerd:
 
-* [Installeer de SDK](../../azure-monitor/app/asp-net.md) in uw toepassings project.
-* Voeg code in uw toepassing in om [micro soft. ApplicationInsights. TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)aan te roepen. Verzend de POST-gegevens in de para meter Message. Er is een limiet voor de toegestane grootte. u moet dus proberen alleen de essentiële gegevens te verzenden.
+* [Installeer de SDK](./asp-net.md) in uw toepassings project.
+* Voeg code in uw toepassing in om [micro soft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace)aan te roepen. Verzend de POST-gegevens in de para meter Message. Er is een limiet voor de toegestane grootte. u moet dus proberen alleen de essentiële gegevens te verzenden.
 * Wanneer u een mislukte aanvraag onderzoekt, zoekt u de bijbehorende traceringen.
 
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Uitzonde ringen en gerelateerde diagnostische gegevens vastleggen
-In de eerste instantie ziet u in de portal niet alle uitzonde ringen die fouten veroorzaken in uw app. U ziet eventuele browser uitzonderingen (als u de [Java script-SDK](../../azure-monitor/app/javascript.md) in uw webpagina's gebruikt). Maar de meeste server uitzonderingen worden door IIS geblokkeerd en u moet een stukje code schrijven om ze te kunnen zien.
+In de eerste instantie ziet u in de portal niet alle uitzonde ringen die fouten veroorzaken in uw app. U ziet eventuele browser uitzonderingen (als u de [Java script-SDK](./javascript.md) in uw webpagina's gebruikt). Maar de meeste server uitzonderingen worden door IIS geblokkeerd en u moet een stukje code schrijven om ze te kunnen zien.
 
-U kunt:
+U kunt het volgende doen:
 
 * **Logboek uitzonderingen expliciet** door code in uitzonderings-handlers in te voegen om de uitzonde ringen te rapporteren.
 * **Leg uitzonde ringen automatisch** vast door uw ASP.NET Framework te configureren. De benodigde toevoegingen verschillen voor de verschillende soorten Framework.
@@ -152,7 +152,7 @@ De eenvoudigste manier is het invoegen van een aanroep van TrackException () in 
     End Try
 ```
 
-De para meters voor eigenschappen en metingen zijn optioneel, maar zijn handig voor het [filteren en toevoegen](../../azure-monitor/app/diagnostic-search.md) van extra informatie. Als u bijvoorbeeld een app hebt die verschillende spellen kan uitvoeren, kunt u alle uitzonderings rapporten vinden die betrekking hebben op een bepaald spel. U kunt zoveel items toevoegen als u wilt voor elke woorden lijst.
+De para meters voor eigenschappen en metingen zijn optioneel, maar zijn handig voor het [filteren en toevoegen](./diagnostic-search.md) van extra informatie. Als u bijvoorbeeld een app hebt die verschillende spellen kan uitvoeren, kunt u alle uitzonderings rapporten vinden die betrekking hebben op een bepaald spel. U kunt zoveel items toevoegen als u wilt voor elke woorden lijst.
 
 ## <a name="browser-exceptions"></a>Browseruitzonderingen
 De meeste browser uitzonderingen worden gerapporteerd.
@@ -201,12 +201,12 @@ Te beginnen met Application Insights Web SDK-versie 2,6 (beta3 en hoger), verzam
 
 Er zijn een aantal gevallen waarin de uitzonderings filters niet kunnen worden verwerkt. Bijvoorbeeld:
 
-* Uitzonde ringen die worden veroorzaakt door controller-constructors.
-* Uitzonde ringen die worden veroorzaakt door bericht afhandelingen.
-* Uitzonde ringen die zijn opgetreden tijdens route ring.
+* Uitzonderingen die zijn opgetreden in controller-constructors.
+* Uitzonderingen die zijn opgetreden in berichtenhandlers.
+* Uitzonderingen die zijn opgetreden tijdens routering.
 * Uitzonde ringen die zijn opgetreden tijdens de serialisatie van de gegevens.
-* Uitzonde ring opgetreden tijdens het opstarten van de toepassing.
-* Uitzonde ring opgetreden in achtergrond taken.
+* Uitzondering die zijn opgetreden tijdens het opstarten van de toepassing.
+* Uitzondering die zijn opgetreden in achtergrondtaken.
 
 Alle uitzonde ringen die door de toepassing worden *verwerkt* , moeten nog steeds hand matig worden getraceerd.
 Niet-verwerkte uitzonde ringen die afkomstig zijn van controllers, hebben doorgaans het antwoord 500 ' interne server fout '. Als een dergelijke reactie hand matig wordt samengesteld als gevolg van verwerkte uitzonde ring (of geen uitzonde ring), wordt deze bijgehouden in de overeenkomstige aanvraag-telemetrie met `ResultCode` 500, maar Application INSIGHTS SDK kan de bijbehorende uitzonde ring niet volgen.
@@ -293,12 +293,12 @@ Te beginnen met Application Insights Web SDK-versie 2,6 (beta3 en hoger), verzam
 
 Er zijn een aantal gevallen waarin de uitzonderings filters niet kunnen worden verwerkt. Bijvoorbeeld:
 
-* Uitzonde ringen die worden veroorzaakt door controller-constructors.
-* Uitzonde ringen die worden veroorzaakt door bericht afhandelingen.
-* Uitzonde ringen die zijn opgetreden tijdens route ring.
+* Uitzonderingen die zijn opgetreden in controller-constructors.
+* Uitzonderingen die zijn opgetreden in berichtenhandlers.
+* Uitzonderingen die zijn opgetreden tijdens routering.
 * Uitzonde ringen die zijn opgetreden tijdens de serialisatie van de gegevens.
-* Uitzonde ring opgetreden tijdens het opstarten van de toepassing.
-* Uitzonde ring opgetreden in achtergrond taken.
+* Uitzondering die zijn opgetreden tijdens het opstarten van de toepassing.
+* Uitzondering die zijn opgetreden in achtergrondtaken.
 
 Alle uitzonde ringen die door de toepassing worden *verwerkt* , moeten nog steeds hand matig worden getraceerd.
 Niet-verwerkte uitzonde ringen die afkomstig zijn van controllers, hebben doorgaans het antwoord 500 ' interne server fout '. Als een dergelijke reactie hand matig wordt samengesteld als gevolg van verwerkte uitzonde ring (of geen uitzonde ring), wordt deze bijgehouden in een bijbehorende telemetrie-aanvraag met `ResultCode` 500, maar Application INSIGHTS SDK geen overeenkomende uitzonde ring kan bijhouden.
@@ -482,7 +482,7 @@ Add the attribute to the service implementations:
 [Voorbeeld](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Prestatie meter items voor uitzonde ringen
-Als u [de Application Insights-agent](../../azure-monitor/app/monitor-performance-live-website-now.md) op uw server hebt geïnstalleerd, kunt u een overzicht krijgen van de uitzonderings frequentie, gemeten door .net. Dit omvat zowel afgehandelde als niet-verwerkte .NET-uitzonde ringen.
+Als u [de Application Insights-agent](./monitor-performance-live-website-now.md) op uw server hebt geïnstalleerd, kunt u een overzicht krijgen van de uitzonderings frequentie, gemeten door .net. Dit omvat zowel afgehandelde als niet-verwerkte .NET-uitzonde ringen.
 
 Open een tabblad metrische Explorer, voeg een nieuwe grafiek toe en selecteer **uitzonderings snelheid**, vermeld onder prestatie meter items.
 
@@ -491,6 +491,7 @@ Het .NET Framework berekent de frequentie door het aantal uitzonde ringen in een
 Dit wijkt af van het aantal uitzonde ringen dat wordt berekend door de Application Insights Portal TrackException-rapporten tellen. De sampling-intervallen verschillen en de SDK verzendt geen TrackException-rapporten voor alle verwerkte en onverwerkte uitzonde ringen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [REST, SQL en andere aanroepen naar afhankelijkheden bewaken](../../azure-monitor/app/asp-net-dependencies.md)
-* [Pagina laad tijden, browser uitzonderingen en AJAX-aanroepen bewaken](../../azure-monitor/app/javascript.md)
-* [Prestatie meter items bewaken](../../azure-monitor/app/performance-counters.md)
+* [REST, SQL en andere aanroepen naar afhankelijkheden bewaken](./asp-net-dependencies.md)
+* [Pagina laad tijden, browser uitzonderingen en AJAX-aanroepen bewaken](./javascript.md)
+* [Prestatie meter items bewaken](./performance-counters.md)
+

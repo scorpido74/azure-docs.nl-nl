@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met het virtuele bureau blad van Windows 2019 van Android-Azure
-description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de Android-client.
+title: Verbinding maken met het virtuele bureau blad van Windows (klassiek) van Android-Azure
+description: Verbinding maken met het virtuele bureau blad van Windows (klassiek) met behulp van de Android-client.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd319c7a6b356052f91e779e2f2a67eff4c4b6de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087149"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270750"
 ---
-# <a name="connect-with-the-android-client"></a>Verbinding maken met de Android-client
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Verbinding maken met het virtuele bureau blad van Windows (klassiek) met de Android-client
 
 > Van toepassing op: Android 4,1 en hoger, Chromebooks met ChromeOS 53 of hoger.
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-android.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../connect-android.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
 
 >[!NOTE]
 > De mogelijkheid om toegang te krijgen tot virtuele bureau blad-resources van Windows vanaf de Android-client, is momenteel beschikbaar als preview-versie.

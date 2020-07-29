@@ -1,18 +1,18 @@
 ---
-title: Power shell-script-kluis voor opslag account zoeken
-description: Meer informatie over het gebruik van een Azure PowerShell script om de Recovery Services-kluis te vinden waar uw opslag account is geregistreerd.
+title: 'PowerShell-script: kluis voor opslagaccount vinden'
+description: Lees hoe u met een Azure PowerShell-script de Recovery Services-kluis kunt vinden waarbij uw opslagaccount is geregistreerd.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b343b2f93ed439188c5c0238bf108064f6e132c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76775359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513248"
 ---
-# <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Power shell-script voor het vinden van de Recovery Services kluis waar een opslag account is geregistreerd
+# <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>PowerShell-script voor het vinden van de Recovery Services-kluis waarbij uw opslagaccount is geregistreerd
 
-Met dit script kunt u de Recovery Services-kluis vinden waar uw opslag account is geregistreerd.
+Dit script helpt om de Recovery Services-kluis te vinden waarbij uw opslagaccount is geregistreerd.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -49,14 +49,14 @@ if(!$found)
 
 ## <a name="how-to-execute-the-script"></a>Het script uitvoeren
 
-1. Sla het bovenstaande script op uw computer op met de naam van uw keuze. In dit voor beeld hebben we het opgeslagen als *FindRegisteredStorageAccount. ps1*.
-2. Voer het script uit door de volgende para meters op te geven:
+1. Sla het bovenstaande script op de computer op met een zelfgekozen naam. In dit voorbeeld hebben we het script opgeslagen als *FindRegisteredStorageAccount.ps1*.
+2. Voer het script uit door de volgende parameters op te geven:
 
-    * **-ResourceGroupName** : de resource groep van het opslag account
-    * **-StorageAccountName** -naam van opslag account
-    * **-SubscriptionID** -de id van het abonnement waarin het opslag account zich bevindt.
+    * **-ResourceGroupName**: de resourcegroep van het opslagaccount
+    * **-StorageAccountName**: de naam van opslagaccount
+    * **-SubscriptionID**: de id van het abonnement waarin het opslagaccount zich bevindt
 
-In het volgende voor beeld wordt gezocht naar de Recovery Services-kluis waar het *afsaccount* -opslag account is geregistreerd:
+In het volgende voorbeeld wordt gezocht naar de Recovery Services-kluis waarbij het opslagaccount *afsaccount* is geregistreerd:
 
 ```powershell
 .\FindRegisteredStorageAccount.ps1 -ResourceGroupName AzureFiles -StorageAccountName afsaccount -SubscriptionId ef4ad5a7-c2c0-4304-af80-af49f49af3d1
@@ -64,7 +64,7 @@ In het volgende voor beeld wordt gezocht naar de Recovery Services-kluis waar he
 
 ## <a name="output"></a>Uitvoer
 
-De uitvoer geeft het volledige pad van de Recovery Services-kluis weer waarin het opslag account is geregistreerd. Hier volgt een voorbeeld van uitvoer:
+De uitvoer bestaat uit het volledige pad van de Recovery Services-kluis waarbij het opslagaccount is geregistreerd. Hier volgt een voorbeeld van uitvoer:
 
 ```output
 Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c2c0-4304-af80-af49f49af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault123
@@ -72,4 +72,4 @@ Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het maken van back-ups van Azure-bestands shares via de Azure Portal](https://docs.microsoft.com/azure/backup/backup-afs)
+Lees meer over het [maken van back-ups van Azure-bestandsshares via de Azure-portal](../backup-afs.md).

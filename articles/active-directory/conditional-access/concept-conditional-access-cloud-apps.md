@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdfcda0ce466299d57f79ba1e60a96309078587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be80ff95cc03f8cf2a08e9ce92146fe5028dcb9c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275269"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -39,7 +40,7 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - Dynamics CRM Online
 - Micro soft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
-- [Microsoft Azure beheer](#microsoft-azure-management)
+- [Microsoft Azure-beheer](#microsoft-azure-management)
 - Abonnements beheer Microsoft Azure
 - Microsoft Cloud App Security
 - Micro soft commerce tools Access Control-Portal
@@ -93,7 +94,7 @@ Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (
    - Skype voor Bedrijven Online
    - Sway
 
-### <a name="microsoft-azure-management"></a>Microsoft Azure beheer
+### <a name="microsoft-azure-management"></a>Microsoft Azure-beheer
 
 De Microsoft Azure-beheer toepassing bevat meerdere onderliggende services. 
 
@@ -116,6 +117,7 @@ Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toep
 - [Toepassingen die zijn toegevoegd vanuit de galerie](../manage-apps/add-application-portal.md)
 - [Aangepaste toepassingen die niet voor komt in de galerie](../manage-apps/add-non-gallery-app.md)
 - [Verouderde toepassingen die zijn gepubliceerd via app Delivery controllers en Networks](../manage-apps/secure-hybrid-access.md)
+- Toepassingen die gebruikmaken [van wacht woorden op basis van eenmalige aanmelding](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
 > [!NOTE]
 > Omdat met het beleid voor voorwaardelijke toegang de vereisten voor het openen van een service worden ingesteld, kunt u dit niet Toep assen op een client toepassing (Public/native). Andere woorden: het beleid wordt niet rechtstreeks ingesteld op een client toepassing (Public/native), maar wordt toegepast wanneer een client een service aanroept. Een beleid dat is ingesteld op share point service is bijvoorbeeld van toepassing op de clients die share point aanroept. Een beleid dat is ingesteld op Exchange, is van toepassing op de poging toegang te krijgen tot het e-mail bericht met de Outlook-client Dat is de reden waarom client-(open bare/systeem eigen) toepassingen niet beschikbaar zijn voor selectie in de optie Cloud-apps kiezen en voorwaardelijke toegang is niet beschikbaar in de toepassings instellingen voor de toepassing client (openbaar/systeem eigen) die is geregistreerd in uw Tenant. 

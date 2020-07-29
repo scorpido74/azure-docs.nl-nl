@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8abd9d7f33a07141418ad67cc2128af40ad0bd51
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505802"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324757"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Overgang van Log Analytics logboek zoeken naar Azure Monitor-logboeken
 De zoek opdracht in het logboek in Log Analytics is onlangs vervangen door een nieuwe ervaring voor het analyseren van Azure Monitor Logboeken. De pagina zoeken in Logboeken is momenteel nog steeds toegankelijk via de menu opdracht **Logboeken (klassiek)** op de pagina **log Analytics werk ruimten** in de Azure Portal, maar wordt wel 15 februari 2019. In dit artikel worden de verschillen beschreven tussen de twee ervaringen waarmee u kunt overstappen van zoeken in Logboeken. 
@@ -44,7 +44,7 @@ Selecteer **Opslaan**om de huidige query in azure monitor-logboeken op te slaan.
 ![Logboek query opslaan](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Opgeslagen query's
-In zoeken in Logboeken zijn uw opgeslagen query's beschikbaar via de actie balk item **opgeslagen Zoek opdrachten**. In Azure Monitor-Logboeken opent u opgeslagen query's vanuit [query Explorer](../log-query/get-started-portal.md#save-queries).
+In zoeken in Logboeken zijn uw opgeslagen query's beschikbaar via de actie balk item **opgeslagen Zoek opdrachten**. In Azure Monitor-Logboeken opent u opgeslagen query's vanuit [query Explorer](./get-started-portal.md#save-queries).
 
 ![Queryverkenner](media/log-search-transition/query-explorer.png)
 
@@ -69,3 +69,4 @@ Maak in Azure Monitor logboeken [een waarschuwing van de logboek query](../platf
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de nieuwe [Azure monitor-logboeken](get-started-portal.md).
+

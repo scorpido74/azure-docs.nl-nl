@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een microfoon, Java-spraak service'
+title: 'Quickstart: Spraak herkennen vanaf een microfoon, Java - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: cee5e73c9c56346c807ce8a74c3d7cd38443f826
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 06137fb4b7b8adaa872b5e376bfe0353185fde6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75467357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544170"
 ---
-Als u liever meteen naar rechts gaat, kunt u alle <a href="https://aka.ms/speech/github-java">Speech SDK Java</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-java">Java-voorbeelden van de Speech SDK</a> op GitHub bekijken of downloaden. 

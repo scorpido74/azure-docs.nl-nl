@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321255"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Aangepaste metrische gegevens voor een Azure-resource verzenden naar het Azure Monitor metrische archief met behulp van een REST API
 
 Dit artikel laat u zien hoe u aangepaste metrische gegevens voor Azure-resources kunt verzenden naar de Azure Monitor metrische gegevens opslag via een REST API. Nadat de metrische gegevens zijn Azure Monitor, kunt u alle dingen doen met de metrieken met standaard metrische gegevens. Voor beelden hiervan zijn grafieken, waarschuwingen en route ring naar andere externe hulpprogram ma's.  
 
 >[!NOTE]  
->Met de REST API is het verzenden van aangepaste metrische gegevens voor Azure-resources alleen toegestaan. Als u metrische gegevens voor resources in verschillende omgevingen of on-premises wilt verzenden, kunt u [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)gebruiken.    
+>Met de REST API is het verzenden van aangepaste metrische gegevens voor Azure-resources alleen toegestaan. Als u metrische gegevens voor resources in verschillende omgevingen of on-premises wilt verzenden, kunt u [Application Insights](../app/api-custom-events-metrics.md)gebruiken.    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Een service-principal maken en autoriseren voor het verzenden van metrische gegevens 
@@ -92,7 +93,7 @@ Als er een fout bericht wordt weer gegeven met een deel van het proces, kunt u d
 1. U kunt geen metrische gegevens uitgeven voor een abonnement of resource groep als uw Azure-resource. 
 1. U kunt geen metrische gegevens in de Store plaatsen die meer dan 20 minuten oud zijn. De metrische opslag is geoptimaliseerd voor waarschuwingen en realtime grafieken. 
 2. Het aantal dimensie namen moet overeenkomen met de waarden en vice versa. Controleer de waarden. 
-2. U kunt metrische gegevens verzenden naar een regio die geen aangepaste metrische gegevens ondersteunt. Zie [ondersteunde regio's](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+2. U kunt metrische gegevens verzenden naar een regio die geen aangepaste metrische gegevens ondersteunt. Zie [ondersteunde regio's](./metrics-custom-overview.md#supported-regions). 
 
 
 
@@ -116,5 +117,5 @@ Als er een fout bericht wordt weer gegeven met een deel van het proces, kunt u d
 
  
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [aangepaste metrische gegevens](../../azure-monitor/platform/metrics-custom-overview.md).
+- Meer informatie over [aangepaste metrische gegevens](./metrics-custom-overview.md).
 

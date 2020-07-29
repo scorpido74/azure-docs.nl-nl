@@ -3,11 +3,12 @@ title: Overzichts dashboard voor Azure-toepassing Insights | Microsoft Docs
 description: Bewaak toepassingen met Azure-toepassing inzicht en overzicht dashboard functionaliteit.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669893"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322530"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-overzichts dashboard
 
@@ -56,6 +57,7 @@ Als u **tegel instellingen configureren** selecteert en een aangepast tijds bere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Trechters](../../azure-monitor/app/usage-funnels.md)
-- [Bewaartermijn](../../azure-monitor/app/usage-retention.md)
-- [Gebruikersstromen](../../azure-monitor/app/usage-flows.md)
+- [Trechters](./usage-funnels.md)
+- [Bewaartermijn](./usage-retention.md)
+- [Gebruikersstromen](./usage-flows.md)
+

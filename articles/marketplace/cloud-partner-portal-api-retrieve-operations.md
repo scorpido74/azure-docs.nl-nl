@@ -4,15 +4,15 @@ description: API voor het ophalen van alle bewerkingen op de aanbieding of voor 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520286"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271940"
 ---
 # <a name="retrieve-operations"></a>Bewerkingen ophalen
 
@@ -31,12 +31,12 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 
 ## <a name="uri-parameters"></a>URI-para meters
 
-|  **Naam**          |      **Beschrijving**                                                                                           | **Gegevens type** |
+|  **Naam**          |      **Beschrijving**                                                                                           | **Gegevenstype** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Uitgevers-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
 |  offerId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
 |  operationId       |  GUID waarmee de bewerking op de aanbieding uniek wordt geïdentificeerd. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord op een langlopende bewerking, zoals de API voor het [publiceren van aanbiedingen](./cloud-partner-portal-api-publish-offer.md) .  |   GUID   |
-|  api-versie       | Nieuwste versie van API |    Datum      |
+|  api-versie       | Nieuwste versie van API |    Date      |
 |  |  |  |
 
 ## <a name="header"></a>Header
@@ -185,7 +185,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | De geschatte duur van deze bewerking |
 | id | De unieke id voor het stap proces |
-| description | Beschrijving van de stap |
+| beschrijving | Beschrijving van de stap |
 | Stapnaam | De beschrijvende naam voor de stap |
 | status | De status van de stap, ofwel `notStarted` \| `running` \| `failed` \|`completed` |
 | berichten | Alle meldingen of waarschuwingen die tijdens de stap zijn aangetroffen. Matrix van tekenreeksen |

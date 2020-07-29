@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505445"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324094"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Een klassieke waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 > [!WARNING]
 > 
-> In dit artikel wordt beschreven hoe u **klassieke metrische waarschuwingen** maakt met behulp van Resource Manager-sjablonen. Klassieke waarschuwingen werden in augustus 2019 buiten gebruik gesteld en zijn in juni 2020 volledig afgeschaft. U kunt geen nieuwe klassieke open bare Azure-waarschuwingen maken. Sommige regionale versies van Azure hebben mogelijk nog steeds de optie, maar we raden u aan in plaats daarvan [nieuwe metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te maken met behulp van sjablonen, indien dit mogelijk is. In [dit artikel](alerts-metric-create-templates.md) vindt u meer informatie.
+> In dit artikel wordt beschreven hoe u **klassieke metrische waarschuwingen** maakt met behulp van Resource Manager-sjablonen. Klassieke waarschuwingen werden in augustus 2019 buiten gebruik gesteld en zijn in juni 2020 volledig afgeschaft. U kunt geen nieuwe klassieke open bare Azure-waarschuwingen maken. Sommige regionale versies van Azure hebben mogelijk nog steeds de optie, maar we raden u aan in plaats daarvan [nieuwe metrische waarschuwingen](./alerts-metric-near-real-time.md) te maken met behulp van sjablonen, indien dit mogelijk is. In [dit artikel](alerts-metric-create-templates.md) vindt u meer informatie.
 >
 
 In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) kunt gebruiken voor het configureren van klassieke Azure-waarschuwingen. Hierdoor kunt u automatisch waarschuwingen instellen voor uw resources wanneer ze worden gemaakt om ervoor te zorgen dat alle resources correct worden gecontroleerd.
@@ -400,5 +400,6 @@ Een waarschuwing voor een resource manager-sjabloon is het vaakst handig bij het
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over waarschuwingen](alerts-overview.md)
-* [Diagnostische instellingen toevoegen](../../azure-monitor/platform/diagnostic-settings-template.md) aan uw Resource Manager-sjabloon
+* [Diagnostische instellingen toevoegen](./diagnostic-settings-template.md) aan uw Resource Manager-sjabloon
 * Zie [micro soft. Insights/alertrules-](/azure/templates/microsoft.insights/alertrules) sjabloon Naslag informatie voor de JSON-syntaxis en-eigenschappen.
+

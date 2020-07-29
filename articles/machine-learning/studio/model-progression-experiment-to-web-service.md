@@ -1,6 +1,5 @@
 ---
-title: Hoe een model wordt een webservice
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): hoe een model wordt een webservice-Azure'
 description: Een overzicht van de mechanismen van hoe het model van Azure Machine Learning Studio (klassiek) van een ontwikkelings experiment naar een webservice wordt uitgevoerd.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117190"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324995"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hoe een model van Machine Learning Studio (klassiek) van een experiment naar een webservice wordt uitgevoerd
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 Azure Machine Learning Studio (klassiek) biedt een interactief canvas waarmee u een ***experiment*** kunt ontwikkelen, uitvoeren, testen en herhalen voor een voorspellend analyse model. Er zijn tal van beschik bare modules die kunnen:
 

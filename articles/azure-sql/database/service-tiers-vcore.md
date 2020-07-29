@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007738"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325063"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,7 +83,7 @@ Zie [Gen4/Gen5 Beschik baarheid](#gen4gen5-1)voor regio's waar Gen4/Gen5 beschik
 - Afhankelijk van de werk belasting, kan de Fsv2-serie meer CPU-prestaties leveren per vCore dan GEN5, en de grootte van 72 vCore kan meer CPU-prestaties bieden voor minder kosten dan 80 vCores op GEN5. 
 - Fsv2 biedt minder geheugen en tempdb per vCore dan andere hardware, zodat werk belastingen die gevoelig zijn voor deze limieten wellicht in plaats daarvan Gen5 of M-serie willen overwegen.  
 
-De Fsv2-serie wordt alleen ondersteund in de laag Algemeen. Zie de [Beschik baarheid van Fsv2-Series](#fsv2-series)voor regio's waar Fsv2-serie beschikbaar is.
+De Fsv2-serie wordt alleen ondersteund in de laag Algemeen. Zie de [Beschik baarheid van Fsv2-Series](#fsv2-series-1)voor regio's waar Fsv2-serie beschikbaar is.
 
 
 ### <a name="m-series"></a>M-serie
@@ -91,7 +91,7 @@ De Fsv2-serie wordt alleen ondersteund in de laag Algemeen. Zie de [Beschik baar
 - M-serie is een optie voor geoptimaliseerd voor geheugen voor werk belastingen die meer geheugen en hogere reken limieten hebben dan wordt verzorgd door GEN5.
 - De M-serie biedt 29 GB per vCore en Maxi maal 128 vCores, waardoor de geheugen limiet wordt verhoogd ten opzichte van GEN5, 8x tot bijna 4 TB.
 
-De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA). Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
+De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA). Zie de [Beschik baarheid van de m-serie](#m-series-1)voor regio's waar de m-serie beschikbaar is.
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

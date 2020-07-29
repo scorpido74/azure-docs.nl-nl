@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van een IoT Plug en Play preview-apparaat code verbinden met IoT Hub | Microsoft Docs
-description: Met behulp van Java kunt u IoT Plug en Play preview-voorbeeld code maken en uitvoeren die verbinding maakt met een IoT-hub. Gebruik het hulp programma Azure IoT Explorer om de informatie weer te geven die door het apparaat wordt verzonden naar de hub.
+title: IoT Plug and Play Preview-code koppelen aan IoT Hub - Java | Microsoft Docs
+description: Lees hoe u met behulp van Java voorbeeldcode voor een IoT Plug and Play Preview-apparaat schrijft en uitvoert die verbinding maakt met een IoT-hub. Gebruik het hulpprogramma Azure IoT Explorer om de gegevens te bekijken die door het apparaat naar de hub worden verzonden.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/27/2019
@@ -8,34 +8,34 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c85763ffb12ac93f3aff667c4660afa22ca6a99f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964818"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521238"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Snelstartgids: een voor beeld van een IoT Plug en Play preview-toepassings toepassing verbinden met IoT Hub (Java)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Quickstart: Een voorbeeld van een IoT Plug and Play Preview-apparaattoepassing verbinden met IoT Hub (Java)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-In deze Quick start ziet u hoe u een voor beeld van een IoT-voorbeeld Plug en Play kunt maken, hoe u het kunt verbinden met uw IoT-hub en hoe u het hulp programma Azure IoT Explorer kunt gebruiken om de informatie weer te geven die wordt verzonden naar de hub. De voorbeeld toepassing is geschreven in Java en wordt meegeleverd als onderdeel van de Azure IoT-voor beelden voor Java-verzameling. Een oplossings ontwikkelaar kan het hulp programma Azure IoT Explorer gebruiken om inzicht te krijgen in de mogelijkheden van een IoT-Plug en Play apparaat zonder dat er toestel code hoeft te worden weer gegeven.
+In deze quickstart ziet u hoe u een voorbeeld van een IoT Plug and Play-apparaattoepassing maakt, hoe u de toepassing verbindt met uw IoT-hub en hoe u het hulpprogramma Azure IoT Explorer gebruikt om de gegevens weer te geven die naar de hub worden verzonden. De voorbeeldtoepassing wordt geschreven in Java en wordt meegeleverd als onderdeel van de verzameling met Azure IoT-voorbeelden voor Java. Een ontwikkelaar van oplossingen kan het hulpprogramma Azure IoT Explorer gebruiken om inzicht te krijgen in de mogelijkheden van een IoT Plug and Play-apparaat zonder apparaatcode weer te geven.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze Snelstartgids wilt volt ooien, moet u Java SE 8 op uw ontwikkel computer hebben. U moet ook maven 3 installeren.
+Als u deze quickstart wilt uitvoeren, moet Java SE 8 op uw ontwikkelcomputer zijn geïnstalleerd. U moet ook Maven 3 installeren.
 
-Zie [uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-java/blob/preview/doc/java-devbox-setup.md) in de Microsoft Azure IOT Device SDK voor Java voor meer informatie over hoe u deze kunt instellen.
+Zie [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-java/blob/preview/doc/java-devbox-setup.md) in de Microsoft Azure IoT Device SDK for Java voor meer informatie over het instellen van deze vereisten.
 
-### <a name="install-the-azure-iot-explorer"></a>De Azure IoT Explorer installeren
+### <a name="install-the-azure-iot-explorer"></a>Azure IoT Explorer installeren
 
-Down load en installeer de nieuwste versie van **Azure IOT Explorer** vanaf de [bibliotheek](https://github.com/Azure/azure-iot-explorer/releases) pagina van het hulp programma door het MSI-bestand te selecteren onder ' assets ' voor de meest recente update.
+Download en installeer de nieuwste versie van **Azure IoT Explorer-** via de pagina [repository](https://github.com/Azure/azure-iot-explorer/releases) van de tool door onder Assets het MSI-bestand te selecteren voor de meest recente update.
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Voer de volgende opdracht uit om de _IOT hub-Connection String_ voor uw hub op te halen (Let op later gebruik):
+Voer de volgende opdracht uit om de _verbindingsreeks voor IoT Hub_ op te halen voor uw hub (dit is voor later gebruik):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -43,51 +43,51 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
 
-In deze Quick Start maakt u een ontwikkel omgeving die u kunt gebruiken om de Azure IoT-voor beelden voor Java te klonen en samen te stellen.
+In deze quickstart bereidt u een ontwikkelomgeving voor die kan worden gebruikt voor het klonen en compileren van de opslagplaats Azure IoT Samples for Java.
 
-Open een Terminal venster in de gewenste map. Voer de volgende opdracht uit om de [Azure IOT-voor beelden voor Java](https://github.com/Azure-Samples/azure-iot-samples-java) github-opslag plaats naar deze locatie te klonen:
+Open een terminalvenster in de map van uw keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats [Azure IoT Samples for Java](https://github.com/Azure-Samples/azure-iot-samples-java) te klonen op deze locatie:
 
 ```cmd/sh
 git clone https://github.com/Azure-Samples/azure-iot-samples-java
 ```
 
-Het volt ooien van deze bewerking kan enkele minuten duren.
+Deze bewerking kan enkele minuten duren.
 
 ## <a name="build-the-code"></a>De code bouwen
 
-U gebruikt de gekloonde voorbeeld code voor het bouwen van een toepassing die een apparaat simuleert dat verbinding maakt met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
+U gebruikt de gekloonde voorbeeldcode voor het compileren van een toepassing die een apparaat simuleert dat verbinding maakt met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Ga in een lokaal Terminal venster naar de map van uw gekloonde opslag plaats en ga naar de map **/Azure-IOT-samples-Java/Digital-Twin/samples/Device/JdkSample** . Voer vervolgens de volgende opdracht uit om de vereiste bibliotheken te installeren en de toepassing met gesimuleerde apparaten te bouwen:
+1. Ga in een lokaal terminalvenster naar de map van de gekloonde opslagplaats en ga naar de map **/azure-iot-samples-java/digital-twin/Samples/device/JdkSample**. Voer vervolgens de volgende opdracht uit om de vereiste bibliotheken te installeren en de toepassing voor het gesimuleerde apparaat te compileren:
 
     ```cmd/sh
     mvn clean install -DskipTests
     ```
 
-1. De connection string van het _apparaat_configureren:
+1. Configureer de _device connection string_ (verbindingsreeks voor het apparaat):
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-## <a name="run-the-device-sample"></a>Het voor beeld van het apparaat uitvoeren
+## <a name="run-the-device-sample"></a>Het apparaatvoorbeeld uitvoeren
 
-Voer een voorbeeld toepassing uit om een IoT Plug en Play-apparaat te simuleren dat telemetrie verzendt naar uw IoT-hub. Gebruik de volgende opdracht om de voorbeeld toepassing uit te voeren:
+Voer een voorbeeldtoepassing uit om een IoT Plug en Play-apparaat te simuleren dat telemetrie verzendt naar uw IoT-hub. Gebruik de volgende opdracht om de voorbeeldtoepassing uit te voeren:
 
 ```cmd\sh
 java -jar environmental-sensor-sample\target\environmental-sensor-sample-with-deps.jar
 ```
 
-Er worden berichten weer gegeven met de melding dat het apparaat is verbonden, het uitvoeren van verschillende installatie stappen en het wachten op service-updates, gevolgd door telemetrie-Logboeken. Dit geeft aan dat het apparaat nu gereed is om opdrachten en updates van eigenschappen te ontvangen en dat er telemetriegegevens worden verzonden naar de hub. Laat het voor beeld uitvoeren tijdens het uitvoeren van de volgende stappen.
+U ziet berichten met de mededeling dat het apparaat is verbonden, dat er verschillende installatiestappen worden uitgevoerd, dat er wordt gewacht op service-updates, gevolgd door telemetrielogboeken. Dit geeft aan dat het apparaat nu klaar is om opdrachten en updates van eigenschappen te ontvangen, en dat er telemetriegegevens worden verzonden naar de hub. Laat het voorbeeld actief tijdens het uitvoeren van de volgende stappen.
 
-## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>De Azure IoT Explorer gebruiken om de code te valideren
+## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Code valideren met de Azure IoT Explorer
 
 [!INCLUDE [iot-pnp-iot-explorer-1.md](../../includes/iot-pnp-iot-explorer-1.md)]
 
-4. Selecteer **instellingen**om ervoor te zorgen dat het hulp programma de interface model definities van uw apparaat kan lezen. In het menu instellingen **op het verbonden apparaat** wordt mogelijk al weer gegeven in de Plug en Play configuraties. Als dat niet het geval is, selecteert u **+ module-definitie bron toevoegen** en vervolgens **op het aangesloten apparaat** om het toe te voegen.
+4. Om ervoor te zorgen dat het hulpprogramma de interfacemodeldefinities van uw apparaat kan lezen, selecteert u **Instellingen**. In het menu Instellingen wordt **Op het verbonden apparaat** mogelijk al weergegeven in de Plug en Play-configuraties. Als dat niet het geval is, selecteert u **+ Bron moduledefinitie toevoegen** en vervolgens **Op het verbonden apparaat** om het apparaat toe te voegen.
 
-1. Ga terug naar de overzichts pagina **apparaten** en zoek de apparaat-id die u eerder hebt gemaakt. Wanneer de toepassing nog steeds wordt uitgevoerd in de opdracht prompt, controleert u of de **verbindings status** van het apparaat in azure IOT Explorer wordt gerapporteerd als _verbonden_ (als dat niet het geval is, kunt u op **vernieuwen** drukken totdat dit is). Selecteer het apparaat om meer details weer te geven.
+1. Zoek op de overzichtspagina **Devices** de apparaat-id die u eerder hebt gemaakt. Controleer terwijl de apparaattoepassing nog steeds wordt uitgevoerd bij de opdrachtprompt of bij **Connection state** in Azure IoT Explorer de status van het apparaat wordt weergegeven als _Connected_ (als dat niet zo is, selecteert u **Refresh** tot dat wel het geval is). Selecteer het apparaat om meer details weer te geven.
 
-1. Vouw de interface met de ID **urn: java_sdk_sample: EnvironmentalSensor: 1** uit om de interface en IOT Plug en Play primitieven, eigenschappen, opdrachten en telemetrie, weer te geven.
+1. Vouw de interface met de id **urn:java_sdk_sample:EnvironmentalSensor:1** uit om de interface en primitieven (eigenschappen, opdrachten en telemetrie) van IoT Plug and Play te bekijken.
 
 [!INCLUDE [iot-pnp-iot-explorer-2.md](../../includes/iot-pnp-iot-explorer-2.md)]
 
@@ -95,7 +95,7 @@ Er worden berichten weer gegeven met de melding dat het apparaat is verbonden, h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een IoT-Plug en Play apparaat verbindt met een IoT-hub. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten:
+In deze quickstart hebt u geleerd hoe u een IoT Plug and Play-apparaat kunt verbinden met een IoT-hub. Als u meer wilt weten over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten, leest u:
 
 > [!div class="nextstepaction"]
-> [Instructies: verbinding maken met en werken met een IoT Plug en Play preview-apparaat](howto-develop-solution.md)
+> [Uitleg: Connect to and interact with an IoT Plug and Play Preview device](howto-develop-solution.md) (Verbinding maken met een IoT Plug and Play Preview-apparaat en ermee communiceren)

@@ -2,18 +2,16 @@
 title: Een Azure Blockchain Service-lid maken met behulp van een Azure Resource Manager-sjabloon
 description: Meer informatie over het maken van een lid van Azure Blockchain Service met behulp van een Azure Resource Manager-sjabloon.
 services: azure-resource-manager
-author: PatAltimore
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.author: patricka
-ms.date: 06/04/2020
-ms.openlocfilehash: 8eabb6806dee96871648ea419ba36d768d32a2ab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: subject-armqs, references_regions
+ms.date: 07/16/2020
+ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078163"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513010"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Quickstart: Een Azure Blockchain Service-lid maken met behulp van een ARM-sjabloon
 
@@ -51,7 +49,7 @@ Azure-resources die in de sjabloon zijn gedefinieerd:
     --------|------------
     Abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
     Resourcegroep | U kunt een nieuwe resourcegroepnaam maken of een bestaande naam uit uw abonnement kiezen.
-    Locatie | Kies een locatie om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bevinden. Beschikbare locaties voor de implementatie zijn *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* en *japaneast*.
+    Locatie | Kies een locatie om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bevinden. Beschikbare locaties voor de implementatie zijn *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* en *japaneast*. Functies zijn mogelijk niet in alle regio's beschikbaar. Azure Blockchain Data Manager is beschikbaar in de volgende Azure-regio's: VS - oost en Europa - west.
     Lidnaam | Kies een unieke naam voor het lid van de Azure Blockchain Service. De blockchain-naam mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet minimaal 2 en maximaal 20 tekens lang zijn.
     Consortium-naam | Voer een unieke naam in. Zie [Azure Blockchain Service-consortium](consortium.md) voor meer informatie over consortiums.
     Wachtwoord voor lid | Het wachtwoord van het lidaccount wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor het lid wordt gemaakt. U gebruikt het lidaccount en het wachtwoord van het lidaccount voor het beheer van consortiums.

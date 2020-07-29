@@ -6,18 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539904"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324111"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
 
 Deze functie is momenteel beschikbaar als preview-product.
 
-Ontdek hoeveel tijd wordt besteed aan elke methode van uw Live Web-app wanneer u [Application Insights](../../azure-monitor/app/app-insights-overview.md)gebruikt. Application Insights Profiler is nu beschikbaar voor ASP.NET Core web-apps die worden gehost in Linux op Azure App Service. Deze hand leiding bevat stapsgewijze instructies voor het verzamelen van de profilerings traceringen voor ASP.NET Core Linux-web-apps.
+Ontdek hoeveel tijd wordt besteed aan elke methode van uw Live Web-app wanneer u [Application Insights](./app-insights-overview.md)gebruikt. Application Insights Profiler is nu beschikbaar voor ASP.NET Core web-apps die worden gehost in Linux op Azure App Service. Deze hand leiding bevat stapsgewijze instructies voor het verzamelen van de profilerings traceringen voor ASP.NET Core Linux-web-apps.
 
 Nadat u deze procedure hebt voltooid, kan uw app profilerings traceringen verzamelen zoals de traceringen die in de installatie kopie worden weer gegeven. In dit voor beeld geeft de profilerings tracering aan dat een bepaalde webaanvraag langzaam is omdat er wacht tijd wordt besteed. Het *warme pad* in de code waarmee de app wordt vertraagd, is gemarkeerd met een vlam pictogram. De methode **about** in het gedeelte **HomeController** vertraagt de web-app omdat de methode de **thread. slaapstandmodus** oproept.
 
@@ -149,7 +149,7 @@ Raadpleeg [dit artikel](../../app-service/containers/choose-deployment-type.md)v
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights toevoegen om uw web-apps te bewaken
 
-1. [Een Application Insights-resource maken](./../../azure-monitor/app/create-new-resource.md ).
+1. [Een Application Insights-resource maken](./create-new-resource.md).
 
 2. Kopieer de waarde **iKey** van de resource Application Insights en stel de volgende instellingen in uw web-apps in:
 
@@ -171,3 +171,4 @@ Raadpleeg [dit artikel](../../app-service/containers/choose-deployment-type.md)v
 Als u aangepaste containers gebruikt die worden gehost door Azure App Service, volgt u de instructies in [enable service Profiler for a ASP.net core toepassing in een container](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) om Application Insights Profiler in te scha kelen.
 
 Meld eventuele problemen of suggesties voor de Application Insights GitHub-opslag plaats: [ApplicationInsights-Profiler-AspNetCore: issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+

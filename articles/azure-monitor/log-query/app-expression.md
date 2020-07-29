@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324536"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app ()-expressie in Azure Monitor query
 
@@ -19,7 +20,7 @@ De `app` expressie wordt gebruikt in een Azure monitor query om gegevens op te h
 > [!IMPORTANT]
 > De app ()-expressie wordt niet gebruikt als u gebruikmaakt van een [Application Insights resource op basis van een werk ruimte](../app/create-workspace-resource.md) , aangezien logboek gegevens worden opgeslagen in een log Analytics-werk ruimte. Gebruik de log ()-expressie voor het schrijven van een query die toepassing bevat in meerdere werk ruimten. Voor meerdere toepassingen in dezelfde werk ruimte hebt u geen query op meerdere werk ruimten nodig.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 `app(`*Progid's*`)`
 
@@ -36,7 +37,7 @@ De `app` expressie wordt gebruikt in een Azure monitor query om gegevens op te h
 | Azure-Resource-ID | Id voor de Azure-resource |app ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>Notities
+## <a name="notes"></a>Opmerkingen
 
 * U moet lees toegang hebben tot de toepassing.
 * Door de naam van een toepassing te identificeren, wordt ervan uitgegaan dat deze uniek is voor alle toegankelijke abonnementen. Als u meerdere toepassingen met de opgegeven naam hebt, mislukt de query vanwege de dubbel zinnigheid. In dit geval moet u een van de andere id's gebruiken.
@@ -72,5 +73,6 @@ union
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie de [werkruimte expressie](workspace-expression.md) om te verwijzen naar een log Analytics-werk ruimte.
-- Meer informatie over hoe [Azure monitor gegevens](../../azure-monitor/log-query/log-query-overview.md) worden opgeslagen.
+- Meer informatie over hoe [Azure monitor gegevens](./log-query-overview.md) worden opgeslagen.
 - Toegang tot volledige documentatie voor de [Kusto-query taal](/azure/kusto/query/).
+

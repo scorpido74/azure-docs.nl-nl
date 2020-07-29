@@ -1,18 +1,18 @@
 ---
-title: Een Azure-resource bewaken met Azure Monitor
-description: Krijg meer informatie over het verzamelen en analyseren van gegevens voor een Azure-resource in Azure Monitor.
+title: Een virtuele Azure-machine bewaken met Azure Monitor
+description: Lees hier meer over het verzamelen en analyseren van gegevens voor een virtuele Azure-machine in Azure Monitor.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516393"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Quickstart: Een virtuele Azure-machine bewaken met Azure Monitor
 [Azure Monitor](../overview.md) begint met het verzamelen van gegevens van virtuele Azure-machines op het moment dat ze worden gemaakt. In deze quickstart krijgt u een beknopt overzicht van de gegevens die automatisch worden verzameld voor een Azure-VM, en ziet u hoe u deze kunt weergeven in de Azure-portal. Vervolgens schakelt u [Azure Monitor voor VM's](../insights/vminsights-overview.md) in voor de VM. Hierdoor worden agents op de VM in staat gesteld gegevens van het gastbesturingssysteem te verzamelen en te analyseren, waaronder processen en de bijbehorende afhankelijkheden.
@@ -107,4 +107,4 @@ Wanneer u een nieuwe Log Analytics-werkruimte maakt, moet deze worden geconfigur
 In deze quickstart hebt u Azure Monitor voor VM’s ingeschakeld voor een virtuele machine, en de Log Analytics-werkruimte geconfigureerd om gebeurtenissen te verzamelen voor het gastbesturingssysteem. Voor informatie over het weergeven en analyseren van de gegevens gaat u verder met de zelfstudie.
 
 > [!div class="nextstepaction"]
-> [Gegevens weergeven of analyseren in Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Gegevens weergeven of analyseren in Log Analytics](../log-query/get-started-portal.md)

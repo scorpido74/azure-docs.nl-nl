@@ -1,6 +1,5 @@
 ---
-title: PowerShell-modules
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): Power shell-modules-Azure'
 description: Power shell gebruiken voor het maken en beheren van Azure Machine Learning Studio (klassieke) werk ruimten, experimenten, webservices en meer.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 3977bd13d0d3300126e06626e33fde753acc964f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46f51a09a82d544a5940dfad69dc8e36d99a2f7a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065778"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324978"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Power shell-modules voor Azure Machine Learning Studio (klassiek)
+
+**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+
 
 U kunt met behulp van Power shell-modules uw studio-resources en-assets programmatisch beheren, zoals werk ruimten, gegevens sets en webservices.
 

@@ -3,12 +3,12 @@ title: Bewaren van gegevens en opslag in Azure-toepassing inzichten | Microsoft 
 description: Retentie en privacybeleid
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540057"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324468"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -38,24 +38,24 @@ Application Insights Sdk's zijn beschikbaar voor verschillende toepassings typen
 ## <a name="what-data-does-it-collect"></a>Welke gegevens worden er verzameld?
 Er zijn drie gegevens bronnen:
 
-* De SDK, die u integreert met uw app [in ontwikkeling](../../azure-monitor/app/asp-net.md) of [tijdens de uitvoering](../../azure-monitor/app/monitor-performance-live-website-now.md). Er zijn verschillende Sdk's voor verschillende toepassings typen. Er is ook een [SDK voor webpagina's](../../azure-monitor/app/javascript.md)die in de browser van de eind gebruiker wordt geladen samen met de pagina.
+* De SDK, die u integreert met uw app [in ontwikkeling](./asp-net.md) of [tijdens de uitvoering](./monitor-performance-live-website-now.md). Er zijn verschillende Sdk's voor verschillende toepassings typen. Er is ook een [SDK voor webpagina's](./javascript.md)die in de browser van de eind gebruiker wordt geladen samen met de pagina.
   
-  * Elke SDK heeft een aantal [modules](../../azure-monitor/app/configuration-with-applicationinsights-config.md), die gebruikmaken van verschillende technieken voor het verzamelen van verschillende soorten telemetrie.
+  * Elke SDK heeft een aantal [modules](./configuration-with-applicationinsights-config.md), die gebruikmaken van verschillende technieken voor het verzamelen van verschillende soorten telemetrie.
   * Als u de SDK in ontwikkeling installeert, kunt u ook de API gebruiken om uw eigen telemetrie en de standaard modules te verzenden. Deze aangepaste telemetrie kan alle gegevens bevatten die u wilt verzenden.
-* Op sommige webservers zijn er ook agents die naast de app worden uitgevoerd en het verzenden van telemetrie over CPU, geheugen en netwerk bezetting. Zo kunnen Azure-Vm's, docker-hosts en [Java EE-servers](../../azure-monitor/app/java-agent.md) dergelijke agenten hebben.
-* [Beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) zijn processen die door micro soft worden uitgevoerd en die op gezette tijden aanvragen verzenden naar uw web-app. De resultaten worden naar de Application Insights-service verzonden.
+* Op sommige webservers zijn er ook agents die naast de app worden uitgevoerd en het verzenden van telemetrie over CPU, geheugen en netwerk bezetting. Zo kunnen Azure-Vm's, docker-hosts en [Java EE-servers](./java-agent.md) dergelijke agenten hebben.
+* [Beschikbaarheids tests](./monitor-web-app-availability.md) zijn processen die door micro soft worden uitgevoerd en die op gezette tijden aanvragen verzenden naar uw web-app. De resultaten worden naar de Application Insights-service verzonden.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Welke soorten gegevens worden er verzameld?
 De belangrijkste categorieën zijn:
 
-* [Telemetrie van webserver](../../azure-monitor/app/asp-net.md) -HTTP-aanvragen.  URI, de tijd die nodig is om de aanvraag, de antwoord code, het IP-adres van de client te verwerken. `Session id`.
-* [Webpagina's-pagina](../../azure-monitor/app/javascript.md) -, gebruikers-en sessie aantallen. Laad tijden van pagina's. Uitzonderingen. Ajax-aanroepen.
+* [Telemetrie van webserver](./asp-net.md) -HTTP-aanvragen.  URI, de tijd die nodig is om de aanvraag, de antwoord code, het IP-adres van de client te verwerken. `Session id`.
+* [Webpagina's-pagina](./javascript.md) -, gebruikers-en sessie aantallen. Laad tijden van pagina's. Uitzonderingen. Ajax-aanroepen.
 * Prestatie meter items-geheugen, CPU, IO, netwerk bezetting.
 * Client-en server context: besturings systeem, land instelling, apparaattype, browser, scherm resolutie.
-* [Uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) en crash- **stack dumps**, `build id` , CPU-type. 
-* [Afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) : aanroepen naar externe services, zoals rest, SQL, Ajax. URI of connection string, duur, geslaagd, opdracht.
-* [Beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) : duur van testen en stappen, reacties.
-* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)  -  **Alles wat u in uw logboeken of telemetrie codeeert**.
+* [Uitzonde ringen](./asp-net-exceptions.md) en crash- **stack dumps**, `build id` , CPU-type. 
+* [Afhankelijkheden](./asp-net-dependencies.md) : aanroepen naar externe services, zoals rest, SQL, Ajax. URI of connection string, duur, geslaagd, opdracht.
+* [Beschikbaarheids tests](./monitor-web-app-availability.md) : duur van testen en stappen, reacties.
+* [Traceer logboeken](./asp-net-trace-logs.md) en [aangepaste telemetrie](./api-custom-events-metrics.md)  -  **Alles wat u in uw logboeken of telemetrie codeeert**.
 
 [Meer details](#data-sent-by-application-insights).
 
@@ -71,16 +71,16 @@ Open het venster fout opsporing van uw browser voor webpagina's.
 ![Druk op F12 en open het tabblad netwerk.](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Kan ik code schrijven om de telemetrie te filteren voordat deze wordt verzonden?
-Dit zou mogelijk kunnen zijn door een [telemetrie-processor-invoeg toepassing](../../azure-monitor/app/api-filtering-sampling.md)te schrijven.
+Dit zou mogelijk kunnen zijn door een [telemetrie-processor-invoeg toepassing](./api-filtering-sampling.md)te schrijven.
 
 ## <a name="how-long-is-the-data-kept"></a>Hoe lang worden de gegevens bewaard?
-Onbewerkte gegevens punten (dat wil zeggen, items die u in analyses kunt opvragen en zoeken in zoek acties) worden Maxi maal 730 dagen bewaard. U kunt [een Bewaar periode](./pricing.md#change-the-data-retention-period) van 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen selecteren. Als u gegevens langer dan 730 dagen wilt bewaren, kunt u [doorlopend exporteren](../../azure-monitor/app/export-telemetry.md) gebruiken om deze naar een opslag account te kopiëren tijdens de gegevens opname. 
+Onbewerkte gegevens punten (dat wil zeggen, items die u in analyses kunt opvragen en zoeken in zoek acties) worden Maxi maal 730 dagen bewaard. U kunt [een Bewaar periode](./pricing.md#change-the-data-retention-period) van 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen selecteren. Als u gegevens langer dan 730 dagen wilt bewaren, kunt u [doorlopend exporteren](./export-telemetry.md) gebruiken om deze naar een opslag account te kopiëren tijdens de gegevens opname. 
 
 Als er meer dan 90 dagen gegevens worden bewaard, worden er extra kosten in rekening gebracht. Meer informatie over Application Insights prijzen vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
 Samengevoegde gegevens (dat wil zeggen, aantallen, gemiddelden en andere statistische gegevens die u ziet in metrische Explorer) worden gedurende 90 dagen in een korrel van 1 minuut bewaard.
 
-[Debug-moment opnamen](../../azure-monitor/app/snapshot-debugger.md) worden 15 dagen bewaard. Dit Bewaar beleid is ingesteld op basis van elke toepassing. Als u deze waarde wilt verhogen, kunt u een verhoging aanvragen door een ondersteunings aanvraag te openen in de Azure Portal.
+[Debug-moment opnamen](./snapshot-debugger.md) worden 15 dagen bewaard. Dit Bewaar beleid is ingesteld op basis van elke toepassing. Als u deze waarde wilt verhogen, kunt u een verhoging aanvragen door een ondersteunings aanvraag te openen in de Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 De gegevens zijn zichtbaar voor u en, als u een organisatie account hebt, uw team leden. 
@@ -233,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Persoons gegevens die zijn opgeslagen in Application Insights
 
-In ons [Application Insights persoonlijke gegevens artikel](../../azure-monitor/platform/personal-data-mgmt.md) wordt dit probleem uitvoerig besproken.
+In ons [Application Insights persoonlijke gegevens artikel](../platform/personal-data-mgmt.md) wordt dit probleem uitvoerig besproken.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kunnen mijn gebruikers Application Insights uitschakelen?
 Niet rechtstreeks. We bieden geen switch die uw gebruikers kunnen uitvoeren om Application Insights uit te scha kelen.
@@ -286,7 +286,7 @@ Voor [sdk's voor andere platforms][platforms]raadpleegt u hun documenten.
 U kunt [een aantal gegevens uitschakelen door ApplicationInsights.configte bewerken][config]
 
 > [!NOTE]
-> Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het gekoppelde veld geschreven. Voor meer informatie over het afhandelen van persoonlijke gegevens kunt u dit [artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data)aanbevelen. Als u IP-adres gegevens moet opslaan in het artikel over de [IP-adres verzameling](./ip-collection.md) , wordt u door de opties geleid.
+> Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het gekoppelde veld geschreven. Voor meer informatie over het afhandelen van persoonlijke gegevens kunt u dit [artikel](../platform/personal-data-mgmt.md#application-data)aanbevelen. Als u IP-adres gegevens moet opslaan in het artikel over de [IP-adres verzameling](./ip-collection.md) , wordt u door de opties geleid.
 
 ## <a name="credits"></a>Tegoeden
 Dit product bevat GeoLite2-gegevens die zijn gemaakt door MaxMind, die beschikbaar zijn via [https://www.maxmind.com](https://www.maxmind.com) .
@@ -295,13 +295,14 @@ Dit product bevat GeoLite2-gegevens die zijn gemaakt door MaxMind, die beschikba
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

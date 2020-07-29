@@ -1,6 +1,6 @@
 ---
 title: B2B-bedrijfsintegratie
-description: Meer informatie over het bouwen van geautomatiseerde B2B-werk stromen voor bedrijfs integratie met behulp van Azure Logic Apps en Enterprise Integration Pack
+description: Informatie over het bouwen van geautomatiseerde B2B-werkstromen voor bedrijfsintegratie met behulp van Azure Logic Apps en Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,53 +8,53 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77191376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536399"
 ---
-# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-oplossingen voor bedrijfs integratie met Azure Logic Apps en Enterprise Integration Pack
+# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-bedrijfsintegratieoplossingen met Azure Logic Apps en Enterprise Integration Pack
 
-Voor Business-to-Business (B2B)-oplossingen en naadloze communicatie tussen organisaties kunt u geautomatiseerde, schaal bare Enter prise Integration-werk stromen maken met behulp van de Enterprise Integration Pack (EIP) met [Azure Logic apps](../logic-apps/logic-apps-overview.md). Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze berichten elektronisch uitwisselen. De EIP transformeert verschillende indelingen naar een indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt industrie standaard protocollen, waaronder [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)en [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). U kunt ook de beveiliging van berichten verbeteren door versleuteling en digitale hand tekeningen te gebruiken. De EIP ondersteunt deze [Enter prise Integration-connectors](../connectors/apis-list.md#integration-account-connectors) en deze industrie standaarden:
+Voor Business-to-Business-oplossingen (B2B) en naadloze communicatie tussen organisaties kunt u geautomatiseerde, schaalbare bedrijfsintegratiewerkstromen maken met behulp van het Enterprise Integration Pack (EIP) met [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze elektronisch berichten uitwisselen. Het EIP transformeert verschillende indelingen naar één indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt standaardprotocollen binnen de industrie, waaronder [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) en [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). U kunt ook de beveiliging van berichten verbeteren door versleuteling en digitale handtekeningen te gebruiken. Het EIP ondersteunt de volgende [connectors voor bedrijfsintegratie](../connectors/apis-list.md#integration-account-connectors) en industriestandaarden:
 
 * Electronic Data Interchange (EDI)
 * Enterprise Application Integration (EAI)
 
-Als u bekend bent met micro soft BizTalk Server of Azure BizTalk Services, volgt de EIP vergelijk bare concepten, waardoor de functies gemakkelijk te gebruiken zijn. Maar een belang rijk verschil is dat de EIP op architectuur is gebaseerd op integratie accounts om de opslag en het beheer van artefacten die worden gebruikt in B2B-communicatie te vereenvoudigen. Deze accounts zijn Cloud containers waarmee al uw artefacten worden opgeslagen, zoals partners, overeenkomsten, schema's, kaarten en certificaten. 
+Misschien bent u bekend met Microsoft BizTalk Server of Azure BizTalk Services; het EIP volgt vergelijkbare concepten, waardoor de functies gebruiksvriendelijk zijn. Maar een belangrijk verschil is dat het EIP qua architectuur is gebaseerd op integratieaccounts om de opslag en het beheer van artefacten die worden gebruikt in B2B-communicatie te vereenvoudigen. Deze accounts zijn cloudcontainers waarin al uw artefacten, zoals partners, overeenkomsten, schema's, kaarten en certificaten, worden opgeslagen. 
 
-## <a name="why-use-the-enterprise-integration-pack"></a>Waarom het Enterprise Integration Pack gebruiken?
+## <a name="why-use-the-enterprise-integration-pack"></a>Voordelen van het Enterprise Integration Pack
 
-* Met de EIP kunt u al uw artefacten opslaan op één plek-uw integratie account.
+* Met het EIP kunt u al uw artefacten opslaan op één plek: uw integratieaccount.
 
-* U kunt B2B-werk stromen bouwen en integreren met software-as-service (SaaS)-apps van derden, on-premises apps en aangepaste apps met behulp van Azure Logic Apps en connectors.
+* U kunt B2B-werkstromen bouwen en integreren met SaaS-apps (software as a service) van derden, on-premises apps en aangepaste apps met behulp van Azure Logic Apps en connectors.
 
-* U kunt aangepaste code voor uw Logic apps maken met Azure functions.
+* U kunt aangepaste code voor uw logische apps maken met Azure-functies.
 
 ## <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 
-Voordat u werk stromen voor B2B Logic apps kunt bouwen met de EIP, hebt u de volgende items nodig:
+Voordat u werkstromen voor logische B2B-apps kunt bouwen met het EIP, hebt u de volgende items nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met de artefacten die u wilt gebruiken
+* Een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met de artefacten die u wilt gebruiken
 
-* Als u kaarten en schema's wilt maken, kunt u de [Microsoft Azure Logic Apps bedrijfsintegratie-Hulpprogram ma's voor Visual studio 2015 2,0](https://aka.ms/vsmapsandschemas) en Visual Studio 2015 gebruiken.
+* Als u kaarten en schema's wilt maken, kunt u de [Microsoft Azure Logic Apps Enterprise Integration Tools voor Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) en Visual Studio 2015 gebruiken.
 
-Nadat u een integratie account hebt gemaakt en uw artefacten hebt toegevoegd, kunt u beginnen met het bouwen van B2B-werk stromen met deze artefacten door een logische app te maken in de Azure Portal. Als u geen ervaring hebt met Logic apps, kunt u [een eenvoudige logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u met deze artefacten wilt werken, moet u ervoor zorgen dat u uw integratie account eerst koppelt aan uw logische app. Daarna kan uw logische app toegang krijgen tot uw integratie account. U kunt ook logische apps maken, beheren en implementeren met behulp van Visual Studio of [Power shell](https://docs.microsoft.com/powershell/module/az.logicapp).
+Nadat u een integratieaccount hebt gemaakt en uw artefacten hebt toegevoegd, kunt u B2B-werkstromen bouwen met deze artefacten door een logische app te maken in de Azure-portal. Als u geen ervaring hebt met logische apps, kunt u [een basic logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u met deze artefacten wilt werken, moet u eerst uw integratieaccount aan uw logische app koppelen. Daarna heeft uw logische toegang tot uw integratieaccount. U kunt ook logische apps maken, beheren en implementeren met behulp van Visual Studio of [PowerShell](/powershell/module/az.logicapp).
 
-Dit zijn de stappen op hoog niveau om te beginnen met het bouwen van B2B Logic apps:
+Dit zijn algemene stappen om te beginnen met het bouwen van logische B2B-apps:
 
-![Vereisten voor het maken van B2B Logic apps](./media/logic-apps-enterprise-integration-overview/overview.png)  
+![Vereisten voor het maken van logische B2B-apps](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
 ## <a name="try-now"></a>Nu uitproberen
 
-[Een volledig operationele logische voorbeeld toepassing implementeren die AS2 berichten verzendt en ontvangt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
+[Een volledig operationele logische voorbeeld-app implementeren die AS2-berichten verzendt en ontvangt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Handels partners maken](logic-apps-enterprise-integration-partners.md)
+* [Handelspartners maken](logic-apps-enterprise-integration-partners.md)
 * [Overeenkomsten maken](../logic-apps/logic-apps-enterprise-integration-agreements.md)
 * [Schema's toevoegen](logic-apps-enterprise-integration-schemas.md)
 * [Kaarten toevoegen](../logic-apps/logic-apps-enterprise-integration-maps.md)

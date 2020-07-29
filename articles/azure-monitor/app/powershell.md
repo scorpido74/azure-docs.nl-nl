@@ -3,18 +3,18 @@ title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 1a0a3a5b186d57e8670201e601eee48ee858c976
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322479"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dit artikel laat u zien hoe u het maken en bijwerken van [Application Insights](../../azure-monitor/app/app-insights-overview.md) resources automatisch kunt automatiseren met behulp van Azure resource management. Als onderdeel van een bouw proces kunt u bijvoorbeeld het volgende doen. Naast de basis Application Insights resource kunt u [Beschik baarheid-webtesten](../../azure-monitor/app/monitor-web-app-availability.md)maken, [waarschuwingen](../../azure-monitor/platform/alerts-log.md)instellen, het [prijs schema](pricing.md)instellen en andere Azure-resources maken.
+Dit artikel laat u zien hoe u het maken en bijwerken van [Application Insights](./app-insights-overview.md) resources automatisch kunt automatiseren met behulp van Azure resource management. Als onderdeel van een bouw proces kunt u bijvoorbeeld het volgende doen. Naast de basis Application Insights resource kunt u [Beschik baarheid-webtesten](./monitor-web-app-availability.md)maken, [waarschuwingen](../platform/alerts-log.md)instellen, het [prijs schema](pricing.md)instellen en andere Azure-resources maken.
 
 De sleutel voor het maken van deze resources is JSON-sjablonen voor [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md). De basis procedure is: de JSON-definities van bestaande resources downloaden; para meters bepaalde waarden, zoals namen, en voer vervolgens de sjabloon uit wanneer u een nieuwe resource wilt maken. U kunt meerdere resources samenbundelen om ze allemaal in één keer te maken, bijvoorbeeld een app-monitor met beschikbaarheids tests, waarschuwingen en opslag voor continue export. Er zijn enkele finesses naar een aantal van de parameterizations, die hier wordt uitgelegd.
 
@@ -474,3 +474,4 @@ Andere automatiserings artikelen:
 * [Webtests maken](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Diagnostische Azure-gegevens verzenden naar Application Insights](powershell-azure-diagnostics.md)
 * [Release aantekeningen maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+
