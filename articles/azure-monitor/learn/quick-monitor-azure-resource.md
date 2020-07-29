@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443873"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324264"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Quickstart: Een Azure-resource bewaken met Azure Monitor
 [Azure Monitor](../overview.md) begint met het verzamelen van gegevens van Azure-resources op het moment dat ze worden gemaakt. In deze quickstart krijgt u een beknopt overzicht van de gegevens die automatisch worden verzameld voor een resource en ziet u hoe u deze kunt weergeven in Azure Portal. U kunt later een configuratie toevoegen voor het verzamelen van aanvullende gegevens. Via het menu van Azure Monitor kunt u ook dezelfde hulpprogramma's gebruiken voor toegang tot gegevens die zijn verzameld voor alle resources in uw abonnement.
@@ -70,4 +70,5 @@ Metrische gegevens zijn numerieke waarden waarmee een bepaald aspect van uw reso
 In deze quickstart hebt u het activiteitenlogboek en de metrische gegevens weergegeven voor een Azure-resource die automatisch worden verzameld door Azure Monitor. Ga door naar de volgende quickstart waarin wordt uitgelegd hoe u het activiteitenlogboek kunt verzamelen in een Log Analytics-werkruimte, waar de gegevens kunnen worden geanalyseerd met behulp van [logboekquery's](../log-query/log-query-overview.md).
 
 > [!div class="nextstepaction"]
-> [Azure-activiteitenlogboek naar Log Analytics-werkruimte verzenden](quick-monitor-azure-resource.md)
+> [Azure-activiteitenlogboek naar Log Analytics-werkruimte verzenden]()
+

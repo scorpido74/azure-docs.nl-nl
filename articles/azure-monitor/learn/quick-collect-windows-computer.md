@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539632"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324315"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens verzamelen van een Windows-computer in een hybride omgeving met Azure Monitor
 
-[Azure Monitor](../overview.md) kan gegevens rechtstreeks vanuit uw fysieke of virtuele Windows-computers in uw omgeving verzamelen en onderbrengen in een Log Analytics-werkruimte voor uitvoerige analyse en correlatie. Door de [Log Analytics-agent te installeren](../platform/log-analytics-agent.md) kan Azure Monitor gegevens verzamelen uit een datacentrum of een andere cloudomgeving. In deze quickstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Windows-computer configureert en verzamelt. Zie [Gegevens verzamelen over Azure Virtual Machines](../../azure-monitor/learn/quick-collect-azurevm.md) voor informatie over virtuele Windows-machines in Azure.  
+[Azure Monitor](../overview.md) kan gegevens rechtstreeks vanuit uw fysieke of virtuele Windows-computers in uw omgeving verzamelen en onderbrengen in een Log Analytics-werkruimte voor uitvoerige analyse en correlatie. Door de [Log Analytics-agent te installeren](../platform/log-analytics-agent.md) kan Azure Monitor gegevens verzamelen uit een datacentrum of een andere cloudomgeving. In deze quickstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Windows-computer configureert en verzamelt. Zie [Gegevens verzamelen over Azure Virtual Machines](./quick-collect-azurevm.md) voor informatie over virtuele Windows-machines in Azure.  
 
-Zie [Ondersteunde Windows-besturingssystemen](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) en [ Netwerkconfiguratie voor de firewall](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over de ondersteunde configuratie.
+Zie [Ondersteunde Windows-besturingssystemen](../platform/log-analytics-agent.md#supported-windows-operating-systems) en [ Netwerkconfiguratie voor de firewall](../platform/log-analytics-agent.md#network-requirements) voor meer informatie over de ondersteunde configuratie.
  
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -166,3 +166,4 @@ Voor informatie over het weergeven en analyseren van de gegevens gaat u verder m
 
 > [!div class="nextstepaction"]
 > [Gegevens weergeven of analyseren in Log Analytics](../log-query/get-started-portal.md)
+

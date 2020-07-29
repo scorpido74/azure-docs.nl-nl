@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b6ad060939af0d79f93e15672af45e0224c1ca5c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5b8ca2f578881b3e8bd557fa5aaac618bcab1599
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073455"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>PowerShell gebruiken om een beheerd exemplaar toe te voegen aan een failovergroep 
 
@@ -76,6 +76,6 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/azure/) voor meer informatie over Azure PowerShell.
 
 Extra PowerShell-voorbeeldscripts voor SQL Managed Instance vindt u in [PowerShell-scripts voor Azure SQL Managed Instance](../../database/powershell-script-content-guide.md).

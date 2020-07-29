@@ -11,18 +11,18 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077997"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Quickstart: Pushmeldingen instellen in een notification hub
 
 Azure Notification Hubs biedt een push-engine die gebruiksvriendelijk is en kan worden geschaald. Gebruik Notification Hubs om meldingen te verzenden naar elk platform (iOS, Android, Windows, Baidu) en vanaf elke mogelijke back-end (in de cloud of on-premises). Zie [Wat is Azure Notification Hubs?](notification-hubs-push-notification-overview.md) voor meer informatie.
 
-In deze quickstart gebruikt u de PNS-instellingen (Platform Notification System) in Notification Hubs om pushmeldingen in te stellen op meerdere platforms. In de quickstart ziet u de stappen die in de Azure Portal worden gezet.  [Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) bevat instructies voor het gebruik van de Azure CLI.
+In deze quickstart gebruikt u de PNS-instellingen (Platform Notification System) in Notification Hubs om pushmeldingen in te stellen op meerdere platforms. In de quickstart ziet u de stappen die in de Azure Portal worden gezet.  [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) bevat instructies voor het gebruik van de Azure CLI.
 
 Maak nu een notification hub als u dat nog niet hebt gedaan. Zie [Een Azure notification hub maken met behulp van de Azure-portal](create-notification-hub-portal.md) of [Een Azure notification hub maken met behulp van de Azure-CLI](create-notification-hub-azure-cli.md) voor meer informatie
 

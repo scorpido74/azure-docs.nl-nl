@@ -4,12 +4,12 @@ description: 'Vergelijk Microsoft cloud-services die zijn geoptimaliseerd voor i
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1e6d1462a4f94db424081ea1567e5926806d3e81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169864"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083001"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Kies de juiste integratie- en automatiseringsservices in Azure
 
@@ -38,8 +38,8 @@ Raadpleeg de volgende tabel om te bepalen of Power Automate of Logic Apps het me
 | --- | --- | --- |
 | **Gebruikers** |Kantoorpersoneel, zakelijke gebruikers, SharePoint-beheerders |Professionele integrators en ontwikkelaars, IT-professionals |
 | **Scenario's** |Selfservice |Geavanceerde integraties |
-| **Ontwerpomgeving** |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
-| **Application lifecycle management (ALM)** |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
+| **Ontwerpomgeving** |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
+| **Application lifecycle management (ALM)** |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) |
 | **Beheerervaring** |Beleidsregels voor Power Automate-omgevingen en preventie van gegevensverlies beheren, licenties bijhouden: [Beheercentrum](https://admin.flow.microsoft.com) |Resourcegroepen, verbindingen, toegangsbeheer en logboekregistratie beheren: [Azure-portal](https://portal.azure.com) |
 | **Beveiliging** |Office 365-beveiliging en auditlogboeken voor naleving, preventie van gegevensverlies, [inactieve versleuteling](https://wikipedia.org/wiki/Data_at_rest#Encryption) voor gevoelige gegevens |Beveiligingscontrole van Azure: [Azure-beveiliging](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [auditlogboeken](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
@@ -56,8 +56,8 @@ U kunt services combineren en matchen als u een indeling bouwt, waarbij u functi
 | **Ontwikkeling** | Code-first (imperatief) | Designer-first (declaratief) |
 | **Connectiviteit** | [Circa 15 bindingstypen](functions-triggers-bindings.md#supported-bindings); code schrijven voor aangepaste bindingen | [Grote verzameling connectors](../connectors/apis-list.md), [Enterprise Library Integration Pack voor B2B-scenario's](../logic-apps/logic-apps-enterprise-integration-overview.md); [aangepaste bindingen ontwikkelen](../logic-apps/custom-connector-overview.md) |
 | **Acties** | Elke activiteit is een Azure-functie; code schrijven voor de activiteitsfuncties |[Grote verzameling kant-en-klare acties](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Controle** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor-Logboeken](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| **Beheer** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| **Controle** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor-Logboeken](../logic-apps/monitor-logic-apps.md)|
+| **Beheer** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Context voor uitvoering** | Kan [lokaal](functions-runtime-overview.md) of in de cloud worden uitgevoerd | Wordt alleen in de cloud uitgevoerd|
 
 <a name="function"></a>

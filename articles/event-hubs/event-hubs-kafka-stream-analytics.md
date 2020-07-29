@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: gebeurtenissen van Apache Kafka verwerken'
 description: 'Zelfstudie: In dit artikel wordt beschreven hoe u Kafka-gebeurtenissen verwerkt die via Event Hubs worden opgenomen met behulp van Azure Stream Analytics'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313267"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074916"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelfstudie: Apache Kafka voor Event Hubs-gebeurtenissen verwerken met behulp van Stream Analytics 
 In dit artikel wordt beschreven hoe u gegevens streamt naar Event Hubs en hoe u deze verwerkt met Azure Stream Analytics. U wordt door de volgende stappen geleid: 
@@ -129,7 +129,7 @@ De query in de Stream Analytics-taak geeft de gegevens door zonder analyses uit 
  
 
 ### <a name="define-a-query"></a>Een query definiëren
-Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende gegevensstroom kan worden gelezen, is de volgende stap het maken van een transformatie waarmee gegevens in real-time worden geanalyseerd. U definieert de transformatie-query met [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). In dit overzicht definieert u een query die de gegevens doorgeeft zonder transformatie uit te voeren.
+Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende gegevensstroom kan worden gelezen, is de volgende stap het maken van een transformatie waarmee gegevens in real-time worden geanalyseerd. U definieert de transformatie-query met [Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference). In dit overzicht definieert u een query die de gegevens doorgeeft zonder transformatie uit te voeren.
 
 1. Selecteer **Query**.
 2. Vervang in het queryvenster `[YourOutputAlias]` door de uitvoeralias die u eerder hebt gemaakt.
