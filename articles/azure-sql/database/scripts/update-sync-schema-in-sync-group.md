@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1cfc6f71543787fb6e8393fe4a5162ffefb0a3a0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 44a9b0b4d609013147f799ae19f750c34e81837c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084871"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Het script **UpdateSyncSchema** gebruikt de volgende opdrachten. Elke opdracht i
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
+Raadpleeg de [documentatie over Azure PowerShell](/powershell/azure/) voor meer informatie over Azure PowerShell.
 
 Aanvullende voorbeelden van SQL Database PowerShell-scripts vindt u in [Azure SQL Database PowerShell-scripts](../powershell-script-content-guide.md).
 

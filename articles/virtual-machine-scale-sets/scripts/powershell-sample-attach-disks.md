@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 05d5d901a6ed908dc4ff766a440d5f3e05cb7db3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: f67df4fa654c8b78e66f008d67ac8386f427b343
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046233"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Gegevensschijven met een virtuele-machineschaalset koppelen en gebruiken met PowerShell
 Met dit script maakt u een virtuele-machineschaalset, koppelt u gegevensschijven en bereidt u deze voor.
@@ -46,4 +46,4 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).

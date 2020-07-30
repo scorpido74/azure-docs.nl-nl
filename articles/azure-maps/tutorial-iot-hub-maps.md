@@ -1,20 +1,20 @@
 ---
 title: 'Zelfstudie: Ruimtelijke IoT-analyse implementeren | Microsoft Azure Maps'
 description: Integreer IoT Hub met API’s van de Microsoft Azure Maps-service.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318923"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133398"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Zelfstudie: Ruimtelijke IoT-analyse implementeren met behulp van Azure Maps
 
@@ -110,7 +110,7 @@ Om de stappen in deze zelfstudie te voltooien, moet je eerst een resourcegroep m
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken 
 
-Om bedrijfslogica te implementeren op basis van ruimtelijke analyses van Azure Maps, moeten we een Azure Maps-account maken in de resourcegroep die we hebben gemaakt. Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een Azure Maps-accountabonnement met S1-prijsniveau te maken. Volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om uw primaire sleutel voor uw account te verkrijgen. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+Om bedrijfslogica te implementeren op basis van ruimtelijke analyses van Azure Maps, moeten we een Azure Maps-account maken in de resourcegroep die we hebben gemaakt. Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-azure-maps-account) om een Azure Maps-accountabonnement met S1-prijsniveau te maken. Volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om uw primaire sleutel voor uw account te verkrijgen. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 
 

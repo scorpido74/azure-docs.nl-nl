@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 3ed655ed419e3be378a68b26b9f14b03c1af4796
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039511"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure
 Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens in uw favoriete hulpprogramma's voor gegevensanalyse. De Azure Resource Usage- en RateCard-API’s kunnen u helpen uw kosten nauwkeurig te voorspellen en te beheren. De API's worden geïmplementeerd als resourceprovider en maken deel uit van de API-familie die beschikbaar wordt gesteld door Azure Resource Manager.  
@@ -22,7 +22,7 @@ Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens i
 ## <a name="azure-invoice-download-api-preview"></a>API Azure-factuur downloaden (preview)
 Nadat het [aanmelden is voltooid](manage-billing-access.md#opt-in), kunt u facturen downloaden met behulp van de preview-versie van de [Factuur-API](/rest/api/billing). De functies zijn onder andere:
 
-* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 * **Datumfilters**: gebruik de parameter `$filter` om alle facturen in omgekeerde chronologische volgorde op te halen op basis van de einddatum van de factuurperiode.
 
 > [!NOTE]
@@ -31,7 +31,7 @@ Nadat het [aanmelden is voltooid](manage-billing-access.md#opt-in), kunt u factu
 ## <a name="azure-resource-usage-api-preview"></a>Azure-resourcegebruik-API (preview)
 Gebruik de [Azure-resourcegebruik-API](/previous-versions/azure/reference/mt219003(v=azure.100)) om geschatte gegevens over het Azure-gebruik op te halen. De API omvat:
 
-* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 * **Aggregaties per uur of per dag**: aanroepers kunnen opgeven of ze hun Azure-gebruiksgegevens in buckets per uur of per dag willen. De standaardinstelling is per dag.
 * **Metagegevens van exemplaren (inclusief resourcetags**): haal details op exemplaarniveau op, zoals de volledig gekwalificeerde resource-URI (/subscriptions/{subscription-id}/..), informatie over de resourcegroep en resourcetags. Deze metagegevens helpen u op een deterministische en programmatische manier gebruik toe te wijzen aan de tags, bijvoorbeeld voor kostendoorrekeningen.
 * **Metagegevens van resources**: resourcegegevens zoals de naam, categorie en subcategorie van de meter, eenheid en regio geven de aanroeper een beter inzicht in wat er is verbruikt. We werken ook aan het gelijktrekken van de terminologie voor resourcemetagegevens in de Azure-portal, CSV voor Azure-gebruik, EA Billing CSV en andere openbare ervaringen, zodat u gegevens in verschillende ervaringen kunt correleren.
@@ -40,7 +40,7 @@ Gebruik de [Azure-resourcegebruik-API](/previous-versions/azure/reference/mt2190
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure-resource-RateCard-API (preview)
 Gebruik de[Azure Resource RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) om een lijst met beschikbare Azure-resources op te halen, evenals geschatte prijsinformatie voor elke resource. De API omvat:
 
-* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer uw toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de RateCard-gegevens. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een bepaald Azure-abonnement.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer uw toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de RateCard-gegevens. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een bepaald Azure-abonnement.
 * **Ondersteuning voor de aanbiedingstypen betalen per gebruik, MSDN, monetaire toezegging en geldtegoed (EA en [CSP](https://docs.microsoft.com/partner-center) worden niet ondersteund)** : deze API biedt informatie over de tarieven voor Azure.  De aanroeper van deze API moet de aanbiedingsgegevens invoeren om de resourcedetails en-tarieven op te halen. We kunnen momenteel geen EA-tarieven verstrekken omdat EA-aanbiedingen aangepaste tarieven per inschrijving hebben.
 
 ## <a name="scenarios"></a>Scenario's

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001397"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Zelfstudie: End-to-end beveiliging van inhoud met behulp van Azure Active Directory
 
@@ -48,13 +48,13 @@ De volgende versies en concepten van de nieuwste technologie worden gebruikt. He
 Het is niet vereist, maar u kunt het beste bekend zijn met de volgende concepten voordat u met deze zelfstudie begint:
 
 * Digital Rights Management (DRM)
-* [Azure Media Services (AMS) v3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure Media Services (AMS) v3](./media-services-overview.md)
 * Het [inhoudssleutelbeleid](content-key-policy-concept.md) voor AMS met behulp van de AMS API v3, de Azure-portal of het [Azure Media Services Explorer-hulpprogramma (AMSE)](https://github.com/Azure/Azure-Media-Services-Explorer)
-* Azure Active Directory v2-eind punten op het [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
-* Moderne cloudverificatie, zoals [OAuth 2.0 en OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)
-  * [Authorization Code Flow in OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) en waarom PKCE is vereist
-  * [Gedelegeerde toestemming vs. toepassingstoestemming](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [JWT-token](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), de bijbehorende claims en de rollover van de ondertekeningssleutel (opgenomen in het voorbeeld)
+* Azure Active Directory v2-eind punten op het [Microsoft Identity Platform](../../active-directory/develop/index.yml)
+* Moderne cloudverificatie, zoals [OAuth 2.0 en OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md)
+  * [Authorization Code Flow in OAuth 2.0](../../active-directory/develop/v2-oauth2-auth-code-flow.md) en waarom PKCE is vereist
+  * [Gedelegeerde toestemming vs. toepassingstoestemming](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT-token](../../active-directory/develop/access-tokens.md), de bijbehorende claims en de rollover van de ondertekeningssleutel (opgenomen in het voorbeeld)
 
 ### <a name="prerequisite-code-and-installations"></a>Vereiste code en installaties
 
@@ -63,7 +63,7 @@ Het is niet vereist, maar u kunt het beste bekend zijn met de volgende concepten
 * Een installatie van Node.js. U kunt Node.js hier downloaden: [https://nodejs.org](https://nodejs.org). NPM is bij de installatie inbegrepen.
 * Een [Azure-abonnement](https://azure.microsoft.com/free/).
 * Een Azure Media Services-account (AMS).
-* @azure/msal-browser v 2.0, een van de leden in de [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) SDK-reeks voor verschillende clientplatformen
+* @azure/msal-browser v 2.0, een van de leden in de [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK-reeks voor verschillende clientplatformen
 * De nieuwste versie van [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples) (opgenomen in het voorbeeld)
 * FPS-referenties van Apple als u FairPlay DRM en het toepassingscertificaat wilt gebruiken dat wordt gehost met CORS en toegankelijk is via JavaScript aan de clientzijde.
 
@@ -98,7 +98,7 @@ Het ontwerp van het subsysteem wordt in het volgende diagram weergegeven.  Het h
 
 ![scherm voor JWT tokens parseren](media/aad-ams-content-protection/subsystem.svg)
 
-Lees [Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control) voor meer informatie over het subsysteem.
+Lees [Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer](./design-multi-drm-system-with-access-control.md) voor meer informatie over het subsysteem.
 
 ## <a name="understand-the-single-page-app"></a>Inzicht in de toepassing met één pagina krijgen
 
@@ -339,7 +339,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-De claim *groups* is lid van een [beperkte claimset](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) in Azure Active Directory.
+De claim *groups* is lid van een [beperkte claimset](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) in Azure Active Directory.
 
 #### <a name="test"></a>Testen
 

@@ -4,16 +4,16 @@ description: 'Zelfstudie: In deze zelfstudie leest u hoe u gegevens uit uw Event
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039494"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelfstudie: Vastgelegde Event Hub-gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
 
-Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) is de eenvoudigste manier om automatisch gestreamde gegevens in Event Hubs te verzenden naar een Azure Blob Storage of Azure Data Lake Store. U kunt de gegevens vervolgens verwerken en verzenden naar andere opslagdoelen van uw keuze, zoals SQL Data Warehouse of Cosmos DB. In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een [Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+Event Hubs [Capture](./event-hubs-capture-overview.md) is de eenvoudigste manier om automatisch gestreamde gegevens in Event Hubs te verzenden naar een Azure Blob Storage of Azure Data Lake Store. U kunt de gegevens vervolgens verwerken en verzenden naar andere opslagdoelen van uw keuze, zoals SQL Data Warehouse of Cosmos DB. In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een [Event Grid](../event-grid/overview.md).
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -178,7 +178,4 @@ Voer na een paar minuten een query uit op de tabel in uw SQL Data Warehouse. U z
 ## <a name="next-steps"></a>Volgende stappen 
 U kunt krachtige hulpmiddelen voor gegevensvisualisatie gebruiken met uw datawarehouse om bruikbare inzichten te verkrijgen.
 
-In dit artikel leest u hoe u [Power BI met SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) gebruikt
-
-
-
+In dit artikel leest u hoe u [Power BI met SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) gebruikt

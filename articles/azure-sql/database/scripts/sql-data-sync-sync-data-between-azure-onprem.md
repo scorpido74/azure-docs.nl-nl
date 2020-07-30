@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ca07e30f9d3ef8dee185884cfb4946d93b515932
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 432f9a3e6af60beda9dd8a8dd1237cb93cc40639
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084919"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>PowerShell gebruiken voor het synchroniseren van gegevens tussen Azure SQL-database en SQL Server
 
@@ -307,7 +307,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
+Raadpleeg de [documentatie over Azure PowerShell](/powershell/azure/) voor meer informatie over Azure PowerShell.
 
 Aanvullende voorbeelden van SQL Database PowerShell-scripts vindt u in [Azure SQL Database PowerShell-scripts](../powershell-script-content-guide.md).
 

@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080944"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Quickstart: Een Azure notification hub maken met behulp van de Azure-CLI
 
@@ -95,7 +95,7 @@ Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer 
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   Als de `--name` die u bij de opdracht `az notification-hub namespace create` hebt opgegeven, niet beschikbaar is of niet voldoet aan [Naamgevingsregels en -beperkingen voor Azure-resources](/azure/azure-resource-manager/management/resource-name-rules), antwoordt de Azure-CLI met de volgende console-uitvoer:
+   Als de `--name` die u bij de opdracht `az notification-hub namespace create` hebt opgegeven, niet beschikbaar is of niet voldoet aan [Naamgevingsregels en -beperkingen voor Azure-resources](../azure-resource-manager/management/resource-name-rules.md), antwoordt de Azure-CLI met de volgende console-uitvoer:
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer 
 
 1. Vermeld toegangsbeleid voor een notification hub.
 
-   Azure Notification Hubs maakt gebruik van [Shared Access Signature-beveiliging](/azure/notification-hubs/notification-hubs-push-notification-security) door middel van toegangsbeleid.  Er worden automatisch twee soorten beleid gemaakt wanneer u een notification hub maakt.  De verbindingsreeksen uit dit beleid zijn nodig om pushmeldingen te configureren.  De opdracht [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) biedt een lijst met beleidsnamen en hun respectieve resourcegroepen.
+   Azure Notification Hubs maakt gebruik van [Shared Access Signature-beveiliging](./notification-hubs-push-notification-security.md) door middel van toegangsbeleid.  Er worden automatisch twee soorten beleid gemaakt wanneer u een notification hub maakt.  De verbindingsreeksen uit dit beleid zijn nodig om pushmeldingen te configureren.  De opdracht [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) biedt een lijst met beleidsnamen en hun respectieve resourcegroepen.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer 
 
 3. Sleutels en verbindingsreeksen weergeven voor een toegangsbeleid voor een notification hub
 
-   Er zijn twee sets sleutels en verbindingsreeksen voor elk toegangsbeleid.  U hebt ze later nodig om [een notification hub mee te configureren](/azure/notification-hubs/configure-notification-hub-portal-pns-settings).  Als u de sleutels en verbindingsreeksen wilt weergeven voor een toegangsbeleid voor een notification hub, gebruikt u de opdracht [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys).
+   Er zijn twee sets sleutels en verbindingsreeksen voor elk toegangsbeleid.  U hebt ze later nodig om [een notification hub mee te configureren](./configure-notification-hub-portal-pns-settings.md).  Als u de sleutels en verbindingsreeksen wilt weergeven voor een toegangsbeleid voor een notification hub, gebruikt u de opdracht [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys).
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature

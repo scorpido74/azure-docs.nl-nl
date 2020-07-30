@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cf8fc9916384c9eef24c4c50f7647632c0e6b7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480487"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077466"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Zelfstudie: Windows VM-installatiekopieën maken met Azure PowerShell
 
@@ -54,7 +54,7 @@ Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek 
 
 ## <a name="get-the-vm"></a>De VM ophalen
 
-U met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) een lijst met VM's weergeven die beschikbaar zijn in een resourcegroep. Wanneer u de naam van de virtuele machine en de resourcegroep weet, kunt u `Get-AzVM` opnieuw gebruiken om het VM-object op te halen en op te slaan in een variabele voor later gebruik. In dit voorbeeld wordt een virtuele machine met de naam *sourceVM* opgehaald uit de resourcegroep myResourceGroup en toegewezen aan de variabele *$sourceVM*. 
+U met behulp van [Get-AzVM](/powershell/module/az.compute/get-azvm) een lijst met VM's weergeven die beschikbaar zijn in een resourcegroep. Wanneer u de naam van de virtuele machine en de resourcegroep weet, kunt u `Get-AzVM` opnieuw gebruiken om het VM-object op te halen en op te slaan in een variabele voor later gebruik. In dit voorbeeld wordt een virtuele machine met de naam *sourceVM* opgehaald uit de resourcegroep myResourceGroup en toegewezen aan de variabele *$sourceVM*. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -64,7 +64,7 @@ $sourceVM = Get-AzVM `
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep met de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup).
+Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
 Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myGalleryRG* gemaakt in de regio *EastUS*:
 
@@ -78,7 +78,7 @@ $resourceGroup = New-AzResourceGroup `
 
 Een galerie met installatiekopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van installatiekopieën. De naam van de galerie kan bestaan uit hoofdletters en kleine letters, cijfers en punten. De naam van de galerie kan geen liggende streepjes bevatten. De naam van de galerie moet uniek zijn binnen uw abonnement. 
 
-Maak een galerie met installatiekopieën met de opdracht [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). In het volgende voorbeeld wordt een galerie met de naam *myGallery* gemaakt in de resourcegroep *myGalleryRG*.
+Maak een galerie met installatiekopieën met de opdracht [New-AzGallery](/powershell/module/az.compute/new-azgallery). In het volgende voorbeeld wordt een galerie met de naam *myGallery* gemaakt in de resourcegroep *myGalleryRG*.
 
 ```azurepowershell-interactive
 $gallery = New-AzGallery `
@@ -91,9 +91,9 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>Een definitie voor de installatiekopie maken 
 
-Definities van installatiekopieën maken een logische groepering voor installatiekopieën. Die worden gebruikt voor het beheren van informatie over de installatiekopieversies die daarbinnen worden gemaakt. Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
+Definities van installatiekopieën maken een logische groepering voor installatiekopieën. Die worden gebruikt voor het beheren van informatie over de installatiekopieversies die daarbinnen worden gemaakt. Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. Zie [Installatiekopiedefinities](./shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
-Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voorbeeld heeft de installatiekopie in de galerie de naam *myGalleryImage* en wordt deze gemaakt voor een gespecialiseerde installatiekopie. 
+Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). In dit voorbeeld heeft de installatiekopie in de galerie de naam *myGalleryImage* en wordt deze gemaakt voor een gespecialiseerde installatiekopie. 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -111,7 +111,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
 
-Maak een installatiekopieversie van een virtuele machine met [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Maak een installatiekopieversie van een virtuele machine met [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
@@ -140,7 +140,7 @@ Het kan even duren om de installatiekopie naar alle doelregio's te repliceren.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken 
 
-Zodra u een gespecialiseerde installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's maken. De cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) gebruiken. Als u de installatiekopie wilt gebruiken, gebruikt u `Set-AzVMSourceImage` en stelt u de/het `-Id` in op de definitie-id van de installatiekopie (in dit geval $galleryImage.id) om altijd de nieuwste versie van de installatiekopie te gebruiken. 
+Zodra u een gespecialiseerde installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's maken. De cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) gebruiken. Als u de installatiekopie wilt gebruiken, gebruikt u `Set-AzVMSourceImage` en stelt u de/het `-Id` in op de definitie-id van de installatiekopie (in dit geval $galleryImage.id) om altijd de nieuwste versie van de installatiekopie te gebruiken. 
 
 Vervang resourcenamen naar behoefte in dit voorbeeld. 
 
@@ -195,7 +195,7 @@ New-AzRoleAssignment `
    
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep en alle gerelateerde resources te verwijderen wanneer u ze niet meer nodig hebt:
+U kunt de cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep en alle gerelateerde resources te verwijderen wanneer u ze niet meer nodig hebt:
 
 ```azurepowershell-interactive
 # Delete the gallery 
@@ -207,7 +207,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure biedt ook de service [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview), die is gebouwd op Packer. U hoeft slechts uw aanpassingen in een sjabloon te beschrijven en de service handelt het maken van de installatiekopie af. 
+Azure biedt ook de service [Azure VM Image Builder](./image-builder-overview.md), die is gebouwd op Packer. U hoeft slechts uw aanpassingen in een sjabloon te beschrijven en de service handelt het maken van de installatiekopie af. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -224,6 +224,3 @@ Ga door met de volgende zelfstudie voor meer informatie over het maken van virtu
 
 > [!div class="nextstepaction"]
 > [Virtuele machines met hoge beschikbaarheid maken](tutorial-availability-sets.md)
-
-
-

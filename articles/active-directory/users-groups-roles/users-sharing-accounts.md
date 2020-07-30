@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204809031bf0d32a998d8bcc435fe2500a025fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730931"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386942"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Accounts delen met Azure AD
 
@@ -51,7 +51,7 @@ Gebruikers melden zich aan met hun organisatie account. Dit account is hetzelfde
 
 Gedeelde accounts verhogen niet alleen het toezicht en verbeteren de bruikbaarheid van uw veiligheid. Gebruikers met machtigingen voor het gebruik van de referenties zien het gedeelde wacht woord niet, maar krijgen wel machtigingen om het wacht woord te gebruiken als onderdeel van een georganisatiede verificatie stroom. Daarnaast biedt sommige SSO-toepassingen voor eenmalige aanmelding u de mogelijkheid om met behulp van Azure AD regel matig rollover (update)-wacht woorden te gebruiken. Het systeem maakt gebruik van grote, complexe wacht woorden die de beveiliging van het account verhogen. De beheerder kan eenvoudig toegang tot een toepassing verlenen of intrekken, weet wie toegang heeft tot het account en wie het in het verleden heeft bezocht.
 
-Azure AD biedt ondersteuning voor gedeelde accounts voor een Enter prise Mobility Suite (EMS) of Azure AD Premium licentie abonnement, in alle typen wacht woord-toepassingen voor eenmalige aanmelding. U kunt accounts delen voor duizenden vooraf geïntegreerde toepassingen in de toepassings galerie en u kunt uw eigen toepassing voor wachtwoord verificatie toevoegen met [aangepaste SSO-apps](../manage-apps/configure-single-sign-on-non-gallery-applications.md).
+Azure AD biedt ondersteuning voor gedeelde accounts voor een Enter prise Mobility Suite (EMS) of Azure AD Premium licentie abonnement, in alle typen wacht woord-toepassingen voor eenmalige aanmelding. U kunt accounts delen voor duizenden vooraf geïntegreerde toepassingen in de toepassings galerie en u kunt uw eigen toepassing voor wachtwoord verificatie toevoegen met [aangepaste SSO-apps](../manage-apps/what-is-single-sign-on.md).
 
 Azure AD-functies die het delen van accounts mogelijk maken omvatten:
 

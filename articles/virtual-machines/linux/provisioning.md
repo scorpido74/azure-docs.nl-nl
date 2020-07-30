@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080145"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM inrichten
 Wanneer u een virtuele machine maakt op basis van een gegeneraliseerde installatiekopie (gedeelde installatiekopiegalerie of beheerde installatiekopie), kunt u met het besturingselement een virtuele machine maken en parameters en instellingen doorgeven aan de virtuele machine. Dit heet de VM *inrichten*. Tijdens het inrichten maakt het platform vereiste parameterwaarden voor de virtuele machine (hostname, gebruikersnaam, wachtwoord, SSH-sleutels, customData) die tijdens het opstarten beschikbaar zijn voor de virtuele machine. 
 
 Een geïntegreerde inrichtingsagent in de installatiekopie krijgt een interface met het platform, waarbij verbinding wordt gemaakt met meerdere onafhankelijke inrichtingsinterfaces, de eigenschappen worden ingesteld en het platform een seintje krijgt dat alles is voltooid. 
 
-De inrichtingsagenten kunnen de [Azure Linux agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)of [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) zijn. Dit zijn [vereisten](create-upload-generic.md) voor het maken van gegeneraliseerde installatiekopieën.
+De inrichtingsagenten kunnen de [Azure Linux agent](../extensions/agent-linux.md)of [cloud-init](./using-cloud-init.md) zijn. Dit zijn [vereisten](create-upload-generic.md) voor het maken van gegeneraliseerde installatiekopieën.
 
-De inrichtingsagenten bieden ondersteuning voor alle geviseerde [Azure Linux-distributies](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) en u vindt de geviseerde distributie-installatiekopieën in veel gevallen die worden geleverd met cloud-init en de Linux-agent. Dit geeft u de mogelijkheid om cloud-init de inrichting te laten afhandelen, waarna de Linux-agent ondersteuning biedt voor het verwerken van [Azure-extensies](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows). Ondersteuning voor extensies betekent dat de virtuele machine vervolgens in aanmerking komt voor extra Azure-services, zoals het opnieuw instellen van VM-wachtwoorden, Azure-bewaking, Azure Backup, Azure Disk-versleuteling, enzovoort.
+De inrichtingsagenten bieden ondersteuning voor alle geviseerde [Azure Linux-distributies](./endorsed-distros.md) en u vindt de geviseerde distributie-installatiekopieën in veel gevallen die worden geleverd met cloud-init en de Linux-agent. Dit geeft u de mogelijkheid om cloud-init de inrichting te laten afhandelen, waarna de Linux-agent ondersteuning biedt voor het verwerken van [Azure-extensies](../extensions/features-windows.md). Ondersteuning voor extensies betekent dat de virtuele machine vervolgens in aanmerking komt voor extra Azure-services, zoals het opnieuw instellen van VM-wachtwoorden, Azure-bewaking, Azure Backup, Azure Disk-versleuteling, enzovoort.
 
 Nadat het inrichten is voltooid, wordt de cloud-init elke keer dat de computer wordt opgestart uitgevoerd. Cloud-init bewaakt de wijzigingen aan de virtuele machine, zoals netwerkwijzigingen, koppelen en formatteren van de tijdelijke schijf, en het starten van de Linux-agent. De Linux-agent wordt doorlopend op de server uitgevoerd en zoekt een 'doelstatus' (nieuwe configuratie) van het Azure-platform, dus wanneer u extensies installeert, kan de agent deze verwerken.
 
