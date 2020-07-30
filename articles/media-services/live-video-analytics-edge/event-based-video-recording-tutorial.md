@@ -3,12 +3,12 @@ title: Zelfstudie voor video-opname op basis van gebeurtenissen in de cloud en a
 description: In deze zelfstudie leert u hoe u Azure Live Video Analytics in Azure IoT Edge kunt gebruiken om een video-opname op basis van gebeurtenissen te maken in de cloud, en deze af te spelen vanuit de cloud.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011767"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Zelfstudie: Video-opname op basis van gebeurtenissen in de cloud en afspelen vanuit de cloud
 
@@ -32,9 +32,9 @@ Lees deze artikelen voordat u begint:
 * [Terminologie van Live Video Analytics in IoT Edge](terminology.md)
 * [Mediagrafiekconcepten](media-graph-concept.md) 
 * [Video-opname op basis van gebeurtenissen](event-based-video-recording-concept.md)
-* [Zelfstudie: Een IoT Edge-module ontwikkelen](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Zelfstudie: Een IoT Edge-module ontwikkelen](../../iot-edge/tutorial-develop-for-linux.md)
 * [Implementatie .*.template.json bewerken](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
-* Sectie over [routes declareren in het IoT Edge-distributiemanifest](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)
+* Sectie over [routes declareren in het IoT Edge-distributiemanifest](../../iot-edge/module-composition.md#declare-routes)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -52,7 +52,7 @@ Aan het einde van deze stappen hebt u relevante Azure-resources geïmplementeerd
 * Azure IoT Hub
 * Azure Storage-account
 * Azure Media Services-account
-* Linux-VM in Azure, met [IoT Edge-runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) geïnstalleerd
+* Linux-VM in Azure, met [IoT Edge-runtime](../../iot-edge/how-to-install-iot-edge-linux.md) geïnstalleerd
 
 ## <a name="concepts"></a>Concepten
 
@@ -135,9 +135,9 @@ Open src/edge/deployment.objectCounter.template.json. Er zijn vier vermeldingen 
 * **rtspsim**: dit is de RTSP-simulator.
 * **objectCounter**: dit is de module die zoekt naar specifieke objecten in de resultaten van yolov3.
 
-Voor de objectCounter-module raadpleegt u de tekenreeks (${MODULES.objectCounter}) die wordt gebruikt voor de waarde voor ‘afbeelding’. Dit is gebaseerd op de [zelfstudie](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) over het ontwikkelen van een IoT Edge-module. In Visual Studio code wordt automatisch herkend dat de code voor de deobjectCounter-module zich bevindt onder src/edge/modules/objectCounter. 
+Voor de objectCounter-module raadpleegt u de tekenreeks (${MODULES.objectCounter}) die wordt gebruikt voor de waarde voor ‘afbeelding’. Dit is gebaseerd op de [zelfstudie](../../iot-edge/tutorial-develop-for-linux.md) over het ontwikkelen van een IoT Edge-module. In Visual Studio code wordt automatisch herkend dat de code voor de deobjectCounter-module zich bevindt onder src/edge/modules/objectCounter. 
 
-Lees [deze sectie](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) over routes declareren in het IoT Edge-implementatiemanifest Bekijk vervolgens de routes in de JSON-bestandssjabloon. Let op het volgende:
+Lees [deze sectie](../../iot-edge/module-composition.md#declare-routes) over routes declareren in het IoT Edge-implementatiemanifest Bekijk vervolgens de routes in de JSON-bestandssjabloon. Let op het volgende:
 
 * LVAToObjectCounter wordt gebruikt voor het verzenden van specifieke gebeurtenissen naar een bepaald eindpunt in de objectCounter-module.
 * ObjectCounterToLVA wordt gebruikt voor het verzenden van een triggergebeurtenis naar een bepaald eindpunt (dit moet het IoT Hub-bronknooppunt zijn) in de lvaEdge-module.
@@ -150,7 +150,7 @@ Lees [deze sectie](https://docs.microsoft.com/azure/iot-edge/module-composition#
 
 Het distributiemanifest definieert welke modules op een Edge-apparaat worden geïmplementeerd en de configuratie-instellingen voor deze modules. Volg deze stappen om een dergelijk manifest van het sjabloonbestand te genereren en vervolgens te implementeren op het Edge-apparaat.
 
-Volg met behulp van Visual Studio Code [deze instructies](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) om u aan te melden bij Docker. Selecteer vervolgens **IoT Edge-oplossingen bouwen en pushen**. Gebruik voor deze stap src/edge/deployment.objectCounter.template.json.
+Volg met behulp van Visual Studio Code [deze instructies](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) om u aan te melden bij Docker. Selecteer vervolgens **IoT Edge-oplossingen bouwen en pushen**. Gebruik voor deze stap src/edge/deployment.objectCounter.template.json.
 
 ![IoT Edge-oplossingen bouwen en pushen](./media/event-based-video-recording-tutorial/build-push.png)
 
@@ -259,7 +259,7 @@ Volg deze stappen om de gebeurtenissen van de objectCounter-module en van de Liv
 
 ## <a name="interpret-the-results"></a>De resultaten interpreteren 
 
-Bij het uitvoeren van de mediagrafiek stuurt de Live Video Analytics in IoT Edge-module bepaalde diagnostische en operationele gebeurtenissen naar de IoT Edge-hub. Deze gebeurtenissen zijn de berichten die u ziet in het **UITVOER**-venster van Visual Studio Code. Deze bevatten een hoofdtekstsectie en een sectie applicationProperties. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)als u wilt weten wat deze secties inhouden.
+Bij het uitvoeren van de mediagrafiek stuurt de Live Video Analytics in IoT Edge-module bepaalde diagnostische en operationele gebeurtenissen naar de IoT Edge-hub. Deze gebeurtenissen zijn de berichten die u ziet in het **UITVOER**-venster van Visual Studio Code. Deze bevatten een hoofdtekstsectie en een sectie applicationProperties. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md)als u wilt weten wat deze secties inhouden.
 
 In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst door de module Live Video Analytics bepaald.
 
@@ -413,4 +413,4 @@ Als u de andere zelfstudies wilt proberen, moet u de gemaakte resources bewaren.
 ## <a name="next-steps"></a>Volgende stappen
 
 * Gebruik een [IP-camera](https://en.wikipedia.org/wiki/IP_camera) met ondersteuning voor RTSP in plaats van de RTSP-simulator. U kunt zoeken naar IP-camera's met RTSP-ondersteuning op de pagina met [ONVIF-compatibele](https://www.onvif.org/conformant-products/) producten door te zoeken naar apparaten die voldoen aan de profielen G, S of T.
-* Gebruik een AMD64-of x64-Linux-apparaat (in plaats van een Azure Linux-VM). Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Volg de instructies in de quickstart [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) om het apparaat te registreren bij Azure IoT Hub.
+* Gebruik een AMD64-of x64-Linux-apparaat (in plaats van een Azure Linux-VM). Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Volg de instructies in de quickstart [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](../../iot-edge/quickstart-linux.md) om het apparaat te registreren bij Azure IoT Hub.

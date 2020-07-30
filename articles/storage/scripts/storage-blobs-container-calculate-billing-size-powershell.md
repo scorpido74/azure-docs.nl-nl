@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999527"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>De totale grootte van een blobcontainer berekenen voor facturering
 
@@ -31,7 +31,7 @@ Met dit script wordt de grootte van een container in Azure Blob-opslag berekend 
 
 De totale grootte van de blobcontainer omvat de grootte van de container zelf en de grootte van alle blobs onder de container.
 
-In de volgende secties wordt beschreven hoe de opslagcapaciteit voor blobcontainers en blobs wordt berekend.In de volgende sectie betekent Len(X) het aantal tekens in de tekenreeks.
+In de volgende secties wordt beschreven hoe de opslagcapaciteit voor blobcontainers en blobs wordt berekend. In de volgende sectie betekent Len(X) het aantal tekens in de tekenreeks.
 
 ### <a name="blob-containers"></a>Blobcontainers
 
@@ -120,6 +120,6 @@ Hieronder ziet u de uitsplitsing:
 
 - Zie [Windows Azure Storage-facturering begrijpen](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/) voor meer informatie over Azure Storage-facturering.
 
-- Raadpleeg de [documentatie van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) voor meer informatie over de Azure PowerShell-module.
+- Raadpleeg de [documentatie van Azure PowerShell](https://docs.microsoft.com/powershell/azure/) voor meer informatie over de Azure PowerShell-module.
 
 - U vindt aanvullende Storage PowerShell-voorbeeldscripts in [PowerShell-voorbeelden voor Azure Storage](../blobs/storage-samples-blobs-powershell.md).

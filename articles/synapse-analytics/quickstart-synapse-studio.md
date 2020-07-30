@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276053"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374147"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Quickstart: Synapse Studio (preview) gebruiken
 
@@ -49,7 +49,7 @@ U kunt nieuwe mappen maken en bestanden uploaden via de koppelingen op de werkba
 ## <a name="query-files-on-storage-account"></a>Query’s uitvoeren op bestanden in een opslagaccount
 
 > [!IMPORTANT]
-> U moet lid zijn van de rol `Storage Blob Reader` voor de onderliggende opslag om query's te kunnen uitvoeren op de bestanden. Leer hoe u [RBAC-machtigingen voor **Gegevenslezer voor opslagblob** of **Gegevensbijdrager voor opslagblob** toewijst in Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
+> U moet lid zijn van de rol `Storage Blob Reader` voor de onderliggende opslag om query's te kunnen uitvoeren op de bestanden. Leer hoe u [RBAC-machtigingen voor **Gegevenslezer voor opslagblob** of **Gegevensbijdrager voor opslagblob** toewijst in Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role).
 
 1. Upload enkele `PARQUET`-bestanden.
 2. Selecteer een of meer bestanden en maak vervolgens een nieuw SQL-script of een Spark-notebook om de inhoud van de bestanden te bekijken. Als u een notebook wilt maken, moet u een [Apache Spark-pool in Synapse-werkruimten](quickstart-create-apache-spark-pool-studio.md) maken.
@@ -64,7 +64,7 @@ U kunt nieuwe mappen maken en bestanden uploaden via de koppelingen op de werkba
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Stel Azure AD-gebruikers in staat om query’s uit te voeren op bestanden [door RBAC-machtigingen voor **Gegevenslezer voor opslagblob** of **Gegevensbijdrager voor opslagblob** toe te wijzen in Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+- Stel Azure AD-gebruikers in staat om query’s uit te voeren op bestanden [door RBAC-machtigingen voor **Gegevenslezer voor opslagblob** of **Gegevensbijdrager voor opslagblob** toe te wijzen in Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)
 - [Query's uitvoeren op Azure Storage met behulp van SQL on-demand](sql/on-demand-workspace-overview.md)
 - [Create Apache Spark pool using Azure portal](quickstart-create-apache-spark-pool-portal.md) (Een Apache Spark-pool maken met behulp van de Azure-portal)
 - [Een Power BI-rapport maken voor bestanden die zijn opgeslagen in Azure Storage](sql/tutorial-connect-power-bi-desktop.md)
