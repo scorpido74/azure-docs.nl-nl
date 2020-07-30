@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e50f025ebd22cbe231dcd01e277a76b0f8e9b56d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1aa87d72bf2b73b1fa616d7ff7535dac4da9b7fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029617"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Schijven maken en gebruiken met schaalset voor virtuele machines met Azure CLI
 Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan van het besturingssysteem, toepassingen en gegevens van het VM-exemplaar. Bij het maken en beheren van een schaalset is het belangrijk dat u een schijfgrootte en configuratie kiest die geschikt zijn voor de verwachte werkbelasting. Deze zelfstudie bevat informatie over het maken en beheren van VM-schijven. In deze zelfstudie leert u het volgende:
@@ -43,12 +43,12 @@ Op het moment dat u een schaalset maakt, worden er automatisch twee schijven aan
 ### <a name="temporary-disk-sizes"></a>Groottes van tijdelijke schijven
 | Type | Veelgebruikte grootten | Maximumgrootte van tijdelijke schijf (GiB) |
 |----|----|----|
-| [Algemeen doel](../virtual-machines/linux/sizes-general.md) | A-, B- en D-serie | 1600 |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md) | F-serie | 576 |
-| [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md) | D-, E-, G- en M-serie | 6144 |
-| [Geoptimaliseerde opslag](../virtual-machines/linux/sizes-storage.md) | L-serie | 5630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N-serie | 1440 |
-| [Hoge prestaties](../virtual-machines/linux/sizes-hpc.md) | A- en H-serie | 2000 |
+| [Algemeen doel](../virtual-machines/sizes-general.md) | A-, B- en D-serie | 1600 |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/sizes-compute.md) | F-serie | 576 |
+| [Geoptimaliseerd geheugen](../virtual-machines/sizes-memory.md) | D-, E-, G- en M-serie | 6144 |
+| [Geoptimaliseerde opslag](../virtual-machines/sizes-storage.md) | L-serie | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-serie | 1440 |
+| [Hoge prestaties](../virtual-machines/sizes-hpc.md) | A- en H-serie | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure-gegevensschijven
@@ -112,7 +112,7 @@ az vmss disk attach \
 ## <a name="prepare-the-data-disks"></a>De gegevensschijven voorbereiden
 De schijven die worden gemaakt en die worden gekoppeld aan de VM-exemplaren in uw schaalset zijn RAW-schijven. U moet dit type schijven voorbereiden voordat u ze kunt gebruiken met uw gegevens en toepassingen. Dit doet u door een partitie en een bestandssysteem te maken en de schijven vervolgens te koppelen.
 
-Als u dit proces wilt automatiseren voor meerdere VM-exemplaren in een schaalset, kunt u de aangepaste scriptextensie van Azure gebruiken. Met deze extensie kunt u scripts lokaal uitvoeren op elk VM-exemplaar, bijvoorbeeld om gekoppelde gegevensschijven voor te bereiden. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/linux/extensions-customscript.md).
+Als u dit proces wilt automatiseren voor meerdere VM-exemplaren in een schaalset, kunt u de aangepaste scriptextensie van Azure gebruiken. Met deze extensie kunt u scripts lokaal uitvoeren op elk VM-exemplaar, bijvoorbeeld om gekoppelde gegevensschijven voor te bereiden. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/extensions/custom-script-linux.md).
 
 In het volgende voorbeeld wordt met [az vmss extension set](/cli/azure/vmss/extension) op elk VM-exemplaar een voorbeeldscript uit een GitHub-repository uitgevoerd waarmee alle gekoppelde RAW-gegevensschijven worden voorbereid:
 

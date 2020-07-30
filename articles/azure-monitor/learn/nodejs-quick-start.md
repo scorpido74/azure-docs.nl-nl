@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516495"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384783"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quickstart: Beginnen met het bewaken van uw Node.js-webtoepassing met Azure Application Insights
 
@@ -112,11 +112,11 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
    </script>
    ```
 
-5. Selecteer aan de linkerkant **Metrische gegevens**. Gebruik Metrics Explorer om de status en het gebruik van uw resource te onderzoeken. Selecteer **Nieuwe grafiek toevoegen** om aanvullende aangepaste weergaven te maken, of selecteer**Bewerken** om type, hoogte, kleurenpalet, groeperingen en metrische gegevens van bestaande grafieken te wijzigen. U kunt bijvoorbeeld een grafiek maken die de gemiddelde laadtijd van browserpagina's weergeeft door 'Browser page load time' (gemiddelde laadtijd browserpagina) te selecteren uit de vervolgkeuzelijst met metrische gegevens en 'Avg' (gemiddelde) bij aggregatie. Ga naar [Aan de slag met Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md) voor meer informatie over Azure Metrics Explorer.
+5. Selecteer aan de linkerkant **Metrische gegevens**. Gebruik Metrics Explorer om de status en het gebruik van uw resource te onderzoeken. Selecteer **Nieuwe grafiek toevoegen** om aanvullende aangepaste weergaven te maken, of selecteer**Bewerken** om type, hoogte, kleurenpalet, groeperingen en metrische gegevens van bestaande grafieken te wijzigen. U kunt bijvoorbeeld een grafiek maken die de gemiddelde laadtijd van browserpagina's weergeeft door 'Browser page load time' (gemiddelde laadtijd browserpagina) te selecteren uit de vervolgkeuzelijst met metrische gegevens en 'Avg' (gemiddelde) bij aggregatie. Ga naar [Aan de slag met Azure Metrics Explorer](../platform/metrics-getting-started.md) voor meer informatie over Azure Metrics Explorer.
 
    ![Grafiek met metrische gegevens van Application Insights-server](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-Bekijk de [extra Node.js-documentatie voor AppInsights](../../azure-monitor/app/nodejs.md) voor meer informatie over het bewaken van Node.js.
+Bekijk de [extra Node.js-documentatie voor AppInsights](../app/nodejs.md) voor meer informatie over het bewaken van Node.js.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -132,3 +132,4 @@ U kunt de resourcegroep en alle gerelateerde resources verwijderen wanneer u kla
 
 > [!div class="nextstepaction"]
 > [Prestatieproblemen zoeken en diagnoses uitvoeren](../log-query/log-query-overview.md)
+

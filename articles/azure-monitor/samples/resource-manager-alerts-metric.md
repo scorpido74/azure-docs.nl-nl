@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515373"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322292"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Voorbeelden van Resource Manager-sjablonen voor metrische waarschuwingsregels in Azure Monitor
 
@@ -23,7 +23,7 @@ In dit artikel vindt u voorbeelden van hoe [Azure Resource Manager-sjablonen](..
 Bekijk [Ondersteunde resources voor metrische waarschuwingen in Azure Monitor](../platform/alerts-metric-near-real-time.md) voor een lijst met resources die kunnen worden gebruikt met metrische waarschuwingsregels. Een uitleg van het schema en de eigenschappen voor een waarschuwingsregel is beschikbaar op [Waarschuwingen voor metrische gegevens - maken of bijwerken](/rest/api/monitor/metricalerts/createorupdate).
 
 > [!NOTE]
-> Resourcesjabloon om waarschuwingen voor metrische gegevens te maken voor resourcetype: Voor Azure Log Analytics-werkruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces`zijn aanvullende stappen vereist. Bekijk [Metrische waarschuwing voor logboeken - Resourcesjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs) voor details.
+> Resourcesjabloon om waarschuwingen voor metrische gegevens te maken voor resourcetype: Voor Azure Log Analytics-werkruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces`zijn aanvullende stappen vereist. Bekijk [Metrische waarschuwing voor logboeken - Resourcesjabloon](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs) voor details.
 
 
 
@@ -3127,7 +3127,7 @@ Dit voorbeeld maakt een metrische waarschuwingsregel voor een dynamische drempel
 
 
 ## <a name="availability-test-with-metric-alert"></a>Beschikbaarheidstest met metrische waarschuwing
-[Beschikbaarheidstests voor Application Insights](../../azure-monitor/app/monitor-web-app-availability.md) helpen u om de beschikbaarheid van uw website/app vanaf verschillende locaties wereldwijd te controleren. U ontvangt een waarschuwing van de beschikbaarheidstest wanneer deze mislukt vanaf een bepaald aantal locaties. Waarschuwingen van beschikbaarheidstests van hetzelfde resourcetype als waarschuwingen voor metrische gegevens (Microsoft.Insights/metricAlerts). Het volgende voorbeeld maakt een eenvoudige beschikbaarheidstest en een bijbehorende waarschuwing.
+[Beschikbaarheidstests voor Application Insights](../app/monitor-web-app-availability.md) helpen u om de beschikbaarheid van uw website/app vanaf verschillende locaties wereldwijd te controleren. U ontvangt een waarschuwing van de beschikbaarheidstest wanneer deze mislukt vanaf een bepaald aantal locaties. Waarschuwingen van beschikbaarheidstests van hetzelfde resourcetype als waarschuwingen voor metrische gegevens (Microsoft.Insights/metricAlerts). Het volgende voorbeeld maakt een eenvoudige beschikbaarheidstest en een bijbehorende waarschuwing.
 
 > [!NOTE]
 > `&amp`; is de HTML-entiteitsverwijzing voor &. URL-parameters worden nog steeds gescheiden door één &, maar als u de URL vermeldt in HTML moet u deze coderen. Als er dus een '&' staat in uw parameterwaarde voor pingURL dan moet u "`&amp`;" gebruiken als escapeteken.
@@ -3266,3 +3266,4 @@ Dit voorbeeld maakt een metrische waarschuwingsregel voor een dynamische drempel
 - [Meer voorbeeldsjablonen voor Azure Monitor](resource-manager-samples.md).
 - [Meer informatie over waarschuwingen](../platform/alerts-overview.md).
 - [Bekijk een voorbeeld om een actiegroep te maken met een Resource Manager-sjabloon](resource-manager-action-groups.md)
+
