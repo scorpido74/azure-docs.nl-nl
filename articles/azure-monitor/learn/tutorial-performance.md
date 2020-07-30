@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322496"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Prestatieproblemen vinden en diagnosticeren met behulp van Azure Application Insights
 
@@ -32,8 +32,8 @@ Vereisten voor het voltooien van deze zelfstudie:
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
-- Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../../azure-monitor/app/asp-net.md)in.
-- [Schakel de Application Insights-profiler in](../../azure-monitor/app/profiler.md#installation) voor uw toepassing.
+- Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../app/asp-net.md)in.
+- [Schakel de Application Insights-profiler in](../app/profiler.md#installation) voor uw toepassing.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
@@ -56,12 +56,12 @@ Application Insights verzamelt prestatiedetails over de verschillende bewerkinge
 
 4.  In het prestatiedeelvenster rechts ziet u de verdeling van de duur voor verschillende aanvragen voor de geselecteerde bewerking.  Maak het venster kleiner om bij ongeveer het 95e percentiel te beginnen. Op de inzichtenkaart 'Top 3 afhankelijkheden' ziet u meteen dat de externe afhankelijkheden waarschijnlijk bijdragen aan de trage transacties.  Klik op de knop met het aantal steekproeven voor een lijst met de steekproeven. U kunt dan elke steekproef selecteren om de transactiedetails te bekijken.
 
-5.  U kunt in één oogopslag zien dat de aanroep van de Azure-tabel Fabrikamaccount het meeste bijdraagt aan de totale duur van de transactie. U kunt ook zien dat deze is mislukt vanwege een uitzondering. U kunt op elk item in de lijst klikken om de details hiervan rechts weer te geven. [Meer informatie over de functionaliteit voor transactiediagnoses](../../azure-monitor/app/transaction-diagnostics.md)
+5.  U kunt in één oogopslag zien dat de aanroep van de Azure-tabel Fabrikamaccount het meeste bijdraagt aan de totale duur van de transactie. U kunt ook zien dat deze is mislukt vanwege een uitzondering. U kunt op elk item in de lijst klikken om de details hiervan rechts weer te geven. [Meer informatie over de functionaliteit voor transactiediagnoses](../app/transaction-diagnostics.md)
 
     ![End-to-end-details van bewerking](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  De [**Profiler**](../../azure-monitor/app/profiler-overview.md) helpt u verder met diagnoses op codeniveau door de werkelijke code te laten zien die voor de bewerking is uitgevoerd en de tijd die elke stap kostte. Voor bepaalde bewerkingen is er mogelijk geen tracering, omdat de profiler periodiek wordt uitgevoerd.  Na verloop van tijd moeten meer bewerkingen traceringen hebben.  Klik op **Profilertraceringen** om de profiler voor de bewerking te starten.
+6.  De [**Profiler**](../app/profiler-overview.md) helpt u verder met diagnoses op codeniveau door de werkelijke code te laten zien die voor de bewerking is uitgevoerd en de tijd die elke stap kostte. Voor bepaalde bewerkingen is er mogelijk geen tracering, omdat de profiler periodiek wordt uitgevoerd.  Na verloop van tijd moeten meer bewerkingen traceringen hebben.  Klik op **Profilertraceringen** om de profiler voor de bewerking te starten.
 5.  De tracering toont de afzonderlijke gebeurtenissen voor elke bewerking, zodat u de hoofdoorzaak voor de duur van de algehele bewerking kunt onderzoeken.  Klik op een van de bovenste voorbeelden, die de langste duur hebben.
 6.  Klik op **Dynamisch pad** om het specifieke pad van gebeurtenissen die het meest bijdragen aan de totale duur van de bewerking, te markeren.  In dit voorbeeld ziet u dat de traagste aanroep afkomstig is van de methode *FabrikamFiberAzureStorage.GetStorageTableData*. Het onderdeel dat de meeste tijd in beslag neemt is de methode *CloudTable.CreateIfNotExist*. Als deze regel code wordt uitgevoerd telkens wanneer de functie wordt aangeroepen, worden er onnodige netwerkaanroepen en CPU-bronnen verbruikt. De beste manier om uw code te verbeteren is door deze regel in een opstartmethode te plaatsen die slechts één keer wordt uitgevoerd.
 
@@ -112,4 +112,5 @@ Net als de gegevens die worden verzameld voor serverprestaties, maakt Applicatio
 Nu u hebt geleerd runtime-uitzonderingen te identificeren, kunt u doorgaan naar de volgende zelfstudie om te leren hoe u waarschuwingen kunt maken in reactie op fouten.
 
 > [!div class="nextstepaction"]
-> [Waarschuwing bij toepassingsstatus](../../azure-monitor/learn/tutorial-alert.md)
+> [Waarschuwing bij toepassingsstatus](./tutorial-alert.md)
+

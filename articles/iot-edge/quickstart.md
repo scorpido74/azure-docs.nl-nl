@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117247"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren in een virtueel Windows-apparaat
 
@@ -22,10 +22,12 @@ Probeer Azure IoT Edge uit in deze quickstart door code in een container te impl
 
 In deze snelstart leert u de volgende zaken:
 
-1. Maak een IoT-hub.
-2. Een IoT Edge-apparaat registreren in uw IoT-hub.
-3. De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
-4. Op afstand een module op een IoT Edge-apparaat implementeren en telemetrie naar IoT Hub verzenden.
+> [!div class="checklist"]
+>
+> * Maak een IoT-hub.
+> * Een IoT Edge-apparaat registreren in uw IoT-hub.
+> * De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
+> * Op afstand een module op een IoT Edge-apparaat implementeren en telemetrie naar IoT Hub verzenden.
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart/install-edge-full.png)
 
