@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083970"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430468"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -32,9 +32,27 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 ## <a name="july-2020"></a>Juli 2020
 
 De updates in juli zijn onder andere:
+- De [evaluatie van beveiligings problemen voor virtuele machines is nu beschikbaar voor niet-Marketplace-installatie kopieën](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)        
 - [Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [Acht nieuwe aanbevelingen voor het inschakelen van beveiligings functies voor bedreigingen](#eight-new-recommendations-to-enable-threat-protection-features)
 - [Verbeteringen in de container beveiliging-sneller zoeken in het REGI ster en de vernieuwde documentatie](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [Nieuwe aanbeveling om uw regels voor adaptieve toepassings besturings elementen bij te werken](#new-recommendation-to-update-your-adaptive-application-controls-rules)
 - [Zes beleids regels voor de verouderde beveiliging van SQL Advanced Data](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>De evaluatie van beveiligings problemen voor virtuele machines is nu beschikbaar voor niet-Marketplace-installatie kopieën
+
+Bij het implementeren van een oplossing voor de evaluatie van beveiligings problemen heeft Security Center eerder een validatie controle uitgevoerd voordat deze wordt geïmplementeerd. De controle was het bevestigen van een Marketplace-SKU van de virtuele doel machine. 
+
+Op basis van deze update is de controle verwijderd en kunt u nu hulpprogram ma's voor evaluatie van beveiligings problemen implementeren op aangepaste Windows-en Linux-machines. Aangepaste installatie kopieën zijn bestanden die u hebt gewijzigd op basis van de standaard instellingen voor Marketplace.
+
+Hoewel u nu de geïntegreerde uitbrei ding van het beveiligingslek kunt implementeren (mogelijk gemaakt door Qualys) op veel meer computers, is ondersteuning alleen beschikbaar als u een besturings systeem gebruikt dat wordt vermeld bij [het implementeren van de Qualys-ingebouwde beveiligings scanner](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner).
+
+Meer informatie over de [geïntegreerde scanner voor beveiligings problemen voor virtuele machines (alleen de laag standaard)](built-in-vulnerability-assessment.md).
+
+Meer informatie over het gebruik van uw eigen, privé-beoordelings oplossing voor beveiligings problemen van Qualys of Rapid7 bij [het implementeren van een oplossing voor het scannen van beveiligings problemen](partner-vulnerability-assessment.md).
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)
@@ -44,6 +62,39 @@ Bedreigings beveiliging voor Azure Storage detecteert mogelijk schadelijke activ
 Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren. 
 
 Meer informatie over [beveiliging tegen bedreigingen voor Azure Storage](threat-protection.md#threat-protection-for-azure-storage-).
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>Acht nieuwe aanbevelingen voor het inschakelen van beveiligings functies voor bedreigingen
+
+Er zijn acht nieuwe aanbevelingen toegevoegd om een eenvoudige manier te bieden om beveiligings functies van Azure Security Center voor de volgende bron typen in te scha kelen: virtual machines, App Service-plannen, Azure SQL Database servers, SQL-servers op computers, Azure Storage accounts, Azure Kubernetes-Service clusters, Azure Container Registry registers en Azure Key Vault-kluizen.
+
+De nieuwe aanbevelingen zijn:
+
+- **Advanced Data Security moet zijn ingeschakeld voor Azure SQL Database-servers**
+- **Advanced Data Security moet zijn ingeschakeld voor SQL-servers op computers**
+- **Advanced Threat Protection moet zijn ingeschakeld voor Azure App Service-plannen**
+- **Advanced Threat Protection moet zijn ingeschakeld voor Azure Container Registry-registers**
+- **Advanced Threat Protection moet zijn ingeschakeld voor Azure Key Vault-kluizen**
+- **Advanced Threat Protection moet zijn ingeschakeld voor Azure Kubernetes Service-clusters**
+- **Advanced Threat Protection moet zijn ingeschakeld voor Azure Storage-accounts**
+- **Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op virtuele machines**
+
+Deze nieuwe aanbevelingen maken deel uit van het beveiligings beheer **Geavanceerd bedreigings beveiliging inschakelen** .
+
+De aanbevelingen bevatten ook de mogelijkheid om snel te herstellen. 
+
+> [!IMPORTANT]
+> Als u een van deze aanbevelingen herstelt, worden er kosten in rekening gebracht voor de beveiliging van de relevante resources. Deze kosten worden onmiddellijk gestart als er gerelateerde resources zijn in het huidige abonnement. Of in de toekomst kunt u ze op een later tijdstip toevoegen.
+> 
+> Als u bijvoorbeeld geen Azure Kubernetes-Service clusters in uw abonnement hebt en u de bedreigings beveiliging inschakelt, worden er geen kosten in rekening gebracht. Als u in de toekomst een cluster toevoegt aan hetzelfde abonnement, wordt het automatisch beveiligd en worden de kosten op dat moment gestart.
+
+Meer informatie vindt u in de [naslag pagina met aanbevelingen voor beveiliging](recommendations-reference.md).
+
+Meer informatie over [beveiliging tegen bedreigingen vindt u in azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+
+
 
 
 ### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>Verbeteringen in de container beveiliging-sneller zoeken in het REGI ster en de vernieuwde documentatie
@@ -62,6 +113,15 @@ Meer informatie over de beveiliging van de container van Security Center in de v
 - [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-service-hosts](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
 - [Beveiligings aanbevelingen voor containers](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
 
+
+
+### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>Nieuwe aanbeveling om uw regels voor adaptieve toepassings besturings elementen bij te werken
+
+De functie besturings elementen voor adaptieve toepassingen bewaakt voortdurend de activiteiten van machines in geconfigureerde groepen. Vanuit deze update krijgt u een melding over potentieel legitiem gedrag dat nog niet is toegestaan en waardoor er valse positieve waarschuwingen kunnen optreden.
+
+De nieuwe aanbeveling, **Allowlist regels in uw adaptieve toepassings beheer beleid moeten worden bijgewerkt**. u wordt gevraagd nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassings besturings elementen schendings waarschuwingen te verminderen.
+
+Meer [informatie over adaptieve toepassings besturings elementen](security-center-adaptive-application.md).
 
 
 
@@ -185,9 +245,9 @@ Het beleid is te vinden in azure Policy:
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [Advanced Data Security moet zijn ingeschakeld voor Azure SQL Database-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [Advanced Data Security moet zijn ingeschakeld voor SQL-servers op computers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
-| [Advanced Threat Protection moet zijn ingeschakeld voor Storage-accounts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [Advanced Threat Protection moet zijn ingeschakeld voor Azure Storage-accounts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
 | [Advanced Threat Protection moet zijn ingeschakeld voor Azure Key Vault-kluizen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op App Service plannen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [Advanced Threat Protection moet zijn ingeschakeld voor Azure App Service-plannen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
 | [Advanced Threat Protection moet zijn ingeschakeld voor Azure Container Registry-registers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
 | [Advanced Threat Protection moet zijn ingeschakeld voor Azure Kubernetes Service-clusters](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
 | [Advanced Thread Protection moet zijn ingeschakeld op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
@@ -275,7 +335,7 @@ De beveiligings besturings elementen-en deze wissel knop maken deel uit van de n
 
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
-![Wissel knop "groeperen op besturings elementen" voor aanbevelingen](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+![Wissel knop "groeperen op besturings elementen" voor aanbevelingen](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging 
 

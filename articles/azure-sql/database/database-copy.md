@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 968fe5a0f4999c25486189384186c23d1fcd5509
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309253"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430252"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
@@ -116,6 +116,9 @@ U kunt de stappen in de sectie [een SQL database kopiëren naar een andere serve
 
 > [!NOTE]
 > De [Azure Portal](https://portal.azure.com), Power shell en de Azure cli bieden geen ondersteuning voor het kopiëren van data bases naar een ander abonnement.
+
+> [!TIP]
+> Het kopiëren van de data base met T-SQL ondersteunt het kopiëren van een Data Base uit een abonnement in een andere Azure-Tenant.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>De voortgang van de Kopieer bewerking bewaken
 

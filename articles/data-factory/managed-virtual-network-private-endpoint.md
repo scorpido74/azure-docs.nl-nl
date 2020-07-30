@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: f6868e3a77cbc4b262180b47ed3b387840062969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/15/2020
+ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096672"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406279"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Data Factory (preview-versie)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel worden beheerde Virtual Network en beheerde privé-eind punten in Azure Data Factory uitgelegd.
 
@@ -47,7 +47,7 @@ Voor delen van het gebruik van beheerde Virtual Network:
 
 Beheerde privé-eind punten zijn particuliere eind punten die zijn gemaakt in de Azure Data Factory beheerde Virtual Network een persoonlijke koppeling naar Azure-resources tot stand brengen. Azure Data Factory deze privé-eind punten in uw naam beheert. 
 
-![Nieuw beheerd persoonlijk eind punt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
+![Nieuw Beheerd privé-eindpunt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
 Azure Data Factory ondersteunt persoonlijke koppelingen. Met persoonlijke koppeling kunt u Azure-Services (PaaS) gebruiken (zoals Azure Storage, Azure Cosmos DB Azure SQL Data Warehouse).
 
@@ -63,7 +63,7 @@ Persoonlijk eind punt maakt gebruik van een privé-IP-adres in de beheerde Virtu
 
 Een VPN-verbinding wordt gemaakt met de status ' in behandeling ' wanneer u een beheerd privé-eind punt maakt in Azure Data Factory. Er wordt een goedkeuringswerkstroom geïnitieerd. De eigenaar van de privékoppelingsresource is verantwoordelijk voor het goedkeuren of afwijzen van de verbinding.
 
-![Privé-eind punt beheren](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
+![Privé-eindpunt beheren](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
 
 Als de eigenaar de verbinding goedkeurt, wordt de privé-koppeling tot stand gebracht. Anders wordt de privé-koppeling niet tot stand gebracht. In beide gevallen wordt het beheerde privé-eindpunt bijgewerkt met de status van de verbinding.
 
@@ -82,6 +82,7 @@ De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via e
 - Azure SQL Data Warehouse
 - Azure CosmosDB SQL
 - Azure Key Vault
+- Azure Private Link
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Uitgaande communicatie via het open bare eind punt van de Virtual Network voor ADF beheerd
 - Alleen poort 443 wordt geopend voor uitgaande communicatie.

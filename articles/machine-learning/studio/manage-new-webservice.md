@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 246041d1a5f4826344c03b889c26dc381cd6db29
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d40d67b40d9e269f9ed6552467918cc878ffd197
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318501"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430781"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Een webservice beheren via de portal voor webservices van Azure Machine Learning Studio (klassiek)
 
-**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 U kunt uw Machine Learning nieuwe en klassieke webservices beheren met behulp van de Microsoft Azure Machine Learning Web Services-portal. Aangezien klassieke webservices en nieuwe webservices zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze onderdelen enigszins verschillende beheer mogelijkheden.

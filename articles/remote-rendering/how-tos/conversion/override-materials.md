@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681478"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433144"
 ---
 # <a name="override-materials-during-model-conversion"></a>Materialen overschrijven tijden modelconversie
 
-Tijdens de conversie worden de materiaal instellingen in het bron model gebruikt voor het definiëren van de [PBR-materialen](../../overview/features/pbr-materials.md) die worden gebruikt door de renderer.
+De materiaal instellingen in het bron model worden gebruikt voor het definiëren van de [PBR-materialen](../../overview/features/pbr-materials.md) die worden gebruikt door de renderer.
 Soms geeft de [standaard conversie](../../reference/material-mapping.md) niet de gewenste resultaten en u moet wijzigingen aanbrengen.
 Wanneer een model wordt geconverteerd voor gebruik in azure-rendering op afstand, kunt u een bestand voor het overschrijven van materialen opgeven om te bepalen hoe de conversie van materialen per materiaal wordt uitgevoerd.
 De sectie over het configureren van de [model conversie](configure-model-conversion.md) bevat instructies voor het declareren van de bestands naam voor het overschrijven van materiaal.
 
 ## <a name="the-override-file-used-during-conversion"></a>Het overschrijvings bestand dat wordt gebruikt tijdens de conversie
 
-Stel dat een box-model een enkel materiaal heeft met de naam standaard. De kleur van de albedo moet worden aangepast voor gebruik in ARR.
+Stel dat een box-model een enkel materiaal heeft met de naam standaard.
+Daarnaast moeten we de kleur van de albedo aanpassen voor gebruik in ARR.
 In dit geval kan een `box_materials_override.json` bestand als volgt worden gemaakt:
 
 ```json
@@ -38,7 +39,7 @@ In dit geval kan een `box_materials_override.json` bestand als volgt worden gema
 ]
 ```
 
-Het `box_materials_override.json` bestand wordt in de invoer container geplaatst en er `ConversionSettings.json` wordt een toegevoegd naast `box.fbx` , waarmee wordt aangegeven dat het overschrijvings bestand moet worden gevonden (Zie [de model conversie configureren](configure-model-conversion.md)):
+Het `box_materials_override.json` bestand wordt in de invoer container geplaatst en er `box.ConversionSettings.json` wordt een toegevoegd naast `box.fbx` , waarmee wordt aangegeven dat het overschrijvings bestand moet worden gevonden (Zie [de model conversie configureren](configure-model-conversion.md)):
 
 ```json
 {
@@ -51,7 +52,7 @@ Wanneer het model wordt geconverteerd, worden de nieuwe instellingen toegepast.
 ### <a name="color-materials"></a>Kleurmaterialen
 
 Het [kleuren materiaal](../../overview/features/color-materials.md) model beschrijft een voortdurend gearceerd Opper vlak dat onafhankelijk is van de belichting.
-Dit is handig voor assets die zijn gemaakt door Photogrammetry-algoritmen, bijvoorbeeld.
+Kleur materialen zijn handig voor activa die door Photogrammetry-algoritmen worden gemaakt, bijvoorbeeld.
 In materiaal onderdrukking bestanden kan een materiaal worden gedeclareerd als een kleur materiaal door in te stellen `unlit` op `true` .
 
 ```json

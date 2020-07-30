@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: f245b1baddad52f18f66e99fa98d9ec5f73c8011
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 99d8ab3b7edc2d32e580ec8de9132fef3ea3503a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424338"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Power shell
 
@@ -162,7 +162,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 ```
 
 > [!IMPORTANT]
-> Zowel de toewijzing van de sleutel voor gebruikers overdracht als de RBAC-rollen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging optreden wanneer u het proces van het intrekken initieert en wanneer een bestaande SA'S van de gebruikers overdracht ongeldig wordt.
+> Zowel de gebruikers overdracht sleutel als Azure-roltoewijzingen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging optreden wanneer u het proces van het intrekken initieert en wanneer een bestaande SA'S van de gebruikers overdracht ongeldig wordt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

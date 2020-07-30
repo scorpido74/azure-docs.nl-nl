@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027509"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428277"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Een API-connector toevoegen aan een gebruikers stroom
 
@@ -42,9 +42,16 @@ Als u een [API-connector](api-connectors-overview.md)wilt gebruiken, maakt u eer
 8. Selecteer de claims die u naar de API wilt verzenden.
 9. Selecteer claims die u van de API wilt ontvangen.
 
-   ![Claims voor API-connector instellen](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
+   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
 
 10. Selecteer **Opslaan**.
+
+### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>Selectie van ' claims voor verzenden ' en ' te ontvangen claims '
+> [!IMPORTANT]
+> Mogelijk ziet u alle claims die standaard zijn geselecteerd, zoals hieronder wordt weer gegeven. Alle API-connectors worden bijgewerkt om op deze manier te werken. Uw API ontvangt alle beschik bare claims en kan een ondersteunde claim terugsturen zonder ze te configureren in de API-connector definitie. 
+
+![Claims voor API-connector instellen](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>De API-connector inschakelen in een gebruikers stroom
 
@@ -137,8 +144,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | versie                                            | Tekenreeks            | Ja      | De versie van de API.                                                                                                                                                                                                                                                                |
 | actie                                             | Tekenreeks            | Ja      | Waarde moet zijn `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | De geretourneerde claim hoeft niet te bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nee       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nee       | De geretourneerde claim hoeft niet te bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
 
 ### <a name="blocking-response"></a>Antwoord blok keren
 
@@ -164,7 +171,7 @@ Content-type: application/json
 | versie     | Tekenreeks | Ja      | De versie van de API.                                                    |
 | actie      | Tekenreeks | Ja      | Waarde moet`ShowBlockPage`                                              |
 | userMessage | Tekenreeks | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
-| code        | Tekenreeks | No       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
+| code        | Tekenreeks | Nee       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>Eind gebruikers ervaring met een blokkerend antwoord
 
@@ -193,9 +200,9 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | versie     | Tekenreeks  | Ja      | De versie van de API.                                                    |
 | actie      | Tekenreeks  | Ja      | Waarde moet zijn `ValidationError` .                                           |
-| status      | Geheel getal | Yes      | Dit moet een waarde zijn `400` voor een ValidationError-antwoord.                        |
+| status      | Geheel getal | Ja      | Dit moet een waarde zijn `400` voor een ValidationError-antwoord.                        |
 | userMessage | Tekenreeks  | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
-| code        | Tekenreeks  | No       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
+| code        | Tekenreeks  | Nee       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
 #### <a name="end-user-experience-with-a-validation-error-response"></a>Eind gebruikers ervaring met validatie-fout bericht
 

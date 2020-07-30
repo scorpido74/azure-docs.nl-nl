@@ -10,12 +10,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: pasta
-ms.openlocfilehash: eb31fa271496b0eeedf4a2b845ab05e5f241e167
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6bc55416c335f370151e54d2b09ccf00bd799fdb
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041979"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406891"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>Het cookie beleid voor de insluitende lezer instellen
 
@@ -46,7 +47,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk de [Node.js Snelstartgids](../quickstarts/client-libraries.md?pivots=programming-language-nodejs) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van Node.js
-* Bekijk de [Android-zelf studie](../tutorial-android.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met Java of Kotlin voor Android
-* Bekijk de [IOS-zelf studie](../tutorial-ios.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van SWIFT voor IOS
+* Bekijk de zelfstudie over [Android](../tutorial-android.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met Java of Kotlin voor Android
+* Bekijk de [iOS-zelfstudie](../tutorial-ios.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met behulp van Swift voor iOS
 * Bekijk de [python-zelf studie](../tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](../reference.md)
+* De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](../reference.md) verkennen

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 07/20/2020
-ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515109"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428230"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -161,6 +161,9 @@ Als u meer wilt weten over de kosten voor back-upopslag, gaat u naar **Cost Mana
 Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base** in de vervolg keuzelijst. Gebruik het filter **meter subcategorie** om de facturerings teller voor uw service te kiezen. Selecteer voor één data base of een pool voor elastische Data Base **één/elastische pool pitr back-upopslag**. Voor een beheerd exemplaar selecteert u **mi pitr Backup Storage**. De subcategorieën voor **opslag** en **berekening** kunnen u ook interesseren, maar ze zijn niet gekoppeld aan back-upopslagkosten.
 
 ![Kosten analyse back-upopslag](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
+
+  >[!NOTE]
+  > Meters zijn alleen zichtbaar voor prestatie meter items die momenteel in gebruik zijn. Als een item niet beschikbaar is, is het waarschijnlijk dat de categorie momenteel niet wordt gebruikt. Managed instance Counters is bijvoorbeeld niet aanwezig voor klanten die geen beheerd exemplaar hebben geïmplementeerd. Opslag tellers zijn ook niet zichtbaar voor bronnen die geen opslag ruimte gebruiken. 
 
 ## <a name="encrypted-backups"></a>Versleutelde back-ups
 

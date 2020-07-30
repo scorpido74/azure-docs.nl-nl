@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1b659335d09ed26b6556ccb7937094d90e1c5f1e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324995"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428417"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hoe een model van Machine Learning Studio (klassiek) van een experiment naar een webservice wordt uitgevoerd
 
-**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 Azure Machine Learning Studio (klassiek) biedt een interactief canvas waarmee u een ***experiment*** kunt ontwikkelen, uitvoeren, testen en herhalen voor een voorspellend analyse model. Er zijn tal van beschik bare modules die kunnen:

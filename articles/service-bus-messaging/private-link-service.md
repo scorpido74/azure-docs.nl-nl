@@ -5,14 +5,14 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340445"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423419"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus integreren met een persoonlijke Azure-koppeling
+# <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Toegang tot Azure Service Bus naam ruimten toestaan via persoonlijke eind punten
 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Service Bus, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
@@ -46,7 +46,7 @@ Als u een Service Bus naam ruimte met een persoonlijke Azure-koppeling wilt inte
 
 - Een Service Bus naam ruimte.
 - Een Azure Virtual Network.
-- Een subnet binnen het virtueel netwerk.
+- Een subnet binnen het virtueel netwerk. U kunt het **standaard** subnet gebruiken. 
 - Eigenaar-of Inzender machtigingen voor zowel de Service Bus naam ruimte als het virtuele netwerk.
 
 Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het privé-eindpunt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. De naam ruimte van uw Service Bus kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
@@ -55,11 +55,22 @@ Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinde
 
 Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ **Service Bus**in de zoek balk.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
-4. Selecteer het tabblad **netwerken** onder **instellingen**.
-5. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina
+2. Selecteer in het menu links de optie **netwerk** opties onder **instellingen**. 
+
+    > [!NOTE]
+    > U ziet het tabblad **netwerken** alleen voor **Premium** -naam ruimten.  
+    
+    Standaard is de optie **geselecteerde netwerken** geselecteerd. Als u niet ten minste één IP-firewall regel of een virtueel netwerk op deze pagina toevoegt, is de naam ruimte toegankelijk via het open bare Internet (met behulp van de toegangs sleutel).
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Pagina netwerk-standaard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Als u de optie **alle netwerken** selecteert, accepteert uw service bus-naam ruimte verbindingen van elk IP-adres (met behulp van de toegangs sleutel). Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
+
+    ![Optie Firewall: alle netwerken geselecteerd](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. Als u toegang tot de naam ruimte via persoonlijke eind punten wilt toestaan, selecteert u het tabblad **privé-eindpunt verbindingen** boven aan de pagina
 6. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
     ![Knop persoonlijk eind punt toevoegen](./media/private-link-service/private-link-service-3.png)
@@ -190,7 +201,7 @@ Er zijn vier inrichtingsstatussen:
 2. Selecteer het **privé-eind punt** dat u wilt goed keuren
 3. Selecteer de knop **goed keuren** .
 
-    ![Persoonlijk eind punt goed keuren](./media/private-link-service/private-endpoint-approve.png)
+    ![Keur het privé-eindpunt goed](./media/private-link-service/private-endpoint-approve.png)
 4. Voer op de pagina **verbinding goed keuren** een optionele **Opmerking**in en selecteer **Ja**. Als u **Nee**selecteert, gebeurt er niets. 
 
     ![Verbindings pagina goed keuren](./media/private-link-service/approve-connection-page.png)

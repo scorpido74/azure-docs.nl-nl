@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121670"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422858"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -23,7 +23,7 @@ Dit artikel helpt u bij het oplossen van problemen met de visualisatie van evalu
 
 Los problemen met de voorbereidings voorbereiding op als volgt:
 
-**Probleem** | **Fix**
+**Probleem** | **Herstellen**
 --- | ---
 Niet-ondersteund opstart type | Azure biedt geen ondersteuning voor Vm's met een EFI-opstart type. U wordt aangeraden het opstart type te converteren naar BIOS voordat u een migratie uitvoert. <br/><br/>U kunt Azure Migrate server migratie gebruiken om de migratie van dergelijke Vm's te verwerken. Tijdens de migratie wordt het opstart type van de VM naar het BIOS geconverteerd.
 Voorwaardelijk ondersteund Windows-besturings systeem | Het besturings systeem heeft de eind datum van de ondersteuning door gegeven en heeft een aangepaste ondersteunings overeenkomst (CSA) nodig voor [ondersteuning in azure](https://aka.ms/WSosstatement). Overweeg om te upgraden voordat u naar Azure migreert.
@@ -52,7 +52,7 @@ Voorwaardelijk gereed Internet Protocol | Alleen van toepassing op AVS-evaluatie
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Aanbevolen migratie hulpmiddel in op import gebaseerde AVS-evaluatie is gemarkeerd als onbekend
 
-Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in en AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in en AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux-Vm's zijn ' conditioneel Ready ' in een Azure VM-evaluatie
 
@@ -181,12 +181,15 @@ Na de migratie van computers met afhankelijkheids visualisatie ingeschakeld op A
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>CSV-export bevat ' onbekend proces '
 In afhankelijkheids analyse zonder agent worden de proces namen op basis van de beste inspanningen vastgelegd. In bepaalde scenario's, hoewel de namen van de bron-en doel server en de doel poort worden vastgelegd, is het niet haalbaar om de proces namen aan beide uiteinden van de afhankelijkheid te bepalen. In dergelijke gevallen wordt het proces als ' onbekend proces ' gemarkeerd.
 
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>Mijn Log Analytics-werk ruimte wordt niet weer gegeven bij het configureren van de werk ruimte in Server beoordeling
+Azure Migrate biedt momenteel ondersteuning voor het maken van OMS-werkruimte in de regio's VS - oost, Azië - zuidoost en Europa - west. Als de werk ruimte wordt gemaakt buiten Azure Migrate in een andere regio, kan deze momenteel niet worden gekoppeld aan een Azure Migrate-project.
+
 
 ## <a name="capture-network-traffic"></a>Netwerk verkeer vastleggen
 
 Verzamel logboeken voor netwerk verkeer als volgt:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Druk op F12 om Ontwikkelhulpprogramma's te starten. Als dat nodig is, schakelt u de instelling **vermeldingen wissen bij navigatie** uit.
 3. Selecteer het tabblad **netwerk** en begin met het vastleggen van netwerk verkeer:
    - In Chrome selecteert u **logboek behouden**. De opname moet automatisch worden gestart. Een rode cirkel geeft aan dat verkeer wordt vastgelegd. Als de rode cirkel niet wordt weer gegeven, selecteert u de zwarte cirkel om te starten.

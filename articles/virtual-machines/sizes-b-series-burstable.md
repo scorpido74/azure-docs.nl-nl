@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292067"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432622"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 
@@ -92,18 +92,21 @@ Voor een D16s_v3 met 16 Vcpu's en 64 GiB geheugen is het uurtarief $0,936 per uu
 
 ## <a name="q--a"></a>Vragenronde
 
+### <a name="q-what-happens-if-the-credits-run-out"></a>V: wat gebeurt er als de tegoeden worden uitgevoerd?
+**A**: wanneer de tegoeden zijn uitgeput, keert de virtuele machine terug naar de basislijn prestaties.
+
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>V: Hoe krijg ik 135% basislijn prestaties van een VM?
 
 **A**: de 135% wordt gedeeld met de 8 vCPU die de VM-grootte vormen. Als uw toepassing bijvoorbeeld 4 van de 8 kernen gebruikt die aan batch verwerking werken en elk van deze vier vCPUs wordt uitgevoerd met 30% gebruik, is de totale hoeveelheid VM-CPU-prestaties gelijk aan 120%.  Dit betekent dat uw virtuele machine de tegoed tijd zou bouwen op basis van de 15% Delta van de basislijn prestaties.  Maar dit betekent ook dat wanneer u een tegoed hebt dat op dezelfde virtuele machine 100% van alle 8 vCPU de maximale CPU-prestaties van 800% mag gebruiken.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>V: hoe kan ik mijn tegoed en verbruik bewaken
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>V: hoe kan ik mijn credit saldo en verbruik bewaken?
 
 **A**: we introduceren 2 nieuwe metrische gegevens in de komende weken, met de **krediet** metriek kunt u zien hoeveel tegoeden uw VM heeft gebankd en hoe de **ConsumedCredit** -metriek laat zien hoeveel CPU-tegoeden uw VM van de Bank heeft verbruikt.    U kunt deze metrische gegevens bekijken in het deel venster metrische gegevens in de portal of via een programma via de Azure Monitor-Api's.
 
 Voor meer informatie over het verkrijgen van toegang tot de metrische gegevens voor Azure, verwijzen we u naar het [overzicht van metrieken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
-### <a name="q-how-are-credits-accumulated"></a>V: hoe worden de tegoeden geaccumuleerd?
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>V: hoe worden tegoed verzameld en verbruikt?
 
 **A**: de accumulatie van de VM en de verbruiks tarieven zijn zodanig ingesteld dat een virtuele machine die op exact het basis prestatie niveau draait, geen netaccumulatie of het verbruik van bursting-tegoeden heeft.  Een virtuele machine heeft een netto toename van de verantwoording als deze wordt uitgevoerd onder het basis prestatie niveau en heeft een net-afname in het tegoed wanneer de virtuele machine de CPU meer dan het basis prestatie niveau gebruikt.
 

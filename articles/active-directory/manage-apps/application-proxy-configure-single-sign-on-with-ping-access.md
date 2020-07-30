@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077889"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431090"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Verificatie op basis van een header voor eenmalige aanmelding met toepassings proxy en PingAccess
 
@@ -122,6 +122,11 @@ Controleer vervolgens of de omleidings-URL is ingesteld op uw externe URL:
 1. Selecteer de koppeling naast **omleidings-uri's**, met het aantal omleidings-uri's dat is ingesteld voor web-en open bare clients. De pagina ** \<application name> -verificatie** wordt weer gegeven.
 1. Controleer of de externe URL die u eerder hebt toegewezen aan uw toepassing, voor komt in de lijst met **omleidings-uri's** . Als dat niet het geval is, voegt u de externe URL nu toe met behulp van het omleidings-URI-type **Web**en selecteert u **Opslaan**.
 
+Naast de externe URL moet een eind punt van Azure Active Directory op de externe URL worden toegevoegd aan de lijst met omleidings-Uri's.
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
+
 Stel tot slot uw on-premises toepassing in zodat gebruikers lees-en schrijf toegang hebben en andere toepassingen lees-/schrijftoegang hebben:
 
 1. Selecteer op de **app-registraties** zijbalk voor uw toepassing **API-machtigingen**  >  **een machtiging toevoegen**  >  **micro soft api's**  >  **Microsoft Graph**. De pagina **API-machtigingen voor aanvragen** voor **Microsoft Graph** wordt weer gegeven, die de api's voor Windows Azure Active Directory bevat.
@@ -164,7 +169,7 @@ Deze gegevens verzamelen:
 **Het `acceptMappedClaims` veld bijwerken:**
 
 1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com/) als een toepassings beheerder.
-1. Selecteer **Azure Active Directory**  >  **app-registraties**. Er wordt een lijst met toepassingen weer gegeven.
+1. Selecteer **Azure Active Directory** > **App-registraties**. Er wordt een lijst met toepassingen weer gegeven.
 1. Selecteer uw toepassing.
 1. Selecteer in de zijbalk van de pagina **app-registraties** voor uw toepassing **manifest**. De manifest-JSON-code voor de registratie van uw toepassing wordt weer gegeven.
 1. Zoek het `acceptMappedClaims` veld en wijzig de waarde in `True` .

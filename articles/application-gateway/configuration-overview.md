@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068030"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428173"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -55,7 +55,7 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
   - Verwijder de standaard regels voor uitgaande verbindingen niet.
   - Maak geen andere uitgaande regels waarmee uitgaande verbindingen worden geweigerd.
 
-- Verkeer van het label **AzureLoadBalancer** moet zijn toegestaan.
+- Verkeer van de **AzureLoadBalancer** -tag met het doel- **subnet moet worden** toegestaan.
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway toegang tot een aantal bron-Ip's toestaan
 
@@ -74,7 +74,7 @@ Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de 
 
 - **RIP**
 
-   Voor de V1-SKU worden door de gebruiker gedefinieerde routes (Udr's) ondersteund op het subnet van de Application Gateway, zolang ze de end-to-end-communicatie van aanvragen en antwoorden niet wijzigen. U kunt bijvoorbeeld een UDR in het subnet van Application Gateway instellen om te verwijzen naar een firewall apparaat voor pakket inspectie. Maar u moet ervoor zorgen dat het pakket na de inspectie de beoogde bestemming kan bereiken. Als u dit niet doet, kan dit leiden tot een onjuiste werking van de status test of het routeren van verkeer. Hiertoe behoren geleerde routes of standaard 0.0.0.0/0-routes die worden door gegeven door Azure ExpressRoute of VPN-gateways in het virtuele netwerk.
+   Voor de V1-SKU worden door de gebruiker gedefinieerde routes (Udr's) ondersteund op het subnet van de Application Gateway, zolang ze de end-to-end-communicatie van aanvragen en antwoorden niet wijzigen. U kunt bijvoorbeeld een UDR in het subnet van Application Gateway instellen om te verwijzen naar een firewall apparaat voor pakket inspectie. Maar u moet ervoor zorgen dat het pakket na de inspectie de beoogde bestemming kan bereiken. Als u dit niet doet, kan dit leiden tot een onjuiste werking van de status test of het routeren van verkeer. Hiertoe behoren geleerde routes of standaard 0.0.0.0/0-routes die worden door gegeven door Azure ExpressRoute of VPN-gateways in het virtuele netwerk. Elk scenario waarin 0.0.0.0/0 on-premises (geforceerde Tunneling) moet worden omgeleid, wordt niet ondersteund voor v1.
 
 - **v2**
 

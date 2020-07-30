@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207272"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423793"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Automation (preview-versie)
 
@@ -43,7 +43,7 @@ Met een persoonlijke koppeling kunt u het volgende doen:
 
 Zie [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 Met Azure Automation persoonlijke koppeling worden een of meer privé-eind punten (en dus ook de virtuele netwerken in) verbonden met de resource van uw Automation-account. Deze eind punten zijn machines die gebruikmaken van webhooks om een runbook te starten, machines die als host fungeren voor de Hybrid Runbook Worker Role en DSC-knoop punten.
 
@@ -132,15 +132,15 @@ Als de service gebruiker RBAC-machtigingen heeft voor de Automation-resource, ka
 
 ## <a name="set-public-network-access-flags"></a>Toegangs vlaggen voor openbaar netwerk instellen
 
-U kunt een Automation-account configureren om alle open bare configuraties te weigeren en alleen verbindingen via persoonlijke eind punten toe te staan om de netwerk beveiliging verder uit te breiden. Als u de toegang tot het Automation-account alleen wilt beperken vanuit het VNet en geen toegang via open bare Internet wilt toestaan, kunt u de `publicNetworkAccess` eigenschap instellen op `$true` .
+U kunt een Automation-account configureren om alle open bare configuraties te weigeren en alleen verbindingen via persoonlijke eind punten toe te staan om de netwerk beveiliging verder uit te breiden. Als u de toegang tot het Automation-account alleen wilt beperken vanuit het VNet en geen toegang via open bare Internet wilt toestaan, kunt u de `publicNetworkAccess` eigenschap instellen op `$false` .
 
-Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op `true` , worden alleen verbindingen via persoonlijke eind punten toegestaan en worden alle verbindingen via open bare eind punten geweigerd met een fout bericht.
+Wanneer de instelling voor **open bare netwerk toegang** is ingesteld op `$false` , worden alleen verbindingen via persoonlijke eind punten toegestaan en worden alle verbindingen via open bare eind punten geweigerd met een unathorized-fout bericht en de HTTP-status 401. 
 
 Het volgende Power shell-script laat zien hoe `Get` en `Set` de eigenschap **open bare netwerk toegang** op het niveau van het Automation-account:
 
 ```powershell
 $account = Get-AzResource -ResourceType Microsoft.Automation/automationAccounts -ResourceGroupName "<resourceGroupName>" -Name "<automationAccountName>" -ApiVersion "2020-01-13-preview"
-$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $true
+$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $false
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 

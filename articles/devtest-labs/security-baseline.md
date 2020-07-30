@@ -3,12 +3,12 @@ title: Azure-beveiligings basislijn voor Azure DevTest Labs
 description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 47adca5867fef1d41ccfec2455acc6932269842d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282276"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387826"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
 
@@ -547,7 +547,7 @@ Als u gebruikmaakt van Azure Disk Encryption, kunt u de Azure VM herstellen met 
 **Hulp:** Wanneer u een back-up maakt van beheerde schijven met Azure Backup, worden virtuele machines op rest versleuteld met Storage Service Encryption (SSE). Azure Backup kunt ook een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption. Azure Disk Encryption kan worden geïntegreerd met BitLocker-versleutelings sleutels (BEKs), die worden beveiligd in een sleutel kluis als geheimen. Azure Disk Encryption is ook geïntegreerd met Azure Key Vault Key Encryption Keys (KEKs). Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 - [Voorlopig verwijderen voor Vm's](../backup/soft-delete-virtual-machines.md)
-- [Overzicht van Azure Key Vault-zacht-verwijderen](../key-vault/general/overview-soft-delete.md)
+- [Overzicht van Azure Key Vault-zacht-verwijderen](../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center bewaking:** Klikt
 

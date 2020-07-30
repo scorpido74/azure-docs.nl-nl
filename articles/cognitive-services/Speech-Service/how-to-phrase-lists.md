@@ -11,20 +11,21 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
-ms.openlocfilehash: 7347fee0cd8bdaae73467a84806819c913599a51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 69cd1ffaeb4cbc7bff8ad2c0c4e0611162d43b84
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85834009"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87403967"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Woordgroepen lijsten voor spraak naar tekst
 
-Door de spraak service een lijst met zinsdelen te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie.
+Door de spraak service een lijst met zinsdelen te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Frasenlijsten worden gebruikt om bekende frasen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie.
 
 Als u bijvoorbeeld een opdracht ' verplaatsen naar ' en een mogelijke bestemming van ' naar onder ' hebt, kunt u een vermelding van ' verplaatsen naar binnen ' toevoegen. Als u een woord groep toevoegt, wordt de kans groter dat wanneer de audio wordt herkend dat ' naar binnen verplaatsen ' wordt herkend.
 
-Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als een exacte overeenkomst voor de hele woord groep wordt opgenomen in de audio als een afzonderlijke woord groep. Als een exacte overeenkomst met de zin niet wordt gevonden, wordt de herkenning niet ondersteund.
+Er kunnen losse woorden of hele frasen worden toegevoegd aan een frasenlijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als een exacte overeenkomst voor de hele woord groep wordt opgenomen in de audio als een afzonderlijke woord groep. Als er geen exacte overeenkomst met de frase wordt gevonden, wordt de herkenning niet ondersteund.
 
 >[!Note]
 > Op dit moment ondersteunt een woordgroepen lijst alleen het Engels voor spraak naar tekst.

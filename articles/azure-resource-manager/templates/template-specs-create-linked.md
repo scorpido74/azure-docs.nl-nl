@@ -3,12 +3,12 @@ title: Een sjabloon specificatie met gekoppelde sjablonen maken
 description: Meer informatie over het maken van een sjabloon spec met gekoppelde sjablonen.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c2648cb8a71be709406f314d02a226ed097be6f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096684"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387860"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken (preview)
 
@@ -33,7 +33,7 @@ De gekoppelde sjabloon heet **linkedTemplate.jsop**en wordt opgeslagen in een su
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-Als er een andere linkedTemplate2.jsis aangeroepen vanuit linkedTemplate.jsen linkedTemplate2.jsop is opgeslagen in dezelfde submap voor artefacten, is de relativePath die is opgegeven in linkedTemplate.js, **linkedTemplate2.jsop**.
+De `relativePath` eigenschap is altijd relatief ten opzichte van het sjabloon bestand waar `relativePath` is gedeclareerd, dus als er een andere linkedTemplate2.jsis aangeroepen vanuit linkedTemplate.jsop en linkedTemplate2.jsop wordt opgeslagen in dezelfde submap voor artefacten, is de relativePath die is opgegeven in linkedTemplate.js, alleen `linkedTemplate2.json` .
 
 1. Maak de hoofd sjabloon met de volgende JSON. Sla de hoofd sjabloon **op alsazuredeploy.jsop** de lokale computer. In deze zelf studie wordt ervan uitgegaan dat u hebt opgeslagen in een pad **c:\Templates\linkedTS\azuredeploy.js** , maar u kunt een wille keurig pad gebruiken.
 

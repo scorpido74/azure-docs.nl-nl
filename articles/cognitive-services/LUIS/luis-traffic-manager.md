@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) biedt de mogelijkheid om het quotum voor eindpunt aanvragen te verhogen buiten het quotum van een enkele sleutel. Dit doet u door meer sleutels te maken voor LUIS en deze toe te voegen aan de LUIS-toepassing op de pagina **publiceren** in de sectie **resources en sleutels** .
 author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 7726219076aee0c25c59f57003967cf2220d531f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: f509d5f6f6e794adeee67fe632518a89882c945c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344166"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407911"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager gebruiken voor het beheren van eindpunt quotum voor sleutels
 Language Understanding (LUIS) biedt de mogelijkheid om het quotum voor eindpunt aanvragen te verhogen buiten het quotum van een enkele sleutel. Dit doet u door meer sleutels te maken voor LUIS en deze toe te voegen aan de LUIS-toepassing op de pagina **publiceren** in de sectie **resources en sleutels** .
@@ -78,7 +78,7 @@ Als u het Amerikaanse Traffic Manager-profiel wilt maken, zijn er verschillende 
 
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Name|Luis-profiel-Oost-Timor|Traffic Manager naam in Azure Portal|
     |-ResourceGroupName|Luis-Traffic-Manager|Gemaakt in de vorige sectie|
@@ -97,7 +97,7 @@ Als u het Amerikaanse Traffic Manager-profiel wilt maken, zijn er verschillende 
     ```
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Eind puntnaam|Luis-Oost-eind punt|De naam van het eind punt wordt weer gegeven onder het profiel|
     |-TrafficManagerProfile|$eastprofile|Profiel object gebruiken dat u in stap 1 hebt gemaakt|
@@ -146,7 +146,7 @@ Voer de volgende stappen uit om het profiel vs-West Traffic Manager te maken: Ma
 
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Name|Luis-profiel-westus|Traffic Manager naam in Azure Portal|
     |-ResourceGroupName|Luis-Traffic-Manager|Gemaakt in de vorige sectie|
@@ -166,7 +166,7 @@ Voer de volgende stappen uit om het profiel vs-West Traffic Manager te maken: Ma
 
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Eind puntnaam|Luis-West-eind punt|De naam van het eind punt wordt weer gegeven onder het profiel|
     |-TrafficManagerProfile|$westprofile|Profiel object gebruiken dat u in stap 1 hebt gemaakt|
@@ -213,7 +213,7 @@ Maak het bovenliggende Traffic Manager profiel en koppel twee onderliggende Traf
 
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Name|Luis-profiel-bovenliggend item|Traffic Manager naam in Azure Portal|
     |-ResourceGroupName|Luis-Traffic-Manager|Gemaakt in de vorige sectie|
@@ -233,7 +233,7 @@ Maak het bovenliggende Traffic Manager profiel en koppel twee onderliggende Traf
 
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Eind puntnaam|onderliggend-eind punt-useast|Oost-profiel|
     |-TrafficManagerProfile|$parentprofile|Profiel waaraan u dit eind punt wilt toewijzen|
@@ -270,7 +270,7 @@ Maak het bovenliggende Traffic Manager profiel en koppel twee onderliggende Traf
 
     In deze tabel wordt elke variabele in de cmdlet uitgelegd:
 
-    |Configuratie parameter|Naam of waarde van variabele|Functie|
+    |Configuratie parameter|Naam of waarde van variabele|Doel|
     |--|--|--|
     |-Eind puntnaam|onderliggend-eind punt-uswest|Westelijke profiel|
     |-TrafficManagerProfile|$parentprofile|Profiel waaraan u dit eind punt wilt toewijzen|
@@ -340,7 +340,7 @@ traffic-manager-east    6/7/2018 19:20  {"query":"traffic-manager-east","intents
 ### <a name="validate-dns-response-from-traffic-manager-works"></a>DNS-reactie van Traffic Manager werken valideren
 Om te controleren of het DNS-antwoord een LUIS-eind punt retourneert, vraagt u het verkeer het bovenliggende profiel DNS te beheren met behulp van een DNS-client bibliotheek. De DNS-naam voor het bovenliggende profiel is `luis-dns-parent.trafficmanager.net` .
 
-Met de volgende node. js-code wordt een aanvraag voor het bovenliggende profiel gemaakt en wordt een LUIS-eind punt geretourneerd:
+Met de volgende Node.js code wordt een aanvraag voor het bovenliggende profiel gemaakt en wordt een LUIS-eind punt geretourneerd:
 
 ```javascript
 const dns = require('dns');
@@ -368,7 +368,7 @@ Als u verkeer tussen eind punten wilt beheren, moet u een aanroep naar de Traffi
 
 Schakel [Diagnostische logboeken](../../traffic-manager/traffic-manager-diagnostic-logs.md) in voor Traffic Manager om te zien waarom de eind punt status is gedegradeerd.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 Verwijder de twee LUIS-eindpunt sleutels, de drie Traffic Manager profielen en de resource groep die deze vijf resources bevat. Dit wordt gedaan vanuit de Azure Portal. U verwijdert de vijf resources uit de lijst met resources. Verwijder vervolgens de resource groep.
 
 ## <a name="next-steps"></a>Volgende stappen

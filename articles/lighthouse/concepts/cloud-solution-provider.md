@@ -1,14 +1,14 @@
 ---
 title: Overwegingen voor een Cloud Solution Provider-programma
 description: Voor CSP-partners zorgt Azure gedelegeerd resource beheer voor betere beveiliging en controle door gedetailleerde machtigingen in te scha kelen.
-ms.date: 07/06/2020
+ms.date: 07/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131506"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429450"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse en het programma Cloud Solution Provider
 
@@ -32,6 +32,9 @@ Met Azure Lighthouse kunt u verschillende groepen toewijzen aan verschillende kl
 Als u een abonnement hebt gemaakt via het CSP-programma, volgt u de stappen die worden beschreven in [onboarding van een abonnement op Azure Lighthouse](../how-to/onboard-customer.md). Gebruikers met de rol beheerder agent in uw Tenant kunnen dit onboarding uitvoeren.
 
 ![Tenant beheer met ADMINISTRATE en Azure delegated resource management](../media/csp-2.jpg)
+
+> [!TIP]
+> [Aanbiedingen voor beheerde services](managed-services-offers.md) met persoonlijke abonnementen worden niet ondersteund met-abonnementen die zijn gemaakt via een wederverkoper van het programma van de Cloud Solution Provider (CSP). U kunt deze abonnementen op Azure Lighthouse onboarden met [behulp van Azure Resource Manager-sjablonen](../how-to/onboard-customer.md).
 
 > [!NOTE]
 > De [pagina **mijn klanten** in de Azure Portal](../how-to/view-manage-customers.md) bevat nu een **Cloud Solution Provider (preview)** -sectie waarin facturerings gegevens en resources voor CSP-klanten worden weer gegeven die [de micro soft-klant overeenkomst (MCA) hebben ondertekend](/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../cost-management-billing/understand/mpa-overview.md)voor meer informatie.

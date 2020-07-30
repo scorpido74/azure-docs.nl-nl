@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171710"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423946"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migreren naar nieuwe Azure Time Series Insights API-versies Gen2
 
@@ -39,7 +39,7 @@ Om gebruikers te helpen hun [Time Series-model variabelen](./concepts-variables.
 
 1. U wordt gevraagd om de syntaxis bij te werken die wordt gebruikt door uw time series model-variabelen en opgeslagen query's.
 
-    [![Vragen](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![Verschijnt](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     Als u de melding per ongeluk hebt gesloten, kunt u deze vinden in het deel venster meldingen.
 
@@ -286,7 +286,7 @@ Bijgewerkte aanvraag tekst (gebruikt door `2020-07-31` ):
 
 U `value` kunt de ook `$event['Bar-Pressure-Offset'].Double` . Als er geen gegevens type is opgegeven, wordt ervan uitgegaan dat het gegevens type Double is. De haakjes notatie moet worden gebruikt om het speciale teken () te escapeel `-` .
 
-#### <a name="getaggregateseries"></a>GetAggregateSeries
+#### <a name="aggregateseries"></a>AggregateSeries
 
 Oude aanvraag tekst (gebruikt door `2018-11-01-preview` ):
 

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749699"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431294"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Een VPN Gateway (virtuele netwerk gateway) verbinden met een virtueel WAN
 
@@ -33,21 +33,23 @@ Azure Virtual Network
 
 * Maak een virtueel netwerk zonder virtuele netwerk gateways. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Zie de [snelstart](../virtual-network/quick-create-portal.md) als u een virtueel netwerk in de Azure-portal wilt maken.
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. een virtuele Azure-netwerk gateway maken
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1. een gateway voor een VPN Gateway virtuele netwerk maken
 
-Maak een VPN Gateway virtuele netwerk gateway voor uw virtuele netwerk in de modus actief-actief voor het virtuele netwerk. Wanneer u de gateway maakt, kunt u bestaande open bare IP-adressen gebruiken voor de twee exemplaren van de gateway of u kunt nieuwe open bare Ip's maken. U gebruikt deze open bare IP-adressen bij het instellen van de virtuele WAN-sites. Zie [actieve verbindingen configureren](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)voor meer informatie over de modus actief-actief.
+Maak een **VPN gateway** virtuele netwerk gateway in de modus actief-actief voor het virtuele netwerk. Wanneer u de gateway maakt, kunt u bestaande open bare IP-adressen gebruiken voor de twee exemplaren van de gateway of u kunt nieuwe open bare Ip's maken. U gebruikt deze open bare IP-adressen bij het instellen van de virtuele WAN-sites. Zie voor meer informatie over actieve en actieve VPN-gateways en configuratie stappen [Active-Active VPN-gateways configureren](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>Instelling van de modus actief-actief
+
+Schakel op de pagina **configuratie** van virtuele netwerk gateway de modus actief-actief in.
 
 ![actief-actief](./media/connect-virtual-network-gateway-vwan/active.png "actief-actief")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP-instelling
 
-De BGP-ASN kan niet 65515 zijn. 66515 wordt gebruikt door virtuele WAN van Azure.
+Op de pagina **configuratie** van virtuele netwerk gateway kunt u de **BGP ASN**configureren. Wijzig de BGP ASN. De BGP-ASN kan niet 65515 zijn. 66515 wordt gebruikt door virtuele WAN van Azure.
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
 
-### <a name="public-ip-addresses"></a><a name="pip"></a>Open bare IP-adressen
+### <a name="public-ip-addresses"></a><a name="pip"></a>Openbare IP-adressen
 
 Wanneer de gateway is gemaakt, gaat u naar de pagina **Eigenschappen** . De eigenschappen en configuratie-instellingen zijn vergelijkbaar met het volgende voor beeld. Let op de twee open bare IP-adressen die worden gebruikt voor de gateway.
 
@@ -60,16 +62,16 @@ Als u virtuele WAN-sites wilt maken, navigeert u naar uw virtuele WAN en selecte
 1. Selecteer **+ site maken**.
 2. Typ op de pagina **VPN-sites maken** de volgende waarden:
 
-   * **Regio** -(dezelfde regio als de Azure VPN gateway virtuele netwerk gateway)
-   * **Leverancier van apparaat** : Voer de leverancier van het apparaat in (een wille keurige naam)
-   * **Persoonlijke adres ruimte** : (Voer een waarde in of laat het veld leeg wanneer BGP is ingeschakeld)
-   * **Border Gateway Protocol** -(ingesteld om **in te SCHA kelen** als BGP is ingeschakeld voor de Azure VPN gateway virtuele netwerk gateway)
-   * **Verbinding maken met hubs** (Selecteer de hub die u hebt gemaakt in de vereisten van de vervolg keuzelijst)
+   * **Regio** -dezelfde regio als de Azure VPN gateway virtuele netwerk gateway.
+   * **Leverancier van apparaat** : Voer de leverancier van het apparaat (een wille keurige naam) in.
+   * **Persoonlijke adres ruimte** : Voer een waarde in of laat het veld leeg wanneer BGP is ingeschakeld.
+   * **Border Gateway Protocol** : Stel in **dat moet worden ingeschakeld als** BGP is ingeschakeld voor de Azure VPN gateway virtuele netwerk gateway.
+   * **Verbinding maken met hubs** : Selecteer de hub die u hebt gemaakt in de vereisten in de vervolg keuzelijst. Als u geen hub ziet, controleert u of u een site-naar-site-VPN-gateway hebt gemaakt voor uw hub.
 3. Voer onder **koppelingen**de volgende waarden in:
 
-   * **Provider naam** : Voer een naam in voor de koppeling en een provider naam (een wille keurige naam)
-   * **Snelheid** snelheid (wille keurig getal)
-   * **IP-adres** : Voer het IP-adres in (hetzelfde als het eerste open bare IP-adres dat wordt weer gegeven onder de (VPN gateway) eigenschappen van de virtuele netwerk gateway)
+   * **Provider naam** : Voer een naam in voor de koppeling en een provider naam (elke naam).
+   * **Snelheid** snelheid (wille keurig getal).
+   * **IP-adres** : Voer het IP-adres in (hetzelfde als het eerste open bare IP-adres dat wordt weer gegeven onder de eigenschappen van de virtuele netwerk Gateway (VPN gateway)).
    * **BGP-adres** en **ASN** -BGP-adres en ASN. Deze moeten hetzelfde zijn als een van de BGP-peer-IP-adressen en ASN van de VPN Gateway virtuele netwerk gateway die u in [stap 1](#vnetgw)hebt geconfigureerd.
 4. Controleer en selecteer **bevestigen** om de site te maken.
 5. Herhaal de vorige stappen om de tweede site te maken zodat deze overeenkomt met het tweede exemplaar van de VPN Gateway virtuele netwerk gateway. U behoudt dezelfde instellingen, met uitzonde ring van het gebruik van het tweede open bare IP-adres en het tweede BGP-peer-IP-adres van VPN Gateway configuratie.
@@ -81,7 +83,7 @@ In deze sectie downloadt u het VPN-configuratie bestand voor elk van de sites di
 
 1. Selecteer boven aan de pagina virtuele WAN **-VPN-sites** de **site**en selecteer vervolgens **site-naar-site-VPN-configuratie downloaden**. Azure maakt een configuratie bestand met de instellingen.
 
-   ![configuratie bestand downloaden](./media/connect-virtual-network-gateway-vwan/download.png "downloaden")
+   ![configuratie bestand downloaden](./media/connect-virtual-network-gateway-vwan/download.png "downloadenen")
 2. Down load en open het configuratie bestand.
 3. Herhaal deze stappen voor de tweede site. Zodra u beide configuratie bestanden hebt geopend, kunt u door gaan naar de volgende sectie.
 
@@ -114,12 +116,12 @@ In deze sectie maakt u een verbinding tussen de VPN Gateway lokale netwerk gatew
    * **Lokale netwerk gateway:** Deze verbinding maakt verbinding tussen de gateway van het virtuele netwerk en de lokale netwerk gateway. Kies een van de lokale netwerk gateways die u eerder hebt gemaakt.
    * **Gedeelde sleutel:** Voer een gedeelde sleutel in.
    * **IKE-protocol:** Kies het IKE-protocol.
-   * **BGP:** Kies **BGP inschakelen** als de verbinding zich boven de BGP bevindt.
 3. Klik op **OK** om uw verbinding te maken.
 4. U kunt de verbinding bekijken op de pagina **Verbindingen** van de virtuele netwerkgateway.
 
    ![Verbinding](./media/connect-virtual-network-gateway-vwan/connect.png "verbinding")
 5. Herhaal de voor gaande stappen om een tweede verbinding te maken. Selecteer voor de tweede verbinding de andere lokale netwerk gateway die u hebt gemaakt.
+6. Als de verbindingen via BGP zijn, gaat u nadat u uw verbindingen hebt gemaakt naar een verbinding en selecteert u **configuratie**. Selecteer op de pagina **configuratie** voor **BGP**de optie **ingeschakeld**. Klik vervolgens op **Opslaan**. Herhaal dit voor de tweede verbinding.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. verbindingen testen
 

@@ -3,16 +3,16 @@ title: Geografische Beschik baarheid en valuta ondersteuning voor micro soft Com
 description: De geografische Beschik baarheid en valuta ondersteuning voor trans acties in de commerciële Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120004"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387435"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
@@ -43,9 +43,9 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Brazilië                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
 | Bulgarije                            | BG        | EUR          |
-| Kameroen                            | CM        | USD          |
-| Canada                              | CA        | CAD          |
 | Cabo Verde                          | CV        | USD          |
+| Kameroen                            | CM        | USD          |
+| Canada                              | CA (consistentie en beschikbaarheid)        | CAD          |
 | Kaaimaneilanden                      | KY        | USD          |
 | Chili                               | CL        | USD          |
 | China\**                            | CN        | N.v.t.          |
@@ -110,8 +110,8 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Namibië                             | NA        | USD          |
 | Nepal                               | NP        | USD          |
 | Nederland                         | NL        | EUR          |
-| Nicaragua                           | NI        | USD          |
 | Nieuw-Zeeland                         | NZ        | NZD          |
+| Nicaragua                           | NI        | USD          |
 | Nigeria                             | NG        | USD          |
 | Noorwegen                              | NO        | NOK          |
 | Oman                                | OM        | USD          |
@@ -148,15 +148,15 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Tunesië                             | TN        | USD          |
 | Turkije                              | TR        | USD          |
 | Turkmenistan                        | TM        | USD          |
-| Vaticaan stad (Heilige stoel)             | VA        | EUR          |
-| Maagden eilanden van de Verenigde Staten | VI        | USD          |
 | Oeganda                              | UG        | USD          |
 | Oekraïne                             | UA        | USD          |
 | Verenigde Arabische Emiraten                | AE        | USD          |
 | Verenigd Koninkrijk                      | GB        | GBP          |
 | Verenigde Staten                       | VS        | USD          |
+|  Amerikaanse Maagdeneilanden                 | VI        | USD          |
 | Uruguay                             | UY        | USD          |
 | Oezbekistan                          | UZ        | USD          |
+| Vaticaan stad (Heilige stoel)             | VA        | EUR          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
 | Jemen                               | TEZAM        | USD          |

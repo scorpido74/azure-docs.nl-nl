@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031623"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407350"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-connectiviteits partners en peering-locaties
 
@@ -74,7 +74,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 
 ### <a name="global-commercial-azure"></a>Wereld wijde commerciële Azure
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365**  | **Maplocaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365**  | **Locaties** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |Ondersteund |Ondersteund |Melbourne, Sydney |
 | **[Airtel](https://www.airtel.in/business/#/)** | Ondersteund | Ondersteund | Chennai2, Mumbai2 |
@@ -82,7 +82,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[Aryaka Networks](https://www.aryaka.com/)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Hong Kong SAR, Sao Paulo, Seattle, silicone dal, Singapore, Tokio, Washington DC |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Ondersteund |Ondersteund |Sao Paulo |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Frankfurt, Londen, silicium dal, Singapore, Sydney, Tokio, Toronto, Washington DC |
-| **[OP TOKYO](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Ondersteund | Ondersteund | Tokyo2 |
+| **[OP TOKYO](https://www.attokyo.com/connectivity/azure.html)** | Ondersteund | Ondersteund | Osaka, Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Ondersteund | Ondersteund | Tokio |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Ondersteund |Ondersteund |Kaapstad, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Ondersteund |Ondersteund |Montreal, Toronto, Quebec |
@@ -109,7 +109,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **Etisalat VAE** |Ondersteund |Ondersteund |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Ondersteund |Ondersteund |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londen |
 | **FarEasTone** |Ondersteund |Ondersteund |Taipei|
-| **GÉANT** |Ondersteund |Ondersteund |Amsterdam, Dublin, Frankfurt, Marseille |
+| **GÉANT** |Ondersteund |Ondersteund |Amsterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
 | **GTT** |Ondersteund |Ondersteund |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Ondersteund| Ondersteund | Chennai, Mumbai |
 | **Intelsat** | Ondersteund | Ondersteund | Washington DC2 |
@@ -181,7 +181,7 @@ Azure National Clouds zijn geïsoleerd van elkaar en van wereld wijde commercië
 
 ### <a name="us-government-cloud"></a>Cloud van de Amerikaanse overheid
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Maplocaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Locaties** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Ondersteund |Ondersteund |Chicago, Phoenix, silicone dal, Washington DC |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Ondersteund |Ondersteund |New York, Phoenix, San Antonio, Washington DC |
@@ -192,7 +192,7 @@ Azure National Clouds zijn geïsoleerd van elkaar en van wereld wijde commercië
 
 ### <a name="china"></a>China
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Maplocaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Locaties** |
 | --- | --- | --- | --- |
 | **China Telecom** |Ondersteund |Niet ondersteund |Beijing, Beijing2, Shanghai, Shanghai2 |
 | **Unicom China** | Ondersteund | Niet ondersteund | Beijing2, Shanghai2 |
@@ -202,7 +202,7 @@ Zie [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressrout
 
 ### <a name="germany"></a>Duitsland
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Maplocaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Locaties** |
 | --- | --- | --- | --- |
 | **[Colt](https://www.colt.net/direct-connect/azure/)** |Ondersteund |Niet ondersteund |Frankfurt |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Ondersteund |Niet ondersteund |Frankfurt |
@@ -241,7 +241,7 @@ Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connecti
 
 ## <a name="connectivity-through-additional-service-providers"></a>Connectiviteit via aanvullende service providers
 
-| **Connectiveitsprovider** | **Exchange** | **Maplocaties** |
+| **Connectiveitsprovider** | **Exchange** | **Locaties** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Singapore |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/)** | Equinix, Cologix | Toronto, Montreal |

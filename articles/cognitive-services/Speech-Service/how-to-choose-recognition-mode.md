@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: ed2c59a92f348812afac3e39719d3814f0720621
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82ff34b945e93ffbf43e3a264a09e0af7b8660e5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023037"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405089"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Een modus voor spraak herkenning kiezen
 
@@ -191,7 +192,7 @@ Zie de [naslag documentatie voor Speech SDK](speech-to-text.md#speech-sdk-refere
 
 ## <a name="dictation"></a>Dicteren
 
-Bij het gebruik van doorlopende herkenning kunt u de verwerking van spraak herkenning inschakelen met behulp van de bijbehorende functie ' dicteren inschakelen '. Deze modus zorgt ervoor dat het spraak configuratie-exemplaar Word-beschrijvingen interpreteert, zoals Lees tekens. Bijvoorbeeld: het utterance ' hebt u Live in het stads vraag teken ' zou worden geïnterpreteerd als de tekst ' wilt u in de stad wonen? '.
+Bij het gebruik van continue herkenning kunt u dicteerverwerking inschakelen met behulp van de bijbehorende functie 'dicteren inschakelen'. In deze modus interpreteert de spraakconfiguratie-instantie woordbeschrijvingen van zinselementen zoals interpunctie. Bijvoorbeeld: de uiting 'Woon je hier in de stad vraagteken' wordt geïnterpreteerd als de tekst 'Woon je hier in de stad?'.
 
 ::: zone pivot="programming-language-csharp"
 

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027169"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428004"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -436,6 +436,9 @@ Beleids regels voor claim toewijzing kunnen alleen worden toegewezen aan Service
 
 In azure AD zijn veel scenario's mogelijk wanneer u claims kunt aanpassen die worden verzonden in tokens voor specifieke service-principals. In deze sectie worden enkele algemene scenario's besproken die u kunnen helpen bij het begrijpt van het gebruik van het claim toewijzings beleid type.
 
+> [!NOTE]
+> Bij het maken van een claim toewijzings beleid kunt u ook een claim van een uitbreidings kenmerk van een Directory-schema in tokens verzenden. Gebruik *ExtensionID* voor het kenmerk extension in plaats van id in het *-* `ClaimsSchema` element.  Zie [kenmerken van Directory-schema uitbreiding gebruiken](active-directory-schema-extensions.md)voor meer informatie over extensie kenmerken.
+
 #### <a name="prerequisites"></a>Vereisten
 
 In de volgende voor beelden maakt, bijwerkt, koppelt en verwijdert u beleids regels voor service-principals. Als u geen ervaring hebt met Azure AD, raden we u aan [meer te weten te komen over het verkrijgen van een Azure AD-Tenant](quickstart-create-new-tenant.md) voordat u verdergaat met deze voor beelden.
@@ -525,6 +528,7 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.
+- Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.
+- Zie voor meer informatie over extensie kenmerken de [kenmerken van Directory-schema-extensies gebruiken in claims](active-directory-schema-extensions.md).

@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946164"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406942"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Het verificatie token in de cache opslaan
 
@@ -22,7 +23,7 @@ In dit artikel wordt beschreven hoe u het verificatie token in de cache opslaat 
 
 ## <a name="using-aspnet"></a>ASP.NET gebruiken
 
-Importeer het NuGet-pakket **micro soft. Identity model. clients. ActiveDirectory** , dat wordt gebruikt om een token op te halen. Gebruik vervolgens de volgende code om een `AuthenticationResult`te verkrijgen met de verificatie waarden die u hebt gekregen tijdens [het maken van de insluitende lezer-resource](./how-to-create-immersive-reader.md).
+Importeer het NuGet-pakket **micro soft. Identity model. clients. ActiveDirectory** , dat wordt gebruikt om een token op te halen. Gebruik vervolgens de volgende code om een te verkrijgen `AuthenticationResult` met de verificatie waarden die u hebt gekregen tijdens [het maken van de insluitende lezer-resource](./how-to-create-immersive-reader.md).
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -36,7 +37,7 @@ private async Task<AuthenticationResult> GetTokenAsync()
 
 Het `AuthenticationResult` object heeft een `AccessToken` eigenschap die het token bevat dat u wilt gebruiken bij het starten van de insluitende lezer met behulp van de SDK. Het bevat ook een `ExpiresOn` eigenschap die ziet wanneer het token verloopt. Voordat u de insluitende lezer start, kunt u controleren of het token is verlopen en alleen een nieuw token verkrijgen als het is verlopen.
 
-## <a name="using-nodejs"></a>Node. JS gebruiken
+## <a name="using-nodejs"></a>Node.JS gebruiken
 
 Voeg het [**aanvraag**](https://www.npmjs.com/package/request) NPM-pakket toe aan uw project. Gebruik de volgende code om een token te verkrijgen, met behulp van de verificatie waarden die u hebt gekregen tijdens [het maken van de insluitende lezer-resource](./how-to-create-immersive-reader.md).
 

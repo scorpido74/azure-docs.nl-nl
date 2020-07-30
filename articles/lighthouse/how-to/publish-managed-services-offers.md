@@ -1,14 +1,14 @@
 ---
 title: Een beheerde service aanbieding naar Azure Marketplace publiceren
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten naar Azure Lighthouse worden geleid.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133310"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407061"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde service aanbieding naar Azure Marketplace publiceren
 
@@ -34,7 +34,7 @@ Zie de [publicatie handleiding voor Azure Marketplace en AppSource](../../market
 Zodra een klant uw aanbieding heeft toegevoegd, kunnen ze een of meer abonnementen of resource groepen delegeren, die vervolgens worden uitgevoerd [voor Azure Lighthouse](#the-customer-onboarding-process).
 
 > [!IMPORTANT]
-> Elk abonnement in een beheerde service aanbieding bevat een sectie **manifest Details** , waarin u de Azure Active Directory (Azure AD)-entiteiten in uw Tenant definieert die toegang hebben tot de gedelegeerde resource groepen en/of abonnementen voor klanten die dat plan hebben gekocht. Het is belang rijk te weten dat elke groep (of gebruiker of Service-Principal) die u opneemt, dezelfde machtigingen heeft voor elke klant die het plan heeft gekocht. Als u verschillende groepen wilt toewijzen voor gebruik met elke klant, moet u een afzonderlijk [privé plan](../../marketplace/private-offers.md) publiceren dat exclusief is voor elke klant.
+> Elk abonnement in een beheerde service aanbieding bevat een sectie **manifest Details** , waarin u de Azure Active Directory (Azure AD)-entiteiten in uw Tenant definieert die toegang hebben tot de gedelegeerde resource groepen en/of abonnementen voor klanten die dat plan hebben gekocht. Het is belang rijk te weten dat elke groep (of gebruiker of Service-Principal) die u opneemt, dezelfde machtigingen heeft voor elke klant die het plan heeft gekocht. Als u verschillende groepen wilt toewijzen om met elke klant te werken, kunt u een afzonderlijk [privé plan](../../marketplace/private-offers.md) publiceren dat exclusief is voor elke klant. Denk eraan dat privé-abonnementen niet worden ondersteund door een leverancier van het CSP-programma (Cloud Solution Provider).
 
 ## <a name="publish-your-offer"></a>Uw aanbieding publiceren
 

@@ -5,15 +5,15 @@ description: Meer informatie over het importeren en exporteren van een DNS-zone 
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.date: 4/3/2019
+ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
-ms.openlocfilehash: bd40b3400b2a1c09be8fabd1201bedc7043bf19b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709093"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424219"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Een DNS-zonebestand importeren en exporteren met de Azure CLI
 
@@ -82,7 +82,7 @@ Een zone bestand voor de zone **contoso.com**importeren.
 1. Als u er nog geen hebt, moet u een resource manager-resource groep maken.
 
     ```azurecli
-    az group create --group myresourcegroup -l westeurope
+    az group create --resource-group myresourcegroup -l westeurope
     ```
 
 2. Als u de zone **contoso.com** uit het bestand **contoso.com.txt** wilt importeren in een nieuwe DNS-zone in de resource groep **myresourcegroup**, voert u de opdracht uit `az network dns zone import` .<BR>Met deze opdracht wordt het zone bestand geladen en geparseerd. De opdracht voert een reeks opdrachten uit op de Azure DNS-service om de zone en alle record sets in de zone te maken. De opdracht rapporteert de voortgang in het console venster, samen met eventuele fouten of waarschuwingen. Omdat record sets in de reeks worden gemaakt, kan het enkele minuten duren voordat een groot zone bestand is geïmporteerd.

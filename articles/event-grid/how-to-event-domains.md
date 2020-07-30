@@ -3,12 +3,12 @@ title: Gebeurtenissen publiceren met gebeurtenis domeinen met Azure Event Grid
 description: Laat zien hoe u grote sets met onderwerpen beheert in Azure Event Grid en gebeurtenissen hierop publiceert met behulp van gebeurtenis domeinen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 30a77d98fdb0d5bfd5169174999a0a08742adfd8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eae467c1c4cc1257e7a5205dd5efda40490f7908
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105558"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423640"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Onderwerpen beheren en gebeurtenissen publiceren met behulp van gebeurtenis domeinen
 
@@ -135,7 +135,7 @@ New-AzureRmEventGridSubscription `
 
 Als u een eind punt nodig hebt om uw gebeurtenissen te abonneren op, kunt u altijd een [vooraf gemaakte web-app](https://github.com/Azure-Samples/azure-event-grid-viewer) implementeren waarin de binnenkomende gebeurtenissen worden weer gegeven. U kunt uw evenementen verzenden naar uw test website op `https://<your-site-name>.azurewebsites.net/api/updates` .
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
 Machtigingen die zijn ingesteld voor een onderwerp worden opgeslagen in Azure Active Directory en moeten expliciet worden verwijderd. Als u een gebeurtenis abonnement verwijdert, wordt de toegang van gebruikers tot het maken van gebeurtenis abonnementen niet ingetrokken als deze schrijf toegang heeft voor een onderwerp.
 

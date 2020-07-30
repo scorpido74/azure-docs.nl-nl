@@ -3,12 +3,13 @@ title: Een bestaande app snel implementeren in een cluster
 description: Een Azure Service Fabric-cluster gebruiken voor het hosten van een bestaande Node.js-toepassing met Visual Studio.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614839"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430718"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Een Node.js-toepassing hosten in Azure Service Fabric
 

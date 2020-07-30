@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: 702ea4e76f1fb13a3c7935f131da4ef11d369813
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002995"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432754"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Azure CDN gebruiken met SAS
 
@@ -96,7 +96,7 @@ Deze optie is alleen beschikbaar voor **Azure CDN Premium van Verizon** -profiel
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. Verfijn de cache duur door gebruik te maken van cache regels of door headers toe te voegen `Cache-Control` op de oorspronkelijke server. Omdat Azure CDN het SAS-token als een gewone query teken reeks behandelt, als een best practice u moet een cache duur instellen die verloopt op of vóór de SAS-verval tijd. Als een bestand in de cache gedurende een langere periode wordt opgeslagen dan de SAS actief is, is het bestand mogelijk toegankelijk vanaf de bron server Azure CDN nadat de SAS-verval tijd is verstreken. Als deze situatie zich voordoet en u het bestand in de cache ontoegankelijk wilt maken, moet u een opschoon bewerking op het bestand uitvoeren om het uit de cache te verwijderen. Voor informatie over het instellen van de cache duur op Azure CDN, Zie [beheer Azure CDN caching met cache regels](cdn-caching-rules.md).
+3. Verfijn de cache duur door gebruik te maken van cache regels of door headers toe te voegen `Cache-Control` op de oorspronkelijke server. Omdat Azure CDN het SAS-token als een gewone query teken reeks behandelt, als een best practice u moet een cache duur instellen die verloopt op of vóór de SAS-verval tijd. Als een bestand gedurende een langere duur in de cache wordt opgeslagen dan de SAS actief is, is het bestand mogelijk toegankelijk vanaf het Azure CDN-eind punt nadat de SAS-verval tijd is verstreken. Als deze situatie zich voordoet en u het bestand in de cache ontoegankelijk wilt maken, moet u een opschoon bewerking op het bestand uitvoeren om het uit de cache te verwijderen. Voor informatie over het instellen van de cache duur op Azure CDN, Zie [beheer Azure CDN caching met cache regels](cdn-caching-rules.md).
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Optie 3: gebruik de verificatie van het CDN-beveiligings token met een regel voor herschrijven
 

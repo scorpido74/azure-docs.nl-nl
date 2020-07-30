@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372107"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433223"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,11 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
 
 - In het __cli__ -fragment in dit artikel wordt ervan uitgegaan dat u een document hebt gemaakt `inferenceconfig.json` . Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van dit document.
 
-- Als u een AKS-cluster koppelt, waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), schakelt u de IP-adresbereiken voor het AML Contol-vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een detwistisatie voor het AKS-cluster geïmplementeerd. Als u geen toegang hebt tot de API-server, kan het niet meer worden geïmplementeerd. De [IP-bereiken](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) voor beide [regio's]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) gebruiken bij het inschakelen van de IP-bereiken in een AKS-cluster
+- Als u een Standard Load Balancer (SLB) hebt geïmplementeerd in uw cluster in plaats van een basis Load Balancer (BLB), maakt u een cluster in de AKS-Portal/CLI/SDK en koppelt u dit aan de AML-werk ruimte.
+
+- Als u een AKS-cluster koppelt, waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), schakelt u de IP-adresbereiken voor het AML Contol-vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een detwistisatie voor het AKS-cluster geïmplementeerd. Als u geen toegang hebt tot de API-server, kan het niet meer worden geïmplementeerd. Gebruik de [IP-bereiken](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) voor beide [regio's]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) bij het inschakelen van de IP-bereiken in een AKS-cluster.
+
+__IP-adresbereiken van Authroized werken alleen met Standard Load Balancer.__
  
  - De naam van de compute moet uniek zijn binnen een werk ruimte
    - De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.
@@ -73,7 +77,7 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
    
  - Als u modellen wilt implementeren op GPU-knoop punten of FPGA-knoop punten (of een specifieke SKU), moet u een cluster maken met de specifieke SKU. Er is geen ondersteuning voor het maken van een secundaire knooppunt groep in een bestaand cluster en het implementeren van modellen in de secundaire knooppunt groep.
  
- - Als u een Standard Load Balancer (SLB) hebt geïmplementeerd in uw cluster in plaats van een basis Load Balancer (BLB), maakt u een cluster in de AKS-Portal/CLI/SDK en koppelt u dit aan de AML-werk ruimte. 
+ 
 
 
 
@@ -257,6 +261,30 @@ Zie voor meer informatie over het gebruik van VS code [implementeren naar AKS vi
 
 > [!IMPORTANT]
 > Voor de implementatie via VS code moet het AKS-cluster vooraf worden gemaakt of aan uw werk ruimte zijn gekoppeld.
+
+### <a name="understand-the-deployment-processes"></a>Meer informatie over de implementatie processen
+
+Het woord ' implementatie ' wordt gebruikt in zowel Kubernetes als Azure Machine Learning. ' Implementatie ' heeft zeer verschillende betekenissen in deze twee contexten. In Kubernetes is een een `Deployment` concrete entiteit die is opgegeven met een declaratief yaml-bestand. Een Kubernetes `Deployment` heeft een gedefinieerde levens cyclus en concrete relaties met andere Kubernetes-entiteiten, zoals `Pods` en `ReplicaSets` . Meer informatie over Kubernetes van documenten en Video's vindt u op [Wat is Kubernetes?](https://aka.ms/k8slearning).
+
+In Azure Machine Learning wordt ' implementatie ' gebruikt voor een meer algemene indruk van het maken van de beschik baarheid en het opschonen van uw project resources. De stappen die Azure Machine Learning een deel van de implementatie beschouwt zijn:
+
+1. Inpakken de bestanden in de projectmap en negeert deze die zijn opgegeven in. amlignore of. gitignore
+1. Uw berekenings cluster omhoog schalen (gekoppeld aan Kubernetes)
+1. Het dockerfile maken of downloaden van het reken knooppunt (heeft betrekking op Kubernetes)
+    1. Het systeem berekent een hash van: 
+        - De basis installatie kopie 
+        - Aangepaste stappen voor docker (Zie [een model implementeren met behulp van een aangepaste docker-basis installatie kopie](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - De Conda definition YAML (Zie [& software omgevingen maken in azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Het systeem gebruikt deze hash als de sleutel in een zoek opdracht van de werk ruimte Azure Container Registry (ACR)
+    1. Als deze niet wordt gevonden, wordt gezocht naar een overeenkomst in de globale ACR
+    1. Als deze niet wordt gevonden, bouwt het systeem een nieuwe installatie kopie (die wordt opgeslagen in de cache en geregistreerd bij de werk ruimte ACR)
+1. Het gecomprimeerde project bestand downloaden naar de tijdelijke opslag op het reken knooppunt
+1. Het project bestand uitgepakt
+1. Het reken knooppunt wordt uitgevoerd`python <entry script> <arguments>`
+1. Logboeken, model bestanden en andere bestanden die zijn geschreven naar `./outputs` naar het opslag account dat is gekoppeld aan de werk ruimte opslaan
+1. Computer omlaag schalen, inclusief het verwijderen van tijdelijke opslag (gekoppeld aan Kubernetes)
+
+Wanneer u AKS gebruikt, wordt het omhoog en omlaag schalen van de compute bepaald door Kubernetes, met behulp van de dockerfile gemaakt of gevonden zoals hierboven is beschreven. 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellen implementeren op AKS met behulp van gecontroleerde implementatie (preview-versie)
 

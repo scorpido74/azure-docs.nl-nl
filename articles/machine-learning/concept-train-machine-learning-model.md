@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147044"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431924"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -92,11 +92,33 @@ Machine learning-pijp lijnen kunnen de eerder genoemde trainings methoden (confi
 * [Voor beelden: pijp lijn met automatische machine learning](https://aka.ms/pl-automl)
 * [Voor beelden: pijp lijn met schattingen](https://aka.ms/pl-estimator)
 
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Begrijpen wat er gebeurt wanneer u een trainings taak verzendt
+
+De Azure-trainings levenscyclus bestaat uit:
+
+1. Inpakken de bestanden in de projectmap en negeert deze die zijn opgegeven in _. amlignore_ of _. gitignore_
+1. Uw berekenings cluster omhoog schalen 
+1. De dockerfile maken of downloaden naar het reken knooppunt 
+    1. Het systeem berekent een hash van: 
+        - De basis installatie kopie 
+        - Aangepaste stappen voor docker (Zie [een model implementeren met behulp van een aangepaste docker-basis installatie kopie](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - De Conda definition YAML (Zie [& software omgevingen maken in azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Het systeem gebruikt deze hash als de sleutel in een zoek opdracht van de werk ruimte Azure Container Registry (ACR)
+    1. Als deze niet wordt gevonden, wordt gezocht naar een overeenkomst in de globale ACR
+    1. Als deze niet wordt gevonden, bouwt het systeem een nieuwe installatie kopie (die wordt opgeslagen in de cache en geregistreerd bij de werk ruimte ACR)
+1. Het gecomprimeerde project bestand downloaden naar de tijdelijke opslag op het reken knooppunt
+1. Het project bestand uitgepakt
+1. Het reken knooppunt wordt uitgevoerd`python <entry script> <arguments>`
+1. Logboeken, model bestanden en andere bestanden die zijn geschreven naar `./outputs` naar het opslag account dat is gekoppeld aan de werk ruimte opslaan
+1. Computer omlaag schalen, inclusief het verwijderen van tijdelijke opslag 
+
+Als u ervoor kiest om op uw lokale machine te trainen ("configureren als lokale uitvoering"), hoeft u docker niet te gebruiken. U kunt docker lokaal gebruiken als u kiest (Zie de sectie [ml-pijp lijn configureren](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) voor een voor beeld).
+
 ## <a name="r-sdk"></a>R SDK
 
-Met de R-SDK kunt u de R-taal gebruiken met Azure Machine Learning. De SDK gebruikt het Reticulate-pakket om een verbinding te maken met de python-SDK van Azure Machine Learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
+Met de R-SDK kunt u de R-taal gebruiken met Azure Machine Learning. De SDK gebruikt het Reticulate-pakket om een verbinding te maken met de python-SDK van Azure Machine Learning. Dit geeft u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
 
-Raadpleeg de volgende artikelen voor meer informatie:
+Raadpleeg voor meer informatie de volgende artikelen:
 
 * [Zelf studie: een logistiek regressie model maken](tutorial-1st-r-experiment.md)
 * [Naslag informatie over Azure Machine Learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/index.html)

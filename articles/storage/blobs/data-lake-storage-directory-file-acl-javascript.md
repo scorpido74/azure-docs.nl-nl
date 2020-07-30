@@ -8,12 +8,13 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 506d9cd9581172d6eb1f36921ab96e8731ea3803
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 648a47b451e8857c1cd84c2bcecdaae7fcaa065d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089427"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430539"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java script gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -360,8 +361,8 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-* [Pakket (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+* [Pakket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [Voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
 * [Feedback geven](https://github.com/Azure/azure-sdk-for-java/issues)

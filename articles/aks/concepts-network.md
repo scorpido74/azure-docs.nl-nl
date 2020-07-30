@@ -4,12 +4,12 @@ description: Meer informatie over netwerken in azure Kubernetes service (AKS), w
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244647"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387758"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
 
@@ -105,7 +105,7 @@ De volgende gedrags verschillen bestaan tussen kubenet en Azure CNI:
 | Kubernetes services beschikbaar maken met behulp van een load balancer service, app-gateway of ingangs controller | Ondersteund | Ondersteund |
 | Standaard Azure DNS en privé zones                                                          | Ondersteund | Ondersteund |
 
-Met betrekking tot DNS wordt met zowel kubenet-als Azure CNI-invoeg toepassingen DNS aangeboden door CoreDNS, een daemon-set die wordt uitgevoerd in AKS. Zie [Customizing DNS service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)(Engelstalig) voor meer informatie over CoreDNS op Kubernetes. CoreDNS is standaard geconfigureerd om onbekende domeinen door te sturen naar de DNS-server van het knoop punt, met andere woorden, naar de DNS-functionaliteit van de Azure Virtual Network waar het AKS-cluster wordt geïmplementeerd. Azure DNS en privé zones werken daarom samen voor een Peul dat wordt uitgevoerd in AKS.
+Met betrekking tot DNS wordt met behulp van de kubenet-en Azure CNI-invoeg toepassingen DNS aangeboden door CoreDNS, een implementatie die wordt uitgevoerd in AKS met een eigen automatische schaal functie. Zie [Customizing DNS service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)(Engelstalig) voor meer informatie over CoreDNS op Kubernetes. CoreDNS is standaard geconfigureerd om onbekende domeinen door te sturen naar de DNS-server van het knoop punt, met andere woorden, naar de DNS-functionaliteit van de Azure Virtual Network waar het AKS-cluster wordt geïmplementeerd. Azure DNS en privé zones werken daarom samen voor een Peul dat wordt uitgevoerd in AKS.
 
 ### <a name="support-scope-between-network-models"></a>Ondersteunings bereik tussen netwerk modellen
 

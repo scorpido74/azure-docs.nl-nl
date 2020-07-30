@@ -3,12 +3,12 @@ title: Azure-blauw drukken-functies
 description: Hierin worden de functies beschreven die beschikbaar zijn voor gebruik met blauw drukken artefacten in definities en toewijzingen van Azure.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970872"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422841"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functies voor gebruik met Azure-blauw drukken
 
@@ -34,9 +34,9 @@ Retourneert een object met eigenschappen die zijn ingevuld met de uitvoer van de
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| artefactnaam |Yes |tekenreeks |De naam van een blauw druk artefact. |
+| artefactnaam |Ja |tekenreeks |De naam van een blauw druk artefact. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -123,10 +123,10 @@ Combineert meerdere teken reeks waarden en retourneert de aaneengeschakelde teke
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| tekenreeks1 |Yes |tekenreeks |De eerste waarde voor samen voegen. |
-| aanvullende argumenten |No |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
+| tekenreeks1 |Ja |tekenreeks |De eerste waarde voor samen voegen. |
+| aanvullende argumenten |Nee |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -148,9 +148,9 @@ Retourneert een waarde voor de para meter blauw druk. De opgegeven parameter naa
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -174,7 +174,7 @@ Definieer de para meter _principalIds_ in de definitie van de blauw druk:
                 "type": "array",
                 "metadata": {
                     "displayName": "Principal IDs",
-                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the RBAC assignment.",
+                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the Azure role assignment.",
                     "strongType": "PrincipalId"
                 }
             }
@@ -269,9 +269,9 @@ Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| tijdelijke aanduiding |Yes |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
+| tijdelijke aanduiding |Ja |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 

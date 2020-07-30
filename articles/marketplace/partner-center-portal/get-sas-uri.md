@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/14/2020
-ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317498"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431689"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>URI voor Shared Access-hand tekening ophalen voor uw VM-installatie kopie
 
@@ -31,17 +31,15 @@ Volg de volgende vereisten bij het genereren van SAS-Uri's voor uw Vhd's:
 
 Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
-* **Micro soft Storage Explorer** -grafisch hulp programma dat beschikbaar is voor Windows, MacOS en Linux.
+* **Micro soft Storage Explorer** – grafisch hulp programma dat beschikbaar is in de Azure Portal.
 * **Microsoft Azure cli** : aanbevolen voor niet-Windows-besturings systemen en geautomatiseerde of continue integratie omgevingen.
 
 ### <a name="use-microsoft-storage-explorer"></a>Micro soft Storage Explorer gebruiken
 
-1. Down load en Installeer [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-2. Open de Verkenner en selecteer **account toevoegen**in het menu links. Het dialoog venster **verbinding maken met Azure Storage** wordt weer gegeven.
-3. Selecteer **een Azure-account toevoegen** en **Meld u aan**. Voer de vereiste stappen uit om u aan te melden bij uw Azure-account.
-4. Ga in het linkerdeel**venster naar** uw **opslag accounts** en vouw dit knoop punt uit.
-5. Klik met de rechter muisknop op uw VHD en selecteer vervolgens **hand tekening voor share toegang ophalen**.
-6. Het dialoog venster **Shared Access Signature** wordt weer gegeven. Vul de volgende velden in:
+1. Ga naar uw opslag account in de Azure Portal.
+2. Open in het deel venster Verkenner aan de linkerkant het hulp programma **Storage Explorer** (preview).
+3. Klik met de rechter muisknop op uw VHD en selecteer vervolgens **Shared Access Signature ophalen**.
+4. Het dialoog venster **Shared Access Signature** wordt weer gegeven. Vul de volgende velden in:
 
     * **Begin tijd** – machtigings begindatum voor toegang tot de virtuele harde schijf. Geef een datum op die één dag voor de huidige datum valt.
     * **Verloop tijd** – verval datum van machtiging voor toegang tot de VHD. Geef een datum op die ten minste drie weken na de huidige datum ligt.
@@ -50,20 +48,11 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="Illustreert het dialoog venster Shared Access Signature":::
 
-7. Selecteer **maken**om de bijbehorende SAS-URI voor deze VHD te maken. Het dialoog venster wordt vernieuwd en Details over deze bewerking worden weer gegeven.
-8. Kopieer de **URI** en sla deze op in een tekst bestand op een veilige locatie.
+5. Selecteer **maken**om de bijbehorende SAS-URI voor deze VHD te maken. Het dialoog venster wordt vernieuwd en Details over deze bewerking worden weer gegeven.
+6. Kopieer de **URI** en sla deze op in een tekst bestand op een veilige locatie.
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="Illustreert het Shared Access Signature vak Details":::
-
-    Deze gegenereerde SAS-URI is voor toegang op container niveau. Als u deze specifiek wilt maken, bewerkt u het tekst bestand om de naam van de virtuele harde schijf toe te voegen (volgende stap).
-
-9. Plaats de naam van de VHD achter de vhd's-teken reeks in de SAS-URI (neem een slash op). De uiteindelijke SAS-URI moet er als volgt uitzien:
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Als de naam van de VDH bijvoorbeeld is `TestRGVM2.vhd` , zou de resulterende SAS-URI er als volgt uitziet:
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. Herhaal deze stappen voor elke VHD in de plannen die u wilt publiceren.
+7. Herhaal deze stappen voor elke VHD in de plannen die u wilt publiceren.
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 

@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 95372d69f58249afc946f12ec74696507429e5c6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a971291dd423894e4d04158abe873a7222f9802c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125282"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405570"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Service aanvraag mislukt. Status: 403 (verboden)
 
@@ -57,7 +57,7 @@ Als u een eigenaar van het abonnement bent, kunt u deze opdracht zelf uitvoeren.
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Voor meer informatie over deze functie vereiste en het toewijzings proces, zie de [sectie *toegangs machtigingen van uw gebruiker instellen* ](how-to-set-up-instance-manual.md#set-up-your-users-access-permissions) voor *instructies: een exemplaar en authenticatie instellen (hand matig)*.
+Voor meer informatie over deze functie vereiste en het toewijzings proces, zie de [sectie *toegangs machtigingen van uw gebruiker instellen* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) voor *instructies: een exemplaar en authenticatie instellen (CLI of portal)*.
 
 Als u deze roltoewijzing al hebt en nog steeds het 403-probleem ondervindt, gaat u verder met de volgende oplossing.
 
@@ -75,12 +75,12 @@ Controleer eerst of de instellingen voor de Azure Digital Apparaatdubbels-machti
 
 #### <a name="fix-issues"></a>Problemen oplossen
 
-Als een van deze voor beeld anders lijkt dan beschreven, volgt u de instructies voor het instellen van een app-registratie in het [gedeelte *toegangs machtigingen instellen voor client toepassingen* ](how-to-set-up-instance-manual.md#set-up-access-permissions-for-client-applications) van *instructies: een exemplaar en verificatie instellen (hand matig)*.
+Als een van deze voor beeld anders lijkt dan beschreven, volgt u de instructies voor het instellen van een app-registratie in het [gedeelte *toegangs machtigingen instellen voor client toepassingen* ](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) van *How-to: een instantie en authenticatie instellen (CLI of portal)*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees de installatie stappen voor het maken en verifiëren van een nieuw exemplaar van Azure Digital Apparaatdubbels:
-* [*Instructies: een exemplaar en authenticatie instellen (hand matig)*](how-to-set-up-instance-manual.md)
+* [*Instructies: een instantie en authenticatie instellen (CLI)*](how-to-set-up-instance-cli.md)
 
 Lees meer over beveiliging en machtigingen op Azure Digital Apparaatdubbels:
 * [*Concepten: beveiliging voor Azure Digital Apparaatdubbels Solutions*](concepts-security.md)

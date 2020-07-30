@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e811d921d28ce33d7dbc9f2bb7996557838178ad
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318637"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429857"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Prestaties van model in Azure Machine Learning Studio evalueren (klassiek)
 
-**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 In dit artikel vindt u meer informatie over de metrische gegevens die u kunt gebruiken om de model prestaties in Azure Machine Learning Studio (klassiek) te bewaken.  Het evalueren van de prestaties van een model is een van de belangrijkste fasen in het data Science-proces. Hiermee wordt aangegeven hoe de Score (voor spellingen) van een gegevensset is geslaagd door een getraind model. Azure Machine Learning Studio (klassiek) ondersteunt model evaluatie via twee van de belangrijkste machine learning modules: 

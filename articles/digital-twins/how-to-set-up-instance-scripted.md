@@ -1,18 +1,18 @@
 ---
 title: Een exemplaar en verificatie instellen (met een script)
 titleSuffix: Azure Digital Twins
-description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen, met inbegrip van de juiste verificatie. Script versie.
+description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen door een script voor automatische implementatie uit te voeren
 author: baanders
 ms.author: baanders
-ms.date: 7/22/2020
+ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 076bde9e2760a862822d80d63197e2c15a678d35
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337905"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407447"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -20,9 +20,12 @@ ms.locfileid: "87337905"
 
 In dit artikel worden de stappen beschreven voor het **instellen van een nieuwe Azure Digital apparaatdubbels-instantie**, inclusief het maken van het exemplaar en het instellen van verificatie. Nadat dit artikel is voltooid, hebt u een Azure Digital Apparaatdubbels-exemplaar gereed om te Program meren.
 
-Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een [ **geautomatiseerd implementatie script** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) uit te voeren dat het proces stroomlijnt. Als u de hand matige stappen wilt weer geven waarmee het script wordt uitgevoerd achter de schermen, raadpleegt u de hand matige versie van dit artikel: [*instructies: een exemplaar en authenticatie (hand matig) instellen*](how-to-set-up-instance-manual.md).
+Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een [ **geautomatiseerd implementatie script** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) uit te voeren dat het proces stroomlijnt. 
+* Zie de CLI-versie van dit artikel voor informatie over de hand matige CLI-stappen die door het script worden uitgevoerd achter de schermen: [*instructies: een exemplaar en authenticatie instellen (CLI)*](how-to-set-up-instance-cli.md).
+* Als u de hand matige stappen wilt bekijken volgens de Azure Portal, raadpleegt u de portal versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (Portal)*](how-to-set-up-instance-portal.md).
 
-[!INCLUDE [digital-twins-setup-starter.md](../../includes/digital-twins-setup-starter.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
 
 ## <a name="run-the-deployment-script"></a>Het implementatie script uitvoeren
 
@@ -41,7 +44,7 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
  
 2. Nadat u zich hebt aangemeld, gaat u naar de pictogram balk van het Cloud Shell venster. Selecteer het pictogram bestanden uploaden/downloaden en kies uploaden.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
 
     Ga naar het _**deploy.ps1**_ -bestand op uw computer en klik op openen. Hiermee wordt het bestand geüpload naar Cloud Shell, zodat u het kunt uitvoeren in het Cloud Shell-venster.
 
@@ -57,21 +60,38 @@ Met het script maakt u een Azure Digital Apparaatdubbels-exemplaar, wijst u uw A
 
 Hier volgt een fragment van het uitvoer logboek van het script:
 
-:::image type="content" source="media/how-to-set-up-instance/deployment-script-output.png" alt-text="Cloud Shell venster met het logboek van de invoer en uitvoer via het uitvoeren van het script implementeren" lightbox="media/how-to-set-up-instance/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell venster met het logboek van de invoer en uitvoer via het uitvoeren van het script implementeren" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Als het script is voltooid, wordt de uiteindelijke afdruk weer te zeggen `Deployment completed successfully` . Als dat niet het geval is, adresseert u het fout bericht en voert u het script opnieuw uit. De stappen die u al hebt voltooid, worden overgeslagen en de invoer wordt opnieuw gestart op het punt waar u was gebleven.
 
-Wanneer het script is voltooid, hebt u nu een Azure Digital Apparaatdubbels-exemplaar gereed om de machtigingen te beheren.
+Wanneer het script is voltooid, hebt u nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan met de machtigingen om het te beheren en hebt u machtigingen voor een client-app ingesteld voor toegang.
+
+> [!NOTE]
+> Met het script wordt momenteel de vereiste beheer functie in azure Digital Apparaatdubbels (*Azure Digital Apparaatdubbels owner)* toegewezen aan dezelfde gebruiker die het script uitvoert vanuit Cloud shell. Als u deze rol moet toewijzen aan iemand anders die het exemplaar gaat beheren, kunt u dit nu doen via de Azure Portal ([instructies](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) of cli ([instructies](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
 
 ## <a name="collect-important-values"></a>Belang rijke waarden verzamelen
 
-Er zijn twee belang rijke waarden van de app-registratie die later nodig zijn om [een client-app te verifiëren tegen de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). 
+Er zijn verschillende belang rijke waarden van de resources die door het script worden ingesteld, die u mogelijk nodig hebt om te werken met uw Azure Digital Apparaatdubbels-exemplaar. In deze sectie gebruikt u de [Azure Portal](https://portal.azure.com) om deze waarden te verzamelen. Sla deze op een veilige plaats op of ga terug naar deze sectie om deze later te vinden wanneer u ze nodig hebt.
+
+Als andere gebruikers op het exemplaar worden geprogrammeerd, moet u deze waarden ook met hen delen.
+
+### <a name="collect-instance-values"></a>Instantie waarden verzamelen
+
+Zoek in het [Azure Portal](https://portal.azure.com)naar uw Azure Digital apparaatdubbels-exemplaar door te zoeken naar de naam van uw exemplaar in de zoek balk van de portal.
+
+Als u deze optie selecteert, wordt de *overzichts* pagina van het exemplaar geopend. Noteer de *naam*, de *resource groep*en de *hostnaam*. U hebt deze mogelijk later nodig om uw exemplaar te identificeren en er verbinding mee te maken.
+
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Markeren van de belang rijke waarden van de overzichts pagina van het exemplaar":::
+
+### <a name="collect-app-registration-values"></a>App-registratie waarden verzamelen 
+
+Er zijn twee belang rijke waarden van de app-registratie die u later nodig hebt om [de client-app-verificatie code te schrijven voor de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). 
 
 Als u deze wilt vinden, volgt u [deze koppeling](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) om naar de pagina overzicht van Azure AD-App-registratie in de Azure portal te gaan. Op deze pagina worden alle app-registraties weer gegeven die zijn gemaakt in uw abonnement.
 
 De registratie van de app die u zojuist hebt gemaakt, ziet u in deze lijst. Selecteer deze om de details ervan te openen:
 
-:::image type="content" source="media/how-to-set-up-instance/app-important-values.png" alt-text="Portal weergave van de belang rijke waarden voor de app-registratie":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Portal weergave van de belang rijke waarden voor de app-registratie":::
 
 Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Als u niet de persoon bent die code gaat schrijven voor client toepassingen, moet u deze waarden delen met de persoon die het gaat doen.
 
@@ -86,6 +106,9 @@ Als u wilt controleren of uw exemplaar is gemaakt, gaat u naar de [pagina Azure 
 ### <a name="verify-user-role-assignment"></a>Gebruikersrol toewijzing controleren
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
+
+> [!NOTE]
+> U herinnert dat het script momenteel deze vereiste rol toewijst aan dezelfde gebruiker die het script uitvoert van Cloud Shell. Als u deze rol moet toewijzen aan iemand anders die het exemplaar gaat beheren, kunt u dit nu doen via de Azure Portal ([instructies](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) of cli ([instructies](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
 
 ### <a name="verify-app-registration"></a>App-registratie verifiëren
 

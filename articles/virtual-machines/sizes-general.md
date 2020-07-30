@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: c7cb2667f8e653b4e71844cd849e691a7c5bcd81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f56b0fe087cad831efda848da3b8d89a826ec6da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325437"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423963"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemene doel einden
 
@@ -51,3 +51,5 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+
+Zie [grootte conventies voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.

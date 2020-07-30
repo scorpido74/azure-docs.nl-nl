@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205577"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424253"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -413,7 +413,8 @@ De volgende uitputtende configuratie opties in het bestand:
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "loginScopes": [
+                    "scope": [
+                        "openid",
                         "profile",
                         "email"
                     ],
