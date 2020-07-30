@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6273a5b62e5b84e53d5e54fdb840f32646939066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743895"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419985"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management
 
@@ -32,7 +32,7 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+  [![Selecteer Azure AD > Privileged Identity Management.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Volg de stappen in dit artikel om beveiligings waarschuwingen voor Azure AD-rollen te onderzoeken.
 
@@ -82,7 +82,7 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 
 | | |
 | --- | --- |
-| **Ernst** | Normaal |
+| **Ernst** | Middelgroot |
 | **Waarom krijg ik deze waarschuwing?** | Accounts in een geprivilegieerde rol hebben in de afgelopen 90 dagen geen wacht woord gewijzigd. Deze accounts zijn mogelijk service of gedeelde accounts die niet worden onderhouden en kwetsbaar zijn voor aanvallen. |
 | **Hoe kunt u het probleem oplossen?** | Controleer de accounts in de lijst. Als ze geen toegang meer nodig hebben, moet u ze verwijderen uit hun geprivilegieerde rollen. |
 | **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wacht woorden draaien wanneer er een wijziging is in de gebruikers die het wacht woord kennen. </br>Controleer regel matig accounts met geprivilegieerde rollen met [toegangs beoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet meer nodig zijn. |
@@ -181,7 +181,7 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 
 | | |
 | --- | --- |
-| **Ernst** | Normaal |
+| **Ernst** | Middelgroot |
 | **Waarom krijg ik deze waarschuwing?** | Accounts in een geprivilegieerde rol hebben in de afgelopen 90 dagen geen wacht woord gewijzigd. Deze accounts zijn mogelijk service of gedeelde accounts die niet worden onderhouden en kwetsbaar zijn voor aanvallen. |
 | **Hoe kunt u het probleem oplossen?** | Controleer de accounts in de lijst. Als ze geen toegang meer nodig hebben, moet u ze verwijderen uit hun geprivilegieerde rollen. |
 | **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wacht woorden draaien wanneer er een wijziging is in de gebruikers die het wacht woord kennen. </br>Controleer regel matig accounts met geprivilegieerde rollen met [toegangs beoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet meer nodig zijn. |

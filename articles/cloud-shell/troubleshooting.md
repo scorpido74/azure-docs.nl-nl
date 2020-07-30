@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189459"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421736"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
 
@@ -122,7 +122,7 @@ Cloud Shell ondersteunt de nieuwste versies van de volgende browsers:
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>Gebruiks limieten
+### <a name="usage-limits"></a>Gebruiksbeperkingen
 
 Cloud Shell is bedoeld voor interactieve use-cases. Als gevolg hiervan worden langlopende niet-interactieve sessies beëindigd zonder dat dit wordt gewaarschuwd.
 
@@ -141,26 +141,6 @@ Wees voorzichtig bij het bewerken van. bashrc. Dit kan leiden tot onverwachte fo
 ### <a name="preview-version-of-azuread-module"></a>Preview-versie van de AzureAD-module
 
 Momenteel `AzureAD.Standard.Preview` is er een preview-versie van .NET Standard-based module beschikbaar. Deze module biedt dezelfde functionaliteit als `AzureAD` .
-
-### <a name="sqlserver-module-functionality"></a>`SqlServer`module functionaliteit
-
-De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning voor de Prerelease van Power shell core. Met name `Invoke-SqlCmd` is nog niet beschikbaar.
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Standaard bestands locatie wanneer deze wordt gemaakt vanuit een Azure-station
-
-Met behulp van Power shell-cmdlets kunnen gebruikers geen bestanden maken onder het Azure-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen op de `$HOME` .
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Door tabs volt ooien kan uitzonde ring genereren PSReadline
-
-Als de PSReadline-EditMode van de gebruiker is ingesteld op emacs, probeert de gebruiker alle mogelijkheden weer te geven via het tabblad voltooiing en is het venster te klein om alle mogelijkheden weer te geven, PSReadline wordt een onverwerkte uitzonde ring gegenereerd.
-
-### <a name="large-gap-after-displaying-progress-bar"></a>Grote tussen ruimte na het weer geven van de voortgangs balk
-
-Als een opdracht of gebruikers actie een voortgangs balk weergeeft, zoals een tab die in het station is voltooid `Azure:` , is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk zich eerder bevond.
-
-### <a name="random-characters-appear-inline"></a>Wille keurige tekens worden inline weer gegeven
-
-De cursor positie reeks codes `5;13R` kunnen bijvoorbeeld worden weer gegeven in de gebruikers invoer. De tekens kunnen hand matig worden verwijderd.
 
 ## <a name="personal-data-in-cloud-shell"></a>Persoonlijke gegevens in Cloud Shell
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514715"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387112"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 - De sleutel kluis en het SQL Database/beheerde exemplaar moeten deel uitmaken van dezelfde Azure Active Directory Tenant. De cross-Tenant sleutel kluis en server interacties worden niet ondersteund. Als u later resources wilt verplaatsen, moet TDE met Azure opnieuw worden geconfigureerd. Meer informatie over het [verplaatsen van resources](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- De functie voor [voorlopig verwijderen](../../key-vault/general/overview-soft-delete.md) moet zijn ingeschakeld op de sleutel kluis om te beschermen tegen onbedoelde sleutel (of sleutel kluis) voor het verwijderen van gegevens verlies. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de klant in de tussen tijd is hersteld of verwijderd. Aan de acties *herstellen* en *opschonen* zijn aparte machtigingen gekoppeld in het toegangsbeleid van een sleutelkluis. De functie voor voorlopig verwijderen is standaard uitgeschakeld en kan worden ingeschakeld via [Power shell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) of [de CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Deze kan niet worden ingeschakeld via de Azure Portal.  
+- De functie voor [voorlopig verwijderen](../../key-vault/general/soft-delete-overview.md) moet zijn ingeschakeld op de sleutel kluis om te beschermen tegen onbedoelde sleutel (of sleutel kluis) voor het verwijderen van gegevens verlies. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de klant in de tussen tijd is hersteld of verwijderd. Aan de acties *herstellen* en *opschonen* zijn aparte machtigingen gekoppeld in het toegangsbeleid van een sleutelkluis. De functie voor voorlopig verwijderen is standaard uitgeschakeld en kan worden ingeschakeld via [Power shell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) of [de CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Deze kan niet worden ingeschakeld via de Azure Portal.  
 
 - Verleen de server of het beheerde exemplaar toegang tot de sleutel kluis (Get, wrapKey, sleutel uitpakken) met behulp van de Azure Active Directory identiteit. Wanneer u de Azure Portal gebruikt, wordt de Azure AD-identiteit automatisch gemaakt. Wanneer u Power shell of de CLI gebruikt, moet de Azure AD-identiteit expliciet worden gemaakt en moet de voltooiing worden gecontroleerd. Zie [Configure TDe with BYOK](transparent-data-encryption-byok-configure.md) en [Configure TDe with BYOK for SQL Managed instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) voor gedetailleerde stapsgewijze instructies voor het gebruik van Power shell.
 

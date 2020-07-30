@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287214"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382573"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -61,7 +61,7 @@ $ras.Count
 
     Als u het fout bericht ' onvoldoende bevoegdheden om de bewerking te volt ooien ' krijgt, komt dit waarschijnlijk doordat Azure CLI probeert de identiteit van de toegewezen gebruiker te zoeken in azure AD en de Service-Principal standaard geen Azure AD kan lezen.
 
-    Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen. U kunt ook de [machtiging Directory. Read. all](https://docs.microsoft.com/graph/permissions-reference) toekennen aan de Microsoft Graph.
+    Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen.
 
     De tweede manier om deze fout op te lossen is door de roltoewijzing te maken met behulp `--assignee-object-id` van de para meter in plaats van `--assignee` . Als u `--assignee-object-id` Azure cli gebruikt, wordt de Azure AD-zoek opdracht overs Laan. U moet de object-ID van de gebruiker, groep of toepassing ophalen waaraan u de rol wilt toewijzen. Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure cli](role-assignments-cli.md#new-service-principal)voor meer informatie.
 

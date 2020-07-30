@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 04/09/2020
-ms.openlocfilehash: 5a246288eb3c4063a85935c20abec5c86467d340
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/28/2020
+ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042370"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419713"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere data bases in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,16 +35,16 @@ Elastische Pools kunnen dit probleem oplossen door ervoor te zorgen dat data bas
 > [!IMPORTANT]
 > Er worden geen kosten per Data Base voor elastische Pools. Er worden kosten in rekening gebracht voor elk uur dat een pool bestaat op het hoogste eDTU-of vCores, ongeacht het gebruik of het feit dat de groep korter dan een uur actief was.
 
-Met elastische Pools kunnen ontwikkel aars bronnen kopen voor een pool die wordt gedeeld door meerdere data bases om te voorzien in onvoorspelbare Peri Oden van gebruik door afzonderlijke data bases. U kunt resources configureren voor de pool op basis van het op [DTU gebaseerde aankoop model](service-tiers-dtu.md) of het [op vCore gebaseerde aankoop model](service-tiers-vcore.md). De resource vereiste voor een groep wordt bepaald door het aggregatie gebruik van de data bases. De hoeveelheid beschik bare bronnen voor de groep wordt bepaald door het budget van de ontwikkelaar. De ontwikkelaar voegt alleen data bases toe aan de groep, stelt de minimale en maximale bronnen voor de data bases (mini maal en Maxi maal Dtu's of minimum-of maximum vCores afhankelijk van uw keuze van het model voor het opnieuw instellen) in en stelt vervolgens de resources van de groep in op basis van het budget. Met groepen kan een ontwikkelaar services naadloos met een alsmaar groeiende schaal uitbreiden van een kleine startende ondernemer tot een volwassen bedrijf.
+Met elastische Pools kunnen ontwikkel aars bronnen kopen voor een pool die wordt gedeeld door meerdere data bases om te voorzien in onvoorspelbare Peri Oden van gebruik door afzonderlijke data bases. U kunt resources configureren voor de pool op basis van het op [DTU gebaseerde aankoop model](service-tiers-dtu.md) of het [op vCore gebaseerde aankoop model](service-tiers-vcore.md). De resource vereiste voor een groep wordt bepaald door het aggregatie gebruik van de data bases. De hoeveelheid beschik bare bronnen voor de groep wordt bepaald door het budget van de ontwikkelaar. De ontwikkelaar voegt gewoon data bases toe aan de groep, stelt optioneel de minimale en maximale bronnen voor de data bases (mini maal en Maxi maal Dtu's of minimum-of maximum vCores afhankelijk van uw keuze van het model voor opnieuw instellen) in en stelt vervolgens de resources van de groep in op basis van het budget. Met groepen kan een ontwikkelaar services naadloos met een alsmaar groeiende schaal uitbreiden van een kleine startende ondernemer tot een volwassen bedrijf.
 
-Binnen de pool hebben afzonderlijke databases de flexibiliteit om de schaal automatisch aan te passen binnen ingestelde parameters. Onder zware belasting kan een Data Base meer resources gebruiken om aan de vraag te voldoen. Data bases onder lichte belasting worden minder verbruikt en data bases onder geen belasting verbruiken geen resources. De inrichting van resources voor de hele pool in plaats van afzonderlijke databases vereenvoudigt uw beheertaken. Daarnaast hebt u een voorspelbaar budget voor de pool. Extra resources kunnen worden toegevoegd aan een bestaande groep zonder uitval tijd van de data base, behalve dat de data bases mogelijk moeten worden verplaatst om de extra reken resources te bieden voor de nieuwe eDTU-reserve ring. En als extra resources niet meer nodig zijn, kunnen ze op elk moment uit een bestaande pool worden verwijderd. Daarnaast kunt u databases aan de groep toevoegen of uit de groep verwijderen. Als een database naar verwachting minder resources nodig heeft, kunt u deze verwijderen.
+Binnen de pool hebben afzonderlijke databases de flexibiliteit om de schaal automatisch aan te passen binnen ingestelde parameters. Onder zware belasting kan een Data Base meer resources gebruiken om aan de vraag te voldoen. Data bases onder lichte belasting worden minder verbruikt en data bases onder geen belasting verbruiken geen resources. De inrichting van resources voor de hele pool in plaats van afzonderlijke databases vereenvoudigt uw beheertaken. Daarnaast hebt u een voorspelbaar budget voor de pool. Extra resources kunnen worden toegevoegd aan een bestaande groep met minimale downtime. En als extra resources niet meer nodig zijn, kunnen ze op elk moment uit een bestaande pool worden verwijderd. En u kunt data bases toevoegen aan of verwijderen uit de groep. Als een database naar verwachting minder resources nodig heeft, kunt u deze verwijderen.
 
 > [!NOTE]
 > Wanneer u data bases naar of uit een elastische pool verplaatst, is er geen downtime, met uitzonde ring van een korte periode (in de volg orde van seconden) aan het einde van de bewerking wanneer de database verbindingen worden verwijderd.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Wanneer moet u een SQL Database elastische pool overwegen
 
-Pools zijn geschikt voor een groot aantal databases met specifieke gebruikspatronen. Voor een bepaalde database wordt dit patroon gekenmerkt door een laag gemiddeld gebruik met relatief incidentele gebruikspieken.
+Pools zijn geschikt voor een groot aantal databases met specifieke gebruikspatronen. Voor een bepaalde database wordt dit patroon gekenmerkt door een laag gemiddeld gebruik met relatief incidentele gebruikspieken. Daarentegen kunnen meerdere data bases met een permanent gemiddeld hoog gebruik niet in dezelfde elastische pool worden geplaatst.
 
 Hoe meer databases u aan een groep kunt toevoegen, des te groter worden de besparingen. Afhankelijk van het gebruiks patroon van uw toepassing is het mogelijk om besparingen te zien met slechts twee S3-data bases.
 
@@ -82,16 +82,13 @@ De volgende vuist regels met betrekking tot het aantal data bases en database ge
 
 Als de totale hoeveelheid resources voor afzonderlijke data bases meer is dan 1,5 x de resources die nodig zijn voor de groep, is een elastische pool rendabeler.
 
-***Voor beeld van een op DTU gebaseerd inkoop model***<br>
-Er zijn ten minste twee S3-data bases of ten minste 15 S0-data bases nodig voor een 100-eDTU-groep om rendabeler te zijn dan het gebruik van reken grootten voor afzonderlijke data bases.
+***Voor beeld van een op DTU gebaseerd inkoop model*** Er zijn ten minste twee S3-data bases of ten minste 15 S0-data bases nodig voor een 100-eDTU-groep om rendabeler te zijn dan het gebruik van reken grootten voor afzonderlijke data bases.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximum aantal gelijktijdig piekende databases
 
 Door resources te delen, kunnen niet alle data bases in een pool gelijktijdig bronnen gebruiken tot de limiet die beschikbaar is voor afzonderlijke data bases. Hoe minder data bases gelijktijdig pieken, hoe lager de pool bronnen kunnen worden ingesteld en hoe rendabeler de groep wordt. In het algemeen, niet groter dan 2/3 (of 67%) van de data bases in de groep moeten tegelijkertijd pieken op de limiet van de resources.
 
-***Voor beeld van een op DTU gebaseerd inkoop model***
-
-Om de kosten voor drie S3-databases in een groep van 200 eDTU's te verlagen, kunnen maximaal twee van deze databases tegelijkertijd pieken in hun gebruik. Of, als meer dan twee van deze vier S3-databases gelijktijdig pieken, zou de groep moeten worden uitgebreid tot meer dan 200 eDTU's. Als het formaat van de groep wordt gewijzigd naar meer dan 200 Edtu's, moeten er meer S3-data bases aan de groep worden toegevoegd om de kosten lager te blijven dan reken grootten voor afzonderlijke data bases.
+***Voor beeld van een op DTU gebaseerd inkoop model*** Om de kosten voor drie S3-data bases in een 200 eDTU-groep te verlagen, kunnen Maxi maal twee van deze data bases tegelijkertijd pieken in het gebruik. Of, als meer dan twee van deze vier S3-databases gelijktijdig pieken, zou de groep moeten worden uitgebreid tot meer dan 200 eDTU's. Als het formaat van de groep wordt gewijzigd naar meer dan 200 Edtu's, moeten er meer S3-data bases aan de groep worden toegevoegd om de kosten lager te blijven dan reken grootten voor afzonderlijke data bases.
 
 Opmerking in dit voor beeld is het gebruik van andere data bases in de pool niet in aanmerking. Als alle databases voortdurend in enige mate gebruik maken van eDTU's, kan minder dan 2/3 (of 67%) van de databases tegelijkertijd pieken.
 
@@ -99,13 +96,13 @@ Opmerking in dit voor beeld is het gebruik van andere data bases in de pool niet
 
 Een groot verschil tussen het piek- en gemiddelde gebruik van een database geeft langere perioden van laag gebruik en korte perioden hoog gebruik aan. Dit gebruikspatroon is ideaal voor het delen van resources met meerdere databases. Een database zou een geschikte kandidaat voor een groep kunnen zijn als het piekgebruik ongeveer 1,5 keer groter is dan het gemiddelde gebruik.
 
-**Op DTU gebaseerd inkoop model voor beeld**: een S3-data base die piekt tot 100 dtu's en gemiddeld 67 dtu's of minder is een goede kandidaat voor het delen van edtu's in een pool. Ook een S1-database die piekt tot 20 DTU's en gemiddeld 13 DTU's of minder gebruikt, is een goede kandidaat voor een groep.
+***Voor beeld van een op DTU gebaseerd inkoop model*** Een S3-data base die pieken op 100 Dtu's en gemiddeld gebruik 67 Dtu's of minder is een goede kandidaat voor het delen van Edtu's in een pool. Ook een S1-database die piekt tot 20 DTU's en gemiddeld 13 DTU's of minder gebruikt, is een goede kandidaat voor een groep.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Hoe kan ik de juiste pool grootte kiezen
 
 De beste grootte voor een pool is afhankelijk van de geaggregeerde resources die nodig zijn voor alle data bases in de groep. Dit omvat het bepalen van het volgende:
 
-- Het maximum aantal resources dat wordt gebruikt door alle data bases in de pool (Maxi maal Dtu's of maximum vCores, afhankelijk van uw keuze van het model voor het hergebruik van resources).
+- Het maximum aantal resources dat wordt gebruikt door alle data bases in de pool (Maxi maal Dtu's of maximum vCores, afhankelijk van uw keuze van het aankoop model).
 - De maximum opslag in bytes die door alle databases in de groep wordt gebruikt.
 
 Zie het [op DTU gebaseerde inkoop model](service-tiers-dtu.md) of het [op vCore gebaseerde aankoop model](service-tiers-vcore.md)voor de beschik bare service lagen en limieten voor elk resource model.
@@ -114,11 +111,13 @@ Aan de hand van de volgende stappen kunt u schatten of een pool rendabeler is da
 
 1. U moet als volgt een schatting maken van de Edtu's-of vCores die nodig zijn voor de groep:
 
-   Voor op DTU gebaseerd inkoop model: MAX (<*Totaal aantal db's* X *gemiddeld DTU-gebruik per DB* ->,<br>  
-   <*aantal gelijktijdig piekende databases* X *piek-DTU-gebruik per DB*)
+Voor op DTU gebaseerd inkoop model:
 
-   Voor op vCore gebaseerd inkoop model: MAX (<*totale aantal db's* X *gemiddeld VCore gebruik per DB* ->,<br>  
-   <*Aantal gelijktijdig gepiekde db's* X *piek vCore gebruik per data base*)
+MAX (<*Totaal aantal db's* x *gemiddeld DTU-gebruik per db*>, <*aantal gelijktijdig pieken db's* X piek-DTU- *gebruik per DB*)
+
+Voor op vCore gebaseerd inkoop model:
+
+MAX (<*totale aantal db's* x- *VCore gebruik per DB* ->, <*aantal gelijktijdig pieken db's* X *piek vCore gebruik per data base*)
 
 2. Schat hoeveel opslagruimte de groep nodig heeft door het aantal bytes op te tellen dat nodig is voor alle databases in de groep. Bepaal daarna hoe groot de eDTU-groep moet zijn om aan deze hoeveelheid opslag te voldoen.
 3. Neem voor het op DTU gebaseerde aankoop model meer van de eDTU-schattingen uit stap 1 en stap 2. Neem voor het op vCore gebaseerde aankoop model de vCore-schatting uit stap 1.
@@ -160,7 +159,7 @@ Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal
 2. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
 
-   ![Een pool voor Elastic Database maken](./media/elastic-pool-overview/create-elastic-pool.png)
+   ![Een elastische pool maken](./media/elastic-pool-overview/create-elastic-pool.png)
 
 4. U kunt ook een elastische pool maken door naar een bestaande server te gaan en te klikken op **+ nieuwe groep** om een groep rechtstreeks op die server te maken.
 

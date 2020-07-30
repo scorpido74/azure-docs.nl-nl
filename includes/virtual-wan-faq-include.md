@@ -8,38 +8,38 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
-ms.translationtype: MT
+ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143902"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375542"
 ---
-### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub en spoke met SD-WAN/VPN-apparaten hebben om virtueel WAN van Azure te gebruiken?
+### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
-Virtual WAN biedt tal van functies die zijn ingebouwd in één deel venster, zoals site/site-naar-site VPN-connectiviteit, gebruikers-P2S connectiviteit, ExpressRoute connectiviteit, Virtual Network connectiviteit, VPN ExpressRoute interconnectiviteit, VNet-naar-VNet transitieve connectiviteit, gecentraliseerde route ring, Azure Firewall en firewall Manager-beveiliging, bewaking, ExpressRoute-versleuteling en vele andere mogelijkheden. U hoeft niet al deze gebruiks kwesties te hebben om te beginnen met het gebruik van Virtual WAN. U kunt aan de slag met slechts één use-case. De virtuele WAN-architectuur is een hub-en spoke-architectuur met schaal-en prestatie mogelijkheden die zijn ingebouwd in het geval van branches (VPN/SD-WAN-apparaten), gebruikers (Azure VPN-clients, openVPN of IKEv2-clients), ExpressRoute-circuits, virtuele netwerken fungeren als spokes voor virtuele hub (s). Alle hubs zijn verbonden in full mesh in een standaard virtuele WAN, waardoor de gebruiker de Microsoft-backbone eenvoudig kan gebruiken voor any-to-any-connectiviteit (elke willekeurige spoke). Voor hub en spoke met SD-WAN/VPN-apparaten kunnen gebruikers deze hand matig instellen in de Azure Virtual WAN-portal of gebruikmaken van de virtuele WAN-partner CPE (SD-WAN/VPN) om verbinding met Azure in te stellen. Virtuele WAN-partners bieden automatisering voor connectiviteit. Dit is de mogelijkheid om de apparaatgegevens te exporteren naar Azure, de Azure-configuratie te downloaden en verbinding te maken met de virtuele WAN-hub van Azure. Voor punt-naar-site/gebruiker-VPN-verbindingen ondersteunen we [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554), openvpn of IKEv2-client. 
+Virtual WAN biedt tal van functies die zijn ingebouwd in één onderdeel, zoals site-/site-naar-site-VPN-connectiviteit, gebruikers-/P2S-connectiviteit, ExpressRoute-connectiviteit, Virtual Network-connectiviteit, VPN ExpressRoute-interconnectiviteit, transitieve VNet-naar-VNet-connectiviteit, gecentraliseerde routering, Azure Firewall en Firewall Manager-beveiliging, bewaking, ExpressRoute-versleuteling en vele andere mogelijkheden. U hoeft niet al deze use-cases te hebben om Virtual WAN te gaan gebruiken. U kunt aan de slag met slechts één use-case. De Virtual WAN-architectuur is een hub- en spoke-architectuur met schaal en prestaties ingebouwd waarbij vertakkingen (VPN-/SD-WAN-apparaten), gebruikers (Azure VPN-clients, OpenVPN of IKEv2-clients), ExpressRoute-circuits en virtuele netwerken als spokes fungeren voor virtuele hubs. Alle hubs zijn verbonden in full mesh in een standaard virtuele WAN, waardoor de gebruiker de Microsoft-backbone eenvoudig kan gebruiken voor any-to-any-connectiviteit (elke willekeurige spoke). Voor hub en spoke met SD-WAN-/VPN-apparaten kunnen gebruikers het handmatig instellen in de Azure Virtual WAN-portal of gebruikmaken van de Azure Virtual-partner WAN CPE (SD-WAN/VPN) om connectiviteit met Azure in te stellen. Virtual WAN-partners bieden automatisering voor connectiviteit, dus de mogelijkheid om de apparaatgegevens te exporteren naar Azure, de Azure-configuratie te downloaden en verbinding te maken met de Azure Virtual WAN-hub. Voor punt-naar-site-connectiviteit of VPN-connectiviteit voor gebruikers ondersteunen we [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN of IKEv2-client. 
 
-### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>Kunt u volledig gemeshe hubs in een virtueel WAN uitschakelen?
+### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>Kunnen volledig gemeshede hubs in een virtuele WAN worden uitgeschakeld?
 
-Virtuele WAN is beschikbaar in twee soorten: Basic en Standard. In het virtuele standaard WAN worden hubs niet gemesh. In een standaard virtueel WAN worden hubs genetten en automatisch verbonden wanneer het virtuele WAN voor het eerst wordt ingesteld. De gebruiker hoeft niets te doen. De gebruiker hoeft ook de functionaliteit niet in of uit te scha kelen om hubs te verkrijgen. Virtuele WAN biedt u een groot aantal routerings opties om verkeer tussen een spoke (VNet, VPN of ExpressRoute) te sturen. Het biedt het gemak van volledig Genet gewerkte hubs en ook de flexibiliteit van routerings verkeer volgens uw behoeften. 
+Virtual WAN is beschikbaar in twee soorten: Basic en Standard. In Basic Virtual WAN worden hubs niet gemeshed. In een Standard Virtual WAN worden hubs gemeshed en automatisch verbonden wanneer de virtuele WAN voor het eerst wordt ingesteld. De gebruiker hoeft niets specifieks te doen. De gebruiker hoeft ook de functionaliteit niet in of uit te schakelen om gemeshede hubs te verkrijgen. Virtual WAN biedt een groot aantal routeringsopties om verkeer tussen spokes (VNet, VPN of ExpressRoute) te leiden. Het biedt het gemak van volledig gemeshede hubs en tevens de flexibiliteit om verkeer naar behoefte te leiden. 
 
-### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Hoe worden Beschikbaarheidszones en tolerantie verwerkt in virtueel WAN?
+### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Hoe worden beschikbaarheidszones en tolerantie in Virtual WAN verwerkt?
 
-Virtual WAN is een verzameling hubs en services die beschikbaar zijn in de hub. De gebruiker kan net zoveel virtueel WAN hebben als nodig is. In een virtuele WAN-hub zijn er meerdere services, zoals VPN, ExpressRoute, enzovoort. Elk van deze services (met uitzonde ring van de Azure Firewall) wordt geïmplementeerd in een Beschikbaarheidszones regio, dat wil zeggen dat de regio Beschikbaarheidszones ondersteunt. Als een regio een beschikbaarheids zone wordt na de eerste implementatie in de hub, kan de gebruiker de gateways opnieuw maken, waardoor de implementatie van een beschikbaarheids zone wordt geactiveerd. Alle gateways worden ingericht in een hub als actief-actief, wat inhoudt dat er toleranties zijn ingebouwd in een hub. Gebruikers kunnen verbinding maken met meerdere hubs als ze toleranties voor verschillende regio's willen. Hoewel het concept van virtueel WAN globaal is, is de daad werkelijke virtuele WAN-resource op basis van Resource Manager en gedistribueerd. Als de virtuele WAN-regio zelf een probleem had, blijven alle hubs in dat virtuele WAN functioneren, maar de gebruiker kan pas nieuwe hubs maken als de virtuele WAN-regio beschikbaar is.
+Virtual WAN is een verzameling hubs en services die beschikbaar zijn in de hub. De gebruiker kan over net zoveel virtuele WAN beschikken als nodig is. In een Virtual WAN-hub komen meerdere services voor, zoals VPN, ExpressRoute, enzovoort. Elk van deze services (met uitzondering van Azure Firewall) wordt geïmplementeerd in een regio met beschikbaarheidszones, dat wil zeggen dat de regio beschikbaarheidszones ondersteunt. Als een regio na de eerste implementatie in de hub een beschikbaarheidszone wordt, kan de gebruiker de gateways opnieuw maken, waardoor de implementatie van een beschikbaarheidszone wordt geactiveerd. Alle gateways worden in een hub als actief-actief ingericht, wat inhoudt dat er tolerantie is ingebouwd in een hub. Gebruikers kunnen verbinding maken met meerdere hubs als ze tolerantie voor verschillende regio's willen. Hoewel het concept van Virtual WAN globaal is, is de daadwerkelijke Virtual WAN-resource gebaseerd op Resource Manager en regionaal gedistribueerd. Als de virtuele WAN-regio zelf een probleem kent, blijven alle hubs in die virtuele WAN functioneren, maar de gebruiker kan pas nieuwe hubs maken als de virtuele WAN-regio beschikbaar is.
 
-### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welke client ondersteunt de Azure Virtual WAN-gebruikers VPN (punt-naar-site)?
+### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welke client wordt door de VPN voor gebruikers (punt-naar-site) van de Azure Virtual WAN ondersteund?
 
-Virtual WAN ondersteunt [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554), openvpn-client of een IKEv2-client. Azure AD-verificatie wordt ondersteund met Azure VPN-client. mini maal Windows 10 client OS versie 17763,0 of hoger is vereist.  OpenVPN-Client (s) kunnen verificatie op basis van certificaten ondersteunen. Zodra op certificaten gebaseerde verificatie is geselecteerd op de gateway, wordt het *ovpn* -bestand weer geven om het te downloaden naar uw apparaat. IKEv2 ondersteunt zowel certificaat-als RADIUS-authenticatie. 
+Virtual WAN ondersteunt [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN Client of een IKEv2-client. Azure AD-verificatie wordt ondersteund met Azure VPN Client. Er is minimaal Windows 10-client OS-versie 17763.0 of hoger vereist.  OpenVPN-client(s) kunnen verificatie op basis van certificaten ondersteunen. Zodra op certificaten gebaseerde verificatie op de gateway is geselecteerd, wordt het bestand *.ovpn* naar uw apparaat gedownload. IKEv2 ondersteunt zowel certificaat- als RADIUS-authenticatie. 
 
-### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>Voor gebruikers VPN (punt-naar-site): Waarom is de P2S-client groep in twee routes verdeeld?
+### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>Voor VPN voor gebruikers (punt-naar-site): waarom is de P2S-clientpool over twee routes gesplitst?
 
-Elke gateway heeft twee instanties, de splitsing gaat zo dat elke gateway-instantie onafhankelijk client Ip's kan toewijzen voor verbonden clients en dat verkeer van het virtuele netwerk wordt teruggestuurd naar het juiste gateway-exemplaar om te voor komen dat de hop tussen gateway-exemplaren verloopt.
+Elke gateway heeft twee exemplaren. De splitsing treedt op zodat elk exemplaar van de gateway onafhankelijk client-IP's kan toewijzen voor verbonden clients; verkeer afkomstig van het virtuele netwerk wordt teruggestuurd naar het juiste gateway-exemplaar om een exemplaar-hops tussen gateways te voorkomen.
 
-### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>Hoe kan ik DNS-servers toevoegen voor P2S-clients?
+### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>Hoe kan ik DNS-servers voor P2S-clients toevoegen?
 
-Er zijn twee opties voor het toevoegen van DNS-servers voor de P2S-clients. De eerste methode verdient de voor keur omdat hiermee de aangepaste DNS-servers worden toegevoegd aan de gateway in plaats van de client.
+Er zijn twee opties om DNS-servers voor de P2S-clients toe te voegen. De eerste methode verdient de voorkeur omdat hiermee de aangepaste DNS-servers aan de gateway worden toegevoegd in plaats van de client.
 
-1. Gebruik het volgende Power shell-script om de aangepaste DNS-servers toe te voegen. Vervang de waarden voor uw omgeving.
+1. Gebruik het volgende PowerShell-script om de aangepaste DNS-servers toe te voegen. Vervang de waarden voor uw omgeving.
 
    ```powershell
    // Define variables
@@ -66,7 +66,7 @@ Er zijn twee opties voor het toevoegen van DNS-servers voor de P2S-clients. De e
 
    // Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
    ```
-2. Als u de Azure VPN-client voor Windows 10 gebruikt, kunt u het gedownloade XML-profiel bestand wijzigen en de ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** Tags toevoegen voordat u het importeert.
+2. Als u de Azure VPN Client voor Windows 10 gebruikt, kunt u het gedownloade XML-profielbestand wijzigen en de tags **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** toevoegen voordat u het importeert.
 
    ```powershell
       <azvpnprofile>
@@ -81,27 +81,27 @@ Er zijn twee opties voor het toevoegen van DNS-servers voor de P2S-clients. De e
       </azvpnprofile>
    ```
 
-### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Voor gebruikers VPN (punt-naar-site): hoeveel clients worden ondersteund?
+### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Voor VPN voor gebruikers (punt-naar-site): hoeveel clients worden ondersteund?
 
-Elke P2S-gateway van een gebruiker heeft twee instanties en elk exemplaar biedt ondersteuning voor bepaalde gebruikers als de schaal eenheid verandert. Schaal eenheid 1-3 ondersteunt 500 verbindingen, schaal eenheid 4-6 ondersteunt 1000 verbindingen, schaal eenheid 7-12 ondersteunt 5000 verbindingen en schaal eenheid 13-20 ondersteunt Maxi maal 10.000 verbindingen. 
+Elke P2S-gateway van een VPN voor gebruikers bevat twee exemplaren en elk exemplaar biedt ondersteuning voor bepaalde gebruikers als de schaaleenheid verandert. Schaaleenheid 1-3 ondersteunt 500 verbindingen, schaaleenheid 4-6 ondersteunt 1000 verbindingen, schaaleenheid 7-12 ondersteunt 5000 verbindingen en schaaleenheid 13-20 ondersteunt maximaal 10.000 verbindingen. 
 
-Als voor beeld kan de gebruiker bijvoorbeeld 1 schaal eenheid kiezen. Elke schaal eenheid impliceert een actief-actief gateway die is geïmplementeerd en elk van de instanties (in dit geval 2) zou Maxi maal 500 verbindingen ondersteunen. Omdat u 500-verbindingen * 2 per gateway kunt verkrijgen, betekent dit niet dat u in plaats van de 500 voor deze schaal eenheid voor 1000 plant. Het kan zijn dat instanties moeten worden verwerkt waarvoor connectiviteit voor de extra 500 kan worden onderbroken als u het aantal aanbevolen verbindingen overschrijdt. Zorg er ook voor dat u de uitval tijd plant voor het geval dat u omhoog of omlaag wilt schalen op de schaal eenheid of wijzig de punt-naar-site-configuratie op de VPN-gateway.
+Stel dat de gebruiker één schaaleenheid kiest. Elke schaaleenheid impliceert een geïmplementeerde actief-actief-gateway en elk exemplaar (in dit geval twee) zou maximaal 500 verbindingen ondersteunen. Omdat u 500 verbindingen x 2 per gateway kunt verkrijgen, betekent dit niet dat u voor deze schaaleenheid voor 1000 gaat plannen in plaats van de 500. Het kan zijn dat er exemplaren moeten worden onderhouden, zodat de connectiviteit voor de extra 500 kan worden onderbroken als u het aantal aanbevolen verbindingen overschrijdt. Houd ook rekening met uitvaltijd voor het geval dat u de schaaleenheid omhoog of omlaag wilt schalen of de punt-naar-site-configuratie op de VPN-gateway wilt wijzigen.
 
-### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Wat is het verschil tussen een virtuele Azure-netwerk gateway (VPN Gateway) en een virtueel WAN VPN-gateway van Azure?
+### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Wat is het verschil tussen een virtuele Azure-netwerkgateway (VPN Gateway) en een Azure Virtual WAN VPN-gateway?
 
-Virtual WAN biedt grootschalige site-naar-site-connectiviteit en is ontworpen met het oog op doorvoer, schaalbaarheid en gebruiksgemak. Wanneer u een-site verbindt met een virtuele WAN-VPN-gateway, verschilt deze van een normale virtuele netwerk gateway die gebruikmaakt van het gateway type ' VPN '. Wanneer u een ExpressRoute-circuit verbindt met een virtuele WAN-hub, wordt er ook een andere resource gebruikt voor de ExpressRoute-gateway dan de reguliere virtuele netwerk gateway die gebruikmaakt van het gateway type ' ExpressRoute '. 
+Virtual WAN biedt grootschalige site-naar-site-connectiviteit en is ontworpen met het oog op doorvoer, schaalbaarheid en gebruiksgemak. Wanneer u een site verbindt met een Virtual WAN-VPN-gateway, verschilt deze van een normale virtuele netwerk-gateway, die gebruikmaakt van het gatewaytype VPN. En wanneer u een ExpressRoute-circuit verbindt met een Virtual WAN-hub, wordt er ook een andere resource gebruikt voor de ExpressRoute-gateway dan de normale virtuele netwerk-gateway, die gebruikmaakt van het gatewaytype ExpressRoute. 
 
-Virtual WAN ondersteunt Maxi maal 20 Gbps geaggregeerde door Voer voor VPN-en ExpressRoute. Virtual WAN heeft ook automatisering voor connectiviteit met een ecosysteem van CPE-partner partners. CPE-vertakkings apparaten hebben ingebouwde Automation die automatische voorzieningen en verbinding maakt met Azure Virtual WAN. Deze apparaten zijn beschikbaar binnen een groeiend ecosysteem van SD-WAN- en VPN-partners. Zie de [lijst met partners van voorkeur](../articles/virtual-wan/virtual-wan-locations-partners.md).
+Virtual WAN ondersteunt maximaal 20 Gbps geaggregeerde doorvoer voor VPN en ExpressRoute. Virtual WAN beschikt ook over automatisering voor connectiviteit met een ecosysteem van CPE-vertakkingsapparaatpartners. CPE-vertakkingsapparaten beschikken over ingebouwde automatisering waarmee automatisch wordt ingericht en verbinding met Azure Virtual WAN wordt gemaakt. Deze apparaten zijn beschikbaar binnen een groeiend ecosysteem van SD-WAN- en VPN-partners. Zie de [lijst met partners van voorkeur](../articles/virtual-wan/virtual-wan-locations-partners.md).
 
-### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Hoe verschilt virtuele WAN van een gateway van een virtueel netwerk in azure?
+### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Waarin verschilt Virtual WAN van een virtuele Azure-netwerkgateway?
 
-Een virtuele netwerk gateway VPN is beperkt tot 30 tunnels. U moet Virtual WAN gebruiken voor grootschalige VPN-verbindingen. U kunt tot 1.000 vertakkings verbindingen per regio (virtuele hub) verbinden met een samen stelling van 20 Gbps per hub. Een verbinding is een actief-actief-tunnel van het on-premises VPN-apparaat naar de virtuele hub. U kunt één hub per regio hebben, wat betekent dat u meer dan 1.000 vertakkingen in hubs kunt verbinden.
+Een VPN in een virtuele netwerkgateway is beperkt tot dertig tunnels. U moet Virtual WAN gebruiken voor grootschalige VPN-verbindingen. U kunt maximaal 1000 vertakkingsverbindingen per regio (virtuele hub) verbinden met een aggregatie van 20 Gbps per hub. Een verbinding is een actief-actief-tunnel van het on-premises VPN-apparaat naar de virtuele hub. Per regio kan er één hub zijn. Dit betekent dat u meer dan 1000 vertakkingen kunt verbinden via de hubs.
 
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Wat is een virtuele WAN-gateway-schaal eenheid
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Wat is een schaaleenheid van een Virtual WAN-gateway?
 
-Een schaal eenheid is een eenheid die is gedefinieerd voor het kiezen van een geaggregeerde door Voer van een gateway in een virtuele hub. 1 schaal eenheid VPN = 500 Mbps. 1 schaal eenheid van ExpressRoute = 2 Gbps. Voor beeld: 10 schaal eenheid van VPN betekent 500 Mbps * 10 = 5 Gbps
+Een schaaleenheid is een eenheid die is gedefinieerd om een geaggregeerde doorvoer van een gateway in een virtuele hub te kunnen kiezen. 1 VPN-schaaleenheid = 500 Mbps. 1 ExpressRoute-schaaleenheid = 2 Gbps. Voorbeeld: Voor 10 VPN-schaaleenheden geldt: 500 Mbps x 10 = 5 Gbps
 
-### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Welke providers van apparaten (virtuele WAN-partners) worden ondersteund?
+### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Welke apparaatproviders (Virtual WAN-partners) worden ondersteund?
 
 Veel partners bieden momenteel ondersteuning voor de volledig geautomatiseerde Virtual WAN-ervaring. Zie [Virtual WAN-partners](../articles/virtual-wan/virtual-wan-locations-partners.md) voor meer informatie.
 
@@ -111,55 +111,55 @@ Zie [Automatisering voor Virtual WAN-partners](../articles/virtual-wan/virtual-w
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Moet ik een apparaat van een voorkeurspartner gebruiken?
 
-Nee. U kunt ieder VPN-apparaat gebruiken dat voldoet aan de Azure-vereisten voor IKEv2/IKEv1 IPSec-ondersteuning. Virtual WAN heeft ook CPE-partner oplossingen waarmee de connectiviteit met Azure Virtual WAN wordt geautomatiseerd, waardoor het eenvoudiger wordt om IPsec VPN-verbindingen op schaal in te stellen.
+Nee. U kunt ieder VPN-apparaat gebruiken dat voldoet aan de Azure-vereisten voor IKEv2/IKEv1 IPSec-ondersteuning. Virtual WAN heeft ook CPE-partneroplossingen waarmee de connectiviteit met Azure Virtual WAN wordt geautomatiseerd, waardoor het eenvoudiger wordt om IPsec VPN-verbindingen op schaal in te stellen.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Hoe automatiseren Virtual WAN-partners connectiviteit met Azure Virtual WAN?
 
-Softwarematige oplossingen voor netwerkconnectiviteit beheren hun vertakkingsapparaten doorgaans met behulp van een controller of een knooppunt voor apparaatinrichting. De controller kan Azure API’s gebruiken om de connectiviteit met Azure Virtual WAN te automatiseren. De automatisering omvat het uploaden van vertakkings gegevens, het downloaden van de Azure-configuratie, het instellen van IPSec-tunnels in virtuele Azure-hubs en het automatisch instellen van connectiviteit via het vertakkings apparaat in azure Virtual WAN. Wanneer u honderden filialen hebt, is het eenvoudig om verbinding te maken met behulp van virtuele WAN CPE-partners, omdat de voorbereidings ervaring de nood zaak heeft om grootschalige IPsec-connectiviteit in te stellen, te configureren en te beheren. Zie voor meer informatie [automatisering van virtuele WAN-partner](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
+Softwarematige oplossingen voor netwerkconnectiviteit beheren hun vertakkingsapparaten doorgaans met behulp van een controller of een knooppunt voor apparaatinrichting. De controller kan Azure API’s gebruiken om de connectiviteit met Azure Virtual WAN te automatiseren. De automatisering omvat het uploaden van vertakkingsgegevens, het downloaden van de Azure-configuratie, het instellen van IPSec-tunnels in Azure Virtual-hubs en het automatisch instellen van connectiviteit van het vertakkingsapparaat naar Azure Virtual WAN. Wanneer u honderden vertakkingen hebt, kunt u eenvoudig verbinding maken met behulp van Virtual WAN CPE-partners, omdat dankzij het onboarden het niet meer nodig is grootschalige IPsec-connectiviteit in te stellen, te configureren en te beheren. Raadpleeg [Virtual WAN partner automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) (Automatisering voor Virtual WAN-partners) voor meer informatie.
 
-### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Wat gebeurt er als een apparaat dat ik gebruik niet voor komt in de lijst met virtuele WAN-partners? Kan ik deze nog steeds gebruiken om verbinding te maken met Azure Virtual WAN VPN?
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Wat gebeurt er als een apparaat dat ik gebruik niet voorkomt in de lijst met Virtual WAN-partners? Kan ik het nog steeds gebruiken om verbinding te maken met Azure Virtual WAN-VPN?
 
-Ja als het apparaat IPsec IKEv1 of IKEv2 ondersteunt. Virtuele WAN-partners automatiseren de connectiviteit van het apparaat tot Azure VPN-eind punten. Dit impliceert de automatiserings stappen zoals ' vertakkings gegevens uploaden ', ' IPsec en configuratie ' en ' connectiviteit '. Omdat uw apparaat niet afkomstig is van een virtueel WAN-partner ecosysteem, moet u het zware werk van de Azure-configuratie hand matig opheffen en uw apparaat bijwerken om IPsec-verbindingen in te stellen.
+Ja, als het apparaat IPsec IKEv1 of IKEv2 ondersteunt. Virtual WAN-partners automatiseren de connectiviteit vanaf het apparaat tot Azure VPN-eindpunten. Dit impliceert de automatisering van stappen als het uploaden van vertakkingsgegevens, IPsec en configuratie en connectiviteit. Omdat uw apparaat niet afkomstig is van een Virtual WAN-partnerecosysteem, moet u het zware werk doen van het handmatig configureren van Azure en het bijwerken van uw apparaat om IPsec-connectiviteit in te kunnen stellen.
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hoe worden nieuwe partners die nog niet zijn vermeld in de startlijst van partners, opgenomen?
 
-Alle virtuele WAN-Api's zijn open API. U kunt de documentatie over de [virtuele WAN-partner automatisering](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) door lopen om de technische haal baarheid te beoordelen. Een ideale partner is iemand die een apparaat heeft dat kan worden ingericht voor een IKEv1 of IKEv2 IPSec-verbinding. Zodra het bedrijf de automatiserings werkzaamheden voor het CPE-apparaat heeft voltooid op basis van de hierboven beschreven automatiserings richtlijnen, kunt u contact opnemen met de azurevirtualwan@microsoft.com hier aangegeven [connectiviteit via partners]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Als u een klant bent die een bepaalde bedrijfs oplossing moet worden vermeld als een virtuele WAN-partner, moet het bedrijf contact opnemen met het virtuele WAN door een e-mail te verzenden naar azurevirtualwan@microsoft.com .
+Alle virtuele WAN API's zijn open API's. U kunt de documentatie [Automatisering van Virtual WAN-partners](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) raadplegen om de technische haalbaarheid vast te stellen. Een ideale partner is iemand die een apparaat heeft dat kan worden ingericht voor een IKEv1 of IKEv2 IPSec-verbinding. Zodra het bedrijf de automatiseringswerkzaamheden voor het CPE-apparaat heeft voltooid op basis van de hierboven beschreven automatiseringsrichtlijnen, kunt u contact opnemen met azurevirtualwan@microsoft.com om hier te worden vermeld: [Connectiviteit via partners]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Als u een klant bent die een bepaalde bedrijfsoplossing wilt laten vermelden als een Virtual WAN-partner, laat u het bedrijf contact opnemen met Virtual WAN door een e-mail te sturen naar azurevirtualwan@microsoft.com.
 
-### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hoe wordt virtuele WAN ondersteunt SD-WAN-apparaten?
+### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hoe biedt Virtual WAN ondersteuning voor SD-WAN-apparaten?
 
-Virtuele WAN-partners automatiseren IPsec-verbinding met Azure VPN-eind punten. Als de virtuele WAN-partner een SD-WAN-provider is, is het geïmpliceerd dat de SD-WAN-controller de automatiserings-en IPsec-verbinding beheert met Azure VPN-eind punten. Als het SD-WAN-apparaat een eigen eind punt in plaats van Azure VPN nodig heeft voor een eigen SD-WAN-functionaliteit, kunt u het SD-WAN-eind punt in een Azure-VNet implementeren en samen met Azure Virtual WAN bestaan.
+Virtual WAN-partners automatiseren IPsec-connectiviteit voor Azure VPN-eindpunten. Als de Virtual WAN-partner een SD-WAN-provider is, wordt ervan uitgegaan dat de SD-WAN-controller de automatisering en IPsec-verbinding voor Azure VPN-eindpunten beheert. Als het SD-WAN-apparaat in plaats van Azure VPN een eigen eindpunt nodig heeft voor een eigen SD-WAN-functionaliteit, kunt u het SD-WAN-eindpunt in een Azure-VNet implementeren dat naast Azure Virtual WAN aanwezig kan zijn.
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Hoeveel VPN-apparaten kunnen verbinding maken met één hub?
 
-Maxi maal 1.000 verbindingen worden ondersteund per virtuele hub. Elke verbinding bestaat uit vier koppelingen en elke koppelings verbinding ondersteunt twee tunnels die zich in een actief-actief configuratie bevinden. De tunnels worden beëindigd in een Azure Virtual hub VPN-gateway. Koppelingen vertegenwoordigen de fysieke ISP-koppeling op het filiaal/VPN-apparaat.
+Per virtuele hub worden maximaal 1000 verbindingen ondersteund. Elke verbinding bestaat uit vier koppelingen en elke koppelingsverbinding ondersteunt twee tunnels die zich in een actief-actief-configuratie bevinden. De tunnels eindigen in een VPN-gateway van de virtuele Azure-hub. Koppelingen vertegenwoordigen de fysieke ISP-koppeling op het vertakkings-/VPN-apparaat.
 
-### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Wat is een vertakkings verbinding met Azure Virtual WAN?
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Wat is een vertakkingsverbinding met Azure Virtual WAN?
 
-Een verbinding van een vertakking of VPN-apparaat in azure Virtual WAN is niets maar een VPN-verbinding die vrijwel de VPN-site en de Azure-VPN Gateway in een virtuele hub verbindt.
+Een verbinding vanaf een vertakkings- of VPN-apparaat in Azure Virtual WAN is niets anders dan een VPN-verbinding die virtueel verbinding maakt met de VPN-site en de Azure-VPN Gateway in een virtuele hub.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Kan het on-premises VPN-apparaat verbinding maken met meerdere hubs?
 
-Ja. De verkeers stroom is, wanneer deze begint, van het on-premises apparaat naar de dichtstbijzijnde micro soft-netwerk rand en vervolgens naar de virtuele hub.
+Ja. In het begin loopt de verkeersstroom van het on-premises apparaat naar de dichtstbijzijnde Microsoft-netwerkrand en vervolgens naar de virtuele hub.
 
 ### <a name="are-there-new-resource-manager-resources-available-for-virtual-wan"></a>Zijn er nieuwe Resource Manager-resources beschikbaar voor Virtual WAN?
   
-Ja, virtuele WAN heeft nieuwe resource manager-resources. Zie voor meer informatie het [Overzicht](../articles/virtual-wan/virtual-wan-about.md).
+Ja, Virtual WAN beschikt over nieuwe Resource Manager-resources. Zie voor meer informatie het [Overzicht](../articles/virtual-wan/virtual-wan-about.md).
 
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>Kan ik mijn favoriete virtuele netwerkapparaat implementeren en gebruiken (in een NVA-VNet) met Azure Virtual WAN?
 
 Ja, u kunt uw favoriete virtuele netwerkapparaat (NVA)-VNet verbinden met de Azure Virtual WAN.
 
-### <a name="can-i-create-a-network-virtual-appliance-inside-the-virtual-hub"></a>Kan ik een virtueel netwerk apparaat in de virtuele hub maken?
+### <a name="can-i-create-a-network-virtual-appliance-inside-the-virtual-hub"></a>Kan ik een virtueel netwerkapparaat binnen de virtuele hub maken?
 
-Een virtueel netwerk apparaat (NVA) kan niet binnen een virtuele hub worden geïmplementeerd. U kunt het echter maken in een spoke VNet dat is verbonden met de virtuele hub en de juiste route ring inschakelen zodat het verkeer wordt doorgestuurd volgens uw behoeften.
+Een virtueel netwerkapparaat (NVA) kan niet binnen een virtuele hub worden geïmplementeerd. U kunt het echter maken in een spoke-VNet dat is verbonden met de virtuele hub en de juiste routering inschakelen zodat het verkeer naar behoefte wordt doorgestuurd.
 
-### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>Kan een spoke VNet een virtuele netwerk gateway hebben?
+### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>Kan een spoke-VNet een virtuele netwerkgateway hebben?
 
-Nee. De spoke VNet kan geen virtuele netwerk gateway hebben als deze is verbonden met de virtuele hub.
+Nee. Het spoke-VNet kan geen virtuele netwerkgateway hebben als deze is verbonden met de virtuele hub.
 
 ### <a name="is-there-support-for-bgp-in-vpn-connectivity"></a>Is er ondersteuning voor BGP in VPN-connectiviteit?
 
-Ja, BGP wordt ondersteund. Wanneer u een VPN-site maakt, kunt u hier de BGP-para meters opgeven. Dit betekent dat alle verbindingen die zijn gemaakt in azure voor die site worden ingeschakeld voor BGP.
+Ja, BGP wordt ondersteund. Wanneer u een VPN-site maakt, kunt u er de BGP-parameters opgeven. Dit betekent dat alle verbindingen die in Azure zijn gemaakt voor die site, voor BGP worden ingeschakeld.
 
 ### <a name="is-there-any-licensing-or-pricing-information-for-virtual-wan"></a>Is er informatie over licentieverlening of prijzen beschikbaar voor Virtual WAN?
 
@@ -167,84 +167,96 @@ Ja. Zie de [prijzenpagina](https://azure.microsoft.com/pricing/details/virtual-w
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Is het mogelijk om een Azure Virtual WAN te maken met een Resource Manager-sjabloon?
 
-Een eenvoudige configuratie van één virtueel WAN met één hub en één vpnsite kan worden gemaakt met behulp van een Quick Start- [sjabloon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network). Virtual WAN is voornamelijk een REST-of portal-service.
+Een eenvoudige configuratie van één virtuele WAN met één hub en één VPN-site kan met behulp van een [quickstart-sjabloon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network) worden gemaakt. Virtual WAN is voornamelijk een service op basis van REST of de portal.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Kan spoke VNets die is verbonden met een virtuele hub communiceren met elkaar (V2V Transit)?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Kunnen spoke-VNets die zijn verbonden met een virtuele hub met elkaar communiceren (V2V Transit)?
 
-Ja. Standaard virtuele WAN ondersteunt transitieve VNet-to-VNet-connectiviteit via de virtuele WAN-hub waarmee de VNets zijn verbonden. In de terminologie van het virtuele WAN verwijzen we naar deze paden als ' lokaal door sturen van virtueel WAN VNet ' voor VNets die zijn verbonden met een virtuele WAN-hub in één regio, en ' globaal virtueel WAN-VNet door Voer ' voor VNets die zijn verbonden via meerdere virtuele WAN-hubs in twee of meer regio's. Voor sommige scenario's kan spoke VNets ook rechtstreeks worden gekoppeld met behulp van [Virtual Network peering](../articles/virtual-network/virtual-network-peering-overview.md) naast lokale of globale virtuele WAN-trans missie. In dit geval heeft VNet-peering voor rang op de transitieve verbinding via de virtuele WAN-hub.
+Ja. Standard Virtual WAN ondersteunt transitieve VNet-naar-VNet-connectiviteit via de Virtual WAN-hub waarmee de VNets zijn verbonden. In de terminologie van het virtuele WAN wordt naar deze paden verwezen als 'lokaal overbrengen van Virtual WAN-VNet' voor VNets die zijn verbonden met een Virtual WAN-hub in één regio, en 'globaal overbrengen van Virtual WAN-VNet' voor VNets die zijn verbonden via meerdere Virtual WAN-hubs in twee of meer regio's. In sommige scenario's kunnen, naast het lokaal of globaal overbrengen van een Virtual WAN-VNet, spoke-VNets ook rechtstreeks met elkaar worden gepeerd met behulp van [peering van virtuele netwerken](../articles/virtual-network/virtual-network-peering-overview.md). In dit geval heeft VNet-peering voorrang op de transitieve verbinding via de Virtual WAN-hub.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Is een vertakking-naar-vertakking-verbinding toegestaan in Virtual WAN?
 
-Ja, een vertakking-naar-vertakking-verbinding is beschikbaar in Virtual WAN. Vertakking is conceptueel toepasbaar op VPN-site, ExpressRoute-circuits of Point-to-site/gebruikers-VPN-gebruikers. Het inschakelen van vertakking in vertakking is standaard ingeschakeld en kan worden gevonden in de WAN-configuratie-instellingen. Hierdoor kunnen VPN-filialen/-gebruikers verbinding maken met andere VPN-vertakkingen en wordt de doorvoer verbinding ingeschakeld tussen VPN-en ExpressRoute-gebruikers.
+Ja, een vertakking-naar-vertakking-verbinding is beschikbaar in Virtual WAN. Vertakking is conceptueel toepasbaar op gebruikers van VPN-sites, ExpressRoute-circuits of punt-naar-site-/gebruikers-VPN's. Het inschakelen van vertakking naar vertakking is standaard ingeschakeld en kan worden gevonden in de configuratie-instellingen voor de WAN. Hierdoor kunnen VPN-filialen/-gebruikers verbinding maken met andere VPN-vertakkingen en wordt de overgangsconnectiviteit ingeschakeld tussen VPN- en ExpressRoute-gebruikers.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Gaat vertakkings-naar-vertakking verkeer via Azure Virtual WAN?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Loopt vertakking-naar-vertakking-verkeer via Azure Virtual WAN?
 
 Ja.
 
-### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Vereist Virtual WAN ExpressRoute van elke site?
+### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Is voor Virtual WAN vanaf elke site ExpressRoute nodig?
 
-Nee. Voor virtuele WAN is geen ExpressRoute van elke site vereist. Uw sites kunnen worden verbonden met een providernetwerk met behulp van een ExpressRoute-circuit. Voor sites die zijn verbonden met ExpressRoute naar een virtuele hub en IPsec VPN in dezelfde hub, biedt virtuele hub Transit connectiviteit tussen de VPN-en ExpressRoute-gebruiker.
+Nee. Voor Virtual WAN is niet vanaf elke locatie ExpressRoute nodig. Uw sites kunnen worden verbonden met een providernetwerk met behulp van een ExpressRoute-circuit. Voor sites die via ExpressRoute zijn verbonden met een virtuele hub en via een IPsec-VPN in dezelfde hub zijn verbonden, biedt de virtuele hub overgangsconnectiviteit tussen de VPN- en ExpressRoute-gebruiker.
 
-### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Is er een netwerk doorvoer of verbindings limiet bij het gebruik van virtuele WAN-netwerken?
+### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Is er een netwerkdoorvoer- of verbindingslimiet bij gebruik van Azure Virtual WAN?
 
-Netwerk doorvoer is per service in een virtuele WAN-hub. Hoewel u net zoveel virtuele Wan's kunt als u wilt, staat elk virtueel WAN 1 hub per regio toe. In elke hub is de cumulatieve VPN-door Voer Maxi maal 20 Gbps. de geaggregeerde door Voer van de ExpressRoute is Maxi maal 20 Gbps en de gezamenlijke door Voer van VPN/punt-naar-site VPN is Maxi maal 20 Gbps. De router in Virtual hub ondersteunt Maxi maal 50 Gbps voor het VNet-naar-VNet-verkeer en gaat uit van een totale belasting van 2000 VM voor alle VNets in virtuele WAN-hubs.
+Netwerkdoorvoer vindt per service in een virtuele WAN-hub plaats. Hoewel u zoveel virtuele WAN's kunt hebben als u wilt, staat elke virtuele WAN één hub per regio toe. In elke hub is de geaggregeerde VPN-doorvoer maximaal 20 Gbps. De geaggregeerde ExpressRoute-doorvoer is maximaal 20 Gbps en de geaggregeerde gebruikers-VPN-/punt-naar-sitedoorvoer is maximaal 20 Gbps. De router in een virtuele hub ondersteunt maximaal 50 Gbps voor VNet-naar-VNet-verkeersstromen en gaat uit van een totale belasting van 2000 VM's voor alle VNets in Virtual WAN-hubs.
 
-Wanneer VPN-sites verbinding maken met een hub, doen ze dit met verbindingen. Virtual WAN ondersteunt Maxi maal 1000 verbindingen of 2000 IPsec-tunnels per virtuele hub. Wanneer externe gebruikers verbinding maken met de virtuele hub, maken ze verbinding met de P2S VPN-gateway, die ondersteuning biedt voor Maxi maal 10.000 gebruikers, afhankelijk van de schaal eenheid (band breedte) die is gekozen voor de P2S VPN-gateway in de virtuele hub.
+Wanneer VPN-sites verbinding maken met een hub, doen ze dit via verbindingen. Virtual WAN ondersteunt maximaal 1000 verbindingen of 2000 IPsec-tunnels per virtuele hub. Wanneer externe gebruikers verbinding maken met de virtuele hub, maken ze verbinding met de P2S VPN-gateway. Deze biedt ondersteuning voor maximaal 10.000 gebruikers, afhankelijk van de schaaleenheid (bandbreedte) die voor de P2S VPN-gateway in de virtuele hub is gekozen.
 
-### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Wat is de totale VPN-door Voer van een VPN-tunnel en een verbinding?
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Wat is de totale VPN-doorvoer van een VPN-tunnel en een -verbinding?
 
-De totale VPN-door Voer van een hub is Maxi maal 20 Gbps op basis van de gekozen schaal eenheid van de VPN-gateway. De door Voer wordt gedeeld door alle bestaande verbindingen. Elke tunnel in een verbinding kan Maxi maal 1 Gbps ondersteunen.
+De totale VPN-doorvoer van een hub is maximaal 20 Gbps op basis van de gekozen schaaleenheid van de VPN-gateway. De doorvoer wordt gedeeld door alle bestaande verbindingen. Elke tunnel in een verbinding kan maximaal 1 Gbps ondersteunen.
 
-### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>De instelling van 20 Gbps wordt niet weer geven voor de virtuele hub in de portal. Dat Hoe kan ik configureren?
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>De instelling van 20 Gbps wordt niet weergeven voor de virtuele hub in de portal. Hoe kan ik dit configureren?
 
-Ga naar de VPN-gateway in een hub op de portal en klik op de schaal eenheid om deze naar de juiste instelling te wijzigen.
+Ga naar de VPN-gateway in een hub op de portal en klik op de schaaleenheid om deze naar de juiste instelling te wijzigen.
 
-### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Staat Virtual WAN toe dat het on-premises apparaat meerdere Isp's parallel kan gebruiken of dat het altijd één VPN-tunnel is?
+### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Kan het on-premises apparaat in Virtual WAN meerde ISP's parallel gebruiken of is er altijd sprake van één VPN-tunnel?
 
-On-premises apparaat-oplossingen kunnen Traffic-beleid Toep assen om verkeer over meerdere tunnels te sturen naar de virtuele WAN-hub van Azure (VPN-gateway in de virtuele hub).
+On-premises apparaat-oplossingen kunnen verkeersbeleid toepassen om verkeer via meerdere tunnels naar de Azure Virtual WAN-hub (VPN-gateway in de virtuele hub) te sturen.
 
-### <a name="what-is-global-transit-architecture"></a>Wat is een wereld wijde doorvoer architectuur?
+### <a name="what-is-global-transit-architecture"></a>Wat is wereldwijde doorvoerarchitectuur?
 
-Zie [wereld wijde doorvoer netwerk architectuur en virtueel WAN](../articles/virtual-wan/virtual-wan-global-transit-network-architecture.md)voor meer informatie over de wereld wijde doorvoer architectuur.
+Zie [Wereldwijde architectuur voor doorvoernetwerk en Virtual WAN](../articles/virtual-wan/virtual-wan-global-transit-network-architecture.md) voor meer informatie over wereldwijde doorvoerarchitectuur.
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Hoe wordt het verkeer naar de Azure-backbone geleid?
 
-Het verkeer volgt het patroon: vertakkings apparaat->ISP->micro soft-netwerk Edge->micro soft DC (hub VNet)->micro soft-netwerk Edge->ISP->-vertakkings apparaat
+Het verkeer volgt het volgende patroon: vertakkingsapparaat->ISP->Microsoft-netwerkrand>Microsoft DC (hub-VNet)->Microsoft-netwerkrand->ISP->vertakkingsapparaat
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Wat is er met dit model op elke locatie nodig? Alleen een internetverbinding?
 
-Ja. Een Internet verbinding en een fysiek apparaat dat IPsec ondersteunt, bij voor keur van onze geïntegreerde [virtuele WAN-partners](../articles/virtual-wan/virtual-wan-locations-partners.md). U kunt de configuratie en connectiviteit met Azure eventueel hand matig beheren vanaf uw voorkeurs apparaat.
+Ja. Een internetverbinding en een fysiek apparaat dat IPsec ondersteunt, bij voorkeur van onze geïntegreerde [Virtual WAN-partners](../articles/virtual-wan/virtual-wan-locations-partners.md). Optioneel kunt u de configuratie en verbinding met Azure vanaf het apparaat van voorkeur handmatig beheren.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hoe kan ik standaard route (0.0.0.0/0) inschakelen in een verbinding (VPN, ExpressRoute of Virtual Network):
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hoe kan ik de standaardroute (0.0.0.0/0) in een verbinding inschakelen (VPN, ExpressRoute of Virtual Network):
 
-Een virtuele hub kan een geleerde standaard route door geven naar een virtueel netwerk/site-naar-site VPN-ExpressRoute als de vlag is ingeschakeld op de verbinding. Deze markering wordt weer gegeven wanneer de gebruiker een verbinding met een virtueel netwerk, een VPN-verbinding of een ExpressRoute wijzigt. Deze vlag wordt standaard uitgeschakeld wanneer een site of een ExpressRoute-circuit is verbonden met een hub. Het is standaard ingeschakeld wanneer een virtuele netwerk verbinding wordt toegevoegd om een VNet te verbinden met een virtuele hub. De standaard route is niet afkomstig van de virtuele WAN-hub. de standaard route wordt door gegeven als deze al is geleerd door de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als een andere verbonden site geforceerde tunneling heeft ingeschakeld.
+In een virtuele hub kan een inmiddels bekende standaardroute worden doorgegeven naar een virtuele netwerk-/site-naar-site-VPN-/ExpressRoute-verbinding als de vlag voor de verbinding de status Ingeschakeld heeft. Deze vlag wordt weergegeven als de gebruiker een verbinding met een virtueel netwerk, een VPN-verbinding of een ExpressRoute aanpast. Deze vlag wordt standaard uitgeschakeld wanneer een site of een ExpressRoute-circuit met een hub wordt verbonden. De vlag is standaard ingeschakeld wanneer een virtuele netwerkverbinding wordt toegevoegd om een VNet te verbinden met een virtuele hub. De standaardroute is niet afkomstig van de Virtual WAN-hub. De standaardroute wordt doorgegeven als deze al bekend is bij de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als voor een andere verbonden site geforceerd tunnelen is ingeschakeld.
 
-### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hoe selecteer de virtuele hub in een virtueel WAN het beste pad voor een route van meerdere hubs
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hoe selecteert de virtuele hub in een virtuele WAN uit meerdere hubs het beste pad voor een route?
 
-Als een virtuele hub dezelfde route van meerdere externe hubs bewaart, is de volg orde waarin deze wordt beslist als volgt:
+Als een virtuele hub dezelfde route van meerdere externe hubs bewaart, is de volgorde waarover wordt beslist als volgt:
 
-1. Langste voorvoegsel overeenkomst.
-2. Lokale routes via interhub.
-3. Statische routes via BGP: dit is in context voor de beslissing van de virtuele hub-router. Als de beslissings Maker echter de VPN-gateway is waarbij een site routes adverteert via BGP of statische adres voorvoegsels biedt, kunnen statische routes de voor keur hebben boven BGP-routes.
-4. ExpressRoute (er) via VPN: er is een voor keur boven VPN wanneer de context een lokale hub is. Transit connectiviteit tussen ExpressRoute-circuits is alleen beschikbaar via Global Reach. In scenario's waarin ExpressRoute-circuit is verbonden met één hub en er een ander ExpressRoute-circuit is verbonden met een andere hub met een VPN-verbinding, kan VPN mogelijk de voor keur hebben voor scenario's tussen de verschillende hub.
-5. Als padlengte.
+1. Overeenkomst met langste voorvoegsel.
+2. Lokale routes in plaats van interhub.
+3. Statische routes in plaats van BGP: Dit is in overeenstemming met de beslissing van de virtuele hub-router. Als de beslisser echter de VPN-gateway is, waarbij een site routes via BGP aankondigt of statische-adresvoorvoegsels opgeeft, kunnen statische routes de voorkeur hebben boven BGP-routes.
+4. ExpressRoute (ER) in plaats van VPN: ER heeft de voorkeur boven VPN wanneer de context een lokale hub is. Overgangsconnectiviteit tussen ExpressRoute-circuits is alleen beschikbaar via Global Reach. In scenario's waarin een ExpressRoute-circuit is verbonden met één hub en een ander ExpressRoute-circuit is verbonden met een andere hub met VPN-verbinding, kan VPN mogelijk de voorkeur hebben in scenario's met overdragingen tussen hubs.
+5. AS-padlengte.
 
-### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Staat Virtual WAN hub connectiviteit tussen ExpressRoute-circuits toe.
+### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Staat een Virtual WAN-hub connectiviteit tussen ExpressRoute-circuits toe?
 
-Door Voer van een-naar-er is altijd via wereld wijd bereik. Virtuele-hub gateways worden geïmplementeerd in DC-of Azure-regio's. Wanneer twee ExpressRoute-circuits verbinding maken via een wereld wijd bereik, is het niet nood zakelijk dat het verkeer helemaal afkomstig is van de Edge-routers naar de virtuele hub-DC.
+Overgang van ER-naar-ER vindt altijd via Global Reach plaats. Virtuele hubgateways worden geïmplementeerd in DC- of Azure-regio's. Wanneer twee ExpressRoute-circuits verbinding maken via Global Reach, hoeft het verkeer niet de hele weg af te leggen van de Edge-routers tot de virtuele hub-DC.
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Is er een begrip van het gewicht in virtuele WAN-circuits of VPN-verbindingen van Azure
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Speelt het concept gewicht een rol bij Azure Virtual WAN ExpressRoute-circuits or VPN-verbindingen
 
-Wanneer meerdere ExpressRoute-circuits zijn verbonden met een virtuele hub, biedt routerings gewicht op de verbinding een mechanisme voor de ExpressRoute in de virtuele hub om de voor keur te geven aan een circuit van de andere. Er is geen mechanisme om een gewicht in te stellen voor een VPN-verbinding. Azure krijgt altijd de voor keur aan een ExpressRoute-verbinding via een VPN-verbinding binnen één hub.
+Wanneer meerdere ExpressRoute-circuits met een virtuele hub zijn verbonden, biedt de mate van routering (gewicht) voor de verbinding een mechanisme waarmee ExpressRoute in de virtuele hub een voorkeur heeft voor het ene circuit boven het andere. Er is geen mechanisme om een gewicht in te stellen voor een VPN-verbinding. Azure geeft binnen één hub altijd de voorkeur aan een ExpressRoute-verbinding boven een VPN-verbinding.
 
-### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Wanneer twee hubs (hub 1 en 2) zijn verbonden en er een ExpressRoute-circuit is verbonden als een Strike-to-the-hubs, wat is het pad voor een VNet dat is verbonden met hub 1 om een VNet te bereiken dat is aangesloten op hub 2?
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Is er een voorkeur van Virtual WAN voor ExpressRoute boven VPN voor verkeer dat Azure verlaat?
 
-Het huidige gedrag is om de voor keur te geven aan het ExpressRoute-circuit over de hub-naar-hub voor VNet-naar-VNet-connectiviteit. Dit wordt echter niet aanbevolen in een virtuele WAN-installatie. Het virtuele WAN-team werkt aan een oplossing om de voor keur voor hub-naar-hub via het ExpressRoute-pad in te scha kelen. De aanbeveling is voor meerdere ExpressRoute-circuits (verschillende providers) om verbinding te maken met één hub en de hub-naar-hub-connectiviteit van virtuele WAN te gebruiken voor verkeer tussen regio's.
+Ja 
 
-### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in virtuele WAN?
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Als een Virtual WAN-hub verbonden is met zowel een ExpressRoute-circuit als een VPN-site, wat zou dan de reden zijn dat er een voorkeur voor de route via de VPN-verbinding is boven ExpressRoute?
 
-IPv6 wordt niet ondersteund in virtuele WAN-hub en gateways. Dit scenario wordt momenteel niet ondersteund als u een VNet hebt met IPv6-ondersteuning en u het VNet wilt verbinden met een virtueel WAN.
+Wanneer een ExpressRoute-circuit is verbonden met een virtuele hub, vormen de Microsoft-randrouters het eerste knooppunt voor communicatie tussen on-premises en Azure. Deze randrouters communiceren met de Virtual WAN ExpressRoute-gateways die op hun beurt routes bewaren van de virtuele hubrouter waarmee alle routes tussen gateways in Virtual WAN worden beheerd. De Microsoft-randrouters verwerken virtuele ExpressRoute-hubroutes met prioriteit hoger dan die voor routes die on-premises worden overgenomen. Als de VPN-verbinding het primaire medium voor de virtuele hub wordt om routes van over te nemen (bijvoorbeeld failover-scenario's tussen ExpressRoute en VPN), maar tenzij de VPN-site een langere padlengte heeft, blijft de virtuele hub van VPN overgenomen routes met ExpressRoute gateway delen, waardoor de Microsoft-randrouters de voorkeur geven aan VPN-routes via on-premises routes. 
 
-### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Wat zijn de verschillen tussen de virtuele WAN-typen (Basic en Standard)?
+### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Wanneer twee hubs (hub 1 en 2) zijn verbonden en er een ExpressRoute-circuit als een strik met beide hubs is verbonden, wat is dan het pad voor een VNet dat is verbonden met hub 1 om een VNet te bereiken dat is aangesloten op hub 2?
 
-Zie [Basic en Standard Virtual wan's](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/virtual-wan/) voor prijzen.
+Het huidige gedrag is om de voo keur te geven aan het ExpressRoute-circuit boven hub-naar-hub voor VNet-naar-VNet-connectiviteit. Dit wordt echter niet aanbevolen in een virtuele WAN-installatie. Het virtuele WAN-team werkt aan een oplossing om de voorkeur voor hub-naar-hub via het ExpressRoute-pad in te schakelen. Het wordt aanbevolen meerdere ExpressRoute-circuits (verschillende providers) met één hub te verbinden en de hub-naar-hub-connectiviteit van Virtual WAN te gebruiken voor regio-overschrijdende verkeersstromen.
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in Virtual WAN?
+
+IPv6 wordt niet ondersteund in Virtual WAN-hub en de bijbehorende gateways. Dit scenario wordt momenteel niet ondersteund als u een VNet hebt met IPv6-ondersteuning en u het VNet wilt verbinden met Virtual WAN.
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Wat is de aanbevolen API-versie die door scripts moet worden gebruikt om verschillende Virtual WAN-functionaliteit te automatiseren?
+
+Er is minimaal de versie van 05-01-2020 (1 mei 2020) vereist. 
+
+### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Wat zijn de verschillen tussen de Virtual WAN-typen (Basic en Standard)?
+
+Zie [Virtual WAN's: Basic en Standard](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Zie de pagina [Prijzen](https://azure.microsoft.com/pricing/details/virtual-wan/) voor prijsopgaven.

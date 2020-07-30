@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118831"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385718"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -29,30 +29,30 @@ Bekijk de ondersteunde geografische regio's voor [openbare](migrate-support-matr
 
 U kunt Maxi maal 10.000 VMware-Vm's, Maxi maal 5.000 virtuele Hyper-V-machines en Maxi maal 1000 fysieke servers, detecteren door één apparaat te gebruiken. Als u meer computers hebt, leest u over [het schalen van een Hyper-V-beoordeling](scale-hyper-v-assessment.md), [het schalen van een VMware-evaluatie](scale-vmware-assessment.md)of [het schalen van een fysieke server beoordeling](scale-physical-assessment.md).
 
-## <a name="how-do-i-choose-the-assessment-type"></a>Hoe kan ik het beoordelings type kiezen?
+## <a name="how-do-i-choose-the-assessment-type"></a>Hoe kies ik het evaluatietype?
 
 - Gebruik **Azure VM-evaluaties** als u uw on-premises virtuele [VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-](how-to-set-up-appliance-hyper-v.md)machines en [fysieke servers](how-to-set-up-appliance-physical.md) wilt controleren op migratie naar Azure-vm's. [Meer informatie](concepts-assessment-calculation.md)
 
 - Gebruik de evaluaties van de **Azure VMware-oplossing (AVS)** als u uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) wilt controleren op migratie naar [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
-- U kunt een algemene groep alleen met VMware-machines gebruiken om beide typen evaluaties uit te voeren. Als u AVS-evaluaties in Azure Migrate voor het eerst uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
+- U kunt een algemene groep met VMware-machines alleen gebruiken om beide typen evaluaties uit te voeren. Let op: als u AVS-evaluaties in Azure Migrate voor het eerst uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Ik zie sommige groepen niet bij het maken van een evaluatie van een Azure VMware-oplossing (AVS)
 
-- AVS-evaluatie kan worden uitgevoerd voor groepen die alleen VMware-machines hebben. Verwijder alle niet-VMware-machines uit de groep als u van plan bent om een AVS-evaluatie uit te voeren.
-- Als u AVS-evaluaties in Azure Migrate voor de eerste keer uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
+- Een AVS-evaluatie kan worden uitgevoerd voor groepen die alleen VMware-machines hebben. Verwijder alle niet-VMware-machines uit de groep als u van plan bent om een AVS-evaluatie uit te voeren.
+- Als u AVS-evaluaties in Azure Migrate de eerste keer uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
 
 ## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Hoe kan ik selecteert u FTT-RAID-niveau in AVS-evaluatie?
 
-De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN Storage policies bepalen opslag vereisten voor uw virtuele machines. Met deze beleids regels wordt het vereiste service niveau voor uw virtuele machines gegarandeerd, omdat ze bepalen hoe opslag wordt toegewezen aan de virtuele machine. Dit zijn de beschik bare FTT-RAID-combi Naties: 
+De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN-opslagbeleid definieert de opslagvereisten voor virtuele machines. Deze beleidsregels garanderen het vereiste serviceniveau voor VM’s, omdat ze bepalen hoe opslag wordt toegewezen aan de VM. Dit zijn de beschikbare FTT-RAID-combinaties: 
 
-**Te verdragen fouten (FTT)** | **RAID-configuratie** | **Minimum aantal hosts vereist** | **Grootte van overwegingen**
+**FTT (te tolereren fouten)** | **RAID-configuratie** | **Minimumaantal vereiste hosts** | **Overwegingen voor de grootte**
 --- | --- | --- | --- 
-1 | RAID-1 (spie gelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
-1 | RAID-5 (code ring verwijderen) | 4 | Een VM van 100 GB verbruikt 133.33 GB
-2 | RAID-1 (spie gelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
-2 | RAID-6 (code ring verwijderen) | 6 | Een VM van 100 GB gebruikt 150 GB.
-3 | RAID-1 (spie gelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
+1 | RAID-1 (spiegelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
+1 | RAID-5 (verwijdering coderen) | 4 | Een VM van 100 GB verbruikt 133,33 GB
+2 | RAID-1 (spiegelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
+2 | RAID-6 (verwijdering coderen) | 6 | Een VM van 100 GB verbruikt 150 GB.
+3 | RAID-1 (spiegelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Ik zie geen enkele VM-typen in Azure Government
 
@@ -113,12 +113,12 @@ Azure VM-evaluaties op basis van import zijn evaluaties die zijn gemaakt met mac
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Waarom is het voorgestelde migratie hulpprogramma in op import gebaseerde AVS-evaluatie gemarkeerd als onbekend?
 
-Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 
 ## <a name="what-is-dependency-visualization"></a>Wat is de visualisatie van afhankelijkheden?
 
-Met behulp van afhankelijkheids visualisatie kunt u groepen Vm's bepalen die met een grotere betrouw baarheid moeten worden gemigreerd. Afhankelijkheids visualisatie: meerdere computer afhankelijkheden controleren voordat u een evaluatie uitvoert. Zo kunt u er zeker van zijn dat er niets achter komt, waardoor onverwachte storingen worden voor komen wanneer u naar Azure migreert. Azure Migrate maakt gebruik van de Servicetoewijzing oplossing in Azure Monitor om de visualisatie van afhankelijkheden in te scha kelen. [Meer informatie](concepts-dependency-visualization.md).
+Met behulp van afhankelijkheids visualisatie kunt u groepen Vm's bepalen die met een grotere betrouw baarheid moeten worden gemigreerd. Afhankelijkheids visualisatie: meerdere computer afhankelijkheden controleren voordat u een evaluatie uitvoert. Zo kunt u er zeker van zijn dat er niets achter komt, waardoor onverwachte storingen worden voor komen wanneer u naar Azure migreert. Azure Migrate maakt gebruik van de Servicetoewijzing-oplossing in Azure Monitor om afhankelijkheidsvisualisatie mogelijk te maken. [Meer informatie](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Afhankelijkheids analyse op basis van een agent is niet beschikbaar in Azure Government. U kunt afhankelijkheids analyse zonder agent gebruiken
@@ -133,7 +133,7 @@ Ondersteuning | Deze optie is momenteel in Preview en is alleen beschikbaar voor
 Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)en de [dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Vereisten | [Bekijk](concepts-dependency-visualization.md#agentless-analysis) de vereisten en implementatie behoeften. | [Bekijk](concepts-dependency-visualization.md#agent-based-analysis) de vereisten en implementatie behoeften.
 Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor de visualisatie van afhankelijkheden. [Meer informatie](concepts-dependency-visualization.md#agent-based-analysis).
-Uitleg | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
+Hoe het werkt | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
 Gegevensexport | Gegevens van de afgelopen 30 dagen kunnen worden gedownload in een CSV-indeling. | Gegevens kunnen worden opgevraagd met Log Analytics.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284401"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419798"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
 
@@ -54,9 +54,9 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 |   | Beheerd | Windows actueel | Permanent | Nee |
 |   |   |   | Niet-persistent | Nee |
 | Azure AD-geregistreerd | Federatief | Windows actueel | Permanent | Niet van toepassing |
-|   |   |   | Niet-persistent | Nee |
+|   |   |   | Niet-persistent | Niet van toepassing |
 |   | Beheerd | Windows actueel | Permanent | Niet van toepassing |
-|   |   |   | Niet-persistent | Nee |
+|   |   |   | Niet-persistent | Niet van toepassing |
 
 \*Een **federatieve** infra structuur voor identiteiten vertegenwoordigt een omgeving met een id-provider, zoals AD FS of een andere IDP van derden.
 

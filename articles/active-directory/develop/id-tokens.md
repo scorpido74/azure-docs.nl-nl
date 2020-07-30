@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313333"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418913"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -71,7 +71,7 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 |`nbf` |  int, een UNIX-time stamp | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking.|
 |`exp` |  int, een UNIX-time stamp | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking.  Het is belang rijk te weten dat een resource het token vóór deze tijd kan afwijzen, als er bijvoorbeeld een wijziging in de verificatie is vereist of als er een token is ingetrokken. |
 | `c_hash`| Tekenreeks |De code-hash is alleen opgenomen in ID-tokens wanneer het ID-token wordt uitgegeven met een OAuth 2,0-autorisatie code. Het kan worden gebruikt om de authenticiteit van een autorisatie code te valideren. Zie [OpenID Connect Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html)(Engelstalig) voor meer informatie over het uitvoeren van deze validatie. |
-|`at_hash`| Tekenreeks |De hash van het toegangs token is alleen opgenomen in ID-tokens wanneer het ID-token wordt uitgegeven met een OAuth 2,0-toegangs token. Het kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie [OpenID Connect Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html)(Engelstalig) voor meer informatie over het uitvoeren van deze validatie. |
+|`at_hash`| Tekenreeks |De hash van het toegangs token is alleen opgenomen in ID-tokens wanneer het ID-token is uitgegeven vanuit het `/authorize` eind punt met een OAuth 2,0-toegangs token. Het kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie [OpenID Connect Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)(Engelstalig) voor meer informatie over het uitvoeren van deze validatie. Dit wordt niet geretourneerd op ID-tokens van het `/token` eind punt. |
 |`aio` | Dekkende teken reeks | Een interne claim die door Azure AD wordt gebruikt om gegevens te registreren voor het opnieuw gebruiken van tokens. Moet worden genegeerd.|
 |`preferred_username` | Tekenreeks | De primaire gebruikers naam die de gebruiker vertegenwoordigt. Dit kan een e-mail adres, telefoon nummer of een algemene gebruikers naam zijn zonder een opgegeven indeling. De waarde is onveranderbaar en kan in de loop van de tijd veranderen. Omdat de waarde is ververanderbaar, mag deze niet worden gebruikt om autorisatie beslissingen te nemen. Het `profile` bereik is vereist om deze claim te ontvangen.|
 |`email` | Tekenreeks | De `email` claim is standaard aanwezig voor gast accounts met een e-mail adres.  Uw app kan de e-mail claim voor beheerde gebruikers (die van dezelfde Tenant als de resource) aanvragen met behulp van de `email` [optionele claim](active-directory-optional-claims.md).  Op het v 2.0-eind punt kan uw app ook aanvragen voor het `email` OpenID Connect-verbindings bereik. u hoeft niet zowel de optionele claim als de scope op te vragen om de claim op te halen.  De e-mail claim ondersteunt alleen adresseer bare e-mail van de profiel gegevens van de gebruiker. |

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214448"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383882"
 ---
 # <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
@@ -26,6 +26,72 @@ In dit artikel leert u hoe u een query kunt uitvoeren op één CSV-bestand met b
 - Niet-geciteerde en niet-geciteerde waarden en Escape tekens
 
 Alle bovenstaande variaties worden hieronder besproken.
+
+## <a name="quickstart-example"></a>Quick start-voor beeld
+
+`OPENROWSET`met de functie kunt u de inhoud van een CSV-bestand lezen door de URL naar uw bestand op te geven.
+
+### <a name="reading-csv-file"></a>CSV-bestand lezen
+
+De eenvoudigste manier om de inhoud van uw bestand te bekijken `CSV` is door de bestands-URL te laten `OPENROWSET` functioneren, csv en 2,0 op te geven `FORMAT` `PARSER_VERSION` . Als het bestand openbaar beschikbaar is of als uw Azure AD-identiteit toegang heeft tot dit bestand, moet u de inhoud van het bestand kunnen zien met behulp van de query zoals die in het volgende voor beeld wordt weer gegeven:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+Wordt `firstrow` gebruikt voor het overs laan van de eerste rij in het CSV-bestand dat de koptekst in dit geval vertegenwoordigt. Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste identiteit, moet u de [referenties voor SQL-aanmelding op server niveau](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen.
+
+### <a name="using-data-source"></a>Gegevens bron gebruiken
+
+In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die verwijst naar de hoofdmap van de opslag:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+Zodra u een gegevens bron hebt gemaakt, kunt u deze gegevens bron en het relatieve pad naar het bestand in `OPENROWSET` functie gebruiken:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+Als een gegevens bron wordt beveiligd met een SAS-sleutel of aangepaste identiteit, kunt u de [gegevens bron configureren met de referentie data base-Scope](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential).
+
+### <a name="explicitly-specify-schema"></a>Expliciet schema opgeven
+
+`OPENROWSET`Hiermee kunt u expliciet opgeven welke kolommen u wilt lezen uit het bestand met behulp van de `WITH` component:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+De getallen na een gegevens type in de `WITH` component vertegenwoordigen kolom index in het CSV-bestand.
+
+In de volgende secties ziet u hoe u verschillende typen CSV-bestanden kunt opvragen.
 
 ## <a name="prerequisites"></a>Vereisten
 

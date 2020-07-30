@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eb770dab33e1ec0e1a35f7ebcb6e620fc93692aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961792"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382981"
 ---
 # <a name="azure-signalr-service-authentication"></a>verificatie van Azure SignalR Service
 
@@ -426,7 +427,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 | -------------------- | --------------- |
 | ResourceGroupName | De naam van deze resourcegroep is voorgesteld in eerdere zelfstudies. Het is een goed idee om alle resources van de zelfstudies bij elkaar te zetten. Gebruik de resourcegroep die u in de eerdere zelfstudies hebt gebruikt. |
 | WebAppPlan | Voer een unieke naam in voor het nieuwe App Service-plan. |
-| WebAppName | Dit is de naam voor de nieuwe web-app en maakt deel uit van de URL. Gebruik een unieke naam, zoals signalrtestwebapp22665120.   |
+| WebAppName | Dit is de naam voor de nieuwe web-app en maakt deel uit van de URL. Gebruik een unieke naam. zoals signalrtestwebapp22665120.   |
 
 ### <a name="add-app-settings-to-the-web-app"></a>App-instellingen toevoegen aan de web-app
 

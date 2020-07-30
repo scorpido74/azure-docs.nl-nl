@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260692"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420648"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -23,7 +24,7 @@ Azure Cosmos DB-API voor MongoDB maakt gebruik van de belangrijkste mogelijkhede
 
 De API van Azure Cosmos DB voor MongoDB-Server versie 3,6 indexeert automatisch het `_id` veld dat niet kan worden verwijderd. De unieke waarde van het veld wordt automatisch afgedwongen `_id` per Shard-sleutel. In Azure Cosmos DB API voor MongoDB, sharding en indexering, zijn afzonderlijke concepten. U hoeft uw Shard-sleutel niet te indexeren. Net als bij een andere eigenschap in uw document, wordt u echter aangeraden de Shard-sleutel te indexeren als deze eigenschap een gemeen schappelijk filter is in uw query's.
 
-Als u extra velden wilt indexeren, past u de MongoDB-index beheer opdrachten toe. Net als in MongoDB indexeert Azure Cosmos DB-API voor MongoDB automatisch het `_id` veld. Dit standaard indexerings beleid wijkt af van de Azure Cosmos DB SQL-API, waarmee standaard alle velden worden geïndexeerd.
+Als u extra velden wilt indexeren, past u de opdrachten voor MongoDB-indexbeheer toe. Net als in MongoDB indexeert Azure Cosmos DB-API voor MongoDB automatisch het `_id` veld. Dit standaard indexeringsbeleid wijkt af van de Azure Cosmos DB SQL-API, waarmee standaard alle velden worden geïndexeerd.
 
 Als u een sortering op een query wilt Toep assen, moet u een index maken voor de velden die in de sorteer bewerking worden gebruikt.
 

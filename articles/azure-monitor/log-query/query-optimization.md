@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067474"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416312"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -98,14 +98,14 @@ De volgende query's produceren bijvoorbeeld precies hetzelfde resultaat, maar de
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Effectief aggregatie opdrachten en dimensies gebruiken in samenvatten en samen voegen
@@ -433,7 +433,7 @@ Query gedrag dat de parallelle uitvoering kan verminderen, omvat:
 - Het gebruik van serialisatie en venster functies, zoals de [operator serialize](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [vorig ()](/azure/kusto/query/prevfunction)en [Row](/azure/kusto/query/rowcumsumfunction) . De functies time series en gebruikers analyse kunnen in enkele van deze gevallen worden gebruikt. Er kunnen ook inefficiënte serialisatie optreden als de volgende Opera tors niet aan het einde van de query worden gebruikt: [Range](/azure/kusto/query/rangeoperator), [Sort](/azure/kusto/query/sortoperator), [order](/azure/kusto/query/orderoperator), [Top](/azure/kusto/query/topoperator), [Top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
 -    Gebruik van de aggregatie functie van [DCount ()](/azure/kusto/query/dcount-aggfunction) dwingt het systeem een centrale kopie van de afzonderlijke waarden te hebben. Wanneer de schaal van de gegevens hoog is, kunt u de optionele para meters van de functie DCount gebruiken om de nauw keurigheid te verlagen.
 -    In veel gevallen verlaagt de operator voor [samen voegen](/azure/kusto/query/joinoperator?pivots=azuremonitor) de algehele parallelle uitvoering. Onderzoek wille keurige volg orde als alternatief wanneer de prestaties problemen veroorzaken.
--    In het geval van query's in een resource bereik kunnen de RBAC-controles voorafgaand aan uitvoering wellicht de voor keur hebben in situaties waarin er sprake is van een zeer groot aantal RBAC-toewijzingen. Dit kan leiden tot langere controles die resulteren in een lagere parallelle uitvoering. Bijvoorbeeld: er wordt een query uitgevoerd op een abonnement met duizenden resources en elke resource heeft veel roltoewijzingen op het niveau van de resource, niet op het abonnement of de resource groep.
+-    In het geval van query's in een resource bereik kunnen de RBAC-controles voorafgaand aan uitvoering wellicht een rol spelen in situaties waarin een zeer groot aantal Azure-roltoewijzingen is opgenomen. Dit kan leiden tot langere controles die resulteren in een lagere parallelle uitvoering. Bijvoorbeeld: er wordt een query uitgevoerd op een abonnement met duizenden resources en elke resource heeft veel roltoewijzingen op het niveau van de resource, niet op het abonnement of de resource groep.
 -    Als een query kleine delen van gegevens verwerkt, is de parallelle kracht laag omdat het systeem deze niet verspreidt over veel reken knooppunten.
 
 

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371410"
+ms.locfileid: "87421889"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 
@@ -58,7 +58,7 @@ Met betrekking tot toegang tot het eind punt heeft iedereen die toegang heeft to
 
 Rechten voor service-inrichtings toestellen worden verleend via roltoewijzingen. Op [rollen gebaseerde toegang (RBAC)](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. 
 
-In de context van Azure Cognitive Search bepaalt [RBAC-roltoewijzingen](search-security-rbac.md) welke taken kunnen uitvoeren, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken:
+In de context van Azure Cognitive Search bepaalt [Azure-roltoewijzingen](search-security-rbac.md) wie taken kan uitvoeren, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken:
 
 * Een service maken of verwijderen
 * De service schalen

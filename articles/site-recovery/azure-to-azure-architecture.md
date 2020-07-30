@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135858"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421447"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -42,13 +42,13 @@ Wanneer u replicatie voor een virtuele machine inschakelt, geeft Site Recovery u
 
 **Doelbron** | **Standaardinstelling**
 --- | ---
-**Doel abonnement** | Hetzelfde als het bron abonnement.
-**Doel resource groep** | De resource groep waartoe de virtuele machines behoren na een failover.<br/><br/> Het kan zich in een Azure-regio bevinden, met uitzonde ring van de bron regio.<br/><br/> Site Recovery maakt een nieuwe resource groep in de doel regio met het achtervoegsel ' ASR '.<br/><br/>
+**Doelabonnement** | Hetzelfde als het bron abonnement.
+**Doelresourcegroep** | De resource groep waartoe de virtuele machines behoren na een failover.<br/><br/> Het kan zich in een Azure-regio bevinden, met uitzonde ring van de bron regio.<br/><br/> Site Recovery maakt een nieuwe resource groep in de doel regio met het achtervoegsel ' ASR '.<br/><br/>
 **Doel-VNet** | Het virtuele netwerk (VNet) waarin gerepliceerde Vm's zich na een failover bevinden. Er wordt een netwerk toewijzing gemaakt tussen de bron-en doel-virtuele netwerken en vice versa.<br/><br/> Site Recovery maakt een nieuw VNet en subnet met het achtervoegsel ' ASR '.
 **Doel opslag account** |  Als de virtuele machine geen beheerde schijf gebruikt, is dit het opslag account waarnaar de gegevens worden gerepliceerd.<br/><br/> Site Recovery maakt een nieuw opslag account in de doel regio om het bron-opslag account te spie gelen.
 **Beheerde replica schijven** | Als de virtuele machine gebruikmaakt van een beheerde schijf, is dit de beheerde schijven waarnaar gegevens worden gerepliceerd.<br/><br/> Site Recovery maakt met replica beheerde schijven in de opslag regio om de bron te spie gelen.
-**Doel beschikbaarheids sets** |  De beschikbaarheidsset waarin het repliceren van Vm's zich na een failover bevindt.<br/><br/> Site Recovery maakt een beschikbaarheidsset in de doel regio met het achtervoegsel ' ASR ' voor virtuele machines die zich in een beschikbaarheidsset op de bron locatie bevinden. Als er een beschikbaarheidsset bestaat, wordt deze gebruikt en wordt er geen nieuwe beschikbaar gemaakt.
-**Doel beschikbaarheids zones** | Als de doel regio beschikbaarheids zones ondersteunt, wordt in Site Recovery hetzelfde zone nummer toegewezen als in de bron regio.
+**Doelbeschikbaarheidssets** |  De beschikbaarheidsset waarin het repliceren van Vm's zich na een failover bevindt.<br/><br/> Site Recovery maakt een beschikbaarheidsset in de doel regio met het achtervoegsel ' ASR ' voor virtuele machines die zich in een beschikbaarheidsset op de bron locatie bevinden. Als er een beschikbaarheidsset bestaat, wordt deze gebruikt en wordt er geen nieuwe beschikbaar gemaakt.
+**Doelbeschikbaarheidszones** | Als de doel regio beschikbaarheids zones ondersteunt, wordt in Site Recovery hetzelfde zone nummer toegewezen als in de bron regio.
 
 ### <a name="managing-target-resources"></a>Doel resources beheren
 
@@ -64,8 +64,8 @@ Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw repl
 
 **Beleidsinstelling** | **Details** | **Standaard**
 --- | --- | ---
-**Bewaar periode van het herstel punt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
-**Frequentie van de app-consistente moment opname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur
+**Bewaarperiode van herstelpunt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
+**Frequentie van de app-consistente momentopname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur
 
 ### <a name="managing-replication-policies"></a>Replicatie beleid beheren
 
@@ -128,14 +128,14 @@ Wanneer u replicatie voor een virtuele machine van Azure inschakelt, gebeurt het
 
 Als uitgaande toegang voor virtuele machines wordt beheerd met Url's, kunt u deze Url's toestaan.
 
-| **URL** | **Details** |
-| ------- | ----------- |
-| *.blob.core.windows.net | Hiermee kunnen gegevens van de VM naar het cache-opslagaccount in de bronregio worden geschreven. |
-| login.microsoftonline.com | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
-| *.hypervrecoverymanager.windowsazure.com | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
-| *.servicebus.windows.net | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
-| *.vault.azure.net | Hiermee staat u toegang toe om replicatie in te scha kelen voor virtuele machines met ADE-functionaliteit via de portal
-| *. automation.ext.azure.com | Hiermee kunt u de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal inschakelen
+| **Naam**                  | **Commercieel**                               | **Overheid**                                 | **Beschrijving** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Hiermee kunnen gegevens van de VM naar het cache-opslagaccount in de bronregio worden geschreven. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
+| Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | Hiermee staat u toegang toe om replicatie in te scha kelen voor virtuele machines met ADE-functionaliteit via de portal |
+| Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | Hiermee kunt u de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal inschakelen |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 

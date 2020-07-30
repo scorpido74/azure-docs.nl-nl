@@ -8,19 +8,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: mqtt
-ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 45637a093361a177de880788bb7eda69f365dad2
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732334"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420801"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Aan de slag met Apparaatbeheer (Node.js)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 * Gebruik de [Azure Portal](https://portal.azure.com) voor het maken van een IOT hub en het maken van een apparaat-id in uw IOT-hub.
 

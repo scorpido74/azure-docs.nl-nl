@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199379"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383763"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Veelgestelde vragen over Azure Active Directory rapporten
 
@@ -145,7 +145,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 * **Niet toegepast**: Dit betekent dat er geen CA-beleid met de gebruiker en de app in het bereik is. 
 * **Geslaagd**: Dit betekent dat er een CA-beleid met de gebruiker en de app in het bereik en het CA-beleid is voldaan. 
-* **Fout**: Dit betekent dat er voor het CA-beleid met de gebruiker en de app in het bereik en het CA-beleid niet is voldaan. 
+* **Probleem**: bij de aanmelding is voldaan aan de gebruikers-en toepassings voorwaarde van ten minste één beleid voor voorwaardelijke toegang en granting Controls is niet voldaan of ingesteld om de toegang te blok keren.
     
 **V: wat zijn de mogelijke waarden voor het resultaat van het beleid voor voorwaardelijke toegang?**
 

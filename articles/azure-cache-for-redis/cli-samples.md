@@ -1,20 +1,20 @@
 ---
-title: Azure CLI Azure cache voor redis-voor beelden
-description: 'Azure CLI-voor beelden voor Azure cache voor redis: een cache maken, een cache verwijderen, cache Details, hostnaam, poorten en sleutels ophalen, verbinding maken met een web-app.'
+title: Azure-cache beheren voor redis met Azure CLI
+description: 'Azure CLI-voor beelden voor het beheren van Azure cache voor redis: een cache maken, een cache verwijderen, Details van de cache ophalen, hostnaam, poorten en sleutels, verbinding maken met een web-app.'
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
-ms.openlocfilehash: 43a986f884d621f257de2e9c305a0bcc59092d3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 345fd0272e0cfe9b4d7329f004e628ea7820c2d9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033662"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421237"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure CLI-voor beelden voor Azure cache voor redis
+# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure-cache beheren voor redis met Azure CLI
 
 De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behulp van de Azure CLI.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291867"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416499"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -118,7 +118,7 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
 - Wanneer u een wereld wijde peering maakt, kunnen de gekoppelde virtuele netwerken bestaan in alle open bare Cloud regio's van Azure of in de Cloud regio's in de Cloud. U kunt geen peers tussen verschillende Clouds. Een VNet in de open bare Azure-Cloud kan bijvoorbeeld niet worden gekoppeld aan een VNet in azure China-Cloud.
 - Resources in het ene virtueel netwerk kunnen niet communiceren met het front-end IP-adres van een interne Basic-load balancer in een wereldwijd gekoppeld virtueel netwerk. Ondersteuning voor Basic-load balancers bestaat alleen binnen dezelfde regio. Ondersteuning voor Standard-load balancers bestaat voor zowel VNet-peering als Global VNet-peering. Services die gebruikmaken van een basis load balancer die niet meer werken dan wereld wijde VNet-peering, worden [hier beschreven.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 - U kunt externe gateways gebruiken of gateway doorvoer toestaan in wereld wijd gekoppelde virtuele netwerken en lokaal peered virtuele netwerken.
-- De virtuele netwerken kunnen zich in dezelfde of verschillende abonnementen bevindt. Wanneer u virtuele netwerken in verschillende abonnementen peert, kunnen beide abonnementen worden gekoppeld aan dezelfde of een andere Azure Active Directory Tenant. Als u nog geen AD-Tenant hebt, kunt u [er een maken](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Ondersteuning voor peering in virtuele netwerken vanuit abonnementen die zijn gekoppeld aan verschillende Azure Active Directory tenants is niet beschikbaar in de portal. U kunt CLI, Power shell of sjablonen gebruiken.
+- De virtuele netwerken kunnen zich in dezelfde of verschillende abonnementen bevindt. Wanneer u virtuele netwerken in verschillende abonnementen peert, kunnen beide abonnementen worden gekoppeld aan dezelfde of een andere Azure Active Directory Tenant. Als u nog geen AD-Tenant hebt, kunt u [er een maken](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant).
 - De virtuele netwerken die u peert, moeten niet-overlappende IP-adres ruimten hebben.
 - U kunt geen adresbereiken toevoegen aan of verwijderen uit de adres ruimte van een virtueel netwerk wanneer een virtueel netwerk is gekoppeld aan een ander virtueel netwerk. Om adresbereiken toe te voegen of te verwijderen, verwijdert u de peering, voegt u de adresbereiken toe of verwijdert u de peering en maakt u deze opnieuw. Zie [virtuele netwerken beheren](manage-virtual-network.md)als u adresbereiken wilt toevoegen aan of adresbereiken uit virtuele netwerken wilt verwijderen.
 - U kunt twee virtuele netwerken die zijn geïmplementeerd met Resource Manager of een virtueel netwerk dat is geïmplementeerd via Resource Manager, peeren met een virtueel netwerk dat is geïmplementeerd via het klassieke implementatie model. U kunt niet twee virtuele netwerken peeren die zijn gemaakt via het klassieke implementatie model. Als u niet bekend bent met Azure-implementatie modellen, lees dan het artikel over [Azure-implementatie modellen begrijpen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . U kunt [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) gebruiken om twee virtuele netwerken te koppelen die zijn gemaakt via het klassieke implementatiemodel.

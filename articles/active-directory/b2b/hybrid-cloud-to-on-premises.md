@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385208"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
@@ -28,7 +28,7 @@ Als uw on-premises app op SAML gebaseerde verificatie gebruikt, kunt u deze apps
 
 U moet het volgende doen:
 
-- De SAML-app integreren met behulp van de niet-galerie toepassings sjabloon, zoals beschreven in [eenmalige aanmelding configureren voor toepassingen die zich niet in de Azure Active Directory toepassings galerie bevinden](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Zorg ervoor dat u weet wat u gebruikt voor de waarde van de **aanmeldings-URL** .
+- Integreer de app met behulp van SAML zoals beschreven in [Configure SSO op basis van een eenmalige aanmelding](../manage-apps/configure-saml-single-sign-on.md). Zorg ervoor dat u weet wat u gebruikt voor de waarde van de **aanmeldings-URL** .
 -  Gebruik Azure AD-toepassingsproxy om de on-premises app te publiceren, met **Azure Active Directory** geconfigureerd als de verificatie bron. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-publish-azure-portal.md)voor instructies. 
 
    Wanneer u de instelling **interne URL** configureert, gebruikt u de AANMELDINGS-URL die u hebt opgegeven in de toepassings sjabloon niet-galerie. Op deze manier hebben gebruikers vanaf buiten de grenzen van de organisatie toegang tot de app. Toepassings proxy voert de eenmalige aanmelding voor SAML uit voor de on-premises app.

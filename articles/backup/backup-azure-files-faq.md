@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054974"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382709"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -34,13 +34,13 @@ Ja. De beveiliging van Azure-bestands shares die zijn verbonden met synchronisat
 
 Wanneer u een back-up wilt maken, selecteert u een opslag account om bestands shares te detecteren in het opslag account met de kluis van waaruit dit wordt gedaan. Als u de bestands shares met een andere kluis wilt beveiligen, moet u de [registratie](manage-afs-backup.md#unregister-a-storage-account) van het geselecteerde opslag account bij deze kluis opheffen.
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Waarom kan ik de kluis niet wijzigen om een back-up voor de bestands share te configureren?
+
+Als het opslag account al is geregistreerd bij een kluis of andere bestands shares in het opslag account worden beveiligd met een kluis, hebt u geen optie om het te wijzigen omdat alle bestands shares in een opslag account alleen kunnen worden beveiligd door dezelfde kluis. Als u de kluis wilt wijzigen, moet u de [beveiliging voor alle bestands shares in het opslag account](manage-afs-backup.md#stop-protection-on-a-file-share) van de verbonden kluis stoppen, de registratie van het opslag account [ongedaan maken](manage-afs-backup.md#unregister-a-storage-account) en vervolgens een andere kluis voor beveiliging kiezen.
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kan ik de kluis wijzigen waarnaar ik een back-up van mijn bestands shares Maak?
 
 Ja. U moet [de beveiliging van de bestands share](manage-afs-backup.md#stop-protection-on-a-file-share) van de verbonden kluis echter stoppen, de registratie van dit opslag account [ongedaan maken](manage-afs-backup.md#unregister-a-storage-account) en vervolgens beveiligen tegen een andere kluis.
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Hoeveel Azure-bestandsshares kan ik beveiligen in een kluis?
-
-U kunt Azure-bestands shares beveiligen tegen Maxi maal 50 opslag accounts per kluis. U kunt ook tot 200 Azure-bestandsshares in een enkele kluis beveiligen.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Kan ik twee verschillende bestandsshares van hetzelfde opslagaccount in verschillende kluizen beveiligen?
 

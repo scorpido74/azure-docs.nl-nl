@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281494"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382692"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
-|Doel-workload|Ontwikkeling en productie|Ontwikkeling en productie|Ontwikkeling en productie|
-|SLA voor uptime|99,99%|99,99%|99,99%|
-|Maximale retentie van back-ups|7 dagen|35 dagen|35 dagen|
-|CPU|Laag|Laag, gemiddeld, hoog|Gemiddeld, hoog|
-|I/o-door Voer (ongeveer) |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
-|I/o-latentie (bij benadering)|5 ms (lezen), 10 MS (schrijven)|5 ms (lezen), 10 MS (schrijven)|2 ms (lezen/schrijven)|
-|Column Store-indexering |N.v.t.|S3 en hoger|Ondersteund|
-|OLTP in het geheugen|N.v.t.|N.v.t.|Ondersteund|
-|||||
+|**Doel-workload**|Ontwikkeling en productie|Ontwikkeling en productie|Ontwikkeling en productie|
+|**SLA voor uptime**|99,99%|99,99%|99,99%|
+|**Maximale retentie van back-ups**|7 dagen|35 dagen|35 dagen|
+|**CPU**|Laag|Laag, gemiddeld, hoog|Gemiddeld, hoog|
+|**I/o-door Voer (ongeveer)** |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
+|**I/o-latentie (bij benadering)**|5 ms (lezen), 10 MS (schrijven)|5 ms (lezen), 10 MS (schrijven)|2 ms (lezen/schrijven)|
+|**Column Store-indexering** |N.v.t.|S3 en hoger|Ondersteund|
+|**OLTP in het geheugen**|N.v.t.|N.v.t.|Ondersteund|
 
 > [!IMPORTANT]
 > De service lagen Basic, Standard S0, S1 en S2 bieden minder dan één vCore (CPU).  Voor CPU-intensieve workloads wordt een servicelaag van S3 of hoger aanbevolen. 
@@ -61,9 +60,8 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| Maximale opslag grootte | 2 GB | 1 TB | 4 TB  |
-| Maximum aantal Dtu's | 5 | 3000 | 4000 | 
-|||||
+| **Maximale opslag grootte** | 2 GB | 1 TB | 4 TB  |
+| **Maximum aantal Dtu's** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](file-space-manage.md)voor meer informatie.
@@ -72,12 +70,11 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 || **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| Maximale opslag grootte per data base  | 2 GB | 1 TB | 1 TB |
-| Maximale opslag grootte per groep | 156 GB | 4 TB | 4 TB |
-| Maximum aantal Edtu's per data base | 5 | 3000 | 4000 |
-| Maximum aantal Edtu's per pool | 1600 | 3000 | 4000 |
-| Maximum aantal data bases per pool | 500  | 500 | 100 |
-|||||
+| **Maximale opslag grootte per data base**  | 2 GB | 1 TB | 1 TB |
+| **Maximale opslag grootte per groep** | 156 GB | 4 TB | 4 TB |
+| **Maximum aantal Edtu's per data base** | 5 | 3000 | 4000 |
+| **Maximum aantal Edtu's per pool** | 1600 | 3000 | 4000 |
+| **Maximum aantal data bases per pool** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, VS-West-Centraal, US DoD regio's en Amerikaanse overheid centraal. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB.  Raadpleeg [P11-P15 huidige beperkingen](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb) voor meer informatie.  

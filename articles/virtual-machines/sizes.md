@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: f6ed5fee8e6d4f1f0575df733b8b95d1d6990513
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289684"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421056"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Grootten voor virtuele machines in azure
 
@@ -22,7 +22,7 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 | Type | Grootten | Beschrijving |
 |------|-------|-------------|
 | [Algemeen doel](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC, DCv2, Dv4, Dsv4, Ddv4, Ddsv4  | Evenwichtige CPU-geheugen verhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
-| [Geoptimaliseerde rekenkracht](sizes-compute.md) | Fsv2 | Hoge CPU-geheugen verhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
+| [Geoptimaliseerde rekenkracht](sizes-compute.md) | F, FS, Fsv2 | Hoge CPU-geheugen verhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
 | [Geoptimaliseerd geheugen](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, dv2 | Hoge geheugen-naar-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
 | [Geoptimaliseerd voor opslag](sizes-storage.md) | Lsv2 | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
 | [GPU](sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3, NVv4 | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere GPU's. |
@@ -31,9 +31,7 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 - Zie de pagina met prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) of [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)voor meer informatie over de prijzen van de verschillende grootten.
 - Zie [producten beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor beschik BAARHEID van VM-grootten in azure-regio's.
 - Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor algemene limieten voor virtuele Azure-machines.
-
-> [!NOTE]
-  > Zie voor meer informatie over hoe Azure namen van de virtuele machines, Azure [virtual machines name Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+- Zie [grootte conventies voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.
 
 ## <a name="rest-api"></a>REST-API
 

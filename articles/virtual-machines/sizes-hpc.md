@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c347f637083d8dfdf39cbd032df97bc52973465f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372566"
+ms.locfileid: "87421362"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -46,9 +46,9 @@ Met deze interface kunnen de RDMA-compatibele instanties communiceren via een In
 
 - **Infiniband-en RDMA-Stuur Programma's** : op InfiniBand ingeschakelde vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. Op Linux worden de CentOS-HPC-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Op SR-IOV ingeschakelde H-en N-serie Vm's, kan de [InfiniBandDriverLinux-VM-extensie](./extensions/hpc-compute-infiniband-linux.md) worden gebruikt voor het installeren van de Mellanox OFED-Stuur Programma's en het inschakelen van Infiniband. Meer informatie over het inschakelen van InfiniBand op virtuele machines met RDMA- [HPC-workloads](./workloads/hpc/overview.md).
 
-In Windows installeert de [InfiniBandDriverWindows-VM-extensie](./extensions/hpc-compute-infiniband-windows.md) Windows-netwerk directe Stuur programma's (op niet-SR-IOV-vm's) of Mellanox OFED-Stuur programma's (op SR-IOV-vm's) voor RDMA-connectiviteit. In bepaalde implementaties van A8-en A9-instanties wordt de uitbrei ding HpcVmDrivers automatisch toegevoegd. Houd er rekening mee dat de HpcVmDrivers VM-extensie wordt afgeschaft. het wordt niet bijgewerkt.
+   In Windows installeert de [InfiniBandDriverWindows-VM-extensie](./extensions/hpc-compute-infiniband-windows.md) Windows-netwerk directe Stuur programma's (op niet-SR-IOV-vm's) of Mellanox OFED-Stuur programma's (op SR-IOV-vm's) voor RDMA-connectiviteit. In bepaalde implementaties van A8-en A9-instanties wordt de uitbrei ding HpcVmDrivers automatisch toegevoegd. Houd er rekening mee dat de HpcVmDrivers VM-extensie wordt afgeschaft. het wordt niet bijgewerkt.
 
-U kunt [Azure PowerShell](/powershell/azure/) -cmdlets gebruiken om de VM-extensie toe te voegen aan een virtuele machine. Zie [extensies en functies van virtuele machines](./extensions/overview.md)voor meer informatie. U kunt ook werken met uitbrei dingen voor virtuele machines die zijn geïmplementeerd in het [klassieke implementatie model](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
+   U kunt [Azure PowerShell](/powershell/azure/) -cmdlets gebruiken om de VM-extensie toe te voegen aan een virtuele machine. Zie [extensies en functies van virtuele machines](./extensions/overview.md)voor meer informatie. U kunt ook werken met uitbrei dingen voor virtuele machines die zijn geïmplementeerd in het [klassieke implementatie model](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
 - **Mpi** : met de VM-grootten van SR-IOV op Azure (HBV2, HB, HC, NCv3, NDv2) is bijna elke basis van mpi in combi natie met Mellanox OFED toegestaan.
 Op Vm's waarvoor geen SR-IOV is ingeschakeld, wordt in ondersteunde MPI-implementaties de micro soft Network direct (ND)-interface gebruikt voor communicatie tussen Vm's. Daarom worden alleen micro soft MPI (MS-MPI) 2012 R2 of hoger en Intel MPI 5. x-versies ondersteund. Latere versies (2017, 2018) van de Intel MPI runtime-bibliotheek kunnen al dan niet compatibel zijn met de Azure RDMA-Stuur Programma's.
@@ -98,6 +98,6 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het optimaliseren van uw HPC-toepassing voor Azure en enkele voor beelden in [HPC-workloads](./workloads/hpc/overview.md) 
+- Meer informatie over het optimaliseren van uw HPC-toepassingen voor Azure en enkele voor beelden in [HPC-workloads](./workloads/hpc/overview.md).
 
-- Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+- Meer informatie over de laatste aankondigingen en enkele HPC-voor beelden en-resultaten vindt u in de blogs van de [technische community van Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

@@ -4,12 +4,12 @@ description: Meer informatie over hoe u snel een Kubernetes-cluster maakt, een t
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421226"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Azure CLI
 
@@ -94,8 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> Als er een fout is opgetreden bij het valideren van het wacht woord, probeert u de resource groep te maken in een andere regio.
-> Probeer vervolgens het cluster te maken met de nieuwe resource groep.
+> Als er een fout optreedt bij het valideren van het wacht woord, controleert u of de para meter *Windows-Administrator-Password* voldoet aan de [vereisten voor Windows Server-wacht woorden][windows-server-password]. Als uw wacht woord aan de vereisten voldoet, kunt u proberen om de resource groep te maken in een andere regio. Probeer vervolgens het cluster te maken met de nieuwe resource groep.
 
 Na enkele minuten is de opdracht voltooid en retourneert deze informatie over het cluster in JSON-indeling. Af en toe kan het cluster langer dan een paar minuten duren. In deze gevallen Maxi maal 10 minuten toestaan.
 

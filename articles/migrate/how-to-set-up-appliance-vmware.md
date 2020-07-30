@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen voor VMware
 description: Meer informatie over het instellen van een Azure Migrate apparaat om VMware-Vm's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112813"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386738"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
 
@@ -34,7 +34,7 @@ Als u het apparaat wilt instellen met behulp van een eicellen-sjabloon, doet u h
 ## <a name="download-the-ova-template"></a>De OVA-sjabloon downloaden
 
 1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
-2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMWare vSphere-hypervisor**.
+2. **Discover machines**  >  **Zijn uw machines**in Discover-computers gevirtualiseerd?, klikt u op **Ja, met VMware vSphere Hyper Visor**.
 3. Klik op **Downloaden** om het .OVA-sjabloonbestand te downloaden.
 
   ![Selecties voor het downloaden van een OVA-bestand](./media/tutorial-assess-vmware/download-ova.png)
@@ -89,7 +89,7 @@ Het apparaat voor de eerste keer instellen. Als u het apparaat implementeert met
         - Alleen HTTP-proxy wordt ondersteund.
     - **Tijdsynchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat detectie goed werkt.
     - **Updates installeren**: Azure migrate controleert of de nieuwste updates van het apparaat zijn geïnstalleerd.
-    - **Installeer VdDK**: Azure migrate controleert of de VMware VSphere Virtual Disk Development Kit (vddk) is geïnstalleerd.
+    - **Installeer VdDK**: Azure migrate controleert of de VMware vSphere Virtual Disk Development Kit (vddk) is geïnstalleerd.
         - Azure Migrates maakt gebruik van de VDDK om machines te repliceren tijdens de migratie naar Azure.
         - Down load VDDK 6,7 van VMware en extraheer de gedownloade zip-inhoud naar de opgegeven locatie op het apparaat.
 

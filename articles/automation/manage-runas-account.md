@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84f2ef1fc318e53914b1510870d0399cfbfa87e9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a3f48c9f15d12fbfc41ac8baf589f8579f259377
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185276"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421481"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Een Azure Automation uitvoeren als-account beheren
 
@@ -174,7 +174,8 @@ U kunt bepalen of de service-principal die wordt gebruikt door het run as-accoun
 2. Selecteer een **uitvoeren als-account voor Azure**. 
 3. Selecteer **rol** om de roldefinitie te zoeken die wordt gebruikt.
 
-[![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Controleer de rol van het run as-account." lightbox="media/manage-runas-account/verify-role-expanded.png":::
+
 
 U kunt ook de roldefinitie bepalen die wordt gebruikt door de run as-accounts voor meerdere abonnementen of Automation-accounts. Dit doet u met behulp van het [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) script in de PowerShell Gallery.
 

@@ -2,18 +2,18 @@
 title: Afschaffing van herstel na nood gevallen tussen door de klant beheerde sites (met VMM) met behulp van Azure Site Recovery | Microsoft Docs
 description: Details over toekomstige afschaffing van DR tussen sites die eigendom zijn van de klant met Hyper-V en tussen sites die worden beheerd door SCVMM naar Azure en alternatieve opties
 services: site-recovery
-author: rajani-janaki-ram
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: rajanaki
-ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135212"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421838"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Afschaffing van herstel na nood gevallen tussen door de klant beheerde sites (met VMM) met behulp van Azure Site Recovery
 

@@ -84,7 +84,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 > [!NOTE]
 > Veel van de onderstaande Cognitive Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de gratis laag wilt gebruiken, gebruikt u `F0` als de SKU voor uw resource.
 
-### <a name="vision"></a>Gezichtsvermogen
+### <a name="vision"></a>Vision
 
 | Service                    | Soort                      |
 |----------------------------|---------------------------|
@@ -95,7 +95,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Zoeken
+### <a name="search"></a>Search
 
 | Service            | Soort                  |
 |--------------------|-----------------------|
@@ -105,7 +105,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Bing Zoeken        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Spraak
+### <a name="speech"></a>Speech
 
 | Service            | Soort                 |
 |--------------------|----------------------|
@@ -200,7 +200,7 @@ Als u de resource groep en de bijbehorende resources wilt verwijderen, gebruikt 
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Aanvragen verifiëren voor Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)

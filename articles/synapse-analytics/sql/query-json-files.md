@@ -9,136 +9,162 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 5d02736e9cb0a612e434dc5a79a73d7a62785728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207648"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386636"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden. De ondersteunde indelingen worden weergegeven in [OPENROWSET](develop-openrowset.md).
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden met [OPENrowset](develop-openrowset.md). 
+- Standaard JSON-bestanden waarin meerdere JSON-documenten worden opgeslagen als een JSON-matrix.
+- Door line gescheiden JSON-bestanden, waarbij JSON-documenten worden gescheiden met een nieuwe-regel teken. Algemene uitbrei dingen voor deze typen bestanden zijn `jsonl` , `ldjson` en `ndjson` .
 
-## <a name="prerequisites"></a>Vereisten
+## <a name="reading-json-documents"></a>JSON-documenten lezen
 
-De eerste stap bestaat uit het **maken van een database** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eenvoudigste manier om de inhoud van uw JSON-bestand te bekijken is door de bestands-URL te bieden `OPENROWSET` , CSV op te geven `FORMAT` en waarden `0x0b` in te stellen voor `fieldterminator` en `fieldquote` . Als u JSON-bestanden met regel scheiding wilt lezen, is dit voldoende. Als u een klassiek JSON-bestand hebt, moet u waarden instellen `0x0b` voor `rowterminator` . `OPENROWSET`de functie parseert JSON en retourneert elk document in de volgende indeling:
 
-## <a name="sample-json-files"></a>Voor beeld van JSON-bestanden
+| documenten |
+| --- |
+|{"date_rep": "2020-07-24", "dag": 24, "maand": 7, "jaar": 2020, "cases": 3, "sterf": 0, "geo_id": "AF"}|
+|{"date_rep": "2020-07-25", "dag": 25, "maand": 7, "jaar": 2020, "cases": 7, "sterf": 0, "geo_id": "AF"}|
+|{"date_rep": "2020-07-26", "dag": 26, "maand": 7, "jaar": 2020, "cases": 4, "sterf": 0, "geo_id": "AF"}|
+|{"date_rep": "2020-07-27", "dag": 27, "maand": 7, "jaar": 2020, "cases": 8, "sterf": 0, "geo_id": "AF"}|
 
-De volgende sectie bevat voorbeeld scripts voor het lezen van JSON-bestanden. Bestanden worden opgeslagen in een *JSON* -container, in mappen *boeken*en bevatten één boek vermelding met de volgende structuur:
+Als het bestand openbaar beschikbaar is, of als uw Azure AD-identiteit toegang heeft tot dit bestand, moet u de inhoud van het bestand kunnen zien met behulp van de query zoals die in de volgende voor beelden wordt weer gegeven.
+
+### <a name="read-json-files"></a>JSON-bestanden lezen
+
+Met de volgende voorbeeld query worden JSON-en met regels gescheiden JSON-bestanden gelezen en wordt elk document als een afzonderlijke rij geretourneerd.
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.jsonl',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+go
+select top 10 *
+from openrowset(
+        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b',
+        rowterminator = '0x0b' --> You need to override rowterminator to read classic JSON
+    ) with (doc nvarchar(max)) as rows
+```
+
+Deze query retourneert elk JSON-document als een afzonderlijke rij van de resultatenset. Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste identiteit, moet u de [referentie voor het server niveau voor SQL-aanmelding](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen. 
+
+### <a name="using-data-source"></a>Gegevens bron gebruiken
+
+In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die naar de hoofdmap van de opslag verwijst en die gegevens bron en het relatieve pad naar het bestand in `OPENROWSET` functie gebruiken:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.json',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b',
+        rowterminator = '0x0b' --> You need to override rowterminator to read classic JSON
+    ) with (doc nvarchar(max)) as rows
+```
+
+Als een gegevens bron wordt beveiligd met een SAS-sleutel of aangepaste identiteit, kunt u de [gegevens bron configureren met de referentie data base-Scope](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential).
+
+In de volgende secties ziet u hoe u verschillende typen JSON-bestanden kunt opvragen.
+
+## <a name="parse-json-documents"></a>JSON-documenten parseren
+
+De query's in de voor gaande voor beelden retour neren elk JSON-document als één teken reeks in een afzonderlijke rij van de resultatenset. U kunt functies gebruiken `JSON_VALUE` en `OPENJSON` de waarden in JSON-documenten parseren en retour neren als relationele waarden, zoals wordt weer gegeven in het volgende voor beeld:
+
+| datum \_ rep | meldingen | Geo \_ -id |
+| --- | --- | --- |
+| 2020-07-24 | 3 | AF |
+| 2020-07-25 | 7 | AF |
+| 2020-07-26 | 4 | AF |
+| 2020-07-27 | 8| AF |
+
+### <a name="sample-json-document"></a>Voor beeld van JSON-document
+
+De query voorbeelden lezen *JSON* -bestanden met documenten met de volgende structuur:
 
 ```json
 {
-   "_id":"ahokw88",
-   "type":"Book",
-   "title":"The AWK Programming Language",
-   "year":"1988",
-   "publisher":"Addison-Wesley",
-   "authors":[
-      "Alfred V. Aho",
-      "Brian W. Kernighan",
-      "Peter J. Weinberger"
-   ],
-   "source":"DBLP"
+    "date_rep":"2020-07-24",
+    "day":24,"month":7,"year":2020,
+    "cases":13,"deaths":0,
+    "countries_and_territories":"Afghanistan",
+    "geo_id":"AF",
+    "country_territory_code":"AFG",
+    "continent_exp":"Asia",
+    "load_date":"2020-07-25 00:05:14",
+    "iso_country":"AF"
 }
 ```
 
-## <a name="read-json-files"></a>JSON-bestanden lezen
-
-Als u JSON-bestanden wilt verwerken met JSON_VALUE en [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), moet u het JSON-bestand lezen uit de opslag als één kolom. Met het volgende script wordt debook1.jsals een enkele kolom gelezen *in* het bestand:
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-        BULK 'json/books/book1.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r];
-```
-
 > [!NOTE]
-> U leest het hele JSON-bestand als één rij of kolom. So, FIELDTERMINATOR, FIELDQUOTE en ROWTERMINATOR zijn ingesteld op 0x0B.
+> Als deze documenten worden opgeslagen als een door een regel gescheiden JSON, moet u instellen `FIELDTERMINATOR` en `FIELDQUOTE` 0x0ben. Als u een standaard JSON-indeling hebt, moet u deze instellen `ROWTERMINATOR` op 0x0B.
 
-## <a name="query-json-files-using-json_value"></a>Een query uitvoeren op JSON-bestanden met JSON_VALUE
+### <a name="query-json-files-using-json_value"></a>Een query uitvoeren op JSON-bestanden met JSON_VALUE
 
-De onderstaande query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de naam *Probabilistic en statistische methoden in Cryptology, een inleiding op de geselecteerde onderwerpen*:
+De onderstaande query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een JSON-document:
 
 ```sql
-SELECT
-    JSON_VALUE(jsonContent, '$.title') AS title,
-    JSON_VALUE(jsonContent, '$.publisher') as publisher,
-    jsonContent
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r]
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
+select
+    JSON_VALUE(doc, '$.date_rep') AS date_reported,
+    JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    JSON_VALUE(doc, '$.cases') as cases,
+    doc
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+order by JSON_VALUE(doc, '$.geo_id') desc
 ```
 
-## <a name="query-json-files-using-json_query"></a>Een query uitvoeren op JSON-bestanden met JSON_QUERY
+### <a name="query-json-files-using-openjson"></a>Een query uitvoeren op JSON-bestanden met openjson
 
-De volgende query laat zien hoe u [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om objecten en matrices (auteurs) op te halen uit een boek met de titel *Probabilistic en statistische methoden in Cryptology, een inleiding op de geselecteerde onderwerpen*:
-
-```sql
-SELECT
-    JSON_QUERY(jsonContent, '$.authors') AS authors,
-    jsonContent
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r]
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
-```
-
-## <a name="query-json-files-using-openjson"></a>Een query uitvoeren op JSON-bestanden met openjson
-
-De volgende query maakt gebruik van [openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Er worden objecten en eigenschappen opgehaald binnen een boek met de naam *Probabilistic en statistische methoden in Cryptology, een inleiding op de geselecteerde onderwerpen*:
+De volgende query maakt gebruik van [openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Er worden COVID statistieken opgehaald die zijn gerapporteerd in Servië:
 
 ```sql
-SELECT
-    j.*
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent NVARCHAR(max) -- Use appropriate length. Make sure JSON fits. 
-    ) AS [r]
-CROSS APPLY OPENJSON(jsonContent) AS j
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
+select
+    *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+    cross apply openjson (doc)
+        with (  date_rep datetime2,
+                cases int,
+                fatal int '$.deaths',
+                country varchar(100) '$.countries_and_territories')
+where country = 'Serbia'
+order by country, date_rep desc;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

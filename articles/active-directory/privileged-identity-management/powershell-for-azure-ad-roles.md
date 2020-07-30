@@ -16,12 +16,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3791da8f8a990f62de0052e1662fd6037e936b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849289"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421906"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Power shell voor Azure AD-rollen in Privileged Identity Management
 
@@ -140,7 +140,7 @@ Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq
 
 Er zijn vier hoofd objecten in de instelling. Slechts drie van deze objecten worden momenteel door PIM gebruikt. De UserMemberSettings zijn activerings instellingen, AdminEligibleSettings zijn toewijzings instellingen voor in aanmerking komende toewijzingen en de AdminmemberSettings zijn toewijzings instellingen voor actieve toewijzingen.
 
-[![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
+[![Functie-instellingen ophalen en bijwerken.](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png)](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
 Als u de functie-instelling wilt bijwerken, moet u het bestaande instellings object voor een bepaalde rol ophalen en wijzigingen aanbrengen:
 

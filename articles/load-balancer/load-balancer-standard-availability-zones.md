@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027559"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420308"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
@@ -51,7 +51,7 @@ Een enkel IP-adres van de front-end heeft geen zone storingen. Het front-end-IP-
 Het IP-adres van de frontend wordt tegelijkertijd bediend door meerdere onafhankelijke infrastructuur implementaties in meerdere beschikbaarheids zones. Nieuwe pogingen of het opnieuw inbrengen van wijzigingen in andere zones die niet worden beïnvloed door de fout in de zone. 
 
 <p align="center">
-  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" alt="Figure depicts a zone-redundant standard load balancer directing traffic in three different zones to three different subnets in a zone redundant configuration." width="512" title="Virtual Network NAT">
 </p>
 
 *Afbeelding: redundante zone load balancer*
@@ -64,7 +64,7 @@ Daarnaast wordt het gebruik van zonegebonden-frontends rechtstreeks voor eind pu
 
 
 <p align="center">
-  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+  <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
 *Afbeelding: zonegebonden redundante load balancer*
@@ -123,14 +123,14 @@ Eén belang rijk onderdeel van uw toepassing kan van invloed zijn op uw hele toe
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * IP-adres
+    * Het IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze worden geconfigureerd in zone 1 en zone 2. Wanneer zone 1 mislukt, wordt uw service niet bewaard. Vermijd zones met zonegebonden-scenario's tenzij u zeker weet dat u een potentieel gevaarlijke fout modus maakt. Dit scenario mag flexibiliteit bieden.
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * IP-adres
+    * Het IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze zijn geconfigureerd voor zone-redundantie en zone 1. Uw service blijft de zone fout van zone 2, zone 3 of beide, tenzij zone 1 is mislukt. U verliest echter een mogelijke reden om de status van uw service te controleren als u er zeker van bent dat u de beschik baarheid van de front-end kunt bereiken.  Overweeg het ontwikkelen van een uitgebreidere status-en capaciteits model.  U kunt zone-redundante en zonegebonden-concepten samen gebruiken om inzicht en beheer baarheid uit te breiden.

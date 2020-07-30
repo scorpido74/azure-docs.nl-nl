@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338277"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421719"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Accounts voor nood toegang beheren in azure AD
 
@@ -56,7 +56,7 @@ Ten minste één van uw accounts voor toegang in nood gevallen moet echter niet 
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Ten minste één account uitsluiten van beleid voor voorwaardelijke toegang
 
-Tijdens een nood geval is het niet mogelijk dat een beleid uw toegang blokkeert om een probleem op te lossen. Ten minste één nood toegangs account moet worden uitgesloten van alle beleids regels voor voorwaardelijke toegang. Als u een [basislijn beleid](../conditional-access/baseline-protection.md)hebt ingeschakeld, moet u uw accounts voor toegang in nood gevallen uitsluiten.
+Tijdens een nood geval is het niet mogelijk dat een beleid uw toegang blokkeert om een probleem op te lossen. Ten minste één nood toegangs account moet worden uitgesloten van alle beleids regels voor voorwaardelijke toegang.
 
 ## <a name="federation-guidance"></a>Federatie richtlijnen
 
@@ -109,14 +109,14 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 
         ![waarschuwings logica](./media/directory-emergency-access/alert-image2.png)
 
-    1. Selecteer **Voltooid**. U kunt nu de geschatte maandelijkse kosten van deze waarschuwing weer geven.
+    1. Selecteer **Gereed**. U kunt nu de geschatte maandelijkse kosten van deze waarschuwing weer geven.
 1. Selecteer een actie groep van gebruikers die door de waarschuwing moeten worden gewaarschuwd. Zie [een actie groep maken](#create-an-action-group)als u er een wilt maken.
 1. Als u de e-mail melding die wordt verzonden naar de leden van de actie groep wilt aanpassen, selecteert u acties onder **acties aanpassen**.
 1. Geef onder **waarschuwings Details**de naam van de waarschuwings regel op en voeg een optionele beschrijving toe.
 1. Stel het **Ernst niveau** van de gebeurtenis in. U kunt het beste instellen op **kritiek (Ernst 0)**.
 1. Onder **regel inschakelen bij het maken**, blijft de optie ingesteld op **Ja**.
 1. Als u waarschuwingen voor een tijdje wilt uitschakelen, schakelt u het selectie vakje **waarschuwingen onderdrukken** in en voert u de wacht tijd in voordat u opnieuw een waarschuwing krijgt en selecteert u vervolgens **Opslaan**.
-1. Klik op **waarschuwings regel maken**.
+1. Klik op **Waarschuwingsregel maken**.
 
 ### <a name="create-an-action-group"></a>Een actiegroep maken
 

@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f389bfe19eb6dde5416d8cba0b67d964e69bc860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743164"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421158"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol activeren in Privileged Identity Management
 
@@ -30,7 +30,7 @@ Privileged Identity Management in Azure Active Directory (Azure AD) biedt nu ond
 > [!NOTE]
 > Aangepaste Azure AD-rollen worden tijdens de preview-fase niet geïntegreerd met de ingebouwde Directory rollen. Zodra de mogelijkheid algemeen beschikbaar is, wordt het beheer van rollen uitgevoerd in de ingebouwde functie-ervaring. Als u de volgende banner ziet, moeten deze rollen worden beheerd [in de ingebouwde functie-ervaring](pim-how-to-activate-role.md) en dit artikel is niet van toepassing:
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> :::image type="content" source="media/pim-how-to-add-role-to-user/pim-new-version.png" alt-text="Selecteer Privileged Identity Management in azure AD." lightbox="media/pim-how-to-add-role-to-user/pim-new-version.png":::
 
 ## <a name="activate-a-role"></a>Een rol activeren
 
@@ -44,7 +44,7 @@ Wanneer u een aangepaste Azure AD-rol moet activeren, kunt u de activering aanvr
    ![Bekijk de lijst met aangepaste roltoewijzingen die in aanmerking komen voor Azure AD](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
->  Voordat u een rol toewijst, moet u een rol maken/configureren. Zie [hier] (Engelstalig) voor meer informatie over het configureren van aangepaste AAD-rollen. (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
+> Voordat u een rol toewijst, moet u een rol maken/configureren. Zie [aangepaste rollen van Azure AD configureren in privileged Identity Management](azure-ad-custom-roles-configure.md)voor meer informatie over het configureren van aangepaste Aad-rollen.
 
 1. Zoek op de pagina **aangepaste rollen van Azure AD (preview)** de toewijzing die u nodig hebt.
 1. Selecteer **uw rol activeren** om de pagina **activeren** te openen.

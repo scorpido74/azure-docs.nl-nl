@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639841"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418233"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Het rapport aanmeldingen gebruiken om Azure Multi-Factor Authentication-gebeurtenissen te controleren
 
@@ -37,14 +37,14 @@ Het rapport aanmeldingen bevat informatie over het gebruik van beheerde toepassi
 
 Voer de volgende stappen uit om het rapport registratie-activiteiten in de [Azure Portal](https://portal.azure.com)weer te geven. U kunt ook query's uitvoeren op gegevens met behulp van de [rapportage-API](../reports-monitoring/concept-reporting-api.md).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account met *globale beheerders* machtigingen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een account met machtigingen op het niveau van *globale beheerder*.
 1. Zoek en selecteer **Azure Active Directory**en kies vervolgens **gebruikers** in het menu aan de linkerkant.
 1. Onder *activiteit* in het menu aan de linkerkant selecteert u **aanmeldingen**.
 1. Er wordt een lijst met aanmeldings gebeurtenissen weer gegeven, met inbegrip van de status. U kunt een gebeurtenis selecteren om meer details weer te geven.
 
     Op het tabblad *verificatie gegevens* of *voorwaardelijke toegang* van de gebeurtenis details ziet u de status code of het beleid dat de MFA-prompt heeft geactiveerd.
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![Scherm afbeelding van voor beeld van Azure Active Directory-aanmeld rapport in de Azure Portal](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 Als deze beschikbaar is, wordt de verificatie weer gegeven, zoals een tekst bericht, Microsoft Authenticator app-melding of telefoon gesprek.
 
@@ -118,7 +118,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 De volgende tabel kan helpen bij het oplossen van gebeurtenissen die gebruikmaken van de gedownloade versie van het activiteiten rapport uit de vorige Portal-stappen of Power shell-opdrachten. Deze resultaat codes worden niet direct weer gegeven in de Azure Portal.
 
-| Aanroep resultaat | Description | Uitgebreide beschrijving |
+| Aanroep resultaat | Beschrijving | Uitgebreide beschrijving |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PINCODE ingevoerd | De gebruiker heeft een pincode ingevoerd. Als de verificatie is geslaagd, wordt de juiste pincode ingevoerd. Als verificatie is geweigerd, wordt er een onjuiste pincode ingevoerd of is de gebruiker ingesteld op de standaard modus. |
 | SUCCESS_NO_PIN | Alleen # ingevoerd | Als de gebruiker is ingesteld op pincode modus en de verificatie wordt geweigerd, betekent dit dat de gebruiker de pincode niet heeft ingevoerd en alleen #.  Als de gebruiker is ingesteld op de standaard modus en de verificatie slaagt, betekent dit dat de gebruiker alleen de waarde # heeft opgegeven als in de standaard modus. |
@@ -170,7 +170,7 @@ De volgende tabel kan helpen bij het oplossen van gebeurtenissen die gebruikmake
 
 De volgende aanvullende informatie en rapporten zijn beschikbaar voor MFA-gebeurtenissen, waaronder die voor MFA server:
 
-| Rapport | Locatie | Description |
+| Rapport | Locatie | Beschrijving |
 |:--- |:--- |:--- |
 | Geschiedenis van geblokkeerde gebruikers | Azure AD > Security > MFA > blok keren/deblokkeren van gebruikers | Toont de geschiedenis van aanvragen om gebruikers te blok keren of deblokkeren. |
 | Gebruik voor on-premises onderdelen | Activiteiten rapport van Azure AD > Security > MFA > | Bevat informatie over algemeen gebruik voor MFA-server via de NPS-extensie, ADFS en MFA-server. |

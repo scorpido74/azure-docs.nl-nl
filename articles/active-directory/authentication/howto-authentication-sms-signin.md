@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550476"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419560"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Gebruikers configureren en inschakelen voor verificatie op basis van SMS met behulp van Azure Active Directory (preview)
 
@@ -65,7 +65,7 @@ Eerst gaan we verificatie op basis van SMS inschakelen voor uw Azure AD-Tenant.
 1. Zoek naar **Azure Active Directory** en selecteer deze optie.
 1. Selecteer in het navigatie menu aan de linkerkant van het Azure Active Directory venster **beveiligings > verificatie methoden > verificatie methode beleid (preview)**.
 
-    [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Blader naar en selecteer het venster verificatie methode beleid (preview) in de Azure Portal.](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. Selecteer **tekst bericht**in de lijst met beschik bare verificatie methoden.
 1. Stel **Enable** in op *Ja*.
@@ -81,7 +81,7 @@ Als verificatie op basis van SMS is ingeschakeld in uw Azure AD-Tenant, moet u n
 1. Stel in het venster tekst bericht verificatie beleid het selectie vakje **doel** in op *gebruikers selecteren*.
 1. Kies om **gebruikers of groepen toe te voegen**en selecteer vervolgens een test gebruiker of groep, zoals *Contoso-gebruiker* of *Contoso SMS-gebruikers*.
 
-    [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![Kies gebruikers of groepen die u wilt inschakelen voor verificatie op basis van SMS in de Azure Portal.](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. Wanneer u uw gebruikers of groepen hebt geselecteerd, kiest u **selecteren**en **slaat** u het bijgewerkte verificatie methode beleid op.
 

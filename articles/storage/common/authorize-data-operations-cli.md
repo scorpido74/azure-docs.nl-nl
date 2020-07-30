@@ -10,12 +10,12 @@ ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0b3890c50a476e4c3b3247db435c6032bf9bbc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805487"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417298"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Toegang verlenen tot BLOB-of wachtrij gegevens met Azure CLI
 
@@ -57,7 +57,7 @@ In het volgende voor beeld ziet u hoe u een container maakt op basis van Azure C
 1. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > RBAC-roltoewijzingen kunnen enkele minuten duren voordat deze wordt door gegeven.
+    > Het kan enkele minuten duren voordat Azure-roltoewijzingen zijn door gegeven.
 
 1. Roep de opdracht [AZ storage container Create](/cli/azure/storage/container#az-storage-container-create) aan met de `--auth-mode` para meter ingesteld op `login` om de container te maken met uw Azure AD-referenties. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
@@ -97,7 +97,7 @@ az storage container create \
 
 U kunt autorisatie parameters opgeven in omgevings variabelen om te voor komen dat ze worden opgenomen in elke aanroep van een Azure Storage gegevens bewerking. De volgende tabel beschrijft de beschik bare omgevings variabelen.
 
-| Omgevingsvariabele                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
+| Omgevingsvariabele                  | Beschrijving                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    De naam van het opslagaccount. Deze variabele moet worden gebruikt in combi natie met de sleutel van het opslag account of een SAS-token. Als er geen van beide aanwezig is, probeert de Azure CLI de toegangs sleutel voor het opslag account op te halen met behulp van het geverifieerde Azure AD-account. Als een groot aantal opdrachten tegelijk wordt uitgevoerd, is het mogelijk dat de Azure Storage Resource provider beperkings limiet is bereikt. Zie [schaalbaarheids-en prestatie doelen voor de resource provider van Azure Storage](scalability-targets-resource-provider.md)voor meer informatie over limieten voor resource providers.             |
 |    AZURE_STORAGE_KEY                  |    De opslagaccountsleutel. Deze variabele moet worden gebruikt in combi natie met de naam van het opslag account.                                                                                                                                                                                                                                                                          |

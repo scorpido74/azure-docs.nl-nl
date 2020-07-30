@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 1cb9600393fe50226da1efcef550cbb8b26f7f14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321587"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387061"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Meer informatie over het wijzigen van de toegangs sleutels voor Azure Storage ac
 Uit veiligheids overwegingen moet u de toegangs sleutels voor een Azure Storage-account mogelijk wijzigen. Wanneer u de toegangs sleutel opnieuw genereert, moet Azure Machine Learning worden bijgewerkt om de nieuwe sleutel te gebruiken. Azure Machine Learning maakt mogelijk gebruik van het opslag account voor zowel model opslag als een gegevens opslag.
 
 > [!IMPORTANT]
-> Referenties registred met gegevens opslag worden opgeslagen in uw Azure Key Vault die zijn gekoppeld aan de werk ruimte. Als u voor uw Key Vault [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) hebt ingeschakeld, moet u dit artikel volgen voor het bijwerken van referenties. Het ongedaan maken van de registratie van het gegevens archief en het opnieuw registreren onder dezelfde naam zal mislukken.
+> Referenties registred met gegevens opslag worden opgeslagen in uw Azure Key Vault die zijn gekoppeld aan de werk ruimte. Als u voor uw Key Vault [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) hebt ingeschakeld, moet u dit artikel volgen voor het bijwerken van referenties. Het ongedaan maken van de registratie van het gegevens archief en het opnieuw registreren onder dezelfde naam zal mislukken.
 
 ## <a name="prerequisites"></a>Vereisten
 

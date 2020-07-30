@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fd7ca6bdfa7626707af9efa20d76dab633dc16fd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249527"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386041"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management-service gebruiken met een intern virtueel netwerk
 Met Azure Virtual Networks kunnen Azure API Management Api's beheren die niet toegankelijk zijn via internet. Er zijn een aantal VPN-technologieën beschikbaar om verbinding te maken. API Management kan in twee hoofd modi in een virtueel netwerk worden geïmplementeerd:
@@ -81,7 +81,7 @@ U kunt ook virtuele netwerk connectiviteit inschakelen met behulp van Power shel
 * Een bestaande implementatie van een API Management-service in een virtueel netwerk bijwerken: gebruik de cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) om een bestaande API Management service in een virtueel netwerk te verplaatsen en deze te configureren voor het gebruik van het interne virtuele-netwerk type.
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS-configuratie
-Wanneer API Management zich in de modus Extern virtueel netwerk bevindt, wordt de DNS beheerd door Azure. Voor interne virtuele netwerk modus moet u uw eigen route ring beheren.
+Wanneer API Management zich in de modus Extern virtueel netwerk bevindt, wordt de DNS beheerd door Azure. Voor interne virtuele netwerk modus moet u uw eigen DNS beheren.
 
 > [!NOTE]
 > API Management-service luistert niet naar aanvragen die afkomstig zijn van IP-adressen. Deze reageert alleen op aanvragen voor de hostnaam die is geconfigureerd op de service-eind punten. Deze eind punten omvatten gateway, het Azure Portal en de ontwikkelaars Portal, het direct beheer eindpunt en git.

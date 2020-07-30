@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453501"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420121"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Code fragmenten toevoegen en uitvoeren met inline code in Azure Logic Apps
 
@@ -205,7 +206,7 @@ In het voor beeld van dit onderwerp `workflowContext` heeft het object de volgen
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Para meters toevoegen
+## <a name="add-parameters"></a>Parameters toevoegen
 
 In sommige gevallen moet u er wellicht expliciet voor zorgen dat de **inline code** actie resultaten van de trigger of specifieke acties bevat die door uw code worden verwezen als afhankelijkheden door de para meters voor **trigger** of **acties** toe te voegen. Deze optie is handig voor scenario's waarbij de resultaten niet worden gevonden tijdens de uitvoering.
 
@@ -216,7 +217,7 @@ Stel dat u code hebt die verwijst naar het **token** resultaat van de actie **e-
 
 Als u deze para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters:
 
-   ![Para meters toevoegen](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Parameters toevoegen](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parameter | Beschrijving |
    |-----------|-------------|
@@ -260,7 +261,7 @@ Als u **acties**selecteert, wordt u gevraagd naar de acties die u wilt toevoegen
 
 1. Kies **Nieuw item toevoegen**om een andere actie toe te voegen.
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Naslaginformatie
 
 Voor meer informatie over de structuur en syntaxis van de actie **Java script-code uitvoeren** in de onderliggende werk stroom definitie van uw logische app met de werk stroom definitie taal, zie de [sectie referentie](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)van deze actie.
 

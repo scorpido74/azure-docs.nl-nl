@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223037"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419594"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Beveiligings controle gebeurtenissen in Azure Active Directory Domain Services controleren met behulp van Azure Monitor werkmappen
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit om toegang te krijgen tot de werkmap sjabloon voor 
 
 1. Het onderste gedeelte van het beveiligings overzicht rapport onder de grafiek wordt vervolgens het geselecteerde type activiteit gesplitst. U kunt filteren op gebruikers namen die aan de rechter kant zijn betrokken, zoals wordt weer gegeven in het volgende voorbeeld rapport:
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Details van account vergrendelingen in Azure Monitor werkmappen.](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>De werkmap van het rapport account activiteit gebruiken
 
@@ -93,7 +93,7 @@ Voer de volgende stappen uit om toegang te krijgen tot de werkmap sjabloon voor 
 
     U kunt filteren op de **gebruikers naam**van het account, zoals *Felix*, zoals wordt weer gegeven in het volgende voorbeeld rapport:
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Account activiteit rapport in Azure Monitor-werkmappen.](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     In het gebied onder de grafiek worden afzonderlijke aanmeldings gebeurtenissen weer gegeven, samen met informatie zoals het resultaat van de activiteit en het bron werkstation. Deze informatie kan u helpen bij het bepalen van herhaalde bronnen van aanmeldings gebeurtenissen die kunnen leiden tot het vergren delen van accounts of het aanduiden van een mogelijke aanval.
 

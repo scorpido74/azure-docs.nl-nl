@@ -3,14 +3,13 @@ title: Toepassings overzicht in Azure-toepassing Insights | Microsoft Docs
 description: Complexe topologieën van toepassingen bewaken met het toepassings overzicht
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367007"
+ms.locfileid: "87421294"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
 
@@ -82,9 +81,12 @@ Selecteer **waarschuwingen**als u actieve waarschuwingen en de onderliggende reg
 
 ![Scherm opname van analyse-ervaring](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Rolnaam van Cloud instellen
+## <a name="set-or-override-cloud-role-name"></a>De naam van de Cloud functie instellen of negeren
 
-Application map gebruikt de eigenschaps naam van de **Cloud** om de onderdelen op de kaart te identificeren. De Application Insights SDK voegt automatisch de eigenschaps naam van de Cloud functie toe aan de telemetrie die door onderdelen wordt verzonden. Met de SDK wordt bijvoorbeeld een website naam of naam van een service functie toegevoegd aan de eigenschap naam van de Cloud functie. Er zijn echter gevallen waarin u mogelijk de standaard waarde wilt overschrijven. De naam van de Cloud functie overschrijven en wijzigen wat er wordt weer gegeven op de toepassings toewijzing:
+Application map gebruikt de eigenschaps naam van de **Cloud** om de onderdelen op de kaart te identificeren. Om de naam van de Cloud functie hand matig in te stellen of te overschrijven en te wijzigen wat er wordt weer gegeven op de toepassings toewijzing:
+
+> [!NOTE]
+> De Application Insights SDK of agent voegt automatisch de eigenschaps naam van de Cloud functie toe aan de telemetrie die wordt verzonden door onderdelen in een Azure App Service omgeving.
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ Voer de volgende stappen uit als u problemen ondervindt bij het ophalen van de t
 
 3. Als u Azure Functions met C# gebruikt, moet u upgraden naar [functions v2](../../azure-functions/functions-versions.md).
 
-4. Bevestig dat de naam van de [Cloud functie](#set-cloud-role-name) correct is geconfigureerd.
+4. Bevestig dat de naam van de [Cloud functie](#set-or-override-cloud-role-name) correct is geconfigureerd.
 
 5. Als er een afhankelijkheid ontbreekt, zorgt u ervoor dat deze in de lijst met [automatisch verzamelde afhankelijkheden](./auto-collect-dependencies.md) staat. Als dat niet zo is, kunt u de afhankelijkheid nog steeds handmatig traceren met een [aanroep voor het traceren van de afhankelijkheid](./api-custom-events-metrics.md#trackdependency).
 
@@ -282,7 +284,7 @@ Om dit probleem op te lossen, moet u de instrumentatie wijzigen om de naam van d
 
 * Het afhankelijkheids type moet het logische type van een afhankelijkheid vertegenwoordigen. Bijvoorbeeld: HTTP, SQL of Azure Blob zijn typische typen afhankelijkheden. Het mag geen unieke Id's bevatten.
 
-* Het doel van de rolnaam van de Cloud wordt beschreven in de [bovenstaande sectie](#set-cloud-role-name).
+* Het doel van de rolnaam van de Cloud wordt beschreven in de [bovenstaande sectie](#set-or-override-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Feedback over de portal
 

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9167df9c763f4004324a3435ba1a2b0fd0171ac4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e02b169cbaf515217b0a9fdbaa844b9022fb4e12
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851686"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422161"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Standaard doorvoer (hand matig) door Voer voor een Azure Cosmos-container
 
@@ -19,7 +20,7 @@ In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) kunt inr
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 

@@ -1,16 +1,14 @@
 ---
 title: Netwerkopties van Azure Functions
 description: Een overzicht van alle beschik bare netwerk opties in Azure Functions.
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.author: alkarche
-ms.openlocfilehash: 5a88570805a9fc23904bfe82f91813b3460d0b10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045937"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385939"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -100,7 +98,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Virtuele netwerk triggers worden ondersteund in versie 2. x en hoger van de functions-runtime. De volgende niet-HTTP-trigger typen worden ondersteund.
 
-| Extensie | Minimale versie |
+| Toestelnummer | Minimale versie |
 |-----------|---------| 
 |[Micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 of hoger |
 |[Micro soft. Azure. webjobs. Extensions. Event hubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 of hoger|
@@ -134,7 +132,7 @@ Uitgaande IP-beperkingen zijn beschikbaar in een Premium-abonnement, App Service
 
 Wanneer u een functie-app integreert in een Premium-abonnement of een App Service plan met een virtueel netwerk, kan de app standaard nog steeds uitgaande oproepen naar Internet maken. Door de toepassings instelling toe `WEBSITE_VNET_ROUTE_ALL=1` te voegen, dwingt u af dat alle uitgaand verkeer naar uw virtuele netwerk moet worden verzonden, waarbij regels voor netwerk beveiligings groepen kunnen worden gebruikt om verkeer te beperken.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatisering
 Met de volgende Api's kunt u via programma code regionale virtuele netwerk integraties beheren:
 
 + **Azure cli**: gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om regionale virtuele netwerk integraties toe te voegen, weer te geven of te verwijderen.  

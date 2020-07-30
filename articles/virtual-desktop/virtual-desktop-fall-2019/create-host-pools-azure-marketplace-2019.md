@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop, hostgroep, Azure Marketplace - Azure
-description: Een Windows Virtual Desktop-hostgroep maken met behulp van Azure Marketplace.
+title: Windows Virtual Desktop (classic)-hostgroep Azure Marketplace - Azure
+description: Een Windows Virtual Desktop (classic)-hostgroep maken met behulp van Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
-ms.translationtype: MT
+ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256846"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291309"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelfstudie: Een hostpool maken met behulp van Azure Marketplace
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Zelfstudie: Een hostgroep maken in Windows Virtual Desktop (classic)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../create-host-pools-azure-marketplace.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../create-host-pools-azure-marketplace.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 In deze zelfstudie leert u hoe u een hostgroep maakt binnen een Windows Virtual Desktop-tenant door gebruik te maken van een Microsoft Azure Marketplace-aanbieding.
 

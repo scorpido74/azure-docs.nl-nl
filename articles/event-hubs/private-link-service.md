@@ -1,16 +1,16 @@
 ---
 title: Azure Event Hubs integreren met de persoonlijke koppelings service van Azure
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
-ms.date: 06/23/2020
+ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287960"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421095"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure-Event Hubs integreren met persoonlijke Azure-koppeling
+# <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Toegang tot Azure Event Hubs-naam ruimten toestaan via persoonlijke eind punten 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
 Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres van uw virtuele netwerk, waardoor de service in het virtuele netwerk effectief wordt. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
@@ -42,7 +42,7 @@ Als u een Event Hubs naam ruimte met een persoonlijke Azure-koppeling wilt integ
 
 - Een Event Hubs naam ruimte.
 - Een Azure Virtual Network.
-- Een subnet binnen het virtueel netwerk.
+- Een subnet binnen het virtueel netwerk. U kunt het **standaard** subnet gebruiken. 
 - Eigenaar-of Inzender machtigingen voor de naam ruimte en het virtuele netwerk.
 
 Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het privé-eindpunt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. Uw naam ruimte kan zich in een andere regio bevinden.
@@ -55,10 +55,15 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
-4. Selecteer het tabblad **netwerken** onder **instellingen**.
+4. Selecteer **netwerken** onder **instellingen** in het menu links.
 
     > [!NOTE]
     > U ziet het tabblad **netwerken** alleen voor **standaard** of **toegewezen** naam ruimten. 
+
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="Tabblad netwerken-opties voor geselecteerde netwerken" lightbox="./media/private-link-service/selected-networks-page.png":::    
+
+    > [!NOTE]
+    > Standaard is de optie **geselecteerde netwerken** geselecteerd. Als u geen IP-firewall regel opgeeft of een virtueel netwerk toevoegt, is de naam ruimte toegankelijk via het open bare Internet. 
 1. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. 
 1. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 

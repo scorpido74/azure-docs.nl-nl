@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a0b63c130d7d1e72bd3320e40213ae3cb1069a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 264d4afb50904be17624f8801b7b79fe4b232030
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763241"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386806"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Een Azure-Tenant maken voor een toepassing met meerdere tenants  
 
@@ -37,7 +37,7 @@ U kunt uw Azure-abonnement en Azure Active Directory gratis maken en basis funct
 
    a. **Voor OIDC-of Oath-toepassingen** [registreert u uw toepassing](../develop/quickstart-register-app.md) als multi tenant-toepassing. Selecteer de optie accounts in een organisatorische map en persoonlijke micro soft-accounts in ondersteunde account typen
 
-   b. **Voor SAML-en WS-based-toepassingen**kunt u [eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md) met behulp van een algemene SAML-sjabloon in azure AD.
+   b. **Voor SAML-en WS-based-toepassingen**kunt u [eenmalige aanmelding op basis van SAML configureren](configure-saml-single-sign-on.md) met behulp van een algemene SAML-sjabloon in azure AD.
 
 U kunt indien nodig ook [een toepassing met één Tenant converteren naar meerdere tenants](../develop/howto-convert-app-to-be-multi-tenant.md) .
 

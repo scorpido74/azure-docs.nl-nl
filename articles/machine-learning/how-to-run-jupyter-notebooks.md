@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319589"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386449"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -185,11 +185,20 @@ Met deze acties wordt de status van het notitie blok opnieuw ingesteld en worden
 Het notitie blok vindt automatisch alle Jupyter-kernels die zijn geïnstalleerd op het verbonden Compute-exemplaar.  Een kernel toevoegen aan het reken exemplaar:
 
 1. Selecteer [**Terminal openen**](#terminal) op de werk balk van het notitie blok.
-1. Gebruik het Terminal venster om een nieuwe omgeving te maken.
+1. Gebruik het Terminal venster om een nieuwe omgeving te maken.  De onderstaande code maakt bijvoorbeeld `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
 1. Activeer de omgeving.  Bijvoorbeeld na het maken van `newenv` :
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. PIP-en ipykernel-pakket installeren in de nieuwe omgeving en een kernel maken voor die Conda env
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

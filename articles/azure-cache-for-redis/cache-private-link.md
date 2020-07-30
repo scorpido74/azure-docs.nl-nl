@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337259"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421651"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (preview-versie)
 Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met Azure cache voor redis die worden aangestuurd door een persoonlijke Azure-koppeling. 
 
 In dit artikel leert u hoe u een Azure-cache, een virtueel Azure-netwerk en een persoonlijk eind punt maakt met behulp van de Azure Portal.  
 
+> [!IMPORTANT]
+> Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> 
+
 ## <a name="prerequisites"></a>Vereisten
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-  > Deze functie is momenteel beschikbaar als preview- [contact](mailto:azurecache@microsoft.com) opnemen als u geïnteresseerd bent.
-  >
-
+> Deze functie is momenteel beschikbaar als preview- [contact](mailto:azurecache@microsoft.com) opnemen als u geïnteresseerd bent.
+>
 
 ## <a name="create-a-cache"></a>Een cache maken
 1. Als u een cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. 

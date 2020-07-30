@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 945d6ac15c3cb0b3f98ebb14e6b859b8f356b944
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311344"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419832"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -187,9 +187,9 @@ Een geslaagd token antwoord ziet er als volgt uit:
 | `access_token`  | Het aangevraagde toegangs token. De app kan dit token gebruiken om te verifiëren bij de beveiligde bron, zoals een web-API.  |
 | `token_type`    | Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is Bearer |
 | `expires_in`    | Hoe lang het toegangs token geldig is (in seconden). |
-| `scope`         | De bereiken waarvoor het access_token geldig is. |
+| `scope`         | De bereiken waarvoor het access_token geldig is. Optioneel: dit is niet-standaard en als het token wordt wegge laten, geldt voor de scopes die zijn aangevraagd voor de eerste poot van de stroom. |
 | `refresh_token` | Een OAuth 2,0-vernieuwings token. De app kan dit token gebruiken om aanvullende toegangs tokens te verkrijgen nadat het huidige toegangs token is verlopen. Refresh_tokens lang duren en kunnen worden gebruikt om de toegang tot resources gedurende lange tijd te bewaren. Raadpleeg de [volgende sectie](#refresh-the-access-token)voor meer informatie over het vernieuwen van een toegangs token. <br> **Opmerking:** Alleen opgegeven als `offline_access` het bereik is aangevraagd. |
-| `id_token`      | Een JSON Web Token (JWT). De app kan de segmenten van deze token decoderen om informatie aan te vragen over de gebruiker die zich heeft aangemeld. De app kan de waarden in de cache opslaan en weer geven, maar deze moet niet afhankelijk zijn van autorisatie of beveiligings grenzen. Zie voor meer informatie over id_tokens [`id_token reference`](id-tokens.md) . <br> **Opmerking:** Alleen opgegeven als `openid` het bereik is aangevraagd. |
+| `id_token`      | Een JSON Web Token (JWT). De app kan de segmenten van deze token decoderen om informatie aan te vragen over de gebruiker die zich heeft aangemeld. De app kan de waarden in de cache opslaan en weer geven, en vertrouwelijke clients kunnen dit voor verificatie gebruiken. Zie voor meer informatie over id_tokens [`id_token reference`](id-tokens.md) . <br> **Opmerking:** Alleen opgegeven als `openid` het bereik is aangevraagd. |
 
 ### <a name="error-response"></a>Fout bericht
 
@@ -227,8 +227,9 @@ Fout reacties zien er als volgt uit:
 | `invalid_client` | Client verificatie is mislukt.  | De referenties van de client zijn niet geldig. De toepassings beheerder werkt de referenties bij om deze te herstellen.   |
 | `unsupported_grant_type` | De autorisatie server biedt geen ondersteuning voor het type autorisatie toekenning. | Wijzig het toekennings type in de aanvraag. Dit type fout moet alleen tijdens de ontwikkeling optreden en tijdens de eerste test worden gedetecteerd. |
 | `invalid_resource` | De doel resource is ongeldig omdat deze niet bestaat, Azure AD niet kan worden gevonden of niet juist is geconfigureerd. | Dit geeft aan dat de resource, indien aanwezig, niet is geconfigureerd in de Tenant. De toepassing kan de gebruiker vragen met instructies voor het installeren van de toepassing en het toevoegen aan Azure AD.  |
-| `interaction_required` | De aanvraag vereist een gebruikers interactie. Zo is een extra verificatie stap vereist. | Voer de aanvraag opnieuw uit met dezelfde resource.  |
-| `temporarily_unavailable` | De server is tijdelijk niet actief om de aanvraag af te handelen. | Voer de aanvraag opnieuw uit. De client toepassing kan bijvoorbeeld verklaren dat de reactie van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
+| `interaction_required` | Niet-standaard, aangezien de OIDC-specificatie dit alleen op het `/authorize` eind punt aanroept. De aanvraag vereist een gebruikers interactie. Zo is een extra verificatie stap vereist. | Voer de `/authorize` aanvraag opnieuw uit met dezelfde bereiken. |
+| `temporarily_unavailable` | De server is tijdelijk niet actief om de aanvraag af te handelen. | Probeer de aanvraag opnieuw uit te voeren na een kleine vertraging. De client toepassing kan bijvoorbeeld verklaren dat de reactie van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
+|`consent_required` | De aanvraag vereist toestemming van de gebruiker. Deze fout is niet-standaard, omdat deze doorgaans alleen wordt geretourneerd op het `/authorize` eind punt per OIDC-specificatie. Retourneert wanneer een `scope` para meter is gebruikt op de inwissel stroom van de code die de client-app niet mag aanvragen.  | De client moet de gebruiker terugsturen naar het `/authorize` eind punt met het juiste bereik om toestemming te activeren. |
 
 > [!NOTE]
 > Apps met één pagina ontvangen mogelijk een `invalid_request` fout melding die aangeeft dat het cross-Origin-token alleen is toegestaan voor de client-type toepassing met één pagina.  Dit geeft aan dat de omleidings-URI die wordt gebruikt om het token aan te vragen, niet is gemarkeerd als `spa` omleidings-URI.  Bekijk de [stappen](#redirect-uri-setup-required-for-single-page-apps) voor het registreren van de toepassing voor informatie over het inschakelen van deze stroom.

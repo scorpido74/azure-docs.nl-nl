@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764822"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387265"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Eenmalige aanmelding via SAML voor on-premises toepassingen met toepassings proxy
 
@@ -47,7 +47,7 @@ De volgende protocol diagrammen beschrijven de volg orde van eenmalige aanmeldin
 
 4. Selecteer **SAML** als de methode voor eenmalige aanmelding.
 
-5. Stel eerst SAML SSO in om te werken in het bedrijfs netwerk. Ga in de pagina **eenmalige aanmelding met SAML instellen** naar de kop basis- **SAML-configuratie** en selecteer het **bewerkings** pictogram (een potlood). Volg de stappen in [Enter Basic SAML Configuration](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) voor het configureren van op SAML gebaseerde verificatie voor de toepassing.
+5. Voor het eerst instellen van SAML SSO om te werken in het bedrijfs netwerk, raadpleegt u het gedeelte basis configuratie van SAML voor [eenmalige aanmelding](configure-saml-single-sign-on.md) op basis van SAML configureren om op SAML gebaseerde verificatie voor de toepassing te configureren.
 
 6. Voeg ten minste één gebruiker toe aan de toepassing en controleer of het test account toegang heeft tot de toepassing. Gebruik tijdens de verbinding met het bedrijfs netwerk het test account om te zien of u eenmalige aanmelding bij de toepassing hebt. 
 

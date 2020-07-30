@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: a9ebc6b0cdbaa05c36383fa5126c2672fb19b69c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370951"
+ms.locfileid: "87386177"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevensbronnen vanuit Azure Logic Apps
 
@@ -52,13 +52,13 @@ Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U hebt [de on-premises gegevens gateway al geïnstalleerd op een lokale computer](../logic-apps/logic-apps-gateway-install.md).
+* U hebt [de on-premises gegevens gateway al geïnstalleerd op een lokale computer](../logic-apps/logic-apps-gateway-install.md). Deze Gateway-installatie moet bestaan voordat u een gateway bron kunt maken die is gekoppeld aan deze installatie.
 
-* U hebt [hetzelfde Azure-account en-abonnement](../logic-apps/logic-apps-gateway-install.md#requirements) dat u hebt gebruikt voor de installatie van de gateway. Dit Azure-account mag alleen deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology). U hebt hetzelfde Azure-account en-abonnement nodig om uw gateway bron in azure te maken, omdat alleen de Gateway beheerder de gateway bron in azure kan maken. Service-principals worden momenteel niet ondersteund.
+* U hebt [hetzelfde Azure-account en-abonnement](../logic-apps/logic-apps-gateway-install.md#requirements) dat u hebt gebruikt voor de installatie van de gateway. Dit Azure-account mag alleen deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology). U moet hetzelfde Azure-account en-abonnement gebruiken om uw gateway resource in azure te maken, omdat alleen de Gateway beheerder de gateway bron in azure kan maken. Service-principals worden momenteel niet ondersteund.
 
-  * Wanneer u een gateway bron in azure maakt, selecteert u een gateway-installatie die u wilt gebruiken met uw gateway bron en alleen die gateway bron. Elke gateway bron kan slechts worden gekoppeld aan één gateway-installatie, die kan worden gekoppeld aan één Azure-account en-abonnement. U kunt dus geen gateway-installatie selecteren die al aan een andere gateway resource is gekoppeld.
+  * Wanneer u een gateway bron in azure maakt, selecteert u een gateway-installatie om een koppeling met uw gateway bron en alleen die gateway bron te maken. Elke gateway bron kan slechts worden gekoppeld aan één gateway-installatie. U kunt geen gateway-installatie selecteren die al is gekoppeld aan een andere gateway resource.
   
-  * Uw logische app en gateway resource hoeven niet te bestaan in hetzelfde Azure-abonnement. Op voor waarde dat u toegang hebt tot abonnementen, in triggers en acties die toegang hebben tot on-premises gegevens bronnen, kunt u kiezen uit verschillende Azure-abonnementen die elk zijn gekoppeld aan een andere gateway resource.
+  * Uw logische app en gateway resource hoeven niet te bestaan in hetzelfde Azure-abonnement. Op voor waarde dat u toegang hebt tot abonnementen, in triggers en acties die toegang hebben tot on-premises gegevens bronnen, kunt u andere Azure-abonnementen selecteren die gateway resources hebben.
 
 <a name="create-gateway-resource"></a>
 

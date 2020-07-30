@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419781"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -69,7 +69,7 @@ Als u Azure AD-verificatie wilt inschakelen voor uw Windows-Vm's in azure, moet 
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aanmelden bij Azure AD inschakelen voor Windows VM in azure
 
-Als u Azure AD-aanmelding wilt gebruiken voor Windows VM in azure, moet u eerst de Azure AD-aanmeldings optie voor uw Windows-VM inschakelen. vervolgens moet u RBAC-roltoewijzingen configureren voor gebruikers die zijn gemachtigd om zich aan te melden bij de virtuele machine.
+Als u Azure AD-aanmelding wilt gebruiken voor Windows VM in azure, moet u eerst de optie Azure AD-aanmelding voor uw Windows-VM inschakelen en vervolgens Azure-roltoewijzingen configureren voor gebruikers die zijn gemachtigd om zich aan te melden bij de virtuele machine.
 Er zijn meerdere manieren waarop u Azure AD-aanmelding kunt inschakelen voor uw Windows-VM:
 
 - De Azure Portal-ervaring gebruiken bij het maken van een Windows-VM

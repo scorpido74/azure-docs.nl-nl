@@ -2,16 +2,14 @@
 title: Een functie maken met behulp van Azure for students starter
 description: Meer informatie over het maken van een Azure-functie vanuit een Azure for students starter-abonnement
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
-author: alexkarcher-msft
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.author: alkarche
-ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122826"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386959"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
 

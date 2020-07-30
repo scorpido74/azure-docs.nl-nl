@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7e1432cf74dc741a6e2f5d561e9dc203df95007c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072677"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386160"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps
 
@@ -39,7 +39,7 @@ In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt 
 
 * Een Azure-sleutel kluis met de opties **voorlopig verwijderen** en **niet opschonen** ingeschakeld
 
-  Zie [Azure Key Vault overzicht van voorlopig verwijderen](../key-vault/general/overview-soft-delete.md) en [door de klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u niet bekend bent met Azure Key Vault, kunt [u leren hoe u een sleutel kluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure portal of met behulp van de Azure PowerShell opdracht [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
+  Zie [Azure Key Vault overzicht van voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) en [door de klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u niet bekend bent met Azure Key Vault, kunt [u leren hoe u een sleutel kluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure portal of met behulp van de Azure PowerShell opdracht [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
 
 * In uw sleutel kluis is dit een sleutel die is gemaakt met de volgende eigenschaps waarden:
 
@@ -47,7 +47,7 @@ In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt 
   |----------|-------|
   | **Sleutel type** | RSA |
   | **RSA-sleutel grootte** | 2048 |
-  | **Ingeschakeld** | Yes |
+  | **Ingeschakeld** | Ja |
   |||
 
   ![Uw door de klant beheerde versleutelings sleutel maken](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)

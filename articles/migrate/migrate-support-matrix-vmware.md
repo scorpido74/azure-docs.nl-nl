@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c981306b7e026dcc811618302ecbd3e80b6486d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321425"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387027"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -82,7 +82,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 **Vereiste** | **Details**
 --- | --- 
-**Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises VMWare-machines te detecteren.<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> [Meer informatie over](how-to-set-up-appliance-vmware.md) het instellen van het Azure migrate-apparaat voor de evaluatie van virtuele VMware-machines.
+**Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises VMware-machines te detecteren.<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> [Meer informatie over](how-to-set-up-appliance-vmware.md) het instellen van het Azure migrate-apparaat voor de evaluatie van virtuele VMware-machines.
 **Ondersteunde computers** | Momenteel alleen ondersteund voor virtuele VMware-machines.
 **Virtuele Windows-machines** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bits).
 **vCenter Server referenties** | Voor afhankelijkheids visualisatie moet een vCenter Server account met alleen-lezen toegang en bevoegdheden zijn ingeschakeld voor Virtual Machines >-gast bewerkingen.

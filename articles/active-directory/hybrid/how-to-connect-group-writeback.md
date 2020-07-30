@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019910"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385140"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Terugschrijven van groep Azure AD Connect
 
@@ -40,7 +40,7 @@ Voer de volgende stappen uit om groeps terugschrijven in te scha kelen:
 6. Selecteer op de **pagina terugschrijven**een Active Directory organisatie-eenheid (OE) voor het opslaan van objecten die zijn gesynchroniseerd vanuit Office 365 naar uw on-premises organisatie en klik vervolgens op **volgende**.
 7. Klik op de pagina **gereed** voor configuratie op **configureren**.
 8. Wanneer de wizard is voltooid, klikt u op **Afsluiten** op de pagina configuratie voltooid.
-9. Open de Windows Power shell op de Azure Active Directory Connect-server en voer de volgende opdrachten uit.
+9. Open de Windows Power shell als beheerder op de Azure Active Directory Connect-server en voer de volgende opdrachten uit.
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>

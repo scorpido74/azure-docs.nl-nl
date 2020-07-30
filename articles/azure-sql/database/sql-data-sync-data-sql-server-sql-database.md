@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 02207f8b5cf8628c3b2bbb72ab8d38ca9a4a5731
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504217"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386840"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -68,7 +68,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 - **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers niet standaard wordt geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de FIRE_TRIGGERS optie toe, zodat gegevens synchronisatie deze toevoegingen kan bijhouden. 
 - **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De hub wordt met elk lid afzonderlijk gesynchroniseerd. Wijzigingen van de hub worden gedownload naar het lid en vervolgens worden wijzigingen van het lid geüpload naar de hub.
@@ -78,10 +78,10 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 ## <a name="compare-with-transactional-replication"></a>Vergelijken met transactionele replicatie
 
-| Gegevens synchroniseren | Transactionele replicatie |
+| | Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
-| Voordelen | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken <br/>-Ondersteuning voor Azure SQL Managed instance |
-| Nadelen | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
+| **Voordelen** | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken <br/>-Ondersteuning voor Azure SQL Managed instance |
+| **Nadelen** | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
 
 ## <a name="get-started"></a>Aan de slag 
 

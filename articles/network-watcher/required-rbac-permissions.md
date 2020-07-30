@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d31240cad709a156d7235f116c9cd2c8fb698b03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840550"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421141"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden
 
@@ -67,7 +67,7 @@ Met op rollen gebaseerd toegangs beheer (RBAC) van Azure kunt u alleen de specif
 | Micro soft. Network/networkWatchers/packetCaptures/schrijven              | Een pakket opname maken                                        |
 | Micro soft. Network/networkWatchers/packetCaptures/verwijderen             | Een pakket opname verwijderen                                        |
 
-## <a name="ip-flow-verify"></a>IP-stroomverificatie
+## <a name="ip-flow-verify"></a>IP-stroom controleren
 
 | Bewerking                                                              | Beschrijving                                                           |
 | ---------                                                           | -------------                                                  |
@@ -102,9 +102,9 @@ Met op rollen gebaseerd toegangs beheer (RBAC) van Azure kunt u alleen de specif
 
 Voor Network Watcher mogelijkheden zijn ook de volgende acties vereist:
 
-| Actie (s)                                                           | Description                                                    |
+| Actie (s)                                                           | Beschrijving                                                    |
 | ---------                                                           | -------------                                                  |
-| Micro soft. Authorization/ \* /Read                                     | Wordt gebruikt voor het ophalen van RBAC-Roltoewijzingen en beleids definities          |
+| Micro soft. Authorization/ \* /Read                                     | Wordt gebruikt voor het ophalen van Azure-Roltoewijzingen en beleids definities          |
 | Micro soft. resources/abonnementen/resourceGroups/lezen               | Gebruikt voor het inventariseren van alle resource groepen in een abonnement    |
 | Micro soft. Storage/Storage accounts/lezen                              | Wordt gebruikt om de eigenschappen van het opgegeven opslag account op te halen   |
 | Micro soft. Storage/Storage accounts/listServiceSas/Action, </br> Micro soft. Storage/Storage accounts/listAccountSas/Action, <br> Micro soft. Storage/Storage accounts/Listkeys ophalen/Action| Gebruikt voor het ophalen van Shared Access signatures (SAS) om [beveiligde toegang tot het opslag account](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) in te scha kelen en te schrijven naar het opslag account |

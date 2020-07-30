@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: aea093cbbb59824973c351f6df23113e1b51ab69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319861"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420104"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Persoonlijke aanbiedingen in micro soft Commercial Marketplace
 
@@ -43,6 +43,9 @@ Privé plannen zijn onderdelen van een aanbieding en zijn alleen zichtbaar en te
 
 Voor *nieuwe aanbiedingen die alleen persoonlijke abonnementen bevatten*, kunnen uitgevers hun aanbiedingen als elk ander aanbod maken en de abonnementen markeren als privé. De aanbiedingen die alleen privé abonnementen hebben, kunnen niet worden gedetecteerd of toegankelijk via micro soft Commercial Marketplace of de [Azure Portal](https://azure.microsoft.com/features/azure-portal/) door klanten die niet aan de aanbieding zijn gekoppeld.
 
+>[!NOTE]
+>Een aanbieding die alleen persoonlijke plannen bevat, is niet zichtbaar in de open bare Azure Marketplace of AppSource.
+
 ## <a name="targeting-customers-with-private-offers"></a>Klanten richten met persoonlijke aanbiedingen
 
 Voor zowel nieuwe als bestaande persoonlijke aanbiedingen kunnen uitgevers klanten richten met behulp van abonnements-id's. Uitgevers die gebruikmaken van een virtuele machine of Azure-toepassing aanbieding, kunnen de beschik baarheid van een privé plan beperken tot een afzonderlijke Azure-abonnements-ID of een CSV van Maxi maal 20.000 Azure-abonnement-Id's uploaden. Bij het gebruik van een SaaS-app-aanbieding kunnen uitgevers een Tenant-ID koppelen om de beschik baarheid van een privé-abonnement te beperken met behulp van de hand matige of CSV-upload methode.
@@ -61,6 +64,7 @@ Persoonlijke aanbiedingen worden ook weer gegeven in Zoek resultaten. U ziet gew
 
 >[!Note]
 >Persoonlijke aanbiedingen worden niet ondersteund met abonnementen die zijn gemaakt via een wederverkoper van het programma van de Cloud Solution Provider (CSP).
+
 
 <!---
 ## Next steps

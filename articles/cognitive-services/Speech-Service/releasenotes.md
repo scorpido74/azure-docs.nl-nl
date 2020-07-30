@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373790"
+ms.locfileid: "87415020"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
 
@@ -28,20 +28,20 @@ ms.locfileid: "87373790"
 - **C#**: er is ondersteuning toegevoegd voor asynchrone conversatie-transcriptie. Raadpleeg [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)de documentatie.  
 - **Java script**: er is speaker Recognition ondersteuning toegevoegd voor zowel [browser](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) als [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition).
 - **Java script**: ondersteuning toegevoegd voor automatische taal detectie/taal-id. Raadpleeg [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)de documentatie.
-- **Doel-C**: er is ondersteuning toegevoegd voor conversaties en conversaties voor meerdere apparaten transcriptie. 
+- **Doel-C**: er is ondersteuning toegevoegd voor conversaties en [conversaties](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)voor [meerdere apparaten](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation) transcriptie. 
 - **Python**: er is ondersteuning toegevoegd voor gecomprimeerde audio voor python in Windows en Linux. Raadpleeg [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)de documentatie. 
 
 **Opgeloste fouten**
 - **Alle**: er is een probleem opgelost waardoor de KeywordRecognizer de streams na een herkenning niet meer heeft door gestuurd.
 - **Alle**: er is een probleem opgelost waardoor de stroom die is verkregen van een KeywordRecognitionResult niet het sleutel woord bevat.
 - **Alle**: er is een probleem opgelost dat de SendMessageAsync het bericht niet echt via de kabel verzendt nadat de gebruikers hun wacht tijd voor het gesprek hebben opgedaan.
-- **Alle**: er is een crash in speaker Recognition api's opgelost wanneer gebruikers meerdere VoiceProfileClient:: SpeakerRecEnrollProfileAsync starten en niet hebben gewacht totdat ze zijn voltooid.
+- **Alle**: er is een crash opgelopen in speaker Recognition-api's wanneer gebruikers VoiceProfileClient:: SpeakerRecEnrollProfileAsync-methode meerdere keren aanroepen en niet hebben gewacht totdat de aanroepen zijn voltooid.
 - **Alle**: vaste logboek registratie van bestanden inschakelen in VoiceProfileClient-en SpeakerRecognizer-klassen.
 - **Java script**: er is een [probleem](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) opgelost met de beperking wanneer de browser is geminimaliseerd.
 - **Java script**: er is een [probleem](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) opgelost met een geheugenlek op streams.
 - **Java script**: cache toegevoegd voor OCSP-antwoorden van NodeJS.
 - **Java**: er is een probleem opgelost dat ertoe leidt dat BigInteger-velden altijd 0 retour neren.
-- **IOS**: opgelost en [probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) met publiceren van speech op SDK gebaseerde apps in de IOS App Store.
+- **IOS**: er is een [probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) opgelost met het publiceren van speech op SDK gebaseerde apps in de IOS App Store.
 
 **Voorbeelden**
 - **C++**: [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)kunt u voorbeeld code voor Speaker Recognition toevoegen.
@@ -475,7 +475,7 @@ De volgende nieuwe inhoud is beschikbaar in onze [voorbeeld opslagplaats](https:
   - De SDK is nu gebouwd op basis van de iOS SDK-versie 12,1.
   - De SDK ondersteunt nu iOS-versies 9,2 en hoger.
   - Verbeter de referentie documentatie en los diverse eigenschapnamen op.
-- Javascript
+- JavaScript
   - Voeg ondersteuning toe voor het `Connection` object.
   - Type definitie bestanden voor gebundelde java script toevoegen
   - Eerste ondersteuning en implementatie voor woordgroepen hints.
@@ -507,7 +507,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 
 - Python
   - De bèta versie van python-ondersteuning (3,5 en hoger) is beschikbaar in deze release. Zie hier] (Quick Start-python.md) voor meer informatie.
-- Javascript
+- JavaScript
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - We bieden nu ondersteuning voor Node.js. u kunt [hier](quickstart-js-node.md)meer informatie vinden.
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.

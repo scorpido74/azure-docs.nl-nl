@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090532"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386211"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -122,7 +122,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault overzichten en concepten
 
-- [Gedrag bij zacht verwijderen Key Vault](overview-soft-delete.md)) beschrijft een functie waarmee verwijderde objecten kunnen worden hersteld, of het verwijderen per ongeluk of opzettelijk is geslaagd.
+- [Gedrag bij zacht verwijderen Key Vault](soft-delete-overview.md)) beschrijft een functie waarmee verwijderde objecten kunnen worden hersteld, of het verwijderen per ongeluk of opzettelijk is geslaagd.
 - [Key Vault-client beperking](overview-throttling.md) gaat u naar de basis concepten van beperking en biedt een benadering voor uw app.
 - [Overzicht van sleutels van Key Vault Storage-account](../secrets/overview-storage-keys.md)) Hierin worden de sleutels voor de Key Vault-integratie Azure Storage-accounts beschreven.
 - [Key Vault Security-wereld](overview-security-worlds.md) beschrijft de relaties tussen regio's en beveiligings gebieden.
