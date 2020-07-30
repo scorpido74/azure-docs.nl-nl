@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 459c9f2d68d8a3a3c1b597665914146987aecdc2
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 9e3f5e37462b30b0201be5350dedc103a49bb39a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039290"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
 
@@ -62,8 +62,6 @@ De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelklui
 * **Kluis-URI**: in dit voorbeeld is dat https://Contoso-Vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Nadat de kluis is gemaakt, is uw Azure-account het enige account dat iets met deze nieuwe kluis mag doen.
-
-![Uitvoer nadat de opdracht voor het maken van de sleutelkluis is voltooid](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
 ## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Geef uw gebruikersaccount machtigingen voor het beheren van geheimen in Key Vault
 
