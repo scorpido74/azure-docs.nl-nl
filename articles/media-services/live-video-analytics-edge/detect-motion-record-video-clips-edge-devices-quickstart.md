@@ -3,12 +3,12 @@ title: Beweging detecteren en video opnemen op Edge-apparaten - Azure
 description: In deze Quick start ziet u hoe u live video Analytics op IoT Edge kunt gebruiken om de live video-feed van een (gesimuleerde) IP-camera te analyseren, te detecteren of er beweging is, en als dit het geval is, een MP4-videoclip op te nemen naar het lokale bestandssysteem op het edge-apparaat.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 32f1ae5e9edbdbe522afb39bd56584cd2423dd33
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817078"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091858"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Quickstart: Beweging detecteren en video opnemen op Edge-apparaten
  
@@ -164,7 +164,7 @@ Zorg ervoor dat u de stappen hebt voltooid om [De bewaking van gebeurtenissen vo
      * Met een aanroep van `GraphTopologyList` wordt ten slotte aangegeven dat de lijst nu leeg is.
 
 ## <a name="interpret-results"></a>Resultaten interpreteren 
-Wanneer u de mediagrafiek uitvoert, gaan de resultaten van het knooppunt van de bewegingsdetectorprocessor via het knooppunt van de IoT Hub-sink naar de IoT-hub. De berichten die u ziet in het **UITVOER**-venster van Visual Studio Code bevatten een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) voor meer informatie.
+Wanneer u de mediagrafiek uitvoert, gaan de resultaten van het knooppunt van de bewegingsdetectorprocessor via het knooppunt van de IoT Hub-sink naar de IoT-hub. De berichten die u ziet in het **UITVOER**-venster van Visual Studio Code bevatten een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md) voor meer informatie.
 
 In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst bepaald door de module Live Video Analytics.
 
@@ -254,7 +254,7 @@ Om de MP4-clip af te spelen:
 
     ![Uitvoer](./media/quickstarts/samples-output.png) 
 
-1. Gebruik [Secure Copy (SCP)](https://docs.microsoft.com/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp) om de bestanden naar uw lokale machine te kopiëren. 
+1. Gebruik [Secure Copy (SCP)](../../virtual-machines/linux/copy-files-to-linux-vm-using-scp.md) om de bestanden naar uw lokale machine te kopiëren. 
 1. Speel de bestanden af met [VLC media player](https://www.videolan.org/vlc/) of een andere MP4-speler.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
@@ -267,4 +267,4 @@ Als u de andere quickstarts wilt proberen, bewaar dan resources die u hebt gemaa
 * Bekijk extra uitdagingen voor gevorderde gebruikers:
 
     * Gebruik een [IP-camera](https://en.wikipedia.org/wiki/IP_camera) die RTSP ondersteunt in plaats van de RTSP-simulator. U vindt IP-camera's die RTSP ondersteunen op de pagina met [ONVIF-compatibele](https://www.onvif.org/conformant-products) producten. Zoek naar apparaten die voldoen aan de profielen G, S of T.
-    * Gebruik een AMD64- of x64-apparaat met Linux in plaats van een virtuele Linux-machine in Azure. Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Volg vervolgens de instructies in [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) om het apparaat te registreren bij Azure IoT Hub.
+    * Gebruik een AMD64- of x64-apparaat met Linux in plaats van een virtuele Linux-machine in Azure. Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Volg vervolgens de instructies in [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](../../iot-edge/quickstart-linux.md) om het apparaat te registreren bij Azure IoT Hub.

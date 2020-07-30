@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ab87990981f08164bb47cef9eaa1876514f1ad6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e5c74f6356c8b07cfef923dfb5e12547aa4693ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202840"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053556"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Zelfstudie: Video's analyseren met Media Services v3
 
 > [!NOTE]
-> Hoewel in deze zelfstudie de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-voorbeelden worden gebruikt, zijn de algemene stappen hetzelfde voor de [REST API](https://docs.microsoft.com/rest/api/media/liveevents), de [CLI-](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) of andere ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Hoewel in deze zelfstudie de [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-voorbeelden worden gebruikt, zijn de algemene stappen hetzelfde voor de [REST API](/rest/api/media/liveevents), de [CLI-](/cli/azure/ams/live-event?view=azure-cli-latest) of andere ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 In deze zelfstudie ziet u hoe u video's kunt analyseren met Azure Media Services. Er zijn veel scenario's waarin u misschien inzicht wilt krijgen in opgenomen video's of audio-inhoud. Voor het bereiken van een hogere klanttevredenheid kunnen organisaties bijvoorbeeld spraak-naar-tekstverwerking uitvoeren om opnamen van de klantenondersteuning om te zetten in een catalogus van zoekmachines, met indexen en dashboards. Vervolgens kunnen ze op grond daarvan inzicht krijgen in hun bedrijf. Deze inzichten omvatten onder andere een lijst met veelvoorkomende klachten, bronnen van dergelijke klachten en andere nuttige informatie.
 
@@ -45,8 +45,8 @@ Het is heel belangrijk dat u zich realiseert dat u zich bij het gebruik van Vide
 ## <a name="prerequisites"></a>Vereisten
 
 - Download [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) als u Visual Studio nog niet hebt geïnstalleerd.
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md).<br/>Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep en het Media Services-account.
-- Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
+- [Een Azure Media Services-account maken](./create-account-howto.md).<br/>Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep en het Media Services-account.
+- Volg de stappen in [Access Azure Media Services API with the Azure CLI](./access-api-howto.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
 
 ## <a name="download-and-configure-the-sample"></a>Het voorbeeld downloaden en configureren
 
@@ -58,7 +58,7 @@ Kloon met de volgende opdracht een GitHub-opslagplaats met het .NET-voorbeeld op
 
 Het voorbeeld bevindt zich in de map [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
 
-Open [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) in het project dat u hebt gedownload. Vervang de waarden door de referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
+Open [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) in het project dat u hebt gedownload. Vervang de waarden door de referenties die u hebt verkregen via [toegang tot API's](./access-api-howto.md).
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>De code onderzoeken die de opgegeven video analyseert
 
@@ -84,33 +84,33 @@ Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaSer
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Een invoerasset maken en er een lokaal bestand in uploaden 
 
-Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](https://docs.microsoft.com/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze asset wordt gebruikt als invoer voor uw coderingstaak. In Media Services-v3 kan de invoer voor een taak een asset zijn of inhoud die u beschikbaar maakt voor uw Media Services-account via HTTPS-URL's. Zie [dit](job-input-from-http-how-to.md) artikel als u wilt weten hoe u een HTTPS-URL kunt coderen.  
+Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze asset wordt gebruikt als invoer voor uw coderingstaak. In Media Services-v3 kan de invoer voor een taak een asset zijn of inhoud die u beschikbaar maakt voor uw Media Services-account via HTTPS-URL's. Zie [dit](job-input-from-http-how-to.md) artikel als u wilt weten hoe u een HTTPS-URL kunt coderen.  
 
 In Media Services v3 kunt u Azure Storage-API's gebruiken om bestanden te uploaden. Het volgende .NET-fragment laat zien hoe.
 
 Met de volgende functie worden de volgende acties voltooid:
 
 * Er wordt een asset gemaakt.
-* Er wordt een schrijfbare [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) opgehaald voor de [container in opslag](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) van de asset.
+* Er wordt een schrijfbare [SAS-URL](../../storage/common/storage-sas-overview.md) opgehaald voor de [container in opslag](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) van de asset.
 
-    Als u de functie [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) van de asset gebruikt om SAS-URL's op te halen, moet u er rekening mee houden dat met deze functie meerdere SAS-URL's worden geretourneerd, aangezien er voor elk opslagaccount twee opslagaccountsleutels zijn. Een opslagaccount heeft twee sleutels omdat dit naadloze rotatie van opslagaccountsleutels mogelijk maakt (bijvoorbeeld als u een van de sleutels wilt wijzigen terwijl u de andere gebruikt en vervolgens de nieuwe sleutel wilt gebruiken en de andere roteert). De eerste SAS-URL staat voor opslagsleutel 1 en een tweede voor opslagsleutel 2.
+    Als u de functie [ListContainerSas](/rest/api/media/assets/listcontainersas) van de asset gebruikt om SAS-URL's op te halen, moet u er rekening mee houden dat met deze functie meerdere SAS-URL's worden geretourneerd, aangezien er voor elk opslagaccount twee opslagaccountsleutels zijn. Een opslagaccount heeft twee sleutels omdat dit naadloze rotatie van opslagaccountsleutels mogelijk maakt (bijvoorbeeld als u een van de sleutels wilt wijzigen terwijl u de andere gebruikt en vervolgens de nieuwe sleutel wilt gebruiken en de andere roteert). De eerste SAS-URL staat voor opslagsleutel 1 en een tweede voor opslagsleutel 2.
 * Uploadt het bestand naar de container in opslag met behulp van de SAS-URL.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
 
 ### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Een uitvoerasset maken voor het opslaan van het resultaat van de taak
 
-In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de taak opgeslagen. Het project definieert de functie **DownloadResults** die de resultaten van deze uitvoerasset naar de uitvoermap downloadt zodat u kunt zien wat u hebt gekregen.
+In de [uitvoerasset](/rest/api/media/assets) wordt het resultaat van de taak opgeslagen. Het project definieert de functie **DownloadResults** die de resultaten van deze uitvoerasset naar de uitvoermap downloadt zodat u kunt zien wat u hebt gekregen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Een transformatie en een taak maken die video's analyseert
 
-Bij het coderen of verwerken van inhoud in Media Services is het gebruikelijk om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt een **transformatie** genoemd. Zie voor meer informatie [Transformaties en taken](transform-concept.md). Met het voorbeeld dat wordt beschreven in deze zelfstudie wordt een recept gedefinieerd waarmee de opgegeven video wordt geanalyseerd.
+Bij het coderen of verwerken van inhoud in Media Services is het gebruikelijk om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt een **transformatie** genoemd. Zie voor meer informatie [Transformaties en taken](./transforms-jobs-concept.md). Met het voorbeeld dat wordt beschreven in deze zelfstudie wordt een recept gedefinieerd waarmee de opgegeven video wordt geanalyseerd.
 
 #### <a name="transform"></a>Transformeren
 
-Bij het maken van een nieuw [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. **TransformOutput** is een vereiste parameter. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. In dit voorbeeld wordt de voorinstelling **VideoAnalyzerPreset** gebruikt en de taal ('en-US') wordt doorgegeven aan de bijbehorende constructor (`new VideoAnalyzerPreset("en-US")`). Met deze voorinstelling kunt u meerdere audio- en video-inzichten uit een video extraheren. U kunt de voorinstelling **AudioAnalyzerPreset** gebruiken als u meerdere audio-inzichten wilt extraheren uit een video.
+Bij het maken van een nieuw [transformatie](/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. **TransformOutput** is een vereiste parameter. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. In dit voorbeeld wordt de voorinstelling **VideoAnalyzerPreset** gebruikt en de taal ('en-US') wordt doorgegeven aan de bijbehorende constructor (`new VideoAnalyzerPreset("en-US")`). Met deze voorinstelling kunt u meerdere audio- en video-inzichten uit een video extraheren. U kunt de voorinstelling **AudioAnalyzerPreset** gebruiken als u meerdere audio-inzichten wilt extraheren uit een video.
 
 Bij het maken van een **transformatie** moet u eerst met de methode **Ophalen** controleren of er al een bestaat, zoals weergegeven in de code die erop volgt. In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
 
@@ -118,7 +118,7 @@ Bij het maken van een **transformatie** moet u eerst met de methode **Ophalen** 
 
 #### <a name="job"></a>Taak
 
-Zoals eerder vermeld, is het [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-object het recept en is de [taak](https://docs.microsoft.com/rest/api/media/jobs) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer. U kunt de locatie van uw video opgeven met behulp van: HTTPS-URL's, SAS-URL's of activa die zich in uw Media Services-account bevinden.
+Zoals eerder vermeld, is het [transformatie](/rest/api/media/transforms)-object het recept en is de [taak](/rest/api/media/jobs) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer. U kunt de locatie van uw video opgeven met behulp van: HTTPS-URL's, SAS-URL's of activa die zich in uw Media Services-account bevinden.
 
 In dit voorbeeld is de taakinvoer een lokale video.  
 
@@ -126,7 +126,7 @@ In dit voorbeeld is de taakinvoer een lokale video.
 
 ### <a name="wait-for-the-job-to-complete"></a>Wacht tot de taak is voltooid
 
-Het duurt even voordat de taak is voltooid. Wanneer dit is gebeurd, wilt u daarover een melding ontvangen. U kunt op verschillende manieren een melding ontvangen over de voltooiing van de [taak](https://docs.microsoft.com/rest/api/media/jobs). De eenvoudigste optie (die hier wordt getoond) is het gebruik van polling.
+Het duurt even voordat de taak is voltooid. Wanneer dit is gebeurd, wilt u daarover een melding ontvangen. U kunt op verschillende manieren een melding ontvangen over de voltooiing van de [taak](/rest/api/media/jobs). De eenvoudigste optie (die hier wordt getoond) is het gebruik van polling.
 
 Navragen is geen aanbevolen best practice voor productie-apps vanwege mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken.
 
@@ -138,11 +138,11 @@ De **taak** doorloopt meestal de volgende statussen: **Gepland**, **In de wachtr
 
 ### <a name="job-error-codes"></a>Foutcodes in taak
 
-Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Zie [Foutcodes](/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="download-the-result-of-the-job"></a>Het resultaat van de taak downloaden
 
-Met de volgende functie worden de resultaten van de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) gedownload naar de uitvoermap, zodat u de resultaten van de taak kunt bekijken.
+Met de volgende functie worden de resultaten van de [uitvoerasset](/rest/api/media/assets) gedownload naar de uitvoermap, zodat u de resultaten van de taak kunt bekijken.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
@@ -160,7 +160,7 @@ Wanneer we het programma uitvoeren, produceert de taak miniaturen voor elk gezic
 
 ## <a name="examine-the-output"></a>De uitvoer controleren
 
-Het uitvoerbestand van het analyseren van video's heet insights.json. Dit bestand bevat informatie over uw video. U vindt de beschrijving van elementen die in het json-bestand zijn gevonden in het artikel [Media intelligence](intelligence-concept.md).
+Het uitvoerbestand van het analyseren van video's heet insights.json. Dit bestand bevat informatie over uw video. U vindt de beschrijving van elementen die in het json-bestand zijn gevonden in het artikel [Media intelligence](./analyzing-video-audio-files-concept.md).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

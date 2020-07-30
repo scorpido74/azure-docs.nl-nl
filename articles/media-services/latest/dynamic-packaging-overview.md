@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/11/2020
 ms.author: juliako
-ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090107"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
 
@@ -28,7 +28,7 @@ Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel 
 In Media Services vertegenwoordigt een [streaming-eindpunt](streaming-endpoint-concept.md) (origin) een dynamische service (just-in-time) die u uw live en on-demand-inhoud rechtstreeks kan leveren aan een client-speler-app. De service maakt gebruik van een van de algemene protocollen voor het streamen van media die worden vermeld in de volgende sectie. *Dynamische pakketten* is een functie die standaard wordt geleverd op alle streaming-eindpunten (Standard of Premium).
 
 > [!NOTE]
-> U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van v3 [live gebeurtenissen](live-events-outputs-concept.md), v3 [assets](assets-concept.md) weergeven, informatie opvragen over toegang tot API's. Gebruik voor alle andere beheertaken (bijvoorbeeld transformaties en taken) de [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van v3 [live gebeurtenissen](live-events-outputs-concept.md), v3 [assets](assets-concept.md) weergeven, informatie opvragen over toegang tot API's. Gebruik voor alle andere beheertaken (bijvoorbeeld transformaties en taken) de [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Voorbereiding van de bronbestanden voor levering
 
@@ -126,7 +126,7 @@ Zie [Overzicht van live streamen](live-streaming-overview.md) voor informatie ov
 Dynamische pakketten ondersteunen MP4-bestanden die video bevatten die is gecodeerd met [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
 
 > [!NOTE]
-> Resoluties van maximaal 4.000 en framesnelheden van maximaal 60 frames per seconde zijn getest met *dynamische pakketten*. De [Premium-encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt het coderen van H. 265 via de oudere v2-API's.
+> Resoluties van maximaal 4.000 en framesnelheden van maximaal 60 frames per seconde zijn getest met *dynamische pakketten*. De [Premium-encoder](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) ondersteunt het coderen van H. 265 via de oudere v2-API's.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Audio-codecs die worden ondersteund door dynamische pakketten
 

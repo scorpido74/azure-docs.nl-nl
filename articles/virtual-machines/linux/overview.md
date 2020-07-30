@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082461"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuele Linux-machines in Azure
 
@@ -30,7 +30,7 @@ Virtuele machines in Azure kunnen op verschillende manieren worden gebruikt. Een
 Het aantal virtuele machines dat uw toepassing gebruikt, kan omhoog worden geschaald naar wat is vereist om te voldoen aan uw behoeften.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Waar moet ik over nadenken voordat ik een VM maak?
-Er is altijd een groot aantal [overwegingen bij het ontwerpen](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) wanneer u de infrastructuur van een toepassing verder uitwerkt in Azure. Deze aspecten van een VM zijn belangrijk om over na te denken voordat u begint:
+Er is altijd een groot aantal [overwegingen bij het ontwerpen](/azure/architecture/reference-architectures/n-tier/windows-vm) wanneer u de infrastructuur van een toepassing verder uitwerkt in Azure. Deze aspecten van een VM zijn belangrijk om over na te denken voordat u begint:
 
 * De namen van uw toepassingsresources
 * De locatie waar de resources worden opgeslagen
@@ -48,9 +48,9 @@ In deze tabel staan enkele manieren om een lijst met beschikbare locaties te ver
 | Methode | Beschrijving |
 | --- | --- |
 | Azure Portal |Selecteer een locatie in de lijst bij het maken van een VM. |
-| Azure PowerShell |Gebruik de opdracht [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
-| REST-API |Gebruik de bewerking [Locaties vermelden](https://docs.microsoft.com/rest/api/resources/subscriptions). |
-| Azure CLI |Gebruik de bewerking [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
+| Azure PowerShell |Gebruik de opdracht [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
+| REST-API |Gebruik de bewerking [Locaties vermelden](/rest/api/resources/subscriptions). |
+| Azure CLI |Gebruik de bewerking [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Beschikbaarheid
 Voor Azure is een toonaangevende serviceovereenkomst (SLA) van 99,9% aangekondigd voor één VM-instantie. Hiervoor geldt wel als voorwaarde dat de virtuele machine wordt geïmplementeerd met Premium-opslag voor alle schijven.  Als u wilt dat uw VM-implementatie in aanmerking komt voor de SLA van 99,95%, moet u bovendien een beschikbaarheidsset maken met ten minste twee VM's waarop uw workload wordt uitgevoerd. Dit zorgt ervoor dat uw VM's worden verdeeld over meerdere foutdomeinen in de Azure-datacenters en worden geïmplementeerd op hosts met verschillende onderhoudsvensters. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
@@ -95,7 +95,7 @@ Microsoft werkt nauw samen met partners om ervoor te zorgen dat de beschikbare i
 Voor een juiste DevOps-cultuur moet alle infrastructuur uit code bestaan.  Als alle infrastructuur bestaat uit code, kan deze namelijk eenvoudig opnieuw worden opgebouwd.  Azure werkt met de belangrijkste automatiseringstools zoals Ansible, Chef, SaltStack en Puppet.  Azure heeft ook eigen tools voor automatisering:
 
 * [Azure-sjablonen](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
+* [Azure VMAccess](../extensions/vmaccess.md)
 
 Azure biedt ondersteuning voor [cloud init](https://cloud-init.io/) voor de meeste Linux-distributies die dit ondersteunen.  We werken samen met onze goedgekeurde Linux-distributiepartners om ervoor te zorgen dat installatiekopieën met cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatiekopieën kunnen uw cloud-init-implementaties en -configuraties naadloos werken met VM's en virtuele-machineschaalsets.
 
@@ -120,4 +120,3 @@ Maak uw eerste VM.
 - [Portal](quick-create-portal.md)
 - [Azure-CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
-

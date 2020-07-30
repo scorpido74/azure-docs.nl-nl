@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 1857d3ee8b607d91b6fdd13b4499518d06fb9913
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6263e18ae541dd60dcd3455a00cdf58e371485f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834540"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023548"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Zelfstudie: Uw eerste Azure-gegevensfactory bouwen met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ De pijplijn in deze zelfstudie heeft één activiteit: **HDInsight Hive-activite
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Lees het artikel [Overzicht van de zelfstudie](data-factory-build-your-first-pipeline.md) en voer de **vereiste** stappen uit.
-* Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/overview) om de meest recente versie van Azure PowerShell te installeren op uw computer.
+* Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/) om de meest recente versie van Azure PowerShell te installeren op uw computer.
 * (optioneel) Dit artikel omvat niet alle Data Factory-cmdlets. Zie [Naslaginformatie voor Data Factory-cmdlets](/powershell/module/az.datafactory) (Data Factory Cmdlet Reference) voor uitgebreide documentatie over Data Factory-cmdlets.
 
 ## <a name="create-data-factory"></a>Een gegevensfactory maken
