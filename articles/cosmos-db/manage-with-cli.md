@@ -4,14 +4,14 @@ description: Gebruik Azure CLI voor het beheren van uw Azure Cosmos DB-account,-
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067171"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432838"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-resources beheren met Azure CLI
 
@@ -19,7 +19,7 @@ In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.6.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.9.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-accounts
 
@@ -308,6 +308,7 @@ az lock delete --ids $lockid
 In de volgende secties ziet u hoe u de Azure Cosmos DB-container kunt beheren, met inbegrip van:
 
 * [Een container maken](#create-a-container)
+* [Een container met automatisch schalen maken](#create-a-container-with-autoscale)
 * [Een container maken waarvoor TTL is ingeschakeld](#create-a-container-with-ttl)
 * [Een container maken met aangepast indexbeleid](#create-a-container-with-a-custom-index-policy)
 * [Container doorvoer wijzigen](#change-container-throughput)
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>Een container met automatisch schalen maken
+
+Maak een Cosmos-container met standaard index beleid, partitie sleutel en automatisch schalen van RU/s van 4000.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>Een container met TTL maken

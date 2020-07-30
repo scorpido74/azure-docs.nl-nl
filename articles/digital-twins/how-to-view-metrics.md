@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 09e32d5baa367b76c34ebca28adfdd20385e4e18
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6db571d64b0fd276519f15a3984848e80c4e18a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374550"
+ms.locfileid: "87387673"
 ---
 # <a name="view-and-understand-azure-digital-twins-metrics"></a>Azure Digital Apparaatdubbels-metrische gegevens weer geven en begrijpen
 
@@ -36,7 +36,7 @@ Metrische gegevens zijn standaard ingeschakeld. U kunt de metrische gegevens van
 
     :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="Scherm opname van de pagina met Diagnostische instellingen en de knop die u wilt toevoegen":::
 
-    Voor meer informatie over dit proces raadpleegt [*u How to: Diagnostics instellen*](how-to-set-up-diagnostics.md).
+    Zie voor meer informatie over dit proces [*probleem oplossing: diagnostische gegevens instellen*](troubleshoot-diagnostics.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure Digital Apparaatdubbels-metrische gegevens en hoe u deze kunt gebruiken
 
@@ -51,8 +51,8 @@ Metrische gegevens met API-aanvragen:
 | Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype| Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-aanvragen (preview-versie) | Aantal | Totaal | Het aantal API-aanvragen voor digitale-Apparaatdubbels voor lezen, schrijven, verwijderen en query bewerkingen. |  Verificatie </br>Bewerking </br>Protocol </br>Statuscode </br>Klasse status code </br>Status tekst |
-| ApiRequestsLatency | Latentie aanvragen van API (preview-versie) | Milliseconden | Gemiddeld | De reactie tijd voor API-aanvragen. Dit is de tijd tussen het moment waarop de aanvraag wordt ontvangen door Azure Digital Apparaatdubbels totdat de service een geslaagd/mislukt resultaat verzendt voor digitale Apparaatdubbels lezen, schrijven, verwijderen en query bewerkingen. | Verificatie </br>Bewerking </br>Protocol |
-| ApiRequestsFailureRate | Aantal mislukte API-aanvragen (preview-versie) | Percentage | Gemiddeld | Het percentage van de API-aanvragen dat door de service wordt ontvangen voor uw exemplaar en die een interne fout (500) reactie code geven voor digitale Apparaatdubbels-Lees-, schrijf-, verwijder-en query bewerkingen. | Verificatie </br>Bewerking </br>Protocol </br>Statuscode </br>Klasse status code </br>Status tekst
+| ApiRequestsLatency | Latentie aanvragen van API (preview-versie) | Milliseconden | Average | De reactie tijd voor API-aanvragen. Dit is de tijd tussen het moment waarop de aanvraag wordt ontvangen door Azure Digital Apparaatdubbels totdat de service een geslaagd/mislukt resultaat verzendt voor digitale Apparaatdubbels lezen, schrijven, verwijderen en query bewerkingen. | Verificatie </br>Bewerking </br>Protocol |
+| ApiRequestsFailureRate | Aantal mislukte API-aanvragen (preview-versie) | Percentage | Average | Het percentage van de API-aanvragen dat door de service wordt ontvangen voor uw exemplaar en die een interne fout (500) reactie code geven voor digitale Apparaatdubbels-Lees-, schrijf-, verwijder-en query bewerkingen. | Verificatie </br>Bewerking </br>Protocol </br>Statuscode </br>Klasse status code </br>Status tekst
 
 #### <a name="routing-metrics"></a>Routerings metrieken
 
@@ -61,8 +61,8 @@ Metrische gegevens die moeten worden uitgevoerd met route ring:
 | Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype| Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
 | Routering | Route ring (preview-versie) | Aantal | Totaal | Het aantal berichten dat wordt doorgestuurd naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Bewerking </br>Resultaat |
-| RoutingLatency | Routerings latentie (preview-versie) | Milliseconden | Gemiddeld | De tijd die is verstreken tussen een gebeurtenis die wordt gerouteerd van Azure Digital Apparaatdubbels naar het moment dat deze wordt geplaatst in de Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Bewerking </br>Resultaat |
-| RoutingFailureRate | Aantal mislukte routeringen (preview-versie) | Percentage | Gemiddeld | Het percentage gebeurtenissen dat resulteert in een fout wanneer ze worden doorgestuurd van Azure Digital Apparaatdubbels naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Bewerking </br>Resultaat |
+| RoutingLatency | Routerings latentie (preview-versie) | Milliseconden | Average | De tijd die is verstreken tussen een gebeurtenis die wordt gerouteerd van Azure Digital Apparaatdubbels naar het moment dat deze wordt geplaatst in de Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Bewerking </br>Resultaat |
+| RoutingFailureRate | Aantal mislukte routeringen (preview-versie) | Percentage | Average | Het percentage gebeurtenissen dat resulteert in een fout wanneer ze worden doorgestuurd van Azure Digital Apparaatdubbels naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Bewerking </br>Resultaat |
 
 #### <a name="billing-metrics"></a>Metrische facturerings gegevens
 
@@ -94,7 +94,7 @@ Bewerking (voor route ring) | Event Grid </br>Event Hub </br>Service Bus |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het beheren van vastgelegde metrische gegevens voor Azure Digital Apparaatdubbels raadpleegt u [*How-to: Diagnostics instellen*](how-to-set-up-diagnostics.md).
+Zie [*probleem oplossing: diagnostische gegevens instellen*](troubleshoot-diagnostics.md)voor meer informatie over het beheren van vastgelegde metrische gegevens voor Azure Digital apparaatdubbels.
 
 Nu u een overzicht van de metrische gegevens van de Azure Digital Apparaatdubbels hebt gezien, volgt u deze koppelingen voor meer informatie over het beheren van Azure Digital Apparaatdubbels:
 

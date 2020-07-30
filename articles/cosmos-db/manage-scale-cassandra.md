@@ -4,14 +4,14 @@ description: Meer informatie over de beschik bare opties voor het schalen van ee
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 447744f0436cb29e849a52694a02600183fd357a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119151"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432815"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 
@@ -46,7 +46,7 @@ Het voor deel van deze methode is dat het een eenvoudig kant-en-klare manier is 
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Het besturings vlak gebruiken
 
-De API van Azure Cosmos DB voor Cassandra biedt de mogelijkheid om de door Voer programmatisch aan te passen met behulp van de verschillende functies van het controle vlak. Zie de artikelen [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [Power shell](powershell-samples-cassandra.md)en [Azure cli](cli-samples-cassandra.md) voor hulp en voor beelden.
+De API van Azure Cosmos DB voor Cassandra biedt de mogelijkheid om de door Voer programmatisch aan te passen met behulp van de verschillende functies van het controle vlak. Zie de artikelen [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [Power shell](powershell-samples-cassandra.md)en [Azure cli](cli-samples.md) voor hulp en voor beelden.
 
 Het voor deel van deze methode is dat u de schaal aanpassing van resources naar boven of beneden kunt automatiseren op basis van een timer voor piek activiteit of peri Oden met een lage activiteit. Bekijk het voor beeld [hier](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) om te zien hoe u dit kunt doen met Azure functions en Power shell.
 

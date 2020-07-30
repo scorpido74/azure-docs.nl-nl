@@ -4,14 +4,14 @@ description: Meer informatie over het gebruik van de component OFFSET LIMIT voor
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.author: tisande
+ms.openlocfilehash: 9342c0c10ed4f7287716d21823fddfe992e0568f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76771575"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432713"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Component OFFSET LIMIT in Azure Cosmos DB
 
@@ -39,9 +39,9 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
   Zowel het `OFFSET` aantal als het `LIMIT` aantal is vereist in de `OFFSET LIMIT` component. Als er een optionele `ORDER BY` component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden.
 
-  De RU-kosten van een query met `OFFSET LIMIT` worden verhoogd naarmate er meer termen worden gecompenseerd. Voor query's met meerdere pagina's met resultaten raden we u aan om vervolg tokens te gebruiken. Vervolg tokens zijn een ' blad wijzer ' voor de locatie waar de query later kan worden hervat. Als u gebruikt `OFFSET LIMIT` , is er geen blad wijzer. Als u de volgende pagina van de query wilt retour neren, moet u beginnen met het begin.
+  De RU-kosten van een query met `OFFSET LIMIT` worden verhoogd naarmate er meer termen worden gecompenseerd. Voor query's met [meerdere pagina's met resultaten](sql-query-pagination.md)raden we u aan om [vervolg tokens](sql-query-pagination.md#continuation-tokens)te gebruiken. Vervolg tokens zijn een ' blad wijzer ' voor de locatie waar de query later kan worden hervat. Als u gebruikt `OFFSET LIMIT` , is er geen blad wijzer. Als u de volgende pagina van de query wilt retour neren, moet u beginnen met het begin.
   
-  Gebruik `OFFSET LIMIT` voor gevallen waarin u documenten volledig wilt overs Laan en client bronnen wilt opslaan. U moet bijvoorbeeld gebruiken `OFFSET LIMIT` Als u wilt door gaan naar het 1000th-query resultaat en geen resultaten meer wilt weer geven van 1 tot en met 999. Op de back-end wordt `OFFSET LIMIT` nog steeds elk document geladen, met inbegrip van de bestanden die worden overgeslagen. De prestaties profiteren van een besparing in client bronnen door te voor komen dat documenten worden verwerkt die niet nodig zijn.
+  Gebruik `OFFSET LIMIT` voor gevallen waarin u items volledig wilt overs Laan en client bronnen wilt opslaan. U moet bijvoorbeeld gebruiken `OFFSET LIMIT` Als u wilt door gaan naar het 1000th-query resultaat en geen resultaten meer wilt weer geven van 1 tot en met 999. Op de back-end wordt `OFFSET LIMIT` nog steeds elk item geladen, met inbegrip van de items die worden overgeslagen. Het prestatie voordeel is een besparing van client bronnen door verwerkings items te voor komen die niet nodig zijn.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -68,7 +68,7 @@ U ziet deze uitvoer:
 Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede waarde wordt geretourneerd (zonder volg orde):
 
 ```sql
-   SELECT f.id, f.address.city
+    SELECT f.id, f.address.city
     FROM Families f
     OFFSET 1 LIMIT 1
 ```

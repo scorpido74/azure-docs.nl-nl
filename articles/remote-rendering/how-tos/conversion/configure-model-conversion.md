@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147937"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432011"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -18,7 +18,8 @@ In dit hoofd stuk worden de opties voor de model conversie gedocumenteerd.
 
 ## <a name="settings-file"></a>Instellingen bestand
 
-Als een bestand met de naam `ConversionSettings.json` wordt gevonden in de invoer container naast het invoer model, wordt dit gebruikt om aanvullende configuratie voor het model conversie proces te bieden.
+Als een bestand `<modelName>.ConversionSettings.json` met de naam wordt gevonden in de invoer container naast het invoer model `<modelName>.<ext>` , wordt dit gebruikt om aanvullende configuratie voor het model conversie proces te bieden.
+Bijvoorbeeld, `box.ConversionSettings.json` wordt gebruikt bij de conversie `box.gltf` .
 
 De inhoud van het bestand moet voldoen aan het volgende JSON-schema:
 
@@ -54,7 +55,7 @@ De inhoud van het bestand moet voldoen aan het volgende JSON-schema:
 }
 ```
 
-Een voorbeeld `ConversionSettings.json` bestand kan zijn:
+Een voorbeeld bestand `box.ConversionSettings.json` kan zijn:
 
 ```json
 {
@@ -66,15 +67,18 @@ Een voorbeeld `ConversionSettings.json` bestand kan zijn:
 
 ### <a name="geometry-parameters"></a>Geometry-para meters
 
-* `scaling`-Met deze para meter wordt een model uniform geschaald. Schalen kan worden gebruikt om een model te verg Roten of verkleinen, bijvoorbeeld om een model op een tabel bovenaan weer te geven. Omdat de rendering-engine verwacht dat de lengtes worden opgegeven in meters, treedt er een ander belang rijk gebruik van deze para meter op wanneer een model in verschillende eenheden wordt gedefinieerd. Als bijvoorbeeld een model in centimeters is gedefinieerd, moet het model op de juiste grootte worden gerenderd met een schaal van 0,01.
+* `scaling`-Met deze para meter wordt een model uniform geschaald. Schalen kan worden gebruikt om een model te verg Roten of verkleinen, bijvoorbeeld om een model op een tabel bovenaan weer te geven.
+Schalen is ook belang rijk wanneer een model wordt gedefinieerd in andere eenheden dan meters, omdat de rendering-engine meters verwacht.
+Als bijvoorbeeld een model in centimeters is gedefinieerd, moet het model op de juiste grootte worden gerenderd met een schaal van 0,01.
 Sommige brongegevens indelingen (bijvoorbeeld. fbx) bieden een hint voor eenheids schaal, in welk geval de conversie het model impliciet schaalt naar meter eenheden. De impliciete schaal aanpassing van de bron indeling wordt boven op de schaal parameter toegepast.
 De uiteindelijke schaal factor wordt toegepast op de geometrie hoekpunten en de lokale trans formaties van de knoop punten van de scène grafiek. De schaal van de trans formatie van de basis entiteit blijft ongewijzigd.
 
 * `recenterToOrigin`-Geeft aan dat een model moet worden geconverteerd zodat het selectie vakje wordt gecentreerd bij de oorsprong.
-Het is belang rijk om te centreren als het bron model ver van de oorsprong wordt overgeplaatst, omdat in dat geval problemen met drijvende-komma precisie kunnen leiden tot rendering-artefacten.
+Als een bron model ver van de oorsprong wordt overgeplaatst, kunnen drijvende-komma precisie problemen leiden tot rendering-artefacten.
+Het model centreren kan in deze situatie helpen.
 
 * `opaqueMaterialDefaultSidedness`-De rendering-engine veronderstelt dat dekkende materialen dubbelzijdig worden weer gegeven.
-Als dat niet het beoogde gedrag is, moet deze para meter worden ingesteld op ' SingleSided '. Zie [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
+Als deze veronderstelling niet van toepassing is op een bepaald model, moet deze para meter worden ingesteld op ' SingleSided '. Zie [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
 
 ### <a name="material-overrides"></a>Overschrijvingen van materiaal
 
@@ -99,10 +103,10 @@ Als een model is gedefinieerd met behulp van gamma ruimte, moeten deze opties wo
 
 * `sceneGraphMode`-Definieert hoe de scène grafiek in het bron bestand wordt geconverteerd:
   * `dynamic`(standaard): alle objecten in het bestand worden weer gegeven als [entiteiten](../../concepts/entities.md) in de API en kunnen onafhankelijk worden getransformeerd. De knooppunt hiërarchie tijdens runtime is identiek aan de structuur in het bron bestand.
-  * `static`: Alle objecten worden weer gegeven in de API, maar kunnen niet onafhankelijk worden getransformeerd.
+  * `static`: Alle objecten worden weer gegeven in de API, maar ze kunnen niet onafhankelijk worden getransformeerd.
   * `none`: De scène grafiek is samengevouwen in één object.
 
-Elke modus heeft verschillende runtime-prestaties. In `dynamic` de modus worden de prestatie kosten lineair geschaald met het aantal [entiteiten](../../concepts/entities.md) in de grafiek, zelfs als er geen deel wordt verplaatst. Het mag alleen worden gebruikt wanneer het verplaatsen van onderdelen nodig is voor de toepassing, bijvoorbeeld voor een animatie weergave.
+Elke modus heeft verschillende runtime-prestaties. In `dynamic` de modus worden de prestatie kosten lineair geschaald met het aantal [entiteiten](../../concepts/entities.md) in de grafiek, zelfs als er geen deel wordt verplaatst. Gebruik `dynamic` de modus alleen wanneer dit nodig is om onderdelen afzonderlijk te verplaatsen, bijvoorbeeld voor de animatie ' explosie weergave '.
 
 In de `static` modus wordt de volledige scène grafiek geëxporteerd, maar onderdelen in deze grafiek hebben een constante trans formatie ten opzichte van het hoofd gedeelte. Het hoofd knooppunt van het object kan echter nog steeds worden verplaatst, gedraaid of geschaald zonder aanzienlijke prestatie kosten. Daarnaast retour neren [ruimtelijke query's](../../overview/features/spatial-queries.md) afzonderlijke onderdelen en kan elk deel worden gewijzigd via [status onderdrukkingen](../../overview/features/override-hierarchical-state.md). In deze modus is de runtime overhead per object verwaarloosbaar. Het is ideaal voor grote scènes waarbij u nog steeds een controle per object nodig hebt, maar geen trans formatie per object wijzigt.
 
@@ -178,7 +182,7 @@ Deze indelingen zijn toegestaan voor de respectieve onderdelen:
 
 De geheugen footprint van de indelingen zijn als volgt:
 
-| Indeling | Description | Bytes per:::no-loc text="vertex"::: |
+| Indeling | Beschrijving | Bytes per:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|twee onderdelen met een volledige zwevende komma precisie|8
 |16_16_FLOAT|twee onderdelen, half zwevende punt precisie|4
@@ -278,6 +282,11 @@ In deze gebruiks gevallen hebben de modellen vaak zeer veel details binnen een k
 * Afzonderlijke onderdelen moeten selecteerbaar en verplaatsbaar zijn, dus de `sceneGraphMode` moet resteren `dynamic` .
 * Ray-casts zijn doorgaans een integraal onderdeel van de toepassing. er moeten dus botsingen worden gegenereerd.
 * Knip abonnementen zien er beter uit terwijl de `opaqueMaterialDefaultSidedness` markering is ingeschakeld.
+
+## <a name="deprecated-features"></a>Verouderde functies:
+
+Het opgeven van instellingen met de niet-model-specifieke bestands naam `conversionSettings.json` wordt nog steeds ondersteund, maar is afgeschaft.
+Gebruik in plaats daarvan de model-specifieke bestands naam `<modelName>.ConversionSettings.json` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

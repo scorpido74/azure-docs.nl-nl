@@ -7,16 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c900700fa1588cd341171a0176c19acc51129a4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318654"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430972"
 ---
 # <a name="download-notebookspreview-data"></a>Notitie blokken downloaden (preview)-gegevens
 
-**van toepassing op:** ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-azure-ml.md) ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) 
+**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 De functie notebooks (preview) is verwijderd op *13 2020 april*. Het verwijderen van het tabblad notebooks (preview) en notitieblok bestanden van gebruikers wordt momenteel geïmplementeerd naar Azure-regio's wereld wijd.
 

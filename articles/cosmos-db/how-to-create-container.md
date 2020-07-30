@@ -1,21 +1,21 @@
 ---
 title: Een container maken in Azure Cosmos DB
-description: Meer informatie over het maken van een container in Azure Cosmos DB met behulp van Azure Portal, .net, Java, Python, Node.js en andere Sdk's.
+description: Meer informatie over het maken van een container in Azure Cosmos DB met behulp van Azure Portal, .NET, Java, Python, Node.js en andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390887"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429707"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
-In dit artikel worden de verschillende manieren beschreven voor het maken van een Azure Cosmos-container (verzameling, tabel of grafiek). U kunt hiervoor Azure Portal, Azure CLI of ondersteunde Sdk's gebruiken. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
+In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-container (verzameling, tabel of grafiek) te maken met behulp van Azure Portal, Azure CLI, Power shell of ondersteunde Sdk's. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
 
 > [!NOTE]
 > Wanneer u containers maakt, moet u ervoor zorgen dat u niet twee containers maakt met dezelfde naam, maar met een ander hoofdletter gebruik. Dat komt omdat sommige onderdelen van het Azure-platform niet hoofdletter gevoelig zijn. Dit kan leiden tot Verwar ring/botsing van telemetriegegevens en acties op containers met dergelijke namen.
@@ -24,7 +24,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL-API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
@@ -40,7 +40,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -56,7 +56,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -75,7 +75,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin-API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-graph-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -92,7 +92,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tabel-API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-table-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -111,7 +111,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 De onderstaande koppelingen laten zien hoe u container bronnen voor Azure Cosmos DB maakt met behulp van Azure CLI.
 
-Voor een lijst met alle Azure CLI-voor beelden voor alle Azure Cosmos DB Api's raadpleegt u, [SQL API](cli-samples.md), [CASSANDRA-API](cli-samples-cassandra.md), [MongoDb api](cli-samples-mongodb.md), [Gremlin API](cli-samples-gremlin.md)en [Table-API](cli-samples-table.md)
+Zie [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md)voor een overzicht van alle Azure CLI-voor beelden in alle Azure Cosmos DB api's.
 
 * [Een container maken met Azure CLI](manage-with-cli.md#create-a-container)
 * [Een verzameling voor Azure Cosmos DB voor MongoDB-API maken met Azure CLI](./scripts/cli/mongodb/create.md)
@@ -123,7 +123,7 @@ Voor een lijst met alle Azure CLI-voor beelden voor alle Azure Cosmos DB Api's r
 
 De onderstaande koppelingen laten zien hoe u container resources voor Azure Cosmos DB maakt met behulp van Power shell.
 
-Voor een lijst met alle Azure CLI-voor beelden voor alle Azure Cosmos DB Api's raadpleegt u, [SQL API](powershell-samples-sql.md), [CASSANDRA-API](powershell-samples-cassandra.md), [MongoDb api](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)en [Table-API](powershell-samples-table.md)
+Voor een lijst met alle Power shell-voor beelden voor alle Azure Cosmos DB Api's raadpleegt u, [SQL API](powershell-samples-sql.md), [CASSANDRA-API](powershell-samples-cassandra.md), [MongoDb api](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)en [Table-API](powershell-samples-table.md)
 
 * [Een container maken met Power shell](manage-with-powershell.md#create-container)
 * [Een verzameling maken voor Azure Cosmos DB voor MongoDB-API met Power shell](./scripts/powershell/mongodb/ps-mongodb-create.md)

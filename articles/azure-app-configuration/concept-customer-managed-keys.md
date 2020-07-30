@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371852"
+ms.locfileid: "87384868"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Door de klant beheerde sleutels gebruiken voor het versleutelen van uw app-configuratie gegevens
 Met Azure-app configuratie wordt [gevoelige informatie op rest versleuteld](../security/fundamentals/encryption-atrest.md). Het gebruik van door de klant beheerde sleutels biedt verbeterde gegevens beveiliging door u de mogelijkheid te bieden om uw versleutelings sleutels te beheren.  Wanneer beheerde sleutel versleuteling wordt gebruikt, wordt alle gevoelige informatie in de app-configuratie versleuteld met een door de gebruiker verstrekte Azure Key Vault sleutel.  Dit biedt de mogelijkheid om de versleutelings sleutel op aanvraag te draaien.  Het biedt ook de mogelijkheid om de toegang tot gevoelige gegevens in de Azure-app configuratie in te trekken door de toegang tot de sleutel van het app-configuratie-exemplaar in te trekken.
@@ -20,7 +20,7 @@ Met Azure-app configuratie wordt [gevoelige informatie op rest versleuteld](../s
 Met Azure-app configuratie wordt gevoelige informatie op rest versleuteld met behulp van een 256-bits AES-versleutelings sleutel van micro soft. Elk app-configuratie-exemplaar heeft een eigen versleutelings sleutel die wordt beheerd door de service en die wordt gebruikt om gevoelige informatie te versleutelen. Gevoelige informatie bevat de waarden die worden gevonden in sleutel-waardeparen.  Wanneer door de klant beheerde sleutel mogelijkheid is ingeschakeld, gebruikt de app-configuratie een beheerde identiteit die is toegewezen aan het app-configuratie-exemplaar om te verifiëren met Azure Active Directory. De beheerde identiteit roept vervolgens Azure Key Vault en verloopt de versleutelings sleutel van het app-configuratie-exemplaar. De ingepakte versleutelings sleutel wordt vervolgens opgeslagen en de niet-gepakte versleutelings sleutel wordt gedurende één uur in de configuratie van de app opgeslagen. Met app-configuratie wordt de niet-ingepakte versie van de versleutelings sleutel van het app-configuratie-exemplaar per uur vernieuwd. Dit zorgt voor de beschik baarheid onder normale bedrijfs omstandigheden. 
 
 >[!IMPORTANT]
-> Als de identiteit die is toegewezen aan het app-configuratie-exemplaar niet langer wordt geautoriseerd om de versleutelings sleutel van het exemplaar op te slaan, of als de beheerde sleutel permanent wordt verwijderd, is het niet meer mogelijk om gevoelige informatie te ontsleutelen die is opgeslagen in het app-configuratie-exemplaar. Het gebruik van de functie voor het [verwijderen](../key-vault/general/overview-soft-delete.md) van Azure Key Vault verkleint de kans dat de versleutelings sleutel per ongeluk wordt verwijderd.
+> Als de identiteit die is toegewezen aan het app-configuratie-exemplaar niet langer wordt geautoriseerd om de versleutelings sleutel van het exemplaar op te slaan, of als de beheerde sleutel permanent wordt verwijderd, is het niet meer mogelijk om gevoelige informatie te ontsleutelen die is opgeslagen in het app-configuratie-exemplaar. Het gebruik van de functie voor het [verwijderen](../key-vault/general/soft-delete-overview.md) van Azure Key Vault verkleint de kans dat de versleutelings sleutel per ongeluk wordt verwijderd.
 
 Wanneer gebruikers de functie voor door de klant beheerde sleutel inschakelen op hun Azure-app configuratie-exemplaar, kunnen ze de toegang tot hun gevoelige gegevens in de service beheren. De beheerde sleutel fungeert als basis versleutelings sleutel. Een gebruiker kan de toegang tot hun app-configuratie-exemplaar intrekken voor hun beheerde sleutel door het toegangs beleid voor de sleutel kluis te wijzigen. Wanneer deze toegang wordt ingetrokken, verliest de configuratie van de app de mogelijkheid om gebruikers gegevens binnen een uur te ontsleutelen. Op dit moment worden alle toegangs pogingen op het app-configuratie-exemplaar niet uitgevoerd. Deze situatie kan worden hersteld door de service toegang tot de beheerde sleutel opnieuw te verlenen.  Binnen één uur kan de app-configuratie gebruikers gegevens ontsleutelen en onder normale omstandigheden functioneren.
 

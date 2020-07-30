@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 21f4494bedd824cef373a391c5635e35ec2600d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74805787"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406874"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Logboek registratie inschakelen in de Speech SDK
 
@@ -26,7 +27,7 @@ Logboek registratie in bestand is een optionele functie voor de spraak-SDK. Tijd
 
 ## <a name="sample"></a>Voorbeeld
 
-De naam van het logboek bestand is opgegeven voor een configuratie object. Als voor `SpeechConfig` beeld wordt aangenomen dat u een instantie hebt gemaakt met de naam `config`:
+De naam van het logboek bestand is opgegeven voor een configuratie object. `SpeechConfig`Als voor beeld wordt aangenomen dat u een instantie hebt gemaakt met de naam `config` :
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +52,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 U kunt een herkenner maken op basis van het configuratie object. Hiermee wordt logboek registratie ingeschakeld voor alle kenmerken.
 
 > [!NOTE]
-> Als u een `SpeechSynthesizer` van het configuratie object maakt, wordt logboek registratie niet ingeschakeld. Als logboek registratie is ingeschakeld, ontvangt u ook diagnostische gegevens van de `SpeechSynthesizer`.
+> Als u een `SpeechSynthesizer` van het configuratie object maakt, wordt logboek registratie niet ingeschakeld. Als logboek registratie is ingeschakeld, ontvangt u ook diagnostische gegevens van de `SpeechSynthesizer` .
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Een logboek bestand maken op verschillende platformen
 
@@ -79,9 +80,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Met de bovenstaande code wordt een logboek bestand opgeslagen in de externe opslag in de hoofdmap van een toepassingsspecifiek Directory. Een gebruiker heeft toegang tot het bestand met de bestands beheerder (meestal `Android/data/ApplicationName/logfile.txt`in). Het bestand wordt verwijderd wanneer de installatie van de toepassing ongedaan wordt gemaakt.
+Met de bovenstaande code wordt een logboek bestand opgeslagen in de externe opslag in de hoofdmap van een toepassingsspecifiek Directory. Een gebruiker heeft toegang tot het bestand met de bestands beheerder (meestal in `Android/data/ApplicationName/logfile.txt` ). Het bestand wordt verwijderd wanneer de installatie van de toepassing ongedaan wordt gemaakt.
 
-U moet ook een machtiging `WRITE_EXTERNAL_STORAGE` aanvragen in het manifest bestand:
+U moet ook `WRITE_EXTERNAL_STORAGE` een machtiging aanvragen in het manifest bestand:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +105,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Als u toegang wilt krijgen tot een gemaakt bestand, voegt u `Info.plist` de onderstaande eigenschappen toe aan de eigenschappen lijst van de toepassing:
+Als u toegang wilt krijgen tot een gemaakt bestand, voegt u de onderstaande eigenschappen toe aan de `Info.plist` Eigenschappen lijst van de toepassing:
 
 ```xml
 <key>UIFileSharingEnabled</key>

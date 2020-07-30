@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284809"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432987"
 ---
 # <a name="lsv2-series"></a>Lsv2-serie
 
@@ -52,7 +52,7 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 <sup>3</sup> Hyper-V NVMe direct-technologie biedt onbeperkte toegang tot lokale NVMe-stations die veilig zijn gekoppeld aan de gast-VM-ruimte.  Voor maximale prestaties moet u de nieuwste versie van WS2019 build of Ubuntu 18,04 of 16,04 van de Azure Marketplace gebruiken.  De schrijf prestaties zijn afhankelijk van de i/o-grootte, de belasting van het apparaat en het capaciteits gebruik.
 
-<sup>4</sup> virtuele machines uit de Lsv2-serie bieden geen host-cache voor gegevens schijven omdat het geen voor deel is van de Lsv2-workloads.  Lsv2 Vm's kunnen echter worden voorzien van de tijdelijke VM-besturingssysteem schijf optie van Azure (Maxi maal 30 GiB).
+<sup>4</sup> virtuele machines uit de Lsv2-serie bieden geen host-cache voor gegevens schijven omdat het geen voor deel is van de Lsv2-workloads.
 
 <sup>vijf</sup> vm's [uit de Lsv2](linux/disk-bursting.md) -serie kunnen de schijf prestaties Maxi maal 30 minuten per keer oplopen. 
 

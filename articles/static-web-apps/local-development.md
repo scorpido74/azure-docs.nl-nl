@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259266"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432977"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Lokale ontwikkeling voor Azure static Web Apps-Preview instellen
 
@@ -46,7 +47,7 @@ Afhankelijk van hoe een website is gebouwd, is het mogelijk dat een lokale webse
 
 ### <a name="javascript-frameworks-and-libraries"></a>Java script-frameworks en-bibliotheken
 
-- [Hoek-CLI](https://angular.io/cli)
+- [Angular CLI](https://angular.io/cli)
 - [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html)
 - [CLI-reageren](https://create-react-app.dev/)
 
@@ -70,7 +71,7 @@ De live server-extensie voor Visual Studio code biedt een lokale ontwikkel webse
 
 1. Open Visual Studio Code.
 
-1. Druk op **F1** om het opdracht palet te openen.
+1. Druk op **F1** om het opdrachtenpalet te openen.
 
 1. Typ **Clone** in het zoekvak en selecteer **git: Clone**.
 
@@ -92,7 +93,7 @@ Visual Studio code opent het gekloonde project in de editor.
 
 ### <a name="run-the-website-locally-with-live-server"></a>De website lokaal uitvoeren met live server
 
-1. Druk op **F1** om het opdracht palet te openen.
+1. Druk op **F1** om het opdrachtenpalet te openen.
 
 1. Typ **Live server** in het zoekvak en selecteer **Live server: openen met live server**
 
@@ -193,7 +194,7 @@ Zie de volgende artikelen voor meer informatie over het configureren van omgevin
 
     :::image type="content" source="media/local-development/stop-live-server.png" alt-text="De live server-opdracht stoppen in het Visual Studio-opdracht palet":::
 
-1. Druk op **F1** om het opdracht palet te openen.
+1. Druk op **F1** om het opdrachtenpalet te openen.
 
 1. Typ **Live server** en selecteer **Live server: openen met live server**.
 

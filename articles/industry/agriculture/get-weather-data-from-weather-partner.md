@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281018"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429271"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
-Met Azure FarmBeats kunt u weer gegevens van uw weer gegevens providers halen met behulp van een connector raamwerk op basis van docker. Met behulp van dit framework implementeren weer gegevens providers een docker die kan worden geïntegreerd met FarmBeats. Op dit moment wordt alleen de [DTN](https://www.dtn.com/dtn-content-integration/) weer gegeven-gegevens provider ondersteund.
+Met Azure FarmBeats kunt u weer gegevens van uw weer gegevens providers halen met behulp van een connector raamwerk op basis van docker. Met behulp van dit framework implementeren weer gegevens providers een docker die kan worden geïntegreerd met FarmBeats. Op dit moment wordt de volgende weer gegeven gegevens provider ondersteund.
+
+  ![FarmBeats-partners](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 De weer gegevens kunnen worden gebruikt voor het genereren van met actie bare inzichten en het bouwen van AI-of ML-modellen in FarmBeats.
 

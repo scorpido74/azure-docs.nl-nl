@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Documentatie over IoT Plug en Play (preview)
-summary: Met IoT Plug en Play (preview) kunt u een apparaatmodel definiëren waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee werken, zonder dat u apparaatcode hoeft te schrijven.
+title: Vernieuwde documentatie over IoT Plug en Play (preview)
+summary: Met IoT Plug en Play kunt u een apparaatmodel definiëren waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee kunnen werken.
 metadata:
-  title: Documentatie over IoT Plug en Play (preview)
-  description: Met IoT Plug en Play (preview) kunt u een apparaatmodel definiëren waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee werken, zonder dat u apparaatcode hoeft te schrijven.
+  title: Architectuur van IoT Plug en Play (preview)
+  description: Met IoT Plug en Play (preview) kunnen ontwikkelaars apparaten in hun oplossing integreren zonder dat hiervoor handmatige configuratie nodig is. In dit artikel leest u meer over de belangrijkste onderdelen van de architectuur die dit mogelijk maken.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 9469adb901c2da5f814088aa8eb59121889a0b78
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998293"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337361"
 landingContent:
 - title: Info over IoT Plug en Play
   linkLists:
@@ -24,51 +24,41 @@ landingContent:
     links:
     - text: Wat is IoT Plug en Play?
       url: overview-iot-plug-and-play.md
-  - linkListType: video
-    links:
-    - text: Inleiding tot IoT Plug en Play
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
-- title: Apparaten ontwikkelen
+    - text: Nieuwe preview-updates 2020
+      url: overview-iot-plug-and-play-preview-updates.md
+- title: Apparaten bouwen
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Een voorbeeldapparaat verbinden met IoT Hub
-      url: quickstart-connect-pnp-device-c-windows.md
-    - text: Een voorbeeldapparaat verbinden met IoT Central
-      url: ../iot-central/core/tutorial-connect-pnp-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - text: Mogelijkheidsmodel voor apparaten gebruiken om een apparaat te maken
-      url: quickstart-create-pnp-device-windows.md
-  - linkListType: tutorial
-    links:
-    - text: Een apparaatondersteuningsprofiel maken en testen met Visual Studio Code
-      url: tutorial-pnp-visual-studio-code.md
-    - text: Een apparaat bouwen dat gereed is voor certificering
-      url: tutorial-build-device-certification.md
-    - text: Uw apparaat certificeren
-      url: tutorial-certification-test.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure IoT Tools voor Visual Studio Code gebruiken
-      url: howto-develop-with-vs-vscode.md
-    - text: Onboarding uitvoeren naar de Azure Certified for IoT-portal
-      url: howto-onboard-portal.md
+    - text: Een voorbeeldapparaat verbinden met IoT Hub (C)
+      url: quickstart-connect-device-c.md
+    - text: Een voorbeeldapparaat verbinden met IoT Hub (C#)
+      url: quickstart-connect-device-csharp.md
+    - text: Een voorbeeldapparaat verbinden met IoT Hub (Java)
+      url: quickstart-connect-device-java.md
+    - text: Een voorbeeldapparaat verbinden met IoT Hub (Node.js)
+      url: quickstart-connect-device-node.md
+    - text: Een voorbeeldapparaat verbinden met IoT Hub (Python)
+      url: quickstart-connect-device-python.md
   - linkListType: concept
     links:
-    - text: Algemene interfaces
-      url: concepts-common-interfaces.md
+    - text: Ontwikkelaarsgids
+      url: concepts-developer-guide.md
+    - text: Conventies voor IoT Plug en Play
+      url: concepts-convention.md
+    - text: Onderdelen
+      url: concepts-components.md
 - title: Oplossingen bouwen
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Interactie met een apparaat dat met uw oplossing is verbonden
-      url: quickstart-connect-pnp-device-solution-node.md
+    - text: Interactie met een apparaat vanuit uw oplossing (Node.js)
+      url: quickstart-service-node.md
+    - text: Interactie met een apparaat vanuit uw oplossing (Python)
+      url: quickstart-service-python.md
   - linkListType: concept
     links:
-    - text: Modeldetectie
-      url: concepts-model-discovery.md
-    - text: Algemene interfaces
-      url: concepts-common-interfaces.md
-  - linkListType: how-to-guide
-    links:
-    - text: Verbinding maken met apparaten vanuit de oplossing
-      url: howto-develop-solution.md
+    - text: Architectuur
+      url: concepts-architecture.md
+    - text: Digitale tweelingen
+      url: concepts-digital-twin.md

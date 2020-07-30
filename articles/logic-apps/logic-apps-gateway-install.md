@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078660"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386126"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
@@ -28,21 +28,20 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account en -abonnement. Als u geen Azure-account hebt met een abonnement, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. Als u geen Azure-account hebt met een abonnement, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-  * Uw Azure-account moet deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology). U moet hetzelfde Azure-account gebruiken voor het installeren en beheren van de gateway op uw lokale computer.
-
-  * Tijdens de installatie van de gateway meldt u zich aan met uw Azure-account, waarmee u uw gateway-installatie kunt koppelen aan uw Azure-account en alleen dat account. Later, in de Azure Portal, moet u hetzelfde Azure-account en Azure AD-Tenant gebruiken wanneer u een Azure gateway-resource maakt waarmee de gateway-installatie wordt geregistreerd en claimt. In Azure Logic Apps moeten on-premises triggers en acties vervolgens de gateway bron gebruiken om verbinding te maken met on-premises gegevens bronnen.
+  * Uw Azure-account moet een werk account of school account zijn dat er als volgt uitziet `username@contoso.com` . U kunt geen Azure B2B-accounts of persoonlijke micro soft-accounts gebruiken, zoals @hotmail.com of @outlook.com .
 
     > [!NOTE]
-    > U kunt slechts één gateway-installatie en één Azure gateway-resource aan elkaar koppelen. U kunt dezelfde Gateway-installatie niet koppelen aan meerdere Azure-accounts of Azure gateway-resources. Een Azure-account kan echter worden gekoppeld aan meerdere gateway-installaties en Azure gateway-resources. In een on-premises trigger of actie kunt u kiezen uit uw verschillende Azure-abonnementen en vervolgens een gekoppelde gateway resource selecteren.
+    > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw zakelijke e-mail adres niet hebt verstrekt, kan uw adres er als volgt uitzien `username@domain.onmicrosoft.com` . Uw account wordt opgeslagen in een Azure AD-Tenant. In de meeste gevallen is de UPN (User Principal Name) voor uw Azure-account hetzelfde als uw e-mail adres.
 
-  * U moet zich aanmelden met een werk account of school account, ook wel bekend als een *organisatie* account, die er als volgt uitziet `username@contoso.com` . U kunt geen Azure B2B-accounts of persoonlijke micro soft-accounts gebruiken, zoals @hotmail.com of @outlook.com .
+    Als u een [Visual Studio Standard-abonnement](https://visualstudio.microsoft.com/vs/pricing/) wilt gebruiken dat is gekoppeld aan een Microsoft-account, maakt u eerst [een Azure AD-Tenant](../active-directory/develop/quickstart-create-new-tenant.md) of gebruikt u de standaard directory. Voeg een gebruiker met een wacht woord toe aan de map en geef die gebruiker vervolgens toegang tot uw Azure-abonnement. U kunt zich vervolgens aanmelden tijdens de installatie van de gateway met deze gebruikers naam en dit wacht woord.
 
-    > [!TIP]
-    > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw zakelijke e-mail adres niet hebt verstrekt, kan uw adres er als volgt uitzien `username@domain.onmicrosoft.com` . Uw account wordt opgeslagen in een Tenant in een Azure Active Directory (Azure AD). In de meeste gevallen is de UPN (User Principal Name) voor uw Azure AD-account hetzelfde als uw e-mail adres.
-    >
-    > Als u een [Visual Studio Standard-abonnement](https://visualstudio.microsoft.com/vs/pricing/) wilt gebruiken dat is gekoppeld aan een Microsoft-account, maakt u eerst [een TENANT in azure AD](../active-directory/develop/quickstart-create-new-tenant.md) of gebruikt u de standaard directory. Voeg een gebruiker met een wacht woord toe aan de map en geef die gebruiker vervolgens toegang tot uw Azure-abonnement. U kunt zich vervolgens aanmelden tijdens de installatie van de gateway met deze gebruikers naam en dit wacht woord.
+  * Uw Azure-account mag alleen deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology). U moet hetzelfde Azure-account gebruiken voor het installeren en beheren van de gateway op uw lokale computer.
+
+  * Wanneer u de gateway installeert, meldt u zich aan met uw Azure-account, waarmee u uw gateway-installatie kunt koppelen aan uw Azure-account en alleen dat account. U kunt dezelfde Gateway-installatie niet koppelen aan meerdere Azure-accounts of Azure AD-tenants.
+
+  * Later in de Azure Portal, moet u hetzelfde Azure-account gebruiken om een Azure gateway-resource te maken die is gekoppeld aan de installatie van de gateway. U kunt slechts één gateway-installatie en één Azure gateway-resource aan elkaar koppelen. Uw Azure-account kan echter worden gekoppeld aan verschillende gateway-installaties die elk zijn gekoppeld aan een Azure gateway-resource. Uw Logic apps kunnen deze gateway bron vervolgens gebruiken in triggers en acties die toegang hebben tot on-premises gegevens bronnen.
 
 * Hier vindt u de vereisten voor uw lokale computer:
 

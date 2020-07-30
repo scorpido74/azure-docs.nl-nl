@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124885"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432427"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory bewaken en waarschuwen door gebruik te maken van Azure Monitor
 
@@ -111,8 +111,8 @@ Deze oplossing biedt een overzicht van de algemene status van uw Data Factory, m
 Als u deze oplossing installeert, wordt er een standaardset weer gaven gemaakt in de sectie werkmappen van de gekozen Log Analytics werk ruimte. Als gevolg hiervan worden de volgende metrische gegevens ingeschakeld:
 
 * ADF-uitvoeringen-1) pijplijn uitvoeringen door Data Factory
-* ADF-uitvoeringen-2) uitvoering van activiteit op gegevens factor
-* ADF-uitvoeringen-3) trigger uitvoeringen per gegevens factor
+* ADF-uitvoeringen-2) uitvoering van activiteit door Data Factory
+* ADF-uitvoeringen-3) activering wordt uitgevoerd door Data Factory
 * ADF-fouten-1) Top 10 van pijplijn fouten per Data Factory
 * ADF-fouten-2) de tien uitvoering van de activiteit wordt uitgevoerd door Data Factory
 * ADF-fouten-3) de tien belangrijkste trigger fouten door Data Factory
@@ -221,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Kopteksten
+##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.
@@ -278,7 +278,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **hout**| Complex type| De naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, voert u de bewerking Diagnostische instellingen ophalen uit. |
 | **category**| Tekenreeks| Een matrix met logboek categorieën en het Bewaar beleid. |
 | **timeGrain** | Tekenreeks | De granulatie van metrische gegevens, die worden vastgelegd in de ISO 8601-duur notatie. De waarde van de eigenschap moet `PT1M` een minuut zijn. |
-| **ingeschakeld**| Boolean | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
+| **ingeschakeld**| Boolean-waarde | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
 | **retentionPolicy**| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 |**resterende**| Int| Het aantal dagen dat de metrische gegevens of logboeken moeten worden bewaard. Als de waarde van de eigenschap 0 is, worden de logboeken permanent bewaard. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 
@@ -341,7 +341,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Kopteksten
+##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.

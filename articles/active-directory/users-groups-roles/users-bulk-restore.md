@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2800119f1a88172ea7c329fc53359bf1565a0705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731270"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423334"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Verwijderde gebruikers bulksgewijs herstellen in Azure Active Directory
 
@@ -68,7 +68,7 @@ Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven o
 
 U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking** .
 
-[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
+[![Controleer de status op de pagina resultaten van bulk bewerking.](media/users-bulk-restore/bulk-center.png)](media/users-bulk-restore/bulk-center.png#lightbox)
 
 Vervolgens kunt u controleren of de gebruikers die u hebt hersteld, bestaan in de Azure AD-organisatie in de Azure Portal of met behulp van Power shell.
 
@@ -76,7 +76,7 @@ Vervolgens kunt u controleren of de gebruikers die u hebt hersteld, bestaan in d
 
 1. [Meld u aan bij het Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een gebruikers beheerder in de organisatie is.
 1. Selecteer **Azure Active Directory**in het navigatie deel venster.
-1. Selecteer onder **Beheren** de optie **Gebruikers**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
 1. Selecteer onder **weer geven** **alle gebruikers** en controleer of de gebruikers die u hebt hersteld, worden weer gegeven.
 
 ### <a name="view-users-with-powershell"></a>Gebruikers weer geven met Power shell

@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357559"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385089"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Het wacht woord voor het ADSync-service account wijzigen
 Als u het wacht woord voor het ADSync-service account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het ADSync-service account opnieuw hebt geïnitialiseerd. 
@@ -52,7 +52,7 @@ Om ervoor te zorgen dat deze fouten niet worden weer gegeven, volgt u de procedu
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>De versleutelings sleutel voor het ADSync-service account wordt afgebroken
 >[!IMPORTANT]
->De volgende procedures zijn alleen van toepassing op Azure AD Connect build 1.1.443.0 of ouder.
+>De volgende procedures zijn alleen van toepassing op Azure AD Connect build 1.1.443.0 of ouder. Dit kan niet worden gebruikt voor nieuwere versies van Azure AD Connect.
 
 Gebruik de volgende procedures om de versleutelings sleutel te verlaten.
 
