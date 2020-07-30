@@ -6,19 +6,19 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 5433eeff4c01c136e62cb71a53fafcae3a81859b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081369"
 ---
 # <a name="azure-monitor-cli-samples"></a>CLI-voorbeelden van Azure Monitor
 In dit artikel vindt u voorbeelden van CLI-opdrachten (Command-Line Interface), om vanaf de opdrachtregel toegang te krijgen tot Azure Monitor-functies. Met Azure Monitor kunt u cloudservices, virtuele machines en web-apps automatisch schalen en waarschuwingen verzenden of web-URL's aanroepen op basis van waarden van geconfigureerde telemetriegegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de Azure CLI nog niet hebt geïnstalleerd, volgt u de instructies in [Install the Azure CLI](/cli/azure/install-azure-cli) (De Azure CLI installeren). U kunt ook [Azure Cloud Shell](/azure/cloud-shell) gebruiken om de CLI als een interactieve ervaring in uw browser uit te voeren. Bekijk een volledig overzicht van alle beschikbare opdrachten in de [naslaginformatie over de CLI van Azure Monitor](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Als u de Azure CLI nog niet hebt geïnstalleerd, volgt u de instructies in [Install the Azure CLI](/cli/azure/install-azure-cli) (De Azure CLI installeren). U kunt ook [Azure Cloud Shell](/azure/cloud-shell) gebruiken om de CLI als een interactieve ervaring in uw browser uit te voeren. Bekijk een volledig overzicht van alle beschikbare opdrachten in de [naslaginformatie over de CLI van Azure Monitor](/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 De eerste stap is om u aan te melden bij uw Azure-account.
@@ -206,4 +206,3 @@ az monitor autoscale create --name <settings name> --resource-group <group name>
     --count <# instances> \
     --resource <target resource ID>
 ```
-
