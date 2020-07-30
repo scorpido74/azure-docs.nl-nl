@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387129"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Power shell en Azure CLI: Schakel Transparent Data Encryption in met door de klant beheerde sleutel van Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u een sleutel gebruikt uit Azure Key Vault v
 - Maak een Azure Key Vault en een sleutel om te gebruiken voor TDE.
   - [Instructies voor het gebruik van een Hardware Security module (HSM) en Key Vault](../../key-vault/keys/hsm-protected-keys.md)
     - De sleutel kluis moet de volgende eigenschap hebben die moet worden gebruikt voor TDE:
-  - [zacht verwijderen](../../key-vault/general/overview-soft-delete.md) en beveiliging opschonen
+  - [zacht verwijderen](../../key-vault/general/soft-delete-overview.md) en beveiliging opschonen
 - De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt voor TDE:
   - Geen verval datum
   - Niet uitgeschakeld
@@ -217,7 +217,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 * * *
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Controleer het volgende als er een probleem optreedt:
 

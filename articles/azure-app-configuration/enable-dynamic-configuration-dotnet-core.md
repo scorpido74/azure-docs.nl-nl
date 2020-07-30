@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fb55b5669c1be43b208a8d86b1676f163015f76f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278349"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Zelfstudie: Dynamische configuratie in een .Net Core-app gebruiken
 
-De App Configuration .NET Core-clientbibliotheek biedt ondersteuning voor het bijwerken van een set configuratie-instellingen op aanvraag zonder dat een toepassing opnieuw hoeft te worden opgestart. Dit kan worden geïmplementeerd door eerst een exemplaar van `IConfigurationRefresher` op te halen uit de opties voor de configuratieprovider en vervolgens `Refresh` aan te roepen voor dat exemplaar, waar dan ook in uw code.
+De App Configuration .NET Core-clientbibliotheek biedt ondersteuning voor het bijwerken van een set configuratie-instellingen op aanvraag zonder dat een toepassing opnieuw hoeft te worden opgestart. Dit kan worden geïmplementeerd door eerst een exemplaar van `IConfigurationRefresher` op te halen uit de opties voor de configuratieprovider en vervolgens `TryRefreshAsync` aan te roepen voor dat exemplaar, waar dan ook in uw code.
 
 Om de instellingen actueel te houden en te veel aanroepen naar de configuratieopslag te voorkomen, wordt er voor elke instelling een cache gebruikt. Totdat de in de cache opgeslagen waarde van een instelling is verlopen, wordt de waarde niet door de vernieuwingsbewerking bijgewerkt, zelfs niet wanneer de waarde is gewijzigd in de configuratieopslag. De standaardvervaltijd voor elke aanvraag is 30 seconden, maar kan indien nodig worden gewijzigd.
 
@@ -45,7 +45,7 @@ Als u deze zelfstudie wilt uitvoeren, installeert u de [.NET Core SDK](https://d
 
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 
-Open *Program.cs* en werk het bestand bij om een verwijzing naar de `System.Threading.Tasks`-naamruimte toe te voegen, om de vernieuwingsconfiguratie op te geven in de methode `AddAzureAppConfiguration` en om handmatige vernieuwing te activeren met de methode `Refresh`.
+Open *Program.cs* en werk het bestand bij om een verwijzing naar de `System.Threading.Tasks`-naamruimte toe te voegen, om de vernieuwingsconfiguratie op te geven in de methode `AddAzureAppConfiguration` en om handmatige vernieuwing te activeren met de methode `TryRefreshAsync`.
 
 ```csharp
 using System;
@@ -84,14 +84,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratiegegevens met het app-configuratiearchief wanneer een vernieuwingsbewerking wordt geactiveerd. Een exemplaar van `IConfigurationRefresher` kan worden opgehaald door de methode `GetRefresher` aan te roepen voor de opties die aan de methode `AddAzureAppConfiguration` zijn gegeven, en de methode `Refresh` in dit exemplaar kan worden gebruikt om een vernieuwingsbewerking overal in uw code te activeren.
+De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratiegegevens met het app-configuratiearchief wanneer een vernieuwingsbewerking wordt geactiveerd. Een exemplaar van `IConfigurationRefresher` kan worden opgehaald door de methode `GetRefresher` aan te roepen voor de opties die aan de methode `AddAzureAppConfiguration` zijn gegeven, en de methode `TryRefreshAsync` in dit exemplaar kan worden gebruikt om een vernieuwingsbewerking overal in uw code te activeren.
     
 > [!NOTE]
 > De standaardwaarde voor de vervaltijd van de cache voor een configuratie-instelling is 30 seconden, maar kan worden gewijzigd door de methode `SetCacheExpiration` aan te roepen voor de initialisatiefunctie voor opties die als een argument aan de methode `ConfigureRefresh` zijn doorgegeven.

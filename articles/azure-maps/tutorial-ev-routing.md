@@ -1,20 +1,20 @@
 ---
 title: 'Zelfstudie: Elektrische voertuigen routeren met behulp van Azure Notebooks (Python) | Microsoft Azure Maps'
 description: Elektrische voertuigen routeren met behulp van routerings-API's van Microsoft Azure Maps en Azure Notebooks.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f341179d121af2fa4e5b198aeee2ea65bc6c378c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560397"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133313"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelfstudie: Elektrische voertuigen routeren met behulp van Azure Notebooks (Python)
 
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 
 Voor het volgen van deze zelfstudie moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnementssleutel) ophalen. 
 
-Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een Azure Maps-accountabonnement te maken. U hebt een Azure Maps-accountabonnement nodig met de prijscategorie S1. 
+Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-azure-maps-account) om een Azure Maps-accountabonnement te maken. U hebt een Azure Maps-accountabonnement nodig met de prijscategorie S1. 
 
 U kunt de primaire abonnementssleutel voor uw account ophalen door de instructies in [Primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) te volgen.
 

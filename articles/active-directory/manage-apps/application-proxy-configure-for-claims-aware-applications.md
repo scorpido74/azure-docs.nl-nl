@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77d465b5900a3c36e6c6b957431b9d6ba56f50a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764856"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386976"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Werken met claim bewuste apps in toepassings proxy
 [Claim bewuste apps](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) voeren een omleiding naar de Security Token Service (STS). De STS vraagt referenties van de gebruiker in ruil voor een token en leidt de gebruiker vervolgens naar de toepassing. Er zijn enkele manieren om de toepassings proxy in te scha kelen voor gebruik van deze omleidingen. Gebruik dit artikel om uw implementatie te configureren voor claim bewuste apps. 
@@ -55,7 +55,6 @@ Als alle interne Url's voor uw toepassingen FQDN-namen (FULLy Qualified Domain n
    ![Een eind punt met een vertrouwde URL-set toevoegen](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Eenmalige aanmelding inschakelen](configure-single-sign-on-non-gallery-applications.md) voor toepassingen die geen claim bewust zijn
 * [Systeem eigen client-apps inschakelen voor interactie met proxy toepassingen](application-proxy-configure-native-client-application.md)
 
 
