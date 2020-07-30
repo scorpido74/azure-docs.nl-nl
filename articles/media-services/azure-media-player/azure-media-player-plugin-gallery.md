@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263734"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282480"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Galerie met invoegtoepassingen voor Azure Media Player #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263734"
 | Naam van invoegtoepassing                         | Demo-URL                    | Broncode                | Beschrijving    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | Aanvullende functies                 | | | |
-| **Nieuw!** AMP360Video                | [Demo](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Met deze invoegtoepassing kunt u 360 graden-video's in AMP visualiseren op uw desktop of VR-compatibele apparaten. De volledige documentatie kunt u [hier](https://doc\.babylonjs\.com/extensions/amp360video) raadplegen: |
+| **Nieuw!** AMP360Video                | [Demo](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Met deze invoegtoepassing kunt u 360 graden-video's in AMP visualiseren op uw desktop of VR-compatibele apparaten. De volledige documentatie kunt u [hier](https://doc.babylonjs.com/extensions/amp360video) raadplegen: |
 |  Sprite voor aanwijzen                         | [Demo](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Invoegtoepassing voor Azure Media Player (AMP) voor een tijdlijnweergave van een sprite met videominiaturen die is gegenereerd door de Media Encoder Standard (MES) van Azure Media Services (AMS). |
 | Overlay met diagnostische gegevens                 | [Demo](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Deze invoegtoepassing geeft het volgende weer: Alle belangrijke parameters, statistieken van de video, alle gebeurtenissen in de afspeellevenscyclus van de video en DRM-beschermingsgegevens, zoals de sleutel-id en URL's voor het verkrijgen van licenties, indien beschermd.                                                                                                                                                                      |
 | Rekenmachine voor framesnelheid en tijdcode | Geen demo beschikbaar | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Deze invoegtoepassing berekent de framesnelheid van de video op basis van de MP4-vakken `tfhd`/`trun` van het eerste MPEG-DASH-videofragment, parseert de tijdschaalwaarde van het MPEG-DASH-clientmanifest en biedt een manier om de tijdcode te genereren voor een bepaalde absolute tijd in de speler (en geeft de absolute tijd in de speler op basis van een tijdcode). |

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 7f8e7f5e758c916cf7e6b96ab38607ee722152b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8ec7b8655a499057e91f138411529a5f271ea511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082351"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-windows"></a>Een virtuele machine maken van een momentopname met PowerShell (Windows)
 
@@ -60,6 +60,6 @@ Dit script gebruikt de volgende opdrachten voor het opvragen van de momentopname
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 U kunt extra PowerShell-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Windows-VM's](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

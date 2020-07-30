@@ -50,8 +50,6 @@
   items:
     - name: Apparaten verbinden
       items:
-        - name: Een MXChip IoT DevKit voorbereiden en aansluiten
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Een Rigado Cascade 500 voorbereiden en verbinden
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Een RuuviTag-apparaat voorbereiden en verbinden
@@ -135,9 +133,9 @@
     - name: SDK's voor Azure IoT
       items:
         - name: IoT Service-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Device-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Aanvragen van klantgegevens
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Ondersteunde browsers

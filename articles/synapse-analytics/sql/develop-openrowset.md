@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a03c031f8874471794f2533285ce65b395d43c2d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241995"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280474"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -30,8 +30,8 @@ De functie `OPENROWSET` kan optioneel een parameter `DATA_SOURCE` bevatten om de
 
     ```sql
     SELECT *
-    FROM OPENROWSET(BULK 'http://storage..../container/folder/*.parquet',
-                    TYPE = 'PARQUET') AS file
+    FROM OPENROWSET(BULK 'http://<storage account>.dfs.core.windows.net/container/folder/*.parquet',
+                    FORMAT = 'PARQUET') AS file
     ```
 
 Dit is een snelle en eenvoudige manier om de inhoud van de bestanden te lezen zonder voorafgaande configuratie. Met deze optie kunt u de optie voor basisverificatie gebruiken om toegang te krijgen tot de opslag (Azure AD Pass-Through voor Azure AD-aanmeldingen en SAS-token voor SQL-aanmeldingen). 
@@ -42,7 +42,7 @@ Dit is een snelle en eenvoudige manier om de inhoud van de bestanden te lezen zo
     SELECT *
     FROM OPENROWSET(BULK '/folder/*.parquet',
                     DATA_SOURCE='storage', --> Root URL is in LOCATION of DATA SOURCE
-                    TYPE = 'PARQUET') AS file
+                    FORMAT = 'PARQUET') AS file
     ```
 
 

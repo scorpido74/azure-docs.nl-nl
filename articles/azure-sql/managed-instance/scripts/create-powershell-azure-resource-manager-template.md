@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: f4c4c63e6461dd3aa3cabe86b871434814fb400e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 8ac742c42a32e8b864c4be71e786c292ceb1514d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073386"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>PowerShell gebruiken met een Azure Resource Manager-sjabloon om een beheerd exemplaar te maken
 
@@ -138,6 +138,6 @@ Nadat het script is uitgevoerd, is het beheerd exemplaar toegankelijk via alle A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/azure/) voor meer informatie over Azure PowerShell.
 
 Extra voorbeelden van PowerShell-scripts voor een met Azure SQL beheerd exemplaar kunt u vinden in [Azure SQL Managed Instance PowerShell Scripts](../../database/powershell-script-content-guide.md).

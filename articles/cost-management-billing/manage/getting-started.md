@@ -5,15 +5,15 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1b63b0316b8314e4c5107ddd3f1d22c1d59cbb08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262082"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281800"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
 
@@ -217,13 +217,13 @@ Eén enkele resource kan zorgen voor een toename van de kosten voor meerdere Azu
 
 - Rekenuren
 - Uren IP-adres
-- Inkomende gegevensoverdracht
+- Binnenkomende gegevensoverdracht
 - Uitgaande gegevensoverdracht
-- Standard - Beheerde schijf
-- Standard - Beheerde schijfbewerkingen
-- Standard - IO - Schijf
-- Standard - IO - Lezen blok-blob
-- Standard - IO - Schrijven blok-blob
+- Standaard - beheerde schijven
+- Standaard - beheerde schijfbewerkingen
+- Standaard-IO - schijf
+- Standaard-IO - blok-blobs lezen
+- Standaard-IO - blok-blobs schrijven
 - Standard - IO - Verwijderen blok-blob
 
 Wanneer de virtuele machine wordt gemaakt, begint elke meter gebruiksrecords te verzenden. Het gebruik en de metertarieven worden bijgehouden in het Azure-metersysteem. In het CSV-gebruiksbestand kunt u de meters zien die zijn gebruikt voor het berekenen van uw factuur.

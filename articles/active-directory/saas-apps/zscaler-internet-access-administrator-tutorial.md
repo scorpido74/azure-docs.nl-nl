@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7623373be1aded29cb022f1d5080ed94d96b719
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2957cf59a93837e4f84f64be054cdb9e6939da3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Zelfstudie: Integratie van Azure Active Directory met Zscaler Internet Access Administrator
 
@@ -41,6 +41,9 @@ Als u integratie tussen Azure AD met Zscaler Internet Access Administrator wilt 
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
 * Een abonnement op Zscaler Internet Access Administrator
+
+> [!NOTE]
+> Deze integratie is ook beschikbaar voor gebruik vanuit de Azure AD US Government Cloud-omgeving. U kunt deze toepassing vinden in de toepassingsgalerie van Azure AD US Government Cloud en deze op dezelfde manier configureren als vanuit een openbare cloud.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -108,21 +111,25 @@ Als u integratie tussen eenmalige aanmelding van Azure AD met Zscaler Internet A
 
     a. Typ in het tekstvak **Id** een URL overeenkomstig wat u nodig hebt:
 
-    - `https://admin.zscaler.net`
-    - `https://admin.zscalerone.net`
-    - `https://admin.zscalertwo.net`
-    - `https://admin.zscalerthree.net`
-    - `https://admin.zscloud.net`
-    - `https://admin.zscalerbeta.net`
+    | Id |
+    |------------|
+    | `https://admin.zscaler.net` |
+    | `https://admin.zscalerone.net` |
+    | `https://admin.zscalertwo.net` |
+    | `https://admin.zscalerthree.net` |
+    | `https://admin.zscloud.net` |
+    | `https://admin.zscalerbeta.net` |
 
     b. Typ in het tekstvak **Antwoord-URL** een URL overeenkomstig wat u nodig hebt:
 
-    - `https://admin.zscaler.net/adminsso.do`
-    - `https://admin.zscalerone.net/adminsso.do`
-    - `https://admin.zscalertwo.net/adminsso.do`
-    - `https://admin.zscalerthree.net/adminsso.do`
-    - `https://admin.zscloud.net/adminsso.do`
-    - `https://admin.zscalerbeta.net/adminsso.do`
+    | Antwoord-URL |
+    |-----------|
+    | `https://admin.zscaler.net/adminsso.do` |
+    | `https://admin.zscalerone.net/adminsso.do` |
+    | `https://admin.zscalertwo.net/adminsso.do` |
+    | `https://admin.zscalerthree.net/adminsso.do` |
+    | `https://admin.zscloud.net/adminsso.do` |
+    | `https://admin.zscalerbeta.net/adminsso.do` |
 
 5. De Zscaler Internet Access Administrator-toepassing verwacht dat de SAML-beweringen in een bepaalde indeling staan. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken en claims** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken en claims** te openen.
 

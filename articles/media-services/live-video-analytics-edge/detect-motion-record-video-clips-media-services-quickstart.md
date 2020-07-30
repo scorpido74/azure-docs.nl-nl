@@ -3,12 +3,12 @@ title: Beweging detecteren, video opnemen in Azure Media Services
 description: In deze quickstart ziet u hoe u Live Video Analytics kunt gebruiken in IoT Edge om beweging in een live-videostream te detecteren en videoclips op te nemen in Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074407"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Quickstart: Beweging detecteren, video opnemen in Media Services
 
@@ -655,7 +655,7 @@ Het graafexemplaar dat u hierboven hebt gemaakt en geactiveerd, maakt gebruik va
 
 Let op de volgende eigenschappen in de bovenstaande berichten
 
-* Elk bericht bevat een sectie 'body' en een sectie 'applicationProperties'. Lees het artikel [IoT Hub-bericht maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) om te begrijpen wat deze secties voorstellen.
+* Elk bericht bevat een sectie 'body' en een sectie 'applicationProperties'. Lees het artikel [IoT Hub-bericht maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md) om te begrijpen wat deze secties voorstellen.
 * Het eerste bericht is een diagnostische gebeurtenis, MediaSessionEstablished, die aangeeft dat het RTSP-bronknooppunt (subject) verbinding kan maken met de RTSP-simulator en een (gesimuleerde) live-feed kan gaan ontvangen.
 * 'subject' in applicationProperties verwijst naar het knooppunt in de graaftopologie van waaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van het RTSP-bronknooppunt.
 * 'eventType' in applicationProperties geeft aan dat dit een diagnostische gebeurtenis is.

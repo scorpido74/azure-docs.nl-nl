@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 455860b2ccdfe3188c4985b64bd76ce51ab991ca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 792fede4fd76469ee3f8ae2550d0e3f3a25126a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073436"
 ---
 # <a name="use-powershell-to-create-a-managed-instance"></a>PowerShell gebruiken voor het maken van een beheerd exemplaar
 
@@ -66,6 +66,6 @@ In dit script worden enkele van de volgende opdrachten gebruikt. Voor meer infor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/azure/) voor meer informatie over Azure PowerShell.
 
 Extra voorbeelden van PowerShell-scripts voor een met Azure SQL beheerd exemplaar kunt u vinden in [ PowerShell-scripts voor met Azure SQL beheerd exemplaar](../../database/powershell-script-content-guide.md).
