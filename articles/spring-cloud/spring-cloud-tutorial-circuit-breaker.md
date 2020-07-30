@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.custom: devx-track-java
+ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089478"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Circuit Breaker Dashboard gebruiken met Azure Spring Cloud
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) wordt veel gebruikt voor de aggregatie van meerdere metrische gegevensstromen van [Hystrix](https://github.com/Netflix/Hystrix) zodat meerdere stromen kunnen worden gemonitord in een enkele weergave met het Hystrix-dashboard. In deze zelfstudie leert u hoe u deze kunt gebruiken in Azure Spring Cloud.

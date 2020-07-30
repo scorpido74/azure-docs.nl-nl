@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ecc34b84e5be2d0470cc5a58a71a70e9ffcab1b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052556"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387350"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio gebruiken om uw Apache Spark-toepassingen te bewaken
 
@@ -39,7 +39,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet voordat u met deze zelfstudi
 
 ## <a name="monitor-running-apache-spark-application"></a>Controleren op uitvoering Apache Spark toepassing
 
-Open **monitor**en selecteer vervolgens **Apache Spark toepassingen**. Als u de details van de actieve Apache Spark toepassingen wilt weer geven, selecteert u de toepassing voor het verzenden van Apache Spark en bekijkt u de details. Als de Apache Spark toepassing nog steeds wordt uitgevoerd, kunt u de voortgang bewaken.
+Open **monitor**en selecteer vervolgens **Apache Spark toepassingen**. Als u de details wilt weer geven van de Apache Spark toepassingen die worden uitgevoerd, selecteert u de toepassing voor het verzenden van Apache Spark en bekijkt u de details. Als de Apache Spark toepassing nog steeds wordt uitgevoerd, kunt u de voortgang bewaken.
 
   ![actieve taak selecteren](./media/how-to-monitor-spark-applications/select-running-job.png)
 
