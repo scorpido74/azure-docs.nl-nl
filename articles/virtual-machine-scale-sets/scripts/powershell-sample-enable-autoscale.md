@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.custom: avverma
-ms.openlocfilehash: 1db108adfe1a3af562a046160856a38daf990885
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 9ee64f86cba7287af371f856c442d93e9a03d85b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088900"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Een virtuele-machineschaalset automatisch schalen met Azure PowerShell
 Met dit script maakt u een virtuele-machineschaalset met Windows Server 2016 en gebruikt u metrische gegevens op basis van een host voor automatisch schalen wanneer de CPU-belasting verandert.
@@ -47,5 +47,5 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 

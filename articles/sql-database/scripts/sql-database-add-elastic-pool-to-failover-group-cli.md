@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 965e6fe3546630713f3fee2774c70aebd1ed2ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086078"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>CLI gebruiken om een elastische pool van Azure SQL Database toe te voegen aan een failover-groep
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
-| | |
+| Opdracht | Beschrijving |
 |---|---|
 | [elastische pool voor az sql](/cli/azure/sql/elastic-pool) | Opdrachten voor elastische pools. |
 | [failover-groep voor az sql](/cli/azure/sql/failover-group) | Opdrachten voor failover-groep. |

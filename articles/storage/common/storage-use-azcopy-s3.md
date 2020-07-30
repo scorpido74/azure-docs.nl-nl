@@ -5,21 +5,21 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ee58f21881c9799eba27dec3e71c601e94401deb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88acb4fe31470dab3ca6f273fd8d942e7f84e687
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036706"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281885"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Gegevens van Amazon S3 naar Azure Storage kopiëren met behulp van AzCopy
 
 AzCopy is een opdrachtregelprogramma dat u kunt gebruiken om blobs of bestanden vanuit of naar een opslagaccount te kopiëren. Dit artikel helpt u bij het kopiëren van objecten, directory's en buckets van Amazon Web Services (AWS) S3 naar Azure Blob Storage met behulp van AzCopy.
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Kiezen hoe u autorisatie referenties opgeeft
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Choose how you'll provide authorization credentials (Kiezen hoe u autorisatiereferenties opgeeft)
 
 * Als u de Azure Storage wilt autoriseren, gebruikt u Azure Active Directory (AD) of een Shared Access Signature-token (SAS).
 
@@ -49,9 +49,6 @@ Verzamel uw AWS-toegangs sleutel en geheime toegangs sleutel en stel de volgende
 ## <a name="copy-objects-directories-and-buckets"></a>Objecten, directory's en buckets kopiëren
 
 AzCopy maakt gebruik [van de API put van URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) , zodat gegevens rechtstreeks tussen AWS S3 en opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet.
-
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Als u besluit om gegevens van uw S3-buckets te verwijderen na een Kopieer bewerking, controleert u of de gegevens correct zijn gekopieerd naar uw opslag account voordat u de gegevens verwijdert.
 
 > [!TIP]
 > De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd.exe). Als u een Windows-opdracht shell (cmd.exe) gebruikt, plaatst u path-argumenten met dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
@@ -84,6 +81,19 @@ Gebruik dezelfde URL-syntaxis ( `blob.core.windows.net` ) voor accounts die een 
 | **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 | **Voor beeld** (hiërarchische naam ruimte)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+
+> [!NOTE]
+> In dit voor beeld wordt de `--recursive` vlag toegevoegd om bestanden in alle submappen te kopiëren.
+
+### <a name="copy-the-contents-of-a-directory"></a>De inhoud van een map kopiëren
+
+U kunt de inhoud van een map kopiëren zonder de bovenliggende map zelf te kopiëren met behulp van het Joker teken (*).
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Voor beeld** (hiërarchische naam ruimte)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Een Bucket kopiëren
 

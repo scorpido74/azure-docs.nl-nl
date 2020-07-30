@@ -22,8 +22,6 @@
       href: howto-health-data-triage.md
     - name: Apparaten verbinden
       items:
-        - name: Een MXChip IoT DevKit voorbereiden en aansluiten
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Een Rigado Cascade 500 voorbereiden en verbinden
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Apparaatconnectiviteit bewaken met Azure CLI

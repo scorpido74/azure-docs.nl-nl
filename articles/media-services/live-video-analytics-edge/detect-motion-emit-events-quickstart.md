@@ -3,12 +3,12 @@ title: Beweging detecteren en gebeurtenissen verzenden - Azure
 description: In deze quickstart leert u hoe u Live Video Analytics in IoT Edge kunt gebruiken om beweging te detecteren en gebeurtenissen kunt verzenden door directe methoden programmatisch aan te roepen.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816711"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091909"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Quickstart: Beweging detecteren en gebeurtenissen verzenden
 
@@ -36,7 +36,7 @@ Voor deze zelfstudie hebt u de volgende Azure-resources nodig:
 * IoT Hub
 * Storage-account
 * Azure Media Services-account
-* Linux-VM in Azure, met [IoT Edge-runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) geïnstalleerd
+* Linux-VM in Azure, met [IoT Edge-runtime](../../iot-edge/how-to-install-iot-edge-linux.md) geïnstalleerd
 
 Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) om de vereiste Azure-resources in uw Azure-abonnement te implementeren. Voer hiervoor de volgende stappen uit:
 
@@ -228,7 +228,7 @@ Volg deze stappen om de voorbeeldcode uit te voeren:
 
 ## <a name="interpret-results"></a>Resultaten interpreteren
 
-Wanneer u de mediagraaf uitvoert, gaan de resultaten van het knooppunt van de bewegingsdetectorprocessor via het knooppunt van de IoT Hub-sink naar de IoT-hub. De berichten die u ziet in het **UITVOER**-venster van Visual Studio Code bevatten een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) voor meer informatie.
+Wanneer u de mediagraaf uitvoert, gaan de resultaten van het knooppunt van de bewegingsdetectorprocessor via het knooppunt van de IoT Hub-sink naar de IoT-hub. De berichten die u ziet in het **UITVOER**-venster van Visual Studio Code bevatten een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md) voor meer informatie.
 
 In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst bepaald door de module Live Video Analytics.
 

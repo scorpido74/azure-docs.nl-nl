@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521102"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386262"
 ---
 # <a name="azure-key-vault-backup"></a>Back-up voor Azure Key Vault
 
@@ -27,7 +27,7 @@ Azure Key Vault biedt automatisch functies om de beschikbaarheid van gegevens te
 
 Key Vault onderhoudt de beschikbaarheid in noodscenario's en voert automatisch failoververzoeken uit naar een gekoppelde regio zonder dat tussenkomst van een gebruiker nodig is. Zie [Beschikbaarheid en redundantie in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance) voor meer informatie.
 
-Als u uw geheimen wilt beveiligen tegen onbedoelde of opzettelijke verwijdering, moet u de beveiligingsfuncties voor voorlopig verwijderen en opschonen voor uw sleutelkluis configureren. Zie [Azure Key Vault: overzicht van voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) voor meer informatie.
+Als u uw geheimen wilt beveiligen tegen onbedoelde of opzettelijke verwijdering, moet u de beveiligingsfuncties voor voorlopig verwijderen en opschonen voor uw sleutelkluis configureren. Zie [Azure Key Vault: overzicht van voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 

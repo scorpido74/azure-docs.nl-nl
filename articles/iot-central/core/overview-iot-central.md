@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656420"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337174"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
@@ -63,11 +63,8 @@ Deze apparaatsjabloon omvat:
 
 ### <a name="create-device-templates"></a>Apparaatsjablonen maken
 
-Met [IoT Plug and Play (preview)](../../iot-pnp/overview-iot-plug-and-play.md) kan IoT Central apparaten integreren zonder dat u code hoeft te schrijven die op het apparaat moet worden ingesloten. De kern van IoT Plug and Play (preview) is een schema voor het functiemodel van het apparaat dat de mogelijkheden van het apparaat beschrijft. In een IoT Central-toepassing gebruiken apparaatsjablonen deze apparaatfunctiemodellen van IoT Plug and Play (preview).
-
 Als bouwer van oplossingen hebt u verschillende opties voor het maken van apparaatsjablonen:
 
-- Importeer een apparaatfunctiemodel uit de [catalogus met IoT-apparaten die zijn gecertificeerd voor Azure](https://aka.ms/iotdevcat) en voeg vervolgens alle cloudeigenschappen, aanpassingen en dashboards toe die uw IoT Central-toepassing nodig heeft.
 - Ontwerp de apparaatsjabloon in IoT Central en implementeer vervolgens het apparaatfunctiemodel in de code van uw apparaat.
 - Maak een apparaatfunctiemodel met behulp van Visual Studio-code en publiceer het model naar een opslagplaats. Implementeer uw apparaatcode vanuit het model en verbind uw apparaat met uw IoT Central-toepassing. IoT Central vindt het apparaatfunctiemodel in de opslagplaats en maakt een eenvoudige apparaatsjabloon voor u.
 - Maak een apparaatfunctiemodel met behulp van Visual Studio-code. Implementeer uw apparaatcode vanuit het model. Importeer het apparaatfunctiemodel handmatig in uw IoT Central-toepassing en voeg vervolgens alle cloudeigenschappen, aanpassingen en dashboards toe die uw IoT Central-toepassing nodig heeft.
@@ -149,7 +146,6 @@ Voor elk Azure-abonnement gelden standaardquota die invloed kunnen hebben op het
 - IoT Central is momenteel beschikbaar in de Verenigde Staten, Europa, Azië en Stille Oceaan, Australië, Verenigd Koninkrijk en Japan.
 - U kunt de toepassingssjabloon **Aangepaste toepassing (verouderd)** niet gebruiken in het Verenigd Koninkrijk en Japan.
 - Voor apparaatfunctiemodellen geldt dat alle interfaces inline moeten zijn gedefinieerd in hetzelfde bestand.
-- Ondersteuning voor [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) is in preview en wordt alleen ondersteund in bepaalde regio's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -158,7 +154,6 @@ Nu u een overzicht van IoT Central hebt, zijn dit mogelijke volgende stappen:
 - Lees wat de beschikbare [Azure-technologieën en -services zijn voor het maken van IoT-oplossingen](../../iot-fundamentals/iot-services-and-technologies.md).
 - Raak vertrouwd met de [gebruikersinterface van Azure IoT Central](overview-iot-central-tour.md).
 - Ga aan de slag door [een Azure IoT Central-toepassing te maken](quick-deploy-iot-central.md).
-- Lees meer over [IoT Plug and Play (preview)](../../iot-pnp/overview-iot-plug-and-play.md).
 - Lees hoe u [een Azure IoT Edge-apparaat verbindt](./tutorial-add-edge-as-leaf-device.md).
 - Lees meer over [Azure IoT-technologieën en -services](../../iot-fundamentals/iot-services-and-technologies.md).
 

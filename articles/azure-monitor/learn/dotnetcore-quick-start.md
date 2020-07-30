@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c9787a88cba051dcfaa58a188bf43fb03cafe70a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325165"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Beginnen met controleren van de ASP.NET Core-webtoepassing
 
@@ -30,7 +30,7 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 - [.NET Core 2.0 SDK installeren](https://dotnet.microsoft.com/download)
 - U hebt een Azure-abonnement en een bestaande .NET Core-webtoepassing nodig.
 
-Als u geen ASP.NET Core-webtoepassing hebt, kunt u onze stapsgewijze handleiding gebruiken om [een ASP.NET Core-app te maken en Application Insights toe te voegen](../../azure-monitor/app/asp-net-core.md).
+Als u geen ASP.NET Core-webtoepassing hebt, kunt u onze stapsgewijze handleiding gebruiken om [een ASP.NET Core-app te maken en Application Insights toe te voegen](../app/asp-net-core.md).
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -96,7 +96,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
    ![Tijdlijngrafieken voor het Statusoverzicht](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. Klik links op **Metrische gegevens**. Gebruik Metrics Explorer om de status en het gebruik van uw resource te onderzoeken. U kunt op **Nieuwe grafiek toevoegen** klikken om aanvullende aangepaste weergaven te maken, of **Bewerken** selecteren om type, hoogte, kleurenpalet, groeperingen en metrische gegevens van bestaande grafieken te wijzigen. U kunt bijvoorbeeld een grafiek maken die de gemiddelde laadtijd van browserpagina's weergeeft door 'Browser page load time' (gemiddelde laadtijd browserpagina) te kiezen uit de vervolgkeuzelijst met metrische gegevens en 'Avg' (gemiddelde) bij aggregatie. Ga naar [Aan de slag met Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md) voor meer informatie over Azure Metrics Explorer.
+5. Klik links op **Metrische gegevens**. Gebruik Metrics Explorer om de status en het gebruik van uw resource te onderzoeken. U kunt op **Nieuwe grafiek toevoegen** klikken om aanvullende aangepaste weergaven te maken, of **Bewerken** selecteren om type, hoogte, kleurenpalet, groeperingen en metrische gegevens van bestaande grafieken te wijzigen. U kunt bijvoorbeeld een grafiek maken die de gemiddelde laadtijd van browserpagina's weergeeft door 'Browser page load time' (gemiddelde laadtijd browserpagina) te kiezen uit de vervolgkeuzelijst met metrische gegevens en 'Avg' (gemiddelde) bij aggregatie. Ga naar [Aan de slag met Azure Metrics Explorer](../platform/metrics-getting-started.md) voor meer informatie over Azure Metrics Explorer.
 
      ![Tabblad Metrische gegevens: Grafiek met gemiddelde laadtijd van browserpagina's](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -113,3 +113,4 @@ U kunt de resourcegroep en alle gerelateerde resources verwijderen wanneer u kla
 
 > [!div class="nextstepaction"]
 > [Runtime-uitzonderingen zoeken en diagnoses uitvoeren](./tutorial-runtime-exceptions.md)
+

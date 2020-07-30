@@ -7,7 +7,7 @@
       href: what-is-application-management.md
     - name: Wat is eenmalige aanmelding?
       href: what-is-single-sign-on.md
-- name: Snelstarts
+- name: Snelstartgidsen
   items:
     - name: Uw apps weergeven
       href: view-applications-portal.md
@@ -21,8 +21,6 @@
       href: delete-application-portal.md
 - name: Zelfstudies
   items:
-    - name: Een app toevoegen die niet in de galerie staat
-      href: add-non-gallery-app.md
     - name: 'Geïntegreerde galerie-apps (bijvoorbeeld ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Een on-premises app toevoegen met een toepassingsproxy
@@ -42,6 +40,8 @@
       items:
         - name: Aan de slag met app-integratie
           href: plan-an-application-integration.md
+        - name: Plannen maken voor apps die niet in de galerie staan
+          href: non-gallery-apps.md
         - name: De implementatie van een toegangspaneel plannen
           href: access-panel-deployment-plan.md
         - name: Begeleiding voor ontwikkelaars
@@ -106,7 +106,7 @@
             - name: Eenmalige aanmelding op basis van SAML configureren
               items:
                 - name: Eenmalige aanmelding op basis van SAML configureren
-                  href: configure-single-sign-on-non-gallery-applications.md
+                  href: configure-saml-single-sign-on.md
                 - name: Gebruikerskenmerken en -claims aanpassen
                   items:
                     - name: Groepsclaims configureren

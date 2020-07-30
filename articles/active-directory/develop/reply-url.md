@@ -21,11 +21,11 @@ ms.locfileid: "87311616"
 
 Een omleidings-URI of antwoord-URL is de locatie waarnaar de autorisatie server de gebruiker verzendt zodra de app is geautoriseerd en een autorisatie code of toegangs token heeft verleend. De code of het token bevindt zich in de omleidings-URI of het antwoord token. het is belang rijk dat u de juiste locatie registreert als onderdeel van het registratie proces van de app.
 
- De volgende beperkingen zijn van toepassing op antwoord-Url's:
+ De volgende beperkingen zijn van toepassing op antwoord-URL's:
 
-* De antwoord-URL moet beginnen met het schema `https` .
+* De antwoord-URL moet beginnen met het schema `https`.
 
-* De antwoord-URL is hoofdletter gevoelig. Het hoofdletter gebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad bevat `.../abc/response-oidc` , moet u niet opgeven `.../ABC/response-oidc` in de antwoord-URL. Omdat in de webbrowser paden worden beschouwd als hoofdletter gevoelig, kunnen cookies die zijn gekoppeld aan, `.../abc/response-oidc` worden uitgesloten als deze worden omgeleid naar de niet-overeenkomende `.../ABC/response-oidc` URL.
+* De antwoord-URL is hoofdlettergevoelig. Het hoofdlettergebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld `.../abc/response-oidc` als deel van het pad bevat, geeft u `.../ABC/response-oidc` niet op in de antwoord-URL. Omdat de webbrowser paden als hoofdlettergevoelig behandelt, kunnen cookies die zijn gekoppeld aan `.../abc/response-oidc` worden uitgesloten als ze worden omgeleid naar de qua hoofdlettergebruik niet-overeenkomende URL `.../ABC/response-oidc`.
     
 ## <a name="maximum-number-of-redirect-uris"></a>Maximum aantal omleidings-Uri's
 

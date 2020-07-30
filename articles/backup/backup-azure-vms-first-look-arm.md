@@ -3,12 +3,12 @@ title: Een back-up van een Azure VM maken op basis van de VM-instellingen
 description: In dit artikel vindt u informatie over het maken van een back-up van een enkelvoudige Azure-VM of meerdere virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538884"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286720"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
 
@@ -39,15 +39,15 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
    - Als u al een kluis hebt, klikt u op **bestaande selecteren**en selecteert u een kluis.
    - Als u geen kluis hebt, klikt u op **nieuwe maken**. Geef een naam op voor de kluis. Deze wordt gemaakt in dezelfde regio en resource groep als de VM. U kunt deze instellingen niet wijzigen wanneer u back-up rechtstreeks vanuit de VM-instellingen inschakelt.
 
-   ![Wizard Back-up inschakelen](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![Wizard Back-up inschakelen](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. Ga als volgt te werk in **back-upbeleid kiezen**:
+6. Voer in **back-upbeleid kiezen**een van de volgende handelingen uit:
 
    - Het standaard beleid blijven. Hiermee wordt een back-up gemaakt van de VM eenmaal per dag op de opgegeven tijd en worden de back-ups gedurende 30 dagen in de kluis bewaard.
    - Selecteer een bestaand back-upbeleid als u er een hebt.
    - Maak een nieuw beleid en definieer de beleids instellingen.  
 
-   ![Back-upbeleid selecteren](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![Back-upbeleid selecteren](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Klik op **back-up inschakelen**. Hiermee wordt het back-upbeleid gekoppeld aan de virtuele machine.
 

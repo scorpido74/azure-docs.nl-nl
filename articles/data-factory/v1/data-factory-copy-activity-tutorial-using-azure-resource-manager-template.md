@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 549c85f92434504b931f0325959beb17ae92afba
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053902"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Zelfstudie: een Azure Resource Manager-sjabloon gebruiken voor het maken van een Data Factory-pijplijn om gegevens te kopiëren 
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Neem [Overzicht van de zelfstudie en vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) door en voer de **vereiste** stappen uit.
-* Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/overview) om de meest recente versie van Azure PowerShell te installeren op uw computer. In deze zelfstudie gebruikt u PowerShell om Data Factory-entiteiten te implementeren. 
+* Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/) om de meest recente versie van Azure PowerShell te installeren op uw computer. In deze zelfstudie gebruikt u PowerShell om Data Factory-entiteiten te implementeren. 
 * Zie [Authoring Azure Resource Manager Templates](../../azure-resource-manager/templates/template-syntax.md) (Azure Resource Manager-sjablonen samenstellen) voor meer informatie over Azure Resource Manager-sjablonen (optioneel).
 
 ## <a name="in-this-tutorial"></a>In deze zelfstudie
