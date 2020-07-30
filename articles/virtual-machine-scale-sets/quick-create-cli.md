@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c7621915d9393adce373f68363f6c57b70d9907
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 416b5c03686f1b008473dd843c71bbe1139c444c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083562"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Quickstart: Een virtuele-machineschaalset maken met Azure CLI
 Met een virtuele-machineschaalset kunt u een reeks automatisch schalende virtuele machines implementeren en beheren. U kunt het aantal VM’s in de schaalset handmatig schalen of regels voor automatisch schalen definiëren op basis van resourcegebruik zoals CPU, vraag naar geheugen, of netwerkverkeer. Een Azure load balancer verdeelt het verkeer vervolgens naar de VM-exemplaren in de schaalset. In deze snelstart gebruikt u de Azure CLI om een schaalset voor virtuele machines te maken en een voorbeeldtoepassing te implementeren.
@@ -49,7 +49,7 @@ Het duurt enkele minuten om alle schaalsetresources en VM's te maken en te confi
 
 
 ## <a name="deploy-sample-application"></a>Voorbeeldtoepassing implementeren
-Als u de schaalset wilt testen, installeert u een eenvoudige webtoepassing. U kunt de aangepaste scriptextensie van Azure downloaden en een script uitvoeren waarmee een toepassing wordt geïnstalleerd in de VM-exemplaren. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/linux/extensions-customscript.md).
+Als u de schaalset wilt testen, installeert u een eenvoudige webtoepassing. U kunt de aangepaste scriptextensie van Azure downloaden en een script uitvoeren waarmee een toepassing wordt geïnstalleerd in de VM-exemplaren. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/extensions/custom-script-linux.md).
 
 Gebruik de aangepaste scriptextensie om een eenvoudige NGINX-webserver te installeren. Pas de aangepaste scriptextensie waarmee NGINX wordt geïnstalleerd als volgt toe met [az vmss extension set](/cli/azure/vmss/extension):
 
@@ -109,4 +109,3 @@ In deze snelstartgids hebt u een standaardschaalset gemaakt en de aangepaste scr
 
 > [!div class="nextstepaction"]
 > [Schaalsets voor virtuele Azure-machines maken en beheren](tutorial-create-and-manage-cli.md)
-

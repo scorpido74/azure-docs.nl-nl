@@ -3,24 +3,19 @@ title: Meer informatie over het gebruik van virtuele machines in azure
 description: Meer informatie over het gebruik van virtuele machines
 services: virtual-machines
 documentationcenter: ''
-author: mmccrory
-manager: gwallace
-editor: ''
-tags: azure-virtual-machine
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines-linux
-ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
-ms.author: memccror
-ms.openlocfilehash: 9abb6948a91545439b429316dc2b71c14a1792d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/28/2020
+ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284826"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387707"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
 Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../cost-management-billing/understand/review-individual-bill.md).
@@ -29,87 +24,86 @@ Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inz
 [Down load uw gebruiks gegevens](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)om te beginnen. De onderstaande tabel bevat de definitie-en voorbeeld waarden voor het gebruik van Virtual Machines die via de Azure Resource Manager zijn geïmplementeerd. Dit document bevat geen gedetailleerde informatie voor virtuele machines die via ons klassieke model zijn geïmplementeerd.
 
 
-| Velden             | Betekenis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Voorbeeld waarden                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Gebruiksdatum         | De datum waarop de resource is gebruikt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  "11/23/2017"                                                                                                                                                                                                                                                                                                                                                     |
-| Meter ID           | Identificeert de service op het hoogste niveau waartoe dit gebruik behoort.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | "Virtual Machines"                                                                                                                                                                                                                                                                                                                                               |
-| Meter Sub-Category | De id van de gefactureerde meter. <ul><li>Voor het gebruik van reken uren is er een meter voor elke VM-grootte plus OS (Windows, niet-Windows) en regio.</li><li>Voor het gebruik van Premium-software geldt er een meter voor elk software type. De meeste Premium software-installatie kopieën hebben verschillende meters voor elke kern grootte. Ga voor meer informatie naar de [pagina met prijzen voor berekeningen.](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>                                                                                                                                                                                                                                                                                                                                         | "2005544f-659d-49c9-9094-8e0aea1be3a5"                                                                                                                                                                                                                                                                                                                           |
-| Meter Name         | Dit is specifiek voor elke service in Azure. Voor Compute is het altijd Rekenuren.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | "Rekenuren"                                                                                                                                                                                                                                                                                                                                                  |
-| Meter Region       | De datacenterlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |  "JA-oost"                                                                                                                                                                                                                                                                                                                                                       |
-| Eenheid               | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Reken bronnen worden per uur gefactureerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Loopt                                                                                                                                                                                                                                                                                                                                                          |
-| Verbruikt           | De hoeveelheid van de resource die voor die dag is verbruikt. Voor Compute worden voor elke minuut voor de VM een bepaald uur gefactureerd (Maxi maal 6 decimalen nauw keurigheid).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    "1", "0,5"                                                                                                                                                                                                                                                                                                                                                    |
-| Resource Location  | Hiermee wordt het datacenter geïdentificeerd waarop de resource wordt uitgevoerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "JA-oost"                                                                                                                                                                                                                                                                                                                                                        |
-| Consumed Service   | De Azure-platform service die u hebt gebruikt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Micro soft. Compute"                                                                                                                                                                                                                                                                                                                                              |
-| Resourcegroep     | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview]() voor meer informatie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    MyRG                                                                                                                                                                                                                                                                                                                                                        |
-| Instance ID        | De id voor de resource. De id bevat de naam die u voor de resource opgeeft wanneer deze wordt gemaakt. Voor Vm's bevat de exemplaar-ID de SubscriptionId, ResourceGroupName en VMName (of de naam van de schaalset voor het gebruik van schaal sets).                                                                                                                                                                                                                                                                                                                                                                                                                    | "/Subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyRG/providers/micro soft. Compute/informatie/MyVM1"<br><br>of<br><br>"/Subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyRG/providers/micro soft. Compute/virtualMachineScaleSets/MyVMSS1"                                                                                           |
-| Tags               | Label dat u toewijst aan de resource. Tags gebruiken om factureringsrecords te groeperen. Meer informatie over [het coderen van uw virtual machines.](tag.md) Dit is alleen beschikbaar voor virtuele machines van Resource Manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" myName "}"                                                                                                                                                                                                                                                                                                                        |
-| Aanvullende informatie    | Servicespecifieke metagegevens. Voor Vm's vullen we de volgende gegevens in het veld aanvullende gegevens in: <ul><li>Afbeeldings type-specifieke installatie kopie die u hebt uitgevoerd. Zoek de volledige lijst met ondersteunde teken reeksen onder afbeeldings typen.</li><li>Service type: de grootte die u hebt geïmplementeerd.</li><li>VMName: naam van de virtuele machine. Dit veld wordt alleen ingevuld voor virtuele machines met schaal sets. Als u de VM-naam voor virtuele machines van de schaalset nodig hebt, kunt u deze vinden in de bovenstaande teken reeks voor exemplaar-ID.</li><li>UsageType: Hiermee geeft u het type gebruik op dat dit vertegenwoordigt.<ul><li>ComputeHR is het reken uren-gebruik voor de onderliggende VM, zoals Standard_D1_v2.</li><li>ComputeHR_SW is de Premium-software kosten als de virtuele machine Premium-software gebruikt, zoals Microsoft R Server.</li></ul></li></ul>    | Virtual Machines {"ImageType": "canoniek", "service type": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType": "canoniek", "service type": "Standard_DS1_v2", "VMName": "myVM1", "UsageType": "ComputeHR"}<br><br>Premium-software {"ImageType": "", "service type": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR_SW"} |
+| Velden | Betekenis | Voorbeeld waarden | 
+|---|---|---|
+| Gebruiksdatum | De datum waarop de resource is gebruikt | `11/23/2017` |
+| Meter ID | Identificeert de service op het hoogste niveau waartoe dit gebruik behoort| `Virtual Machines`|
+| Meter Sub-Category | De id van de gefactureerde meter. <br><br> Voor het gebruik van reken uren is er een meter voor elke VM-grootte plus OS (Windows, niet-Windows) en regio. <br><br> Voor het gebruik van Premium-software geldt er een meter voor elk software type. De meeste Premium software-installatie kopieën hebben verschillende meters voor elke kern grootte. Ga voor meer informatie naar de [pagina met prijzen voor berekeningen](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| Meter Name| Dit is specifiek voor elke service in Azure. Voor Compute is het altijd Rekenuren.| `Compute Hours`|
+| Meter Region| De datacenterlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie.|  `JA East`|
+| Eenheid| Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Reken bronnen worden per uur gefactureerd.| `Hours`|
+| Verbruikt| De hoeveelheid van de resource die voor die dag is verbruikt. Voor Compute worden voor elke minuut voor de VM een bepaald uur gefactureerd (Maxi maal 6 decimalen nauw keurigheid).| `1, 0.5`|
+| Resource Location  | Hiermee wordt het datacenter geïdentificeerd waarop de resource wordt uitgevoerd.| `JA East`|
+| Consumed Service | De Azure-platform service die u hebt gebruikt.| `Microsoft.Compute`|
+| Resourcegroep | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) voor meer informatie.|`MyRG`|
+| Instance ID | De id voor de resource. De id bevat de naam die u voor de resource opgeeft wanneer deze wordt gemaakt. Voor Vm's bevat de exemplaar-ID de SubscriptionId, ResourceGroupName en VMName (of de naam van de schaalset voor het gebruik van schaal sets).| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>of<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Tags| Label dat u toewijst aan de resource. Tags gebruiken om factureringsrecords te groeperen. Meer informatie over [het coderen van uw virtual machines.](tag.md) Dit is alleen beschikbaar voor virtuele machines van Resource Manager.| `{"myDepartment":"RD","myUser":"myName"}`|
+| Aanvullende informatie | Servicespecifieke metagegevens. Voor Vm's vullen we de volgende gegevens in het veld aanvullende gegevens in: <br><br> Afbeeldings type-specifieke installatie kopie die u hebt uitgevoerd. Zoek de volledige lijst met ondersteunde teken reeksen onder afbeeldings typen.<br><br> Service type: de grootte die u hebt geïmplementeerd.<br><br> VMName: naam van de virtuele machine. Dit veld wordt alleen ingevuld voor virtuele machines met schaal sets. Als u de VM-naam voor virtuele machines van de schaalset nodig hebt, kunt u deze vinden in de bovenstaande teken reeks voor exemplaar-ID.<br><br> UsageType: Hiermee geeft u het type gebruik op dat dit vertegenwoordigt.<br><br> ComputeHR is het reken uren-gebruik voor de onderliggende VM, zoals Standard_D1_v2.<br><br> ComputeHR_SW is de Premium-software kosten als de virtuele machine Premium-software gebruikt, zoals Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtuele-machineschaalsets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium-software<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>Type installatie kopie
 Voor sommige installatie kopieën in de Azure-galerie wordt het type afbeelding ingevuld in het veld aanvullende informatie. Hierdoor kunnen gebruikers begrijpen en bijhouden wat ze op hun virtuele machine hebben geïmplementeerd. De volgende waarden die in dit veld worden ingevuld op basis van de installatie kopie die u hebt geïmplementeerd:
-  - BitRock 
-  - Canonical 
-  - FreeBSD 
-  - Logica openen 
-  - Oracle 
-  - SLES voor SAP 
-  - SQL Server 14 preview op Windows Server 2012 R2 preview 
-  - SUSE
-  - SUSE Premium
-  - StorSimple Cloud Appliance 
-  - Red Hat
-  - Red Hat for SAP Business Applications     
-  - Red Hat for SAP HANA 
-  - Windows-client BYOL 
-  - Windows Server-BYOL 
-  - Windows Server-preview 
+- BitRock 
+- Canonieke FreeBSD 
+- Logica openen 
+- Oracle 
+- SLES voor SAP 
+- SQL Server 14 preview op Windows Server 2012 R2 preview 
+- SUSE
+- SUSE Premium
+- StorSimple Cloud Appliance 
+- Red Hat
+- Red Hat for SAP Business Applications     
+- Red Hat for SAP HANA 
+- Windows-client BYOL 
+- Windows Server-BYOL 
+- Windows Server-preview 
 
 ## <a name="service-type"></a>Servicetype
-Het veld Service type in het veld aanvullende informatie komt overeen met de exacte VM-grootte die u hebt geïmplementeerd. Virtuele machines met Premium-opslag (SSD) en niet-Premium-opslag-Vm's (op basis van schijven) zijn hetzelfde als de prijs. Als u een op SSD gebaseerde grootte implementeert, zoals Standard \_ DS2 \_ v2, ziet u de niet-SSD-grootte (' Standard \_ D2 \_ v2 VM ') in de kolom meter sub-categorie en de SSD-grootte (' Standard \_ DS2 \_ v2 ') in het veld additional info.
+Het veld Service type in het veld aanvullende informatie komt overeen met de exacte VM-grootte die u hebt geïmplementeerd. Virtuele machines met Premium-opslag (SSD) en niet-Premium-opslag-Vm's (op basis van schijven) zijn hetzelfde als de prijs. Als u een op SSD gebaseerde grootte implementeert, zoals Standard \_ DS2 \_ v2, ziet u de grootte van niet-SSD ( `Standard\_D2\_v2 VM` ) in de kolom meter subcategorie en de SSD-grootte ( `Standard\_DS2\_v2` ) in het veld aanvullende informatie.
 
 ## <a name="region-names"></a>Regio namen
 De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegevens verschilt van de regio naam die wordt gebruikt in de Azure Resource Manager. Hier volgt een toewijzing tussen de regio waarden:
 
-|    **Regio naam Resource Manager**       |    **Resource locatie in gebruiks gegevens**    |
-|--------------------------|------------------------------------------|
-|    australiaeast         |    AU - oost                               |
-|    australiasoutheast    |    Australië - zuidoost                          |
-|    brazilsouth           |    BR - zuid                              |
-|    CanadaCentral         |    CA - centraal                            |
-|    CanadaEast            |    CA - oost                               |
-|    CentralIndia          |    IN - centraal                            |
-|    centralus             |    Central US                            |
-|    chinaeast             |    China East                            |
-|    chinanorth            |    China - noord                           |
-|    eastasia              |    Azië - oost                             |
-|    eastus                |    VS - oost                               |
-|    eastus2               |    US - oost 2                             |
-|    GermanyCentral        |    DE - centraal                            |
-|    GermanyNortheast      |    DE - noordoost                          |
-|    japaneast             |    JA - oost                               |
-|    japanwest             |    JA - west                               |
-|    KoreaCentral          |    KR - centraal                            |
-|    KoreaSouth            |    KR - zuid                              |
-|    northcentralus        |    VS - noord-centraal                      |
-|    northeurope           |    Europa - noord                          |
-|    southcentralus        |    VS - zuid-centraal                      |
-|    southeastasia         |    Azië - zuidoost                        |
-|    SouthIndia            |    IN - zuid                              |
-|    UKNorth               |    VS Noord                              |
-|    uksouth               |    Verenigd Koninkrijk Zuid                              |
-|    UKSouth2              |    VK - zuid 2                            |
-|    ukwest                |    Verenigd Koninkrijk West                               |
-|    USDoDCentral          |    US DoD Central                        |
-|    USDoDEast             |    US DoD East                           |
-|    USGovArizona          |    USGov Arizona                         |
-|    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USGov Texas                           |
-|    usgovvirginia         |    USGov Virginia                        |
-|    US - west-centraal         |    US - west-centraal                       |
-|    westeurope            |    Europa -west                           |
-|    WestIndia             |    IN - west                               |
-|    westus                |    VS - west                               |
-|    westus2               |    US - west 2                             |
+| **Regio naam Resource Manager** | **Resource locatie in gebruiks gegevens** |
+|---|---|
+| australiaeast |AU - oost|
+| australiasoutheast | Australië - zuidoost|
+| brazilsouth | BR - zuid|
+| CanadaCentral | CA - centraal|
+| CanadaEast | CA - oost|
+| CentralIndia | IN - centraal|
+| centralus | Central US|
+| chinaeast | China East|
+| chinanorth | China - noord|
+| eastasia | Azië - oost|
+| eastus | VS - oost|
+| eastus2 | US - oost 2|
+| GermanyCentral | DE - centraal|
+| GermanyNortheast | DE - noordoost|
+| japaneast | JA - oost|
+| japanwest | JA - west|
+| KoreaCentral | KR - centraal|
+| KoreaSouth | KR - zuid|
+| northcentralus | VS - noord-centraal|
+| northeurope | Europa - noord|
+| southcentralus | VS - zuid-centraal|
+| southeastasia | Azië - zuidoost|
+| SouthIndia | IN - zuid|
+| UKNorth | VS Noord|
+| uksouth | Verenigd Koninkrijk Zuid|
+| UKSouth2 | VK - zuid 2|
+| ukwest | Verenigd Koninkrijk West|
+| USDoDCentral | US DoD Central|
+| USDoDEast | US DoD East|
+| USGovArizona | USGov Arizona|
+| usgoviowa | USGov Iowa|
+| USGovTexas | USGov Texas|
+| usgovvirginia | USGov Virginia|
+| US - west-centraal | US - west-centraal|
+| westeurope | Europa -west|
+| WestIndia | IN - west|
+| westus | VS - west|
+| westus2 | US - west 2|
 
 
 ## <a name="virtual-machine-usage-faq"></a>Veelgestelde vragen over het gebruik van virtuele machines

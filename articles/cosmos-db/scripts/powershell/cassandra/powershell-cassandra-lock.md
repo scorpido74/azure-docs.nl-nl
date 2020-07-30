@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 9debd77699a33854d639cc911437a4b533dafc54
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: be0ba84b323f235d15761ed5bf85a380f48276a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082916"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-cassandra-api-keyspace-and-table-using-azure-powershell"></a>Een resourcevergrendeling maken voor een Azure Cosmos Cassandra-API-keyspace en -tabel met behulp van Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "85127049"
 [!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
 
 > [!IMPORTANT]
-> Resourcevergrendeling werkt niet voor wijzigingen die zijn aangebracht door gebruikers die verbinding maken met behulp van een Cassandra-SDK, CQL-shell of Azure Portal, tenzij het Cosmos DB-account eerst is vergrendeld met de eigenschap `disableKeyBasedMetadataWriteAccess` ingeschakeld. Zie [Wijzigingen aan SDK's voorkomen](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk) voor meer informatie over het inschakelen van deze eigenschap.
+> Resourcevergrendeling werkt niet voor wijzigingen die zijn aangebracht door gebruikers die verbinding maken met behulp van een Cassandra-SDK, CQL-shell of Azure Portal, tenzij het Cosmos DB-account eerst is vergrendeld met de eigenschap `disableKeyBasedMetadataWriteAccess` ingeschakeld. Zie [Wijzigingen aan SDK's voorkomen](../../../role-based-access-control.md#prevent-sdk-changes) voor meer informatie over het inschakelen van deze eigenschap.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

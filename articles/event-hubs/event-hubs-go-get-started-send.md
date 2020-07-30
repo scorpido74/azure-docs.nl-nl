@@ -3,12 +3,12 @@ title: 'Quickstart: Gebeurtenissen verzenden en ontvangen met Go - Azure Event H
 description: 'Quickstart: Dit artikel bevat een overzicht voor het maken van een Go-toepassing die gebeurtenissen verzendt vanuit Azure Event Hubs.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002451"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Quickstart: Gebeurtenissen verzenden of gebeurtenissen ontvangen uit Event Hubs met behulp van Go
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
@@ -126,7 +126,7 @@ Gefeliciteerd! U hebt nu berichten verzonden naar een Event Hub.
 
 ### <a name="create-a-storage-account-and-container"></a>Een opslagaccount en container maken
 
-De status, zoals leases op partities en controlepunten in de gebeurtenisstroom, wordt gedeeld tussen ontvangers die gebruikmaken van een Azure Storage-container. U kunt een opslagaccount en container maken met de Go-SDK, maar u kunt er ook een maken door de instructies te volgen in [Over Azure-opslagaccounts](../storage/common/storage-create-storage-account.md).
+De status, zoals leases op partities en controlepunten in de gebeurtenisstroom, wordt gedeeld tussen ontvangers die gebruikmaken van een Azure Storage-container. U kunt een opslagaccount en container maken met de Go-SDK, maar u kunt er ook een maken door de instructies te volgen in [Over Azure-opslagaccounts](../storage/common/storage-account-create.md).
 
 Voorbeelden voor het maken van opslagartefacten met de Go SDK zijn beschikbaar in de [Opslagplaats met Go-voorbeelden](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) en in het voorbeeld dat overeenkomt met deze zelfstudie.
 

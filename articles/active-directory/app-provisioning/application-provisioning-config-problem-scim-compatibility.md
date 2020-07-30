@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782259"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387163"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
 
@@ -33,16 +33,16 @@ In dit artikel worden huidige en eerdere problemen beschreven met betrekking tot
 
 | **Compatibiliteits probleem met SCIM 2,0** |  **Vaste?** | **Datum herstellen**  |  
 |---|---|---|
-| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Yes  |  18 december 2018 | 
-| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Yes  | 18 december 2018  | 
-|  Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Yes  |  18 december 2018  | 
-|  Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Yes  |  18 december 2018  |  
+| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Ja  |  18 december 2018 | 
+| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Ja  | 18 december 2018  | 
+|  Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Ja  |  18 december 2018  | 
+|  Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Ja  |  18 december 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zijn de Services opgelost die worden beschreven die automatisch worden toegepast op mijn al bestaande SCIM-app?
 
 Nee. Zoals een belang rijke wijziging in de SCIM-apps die zijn gecodeerd om met het oudere gedrag te werken, zijn de wijzigingen niet automatisch toegepast op bestaande apps.
 
-De wijzigingen worden toegepast op alle nieuwe [niet-galerij scim-apps](../manage-apps/configure-single-sign-on-non-gallery-applications.md) die zijn geconfigureerd in de Azure Portal na de datum van de oplossing.
+De wijzigingen worden toegepast op alle nieuwe niet-galerij SCIM-apps die zijn geconfigureerd in de Azure Portal na de datum van de oplossing.
 
 Zie de volgende sectie voor informatie over het migreren van een vooraf bestaande gebruikers inrichtings taak voor het toevoegen van de meest recente oplossingen.
 

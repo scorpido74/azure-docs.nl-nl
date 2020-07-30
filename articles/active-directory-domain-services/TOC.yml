@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: Hoe synchronisatie van wachtwoord-hashes werkt
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Overwegingen voor virtuele netwerken
+      href: network-considerations.md
     - name: Voordelen van een klassieke implementatiemigratie
       href: concepts-migration-benefits.md
     - name: What is Azure Active Directory? (Engelstalig)
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: Een door een groep beheerd serviceaccount (gMSA) maken
           href: create-gmsa.md
-    - name: Plannen voor Azure AD DS
-      items:
-        - name: Overwegingen voor virtuele netwerken
-          href: network-considerations.md
     - name: Azure AD DS beheren
       items:
         - name: Groepsbeleid beheren

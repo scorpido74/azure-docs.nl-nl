@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: fd8b88e55f487032f76aa379018f09c144842d60
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa86773f52c05818f4abea2b7a8b5347e1778274
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200298"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046325"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>OS en gekoppelde gegevensschijven versleutelen in een virtuele-machineschaalset met Azure CLI
 
@@ -32,7 +32,7 @@ Voordat u een schaalset kunt maken, moet u eerst een resourcegroep maken met [az
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele-machineschaalset met [az vmss create](/cli/azure/vmss). In het volgende voorbeeld wordt een schaalset met de naam *myScaleSet* gemaakt die automatisch wordt bijgewerkt als er wijzigingen zijn. Daarnaast worden er SSH-sleutels gegenereerd als deze niet bestaan in *~/.ssh/id_rsa*. Een gegevensschijf van 32 GB is gekoppeld aan elk VM-exemplaar en de [Custom Script Extension](../virtual-machines/linux/extensions-customscript.md) van Azure wordt gebruikt om de gegevensschijven voor te bereiden met [az vmss extension set](/cli/azure/vmss/extension):
+Maak nu een virtuele-machineschaalset met [az vmss create](/cli/azure/vmss). In het volgende voorbeeld wordt een schaalset met de naam *myScaleSet* gemaakt die automatisch wordt bijgewerkt als er wijzigingen zijn. Daarnaast worden er SSH-sleutels gegenereerd als deze niet bestaan in *~/.ssh/id_rsa*. Een gegevensschijf van 32 GB is gekoppeld aan elk VM-exemplaar en de [Custom Script Extension](../virtual-machines/extensions/custom-script-linux.md) van Azure wordt gebruikt om de gegevensschijven voor te bereiden met [az vmss extension set](/cli/azure/vmss/extension):
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
