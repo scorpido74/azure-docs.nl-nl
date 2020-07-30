@@ -53,7 +53,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
     Gebruik de onderstaande koppelingen om een resource te maken voor de beschik bare Cognitive Services:
 
-    | Vision                      | Speech                  | Taal                          | Besluit             | Zoeken                 |
+    | Vision                      | Speech                  | Taal                          | Besluit             | Search                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Spraak Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Insluitende lezer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaliedetectie](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Aangepaste Vision-service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Aangepaste zoekopdrachten](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -116,7 +116,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 2. Zoek de resource groep met de resource die u wilt verwijderen
 3. Klik met de rechter muisknop op de vermelding van de resource groep. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Aanvragen verifiëren voor Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)

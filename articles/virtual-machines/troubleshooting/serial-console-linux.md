@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509015"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423453"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console voor Linux
 
@@ -26,11 +26,12 @@ De seriële console in de Azure Portal biedt toegang tot een op tekst gebaseerde
 
 Seriële console werkt op dezelfde manier voor Vm's en exemplaren van virtuele-machine schaal sets. In dit document bevatten alle vermeldingen aan Vm's impliciet instanties voor schaal sets voor virtuele machines, tenzij anders vermeld.
 
+Seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's en in de open bare preview-versie van Azure Government. Het is nog niet beschikbaar in de Azure China-Cloud.
+
 Zie [seriële console voor Windows](./serial-console-windows.md)voor informatie over de seriële console voor Windows.
 
 > [!NOTE]
-> De seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's en in de open bare preview-versie van Azure Government. Het is nog niet beschikbaar in de Azure China-Cloud.
-
+> Seriële console is momenteel niet compatibel met een beheerd opslag account voor diagnostische gegevens over opstarten. Als u een seriële console wilt gebruiken, moet u ervoor zorgen dat u een aangepast opslag account gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 

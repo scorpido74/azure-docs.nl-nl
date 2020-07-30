@@ -9,16 +9,66 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4bab1ef4588a705f0dd6cdb34be8272868f826e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207563"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386619"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
 In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) waarmee Parquet-bestanden worden gelezen.
+
+## <a name="quickstart-example"></a>Quick start-voor beeld
+
+`OPENROWSET`met de functie kunt u de inhoud van het Parquet-bestand lezen door de URL naar uw bestand op te geven.
+
+### <a name="reading-parquet-file"></a>Parquet-bestand lezen
+
+De eenvoudigste manier om de inhoud van uw bestand te bekijken is door de `PARQUET` bestands-URL te leveren `OPENROWSET` en Parquet op te geven `FORMAT` . Als het bestand openbaar beschikbaar is of als uw Azure AD-identiteit toegang heeft tot dit bestand, moet u de inhoud van het bestand kunnen zien met behulp van de query zoals die in het volgende voor beeld wordt weer gegeven:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.parquet',
+    format = 'parquet') as rows
+```
+
+Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste Azure-identiteit, moet u de [referenties voor SQL-aanmelding op server niveau](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen.
+
+### <a name="using-data-source"></a>Gegevens bron gebruiken
+
+In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die naar de hoofdmap van de opslag verwijst en die gegevens bron en het relatieve pad naar het bestand in `OPENROWSET` functie gebruiken:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) as rows
+```
+
+Als een gegevens bron wordt beveiligd met een SAS-sleutel of aangepaste identiteit, kunt u de [gegevens bron configureren met de referentie data base-Scope](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential).
+
+### <a name="explicitly-specify-schema"></a>Expliciet schema opgeven
+
+`OPENROWSET`Hiermee kunt u expliciet opgeven welke kolommen u wilt lezen uit het bestand met behulp van de `WITH` component:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
+```
+
+In de volgende secties ziet u hoe u verschillende typen PARQUET-bestanden kunt opvragen.
 
 ## <a name="prerequisites"></a>Vereisten
 

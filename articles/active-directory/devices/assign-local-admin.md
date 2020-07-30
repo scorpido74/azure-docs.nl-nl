@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371172"
+ms.locfileid: "87419815"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -72,9 +72,9 @@ Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten
 >[!NOTE]
 > Deze functie is momenteel beschikbaar als preview-product.
 
-Vanaf de update voor Windows 10 2004 kunt u Azure AD-groepen gebruiken voor het beheren van Administrator bevoegdheden op aan Azure AD gekoppelde apparaten met het MDM-beleid [beperkte groepen] (Windows/client-management/MDM/Policy-CSP-restrictedgroups). Met dit beleid kunt u afzonderlijke gebruikers of Azure AD-groepen toewijzen aan de lokale groep Administrators op een toegevoegd Azure AD-apparaat, zodat u de granulariteit kunt configureren om afzonderlijke beheerders voor verschillende groepen apparaten in te stellen. 
+Vanaf de update voor Windows 10 2004 kunt u Azure AD-groepen gebruiken voor het beheren van Administrator bevoegdheden op apparaten die zijn toegevoegd aan Azure AD met het MDM-beleid voor [beperkte groepen](/windows/client-management/mdm/policy-csp-restrictedgroups) . Met dit beleid kunt u afzonderlijke gebruikers of Azure AD-groepen toewijzen aan de lokale groep Administrators op een toegevoegd Azure AD-apparaat, zodat u de granulariteit kunt configureren om afzonderlijke beheerders voor verschillende groepen apparaten in te stellen. 
 
-Er is momenteel geen gebruikers interface in intune voor het beheren van dit beleid en moet worden geconfigureerd met [aangepaste OMA-URI-instellingen] (mem/intune/configuratie/custom-settings-Windows-10). Enkele aandachtspunten voor dit beleid: 
+Er is momenteel geen gebruikers interface in intune voor het beheren van dit beleid en moet worden geconfigureerd met [aangepaste oma-URI-instellingen](/mem/intune/configuration/custom-settings-windows-10). Enkele aandachtspunten voor dit beleid: 
 
 - Voor het toevoegen van Azure AD-groepen via het beleid is de SID van de groep vereist die kan worden verkregen door de groups API uit te voeren. De SID wordt gedefinieerd door de eigenschap `securityIdentifier` in de groups API.
 - Wanneer het beleid voor beperkte groepen wordt afgedwongen, wordt het huidige lid van de groep die zich niet in de lijst met leden bevindt, verwijderd. Als u dit beleid afdwingt met nieuwe leden of groepen, worden de bestaande beheerders verwijderd, namelijk de gebruiker die lid is van het apparaat, de rol van Apparaatbeheer en de rol van globale beheerder van het apparaat. Als u wilt voor komen dat bestaande leden worden verwijderd, moet u deze configureren als onderdeel van de lijst met leden in het beleid voor beperkte groepen. 

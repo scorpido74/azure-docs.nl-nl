@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287894"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408115"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -106,9 +106,15 @@ Uitgevers van [lijsten en proef](determine-your-listing-type.md) abonnementen ku
 Micro soft behoudt zich het recht voor de voor delen van Marketplace-beloningen te intrekken en te beëindigen voor uitgevers die: 
 
 * Neem deel aan de illegale activiteiten met behulp van hun Marketplace-vermelding.
+* Ontvang een aankoop waarvan bekend of aangenomen wordt dat deze frauduleus is.
 * Worden uit de commerciële Marketplace genoteerd. 
 * Gebruik hun aanbieding om marketing of andere inhoud weer te geven die in strijd is met copyright-of handelsmerk wetgeving.
 * De beleids regels van het [Azure sponsoring-programma](https://azure.microsoft.com/offers/ms-azr-0036p/), inclusief, maar niet beperkt tot, worden geschonden met behulp van de Azure sponsor-financiering voor hun eigen interne bewerkingen of Bitcoine-analyse.
+
+Micro soft behoudt zich het recht voor om Marketplace-beloningen te intrekken en te beëindigen wanneer:
+
+* De klant die de aankoop doet, had per ongeluk de aankoop kunnen annuleren. 
+* De klant annuleert voordat het product van de partner wordt gebruikt.
 
 ### <a name="offer-availability"></a>Beschik baarheid van aanbieding
 

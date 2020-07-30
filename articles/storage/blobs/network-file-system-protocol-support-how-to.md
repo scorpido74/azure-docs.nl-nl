@@ -140,7 +140,7 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 |`Access denied by server while mounting`|Zorg ervoor dat de client wordt uitgevoerd in een ondersteund subnet. Bekijk de [ondersteunde netwerk locaties](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Zorg ervoor dat de container die u koppelt, is gemaakt nadat u hebt gecontroleerd of de functie is geregistreerd. Zie [stap 2: controleren of de functie is geregistreerd](#step-2-verify-that-the-feature-is-registered). Zorg er ook voor dat u de koppel opdracht en de para meters rechtstreeks in de Terminal typt. Als u een deel van deze opdracht kopieert en in de Terminal plakt vanuit een andere toepassing, kunnen verborgen tekens in de geplakte gegevens ervoor zorgen dat deze fout wordt weer gegeven.|
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Ondersteuning voor het protocol Network File System (NFS) 3,0 in Azure Blob-opslag (preview-versie)](network-file-system-protocol-support.md)
 

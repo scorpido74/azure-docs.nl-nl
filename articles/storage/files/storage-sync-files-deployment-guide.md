@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337344"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386687"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -218,6 +218,13 @@ Als u Windows Server registreert voor een opslagsynchronisatieservice, wordt er 
 
 De beheerder die de server registreert, moet lid zijn van de **eigenaar** van de beheer rollen of **Inzender** voor de opgegeven opslag synchronisatie service. Dit kan worden geconfigureerd onder **Access Control (IAM)** in de Azure portal voor de opslag synchronisatie service.
 
+Het is ook mogelijk om onderscheid te maken tussen beheerders en de mogelijkheid om servers te registreren van degenen die ook synchronisatie in een opslag synchronisatie service kunnen configureren. Hiervoor moet u een aangepaste rol maken waarbij u de beheerders vermeldt die alleen servers mogen registreren en de volgende machtigingen geven aan uw aangepaste rol:
+
+* "Micro soft. StorageSync/storageSyncServices/registeredServer/Write"
+* "Micro soft. StorageSync/storageSyncServices/lezen"
+* "Micro soft. StorageSync/storageSyncServices/workflows/lezen"
+* "Micro soft. StorageSync/storageSyncServices/workflows/Operations/lezen"
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 De gebruikers interface voor Server registratie moet automatisch worden geopend na de installatie van de Azure File Sync-agent. Als dat niet gebeurt, kunt u deze handmatig openen vanuit de bestandslocatie: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Wanneer de gebruikers interface voor Server registratie wordt geopend, selecteert u **Aanmelden** om te beginnen.
 
@@ -245,6 +252,8 @@ Een Cloud-eind punt is een verwijzing naar een Azure-bestands share. Alle server
 
 > [!Important]  
 > U kunt wijzigingen aanbrengen in een eind punt van een Cloud of server-eind punt in de synchronisatie groep en uw bestanden synchroniseren met de andere eind punten in de synchronisatie groep. Als u een wijziging aanbrengt in het Cloud eindpunt (Azure-bestands share), moeten de wijzigingen eerst worden gedetecteerd door een Azure File Sync wijzigings detectie taak. Een wijzigings detectie taak wordt slechts eenmaal per 24 uur geïnitieerd voor een Cloud eindpunt. Zie [Azure files Veelgestelde vragen](storage-files-faq.md#afs-change-detection)voor meer informatie.
+
+De beheerder die het Cloud-eind punt maakt, moet lid zijn van de **eigenaar** van de beheer functie voor het opslag account dat de Azure-bestands share bevat waaraan het Cloud eindpunt verwijst. Dit kan worden geconfigureerd onder **Access Control (IAM)** in de Azure portal voor het opslag account.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Als u een synchronisatie groep wilt maken, gaat u in het [Azure Portal](https://portal.azure.com/)naar de opslag synchronisatie service en selecteert u **+ synchronisatie groep**:

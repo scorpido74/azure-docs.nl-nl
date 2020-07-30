@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326615"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405242"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -194,6 +194,9 @@ Voer vervolgens een **Beschrijving** in die een gedetailleerdere beschrijving va
 Op dit moment is er slechts één prijs model dat kan worden gebruikt voor een beheerde service aanbieding: **Bring your own License (BYOL)**. Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.
 
 In de sectie **zicht baarheid van plan** kunt u aangeven of dit plan [privé](../../marketplace/private-offers.md)moet zijn. Als u het selectie vakje **Dit is een persoonlijk abonnement is** uitgeschakeld, is uw abonnement niet beperkt tot specifieke klanten (of een bepaald aantal klanten).
+
+> [!NOTE]
+> Privé plannen worden niet ondersteund met abonnementen die zijn gemaakt via een wederverkoper van het programma van de Cloud Solution Provider (CSP).
 
 Als u dit plan alleen beschikbaar wilt maken voor specifieke klanten, selecteert u **Ja**. Wanneer u dit doet, moet u de klanten identificeren door hun abonnement-Id's op te geven. Deze kunnen worden ingevoerd op één (voor Maxi maal 10 abonnementen) of door een CSV-bestand (voor Maxi maal 10.000 abonnementen over alle plannen) te uploaden. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u de aanbieding kunt testen en valideren.
 

@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652625"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419764"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory wachtwoord beveiliging inschakelen
 
-Gebruikers maken vaak wacht woorden die gebruikmaken van veelgebruikte lokale woorden, zoals een school, een sport team of een beroemde persoon. Deze wacht woorden zijn gemakkelijk te raden en zwak tegen Woordenboek aanvallen. Voor het afdwingen van sterke wacht woorden in uw organisatie, biedt Azure Active Directory-wachtwoord beveiliging van Azure Active Directory een globale en aangepaste lijst met verboden wacht woorden. Een aanvraag voor het wijzigen van het wacht woord is mislukt als er een overeenkomst is gevonden in de lijst met verboden wacht woorden.
+Gebruikers maken vaak wachtwoorden waarin woorden voorkomen die lokaal veel worden gebruikt, zoals de naam van een school, een sportvereniging of een beroemde persoon. Deze wachtwoorden zijn gemakkelijk te raden en zijn slecht bestand tegen zogenaamde woordenboekaanvallen. Voor het afdwingen van sterke wacht woorden in uw organisatie, biedt Azure Active Directory-wachtwoord beveiliging van Azure Active Directory een globale en aangepaste lijst met verboden wacht woorden. Een aanvraag voor het wijzigen van het wacht woord is mislukt als er een overeenkomst is gevonden in de lijst met verboden wacht woorden.
 
 Om uw on-premises Active Directory Domain Services-omgeving (AD DS) te beveiligen, kunt u Azure AD-wachtwoord beveiliging installeren en configureren om met uw on-premises DC te werken. In dit artikel wordt beschreven hoe u Azure AD-wachtwoord beveiliging inschakelt voor uw on-premises omgeving.
 
@@ -40,7 +40,7 @@ In dit artikel wordt beschreven hoe u Azure AD-wachtwoord beveiliging inschakelt
 1. Het is raadzaam om de **modus** in te stellen op *controleren*. Nadat u vertrouwd bent met de functie en de gevolgen voor gebruikers in uw organisatie, kunt u de **modus** instellen op *afgedwongen*. Zie de volgende sectie in de [bewerkings modus](#modes-of-operation)voor meer informatie.
 1. Selecteer **Opslaan** wanneer u klaar bent.
 
-    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
+    [![On-premises wachtwoord beveiliging inschakelen onder verificatie methoden in de Azure Portal](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>Bedrijfsmodi
 

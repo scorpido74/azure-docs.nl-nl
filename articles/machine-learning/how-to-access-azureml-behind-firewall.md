@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407027"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
 
@@ -60,9 +60,9 @@ De hosts in deze sectie worden gebruikt voor het installeren van Python-pakkette
 
 | **Hostnaam** | **Doel** |
 | ---- | ---- |
-| **anaconda.com** | Gebruikt bij het installeren van Conda-pakketten |
-| **pypi.org** | Gebruikt bij het installeren van PIP-pakketten |
-
+| **anaconda.com** | Wordt gebruikt om standaard pakketten te installeren. |
+| **\*. anaconda.org** | Wordt gebruikt om opslag plaats-gegevens op te halen. |
+| **pypi.org** | Wordt gebruikt voor het weer geven van afhankelijkheden uit de standaard index, indien aanwezig, en de index wordt niet overschreven door gebruikers instellingen. Als de index wordt overschreven, moet u ook ** \* . pythonhosted.org**toestaan. |
 
 ## <a name="r-hosts"></a>R-hosts
 

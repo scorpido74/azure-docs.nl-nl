@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 50398632f47d889ecb79b32faef94c9c5923789c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531907"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420835"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Meer informatie over just-in-time-VM-toegang
 
@@ -67,13 +67,17 @@ Wanneer Security Center een computer vindt die kan profiteren van JIT, wordt dez
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>Welke machtigingen zijn er nodig om JIT te configureren en gebruiken?
 
-Als u aangepaste rollen wilt maken die met JIT kunnen werken, hebt u de volgende gegevens nodig:
+Als u aangepaste rollen wilt maken die met JIT kunnen werken, hebt u de details van de onderstaande tabel nodig.
+
+> [!TIP]
+> Gebruik het [script set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) op de pagina's van de Security Center github-Community om een rol met een beperkte bevoegdheid te maken voor gebruikers die JIT-toegang moeten aanvragen voor een virtuele machine en geen andere JIT-bewerkingen kunnen uitvoeren.
 
 | Een gebruiker in staat stellen: | Machtigingen om in te stellen|
 | --- | --- |
 | Een JIT-beleid voor een virtuele machine configureren of bewerken | *Wijs deze acties toe aan de rol:*  <ul><li>Binnen het bereik van een abonnement of resource groep die is gekoppeld aan de virtuele machine:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Binnen het bereik van een abonnement of resource groep van de VM: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |JIT-toegang aanvragen voor een virtuele machine | *Deze acties toewijzen aan de gebruiker:*  <ul><li>Binnen het bereik van een abonnement of resource groep die is gekoppeld aan de virtuele machine:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>Binnen het bereik van een abonnement of resource groep die is gekoppeld aan de virtuele machine:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Binnen het bereik van een abonnement of resource groep of VM:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Binnen het bereik van een abonnement of resource groep of VM:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 |JIT-beleid lezen| *Deze acties toewijzen aan de gebruiker:*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
+|||
 
 
 

@@ -10,16 +10,17 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414017"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgets insluiten in uw apps
 
-In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw apps. Video Indexer ondersteunt het insluiten van drie typen objecten in uw apps: *cognitieve inzichten*, *speler*en *Redacteur*.
+In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw apps. Video Indexer ondersteunt het insluiten van drie typen widgets in uw apps: *Cognitieve inzichten*, *Speler* en *Editor*.
 
 Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende: `https://www.videoindexer.ai/embed/insights/.../?location=westus2` .
 
@@ -33,7 +34,7 @@ De widget Inzichten bevat alle visuele inzichten die tijdens het indexeringsproc
 |---|---|---|
 |`widgets` | Tekenreeksen gescheiden door komma's | Hiermee kunt u de inzichten bepalen die u wilt weer geven.<br/>Voor beeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` alleen personen en tref woorden weer geven UI Insights.<br/>Beschik bare opties: personen, animatedCharacters, tref woorden, labels, gevoel, emoties, onderwerpen, keyframes, transcripten, OCR, sprekers, scènes en namedEntities.|
 |`controls`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de besturings elementen beheren die u wilt weer geven.<br/>Voor beeld: Hiermee wordt `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` alleen de zoek optie en de download knop weer gegeven.<br/>Beschik bare opties: zoeken, downloaden, voor instellingen en taal.|
-|`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/> of `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>of`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Een korte taal code | Hiermee bepaalt u de taal van de gebruikers interface. De standaardwaarde is `en`. <br/>Bijvoorbeeld: `locale=de`.|
 |`tab` | Het standaard geselecteerde tabblad | Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/>Voor beeld: Hiermee wordt `tab=timeline` de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
 |`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 

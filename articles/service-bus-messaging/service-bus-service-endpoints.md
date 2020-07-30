@@ -4,14 +4,14 @@ description: Dit artikel bevat informatie over het toevoegen van een service-ein
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d7f1783f197804e12a8c2d20a0c46b6efd2160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071328"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422943"
 ---
-# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Service-eind punten voor virtuele netwerken configureren voor Azure Service Bus
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Toegang tot Azure Service Bus naam ruimte vanuit specifieke virtuele netwerken toestaan
 
 Dankzij de integratie van Service Bus met de [service-eind punten van Virtual Network (VNet)][vnet-sep] is beveiligde toegang mogelijk tot berichten mogelijkheden van werk belastingen, zoals virtuele machines die zijn gebonden aan virtuele netwerken, waarbij het netwerkpad van het netwerk verkeer aan beide uiteinden wordt beveiligd.
 
@@ -58,11 +58,20 @@ De regel van het virtuele netwerk is een koppeling van de Service Bus naam ruimt
 In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service-eind punt voor een virtueel netwerk toe te voegen. Als u de toegang wilt beperken, moet u het eind punt van de virtuele netwerk service voor deze Event Hubs naam ruimte integreren.
 
 1. Navigeer naar uw **Service Bus-naam ruimte** in de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het linkermenu **netwerk** optie. Standaard is de optie **alle netwerken** geselecteerd. Uw naam ruimte accepteert verbindingen van elk IP-adres. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
+2. Selecteer in het menu links de optie **netwerk** opties onder **instellingen**.  
 
-    ![Optie Firewall: alle netwerken geselecteerd](./media/service-endpoints/firewall-all-networks-selected.png)
-1. Selecteer de optie **geselecteerde netwerken** boven aan de pagina.
-2. Selecteer in het gedeelte **Virtual Network** van de pagina **+ bestaand virtueel netwerk toevoegen**. 
+    > [!NOTE]
+    > U ziet het tabblad **netwerken** alleen voor **Premium** -naam ruimten.  
+    
+    Standaard is de optie **geselecteerde netwerken** geselecteerd. Als u niet ten minste één IP-firewall regel of een virtueel netwerk op deze pagina toevoegt, is de naam ruimte toegankelijk via het open bare Internet (met behulp van de toegangs sleutel).
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Pagina netwerk-standaard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Als u de optie **alle netwerken** selecteert, accepteert uw service bus-naam ruimte verbindingen van elk IP-adres. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
+
+    ![Optie Firewall: alle netwerken geselecteerd](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+2. Als u de toegang tot specifieke virtuele netwerken wilt beperken, selecteert u de optie **geselecteerde netwerken** als deze nog niet is geselecteerd.
+1. Selecteer in het gedeelte **Virtual Network** van de pagina **+ bestaand virtueel netwerk toevoegen**. 
 
     ![bestaand virtueel netwerk toevoegen](./media/service-endpoints/add-vnet-menu.png)
 3. Selecteer het virtuele netwerk in de lijst met virtuele netwerken en kies vervolgens het **subnet**. U moet het service-eind punt inschakelen voordat u het virtuele netwerk aan de lijst toevoegt. Als het service-eind punt niet is ingeschakeld, wordt u door de portal gevraagd om dit in te scha kelen.
@@ -78,6 +87,9 @@ In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service
 6. Selecteer **Opslaan** op de werk balk om de instellingen op te slaan. Wacht een paar minuten totdat de bevestiging wordt weer gegeven in de portal meldingen. De knop **Opslaan** moet worden uitgeschakeld. 
 
     ![Netwerk opslaan](./media/service-endpoints/save-vnet.png)
+
+    > [!NOTE]
+    > Zie [toegang vanaf specifieke IP-adressen of bereiken toestaan](service-bus-ip-filtering.md)voor instructies voor het toestaan van toegang tot specifieke IP-adressen of bereiken.
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 Met de volgende Resource Manager-sjabloon kan een regel voor een virtueel netwerk worden toegevoegd aan een bestaande Service Bus naam ruimte.

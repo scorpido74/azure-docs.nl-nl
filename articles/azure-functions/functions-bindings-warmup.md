@@ -2,19 +2,19 @@
 title: Trigger voor Azure Functions opwarm
 description: Meer informatie over het gebruik van de opwarm-trigger in Azure Functions.
 documentationcenter: na
-author: alexkarcher-msft
+author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, functies, gebeurtenis verwerking, opwarm, koude start, Premium, dynamische compute, serverloze architectuur
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
-ms.author: alkarche
-ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: cshoe
+ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982238"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383712"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
 
@@ -226,7 +226,7 @@ De trigger opwarm wordt niet ondersteund in Java als een kenmerk.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `WarmupTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 | **type** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger` . |
 | **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |

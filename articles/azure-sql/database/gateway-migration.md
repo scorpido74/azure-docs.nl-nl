@@ -67,7 +67,7 @@ De volgende gateway migraties zijn voltooid:
 - VS - noord-centraal
 - Japan - west
 - Japan East
-- US - oost 2
+- VS - oost 2
 - Azië - oost
 
 ---

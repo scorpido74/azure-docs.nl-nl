@@ -3,12 +3,12 @@ title: Architectuur van herstel na nood geval voor fysieke server in Azure Site 
 description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens nood herstel van on-premises fysieke servers naar Azure met de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162834"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422654"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architectuur van herstel na noodgevallen van fysieke server naar Azure
 
@@ -21,13 +21,32 @@ De volgende tabel en afbeelding bevat een weer gave op hoog niveau van de onderd
 | **Onderdeel** | **Vereiste** | **Details** |
 | --- | --- | --- |
 | **Azure** | Een Azure-abonnement en een Azure-netwerk. | Gerepliceerde gegevens van on-premises fysieke machines worden opgeslagen in azure Managed disks. Virtuele Azure-machines worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt. |
-| **Processerver** | Standaard geïnstalleerd in combi natie met de configuratie server. | Fungeert als replicatiegateway. Dit onderdeel ontvangt replicatiegegevens, optimaliseert de gegevens met caching, compressie en codering, en verzendt ze naar de Azure-opslag.<br/><br/> De proces server installeert ook de Mobility-service op servers die u wilt repliceren.<br/><br/> Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. |
+| **Proces server** | Standaard geïnstalleerd in combi natie met de configuratie server. | Fungeert als replicatiegateway. Dit onderdeel ontvangt replicatiegegevens, optimaliseert de gegevens met caching, compressie en codering, en verzendt ze naar de Azure-opslag.<br/><br/> De proces server installeert ook de Mobility-service op servers die u wilt repliceren.<br/><br/> Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. |
 | **Hoofddoelserver** | Standaard geïnstalleerd in combi natie met de configuratie server. | Hiermee worden replicatie gegevens verwerkt tijdens een failback van Azure.<br/><br/> Voor grote implementaties kunt u een extra, afzonderlijke Master doel server toevoegen voor failback. |
 | **Gerepliceerde servers** | De Mobility-service wordt geïnstalleerd op elke server die u repliceert. | U wordt aangeraden automatische installatie vanaf de proces server toe te staan. Of u kunt de service hand matig installeren of een geautomatiseerde implementatie methode, zoals Configuration Manager, gebruiken. |
 
 **Fysieke naar Azure-architectuur**
 
 ![Onderdelen](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>Uitgaande netwerk verbinding instellen
+
+Als u wilt dat Site Recovery werkt zoals verwacht, moet u de uitgaande netwerk verbinding wijzigen zodat uw omgeving kan repliceren.
+
+> [!NOTE]
+> Site Recovery biedt geen ondersteuning voor het gebruiken van een verificatieproxy om netwerkconnectiviteit te beheren.
+
+### <a name="outbound-connectivity-for-urls"></a>Uitgaande connectiviteit voor URL's
+
+Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, staat u toegang tot deze URL’s toe:
+
+| **Naam**                  | **Commercieel**                               | **Overheid**                                 | **Beschrijving** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Hiermee kunnen gegevens van de VM naar het cache-opslagaccount in de bronregio worden geschreven. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
+| Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
+
 
 ## <a name="replication-process"></a>Replicatieproces
 

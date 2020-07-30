@@ -2,13 +2,13 @@
 title: Azure Service Bus Premium-en Standard-lagen
 description: In dit artikel worden de standaard-en Premium-lagen van Azure Service Bus beschreven. Vergelijkt deze lagen en biedt technische verschillen.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337413"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386347"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Prijscategorieën voor Service Bus Premium en Standard Messaging
 
@@ -24,7 +24,7 @@ In de volgende tabel worden enkele belangrijke verschillen uitgelicht.
 | Voorspelbare prestaties |Variabele latentie |
 | Vaste prijzen |Variabel omslagstelsel voor betalen per gebruik |
 | Mogelijkheid om de workload omhoog en omlaag te schalen |N.v.t. |
-| Berichtformaat tot maximaal 1 MB |Berichtformaat tot maximaal 256 kB |
+| Bericht grootte Maxi maal 1 MB. Deze limiet kan in de toekomst worden verhoogd. Zie [berichten over Azure blog](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)voor de meest recente belang rijke updates voor de service. |Berichtformaat tot maximaal 256 kB |
 
 **Service Bus Premium Messaging** biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload van een klant geïsoleerd wordt uitgevoerd. Deze resource container wordt een *Messa ging-eenheid*genoemd. Aan elke Premium-naamruimte wordt ten minste één Messaging-eenheid toegewezen. U kunt 1, 2, 4 of 8 Messa ging-eenheden kopen voor elke Service Bus Premium-naam ruimte. Eén werk belasting of entiteit kan meerdere Messa ging-eenheden omvatten en het aantal Messa ging-eenheden kan worden gewijzigd in. Dit resulteert in voorspelbare en herhaalbare prestaties voor uw Service Bus-oplossing.
 
@@ -36,11 +36,11 @@ In de volgende secties wordt een aantal verschillen besproken tussen Premium en 
 
 ### <a name="partitioned-queues-and-topics"></a>Gepartitioneerde wachtrijen en onderwerpen
 
-Gepartitioneerde wachtrijen en onderwerpen worden niet ondersteund in Premium Messaging. Zie [Gepartitioneerde wachtrijen en onderwerpen](service-bus-partitioning.md) voor meer informatie over partitioneren.
+Gepartitioneerde wacht rijen en onderwerpen worden niet ondersteund in Premium Messa ging. Zie [Gepartitioneerde wachtrijen en onderwerpen](service-bus-partitioning.md) voor meer informatie over partitioneren.
 
 ### <a name="express-entities"></a>Express-entiteiten
 
-Omdat Premium Messaging wordt uitgevoerd in een volledig geïsoleerde runtime-omgeving, worden Express-entiteiten niet ondersteund in Premium-naamruimten. Zie de eigenschap [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) voor meer informatie over de Express-functie.
+Omdat Premium Messa ging wordt uitgevoerd in een geïsoleerde runtime-omgeving, worden Express-entiteiten niet ondersteund in Premium-naam ruimten. Zie de eigenschap [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) voor meer informatie over de Express-functie.
 
 Als u code uitvoert onder Standard Messaging en deze wilt overzetten naar de Premium-prijscategorie, moet de eigenschap [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) zijn ingesteld op **false** (de standaardwaarde).
 
@@ -51,7 +51,7 @@ Over het algemeen kan elke bewerking van een entiteit CPU-en geheugen gebruik ve
 - Runtime bewerkingen (berichten verzenden en ontvangen)
 - Bewakings bewerkingen en-waarschuwingen
 
-Het extra CPU-en geheugen gebruik is ook niet geprijsd. Voor de laag Premium Messa ging is er één prijs voor de bericht eenheid.
+De extra CPU en het geheugen gebruik zijn ook niet in de prijs. Voor de laag Premium Messa ging is er één prijs voor de bericht eenheid.
 
 Het CPU-en geheugen gebruik worden bijgehouden en weer gegeven om de volgende redenen: 
 
@@ -72,7 +72,7 @@ Er zijn een aantal factoren waarmee rekening moet worden gehouden bij het bepale
     - Als het CPU-gebruik ***lager is dan 20%***, kunt u het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen, wellicht ***omlaag schalen*** .
     - Als het CPU-gebruik ***hoger is dan 70%***, zal uw toepassing profiteren van het ***opschalen*** van het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen.
 
-Het proces voor het schalen van de resources die zijn toegewezen aan een Service Bus naam ruimten kunnen worden geautomatiseerd met behulp van [Azure Automation Runbooks](../automation/automation-quickstart-create-runbook.md).
+Het proces voor het schalen van de resources die zijn toegewezen aan een Service Bus naam ruimte kan worden geautomatiseerd met behulp van [Azure Automation Runbooks](../automation/automation-quickstart-create-runbook.md).
 
 > [!NOTE]
 > Het **schalen** van de resources die zijn toegewezen aan de naam ruimte kan preventieve of reactiveren zijn.

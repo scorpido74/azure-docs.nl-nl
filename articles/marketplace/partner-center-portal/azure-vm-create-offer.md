@@ -1,18 +1,18 @@
 ---
 title: Een Azure virtual machine-aanbieding maken op Azure Marketplace
-description: Meer informatie over het maken van een aanbieding voor een virtuele machine op Azure Marketplace met het vereiste abonnement.
+description: Meer informatie over het publiceren van een aanbieding van een virtuele machine naar Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.date: 07/17/2020
-ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: how-to
+author: emuench
+ms.author: mingshen
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324689"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386432"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -352,7 +352,7 @@ In deze sectie configureert u de details van het overzicht van het plan. Dit dee
 
 #### <a name="plan-name"></a>Plan naam
 
-Dit veld wordt aangevuld met de naam die u hebt opgegeven bij het maken van het abonnement. Deze naam wordt op Azure Marketplace weer gegeven als de titel van dit abonnement. De waarde is beperkt tot 100 tekens.
+Dit veld wordt automatisch ingevuld met de naam die u hebt opgegeven bij het maken van het abonnement. Deze naam wordt op Azure Marketplace weer gegeven als de titel van dit abonnement. De waarde is beperkt tot 100 tekens.
 
 #### <a name="plan-summary"></a>Samen vatting plannen
 
@@ -368,7 +368,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 In dit deel venster configureert u het volgende:
 
-- De markten waar dit abonnement beschikbaar is.
+- De markten waar dit abonnement beschikbaar is. Elk plan moet beschikbaar zijn op ten minste één [markt](../marketplace-geo-availability-currencies.md).
 - De prijs per uur.
 - Hiermee wordt aangegeven of het plan zichtbaar moet worden voor iedereen of alleen voor specifieke klanten (een persoonlijke doel groep).
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374437"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387775"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
 
@@ -55,7 +55,7 @@ Er zijn twee primaire manieren waarop u uw gebruikers in staat kunt stellen om e
 ### <a name="considerations-for-federation-based-sso"></a>Overwegingen voor SSO op basis van Federatie
 
 - **OpenID Connect Connect en OAuth** gebruiken: als de toepassing waarmee u verbinding maakt, deze ondersteunt, gebruikt u de methode OIDC/OAuth 2,0 om uw SSO voor die toepassing in te scha kelen. Deze methode vereist minder configuratie en maakt gebruik van een uitgebreidere gebruikers ervaring. Zie [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect Connect 1,0](../develop/v2-protocols-oidc.md)en [Azure Active Directory hand leiding voor ontwikkel aars](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)voor meer informatie.
-- **Eindpunt configuraties voor op SAML gebaseerde SSO** : als u SAML gebruikt, hebben uw ontwikkel aars specifieke informatie nodig voordat de toepassing kan worden geconfigureerd. Zie [de basis-SAML-configuratie bewerken](configure-single-sign-on-non-gallery-applications.md)voor meer informatie.
+- **Eindpunt configuraties voor op SAML gebaseerde SSO** : als u SAML gebruikt, hebben uw ontwikkel aars specifieke informatie nodig voordat de toepassing kan worden geconfigureerd. Zie [eenmalige aanmelding op basis van SAML configureren](configure-saml-single-sign-on.md)voor meer informatie.
 - **Certificaat beheer voor op SAML gebaseerde SSO** : wanneer u federatieve SSO inschakelt voor uw toepassing, maakt Azure AD een certificaat dat standaard drie jaar geldig is. U kunt zo nodig de verval datum voor het certificaat aanpassen. Zorg ervoor dat er processen aanwezig zijn om certificaten te vernieuwen voordat deze verlopen. Zie voor meer informatie [Azure AD certificaten beheren](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
 
 ### <a name="considerations-for-password-based-sso"></a>Overwegingen voor SSO op basis van wacht woorden

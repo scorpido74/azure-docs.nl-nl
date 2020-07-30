@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320167"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420529"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,6 @@ U kunt ook [persoonlijke Azure-koppelingen inschakelen](how-to-configure-private
 > [!WARNING]
 > 
 > De preview-versie van Azure Machine Learning Compute-exemplaren wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling is ingeschakeld.
->
-> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarvoor een persoonlijke koppeling is ingeschakeld. In plaats daarvan kunt u de Azure Kubernetes-service in een virtueel netwerk gebruiken. Zie voor meer informatie [beveiligd Azure ml-experimenten en de functies voor invallen binnen een Azure-Virtual Network](how-to-enable-virtual-network.md).
-
 
 <a id="amlcompute"></a>
 
@@ -448,9 +445,6 @@ Gebruik de volgende stappen om de Azure Kubernetes-service (AKS) in een virtueel
 > Voordat u aan de volgende procedure begint, volgt u de vereisten in het onderdeel [geavanceerde netwerken configureren in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites) hoe de IP-adres sering voor uw cluster kan worden gepland.
 >
 > Het AKS-exemplaar en het virtuele Azure-netwerk moeten zich in dezelfde regio bevinden. Als u de Azure Storage account (s) die door de werk ruimte in een virtueel netwerk worden gebruikt, beveiligt, moeten ze zich in hetzelfde virtuele netwerk bevinden als het AKS-exemplaar.
-
-> [!WARNING]
-> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarvoor een persoonlijke koppeling is ingeschakeld.
 
 1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/)en selecteer vervolgens uw abonnement en werk ruimte.
 

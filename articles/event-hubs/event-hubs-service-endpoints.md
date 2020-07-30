@@ -2,15 +2,15 @@
 title: Service-eind punten Virtual Network-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het toevoegen van een service-eind punt van micro soft. EventHub aan een virtueel netwerk.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288005"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420448"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtual Network Service-eind punten gebruiken met Azure Event Hubs
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Toegang tot Azure Event Hubs-naam ruimten van specifieke virtuele netwerken toestaan 
 
 Dankzij de integratie van Event Hubs met de [service-eind punten van Virtual Network (VNet)][vnet-sep] is beveiligde toegang mogelijk tot berichten mogelijkheden van werk belastingen, zoals virtuele machines die zijn gebonden aan virtuele netwerken, waarbij het netwerkpad van het netwerk verkeer aan beide uiteinden wordt beveiligd.
 
@@ -56,10 +56,19 @@ De regel van het virtuele netwerk is een koppeling van de Event Hubs naam ruimte
 In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service-eind punt voor een virtueel netwerk toe te voegen. Als u de toegang wilt beperken, moet u het eind punt van de virtuele netwerk service voor deze Event Hubs naam ruimte integreren.
 
 1. Navigeer naar uw **Event hubs-naam ruimte** in de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het linkermenu **netwerk** optie. Als u de optie **alle netwerken** selecteert, accepteert de Event hub verbindingen van elk IP-adres. Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
+4. Selecteer **netwerken** onder **instellingen** in het menu links. 
+
+    > [!NOTE]
+    > U ziet het tabblad **netwerken** alleen voor **standaard** of **toegewezen** naam ruimten. 
+
+    Standaard is de optie **geselecteerde netwerken** geselecteerd. Als u geen IP-firewall regel opgeeft of een virtueel netwerk toevoegt op deze pagina, is de naam ruimte toegankelijk vanuit alle netwerken, waaronder openbaar Internet (met behulp van de toegangs sleutel). 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Tabblad netwerken-opties voor geselecteerde netwerken" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    Als u de optie **alle netwerken** selecteert, accepteert de Event hub verbindingen van elk IP-adres (met behulp van de toegangs sleutel). Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
     ![Optie Firewall: alle netwerken geselecteerd](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Als u de toegang tot specifieke netwerken wilt beperken, selecteert u de optie **geselecteerde netwerken** boven aan de pagina.
+1. Als u de toegang tot specifieke netwerken wilt beperken, selecteert u de optie **geselecteerde netwerken** boven aan de pagina als deze nog niet is geselecteerd.
 2. Selecteer in de sectie **Virtual Network** van de pagina * * + bestaand virtueel netwerk toevoegen * * *. Selecteer **+ nieuw virtueel netwerk maken** als u een nieuw VNet wilt maken. 
 
     ![bestaand virtueel netwerk toevoegen](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -77,6 +86,8 @@ In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service
 
     ![Netwerk opslaan](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > Zie toegang tot specifieke [IP-adressen of bereiken toestaan](event-hubs-ip-filtering.md)om de toegang tot specifieke IP-adressen of bereiken te beperken.
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 

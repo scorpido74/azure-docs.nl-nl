@@ -4,22 +4,22 @@ description: bestand opnemen
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 8aef4a5eeeec27bfb2ca3edf9ff6823b88431319
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: 8901f107ca2af609059670a0b31184080849d2b6
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591829"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374888"
 ---
 Met de entiteit pattern.any kunt u vrije gegevens vinden waarbij het lastig is om uit de tekst van de entiteit het einde van de entiteit te bepalen op basis van de rest van de utterance.
 
-Met een Human resources-app kunnen werk nemers bedrijfs formulieren vinden.
+Een Human Resources-app helpt medewerkers bij het zoeken van bedrijfsformulieren.
 
 |Utterance|
 |--|
@@ -45,4 +45,4 @@ De lengte varieert en er zijn woorden die verwarrend kunnen zijn voor LUIS om te
 |Wie heeft {FormName} geschreven[?]|
 |Is {FormName} gepubliceerd in het Frans[?]|
 
-Beoordelings patroon. alle [referentie](../reference-entity-pattern-any.md) gegevens
+Pattern.any-[referentie](../reference-entity-pattern-any.md)gegevens bekijken

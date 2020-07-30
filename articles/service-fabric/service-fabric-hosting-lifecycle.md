@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258819"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405123"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Levens cyclus van Azure Service Fabric-hosting
 Dit artikel bevat een overzicht van gebeurtenissen die zich voordoen wanneer een toepassing wordt geactiveerd op een knoop punt en verschillende cluster configuraties die worden gebruikt voor het beheren van het gedrag.
@@ -83,7 +83,7 @@ Service Fabric maakt altijd gebruik van een lineaire back-up wanneer er een fout
 
 * Als de code package vastloopt en er back-ups worden verwijderd, wordt service type uitgeschakeld. Maar als de activerings configuratie zodanig is dat deze snel opnieuw wordt opgestart, kan de code package enkele keren worden bereikt voordat het uitschakelen van Service type kan worden weer geven. Bijvoorbeeld: aangenomen dat uw code package actief is, registreert u het Service type met Service Fabric en loopt vervolgens vast. In dat geval wordt de **ServiceTypeDisableGraceInterval** -periode geannuleerd zodra de hosting een type registratie heeft ontvangen. En dit kan worden herhaald totdat uw code package wordt teruggedraaid naar een waarde die groter is dan **ServiceTypeDisableGraceInterval** en vervolgens op Service type wordt uitgeschakeld op het knoop punt. Daarom kan het enige tijd duren voordat uw service type is uitgeschakeld op het knoop punt.
 
-* Als Service Fabric systeem een replica in een knoop punt moet plaatsen, wordt in het geval van activeringen het hosting subsysteem door RA (ReconfigurationAgent) om de toepassing te activeren en wordt elke 15 sec (**RAPMessageRetryInterval**) opnieuw geprobeerd om de activerings aanvraag uit te voeren. Voor Service Fabric systeem om te weten dat Service type is uitgeschakeld, moet de activerings bewerking in de hosting gedurende een langere periode actief zijn dan het interval voor nieuwe pogingen en de **ServiceTypeDisableGraceInterval**. Bijvoorbeeld: laat het cluster de configuratie **ActivationMaxFailureCount** instellen op 5 en **ActivationRetryBackoffInterval** ingesteld op 1 sec. Dit betekent dat de activerings bewerking na (0 + 1 + 2 + 3 + 4) = 10 sec (de eerste nieuwe poging onmiddellijk) wordt uitgevoerd en dat de hosting het opnieuw probeert. In dit geval wordt de activerings bewerking voltooid en wordt na 15 seconden geen nieuwe poging gedaan. Er is een fout opgetreden omdat Service Fabric alle pogingen binnen 15 seconden uitgeput zijn. Bij elke nieuwe poging van ReconfigurationAgent wordt dus een nieuwe activerings bewerking gemaakt in het hosting subsysteem en het patroon blijft herhalen en service type wordt nooit uitgeschakeld op het knoop punt. Omdat het Service type niet wordt uitgeschakeld op het onderdeel FM van het node SF-systeem (FailoverManager), wordt de replica niet verplaatst naar een ander knoop punt.
+* Als Service Fabric systeem een replica in een knoop punt moet plaatsen, wordt in het geval van activeringen het hosting subsysteem door RA (ReconfigurationAgent) om de toepassing te activeren en wordt elke 15 sec (**RAPMessageRetryInterval**) opnieuw geprobeerd om de activerings aanvraag uit te voeren. Voor Service Fabric systeem om te weten dat Service type is uitgeschakeld, moet de activerings bewerking in de hosting gedurende een langere periode actief zijn dan het interval voor nieuwe pogingen en de **ServiceTypeDisableGraceInterval**. Bijvoorbeeld: laat het cluster de configuratie **ActivationMaxFailureCount** instellen op 5 en **ActivationRetryBackoffInterval** ingesteld op 1 sec. Dit betekent dat de activerings bewerking na (0 + 1 + 2 + 3 + 4) = 10 sec (de eerste nieuwe poging onmiddellijk) wordt uitgevoerd en dat de hosting het opnieuw probeert. In dit geval wordt de activerings bewerking voltooid en wordt na 15 seconden geen nieuwe poging gedaan. Er is een fout opgetreden omdat Service Fabric alle pogingen binnen 15 seconden uitgeput zijn. Bij elke nieuwe poging van ReconfigurationAgent wordt dus een nieuwe activerings bewerking gemaakt in het hosting subsysteem en het patroon blijft herhalen en service type wordt nooit uitgeschakeld op het knoop punt. Omdat het Service type niet is uitgeschakeld op het knoop punt, wordt de replica door het SF-systeem onderdeel FM (FailoverManager) niet naar een ander knoop punt verplaatst.
 > 
 
 ## <a name="deactivation"></a>Deactivering

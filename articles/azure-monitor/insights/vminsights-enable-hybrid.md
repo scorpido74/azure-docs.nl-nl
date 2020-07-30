@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328296"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417111"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Azure Monitor voor VM's inschakelen voor een hybride virtuele machine
 In dit artikel wordt beschreven hoe u Azure Monitor voor VM's inschakelt voor een virtuele machine buiten Azure, met inbegrip van on-premises en andere Cloud omgevingen.
 
 > [!IMPORTANT]
-> De aanbevolen methode voor het inschakelen van hybride Vm's is het eerst inschakelen van [Azure Arc voor servers](/azure-arc/servers/overview.md) , zodat de vm's kunnen worden ingeschakeld voor Azure monitor voor VM's op basis van processen die vergelijkbaar zijn met Azure-vm's. In dit artikel wordt beschreven hoe u hybride Vm's kunt voorbereiden als u ervoor kiest om Azure Arc niet te gebruiken.
+> De aanbevolen methode voor het inschakelen van hybride Vm's is het eerst inschakelen van [Azure Arc voor servers](../../azure-arc/servers/overview.md) , zodat de vm's kunnen worden ingeschakeld voor Azure monitor voor VM's op basis van processen die vergelijkbaar zijn met Azure-vm's. In dit artikel wordt beschreven hoe u hybride Vm's kunt voorbereiden als u ervoor kiest om Azure Arc niet te gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +31,7 @@ Voor virtuele machines buiten Azure zijn dezelfde Log Analytics agent en een afh
 Zie [Windows-computers verbinden met Azure monitor](../platform/agent-windows.md) of [Linux-computers verbinden met Azure monitor](../platform/agent-linux.md) voor meer informatie over het implementeren van de log Analytics agent. In dit artikel vindt u meer informatie over de afhankelijkheids agent. 
 
 ## <a name="firewall-requirements"></a>Firewallvereisten
-De firewall vereisten voor de Log Analytics-agent vindt u in [log Analytics Overzicht](..//platform/log-analytics-agent.md#network-requirements)van de agent. De Azure Monitor voor VM's kaart afhankelijke agent verzendt geen gegevens zelf, en vereist geen wijzigingen in firewalls of poorten. De kaart gegevens worden altijd door de Log Analytics agent verzonden naar de Azure Monitor-service, hetzij rechtstreeks of via de [Operations Management Suite-gateway](../../azure-monitor/platform/gateway.md) als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbinding maken met internet.
+De firewall vereisten voor de Log Analytics-agent vindt u in [log Analytics Overzicht](../platform/log-analytics-agent.md#network-requirements)van de agent. De Azure Monitor voor VM's kaart afhankelijke agent verzendt geen gegevens zelf, en vereist geen wijzigingen in firewalls of poorten. De kaart gegevens worden altijd door de Log Analytics agent verzonden naar de Azure Monitor-service, hetzij rechtstreeks of via de [Operations Management Suite-gateway](../../azure-monitor/platform/gateway.md) als uw IT-beveiligings beleid niet toestaat dat computers in het netwerk verbinding maken met internet.
 
 
 ## <a name="dependency-agent"></a>Agent voor afhankelijkheden

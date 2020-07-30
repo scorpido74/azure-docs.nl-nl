@@ -2,18 +2,18 @@
 title: Azure-Vm's opnieuw beveiligen naar de primaire regio met Azure Site Recovery | Microsoft Docs
 description: Hierin wordt beschreven hoe u Azure-Vm's na een failover opnieuw beveiligt, de secundaire naar de primaire regio met behulp van Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738062"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422076"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Failover van virtuele Azure-machines naar de primaire regio opnieuw beveiligen
 
@@ -46,8 +46,8 @@ U kunt de volgende eigenschappen van de doel-VM aanpassen tijdens het opnieuw be
 
 |Eigenschap |Opmerkingen  |
 |---------|---------|
-|Doel resource groep | Wijzig de doel resource groep waarin de virtuele machine is gemaakt. Als onderdeel van de herbeveiliging wordt de doel-VM verwijderd. U kunt een nieuwe resource groep kiezen voor het maken van de virtuele machine na een failover. |
-|Virtueel netwerk van doel | Het doelnet werk kan niet worden gewijzigd tijdens de taak beveiliging opnieuw beveiligen. Als u het netwerk wilt wijzigen, voert u de netwerk toewijzing opnieuw uit. |
+|Doelresourcegroep | Wijzig de doel resource groep waarin de virtuele machine is gemaakt. Als onderdeel van de herbeveiliging wordt de doel-VM verwijderd. U kunt een nieuwe resource groep kiezen voor het maken van de virtuele machine na een failover. |
+|Virtueel doelnetwerk | Het doelnet werk kan niet worden gewijzigd tijdens de taak beveiliging opnieuw beveiligen. Als u het netwerk wilt wijzigen, voert u de netwerk toewijzing opnieuw uit. |
 |Doel opslag (secundaire virtuele machine maakt geen gebruik van beheerde schijven) | U kunt het opslag account dat door de virtuele machine wordt gebruikt, wijzigen na een failover. |
 |Beheerde replica schijven (secundaire virtuele machine maakt gebruik van beheerde schijven) | Site Recovery maakt met replica beheerde schijven in de primaire regio om de beheerde schijven van de secundaire virtuele machine te spie gelen. |
 |Cacheopslag | U kunt een cache-opslag account opgeven dat moet worden gebruikt tijdens de replicatie. Standaard wordt er een nieuwe cache opslag account gemaakt, als deze nog niet bestaat. |
@@ -95,10 +95,6 @@ De volgende voor waarden bepalen hoeveel gegevens worden gerepliceerd:
 |Bron regio heeft 1 VM met 1 TB Premium-schijf.<br/>Er worden slechts 20 GB gegevens gebruikt en de rest van de schijf is leeg.<br/>Schijf type is Premium met een doorvoer snelheid van 200 MBps.<br/>De eerste gegevens op de schijf direct na een failover zijn 15 GB. Er zijn 5 GB gegevens gewijzigd na de failover. De totale ingevulde gegevens zijn dus 20 GB| Geschatte tijd: 30-45 minuten.<br/>Omdat de gegevens die op de schijf zijn ingevuld, kleiner zijn dan 10% van de grootte van de schijf, voeren we een volledige initiële replicatie uit.<br/>De overdrachts snelheid is ongeveer 16% van de door Voer, of 32MBps. Daarom wordt de overdrachts tijd voor het Toep assen van de wijzigingen van 20 GB van 20 GB/32 MBps, ongeveer 11 minuten.<br/>Er is enige overhead tijd nodig om Site Recovery automatisch te schalen, ongeveer 20-30 minuten |
 
 Wanneer de virtuele machine opnieuw wordt beveiligd na een failback naar de primaire regio (als de virtuele machine opnieuw wordt beschermd vanuit de primaire regio naar een DR-regio), worden de doel-VM en de bijbehorende NIC ('s) verwijderd.
-
-Wanneer de virtuele machine opnieuw wordt beveiligd vanuit de DR-regio naar de primaire regio, worden de primaire virtuele machine van Erstwhile en de bijbehorende NIC (s) niet verwijderd.
-
-Wanneer de virtuele machine opnieuw wordt beveiligd na een failback naar de primaire regio (als de virtuele machine opnieuw wordt beschermd vanuit de primaire regio naar een DR-regio), worden de doel-VM en de bijbehorende NIC ('s) verwijderd. 
 
 Wanneer de virtuele machine opnieuw wordt beveiligd vanuit de DR-regio naar de primaire regio, worden de primaire virtuele machine van Erstwhile en de bijbehorende NIC (s) niet verwijderd.
 

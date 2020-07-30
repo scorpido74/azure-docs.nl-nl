@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497638"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407690"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -45,13 +45,10 @@ De volgende tabel beschrijft de mogelijkheden en de netwerkondersteuning voor de
 
 IR-type | Openbaar netwerk | Particulier netwerk
 ------- | -------------- | ---------------
-Azure | Gegevensstroom<br/>Gegevensverplaatsing<br/>Verzending van de activiteit | &nbsp;
+Azure | Gegevensstroom<br/>Gegevensverplaatsing<br/>Verzending van de activiteit | Gegevensstroom<br/>Gegevensverplaatsing<br/>Verzending van de activiteit
 Zelf-hostend | Gegevensverplaatsing<br/>Verzending van de activiteit | Gegevensverplaatsing<br/>Verzending van de activiteit
 Azure-SSIS | Uitvoering van SSIS-pakket | Uitvoering van SSIS-pakket
 
-Het volgende diagram toont hoe verschillende typen Integration Runtime gecombineerd kunnen worden gebruikt om geavanceerde mogelijkheden voor gegevensintegratie en netwerkondersteuning te bieden:
-
-![Verschillende typen Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure Integration Runtime
 
@@ -63,7 +60,7 @@ Een Azure Integration runtime kan:
 
 ### <a name="azure-ir-network-environment"></a>Azure IR-netwerkomgeving
 
-Azure Integration Runtime ondersteunt het verbinden met data stores en reken Services met open bare eind punten. Gebruik een zelf-hostende Integration Runtime voor een Azure Virtual Network-omgeving.
+Azure Integration Runtime ondersteunt het verbinden met data stores en reken Services met open bare eind punten. Het inschakelen van beheerde Virtual Network, Azure Integration Runtime ondersteunt het verbinding maken met gegevens archieven met behulp van een persoonlijke koppelings service in een particuliere netwerk omgeving.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR-rekenresource en -schalen
 Azure Integration Runtime biedt een volledig beheerde, serverloze rekenresource in Azure.  U hoeft zich geen zorgen te maken over het inrichten van de infra structuur, het installeren van software, patches of het schalen van de capaciteit.  Bovendien betaalt u alleen voor het werkelijke gebruik.
@@ -136,7 +133,7 @@ De locatie van de IR definieert de locatie van de back-end rekenkracht en in wez
 
 U kunt een bepaalde locatie van een Azure IR instellen, in welk geval de uitvoering van de activiteit of verzen ding plaatsvindt in die specifieke regio.
 
-Als u ervoor kiest om de Azure IR automatisch oplossen te gebruiken. Dit is de standaard instelling.
+Als u ervoor kiest om de Azure IR automatisch oplossen te gebruiken in het open bare netwerk, is dit de standaard instelling.
 
 - Voor kopieer activiteiten maakt ADF een beste manier om de locatie van uw Sink-gegevens opslag automatisch te detecteren. vervolgens gebruikt u de IR in dezelfde regio, indien beschikbaar of het dichtstbijzijnde deel van hetzelfde Geografie; Als de regio van de Sink-gegevens opslag niet kan worden gedetecteerd, wordt IR in de data factory regio als alternatief gebruikt.
 
@@ -154,6 +151,8 @@ Als u ervoor kiest om de Azure IR automatisch oplossen te gebruiken. Dit is de s
 
   > [!TIP] 
   > Het is een goed idee om ervoor te zorgen dat de gegevens stroom wordt uitgevoerd in dezelfde regio als de bijbehorende gegevens archieven (indien mogelijk). U kunt dit doen door Azure IR automatisch op te lossen (als de locatie van de gegevens opslag hetzelfde is als Data Factory locatie) of door een nieuw Azure IR exemplaar te maken in dezelfde regio als uw gegevens archieven en vervolgens de gegevens stroom op het bestand uit te voeren. 
+
+Als u beheerde Virtual Network voor het automatisch oplossen van Azure IR inschakelt, gebruikt ADF de IR in de data factory regio. 
 
 U kunt controleren welke IR-locatie van kracht wordt tijdens het uitvoeren van activiteiten in de weergave voor het controleren van de pijplijnactiviteit in de gebruikersinterface of nettolading voor het controleren van activiteiten.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090175"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420886"
 ---
 # <a name="train-wide--deep-recommender"></a>Uitgebreide aanbevolen &er trainen
 In dit artikel wordt beschreven hoe u de module **train & diep aanbevolen** in azure machine learning Designer (preview) gebruikt om een aanbevelings model te trainen. Deze module is gebaseerd op brede & diep gaande lessen, dat door Google wordt voorgesteld.
@@ -105,7 +105,7 @@ Een typische set met item functies kan er bijvoorbeeld als volgt uitzien:
 
     Deze afstemming bepaalt de grootte van de stap bij elke trainings stap, terwijl u naar een minimum van de verlies functie gaat. Een te groot leer tempo kan leiden tot meer informatie over de minima, terwijl een te klein leer tempo het convergentie probleem kan veroorzaken.
 
-7.  **Gekruiste functie dimensie**: Typ de dimensie van kruislings gekruiste gebruikers-id's en item-id's. 
+7.  **Dimensie gekruiste functie**: Typ de dimensie door de gewenste gebruikers-id's en de onderdelen van de item-id in te voeren. 
 
     Met de uitgebreide aanbevolen & diep gaande functie wordt de trans formatie op basis van gebruikers-id en item-id standaard uitgevoerd. Het gekruiste resultaat wordt gehasht op basis van dit aantal om ervoor te zorgen dat de dimensie.
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132719"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421430"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
 
@@ -18,12 +18,12 @@ In dit artikel worden veelvoorkomende problemen met de netwerk verbinding beschr
 
 Voor een goede werking van Site Recovery replicatie is uitgaande verbinding met specifieke Url's of IP-adresbereiken vereist van de virtuele machine. Als uw virtuele machine zich achter een firewall bevindt of gebruikmaakt van regels voor netwerk beveiligings groepen (NSG) om de uitgaande connectiviteit te beheren, kunt u een van deze problemen tegen komen.
 
-| URL | Details |
-|---|---|
-| `*.blob.core.windows.net` | Vereist zodat gegevens kunnen worden geschreven naar het cache-opslag account in de bron regio van de virtuele machine. Als u alle cache opslag accounts voor uw virtuele machines weet, kunt u een lijst met toegestane Url's gebruiken voor de specifieke URL van het opslag account. Bijvoorbeeld, `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` in plaats van `*.blob.core.windows.net` . |
-| `login.microsoftonline.com` | Vereist voor autorisatie en verificatie voor de Url's van de Site Recovery-service. |
-| `*.hypervrecoverymanager.windowsazure.com` | Vereist zodat de Site Recovery service communicatie kan worden uitgevoerd vanaf de virtuele machine. U kunt het bijbehorende _site Recovery IP-adres_ gebruiken als uw firewall proxy ip's ondersteunt. |
-| `*.servicebus.windows.net` | Vereist zodat de Site Recovery bewakings-en diagnostische gegevens van de virtuele machine kunnen worden geschreven. U kunt de bijbehorende _site Recovery bewakings-IP_ gebruiken als uw firewall proxy ip's ondersteunt. |
+| **Naam**                  | **Commercieel**                               | **Overheid**                                 | **Beschrijving** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Vereist zodat gegevens kunnen worden geschreven naar het cache-opslag account in de bron regio van de virtuele machine. Als u alle cache opslag accounts voor uw virtuele machines weet, kunt u een lijst met toegestane Url's gebruiken voor de specifieke URL van het opslag account. Bijvoorbeeld, `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` in plaats van `*.blob.core.windows.net` . |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Vereist voor autorisatie en verificatie voor de Url's van de Site Recovery-service. |
+| Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Vereist zodat de Site Recovery service communicatie kan worden uitgevoerd vanaf de virtuele machine. U kunt het bijbehorende _site Recovery IP-adres_ gebruiken als uw firewall proxy ip's ondersteunt. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Vereist zodat de Site Recovery bewakings-en diagnostische gegevens van de virtuele machine kunnen worden geschreven. U kunt de bijbehorende _site Recovery bewakings-IP_ gebruiken als uw firewall proxy ip's ondersteunt. |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Uitgaande connectiviteit voor Site Recovery Url's of IP-adresbereiken (fout code 151037 of 151072)
 
@@ -84,7 +84,7 @@ In dit voor beeld ziet u hoe u NSG-regels configureert voor replicatie van een v
 
    | Locatie | Site Recovery IP-adres | IP-adres van Site Recovery bewaking |
    | --- | --- | --- |
-   | VS - centraal | 40.69.144.231 | 52.165.34.144 |
+   | Central US | 40.69.144.231 | 52.165.34.144 |
 
 #### <a name="nsg-rules---central-us"></a>NSG-regels-VS-Centraal
 

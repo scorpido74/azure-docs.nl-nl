@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253185"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419730"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? 
 
@@ -27,7 +27,7 @@ Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van 
 > [!TIP]
 > Als u de app [office 365 (preview)](concept-conditional-access-cloud-apps.md#office-365-preview) gebruikt, zijn alle Office-apps gericht op het voor komen van problemen met service afhankelijkheden in de Office-stack.
 
-## <a name="policy-enforcement"></a>Afdwingen van beleid 
+## <a name="policy-enforcement"></a>Beleidsafdwinging 
 
 Als u een service afhankelijkheid hebt geconfigureerd, kan het beleid worden toegepast met behulp van vroegtijdige binding of een te late afhankelijk afdwinging. 
 
@@ -51,6 +51,7 @@ In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de
 |                     | SharePoint                                  | Vroeg gebonden |
 | Microsoft Teams     | Exchange                                    | Vroeg gebonden |
 |                     | MS planner                                  | Te laat gebonden  |
+|                     | Microsoft Stream                            | Te laat gebonden  |
 |                     | SharePoint                                  | Vroeg gebonden |
 |                     | Skype voor Bedrijven Online                   | Vroeg gebonden |
 | Office-Portal       | Exchange                                    | Te laat gebonden  |

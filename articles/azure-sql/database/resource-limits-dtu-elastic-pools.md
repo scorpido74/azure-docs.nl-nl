@@ -4,19 +4,19 @@ description: Op deze pagina worden enkele algemene DTU-resource limieten voor el
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: references_regions
+ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
-ms.date: 04/17/2020
-ms.openlocfilehash: 4377be82dfdb66ab7186d4472c8b1f5453b47809
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/28/2020
+ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325114"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420988"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Bronnen limieten voor elastische Pools met behulp van het DTU-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,9 +38,11 @@ Voor Azure SQL Database elastische Pools tonen de volgende tabellen de resources
 > [!IMPORTANT]
 > Zie [een elastische pool schalen](elastic-pool-scale.md) voor schaal baarheid en overwegingen
 
+De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools op basis van Dtu's en de servicelaag. Zo is het maximum aantal gelijktijdige werk rollen voor een S2-data base 120 werk nemers. Het maximum aantal gelijktijdige werk rollen voor een data base in een Standard-pool is dus ook 120 werk nemers als het maximale DTU per data base in de pool 50 Dtu's is (wat gelijk is aan S2).
+ 
+De resources die aan een elastische pool zijn gegeven, kunnen de bronnen die aan één Data Base zijn gegeven, buiten een elastische pool overschrijden voor hetzelfde aantal Dtu's. Dit betekent dat het eDTU-gebruik van een elastische pool kleiner moet zijn dan de som van het DTU-gebruik voor alle data bases in de pool, afhankelijk van de werkbelasting patronen. In een extreem geval met slechts één data base in een elastische pool waarvoor het gebruik van de data base-DTU 100% is, is het mogelijk dat het gebruik van de pool-eDTU 50% is voor bepaalde werkbelasting patronen. Dit kan zelfs gebeuren als er geen expliciete maximale DTU per data base is ingesteld. In dat geval is het DTU-verbruik van de gegroepeerde Data Base beperkt op dezelfde manier als DTU-verbruik van één data base met overeenkomende service doelstelling.
+
 > [!NOTE]
-> De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools op basis van Dtu's en de servicelaag. Zo is het maximum aantal gelijktijdige werk rollen voor een S2-data base 120 werk nemers. Het maximum aantal gelijktijdige werk rollen voor een data base in een Standard-pool is dus ook 120 werk nemers als het maximale DTU per data base in de pool 50 Dtu's is (wat gelijk is aan S2).
->
 > De resource limiet voor opslag per groep in elk van de volgende tabellen bevat geen tempdb-en logboek opslag.
 
 ### <a name="basic-elastic-pool-limits"></a>Basisbeperkingen voor elastische groepen

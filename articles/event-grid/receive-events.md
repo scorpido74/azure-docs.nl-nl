@@ -3,12 +3,13 @@ title: Gebeurtenissen ontvangen van Azure Event Grid naar een HTTP-eind punt
 description: Hierin wordt beschreven hoe u een HTTP-eind punt valideert en vervolgens gebeurtenissen van Azure Event Grid ontvangt en deserialiseren
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 460efc15c7b85821f422c9964eb246df883a849f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108189"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415105"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Gebeurtenissen op een HTTP-eindpunt ontvangen
 

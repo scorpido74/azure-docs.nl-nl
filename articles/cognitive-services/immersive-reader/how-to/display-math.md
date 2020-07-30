@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
-ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6bde75fe0fb856633d7849173faf21db76edc950
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946120"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406908"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>Wiskunde weer geven in de insluitende lezer
 
@@ -22,7 +23,7 @@ De insluitende lezer kan wiskundige formules weer geven wanneer deze zijn opgeno
 Het MIME-type kan worden ingesteld via het [segment](../reference.md#chunk)van de insluitende lezer. Zie [ondersteunde MIME-typen](../reference.md#supported-mime-types) voor meer informatie.
 
 ## <a name="send-math-to-the-immersive-reader"></a>Wiskunde naar de insluitende lezer verzenden
-Als u wiskunde wilt verzenden naar de insluitende lezer, geeft u een segment met MathML op en stelt u het ```application/mathml+xml```MIME-type in op;
+Als u wiskunde wilt verzenden naar de insluitende lezer, geeft u een segment met MathML op en stelt u het MIME-type in op ```application/mathml+xml``` ;
 
 Als uw inhoud bijvoorbeeld het volgende was:
 
@@ -73,4 +74,4 @@ Wanneer u de insluitende lezer start, ziet u het volgende:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](../reference.md)
+* De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](../reference.md) verkennen

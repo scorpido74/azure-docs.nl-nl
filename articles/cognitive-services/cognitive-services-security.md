@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: erhopf
-ms.custom: tracking-python
-ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 48e5f6d453e69dcbafd9aefe283eb2c880d4b48e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090838"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406636"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
@@ -51,7 +51,7 @@ Omgevings variabelen zijn naam/waarde-paren, die zijn opgeslagen in een specifie
 
 Als u omgevings variabelen wilt instellen, gebruikt u een van de volgende opdrachten: waarbij de de `ENVIRONMENT_VARIABLE_KEY` benoemde sleutel is en `value` de waarde is die is opgeslagen in de omgevings variabele.
 
-# <a name="command-line"></a>[Opdrachtregel](#tab/command-line)
+# <a name="command-line"></a>[Opdracht regel](#tab/command-line)
 
 Maak een permanente omgevings variabele en wijs deze toe, op basis van de waarde.
 
@@ -205,7 +205,7 @@ Klanten-lockbox is beschikbaar voor deze cognitieve service:
 
 Voor de volgende services heeft micro soft-technici geen toegang tot klant gegevens in de E0-laag: 
 
-* Taalbegrip
+* Taal begrijpen
 * Face
 * Content Moderator
 * Personalizer

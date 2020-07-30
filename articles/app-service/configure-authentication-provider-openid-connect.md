@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een OpenID Connect Connec
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 1a4f956c15fae640c2a7978a14bb95328dc9aa71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209632"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413915"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Configureer uw App Service-of Azure Functions-app om u aan te melden met een OpenID Connect Connect provider (preview-versie)
 
@@ -61,7 +61,7 @@ In deze sectie wordt uitgelegd hoe u de configuratie bijwerkt om uw nieuwe IDP o
        "registration" : {},
        "login": {
              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-             "loginScopes": [],
+             "scope": [],
              "loginParameterNames": [],
        }
     }
@@ -112,7 +112,7 @@ Een voorbeeld configuratie kan er als volgt uitzien (met aanmelden bij Apple als
                         "secretSettingName": "APPLE_GENERATED_CLIENT_SECRET"
                     },
                     "openIdConnectConfiguration": {
-                        "authorizationEndpoint": "https://appleid.apple.com/.well-known/openid-configuration"
+                        "wellKnownOpenIdConfiguration": "https://appleid.apple.com/.well-known/openid-configuration"
                     }
                 },
                 "login": {

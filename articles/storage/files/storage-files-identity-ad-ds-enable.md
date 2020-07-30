@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510451"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413099"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Deel 1: Schakel AD DS verificatie in voor uw Azure-bestands shares 
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters
@@ -85,7 +85,7 @@ Als u het bovenstaande script al hebt uitgevoerd `Join-AzStorageAccountForAuth` 
 
 ### <a name="checking-environment"></a>Omgeving controleren
 
-Eerst moet u de status van uw omgeving controleren. U moet in het bijzonder controleren of [Active Directory Power shell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) is geïnstalleerd en of de shell wordt uitgevoerd met beheerders bevoegdheden. Controleer vervolgens of de [module AZ. Storage 2,0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) is geïnstalleerd en installeer deze als dat niet het geval is. Nadat u deze controles hebt voltooid, controleert u uw AD DS om te zien of er een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) is dat al is gemaakt met SPN/UPN als CIFS/uw-Storage-account-name. file. core. Windows. net. Als het account niet bestaat, maakt u er een zoals beschreven in de volgende sectie.
+Eerst moet u de status van uw omgeving controleren. U moet in het bijzonder controleren of [Active Directory Power shell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) is geïnstalleerd en of de shell wordt uitgevoerd met beheerders bevoegdheden. Controleer vervolgens of de [Az.Storage 2.0-module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) is geïnstalleerd, en installeer deze als dit niet het geval is. Nadat u deze controles hebt voltooid, controleert u uw AD DS om te zien of er een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) is dat al is gemaakt met SPN/UPN als CIFS/uw-Storage-account-name. file. core. Windows. net. Als het account niet bestaat, maakt u er een zoals beschreven in de volgende sectie.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Een identiteit maken die het opslag account in uw AD hand matig weergeeft
 

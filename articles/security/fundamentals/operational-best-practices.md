@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283466"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423147"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -55,7 +55,7 @@ In de Azure-inschrijvings Portal kunt u ervoor zorgen dat de contact gegevens va
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure-abonnementen organiseren in beheer groepen
 Als uw organisatie veel abonnementen heeft, wilt u mogelijk de toegang, het beleid en de naleving voor die abonnementen op efficiënte wijze beheren. [Azure-beheer groepen](/azure/governance/management-groups/create) bieden een niveau van bereik dat hoger is dan abonnementen. U kunt abonnementen in containers met de naam beheer groepen organiseren en uw governance-voor waarden Toep assen op de-beheer groepen. Alle abonnementen in een beheergroep nemen automatisch de voorwaarden over die op de beheergroep zijn toegepast.
 
-U kunt een flexibele structuur van beheer groepen en abonnementen bouwen in een directory. Elke map krijgt één beheer groep op het hoogste niveau met de naam de hoofd beheer groep. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met de hoofd beheer groep kunnen globale beleids regels en RBAC-toewijzingen op mapniveau worden toegepast.
+U kunt een flexibele structuur van beheer groepen en abonnementen bouwen in een directory. Elke map krijgt één beheer groep op het hoogste niveau met de naam de hoofd beheer groep. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met de hoofd beheer groep kunnen globale beleids regels en Azure-roltoewijzingen op mapniveau worden toegepast.
 
 Hier volgen enkele aanbevolen procedures voor het gebruik van beheer groepen:
 

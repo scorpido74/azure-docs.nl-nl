@@ -2,13 +2,13 @@
 title: Met GPU ingeschakelde container instantie implementeren
 description: Meer informatie over het implementeren van Azure container instances voor het uitvoeren van Compute-container-apps met GPU-resources.
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076869"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387083"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Container instanties implementeren die GPU-bronnen gebruiken
 
@@ -33,9 +33,6 @@ De ondersteuning wordt gedurende de loop tijd aan extra regio's toegevoegd.
 
 ## <a name="about-gpu-resources"></a>Over GPU-bronnen
 
-> [!IMPORTANT]
-> GPU-resources zijn alleen op aanvraag beschikbaar. Als u toegang tot GPU-bronnen wilt aanvragen, moet u een [ondersteunings aanvraag voor Azure][azure-support]indienen.
-
 ### <a name="count-and-sku"></a>Aantal en SKU
 
 Als u Gpu's wilt gebruiken in een container exemplaar, geeft u een *GPU-resource* op met de volgende gegevens:
@@ -52,6 +49,9 @@ Als u Gpu's wilt gebruiken in een container exemplaar, geeft u een *GPU-resource
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 Wanneer u GPU-resources implementeert, stelt u de CPU-en geheugen resources in die geschikt zijn voor de werk belasting, tot aan de maximum waarden die in de voor gaande tabel worden weer gegeven. Deze waarden zijn momenteel groter dan de CPU-en geheugen bronnen die beschikbaar zijn in container groepen zonder GPU-resources.  
+
+> [!IMPORTANT]
+> Standaard [abonnements limieten](container-instances-quotas.md) (quota's) voor GPU-resources verschillen per SKU. De standaard CPU-limieten voor de P100-en V100-Sku's worden in eerste instantie ingesteld op 0. Als u een toename in een beschik bare regio wilt aanvragen, moet u een [ondersteunings aanvraag voor Azure][azure-support]indienen.
 
 ### <a name="things-to-know"></a>Dingen die u moet weten
 

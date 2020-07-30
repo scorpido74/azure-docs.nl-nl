@@ -4,12 +4,12 @@ description: Meer informatie over hoe Azure App Service het besturings systeem e
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78273624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414935"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
 
@@ -78,7 +78,7 @@ In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden
 | Informatie | Waar u het kunt vinden | 
 |-|-|
 | Windows-versie | Zie `https://<appname>.scm.azurewebsites.net/Env.cshtml` (onder systeem info) |
-| .NET-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET core-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `dotnet --version` |
 | PHP-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `php --version` |
 | Standaard Node.js versie | Voer in het [Cloud shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |

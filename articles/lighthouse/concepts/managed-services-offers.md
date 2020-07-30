@@ -1,14 +1,14 @@
 ---
 title: Aanbiedingen voor beheerde service in Azure Marketplace
 description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121585"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406857"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde service in Azure Marketplace
 
@@ -24,7 +24,10 @@ Daarna kunnen gebruikers in uw organisatie vanuit de Tenant van uw organisatie m
 
 Elk managed services-aanbod omvat een of meer abonnementen. Plannen kunnen privé of openbaar zijn.
 
-Als u uw aanbieding wilt beperken tot specifieke klanten, kunt u een privé-abonnement publiceren. Wanneer u dit doet, kan het abonnement alleen worden aangeschaft voor de specifieke] abonnements-Id's die u opgeeft. Zie voor meer informatie [persoonlijke aanbiedingen](../../marketplace/private-offers.md).
+Als u uw aanbieding wilt beperken tot specifieke klanten, kunt u een privé-abonnement publiceren. Wanneer u dit doet, kan het abonnement alleen worden aangeschaft voor de specifieke abonnements-Id's die u opgeeft. Zie voor meer informatie [persoonlijke aanbiedingen](../../marketplace/private-offers.md).
+
+> [!NOTE]
+> Persoonlijke aanbiedingen worden niet ondersteund met abonnementen die zijn gemaakt via een wederverkoper van het programma van de Cloud Solution Provider (CSP).
 
 Met open bare abonnementen kunt u uw services promo veren tot nieuwe klanten. Dit zijn doorgaans handiger wanneer u alleen beperkte toegang tot de Tenant van de klant nodig hebt. Zodra u een relatie met een klant tot stand hebt gebracht, kunt u dit doen door een nieuw privé-abonnement alleen voor die klant te publiceren of door [ze voor verdere toegang te gebruiken met behulp van Azure Resource Manager sjablonen](../how-to/onboard-customer.md).
 

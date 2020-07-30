@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091348"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421345"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
 
@@ -34,9 +34,9 @@ Zie voor meer informatie over het toewijzen van rollen aan beveiligings-principa
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>De impact van roltoewijzingen op het niveau van toegangs beheer lijsten op bestands-en mapniveau
 
-Hoewel het gebruik van RBAC-roltoewijzingen een krachtig mechanisme is om toegangs machtigingen te beheren, is het een zeer grof mechanisme dat relatief is ten opzichte van Acl's. De kleinste granulatie voor RBAC bevindt zich op het niveau van de container en deze wordt geëvalueerd met een hogere prioriteit dan Acl's. Als u een rol toewijst aan een beveiligingsprincipal in het bereik van een container, heeft die beveiligings-principal daarom het autorisatie niveau dat aan die rol is gekoppeld voor alle mappen en bestanden in die container, ongeacht de toewijzing van de toegangs beheer lijst.
+Hoewel het gebruik van Azure-roltoewijzingen een krachtig mechanisme is om toegangs machtigingen te beheren, is het een zeer grof mechanisme dat relatief is ten opzichte van Acl's. De kleinste granulatie voor RBAC bevindt zich op het niveau van de container en deze wordt geëvalueerd met een hogere prioriteit dan Acl's. Als u een rol toewijst aan een beveiligingsprincipal in het bereik van een container, heeft die beveiligings-principal daarom het autorisatie niveau dat aan die rol is gekoppeld voor alle mappen en bestanden in die container, ongeacht de toewijzing van de toegangs beheer lijst.
 
-Wanneer aan een beveiligingsprincipal RBAC-gegevens machtigingen worden verleend via een [ingebouwde rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)of via een aangepaste rol, worden deze machtigingen eerst geëvalueerd op basis van de autorisatie van een aanvraag. Als de aangevraagde bewerking wordt geautoriseerd door de RBAC-toewijzingen van de beveiligingsprincipal, wordt de autorisatie onmiddellijk opgelost en worden er geen extra ACL-controles uitgevoerd. Als de beveiligingsprincipal geen RBAC-toewijzing heeft of de bewerking van de aanvraag niet overeenkomt met de toegewezen machtiging, worden er ook ACL'S-controles uitgevoerd om te bepalen of de beveiligings-principal gemachtigd is om de aangevraagde bewerking uit te voeren.
+Wanneer aan een beveiligingsprincipal RBAC-gegevens machtigingen worden verleend via een [ingebouwde rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)of via een aangepaste rol, worden deze machtigingen eerst geëvalueerd op basis van de autorisatie van een aanvraag. Als de aangevraagde bewerking wordt geautoriseerd door de Azure-roltoewijzingen van de beveiligingsprincipal, wordt de autorisatie onmiddellijk opgelost en worden er geen extra ACL-controles uitgevoerd. Als de beveiligingsprincipal geen Azure-roltoewijzing heeft of de bewerking van de aanvraag niet overeenkomt met de toegewezen machtiging, worden er ook ACL'S-controles uitgevoerd om te bepalen of de beveiligingsprincipal gemachtigd is om de aangevraagde bewerking uit te voeren.
 
 > [!NOTE]
 > Als aan de beveiligingsprincipal de ingebouwde roltoewijzing voor de BLOB-gegevens eigenaar is toegewezen, wordt de beveiligingsprincipal beschouwd als een *super gebruiker* en krijgt hij volledige toegang tot alle muteren-bewerkingen, inclusief het instellen van de eigenaar van een map of bestand, evenals de acl's voor mappen en bestanden waarvoor ze niet de eigenaar zijn. Toegang voor Super gebruikers is de enige geautoriseerde manier om de eigenaar van een resource te wijzigen.
@@ -333,7 +333,7 @@ Wanneer u de juiste OID voor de Service-Principal hebt, gaat u naar de Storage E
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Ondersteunt Data Lake Storage Gen2 overname van Acl's?
 
-De toewijzingen van Azure RBAC nemen toe. Toewijzingen stroomt van de resources van het abonnement, de resource groep en het opslag account naar de container resource.
+Toewijzingen van Azure-rollen nemen toe. Toewijzingen stroomt van de resources van het abonnement, de resource groep en het opslag account naar de container resource.
 
 Acl's nemen niet over. Standaard-Acl's kunnen echter worden gebruikt om Acl's in te stellen voor onderliggende submappen en bestanden die zijn gemaakt in de bovenliggende map. 
 
@@ -348,6 +348,6 @@ Acl's nemen niet over. Standaard-Acl's kunnen echter worden gebruikt om Acl's in
 * [POSIX ACL in Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL met behulp van toegangs beheer lijsten op Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Overzicht van Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

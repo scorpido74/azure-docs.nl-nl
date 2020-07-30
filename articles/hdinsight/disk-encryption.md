@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536298"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387843"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Schijfversleuteling met behulp van door klant beheerde sleutel
 
@@ -30,7 +30,7 @@ Zowel de bron schijf als de beheerde schijven op elk knoop punt van het cluster 
 
 Als de sleutel kluis firewall is ingeschakeld op de sleutel kluis waarop de schijf versleutelings sleutel is opgeslagen, moeten de IP-adressen van de HDInsight regionale resource provider voor de regio waar het cluster wordt geïmplementeerd, worden toegevoegd aan de firewall configuratie van de sleutel kluis. Dit is nodig omdat HDInsight geen vertrouwde Azure Key kluis-service is.
 
-U kunt de Azure Portal of Azure CLI gebruiken om de sleutels in de sleutel kluis veilig te draaien. Wanneer een sleutel draait, begint het HDInsight-cluster binnen enkele minuten met de nieuwe sleutel. Schakel de beveiliging van de functie voor het [voorlopig verwijderen](../key-vault/general/overview-soft-delete.md) van sleutels in voor beveiliging tegen Ransomware-scenario's en onbedoeld verwijderen. Sleutel kluizen zonder deze beveiligings functie worden niet ondersteund.
+U kunt de Azure Portal of Azure CLI gebruiken om de sleutels in de sleutel kluis veilig te draaien. Wanneer een sleutel draait, begint het HDInsight-cluster binnen enkele minuten met de nieuwe sleutel. Schakel de beveiliging van de functie voor het [voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) van sleutels in voor beveiliging tegen Ransomware-scenario's en onbedoeld verwijderen. Sleutel kluizen zonder deze beveiligings functie worden niet ondersteund.
 
 |Cluster type |BESTURINGSSYSTEEM schijf (beheerde schijf) |Gegevens schijf (beheerde schijf) |Tijdelijke gegevens schijf (lokale SSD) |
 |---|---|---|---|

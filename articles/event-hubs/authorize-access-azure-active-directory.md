@@ -3,12 +3,12 @@ title: Toegang autoriseren met behulp van Azure Active Directory
 description: In dit artikel vindt u informatie over het verlenen van toegang tot Event Hubs-resources met behulp van Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6d1be2825ea716c72d70cd38babbb2d95083198
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371495"
+ms.locfileid: "87413388"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
 Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -49,7 +49,7 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Event Hu
 - **Abonnement**: roltoewijzing is van toepassing op alle Event hubs resources in alle resource groepen in het abonnement.
 
 > [!NOTE]
-> - Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
+> - Houd er rekening mee dat Azure-roltoewijzingen het Maxi maal vijf minuten kan duren voordat deze wordt door gegeven. 
 > - Deze inhoud is van toepassing op zowel Event Hubs als Event Hubs voor Apache Kafka. Zie [Event hubs voor Kafka-beveiliging en-verificatie](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)voor meer informatie over Event hubs voor Kafka-ondersteuning.
 
 

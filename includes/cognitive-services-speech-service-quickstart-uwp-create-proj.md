@@ -4,104 +4,104 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 8f7723ecaf6587eb61474304b0b5784413ac6f86
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: 2dcc018c65625825436bd1050cdf7f3b9d3131e2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544754"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375461"
 ---
-Als u een Visual Studio project for Universeel Windows-platform-ontwikkeling (UWP) wilt maken, moet u Visual Studio-ontwikkel opties instellen, het project maken, de doel architectuur selecteren, audio-opname instellen en de spraak-SDK installeren.
+Als u een Visual Studio-project voor UWP-ontwikkeling (Universeel Windows-platform) wilt maken, moet u ontwikkelingsopties voor Visual Studio instellen, het project maken, de doelarchitectuur selecteren, audio-opname instellen en de Speech-SDK installeren.
 
-### <a name="set-up-visual-studio-development-options"></a>Ontwikkel opties voor Visual Studio instellen
+### <a name="set-up-visual-studio-development-options"></a>Ontwikkelopties instellen in Visual Studio
 
-Zorg ervoor dat u op de juiste wijze is ingesteld in Visual Studio for UWP Development:
+Zorg er eerst voor dat Visual Studio correct is ingesteld voor UWP-ontwikkeling:
 
-1. Open Visual Studio 2019 om het **Start** venster weer te geven.
+1. Open Visual Studio 2019 om het**Start**-venster weer te geven.
 
-   ![Start venster-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
+   ![Startvenster: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
 
-1. Selecteer **door gaan zonder code** om naar de Visual Studio IDE te gaan.
+1. Selecteer **Doorgaan zonder code** om naar de Visual Studio-IDE te gaan.
 
-1. Selecteer in de menu balk van Visual Studio **hulpprogram**ma's  >  **en functies ophalen** om Visual Studio Installer te openen en het dialoog venster **wijzigen** te bekijken.
+1. Selecteer in de menubalk van Visual Studio **Tools** (Extra) > **Get Tools and Features** (Hulpprogramma's en functies ophalen) om Visual Studio Installer te openen en het dialoogvenster **Modifying** (Wijzigen) te bekijken.
 
-   ![Het tabblad werk belastingen, het dialoog venster wijzigen, Visual Studio Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
+   ![Tabblad Workloads (Werkbelastingen), dialoogvenster Modifying (Wijzigen), Visual Studio Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
-1. Ga op het tabblad **workloads** naar de **universeel Windows-platform Development** **-werk**belasting. Als het selectie vakje naast deze werk belasting al is geselecteerd, sluit u het dialoog venster **wijzigen** en gaat u naar stap 6.
+1. Ga op het tabblad **Workloads** (Werkbelastingen) onder **Windows** naar de werkbelasting **Universal Windows Platform** (Universeel Windows-platform). Als het selectievakje naast deze werkbelasting al is geselecteerd, sluit u het dialoogvenster **Modifying** (Wijzigen) en gaat u naar stap 6.
 
-1. Schakel het selectie vakje **universeel Windows-platform-ontwikkeling** in, selecteer **wijzigen**en selecteer vervolgens in het dialoog venster voordat u aan de **slag** gaat, de optie **door gaan** om de UWP Development-werk belasting te installeren. De installatie van de nieuwe functie kan enige tijd duren.
+1. Schakel het selectievakje **Universal Windows Platform development** (Ontwikkelen voor Universeel Windows-platform) in, selecteer **Modify** (Wijzigen), en selecteer vervolgens in het dialoogvenster **Before we get started** (Voordat we beginnen) **Continue** (Doorgaan) om de UWP-ontwikkelingswerkbelasting te installeren. Het installeren van de nieuwe functie kan even duren.
 
 1. Sluit Visual Studio Installer.
 
-### <a name="create-the-project-and-select-the-target-architecture"></a>Het project maken en de doel architectuur selecteren
+### <a name="create-the-project-and-select-the-target-architecture"></a>Het project maken en de doelarchitectuur selecteren
 
 Maak vervolgens uw project:
 
-1. Kies in de menu balk van Visual Studio de optie **bestand**  >  **Nieuw**  >  **project** om het venster **een nieuw project maken** weer te geven.
+1. Kies in de menubalk van Visual Studio **File** (Bestand) > **New** (Nieuw) > **Project** om het venster **Create a new project** (Een nieuw project maken) te openen.
 
-   ![Een nieuw project maken-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
+   ![Een nieuw project maken: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
-1. Zoek en selecteer een **lege app (Universal Windows)**. Zorg ervoor dat u de C#-versie van dit project type selecteert (in plaats van Visual Basic).
+1. Zoek en selecteer **Blank App (Universal Windows)** (Lege app (Universal Windows)). Zorg ervoor dat u de C#-versie van dit projecttype selecteert (in plaats van Visual Basic).
 
-1. Selecteer **volgende** om het scherm **uw nieuwe project configureren** weer te geven.
+1. Selecteer **Next** (Volgende) om het scherm **Configure your new project** (Uw nieuwe project configureren) weer te geven.
 
-   ![Uw nieuwe project configureren-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
+   ![Uw nieuwe project configureren: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
-1. Voer in **project naam**in `helloworld` .
+1. Voer bij **Project name** (Projectnaam) `helloworld` in.
 
-1. Navigeer in **locatie**naar en selecteer of maak de map waarin u uw project wilt opslaan.
+1. Navigeer in **Location** (Locatie) naar de map waarin u uw project wilt opslaan en selecteer deze, of maak deze map.
 
-1. Selecteer **maken** om naar het **nieuwe universeel Windows-platform project** venster te gaan.
+1. Selecteer **Create** (Maken) om naar het venster **New Universal Windows Platform Project** (Nieuw Universeel Windows-platformproject) te gaan.
 
-   ![Het dialoog venster Nieuw Universeel Windows-platform project-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+   ![Dialoogvenster New Universal Windows Platform Project: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
-1. In **minimale versie** (de tweede vervolg keuzelijst) kiest u update van **Windows 10 najaar-makers (10,0; Build 16299)**: dit is de minimale vereiste voor de spraak-SDK.
+1. Kies in de tweede vervolgkeuzelijst, **Minimum version** (Minimale versie), **Windows 10 Fall Creators Update (10.0; Build 16299)** . Dit is de minimale vereiste voor de Speech-SDK.
 
-1. Kies in **doel versie** (de eerste vervolg keuzelijst) een waarde die gelijk is aan of hoger dan de waarde in **minimum versie**.
+1. Kies in de eerste vervolgkeuzelijst, **Target version** (Doelversie), een waarde die gelijk is aan of hoger is dan de waarde in **Minimum version**.
 
-1. Selecteer **OK**. U keert terug naar Visual Studio IDE, met het nieuwe project gemaakt en zichtbaar in het deel venster **Solution Explorer** .
+1. Selecteer **OK**. U keert terug naar de Visual Studio0IDE, met het nieuwe project gemaakt en zichtbaar in het deelvenster **Solution Explorer** (Oplossingsverkenner).
 
-   ![HelloWorld-project-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
+   ![helloworld-project: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 
-Selecteer nu de architectuur van het doel platform. Zoek in de werk balk van Visual Studio de vervolg keuzelijst **platformen voor oplossingen** . (Als dit niet wordt weer gegeven, kiest u **weer gave**  >  **Werk balken**  >  **Standaard** om de werk balk met **oplossings platforms**weer te geven.) Als u een 64-bits versie van Windows gebruikt, kiest u **x64** in de vervolg keuzelijst. 64-bits Windows kan ook 32-bits toepassingen uitvoeren, zodat u kunt kiezen voor **x86** als u dat wilt.
+Selecteer nu de doelplatformarchitectuur. Ga op de werkbalk van Visual Studio naar de vervolgkeuzelijst **Solution Platforms** (Oplossingsplatforms). (Als u deze niet ziet, kiest u **View** (Beeld) > **Toolbars** (Werkbalken) > **Standard** (Standaard) om de werkbalk met **Solution Platforms** weer te geven.) Als u een 64-bits versie van Windows gebruikt, kiest u **x64** in de vervolgkeuzelijst. Met 64-bits Windows kunt u ook 32-bits toepassingen uitvoeren, dus u kunt **x86** kiezen als u dat liever hebt.
 
 > [!NOTE]
-> De Speech SDK ondersteunt alle Intel-compatibele processors, maar **alleen x64** -versies van arm-processors.
+> De Speech-SDK ondersteunt alle Intel-compatibele processors, maar **alleen x64**-versies van ARM-processors.
 
 ### <a name="set-up-audio-capture"></a>Audio-opname instellen
 
-Hiermee staat u toe dat het project audio-invoer vastlegt:
+Mogelijk maken dat het project audio-invoer vastlegt:
 
-1. Dubbel klik in **Solution Explorer**op **package. appxmanifest** om het manifest van het pakket toepassing te openen.
+1. Dubbelklik in **Solution Explorer** op **Package.appxmanifest** om het toepassingsmanifest van het pakket te bewerken.
 
-1. Selecteer het tabblad **Mogelijkheden**.
+1. Selecteer het tabblad **Capabilities** (Mogelijkheden).
 
-   ![Tabblad mogelijkheden, pakket toepassings manifest-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-07-capabilities.png)
+   ![Tabblad Capabilities, pakkettoepassingsmanifest: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-07-capabilities.png)
 
-1. Schakel het selectie vakje in voor de **microfoon** mogelijkheid.
+1. Schakel het selectievakje in voor de mogelijkheid **Microphone** (Microfoon).
 
-1. Kies in de menu balk **File**  >  **Save package. appxmanifest** om uw wijzigingen op te slaan.
+1. Kies in de menubalk **File** (Bestand) > **Save Package.appxmanifest** (Package.appxmanifest opslaan) om uw wijzigingen op te slaan.
 
 ### <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
-Installeer tot slot het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget)en verwijs naar de Speech SDK in uw project:
+Installeer tot slot het [Speech SDK NuGet package](https://aka.ms/csspeech/nuget) en verwijs in uw project naar de Speech-SDK:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op uw oplossing en kies **NuGet-pakketten beheren voor oplossing** om naar het venster **NuGet-Solution** te gaan.
+1. Klik in **Solution Explorer** met de rechtermuisknop op de oplossing en kies **Manage NuGet Packages for Solution** (NuGet-pakketten voor oplossing beheren) om naar het venster **NuGet - Solution** te gaan.
 
 1. Selecteer **Bladeren**.
 
    ![Schermafbeelding van het dialoogvenster Manage Packages for Solution](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
-1. Kies in **pakket bron**de optie **nuget.org**.
+1. Kies **nuget.org**in **Package source** (Pakketbron).
 
-1. Voer in het **zoekvak** in `Microsoft.CognitiveServices.Speech` en kies vervolgens dat pakket nadat het in de zoek resultaten wordt weer gegeven.
+1. Voer in het vak **Search** (Zoeken) `Microsoft.CognitiveServices.Speech` in, en kies dat pakket wanneer het in de zoekresultaten wordt weergegeven.
 
    ![Schermafbeelding van het dialoogvenster Manage Packages for Solution](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
-1. Selecteer uw **HelloWorld** -project in het deel venster pakket status naast de zoek resultaten.
+1. Selecteer in het deelvenster met de pakketstatus naast de zoekresultaten uw **helloworld**-project.
 
 1. Selecteer **Installeren**.
 
-1. Selecteer **OK**in het dialoog venster **voor beeld van wijzigingen** .
+1. Selecteer **OK**in het dialoog venster **Preview Changes** (Voorbeeld van wijzigingen bekijken).
 
-1. Bekijk in het dialoog venster **licentie acceptatie** de licentie en selecteer vervolgens **Ik ga akkoord**. De installatie van het pakket wordt gestart en wanneer de installatie is voltooid, wordt in het deel venster **uitvoer** een bericht weer gegeven dat vergelijkbaar is met de volgende tekst: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld` .
+1. Lees de licentie in het dialoogvenster **License Acceptance** (Acceptatie van licentie) en selecteer **I Accept** (Ik ga akkoord). De installatie van het pakket wordt gestart, en wanneer de installatie is voltooid, wordt in het deelvenster **Output** (Uitvoer) een bericht weergegeven met een bericht als `Successfully installed 'Microsoft.CognitiveServices.Speech 1.13.0' to helloworld`.

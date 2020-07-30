@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b49d757067d8ee888bee52f3931c8d48d786c044
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: MT
+ms.openlocfilehash: c0ca96d1829a73f856de021d1286e53007b03219
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024883"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368967"
 ---
-Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Blob-en wachtrij gegevens met behulp van Azure AD en OAuth:
+Azure bevat de volgende ingebouwde Azure-rollen voor het autoriseren van toegang tot blob- en wachtrijgegevens met behulp van Azure AD en OAuth:
 
-- [Eigenaar](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner)van de gegevens van de opslag-blob: gebruiken om het eigendom in te stellen en POSIX Access Control te beheren voor Azure data Lake Storage Gen2. Zie [toegangs beheer in azure data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md)voor meer informatie.
-- [Inzender voor gegevens](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor)van de opslag-blob: gebruiken om machtigingen voor lezen/schrijven/verwijderen te verlenen aan Blob Storage-resources.
-- [Gegevens lezer](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader)van de opslag-blob: gebruik deze om alleen-lezen-machtigingen te verlenen aan Blob Storage-resources.
-- Delegering van de [opslag-BLOB](../articles/role-based-access-control/built-in-roles.md#storage-blob-delegator): een sleutel voor gebruikers overdracht ophalen die moet worden gebruikt voor het maken van een gedeelde toegangs handtekening die is ondertekend met Azure AD-referenties voor een container of BLOB.
-- [Inzender voor gegevens van de opslag wachtrij](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): gebruiken om machtigingen voor lezen/schrijven/verwijderen te verlenen aan Azure-wacht rijen.
-- [Gegevens lezer van de opslag wachtrij](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): gebruik dit om alleen-lezen-machtigingen te verlenen aan Azure-wacht rijen.
-- [Processor voor gegevens berichten van de opslag wachtrij](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): gebruik dit om machtigingen voor weer geven, ophalen en verwijderen te verlenen aan berichten in azure Storage wachtrijen.
-- [Gegevens bericht van de opslag wachtrij](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): gebruik om machtigingen toe te kennen voor berichten in azure Storage wacht rijen.
+- [Eigenaar van opslagblobgegevens](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Gebruik om het eigendom in te stellen en POSIX-toegangsbeheer voor Azure Data Lake Storage Gen2 te regelen. Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md) voor meer informatie.
+- [Bijdrager voor opslagblobgegevens](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Gebruik om lees-/schrijf-/verwijderrechten toe te kennen aan Blob-opslagresources.
+- [Lezer voor opslagblobgegevens](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader): Gebruik om alleen-lezenrechten toe te kennen aan Blob-opslagresources.
+- [Storage Blob-delegator](../articles/role-based-access-control/built-in-roles.md#storage-blob-delegator): Haal een sleutel voor gebruikersoverdracht op om te gebruiken voor het maken van een handtekening voor gedeelde toegang die is ondertekend met Azure AD-referenties voor een container of blob.
+- [Bijdrager voor opslagwachtrijgegevens](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Gebruik om lees-/schrijf-/verwijderrechten toe te kennen voor Azure-wachtrijen.
+- [Lezer voor opslagwachtrijgegevens](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): Gebruik om alleen-lezenrechten toe te kennen voor Azure-wachtrijen.
+- [Berichtenprocessor voor opslagwachtrijgegevens](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Gebruik om machtigingen voor weergeven, ophalen en verwijderen van berichten in Azure Storage-wachtrijen te verlenen.
+- [Berichtenverzender voor opslagwachtrijgegevens](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Gebruik om machtigingen voor toevoegen van berichten in Azure Storage-wachtrijen te verlenen.
 
-Alleen rollen die expliciet zijn gedefinieerd voor toegang tot gegevens, hebben een beveiligingsprincipal toegestaan om toegang te krijgen tot BLOB-of wachtrij gegevens. Ingebouwde rollen, zoals **eigenaar**, **Inzender**en **Inzender voor opslag accounts** , hebben een beveiligingsprincipal toe om een opslag account te beheren, maar bieden geen toegang tot de BLOB-of wachtrij gegevens binnen dat account via Azure AD. Als een rol echter de **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat, kan een gebruiker aan wie de rol is toegewezen, toegang krijgen tot gegevens in het opslag account via de verificatie van de gedeelde sleutel met de toegangs sleutels voor het account. Zie [de Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens](../articles/storage/common/storage-access-blobs-queues-portal.md)voor meer informatie.
+Alleen met rollen die expliciet zijn gedefinieerd voor toegang tot gegevens, kan een beveiligingsprincipal toegang krijgen tot blob- of wachtrijgegevens. Met ingebouwde rollen zoals **Eigenaar**, **Inzender**, en **Inzender voor opslagaccounts** kan een beveiligingsprincipal een opslagaccount te beheren, maar heeft geen toegang tot de blob- of wachtrijgegevens binnen dat account via Azure AD. Als een rol echter de **Microsoft.Storage/storageAccounts/listKeys/action** bevat, heeft een gebruiker aan wie die rol is toegewezen, toegang tot gegevens in het opslagaccount via gedeelde-sleutelautorisatie met de accounttoegangssleutels. Zie [Use the Azure portal to access blob or queue data](../articles/storage/common/storage-access-blobs-queues-portal.md) (De Azure-portal gebruiken om toegang te krijgen tot blob- of wachtrijgegevens) voor meer informatie.
 
-Zie de sectie **opslag** in [Azure ingebouwde rollen voor Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage)voor meer informatie over ingebouwde RBAC-rollen voor Azure Storage voor de gegevens Services en de beheer service. Zie voor meer informatie over de verschillende soorten rollen die machtigingen bieden in azure [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-rollen](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
+Voor gedetailleerde informatie over ingebouwde rollen van Azure voor Azure Storage voor zowel de gegevensservices als de beheerservice raadpleegt u de sectie **Storage** in [Ingebouwde Azure-rollen voor Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage). Zie voor meer informatie over de verschillende soorten rollen die machtigingen bieden in Azure [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-rollen](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
 > [!IMPORTANT]
-> RBAC-roltoewijzingen kunnen tot vijf minuten duren voordat het kan worden door gegeven.
+> Het kan vijf minuten duren voordat RBAC-roltoewijzingen zijn doorgegeven.

@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 668b8d714c4d6c146d9b279d9e6a49599c04775c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870520"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423504"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Veilige overdracht vereisen om beveiligde verbindingen te garanderen
 
@@ -51,7 +51,7 @@ U kunt de eigenschap **beveiligde overdracht vereist** inschakelen wanneer u een
 
 ## <a name="require-secure-transfer-from-code"></a>Veilige overdracht van code vereisen
 
-Stel de eigenschap _supportsHttpsTrafficOnly_ in op het opslag account om een veilige overdracht via een programma te vereisen. U kunt deze eigenschap instellen met behulp van de opslag Resource provider REST API, client bibliotheken of hulpprogram ma's:
+Als u de beveiligde overdracht via een programma wilt vereisen, stelt u de eigenschap _enableHttpsTrafficOnly_ in op _True_ voor het opslag account. U kunt deze eigenschap instellen met behulp van de opslag Resource provider REST API, client bibliotheken of hulpprogram ma's:
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)

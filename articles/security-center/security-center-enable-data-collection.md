@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519711"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387367"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevensverzameling in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker.
@@ -211,15 +211,17 @@ In Security Center wordt de Log Analytics agent-extensie naast elkaar geïnstall
     - Als u een omgeving hebt waarin de Log Analytics-agent is geïnstalleerd op client werkstations en rapportage aan een bestaande Log Analytics-werk ruimte, controleert u de lijst met [besturings systemen die worden ondersteund door Azure Security Center](security-center-os-coverage.md) om ervoor te zorgen dat uw besturings systeem wordt ondersteund. Zie [bestaande log Analytics-klanten](./faq-azure-monitor-logs.md)voor meer informatie.
  
 ### <a name="turn-off-automatic-provisioning"></a>Automatische inrichting uitschakelen<a name="offprovisioning"></a>
-U kunt op elk gewenst moment automatische inrichting van resources uitschakelen door deze instelling uit te scha kelen in het beveiligings beleid. 
+Automatische inrichting van de Log Analytics-agent uitschakelen:
 
+1. Selecteer in het menu van Security Center in de portal **prijzen & instellingen**.
+2. Selecteer het betreffende abonnement.
 
-1. Ga terug naar het hoofd menu van Security Center en selecteer het beveiligings beleid.
-2. Klik op **Instellingen bewerken** in de rij van het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
-3. Selecteer op de pagina **beveiligings beleid – gegevens verzameling** onder **automatische inrichting** de optie **uitschakelen**.
-4. Selecteer **Opslaan**.
+   ![Abonnement selecteren][7]
 
-   ![Automatische inrichting uitschakelen][6]
+3. Selecteer **gegevens verzameling**.
+4. Onder **automatische inrichting**selecteert u **uitschakelen** om automatische inrichting uit te scha kelen.
+5. Selecteer **Opslaan**. 
+
 
 Als automatisch inrichten is uitgeschakeld (uitgeschakeld), wordt de sectie standaard configuratie van werk ruimte niet weer gegeven.
 

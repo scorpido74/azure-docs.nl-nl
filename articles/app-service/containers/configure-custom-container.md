@@ -3,12 +3,12 @@ title: Een aangepaste Linux-container configureren
 description: Meer informatie over het configureren van een aangepaste Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a3e360270ac388d0f8434a9184d39d602c98e9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008588"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422773"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Een aangepaste Linux-container voor Azure App Service configureren
 
@@ -155,10 +155,6 @@ In de volgende lijsten worden ondersteunde en niet-ondersteunde docker-configura
 
 > [!NOTE]
 > Alle andere opties die niet expliciet worden aangeroepen, worden genegeerd in de open bare preview-versie.
-
-## <a name="configure-vnet-integration"></a>VNet-integratie configureren
-
-Voor het gebruik van een aangepaste container met VNet-integratie is mogelijk extra container configuratie vereist. Zie [uw app integreren met een Azure-Virtual Network](../web-sites-integrate-with-vnet.md).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

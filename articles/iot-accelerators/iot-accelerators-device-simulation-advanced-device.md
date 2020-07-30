@@ -12,12 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- devx-track-javascript
+ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683833"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422535"
 ---
 # <a name="create-an-advanced-device-model"></a>Een geavanceerd apparaatmodel maken
 
@@ -67,7 +68,7 @@ Elk definitie bestand voor het apparaat bevat details van een model met gesimule
 * Het schema van de telemetrie-berichten, gebruikt door de back-endtoepassing voor het parseren van de ontvangen telemetrie.
 * Een lijst met ondersteunde methoden en het Java script-bestand dat moet worden gebruikt voor het simuleren van elke methode.
 
-### <a name="file-schema"></a>Bestands schema
+### <a name="file-schema"></a>Bestandsschema
 
 De schema versie is altijd "1.0.0" en is specifiek voor de indeling van dit bestand:
 

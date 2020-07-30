@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119970"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387044"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
@@ -23,19 +23,19 @@ Dit artikel bevat een overzicht van de aanbevolen procedures voor het maken van 
 
 Evaluaties die u maakt met Azure Migrate server-evaluatie zijn een tijdgebonden moment opname van gegevens. Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server evaluatie:
 
-**Beoordelings type** | **Details**
+**Evaluatietype** | **Details**
 --- | --- 
-**Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type. [Meer informatie](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Evaluaties om uw on-premises servers te migreren naar virtuele Azure-machine. <br/><br/> U kunt uw on-premises [VMware-VM's](how-to-set-up-appliance-vmware.md), [Hyper-V-VM's](how-to-set-up-appliance-hyper-v.md) en [fysieke servers](how-to-set-up-appliance-physical.md) evalueren voor migratie naar Azure met dit evaluatietype. [Meer informatie](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Evaluaties om uw on-premises servers te migreren naar [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [VMware-VM’s](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware Solution (AVS) met dit evaluatietype. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 
-### <a name="sizing-criteria"></a>Grootte criteria
-Server beoordeling biedt twee opties voor het aanpassen van de grootte:
+### <a name="sizing-criteria"></a>Criteria voor het aanpassen van de grootte
+Server Assessment biedt twee opties voor criteria voor het aanpassen van de grootte:
 
-**Grootte criteria** | **Details** | **Gegevens**
+**Criteria voor het aanpassen van de grootte** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | **Evaluatie**van de Azure-VM: aanbeveling van de VM-grootte is gebaseerd op de gegevens van het CPU-en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.<br/><br/> **Evaluatie van de Azure VMware-oplossing (AVS)**: de aanbeveling voor AVS-knoop punten is gebaseerd op de CPU-en geheugen gebruiks gegevens.
-**As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | **Azure VM-evaluatie**: aanbeveling van de VM-grootte is gebaseerd op de on-PREMISes VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op wat u selecteert in de instelling opslag type voor de evaluatie.<br/><br/> **Evaluatie van de Azure VMware-oplossing (AVS)**: de aanbeveling voor AVS-knoop punten is gebaseerd op de on-PREMISes VM-grootte.
+**Op basis van prestaties** | Evaluaties die aanbevelingen doen op basis van verzamelde prestatiegegevens | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> Aanbeveling voor schijftype (standaard HDD/SSD of premium-beheerde schijven) is gebaseerd op de IOPS en doorvoer van de on-premises schijven.<br/><br/> **AVS-evaluatie (Azure VMware Solution)**: Aanbeveling voor AVS-knooppunten is gebaseerd op verbruiksgegevens voor CPU en geheugen.
+**As-is on-premises** | Evaluaties die geen gebruik maken van prestatiegegevens voor aanbevelingen. | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> De aanbeveling voor het schijftype is gebaseerd op de instelling die u selecteert bij het opslagtype voor de evaluatie.<br/><br/> **AVS-evaluatie (Azure VMware Solution)**: Aanbeveling voor AVS-knooppunten is gebaseerd op de on-premises VM-grootte.
 
 #### <a name="example"></a>Voorbeeld
 Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en geheugen van 8 GB met 10% gebruik, is de Azure VM-evaluatie als volgt:
@@ -67,15 +67,15 @@ Volg deze aanbevolen procedures voor evaluaties van servers die in Azure Migrate
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>FTT-formaat parameters voor AVS-evaluaties
 
-De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN Storage policies bepalen opslag vereisten voor uw virtuele machines. Met deze beleids regels wordt het vereiste service niveau voor uw virtuele machines gegarandeerd, omdat ze bepalen hoe opslag wordt toegewezen aan de virtuele machine. Dit zijn de beschik bare FTT-RAID-combi Naties: 
+De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN-opslagbeleid definieert de opslagvereisten voor virtuele machines. Deze beleidsregels garanderen het vereiste serviceniveau voor VM’s, omdat ze bepalen hoe opslag wordt toegewezen aan de VM. Dit zijn de beschikbare FTT-RAID-combinaties: 
 
-**Te verdragen fouten (FTT)** | **RAID-configuratie** | **Minimum aantal hosts vereist** | **Grootte van overwegingen**
+**FTT (te tolereren fouten)** | **RAID-configuratie** | **Minimumaantal vereiste hosts** | **Overwegingen voor de grootte**
 --- | --- | --- | --- 
-1 | RAID-1 (spie gelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
-1 | RAID-5 (code ring verwijderen) | 4 | Een VM van 100 GB verbruikt 133.33 GB
-2 | RAID-1 (spie gelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
-2 | RAID-6 (code ring verwijderen) | 6 | Een VM van 100 GB gebruikt 150 GB.
-3 | RAID-1 (spie gelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
+1 | RAID-1 (spiegelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
+1 | RAID-5 (verwijdering coderen) | 4 | Een VM van 100 GB verbruikt 133,33 GB
+2 | RAID-1 (spiegelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
+2 | RAID-6 (verwijdering coderen) | 6 | Een VM van 100 GB verbruikt 150 GB.
+3 | RAID-1 (spiegelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
 
 
 ## <a name="best-practices-for-confidence-ratings"></a>Aanbevolen procedures voor betrouwbaarheids classificaties
@@ -131,9 +131,9 @@ Een evaluatie heeft mogelijk niet alle gegevens punten om een aantal redenen:
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>Richt lijnen voor migratie Hulpprogramma's voor AVS-evaluaties
 
-In het Azure Readiness-rapport voor de evaluatie van Azure VMware-oplossingen (AVS) kunt u de volgende aanbevolen hulpprogram ma's zien: 
+In het Azure-gereedheidsrapport voor AVS-evaluatie (Azure VMware Solution) ziet u de volgende voorgestelde hulpprogramma’s: 
 - **VMware HCX of ENTER prise**: voor VMware-machines is de VMware Hybrid Cloud extension (HCX)-oplossing het aanbevolen migratie programma voor het migreren van uw on-premises werk belasting naar uw Azure VMware-oplossing (AVS) Private Cloud. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
-- **Onbekend**: voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken.
+- **Onbekend**: Voor machines die zijn geïmporteerd via een CSV-bestand, is het standaardhulpprogramma voor migratie onbekend. Voor VMware-machines is het echter raadzaam de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken.
 
 
 ## <a name="next-steps"></a>Volgende stappen

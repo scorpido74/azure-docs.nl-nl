@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: a4dc2604dbd62da1baa4278ff3463f41337886bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052506"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385582"
 ---
 # <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Synapse Studio (preview) gebruiken om uw Apache Spark-toepassingen te bewaken
 
@@ -22,7 +22,7 @@ Met Azure Synapse Analytics kunt u Spark gebruiken om notitie blokken, taken en 
 
 In dit artikel wordt uitgelegd hoe u uw Apache Spark-toepassingen kunt bewaken, zodat u de meest recente status, problemen en voortgang kunt blijven gebruiken.
 
-## <a name="accessing-the-list-of-apache-spark-applications"></a>Toegang tot de lijst met Apache Spark toepassingen
+## <a name="access-apache-spark-applications-list"></a>Lijst met toegang tot Apache Spark toepassingen
 
 Als u de lijst met Apache Spark toepassingen in uw werk ruimte wilt zien, opent u eerst [de Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werk ruimte.
 
@@ -36,7 +36,7 @@ Selecteer **Apache Spark toepassingen** om de lijst met Apache Spark toepassinge
 
  ![Spark-toepassingen selecteren](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
 
-## <a name="filtering-your-apache-spark-applications"></a>Uw Apache Spark-toepassingen filteren
+## <a name="filter-your-apache-spark-applications"></a>Uw Apache Spark-toepassingen filteren
 
 U kunt de lijst met Apache Spark toepassingen filteren op degene die u wilt. Met de filters boven aan het scherm kunt u een veld opgeven waarop u wilt filteren.
 
@@ -46,7 +46,7 @@ U kunt bijvoorbeeld de weer gave filteren om alleen de Apache Spark toepassingen
 
 ![Voorbeeld filter](./media/how-to-monitor-spark-applications/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-apache-spark-application"></a>Details over een specifieke Apache Spark-toepassing weer geven
+## <a name="view-details-about-a-specific-apache-spark-application"></a>Details over een specifieke Apache Spark-toepassing weer geven
 
 Als u de details van een van uw Apache Spark toepassingen wilt weer geven, selecteert u de Apache Spark toepassing en bekijkt u de details. Als de Apache Spark toepassing nog steeds wordt uitgevoerd, kunt u de voortgang bewaken. [Meer informatie](apache-spark-applications.md).
 

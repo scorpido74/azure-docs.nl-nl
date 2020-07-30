@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116914"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415037"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -176,6 +176,15 @@ Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
 ```
 
 De eigenschap tenantId identificeert de Azure AD-Tenant waartoe de identiteit behoort. De principalId is een unieke id voor de nieuwe identiteit van de toepassing. De Service-Principal in azure AD heeft dezelfde naam die u hebt gegeven aan uw App Service-of Azure Functions-exemplaar.
+
+Als u in een latere fase van de sjabloon naar deze eigenschappen moet verwijzen, kunt u dit doen via de [ `reference()` sjabloon functie](../azure-resource-manager/templates/template-functions-resource.md#reference) met de `'Full'` vlag, zoals in dit voor beeld:
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
 
 ## <a name="add-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit toevoegen
 

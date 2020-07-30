@@ -3,19 +3,34 @@ title: Problemen met Azure Cosmos DB HTTP 408 of time-outs met .NET SDK oplossen
 description: Een time-outuitzondering voor .NET SDK-aanvragen vaststellen en oplossen
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/13/2020
+ms.date: 07/29/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 29b0c6237ae04ea5da9ec496498fc7c20890b173
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294396"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417604"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Problemen vaststellen en oplossen Azure Cosmos DB time-out voor de .NET SDK-aanvraag
 De HTTP 408-fout treedt op als de SDK de aanvraag niet heeft kunnen volt ooien voordat de time-outlimiet optreedt.
+
+## <a name="customizing-the-timeout-on-the-azure-cosmos-net-sdk"></a>De time-out aanpassen op de Azure Cosmos .NET SDK
+
+De SDK heeft twee verschillende alternatieven voor het beheren van time-outs, elk met een ander bereik.
+
+### <a name="requesttimeout"></a>RequestTimeout
+
+`CosmosClientOptions.RequestTimeout` `ConnectionPolicy.RequestTimeout` Met de configuratie van (of voor SDK v2) kunt u een time-out instellen die van invloed is op elke afzonderlijke netwerk aanvraag.  Een door een gebruiker gestarte bewerking kan meerdere netwerk aanvragen omvatten (er kan bijvoorbeeld sprake zijn van beperking) en deze configuratie is van toepassing op elke netwerk aanvraag bij het opnieuw proberen. Dit is geen end-to-end-time-out voor de bewerkings aanvraag.
+
+### <a name="cancellationtoken"></a>CancellationToken
+
+Alle async-bewerkingen in de SDK hebben een optionele CancellationToken-para meter. Deze [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) wordt gebruikt tijdens de gehele bewerking, in alle netwerk aanvragen. In-tussen netwerk aanvragen kan de CancellationToken worden gecontroleerd en een bewerking geannuleerd als het gerelateerde token is verlopen. CancellationToken moet worden gebruikt voor het definiëren van een geschatte verwachte time-out voor het bewerkings bereik.
+
+> [!NOTE]
+> CancellationToken is een mechanisme waarbij de bibliotheek de annulering controleert, wanneer deze [geen ongeldige status veroorzaakt](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). De bewerking kan niet precies worden geannuleerd wanneer de tijd die is gedefinieerd in de annulering actief is, maar als de tijd eenmaal is, wordt deze geannuleerd zodra het veilig is om dit te doen.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 De volgende lijst bevat bekende oorzaken en oplossingen voor time-outuitzonderingen voor aanvragen.

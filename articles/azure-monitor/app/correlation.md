@@ -7,26 +7,26 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: b4facaee44a0bc5c7d64376ca80e5aaf8d0768d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa68f1ea8c0dd0d4367d3dcf39f059d0bd8a77ea
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323159"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421923"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
-In de wereld van micro Services moet voor elke logische bewerking werk worden uitgevoerd in verschillende onderdelen van de service. U kunt elk van deze onderdelen afzonderlijk bewaken met behulp van [Application Insights](./app-insights-overview.md). Application Insights ondersteunt gedistribueerde telemetrie-correlatie, die u gebruikt om te detecteren welk onderdeel verantwoordelijk is voor storingen of verminderde prestaties.
+In de wereld van micro Services moet voor elke logische bewerking werk worden uitgevoerd in verschillende onderdelen van de service. U kunt elk van deze onderdelen afzonderlijk bewaken met behulp van [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights ondersteunt gedistribueerde telemetrie-correlatie, die u gebruikt om te detecteren welk onderdeel verantwoordelijk is voor storingen of verminderde prestaties.
 
 In dit artikel wordt het gegevens model uitgelegd dat door Application Insights wordt gebruikt voor het correleren van telemetrie die door meerdere onderdelen worden verzonden. Hierin worden technieken en protocollen voor context doorgifte beschreven. Het behandelt ook de implementatie van correlatie tactieken op verschillende talen en platforms.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Gegevens model voor de correlatie van de telemetrie
 
-Application Insights definieert een [gegevens model](./data-model.md) voor gedistribueerde telemetrie-correlatie. Om telemetrie te koppelen aan een logische bewerking, heeft elk telemetrie-item een context veld met de naam `operation_Id` . Deze id wordt gedeeld door elk telemetrie-item in de gedistribueerde tracering. Zelfs als u telemetrie van één laag kwijtraakt, kunt u nog steeds telemetrie koppelen die door andere onderdelen worden gerapporteerd.
+Application Insights definieert een [gegevens model](../../azure-monitor/app/data-model.md) voor gedistribueerde telemetrie-correlatie. Om telemetrie te koppelen aan een logische bewerking, heeft elk telemetrie-item een context veld met de naam `operation_Id` . Deze id wordt gedeeld door elk telemetrie-item in de gedistribueerde tracering. Zelfs als u telemetrie van één laag kwijtraakt, kunt u nog steeds telemetrie koppelen die door andere onderdelen worden gerapporteerd.
 
-Een gedistribueerde logische bewerking bestaat meestal uit een set kleinere bewerkingen die aanvragen verwerken door een van de onderdelen. Deze bewerkingen worden gedefinieerd op basis van [aanvraag-telemetrie](./data-model-request-telemetry.md). Elk aanvraag-telemetrie-item heeft een eigen `id` id waarmee het uniek en wereld wijd wordt geïdentificeerd. En alle telemetrie-items (zoals traceringen en uitzonde ringen) die zijn gekoppeld aan de aanvraag, moeten de `operation_parentId` waarde van de aanvraag instellen `id` .
+Een gedistribueerde logische bewerking bestaat meestal uit een set kleinere bewerkingen die aanvragen verwerken door een van de onderdelen. Deze bewerkingen worden gedefinieerd op basis van [aanvraag-telemetrie](../../azure-monitor/app/data-model-request-telemetry.md). Elk aanvraag-telemetrie-item heeft een eigen `id` id waarmee het uniek en wereld wijd wordt geïdentificeerd. En alle telemetrie-items (zoals traceringen en uitzonde ringen) die zijn gekoppeld aan de aanvraag, moeten de `operation_parentId` waarde van de aanvraag instellen `id` .
 
-Elke uitgaande bewerking, zoals een HTTP-aanroep naar een ander onderdeel, wordt weer gegeven door middel van [afhankelijkheids-telemetrie](./data-model-dependency-telemetry.md). Met de telemetrie van een afhankelijkheid wordt ook een eigen, `id` unieke id gedefinieerd. Telemetrie aanvragen, geïnitieerd door deze afhankelijkheids aanroep, gebruikt deze `id` als `operation_parentId` .
+Elke uitgaande bewerking, zoals een HTTP-aanroep naar een ander onderdeel, wordt weer gegeven door middel van [afhankelijkheids-telemetrie](../../azure-monitor/app/data-model-dependency-telemetry.md). Met de telemetrie van een afhankelijkheid wordt ook een eigen, `id` unieke id gedefinieerd. Telemetrie aanvragen, geïnitieerd door deze afhankelijkheids aanroep, gebruikt deze `id` als `operation_parentId` .
 
 U kunt een weer gave van de gedistribueerde logische bewerking maken met behulp van `operation_Id` , `operation_parentId` en `request.id` met `dependency.id` . Deze velden definiëren ook de causality volgorde van telemetrie-aanroepen.
 
@@ -216,7 +216,7 @@ De [gegevens model specificatie Opentracering](https://opentracing.io/) en Appli
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | `Reference`van `ChildOf` het type (het bovenliggende bereik)     |
 
-Zie [Application Insights telemetrie-gegevens model](./data-model.md)voor meer informatie.
+Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie.
 
 Zie voor definities van openvolgende concepten de [specificatie](https://github.com/opentracing/specification/blob/master/specification.md) opentracering en [semantische conventies](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
@@ -372,11 +372,10 @@ Mogelijk wilt u de manier aanpassen waarop onderdeel namen worden weer gegeven i
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Schrijf [aangepaste telemetrie](./api-custom-events-metrics.md).
+- Schrijf [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
 - Zie [aangepaste bewerkingen bijhouden](custom-operations-tracking.md)voor geavanceerde correlatie scenario's in ASP.NET Core en ASP.net.
-- Meer informatie over het [instellen van cloud_RoleName](./app-map.md#set-cloud-role-name) voor andere sdk's.
+- Meer informatie over het [instellen van cloud_RoleName](./app-map.md#set-or-override-cloud-role-name) voor andere sdk's.
 - Alle onderdelen van uw micro service op Application Insights onboarden. Bekijk de [ondersteunde platforms](./platforms.md).
 - Zie het [gegevens model](./data-model.md) voor Application Insights typen.
 - Meer informatie over hoe u [telemetrie kunt uitbreiden en filteren](./api-filtering-sampling.md).
 - Raadpleeg de [Application Insights-configuratie referentie](configuration-with-applicationinsights-config.md).
-

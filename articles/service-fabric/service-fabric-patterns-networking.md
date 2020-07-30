@@ -3,12 +3,12 @@ title: Netwerk patronen voor Azure Service Fabric
 description: Beschrijft veelvoorkomende netwerk patronen voor Service Fabric en het maken van een cluster met behulp van Azure-netwerk functies.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258538"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421464"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric netwerk patronen
 U kunt uw Azure Service Fabric-cluster integreren met andere Azure-netwerk functies. In dit artikel wordt uitgelegd hoe u clusters maakt die gebruikmaken van de volgende functies:
@@ -99,6 +99,8 @@ In de voor beelden in dit artikel gebruiken we de Service Fabric-template.jsop. 
                 "defaultValue": "10.0.0.0/24"
             },*/
     ```
+
+   U kunt ook een commentaar toevoegen aan de para meter met de naam ' virtualNetworkName ', zodat u niet wordt gevraagd om de naam van het virtuele netwerk twee keer op te geven op de Blade cluster implementatie in het Azure Portal.
 
 2. `nicPrefixOverride`Het kenmerk Comment out van `Microsoft.Compute/virtualMachineScaleSets` , omdat u een bestaand subnet gebruikt en u deze variabele hebt uitgeschakeld in stap 1.
 

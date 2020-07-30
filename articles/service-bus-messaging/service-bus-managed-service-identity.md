@@ -3,12 +3,12 @@ title: Beheerde identiteiten voor Azure-resources met Service Bus
 description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 01fe6c59ad878276619a96666e2da82b6a1b1fe9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7fbf0ec36f54f9ba5f8593094dbb0231881cbaef
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371223"
+ms.locfileid: "87423130"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
 [Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) is een functie van meerdere Azure waarmee u een beveiligde identiteit kunt maken die is gekoppeld aan de implementatie waaronder uw toepassings code wordt uitgevoerd. U kunt deze identiteit vervolgens koppelen aan de toegangs beheer rollen die aangepaste machtigingen verlenen om toegang te krijgen tot specifieke Azure-resources die uw toepassing nodig heeft.
@@ -58,7 +58,7 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service 
 - **Abonnement**: roltoewijzing is van toepassing op alle service bus resources in alle resource groepen in het abonnement.
 
 > [!NOTE]
-> Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
+> Houd er rekening mee dat Azure-roltoewijzingen het Maxi maal vijf minuten kan duren voordat deze wordt door gegeven. 
 
 Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md#management-and-data-operations). Zie [aangepaste rollen in azure](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
 

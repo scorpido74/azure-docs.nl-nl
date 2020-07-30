@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708472"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422909"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Zelf studie: replicatie tussen twee beheerde instanties configureren
 
@@ -26,7 +26,7 @@ ms.locfileid: "84708472"
 Met transactionele replicatie kunt u gegevens van de ene data base repliceren naar een andere host die wordt gehost op SQL Server of [Azure SQL Managed instance](sql-managed-instance-paas-overview.md) (open bare preview). SQL Managed instance kan een uitgever, distributeur of abonnee zijn in de replicatie topologie. Zie [transactionele replicatie configuraties](replication-transactional-overview.md#common-configurations) voor beschik bare configuraties.
 
 > [!NOTE]
-> In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed instance beschreven. Het heeft geen betrekking op [failover-groepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een Azure SQL Managed instance-functie waarmee u volledig Lees bare replica's van afzonderlijke instanties kunt maken.
+> In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed instance beschreven. Het heeft geen betrekking op [failover-groepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een Azure SQL Managed instance-functie waarmee u volledig Lees bare replica's van afzonderlijke instanties kunt maken. Er zijn aanvullende overwegingen bij het configureren [van transactionele replicatie met failover-groepen](replication-transactional-overview.md#with-failover-groups).
 
 In deze zelf studie leert u hoe u een beheerd exemplaar configureert als de uitgever en de Distributor en vervolgens een tweede beheerd exemplaar als de abonnee.  
 

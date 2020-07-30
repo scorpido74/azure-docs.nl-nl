@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996258"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407894"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
 
 In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimten kunt inschakelen op een AKS-cluster en hoe u de hulpprogram ma's aan de client zijde installeert.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten in-of uitschakelen met de CLI
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten inschakelen met de CLI
 
 Voordat u ontwikkel ruimten kunt inschakelen met behulp van de CLI, hebt u het volgende nodig:
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account] maken.
@@ -49,17 +49,6 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 Met deze `use-dev-spaces` opdracht wordt ook de Azure dev Space cli geïnstalleerd.
 
-Als u Azure dev Spaces wilt verwijderen uit uw AKS-cluster, gebruikt u de `azds remove` opdracht. Bijvoorbeeld:
-
-```azurecli
-$ azds remove -g MyResourceGroup -n MyAKS
-Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
-
-Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
-```
-
-Met de bovenstaande opdracht worden Azure dev Spaces verwijderd uit het *MyAKS* -cluster in *MyResourceGroup*. Alle naam ruimten die u met Azure dev Spaces hebt gemaakt, blijven samen met hun werk belastingen, maar nieuwe werk belastingen in deze naam ruimten worden niet met Azure dev-ruimten geinstrumenteerd. Als u een bestaand van de bestaande peulen met Azure dev Spaces opnieuw start, worden er bovendien fouten weer geven. Deze bestanden moeten opnieuw worden geïmplementeerd zonder Azure dev Spaces-hulpprogram ma's. Als u Azure dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle peulen in alle naam ruimten waar Azure dev Spaces is ingeschakeld.
-
 ## <a name="install-the-client-side-tools"></a>De hulpprogram ma's aan de client zijde installeren
 
 U kunt de Azure dev Spaces-client-side hulp middelen gebruiken om te communiceren met ontwikkel ruimten in een AKS-cluster vanaf uw lokale computer. Er zijn verschillende manieren om de hulpprogram ma's aan de client zijde te installeren:
@@ -68,9 +57,28 @@ U kunt de Azure dev Spaces-client-side hulp middelen gebruiken om te communicere
 * Installeer de werk belasting Azure Development in [Visual Studio 2019][visual-studio].
 * Down load en installeer de [Windows][cli-win]-, [Mac][cli-mac]-of [Linux][cli-linux] -cli.
 
+## <a name="remove-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten verwijderen met de CLI
+
+Als u Azure dev Spaces wilt verwijderen uit uw AKS-cluster, gebruikt u de `azds remove` opdracht.
+
+```azurecli
+azds remove -g MyResourceGroup -n MyAKS
+```
+
+In de onderstaande voorbeeld uitvoer ziet u hoe u Azure dev Spaces verwijdert uit het *MyAKS* -cluster.
+
+```azurecli
+$ azds remove -g MyResourceGroup -n MyAKS
+Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
+
+Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
+```
+
+Alle naam ruimten die u met Azure dev Spaces hebt gemaakt, blijven samen met hun werk belastingen, maar nieuwe werk belastingen in deze naam ruimten worden niet met Azure dev-ruimten geinstrumenteerd. Als u een bestaand van de bestaande peulen met Azure dev Spaces opnieuw start, worden er bovendien fouten weer geven. Deze bestanden moeten opnieuw worden geïmplementeerd zonder Azure dev Spaces-hulpprogram ma's. Als u Azure dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle peulen in alle naam ruimten waar Azure dev Spaces is ingeschakeld.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
+Ontdek hoe Azure Dev Spaces u kan helpen om complexere toepassingen te ontwikkelen binnen meerdere containers en hoe u ontwikkeling in samenwerkingsverband vereenvoudigt door in verschillende ruimten met verschillende versies of vertakkingen van uw code te werken.
 
 > [!div class="nextstepaction"]
 > [Team ontwikkeling in azure dev Spaces][team-development-qs]

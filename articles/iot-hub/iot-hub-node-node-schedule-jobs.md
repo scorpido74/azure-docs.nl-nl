@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.custom: mqtt
-ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 16e6c72f9fbb710524752c2d220d442735d809b7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732269"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420767"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Taken plannen en uitzenden (Node.js)
 
@@ -37,7 +37,7 @@ Meer informatie over elk van deze mogelijkheden vindt u in de volgende artikelen
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 * Maak een Node.js gesimuleerde apparaat-app die een directe methode heeft, waardoor **lockDoor**kan worden aangeroepen door de back-end van de oplossing.
 

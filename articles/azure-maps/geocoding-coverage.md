@@ -1,26 +1,29 @@
 ---
-title: Dekking voor geocodering | Microsoft Azure kaarten
-description: Het proces voor het converteren van een locatie adres naar de breedte-en lengte graad-coördinaten wordt geocodering genoemd. In dit artikel vindt u informatie over regio's met geocoderings dekking in Microsoft Azure Maps.
+title: Geocoderings dekking in de zoek service van Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over Microsoft Azure toewijzing van geocoderings dekking in verschillende landen/regio's.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/31/2019
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: philmea
+ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132803"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386908"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
 
-Wanneer u zoekt naar een locatie met Azure Maps, de zoek service, bijvoorbeeld [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), worden uw zoek termen opgehaald en worden de coördinaten voor de breedte graad en lengte graad geretourneerd. Dit proces wordt geocodering genoemd. Azure Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen met welke typen locaties u in elke regio betrouwbaar kunt zoeken. 
+De Azure Maps- [Zoek service](https://docs.microsoft.com/rest/api/maps/search) ondersteunt geocodering, wat betekent dat uw API-aanvraag zoek termen kan hebben, zoals een adres of de naam van een locatie, en het resultaat als coördinaten voor breedte graad en lengte graad. Zo worden met de Azure Maps [Zoek adres-API ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) query's ontvangen die locatie-informatie bevatten en worden de resultaten weer gegeven als coördinaten voor breedte graad en lengte graad.
 
-De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van de weg en de geocoderings nauwkeurigheid van de geocoderings service. De volgende categorisaties worden gebruikt om het niveau van geocoderings ondersteuning in elk land/elke regio in te stellen.
-* **Adres punten** -adres gegevens kunnen worden omgezet naar een breedte graad/lengte graad binnen het perceel van het adres (eigenschaps grens). Ook wel nauw keurig aangeduid als ' Rooftop '. Dit is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen. 
+De Azure Maps Search- [service](https://docs.microsoft.com/rest/api/maps/search) heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen met welke typen locaties u in elke regio betrouwbaar kunt zoeken.
+
+De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van de weg en de geocoderings nauwkeurigheid van de geocoderings service. De volgende categorisaties worden gebruikt om het niveau van geocoderings ondersteuning in elk land/elke regio op te geven.
+
+* **Adres punten** -adres gegevens kunnen worden omgezet naar breedte graad/lengte graad binnen het perceel van het adres (eigenschaps grens). Adres punten worden vaak ' Rooftop ' genoemd. Dit is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen.
 * **Huis nummers** : adressen worden geïnterpoleerd naar een coördinaat van een breedte graad/lengte graad in het adres.
 * **Straat niveau** : adressen worden omgezet in de coördinaat van de breedte graad/lengte graad van de straat die het adres bevat. Het huis nummer mag niet worden verwerkt.
 * Namen van **plaatsnamen en plaatsnamen** worden ondersteund.
@@ -84,7 +87,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britse Maagdeneilanden                              |                 |                |              |      ✓     |          ✓         |
-| Amerikaanse Maagden eilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+|  Amerikaanse Maagdeneilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
@@ -214,7 +217,6 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Oezbekistan                                          |                 |                |              |      ✓     |          ✓         |
 | Vaticaanstad                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
 | Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
@@ -295,11 +297,8 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de pagina met [Zoek](https://docs.microsoft.com/rest/api/maps/search) informatie voor meer informatie over Azure Maps geocodering.
-
-Meer informatie over de [dekkings gebieden voor de service Maps-verkeer](traffic-coverage.md). 
-
+Meer informatie over Azure Maps geocodering:
+> [!div class="nextstepaction"]
+> [Azure Maps-zoek service](https://docs.microsoft.com/rest/api/maps/search)

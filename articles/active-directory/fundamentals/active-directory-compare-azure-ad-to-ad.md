@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fde1b80a1646a92688a0fcc1fa221cf01ba0a9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926889"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418862"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory vergelijken met Azure Active Directory
 
@@ -41,8 +41,8 @@ De meeste IT-beheerders zijn bekend met Active Directory Domain Services-concept
 | LOB-apps (line-of-Business) met moderne verificatie|Organisaties kunnen AD FS met Active Directory gebruiken ter ondersteuning van LOB-apps waarvoor moderne verificatie is vereist.| LOB-apps waarvoor moderne authenticatie is vereist, kunnen worden geconfigureerd om Azure AD te gebruiken voor verificatie. |
 | Mid-tier/daemon-services|Services die in on-premises omgevingen worden uitgevoerd, gebruiken normaal gesp roken AD-service accounts of door groepen beheerde service accounts (gMSA) om uit te voeren. Deze apps nemen vervolgens de machtigingen over van het service account.| Azure AD biedt [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) voor het uitvoeren van andere werk belastingen in de Cloud. De levens cyclus van deze identiteiten wordt beheerd door Azure AD en is gekoppeld aan de resource provider en kan niet worden gebruikt voor andere doel einden om toegang tot de back-uptaken te krijgen.|
 | **Apparaten**|||
-| Mobiel|Active Directory biedt geen systeem eigen ondersteuning voor mobiele apparaten zonder oplossingen van derden.| De Mobile Device Management-oplossing van micro soft, Microsoft Intune, is geïntegreerd met Azure AD. Microsoft Intune biedt informatie over de status van de apparaten aan het identiteits systeem dat tijdens de verificatie wordt geëvalueerd. |
-| Windows-Bureau bladen|Active Directory biedt de mogelijkheid om domein aan Windows-apparaten toe te voegen om ze te beheren met behulp van groepsbeleid, System Center Configuration Manager of andere oplossingen van derden.|Windows-apparaten kunnen worden [gekoppeld aan Azure AD](https://docs.microsoft.com/azure/active-directory/devices/). Voorwaardelijke toegang kan controleren of een apparaat is toegevoegd aan Azure AD als onderdeel van het verificatie proces. Windows-apparaten kunnen ook worden beheerd met [Microsoft intune](https://docs.microsoft.com/intune/what-is-intune). In dit geval kunt u met voorwaardelijke toegang bepalen of een apparaat een klacht is (bijvoorbeeld bijgewerkte beveiligings patches en virus handtekeningen) voordat toegang tot de apps wordt toegestaan.|
+| Mobiele telefoon|Active Directory biedt geen systeem eigen ondersteuning voor mobiele apparaten zonder oplossingen van derden.| De Mobile Device Management-oplossing van micro soft, Microsoft Intune, is geïntegreerd met Azure AD. Microsoft Intune biedt informatie over de status van de apparaten aan het identiteits systeem dat tijdens de verificatie wordt geëvalueerd. |
+| Windows-Bureau bladen|Active Directory biedt de mogelijkheid om domein aan Windows-apparaten toe te voegen om ze te beheren met behulp van groepsbeleid, System Center Configuration Manager of andere oplossingen van derden.|Windows-apparaten kunnen worden [gekoppeld aan Azure AD](https://docs.microsoft.com/azure/active-directory/devices/). Voorwaardelijke toegang kan controleren of een apparaat is toegevoegd aan Azure AD als onderdeel van het verificatie proces. Windows-apparaten kunnen ook worden beheerd met [Microsoft intune](https://docs.microsoft.com/intune/what-is-intune). In dit geval kunt u met voorwaardelijke toegang bepalen of een apparaat compatibel is (bijvoorbeeld bijgewerkte beveiligings patches en virus handtekeningen) voordat toegang tot de apps wordt toegestaan.|
 | Windows-servers| Active Directory biedt krachtige beheer mogelijkheden voor on-premises Windows-servers met behulp van groepsbeleid of andere beheer oplossingen.| Virtuele Windows Server-machines in azure kunnen worden beheerd met [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/). [Beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) kunnen worden gebruikt wanneer vm's toegang nodig hebben tot de identiteits systeem Directory of bronnen.|
 | Linux/Unix-workloads|Active Directory biedt geen systeem eigen ondersteuning voor niet-Windows zonder oplossingen van derden, hoewel Linux-machines kunnen worden geconfigureerd om te worden geverifieerd met Active Directory als een Kerberos-realm.|Linux/Unix-Vm's kunnen [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) gebruiken om toegang te krijgen tot het identiteits systeem of de resources. Sommige organisaties migreren deze workloads naar Cloud container technologieën, die ook beheerde identiteiten kunnen gebruiken.|
 

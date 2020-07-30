@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806829"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423317"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitioneren in Azure Cosmos DB Cassandra-API
 
@@ -31,7 +31,7 @@ Apache Cassandra raadt een limiet van 100 MB aan voor de grootte van een gegeven
 
 In Azure Cosmos DB bestaat elke fysieke partitie uit een set replica's, ook wel bekend als replica sets, met ten minste 4 replica's per partitie. Dit is in tegens telling tot Apache Cassandra, waarbij het instellen van een replicatie factor 1 mogelijk is. Dit leidt echter tot lage Beschik baarheid als het enige knoop punt met de gegevens uitvalt. In Cassandra-API is er altijd een replicatie factor van 4 (quorum van 3). Azure Cosmos DB beheert automatisch replica sets, terwijl deze moeten worden onderhouden met behulp van verschillende hulpprogram ma's in Apache Cassandra. 
 
-Apache Cassandra bevat een concept van tokens, die hashes zijn van partitie sleutels. De tokens zijn gebaseerd op een murmur3 64 byte-hash, met waarden variërend van-2 ^ 63 tot-2 ^ 63-1. Dit bereik wordt meestal de ' token ring ' genoemd in Apache Cassandra. De token ring wordt gedistribueerd naar tokens en deze bereiken zijn verdeeld over de knoop punten die aanwezig zijn in een systeem eigen Apache Cassandra-cluster. Partitioneren voor Azure Cosmos DB wordt op een vergelijk bare manier geïmplementeerd, behalve dat er een ander hash-algoritme wordt gebruikt en een grotere token ring heeft. 
+Apache Cassandra bevat een concept van tokens, die hashes zijn van partitie sleutels. De tokens zijn gebaseerd op een murmur3 64 byte-hash, met waarden variërend van-2 ^ 63 tot-2 ^ 63-1. Dit bereik wordt meestal de ' token ring ' genoemd in Apache Cassandra. De token ring wordt gedistribueerd naar tokens en deze bereiken zijn verdeeld over de knoop punten die aanwezig zijn in een systeem eigen Apache Cassandra-cluster. Partitioneren voor Azure Cosmos DB wordt op een vergelijk bare manier geïmplementeerd, behalve dat er een ander hash-algoritme wordt gebruikt en een grotere interne token ring heeft. Extern hebben we echter hetzelfde token bereik beschikbaar als Apache Cassandra, d.w.z.-2 ^ 63 tot-2 ^ 63-1.
 
 
 ## <a name="primary-key"></a>Primaire sleutel

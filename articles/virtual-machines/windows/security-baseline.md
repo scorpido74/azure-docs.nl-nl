@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: abdf84a4266b0bc57d74f2219fdaece8dd193086
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133024"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387010"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-beveiligings basislijn voor Windows Virtual Machines
 
@@ -488,7 +488,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](../../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -1091,7 +1091,7 @@ Als u gebruikmaakt van Azure Disk Encryption, kunt u de Azure VM herstellen met 
 
 * [Voorlopig verwijderen voor Vm's](../../backup/soft-delete-virtual-machines.md)
 
-* [Azure Key Vault: overzicht van voorlopig verwijderen](../../key-vault/general/overview-soft-delete.md)
+* [Azure Key Vault: overzicht van voorlopig verwijderen](../../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center bewaking**: Ja
 

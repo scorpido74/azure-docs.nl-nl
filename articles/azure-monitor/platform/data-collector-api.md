@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 80ad9475eb9b3724e09fb450787adfa079896bed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075328"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384851"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)
 In dit artikel leest u hoe u de HTTP data collector API kunt gebruiken om logboek gegevens te verzenden naar Azure Monitor van een REST API-client.  Hierin wordt beschreven hoe u gegevens opmaakt die worden verzameld door uw script of toepassing, deze toevoegen aan een aanvraag en die aanvraag hebben toegestaan door Azure Monitor.  Er zijn voor beelden van Power shell, C# en python.
@@ -39,7 +39,7 @@ Als u de HTTP data collector API wilt gebruiken, maakt u een POST-aanvraag die d
 |:--- |:--- |
 | Methode |POST |
 | URI |https:// \<CustomerId\> . ODS.opinsights.Azure.com/API/logs?API-Version=2016-04-01 |
-| Type inhoud |application/json |
+| Inhoudstype |application/json |
 
 ### <a name="request-uri-parameters"></a>URI-para meters aanvragen
 | Parameter | Beschrijving |
@@ -135,7 +135,7 @@ Als u het gegevens type van een eigenschap wilt identificeren, voegt Azure Monit
 | Eigenschaps gegevens type | Achtervoegsel |
 |:--- |:--- |
 | Tekenreeks |_s |
-| Boolean |_b |
+| Boolean-waarde |_b |
 | Dubbel |_d |
 | Datum/tijd |_t |
 | GUID (opgeslagen als een teken reeks) |_g |
@@ -210,7 +210,7 @@ In de volgende secties vindt u voor beelden van het verzenden van gegevens naar 
 Voer voor elk voor beeld de volgende stappen uit om de variabelen in te stellen voor de autorisatie-header:
 
 1. Zoek in de Azure Portal de Log Analytics-werk ruimte.
-2. Selecteer **Geavanceerde instellingen** en vervolgens **verbonden bronnen**.
+2. Selecteer **agents beheren**.
 2. Selecteer het Kopieer pictogram rechts van **werk ruimte-id**en plak de id als de waarde van de variabele voor de **klant-id** .
 3. Rechts van **primaire sleutel**selecteert u het Kopieer pictogram en plakt u de id als de waarde van de **gedeelde sleutel** variabele.
 
