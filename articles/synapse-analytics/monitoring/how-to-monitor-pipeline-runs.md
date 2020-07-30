@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075892"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387316"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Synapse Studio gebruiken om de pipeline-uitvoeringen van uw werk ruimte te controleren
 
@@ -22,7 +22,7 @@ Met Azure Synapse Analytics kunt u complexe pijp lijnen maken waarmee u uw gegev
 
 In dit artikel wordt uitgelegd hoe u uw pijplijn uitvoeringen kunt bewaken, zodat u op de hoogte blijft van de meest recente status, problemen en voortgang van uw pijp lijnen.
 
-## <a name="access-the-list-of-pipeline-runs"></a>De lijst met pijplijn uitvoeringen openen
+## <a name="access-pipeline-runs-list"></a>Lijst met open pipeline-uitvoeringen
 
 Als u de lijst met pijplijn uitvoeringen in uw werk ruimte wilt zien, opent u eerst [de Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werk ruimte.
 
@@ -36,7 +36,7 @@ Selecteer **pijplijn uitvoeringen** om de lijst met pijplijn uitvoeringen weer t
 
 ![Pijplijn uitvoeringen selecteren](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>De pijplijn uitvoeringen filteren
+## <a name="filter-your-pipeline-runs"></a>De pijplijn uitvoeringen filteren
 
 U kunt de lijst met pijplijn uitvoeringen filteren op degene waarin u bent geïnteresseerd. Met de filters boven aan het scherm kunt u een veld opgeven waarop u wilt filteren.
 
@@ -46,7 +46,7 @@ U kunt bijvoorbeeld de weer gave filteren om alleen de pijplijn uitvoeringen wee
 
 ![Voorbeeld filter](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>Details over een specifieke pijplijn uitvoering weer geven
+## <a name="view-details-about-a-specific-pipeline-run"></a>Details over een specifieke pijplijn uitvoering weer geven
 
 Als u details over de pijplijn uitvoering wilt weer geven, selecteert u de pijplijn uitvoering. Bekijk vervolgens de uitvoeringen van de activiteit die zijn gekoppeld aan de pijplijn uitvoering. Als de pijp lijn nog steeds wordt uitgevoerd, kunt u de voortgang bewaken. 
   

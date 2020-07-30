@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185531"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290948"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Zelfstudie: Een grafisch runbook maken
 
@@ -32,6 +32,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](../index.yml) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 * Een virtuele machine van Azure. Aangezien u deze machine stopt en start, mag dit geen productie-VM zijn.
+* [Imorteer Azure-modules](../shared-resources/modules.md) indien nodig of [update de modules](../automation-update-azure-modules.md) op basis van de cmdlets die u gebruikt.
 
 ## <a name="step-1---create-runbook"></a>Stap 1: runbook maken
 
