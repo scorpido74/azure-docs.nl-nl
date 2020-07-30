@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055259"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell-voorbeelden
 In dit artikel wordt beschreven hoe u PowerShell-opdrachten kunt gebruiken om toegang te krijgen tot Azure Monitor-functies.
@@ -22,10 +22,10 @@ In dit artikel wordt beschreven hoe u PowerShell-opdrachten kunt gebruiken om to
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>PowerShell instellen
-Als u dat nog niet hebt gedaan, stelt u PowerShell in op uw computer. Zie [PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+Als u dat nog niet hebt gedaan, stelt u PowerShell in op uw computer. Zie [PowerShell installeren en configureren](/powershell/azure/) voor meer informatie.
 
 ## <a name="examples-in-this-article"></a>Voorbeelden in dit artikel
-In de voorbeelden in dit artikel wordt beschreven hoe u Azure Monitor-cmdlets kunt gebruiken. U kunt ook de volledige lijst met Azure Monitor PowerShell-cmdlets bekijken via [Azure Monitor-cmdlets (Insights)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+In de voorbeelden in dit artikel wordt beschreven hoe u Azure Monitor-cmdlets kunt gebruiken. U kunt ook de volledige lijst met Azure Monitor PowerShell-cmdlets bekijken via [Azure Monitor-cmdlets (Insights)](/powershell/module/az.applicationinsights).
 
 ## <a name="sign-in-and-use-subscriptions"></a>Aanmelden en abonnementen gebruiken
 Meld u eerst aan bij uw Azure-abonnement.
@@ -53,7 +53,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Het activiteitenlogboek ophalen
-Gebruik de cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog).  Hier volgen enkele algemene voorbeelden. Het activiteitenlogboek bevat de laatste 90 dagen aan bewerkingen. Het gebruik van datums vóór deze tijd resulteert in een foutbericht.  
+Gebruik de cmdlet [Get-AzLog](/powershell/module/az.monitor/get-azlog).  Hier volgen enkele algemene voorbeelden. Het activiteitenlogboek bevat de laatste 90 dagen aan bewerkingen. Het gebruik van datums vóór deze tijd resulteert in een foutbericht.  
 
 Bekijk wat de huidige datum/tijd is om te controleren welke tijden moeten worden gebruikt in de onderstaande opdrachten:
 ```powershell
@@ -116,7 +116,7 @@ Als u de geschiedenis voor een specifieke waarschuwingsregel wilt weergeven, kun
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-De cmdlet `Get-AzAlertHistory` ondersteunt verschillende parameters. Zie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx) voor meer informatie.
+De cmdlet `Get-AzAlertHistory` ondersteunt verschillende parameters. Zie [Get-AlertHistory](/previous-versions/azure/mt282453(v=azure.100)) voor meer informatie.
 
 ## <a name="retrieve-information-on-alert-rules"></a>Informatie over het ophalen van waarschuwingsregels
 Alle volgende opdrachten worden toegepast op een resourcegroep met de naam 'montest'.
@@ -139,7 +139,7 @@ Alle waarschuwingsregels ophalen die zijn ingesteld voor een doelresource. Bijvo
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` ondersteunt ook andere parameters. Zie [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) voor meer informatie.
+`Get-AzAlertRule` ondersteunt ook andere parameters. Zie [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) voor meer informatie.
 
 ## <a name="create-metric-alerts"></a>Metrische waarschuwingen maken
 U kunt de cmdlet `Add-AlertRule` gebruiken om een waarschuwingsregel te maken, bij te werken of uit te schakelen.
@@ -201,7 +201,7 @@ In het volgende voorbeeld wordt een tabel met de metrische naam en de bijbehoren
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Een volledige lijst met beschikbare opties voor `Get-AzMetricDefinition` is beschikbaar via [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
+Een volledige lijst met beschikbare opties voor `Get-AzMetricDefinition` is beschikbaar via [Get-MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100)).
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Waarschuwingen voor activiteitenlogboeken maken en beheren
 U kunt de cmdlet `Set-AzActivityLogAlert` gebruiken om een waarschuwing voor een activiteitenlogboek in te stellen. Een waarschuwing voor een activiteitenlogboek vereist dat u eerst uw voorwaarden definieert als een woordenlijst en vervolgens een waarschuwing maakt die deze voorwaarden gebruikt.
@@ -272,7 +272,7 @@ Maak ten slotte de instelling voor automatische schaalaanpassing om het profiel 
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-Zie [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx) voor meer informatie over het beheren van instellingen voor automatische schaalaanpassing.
+Zie [Get-AutoscaleSetting](/previous-versions/azure/mt282461(v=azure.100)) voor meer informatie over het beheren van instellingen voor automatische schaalaanpassing.
 
 ## <a name="autoscale-history"></a>Geschiedenis van automatische schaalaanpassing
 In het volgende voorbeeld ziet u hoe u recente automatische schaalaanpassingen en waarschuwingsgebeurtenissen kunt weergeven. Gebruik de zoekfunctie voor activiteitenlogboeken om de geschiedenis van automatische schaalaanpassingen weer te geven.
@@ -287,7 +287,7 @@ U kunt de cmdlet `Get-AzAutoScaleHistory` gebruiken om de geschiedenis van autom
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-Zie [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx) voor meer informatie.
+Zie [Get-AutoscaleHistory](/previous-versions/azure/mt282464(v=azure.100)) voor meer informatie.
 
 ### <a name="view-details-for-an-autoscale-setting"></a>Details weergeven voor een instelling voor automatische schaalaanpassing
 U kunt de cmdlet `Get-Autoscalesetting` gebruiken om meer informatie over de instelling voor automatische schaalaanpassing op te halen.
@@ -399,4 +399,3 @@ Houd er rekening mee dat de eigenschap WorkspaceId de *resource-id* van de werkr
 ```
 
 Deze opdrachten kunnen worden gecombineerd om gegevens naar meerdere doelvoorzieningen te verzenden.
-

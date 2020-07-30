@@ -7,16 +7,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
-ms.openlocfilehash: 466b9258962c27457962ce51b72d2aeb2c029cc2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078128"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Quickstart: Een werkstroom voor een logische app maken en implementeren met behulp van een ARM-sjabloon
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) is een cloudservice waarmee u geautomatiseerde werkstromen kunt maken en uitvoeren die gegevens, apps, cloudservices en on-premises systemen integreren door een selectie te maken uit [honderden connectoren](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors). In deze snelstart wordt gekeken naar het implementatieproces van een Azure Resource Manager-sjabloon (ARM-sjabloon) voor het maken van een eenvoudige logische app die elk uur de status voor Azure controleert. 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) is een cloudservice waarmee u geautomatiseerde werkstromen kunt maken en uitvoeren die gegevens, apps, cloudservices en on-premises systemen integreren door een selectie te maken uit [honderden connectoren](/connectors/connector-reference/connector-reference-logicapps-connectors). In deze snelstart wordt gekeken naar het implementatieproces van een Azure Resource Manager-sjabloon (ARM-sjabloon) voor het maken van een eenvoudige logische app die elk uur de status voor Azure controleert. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,11 +32,11 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](http
 
 In deze snelstart wordt gebruikgemaakt van de sjabloon [**Een logische app maken**](https://azure.microsoft.com/resources/templates/101-logic-app-create/). U kunt deze vinden in de [galerie Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates), maar deze is te lang om hier weer te geven. In plaats daarvan kunt u het [azuredeploy.json-bestand](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) van de quickstart-sjabloon bekijken in de sjablonengalerie.
 
-De quickstart-sjabloon maakt een werkstroom voor de logische app die gebruikmaakt van de terugkeerpatroontrigger, die elk uur wordt uitgevoerd, en een [*ingebouwde* HTTP-actie](https://docs.microsoft.com/azure/connectors/apis-list#connector-types), waarmee een URL wordt aangeroepen die de status voor Azure retourneert. Een ingebouwde actie is systeemeigen voor het Azure Logic Apps-platform.
+De quickstart-sjabloon maakt een werkstroom voor de logische app die gebruikmaakt van de terugkeerpatroontrigger, die elk uur wordt uitgevoerd, en een [*ingebouwde* HTTP-actie](../connectors/apis-list.md#connector-types), waarmee een URL wordt aangeroepen die de status voor Azure retourneert. Een ingebouwde actie is systeemeigen voor het Azure Logic Apps-platform.
 
 Met deze sjabloon maakt u de volgende Azure-resource:
 
-* [**Microsoft.Logic/workflows**](https://docs.microsoft.com/azure/templates/microsoft.logic/workflows), waarmee de werkstroom voor een logische app wordt gemaakt.
+* [**Microsoft.Logic/workflows**](/azure/templates/microsoft.logic/workflows), waarmee de werkstroom voor een logische app wordt gemaakt.
 
 Bekijk de [Microsoft.Logic](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic)-sjablonen in de galerie als u op zoek bent naar meer quickstart-sjablonen voor Azure Logic Apps wilt.
 
@@ -49,9 +49,9 @@ Volg de optie die u wilt gebruiken voor het implementeren van de quickstart-sjab
 | Optie | Beschrijving |
 |--------|-------------|
 | [Azure-portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Als uw Azure-omgeving voldoet aan de vereisten en u vertrouwd bent met het gebruik van ARM-sjablonen, kunt u zich met deze stappen rechtstreeks aanmelden bij Azure en de quickstart-sjabloon openen in de Azure-portal. Zie [Resources implementeren met ARM-sjablonen en de Azure-portal](../azure-resource-manager/templates/deploy-portal.md) voor meer informatie. |
-| [Azure-CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | De Azure-opdrachtregelinterface (Azure CLI) bestaat uit een reeks opdrachten voor het maken en beheren van Azure-resources. U hebt Azure CLI versie 2.6 of hoger nodig als u deze opdrachten wilt uitvoeren. Typ `az --version` om uw CLI-versie te controleren. Raadpleeg de volgende onderwerpen voor meer informatie: <p><p>- [Wat is Azure CLI?](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Aan de slag met Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het Azure Resource Manager-model om uw Azure-resources te beheren. Raadpleeg de volgende onderwerpen voor meer informatie: <p><p>- [Overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [De nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-| [REST API voor Azure Resource Management](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure biedt zogenaamde Representational State Transfer (REST) API's. Dit zijn service-eindpunten die ondersteuning bieden voor HTTP-bewerkingen (methoden) waarmee u toegang tot serviceresources kunt maken, ophalen, bijwerken of verwijderen. Zie [Aan de slag met Azure REST API](https://docs.microsoft.com/rest/api/azure/) voor meer informatie. |
+| [Azure-CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | De Azure-opdrachtregelinterface (Azure CLI) bestaat uit een reeks opdrachten voor het maken en beheren van Azure-resources. U hebt Azure CLI versie 2.6 of hoger nodig als u deze opdrachten wilt uitvoeren. Typ `az --version` om uw CLI-versie te controleren. Raadpleeg de volgende onderwerpen voor meer informatie: <p><p>- [Wat is Azure CLI?](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het Azure Resource Manager-model om uw Azure-resources te beheren. Raadpleeg de volgende onderwerpen voor meer informatie: <p><p>- [Overzicht van Azure PowerShell](/powershell/azure/azurerm/overview) <br>- [De nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) <br>- [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps) |
+| [REST API voor Azure Resource Management](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure biedt zogenaamde Representational State Transfer (REST) API's. Dit zijn service-eindpunten die ondersteuning bieden voor HTTP-bewerkingen (methoden) waarmee u toegang tot serviceresources kunt maken, ophalen, bijwerken of verwijderen. Zie [Aan de slag met Azure REST API](/rest/api/azure/) voor meer informatie. |
 |||
 
 <a name="deploy-azure-portal"></a>
@@ -97,7 +97,7 @@ read
 
 Raadpleeg de volgende onderwerpen voor meer informatie:
 
-* [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
+* [Azure CLI: az deployment group](/cli/azure/deployment/group)
 * [Resources implementeren met ARM-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -117,8 +117,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Raadpleeg de volgende onderwerpen voor meer informatie:
 
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
+* [Azure PowerShell: New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
+* [Azure PowerShell: New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [Resources implementeren met ARM-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 #### <a name="rest-api"></a>[REST API](#tab/rest-api)
@@ -143,8 +143,8 @@ Raadpleeg de volgende onderwerpen voor meer informatie:
 
    Raadpleeg de volgende onderwerpen voor meer informatie:
 
-   * [Naslaginformatie voor Azure REST API: Azure REST-API's aanroepen](https://docs.microsoft.com/rest/api/azure/)
-   * [REST API voor Resource Management: Resourcegroepen - Maken of bijwerken](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate).
+   * [Naslaginformatie voor Azure REST API: Azure REST-API's aanroepen](/rest/api/azure/)
+   * [REST API voor Resource Management: Resourcegroepen - Maken of bijwerken](/rest/api/resources/resourcegroups/createorupdate).
 
 1. Als u de quickstart-sjabloon wilt implementeren in uw resourcegroep, volgt u deze syntaxis voor de aanvraag die u naar de REST API voor Resource Management stuurt:
 
@@ -165,7 +165,7 @@ Raadpleeg de volgende onderwerpen voor meer informatie:
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
    ```
 
-   Voor meer informatie raadpleegt u [REST API voor Resource Management: Implementaties - Maken of bijwerken](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate).
+   Voor meer informatie raadpleegt u [REST API voor Resource Management: Implementaties - Maken of bijwerken](/rest/api/resources/deployments/createorupdate).
 
 1. Als u de waarden wilt opgeven die voor de implementatie moeten worden gebruikt, zoals de Azure-regio en koppelingen naar de quickstart-sjabloon en het [parameterbestand](../azure-resource-manager/templates/template-parameters.md) (dat de waarden bevat voor de quickstart-sjabloon die u tijdens de implementatie gaat gebruiken), volgt u deze syntaxis voor de hoofdtekst van de aanvraag die u naar de REST API voor Resource Management verzendt:
 
@@ -191,7 +191,7 @@ Raadpleeg de volgende onderwerpen voor meer informatie:
    | `location`| <*Azure-regio*> | De Azure-regio die moet worden gebruikt voor de implementatie. In dit voorbeeld wordt `West US` gebruikt. |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | De URL-locatie voor de quickstart-sjabloon die voor de implementatie moet worden gebruikt: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*quickstart-template-parameter-file-URL*> | De URL-locatie voor het parameterbestand van de quickstart-sjabloon die voor de implementatie moet worden gebruikt: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Zie de volgende onderwerpen voor meer informatie over het Resource Manager-parameterbestand: <p><p>- [Een Resource Manager-parameterbestand maken](../azure-resource-manager/templates/parameter-files.md) <br>- [Zelfstudie: parameterbestanden gebruiken voor het implementeren van uw ARM-sjabloon](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
-   | `mode` | <*deployment-mode*> | Voer een incrementele update uit of voltooi de update. In dit voorbeeld wordt `Incremental` gebruikt. Dit is de standaardwaarde. Zie [Implementatiemodi van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes) voor meer informatie. |
+   | `mode` | <*deployment-mode*> | Voer een incrementele update uit of voltooi de update. In dit voorbeeld wordt `Incremental` gebruikt. Dit is de standaardwaarde. Zie [Implementatiemodi van Azure Resource Manager](../azure-resource-manager/templates/deployment-modes.md) voor meer informatie. |
    |||
 
    Bijvoorbeeld:
@@ -215,7 +215,7 @@ Raadpleeg de volgende onderwerpen voor meer informatie:
 
 Raadpleeg de volgende onderwerpen voor meer informatie:
 
-* [REST API voor Resource Management](https://docs.microsoft.com/rest/api/resources/)
+* [REST API voor Resource Management](/rest/api/resources/)
 * [Resources implementeren met ARM-sjablonen en REST API voor Resource Manager](../azure-resource-manager/templates/deploy-rest.md)
 
 ---
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Zie [Azure CLI: az logic workflow show](https://docs.microsoft.com/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) voor meer informatie.
+Zie [Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) voor meer informatie.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -255,7 +255,7 @@ Get-AzLogicApp -Name $logicAppName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-Voor meer informatie raadpleegt u [Azure PowerShell: Get-AzLogicApp](https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapp).
+Voor meer informatie raadpleegt u [Azure PowerShell: Get-AzLogicApp](/powershell/module/az.logicapp/get-azlogicapp).
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -276,7 +276,7 @@ Bijvoorbeeld:
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
 ```
 
-Voor meer informatie raadpleegt u [REST API voor Logic Apps: Werkstromen - GET](https://docs.microsoft.com/rest/api/logic/workflows/get).
+Voor meer informatie raadpleegt u [REST API voor Logic Apps: Werkstromen - GET](/rest/api/logic/workflows/get).
 
 ---
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Zie [Azure CLI: az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) voor meer informatie.
+Zie [Azure CLI: az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) voor meer informatie.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -313,7 +313,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-Voor meer informatie raadpleegt u [Azure PowerShell: Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Voor meer informatie raadpleegt u [Azure PowerShell: Remove-AzResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -333,7 +333,7 @@ Bijvoorbeeld:
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01
 ```
 
-Voor meer informatie raadpleegt u [REST API voor Resource Management: Resourcegroepen - Verwijderen](https://docs.microsoft.com/rest/api/resources/resourcegroups/delete).
+Voor meer informatie raadpleegt u [REST API voor Resource Management: Resourcegroepen - Verwijderen](/rest/api/resources/resourcegroups/delete).
 
 ---
 

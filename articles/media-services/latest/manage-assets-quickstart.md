@@ -3,12 +3,12 @@ title: De portal gebruiken om inhoud te uploaden, coderen en streamen - Azure
 description: In deze quickstart ziet u hoe u de portal kunt gebruiken om inhoud te uploaden, coderen en streamen met Azure Media Services.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053348"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Quickstart: Inhoud uploaden, coderen en streamen met de portal
 
@@ -35,7 +35,7 @@ In deze quickstart ziet u hoe u Azure Portal kunt gebruiken om inhoud te uploade
 
         Momenteel kunt u bij gebruik van Azure Portal het volgende doen: TTML- en WebVTT-ondertitelingsbestanden genereren. Bestanden in deze indelingen kunnen worden gebruikt om audio- en videobestanden toegankelijk te maken voor mensen met een gehoorbeperking. U kunt ook trefwoorden uit uw inhoud extraheren.
 
-        Voor een uitgebreide ervaring waarmee u inzichten kunt extraheren uit uw video- en audiobestanden gebruikt u Media Services v3-standaardinstellingen (zoals beschreven in [Zelfstudie: Video's analyseren met Media Services v3](analyze-videos-tutorial-with-api.md)). <br/>Als u gedetailleerdere inzichten wilt, gebruikt u [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) rechtstreeks.    
+        Voor een uitgebreide ervaring waarmee u inzichten kunt extraheren uit uw video- en audiobestanden gebruikt u Media Services v3-standaardinstellingen (zoals beschreven in [Zelfstudie: Video's analyseren met Media Services v3](analyze-videos-tutorial-with-api.md)). <br/>Als u gedetailleerdere inzichten wilt, gebruikt u [Video Indexer](../video-indexer/index.yml) rechtstreeks.    
 * Zodra uw inhoud is verwerkt, kunt u media-inhoud leveren aan clientspelers. Om video's in de uitvoerasset beschikbaar te maken voor clients om af te spelen, moet u een **streaming-locator** maken. Bij het maken van de **streaming-locator** moet u een **beleid voor streaming** opgeven. Met **beleid voor streaming** kunt u streamingprotocollen en versleutelingsopties voor uw **streaming-locators** definiëren (indien aanwezig).
     
     Bekijk:

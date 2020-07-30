@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ec96cab0a147e661df48318aadb057f9f6785b1f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075548"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Wat zijn schaalsets voor virtuele machines?
 Met behulp van schaalsets voor virtuele Azure-machines kunt u een groep VM's met gelijke taakverdeling maken en beheren. Het aantal VM-exemplaren kan automatisch toenemen of afnemen in reactie op vraag of een ingesteld schema. Schaalsets bieden een hoge beschikbaarheid voor uw toepassingen. Een ander voordeel is dat u vanaf één plek een groot aantal virtuele machines kunt beheren, configureren en bijwerken. Met schaalsets voor virtuele machines kunt u grootschalige services bouwen voor zaken zoals rekenkracht, big data en containerworkloads.
@@ -28,7 +28,7 @@ Schaalsets voor virtuele Azure-machines bieden beheermogelijkheden voor toepassi
 - **Eenvoudig maken en beheren van meerdere virtuele machines**
     - Wanneer uw toepassing wordt uitgevoerd op veel virtuele machines, is het belangrijk om binnen de hele omgeving een consistente configuratie te onderhouden. Voor betrouwbare prestaties van uw toepassing moeten de VM grootte, de schijfconfiguratie en de installaties van de toepassing op alle VM's overeenkomen.
     - Als u kiest voor schaalsets, wordt voor alle VM-exemplaren dezelfde installatiekopie en configuratie van het besturingssysteem gebruikt. Deze aanpak maakt het mogelijk om zonder aanvullende configuratietaken of netwerkbeheer eenvoudig honderden VM's te beheren.
-    - Schaalsets ondersteunen het gebruik van de [Azure load balancer](../load-balancer/load-balancer-overview.md) voor standaarddistributie van verkeer op laag 4 en [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) voor meer geavanceerde distributie van verkeer op laag 7 en TSL-beëindiging.
+    - Schaalsets ondersteunen het gebruik van de [Azure load balancer](../load-balancer/load-balancer-overview.md) voor standaarddistributie van verkeer op laag 4 en [Azure Application Gateway](../application-gateway/overview.md) voor meer geavanceerde distributie van verkeer op laag 7 en TSL-beëindiging.
 
 - **Hoge beschikbaarheid en tolerantie voor toepassing**
     - Schaalsets worden gebruikt voor het uitvoeren van meerdere exemplaren van een toepassing. Als op een van deze VM-exemplaren een probleem optreedt, hebben klanten nog steeds toegang tot uw toepassing, omdat er dan met minimale onderbreking wordt overgeschakeld naar een van de andere VM-exemplaren.

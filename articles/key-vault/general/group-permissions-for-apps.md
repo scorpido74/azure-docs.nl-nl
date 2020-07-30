@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 21cb7133bad27013895a5e717cb7729b71795ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078967"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault-verificatie met een toegangsbeheerbeleid bieden
 
@@ -39,7 +39,7 @@ Zie het volgende artikel voor volledige informatie over toegangsbeheer: [Azure K
    - [Een sleutelkluis maken met de Azure CLI](../secrets/quick-create-cli.md)
    - [Een sleutelkluis maken met Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Een sleutelkluis maken met de Azure-portal](../secrets/quick-create-portal.md).
-- De [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure-portal](https://portal.azure.com) gebruiken.
+- De [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/). U kunt ook de [Azure-portal](https://portal.azure.com) gebruiken.
 
 ## <a name="grant-access-to-your-key-vault"></a>Toegang verlenen tot uw sleutelkluis
 

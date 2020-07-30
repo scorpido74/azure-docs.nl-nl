@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536518"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384800"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat
 
 Probeer Azure IoT Edge uit in deze quickstart door containercode te implementeren op een virtueel Linux IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze quickstart kunt u het beste een virtuele machine van Azure voor uw IoT Edge-apparaat gebruiken, zodat u snel een testmachine kunt maken waarop de IoT Edge-service is geïnstalleerd en deze kunt verwijderen wanneer u klaar bent.
 
 In deze snelstart leert u de volgende zaken:
-
-1. Een IoT Hub maken.
-2. Een IoT Edge-apparaat registreren in uw IoT-hub.
-3. De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
-4. Op afstand een module implementeren op een IoT Edge-apparaat.
+> [!div class="checklist"]
+>
+> * Een IoT Hub maken.
+> * Een IoT Edge-apparaat registreren in uw IoT-hub.
+> * De IoT Edge-runtime op uw virtuele apparaat installeren en starten.
+> * Op afstand een module implementeren op een IoT Edge-apparaat.
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart-linux/install-edge-full.png)
 
@@ -116,14 +117,7 @@ Gebruik de volgende CLI-opdracht om uw IoT Edge-apparaat te maken op basis van d
 * Bash- of Cloud Shell-gebruikers kunnen de volgende opdracht naar een teksteditor kopiëren, de tekst van de tijdelijke aanduiding vervangen door hun eigen informatie en de tijdelijke aanduiding kopiëren naar het Bash- of Cloud Shell-venster:
 
    ```azurecli-interactive
-   az deployment group create \
-   --resource-group IoTEdgeResources \
-   --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
-   --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password' \
-   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell-gebruiken kunnen de volgende opdracht naar hun PowerShell-venster kopiëren en vervolgens de tekst van de tijdelijke aanduiding vervangen door uw eigen informatie:
