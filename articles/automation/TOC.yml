@@ -6,7 +6,7 @@
       href: automation-intro.md
     - name: Veelgestelde vragen
       href: automation-faq.md
-- name: Snelstarts
+- name: Snelstartgidsen
   items:
     - name: Een Automation-account maken
       href: automation-quickstart-create-account.md
@@ -46,6 +46,9 @@
       href: /powershell/scripting/dsc/overview/overview
     - name: Beveiliging
       items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Gegevensbeveiliging
@@ -54,7 +57,7 @@
           href: automation-secure-asset-encryption.md
         - name: Beheer van Azure Automation-gegevens
           href: automation-managing-data.md
-- name: Procedures
+- name: Instructiegidsen
   items:
     - name: Automation-account
       items:

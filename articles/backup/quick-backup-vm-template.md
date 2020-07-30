@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054471"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Quickstart: Een back-up van een virtuele machine maken in Azure met een ARM-sjabloon
 
-[Azure Backup](backup-overview.md) maakt een back-up van zowel on-premises machines en apps als Azure-VM's. In dit artikel ontdekt u hoe u een back-up kunt maken van een Azure VM met een Azure Resource Manager-sjabloon (ARM-sjabloon) en Azure PowerShell. Deze quickstart is gericht op het implementeren van een ARM-sjabloon om een Recover Services-kluis te maken. Voor meer informatie over het ontwikkelen van ARM-sjablonen raadpleegt u de [documentatie voor Azure Resource Manager](/azure/azure-resource-manager/) en de [sjabloonverwijzing](/azure/templates/microsoft.recoveryservices/allversions).
+[Azure Backup](backup-overview.md) maakt een back-up van zowel on-premises machines en apps als Azure-VM's. In dit artikel ontdekt u hoe u een back-up kunt maken van een Azure VM met een Azure Resource Manager-sjabloon (ARM-sjabloon) en Azure PowerShell. Deze quickstart is gericht op het implementeren van een ARM-sjabloon om een Recover Services-kluis te maken. Voor meer informatie over het ontwikkelen van ARM-sjablonen raadpleegt u de [documentatie voor Azure Resource Manager](../azure-resource-manager/index.yml) en de [sjabloonverwijzing](/azure/templates/microsoft.recoveryservices/allversions).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

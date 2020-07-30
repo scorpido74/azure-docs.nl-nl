@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: a73a99d1e6200faf9feb227f562f5b77b0461f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2e4ca2cad0fc080d6a750b3f1682210a5b9b20
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737050"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387656"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec op ExpressRoute direct-poorten configureren
 
@@ -47,7 +47,7 @@ Als u de configuratie wilt starten, meldt u zich aan bij uw Azure-account en sel
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Als u al een sleutel kluis of een resource groep hebt, kunt u deze opnieuw gebruiken. Het is echter essentieel dat u de functie voor [ **voorlopig verwijderen** ](../key-vault/general/overview-soft-delete.md) in uw bestaande sleutel kluis inschakelt. Als voorlopig verwijderen niet is ingeschakeld, kunt u de volgende opdrachten gebruiken om het in te scha kelen:
+    Als u al een sleutel kluis of een resource groep hebt, kunt u deze opnieuw gebruiken. Het is echter essentieel dat u de functie voor [ **voorlopig verwijderen** ](../key-vault/general/soft-delete-overview.md) in uw bestaande sleutel kluis inschakelt. Als voorlopig verwijderen niet is ingeschakeld, kunt u de volgende opdrachten gebruiken om het in te scha kelen:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

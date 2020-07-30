@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c020bb70dc26945b013321b2d75cc2e231c39a4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 7460a3c4a942194a66e585fed2b65be77b46b33e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Confluence SAML SSO by Microsoft
 
@@ -52,6 +52,9 @@ Om Azure AD-integratie te configureren met Confluence SAML SSO by Microsoft hebt
 
 > [!NOTE]
 > Als u de stappen in deze zelfstudie wilt testen, is het raadzaam niet een productieomgeving van Confluence te gebruiken. Test de integratie eerst in een ontwikkel- of faseringsomgeving van de toepassing en gebruik dan pas de productieomgeving.
+
+> [!NOTE]
+> Deze integratie is ook beschikbaar voor gebruik vanuit de Azure AD US Government Cloud-omgeving. U kunt deze toepassing vinden in de toepassingsgalerie van Azure AD US Government Cloud en deze op dezelfde manier configureren als vanuit een openbare cloud.
 
 U hebt het volgende nodig om aan de slag te gaan:
 
@@ -152,7 +155,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-confluence-saml-sso-by-microsoft-sso"></a>Eenmalige aanmelding configureren voor Confluence SAML SSO by Microsoft

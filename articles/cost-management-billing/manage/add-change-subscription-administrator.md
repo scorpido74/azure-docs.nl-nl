@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267559"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126122"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-abonnementsbeheerders toevoegen of wijzigen
 
@@ -22,7 +22,7 @@ Om de toegang tot Azure-resources te beheren, moet u over de juiste beheerdersro
 
 In dit artikel wordt beschreven hoe u de beheerdersrol voor een gebruiker toevoegt of wijzigt met behulp van RBAC in het abonnementsbereik.
 
-Microsoft raadt u aan om de toegang tot resources te beheren met RBAC. Als u echter nog steeds gebruikmaakt van het klassieke implementatiemodel en de klassieke resources beheert met behulp van [de Power shell-module van Azure Service Management](https://docs.microsoft.com/powershell/module/servicemanagement/azure), moet u een klassieke beheerder gebruiken.
+Microsoft raadt u aan om de toegang tot resources te beheren met RBAC. Als u echter nog steeds gebruikmaakt van het klassieke implementatiemodel en de klassieke resources beheert met behulp van [de Power shell-module van Azure Service Management](/powershell/module/servicemanagement/azure.service), moet u een klassieke beheerder gebruiken.
 
 > [!TIP]
 > Als u de Azure-portal alleen gebruikt voor het beheren van de klassieke resources, hoeft u de klassieke beheerdersrol niet te gebruiken.
@@ -69,7 +69,7 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is toegangsbeheer op basis van rollen (RBAC)?](../../role-based-access-control/overview.md)
+* [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](../../role-based-access-control/overview.md)
 * [Inzicht in de verschillende rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Machtigingen voor beheerrol in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)

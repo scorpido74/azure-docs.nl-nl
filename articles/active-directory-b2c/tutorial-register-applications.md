@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7164aa71495100d7be4f1c0f6ef6de90644831b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115980"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169326"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Zelfstudie: Een webtoepassing registreren in Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuw
 
 Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekenningsstroom in:
 
-1. Selecteer **Verificatie** onder **Beheren**.
+1. Selecteer hiervoor **Verificatie** in het linkermenu onder **Beheren**.
 1. Schakel onder **Impliciete toekenning** de selectievakjes **Toegangstokens** en **Id-tokens** in.
 1. Selecteer **Opslaan**.
 
@@ -96,7 +96,7 @@ Als uw toepassing een autorisatiecode voor een toegangstoken uitwisselt, moet u 
 #### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/)
 
 1. Selecteer op de pagina **Azure AD B2C - App-registraties** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
-1. Selecteer onder **Beheren** de optie **Certificaten en geheimen**.
+1. Selecteer in het linkermenu onder **Beheren** de optie **Certificaten en geheimen**.
 1. Selecteer **Nieuw clientgeheim**.
 1. Voer een beschrijving voor het clientgeheim in het vak **Beschrijving** in. Bijvoorbeeld *clientsecret1*.
 1. Selecteer onder **Verloopt** een duur waarvoor het geheim geldig is en selecteer vervolgens **Toevoegen**.

@@ -9,12 +9,12 @@ ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh
-ms.openlocfilehash: bdd36a2c58bddce5bea0ba43e5d21da9ef89a14d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 10f0cb1f6f3b5ee25538a588fadda75a2aeb6079
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088911"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Een virtuele-machineschaalset maken op basis van een aangepaste VM-installatiekopie met PowerShell
 Met dit script maakt u een virtuele-machineschaalset die gebruikmaakt van een aangepaste VM-installatiekopie als bron voor VM-exemplaren.
@@ -43,4 +43,4 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).

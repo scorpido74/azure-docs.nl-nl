@@ -14,6 +14,13 @@
           href: ./kubernetes/policy-samples.md
         - name: Servers met ingeschakelde Arc
           href: ./servers/policy-samples.md
+- name: Concepten
+  items:
+    - name: Beveiliging
+      items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./servers/security-controls-policy.md
 - name: Instructiegidsen
   items:
     - name: Kubernetes met ingeschakelde Azure Arc

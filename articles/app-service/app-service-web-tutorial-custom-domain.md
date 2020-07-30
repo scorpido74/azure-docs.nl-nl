@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 46c27f18f8f16f783248790f03364654d0b3c2fe
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986824"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050654"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelfstudie: Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -329,7 +329,7 @@ Nadat de bewerking is voltooid, moet uw app de juiste pagina op het hoofdpad (bi
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-U kunt het beheer van aangepaste domeinen met scripts automatiseren met behulp van de [Azure CLI](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview). 
+U kunt het beheer van aangepaste domeinen met scripts automatiseren met behulp van de [Azure CLI](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/). 
 
 ### <a name="azure-cli"></a>Azure CLI 
 
