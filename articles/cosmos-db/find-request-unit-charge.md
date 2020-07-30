@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261831"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422314"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>De kosten voor de aanvraag eenheid zoeken in Azure Cosmos DB
 
@@ -25,7 +26,7 @@ Als u de SQL-API gebruikt, hebt u meerdere opties voor het vinden van het RU-ver
 
 Op dit moment kunt u de aanvraag kosten in de Azure Portal alleen vinden voor een SQL-query.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account) en voer het in met gegevens of selecteer een bestaand Azure Cosmos-account dat al gegevens bevat.
 
@@ -175,7 +176,7 @@ De RU-kosten worden weer gegeven met een aangepaste [database opdracht](https://
 
 Op dit moment kunt u de aanvraag kosten vinden in de Azure Portal alleen voor een query.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account) en voer het in met gegevens of selecteer een bestaand account dat al gegevens bevat.
 

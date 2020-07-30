@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344642"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405038"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Wereld wijd beschik bare Services ontwerpen met behulp van Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ Als er een storing optreedt in regio B, wordt het replicatie proces tussen de pr
 > Voor herstel na nood gevallen is het raadzaam om de configuratie met toepassings implementatie beperkt tot twee regio's. Dit komt omdat de meeste Azure-grafieken slechts twee regio's hebben. Deze configuratie beveiligt uw toepassing niet tegen een gelijktijdige storing van beide regio's. In het onwaarschijnlijke geval van een dergelijke fout kunt u uw data bases herstellen in een derde regio met behulp van [geo-restore-bewerking](disaster-recovery-guidance.md#recover-using-geo-restore).
 >
 
- Zodra de storing is verholpen, wordt de secundaire data base automatisch opnieuw gesynchroniseerd met de primaire. Tijdens de synchronisatie kan dit van invloed zijn op de prestaties van de primaire. De specifieke impact is afhankelijk van de hoeveelheid gegevens die de nieuwe primaire heeft verkregen sinds de failover. In het volgende diagram ziet u een storing in de secundaire regio:
+ Zodra de storing is verholpen, wordt de secundaire data base automatisch opnieuw gesynchroniseerd met de primaire. Tijdens de synchronisatie kan dit van invloed zijn op de prestaties van de primaire. De specifieke impact is afhankelijk van de hoeveelheid gegevens die de nieuwe primaire heeft verkregen sinds de failover. 
+
+> [!NOTE]
+> Nadat de storing is gereduceerd, wordt de verbinding met de verbindingen met de toepassing in regio A door Traffic Manager gerouteerd naar een eind punt met een hogere prioriteit. Als u van plan bent om de primaire in regio B een tijdje te houden, moet u de prioriteits tabel in het Trafic Manager-profiel dienovereenkomstig wijzigen. 
+>
+ 
+ In het volgende diagram ziet u een storing in de secundaire regio:
 
 ![Scenario 1. Configuratie na een storing in de secundaire regio.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 

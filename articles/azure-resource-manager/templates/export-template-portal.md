@@ -2,13 +2,13 @@
 title: Sjabloon exporteren in Azure Portal
 description: Gebruik Azure Portal om een Azure Resource Manager sjabloon te exporteren vanuit resources in uw abonnement.
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/29/2020
+ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057701"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423232"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eén en meerdere resources exporteren naar een sjabloon in Azure Portal
 
@@ -52,6 +52,8 @@ Bij het exporteren vanuit een resource groep of resource wordt de geëxporteerde
 De functie sjabloon exporteren biedt geen ondersteuning voor het exporteren van Azure Data Factory-resources. Zie [een Data Factory in azure Data Factory kopiëren of klonen](https://aka.ms/exportTemplateViaAdf)voor meer informatie over het exporteren van Data Factory-resources.
 
 Als u resources wilt exporteren die zijn gemaakt via het klassieke implementatie model, moet u [deze migreren naar het Resource Manager-implementatie model](https://aka.ms/migrateclassicresourcetoarm).
+
+Als er een waarschuwing wordt weer gegeven bij het exporteren van een sjabloon die aangeeft dat een resource type niet is geëxporteerd, kunt u nog steeds de eigenschappen voor die resource detecteren. Zie [Eigenschappen van bronnen ontdekken](view-resources.md)voor meer informatie over de verschillende opties voor het weer geven van resource-eigenschappen. U kunt ook de Azure- [rest API](/rest/api/azure/) voor het resource type bekijken.
 
 ## <a name="export-template-from-a-resource-group"></a>Sjabloon exporteren van een resource groep
 

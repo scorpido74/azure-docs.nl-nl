@@ -3,12 +3,12 @@ title: Uw resource hiërarchie beveiligen-Azure governance
 description: Meer informatie over het beveiligen van uw resource hiërarchie met hiërarchie-instellingen, zoals het instellen van de standaard beheer groep.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: cdaad59d136e89c595a6a42a9760c73523a977c0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366769"
+ms.locfileid: "87422824"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
 
@@ -29,7 +29,7 @@ Met deze bewerkingen kan een gebruiker de hiërarchie-instellingen niet lezen en
 
 Een nieuw abonnement dat in een Tenant wordt toegevoegd, wordt standaard toegevoegd als lid van de hoofd beheer groep. Als beleids toewijzingen, op rollen gebaseerd toegangs beheer (RBAC) en andere governance-constructies zijn toegewezen aan de hoofd beheer groep, hebben ze direct invloed op deze nieuwe abonnementen. Daarom passen veel organisaties deze constructs niet toe aan de hoofd beheer groep, zelfs als dat wel de gewenste plaats is om ze toe te wijzen. In andere gevallen is een meer beperkende set besturings elementen gewenst voor nieuwe abonnementen, maar niet aan alle abonnementen. Deze instelling ondersteunt beide use-cases.
 
-Als u toestaat dat de standaard beheer groep voor nieuwe abonnementen wordt gedefinieerd, kunnen bedrijfsbrede governance-constructies worden toegepast op de hoofd beheer groep en een afzonderlijke beheer groep met beleids toewijzingen of RBAC-toewijzingen die geschikter zijn voor een nieuw abonnement, kan worden gedefinieerd.
+Door toe te staan dat de standaard beheer groep voor nieuwe abonnementen kan worden gedefinieerd, kunnen bedrijfsbrede governance-constructies worden toegepast in de hoofd beheer groep en een afzonderlijke beheer groep met beleids toewijzingen of Azure-roltoewijzingen die geschikter zijn voor een nieuw abonnement, kan worden gedefinieerd.
 
 Als u deze instelling wilt configureren, worden de [hiërarchie-instellingen](/rest/api/resources/hierarchysettings) rest API eind punt genoemd. Gebruik hiervoor de volgende REST API URI en de indeling van de hoofd tekst. Vervang door `{rootMgID}` de id van uw hoofd beheer groep en `{defaultGroupID}` met de id van de beheer groep om de standaard beheer groep te worden:
 

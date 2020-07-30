@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432058"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424372"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API fout codes
  
@@ -134,7 +134,7 @@ HTTP 403 treedt vaak op wanneer de toepassing van de klant niet de client-ID geb
 
 ### <a name="troubleshooting-403"></a>Problemen oplossen 403
 
-Schakel eerst logboek registratie in. Zie [Azure Key Vault logboek registratie](logging.md)) voor instructies over hoe u dit doet.
+Schakel eerst logboek registratie in. Zie [Azure Key Vault logboek registratie](logging.md)voor instructies over hoe u dit doet.
 
 Zodra logboek registratie is ingeschakeld, kunt u bepalen of de 403 is vanwege het toegangs beleid of het firewall beleid.
 

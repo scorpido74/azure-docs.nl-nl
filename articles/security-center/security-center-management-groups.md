@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080870"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423980"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Zicht baarheid voor de hele Tenant verkrijgen voor Azure Security Center
 In dit artikel wordt uitgelegd hoe u de beveiligings postuur van uw organisatie op schaal kunt beheren door beveiligings beleid toe te passen op alle Azure-abonnementen die zijn gekoppeld aan uw Azure Active Directory-Tenant.
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe u de beveiligings postuur van uw organisatie 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Beheergroepen
-Azure-beheer groepen bieden de mogelijkheid om op efficiënte wijze toegang, beleid en rapportage over groepen abonnementen te beheren, en het hele Azure-erfgoed effectief te beheren door acties uit te voeren op de hoofd beheer groep. Elke Azure AD-Tenant krijgt één beheer groep op het hoogste niveau die de hoofd beheer groep heet. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met deze groep kunnen globale beleids regels en RBAC-toewijzingen op mapniveau worden toegepast. 
+Azure-beheer groepen bieden de mogelijkheid om op efficiënte wijze toegang, beleid en rapportage over groepen abonnementen te beheren, en het hele Azure-erfgoed effectief te beheren door acties uit te voeren op de hoofd beheer groep. Elke Azure AD-Tenant krijgt één beheer groep op het hoogste niveau die de hoofd beheer groep heet. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met deze groep kunnen globale beleids regels en Azure-roltoewijzingen op mapniveau worden toegepast. 
 
 De hoofd beheer groep wordt automatisch gemaakt wanneer u een van de volgende acties uitvoeren: 
 1. Meld u aan voor het gebruik van Azure-beheer groepen door te navigeren naar **beheergroepen** in het [Azure Portal](https://portal.azure.com).
@@ -39,7 +39,7 @@ Zie het artikel [uw resources organiseren met Azure-beheer groepen](../azure-res
 U kunt abonnementen indelen in beheer groepen en uw beheer beleid Toep assen op de Management groepen. Alle abonnementen in een beheergroep nemen automatisch het beleid over dat op de beheergroep is toegepast. Hoewel beheer groepen niet vereist zijn voor de onboarding van Security Center, wordt het ten zeerste aanbevolen om ten minste één beheer groep te maken zodat de hoofd beheer groep wordt gemaakt. Nadat de groep is gemaakt, worden alle abonnementen onder uw Azure AD-Tenant aan gekoppeld. Zie [beheer groepen maken voor resource-en organisatie beheer](../azure-resource-manager/management-groups-create.md)voor instructies voor Power shell en meer informatie.
 
  
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle services**-  >  **beheer groepen**.
 3. Selecteer **nieuwe beheer groep** op de hoofd pagina. 
 
@@ -49,10 +49,10 @@ U kunt abonnementen indelen in beheer groepen en uw beheer beleid Toep assen op 
     - Het veld weergave naam is de naam die wordt weer gegeven in de Azure Portal. Een afzonderlijke weergave naam is een optioneel veld bij het maken van de beheer groep en kan op elk gewenst moment worden gewijzigd.  
 
       ![Maken](./media/security-center-management-groups/create_context_menu.png)  
-5.  Selecteer **Opslaan**.
+5.  Selecteer **Opslaan**
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Beheer groepen weer geven in de Azure Portal
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Als u beheer groepen wilt weer geven, selecteert u **alle services** onder het hoofd menu van Azure.
 3. Selecteer onder **algemeen** **beheergroepen**.
 
@@ -93,7 +93,7 @@ Om inzicht te krijgen in alle abonnementen, moeten Tenant beheerders de juiste R
 
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>RBAC-rollen toewijzen aan gebruikers via de Azure Portal: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Als u beheer groepen wilt weer geven, selecteert u **alle services** onder het hoofd menu van Azure en selecteert u vervolgens **beheergroepen**.
 1.  Selecteer een beheer groep en klik op **Details**.
 
@@ -140,7 +140,7 @@ Om inzicht te krijgen in alle abonnementen, moeten Tenant beheerders de juiste R
 ### <a name="open-or-refresh-security-center"></a>Security Center openen of vernieuwen
 Zodra u toegang hebt tot verhoogde bevoegdheden, opent of vernieuwt u Azure Security Center om te controleren of u zicht hebt op alle abonnementen onder uw Azure AD-Tenant. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Zorg ervoor dat u alle abonnementen selecteert in de abonnements kiezer die u wilt weer geven in Security Center.
 
     ![Scherm opname van de abonnements kiezer](./media/security-center-management-groups/subscription-selector.png)
@@ -193,4 +193,3 @@ In dit artikel hebt u geleerd hoe u de zicht baarheid van de hele Tenant kunt ve
 
 > [!div class="nextstepaction"]
 > [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
-

@@ -10,13 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.custom: tracking-python
-ms.openlocfilehash: fc589f53fc10e376479bf54ec408a95dac42db4d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: dc0097396bbd3d624fd043c54f2f37e434ad5b50
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523958"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87403982"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Een Insights-token gebruiken om inzichten op te halen voor een installatie kopie
 
@@ -498,7 +498,7 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een Visual Search Web-app met één pagina maken](tutorial-bing-visual-search-single-page-app.md)  
-[Wat is Bing Visual Search-API?](overview.md)  
+[Een Visual Search-web-app met één pagina maken](tutorial-bing-visual-search-single-page-app.md)  
+[Wat is de Bing Visual Search-API?](overview.md)  
 [Cognitive Services proberen](https://aka.ms/bingvisualsearchtryforfree)  
 [Afbeeldingen-Visual Search](https://aka.ms/bingvisualsearchreferencedoc)

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246514"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388115"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -63,7 +63,7 @@ Het rapport gebruikers aanmeldingen bevat antwoorden op de volgende vragen:
 
 Selecteer in het menu [Azure Portal](https://portal.azure.com) **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 
-![Azure Active Directory selecteren](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+![Selecteer Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
 Onder **bewaking**selecteert u **aanmeldingen** om het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)te openen.
 
@@ -184,7 +184,7 @@ De **locatie** -de locatie van de verbinding vanaf:
 
 - **Geslaagd**: een of meer beleids regels voor voorwaardelijke toegang die worden toegepast op de gebruiker en toepassing (maar niet noodzakelijkerwijs de andere voor waarden) tijdens het aanmelden. 
 
-- **Fout**: er is een of meer beleids regels voor voorwaardelijke toegang toegepast en er is niet voldaan aan het aanmelden.
+- **Probleem**: bij de aanmelding is voldaan aan de gebruikers-en toepassings voorwaarde van ten minste één beleid voor voorwaardelijke toegang en granting Controls is niet voldaan of ingesteld om de toegang te blok keren.
 
 
 
@@ -237,8 +237,8 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Toepassing
 - Client
 - Locatie
-- IP-adres
-- Datum
+- Het IP-adres
+- Date
 - MFA vereist
 - Aanmeldingsstatus
 

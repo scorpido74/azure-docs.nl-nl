@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 71748959f8b5350a4bd34349eefedbf9d99c76e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33a40e7a0e7e3be4433b3cbd4ba7a8e09a84e689
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083613"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428056"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Toepassings instellingen configureren voor de preview-versie van Azure static Web Apps
 
@@ -33,7 +34,7 @@ Toepassings instellingen worden soms ook aangeduid als omgevings variabelen.
 ## <a name="prerequisites"></a>Vereisten
 
 - Een statische Web Apps-toepassing voor Azure
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure-CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="types-of-application-settings"></a>Typen toepassings instellingen
 

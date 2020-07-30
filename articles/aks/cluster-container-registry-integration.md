@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: e1ddff9a416b55c22fcd2bfaedff32666414e4bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057250"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406500"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Verifiëren bij Azure Container Registry vanuit Azure Kubernetes Service
 
@@ -60,7 +60,7 @@ Het kan enkele minuten duren voordat deze stap is voltooid.
 Integreer een bestaande ACR met bestaande AKS-clusters door geldige waarden op te geven voor de **ACR-naam** of **ACR-resource-id** zoals hieronder wordt beschreven.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 ```
 
 of
@@ -72,7 +72,7 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 U kunt ook de integratie tussen een ACR en een AKS-cluster verwijderen met het volgende
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 ```
 
 of
@@ -89,7 +89,7 @@ Importeer een installatie kopie van docker hub in uw ACR door het volgende uit t
 
 
 ```azurecli
-az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
+az acr import  -n <acr-name> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
 ### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Implementeer de voorbeeld installatie kopie van ACR naar AKS
@@ -100,7 +100,7 @@ Zorg ervoor dat u over de juiste AKS-referenties beschikt
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-Maak een bestand met de naam **ACR-nginx. yaml** dat het volgende bevat:
+Maak een bestand met de naam **ACR-nginx. yaml** dat het volgende bevat. Vervang de resource naam van het REGI ster door de **ACR-naam**. Voor beeld: *myContainerRegistry*.
 
 ```yaml
 apiVersion: apps/v1
@@ -121,7 +121,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: <replace this image property with you acr login server, image and tag>
+        image: <acr-name>.azurecr.io/nginx:v1
         ports:
         - containerPort: 80
 ```

@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 3391a29b2297d192aad0d499f688105db9af528b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304323"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423776"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -34,7 +34,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** Gebruik een domein account voor computers die lid zijn van een domein en een lokaal account voor computers die lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. |
+| **Machtigingen**           | **Windows:** Gebruik een domein account voor computers die lid zijn van een domein en een lokaal account voor computers die geen lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. |
 | **Besturingssysteem** | Alle besturings systemen behalve Windows Server 2003 en SUSE Linux kunnen worden geëvalueerd voor migratie. |
 
 

@@ -4,12 +4,12 @@ description: Meer informatie over opslag in azure Kubernetes service (AKS), incl
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171375"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406959"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opslag opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -75,6 +75,9 @@ parameters:
   storageaccounttype: Premium_LRS
   kind: Managed
 ```
+
+> [!NOTE]
+> AKS stemt de standaard opslag klassen af en overschrijft alle wijzigingen die u aanbrengt aan deze opslag klassen.
 
 ## <a name="persistent-volume-claims"></a>Claims voor permanente volumes
 

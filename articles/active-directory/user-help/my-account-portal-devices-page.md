@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735953"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422472"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Uw verbonden apparaten beheren via de pagina apparaten
 
@@ -75,6 +75,8 @@ Nadat u de verbonden apparaten hebt weer gegeven, kunt u het volgende doen:
 - Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
+
+- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen
 
 ## <a name="related-office-content"></a>Verwante Office-inhoud
 

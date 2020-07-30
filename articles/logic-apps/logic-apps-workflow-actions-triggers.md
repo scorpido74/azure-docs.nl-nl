@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: ded36eeecb14eeac0ce3de37c8d01d99bc31491f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078169"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423266"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -148,7 +149,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 ||||
 
-*Uitvoerwaarden*
+*Uitvoer*
  
 | Element | Type | Beschrijving |
 |---------|------|-------------|
@@ -323,7 +324,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 | `operationOptions` | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 |||||
 
-*Uitvoerwaarden*
+*Uitvoer*
 
 | Element | Type | Description |
 |---------|------|-------------|
@@ -338,9 +339,9 @@ Voor een goede samen werking met uw logische app moet het eind punt voldoen aan 
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| Statuscode | Yes | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. |
-| Header opnieuw proberen na | No | Het aantal seconden tot de logische app het eind punt opnieuw pollt |
-| Locatie header | No | De URL die moet worden aangeroepen tijdens het volgende polling-interval. Als u niets opgeeft, wordt de oorspronkelijke URL gebruikt. |
+| Statuscode | Ja | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. |
+| Header opnieuw proberen na | Nee | Het aantal seconden tot de logische app het eind punt opnieuw pollt |
+| Locatie header | Nee | De URL die moet worden aangeroepen tijdens het volgende polling-interval. Als u niets opgeeft, wordt de oorspronkelijke URL gebruikt. |
 |||| 
 
 *Voorbeeld gedrag voor verschillende aanvragen*
@@ -417,7 +418,7 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de- `"subsc
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
 
-*Uitvoerwaarden* 
+*Uitvoer* 
 
 | Element | Type | Beschrijving |
 |---------|------|-------------| 
@@ -820,7 +821,7 @@ Hier volgen enkele veelgebruikte actie typen:
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Hiermee maakt u één uitvoer van invoer, die verschillende typen kan hebben. | 
 | [**Java script-code uitvoeren**](#run-javascript-code) | Java script-code fragmenten uitvoeren die binnen specifieke criteria passen. Zie [code fragmenten toevoegen en uitvoeren met inline code](../logic-apps/logic-apps-add-run-inline-code.md)voor code vereisten en meer informatie. |
-| [**Functie**](#function-action) | Hiermee wordt een Azure-functie aangeroepen. | 
+| [**Functieassembly**](#function-action) | Hiermee wordt een Azure-functie aangeroepen. | 
 | [**HTTP**](#http-action) | Hiermee wordt een HTTP-eind punt aangeroepen. | 
 | [**Koppelen**](#join-action) | Hiermee maakt u een teken reeks van alle items in een matrix en scheidt u deze items met een opgegeven scheidings teken. | 
 | [**JSON parseren**](#parse-json-action) | Maakt gebruikers vriendelijke tokens van eigenschappen in JSON-inhoud. U kunt vervolgens naar die eigenschappen verwijzen door de tokens in uw logische app op te nemen. | 
@@ -853,7 +854,7 @@ Met deze acties kunt u de uitvoering van werk stromen beheren en andere acties t
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Voer dezelfde acties uit in een lus voor elk item in een matrix. | 
 | [**Als**](#if-action) | Acties uitvoeren op basis van het feit of de opgegeven voor waarde waar of onwaar is. | 
-| [**Ligt**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
+| [**Bereik**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
 | [**Switch**](#switch-action) | Acties worden ingedeeld in gevallen waarin waarden van expressies, objecten of tokens overeenkomen met de waarden die elke case heeft opgegeven. | 
 | [**Totdat**](#until-action) | Acties uitvoeren in een lus tot de opgegeven voor waarde waar is. | 
 |||  
@@ -1908,7 +1909,7 @@ De Logic Apps-Engine controleert de toegang tot de trigger die u wilt aanroepen,
 | <*hoofd tekst: inhoud*> | JSON-object | Bericht inhoud die met de aanroep moet worden verzonden | 
 ||||
 
-*Uitvoerwaarden*
+*Uitvoer*
 
 De uitvoer van deze actie verschilt op basis van de reactie actie van de geneste logische app. Als de geneste logische app geen reactie actie bevat, zijn de uitvoer leeg.
 

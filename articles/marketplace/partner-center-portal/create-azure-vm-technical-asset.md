@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317753"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407945"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische bedrijfs middelen voor virtuele Azure-machines maken
 
@@ -282,4 +282,4 @@ Als u problemen ondervindt bij het maken van uw nieuwe VHD op basis van Azure, r
 
 Anders:
 
-* Een [certificerings instantie voor uw VM-installatie kopie](get-sas-uri.md) wordt uitgelegd hoe u een VM-installatie kopie kunt testen en verzenden voor Azure Marketplace-certificering, met inbegrip van de locatie waar u het *certificerings test hulpprogramma voor het hulp programma voor Azure Certified* kunt gebruiken en hoe dit kan worden gebruikt om
+* [Test virtuele machine (VM) die is geïmplementeerd vanaf VHD](azure-vm-image-certification.md) , wordt uitgelegd hoe u een VM-installatie kopie kunt testen en verzenden voor Azure Marketplace-certificering, met inbegrip van waar u het *certificerings test hulpprogramma voor het hulp programma voor Azure Certified* kunt gebruiken en hoe u dit gebruikt om uw VM-installatie kopie te certificeren.

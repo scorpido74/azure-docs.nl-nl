@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320218"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423810"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eindpunten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,6 +128,8 @@ Als u aangepaste traceringen wilt registreren, volgt u het standaard implementat
 
 3. Bouw een installatie kopie en implementeer deze op [AKS of ACI](how-to-deploy-and-where.md).
 
+Zie [logboek registratie inschakelen in azure machine learning](how-to-enable-logging.md) en [gegevens verzamelen van modellen in de productie omgeving](how-to-enable-data-collection.md)voor meer informatie over logboek registratie en het verzamelen van gegevens.
+
 ### <a name="disable-tracking-in-python"></a>Tracering in python uitschakelen
 
 Als u Azure-toepassing Insights wilt uitschakelen, gebruikt u de volgende code:
@@ -166,7 +168,7 @@ Om het weer te geven:
 
     [![Application Insights URL zoeken](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. In Application Isights selecteert u op het tabblad **overzicht** of de sectie __bewaking__ in de lijst aan de linkerkant __Logboeken__.
+1. In Application Insights selecteert u op het tabblad **overzicht** of de sectie __bewaking__ in de lijst aan de linkerkant __Logboeken__.
 
     [![Tabblad Overzicht van bewaking](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 

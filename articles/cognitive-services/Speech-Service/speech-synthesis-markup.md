@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 8772607c7f43f2a06f5c9f12ee5efd603a1e324f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a7407ec0f507746198c13a7bbdcdcd2c801c92b6
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407367"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -79,7 +80,7 @@ Het `voice` element is vereist. Dit wordt gebruikt om de stem op te geven die wo
 |-----------|-------------|---------------------|
 | `name` | Hiermee wordt de stem geïdentificeerd die wordt gebruikt voor de tekst-naar-spraak-uitvoer. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen. | Vereist |
 
-**Hierbij**
+**Voorbeeld**
 
 > [!NOTE]
 > In dit voor beeld wordt de `en-US-AriaRUS` stem gebruikt. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen.
@@ -173,7 +174,7 @@ speechConfig!.setPropertyTo(
 
 ---
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -227,7 +228,7 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 |                         | `style="lyrical"`         | Drukt op emoties op een melodic-en Sentimental manier         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  | 
 
-**Hierbij**
+**Voorbeeld**
 
 Dit SSML-fragment laat zien hoe het `<mstts:express-as>` element wordt gebruikt voor het wijzigen van de spreek stijl in `cheerful` .
 
@@ -272,7 +273,7 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 | strakk                        | 1000 MS     |
 | x-Strong                      | 1250 MS     |
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -297,7 +298,7 @@ Het `s` element kan tekst en de volgende elementen bevatten: `audio` , `break` ,
 <s></s>
 ```
 
-**Hierbij**
+**Voorbeeld**
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -502,7 +503,7 @@ Omdat Prosodic kenmerk waarden kunnen variëren per breed bereik, interpreteert 
 
 Het spreek tempo kan worden toegepast op Neural stemmen en standaard stemmen op het niveau van het woord of de zin. 
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -518,7 +519,7 @@ Het spreek tempo kan worden toegepast op Neural stemmen en standaard stemmen op 
 
 Volume wijzigingen kunnen worden toegepast op standaard stemmen op het niveau van het woord of de zin. Terwijl volume wijzigingen alleen kunnen worden toegepast op Neural stemmen op het niveau van de zin.
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -534,7 +535,7 @@ Volume wijzigingen kunnen worden toegepast op standaard stemmen op het niveau va
 
 Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niveau van het woord of de zin. Dat wijzigingen in de hoogte alleen kunnen worden toegepast op Neural stemmen op het niveau van de zin.
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -549,7 +550,7 @@ Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niv
 > [!IMPORTANT]
 > De hoogte van de contour wijzigingen wordt nu ondersteund met Neural stemmen.
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -582,7 +583,7 @@ Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niv
 
 Hieronder vindt u de ondersteunde inhouds typen voor de `interpret-as` `format` kenmerken en. Neem het `format` kenmerk alleen op als de waarde `interpret-as` is ingesteld op datum en tijd.
 
-| interpreteren als | formaat | Interpretatie |
+| interpreteren als | indeling | Interpretatie |
 |--------------|--------|----------------|
 | `address` | | De tekst wordt gesp roken als een adres. De engine voor spraak synthese uitspreekt:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Als "Ik ben bij 150the rechtbank voor het noordoosten van Redmond Washington" |
 | `cardinal`, `number` | | De tekst wordt gesp roken als een hoofd getal. De engine voor spraak synthese uitspreekt:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Als "er zijn drie alternatieven." |
@@ -598,7 +599,7 @@ Hieronder vindt u de ondersteunde inhouds typen voor de `interpret-as` `format` 
 
 Het `say-as` element mag alleen tekst bevatten.
 
-**Hierbij**
+**Voorbeeld**
 
 De engine voor spraak synthese spreekt het volgende voor beeld uit als ' uw eerste aanvraag is voor één kamer op nineteenth oktober 20 10 met vroege aankomst om 12 35 uur. '
  
@@ -638,7 +639,7 @@ Audio die is opgenomen in het SSML-document moet voldoen aan deze vereisten:
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | Hiermee geeft u de locatie/URL van het audio bestand op. | Vereist als u het audio-element in uw SSML-document gebruikt. |
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -677,7 +678,7 @@ Er is slechts één achtergrond geluids bestand toegestaan per SSML-document. U 
 | `fadein` | Hiermee geeft u de duur van de achtergrond audio "infaden" als milliseconden. De standaard waarde is `0` , die gelijk is aan niet vervagen in. **Geaccepteerde waarden**: `0` tot `10000` inclusief.  | Optioneel |
 | `fadeout` | Hiermee geeft u de duur van de achtergrond audio vervagen in milliseconden. De standaard waarde is `0` , die gelijk is aan geen uitfaden. **Geaccepteerde waarden**: `0` tot `10000` inclusief.  | Optioneel |
 
-**Hierbij**
+**Voorbeeld**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">

@@ -5,18 +5,18 @@ description: Meer informatie over het maken van een LUIS-app via een programma v
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057735"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405973"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Een LUIS-app bouwen via een programma met Node.js
 

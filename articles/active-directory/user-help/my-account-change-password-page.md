@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: a93ee781648440a6e656ff8fd948b2eb9e96bd43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735936"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422505"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Het wacht woord voor uw werk-of school account wijzigen op de pagina wacht woord wijzigen
 
@@ -54,3 +54,5 @@ Nadat u uw wacht woord hebt gewijzigd, kunt u het volgende doen:
 - Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
+
+- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen

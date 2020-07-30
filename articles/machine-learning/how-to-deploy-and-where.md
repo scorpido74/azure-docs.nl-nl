@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fb23893f176a2b51e5917ea5bbcb0e52faa64bf3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317872"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423436"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -218,6 +218,8 @@ myenv = Environment.from_conda_specification(name = 'myenv',
                                              file_path = 'path-to-conda-specification-file'
 myenv.register(workspace=ws)
 ```
+
+Zie [software omgevingen maken & gebruiken in azure machine learning](how-to-use-environments.md) voor een gedetailleerde bespreking van het gebruik en aanpassen van python-omgevingen met Azure machine learning.
 
 ### <a name="2-define-scoring-code"></a><a id="script"></a>2. Definieer Score code
 
@@ -636,7 +638,7 @@ Zie [implementeren naar Azure Kubernetes service](how-to-deploy-azure-kubernetes
 ### <a name="ab-testing-controlled-rollout"></a>A/B testen (gecontroleerde implementatie)
 Zie voor meer informatie [beheerde implementatie van ml modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) voor meer informatie.
 
-## <a name="consume-web-services"></a>Webservices gebruiken
+## <a name="inference-using-web-services"></a>Afbakenen met webservices
 
 Elke geïmplementeerde webservice biedt een REST-eind punt, zodat u client toepassingen in elke programmeer taal kunt maken.
 Als u verificatie op basis van sleutels voor uw service hebt ingeschakeld, moet u een service sleutel opgeven als een token in de aanvraag header.

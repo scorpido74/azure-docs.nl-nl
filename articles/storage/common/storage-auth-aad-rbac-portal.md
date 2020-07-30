@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 28cb140293d449876cc05e3e5f9e59a04b8396e0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370645"
+ms.locfileid: "87423701"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Use the Azure portal to assign an RBAC role for access to blob and queue data (De Azure-portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens)
 
@@ -99,7 +99,7 @@ Het toewijzen van de rol **lezer** is alleen nodig voor gebruikers die toegang m
 
 - Zie [toegang tot Azure-blobs en-wacht rijen verifiëren met Azure Active Directory](storage-auth-aad.md)voor meer informatie over RBAC-rollen voor opslag resources. 
 - Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
-- Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van RBAC-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
+- Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van Azure-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
     - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure CLI](../../role-based-access-control/role-assignments-cli.md)
     - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met de REST API](../../role-based-access-control/role-assignments-rest.md)

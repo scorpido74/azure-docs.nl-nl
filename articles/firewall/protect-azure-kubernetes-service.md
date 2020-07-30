@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056664"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412946"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Firewall gebruiken om implementaties van Azure Kubernetes service (AKS) te beveiligen
 
@@ -50,7 +50,9 @@ Azure Firewall biedt een AKS FQDN-code om de configuratie te vereenvoudigen. Voe
       Zie voor meer specifieke informatie de **. hcp. <location> . azmk8s.io* en adressen in de volgende tabel.
    - UDP-poort 123 voor NTP (Network Time Protocol) tijd synchronisatie (Linux-knoop punten).
    - UDP-poort 53 voor DNS is ook vereist als u een rechtstreekse toegang hebt tot de API-server.
-- AzureMonitor-en Storage service-Tags configureren. Azure Monitor ontvangt log Analytics-gegevens. 
+
+   Zie uitgaand [verkeer controleren voor cluster knooppunten in azure Kubernetes service (AKS)](../aks/limit-egress-traffic.md)voor meer informatie.
+- AzureMonitor-en Storage service-Tags configureren. Azure Monitor ontvangt log Analytics-gegevens.
 
    U kunt ook uw werk ruimte-URL afzonderlijk toestaan: `<worksapceguid>.ods.opinsights.azure.com` en `<worksapceguid>.oms.opinsights.azure.com` . U kunt dit op een van de volgende manieren aanpakken:
 

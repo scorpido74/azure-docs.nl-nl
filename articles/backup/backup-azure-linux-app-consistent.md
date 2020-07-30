@@ -1,15 +1,14 @@
 ---
 title: Toepassings consistente back-ups van virtuele Linux-machines
 description: Maak toepassings consistente back-ups van uw virtuele Linux-machines naar Azure. In dit artikel wordt uitgelegd hoe u het script Framework kunt configureren voor het maken van back-ups van door Azure geïmplementeerde Linux-Vm's Dit artikel bevat ook informatie over het oplossen van problemen.
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054856"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407095"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassingsconsistente back-up van Azure Linux-VM’s
 
@@ -53,19 +52,19 @@ Pre-scripts aanroepen systeem eigen toepassings-Api's, die de IOs stil leggen en
 
     - **postScriptParams**: Geef de optionele para meters op die moeten worden door gegeven aan het post script. Alle para meters moeten tussen aanhalings tekens staan. Als u meerdere para meters gebruikt, scheidt u de para meters met een komma.
 
-    - **preScriptNoOfRetries**: Stel het aantal keren in dat het pre-script opnieuw moet worden uitgevoerd als er een fout is opgetreden voordat wordt beëindigd. Bij nul wordt slechts één poging geprobeerd en niet opnieuw als er een fout optreedt.
+    - **preScriptNoOfRetries**: Stel het aantal keren in dat het pre-script opnieuw moet worden uitgevoerd als er een fout is opgetreden voordat wordt beëindigd. Bij nul wordt slechts één poging geprobeerd en niet opnieuw proberen als er een fout optreedt.
 
-    - **postScriptNoOfRetries**: Stel in hoe vaak het post script moet worden uitgevoerd als er een fout is opgetreden voordat wordt beëindigd. Bij nul wordt slechts één poging geprobeerd en niet opnieuw als er een fout optreedt.
+    - **postScriptNoOfRetries**: Stel het aantal keren in dat het post script moet worden herhaald als er een fout is opgetreden voordat het proces wordt afgebroken. Bij nul wordt slechts één poging geprobeerd en niet opnieuw proberen als er een fout optreedt.
 
     - **timeoutInSeconds**: Geef afzonderlijke time-outs op voor het pre-script en het post-script (maximum waarde kan 1800 zijn).
 
-    - **continueBackupOnFailure**: Stel deze waarde in op **True** als u wilt dat Azure backup terugvallen op een consistente en crash consistente back-up van een bestands systeem als het pre-script of het post script mislukt. Als u dit instelt op **False** , mislukt de back-up in het geval van een script fout (behalve wanneer u een virtuele machine met één schijf terugvalt op crash consistente back-up, ongeacht deze instelling).
+    - **continueBackupOnFailure**: Stel deze waarde in op **True** als u wilt dat Azure backup terugvallen op een consistente en crash consistente back-up van een bestands systeem als het pre-script of het post script mislukt. Als deze optie is ingesteld op **False** , mislukt de back-up als er een script fout optreedt (behalve wanneer u een virtuele machine met één schijf hebt die terugvalt op crash consistente back-up, ongeacht deze instelling). Wanneer de **continueBackupOnFailure** -waarde is ingesteld op False en de back-up mislukt, wordt de back-upbewerking opnieuw geprobeerd op basis van een nieuwe logica in de service (voor het opgegeven aantal pogingen).
 
     - **fsFreezeEnabled**: Geef op of Linux fsfreeze moet worden aangeroepen tijdens het maken van de VM-moment opname om consistentie van het bestands systeem te garanderen. U wordt aangeraden deze instelling in te stellen op **waar** , tenzij uw toepassing afhankelijk is van het uitschakelen van fsfreeze.
 
     - **ScriptsExecutionPollTimeSeconds**: Stel de tijd in die de uitbrei ding moet overzetten tussen elke polling en de uitvoering van het script. Als de waarde bijvoorbeeld 2 is, controleert de uitbrei ding of de uitvoering van het script elke 2 seconden is voltooid. De minimum-en maximum waarde die het kan duren, zijn respectievelijk 1 en 5. De waarde moet strikt een geheel getal zijn.
 
-6. Het script Framework is nu geconfigureerd. Als de back-up van de virtuele machine al is geconfigureerd, roept de volgende back-up de scripts aan en wordt de toepassings consistente back-up geactiveerd. Als de back-up van de virtuele machine niet is geconfigureerd, configureert u deze met behulp van back-ups van [virtuele Azure-machines naar Recovery Services-kluizen.](./backup-azure-vms-first-look-arm.md)
+6. Het script Framework is nu geconfigureerd. Als de back-up van de virtuele machine al is geconfigureerd, roept de volgende back-up de scripts aan en wordt de toepassings consistente back-up geactiveerd. Als de back-up van de virtuele machine niet is geconfigureerd, configureert u deze met behulp van [back-ups van virtuele Azure-machines naar Recovery Services-kluizen.](./backup-azure-vms-first-look-arm.md)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

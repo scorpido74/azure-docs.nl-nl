@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: bc7ab46113e1b819fc71a9f6e8a18400f8acfbef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fbe54b3bd6e0fc8c42b4dfc7401be74ae65ce6cd
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946241"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406925"
 ---
 # <a name="how-to-launch-the-immersive-reader-with-html-content"></a>De insluitende lezer starten met HTML-inhoud
 
@@ -22,7 +23,7 @@ In dit artikel wordt beschreven hoe u de insluitende lezer met HTML-inhoud kunt 
 
 ## <a name="prepare-the-html-content"></a>De HTML-inhoud voorbereiden
 
-Plaats de inhoud die u wilt weer geven in de insluitende lezer binnen een container element. Zorg ervoor dat het container element een unieke `id`naam heeft. De insluitende lezer biedt ondersteuning voor eenvoudige HTML-elementen. Zie de [referentie](./reference.md#html-support) voor meer informatie.
+Plaats de inhoud die u wilt weer geven in de insluitende lezer binnen een container element. Zorg ervoor dat het container element een unieke naam heeft `id` . De insluitende lezer biedt ondersteuning voor eenvoudige HTML-elementen. Zie de [referentie](./reference.md#html-support) voor meer informatie.
 
 ```html
 <div id='immersive-reader-content'>
@@ -48,7 +49,7 @@ const htmlContent = document.getElementById('immersive-reader-content').innerHTM
 
 ## <a name="launch-the-immersive-reader-with-your-html-content"></a>De insluitende lezer starten met uw HTML-inhoud
 
-Wanneer u `ImmersiveReader.launchAsync`aanroept, stelt u `mimeType` de eigenschap `text/html` van het segment in op om rendering van HTML in te scha kelen.
+Wanneer u aanroept `ImmersiveReader.launchAsync` , stelt u de eigenschap van het segment `mimeType` in op `text/html` om rendering van HTML in te scha kelen.
 
 ```javascript
 const data = {

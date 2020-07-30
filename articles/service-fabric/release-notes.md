@@ -5,20 +5,20 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 118e83016a0c27383a1f138d27397a01f7cd3916
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 08808fa0577077b642d0f21e3995931726d4d8a3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246619"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423538"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric releases
 
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Richt lijnen voor probleem oplossing</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Bijhouden van problemen</a> 
-- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Ondersteuningsopties</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Ondersteunings opties</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Ondersteunde versies</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Codevoorbeelden</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Code voorbeelden</a>
 
 In dit artikel vindt u meer informatie over de nieuwste releases en updates voor de Service Fabric runtime en Sdk's.
 
@@ -72,6 +72,8 @@ We zijn enthousiast om de volgende versie van Service Fabric aan te kondigen. De
 | Releasedatum | Release | Meer informatie |
 |---|---|---|
 | 20 april 2020 | [Azure Service Fabric 7,1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [Releaseopmerkingen](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
+| 16 juni 2020 | [Microsoft Azure Service Fabric 7,1 eerst vernieuwen](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-first-refresh-release/ba-p/1466517) | [Releaseopmerkingen](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU1-releasenotes.md)
+| 20 juli 2020 | [Microsoft Azure Service Fabric 7,1 seconde vernieuwen](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [Releaseopmerkingen](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
 
 
 ### <a name="service-fabric-70"></a>Service Fabric 7,0

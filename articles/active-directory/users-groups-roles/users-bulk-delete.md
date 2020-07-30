@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82304052d6ed0c0169c24c19c58d53548b4479cc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731494"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423589"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Gebruikers bulksgewijs verwijderen in Azure Active Directory
 
@@ -68,7 +68,7 @@ Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven o
 
 U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking** .
 
-   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
+   [![Controleer de verwijderings status op de pagina resultaten van bulk bewerking.](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
 
 Vervolgens kunt u controleren of de gebruikers die u hebt verwijderd, bestaan in de Azure AD-organisatie in de Azure Portal of met behulp van Power shell.
 
@@ -76,7 +76,7 @@ Vervolgens kunt u controleren of de gebruikers die u hebt verwijderd, bestaan in
 
 1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
 1. Selecteer **Azure Active Directory**in het navigatie deel venster.
-1. Selecteer onder **Beheren** de optie **Gebruikers**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
 1. Onder **weer geven**selecteert u alleen **alle gebruikers** en controleert u of de gebruikers die u hebt verwijderd, niet meer worden weer gegeven.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Verwijderde gebruikers controleren met Power shell
