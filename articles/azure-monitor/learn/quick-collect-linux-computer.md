@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: d99af6965e4d2e73ed302530d76126e0e6e8a3ef
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1adf167bb23b3d66f6dcbd07794145f7c817105
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505921"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322156"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Quickstart: Gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
 
-[Azure Monitor](../overview.md) kan gegevens rechtstreeks vanuit uw fysieke of virtuele Linux-computers in uw omgeving verzamelen en onderbrengen in een Log Analytics-werkruimte voor uitvoerige analyse en correlatie. Door de [Log Analytics-agent te installeren](../platform/log-analytics-agent.md) kan Azure Monitor gegevens verzamelen uit een datacentrum of een andere cloudomgeving. In deze snelstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Linux-server configureert en verzamelt. Zie [Gegevens verzamelen over Azure Virtual Machines](../../azure-monitor/learn/quick-collect-azurevm.md) voor informatie over virtuele Linux-machines in Azure.  
+[Azure Monitor](../overview.md) kan gegevens rechtstreeks vanuit uw fysieke of virtuele Linux-computers in uw omgeving verzamelen en onderbrengen in een Log Analytics-werkruimte voor uitvoerige analyse en correlatie. Door de [Log Analytics-agent te installeren](../platform/log-analytics-agent.md) kan Azure Monitor gegevens verzamelen uit een datacentrum of een andere cloudomgeving. In deze snelstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Linux-server configureert en verzamelt. Zie [Gegevens verzamelen over Azure Virtual Machines](./quick-collect-azurevm.md) voor informatie over virtuele Linux-machines in Azure.  
 
-Zie [Ondersteunde Windows-besturingssystemen](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) en [ Netwerkconfiguratie voor de firewall](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over de ondersteunde configuratie.
+Zie [Ondersteunde Windows-besturingssystemen](../platform/log-analytics-agent.md#supported-linux-operating-systems) en [ Netwerkconfiguratie voor de firewall](../platform/log-analytics-agent.md#network-requirements) voor meer informatie over de ondersteunde configuratie.
  
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -169,3 +169,4 @@ Voor informatie over het weergeven en analyseren van de gegevens gaat u verder m
 
 > [!div class="nextstepaction"]
 > [Gegevens weergeven of analyseren in Log Analytics](../log-query/get-started-portal.md)
+

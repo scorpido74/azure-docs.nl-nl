@@ -3,12 +3,12 @@ title: Aan de slag met Live Video Analytics in IoT Edge - Azure
 description: Deze quickstart laat zien hoe u aan de slag kunt met Live Video Analytics in IoT Edge. Leer hoe u beweging kunt detecteren in een live-videostream.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090073"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Quickstart: Over Live Video Analytics in IoT Edge
 
@@ -34,7 +34,7 @@ Voor deze zelfstudie hebt u de volgende Azure-resources nodig:
 * IoT Hub
 * Storage-account
 * Azure Media Services-account
-* Een Linux-VM in Azure, waarop [IoT Edge-runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) is geïnstalleerd
+* Een Linux-VM in Azure, waarop [IoT Edge-runtime](../../iot-edge/how-to-install-iot-edge-linux.md) is geïnstalleerd
 
 Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) om de vereiste Azure-resources in uw Azure-abonnement te implementeren. Voer hiervoor de volgende stappen uit:
 
@@ -561,7 +561,7 @@ In het venster **UITVOER** wordt het volgende bericht weergegeven:
 
 Let op deze details:
 
-* Het bericht bevat een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) voor meer informatie.
+* Het bericht bevat een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md) voor meer informatie.
 * In `applicationProperties` verwijst `subject` naar het knooppunt in de `MediaGraph` vanwaaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van de bewegingsdetectieprocessor.
 * In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis een analytische gebeurtenis is.
 * De waarde `eventTime` is het tijdstip waarop de gebeurtenis heeft plaatsgevonden.

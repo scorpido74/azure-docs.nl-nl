@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: Een apparaat verbinden (Python)
           href: tutorial-connect-device-python.md
-        - name: Een Plug en Play-apparaat (preview) verbinden
-          href: tutorial-connect-pnp-device.md
         - name: Een gateway-apparaatsjabloon maken
           href: tutorial-define-gateway-device-type.md
         - name: Een IoT Edge-apparaat verbinden
@@ -79,8 +77,6 @@
       items:
         - name: Een sjabloon van het apparaat instellen
           href: howto-set-up-template.md
-        - name: Een MXChip IoT DevKit voorbereiden en aansluiten
-          href: howto-connect-devkit.md
         - name: Een Azure Sphere DevKit voorbereiden en verbinden
           href: howto-connect-sphere.md
         - name: Een RuuviTag-apparaat voorbereiden en verbinden
