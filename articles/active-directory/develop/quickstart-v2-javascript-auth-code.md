@@ -9,24 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311939"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een JavaScript SPA met behulp van de verificatiecodestroom
-
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 In deze quickstart voert u een codevoorbeeld uit waarin wordt getoond hoe een JavaScript-app met één pagina (SPA) gebruikers van persoonlijke accounts, werkaccounts en schoolaccounts kan aanmelden met behulp van de verificatiecodestroom. In het codevoorbeeld ziet u ook hoe u een toegangstoken krijgt om een web-API aan te roepen, in dit geval de Microsoft Graph API. Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.
 
 Deze quickstart maakt gebruik van MSAL.js 2.0 met de verificatiecodestroom. Raadpleeg voor een vergelijkbare quickstart die gebruikmaakt van MSAL.js 1.0 met de impliciete stroom [Quickstart: gebruikers aanmelden in JavaScript-apps met één pagina](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

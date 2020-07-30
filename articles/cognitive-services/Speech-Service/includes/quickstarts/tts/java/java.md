@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: de functie spraak, Java-Speech Service'
+title: 'Quickstart: Spraak synthetiseren, Java - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -9,17 +9,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: a92858d2510a2951575160f64906824694e9c327
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 01eb3da7b6f77c2a182267d4c07f4028c9dcaecf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74818227"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374869"
 ---
-**Kies uw doel omgeving**
+**Uw doelomgeving kiezen**
 
-#### <a name="java-runtime"></a>[Java-runtime](#tab/jre)
+#### <a name="java-runtime"></a>[Java Runtime](#tab/jre)
 [!INCLUDE [jre](./jre.md)]
 #### <a name="android"></a>[Android](#tab/android)
 [!INCLUDE [android](./android.md)]

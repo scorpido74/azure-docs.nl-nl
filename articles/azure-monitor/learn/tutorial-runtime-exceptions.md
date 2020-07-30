@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516359"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322428"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Runtime-uitzonderingen vinden en diagnosticeren met behulp van Azure Application Insights
 
@@ -36,7 +36,7 @@ Vereisten voor het voltooien van deze zelfstudie:
     - Azure-ontwikkeling
 - Download en installeer de [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md) inschakelen
-- Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../../azure-monitor/app/asp-net.md)in. 
+- Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../app/asp-net.md)in. 
 - De zelfstudie volgt de identificatie van een uitzondering in uw toepassing; wijzig dus uw code in uw ontwikkelings- of testomgeving om een uitzondering te genereren. 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
@@ -63,7 +63,7 @@ Application Insights verzamelt fouten in uw toepassing en laat u zien hoe vaak z
 
     ![Steekproeven van mislukte aanvraag](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. In de details van de mislukte aanvraag ziet u het Gantt-diagram waarin wordt aangegeven dat er twee afhankelijkheidsfouten waren in deze transactie, wat heeft gezorgd voor meer dan 50% van de totale duur van de transactie. Deze ervaring bevat alle telemetrie voor alle onderdelen van een gedistribueerde toepassing die zijn gerelateerd aan deze bewerkings-id. [Meer informatie over de nieuwe ervaring](../../azure-monitor/app/transaction-diagnostics.md). U kunt een van de items selecteren om rechts de details te bekijken. 
+6. In de details van de mislukte aanvraag ziet u het Gantt-diagram waarin wordt aangegeven dat er twee afhankelijkheidsfouten waren in deze transactie, wat heeft gezorgd voor meer dan 50% van de totale duur van de transactie. Deze ervaring bevat alle telemetrie voor alle onderdelen van een gedistribueerde toepassing die zijn gerelateerd aan deze bewerkings-id. [Meer informatie over de nieuwe ervaring](../app/transaction-diagnostics.md). U kunt een van de items selecteren om rechts de details te bekijken. 
 
     ![Details van mislukte aanvraag](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -112,4 +112,5 @@ Als u Application Insights aansluit op een trackingsysteem zoals Azure DevOps of
 Nu u hebt geleerd runtime-uitzonderingen te identificeren, kunt u doorgaan naar de volgende zelfstudie om te leren hoe u prestatieproblemen kunt identificeren en diagnosticeren.
 
 > [!div class="nextstepaction"]
-> [Prestatieproblemen identificeren](../../azure-monitor/learn/tutorial-performance.md)
+> [Prestatieproblemen identificeren](./tutorial-performance.md)
+
