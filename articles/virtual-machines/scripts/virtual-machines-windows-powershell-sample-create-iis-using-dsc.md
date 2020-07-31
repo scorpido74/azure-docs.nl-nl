@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
-ms.openlocfilehash: 52ce81cb69470adf000465b97e976e5e43514da2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f1dc6eb98edfdf145e4fb09923e06b8e28e8f43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501130"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010016"
 ---
-# <a name="create-an-iis-vm-with-powershell"></a>Een IIS-VM maken met PowerShell
+# <a name="use-an-azure-powershell-sample-script-to-create-an-iis-vm"></a>Een Azure PowerShell-voorbeeldscript gebruiken om een IIS-VM te maken
 
 Met dit script maakt u een virtuele machine in Azure waarop Windows Server 2016 wordt uitgevoerd, waarna de Azure Virtual Machine DSC Extension wordt gebruikt om IIS te installeren. Nadat het script is uitgevoerd, is de standaardwebsite van IIS bereikbaar via het openbare IP-adres van de virtuele machine.
 
@@ -55,6 +55,6 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 U kunt extra PowerShell-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Windows-VM's](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

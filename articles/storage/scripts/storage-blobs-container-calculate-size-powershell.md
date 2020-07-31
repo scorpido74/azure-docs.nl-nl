@@ -1,5 +1,5 @@
 ---
-title: Grootte van een BLOB-container berekenen met Power shell
+title: Grootte van een blob-container berekenen met PowerShell
 titleSuffix: Azure Storage
 description: Bereken de grootte van een container in Azure Blob Storage door de grootte van alle blobs in de container bij elkaar op te tellen.
 services: storage
@@ -10,14 +10,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c95f66a492f1fdb6f3c0aef6390f0b925dcf6e53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067076"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089364"
 ---
-# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>De grootte van een BLOB-container berekenen met Power shell
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Grootte van een blob-container berekenen met PowerShell
 
 Met dit script wordt de grootte van een container in Azure Blob Storage berekend door de grootte van de blobs in de container op te tellen.
 
@@ -53,6 +53,6 @@ In dit script worden de volgende opdrachten gebruikt om de grootte van de Blob S
 
 Zie [De grootte van een Blob Storage-container voor facturering berekenen](../scripts/storage-blobs-container-calculate-billing-size-powershell.md) voor een script waarmee u de grootte van de container voor facturering kunt berekenen.
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer PowerShell-voorbeeldscripts voor Storage vindt u in de [PowerShell-voorbeelden voor Azure Storage](../blobs/storage-samples-blobs-powershell.md).

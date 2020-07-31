@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Network | Microsoft Docs
-description: Meer informatie over concepten en functies van Azure Virtual Network.
+description: Meer informatie over Azure Virtual Network-concepten en -functies, met inbegrip van adresruimte, subnetten, regio's en abonnementen.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040602"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386993"
 ---
 # <a name="what-is-azure-virtual-network"></a>Wat is Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Azure Virtual Network (VNet) is de basisbouwsteen voor uw privénetwerk in Azure
 ## <a name="vnet-concepts"></a>VNet-concepten
 
 - **Adresruimte:** Wanneer u een VNet maakt, moet u een aangepaste persoonlijke IP-adresruimte opgeven met behulp van openbare en persoonlijke adressen (RFC 1918). Azure wijst resources in een virtueel netwerk een persoonlijk IP-adres toe op basis van de adresruimte die u toewijst. Als u bijvoorbeeld een VM in een VNet implementeert met adresruimte 10.0.0.0/16, wordt aan de VMe een privé-IP-adres, zoals 10.0.0.4, toegewezen.
-- **Subnetten:** Met subnetten kunt u het virtuele netwerk in een of meer subnetwerken segmenteren en een deel van de adresruimte van het virtuele netwerk aan elk subnet toewijzen. Vervolgens kunt u Azure-resources implementeren in een specifiek subnet. Net als in een traditioneel netwerk kunt u met subnetten uw VNet-adresruimte segmenteren in segmenten die geschikt zijn voor het interne netwerk van de organisatie. Dit verbetert ook de efficiëntie van de adrestoewijzing. U kunt resources binnen subnetten beveiligen met behulp van netwerkbeveiligingsgroepen. Zie [Beveiligingsgroepen](security-overview.md) voor meer informatie.
+- **Subnetten:** Met subnetten kunt u het virtuele netwerk in een of meer subnetwerken segmenteren en een deel van de adresruimte van het virtuele netwerk aan elk subnet toewijzen. Vervolgens kunt u Azure-resources implementeren in een specifiek subnet. Net als in een traditioneel netwerk kunt u met subnetten uw VNet-adresruimte segmenteren in segmenten die geschikt zijn voor het interne netwerk van de organisatie. Dit verbetert ook de efficiëntie van de adrestoewijzing. U kunt resources binnen subnetten beveiligen met behulp van netwerkbeveiligingsgroepen. Zie [Netwerkbeveiligingsgroepen](security-overview.md) voor meer informatie.
 - **Regio's**: Een VNet is afgebakend tot één regio/locatie, maar meerdere virtuele netwerken in verschillende regio's kunnen worden verbonden samen met behulp van peering van virtuele netwerken.
 - **Abonnement:** Het VNet bevindt zich in een abonnement. U kunt meerdere virtuele netwerken binnen elk Azure-[abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) en elke Azure-[regio](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) implementeren.
 
@@ -67,7 +67,7 @@ U kunt uw on-premises computers en netwerken verbinden met een virtueel netwerk 
 
 U kunt netwerkverkeer filteren tussen subnetten met behulp van een of beide van de volgende opties:
 
-- **Beveiligingsgroepen:** Netwerkbeveiligingsgroepen en toepassingsbeveiligingsgroepen kunnen meerdere binnenkomende en uitgaande beveiligingsregels bevatten waarmee u verkeer van en naar resources kunt filteren op bron- en doel-IP-adres, poort en protocol. Zie [Netwerkbeveiligingsgroepen](security-overview.md#network-security-groups) of [Toepassingsbeveiligingsgroepen](security-overview.md#application-security-groups) voor meer informatie.
+- **Netwerkbeveiligingsgroepen:** Netwerkbeveiligingsgroepen en toepassingsbeveiligingsgroepen kunnen meerdere binnenkomende en uitgaande beveiligingsregels bevatten waarmee u verkeer van en naar resources kunt filteren op bron- en doel-IP-adres, poort en protocol. Zie [Netwerkbeveiligingsgroepen](security-overview.md#network-security-groups) of [Toepassingsbeveiligingsgroepen](security-overview.md#application-security-groups) voor meer informatie.
 - **Virtuele netwerkapparaten:** Een virtueel netwerkapparaat is een virtuele machine die een netwerkfunctie uitvoert, zoals een firewall, WAN-optimalisatie of een andere netwerkfunctie. Zie [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) voor meer informatie over het bekijken van een lijst met beschikbare virtuele netwerkapparaten die u in een virtueel netwerk kunt implementeren.
 
 ## <a name="route-network-traffic"></a>Netwerkverkeer routeren

@@ -3,13 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 4c10cbec8e22a383ed303b169551999a805f4db6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: 69dd5f5eb3a1cc0cda60702e9e653e23f6588f93
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375419"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -80,7 +81,7 @@ import com.squareup.okhttp.*;
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-U moet eerst een openbare klasse voor uw project maken:
+U moet eerst een openbare klasse maken voor het project:
 
 ```java
 public class Detect {
@@ -88,7 +89,7 @@ public class Detect {
 }
 ```
 
-Voeg deze regels toe aan de klasse `Detect`. U ziet dat de abonnements sleutel en het eind punt worden gelezen van omgevings variabelen:
+Voeg deze regels toe aan de klasse `Detect`. U ziet dat de abonnementssleutel en het eindpunt worden gelezen vanuit omgevingsvariabelen:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,7 +97,7 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/detect?api-version=3.0";
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services-abonnement voor meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraagparameters toevoegen. [Meer informatie over verificatie met het abonnement voor meerdere services](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Een client maken en een aanvraag samenstellen
 
@@ -126,7 +127,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Een functie maken voor het parseren van het antwoord
 
-Met deze eenvoudige functie wordt het JSON-antwoord van de service Translator geparseerd en prettifies.
+Met deze eenvoudige functie wordt het JSON-antwoord van de Translator-service geparseerd en verfraaid.
 
 ```java
 // This function prettifies the json response.
@@ -170,7 +171,7 @@ gradle run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+Nadat u het voorbeeld hebt uitgevoerd, wordt het volgende uitgevoerd naar de terminal:
 
 > [!NOTE]
 > Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
@@ -202,7 +203,7 @@ Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Termina
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator kunt doen.
 
 > [!div class="nextstepaction"]
-> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

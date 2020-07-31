@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563738"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384766"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Wat is Azure Firewall Manager?
 
@@ -81,7 +81,7 @@ Azure Firewall Manager heeft de volgende bekende problemen:
 |Het opsplitsen van verkeer wordt momenteel niet ondersteund.|Het opsplitsen van verkeer met Office 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een externe provider voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Office 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
 |Eén beveiligde virtuele hub per regio.|U mag niet meer dan één beveiligde virtuele hub per regio hebben.|Maak meerdere virtuele WAN's in een regio.|
 |Basisbeleidsregels moeten zich in dezelfde regio als het lokale beleid bevinden.|Maak al uw lokale beleidsregels in dezelfde regio als het basisbeleid. U kunt nog steeds een beleid toepassen dat in een regio is gemaakt op een beveiligde hub vanuit een andere regio.|Wordt onderzocht|
-|Onderlinge communicatie tussen hubs werkt niet met beveiligde virtuele hub|Communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund.|Wordt onderzocht|
+|Onderlinge communicatie tussen hubs verloopt niet via beveiligde virtuele hub|Communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund, maar communicatie tussen hubs werkt nog steeds.|Wordt onderzocht|
 |Alle beveiligde virtuele hubs die dezelfde virtuele WAN delen, moeten zich in dezelfde resourcegroep bevinden.|Dit gedrag wordt vandaag afgestemd met andere virtuele WAN-hubs.|Maak meerdere virtuele WAN's om ervoor te zorgen dat beveiligde virtuele hubs kunnen worden gemaakt in andere resourcegroepen.|
 
 ## <a name="next-steps"></a>Volgende stappen

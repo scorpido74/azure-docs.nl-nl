@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dd00f800003724b3a5c15d265a5428272e1762fb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290214"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>VMware-VM’s evalueren met Serverevaluatie
 
@@ -75,7 +75,7 @@ Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gem
 ### <a name="download-the-ova-template"></a>De OVA-sjabloon downloaden
 
 1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** selecteert u **Detecteren**.
-2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met VMWare vSphere-hypervisor**.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met VMware vSphere-hypervisor**.
 3. Selecteer **Downloaden** om het OVA-sjabloonbestand te downloaden.
 
    ![Selecties voor het downloaden van een OVA-bestand](./media/tutorial-assess-vmware/download-ova.png)
@@ -146,7 +146,7 @@ Het apparaat voor de eerste keer instellen.
      - Alleen HTTP-proxy wordt ondersteund.
    - **Tijdsynchronisatie**: de tijd op het apparaat moet zijn gesynchroniseerd met internettijd zodat detectie goed werkt.
    - **Updates installeren**: het apparaat zorgt ervoor dat de meest recente updates zijn geïnstalleerd.
-   - **VDDK installeren**: het apparaat controleert of VMWare vSphere Virtual Disk Development Kit (VDDK) is geïnstalleerd. Als dat niet het geval is, downloadt u VDDK 6.7 van VMware en extraheert u de inhoud van het gedownloade zipbestand naar de opgegeven locatie op het apparaat.
+   - **VDDK installeren**: het apparaat controleert of VMware vSphere Virtual Disk Development Kit (VDDK) is geïnstalleerd. Als dat niet het geval is, downloadt u VDDK 6.7 van VMware en extraheert u de inhoud van het gedownloade zipbestand naar de opgegeven locatie op het apparaat.
 
      Azure Migrate-servermigratie gebruikt de VDDK om computers te repliceren tijdens migratie naar Azure.       
 

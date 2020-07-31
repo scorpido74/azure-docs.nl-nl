@@ -1,18 +1,18 @@
 ---
-title: Taakwerkstromen automatiseren in Visual Studio
-description: Terugkerende werkstromen maken, plannen en uitvoeren voor bedrijfsintegratie met behulp van Azure Logic Apps en Visual Studio
+title: Taken en werkstromen automatiseren met Visual Studio
+description: Geautomatiseerde werkstromen maken, plannen en uitvoeren voor bedrijfsintegratie met behulp van Azure Logic Apps en Visual Studio
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
-ms.openlocfilehash: 4416c9f9d1c55a460cb983089706e984d90ba082
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520763"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132361"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werkstromen maken met Azure Logic Apps - Visual Studio
 
@@ -51,9 +51,15 @@ In deze quickstart maakt u met Visual Studio dezelfde logische app als in de qui
   
     U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
 
+  * Lees de volgende onderwerpen voor aanvullende installatiegegevens als u Azure Government-abonnementen met Visual Studio wilt gebruiken:
+
+    * Visual Studio 2019: [Snelstart: Verbinding maken met Azure Government met Visual Studio](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017: [Introductie van de Visual Studio-extensie Azure Environment-selector ](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), die u kunt downloaden en installeren via de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
+
 * Toegang tot het web tijdens het gebruik van de ingebouwde ontwerpfunctie van Logic App
 
-  De ontwerpfunctie vereist een internetverbinding om resources te maken in Azure en eigenschappen en gegevens van connectors in uw logische app te lezen. Voor Dynamics CRM Online-verbindingen controleert de ontwerpfunctie bijvoorbeeld uw CRM-exemplaar voor de standaard en aangepaste eigenschappen.
+  De ontwerpfunctie vereist een internetverbinding om resources te maken in Azure en eigenschappen en gegevens van connectors in uw logische app te lezen.
 
 * Een e-mailaccount dat door Logic Apps wordt ondersteund, bijvoorbeeld Office 365 Outlook, Outlook.com of Gmail. Voor andere providers kunt u [hier](/connectors/) de lijst met connectors bekijken. In dit voorbeeld wordt gebruikgemaakt van Outlook van Office 365. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742194"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422404"
 ---
 # <a name="what-is-the-my-account-portal"></a>Wat is de portal Mijn account?
 
@@ -33,7 +33,7 @@ U opent de portal **Mijn account** (https://myaccount.microsoft.com) ), in de hu
 ![Portal Mijn account, overzichtspagina](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die toegang willen krijgen tot de portal Mijn account om hun beveiligingsgegevens, apparaatgegevens, wachtwoord, verbonden organisaties, privacy of eerdere aanmeldingsgegevens bij te werken. Als u een beheerder bent die informatie zoekt over het inschakelen van verificatie en andere functies van Azure Active Directory (Azure AD) voor uw werknemers en andere toepassingen, raadpleegt u [Documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+>Dit artikel is bedoeld voor gebruikers die toegang willen krijgen tot de portal Mijn account om hun beveiligingsgegevens, apparaatgegevens, wachtwoord, verbonden organisaties, taalinstellingen, privacy of eerdere aanmeldingsgegevens bij te werken. Als u een beheerder bent die informatie zoekt over het inschakelen van verificatie en andere functies van Azure Active Directory (Azure AD) voor uw werknemers en andere toepassingen, raadpleegt u [Documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -46,6 +46,8 @@ U opent de portal **Mijn account** (https://myaccount.microsoft.com) ), in de hu
 - Uw [aanmeldingsactiviteit](my-account-portal-sign-ins-page.md) weergeven
 
 - Weergeven hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md)
+
+- Wijzig de [Portalinstellingen van mijn account](my-account-portal-settings.md)
 
 ## <a name="related-microsoft-office-content"></a>Gerelateerde inhoud van Microsoft Office
 

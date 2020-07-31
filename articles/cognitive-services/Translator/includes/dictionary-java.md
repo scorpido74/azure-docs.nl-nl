@@ -3,13 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 1d7e1156e55cec546bd620f0402ad0e5946002e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: f9fe8a6c055fa0e9a65ae32adf048b1b1e798170
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375485"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -80,7 +81,7 @@ import com.squareup.okhttp.*;
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-U moet eerst een openbare klasse voor uw project maken:
+U moet eerst een openbare klasse maken voor het project:
 
 ```java
 public class AltTranslation {
@@ -88,7 +89,7 @@ public class AltTranslation {
 }
 ```
 
-Voeg deze regels toe aan de klasse `AltTranslation`. Eerst worden de abonnements sleutel en het eind punt gelezen van omgevings variabelen. U ziet dat samen met de `api-version` nog twee aanvullende para meters zijn toegevoegd aan de `url` . Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
+Voeg deze regels toe aan de klasse `AltTranslation`. Eerst worden de abonnementssleutel en het eindpunt gelezen vanuit omgevingsvariabelen. Daarna ziet u dat er naast de `api-version` twee extra parameters zijn toegevoegd aan de `url`. Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,7 +97,7 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/dictionary/lookup?api-version=3.0&from=en&to=es";
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services-abonnement voor meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraagparameters toevoegen. [Meer informatie over verificatie met het abonnement voor meerdere services](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Een client maken en een aanvraag samenstellen
 
@@ -126,7 +127,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Een functie maken voor het parseren van het antwoord
 
-Met deze eenvoudige functie wordt het JSON-antwoord van de service Translator geparseerd en prettifies.
+Met deze eenvoudige functie wordt het JSON-antwoord van de Translator-service geparseerd en verfraaid.
 
 ```java
 // This function prettifies the json response.
@@ -231,7 +232,7 @@ gradle run
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator kunt doen.
 
 > [!div class="nextstepaction"]
-> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

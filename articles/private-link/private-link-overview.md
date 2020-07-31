@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3814711f090a7d996271f8fa5bef9ff1394d135a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 19e7a7972af55173f19d5784b2a6ac78ae14a0f0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276580"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124966"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure Private Link hebt u via een [privé-eindpunt](private-endpoint-overview.md) in uw virtuele netwerk toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en in Azure gehoste services van klanten of partners.
@@ -42,32 +42,32 @@ Azure Private Link biedt de volgende voordelen:
 
 |Ondersteunde services  |Beschikbare regio's | Aanvullende overwegingen | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-|Private Link-services achter standaard Azure Load Balancer | Alle openbare regio's  | Ondersteund op Standard Load Balancer | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|Private Link-services achter standaard Azure Load Balancer | Alle openbare regio's<br/> Alle Government-regio's  | Ondersteund op Standard Load Balancer | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
 | Azure Storage       |  Alle openbare regio's       |  Ondersteund op Account Kind General Purpose V2 | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
 | Azure Data Lake Storage Gen2        |  Alle openbare regio's      |  Ondersteund op Account Kind General Purpose V2 | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
-|  Azure SQL Database         | Alle openbare regio's      |  Ondersteund voor [proxy-verbindingsbeleid](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-|Azure Synapse Analytics (SQL Data Warehouse)| Alle openbare regio's |  Ondersteund voor [proxy-verbindingsbeleid](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|Azure Cosmos DB|  Alle openbare regio's | |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  Azure Database for PostgreSQL - één server         | Alle openbare regio's      | Prijscategorieën Ondersteund voor algemeen gebruik en Geoptimaliseerd voor geheugen | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  Azure Database for MySQL         | Alle openbare regio's      |  | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  Azure Database for MariaDB         | Alle openbare regio's      |  | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  Azure Key Vault         | Alle openbare regio's      |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|  Azure SQL Database         | Alle openbare regio's <br/> Alle Government-regio's      |  Ondersteund voor [proxy-verbindingsbeleid](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|Azure Synapse Analytics (SQL Data Warehouse)| Alle openbare regio's <br/> Alle Government-regio's |  Ondersteund voor [proxy-verbindingsbeleid](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|Azure Cosmos DB|  Alle openbare regio's<br/> Alle Government-regio's | |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  Azure Database for PostgreSQL - één server         | Alle openbare regio's <br/> Alle Government-regio's     | Prijscategorieën Ondersteund voor algemeen gebruik en Geoptimaliseerd voor geheugen | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  Azure Database for MySQL         | Alle openbare regio's<br/> Alle Government-regio's      |  | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  Azure Database for MariaDB         | Alle openbare regio's<br/> Alle Government-regio's     |  | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  Azure Key Vault         | Alle openbare regio's<br/> Alle Government-regio's      |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |Azure Kubernetes Service - Kubernetes API | Alle openbare regio's      |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|Azure Search | Alle openbare regio's |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
-|Azure Container Registry | Alle openbare regio's      | Ondersteund met de Premium-laag van Container Registry [Klikken voor lagen](https://docs.microsoft.com/azure/container-registry/container-registry-skus)| Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
+|Azure Search | Alle openbare regio's <br/> Alle Government-regio's | Ondersteund met service in de privémodus | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
+|Azure Container Registry | Alle openbare regio's<br/> Alle Government-regio's    | Ondersteund met de Premium-laag van Container Registry. [Klikken voor lagen](https://docs.microsoft.com/azure/container-registry/container-registry-skus)| Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
 |Azure App Configuration | Alle openbare regio's      |  | Preview   |
-|Azure Backup | Alle openbare regio's     |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/backup/private-endpoints)   |
-|Azure Event Hub | Alle openbare regio's      |   | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
-|Azure Service Bus | Alle openbare regio's  | Ondersteund met de Premium-laag van Azure Service Bus. [Klikken voor lagen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
+|Azure Backup | Alle openbare regio's<br/> Alle Government-regio's   |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/backup/private-endpoints)   |
+|Azure Event Hub | Alle openbare regio's<br/>Alle Government-regio's      |   | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
+|Azure Service Bus | Alle openbare regio's<br/>Alle Government-regio's  | Ondersteund met de Premium-laag van Azure Service Bus. [Klikken voor lagen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Relay | Alle openbare regio's      |  | Preview <br/> [Meer informatie](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
-|Azure Event Grid| Alle openbare regio's       |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security) |
+|Azure Event Grid| Alle openbare regio's<br/> Alle Government-regio's       |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | Alle openbare regio's      | Ondersteund met PremiumV2 Windows en Linux en Elastic Premium-functies  | Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure Machine Learning | EAST US, WEST US 2, SOUTH CENTRAL US      |  | Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | Alle openbare regio's |  | Preview | |
 | Azure IoT Hub | Alle openbare regio's    |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | EAST US, WEST US 2, SOUTH CENTRAL US      |  | Preview   <br/> [Meer informatie](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics en Application Insights) | Alle openbare regio's      |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-
+| Azure File Sync | Alle openbare regio's      | |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
 
 Voor recente updates kijkt u op de pagina [Azure Private Link Updates](https://azure.microsoft.com/updates/?product=private-link) (Updates voor Azure Private Link).
 

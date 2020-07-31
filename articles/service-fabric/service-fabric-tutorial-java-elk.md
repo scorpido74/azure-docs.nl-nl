@@ -1,19 +1,19 @@
 ---
-title: Uw apps controleren in Service Fabric met behulp van ELK in azure
+title: Uw apps bewaken in Service Fabric met ELK in Azure
 description: In deze zelfstudie vindt u Informatie over het instellen van ELK en het controleren van uw Service Fabric-toepassingen.
 author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327171"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Zelfstudie: Uw Service Fabric-toepassingen bewaken met behulp van ELK
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Zelfstudie: Uw Service Fabric-toepassingen bewaken met ELK
 
 Deze zelfstudie is deel vier een serie. Er wordt weergegeven hoe ELK (Elasticsearch, Logstash en Kibana) moet worden gebruikt voor het bewaken van Service Fabric-toepassingen die worden uitgevoerd in Azure.
 
@@ -35,14 +35,14 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Stel uw toepassing in voor het verzenden van logboeken naar de locatie die is opgegeven in [deel twee](service-fabric-tutorial-debug-log-local-cluster.md).
 * Voltooi [deel drie](service-fabric-tutorial-java-deploy-azure.md) en configureer een actief Service Fabric-cluster om logboeken te verzenden naar Event Hubs.
 * Het beleid in Event Hubs met de machtiging Luisteren en de bijbehorende primaire sleutel van reeks drie.
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
-Als u de stem voorbeeld toepassing in [deel één van deze zelfstudie reeks](service-fabric-tutorial-create-java-app.md)niet hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
+Als u in [deel één van deze zelfstudiereeks](service-fabric-tutorial-create-java-app.md) niet de voorbeeldtoepassing om te stemmen hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
@@ -140,7 +140,7 @@ U kunt een vooraf geconfigureerde ELK-omgeving gebruiken voor deze zelfstudie en
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Open uw Kibana-dash board op **http:\//server-IP** en voer de gebruikers naam en het wacht woord in voor Kibana. Als u de installatiekopie voor ELK in Azure gebruikt, is de standaardgebruikersnaam 'user' en het wachtwoord hetgeen dat is verkregen van de **Diagnostische gegevens over opstarten**.
+8. Ga naar uw Kibana-dashboard op **http:\//SERVER-IP** en voer uw gebruikersnaam en wachtwoord in voor Kibana. Als u de installatiekopie voor ELK in Azure gebruikt, is de standaardgebruikersnaam 'user' en het wachtwoord hetgeen dat is verkregen van de **Diagnostische gegevens over opstarten**.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

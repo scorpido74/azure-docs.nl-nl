@@ -1,5 +1,5 @@
 ---
-title: Meldingen verzenden naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
+title: Meldingen pushen naar specifieke Android-apparaten met Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
 description: Leer hoe u pushmeldingen kunt verzenden naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
@@ -12,22 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 68f10b02cec45863bc5dbdbc322adbfbdfbe38f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127294"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323975"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Zelf studie: Push meldingen verzenden naar specifieke Android-apparaten met behulp van Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Android-apparaten met Google Cloud Messaging (afgeschaft)
 
 > [!WARNING]
-> Sinds 10 april 2018 heeft Google afgeschaft Google Cloud Messaging (GCM). De GCM-server en de client-Api's zijn afgeschaft en worden verwijderd zodra 29 mei 2019. Zie [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
+> Sinds 10 april 2018 heeft Google Google Cloud Messaging (GCM) afgeschaft. De GCM-server en de client-API's zijn afgeschaft en worden verwijderd op 29 mei 2019. Raadpleeg voor meer informatie de [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -47,7 +47,7 @@ In deze zelfstudie voert u de volgende acties uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelfstudie bouwt voort op de app die u hebt gemaakt in de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging][get-started]. Voltooi de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging][get-started] voordat u aan deze zelfstudie begint.
+Deze zelfstudie bouwt voort op de app die u hebt gemaakt in de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging][get-started]. Voordat u aan deze zelfstudie begint, volgt u de [Zelfstudie: Pushmeldingen naar Android-apparaten met Azure Notification Hubs en Google Cloud Messaging][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Categorieselectie toevoegen aan de app
 
@@ -120,7 +120,7 @@ De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdactivitei
 
     De grafische indeling van `main_activity.xml` ziet er uit als in de volgende afbeelding:
 
-    ![][A1]
+    ![Schermafbeelding van een ontwikkelomgeving, waarbij een app-scherm wordt weergegeven. In de app worden de nieuwscategorieën weergegeven die zijn toegevoegd aan de code.][A1]
 3. Maak een `Notifications`-klasse in hetzelfde pakket als uw `MainActivity`-klasse.
 
     ```java
@@ -338,8 +338,8 @@ In deze zelfstudie hebt u broadcastmeldingen verzonden naar specifieke Android-a
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

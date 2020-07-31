@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: toepassingen installeren op een Windows-VM in azure'
+title: 'Zelfstudie: Toepassingen installeren op een virtuele Windows-VM in Azure'
 description: In deze zelfstudie leert u hoe u de aangepaste scriptextensie gebruikt om scripts uit te voeren scripts en toepassingen te implementeren op virtuele Windows-machines in Azure
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065291"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Zelfstudie: Toepassingen implementeren op een virtuele Windows-machine in Azure met de aangepaste scriptextensie
 
-Om virtuele machines (VM's) snel en consistent te configureren, kunt u de [Aangepaste scriptextensie voor Windows](extensions-customscript.md) gebruiken. In deze zelfstudie leert u het volgende:
+Om virtuele machines (VM's) snel en consistent te configureren, kunt u de [Aangepaste scriptextensie voor Windows](../extensions/custom-script-windows.md) gebruiken. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * De aangepaste scriptextensie gebruiken om IIS te installeren
@@ -28,7 +28,7 @@ Om virtuele machines (VM's) snel en consistent te configureren, kunt u de [Aange
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="custom-script-extension-overview"></a>Overzicht aangepaste scriptextensie
 Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies.
@@ -39,13 +39,13 @@ U kunt de aangepaste scriptextensie gebruiken met virtuele Windows- en Linux-mac
 
 
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
-Stel naam en wachtwoord van de beheerder in voor de VM met [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Stel naam en wachtwoord van de beheerder in voor de VM met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-U kunt de virtuele machine nu maken met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt op de locatie *VS Oost*. Als deze niet al bestaan, worden de resourcegroep *myResourceGroupAutomate* en ondersteunende netwerkbronnen gemaakt. Om webverkeer mogelijk te maken, opent de cmdlet ook poort *80*.
+U kunt de virtuele machine nu maken met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt op de locatie *VS Oost*. Als deze niet al bestaan, worden de resourcegroep *myResourceGroupAutomate* en ondersteunende netwerkbronnen gemaakt. Om webverkeer mogelijk te maken, opent de cmdlet ook poort *80*.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,7 +64,7 @@ Het duurt enkele minuten voordat de bronnen en virtuele machine zijn gemaakt.
 
 
 ## <a name="automate-iis-install"></a>IIS-installatie automatiseren
-Gebruik [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) om de aangepaste scriptextensie te installeren. De extensie voert `powershell Add-WindowsFeature Web-Server` uit om de IIS-webserver te installeren en werkt vervolgens de pagina *Default.htm* bij om de hostnaam van de VM weer te geven:
+Gebruik [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) om de aangepaste scriptextensie te installeren. De extensie voert `powershell Add-WindowsFeature Web-Server` uit om de IIS-webserver te installeren en werkt vervolgens de pagina *Default.htm* bij om de hostnaam van de VM weer te geven:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -79,7 +79,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Website testen
-Haal het openbare IP-adres van uw load balancer op met [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). In het volgende voorbeeld wordt het IP-adres opgehaald voor het eerder gemaakte *myPublicIPAddress*:
+Haal het openbare IP-adres van uw load balancer op met [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). In het volgende voorbeeld wordt het IP-adres opgehaald voor het eerder gemaakte *myPublicIPAddress*:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

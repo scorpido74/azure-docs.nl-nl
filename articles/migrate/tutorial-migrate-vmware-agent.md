@@ -4,12 +4,12 @@ description: Informatie over het uitvoeren van een migratie van VMware-VM’s op
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 707a74d0e993625d32c60f7120bf69055dc9e885
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119256"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290210"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware-VM’s migreren naar Azure (op basis van een agent)
 
@@ -177,7 +177,7 @@ Download de sjabloon als volgt:
 
     ![VM's detecteren](./media/tutorial-migrate-vmware-agent/migrate-discover.png)
 
-3. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMWare vSphere-hypervisor**.
+3. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMware vSphere-hypervisor**.
 4. Selecteer in **Hoe wilt u de migratie uitvoeren?** **Met een op een agent gebaseerde replicatie**.
 5. Selecteer in **Doelregio** de Azure-regio waarnaar u de machines wilt migreren.
 6. Selecteer **Bevestig dat de doelregio voor migratie regionaam is**.
@@ -195,7 +195,7 @@ Download de sjabloon als volgt:
 
 Nadat u de OVF-sjabloon hebt gedownload, importeert u deze in VMware om de replicatietoepassing te maken op een VMware-VM met Windows Server 2016.
 
-1. Meld u aan bij de VMware vCenter-server of vSphere ESXi-host met behulp van de VMWare vSphere-client.
+1. Meld u aan bij de VMware vCenter-server of vSphere ESXi-host met behulp van de VMware vSphere-client.
 2. Selecteer in het menu **Bestand** de optie **OVF-sjabloon implementeren** om de **wizard voor het implementeren van OVF-sjablonen** te starten. 
 3. Voer in **Bron selecteren** de locatie van de gedownloade OVF in.
 4. Selecteer **Volgende** in **Details bekijken**.
@@ -209,7 +209,7 @@ Nadat u de OVF-sjabloon hebt gedownload, importeert u deze in VMware om de repli
 
 ### <a name="start-appliance-setup"></a>Installatie van apparaat starten
 
-1. Schakel de VM in vanuit de VMWare vSphere Client-console. De VM wordt opgestart in een Windows Server 2016-installatie-ervaring.
+1. Schakel de VM in vanuit de VMware vSphere Client-console. De VM wordt opgestart in een Windows Server 2016-installatie-ervaring.
 2. Accepteer de gebruiksrechtovereenkomst en voer een Administrator-wachtwoord in.
 3. Meld u nadat de installatie is voltooid bij de virtuele machine aan als beheerder met behulp van het beheerderswachtwoord. De eerste keer dat u zich aanmeldt, wordt het installatieprogramma voor het replicatieapparaat (het configuratieprogramma van Azure Site Recovery) binnen enkele seconden gestart.
 5. Voer een naam in die moet worden gebruikt voor het registreren van het apparaat met Server Migration. Klik op **Volgende**.

@@ -1,5 +1,5 @@
 ---
-title: Toegangs sleutels voor opslag accounts draaien met Power shell
+title: Toegangssleutels voor opslagaccounts roteren met PowerShell
 titleSuffix: Azure Storage
 description: Maak een Azure Storage-account en haal een van de toegangssleutels van het account op en draai deze.
 services: storage
@@ -10,14 +10,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d532782847ec09d2a480951ecd77ae7746b000c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80060814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089363"
 ---
-# <a name="rotate-storage-account-access-keys-with-powershell"></a>Toegangs sleutels voor opslag accounts draaien met Power shell
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Toegangssleutels voor opslagaccounts roteren met PowerShell
 
 Met dit script wordt een Azure Storage-account gemaakt, worden de primaire toegangssleutels van het nieuwe opslagaccount weergegeven en wordt de sleutel vernieuwd (gedraaid).
 
@@ -51,6 +51,6 @@ In dit script worden de volgende opdrachten gebruikt om het opslagaccount te mak
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer PowerShell-voorbeeldscripts voor Storage vindt u in de [PowerShell-voorbeelden voor Azure Blob Storage](../blobs/storage-samples-blobs-powershell.md).
