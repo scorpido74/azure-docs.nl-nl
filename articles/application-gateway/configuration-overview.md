@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428173"
+ms.locfileid: "87438905"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -122,11 +122,19 @@ Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de 
 
 ## <a name="front-end-ip"></a>Front-end-IP
 
-U kunt de toepassings gateway configureren voor een openbaar IP-adres, een privé IP-adres of beide. Een openbaar IP-adres is vereist wanneer u een back-end host dat clients via internet toegang moeten hebben via een virtueel IP-adres (VIP) op internet. 
+U kunt de toepassings gateway configureren voor een openbaar IP-adres, een privé IP-adres of beide. Een openbaar IP-adres is vereist wanneer u een back-end host dat clients via internet toegang moeten hebben via een virtueel IP-adres (VIP) op internet.
+
+> [!NOTE]
+> Application Gateway v2 biedt momenteel geen ondersteuning voor de modus Private IP. De oplossing biedt ondersteuning voor de volgende combi Naties:
+>* Privé-IP en open bare IP
+>* Alleen openbaar IP
+>
+> Zie [Veelgestelde vragen over Application Gateway](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)voor meer informatie.
+
 
 Een openbaar IP-adres is niet vereist voor een intern eind punt dat niet beschikbaar is op internet. Dit wordt ook wel een intern ILB-eind punt ( *Load-Balancer* ) of een persoonlijk frontend-IP-adres genoemd. Een Application Gateway ILB is handig voor interne line-of-business-toepassingen die niet worden blootgesteld aan Internet. Het is ook nuttig voor services en lagen in een toepassing met meerdere lagen binnen een beveiligings grens die niet beschikbaar is op internet, maar waarvoor Round Robin-taak verdeling, sessie persistentie of TLS-beëindiging vereist is.
 
-Slechts één openbaar IP-adres of één privé-IP-adres wordt ondersteund. U kiest het front-end-IP-adres wanneer u de toepassings gateway maakt.
+Er wordt slechts één openbaar IP-adres of één privé-IP-adres ondersteund. U kiest het front-end-IP-adres wanneer u de toepassings gateway maakt.
 
 - Voor een openbaar IP kunt u een nieuw openbaar IP-adres maken of een bestaande open bare IP gebruiken op dezelfde locatie als de toepassings gateway. Zie [static versus Dynamic Public IP Address](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)(Engelstalig) voor meer informatie.
 

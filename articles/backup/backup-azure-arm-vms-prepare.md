@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373866"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439713"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -88,7 +88,7 @@ Configureer een back-upbeleid voor de kluis.
      ![Het deel venster virtuele machines selecteren](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Alle virtuele machines in dezelfde regio en hetzelfde abonnement als de kluis zijn beschikbaar voor het configureren van de back-up. Bij het configureren van de back-up kunt u bladeren naar de naam van de virtuele machine en de bijbehorende resource groep, ook al hebt u niet de vereiste machtiging voor deze Vm's.  
+    > Alle virtuele machines in dezelfde regio en hetzelfde abonnement als de kluis zijn beschikbaar voor het configureren van de back-up. Bij het configureren van de back-up kunt u bladeren naar de naam van de virtuele machine en de bijbehorende resource groep, ook al hebt u niet de vereiste machtiging voor deze Vm's. Als de virtuele machine de status zacht verwijderd heeft, wordt deze niet weer gegeven in deze lijst. Als u de virtuele machine opnieuw moet beveiligen, moet u wachten totdat de tijdelijke verwijderings periode verloopt of verwijdert u de virtuele machine uit de lijst met voorlopig verwijderde items. Zie [het artikel voorlopig verwijderen voor vm's](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal)voor meer informatie.
 
 1. Selecteer **back-up inschakelen**in **back-up**. Hiermee wordt het beleid geïmplementeerd voor de kluis en de virtuele machines en wordt de back-upextensie geïnstalleerd op de VM-agent die wordt uitgevoerd op de virtuele machine van Azure.
 

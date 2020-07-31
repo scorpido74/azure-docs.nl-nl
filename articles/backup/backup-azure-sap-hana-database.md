@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2f42b119c361eaddcb84dda738b50c8accc84f9c
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513845"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439750"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -25,7 +25,7 @@ In dit artikel leert u het volgende:
 > * Een back-uptaak op aanvraag uitvoeren
 
 >[!NOTE]
->[Aan de slag](./tutorial-backup-sap-hana-db.md) met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>Vanaf 1 augustus 2020 is SAP HANA back-up voor RHEL (7,4, 7,6, 7,7 & 8,1) algemeen beschikbaar.
 
 >[!NOTE]
 >**Voorlopig verwijderen voor SQL Server in azure VM en voorlopig verwijderen voor SAP Hana in azure VM-workloads** is nu beschikbaar als preview-versie.<br>
@@ -67,7 +67,7 @@ Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -
 
 1. Klik op **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
-U kunt ook NSG uitgaande beveiligings regels maken voor Azure Storage en Azure AD.
+U kunt ook NSG uitgaande beveiligings regels maken voor Azure Storage en Azure AD. Zie [dit artikel](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)voor meer informatie over service tags.
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall Tags
 
@@ -185,7 +185,7 @@ Geef als volgt de beleidsinstellingen op:
 > [!NOTE]
 > Elke logboek back-up wordt gekoppeld aan de vorige volledige back-up om een herstel keten te vormen. Deze volledige back-up wordt bewaard totdat de retentie van de laatste back-up van het logboek is verlopen. Dit kan betekenen dat de volledige back-up gedurende een extra periode wordt bewaard om ervoor te zorgen dat alle logboeken kunnen worden hersteld. We gaan ervan uit dat de gebruiker een wekelijkse volledige back-up, een dagelijks differentieel en twee uur logboeken heeft. Deze zijn allemaal 30 dagen bewaard. Maar de wekelijkse volledige kan echter echt worden opgeruimd/verwijderd nadat de volgende volledige back-up beschikbaar is, dat wil zeggen, na 30 en 7 dagen. Stel dat er een wekelijkse volledige back-up plaatsvindt op een zestiende. Volgens het Bewaar beleid moet het worden bewaard tot dec 16de. De laatste keer dat de back-up van het logboek is gemaakt voor deze volledige, wordt de volgende geplande volledige, op nov 22. Totdat dit logboek beschikbaar is tot dec 22, kan de zestien 16de volledig niet worden verwijderd. Tot en met dec 22 wordt dus de ge16dede volledige nov bewaard.
 
-## <a name="run-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren
+## <a name="run-an-on-demand-backup"></a>Een on-demand back-up uitvoeren
 
 Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back-up op aanvraag uitvoeren:
 
@@ -214,4 +214,4 @@ Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA St
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [het herstellen van SAP HANA-databases die worden uitgevoerd op virtuele Azure-machines](./sap-hana-db-restore.md)
-* Meer informatie over het [beheren van SAP Hana databases waarvan een back-up is gemaakt met behulp van Azure backup](./sap-hana-db-manage.md)
+* Meer informatie over [het beheren van SAP HANA-databases waarvan een back-up wordt gemaakt met behulp van Azure Backup](./sap-hana-db-manage.md)

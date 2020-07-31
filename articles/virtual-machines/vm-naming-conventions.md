@@ -1,5 +1,5 @@
 ---
-title: Naamgevings conventies voor Azure VM-groottes
+title: Naamconventies van Azure VM-groottes
 description: Hierin worden de naamgevings conventies beschreven die worden gebruikt voor Azure VM-grootten
 ms.service: virtual-machines
 subservice: sizes
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2059c6f374e4cd5c2518e2fc0ac0da5858b99825
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3af4387723f74c1e09597564bc5330183fe1df69
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131715"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439455"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Grootte conventies voor virtuele machines van Azure
 
@@ -29,7 +29,7 @@ Deze pagina geeft een overzicht van de naamgevings conventies die worden gebruik
 | Familie | Hiermee wordt de serie van de VM-serie aangegeven| 
 | * Subfamilie | Wordt alleen gebruikt voor gespecialiseerde VM-differentiaties|
 | aantal Vcpu's| Hiermee wordt het aantal Vcpu's van de virtuele machine aangeduid |
-| Additieve functies | Een of meer kleine letters die additieve functies aanduiden, zoals: <br> a = AMD-gebaseerde processor <br> d = schijf (lokale tijdelijke schijf is aanwezig); Dit geldt voor nieuwere Azure-Vm's, Zie [Ddv4 en Ddsv4-Series](./ddv4-ddsv4-series.md) <br> h = slaap stand mogelijk <br> i = geïsoleerd <br> l = weinig geheugen <br> m = geheugen intensief <br> t = klein geheugen <br> r = RDMA <br> s = Premium Storage mogelijk, met inbegrip van het mogelijke gebruik van [Ultra-SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) (Opmerking: sommige nieuwere grootten zonder het kenmerk s kunnen nog steeds ondersteuning bieden voor Premium Storage, bijvoorbeeld M128, M64, enzovoort).<br> |
+| Additieve functies | Een of meer kleine letters die additieve functies aanduiden, zoals: <br> a = AMD-gebaseerde processor <br> d = schijf (lokale tijdelijke schijf is aanwezig); Dit geldt voor nieuwere Azure-Vm's, Zie [Ddv4 en Ddsv4-Series](./ddv4-ddsv4-series.md) <br> h = slaap stand mogelijk <br> i = geïsoleerd formaat <br> l = weinig geheugen; een lagere hoeveelheid geheugen dan de geheugenintensieve grootte <br> m = geheugen intensief; de meeste hoeveelheid geheugen in een bepaalde grootte <br> t = klein geheugen; de kleinste hoeveelheid geheugen in een bepaalde grootte <br> r = RDMA-compatibel <br> s = Premium Storage mogelijk, met inbegrip van het mogelijke gebruik van [Ultra-SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) (Opmerking: sommige nieuwere grootten zonder het kenmerk s kunnen nog steeds ondersteuning bieden voor Premium Storage, bijvoorbeeld M128, M64, enzovoort).<br> |
 | * Type Accelerator | Hiermee wordt het type hardware-Accelerator aangegeven in de gespecialiseerde/GPU-Sku's. Alleen de nieuwe gespecialiseerde/GPU Sku's die worden gestart vanuit Q3 2020, hebben de hardware-accelerator in de naam. |
 | Versie | Hiermee wordt de versie van de serie van de VM-familie aangeduid |
 

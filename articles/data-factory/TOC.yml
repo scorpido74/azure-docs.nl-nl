@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integratie-runtime
       href: concepts-integration-runtime.md
-    - name: Beheerd virtueel netwerk
-      href: managed-virtual-network-private-endpoint.md
     - name: Beveiliging
       items:
         - name: Beveiligingsbasislijn
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: Door de klant beheerde sleutelversleuteling
           href: enable-customer-managed-key.md
+        - name: Beheerd virtueel netwerk
+          href: managed-virtual-network-private-endpoint.md
     - name: Controleren en beheren
       items:
         - name: Visueel bewaken
@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: Gegevensstromen
           href: data-flow-troubleshoot-guide.md
+        - name: Hulpprogramma voor het kopiëren van gegevens
+          href: copy-data-tool-troubleshoot-guide.md
         - name: Zelf-hostende Integration Runtimes
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS Integration Runtime

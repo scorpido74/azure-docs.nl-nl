@@ -14,20 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000157"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439610"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Uw inhoud versleutelen met opslag versleuteling 
 
 > [!NOTE]
 > U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > er geen nieuwe functies of functionaliteit aan Media Services v2 worden toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
->   
-
-Het wordt ten zeerste aangeraden om uw inhoud lokaal te versleutelen met AES-256-bits versleuteling en vervolgens te uploaden naar Azure Storage waar het versleuteld op rest wordt opgeslagen.
+>
 
 Dit artikel bevat een overzicht van de AMS-opslag versleuteling en laat zien hoe u de versleutelde inhoud kunt uploaden:
 

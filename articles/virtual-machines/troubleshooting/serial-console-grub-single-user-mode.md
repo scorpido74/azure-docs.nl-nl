@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284707"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439544"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken om toegang te krijgen tot de GRUB en de modus voor één gebruiker
 GRand Unified Bootloader (GRUB) is waarschijnlijk het eerste wat u ziet wanneer u een virtuele machine opstart (VM). Omdat deze wordt weer gegeven voordat het besturings systeem is gestart, is GRUB niet toegankelijk via SSH. In GRUB kunt u de opstart configuratie wijzigen zodat deze wordt opgestart in de modus voor één gebruiker, onder andere.
 
 De modus voor één gebruiker is een minimale omgeving met minimale functionaliteit. Dit kan handig zijn voor het onderzoeken van opstart problemen, problemen met het bestands systeem of netwerk problemen. Minder services kunnen op de achtergrond worden uitgevoerd en, afhankelijk van de runlevel, kan een bestands systeem niet zelfs automatisch worden gekoppeld.
 
-De modus voor één gebruiker is ook handig in situaties waarin uw virtuele machine kan worden geconfigureerd om alleen SSH-sleutels voor aanmelding te accepteren. In dit geval kunt u mogelijk de modus voor één gebruiker gebruiken om een account met wachtwoord verificatie te maken. 
+De modus voor één gebruiker is ook handig in situaties waarin uw virtuele machine kan worden geconfigureerd om alleen SSH-sleutels voor aanmelding te accepteren. In dit geval kunt u mogelijk de modus voor één gebruiker gebruiken om een account met wachtwoord verificatie te maken.
 
 > [!NOTE]
 > De seriële console service heeft alleen toegang tot de seriële console van een virtuele machine voor gebruikers met een *Inzender* niveau of hogere machtiging.
@@ -66,6 +66,9 @@ RHEL wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de 
 
 **Voor RHEL 8**
 
+>[!NOTE]
+> Red Hat raadt aan om grubby te gebruiken voor het configureren van kernel-opdracht regel parameters in RHEL 8 +. Het is momenteel niet mogelijk om de grub-out en Terminal parameters bij te werken met grubby. Als u het argument GRUB_CMDLINE_LINUX voor alle opstart vermeldingen wilt wijzigen, voert u uit `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` . Meer informatie vindt u [hier](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ De hoofd gebruiker is standaard uitgeschakeld. Voor de modus voor één gebruike
 1. Schakel over naar de hoofdmap.
 1. Schakel het wacht woord voor de hoofd gebruiker in door het volgende te doen:
     * Uitvoeren `passwd root` (Stel een sterk hoofd wachtwoord in).
-1. Zorg ervoor dat de hoofd gebruiker zich alleen kan aanmelden via ttyS0 door het volgende te doen:  
-    a. Voer uit `edit /etc/ssh/sshd_config` en zorg ervoor dat PermitRootLogIn is ingesteld op `no` .  
+1. Zorg ervoor dat de hoofd gebruiker zich alleen kan aanmelden via ttyS0 door het volgende te doen: a. Voer uit `edit /etc/ssh/sshd_config` en zorg ervoor dat PermitRootLogIn is ingesteld op `no` .
     b. Voer `edit /etc/securetty file` alleen uit om de aanmelding via ttyS0 toe te staan.
 
 Als het systeem nu wordt opgestart in de modus voor één gebruiker, kunt u zich aanmelden met het hoofd wachtwoord.
@@ -106,7 +108,7 @@ Als u GRUB en toegang tot de hoofdmap hebt ingesteld met behulp van de voor gaan
 1. Zoek de kernel-regel. In azure begint deze met *linux16*.
 1. Druk op CTRL + E om naar het einde van de regel te gaan.
 1. Voeg aan het einde van de regel *systemed. unit = hulpverlening. target*toe.
-    
+
     Met deze actie wordt de modus voor één gebruiker opgestart. Als u de nood herstel modus wilt gebruiken, voegt u *systemed. unit = Emergency. target* toe aan het einde van de regel (in plaats van *systemed. unit = hulpverlening. target*).
 
 1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen.
@@ -130,11 +132,11 @@ Als u de hoofd gebruiker niet hebt ingeschakeld door de eerdere instructies te v
     Met deze actie wordt het opstart proces onderbroken voordat het besturings element wordt door gegeven van `initramfs` naar `systemd` , zoals beschreven in de [Red Hat-documentatie](https://aka.ms/rhel7rootpassword).
 1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen.
 
-   Nadat u opnieuw hebt opgestart, wordt u in de nood herstel modus met een alleen-lezen bestands systeem verwijderd. 
-   
+   Nadat u opnieuw hebt opgestart, wordt u in de nood herstel modus met een alleen-lezen bestands systeem verwijderd.
+
 1. Voer in de shell `mount -o remount,rw /sysroot` het hoofd bestands systeem opnieuw koppelen aan de machtigingen lezen/schrijven.
 1. Nadat u de modus voor één gebruiker hebt opgestart, voert u in `chroot /sysroot` om over te scha kelen naar de `sysroot` jailbroken.
-1. U bent nu het hoofd. U kunt het wacht woord opnieuw instellen door in te voeren `passwd` en vervolgens de voor gaande instructies gebruiken om de modus voor één gebruiker in te voeren. 
+1. U bent nu het hoofd. U kunt het wacht woord opnieuw instellen door in te voeren `passwd` en vervolgens de voor gaande instructies gebruiken om de modus voor één gebruiker in te voeren.
 1. Wanneer u klaar bent, voert u deze `reboot -f` in om opnieuw op te starten.
 
 ![Afbeelding met animatie met een opdracht regel interface. De gebruiker selecteert een server, zoekt het einde van de kernel-regel en voert de opgegeven opdrachten in.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)

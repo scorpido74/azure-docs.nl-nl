@@ -4,15 +4,15 @@ description: Meer informatie over het installeren en configureren van een on-pre
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062146"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438957"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Een on-premises gegevensgateway installeren en configureren
 
@@ -22,12 +22,12 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 
 ## <a name="prerequisites"></a>Vereisten
 
-**Minimale vereisten**
+**Minimale vereisten:**
 
 * .NET 4.5 Framework
 * 64-bits versie van Windows 8/Windows Server 2012 R2 (of hoger)
 
-**Aanbevolen:**
+**Aanbevelingen**
 
 * 8-core CPU
 * 8 GB geheugen
@@ -44,11 +44,11 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 * Meld u aan bij Azure met een account in azure AD voor dezelfde [Tenant](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) als het abonnement waarmee u de gateway wilt registreren. Accounts voor Azure B2B (gast) worden niet ondersteund bij het installeren en registreren van een gateway.
 * Als gegevens bronnen zich op een Azure Virtual Network (VNet) bevinden, moet u de eigenschap [AlwaysUseGateway](analysis-services-vnet-gateway.md) van de server configureren.
 
-## <a name="download"></a><a name="download"></a>Downloaden
+## <a name="download"></a>Downloaden
 
  [De gateway downloaden](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
-## <a name="install"></a><a name="install"></a>Installeren
+## <a name="install"></a>Installeren
 
 1. Voer Setup uit.
 
@@ -67,7 +67,7 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
    > [!NOTE]
    > Als u zich aanmeldt met een domein account, wordt deze toegewezen aan uw organisatie-account in azure AD. Uw organisatie account wordt gebruikt als gateway beheerder.
 
-## <a name="register"></a><a name="register"></a>Registreren
+## <a name="register"></a>Registreren
 
 Als u een gateway bron in azure wilt maken, moet u het lokale exemplaar dat u hebt geïnstalleerd met de gateway-Cloud service registreren. 
 
@@ -83,7 +83,7 @@ Als u een gateway bron in azure wilt maken, moet u het lokale exemplaar dat u he
    ![Registreren](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>Een Azure gateway-resource maken
+## <a name="create-an-azure-gateway-resource"></a>Een Azure gateway-resource maken
 
 Nadat u de gateway hebt geïnstalleerd en geregistreerd, moet u een gateway bron maken in Azure. Meld u aan bij Azure met hetzelfde account dat u hebt gebruikt bij het registreren van de gateway.
 
@@ -107,7 +107,12 @@ Nadat u de gateway hebt geïnstalleerd en geregistreerd, moet u een gateway bron
 
      Wanneer u klaar bent, klikt u op **maken**.
 
-## <a name="connect-servers-to-the-gateway-resource"></a><a name="connect-servers"></a>Servers verbinden met de gateway resource
+## <a name="connect-gateway-resource-to-server"></a>Gateway bron verbinden met server
+
+> [!NOTE]
+> Het is niet mogelijk om verbinding te maken met een gateway bron in een ander abonnement op uw server, maar deze wordt wel ondersteund in de portal.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Klik in het overzicht van Azure Analysis Services server op **on-premises gegevens gateway**.
 
@@ -124,6 +129,27 @@ Nadat u de gateway hebt geïnstalleerd en geregistreerd, moet u een gateway bron
 
 
     ![De verbinding tussen de server en de gateway bron is geslaagd](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Gebruik [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) om de gateway ResourceID op te halen. Verbind vervolgens de gateway bron met een bestaande of nieuwe server door **GatewayResourceID** in [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) of [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)op te geven.
+
+De resource-ID van de gateway ophalen:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
+$GatewayResourceId = $(Get-AzResource -ResourceType "Microsoft.Web/connectionGateways" -Name $gatewayName).ResourceId  
+
+```
+
+Een bestaande server configureren:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforAzureAS -Environment "AzureCloud"
+Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -GatewayResourceId $GatewayResourceId
+
+```
+---
 
 Dat is alles. Als u poorten moet openen of problemen wilt oplossen, moet u ervoor zorgen dat u de [on-premises gegevens gateway](analysis-services-gateway.md)bekijkt.
 

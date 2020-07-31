@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525497"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439477"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
 
@@ -99,6 +99,9 @@ Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen insta
 |RedHat | RHEL | RHEL-SAP-HANA | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.3.2018051421) | Deze installatie kopieën zijn verouderd omdat de SAP-toepassingen en SAP HANA-opslag plaatsen zijn gecombineerd in de SAP-opslag plaatsen. Deze installatie kopieën zijn RHEL for SAP HANA installatie kopieën. Ze hebben toegang tot SAP HANA opslagplaatsen en basis RHEL-opslag plaatsen.
 
 ## <a name="rhel-8-image-types"></a>RHEL 8-afbeeldings typen
+
+>[!NOTE]
+> Red Hat raadt aan om grubby te gebruiken voor het configureren van kernel-opdracht regel parameters in RHEL 8 +. Meer informatie vindt u [hier](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
 
 Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128094"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439215"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -168,7 +168,9 @@ De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps en wordt g
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Hoe lang duurt het om Azure Firewall uit te schalen?
 
-Azure Firewall wordt geleidelijk geschaald wanneer de gemiddelde door Voer of het CPU-verbruik 60% is. Uitschalen neemt vijf tot zeven minuten in beslag. Bij het testen van de prestaties moet u ervoor zorgen dat u ten minste 10 tot 15 minuten test en nieuwe verbindingen start om te profiteren van de nieuwe firewall knooppunten.
+Azure Firewall wordt geleidelijk geschaald wanneer de gemiddelde door Voer of het CPU-verbruik 60% is. Een standaard implementatie heeft een maximale door Voer van ongeveer 2,5-3 Gbps en begint met schalen wanneer het 60% van het aantal bereikt. Uitschalen neemt vijf tot zeven minuten in beslag. 
+
+Bij het testen van de prestaties moet u ervoor zorgen dat u ten minste 10 tot 15 minuten test en nieuwe verbindingen start om te profiteren van de nieuwe firewall knooppunten.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Staat Azure Firewall standaard toegang tot Active Directory toe?
 

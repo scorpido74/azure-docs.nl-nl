@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079822"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439250"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Een algemene RDP-fout in een Azure-VM oplossen
 
@@ -81,7 +81,7 @@ Voordat u deze stappen volgt, moet u een moment opname maken van de besturingssy
 1. Controleer of de RDP is uitgeschakeld door groeps beleid.
 
     ```
-    REM Get the group policy 
+    REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
     Als in het groeps beleid wordt aangegeven dat RDP is uitgeschakeld (fDenyTSConnections waarde is 0x1), voert u de volgende opdracht uit om de service term in te scha kelen. Als de register sleutel niet wordt gevonden, is er geen groeps beleid geconfigureerd om de RDP uit te scha kelen. U kunt door gaan naar de volgende stap.

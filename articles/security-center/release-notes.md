@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430468"
+ms.locfileid: "87438942"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -32,11 +32,11 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 ## <a name="july-2020"></a>Juli 2020
 
 De updates in juli zijn onder andere:
-- De [evaluatie van beveiligings problemen voor virtuele machines is nu beschikbaar voor niet-Marketplace-installatie kopieën](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)        
+- [De evaluatie van beveiligings problemen voor virtuele machines is nu beschikbaar voor niet-Marketplace-installatie kopieën](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [Acht nieuwe aanbevelingen voor het inschakelen van beveiligings functies voor bedreigingen](#eight-new-recommendations-to-enable-threat-protection-features)
 - [Verbeteringen in de container beveiliging-sneller zoeken in het REGI ster en de vernieuwde documentatie](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [Nieuwe aanbeveling om uw regels voor adaptieve toepassings besturings elementen bij te werken](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [Adaptieve toepassings besturings elementen bijgewerkt met een nieuwe aanbeveling en ondersteuning voor joker tekens in padregels](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [Zes beleids regels voor de verouderde beveiliging van SQL Advanced Data](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ Meer informatie over de beveiliging van de container van Security Center in de v
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>Nieuwe aanbeveling om uw regels voor adaptieve toepassings besturings elementen bij te werken
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>Adaptieve toepassings besturings elementen bijgewerkt met een nieuwe aanbeveling en ondersteuning voor joker tekens in padregels
 
-De functie besturings elementen voor adaptieve toepassingen bewaakt voortdurend de activiteiten van machines in geconfigureerde groepen. Vanuit deze update krijgt u een melding over potentieel legitiem gedrag dat nog niet is toegestaan en waardoor er valse positieve waarschuwingen kunnen optreden.
+De functie voor besturings elementen voor adaptieve toepassingen heeft twee belang rijke updates ontvangen:
 
-De nieuwe aanbeveling, **Allowlist regels in uw adaptieve toepassings beheer beleid moeten worden bijgewerkt**. u wordt gevraagd nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassings besturings elementen schendings waarschuwingen te verminderen.
+- Een nieuwe aanbeveling duidt mogelijk legitiem gedrag aan dat nog niet is toegestaan. De nieuwe aanbeveling, **Allowlist regels in uw adaptieve toepassings beheer beleid moeten worden bijgewerkt**. u wordt gevraagd nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassings besturings elementen schendings waarschuwingen te verminderen.
+
+- Padregels ondersteunen nu Joker tekens. Vanuit deze update kunt u regels voor toegestane paden configureren met behulp van joker tekens. Er zijn twee ondersteunde scenario's:
+
+    - Een Joker teken aan het einde van een pad gebruiken om alle uitvoer bare bestanden in deze map en submappen toe te staan
+    - Een Joker teken gebruiken in het midden van een pad om een bekende naam voor een uitvoerbaar bestand met een veranderende mapnaam (bijvoorbeeld persoonlijke gebruikers mappen met een bekend uitvoerbaar bestand, automatisch gegenereerde mapnamen, enzovoort) in te scha kelen. 
 
 Meer [informatie over adaptieve toepassings besturings elementen](security-center-adaptive-application.md).
 
