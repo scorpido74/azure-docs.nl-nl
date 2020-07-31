@@ -8,6 +8,7 @@
     - name: Wat is eenmalige aanmelding?
       href: what-is-single-sign-on.md
 - name: Snelstartgidsen
+  expanded: true
   items:
     - name: Uw apps weergeven
       href: view-applications-portal.md
@@ -30,7 +31,7 @@
     - name: Voorbeelden van Azure PowerShell voor een toepassingsproxy
       href: application-proxy-powershell-samples.md
 - name: Concepten
-  expanded: true
+  expanded: false
   items:
     - name: Best practices voor app-beheer
       href: application-management-fundamentals.md
@@ -97,195 +98,177 @@
         - name: Vergelijking van toegangsoplossingen op afstand
           href: application-proxy-migration.md
 - name: Instructiegidsen
-  expanded: true
+  expanded: false
   items:
-    - name: Cloud-apps en eenmalige aanmelding
+    - name: Eenmalige aanmelding configureren
       items:
-        - name: Eenmalige aanmelding configureren
-          items:
-            - name: Eenmalige aanmelding op basis van SAML configureren
-              items:
-                - name: Eenmalige aanmelding op basis van SAML configureren
-                  href: configure-saml-single-sign-on.md
-                - name: Gebruikerskenmerken en -claims aanpassen
-                  items:
-                    - name: Groepsclaims configureren
-                      href: /azure/active-directory/hybrid/how-to-connect-fed-group-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Rolclaims configureren
-                      href: /azure/active-directory/develop/active-directory-enterprise-app-role-management?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Claims aanpassen in de portal
-                      href: /azure/active-directory/develop/active-directory-saml-claims-customization?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Claims aanpassen met PowerShell
-                      href: /azure/active-directory/develop/active-directory-claims-mapping?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Optionele claims configureren
-                      href: /azure/active-directory/develop/active-directory-optional-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Levensduur van tokens configureren
-                      href: /azure/active-directory/develop/active-directory-configurable-token-lifetimes?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Aanmelding op basis van wachtwoord configureren
-              href: configure-password-single-sign-on-non-gallery-applications.md
-            - name: Gekoppelde aanmelding configureren
-              href: configure-linked-sign-on.md
-        - name: Gebruikers toewijzen en toegang tot apps beheren
-          items:
-            - name: Gebruikerstoestemming configureren
-              href: configure-user-consent.md
-            - name: Toestemmingsaanvragen beheren en evalueren
-              href: manage-consent-requests.md
-            - name: Beheerderstoestemming verlenen voor de hele tenant
-              href: grant-admin-consent.md
-            - name: Beheerderstoestemming voor werkstroom configureren (preview)
-              href: configure-admin-consent-workflow.md
-            - name: Een gebruiker of groep toewijzen aan een app
-              href: assign-user-or-group-access-portal.md
-            - name: Verleende machtigingen voor apps controleren
-              href: manage-application-permissions.md
-            - name: Verzamelingen maken in mijn apps
-              href: access-panel-collections.md
-            - name: Selfservice-app-toegang gebruiken
-              href: access-panel-manage-self-service-access.md
-            - name: Methoden om gebruikerstoegang aan een app te verwijderen
-              href: methods-for-removing-user-access.md
-            - name: Toegang van een gebruiker of groep verwijderen
-              href: remove-user-or-group-access-portal.md
-            - name: Een app voor een gebruiker verbergen
-              href: hide-application-from-user-portal.md
-            - name: Gebruikersaanmelding uitschakelen
-              href: disable-user-sign-in-portal.md
-            - name: Selfservice-app-toewijzing configureren
-              href: manage-self-service-access.md
-            - name: Home Realm Discovery
-              href: configure-authentication-for-federated-users-portal.md
+        - name: Eenmalige aanmelding op basis van SAML configureren
+          href: configure-saml-single-sign-on.md
+        - name: Aanmelding op basis van wachtwoord configureren
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Gekoppelde aanmelding configureren
+          href: configure-linked-sign-on.md
         - name: Eenmalige aanmelding op basis van SAML automatiseren met MS Graph API's
           href: application-saml-sso-configure-api.md
-        - name: Apps migreren naar Azure AD
-          items:
-            - name: Migratieresources
-              href: migration-resources.md
-            - name: Een ADFS-app migreren naar Azure
-              href: migrate-adfs-apps-to-azure.md
-            - name: Het AD FS-toepassingsactiviteitrapport gebruiken (preview)
-              href: migrate-adfs-application-activity.md
-        - name: Problemen oplossen
-          items:
-            - name: Problemen met apps toevoegen oplossen
-              items:
-                - name: Veelvoorkomende problemen - galerie-apps
-                  href: adding-gallery-app-common-problems.md
-                - name: Veelvoorkomende problemen - niet-galerie-apps
-                  href: adding-non-gallery-app-common-problems.md
-            - name: Problemen met aanmelden van gebruikers oplossen
-              items:
-                - name: Onverwacht instemmingsprompt
-                  href: application-sign-in-unexpected-user-consent-prompt.md
-                - name: Fout bij toestemming gebruiker
-                  href: application-sign-in-unexpected-user-consent-error.md
-                - name: Problemen met aanmelden vanaf aangepaste portal
-                  href: application-sign-in-other-problem-deeplink.md
-                - name: Problemen met aanmelden vanaf toegangsvenster
-                  href: application-sign-in-other-problem-access-panel.md
-                - name: Fout bij de aanmeldingspagina van toepassing
-                  href: application-sign-in-problem-application-error.md
-                - name: Probleem met wachtwoord eenmalige aanmelding - niet-galerie-app
-                  href: application-sign-in-problem-password-sso-non-gallery.md
-                - name: Probleem met wachtwoord eenmalige aanmelding - galerie-app
-                  href: application-sign-in-problem-password-sso-gallery.md
-                - name: Probleem met aanmelden bij een Microsoft-app
-                  href: application-sign-in-problem-first-party-microsoft.md
-                - name: Probleem met federatieve eenmalige aanmelding - niet-galerie-app
-                  href: application-sign-in-problem-federated-sso-non-gallery.md
-                - name: Probleem met federatieve eenmalige aanmelding - galerie-app
-                  href: application-sign-in-problem-federated-sso-gallery.md
-                - name: Probleem met zelfontwikkelde app
-                  href: application-sign-in-problem-custom-dev.md
-            - name: Problemen met eenmalige aanmelding oplossen
-              items:
-                - name: Veelvoorkomende problemen bij federatief configureren - galerie-apps
-                  href: configure-federated-single-sign-on-gallery-applications-problems.md
-                - name: Veelvoorkomende problemen bij federatief configureren - niet-galerie-apps
-                  href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-                - name: Veelvoorkomende problemen bij wachtwoord configureren - galerie-apps
-                  href: configure-password-single-sign-on-gallery-applications-problems.md
-                - name: Veelvoorkomende problemen bij wachtwoord configureren - niet-galerie-apps
-                  href: configure-password-single-sign-on-non-gallery-applications-problems.md
-            - name: Problemen met vermelding en toewijzing van apps oplossen
-              items:
-                - name: De toepassingslijst voor uw tenant beheren
-                  href: application-types.md
-                - name: Onverwachte gebruiker toegewezen
-                  href: ways-users-get-assigned-to-applications.md
-            - name: Problemen met het toegangspaneel oplossen
-              items:
-                - name: Browserextensie beheren
-                  href: manage-access-panel-browser-extension.md
-                - name: App wordt niet weergegeven
-                  href: access-panel-troubleshoot-application-not-appearing.md
-                - name: App wordt onverwacht weergegeven
-                  href: access-panel-troubleshoot-unexpected-application.md
-                - name: Het aanmelden is mislukt
-                  href: access-panel-troubleshoot-web-sign-in-problem.md
-                - name: Fout bij het installeren van browserextensie
-                  href: access-panel-extension-problem-installing.md
-                - name: Fout bij selfservice-app-toegang gebruiken
-                  href: access-panel-troubleshoot-self-service-access.md
-    - name: Toepassingsproxy voor on-premises apps
+    - name: Gebruikers toewijzen en toegang tot apps beheren
       items:
-        - name: Connectors configureren
+        - name: Gebruikerstoestemming configureren
+          href: configure-user-consent.md
+        - name: Toestemmingsaanvragen beheren en evalueren
+          href: manage-consent-requests.md
+        - name: Beheerderstoestemming verlenen voor de hele tenant
+          href: grant-admin-consent.md
+        - name: Beheerderstoestemming voor werkstroom configureren (preview)
+          href: configure-admin-consent-workflow.md
+        - name: Een gebruiker of groep toewijzen aan een app
+          href: assign-user-or-group-access-portal.md
+        - name: Verleende machtigingen voor apps controleren
+          href: manage-application-permissions.md
+        - name: Verzamelingen maken in mijn apps
+          href: access-panel-collections.md
+        - name: Selfservice-app-toegang gebruiken
+          href: access-panel-manage-self-service-access.md
+        - name: Methoden om gebruikerstoegang aan een app te verwijderen
+          href: methods-for-removing-user-access.md
+        - name: Toegang van een gebruiker of groep verwijderen
+          href: remove-user-or-group-access-portal.md
+        - name: Een app voor een gebruiker verbergen
+          href: hide-application-from-user-portal.md
+        - name: Gebruikersaanmelding uitschakelen
+          href: disable-user-sign-in-portal.md
+        - name: Selfservice-app-toewijzing configureren
+          href: manage-self-service-access.md
+        - name: Home Realm Discovery
+          href: configure-authentication-for-federated-users-portal.md
+    - name: Identiteitsbeheer migreren naar Azure AD
+      items:
+        - name: Migratieresources
+          href: migration-resources.md
+        - name: Een ADFS-app migreren naar Azure
+          href: migrate-adfs-apps-to-azure.md
+        - name: Het AD FS-toepassingsactiviteitrapport gebruiken (preview)
+          href: migrate-adfs-application-activity.md
+    - name: On-premises connectors configureren
+      items:
+        - name: Configureren met proxyservers
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: Connector registreren - installatie op de achtergrond
+          href: application-proxy-register-connector-powershell.md
+    - name: On-premises app-toegang configureren
+      items:
+        - name: Claimbewuste apps configureren
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: Mobiele apps en desktop-apps toegang geven tot on-premises API's
+          href: application-proxy-secure-api-access.md
+        - name: Mobiele apps en desktop-client-apps configureren
+          href: application-proxy-configure-native-client-application.md
+        - name: Aangepaste startpagina configureren
+          href: application-proxy-configure-custom-home-page.md
+        - name: Inlinelinks vertalen
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: Cookie-instellingen configureren
+          href: application-proxy-configure-cookie-settings.md
+        - name: Publiceren met jokertekens
+          href: application-proxy-wildcard.md
+        - name: Persoonlijke gegevens verwijderen
+          href: application-proxy-remove-personal-data.md
+        - name: Aangepast domein configureren
+          href: application-proxy-configure-custom-domain.md
+        - name: Eenmalige aanmelding met toepassingsproxy
           items:
-            - name: Configureren met proxyservers
-              href: application-proxy-configure-connectors-with-proxy-servers.md
-            - name: Connector registreren - installatie op de achtergrond
-              href: application-proxy-register-connector-powershell.md
-        - name: Toepassingstoegang configureren
+            - name: Kerberos-beperkte overdracht (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: Wachtwoordkluis
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: Headers
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: Eenmalige aanmelding op basis van SAML
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+        - name: Verouderde apps beveiligen met app-leveringscontrollers of -netwerken
+          href: secure-hybrid-access.md
+        - name: Publicatie-overzicht
           items:
-            - name: Claimbewuste apps configureren
-              href: application-proxy-configure-for-claims-aware-applications.md
-            - name: Mobiele apps en desktop-apps toegang geven tot on-premises API's
-              href: application-proxy-secure-api-access.md
-            - name: Mobiele apps en desktop-client-apps configureren
-              href: application-proxy-configure-native-client-application.md
-            - name: Aangepaste startpagina configureren
-              href: application-proxy-configure-custom-home-page.md
-            - name: Inlinelinks vertalen
-              href: application-proxy-configure-hard-coded-link-translation.md
-            - name: Cookie-instellingen configureren
-              href: application-proxy-configure-cookie-settings.md
-            - name: Publiceren met jokertekens
-              href: application-proxy-wildcard.md
-            - name: Persoonlijke gegevens verwijderen
-              href: application-proxy-remove-personal-data.md
-            - name: Aangepast domein configureren
-              href: application-proxy-configure-custom-domain.md
-            - name: Eenmalige aanmelding met toepassingsproxy
-              items:
-                - name: Kerberos-beperkte overdracht (KCD)
-                  href: application-proxy-configure-single-sign-on-with-kcd.md
-                - name: Wachtwoordkluis
-                  href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: Headers
-                  href: application-proxy-configure-single-sign-on-with-ping-access.md
-                - name: Eenmalige aanmelding op basis van SAML
-                  href: application-proxy-configure-single-sign-on-on-premises-apps.md
-            - name: Publicatie-overzicht
-              items:
-                - name: Integreren met toepassingsproxy in een NDES-server
-                  href: active-directory-app-proxy-protect-ndes.md
-                - name: Integreren met Azure AD Domain Services
-                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
-                - name: Integreren met Power BI
-                  href: application-proxy-integrate-with-power-bi.md
-                - name: Integreren met Cloud App Security
-                  href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-                - name: Integreren via Extern bureaublad
-                  href: application-proxy-integrate-with-remote-desktop-services.md
-                - name: Integreren met SharePoint
-                  href: application-proxy-integrate-with-sharepoint-server.md
-                - name: Integreren met OMS
-                  href: application-proxy-integrate-with-teams.md
-                - name: Integreren met Tableau
-                  href: application-proxy-integrate-with-tableau.md
-                - name: Integreren met Qlik
-                  href: application-proxy-qlik.md
-        - name: Problemen met toepassingsproxy oplossen
+            - name: Integreren met toepassingsproxy in een NDES-server
+              href: active-directory-app-proxy-protect-ndes.md
+            - name: Integreren met Azure AD Domain Services
+              href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Integreren met Power BI
+              href: application-proxy-integrate-with-power-bi.md
+            - name: Integreren met Cloud App Security
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: Integreren via Extern bureaublad
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: Integreren met SharePoint
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Integreren met OMS
+              href: application-proxy-integrate-with-teams.md
+            - name: Integreren met Tableau
+              href: application-proxy-integrate-with-tableau.md
+            - name: Integreren met Qlik
+              href: application-proxy-qlik.md
+    - name: Problemen oplossen
+      items:
+        - name: Problemen met apps toevoegen oplossen
+          items:
+            - name: Veelvoorkomende problemen - galerie-apps
+              href: adding-gallery-app-common-problems.md
+            - name: Veelvoorkomende problemen - niet-galerie-apps
+              href: adding-non-gallery-app-common-problems.md
+        - name: Problemen met aanmelden van gebruikers oplossen
+          items:
+            - name: Onverwacht instemmingsprompt
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: Fout bij toestemming gebruiker
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: Problemen met aanmelden vanaf aangepaste portal
+              href: application-sign-in-other-problem-deeplink.md
+            - name: Problemen met aanmelden vanaf toegangsvenster
+              href: application-sign-in-other-problem-access-panel.md
+            - name: Fout bij de aanmeldingspagina van toepassing
+              href: application-sign-in-problem-application-error.md
+            - name: Probleem met wachtwoord eenmalige aanmelding - niet-galerie-app
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: Probleem met wachtwoord eenmalige aanmelding - galerie-app
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: Probleem met aanmelden bij een Microsoft-app
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: Probleem met federatieve eenmalige aanmelding - niet-galerie-app
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: Probleem met federatieve eenmalige aanmelding - galerie-app
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: Probleem met zelfontwikkelde app
+              href: application-sign-in-problem-custom-dev.md
+        - name: Problemen met eenmalige aanmelding oplossen
+          items:
+            - name: Veelvoorkomende problemen bij federatief configureren - galerie-apps
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: Veelvoorkomende problemen bij federatief configureren - niet-galerie-apps
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: Veelvoorkomende problemen bij wachtwoord configureren - galerie-apps
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: Veelvoorkomende problemen bij wachtwoord configureren - niet-galerie-apps
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: Problemen met vermelding en toewijzing van apps oplossen
+          items:
+            - name: De toepassingslijst voor uw tenant beheren
+              href: application-types.md
+            - name: Onverwachte gebruiker toegewezen
+              href: ways-users-get-assigned-to-applications.md
+        - name: Problemen met het toegangspaneel oplossen
+          items:
+            - name: Browserextensie beheren
+              href: manage-access-panel-browser-extension.md
+            - name: App wordt niet weergegeven
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: App wordt onverwacht weergegeven
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: Het aanmelden is mislukt
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: Fout bij het installeren van browserextensie
+              href: access-panel-extension-problem-installing.md
+            - name: Fout bij selfservice-app-toegang gebruiken
+              href: access-panel-troubleshoot-self-service-access.md
+        - name: Problemen met on-premises apps oplossen
           items:
             - name: Probleemoplossing toepassingsproxy
               href: application-proxy-troubleshoot.md
@@ -319,10 +302,6 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Problemen met CORS in de toepassingsproxy
               href: application-proxy-understand-cors-issues.md
-    - name: 'Veilige, hybride toegang (cloud en on-premises)'
-      items:
-        - name: Verouderde apps beveiligen met app-leveringscontrollers of -netwerken
-          href: secure-hybrid-access.md
 - name: Naslaginformatie
   items:
     - name: Veelgestelde vragen over toepassingsproxy's

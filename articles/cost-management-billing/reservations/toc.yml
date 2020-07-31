@@ -51,6 +51,8 @@
       items:
         - name: Reserveringen en gebruik weergeven
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Reserveringen bekijken als CSP
+          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Reserveringen beheren
           href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Instelling voor optimaliseren wijzigen

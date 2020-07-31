@@ -458,12 +458,15 @@
         - name: Geparameteriseerde query
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
-        - name: LINQ naar SQL
-          displayName: 'linq, .NET'
-          href: sql-query-linq-to-sql.md
         - name: SQL-queryuitvoering
           displayName: 'query performance, query execution'
           href: sql-query-execution.md
+        - name: Paginering
+          displayName: 'page, paging, continuation, token, pagination'
+          href: sql-query-pagination.md
+        - name: LINQ naar SQL
+          displayName: 'linq, .NET'
+          href: sql-query-linq-to-sql.md
     - name: Werken met een Azure Cosmos-account
       href: account-overview.md
     - name: Containers en items
@@ -671,7 +674,7 @@
             - name: Beheren met PowerShell
               href: powershell-samples-cassandra.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples-cassandra.md
+              href: cli-samples.md
     - name: MongoDB-API
       items:
         - name: Overzicht
@@ -765,7 +768,7 @@
             - name: Beheren met PowerShell
               href: powershell-samples-mongodb.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples-mongodb.md
+              href: cli-samples.md
             - name: Algemene problemen
               href: mongodb-troubleshoot.md
     - name: Gremlin-API
@@ -825,7 +828,7 @@
             - name: Beheren met PowerShell
               href: powershell-samples-gremlin.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples-gremlin.md
+              href: cli-samples.md
         - name: Naslaginformatie
           items:
             - name: Antwoordheaders
@@ -896,7 +899,7 @@
             - name: Beheren met PowerShell
               href: powershell-samples-table.md
             - name: Beheren met behulp van Azure CLI
-              href: cli-samples-table.md
+              href: cli-samples.md
         - name: Naslaginformatie
           items:
             - name: .NET

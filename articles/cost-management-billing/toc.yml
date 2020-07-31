@@ -304,6 +304,8 @@
               items:
                 - name: Reserveringen en gebruik weergeven
                   href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+                - name: Reserveringen bekijken als CSP
+                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
                 - name: Reserveringen beheren
                   href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
                 - name: Reserveringen uitwisselen en restitutie

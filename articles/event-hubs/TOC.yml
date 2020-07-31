@@ -206,11 +206,11 @@
           href: event-hubs-management-libraries.md
     - name: Beveiligen
       items:
-        - name: IP-firewall configureren
+        - name: Toegang vanaf specifieke IP-adressen toestaan
           href: event-hubs-ip-filtering.md
-        - name: Service-eindpunten voor virtuele netwerken configureren
+        - name: Toegang vanuit specifieke virtuele netwerken toestaan
           href: event-hubs-service-endpoints.md
-        - name: Privé-eindpunten configureren
+        - name: Toegang via privé-eindpunten toestaan
           href: private-link-service.md
         - name: Door de klant beheerde sleutels configureren
           href: configure-customer-managed-key.md

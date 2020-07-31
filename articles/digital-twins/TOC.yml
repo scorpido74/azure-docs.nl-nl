@@ -42,8 +42,10 @@
           href: how-to-use-cli.md
         - name: Een exemplaar en verificatie instellen (met een script)
           href: how-to-set-up-instance-scripted.md
-        - name: Een exemplaar en verificatie instellen (handmatig)
-          href: how-to-set-up-instance-manual.md
+        - name: Een exemplaar en verificatie instellen (CLI)
+          href: how-to-set-up-instance-cli.md
+        - name: Een exemplaar en verificatie instellen (portal)
+          href: how-to-set-up-instance-portal.md
         - name: Verificatiecode voor app schrijven
           href: how-to-authenticate-client.md
     - name: Modellen ontwerpen

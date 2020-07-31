@@ -7,7 +7,7 @@
       href: overview.md
     - name: Nieuwe functies
       href: whats-new.md
-- name: Snelstarts
+- name: Snelstartgidsen
   expaned: true
   items:
     - name: Clientbibliotheek gebruiken
@@ -42,6 +42,8 @@
   items:
     - name: Form Recognizer gebruiken met Cognitive Search
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+    - name: Form Recognizer gebruiken met AI Builder
+      href: tutorial-ai-builder.md
 - name: Instructiegidsen
   items:
     - name: Een set met trainingsgegevens samenstellen

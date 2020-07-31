@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: Uw recente aanmeldingsactiviteiten bekijken
       href: my-account-portal-sign-ins-page.md
-- name: Hulp bij beveiligingsgegevens (preview)
+    - name: Uw portalinstellingen wijzigen
+      href: my-account-portal-settings.md
+- name: Hulp bij beveiligingsgegevens
   items:
     - name: Beveiligingsgegevens toevoegen tijdens aanmelding
       href: security-info-setup-signin.md
