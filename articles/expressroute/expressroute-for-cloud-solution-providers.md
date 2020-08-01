@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: 5bf7a1e3cc2bfa8ccf42d05e199c58b8c9314fce
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281698"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446774"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
 Microsoft biedt grootschalige services waarmee traditionele leveranciers en distributeurs (CSP) snel nieuwe services en oplossingen voor uw klanten kunnen inrichten, zonder dat ze hoeven te investeren in de ontwikkeling van deze nieuwe services. Microsoft biedt programma's en API's waarmee de Cloud Solution Provider (CSP) Microsoft Azure-resources kan beheren namens uw klanten. Zo kan de Cloud Solution Provider (CSP) deze nieuwe services rechtstreeks beheren. Een van deze resources is ExpressRoute. Met ExpressRoute kan de CSP verbinding maken tussen de bestaande resources van de klant en de Azure-services. ExpressRoute is een zeer snelle persoonlijke communicatiekoppeling naar de services in Azure. 
@@ -60,7 +60,7 @@ In dit scenario moet de klant rechtstreeks verbinding maken via een klantnetwerk
 
 De keuze tussen deze twee opties is gebaseerd op de behoeften van uw klant en uw huidige behoefte om Azure-services te leveren. Voor gedetailleerde informatie over deze modellen en het bijbehorende op rollen gebaseerde toegangsbeheer, de netwerken en de ontwerppatronen voor de identiteit volgt u de volgende links:
 
-* **RBAC (op rollen gebaseerd toegangsbeheer)**: RBAC is gebaseerd op Azure Active Directory.  Klik [hier](../role-based-access-control/role-assignments-portal.md) voor meer informatie over Azure RBAC. 
+* **Azure op rollen gebaseerd toegangs beheer (Azure RBAC)** – RBAC is gebaseerd op Azure Active Directory.  Klik [hier](../role-based-access-control/role-assignments-portal.md) voor meer informatie over Azure RBAC. 
 * **Netwerken**: bevat informatie over de verschillende netwerkonderwerpen in Microsoft Azure.
 * **Azure Active Directory (Azure AD)**: Azure AD biedt het identiteitsbeheer voor Microsoft Azure en SaaS-toepassingen van derden. Klik [hier](https://azure.microsoft.com/documentation/services/active-directory/) voor meer informatie over Azure AD.  
 

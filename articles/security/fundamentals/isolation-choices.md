@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084042"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447358"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 
@@ -76,7 +76,7 @@ Azure RBAC heeft drie basis rollen die van toepassing zijn op alle resource type
 
 - **Lezer** kan bestaande Azure-resources weer geven.
 
-![Op rollen gebaseerd toegangsbeheer van Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Met de rest van de RBAC-rollen in azure kunt u specifieke Azure-resources beheren. Met de rol Inzender voor virtuele machines kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Deze geeft geen toegang tot de Azure-Virtual Network of het subnet waarmee de virtuele machine verbinding maakt.
 

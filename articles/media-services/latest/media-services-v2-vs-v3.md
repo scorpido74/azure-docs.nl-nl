@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011631"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448379"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
 
@@ -83,7 +83,8 @@ De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluit
     * Een Silent audio-track invoegen wanneer de invoer geen audio heeft
     * Een video track invoegen wanneer de invoer geen video bevat
 * Live-gebeurtenissen met transcode ring bieden momenteel geen ondersteuning voor de toevoeging van een mid-Stream en het invoegen van AD-markeringen via API-aanroepen. 
- 
+* Raadpleeg de `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` voorbeeld code voor aanbevolen procedures en patronen met betrekking tot het gebruik van V2 rest API op. NetCore-SDK.
+
 ## <a name="asset-specific-changes"></a>Activa-specifieke wijzigingen
 
 ### <a name="map-v3-asset-properties-to-v2"></a>V3-Asset-eigenschappen toewijzen aan v2

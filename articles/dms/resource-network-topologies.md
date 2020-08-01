@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187525"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448523"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Netwerk topologieën voor Azure SQL Managed instance-migraties met Azure Database Migration Service
 
@@ -39,7 +39,7 @@ Gebruik deze topologie als uw Azure SQL Managed instance is verbonden met uw on-
 Gebruik deze netwerk topologie als uw omgeving een of meer van de volgende scenario's vereist:
 
 - Het beheerde exemplaar van SQL wordt geïsoleerd van on-premises connectiviteit, maar uw Azure Database Migration Service-exemplaar is verbonden met het on-premises netwerk.
-- Als op rollen gebaseerd beleid voor Access Control (RBAC) is ingesteld en u de gebruikers toegang wilt geven tot hetzelfde abonnement dat als host fungeert voor het SQL Managed instance.
+- Als er op Azure-beleid voor op rollen gebaseerd toegangs beheer (Azure RBAC) is ingesteld en u de gebruikers wilt beperken tot hetzelfde abonnement dat als host fungeert voor het SQL Managed instance.
 - De virtuele netwerken die worden gebruikt voor het beheerde exemplaar van SQL en Azure Database Migration Service, bevinden zich in verschillende abonnementen.
 
 ![Netwerk topologie voor beheerde instantie die is geïsoleerd van het on-premises netwerk](media/resource-network-topologies/mi-isolated-workload.png)
@@ -64,7 +64,7 @@ Gebruik deze topologie als de bron SQL Server wordt gehost in een Azure-VM en he
 Gebruik deze netwerk topologie als uw omgeving een of meer van de volgende scenario's vereist:
 
 - Het beheerde exemplaar van SQL wordt ingericht in een geïsoleerd virtueel netwerk.
-- Als op rollen gebaseerd beleid voor Access Control (RBAC) is ingesteld en u de gebruikers toegang wilt geven tot hetzelfde abonnement dat als host fungeert voor SQL Managed instance.
+- Als er op Azure-beleid voor op rollen gebaseerd toegangs beheer (Azure RBAC) is ingesteld, moet u de gebruikers beperken tot hetzelfde abonnement dat wordt gehost op een SQL-beheerd exemplaar.
 - De virtuele netwerken die worden gebruikt voor SQL Managed instance en Azure Database Migration Service bevinden zich in verschillende abonnementen.
 
 ![Netwerk topologie voor Cloud-naar-Cloud migraties met een geïsoleerd VNet](media/resource-network-topologies/cloud-to-cloud-isolated.png)

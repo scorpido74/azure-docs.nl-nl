@@ -15,13 +15,13 @@ ms.locfileid: "67704181"
 
 U kunt zich op verschillende manieren verifiëren met het persoonlijke container register voor Cognitive Services containers, maar de aanbevolen methode van de opdracht regel is het gebruik van de [docker-cli](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Gebruik de [ `docker login` opdracht](https://docs.docker.com/engine/reference/commandline/login/), zoals in het volgende voor beeld wordt weer gegeven, om `containerpreview.azurecr.io`u aan te melden bij, het persoonlijke container register voor Cognitive Services containers. Vervang * \<username\> * door de gebruikers naam en * \<het\> wacht woord* met het wacht woord dat is opgegeven in de referenties die u hebt ontvangen van het Azure Cognitive Services-team.
+Gebruik de [ `docker login` opdracht](https://docs.docker.com/engine/reference/commandline/login/), zoals in het volgende voor beeld wordt weer gegeven, om u aan te melden bij `containerpreview.azurecr.io` , het persoonlijke container register voor Cognitive Services containers. Vervang * \< username \> * door de gebruikers naam en het * \< wacht woord \> * met het wacht woord dat is opgegeven in de referenties die u hebt ontvangen van het Azure Cognitive Services-team.
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Als u uw referenties in een tekst bestand hebt beveiligd, kunt u de inhoud van het tekst bestand samen voegen met behulp `cat` van de opdracht `docker login` , zoals in het volgende voor beeld wordt weer gegeven. Vervang * \<passwordFile\> * door het pad en de naam van het tekst bestand dat het wacht woord * \<en\> de gebruikers* naam bevat met de gebruikers naam die is opgegeven in uw referenties.
+Als u uw referenties in een tekst bestand hebt beveiligd, kunt u de inhoud van het tekst bestand samen voegen met behulp van de `cat` opdracht, `docker login` zoals in het volgende voor beeld wordt weer gegeven. Vervang * \< passwordFile \> * door het pad en de naam van het tekst bestand dat het wacht woord en de * \< gebruikers \> * naam bevat met de gebruikers naam die is opgegeven in uw referenties.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin

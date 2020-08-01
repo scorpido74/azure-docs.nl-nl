@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372315"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447244"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
     De integratie van on-premises Active Directory Domain Services (AD DS) met Azure Files biedt de methoden voor het opslaan van Directory gegevens wanneer deze beschikbaar zijn voor netwerk gebruikers en beheerders. Beveiliging is geïntegreerd met AD DS via aanmeldings verificatie en toegangs beheer voor objecten in de Directory. Met één netwerk aanmelding kunnen beheerders Directory gegevens en organisatie beheren in hun netwerk, en geautoriseerde netwerk gebruikers kunnen overal toegang krijgen tot bronnen in het netwerk. AD DS wordt doorgaans goedgekeurd door ondernemingen in on-premises omgevingen en AD DS referenties worden gebruikt als de identiteit voor toegangs beheer. Zie [Active Directory Domain Services Overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie.
 
--   **Access Control op basis van Azure Role (RBAC)**
+-   **Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)**
 
     Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met RBAC kunt u de toegang tot resources beheren door gebruikers de minste machtigingen te verlenen die nodig zijn om hun taken uit te voeren. Zie [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC) in azure?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
 

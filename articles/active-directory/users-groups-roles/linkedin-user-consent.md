@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c35204e37e3aae930577697779b8f945c4fbfbcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727208"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448683"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn-account verbindingen gegevens delen en toestemming
 
@@ -39,7 +39,9 @@ Door toegang te krijgen tot LinkedIn-gegevens in micro soft-apps en-services kun
 U moet een Azure Active Directory beheerder zijn om de instelling voor uw organisatie te beheren. U kunt deze inschakelen voor alle gebruikers of voor een specifieke set gebruikers.
 
 1. Als u de integratie wilt in-of uitschakelen, volgt u de stappen in [toestemming geven aan LinkedIn-integratie voor uw Azure AD-organisatie](linkedin-integration.md).
-2. Wanneer u de LinkedIn-integratie in uw organisatie aankondigt, wijst u uw gebruikers aan de veelgestelde vragen over [LinkedIn-gegevens in micro soft-apps en-services](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Het artikel bevat informatie over waar LinkedIn-gegevens worden weer gegeven, hoe ze verbinding kunnen maken met accounts, en meer.
+2. Wanneer u de LinkedIn-integratie in uw organisatie aankondigt, wijst u uw gebruikers aan de veelgestelde vragen over [LinkedIn-gegevens in micro soft-apps en-services](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Het artikel bevat informatie over waar LinkedIn-informatie wordt weer gegeven, [delen van gegevens en privacy](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400), [het verbinden van accounts](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) en meer.
+
+U moet de LinkedIn-Integratie aankondigen aan uw gebruikers die hen alle informatie geven over het delen van gegevens en de privacy met betrekking tot LinkedIn-integratie. De gebruikers die u licenties gebruiken, kunnen verbinding maken met accounts in de 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Toestemming van de gebruiker voor toegang tot gegevens in micro soft en LinkedIn
 

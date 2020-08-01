@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325335"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445290"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -62,7 +62,7 @@ Gebruik de Log Analytics agent als u het volgende moet doen:
 * Gegevens verzenden naar een Log Analytics-werk ruimte om te profiteren van de functies die worden ondersteund door [Azure monitor-logboeken](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , zoals [logboek query's](../log-query/log-query-overview.md).
 * Gebruik [Azure monitor voor VM's](../insights/vminsights-overview.md) waarmee u uw virtuele machines op schaal kunt bewaken en de processen en afhankelijkheden van andere bronnen en externe processen bewaakt.  
 * Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md) of [Azure Sentinel](../../sentinel/overview.md).
-* Gebruik [Azure Automation update beheer](../../automation/automation-update-management.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking.md) om een uitgebreid beheer van uw Azure-vm's te leveren
+* Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking.md) om een uitgebreid beheer van uw Azure-vm's te leveren
 * Gebruik verschillende [oplossingen](../monitor-reference.md#insights-and-core-solutions) voor het bewaken van een bepaalde service of toepassing.
 
 De beperkingen van de Log Analytics-agent zijn:
@@ -118,6 +118,6 @@ De Log Analytics-extensie voor [Windows](../../virtual-machines/extensions/oms-w
 Meer informatie over elk van de agents vindt u op het volgende:
 
 - [Overzicht van de Log Analytics-agent](log-analytics-agent.md)
-- [Overzicht van Azure Diagnostics extensie](diagnostics-extension-overview.md)
+- [Overzicht van Azure Diagnostics-extensie](diagnostics-extension-overview.md)
 - [Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
 

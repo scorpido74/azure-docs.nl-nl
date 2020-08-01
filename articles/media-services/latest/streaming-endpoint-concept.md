@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091994"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446207"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
@@ -46,6 +46,8 @@ Wanneer het standaard streaming-eind punt `servicename` wordt gebruikt, wordt we
 ## <a name="types"></a>Typen
 
 Er zijn twee typen **streaming-eind punten** : **Standard** (preview) en **Premium**. Het type wordt gedefinieerd door het aantal schaal eenheden ( `scaleUnits` ) dat u toewijst voor het streaming-eind punt.
+
+De maximale limiet voor de streaming-eenheid is doorgaans 10. Neem [hier](https://azure.microsoft.com/support/create-ticket/) contact met ons op om de limiet voor uw account te verhogen.
 
 In de tabel worden de typen beschreven:
 

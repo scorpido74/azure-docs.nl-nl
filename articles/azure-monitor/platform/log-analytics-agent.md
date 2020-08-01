@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325284"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446530"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
@@ -51,7 +51,7 @@ De volgende tabel bevat de typen gegevens die u kunt configureren voor het verza
 De Log Analytics agent verzendt gegevens naar een Log Analytics-werk ruimte in Azure Monitor. De Windows-agent kan multihomed zijn om gegevens te verzenden naar meerdere werk ruimten en System Center Operations Manager-beheer groepen. De Linux-agent kan slechts naar één bestemming verzenden.
 
 ## <a name="other-services"></a>Overige services
-De agent voor Linux en Windows is niet alleen om verbinding te maken met Azure Monitor, maar ondersteunt ook Azure Automation voor het hosten van de Hybrid Runbook worker-rol en andere services, zoals [Wijzigingen bijhouden](../../automation/change-tracking.md), [updatebeheer](../../automation/automation-update-management.md)en [Azure Security Center](../../security-center/security-center-intro.md). Zie [Azure Automation Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md)voor meer informatie over de functie Hybrid Runbook Worker.  
+De agent voor Linux en Windows is niet alleen om verbinding te maken met Azure Monitor, maar ondersteunt ook Azure Automation voor het hosten van de Hybrid Runbook worker-rol en andere services, zoals [Wijzigingen bijhouden](../../automation/change-tracking.md), [updatebeheer](../../automation/update-management/update-mgmt-overview.md)en [Azure Security Center](../../security-center/security-center-intro.md). Zie [Azure Automation Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md)voor meer informatie over de functie Hybrid Runbook Worker.  
 
 ## <a name="installation-and-configuration"></a>Installatie en configuratie
 

@@ -3,12 +3,12 @@ title: Gedelegeerde resources op schaal controleren
 description: Meer informatie over het effectief gebruiken van Azure Monitor-logboeken op schaal bare wijze over de tenants van de klant die u beheert.
 ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 758437fdc7a32fd5937434ce10f16a8c792423d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072710"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448952"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Gedelegeerde resources op schaal controleren
 
@@ -38,7 +38,7 @@ Nadat u uw beleid hebt geïmplementeerd, worden de gegevens vastgelegd in de Log
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Verken deze door [MVP gemaakte voorbeeld werkmap](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), die de compatibiliteits rapportage voor patches bijhoudt door [updatebeheer logboeken te doorzoeken](../../automation/automation-update-management-query-logs.md) op meerdere log Analytics-werk ruimten. 
+- Verken deze door [MVP gemaakte voorbeeld werkmap](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), die de compatibiliteits rapportage voor patches bijhoudt door [updatebeheer logboeken te doorzoeken](../../automation/update-management/update-mgmt-query-logs.md) op meerdere log Analytics-werk ruimten. 
 - Meer informatie over [Azure monitor](../../azure-monitor/index.yml).
 - Meer informatie over [Azure monitor-logboeken](../../azure-monitor/platform/data-platform-logs.md).
 - Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).

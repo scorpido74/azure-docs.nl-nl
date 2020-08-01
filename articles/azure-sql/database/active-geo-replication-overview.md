@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: bdf5d006cf47f4552684aac8af4a759ed1761c93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087948"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448744"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -238,7 +238,7 @@ Als u de vertraging wilt meten met betrekking tot wijzigingen op de primaire dat
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programmatisch beheer van actieve geo-replicatie
 
-Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
+Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie voor meer informatie over het implementeren van toegangs rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: failover van één en gepoolde data bases beheren
 

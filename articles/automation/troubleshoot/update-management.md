@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293095"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447690"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -45,9 +45,9 @@ Deze fout kan de volgende oorzaken hebben:
 
 * Ga naar [netwerk configuratie](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.  
 
-* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-scope-configurations-update-management.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
+* Controleren op problemen met de scope configuratie. De [Scope configuratie](../update-management/update-mgmt-scope-configuration.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
 
-* Verwijder de configuratie van de werk nemer door de stappen in [de Hybrid Runbook worker verwijderen van een on-premises Windows-computer uit](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) te voeren of [de Hybrid Runbook worker te verwijderen van een on-premises Linux-computer](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
+* Verwijder de configuratie van de werk nemer door de stappen in [de Hybrid Runbook worker verwijderen van een on-premises Windows-computer uit](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) te voeren of [de Hybrid Runbook worker te verwijderen van een on-premises Linux-computer](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker).
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scenario: vervangen update aangegeven als ontbreekt in Updatebeheer
 
@@ -63,13 +63,13 @@ Vervangen updates worden niet correct aangegeven als geweigerd, zodat ze als nie
 
 Wanneer een vervangen update wordt 100 procent niet van toepassing is, moet u de goedkeurings status van die update wijzigen in `Declined` . Goedkeurings status wijzigen voor alle updates:
 
-1. Selecteer in het Automation-account **updatebeheer** om de status van de machine weer te geven. Zie [Update-evaluaties weer geven](../manage-update-multi.md#view-an-update-assessment).
+1. Selecteer in het Automation-account **updatebeheer** om de status van de machine weer te geven. Zie [Update-evaluaties weer geven](../update-management/update-mgmt-view-update-assessments.md).
 
 2. Controleer de vervangen update om er zeker van te zijn dat dit 100 procent niet van toepassing is. 
 
 3. Markeer de update als geweigerd, tenzij u een vraag hebt over de update. 
 
-4. Selecteer **computers** en Forceer opnieuw scannen op naleving in de kolom **naleving** . Zie [updates voor meerdere machines beheren](../manage-update-multi.md).
+4. Selecteer **computers** en Forceer opnieuw scannen op naleving in de kolom **naleving** . Zie [updates voor virtuele machines beheren](../update-management/update-mgmt-manage-updates-for-vm.md).
 
 5. Herhaal de bovenstaande stappen voor andere vervangen updates.
 
@@ -114,9 +114,9 @@ Dit probleem kan worden veroorzaakt door lokale configuratie problemen of door e
 
 4. Als uw computer niet in de query resultaten wordt weer geven, is deze niet recent ingecheckt. Er is waarschijnlijk een probleem met de lokale configuratie en u moet [de agent opnieuw installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../automation-scope-configurations-update-management.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. 
+5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../update-management/update-mgmt-scope-configuration.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. 
 
-6. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie configureren voor de doel computer. Zie [machines inschakelen in de werk ruimte](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over hoe u dit doet.
+6. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie configureren voor de doel computer. Zie [machines inschakelen in de werk ruimte](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over hoe u dit doet.
 
 7. Voer deze query uit in uw werk ruimte.
 
@@ -192,13 +192,13 @@ Als uw abonnement niet is geconfigureerd voor de Automation-resource provider, k
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Machines zijn niet op de juiste wijze of zijn niet juist gelabeld wanneer het schema wordt uitgevoerd
 
-Gebruik de volgende procedure als uw abonnement is geconfigureerd voor de resource provider Automation, maar het uitvoeren van de update planning met de opgegeven [dynamische groepen](../automation-update-management-groups.md) geen enkele machine heeft gemist.
+Gebruik de volgende procedure als uw abonnement is geconfigureerd voor de resource provider Automation, maar het uitvoeren van de update planning met de opgegeven [dynamische groepen](../update-management/update-mgmt-groups.md) geen enkele machine heeft gemist.
 
 1. Open in het Azure Portal het Automation-account en selecteer **updatebeheer**.
 
-2. Controleer [updatebeheer geschiedenis](../manage-update-multi.md#view-results-of-an-update-deployment) om te bepalen op welke tijdstippen de update-implementatie is uitgevoerd. 
+2. Controleer [updatebeheer geschiedenis](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) om te bepalen op welke tijdstippen de update-implementatie is uitgevoerd.
 
-3. Voor computers waarvan u vermoedt dat deze niet zijn Updatebeheer, gebruikt u Azure resource Graph (ARG) om [computer wijzigingen te vinden](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details). 
+3. Voor computers waarvan u vermoedt dat deze niet zijn Updatebeheer, gebruikt u Azure resource Graph (ARG) om [computer wijzigingen te vinden](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details).
 
 4. Zoek naar wijzigingen in een belang rijke periode, zoals een dag, voordat de update-implementatie werd uitgevoerd.
 
@@ -212,10 +212,10 @@ Gebruik de volgende procedure als uw abonnement is geconfigureerd voor de resour
 
 ### <a name="issue"></a>Probleem
 
-Vm's voor geselecteerde bereiken van een dynamische groep worden niet weer gegeven in de lijst Azure Portal preview. Deze lijst bestaat uit alle machines die worden opgehaald met een ARG-query voor de geselecteerde bereiken. De bereiken worden gefilterd op computers waarop Hybrid Runbook Workers zijn geïnstalleerd en waarvoor u toegangs machtigingen hebt. 
+Vm's voor geselecteerde bereiken van een dynamische groep worden niet weer gegeven in de lijst Azure Portal preview. Deze lijst bestaat uit alle machines die worden opgehaald met een ARG-query voor de geselecteerde bereiken. De bereiken worden gefilterd op computers waarop Hybrid Runbook Workers zijn geïnstalleerd en waarvoor u toegangs machtigingen hebt.
 
 ### <a name="cause"></a>Oorzaak
- 
+
 Dit zijn mogelijke oorzaken voor dit probleem:
 
 * U hebt niet de juiste toegang tot de geselecteerde bereiken.
@@ -232,7 +232,7 @@ De Azure Portal alleen computers weer geven waarvoor u schrijf toegang hebt binn
 
 Volg de onderstaande stappen om erachter te komen of uw query's goed werken.
 
-1. Voer een ARG-query uit zoals hieronder wordt weer gegeven op de Blade resource Graph Explorer in Azure Portal. Deze query imiteert de filters die u hebt geselecteerd tijdens het maken van de dynamische groep in Updatebeheer. Zie [dynamische groepen gebruiken met updatebeheer](../automation-update-management-groups.md). 
+1. Voer een ARG-query uit zoals hieronder wordt weer gegeven op de Blade resource Graph Explorer in Azure Portal. Deze query imiteert de filters die u hebt geselecteerd tijdens het maken van de dynamische groep in Updatebeheer. Zie [dynamische groepen gebruiken met updatebeheer](../update-management/update-mgmt-groups.md).
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -250,7 +250,7 @@ Volg de onderstaande stappen om erachter te komen of uw query's goed werken.
     | where  (tags[tolower("ms-resource-usage")] =~ "azure-cloud-shell" and tags[tolower("temp")] =~ "temp")
     | project id, location, name, tags
     ```
- 
+
 2. Controleer of de computers die u zoekt, worden weer gegeven in de query resultaten. 
 
 3. Als de computers niet worden weer gegeven, is er waarschijnlijk een probleem met het filter dat is geselecteerd in de dynamische groep. Pas de groeps configuratie naar wens aan.
@@ -305,7 +305,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>Communicatie met het Automation-account is geblokkeerd
 
-Ga naar [netwerk planning](../automation-update-management.md#ports) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.
+Ga naar [netwerk planning](../update-management/update-mgmt-overview.md#ports) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.
 
 #### <a name="duplicate-computer-name"></a>Dubbele computer naam
 
@@ -391,11 +391,11 @@ Deze fout kan een van de volgende oorzaken hebben:
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik, indien van toepassing, [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Daarnaast kunt u de volgende stappen uitvoeren.
+Gebruik, indien van toepassing, [dynamische groepen](../update-management/update-mgmt-groups.md) voor uw update-implementaties. Daarnaast kunt u de volgende stappen uitvoeren.
 
 1. Controleer of de computer nog bestaat en bereikbaar is. 
 2. Als de computer niet bestaat, bewerkt u de implementatie en verwijdert u de computer.
-3. Zie de sectie [netwerk planning](../automation-update-management.md#ports) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer en controleer vervolgens of uw computer aan deze vereisten voldoet.
+3. Zie de sectie [netwerk planning](../update-management/update-mgmt-overview.md#ports) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer en controleer vervolgens of uw computer aan deze vereisten voldoet.
 4. Controleer de verbinding met de Hybrid Runbook Worker met behulp van de Hybrid Runbook Worker agent-probleem Oplosser. Zie problemen [met Update agent oplossen](update-agent-issues.md)voor meer informatie over de probleem Oplosser.
 5. Voer de volgende query uit in Log Analytics om computers in uw omgeving te zoeken waarvoor de bron computer-ID is gewijzigd. Zoek naar computers die dezelfde waarde hebben, `Computer` maar een andere `SourceComputerId` waarde.
 
@@ -500,7 +500,7 @@ Het standaard onderhouds venster voor updates is 120 minuten. U kunt het onderho
 
 Bewerk eventuele mislukte geplande update-implementaties en verg root het onderhouds venster.
 
-Zie [updates installeren](../automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over onderhouds Vensters.
+Zie [updates installeren](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)voor meer informatie over onderhouds Vensters.
 
 ## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>Scenario: de machine wordt weer gegeven als ' niet beoordeeld ' en toont een HRESULT-uitzonde ring
 
@@ -531,7 +531,7 @@ Als u een HRESULT ziet, dubbelklikt u op de uitzonde ring die rood wordt weer ge
 |Uitzondering  |Oplossing of actie  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | Zoek in de [lijst met fout codes voor Windows Update](https://support.microsoft.com/help/938205/windows-update-error-code-list) naar aanvullende informatie over de oorzaak van de uitzonde ring.        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Deze duiden op problemen met de netwerk verbinding. Zorg ervoor dat uw computer netwerk verbinding heeft met Updatebeheer. Zie de sectie [netwerk planning](../automation-update-management.md#ports) voor een lijst met vereiste poorten en adressen.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Deze duiden op problemen met de netwerk verbinding. Zorg ervoor dat uw computer netwerk verbinding heeft met Updatebeheer. Zie de sectie [netwerk planning](../update-management/update-mgmt-overview.md#ports) voor een lijst met vereiste poorten en adressen.        |
 |`0x8024001E`| De update bewerking is niet voltooid omdat de service of het systeem is afgesloten.|
 |`0x8024002E`| Windows Update-service is uitgeschakeld.|
 |`0x8024402C`     | Als u een WSUS-server gebruikt, moet u ervoor zorgen dat de register waarden voor `WUServer` en `WUStatusServer` onder de `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` register sleutel de juiste WSUS-server opgeven.        |
@@ -565,9 +565,9 @@ Mogelijke oorzaken:
 
 ### <a name="resolution"></a>Oplossing
 
-Als er fouten optreden tijdens het uitvoeren van een update nadat deze is gestart, [controleert u de taak uitvoer](../manage-update-multi.md#view-results-of-an-update-deployment) van de betrokken computer in de uitvoering. Mogelijk vindt u specifieke fout berichten van uw computers die u kunt onderzoeken en actie onderneemt. Voor Updatebeheer moet pakket beheer in orde zijn voor geslaagde update-implementaties.
+Als er fouten optreden tijdens het uitvoeren van een update nadat deze is gestart, [controleert u de taak uitvoer](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) van de betrokken computer in de uitvoering. Mogelijk vindt u specifieke fout berichten van uw computers die u kunt onderzoeken en actie onderneemt. Voor Updatebeheer moet pakket beheer in orde zijn voor geslaagde update-implementaties.
 
-Als specifieke patches, pakketten of updates onmiddellijk worden weer gegeven voordat de taak mislukt, kunt u deze items [uitsluiten](../automation-tutorial-update-management.md#schedule-an-update-deployment) van de volgende update-implementatie. Zie [Windows Update-logboek bestanden](/windows/deployment/update/windows-update-logs)voor informatie over het verzamelen van logboek gegevens van Windows Update.
+Als specifieke patches, pakketten of updates onmiddellijk worden weer gegeven voordat de taak mislukt, kunt u deze items [uitsluiten](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) van de volgende update-implementatie. Zie [Windows Update-logboek bestanden](/windows/deployment/update/windows-update-logs)voor informatie over het verzamelen van logboek gegevens van Windows Update.
 
 Als u een probleem met een patches niet kunt oplossen, maakt u een kopie van het **/var/opt/Microsoft/omsagent/run/automationworker/omsupdatemgmt.log** -bestand en behoudt u dit voor het oplossen van problemen voordat de volgende update-implementatie wordt gestart.
 
@@ -577,7 +577,7 @@ Als u een probleem met een patches niet kunt oplossen, maakt u een kopie van het
 
 Voer de updates rechtstreeks op de machine uit. Als de computer de updates niet kan Toep assen, raadpleegt u de [lijst met mogelijke fouten in de hand leiding voor het oplossen van problemen](#hresult).
 
-Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](../automation-remove-vms-from-update-management.md).
+Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](../update-management/update-mgmt-remove-vms.md).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ik weet dat er updates beschikbaar zijn, maar ze worden niet weer gegeven als beschikbaar op mijn computers
 
@@ -597,7 +597,7 @@ Updates worden vaak verdrongen door andere updates. Zie voor meer informatie [up
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Updates per classificatie installeren op Linux
 
-Het per classificatie implementeren van updates naar Linux ('Essentiële en beveiligingsupdates'), heeft belangrijke beperkingen, met name voor CentOS. Deze beperkingen worden beschreven op de [pagina overzicht van updatebeheer](../automation-update-management.md#linux).
+Het per classificatie implementeren van updates naar Linux ('Essentiële en beveiligingsupdates'), heeft belangrijke beperkingen, met name voor CentOS. Deze beperkingen worden beschreven op de [pagina overzicht van updatebeheer](../update-management/update-mgmt-overview.md#linux).
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 ontbreekt consistent
 

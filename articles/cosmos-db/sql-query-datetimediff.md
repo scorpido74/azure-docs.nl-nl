@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: db037668cec736bc3060b1cd3bb9651ee860a39b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261840"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446386"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 
@@ -21,7 +21,7 @@ Retourneert het aantal (als een ondertekend geheel getal) van de opgegeven DateT
 ## <a name="syntax"></a>Syntaxis
   
 ```sql
-DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
+DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 ```
 
 ## <a name="arguments"></a>Argumenten
@@ -36,7 +36,7 @@ DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
 | Dag          | "dag", "dd", "d"     |
 | Uur         | "uur", "uu"         |
 | Minuut       | ' minuut ', ' mi ', ' n '  |
-| Tweede       | "seconde", "SS", "s"  |
+| Seconde       | "seconde", "SS", "s"  |
 | Milliseconde  | ' milliseconde ', ' MS '  |
 | Wacht  | "micro seconde", "mcs" |
 | Nano seconden   | "nano seconden", "ns"   |

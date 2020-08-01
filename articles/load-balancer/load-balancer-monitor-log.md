@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 351307132e231f1fc6639333e6839848ac933337
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420903"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448838"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-logboeken voor openbare Basic Azure Load Balancer
 
@@ -29,7 +29,7 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 * **Health probe-logboeken:** U kunt dit logboek gebruiken om problemen weer te geven die zijn gedetecteerd door uw Health Probe, zoals het aantal exemplaren in uw back-end-pool die geen aanvragen ontvangen van de load balancer als gevolg van fouten in de status test. In dit logboek wordt geschreven wanneer er een wijziging is in de status van de status test.
 
 > [!IMPORTANT]
-> Azure Monitor-logboeken werken momenteel alleen voor open bare Basic load balancers. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatie modellen.
+> **Gebeurtenis logboeken met status controle zijn momenteel niet functioneel en worden weer gegeven in de [bekende problemen voor de Azure Load Balancer](whats-new.md#known-issues).** Azure Monitor-logboeken werken momenteel alleen voor open bare Basic load balancers. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatie modellen.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 

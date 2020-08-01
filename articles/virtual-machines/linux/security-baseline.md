@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385480"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446543"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-beveiligings basislijn voor Linux Virtual Machines
 
@@ -628,9 +628,9 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Hulp**: gebruik de Azure updatebeheer-oplossing om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor door patch ondersteunde systemen.
 
-* [Updatebeheer oplossing in azure](../../automation/automation-update-management.md)
+* [Updatebeheer oplossing in azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](../../automation/automation-tutorial-update-management.md)
+* [Updates en patches voor uw virtuele machines beheren](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -640,9 +640,9 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Richt lijnen**: u kunt een oplossing voor patch beheer van derden gebruiken. U kunt de Azure Updatebeheer-oplossing gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor door patch ondersteunde systemen.
 
-* [Updatebeheer oplossing in azure](../../automation/automation-update-management.md)
+* [Updatebeheer oplossing in azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](../../automation/automation-tutorial-update-management.md)
+* [Updates en patches voor uw virtuele machines beheren](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center bewaking**: niet beschikbaar
 

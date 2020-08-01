@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097005"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445782"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Veelgestelde vragen-Azure Key Vault certificaat importeren
 
@@ -64,6 +64,9 @@ Ja, u kunt certificaten van een wille keurige CA importeren, maar de sleutel klu
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Als ik een certificaat Importeer van een partner-CA, werkt de functie automatisch verlengen dan toch?
 Ja, u moet er zeker van zijn dat u na het uploaden de autorotation in het uitgifte beleid van het certificaat opgeeft. De wijzigingen worden ook weer gegeven tot de volgende cyclus of certificaat versie.
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Kan de App Service Certificate die is geïmporteerd in Key Vault niet zien? 
+Als het certificaat is geïmporteerd, gaat u naar de Blade geheimen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

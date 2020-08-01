@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 365f0b07370937a73d3925373be0be544a182865
+  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423527"
+  ms.lasthandoff: 07/29/2020
+  ms.locfileid: "87386772"
 landingContent:
 - title: Certificaten
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Wat zijn Azure Key Vault-certificaten?
       url: about-certificates.md
+    - text: Belangrijk nieuws over voorlopig verwijderen
+      url: ../general/soft-delete-change.md
     - text: Aan de slag gaan met Key Vault-certificaten
       url: certificate-scenarios.md
     - text: Methoden voor het maken van certificaten
@@ -53,7 +55,7 @@ landingContent:
     - text: Basisbegrippen
       url: ../general/basic-concepts.md
     - text: Overzicht van voorlopig verwijderen
-      url: ../general/overview-soft-delete.md
+      url: ../general/soft-delete-overview.md
     - text: Beveiligingsoverzicht
       url: ../general/overview-security.md
 - title: Microsoft Learn

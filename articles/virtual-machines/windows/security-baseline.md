@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387010"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445201"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-beveiligings basislijn voor Windows Virtual Machines
 
@@ -620,9 +620,9 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Hulp**: gebruik de Azure updatebeheer-oplossing om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer oplossing in azure](../../automation/automation-update-management.md)
+* [Updatebeheer oplossing in azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](../../automation/automation-tutorial-update-management.md)
+* [Updates en patches voor uw virtuele machines beheren](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -632,9 +632,9 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Richt lijnen**: u kunt een oplossing voor patch beheer van derden gebruiken. U kunt de Azure Updatebeheer-oplossing gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer oplossing in azure](../../automation/automation-update-management.md)
+* [Updatebeheer oplossing in azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](../../automation/automation-tutorial-update-management.md)
+* [Updates en patches voor uw virtuele machines beheren](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center bewaking**: niet beschikbaar
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: b1e550fde0d43b4d2c7bd1a64856edeac607cab3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14beaf4fc0f207abe652a9ed62c974f7ab4b8e79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999085"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449096"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager in Windows
 
@@ -197,7 +197,7 @@ Aandachtspunten:
 
 Wees doel gericht op welke services u nu wilt inschakelen in Azure Resource Manager.  Veel klanten vinden het onderstaande aantrekkelijk voor hun Azure-omgevingen:
 
-- [Access Control op basis van rollen](../../role-based-access-control/overview.md).
+- [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 - [Azure Resource Manager sjablonen voor een eenvoudiger en meer bewaakte implementatie](../../azure-resource-manager/templates/overview.md).
 - [Tags](../../azure-resource-manager/management/tag-resources.md).
 - [Besturings element voor activiteit](../../azure-resource-manager/management/view-activity-logs.md)

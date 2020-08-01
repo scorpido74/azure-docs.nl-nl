@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/11/2020
+ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: f751c45b12ec2c8f6f09080b01b24f59af1fc0d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478328"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445586"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Procedure: optionele claims voor uw Azure AD-App opgeven
 
@@ -49,16 +49,14 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 
 **Tabel 2: v 1.0 en v 2.0 optionele claim sets**
 
-| Naam                       |  Beschrijving   | Token type | Gebruikers type | Notities  |
+| Naam                       |  Beschrijving   | Token type | Gebruikers type | Opmerkingen  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tijdstip waarop de laatste verificatie van de gebruiker is gestart. Zie OpenID Connect Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | De regio van de resource-Tenant | JWT        |           | |
-| `home_oid`                 | Voor gast gebruikers, de object-ID van de gebruiker in de thuis Tenant van de gebruiker.| JWT        |           | |
 | `sid`                      | Sessie-ID, die wordt gebruikt voor de afmelding per sessie van de gebruiker. | JWT        |  Persoonlijke en Azure AD-accounts.   |         |
 | `platf`                    | Apparaatplatform    | JWT        |           | Beperkt tot beheerde apparaten die het apparaattype kunnen controleren.|
 | `verified_primary_email`   | Bron van de PrimaryAuthoritativeEmail van de gebruiker      | JWT        |           |         |
 | `verified_secondary_email` | Bron van de SecondaryAuthoritativeEmail van de gebruiker   | JWT        |           |        |
-| `enfpolids`                | Afgedwongen beleids-Id's. Een lijst met de beleids-Id's die voor de huidige gebruiker zijn geëvalueerd. | JWT |  |  |
 | `vnet`                     | Gegevens van VNET-specificatie. | JWT        |           |      |
 | `fwd`                      | IP-adres.| JWT    |   | Hiermee wordt het oorspronkelijke IPv4-adres van de aanvragende client toegevoegd (in een VNET) |
 | `ctry`                     | Land/regio van gebruiker | JWT |  | Azure AD retourneert de `ctry` optionele claim als deze aanwezig is en de waarde van de claim is een standaard land/regio code van twee letters, zoals fr, JP, Sz, enzovoort. |
@@ -68,8 +66,8 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 | `xms_tpl`                  | Voorkeurs taal van Tenant| JWT | | De voorkeurs taal van de resource-Tenant, indien ingesteld. Opgemaakte LL ("en"). |
 | `ztdid`                    | Nul-touch implementatie-ID | JWT | | De apparaat-id die wordt gebruikt voor [Windows auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
 | `email`                    | De adresseer bare e-mail voor deze gebruiker als de gebruiker er een heeft.  | JWT, SAML | MSA, Azure AD | Deze waarde is standaard opgenomen als de gebruiker een gast in de Tenant is.  Voor beheerde gebruikers (de gebruikers in de Tenant) moet deze worden aangevraagd via deze optionele claim of, alleen op v 2.0, met het OpenID Connect-bereik.  Voor beheerde gebruikers moet het e-mail adres worden ingesteld in de [Office-beheer Portal](https://portal.office.com/adminportal/home#/users).|
-| `groups`| Optionele notatie voor groepclaims |JWT, SAML| |Wordt gebruikt in combi natie met de instelling GroupMembershipClaims in het manifest van de [toepassing](reference-app-manifest.md), die ook moet worden ingesteld. Zie voor meer informatie [groeps claims](#configuring-groups-optional-claims) hieronder. Zie groepclaims [configureren](../hybrid/how-to-connect-fed-group-claims.md) voor meer informatie over groepclaims.
 | `acct`                | Gebruikers account status in Tenant | JWT, SAML | | Als de gebruiker lid is van de Tenant, is de waarde `0` . Als ze een gast zijn, is de waarde `1` . |
+| `groups`| Optionele notatie voor groepclaims |JWT, SAML| |Wordt gebruikt in combi natie met de instelling GroupMembershipClaims in het manifest van de [toepassing](reference-app-manifest.md), die ook moet worden ingesteld. Zie voor meer informatie [groeps claims](#configuring-groups-optional-claims) hieronder. Zie groepclaims [configureren](../hybrid/how-to-connect-fed-group-claims.md) voor meer informatie over groepclaims.
 | `upn`                      | UserPrincipalName | JWT, SAML  |           | Hoewel deze claim automatisch wordt opgenomen, kunt u deze opgeven als een optionele claim om extra eigenschappen toe te voegen om het gedrag van de gebruiker te wijzigen.  |
 | `idtyp`                    | Token type   | JWT-toegangs tokens | Speciaal: alleen in alleen-app-toegangs tokens |  De waarde is `app` wanneer het token een token van een app is. Dit is de meest nauw keurige manier om een API te bepalen of een token een app-token of een app + gebruikers token is.|
 
@@ -79,7 +77,7 @@ Deze claims zijn altijd opgenomen in de Azure AD-tokens v 1.0, maar zijn niet op
 
 **Tabel 3: alleen optionele claims voor v 2.0**
 
-| JWT-claim     | Name                            | Beschrijving                                | Notities |
+| JWT-claim     | Naam                            | Beschrijving                                | Opmerkingen |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adres                      | Het IP-adres van de client die is aangemeld bij.   |       |
 | `onprem_sid`  | Lokale beveiligings-id |                                             |       |
@@ -96,7 +94,7 @@ Sommige optionele claims kunnen worden geconfigureerd om de manier waarop de cla
 
 **Tabel 4: waarden voor het configureren van optionele claims**
 
-| Naam van eigenschap  | Aanvullende naam van eigenschap | Description |
+| Naam van eigenschap  | Aanvullende naam van eigenschap | Beschrijving |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kan worden gebruikt voor SAML-en JWT-antwoorden, en voor de tokens v 1.0 en v 2.0. |
 |                | `include_externally_authenticated_upn`  | Bevat de gast-UPN zoals deze is opgeslagen in de resource-Tenant. Bijvoorbeeld: `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -243,7 +241,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 1. Claim voor het **toevoegen van groepen** selecteren
 1. Selecteer de groeps typen die moeten worden geretourneerd (**alle groepen**, **beveiligings groep**of **DirectoryRole**). De optie **alle groepen** omvat **beveiligings groep**, **DirectoryRole**en **DistributionList**
 1. Optioneel: Selecteer de specifieke eigenschappen van het token type om de claim waarde van de groep zodanig te wijzigen dat deze lokale groeps kenmerken bevat of om het claim type te wijzigen in een rol
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan**
 
 **Groepen optionele claims configureren via het toepassings manifest:**
 
@@ -401,7 +399,7 @@ In het onderstaande voor beeld gebruikt u de gebruikers interface voor **token c
 
 **Manifest configuratie:**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Zoek de toepassing waarvoor u de optionele claims wilt configureren in de lijst en selecteer deze.

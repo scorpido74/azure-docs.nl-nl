@@ -6,7 +6,7 @@ ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175740"
@@ -19,7 +19,7 @@ ms.locfileid: "67175740"
 3. Bij **Configuration Server Details** (Serverconfiguratiedetails) geeft u het IP-adres van de configuratieserver en de wachtwoordzin op.
 
    ![Processerver 2 toevoegen](./media/site-recovery-add-process-server/ps-page-2.png)
-4. Geef in **Internet instellingen**op hoe de provider die op de configuratie server wordt uitgevoerd, verbinding maakt met Azure site Recovery via internet.
+4. Geef bij **Internetinstellingen** op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding moet maken met Azure Site Recovery.
 
    ![Processerver 3 toevoegen](./media/site-recovery-add-process-server/ps-page-3.png)
 

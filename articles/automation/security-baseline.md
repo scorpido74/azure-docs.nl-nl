@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045904"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447705"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
@@ -220,7 +220,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 * [Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte](./how-to/region-mappings.md)
 
-* [Updatebeheer logboeken opvragen](./automation-update-management-query-logs.md)
+* [Updatebeheer logboeken opvragen](./update-management/update-mgmt-query-logs.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -500,7 +500,7 @@ Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -646,9 +646,9 @@ Bij het gebruik van Hybrid Runbook Workers worden de virtuele schijven op de vir
 
 Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machines van Azure, kunt u Azure Updatebeheer gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer in azure](./automation-update-management.md)
+* [Updatebeheer in azure](./update-management/update-mgmt-overview.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](./automation-tutorial-update-management.md)
+* [Updates en patches voor uw virtuele machines beheren](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -660,9 +660,9 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machines van Azure, kunt u Azure Updatebeheer gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer oplossing in azure](./automation-update-management.md)
+* [Updatebeheer oplossing in azure](./update-management/update-mgmt-overview.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](./automation-tutorial-update-management.md)
+* [Updates en patches voor uw Azure-VM's beheren](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

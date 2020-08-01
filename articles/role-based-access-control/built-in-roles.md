@@ -7,13 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/16/2020
-ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/29/2020
+ms.custom: generated
+ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511582"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448893"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
@@ -23,7 +24,7 @@ Dit artikel bevat een overzicht van de ingebouwde rollen van Azure, die altijd i
 
 De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouwde rol. Klik op de naam van de rol om de lijst met `Actions` ,, `NotActions` `DataActions` en `NotDataActions` voor elke rol weer te geven. Zie [begrippen van Azure-functies begrijpen](role-definitions.md)voor informatie over wat deze acties betekenen en hoe deze van toepassing zijn op het beheer-en gegevens abonnement.
 
-## <a name="all"></a>Alles
+## <a name="all"></a>Alle
 
 > [!div class="mx-tableFixed"]
 > | Ingebouwde rol | Beschrijving | Id |
@@ -149,9 +150,9 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Inzender beheerde identiteit](#managed-identity-contributor) | Aan de gebruiker toegewezen identiteit maken, lezen, bijwerken en verwijderen | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [Beheerde identiteits operator](#managed-identity-operator) | Door gebruiker toegewezen identiteit lezen en toewijzen | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Beveiliging** |  |  |
-> | [Azure Sentinel-bijdrager](#azure-sentinel-contributor) | Azure Sentinel-bijdrager | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | [Azure Sentinel Contributor](#azure-sentinel-contributor) | Azure Sentinel Contributor | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel Reader](#azure-sentinel-reader) | Azure Sentinel Reader | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
-> | [Azure Sentinel responder](#azure-sentinel-responder) | Azure Sentinel responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | [Azure Sentinel Responder](#azure-sentinel-responder) | Azure Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Inzender Key Vault](#key-vault-contributor) | Hiermee kunt u sleutel kluizen beheren, maar niet de toegang tot de kluis. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Beveiligings beheerder](#security-admin) | Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen als de rol van beveiligings lezer en kunnen ook het beveiligings beleid bijwerken en waarschuwingen en aanbevelingen negeren. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Inzender voor beveiligings beoordeling](#security-assessment-contributor) | Hiermee kunt u evaluaties naar Security Center pushen | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -180,6 +181,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Inzender Cost Management](#cost-management-contributor) | Kan kosten bekijken en kosten configuratie beheren (bijvoorbeeld budgetten, exports) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Cost Management lezer](#cost-management-reader) | Kan kosten gegevens en-configuratie weer geven (bijvoorbeeld budgetten, exports) | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [Beheerder hiërarchie-instellingen](#hierarchy-settings-administrator) | Hiermee kunnen gebruikers hiërarchie-instellingen bewerken en verwijderen | 350f8d15-c687-4448-8ae1-157740a3936d |
+> | [Kubernetes-cluster-Azure Arc-onboarding](#kubernetes-cluster---azure-arc-onboarding) | Roldefinitie voor het autoriseren van elke gebruiker/service voor het maken van een connectedClusters-resource | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
 > | [Rol Inzender beheerde toepassing](#managed-application-contributor-role) | Maakt het mogelijk om beheerde toepassings resources te maken. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Rol beheerde toepassings operator](#managed-application-operator-role) | Hiermee kunt u acties voor beheerde toepassings bronnen lezen en uitvoeren | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Lezer voor beheerde toepassingen](#managed-applications-reader) | Hiermee kunt u bronnen in een beheerde app lezen en JIT-toegang aanvragen. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -1142,7 +1144,7 @@ Hiermee beheert u Traffic Manager profielen, maar kunt u niet bepalen wie er toe
 }
 ```
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>AVERE-bijdrager
@@ -3097,7 +3099,7 @@ Geef een lijst actie voor de gebruikers referenties van het cluster op. [Meer in
 
 ### <a name="azure-kubernetes-service-contributor-role"></a>Rol van de Azure Kubernetes service-bijdrager
 
-Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes Service-clusters
+Hiermee wordt toegang verleend tot lees-en schrijf Service clusters van Azure Kubernetes [meer informatie](../aks/concepts-identity.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -3140,7 +3142,7 @@ Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes 
 
 ### <a name="azure-kubernetes-service-rbac-admin"></a>RBAC-beheerder voor Azure Kubernetes service
 
-Hiermee kunt u alle resources beheren onder cluster/naam ruimte, behalve voor het bijwerken of verwijderen van resource quota's en naam ruimten. [Meer informatie](../aks/concepts-identity.md)
+Hiermee kunt u alle resources beheren onder cluster/naam ruimte, behalve voor het bijwerken of verwijderen van resource quota's en naam ruimten. [Meer informatie](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -3203,7 +3205,7 @@ Hiermee kunt u alle resources beheren onder cluster/naam ruimte, behalve voor he
 
 ### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>De Azure Kubernetes service RBAC-cluster beheerder
 
-Hiermee kunt u alle resources in het cluster beheren. [Meer informatie](../aks/concepts-identity.md)
+Hiermee kunt u alle resources in het cluster beheren. [Meer informatie](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -3258,7 +3260,7 @@ Hiermee kunt u alle resources in het cluster beheren. [Meer informatie](../aks/c
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>RBAC-lezer van de Azure Kubernetes service
 
-Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behalve geheimen. [Meer informatie](../aks/concepts-identity.md)
+Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behalve geheimen. [Meer informatie](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -3319,7 +3321,7 @@ Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behal
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>RBAC-schrijver van Azure Kubernetes service
 
-Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van resource quota's, naam ruimten, Pod-beveiligings beleid, aanvragen voor certificaat ondertekening, (cluster) rollen en (cluster) rollen bindingen. [Meer informatie](../aks/concepts-identity.md)
+Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van resource quota's, naam ruimten, Pod-beveiligings beleid, aanvragen voor certificaat ondertekening, (cluster) rollen en (cluster) rollen bindingen. [Meer informatie](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -6063,7 +6065,7 @@ Aan de gebruiker toegewezen identiteit lezen en toewijzen [meer informatie](../a
 ## <a name="security"></a>Beveiliging
 
 
-### <a name="azure-sentinel-contributor"></a>Azure Sentinel-bijdrager
+### <a name="azure-sentinel-contributor"></a>Azure Sentinel Contributor
 
 Azure Sentinel contributor [meer informatie](../sentinel/roles.md)
 
@@ -6197,7 +6199,7 @@ Azure Sentinel Reader [meer informatie](../sentinel/roles.md)
 }
 ```
 
-### <a name="azure-sentinel-responder"></a>Azure Sentinel responder
+### <a name="azure-sentinel-responder"></a>Azure Sentinel Responder
 
 Azure Sentinel responder [meer informatie](../sentinel/roles.md)
 
@@ -6486,12 +6488,12 @@ Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen,
 > | Acties | Beschrijving |
 > | --- | --- |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
-> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/Read | Een klassieke waarschuwing voor metrische gegevens lezen |
 > | [Micro soft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics-gegevens weer geven |
-> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/*/Read |  |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | [Micro soft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Beveiligings onderdelen en-beleid lezen |
-> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft. support](resource-provider-operations.md#microsoftsupport)/*/Read |  |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Beheer groepen voor de geverifieerde gebruiker weer geven. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -6512,12 +6514,12 @@ Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen,
     {
       "actions": [
         "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/alertRules/read",
         "Microsoft.operationalInsights/workspaces/*/read",
-        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
-        "Microsoft.Support/*",
+        "Microsoft.Support/*/read",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -7646,6 +7648,61 @@ Hiermee kunnen gebruikers hiërarchie-instellingen bewerken en verwijderen
 }
 ```
 
+### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes-cluster-Azure Arc-onboarding
+
+Roldefinitie voor het autoriseren van elke gebruiker/service voor het maken van connectedClusters-resource [meer informatie](../azure-arc/kubernetes/connect-cluster.md)
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/write | Hiermee wordt een implementatie gemaakt of bijgewerkt. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | De resultaten van de abonnements bewerking ophalen. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/write | Schrijft connectedClusters |
+> | [Micro soft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Read | ConnectedClusters lezen |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role definition to authorize any user/service to create connectedClusters resource",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "name": "34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Kubernetes/connectedClusters/Write",
+        "Microsoft.Kubernetes/connectedClusters/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Kubernetes Cluster - Azure Arc Onboarding",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="managed-application-contributor-role"></a>Rol Inzender beheerde toepassing
 
 Maakt het mogelijk om beheerde toepassings resources te maken.
@@ -8500,7 +8557,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Overige
+## <a name="other"></a>Overig
 
 
 ### <a name="biztalk-contributor"></a>BizTalk-bijdrager

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6fa27008ea22e1a2bd9a83ce3888370cf2213935
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259273"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458073"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Een zelfstandig cluster maken dat wordt uitgevoerd in Windows Server
 U kunt Azure Service Fabric gebruiken om Service Fabric-clusters te maken op alle virtuele machines of computers waarop Windows Server wordt uitgevoerd. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving met een set onderling verbonden Windows Server-computers, deze on-premises of met een Cloud provider. Service Fabric biedt een installatie pakket om Service Fabric clusters te maken die het zelfstandige Windows Server-pakket worden genoemd. Traditionele Service Fabric clusters op Azure zijn beschikbaar als beheerde service, terwijl zelfstandige Service Fabric clusters self-service zijn. Zie [Azure en zelfstandige service Fabric clusters vergelijken](./service-fabric-deploy-anywhere.md)voor meer informatie over de verschillen.
@@ -128,7 +128,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 
 Bijvoorbeeld:
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
 Zie [Connect to a secure cluster](service-fabric-connect-to-secure-cluster.md) (Verbinding maken met een beveiligd cluster) voor meer voorbeelden van clusterverbindingen. Nadat u verbinding hebt gemaakt met het cluster, gebruikt u de cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) om een lijst weer te geven van de knooppunten in het cluster, evenals statusinformatie voor elk knooppunt. **HealthState** moet *OK* zijn voor elk knooppunt.

@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor lang gegevens type toevoegen | Microsoft Docs
-description: Ondersteuning voor lang gegevens type
+title: Ondersteuning voor lang gegevens type in Azure Time Series Insights Gen2 | Microsoft Docs
+description: Ondersteuning voor lang gegevens type in Azure Time Series Insights Gen2.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,44 +10,65 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: c31ca7fd3eca89159d583b8a51b59a7bd6b8ed67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531161"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446640"
 ---
-# <a name="adding-support-for-long-data-type"></a>Ondersteuning voor lang gegevens type toevoegen
+# <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Ondersteuning toevoegen voor lang gegevens type in Azure Time Series Insights Gen2
 
-Deze wijzigingen worden alleen toegepast op de Gen2-omgevingen. Als u een gen1-omgeving hebt, kunt u deze wijzigingen negeren.
+Het toevoegen van ondersteuning voor lang gegevens type is van invloed op de manier waarop we numerieke gegevens in Azure Time Series Insights Gen2-omgevingen opslaan en indexeren. Als u een gen1-omgeving hebt, kunt u deze wijzigingen negeren.
 
-We gaan wijzigingen aanbrengen in de manier waarop we numerieke gegevens opslaan en indexeren in Azure Time Series Insights Gen2 die van invloed kunnen zijn op u. Als u een van de onderstaande gevallen gebruikt, moet u zo snel mogelijk de benodigde wijzigingen aanbrengen. Uw gegevens worden vanaf 29 juni tot en met 30 juni 2020 geïndexeerd, afhankelijk van uw regio. Als u vragen hebt of problemen hebt met betrekking tot deze wijziging, verzendt u een ondersteunings ticket via de Azure Portal en vermeldt u deze communicatie.
+Vanaf 29 juni of 30 juni 2020, afhankelijk van uw regio, worden uw gegevens als **lang** en **dubbel**geïndexeerd.  Als u vragen hebt of problemen hebt met betrekking tot deze wijziging, verzendt u een ondersteunings ticket via de Azure Portal en vermeldt u deze communicatie.
 
-Deze wijziging is van invloed op de volgende gevallen:
+Als u een van de volgende situaties ondervindt, moet u de aanbevolen wijzigingen aanbrengen:
 
-1. Als u momenteel time series-model variabelen gebruikt en alleen integrale gegevens typen in uw telemetriegegevens verzendt.
-1. Als u momenteel time series-model variabelen gebruikt en zowel integrale als niet-integrale gegevens typen in uw telemetriegegevens verzendt.
-1. Als u Categorische-variabelen gebruikt om gehele waarden toe te wijzen aan categorieën.
-1. Als u de Java script-SDK gebruikt om een aangepaste front-end-toepassing te maken.
-1. Als u de naam limiet van 1.000 in warme Store (WS) nadert en zowel integrale als niet-integrale gegevens verzendt, kan het aantal eigenschappen worden weer gegeven als een metrische waarde in het [Azure Portal](https://portal.azure.com/).
+- Voor **Beeld 1**: u gebruikt momenteel time series model-variabelen en verzendt alleen integrale gegevens typen in uw telemetriegegevens.
+- Voor **Beeld 2**: u gebruikt momenteel time series model-variabelen en verzendt zowel integrale als niet-integrale gegevens typen in uw telemetriegegevens.
+- Voor **Beeld 3**: u kunt Categorische-variabelen gebruiken om gehele waarden toe te wijzen aan categorieën.
+- Voor **beeld 4**: u de Java script-SDK gebruikt om een aangepaste front-end-toepassing te maken.
+- Voor **beeld 5**: u voldoet aan de 1.000-eigenschaps naam limiet in warme Store en verzendt zowel integrale als niet-integrale gegevens. Het aantal eigenschappen kan worden weer gegeven als een metrische waarde in het [Azure Portal](https://portal.azure.com/).
 
-Als een van de bovenstaande gevallen van toepassing is op u, moet u wijzigingen aanbrengen in uw model om deze wijziging aan te passen. Werk de time series-expressie in de definitie van de variabele in zowel Azure Time Series Insights Gen2 Explorer als in een aangepaste client met behulp van onze Api's met de aanbevolen wijzigingen. Zie hieronder voor meer informatie.
+Als een van de aanvragen op u van toepassing is, brengt u wijzigingen aan in uw model. Werk de time series-expressie (TSX) bij in de definitie van de variabele met de aanbevolen wijzigingen. Update beide:
 
-Afhankelijk van uw IoT-oplossing en beperkingen, hebt u mogelijk niet de zicht baarheid van de gegevens die naar uw Azure Time Series Insights Gen2-omgeving worden verzonden. Als u niet zeker weet of uw gegevens alleen integraal of zowel integraal als niet-integraal zijn, hebt u een aantal opties. U kunt wachten tot de functie is vrijgegeven en vervolgens uw onbewerkte gebeurtenissen in de Explorer-gebruikers interface verkennen om te begrijpen welke eigenschappen zijn opgeslagen in twee afzonderlijke kolommen. U kunt de onderstaande wijzigingen voor alle numerieke Tags preventief of tijdelijk een subset van gebeurtenissen naar de opslag sturen om uw schema beter te begrijpen en te verkennen. Als u gebeurtenissen wilt opslaan, schakelt u [gebeurtenis vastleggen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) in voor Event hubs of [routet](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) u van uw IOT hub naar Azure Blob Storage. Gegevens kunnen ook worden waargenomen via de [Event hub Verkenner](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)of door de [Event processor host](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)te gebruiken. Als u IoT Hub gebruikt, raadpleegt u de documentatie [hier](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) voor toegang tot het ingebouwde eind punt.
+- Azure Time Series Insights Gen2 Explorer
+- Elke aangepaste client die gebruikmaakt van onze Api's
 
-Houd er rekening mee dat als u deze wijzigingen ondervindt en u deze niet op de bovenstaande datums kunt door lopen, u mogelijk een onderbreking ondervindt waarbij de beïnvloede tijd reeks variabelen die worden gebruikt via de query-Api's of Time Series Insights Explorer *Null* retourneert (dat wil zeggen dat er geen gegevens in de Explorer worden weer gegeven).
+Afhankelijk van uw IoT-oplossing en beperkingen, hebt u mogelijk niet de zicht baarheid van de gegevens die naar uw Azure Time Series Insights Gen2-omgeving worden verzonden. Als u niet zeker weet of uw gegevens alleen integraal of zowel integraal als niet-integraal zijn, hebt u een aantal opties:
+
+- U kunt wachten tot de functie is vrijgegeven. Bekijk vervolgens uw onbewerkte gebeurtenissen in de Explorer-gebruikers interface om te begrijpen welke eigenschappen in twee afzonderlijke kolommen zijn opgeslagen.
+- U kunt preventief de aanbevolen wijzigingen aanbrengen voor alle numerieke Tags.
+- U kunt een subset van gebeurtenissen tijdelijk door sturen naar opslag om uw schema beter te begrijpen en te verkennen.
+
+Als u gebeurtenissen wilt opslaan, schakelt u [gebeurtenis vastleggen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) in voor Azure Event hubs of stuurt u een [route](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) van uw IOT hub naar Azure Blob-opslag.
+
+Gegevens kunnen ook worden waargenomen via de [Event hub Verkenner](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)of door de [Event processor host](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)te gebruiken.
+
+Als u IoT Hub gebruikt, gaat u naar [apparaat-naar-Cloud-berichten lezen van het ingebouwde eind punt](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) voor toegang tot het ingebouwde eind punt.
+
+> [!NOTE]
+> U kunt onderbrekingen ondervinden als u de aanbevolen wijzigingen niet aanbrengt. De betrokken Time Series Insights variabelen die worden geopend via de query-Api's of Time Series Insights Explorer, retour neren bijvoorbeeld **Null** (dat wil zeggen dat er geen gegevens worden weer gegeven in de Explorer).
 
 ## <a name="recommended-changes"></a>Aanbevolen wijzigingen
 
-Case 1 & 2: het **gebruik van tijdreeks model variabelen en verzenden van alleen integrale gegevens typen of het verzenden van zowel integrale als niet-integrale typen in telemetriegegevens.**
+### <a name="case-1-using-time-series-model-variables-and-sending-only-integral-data-types-in-telemetry-data"></a>Voor beeld 1: Time Series-model variabelen gebruiken en alleen integrale gegevens typen verzenden in telemetriegegevens
 
-Als u momenteel telemetriegegevens van een geheel getal verzendt, worden uw gegevens onderverdeeld in twee kolommen: ' propertyValue_double ' en ' propertyValue_long '.
+De aanbevolen wijzigingen voor Case 1 zijn hetzelfde als voor Case 2. Volg de instructies in de sectie voor Case 2.
 
-De gegevens van uw geheel getal worden geschreven naar ' propertyValue_long ' wanneer de wijzigingen van kracht worden en eerder zijn opgenomen (en toekomstige opgenomen) numerieke gegevens in ' propertyValue_double ' worden niet gekopieerd.
+### <a name="case-2-using-time-series-model-variables-and-sending-both-integral-and-nonintegral-types-in-telemetry-data"></a>Voor beeld 2: Time Series-model variabelen gebruiken en zowel integrale als niet-integrale typen in telemetriegegevens verzenden
 
-Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap propertyValue, moet u de functie *Coalesce ()* scalair gebruiken in uw TSX. De functie accepteert argumenten van hetzelfde gegevens type en retourneert de eerste niet-null-waarde in de lijst met argumenten (Lees [hier](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)meer over het gebruik).
+Als u momenteel telemetriegegevens van een geheel getal verzendt, worden uw gegevens onderverdeeld in twee kolommen:
 
-### <a name="variable-definition-in-time-series-explorer---numeric"></a>Variabele definitie in time series Explorer-numeriek
+- **propertyValue_double**
+- **propertyValue_long**
+
+De gegevens van het gehele getal worden wegge schreven naar **propertyValue_long**. Eerder opgenomen (en toekomstige opgenomen) numerieke gegevens in **propertyValue_double** worden niet gekopieerd.
+
+Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap **propertyValue** , moet u de functie **Coalesce ()** SCALAIR gebruiken in uw TSX. De functie accepteert argumenten van hetzelfde **gegevens type** en retourneert de eerste niet-null-waarde in de argumenten lijst. Zie [Azure time series Insights Gen2 Data Access-concepten](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)voor meer informatie.
+
+#### <a name="variable-definition-in-tsx---numeric"></a>Variabele definitie in TSX-numeriek
 
 *Vorige variabele definitie:*
 
@@ -57,9 +78,9 @@ Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap property
 
 [![Nieuwe definitie van variabele](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-U kunt ook *' Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))* gebruiken als de expressie voor de aangepaste [tijd reeks.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-### <a name="inline-variable-definition-using-time-series-query-apis---numeric"></a>Definitie van inline-variabele met Time Series-query-Api's-numeriek
+#### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Definitie van inline-variabele met behulp van TSX-query-Api's-numeriek
 
 *Vorige variabele definitie:*
 
@@ -105,16 +126,16 @@ U kunt ook *' Coalesce ($Event. PropertyValue. double, toDouble ($Event. Propert
 }
 ```
 
-U kunt ook *' Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))* gebruiken als de expressie voor de aangepaste [tijd reeks.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 > [!NOTE]
-> U wordt aangeraden deze variabelen bij te werken op alle locaties die kunnen worden gebruikt (Time Series model, opgeslagen query's, Power BI-connector query's).
+> U wordt aangeraden deze variabelen bij te werken op alle locaties die kunnen worden gebruikt. Deze locaties zijn onder andere tijdreeks model, opgeslagen query's en Power BI connector query's.
 
-Voor beeld 3: **Categorische-variabelen gebruiken om gehele waarden toe te wijzen aan categorieën**
+### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>Voor beeld 3: Categorische-variabelen gebruiken om gehele waarden toe te wijzen aan categorieën
 
-Als u momenteel Categorische-variabelen gebruikt die gehele waarden toewijzen aan categorieën, zult u waarschijnlijk de functie toLong gebruiken om gegevens van het type Double te converteren naar een lang type. Net als in de bovenstaande gevallen moet u de kolommen met dubbele en lange gegevens typen samenvoegd.
+Als u momenteel Categorische variabelen gebruikt waarmee gehele waarden worden toegewezen aan categorieën, zult u waarschijnlijk de functie **toLong** gebruiken om gegevens van het type **Double** te converteren naar een **lang** type. Net als case 1 en 2 moet u de kolommen met **dubbele** en **lange** **gegevens typen** samenvoegd.
 
-### <a name="variable-definition-in-time-series-explorer---categorical"></a>Variabele definitie in time series Explorer-categorische
+#### <a name="variable-definition-in-time-series-explorer---categorical"></a>Variabele definitie in time series Explorer-categorische
 
 *Vorige variabele definitie:*
 
@@ -124,11 +145,11 @@ Als u momenteel Categorische-variabelen gebruikt die gehele waarden toewijzen aa
 
 [![Nieuwe definitie van variabele](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-U kunt ook *' Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))* gebruiken als de expressie voor de aangepaste [tijd reeks.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het gegevens type van alle argumenten in Coalesce () moet van het type Long zijn in de aangepaste [Time Series-expressie.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het **gegevens type** van alle argumenten in **Coalesce ()** moet van het type **Long** zijn in de aangepaste [Time Series-expressie.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
 
-### <a name="inline-variable-definition-using-time-series-query-apis---categorical"></a>Definitie van inline-variabele met behulp van Time Series-query-Api's-categorische
+#### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Definitie van inline-variabele met behulp van TSX-query-Api's-categorische
 
 *Vorige variabele definitie:*
 
@@ -206,19 +227,19 @@ Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal
 }
 ```
 
-Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het gegevens type van alle argumenten in Coalesce () moet van het type Long zijn in de aangepaste [Time Series-expressie.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het **gegevens type** van alle argumenten in **Coalesce ()** moet van het type **Long** zijn in de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 > [!NOTE]
-> U wordt aangeraden deze variabelen bij te werken op alle locaties die kunnen worden gebruikt (Time Series model, opgeslagen query's, Power BI-connector query's).
+> U wordt aangeraden deze variabelen bij te werken op alle locaties die kunnen worden gebruikt. Deze locaties zijn onder andere tijdreeks model, opgeslagen query's en Power BI connector query's.
 
-Case 4: **de Java script-SDK gebruiken om een aangepaste front-end-toepassing te maken**
+### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>Case 4: de Java script-SDK gebruiken om een aangepaste front-end-toepassing te maken
 
-Als u van invloed is op bovenstaande gevallen 1-3 hierboven en aangepaste toepassingen bouwt, moet u uw query's bijwerken om de functie *Coalesce ()* te gebruiken, zoals wordt getoond in de bovenstaande voor beelden.
+Als u wordt beïnvloed door cases 1 tot en met 3 en aangepaste toepassingen bouwt, moet u uw query's bijwerken om de functie **Coalesce ()** te gebruiken, zoals wordt getoond in de voor gaande voor beelden.
 
-Case 5: de **eigenschaps limiet van de warme Store 1.000 bijna bereikt**
+### <a name="case-5-nearing-warm-store-1000-property-limit"></a>Case 5: de eigenschaps limiet van de warme Store 1.000 bijna bereikt
 
-Als u een warme winkel gebruiker bent met een groot aantal eigenschappen en denkt dat deze wijziging uw omgeving zou pushen over de limiet van de eigenschaps naam van 1.000 WS, stuurt u een ondersteunings ticket via de Azure Portal en vermeldt u deze communicatie.
+Als u een warme winkel gebruiker bent met een groot aantal eigenschappen en denkt dat deze wijziging uw omgeving zou pushen over de 1.000 warme Store-eigenschap-naam limiet, dient u een ondersteunings ticket in te dienen via de Azure Portal en deze communicatie te vermelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [ondersteunde gegevens typen](concepts-supported-data-types.md) om de volledige lijst met ondersteunde gegevens typen weer te geven.
+- Bekijk de volledige lijst met [ondersteunde gegevens typen](concepts-supported-data-types.md).

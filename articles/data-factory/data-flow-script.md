@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298598"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448536"
 ---
 # <a name="data-flow-script-dfs"></a>Gegevens stroom script (DFS)
 
@@ -195,13 +195,21 @@ Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Aantal updates, upsert, invoeg acties, verwijderen
-Wanneer u een alter Row trans formatie gebruikt, wilt u mogelijk het aantal updates, upsert, invoeg acties, verwijderen dat het resultaat is van uw beleid voor het wijzigen van rijen. Voeg een geaggregeerde trans formatie toe na de Alter Row en plak dit gegevensstroom script in de cumulatieve definitie voor die aantallen:
+Wanneer u een alter Row trans formatie gebruikt, wilt u mogelijk het aantal updates, upsert, invoeg acties, verwijderen dat het resultaat is van uw beleid voor het wijzigen van rijen. Voeg een geaggregeerde trans formatie toe na de Alter Row en plak dit data flow-script in de cumulatieve definitie voor die aantallen.
 
 ```
 aggregate(updates = countIf(isUpdate(), 1),
         inserts = countIf(isInsert(), 1),
         upserts = countIf(isUpsert(), 1),
         deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>DISTINCT-rij met alle kolommen
+Met dit fragment wordt een nieuwe geaggregeerde trans formatie toegevoegd aan uw gegevens stroom, waarmee alle binnenkomende kolommen worden opgehaald, een hash genereren die wordt gebruikt om te groeperen om dubbele waarden te elimineren en vervolgens de eerste instantie van elk duplicaat als uitvoer opgeven. U hoeft de kolommen niet expliciet een naam te gegeven en ze worden automatisch gegenereerd vanuit uw binnenkomende gegevens stroom.
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

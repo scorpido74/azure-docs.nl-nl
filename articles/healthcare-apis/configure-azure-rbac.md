@@ -1,5 +1,5 @@
 ---
-title: Op Azure Role gebaseerde Access Control (RBAC) voor Azure API configureren voor FHIR
+title: Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor Azure API voor FHIR configureren
 description: In dit artikel wordt beschreven hoe u Azure RBAC kunt configureren voor de Azure API voor FHIR-gegevens vlak
 author: hansenms
 ms.service: healthcare-apis
@@ -7,16 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417672"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447167"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Azure RBAC configureren voor FHIR 
 
-In dit artikel leert u hoe u op [Azure Role Based Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) kunt gebruiken om toegang toe te wijzen aan de Azure API voor FHIR data-vlak. Azure RBAC is de voorkeurs methoden voor het toewijzen van toegang tot gegevens vlak wanneer gegevenslaag gebruikers worden beheerd in de Azure Active Directory Tenant die aan uw Azure-abonnement is gekoppeld. Als u een externe Azure Active Directory Tenant gebruikt, raadpleegt u de [lokale RBAC-toewijzings verwijzing](configure-local-rbac.md).
+In dit artikel leert u hoe u Azure [RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/) kunt gebruiken om toegang te krijgen tot de Azure API voor FHIR data-vlak. Azure RBAC is de voorkeurs methoden voor het toewijzen van toegang tot gegevens vlak wanneer gegevenslaag gebruikers worden beheerd in de Azure Active Directory Tenant die aan uw Azure-abonnement is gekoppeld. Als u een externe Azure Active Directory Tenant gebruikt, raadpleegt u de [lokale RBAC-toewijzings verwijzing](configure-local-rbac.md).
 
 ## <a name="confirm-azure-rbac-mode"></a>De Azure RBAC-modus bevestigen
 

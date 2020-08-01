@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321612"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449034"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -369,7 +369,7 @@ Ze kunnen ook worden gevonden in de lijst met [bewerkingen van de resource provi
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>V. Wat zijn enkele algemene gotchas bij het gebruik van Azure RBAC?
 
-Hier volgen enkele dingen waarvan u op de hoogte moet zijn terwijl u op rollen gebaseerd toegangs beheer van Azure gebruikt:
+Hier volgen enkele dingen waarvan u op de hoogte moet zijn terwijl u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt:
 
 - Wanneer u een resource maakt in azure, zegt u een werk ruimte, bent u niet rechtstreeks de eigenaar van de werk ruimte. Uw rol wordt overgenomen van de hoogste rol van het bereik waarvoor u gemachtigd bent in dat abonnement. Als u bijvoorbeeld een netwerk beheerder bent en u de machtigingen hebt om een Machine Learning-werk ruimte te maken, wordt u de rol netwerk beheerder toegewezen voor die werk ruimte en niet de rol van eigenaar.
 - Wanneer er twee roltoewijzingen aan dezelfde AAD-gebruiker zijn met conflicterende delen van acties/verhoudingen, worden uw bewerkingen die worden vermeld in de ene rol, mogelijk niet van kracht als ze ook worden weer gegeven als acties in een andere rol. Lees [hoe Azure RBAC bepaalt of een gebruiker toegang heeft tot een resource](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) voor meer informatie over hoe Azure-roltoewijzingen parseert.

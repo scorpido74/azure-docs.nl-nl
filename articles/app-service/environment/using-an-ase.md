@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042184"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448194"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
 
@@ -126,15 +126,15 @@ Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, gere
 
 DNS configureren in uw eigen DNS-server met uw ILB-ASE:
 
-1. een zone maken voor <ASE name> . appserviceenvironment.net
+1. Maak een zone voor &lt; ASE name &gt; . appserviceenvironment.net
 1. een A-record in die zone maken die verwijst naar * naar het IP-adres van de ILB
 1. een A-record in die zone maken die verwijst naar @ naar het IP-adres van de ILB
-1. Maak een zone in <ASE name> . appserviceenvironment.net met de naam SCM
+1. Maak een zone in &lt; ASE name &gt; . appserviceenvironment.net met de naam SCM
 1. een A-record maken in de SCM-zone die * verwijst naar het IP-adres van de ILB
 
 DNS configureren in Azure DNS particuliere zones:
 
-1. Maak een Azure DNS persoonlijke zone met de naam <ASE name> . appserviceenvironment.net
+1. Maak een Azure DNS particuliere zone met de naam &lt; ASE name &gt; . appserviceenvironment.net
 1. een A-record in die zone maken die verwijst naar * naar het IP-adres van de ILB
 1. een A-record in die zone maken die verwijst naar @ naar het IP-adres van de ILB
 1. een A-record in die zone maken die verwijst naar *. scm naar het IP-adres van de ILB

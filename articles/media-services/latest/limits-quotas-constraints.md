@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043490"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446332"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Quota en limieten Azure Media Services
@@ -28,21 +28,21 @@ In dit artikel vindt u een aantal van de meest voorkomende Microsoft Azure Media
 
 ## <a name="account-limits"></a>Account limieten
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | [Media Services accounts](media-services-account-concept.md) in één abonnement | 25 (vast) |
 
 ## <a name="asset-limits"></a>Activa limieten
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | [Activa](assets-concept.md) per Media Services account | 1.000.000|
 
 ## <a name="storage-limits"></a>Opslag limieten
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>i</sup> |
+| Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>(1)</sup> |
 | [Opslagaccounts](storage-account-concept.md) | 100<sup>(2)</sup> (vast) |
 
 <sup>1</sup> de maximale grootte die voor één BLOB wordt ondersteund, is momenteel Maxi maal 5 TB in Azure Blob Storage. Er zijn extra limieten van toepassing op Media Services op basis van de VM-grootten die worden gebruikt door de service. De limiet voor de grootte is van toepassing op de bestanden die u uploadt en ook de bestanden die worden gegenereerd als gevolg van de verwerking van Media Services (code ring of analyse). Als uw bron bestand groter is dan 260-GB, zal uw taak waarschijnlijk mislukken. 
@@ -86,9 +86,10 @@ Alle taak records in uw account die ouder zijn dan 90 dagen worden automatisch v
 
 ## <a name="packaging--delivery-limits"></a>Leverings limieten voor verpakking &
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | [Streaming-eind punten](streaming-endpoint-concept.md) (gestopt of actief) per Media Services-account|2 |
+| Premium-streaming-eenheden | 10 |
 | [Dynamisch-manifestfilters](filters-dynamic-manifest-overview.md)|100|
 | [Streaming-beleid](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Unieke [streaming-Locators](streaming-locators-concept.md) die zijn gekoppeld aan een asset in één keer | 100<sup>(7)</sup> (vast) |

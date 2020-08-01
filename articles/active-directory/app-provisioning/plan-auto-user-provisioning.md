@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781630"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445647"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) automatische gebruikers inrichting vereenvoudi
 
 Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md) om meer inzicht te krijgen in de functionaliteit.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Leren
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur en verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
@@ -50,7 +50,7 @@ Azure AD biedt Self-Service-integratie van elke toepassing met behulp van sjablo
 
 U hebt de juiste licenties nodig voor de toepassing (en) die u automatisch wilt inrichten. Bespreek met de eigen aren van de toepassing of de gebruikers die zijn toegewezen aan de toepassing, over de juiste licenties beschikken voor hun toepassings rollen. Als Azure AD automatische inrichting beheert op basis van rollen, moeten de rollen die zijn toegewezen in azure AD worden uitgelijnd op toepassings licenties. Onjuiste licenties die eigendom zijn van de toepassing, kunnen leiden tot fouten tijdens het inrichten/bijwerken van een gebruiker.
 
-### <a name="terms"></a>Termen
+### <a name="terms"></a>Voorwaarden
 
 In dit artikel worden de volgende termen gebruikt:
 
@@ -71,7 +71,7 @@ In dit artikel worden de volgende termen gebruikt:
 | Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
 | Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Online cursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
-| Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
+| Books| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
 | Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](../app-provisioning/user-provisioning.md) over het automatisch inrichten van gebruikers |
 
@@ -256,7 +256,7 @@ Kies de stappen die zijn afgestemd op uw oplossings vereisten.
 
 Wanneer de Azure AD-inrichtings service voor de eerste keer wordt uitgevoerd, maakt de eerste cyclus voor het bron systeem en de doel systemen een moment opname van alle gebruikers objecten voor elk doel systeem.
 
-Bij het inschakelen van automatische inrichting voor een toepassing, kan de eerste cyclus van 20 minuten tot enkele uren duren. De duur is afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers in het bereik voor inrichting. Zie de [prestaties van het inrichten verbeteren](../app-provisioning/application-provisioning-when-will-provisioning-finish.md).
+Bij het inschakelen van automatische inrichting voor een toepassing, kan de eerste cyclus van 20 minuten tot enkele uren duren. De duur is afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers in het bereik voor inrichting.
 
 De inrichtings service slaat de status van beide systemen op na de eerste cyclus, waardoor de prestaties van de volgende incrementele cycli worden verbeterd.
 
@@ -299,8 +299,6 @@ Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen opt
 * [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](../app-provisioning/application-provisioning-config-problem.md)
 
 * [Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
-
-* [Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
 
 * [Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 

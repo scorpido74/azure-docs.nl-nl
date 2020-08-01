@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185242"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447828"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -226,7 +226,7 @@ Een aangepast script gebruiken:
 
 1. Een Automation-account maken en een [rol voor Inzender](automation-role-based-access-control.md)verkrijgen.
 2. [Koppel het account aan de Azure-werk ruimte](../security-center/security-center-enable-data-collection.md).
-3. Schakel [Hybrid Runbook worker](automation-hybrid-runbook-worker.md), [updatebeheer](automation-update-management.md)of een andere functie voor automatisering in. 
+3. Schakel [Hybrid Runbook worker](automation-hybrid-runbook-worker.md), [updatebeheer](update-management/update-mgmt-overview.md)of een andere functie voor automatisering in. 
 4. Als u op een Linux-computer beschikt over hoge machtigingen. Meld u aan om [handtekening controles uit te scha kelen](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Een runbook testen

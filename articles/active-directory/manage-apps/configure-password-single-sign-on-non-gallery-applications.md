@@ -10,36 +10,36 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: c3f9f96c6429d4925c60a56cd450a9c2ee7dde24
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419951"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459382"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Eenmalige aanmelding op basis van wacht woorden configureren
 
-In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de Snelstartgids kunt u op SAML gebaseerde SSO instellen. Naast SAML is er een optie voor SSO op basis van wacht woorden. In dit artikel vindt u meer informatie over de optie op basis van een wacht woord voor eenmalige aanmelding. 
+In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de Snelstartgids kunt u op SAML gebaseerde SSO instellen. Een andere optie is SSO op basis van een wacht woord. In dit artikel vindt u meer informatie over de optie voor eenmalige aanmelding op basis van wacht woorden. 
 
-Deze optie is beschikbaar voor elke website met een HTML-aanmeldings pagina. Met SSO op basis van wacht woorden, ook wel wachtwoord kluizen genoemd, kunt u gebruikers toegang en-wacht woorden beheren voor webtoepassingen die geen identiteits Federatie ondersteunen. Het is ook handig voor scenario's waarbij meerdere gebruikers een enkel account moeten delen, zoals de accounts voor sociale media-apps van uw organisatie. 
+Deze optie is beschikbaar voor elke website met een HTML-aanmeldings pagina. Eenmalige aanmelding op basis van wacht woorden is ook bekend als wachtwoord kluis. Met op wacht woord gebaseerde SSO kunt u gebruikers toegang en-wacht woorden beheren voor webtoepassingen die geen ondersteuning bieden voor identiteits Federatie. Het is ook handig wanneer meerdere gebruikers één account moeten delen, zoals de accounts voor sociale media-apps van uw organisatie.
 
 SSO op basis van wacht woorden is een uitstekende manier om snel toepassingen te integreren in azure AD en biedt de volgende voor delen:
 
-- Eenmalige aanmelding inschakelen voor uw gebruikers door gebruikers namen en wacht woorden veilig op te slaan en opnieuw af te spelen voor de toepassing die u hebt geïntegreerd met Azure AD
+- Eenmalige aanmelding inschakelen voor uw gebruikers door gebruikers namen en wacht woorden veilig op te slaan en opnieuw af te spelen
 
 - Ondersteunings toepassingen waarvoor meerdere aanmeldings velden zijn vereist voor toepassingen waarvoor meer dan alleen gebruikers naam en wacht woord zijn vereist om zich aan te melden
 
-- De labels aanpassen van de invoer velden gebruikers naam en wacht woord die uw gebruikers zien op het [toegangs paneel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) van de toepassing wanneer ze hun referenties invoeren
+- De labels van de gebruikers naam en het wacht woord aanpassen die uw gebruikers zien op het [toegangs venster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) van de toepassing wanneer ze hun referenties invoeren
 
 - Stel uw gebruikers in staat om hun eigen gebruikers namen en wacht woorden op te geven voor bestaande toepassings accounts die ze hand matig invoeren.
 
 - Een lid van de bedrijfs groep toestaan om de gebruikers namen en wacht woorden op te geven die aan een gebruiker zijn toegewezen met behulp van de [self-service toepassings toegangs](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) functie
 
--   Een beheerder toestaan om een gebruikers naam en wacht woord op te geven die moeten worden gebruikt door individuen of groepen bij het aanmelden bij de toepassing met behulp van de functie voor het bijwerken van referenties 
+-   Een beheerder toestaan om een gebruikers naam en wacht woord op te geven die moeten worden gebruikt door gebruikers of groepen wanneer ze zich aanmelden bij de toepassing met de functie voor het bijwerken van referenties 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Het gebruik van Azure AD als uw ID-provider en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie vereist is en u op wacht woord gebaseerde SSO wilt gebruiken, is dit artikel voor u.
+Het gebruik van Azure AD als uw ID-provider (IdP) en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie vereist is en u op wacht woord gebaseerde SSO wilt gebruiken, is dit artikel voor u.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
@@ -51,13 +51,13 @@ Het gebruik van Azure AD als uw ID-provider en het instellen van eenmalige aanme
 
 ## <a name="basic-configuration"></a>Basisconfiguratie
 
-In de [Quick](view-applications-portal.md)start-serie hebt u geleerd hoe u een app kunt toevoegen aan uw Tenant, zodat Azure AD weet dat deze wordt gebruikt als de ID-provider (IDP) voor de app. Sommige apps zijn al vooraf geconfigureerd en worden weer gegeven in de Azure AD-galerie. Andere apps bevinden zich niet in de galerie en u moet een algemene app maken en deze hand matig configureren. Afhankelijk van de app is de SSO-optie op basis van wacht woorden mogelijk niet beschikbaar. Als u de lijst met op wacht woord gebaseerde opties niet ziet op de pagina voor eenmalige aanmelding voor de app, is deze niet beschikbaar.
+In de [Quick](view-applications-portal.md)start-serie hebt u geleerd hoe u een app kunt toevoegen aan uw Tenant, waardoor Azure AD weet dat deze wordt gebruikt als de ID-provider (IDP) voor de app. Sommige apps zijn al vooraf geconfigureerd en worden weer gegeven in de Azure AD-galerie. Andere apps bevinden zich niet in de galerie en u moet een algemene app maken en deze hand matig configureren. Afhankelijk van de app is de SSO-optie op basis van wacht woorden mogelijk niet beschikbaar. Als u de lijst met op wacht woord gebaseerde opties niet ziet op de pagina voor eenmalige aanmelding voor de app, is deze niet beschikbaar.
 
 De configuratie pagina voor SSO op basis van een wacht woord is eenvoudig. Het bevat alleen de URL van de aanmeldings pagina die door de app wordt gebruikt. Deze teken reeks moet de pagina zijn die het invoergegevens veld van de gebruikers naam bevat.
 
-Nadat u de URL hebt ingevoerd, selecteert u **Opslaan**. In azure AD wordt de HTML-code van de aanmeldings pagina voor de invoer velden gebruikers naam en wacht woord geparseerd. Als de poging slaagt, bent u klaar.
+Nadat u de URL hebt ingevoerd, selecteert u **Opslaan**. Azure AD parseert de HTML-code van de aanmeldings pagina voor de invoer velden gebruikers naam en wacht woord. Als de poging slaagt, bent u klaar.
  
-De volgende stap is het [toewijzen van gebruikers of groepen aan de toepassing](methods-for-assigning-users-and-groups.md). Nadat u gebruikers en groepen hebt toegewezen, kunt u referenties opgeven die namens een gebruiker moeten worden gebruikt wanneer ze zich aanmelden bij de toepassing. Selecteer **gebruikers en groepen**, schakel het selectie vakje in voor de rij van de gebruiker of groep en selecteer vervolgens **referenties bijwerken**. Voer vervolgens de gebruikers naam en het wacht woord in die namens de gebruiker of groep moeten worden gebruikt. Anders wordt gebruikers gevraagd de referenties zelf bij het starten in te voeren.
+De volgende stap is het [toewijzen van gebruikers of groepen aan de toepassing](methods-for-assigning-users-and-groups.md). Nadat u gebruikers en groepen hebt toegewezen, kunt u referenties opgeven die moeten worden gebruikt voor een gebruiker wanneer deze zich aanmeldt bij de toepassing. Selecteer **gebruikers en groepen**, schakel het selectie vakje in voor de rij van de gebruiker of groep en selecteer vervolgens **referenties bijwerken**. Voer ten slotte de gebruikers naam en het wacht woord in die moeten worden gebruikt voor de gebruiker of groep. Als u dit niet doet, wordt gebruikers gevraagd de referenties zelf bij het starten in te voeren.
  
 
 ## <a name="manual-configuration"></a>Handmatige configuratie

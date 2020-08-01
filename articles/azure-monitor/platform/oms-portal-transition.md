@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077160"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446793"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-Portal, verplaatsen naar Azure
 
@@ -32,7 +32,7 @@ De volgende wijzigingen worden aangekondigd met de afschaffing van de OMS-Portal
 - De [OMS Mobile-App](#oms-mobile-app) wordt afgeschaft. 
 - De [NSG-oplossing wordt vervangen](#azure-network-security-group-analytics) door de uitgebreide functionaliteit die beschikbaar is via Traffic Analytics oplossing.
 - Nieuwe verbindingen van System Center Operations Manager naar Log Analytics [bijgewerkte Management Packs](#system-center-operations-manager)vereist.
-- Zie [uw OMS-update-implementaties migreren naar Azure](../../automation/migrate-oms-update-deployments.md) voor meer informatie over wijzigingen in [updatebeheer](../../automation/automation-update-management.md).
+- Zie [uw OMS-update-implementaties migreren naar Azure](../../automation/migrate-oms-update-deployments.md) voor meer informatie over wijzigingen in [updatebeheer](../../automation/update-management/update-mgmt-overview.md).
 
 
 ## <a name="what-should-i-do-now"></a>Wat moet ik nu doen?

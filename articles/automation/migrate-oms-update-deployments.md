@@ -5,21 +5,21 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9bd6a7ff943b5f3750ce8aaeada32010b88272c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745626"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447835"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Update-implementaties van Azure Monitor-logboeken migreren naar Azure Portal
 
 De portal van operations management suite (OMS) wordt [afgeschaft](../azure-monitor/platform/oms-portal-transition.md). Alle functionaliteit die beschikbaar was in de OMS-portal voor Updatebeheer is beschikbaar in het Azure Portal via Azure Monitor Logboeken. In dit artikel vindt u de informatie die u nodig hebt om naar het Azure Portal te migreren.
 
-## <a name="key-information"></a>Belang rijke informatie
+## <a name="key-information"></a>Belangrijke informatie
 
 * Bestaande implementaties blijven werken. Wanneer u de implementatie opnieuw hebt gemaakt in azure, kunt u de oude implementatie verwijderen.
-* Alle bestaande functies die u in OMS had, zijn beschikbaar in Azure. Zie [updatebeheer Overview](automation-update-management.md)voor meer informatie over updatebeheer.
+* Alle bestaande functies die u in OMS had, zijn beschikbaar in Azure. Zie [updatebeheer Overview](update-management/update-mgmt-overview.md)voor meer informatie over updatebeheer.
 
 ## <a name="access-the-azure-portal"></a>Naar Azure Portal gaan
 
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om deze bestaande opgeslagen zoek opdracht te gebru
 
     ![Update-implementatie plannen](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-2. Het deel venster nieuwe update-implementatie wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel worden beschreven en klik vervolgens op **maken**:
+2. Het deel venster nieuwe update-implementatie wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel worden beschreven en klik vervolgens op **Maken**:
 
 3. **Als u wilt dat machines worden bijgewerkt**, selecteert u de opgeslagen zoek opdracht die wordt gebruikt door de OMS-implementatie.
 
@@ -59,12 +59,12 @@ Voer de volgende stappen uit om deze bestaande opgeslagen zoek opdracht te gebru
     | --- | --- |
     |Naam |Unieke naam voor het identificeren van de update-implementatie. |
     |Besturingssysteem| Selecteer **Linux** of **Windows**.|
-    |Machines die moeten worden bijgewerkt |Selecteer een opgeslagen zoek opdracht, geïmporteerde groep of machine kiezen in de vervolg keuzelijst en selecteer afzonderlijke machines. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [computer groepen in azure monitor-logboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende methoden voor het maken van computer groepen in azure monitor-Logboeken. |
-    |Update classifications|Selecteer alle update classificaties die u nodig hebt. CentOS biedt geen ondersteuning voor dit out-of-Box.|
+    |Bij te werken machines |Selecteer een opgeslagen zoek opdracht, geïmporteerde groep of machine kiezen in de vervolg keuzelijst en selecteer afzonderlijke machines. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
+    |Updateclassificaties|Selecteer alle update classificaties die u nodig hebt. CentOS biedt geen ondersteuning voor dit out-of-Box.|
     |Updates die moeten worden uitgesloten|Voer de updates in die moeten worden uitgesloten. Voer voor Windows het KB-artikel in zonder het voor voegsel **KB** . Voor Linux voert u de pakket naam in of gebruikt u een Joker teken.  |
-    |Schema-instellingen|Selecteer het tijdstip waarop u wilt beginnen en selecteer vervolgens **een of meer keren of** **terugkerend** voor het terugkeer patroon. | 
-    | Onderhouds venster |Aantal minuten dat is ingesteld voor updates. De waarde mag niet minder dan 30 minuten of langer dan 6 uur zijn. |
-    | Besturings element opnieuw opstarten| Hiermee wordt bepaald hoe opnieuw opstarten moet worden afgehandeld.</br>De volgende opties zijn beschikbaar:</br>Opnieuw opstarten indien nodig (standaard)</br>Altijd opnieuw opstarten</br>Nooit opnieuw opstarten</br>Alleen opnieuw opstarten - updates worden niet geïnstalleerd|
+    |Instellingen voor planning|Selecteer het tijdstip waarop u wilt beginnen en selecteer vervolgens **een of meer keren of** **terugkerend** voor het terugkeer patroon. | 
+    | Onderhoudsvenster |Aantal minuten dat is ingesteld voor updates. De waarde mag niet minder dan 30 minuten of langer dan 6 uur zijn. |
+    | Besturingselement opnieuw opstarten| Hiermee wordt bepaald hoe het opnieuw opstarten moet worden afgehandeld.</br>De volgende opties zijn beschikbaar:</br>Opnieuw opstarten indien nodig (standaard)</br>Altijd opnieuw opstarten</br>Nooit opnieuw opstarten</br>Alleen opnieuw opstarten - updates worden niet geïnstalleerd|
 
 4. Klik op **geplande update-implementaties** om de status van de zojuist gemaakte update-implementatie weer te geven.
 
@@ -74,4 +74,4 @@ Voer de volgende stappen uit om deze bestaande opgeslagen zoek opdracht te gebru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van updatebeheer](automation-update-management.md)voor meer informatie over Updatebeheer in azure Automation.
+Zie [overzicht van updatebeheer](update-management/update-mgmt-overview.md)voor meer informatie over Updatebeheer in azure Automation.

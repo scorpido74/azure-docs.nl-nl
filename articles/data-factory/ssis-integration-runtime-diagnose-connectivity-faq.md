@@ -1,6 +1,6 @@
 ---
-title: Problemen met de verbinding vaststellen in de SSIS Integration runtime
-description: Dit artikel bevat richt lijnen voor probleem oplossing voor het vaststellen van de connectiviteit in de SSIS Integration runtime
+title: De functie connectiviteits problemen oplossen gebruiken in de SSIS Integration runtime
+description: Verbindings problemen in de SSIS Integration runtime oplossen met behulp van de functie connectiviteit diagnosticeren.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,87 +10,100 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: 8e520048a6067f134e847953f4f4aa0598d9926e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cf41da685036770144ebf7eb2befd0c3d126362d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172597"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446023"
 ---
-# <a name="troubleshoot-diagnose-connectivity-in-the-ssis-integration-runtime"></a>Problemen met de verbinding vaststellen in de SSIS Integration runtime
+# <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>De functie connectiviteits problemen oplossen gebruiken in de SSIS Integration runtime
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Als u verbindings problemen ondervindt tijdens het uitvoeren van SSIS-pakketten in de SSIS Integration runtime, met name als uw SSIS Integration runtime is gekoppeld aan het virtuele netwerk van Azure. U kunt zelf problemen proberen op te sporen met behulp van de functie voor het controleren van de connectiviteit op de pagina bewaking SSIS Integration runtime van de Azure Data Factory Portal. 
+U kunt verbindings problemen vinden tijdens het uitvoeren van SQL Server Integration Services (SSIS)-pakketten in de SSIS Integration runtime. Deze problemen treden vooral op als uw SSIS Integration runtime lid wordt van het virtuele Azure-netwerk.
 
- ![Pagina bewaken: de pagina connectiviteits controle diagnosticeren ](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png) ![ -verbinding testen](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
- 
-In dit artikel vindt u de meest voorkomende fouten die kunnen optreden wanneer u een verbinding test in de SSIS Integration runtime. Hierin worden de mogelijke oorzaken en acties beschreven om de fouten op te lossen. 
+Verbindings problemen oplossen met behulp van de functie *connectiviteit diagnosticeren* om verbindingen te testen. De functie bevindt zich op de pagina monitoring SSIS Integration runtime van de Azure Data Factory Portal.
 
-## <a name="common-errors-potential-causes-and-recommendation-solutions"></a>Veelvoorkomende fouten, mogelijke oorzaken en aanbevelings oplossingen
+ ![Pagina controleren-connectiviteit vaststellen](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png)
 
-### <a name="error-code-invalidinput"></a>Fout code: InvalidInput.
-* **Fout bericht**: Controleer of de invoer juist is.
-* **Mogelijke oorzaken:** De invoer is onjuist.
-* **Aanbeveling:** Controleer de invoer.
+ ![Pagina bewaken-verbinding testen](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
 
-### <a name="error-code-firewallornetworkissue"></a>Fout code: FirewallOrNetworkIssue.
-* **Fout bericht**: Controleer of deze poort is geopend op de firewall/server-NSG en of het netwerk stabiel is.
-* **Mogelijke oorzaken:** 
-  * Deze poort wordt niet door de server geopend.
-  * Het uitgaande verkeer op deze poort wordt door uw netwerk beveiligings groep geweigerd
-  * Deze poort wordt niet geopend met uw NVA/Azure firewall/on-premises firewall.
-* **Advies** 
-  * Open deze poort op de server.
-  * Werk de netwerk beveiligings groep bij om uitgaand verkeer op deze poort toe te staan.
-  * Open deze poort op de firewall NVA/Azure firewall/on-premises.
+Gebruik de volgende secties voor meer informatie over de meest voorkomende fouten die zich voordoen wanneer u verbindingen wilt testen. In elke sectie wordt de volgende informatie beschreven:
 
-### <a name="error-code-misconfigureddnssettings"></a>Fout code: MisconfiguredDnsSettings.
-* **Fout bericht**: als u uw eigen DNS-server gebruikt in het VNet dat is gekoppeld aan uw Azure-SSIS IR, controleert u of de naam van uw host kan worden omgezet.
-* **Mogelijke oorzaken:** 
-  *  Het probleem van aangepaste DNS
-  *  U gebruikt geen Fully Qualified Domain Name (FQDN) voor de naam van uw particuliere host
-* **Advies** 
-  *  Los uw aangepaste DNS-probleem op om er zeker van te zijn dat de hostnaam kan worden omgezet.
-  *  Gebruik de Fully Qualified Domain Name (FQDN), bijvoorbeeld gebruik <your_private_server>. contoso.com in plaats van <your_private_server>, omdat Azure-SSIS IR uw eigen DNS-achtervoegsel niet automatisch toevoegt.
+- Foutcode
+- Foutbericht
+- Mogelijke oorzaak (en) van de fout
+- Aanbevolen oplossing (en)
 
-### <a name="error-code-servernotallowremoteconenction"></a>Fout code: ServerNotAllowRemoteConenction.
-* **Fout bericht**: Controleer of op uw server externe TCP-verbindingen via deze poort zijn toegestaan.
-* **Mogelijke oorzaken:** 
-  *  De firewall van uw server staat geen externe TCP-verbindingen toe.
-  *  Uw server is niet online.
-* **Advies** 
-  *  Externe TCP-verbindingen op de Server Firewall toestaan.
-  *  Start de server.
+## <a name="error-code-invalidinput"></a>Fout code: InvalidInput
+
+- **Fout bericht**: "Controleer of de invoer juist is."
+- **Mogelijke oorzaak**: de invoer is onjuist.
+- **Aanbeveling**: Controleer uw invoer.
+
+## <a name="error-code-firewallornetworkissue"></a>Fout code: FirewallOrNetworkIssue
+
+- **Fout bericht**: Controleer of deze poort is geopend op de firewall/server-NSG en of het netwerk stabiel is.
+- **Mogelijke oorzaken:**
+  - Uw server heeft de poort niet geopend.
+  - Uw netwerk beveiligings groep wordt uitgaand verkeer op de poort geweigerd.
+  - Met uw NVA/Azure Firewall/on-premises firewall wordt de poort niet geopend.
+- **Vereisten**
+  - Open de poort op de server.
+  - Werk de netwerk beveiligings groep bij om uitgaand verkeer op de poort toe te staan.
+  - Open de poort op de firewall NVA/Azure Firewall/on-premises.
+
+## <a name="error-code-misconfigureddnssettings"></a>Fout code: MisconfiguredDnsSettings
+
+- **Fout bericht**: als u uw eigen DNS-server gebruikt in het VNet dat is gekoppeld aan uw Azure-SSIS IR, controleert u of de naam van uw host kan worden omgezet. "
+- **Mogelijke oorzaken:**
+  -  Er is een probleem met uw aangepaste DNS.
+  -  U gebruikt geen Fully Qualified Domain Name (FQDN) voor de naam van uw particuliere host.
+- **Vereisten**
+  -  Los uw aangepaste DNS-probleem op om er zeker van te zijn dat de hostnaam kan worden omgezet.
+  -  Gebruik de FQDN. Azure-SSIS IR wordt niet automatisch uw eigen DNS-achtervoegsel toegevoegd. Gebruik bijvoorbeeld **<your_private_server>. contoso.com** in plaats van **<your_private_server **>.
+
+## <a name="error-code-servernotallowremoteconnection"></a>Fout code: ServerNotAllowRemoteConnection
+
+- **Fout bericht**: "Controleer of de server externe TCP-verbindingen via deze poort toestaat."
+- **Mogelijke oorzaken:**
+  -  De firewall van uw server staat geen externe TCP-verbindingen toe.
+  -  Uw server is niet online.
+- **Vereisten**
+  -  Externe TCP-verbindingen op de Server Firewall toestaan.
+  -  Start de server.
    
-### <a name="error-code-misconfigurednsgsettings"></a>Fout code: MisconfiguredNsgSettings.
-* **Fout bericht**: Controleer of het NSG van uw VNet uitgaand verkeer via deze poort toestaat. Als u Azure ExpressRoute en of een UDR gebruikt, moet u controleren of deze poort is geopend op uw firewall/server.
-* **Mogelijke oorzaken:** 
-  *  Het uitgaande verkeer op deze poort wordt door uw netwerk beveiligings groep geweigerd.
-  *  Deze poort wordt niet geopend met uw NVA/Azure firewall/on-premises firewall.
-* **Advies** 
-  *  Werk de netwerk beveiligings groep bij om uitgaand verkeer op deze poort toe te staan.
-  *  Open deze poort op de firewall NVA/Azure firewall/on-premises.
+## <a name="error-code-misconfigurednsgsettings"></a>Fout code: MisconfiguredNsgSettings
 
-### <a name="error-code-genericissues"></a>Fout code: GenericIssues.
-* **Fout bericht**: de test verbinding is mislukt vanwege algemene problemen.
-* **Mogelijke oorzaken:** De test verbinding heeft een algemeen tijdelijk probleem aangetroffen.
-* **Aanbeveling:** Voer de test verbinding later opnieuw uit. Neem contact op met het ondersteunings team van Azure Data Factory als u het niet kunt doen.
+- **Fout bericht**: ' Controleer of het NSG van uw VNet uitgaand verkeer via deze poort toestaat. Als u Azure ExpressRoute en of een UDR gebruikt, moet u controleren of deze poort is geopend op uw firewall/server.
+- **Mogelijke oorzaken:**
+  -  Uw netwerk beveiligings groep wordt uitgaand verkeer op de poort geweigerd.
+  -  Met uw NVA/Azure Firewall/on-premises firewall wordt de poort niet geopend.
+- **Advies**
+  -  Werk de netwerk beveiligings groep bij om uitgaand verkeer op de poort toe te staan.
+  -  Open de poort op de firewall NVA/Azure Firewall/on-premises.
 
+## <a name="error-code-genericissues"></a>Fout code: GenericIssues
 
-### <a name="error-code-pspingexecutiontimeout"></a>Fout code: PSPingExecutionTimeout.
-* **Fout bericht**: time-out voor de verbinding testen, probeer het later opnieuw.
-* **Mogelijke oorzaken:** Time-out bij testen van connectiviteit.
-* **Aanbeveling:** Voer de test verbinding later opnieuw uit. Neem contact op met het ondersteunings team van Azure Data Factory als u het niet kunt doen.
+- **Fout bericht**: de test verbinding is mislukt vanwege algemene problemen.
+- **Mogelijke oorzaak**: de test verbinding heeft een algemeen tijdelijk probleem aangetroffen.
+- **Aanbeveling**: Voer de test verbinding later opnieuw uit. Neem contact op met het ondersteunings team van Azure Data Factory als u het niet meer wilt proberen.
 
-### <a name="error-code-networkinstable"></a>Fout code: NetworkInstable.
-* **Fout bericht**: de verbindings test is onregelmatig geslaagd vanwege een netwerk Insta Biel.
-* **Mogelijke oorzaken:** Tijdelijk netwerk probleem.
-* **Aanbeveling:** Controleer of de server of het firewall netwerk stabiel is.
+## <a name="error-code-pspingexecutiontimeout"></a>Fout code: PSPingExecutionTimeout
+
+- **Fout bericht**: de time-out voor de verbinding testen, probeer het later opnieuw.
+- **Mogelijke oorzaak**: er is een time-out opgetreden voor de verbinding testen.
+- **Aanbeveling**: Voer de test verbinding later opnieuw uit. Neem contact op met het ondersteunings team van Azure Data Factory als u het niet meer wilt proberen.
+
+## <a name="error-code-networkinstable"></a>Fout code: NetworkInstable
+
+- **Fout bericht**: de verbindings test is onregelmatig geslaagd vanwege een instabiliteit van het netwerk.
+- **Mogelijke oorzaak**: tijdelijk netwerk probleem.
+- **Aanbeveling**: Controleer of de server of het firewall netwerk stabiel is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Implementeer uw pakketten. Zie [een SSIS-project implementeren in azure met SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)voor meer informatie.
-- Voer uw pakketten uit. Zie [SSIS-pakketten uitvoeren in azure met SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)voor meer informatie.
-- Plan uw pakketten. Zie [SSIS-pakketten plannen in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)voor meer informatie.
-
+- [Een SSIS-project implementeren in azure met SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)
+- [SSIS-pakketten uitvoeren in azure met SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)
+- [SSIS-pakketten plannen in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)

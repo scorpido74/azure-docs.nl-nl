@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781596"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445561"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -52,11 +52,11 @@ De integratie van Cloud-apps met Azure AD-gebruikers inrichten is in het ideale 
 - Vereisen dat gebruikers lid worden van een of meer Active Directory forests, domeinen en organisatie-eenheden op basis van gewijzigde informatie die is gedetecteerd in de Cloud HR-app.
 - Gebruik Office 365 voor e-mail.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Leren
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur. Het verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
-### <a name="terms"></a>Termen
+### <a name="terms"></a>Voorwaarden
 
 In dit artikel worden de volgende termen gebruikt:
 
@@ -404,7 +404,6 @@ Raadpleeg de volgende artikelen voor informatie over het oplossen van problemen 
 
 - [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](application-provisioning-config-problem.md)
 - [Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing](user-provisioning-sync-attributes-for-mapping.md)
-- [Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag](application-provisioning-when-will-provisioning-finish.md)
 - [Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing](application-provisioning-config-problem-storage-limit.md)
 - [Er worden geen gebruikers ingericht voor een Azure AD-galerie toepassing](application-provisioning-config-problem-no-users-provisioned.md)
 - [Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing](application-provisioning-config-problem-wrong-users-provisioned.md)

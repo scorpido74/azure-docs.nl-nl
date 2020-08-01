@@ -3,12 +3,12 @@ title: Azure-beveiligings basislijn voor Azure DevTest Labs
 description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387826"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448965"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
 
@@ -275,7 +275,7 @@ Micro soft voert beveiligings beheer uit op de onderliggende resources die Azure
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: geautomatiseerde oplossing voor patch beheer voor besturings systemen implementeren
 **Hulp:** Gebruik Azure Updatebeheer om ervoor te zorgen dat de meest recente beveiligings updates worden geïnstalleerd op uw Windows-en Linux-Vm's die worden gehost in DevTest Labs. Zorg ervoor dat Windows Update is ingeschakeld en is ingesteld om automatisch te worden bijgewerkt voor virtuele Windows-machines. Deze instelling is momenteel niet beschikbaar voor configuratie via DevTest Labs, maar de beheerder van de Lab-beheerder/abonnement kan deze instelling ook configureren op de onderliggende Compute-Vm's in hun abonnement. 
 
-- [Updatebeheer configureren voor virtuele machines in azure](../automation/automation-update-management.md)
+- [Updatebeheer configureren voor virtuele machines in azure](../automation/update-management/update-mgmt-overview.md)
 - [Meer informatie over Azure-beveiligings beleid bewaakt door Security Center](../security-center/security-center-policy-definitions.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
@@ -289,8 +289,8 @@ Meer informatie over [Image Factory in DevTest Labs](image-factory-create.md), e
 
 Als abonnements beheerder kunt u ook de Azure Updatebeheer-oplossing gebruiken om updates en patches voor DevTest Labs-Vm's te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-- [Updatebeheer oplossing in azure](../automation/automation-update-management.md)
-- [Updates en patches voor uw Azure-VM's beheren](../automation/automation-tutorial-update-management.md)
+- [Updatebeheer oplossing in azure](../automation/update-management/update-mgmt-overview.md)
+- [Updates en patches voor uw virtuele machines beheren](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
 

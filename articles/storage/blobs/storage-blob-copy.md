@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463447"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446853"
 ---
 # <a name="copy-a-blob-with-net"></a>Een BLOB kopiëren met .NET
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u een BLOB kopieert met een Azure Storage-ac
 
 Wanneer u een BLOB in hetzelfde opslag account kopieert, is het een synchrone bewerking. Wanneer u over accounts kopieert, is dit een asynchrone bewerking. De [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) -en [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) -methoden retour neren een copy id-waarde die wordt gebruikt om de status te controleren of de Kopieer bewerking af te breken.
 
-De bron-BLOB voor een Kopieer bewerking kan een blok-blob, een toevoeg-blob, een pagina-BLOB of een moment opname zijn. Als de doel-BLOB al bestaat, moet deze van hetzelfde type BLOB als de bron-BLOB zijn. Alle bestaande doel-blobs worden overschreven. 
+De bron-BLOB voor een Kopieer bewerking kan een blok-blob, een toevoeg-blob, een pagina-BLOB of een moment opname zijn. Als de doel-BLOB al bestaat, moet deze van hetzelfde type BLOB als de bron-BLOB zijn. Een bestaande doel-BLOB wordt overschreven.
 
 De doel-Blob kan niet worden gewijzigd terwijl een Kopieer bewerking wordt uitgevoerd. Een bestemmings-Blob kan slechts één openstaande bewerking voor het kopiëren van BLOB hebben. Met andere woorden, een BLOB kan niet het doel zijn voor meerdere in behandeling zijnde Kopieer bewerkingen.
 
@@ -35,18 +35,18 @@ Voor alle BLOB-typen kunt u de eigenschap [CopyState. status](/dotnet/api/micros
 
 Een Kopieer bewerking kan een van de volgende vormen hebben:
 
-  - U kunt een bron-BLOB kopiëren naar een doel-blob met een andere naam. De doel-Blob kan een bestaande blob van hetzelfde BLOB-type zijn (blok keren, toevoegen of pagina), of kan een nieuwe BLOB zijn die wordt gemaakt door de Kopieer bewerking.
-  - U kunt een bron-BLOB kopiëren naar een doel-blob met dezelfde naam, waardoor de doel-BLOB effectief wordt vervangen. Een dergelijke Kopieer bewerking verwijdert alle onverwerkte blokken en overschrijft de meta gegevens van de doel-blob.
-  - U kunt een bron bestand in de Azure-bestands service kopiëren naar een bestemmings-blob. De doel-Blob kan een bestaande blok-BLOB zijn, of kan een nieuwe blok-BLOB zijn die wordt gemaakt door de Kopieer bewerking. Kopiëren van bestanden naar pagina-blobs of toevoeg-blobs wordt niet ondersteund.
-  - U kunt een moment opname kopiëren via de bijbehorende basis-blob. Door een moment opname te promo veren tot de positie van de basis-blob, kunt u een eerdere versie van een BLOB herstellen.
-  - U kunt een moment opname kopiëren naar een doel-blob met een andere naam. De resulterende doel-blob is een schrijf bare Blob en geen moment opname.
+- U kunt een bron-BLOB kopiëren naar een doel-blob met een andere naam. De doel-Blob kan een bestaande blob van hetzelfde BLOB-type zijn (blok keren, toevoegen of pagina), of kan een nieuwe BLOB zijn die wordt gemaakt door de Kopieer bewerking.
+- U kunt een bron-BLOB kopiëren naar een doel-blob met dezelfde naam, waardoor de doel-BLOB effectief wordt vervangen. Een dergelijke Kopieer bewerking verwijdert alle onverwerkte blokken en overschrijft de meta gegevens van de doel-blob.
+- U kunt een bron bestand in de Azure-bestands service kopiëren naar een bestemmings-blob. De doel-Blob kan een bestaande blok-BLOB zijn, of kan een nieuwe blok-BLOB zijn die wordt gemaakt door de Kopieer bewerking. Kopiëren van bestanden naar pagina-blobs of toevoeg-blobs wordt niet ondersteund.
+- U kunt een moment opname kopiëren via de bijbehorende basis-blob. Door een moment opname te promo veren tot de positie van de basis-blob, kunt u een eerdere versie van een BLOB herstellen.
+- U kunt een moment opname kopiëren naar een doel-blob met een andere naam. De resulterende doel-blob is een schrijf bare Blob en geen moment opname.
 
 ## <a name="copy-a-blob"></a>Een BLOB kopiëren
 
 Als u een BLOB wilt kopiëren, roept u een van de volgende methoden aan:
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 In het volgende code voorbeeld wordt een verwijzing opgehaald naar een blob die eerder is gemaakt en wordt deze gekopieerd naar een nieuwe Blob in dezelfde container:
 

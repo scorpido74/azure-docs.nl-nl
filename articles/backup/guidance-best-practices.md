@@ -1,14 +1,14 @@
 ---
-title: Richt lijnen en aanbevolen procedures
+title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4a5f7e1f55eb5b4a68ee889ef6e1378eb573a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097348"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447282"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -137,7 +137,7 @@ Azure Backup zorgt voor de bescherming van uw back-upgegevens en het voldoen aan
 
 ### <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
-* Met Access Control op basis van rollen (RBAC) kunt u verfijnd toegangs beheer, schei ding van taken binnen uw team en alleen de toegangs rechten verlenen aan gebruikers die nodig zijn om hun taken uit te voeren. Meer [informatie vindt u hier](backup-rbac-rs-vault.md).
+* Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u nauw keuriger toegang beheren, de schei ding van taken binnen uw team en alleen de hoeveelheid toegang verlenen aan gebruikers die nodig zijn om hun taken uit te voeren. Meer [informatie vindt u hier](backup-rbac-rs-vault.md).
 
 * Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen voor back-upbeheer: back-upinzenders, Opera tors en lezers. Meer [informatie vindt u hier](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 

@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360126"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447090"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: write-back van apparaat inschakelen
 > [!NOTE]
@@ -61,7 +61,7 @@ Installeer Azure AD Connect met aangepaste of snelle instellingen. Micro soft ra
 
     a. **Referenties voor ondernemings Administrator opgeven**: als de referenties van de ondernemings beheerder worden verstrekt voor het forest waar de apparaten opnieuw moeten worden geschreven, wordt het forest automatisch door Azure AD Connect bereid tijdens de configuratie van het terugschrijven van het apparaat.
 
-    b. **Power shell-script downloaden**: Azure AD Connect automatisch een Power shell-script genereert waarmee de Active Directory voor het terugschrijven van apparaten kan worden voor bereid. Als de referenties van de ondernemings beheerder niet zijn opgenomen in Azure AD Connect, wordt u aangeraden het Power shell-script te downloaden. Geef het gedownloade Power shell-script **CreateDeviceContainer. psq** op als de ondernemings beheerder van het forest waar apparaten worden teruggeschreven.
+    b. **Power shell-script downloaden**: Azure AD Connect automatisch een Power shell-script genereert waarmee de Active Directory voor het terugschrijven van apparaten kan worden voor bereid. Als de referenties van de ondernemings beheerder niet zijn opgenomen in Azure AD Connect, wordt u aangeraden het Power shell-script te downloaden. Geef de gedownloade Power shell-script **CreateDeviceContainer.ps1** op naar de ondernemings beheerder van het forest waarnaar apparaten worden teruggeschreven.
     ![Active Directory-forest voorbereiden](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     De volgende bewerkingen worden uitgevoerd om het Active Directory-forest voor te bereiden:

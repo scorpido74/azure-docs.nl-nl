@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7267da7db91e153190e98b09e9a3c505837bd042
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849968"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446307"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -31,10 +31,10 @@ In dit document wordt beschreven hoe u de Azure AD Connect Health-agents install
 
 In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Connect Health.
 
-| Vereiste | Description |
+| Vereiste | Beschrijving |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health is een Azure AD Premium-functie waarvoor Azure AD Premium is vereist. <br /><br />Zie [aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) voor meer informatie. <br />Als u gebruik wilt maken van een gratis proefversie van 30 dagen, raadpleegt u [Gratis proberen](https://azure.microsoft.com/trial/get-started-active-directory/). |
-| U moet hoofdbeheerder van uw Azure AD zijn om aan de slag te gaan met Azure AD Connect Health |Standaard kunnen alleen hoofdbeheerders de Health-agents installeren en configureren om aan de slag te gaan, de Portal openen en bewerkingen uitvoeren in Azure AD Connect Health. Voor meer informatie raadpleegt u [Uw Azure AD-directory beheren](../fundamentals/active-directory-administer.md). <br /><br /> Met behulp van op rollen gebaseerd toegangsbeheer kunt u toegang tot Azure AD Connect Health verlenen aan andere gebruikers binnen uw organisatie. Zie voor meer informatie [op rollen gebaseerd Access Control voor Azure AD Connect Health.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Belangrijk:** het account dat u gebruikt tijdens het installeren van agents, moet een werk- of schoolaccount zijn. Het mag geen Microsoft-account zijn. Zie [registreren voor Azure als organisatie](../fundamentals/sign-up-organization.md) voor meer informatie. |
+| U moet hoofdbeheerder van uw Azure AD zijn om aan de slag te gaan met Azure AD Connect Health |Standaard kunnen alleen hoofdbeheerders de Health-agents installeren en configureren om aan de slag te gaan, de Portal openen en bewerkingen uitvoeren in Azure AD Connect Health. Voor meer informatie raadpleegt u [Uw Azure AD-directory beheren](../fundamentals/active-directory-administer.md). <br /><br /> Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u toegang tot Azure AD Connect Health verlenen aan andere gebruikers in uw organisatie. Zie voor meer informatie [Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor Azure AD Connect Health.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Belangrijk:** het account dat u gebruikt tijdens het installeren van agents, moet een werk- of schoolaccount zijn. Het mag geen Microsoft-account zijn. Zie [registreren voor Azure als organisatie](../fundamentals/sign-up-organization.md) voor meer informatie. |
 | De Azure AD Connect Health-agent wordt geïnstalleerd op elke doelserver | Voor Azure AD Connect Health moeten de Health-agents worden geïnstalleerd en geconfigureerd op de doelservers om gegevens te kunnen ontvangen en om mogelijkheden voor bewaking en analyse te kunnen bieden. <br /><br />Als u bijvoorbeeld gegevens uit uw AD FS-infrastructuur wilt ophalen, moet de agent worden geïnstalleerd op de AD FS-servers en de webtoepassingsproxyservers. Evenzo moet de agent op de domeincontrollers worden geïnstalleerd om gegevens in uw on-premises AD DS-infrastructuur te krijgen. <br /><br /> |
 | Uitgaande verbinding met de Azure-service-eindpunten | Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als de uitgaande connectiviteit is geblokkeerd met firewalls, moet u ervoor zorgen dat de volgende eindpunten wel zijn toegestaan. Meer informatie over [uitgaande connectiviteitseindpunten](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |Uitgaande verbindingen op basis van IP-adressen | Als u meer wilt weten over het filteren op IP-adressen in firewalls, ziet u [Azure IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653).|
@@ -294,7 +294,7 @@ Wanneer u het juiste setup.exe-bestand hebt geïnstalleerd voor de agent, kunt u
 In deze opdrachten worden referenties geaccepteerd als parameter voor het niet-interactief voltooien van de registratie op een Server Core-machine.
 * De referenties kunnen worden vastgelegd in een PowerShell-variabele die wordt doorgegeven als parameter.
 * U kunt een Azure AD-id opgeven waarmee agents kunnen worden geregistreerd en waarvoor MFA NIET is ingeschakeld.
-* Globale beheerders hebben standaard de mogelijkheid om agents te registreren. U kunt ook andere id’s met minder bevoegdheden toestaan om deze stap uit te voeren. Meer informatie over [Toegangsbeheer op basis van rollen](how-to-connect-health-operations.md#manage-access-with-role-based-access-control).
+* Globale beheerders hebben standaard de mogelijkheid om agents te registreren. U kunt ook andere id’s met minder bevoegdheden toestaan om deze stap uit te voeren. Meer informatie over [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control).
 
 ```powershell
     $cred = Get-Credential

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73162743"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448347"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligings beheer en-bewaking
 Dit artikel bevat een overzicht van de beveiligings functies en-services die Azure biedt om u te helpen bij het beheer en de bewaking van Azure-Cloud Services en virtuele machines.
@@ -32,7 +32,7 @@ Access Control op basis van rollen (RBAC) biedt gedetailleerd toegangs beheer vo
 Meer informatie:
 
 * [Team blog op RBAC Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Access Control op basis van rollen in azure](../../role-based-access-control/role-assignments-portal.md)
+* [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware
 
@@ -115,7 +115,7 @@ Meer informatie:
 * [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
 * [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>Beveiligingscentrum
+## <a name="security-center"></a>Security Center
 
 Azure Security Center helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Security Center biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligings bewaking en beleids beheer in uw Azure-abonnementen. Het helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en die werken met een breed ecosysteem van beveiligings oplossingen.
 

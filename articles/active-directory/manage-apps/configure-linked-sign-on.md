@@ -1,6 +1,6 @@
 ---
-title: Gekoppelde aanmelding voor Azure AD-apps-micro soft Identity-platform
-description: Gekoppelde eenmalige aanmelding (SSO) configureren voor uw Azure AD-zakelijke toepassingen in micro soft Identity platform (Azure AD)
+title: Een gekoppelde aanmelding configureren in Azure Active Directory
+description: Een gekoppelde aanmelding configureren in azure AD.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -8,44 +8,47 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459331"
 ---
 # <a name="configure-linked-sign-on"></a>Gekoppelde aanmelding configureren
 
-Wanneer u een webtoepassing voor een galerie of niet-galerie toevoegt, wordt een van de opties voor eenmalige aanmelding aan u [gekoppeld](what-is-single-sign-on.md). Selecteer deze optie om een koppeling toe te voegen aan de toepassing in het Azure AD-toegangs venster of de Office 365-portal van uw organisatie. U kunt deze methode gebruiken om koppelingen toe te voegen aan aangepaste webtoepassingen die momenteel gebruikmaken van Active Directory Federation Services (of een andere Federation service) in plaats van Azure AD voor verificatie. U kunt ook diep gaande koppelingen toevoegen aan specifieke share point-pagina's of andere webpagina's die u alleen op de toegangs Vensters van uw gebruikers wilt weer geven.
+In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de Snelstartgids kunt u op SAML gebaseerde SSO instellen. Een andere optie is **gekoppeld**. In dit artikel vindt u meer informatie over de gekoppelde optie.
+
+Met de optie **gekoppeld** kunt u de doel locatie configureren wanneer een gebruiker de app selecteert in [mijn Apps](https://myapplications.microsoft.com/) of Office 365-portal van uw organisatie.
+
+Enkele veelvoorkomende scenario's waarbij de koppelings optie waardevol is:
+- Voeg een koppeling toe naar een aangepaste webtoepassing die momenteel gebruikmaakt van Federatie, zoals Active Directory Federation Services (AD FS).
+- Voeg diepe koppelingen toe aan specifieke share point-pagina's of andere webpagina's die u alleen op de toegangs Vensters van uw gebruiker wilt weer geven.
+- Voeg een koppeling toe aan een app waarvoor geen verificatie is vereist. 
+ 
+ De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD-referenties. Maar u kunt nog steeds een deel van de andere functies van **bedrijfs toepassingen**gebruiken. U kunt bijvoorbeeld audit Logboeken gebruiken en een aangepast logo en de naam van een app toevoegen.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een galerie-app toevoegen](add-gallery-app.md) of [een niet-galerij-app toevoegen](add-non-gallery-app.md).
+Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. In de Quick Start, waar u eenmalige aanmelding configureert, vindt u ook de optie **gekoppeld** . 
 
-### <a name="open-the-app-and-select-linked-sign-on"></a>Open de app en selecteer gekoppelde aanmelding
+De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met deze optie stelt u alleen de locatie gebruikers worden verzonden naar wanneer ze de app selecteren in [mijn apps](https://myapplications.microsoft.com/) of het start programma voor apps van de Microsoft 365.
 
-1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
+> [!IMPORTANT] 
+> Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
+>
+> Als de toepassing is geregistreerd met behulp van **app-registraties** , wordt de mogelijkheid voor eenmalige aanmelding standaard ingesteld voor het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
+>
+> Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
-1. Ga naar **Azure Active Directory**  >  **bedrijfs toepassingen**. Een wille keurig voor beeld van de toepassingen in uw Azure AD-Tenant wordt weer gegeven. 
+### <a name="configure-link"></a>Koppeling configureren
 
-1. Selecteer in het menu **toepassings type** **alle toepassingen**en selecteer vervolgens **Toep assen**.
-
-1. Voer de naam van de toepassing in het zoekvak in en selecteer vervolgens de toepassing in de resultaten.
-
-1. Selecteer onder de sectie **beheren** de optie **eenmalige aanmelding**. 
-
-1. Selecteer **gekoppeld**.
-
-1. Voer de URL in van de toepassing waarnaar u een koppeling wilt maken. Typ de URL en selecteer **Opslaan**. 
+Als u een koppeling voor een app wilt instellen, selecteert u **gekoppeld** op de pagina voor **eenmalige aanmelding** . Vervolgens voert u de koppeling in en selecteert u **Opslaan**. Hebt u een herinnering nodig om deze opties te vinden? Bekijk de Quick Start- [serie](view-applications-portal.md).
  
-1. U kunt gebruikers en groepen toewijzen aan de toepassing, waardoor de toepassing wordt weer gegeven in het [Start programma voor Office 365-apps](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) of in het [Azure AD-toegangs venster](end-user-experiences.md) voor die gebruikers.
-
-1. Selecteer **Opslaan**.
+Nadat u een app hebt geconfigureerd, kunt u er gebruikers en groepen aan toewijzen. Wanneer u gebruikers toewijst, kunt u bepalen wanneer de toepassing wordt weer gegeven in [mijn apps](https://myapplications.microsoft.com/) of het start programma voor apps van Microsoft 365.
 
 ## <a name="next-steps"></a>Volgende stappen
 

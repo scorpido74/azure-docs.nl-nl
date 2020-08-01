@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045073"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448880"
 ---
 # <a name="troubleshoot-input-connections"></a>Problemen met invoerverbindingen oplossen
 
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Voer de volgende stappen uit om een nieuwe consumenten groep toe te voegen in uw Event Hubs-exemplaar:
 
-1. Meld u aan bij Azure Portal.
+1. Meld u aan bij de Azure-portal.
 
 2. Zoek uw event hub.
 
@@ -118,7 +118,7 @@ FROM inputEventHub
 …
 ```
 
-Gebruik deze query:
+Gebruikt u deze query:
 
 ```SQL
 WITH data AS (
@@ -161,7 +161,11 @@ SELECT foo FROM DataTwo
 
 ```
 
-## <a name="get-help"></a>Hulp vragen
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>De lezers per partitie overschrijden de IoT Hub limiet
+
+Stream Analytics-taken gebruiken het ingebouwde [Event hub-compatibele eind punt](../iot-hub/iot-hub-devguide-messages-read-builtin.md) van IOT hub om verbinding te maken en gebeurtenissen van IOT hub te lezen. Als uw Lees bewerking per partitie de limieten van IoT Hub overschrijdt, kunt u de [oplossingen voor Event hub](#readers-per-partition-exceeds-event-hubs-limit) gebruiken om deze op te lossen. U kunt een Consumer groep maken voor het ingebouwde eind punt via IoT Hub Portal-eindpunt sessie of via de [IOT hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
+
+## <a name="get-help"></a>Help opvragen
 
 Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

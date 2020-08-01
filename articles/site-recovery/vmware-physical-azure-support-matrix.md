@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56c86993e4e98764bc7e3ce04180f9e870cc612d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528856"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458022"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -91,7 +91,7 @@ Linux: CentOS | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b><br/> 7,0 tot 7,8<br/> <br
 Ubuntu | Ubuntu 14,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 (inclusief ondersteuning voor alle 7. *x*, 8. *x* versies) [(ondersteunde kernel-versies controleren)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(ondersteunde kernel-versies controleren)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(ondersteunde kernel-versies controleren)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Het upgraden van gerepliceerde machines van SUSE Linux Enterprise Server 11 SP3 naar SP4 wordt niet ondersteund. Als u een upgrade wilt uitvoeren, schakelt u replicatie uit en schakelt u na de upgrade opnieuw in.
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/) <br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5)
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/)  <br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Uitvoeren op alle UEK-kernels en RedHat-kernel <= 3.10.0-1062. * worden ondersteund. Ondersteuning voor de rest van de RedHat-kernels is beschikbaar in 9,36, verwacht door eind augustus.
 
 > [!Note]
 > Voor elk van de Windows-versies biedt Azure Site Recovery alleen ondersteuning voor [LTSC-builds (Long-term Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  [Semi-Annual-kanaal](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) releases worden op dit moment niet ondersteund.
@@ -153,8 +153,8 @@ Bestandssystemen | ext3, ext4, XFS, BTRFS (voor waarden die van toepassing zijn 
 Inrichting van Logical Volume Management (LVM)| Brede inrichting-Ja <br></br> Thin Provisioning-no
 Volume manager | -LVM wordt ondersteund.<br/> -/boot op LVM wordt ondersteund door [Update pakket 31](https://support.microsoft.com/help/4478871/) (versie 9,20 van de Mobility-service). Het wordt niet ondersteund in eerdere versies van de Mobility-service.<br/> -Meerdere besturingssysteem schijven worden niet ondersteund.
 Geparavirtualiseerde-opslag apparaten | Apparaten die zijn geëxporteerd door geparavirtualiseerde stuurprogramma's worden niet ondersteund.
-Meerdere wacht rijen voor blok-i/o-apparaten | Wordt niet ondersteund.
-Fysieke servers met de HP CCISS-opslag controller | Wordt niet ondersteund.
+Meerdere wacht rijen voor blok-i/o-apparaten | Niet ondersteund.
+Fysieke servers met de HP CCISS-opslag controller | Niet ondersteund.
 Naamgevings regels voor apparaten en koppel punten | De naam van het apparaat of het koppel punt moet uniek zijn.<br/> Zorg ervoor dat er geen twee apparaten/koppel punten bestaan uit hoofdletter gevoelige namen. Het benoemen van apparaten voor dezelfde VM als *device1* en *device1* wordt niet ondersteund.
 Mappen | Als u een versie van de Mobility-service hebt die ouder is dan versie 9,20 (uitgebracht in [Update pakket 31](https://support.microsoft.com/help/4478871/)), gelden de volgende beperkingen:<br/><br/> -Deze directory's (indien ingesteld als afzonderlijke partities/bestands systemen) moeten zich op dezelfde besturingssysteem schijf op de bron server bevindt:/(root),/boot,/usr,/usr/local,/var,/etc.</br> -De/boot-map moet zich op een schijf partitie benemen en geen LVM-volume zijn.<br/><br/> Vanaf versie 9,20 worden deze beperkingen niet toegepast. 
 Opstartmap | -Opstart schijven mag zich in GPT-partitie-indeling. Dit is een beperking van Azure-architectuur. GPT-schijven worden ondersteund als gegevens schijven.<br/><br/> Meerdere opstart schijven op een virtuele machine worden niet ondersteund<br/><br/> -/boot op een LVM-volume op meer dan één schijf wordt niet ondersteund.<br/> -Een machine zonder een opstart schijf kan niet worden gerepliceerd.
@@ -167,7 +167,7 @@ BTRFS | BTRFS wordt ondersteund door [Update pakket 34](https://support.microsof
 **Actie** | **Details**
 --- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Wordt op de bron-VM vóór de failover direct in de VM-eigenschappen ondersteund. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na een failover de schijf grootte op de Azure-VM wijzigt, maakt Site Recovery een nieuwe virtuele machine met de updates.
-Schijf toevoegen op een gerepliceerde VM | Wordt niet ondersteund.<br/> Schakel de replicatie voor de virtuele machine uit, voeg de schijf toe en schakel de replicatie opnieuw in.
+Schijf toevoegen op een gerepliceerde VM | Niet ondersteund.<br/> Schakel de replicatie voor de virtuele machine uit, voeg de schijf toe en schakel de replicatie opnieuw in.
 
 ## <a name="network"></a>Netwerk
 
@@ -201,7 +201,7 @@ Bron-IP-adres behouden | Ja
 Service-eindpunten voor een virtueel Azure-netwerk<br/> | Ja
 Versneld netwerken | Nee
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 **Onderdeel** | **Ondersteund**
 --- | ---
 Dynamische schijf | De besturingssysteem schijf moet een standaard schijf zijn. <br/><br/>Gegevens schijven kunnen dynamische schijven zijn
@@ -280,9 +280,9 @@ Aantal besturingssysteemschijven | 1 | De controle is mislukt als dit niet wordt
 Aantal gegevensschijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 8.192 GB bij het repliceren naar Managed disk (9,26-versie)<br></br>Maxi maal 4.095 GB bij het repliceren naar het opslag account| De controle is mislukt als dit niet wordt ondersteund.
 Netwerkadapters | Meerdere adapters worden ondersteund. |
-Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
-FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
-BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt. |
+Gedeelde VHD | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+FC-schijf | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+BitLocker | Niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt. |
 VM-naam | Van 1 tot 63 tekens.<br/><br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
 
 ## <a name="resource-group-limits"></a>Limieten voor resource groep
@@ -330,7 +330,7 @@ Verplaats opslag-, netwerk-, Azure-Vm's binnen en tussen abonnementen. | Nee
 **Naam** | **Beschrijving** | **Details**
 --- | --- | ---
 Configuratieserver | On-premises geïnstalleerd.<br/> Coördineert de communicatie tussen on-premises VMware-servers of fysieke machines en Azure. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de configuratie server.<br/> - [Meer informatie over](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-azure-deploy-configuration-server.md) het instellen van de configuratie server.
-Processerver | standaard geïnstalleerd op de configuratieserver.<br/> Hiermee ontvangt u replicatie gegevens, optimaliseert u deze met caching, compressie en versleuteling, en verzendt u deze naar Azure.<br/> Naarmate uw implementatie groeit, kunt u extra proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de proces server.<br/> - [Meer informatie over](vmware-azure-manage-process-server.md#upgrade-a-process-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-physical-large-deployment.md#set-up-a-process-server) het instellen van scale-out proces servers.
+Proces server | standaard geïnstalleerd op de configuratieserver.<br/> Hiermee ontvangt u replicatie gegevens, optimaliseert u deze met caching, compressie en versleuteling, en verzendt u deze naar Azure.<br/> Naarmate uw implementatie groeit, kunt u extra proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de proces server.<br/> - [Meer informatie over](vmware-azure-manage-process-server.md#upgrade-a-process-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-physical-large-deployment.md#set-up-a-process-server) het instellen van scale-out proces servers.
 Mobility-service | Geïnstalleerd op virtuele VMware-machines of fysieke servers die u wilt repliceren.<br/> Coördineert de replicatie tussen on-premises VMware-servers/fysieke servers en Azure.| - [Meer informatie over](vmware-physical-mobility-service-overview.md) de Mobility-service.<br/> - [Meer informatie over](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) het upgraden naar de nieuwste versie.<br/>
 
 

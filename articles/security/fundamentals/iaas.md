@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450012"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448405"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Best practices voor beveiliging voor IaaS-workloads in Azure
 In dit artikel worden de aanbevolen beveiligings procedures voor Vm's en besturings systemen beschreven.
@@ -84,7 +84,7 @@ U kunt micro soft antimalware en partner oplossingen integreren met [Azure Secur
 Virtuele Azure-machines, zoals alle on-premises Vm's, zijn bedoeld om door de gebruiker te worden beheerd. Er worden dan ook geen Windows-updates naar VM's gepusht door Azure. U moet uw VM-updates beheren.
 
 **Aanbevolen procedure**: behoud uw vm's actueel.   
-**Details**: gebruik de [Updatebeheer](../../automation/automation-update-management.md) oplossing in azure Automation om updates van besturings systemen te beheren voor uw Windows-en Linux-computers die zijn geïmplementeerd in azure, in on-premises omgevingen of in andere cloud providers. U kunt snel de status van de beschikbare updates op alle agentcomputers beoordelen en de procedure voor het installeren van vereiste updates voor servers beheren.
+**Details**: gebruik de [Updatebeheer](../../automation/update-management/update-mgmt-overview.md) oplossing in azure Automation om updates van besturings systemen te beheren voor uw Windows-en Linux-computers die zijn geïmplementeerd in azure, in on-premises omgevingen of in andere cloud providers. U kunt snel de status van de beschikbare updates op alle agentcomputers beoordelen en de procedure voor het installeren van vereiste updates voor servers beheren.
 
 Computers die worden beheerd door Updatebeheer gebruiken de volgende configuraties voor het uitvoeren van evaluatie- en update-implementaties:
 

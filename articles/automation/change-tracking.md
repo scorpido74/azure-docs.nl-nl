@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185582"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447921"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -80,7 +80,7 @@ U kunt op een wijziging of gebeurtenis klikken om de details ervan weer te geven
 
 - Gebeurtenissen
 - Daemons
-- Files
+- Bestanden
 - Register
 - Software
 - Micro soft-Services
@@ -162,7 +162,7 @@ In de volgende tabel wordt de frequentie van gegevens verzameling weer gegeven v
 
 De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wijzigingen bijhouden en inventaris.
 
-| **Resource** | **Ondergrens** |
+| **Resource** | **Limiet** |
 |---|---|---|
 |Bestand|500|
 |Register|250|
@@ -188,7 +188,7 @@ Om de prestaties te optimaliseren, houdt de Log Analytics agent alleen wijziging
 
 Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt gewaarschuwd voor wijzigingen in de configuratie status van uw hybride omgeving. Er zijn veel nuttige acties beschikbaar om te activeren als reactie op waarschuwingen, zoals acties voor Azure functions, Automation-runbooks, webhooks en dergelijke. Een waarschuwing over wijzigingen in het **c:\Windows\System32\drivers\etc\hosts** -bestand voor een machine is een goede toepassing van waarschuwingen voor wijzigingen bijhouden-en inventaris gegevens. Er zijn veel meer scenario's voor waarschuwingen, zoals de query scenario's die in de volgende tabel zijn gedefinieerd.
 
-|Query  |Beschrijving  |
+|Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\ Windows \\ System32 \\ drivers \\ "|Dit is handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem.|
 |ConfigurationChange <br>&#124; waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = "c: \\ Windows \\ System32 \\ drivers etc- \\ \\ hosts ' bevat.|Dit is handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden.|
@@ -203,7 +203,7 @@ Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt 
 
 - Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account](automation-enable-changes-from-auto-acct.md)om de functie in te scha kelen vanuit een Automation-account.
 
-- Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen in de Azure Portal](automation-onboard-solutions-from-browse.md).
+- Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen in de Azure Portal](automation-enable-changes-from-browse.md).
 
 - Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md)om de functie in te scha kelen in een runbook.
 

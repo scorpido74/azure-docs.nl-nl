@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477784"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445458"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Procedure: uw Azure AD-App beperken tot een set gebruikers in een Azure AD-Tenant
 
@@ -26,7 +26,7 @@ Toepassingen die zijn geregistreerd in een Azure Active Directory-Tenant (Azure 
 
 In het geval van een [multi tenant](howto-convert-app-to-be-multi-tenant.md) -app kunnen alle gebruikers in de Azure AD-Tenant waar deze app is ingericht, toegang krijgen tot deze toepassing zodra ze zijn geverifieerd in hun respectieve Tenant.
 
-Tenant beheerders en ontwikkel aars hebben vaak vereisten waarbij een app moet worden beperkt tot een bepaalde groep gebruikers. Ontwikkel aars kunnen hetzelfde doen met behulp van populaire verificatie patronen als op rollen gebaseerd Access Control (RBAC), maar deze benadering vereist een aanzienlijke hoeveelheid werk voor een deel van de ontwikkelaar.
+Tenant beheerders en ontwikkel aars hebben vaak vereisten waarbij een app moet worden beperkt tot een bepaalde groep gebruikers. Ontwikkel aars kunnen hetzelfde doen met behulp van populaire verificatie patronen zoals Azure RBAC (op rollen gebaseerd toegangs beheer), maar deze benadering vereist een aanzienlijke hoeveelheid werk voor een deel van de ontwikkelaar.
 
 Tenant beheerders en ontwikkel aars kunnen een app beperken tot een specifieke set gebruikers of beveiligings groepen in de Tenant door deze ingebouwde functie van Azure AD ook te gebruiken.
 

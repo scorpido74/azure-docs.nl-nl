@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986276"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448233"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB-index Tags (preview) gebruiken om gegevens te beheren en te zoeken in Azure Blob-opslag
 
@@ -70,7 +70,9 @@ using System.Threading.Tasks;
 ![Gegevens uploaden met Blob-index Tags](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
 
 # <a name="net"></a>[.NET](#tab/net)
+
 In het volgende voor beeld ziet u hoe u een toevoeg-BLOB maakt met tags die zijn ingesteld tijdens het maken.
+
 ```csharp
 static async Task BlobIndexTagsOnCreate()
    {
@@ -84,7 +86,7 @@ static async Task BlobIndexTagsOnCreate()
 
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
-         
+
           // Blob Index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>

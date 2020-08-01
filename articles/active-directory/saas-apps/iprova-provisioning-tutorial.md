@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b914292e03078021c02d777505543a537b50260f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16cba1896a9e9e4038091769fb78ca0c0469710e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367611"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448824"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>Zelf studie: iProva configureren voor automatische gebruikers inrichting
 
@@ -150,7 +150,6 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: costCenter|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Verwijzing|
 
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met iProva**.
@@ -160,7 +159,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |Kenmerk|Type|
       |---|---|
       |displayName|Tekenreeks|
-      |leden|Verwijzing|
+      |leden|Naslaginformatie|
 
 12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -190,7 +189,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 
 * 06/17/2020-ondernemings extensie kenmerk Manager is verwijderd.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

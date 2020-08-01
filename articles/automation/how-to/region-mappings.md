@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261185"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447864"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
 
@@ -78,11 +78,11 @@ Als de functies zijn verwijderd, kunt u de onderstaande stappen volgen om het Au
 
 U kunt de werk ruimte ook ontkoppelen van uw Automation-account in de werk ruimte.
 
-1. Selecteer in de werk ruimte **Automation-account** onder **gerelateerde resources**. 
+1. Selecteer in de werk ruimte **Automation-account** onder **gerelateerde resources**.
 2. Selecteer op de pagina Automation-account de optie **account loskoppelen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over Updatebeheer in [updatebeheer Overview](../automation-update-management.md).
+* Meer informatie over Updatebeheer in [updatebeheer Overview](../update-management/update-mgmt-overview.md).
 * Meer informatie over Wijzigingen bijhouden en inventaris in [Wijzigingen bijhouden en inventaris overzicht](../change-tracking.md).
 * Meer informatie over VM's buiten bedrijfsuren starten/stoppen in [VM's buiten bedrijfsuren starten/stoppen Overview](../automation-solution-vm-management.md).

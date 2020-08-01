@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e609e755f02d4321664804bfbb90f979c1c06ead
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133058"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448939"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -34,7 +34,7 @@ In de volgende secties worden de opties voor sleutel beheer in meer detail besch
 
 ### <a name="platform-managed-keys"></a>Door het platform beheerde sleutels
 
-Beheerde schijven gebruiken standaard versleutelings sleutels die door het platform worden beheerd. Vanaf 10 juni 2017 worden alle nieuwe beheerde schijven, moment opnamen, installatie kopieën en nieuwe gegevens die worden geschreven naar bestaande beheerde schijven automatisch versleuteld met door het platform beheerde sleutels.
+Beheerde schijven gebruiken standaard versleutelings sleutels die door het platform worden beheerd. Alle beheerde schijven, moment opnamen, installatie kopieën en gegevens die naar bestaande beheerde schijven worden geschreven, worden automatisch versleuteld met door het platform beheerde sleutels.
 
 ### <a name="customer-managed-keys"></a>Door klant beheerde sleutels
 

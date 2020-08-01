@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 04f97dc7296dd2ca9e9f869373cbf82838aa79f5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230380"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445334"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -47,6 +47,20 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 >Als u Azure AD Connect voor synchronisatie hebt ingeschakeld, kunt u binnenkort automatisch status meldingen ontvangen die u waarschuwen over toekomstige afschaffing wanneer u een van de oudere versies uitvoert.
 >
 >Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
+
+## <a name="15450"></a>1.5.45.0
+
+### <a name="release-status"></a>Status van de release
+07/29/2020: uitgebracht voor downloaden
+
+### <a name="functional-changes"></a>Functionele wijzigingen
+Dit is een release van de fout oplossing. Er zijn geen functionele wijzigingen in deze release.
+
+### <a name="fixed-issues"></a>Opgeloste problemen
+
+- Er is een probleem opgelost waarbij de beheerder ' naadloze eenmalige aanmelding ' niet kan inschakelen als het computer account van AZUREADSSOACC al aanwezig is in de Active Directory.
+- Er is een probleem opgelost waardoor een faserings fout is opgetreden tijdens het importeren van een conflicterend object dat is hersteld via de Health-Portal.
+- Er is een probleem opgelost in de import/export-configuratie waar een uitgeschakelde aangepaste regel is geïmporteerd als ingeschakeld.
 
 ## <a name="15420"></a>1.5.42.0
 

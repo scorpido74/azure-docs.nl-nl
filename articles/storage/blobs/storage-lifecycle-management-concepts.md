@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528694"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446678"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -49,7 +49,7 @@ U kunt een beleid toevoegen, bewerken of verwijderen met een van de volgende met
 * [Azure-portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST-API’s](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [REST-API's](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 Een beleid kan volledig worden gelezen of geschreven. Gedeeltelijke updates worden niet ondersteund. 
 
@@ -226,16 +226,16 @@ Een levenscyclus beheer beleid is een verzameling regels in een JSON-document:
 
 Een beleid is een verzameling regels:
 
-| Parameternaam | Parameter type | Notities |
+| Parameternaam | Parameter type | Opmerkingen |
 |----------------|----------------|-------|
 | `rules`        | Een matrix van regel objecten | Er is ten minste één regel vereist in een beleid. U kunt Maxi maal 100 regels definiëren in een beleid.|
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Notities | Vereist |
+| Parameternaam | Parameter type | Opmerkingen | Vereist |
 |----------------|----------------|-------|----------|
 | `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | Waar |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
+| `enabled`      | Boolean-waarde | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
 | `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | Waar |
 | `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
 
@@ -248,7 +248,8 @@ Elke regel definitie bevat een set filters en een Actieset. Met de [Filterset](#
 Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren op objecten die zich in `container1` en beginnen met `foo` .  
 
 >[!NOTE]
->Levenscyclus beheer ondersteunt alleen het type blok-blob.  
+>- Levenscyclus beheer ondersteunt alleen het type blok-blob.<br>
+>- Levenscyclus beheer heeft geen invloed op systeem containers zoals $logs en $web.
 
 - Laag-BLOB naar cool laag 30 dagen na laatste wijziging
 - Laag-BLOB naar archief laag 90 dagen na laatste wijziging
@@ -289,7 +290,7 @@ Filters beperken regel acties voor een subset van blobs binnen het opslag accoun
 
 Filters omvatten:
 
-| Bestandsnaam | Filtertype | Notities | Is vereist |
+| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` . | Ja |
 | prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |

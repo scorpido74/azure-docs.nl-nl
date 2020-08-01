@@ -3,12 +3,12 @@ title: Azure Machine Learning als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Machine Learning-werkruimte gebeurtenissen met Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090668"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458039"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid bron
 
@@ -257,11 +257,11 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 | Titel | Beschrijving |
 | ----- | ----- |
-| [Azure Machine Learning gebeurtenissen gebruiken](../machine-learning/concept-event-grid-integration.md) | Overzicht van het integreren van Azure Machine Learning met Event Grid. |
+| [Azure Machine Learning gebeurtenissen gebruiken](../machine-learning/how-to-use-event-grid.md) | Overzicht van het integreren van Azure Machine Learning met Event Grid. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
 * Zie [Event grid-abonnements schema](subscription-creation-schema.md) voor meer informatie over het maken van een Azure Event grid-abonnement
-* Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](/azure/machine-learning/concept-event-grid-integration)
-* Zie [gebeurtenis gerichte machine learning werk stromen maken](/azure/machine-learning/how-to-use-event-grid) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.
+* Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](../machine-learning/how-to-use-event-grid.md)
+* Zie [gebeurtenis gerichte machine learning werk stromen maken](../machine-learning/how-to-use-event-grid.md) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.

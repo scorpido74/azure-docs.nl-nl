@@ -71,8 +71,6 @@
       href: azure-netapp-files-manage-snapshots.md
     - name: Het formaat van een capaciteitspool of volume wijzigen
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
-    - name: Het serviceniveau van een volume dynamisch wijzigen
-      href: dynamic-change-volume-service-level.md
     - name: Ontwikkelen
       items:
         - name: REST-API

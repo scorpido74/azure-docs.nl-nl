@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: b8e2f580bb21d2f432ce5dcbc3e06c15ba6f380b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327205"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446173"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrische waarschuwingen maken voor logboeken in Azure Monitor
 
@@ -25,7 +25,7 @@ U kunt metrische waarschuwingen gebruiken in populaire Log Analytics logboeken d
 
 - [Prestatie meter items](./data-sources-performance-counters.md) voor Windows & Linux-machines
 - [Heartbeat-records voor Status van agent](../insights/solution-agenthealth.md)
-- [Update beheer](../../automation/automation-update-management.md) records
+- [Update beheer](../../automation/update-management/update-mgmt-overview.md) records
 - Logboeken met [gebeurtenis gegevens](./data-sources-windows-events.md)
 
 Er zijn veel voor delen voor het gebruik van **metrische waarschuwingen voor logboeken** die zijn gebaseerd op query [waarschuwingen](./alerts-log.md) in Azure. enkele hiervan worden hieronder weer gegeven:
@@ -55,7 +55,7 @@ Voordat de metriek wordt vastgelegd voor logboeken die zijn verzameld op Log Ana
 
 1. **Actieve log Analytics-werk ruimte**: er moet een geldige en actieve log Analytics-werk ruimte aanwezig zijn. Zie [een log Analytics-werk ruimte maken in azure Portal](../learn/quick-create-workspace.md)voor meer informatie.
 2. De **agent is geconfigureerd voor log Analytics-werk ruimte**: de agent moet worden geconfigureerd voor virtuele machines van Azure (en/of) om gegevens te verzenden naar de log Analytics werk ruimte die in de vorige stap wordt gebruikt. Zie [log Analytics-agent Overview (](./agents-overview.md)Engelstalig) voor meer informatie.
-3. **Ondersteunde log Analytics oplossingen is geïnstalleerd**: log Analytics oplossing moet worden geconfigureerd en verzenden van gegevens in log Analytics oplossingen die door de werk ruimte worden ondersteund, zijn [prestatie meter items voor Windows & Linux](./data-sources-performance-counters.md), [heartbeat-records voor status van agent](../insights/solution-agenthealth.md), [Update beheer](../../automation/automation-update-management.md)en [gebeurtenis gegevens](./data-sources-windows-events.md).
+3. **Ondersteunde log Analytics oplossingen is geïnstalleerd**: log Analytics oplossing moet worden geconfigureerd en verzenden van gegevens in log Analytics oplossingen die door de werk ruimte worden ondersteund, zijn [prestatie meter items voor Windows & Linux](./data-sources-performance-counters.md), [heartbeat-records voor status van agent](../insights/solution-agenthealth.md), [Update beheer](../../automation/update-management/update-mgmt-overview.md)en [gebeurtenis gegevens](./data-sources-windows-events.md).
 4. **Log Analytics oplossingen die zijn geconfigureerd voor het verzenden van Logboeken**: voor de log Analytics-oplossing moeten de vereiste Logboeken/gegevens zijn opgegeven die overeenkomen met de [metrieken voor log Analytics-werk ruimten](./metrics-supported.md#microsoftoperationalinsightsworkspaces) zijn ingeschakeld. Bijvoorbeeld: voor het aantal *% beschik bare geheugen* van de functie moet eerst worden geconfigureerd in de oplossing voor [prestatie meter items](./data-sources-performance-counters.md) .
 
 ## <a name="configuring-metric-alert-for-logs"></a>Waarschuwing voor metrische gegevens voor logboeken configureren

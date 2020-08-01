@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856130"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448009"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -28,7 +28,7 @@ De functie Hybrid Runbook Worker is afhankelijk van een Azure Monitor Log Analyt
 
 Als u geen Azure Monitor Log Analytics-werk ruimte hebt, raadpleegt u de [ontwerp richtlijnen voor Azure monitor logboek](../azure-monitor/platform/design-logs-deployment.md) voordat u de werk ruimte maakt.
 
-Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](automation-update-management.md) of [Wijzigingen bijhouden en inventaris](change-tracking.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
+Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](update-management/update-mgmt-overview.md) of [Wijzigingen bijhouden en inventaris](change-tracking.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
 
 Als u de functie Updatebeheer wilt toevoegen aan uw werk ruimte, voert u de volgende Power shell-cmdlet uit:
 
@@ -82,11 +82,11 @@ Hybrid Runbook Workers van Linux ondersteunen een beperkt aantal typen Runbook i
 
 |Type Runbook | Ondersteund |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ja |
 |PowerShell |Ja<sup>1</sup> |
-|PowerShell-werkstroom |No |
-|Grafisch |No |
-|Grafische power shell-werk stroom |No |
+|PowerShell-werkstroom |Nee |
+|Grafisch |Nee |
+|Grafische power shell-werk stroom |Nee |
 
 <sup>1</sup> Power shell-runbooks vereisen dat Power shell core wordt geïnstalleerd op de Linux-machine. Zie [Power shell core in Linux installeren](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.
 

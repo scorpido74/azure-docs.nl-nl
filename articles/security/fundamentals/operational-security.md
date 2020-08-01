@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749954"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448374"
 ---
 # <a name="azure-operational-security"></a>Operationele Azure-beveiliging
 ## <a name="introduction"></a>Inleiding
@@ -69,9 +69,9 @@ De kern functionaliteit van Azure Monitor Logboeken wordt verschaft door een set
 | Service  | Beschrijving|
 | :------------- | :-------------|
 | Azure Monitor-logboeken | Bewaak en analyseer de beschikbaarheid en prestaties van verschillende resources, met inbegrip van fysieke en virtuele machines. |
-|Automation | Automatiseer handmatige processen en dwing configuraties af voor fysieke en virtuele machines. |
+|Automatisering | Automatiseer handmatige processen en dwing configuraties af voor fysieke en virtuele machines. |
 | Backup | Back-ups maken van essentiële gegevens en deze herstellen. |
-| Siteherstel | Bied hoge beschikbaarheid voor kritieke toepassingen. |
+| Site Recovery | Bied hoge beschikbaarheid voor kritieke toepassingen. |
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
@@ -108,7 +108,7 @@ Beveiligde gegevens in Azure Backup worden opgeslagen in een back-upkluis in een
 
 ![Beheeroplossingen](./media/operational-security/azure-operational-security-fig4.png)
 
-Een goed voor beeld van een oplossing die gebruikmaakt van meerdere services om aanvullende functionaliteit te bieden is de [updatebeheer oplossing](../../automation/automation-update-management.md). Deze oplossing maakt gebruik van de [Azure monitor logboeken](../../log-analytics/log-analytics-queries.md) agent voor Windows en Linux voor het verzamelen van informatie over de vereiste updates op elke agent. Deze gegevens worden naar de opslag plaats van Azure Monitor-logboeken geschreven, waar u deze kunt analyseren met een dash board.
+Een goed voor beeld van een oplossing die gebruikmaakt van meerdere services om aanvullende functionaliteit te bieden is de [updatebeheer oplossing](../../automation/update-management/update-mgmt-overview.md). Deze oplossing maakt gebruik van de [Azure monitor logboeken](../../log-analytics/log-analytics-queries.md) agent voor Windows en Linux voor het verzamelen van informatie over de vereiste updates op elke agent. Deze gegevens worden naar de opslag plaats van Azure Monitor-logboeken geschreven, waar u deze kunt analyseren met een dash board.
 
 Wanneer u een implementatie maakt, worden runbooks in [Azure Automation](../../automation/automation-intro.md) gebruikt om vereiste updates te installeren. U beheert dit hele proces in de portal en hoeft zich geen zorgen te maken over de onderliggende details.
 
@@ -128,7 +128,7 @@ In Security Center definieert u de beleidsregels op grond van de beveiligingsver
 Beleids regels die zijn ingeschakeld in het abonnements niveau, worden automatisch door gegeven aan alle resource groepen binnen het abonnement, zoals wordt weer gegeven in het diagram aan de rechter kant:
 
 
-### <a name="data-collection"></a>Gegevensverzameling
+### <a name="data-collection"></a>Gegevens verzamelen
 
 Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te geven en u te waarschuwen bij bedreigingen. Wanneer u voor het eerst toegang Security Center, wordt gegevens verzameling ingeschakeld op alle virtuele machines in uw abonnement. Gegevensverzameling wordt aanbevolen, maar u kunt gegevensverzameling indien gewenst ook uitschakelen in het Security Center-beleid.
 
@@ -154,7 +154,7 @@ Om klanten te helpen bedreigingen te voorkomen, te detecteren en erop te reagere
 
 -   **Gegevensgebruik**: Microsoft gebruikt informatie over patronen en bedreigingen die worden gezien tussen meerdere tenants voor het verbeteren van onze mogelijkheden voor voorkoming en detectie; wij doen dit in overeenstemming met de privacyverplichtingen beschreven in onze [Privacyverklaring](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
-### <a name="data-location"></a>Gegevenslocatie
+### <a name="data-location"></a>Locatie van gegevens
 
 Azure Security Center verzamelt tijdelijke kopieën van uw crashdumpbestanden en analyseert deze op bewijs van pogingen tot misbruik en geslaagde aanvallen. Azure Security Center voert deze analyse uit binnen hetzelfde geografische gebied als de werkruimte en verwijdert de tijdelijke kopieën wanneer de analyse is voltooid. Machine-artefacten worden centraal opgeslagen in dezelfde regio als de virtuele machine.
 

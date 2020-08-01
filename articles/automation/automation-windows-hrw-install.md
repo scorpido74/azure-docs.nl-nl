@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015014"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448047"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -28,7 +28,7 @@ De functie Hybrid Runbook Worker is afhankelijk van een Azure Monitor Log Analyt
 
 Als u geen Azure Monitor Log Analytics-werk ruimte hebt, raadpleegt u de [ontwerp richtlijnen voor Azure monitor logboek](../azure-monitor/platform/design-logs-deployment.md) voordat u de werk ruimte maakt.
 
-Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](automation-update-management.md) of [Wijzigingen bijhouden en inventaris](change-tracking.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
+Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](update-management/update-mgmt-overview.md) of [Wijzigingen bijhouden en inventaris](change-tracking.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
 
    Als u de functie Updatebeheer wilt toevoegen aan uw werk ruimte, voert u de volgende Power shell-cmdlet uit:
 
@@ -77,7 +77,7 @@ Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planni
 U kunt de werk computer toevoegen aan een Hybrid Runbook Worker groep in uw Automation-account. Houd er rekening mee dat u Automation-runbooks moet ondersteunen als u hetzelfde account gebruikt voor zowel de Azure Automation-functie als de Hybrid Runbook Worker groepslid maatschap. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
 
 >[!NOTE]
->Als Azure Automation [updatebeheer](automation-update-management.md) wordt ingeschakeld, wordt elke Windows-computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als Hybrid Runbook worker om de updates van het besturings systeem te kunnen beheren. Deze werk nemer is echter niet geregistreerd bij Hybrid Runbook Worker groepen die al zijn gedefinieerd in uw Automation-account.
+>Als Azure Automation [updatebeheer](update-management/update-mgmt-overview.md) wordt ingeschakeld, wordt elke Windows-computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als Hybrid Runbook worker om de updates van het besturings systeem te kunnen beheren. Deze werk nemer is echter niet geregistreerd bij Hybrid Runbook Worker groepen die al zijn gedefinieerd in uw Automation-account.
 
 ## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Computers inschakelen voor beheer met Azure Automation status configuratie
 
@@ -169,7 +169,7 @@ Heartbeat
 
 In de zoek resultaten ziet u heartbeat-records voor de machine, waarmee wordt aangegeven dat deze is verbonden en dat er wordt gerapporteerd aan de service. Standaard stuurt elke agent een heartbeat-record naar de toegewezen werk ruimte. Gebruik de volgende stappen om de installatie van de agent en de installatie te volt ooien.
 
-1. Schakel de functie in om de agent computer toe te voegen. Voor Updatebeheer-en Azure-Vm's raadpleegt u [Azure Vm's inschakelen](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)en voor virtuele machines die niet van Azure zijn, Zie [machines inschakelen in de werk ruimte](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace). Voor Wijzigingen bijhouden-en Azure-Vm's raadpleegt u [Azure Vm's inschakelen](automation-enable-changes-from-auto-acct.md#enable-azure-vms)en voor virtuele machines die niet van Azure zijn, Zie [machines inschakelen in de werk ruimte](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Schakel de functie in om de agent computer toe te voegen. Zie voor Updatebeheer-en Azure-Vm's [updatebeheer inschakelen vanuit een Automation-account](update-management/update-mgmt-enable-automation-account.md), updatebeheer in te [scha kelen door te bladeren door de Azure Portal](update-management/update-mgmt-enable-portal.md), [updatebeheer in te scha kelen vanuit een Runbook](update-management/update-mgmt-enable-runbook.md)of [updatebeheer in te scha kelen vanaf een Azure-VM](update-management/update-mgmt-enable-vm.md). Voor Wijzigingen bijhouden-en Azure-Vm's raadpleegt u [Azure Vm's inschakelen](automation-enable-changes-from-auto-acct.md#enable-azure-vms)en voor virtuele machines die niet van Azure zijn, Zie [machines inschakelen in de werk ruimte](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
 
 2. Als u de versie van de Hybrid Runbook Worker wilt bevestigen, bladert u naar `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` de submap **versie** .
 

@@ -3,12 +3,12 @@ title: Azure Blob Storage als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Blob Storage-gebeurtenissen met Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371274"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458940"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid bron
 
@@ -25,7 +25,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Blob Storage-gebeurte
 Deze gebeurtenissen worden geactiveerd wanneer een-client een BLOB maakt, vervangt of verwijdert door de BLOB REST-Api's aan te roepen.
 
 > [!NOTE]
-> Als u het DFS-eind punt gebruikt *`(abfss://URI) `* voor niet-hiërarchische naam ruimte met accounts, worden er geen gebeurtenissen gegenereerd. Voor dergelijke accounts genereert alleen het BLOB-eind punt *`(wasb:// URI)`* gebeurtenissen.
+> De `$logs` containers en kunnen niet worden `$blobchangefeed` geïntegreerd met Event grid, waardoor de activiteit in deze containers geen gebeurtenissen genereert. Het gebruik van het DFS-eind punt *`(abfss://URI) `* voor niet-hiërarchische naam ruimte ingeschakelde accounts genereert geen gebeurtenissen, maar er worden door het BLOB-eind punt *`(wasb:// URI)`* gebeurtenissen gegenereerd.
 
  |Gebeurtenis naam |Beschrijving|
  |----------|-----------|
@@ -33,7 +33,7 @@ Deze gebeurtenissen worden geactiveerd wanneer een-client een BLOB maakt, vervan
  |**Micro soft. storage. BlobDeleted** |Wordt geactiveerd wanneer een BLOB wordt verwijderd. <br>Deze gebeurtenis wordt met name geactiveerd wanneer clients de bewerking aanroepen `DeleteBlob` die beschikbaar is in de BLOB-rest API. |
 
 > [!NOTE]
-> Als u ervoor wilt zorgen dat de gebeurtenis **micro soft. storage. BlobCreated** alleen wordt geactiveerd als een blok-BLOB volledig is doorgevoerd, filtert u de gebeurtenis voor de `CopyBlob` `PutBlob` `PutBlockList` aanroepen, en rest API. Met deze API-aanroepen wordt de gebeurtenis **micro soft. storage. BlobCreated** alleen geactiveerd wanneer gegevens volledig zijn doorgevoerd in een blok-blob. Zie [gebeurtenissen filteren voor Event grid voor](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)meer informatie over het maken van een filter.
+> Als u ervoor wilt zorgen dat de gebeurtenis **micro soft. storage. BlobCreated** alleen wordt geactiveerd als een blok-BLOB volledig is doorgevoerd, filtert u de gebeurtenis voor de `CopyBlob` `PutBlob` `PutBlockList` aanroepen, en rest API. Met deze API-aanroepen wordt de gebeurtenis **micro soft. storage. BlobCreated** alleen geactiveerd wanneer gegevens volledig zijn doorgevoerd in een blok-blob. Zie [gebeurtenissen filteren voor Event grid voor](./how-to-filter-events.md)meer informatie over het maken van een filter.
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lijst met gebeurtenissen voor Azure Data Lake Storage REST-Api's van $2
 
@@ -49,7 +49,7 @@ Deze gebeurtenissen worden geactiveerd als u een hiërarchische naam ruimte in h
 |**Micro soft. storage. DirectoryDeleted**|Wordt geactiveerd wanneer een map wordt verwijderd. <br>Deze gebeurtenis wordt met name geactiveerd wanneer clients de bewerking gebruiken `DeleteDirectory` die beschikbaar is in de Azure Data Lake Storage Gen2 rest API.|
 
 > [!NOTE]
-> Als u ervoor wilt zorgen dat de gebeurtenis **micro soft. storage. BlobCreated** alleen wordt geactiveerd als een blok-BLOB volledig is doorgevoerd, filtert u de gebeurtenis voor de aanroep van de `FlushWithClose` rest API. Deze API-aanroep activeert de gebeurtenis **micro soft. storage. BlobCreated** alleen nadat de gegevens volledig zijn doorgevoerd in een blok-blob. Zie [gebeurtenissen filteren voor Event grid voor](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)meer informatie over het maken van een filter.
+> Als u ervoor wilt zorgen dat de gebeurtenis **micro soft. storage. BlobCreated** alleen wordt geactiveerd als een blok-BLOB volledig is doorgevoerd, filtert u de gebeurtenis voor de aanroep van de `FlushWithClose` rest API. Deze API-aanroep activeert de gebeurtenis **micro soft. storage. BlobCreated** alleen nadat de gegevens volledig zijn doorgevoerd in een blok-blob. Zie [gebeurtenissen filteren voor Event grid voor](./how-to-filter-events.md)meer informatie over het maken van een filter.
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenis reactie
@@ -307,8 +307,8 @@ Het gegevens object heeft de volgende eigenschappen:
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | api | tekenreeks | De bewerking die de gebeurtenis heeft geactiveerd. |
-| clientRequestId | tekenreeks | een aanvraag-id van de client voor de bewerking van de opslag-API. Deze id kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie de [logboek indeling](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| requestId | tekenreeks | Door de service gegenereerde aanvraag-id voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| clientRequestId | tekenreeks | een aanvraag-id van de client voor de bewerking van de opslag-API. Deze id kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie de [logboek indeling](/rest/api/storageservices/storage-analytics-log-format). |
+| requestId | tekenreeks | Door de service gegenereerde aanvraag-id voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | tekenreeks | De waarde die u kunt gebruiken om bewerkingen voorwaardelijk uit te voeren. |
 | Invoer | tekenreeks | Het opgegeven inhouds type voor de blob. |
 | contentLength | geheel getal | De grootte van de BLOB in bytes. |

@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28a127b4debeacd2562867008bc594897558d50d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077851"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446847"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Naslag informatie over Azure Storage bewakings gegevens
 
@@ -104,7 +104,7 @@ Azure Storage ondersteunt de volgende dimensies voor metrische gegevens in Azure
 
 | Dimensie naam | Beschrijving |
 | ------------------- | ----------------- |
-| **BlobType** | Het type BLOB voor alleen metrische gegevens van blobs. De ondersteunde waarden zijn **BlockBlob**, **PageBlob**en **Azure data Lake Storage**. Toevoeg-blob is opgenomen in BlockBlob. |
+| **BlobType** | Het type BLOB voor alleen metrische gegevens van blobs. De ondersteunde waarden zijn **BlockBlob**, **PageBlob**en **Azure data Lake Storage**. Toevoeg-blobs zijn opgenomen in **BlockBlob**. |
 | **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: warme laag</li> <li>**Cool**: cool-laag</li> <li>**Archief**: laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: laag type voor de standaard pagina-BLOB</li> <li>**Ongetierd**: laag type voor algemeen gebruik v1-opslag account</li> |
 | **Geotype** | Trans actie van het primaire of secundaire cluster. De beschik bare waarden zijn onder andere **primaire** en **secundaire**. Dit is van toepassing op lees toegang geografisch redundante opslag (RA-GRS) bij het lezen van objecten van een secundaire Tenant. |
 | **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle overige serverfouten, behalve diegene die zijn beschreven </li> <li>**ServerBusyError**: geverifieerde aanvraag waardoor een HTTP 503-statuscode is geretourneerd. </li> <li>**ServerTimeoutError**: geverifieerde aanvraag met time-out waardoor een HTTP 500-statuscode is geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: geverifieerde aanvraag die is mislukt vanwege niet-geautoriseerde toegang tot gegevens of een autorisatiefout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerkfouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li><li>**ClientAccountBandwidthThrottlingError**: de aanvraag wordt beperkt over de band breedte voor het overschrijden van de [schaalbaarheids limieten van het opslag account](scalability-targets-standard-account.md).</li><li>**ClientAccountRequestThrottlingError**: de aanvraag wordt beperkt op aanvraag snelheid voor overschrijding van de [schaalbaarheids limieten van het opslag account](scalability-targets-standard-account.md).<li>**ClientThrottlingError**: andere fout met beperking aan client zijde. ClientAccountBandwidthThrottlingError en ClientAccountRequestThrottlingError zijn uitgesloten.</li> <li>**ClientTimeoutError**: geverifieerde aanvraag met time-out waardoor een HTTP 500-statuscode is geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd. </li> <li>**ClientOtherError**: alle overige fouten aan de clientzijde, behalve diegene die zijn beschreven. </li> <li>**Geslaagd**: succesvolle aanvraag</li> <li> **SuccessWithThrottling**: de aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |

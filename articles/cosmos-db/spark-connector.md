@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203155"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445931"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>big data Analytics versnellen met behulp van de Apache Spark om de connector te Azure Cosmos DB
 
@@ -95,7 +95,7 @@ writeConfig = {
 }
 
 # Write to Cosmos DB from the flights DataFrame
-flights.write.format("com.microsoft.azure.cosmosdb.spark").options(
+flights.write.mode("overwrite").format("com.microsoft.azure.cosmosdb.spark").options(
     **writeConfig).save()
 ```
 
@@ -309,7 +309,7 @@ We hebben meer informatie in de `azure-cosmosdb-spark` [wiki](https://github.com
 * [Demonstraties van feeds wijzigen](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Demo's van Structured stream](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Controle
+### <a name="monitoring"></a>Controleren
 
 * [Spark-taken bewaken met Application Insights](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

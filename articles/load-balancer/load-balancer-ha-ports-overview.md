@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920616"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447068"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten met hoge Beschik baarheid
 
@@ -99,5 +99,5 @@ U kunt *één* open bare Standard Load Balancer bron configureren voor de back-e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het configureren van HA-poorten voor uw ILB via Portal (tutorial-Load-Balancer-Standard-Internal-Portal. MDL # Create-a-load-balancer-rule), [Power shell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [cli](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)of [sjablonen](load-balancer-get-started-ilb-arm-template.md).
+- [Meer informatie over het configureren van ha-poorten voor uw ILB via Portal](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), [Power shell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [cli](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)of [sjablonen](load-balancer-get-started-ilb-arm-template.md).
 - [Meer informatie over Standard Load Balancer](load-balancer-standard-overview.md)

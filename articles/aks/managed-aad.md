@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 06a97126df449b77bf3fcc48bd23231512c9dff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056645"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448128"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-beheerde Azure Active Directory-integratie
 
@@ -146,7 +146,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-Configureer [op rollen gebaseerde Access Control (RBAC)](./azure-ad-rbac.md) om extra beveiligings groepen voor uw clusters te configureren.
+Configureer [Azure RBAC (op rollen gebaseerd toegangs beheer)](./azure-ad-rbac.md) voor het configureren van extra beveiligings groepen voor uw clusters.
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Problemen met toegang tot Azure AD oplossen
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221255"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448691"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Beheerders rollen in Azure Active Directory weer geven en toewijzen
 
@@ -56,6 +56,12 @@ Als u een globale beheerder of een beheerder van een bevoegde rol bent, kunt u e
 Wanneer u de leden van een rol bekijkt, selecteert u **Beschrijving** om de volledige lijst met machtigingen te zien die zijn verleend door de roltoewijzing. De pagina bevat koppelingen naar relevante documentatie om u te helpen bij het beheren van Directory rollen.
 
 ![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>Roltoewijzingen downloaden
+
+Als u alle toewijzingen voor een specifieke functie wilt downloaden, selecteert u op de pagina **rollen en beheerders** een rol en selecteert u vervolgens roltoewijzingen **downloaden**. Een CSV-bestand met een lijst met toewijzingen in alle bereiken voor die rol wordt gedownload.
+
+![alle toewijzingen voor een rol downloaden](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Een rol toewijzen
 

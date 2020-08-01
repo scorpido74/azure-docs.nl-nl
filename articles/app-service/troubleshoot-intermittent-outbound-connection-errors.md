@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289148"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447919"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
 
@@ -38,7 +38,7 @@ Wanneer toepassingen of functies snel een nieuwe verbinding openen, kunnen ze sn
 
 ## <a name="avoiding-the-problem"></a>Het probleem voor komen
 
-Als uw bestemming een Azure-service is die service-eind punten ondersteunt, kunt u geen SNAT-poort ontvallen met behulp van [VNet-integratie](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) en service-eind punten. Wanneer u VNet-integratie gebruikt en service-eind punten in het subnet met integratie plaatst, heeft het uitgaande verkeer van uw app naar die services geen uitgaande SNAT-poort beperkingen.
+Als uw bestemming een Azure-service is die service-eind punten ondersteunt, kunt u het gebruik van [regionale VNet-integratie](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) en service-eind punten of privé-eind punten vermijden. Wanneer u de regionale VNet-integratie gebruikt en service-eind punten in het subnet met integratie plaatst, hebben uw door apps uitgaand verkeer naar die services geen uitgaande SNAT-poort beperkingen. Als u gebruikmaakt van regionale VNet-integratie en privé-eind punten, hebt u ook geen uitgaande SNAT-poort problemen voor die bestemming. 
 
 Als het SNAT-poort probleem wordt voor komen, wordt het maken van nieuwe verbindingen herhaaldelijk op dezelfde host en poort voor komen.
 

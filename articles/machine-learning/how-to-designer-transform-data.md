@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326984"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457818"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Gegevens transformeren in Azure Machine Learning Designer (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -112,7 +112,7 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
     **Bestands indeling**: CSV
 
     > [!NOTE]
-    > In dit artikel wordt ervan uitgegaan dat u toegang hebt tot een gegevens opslag die is geregistreerd in de huidige Azure Machine Learning-werk ruimte. Zie [verbinding maken met Azure Storage-services](how-to-access-data.md#azure-machine-learning-studio)voor instructies over het instellen van een gegevens opslag.
+    > In dit artikel wordt ervan uitgegaan dat u toegang hebt tot een gegevens opslag die is geregistreerd in de huidige Azure Machine Learning-werk ruimte. Zie [verbinding maken met Azure Storage-services](how-to-access-data.md#studio)voor instructies over het instellen van een gegevens opslag.
 
     Als u geen gegevens opslag hebt, kunt u er nu een maken. Voor beeld: in dit artikel worden de gegevens sets opgeslagen in het standaard-Blob Storage-account dat is gekoppeld aan de werk ruimte. De gegevens sets worden opgeslagen in de `azureml` container in een nieuwe map met de naam `data` .
 

@@ -2,13 +2,13 @@
 title: YAML-verwijzing-ACR-taken
 description: Naslag voor het definiëren van taken in YAML voor ACR-taken, waaronder taak eigenschappen, stap typen, stap eigenschappen en ingebouwde variabelen.
 ms.topic: article
-ms.date: 10/23/2019
-ms.openlocfilehash: 11771c32db3b3d7c975c0262bda228903a58978f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/08/2020
+ms.openlocfilehash: 1d680fd8512ec96fa4fb5762e4a3552e5e2e4dd3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171054"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446924"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Naslag informatie over ACR-taken: YAML
 
@@ -18,7 +18,7 @@ Dit artikel bevat informatie over het maken van YAML-bestanden met meerdere stap
 
 ## <a name="acr-taskyaml-file-format"></a>ACR-taak. yaml-bestands indeling
 
-ACR-taken bieden ondersteuning voor een taak declaratie met meerdere stappen in de standaard YAML-syntaxis. U definieert de stappen van een taak in een YAML-bestand. U kunt de taak vervolgens hand matig uitvoeren door het bestand door te geven aan de opdracht [AZ ACR run][az-acr-run] . U kunt ook het bestand gebruiken om een taak te maken met [AZ ACR Task Create][az-acr-task-create] die automatisch wordt geactiveerd door een update van Git of basis installatie kopie. Hoewel in dit artikel wordt verwezen naar `acr-task.yaml` het bestand dat de stappen bevat, ondersteunt ACR-taken een geldige bestands naam met een [ondersteunde extensie](#supported-task-filename-extensions).
+ACR-taken bieden ondersteuning voor een taak declaratie met meerdere stappen in de standaard YAML-syntaxis. U definieert de stappen van een taak in een YAML-bestand. U kunt de taak vervolgens hand matig uitvoeren door het bestand door te geven aan de opdracht [AZ ACR run][az-acr-run] . U kunt ook het bestand gebruiken om een taak te maken met [AZ ACR Task Create][az-acr-task-create] die automatisch wordt geactiveerd tijdens een Git-door Voer, een update van een basis installatie kopie of een schema. Hoewel in dit artikel wordt verwezen naar `acr-task.yaml` het bestand dat de stappen bevat, ondersteunt ACR-taken een geldige bestands naam met een [ondersteunde extensie](#supported-task-filename-extensions).
 
 `acr-task.yaml`Primitieven op het hoogste niveau zijn **taak eigenschappen**, **typen stappen**en **stap-eigenschappen**:
 
@@ -80,9 +80,10 @@ Taak eigenschappen worden meestal boven aan een bestand weer gegeven `acr-task.y
 | `version` | tekenreeks | Ja | De versie van het `acr-task.yaml` bestand zoals geparseerd door de service ACR tasks. Hoewel ACR-taken streven om achterwaartse compatibiliteit te behouden, kunnen met deze waarde ACR-taken de compatibiliteit binnen een gedefinieerde versie behouden blijven. Als u geen waarde opgeeft, wordt de meest recente versie gebruikt. | Nee | Geen |
 | `stepTimeout` | int (seconden) | Ja | Het maximum aantal seconden dat een stap kan worden uitgevoerd. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `timeout` van alle stappen ingesteld. Als de `timeout` eigenschap in een stap is opgegeven, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | 600 (10 minuten) |
 | `workingDirectory` | tekenreeks | Ja | De werkmap van de container tijdens runtime. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `workingDirectory` van alle stappen ingesteld. Als u een stap opgeeft, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | `/workspace` |
-| `env` | [teken reeks, teken reeks,...] | Ja |  Matrix van teken reeksen in `key=value` een indeling die de omgevings variabelen voor de taak definieert. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `env` van alle stappen ingesteld. Als u een stap opgeeft, worden de omgevings variabelen die zijn overgenomen van de taak, overschreven. | Geen |
-| `secrets` | [geheim, geheim,...] | Ja | Matrix van [geheime](#secret) objecten. | Geen |
-| `networks` | [netwerk, netwerk,...] | Ja | Matrix van [netwerk](#network) objecten. | Geen |
+| `env` | [teken reeks, teken reeks,...] | Ja |  Matrix van teken reeksen in `key=value` een indeling die de omgevings variabelen voor de taak definieert. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `env` van alle stappen ingesteld. Als u een stap opgeeft, worden de omgevings variabelen die zijn overgenomen van de taak, overschreven. | Ja | Geen |
+| `secrets` | [geheim, geheim,...] | Ja | Matrix van [geheime](#secret) objecten. Nee | Geen |
+| `networks` | [netwerk, netwerk,...] | Ja | Matrix van [netwerk](#network) objecten. Nee | Geen |
+| `volumes` | [volume, volume,...] | Ja | Matrix van [volume](#volume) -objecten. Hiermee geeft u de volumes met de bron inhoud aan een stap koppelen. | Nee | Geen |
 
 ### <a name="secret"></a>geheim
 
@@ -104,7 +105,16 @@ Het netwerk object heeft de volgende eigenschappen.
 | `driver` | tekenreeks | Ja | Het stuur programma voor het beheren van het netwerk. | Geen |
 | `ipv6` | booleaans | Ja | Of IPv6-netwerken zijn ingeschakeld. | `false` |
 | `skipCreation` | booleaans | Ja | Hiermee wordt aangegeven of het maken van netwerken moet worden overgeslagen. | `false` |
-| `isDefault` | booleaans | Ja | Of het netwerk een standaard netwerk is dat wordt meegeleverd met Azure Container Registry | `false` |
+| `isDefault` | booleaans | Ja | Of het netwerk een standaard netwerk is dat wordt meegeleverd met Azure Container Registry. | `false` |
+
+### <a name="volume"></a>volume
+
+Het object volume heeft de volgende eigenschappen.
+
+| Eigenschap | Type | Optioneel | Beschrijving | Standaardwaarde |
+| -------- | ---- | -------- | ----------- | ------- | 
+| `name` | tekenreeks | No | De naam van het volume dat moet worden gekoppeld. Mag alleen alfanumerieke tekens,-en _ bevatten. | Geen |
+| `secret` | teken reeks voor map [string] | Nee | Elke sleutel van de kaart is de naam van een bestand dat is gemaakt en ingevuld in het volume. Elke waarde is de teken reeks versie van het geheim. Geheime waarden moeten base64-gecodeerd zijn. | Geen |
 
 ## <a name="task-step-types"></a>Taak stap typen
 
@@ -161,6 +171,7 @@ Het `build` stap type ondersteunt de volgende eigenschappen. Meer informatie ove
 | `secret` | object | Optioneel |
 | `startDelay` | int (seconden) | Optioneel |
 | `timeout` | int (seconden) | Optioneel |
+| `volumeMount` | object | Optioneel |
 | `when` | [teken reeks, teken reeks,...] | Optioneel |
 | `workingDirectory` | tekenreeks | Optioneel |
 
@@ -278,6 +289,7 @@ Het `cmd` stap type ondersteunt de volgende eigenschappen:
 | `secret` | object | Optioneel |
 | `startDelay` | int (seconden) | Optioneel |
 | `timeout` | int (seconden) | Optioneel |
+| `volumeMount` | object | Optioneel |
 | `when` | [teken reeks, teken reeks,...] | Optioneel |
 | `workingDirectory` | tekenreeks | Optioneel |
 
@@ -352,6 +364,38 @@ Met behulp van de standaard `docker run` installatie kopie verwijzing Conventie 
       - cmd: $Registry/myimage:mytag
     ```
 
+#### <a name="access-secret-volumes"></a>Toegang tot geheime volumes
+
+`volumes`Met de eigenschap kunnen volumes en hun geheime inhoud worden opgegeven voor `build` en `cmd` stappen in een taak. In elke stap geeft een optionele `volumeMounts` eigenschap een lijst van de volumes en bijbehorende container paden om te koppelen aan de container bij die stap. Geheimen worden als bestanden weer gegeven op het koppelingspad van elk volume.
+
+Een taak uitvoeren en twee geheimen koppelen aan een stap: één opgeslagen in een sleutel kluis en één die is opgegeven op de opdracht regel:
+
+```azurecli
+az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://github.com/Azure-Samples/acr-tasks.git
+```
+
+<!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/mounts-secrets.yaml -->
+<!-- [!code-yml[task](~/acr-tasks/mounts-secrets.yaml)] -->
+
+```yml
+# This template demonstrates mounting a custom volume into a container at a CMD step
+secrets:
+  - id: sampleSecret
+    keyvault: https://myacbvault2.vault.azure.net/secrets/SampleSecret
+
+volumes:
+  - name: mysecrets
+    secret:
+      mysecret1: {{.Secrets.sampleSecret | b64enc}}
+      mysecret2: {{.Values.mysecret | b64enc}}
+
+steps:
+  - cmd: bash cat /run/test/mysecret1 /run/test/mysecret2
+    volumeMounts:
+      - name: mysecrets
+        mountPath: /run/test
+```
+
 ## <a name="task-step-properties"></a>Eigenschappen van taak stap
 
 Elk stap type ondersteunt verschillende eigenschappen die geschikt zijn voor het type. In de volgende tabel worden alle beschik bare stap eigenschappen gedefinieerd. Niet alle stap typen ondersteunen alle eigenschappen. Als u wilt zien welke van deze eigenschappen beschikbaar zijn voor elk stap type, raadpleegt u de sectie met Naslag informatie voor het type [cmd](#cmd), [Build](#build)en [Push](#push) .
@@ -379,7 +423,17 @@ Elk stap type ondersteunt verschillende eigenschappen die geschikt zijn voor het
 | `timeout` | int (seconden) | Ja | Maximum aantal seconden dat een stap kan worden uitgevoerd voordat deze wordt beëindigd. | 600 |
 | [`when`](#example-when) | [teken reeks, teken reeks,...] | Ja | Hiermee configureert u de afhankelijkheid van een stap voor een of meer andere stappen in de taak. | Geen |
 | `user` | tekenreeks | Ja | De gebruikers naam of UID van een container | Geen |
+| `volumeMounts` | object | Nee | Matrix van [volumeMount](#volumemount) -objecten. | Geen |
 | `workingDirectory` | tekenreeks | Ja | Hiermee stelt u de werkmap voor een stap in. ACR-taken maken standaard een hoofdmap als werkmap. Als uw build echter verschillende stappen heeft, kunnen eerdere stappen artefacten delen met latere stappen door dezelfde werkmap op te geven. | `/workspace` |
+
+### <a name="volumemount"></a>volumeMount
+
+Het object volumeMount heeft de volgende eigenschappen.
+
+| Eigenschap | Type | Optioneel | Beschrijving | Standaardwaarde |
+| -------- | ---- | -------- | ----------- | ------- | 
+| `name` | tekenreeks | No | De naam van het volume dat moet worden gekoppeld. Moet exact overeenkomen met de naam van een `volumes` eigenschap. | Geen |
+| `mountPath`   | tekenreeks | nee | Het absolute pad voor het koppelen van bestanden in de container.  | Geen |
 
 ### <a name="examples-task-step-properties"></a>Voor beelden: taak stap eigenschappen
 
@@ -454,7 +508,7 @@ ACR-taken bevatten een standaardset variabelen die beschikbaar zijn voor taak st
 * `Run.Branch`
 * `Run.TaskName`
 
-De namen van variabelen zijn doorgaans zelf uitleg. Hier volgt een overzicht van de meest gebruikte variabelen. Vanaf YAML-versie `v1.1.0` kunt u een verkorte, vooraf gedefinieerde [taak alias](#aliases) gebruiken in plaats van de meeste run-variabelen. Gebruik bijvoorbeeld in plaats van `{{.Run.Registry}}` de `$Registry` alias.
+De namen van variabelen zijn doorgaans zelf uitleg. Details volgen voor veelgebruikte variabelen. Vanaf YAML-versie `v1.1.0` kunt u een verkorte, vooraf gedefinieerde [taak alias](#aliases) gebruiken in plaats van de meeste run-variabelen. Gebruik bijvoorbeeld in plaats van `{{.Run.Registry}}` de `$Registry` alias.
 
 ### <a name="runid"></a>Run.ID
 
@@ -538,7 +592,7 @@ steps:
 
 Elk van de volgende aliassen wijst naar een stabiele afbeelding in micro soft Container Registry (MCR). U kunt deze in de `cmd` sectie van een taak bestand raadplegen zonder een instructie te gebruiken.
 
-| Alias | Afbeelding |
+| Alias | Installatiekopie |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |

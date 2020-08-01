@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: bba634fa20c3bab6e3763f6cedcbeb77f4546098
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bbc6b4c1317ac31d6262892ac32e2d45cf4863db
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327868"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449088"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -579,7 +579,7 @@ Voer de volgende stappen uit om te waarschuwen als het gefactureerde gegevens vo
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
-   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Als u een differetn wilt 
+   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
    - **Waarschuwingslogica** is **Gebaseerd op het ** *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
    - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** voor elke *1440* minutesto één keer per dag uitgevoerd.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:

@@ -69,8 +69,6 @@
           href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Bronkenmerk ontbreekt
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: Inrichtingstaak is traag
-          href: application-provisioning-when-will-provisioning-finish.md
         - name: Inrichtingslogboeken
           href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: Een SCIM-eindpunt bouwen en inrichting configureren

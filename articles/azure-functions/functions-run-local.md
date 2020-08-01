@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085143"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449142"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -33,18 +33,19 @@ Het ontwikkelen van functies op uw lokale computer en het publiceren van deze na
 
 Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is afhankelijk van uw lokale ontwikkel omgeving, de [keuze van de taal](supported-languages.md)en het vereiste ondersteunings niveau:
 
-+ **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
-
 + [**Versie 3. x/2. x**](#v2): ondersteunt [versie 3. x of 2. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](?tabs=windows#v2), [macOS](?tabs=macos#v2)en [Linux](?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
 
++ **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
+
 Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
+
+## <a name="prerequisites"></a>Vereisten
+
+Azure Functions Core Tools is momenteel afhankelijk van de Azure CLI voor verificatie met uw Azure-account. Dit betekent dat u [de Azure cli lokaal moet installeren](/cli/azure/install-azure-cli) om vanuit Azure functions core tools [naar Azure te kunnen publiceren](#publish) . 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools installeren
 
 [Azure functions core tools] bevat een versie van dezelfde runtime die voorziet in azure functions runtime die u kunt uitvoeren op uw lokale ontwikkel computer. Het bevat ook opdrachten voor het maken van functies, verbinding maken met Azure en functie projecten implementeren.
-
->[!IMPORTANT]
->U moet de [Azure cli](/cli/azure/install-azure-cli) lokaal hebben geïnstalleerd om te kunnen publiceren naar Azure vanaf Azure functions core tools.  
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>Versie 3. x en 2. x
 
@@ -55,31 +56,16 @@ Versie 3. x/2. x van de hulpprogram ma's maakt gebruik van de Azure Functions ru
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's in Windows te installeren. U kunt ook [Choco lade](https://chocolatey.org/)gebruiken. Zie het Leesmij-bestand met [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie.
+In de volgende stappen wordt een Windows-installatie programma (MSI) gebruikt om de kern Hulpprogramma's v3. x te installeren. Raadpleeg het Leesmij-bestand voor de [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie over andere pakket installatie Programma's die nodig zijn voor het installeren van kern hulpprogramma's v2. x.
 
-1. Installeer [Node.js], dat NPM omvat.
-    - Voor versie 3. x van de hulpprogram ma's worden alleen Node.js 10 en latere versies ondersteund.
-    - Voor versie 2. x van de hulpprogram ma's worden alleen Node.js 8,5 en latere versies ondersteund.
+1. Down load en voer het installatie programma voor kern Hulpprogramma's uit op basis van uw versie van Windows:
 
-1. Installeer het pakket met kern Hulpprogramma's:
-
-    ##### <a name="v3x-recommended"></a>v3. x (aanbevolen)
-
-    ```cmd
-    npm install -g azure-functions-core-tools@3
-    ```
-
-    ##### <a name="v2x"></a>v2. x
-
-    ```cmd
-    npm install -g azure-functions-core-tools@2
-    ```
-
-   Het kan enkele minuten duren voordat NPM het pakket met kern Hulpprogramma's downloadt en installeert.
+    - [v3. x-Windows 64-bits](https://go.microsoft.com/fwlink/?linkid=2135274) (aanbevolen). Voor [Visual Studio code debugging](functions-develop-vs-code.md#debugging-functions-locally) is 64-bits vereist.)
+    - [v3. x-Windows 32-bits](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u de [.net Core 3. x SDK voor Windows](https://dotnet.microsoft.com/download).
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 

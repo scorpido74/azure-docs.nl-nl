@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: ecc2925b52679c5807c9fa79a67d7b45411df526
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e6c83c37e5b24df28f3cbb4509f0f72e2fde278e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014028"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448654"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -398,7 +398,7 @@ Houd rekening met de volgende beperkingen:
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmatisch beheer van failover-groepen
 
-Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
+Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie voor meer informatie over het implementeren van toegangs rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL Database failover beheren
 

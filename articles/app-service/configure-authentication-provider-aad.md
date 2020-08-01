@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d5348f8abe8d30c7f23882974b8c121af39636c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860513"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448149"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Azure AD-aanmelding
 
@@ -78,14 +78,14 @@ Voer de volgende stappen uit:
 1. In **omleidings-URI**selecteert u **Web** en type `<app-url>/.auth/login/aad/callback` . Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Selecteer **Maken**.
 1. Nadat de app-registratie is gemaakt, kopieert u de **toepassings-id** en de **Directory (Tenant)-ID** voor later.
-1. Selecteer **verificatie**. Schakel onder **impliciete toekenning** **id-tokens** in om OpenID Connect te verbinden met gebruikers aanmeldingen van app service.
+1. Selecteer **Verificatie**. Schakel onder **impliciete toekenning** **id-tokens** in om OpenID Connect te verbinden met gebruikers aanmeldingen van app service.
 1. Beschrijving Selecteer **huis stijl**. Voer de URL van uw App Service-app in op de URL van de **Start pagina**en selecteer **Opslaan**.
 1. Selecteer **een API**-  >  **set**beschikbaar maken. Plak de URL van uw App Service-app in een app met één Tenant en selecteer **Opslaan** en voor de app voor meerdere tenants, plak in de URL die is gebaseerd op een van de geverifieerde Tenant domeinen en selecteer vervolgens **Opslaan**.
 
    > [!NOTE]
    > Deze waarde is de **URI van de toepassings-id** van de app-registratie. Als uw web-app toegang tot een API in de Cloud vereist, hebt u de URI van de **toepassings-id** van de web-app nodig wanneer u de Cloud app Service Resource configureert. U kunt dit bijvoorbeeld gebruiken als u wilt dat de Cloud service expliciet toegang tot de Web-App verleent.
 
-1. Selecteer **Een bereik toevoegen**.
+1. Selecteer **een bereik toevoegen**.
    1. Voer *user_impersonation*in **Scope naam**in.
    1. Voer in de tekst vakken de naam en beschrijving van het toestemming bereik in die gebruikers op de pagina toestemming moeten zien. Voer bijvoorbeeld *toegang tot mijn app*in.
    1. Selecteer **bereik toevoegen**.
@@ -103,7 +103,7 @@ Voer de volgende stappen uit:
     |Veld|Beschrijving|
     |-|-|
     |Client-id| Gebruik de **toepassings-id (client)** van de app-registratie. |
-    |URL van de uitgever| Gebruik `<authentication-endpoint>/<tenant-id>/v2.0` en vervang door *\<authentication-endpoint>* het [verificatie-eind punt voor uw cloud omgeving](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (bijvoorbeeld ' https://login.microsoft.com "voor wereld wijd Azure), vervang ook door *\<tenant-id>* de **Directory-ID (Tenant)** waarin de app-registratie is gemaakt. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-Tenant, en om de juiste meta gegevens te downloaden om de juiste sleutels voor token-ondertekening en claim waarde voor token uitgever te bepalen. De `/v2.0` sectie kan worden wegge laten voor toepassingen die gebruikmaken van Aad v1. |
+    |URL van de uitgever| Gebruik `<authentication-endpoint>/<tenant-id>/v2.0` en vervang door *\<authentication-endpoint>* het [verificatie-eind punt voor uw cloud omgeving](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (bijvoorbeeld ' https://login.microsoft.com "voor wereld wijd Azure), vervang ook door *\<tenant-id>* de **Directory-ID (Tenant)** waarin de app-registratie is gemaakt. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-Tenant, en om de juiste meta gegevens te downloaden om de juiste sleutels voor token-ondertekening en claim waarde voor token uitgever te bepalen. Voor toepassingen die gebruikmaken van Azure AD v1 en voor Azure Functions-apps, laat u `/v2.0` de URL weg.|
     |Client geheim (optioneel)| Gebruik het client geheim dat u hebt gegenereerd in de app-registratie.|
     |Toegestane token doel groepen| Als dit een Cloud-of server-app is en u verificatie tokens van een web-app wilt toestaan, voegt u hier de URI voor de **toepassings-id** van de web-app toe. De geconfigureerde **client-id** wordt *altijd* impliciet beschouwd als een toegestane doel groep. |
 

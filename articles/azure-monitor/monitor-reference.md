@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505717"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447311"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -55,7 +55,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 - Logboeken: de service ondersteunt Diagnostische instellingen waarmee de logboeken en metrische gegevens van het platform kunnen worden verzameld voor Azure Monitor Logboeken.
 - Inzicht: er is een inzicht beschikbaar voor de service die een aangepaste bewakings ervaring biedt voor de service.
 
-| Service | Metrische gegevens | Logboeken | Inzicht | Notities |
+| Service | Metrische gegevens | Logboeken | Inzicht | Opmerkingen |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nee | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Nee | Nee | Nee |  |
@@ -71,7 +71,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |AppConfig | Nee | Nee | Nee |  |
 |Application Gateway | Ja | Ja | Nee |  |
 |Attestation-service | Nee | Nee | Nee |  |
-|Automation | Ja | Ja | Nee |  |
+|Automatisering | Ja | Ja | Nee |  |
 |Azure Service Manager (RDFE) | Nee | Nee | Nee |  |
 |Backup | Nee | Ja | Nee |  |
 |Bastion | Nee | Nee | Nee |  |
@@ -124,14 +124,14 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Logic Apps | Ja | Ja | Nee |  |
 |Machine Learning Service | Nee | Nee | Nee |  |
 |Managed Applications  | Nee | Nee | Nee |  |
-|Maps  | Nee | Nee | Nee |  |
+|Kaarten  | Nee | Nee | Nee |  |
 |Media Services | Ja | Ja | Nee |  |
 |Microsoft Flow | Nee | Nee | Nee |  |
 |Microsoft Managed Desktop | Nee | Nee | Nee |  |
 |Microsoft PowerApps | Nee | Nee | Nee |  |
 |Microsoft Social Engagement | Nee | Nee | Nee |  |
 |Microsoft Stream | Ja | Ja | Nee |  |
-|Migrate | Nee | Nee | Nee |  |
+|Migreren | Nee | Nee | Nee |  |
 |Multi-Factor Authentication | Nee | Ja | Nee |  |
 |Network Watcher | Ja | Ja | Nee |  |
 |Notification Hubs | Ja | Nee | Nee |  |
@@ -149,13 +149,13 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Service Bus | Ja | Ja | Nee |  |
 |Service Fabric | Nee | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
-|Siteherstel | Nee | Ja | Nee |  |
+|Site Recovery | Nee | Ja | Nee |  |
 |Lente-Cloud service | Nee | Nee | Nee |  |
 |SQL Data Warehouse | Ja | Ja | Nee |  |
 |SQL Database | Ja | Ja | Nee |  |
 |SQL Server Stretch Database | Ja | Ja | Nee |  |
 |Stack | Nee | Nee | Nee |  |
-|Opslag | Ja | Nee | [Ja](insights/storage-insights-overview.md) |  |
+|Storage | Ja | Nee | [Ja](insights/storage-insights-overview.md) |  |
 |Opslag cache | Nee | Nee | Nee |  |
 |Opslag synchronisatie Services | Nee | Nee | Nee |  |
 |Stream Analytics | Ja | Ja | Nee |  |
@@ -163,8 +163,8 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |TINA | Nee | Nee | Nee |  |
 |Traffic Manager | Ja | Ja | Nee |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
-|Virtuele-machineschaalsets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtual Machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtual Machine Scale Sets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtuele machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | Nee | Ja | Nee |  |
 |VPN Gateway | Ja | Ja | Nee |  |
@@ -176,7 +176,7 @@ De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log
 
 | Product/service | Beschrijving |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking.md) en [updatebeheer](../automation/automation-update-management.md). |
+| [Azure Automation](../automation/index.yml) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking.md) en [updatebeheer](../automation/update-management/update-mgmt-overview.md). |
 | [Azure Information Protection](/azure/information-protection/) | U kunt documenten en e-mail berichten classificeren en optioneel beveiligen. Zie [centrale rapportage voor Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | Verzamelen en analyseren van beveiligings gebeurtenissen en het uitvoeren van bedreigings analyses. [Gegevens verzameling in azure Security Center](../security-center/security-center-enable-data-collection.md) weer geven |
 | [Azure Sentinel](../sentinel/index.yml) | Maakt verbinding met verschillende bronnen, waaronder Office 365 en Amazon Web Services Cloud Trail. Zie [verbinding maken met gegevens bronnen](../sentinel/connect-data-sources.md). |

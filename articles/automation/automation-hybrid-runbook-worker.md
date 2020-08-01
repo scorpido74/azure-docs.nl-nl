@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024823"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448086"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Overzicht van Hybrid Runbook Worker
 
@@ -90,13 +90,13 @@ Azure Automation Hybrid Runbook Worker kan worden gebruikt in Azure Government v
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Updatebeheer op Hybrid Runbook Worker
 
-Als Azure Automation [updatebeheer](automation-update-management.md) is ingeschakeld, wordt een computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook Worker. Elke werk nemer kan runbooks ondersteunen die gericht zijn op update beheer.
+Als Azure Automation [updatebeheer](update-management/update-mgmt-overview.md) is ingeschakeld, wordt een computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook Worker. Elke werk nemer kan runbooks ondersteunen die gericht zijn op update beheer.
 
 Een op deze manier geconfigureerde machine is niet geregistreerd met Hybrid Runbook Worker groepen die al zijn gedefinieerd in uw Automation-account. U kunt de machine toevoegen aan een Hybrid Runbook Worker groep, maar u moet hetzelfde account gebruiken voor zowel Updatebeheer als het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van Hybrid Runbook Worker.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Updatebeheer adressen voor Hybrid Runbook Worker
 
-Naast de standaard adressen en poorten die vereist zijn voor de Hybrid Runbook Worker, heeft Updatebeheer aanvullende vereisten voor netwerk configuratie beschreven onder het gedeelte [netwerk planning](automation-update-management.md#ports) .
+Naast de standaard adressen en poorten die vereist zijn voor de Hybrid Runbook Worker, heeft Updatebeheer aanvullende vereisten voor netwerk configuratie beschreven onder het gedeelte [netwerk planning](update-management/update-mgmt-overview.md#ports) .
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Azure Automation status configuratie op een Hybrid Runbook Worker
 
