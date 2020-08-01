@@ -3,19 +3,19 @@ title: Overdracht van gebeurtenis van webhook
 description: In dit artikel worden webhook-gebeurtenis bezorgings-en eindpunt validatie beschreven bij gebruik van webhooks.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118950"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461235"
 ---
 # <a name="webhook-event-delivery"></a>Overdracht van gebeurtenis van webhook
 Webhooks zijn een van de vele manieren om gebeurtenissen van Azure Event Grid te ontvangen. Wanneer een nieuwe gebeurtenis gereed is, boekt Event Grid-Service een HTTP-aanvraag naar het geconfigureerde eind punt met de gebeurtenis in de hoofd tekst van de aanvraag.
 
 Net als bij veel andere services die webhooks ondersteunen, moet Event Grid het eigendom van het webhook-eind punt bewijzen voordat ze gebeurtenissen aan dat eind punt kunnen leveren. Deze vereiste voor komt dat een kwaadwillende gebruiker uw eind punt kan overlopen met gebeurtenissen. Wanneer u een van de drie onderstaande Azure-Services gebruikt, wordt deze validatie automatisch door de Azure-infra structuur afgehandeld:
 
-- Azure Logic Apps met [Event grid-connector](https://docs.microsoft.com/connectors/azureeventgrid/)
+- Azure Logic Apps met [Event grid-connector](/connectors/azureeventgrid/)
 - Azure Automation via [webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 - Azure Functions met [Event grid trigger](../azure-functions/functions-bindings-event-grid.md)
 
@@ -81,7 +81,7 @@ Of u kunt het abonnement hand matig valideren door een GET-aanvraag naar de vali
 Zie voor een voor beeld van het verwerken van de handshake voor het valideren van een abonnement een C#-voor [beeld](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Eindpunt validatie met CloudEvents v 1.0
-Als u al bekend bent met Event Grid, is het mogelijk dat u op de hoogte bent van de verificatie-handshake van het Event Grid om misbruik te voor komen. CloudEvents v 1.0 implementeert zijn eigen [beveiligings semantiek](webhook-event-delivery.md) met behulp van de http-opties methode. [Hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) vindt u meer informatie. Wanneer u het CloudEvents-schema voor uitvoer gebruikt, wordt Event Grid gebruikt met de CloudEvents v 1.0-beschermings beveiliging in plaats van het Event Grid validatie gebeurtenis mechanisme.
+Als u al bekend bent met Event Grid, is het mogelijk dat u op de hoogte bent van de verificatie-handshake van het Event Grid om misbruik te voor komen. CloudEvents v 1.0 implementeert zijn eigen [beveiligings semantiek](webhook-event-delivery.md) met behulp van de http-opties methode. Meer informatie hierover vindt u [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wanneer u het CloudEvents-schema voor uitvoer gebruikt, wordt Event Grid gebruikt met de CloudEvents v 1.0-beschermings beveiliging in plaats van het Event Grid validatie gebeurtenis mechanisme.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg het volgende artikel voor meer informatie over het oplossen van validaties van gebeurtenis abonnementen: 

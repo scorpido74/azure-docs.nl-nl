@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419611"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461354"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -410,17 +410,8 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Uittredings datums &
-Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
-Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert.
-
-Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
-
-> [!WARNING]
-> Alle versies **1. x** van de node client SDK voor SQL API worden op **30 augustus 2020**ingetrokken. Dit is alleen van invloed op de client-side node SDK en heeft geen invloed op Server scripts (opgeslagen procedures, triggers en Udf's).
-> 
->
-<br/>
+Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert.
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
@@ -480,6 +471,6 @@ Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6437e25a2d6afc547b03f2b2144df63728116ef4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045481"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460232"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -45,6 +45,7 @@ Deze sectie bevat verwijzingen naar Windows-toepassingen en SQL Server oplossing
 ### <a name="file-sharing-and-global-file-caching"></a>Bestanden delen en globale bestands cache
 
 * [Talon/Azure NetApp Files-implementatie](https://youtu.be/91LKb1qsLIM)
+* [Uw eigen Azure NFS bouwen? Wrestling Linux-bestands shares in de Cloud](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
 
 ### <a name="sql-server"></a>SQL Server
 

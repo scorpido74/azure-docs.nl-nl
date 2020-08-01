@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373739"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475818"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
 
@@ -64,7 +64,7 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 | ------------- | ------------- |
 |**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
-|**Aanvullende functies genereren*** |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bigrams en trigrams. Meer informatie over [hoe dit wordt gedaan met Bert.](#bert-integration)|
+|**Aanvullende functies genereren*** |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br><br> *Voor prognose taken* worden de volgende extra datetime-functies gemaakt: ISO-jaar, half-halfjaar, kalender maand als teken reeks, week, dag van de week, teken reeks, dag van kwar taal, dag van jaar, am/pm (0 als het uur vóór 12:00 uur (12 uur), 1 anders), am/pm als teken reeks, uur van dag (12hr basis)<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bigrams en trigrams. Meer informatie over [hoe dit wordt gedaan met Bert.](#bert-integration)|
 |**Transformeren en coderen***|Numerieke functies met weinig unieke waarden transformeren in categorische-functies.<br/><br/>Code ring met één Hot-categorische wordt gebruikt voor functies met weinig kardinaliteit. Een hot-hash-code ring wordt gebruikt voor categorische-functies met een hoge kardinaliteit.|
 |**Woord insluitingen**|Met een tekst featurizer worden vectoren van tekst tokens geconverteerd naar zinnen vectoren met behulp van een voortraind model. De insluitings vector van elk woord in een document wordt samengevoegd met de rest om een document functie Vector te maken.|
 |**Doel codering**|Voor categorische-functies wordt met deze stap elke categorie toegewezen aan een gemiddelde doel waarde voor regressie problemen en aan de klasse-kans voor elke klasse voor classificatie problemen. Op frequentie gebaseerde weging en kruis validatie met k-vouwen worden toegepast om het overschrijden van de toewijzing en lawaai door sparse gegevens categorieën te verminderen.|
@@ -163,9 +163,11 @@ text_transformations_used
 
 3. In de stap voor het opruimen van functies vergelijkt AutoML BERT met de basis lijn (een verzameling woorden en getrainde woord insluitingen) op een voor beeld van de gegevens en bepaalt u of BERT nauw keurigere verbeteringen oplevert. Als wordt vastgesteld dat BERT beter presteert dan de basis lijn, gebruikt AutoML vervolgens BERT voor Text parametrisatie als de optimale parametrisatie-strategie en gaat over op de volledige gegevens van featurizing. In dat geval wordt de "PretrainedTextDNNTransformer" in het uiteindelijke model weer geven.
 
+BERT wordt over het algemeen langer dan de meeste andere featurizers. Dit kan worden sped door meer compute in uw cluster op te geven. AutoML distribueert BERT-training over meerdere knoop punten als deze beschikbaar zijn (Maxi maal 8 knoop punten). U kunt dit doen door [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) hoger dan 1 in te stellen. Voor betere prestaties raden we u aan sku's te gebruiken met RDMA-mogelijkheden (zoals ' STANDARD_NC24r ' of ' STANDARD_NC24rs_V3 ')
+
 AutoML ondersteunt momenteel ongeveer 100 talen en afhankelijk van de taal van de gegevensset, kiest AutoML het juiste BERT-model. Voor Duitse gegevens gebruiken we het Duitse BERT-model. Voor het Engels gebruiken we het Engelse BERT-model. Voor alle andere talen gebruiken we het Multilingual BERT-model.
 
-In de volgende code wordt het Duitse BERT-model geactiveerd, omdat de taal van de gegevensset is opgegeven in deu, de taal code van drie letters voor Duits volgens de [ISO-classificatie](https://iso639-3.sil.org/code/hbs):
+In de volgende code wordt het Duitse BERT-model geactiveerd, omdat de taal van de gegevensset is opgegeven in deu, de taal code van drie letters voor Duits volgens de [ISO-classificatie](https://iso639-3.sil.org/code/deu):
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

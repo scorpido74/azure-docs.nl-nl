@@ -3,16 +3,16 @@ title: Berichten uitwisselen met Azure Service Bus
 description: Maak geautomatiseerde taken en werk stromen die berichten verzenden en ontvangen met behulp van Azure Service Bus in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283993"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461593"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -31,7 +31,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 * Een Service Bus naam ruimte en bericht entiteit, zoals een wachtrij. Deze items en uw logische app moeten gebruikmaken van hetzelfde Azure-abonnement. Als u deze items niet hebt, leert u hoe u [uw service bus naam ruimte en een wachtrij kunt maken](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
@@ -45,7 +45,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij uw Azure-account in het [Azure Portal](https://portal.azure.com).
 
 1. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
@@ -54,7 +54,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 1. Haal de connection string voor uw Service Bus naam ruimte op. U hebt deze teken reeks nodig wanneer u de verbindings gegevens in uw logische app opgeeft.
 
    1. Selecteer **RootManageSharedAccessKey**in het deel venster **Shared Access policies** .
-   
+
    1. Selecteer de knop kopiëren naast uw primaire connection string. Sla de connection string op voor later gebruik.
 
       ![Service Bus naam ruimte connection string kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -171,4 +171,3 @@ Raadpleeg de [referentie pagina](/connectors/servicebus/)voor de connector voor 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
-

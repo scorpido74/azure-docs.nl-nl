@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: c1c146783d54bf2df25a130b73ab430c6edeaef7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d39b5f414b1998a4c0eacbbf8fd792d27c70309c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319453"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474577"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Software omgevingen maken & gebruiken in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,7 +262,8 @@ myenv.docker.enabled = True
 
 Standaard wordt de zojuist gemaakte docker-installatie kopie weer gegeven in het container register dat is gekoppeld aan de werk ruimte.  De naam van de opslag plaats heeft de notatie *azureml/azureml_ \<uuid\> *. Het*uuid*-gedeelte van de naam komt overeen met een hash die wordt berekend op basis van de configuratie van de omgeving. Met deze correspondentie kan de service bepalen of een installatie kopie voor de opgegeven omgeving al bestaat voor hergebruik.
 
-Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers). De opgegeven Python-pakketten worden geïnstalleerd. De basis installatie kopie heeft CPU-versies en GPU-versies. Azure Machine Learning detecteert automatisch welke versie moet worden gebruikt. Het is ook mogelijk om een [aangepaste docker-basis installatie kopie](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)te gebruiken.
+### <a name="use-a-custom-docker-image-or-dockerfile"></a>Een aangepaste docker-installatie kopie of Dockerfile gebruiken 
+De service gebruikt automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers). De opgegeven Python-pakketten worden geïnstalleerd. De basis installatie kopie heeft CPU-versies en GPU-versies. Azure Machine Learning detecteert automatisch welke versie moet worden gebruikt. Het is ook mogelijk om een [aangepaste docker-basis installatie kopie](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)te gebruiken.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -407,7 +408,9 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Voorbeeldnotebooks
+## <a name="notebooks"></a>Notebooks
+
+Dit [artikel](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#add-new-kernels) bevat informatie over het installeren van een Conda-omgeving als een kernel in een notebook.
 
 In dit [voor beeld wordt het notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) uitgebreid op concepten en methoden die in dit artikel worden getoond.
 

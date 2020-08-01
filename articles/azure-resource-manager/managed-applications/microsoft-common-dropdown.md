@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f5eac1d331bd439ad4066d1dea1b9aa950fcce60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004438"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474339"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Micro soft. common. vervolg keuzelijst UI-element
 
@@ -47,6 +47,7 @@ Wanneer filteren is ingeschakeld, bevat het besturings element een tekstvak voor
     "name": "element1",
     "type": "Microsoft.Common.DropDown",
     "label": "Example drop down",
+    "placeholder": "",
     "defaultValue": "Value two",
     "toolTip": "",
     "multiselect": true,  
@@ -90,6 +91,7 @@ Wanneer filteren is ingeschakeld, bevat het besturings element een tekstvak voor
 - `constraints.allowedValues`moet ten minste één item bevatten.
 - Als u een waarde wilt emuleren die niet vereist is, voegt u een item met een label en waarde van `""` (lege teken reeks) toe aan `constraints.allowedValues` .
 - De `defaultDescription` eigenschap wordt gebruikt voor items die geen beschrijving hebben.
+- De `placeholder` eigenschap is Help-tekst die verdwijnt wanneer de gebruiker begint met het bewerken van. Als de `placeholder` en `defaultValue` beide zijn gedefinieerd, `defaultValue` krijgt de prioriteit en wordt weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

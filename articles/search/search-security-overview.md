@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 07/30/2020
+ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423861"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475427"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
 In dit artikel worden de belangrijkste beveiligings functies in azure Cognitive Search beschreven waarmee u inhoud en bewerkingen kunt beveiligen. 
 
-+ Op de opslaglaag is encryption-at-rest een gegeven op platform niveau, maar Cognitive Search biedt ook een optie voor dubbele versleuteling voor klanten die de dubbele beveiliging van zowel gebruikers als door micro soft beheerde sleutels willen.
++ Op de opslaglaag is encryption-at-rest een gegeven op platform niveau, maar Cognitive Search biedt via Azure Key Vault door de klant beheerde sleutels voor een extra versleutelings laag.
 
 + Inkomende beveiliging beveiligt het eind punt van de zoek service op toenemende niveaus van beveiliging: van API-sleutels op de aanvraag, tot binnenkomende regels in de firewall, tot privé-eind punten die uw service volledig kunnen afschermen via het open bare Internet.
 
@@ -125,7 +125,11 @@ Beheerders rechten voor inhoud die in de service wordt gehost, zoals de mogelijk
 
 Azure Cognitive Search is gecertificeerd voor meerdere globale, regionale en branchespecifieke standaarden voor zowel de open bare Cloud als Azure Government. Voor de volledige lijst downloadt u de [ **Microsoft Azure compliance-aanbod** ](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) van het technisch document op de pagina officiële controle rapporten.
 
-## <a name="see-also"></a>Zie ook
+Voor naleving kunt u [Azure Policy](../governance/policy/overview.md) gebruiken om u te helpen bij het implementeren van de aanbevolen procedures voor beveiliging van [Azure Security](../security/benchmarks/introduction.md). Azure Security Bench Mark is een verzameling beveiligings aanbevelingen die zijn samengevoegd in beveiligings mechanismen die worden toegewezen aan belang rijke acties die u moet uitvoeren om bedreigingen voor services en gegevens te beperken. Er zijn momenteel 11 beveiligings controles, waaronder [netwerk beveiliging](../security/benchmarks/security-control-network-security.md), [logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md), en [gegevens beveiliging](../security/benchmarks/security-control-data-protection.md) om een paar te noemen.
+
+Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beheren van de naleving voor meerdere standaarden, inclusief die van Azure Security Bench Mark. Voor bekende benchmarks biedt Azure Policy ingebouwde definities, zodat u gemakkelijker beleids regels kunt maken. Voor Azure Cognitive Search is er momenteel één ingebouwde definitie voor diagnostische logboek registratie. Dit betekent dat u een beleid kunt toewijzen dat elke zoek service identificeert en corrigeert die niet compatibel is met het beveiligings beheer voor logboek registratie en controle. Zie [Azure Policy regulerende nalevings controles voor Azure Cognitive Search](security-controls-policy.md)voor meer informatie.
+
+## <a name="see-also"></a>Zie tevens
 
 + [Basisbeginselen van Azure Security](../security/fundamentals/index.yml)
 + [Azure-beveiliging](https://azure.microsoft.com/overview/security)

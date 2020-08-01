@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063826"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474305"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Gebruikers interface-element van micro soft. common. TextBox
 
@@ -29,6 +29,7 @@ Een besturings element dat kan worden gebruikt voor het bewerken van niet-opgema
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ Een besturings element dat kan worden gebruikt voor het bewerken van niet-opgema
 - De `isValid` eigenschap bevat een expressie die resulteert in waar of onwaar. Binnen de expressie definieert u de voor waarde die bepaalt of het tekstvak geldig is.
 - De `message` eigenschap is een teken reeks die moet worden weer gegeven wanneer de validatie van de waarde van het tekstvak mislukt.
 - Het is mogelijk om een waarde op te geven voor `regex` Wanneer `required` is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
+- De `placeholder` eigenschap is Help-tekst die verdwijnt wanneer de gebruiker begint met het bewerken van. Als de `placeholder` en `defaultValue` beide zijn gedefinieerd, `defaultValue` krijgt de prioriteit en wordt weer gegeven.
 
 ## <a name="example"></a>Voorbeeld
 

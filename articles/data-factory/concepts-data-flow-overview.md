@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635119"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475563"
 ---
 # <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
@@ -93,41 +93,9 @@ Het eerste tabblad in het configuratie venster van elke trans formatie bevat de 
 
 #### <a name="optimize"></a>Optimaliseren
 
-Het tabblad **Optimize** bevat instellingen voor het configureren van partitie schema's.
+Het tabblad **Optimize** bevat instellingen voor het configureren van partitie schema's. Voor meer informatie over hoe u uw gegevens stromen optimaliseert, raadpleegt u de [richt lijnen voor het toewijzen van gegevens stromen](concepts-data-flow-performance.md).
 
-![Optimaliseren](media/data-flow/optimize1.png "Optimaliseren")
-
-De standaard instelling is **huidige partitionering gebruiken**, waarmee wordt Azure Data Factory het partitioneren van het schema systeem eigen te gebruiken voor gegevens stromen die worden uitgevoerd op Spark. In de meeste scenario's wordt deze instelling aangeraden.
-
-Er zijn exemplaren waarvan u de partitionering mogelijk wilt aanpassen. Als u bijvoorbeeld uw trans formaties naar één bestand in het Lake wilt uitvoeren, selecteert u **één partitie** in een Sink-trans formatie.
-
-Het is ook mogelijk dat u de prestaties van het partitioneren van schema's wilt beheren. Het aanpassen van de partitionering biedt controle over de distributie van uw gegevens over reken knooppunten en gegevens lokale optimalisaties die zowel positieve als negatieve effecten kunnen hebben op de prestaties van uw algemene gegevens stroom. Zie de [Data flow-prestatie handleiding](concepts-data-flow-performance.md)voor meer informatie.
-
-Als u het partitioneren van een trans formatie wilt wijzigen, selecteert u het tabblad **optimaliseren** en selecteert u het keuze rondje **partitioneren instellen** . U krijgt een reeks opties voor partitioneren. De beste methode voor partitionering verschilt op basis van uw gegevens volumes, kandidaat-sleutels, null-waarden en kardinaliteit. 
-
-Een best practice is om te beginnen met de standaard partitionering en probeer verschillende opties voor partitioneren. U kunt testen met behulp van de uitvoering van de fout opsporing voor de pijp lijn en de uitvoerings tijd en het partitie gebruik in elke transformatie groepering weer geven vanuit de weer gave controle. Zie [gegevens stromen bewaken](concepts-data-flow-monitoring.md)voor meer informatie.
-
-De volgende opties voor partitioneren zijn beschikbaar.
-
-##### <a name="round-robin"></a>Round Robin 
-
-Round Robin is een eenvoudige partitie waarmee gegevens gelijkmatig over partities worden verdeeld. Gebruik Round Robin wanneer u niet over de juiste belangrijkste kandidaten beschikt voor het implementeren van een solide strategie voor slimme partitionering. U kunt het aantal fysieke partities instellen.
-
-##### <a name="hash"></a>Hash
-
-Azure Data Factory produceert een hash van kolommen om uniforme partities te maken, zodat rijen met vergelijk bare waarden in dezelfde partitie vallen. Wanneer u de hash-optie gebruikt, moet u testen op mogelijke partitie scheefheid. U kunt het aantal fysieke partities instellen.
-
-##### <a name="dynamic-range"></a>Dynamisch bereik
-
-Het dynamische bereik maakt gebruik van Spark dynamische bereiken op basis van de kolommen of expressies die u opgeeft. U kunt het aantal fysieke partities instellen. 
-
-##### <a name="fixed-range"></a>Vast bereik
-
-Bouw een expressie die een vast bereik voor waarden in de gepartitioneerde gegevens kolommen levert. U moet een goed idee hebben van uw gegevens voordat u deze optie gebruikt om het hellen van partities te voor komen. De waarden die u voor de expressie invoert, worden gebruikt als onderdeel van een partitie functie. U kunt het aantal fysieke partities instellen.
-
-##### <a name="key"></a>Sleutel
-
-Als u een goed beeld hebt van de kardinaliteit van uw gegevens, is het mogelijk dat sleutel partities een goede strategie zijn. Met sleutel partities maakt u partities voor elke unieke waarde in uw kolom. U kunt het aantal partities niet instellen omdat het nummer is gebaseerd op unieke waarden in de gegevens.
+![Optimaliseren](media/data-flow/optimize.png "Optimaliseren")
 
 #### <a name="inspect"></a>Controleert
 

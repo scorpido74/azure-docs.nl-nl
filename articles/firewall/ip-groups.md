@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565548"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460215"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>IP-groepen in Azure Firewall
 
@@ -27,7 +27,7 @@ Een IP-groep kan één IP-adres, meerdere IP-adressen of een of meer IP-adresber
 
 IP-groepen kunnen opnieuw worden gebruikt in Azure Firewall DNAT-, netwerk-en toepassings regels voor meerdere firewalls voor verschillende regio's en abonnementen in Azure. Groeps namen moeten uniek zijn. U kunt een IP-groep configureren in de Azure Portal, Azure CLI of REST API. Er wordt een voorbeeld sjabloon gegeven om u te helpen aan de slag te gaan.
 
-## <a name="sample-format"></a>Voorbeeld indeling
+## <a name="sample-format"></a>Sample-indeling
 
 De volgende IPv4-adres notatie voorbeelden zijn geldig voor gebruik in IP-groepen:
 
@@ -70,43 +70,7 @@ IP-groepen zijn beschikbaar in alle open bare Cloud regio's.
 
 ## <a name="ip-address-limits"></a>IP-adres limieten
 
-Voor 50 IP-groepen of minder kunt u elk per firewall exemplaar een maximum van 5000 afzonderlijke IP-adressen hebben. Voor 51 tot 100 IP-groepen kunt u elk per firewall-exemplaar beschikken over 500 afzonderlijke IP-adressen.
-
-### <a name="examples"></a>Voorbeelden
-
-#### <a name="example-1-supported"></a>Voor beeld 1: ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Firewallregel1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Firewallregel1|
-|IPGroup3     |1|1.2.3.4|Firewallregel1|
-|     |**Totaal 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>Voor beeld 2: ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Firewallregel1|
-|IPGroup2     |4096|11.0.0.0/20|Firewallregel1|
-|     |**Totaal 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>Voor beeld 3: niet ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Firewallregel1|
-|     |**Totaal 8192**|||
-
-#### <a name="example-4-supported"></a>Voor beeld 4: ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Firewallregel1|
-|IPGroup2     |4096|11.0.0.0/20|Firewallregel2|
-|     |**Totaal 8192**|         |         |
-
+U kunt Maxi maal 100 IP-groepen per firewall hebben met een maximum van 5000 afzonderlijke IP-adressen of IP-voor voegsels per IP-groep.
 
 ## <a name="related-azure-powershell-cmdlets"></a>Gerelateerde Azure PowerShell-cmdlets
 

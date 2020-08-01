@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168145"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459998"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Download-en release-opmerkingen
 
@@ -82,10 +82,7 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 
 De `Microsoft.Azure.CosmosDB.Table` bibliotheek is momenteel alleen beschikbaar voor .NET Framework en bevindt zich in de onderhouds modus en zal binnenkort worden afgeschaft. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table.](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)het wordt aanbevolen dat u een upgrade uitvoert naar [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
-Het preview-pakket voor [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) is afgeschaft. De SDK voor WindowsAzure. Storage-PremiumTable wordt op 15 november 2018 ingetrokken, op het moment dat de aanvragen voor de buiten gebruik gestelde SDK niet worden toegestaan. 
-
-Aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
-<br/>
+Het preview-pakket voor [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) is afgeschaft. De SDK voor WindowsAzure. Storage-PremiumTable wordt op 15 november 2018 ingetrokken, op het moment dat de aanvragen voor de buiten gebruik gestelde SDK niet worden toegestaan.
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012634"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461796"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Gegevens verwerking optimaliseren met Azure Machine Learning
 
@@ -82,4 +82,4 @@ U kunt `Dask` clusters maken in azure ml Compute Cluster met het [dask-cloudprov
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Opties voor gegevens opname met Azure machine learning](concept-data-ingestion.md).
-* [Gegevens opname met Azure Data Factory](how-to-data-ingest-adf.md).
+* [Gegevens sets maken en registreren](how-to-create-register-datasets.md).

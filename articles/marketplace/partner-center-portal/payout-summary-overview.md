@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325726"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460385"
 ---
 # <a name="payout-summary-overview"></a>Betalingsoverzicht
 
@@ -23,7 +23,7 @@ Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over ges
 > [!NOTE]
 > Om in aanmerking te komen voor toekenning, moet uw opbrengst de [betalings drempelwaarde](./payment-thresholds-methods-timeframes.md) van $50 bereiken. Zie de [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)voor meer informatie over de betalings drempel.
 
-Alle rapportage en inzichten voor de optie voor het publiceren van Transact zijn beschikbaar in de sectie analyse van partner Center, geopend met behulp van dit pictogram in de rechter bovenhoek van de portal:
+Als u de details van de uitbetaling wilt weer geven, meldt u zich aan bij [Partner Center](https://partner.microsoft.com/dashboard/home) en selecteert u het uitbetalings pictogram in de rechter bovenhoek van het scherm:
 
 ![Illustreert het uitbetalings pictogram in de rechter bovenhoek van de portal van de partner centrum.](./media/payout-overview.png)
 

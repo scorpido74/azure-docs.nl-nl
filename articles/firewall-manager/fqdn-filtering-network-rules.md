@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 599620c5fcc3ad1802527bd66e2dbead1b97d11d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28cd26532ca5bdf83902854b7910f7d6c18a4eab
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079021"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460147"
 ---
 # <a name="fqdn-filtering-in-network-rules-preview"></a>FQDN-filtering in netwerk regels (preview-versie)
 
@@ -20,13 +20,16 @@ ms.locfileid: "87079021"
 > FQDN-filtering in netwerk regels is momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Een Fully Qualified Domain Name (FQDN) vertegenwoordigt een domein naam van een host. Een domein naam is gekoppeld aan een of meer IP-adressen. U kunt FQDN-en FQDN-Tags in toepassings regels toestaan of blok keren. Met aangepaste DNS-en DNS-proxy-instellingen kunt u ook FQDN-filtering in netwerk regels gebruiken.
+Een Fully Qualified Domain Name (FQDN) vertegenwoordigt een domein naam van een host of IP-adres (sen). U kunt FQDN-namen gebruiken in netwerk regels op basis van DNS-omzetting in Azure Firewall en firewall-beleid. Met deze mogelijkheid kunt u uitgaand verkeer filteren met elk TCP/UDP-protocol (met inbegrip van NTP, SSH, RDP en meer). U moet DNS-proxy inschakelen om FQDN-namen in uw netwerk regels te gebruiken. Zie [Azure firewall-beleid DNS-instellingen (preview)](dns-settings.md)voor meer informatie.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
-Azure Firewall vertaalt de FQDN naar een IP-adres (sen) met behulp van de DNS-instellingen en wordt de regel verwerkt op basis van Azure DNS of een aangepaste DNS-configuratie.
+Wanneer u eenmaal hebt gedefinieerd welke DNS-server uw organisatie nodig heeft (Azure DNS of uw eigen aangepaste DNS), Azure Firewall de FQDN-naam naar een IP-adres (sen) vertaald op basis van de geselecteerde DNS-server. Deze vertaling gebeurt voor de verwerking van toepassingen en netwerk regels.
 
-Als u FQDN-waarden in netwerk regels wilt gebruiken, dient u DNS-proxy in te scha kelen. Als u geen DNS-proxy inschakelt, loopt de betrouw bare regel verwerking risico. Wanneer deze is ingeschakeld, wordt DNS-verkeer omgeleid naar Azure Firewall, waar u uw aangepaste DNS-server kunt configureren. Vervolgens gebruiken de firewall en clients dezelfde geconfigureerde DNS-server. Als de DNS-proxy niet is ingeschakeld, kan Azure Firewall een andere reactie veroorzaken, omdat de client en firewall mogelijk verschillende servers gebruiken voor naam omzetting. FQDN-filtering in netwerk regels is mogelijk beschadigd of inconsistent als de client en firewall verschillende DNS-antwoorden ontvangen.
+Wat is het verschil tussen het gebruik van domein namen in toepassings regels vergeleken met die van netwerk regels? 
+
+- FQDN-filtering in toepassings regels voor HTTP/S en MSSQL is gebaseerd op een transparentproxy op toepassings niveau en de SNI-header. Zo kan het onderscheid worden tussen twee FQDN-adressen die worden omgezet naar hetzelfde IP-adres. Dit is niet het geval met FQDN-filtering in netwerk regels. Altijd toepassings regels gebruiken wanneer dit mogelijk is.
+- In toepassings regels kunt u HTTP/S en MSSQL als uw geselecteerde protocollen gebruiken. In netwerk regels kunt u elk TCP/UDP-protocol gebruiken met uw doel-FQDN-namen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

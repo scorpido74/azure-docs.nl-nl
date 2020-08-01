@@ -2,14 +2,14 @@
 title: Uitvoer gegevens persistent maken voor Azure Storage met de API voor batch-service
 description: Meer informatie over het gebruik van de batch-Service-API voor het persistent maken van batch taak-en taak uitvoer gegevens naar Azure Storage.
 ms.topic: how-to
-ms.date: 03/05/2019
+ms.date: 07/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 964ffea2ed1536dc1851aefc03c735cb08ba7ed7
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143509"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475614"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 
@@ -19,6 +19,9 @@ De batch-Service-API ondersteunt het persistent maken van uitvoer gegevens naar 
 
 Een voor deel van het gebruik van de batch-Service-API om taak uitvoer te behouden, is dat u de toepassing die de taak uitvoert niet hoeft te wijzigen. In plaats daarvan kunt u met een paar wijzigingen in uw client toepassing de uitvoer van de taak behouden vanuit dezelfde code die de taak maakt.
 
+> [!IMPORTANT]
+> Het persistent maken van taak gegevens naar Azure Storage met de API van de batch-service werkt niet met groepen die zijn gemaakt vóór [1 februari 2018](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204).
+
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Wanneer moet ik de batch-Service-API gebruiken om taak uitvoer te behouden?
 
 Azure Batch biedt meer dan één manier om taak uitvoer te behouden. Het gebruik van de batch-Service-API is een handige benadering die het meest geschikt is voor deze scenario's:
@@ -26,7 +29,7 @@ Azure Batch biedt meer dan één manier om taak uitvoer te behouden. Het gebruik
 - U wilt code schrijven om de taak uitvoer te behouden vanuit uw client toepassing, zonder de toepassing te wijzigen die door de taak wordt uitgevoerd.
 - U wilt de uitvoer behouden van batch taken en taak beheer taken in Pools die zijn gemaakt met de configuratie van de virtuele machine.
 - U wilt de uitvoer persistent maken naar een Azure Storage container met een wille keurige naam.
-- U wilt uitvoer persistent maken naar een Azure Storage-container met de naam volgens de [conventies van het batch-bestand Standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). 
+- U wilt uitvoer persistent maken naar een Azure Storage-container met de naam volgens de [conventies van het batch-bestand Standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files).
 
 Als uw scenario verschilt van wat hierboven wordt vermeld, moet u mogelijk een andere benadering overwegen. De batch-Service-API biedt momenteel geen ondersteuning voor streaming-uitvoer naar Azure Storage terwijl de taak wordt uitgevoerd. Voor het streamen van uitvoer kunt u de conventies bibliotheek voor batch bestanden gebruiken die beschikbaar is voor .NET. Voor andere talen moet u uw eigen oplossing implementeren. Zie voor meer informatie over andere opties voor het persistent maken van taak uitvoer de optie [persistente taak en taak uitvoer naar Azure Storage](batch-task-output.md).
 
@@ -88,6 +91,9 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
             uploadCondition: OutputFileUploadCondition.TaskCompletion)),
 }
 ```
+
+> [!NOTE]
+> Als u dit voor beeld gebruikt met Linux, moet u ervoor zorgen dat u de backslashes wijzigt in slashes.
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Een bestands patroon opgeven voor het zoeken
 
@@ -169,7 +175,7 @@ Als u in een andere taal dan C# ontwikkelt, moet u de bestands conventies standa
 
 ## <a name="code-sample"></a>Codevoorbeeld
 
-Het [PersistOutputs][github_persistoutputs] -voorbeeld project is een van de [Azure batch code voorbeelden][github_samples] op github. In deze Visual Studio-oplossing ziet u hoe u de batch-client bibliotheek voor .NET gebruikt om de uitvoer van taken naar duurzame opslag te behouden. Voer de volgende stappen uit om het voor beeld uit te voeren:
+Het [PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) -voorbeeld project is een van de [Azure batch code voorbeelden](https://github.com/Azure/azure-batch-samples) op github. In deze Visual Studio-oplossing ziet u hoe u de batch-client bibliotheek voor .NET gebruikt om de uitvoer van taken naar duurzame opslag te behouden. Voer de volgende stappen uit om het voor beeld uit te voeren:
 
 1. Open het project in **Visual Studio 2019**.
 2. Voeg uw batch-en opslag **account referenties** toe aan **AccountSettings. settings** in het Microsoft.Azure.Batch. samples. common project.
@@ -183,6 +189,3 @@ Het [PersistOutputs][github_persistoutputs] -voorbeeld project is een van de [Az
 
 - Voor meer informatie over het persistent maken van taak uitvoer met de bestands conventies bibliotheek voor .NET raadpleegt [u taak-en taak gegevens persistent maken voor Azure Storage met de conventies bibliotheek voor batch bestanden voor .net](batch-task-output-file-conventions.md).
 - Zie voor meer informatie over andere benaderingen voor het persistent maken van uitvoer gegevens in Azure Batch [persistente taak-en taak uitvoer naar Azure Storage](batch-task-output.md).
-
-[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
-[github_samples]: https://github.com/Azure/azure-batch-samples

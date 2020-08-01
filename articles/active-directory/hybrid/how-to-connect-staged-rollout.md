@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019825"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460606"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
@@ -50,6 +50,8 @@ Bekijk voor een overzicht van de functie ' Azure Active Directory: wat is gefase
 -   Als u de functie voor gefaseerde implementatie wilt gebruiken, moet u een globale beheerder zijn op uw Tenant.
 
 -   Als u *naadloze SSO* wilt inschakelen op een specifiek Active Directory forest, moet u een domein beheerder zijn.
+
+-  Als u hybride Azure AD of Azure AD-deelname implementeert, moet u een upgrade uitvoeren naar Windows 10 1903 update.
 
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
@@ -177,7 +179,7 @@ Ga als volgt te werk:
    >De leden in een groep worden automatisch ingeschakeld voor gefaseerde implementatie. Geneste en dynamische groepen worden niet ondersteund voor gefaseerde implementatie.
    >Wanneer u een nieuwe groep toevoegt, worden gebruikers in de groep (Maxi maal 200 gebruikers voor een nieuwe groep) bijgewerkt met behulp van beheerde verificatie immidiatly. Het bewerken van een groep (het toevoegen of verwijderen van gebruikers) kan tot 24 uur duren voordat de wijzigingen van kracht worden.
 
-## <a name="auditing"></a>Controle
+## <a name="auditing"></a>Controleren
 
 We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die we voor gefaseerde implementatie uitvoeren:
 

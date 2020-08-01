@@ -1,14 +1,14 @@
 ---
 title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497774"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474900"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -56,6 +56,10 @@ Groeps toewijzings fouten kunnen zich voordoen op elk moment tijdens de eerste t
 Het is mogelijk dat batch-Pools downtime-gebeurtenissen in azure kunnen ervaren. Houd dit in acht wanneer u uw scenario of werk stroom voor batch plant en ontwikkelt.
 
 In het geval dat een knoop punt uitvalt, probeert batch automatisch deze reken knooppunten te herstellen namens u. Dit kan leiden tot het opnieuw plannen van elke actieve taak op het knoop punt dat wordt hersteld. Zie [ontwerpen voor nieuwe pogingen voor](#design-for-retries-and-re-execution) meer informatie over onderbroken taken.
+
+### <a name="third-party-images"></a>Installatie kopieën van derden
+
+Pools kunnen worden gemaakt met installatie kopieën van derden die naar Azure Marketplace worden gepubliceerd. In het geval van een batch-account in de gebruikers abonnements modus ziet u mogelijk de fout ' toewijzing is mislukt vanwege een Marketplace-aankoop geschiktheids controle ' bij het maken van een groep met bepaalde installatie kopieën van derden. Ga akkoord met de voor waarden die zijn ingesteld door de uitgever van de installatie kopie om deze fout op te lossen. U kunt dit doen met behulp van [Azure Power shell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) of [Azure cli](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest).
 
 ### <a name="azure-region-dependency"></a>Azure-regio afhankelijkheid
 

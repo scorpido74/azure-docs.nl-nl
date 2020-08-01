@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74887e6ee4656091aa647b481bc406dcc23b9c12
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413974"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460079"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -40,16 +40,19 @@ Cloud lagen zijn niet afhankelijk van de NTFS-functie voor het bijhouden van de 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Wat is de minimale bestands grootte voor een bestand dat moet worden gelaagd?
 
-Voor Agent versie 9 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
+Voor Agent versie 9 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. De minimale bestands grootte die in aanmerking komt voor Cloud lagen, wordt berekend door 2x de cluster grootte en ten minste 8 KB. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
 
 |Volume cluster grootte (bytes) |Bestanden van deze grootte of groter kunnen worden getierd  |
 |----------------------------|---------|
-|4 KB (4096)                 | 8 kB    |
+|4 KB of kleiner (4096)      | 8 kB    |
 |8 KB (8192)                 | 16 kB   |
 |16 KB (16384)               | 32 KB   |
-|32 KB (32768) en groter    | 64 kB   |
+|32 KB (32768)               | 64 kB   |
+|64 KB (65536)               | 128 kB  |
 
-Alle bestands systemen die worden gebruikt door Windows, organiseren uw vaste schijf op basis van de cluster grootte (ook wel bekend als Allocation Unit Size). Cluster grootte vertegenwoordigt de kleinste hoeveelheid schijf ruimte die kan worden gebruikt om een bestand te bewaren. Wanneer de bestands grootte niet van een even veelvoud van de cluster grootte komt, moet er extra ruimte worden gebruikt om het bestand te bewaren (tot het volgende veelvoud van de cluster grootte).
+Met Windows Server 2019 en Azure File Sync agent versie 12 en hoger, worden cluster groottes tot 2 MB ook ondersteund en wordt het trapsgewijs scha kelen van de grotere cluster grootten op dezelfde manier. Oudere versies van het besturings systeem of de agent ondersteunen cluster grootten tot 64 KB.
+
+Alle bestands systemen die worden gebruikt door Windows, organiseren de vaste schijf op basis van de cluster grootte (ook wel bekend als Allocation Unit Size). Cluster grootte vertegenwoordigt de kleinste hoeveelheid schijf ruimte die kan worden gebruikt om een bestand te bewaren. Wanneer de bestands grootte niet van een even veelvoud van de cluster grootte komt, moet er extra ruimte worden gebruikt om het bestand op te slaan op het volgende veelvoud van de cluster grootte.
 
 Azure File Sync wordt ondersteund op NTFS-volumes met Windows Server 2012 R2 en nieuwer. De volgende tabel beschrijft de standaard cluster grootten wanneer u een nieuw NTFS-volume maakt. 
 
@@ -62,7 +65,9 @@ Azure File Sync wordt ondersteund op NTFS-volumes met Windows Server 2012 R2 en 
 |128TB – 256 TB | 64 kB         |
 |> 256 TB       | Niet ondersteund |
 
-Het is mogelijk dat u na het maken van het volume hand matig het volume met een andere grootte van een cluster (toewijzings eenheid) hebt geformatteerd. Als uw volume is afgeleid van een oudere versie van Windows, kunnen de standaard cluster grootten ook verschillen. [In dit artikel vindt u meer informatie over de standaard cluster groottes.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
+Het is mogelijk dat u na het maken van het volume hand matig het volume met een andere cluster grootte hebt geformatteerd. Als uw volume is afgeleid van een oudere versie van Windows, kunnen de standaard cluster grootten ook verschillen. [In dit artikel vindt u meer informatie over de standaard cluster groottes.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) Zelfs als u een cluster grootte kiest die kleiner is dan 4 KB, geldt een limiet van 8 KB als de kleinste bestands grootte die kan worden getierd en is nog steeds van toepassing. (Zelfs als technisch 2x de cluster grootte zou moeten gelijk zijn aan minder dan 8 KB.)
+
+De reden voor het absolute minimum is te vinden op de manier waarop NTFS extreem kleine bestanden-1 KB aan bestanden met een grootte van 4 KB opslaat. Afhankelijk van de andere para meters van het volume kunnen kleine bestanden niet worden opgeslagen in een cluster op schijf. Het is mogelijk efficiënter om dergelijke bestanden rechtstreeks op te slaan in de hoofd bestands tabel van het volume of de MFT-record. Het distributie punt in de Cloud-laag wordt altijd op schijf opgeslagen en neemt precies één cluster in beslag. Bij het trapsgewijs scha kelen van dergelijke kleine bestanden kan er geen ruimte worden bespaard. Extreme gevallen kunnen zelfs eindigen met het gebruik van meer ruimte terwijl Cloud lagen zijn ingeschakeld. Ter bescherming tegen dat geldt dat de kleinste grootte van een bestand dat in de Cloud wordt laag, 8 KB is op een cluster grootte van 4 KB of kleiner.
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hoe werkt het opslaglaagbeleid voor beschikbare volumeruimte?
@@ -95,7 +100,7 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
 
 Houd er rekening mee dat het volume beschik bare ruimte beleid altijd voor rang heeft, en wanneer er niet voldoende vrije ruimte op het volume is om zoveel dagen aan bestanden te bewaren, zoals wordt beschreven in het datum beleid, dan Azure File Sync de Coldest-bestanden blijven door lopen tot het percentage beschik bare ruimte aan het volume wordt bereikt.
 
-Stel dat u een op een datum gebaseerd laag beleid hebt van 60 dagen en een volume beschik bare ruimte op basis van 20%. Als na het Toep assen van het datum beleid minder dan 20% van de beschik bare ruimte op het volume is, wordt het volume beschik bare ruimte beleid in en wordt het datum beleid overschreven. Dit leidt ertoe dat er meer bestanden worden getierd, zodat de hoeveelheid gegevens die op de server wordt bewaard, van 60 dagen aan gegevens kan worden teruggebracht tot 45 dagen. Dit beleid zorgt er ook voor dat de lagen die buiten uw tijds bereik vallen, worden afgehandeld, zelfs als u niet de drempel waarde voor vrije ruimte hebt bereikt. een bestand dat 61 dagen oud is, wordt getiereerd, zelfs als uw volume leeg is.
+Stel dat u een op een datum gebaseerd laag beleid hebt van 60 dagen en een volume beschik bare ruimte op basis van 20%. Als nadat u het datum beleid hebt toegepast, er minder dan 20% van de beschik bare ruimte op het volume is, wordt het volume beschik bare ruimte beleid in en wordt het datum beleid overschreven. Dit leidt ertoe dat er meer bestanden worden getierd, zodat de hoeveelheid gegevens die op de server wordt bewaard, van 60 dagen aan gegevens kan worden teruggebracht tot 45 dagen. Dit beleid zorgt er ook voor dat de lagen die buiten uw tijds bereik vallen, worden afgehandeld, zelfs als u niet de drempel waarde voor vrije ruimte hebt bereikt. een bestand dat 61 dagen oud is, wordt getiereerd, zelfs als uw volume leeg is.
 
 <a id="volume-free-space-guidelines"></a>
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Hoe bepaal ik de juiste hoeveelheid beschikbare volumeruimte?

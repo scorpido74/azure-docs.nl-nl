@@ -2,16 +2,14 @@
 title: Azure-toepassing Insights voor Java script-web-apps
 description: Het ophalen van de pagina weergave en aantal sessies, webclientgegevens, toepassingen met één pagina (SPA) en het bijhouden van gebruiks patronen. Detecteer uitzonderingen en prestatieproblemen in JavaScript-webpagina's.
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371478"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475750"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -151,7 +149,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, behalve voor `instrumentationKey` .
 
 | Naam | Standaard | Beschrijving |
@@ -342,7 +340,9 @@ Dit betekent niet dat we alleen ondersteuning bieden voor de laagste common set 
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK
 
-De Application Insights java script SDK is open source om de bron code weer te geven of om bij te dragen aan het project Ga naar de [officiële github-opslag plaats](https://github.com/Microsoft/ApplicationInsights-JS).
+De Application Insights java script SDK is open source om de bron code weer te geven of om bij te dragen aan het project Ga naar de [officiële github-opslag plaats](https://github.com/Microsoft/ApplicationInsights-JS). 
+
+[Raadpleeg de opmerkingen bij de release](./release-notes.md)voor de nieuwste updates en oplossingen voor problemen.
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 * [Bijhouden van gebruik](usage-overview.md)

@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337310"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475461"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -95,13 +95,9 @@ De IoT Hub query taal wordt gebruikt voor meerdere doel einden. U kunt bijvoorbe
 
 Een IoT-Plug en Play apparaat is doorgaans een klein, zelfstandig computer apparaat waarmee gegevens worden verzameld of andere apparaten worden beheerd, en waarmee software of firmware wordt uitgevoerd waarmee een [model](#device-model)wordt geïmplementeerd.  Een IoT-Plug en Play apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor een irrigatie systeem met een slimme land bouw. U kunt een in de Cloud gehoste IoT-oplossing schrijven naar de opdracht, het besturings element en de gegevens van IoT Plug en Play-apparaten ontvangen.
 
-## <a name="iot-plug-and-play-conventions"></a>IoT Plug en Play-conventies
+## <a name="iot-plug-and-play-conventions"></a>Conventies voor IoT Plug en Play
 
 IoT-Plug en Play [apparaten](#iot-plug-and-play-device) worden naar verwachting een set [conventies](concepts-convention.md) volgen wanneer ze gegevens uitwisselen met een oplossing.
-
-## <a name="model-discovery"></a>Modeldetectie
-
-Wanneer een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) verbinding maakt met een IOT-oplossing, kan de oplossing de mogelijkheden van het apparaat detecteren door het model van het [apparaat](#device-model)te zoeken. De oplossing kan een model voor een apparaat in een [model opslagplaats](#model-repository) of een andere locatie vinden.
 
 ## <a name="model-id"></a>Model-id
 

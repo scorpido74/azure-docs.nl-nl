@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 20372d9584becf18c65e13c81b99403ce88d27e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5192ecb31c71364bdf1301b13da0b0742625d44f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568534"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460130"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>IP-groepen in het Azure Firewall-beleid
 
@@ -27,7 +27,7 @@ Een IP-groep kan één IP-adres, meerdere IP-adressen of een of meer IP-adresber
 
 IP-groepen kunnen opnieuw worden gebruikt in Azure Firewall DNAT-, netwerk-en toepassings regels voor meerdere firewalls voor verschillende regio's en abonnementen in Azure. Groeps namen moeten uniek zijn. U kunt een IP-groep configureren in de Azure Portal, Azure CLI of REST API. Er wordt een voorbeeld sjabloon gegeven om u te helpen aan de slag te gaan.
 
-## <a name="sample-format"></a>Voorbeeld indeling
+## <a name="sample-format"></a>Sample-indeling
 
 De volgende IPv4-adres notatie voorbeelden zijn geldig voor gebruik in IP-groepen:
 
@@ -66,43 +66,7 @@ U kunt nu **IP-groep** selecteren als **bron type** of **doel type** voor IP-adr
 
 ## <a name="ip-address-limits"></a>IP-adres limieten
 
-Voor 50 IP-groepen of minder kunt u elk per firewall exemplaar een maximum van 5000 afzonderlijke IP-adressen hebben. Voor 51 tot 100 IP-groepen kunt u elk per firewall-exemplaar beschikken over 500 afzonderlijke IP-adressen.
-
-### <a name="examples"></a>Voorbeelden
-
-#### <a name="example-1-supported"></a>Voor beeld 1: ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Firewallregel1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Firewallregel1|
-|IPGroup3     |1|1.2.3.4|Firewallregel1|
-|     |**Totaal 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>Voor beeld 2: ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Firewallregel1|
-|IPGroup2     |4096|11.0.0.0/20|Firewallregel1|
-|     |**Totaal 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>Voor beeld 3: niet ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Firewallregel1|
-|     |**Totaal 8192**|||
-
-#### <a name="example-4-supported"></a>Voor beeld 4: ondersteund
-
-|IP-groepen  |Aantal IP-adressen  |Notatie  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Firewallregel1|
-|IPGroup2     |4096|11.0.0.0/20|Firewallregel2|
-|     |**Totaal 8192**|         |         |
-
+U kunt Maxi maal 100 IP-groepen per firewall hebben met een maximum van 5000 afzonderlijke IP-adressen of IP-voor voegsels per IP-groep.
 
 ## <a name="related-azure-powershell-cmdlets"></a>Gerelateerde Azure PowerShell-cmdlets
 
@@ -118,4 +82,4 @@ De volgende Azure PowerShell-cmdlets kunnen worden gebruikt voor het maken en be
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: uw virtuele WAN beveiligen met Azure Firewall Manager](secure-cloud-network.md)
+- [Zelfstudie: Uw virtuele WAN beveiligen met Azure Firewall Manager](secure-cloud-network.md)

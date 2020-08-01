@@ -1,19 +1,19 @@
 ---
-title: Visuele bewaking van gegevens stroom toewijzen
-description: Azure Data Factory gegevens stromen visueel bewaken
+title: Gegevens stromen voor toewijzing controleren
+description: Toewijzing van gegevens stromen visueel bewaken in Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958890"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475546"
 ---
 # <a name="monitor-data-flows"></a>Gegevens stromen bewaken
 
@@ -27,7 +27,7 @@ Wanneer u de pijp lijn uitvoert, kunt u de pijp lijn en alle activiteiten in de 
 
 U ziet de statistieken op dit niveau en ook de uitvoerings tijden en-status. De uitvoerings-ID op het activiteit niveau wijkt af van de uitvoerings-ID op het pijplijn niveau. De uitvoerings-ID op het vorige niveau is voor de pijp lijn. Als u de bril selecteert, krijgt u gedetailleerde informatie over de uitvoering van de gegevens stroom.
 
-![Bewaking van gegevens stromen](media/data-flow/mon002.png "Bewaking gegevensstroom")
+![Bewaking van gegevens stromen](media/data-flow/monitoring-details.png "Bewaking gegevensstroom")
 
 Wanneer u zich in de weer gave van het grafische knoop punt bevindt, ziet u een vereenvoudigde alleen-lezen versie van uw gegevens stroom diagram.
 

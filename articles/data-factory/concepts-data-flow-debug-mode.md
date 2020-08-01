@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605399"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475597"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -25,7 +25,7 @@ Met de modus fout opsporing van gegevens stroom van Azure Data Factory-toewijzin
 
 ![Schuif regelaar voor fout opsporing](media/data-flow/debugbutton.png "Schuif regelaar voor fout opsporing")
 
-Zodra u de schuif regelaar hebt ingeschakeld, wordt u gevraagd om te selecteren welke configuratie voor de integratie-runtime u wilt gebruiken. Als AutoResolveIntegrationRuntime is gekozen, wordt een cluster met acht kernen van algemene berekeningen met een tijd van 60 minuten voor Live. Zie [prestaties van gegevens stroom](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)voor meer informatie over data flow Integration-Runtimes.
+Zodra u de schuif regelaar hebt ingeschakeld, wordt u gevraagd om te selecteren welke configuratie voor de integratie-runtime u wilt gebruiken. Als AutoResolveIntegrationRuntime is gekozen, wordt een cluster met acht kernen van algemene berekeningen met een tijd van 60 minuten voor Live. Zie [prestaties van gegevens stroom](concepts-data-flow-performance.md#ir)voor meer informatie over data flow Integration-Runtimes.
 
 ![Fout opsporing IR-selectie](media/data-flow/debugbutton2.png "Fout opsporing IR-selectie")
 

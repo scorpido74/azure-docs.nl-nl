@@ -5,20 +5,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290977"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474322"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Meerdere sites in Application Gateway hosten
 
-Als u meerdere sites host, kunt u meer dan één webtoepassing configureren op dezelfde poort van een toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. Bijvoorbeeld drie domeinen, contoso.com, fabrikam.com en adatum.com, wijs naar het IP-adres van de toepassings gateway. U maakt drie multi-site listeners en configureert elke listener voor de respectieve poort-en protocol instelling. 
+Als u meerdere sites host, kunt u meer dan één webtoepassing configureren op dezelfde poort van een toepassings gateway. Dit stelt u in staat om een efficiëntere topologie voor uw implementaties te configureren door maximaal 100 websites toe te voegen aan één toepassingsgateway. Elke website kan worden omgeleid naar een eigen back-endpool. Drie domeinen - contoso.com, fabrikam.com en adatum.com - wijzen bijvoorbeeld naar het IP-adres van de toepassingsgateway. U maakt dat drie listeners voor meerdere sites, en configureert elke listener voor de respectieve poort en protocolinstelling. 
 
-U kunt ook hostnamen voor joker tekens definiëren in een multi-site-listener en Maxi maal vijf hostnamen per listener. Zie [namen van hostnamen in listener](#wildcard-host-names-in-listener-preview)voor meer informatie.
+U kunt ook hostnamen met jokertekens definiëren in een listener voor meerdere sites (maximaal vijf hostnamen per listener). Zie [namen van hostnamen in listener](#wildcard-host-names-in-listener-preview)voor meer informatie.
 
 :::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Application Gateway voor meerdere locaties":::
 
@@ -42,6 +42,7 @@ Als u een Joker teken in de hostnaam gebruikt, kunt u meerdere hostnamen in éé
 
 >[!NOTE]
 >Deze functie is momenteel alleen beschikbaar via [Azure PowerShell](tutorial-multiple-sites-powershell.md) en [Azure cli](tutorial-multiple-sites-cli.md). Portal ondersteuning is binnenkort beschikbaar.
+> Omdat Portal ondersteuning niet volledig beschikbaar is, als u alleen de HostNamen-para meter gebruikt, wordt de listener weer gegeven als een Basic-listener in de portal en de kolom hostnaam in de lijst weergave van de listener geeft niet de hostnamen weer die zijn geconfigureerd. Zorg ervoor dat u Azure PowerShell of CLI gebruikt totdat de listener wordt ondersteund in de portal.
 
 In [Azure PowerShell](tutorial-multiple-sites-powershell.md)moet u in `-HostNames` plaats van gebruiken `-HostName` . Met HostNamen kunt u Maxi maal 5 hostnamen als door komma's gescheiden waarden vermelden en Joker tekens gebruiken. Bijvoorbeeld: `-HostNames "*.contoso.com,*.fabrikam.com"`
 

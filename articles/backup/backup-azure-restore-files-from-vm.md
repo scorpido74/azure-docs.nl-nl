@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514081"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475053"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -132,28 +132,96 @@ Als u deze partities online wilt brengen, voert u de opdrachten uit in de volgen
 
 #### <a name="for-lvm-partitions"></a>Voor LVM-partities
 
-De namen van de volume groepen onder een fysiek volume weer geven:
+Zodra het script is uitgevoerd, worden de LVM-partities gekoppeld in de/disk (s) van het fysieke volume dat is opgegeven in de script uitvoer. Het proces moet
+
+1. De unieke lijst met namen van volume groepen ophalen van de fysieke volumes of schijven
+2. Vervolgens worden de logische volumes in deze volume groepen weer geven
+3. Koppel vervolgens de logische volumes aan het gewenste pad.
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>Lijst met namen van volume groepen van fysieke volumes
+
+De namen van de volume groepen weer geven:
+
+```bash
+pvs -o +vguuid
+```
+
+Met deze opdracht worden alle fysieke volumes weer gegeven (met inbegrip van de bestanden die aanwezig zijn voordat het script wordt uitgevoerd), de bijbehorende volume groepsnaam en de unieke gebruikers-Id's (UUID) van de volume groep. Hieronder ziet u een voor beeld van de uitvoer van de opdracht.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+De 1e kolom (PV) toont het fysieke volume, de volgende kolommen tonen de relevante naam van de volume groep, de indeling, kenmerken, grootte, beschik bare ruimte en de unieke ID van de volume groep. In de uitvoer van de opdracht worden alle fysieke volumes weer gegeven. Raadpleeg de script uitvoer en Identificeer de volumes die betrekking hebben op de back-up. In het bovenstaande voor beeld zou de uitvoer van het script/dev/sdf en/dev/sdd. weer geven De datavg_db-volume groep behoort dus tot script en de Appvg_new-volume groep behoort tot de computer. Het laatste idee is te controleren of de naam van een unieke volume groep 1 unieke ID moet hebben.
+
+###### <a name="duplicate-volume-groups"></a>Dubbele volume groepen
+
+Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en op de back-up-VM hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het onderstaande voor beeld.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+De script uitvoer zou/dev/SDG,/dev/SDH,/dev/SDM2 als gekoppeld hebben weer gegeven. De bijbehorende VG-namen zijn dus Appvg_new en rootvg. Maar dezelfde namen zijn ook aanwezig in de lijst VG van de machine. We kunnen controleren of 1 VG-naam 2 UUID heeft.
+
+Nu moeten we VG namen wijzigen voor op scripts gebaseerde volumes, dat wil zeggen,/dev/SDG,/dev/SDH,/dev/SDM2. Als u de naam van de volume groep wilt wijzigen, gebruikt u de volgende opdracht:
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+Nu hebben we alle VG-namen met unieke Id's.
+
+###### <a name="active-volume-groups"></a>Actieve volume groepen
+
+Zorg ervoor dat de volume groepen die overeenkomen met de volumes van het script, actief zijn. De onderstaande opdracht wordt gebruikt om actieve volume groepen weer te geven. Controleer of de verwante volume groepen van het script aanwezig zijn in deze lijst.
+
+```bash
+vgdisplay -a
+```  
+
+Als dat niet het geval is, activeert u de volume groep met behulp van de onderstaande opdracht.
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-Een lijst met alle logische volumes, namen en hun paden in een volume groep:
+##### <a name="listing-logical-volumes-within-volume-groups"></a>Logische volumes in volume groepen weer geven
+
+Zodra we de unieke, actieve lijst met VGs met betrekking tot het script hebben ontvangen, kunnen de logische volumes in deze volume groepen worden weer gegeven met behulp van de onderstaande opdracht.
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-De ```lvdisplay``` opdracht geeft ook aan of de volume groepen actief zijn. Als de volume groep is gemarkeerd als inactief, moet deze opnieuw worden geactiveerd om te worden gekoppeld. Als de volume groep wordt weer gegeven als inactief, gebruikt u de volgende opdracht om deze te activeren.
+Met deze opdracht wordt het pad van elk logisch volume weer gegeven als ' LV-pad '.
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-Nadat de naam van de volume groep actief is, voert ```lvdisplay``` u de opdracht eenmaal meer uit om alle relevante kenmerken weer te geven.
+##### <a name="mounting-logical-volumes"></a>Logische volumes koppelen
 
 De logische volumes koppelen aan het pad naar keuze:
 
@@ -161,6 +229,9 @@ De logische volumes koppelen aan het pad naar keuze:
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> Gebruik niet ' mount-a '. Met deze opdracht worden alle apparaten gekoppeld die worden beschreven in ' bestand/etc/fstab '. Dit kan betekenen dat dubbele apparaten kunnen worden gekoppeld. Gegevens kunnen worden omgeleid naar apparaten die zijn gemaakt met een script, die de gegevens niet behouden, en kan dus leiden tot verlies van gegevens.
 
 #### <a name="for-raid-arrays"></a>Voor RAID-matrices
 

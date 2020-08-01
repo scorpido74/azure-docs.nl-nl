@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081556"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475733"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor logboeken connector voor Logic Apps en flow
-Met [Azure Logic apps](../../logic-apps/index.yml) en [energie automatisering](https://ms.flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Met de Azure Monitor logs connector kunt u werk stromen bouwen waarmee gegevens worden opgehaald uit een Log Analytics-werk ruimte of een Application Insights-toepassing in Azure Monitor. In dit artikel worden de acties beschreven die zijn opgenomen in de connector en vindt u een overzicht van het maken van een werk stroom met behulp van deze gegevens.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor logs connector voor Logic Apps en energie automatisering
+Met [Azure Logic apps](../../logic-apps/index.yml) en [energie automatisering](https://flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Met de Azure Monitor logs connector kunt u werk stromen bouwen waarmee gegevens worden opgehaald uit een Log Analytics-werk ruimte of een Application Insights-toepassing in Azure Monitor. In dit artikel worden de acties beschreven die zijn opgenomen in de connector en vindt u een overzicht van het maken van een werk stroom met behulp van deze gegevens.
 
 U kunt bijvoorbeeld een logische app maken om Azure Monitor logboek gegevens te gebruiken in een e-mail melding van Office 365, een bug in azure DevOps te maken of een bericht over een toegestane vertraging te plaatsen.  U kunt een werk stroom activeren op basis van een eenvoudig schema of van een actie in een verbonden service, zoals wanneer een e-mail of een tweet wordt ontvangen. 
 
@@ -35,7 +35,7 @@ In de volgende tabel worden de acties beschreven die zijn opgenomen in de Azure 
 > De Azure Monitor logs connector vervangt de [Azure log Analytics-connector](/connectors/azureloganalytics/) en de [Azure-toepassing Insights-connector](/connectors/applicationinsights/). Deze connector biedt dezelfde functionaliteit als de andere, en is de voorkeurs methode voor het uitvoeren van een query op een Log Analytics-werk ruimte of een Application Insights-toepassing.
 
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |:---|:---|
 | [Query-en Lijst resultaten uitvoeren](/connectors/azuremonitorlogs/#run-query-and-list-results) | Retourneert elke rij als een eigen object. Gebruik deze actie als u met elke rij afzonderlijk in de rest van de werk stroom wilt werken. De actie wordt doorgaans gevolgd door een [voor elke activiteit](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
 | [Query's uitvoeren en resultaten visualiseren](/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Retourneert alle rijen in de resultatenset als een enkel opgemaakt object. Gebruik deze actie wanneer u de resultatenset samen in de rest van de werk stroom wilt gebruiken, zoals het verzenden van de resultaten in een e-mail.  |
@@ -126,4 +126,4 @@ Wanneer de logische app is voltooid, controleert u het e-mail adres van de ontva
 
 - Meer informatie over [logboek query's vindt u in azure monitor](../log-query/log-query-overview.md).
 - Meer informatie over [Logic apps](../../logic-apps/index.yml)
-- Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).
+- Meer informatie over het [automatiseren van energie](https://flow.microsoft.com).

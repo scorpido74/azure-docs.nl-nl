@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80c133eceb6af419d0eb5aa35ff784a0f9321d37
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067703"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474951"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
@@ -146,7 +146,7 @@ U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opni
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Verbinden
 
 Met deze para meter geeft u een resource op in Azure Resource Manager waarmee de machine wordt gemaakt in Azure. De resource bevindt zich in het opgegeven abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure-regio die is opgegeven door de `--location` instelling. De standaard resource naam is de hostnaam van deze computer als deze niet is opgegeven.
 
@@ -181,6 +181,9 @@ Voer de volgende opdracht uit als u de verbinding wilt verbreken met de referent
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>Opnieuw verbinden
+
+> [!WARNING]
+> De `reconnect` opdracht is afgeschaft en mag niet worden gebruikt. De opdracht wordt verwijderd in een toekomstige agent versie en bestaande agents kunnen de aanvraag voor opnieuw verbinden niet volt ooien. Verbreek [disconnect](#disconnect) de verbinding met uw machine in plaats daarvan opnieuw [verbinding te maken](#connect) .
 
 Met deze para meter wordt de reeds geregistreerde of verbonden computer opnieuw verbonden met Azure Arc voor servers (preview-versie). Dit kan nodig zijn als de machine is uitgeschakeld, ten minste 45 dagen voordat het certificaat verloopt. Deze para meter gebruikt de beschik bare verificatie opties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
 

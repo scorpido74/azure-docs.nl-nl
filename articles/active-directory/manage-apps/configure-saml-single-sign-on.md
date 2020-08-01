@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1abde88b653ae0f0ef3651b161e806047e143078
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418777"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461184"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Eenmalige aanmelding op basis van SAML configureren
 
@@ -25,7 +25,7 @@ In de [Quick](view-applications-portal.md) start-serie op toepassings beheer heb
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Het gebruik van Azure AD als uw ID-provider en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie voor op SAML gebaseerde SSO vereist is, is dit artikel voor u.
+Het gebruik van Azure AD als uw ID-provider (IdP) en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie voor op SAML gebaseerde SSO vereist is, is dit artikel voor u.
 
 In de [Quick Start serie](view-applications-portal.md)is er een artikel over het configureren van eenmalige aanmelding. Hierin leert u hoe u toegang kunt krijgen tot de configuratie pagina van SAML voor een app. De configuratie pagina van SAML bevat vijf secties. Deze secties worden gedetailleerd beschreven in dit artikel.
 

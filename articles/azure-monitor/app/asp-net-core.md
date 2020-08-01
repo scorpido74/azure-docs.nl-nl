@@ -3,12 +3,12 @@ title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Doc
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321391"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475512"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -455,7 +455,9 @@ Deze SDK vereist `HttpContext` en werkt daarom niet in niet-HTTP-toepassingen, w
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK
 
-[Lees en bijdragen aan de code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Lees en bijdragen aan de code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+
+[Raadpleeg de opmerkingen bij de release](./release-notes.md)voor de nieuwste updates en oplossingen voor problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

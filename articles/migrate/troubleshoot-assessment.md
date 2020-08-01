@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422858"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460980"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -66,6 +66,9 @@ In het geval van VMware-en Hyper-V-Vm's, markeert server Assessment Linux-Vm's a
 
 Dit gat kan worden opgelost door [toepassings detectie](./how-to-discover-applications.md) in te scha kelen op de virtuele VMware-machines. Server assessment maakt gebruik van het besturings systeem dat is gedetecteerd van de virtuele machine met behulp van de gast referenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
 
+## <a name="operating-system-version-not-available"></a>De versie van het besturings systeem is niet beschikbaar
+
+Voor fysieke servers moet de informatie over de secundaire versie van het besturings systeem beschikbaar zijn. Neem contact op met Microsoft Ondersteuning als deze niet beschikbaar is. Voor VMware-machines gebruikt server assessment de informatie over het besturings systeem die is opgegeven voor de virtuele machine in vCenter Server. VCenter Server biedt echter niet de secundaire versie voor besturings systemen. Als u de secundaire versie wilt detecteren, moet u [toepassings detectie](./how-to-discover-applications.md)instellen. Voor virtuele Hyper-V-machines wordt het doorzoeken van de secundaire versie van het besturings systeem niet ondersteund. 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-Sku's die groter zijn dan on-premises in een Azure VM-evaluatie
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/10/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d0a1f2551338207a71b6c547d9c2cd57fea777
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284384"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475631"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -46,7 +46,7 @@ Ga naar **Azure AD >-beheer eenheden** in de portal. Selecteer de administratiev
 
 ![Een administratieve eenheid selecteren om het gebruikersrol bereik te wijzigen](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toevoegen**. Hiermee wordt een deel venster aan de rechter kant geopend, waar u een of meer gebruikers kunt selecteren om aan de rol toe te wijzen.
+Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toevoegen**. Er wordt een paneel geopend aan de rechter kant waar u een of meer gebruikers kunt selecteren om aan de rol toe te wijzen.
 
 ![Selecteer de rol die u wilt bereik en selecteer vervolgens toewijzingen toevoegen](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
@@ -104,4 +104,5 @@ Request body
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Probleem oplossing en veelgestelde vragen over administratieve eenheden](roles-admin-units-faq-troubleshoot.md)
+- [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
+- [Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen](roles-groups-faq-troubleshooting.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056544"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475189"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in AKS (Azure Kubernetes Service)
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>Ondersteunde `kubectl` versies
+
+U kunt één secundaire oudere versie gebruiken `kubectl` die relatief is ten opzichte van uw *uitvoeren-apiserver-* versie, die consistent is met het [Kubernetes-ondersteunings beleid voor kubectl](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
+
+Als uw *uitvoeren-apiserver* bijvoorbeeld *1,17*is, kunt u versie *1,16* gebruiken tot *1,18* van `kubectl` die *uitvoeren-apiserver*.
+
+Voer uit om de versie van te installeren of bij te werken `kubectl` `az aks install-cli` .
+
 ## <a name="release-and-deprecation-process"></a>Vrijgave-en afschaffing proces
 
 U kunt naar aanstaande release-en afschaffing-versies van de [AKS-Kubernetes](#aks-kubernetes-release-calendar).
@@ -120,7 +128,6 @@ Gebruik de opdracht [AZ AKS Get-verse][az-aks-get-versions] voor meer informatie
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
-
 
 ## <a name="aks-kubernetes-release-calendar"></a>Release kalender voor AKS-Kubernetes
 

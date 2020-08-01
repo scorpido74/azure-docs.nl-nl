@@ -3,12 +3,12 @@ title: Gebeurtenis levering verifiëren naar gebeurtenis-handlers (Azure Event G
 description: In dit artikel worden verschillende methoden beschreven voor het verifiëren van de levering aan gebeurtenis-handlers in Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119936"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460640"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Gebeurtenis levering verifiëren naar gebeurtenis-handlers (Azure Event Grid)
 Dit artikel bevat informatie over het verifiëren van gebeurtenis levering aan gebeurtenis-handlers. Ook wordt uitgelegd hoe u de webhook-eind punten die worden gebruikt voor het ontvangen van gebeurtenissen van Event Grid met behulp van Azure Active Directory (Azure AD) of een gedeeld geheim kunt beveiligen.
@@ -35,7 +35,7 @@ U kunt het webhook-eind punt dat wordt gebruikt voor het ontvangen van gebeurten
 ### <a name="using-client-secret-as-a-query-parameter"></a>Client geheim gebruiken als query parameter
 U kunt ook uw webhook-eind punt beveiligen door query parameters toe te voegen aan de webhook-doel-URL die is opgegeven als onderdeel van het maken van een gebeurtenis abonnement. Stel een van de query parameters in als een client geheim, zoals een [toegangs token](https://en.wikipedia.org/wiki/Access_token) of een gedeeld geheim. Event Grid-Service bevat alle query parameters in elke aanvraag voor het leveren van gebeurtenissen naar de webhook. De webhook-service kan het geheim ophalen en valideren. Als het client geheim is bijgewerkt, moet het gebeurtenis abonnement ook worden bijgewerkt. Zorg ervoor dat de webhook zowel oude als nieuwe geheimen voor een beperkte duur accepteert voordat u het gebeurtenis abonnement met het nieuwe geheim bijwerkt om afleverings fouten te voor komen tijdens deze geheime draaiing. 
 
-Als query parameters kunnen client geheimen bevatten, worden ze behandeld met extra aandacht. Ze worden opgeslagen als versleuteld en zijn niet toegankelijk voor service operators. Ze worden niet geregistreerd als onderdeel van de service logboeken/traceringen. Bij het ophalen van de eigenschappen van het gebeurtenis abonnement worden de doel query parameters niet standaard geretourneerd. Bijvoorbeeld: [--include-Full-endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) -para meter moet worden gebruikt in azure [cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+Als query parameters kunnen client geheimen bevatten, worden ze behandeld met extra aandacht. Ze worden opgeslagen als versleuteld en zijn niet toegankelijk voor service operators. Ze worden niet geregistreerd als onderdeel van de service logboeken/traceringen. Bij het ophalen van de eigenschappen van het gebeurtenis abonnement worden de doel query parameters niet standaard geretourneerd. Bijvoorbeeld: [--include-Full-endpoint-URL](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) -para meter moet worden gebruikt in azure [cli](/cli/azure?view=azure-cli-latest).
 
 Zie [webhook Event Delivery](webhook-event-delivery.md) (Engelstalig) voor meer informatie over het leveren van gebeurtenissen aan webhooks
 

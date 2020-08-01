@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ff6fb26cf568474b24d941e4a174b425bf5207
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684676"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474356"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een Storage-account bewaken in de Azure-portal
 
@@ -141,7 +141,7 @@ U kunt Azure Storage voor het opslaan van Diagnostische logboeken voor lees-, sc
     ![Configureer logboek registratie in de Azure Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Klik op **Opslaan**.
 
-De diagnostische logboeken worden opgeslagen in een BLOB-container met de naam *$logs* in uw opslag account. U kunt de logboek gegevens weer geven met behulp van een opslag Verkenner zoals de [micro soft Storage Explorer](https://storageexplorer.com), of via een programma via de Storage-client bibliotheek of Power shell.
+De diagnostische logboeken worden opgeslagen in een BLOB-container met de naam *$logs* in uw opslag account. U kunt de logboek gegevens weer geven met behulp van een opslag Verkenner, zoals de [Microsoft Azure Storage Explorer](https://storageexplorer.com), of programmatisch met behulp van de Storage-client bibliotheek of Power shell.
 
 Zie [logboek registratie van Storage Analytics](storage-analytics-logging.md)voor informatie over het openen van de $logs-container.
 

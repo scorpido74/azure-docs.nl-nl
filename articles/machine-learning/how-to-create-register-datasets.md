@@ -11,13 +11,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 06/29/2020
-ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/22/2020
+ms.openlocfilehash: 5f58698de289efc0b74550260c2229f2a08d798d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326389"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461371"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -32,6 +32,8 @@ Met Azure Machine Learning gegevens sets kunt u het volgende doen:
 * Naadloos toegang krijgen tot gegevens tijdens model training zonder dat u zich zorgen hoeft te maken over verbindings reeksen of gegevens paden.
 
 * Gegevens delen en samen werken met andere gebruikers.
+
+Meer [informatie over het trainen van gegevens sets](how-to-train-with-datasets.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,27 +52,23 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 
 Wanneer u een gegevensset maakt, controleert u de verwerkings kracht van de berekening en de grootte van uw gegevens in het geheugen. De grootte van uw gegevens in de opslag is niet hetzelfde als de grootte van de gegevens in een data frame. Gegevens in CSV-bestanden kunnen bijvoorbeeld tot 10x worden uitgebreid in een data frame, zodat een CSV-bestand van 1 GB 10 GB kan worden in een data frame. 
 
-De belangrijkste factor is hoe groot de gegevensset in het geheugen is, d.w.z. als een data frame. Het is raadzaam om de reken grootte en de verwerkings capaciteit twee maal zo groot te hebben als RAM-geheugen. Dus als uw data frame 10 GB is, wilt u een compute target met 20 GB RAM-geheugen om ervoor te zorgen dat de data frame in het geheugen past en kunnen worden verwerkt. Als uw gegevens zijn gecomprimeerd, kunnen ze verder worden uitgebreid. 20 GB aan relatief sparse gegevens die zijn opgeslagen in de gecomprimeerde Parquet-indeling kunnen worden uitgebreid naar ~ 800 GB in het geheugen. Aangezien Parquet-bestanden gegevens in een kolom indeling opslaan en u alleen de helft van de kolommen nodig hebt, hoeft u niet meer dan ~ 400 GB in het geheugen te laden.
+Als uw gegevens zijn gecomprimeerd, kunnen ze verder worden uitgebreid. 20 GB aan relatief sparse gegevens die zijn opgeslagen in de gecomprimeerde Parquet-indeling kunnen worden uitgebreid naar ~ 800 GB in het geheugen. Aangezien Parquet-bestanden gegevens in een kolom indeling opslaan en u alleen de helft van de kolommen nodig hebt, hoeft u niet meer dan ~ 400 GB in het geheugen te laden.
  
 Als u gebruikmaakt van Pandas, is er geen reden om meer dan 1 vCPU te hebben, want dat is alles. U kunt eenvoudig parallelliseren aan veel Vcpu's op één Azure Machine Learning Reken instantie/knoop punt via modi en Dask/Ray, en zo nodig uitschalen naar een groot cluster door eenvoudigweg `import pandas as pd` te wijzigen in `import modin.pandas as pd` . 
  
-Als u een groot aantal virtuele machines niet kunt verkrijgen voor de gegevens, hebt u twee opties: gebruik een framework zoals Spark of Dask om de verwerking van de gegevens uit het geheugen te vervolledigen, d.w.z. de data frame wordt in de RAM-partitie geladen door de partitie en verwerkt, waarbij het uiteindelijke resultaat aan het einde wordt verzameld. Als dit te langzaam is, kunt u met Spark of Dask uitschalen naar een cluster dat nog steeds interactief kan worden gebruikt. 
+[Meer informatie over het optimaliseren van gegevens verwerking in Azure Machine Learning](concept-optimize-data-processing.md)
 
 ## <a name="dataset-types"></a>Typen gegevenssets
 
 Er zijn twee typen gegevensset, op basis van hoe gebruikers ze in de training gebruiken:
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. Dit biedt u de mogelijkheid om de gegevens te realiseren in een Panda of Spark data frame. U kunt een `TabularDataset` object maken van. CSV-,. tsv-,. Parquet-,. json-bestanden en uit SQL-query resultaten. Zie [TabularDatasetFactory-klasse](https://aka.ms/tabulardataset-api-reference)voor een volledige lijst.
-
 * De klasse [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Met deze methode kunt u de bestanden downloaden of koppelen aan uw Compute als een FileDataset-object. De bestanden kunnen een wille keurige indeling hebben, waardoor een breder scala aan machine learning scenario's mogelijk is, met inbegrip van diep gaande lessen. 
 
-## <a name="create-datasets"></a>Gegevenssets maken
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. Dit biedt u de mogelijkheid om de gegevens te realiseren in een Panda of Spark data frame. U kunt een `TabularDataset` object maken van. CSV-,. tsv-,. Parquet-,. json-bestanden en uit SQL-query resultaten. Zie [TabularDatasetFactory-klasse](https://aka.ms/tabulardataset-api-reference)voor een volledige lijst.
 
-Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron, samen met een kopie van de bijbehorende metagegevens. Omdat de gegevens op de bestaande locatie bewaard blijven, maakt u geen extra opslagkosten. U kunt zowel- `TabularDataset` als- `FileDataset` gegevens sets maken met behulp van de PYTHON-SDK of de Azure machine learning Studio op https://ml.azure.com .
+## <a name="create-datasets-via-the-sdk"></a>Gegevens sets maken via de SDK
 
-Gegevens sets moeten worden gemaakt op basis van paden in [Azure-data stores](how-to-access-data.md) of open bare Web-url's, zodat deze door Azure machine learning toegankelijk zijn. 
-
-### <a name="use-the-sdk"></a>De SDK gebruiken
+Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron, samen met een kopie van de bijbehorende metagegevens. Omdat de gegevens op de bestaande locatie bewaard blijven, maakt u geen extra opslagkosten. Gegevens sets moeten worden gemaakt op basis van paden in [Azure-data stores](how-to-access-data.md) of open bare Web-url's, zodat deze door Azure machine learning toegankelijk zijn. 
 
 Gegevens sets maken op basis van een [Azure-gegevens opslag](how-to-access-data.md) met behulp van de PYTHON-SDK:
 
@@ -80,6 +78,21 @@ Gegevens sets maken op basis van een [Azure-gegevens opslag](how-to-access-data.
 
 > [!Note]
 > U kunt een gegevensset maken op basis van meerdere paden in meerdere gegevens opslag. Er is geen vaste limiet voor het aantal bestanden of gegevens grootte waaruit u een gegevensset kunt maken. Voor elk gegevenspad worden echter enkele aanvragen verzonden naar de opslag service om te controleren of deze naar een bestand of map verwijst. Deze overhead kan leiden tot slechtere prestaties of storingen. Een gegevensset die verwijst naar één map met 1000 bestanden in, wordt beschouwd als verwijzingen naar één gegevenspad. U kunt het beste een gegevensset maken die verwijst naar minder dan 100 paden in gegevens opslag voor optimale prestaties.
+
+#### <a name="create-a-filedataset"></a>Een FileDataset maken
+
+Gebruik de [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) methode in de- `FileDatasetFactory` klasse om bestanden in een wille keurige indeling te laden en een niet-geregistreerde FileDataset te maken. Als uw opslag zich achter een virtueel netwerk of een firewall bevindt, stelt u de para meter `validate=False` in uw `from_files()` methode in. Hiermee wordt de eerste validatie stap omzeild en zorgt u ervoor dat u uw gegevensset kunt maken op basis van deze beveiligde bestanden.
+
+```Python
+# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
+datastore_paths = [(datastore, 'animals')]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 
 #### <a name="create-a-tabulardataset"></a>Een TabularDataset maken
 
@@ -185,24 +198,22 @@ data_slice = dataset.time_after(datetime(2019, 1, 1))
 data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
 data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
+### <a name="register-datasets"></a>Gegevens sets registreren
 
-#### <a name="create-a-filedataset"></a>Een FileDataset maken
-
-Gebruik de [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) methode in de- `FileDatasetFactory` klasse om bestanden in een wille keurige indeling te laden en een niet-geregistreerde FileDataset te maken. Als uw opslag zich achter een virtueel netwerk of een firewall bevindt, stelt u de para meter `validate=False` in uw `from_files()` methode in. Hiermee wordt de eerste validatie stap omzeild en zorgt u ervoor dat u uw gegevensset kunt maken op basis van deze beveiligde bestanden.
+Als u het aanmaak proces wilt volt ooien, registreert u uw gegevens sets met een werk ruimte. Gebruik de [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) methode voor het registreren van gegevens sets met uw werk ruimte om ze te delen met anderen en ze opnieuw te gebruiken voor experimenten in uw werk ruimte:
 
 ```Python
-# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [(datastore, 'animals')]
-animal_ds = Dataset.File.from_files(path=datastore_paths)
-
-# create a FileDataset from image and label files behind public web urls
-web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
-mnist_ds = Dataset.File.from_files(path=web_paths)
+titanic_ds = titanic_ds.register(workspace=workspace,
+                                 name='titanic_ds',
+                                 description='titanic training data')
 ```
 
-#### <a name="on-the-web"></a>Op het web 
-In de volgende stappen en animatie ziet u hoe u een gegevensset maakt in Azure Machine Learning Studio, https://ml.azure.com .
+## <a name="create-datasets-in-the-studio"></a>Gegevens sets maken in de Studio
+
+In de volgende stappen en animatie ziet u hoe u een gegevensset maakt in [Azure machine learning Studio](https://ml.azure.com).
+
+> [!Note]
+> Gegevens sets die zijn gemaakt via Azure Machine Learning Studio, worden automatisch geregistreerd bij de werk ruimte.
 
 ![Een gegevensset maken met de gebruikers interface](./media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -216,19 +227,6 @@ Een gegevensset maken in Studio:
 1. Selecteer **volgende** om de **instellingen en de voor beeld** -en **schema** formulieren in te vullen. ze worden op intelligente wijze ingevuld op basis van het bestands type en u kunt uw gegevensset verder configureren voordat deze formulieren worden gemaakt. 
 1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevensprofilering](how-to-use-automated-ml-for-ml-models.md#profile). 
 1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
-
-## <a name="register-datasets"></a>Gegevens sets registreren
-
-Als u het aanmaak proces wilt volt ooien, registreert u uw gegevens sets met een werk ruimte. Gebruik de [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) methode voor het registreren van gegevens sets met uw werk ruimte om ze te delen met anderen en ze opnieuw te gebruiken voor experimenten in uw werk ruimte:
-
-```Python
-titanic_ds = titanic_ds.register(workspace=workspace,
-                                 name='titanic_ds',
-                                 description='titanic training data')
-```
-
-> [!Note]
-> Gegevens sets die zijn gemaakt via Azure Machine Learning Studio, worden automatisch geregistreerd bij de werk ruimte.
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>Gegevens sets maken met Azure open gegevens sets
 

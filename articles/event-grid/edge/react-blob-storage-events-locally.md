@@ -7,12 +7,12 @@ ms.author: arduppal
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171428"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462017"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Zelf studie: reageren op Blob Storage gebeurtenissen in IoT Edge (preview-versie)
 Dit artikel laat u zien hoe u de Azure Blob Storage kunt implementeren in IoT-module, die als Event Grid Publisher kan fungeren voor het verzenden van gebeurtenissen bij het maken van een BLOB en het verwijderen van een BLOB naar Event Grid.  
@@ -75,7 +75,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
         }
     ```    
 
- 1. Klik op **Opslaan**
+ 1. Klik op **Opslaan**.
  1. Ga verder met de volgende sectie om de Azure Event Grid Subscriber module toe te voegen voordat u ze samen implementeert.
 
     >[!IMPORTANT]
@@ -95,7 +95,7 @@ In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die al
    * **Naam**: abonnee
    * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Opties**voor het maken van containers: geen
-1. Klik op **Opslaan**
+1. Klik op **Opslaan**.
 1. Ga door naar de volgende sectie om de Azure Blob Storage-module toe te voegen
 
 ## <a name="deploy-azure-blob-storage-module"></a>Azure Blob Storage-module implementeren
@@ -146,7 +146,7 @@ In deze sectie wordt beschreven hoe u de Azure Blob Storage-module implementeert
      - Voor Linux-containers, **mijn volume:/blobroot**
      - Voor Windows-containers is**mijn volume: C:/BlobRoot**
 
-5. Klik op **Opslaan**
+5. Klik op **Opslaan**.
 6. Klik op **volgende** om door te gaan naar de sectie routes
 
     > [!NOTE]
@@ -341,7 +341,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | -------- | ---- | ----------- |
 | api | tekenreeks | De bewerking die de gebeurtenis heeft geactiveerd. Dit kan een van de volgende waarden zijn: <ul><li>De waarden die zijn toegestaan voor BlobCreated zijn: `PutBlob` en`PutBlockList`</li><li>BlobDeleted: toegestane waarden zijn `DeleteBlob` , `DeleteAfterUpload` en `AutoDelete` . <p>De `DeleteAfterUpload` gebeurtenis wordt gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschap deleteAfterUpload is ingesteld op True. </p><p>`AutoDelete`Er wordt een gebeurtenis gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschaps waarde voor deleteAfterMinutes is verlopen.</p></li></ul>|
 | clientRequestId | tekenreeks | een aanvraag-ID van de client voor de bewerking van de opslag-API. Deze ID kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie [logboek indeling](/rest/api/storageservices/storage-analytics-log-format)voor meer informatie. |
-| requestId | tekenreeks | Door de service gegenereerde aanvraag-ID voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| requestId | tekenreeks | Door de service gegenereerde aanvraag-ID voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | tekenreeks | De waarde die u kunt gebruiken om bewerkingen voorwaardelijk uit te voeren. |
 | Invoer | tekenreeks | Het opgegeven inhouds type voor de blob. |
 | contentLength | geheel getal | De grootte van de BLOB in bytes. |

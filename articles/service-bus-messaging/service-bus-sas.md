@@ -2,13 +2,13 @@
 title: Toegangs beheer Azure Service Bus met hand tekeningen voor gedeelde toegang
 description: Overzicht van Service Bus toegangs beheer met behulp van hand tekeningen voor gedeelde toegang, Details over SAS-autorisatie met Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/30/2020
+ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340960"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460691"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -89,6 +89,9 @@ De resource-URI is de volledige URI van de Service Bus resource waarmee de toega
 De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/contosoTopics/T1` of `http://contoso.servicebus.windows.net` in het vorige voor beeld.
 
 Een SAS-token is geldig voor alle resources die worden voorafgegaan door de `<resourceURI>` gebruikt in de `signature-string` .
+
+> [!NOTE]
+> Zie [SAS-token genereren](/rest/api/eventhub/generate-sas-token)voor voor beelden van het genereren van een SAS-token met behulp van verschillende programmeer talen. 
 
 ## <a name="regenerating-keys"></a>Sleutels opnieuw genereren
 
@@ -177,7 +180,7 @@ Als u een SAS-token voor een afzender of client hebt, heeft deze de sleutel niet
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>De Shared Access Signature gebruiken (op AMQP niveau)
 
-In de vorige sectie hebt u gezien hoe u het SAS-token gebruikt met een HTTP POST-aanvraag voor het verzenden van gegevens naar de Service Bus. Zoals u weet, hebt u toegang tot Service Bus met behulp van de Advanced Message Queueing Protocol (AMQP) die het voorkeurs protocol voor prestatie redenen is, in veel scenario's. Het gebruik van SAS-tokens met AMQP wordt beschreven in de document [AMQP op claims gebaseerde beveiligings versie 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) die zich in Working Draft bevindt sinds 2013, maar goed wordt ondersteund door Azure.
+In de vorige sectie hebt u gezien hoe u het SAS-token gebruikt met een HTTP POST-aanvraag voor het verzenden van gegevens naar de Service Bus. Zoals u weet, hebt u toegang tot Service Bus met behulp van de Advanced Message Queueing Protocol (AMQP) die het voorkeurs protocol voor prestatie redenen is, in veel scenario's. Het gebruik van SAS-tokens met AMQP wordt beschreven in de document [AMQP op claims gebaseerde beveiligings versie 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) die sinds 2013 werkt, maar wordt nu ondersteund door Azure.
 
 Voordat u begint met het verzenden van gegevens naar Service Bus, moet de uitgever het SAS-token in een AMQP-bericht verzenden naar een goed gedefinieerd AMQP-knoop punt met de naam **$CBS** (dit kan worden weer gegeven als een ' speciale ' wachtrij die door de service wordt gebruikt om alle SAS-tokens te verkrijgen en te valideren). De uitgever moet het **ReplyTo** -veld in het AMQP-bericht opgeven. Dit is het knoop punt waarin de service antwoordt op de uitgever met het resultaat van de token validatie (een eenvoudig patroon van aanvraag/antwoord tussen Publisher en service). Dit antwoord knooppunt wordt ' op de hoogte ' gemaakt, zoals beschreven in de AMQP 1,0-specificatie. Nadat u hebt gecontroleerd of het SAS-token geldig is, kan de uitgever door gaan en gegevens verzenden naar de service.
 
@@ -259,7 +262,7 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | Privé beleid opsommen |Beheren |Elk naam ruimte adres |
 | Beginnen met Luis teren op een naam ruimte |Luisteren |Elk naam ruimte adres |
 | Berichten naar een listener verzenden in een naam ruimte |Verzenden |Elk naam ruimte adres |
-| **Wachtrij** | | |
+| **Queue** | | |
 | Een wachtrij maken |Beheren |Elk naam ruimte adres |
 | Een wachtrij verwijderen |Beheren |Een geldig wachtrij adres |
 | Wacht rijen opsommen |Beheren |/$Resources/queues |
@@ -273,7 +276,7 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | De status ophalen die is gekoppeld aan een berichten wachtrij sessie |Luisteren |Een geldig wachtrij adres |
 | De status van een berichten wachtrij sessie instellen |Luisteren |Een geldig wachtrij adres |
 | Een bericht plannen voor latere levering; bijvoorbeeld, [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Luisteren | Een geldig wachtrij adres
-| **Thematische** | | |
+| **Onderwerp** | | |
 | Een onderwerp maken |Beheren |Elk naam ruimte adres |
 | Een onderwerp verwijderen |Beheren |Een geldig onderwerp-adres |
 | Onderwerpen opsommen |Beheren |/$Resources/topics |
@@ -290,7 +293,7 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | Deadletter een bericht |Luisteren |.. /myTopic/Subscriptions/mySubscription |
 | De status ophalen die is gekoppeld aan een onderwerps sessie |Luisteren |.. /myTopic/Subscriptions/mySubscription |
 | De status die is gekoppeld aan een onderwerps sessie instellen |Luisteren |.. /myTopic/Subscriptions/mySubscription |
-| **Wetgeving** | | |
+| **Regels** | | |
 | Een regel maken |Beheren |.. /myTopic/Subscriptions/mySubscription |
 | Een regel verwijderen |Beheren |.. /myTopic/Subscriptions/mySubscription |
 | Regels opsommen |Beheren of Belui Steren |.. /myTopic/Subscriptions/mySubscription/Rules

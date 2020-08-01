@@ -3,12 +3,12 @@ title: Web-app-analyse voor ASP.NET instellen met Azure Application Insights | M
 description: Configureer prestaties, Beschik baarheid en hulpprogram ma's voor analyse van gebruikers gedrag voor uw ASP.NET-website, die on-premises of in azure wordt gehost.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324213"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475529"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Application Insights instellen voor uw ASP.NET-website
 
@@ -112,7 +112,10 @@ De Azure-resource die de telemetrie van uw app ontvangt, wordt aangeduid met een
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Upgraden naar toekomstige SDK-versies
-Als u wilt upgraden naar een [nieuwe release van de SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), opent u **NuGet-pakketbeheer** opnieuw en filtert u op geïnstalleerde pakketten. Selecteer **micro soft. ApplicationInsights. Web**en kies **upgraden**.
+
+* [Releaseopmerkingen](./release-notes.md)
+
+Als u een upgrade wilt uitvoeren naar een nieuwe release van de SDK, opent u het **NuGet-pakket beheer**en filtert u op geïnstalleerde pakketten. Selecteer **micro soft. ApplicationInsights. Web**en kies **upgraden**.
 
 Als u aanpassingen in ApplicationInsights.config hebt aangebracht, slaat u hiervan een kopie op voordat u de upgrade uitvoert. Voeg de wijzigingen vervolgens samen in de nieuwe versie.
 
@@ -141,7 +144,7 @@ Er zijn ook andere onderwerpen die u kunt bekijken als u geïnteresseerd bent in
 * [Slimme diagnostische gegevens](./proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
 * [Metrische waarschuwingen](../platform/alerts-log.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatisering
 
 * [Het maken van een Application Insights-resource automatiseren](./powershell.md)
 

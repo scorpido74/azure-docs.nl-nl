@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 97285ae9eadee3717f0b1a1510627392250424b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037862"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460674"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-beveiligings basislijn voor Service Fabric
 
@@ -468,7 +468,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruik
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -626,7 +626,7 @@ U kunt ook de hand matige trigger voor upgrades van installatie kopieën van de 
 
 * [Vm's up-to-date zetten met het nieuwste model voor schaal sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Overzicht van Azure Automation Updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Overzicht van Azure Automation Updatebeheer](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

@@ -5,22 +5,23 @@ services: azure-portal
 keywords: instellingen, time-out, taal, regionale
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763955"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461923"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Uw voorkeuren voor de Azure-portal instellen
 
 U kunt de standaard instellingen van de Azure Portal wijzigen om te voldoen aan uw eigen voor keuren. Elk van de onderstaande instellingen kan worden gewijzigd:
 
 * [Time-out voor inactieve sessie](#change-the-idle-duration-for-inactive-sign-out)
+* [Standaard abonnement](#choose-your-default-subscription)
 * [Standaard weergave](#choose-your-default-view)
 * [Menu modus van de portal](#choose-a-portal-menu-mode)
 * [Thema kleur en hoog contrast](#choose-a-theme)
@@ -29,7 +30,7 @@ U kunt de standaard instellingen van de Azure Portal wijzigen om te voldoen aan 
 
 ## <a name="change-general-portal-settings"></a>Algemene Portal instellingen wijzigen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **instellingen** in de koptekst van de globale pagina.
 
     ![Scherm opname van globale paginakop tekst pictogrammen met gemarkeerde instellingen](./media/set-preferences/header-settings.png)
@@ -54,6 +55,18 @@ Als uw beheerder een beleid voor time-out bij inactiviteit heeft ingeschakeld, s
 > [!NOTE]
 > Als u een beheerder bent en u wilt een inactieve time-outinstelling afdwingen voor alle gebruikers van de Azure Portal, Zie [de time-out voor inactiviteit op mapniveau instellen voor gebruikers van de Azure Portal](admin-timeout.md)
 >
+
+### <a name="choose-your-default-subscription"></a>Uw standaard abonnement kiezen
+
+U kunt het abonnement dat standaard wordt geopend, wijzigen wanneer u zich aanmeldt bij de Azure Portal. Dit is handig als u een primair abonnement hebt waarmee u werkt, maar af en toe gebruikt. 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="Resource lijst filteren op abonnement.":::
+
+1. Selecteer het pictogram voor de map en het abonnement in de bovenste navigatie balk.
+1. Selecteer de abonnementen die u wilt als de standaard abonnementen wanneer u de portal start. 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Selecteer de abonnementen die u wilt als de standaard abonnementen wanneer u de portal start."::: 
+
 
 ### <a name="choose-your-default-view"></a>Kies uw standaard weergave 
 

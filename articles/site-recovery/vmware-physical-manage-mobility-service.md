@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79256963"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460096"
 ---
 # <a name="manage-the-mobility-agent"></a>De Mobility-agent beheren 
 
 U kunt Mobility agent op uw server instellen wanneer u Azure Site Recovery gebruikt voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure. Mobiliteits agent coördineert de communicatie tussen uw beveiligde computer, configuratie server/scale-out proces server en beheert gegevens replicatie. In dit artikel vindt u een overzicht van algemene taken voor het beheren van de Mobility-agent nadat deze is geïmplementeerd.
 
+>[!TIP]
+>Raadpleeg de [volgende](vmware-physical-mobility-service-overview.md#locate-installer-files)informatie om het installatie programma voor een specifiek besturings systeem/Linux distributie te downloaden. Als u automatisch wilt bijwerken vanuit de portal, hoeft u het installatie programma niet te downloaden. [ASR haalt automatisch het installatie programma op van de configuratie server en werkt de agent bij](#update-mobility-service-from-azure-portal).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,7 +35,7 @@ U kunt Mobility agent op uw server instellen wanneer u Azure Site Recovery gebru
 
      ![VM-lijst van gerepliceerde items](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. De taak Mobility service bijwerken wordt gestart voor elk van de geselecteerde machines.
+5. De taak Mobility service bijwerken wordt gestart voor elk van de geselecteerde machines. De Mobility-agent is bijgewerkt naar de versie van de configuratie server. Als de configuratie server zich bijvoorbeeld op versie 9,33 bevindt, wordt de Mobility-agent op een beveiligde virtuele machine ook bijgewerkt naar 9,33-versie.
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobility service bijwerken met het Power shell-script op Windows Server
 

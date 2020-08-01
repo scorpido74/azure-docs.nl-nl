@@ -3,12 +3,12 @@ title: Hybrid Cloud extension (HCX) installeren
 description: De VMware Hybrid Cloud extension (HCX)-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing (AVS)
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539156"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475444"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
@@ -19,7 +19,7 @@ HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie vCenter. Als 
 
 Controleer [voordat u](#before-you-begin)aan de slag gaat, vereisten voor de [Software versie](#software-version-requirements)en de [vereisten eerst.](#prerequisites) 
 
-Vervolgens worden alle nood zakelijke procedures door lopen:
+Vervolgens worden alle benodigde procedures door lopen:
 
 > [!div class="checklist"]
 > * De on-premises HCXe eicellen implementeren
@@ -31,10 +31,10 @@ Nadat de installatie is voltooid, kunt u de aanbevolen vervolg stappen volgen di
 
 ## <a name="before-you-begin"></a>Voordat u begint
     
-* Bekijk de [zelf studie reeks](tutorial-network-checklist.md) Basic AVS Software Defined Data Center (SDDC)
-* Bekijk en Raadpleeg de [documentatie van VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html) , met inbegrip van de gebruikers handleiding voor HCX
-* De migratie van VMware-documenten controleren [virtual machines met VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
-* Bekijk eventueel [overwegingen voor VMware HCX-implementaties](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)
+* Bekijk de [zelf studie reeks](tutorial-network-checklist.md)Basic AVS Software Defined Data Center (SDDC).
+* Bekijk en Raadpleeg de [documentatie van VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html) , inclusief de gebruikers handleiding voor HCX.
+* Bekijk de migratie van VMware-documenten [virtual machines met VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* Bekijk eventueel [overwegingen voor VMware HCX-implementatie](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Bekijk eventueel gerelateerde VMware-materialen op HCX, zoals de VMware vSphere [blog serie](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) op HCX. 
 * Bestel een AVS HCX Enter prise Activation via AVS-ondersteunings kanalen.
 
@@ -52,7 +52,7 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Wereld wijd bereik moet worden geconfigureerd tussen on-premises en AVS SDDC-circuits.
+* ExpressRoute Global Reach moeten worden geconfigureerd tussen on-premises en AVS SDDC ExpressRoute-circuits.
 
 * Alle vereiste poorten moeten open zijn tussen on-premises en AVS SDDC (Zie [VMware HCX-documentatie](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 

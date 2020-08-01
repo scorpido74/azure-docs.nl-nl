@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 07/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243202"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460997"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikers registratie en product abonnement delegeren
 
@@ -49,8 +49,6 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
 1. Ontvang een aanvraag in de volgende vorm:
    
    > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl = {URL van de bron pagina} &Salt = {string} &sig = {String}*
-   > 
-   > 
    
     Query parameters voor de case voor aanmelden/registreren:
    
@@ -84,6 +82,7 @@ Naast de **aanmeldings** bewerking kunt u ook account beheer uitvoeren door de v
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
+* **Melden**
 
 U moet de volgende query parameters door geven voor account beheer bewerkingen.
 
@@ -93,6 +92,7 @@ U moet de volgende query parameters door geven voor account beheer bewerkingen.
 * **sig**: een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Product abonnement delegeren
+
 Het delegeren van het product abonnement werkt op dezelfde manier als het overdragen van gebruikers die zich hebben aangemeld. De uiteindelijke werk stroom zou er als volgt uitzien:
 
 1. Ontwikkelaar selecteert een product in het API Management ontwikkelaars Portal en klikt op de knop abonneren.
@@ -114,9 +114,9 @@ Zorg er vervolgens voor dat het eind punt voor delegering de volgende acties uit
      * "Abonneren": een aanvraag om de gebruiker te abonneren op een bepaald product met de opgegeven ID (zie hieronder)
      * ' Abonnement opzeggen ': een aanvraag voor het afmelden van een gebruiker bij een product
      * "Renew": een aanvraag om een abonnement te vernieuwen (bijvoorbeeld dat mogelijk verloopt)
-   * **ProductID**: de id van het product waarop de gebruiker zich heeft gevraagd om zich te abonneren
+   * **ProductID**: bij het *Abonneren* -de id van het product waarvoor de gebruiker zich heeft gevraagd om zich te abonneren
    * **subscriptionId**: on *unsubscribe* and *renew* -de id van het product abonnement
-   * **GebruikersID**: de id van de gebruiker voor wie de aanvraag is ingediend
+   * **gebruikers**-id: bij het *Aanmelden* -de gebruikers naam van de gebruiker voor wie de aanvraag is ingediend
    * **Salt**: een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
    * **sig**: een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
 

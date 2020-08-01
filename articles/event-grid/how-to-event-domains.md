@@ -3,12 +3,12 @@ title: Gebeurtenissen publiceren met gebeurtenis domeinen met Azure Event Grid
 description: Laat zien hoe u grote sets met onderwerpen beheert in Azure Event Grid en gebeurtenissen hierop publiceert met behulp van gebeurtenis domeinen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: eae467c1c4cc1257e7a5205dd5efda40490f7908
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ce1cc9c2b09dd6b0c9508ad6b0597428bd355d4b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423640"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460555"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Onderwerpen beheren en gebeurtenissen publiceren met behulp van gebeurtenis domeinen
 
@@ -31,7 +31,7 @@ Zie voor meer informatie over gebeurtenis domeinen [begrijpen gebeurtenis domein
 
 Als u grote sets met onderwerpen wilt beheren, maakt u een gebeurtenis domein.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -78,11 +78,11 @@ Let `endpoint` op de en de vereisten die `id` nodig zijn voor het beheren van he
 
 ## <a name="manage-access-to-topics"></a>Toegang tot onderwerpen beheren
 
-Het beheren van toegang tot onderwerpen geschiedt via [roltoewijzing](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). De roltoewijzing maakt gebruik van op rollen gebaseerd toegangs beheer om bewerkingen op Azure-resources te beperken tot geautoriseerde gebruikers binnen een bepaald bereik.
+Het beheren van toegang tot onderwerpen geschiedt via [roltoewijzing](../role-based-access-control/role-assignments-cli.md). De roltoewijzing maakt gebruik van op rollen gebaseerd toegangs beheer om bewerkingen op Azure-resources te beperken tot geautoriseerde gebruikers binnen een bepaald bereik.
 
 Event Grid heeft twee ingebouwde rollen, die u kunt gebruiken om bepaalde gebruikers toegang te verlenen voor verschillende onderwerpen binnen een domein. Deze rollen zijn `EventGrid EventSubscription Contributor (Preview)` , waarmee u abonnementen kunt maken en verwijderen, en `EventGrid EventSubscription Reader (Preview)` waarmee u alleen gebeurtenis abonnementen kunt weer geven.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 De volgende Azure CLI-opdracht beperkt het `alice@contoso.com` maken en verwijderen van gebeurtenis abonnementen alleen in het onderwerp `demotopic1` :
 
 ```azurecli-interactive
@@ -113,7 +113,7 @@ Abonneren op een onderwerp in een domein is hetzelfde als abonneren op een ander
 
 Normaal gesp roken maakt de gebruiker aan wie u toegang hebt verleend in de voor gaande sectie het abonnement. U kunt dit artikel vereenvoudigen door het abonnement te maken. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -171,7 +171,7 @@ Het publiceren van gebeurtenissen naar een domein is hetzelfde als het [publicer
 }]
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 Als u het domein eindpunt wilt ophalen met Azure CLI, gebruikt u
 
 ```azurecli-interactive

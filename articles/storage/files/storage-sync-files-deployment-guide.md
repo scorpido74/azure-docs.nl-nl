@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386687"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460623"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -20,11 +20,22 @@ Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files 
 We raden u ten zeerste [aan de planning voor een Azure files-implementatie](storage-files-planning.md) te lezen en te [plannen voor een Azure file sync-implementatie](storage-sync-files-planning.md) voordat u de stappen in dit artikel uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
-* Een Azure-bestands share in dezelfde regio die u wilt implementeren Azure File Sync. Zie voor meer informatie:
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Een Azure-bestands share in dezelfde regio die u wilt implementeren Azure File Sync. Zie voor meer informatie:
     - [Beschik baarheid](storage-sync-files-planning.md#azure-file-sync-region-availability) van de regio voor Azure file sync.
     - [Maak een bestands share](storage-how-to-create-file-share.md) voor een stapsgewijze beschrijving van het maken van een bestands share.
-* Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [overwegingen voor Windows-bestands servers](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie over ondersteunde versies van Windows Server en aanbevolen systeem bronnen.
-* U kunt de AZ Power shell-module gebruiken met Power shell 5,1 of Power shell 6 +. U kunt de AZ Power shell-module voor Azure File Sync gebruiken op elk ondersteund systeem, met inbegrip van niet-Windows-systemen, maar de cmdlet Server registratie moet altijd worden uitgevoerd op het Windows Server-exemplaar dat u registreert (dit kan rechtstreeks of via Power shell Remoting worden uitgevoerd). In Windows Server 2012 R2 kunt u controleren of u ten minste Power shell 5,1 uitvoert. \* door te kijken naar de waarde van de eigenschap **PSVersion** van het object **$PSVersionTable** :
+1. Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [overwegingen voor Windows-bestands servers](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie over ondersteunde versies van Windows Server en aanbevolen systeem bronnen.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Een Azure-bestands share in dezelfde regio die u wilt implementeren Azure File Sync. Zie voor meer informatie:
+    - [Beschik baarheid](storage-sync-files-planning.md#azure-file-sync-region-availability) van de regio voor Azure file sync.
+    - [Maak een bestands share](storage-how-to-create-file-share.md) voor een stapsgewijze beschrijving van het maken van een bestands share.
+1. Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [overwegingen voor Windows-bestands servers](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie over ondersteunde versies van Windows Server en aanbevolen systeem bronnen.
+
+1. U kunt de AZ Power shell-module gebruiken met Power shell 5,1 of Power shell 6 +. U kunt de AZ Power shell-module voor Azure File Sync gebruiken op elk ondersteund systeem, met inbegrip van niet-Windows-systemen, maar de cmdlet Server registratie moet altijd worden uitgevoerd op het Windows Server-exemplaar dat u registreert (dit kan rechtstreeks of via Power shell Remoting worden uitgevoerd). In Windows Server 2012 R2 kunt u controleren of u ten minste Power shell 5,1 uitvoert. \* door te kijken naar de waarde van de eigenschap **PSVersion** van het object **$PSVersionTable** :
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -37,7 +48,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     > [!Important]  
     > Als u de gebruikers interface voor Server registratie wilt gebruiken in plaats van rechtstreeks vanuit Power shell te registreren, moet u Power shell 5,1 gebruiken.
 
-* Als u hebt aangegeven dat u Power shell 5,1 wilt gebruiken, moet u ervoor zorgen dat er ten minste .NET 4.7.2 is geïnstalleerd. Meer informatie over [.NET Framework versies en afhankelijkheden](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) op uw systeem.
+1. Als u hebt aangegeven dat u Power shell 5,1 wilt gebruiken, moet u ervoor zorgen dat er ten minste .NET 4.7.2 is geïnstalleerd. Meer informatie over [.NET Framework versies en afhankelijkheden](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) op uw systeem.
 
     > [!Important]  
     > Als u .NET 4.7.2 + installeert op Windows Server Core, moet u installeren met de `quiet` vlaggen en, anders `norestart` mislukt de installatie. Als u bijvoorbeeld .NET 4,8 installeert, ziet de opdracht er als volgt uit:
@@ -45,10 +56,51 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* De AZ Power shell-module, die kan worden geïnstalleerd door de volgende instructies te volgen: [Installeer en configureer Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. De AZ Power shell-module, die kan worden geïnstalleerd door de volgende instructies te volgen: [Installeer en configureer Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > De module AZ. StorageSync wordt nu automatisch geïnstalleerd tijdens de installatie van de AZ Power shell-module.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Een Azure-bestands share in dezelfde regio die u wilt implementeren Azure File Sync. Zie voor meer informatie:
+    - [Beschik baarheid](storage-sync-files-planning.md#azure-file-sync-region-availability) van de regio voor Azure file sync.
+    - [Maak een bestands share](storage-how-to-create-file-share.md) voor een stapsgewijze beschrijving van het maken van een bestands share.
+1. Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [overwegingen voor Windows-bestands servers](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie over ondersteunde versies van Windows Server en aanbevolen systeem bronnen.
+
+1. [Azure CLI installeren](/cli/azure/install-azure-cli)
+
+   Als u wilt, kunt u ook Azure Cloud Shell gebruiken om de stappen in deze zelf studie uit te voeren.  Azure Cloud Shell is een interactieve shell-omgeving die u via uw browser gebruikt.  Start Cloud Shell met een van de volgende methoden:
+
+   - Selecteer **Nu proberen** in de rechterbovenhoek van een codeblok. **Probeer** het opnieuw Azure Cloud shell, maar de code wordt niet automatisch gekopieerd naar Cloud shell.
+
+   - Open Cloud Shell door naar te gaan[https://shell.azure.com](https://shell.azure.com)
+
+   - Selecteer de knop **Cloud shell** in de menu balk in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com)
+
+1. Meld u aan.
+
+   Meld u aan met behulp van de opdracht [az login](/cli/azure/reference-index#az-login) als u een lokale installatie van de CLI gebruikt.
+
+   ```azurecli
+   az login
+   ```
+
+    Volg de weergegeven stappen in uw terminal om het verificatieproces te voltooien.
+
+1. Installeer de [AZ FileSync](/cli/azure/ext/storagesync/storagesync) Azure cli-extensie.
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   Na de installatie van de **storagesync** -extensie referentie, wordt de volgende waarschuwing weer gegeven.
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Windows Server voorbereiden voor gebruik met Azure File Sync
 Schakel de **Verbeterde beveiliging van Internet Explorer**uit voor elke server die u wilt gebruiken met Azure file sync, met inbegrip van elk server knooppunt in een failovercluster. Dit is alleen vereist voor de eerste registratie van de server. U kunt de optie opnieuw inschakelen nadat de server is geregistreerd.
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Volg de instructies voor de Azure Portal of Power shell.
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Volg de instructies voor de Azure Portal of Power shell.
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Azure File Sync-agent installeren
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Volg de instructies voor de Azure Portal of Power shell.
 
 ---
 
@@ -242,6 +305,9 @@ Nadat u de benodigde gegevens hebt geselecteerd, selecteert u **registreren** om
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Volg de instructies voor de Azure Portal of Power shell.
 
 ---
 
@@ -312,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Gebruik de opdracht [AZ storagesync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) om een nieuwe synchronisatie groep te maken.  Voor een standaard resource groep voor alle CLI-opdrachten gebruikt u [AZ configure](/cli/azure/reference-index#az-configure).
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+Gebruik de opdracht [AZ storagesync Sync-Group Cloud-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) om een nieuw eind punt in de cloud te maken.
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>Servereindpunt maken
@@ -363,6 +450,34 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath 
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Gebruik de opdracht [AZ storagesync Sync-Group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) om een nieuw server eindpunt te maken.
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --cloud-tiering on \
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+                                                 --tier-files-older-than-days 15 \
+                                                 --volume-free-space-percent 85 \
+
 ```
 
 ---

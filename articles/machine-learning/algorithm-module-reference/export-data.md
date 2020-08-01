@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d0fd11ce5b25b8796b07176a4ba83091a8f7cc0b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337820"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461014"
 ---
 # <a name="export-data-module"></a>Gegevens module exporteren
 
@@ -26,8 +26,8 @@ Deze module biedt ondersteuning voor het exporteren van uw gegevens naar de volg
 
 - Azure Blob-container
 - Azure-bestandsshare
-- Azure Data Lake
-- Azure Data Lake Gen2
+- Azure Data Lake Storage Gen1
+- Azure Data Lake Storage Gen2
 - Azure SQL-database
 
 Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens in azure Storage-services](../how-to-access-data.md)voor meer informatie.
@@ -43,7 +43,7 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
 1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Raadpleeg de informatie [in azure Storage-services om toegang te krijgen tot de gegevens](../how-to-access-data.md).
 
     > [!NOTE]
-    > Het exporteren van gegevens van een bepaald gegevens type naar een SQL database-kolom die is opgegeven als een ander gegevens type, wordt niet ondersteund.
+    > Het exporteren van gegevens van een bepaald gegevens type naar een SQL database-kolom die is opgegeven als een ander gegevens type, wordt niet ondersteund. De doel tabel hoeft niet eerst te bestaan.
 
 1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
 

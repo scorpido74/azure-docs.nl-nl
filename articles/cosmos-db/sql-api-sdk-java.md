@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323822"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461031"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -256,19 +256,11 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>Release-en pensioen datums
-Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
-Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd aan de huidige SDK, omdat het raadzaam is om altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren.
-
-Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
+Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd aan de huidige SDK, omdat het raadzaam is om altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren.
 
 > [!WARNING]
-> Alle versies **1. x** van de SQL-SDK voor Java zullen op **30 mei 2020**worden ingetrokken.
-> 
->
-
-> [!WARNING]
-> Alle versies van de SQL-SDK voor Java vóór versie **1.0.0** zijn ingetrokken op **29 februari 2016**.
+> Alle versies **1. x** van de SQL-SDK voor Java zullen op **30 mei 2020**worden ingetrokken. Alle versies van de SQL-SDK voor Java vóór versie **1.0.0** zijn ingetrokken op **29 februari 2016**.
 > 
 > 
 

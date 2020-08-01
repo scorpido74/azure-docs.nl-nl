@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c846298fecdc771dd5d9831a558b99c74b2737
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392060"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461065"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed processor SDK: down load en release-opmerkingen
 
@@ -48,7 +48,11 @@ ms.locfileid: "85392060"
 
 ### <a name="v2-builds"></a>v2-builds
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* Er is een aanvraag gecorrigeerd wanneer `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` de reden voor het sluiten is verzonden naar `FeedProcessing.IChangeFeedObserver.CloseAsync` als de partitie niet kan worden gevonden of als de doel replica niet up-to-date is met de Lees sessie. In deze gevallen `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` en `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` sluitings redenen worden nu gebruikt.
+* Er is een nieuwe sluitings reden toegevoegd `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` die wordt verzonden om de lezing van de wijzigings feed te sluiten wanneer de doel replica niet up-to-date is met de Lees sessie.
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * Er is een nieuwe methode `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` en bijbehorende open bare interface toegevoegd `ICheckpointPartitionProcessorFactory` . Hierdoor kan een implementatie van de `IPartitionProcessor` interface het ingebouwde mechanisme voor controle punten gebruiken. De nieuwe fabriek is vergelijkbaar met de bestaande `IPartitionProcessorFactory` , behalve dat de `Create` methode ook de `ILeaseCheckpointer` para meter gebruikt.
 * Slechts een van de twee methoden, ofwel `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` of `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` , kan worden gebruikt voor hetzelfde `ChangeFeedProcessorBuilder` exemplaar.
 
@@ -178,16 +182,16 @@ ms.locfileid: "85392060"
 
 ## <a name="release--retirement-dates"></a>Uittredings datums &
 
-Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
+Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert.
 
-Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert. 
-
-Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
+> [!WARNING]
+> Na 31 augustus 2022 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 1. x van de Azure Cosmos DB .NET of .NET Core SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 1. x van de SDK blijven geleverd door de Azure Cosmos DB-service.
 
 <br/>
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |30 juli 2020 |--- |
 | [2.3.0](#2.3.0) |2 april 2020 |--- |
 | [2.2.8](#2.2.8) |28 oktober 2019 |--- |
 | [2.2.7](#2.2.7) |14 mei 2019 |--- |

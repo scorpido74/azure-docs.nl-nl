@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3699213fe61c64d7677ba026a8df54ccbbfe4b33
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352231"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475478"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren en gebruiken
 
-[Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT hub. De Azure CLI is beschikbaar in Windows, Linux en MacOS. De Azure CLI is ook vooraf geïnstalleerd in de [Azure Cloud shell](https://shell.azure.com). Met de Azure CLI kunt u Azure IoT Hub-resources, Device Provisioning Service-instanties en gekoppelde hubs beheren zonder de extensies te installeren.
+[Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT hub. De Azure CLI is beschikbaar in Windows, Linux en macOS. Met de Azure CLI kunt u Azure IoT Hub-resources, Device Provisioning Service-instanties en gekoppelde hubs beheren zonder de extensies te installeren.
 
 De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van IoT Plug en Play preview-apparaten. U kunt de extensie gebruiken voor het volgende:
 
@@ -51,9 +51,6 @@ Voer de volgende opdracht uit om u aan te melden bij uw Azure-abonnement:
 ```azurecli
 az login
 ```
-
-> [!NOTE]
-> Als u de Azure Cloud shell gebruikt, bent u automatisch aangemeld en hoeft u de vorige opdracht niet uit te voeren.
 
 Als u de Azure IoT-extensie voor Azure CLI wilt gebruiken, hebt u het volgende nodig:
 
@@ -109,6 +106,65 @@ Bewaak alle IoT Plug en Play digitale dubbele gebeurtenissen van een specifiek a
 az iot hub monitor-events -n {iothub_name} -d {device_id} -i {interface_id}
 ```
 
+### <a name="manage-models-in-the-model-repository"></a>Modellen in de model opslagplaats beheren
+
+U kunt de opslag opdrachten van het Azure CLI-model gebruiken voor het beheren van modellen in de opslag plaats.
+
+#### <a name="create-model-repository"></a>Model opslagplaats maken
+
+Maak een nieuwe IoT-Plug en Play bedrijfs opslagplaats voor uw Tenant als u de eerste gebruiker van uw Tenant bent:
+
+```azurecli
+az iot pnp repo create
+```
+
+#### <a name="manage-model-repository-tenant-roles"></a>Tenant rollen voor model opslagplaats beheren
+
+Een roltoewijzing voor een gebruiker of service-principal maken voor een specifieke resource.
+
+Geef bijvoorbeeld user@consoso.com de rol van **ModelsCreator** voor de Tenant:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
+```
+
+Of geef user@consoso.com de rol van **ModelAdministrator** voor een specifiek model:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
+```
+
+#### <a name="create-a-model"></a>Een model maken
+
+Maak een nieuw model in de bedrijfs opslagplaats:
+
+```azurecli
+az iot pnp model create --model {model_json or path_to_file}
+```
+
+#### <a name="search-a-model"></a>Een model doorzoeken
+
+Lijst met modellen die overeenkomen met een specifiek tref woord:
+
+```azurecli
+az iot pnp model list -q {search_keyword}
+```
+
+#### <a name="publish-a-model"></a>Een model publiceren
+
+Een model van een apparaat in de bedrijfs opslagplaats publiceren naar de open bare opslag plaats.
+
+Maak bijvoorbeeld openbaar voor het model met de ID `dtmi:com:example:ClimateSensor;1` :
+
+```azurecli
+az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
+```
+
+Voor het publiceren van een model moeten aan de volgende vereisten worden voldaan:
+
+- De Tenant van het bedrijf of de organisatie moet een micro soft-partner zijn. 
+- De gebruiker of Service-Principal moet lid zijn van de **Publisher** -rol van de opslagplaats Tenant.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u hoe u de Azure IoT-extensie voor Azure CLI kunt installeren en gebruiken om te communiceren met uw Plug en Play-apparaten. Een voorgestelde volgende stap is om te leren hoe u [Azure IOT Explorer kunt gebruiken met uw apparaten](./howto-use-iot-explorer.md).
+In dit artikel leert u hoe u de Azure IoT-extensie voor Azure CLI kunt installeren en gebruiken om te communiceren met uw IoT Plug en Play-apparaten. Een voorgestelde volgende stap is om te leren hoe u [Azure IOT Explorer kunt gebruiken met uw apparaten](./howto-use-iot-explorer.md).

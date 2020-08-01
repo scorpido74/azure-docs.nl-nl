@@ -7,14 +7,14 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352279"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475665"
 ---
-# <a name="iot-plug-and-play-conventions"></a>IoT Plug en Play-conventies
+# <a name="iot-plug-and-play-conventions"></a>Conventies voor IoT Plug en Play
 
 IoT Plug en Play preview-apparaten moeten een aantal conventies volgen wanneer ze berichten uitwisselen met een IoT-hub. IoT Plug en Play preview-apparaten gebruiken het MQTT-protocol om te communiceren met IoT Hub.
 
@@ -25,11 +25,11 @@ U beschrijft de telemetrie, eigenschappen en opdrachten die een IoT Plug en Play
 
 Zie [IoT Plug en Play-onderdelen in modellen](concepts-components.md)voor meer informatie.
 
-## <a name="model-discovery"></a>Modeldetectie
+## <a name="identify-the-model"></a>Het model identificeren
 
 Voor het aankondigen van het model dat wordt geïmplementeerd, bevat een IoT-Plug en Play apparaat de model-ID in het MQTT-verbindings pakket door toe te voegen `model-id` aan het `USERNAME` veld.
 
-Om het model te detecteren dat een apparaat implementeert, kan een service de model-ID ophalen uit:
+Voor het identificeren van het model dat een apparaat implementeert, kan een service de model-ID ophalen uit:
 
 - Het dubbele veld van het apparaat `modelId` .
 - Het digitale dubbele `$metadata.$model` veld.

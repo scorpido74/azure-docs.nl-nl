@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352216"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475682"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>Preview-architectuur voor IoT Plug en Play
+# <a name="iot-plug-and-play-preview-architecture"></a>Architectuur van IoT Plug en Play (preview)
 
 Met IoT Plug en Play Preview kunnen bouwers van oplossingen smart-apparaten integreren met hun oplossingen zonder hand matige configuratie. De kern van IoT Plug en Play is een _model_ apparaat waarmee de mogelijkheden van een apparaat worden beschreven in een IoT-Plug en Play toepassing. Dit model is gestructureerd als een reeks interfaces die het volgende definiëren:
 
@@ -79,5 +79,5 @@ De back-end-oplossing kan de informatie van de interface definities gebruiken vo
 Nu u een overzicht hebt van de architectuur van een IoT-Plug en Play oplossing, moeten de volgende stappen worden uitgevoerd om meer te weten te komen over:
 
 - [De model opslagplaats](./concepts-model-repository.md)
-- [Model detectie proces](./concepts-model-discovery.md)
+- [Digitale dubbele model integratie](./concepts-model-discovery.md)
 - [Ontwikkelen voor IoT-Plug en Play](./concepts-developer-guide.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025692"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461762"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen
 
@@ -121,6 +121,9 @@ Hybride Azure AD-deelname werkt met zowel beheerde als federatieve omgevingen, a
 Een beheerde omgeving kan worden geïmplementeerd via een [PHS (Password Hash Sync)](/azure/active-directory/hybrid/whatis-phs) of door [middel van verificatie (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) met [naadloze eenmalige aanmelding](/azure/active-directory/hybrid/how-to-connect-sso).
 
 Voor deze scenario's is het niet nodig om een federatieve server te configureren voor authenticatie.
+
+> [!NOTE]
+> [Cloud verificatie met behulp van gefaseerde implementatie](/hybrid/how-to-connect-staged-rollout) wordt alleen ondersteund bij het starten van Windows 10 1903 update
 
 ### <a name="federated-environment"></a>Federatieve omgeving
 

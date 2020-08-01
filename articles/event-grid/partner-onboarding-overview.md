@@ -3,12 +3,12 @@ title: Onboarding als een Azure Event Grid partner
 description: Onboarding als een type Azure Event Grid partner onderwerp. Meer informatie over het resource model en de publicatie stroom voor de onderwerpen van partners.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116111"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461252"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als een Azure Event Grid partner
 
@@ -142,21 +142,21 @@ Gebeurtenissen publiceren naar Azure Event Grid met behulp van het CloudEvents 1
 
 Nadat u naar het partnerNamespace-eind punt hebt gepost, ontvangt u een antwoord. Het antwoord is een standaard-HTTP-antwoord code. Enkele veelvoorkomende reacties zijn:
 
-| Resultaat                             | Antwoord              |
+| Resultaat                             | Reactie              |
 |------------------------------------|-----------------------|
 | Geslaagd                            | 200 OK                |
-| De gebeurtenis gegevens hebben een onjuiste indeling    | 400 ongeldige aanvraag       |
-| Ongeldige toegangs sleutel                 | 401 niet gemachtigd      |
+| De gebeurtenis gegevens hebben een onjuiste indeling    | 400 Ongeldige aanvraag       |
+| Ongeldige toegangs sleutel                 | 401 Onbevoegd      |
 | Onjuist eind punt                 | 404 Niet gevonden         |
 | Matrix of gebeurtenis overschrijdt grootte limieten | 413 Payload is te groot |
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sjabloon schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST-API’s](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLI-extensie](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [REST-API's](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [CLI-extensie](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDK's
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

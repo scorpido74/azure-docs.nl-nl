@@ -3,16 +3,16 @@ title: Secure webhook-levering met Azure AD in Azure Event Grid
 description: Hierin wordt beschreven hoe u gebeurtenissen kunt leveren aan HTTPS-eind punten die worden beveiligd door Azure Active Directory met behulp van Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b0503d7da9e191e9d6764076392ead8faa5109a1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119120"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460708"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar Azure Active Directory beveiligde eind punten
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar beveiligde Azure Active Directory-eindpunten
 
-In dit artikel wordt beschreven hoe u Azure Active Directory kunt gebruiken om de verbinding tussen uw gebeurtenis abonnement en het eind punt van de webhook te beveiligen. Zie [overzicht van micro soft Identity platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)voor een overzicht van Azure AD-toepassingen en-service-principals.
+In dit artikel wordt beschreven hoe u Azure Active Directory kunt gebruiken om de verbinding tussen uw gebeurtenis abonnement en het eind punt van de webhook te beveiligen. Zie [overzicht van micro soft Identity platform (v 2.0)](../active-directory/develop/v2-overview.md)voor een overzicht van Azure AD-toepassingen en-service-principals.
 
 In dit artikel wordt gebruikgemaakt van de Azure Portal voor demonstratie, maar de functie kan ook worden ingeschakeld met CLI, Power shell of de Sdk's.
 
@@ -28,7 +28,7 @@ Maak eerst een Azure AD-toepassing voor uw beveiligde eind punt. Zie https://doc
 Gebruik het onderstaande Power shell-script om een rol-en Service-Principal te maken in uw Azure AD-toepassing. U hebt de Tenant-ID en de object-ID van uw Azure AD-toepassing nodig:
 
    > [!NOTE]
-   > U moet lid zijn van de [rol Azure AD-toepassings beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) om dit script uit te voeren.
+   > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) om dit script uit te voeren.
     
 1. Wijzig de $myTenantId van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
 1. Wijzig de $myAzureADApplicationObjectId van het Power shell-script om de object-ID van uw Azure AD-toepassing te gebruiken

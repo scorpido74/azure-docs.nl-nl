@@ -93,7 +93,7 @@
     - name: Resource Manager-sjablonen
       href: template-samples.md
     - name: Codevoorbeelden
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Ingebouwde modules voor Azure Policy
       href: ./policy-samples.md
 - name: Concepten

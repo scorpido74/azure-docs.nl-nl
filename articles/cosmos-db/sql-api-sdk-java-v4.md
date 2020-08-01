@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6cd4d64361e1975a6752ff3a15600923ce3fdf98
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322887"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461048"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -138,6 +138,7 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 * Query optimalisatie door dubbele serialisatie/deserialisatie te verwijderen. 
 * De antwoord headers worden geoptimaliseerd door onnodig kopiëren terug en heen te verwijderen. 
 * Geoptimaliseerde `ByteBuffer` serialisatie/deserialisatie door tussenliggende teken reeks-exemplaren te verwijderen.
+
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
 * Uitzonde `toString()` ring voor Connection Policy null-pointer.
 * Probleem opgelost bij het parseren van de query resultaten in het geval van een waarde in de volg orde van query's. 
