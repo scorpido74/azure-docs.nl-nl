@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9b16a0edc1549a1b4d8ef5ba53d8b795f6d74e07
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418318"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496964"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architectuur voor de replicatie van VMware/fysieke servers naar een secundaire on-premises site
 
@@ -55,9 +55,7 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 2. Na de initiële replicatie verzendt de agent op elke machine deltareplicatiewijzigingen naar de processerver.
 3. De processerver optimaliseert de gegevens en brengt deze over naar de hoofddoelserver op de secundaire site. De configuratieserver beheert het replicatieproces.
 
-**Afbeelding 6: replicatie van VMware naar VMware**
-
-![VMware naar VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![Diagram van het weer geven van replicatie van virtuele VMware-machines en fysieke servers naar een secundair Data Center](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

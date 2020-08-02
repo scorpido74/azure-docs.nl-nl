@@ -4,18 +4,18 @@ description: Meer informatie over hoe SQL-query's met para meters krachtige verw
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870816"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496981"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Query's met para meters in Azure Cosmos DB
 
-Cosmos DB ondersteunt query's met para meters die worden uitgedrukt in de vertrouwde @-notatie. SQL met para meters biedt een robuuste afhandeling en Escape van de invoer van gebruikers en voor komt onopzettelijke bloot stelling van gegevens via SQL-injectie.
+Azure Cosmos DB ondersteunt query's met para meters die worden uitgedrukt in de vertrouwde @-notatie. SQL met para meters biedt een robuuste afhandeling en Escape van de invoer van gebruikers en voor komt onopzettelijke bloot stelling van gegevens via SQL-injectie.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -27,7 +27,7 @@ U kunt bijvoorbeeld een query schrijven die `lastName` en `address.state` als pa
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-U kunt deze aanvraag vervolgens naar Cosmos DB verzenden als een geparametriseerde JSON-query, zoals in het volgende:
+U kunt deze aanvraag vervolgens naar Azure Cosmos DB verzenden als een geparametriseerde JSON-query, zoals in het volgende:
 
 ```sql
     {
@@ -39,7 +39,7 @@ U kunt deze aanvraag vervolgens naar Cosmos DB verzenden als een geparametriseer
     }
 ```
 
-In het volgende voor beeld wordt het bovenste argument met een query met para meters ingesteld: 
+In het volgende voor beeld wordt het bovenste argument met een query met para meters ingesteld:
 
 ```sql
     {
@@ -50,8 +50,14 @@ In het volgende voor beeld wordt het bovenste argument met een query met para me
     }
 ```
 
-Parameter waarden kunnen bestaan uit een geldige JSON: teken reeksen, getallen, Booleaanse waarden, null, zelfs matrices of geneste JSON. Omdat Cosmos DB schemaloos is, worden para meters niet gevalideerd op basis van elk type.
+Parameter waarden kunnen bestaan uit een geldige JSON: teken reeksen, getallen, Booleaanse waarden, null, zelfs matrices of geneste JSON. Omdat Azure Cosmos DB schemaloos is, worden para meters niet gevalideerd op basis van elk type.
 
+Hier volgen enkele voor beelden van query's met para meters in elke Azure Cosmos DB-SDK:
+
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L195)
+- [Java](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L392-L421)
+- [Node.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L58-L79)
+- [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78)
 
 ## <a name="next-steps"></a>Volgende stappen
 

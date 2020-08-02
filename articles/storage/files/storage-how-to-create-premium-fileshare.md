@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509979"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497627"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
 Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.

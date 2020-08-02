@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
-ms.openlocfilehash: e8dadbad309a146500db342f55bee9339fde6172
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 07/30/2020
+ms.openlocfilehash: dba0fccaa3eb79ad297ce80462efea5b69a4a009
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430988"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497049"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB
 
@@ -244,11 +244,11 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="cassandra-api"></a>Cassandra-API
 
-Azure Cosmos DB accounts voor Cassandra-API kunnen worden ingericht voor automatisch schalen met behulp van [CQL-opdrachten](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md)-of [Azure Resource Manager-sjablonen](resource-manager-samples.md).
+Azure Cosmos DB accounts voor Cassandra-API kunnen worden ingericht voor automatisch schalen met behulp van [CQL-opdrachten](manage-scale-cassandra.md#use-autoscale), [Azure cli](cli-samples.md), [Azure PowerShell](powershell-samples.md) of [Azure Resource Manager sjablonen](resource-manager-samples.md).
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
-Azure Cosmos DB-accounts voor de MongoDB-API kunnen worden ingericht voor automatisch schalen met behulp van [MongoDb-extensie opdrachten](mongodb-custom-commands.md), [Azure cli](cli-samples.md)of [Azure Resource Manager sjablonen](resource-manager-samples.md).
+Azure Cosmos DB-accounts voor de MongoDB-API kunnen worden ingericht voor automatisch schalen met behulp van [MongoDb-extensie opdrachten](mongodb-custom-commands.md), [Azure cli](cli-samples.md), [Azure PowerShell](powershell-samples.md) of [Azure Resource Manager-sjablonen](resource-manager-samples.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -257,6 +257,10 @@ Azure Resource Manager sjablonen kunnen worden gebruikt voor het inrichten van d
 ## <a name="azure-cli"></a>Azure CLI
 
 Azure CLI kan worden gebruikt voor het inrichten van de door Voer voor automatisch schalen op een Data Base of op container niveau voor alle Azure Cosmos DB-Api's. Zie Azure CLI-voor beelden [voor Azure Cosmos DB](cli-samples.md)voor meer informatie.
+
+## <a name="azure-powershell"></a>Azure PowerShell
+
+Azure PowerShell kan worden gebruikt voor het inrichten van de door Voer voor automatisch schalen op een Data Base of op container niveau resources voor alle Azure Cosmos DB-Api's. Zie [Azure PowerShell voor beelden voor Azure Cosmos DB](powershell-samples.md)voor steek proeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

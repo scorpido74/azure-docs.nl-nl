@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021661"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495940"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-adres Sering instellen om verbinding te maken met een secundaire on-premises site na een failover
 
@@ -63,11 +63,11 @@ De volgende afbeeldingen illustreren de subnetten voor en na een failover.
 
 **Voor failover**
 
-![Voor failover](./media/hyper-v-vmm-networking/network-design2.png)
+![Diagram waarin de subnetten voor failover worden weer gegeven.](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Na een failover**
 
-![Na een failover](./media/hyper-v-vmm-networking/network-design3.png)
+![Diagram waarin de subnetten worden weer gegeven na een failover.](./media/hyper-v-vmm-networking/network-design3.png)
 
 Na een failover wijst Site Recovery een IP-adres toe voor elke netwerk interface op de VM. Het adres wordt toegewezen vanuit de groep met vaste IP-adressen in het relevante netwerk, voor elk VM-exemplaar.
 
@@ -118,11 +118,11 @@ In dit voor beeld hebben we verschillende IP-adressen voor de primaire en secund
 
 **Voor failover**
 
-![Ander IP-adres-vóór failover](./media/hyper-v-vmm-networking/network-design10.png)
+![Diagram met verschillende IP-adressen vóór de failover.](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Na een failover**
 
-![Ander IP-adres-na failover](./media/hyper-v-vmm-networking/network-design11.png)
+![Diagram met verschillende IP-adressen na een failover.](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

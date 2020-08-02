@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367517"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500297"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor Azure-app configuratie
 
@@ -86,6 +86,10 @@ Buitensporige aanvragen voor app-configuratie kunnen leiden tot beperking of ove
 ## <a name="importing-configuration-data-into-app-configuration"></a>Configuratie gegevens importeren in de app-configuratie
 
 App-configuratie biedt de mogelijkheid om uw configuratie-instellingen bulksgewijs te [importeren](https://aka.ms/azconfig-importexport1) uit uw huidige configuratie bestanden met behulp van de Azure portal of cli. U kunt ook dezelfde opties gebruiken om waarden te exporteren uit de app-configuratie, bijvoorbeeld tussen gerelateerde winkels. Als u een doorlopende synchronisatie met uw GitHub opslag plaats wilt instellen, kunt u de [actie github](https://aka.ms/azconfig-gha2) gebruiken zodat u uw bestaande broncode beheer procedures kunt blijven gebruiken terwijl u de voor delen van app-configuratie krijgt.
+
+## <a name="multi-region-deployment-in-app-configuration"></a>Implementatie met meerdere regio's in app-configuratie
+
+App-configuratie is regionale service. Voor toepassingen met verschillende configuraties per regio kunt u deze configuraties in één exemplaar opslaan om een Single Point of Failure te maken. Het implementeren van één app-configuratie-instanties per regio in meerdere regio's is mogelijk een betere optie. Dit kan helpen bij het herstellen van regionale nood herstel, prestaties en beveiligings Silo. Het configureren per regio verbetert ook de latentie en maakt gebruik van gescheiden beperkings quota's, omdat beperking per instantie is. Voor het Toep assen van herstel na nood gevallen kunt u [meerdere configuratie archieven](./concept-disaster-recovery.md)gebruiken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

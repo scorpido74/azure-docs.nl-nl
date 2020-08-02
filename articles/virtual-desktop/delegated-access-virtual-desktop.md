@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2dc96f587a9e5db9d9810a4d1ab7d32c4ff49f7d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: df4d1b98eac782641fb36c614d2df9508c6131ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289859"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498664"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Gedelegeerde toegang in Windows Virtual Desktop
 
@@ -40,7 +40,7 @@ Het Windows-bureau blad gedelegeerde toegang ondersteunt de volgende waarden voo
 
 Voordat u begint, moet u de instructies in [de Power shell-module instellen](powershell-module.md) voor het instellen van de Windows-module voor virtueel bureau blad-Power shell als u dat nog niet hebt gedaan.
 
-Virtueel bureau blad van Windows maakt gebruik van op rollen gebaseerd toegangs beheer (RBAC) van Azure bij het publiceren van app-groepen naar gebruikers of gebruikers groepen. De gebruikersrol bureau blad-Virtualisatiehost wordt toegewezen aan de gebruiker of gebruikers groep en het bereik is de app-groep. Deze rol geeft de gebruiker speciale toegang tot gegevens voor de app-groep.  
+Virtueel bureau blad van Windows maakt gebruik van Azure RBAC (op rollen gebaseerd toegangs beheer) tijdens het publiceren van app-groepen naar gebruikers of gebruikers groepen. De gebruikersrol bureau blad-Virtualisatiehost wordt toegewezen aan de gebruiker of gebruikers groep en het bereik is de app-groep. Deze rol geeft de gebruiker speciale toegang tot gegevens voor de app-groep.  
 
 Voer de volgende cmdlet uit om Azure Active Directory gebruikers toe te voegen aan een app-groep:
 

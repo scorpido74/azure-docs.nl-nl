@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 85c04c875e543a5c41e9ad5e736a7de77ac1dad0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0f85283ad90f219dfbf404c437a843e1191b19fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119868"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498732"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up maken van een Azure Database for MySQL-server en deze herstellen met Power shell
 
@@ -77,7 +78,7 @@ De para meters set **PointInTimeRestore** van de `Restore-AzMySqlServer` cmdlet 
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| Name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| Naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Selecteer een punt in de tijd om te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals **2020-03-13T05:59:00-08:00**. U kunt ook de UTC Zulu-indeling gebruiken, bijvoorbeeld **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Gebruik de punt-in-time-modus om te herstellen. |
 
@@ -119,7 +120,7 @@ Voor de para meters set **Restore** van de `Restore-AzMySqlServer` cmdlet zijn d
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | De naam van de resource groep waartoe de nieuwe server behoort.|
-|Name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|Naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |Locatie | eastus | De locatie van de nieuwe server. |
 |UseGeoRestore | `<SwitchParameter>` | Gebruik de geo-modus om te herstellen. |
 

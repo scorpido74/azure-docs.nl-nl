@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036451"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496250"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Bibliotheken voor Apache Spark toevoegen en beheren in azure Synapse Analytics
 
@@ -21,7 +21,7 @@ Apache Spark is afhankelijk van veel bibliotheken om functionaliteit te bieden. 
 
 Python-pakketten kunnen worden toegevoegd op het niveau van de Spark-groep (preview-versie) en. jar-pakketten kunnen worden toegevoegd op het niveau van de Spark-taak definitie.
 
-## <a name="adding-or-updating-python-libraries"></a>Python-bibliotheken toevoegen of bijwerken
+## <a name="add-or-update-python-libraries"></a>Python-bibliotheken toevoegen of bijwerken
 
 Apache Spark in azure Synapse Analytics beschikt over een volledige Anacondas-installatie plus extra bibliotheken. De lijst met volledige bibliotheken vindt u op [Apache Spark-versie ondersteuning](apache-spark-version-support.md).
 
@@ -51,7 +51,7 @@ Upload het omgevings configuratie bestand met behulp van de bestands kiezer in h
 
 ![Python-bibliotheken toevoegen](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Python-bibliotheken toevoegen")
 
-### <a name="verifying-installed-libraries"></a>Geïnstalleerde bibliotheken controleren
+### <a name="verify-installed-libraries"></a>Geïnstalleerde bibliotheken verifiëren
 
 Voer de volgende code uit om te controleren of de juiste versies van de juiste bibliotheken zijn geïnstalleerd
 

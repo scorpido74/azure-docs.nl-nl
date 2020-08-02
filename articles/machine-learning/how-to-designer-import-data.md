@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327001"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495368"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Gegevens importeren in Azure Machine Learning Designer (preview-versie)
 
@@ -32,7 +32,7 @@ U wordt aangeraden gegevens [sets](concept-data.md#datasets) te gebruiken voor h
 
 ### <a name="register-a-dataset"></a>Een gegevensset registreren
 
-U kunt bestaande gegevens sets [programmatisch registreren met de SDK](how-to-create-register-datasets.md#use-the-sdk) of [visueel in azure machine learning Studio](how-to-create-register-datasets.md#use-the-ui).
+U kunt bestaande gegevens sets [programmatisch registreren met de SDK](how-to-create-register-datasets.md#datasets-sdk) of [visueel in azure machine learning Studio](how-to-create-register-datasets.md#datasets-ui).
 
 U kunt de uitvoer voor elke ontwerp module ook registreren als een gegevensset.
 
@@ -59,7 +59,7 @@ We raden u aan om gegevens sets te gebruiken voor het importeren van informatie,
 Zie de [referentie pagina gegevens importeren](algorithm-module-reference/import-data.md)voor gedetailleerde informatie over het gebruik van de module gegevens importeren.
 
 > [!NOTE]
-> Als uw gegevensset te veel kolommen bevat, kan de volgende fout optreden: "validatie mislukt vanwege grootte beperking". Als u dit wilt voor komen, [registreert u de gegevensset in de gegevens sets-interface](how-to-create-register-datasets.md#use-the-ui).
+> Als uw gegevensset te veel kolommen bevat, kan de volgende fout optreden: "validatie mislukt vanwege grootte beperking". Als u dit wilt voor komen, [registreert u de gegevensset in de gegevens sets-interface](how-to-create-register-datasets.md#datasets-ui).
 
 ## <a name="supported-sources"></a>Ondersteunde bronnen
 

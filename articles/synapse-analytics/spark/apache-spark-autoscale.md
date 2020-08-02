@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 7c6278d24e52159424c3e346b2382c93f4ab8160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075795"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500348"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisch schalen van Azure Synapse Analytics Apache Spark Pools
 
@@ -67,9 +67,9 @@ Het eerste aantal knoop punten is het minimum. Met deze waarde wordt de oorspron
 
 Het kan 1 tot vijf minuten duren voordat een schaal bewerking is voltooid.
 
-### <a name="preparation-for-scaling-down"></a>Voor bereiding voor Horizon taal schalen
+### <a name="prepare-for-scaling-down"></a>Voorbereiden op omlaag schalen
 
-Wanneer het proces wordt geschaald, worden de knoop punten in de buiten gebruik gesteld, zodat er geen nieuwe uitbreiers kunnen worden gestart op dat knoop punt.
+Tijdens het proces voor het schalen van de instantie worden de knoop punten in de buiten gebruik stellen, zodat er geen nieuwe uitbreiers kunnen worden gestart op het knoop punt.
 
 De actieve taken blijven worden uitgevoerd en voltooid. De taken die in behandeling zijn, wachten om te worden gepland als normaal met minder beschik bare knoop punten.
 

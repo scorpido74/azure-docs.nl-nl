@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111453b30a0c2fd7c0b2a2077b31b2cf16ebda06
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445662"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483906"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -3407,7 +3407,7 @@ Met de open bare preview-vernieuwing van Azure AD Privileged Identity Management
 
 * Gebruik gewoon voldoende beheer.
 * Goed keuring vereisen om resource rollen te activeren.
-* Plan een toekomstige activering van een rol waarvoor goed keuring is vereist voor zowel Azure AD-als Azure RBAC-rollen.
+* Plan een toekomstige activering van een rol die goed keuring vereist voor zowel Azure AD-als Azure-rollen.
 
 Zie [privileged Identity Management voor Azure-resources (preview)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)voor meer informatie.
 

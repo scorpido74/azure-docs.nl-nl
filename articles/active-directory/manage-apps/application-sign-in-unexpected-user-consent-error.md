@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763751"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499497"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Er is een onverwachte fout opgetreden bij het uitvoeren van de toestemming voor een toepassing
 
@@ -38,6 +38,8 @@ Bepaalde voor waarden moeten waar zijn voor een gebruiker om toestemming te geve
 Deze fout treedt op wanneer een gebruiker die geen beheerder van het bedrijf is, een toepassing probeert te gebruiken die machtigingen aanvraagt die alleen door een beheerder kunnen worden verleend. Deze fout kan worden opgelost door een beheerder die namens hun organisatie toegang tot de toepassing verleent.
 
 Deze fout kan ook optreden wanneer een gebruiker niet kan worden gestemd op een toepassing omdat micro soft detecteert dat de machtigings aanvraag riskant is. In dit geval wordt een controle gebeurtenis ook vastgelegd met de categorie ' ApplicationManagement ', het activiteitstype ' instemming met de toepassing ' en de status van ' Risk ante toepassing gedetecteerd '.
+
+Een ander scenario waarin deze fout zich kan voordoen, is wanneer de gebruikers toewijzing voor de toepassing is vereist, maar er is geen toestemming van de beheerder opgegeven. In dit geval moet de beheerder eerst toestemming geven voor de beheerder.   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Beleid voor komt fout bij het toekennen van machtigingen
 * **AADSTS90093:** Een beheerder van &lt; tenantDisplayName &gt; heeft een beleid ingesteld waarmee wordt voor komen dat u &lt; de naam van de app aan &gt; de aanvraag toevraagt. Neem contact op met een beheerder van &lt; tenantDisplayName &gt; , die namens u machtigingen voor deze app kan verlenen.

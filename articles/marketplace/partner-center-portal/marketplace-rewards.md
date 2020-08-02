@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 2ae8e170e3f31090b6babfee23e4505f5b736655
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319946"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496012"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ Marketplace-beloningen bieden ondersteuning voor uw specifieke groei fase, te be
 
 Er wordt een positieve feedback lus gemaakt: de voor delen van elke fase van groei helpen u bij de volgende fase, zodat u uw bedrijf kunt uitbreiden naar klanten van micro soft, met het veld van micro soft en via het kanaal van micro soft door gebruik te maken van de commerciële Marketplace als uw platform.
 
-Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](../determine-your-listing-type.md#choose-a-publishing-option)is.
+Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](../determine-your-listing-type.md#choose-a-call-to-action)is.
 
 U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aanbieding live gaat, op basis van uw geschiktheid.
 

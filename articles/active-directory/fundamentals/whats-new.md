@@ -1,5 +1,5 @@
 ---
-title: Wat is er nieuw? Release opmerkingen-Azure Active Directory | Microsoft Docs
+title: Wat is nieuw? Release opmerkingen-Azure Active Directory | Microsoft Docs
 description: Ontdek wat er nieuw is met Azure Active Directory, zoals de nieuwste opmerkingen bij de release, bekende problemen, oplossingen voor fouten, afgeschafte functionaliteit en aanstaande wijzigingen.
 services: active-directory
 author: msaburnley
@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac87bda4251a8414ef659ad486c989c0c1cd42e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc316db0146943113b97b680229bd113f6fc1de5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034717"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494805"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -36,6 +36,176 @@ Azure AD ontvangt voortdurend verbeteringen. Dit artikel bevat informatie over h
 - Plannen voor wijzigingen
 
 Deze pagina wordt maandelijks bijgewerkt. Ga daarom regel matig opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Active Directory](whats-new-archive.md).
+
+---
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="as-an-it-admin-i-want-to-target-client-apps-using-conditional-access"></a>Als IT-beheerder wil ik client-apps richten met behulp van voorwaardelijke toegang
+
+**Type:** Plan voor wijziging   
+**Service categorie:** Voorwaardelijke toegang  
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
+ 
+Met de GA-versie van de voor waarde client-apps in voorwaardelijke toegang wordt nieuw beleid nu standaard toegepast op alle client toepassingen, met inbegrip van verouderde verificatie-clients. Bestaande beleids regels blijven ongewijzigd, maar de wissel knop *Ja/Nee* wordt verwijderd uit bestaande beleids regels om eenvoudig te zien welke client-apps door het beleid worden toegepast. 
+
+Wanneer u een nieuw beleid maakt, moet u ervoor zorgen dat u gebruikers en service accounts uitsluit die nog steeds gebruikmaken van verouderde verificatie; Als u dit niet doet, worden ze geblokkeerd. [Meer informatie](https://aka.ms/caclientapps).
+ 
+---
+
+### <a name="upcoming-scim-compliance-fixes"></a>Aanstaande SCIM-nalevings correcties
+
+**Type:** Plan voor wijziging  
+**Service categorie:** App-inrichting  
+**Product mogelijkheden:** Beheer van identiteits levenscyclus
+ 
+De Azure AD-inrichtings service maakt gebruik van de SCIM-standaard voor de integratie met toepassingen. Onze implementatie van de SCIM-standaard is in ontwikkeling en we verwachten dat we wijzigingen aanbrengen in het gedrag van het uitvoeren van PATCH bewerkingen en de eigenschap "actief" voor een resource instellen. [Meer informatie](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility).
+ 
+---
+
+### <a name="group-owner-setting-on-azure-admin-portal-will-be-changed"></a>De instelling groeps eigenaar op de Azure-beheer portal wordt gewijzigd
+
+**Type:** Plan voor wijziging  
+**Service categorie:** Groeps beheer  
+**Product mogelijkheden:** Werking
+
+De pagina instellingen van eigenaar van groepen kan worden geconfigureerd om machtigingen voor de toewijzing van de eigenaar te beperken tot een beperkte groep gebruikers in de Azure-beheer Portal en het toegangs venster. Binnenkort kunnen we de bevoegdheid groeps eigenaars toewijzen niet alleen op deze twee UX-portals, maar ook het beleid op de back-end afdwingen om consistent gedrag te bieden over eind punten, zoals Power shell en Microsoft Graph. 
+
+We gaan de huidige instelling uitschakelen voor de klanten die deze niet gebruiken en bieden een optie om gebruikers in de komende maanden de bevoegdheid van de groeps eigenaars te bereiken. Zie voor hulp bij het bijwerken van groeps instellingen de groeps gegevens bewerken met behulp van [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context).
+
+---
+
+### <a name="azure-active-directory-registration-service-is-ending-support-for-tls-10-and-11"></a>De ondersteuning voor Azure Active Directory registratie service wordt beëindigd voor TLS 1,0 en 1,1
+
+**Type:** Plan voor wijziging  
+**Service categorie:** Apparaatregistratie en-beheer  
+**Product mogelijkheden:** Onafhankelijk
+
+Trans port Layer Security (TLS) 1,2 en update servers en clients zullen binnenkort communiceren met Azure Active Directory Device Registration service. Ondersteuning voor TLS 1,0 en 1,1 voor communicatie met de Azure AD Device Registration-service wordt buiten gebruik stellen:
+- Op 31 augustus 2020 in alle soevereine Clouds (GCC High, DoD, enz.)
+- Op 30 oktober 2020 in alle commerciële Clouds
+
+Meer [informatie](https://docs.microsoft.com/azure/active-directory/devices/reference-device-registration-tls-1-2) over TLS 1,2 voor de Azure AD-registratie service.
+
+---
+
+### <a name="windows-hello-for-business-sign-ins-visible-in-azure-ad-sign-in-logs"></a>Windows hello voor bedrijven-aanmeldingen worden weer gegeven in Logboeken van Azure AD-aanmelding
+
+**Type:** Vaste  
+**Service categorie:** Rapporteren  
+**Product mogelijkheden:** & rapportage controleren
+ 
+Met Windows hello voor bedrijven kunnen eind gebruikers zich aanmelden bij Windows-computers met een penbeweging (zoals een pincode of biometrische). Azure AD-beheerders kunnen Windows hello voor bedrijven-aanmeldingen onderscheiden van andere Windows-aanmeldingen als onderdeel van de reis naar wacht woordloze verificatie. 
+
+Beheerders kunnen nu zien of een Windows-verificatie gebruikt Windows hello voor bedrijven door het tabblad verificatie gegevens voor een Windows-aanmeld gebeurtenis te controleren in de Blade Azure AD-aanmeldingen in azure Portal. Windows hello voor bedrijven-authenticaties bevatten ' WindowsHelloForBusiness ' in het veld verificatie methode. Raadpleeg de [documentatie bij aanmeld logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)voor meer informatie over het interpreteren van aanmeldings Logboeken.
+ 
+---
+
+### <a name="fixes-to-group-deletion-behavior-and-performance-improvements"></a>Oplossingen voor het verwijderen van groepen en prestatie verbeteringen
+
+**Type:** Vaste  
+**Service categorie:** App-inrichting  
+**Product mogelijkheden:** Beheer van identiteits levenscyclus
+ 
+Voorheen werd het groeps object niet verwijderd wanneer een groep is gewijzigd van ' in-Scope ' naar ' out-of-scope ' en een beheerder op opnieuw starten heeft geklikt voordat de wijziging is voltooid. Het groeps object wordt nu verwijderd uit de doel toepassing wanneer deze buiten het bereik valt (uitgeschakeld, verwijderd, niet-toegewezen of het bereik filter niet heeft door gegeven). [Meer informatie](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles).
+ 
+---
+
+### <a name="public-preview-admins-can-now-add-custom-content-in-the-email-to-reviewers-when-creating-an-access-review"></a>Open bare Preview: beheerders kunnen nu aangepaste inhoud in het e-mail bericht toevoegen aan revisoren bij het maken van een toegangs beoordeling
+
+**Type:** Nieuwe functie  
+**Service categorie:** Toegangs beoordelingen  
+**Product mogelijkheden:** Identity governance
+ 
+Wanneer een nieuwe toegangs beoordeling wordt gemaakt, ontvangt de revisor een e-mail met de vraag om de toegangs beoordeling te volt ooien. Veel klanten hebben gevraagd om aangepaste inhoud toe te voegen aan het e-mail bericht, zoals contact gegevens of andere aanvullende ondersteunings inhoud om de revisor te begeleiden. 
+
+Beheerders kunnen nu in open bare preview aangepaste inhoud opgeven in het e-mail bericht dat wordt verzonden naar revisors door inhoud toe te voegen aan de sectie ' Geavanceerd ' van Azure AD-toegangs Beoordelingen. Zie [een toegangs beoordeling van groepen en toepassingen maken in azure AD-toegangs beoordelingen](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)voor hulp bij het maken van toegangs Beoordelingen.
+ 
+---
+
+### <a name="authorization-code-flow-for-single-page-apps-available"></a>Autorisatie code stroom voor apps met één pagina beschikbaar
+
+**Type:** Nieuwe functie  
+**Service categorie:** Authenticaties (aanmeldingen)  
+**Product mogelijkheden:** Ontwikkelaars ervaring
+ 
+Vanwege de moderne Cookie beperkingen van derden, zoals Safari ITP, moet SPAs de autorisatie code stroom gebruiken in plaats van de impliciete stroom om SSO te onderhouden, en MSAL.js v 2. x wordt nu de autorisatie code stroom ondersteund. 
+
+Er zijn overeenkomstige updates voor de Azure Portal, zodat u uw beveiligd-wachtwoord verificatie kunt bijwerken met het type Spa en de auth-code stroom moet gebruiken. Zie [gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie met behulp van de auth-code stroom](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code) voor verdere instructies.
+ 
+---
+
+### <a name="azure-ad-application-proxy-now-supports-the-remote-desktop-services-web-client"></a>Azure AD-toepassingsproxy ondersteunt nu de Extern bureaublad-services-webclient
+
+**Type:** Nieuwe functie  
+**Service categorie:** App-proxy  
+**Product mogelijkheden:** Access Control
+
+Azure AD-toepassingsproxy ondersteunt nu de Extern bureaublad-services (RDS)-webclient. Met de RDS-webclient kunnen gebruikers toegang krijgen tot Extern bureaublad-infra structuur via elke HTLM5 browser zoals micro soft Edge, Internet Explorer 11, Google Chrome, enzovoort. Gebruikers kunnen met externe apps of Bureau bladen werken, zoals bij een lokaal apparaat. Met behulp van Azure AD-toepassingsproxy kunt u de beveiliging van uw RDS-implementatie verbeteren door pre-authenticatie en beleid voor voorwaardelijke toegang af te dwingen voor alle typen uitgebreide client-apps. Zie [extern bureaublad publiceren met Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-remote-desktop-services)voor meer informatie.
+ 
+---
+
+### <a name="next-generation-azure-ad-b2c-user-flows-in-public-preview"></a>Volgende generatie Azure AD B2C gebruikers stromen in open bare preview
+
+**Type:** Nieuwe functie  
+**Service categorie:** B2C-Consumer Identity Management  
+**Product mogelijkheden:** B2B/B2C
+ 
+Dankzij de vereenvoudigde ervaring voor gebruikers stroom kunt u de functie pariteit gebruiken met preview-functies en is de start voor alle nieuwe functies. Gebruikers kunnen nieuwe functies binnen dezelfde gebruikers stroom inschakelen, waardoor er minder nood zaak is om meerdere versies te maken met elke nieuwe functie versie. Ten slotte vereenvoudigt de nieuwe gebruikers vriendelijke UX de selectie en het maken van gebruikers stromen. Probeer het nu door [een gebruikers stroom te maken](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows). 
+
+Zie [gebruikers stroom versies in azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-versions#:~:text=%20%20%20%20User%20flow%20%20%2caccount.%20Usi%20...%20%201%20more%20rows%20)voor meer informatie over gebruikers stromen.
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---july-2020"></a>Nieuwe federatieve apps die beschikbaar zijn in de Azure AD-toepassings galerie-juli 2020
+
+**Type:** Nieuwe functie  
+**Service categorie:** Zakelijke apps  
+**Product capaciteit:** integratie van derden
+ 
+In juli 2020 zijn de volgende 55 nieuwe toepassingen toegevoegd aan de app-galerie met Federatie ondersteuning:
+
+[Clap Your handen](http://www.rmit.com.ar/), [Appreiz](https://microsoftteams.appreiz.com/), [Inextor kluis](https://inexto.com/inexto-suite/inextor), [Beekast](https://my.beekast.com/), [Templafy OpenID Connect Connect](https://app.templafy.com/), [PeterConnects receptie](https://msteams.peterconnects.com/), [AlohaCloud](https://appfusions.alohacloud.com/auth), [Control Tower](https://bpm.tnxcorp.com/sso/microsoft), [Cocoom](https://start.cocoom.com/), [munten constructie Cloud](https://sso.coinsconstructioncloud.com/#login/), [Medxnote MT](https://task.teamsmain.medx.im/authorization), [Reflekt](https://reflekt.konsolute.com/login), [terugdraaien](https://app.reverscore.net/access), [MyCompanyArchive](https://login.mycompanyarchive.com/), [GReminders](https://app.greminders.com/o365-oauth), [Titanfile](https://docs.microsoft.com/azure/active-directory/saas-apps/titanfile-tutorial), [Wootric](https://docs.microsoft.com/azure/active-directory/saas-apps/wootric-tutorial), [SolarWinds Orion](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US), [OpenText Directory Services](https://docs.microsoft.com/azure/active-directory/saas-apps/opentext-directory-services-tutorial), [Datasite](https://docs.microsoft.com/azure/active-directory/saas-apps/datasite-tutorial), [BlogIn](https://docs.microsoft.com/azure/active-directory/saas-apps/blogin-tutorial), [IntSights](https://docs.microsoft.com/azure/active-directory/saas-apps/intsights-tutorial), [kpifire](https://docs.microsoft.com/azure/active-directory/saas-apps/kpifire-tutorial), [Textline](https://docs.microsoft.com/azure/active-directory/saas-apps/textline-tutorial), [Cloud Academy-SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/cloud-academy-sso-tutorial), [communautair Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/community-spark-tutorial), [Chatwork](https://docs.microsoft.com/azure/active-directory/saas-apps/chatwork-tutorial), [CloudSign](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudsign-tutorial), [C3M Cloud Control](https://docs.microsoft.com/azure/active-directory/saas-apps/c3m-cloud-control-tutorial), [SmartHR](https://smarthr.jp/), [NumlyEngage™](https://docs.microsoft.com/azure/active-directory/saas-apps/numlyengage-tutorial), [Michigan data hub eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/michigan-data-hub-single-sign-on-tutorial), [uitgang](https://docs.microsoft.com/azure/active-directory/saas-apps/egress-tutorial), [SendSafely](https://docs.microsoft.com/azure/active-directory/saas-apps/sendsafely-tutorial), [Eletive](https://app.eletive.com/), [rechter Cyber beveiliging ADI](https://right-hand.ai/), [Fyde Enter prise-verificatie](https://enterprise.fyde.com/), [Verme](https://docs.microsoft.com/azure/active-directory/saas-apps/verme-tutorial), [lenses.io](https://docs.microsoft.com/azure/active-directory/saas-apps/lensesio-tutorial), [Momenta](https://docs.microsoft.com/azure/active-directory/saas-apps/momenta-tutorial), [conrise](https://app.uprise.co/sign-in), [Q](https://q.moduleq.com/login), [CloudCords](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudcords-tutorial), [Tellme bot](https://tellme365liteweb.azurewebsites.net/), [inspireren](https://app.inspiresoftware.com/), [Maverics Identity Orchestrator SAML connector](https://www.strata.io/identity-fabric/), [Smartschool (school beheersysteem)](https://smart-schoolapp.com/frmLoginForm), [Zepto-intelligent keurige](https://user.zepto-ai.com/signin), [Studi.ly](https://studi.ly/), [Trackplan](http://www.trackplanfm.com/), [Skedda](https://docs.microsoft.com/azure/active-directory/saas-apps/skedda-tutorial), [WhosOnLocation](https://docs.microsoft.com/azure/active-directory/saas-apps/whos-on-location-tutorial), [Coggle](https://docs.microsoft.com/azure/active-directory/saas-apps/coggle-tutorial), [Kemp Kemp](https://kemptechnologies.com/cloud-load-balancer/), [BrowserStack eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/browserstack-single-sign-on-tutorial)
+
+U kunt hier ook de documentatie van alle toepassingen vindenhttps://aka.ms/AppsTutorial
+
+Lees de informatie hier om uw toepassing in de app-galerie van Azure AD weer te gevenhttps://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---july-2020"></a>Nieuwe inrichtings connectors in de Azure AD-toepassings galerie-juli 2020
+
+**Type:** Nieuwe functie  
+**Service categorie:** App-inrichting  
+**Product capaciteit:** integratie van derden
+
+U kunt nu het maken, bijwerken en verwijderen van gebruikers accounts automatiseren voor de zojuist geïntegreerde app [LinkedIn Learning](https://docs.microsoft.com/azure/active-directory/saas-apps/linkedin-learning-provisioning-tutorial).
+
+Voor meer informatie over hoe u uw organisatie beter kunt beveiligen met behulp van automatische toewijzing van gebruikers accounts, raadpleegt [u de gebruikers inrichting voor SaaS-toepassingen automatiseren met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+
+---
+
+### <a name="view-role-assignments-across-all-scopes-and-ability-to-download-them-to-a-csv-file"></a>Roltoewijzingen weer geven voor alle bereiken en de mogelijkheid om deze te downloaden naar een CSV-bestand
+
+**Type:** Gewijzigde functie  
+**Service categorie:** RBAC  
+**Product mogelijkheden:** Access Control
+ 
+U kunt nu roltoewijzingen weer geven voor alle bereiken voor een rol in het tabblad ' rollen en beheerders ' in de Azure AD-Portal. U kunt ook de roltoewijzingen voor elke rol naar een CSV-bestand downloaden. Zie [beheerders rollen weer geven en toewijzen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal)voor hulp bij het weer geven en toevoegen van roltoewijzingen.
+ 
+---
+
+### <a name="azure-multi-factor-authentication-software-development-azure-mfa-sdk-deprecation"></a>Afschaffing van Azure Multi-Factor Authentication Software Development (Azure MFA SDK)
+
+**Type:** Keur  
+**Service categorie:** MFA  
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
+ 
+De Azure Multi-Factor Authentication Software Development (Azure MFA SDK) heeft het einde van de levens cyclus bereikt op 14 november 2018, zoals het eerst werd aangekondigd in november 2017. Micro soft zal de SDK-Service vanaf 30 september 2020 afsluiten. Aanroepen van de SDK zullen mislukken.
+
+Als uw organisatie de Azure MFA SDK gebruikt, moet u de migratie op 30 september 2020:
+- Azure MFA SDK voor MIM: als u de SDK met MIM gebruikt, moet u migreren naar Azure MFA-server en Privileged Access Management (PAM) activeren volgens deze [instructies](https://docs.microsoft.com/microsoft-identity-manager/working-with-mfaserver-for-mim).   
+- Azure MFA SDK voor aangepaste apps: overweeg uw app te integreren in azure AD en gebruik voorwaardelijke toegang om MFA af te dwingen. Bekijk deze [pagina](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-an-application-integration)om aan de slag te gaan. 
 
 ---
 
@@ -1116,85 +1286,4 @@ Mijn account, de ene-stop-shop voor alle beheer behoeften voor eind gebruikers, 
 **Product mogelijkheden:** Ervaringen van eind gebruikers
  
 De nieuwe ervaring voor eind gebruikers van mijn account wordt `https://myaccount.microsoft.com` in de volgende maand bijgewerkt naar de URL. Meer informatie over de ervaring en alle accounts selfservice mogelijkheden voor eind gebruikers vindt u in de [Help van mijn account Portal](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview).
-
----
- 
-## <a name="january-2020"></a>Januari 2020
- 
-### <a name="the-new-my-apps-portal-is-now-generally-available"></a>De nieuwe portal voor mijn apps is nu algemeen verkrijgbaar
-
-**Type:** Plan voor wijziging  
-**Service categorie:** Mijn apps  
-**Product mogelijkheden:** Ervaringen van eind gebruikers
- 
-Voer een upgrade uit van uw organisatie naar de nieuwe portals voor mijn apps die nu algemeen beschikbaar zijn. U vindt meer informatie over de nieuwe portal en verzamelingen in [verzamelingen maken in de portal mijn apps](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
-
----
- 
-### <a name="workspaces-in-azure-ad-have-been-renamed-to-collections"></a>De naam van werk ruimten in azure AD is gewijzigd in verzamelingen
-
-**Type:** Gewijzigde functie  
-**Service categorie:** Mijn apps   
-**Product mogelijkheden:** Ervaringen van eind gebruikers
- 
-Werk ruimten, de filters beheerders kunnen configureren om de apps van hun gebruikers te organiseren, worden nu verzamelingen genoemd. Meer informatie over hoe u deze kunt configureren in [verzamelingen maken in de portal mijn apps](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
-
----
- 
-### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>Azure AD B2C telefoon registratie en aanmelding met aangepast beleid (open bare preview)
-
-**Type:** Nieuwe functie  
-**Service categorie:** B2C-Consumer Identity Management  
-**Product mogelijkheden:** B2B/B2C
- 
-Met het registreren van telefoon nummers en aanmelding kunnen ontwikkel aars en ondernemingen hun klanten toestaan zich aan te melden en zich aan te melden met een eenmalig wacht woord dat via SMS naar het telefoon nummer van de gebruiker wordt verzonden. Met deze functie kan de klant ook hun telefoon nummer wijzigen als de toegang tot hun telefoon verloren is gegaan. Met de kracht van een aangepast beleid kunnen ontwikkel aars en ondernemingen zich aanmelden via de pagina aanpassing van het logo. Meer informatie over het [instellen van aanmelding via de telefoon en het aanmelden met aangepaste beleids regels in azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication).
- 
----
- 
-### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---january-2020"></a>Nieuwe inrichtings connectors in de Azure AD-toepassings galerie-januari 2020
-
-**Type:** Nieuwe functie  
-**Service categorie:** Zakelijke apps  
-**Product capaciteit:** integratie van derden
- 
-U kunt nu het maken, bijwerken en verwijderen van gebruikers accounts automatiseren voor deze nieuwe, geïntegreerde apps:
-
-- [Promapp]( https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-provisioning-tutorial)
-- [Zscaler Private Access](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-private-access-provisioning-tutorial)
-
-Voor meer informatie over hoe u uw organisatie beter kunt beveiligen met behulp van automatische toewijzing van gebruikers accounts, raadpleegt [u de gebruikers inrichting voor SaaS-toepassingen automatiseren met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-
----
- 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2020"></a>Nieuwe federatieve apps die beschikbaar zijn in Azure AD-app galerie-januari 2020
-
-**Type:** Nieuwe functie  
-**Service categorie:** Zakelijke apps  
-**Product capaciteit:** integratie van derden
- 
-In januari 2020 hebben we deze 33 nieuwe apps met federatieve ondersteuning toegevoegd aan de app-galerie: 
-
-[JOSA](https://docs.microsoft.com/azure/active-directory/saas-apps/josa-tutorial), [snelle Edge Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/fastly-edge-cloud-tutorial), [TERRAFORM Enter prise](https://docs.microsoft.com/azure/active-directory/saas-apps/terraform-enterprise-tutorial), [Spintr SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/spintr-sso-tutorial), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [Upshotly](https://docs.microsoft.com/azure/active-directory/saas-apps/upshotly-tutorial)upsneld, [LEAVEBOT](https://leavebot.io/#home), [DataCamp](https://docs.microsoft.com/azure/active-directory/saas-apps/datacamp-tutorial), [TripActions](https://docs.microsoft.com/azure/active-directory/saas-apps/tripactions-tutorial), [SmartWork](https://www.intumit.com/english/SmartWork.html), [DOTCOM-monitor](https://docs.microsoft.com/azure/active-directory/saas-apps/dotcom-monitor-tutorial), [SSOGEN-Azure AD SSO-gateway voor Oracle E-Business Suite-EBS, People Soft en JDE](https://docs.microsoft.com/azure/active-directory/saas-apps/ssogen-tutorial), [gehoste MyCirqa SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-mycirqa-sso-tutorial), [Yuhu Property Management platform](https://docs.microsoft.com/azure/active-directory/saas-apps/yuhu-property-management-platform-tutorial), [LumApps](https://sites.lumapps.com/login), [Upwerk onderneming](https://docs.microsoft.com/azure/active-directory/saas-apps/upwork-enterprise-tutorial), [Talentsoft](https://docs.microsoft.com/azure/active-directory/saas-apps/talentsoft-tutorial), [SmartDB voor micro soft teams](http://teams.smartdb.jp/login/), [PressPage](https://docs.microsoft.com/azure/active-directory/saas-apps/presspage-tutorial), ContractSafe [Saml2 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/contractsafe-saml2-sso-tutorial), [Maxient uitvoeren Manager-software](https://docs.microsoft.com/azure/active-directory/saas-apps/maxient-conduct-manager-software-tutorial), [Helpshift](https://docs.microsoft.com/azure/active-directory/saas-apps/helpshift-tutorial), [PortalTalk 365](https://www.portaltalk.com/), [coreview](https://portal.coreview.com/), squelch [Cloud Office365-connector](https://laxmi.squelch.io/login), [PingFlow-verificatie](https://app-staging.pingview.io/), [PrinterLogic SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/printerlogic-saas-tutorial), [Taskize Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/taskize-connect-tutorial), [Sandwai](https://app.sandwai.com/), [EZRentOut](https://docs.microsoft.com/azure/active-directory/saas-apps/ezrentout-tutorial), [AssetSonar](https://docs.microsoft.com/azure/active-directory/saas-apps/assetsonar-tutorial), Akari [virtuele assistent](https://akari.io/akari-virtual-assistant/)
-
-Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Active Directory](https://aka.ms/appstutorial). Zie [uw toepassing weer geven in de galerie van Azure Active Directory toepassingen](https://aka.ms/azureadapprequest)voor meer informatie over het weer geven van uw toepassing in de app-galerie van Azure AD.
-
----
-
-### <a name="two-new-identity-protection-detections"></a>Twee nieuwe detecties van identiteits beveiliging
-
-**Type:** Nieuwe functie  
-**Service categorie:** Identiteits beveiliging  
-**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
- 
-Er zijn twee nieuwe gekoppelde aanmeld typen toegevoegd aan identiteits beveiliging: verdacht regels voor het bewerken van het postvak in en mogelijk geen reizen. Deze offline detecties worden gedetecteerd door Microsoft Cloud App Security (MCAS) en beïnvloeden de gebruikers-en aanmeldings Risico's voor identiteits beveiliging. Zie voor meer informatie over deze detecties de [typen aanmeldings Risico's](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk).
- 
----
- 
-### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>Laatste wijziging: URI-fragmenten worden niet door de omleiding van de aanmelding uitgevoerd
-
-**Type:** Gewijzigde functie  
-**Service categorie:** Authenticaties (aanmeldingen)  
-**Product mogelijkheden:** Gebruikers verificatie
- 
-Vanaf 8 februari 2020 wordt een leeg fragment aan de aanvraag toegevoegd wanneer een aanvraag wordt verzonden naar login.microsoftonline.com om zich aan te melden bij een gebruiker.  Dit voor komt een klasse van omleidings aanvallen door ervoor te zorgen dat de browser alle bestaande fragmenten in de aanvraag wist. Een toepassing moet afhankelijk zijn van dit gedrag. Zie belang rijke [wijzigingen](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) in de micro soft Identity platform-documentatie voor meer informatie.
 

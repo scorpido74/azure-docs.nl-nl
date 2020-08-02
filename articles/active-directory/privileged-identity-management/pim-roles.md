@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d1d7ad27c43a0f8b4bbb763a1eb933a63cec58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115639"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495621"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen die u niet kunt beheren in Privileged Identity Management
 
@@ -33,7 +33,7 @@ U kunt de volgende klassieke abonnements beheerders rollen niet beheren in Privi
 - Servicebeheerder
 - Medebeheerder
 
-Zie voor meer informatie over de beheerders rollen van klassieke abonnementen [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Zie voor meer informatie over de beheerders rollen van klassieke abonnementen [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ## <a name="what-about-office-365-admin-roles"></a>Hoe zit het met Office 365-beheerders rollen?
 

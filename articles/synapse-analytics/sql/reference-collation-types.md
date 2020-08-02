@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c36df4745e276471e35addf4774470dbaaa9e150
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080706"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496199"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Ondersteuning voor database sortering voor Synapse SQL
 
@@ -23,7 +23,7 @@ U kunt de standaard sortering van de data base wijzigen van de Azure Portal wann
 
 U kunt de standaard Synapse SQL-database sortering op aanvraag opgeven tijdens de aanmaak tijd met behulp van de instructie CREATE data base.
 
-## <a name="changing-collation"></a>Sortering wijzigen
+## <a name="change-collation"></a>Sortering wijzigen
 Als u de standaard sortering voor de SQL-groeps database wilt wijzigen, kunt u eenvoudig bijwerken naar het veld sortering in de inrichtings ervaring. Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig, wijzigt u de naam van de sortering van SQL_Latin1_General_CP1_CI_AS in SQL_Latin1_General_CP1_CS_AS. 
 
 Als u de standaard sortering voor een SQL-Data Base op aanvraag wilt wijzigen, kunt u de instructie ALTER Data Base gebruiken.
@@ -104,7 +104,7 @@ Daarnaast biedt SQL-pool geen ondersteuning voor de volgende sorterings typen:
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>De huidige sortering controleren
+## <a name="check-the-current-collation"></a>De huidige sortering controleren
 Als u de huidige sortering voor de Data Base wilt controleren, kunt u het volgende T-SQL-fragment uitvoeren:
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

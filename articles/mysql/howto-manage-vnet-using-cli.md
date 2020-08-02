@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 3c4dced2177252daedc36c5a78707e47cf194d77
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 267e4949e59ed1d313b21b9465656b4f1d2a92bf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118746"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489857"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MySQL VNet-service-eind punten maken en beheren met Azure CLI
 Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-adresruimte van een virtueel netwerk uit naar uw Azure Database for MySQL-server. Met de handige CLI-opdrachten (opdracht regel Interface) van Azure kunt u VNet-service-eind punten en-regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for mysql server VNet-service-eind punten](concepts-data-access-and-security-vnet.md)voor een overzicht van Azure database for MySQL VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for MySQL.

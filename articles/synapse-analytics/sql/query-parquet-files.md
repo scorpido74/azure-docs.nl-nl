@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386619"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496233"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -24,7 +24,7 @@ In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (pr
 
 `OPENROWSET`met de functie kunt u de inhoud van het Parquet-bestand lezen door de URL naar uw bestand op te geven.
 
-### <a name="reading-parquet-file"></a>Parquet-bestand lezen
+### <a name="read-parquet-file"></a>Parquet-bestand lezen
 
 De eenvoudigste manier om de inhoud van uw bestand te bekijken is door de `PARQUET` bestands-URL te leveren `OPENROWSET` en Parquet op te geven `FORMAT` . Als het bestand openbaar beschikbaar is of als uw Azure AD-identiteit toegang heeft tot dit bestand, moet u de inhoud van het bestand kunnen zien met behulp van de query zoals die in het volgende voor beeld wordt weer gegeven:
 
@@ -37,7 +37,7 @@ from openrowset(
 
 Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste Azure-identiteit, moet u de [referenties voor SQL-aanmelding op server niveau](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen.
 
-### <a name="using-data-source"></a>Gegevens bron gebruiken
+### <a name="data-source-usage"></a>Gebruik van gegevens bronnen
 
 In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die naar de hoofdmap van de opslag verwijst en die gegevens bron en het relatieve pad naar het bestand in `OPENROWSET` functie gebruiken:
 

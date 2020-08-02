@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448233"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500382"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB-index Tags (preview) gebruiken om gegevens te beheren en te zoeken in Azure Blob-opslag
 
@@ -32,11 +32,9 @@ Zie voor meer informatie over de BLOB-index [gegevens beheren en zoeken op Azure
 # <a name="net"></a>[.NET](#tab/net)
 Als blob-index bevindt zich in de open bare preview-versie, wordt het .NET-opslag pakket vrijgegeven in de preview-NuGet-feed. Deze bibliotheek is onderhevig aan wijzigingen tussen nu en wanneer deze officieel wordt. 
 
-1. Voeg in Visual Studio de URL toe `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` aan uw NuGet-pakket bronnen. 
+1. Stel uw Visual Studio-project in om aan de slag te gaan met de Azure Blob Storage-client bibliotheek V12 voor .NET. Zie [.net Quick](storage-quickstart-blobs-dotnet.md) start (Engelstalig) voor meer informatie.
 
-   Zie [pakket bronnen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)voor meer informatie.
-
-2. Zoek in de NuGet package manager het pakket **Azure. storage. blobs** en Installeer versie **12.5.0-dev. 20200422.2** naar uw project. U kunt ook de opdracht uitvoeren```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2```
+2. Zoek in de NuGet package manager het pakket **Azure. storage. blobs** en Installeer versie **12.5.0-Preview. 6** of hoger voor uw project. U kunt ook de opdracht uitvoeren```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    Zie [een pakket zoeken en installeren](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)voor meer informatie.
 

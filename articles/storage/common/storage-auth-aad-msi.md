@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6571f4351fb3410d1c10079a41b7041eb85ee5e3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 28563dc1e8acf4e521d75a7f4f8986d92d2a8348
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423759"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497933"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Toegang tot Blob-en wachtrij gegevens toestaan met beheerde identiteiten voor Azure-resources
 
@@ -45,7 +45,7 @@ Na de verificatie krijgt de Azure Identity client-bibliotheek een token referent
 
 Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)voor meer informatie over de Azure Identity client-bibliotheek voor .net. Zie [Azure. Identity naam ruimte](/dotnet/api/azure.identity)voor referentie documentatie voor de Azure Identity client-bibliotheek.
 
-### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>RBAC-rollen (Role-based Access Control) toewijzen voor toegang tot gegevens
+### <a name="assign-azure-roles-for-access-to-data"></a>Azure-rollen toewijzen voor toegang tot gegevens
 
 Wanneer een Azure AD-beveiligingsprincipal probeert toegang te krijgen tot BLOB-of wachtrij gegevens, moet die beveiligingsprincipal machtigingen hebben voor de resource. Of de beveiligingsprincipal een beheerde identiteit in azure of een Azure AD-gebruikers account voor het uitvoeren van code in de ontwikkel omgeving is, moet aan de beveiligingsprincipal een RBAC-rol worden toegewezen die toegang verleent tot BLOB-of wachtrij gegevens in Azure Storage. Voor informatie over het toewijzen van machtigingen via RBAC, zie de sectie **RBAC-rollen toewijzen voor toegangs rechten** in [toegang verlenen tot Azure-blobs en-wacht rijen met behulp van Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 

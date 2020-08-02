@@ -13,12 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: bddb45be9232ff33629a4df0a5976e7b3c2e30b0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a830f6eb604bb1173a7a552ad5f81c936f02d5fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369914"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500518"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Een virtuele Linux-machine in azure labelen
 In dit artikel worden verschillende manieren beschreven om een virtuele Linux-machine in azure te labelen via het Resource Manager-implementatie model. Tags zijn door de gebruiker gedefinieerde sleutel/waarde-paren die rechtstreeks kunnen worden geplaatst op een resource of resource groep. Azure ondersteunt momenteel Maxi maal 50 Tags per resource en resource groep. Labels kunnen worden geplaatst op een resource op het moment dat ze worden gemaakt of worden toegevoegd aan een bestaande resource. Let op: Tags worden alleen ondersteund voor resources die zijn gemaakt via het Resource Manager-implementatie model.

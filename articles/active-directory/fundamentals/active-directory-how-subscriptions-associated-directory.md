@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86223c35118c9c54be49fa830a264a0059ef3937
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025335"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494431"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
 
@@ -95,6 +95,6 @@ Nadat u een abonnement aan een andere map hebt gekoppeld, moet u mogelijk de vol
 
 - Als u een nieuwe Azure AD-Tenant wilt maken, raadpleegt u [Quick Start: een nieuwe Tenant maken in azure Active Directory](active-directory-access-create-new-tenant.md).
 
-- Zie voor meer informatie over hoe Microsoft Azure het beheren van toegang tot resources, [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+- Zie voor meer informatie over hoe Microsoft Azure het beheren van toegang tot resources, [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 - Zie voor meer informatie over het toewijzen van rollen in azure AD, [beheerders en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory](active-directory-users-assign-role-azure-portal.md).

@@ -2,13 +2,13 @@
 title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/31/2020
+ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057192"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485623"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -190,6 +190,10 @@ Hoewel AKS de mechanismen voor flexibiliteit heeft om een dergelijke configurati
 ## <a name="can-i-use-custom-vm-extensions"></a>Kan ik aangepaste VM-extensies gebruiken?
 
 Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt niet ondersteund. Om aangepaste onderdelen, enzovoort, te installeren. Maak gebruik van de Kubernetes-Api's en-mechanismen. Gebruik bijvoorbeeld DaemonSets om de vereiste onderdelen te installeren.
+
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Slaat AKS klant gegevens buiten de regio van het cluster op?
+
+Nee. Alle gegevens die in een AKS-cluster zijn gemaakt, worden in de regio van het cluster bewaard.
 
 <!-- LINKS - internal -->
 

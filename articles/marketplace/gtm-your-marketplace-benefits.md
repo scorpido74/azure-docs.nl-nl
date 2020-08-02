@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408115"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498018"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -26,7 +26,7 @@ Marketplace-beloningen zijn ontworpen ter ondersteuning van uw specifieke groei 
 
 Er wordt een positieve feedback lus gemaakt: de voor delen van elke groei fase zijn ontworpen om u te laten profiteren van de volgende fase, zodat u uw bedrijf kunt uitbreiden naar klanten van micro soft, met het veld van micro soft en via het kanaal van micro soft door gebruik te maken van de commerciële Marketplace als uw platform.
 
-Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](determine-your-listing-type.md#choose-a-publishing-option)is.
+Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](determine-your-listing-type.md#choose-a-call-to-action)is.
 
 U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aanbieding live gaat, op basis van uw geschiktheid.
 
