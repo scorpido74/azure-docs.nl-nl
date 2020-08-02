@@ -7,13 +7,14 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: c3e0beb9a35b7888787d018b5e3b9c4ceea7e1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd87f15ff63edf1da447faf986cad2f9591610dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744542"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502964"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central beheren vanuit Azure CLI
 
@@ -65,7 +66,7 @@ Met deze opdrachten maakt u eerst een resource groep in de regio VS-Oost voor de
 | ----------------- | ----------- |
 | resource-group    | De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
 | location          | Deze opdracht maakt standaard gebruik van de locatie uit de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de geografs **Australia**, **Azië en Stille Oceaan**, **Europa**, **Verenigde Staten**, het **Verenigd Konink rijk**en **Japan** . |
-| naam              | De naam van de toepassing in de Azure Portal. |
+| name              | De naam van de toepassing in de Azure Portal. |
 | subdomein         | Het subdomein in de URL van de toepassing. In het voor beeld is de URL van de toepassing `https://mysubdomain.azureiotcentral.com` . |
 | sku               | Op dit moment kunt u **ST1** of **ST2**gebruiken. Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 | sjabloon          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie. |

@@ -4,19 +4,19 @@ description: Meer informatie over het maken en configureren van beheerde exempla
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3f0eb2c1ecb26475b25cd5ca41c9c61d5e2b47a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695591"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503001"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Beheerde API-verwijzing voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Als u beheerde exemplaren met Azure PowerShell wilt maken en beheren, gebruikt u
 > [!TIP]
 > Zie voor beelden van Power shell-scripts [Quick start script: een beheerd exemplaar maken met een Power shell-bibliotheek](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Hiermee maakt u een beheerd exemplaar. |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Retourneert informatie over een beheerd exemplaar.|
@@ -56,7 +56,7 @@ Als u beheerde exemplaren wilt maken en configureren met [Azure cli](/cli/azure)
 > [!TIP]
 > Zie [werken met SQL Managed instance met Azure cli](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)voor een Snelstartgids van Azure cli.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Hiermee maakt u een beheerd exemplaar.|
 |[AZ SQL mi List](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Een lijst met beschik bare beheerde exemplaren.|

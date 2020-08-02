@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020557"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503205"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Tijdelijke tabellen in Synapse SQL
 
@@ -23,7 +23,7 @@ Dit artikel bevat essentiële richt lijnen voor het gebruik van tijdelijke tabel
 
 De resources van de SQL-groep en de SQL on-demand-(preview-versie) kunnen gebruikmaken van tijdelijke tabellen. SQL on-demand heeft beperkingen die aan het einde van dit artikel worden besproken. 
 
-## <a name="what-are-temporary-tables"></a>Wat zijn tijdelijke tabellen?
+## <a name="temporary-tables"></a>Tijdelijke tabellen
 
 Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. Met Synapse SQL bestaan er tijdelijke tabellen op sessie niveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch verwijderd wanneer deze sessie wordt afgemeld. 
 
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>Tijdelijke tabellen verwijderen
+### <a name="drop-temporary-tables"></a>Tijdelijke tabellen verwijderen
 Wanneer er een nieuwe sessie wordt gemaakt, moeten er geen tijdelijke tabellen aanwezig zijn.  Als u echter dezelfde opgeslagen procedure aanroept die een tijdelijke met dezelfde naam maakt, om ervoor te zorgen dat uw `CREATE TABLE` instructies slagen, gebruikt u een eenvoudige controle van het voor komen met `DROP` : 
 
 ```sql
@@ -116,7 +116,7 @@ Bij het ontwikkelen van opgeslagen procedures is het gebruikelijk om de door u g
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>Modularizing-code
+### <a name="modularize-code"></a>Modularize-code
 Tijdelijke tabellen kunnen overal in een gebruikers sessie worden gebruikt. Deze mogelijkheid kan vervolgens worden misbruikt om u te helpen bij het modularize van uw toepassings code.  Om te demonstreren, wordt met de volgende opgeslagen procedure DDL gegenereerd om alle statistieken in de-data base bij te werken met een statistische naam:
 
 ```sql

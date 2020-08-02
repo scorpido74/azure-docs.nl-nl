@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126071"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502933"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Een gebruiker toevoegen in de Azure-portal
 
@@ -33,7 +33,7 @@ Ken ' R-X ' of ' LSU ', indien nodig, toe aan mappen met invoer gegevens en uitv
 1.  Zoek uw Azure Data Lake Storage Gen1-account.
 2.  Klik op **Gebruikers**.
 3. Klik op **Add**.
-4.  Selecteer een Azure RBAC-rol om deze groep toe te wijzen.
+4.  Selecteer een Azure-rol om deze groep toe te wijzen.
 5.  Toewijzen aan rol van lezer. Deze rol heeft de minimale set machtigingen die zijn vereist voor het bladeren door en het beheren van gegevens die zijn opgeslagen in ADLSGen1. Toewijzen aan deze rol als de groep niet is bedoeld voor het beheren van Azure-Services.
 6.  Typ de naam van de groep.
 7.  Klik op **OK**.
@@ -54,4 +54,3 @@ De voorbeeld opdracht om gebruikers toegang te geven tot het verzenden van taken
 * [Overzicht van Data Lake Analytics](data-lake-analytics-overview.md)
 * [Aan de slag met Data Lake Analytics met behulp van de Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Azure Data Lake Analytics beheren met Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-

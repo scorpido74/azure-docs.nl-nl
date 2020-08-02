@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176222"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507370"
 ---
 #### <a name="to-create-a-new-service"></a>Een nieuwe service maken
 
@@ -29,7 +29,7 @@ ms.locfileid: "67176222"
 
     2.  Kies een **abonnement** in de vervolgkeuzelijst. Het abonnement is gekoppeld aan uw factureringsrekening. Dit veld wordt niet weergegeven als u slechts één abonnement hebt.
 
-    3.  Voor **resource groep**selecteert u een bestaande of een nieuwe groep maken. Zie [Azure-resourcegroepen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/) voor meer informatie.
+    3.  Voor **resource groep**selecteert u een bestaande of een nieuwe groep maken. Zie [Azure-resourcegroepen](/azure/azure-resource-manager/management/manage-resource-groups-portal) voor meer informatie.
 
     4.  Geef een **locatie** voor uw service op. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services) voor meer informatie over welke services beschikbaar zijn in welke regio. Kies in het algemeen een **locatie** die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. U kunt ook rekening houden met het volgende:
 

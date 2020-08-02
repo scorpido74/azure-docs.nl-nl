@@ -3,12 +3,12 @@ title: Problemen oplossen-QnA Maker
 description: De lijst met alle meest gestelde vragen met betrekking tot de QnA Maker-service helpt u de service sneller en met betere resultaten te gebruiken.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131987"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502576"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
@@ -87,7 +87,7 @@ Alle verwijderingen zijn permanent, inclusief vraag-en antwoord paren, bestanden
 <details>
 <summary><b>Kunt u een Knowledge Base delen met een Inzender die zich niet in dezelfde AAD-Tenant bevindt, om een Knowledge Base te wijzigen?</b></summary>
 
-**Antwoord**: delen is gebaseerd op op rollen gebaseerd toegangs beheer (RBAC) van Azure. Als u _een_ resource in azure kunt delen met een andere gebruiker, kunt u ook QnA Maker delen.
+**Antwoord**: delen is gebaseerd op op rollen gebaseerd toegangs beheer van Azure (Azure RBAC). Als u _een_ resource in azure kunt delen met een andere gebruiker, kunt u ook QnA Maker delen.
 
 </details>
 

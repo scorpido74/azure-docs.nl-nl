@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: 1fc4c0497095c2ab4e1210ab71bc5597713499b7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 46ea77b26bb0c31a10cfac11c389ea5a21a8f4ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120463"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502529"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Een back-up van Azure Database for MariaDB-server maken en deze terugzetten met behulp van PowerShell
 
@@ -77,7 +78,7 @@ De para meters set **PointInTimeRestore** van de `Restore-AzMariaDbServer` cmdle
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| Name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| Naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Selecteer een punt in de tijd om te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals **2020-03-13T05:59:00-08:00**. U kunt ook de UTC Zulu-indeling gebruiken, bijvoorbeeld **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Gebruik de punt-in-time-modus om te herstellen. |
 
@@ -119,7 +120,7 @@ Voor de para meters set **Restore** van de `Restore-AzMariaDbServer` cmdlet zijn
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | De naam van de resource groep waartoe de nieuwe server behoort.|
-|Name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|Naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |Locatie | eastus | De locatie van de nieuwe server. |
 |UseGeoRestore | `<SwitchParameter>` | Gebruik de geo-modus om te herstellen. |
 

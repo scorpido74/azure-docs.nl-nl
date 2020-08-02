@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323992"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504310"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Veelvoorkomende problemen tijdens het maken van VHD
 
@@ -34,8 +34,8 @@ U kunt dit niet doen. Nadat een virtuele machine is gemaakt, kunnen gebruikers (
 
 In deze artikelen wordt uitgelegd hoe u RDS resets uitvoert voor Vm's op basis van Windows en Linux:
 
-* [De service Extern bureaublad of het bijbehorende aanmeldingswachtwoord opnieuw instellen in een virtuele Windows-machine](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [Een Linux VM-wacht woord of SSH-sleutel opnieuw instellen, de SSH-configuratie herstellen en schijf consistentie controleren met behulp van de VMAccess-extensie](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [De service Extern bureaublad of het bijbehorende aanmeldingswachtwoord opnieuw instellen in een virtuele Windows-machine](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [Een Linux VM-wacht woord of SSH-sleutel opnieuw instellen, de SSH-configuratie herstellen en schijf consistentie controleren met behulp van de VMAccess-extensie](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>Hoe kan ik nieuwe SSH-certificaten genereren?
 
@@ -59,7 +59,7 @@ Ja, indien gehost op Azure. Azure wijst een unieke id, de [unieke id van de virt
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Hoe kan ik in een virtuele machine de aangepaste script extensie in de opstart taak beheren?
 
-Zie [aangepaste script extensie voor Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)voor meer informatie over het gebruik van de aangepaste script extensie met behulp van de module Azure PowerShell, Azure Resource Manager sjablonen en stappen voor probleem oplossing op Windows-systemen.
+Zie [aangepaste script extensie voor Windows](/azure/virtual-machines/extensions/custom-script-windows)voor meer informatie over het gebruik van de aangepaste script extensie met behulp van de module Azure PowerShell, Azure Resource Manager sjablonen en stappen voor probleem oplossing op Windows-systemen.
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Worden 32-bits toepassingen of services ondersteund in azure Marketplace?
 

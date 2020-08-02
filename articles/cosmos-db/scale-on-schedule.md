@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262477"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503732"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Cosmos DB door Voer schalen met behulp van Azure Functions timer trigger
 
 De prestaties van een Azure Cosmos-account zijn gebaseerd op de hoeveelheid ingerichte door Voer uitgedrukt in aanvraag eenheden per seconde (RU/s). Het inrichten bevindt zich op een tweede granulatie en wordt gefactureerd op basis van de hoogste RU/s per uur. Met dit model met ingerichte capaciteit kan de service een voorspel bare en consistente door Voer, een gegarandeerde lage latentie en hoge Beschik baarheid bieden. De meeste productiewerk belastingen deze functies. In ontwikkel-en test omgevingen waarin Azure Cosmos DB alleen wordt gebruikt tijdens de werk uren, kunt u de door Voer in de ochtend op morgen opschalen en op een later tijdstip in de avond omlaag schalen.
 
-U kunt de door Voer instellen via [Azure Resource Manager sjablonen](resource-manager-samples.md), [Azure cli](cli-samples.md)en [Power shell](powershell-samples-sql.md), voor core-(SQL) API-accounts of met behulp van de taalspecifieke Azure Cosmos DB-sdk's. Het voor deel van het gebruik van Resource Manager-sjablonen, Azure CLI of Power shell is dat ze alle Azure Cosmos DB model-Api's ondersteunen.
+U kunt de door Voer instellen via [Azure Resource Manager sjablonen](resource-manager-samples.md), [Azure cli](cli-samples.md)en [Power shell](powershell-samples.md), voor core-(SQL) API-accounts of met behulp van de taalspecifieke Azure Cosmos DB-sdk's. Het voor deel van het gebruik van Resource Manager-sjablonen, Azure CLI of Power shell is dat ze alle Azure Cosmos DB model-Api's ondersteunen.
 
 ## <a name="throughput-scheduler-sample-project"></a>Voor beeld van een doorvoer planner-project
 

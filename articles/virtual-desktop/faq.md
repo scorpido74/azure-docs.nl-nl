@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075621"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504412"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Veelgestelde vragen over Windows virtueel bureau blad
+# <a name="windows-virtual-desktop-faq"></a>Veelgestelde vragen over Windows Virtual Desktop
 
 In dit artikel vindt u antwoorden op veelgestelde vragen en worden aanbevolen procedures beschreven voor virtuele Windows-Bureau bladen.
 
@@ -46,7 +46,7 @@ Als u een beheerder wilt beperken om alleen gebruikers sessies te beheren, zoals
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Ondersteunt Windows Virtual Desktop Azure Active Directory modellen?
 
-Wanneer een gebruiker is toegewezen aan een app-groep, voert de service een eenvoudige functie toewijzing op basis van op rollen gebaseerde toegangs beheer (RBAC) van Azure uit. Als gevolg hiervan moeten de Azure Active Directory van de gebruiker (AD) en de Azure AD van de app-groep zich op dezelfde locatie bestaan. Alle service objecten, zoals hostgroepen, app-groepen en werk ruimten, moeten ook zich in dezelfde Azure AD bevinden als de gebruiker.
+Wanneer een gebruiker is toegewezen aan een app-groep, voert de service een eenvoudige toewijzing van Azure-functies uit. Als gevolg hiervan moeten de Azure Active Directory van de gebruiker (AD) en de Azure AD van de app-groep zich op dezelfde locatie bestaan. Alle service objecten, zoals hostgroepen, app-groepen en werk ruimten, moeten ook zich in dezelfde Azure AD bevinden als de gebruiker.
 
 U kunt virtuele machines (Vm's) in een andere Azure AD maken, zolang u de Active Directory synchroniseert met de Azure AD van de gebruiker in hetzelfde virtuele netwerk (VNET).
 
