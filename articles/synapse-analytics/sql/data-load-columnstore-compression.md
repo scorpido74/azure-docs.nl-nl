@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4496b74f162bfaeda7205963cbbe7e355db841f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503902"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>Maximale Rijg roep-kwaliteit voor column store-index prestaties
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximale Rijg roep-kwaliteit voor column store-index prestaties
 
 De kwaliteit van de Rijg roep wordt bepaald door het aantal rijen in een Rijg roep. Het verg Roten van het beschik bare geheugen kan het aantal rijen dat een column store-index in elke Rijg roep wordt gecomprimeerd, maximaliseren.  Gebruik deze methoden voor het verbeteren van de compressie frequentie en de query prestaties voor column Store-indexen.
 

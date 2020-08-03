@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958375"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494992"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>Opgeslagen procedures in de SQL-groep gebruiken
 
@@ -27,7 +27,7 @@ De SQL-groep ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL S
 
 Als u de schaal en prestaties van de SQL-groep wilt behouden, zijn er echter ook enkele functies en functionaliteit die gedrags verschillen hebben en andere niet worden ondersteund.
 
-## <a name="introducing-stored-procedures"></a>Inleiding tot opgeslagen procedures
+## <a name="stored-procedures-in-sql-pool"></a>Opgeslagen procedures in SQL-groep
 
 Opgeslagen procedures zijn een uitstekende manier om uw SQL-code te integreren. Sla het op in de buurt van uw gegevens in het Data Warehouse. Met opgeslagen procedures kunnen ontwikkel aars hun oplossingen modularizeen door de code te integreren in beheer bare eenheden. grotere herbruikbaarheid van code vergemakkelijkt. Elke opgeslagen procedure kan ook para meters accepteren om ze nog flexibeler te maken.
 

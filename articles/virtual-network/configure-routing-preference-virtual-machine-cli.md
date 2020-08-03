@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: d5ea44e7059ae01204dbafd454c187e10f85e4e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49b0df3e750d4d23cb6a64f3f7266613fd2f2981
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707545"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501828"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Routerings voorkeur configureren voor een virtuele machine met behulp van Azure CLI
 
@@ -73,7 +74,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak een virtueel netwerk met [AZ Network vnet Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVNET* met subnetten *mySubNet*:
+Maak een virtueel netwerk met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVNET* met subnetten *mySubNet*:
 
 ```azurecli
 # Create a virtual network
@@ -109,7 +110,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-Maak een virtuele machine met [AZ VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). In het volgende voor beeld worden een Windows Server 2019-VM en de vereiste onderdelen van het virtuele netwerk gemaakt als deze nog niet bestaan.
+Maak een VM met [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). In het volgende voor beeld worden een Windows Server 2019-VM en de vereiste onderdelen van het virtuele netwerk gemaakt als deze nog niet bestaan.
 
 ```azurecli
 az vm create \

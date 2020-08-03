@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 97f9635cf6bba9ee276e6775c1718a5d83e9af3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282123"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495077"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-connectiviteit in Azure Database for MySQL
 
 Azure Database for MySQL ondersteunt het verbinden van uw database server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
 > [!NOTE]
-> Het bijwerken `require_secure_transport` van de waarde van de server parameter heeft geen invloed op het gedrag van de MySQL-service. Gebruik de functies voor het afdwingen van SSL en TLS die in dit artikel worden beschreven om verbindingen met uw te beveiligen.
+> Het bijwerken `require_secure_transport` van de waarde van de server parameter heeft geen invloed op het gedrag van de MySQL-service. Gebruik de functies voor het afdwingen van SSL en TLS die in dit artikel worden beschreven om verbindingen met uw data base te beveiligen.
 
 ## <a name="ssl-default-settings"></a>Standaard instellingen voor SSL
 

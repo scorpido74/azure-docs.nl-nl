@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77193020"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507245"
 ---
 In dit artikel wordt beschreven hoe u infrastructuur resources als een service (IaaS) migreert van het klassieke model naar Resource Manager-implementatie modellen en hoe u resources verbindt met de twee implementatie modellen die naast elkaar zijn opgenomen in uw abonnement met behulp van site-naar-site gateways van het virtuele netwerk. U kunt meer lezen over [Azure Resource Manager functies en voor delen](../articles/azure-resource-manager/management/overview.md). 
 
@@ -22,10 +22,10 @@ Met Resource Manager kunt u complexe toepassingen implementeren via sjablonen, v
 
 Bijna alle functies van het klassieke implementatie model worden ondersteund voor compute, netwerk en opslag onder Azure Resource Manager. Als u wilt profiteren van de nieuwe mogelijkheden van Azure Resource Manager, kunt u bestaande implementaties migreren vanuit het klassieke implementatie model.
 
-## <a name="supported-resources-for-migration"></a>Ondersteunde bronnen voor migratie
-Deze klassieke IaaS-bronnen worden tijdens de migratie ondersteund
+## <a name="supported-resources--configurations-for-migration"></a>Ondersteunde bronnen & configuraties voor migratie
 
-* Virtuele machines
+### <a name="supported-resources-for-migration"></a>Ondersteunde bronnen voor migratie
+* Virtual Machines
 * Beschikbaarheidssets
 * Storage Accounts
 * Virtuele netwerken
@@ -34,6 +34,13 @@ Deze klassieke IaaS-bronnen worden tijdens de migratie ondersteund
 * Netwerkbeveiligingsgroepen
 * Routetabellen
 * Gereserveerde IP-adressen
+
+## <a name="supported-configurations-for-migration"></a>Ondersteunde configuraties voor migratie
+Deze klassieke IaaS-bronnen worden tijdens de migratie ondersteund
+
+| Service | Configuratie |
+| --- | --- |
+| Azure AD Domain Services | [Virtuele netwerken die Azure AD Domain Services bevatten](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
 
 ## <a name="supported-scopes-of-migration"></a>Ondersteunde bereiken van migratie
 Er zijn vier verschillende manieren om de migratie van compute-, netwerk-en opslag bronnen te volt ooien:
@@ -74,7 +81,7 @@ Als uw opslag account geen gekoppelde schijven of Virtual Machines gegevens heef
 > Het Resource Manager-implementatie model bevat niet het concept van klassieke installatie kopieën en schijven. Wanneer het opslag account is gemigreerd, zijn klassieke installatie kopieën en schijven niet zichtbaar in de stack van de Resource Manager, maar blijven de back-upvhd's in het opslag account.
 
 In de volgende scherm afbeeldingen ziet u hoe u een klassiek opslag account bijwerkt naar een Azure Resource Manager Storage-account met behulp van Azure Portal:
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
 3. Klik in de sectie **instellingen** op **migreren naar arm**.
 4. Klik op **valideren** om de haal baarheid van de migratie te bepalen.
@@ -129,5 +136,4 @@ De volgende configuraties worden momenteel niet ondersteund.
 | Azure App Service |Virtuele netwerken die App Service omgevingen bevatten |Dit wordt momenteel niet ondersteund. |
 | Azure HDInsight |Virtuele netwerken die HDInsight-services bevatten |Dit wordt momenteel niet ondersteund. |
 | Micro soft Dynamics-levenscyclus Services |Virtuele netwerken die virtuele machines bevatten die worden beheerd door Dynamics levenscyclus Services |Dit wordt momenteel niet ondersteund. |
-| Azure AD Domain Services |Virtuele netwerken die Azure AD Domain Services bevatten |Dit wordt momenteel niet ondersteund. |
 | Azure API Management |Virtuele netwerken die Azure API Management-implementaties bevatten |Dit wordt momenteel niet ondersteund. Als u het IaaS VNET wilt migreren, wijzigt u het VNET van de API Management-implementatie. Dit is een niet-downtime-bewerking. |

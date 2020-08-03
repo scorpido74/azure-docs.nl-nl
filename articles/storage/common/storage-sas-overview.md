@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077878"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502168"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -58,7 +58,7 @@ U kunt op een van de volgende twee manieren een SAS ondertekenen:
 
 - Met een *gebruikers overdrachts sleutel* die is gemaakt met behulp van de referenties van Azure Active Directory (Azure AD). Een SAS voor gebruikers overdracht is ondertekend met de sleutel gebruikers overdracht.
 
-    Als u de sleutel voor gebruikers overdracht wilt ophalen en de SA'S wilt maken, moet aan een Azure AD-beveiligingsprincipal een rol op basis van op rollen gebaseerd toegangs beheer (RBAC) worden toegewezen die de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevat. Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor gedetailleerde informatie over RBAC-rollen met machtigingen voor het ophalen van de sleutel voor gebruikers overdracht.
+    Als u de sleutel voor gebruikers overdracht wilt ophalen en de SA'S wilt maken, moet aan een Azure AD-beveiligingsprincipal een Azure-rol worden toegewezen die de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevat. Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor gedetailleerde informatie over Azure-rollen met machtigingen voor het ophalen van de sleutel voor gebruikers overdracht.
 
 - Met de sleutel van het opslag account. Zowel een service-SAS als een account-SAS zijn ondertekend met de sleutel van het opslag account. Een toepassing moet toegang hebben tot de account sleutel om een SAS te maken die is ondertekend met de account sleutel.
 

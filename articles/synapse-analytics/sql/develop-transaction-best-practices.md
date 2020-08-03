@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075711"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503188"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>Trans acties in de SQL-groep optimaliseren
+# <a name="optimize-transactions-in-sql-pool"></a>Trans acties in SQL-groep optimaliseren
 
 Informatie over het optimaliseren van de prestaties van uw transactionele code in de SQL-groep en het minimaliseren van het risico op lange terugdraai acties.
 
@@ -82,7 +82,7 @@ Het is een goed idee dat elke schrijf bewerking voor het bijwerken van secundair
 
 Het laden van gegevens in een niet-lege tabel met een geclusterde index kan vaak een combi natie van volledig vastgelegde en mini maal geregistreerde rijen bevatten. Een geclusterde index is een evenwichtige boom structuur (b-structuur) van pagina's. Als de pagina die wordt geschreven, al rijen van een andere trans actie bevat, worden deze schrijf bewerkingen volledig vastgelegd. Als de pagina echter leeg is, wordt de schrijf bewerking naar die pagina mini maal vastgelegd.
 
-## <a name="optimizing-deletes"></a>Verwijderingen optimaliseren
+## <a name="optimize-deletes"></a>Verwijderingen optimaliseren
 
 VERWIJDEREN is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet verwijderen, is het vaak beter voor `SELECT` de gegevens die u wilt blijven gebruiken, die kunnen worden uitgevoerd als een mini maal vastgelegde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Nadat deze is gemaakt, gebruikt u de [naam wijzigen](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om de oude tabel om te wisselen met de zojuist gemaakte tabel.
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>Updates optimaliseren
+## <a name="optimize-updates"></a>Updates optimaliseren
 
 UPDATE is een volledig geregistreerde bewerking.  Als u een groot aantal rijen in een tabel of partitie moet bijwerken, kan het veel efficiënter zijn om een mini maal geregistreerde bewerking zoals [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) te gebruiken.
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > Het opnieuw maken van grote tabellen kan profiteren van het gebruik van functies voor workload management van SQL-groep. Zie [resource klassen voor workload Management](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie.
 
-## <a name="optimizing-with-partition-switching"></a>Optimaliseren met partitie wisseling
+## <a name="optimize-with-partition-switching"></a>Optimaliseren met partitie wisseling
 
 Als u in een [tabel partitie](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)op grote schaal wijzigingen ondervindt, is een patroon voor het wisselen van partities zinvol. Als het wijzigen van de gegevens significant is en meerdere partities omvat, wordt door het herhalen van de partities hetzelfde resultaat gerealiseerd.
 

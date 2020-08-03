@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7dc0fcae9a6fea789d30bac10511007454ecc5f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045685"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503994"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Synapse Studio-notebooks maken, ontwikkelen en onderhouden in azure Synapse Analytics
 
@@ -191,6 +191,10 @@ Selecteer de weglatings tekens (**...**) om het menu met de extra celwaarden hel
    ![Run-cellen-boven-of-onder](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
+### <a name="cancel-all-running-cells"></a>Alle actieve cellen annuleren
+Klik op de knop **Alles annuleren** om de actieve cellen of cellen in de wachtrij te annuleren. 
+   ![annuleren-alle cellen](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+
 ### <a name="cell-status-indicator"></a>Indicator status van cel
 
 Er wordt een stap-voor-stap-uitvoerings status weer gegeven onder de cel om u te helpen de huidige voortgang te zien. Zodra de uitvoering van de cel is voltooid, wordt een samen vatting van de uitvoering met de totale duur en eind tijd weer gegeven en bewaard voor toekomstige referentie.
@@ -200,6 +204,7 @@ Er wordt een stap-voor-stap-uitvoerings status weer gegeven onder de cel om u te
 ### <a name="spark-progress-indicator"></a>Voortgangs indicator Spark
 
 Azure Synapse Studio notebook is louter Spark. Code cellen worden op afstand uitgevoerd in de Spark-groep. Er wordt een voortgangs indicator van Spark met een realtime voortgangs balk weer gegeven om u te helpen inzicht te krijgen in de status van de taak uitvoering.
+Het aantal taken per taak of fase helpt u bij het identificeren van het parallelle niveau van uw Spark-taak. U kunt ook inzoomen op de Spark-gebruikers interface van een specifieke taak (of fase) door te klikken op de koppeling op de naam van de taak (of fase).
 
 
 ![vonk-voortgang-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -208,7 +213,11 @@ Azure Synapse Studio notebook is louter Spark. Code cellen worden op afstand uit
 
 U kunt de duur van de time-out, het nummer en de grootte van de uitvoerder opgeven om aan de huidige Spark-sessie te geven in de **sessie configureren**. De Spark-sessie moet opnieuw worden gestart om de configuratie wijzigingen van kracht te laten worden. Alle notebook-variabelen in de cache zijn gewist.
 
-![sessie beheer](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+[![sessie beheer](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+
+Er is nu een Spark-sessie aanbevolen voor het configuratie paneel van Spark Session. U kunt een Spark-groep rechtstreeks selecteren in het deel venster sessie configuratie en bekijken hoeveel knoop punten er worden gebruikt en hoeveel resterende uitvoerders er beschikbaar zijn. Deze informatie kan u helpen de sessie grootte op de juiste wijze in te stellen in plaats van deze weer te wijzigen.
+
+![sessie-aanbevolen](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
 
 ## <a name="bring-data-to-a-notebook"></a>Gegevens naar een notitie blok brengen
@@ -264,15 +273,25 @@ U kunt rechtstreeks toegang krijgen tot gegevens in het primaire opslag account.
 
 ## <a name="visualize-data-in-a-notebook"></a>Gegevens in een notitie blok visualiseren
 
-### <a name="display"></a>Weer gave ()
+### <a name="produce-rendered-table-view"></a>Weer gave van gerenderde tabel genereren
 
 Een weer gave met resultaten in tabel vorm wordt geleverd met de optie voor het maken van een staaf diagram, lijn diagram, cirkel diagram, spreidings diagram en vlak diagram. U kunt uw gegevens visualiseren zonder dat u code hoeft te schrijven. De grafieken kunnen worden aangepast in de **grafiek opties**. 
 
-De uitvoer van **%% SQL** Magic-opdrachten wordt standaard weer gegeven in de gerenderde tabel weergave. U kunt de **weer gave ( `<DataFrame name>` )** aanroepen op Spark DATAFRAMES of de RDD-functie (robuuste gedistribueerde gegevens sets) om de gerenderde tabel weergave te maken.
+De uitvoer van **%% SQL** Magic-opdrachten wordt standaard weer gegeven in de gerenderde tabel weergave. U kunt <code>display(df)</code> een DataFrames-functie (RDD) voor de gedistribueerde tabel weer geven met Spark-of robuuste gegevens sets.
 
-   ![Builtin-grafieken](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
+   [![Builtin-grafieken](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
-### <a name="displayhtml"></a>DisplayHTML()
+### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Ingebouwde grafieken visualiseren vanuit een grootschalige gegevensset 
+
+De <code>display(df)</code> functie gebruikt standaard alleen de eerste 1000 rijen van de gegevens om de grafieken weer te geven. Controleer de **aggregatie over alle resultaten** en klik op de knop **Toep assen** . u gaat de grafiek genereren van de hele gegevensset. Een Spark-taak wordt geactiveerd wanneer de grafiek instelling wordt gewijzigd. het duurt even om de berekening te volt ooien en de grafiek weer te geven. 
+    [![ingebouwd-grafieken-aggregatie-alle](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
+
+
+### <a name="visualize-data-statistic-information"></a>Gegevens statistiek gegevens visualiseren
+U kunt gebruiken <code>display(df, summary = true)</code> om de statistische samen vatting van een gegeven Spark-data frame te controleren die de kolom naam, het kolom Type, de unieke waarden en ontbrekende waarden voor elke kolom bevatten. U kunt ook selecteren in een specifieke kolom om de minimale waarde, de maximale waarde, de gemiddelde waarde en de standaard afwijking weer te geven.
+    [![ingebouwd-grafieken-samen vatting ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
+
+### <a name="render-html-or-interactive-libraries"></a>HTML-of interactieve bibliotheken weer geven
 
 U kunt HTML-of interactieve Bibliotheken, zoals **bokeh**, weer geven met behulp van **displayHTML ()**.
 
@@ -332,9 +351,36 @@ In de eigenschappen van het notitie blok kunt u configureren of de celinhoud moe
 ## <a name="magic-commands"></a>Magic-opdrachten
 U kunt uw vertrouwde Jupyter Magic-opdrachten gebruiken in azure Synapse Studio-notebooks. Controleer de onderstaande lijst als de huidige beschik bare Magic-opdrachten. Vertel ons uw use cases op GitHub zodat we meer Magic-opdrachten kunnen blijven bouwen om aan uw behoeften te voldoen.
 
-Beschik bare lijn-magices: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+Beschik bare lijn-magices: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
 Beschik bare cel magics: [%% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% Write File](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% csharp](#use-multiple-languages)
+
+
+## <a name="orchestrate-notebook"></a>Notitie blok indelen
+
+### <a name="add-a-notebook-to-a-pipeline"></a>Een notitie blok toevoegen aan een pijp lijn
+
+Klik op de knop **toevoegen aan pijp lijn** in de rechter bovenhoek om een notitie blok toe te voegen aan een bestaande pijp lijn of een nieuwe pijp lijn te maken.
+
+![toevoegen aan pijp lijn](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+
+### <a name="designate-a-parameters-cell"></a>Een cel met para meters aanwijzen
+
+Als u uw notitie blok wilt para meters, selecteert u de weglatings tekens (...) om het menu met extra celwaarden helemaal rechts te openen. Selecteer vervolgens de cel **Toggle para meter** om de cel aan te wijzen als de para meters-cel.
+
+![Toggle-para meter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+
+Azure Data Factory zoekt naar de para meters-cel en behandelt deze cel als standaard waarden voor de para meters die tijdens de uitvoerings tijd worden door gegeven. Uitvoerings engine voegt een nieuwe cel onder de cel para meters met invoer parameters toe om de standaard waarden te overschrijven. Als er geen para meters-cel wordt opgegeven, wordt de geïnjecteerde cel boven aan het notitie blok ingevoegd.
+
+### <a name="assign-parameters-values-from-a-pipeline"></a>Parameter waarden toewijzen vanuit een pijp lijn
+
+Zodra u een notitie blok met para meters hebt gemaakt, kunt u het uitvoeren vanuit een pijp lijn met de Azure Synapse-notebook activiteit. Nadat u de activiteit aan uw pijplijn doek hebt toegevoegd, kunt u de parameter waarden instellen in het gedeelte **basis parameters** op het tabblad **instellingen** . 
+
+![Assign-para meter](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+
+Wanneer u parameter waarden toewijst, kunt u de taal van de [pijplijn expressie](../../data-factory/control-flow-expression-language-functions.md) of [systeem variabelen](../../data-factory/control-flow-system-variables.md)gebruiken.
+
+
 
 ## <a name="shortcut-keys"></a>Sneltoetsen
 
@@ -390,7 +436,7 @@ Met de volgende sneltoetsen kunt u gemakkelijker code in azure Synapse-notebooks
 |Overschakelen naar de opdracht modus| Esc |
 
 ## <a name="next-steps"></a>Volgende stappen
-
+- [Voor beelden van Synapse-voorbeeld notitieblokken bekijken](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Quickstart: Een Apache Spark-pool (preview) maken in Azure Synapse Analytics met behulp van webhulpprogramma's](../quickstart-apache-spark-notebook.md)
 - [Wat is Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)
 - [.NET gebruiken voor Apache Spark met Azure Synapse Analytics](spark-dotnet.md)

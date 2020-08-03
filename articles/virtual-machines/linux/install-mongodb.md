@@ -11,12 +11,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 8c5114f4b44c200b7853e68e58118a2323274a24
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286254"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504616"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>MongoDB installeren en configureren op een virtuele Linux-machine
 
@@ -36,7 +37,7 @@ Maak een resourcegroep maken met [az group create](/cli/azure/group). In het vol
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gemaakt met de naam *azureuser* met behulp van open bare SSH-sleutel verificatie
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gemaakt met de naam *azureuser* met behulp van open bare SSH-sleutel verificatie
 
 ```azurecli
 az vm create \

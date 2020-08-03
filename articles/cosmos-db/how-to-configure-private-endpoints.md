@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259105"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502117"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -41,7 +42,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
     | **Exemplaardetails** |  |
-    | Naam | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
+    | Name | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
     |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
     |||
 1. Selecteer **Volgende: Resource**.
@@ -69,7 +70,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     |Privé-DNS-zone |Selecteer **privatelink.documents.Azure.com**. <br><br/> De privé-DNS-zone wordt automatisch bepaald. U kunt deze niet wijzigen met behulp van de Azure Portal.|
     |||
 
-1. Selecteer **Controleren en maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
+1. Selecteer **Controleren + maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
 1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 Wanneer u een persoonlijke koppeling hebt goedgekeurd voor een Azure Cosmos-account, is de optie **alle netwerken** in het deel venster **firewall en virtuele netwerken** niet beschikbaar in de Azure Portal.

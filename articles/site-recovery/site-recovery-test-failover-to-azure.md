@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699053"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503494"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Een testfailover (inzoomen op nood herstel) uitvoeren in azure 
 
@@ -25,7 +25,7 @@ U voert een testfailover uit om uw strategie voor replicatie en herstel na nood 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
 In deze procedure wordt beschreven hoe u een testfailover uitvoert voor een herstel plan. Als u een testfailover wilt uitvoeren voor één virtuele machine, volgt u de stappen die [hier](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm) worden beschreven
 
-![Failover testen](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Scherm afbeelding van de pagina testfailover in de Azure Portal.](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. Klik in site Recovery in het Azure Portal op **herstel plannen**  >  *recoveryplan_name*  >  **testfailover**.
@@ -48,7 +48,7 @@ In deze procedure wordt beschreven hoe u een testfailover uitvoert voor een hers
 8. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
 
 
-![Failover testen](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Scherm afbeelding van het tabblad taken in de testfailover.](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Wanneer een testfailover wordt geactiveerd, gebeurt het volgende:
 

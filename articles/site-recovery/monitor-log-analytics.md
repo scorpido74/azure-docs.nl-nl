@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529026"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495060"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
@@ -44,14 +44,14 @@ U wordt aangeraden de [algemene controle vragen](monitoring-common-questions.md)
 
 1. Klik in de kluis op **Diagnostische instellingen**  >  **Diagnostische instelling toevoegen**.
 
-    ![Bron logboek registratie selecteren](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Scherm afbeelding met de optie diagnostische instelling toevoegen.](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. Geef in **Diagnostische instellingen**een naam op en schakel het selectie vakje **verzenden naar log Analytics**in.
 3. Selecteer het abonnement Azure Monitor logboeken en de Log Analytics-werk ruimte.
 4. Selecteer **Azure Diagnostics** in de wissel knop.
 5. Selecteer in de lijst Logboeken alle logboeken met het voor voegsel **AzureSiteRecovery**. Klik vervolgens op **OK**.
 
-    ![Werkruimte selecteren](./media/monitoring-log-analytics/select-workspace.png)
+    ![Scherm afbeelding van de instelling voor diagnostische gegevens.](./media/monitoring-log-analytics/select-workspace.png)
 
 De Site Recovery logboeken beginnen met het feeden in een tabel (**AzureDiagnostics**) in de geselecteerde werk ruimte.
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![Query RPO](./media/monitoring-log-analytics/example1.png)
+![Scherm opname van een staaf diagram met virtuele Azure-machines die zijn gerepliceerd met Site Recovery.](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>Query's uitvoeren op Site Recovery taken
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Query computer RPO](./media/monitoring-log-analytics/example2.png)
+![Scherm afbeelding van een trend grafiek waarmee de RPO van een specifieke virtuele machine van Azure wordt bijgehouden.](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Query gegevens wijzigings frequentie (verloop) en upload frequentie voor een Azure-VM
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Wijziging in query gegevens](./media/monitoring-log-analytics/example3.png)
+![scherm afbeelding van een trend grafiek voor een specifieke Azure-VM.](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Query gegevens wijzigings frequentie (verloop) en upload frequentie voor een VMware of fysieke machine
 

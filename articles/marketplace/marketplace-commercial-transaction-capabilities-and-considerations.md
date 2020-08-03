@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 33c3cf4b9da33b15d7a7d1c14b0c3fb892b60121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317804"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503562"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
 ## <a name="transactions-by-publishing-option"></a>Optie trans acties per publicatie
 
-De uitgever of micro soft is verantwoordelijk voor het beheer van software licentie transacties voor aanbiedingen in de commerciële Marketplace. De publicatie optie die u voor uw aanbieding kiest, bepaalt wie de trans actie beheert. Zie [uw publicatie optie bepalen](./determine-your-listing-type.md#choose-a-publishing-option) voor Beschik baarheid en uitleg van elke publicatie optie.
+De uitgever of micro soft is verantwoordelijk voor het beheer van software licentie transacties voor aanbiedingen in de commerciële Marketplace. De publicatie optie die u voor uw aanbieding kiest, bepaalt wie de trans actie beheert. Zie [uw publicatie optie bepalen](./determine-your-listing-type.md#choose-a-call-to-action) voor Beschik baarheid en uitleg van elke publicatie optie.
 
 ### <a name="list-trial-and-byol-publishing-options"></a>Lijst-, proef-en BYOL-publicatie opties
 
@@ -136,7 +136,7 @@ In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt
 |Micro soft betaalt u 80% van uw licentie kosten <br> \*Micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \*$90,00 per maand    |
 |Micro soft bewaart 20% van de licentie kosten <br> \*Micro soft houdt 10% van de licentie kosten voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \*$10,00     |
 
-Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-incetivized. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable IaaS-aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
+Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable IaaS-aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Facturering, betaling, facturering en verzamelingen van klanten
 
@@ -163,7 +163,7 @@ Klanten kopen normaal gesp roken gebruik van de Enterprise Agreement of een op e
 
 #### <a name="billing-questions-and-support"></a>Vragen en ondersteuning voor facturering
 
-Zie de [Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (beschikbaar in Partner Center) voor meer informatie en juridisch beleid.
+Zie de [Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (beschikbaar in Partner Center) voor meer informatie en juridisch beleid.
 
 Neem contact op met de ondersteuning voor [commerciële Marketplace-Uitgever](https://aka.ms/marketplacepublishersupport)voor hulp bij het vragen over facturering.
 

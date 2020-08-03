@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089308"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501913"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -82,7 +82,7 @@ Maak in het Azure Portal een Synapse-werk ruimte:
   - **WS1 \_ SparkAdmins** aan Synapse Spark-beheerders toewijzen
   - **WS1 \_ SQLAdmins** toewijzen aan Synapse SQL-Administrators
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>STAP 4: Data Lake Storage Gen2 configureren voor gebruik door de werk ruimte Synapse
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>STAP 4: Data Lake Storage Gen2 configureren voor gebruik door de werk ruimte Synapse
 
 De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijnen kunnen worden uitgevoerd en systeem taken worden uitgevoerd.
 
@@ -100,7 +100,7 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 - Klik onder **instellingen**op **SQL Active Directory-beheerder**
 - Klik op **beheerder instellen** en kies WS1 \_ SQLAdmins
 
-## <a name="step-6-maintaining-access-control"></a>STAP 6: toegangs beheer onderhouden
+## <a name="step-6-maintain-access-control"></a>STAP 6: toegangs beheer onderhouden
 
 De configuratie is voltooid.
 

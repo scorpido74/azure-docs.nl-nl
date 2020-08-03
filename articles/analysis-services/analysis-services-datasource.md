@@ -4,15 +4,15 @@ description: Hierin worden gegevens bronnen en connectors beschreven die worden 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077436"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503596"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -20,16 +20,16 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 ## <a name="azure-data-sources"></a>Azure-gegevensbronnen
 
-|Gegevensbron  |In het geheugen  |DirectQuery  |Notities |
+|Gegevensbron  |In het geheugen  |DirectQuery  |Opmerkingen |
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Ja      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL DW)      |   Ja      |   Yes       |<sup>[2](#azprovider)</sup>|
-|Azure Blob Storage      |   Yes       |    Nee      | <sup>[1](#tab1400a)</sup> |
-|Azure Table Storage     |   Yes       |    Nee      | <sup>[1](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Yes        |  Nee        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    Nee      |<sup>[1](#tab1400a)</sup> |
+|Azure Synapse Analytics (SQL DW)      |   Ja      |   Yes       |<sup>[twee](#azprovider)</sup>|
+|Azure Blob Storage      |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Yes        |  Nee        |<sup>[i](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    Nee      |<sup>[i](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Yes       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     Yes     |   Nee       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight HDFS    |     Yes     |   Nee       |<sup>[i](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Yes       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
@@ -71,7 +71,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |SQL Server |Ja   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server Data Warehouse |Ja   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-database     |  Yes | Nee |  |
-|Teradata | Ja  | Yes  | <sup>[10](#teradata)</sup> |
+|Teradata | Ja  | Yes  | <sup>[6](#teradata)</sup> |
 |TXT-bestand  |Yes | Nee |  |
 |XML-tabel    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 | | | |
@@ -80,7 +80,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 <a name="tab1400b">6</a> : alleen in tabel vorm 1400 en hoger.  
 <a name="sqlim">7</a> -als de gegevens bron van een *provider* is opgegeven in tabellaire 1200 en hoger, geeft u micro soft OLE DB driver op voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
 <a name="instgw">8</a> -als MSOLEDBSQL als gegevens provider worden opgegeven, kan het nodig zijn om het [micro soft OLE DB-stuur programma voor SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) te downloaden en te installeren op dezelfde computer als de on-premises gegevens gateway.  
-<a name="oracle">9</a> : Geef de Oracle 1200-gegevens provider voor .net op, of als een *provider* gegevens bron in tabellaire 1400 en-modellen.  
+<a name="oracle">9</a> : Geef de Oracle 1200-gegevens provider voor .net op, of als een *provider* gegevens bron in tabellaire 1400 en-modellen. Zorg ervoor dat u [Oracle Managed Provider inschakelt](#enable-oracle-managed-provider), indien opgegeven als een gestructureerde gegevens bron.   
 <a name="teradata">10</a> -voor in tabel 1200-modellen, of als gegevens bron van een *provider* in tabellaire 1400 + modellen, geeft u de Teradata-gegevens provider voor .net op.  
 <a name="filesSP">11</a> -bestanden in on-premises share point worden niet ondersteund.
 
@@ -123,6 +123,43 @@ Voor gegevens bronnen in de Cloud:
 Voor modellen in tabel vorm met het compatibiliteits niveau 1400 en hoger met behulp van de modus in het geheugen, Azure SQL Database, Azure Synapse (voorheen SQL Data Warehouse), Dynamics 365 en share Point List ondersteunen OAuth-referenties. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van SSMS.
 
 De direct query-modus wordt niet ondersteund met OAuth-referenties.
+
+## <a name="enable-oracle-managed-provider"></a>Oracle Managed Provider inschakelen
+
+In sommige gevallen kunnen DAX-query's naar een Oracle-gegevens bron onverwachte resultaten retour neren. Dit kan worden veroorzaakt door de provider die wordt gebruikt voor de verbinding met de gegevens bron.
+
+Zoals beschreven in de sectie [providers](#understanding-providers) , maken tabellaire modellen verbinding met gegevens bronnen als een *gestructureerde* gegevens bron of een gegevens bron van een *provider* . Voor modellen met een Oracle-gegevens bron die is opgegeven als provider gegevens bron, moet u ervoor zorgen dat de opgegeven provider Oracle data provider voor .NET (Oracle. DataAccess. client) is. 
+
+Als de Oracle-gegevens bron is opgegeven als een gestructureerde gegevens bron, schakelt u de **MDataEngine\UseManagedOracleProvider** -Server eigenschap in. Als u deze eigenschap instelt, zorgt u ervoor dat uw model verbinding maakt met de Oracle-gegevens bron met behulp van de aanbevolen Oracle-gegevens provider voor .NET Managed Provider.
+ 
+Oracle Managed Provider inschakelen:
+
+1. Maak in SQL Server Management Studio verbinding met uw server.
+2. Maak een XMLA-query met het volgende script. Vervang **servername** door de volledige server naam en voer de query uit.
+
+    ```xml
+    <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+        <Object />
+        <ObjectDefinition>
+            <Server xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" 
+    xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" 
+    xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" 
+    xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500">
+                <ID>ServerName</ID>
+                <Name>ServerName</Name>
+                <ServerProperties>
+                    <ServerProperty>
+                        <Name>MDataEngine\UseManagedOracleProvider</Name>
+                        <Value>1</Value>
+                    </ServerProperty>
+                </ServerProperties>
+            </Server>
+        </ObjectDefinition>
+    </Alter>
+    ```
+
+3. Start de server opnieuw.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

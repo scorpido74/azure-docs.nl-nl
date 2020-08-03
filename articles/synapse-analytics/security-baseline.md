@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370271"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501947"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-beveiligings basislijn voor Synapse Analytics
 
@@ -504,7 +504,7 @@ Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in d
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -584,7 +584,7 @@ Daarnaast kunt u een beleid voor dynamische gegevens maskering (DDM) instellen i
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure SQL-data bases in uw Synapse SQL-groep.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot Azure SQL-data bases in uw Synapse SQL-groep.
 
 Autorisatie wordt beheerd door de databaserol lidmaatschappen en object machtigingen van uw gebruikers account. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen.
 
@@ -1014,7 +1014,7 @@ Scan vooraf op inhoud die wordt geüpload naar niet-reken resources van Azure, z
 
 **Hulp**: moment opnamen van uw Synapse SQL-groep worden automatisch gemaakt voor de hele dag, waarbij u herstel punten maakt die zeven dagen beschikbaar zijn. Deze Bewaar periode kan niet worden gewijzigd. SQL-pool ondersteunt een RPO (acht Recovery Point Objective uur). U kunt uw data warehouse in de primaire regio herstellen vanuit een van de moment opnamen die in de afgelopen zeven dagen zijn gemaakt. U kunt ook hand matig moment opnamen activeren als dat nodig is.
 
-* [Back-ups maken en herstellen in azure Synapse SQL-pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Back-ups maken en herstellen in azure Synapse SQL-pool](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure Security Center bewaking**: niet van toepassing
 

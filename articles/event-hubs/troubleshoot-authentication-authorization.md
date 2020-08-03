@@ -3,18 +3,18 @@ title: Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 description: In dit artikel vindt u informatie over het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c053f60c877cdd26655948c37ab81a5e4d61cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322411"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502100"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 Het artikel problemen [met connectiviteit oplossen](troubleshooting-guide.md) bevat tips voor het oplossen van verbindings problemen met Azure Event hubs. In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs. 
 
 ## <a name="if-you-are-using-azure-active-directory"></a>Als u Azure Active Directory gebruikt
-Als u Azure Active Directory (Azure AD) gebruikt om te verifiëren en autoriseren met Azure Event Hubs, controleert u of de identiteit die toegang heeft tot de Event Hub lid is van de rol voor op **rollen gebaseerde toegangs beheer (RBAC)** bij het juiste **resource bereik** (consumenten groep, Event hub, naam ruimte, resource groep of abonnement).
+Als u Azure Active Directory (Azure AD) gebruikt om te verifiëren en autoriseren met Azure Event Hubs, controleert u of de identiteit die toegang heeft tot de Event Hub lid is van de juiste **Azure-rol** bij het juiste **resource bereik** (consumenten groep, Event hub, naam ruimte, resource groep of abonnement).
 
 ### <a name="rbac-roles"></a>RBAC-rollen
 - De [gegevens eigenaar van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) voor volledige toegang tot Event hubs resources.

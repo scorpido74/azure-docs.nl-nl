@@ -6,14 +6,15 @@ ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
 ms.service: industrial-iot
+ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0c5c601b0d3bc0d862ea4984ee2c6d4b76d13ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241059"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502457"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC dubbele module en afhankelijkheden helemaal zelf implementeren
 
@@ -117,7 +118,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 ### <a name="deploy-to-an-edge-device"></a>Implementeren op een edge-apparaat
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en ga naar uw IoT Hub.
 
 2. Selecteer **IOT Edge** in het menu aan de linkerkant.
 
@@ -180,7 +181,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 1. Installeer [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure-opdracht regel interface (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
 
-### <a name="quickstart"></a>Snelstart
+### <a name="quickstart"></a>Snelstartgids
 
 1. Sla het bovenstaande implementatie manifest op in een `deployment.json` bestand.  
 

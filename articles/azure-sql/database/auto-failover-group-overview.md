@@ -5,19 +5,19 @@ description: Met groepen voor automatische failover kunt u replicatie en automat
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: e6c83c37e5b24df28f3cbb4509f0f72e2fde278e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 00b7f675e7dd8fb347399ee7740318e129f12746
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448654"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504174"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -413,9 +413,9 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een failovergroep|
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-| Opdracht | Beschrijving |
+| Opdracht | Description |
 | --- | --- |
 | [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -425,7 +425,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | Beschrijving |
+| API | Description |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
 | [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -451,9 +451,9 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-| Opdracht | Beschrijving |
+| Opdracht | Description |
 | --- | --- |
 | [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -463,7 +463,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | Beschrijving |
+| API | Description |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt de configuratie van een failovergroep gemaakt of bijgewerkt |
 | [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee verwijdert u een failover-groep uit het exemplaar |

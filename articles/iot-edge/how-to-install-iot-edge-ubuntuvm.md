@@ -9,16 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e70b22b3edaae96e00306d5d0a93d229e11aac41
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800559"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494074"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge uitvoeren op Ubuntu Virtual Machines
 
-Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge runtime, kunt u beginnen met het implementeren van bedrijfs logica vanuit de Cloud.
+Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge-runtime, kunt u beginnen met het implementeren van bedrijfslogica vanuit de cloud.
 
 Voor meer informatie over de werking van de IoT Edge runtime en welke onderdelen zijn opgenomen, raadpleegt u [de Azure IOT Edge runtime en de bijbehorende architectuur](iot-edge-runtime.md).
 
@@ -34,12 +35,12 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
 
 1. We gaan een Azure IoT Edge ingeschakelde Linux-VM implementeren met behulp van de sjabloon iotedge-VM-Deploy Azure Resource Manager.  Klik op de onderstaande knop om te beginnen:
 
-    [![De knop Implementeren naar Azure voor iotedge-vm-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+    [![De knop Implementeren naar Azure voor iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 1. Vul in het venster Nieuw gestart de beschik bare formulier velden in:
 
     > [!div class="mx-imgBorder"]
-    > [![Scherm opname van de iotedge-VM-implementatie sjabloon](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+    > [![Schermopname van de sjabloon iotedge-vm-deploy](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
 
     **Abonnement**: het actieve Azure-abonnement voor het implementeren van de virtuele machine in.
 
@@ -63,9 +64,9 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
 
     Wanneer alle velden zijn ingevuld, schakelt u het selectie vakje onder aan de pagina in om de voor waarden te accepteren en selecteert u **kopen** om de implementatie te starten.
 
-1. Controleer of de implementatie is voltooid.  Een virtuele-machine resource moet zijn geïmplementeerd in de geselecteerde resource groep.  Noteer de naam van de computer. dit moet de volgende indeling hebben `vm-0000000000000` . Noteer ook de bijbehorende **DNS-naam**, die de indeling moet hebben `<dnsLabelPrefix>` . `<location>` .. cloudapp.azure.com.
+1. Controleer of de implementatie correct is voltooid.  Er moet een virtuele-machineresource zijn geïmplementeerd in de geselecteerde resourcegroep.  Noteer de naam van de computer. dit moet de volgende indeling hebben `vm-0000000000000` . Noteer ook de bijbehorende **DNS-naam**, die de indeling `<dnsLabelPrefix>``<location>`.cloudapp.azure.com moet hebben.
 
-    De **DNS-naam** kan worden opgehaald uit de sectie **overzicht** van de zojuist geïmplementeerde virtuele machine in de Azure Portal.
+    De **DNS-naam** kan worden verkregen in het gedeelte **Overzicht** van de zojuist geïmplementeerde virtuele machine in Azure Portal.
 
     > [!div class="mx-imgBorder"]
     > [![Scherm opname van de DNS-naam van de iotedge-VM](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
@@ -138,7 +139,7 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
 
-1. Controleer of de implementatie is voltooid.  Een virtuele-machine resource moet zijn geïmplementeerd in de geselecteerde resource groep.  Noteer de naam van de computer. dit moet de volgende indeling hebben `vm-0000000000000` . Noteer ook de bijbehorende **DNS-naam**, die de indeling moet hebben `<dnsLabelPrefix>` . `<location>` .. cloudapp.azure.com.
+1. Controleer of de implementatie correct is voltooid.  Er moet een virtuele-machineresource zijn geïmplementeerd in de geselecteerde resourcegroep.  Noteer de naam van de computer. dit moet de volgende indeling hebben `vm-0000000000000` . Noteer ook de bijbehorende **DNS-naam**, die de indeling `<dnsLabelPrefix>``<location>`.cloudapp.azure.com moet hebben.
 
     De **DNS-naam** kan worden opgehaald uit de JSON-indeling van de vorige stap, in de sectie **outputs** als onderdeel van de **open bare SSH** -vermelding.  De waarde van deze vermelding kan worden gebruikt voor SSH naar de zojuist geïmplementeerde machine.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226397"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507221"
 ---
 Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de `--debug` Switch door te geven met CLI en de `-Debug` Switch met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
 
@@ -76,7 +76,7 @@ Mogelijke oorzaken:
 
 *De gebruiker die probeert een virtuele machine of VM-schaalset te maken, heeft geen lees toegang tot de versie van de installatie kopie.*
 
-Neem contact op met de eigenaar van het abonnement en vraag hen om Lees toegang te verlenen aan de installatie kopie versie of de bovenliggende resources (zoals de galerie met gedeelde afbeeldingen of de definitie van de installatie kopie) via [op rollen gebaseerd Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Neem contact op met de eigenaar van het abonnement en vraag hen om Lees toegang te verlenen aan de installatie kopie versie of de bovenliggende resources (zoals de galerie met gedeelde installatie kopieën of de definitie van de installatie kopie) via [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
 *De versie van de installatie kopie is niet gevonden.*
 
@@ -97,6 +97,3 @@ Gebruik de markering **--expand ReplicationStatus** om te controleren of de repl
 ## <a name="azure-limits-and-quotas"></a>Limieten en quota in Azure 
 
 [Azure-limieten en-quota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zijn van toepassing op alle resources van de gedeelde installatie kopie, de afbeeldings definitie en de versie van de installatie kopie. Zorg ervoor dat u zich binnen de limieten voor uw abonnementen bevindt. 
-
-
-

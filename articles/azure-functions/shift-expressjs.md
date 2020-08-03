@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: d035ef4bc90410cbf0899c038047dd5e6a001f10
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462329"
+ms.locfileid: "87502644"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Verschuiving van Express.js naar Azure Functions
 
@@ -24,7 +24,7 @@ Bij het migreren van code naar een serverloze architectuur, is het herstructurer
 
 - **Standaard route**: standaard worden Azure functions-eind punten weer gegeven onder de `api` route. Routerings regels kunnen worden geconfigureerd via [ `routePrefix` in de _host.jsvoor_ het bestand](./functions-bindings-http-webhook-output.md#hostjson-settings).
 
-- **Configuratie en conventies**: een functions-app gebruikt de _function.jsin_ het bestand voor het definiëren van http-termen, het definiëren van beveiligings beleid en het configureren van de [invoer en uitvoer](./functions-triggers-bindings.md)van de functie. Standaard wordt de naam van de map die de functie bestanden bevat de naam van het eind punt gedefinieerd, maar u kunt de naam wijzigen via de eigenschap route in de [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) in het bestand.
+- **Configuratie en conventies**: een functions-app gebruikt de _function.jsin_ het bestand voor het definiëren van http-termen, het definiëren van beveiligings beleid en het configureren van de [invoer en uitvoer](./functions-triggers-bindings.md)van de functie. Standaard wordt de naam van de map die de functie bestanden bevat de naam van het eind punt gedefinieerd, maar u kunt de naam wijzigen via de `route` eigenschap in de [function.jsin](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) het bestand.
 
 > [!TIP]
 > Meer informatie vindt u in de interactieve zelf studie [Node.js en snelle api's naar serverloze api's met Azure functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/).

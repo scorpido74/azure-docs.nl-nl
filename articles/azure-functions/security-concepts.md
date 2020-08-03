@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079686"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502678"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -26,7 +26,7 @@ In deze sectie vindt u meer over het configureren en uitvoeren van uw functie-ap
 
 Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](../security-center/security-center-app-services.md)voor meer informatie. 
 
-### <a name="log-and-monitor"></a>Logboeken en bewaken
+### <a name="log-and-monitor"></a>Logboeken en bewaking
 
 Een voor het detecteren van aanvallen is via activiteit voor activiteiten bewaking en logboek registratie. Functies worden geïntegreerd met Application Insights om logboek-, prestatie-en fout gegevens voor uw functie-app te verzamelen. Application Insights detecteert automatisch prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht krijgt in de manier waarop uw functies worden gebruikt. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
@@ -83,7 +83,7 @@ Net als bij elke toepassing of service voert het doel uw functie-app uit met de 
 
 #### <a name="user-management-permissions"></a>Machtigingen voor gebruikers beheer
 
-Functies ondersteunen ingebouwde op [rollen gebaseerd toegangs beheer (RBAC) van Azure](../role-based-access-control/overview.md). RBAC-rollen die worden ondersteund door-functies zijn [Inzender](../role-based-access-control/built-in-roles.md#contributor), [eigenaar](../role-based-access-control/built-in-roles.md#owner)en [lezer](../role-based-access-control/built-in-roles.md#owner). 
+Functies bieden ondersteuning voor ingebouwde op [rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](../role-based-access-control/overview.md). Azure-functies die worden ondersteund door-functies zijn [Inzender](../role-based-access-control/built-in-roles.md#contributor), [eigenaar](../role-based-access-control/built-in-roles.md#owner)en [lezer](../role-based-access-control/built-in-roles.md#owner). 
 
 Machtigingen zijn van kracht op het niveau van de functie-app. De rol Inzender is vereist voor het uitvoeren van de meeste taken op app-niveau. Alleen de rol eigenaar kan een functie-app verwijderen. 
 
@@ -207,4 +207,3 @@ Met Gateway Services, zoals [Azure-toepassing gateway](../application-gateway/ov
 
 + [Azure-beveiligings basislijn voor Azure Functions](security-baseline.md)
 + [Diagnostische gegevens Azure Functions](functions-diagnostics.md)
-        

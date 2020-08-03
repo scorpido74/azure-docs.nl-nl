@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089444"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501930"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Machtigingen verlenen voor beheerde identiteit van werk ruimte (preview-versie)
 
@@ -22,7 +22,7 @@ In dit artikel leert u hoe u machtigingen kunt verlenen aan de beheerde identite
 >[!NOTE]
 >Deze beheerde identiteit van de werkruimte wordt aangeduid als beheerde identiteit in de rest van dit document.
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>De beheerde identiteits machtigingen verlenen aan de SQL-groep
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Beheerde identiteits machtigingen verlenen aan de SQL-groep
 
 De beheerde identiteit verleent machtigingen voor de SQL-groepen in de werk ruimte. Met machtigingen die zijn verleend, kunt u pijp lijnen indelen die aan SQL-pool gerelateerde activiteiten uitvoeren. Wanneer u een Azure Synapse-werk ruimte maakt met behulp van Azure Portal, kunt u de machtigingen voor beheerde identiteits beheer voor SQL-groepen verlenen.
 

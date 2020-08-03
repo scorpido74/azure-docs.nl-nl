@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: b7c91d648c06970d53799c6ff505919dea17b3c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b664303d86f8588fc210b11b363b21d523d63295
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032205"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507149"
 ---
 Om aan de slag te gaan met Azure Digital Twins in een open [Azure Cloud Shell](https://shell.azure.com)-venster, moet u zich eerst aanmelden en de shellcontext voor deze sessie instellen op uw abonnement. Voer de volgende opdrachten uit in uw Cloud Shell:
 
@@ -29,32 +29,7 @@ az provider register --namespace 'Microsoft.DigitalTwins'
 
 Vervolgens voegt u de [**Microsoft Azure IoT-extensie voor Azure CLI**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) aan uw Cloud Shell toe om opdrachten voor interactie met Azure Digital Twins en andere IoT-Services in te schakelen. 
 
-Voer eerst deze opdracht uit om een lijst weer te geven met alle extensies die u al hebt geïnstalleerd.
-
-```azurecli-interactive
-az extension list
-```
-
-De uitvoer is een matrix van alle extensies die u momenteel hebt. Zoek naar het veld `"name"` voor elk vermelding in de lijst om de namen van de extensies weer te geven.
-
-Gebruik de uitvoer om te bepalen welke van de volgende opdrachten moet worden uitgevoerd voor de extensie-instelling (u kunt er meer dan één uitvoeren).
-* Als de lijst `azure-iot` bevat: U hebt de extensie al. Voer deze opdracht uit om te controleren of u over de meest recente update beschikt en er geen updates meer beschikbaar zijn:
-
-   ```azurecli-interactive
-   az extension update --name azure-iot
-   ```
-
-* Als de lijst `azure-iot` **niet** bevat: U moet de extensie installeren. Gebruik deze opdracht:
-
-    ```azurecli-interactive
-    az extension add --name azure-iot
-    ```
-
-* Als de lijst `azure-iot-cli-ext` bevat: Dit is de verouderde versie van de extensie. Er moet slechts één versie van de extensie tegelijkertijd zijn geïnstalleerd. U moet de oude extensie dus verwijderen. Gebruik deze opdracht:
-
-   ```azurecli-interactive
-   az extension remove --name azure-cli-iot-ext
-   ```
+[!INCLUDE [digital-twins-cloud-shell-extensions.md](digital-twins-cloud-shell-extensions.md)]
 
 U bent nu klaar om aan de slag te gaan met Azure Digital Twins in de Cloud Shell.
 

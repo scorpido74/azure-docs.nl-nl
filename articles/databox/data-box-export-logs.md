@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 0ef3135f572b00176ff2a114fd02db82c7a05bca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258404"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494482"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy het exporteren van orders
 
@@ -34,7 +34,7 @@ In de volgende tabel ziet u een overzicht van de stappen voor de Data Box-export
 
 ## <a name="set-up-access-control-on-the-order"></a>Toegangs beheer voor de order instellen
 
-U kunt bepalen wie toegang heeft tot uw bestelling wanneer de order voor het eerst wordt gemaakt. U kunt RBAC-rollen (Role-based Access Control) op verschillende bereiken instellen om de toegang tot de Data Box order te beheren. Een RBAC-rol bepaalt het type toegang – lezen-schrijven, alleen-lezen, lezen-schrijven naar een subset van bewerkingen.
+U kunt bepalen wie toegang heeft tot uw bestelling wanneer de order voor het eerst wordt gemaakt. Stel Azure-rollen in verschillende bereiken in om de toegang tot de Data Box order te beheren. Een Azure-rol bepaalt het type toegang – lezen/schrijven, alleen-lezen, lezen-schrijven naar een subset van bewerkingen.
 
 De twee rollen die kunnen worden gedefinieerd voor de Azure Data Box-Service zijn:
 
@@ -122,14 +122,14 @@ Hier volgt een voorbeeld uitvoer wanneer het *Kopieer logboek* fouten bevat en e
 </CopyLog>    
 ```
 
-U hebt de volgende opties voor het exporteren van deze bestanden: 
+U hebt de volgende opties om die bestanden te exporteren: 
 
-- U kunt de bestanden overdragen die niet via het netwerk kunnen worden gekopieerd. 
-- Als de grootte van de gegevens groter is dan de bruikbare capaciteit van het apparaat, vindt er een gedeeltelijke kopie plaats en worden alle bestanden die niet zijn gekopieerd, vermeld in dit logboek. U kunt dit logboek gebruiken als invoer-XML om een nieuwe Data Box order te maken en vervolgens over deze bestanden te kopiëren.
+- U kunt de bestanden die niet konden worden gekopieerd, via het netwerk overdragen. 
+- Als de grootte van uw gegevens de apparaatcapaciteit overschrijdt, worden slechts sommige van de bestanden gekopieerd en worden alle niet-gekopieerde bestanden in dit logboek vermeld. U kunt dit logboek als een invoer-XML gebruiken om een nieuwe Data Box-bestelling te maken en deze bestanden vervolgens te kopiëren.
 
 ### <a name="verbose-log"></a>Uitgebreid logboek
 
-Het *uitgebreide logboek* bevat een lijst met alle bestanden die zijn geëxporteerd uit Azure Storage-account. Het logboek bevat ook de bestands grootte en de berekening van de controlesom.
+Het *uitgebreide logboek* bevat een lijst met alle bestanden die uit het Azure Storage-account zijn geëxporteerd. Het logboek bevat ook bestandsgroottes en controlesomberekeningen.
 
 Het uitgebreide logboek bevat de informatie in de volgende indeling:
 
@@ -306,7 +306,3 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [oplossen van problemen met uw data box en data Box Heavy](data-box-troubleshoot.md).
-
-
-
-
