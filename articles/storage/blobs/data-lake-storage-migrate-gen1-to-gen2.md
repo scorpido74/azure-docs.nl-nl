@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466014"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496420"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van gen1 naar Gen2
 
@@ -81,7 +81,7 @@ Migreer gegevens, werk belastingen en toepassingen met behulp van het gewenste p
    
 6. Zoek naar URI-verwijzingen die de teken reeks `adl://` in code bestanden bevatten, of in Databricks-notebooks, Apache Hive HQL-bestanden of een ander bestand dat wordt gebruikt als onderdeel van uw werk belastingen. Vervang deze verwijzingen door de met [Gen2 geformatteerde URI](data-lake-storage-introduction-abfs-uri.md) van uw nieuwe opslag account. Bijvoorbeeld: de gen1-URI: wordt `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` mogelijk `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
-7. Configureer de beveiliging van uw account voor op [rollen gebaseerd toegangs beheer (RBAC) rollen](../common/storage-auth-aad-rbac-portal.md), [beveiliging op bestands-en mapniveau](data-lake-storage-access-control.md)en [Azure Storage firewalls en virtuele netwerken](../common/storage-network-security.md).
+7. Configureer de beveiliging van uw account voor [Azure-functies](../common/storage-auth-aad-rbac-portal.md), [beveiliging op bestands-en mapniveau](data-lake-storage-access-control.md)en [Azure Storage firewalls en virtuele netwerken](../common/storage-network-security.md).
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>Stap 4: Cutover van gen1 naar Gen2
 
@@ -93,7 +93,7 @@ Wanneer u zeker weet dat uw toepassingen en workloads stabiel zijn op Gen2, kunt
 
 Deze tabel vergelijkt de mogelijkheden van gen1 tot die van Gen2.
 
-|Onderwerp |Gen1   |Gen2 |
+|Gebied |Gen1   |Gen2 |
 |---|---|---|
 |Gegevens organisatie|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor bestanden en mappen|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor containers, bestanden en mappen |
 |Geo-redundantie| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [Ra-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
@@ -207,4 +207,3 @@ Dit is het eenvoudigste patroon.
 - Meer informatie over de verschillende onderdelen van het instellen van de beveiliging van een opslag account. Zie [Azure Storage Security Guide (Engelstalig](../common/storage-security-guide.md)).
 - Optimaliseer de prestaties van uw Data Lake Store. Zie [Azure data Lake Storage Gen2 optimaliseren voor prestaties](data-lake-storage-performance-tuning-guidance.md)
 - Bekijk de aanbevolen procedures voor het beheren van uw Data Lake Store. Bekijk [Aanbevolen procedures voor het gebruik van Azure data Lake Storage Gen2](data-lake-storage-best-practices.md)
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371682"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501369"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
 
@@ -292,7 +292,7 @@ Schakel ook geavanceerde beveiliging tegen bedreigingen in voor uw Azure Storage
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
 
-**Hulp**: Azure Storage accounts of Azure Active Directory het concept van standaard-of lege wacht woorden. Azure Storage implementeert een model voor toegangs beheer dat ondersteuning biedt voor op rollen gebaseerd toegangs beheer (RBAC) van Azure, evenals gedeelde sleutel en gedeelde toegangs handtekeningen (SAS). Een kenmerk van gedeelde sleutel en SAS-verificatie is dat er geen identiteit aan de oproepende functie is gekoppeld en daarom niet kan worden gemachtigd om op basis van een machtiging voor beveiliging-principal een autorisatie uit te voeren. 
+**Hulp**: Azure Storage accounts of Azure Active Directory het concept van standaard-of lege wacht woorden. Azure Storage implementeert een model voor toegangs beheer dat ondersteuning biedt voor op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure, evenals gedeelde sleutel en Shared Access signatures (SAS). Een kenmerk van gedeelde sleutel en SAS-verificatie is dat er geen identiteit aan de oproepende functie is gekoppeld en daarom niet kan worden gemachtigd om op basis van een machtiging voor beveiliging-principal een autorisatie uit te voeren. 
 
 - [Toegang tot gegevens in Azure Storage autoriseren](https://docs.microsoft.com/azure/storage/common/storage-auth)
 

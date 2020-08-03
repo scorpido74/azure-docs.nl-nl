@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090039"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500552"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Streaming-eind punten beheren met Media Services v3
 
@@ -44,7 +45,7 @@ Bekijk:
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-Zie voor meer informatie: 
+Raadpleeg voor meer informatie: 
 
 * De documentatie voor [een StreamingEndpoint](/rest/api/media/streamingendpoints/start) -referentie starten.
 * Het starten van een streaming-eind punt is een asynchrone bewerking. 
@@ -54,7 +55,7 @@ Zie voor meer informatie:
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken 
  
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Ga naar uw Azure Media Services-account.
 1. Selecteer in het linkerdeel venster **streaming-eind punten**.
 1. Selecteer het streaming-eind punt dat u wilt starten en selecteer vervolgens **starten**.

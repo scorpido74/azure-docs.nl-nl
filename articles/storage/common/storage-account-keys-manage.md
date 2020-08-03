@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 79712c50a5ad46d7d435868606011f458fe48e2e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8fda0384dacaf1183458e90688b1f6b63cc63a35
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370748"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501335"
 ---
 # <a name="manage-storage-account-access-keys"></a>Toegangs sleutels voor opslag accounts beheren
 
@@ -65,7 +66,7 @@ az storage account keys list \
 
 U kunt een van de twee sleutels gebruiken om toegang te krijgen tot Azure Storage, maar in het algemeen is het een goed idee om de eerste sleutel te gebruiken en het gebruik van de tweede toets te reserveren wanneer u sleutels draait.
 
-Als u de toegangs sleutels van een account wilt bekijken of lezen, moet de gebruiker een service beheerder zijn of moet aan een RBAC-rol worden toegewezen die de **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Sommige ingebouwde rollen van Azure die deze actie bevatten, zijn de rol rollen van de operator **eigenaar**, **Inzender**en **opslag account** . Zie voor meer informatie over de rol van service beheerder [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Zie de sectie **opslag** in [ingebouwde Azure-rollen voor Azure RBAC](../../role-based-access-control/built-in-roles.md#storage)voor meer informatie over ingebouwde rollen voor Azure Storage.
+Als u de toegangs sleutels van een account wilt bekijken of lezen, moet de gebruiker een service beheerder zijn of moet er een Azure-rol worden toegewezen die de **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Sommige ingebouwde rollen van Azure die deze actie bevatten, zijn de rol rollen van de operator **eigenaar**, **Inzender**en **opslag account** . Zie voor meer informatie over de rol van service beheerder [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Zie de sectie **opslag** in [ingebouwde Azure-rollen voor Azure RBAC](../../role-based-access-control/built-in-roles.md#storage)voor meer informatie over ingebouwde rollen voor Azure Storage.
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Azure Key Vault gebruiken om uw toegangs sleutels te beheren
 
@@ -132,7 +133,7 @@ De toegangs sleutels van uw opslag account met Azure CLI draaien:
 > [!NOTE]
 > Micro soft raadt u aan om op hetzelfde moment slechts één van de sleutels in al uw toepassingen te gebruiken. Als u Key 1 op sommige locaties en sleutel 2 in andere gebruikt, kunt u de sleutels niet draaien zonder dat de toepassing de toegang verliest.
 
-Als u de toegangs sleutels van een account wilt draaien, moet de gebruiker een service beheerder zijn of moet aan een RBAC-rol zijn toegewezen die de **micro soft. Storage/Storage accounts/regeneratekey/Action**bevat. Sommige ingebouwde rollen van Azure die deze actie bevatten, zijn de rol rollen van de operator **eigenaar**, **Inzender**en **opslag account** . Zie voor meer informatie over de rol van service beheerder [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Zie de sectie **opslag** in [ingebouwde Azure-rollen voor Azure RBAC](../../role-based-access-control/built-in-roles.md#storage)voor meer informatie over ingebouwde rollen van Azure voor Azure Storage.
+Als u de toegangs sleutels van een account wilt draaien, moet de gebruiker een service beheerder zijn of moet aan een Azure-rol zijn toegewezen die de **micro soft. Storage/Storage accounts/regeneratekey/Action**bevat. Sommige ingebouwde rollen van Azure die deze actie bevatten, zijn de rol rollen van de operator **eigenaar**, **Inzender**en **opslag account** . Zie voor meer informatie over de rol van service beheerder [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Zie de sectie **opslag** in [ingebouwde Azure-rollen voor Azure RBAC](../../role-based-access-control/built-in-roles.md#storage)voor meer informatie over ingebouwde rollen van Azure voor Azure Storage.
 
 ## <a name="next-steps"></a>Volgende stappen
 

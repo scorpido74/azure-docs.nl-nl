@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 65778d0a6ba3bd5cdc719609ae4c2d18bf05aab9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424406"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498949"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architectuur voor nood herstel van VMware naar Azure
 
@@ -30,9 +30,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 **VMware-servers** | VMware-Vm's worden gehost op on-premises vSphere ESXi-servers. We raden aan dat een vCenter-Server de hosts beheert. | Tijdens Site Recovery implementatie voegt u VMware-servers toe aan de Recovery Services kluis.
 **Gerepliceerde machines** | Mobility service is geïnstalleerd op elke virtuele VMware-machine die u repliceert. | U wordt aangeraden automatische installatie vanaf de proces server toe te staan. U kunt de service ook hand matig installeren of een geautomatiseerde implementatie methode gebruiken, zoals Configuration Manager.
 
-**VMware naar Azure-architectuur**
-
-![Onderdelen](./media/vmware-azure-architecture/arch-enhanced.png)
+![Diagram van de relatie tussen VMware en Azure-replicatie architectuur.](./media/vmware-azure-architecture/arch-enhanced.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Uitgaande netwerk verbinding instellen
 
@@ -71,9 +69,7 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
     - De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
 5. De replicatie gegevens melden het eerste land in een cache-opslag account in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen in een Azure Managed disk (ook wel ASR-Seed-schijf genoemd). De herstel punten worden op deze schijf gemaakt.
 
-**Replicatie proces van VMware naar Azure**
-
-![Replicatieproces](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+![Diagram van het replicatie proces van VMware naar Azure.](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="resynchronization-process"></a>Proces opnieuw synchroniseren
 
@@ -108,9 +104,8 @@ Nadat de replicatie is ingesteld en u een nood herstel analyse (testfailover) ui
     - Fase 3: nadat de workloads zijn hersteld, schakelt u de replicatie voor de on-premises Vm's opnieuw in.
     
  
-**VMware-failback van Azure**
 
-![Failback](./media/vmware-azure-architecture/enhanced-failback.png)
+![Diagram waarin VMware-failback van Azure wordt weer gegeven.](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

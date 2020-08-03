@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371036"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500875"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -33,9 +33,7 @@ Azure Lighthouse biedt meer flexibiliteit voor het beheren van resources voor me
 
 U kunt Beheer taken op gedelegeerde resources rechtstreeks uitvoeren in de portal of met behulp van Api's en beheer hulpprogramma's (zoals Azure CLI en Azure PowerShell). Alle bestaande Api's kunnen worden gebruikt bij het werken met gedelegeerde resources, zolang de functionaliteit wordt ondersteund voor cross-Tenant beheer en de gebruiker de juiste machtigingen heeft.
 
-De Azure PowerShell [Get-AzSubscription-cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) toont de `tenantID` voor elk abonnement, zodat u kunt bepalen of een geretourneerd abonnement hoort bij de Tenant van uw service provider of een beheerde klant-Tenant.
-
-Net als bij Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , worden de **HomeTenantId** -en **managedByTenants** -kenmerken weer gegeven.
+Met Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , worden de **HomeTenantId** -en **managedByTenants** -kenmerken voor elk abonnement weer gegeven, zodat u kunt bepalen of een geretourneerd abonnement hoort bij de Tenant van uw service provider of een beheerde klant-Tenant.
 
 > [!TIP]
 > Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te wissen door uit te voeren, `az account clear` gevolgd door `az login --identity` .
@@ -70,7 +68,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 [Azure Cost Management en facturering](../../cost-management-billing/index.yml):
 
-- Van de beheer-Tenant kunnen CSP-partners de kosten voor het gebruik van de belasting (niet inclusief aankopen) bekijken, beheren en analyseren voor klanten die zich onder het Azure-abonnement bevinden. De kosten worden berekend op basis van de tarieven voor de detail handel en de RBAC-toegang (op rollen gebaseerd toegangs beheer) die de partner heeft voor het abonnement van de klant.
+- Van de beheer-Tenant kunnen CSP-partners de kosten voor het gebruik van de belasting (niet inclusief aankopen) bekijken, beheren en analyseren voor klanten die zich onder het Azure-abonnement bevinden. De kosten zijn gebaseerd op de retail tarieven en de Azure RBAC-toegang (op rollen gebaseerd toegangs beheer) die de partner heeft voor het abonnement van de klant.
 
 [Azure Kubernetes service (AKS)](../../aks/index.yml):
 

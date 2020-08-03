@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035822"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495655"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -174,7 +174,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
    3. Test uw back-up/herstel volgorde en timing en breng zo nodig wijzigingen aan. Zorg ervoor dat de back-uptijden voldoende zijn. U moet ook de herstel-en tijd herstel activiteiten testen. Zorg ervoor dat de herstel tijden binnen uw RTO-Sla's vallen, waar uw RTO afhankelijk is van een Data Base-of VM-herstel proces.
    4. De DR-functionaliteit en-architectuur van meerdere regio's testen.
 1. Beveiligings controles.
-   1. Test de validiteit van uw op Azure Role gebaseerde Access Control (RBAC)-architectuur. Het doel is om de toegang en machtigingen van verschillende teams te scheiden en te beperken. SAP-team leden moeten bijvoorbeeld Vm's kunnen implementeren en schijven toewijzen van Azure Storage in een bepaald Azure Virtual Network. Het SAP-basis team mag echter geen eigen virtuele netwerken maken of de instellingen van bestaande virtuele netwerken wijzigen. Leden van het netwerk team mogen geen Vm's implementeren in virtuele netwerken waarin SAP-toepassingen en DBMS-Vm's worden uitgevoerd. Ook kunnen leden van dit team kenmerken van Vm's wijzigen of zelfs Vm's of schijven verwijderen.  
+   1. Test de geldigheid van uw Azure RBAC-architectuur (op rollen gebaseerd toegangs beheer). Het doel is om de toegang en machtigingen van verschillende teams te scheiden en te beperken. SAP-team leden moeten bijvoorbeeld Vm's kunnen implementeren en schijven toewijzen van Azure Storage in een bepaald Azure Virtual Network. Het SAP-basis team mag echter geen eigen virtuele netwerken maken of de instellingen van bestaande virtuele netwerken wijzigen. Leden van het netwerk team mogen geen Vm's implementeren in virtuele netwerken waarin SAP-toepassingen en DBMS-Vm's worden uitgevoerd. Ook kunnen leden van dit team kenmerken van Vm's wijzigen of zelfs Vm's of schijven verwijderen.  
    1.  Controleer of de [netwerk beveiligings groep en de ASC](../../../virtual-network/security-overview.md) -regels naar behoren werken en de beveiligde resources afschermen.
    1.  Zorg ervoor dat alle resources die moeten worden versleuteld, zijn versleuteld. Definieer en implementeer processen voor het maken van back-ups van certificaten, opslag en toegang tot die certificaten en herstel de versleutelde entiteiten.
    1.  Gebruik [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) voor besturingssysteem schijven waar mogelijk vanuit een besturings systeem-ondersteunings punt wordt weer gegeven.

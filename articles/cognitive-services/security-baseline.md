@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c5ce50a3736d6e96620e25cf084c5c66c456a5f
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85375110"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498341"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azure-beveiligings basislijn voor Cognitive Services
 
@@ -28,7 +28,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
-**Hulp**: Azure Cognitive Services biedt een gelaagd beveiligings model. Met dit model kunt u uw Cognitive Services-accounts beveiligen met een specifieke subset van netwerken. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot het account. U kunt de toegang tot uw resources beperken met aanvraag filtering, zodat alleen aanvragen worden toegestaan die afkomstig zijn van opgegeven IP-adressen, IP-adresbereiken of uit een lijst met subnetten in azure Virtual Networks.
+**Hulp**: Azure Cognitive Services biedt een gelaagd beveiligings model. Met dit model kunt u uw Cognitive Services-accounts beveiligen met een specifieke subset van netwerken. Als er netwerkregels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot het account. U kunt de toegang tot uw resources beperken met aanvraag filtering, zodat alleen aanvragen worden toegestaan die afkomstig zijn van opgegeven IP-adressen, IP-adresbereiken of uit een lijst met subnetten in azure Virtual Networks.
 
 Ondersteuning voor het virtuele netwerk en het service-eind punt voor Cognitive Services is beperkt tot een specifieke set regio's.
 
@@ -73,7 +73,7 @@ Houd er ook rekening mee dat u grondige pakket inspectie voor uw firewall oploss
 **Richt lijnen**: wanneer virtuele machines worden geïmplementeerd in hetzelfde virtuele netwerk als uw Azure Cognitive Services-container, definieert en implementeert u standaard beveiligings configuraties voor gerelateerde netwerk bronnen met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. CognitiveServices ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure-cache voor redis-exemplaren te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities zoals:
 - De DDoS Protection-standaard moet zijn ingeschakeld
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één blauw definitie te verpakken. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Toegangs beheer op basis van rollen (Azure RBAC) en beleids regels, in één blauw definitie te verpakken. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 Als u Cognitive Services binnen een container gebruikt, kunt u uw container implementatie uitbreiden met een webtoepassing voor front-to-application firewall die schadelijk verkeer filtert en end-to-end TLS-code ring ondersteunt, waardoor het container eindpunt persoonlijk en beveiligd blijft.
 
@@ -655,7 +655,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure-cache in te delen en bij te houden voor redis-exemplaren en gerelateerde bronnen. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
 Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -679,7 +679,7 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/ontdekken.
@@ -719,7 +719,7 @@ Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/on
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

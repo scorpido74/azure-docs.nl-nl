@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4471994f7e691466449125a74cf3f7d46607be01
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80473932"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495128"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
@@ -65,7 +65,7 @@ Zie [Azure Storage schaal baarheid en prestatie doelen](/azure/storage/queues/sc
 Als u het maximum aantal opslag accounts nadert dat is toegestaan voor een bepaalde combi natie van abonnement/regio, evalueert u uw scenario en bepaalt u of een van de volgende voor waarden van toepassing is:
 
 - Gebruikt u opslag accounts voor het opslaan van niet-beheerde schijven en het toevoegen van die schijven aan uw virtuele machines (Vm's)? Voor dit scenario raadt micro soft aan om beheerde schijven te gebruiken. Beheerde schijven kunnen automatisch worden geschaald en zonder dat u afzonderlijke opslag accounts hoeft te maken en beheren. Zie [Introduction to Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md) (Engelstalig) voor meer informatie
-- Gebruikt u één opslag account per klant, voor het doel van gegevens isolatie? Voor dit scenario raadt micro soft aan om een BLOB-container te gebruiken voor elke klant, in plaats van een hele opslag account. Azure Storage kunt nu op rollen gebaseerd toegangs beheer (RBAC) rollen per container toewijzen. Zie voor meer informatie [toegang verlenen tot Azure Blob-en wachtrij gegevens met RBAC in het Azure Portal](../common/storage-auth-aad-rbac-portal.md).
+- Gebruikt u één opslag account per klant, voor het doel van gegevens isolatie? Voor dit scenario raadt micro soft aan om een BLOB-container te gebruiken voor elke klant, in plaats van een hele opslag account. Azure Storage kunt u nu Azure-rollen per container toewijzen. Zie voor meer informatie [toegang verlenen tot Azure Blob-en wachtrij gegevens met RBAC in het Azure Portal](../common/storage-auth-aad-rbac-portal.md).
 - Gebruikt u meerdere opslag accounts om Shard uit te breiden, uitvoer, I/O-bewerkingen per seconde (IOPS) of capaciteit? In dit scenario raadt micro soft u aan gebruik te maken van verhoogde limieten voor opslag accounts om zo mogelijk het aantal opslag accounts te beperken dat vereist is voor uw werk belasting. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslag account aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Capaciteits-en transactie doelen
@@ -155,7 +155,7 @@ Zowel SAS als CORS kan u helpen om te voor komen dat uw webtoepassing onnodig wo
 
 Caching speelt een belang rijke rol bij de prestaties. In de volgende secties worden aanbevolen procedures voor caching besproken.
 
-### <a name="reading-data"></a>Gegevens lezen
+### <a name="reading-data"></a>Lezen van de gegevens
 
 Over het algemeen is het lezen van gegevens één keer de voor keur. Bekijk het voor beeld van een webtoepassing die een 50 MiB-BLOB heeft opgehaald van de Azure Storage die als inhoud moet fungeren voor een gebruiker. In het ideale geval wordt de BLOB lokaal in de cache opgeslagen en wordt de versie van de cache voor volgende gebruikers aanvragen opgehaald.
 
@@ -285,6 +285,6 @@ Pagina-blobs zijn geschikt als de toepassing wille keurige schrijf bewerkingen o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Schaalbaarheids-en prestatie doelen voor Blob Storage](scalability-targets.md)
+- [Schaalbaarheids- en prestatiedoelen voor Blob-opslag](scalability-targets.md)
 - [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

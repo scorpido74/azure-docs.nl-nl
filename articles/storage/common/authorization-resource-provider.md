@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b171c5ff5bc848a0005fad5a2e0b6c0ca548724
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372294"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496070"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources
 
@@ -36,7 +36,7 @@ Elk Azure-abonnement heeft een bijbehorende Azure Active Directory waarmee gebru
 
 Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, geeft u ook het bereik op waarop de machtigingen die door de rol worden verleend, van kracht zijn. Voor beheer bewerkingen kunt u een rol toewijzen op het niveau van het abonnement, de resource groep of het opslag account. U kunt een RBAC-rol toewijzen aan een beveiligingsprincipal met behulp van de [Azure Portal](https://portal.azure.com/), de [Azure cli-hulpprogram ma's](../../cli-install-nodejs.md), [Power shell](/powershell/azure/)of de [resource provider van Azure Storage rest API](/rest/api/storagerp).
 
-Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md) voor meer informatie. en [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md) voor meer informatie. en [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ### <a name="built-in-roles-for-management-operations"></a>Ingebouwde rollen voor beheer bewerkingen
 
@@ -44,7 +44,7 @@ Azure biedt ingebouwde rollen die machtigingen verlenen voor het aanroepen van b
 
 Ingebouwde rollen die machtigingen verlenen voor het aanroepen van opslag beheer bewerkingen zijn onder andere de rollen die in de volgende tabel worden beschreven:
 
-|    RBAC-rol    |    Beschrijving    |    Inclusief toegang tot account sleutels?    |
+|    RBAC-rol    |    Description    |    Inclusief toegang tot account sleutels?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Eigenaar** | Kan alle opslag resources en toegang tot resources beheren.  | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |
 | **Inzender**  | Kan alle opslag resources beheren, maar kan toewijzing aan resources niet beheren. | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |

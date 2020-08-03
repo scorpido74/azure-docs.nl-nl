@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 691293d0f7ecf5bb2ad83a3f292ad2c9b873e31e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133815"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386522"
 ---
 ## <a name="limitations"></a>Beperkingen
 
@@ -53,7 +53,7 @@ Als u een hostgroep toewijst aan een beschikbaarheids zone, moeten alle Vm's die
 
 Een host kan worden gemaakt in een specifiek fout domein. Net als bij een VM in een schaalset of beschikbaarheidsset worden hosts in verschillende fout domeinen op verschillende fysieke racks geplaatst in het Data Center. Wanneer u een hostgroep maakt, moet u het aantal fout domeinen opgeven. Wanneer u hosts in de hostgroep maakt, wijst u fout domein toe voor elke host. Voor de virtuele machines is geen fout domein toewijzing vereist.
 
-Fout domeinen zijn niet hetzelfde als plaatsing. Als u hetzelfde fout domein voor twee hosts gebruikt, betekent dit niet dat ze zich in de buurt van elkaar bevinden.
+Fout domeinen zijn niet hetzelfde als een co-locatie. Als u hetzelfde fout domein voor twee hosts gebruikt, betekent dit niet dat ze zich in de buurt van elkaar bevinden.
 
 Fout domeinen zijn binnen het bereik van de hostgroep. U moet geen veronderstelling doen over de anti-affiniteit tussen twee hostgroepen (tenzij ze zich in verschillende beschikbaarheids zones bevinden).
 
@@ -121,7 +121,7 @@ De grootten en typen hardware variëren per regio. Raadpleeg de pagina met [prij
 
 Azure bewaakt en beheert de integriteits status van uw hosts. De volgende statussen worden geretourneerd wanneer u een query op uw host uitvoert:
 
-| Status   | Beschrijving       |
+| Status   | Description       |
 |----------|----------------|
 | Host beschikbaar     | Er zijn geen bekende problemen met de host.   |
 | Host wordt onderzocht  | Er zijn enkele problemen met de host die we op zoek zijn. Dit is een overgangs status die vereist is voor Azure om het bereik en de hoofd oorzaak voor het geïdentificeerde probleem te identificeren. Voor virtuele machines die op de host worden uitgevoerd, kan dit gevolgen hebben. |

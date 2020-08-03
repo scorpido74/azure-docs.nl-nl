@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130134"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496114"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Een CI/CD-pijp lijn voor Azure Data Lake Analytics instellen  
 
@@ -35,7 +35,7 @@ Een U-SQL-project kan worden gemaakt met de micro soft build Engine (MSBuild) do
 
 Voordat u een bouw taak voor een U-SQL-project instelt, moet u ervoor zorgen dat u de nieuwste versie van het U-SQL-project hebt. Open het U-SQL-project bestand in uw editor en controleer of u deze items hebt geïmporteerd:
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -66,14 +66,14 @@ U-SQL-scripts in een U-SQL-project bevatten mogelijk query-instructies voor U-SQ
 Meer informatie over [U-SQL database project](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->Instructie DROP kan het probleem met het verwijderen van ongel ukken veroorzaken. Als u instructie DROP wilt inschakelen, moet u expliciet de MSBuild-argumenten opgeven. **AllowDropStatement** maakt niet-gegevens gerelateerde neerzetten mogelijk, zoals de functie voor het verwijderen van een assembly en het verwijderen van een tabel waarde. **AllowDataDropStatement** maakt gegevens gerelateerde drop bewerking mogelijk, zoals drop table en drop schema. U moet AllowDropStatement inschakelen voordat u AllowDataDropStatement gebruikt.
+> De instructie DROP kan een onbedoelde verwijdering veroorzaken. Als u instructie DROP wilt inschakelen, moet u expliciet de MSBuild-argumenten opgeven. **AllowDropStatement** maakt niet-gegevens gerelateerde neerzetten mogelijk, zoals de functie voor het verwijderen van een assembly en het verwijderen van een tabel waarde. **AllowDataDropStatement** maakt gegevens gerelateerde drop bewerking mogelijk, zoals drop table en drop schema. U moet AllowDropStatement inschakelen voordat u AllowDataDropStatement gebruikt.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Een U-SQL-project bouwen met de MSBuild opdracht regel
 
 Migreer eerst het project en down load het NuGet-pakket. Vervolgens roept u de standaard MSBuild opdracht regel met de volgende aanvullende argumenten op om uw U-SQL-project te bouwen: 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -100,7 +100,7 @@ Naast de opdracht regel kunt u ook de taak Visual Studio build of MSBuild gebrui
 
     ![CI/CD MSBuild-variabelen definiëren voor een U-SQL-project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ Naast de opdracht regel kunt u ook de taak Visual Studio build of MSBuild gebrui
 Nadat u een build hebt uitgevoerd, worden alle scripts in het U-SQL-project gebouwd en uitgevoerd naar een zip-bestand met de naam `USQLProjectName.usqlpack` . De mapstructuur in uw project wordt bewaard in de gezipte build-uitvoer.
 
 > [!NOTE]
->
-> Code-behind bestanden voor elk U-SQL-script worden samengevoegd als een inline-instructie voor de uitvoer van het script.
->
+> De code-behind bestanden voor elk U-SQL-script worden samengevoegd als een inline-instructie voor de uitvoer van het script.
 
 ## <a name="test-u-sql-scripts"></a>U-SQL-scripts testen
 
@@ -229,6 +227,10 @@ Function Main()
 
 Main
 ```
+
+>[!NOTE]
+> De opdrachten: `Submit-AzDataLakeAnalyticsJob` en `Wait-AzDataLakeAnalyticsJob` zijn beide Azure PowerShell-cmdlets voor Azure data Lake Analytics in het Azure Resource Manager Framework. U vervolgens een werk station met Azure PowerShell geïnstalleerd. U kunt de [opdracht lijst](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0) raadplegen voor meer opdrachten en voor beelden.
+>
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>U-SQL-taken implementeren via Azure Data Factory
 
@@ -455,32 +457,32 @@ Voer de volgende stappen uit om een implementatie taak voor een data base in te 
 
 | Parameter | Beschrijving | Standaardwaarde | Vereist |
 |---------|-----------|-------------|--------|
-|Pakket|Het pad van het U-SQL database implementatie pakket dat moet worden geïmplementeerd.|null|true|
-|Database|De naam van de data base die moet worden geïmplementeerd of gemaakt.|model|false|
-|Logbestand|Het pad van het bestand voor logboek registratie. Standaard ingesteld op standaard waarde (console).|null|false|
-|Logniveau|Logboek niveau: uitgebreid, normaal, waarschuwing of fout.|LogLevel. Normal|false|
+|Pakket|Het pad van het U-SQL database implementatie pakket dat moet worden geïmplementeerd.|null|waar|
+|Database|De naam van de data base die moet worden geïmplementeerd of gemaakt.|model|onjuist|
+|Logbestand|Het pad van het bestand voor logboek registratie. Standaard ingesteld op standaard waarde (console).|null|onjuist|
+|Logniveau|Logboek niveau: uitgebreid, normaal, waarschuwing of fout.|LogLevel. Normal|onjuist|
 
 #### <a name="parameter-for-local-deployment"></a>Para meter voor lokale implementatie
 
 |Parameter|Beschrijving|Standaardwaarde|Vereist|
 |---------|-----------|-------------|--------|
-|Data root|Het pad van de lokale hoofdmap van de gegevens.|null|true|
+|Data root|Het pad van de lokale hoofdmap van de gegevens.|null|waar|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Para meters voor Azure Data Lake Analytics implementatie
 
 |Parameter|Beschrijving|Standaardwaarde|Vereist|
 |---------|-----------|-------------|--------|
-|Account|Hiermee geeft u op met welke Azure Data Lake Analytics-account moet worden geïmplementeerd op basis van de account naam.|null|true|
-|ResourceGroup|De naam van de Azure-resource groep voor het Azure Data Lake Analytics-account.|null|true|
-|SubscriptionId|De Azure-abonnements-ID voor het Azure Data Lake Analytics-account.|null|true|
-|Tenant|De naam van de Tenant is de domein naam van de Azure Active Directory (Azure AD). Zoek het op de pagina abonnements beheer in het Azure Portal.|null|true|
-|AzureSDKPath|Het pad voor het zoeken naar afhankelijke assembly's in de Azure SDK.|null|true|
-|Interactief|Hiermee wordt aangegeven of interactieve modus moet worden gebruikt voor verificatie.|false|false|
+|Account|Hiermee geeft u op met welke Azure Data Lake Analytics-account moet worden geïmplementeerd op basis van de account naam.|null|waar|
+|ResourceGroup|De naam van de Azure-resource groep voor het Azure Data Lake Analytics-account.|null|waar|
+|SubscriptionId|De Azure-abonnements-ID voor het Azure Data Lake Analytics-account.|null|waar|
+|Tenant|De naam van de Tenant is de domein naam van de Azure Active Directory (Azure AD). Zoek het op de pagina abonnements beheer in het Azure Portal.|null|waar|
+|AzureSDKPath|Het pad voor het zoeken naar afhankelijke assembly's in de Azure SDK.|null|waar|
+|Interactief|Hiermee wordt aangegeven of interactieve modus moet worden gebruikt voor verificatie.|onjuist|onjuist|
 |ClientId|De Azure AD-toepassings-ID die is vereist voor niet-interactieve verificatie.|null|Vereist voor niet-interactieve verificatie.|
 |Geheim|Het geheim of het wacht woord voor niet-interactieve verificatie. Deze moet alleen worden gebruikt in een vertrouwde en beveiligde omgeving.|null|Vereist voor niet-interactieve verificatie, of gebruik SecreteFile.|
 |SecreteFile|Het bestand slaat het geheim of het wacht woord voor niet-interactieve verificatie op. Zorg ervoor dat het alleen leesbaar is voor de huidige gebruiker.|null|Vereist voor niet-interactieve verificatie, of gebruik geheim.|
-|CERT|Het bestand bespaart X. 509-certificering voor niet-interactieve verificatie. De standaard instelling is het gebruik van verificatie van client geheim.|null|false|
-| JobPrefix | Het voor voegsel voor de implementatie van de data base van een U-SQL DDL-taak. | Deploy_ + DateTime. nu | false |
+|CERT|Het bestand bespaart X. 509-certificering voor niet-interactieve verificatie. De standaard instelling is het gebruik van verificatie van client geheim.|null|onjuist|
+| JobPrefix | Het voor voegsel voor de implementatie van de data base van een U-SQL DDL-taak. | Deploy_ + DateTime. nu | onjuist |
 
 ## <a name="next-steps"></a>Volgende stappen
 

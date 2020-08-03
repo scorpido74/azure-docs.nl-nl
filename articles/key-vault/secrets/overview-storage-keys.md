@@ -9,12 +9,13 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: e8f8a333c880850b239fbaba1ea405b94a1460e8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7819b62fb92945a409cab0dff926e281620dd80c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076732"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496641"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Key Vault en de Azure CLI
 
@@ -53,7 +54,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
-- [Een sleutelkluis maken](quick-create-cli.md)
+- [Een sleutel kluis maken](quick-create-cli.md)
 - [Maak een Azure-opslag account](../../storage/common/storage-account-create.md?tabs=azure-cli). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
       
 ## <a name="manage-storage-account-keys"></a>Sleutels voor opslag accounts beheren

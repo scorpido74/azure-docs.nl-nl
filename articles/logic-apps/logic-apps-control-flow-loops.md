@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066346"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495604"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Herhalingen maken waarmee werkstroomacties worden herhaald of matrices worden verwerkt in Azure Logic Apps
 
@@ -24,7 +24,7 @@ Als u acties wilt herhalen totdat aan een voor waarde wordt voldaan of een statu
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). 
+* Een Azure-account en -abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -32,11 +32,11 @@ Als u acties wilt herhalen totdat aan een voor waarde wordt voldaan of een statu
 
 ## <a name="foreach-loop"></a>Foreach-lus
 
-Een ' foreach-lus ' herhaalt een of meer acties voor elk matrix item en werkt alleen op matrices. Herhalingen in een ' foreach '-lus worden parallel uitgevoerd. U kunt herhalingen echter een voor een uitvoeren door een [sequentiële ' foreach-lus](#sequential-foreach-loop)in te stellen. 
+Een ' foreach-lus ' herhaalt een of meer acties voor elk matrix item en werkt alleen op matrices. Hier volgen enkele aandachtspunten bij het gebruik van ' foreach ' lussen:
 
-Hier volgen enkele aandachtspunten bij het gebruik van ' foreach ' lussen:
+* Standaard worden herhalingen in een ' foreach '-lus tegelijk uitgevoerd, of parallel. Dit gedrag verschilt van [het automatiseren van de stroom op **elke** lus](/power-automate/apply-to-each) waar iteraties een voor een of twee keer worden uitgevoerd. U kunt echter [opeenvolgende ' foreach ' lussen instellen](#sequential-foreach-loop). Als u de volgende iteratie in een lus ' foreach ' wilt onderbreken met behulp van de [vertragings actie](../connectors/connectors-native-delay.md), moet u de lus zo instellen dat deze sequentieel wordt uitgevoerd.
 
-* In geneste lussen worden iteraties altijd opeenvolgend uitgevoerd, niet parallel. Als u bewerkingen parallel wilt uitvoeren voor items in een geneste lus, maakt en [roept u een onderliggende logische app](../logic-apps/logic-apps-http-endpoint.md)aan.
+  De uitzonde ring op het standaard gedrag zijn geneste lussen waarbij iteraties altijd opeenvolgend worden uitgevoerd, niet parallel. Als u bewerkingen parallel wilt uitvoeren voor items in een geneste lus, maakt en [roept u een onderliggende logische app](../logic-apps/logic-apps-http-endpoint.md)aan.
 
 * Als u voorspel bare resultaten wilt krijgen van bewerkingen op variabelen tijdens elke lus iteratie, voert u deze lussen sequentieel uit. Wanneer een lus die gelijktijdig wordt uitgevoerd bijvoorbeeld eindigt, wordt de waarde voor het verhogen, verlagen en toevoegen aan variabele bewerkingen voorspel bare resultaten geretourneerd. Tijdens elke iteratie in de gelijktijdig uitgevoerde lus kunnen deze bewerkingen echter onverwachte resultaten opleveren. 
 
@@ -189,7 +189,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
    ![Eigenschappen van variabele instellen](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | Eigenschap | Waarde | Beschrijving |
+   | Eigenschap | Waarde | Description |
    | -------- | ----- | ----------- |
    | **Naam** | Limiet | De naam van de variabele | 
    | **Type** | Geheel getal | Het gegevens type van uw variabele | 

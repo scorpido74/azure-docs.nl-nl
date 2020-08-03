@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6234e9efe4f6dd122a22ee834ef9c35269eea95f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552642"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500977"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
@@ -50,7 +50,7 @@ Het volgende diagram biedt een visuele demonstratie van deze aanbevolen werk str
 
 ![Gegevens-concept diagram](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Gegevens opslag
+## <a name="datastores"></a>Gegevensarchieven
 
 Azure Machine Learning gegevens opslag Bewaar de verbindings gegevens veilig naar uw Azure-opslag, zodat u deze niet in uw scripts hoeft te coderen. [Registreer en maak een gegevens opslag](how-to-access-data.md) om eenvoudig verbinding te maken met uw opslag account en om toegang te krijgen tot de gegevens in uw onderliggende Azure Storage-service. 
 
@@ -67,14 +67,17 @@ Ondersteunde cloud-gebaseerde opslag Services in azure die als gegevens opslag k
 
 ## <a name="datasets"></a>Gegevenssets
 
-Azure Machine Learning gegevens sets zijn verwijzingen die verwijzen naar de gegevens in uw Storage-service. Ze zijn geen kopieën van uw gegevens, dus er worden geen extra opslag kosten in rekening gebracht. Als u met uw gegevens in de opslag wilt werken, [maakt u een gegevensset](how-to-create-register-datasets.md) om uw gegevens te verpakken in een verbruikt object voor machine learning taken. Registreer de gegevensset voor uw werk ruimte om deze te delen en opnieuw te gebruiken in verschillende experimenten zonder complexiteit van gegevens opname.
+Azure Machine Learning gegevens sets zijn verwijzingen die verwijzen naar de gegevens in uw Storage-service. Ze zijn geen kopieën van uw gegevens, waardoor er geen extra opslag kosten in rekening worden gebracht en de integriteit van uw oorspronkelijke gegevens bronnen geen risico loopt.
+
+ Als u met uw gegevens in de opslag wilt werken, [maakt u een gegevensset](how-to-create-register-datasets.md) om uw gegevens te verpakken in een verbruikt object voor machine learning taken. Registreer de gegevensset voor uw werk ruimte om deze te delen en opnieuw te gebruiken in verschillende experimenten zonder complexiteit van gegevens opname.
 
 Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, open bare url's, [Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/)of Azure Storage-services via data stores. Als u een gegevensset wilt maken op basis van een in geheugen-Panda data frame, schrijft u de gegevens naar een lokaal bestand, zoals een Parquet, en maakt u uw gegevensset vanuit dat bestand.  
 
 We ondersteunen twee typen gegevens sets: 
-+ Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
-+ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. U kunt bestanden waarnaar wordt verwezen door FileDatasets, [downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) aan uw Compute-doel.
++ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Als uw gegevens al zijn gereinigd en klaar zijn voor gebruik in trainings experimenten, kunt u [bestanden downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) waarnaar wordt verwezen door FileDatasets naar uw reken doel.
+
++ Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
 Aanvullende gegevens sets kunnen worden gevonden in de volgende documentatie:
 

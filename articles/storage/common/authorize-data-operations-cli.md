@@ -10,12 +10,13 @@ ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1e0b3890c50a476e4c3b3247db435c6032bf9bbc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4f04671283a4888770e29606b6869c832b22e6a3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417298"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499157"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Toegang verlenen tot BLOB-of wachtrij gegevens met Azure CLI
 
@@ -97,7 +98,7 @@ az storage container create \
 
 U kunt autorisatie parameters opgeven in omgevings variabelen om te voor komen dat ze worden opgenomen in elke aanroep van een Azure Storage gegevens bewerking. De volgende tabel beschrijft de beschik bare omgevings variabelen.
 
-| Omgevingsvariabele                  | Beschrijving                                                                                                                                                                                                                                                                                                                                                                     |
+| Omgevingsvariabele                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    De naam van het opslagaccount. Deze variabele moet worden gebruikt in combi natie met de sleutel van het opslag account of een SAS-token. Als er geen van beide aanwezig is, probeert de Azure CLI de toegangs sleutel voor het opslag account op te halen met behulp van het geverifieerde Azure AD-account. Als een groot aantal opdrachten tegelijk wordt uitgevoerd, is het mogelijk dat de Azure Storage Resource provider beperkings limiet is bereikt. Zie [schaalbaarheids-en prestatie doelen voor de resource provider van Azure Storage](scalability-targets-resource-provider.md)voor meer informatie over limieten voor resource providers.             |
 |    AZURE_STORAGE_KEY                  |    De opslagaccountsleutel. Deze variabele moet worden gebruikt in combi natie met de naam van het opslag account.                                                                                                                                                                                                                                                                          |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131979"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499752"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problemen met de proces server oplossen
 
@@ -91,7 +91,7 @@ Als er geen heartbeat van de proces server is (fout code 806), doet u het volgen
 
  Initiële en doorlopende replicatie fouten worden vaak veroorzaakt door verbindings problemen tussen bron machines en de proces server, of tussen de proces server en Azure. Deze stappen worden in de volgende afbeelding samenvatten, gevolgd door procedures om u te helpen bij het uitvoeren van de stappen.
 
-![Verbindings-en replicatie problemen oplossen](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![Stroom diagram met stappen voor het oplossen van connectiviteit en replicatie.](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>Stap 4: de tijd synchronisatie op de bron computer controleren
@@ -170,7 +170,7 @@ Controleer of de proces server bezig is met het pushen van gegevens naar Azure.
   2. Selecteer het tabblad **prestaties** > **Open Broncontrole**.
   3. Op **Broncontrole** pagina selecteert u het tabblad **netwerk** . Controleer onder **processen met netwerk activiteit**of cbengine.exe actief een grote hoeveelheid gegevens verzendt.
 
-       ![Volumes onder processen met netwerk activiteit](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Scherm afbeelding van een groot aantal volumes onder processen met netwerk activiteit.](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   Als cbengine.exe geen grote hoeveelheid gegevens verstuurt, voltooit u de stappen in de volgende secties.
 
@@ -179,7 +179,7 @@ Controleer of de proces server bezig is met het pushen van gegevens naar Azure.
 1. Selecteer **cbengine.exe**in Broncontrole.
 2. Controleer onder **TCP-verbindingen**of er verbinding is tussen de proces server en de Azure-opslag.
 
-  ![Connectiviteit tussen cbengine.exe en de URL van de Azure Blob Storage](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Scherm opname van de connectiviteit tussen cbengine.exe en de URL van de Azure Blob Storage.](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Services controleren
 

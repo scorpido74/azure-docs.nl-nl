@@ -14,19 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: bd28f949d35d38c9e64af7ff4196aa1754fbc37a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 5097a5dfa6dd9b8fd46e4bcbcee72319af51f86f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172605"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499361"
 ---
-# <a name="dynamically-change-the-service-level-of-a-volume"></a>Het service niveau van een volume dynamisch wijzigen
+# <a name="dynamically-change-the-service-level-of-a-volume"></a>Het serviceniveau van een volume dynamisch wijzigen
 
 U kunt het service niveau van een bestaand volume wijzigen door het volume te verplaatsen naar een andere capaciteits groep die gebruikmaakt van het gewenste [service niveau](azure-netapp-files-service-levels.md) voor het volume. Deze in-place wijziging op service niveau voor het volume vereist niet dat u gegevens migreert. Het heeft ook geen invloed op de toegang tot het volume.  
-
-> [!IMPORTANT] 
-> Voor het gebruik van deze functie is white list vereist. E-mail anffeedback@microsoft.com met uw abonnements-id om deze functie aan te vragen.
 
 Met deze functionaliteit kunt u op aanvraag voldoen aan de behoeften van uw werk belasting.  U kunt een bestaand volume wijzigen om een hoger service niveau te gebruiken voor betere prestaties, of om een lager service niveau te gebruiken voor de kosten optimalisatie. Als het volume zich op dit moment bevindt in een capaciteits groep die gebruikmaakt van het *standaard* service niveau en u wilt dat het volume het *Premium* -service niveau gebruikt, kunt u het volume dynamisch verplaatsen naar een capaciteits groep die gebruikmaakt van het *Premium* -service niveau.  
 
@@ -39,7 +36,24 @@ De capaciteits groep waarnaar u het volume wilt verplaatsen, moet al bestaan. De
 * Als u een volume verplaatst naar een capaciteits groep van een hoger service niveau (bijvoorbeeld van *Standard* naar *Premium* of *Ultra* service niveau), moet u Mini maal zeven dagen wachten voordat u het volume opnieuw kunt verplaatsen naar een capaciteits groep van een lager service niveau (bijvoorbeeld van *Ultra* naar *Premium* of *standaard*).  
 Deze wacht tijd is niet van toepassing als u het volume verplaatst naar een capaciteits groep met hetzelfde service niveau of lager service niveau.
 
-## <a name="steps"></a>Stappen
+## <a name="register-the-feature"></a>De functie registreren
+
+1. De functie voor het verplaatsen van een volume naar een andere capaciteits groep is momenteel beschikbaar als preview-versie. Als dit de eerste keer is dat u deze functie gebruikt, moet u de functie registreren voordat u deze gebruikt: 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
+    ```
+
+2. Controleer de status van de functie registratie: 
+
+    > [!NOTE]
+    > Het **RegistrationState** kan `Registering` enkele minuten duren voordat de status wordt gewijzigd in `Registered` . Wacht totdat de status is **geregistreerd** voordat u doorgaat.
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
+    ```
+
+## <a name="move-a-volume-to-another-capacity-pool"></a>Een volume verplaatsen naar een andere capaciteits groep
 
 1.  Klik op de pagina volumes met de rechter muisknop op het volume waarvan u het service niveau wilt wijzigen. Selecteer **groep wijzigen**.
 

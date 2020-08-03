@@ -4,12 +4,12 @@ description: Beschik baarheid van reken-en geheugen resources voor de Azure Cont
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583894"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500603"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
@@ -54,9 +54,6 @@ De volgende regio's en maximum resources zijn beschikbaar voor een container gro
 ## <a name="availability---gpu-resources-preview"></a>Beschik baarheid-GPU-resources (preview-versie)
 
 De volgende regio's en maximum resources zijn beschikbaar voor een container groep die is geïmplementeerd met [GPU-bronnen](container-instances-gpu.md) (preview-versie).
-
-> [!IMPORTANT]
-> GPU-resources zijn alleen op aanvraag beschikbaar. Als u toegang tot GPU-bronnen wilt aanvragen, moet u een [ondersteunings aanvraag voor Azure][azure-support]indienen.
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

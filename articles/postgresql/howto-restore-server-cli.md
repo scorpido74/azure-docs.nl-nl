@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
-ms.openlocfilehash: 7df870d76fa62d341821cfc2d7d30b4a7694ad82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119766"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500637"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Een back-up maken en herstellen van een server in Azure Database for PostgreSQL-één server met behulp van de Azure CLI
 
@@ -71,7 +72,7 @@ Voor de `az postgres server restore` opdracht zijn de volgende para meters verei
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in de tijd waarnaar u wilt herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals `2018-03-13T05:59:00-08:00` . U kunt ook de notatie UTC-Zulu gebruiken, bijvoorbeeld `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
 
@@ -111,7 +112,7 @@ Voor de `az postgres server georestore` opdracht zijn de volgende para meters ve
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | De naam van de resource groep waar de nieuwe server deel van uitmaakt.|
-|naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |source-server | mydemoserver | De naam van de bestaande server waarvoor geo redundante back-ups worden gebruikt. |
 |location | eastus | De locatie van de nieuwe server. |
 |sku-name| GP_Gen4_8 | Met deze para meter worden de prijs categorie, generatie van Compute en het aantal vCores van de nieuwe server ingesteld. GP_Gen4_8 is toegewezen aan een Algemeen, gen 4 server met 8 vCores.|

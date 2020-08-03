@@ -4,12 +4,12 @@ description: Azure Service Fabric betrouw bare status Manager en betrouw bare in
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245106"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500279"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Trans acties en vergrendelings modi in azure Service Fabric reliable-verzamelingen
 
@@ -77,7 +77,7 @@ De vergrendelings compatibiliteits matrix vindt u in de volgende tabel:
 Het time-outargument in reliable Collection-Api's wordt gebruikt voor het detecteren van deadlocks.
 Bijvoorbeeld, twee trans acties (T1 en T2) proberen K1 te lezen en bij te werken.
 Het is mogelijk om deadlock, omdat deze beide uiteindelijk de gedeelde vergren deling hebben.
-In dit geval is er een time-out opgestaan voor een of beide bewerkingen. Ik heb dit scenario, een update vergrendeling kan een dergelijke deadlock verhinderen.
+In dit geval is er een time-out opgestaan voor een of beide bewerkingen. In dit scenario kan een dergelijke deadlock worden voor komen door een update vergrendeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,13 @@ title: Een event hub maken met Capture ingeschakeld - Azure Event Hubs | Microso
 description: Een Azure Event Hubs-naamruimte met een gebeurtenishub maken en Capture inschakelen met behulp van een Azure Resource Manager-sjabloon
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7d8c8913cfe674c04f90fe02b88fc9739b2404aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087591"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499463"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
 

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024014"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500143"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ De vCore-gebaseerde service lagen worden gedifferentieerd op basis van de beschi
 |  **Resourcetype** ||Door SQL Database/SQL beheerd exemplaar | Individuele database | Door SQL Database/SQL beheerd exemplaar |
 | **Reken grootte**|SQL Database * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
 | **Reken grootte**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 8, 16, 24, 32, 40, 64, 80 vCores |
-| **Opslag type** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
+| **Opslagtype** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Opslag grootte** | SQL Database *| 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
 | **Opslag grootte** | SQL Managed Instance  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
 | **IOPS** | Individuele database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
@@ -331,7 +331,7 @@ Voor de meeste prestatie problemen, met name de functies die niet zijn geroot ti
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>Hoe lang duurt het om een berekenings replica omhoog en omlaag te schalen
 
-Het schalen van de reken kracht naar boven of beneden duurt 5-10 minuten, ongeacht de grootte van de gegevens.
+Het schalen van de reken capaciteit duurt meestal Maxi maal 2 minuten, ongeacht de grootte van de gegevens.
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>Is mijn data base offline terwijl de bewerking omhoog/omlaag schalen wordt uitgevoerd
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367565"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498086"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Wat is een logische SQL-Server in Azure SQL Database en Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ Een server in SQL Database en Azure Synapse:
 - Is de bovenliggende resource voor databases, elastische groepen en datawarehouses
 - Voorziet in een naam ruimte voor data bases, elastische groepen en Data Warehouse-data bases
 - Is een logische container met een sterke levens duur semantiek: een server verwijderen en de data bases, elastische groepen en SQK-groepen worden verwijderd
-- Maakt deel uit van [Azure op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview) : data bases, elastische groepen en Data Warehouse-data bases binnen een server nemen toegangs rechten van de server over
+- Maakt deel uit van op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](/azure/role-based-access-control/overview) -data bases, elastische groepen en Data Warehouse-data bases binnen een server neemt de toegangs rechten van de server over
 - Is een hoog element van de identiteit van de data bases, elastische Pools en Data Warehouse-data bases voor Azure Resource Management (Zie het URL-schema voor data bases en Pools)
 - Groepeert resources in een regio
 - Biedt een verbindingseindpunt voor databasetoegang (`<serverName>`.database.windows.net)
@@ -87,7 +87,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 
 Als u servers, data bases en firewalls met Azure PowerShell wilt maken en beheren, gebruikt u de volgende Power shell-cmdlets. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Hiermee maakt u een Data Base |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Hiermee worden een of meer data bases opgehaald|
@@ -112,7 +112,7 @@ Als u servers, data bases en firewalls met Azure PowerShell wilt maken en behere
 
 Als u servers, data bases en firewalls wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Hiermee maakt u een Data Base|
 |[AZ SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Een lijst met alle data bases die worden beheerd door een server of alle data bases in een elastische pool|

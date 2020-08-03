@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528397"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498596"
 ---
 # <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
 
@@ -176,7 +177,7 @@ BLOB-versie beheer is ontworpen om uw gegevens te beschermen tegen onbedoeld of 
 
 In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwijderen van een BLOB of een BLOB-versie.
 
-| Beschrijving | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
+| Description | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | De huidige versie van de BLOB verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage BLOB-gegevens |
 | Een versie verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van gegevens van opslag-BLOB |
@@ -195,8 +196,8 @@ De volgende tabel bevat de vereiste machtiging voor een SAS om een BLOB-versie t
 
 BLOB-versie beheer is beschikbaar als preview in de volgende regio's:
 
-- US - oost 2
-- US - centraal
+- VS - oost 2
+- Central US
 - Europa - noord
 - Europa - west
 - Frankrijk - centraal
@@ -236,7 +237,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -260,7 +261,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 
@@ -317,7 +318,7 @@ In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oor
 
 ![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Blobversiebeheer inschakelen](versioning-enable.md)
 - [Een moment opname van een BLOB maken](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848360"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501011"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Een toepassing beheerderstoestemming verlenen voor de hele tenant
 
@@ -31,9 +31,16 @@ Voor het verlenen van toestemming voor de beheerder van de Tenant moet u zich aa
 
 > [!IMPORTANT]
 > Wanneer een toepassing toestemming heeft gekregen voor Tenant beheer, kunnen alle gebruikers zich aanmelden bij de app, tenzij deze is geconfigureerd voor het vereisen van een gebruikers toewijzing. Als u wilt beperken welke gebruikers zich kunnen aanmelden bij een toepassing, moet u de gebruikers toewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing. Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
+>
+> De rol van globale beheerder is vereist om toestemming van de beheerder te bieden voor de Microsoft Graph-API.
+>
+
 
 > [!WARNING]
 > Voor het verlenen van een door de Tenant verleende beheerder toestemming voor een toepassing wordt de app en de uitgever van de app toegang verleend tot de gegevens van uw organisatie. Controleer zorgvuldig de machtigingen die de toepassing aanvraagt voordat u toestemming verleent.
+>
+> De rol van globale beheerder is vereist om toestemming van de beheerder te bieden voor de Microsoft Graph-API.
+>
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Beheerder toestemming geven van de Azure Portal
 

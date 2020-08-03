@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955060"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495689"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
@@ -36,11 +36,11 @@ De meeste standaard weergave vereisten zijn nog steeds van toepassing op een ger
 |Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
 |Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
-|Snelheid om weergave gegevens op te halen uit complexe query's     | Trage                                         | Hoog  
+|Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
 |Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
-## <a name="benefits-of-using-materialized-views"></a>Voor delen van het gebruik van gerealiseerde weer gaven
+## <a name="benefits-of-materialized-views"></a>Voor delen van gerealiseerde weer gaven
 
 Een goed ontworpen gerealiseerde weer gave biedt de volgende voor delen:
 

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78933749"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496437"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>De StorSimple Data Manager-service beheren in Azure Portal
 
@@ -42,19 +42,19 @@ Voer de volgende stappen uit om een StorSimple Data Manager-service te maken.
 
    2. Kies een **abonnement** in de vervolg keuzelijst. Het abonnement is gekoppeld aan uw factureringsrekening. Dit veld wordt automatisch ingevuld (en kan niet worden geselecteerd) als u slechts één abonnement hebt.
 
-   3. Selecteer een bestaande resource groep of maak een nieuwe groep. Zie [Azure-resourcegroepen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/) voor meer informatie.
+   3. Selecteer een bestaande resource groep of maak een nieuwe groep. Zie [Azure-resourcegroepen](/azure/azure-resource-manager/management/manage-resource-groups-portal) voor meer informatie.
 
    4. Geef de **locatie** voor uw service op die uw opslag accounts en uw StorSimple Data Manager-service inneemt. Uw StorSimple-Apparaatbeheer service, Data Manager-service en het bijbehorende opslag account moeten allemaal in de ondersteunde regio's staan.
     
    5. Als u een koppeling naar deze service op uw dash board wilt ontvangen, selecteert **u vastmaken aan dash board**.
     
-   6. Klik op **Create**.
+   6. Klik op **Maken**.
 
       ![Een StorSimple Data Manager-service maken 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
 Het maken van de service duurt enkele minuten. U ziet een melding nadat de service is gemaakt en de nieuwe service wordt weer gegeven.
 
-### <a name="create-a-data-transformation-job-definition"></a>Een definitie voor een gegevens transformatie taak maken
+### <a name="create-a-data-transformation-job-definition"></a>Een definitie van een taak voor gegevenstransformatie maken
 
 Binnen een StorSimple Data Manager-service moet u een definitie van een gegevens transformatie taak maken. Een taak definitie bevat details van de StorSimple-gegevens die u wilt verplaatsen naar een opslag account in de oorspronkelijke indeling. Als u een taak definitie hebt gemaakt, kunt u deze taak opnieuw uitvoeren met verschillende runtime-instellingen.
 
@@ -131,7 +131,7 @@ Voer de volgende stappen uit om een taak definitie te maken.
 
     De zojuist gemaakte taak definitie wordt toegevoegd aan de lijst met taak definities voor deze service.
 
-### <a name="run-the-job-definition"></a>De taak definitie uitvoeren
+### <a name="run-the-job-definition"></a>De taakdefinitie uitvoeren
 
 Wanneer u gegevens moet verplaatsen van StorSimple naar het opslag account dat u in de taak definitie hebt opgegeven, moet u het uitvoeren. Tijdens runtime kunnen sommige para meters anders worden opgegeven. De stappen zijn als volgt:
 

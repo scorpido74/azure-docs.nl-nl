@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2a534bd0cb89e837ff2315cb3fb9cfe70ad01f5f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497644"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -36,12 +36,12 @@ Als u een HDInsight-cluster wilt maken dat gebruikmaakt van Data Lake Storage Ge
 
 Maak een door de gebruiker toegewezen beheerde identiteit als u deze nog niet hebt.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ door de **gebruiker toegewezen** in het zoekvak en klik op door de **gebruiker toegewezen beheerde identiteit**.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Voer een naam in voor uw beheerde identiteit, selecteer het juiste abonnement, de resource groep en de locatie.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)voor meer informatie over de werking van beheerde identiteiten in azure hdinsight.
 
@@ -51,17 +51,17 @@ Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)v
 
 Een Azure Data Lake Storage Gen2-opslagaccount maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ **opslag** in het zoekvak en klik op **opslag account**.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. In het scherm **opslag account maken** :
     1. Selecteer de juiste abonnement en resource groep.
     1. Voer een naam in voor uw Data Lake Storage Gen2-account.
     1. Klik op het tabblad **Geavanceerd** .
     1. Klik op **ingeschakeld** naast **hiërarchische naam ruimte** onder **Data Lake Storage Gen2**.
     1. Klik op **Controleren + maken**.
-    1. Klik op **Maken**.
+    1. Klik op **Maken**
 
 Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](../storage/blobs/data-lake-storage-quickstart-create-account.md)voor meer informatie over andere opties tijdens het maken van een opslag account.
 
@@ -72,7 +72,7 @@ Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](../sto
 Wijs de beheerde identiteit toe aan de rol van de eigenaar van de **opslag-BLOB** voor het opslag account.
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw opslag account.
-1. Selecteer uw opslag account en selecteer vervolgens **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het account weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
+1. Selecteer uw opslag account en selecteer vervolgens **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het account weer te geven. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien.
 
     ![Scherm opname van instellingen voor opslag toegangs beheer](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
@@ -159,7 +159,7 @@ Data Lake Storage Gen2 maakt gebruik van een model voor toegangs beheer dat zowe
 
 RBAC gebruikt roltoewijzingen voor het effectief Toep assen van machtigingen sets voor gebruikers, groepen en service-principals voor Azure-resources. Normaal gesp roken zijn deze Azure-resources beperkt tot resources op het hoogste niveau (bijvoorbeeld Azure Storage-accounts). Voor Azure Storage en ook Data Lake Storage Gen2 is dit mechanisme uitgebreid naar de bestands systeem bron.
 
- Zie [Azure Role-based Access Control (RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)voor meer informatie over bestands machtigingen met RBAC.
+ Zie voor meer informatie over bestands machtigingen met RBAC [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
 
 Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)voor meer informatie over bestands machtigingen met acl's.
 

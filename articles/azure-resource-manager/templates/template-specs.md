@@ -2,28 +2,34 @@
 title: Overzicht van sjabloon specificaties
 description: Hierin wordt beschreven hoe u sjabloon specificaties maakt en deze deelt met andere gebruikers in uw organisatie.
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096678"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497797"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sjabloon specificaties (preview-versie)
 
-Een sjabloon specificatie is een nieuw resource type voor het opslaan van een Azure Resource Manager sjabloon (ARM-sjabloon) in azure voor latere implementatie. Met dit resource type kunt u ARM-Sjablonen delen met andere gebruikers in uw organisatie. Net als elke andere Azure-resource kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om de sjabloon specificatie te delen. gebruikers hebben alleen lees toegang tot de sjabloon specificatie nodig om de sjabloon te implementeren, zodat u de sjabloon kunt delen zonder dat anderen deze kunnen wijzigen.
+Een sjabloon specificatie is een nieuw resource type voor het opslaan van een Azure Resource Manager sjabloon (ARM-sjabloon) in azure voor latere implementatie. Met dit resource type kunt u ARM-Sjablonen delen met andere gebruikers in uw organisatie. Net als elke andere Azure-resource kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om de sjabloon specificatie te delen.
 
 **Micro soft. resources/templateSpecs** is het nieuwe bron type voor sjabloon specificaties. Het bestaat uit een hoofd sjabloon en een wille keurig aantal gekoppelde sjablonen. De sjabloon specificaties van Azure worden veilig opgeslagen in resource groepen. Sjabloon specificaties ondersteunen [versie beheer](#versioning).
 
 Als u de sjabloon specificatie wilt implementeren, gebruikt u standaard Azure-hulpprogram ma's zoals Power shell, Azure CLI, Azure Portal, REST en andere ondersteunde Sdk's en clients. U gebruikt dezelfde opdrachten en geeft dezelfde para meters voor de sjabloon door.
 
-Het voor deel van het gebruik van sjabloon specificaties is dat teams in uw organisatie geen sjablonen hoeven te maken of te kopiëren voor algemene scenario's. U maakt canonieke sjablonen en deelt deze. De sjablonen die u in een sjabloon specificatie opneemt, moeten worden geverifieerd door beheerders in uw organisatie om de vereisten en richt lijnen van de organisatie te volgen.
-
 > [!NOTE]
 > De sjabloon specificaties zijn momenteel beschikbaar als preview-versie. Als u deze wilt gebruiken, moet u [zich aanmelden voor de wacht lijst](https://aka.ms/templateSpecOnboarding).
+
+## <a name="why-use-template-specs"></a>Waarom sjabloon specificaties gebruiken?
+
+Als u uw sjablonen momenteel in een GitHub-opslag plaats of-opslag account hebt, kunt u een aantal uitdagingen uitvoeren wanneer u de sjablonen probeert te delen en gebruiken. Een gebruiker kan deze alleen implementeren als de sjabloon lokaal of de URL voor de sjabloon openbaar toegankelijk is. Om deze beperking te omzeilen, kunt u kopieën van de sjabloon delen met gebruikers die deze moeten implementeren, of toegang tot de opslag plaats of het opslag account openen. Wanneer gebruikers een eigen lokale kopie van een sjabloon hebben, kunnen deze kopieën uiteindelijk afwijken van de oorspronkelijke sjabloon. Wanneer u een opslag plaats-of opslag account openbaar maakt, kunt u onbedoelde gebruikers toegang geven tot de sjabloon.
+
+Het voor deel van het gebruik van sjabloon specificaties is dat u canonieke sjablonen kunt maken en delen met teams in uw organisatie. De sjabloon specificaties zijn veilig omdat ze beschikbaar zijn voor Azure Resource Manager voor implementatie, maar niet toegankelijk zijn voor gebruikers zonder RBAC-machtiging. Gebruikers hebben alleen lees toegang tot de sjabloon specificatie nodig om de sjabloon te implementeren, zodat u de sjabloon kunt delen zonder dat anderen deze kunnen wijzigen.
+
+De sjablonen die u in een sjabloon specificatie opneemt, moeten worden geverifieerd door beheerders in uw organisatie om de vereisten en richt lijnen van de organisatie te volgen.
 
 ## <a name="create-template-spec"></a>Sjabloon specificatie maken
 

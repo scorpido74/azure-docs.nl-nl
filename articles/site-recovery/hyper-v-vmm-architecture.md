@@ -7,17 +7,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133897"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495995"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architectuur-Hyper-V-replicatie naar een secundaire site
 
 In dit artikel worden de onderdelen en processen beschreven die zijn betrokken bij het repliceren van on-premises Hyper-V-VM's (virtuele machines) in System Center VMM-clouds (Virtual Machine Manager) naar een secundaire VMM-site met behulp van de [Azure Site Recovery](site-recovery-overview.md)-service in Azure Portal.
-a
+een
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 
@@ -32,7 +32,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 **On-premises naar on-premises architectuur**
 
-![On-premises naar on-premises](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![Diagram van on-premises naar on-premises beveiliging.](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>Replicatieproces
 

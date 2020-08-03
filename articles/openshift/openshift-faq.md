@@ -5,13 +5,13 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219225"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497576"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat open Shift
 
@@ -235,3 +235,7 @@ Voor 3,11-clusters worden gegevens niet versleuteld op het niveau van de etcd. D
 Voor 4. x-clusters wordt Azure-schijf (Premium_LRS) geconfigureerd als de standaard-opslag klasse. Zie de documentatie van Red Hat over [permanente opslag](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)voor extra opslag providers en voor meer informatie over de configuratie (inclusief Azure file).
 
 Voor 3,11 clusters worden standaard twee opslag klassen gegeven: één voor Azure-schijf (Premium_LRS) en één voor Azure-bestand.
+
+## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>Slaat ARO klant gegevens buiten de regio van het cluster op?
+
+Nee. Alle gegevens die in een ARO-cluster zijn gemaakt, worden in de regio van het cluster bewaard.

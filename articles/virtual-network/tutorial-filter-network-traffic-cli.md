@@ -16,13 +16,13 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9af6311165f50023cfca8f9253f77b4c84c25dd5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688256"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500926"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure CLI
 
@@ -119,7 +119,7 @@ In dit artikel wordt SSH (poort 22) blootgesteld aan Internet voor de *myAsgMgmt
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt:
+Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 Maak twee virtuele machines in het virtuele netwerk, zodat u het filteren van verkeer in een latere stap kunt controleren. 
 
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine gemaakt die als een webserver fungeert. De `--asgs myAsgWebServers` optie zorgt ervoor dat Azure de netwerk interface maakt die wordt gemaakt voor de virtuele machine lid is van de *myAsgWebServers* -toepassings beveiligings groep.
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine gemaakt die als een webserver fungeert. De `--asgs myAsgWebServers` optie zorgt ervoor dat Azure de netwerk interface maakt die wordt gemaakt voor de virtuele machine lid is van de *myAsgWebServers* -toepassings beveiligings groep.
 
 De `--nsg ""` optie is opgegeven om te voor komen dat Azure een standaard netwerk beveiligings groep maakt voor de netwerk interface die Azure maakt wanneer de virtuele machine wordt gemaakt. Er wordt een wacht woord gebruikt om dit artikel te stroom lijnen. Sleutels worden doorgaans gebruikt in productie-implementaties. Als u sleutels gebruikt, moet u ook het door sturen van SSH-agents configureren voor de resterende stappen. Zie de documentatie voor uw SSH-client voor meer informatie. Vervang `<replace-with-your-password>` in de volgende opdracht door een wacht woord van uw keuze.
 
