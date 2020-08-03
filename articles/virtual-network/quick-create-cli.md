@@ -1,7 +1,7 @@
 ---
 title: 'Een virtueel netwerk maken: quickstart - Azure CLI'
 titlesuffix: Azure Virtual Network
-description: In deze snelstart leert u hoe u een virtueel netwerk maakt met Azure CLI. Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, privé met elkaar en met internet communiceren.
+description: In deze quickstart leert u hoe u een virtueel netwerk maakt met Azure CLI. Met een virtueel netwerk kunnen Azure-resources met elkaar en met internet communiceren.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ed535c76ae3c456c8aa7d2e14301b9cb9cb288be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283177"
 ---
-# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Snelstart: een virtueel netwerk maken met Azure Portal
+# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Quickstart: Een virtueel netwerk maken met Azure CLI
 
 Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, privé met elkaar en met internet communiceren. In deze snelstart leert u hoe u een virtueel netwerk maakt. Nadat u een virtueel netwerk hebt gemaakt, implementeert u twee virtuele machines in het virtuele netwerk. Vervolgens maakt u verbinding met de virtuele machines via internet en is er privécommunicatie via het nieuwe virtuele netwerk mogelijk.
 
@@ -104,7 +104,7 @@ Vervang in deze opdracht `<publicIpAddress>` door het openbare IP-adres van de V
 ssh <publicIpAddress>
 ```
 
-## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
+## <a name="communicate-between-vms"></a>Communiceren tussen VM's
 
 Voer de volgende opdracht in om privécommunicatie tussen de virtuele machines *myVm2* en *myVm1* te bevestigen:
 

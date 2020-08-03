@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052455"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Quickstart: Een Synapse-werkruimte maken
 
@@ -56,7 +56,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
     > [!IMPORTANT]
     > De Azure Synapse-werkruimte moet kunnen lezen uit en schrijven naar het geselecteerde ADLS Gen2-account. Daarnaast moet u voor elk opslagaccount dat u als primair opslagaccount koppelt **hiërarchische naamruimte** hebben ingeschakeld bij het maken van het opslagaccount.
     >
-    > Onder de ADLS Gen2-selectievelden ziet u een opmerking waarin wordt vermeld dat aan de beheerde identiteit van de werkruimte de rol **Storaqe Blob Data Contributor** voor het geselecteerde Data Lake Storage Gen2-bestandssysteem wordt toegewezen, zodat deze volledige toegang heeft.
+    > Onder de ADLS Gen2-selectievelden ziet u een opmerking waarin wordt vermeld dat aan de beheerde identiteit van de werkruimte de rol **Storage Blob Data Contributor** voor het geselecteerde Data Lake Storage Gen2-bestandssysteem wordt toegewezen, zodat deze volledige toegang heeft.
 
 4. (Optioneel) Wijzig de standaardinstellingen op het tabblad **Beveiliging en netwerken**:
 5. (Optioneel) Voeg labels toe op het tabblad **Tags**.

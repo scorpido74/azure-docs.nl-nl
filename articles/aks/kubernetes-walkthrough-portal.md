@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 4ed4f69ea3c994d9d1cc71e26e35b8d2b6021982
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0ce291a068a9dbb8f24a5e0a26fbae39cfc3a161
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056915"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Quickstart: Een AKS-cluster (Azure Kubernetes Service) implementeren met Azure Portal
 
@@ -95,7 +95,7 @@ In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster ged
 > [!TIP]
 > In deze snelstart maakt en implementeert u handmatig uw toepassingsmanifesten in het AKS-cluster. In meer praktijkgerichte scenario’s kunt u [Azure Dev Spaces][azure-dev-spaces] gebruiken om uw code snel te herhalen en fouten op te sporen, rechtstreeks in het AKS-cluster. U kunt Dev Spaces gebruiken op alle OS-platformen en in alle ontwikkelomgevingen, en u kunt samenwerken met andere leden van uw team.
 
-In de Cloud Shell gebruikt u de opdracht `nano azure-vote.yaml` of `vi azure-vote.yaml` om een bestand met de naam `azure-vote.yaml` te maken. Kopieer de volgende YAML-definitie naar het bestand:
+In de Cloud Shell gebruikt u een editor om een bestand met de naam `azure-vote.yaml` te maken, zoals `code azure-vote.yaml`, `nano azure-vote.yaml` of `vi azure-vote.yaml`. Kopieer de volgende YAML-definitie naar het bestand:
 
 ```yaml
 apiVersion: apps/v1

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033639"
 ---
 # <a name="durable-orchestrations"></a>Duurzame indelingen
 
@@ -41,9 +41,9 @@ De instantie-id van een indeling is een vereiste parameter voor de meeste [behee
 
 ## <a name="reliability"></a>Betrouwbaarheid
 
-Orchestratorfuncties behouden op betrouwbare wijze de status van de uitvoering door gebruik te maken van een ontwerppatroon in de vorm van [gebeurtenisbronnen](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). In plaats van de huidige status van een indeling rechtstreeks op te slaan, gebruikt het duurzame taakframework een archief waaraan alleen iets kan worden toegevoegd (alleen-toevoegenarchief) om de volledige reeks acties vast te leggen die door de functie-indeling wordt uitgevoerd. Een alleen-toevoegenarchief heeft veel voordelen ten opzichte van het 'dumpen' van de volledige status tijdens runtime. Voordelen zijn onder andere betere prestaties, schaalbaarheid en reactiesnelheid. U krijgt ook consistentie van gebeurtenissen voor transactionele gegevens en volledige audittrails en een volledige geschiedenis. Betrouwbare compenserende acties worden door de audittrails ondersteund.
+Orchestratorfuncties behouden op betrouwbare wijze de status van de uitvoering door gebruik te maken van een ontwerppatroon in de vorm van [gebeurtenisbronnen](/azure/architecture/patterns/event-sourcing). In plaats van de huidige status van een indeling rechtstreeks op te slaan, gebruikt het duurzame taakframework een archief waaraan alleen iets kan worden toegevoegd (alleen-toevoegenarchief) om de volledige reeks acties vast te leggen die door de functie-indeling wordt uitgevoerd. Een alleen-toevoegenarchief heeft veel voordelen ten opzichte van het 'dumpen' van de volledige status tijdens runtime. Voordelen zijn onder andere betere prestaties, schaalbaarheid en reactiesnelheid. U krijgt ook consistentie van gebeurtenissen voor transactionele gegevens en volledige audittrails en een volledige geschiedenis. Betrouwbare compenserende acties worden door de audittrails ondersteund.
 
-Durable Functions maakt op transparante wijze gebruik van gebeurtenisbronnen. Op de achtergrond geeft de operator `await` (C# ) of `yield` (JavaScript) in een orchestratorfunctie de controle over de orchestrator-thread terug aan de dispatcher van het duurzame taakframework. De dispatcher voert vervolgens nieuwe acties door die de orchestratorfunctie voor opslag heeft gepland (zoals het aanroepen van een of meer onderliggende functies of het plannen van een duurzame timer). De transparante doorvoeractie wordt toegevoegd aan de uitvoeringsgeschiedenis van de indelingsinstantie. De geschiedenis wordt opgeslagen in een opslagtabel. Met de doorvoeractie worden vervolgens berichten toegevoegd aan een wachtrij om het feitelijke werk te plannen. Op dit moment kan de orchestratorfunctie uit het geheugen worden verwijderd.
+Durable Functions maakt op transparante wijze gebruik van gebeurtenisbronnen. Op de achtergrond geeft de operator `await` (C#) of `yield` (JavaScript/Python) in een orchestratorfunctie de controle over de orchestrator-thread terug aan de dispatcher van het duurzame taakframework. De dispatcher voert vervolgens nieuwe acties door die de orchestratorfunctie voor opslag heeft gepland (zoals het aanroepen van een of meer onderliggende functies of het plannen van een duurzame timer). De transparante doorvoeractie wordt toegevoegd aan de uitvoeringsgeschiedenis van de indelingsinstantie. De geschiedenis wordt opgeslagen in een opslagtabel. Met de doorvoeractie worden vervolgens berichten toegevoegd aan een wachtrij om het feitelijke werk te plannen. Op dit moment kan de orchestratorfunctie uit het geheugen worden verwijderd.
 
 Wanneer een indelingsfunctie meer werk heeft gekregen (bijvoorbeeld wanneer er een antwoordbericht wordt ontvangen of er een duurzame timer verloopt), wordt de volledige functie door de orchestrator geactiveerd en vanaf het begin opnieuw uitgevoerd om de lokale status opnieuw op te bouwen. Als de code tijdens het opnieuw afspelen een functie wil aanroepen (of andere asynchrone werkzaamheden wil uitvoeren), wordt de uitvoeringsgeschiedenis van de huidige indeling door het duurzame taakframework geraadpleegd. Als wordt vastgesteld dat de [activiteitsfunctie](durable-functions-types-features-overview.md#activity-functions) al is uitgevoerd en een resultaat heeft opgeleverd, wordt het resultaat van die functie opnieuw afgespeeld en blijft de orchestratorcode actief. Het opnieuw afspelen gaat door totdat de functiecode wordt voltooid of totdat er nieuw asynchroon werk is gepland.
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-Bij elke `await`- of `yield`-instructie (respectievelijk in C# of JavaScript) worden door het duurzame taakframework controlepunten vastgelegd voor de uitvoeringsstatus van de functie in een duurzame opslagback-end (doorgaans Azure Table Storage). Deze status wordt de *indelingsgeschiedenis* genoemd.
+Bij elke `await`- of `yield`-instructie (respectievelijk in C# of JavaScript/Python) worden door het duurzame taakframework controlepunten vastgelegd voor de uitvoeringsstatus van de functie in een duurzame opslagback-end (doorgaans Azure Table Storage). Deze status wordt de *indelingsgeschiedenis* genoemd.
 
 ### <a name="history-table"></a>Geschiedenistabel
 
@@ -133,7 +147,7 @@ Enkele opmerkingen over de kolomwaarden:
 
 * **PartitionKey**: Bevat de instantie-id van de indeling.
 * **EventType**: Vertegenwoordigt het type gebeurtenis. Dit kan een van de volgende typen zijn:
-  * **OrchestrationStarted**: De orchestratorfunctie wordt hervat vanuit een wachttoestand of wordt voor de eerste keer uitgevoerd. Kolom `Timestamp` wordt gebruikt om de deterministische waarde voor de API's `CurrentUtcDateTime` (.NET) en `currentUtcDateTime` (JavaScript) in te vullen.
+  * **OrchestrationStarted**: De orchestratorfunctie wordt hervat vanuit een wachttoestand of wordt voor de eerste keer uitgevoerd. Kolom `Timestamp` wordt gebruikt om de deterministische waarde voor de API's `CurrentUtcDateTime` (.NET), `currentUtcDateTime` (JavaScript) en `current_utc_datetime` (Python) in te vullen.
   * **ExecutionStarted**: De orchestratorfunctie is voor de eerste keer gestart. Deze gebeurtenis bevat ook de functie-invoer in kolom `Input`.
   * **TaskScheduled**: Er is een activiteitsfunctie gepland. De naam van de activiteitsfunctie wordt vastgelegd in kolom `Name`.
   * **TaskCompleted**: Een voltooide activiteitsfunctie. Het resultaat van de functie bevindt zich in kolom `Result`.
@@ -151,7 +165,7 @@ Enkele opmerkingen over de kolomwaarden:
 > [!WARNING]
 > Hoewel deze tabel als een hulpprogramma voor foutopsporing kan worden gebruikt, moet u er niet afhankelijk van worden. De tabel kan veranderen naarmate de Durable Functions-uitbreiding zich ontwikkelt.
 
-Telkens wanneer de functie wordt hervat vanuit een `await` (C# ) of `yield` (JavaScript), voert het duurzame taakframework de orchestratorfunctie opnieuw uit. Bij elke herhaling wordt de uitvoeringsgeschiedenis geraadpleegd om te bepalen of de huidige asynchrone bewerking is uitgevoerd.  Als de bewerking is uitgevoerd, speelt het framework de uitvoer van die bewerking direct opnieuw af en gaat over naar de volgende `await` (C# ) of `yield` (JavaScript). Dit proces gaat door totdat de volledige geschiedenis opnieuw is afgespeeld. Zodra de huidige geschiedenis opnieuw is afgespeeld, zijn de lokale variabelen hersteld naar de vorige waarden.
+Telkens wanneer de functie wordt hervat vanuit een `await` (C#) of `yield` (JavaScript/Python), voert het duurzame taakframework de orchestratorfunctie opnieuw uit. Bij elke herhaling wordt de uitvoeringsgeschiedenis geraadpleegd om te bepalen of de huidige asynchrone bewerking is uitgevoerd.  Als de bewerking is uitgevoerd, speelt het framework de uitvoer van die bewerking direct opnieuw af en gaat over naar de volgende `await` (C#) of `yield` (JavaScript/Python). Dit proces gaat door totdat de volledige geschiedenis opnieuw is afgespeeld. Zodra de huidige geschiedenis opnieuw is afgespeeld, zijn de lokale variabelen hersteld naar de vorige waarden.
 
 ## <a name="features-and-patterns"></a>Functies en patronen
 
@@ -165,7 +179,7 @@ Zie het artikel [Subindelingen](durable-functions-sub-orchestrations.md) voor me
 
 ### <a name="durable-timers"></a>Duurzame timers
 
-Indelingen kunnen *duurzame timers* plannen voor het implementeren van vertragingen of het instellen van time-outverwerking voor asynchrone acties. Gebruik duurzame timers in orchestratorfuncties in plaats van `Thread.Sleep` en `Task.Delay` (C# ) of `setTimeout()` en `setInterval()` (JavaScript).
+Indelingen kunnen *duurzame timers* plannen voor het implementeren van vertragingen of het instellen van time-outverwerking voor asynchrone acties. Gebruik duurzame timers in orchestratorfuncties in plaats van `Thread.Sleep` en `Task.Delay` (C#), `setTimeout()` en `setInterval()` (JavaScript) of `time.sleep()` (Python).
 
 Zie het artikel [Duurzame timers](durable-functions-timers.md) voor meer informatie en voorbeelden.
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 Naast het ondersteunen van elementaire voor aanvraag-/antwoordpatronen ondersteunt de methode automatische verwerking van veelvoorkomende asynchrone HTTP 202-navraagpatronen en ondersteunt het tevens verificatie met externe services met behulp van [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -267,7 +293,7 @@ Het is niet mogelijk om rechtstreeks meerdere parameters aan een activiteitsfunc
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-In .NET kunt u ook [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples)-objecten gebruiken. In het volgende voorbeeld worden nieuwe functies van [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) toegevoegd met [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+In .NET kunt u ook [ValueTuples](/dotnet/csharp/tuples)-objecten gebruiken. In het volgende voorbeeld worden nieuwe functies van [ValueTuples](/dotnet/csharp/tuples) toegevoegd met [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>Activiteit
+#### <a name="getweather-activity"></a>`GetWeather`-activiteit
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather`-activiteit
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

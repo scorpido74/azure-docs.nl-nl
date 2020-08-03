@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en Java-Bing Video Search"
+title: 'Quickstart: Video’s zoeken met de REST API en Java - Bing Video’s zoeken'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden via Java.
 services: cognitive-services
@@ -9,17 +9,18 @@ ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 0728aa84447573bd8d335daf84c01138c627ecb5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: b03dd9140ef49d34ba0303742aa4961a9f313cc9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848655"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323363"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en Java
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Quickstart: Video's zoeken met de Bing Video's zoeken-REST API en Java
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige Java-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige Java-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. 
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) met extra foutafhandeling, functies en codeaantekeningen.
 
@@ -61,7 +62,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     }
     ```
 
-3. Maak een nieuwe methode `SearchVideos()` met de naam met variabelen voor uw API-eindpunt-host en-pad, uw abonnements sleutel en zoek term. Deze methode retourneert een- `SearchResults` object. Voor de `host` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+3. Maak een nieuwe methode met de naam `SearchVideos()` met variabelen voor de API-eindpunt-host en het pad, uw abonnementssleutel en een zoekterm. Deze methode retourneert een `SearchResults`-object. Voor de `host`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in de Azure-portal.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -74,9 +75,9 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="construct-and-send-the-search-request"></a>De zoekaanvraag samenstellen en verzenden
 
-`SearchVideos()`Voer de volgende stappen uit in de-methode:
+Voer in de `SearchVideos()`-methode de volgende stappen uit:
 
-1. Maak de URL voor uw aanvraag door uw API-host, pad en gecodeerde Zoek query te combi neren. Gebruik `openConnection()` om een verbinding te maken en voeg vervolgens uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
+1. Construeer de URL voor uw aanvraag door de API-host, het pad en de gecodeerde zoekquery te combineren. Gebruik `openConnection()` om een verbinding te maken en voeg vervolgens uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
      ```java
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
@@ -91,7 +92,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
      String response = new Scanner(stream).useDelimiter("\\A").next();
      ```
 
- 3. Gebruik `getHeaderFields()` om de HTTP-headers uit het antwoord te extraheren en sla degene die met Bing zijn gerelateerd in het `results`-object op. Sluit vervolgens de stroom en retour neer het resultaat.
+ 3. Gebruik `getHeaderFields()` om de HTTP-headers uit het antwoord te extraheren en sla degene die met Bing zijn gerelateerd in het `results`-object op. Sluit de stream en retourneer het resultaat.
 
      ```java
      // extract Bing-related HTTP headers
@@ -108,7 +109,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="format-the-response"></a>Het antwoord opmaken
 
-Maak een methode met de naam `prettify()` om het antwoord op te maken dat vanuit de Bing Video-API is geretourneerd. Gebruik de bibliotheek van de Gson `JsonParser` om een JSON-teken reeks te converteren naar een-object. Gebruik vervolgens `GsonBuilder()` en `toJson()` om de opgemaakte teken reeks te maken.
+Maak een methode met de naam `prettify()` om het antwoord op te maken dat vanuit de Bing Video-API is geretourneerd. Gebruik de `JsonParser` van de Gson-bibliotheek om een JSON-tekenreeks om te zetten in een object. Gebruik vervolgens `GsonBuilder()` en `toJson()` om de opgemaakte tekenreeks te maken.
 
 ```java
 // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -122,7 +123,7 @@ public static String prettify(String json_text) {
 
 ## <a name="send-the-request-and-print-the-response"></a>De aanvraag verzenden en het antwoord afdrukken
 
-Roep in de hoofdmethode van uw toepassing `SearchVideos` aan met uw zoekterm. Druk vervolgens de HTTP-headers af die zijn opgeslagen in het antwoord en de JSON-teken reeks die wordt geretourneerd door de API.
+Roep in de hoofdmethode van uw toepassing `SearchVideos` aan met uw zoekterm. Vervolgens drukt u de HTTP-headers af die in het antwoord zijn opgeslagen, en de JSON-tekenreeks die door de API is geretourneerd.
 
  ```java
  public static void main (String[] args) {
@@ -248,7 +249,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md).
 
 ## <a name="see-also"></a>Zie ook 
 

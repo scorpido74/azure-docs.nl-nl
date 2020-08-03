@@ -4,12 +4,12 @@ description: Leer hoe u on-premises machines kunt voorbereiden voor migratie met
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077972"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
@@ -127,6 +127,18 @@ Bereid voor andere versies de machines voor zoals samengevat in de tabel.
 **udev-regel verwijderen** | Verwijder alle udev-regels die interfacenamen reserveren op basis van MAC-adres enzovoort. | Verwijder handmatig voor alle versies behalve de hierboven genoemde.
 **Netwerkinterfaces bijwerken** | Werk netwerkinterfaces bij zodat ze IP-adressen ontvangen op basis van DHCP.nst | Werk handmatig bij voor alle versies behalve de hierboven genoemde.
 **SSH inschakelen** | Zorg ervoor dat SSH is ingeschakeld en dat de SSHD-service is ingesteld om automatisch te worden gestart bij opnieuw opstarten.<br/><br/> Zorg ervoor dat inkomende SSH-verbindingsaanvragen niet worden geblokkeerd door de firewall van het besturingssysteem of door scriptregels.| Schakel handmatig in voor alle versies behalve de hierboven genoemde.
+
+De volgende tabel bevat een samenvatting van de stappen die automatisch worden uitgevoerd voor de hierboven vermelde besturingssystemen.
+
+| Bewerking                                      | VMware\-migratie met agents | VMware-migratie zonder agents | Hyper\-V   |
+|---------------------------------------------|-------------------------------|----------------------------|------------|
+| Hyper\-V Linux Integration Services installeren | Ja                           | Ja                        | Niet nodig |
+| Azure Serial Console-logboekregistratie inschakelen         | Ja                           | Ja                        | Nee         |
+| Apparaattoewijzingsbestand bijwerken                      | Ja                           | Nee                         | Nee         |
+| fstab-items bijwerken                        | Ja                           | Ja                        | Nee         |
+| udev-regel verwijderen                            | Ja                           | Ja                        | Nee         |
+| Netwerkinterfaces bijwerken                   | Ja                           | Ja                        | Nee         |
+| SSH inschakelen                                  | Nee                            | Nee                         | Nee         |
 
 Lees meer over stappen voor het [uitvoeren van een Linux-VM op Azure](../virtual-machines/linux/create-upload-generic.md) en instructies voor enkele populaire Linux-distributies.
 

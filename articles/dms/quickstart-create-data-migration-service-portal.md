@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 07/21/2020
+ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187543"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087778"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Quickstart: Een Azure Database Migration Service-exemplaar maken met behulp van Azure Portal
 
@@ -30,6 +30,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 Open de webbrowser, navigeer naar [Microsoft Azure Portal](https://portal.azure.com/), en voer vervolgens uw referenties in om u aan te melden bij de portal.
 
 De standaardweergave is uw service-dashboard.
+
+> [!NOTE]
+> U kunt maximaal 10 DMS-exemplaren per abonnement maken. Als u meer exemplaren nodig hebt, maakt u een ondersteuningsticket.
 
 ## <a name="register-the-resource-provider"></a>De resourceprovider registreren
 

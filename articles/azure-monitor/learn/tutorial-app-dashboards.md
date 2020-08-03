@@ -7,31 +7,31 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661631"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318416"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Aangepaste KPI-dashboards maken met behulp van Azure Application Insights
 
-U kunt in Azure Portal meerdere dashboards maken die elk tegels bevatten die gegevens weergeven vanuit meerdere Azure-resources in verschillende resourcegroepen en abonnementen.  U kunt verschillende grafieken en weergaven van Azure Application Insights vastmaken om aangepaste dashboards te maken die u een volledig overzicht geven van de status en prestaties van uw toepassing. Deze zelfstudie helpt u bij het maken van een aangepast dashboard met meerdere typen gegevens en visualisaties uit Azure Application Insights.  Procedures voor:
+U kunt in Azure Portal meerdere dashboards maken die elk tegels bevatten die gegevens weergeven vanuit meerdere Azure-resources in verschillende resourcegroepen en abonnementen.  U kunt verschillende grafieken en weergaven van Azure Application Insights vastmaken om aangepaste dashboards te maken die u een volledig overzicht geven van de status en prestaties van uw toepassing. Deze zelfstudie helpt u bij het maken van een aangepast dashboard met meerdere typen gegevens en visualisaties uit Azure Application Insights.  In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een aangepast dashboard maken in Azure
 > * Een tegel uit de Tegelgalerie toevoegen
 > * Standaard metrische gegevens in Application Insights aan het dashboard toevoegen
 > * Een aangepaste grafiek met metrische gegevens uit Application Insights aan het dashboard toevoegen
-> * De resultaten van een logboeken-query (Analytics) toevoegen aan het dash board
+> * De resultaten van een Logs (Analytics)-query aan het dashboard toevoegen
 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
-- Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../../azure-monitor/app/asp-net.md)in.
+- Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../app/asp-net.md)in.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
@@ -44,8 +44,8 @@ Een dashboard kan resources uit meerdere toepassingen, resourcegroepen en abonne
    ![Nieuw dashboard](media/tutorial-app-dashboards/1newdashboard.png)
 
 1. Typ een naam voor het dashboard.
-1. Bekijk de **Tegelgalerie** voor de verschillende tegels die u aan het dashboard kunt toevoegen.  Naast het toevoegen van tegels uit de galerie, kunt u grafieken en andere weer gaven rechtstreeks van Application Insights aan het dash board vastmaken.
-1. Zoek de tegel **Markdown** en sleep deze naar uw dashboard.  Met deze tegel kunt u tekst die is opgemaakt in de prijs optellen, die ideaal is voor het toevoegen van beschrijvende tekst aan uw dash board.
+1. Bekijk de **Tegelgalerie** voor de verschillende tegels die u aan het dashboard kunt toevoegen.  U kunt niet alleen tegels uit de galerie toevoegen, maar ook grafieken en andere weergaven rechtstreeks vanuit Application Insights aan het dashboard vastmaken.
+1. Zoek de tegel **Markdown** en sleep deze naar uw dashboard.  Met deze tegel kunt u tekst opmaken in Markdown, wat ideaal is om beschrijvende tekst toe te voegen aan uw dashboard.
 1. Voeg tekst toe aan de tegeleigenschappen en wijzig het formaat van de tegel op het canvas van het dashboard.
     
     ![Tegel Markdown bewerken](media/tutorial-app-dashboards/2dashboard-text.png)
@@ -53,13 +53,13 @@ Een dashboard kan resources uit meerdere toepassingen, resourcegroepen en abonne
 1. Klik op **Aanpassen voltooid** boven aan het scherm om de modus voor het aanpassen van tegels af te sluiten.
 
 ## <a name="add-health-overview"></a>Statusoverzicht toevoegen
-Een dash board met statische tekst is niet zeer interessant, dus Voeg nu een tegel toe van Application Insights om informatie over uw toepassing weer te geven.  U kunt Application Insights-tegels toevoegen uit de Tegelgalerie of ze rechtstreeks vanuit Application Insights-schermen vastmaken.  Hiermee kunt u grafieken en weergaven die u al kent, configureren voordat u ze aan uw dashboard vastmaakt.  Voeg eerst het standaardstatusoverzicht voor uw toepassing toe.  Hiervoor is geen configuratie vereist en er is minimale aanpassing mogelijk in het dashboard.
+Een dashboard met statische tekst is niet erg interessant. Voeg daarom een tegel toe vanuit Application Insights die informatie over uw toepassing weergeeft.  U kunt Application Insights-tegels toevoegen uit de Tegelgalerie of ze rechtstreeks vanuit Application Insights-schermen vastmaken.  Hiermee kunt u grafieken en weergaven die u al kent, configureren voordat u ze aan uw dashboard vastmaakt.  Voeg eerst het standaardstatusoverzicht voor uw toepassing toe.  Hiervoor is geen configuratie vereist en er is minimale aanpassing mogelijk in het dashboard.
 
 
 1. Open uw **Application Insights**-resource op het startscherm.
-2. Klik in het deel venster **overzicht** op het pictogram ![](media/tutorial-app-dashboards/pushpin.png) pincode spel pincode om de tegel toe te voegen aan het laatste dash board dat u hebt bekeken.  
+2. In het deelvenster **Overzicht** klikt u op het ![speldpictogram](media/tutorial-app-dashboards/pushpin.png) om de tegel toe te voegen aan het laatste dashboard dat u hebt weergegeven.  
  
-3. In de rechter bovenhoek ziet u een melding dat uw tegel is vastgemaakt aan uw dash board. Klik op **Aan dashboard vastgemaakt** in de melding om terug te keren naar het dashboard of om het dashboarddeelvenster te gebruiken.
+3. In de rechterbovenhoek wordt de melding weergegeven dat de tegel is vastgemaakt aan uw dashboard. Klik op **Aan dashboard vastgemaakt** in de melding om terug te keren naar het dashboard of om het dashboarddeelvenster te gebruiken.
 4. De tegel is nu aan uw dashboard toegevoegd. Selecteer **Bewerken** om de plaatsing van de tegel te wijzigen. Klik erop en sleep de tegel naar de gewenste positie. Klik vervolgens op **Aanpassen voltooid**. Uw dashboard heeft nu een tegel met nuttige informatie.
 
     ![Dashboard met Overzicht tijdlijn](media/tutorial-app-dashboards/4dashboard-edit.png)
@@ -75,14 +75,14 @@ In het venster **Metrische gegevens** kunt u waarden die gedurende een periode d
 
 4. Selecteer **Vastmaken aan dashboard** aan de rechterkant. Hierdoor wordt de weergave toegevoegd aan het laatste dashboard dat u hebt gebruikt.
 
-3.  In de rechter bovenhoek ziet u een melding dat uw tegel is vastgemaakt aan uw dash board. Klik op **Aan dashboard vastgemaakt** in de melding om terug te keren naar het dashboard of om de dashboardblade te gebruiken.
+3.  In de rechterbovenhoek wordt de melding weergegeven dat de tegel is vastgemaakt aan uw dashboard. Klik op **Aan dashboard vastgemaakt** in de melding om terug te keren naar het dashboard of om de dashboardblade te gebruiken.
 
 4. De tegel is nu aan uw dashboard toegevoegd. Selecteer **Bewerken** om de plaatsing van de tegel te wijzigen. Klik erop en sleep de tegel naar de gewenste positie. Klik vervolgens op **Aanpassen voltooid**.
 
-## <a name="add-logs-analytics-query"></a>De query Logboeken (Analytics) toevoegen
-Azure-toepassing Insights-Logboeken (Analytics) biedt een uitgebreide query taal waarmee u alle verzamelde gegevens Application Insights kunt analyseren. Net als bij grafieken en andere weer gaven kunt u de uitvoer van een logboeken query toevoegen aan uw dash board.
+## <a name="add-logs-analytics-query"></a>Logs (Analytics)-query toevoegen
+Azure Application Insights Logs (Analytics) biedt een uitgebreide querytaal om alle met Application Insights verzamelde gegevens te analyseren. Net als andere weergaven en grafieken kunt u de uitvoer van een Logs-query aan uw dashboard toevoegen.
 
-Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke service is, moet u uw dash board delen zodat er een logboek query wordt toegevoegd. Wanneer u een Azure-dash board deelt, kunt u het publiceren als een Azure-resource, waardoor het beschikbaar kan worden gemaakt voor andere gebruikers en bronnen.  
+Aangezien Azure Application Insights Logs (Analytics) een afzonderlijke service is, dient u uw dashboard te delen voordat u er een Logs-query in kunt opnemen. Wanneer u een Azure-dashboard deelt, kunt u het publiceren als een Azure-resource en het beschikbaar maken voor andere gebruikers en resources.  
 
 1. Klik bovenaan het dashboardscherm op **Delen**.
 
@@ -90,7 +90,7 @@ Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke servic
 
 2. Behoud de **Dashboardnaam** en selecteer de **Abonnementsnaam** om het dashboard te delen.  Klik op **Publish**.  Het dashboard is nu beschikbaar voor andere services en abonnementen.  Desgewenst kunt u specifieke gebruikers opgeven die toegang tot het dashboard moeten krijgen.
 1. Open uw **Application Insights**-resource in het startscherm.
-2. Klik links onder bewaking op **Logboeken (analyse)** om de logboeken-portal te openen.
+2. Klik links onder Controle op **Logs (Analytics)** om de Logs (Analytics)-portal te openen.
 3. Typ de volgende query die de 10 meest aangevraagde pagina's en het bijbehorende aantal aanvragen retourneert:
 
     ``` Kusto
@@ -101,9 +101,9 @@ Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke servic
     ```
 
 4. Klik op **Uitvoeren** om de resultaten van de query te valideren.
-5. Klik op het speld pictogram ![Speldpictogram](media/tutorial-app-dashboards/pushpin.png) en selecteer de naam van het dash board. De reden hiervoor is dat u een dash board selecteert, in tegens telling tot de vorige stappen waarbij het laatste dash board is gebruikt, omdat de Logboeken-console (Analytics) een afzonderlijke service is en moet worden geselecteerd uit alle beschik bare gedeelde Dash boards.
+5. Klik op het speldpictogram ![Speldpictogram](media/tutorial-app-dashboards/pushpin.png) en selecteer de naam van het dashboard. De reden dat u bij deze optie een dashboard dient te selecteren, in tegenstelling tot de vorige stappen waarbij het laatste dashboard werd gebruikt, is dat de Logs (Analytics)-console een afzonderlijke service is en moet kiezen uit alle beschikbare gedeelde dashboards.
 
-5. Voordat u teruggaat naar het dash board, voegt u nog een query toe, maar deze keer wordt deze weer gegeven als een grafiek zodat u de verschillende manieren ziet om een logboeken query te visualiseren in een dash board. Begin met de volgende query die de top 10 bewerkingen met de meeste uitzonderingen weergeeft.
+5. Voordat u teruggaat naar het dashboard, voegt u nog een query toe, maar deze keer geeft u het dashboard weer als een diagram. Zo kunt u de verschillende manieren zien waarop u een Logs-query in een dashboard kunt weergeven. Begin met de volgende query die de top 10 bewerkingen met de meeste uitzonderingen weergeeft.
 
     ``` Kusto
     exceptions
@@ -114,11 +114,11 @@ Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke servic
 
 6. Selecteer **Grafiek** en schakel vervolgens over naar een **Ringdiagram** om de uitvoer weer te geven.
 
-    ![Logboeken (Analytics)-grafiek](media/tutorial-app-dashboards/11querychart.png)
+    ![Logs (Analytics)-grafiek](media/tutorial-app-dashboards/11querychart.png)
 
-6. Klik op het speld pictogram ![Speldpictogram](media/tutorial-app-dashboards/pushpin.png) in de rechter bovenhoek om de grafiek aan uw dash board vast te maken, selecteert u de koppeling om terug te gaan naar uw dash board.
+6. Klik op het speldpictogram ![Speldpictogram](media/tutorial-app-dashboards/pushpin.png) in de rechterbovenhoek om de grafiek aan uw dashboard vast te maken. Selecteer deze keer de koppeling om naar uw dashboard terug te gaan.
 4. De resultaten van de query's worden nu aan uw dashboard toegevoegd in de indeling die u hebt geselecteerd.  Klik en sleep elke query naar de gewenste plek en klik vervolgens op **Aanpassen voltooid**.
-5. Het potlood pictogram selecteren ![Potloodpictogram](media/tutorial-app-dashboards/pencil.png) op elke titel om hen een beschrijvende titel te geven.
+5. Selecteer het potloodpictogram ![Potloodpictogram](media/tutorial-app-dashboards/pencil.png) bij elke titel om een beschrijvende titel toe te voegen.
 
 5. Selecteer **Delen** om de wijzigingen op uw dashboard opnieuw te publiceren. Dit bevat nu verschillende grafieken en visualisaties vanuit Application Insights.
 
@@ -127,4 +127,5 @@ Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke servic
 Nu u weet hoe u aangepaste dashboards maakt, kunt u de verdere Application Insights-documentatie bekijken, waaronder een casestudy.
 
 > [!div class="nextstepaction"]
-> [Diepe diagnostische gegevens](../../azure-monitor/app/devops.md)
+> [Diepe diagnostische gegevens](../app/devops.md)
+

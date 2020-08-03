@@ -1,6 +1,6 @@
 ---
 title: Apparaatfirmware bijwerken via Azure IoT Hub | Microsoft Docs
-description: Meer informatie over het implementeren van een update proces voor de firmware van een apparaat dat kan worden geactiveerd vanuit een back-endtoepassing die is verbonden met uw IoT-hub.
+description: Leer hoe u een apparaatfirmware-updateproces implementeert dat kan worden geactiveerd vanuit een back-endtoepassing die is verbonden met uw IoT-hub.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -11,14 +11,16 @@ ms.date: 06/28/2019
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 2eec96eee943d6fe291d054e1d73876e38f61d6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: cc5c7193914f02cf52956481f22553dcabdd6520
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769964"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324519"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: een apparaatfirmware-updateproces implementeren
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: Een apparaatfirmware-updateproces implementeren
 
 Mogelijk moet u de firmware bijwerken op de apparaten die zijn aangesloten op uw IoT-hub. Bijvoorbeeld als u nieuwe functies aan de firmware wilt toevoegen of beveiligingspatches toepassen. In veel IoT-scenario's is het onpraktisch om apparaten fysiek te bezoeken en handmatig firmware-updates toe te passen. Deze zelfstudie laat zien hoe u het firmware-updateproces op afstand kunt starten en bewaken via een back-endtoepassing die is aangesloten op uw hub.
 
@@ -40,9 +42,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U hebt node. js V10 toevoegen. x. x of hoger nodig op uw ontwikkel machine.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. Node.js v10.x.x of hoger moet zijn geïnstalleerd op uw ontwikkelcomputer.
 
-U kunt node. js voor meerdere platforms downloaden vanuit [nodejs.org](https://nodejs.org).
+U kunt Node.js voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
 
 Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcomputer te controleren:
 
@@ -52,7 +54,7 @@ node --version
 
 Download het Node.js-voorbeeldproject van https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip en pak het ZIP-archief uit.
 
-Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+Zorg ervoor dat de poort 8883 is geopend in de firewall. In het apparaatvoorbeeld in deze zelfstudie wordt het MQTT-protocol gebruikt, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="set-up-azure-resources"></a>Azure-resources instellen
 
@@ -187,7 +189,7 @@ De volgende schermafbeelding toont de uitvoer van de back-endtoepassing en benad
 
 ![Back-endtoepassing](./media/tutorial-firmware-update/BackEnd2.png)
 
-Omdat automatische apparaatconfiguratie op het moment van maken en vervolgens om de vijf minuten wordt uitgevoerd, ziet u mogelijk niet elke status update die naar de back-end-toepassing is verzonden. U kunt de metrische gegevens ook bekijken in de portal in de sectie **Apparaatbeheer -> IoT-apparaatconfiguratie** van uw IoT-hub:
+Omdat automatische apparaatconfiguraties worden uitgevoerd tijdens de aanmaak en vervolgens elke vijf minuten, ziet u mogelijk niet elke statusupdate die naar de back-endtoepassing wordt verzonden. U kunt de metrische gegevens ook bekijken in de portal in de sectie **Apparaatbeheer -> IoT-apparaatconfiguratie** van uw IoT-hub:
 
 ![Configuratie weergeven in portal](./media/tutorial-firmware-update/portalview.png)
 

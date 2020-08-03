@@ -4,15 +4,15 @@ description: 'Meer informatie over de API van Azure Cosmos DB voor MongoDB (vers
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 07/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 92c94b08602fb32ccebf6115306a5000665affe2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076840"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.6): ondersteunde functies en syntaxis
 
@@ -542,7 +542,32 @@ Tijdens het gebruik van bewerking `findOneAndUpdate`, worden sorteerbewerkingen 
 
 ## <a name="unique-indexes"></a>Unieke indexen
 
-Unieke indexen zorgen ervoor dat een specifiek veld geen dubbele waarden bevat in alle documenten van een verzameling, net zoals dat de uniekheid van de standaard-id-sleutel behouden blijft. U kunt met behulp van de opdracht createIndex aangepaste indexen maken in Cosmos DB, met inbegrip van de uniekheidsbeperking.
+[Unieke indexen](mongodb-indexing.md#unique-indexes) zorgen ervoor dat een specifiek veld geen dubbele waarden bevat in alle documenten van een verzameling, net zoals dat de uniekheid van de standaard-id-sleutel behouden blijft. U kunt unieke indexen in Cosmos DB maken door de opdracht `createIndex` te gebruiken met de beperkingsparameter `unique`:
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>Samengestelde indexen
+
+[Samengestelde indexen](mongodb-indexing.md#compound-indexes-mongodb-server-version-36) bieden een manier om een index voor groepen velden te maken voor maximaal 8 velden. Dit soort index verschilt van de systeemeigen samengestelde indexen in MongoDB. In Azure Cosmos DB worden samengestelde indexen gebruikt voor het sorteren van bewerkingen die op meerdere velden worden toegepast. Als u een samengestelde index wilt maken, moet u meer dan één eigenschap als de parameter opgeven:
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>TTL (time-to-live)
 

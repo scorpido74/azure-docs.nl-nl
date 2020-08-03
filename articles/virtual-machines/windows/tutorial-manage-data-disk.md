@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100325"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077447"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Zelfstudie: Azure-schijven beheren met Azure PowerShell
 
@@ -32,13 +32,13 @@ Virtuele machines in Azure gebruiken schijven voor het opslaan van het besturing
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="default-azure-disks"></a>Standaard Azure-schijven
 
 Wanneer een virtuele Azure-machine wordt gemaakt, worden automatisch twee schijven aan de virtuele machine gekoppeld. 
 
-**Besturingssysteemschijf**: besturingssysteemschijven kunnen tot 4 terabytes groot zijn, en huisvesten het besturingssysteem van de VM's. Als u een nieuwe virtuele machine (VM) maakt op basis van een installatie kopie van [Azure Marketplace](https://azure.microsoft.com/marketplace/) , is dit doorgaans 127 GB (maar sommige installatie kopieën hebben een kleinere grootte van de besturingssysteem schijf). De besturingssysteemschijf krijgt standaard stationsletter *C:* toegewezen. De schijfcacheconfiguratie van de besturingssysteemschijf is geoptimaliseerd voor besturingssysteemprestaties. De besturingssysteemschijf kan **beter geen** toepassingen of gegevens bevatten. Gebruik voor toepassingen en gegevens een gegevensschijf, zoals verderop in dit artikel wordt beschreven.
+**Besturingssysteemschijf**: besturingssysteemschijven kunnen tot 4 terabytes groot zijn, en huisvesten het besturingssysteem van de VM's. Als u een nieuwe virtuele machine (VM) maakt van een [Azure Marketplace](https://azure.microsoft.com/marketplace/)-installatiekopie, is die meestal 127 GB (maar sommige installatiekopieën hebben een kleiner formaat besturingssysteemschijf). De besturingssysteemschijf krijgt standaard stationsletter *C:* toegewezen. De schijfcacheconfiguratie van de besturingssysteemschijf is geoptimaliseerd voor besturingssysteemprestaties. De besturingssysteemschijf kan **beter geen** toepassingen of gegevens bevatten. Gebruik voor toepassingen en gegevens een gegevensschijf, zoals verderop in dit artikel wordt beschreven.
 
 **Tijdelijke schijf**: tijdelijke schijven gebruiken een SSD-schijf die zich op dezelfde Azure-host bevindt als de virtuele machine. Tijdelijke schijven leveren zeer goede prestaties en kunnen worden gebruikt voor bewerkingen als tijdelijke gegevensverwerking. Als de virtuele machine wordt verplaatst naar een nieuwe host, worden gegevens die zijn opgeslagen op een tijdelijke schijf echter verwijderd. De grootte van de tijdelijke schijf wordt bepaald door de [VM-grootte](sizes.md). Tijdelijke schijven krijgen standaard de stationsletter *D:* toegewezen.
 
@@ -63,10 +63,10 @@ In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan
 
 Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Maak indien nodig een virtuele machine met de volgende opdrachten.
 
-Stel met [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) de gebruikersnaam en het wachtwoord in die nodig zijn voor de beheerdersaccount op de virtuele machine:
+Stel met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) de gebruikersnaam en het wachtwoord in die nodig zijn voor de beheerdersaccount op de virtuele machine:
 
 
-Maak de virtuele machine met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). U wordt gevraagd een gebruikersnaam en wachtwoord in te voeren voor het administrator-account voor de VM.
+Maak de virtuele machine met [New-AzVM](/powershell/module/az.compute/new-azvm). U wordt gevraagd een gebruikersnaam en wachtwoord in te voeren voor het administrator-account voor de VM.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -80,7 +80,7 @@ New-AzVm `
 ```
 
 
-Maak de aanvankelijke configuratie met [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). In het volgende voorbeeld wordt een schijf van 128 gigabyte groot geconfigureerd.
+Maak de aanvankelijke configuratie met [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig). In het volgende voorbeeld wordt een schijf van 128 gigabyte groot geconfigureerd.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -89,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-Maak de gegevensschijf met de opdracht [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk).
+Maak de gegevensschijf met de opdracht [New-AzDisk](/powershell/module/az.compute/new-azdisk).
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -98,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-Haal de virtuele machine waaraan u de gegevensschijf wilt toevoegen op met de opdracht [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm).
+Haal de virtuele machine waaraan u de gegevensschijf wilt toevoegen op met de opdracht [Get-AzVM](/powershell/module/az.compute/get-azvm).
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Voeg de gegevensschijf toe aan de configuratie van de virtuele machine met de opdracht [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk).
+Voeg de gegevensschijf toe aan de configuratie van de virtuele machine met de opdracht [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -115,7 +115,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-Werk de virtuele machine bij met de opdracht [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk).
+Werk de virtuele machine bij met de opdracht [Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk).
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

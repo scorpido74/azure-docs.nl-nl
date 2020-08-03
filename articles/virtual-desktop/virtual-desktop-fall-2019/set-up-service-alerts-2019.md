@@ -1,6 +1,6 @@
 ---
-title: Servicewaarschuwingen instellen voor Windows Virtual Desktop - Azure
-description: Hoe stel ik Azure Service Health in om servicemeldingen voor Windows Virtual Desktop te ontvangen?
+title: Servicewaarschuwingen instellen voor Windows Virtual Desktop (klassiek) - Azure
+description: Hoe stel ik Azure Service Health in om servicemeldingen voor Windows Virtual Desktop (klassiek) te ontvangen?
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a3f938c6e4c9bb13794ddd01092f0e79077a89cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259766"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283381"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Zelfstudie: Servicewaarschuwingen instellen
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>Zelfstudie: Servicewaarschuwingen instellen voor Windows Virtual Desktop (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../set-up-service-alerts.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren die zijn geïntroduceerd tijdens de update uit het voorjaar van 2020.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../set-up-service-alerts.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 U kunt Azure Service Health gebruiken om serviceproblemen en statusadviezen voor Windows Virtual Desktop te monitoren. Via Azure Service Health kunt u verschillende soorten meldingen ontvangen (bijvoorbeeld e-mail of sms), inzicht krijgen in de impact van een probleem en op de hoogte worden gehouden tijdens het oplossen van een probleem. Ook kan Azure Service Health u helpen bij het verminderen van downtime en bij de voorbereiding op gepland onderhoud en wijzigingen die de beschikbaarheid van uw bronnen kunnen beïnvloeden.
 

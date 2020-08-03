@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307196"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Tags toevoegen aan afbeeldingen in een labelproject 
 
@@ -37,11 +37,9 @@ Nadat uw projectbeheerder [een labelproject](https://docs.microsoft.com/azure/ma
 
 1. Selecteer **Gegevenslabels** aan de linkerkant om het project te zoeken.  
 
-1. Selecteer de projectnaam in de lijst.
-
 ## <a name="understand-the-labeling-task"></a>Begrip van de labeltaak
 
-Zodra u het project hebt geselecteerd, selecteert u **Labelgegevens** bovenaan de pagina.
+Selecteer in de tabel met gegevenslabelprojecten de optie **Labelkoppeling** voor uw project.
 
 U ziet nu specifieke instructies voor uw project. In deze instructies wordt uitgelegd met welk type gegevens u te maken hebt, hoe u uw beslissingen neemt en andere relevante informatie. Nadat u deze informatie hebt gelezen, selecteert u bovenaan de pagina de optie **Taken**.  Of selecteer **Beginnen met labelen** onderaan de pagina.
 
@@ -65,6 +63,10 @@ In Azure is de knop **Indienen** beschikbaar zodra u alle afbeeldingen op de pag
 Nadat u tags voor de beschikbare gegevens hebt ingediend, wordt de pagina vernieuwd met een nieuwe set afbeeldingen uit de werkwachtrij.
 
 ### <a name="assisted-machine-learning-preview"></a>Begeleide machine learning (preview) 
+
+> [!IMPORTANT]
+> Begeleide machine learning is momenteel beschikbaar als openbare preview-versie.
+> De preview-versie wordt aangeboden zonder Service Level Agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Mogelijk worden machine learning-algoritmen geactiveerd. Als deze algoritmen in uw project zijn ingeschakeld, ziet u het volgende:
 

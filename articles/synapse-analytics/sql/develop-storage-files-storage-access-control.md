@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255707"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283449"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
 
@@ -87,6 +87,11 @@ U kunt de volgende combinaties van autorisatie- en Azure Storage-typen gebruiken
 | *Beheerde identiteit* | Ondersteund      | Ondersteund        | Ondersteund     |
 | *Gebruikersidentiteit*    | Ondersteund      | Ondersteund        | Ondersteund     |
 
+
+> [!IMPORTANT]
+> Wanneer u toegang krijgt tot opslag die wordt beveiligd door de firewall, kan alleen Beheerde identiteit worden gebruikt. U moet [vertrouwde Microsoft-services toestaan](../../storage/common/storage-network-security.md#trusted-microsoft-services) en expliciet [een RBAC-rol toewijzen](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de [door het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat resource-exemplaar. In dit geval komt het toegangsbereik voor het exemplaar overeen met de RBAC-rol die aan de beheerde identiteit is toegewezen.
+>
+
 ## <a name="credentials"></a>Referenties
 
 Als u een query wilt uitvoeren op een bestand dat zich in Azure Storage bevindt, heeft het eindpunt van SQL on-demand een referentie nodig die de verificatiegegevens bevat. Er worden twee typen referenties gebruikt:
@@ -109,11 +114,7 @@ Om de referentie te gebruiken, moet een gebruiker de machtiging `REFERENCES` heb
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-Om een soepele Pass-Through Azure AD-ervaring te garanderen, hebben alle gebruikers standaard het om de referentie `UserIdentity` te gebruiken. Dit wordt bereikt door een automatische uitvoering van de volgende instructie bij het inrichten van de Azure Synapse-werkruimte:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+Om een soepele Pass-Through Azure AD-ervaring te garanderen, hebben alle gebruikers standaard het om de referentie `UserIdentity` te gebruiken.
 
 ## <a name="server-scoped-credential"></a>Referentie binnen serverbereik
 
@@ -243,7 +244,7 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
@@ -288,7 +289,7 @@ Een databasegebruiker kan de inhoud van de bestanden uit de gegevensbron lezen m
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

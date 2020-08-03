@@ -1,6 +1,5 @@
 ---
-title: 'Quickstart: Een gegevenswetenschappelijk experiment opzetten'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek): Quickstart: Een gegevenswetenschappelijk experiment opzetten - Azure'
 description: Deze quickstart over machine learning leidt u door een eenvoudig gegevenswetenschappelijk experiment. We voorspellen de prijs van een auto met behulp van een regressiealgoritme.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f8984b3b712d591b64c383dabb723ba5afc61efc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 99332a8716ae137b8ea5fe69a53c7f8e4c46f095
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965141"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282548"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quickstart: Uw eerste gegevenswetenschappelijke experiment maken in Azure Machine Learning Studio (klassiek)
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Quickstart: Uw eerste gegevenswetenschappelijke experiment maken in Machine Learning Studio (klassiek)
+
+**VAN TOEPASSING OP:** ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

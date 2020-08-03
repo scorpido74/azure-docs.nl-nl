@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103956"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306108"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
-Dit artikel bevat informatie over het werken met de vorige versie van Azure Migrate.
+Dit artikel bevat informatie over het werken met de vorige versie van Azure Migrate. 
 
 
 Er zijn twee versies van de Azure Migrate-service:
 
 - **Huidige versie**: Gebruik deze versie om Azure Migrate-projecten te maken, on-premises machines te detecteren, en evaluaties en migraties te organiseren. [Lees meer](whats-new.md) over wat er nieuw is in deze versie.
-- **Vorige versie**: Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. Als u nog Azure Migrate-projecten moet gebruiken die in de vorige versie zijn gemaakt, kunt u hier lezen wat u wel en niet kunt doen:
+- **Vorige versie**: Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. De projecten uit de vorige versie worden in dit artikel Klassieke projecten genoemd. Als u nog Azure Migrate-projecten moet gebruiken die in de vorige versie zijn gemaakt, kunt u hier lezen wat u wel en niet kunt doen:
     - U kunt geen migratieprojecten meer maken.
     - We raden u aan om ook geen nieuwe detecties meer uit te voeren.
     - U houdt toegang tot bestaande projecten.
@@ -31,7 +31,7 @@ Er zijn twee versies van de Azure Migrate-service:
 
 ## <a name="upgrade-between-versions"></a>Upgrade tussen versies
 
-U kunt projecten of onderdelen in de vorige versie niet upgraden naar de nieuwe versie. U moet [een nieuw Azure Migrate-project maken](how-to-add-tool-first-time.md) en daar hulpprogramma's voor evaluatie en migratie aan toevoegen.
+U kunt projecten of onderdelen in de vorige versie niet upgraden naar de nieuwe versie. U moet [een nieuw Azure Migrate-project maken](create-manage-projects.md) en daar [hulpprogramma's voor evaluatie en migratie aan toevoegen](how-to-add-tool-first-time.md). Gebruik de zelfstudies om te begrijpen hoe u de beschikbare hulpprogramma’s voor evaluatie en migratie kunt gebruiken. Als er een Log Analytics-werkruimte aan een Klassiek project was gekoppeld, kunt u deze aan een project in de huidige versie koppelen nadat u het Klassieke project hebt verwijderd.
 
 ## <a name="find-projects-from-previous-version"></a>Projecten uit de vorige versie zoeken
 
@@ -39,7 +39,16 @@ Ga als volgt te werk om projecten uit de vorige versie te zoeken:
 
 1. Ga in de Azure-portal naar **Alle services**, zoek naar **Azure Migrate** en selecteer het. 
 2. Op het dashboard van Azure Migrate bevindt zich een melding met een koppeling voor toegang tot oude Azure Migrate-projecten.
-3. Klik op de koppeling om v1-projecten te openen.
+3. Klik op de koppeling om Klassieke projecten te openen.
+
+## <a name="delete-projects-from-previous-version"></a>Projecten uit de vorige versie verwijderen
+
+Ga als volgt te werk om projecten uit de vorige versie te vinden en verwijderen:
+
+1. Ga in de Azure-portal naar **Alle services**, zoek naar **Azure Migrate** en selecteer het. 
+2. Op het dashboard van Azure Migrate bevindt zich een melding met een koppeling voor toegang tot oude Azure Migrate-projecten.
+3. Klik op de koppeling om Klassieke projecten te openen.
+4. Selecteer het project dat u wilt verwijderen, en verwijder het. 
 
 
 ## <a name="create-an-assessment"></a>Een evaluatie maken
@@ -118,7 +127,7 @@ Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning met een [Visual Stu
 Windows 10 Pro Desktop | Azure biedt ondersteuning met [multitenant-hostingrechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure
 Windows Vista, XP Professional | Niet meer ondersteund. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan het besturingssysteem te upgraden voordat u naar Azure migreert.
 Linux | Azure keurt deze [Linux-besturingssystemen](../virtual-machines/linux/endorsed-distros.md) goed. Andere Linux-besturingssystemen kunnen mogelijk worden opgestart in Azure, maar wij raden aan het besturingssysteem te upgraden naar een goedgekeurde versie voordat u naar Azure migreert. | Gereed voor Azure als de versie goedgekeurd is.<br/><br/>Voorwaardelijk gereed als de versie niet goedgekeurd is.
-Andere besturingssystemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple Mac OS enzovoort, FreeBSD, enzovoort. | Deze besturingssystemen worden niet door Azure goedgekeurd. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan een ondersteund besturingssysteem te installeren voordat u naar Azure migreert.  
+Andere besturingssystemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple macOS, FreeBSD, enz. | Deze besturingssystemen worden niet door Azure goedgekeurd. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan een ondersteund besturingssysteem te installeren voordat u naar Azure migreert.  
 Besturingssysteem dat is opgegeven als **Anders** in vCenter Server | In dit geval kan Azure Migrate het besturingssysteem niet identificeren. | Gereedheid onbekend. Zorg ervoor dat het besturingssysteem dat wordt uitgevoerd in de VM wordt ondersteund in Azure.
 32-bits besturingssystemen | De computer kan mogelijk worden opgestart in Azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk gereed voor Azure. Overweeg het besturingssysteem van de machine te upgraden van een 32-bits naar een 64-bits besturingssysteem voordat u naar Azure migreert.
 
@@ -201,7 +210,7 @@ Als u afhankelijkheidsvisualisatie wilt gebruiken, koppelt u een Log Analytics-w
 1. Als u een Log Analytics-werkruimte aan een project wilt koppelen, klikt u in **Overzicht**> **Essentials**op **Vereist configuratie**.
 2. U kunt een nieuwe werkruimte maken of een bestaande koppelen:
   - Geef een naam op om een nieuwe werkruimte te maken. De werkruimte wordt gemaakt in een regio in dezelfde [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) als het migratieproject.
-  - Wanneer u een bestaande werkruimte koppelt, kunt u kiezen uit alle beschikbare werkruimten in hetzelfde abonnement als het migratieproject. Er worden alleen werkruimten weergegeven die zijn gemaakt in een [door Servicetoewijzing ondersteunde regio](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Als u een werkruimte wilt koppelen, moet u ervoor zorgen dat u 'Lezer'-toegang hebt tot de werkruimte.
+  - Wanneer u een bestaande werkruimte koppelt, kunt u kiezen uit alle beschikbare werkruimten in hetzelfde abonnement als het migratieproject. Er worden alleen werkruimten weergegeven die zijn gemaakt in een [door Servicetoewijzing ondersteunde regio](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions). Als u een werkruimte wilt koppelen, moet u ervoor zorgen dat u 'Lezer'-toegang hebt tot de werkruimte.
 
 > [!NOTE]
 > U kunt de werkruimte die aan een migratieproject is gekoppeld, niet wijzigen.

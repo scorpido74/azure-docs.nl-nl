@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a3cec6cb009e3d83d22f3f2a4140afe16db180a8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372923"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na noodgevallen instellen voor Azure-VM's
 
@@ -94,7 +94,7 @@ Azure Site Recovery heeft drie ingebouwde rollen voor het beheren van Site Recov
 
 - **Site Recovery-lezer** - deze rol heeft machtigingen voor het weergeven van alle beheerbewerkingen van Site Recovery. Deze rol is het meest geschikt is voor een IT-leidinggevende die de huidige beschermingsstatus kan bewaken en ondersteuningstickets kan aanvragen.
 
-Meer informatie over [ingebouwde Azure RBAC-rollen](../role-based-access-control/built-in-roles.md).
+Meer informatie over [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md).
 
 ## <a name="enable-replication-for-a-vm"></a>Replicatie inschakelen voor een VM
 

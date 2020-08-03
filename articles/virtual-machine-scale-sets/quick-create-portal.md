@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077552"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Quickstart: Een schaalset voor virtuele machines maken in Azure Portal
 
@@ -44,8 +44,9 @@ Maak eerst een openbare Standard Load Balancer met behulp van de portal. De naam
     | Type          | Selecteer **Openbaar**.       |
     | SKU           | selecteer **Standaard**.       |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbaar IP-adres  | *MyPip*   |
+    | Naam openbaar IP-adres  | *myPip*   |
     | Toewijzing| Statisch |
+    | Beschikbaarheidszone | selecteer **Zone-redundant**. |
 
 1. Als u klaar bent, selecteert u **Beoordelen en maken**. 
 1. Nadat de validatie is gelukt, selecteert u **Maken**. 
@@ -55,11 +56,11 @@ Maak eerst een openbare Standard Load Balancer met behulp van de portal. De naam
 ## <a name="create-virtual-machine-scale-set"></a>Schaalset voor virtuele machines maken
 U kunt een schaalset implementeren met een installatiekopie van Windows Server of Linux, zoals RHEL, CentOS, Ubuntu of SLES.
 
-1. Typ **Schaalset** in het zoekvak. In de resultaten onder **Marketplace** selecteert u **Schaalsets voor virtuele machines**. De pagina **Een virtuele-machineschaalset maken** wordt geopend. 
+1. Typ **Schaalset** in het zoekvak. In de resultaten onder **Marketplace** selecteert u **Schaalsets voor virtuele machines**. Selecteer **Maken** op de pagina **Virtuele-machineschaalsets**, waarna de pagina **Een virtuele-machineschaalset maken** wordt geopend. 
 1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myVMSSResourceGroup* voor de naam en selecteer **OK**. 
 1. Typ *myScaleSet* als de naam van de schaalset.
 1. Selecteer bij **Regio** een regio die zich dichtbij uw gebied bevindt.
-1. Behoud de standaardwaarde van **Schaalset Vm's** voor **Orchestrator**.
+1. Behoud de standaardwaarde van **VM’s van schaalset** voor **Orchestration-modus**.
 1. Selecteer een Marketplace-installatiekopie bij **Installatiekopie**. In dit voorbeeld hebben we gekozen voor *Ubuntu Server 18.04 LTS*.
 1. Voer de gewenste gebruikersnaam in en selecteer het verificatietype dat u wilt gebruiken.
    - Een **wachtwoord** moet ten minste 12 tekens lang zijn en aan drie van de vier volgende complexiteitsvereisten voldoen: ten minste één kleine letter, één hoofdletter, één cijfer en één speciaal teken. Zie [Wat zijn de wachtwoordvereisten bij het maken van een virtuele machine?](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) voor meer informatie.

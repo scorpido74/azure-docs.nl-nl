@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 07/28/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565800"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372362"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Overzicht van de implementatie van Azure Firewall Manager
 
@@ -65,6 +65,13 @@ U kunt Azure Firewall Manager om meerdere manieren implementeren, maar het volge
 > - U mag niet meer dan één hub per virtuele WAN per regio hebben. Maar u kunt wel meerdere virtuele WAN's in de regio toevoegen om dit voor elkaar te krijgen.
 > - U mag geen overlappende IP-ruimten voor hubs in een vWAN hebben.
 > - De VNet-verbindingen voor uw hub moeten zich in dezelfde regio bevinden als de hub.
+
+## <a name="convert-virtual-networks"></a>Virtuele netwerken converteren
+
+De volgende informatie is van toepassing als u een bestaand virtueel netwerk converteert naar een virtueel netwerk van de hub:
+
+- Als het virtuele netwerk een bestaande Azure-firewall heeft, selecteert u een firewallbeleid om aan de bestaande firewall te koppelen. De inrichtingsstatus van de firewall wordt bijgewerkt terwijl het firewallbeleid firewallregels vervangt. Tijdens de inrichtingsstatus blijft de firewall verkeer verwerken en treedt er geen downtime op. U kunt bestaande regels in een firewallbeleid importeren met Firewall Manager of Azure PowerShell.
+- Als het virtuele netwerk geen gekoppelde Azure-firewall heeft, wordt er een firewall geïmplementeerd en word het firewallbeleid aan de nieuwe firewall gekoppeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

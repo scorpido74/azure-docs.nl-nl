@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: spraak vertalen naar meerdere talen, C#-Speech-Service'
+title: 'Quickstart: Spraak omzetten naar meerdere talen, C# - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: a0acb96eaee73e3286f3957564ef3fa1a93e72bb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 58e0d916f876af916bc8db32c93af5029641878d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466502"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102608"
 ---
-Als u liever direct aan de slag gaat, kunt u alle <a href="https://aka.ms/speech/github-csharp">Speech SDK C#</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-csharp">C#-voorbeelden van de Speech SDK</a> op GitHub bekijken of downloaden. 

@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzing aan Windows Virtual Desktop-service-principal – Azure
-description: Service-principals maken en rollen toewijzen met behulp van PowerShell in Windows Virtual Desktop.
+title: Roltoewijzing aan Windows Virtual Desktop (klassiek)-service-principal - Azure
+description: Service-principals maken en rollen toewijzen met behulp van PowerShell in Windows Virtual Desktop (klassiek).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117725"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270087"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Zelfstudie: Service-principals en roltoewijzingen maken met behulp van PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>Zelfstudie: Service-principals en roltoewijzingen maken met PowerShell in Windows Virtual Desktop (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 Service-principals zijn identiteiten die u in Azure Active Directory kunt maken om rollen en machtigingen voor een bepaald doel toe te wijzen. In Windows Virtual Desktop kunt u een service-principal maken om:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een Synapse SQL-pool (preview) maken met behulp van Synapse Studio'
+title: 'Quickstart: Een Synapse SQL-pool maken met behulp van Synapse Studio'
 description: Een nieuwe Synapse SQL-pool maken met behulp van Synapse Studio door de stappen in deze handleiding uit te voeren.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036570"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Quickstart: Een Synapse SQL-pool (preview) maken met behulp van Synapse Studio
+# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Quickstart: Een Synapse SQL-pool maken met behulp van Synapse Studio
 
 Azure Synapse Analytics biedt diverse analyse-engines waarmee u uw gegevens kunt opnemen, transformeren, modelleren en analyseren. Een SQL-pool biedt op T-SQL gebaseerde reken- en opslagmogelijkheden. Nadat u een SQL-pool in uw Synapse-werkruimte hebt gemaakt, kunnen gegevens worden geladen, gemodelleerd, verwerkt en geleverd voor een snellere analyse.
 

@@ -5,29 +5,31 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 0d24f5621786ce292d98ae1fc6dd8fafc5b69c55
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3e21cc7a66f09b5e759b3d3a53ab95dd9710900d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556227"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171955"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Aan de slag met Azure Table Storage en de Azure Cosmos DB Table-API met behulp van Python
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Azure Table Storage en Azure Cosmos DB zijn services die gestructureerde NoSQL-gegevens opslaan in de cloud en zo een sleutel/kenmerkarchiefontwerp zonder schema bieden. Omdat Table Storage en Azure Cosmos DB schemaloos zijn, kunt u uw gegevens eenvoudig aanpassen naarmate de behoeften van uw toepassing veranderen. Toegang tot Table Storage- en Table API-gegevens is snel en kostenefficiënt voor veel soorten toepassingen en doorgaans goedkoper dan traditionele SQL voor vergelijkbare gegevensvolumes.
+Azure Table Storage en Azure Cosmos DB zijn services die gestructureerde NoSQL-gegevens opslaan in de cloud en zo een sleutel/kenmerkarchiefontwerp zonder schema bieden. Omdat Table Storage en Azure Cosmos DB schemaloos zijn, kunt u uw gegevens eenvoudig aanpassen naarmate de behoeften van uw toepassing veranderen. Toegang tot de Table Storage- en Table API-gegevens is snel en kostenefficiënt voor veel soorten toepassingen en doorgaans goedkoper dan traditionele SQL voor vergelijkbare gegevensvolumes.
 
 U kunt Table Storage of Azure Cosmos DB gebruiken voor de opslag van flexibele gegevenssets, zoals gebruikersgegevens voor webtoepassingen, adresboeken, apparaatgegevens of andere soorten metagegevens die uw service nodig heeft. In elke tabel kunt u een willekeurig aantal entiteiten opslaan. Een opslagaccount kan een onbeperkt aantal tabellen bevatten, tot de maximale capaciteit van het opslagaccount.
 
 ### <a name="about-this-sample"></a>Over dit voorbeeld
+
 In dit voorbeeld ziet u hoe u de [Azure Cosmos DB Table SDK voor Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) in algemene scenario's voor Azure Table-opslag gebruikt. De naam van de SDK geeft aan dat deze bedoeld is voor gebruik met Azure Cosmos DB, maar hij werkt met zowel Azure Cosmos DB- als Azure Tables-opslag. Alleen heeft elke service een uniek eindpunt. Deze scenario's worden doorgenomen met behulp van Python-voorbeelden die laten zien hoe u het volgende doet:
+
 * Tabellen maken en verwijderen
 * Entiteiten invoegen en query's erop uitvoeren
 * Entiteiten wijzigen
@@ -38,17 +40,20 @@ Tijdens het werken met de scenario's in dit voorbeeld kunt u het [referentiemate
 
 U hebt het volgende nodig voor dit voorbeeld:
 
-- [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 of 3.6
-- [Azure Cosmos DB Table SDK voor Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Deze SDK is verbonden met zowel Azure Table Storage als de Azure Cosmos DB Table-API.
-- Een [Azure Storage-account](../storage/common/storage-account-create.md) of [Azure Cosmos DB-account](https://azure.microsoft.com/try/cosmosdb/)
+* [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 of 3.6
+* [Azure Cosmos DB Table SDK voor Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Deze SDK is verbonden met zowel Azure Table Storage als de Azure Cosmos DB Table-API.
+* Een [Azure Storage-account](../storage/common/storage-account-create.md) of [Azure Cosmos DB-account](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Een Azure-serviceaccount maken
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
+**Een Azure-opslagaccount maken**
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Een Azure Cosmos DB Table-API-account maken
+**Een Azure Cosmos DB Table-API-account maken**
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>De Azure Cosmos DB Table SDK voor Python installeren

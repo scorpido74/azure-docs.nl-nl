@@ -1,5 +1,5 @@
 ---
-title: Wat is Toegewezen HSM? - Azure Toegewezen HSM | Microsoft Docs
+title: Problemen met Toegewezen HSM oplossen - Azure Toegewezen HSM | Microsoft Docs
 description: Overzicht van Azure Toegewezen HSM, welke mogelijkheden biedt voor sleutelopslag binnen Azure die voldoet aan de FIPS 140-2 Niveau 3-certificering
 services: dedicated-hsm
 author: msmbaldwin
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c398049cfe1d5ec2ee090d4fabf8008803efecb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074993"
 ---
-# <a name="troubleshooting"></a>Problemen oplossen
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Problemen met de Azure Toegewezen HSM-service oplossen
 
 De Azure Toegewezen HSM-service heeft twee afzonderlijke facetten. Ten eerste, de registratie en implementatie van de HSM-apparaten in Azure met hun onderliggende netwerkonderdelen. Ten tweede, de configuratie van de HSM-apparaten als voorbereiding op gebruik/integratie met een bepaalde workload of toepassing. Hoewel de Thales Luna Network HSM-apparaten hetzelfde zijn in Azure als wanneer u ze rechtstreeks bij Thales koopt, zorgt het feit dat ze een resource in Azure zijn voor een paar unieke overwegingen. Deze overwegingen en eventuele inzichten in probleemoplossing of aanbevolen procedures, zijn hier gedocumenteerd, voor hoge zichtbaarheid en toegang tot kritieke informatie. Zodra de service wordt gebruikt, is definitieve informatie beschikbaar via ondersteuningsaanvragen bij Microsoft of rechtstreeks bij Thales. 
 

@@ -9,14 +9,16 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'role: Direction'
+- 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 06c0ff7060f4a9d71af11ae75d52ad7f4bf14c6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b5b92de195e4ff4d5b00de041f5b021ee75f9800
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81730853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307689"
 ---
 # <a name="what-is-azure-iot-hub"></a>Wat is Azure IoT Hub?
 
@@ -28,7 +30,7 @@ De mogelijkheden van IoT Hub helpen u bij het bouwen van schaalbare, complete Io
 
 ## <a name="scale-your-solution"></a>Uw oplossing schalen
 
-IoT Hub kan worden opgeschaald naar miljoenen gelijktijdig verbonden apparaten en miljoenen gebeurtenissen per seconde om zo uw IoT-workloads te ondersteunen. Zie [IOT hub schalen](iot-hub-scaling.md?branch=release-iotbasic)voor meer informatie over het schalen van uw IOT hub. Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie over de verschillende lagen van de service die worden aangeboden door IOT hub en hoe u de schaal baarheid optimaal kunt aanpassen aan uw behoeften.
+IoT Hub kan worden opgeschaald naar miljoenen gelijktijdig verbonden apparaten en miljoenen gebeurtenissen per seconde om zo uw IoT-workloads te ondersteunen. Zie [IoT Hub schalen](iot-hub-scaling.md?branch=release-iotbasic) voor meer informatie over het schalen van uw IoT-hub. Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/iot-hub/) voor meer informatie over de verschillende lagen service die door IoT Hub wordt geboden en hoe u het best kunt voldoen aan uw schaalbaarheidsbehoeften.
 
 ## <a name="secure-your-communications"></a>Uw communicatie beveiligen
 
@@ -52,7 +54,7 @@ Met IoT Hub beschikt u over een beveiligd communicatiekanaal dat uw apparaten ku
 
 De ingebouwde functionaliteit voor het routeren van berichten biedt u de flexibiliteit voor het instellen van automatische berichtendistributie op basis van regels:
 
-* Gebruik [bericht routering](iot-hub-devguide-messages-d2c.md) om te bepalen waar de hub apparaat-telemetrie verzendt.
+* Gebruik [berichtroutering](iot-hub-devguide-messages-d2c.md) om te bepalen naar welke locatie de hub telemetriegegevens van apparaten verstuurt.
 
 * Er zijn geen extra kosten verbonden aan het routeren van berichten naar meerdere eindpunten.
 
@@ -112,9 +114,9 @@ Als uw oplossing geen van de ondersteunde protocollen kan gebruiken, kunt u IoT 
 
 ## <a name="quotas-and-limits"></a>Quota en limieten
 
-Voor elk Azure-abonnement gelden standaardquotalimieten ter voorkoming van misbruik van de service. Deze limieten kunnen invloed hebben op het bereik van uw IoT-oplossing. De huidige limiet voor per abonnement is 50 IoT hubs per abonnement. U kunt een verzoek voor een groter quota indienen door contact op te nemen met de ondersteuning. Zie [IOT hub quota's en beperking](iot-hub-devguide-quotas-throttling.md)voor meer informatie. Raadpleeg een van de volgende artikelen voor meer informatie over quotum limieten:
+Voor elk Azure-abonnement gelden standaardquotalimieten ter voorkoming van misbruik van de service. Deze limieten kunnen invloed hebben op het bereik van uw IoT-oplossing. De huidige limiet voor een abonnementsvariant is 50 IoT-hubs per abonnement. U kunt een verzoek voor een groter quota indienen door contact op te nemen met de ondersteuning. Zie [Quota en beperkingen voor IoT Hub](iot-hub-devguide-quotas-throttling.md) voor meer informatie. Voor meer informatie over quotabeperkingen bekijkt u een van de volgende artikelen:
 
-* [Service limieten voor Azure-abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md)
+* [Limieten, quota en beperkingen van Azure-abonnementen en -services](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
@@ -122,8 +124,8 @@ Voor elk Azure-abonnement gelden standaardquotalimieten ter voorkoming van misbr
 
 Bekijk de snelstartgidsen voor IoT Hub als u een end-to-end IoT-oplossing wilt uitproberen:
 
-* [Snelstartgids: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-node.md)
+* [Snelstart: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-node.md)
 
 Voor meer informatie over de manieren waarop u IoT-oplossingen kunt bouwen en implementeren met Azure IoT, gaat u naar:
 
-* [Fundamentals: Azure IOT-technologieën en-oplossingen](../iot-fundamentals/iot-services-and-technologies.md).
+* [Basisprincipes: Azure IoT-technologieën en -oplossingen](../iot-fundamentals/iot-services-and-technologies.md).

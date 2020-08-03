@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 02ebdfc0fe3fd39f29a64fdb49a3f0d37b007097
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dc4c348315dce59d5eaf58046c9a8d8f7f2e3725
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526959"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313673"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een virtuele Linux-machine bewaken in Azure
 
@@ -140,7 +140,7 @@ Ga als volgt te werk als u de bewaking van uw Azure-VM met Azure Monitor voor VM
     De lijst selecteert vooraf de standaardwerkruimte en de locatie waar de VM in het abonnement is geïmplementeerd. 
 
     >[!NOTE]
-    >Zie [Een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md) om een nieuwe Log Analytics-werkruimte te maken voor het opslaan van de bewakingsgegevens van de VM. Uw Log Analytics-werkruimte moet deel uitmaken van een van de [ondersteunde regio's](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics).
+    >Zie [Een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md) om een nieuwe Log Analytics-werkruimte te maken voor het opslaan van de bewakingsgegevens van de VM. De werkruimte moet deel uitmaken van een van de [ondersteunde regio's](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
 
 Nadat u bewaking hebt ingeschakeld, moet u mogelijk enkele minuten wachten voordat u de metrische prestatiegegevens voor de VM kunt weergeven.
 

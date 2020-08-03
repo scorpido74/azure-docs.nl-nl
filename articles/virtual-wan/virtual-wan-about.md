@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058744"
 ---
 # <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
 
@@ -110,7 +110,7 @@ Virtual WAN biedt geavanceerde routeringsverbeteringen. De mogelijkheid om aange
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Global VNet Peering
 
-Global VNet Peering biedt een mechanisme voor het verbinden van twee VNets in verschillende regio's. In Virtual WAN worden VNets met virtuele hubs verbonden door virtueel-netwerkverbindingen. De gebruiker hoeft globale VNet-peering niet expliciet in te stellen. Voor VNets die verbonden zijn met virtuele hubs in dezelfde regio worden VNet-peeringkosten in rekening gebracht. Voor VNets die verbonden zijn met virtuele hubs in een andere regio worden globale VNet-peeringkosten in rekening gebracht.
+Global VNet Peering biedt een mechanisme voor het verbinden van twee VNets in verschillende regio's. In Virtual WAN worden VNets met virtuele hubs verbonden door virtueel-netwerkverbindingen. De gebruiker hoeft globale VNet-peering niet expliciet in te stellen. Voor VNets die verbonden zijn met virtuele hubs in dezelfde regio, worden VNet-peeringkosten in rekening gebracht. Voor VNets die verbonden zijn met virtuele hubs in een andere regio worden globale VNet-peeringkosten in rekening gebracht.
 
 ### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute-verkeersversleuteling
 

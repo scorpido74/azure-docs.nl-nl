@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391822"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124551"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Azure Digital Twins verkennen met een voorbeeldclient-app
 
-In deze zelfstudie wordt een voorbeeldtoepassing geïntroduceerd die een opdrachtregelclienttoepassing implementeert voor interactie met een Azure Digital Twins-instantie. De client-app is vergelijkbaar met degene die is geschreven in [Zelfstudie: een client-app coderen](tutorial-code.md).
+In deze zelfstudie wordt een voorbeeldtoepassing geïntroduceerd die een opdrachtregelclienttoepassing implementeert voor interactie met een Azure Digital Twins-instantie. De client-app is vergelijkbaar met degene die is geschreven in [*Zelfstudie: Een client-app coderen*](tutorial-code.md).
 
 U kunt dit voorbeeld gebruiken om essentiële Azure Digital Twins-acties uit te voeren, zoals het uploaden van modellen, het maken en wijzigen van tweelingen en het maken van relaties. U kunt ook de code van het voor beeld bekijken voor meer informatie over de Azure Digital Twins-API's, en oefenen met het implementeren van uw eigen opdrachten door het voorbeeldproject te wijzigen zoals u maar wilt.
 
@@ -78,7 +78,7 @@ Vergeet niet het bestand op te slaan voordat u verdergaat.
 > Als u wilt proberen een eigen model te maken, kunt u de code van het *Room*-model in een nieuw bestand plakken dat u met de extensie *.json* opslaat in de map *AdtSampleApp\SampleClientApp\Models*. Vervolgens kunt u ermee spelen en eigenschappen en relaties toevoegen om alles te vertegenwoordigen wat u wilt. U kunt ook naar de andere voorbeeldmodellen in deze map kijken voor ideeën.
 
 > [!TIP] 
-> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [Instructies: Modellen parseren en valideren](how-to-use-parser.md).
+> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-use-parser.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Aan de slag met de opdrachtregel-app
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 Aangezien modellen niet kunnen worden overschreven, retourneert dit nu een servicefout.
-Voor meer informatie over hoe u bestaande modellen kunt verwijderen, zie [ Aangepaste modellen beheren](how-to-manage-model.md).
+Voor meer informatie over hoe u bestaande modellen kunt verwijderen, zie [ *Aangepaste modellen beheren*](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +285,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Het project in deze zelfstudie vormt de basis voor de volgende zelfstudie, [Zelfstudie: Een end-to-end-oplossing verbinden](tutorial-end-to-end.md). Als u van plan bent door te gaan naar de volgende zelfstudie, kunt u de resources die u hier hebt ingesteld behouden en deze Azure Digital Twins-instantie en geconfigureerde voorbeeld-app blijven gebruiken.
+Het project in deze zelfstudie vormt de basis voor de volgende zelfstudie, [*Zelfstudie: Een end-to-end-oplossing verbinden*](tutorial-end-to-end.md). Als u van plan bent door te gaan naar de volgende zelfstudie, kunt u de resources die u hier hebt ingesteld behouden en deze Azure Digital Twins-instantie en geconfigureerde voorbeeld-app blijven gebruiken.
 * In dit geval kunt u de voorbeeld-apps `DeleteAllTwins` en `DeleteAllModels` gebruiken om de tweelingen respectievelijk de modellen in uw instantie op te ruimen. Hiermee krijgt u een schone lei voor de volgende zelfstudie.
 
 Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen.
@@ -316,10 +316,10 @@ In deze zelfstudie bent u begonnen met Azure Digital Twins door het opzetten van
 Ga door naar de volgende zelfstudie om de voorbeeldopdrachtregel-app te gebruiken in combinatie met andere Azure-services om een op gegevens gebaseerd end-to-end scenario te voltooien:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een end-to-end-oplossing verbinden](tutorial-end-to-end.md)
+> [*Zelfstudie: Een end-to-end-oplossing verbinden*](tutorial-end-to-end.md)
 
 Of ga naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt:
-* [Concepten: Aangepaste modellen](concepts-models.md)
+* [*Concepten: Aangepaste modellen*](concepts-models.md)
 
 U kunt ook dieper ingaan op de processen in deze zelfstudie door de instructieartikelen te lezen:
-* [Uitleg: De Azure Digital Twins-CLI gebruiken](how-to-use-cli.md)
+* [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)

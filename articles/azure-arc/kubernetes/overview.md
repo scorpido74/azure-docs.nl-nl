@@ -9,12 +9,12 @@ ms.author: mlearned
 description: In dit artikel vindt u een overzicht van Kubernetes met Azure Arc.
 keywords: Kubernetes, Arc, Azure, containers
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050061"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Wat is Kubernetes met Azure Arc Preview?
 
@@ -24,9 +24,8 @@ Voor het verbinden van een Kubernetes-cluster met Azure moet de clusterbeheerder
 
 Kubernetes met Azure Arc biedt ondersteuning voor industriestandaard SSL om gegevens te beveiligen tijdens de overdracht. Ook worden inactieve gegevens versleuteld opgeslagen in een Azure Cosmos DB-database om de vertrouwelijkheid van gegevens te garanderen.
  
- > [!NOTE]
-> Kubernetes met Azure Arc bevindt zich in de preview-fase. Dit wordt niet aanbevolen voor productieworkloads. 
-
+> [!NOTE]
+> Kubernetes met Azure Arc is beschikbaar als preview-versie. Dit wordt niet aanbevolen voor productieworkloads.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's 
 
@@ -40,7 +39,6 @@ Kubernetes met Azure Arc biedt ondersteuning voor deze scenario’s:
 
 * Beleid toepassen met behulp van Azure Policy voor Kubernetes. 
 
- 
 ## <a name="supported-regions"></a>Ondersteunde regio’s 
 
 Kubernetes met Azure Arc wordt momenteel ondersteund in deze regio’s: 

@@ -1,6 +1,6 @@
 ---
-title: Een tenant maken in Windows Virtual Desktop - Azure
-description: Hier wordt beschreven hoe u Windows Virtual Desktop-tenants instelt in Azure Active Directory.
+title: Een tenant maken in Windows Virtual Desktop (klassiek) - Azure
+description: Hier wordt beschreven hoe u Windows Virtual Desktop (klassiek)-tenants instelt in Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362387"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286356"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelfstudie: Een tenant maken in Windows Virtual Desktop
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Zelfstudie: Een tenant maken in Windows Virtual Desktop (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 Het maken van een tenant in Windows Virtual Desktop vormt de eerste stap voor het bouwen van uw bureaubladvirtualisatieoplossing. Een tenant is een groep van een of meer hostgroepen. Elke hostgroep bestaat uit meerdere sessiehosts die worden uitgevoerd als virtuele machines in Azure en zijn geregistreerd bij de Windows Virtual Desktop-service. Elke hostgroep bestaat ook uit een of meer app-groepen die worden gebruikt voor het publiceren van extern-bureaublad- en externe toepassingsbronnen voor gebruikers. Met een tenant kunt u hostgroepen maken, app-groepen maken, gebruikers toewijzen en verbindingen via de service maken.
 

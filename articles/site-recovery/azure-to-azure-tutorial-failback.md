@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134453"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289296"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Failback uitvoeren van een virtuele Azure-machine uit tussen Azure-regio's
 
@@ -58,7 +58,7 @@ Nadat de virtuele machines opnieuw zijn beveiligd, kunt u desgewenst een failbac
     ![VM in primaire en secundaire regio's](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Voor machines met de Site Recovery-extensie vanaf versie 9.28.x.x [update-rollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery), schoont Site Recovery machines in de secundaire regio voor noodherstel op nadat de failback is voltooid en de VM's opnieuw zijn beveiligd. Het is niet nodig om VM's en NIC's handmatig uit de secundaire regio te verwijderen. Als u de replicatie volledig uitschakelt nadat u een failback hebt uitgevoerd, worden, naast de VM's en NIC's, de schijven in de regio voor noodherstel door Site Recovery opgeschoond.
+> Voor machines die beheerde schijven gebruiken en de Site Recovery-extensie vanaf versie 9.28.x.x [update-rollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) uitvoeren, schoont Site Recovery machines in de secundaire regio voor noodherstel op nadat de failback is voltooid en de VM's opnieuw zijn beveiligd. Het is niet nodig om VM's en NIC's handmatig uit de secundaire regio te verwijderen. VM’s met niet-beheerde schijven worden niet opgeschoond. Als u de replicatie volledig uitschakelt nadat u een failback hebt uitgevoerd, worden, naast de VM's en NIC's, de schijven in de regio voor noodherstel door Site Recovery opgeschoond.
 
 ## <a name="next-steps"></a>Volgende stappen
 

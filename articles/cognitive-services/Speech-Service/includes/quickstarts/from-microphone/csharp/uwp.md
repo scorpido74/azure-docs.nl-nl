@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een microfoon, C# (UWP)-spraak service'
+title: 'Quickstart: Spraak herkennen vanaf een microfoon, C# (UWP) - Speech-service'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -9,87 +9,85 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 1c631f4dea3b182c97f11f3892dff834c7681507
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 1068f715eb80eb5b7991a5b25c71c81d26d9f3c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275552"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102599"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * [Een resource voor de Azure Speech-service maken](../../../../get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
-Als u dit al hebt gedaan, is dit geweldig. Laten we verder gaan.
+Als u dat al hebt gedaan: geweldig. Laten we doorgaan.
 
-## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Open uw project in Visual Studio
 
-De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend.
+De eerste stap is het openen van uw project in Visual Studio.
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+We gaan wat code toevoegen die als basis voor het project gaat dienen.
 
-1. Open **Solution Explorer** `MainPage.xaml`in Solution Explorer.
+1. In **Solution Explorer** opent u `MainPage.xaml`.
 
-2. In de XAML-weer gave van de ontwerp functie plaatst u het volgende XAML-fragment in `<Grid>` de `</Grid>` **grid** -tag (tussen en):
+2. Voeg in de XAML-weergave van de ontwerpfunctie het volgende XAML-fragment toe aan de tag **Grid** (tussen `<Grid>` en `</Grid>`):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml#StackPanel)]
 
-3. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs`voor de code achter. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
+3. Open in **Solution Explorer** het code-behind-bronbestand `MainPage.xaml.cs`. (Het is gegroepeerd onder `MainPage.xaml`.)
 
-4. Vervang de code door de volgende basis code:
+4. Vervang de code door de volgende basiscode:
 
    [!code-csharp[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=6-50,55-56,94-154)]
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een Speech-configuratie maken
 
-Voordat u een `SpeechRecognizer` object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code in de `RecognizeSpeechAsync()` methode in.
+Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnementssleutel en de regio van het abonnement. Voeg deze code toe in de methode `SpeechRecognitionFromMicrophone_ButtonClicked()`.
 
 > [!NOTE]
-> In dit voor beeld `FromSubscription()` wordt de methode gebruikt `SpeechConfig`om de te bouwen. Zie [SpeechConfig class](https://docs.microsoft.com/dotnet/api/) voor een volledige lijst met beschik bare methoden[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
+> In dit voorbeeld wordt de methode `FromSubscription()` gebruikt om de `SpeechConfig` te maken. Zie [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)] voor een volledige lijst met beschikbare methoden
 
 ## <a name="initialize-a-speechrecognizer"></a>Een SpeechRecognizer initialiseren
 
-Nu gaan we een `SpeechRecognizer`maken. Dit object wordt gemaakt in een using-instructie om ervoor te zorgen dat onbeheerde bronnen goed worden vrijgegeven. Voeg deze code toe in `RecognizeSpeechAsync()` de-methode, rechts onder uw spraak configuratie.
+Laten we nu een `SpeechRecognizer` maken. Dit object wordt in een using-instructie gemaakt om de juiste vrijgave van niet-beheerde resources te verzekeren. Voeg deze code toe in de methode `SpeechRecognitionFromMicrophone_ButtonClicked()`, recht onder uw Speech-configuratie.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
-## <a name="recognize-a-phrase"></a>Een woord groep herkennen
+## <a name="recognize-a-phrase"></a>Een woordgroep herkennen
 
-Vanuit het `SpeechRecognizer` object roept u de `RecognizeOnceAsync()` -methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
-
-Voeg deze code toe binnen de instructie using.
+Vanuit het `SpeechRecognizer`-object roept u de methode `RecognizeOnceAsync()` aan. Met deze methode laat u de Speech-service weten dat u één woordgroep verstuurt voor herkenning en dat er kan worden gestopt met het herkennen van spraak zodra de woordgroep is geïdentificeerd.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 
-## <a name="display-the-recognition-results-or-errors"></a>De herkennings resultaten (of fouten) weer geven
+## <a name="display-the-recognition-results-or-errors"></a>De herkenningsresultaten (of fouten) weergeven
 
-Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wilt u er iets mee doen. We gaan het eenvoudig en het resultaat afdrukken in het status paneel.
+Wanneer het herkenningsresultaat wordt geretourneerd door de Speech-service, wilt u daar iets mee doen. We zullen het eenvoudig houden en het resultaat afdrukken naar het statuspaneel.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=68-93)]
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-U bent nu klaar om uw toepassing te bouwen en te testen.
+U bent nu klaar om uw toepassing te bouwen en testen.
 
-1. **Kies** > build**Build Solution** in de menu balk om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. Kies in de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
+1. Kies **Debug** > **Start Debugging** (of druk op **F5**) om de toepassing te starten. Het venster **helloworld** wordt weergegeven.
 
-   ![Voor beeld van een UWP-toepassing voor spraak herkenning in C#-Quick Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-helloworld-window.png)
+   ![Voorbeeld van UWP-spraakherkenningstoepassing in C# - quickstart](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-helloworld-window.png)
 
-1. Selecteer **microfoon inschakelen**en selecteer wanneer de toegangs machtigings aanvraag wordt weer gegeven, **Ja**.
+1. Selecteer **Enable Microphone**, en selecteer **Yes** wanneer het toegangsverzoek verschijnt.
 
-   ![Verzoek om toegang tot de microfoon](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Verzoek om toegang tot microfoon](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. Selecteer **Speech recognition with microphone input** en zeg een Engelse woordgroep of zin in de microfoon van uw apparaat. Uw gesproken tekst wordt verzonden naar de Speech-service en getranscribeerd naar tekst, die in hetzelfde venster wordt weergegeven.
 
-   ![Gebruikers interface voor spraak herkenning](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
+   ![Gebruikersinterface voor spraakherkenning](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

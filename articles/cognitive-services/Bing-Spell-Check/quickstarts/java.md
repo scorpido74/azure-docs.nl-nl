@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: spelling controleren met de REST API en Java-Bing Spellingcontrole'
+title: 'Quickstart: Spellingcontrole met de REST API en Java - Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Aan de slag met de Bing Spellingcontrole-REST-API om de spelling en grammatica te controleren.
+description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,31 +9,32 @@ ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 56a5215daea9289a481e0a51575ef0ee3cbdb3a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995970"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322071"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en Java
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-REST API en Java
 
 Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Java-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. 
 
-Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java).
+Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * De Java Development Kit (JDK) 7 of hoger.
 
-* Importeer de [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) of de meest recente [gson](https://github.com/google/gson) -versie. Voor de uitvoering van de opdracht regel `.jar` moet u de map aan uw Java toevoegen met de hoofd klasse.
+* Importeer de [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) of de meest actuele [Gson](https://github.com/google/gson)-versie. Voor opdrachtregeluitvoering voegt u de `.jar` toe aan uw Java-map met de hoofdklasse.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-an-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Java-project in uw favoriete IDE of editor met een klassen naam van uw keuze en importeer vervolgens de volgende pakketten:
+1. Maak een nieuw Java-project in uw favoriete IDE of editor met een klassenaam van uw keuze, en importeer dan de volgende pakketten:
 
     ```java
     import java.io.*;
@@ -42,7 +43,7 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Maak variabelen voor het eindpunt, de host en het pad van de API, en uw abonnementssleutel. Maak vervolgens variabelen voor uw markt, de tekst die u wilt controleren en een teken reeks voor de spelling controle modus. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het eindpunt, de host en het pad van de API, en uw abonnementssleutel. Maak vervolgens variabelen voor uw markt, de tekst waarop u spellingcontrole wilt uitvoeren en een tekenreeks voor de spellingcontrolemodus. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -57,11 +58,11 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Maak een functie met de naam `check()` om de API-aanvraag te maken en verzenden. In deze functie voegt u de code toe die u in de volgende stappen hebt opgegeven. Een teken reeks maken voor de aanvraag parameters:
+1. Maak een functie met de naam `check()` om de API-aanvraag te maken en verzenden. In deze functie voegt u de code toe die in de volgende stappen is opgegeven. Maak een tekenreeks voor de aanvraagparameters:
 
-   1. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. 
+   1. Wijs uw marktcode toe aan de parameter `mkt` met de operator `=`. 
 
-   1. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. 
+   1. Voeg de parameter `mode` met de `&` operator toe en wijs vervolgens de spellingcontrolemodus toe. 
 
    ```java
    public static void check () throws Exception {
@@ -70,14 +71,14 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
    }
    ```
 
-2. Maak een URL door de teken reeks voor het eindpunt, het pad en de para meters te combi neren. Een nieuw `HttpsURLConnection` object maken.
+2. Maak een URL door het eindpunt, de host, het pad en de parametertekenreeks te combineren. Maak een nieuw `HttpsURLConnection`-object.
 
     ```java
     URL url = new URL(host + path + params);
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Open een verbinding met de URL. Stel de aanvraag methode in op `POST` en voeg uw aanvraag parameters toe. Zorg ervoor dat u uw abonnements sleutel aan de `Ocp-Apim-Subscription-Key` koptekst toevoegt.
+3. Open een verbinding met de URL. Stel de aanvraagmethode in op `POST` en voeg uw aanvraagparameters toe. Vergeet niet om de abonnementssleutel toe te voegen aan de `Ocp-Apim-Subscription-Key`-header.
 
     ```java
     connection.setRequestMethod("POST");
@@ -86,7 +87,7 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
     connection.setDoOutput(true);
     ```
 
-4. Maak een nieuw `DataOutputStream` object en verzend de aanvraag naar de API.
+4. Maak een nieuw `DataOutputStream`-object en verzend de aanvraag naar de API.
 
     ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -95,9 +96,9 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
         wr.close();
     ```
 
-## <a name="format-and-read-the-api-response"></a>De API-reactie opmaken en lezen
+## <a name="format-and-read-the-api-response"></a>Het API-antwoord opmaken en lezen
 
-1. Voeg de `prettify()` methode toe aan uw klasse, waarmee de JSON wordt opgemaakt voor een beter Lees bare uitvoer.
+1. Voeg de `prettify()`-methode aan uw klasse toe, zodat de JSON wordt opgemaakt om de uitvoer beter leesbaar te maken.
 
     ``` java
     // This function prettifies the json response.
@@ -123,7 +124,7 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
 
 ## <a name="call-the-api"></a>De API aanroepen
 
-In de hoofd functie van uw toepassing roept u de `check()` methode aan die u eerder hebt gemaakt.
+Roep in de hoofdfunctie van uw toepassing uw eerder gemaakte `check()`-methode aan.
 ```java
         public static void main(String[] args) {
             try {
@@ -137,9 +138,9 @@ In de hoofd functie van uw toepassing roept u de `check()` methode aan die u eer
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Uw project bouwen en uitvoeren. Als u de opdracht regel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren:
+Bouw uw project en voer het uit. Als u de opdrachtregel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren:
 
-1. De toepassing bouwen:
+1. Bouw de toepassing:
 
    ```bash
    javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
@@ -199,4 +200,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app met één pagina maken](../tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -7,31 +7,30 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
-ms.date: 04/05/2018
-ms.openlocfilehash: dcea83b9452b33baef8d563c7776aa9bd258a5f4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/23/2020
+ms.openlocfilehash: f0a5c3df2359add9f896e05af6c8c77d9e006a2a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389680"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171983"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>De Azure Storage-tabelservice of de Azure Cosmos DB Table-API gebruiken in PHP
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Overzicht
-In deze handleiding wordt beschreven hoe u veelvoorkomende scenario's uitvoert met de Azure Storage-tabelservice en de Azure Cosmos DB Table-API. De voorbeelden zijn geschreven in PHP en maken gebruik van de [clientbibliotheek voor PHP voor Azure Storage-tabellen][download]. De volgende scenario's worden behandeld: **een tabel maken en verwijderen** en **entiteiten in een tabel invoegen, verwijderen en hierop query's uitvoeren**. Zie het gedeelte [Volgende stappen](#next-steps) voor meer informatie over de Azure-tabelservice.
-
+Dit artikel laat zien hoe u tabellen maakt, uw gegevens opslaat en CRUD-bewerkingen op de gegevens uitvoert. Kies de Azure Table-service of de Azure Cosmos DB Table-API. De voorbeelden zijn geschreven in PHP en maken gebruik van de [clientbibliotheek voor PHP voor Azure Storage-tabellen][download]. De volgende scenario's worden behandeld: **een tabel maken en verwijderen** en **entiteiten in een tabel invoegen, verwijderen en hierop query's uitvoeren**. Zie het gedeelte [Volgende stappen](#next-steps) voor meer informatie over de Azure-tabelservice.
 
 ## <a name="create-an-azure-service-account"></a>Een Azure-serviceaccount maken
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
+**Een Azure-opslagaccount maken**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Een Azure Cosmos DB Table-API-account maken
+**Een Azure Cosmos DB Table-API-account maken**
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
@@ -58,8 +57,8 @@ In deze handleiding gebruikt u de Azure Storage-tabelservice of Azure Cosmos DB-
    ```
    U kunt ook naar de [clientbibliotheek voor PHP voor Azure Storage-tabellen](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) op GitHub gaan om de broncode te klonen.
 
-
 ## <a name="add-required-references"></a>Vereiste verwijzingen toevoegen
+
 Als u de Azure Storage-tabelservice of Azure Cosmos DB-API's wilt gebruiken, moet u het volgende doen:
 
 * Maak een verwijzing naar het autoloaderbestand met de instructie [require_once][require_once] en
@@ -74,25 +73,32 @@ use MicrosoftAzure\Storage\Table\TableRestProxy;
 
 In de onderstaande voorbeelden wordt de instructie `require_once` altijd weergegeven, maar er wordt alleen verwezen naar de klassen die nodig zijn om het voorbeeld uit te voeren.
 
-## <a name="add-a-storage-table-service-connection"></a>Een verbinding voor de Azure Storage-tabelservice toevoegen
+## <a name="add-your-connection-string"></a>Uw verbindingsreeks toevoegen
+
+U kunt verbinding maken met het Azure Storage-account of het Azure Cosmos DB Table-API-account. Haal de verbindingsreeks op voor het soort account dat u gebruikt.
+
+### <a name="add-a-storage-table-service-connection"></a>Een verbinding voor de Azure Storage-tabelservice toevoegen
+
 U moet eerst over een geldige verbindingsreeks beschikken voordat u een instantie kunt maken van een client voor de Azure Storage-tabelservice. De indeling voor de verbindingsreeks voor de Azure Storage-tabelservice is:
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Een Azure Cosmos DB-verbinding toevoegen
-U moet eerst over een geldige verbindingsreeks beschikken voordat u een instantie kunt maken van een Azure Cosmos DB Table-client. De indeling voor de Azure Cosmos DB-verbindingsreeks is:
+### <a name="add-a-storage-emulator-connection"></a>Een verbinding voor de opslagemulator toevoegen
 
-```php
-$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
-```
-
-## <a name="add-a-storage-emulator-connection"></a>Een verbinding voor de opslagemulator toevoegen
 U kunt als volgt toegang krijgen tot de opslagemulator:
 
 ```php
 UseDevelopmentStorage = true
+```
+
+### <a name="add-an-azure-cosmos-db-connection"></a>Een Azure Cosmos DB-verbinding toevoegen
+
+U moet eerst over een geldige verbindingsreeks beschikken voordat u een instantie kunt maken van een Azure Cosmos DB Table-client. De indeling voor de Azure Cosmos DB-verbindingsreeks is:
+
+```php
+$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
 Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt:
@@ -113,6 +119,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Een tabel maken
+
 Met het object **TableRestProxy** kunt u een tabel maken via de methode **createTable**. Bij het maken van een tabel kunt u de time-out voor de tabelservice instellen. (Zie [Time-outs instellen voor tabelservicebewerkingen][table-service-timeouts] voor meer informatie over de time-out voor de tabelservice.)
 
 ```php
@@ -140,6 +147,7 @@ catch(ServiceException $e){
 Zie [Het gegevensmodel van de tabelservice][table-data-model] voor meer informatie over beperkingen voor tabelnamen.
 
 ## <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
+
 Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen in meerdere entiteiten die zijn opgeslagen op hetzelfde knooppunt kunnen beter worden uitgevoerd dan bewerkingen in entiteiten die zijn opgeslagen op verschillende knooppunten.) De `RowKey` is de unieke id van een entiteit binnen een partitie.
 
 ```php
@@ -219,6 +227,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Eén entiteit ophalen
+
 Met de methode **TableRestProxy->getEntity** kunt u één entiteit ophalen door de `PartitionKey` en `RowKey` van de entiteit op te vragen. In het volgende voorbeeld worden de partitiesleutel `tasksSeattle` en de rijsleutel `1` doorgegeven aan de methode **getEntity**.
 
 ```php
@@ -248,6 +257,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Alle entiteiten in een partitie ophalen
+
 Entiteitsquery's worden samengesteld met filters (zie [Query's uitvoeren op tabellen en entiteiten][filters] voor meer informatie). Als u alle entiteiten in de partitie wilt ophalen, gebruikt u het filter 'PartitionKey eq *partition_name*'. In het volgende voorbeeld wordt getoond hoe u alle entiteiten in de partitie `tasksSeattle` ophaalt door een filter door te geven aan de methode **queryEntities**.
 
 ```php
@@ -281,6 +291,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Een subset van entiteiten in een partitie ophalen
+
 Het patroon uit het vorige voorbeeld kan ook worden gebruikt voor het ophalen van een subset van entiteiten in een partitie. De subset van entiteiten die u ophaalt, wordt bepaald door het filter dat u gebruikt (zie [Query's uitvoeren op tabellen en entiteiten][filters] voor meer informatie). In het volgende voorbeeld wordt getoond hoe u een filter gebruikt voor het ophalen van alle entiteiten met een specifieke `Location` en een `DueDate` die vroeger is dan een opgegeven datum.
 
 ```php
@@ -314,6 +325,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Een subset van entiteitseigenschappen ophalen
+
 U kunt met een query een subset van entiteitseigenschappen ophalen. Deze methode, *projectie* genoemd, verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Als u een eigenschap wilt opgeven die moet worden opgehaald, geeft u de naam van de eigenschap door aan de methode **Query->addSelectField**. U kunt deze methode meerdere keren aanroepen om meer eigenschappen toe te voegen. Nadat u **TableRestProxy->queryEntities** hebt uitgevoerd, hebben de geretourneerde entiteiten alleen de geselecteerde eigenschappen. (Als u een subset van tabelentiteiten wilt retourneren, gebruikt u een filter zoals in de bovenstaande query's wordt getoond.)
 
 ```php
@@ -353,6 +365,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>Een entiteit bijwerken
+
 U kunt een bestaande entiteit bijwerken met de methoden **Entity->setProperty** en **Entity->addProperty** voor de entiteit en vervolgens **TableRestProxy->updateEntity** aanroepen. In het volgende voorbeeld wordt een entiteit opgehaald, één eigenschap gewijzigd, een andere eigenschap verwijderd en wordt een nieuwe eigenschap toegevoegd. U kunt een eigenschap verwijderen door de waarde ervan in te stellen op **null**.
 
 ```php
@@ -387,6 +400,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-an-entity"></a>Een entiteit verwijderen
+
 Als u een entiteit wilt verwijderen, geeft u de tabelnaam en de `PartitionKey` en `RowKey` van de entiteit door aan de methode **TableRestProxy->deleteEntity**.
 
 ```php
@@ -415,6 +429,7 @@ catch(ServiceException $e){
 U kunt voor gelijktijdigheidscontroles de Etag zo instellen dat een entiteit wordt verwijderd met de methode **DeleteEntityOptions->setEtag** en door het object **DeleteEntityOptions** als een vierde parameter door te geven aan **deleteEntity**.
 
 ## <a name="batch-table-operations"></a>Batchbewerkingen voor tabellen
+
 Met de methode **TableRestProxy->batch** kunt u meerdere bewerkingen uitvoeren in één aanvraag. In dit patroon worden bewerkingen toegevoegd aan het object **BatchRequest** en wordt vervolgens het object **BatchRequest** doorgegeven aan de methode **TableRestProxy->batch**. Als u een bewerking wilt toevoegen aan een **BatchRequest**-object, kunt u een van de volgende methoden meerdere keren aanroepen:
 
 * **addInsertEntity** (hiermee wordt een insertEntity-bewerking toegevoegd)
@@ -475,6 +490,7 @@ catch(ServiceException $e){
 Zie [Entiteitsgroepstransacties uitvoeren][entity-group-transactions] voor meer informatie over batchbewerkingen voor tabellen.
 
 ## <a name="delete-a-table"></a>Een tabel verwijderen
+
 En als u ten slotte een tabel wilt verwijderen, geeft u de tabelnaam door aan de methode **TableRestProxy->deleteTable**.
 
 ```php
@@ -501,6 +517,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Nu u bekend bent met de basisprincipes van de Azure-tabelservice en Azure Cosmos DB, volgt u deze koppelingen voor meer informatie.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.

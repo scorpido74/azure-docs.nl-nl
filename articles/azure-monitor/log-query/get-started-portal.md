@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075345"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Zelfstudie: Aan de slag met de Log Analytics-query's
 
@@ -189,7 +189,7 @@ Een query opslaan:
    
    Als u een query als een functie wilt opslaan, geeft u een **functiealias**op. Dit is een korte naam die andere query's kunnen gebruiken om deze query aan te roepen.
    
-1. Geef een **categorie** op die door **Queryverkenner** voor de query kan worden gebruikt.
+1. Als u in een Log Analytics-werkruimte zit, geeft u een **Categorie** op voor **Queryverkenner** om voor de query te gebruiken. (Categorieën zijn niet beschikbaar voor Application Insights-query’s.)
    
 1. Selecteer **Opslaan**.
    
@@ -202,6 +202,10 @@ Als u een opgeslagen query wilt laden, selecteert u in de rechterbovenhoek **Que
 
 ### <a name="export-and-share-queries"></a>Query's exporteren en delen
 Als u een query wilt exporteren, selecteert u **Exporteren** in de bovenste balk en selecteert u vervolgens **Exporteren naar CSV - alle kolommen**, **Exporteren naar CSV - weergegeven kolommen** of **Exporteren naar Power BI (M Query)** in de vervolgkeuzelijst.
+
+De volgende video laat zien hoe u Log Analytics integreert met Excel.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 Als u een koppeling naar een query wilt delen, selecteert u **Koppeling kopiëren** in de bovenste balk en selecteert u vervolgens **Koppeling naar query kopiëren**, **Querytekst kopiëren** of **Queryresultaten kopiëren** om naar het klembord te kopiëren. U kunt de querykoppeling verzenden naar anderen die toegang hebben tot dezelfde werkruimte.
 

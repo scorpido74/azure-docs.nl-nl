@@ -1,25 +1,24 @@
 ---
-title: Voor beelden van Azure CLI voor Azure-toepassing gateway
-description: Dit artikel bevat koppelingen naar Azure CLI-voor beelden, zodat u Azure-toepassing gateway snel op verschillende manieren kunt implementeren.
+title: Azure CLI-voorbeelden voor Azure Application Gateway
+description: Dit artikel bevat koppelingen naar Azure CLI-voorbeelden, zodat u snel Azure Application Gateway op verschillende manieren kunt implementeren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 57df87f6cc101f4cc097b464d93238d3b868c93b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0df0ace18e39a3920354e6c713843adc55bf1394
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74129777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086894"
 ---
-# <a name="azure-cli-examples-for-azure-application-gateway"></a>Voor beelden van Azure CLI voor Azure-toepassing gateway
+# <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure CLI-voorbeelden voor Azure Application Gateway
 
-De volgende tabel bevat koppelingen naar voor beelden van Azure CLI-script voor Azure-toepassing gateway.
+De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor Azure Application Gateway.
 
-| | |
-|---|---|
-| [Webverkeer beheren](./scripts/create-vmss-cli.md) | Hiermee maakt u een toepassings gateway en alle gerelateerde resources. |
-| [Webverkeer beperken](./scripts/create-vmss-waf-cli.md) | Hiermee maakt u een toepassings gateway die verkeer beperkt met OWASP-regels.|
-| | |
+| Voorbeeld | Beschrijving |
+|-------- | ----------- |
+| [Webverkeer beheren](./scripts/create-vmss-cli.md) | Hiermee maakt u een toepassingsgateway en alle gerelateerde resources. |
+| [Webverkeer beperken](./scripts/create-vmss-waf-cli.md) | Hiermee maakt u een toepassingsgateway die verkeer beperkt met behulp van OWASP-regels.|

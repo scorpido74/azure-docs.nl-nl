@@ -4,14 +4,15 @@ description: Hierin wordt Azure HPC Cache beschreven, een versnellingsoplossing 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053676"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
@@ -53,22 +54,16 @@ Een Azure HPC Cache-implementatie kan bijdragen aan het versnellen van kwantitat
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Azure HPC Cache is beschikbaar in de volgende Azure-regio's:
+Bezoek de pagina [Azure Global Infrastructure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) om te ontdekken waar Azure HPC Cache beschikbaar is.
 
-| Noord-Amerika      | Europa         | Azië            | Australië      |
-|--------------------|----------------|-----------------|----------------|
-| VS - oost            | Europa - noord   | Korea - centraal   | Australië - oost |
-| VS - oost 2          | Europa -west    | Azië - zuidoost  |               |
-| VS - zuid-centraal | | | |
-| VS - west 2        | | | |
-
-De functie [door klant beheerde sleutels](customer-keys.md) wordt alleen in de volgende regio's ondersteund:
+De functie [door klant beheerde sleutels](customer-keys.md) wordt alleen in deze Azure-regio's ondersteund:
 
 * VS - oost
 * VS - zuid-centraal
-* VS - west 2
-
-Controleer de [productpagina van Azure HPC Cache](https://azure.microsoft.com/services/hpc-cache) voor de nieuwste beschikbaarheidsgegevens.
+* US - west 2
+* Europa - west
+* VS (overheid) - Arizona
+* VS (overheid) - Virginia
 
 ## <a name="service-availability"></a>Beschikbaarheid van de service
 
@@ -79,5 +74,5 @@ Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache) in te v
 ## <a name="next-steps"></a>Volgende stappen
 
 * Lees de [productpagina van Azure HPC Cache](https://azure.microsoft.com/services/hpc-cache) voor meer informatie over de mogelijkheden ervan
-* Meer informatie over de [productvereisten](hpc-cache-prereqs.md)
+* Meer informatie over de [productvereisten](hpc-cache-prerequisites.md)
 * [Een Azure HPC Cache maken](hpc-cache-create.md) vanuit Azure Portal

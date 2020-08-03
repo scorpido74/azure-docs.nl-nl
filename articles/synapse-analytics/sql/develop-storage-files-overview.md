@@ -1,5 +1,5 @@
 ---
-title: Toegang krijgen tot bestanden in opslag met behulp van SQL on demand (preview) binnen Synapse SQL
+title: Toegang krijgen tot bestanden in opslag in SQL on-demand (preview)
 description: Beschrijft query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247095"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046873"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Toegang krijgen tot een externe opslag in Synapse SQL (on-demand)
 
@@ -43,7 +43,7 @@ Een gebruiker kan toegang krijgen tot de opslag met de volgende toegangsregels:
 - Een Azure AD-gebruiker gebruikt via OPENROWSET de Azure AD-identiteit van aanroeper om toegang te krijgen tot Azure Storage of om toegang te krijgen tot opslag met anonieme toegang.
 - Een SQL-gebruiker heeft via OPENROWSET anonieme toegang tot opslag.
 
-SQL-principals kunnen ook OPENROWSET gebruiken om rechtstreeks bestanden op te vragen die zijn beveiligd met SAS-tokens of beheerde identiteit van de werkruimte. Als een SQL-gebruiker deze functie uitvoert, moet een hoofdgebruiker met de machtiging ALTER ANY CREDENTIAL referenties binnen serverbereik maken die overeenkomen met de URL in de functie (met behulp van de opslagnaam en container) en de machtiging REFERENCES heeft verleend voor de aanroeper van de OPENROWSET-functie:
+SQL-principals kunnen ook OPENROWSET gebruiken om rechtstreeks bestanden op te vragen die zijn beveiligd met SAS-tokens of beheerde identiteit van de werkruimte. Als een SQL-gebruiker deze functie uitvoert, moet een hoofdgebruiker met de machtiging `ALTER ANY CREDENTIAL` referenties binnen serverbereik maken die overeenkomen met de URL in de functie (met behulp van de opslagnaam en container) en de machtiging REFERENCES heeft verleend voor de aanroeper van de OPENROWSET-functie:
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ Met DATABASE SCOPED CREDENTIAL geeft u op hoe gebruikers toegang kunnen krijgen 
 Een aanroeper moet een van de volgende machtigingen hebben voor het uitvoeren van de OPENROWSET-functie:
 
 - Een van de machtigingen voor het uitvoeren van OPENROWSET:
-  - Met ADMINISTER BULK OPERATION kan een gebruiker via aanmelding de OPENROWSET-functie uitvoeren.
-  - Met ADMINISTER DATABASE BULK OPERATION kan een gebruiker binnen een databasebereik de OPENROWSET-functie uitvoeren.
+  - Met `ADMINISTER BULK OPERATIONS` kan een gebruiker via aanmelding de OPENROWSET-functie uitvoeren.
+  - Met `ADMINISTER DATABASE BULK OPERATIONS` kan een gebruiker binnen een databasebereik de OPENROWSET-functie uitvoeren.
 - REFERENCES DATABASE SCOPED CREDENTIAL naar de referenties waarnaar wordt verwezen in EXTERNAL DATA SOURCE
 
 #### <a name="accessing-anonymous-data-sources"></a>Toegang tot anonieme gegevensbronnen
@@ -151,13 +151,13 @@ De volgende tabel geeft een lijst van de vereiste machtigingen voor de hierboven
 
 | Query’s uitvoeren | Vereiste machtigingen|
 | --- | --- |
-| OPENROWSET(BULK) zonder gegevensbron | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN`of SQL-aanmelding moet over REFERENCES CREDENTIAL::\<URL> beschikken voor met SAS beveiligde opslag |
-| OPENROWSET(BULK) met gegevensbron zonder referenties | `ADMINISTER BULK ADMIN` of `ADMINISTER DATABASE BULK ADMIN`, |
-| OPENROWSET(BULK) met gegevensbron en referenties | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` of `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| OPENROWSET(BULK) zonder gegevensbron | `ADMINISTER BULK OPERATIONS`, `ADMINISTER DATABASE BULK OPERATIONS`of SQL-aanmelding moet over REFERENCES CREDENTIAL::\<URL> beschikken voor met SAS beveiligde opslag |
+| OPENROWSET(BULK) met gegevensbron zonder referenties | `ADMINISTER BULK OPERATIONS` of `ADMINISTER DATABASE BULK OPERATIONS`, |
+| OPENROWSET(BULK) met gegevensbron en referenties | `REFERENCES DATABASE SCOPED CREDENTIAL` en één van `ADMINISTER BULK OPERATIONS` of `ADMINISTER DATABASE BULK OPERATIONS` |
 | CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` en `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CREATE EXTERNAL TABLE | `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY EXTERNAL FILE FORMAT` en `ALTER ANY EXTERNAL DATA SOURCE` |
 | SELECT FROM EXTERNAL TABLE | `SELECT TABLE` en `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | Voor het maken van een tabel - `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY DATA SOURCE` en `ALTER ANY EXTERNAL FILE FORMAT`. Gegevens lezen: `ADMIN BULK OPERATIONS` of `REFERENCES CREDENTIAL` of `SELECT TABLE` per tabel/weergave/functie in query + lezen/schrijven-machtiging voor opslag |
+| CETAS | Voor het maken van een tabel - `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY DATA SOURCE` en `ALTER ANY EXTERNAL FILE FORMAT`. Gegevens lezen: `ADMINISTER BULK OPERATIONS` of `REFERENCES CREDENTIAL` of `SELECT TABLE` per tabel/weergave/functie in query + lezen/schrijven-machtiging voor opslag |
 
 ## <a name="next-steps"></a>Volgende stappen
 

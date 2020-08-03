@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een BLOB maken met Power shell'
+title: 'Quickstart: Een blob maken met PowerShell'
 titleSuffix: Azure Storage
 description: In deze snelstart gebruikt u Azure PowerShell in object(blob)-opslag. Vervolgens gebruikt u PowerShell om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
 services: storage
@@ -9,14 +9,14 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: bca04317acf589e8bae46f086c6c79dfc82152a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d84867e598110c5d9a59b477d92a2c8e021358db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087336"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quick Start: blobs uploaden, downloaden en vermelden met Power shell
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quickstart: Blobs uploaden, downloaden en vermelden met PowerShell
 
 Gebruik de Azure PowerShell-module om Azure-resources te maken en beheren. Azure-resources kunnen vanaf de PowerShell-opdrachtregel of met scripts worden gemaakt of beheerd. In deze handleiding wordt beschreven hoe PowerShell kan worden gebruikt om bestanden over te dragen tussen de lokale schijf en Azure Blob Storage.
 
@@ -63,6 +63,12 @@ Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
+
+# upload a file to a folder
+Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
+  -Container $containerName `
+  -Blob "Foldername/Image003.jpg" `
+  -Context $ctx 
 ```
 
 Upload zoveel bestanden als u nodig hebt, voordat u doorgaat.
@@ -97,9 +103,9 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Gegevensoverdracht met AzCopy
 
-Het opdracht regel hulpprogramma AzCopy biedt hoogwaardige, script bare gegevens overdracht voor Azure Storage. U kunt AzCopy gebruiken om gegevens over te dragen van en naar Blob Storage en Azure Files. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy V10 toevoegen, de nieuwste versie van AzCopy. Zie [gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy V10 toevoegen met Blob Storage.
+Het AzCopy-opdrachtregelprogramma biedt high-performance, scriptbare gegevensoverdracht voor Azure Storage. U kunt met AzCopy gegevens overzetten naar en van Blob Storage en Azure Files. Zie [Aan de slag met AzCopy](../common/storage-use-azcopy-v10.md) voor meer informatie over AzCopy v10, de nieuwste versie van AzCopy. Zie [Gegevens overzetten met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md) voor meer informatie over het gebruik van AzCopy v10 met Blob Storage.
 
-In het volgende voor beeld wordt AzCopy gebruikt om een lokaal bestand te uploaden naar een blob. Vergeet niet om de voorbeeld waarden te vervangen door uw eigen waarden:
+In het volgende voorbeeld wordt AzCopy gebruikt om een lokaal bestand te uploaden naar een blob. Vergeet niet om de voorbeeldwaarden te vervangen door uw eigen waarden:
 
 ```powershell
 azcopy login
@@ -116,7 +122,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u bestanden overgebracht tussen een lokaal bestands systeem en Azure Blob-opslag. Voor meer informatie over het werken met Blob-opslag met behulp van Power shell kunt u Azure PowerShell voor beelden voor Blob-opslag verkennen.
+In deze quickstart hebt u bestanden overgebracht tussen een lokaal bestandssysteem en Azure Blob Storage. Bekijk de Azure PowerShell-voorbeelden voor Blob Storage voor meer informatie over het gebruik van Blob Storage met behulp van PowerShell.
 
 > [!div class="nextstepaction"]
 > [Voorbeelden van Azure PowerShell voor Azure Blob Storage](storage-samples-blobs-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
