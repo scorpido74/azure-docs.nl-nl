@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 219638f70797fc5ea413e4db72e528262df2fa87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037046"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501352"
 ---
 # <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
 
@@ -44,7 +45,7 @@ Get-InstalledModule -Name "Az"
 
 Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell module installeren](/powershell/azure/install-Az-ps).
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt u aanmelden bij Azure en Azure CLI-opdrachten uitvoeren. Dit kan op twee manieren:
 
@@ -75,7 +76,7 @@ Geen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,7 +86,7 @@ Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg d
 Connect-AzAccount
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
@@ -155,7 +156,7 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Geografisch zone-redundante opslag (GZRS)    |Standard_GZRS         |
 |Leestoegang tot geografische zone-redundante opslag (RA-GZRS)    |Standard_RAGZRS         |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik eerst de opdracht [az group create](/cli/azure/group#az_group_create) om een nieuwe resourcegroep te maken met Azure CLI.
 
@@ -249,7 +250,7 @@ Als u het opslag account wilt verwijderen, gebruikt u de opdracht [Remove-AzStor
 Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-group>
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u het opslag account wilt verwijderen, gebruikt u de opdracht [AZ Storage account delete](/cli/azure/storage/account#az-storage-account-delete) :
 
@@ -298,7 +299,7 @@ In dit procedure-artikel hebt u een standaard v2-opslag account voor algemeen ge
 > [!div class="nextstepaction"]
 > [Werken met blobs met behulp van PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
 > [Werken met blobs met behulp van Azure CLI](../blobs/storage-quickstart-blobs-cli.md)

@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478413"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496216"
 ---
-# <a name="using-file-metadata-in-queries"></a>Meta gegevens van bestanden in query's gebruiken
+# <a name="use-file-metadata-in-queries"></a>Metagegevens van bestand gebruiken in query's
 
 De SQL on-demand-query service kan worden uitgebreid naar meerdere bestanden en mappen, zoals beschreven in het artikel [query mappen en meerdere bestanden](query-folders-multiple-csv-files.md) . In dit artikel vindt u informatie over het gebruik van meta gegevens over bestands-en mapnamen in de query's.
 

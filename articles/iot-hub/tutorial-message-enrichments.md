@@ -7,13 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-azurecli
+ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770085"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500211"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Zelf studie: verrijkingen van Azure IoT Hub-berichten gebruiken
 
@@ -41,7 +41,7 @@ Hier volgen de taken die u uitvoert om deze zelf studie te volt ooien:
 * U hebt een abonnement op Azure nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 * Installeer [Visual Studio](https://www.visualstudio.com/).
 
-* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. In het apparaatvoorbeeld in deze zelfstudie wordt het MQTT-protocol gebruikt, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -83,7 +83,7 @@ Dit zijn de resources die zijn gemaakt door het script. *Verrijkt* betekent dat 
 | container naam | Origineel  |
 | container naam | geavanceerde  |
 | IoT-apparaatnaam | Contoso-test-apparaat |
-| IoT Hub naam | ContosoTestHubMsgEn |
+| Naam van de IoT Hub | ContosoTestHubMsgEn |
 | Naam van opslag account | contosostorage |
 | eindpunt naam 1 | ContosoStorageEndpointOriginal |
 | Naam van eind punt 2 | ContosoStorageEndpointEnriched|
@@ -279,7 +279,7 @@ Op dit moment worden de resources allemaal ingesteld en wordt de bericht routeri
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Maken en configureren met behulp van een resource manager-sjabloon
 U kunt een resource manager-sjabloon gebruiken om de resources, bericht Routering en verrijkingen van berichten te maken en te configureren.
 
-1. Meld u aan bij Azure Portal. Selecteer **+ een resource maken** om een zoekvak weer te geven. Voer de *sjabloon implementatie*in en zoek ernaar. Selecteer in het deel venster met resultaten **Sjabloonimlementatie (implementeren met aangepaste sjabloon)**.
+1. Meld u aan bij de Azure-portal. Selecteer **+ een resource maken** om een zoekvak weer te geven. Voer de *sjabloon implementatie*in en zoek ernaar. Selecteer in het deel venster met resultaten **Sjabloonimlementatie (implementeren met aangepaste sjabloon)**.
 
    ![Sjabloonimlementatie in de Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -303,7 +303,7 @@ U kunt een resource manager-sjabloon gebruiken om de resources, bericht Routerin
    | container naam | Origineel  |
    | container naam | geavanceerde  |
    | IoT-apparaatnaam | Contoso-test-apparaat |
-   | IoT Hub naam | ContosoTestHubMsgEn |
+   | Naam van de IoT Hub | ContosoTestHubMsgEn |
    | Naam van opslag account | contosostorage |
    | eindpunt naam 1 | ContosoStorageEndpointOriginal |
    | Naam van eind punt 2 | ContosoStorageEndpointEnriched|

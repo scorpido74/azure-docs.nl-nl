@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84cd5c2de0b1a6d0909a31071506d98627966775
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428652"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500739"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>T-SQL-weer gaven met Synapse SQL
 In dit artikel vindt u tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met Synapse SQL. 
 
-## <a name="why-use-views"></a>Waarom weer gaven gebruiken?
+## <a name="why-use-views"></a>Waarom weer gaven gebruiken
 
 Weer gaven kunnen op verschillende manieren worden gebruikt om de kwaliteit van uw oplossing te verbeteren.  In dit artikel worden enkele voor beelden gegeven van hoe u uw oplossing kunt verrijken met weer gaven en de beperkingen kunt opnemen die moeten worden overwogen.
 

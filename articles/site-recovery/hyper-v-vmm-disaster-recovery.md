@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134011"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495965"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
-De [Azure Site Recovery](site-recovery-overview.md)-service draagt bij aan uw strategie voor herstel na noodgevallen door de replicatie, failover en failback van on-premises machines en virtuele Azure-machines te beheren en in te delen.
+De [Azure site Recovery](site-recovery-overview.md) -service draagt bij aan uw strategie voor herstel na nood gevallen door replicatie, failover en failback van on-premises machines en virtuele Azure-machines (vm's) te beheren en te organiseren.
 
 In dit artikel wordt uitgelegd hoe u herstel na noodgevallen naar een secundaire site instelt voor on-premises Hyper-V-VM's die worden beheerd in System Center VMM-clouds (Virtual Machine Manager). In dit artikel leert u het volgende:
 
@@ -80,7 +80,7 @@ Installeer de Azure Site Recovery-provider op de VMM-servers en detecteer en reg
 4. Download het installatieprogramma voor de Azure Site Recovery-provider.
 5. Download de registratiesleutel. U hebt deze nodig tijdens de installatie van de provider. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
-    ![Bron instellen](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![Scherm afbeelding van de opties voor het downloaden van provider-en registratie sleutel.](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. Installeer de provider op elke VMM-server. U hoeft niets expliciet te installeren op de Hyper-V-hosts.
 
@@ -94,7 +94,7 @@ Installeer de Azure Site Recovery-provider op de VMM-servers en detecteer en reg
 4. Accepteer of wijzig in **Installatie** de standaardinstallatielocatie en klik op **Installeren**.
 5. Wanneer de installatie is voltooid, klikt u op **Registreren** om de server in de kluis te registreren.
 
-    ![Installatielocatie](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![Scherm afbeelding van de installatie van de provider, inclusief de installatie locatie.](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. Controleer in **Kluisnaam** de naam van de kluis waarin de server wordt geregistreerd. Klik op **Volgende**.
 7. Geef bij **Proxyverbinding** op hoe de provider die wordt uitgevoerd op de VMM-server verbinding maakt met Azure.
    - U kunt opgeven dat de provider rechtstreeks met internet of via een proxyserver verbinding moet maken. Geef indien nodig proxyinstellingen op.
@@ -115,7 +115,7 @@ Selecteer de VMM-doelserver en -cloud:
 1. Klik op **infrastructuur**  >  **doel**voorbereiden en selecteer de doel-VMM-server.
 2. VMM-clouds die zijn gesynchroniseerd met Site Recovery worden weergegeven. Selecteer de doelcloud.
 
-   ![Doel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Scherm afbeelding van de doel-VMM-server en de Cloud selecties.](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Een replicatiebeleid instellen
@@ -123,7 +123,7 @@ Selecteer de VMM-doelserver en -cloud:
 Controleer voordat u begint of alle hosts die het beleid gebruiken hetzelfde besturingssysteem hebben. Als op hosts verschillende versies van Windows Server worden uitgevoerd, hebt u meerdere soorten replicatiebeleid nodig.
 
 1. Als u een nieuw replicatie beleid wilt maken, klikt u op **infra structuur voorbereiden**  >  **replicatie-instellingen**  >  **+ maken en koppelen**.
-2. Geef in **beleid maken en koppelen**een beleids naam op. Het type bron en doel moet **Hyper-V** zijn.
+2. Geef in **Beleid maken en koppelen** een beleidsnaam op. Het type bron en doel moet **Hyper-V** zijn.
 3. Bij **Versie Hyper-V-host** selecteert u het besturingssysteem dat op de host wordt uitgevoerd.
 4. Bij **Verificatietype** en **Verificatiepoort** geeft u op hoe verkeer tussen de primaire en Hyper-V-hostserver en Hyper-V-hostserver voor herstel wordt geverifieerd.
     - Selecteer **Certificaat**, tenzij u een werkende Kerberos-omgeving hebt. Azure Site Recovery configureert automatisch certificaten voor HTTPS-verificatie. U hoeft niets handmatig te ondernemen.
@@ -138,14 +138,14 @@ Controleer voordat u begint of alle hosts die het beleid gebruiken hetzelfde bes
 5. Selecteer **Gerepliceerde VM verwijderen** om op te geven dat de gerepliceerde virtuele machine moet worden verwijderd als u de beveiliging voor de bron-VM uitschakelt. Als u deze instelling inschakelt, wordt deze als u de beveiliging voor de bron-VM uitschakelt uit de Site Recovery-console verwijderd, worden Site Recovery-instellingen voor de VMM verwijderd uit de VMM-console en wordt de replica verwijderd.
 6. Geef, als u via het netwerk repliceert, bij **Initiële replicatiemethode** op of de initiële replicatie moet worden gestart of plan deze in. Om netwerkbandbreedte te besparen, wilt u deze mogelijk buiten de drukste tijden plannen. Klik vervolgens op **OK**.
 
-     ![Beleid voor replicatie](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Scherm afbeelding van de opties voor het replicatie beleid.](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Het nieuwe beleid wordt automatisch gekoppeld aan de VMM-cloud. Klik bij **Replicatiebeleid** op **OK**. 
 
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
-1. Klik op **toepassings**  >  **bron**repliceren. 
+1. Klik op **Toepassing repliceren** > **Bron**. 
 2. Selecteer bij **Bron** de VMM-server en de cloud waarin de Hyper-V-hosts die u wilt repliceren zich bevinden. Klik vervolgens op **OK**.
 3. Verifieer bij **Doel** de secundaire VMM-server en cloud.
 4. Selecteer in **Virtuele machines** de VM's die u wilt beveiligen in de lijst.

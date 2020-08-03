@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124728"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496709"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
@@ -32,7 +32,7 @@ Een nieuw Azure-abonnement maken in de Azure Portal:
 
 Een gebruiker met eigenaars machtigingen voor het abonnement moet het vFXT-cluster maken. Voor het maken van een cluster moet een eigenaar de software voorwaarden accepteren en wijzigingen aan netwerk-en opslag bronnen autoriseren.
 
-Er zijn enkele tijdelijke oplossingen waarmee een niet-eigenaar een avere vFXT voor Azure-cluster kan maken. Deze scenario's omvatten het beperken van resources en het toewijzen van extra functies op basis van op rollen gebaseerde toegangs beheer (RBAC) aan de maker. In al deze gevallen moet een eigenaar van het abonnement ook [de avere vFXT-software voorwaarden](#accept-software-terms) van tevoren accepteren.
+Er zijn enkele tijdelijke oplossingen waarmee een niet-eigenaar een avere vFXT voor Azure-cluster kan maken. Deze scenario's omvatten het beperken van resources en het toewijzen van extra Azure-rollen aan de maker. In al deze gevallen moet een eigenaar van het abonnement ook [de avere vFXT-software voorwaarden](#accept-software-terms) van tevoren accepteren.
 
 | Scenario | Beperkingen | Er zijn toegangs rollen vereist om het avere vFXT-cluster te maken |
 |----------|--------|-------|

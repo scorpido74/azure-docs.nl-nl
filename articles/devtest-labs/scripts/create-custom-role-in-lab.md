@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 242e2a2bf743777dd43a4c84194ebd894b5edd3c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c97d5d3119644a6426152b1b832fabac3dde4863
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290401"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498409"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Power shell gebruiken voor het maken van een aangepaste rol in een lab in Azure DevTest Labs
 
@@ -41,7 +41,7 @@ In dit script worden de volgende opdrachten gebruikt:
 | Opdracht | Opmerkingen |
 |---|---|
 | [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Hiermee worden de bewerkingen opgehaald voor een Azure-resource provider die kan worden beveiligd met behulp van Azure RBAC. |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Een lijst met alle Azure RBAC-rollen die beschikbaar zijn voor toewijzing. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Een lijst met alle Azure-functies die beschikbaar zijn voor toewijzing. |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Hiermee maakt u een aangepaste rol. |
 
 ## <a name="next-steps"></a>Volgende stappen

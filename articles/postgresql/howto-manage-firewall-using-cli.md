@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 9b2c1021f88eab15a1f8803a4439dc0cb9b6ed97
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 17a41030adeb302f2c85b1bd4576caad9e723544
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117641"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489755"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Firewall regels maken en beheren in Azure Database for PostgreSQL-één server met behulp van Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een Azure Database for PostgreSQL-server vanuit een specifiek IP-adres of IP-bereik. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for PostgreSQL Server firewall rules](concepts-firewall-rules.md)(Engelstalig) voor een overzicht van Azure database for PostgreSQL firewall regels.
@@ -50,7 +51,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ```
 
 > [!IMPORTANT]
-> Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
+> Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorgt u er dan voor dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
 Wanneer de opdracht is voltooid, worden de details van de firewall regel die u hebt gemaakt, standaard weer gegeven in JSON-indeling. Als er een fout is, wordt in plaats daarvan een fout bericht weer gegeven in de uitvoer.

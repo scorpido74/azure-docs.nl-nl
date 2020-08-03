@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85101017"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495672"
 ---
-# <a name="assigning-variables-with-synapse-sql"></a>Variabelen toewijzen met Synapse SQL
+# <a name="assign-variables-with-synapse-sql"></a>Variabelen toewijzen met Synapse SQL
 
 In dit artikel vindt u tips voor het toewijzen van T-SQL-variabelen met Synapse SQL.
 
-## <a name="setting-variables-with-declare"></a>Variabelen instellen met DECLAReren
+## <a name="set-variables-with-declare"></a>Variabelen instellen met DECLAReren
 
 Variabelen in Synapse SQL worden ingesteld met behulp van de `DECLARE` instructie of de `SET` instructie. Initialisatie van variabelen met DECLAReren is een van de meest flexibele manieren om een variabele waarde in te stellen in Synapse SQL.
 
@@ -45,7 +45,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Waarden instellen met SET
+## <a name="set-values-with-set"></a>Waarden instellen met SET
 
 SET is een gemeen schappelijke methode voor het instellen van één variabele.
 

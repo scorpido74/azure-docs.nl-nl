@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60d184b3739d05063a0cddd108a2b2d7d49b57d7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c52275735a6558a625e2118761d7ba98509dbe1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962744"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497066"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Een SQL Server VM registreren in azure met de SQL-VM-resource provider (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -240,7 +241,7 @@ De agent modus bijwerken naar Full:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de resource van de [virtuele SQL-machines](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Selecteer uw SQL Server-VM en selecteer **overzicht**. 
 1. Selecteer voor SQL Server Vm's met de IaaS of de modus voor licht gewicht de optie **alleen licentie type en editie-updates zijn beschikbaar met het uitbreidings bericht van de SQL IaaS-extensie** .
@@ -281,7 +282,7 @@ U kunt controleren of uw SQL Server virtuele machine al is geregistreerd bij de 
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar uw [SQL Server vm's](manage-sql-vm-portal.md).
 1. Selecteer uw SQL Server-VM in de lijst. Als uw SQL Server VM hier niet wordt vermeld, is deze waarschijnlijk niet geregistreerd bij de resource provider van de SQL-VM. 
 1. Bekijk de waarde onder **status**. Als de **status** is **geslaagd**, is de SQL Server VM geregistreerd bij de resource provider van de SQL-VM. 
@@ -320,7 +321,7 @@ Het ongedaan maken van de registratie van de virtuele SQL-machine bij de resourc
 
 Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machine bij de resource provider ongedaan te maken met behulp van de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Ga naar de SQL-VM-resource. 
   
    ![Resource van virtuele SQL-machines](./media/sql-vm-resource-provider-register/sql-vm-manage.png)

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461048"
+ms.locfileid: "87500654"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -63,7 +63,30 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 
 ## <a name="release-history"></a>Release geschiedenis
 
+### <a name="440-beta1-unreleased"></a>4.4.0-bèta versie 1 (niet-vrijgegeven)
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
+#### <a name="new-features"></a>Nieuwe functies
+* Bijgewerkte versie van de reactor-kern bibliotheek naar `3.3.8.RELEASE` . 
+* De Netty-bibliotheek versie is bijgewerkt naar `0.9.10.RELEASE` . 
+* De versie van de Netty-bibliotheek is bijgewerkt naar `4.1.51.Final` . 
+* Er zijn nieuwe overload-Api's toegevoegd voor `upsertItem` met `partitionKey` . 
+* Ondersteuning voor open telemetrie-tracering is toegevoegd. 
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Er is een probleem opgelost waarbij SSLException wordt gegenereerd als er aanvragen in de modus GATEWAY worden geannuleerd.
+* Beleid voor opnieuw proberen van geregelde procedures voor het uitvoeren van een aanvraag
+* Er is een probleem opgelost waarbij SDK vastloopt in de modus voor fout opsporing op logboek niveau. 
+* Vaste periodieke pieken in latentie in directe modus. 
+* Er is een fout opgetreden bij het uitvoeren van een hoge client initialisatie tijd. 
+* Vaste http-proxy fout bij het aanpassen van de client met de directe modus en de gateway modus. 
+* Met vaste mogelijke NPE in gebruikers worden Null-opties door gegeven. 
+* TimeUnit toegevoegd aan `requestLatency` in de diagnostische teken reeks.
+* Dubbele URI-teken reeks uit de diagnostische teken reeks verwijderd. 
+* Vaste diagnose teken reeks in de juiste JSON-indeling voor punt bewerkingen.
+* Probleem opgelost met `.single()` de operator, waardoor de reactor keten in het geval van een niet-gevonden uitzonde ring optreedt. 
+
 ### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+#### <a name="new-features"></a>Nieuwe functies
 * De API voor script logboek registratie is ingeschakeld `CosmosStoredProcedureRequestOptions` .
 * De `DirectConnectionConfig` standaard waarde is bijgewerkt `idleEndpointTimeout` naar 1U en standaard ingesteld `connectTimeout` op 5s.
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
@@ -151,5 +174,5 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.

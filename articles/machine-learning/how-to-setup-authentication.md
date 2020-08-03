@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423572"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489874"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ De meeste voor beelden in de documentatie en voor beelden gebruiken interactieve
 
 ## <a name="service-principal-authentication"></a>Verificatie van service-principal
 
-Als u de verificatie van de Service-Principal (SP) wilt gebruiken, moet u eerst de SP maken en toegang verlenen tot uw werk ruimte. Zoals eerder vermeld, wordt op Azure Role-based Access Control (RBAC) gebruikt om de toegang te beheren. Daarom moet u ook bepalen welke toegang u wilt verlenen aan de SP.
+Als u de verificatie van de Service-Principal (SP) wilt gebruiken, moet u eerst de SP maken en toegang verlenen tot uw werk ruimte. Zoals eerder vermeld, wordt op Azure-rollen gebaseerd toegangs beheer (Azure RBAC) gebruikt om de toegang te beheren. u moet dus ook bepalen welke toegangs rechten de SP moeten verlenen.
 
 > [!IMPORTANT]
 > Als u een Service-Principal gebruikt, geeft u deze de __Mini maal vereiste toegang voor de taak__ waarvoor deze wordt gebruikt. U kunt bijvoorbeeld geen service principal-eigenaar of Inzender toegang verlenen als u voor alle gebruikt voor het lezen van het toegangs token voor een webimplementatie.

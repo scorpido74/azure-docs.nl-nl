@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416329"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495723"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architectuur van herstel na noodgevallen van Hyper-V naar Azure
 
@@ -36,7 +36,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 **Hyper-V naar Azure-architectuur (zonder VMM)**
 
-![Architectuur](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![Diagram van on-premises Hyper-V-site naar Azure-architectuur zonder VMM.](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architectuur onderdelen-Hyper-V met VMM
@@ -53,7 +53,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 **Hyper-V naar Azure-architectuur (met VMM)**
 
-![Onderdelen](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![Diagram met een on-premises Hyper-V-site naar Azure-architectuur met VMM.](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Uitgaande netwerk verbinding instellen
 
@@ -76,7 +76,7 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 
 ## <a name="replication-process"></a>Replicatieproces
 
-![Replicatie van Hyper-V naar Azure](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![Diagram van het replicatie proces van Hyper-V naar Azure](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **Replicatie-en herstel proces**
 
@@ -86,7 +86,7 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 1. Nadat u de beveiliging voor een Hyper-V-VM in Azure Portal of on-premises hebt ingeschakeld, start **Beveiliging inschakelen**.
 2. Met deze taak wordt gecontroleerd of de machine voldoet aan de vereisten. Hierna wordt [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) aangeroepen om replicatie in te stellen op basis van de instellingen die u hebt geconfigureerd.
 3. De taak start initiële replicatie door de methode [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) aan te roepen om een volledige VM-replicatie te initialiseren en de virtuele schijven van de virtuele machine naar Azure te versturen.
-4. U kunt de taak controleren op het tabblad **taken** .      ![Taken lijst ](media/hyper-v-azure-architecture/image1.png) ![ Inzoomen op beveiliging inschakelen](media/hyper-v-azure-architecture/image2.png)
+4. U kunt de taak controleren op het tabblad **taken** .      ![Scherm afbeelding van de lijst taken op het tabblad taken. ](media/hyper-v-azure-architecture/image1.png) ![Screen Shot van het scherm beveiliging inschakelen met meer details.](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Initiële gegevens replicatie
@@ -123,7 +123,7 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 2. Na hersynchronisatie moet de normale replicatie van verschillen worden hervat.
 3. Als u niet wilt wachten op de standaard hersynchronisatie buiten werk uren, kunt u een virtuele machine hand matig opnieuw synchroniseren. Als er bijvoorbeeld sprake is van een storing. Als u dit wilt doen, selecteert u in de Azure Portal de virtuele machine > opnieuw te **synchroniseren**.
 
-    ![Handmatig opnieuw synchroniseren](./media/hyper-v-azure-architecture/image4-site.png)
+    ![Scherm afbeelding met de optie opnieuw synchroniseren.](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>Proces opnieuw proberen

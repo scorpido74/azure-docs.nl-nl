@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 7349504b5a1ed5a67f3b34be2c4ff5dda29afbf3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025299"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495145"
 ---
 # <a name="http-application-routing"></a>Routering van HTTP-toepassing
 
@@ -20,7 +20,7 @@ Met de oplossing voor het routeren van HTTP-toepassingen kunt u eenvoudig toegan
 Wanneer de invoeg toepassing is ingeschakeld, wordt er een DNS-zone in uw abonnement gemaakt. Zie [DNS-prijzen][dns-pricing]voor meer informatie over DNS-kosten.
 
 > [!CAUTION]
-> De invoeg toepassing voor het routeren van HTTP-toepassingen is ontworpen om snel een ingangs controller te maken en toegang te krijgen tot uw toepassingen. Deze invoeg toepassing wordt niet aanbevolen voor productie gebruik. Zie [een HTTPS ingress-controller maken](./ingress-tls.md)voor implementaties van kant-en-klare ingebruiknames met meerdere REPLICA'S en TLS-ondersteuning.
+> De invoeg toepassing voor het routeren van HTTP-toepassingen is ontworpen om snel een ingangs controller te maken en toegang te krijgen tot uw toepassingen. Deze invoeg toepassing is momenteel niet ontworpen voor gebruik in een productie omgeving en wordt niet aanbevolen voor productie gebruik. Zie [een HTTPS ingress-controller maken](./ingress-tls.md)voor implementaties van kant-en-klare ingebruiknames met meerdere REPLICA'S en TLS-ondersteuning.
 
 ## <a name="http-routing-solution-overview"></a>Overzicht van de oplossing voor HTTP-route ring
 

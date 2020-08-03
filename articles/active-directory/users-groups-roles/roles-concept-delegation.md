@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556871b55de60ee592622f9f93c7b7123ba2ed32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731967"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498222"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Beheer delegeren in Azure Active Directory
 
@@ -38,7 +38,7 @@ Naarmate een organisatie groeit, kan het lastig zijn om bij te houden welke gebr
 
 In de Azure AD-Portal kunt u [alle leden van elke rol weer geven](directory-manage-roles-portal.md), waarmee u snel uw implementatie en machtigingen voor delegeren kunt controleren.
 
-Zie [een RBAC-rol (op rollen gebaseerd toegangs beheer) toewijzen](../../role-based-access-control/role-assignments-portal.md)als u geïnteresseerd bent in het overdragen van de toegang tot Azure-resources in plaats van beheerders toegang in azure AD.
+Zie [een Azure-rol toewijzen](../../role-based-access-control/role-assignments-portal.md)als u geïnteresseerd bent in het overdragen van de toegang tot Azure-resources in plaats van beheerders toegang in azure AD.
 
 ## <a name="delegation-planning"></a>Overdracht plannen
 

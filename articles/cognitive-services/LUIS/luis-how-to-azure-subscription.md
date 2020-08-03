@@ -4,12 +4,13 @@ description: Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, ho
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144631"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496896"
 ---
 # <a name="create-luis-resources"></a>LUIS-resources maken
 
@@ -58,7 +59,7 @@ Publicatie regio's verschillen van het ontwerpen van regio's. Zorg ervoor dat u 
 
 Gebruiks limieten zijn gebaseerd op de prijs categorie.
 
-Als u het quotum voor trans acties per seconde (TPS) overschrijdt, ontvangt u een HTTP 429-fout. Als u het quotum voor trans acties per maand (TPS) overschrijdt, ontvangt u een HTTP 403-fout.
+Als u het quotum voor transacties per seconde (TPS) overschrijdt, ontvangt u een HTTP 429-fout. Als u het quotum voor transacties per maand (TPS) overschrijdt, ontvangt u een HTTP 403-fout.
 
 
 ### <a name="reset-authoring-key"></a>Ontwerp sleutel opnieuw instellen
@@ -102,7 +103,7 @@ Toegang tot de app vanuit de [Luis](luis-reference-regions.md#luis-website) -por
 
 De eigenaar en alle mede werkers hebben toegang tot het schrijven van de app.
 
-|Ontwerp toegang bevat|Opmerkingen|
+|Ontwerp toegang bevat|Notities|
 |--|--|
 |Eindpunt sleutels toevoegen of verwijderen||
 |Versie exporteren||
@@ -120,7 +121,7 @@ De eigenaar en alle mede werkers hebben toegang tot het schrijven van de app.
 
 Toegang tot het uitvoeren van een query voor het prediction-eind punt wordt bepaald door een instelling op de pagina **toepassings gegevens** in de sectie **beheren** .
 
-|[Privé-eindpunt](#runtime-security-for-private-apps)|[Openbaar eindpunt](#runtime-security-for-public-apps)|
+|[Persoonlijk eind punt](#runtime-security-for-private-apps)|[Openbaar eindpunt](#runtime-security-for-public-apps)|
 |:--|:--|
 |Beschikbaar voor eigenaar en mede werkers|Beschikbaar voor eigenaar, bijdrager en anderen die App-ID kent|
 
@@ -156,7 +157,7 @@ U kunt bepalen wie uw LUIS prediction runtime-eindpunt sleutel kan zien door dez
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en ga akkoord met de gebruiks voorwaarden.
 1. Start uw LUIS-app door uw Azure LUIS-ontwerp sleutel te kiezen.
 
-   ![Een type Language Understanding-ontwerp bron kiezen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![Een type Language Understanding-ontwerpresource kiezen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. Wanneer u klaar bent met het resource selectie proces, [maakt u een nieuwe app](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
@@ -232,7 +233,7 @@ Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewi
 
     Deze bericht-API vereist de volgende instellingen:
 
-    |Header|Waarde|
+    |Koptekst|Waarde|
     |--|--|
     |`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
     |`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
@@ -245,9 +246,9 @@ Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewi
 
     |Type|Instelling|Waarde|
     |--|--|--|
-    |Header|`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
-    |Header|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
-    |Header|`Content-type`|`application/json`|
+    |Koptekst|`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
+    |Koptekst|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
+    |Koptekst|`Content-type`|`application/json`|
     |String|`appid`|De id van de LUIS-app.
     |Hoofdtekst||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "ResourceGroup-2",<br>"AccountName": "Luis-uswest-S0-2"}|
 

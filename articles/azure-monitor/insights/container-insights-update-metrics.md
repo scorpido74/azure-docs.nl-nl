@@ -3,12 +3,13 @@ title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microso
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499956"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te schakelen
 

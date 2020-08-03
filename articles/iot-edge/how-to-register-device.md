@@ -8,13 +8,14 @@ ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 2ac6a38d99f588c9dbab7a40bc092aa01b27649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f41dbb4e6231e804249c3fce3dfc8275dcc00aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726006"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489007"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Een Azure IoT Edge-apparaat registreren
 
@@ -38,7 +39,7 @@ Een gratis of standaard [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) i
 
 In uw IoT Hub in de Azure Portal worden IoT Edge apparaten afzonderlijk gemaakt en beheerd van IOT-apparaten die niet Edge zijn ingeschakeld.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
 2. Selecteer in het linkerdeel venster **IOT Edge** in het menu.
 3. Selecteer **een IOT edge apparaat toevoegen**.
 4. Geef een beschrijvende apparaat-ID op. Gebruik de standaard instellingen voor het automatisch genereren van verificatie sleutels en het verbinden van het nieuwe apparaat met uw hub.

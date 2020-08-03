@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421447"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498613"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -34,7 +34,7 @@ De onderdelen die betrekking hebben op herstel na nood geval voor virtuele Azure
 **Cache-opslag account** | U hebt een cache-opslag account in het bron netwerk nodig. Tijdens de replicatie worden wijzigingen in de virtuele machine opgeslagen in de cache voordat ze worden verzonden naar de doel opslag.  Cache-opslag accounts moeten standaard zijn.<br/><br/> Het gebruik van een cache zorgt voor een minimale impact op productie toepassingen die worden uitgevoerd op een virtuele machine.<br/><br/> Meer [informatie](azure-to-azure-support-matrix.md#cache-storage) over vereisten voor cache opslag. 
 **Doel resources** | Doel bronnen worden gebruikt tijdens de replicatie en wanneer een failover optreedt. Site Recovery kunt de doel resource standaard instellen, maar u kunt ze ook maken/aanpassen.<br/><br/> Controleer in de doel regio of u Vm's kunt maken en of uw abonnement voldoende bronnen heeft ter ondersteuning van VM-grootten die in de doel regio nodig zijn. 
 
-![Bron-en doel replicatie](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![Diagram waarin de bron-en doel replicatie worden weer gegeven.](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Doel resources
 
@@ -116,7 +116,7 @@ Wanneer u replicatie voor een virtuele machine van Azure inschakelt, gebeurt het
 4. Site Recovery worden de gegevens in de cache verwerkt, verzonden naar het doel-opslag account of naar de replica Managed disks.
 5. Nadat de gegevens zijn verwerkt, worden er om de vijf minuten crash consistente herstel punten gegenereerd. App-consistente herstel punten worden gegenereerd volgens de instelling die is opgegeven in het replicatie beleid.
 
-![Replicatie proces inschakelen, stap 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![Diagram waarin het replicatie proces wordt weer gegeven, stap 2.](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replicatieproces**
 
@@ -191,7 +191,7 @@ Als u multi-VM-consistentie inschakelt, communiceren machines in de replicatiegr
 
 Wanneer u een failover initieert, worden de virtuele machines gemaakt in de doel resource groep, het virtuele doel netwerk, het doel-subnet en de beschikbaarheidsset doel. Tijdens een failover kunt u elk herstel punt gebruiken.
 
-![Failoverproces](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![Diagram waarin het failoverproces met bron-en doel omgevingen wordt weer gegeven.](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

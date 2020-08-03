@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dd15fe5d68a521293f279978c668bc88599115e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420988"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498290"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Bronnen limieten voor elastische Pools met behulp van het DTU-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Voor Azure SQL Database elastische Pools tonen de volgende tabellen de resources
 
 De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools op basis van Dtu's en de servicelaag. Zo is het maximum aantal gelijktijdige werk rollen voor een S2-data base 120 werk nemers. Het maximum aantal gelijktijdige werk rollen voor een data base in een Standard-pool is dus ook 120 werk nemers als het maximale DTU per data base in de pool 50 Dtu's is (wat gelijk is aan S2).
  
-De resources die aan een elastische pool zijn gegeven, kunnen de bronnen die aan één Data Base zijn gegeven, buiten een elastische pool overschrijden voor hetzelfde aantal Dtu's. Dit betekent dat het eDTU-gebruik van een elastische pool kleiner moet zijn dan de som van het DTU-gebruik voor alle data bases in de pool, afhankelijk van de werkbelasting patronen. In een extreem geval met slechts één data base in een elastische pool waarvoor het gebruik van de data base-DTU 100% is, is het mogelijk dat het gebruik van de pool-eDTU 50% is voor bepaalde werkbelasting patronen. Dit kan zelfs gebeuren als er geen expliciete maximale DTU per data base is ingesteld. In dat geval is het DTU-verbruik van de gegroepeerde Data Base beperkt op dezelfde manier als DTU-verbruik van één data base met overeenkomende service doelstelling.
+Voor hetzelfde aantal Dtu's kunnen resources die aan een elastische pool worden gegeven de bronnen die aan één Data Base zijn gegeven, buiten een elastische pool overschrijden. Dit betekent dat het eDTU-gebruik van een elastische pool kleiner moet zijn dan de som van het DTU-gebruik voor alle data bases in de pool, afhankelijk van de werkbelasting patronen. In een extreem geval met slechts één data base in een elastische pool waarvoor het gebruik van de data base-DTU 100% is, is het mogelijk dat het gebruik van de pool-eDTU 50% is voor bepaalde werkbelasting patronen. Dit kan gebeuren zelfs als Max DTU per data base de Maxi maal ondersteunde waarde voor de opgegeven pool grootte blijft.
 
 > [!NOTE]
 > De resource limiet voor opslag per groep in elk van de volgende tabellen bevat geen tempdb-en logboek opslag.
@@ -55,8 +55,8 @@ De resources die aan een elastische pool zijn gegeven, kunnen de bronnen die aan
 | Maximum aantal Db's per pool <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen) per pool <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximum aantal gelijktijdige sessies per pool <sup>2</sup> | 30.000 | 30.000 | 30.000 | 30.000 |30.000 | 30.000 | 30.000 | 30.000 |
-| Min. aantal Edtu's-keuzes per data base | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
-| Maximum aantal Edtu's-keuzes per data base | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| Min-DTU per database keuze | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
+| Max. DTU per database opties | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
 | Maximale opslag per database (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 ||||||||
 
@@ -74,8 +74,8 @@ De resources die aan een elastische pool zijn gegeven, kunnen de bronnen die aan
 | Maximum aantal Db's per pool <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen) per pool <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximum aantal gelijktijdige sessies per pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
-| Min. aantal Edtu's-keuzes per data base | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
-| Maximum aantal Edtu's-keuzes per data base | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
+| Min-DTU per database keuze | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
+| Max. DTU per database opties | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximale opslag per database (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
@@ -95,8 +95,8 @@ De resources die aan een elastische pool zijn gegeven, kunnen de bronnen die aan
 | Maximum aantal Db's per pool <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen) per pool <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximum aantal gelijktijdige sessies per pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
-| Min. aantal Edtu's-keuzes per data base | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
-| Maximum aantal Edtu's-keuzes per data base | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| Min-DTU per database keuze | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| Max. DTU per database opties | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Maximale opslag per database (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
@@ -137,8 +137,8 @@ De resources die aan een elastische pool zijn gegeven, kunnen de bronnen die aan
 | Maximum aantal Db's per pool <sup>2</sup> | 100 | 100 | 100 | 100 | 100 |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen) per pool <sup>3</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Maximum aantal gelijktijdige sessies per pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
-| Min. aantal Edtu's-keuzes per data base | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
-| Maximum aantal Edtu's-keuzes per data base | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| Min-DTU per database keuze | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| Max. DTU per database opties | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Maximale opslag per database (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 

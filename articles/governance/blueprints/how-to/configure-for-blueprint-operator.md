@@ -1,14 +1,14 @@
 ---
 title: Uw omgeving instellen voor de operator blauw drukken
-description: Meer informatie over het configureren van uw Azure-omgeving voor gebruik met de standaard functie voor op rollen gebaseerde toegangs beheer (RBAC) op basis van de blauw druk-operator.
+description: Meer informatie over het configureren van uw Azure-omgeving voor gebruik met de blauw druk-operator Azure ingebouwde rol.
 ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a61997f5e3247e5b42d5e2f07c0fc38cc1b5114d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9390958507a135497c4c48a260a44bc0f4492ffa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864008"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499803"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Uw omgeving configureren voor een Blueprint Operator
 

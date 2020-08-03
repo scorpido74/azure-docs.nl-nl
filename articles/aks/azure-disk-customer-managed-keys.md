@@ -4,12 +4,12 @@ description: Gebruik uw eigen sleutels (BYOK) om AKS-besturings systeem en gegev
 services: container-service
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499616"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Breng uw eigen sleutels (BYOK) met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -161,8 +161,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Beperkingen
 
-* Versleuteling van gegevens schijven ondersteund met Kubernetes-versie 1,17 en hoger   
-* Alleen beschikbaar in regio's waar BYOK wordt ondersteund
+* Versleuteling van gegevens schijven ondersteund met Kubernetes-versie 1,17 en hoger
 * Versleuteling met door de klant beheerde sleutels is momenteel alleen beschikbaar voor nieuwe AKS-clusters, maar bestaande clusters kunnen niet worden bijgewerkt
 
 ## <a name="next-steps"></a>Volgende stappen

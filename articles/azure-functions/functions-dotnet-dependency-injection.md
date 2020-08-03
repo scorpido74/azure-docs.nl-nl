@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082950"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500461"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
@@ -121,7 +121,7 @@ Azure Functions-apps bieden dezelfde levens duur van de service als [ASP.net-afh
 - **Bereik**: de levens duur van het bereik van de service komt overeen met de levens duur van een functie. Services met een bereik worden eenmaal per uitvoering gemaakt. Latere aanvragen voor die service tijdens het uitvoeren van het bestaande service-exemplaar opnieuw gebruiken.
 - **Singleton**: de levens duur van de singleton-service komt overeen met de levens duur van de host en wordt opnieuw gebruikt voor het uitvoeren van functies voor dat exemplaar. Services voor de singleton-levens duur worden aanbevolen voor verbindingen en clients, bijvoorbeeld `DocumentClient` of `HttpClient` exemplaren.
 
-Bekijk of down load een voor [beeld van de verschillende levens duur](https://aka.ms/functions/di-sample) van de service op github.
+Bekijk of down load een voor [beeld van de verschillende levens duur](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) van de service op github.
 
 ## <a name="logging-services"></a>Logboek registratie Services
 
@@ -185,7 +185,7 @@ Het volgende voorbeeld `host.json` bestand voegt het logboek filter toe.
 
 De functie-host registreert veel services. De volgende services zijn veilig als afhankelijkheid in uw toepassing:
 
-|Servicetype|Dood|Beschrijving|
+|Servicetype|Dood|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuratie|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwoordelijk voor het opgeven van de ID van het exemplaar van de host|

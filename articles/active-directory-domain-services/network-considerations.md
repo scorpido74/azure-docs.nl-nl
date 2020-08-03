@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a3694b08bee732e3e2d3e7c0c339e5e0d94fe418
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040024"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488649"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure Active Directory Domain Services
 
@@ -108,11 +108,13 @@ Een [netwerk beveiligings groep (NSG)](../virtual-network/virtual-networks-nsg.m
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor het beheerde domein voor het leveren van verificatie-en beheer Services. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 
-| Poortnummer | Protocol | Bron                             | Doel | Bewerking | Vereist | Functie |
+| Poortnummer | Protocol | Bron                             | Doel | Bewerking | Vereist | Doel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Yes      | Synchronisatie met uw Azure AD-Tenant. |
 | 3389        | TCP      | CorpNetSaw                         | Alle         | Toestaan  | Yes      | Beheer van uw domein. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Yes      | Beheer van uw domein. |
+
+Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein. Verwijder deze netwerk beveiligings groep niet. De load balancer werkt niet zonder problemen.
 
 > [!WARNING]
 > Bewerk deze netwerk bronnen en configuraties niet hand matig. Wanneer u een onjuist geconfigureerde netwerk beveiligings groep of een door de gebruiker gedefinieerde route tabel koppelt aan het subnet waarin het beheerde domein is geïmplementeerd, kunt u de mogelijkheid van micro soft om het domein te onderhouden en beheren te verstoren. De synchronisatie tussen uw Azure AD-Tenant en uw beheerde domein wordt ook verstoord.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655750"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500790"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL één server
 
@@ -549,7 +549,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het Azure database for PostgreSQL besturings vlak (bijvoorbeeld Azure Portal). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen. RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
+**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot het Azure database for PostgreSQL besturings vlak (bijvoorbeeld Azure Portal). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen. RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
 
 RBAC configureren in Azure:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -698,7 +698,7 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
@@ -740,7 +740,7 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 

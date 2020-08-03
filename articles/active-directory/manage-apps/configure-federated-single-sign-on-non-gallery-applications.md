@@ -15,19 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb4b9b3b93053756896dc60c61cdb15c7e521f5d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763547"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497236"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie
 
-Als u eenmalige aanmelding wilt configureren voor een niet-galerie toepassing *zonder code te schrijven*, moet u een abonnement of Azure AD Premium hebben en moet de toepassing SAML 2,0 ondersteunen. Ga voor meer informatie over Azure AD-versies naar [Azure ad-prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
-
-## <a name="overview-of-steps-required"></a>Overzicht van de stappen die vereist zijn
-Hieronder vindt u een overzicht van de stappen die vereist zijn voor het configureren van federatieve eenmalige aanmelding met SAML 2,0 voor een niet-galerie (bijvoorbeeld aangepaste) toepassing.
+Dit artikel bevat een overzicht van de stappen die nodig zijn voor het configureren van federatieve eenmalige aanmelding met SAML 2,0 voor een niet-galerie (bijvoorbeeld aangepaste) toepassing.
 
 -   De meta gegevens waarden van de toepassing configureren in azure AD (aanmelden op URL, id, antwoord-URL)
 

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429707"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498358"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
@@ -119,17 +120,17 @@ Zie [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md)voor een overzi
 * [Een Gremlin-grafiek maken met Azure CLI](./scripts/cli/gremlin/create.md)
 * [Een Table-API tabel maken met Azure CLI](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>Een container maken met behulp van Power shell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>Een container maken met behulp van Power shell
 
 De onderstaande koppelingen laten zien hoe u container resources voor Azure Cosmos DB maakt met behulp van Power shell.
 
-Voor een lijst met alle Power shell-voor beelden voor alle Azure Cosmos DB Api's raadpleegt u, [SQL API](powershell-samples-sql.md), [CASSANDRA-API](powershell-samples-cassandra.md), [MongoDb api](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)en [Table-API](powershell-samples-table.md)
+Zie [Power shell](powershell-samples.md) -voor beelden voor een lijst met alle Power shell-voor beelden in alle Azure Cosmos DB api's
 
 * [Een container maken met Power shell](manage-with-powershell.md#create-container)
-* [Een verzameling maken voor Azure Cosmos DB voor MongoDB-API met Power shell](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Een Cassandra-tabel maken met Power shell](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Een Gremlin-grafiek maken met Power shell](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Een Table-API tabel maken met Power shell](./scripts/powershell/table/ps-table-create.md)
+* [Een verzameling maken voor Azure Cosmos DB voor MongoDB-API met Power shell](./scripts/powershell/mongodb/create.md)
+* [Een Cassandra-tabel maken met Power shell](./scripts/powershell/cassandra/create.md)
+* [Een Gremlin-grafiek maken met Power shell](./scripts/powershell/gremlin/create.md)
+* [Een Table-API tabel maken met Power shell](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Een container maken met behulp van .NET SDK
 

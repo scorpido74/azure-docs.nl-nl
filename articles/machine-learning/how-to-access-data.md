@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: ca7feacf5d631b4e85a0b3f4e7a039bbb79abe45
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460198"
+ms.locfileid: "87496097"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,7 +98,7 @@ Als uw gegevens opslag account zich in een **virtueel netwerk**bevindt, moet u e
 
 Als u uw toegang tot de onderliggende opslag service wilt verifiëren, kunt u uw account sleutel, SAS-tokens (Shared Access signatures) of een Service-Principal opgeven in de overeenkomstige `register_azure_*()` methode van het gegevens opslag type dat u wilt maken. De [opslag type matrix](#matrix) bevat de ondersteunde verificatie typen die overeenkomen met elk type gegevens opslag.
 
-U kunt de informatie over de account sleutel, SAS-token en Service-Principal vinden op uw [Azure Portal](https://portal.azure.com).
+U vindt de account sleutel, het SAS-token en de gegevens van de Service-Principal op uw [Azure Portal](https://portal.azure.com).
 
 * Als u van plan bent om een account sleutel of SAS-token voor verificatie te gebruiken, selecteert u **opslag accounts** in het linkerdeel venster en kiest u het opslag account dat u wilt registreren. 
   * De **overzichts** pagina bevat informatie zoals de account naam, container en naam van de bestands share. 
@@ -113,7 +113,7 @@ U kunt de informatie over de account sleutel, SAS-token en Service-Principal vin
 
 ### <a name="permissions"></a>Machtigingen
 
-Voor Azure Blob-container en Azure Data Lake gen 2-opslag zorgt u ervoor dat uw verificatie referenties toegang tot **BLOB-gegevens lezer** hebben. Meer informatie over [Storage BLOB data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
+Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot de **gegevens lezer** van de opslag-blob. Meer informatie over [Storage BLOB data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
 
 <a name="python"></a>
 
@@ -202,7 +202,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 <a name="studio"></a>
 
+
 ## <a name="create-datastores-in-the-studio"></a>Gegevens opslag maken in de Studio 
+
 
 Maak in een paar stappen een nieuwe gegevens opslag met behulp van de Azure Machine Learning Studio.
 
@@ -219,10 +221,9 @@ In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een **Az
 ![Formulier voor een nieuwe gegevens opslag](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-
 ## <a name="use-data-in-your-datastores"></a>Gegevens in uw gegevens opslag gebruiken
 
-Nadat u een gegevens opslag hebt gemaakt, [maakt u een Azure machine learning gegevensset](how-to-create-register-datasets.md) om te communiceren met uw gegevens. Met gegevens sets kunt u een pakket met vertraagd-objecten voor machine learning taken, zoals training, inpakken in een object dat kan worden geëvalueerd. Ze bieden ook de mogelijkheid om bestanden te [downloaden of te koppelen](how-to-train-with-datasets.md#mount-vs-download) van een wille keurige indeling vanuit Azure Storage-services, zoals Azure Blob Storage en ADLS gen 2. U kunt ze ook gebruiken voor het laden van gegevens in tabel vorm in een Panda of Spark-data frame.
+Nadat u een gegevens opslag hebt gemaakt, [maakt u een Azure machine learning gegevensset](how-to-create-register-datasets.md) om te communiceren met uw gegevens. Met gegevens sets kunt u in een vertraagd geëvalueerd voor machine learning-taken, zoals training. Ze bieden ook de mogelijkheid om bestanden te [downloaden of te koppelen](how-to-train-with-datasets.md#mount-vs-download) van een wille keurige indeling vanuit Azure Storage-services, zoals Azure Blob Storage en ADLS gen 2. U kunt ze ook gebruiken voor het laden van gegevens in tabel vorm in een Panda of Spark-data frame.
 
 <a name="get"></a>
 
@@ -258,7 +259,7 @@ U kunt ook de standaard gegevens opslag wijzigen met de volgende code. Deze moge
 
 Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
 
-| Methode | Toegang tot Data Store | Beschrijving |
+| Methode | Toegang tot Data Store | Description |
 | ----- | :-----: | ----- |
 | [Batchvoorspelling](how-to-use-parallel-run-step.md) | ✔ | Doe asynchroon voorspellingen op grote hoeveelheden gegevens. |
 | [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |

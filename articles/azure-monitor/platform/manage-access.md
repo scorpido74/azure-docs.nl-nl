@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327885"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489449"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboekgegevens en werkruimten beheren in Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een
 In dit artikel wordt uitgelegd hoe u de toegang tot logboeken beheert en hoe u de werk ruimten die deze bevat, kunt beheren, met inbegrip van het verlenen van toegang tot: 
 
 * De werk ruimte met werkruimte machtigingen.
-* Gebruikers die toegang nodig hebben tot logboek gegevens van specifieke bronnen met behulp van Azure op rollen gebaseerd toegangs beheer (RBAC), ook wel bekend als [resource-context](design-logs-deployment.md#access-mode)
+* Gebruikers die toegang nodig hebben tot logboek gegevens van specifieke bronnen met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC), ook wel bekend als [resource-context](design-logs-deployment.md#access-mode)
 * Gebruikers die toegang nodig hebben tot logboek gegevens in een specifieke tabel in de werk ruimte met behulp van Azure RBAC.
 
 Lees de [implementatie van uw Azure monitor-logboeken](design-logs-deployment.md) voor meer informatie over de concepten van de logboeken met RBAC en toegangs strategieën.
@@ -106,7 +106,7 @@ Aan elke werk ruimte kunnen meerdere accounts worden gekoppeld en elk account ka
 
 Voor de volgende activiteiten zijn ook Azure-machtigingen vereist:
 
-|Bewerking |Azure-machtigingen nodig |Opmerkingen |
+|Bewerking |Azure-machtigingen nodig |Notities |
 |-------|-------------------------|------|
 | Bewakings oplossingen toevoegen en verwijderen | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Deze machtigingen moeten worden toegekend op het niveau van de resourcegroep of het abonnement. |
 | De prijscategorie wijzigen | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -162,7 +162,7 @@ Leden van de rol *Inzender van Log Analytics* kunnen:
 
 De rol Log Analytics Inzender omvat de volgende acties van Azure:
 
-| Machtiging | Beschrijving |
+| Machtiging | Description |
 | ---------- | ----------- |
 | `*/read`     | De mogelijkheid om alle resources en de resourceconfiguratie weer te geven. Omvat: <br> Status van de VM-extensie <br> Configuratie van Azure Diagnostics voor resources <br> Alle eigenschappen en instellingen van alle resources. <br> Voor werk ruimten kunnen volledige onbeperkte machtigingen de werk ruimte-instelling lezen en query's uitvoeren op de gegevens. Bekijk meer gedetailleerde opties hierboven. |
 | `Microsoft.Automation/automationAccounts/*` | De mogelijkheid om Azure Automation-accounts te maken en te configureren, inclusief het toevoegen en bewerken van runbooks |
@@ -189,7 +189,7 @@ We raden aan om toewijzingen op het niveau van de resource (werk ruimte) uit te 
 
 Wanneer gebruikers een query uitvoeren op Logboeken vanuit een werk ruimte met behulp van resource-context toegang, hebben ze de volgende machtigingen voor de resource:
 
-| Machtiging | Beschrijving |
+| Machtiging | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Voorbeelden:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | De mogelijkheid om alle logboek gegevens voor de resource weer te geven.  |
 | `Microsoft.Insights/diagnosticSettings/write` | De mogelijkheid om Diagnostische instellingen te configureren om Logboeken in te stellen voor deze bron. |
@@ -313,4 +313,3 @@ Soms zijn aangepaste logboeken afkomstig uit bronnen die niet rechtstreeks zijn 
 * Zie [overzicht van log Analytics agent](./log-analytics-agent.md) voor het verzamelen van gegevens van computers in uw Data Center of een andere cloud omgeving.
 
 * Zie [gegevens verzamelen over Azure virtual machines](../learn/quick-collect-azurevm.md) voor het configureren van gegevens verzameling vanuit Azure vm's.
-

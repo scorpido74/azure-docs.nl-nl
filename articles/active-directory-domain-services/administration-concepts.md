@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735044"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489670"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Beheer concepten voor gebruikers accounts, wacht woorden en beheer in Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ In azure AD DS bevat het forest slechts één domein. On-premises AD DS bossen b
 
 Standaard wordt een beheerd domein gemaakt als een *gebruikers* forest. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein, bijvoorbeeld om zich aan te melden bij een virtuele machine die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
 
-In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS-resourceforests bevinden zich momenteel in de preview-fase.
+In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd.
 
 Zie [Wat zijn resource][concepts-forest] -forests? en [Hoe worden forest-vertrouwens relaties in azure AD DS?][concepts-trust] voor meer informatie over forest-typen in azure AD DS?
 
@@ -81,7 +81,7 @@ In azure AD DS zijn de beschik bare prestaties en functies gebaseerd op de SKU. 
 | SKU-naam   | Maximum aantal objecten | Back-upfrequentie | Maximum aantal uitgaande forest-vertrouwens relaties |
 |------------|----------------------|------------------|----|
 | Standard   | Onbeperkt            | Elke 7 dagen     | 0  |
-| Enterprise | Onbeperkt            | Elke 3 dagen     | 5  |
+| Onderneming | Onbeperkt            | Elke 3 dagen     | 5  |
 | Premium    | Onbeperkt            | Dagelijks            | 10 |
 
 Vóór deze Azure AD DS Sku's werd een facturerings model gebruikt dat is gebaseerd op het aantal objecten (gebruikers-en computer accounts) in het beheerde domein. Er zijn geen variabele prijzen meer op basis van het aantal objecten in het beheerde domein.
@@ -102,7 +102,7 @@ Naarmate het SKU-niveau toeneemt, neemt de frequentie van de back-upmomentopname
 
 ### <a name="outbound-forest-trusts"></a>Uitgaande forest-vertrouwens relaties
 
-In de vorige sectie worden uitgebreide uitgaande forest-vertrouwens relaties van een beheerd domein naar een on-premises AD DS omgeving (momenteel in Preview) beschreven. De SKU bepaalt het maximum aantal forest-vertrouwens relaties dat u kunt maken voor een beheerd domein. Bekijk de vereisten van uw bedrijf en toepassing om te bepalen hoeveel vertrouwens relaties u werkelijk nodig hebt en kies de juiste Azure AD DS-SKU. Als uw bedrijfs vereisten veranderen en u extra forest-vertrouwens relaties wilt maken, kunt u overschakelen naar een andere SKU.
+In de vorige sectie worden uitgebreide uitgaande forest-vertrouwens relaties van een beheerd domein naar een on-premises AD DS omgeving beschreven. De SKU bepaalt het maximum aantal forest-vertrouwens relaties dat u kunt maken voor een beheerd domein. Bekijk de vereisten van uw bedrijf en toepassing om te bepalen hoeveel vertrouwens relaties u werkelijk nodig hebt en kies de juiste Azure AD DS-SKU. Als uw bedrijfs vereisten veranderen en u extra forest-vertrouwens relaties wilt maken, kunt u overschakelen naar een andere SKU.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 06/22/2020
-ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103650"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498069"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
@@ -30,7 +30,7 @@ In dit artikel leert u het volgende:
 
 In de volgende tabel ziet u de publicatie opties voor aanbiedings typen in Microsoft AppSource en Azure Marketplace.
 
-|   | **Lijst (contact)**  | **Lijst (proef versie)**  | **Gratis** | **BYOL** | **Trans**|
+|   | **Lijst (contact)**  | **Lijst (proef versie)**  | **Gratis** | **BYOL** | **Transact**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
 | **Virtuele machine** |  |  |  | Azure Marketplace |  Azure Marketplace |
 | **Azure-apps (meerdere VM'S)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
@@ -47,18 +47,7 @@ In de volgende tabel ziet u de publicatie opties voor aanbiedings typen in Micro
 
 &#42;&#42; Microsoft 365 aanbiedingen zijn gratis te installeren en kunnen worden te gelde via SaaS-aanbieding als licentie service. Zie [geld verdienen Your Office 365-invoeg toepassing via micro soft Commercial Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)(Engelstalig) voor meer informatie.
 
-## <a name="selecting-a-storefront"></a>Een winkel selecteren
-
-Voordat u een publicatie optie selecteert, is het belang rijk om inzicht te krijgen in de vereisten voor de winkel geschiktheid voor commerciële Marketplace-oplossingen,-apps en-services. Elke winkel fungeert als unieke klant vereisten en streeft naar specifieke doel groepen. Uw aanbiedings type, de Transact-mogelijkheden en de categorie of branche bepalen waar uw aanbieding wordt gepubliceerd.
-
-**Microsoft AppSource** toepassingen zijn line-of-Business-oplossingen die kunnen worden geïntegreerd in azure of zijn gebaseerd op: Dynamics 365, Office 365, Power bi of Power apps. AppSource Consulting Services zijn Professional Services-aanbiedingen waarmee klanten kunnen beginnen met het gebruik van Dynamics 365 en Power BI.
-
-**Azure Marketplace** -toepassingen zijn technische oplossingen voor bouw stenen die zijn gebaseerd op of gebaseerd op Azure en die bedoeld zijn voor een IT-of ontwikkelaars doelgroep. Azure Marketplace Consulting Services zijn Professional Services-aanbiedingen waarmee klanten aan de slag kunnen met het gebruik van Azure.
-
->[!Note]
->' Cross-List ' (alleen voor SaaS-apps): als uw SaaS-aanbieding is bedoeld voor een technisch publiek (Azure Marketplace) en een bedrijfs doel (AppSource), kunt u een categorie en/of subcategorie selecteren die van toepassing zijn op de winkel. Mindful dat de bedoeling van ' cross-List ' uw aanbieding moet zijn gebaseerd op een toegevoegde waarde die wordt uitgebreid naar beide doel groepen. Klik [hier](./gtm-offer-listing-best-practices.md#categories) om de categorieën weer te geven die van toepassing zijn op elke winkel.
-
-## <a name="choose-a-publishing-option"></a>Een publicatie optie kiezen
+## <a name="choose-a-call-to-action"></a>Kies een actie oproep
 
 De beschik bare publicatie opties bieden een gedifferentieerde klant betrokkenheid, waarbij u toegang krijgt tot het delen van leads en [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Let op de aanroepen-naar-actie die overeenkomt met de publicatie optie:
 
@@ -67,10 +56,47 @@ De beschik bare publicatie opties bieden een gedifferentieerde klant betrokkenhe
 | **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen om verbinding te maken met de klant via de **contact persoon die mij** aanroept. |
 | **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanroep-to-action die wordt gebruikt voor de optie voor het publiceren van de proef versie, is een **gratis proef versie** of een **test station**. |
 | **BYOL** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De aanroep-to-Action wordt **nu ontvangen**.
-| **Trans** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De aanroep-to-Action wordt **nu ontvangen**.|
+| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De aanroep-to-Action wordt **nu ontvangen**.|
 
 > [!Note]
 > Wanneer u de optie voor het publiceren van Transact gebruikt, is het belang rijk om inzicht te krijgen in de overwegingen met betrekking tot prijzen, facturering, facturering en betaling voordat u een aanbiedings type selecteert en uw aanbieding maakt. Raadpleeg het artikel [Commercial Marketplace Transact-mogelijkheden](./marketplace-commercial-transaction-capabilities-and-considerations.md)voor meer informatie.
+
+## <a name="selecting-a-storefront"></a>Een winkel selecteren
+
+Elke winkel fungeert als unieke klant vereisten en streeft naar specifieke doel groepen. Uw aanbiedings type, de Transact-mogelijkheden en de categorie bepalen waar uw aanbieding wordt gepubliceerd. Categorieën en subcategorieën worden toegewezen aan elke winkel op basis van de doel groep:
+
+**Microsoft AppSource** streeft naar zakelijke gebruikers die op zoek zijn naar line-of-Business-of Industry-oplossingen en advies Services voor Dynamics 365, Microsoft 365 en Power platform.
+
+**Azure Marketplace** streeft ernaar IT-professionals en ontwikkel aars die op zoek zijn naar oplossingen die zijn gebouwd voor of op Azure, evenals advies services die hun gebruik van Azure versnellen.
+
+Selecteer de categorie en subcategorie die het beste aansluiten bij uw doel groep. Een Web Application Firewall moet bijvoorbeeld worden gepubliceerd op Azure Marketplace, onder de categorie beveiliging, omdat IT-professionals het beoogde publiek zijn. Een contract beheer-app moet in plaats daarvan worden gepubliceerd naar AppSource onder de categorie verkoop, aangezien de beoogde doel groep zakelijke gebruikers is. Als u de onjuiste categorie of subcategorie selecteert, kan uw aanbieding naar de verkeerde winkel worden gepubliceerd.
+
+### <a name="publishing-to-both-storefronts-saas-offers-only"></a>Publiceren naar beide Stores (alleen SaaS-aanbiedingen)
+
+SaaS-aanbiedingen kunnen worden gepubliceerd in azure Marketplace of AppSource. Als uw SaaS-aanbieding is bedoeld *voor een* technisch publiek (Azure Marketplace) en een bedrijfs doel (AppSource), selecteert u een categorie en/of een subcategorie die van toepassing is op elke winkel. Aanbiedingen die op beide winkels zijn gepubliceerd, moeten een toegevoegde waarde hebben die uitbreidt naar IT-professionals *en* zakelijke gebruikers.
+
+> [!IMPORTANT]
+> SaaS-aanbiedingen met facturering via data limiet zijn beschikbaar via Azure Marketplace en de Azure Portal. SaaS-aanbiedingen met alleen persoonlijke abonnementen zijn beschikbaar via de Azure Portal.
+
+| Factuur met data limiet | Openbaar abonnement | Persoonlijk abonnement | Beschikbaar in: |
+|---|---|---|---|
+| Ja             | Ja         | Nee           | Azure Marketplace en Azure Portal |
+| Ja             | Ja         | Ja          | Azure Marketplace en Azure Portal * |
+| Ja             | No          | Ja          | Alleen Azure Portal |
+| Nee              | Nee          | Ja          | Alleen Azure Portal |
+
+&#42; het privé-abonnement van de aanbieding is alleen beschikbaar via de Azure Portal
+
+Zo wordt een aanbieding met een facturerings regeling en een privé-abonnement alleen (geen openbaar abonnement) gekocht door klanten in de Azure Portal. Meer informatie over [privé aanbiedingen in micro soft Commercial Marketplace](private-offers.md).
+
+### <a name="categories"></a>Categorieën
+
+Categorieën en subcategorieën worden toegewezen aan elke winkel op basis van de doel groep. Selecteer de categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en de beoogde doel groep. U kunt het volgende selecteren:
+
+- Ten minste één en Maxi maal twee categorieën. U hebt de optie om een primaire en een secundaire categorie te kiezen.
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als u geen subcategorie selecteert, kan uw aanbieding nog steeds worden gedetecteerd onder de geselecteerde categorie.
+
+[!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

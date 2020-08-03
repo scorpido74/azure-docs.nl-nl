@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f6fca572524d1b0254c777d0820d8781c9f7be8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030042"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496624"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige
 
@@ -484,7 +484,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het besturings element grootschalige (Citus) (bijvoorbeeld Azure Portal). RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot het besturings element grootschalige (Citus) (bijvoorbeeld Azure Portal) te beheren. RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
 
 Als u de gebruikers bevoegdheden op database niveau wilt wijzigen, gebruikt u de standaard PostgreSQL-opdrachten met een hulp programma zoals PgAdmin of psql.
 

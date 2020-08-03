@@ -4,14 +4,14 @@ description: Meer informatie over SQL-tref woorden voor Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261564"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496678"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Tref woorden in Azure Cosmos DB
 
@@ -35,9 +35,6 @@ U kunt ook het `BETWEEN` sleutel woord in de `SELECT` -component gebruiken, zoal
 ```
 
 In de SQL-API, in tegens telling tot ANSI SQL, kunt u de bereik query's expliciet op Eigenschappen van gemengde typen uitvoeren. Dit kan bijvoorbeeld `grade` een getal zijn zoals `5` in sommige items en een teken reeks zoals `grade4` in anderen. In deze gevallen, zoals in Java script, resulteert de vergelijking tussen de twee verschillende typen in `Undefined` , zodat het item wordt overgeslagen.
-
-> [!TIP]
-> Voor snellere query-uitvoerings tijden maakt u een indexerings beleid dat gebruikmaakt van een bereik index type voor alle numerieke eigenschappen of paden die de `BETWEEN` component filtert.
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -76,7 +73,7 @@ U ziet deze uitvoer:
 ]
 ```
 
-DISTINCT kan ook worden gebruikt in de projectie binnen een subquery:
+`DISTINCT`kan ook worden gebruikt in de projectie binnen een subquery:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

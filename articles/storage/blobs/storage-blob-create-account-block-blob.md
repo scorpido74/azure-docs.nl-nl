@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c23c034af40d7db2379f9d02357131a00482bd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463549"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495740"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
@@ -38,9 +39,9 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 1.2.0 of hoger verei
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-U kunt zich aanmelden bij Azure en Azure CLI-opdrachten uitvoeren op een van de volgende twee manieren:
+U kunt u aanmelden bij Azure en Azure CLI-opdrachten uitvoeren. Dit kan op twee manieren:
 
-- U kunt CLI-opdrachten uitvoeren vanuit het Azure Portal, in Azure Cloud Shell.
+- U kunt CLI-opdrachten uitvoeren vanuit Azure Portal, in Azure Cloud Shell.
 - U kunt de CLI installeren en CLI-opdrachten lokaal uitvoeren.
 
 ### <a name="use-azure-cloud-shell"></a>Azure Cloud Shell gebruiken
@@ -63,7 +64,7 @@ U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit procedure-artikel
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -209,4 +210,4 @@ Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moe
 
 - Zie [overzicht van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over opslag accounts.
 
-- Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor meer informatie over resource groepen.
+- Zie [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) voor meer informatie over resourcegroepen.

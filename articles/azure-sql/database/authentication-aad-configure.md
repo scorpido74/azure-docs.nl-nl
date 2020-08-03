@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281154"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499174"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -188,7 +188,7 @@ Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te
 
 De cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor uw SQL Managed instance worden weer gegeven in de volgende tabel:
 
-| Naam van cmdlet | Beschrijving |
+| Naam van cmdlet | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Richt een Azure AD-beheerder in voor het beheerde exemplaar van SQL in het huidige abonnement. (Moet afkomstig zijn van het huidige abonnement)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Hiermee verwijdert u een Azure AD-beheerder voor het beheerde exemplaar van SQL in het huidige abonnement. |
@@ -277,7 +277,7 @@ Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalle
 
 Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor SQL Database en Azure Synapse:
 
-| Naam van cmdlet | Beschrijving |
+| Naam van cmdlet | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Richt een Azure Active Directory beheerder in voor de server die als host fungeert voor SQL Database of Azure Synapse. (Moet afkomstig zijn van het huidige abonnement) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory beheerder voor de server die als host fungeert voor SQL Database of Azure Synapse.|
@@ -360,7 +360,7 @@ Omdat SQL Managed instance Azure AD server-principals (aanmeldingen) ondersteunt
 Voor het gebruik van Azure Active Directory-verificatie met SQL Database en Azure Synapse moet Inge sloten database gebruikers echter worden gebruikt op basis van een Azure AD-identiteit. Een Inge sloten database gebruiker heeft geen aanmelding in de hoofd database en wijst toe aan een identiteit in azure AD die is gekoppeld aan de data base. De Azure AD-identiteit kan een individueel gebruikersaccount of een groep zijn. Zie [Contained Database Users- Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx) (Gebruikers van ingesloten databases: een draagbare database maken) voor meer informatie over gebruikers van ingesloten databases.
 
 > [!NOTE]
-> Databasegebruikers kunnen niet in de Azure-portal worden gemaakt (met uitzondering van beheerders). RBAC-rollen worden niet door gegeven aan de data base in SQL Database, het SQL Managed instance of Azure Synapse. Azure RBAC-rollen worden gebruikt voor het beheren van Azure-resources en zijn niet van toepassing op databasemachtigingen. De rol **SQL Server Inzender** verleent bijvoorbeeld geen toegang om verbinding te maken met de data base in SQL database, het SQL Managed instance of Azure Synapse. De toestemming tot het verlenen van toegang moet rechtstreeks plaatsvinden in de database met behulp van Transact-SQL-instructies.
+> Databasegebruikers kunnen niet in de Azure-portal worden gemaakt (met uitzondering van beheerders). Azure-rollen worden niet door gegeven aan de data base in SQL Database, het SQL Managed instance of Azure Synapse. Azure-rollen worden gebruikt voor het beheer van Azure-resources en zijn niet van toepassing op database machtigingen. De rol **SQL Server Inzender** verleent bijvoorbeeld geen toegang om verbinding te maken met de data base in SQL database, het SQL Managed instance of Azure Synapse. De toestemming tot het verlenen van toegang moet rechtstreeks plaatsvinden in de database met behulp van Transact-SQL-instructies.
 
 > [!WARNING]
 > Speciale tekens zoals dubbele punten `:` of ampersands `&` wanneer ze worden opgenomen als gebruikers namen in de T-SQL- `CREATE LOGIN` en- `CREATE USER` instructies worden niet ondersteund.
@@ -544,4 +544,3 @@ Meer informatie over het oplossen van problemen met Azure AD-verificatie vindt u
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

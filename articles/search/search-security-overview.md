@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475427"
+ms.locfileid: "87501488"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
@@ -107,7 +107,7 @@ Hoe een gebruiker toegang heeft tot een index en andere objecten, wordt bepaald 
 
 Als u nauw keuriger controle per gebruiker met de zoek resultaten nodig hebt, kunt u beveiligings filters voor uw query's maken en documenten retour neren die zijn gekoppeld aan een bepaalde beveiligings identiteit. In plaats van vooraf gedefinieerde rollen en roltoewijzingen, wordt toegangs beheer op basis van een id geïmplementeerd als een *filter* waarmee Zoek resultaten van documenten en inhoud worden verkleind op basis van identiteiten. In de volgende tabel worden twee benaderingen beschreven waarmee Zoek resultaten van niet-geautoriseerde inhoud worden bijgesneden.
 
-| Methode | Beschrijving |
+| Methode | Description |
 |----------|-------------|
 |[Beveiligings beperking op basis van identiteits filters](search-security-trimming-for-azure-search.md)  | Documenteert de basis werk stroom voor het implementeren van toegangs beheer voor gebruikers identiteit. Het onderwerp bevat het toevoegen van beveiligings-id's aan een index en legt vervolgens een overzicht van de filtering uit voor dat veld om de resultaten van verboden inhoud te kunnen knippen. |
 |[Beveiligings beperking op basis van Azure Active Directory-identiteiten](search-security-trimming-for-azure-search-with-aad.md)  | In dit artikel wordt het vorige artikel uitgebreid met stappen voor het ophalen van identiteiten van Azure Active Directory (AAD), een van de [gratis services](https://azure.microsoft.com/free/) in het Azure-Cloud platform. |
@@ -125,11 +125,13 @@ Beheerders rechten voor inhoud die in de service wordt gehost, zoals de mogelijk
 
 Azure Cognitive Search is gecertificeerd voor meerdere globale, regionale en branchespecifieke standaarden voor zowel de open bare Cloud als Azure Government. Voor de volledige lijst downloadt u de [ **Microsoft Azure compliance-aanbod** ](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) van het technisch document op de pagina officiële controle rapporten.
 
-Voor naleving kunt u [Azure Policy](../governance/policy/overview.md) gebruiken om u te helpen bij het implementeren van de aanbevolen procedures voor beveiliging van [Azure Security](../security/benchmarks/introduction.md). Azure Security Bench Mark is een verzameling beveiligings aanbevelingen die zijn samengevoegd in beveiligings mechanismen die worden toegewezen aan belang rijke acties die u moet uitvoeren om bedreigingen voor services en gegevens te beperken. Er zijn momenteel 11 beveiligings controles, waaronder [netwerk beveiliging](../security/benchmarks/security-control-network-security.md), [logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md), en [gegevens beveiliging](../security/benchmarks/security-control-data-protection.md) om een paar te noemen.
+Voor naleving kunt u [Azure Policy](../governance/policy/overview.md) gebruiken om de aanbevolen procedures voor beveiliging van [Azure Security](../security/benchmarks/introduction.md)te implementeren. Azure Security Bench Mark is een verzameling beveiligings aanbevelingen die zijn samengevoegd in beveiligings mechanismen die worden toegewezen aan belang rijke acties die u moet uitvoeren om bedreigingen voor services en gegevens te beperken. Er zijn momenteel 11 beveiligings controles, waaronder [netwerk beveiliging](../security/benchmarks/security-control-network-security.md), [logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md), en [gegevens beveiliging](../security/benchmarks/security-control-data-protection.md) om een paar te noemen.
 
-Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beheren van de naleving voor meerdere standaarden, inclusief die van Azure Security Bench Mark. Voor bekende benchmarks biedt Azure Policy ingebouwde definities, zodat u gemakkelijker beleids regels kunt maken. Voor Azure Cognitive Search is er momenteel één ingebouwde definitie voor diagnostische logboek registratie. Dit betekent dat u een beleid kunt toewijzen dat elke zoek service identificeert en corrigeert die niet compatibel is met het beveiligings beheer voor logboek registratie en controle. Zie [Azure Policy regulerende nalevings controles voor Azure Cognitive Search](security-controls-policy.md)voor meer informatie.
+Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beheren van de naleving voor meerdere standaarden, inclusief die van Azure Security Bench Mark. Voor bekende benchmarks biedt Azure Policy ingebouwde definities die beide criteria bieden, evenals een actie die kan worden uitgevoerd en die niet compatibel is. 
 
-## <a name="see-also"></a>Zie tevens
+Voor Azure Cognitive Search is er momenteel één ingebouwde definitie. Het is voor diagnostische logboek registratie. Met deze ingebouwde kunt u een beleid toewijzen dat een wille keurige zoek service identificeert waarvoor diagnostische logboek registratie ontbreekt en vervolgens weer wordt ingeschakeld. Zie [Azure Policy regulerende nalevings controles voor Azure Cognitive Search](security-controls-policy.md)voor meer informatie.
+
+## <a name="see-also"></a>Zie ook
 
 + [Basisbeginselen van Azure Security](../security/fundamentals/index.yml)
 + [Azure-beveiliging](https://azure.microsoft.com/overview/security)

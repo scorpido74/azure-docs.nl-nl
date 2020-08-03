@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 73b568057bbb846958b6fe95f11c285326fe3688
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011445"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495179"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs configureren (preview-versie)
 
@@ -157,7 +158,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -InputObject $destPolicy
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een replicatie beleid met Azure CLI wilt maken, moet u eerst de preview-extensie voor Azure Storage installeren.:
 
@@ -259,7 +260,7 @@ Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -PolicyId $destPolicy.PolicyId
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een replicatie beleid wilt verwijderen, verwijdert u het beleid van zowel het bron account als het doel account. Als u het beleid verwijdert, worden ook alle bijbehorende regels verwijderd.
 

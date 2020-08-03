@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78183972"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489534"
 ---
 # <a name="page-layout-versions"></a>Versie van pagina-indeling
 
 Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verbeteringen in hun pagina-elementen. In het volgende wijzigingslog bestand worden de wijzigingen aangegeven die in elke versie zijn geïntroduceerd.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- Zelfbevestigende pagina ( `selfasserted` )
+  - Lokalisatie-en toegankelijkheids oplossingen.
+- Unified SSP-pagina ( `unifiedssp` )
+  - Er is ondersteuning toegevoegd voor meerdere registratie koppelingen.
+  - Er is ondersteuning toegevoegd voor gebruikers invoer validatie volgens de predicaat regels die in het beleid zijn gedefinieerd.
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verb
   - Ondersteuning voor Chrome-vertaling
 - Geïntegreerde en zelf bevestigde pagina's
   - De velden gebruikers naam/e-mail adres en wacht woord gebruiken nu het `form` HTML-element zodat Edge en Internet Explorer (IE) deze gegevens op de juiste manier kunnen opslaan.
+- Zelfbevestigende pagina
+  - Er is een Configureer bare validatie vertraging voor gebruikers invoer toegevoegd voor verbeterde gebruikers ervaring.
 
 ## <a name="110"></a>1.1.0
 

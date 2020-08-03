@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 880238558c03cca6a582960eef4e647c0e6875e8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe05a474f4f6ee70c07e0e19621487d51d92966d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084106"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490623"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Documenten indexeren in Azure Data Lake Storage Gen2
 
@@ -44,7 +44,7 @@ Het indexeren van inhoud in Data Lake Storage Gen2 is identiek aan het indexeren
 
 ## <a name="access-control"></a>Toegangsbeheer
 
-Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) dat zowel op rollen gebaseerd toegangs beheer (RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanuit Data Lake Storage Gen2, haalt Azure Cognitive Search de RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
+Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) dat zowel op rollen gebaseerd toegangs beheer (Azure RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanuit Data Lake Storage Gen2, haalt Azure Cognitive Search de RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
 
 Als het beheren van toegangs beheer voor elk document in de index belang rijk is, is het aan de ontwikkelaar van de toepassing om [beveiligings beperking](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)te implementeren.
 

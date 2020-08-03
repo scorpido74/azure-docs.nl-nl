@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383882"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489704"
 ---
 # <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
@@ -31,7 +31,7 @@ Alle bovenstaande variaties worden hieronder besproken.
 
 `OPENROWSET`met de functie kunt u de inhoud van een CSV-bestand lezen door de URL naar uw bestand op te geven.
 
-### <a name="reading-csv-file"></a>CSV-bestand lezen
+### <a name="read-a-csv-file"></a>Een CSV-bestand lezen
 
 De eenvoudigste manier om de inhoud van uw bestand te bekijken `CSV` is door de bestands-URL te laten `OPENROWSET` functioneren, csv en 2,0 op te geven `FORMAT` `PARSER_VERSION` . Als het bestand openbaar beschikbaar is of als uw Azure AD-identiteit toegang heeft tot dit bestand, moet u de inhoud van het bestand kunnen zien met behulp van de query zoals die in het volgende voor beeld wordt weer gegeven:
 
@@ -46,7 +46,7 @@ from openrowset(
 
 Wordt `firstrow` gebruikt voor het overs laan van de eerste rij in het CSV-bestand dat de koptekst in dit geval vertegenwoordigt. Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste identiteit, moet u de [referenties voor SQL-aanmelding op server niveau](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen.
 
-### <a name="using-data-source"></a>Gegevens bron gebruiken
+### <a name="data-source-usage"></a>Gebruik van gegevens bronnen
 
 In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die verwijst naar de hoofdmap van de opslag:
 
@@ -214,7 +214,7 @@ WHERE
 > [!NOTE]
 > Deze query retourneert dezelfde resultaten als u de para meter FIELDQUOTE hebt wegge laten, omdat de standaard waarde voor FIELDQUOTE een dubbele aanhalings tekens is.
 
-## <a name="escaping-characters"></a>Escape tekens
+## <a name="escape-characters"></a>Escape tekens
 
 De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen met een nieuwe UNIX-stijl, door komma's gescheiden kolommen en een escape teken dat wordt gebruikt voor het veld scheidings teken (komma) in waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
@@ -246,7 +246,7 @@ WHERE
 > [!NOTE]
 > Deze query mislukt als ESCAPECHAR niet is opgegeven omdat de komma in "slov, enia" als veld scheidings teken wordt beschouwd in plaats van een deel van de naam van het land/de regio. "Slov, enia" worden beschouwd als twee kolommen. Daarom zou de betreffende rij een kolom meer hebben dan de andere rijen en één kolom meer dan u hebt gedefinieerd in de WITH-component.
 
-### <a name="escaping-quoting-characters"></a>Aanhalings tekens als aanhalings teken
+### <a name="escape-quoting-characters"></a>Aanhalings tekens als escape-teken
 
 De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen met een nieuwe UNIX-stijl, door komma's gescheiden kolommen en een dubbele aanhalings tekens in waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
@@ -306,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Subset van kolommen wordt geretourneerd
+## <a name="return-a-subset-of-columns"></a>Een subset van kolommen retour neren
 
 Tot nu toe hebt u het CSV-bestands schema opgegeven met behulp van en een lijst met alle kolommen. U kunt alleen kolommen opgeven die u daad werkelijk nodig hebt in uw query door gebruik te maken van een rang nummer voor elke gewenste kolom. U kunt ook kolommen zonder interesse weglaten.
 

@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d87da234e675059ba2c170f4322d0ba53965dc89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075691"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500756"
 ---
-# <a name="using-transactions-in-sql-pool"></a>Trans acties in de SQL-groep gebruiken
+# <a name="use-transactions-in-sql-pool"></a>Trans acties in SQL-groep gebruiken
 
 Tips voor het implementeren van trans acties in de SQL-groep (Data Warehouse) voor het ontwikkelen van oplossingen.
 
@@ -183,7 +183,7 @@ Alle wijzigingen die zijn gewijzigd, zijn dat het terugdraaien van de trans acti
 
 Het is ook een goed idee dat de functie ERROR_LINE () niet wordt geïmplementeerd of ondersteund door de SQL-groep. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan de SQL-groep. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](develop-label.md) voor meer informatie.
 
-## <a name="using-throw-and-raiserror"></a>THROW en////////
+## <a name="use-of-throw-and-raiserror"></a>Gebruik van THROW en///////
 
 THROW is de meer moderne implementatie voor het verhogen van uitzonde ringen in de SQL-groep, maar dit wordt ook wel ondersteund. Er zijn enkele verschillen die u moet betalen.
 

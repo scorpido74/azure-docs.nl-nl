@@ -10,12 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 50745c96f73f4e2d666a82746549ed361502e381
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871362"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501386"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslag account wordt gerepliceerd
 
@@ -122,14 +123,14 @@ U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://
 
 1. **Nieuwe ondersteunings aanvraag** selecteren
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en de resource die u wilt converteren naar ZRS.
-3. Selecteer **Volgende**.
+3. Selecteer **Next**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: behoud de standaard waarde in.
     - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar ZRS**.
     - **Titel**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
     - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio.
-5. Selecteer **Volgende**.
+5. Selecteer **Next**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 
@@ -192,7 +193,7 @@ Als u uw opslag account migreert van GRS naar LRS, zijn er geen extra kosten, ma
 > [!IMPORTANT]
 > Als u uw opslag account migreert van RA-GRS naar GRS of LRS, wordt dat account gefactureerd als RA-GRS voor een extra periode van 30 dagen na de datum waarop deze is geconverteerd.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Azure Storage redundantie](storage-redundancy.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)

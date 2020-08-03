@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355655"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499871"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Gegevens in Azure Blob Storage beheren en zoeken met Blob-index (preview)
 
@@ -63,7 +63,7 @@ U kunt meerdere labels op uw BLOB Toep assen om de gegevens beter te beschrijven
 > "Priority" = "01" 
 >
 
-Als u de bestaande kenmerken van de index code wilt wijzigen, moet u eerst de bestaande label kenmerken ophalen, de label kenmerken wijzigen en vervangen door de SetBlobTags-bewerking. Als u alle index Tags uit de BLOB wilt verwijderen, roept u de SetBlobTags-bewerking aan zonder dat er label kenmerken zijn opgegeven. Als blob-index Tags zijn een subresource voor de inhoud van de BLOB-gegevens, wordt door SetBlobTags geen onderliggende inhoud gewijzigd en wordt de laatste wijzigings tijd of ETag (entiteits code) van de BLOB niet gewijzigd. U kunt index Tags maken of wijzigen voor alle huidige basis-blobs en eerdere versies. Labels op moment opnamen of zachte verwijderde blobs kunnen echter niet worden gewijzigd. 
+Als u de bestaande kenmerken van de index code wilt wijzigen, moet u eerst de bestaande label kenmerken ophalen, de label kenmerken wijzigen en vervangen door de SetBlobTags-bewerking. Als u alle index Tags uit de BLOB wilt verwijderen, roept u de SetBlobTags-bewerking aan zonder dat er label kenmerken zijn opgegeven. Als blob-index Tags zijn een subresource voor de inhoud van de BLOB-gegevens, wordt door SetBlobTags geen onderliggende inhoud gewijzigd en wordt de laatste wijzigings tijd of eTag (entiteits code) van de BLOB niet gewijzigd. U kunt index Tags maken of wijzigen voor alle huidige basis-blobs en eerdere versies. Labels op moment opnamen of zachte verwijderde blobs kunnen echter niet worden gewijzigd. 
 
 De volgende limieten gelden voor BLOB-index Tags:
 - Elke Blob kan Maxi maal 10 BLOB-index Tags hebben
@@ -228,7 +228,7 @@ De volgende machtigingen kunnen worden verleend in container service-SA'S om fil
 
 |  Machtiging  |  URI-symbool  | Toegestane bewerkingen |
 |--------------|--------------|--------------------|
-| Index Tags     |      v       | Blobs met Blob-index Tags zoeken | 
+| Index Tags     |      f       | Blobs met Blob-index Tags zoeken | 
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>Kiezen tussen de meta gegevens-en BLOB-index Tags 
 Zowel BLOB index Tags als meta gegevens bieden de mogelijkheid om wille keurige, door de gebruiker gedefinieerde sleutel/waarde op te slaan naast een BLOB-resource. Beide kunnen worden opgehaald en direct worden ingesteld, zonder de inhoud van de BLOB te retour neren of te wijzigen. Het is mogelijk om meta gegevens en index Tags te gebruiken.
@@ -293,6 +293,7 @@ In deze sectie worden bekende problemen en voor waarden in de huidige open bare 
 -   Failover van account wordt momenteel niet ondersteund. De BLOB-index wordt mogelijk niet goed bijgewerkt na een failover.
 -   Levenscyclus beheer ondersteunt momenteel alleen gelijkheids controles met overeenkomende BLOB-index.
 -   CopyBlob kopieert geen blob-index Tags van de bron-BLOB naar de nieuwe doel-blob. U kunt de labels opgeven die u wilt Toep assen op de doel-BLOB tijdens de Kopieer bewerking. 
+- CopyBlob (asynchroon kopiëren) vanuit een ander opslag account met toegepaste labels op de doel-BLOB zorgt er momenteel voor dat de BLOB-index engine de BLOB en de bijbehorende tags in de Filterset niet retourneert. Het is raadzaam om CopyBlob van URL (Sync Copy) te gebruiken in de tijdelijke oplossing.
 -   Tags blijven behouden bij het maken van moment opnamen. het promo veren van een moment opname wordt momenteel niet ondersteund en kan resulteren in een lege tag-set.
 
 ## <a name="faq"></a>Veelgestelde vragen
@@ -308,5 +309,7 @@ Nee, met Azure Resource Manager Tags kunt u beheer vlak resources zoals abonneme
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk een voor beeld van het gebruik van BLOB-index. Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)
+Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)voor een voor beeld van het gebruik van BLOB-index.
+
+Meer informatie over [levenscyclus beheer](storage-lifecycle-management-concepts.md) en het instellen van een regel met overeenkomende BLOB-index.
 

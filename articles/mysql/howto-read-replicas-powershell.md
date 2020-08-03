@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: f6d24ba0d31020b82669947189da180348f2a46b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e99d378b49596ac208f7235a4d1d8b2b1c8c5310
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107985"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498766"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van Power shell
 
@@ -53,7 +54,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Voor de `New-AzMySqlServerReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Description  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
 | Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
@@ -82,7 +83,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 Voor de `Get-AzMySqlReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Description  |
+| Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | ServerName | mydemoserver | De naam of ID van de hoofd server. |

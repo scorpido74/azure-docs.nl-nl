@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a9954b0ddd446c4e39d85ab6d3e37402176236d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221430"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489636"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>De SKU voor een bestaand Azure Active Directory Domain Services beheerd domein wijzigen
 
-In Azure Active Directory Domain Services (Azure AD DS) zijn de beschik bare prestaties en functies gebaseerd op het type SKU. Deze functie verschillen omvatten de back-upfrequentie of het maximum aantal eenrichtings vertrouwensrelaties voor uitgaande forests (momenteel als preview-versie).
+In Azure Active Directory Domain Services (Azure AD DS) zijn de beschik bare prestaties en functies gebaseerd op het type SKU. Deze functie verschillen omvatten de back-upfrequentie of het maximum aantal eenrichtings vertrouwensrelaties voor uitgaande forests.
 
 U selecteert een SKU wanneer u het beheerde domein maakt en u kunt naar boven of beneden scha kelen tussen Sku's wanneer de bedrijfs behoeften veranderen nadat het beheerde domein is geïmplementeerd. Wijzigingen in zakelijke vereisten kunnen de nood zaak van vaker back-ups bevatten of extra forestvertrouwensrelaties maken. Meer informatie over de limieten en prijzen van de verschillende Sku's vindt u in [azure AD DS SKU-concepten][concepts-sku] en [Azure AD DS prijzen][pricing] pagina's.
 
@@ -38,7 +38,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="sku-change-limitations"></a>Beperkingen voor het wijzigen van de SKU
 
-U kunt Sku's omhoog of omlaag wijzigen nadat het beheerde domein is geïmplementeerd. Als u echter een resource-forest gebruikt (momenteel in de preview-versie) en een eenrichtings uitgaande forest-vertrouwens relatie van Azure AD DS naar een on-premises AD DS omgeving hebt gemaakt, zijn er enkele beperkingen voor de bewerking voor het wijzigen van de SKU. De *Premium* -en *Enter prise* -sku's definiëren een limiet voor het aantal vertrouwens relaties dat u kunt maken. U kunt niet overschakelen naar een SKU met een lagere maximum limiet dan u momenteel hebt geconfigureerd.
+U kunt Sku's omhoog of omlaag wijzigen nadat het beheerde domein is geïmplementeerd. Als u echter een resource-forest gebruikt en een eenrichtings uitgaande forest vertrouwensrelatie van Azure AD DS naar een on-premises AD DS omgeving hebt gemaakt, zijn er enkele beperkingen voor de bewerking voor het wijzigen van de SKU. De *Premium* -en *Enter prise* -sku's definiëren een limiet voor het aantal vertrouwens relaties dat u kunt maken. U kunt niet overschakelen naar een SKU met een lagere maximum limiet dan u momenteel hebt geconfigureerd.
 
 Bijvoorbeeld:
 
@@ -66,7 +66,7 @@ Het kan een paar minuten duren voordat het SKU-type is gewijzigd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een uitgaande forestvertrouwensrelatie maken met een on-premises domein in Azure AD DS (preview)][create-trust]als u een bron-forest hebt en aanvullende vertrouwens relaties wilt maken nadat de SKU is gewijzigd.
+Als u een resource-forest hebt en aanvullende vertrouwens relaties wilt maken nadat de SKU is gewijzigd, raadpleegt u [een uitgaande forestvertrouwensrelatie maken met een on-premises domein in Azure AD DS][create-trust].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

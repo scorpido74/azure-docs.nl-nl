@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170102"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489466"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona integreren met Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Trusona is een ISV-provider (Independent Software Vendor) die helpt bij het beve
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een[gratis account](https://azure.microsoft.com/free/).
 * [Een Azure AD B2C-Tenant](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
 * Een [proef account](https://www.trusona.com/aadb2c) op Trusona
 
@@ -116,7 +116,7 @@ In dit scenario fungeert Trusona als een id-provider voor Azure AD B2C voor het 
    | Eigenschap | Waarde  |
    | :--- | :--- |
    | UserID | Chronische  |
-   | Weergavenaam | naam |
+   | Weergavenaam | bijnaam |
    | Voornaam | given_name |
    | Achternaam | Family_name |
    | Antwoord modus | e-mail |
@@ -125,25 +125,26 @@ In dit scenario fungeert Trusona als een id-provider voor Azure AD B2C voor het 
 
 ### <a name="create-a-user-flow-policy"></a>Een beleid voor gebruikers stromen maken
 
-1. U ziet nu Trusona als een **nieuwe OpenID Connect Connect ID-provider** die wordt weer gegeven in uw B2C-id-providers.
+U ziet nu Trusona als een **nieuwe OpenID Connect Connect ID-provider** die wordt weer gegeven in uw B2C-id-providers.
 
-2. Selecteer **gebruikers stromen (beleid)** in het navigatie paneel aan de linkerkant.
+1. Selecteer in uw Azure AD B2C-Tenant onder **beleids regels** **gebruikers stromen**.
 
-3. Selecteer **Add**  >  registreren**nieuwe gebruikers stroom**toevoegen  >  **en meld u**aan.
+1. Selecteer **nieuwe gebruikers stroom**.
 
-### <a name="configure-the-policy"></a>Het beleid configureren
+1. Selecteer **Aanmelden en aanmelden**, selecteer een versie en selecteer vervolgens **maken**.
 
-1. Geef uw beleid een naam.
+1. Voer een **naam** in voor uw beleid.
 
-2. Selecteer de zojuist gemaakte **Trusona-ID-provider**.
+1. Selecteer in de sectie **id-providers** de zojuist gemaakte **Trusona-ID-provider**.
 
-3. Omdat Trusona is inherent aan meerdere factoren, is het het beste om multi-factor Authentication uitgeschakeld te laten.
+   > [!NOTE]
+   > Omdat Trusona is inherent aan meerdere factoren, is het het beste om multi-factor Authentication uitgeschakeld te laten.
 
-4. Selecteer **Maken**.
+1. Selecteer **Maken**.
 
-5. Onder **gebruikers kenmerken en claims**, kiest u **meer weer geven**. Selecteer in het formulier ten minste één kenmerk dat u hebt opgegeven tijdens de installatie van uw ID-provider in de vorige sectie.
+1. Onder **gebruikers kenmerken en claims**, kiest u **meer weer geven**. Selecteer in het formulier ten minste één kenmerk dat u hebt opgegeven tijdens de installatie van uw ID-provider in de vorige sectie.
 
-6. Selecteer **OK**.  
+1. Selecteer **OK**.  
 
 ### <a name="test-the-policy"></a>Het beleid testen
 

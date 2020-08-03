@@ -7,12 +7,13 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028138"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499412"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Voor beeld: een Windows-VM met Azure Image Builder maken met behulp van Power shell
 
@@ -25,7 +26,7 @@ In dit artikel wordt beschreven hoe u een aangepaste Windows-installatie kopie k
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de AZ Powershell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de AZ PowerShell-module.
 
 > [!IMPORTANT]
 > Hoewel de Power shell-modules **AZ. ImageBuilder** en **AZ. ManagedServiceIdentity** in de preview-versie zijn, moet u ze afzonderlijk installeren met de `Install-Module` cmdlet met de `AllowPrerelease` para meter. Zodra deze Power shell-modules algemeen beschikbaar worden, worden ze onderdeel van toekomstige AZ Power shell-module releases en zijn deze standaard beschikbaar vanuit Azure Cloud Shell.
@@ -64,7 +65,7 @@ Registreer de volgende resource providers voor gebruik met uw Azure-abonnement a
 - Microsoft.Compute
 - Microsoft.KeyVault
 - Microsoft.Storage
-- Micro soft. VirtualMachineImages
+- Microsoft.VirtualMachineImages
 
 ```azurepowershell-interactive
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |

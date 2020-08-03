@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387827"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488768"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een gebruikers stroom naar uw toepassing in Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het to
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Uw toepassing moet een v2- [gebruikers stroom](user-flow-versions.md)gebruiken.
+* Uw toepassing moet een [aanbevolen gebruikers stroom](user-flow-versions.md)gebruiken.
 * Uw gebruikers stroom is geconfigureerd met een OAuth 2,0-ID-provider.
 
 ## <a name="enable-the-claim"></a>Claim inschakelen
@@ -42,7 +42,7 @@ Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het to
 
 7. Klik op **Opslaan** om de gebruikers stroom op te slaan.
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te retour neren om `https://jwt.ms` de claims erin te controleren.
 

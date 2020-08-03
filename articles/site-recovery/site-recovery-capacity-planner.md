@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129963"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490571"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Capaciteit plannen voor herstel na nood gevallen voor Hyper-V-VM'S 
 
@@ -47,7 +47,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 
 2. Selecteer in de keuze lijst **een planner type selecteren** de optie **snelle planner**.
 
-   ![Aan de slag](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Scherm afbeelding van de optie type van planner selecteren, waarbij snelle planner is geselecteerd.](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. Voer de vereiste gegevens in op het werk blad **capacity planner** . Vul alle velden in die rood in de volgende scherm afbeelding worden omcirkeld:
 
@@ -61,7 +61,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 
    e. In het **aantal uren waarin de initiële replicatie voor de batch van virtuele machines moet worden voltooid** en het **aantal virtuele machines per initiële replicatie batch**, voert u de instellingen in die worden gebruikt voor het berekenen van de initiële replicatie vereisten. Wanneer Site Recovery is geïmplementeerd, wordt de volledige initiële gegevensset geüpload.
 
-   ![Invoerwaarden](./media/site-recovery-capacity-planner/inputs.png)
+   ![Scherm afbeelding van het Capacity Planner werk blad, met daarin de vereiste invoer gegevens.](./media/site-recovery-capacity-planner/inputs.png)
 
 4. Nadat u de waarden voor de bron omgeving hebt opgegeven, bevat de weer gegeven uitvoer:
 
@@ -77,7 +77,7 @@ U kunt het hulp programma uitvoeren in twee modi:
    * **Aantal vereiste extra proces servers**: geeft aan of extra proces servers vereist zijn, naast de proces server die standaard op de configuratie server wordt uitgevoerd.
    * **100% extra opslag ruimte op de bron**: geeft aan of extra opslag ruimte vereist is op de bron locatie.
 
-      ![Uitvoer](./media/site-recovery-capacity-planner/output.png)
+      ![Scherm opname van de weer gegeven uitvoer op basis van de opgegeven invoer.](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>De gedetailleerde planner uitvoeren
 
@@ -85,7 +85,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 
 2. Selecteer in **Selecteer een planner type** **gedetailleerde planner** in de keuze lijst.
 
-   ![Handleiding Aan de slag](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![Scherm afbeelding van de optie type van planner selecteren, waarbij gedetailleerde planner is geselecteerd.](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. Voer de vereiste gegevens in op het werk blad **kwalificaties werk belasting** . U moet alle velden die zijn gemarkeerd invullen.
 
@@ -101,11 +101,11 @@ U kunt het hulp programma uitvoeren in twee modi:
 
    f. Geef het gemiddelde gebruik op in **schijf capaciteits gebruik (%)**.
 
-   bijvoorbeeld In **dagelijkse gegevens wijzigings percentage (%)** geeft u de dagelijkse gegevens wijzigings frequentie van een bron server op.
+   g. In **dagelijkse gegevens wijzigings percentage (%)** geeft u de dagelijkse gegevens wijzigings frequentie van een bron server op.
 
    h. Voer in **Azure VM-grootte toewijzen**de Azure VM-grootte in die u wilt toewijzen. Als u dit niet hand matig wilt doen, selecteert u **Compute IaaS vm's**. Als u een hand matige instelling invoert en vervolgens **Compute IaaS vm's**selecteert, kan de hand matige instelling worden overschreven. Het reken proces identificeert automatisch de beste overeenkomst op de Azure VM-grootte.
 
-   ![Werk blad kwalificaties werk belasting](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![Scherm afbeelding van het werk blad werk belasting kwalificatie, met daarin de vereiste invoer gegevens.](./media/site-recovery-capacity-planner/workload-qualification.png)
 
 4. Als u **Compute IaaS vm's**selecteert, doet u het volgende:
 
@@ -117,12 +117,12 @@ U kunt het hulp programma uitvoeren in twee modi:
 
 Kolommen AA tot en met AE zijn uitvoer en geven informatie voor elke VM.
 
-![Uitvoer kolommen AA tot en met AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![Scherm opname van uitvoer kolommen AA tot en met AE.](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Voorbeeld
 Als voor beeld: voor zes Vm's met de waarden die in de tabel worden weer gegeven, worden met het hulp programma de beste overeenkomst voor Azure-VM'S en de vereisten voor Azure Storage berekend en toegewezen.
 
-![Toewijzing van werk belasting kwalificaties](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Scherm afbeelding met toewijzing van de werk belasting kwalificatie.](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * Let op het volgende in de voorbeeld uitvoer:
 
@@ -144,7 +144,7 @@ Nadat alle gegevens zijn ingevoerd, selecteert **u gegevens verzenden naar het h
 
 2. Als u wijzigingen wilt aanbrengen, moet u het werk blad **kwalificaties werk belasting** wijzigen. Selecteer vervolgens opnieuw **gegevens verzenden naar het hulp programma planner** .
 
-   ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Scherm opname van de gewijzigde invoer en resulterende uitvoer in het Capacity Planner werk blad.](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 [Meer informatie over het uitvoeren](./hyper-v-deployment-planner-overview.md) van het hulp programma capaciteits planning.

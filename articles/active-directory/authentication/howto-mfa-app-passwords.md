@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485600"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489789"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Azure Multi-Factor Authentication met verouderde toepassingen inschakelen en gebruiken met behulp van app-wacht woorden
 
@@ -81,13 +81,19 @@ In dit scenario gebruikt u de volgende referenties:
 
 Standaard kunnen gebruikers geen app-wacht woorden maken. De functie voor het maken van app-wacht woorden moet zijn ingeschakeld voordat gebruikers deze kunnen gebruiken. Voer de volgende stappen uit om gebruikers de mogelijkheid te geven om app-wacht woorden te maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
 3. Selecteer **multi-factor Authentication** in de navigatie balk aan de bovenkant van het venster *gebruikers* .
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 5. Selecteer op de pagina **Service-instellingen** de optie **gebruikers toestaan app-wacht woorden te maken om zich aan te melden bij niet-browser-apps** .
 
     ![Scherm afbeelding van de Azure Portal waarin de service-instellingen voor multi-factor Authentication worden weer gegeven om de gebruiker van app-wacht woorden toe te staan](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> Wanneer u de mogelijkheid voor gebruikers om app-wacht woorden te maken uitschakelt, blijven bestaande app-wacht woorden werken. Gebruikers kunnen deze bestaande app-wacht woorden echter niet beheren of verwijderen als u deze mogelijkheid hebt uitgeschakeld.
+>
+> Wanneer u de mogelijkheid om app-wacht woorden te maken uitschakelt, wordt het ook aanbevolen om [een beleid voor voorwaardelijke toegang te maken om het gebruik van verouderde verificatie uit te scha kelen](../conditional-access/block-legacy-authentication.md). Deze aanpak voor komt dat bestaande app-wacht woorden werken en het gebruik van moderne verificatie methoden afdwingt.
 
 ## <a name="create-an-app-password"></a>Een app-wacht woord maken
 

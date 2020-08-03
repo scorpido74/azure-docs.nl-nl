@@ -4,14 +4,14 @@ description: Meer informatie over SQL-Opera tors zoals gelijkheid, vergelijking 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063560"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498834"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Opera tors in Azure Cosmos DB
 
@@ -21,11 +21,11 @@ In dit artikel vindt u meer informatie over de verschillende Opera tors die door
 
 In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-API voor elk paar JSON-typen.
 
-| **Op** | **Undefined** | **Null** | **Boolean-waarde** | **Number** | **Tekenreeks** | **Object** | **Matrix** |
+| **Op** | **Undefined** | **Null** | **Booleaans** | **Number** | **Tekenreeks** | **Object** | **Matrix** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean-waarde** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
+| **Booleaans** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
 | **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
 | **Tekenreeks** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
@@ -35,6 +35,14 @@ Voor vergelijkings operatoren zoals,,, `>` `>=` `!=` `<` en `<=` wordt vergelijk
 
 Als het resultaat van de scalaire expressie is `Undefined` , wordt het item niet opgenomen in het resultaat omdat het `Undefined` niet gelijk is aan `true` .
 
+De vergelijking van de volgende query tussen een getal en een teken reeks waarde resulteert bijvoorbeeld in `Undefined` . Daarom bevat het filter geen resultaten.
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
+
 ## <a name="logical-and-or-and-not-operators"></a>Logische operatoren (EN, OF en NIET)
 
 Logische operatoren worden uitgevoerd op Booleaanse waarden. In de volgende tabellen ziet u de logische waarheids tabellen voor deze opera tors:
@@ -43,21 +51,21 @@ Logische operatoren worden uitgevoerd op Booleaanse waarden. In de volgende tabe
 
 Retourneert `true` Wanneer een van de voor waarden is `true` .
 
-|  | **True** | **Terecht** | **Undefined** |
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| **True** |True |True |True |
-| **Terecht** |True |False |Undefined |
-| **Undefined** |True |Undefined |Undefined |
+| **True** |Waar |Waar |Waar |
+| **False** |Waar |Niet waar |Undefined |
+| **Undefined** |Waar |Undefined |Undefined |
 
 **Operator EN**
 
 Retourneert `true` wanneer beide expressies zijn `true` .
 
-|  | **True** | **Terecht** | **Undefined** |
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| **True** |True |False |Undefined |
-| **Terecht** |False |False |False |
-| **Undefined** |Undefined |False |Undefined |
+| **True** |Waar |Niet waar |Undefined |
+| **False** |Niet waar |Niet waar |Niet waar |
+| **Undefined** |Undefined |Niet waar |Undefined |
 
 **Operator NIET**
 
@@ -65,8 +73,8 @@ Keert de waarde van een booleaanse expressie om.
 
 |  | **TEN** |
 | --- | --- |
-| **True** |False |
-| **Terecht** |True |
+| **True** |Niet waar |
+| **False** |Waar |
 | **Undefined** |Undefined |
 
 **Operator prioriteit**

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170119"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489512"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect Connect (OIDC) configureren met Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Met de Itsme digitale ID-app kunt u veilig inloggen zonder kaart lezers, wacht w
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een[gratis account](https://azure.microsoft.com/free/).
 * [Een Azure AD B2C-Tenant](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
 * Uw client-ID, ook wel bekend als partner code, die wordt verschaft door Itsme.
 * De service code die wordt verschaft door Itsme.
@@ -91,7 +91,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Antwoord modus | query |
    |Domein Hint | *U kunt dit leeg laten* |
    |UserID | sub |
-   |Weergavenaam | naam |
+   |Weergavenaam | name |
    |Voornaam | given_name |
    |Achternaam | family_name |
    |E-mail | e-mail|
@@ -104,7 +104,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. Selecteer **nieuwe gebruikers stroom**.
 
-3. Klik op **Aanmelden en meld u aan**.
+3. Selecteer **Aanmelden en aanmelden**, selecteer een versie en selecteer vervolgens **maken**.
 
 4. Voer een **naam**in.
 
@@ -133,7 +133,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    b. Selecteer **Opslaan**.
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 1. In uw B2C-Tenant selecteert u onder **beleids regels** **gebruikers stromen**.
 
