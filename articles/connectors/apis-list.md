@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 166909f1e048ac54184ef5eee2ecee3bfedcdb02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284129"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513839"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -153,11 +153,48 @@ Logic Apps biedt deze populaire standaard connectors voor het automatiseren van 
 
 Hier volgen enkele veelgebruikte standaard-connectors die Logic Apps biedt voor toegang tot gegevens en resources in on-premises systemen. Voordat u een verbinding met een on-premises systeem kunt maken, moet u eerst [een on-premises gegevens gateway downloaden, installeren en instellen][gateway-doc]. Deze gateway biedt een beveiligd communicatie kanaal zonder dat u de benodigde netwerk infrastructuur hoeft in te stellen.
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API-pictogram ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc] | [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc] | [![API-pictogram ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API-pictogram ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![API-pictogram ][mysql-icon]<br> **MySQL**][mysql-doc] |
-| [![API-pictogram ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc] | [![API-pictogram ][postgre-sql-icon]<br> **postgresql**][postgre-sql-doc] | [![API ][sharepoint-server-icon]<br> **-pictogram share point <br> Server**][sharepoint-server-doc] | [![API-pictogram ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API-pictogram ][teradata-icon]<br> **Teradata**][teradata-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API-pictogram ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
+        [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][mysql-icon]<br> **MySQL**][mysql-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][postgre-sql-icon]<br> **postgresql**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][sharepoint-server-icon]<br> **-pictogram share point <br> Server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][teradata-icon]<br> **Teradata**][teradata-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="integration-account-connectors"></a>
 
@@ -165,12 +202,48 @@ Hier volgen enkele veelgebruikte standaard-connectors die Logic Apps biedt voor 
 
 Logic Apps biedt standaard connectors voor het bouwen van Business-to-Business (B2B)-oplossingen met uw Logic apps wanneer u een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)maakt en betaalt dat beschikbaar is via de Enterprise Integration Pack (EIP) in Azure. Met dit account kunt u B2B-artefacten maken en opslaan, zoals handels partners, overeenkomsten, kaarten, schema's, certificaten, enzovoort. Als u deze artefacten wilt gebruiken, koppelt u uw Logic apps aan uw integratie account. Als u momenteel BizTalk Server gebruikt, zijn deze connectors mogelijk al bekend.
 
-|___|___|___|___|
-|---|---|---|---|
-| [![API-pictogram ][as2-icon]<br> **AS2- <br> decodering**][as2-doc] | [![API-pictogram ][as2-icon]<br> **AS2- <br> code ring**][as2-doc] | [![API-pictogram ][edifact-icon]<br> **EDIFACT- <br> decodering**][edifact-decode-doc] | [![API-pictogram ][edifact-icon]<br> **EDIFACT- <br> code ring**][edifact-encode-doc] |
-| [![API-pictogram ][flat-file-decode-icon]<br> **platte bestands <br> codering**][flat-file-decode-doc] | [![API-pictogram ][flat-file-encode-icon]<br> **platte bestands <br> codering**][flat-file-encode-doc] | [![][integration-account-icon]<br>**Integratie <br> account** API-pictogram][integration-account-doc] | [![API-pictogram ][liquid-icon]<br> **liquide** <br> **trans formaties**][json-liquid-transform-doc] |
-| [![API-pictogram ][x12-icon]<br> **X12- <br> decodering**][x12-decode-doc] | [![API-pictogram ][x12-icon]<br> **X12- <br> code ring**][x12-encode-doc] | [![API ][xml-transform-icon]<br> **-pictogram XML-** <br> **trans formaties**][xml-transform-doc] | [![API ][xml-validate-icon]<br> **-pictogram XML- <br> validatie**][xml-validate-doc] |
-|||||
+:::row:::
+    :::column:::
+        [![API-pictogram ][as2-icon]<br> **AS2- <br> decodering**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][as2-icon]<br> **AS2- <br> code ring**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][edifact-icon]<br> **EDIFACT- <br> decodering**][edifact-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][edifact-icon]<br> **EDIFACT- <br> code ring**][edifact-encode-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][flat-file-decode-icon]<br> **platte bestands <br> codering**][flat-file-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][flat-file-encode-icon]<br> **platte bestands <br> codering**][flat-file-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![][integration-account-icon]<br>**Integratie <br> account** API-pictogram][integration-account-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][liquid-icon]<br> **liquide** <br> **trans formaties**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][x12-icon]<br> **X12- <br> decodering**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][x12-icon]<br> **X12- <br> code ring**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][xml-transform-icon]<br> **-pictogram XML-** <br> **trans formaties**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][xml-validate-icon]<br> **-pictogram XML- <br> validatie**][xml-validate-doc]
+    :::column-end:::
+:::row-end:::
 
 <a name="enterprise-connectors"></a>
 
@@ -178,10 +251,20 @@ Logic Apps biedt standaard connectors voor het bouwen van Business-to-Business (
 
 Logic Apps biedt deze zakelijke connectors voor toegang tot bedrijfs systemen, zoals SAP en IBM MQ:
 
-|___|___|___|
-|---|---|---|
-| [![API-pictogram ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API-pictogram ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API-pictogram ][sap-icon]<br> **SAP**][sap-connector-doc] |
-|||
+:::row:::
+    :::column:::
+        [![API-pictogram ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="ise-connectors"></a>
 
@@ -189,14 +272,90 @@ Logic Apps biedt deze zakelijke connectors voor toegang tot bedrijfs systemen, z
 
 Voor Logic apps die u in een dedicated [Integration service Environment (ISE)](#integration-service-environment)maakt en uitvoert, identificeert de Logic app-ontwerp functie ingebouwde triggers en acties die worden uitgevoerd in uw ISE met behulp van het **kern** label. Beheerde connectors die worden uitgevoerd in een ISE, worden het label **ISE** weer gegeven, terwijl Connect oren die worden uitgevoerd in de globale multi tenant-Logic apps service, geen van beide labels weer geven. In deze lijst ziet u de connectors die momenteel ISE-versies hebben:
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API-pictogram ][as2-icon]<br> **AS2**][as2-doc] | [![API-pictogram ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc] | [![API-pictogram ][azure-blob-storage-icon]<br> **Azure Blob- <br> opslag**][azure-blob-storage-doc] | [![API-pictogram ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc] | [![API-pictogram ][azure-event-hubs-icon]<br> **Azure event <br> hubs**][azure-event-hubs-doc] |
-| [![API-pictogram ][azure-event-grid-icon]<br> **Azure event <br> grid**][azure-event-grid-doc] | [![API-pictogram ][azure-file-storage-icon]<br> **Azure file <br> Storage**][azure-file-storage-doc] | [![API-pictogram ][azure-key-vault-icon]<br> **Azure-sleutel <br> kluis**][azure-key-vault-doc] | [![API-pictogram ][azure-monitor-logs-icon]<br> **Azure monitor <br> Logboeken**][azure-monitor-logs-doc] | [![API-pictogram ][azure-service-bus-icon]<br> **Azure service <br> bus**][azure-service-bus-doc] |
-| [![API-pictogram ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc] | [![API-pictogram ][azure-table-storage-icon]<br> **Azure-tabel <br> opslag**][azure-table-storage-doc] | [![API-pictogram ][azure-queues-icon]<br> **Azure- <br> wacht rijen**][azure-queues-doc] | [![API-pictogram ][edifact-icon]<br> **EDIFACT**][edifact-doc] | [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc] |
-| [![API ][ftp-icon]<br> **-pictogram FTP**][ftp-doc] | [![API-pictogram ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API-pictogram ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API-pictogram ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API-pictogram ][sap-icon]<br> **SAP**][sap-connector-doc] |
-| [![API ][sftp-ssh-icon]<br> **-pictogram SFTP-SSH**][sftp-ssh-doc] | [![API ][smtp-icon]<br> **-pictogram SMTP**][smtp-doc] | [![API-pictogram ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API-pictogram ][x12-icon]<br> **X12**][x12-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API-pictogram ][as2-icon]<br> **AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-blob-storage-icon]<br> **Azure Blob- <br> opslag**][azure-blob-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][azure-event-hubs-icon]<br> **Azure event <br> hubs**][azure-event-hubs-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-event-grid-icon]<br> **Azure event <br> grid**][azure-event-grid-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-file-storage-icon]<br> **Azure file <br> Storage**][azure-file-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-key-vault-icon]<br> **Azure-sleutel <br> kluis**][azure-key-vault-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][azure-monitor-logs-icon]<br> **Azure monitor <br> Logboeken**][azure-monitor-logs-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-service-bus-icon]<br> **Azure service <br> bus**][azure-service-bus-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][azure-table-storage-icon]<br> **Azure-tabel <br> opslag**][azure-table-storage-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][azure-queues-icon]<br> **Azure- <br> wacht rijen**][azure-queues-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][edifact-icon]<br> **EDIFACT**][edifact-doc]
+    :::column-end:::
+    :::column:::
+        [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][ftp-icon]<br> **-pictogram FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-pictogram ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API ][sftp-ssh-icon]<br> **-pictogram SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][smtp-icon]<br> **-pictogram SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API-pictogram ][x12-icon]<br> **X12**][x12-doc]
+    :::column-end:::
+:::row-end:::
 
 Raadpleeg de volgende onderwerpen voor meer informatie:
 

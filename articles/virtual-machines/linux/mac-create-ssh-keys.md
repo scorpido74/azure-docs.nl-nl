@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448989"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513686"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Snelle stappen: maken en gebruiken van een openbaar persoonlijk sleutel paar met SSH voor Linux-Vm's in azure
 
-Met een SSH-sleutel paar (Secure Shell) kunt u virtuele machines (Vm's) in azure maken die gebruikmaken van SSH-sleutels voor verificatie, waardoor het niet nodig is om wacht woorden aan te melden. In dit artikel wordt beschreven hoe u snel een bestand met open bare-sleutel paar voor virtuele machines met SSH-code kunt genereren en gebruiken voor Linux-Vm's. U kunt deze stappen volt ooien met de Azure Cloud Shell, een macOS-of Linux-host, het Windows-subsysteem voor Linux en andere hulpprogram ma's die OpenSSH ondersteunen. 
+Met een SSH-sleutel paar (Secure Shell) kunt u virtuele machines (Vm's) in azure maken die gebruikmaken van SSH-sleutels voor verificatie. In dit artikel wordt beschreven hoe u snel een bestand met open bare-sleutel paar voor virtuele machines met SSH-code kunt genereren en gebruiken voor Linux-Vm's. U kunt deze stappen volt ooien met de Azure Cloud Shell, een macOS-of Linux-host. 
 
 > [!NOTE]
 > Vm's die zijn gemaakt met SSH-sleutels zijn standaard geconfigureerd met uitgeschakelde wacht woorden, waardoor het lastiger wordt om aanvallen te voor komen. 

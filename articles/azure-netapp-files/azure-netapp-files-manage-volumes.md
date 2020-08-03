@@ -1,6 +1,6 @@
 ---
 title: Volumes beheren met behulp van Azure NetApp Files | Microsoft Docs
-description: Hierin wordt beschreven hoe u volumes beheert met behulp van de Azure NetApp Files-service.
+description: Meer informatie over het weer geven, bijwerken of verwijderen van een volume in Azure NetApp Files. Als u een volume wilt verwijderen, verwijdert u eerst alle subobjecten van een volume.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 64d83cc88f66eefad8980bead7fe37ad1782873f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50de55846ba22a0be1bb2e9fa5a9224abe87a49
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483547"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513822"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>Volume beheren met behulp van Azure NetApp Files
 U kunt een volume beheren door het volume te bekijken, bij te werken of te verwijderen. 

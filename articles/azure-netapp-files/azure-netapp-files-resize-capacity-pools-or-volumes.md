@@ -1,6 +1,6 @@
 ---
 title: Het formaat van de capaciteits groep of een volume voor Azure NetApp Files wijzigen | Microsoft Docs
-description: Hierin wordt beschreven hoe u de grootte van een capaciteits groep of een volume wijzigt.
+description: Meer informatie over het wijzigen van de grootte van een capaciteits groep of een volume. Het wijzigen van de grootte van de capaciteits groep wijzigt de gekochte Azure NetApp Files capaciteit.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/14/2019
 ms.author: b-juche
-ms.openlocfilehash: 7da604e8e49b0732680e5f641d1ff6e899ad474d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d1c54d05430600e9fffa2659dbaaf6db0b086b5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483479"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512870"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Het formaat van een capaciteitspool of volume wijzigen
 U kunt de grootte van een capaciteits groep of een volume zo nodig wijzigen. 

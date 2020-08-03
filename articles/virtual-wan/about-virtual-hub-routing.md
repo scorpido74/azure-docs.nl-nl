@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171871"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513720"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -27,7 +27,7 @@ Zie [route ring van virtuele hub configureren voor meer informatie over het](how
 In de volgende secties worden de belangrijkste concepten in virtuele hub-route ring beschreven.
 
 > [!NOTE]
-> Sommige van deze nieuwe concepten voor de route tabel van de hub, de koppeling, het door sturen en statische routes in een virtuele netwerk verbinding kunnen nog steeds worden geïmplementeerd en worden verwacht in de week van aug 3de.
+> Sommige van deze nieuwe concepten voor de route tabel van de hub, de koppeling, het door sturen en statische routes in een virtuele netwerk verbinding kunnen nog steeds worden geïmplementeerd en verwacht in de week van Aug 17.
 >
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Route tabel van de hub
@@ -77,9 +77,9 @@ Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf be
 
 * **Standaard virtuele WAN-klanten met al bestaande routes in de virtuele hub**:
 
-Als u nieuwe mogelijkheden voor de route tabel wilt gebruiken, moet u tot de week augustus wachten tot de implementatie in Azure is voltooid. Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens proberen nieuwe route tabellen te maken (beschikbaar in de sectie route tabellen van de hub in Azure Portal)
+Als u nieuwe mogelijkheden voor de route tabel wilt gebruiken, moet u tot de week augustus 17 wachten tot de implementatie in Azure is voltooid. Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens proberen nieuwe route tabellen te maken (beschikbaar in de sectie route tabellen van de hub in Azure Portal)
 
-* **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
+* **Eenvoudige virtuele WAN-klanten met reeds bestaande routes in de virtuele hub**: als u de nieuwe mogelijkheden voor de route tabel wilt gebruiken, wacht u tot de week augustus 17 om de implementatie in azure te volt ooien. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Aandachtspunten voor virtuele WAN-route ring
 

@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files Sdk's en CLI-hulpprogram ma's | Microsoft Docs
-description: Een lijst met de hulpprogram ma's voor Sdk's en de opdracht regel (CLI) die door Azure NetApp Files worden ondersteund.
+description: "Meer informatie over ondersteunde Sdk's voor Azure NetApp Files en hun gepubliceerde locaties in GitHub, en over ondersteunde opdracht regel Programma's: Azure CLI en Power shell."
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045464"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513618"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>SDK's en CLI-hulpprogramma's voor Azure NetApp Files
 

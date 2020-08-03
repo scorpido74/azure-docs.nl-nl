@@ -1,17 +1,17 @@
 ---
 title: Rollen en vereisten voor Azure Data Share
 description: Meer informatie over de vereiste machtigingen voor het delen en ontvangen van gegevens met behulp van Azure data share.
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110994"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513761"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -90,7 +90,13 @@ Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/role-based-access
 
 ## <a name="resource-provider-registration"></a>Registratie van resource provider 
 
-Als u de uitnodiging voor Azure data share voor het eerst wilt weer geven in uw Azure-Tenant, moet u de resource provider micro soft. DataShare mogelijk hand matig registreren in uw Azure-abonnement. Volg deze stappen om de resource provider micro soft. DataShare te registreren bij uw Azure-abonnement. U hebt *Inzender* toegang tot het Azure-abonnement nodig om de resource provider te registreren.
+Mogelijk moet u de resource provider micro soft. DataShare hand matig registreren in uw Azure-abonnement in de volgende scenario's: 
+
+* De Azure data share-uitnodiging voor de eerste keer in uw Azure-Tenant weer geven
+* Gegevens uit een Azure-gegevens archief delen in een ander Azure-abonnement van uw Azure-gegevens share-resource
+* Gegevens ontvangen in een Azure-gegevens archief in een ander Azure-abonnement van uw Azure-gegevens share-resource
+
+Volg deze stappen om de resource provider micro soft. DataShare te registreren bij uw Azure-abonnement. U hebt *Inzender* toegang tot het Azure-abonnement nodig om de resource provider te registreren.
 
 1. Ga in het Azure Portal naar **abonnementen**.
 1. Selecteer het abonnement dat u voor Azure-gegevens share gebruikt.

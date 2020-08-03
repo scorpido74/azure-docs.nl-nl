@@ -11,16 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ceb375eb9da853b4c89ffe278d3483f6a4fa72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050955"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512972"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Registratie van gecombineerde beveiligings gegevens voor Azure Active Directory overzicht
 
 Vóór de gecombineerde registratie hebben gebruikers de verificatie methoden voor Azure Multi-Factor Authentication en self-service voor wachtwoord herstel (SSPR) afzonderlijk geregistreerd. Het is bekend dat er soort gelijke methoden werden gebruikt voor Multi-Factor Authentication en SSPR, maar dat ze voor beide functies moesten registreren. Met gecombineerde registratie kunnen gebruikers zich eenmaal registreren en profiteren van de voor delen van Multi-Factor Authentication en SSPR.
+
+> [!NOTE]
+> Vanaf 15 augustus 2020 worden alle nieuwe Azure AD-tenants automatisch ingeschakeld voor gecombineerde registratie.
 
 In dit artikel vindt u een overzicht van de gecombineerde beveiligings registratie. Raadpleeg het volgende artikel om aan de slag te gaan met de gecombineerde beveiligings registratie:
 
@@ -50,15 +53,15 @@ Bij gecombineerde registratie worden de volgende verificatie methoden en-acties 
 
 | Methode | Registreren | Wijziging | Verwijderen |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ja (Maxi maal 5) | No | Yes |
-| Andere verificator-app | Ja (Maxi maal 5) | No | Yes |
-| Hardware-token | Nee | Nee | Yes |
+| Microsoft Authenticator | Ja (Maxi maal 5) | Nee | Ja |
+| Andere verificator-app | Ja (Maxi maal 5) | Nee | Ja |
+| Hardware-token | Nee | Nee | Ja |
 | Telefoon | Ja | Ja | Ja |
 | Alternatief telefoon nummer | Ja | Ja | Ja |
 | Zakelijke telefoon | Nee | Nee | Nee |
 | E-mail | Ja | Ja | Ja |
-| Beveiligingsvragen | Yes | No | Yes |
-| App-wachtwoorden | Yes | No | Yes |
+| Beveiligingsvragen | Ja | Nee | Ja |
+| App-wachtwoorden | Ja | Nee | Ja |
 | FIDO2-beveiligings sleutels<br />*Beheerde modus alleen via de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info)*| Ja | Ja | Ja |
 
 > [!NOTE]

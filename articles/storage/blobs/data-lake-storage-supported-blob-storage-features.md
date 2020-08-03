@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 07/31/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: c79bca86ba253217012abd24d509d365a076b183
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e7cedaea89e2ed3d998df6ffe0ecaa06115e265
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086027"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513788"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2
 
@@ -40,11 +40,11 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |Api's voor Blob-opslag|Algemeen beschikbaar|Preview|[Snelstart: De Azure Blob Storage-clientbibliotheek v12 voor .NET](storage-quickstart-blobs-dotnet.md)<br>[Quick Start: blobs beheren met Java V12 SDK](storage-quickstart-blobs-java.md)<br>[Quickstart: Blobs beheren met Python v12 SDK](storage-quickstart-blobs-python.md)<br>[Quickstart: Blobs beheren met JavaScript v12 SDK in Node.js](storage-quickstart-blobs-nodejs.md)|
 |Diagnostische logboeken|Algemeen beschikbaar|Preview <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Logboekregistratie van Azure Opslaganalyse](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Access-laag archiveren|Algemeen beschikbaar|Niet ondersteund|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
+|Levenscyclus beheer beleid|Algemeen beschikbaar|Nog niet ondersteund|[De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)|
 |Aanmelden Azure Monitor|Preview |Nog niet ondersteund|[Bewakings Azure Storage](../common/monitor-storage.md)|
 |Momentopnamen|Preview<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Nog niet ondersteund|[BLOB-moment opnamen](snapshots-overview.md)|
 |Statische websites|Preview<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Nog niet ondersteund|[Een statische website hosten in Azure Storage](storage-blob-static-website.md)|
 |Onveranderbare opslag|Preview<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Nog niet ondersteund|[Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag](storage-blob-immutable-storage.md)|
-|Levenscyclus beheer beleid|Preview|Nog niet ondersteund|[De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)|
 |Blobfuse|Preview|Nog niet ondersteund|[Blob-opslag koppelen als een bestands systeem met blobfuse](storage-how-to-mount-container-linux.md)|
 |Feed wijzigen|Nog niet ondersteund|Nog niet ondersteund|[Ondersteuning voor feed wijzigen in Azure Blob-opslag](storage-blob-change-feed.md)|
 |Account-failover|Nog niet ondersteund|Nog niet ondersteund|[Herstel na nood gevallen en failover van accounts](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

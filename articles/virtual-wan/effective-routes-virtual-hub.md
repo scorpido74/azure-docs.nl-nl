@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037763"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513703"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Efficiënte routes voor virtuele hubs weergeven
 
 U kunt alle routes van uw virtuele WAN-hub weer geven in de Azure Portal. Dit artikel begeleidt u stapsgewijs door de stappen voor het weer geven van efficiënte routes. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
 > [!NOTE]
-> Op het Azure Portal kunnen sommige van deze functies nog steeds worden geïmplementeerd en niet beschikbaar zijn tot week augustus. 
+> Op het Azure Portal kunnen sommige van deze functies nog steeds worden geïmplementeerd en niet beschikbaar zijn in de week van augustus 17. 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Verbindingen of route tabellen selecteren
@@ -46,7 +46,7 @@ De pagina-uitvoer bevat de volgende velden:
 * **Oorsprong**: bron-id van de routerings bron.
 * **Als pad**: BGP-kenmerk as (autonoom systeem) een lijst met alle as-nummers die moeten worden gepasseerd om de locatie te bereiken waar het voor voegsel waaraan het pad is gekoppeld, wordt geadverteerd.
 
-### <a name="example"></a><a name="example"></a>Voorbeeld
+### <a name="example"></a><a name="example"></a>Hierbij
 
 De waarden in de volgende voorbeeld tabel impliceren dat de virtuele-hub-verbinding of route tabel de route van 10.2.0.0/24 (een vertakkings voorvoegsel) heeft geleerd. De route is geleerd door het type volgende hop van de **VPN-** VPN_S2S_Gateway met de **volgende hop** VPN gateway resource-id. **Route oorsprong** wijst naar de resource-id van de oorspronkelijke VPN-gateway/route tabel/-verbinding. **As Path** geeft het as-pad voor de vertakking aan.
 

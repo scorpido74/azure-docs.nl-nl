@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 122a3e243f314395ea7b1d32b88a5e20b0965eef
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421362"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512003"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -42,9 +42,11 @@ Met deze interface kunnen de RDMA-compatibele instanties communiceren via een In
 > RDMA via IB wordt ondersteund voor alle virtuele machines met RDMA-functionaliteit.
 > IP over IB wordt alleen ondersteund op Vm's met SR-IOV-functionaliteit.
 
-- **Besturings systeem** : Linux wordt zeer goed ondersteund voor HPC-vm's. distributies zoals CentOS, RHEL, Ubuntu, SUSE worden meestal gebruikt. Met betrekking tot Windows-ondersteuning worden Windows Server 2016 en nieuwere versies ondersteund op alle virtuele machines van de HPC-serie. Windows Server 2012 R2, Windows Server 2012 wordt ook ondersteund op virtuele machines die niet zijn beveiligd met SR-IOV (H16r, H16mr, A8 en A9). Houd er rekening mee dat [Windows Server 2012 R2 niet wordt ondersteund voor HBv2 en andere vm's met meer dan 64 (virtuele of fysieke) kernen](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+- **Besturings systeem** : Linux wordt zeer goed ondersteund voor HPC-vm's. distributies zoals CentOS, RHEL, Ubuntu, SUSE worden meestal gebruikt. Met betrekking tot Windows-ondersteuning worden Windows Server 2016 en nieuwere versies ondersteund op alle virtuele machines van de HPC-serie. Windows Server 2012 R2, Windows Server 2012 wordt ook ondersteund op virtuele machines die niet zijn beveiligd met SR-IOV (H16r, H16mr, A8 en A9). Houd er rekening mee dat [Windows Server 2012 R2 niet wordt ondersteund voor HBv2 en andere vm's met meer dan 64 (virtuele of fysieke) kernen](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). Zie [VM-installatie kopieën](./workloads/hpc/configure.md) voor een lijst met ondersteunde VM-installatie kopieën op de Marketplace en hoe deze op de juiste wijze kunnen worden geconfigureerd.
 
-- **Infiniband-en RDMA-Stuur Programma's** : op InfiniBand ingeschakelde vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. Op Linux worden de CentOS-HPC-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Op SR-IOV ingeschakelde H-en N-serie Vm's, kan de [InfiniBandDriverLinux-VM-extensie](./extensions/hpc-compute-infiniband-linux.md) worden gebruikt voor het installeren van de Mellanox OFED-Stuur Programma's en het inschakelen van Infiniband. Meer informatie over het inschakelen van InfiniBand op virtuele machines met RDMA- [HPC-workloads](./workloads/hpc/overview.md).
+- **Infiniband-en RDMA-Stuur Programma's** : op InfiniBand ingeschakelde vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. In Linux wordt voor zowel SR-IOV als niet-SR-IOV ingeschakelde Vm's de CentOS-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Zie [vm's voor Linux-besturings systeem configureren en optimaliseren](./workloads/hpc/configure.md) voor meer informatie over kant-en-klare VM Linux-installatie kopieën van het besturings systeem.
+
+   In Linux kan de [InfiniBandDriverLinux-VM-extensie](./extensions/hpc-compute-infiniband-linux.md) worden gebruikt voor het installeren van de Mellanox OFED-Stuur Programma's en het inschakelen van Infiniband op de op SR-IOV ingeschakelde H-en N-Series vm's. Meer informatie over het inschakelen van InfiniBand op virtuele machines met RDMA in [HPC-workloads](./workloads/hpc/enable-infiniband.md).
 
    In Windows installeert de [InfiniBandDriverWindows-VM-extensie](./extensions/hpc-compute-infiniband-windows.md) Windows-netwerk directe Stuur programma's (op niet-SR-IOV-vm's) of Mellanox OFED-Stuur programma's (op SR-IOV-vm's) voor RDMA-connectiviteit. In bepaalde implementaties van A8-en A9-instanties wordt de uitbrei ding HpcVmDrivers automatisch toegevoegd. Houd er rekening mee dat de HpcVmDrivers VM-extensie wordt afgeschaft. het wordt niet bijgewerkt.
 
@@ -99,5 +101,5 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het optimaliseren van uw HPC-toepassingen voor Azure en enkele voor beelden in [HPC-workloads](./workloads/hpc/overview.md).
-
 - Meer informatie over de laatste aankondigingen en enkele HPC-voor beelden en-resultaten vindt u in de blogs van de [technische community van Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) in azure](/azure/architecture/topics/high-performance-computing/)voor een architectuur weergave op een hoger niveau voor het uitvoeren van HPC-workloads.

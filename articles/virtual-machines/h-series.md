@@ -5,14 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: jushiman
-ms.openlocfilehash: 34f89656fc56b27edafeff0e60874a00139266dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/01/2020
+ms.author: amverma
+ms.reviewer: jushiman
+ms.openlocfilehash: 797a036b9cf2e77dfbcdf8dc7596179c4673e6a6
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268948"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513737"
 ---
 # <a name="h-series"></a>H-serie
 
@@ -98,4 +99,7 @@ Azure Marketplace heeft veel Linux-distributies die ondersteuning bieden voor RD
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+- Meer informatie over het optimaliseren van uw HPC-toepassingen voor Azure en enkele voor beelden in [HPC-workloads](./workloads/hpc/overview.md).
+- Meer informatie over de laatste aankondigingen en enkele HPC-voor beelden en-resultaten vindt u in de blogs van de [technische community van Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) in azure](/azure/architecture/topics/high-performance-computing/)voor een architectuur weergave op een hoger niveau voor het uitvoeren van HPC-workloads.
+- Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

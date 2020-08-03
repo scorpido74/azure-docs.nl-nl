@@ -1,6 +1,6 @@
 ---
 title: Prestatie overwegingen voor Azure NetApp Files | Microsoft Docs
-description: Beschrijft de prestatie overwegingen voor Azure NetApp Files.
+description: Meer informatie over prestaties voor Azure NetApp Files, waaronder de relatie tussen quota en doorvoer limieten en hoe u volume quota dynamisch kunt verhogen of verlagen.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f88b4755c7b4c0b20f27065cf9de2351251bc1c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691319"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513873"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Prestatie-overwegingen voor Azure NetApp Files
 

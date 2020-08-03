@@ -1,6 +1,6 @@
 ---
 title: Een SMB-volume maken voor Azure NetApp Files | Microsoft Docs
-description: Hierin wordt beschreven hoe u een SMB-volume maakt voor Azure NetApp Files.
+description: In dit artikel wordt beschreven hoe u een SMBv3-volume maakt in Azure NetApp Files. Meer informatie over de vereisten voor Active Directory verbindingen en Domain Services.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169976"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513074"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -163,8 +163,20 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
      * **Back-upbeleid gebruikers**  
         U kunt aanvullende accounts toevoegen waarvoor verhoogde bevoegdheden zijn vereist voor het computer account dat is gemaakt voor gebruik met Azure NetApp Files. De opgegeven accounts kunnen de NTFS-machtigingen op bestands-of mapniveau wijzigen. U kunt bijvoorbeeld een niet-privileged service account opgeven dat wordt gebruikt voor het migreren van gegevens naar een SMB-bestands share in Azure NetApp Files.  
 
-        > [!IMPORTANT] 
-        > Voor het gebruik van de gebruikers functie back-upbeleid is white list vereist. E-mail anffeedback@microsoft.com met uw abonnements-id om deze functie aan te vragen. 
+        De functie **gebruikers van back-upbeleid** is momenteel beschikbaar als preview-versie. Als dit de eerste keer is dat u deze functie gebruikt, moet u de functie registreren voordat u deze gebruikt: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        Controleer de status van de functie registratie: 
+
+        > [!NOTE]
+        > Het **RegistrationState** kan `Registering` enkele minuten duren voordat de status wordt gewijzigd in `Registered` . Wacht totdat de status is **geregistreerd** voordat u doorgaat.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
@@ -196,7 +208,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.
 
-    * **Quotum**  
+    * **Quota**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
 
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.  

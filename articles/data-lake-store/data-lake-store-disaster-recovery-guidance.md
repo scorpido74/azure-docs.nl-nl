@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: 4931556aa6948b6b05b2bbbfa62e281e21aa6058
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ebcdeed608a5b9dc6202071869c4df1dcfd327a8
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367466"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512751"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Richt lijnen voor hoge Beschik baarheid en herstel na nood gevallen voor Data Lake Storage Gen1
 
@@ -34,11 +34,11 @@ Als er een regionale storing optreedt, kunt u vervolgens toegang krijgen tot uw 
 
 Hoewel Data Lake Storage Gen1 gegevens tolerantie biedt via geautomatiseerde replica's, wordt hiermee niet voor komen dat uw toepassing (of ontwikkel aars/gebruikers) gegevens beschadigt of per ongeluk worden verwijderd.
 
-### <a name="best-practices"></a>Aanbevolen procedures
-
 Als u onbedoeld verwijderen wilt voor komen, wordt u aangeraden eerst het juiste toegangs beleid voor uw Data Lake Storage Gen1-account in te stellen. Dit geldt ook voor het Toep assen van [Azure-resource vergrendelingen](../azure-resource-manager/management/lock-resources.md) voor het vergren delen van belang rijke resources en het Toep assen van toegangs beheer op basis van de beschik bare [Data Lake Storage gen1 beveiligings functies](data-lake-store-security-overview.md). We raden u ook aan om regel matig kopieën te maken van uw kritieke gegevens met behulp van [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) of [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) in een ander data Lake Storage gen1 account, map of Azure-abonnement. Dit kan worden gebruikt om gegevens te herstellen nadat ze beschadigd zijn geraakt of per ongeluk zijn verwijderd. Azure Data Factory is een handige service voor het regelmatig maken en implementeren van pijplijnen voor gegevensverplaatsing.
 
 U kunt ook [Diagnostische logboek registratie](data-lake-store-diagnostic-logs.md) inschakelen voor een Data Lake Storage gen1 account voor het verzamelen van gegevens toegangscontrole. De controle spoor bevat informatie over wie een bestand kan hebben verwijderd of bijgewerkt.
+
+U kunt proberen een verwijderd item te herstellen door de module [AZ. data lake store](https://docs.microsoft.com/powershell/module/az.datalakestore/) Azure PowerShell voor data Lake Storage gen 1 te gebruiken. Zie met name de opdracht [Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem) . Controleer het gedeelte [Beschrijving](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description) voordat u deze opdracht probeert te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

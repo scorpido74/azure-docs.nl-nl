@@ -1,6 +1,6 @@
 ---
 title: Registreren voor Azure NetApp Files | Microsoft Docs
-description: Hierin wordt beschreven hoe u zich registreert om Azure NetApp Files te gebruiken.
+description: Meer informatie over het registreren voor Azure NetApp Files door het verzenden van een Waitlist-aanvraag en het registreren van de Azure-resource provider voor Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: cdb96f08f78e22dd0e46070ab62bf9327e2d72a3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956301"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512921"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registreren voor Azure NetApp Files
 

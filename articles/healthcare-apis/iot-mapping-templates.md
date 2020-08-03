@@ -1,26 +1,26 @@
 ---
-title: 'Concepten: sjablonen toewijzen in IoT connector (preview)-functie van Azure API voor FHIR'
-description: Meer informatie over het maken van twee typen toewijzings sjablonen in IoT connector. Met de toewijzings sjabloon voor apparaten worden apparaatgegevens getransformeerd naar een genormaliseerd schema. Met de sjabloon FHIR-toewijzing wordt een genormaliseerd bericht getransformeerd naar een op FHIR gebaseerde observatie resource.
+title: 'Concepten: sjablonen toewijzen in azure IoT connector voor FHIR-functie (preview) van Azure API voor FHIR'
+description: Meer informatie over het maken van twee typen toewijzings sjablonen in azure IoT connector voor FHIR (preview). Met de toewijzings sjabloon voor apparaten worden apparaatgegevens getransformeerd naar een genormaliseerd schema. Met de sjabloon FHIR-toewijzing wordt een genormaliseerd bericht getransformeerd naar een op FHIR gebaseerde observatie resource.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: dadd14d4ca28f367eaa7fd07099514bf420af5af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc8b7d46e1018974c6a88cef9e4f4a9f9a09caa7
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097480"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513346"
 ---
-# <a name="iot-connector-preview-mapping-templates"></a>Sjablonen voor de toewijzing van IoT-connector (preview)
-In dit artikel vindt u informatie over het configureren van IoT-connector met toewijzings sjablonen.
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Sjablonen voor toewijzing van Azure IoT connector voor FHIR (preview)
+In dit artikel vindt u informatie over het configureren van Azure IoT connector voor FHIR * met toewijzings sjablonen.
 
-De IoT-connector vereist twee typen op JSON gebaseerde toewijzings sjablonen. Het eerste type, **apparaattoewijzing**, is verantwoordelijk voor het toewijzen van de nettoladingen van apparaten die zijn verzonden naar het `devicedata` eind punt van de Azure Event hub. Het extraheert typen, apparaat-id's, meting datum en meet waarde (n). Het tweede type, **FHIR-toewijzing**, bepaalt de toewijzing voor FHIR-resource. Hiermee kunt u de lengte van de observatie periode, het gegevens type FHIR dat wordt gebruikt voor het opslaan van de waarden en terminologie code (s), configureren. 
+De Azure IoT connector voor FHIR vereist twee typen toewijzings sjablonen op basis van JSON. Het eerste type, **apparaattoewijzing**, is verantwoordelijk voor het toewijzen van de nettoladingen van apparaten die zijn verzonden naar het `devicedata` eind punt van de Azure Event hub. Het extraheert typen, apparaat-id's, meting datum en meet waarde (n). Het tweede type, **FHIR-toewijzing**, bepaalt de toewijzing voor FHIR-resource. Hiermee kunt u de lengte van de observatie periode, het gegevens type FHIR dat wordt gebruikt voor het opslaan van de waarden en terminologie code (s), configureren. 
 
-De toewijzings sjablonen zijn samengesteld in een JSON-document op basis van hun type. Deze JSON-documenten worden vervolgens via de Azure Portal toegevoegd aan uw IoT-connector. Het document apparaattoewijzing wordt toegevoegd via de pagina apparaattoewijzing **configureren** en het FHIR-toewijzings document via de pagina **toewijzing van FHIR configureren** .
+De toewijzings sjablonen zijn samengesteld in een JSON-document op basis van hun type. Deze JSON-documenten worden vervolgens toegevoegd aan uw Azure IoT-connector voor FHIR via de Azure Portal. Het document apparaattoewijzing wordt toegevoegd via de pagina apparaattoewijzing **configureren** en het FHIR-toewijzings document via de pagina **toewijzing van FHIR configureren** .
 
 > [!NOTE]
 > Toewijzings sjablonen worden opgeslagen in een onderliggende Blob-opslag en geladen vanuit BLOB per Compute-uitvoering. Na de update worden ze onmiddellijk van kracht. 
@@ -562,10 +562,11 @@ Vertegenwoordigt het [CodeableConcept](http://hl7.org/fhir/datatypes.html#Codeab
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk veelgestelde vragen over IoT connector
+Bekijk veelgestelde vragen over Azure IoT connector voor FHIR (preview).
 
 >[!div class="nextstepaction"]
->[Veelgestelde vragen over IoT-connector](fhir-faq.md#iot-connector-preview)
+>[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#iot-connector-preview)
 
+* In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
 
 FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
