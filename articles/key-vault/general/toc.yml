@@ -67,7 +67,9 @@
     - name: Voorlopig verwijderen
       items:
         - name: 'Azure Key Vault: voorlopig verwijderen'
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: Standaard voorlopig verwijderen
+          href: soft-delete-change.md
     - name: 'Verificatie, vragen en antwoorden'
       href: authentication-requests-and-responses.md
     - name: Richtlijnen voor beperkingen in Azure Key Vault
