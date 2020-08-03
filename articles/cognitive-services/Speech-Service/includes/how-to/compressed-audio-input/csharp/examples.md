@@ -11,9 +11,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422135"
 ---
-Als u een gecomprimeerde audio-indeling naar de speech-service wilt `PullAudioInputStream` streamen, maakt of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een exemplaar van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
+Als u een gecomprimeerde audio-indeling naar de speech-service wilt streamen, maakt `PullAudioInputStream` of `PushAudioInputStream` . Maak vervolgens een `AudioConfig` van een exemplaar van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
 
-We gaan ervan uit dat u een invoer stroom klasse hebt `pushStream` aangeroepen en gebruikmaakt van Opus/OGG. Uw code kan er als volgt uitzien:
+We gaan ervan uit dat u een invoer stroom klasse hebt aangeroepen `pushStream` en gebruikmaakt van Opus/OGG. Uw code kan er als volgt uitzien:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

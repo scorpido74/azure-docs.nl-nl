@@ -11,18 +11,18 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 657f6dd32c18b5b0745883da02563e9f5257d92d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd3abdfd9b0bc0e658caa1cc5ab5c5a7edfda453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307213"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494001"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Uw Machine Learning service werkruimte gegevens exporteren of verwijderen
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In Azure Machine Learning kunt u uw werkruimte gegevens exporteren of verwijderen met de geverifieerde REST API. In dit artikel leest u hoe.
+In Azure Machine Learning kunt u uw werkruimte gegevens exporteren of verwijderen via de grafische interface van de portal of de python-SDK. In dit artikel worden beide opties beschreven.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -30,225 +30,62 @@ In Azure Machine Learning kunt u uw werkruimte gegevens exporteren of verwijdere
 
 ## <a name="control-your-workspace-data"></a>Uw werkruimte gegevens beheren
 
-In-product gegevens die zijn opgeslagen door Azure Machine Learning, kunnen worden geëxporteerd en verwijderd via Azure Machine Learning Studio, CLI, SDK en geverifieerde REST-Api's. Telemetriegegevens kunnen worden geopend via de Azure-privacybeleid. 
+In-product gegevens die zijn opgeslagen door Azure Machine Learning, kunnen worden geëxporteerd en verwijderd. U kunt met Azure Machine Learning Studio, CLI en SDK exporteren en verwijderen. Telemetriegegevens kunnen worden geopend via de Azure-privacybeleid. 
 
-In Azure Machine Learning bestaan persoonlijke gegevens uit gebruikers gegevens in uitvoerings geschiedenis documenten en telemetrie-records van sommige gebruikers interacties met de service.
+In Azure Machine Learning bestaan persoonlijke gegevens uit de gebruikers gegevens in de documenten van de uitvoerings geschiedenis. 
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>Werkruimte gegevens verwijderen met de REST API
+## <a name="delete-high-level-resources-using-the-portal"></a>Resources op hoog niveau verwijderen via de portal
 
-Als u gegevens wilt verwijderen, kunnen de volgende API-aanroepen worden gemaakt met de HTTP-Verwijder bewerking. Deze worden geautoriseerd door een `Authorization: Bearer <arm-token>` header in de aanvraag te hebben, waarbij `<arm-token>` het Aad-toegangs token voor het `https://management.core.windows.net/` eind punt is.  
+Wanneer u een werk ruimte maakt, maakt Azure een aantal resources binnen de resource groep:
 
-Zie voor meer informatie over het ophalen van dit token en het aanroepen van Azure-eind punten [rest gebruiken voor het beheren van ml resources](how-to-manage-rest.md) en [Azure rest API documentatie](https://docs.microsoft.com/rest/api/azure/).  
+- De werk ruimte zelf
+- Een opslagaccount
+- Een container register
+- Een toepassingen Insights-exemplaar
+- Een sleutel kluis
 
-Vervang in de volgende voor beelden de tekst in {} door de naam van het exemplaar dat de gekoppelde resource bepaalt.
+Deze resources kunnen worden verwijderd door ze te selecteren in de lijst en **verwijderen** te kiezen. 
 
-### <a name="delete-an-entire-workspace"></a>Een hele werk ruimte verwijderen
+:::image type="content" source="media/how-to-export-delete-data/delete-resource-group-resources.png" alt-text="Scherm opname van de portal, met het pictogram verwijderen gemarkeerd":::
 
-Gebruik deze aanroep om een hele werk ruimte te verwijderen.  
-> [!WARNING]
-> Alle gegevens worden verwijderd en de werk ruimte kan niet meer worden gebruikt.
+Geschiedenis documenten uitvoeren, die persoonlijke gebruikers gegevens kunnen bevatten, worden opgeslagen in het opslag account in Blob Storage, in submappen van `/azureml` . U kunt de gegevens downloaden en verwijderen uit de portal.
 
-`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01`
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Scherm afbeelding van de azureml-Directory in het opslag account in de portal":::
 
-### <a name="delete-models"></a>Modellen verwijderen
+## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>machine learning resources exporteren en verwijderen met behulp van Azure Machine Learning Studio
 
-Gebruik deze aanroep om een lijst met modellen en hun Id's op te halen:
+Azure Machine Learning Studio biedt een uniforme weer gave van uw machine learning resources, zoals notebooks, gegevens sets, modellen en experimenten. Azure Machine Learning Studio benadrukt het behoud van een record van uw gegevens en experimenten. Reken resources zoals pijp lijnen en reken bronnen kunnen worden verwijderd met behulp van de browser. Voor deze resources gaat u naar de betreffende resource en kiest u **verwijderen**. 
 
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01`
+Gegevens sets kunnen niet worden geregistreerd en experimenten kunnen worden gearchiveerd, maar deze bewerkingen worden niet verwijderd. Als u de gegevens volledig wilt verwijderen, moeten de gegevens sets en de data-uitvoering worden verwijderd op het opslag niveau. Het verwijderen van het opslag niveau geschiedt met behulp van de portal, zoals eerder is beschreven.
 
-Afzonderlijke modellen kunnen worden verwijderd met:
+U kunt trainings artefacten downloaden van experimentele uitvoeringen met behulp van Studio. Kies het **experiment** en **Voer** uit waar u geïnteresseerd bent. Kies **uitvoer en logboeken** en navigeer naar de specifieke artefacten die u wilt downloaden. Kies **...** en **down load**.
 
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01`
+U kunt een geregistreerd model downloaden door te navigeren naar het gewenste **model** en **downloaden**te kiezen. 
 
-### <a name="delete-assets"></a>Assets verwijderen
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Scherm afbeelding van Studio model pagina met download optie gemarkeerd":::
 
-Gebruik deze aanroep om een lijst met assets en hun Id's op te halen:
+## <a name="export-and-delete-resources-using-the-python-sdk"></a>Resources exporteren en verwijderen met behulp van de python-SDK
 
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01`
+U kunt de uitvoer van een bepaalde uitvoering downloaden met behulp van: 
 
-Afzonderlijke activa kunnen worden verwijderd met:
+```python
+# Retrieved from Azure Machine Learning web UI
+run_id = 'aaaaaaaa-bbbb-cccc-dddd-0123456789AB'
+experiment = ws.experiments['my-experiment']
+run = next(run for run in ex.get_runs() if run.id == run_id)
+metrics_output_port = run.get_pipeline_output('metrics_output')
+model_output_port = run.get_pipeline_output('model_output')
 
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01`
+metrics_output_port.download('.', show_progress=True)
+model_output_port.download('.', show_progress=True)
+```
 
-### <a name="delete-images"></a>Installatiekopieën verwijderen
+De volgende machine learning resources kunnen worden verwijderd met behulp van de python-SDK: 
 
-Gebruik deze aanroep om een lijst met installatie kopieën en hun Id's op te halen:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01`
-
-Afzonderlijke installatie kopieën kunnen worden verwijderd met:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01`
-
-### <a name="delete-services"></a>Services verwijderen
-
-Gebruik deze aanroep om een lijst met Services en de bijbehorende Id's op te halen:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01`
-
-Afzonderlijke services kunnen worden verwijderd met:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01`
-
-## <a name="export-service-data-with-the-rest-api"></a>Service gegevens exporteren met de REST API
-
-Als u gegevens wilt exporteren, kunnen de volgende API-aanroepen worden gemaakt met de term HTTP GET. Deze worden geautoriseerd door een `Authorization: Bearer <arm-token>` header in de aanvraag te hebben, waarbij `<arm-token>` het Aad-toegangs token voor het eind punt is`https://management.core.windows.net/`  
-
-Zie voor meer informatie over het ophalen van dit token en het aanroepen van Azure-eind punten [rest gebruiken voor het beheren van ml resources](how-to-manage-rest.md) en [Azure rest API-documentatie](https://docs.microsoft.com/rest/api/azure/).   
-
-Vervang in de volgende voor beelden de tekst in {} door de naam van het exemplaar dat de gekoppelde resource bepaalt.
-
-### <a name="export-workspace-information"></a>Werkruimte gegevens exporteren
-
-Deze aanroep gebruiken om een lijst met alle werk ruimten op te halen:
-
-`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2019-11-01`
-
-Informatie over een afzonderlijke werk ruimte kan worden verkregen door:
-
-`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01`
-
-### <a name="export-compute-information"></a>Reken gegevens exporteren
-
-Alle reken doelen die aan een werk ruimte zijn gekoppeld, kunnen worden verkregen door:
-
-`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2019-11-01`
-
-Informatie over één Compute-doel kan worden verkregen door:
-
-`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2019-11-01`
-
-### <a name="export-run-history-data"></a>Gegevens van de uitvoerings Geschiedenis exporteren
-
-Met deze aanroep kunt u een lijst met alle experimenten en hun gegevens ophalen:
-
-`https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments`
-
-Alle uitvoeringen voor een bepaald experiment kunnen worden verkregen door:
-
-`https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs`
-
-Uitvoerings geschiedenis-items kunnen worden verkregen door:
-
-`https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs/{runId}`
-
-Alle uitvoerings metrieken voor een experiment kunnen worden verkregen door:
-
-`https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics`
-
-Eén run-waarde kan worden verkregen door:
-
-`https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}`
-
-### <a name="export-artifacts"></a>Artefacten exporteren
-
-Gebruik deze aanroep om een lijst met artefacten en hun paden op te halen:
-
-`https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}`
-
-### <a name="export-notifications"></a>Meldingen over exporteren
-
-Met deze aanroep kunt u een lijst met opgeslagen taken ophalen:
-
-`https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks`
-
-Meldingen voor één taak kunnen worden verkregen door:
-
-`https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}tasks/{taskId}`
-
-### <a name="export-data-stores"></a>Gegevens archieven exporteren
-
-Deze aanroep gebruiken om een lijst met gegevens archieven op te halen:
-
-`https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores`
-
-Afzonderlijke gegevens archieven kunnen worden verkregen door:
-
-`https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}`
-
-### <a name="export-models"></a>Exportmodellen
-
-Gebruik deze aanroep om een lijst met modellen en hun Id's op te halen:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01`
-
-Afzonderlijke modellen kunnen worden verkregen door:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01`
-
-### <a name="export-assets"></a>Assets exporteren
-
-Gebruik deze aanroep om een lijst met assets en hun Id's op te halen:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01`
-
-Afzonderlijke activa kunnen worden verkregen door:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01`
-
-### <a name="export-images"></a>Installatie kopieën exporteren
-
-Gebruik deze aanroep om een lijst met installatie kopieën en hun Id's op te halen:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01`
-
-Afzonderlijke installatie kopieën kunnen worden verkregen door:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01`
-
-### <a name="export-services"></a>Services exporteren
-
-Gebruik deze aanroep om een lijst met Services en de bijbehorende Id's op te halen:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01`
-
-Afzonderlijke services kunnen worden verkregen door:
-
-`https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01`
-
-### <a name="export-pipeline-experiments"></a>Pijplijn experimenten exporteren
-
-Afzonderlijke experimenten kunnen worden verkregen door:
-
-`https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Experiments/{experimentId}`
-
-### <a name="export-pipeline-graphs"></a>Pijplijn grafieken exporteren
-
-Afzonderlijke grafieken kunnen worden verkregen door:
-
-`https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Graphs/{graphId}`
-
-### <a name="export-pipeline-modules"></a>Pijplijn modules exporteren
-
-Modules kunnen worden verkregen door:
-
-`https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Modules/{id}`
-
-### <a name="export-pipeline-templates"></a>Pijplijn sjablonen exporteren
-
-Sjablonen kunnen worden verkregen door:
-
-`https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Templates/{templateId}`
-
-### <a name="export-pipeline-data-sources"></a>Gegevens bronnen van pijp lijn exporteren
-
-Gegevens bronnen kunnen worden verkregen door:
-
-`https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}`
-
-## <a name="delete-assets-in-the-designer"></a>Assets verwijderen in de ontwerp functie
-
-Verwijder afzonderlijke assets in de ontwerp functie waar u uw experiment hebt gemaakt:
-
-1. Ga naar Designer
-
-    ![Assets verwijderen](./media/how-to-export-delete-data/delete-experiment.png)
-
-1. Selecteer in de lijst het concept van de afzonderlijke pijp lijn dat u wilt verwijderen.
-
-1. Selecteer **Verwijderen**.
-
-### <a name="delete-datasets-in-the-designer"></a>Gegevens sets verwijderen in de ontwerp functie
-
-Als u gegevens sets in de ontwerp functie wilt verwijderen, gebruikt u de Azure Portal of Storage Explorer om naar verbonden opslag accounts te gaan en de gegevens sets daar te verwijderen. Bij het opheffen van de registratie van gegevens sets in de ontwerp functie wordt alleen het referentie punt in de opslag verwijderd.
+| Type | Functie aanroep | Notities | 
+| --- | --- | --- |
+| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#delete-delete-dependent-resources-false--no-wait-false-) | Gebruiken `delete-dependent-resources` om de verwijdering te trapsgewijs |
+| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#delete--) | | 
+| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#delete--) | |
+| `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py) | | 
 

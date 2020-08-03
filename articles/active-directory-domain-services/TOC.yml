@@ -9,7 +9,7 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Een eenvoudig beheerd domein maken
+    - name: Een beheerd domein maken
       href: tutorial-create-instance.md
     - name: Het virtuele netwerk voor apps configureren
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: Wachtwoord-hashsynchronisatie configureren
       href: tutorial-configure-password-hash-sync.md
-    - name: Een geavanceerd beheerd domein maken
+    - name: Een replicaset maken (preview)
+      href: tutorial-create-replica-set.md
+    - name: Een aangepast beheerd domein maken
       href: tutorial-create-instance-advanced.md
-    - name: Forest-vertrouwen maken (preview)
+    - name: Forest-vertrouwen maken
       href: tutorial-create-forest-trust.md
 - name: Voorbeelden
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: Bereik voor synchronisatie configureren met Azure AD PowerShell
       href: powershell-scoped-synchronization.md
+    - name: Een resourceforest en vertrouwen maken met Azure PowerShell
+      href: create-resource-forest-powershell.md
 - name: Concepten
   items:
     - name: Basisprincipes van beheer
       href: administration-concepts.md
     - name: Veel voorkomende implementatiescenario's
       href: scenarios.md
+    - name: Replicasets (preview)
+      href: concepts-replica-sets.md
     - name: Forests en vertrouwensrelaties
       items:
         - name: Resourceforests

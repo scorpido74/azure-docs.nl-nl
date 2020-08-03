@@ -232,10 +232,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: Problemen met het toepassen van artefacten oplossen
           href: devtest-lab-troubleshoot-apply-artifacts.md
-    - name: Opslag- en besturingssysteemschijvenversleutelen die door labs worden gebruikt
+    - name: Labresources versleutelen
       items:
         - name: Opslag versleutelen die door een lab wordt gebruikt
           href: encrypt-storage.md
+        - name: OS-schijven versleutelen met door de klant beheerde sleutels
+          href: encrypt-disks-customer-managed-keys.md
     - name: Integratie met CI/CD
       items:
         - name: Labs integreren in uw CI/CD-pijplijn in Azure Pipelines

@@ -119,7 +119,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -129,6 +129,10 @@
           href: functions-reference-python.md
         - name: TypeScript
           href: functions-reference-node.md#typescript
+    - name: Frameworks
+      items:
+        - name: Express.js
+          href: shift-expressjs.md
     - name: Beveiliging
       items:
         - name: Beveiligingsoverzicht

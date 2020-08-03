@@ -4,6 +4,8 @@
   items:
     - name: Wat is Data Lake Analytics?
       href: data-lake-analytics-overview.md
+    - name: Wat is er nieuw in Data Lake Analytics?
+      href: data-lake-analytics-whats-new.md
 - name: Aan de slag
   items:
     - name: Azure Portal
@@ -25,6 +27,9 @@
   items:
     - name: Beveiliging
       items:
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn voor Azure Security Benchmark
           href: security-baseline.md
 - name: Procedures

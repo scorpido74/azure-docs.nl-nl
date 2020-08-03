@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc6673615c85b34975d6743da6da88ca841bcf35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b13decc142328525376ca8b3a93c74b95c90dae6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005358"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481866"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelfstudie: Gebruikersstromen maken in Azure Active Directory B2C
 
@@ -31,6 +31,9 @@ In dit artikel leert u het volgende:
 In deze zelfstudie ziet u hoe u enkele aanbevolen gebruikersstromen kunt maken met behulp van de Azure-portal. Zie [De stroom voor referenties voor wachtwoord van resource-eigenaar configureren in Azure AD B2C](configure-ropc.md) voor informatie over het instellen van een stroom voor referenties voor het wachtwoord van resource-eigenaar (ROPC) in uw toepassing.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+> [!IMPORTANT]
+> We hebben de manier veranderd waarop we verwijzen naar gebruikersstroomversies. Eerder boden we V1-versies (klaar voor productie) en V1.1- en V2-versies (preview) aan. Nu hebben we gebruikersstromen samengevoegd in **Aanbevolen** (preview van volgende generatie) en **Standaard** (algemeen beschikbaar) versies. Alle verouderde V1.1- en V2-previewgebruikersstromen worden afgeschaft op **1 augustus 2021**. Raadpleeg [Gebruikersstroomversies in Azure AD B2C](user-flow-versions.md) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,15 +53,16 @@ Met de gebruikersstroom voor registratie en aanmelding worden zowel registratie 
 
     ![De pagina Gebruikersstromen in de portal met de knop Nieuwe gebruikersstroom gemarkeerd](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-1. Selecteer op het tabblad **Aanbevolen** de gebruikersstroom **Registreren en aanmelden**.
+1. Selecteer op de pagina **Een gebruikersstroom maken** de gebruikersstroom **Registreren en aanmelden**.
 
-    ![Een gebruikersstroompagina selecteren met de stroom voor registratie en aanmelding gemarkeerd](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![Een gebruikersstroompagina selecteren met de stroom voor registratie en aanmelding gemarkeerd](./media/tutorial-create-user-flows/select-user-flow-type.png)
+
+1. Onder **Selecteer een versie** selecteert u **Aanbevolen** en vervolgens **Maken**. ([Meer informatie](user-flow-versions.md) over gebruikersstroomversies.)
+
+    ![De pagina Gebruikersstroom maken in de Azure-portal met eigenschappen gemarkeerd](./media/tutorial-create-user-flows/select-version.png)
 
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *signupsignin1*.
 1. Selecteer voor **Id-providers** de optie **E-mailregistratie**.
-
-    ![De pagina Gebruikersstroom maken in de Azure-portal met eigenschappen gemarkeerd](./media/tutorial-create-user-flows/signup-signin-properties.png)
-
 1. Kies voor **Gebruikerskenmerken en claims** de claims en kenmerken van de gebruiker die u tijdens de registratie wilt verzamelen en verzenden. Selecteer bijvoorbeeld **Meer weergeven** en kies vervolgens kenmerken en claims voor **Land/regio**, **Weergavenaam** en **Postcode**. Klik op **OK**.
 
     ![Selectiepagina voor gebruikerskenmerken en claims met drie claims geselecteerd](./media/tutorial-create-user-flows/signup-signin-attributes.png)
@@ -83,11 +87,12 @@ Met de gebruikersstroom voor registratie en aanmelding worden zowel registratie 
 Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing, gebruikt u een gebruikersstroom voor het bewerken van profielen.
 
 1. Selecteer in het menu van het paginaoverzicht van de Azure AD B2C-tenant de optie **Gebruikersstromen** en selecteer vervolgens **Nieuwe gebruikersstroom**.
-1. Selecteer de gebruikersstroom **Profiel bewerken** op het tabblad **Aanbevolen**.
+1. Selecteer op de pagina **Een gebruikersstroom maken** de gebruikersstroom **Profiel bewerken**. 
+1. Onder **Selecteer een versie** selecteert u **Aanbevolen** en vervolgens **Maken**.
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *profileediting1*.
 1. Klik op **Id-providers** en selecteer **Aanmelding met lokaal account**.
-1. Kies voor **Gebruikerskenmerken** de kenmerken waarvan u wilt dat de klant deze in zijn profiel kan bewerken. Selecteer bijvoorbeeld **Meer weergeven** en kies vervolgens kenmerken en claims voor **Weergavenaam** en **Functie**. Klik op **OK**.
-1. Klik op **Maken** om de gebruikersstroom toe te voegen. Het voorvoegsel *B2C_1* wordt automatisch aan de naam toegevoegd.
+2. Kies voor **Gebruikerskenmerken** de kenmerken waarvan u wilt dat de klant deze in zijn profiel kan bewerken. Selecteer bijvoorbeeld **Meer weergeven** en kies vervolgens kenmerken en claims voor **Weergavenaam** en **Functie**. Klik op **OK**.
+3. Klik op **Maken** om de gebruikersstroom toe te voegen. Het voorvoegsel *B2C_1* wordt automatisch aan de naam toegevoegd.
 
 ### <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
@@ -101,12 +106,13 @@ Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing,
 Als u gebruikers van uw toepassing de mogelijkheid wilt bieden hun wachtwoord opnieuw in te stellen, gebruikt u een gebruikersstroom voor het opnieuw instellen van wachtwoorden.
 
 1. Selecteer in het overzichtsmenu van de Azure AD B2C-tenant de optie **Gebruikersstromen** en selecteer vervolgens **Nieuwe gebruikersstroom**.
-1. Selecteer de gebruikersstroom **Wachtwoord opnieuw instellen** op het tabblad **Aanbevolen**.
+1. Selecteer op de pagina **Een gebruikersstroom maken** de gebruikersstroom **Wachtwoord opnieuw instellen**. 
+1. Onder **Selecteer een versie** selecteert u **Aanbevolen** en vervolgens **Maken**.
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *passwordreset1*.
 1. Schakel voor de optie **Id-providers** de optie **Het wachtwoord opnieuw instellen met e-mailadres** in.
-1. Klik onder Toepassingsclaims op **Meer weergeven** en kies de claims die u wilt retourneren in de autorisatietokens die worden teruggestuurd naar uw toepassing. Selecteer bijvoorbeeld **Object-ID van gebruiker**.
-1. Klik op **OK**.
-1. Klik op **Maken** om de gebruikersstroom toe te voegen. Het voorvoegsel *B2C_1* wordt automatisch aan de naam toegevoegd.
+2. Klik onder Toepassingsclaims op **Meer weergeven** en kies de claims die u wilt retourneren in de autorisatietokens die worden teruggestuurd naar uw toepassing. Selecteer bijvoorbeeld **Object-ID van gebruiker**.
+3. Klik op **OK**.
+4. Klik op **Maken** om de gebruikersstroom toe te voegen. Het voorvoegsel *B2C_1* wordt automatisch aan de naam toegevoegd.
 
 ### <a name="test-the-user-flow"></a>De gebruikersstroom testen
 

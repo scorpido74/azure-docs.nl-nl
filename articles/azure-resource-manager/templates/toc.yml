@@ -10,7 +10,7 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Sjablonen maken - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Sjabloonspecificatie maken en implementeren
+    - name: SjabSjabloonspecificaties maken en implementeren maken en implementeren
       href: quickstart-create-template-specs.md
     - name: Azure-services
       items:
@@ -210,8 +210,10 @@
     - name: Sjabloonspecificaties
       items:
         - name: Met gekoppelde sjablonen maken
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: Als gekoppelde sjabloon implementeren
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: Geavanceerde sjablonen
       items:
@@ -366,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Tenant
           href: deploy-to-tenant.md
-        - name: Kruislingse resourcegroep
-          href: cross-resource-group-deployment.md
+        - name: Kruislingse implementaties
+          href: cross-scope-deployment.md
     - name: Parameters opgeven
       items:
         - name: Parameterbestand maken

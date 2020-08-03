@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: App-beheerdersmachtigingen delegeren
               href: roles-delegate-app-roles.md
+        - name: Groepen gebruiken om roltoewijzingen te beheren
+          items:
+            - name: Preview van op groepen gebaseerde roltoewijzing
+              href: roles-groups-concept.md
+            - name: Een roltoewijzbare groep maken
+              href: roles-groups-create-eligible.md
+            - name: Rollen toewijzen aan een groep
+              href: roles-groups-assign-role.md
+            - name: Roltoewijzingen verwijderen uit een groep
+              href: roles-groups-remove-assignment.md
+            - name: De roltoewijzingen voor een groep bekijken
+              href: roles-groups-view-assignments.md
+            - name: Een groep geschikt maken voor een rol in PIM
+              href: roles-groups-pim-eligible.md
+            - name: Veelgestelde vragen en probleemoplossing
+              href: roles-groups-faq-troubleshooting.md
         - name: Minst bevoorrechte rollen per taak
           href: roles-delegate-by-task.md
         - name: Microsoft 365-rollen
@@ -189,11 +205,11 @@
           items:
             - name: Overzicht van beheereenheden
               href: directory-administrative-units.md
-            - name: AU’s toevoegen en beheren
+            - name: AU's toevoegen en beheren
               href: roles-admin-units-manage.md
-            - name: Gebruikers in AU’s toevoegen en beheren
+            - name: Gebruikers toevoegen en beheren in AU's
               href: roles-admin-units-add-manage-users.md
-            - name: Groepen in AU’s toevoegen en beheren
+            - name: Groepen toevoegen en beheren in AU's
               href: roles-admin-units-add-manage-groups.md
             - name: Een rol met AU-bereik toewijzen
               href: roles-admin-units-assign-roles.md

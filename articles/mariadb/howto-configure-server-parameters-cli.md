@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: a5aed10927a808d0002f765d493709e0e49483ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104806"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493802"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Server parameters configureren in Azure Database for MariaDB met behulp van de Azure CLI
 U kunt configuratie parameters voor een Azure Database for MariaDB server weer geven, tonen en bijwerken met behulp van Azure CLI, het opdracht regel programma van Azure. Een subset van de engine configuraties wordt weer gegeven op server niveau en kan worden gewijzigd.

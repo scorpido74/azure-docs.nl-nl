@@ -9,16 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d8344f5f6b4ccc9f58cc1809f5d625e7e4adf68
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266471"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494057"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge uitvoeren op Windows Server Virtual Machines
 
-Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge runtime, kunt u beginnen met het implementeren van bedrijfs logica vanuit de Cloud.
+Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge-runtime, kunt u beginnen met het implementeren van bedrijfslogica vanuit de cloud.
 
 Voor meer informatie over de werking van de IoT Edge runtime en welke onderdelen zijn opgenomen, raadpleegt u [de Azure IOT Edge runtime en de bijbehorende architectuur](iot-edge-runtime.md).
 

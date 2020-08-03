@@ -7,7 +7,7 @@
       href: overview.md
     - name: Technisch en functieoverzicht
       href: technical-overview.md
-- name: Snelstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Aanmelden instellen - ASP.NET
@@ -452,6 +452,8 @@
       displayName: security
     - name: Gebruikersstroomversies
       href: user-flow-versions.md
+    - name: Verouderde gebruikersstroomversies
+      href: user-flow-versions-legacy.md
 - name: Resources
   items:
     - name: Azure-roadmap

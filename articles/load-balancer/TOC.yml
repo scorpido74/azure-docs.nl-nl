@@ -10,14 +10,16 @@
       href: load-balancer-faqs.md
 - name: Snelstartgids
   items:
-    - name: Load balancer maken - Portal
+    - name: Een openbare load balancer maken - Portal
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Load balancer maken - Azure CLI
+    - name: Een openbare load balancer maken - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Load balancer maken - Azure PowerShell
+    - name: Een openbare load balancer maken - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Load balancer maken - ARM-sjabloon
+    - name: Een openbare load balancer maken - ARM-sjabloon
       href: quickstart-load-balancer-standard-public-template.md
+    - name: Een interne load balancer maken - Portal
+      href: quickstart-load-balancer-standard-internal-portal.md
   expanded: true
 - name: Zelfstudies
   items:

@@ -592,6 +592,8 @@
           href: policy.md
     - name: Servicequota
       href: concepts-limits.md
+    - name: Automatische aanbevelingen
+      href: automated-recommendations.md
 - name: 'Cassandra, MongoDB en andere API''s'
   expanded: true
   items:

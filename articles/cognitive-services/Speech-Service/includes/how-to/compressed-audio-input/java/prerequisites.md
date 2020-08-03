@@ -13,7 +13,7 @@ ms.locfileid: "81422354"
 ---
 Het verwerken van gecomprimeerde audio wordt geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Om licentie redenen GStreamer binaire bestanden niet worden gecompileerd en gekoppeld aan de spraak-SDK. In plaats daarvan moet u de vooraf gemaakte binaire bestanden voor Android gebruiken. Zie [installatie voor Android-ontwikkeling](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)voor informatie over het downloaden van de vooraf ontwikkelde bibliotheken.
 
-`libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-invoeg toepassingen zijn `libgstreamer_android.so`gekoppeld aan.
+`libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-invoeg toepassingen zijn gekoppeld aan `libgstreamer_android.so` .
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-Hieronder vindt `Android.mk` u `Application.mk` een voor beeld en een bestand. Volg deze stappen voor het maken `gstreamer` van het gedeelde`libgstreamer_android.so`object:.
+Hieronder vindt u een voor beeld `Android.mk` en een `Application.mk` bestand. Volg deze stappen voor het maken van het `gstreamer` gedeelde object: `libgstreamer_android.so` .
 
 ```makefile
 # Android.mk
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Zodra het gedeelde object (`libgstreamer_android.so`) is gebouwd, moet de ontwikkelaar van de toepassing het gedeelde object in de Android-app plaatsen, zodat het kan worden geladen door de spraak-SDK.
+Zodra het gedeelde object ( `libgstreamer_android.so` ) is gebouwd, moet de ontwikkelaar van de toepassing het gedeelde object in de Android-app plaatsen, zodat het kan worden geladen door de spraak-SDK.

@@ -262,7 +262,7 @@
           items:
             - name: Een opslagaccount controleren
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migreren van klassieke metrische gegevens
+            - name: Transitie van klassieke metrische gegevens
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Bewaking (klassiek)
               items:
@@ -685,7 +685,7 @@
           items:
             - name: Een opslagaccount controleren
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migreren van klassieke metrische gegevens
+            - name: Transitie van klassieke metrische gegevens
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Bewaking (klassiek)
               items:
