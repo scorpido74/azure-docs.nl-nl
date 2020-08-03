@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f7e9a76309b4d9dcd010b85d1b55f340374be5c4
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 960fff073353375cd50b31bc7284134ca733f142
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337922"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488020"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Over de query taal voor Azure Digital Apparaatdubbels
 
@@ -20,23 +20,7 @@ Het midden van Azure Digital Apparaatdubbels is het [**dubbele diagram**](concep
 
 Als u een query wilt verzenden naar de service vanuit een client-app, gebruikt u de Azure Digital Apparaatdubbels- [**query-API**](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview). Hierdoor kunnen ontwikkel aars query's schrijven en filters toep assen om sets van digitale apparaatdubbels te vinden in de dubbele grafiek, en andere informatie over het Azure Digital Apparaatdubbels-scenario.
 
-## <a name="query-language-features"></a>Functies voor query taal
-
-Azure Digital Apparaatdubbels biedt uitgebreide query mogelijkheden tegen het dubbele diagram. Query's worden beschreven met behulp van de SQL-achtige syntaxis, in een query taal die vergelijkbaar is met de [IOT hub query taal](../iot-hub/iot-hub-devguide-query-language.md) met veel vergelijk bare functies.
-
-> [!NOTE]
-> Alle Azure Digital Apparaatdubbels-query bewerkingen zijn hoofdletter gevoelig.
-
-Hier volgen de bewerkingen die beschikbaar zijn in de Azure Digital Apparaatdubbels query Store-taal:
-* Get apparaatdubbels by Digital apparaatdubbels eigenschappen (inclusief [Tags](how-to-use-tags.md)).
-* Haal apparaatdubbels op door de interfaces van Digital apparaatdubbels.
-* Apparaatdubbels op basis van relatie-eigenschappen ophalen.
-* Apparaatdubbels ophalen via meerdere relatie typen ( `JOIN` query's). Er gelden beperkingen voor het toegestane aantal `JOIN` s (één niveau voor de open bare preview).
-* Gebruik aangepaste functie `IS_OF_MODEL(twinCollection, twinTypeName)` , waarmee filtering op basis van het dubbele [model](concepts-models.md)mogelijk is. Het ondersteunt overname.
-* Scalaire functies gebruiken: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTS_WITH` , `ENDS_WITH` .
-* Vergelijkings operatoren voor query's gebruiken: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
-* Gebruik een combi natie ( `AND` , `OR` , `NOT` operator) van de bovenstaande.
-* Voortzetting gebruiken: het query-object wordt geïnstantieerd met een pagina grootte (Maxi maal 100). U kunt de digitale apparaatdubbels één pagina tegelijk ophalen door de vervolg token op te geven in de volgende aanroepen van de API.
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

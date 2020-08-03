@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495292"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486791"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Query's uitvoeren op gegevens uit Azure Time Series Insights Gen2
 
@@ -37,7 +37,7 @@ De volgende kern-Api's worden ondersteund.
 
 ## <a name="environment-apis"></a>Omgevings-Api's
 
-* [Omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
+* [Omgevings-API ophalen](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
 * [Beschikbaarheids-API voor omgevingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over het tijds tempel van de gebeurtenis `$ts` . Met deze API kunt u bepalen of er gebeurtenissen in de omgeving zijn door het aantal gebeurtenissen te retour neren dat is opgesplitst in tijds intervallen, indien aanwezig.
 * [Event schema-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
 

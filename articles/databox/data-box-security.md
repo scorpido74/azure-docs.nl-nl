@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200403"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483826"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -68,7 +68,7 @@ De Data Box-service wordt door de volgende functies beschermd:
 
 - Voor toegang tot de Data Box-service moet uw organisatie een Azure-abonnement hebben dat Data Box omvat. Uw abonnement bepaalt tot welke functies u toegang hebt in de Azure-portal.
 - Omdat de Data Box-service in Azure wordt gehost, wordt deze beschermd door de Azure-beveiligingsfuncties. Ga naar het [Vertrouwenscentrum van Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx) voor meer informatie over de beveiligingsfuncties die worden geleverd door Microsoft Azure.
-- Toegang tot de Data Box order kan worden bepaald via het gebruik van RBAC-rollen (Role-based Access Control). Zie [toegangs beheer voor data Box order instellen](data-box-logs.md#set-up-access-control-on-the-order) voor meer informatie
+- Toegang tot de Data Box order kan worden beheerd via het gebruik van Azure-rollen. Zie [toegangs beheer voor data Box order instellen](data-box-logs.md#set-up-access-control-on-the-order) voor meer informatie
 - In de Data Box-service is Wachtwoord ontgrendelen opgeslagen, dat wordt gebruikt om het apparaat in de service te ontgrendelen.
 - In de Data Box-service worden de ordergegevens en -status opgeslagen. Deze informatie wordt verwijderd wanneer de order wordt verwijderd.
 
@@ -86,7 +86,7 @@ Azure Data Box verzamelt en toont persoonlijke informatie in de volgende belangr
   - Adres
   - Plaats
   - Postcode
-  - Staat
+  - Status
   - Land/Provincie/Regio
   - Accountnummer van transporteur
   - Volgnummer van verzending
@@ -102,7 +102,7 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 De volgende beveiligingsrichtlijnen zijn geïmplementeerd in Data Box: 
 
-|Richtlijn   |Beschrijving   |
+|Richtlijn   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Voor bescherming tegen water en stof         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Voor het weerstaan van nadelige vervoersomstandigheden          |

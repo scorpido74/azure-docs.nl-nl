@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: ef243d5b151f95a00e22ac7636a46b93090ccce3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/31/2020
+ms.openlocfilehash: 339926fbd3c96f6f6c279d29676950b9915b4256
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006531"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484156"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -23,16 +23,19 @@ Dit artikel bevat informatie over de **meest recente** updates voor Azure HDInsi
 
 Azure HDInsight is een van de populairste services van zakelijke klanten voor open-source analyses op Azure.
 
-## <a name="release-date-07132020"></a>Release datum: 07/13/2020
+## <a name="release-date-07302020"></a>Release datum: 07/30/2020
 
 Deze release geldt voor HDInsight 3,6 en 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
 
 ## <a name="new-features"></a>Nieuwe functies
-### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Ondersteuning voor Klanten-lockbox voor Microsoft Azure
-Azure HDInsight ondersteunt nu Azure Klanten-lockbox. Het biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Het wordt gebruikt wanneer een micro soft-Engineer toegang heeft tot klant gegevens tijdens een ondersteunings aanvraag. Zie [klanten-lockbox voor Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)voor meer informatie.
-
-### <a name="service-endpoint-policies-for-storage"></a>Service-eindpunt beleid voor opslag
-Klanten kunnen nu gebruikmaken van het service-eindpunt beleid (SEP) op het subnet van het HDInsight-cluster. Meer informatie over [Azure service Endpoint-beleid](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+### <a name="support-for-sparkcruise"></a>Ondersteuning voor SparkCruise
+SparkCruise is een systeem voor het hergebruik van automatische berekeningen voor Spark. Gemeen schappelijke subexpressies worden geselecteerd voor realiseren op basis van de query workload van het verleden. SparkCruise resultatenset deze subexpressies als onderdeel van het verwerken van query's en hergebruik van berekeningen worden automatisch op de achtergrond toegepast. U kunt profiteren van SparkCruise zonder enige wijziging van de Spark-code.
+ 
+### <a name="support-hive-view-for-hdinsight-40"></a>Hive-weer gave voor HDInsight 4,0
+De Apache Ambari-Hive-weer gave is ontworpen om u te helpen bij het ontwerpen, optimaliseren en uitvoeren van Hive-query's vanuit uw webbrowser. De Hive-weer gave wordt standaard ondersteund voor HDInsight 4,0-clusters vanaf deze release. Het is niet van toepassing op bestaande clusters. U moet het cluster verwijderen en opnieuw maken om de ingebouwde Hive-weer gave te krijgen.
+ 
+### <a name="support-tez-view-for-hdinsight-40"></a>TEZ-weer gave voor HDInsight 4,0
+De Apache TEZ-weer gave wordt gebruikt om de uitvoering van de Hive TEZ-taak bij te houden en op te sporen. De weer gave TEZ wordt standaard ondersteund voor HDInsight 4,0 vanaf deze release. Het is niet van toepassing op bestaande clusters. U moet het cluster verwijderen en opnieuw maken om de ingebouwde weer gave TEZ te krijgen.
 
 ## <a name="deprecation"></a>Afschaffing
 ### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Afschaffing van Apache Spark 2.1 en 2.2 in HDInsight 3.6 Spark-cluster
@@ -45,21 +48,22 @@ Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,3 
 Vanaf juli 1 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1,1 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om de overstap naar Kafka 2.1 op HDInsight 4.0 voor 30 juni 2020 te maken om potentiële systeem- en ondersteuningsonderbrekingen te voorkomen.
 
 ## <a name="behavior-changes"></a>Gedrags wijzigingen
-U hoeft geen aandacht te best Eden aan de wijzigingen.
+### <a name="ambari-stack-version-change"></a>Ambari stack-versie wijziging
+In deze versie wordt de Ambari-versie gewijzigd van 2. x. x. x in 4,1. U kunt de Ambari-versie van de Ambari-gebruikers interface ophalen > over.
 
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
-De volgende wijzigingen worden uitgevoerd in toekomstige releases. 
-
-### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper-SKU'S te selecteren voor Spark-, Hadoop-en ML-Services
-HDInsight biedt geen ondersteuning voor het wijzigen van Zookeeper SKU voor cluster typen van Spark, Hadoop en ML Services. Er wordt gebruikgemaakt van A2_v2/a2 SKU voor Zookeeper knooppunten en klanten worden niet in rekening gebracht. In de aanstaande release kunnen klanten de Zookeeper-SKU voor Spark-, Hadoop-en ML-Services zo nodig wijzigen. Zookeeper-knoop punten met een andere SKU dan A2_v2/a2 worden in rekening gebracht. De standaard-SKU wordt nog steeds A2_V2/a2 en gratis.
+Er zijn geen aanstaande Afbrekings wijzigingen die u moet aanbest Eden.
 
 ## <a name="bug-fixes"></a>Opgeloste fouten
 HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
-### <a name="fixed-hive-warehouse-connector-issue"></a>Probleem met vast Hive Warehouse-connector
-Er is een probleem opgetreden bij de bruikbaarheid van Hive Warehouse-connectors in de vorige versie. Het probleem is opgelost. 
 
-### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>Probleem met vaste Zeppelin-notebook afgebroken voorloop nullen oplossen
-Zeppelin is onjuist afgekapt voor voorloop nullen in de tabel uitvoer voor teken reeks indeling. Dit probleem is opgelost in deze release.
+Hieronder vindt u een back-uppoort voor de Hive-JIRAs:
+* [HIVE-23619](https://issues.apache.org/jira/browse/HIVE-23619)
+* [HIVE-21223](https://issues.apache.org/jira/browse/HIVE-21223)
+* [HIVE-22599](https://issues.apache.org/jira/browse/HIVE-22599)
+* [HIVE-22121](https://issues.apache.org/jira/browse/HIVE-22121)
+* [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
+* [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
 
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
 Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.

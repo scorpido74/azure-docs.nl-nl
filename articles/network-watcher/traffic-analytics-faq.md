@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165325"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479843"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Veelgestelde vragen over Traffic Analytics
 
@@ -36,7 +36,7 @@ Traffic Analytics vereist de volgende vereisten:
 
 Uw account moet voldoen aan een van de volgende opties om Traffic Analytics in te scha kelen:
 
-- Uw account moet een van de volgende RBAC-rollen (op rollen gebaseerd toegangs beheer) hebben bij het abonnements bereik: eigenaar, bijdrager, lezer of netwerk bijdrager.
+- Uw account moet een van de volgende Azure-rollen hebben op het abonnements bereik: eigenaar, bijdrager, lezer of netwerk bijdrager.
 - Als uw account niet is toegewezen aan een van de eerder vermelde rollen, moet dit worden toegewezen aan een aangepaste rol waaraan de volgende acties zijn toegewezen op abonnements niveau.
             
     - Micro soft. Network/applicationGateways/lezen
@@ -69,12 +69,12 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 - VS - oost
 - VS - oost 2
 - VS - noord-centraal
-- South Central US
+- VS - zuid-centraal
 - Central US
 - VS - west
 - VS - west 2
 - Frankrijk - centraal
-- West Europe
+- Europa - west
 - Europa - noord
 - Brazil South
 - Verenigd Koninkrijk West
@@ -97,12 +97,12 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 - VS - oost
 - VS - oost 2
 - VS - noord-centraal
-- South Central US
+- VS - zuid-centraal
 - Central US
 - VS - west
 - VS - west 2
 - Frankrijk - centraal
-- West Europe
+- Europa - west
 - Europa - noord
 - Verenigd Koninkrijk West
 - Verenigd Koninkrijk Zuid
@@ -401,4 +401,3 @@ De pagina topologie virtuele subnetwerken bevat twee hoofd secties:
 - Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow` sleutel voor voorwaarts verplaatsen. 
 - Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u `Right arrow` en de `Left arrow` toetsen om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
 - Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op de toets te drukken `Shift+Left arrow` . Focus wordt verplaatst naar het **vak informatie** van deze verbinding. De focus kan op elk gewenst moment worden teruggedraaid naar het knoop punt door opnieuw op te drukken `Shift+Right arrow` .    
-

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/30/2020
 ms.custom: project-no-code, devx-track-javascript
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d85ffca8c72e7a247d5bbd1e593335fd7995b594
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 58ddca6bb7844288aae0370f035bc4dfa2dc942f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170143"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481670"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Java script-en pagina-indelings versies in Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ In de **Eigenschappen**van de gebruikers stroom kunt u Java script inschakelen. 
 
 ## <a name="select-a-page-layout-version"></a>Een versie van een pagina-indeling selecteren
 
-Ongeacht of u Java script in de eigenschappen van de gebruikers stroom inschakelt, kunt u een versie van de pagina-indeling opgeven voor de pagina's van de gebruikers stroom. Open de gebruikers stroom en selecteer **pagina-indelingen**. Selecteer onder **indelings naam**een pagina gebruikers stroom en kies de **versie**van de pagina-indeling.
+Ongeacht of u Java script in de eigenschappen van de gebruikers stroom inschakelt, kunt u een versie van de pagina-indeling opgeven voor de pagina's van de gebruikers stroom. Open de gebruikers stroom en selecteer **pagina-indelingen**. Selecteer onder **indelings naam**een pagina gebruikers stroom en kies de **versie van de pagina-indeling (preview)**.
 
 Zie voor meer informatie over de verschillende versies van de pagina-indeling het [logboek met versie wijzigingen](page-layout.md)voor de pagina.
 

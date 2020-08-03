@@ -7,21 +7,21 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460385"
+ms.locfileid: "87479809"
 ---
 # <a name="payout-summary-overview"></a>Betalingsoverzicht
 
 In de [samen vatting van de uitbetaling](./payout-summary.md) ziet u details over het geld dat u hebt behaald met micro soft. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 
-Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over geslaagde uitbetalingen in de samen vatting van de betaling. Zie [deelname beleid voor Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) en [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)voor meer informatie over Azure Marketplace-betaling.
+Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over geslaagde uitbetalingen in de samen vatting van de betaling. Zie [deelname beleid voor Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) en [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie over Azure Marketplace-betaling.
 
 > [!NOTE]
-> Om in aanmerking te komen voor toekenning, moet uw opbrengst de [betalings drempelwaarde](./payment-thresholds-methods-timeframes.md) van $50 bereiken. Zie de [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)voor meer informatie over de betalings drempel.
+> Om in aanmerking te komen voor toekenning, moet uw opbrengst de [betalings drempelwaarde](./payment-thresholds-methods-timeframes.md) van $50 bereiken. Zie de [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie over de betalings drempel.
 
 Als u de details van de uitbetaling wilt weer geven, meldt u zich aan bij [Partner Center](https://partner.microsoft.com/dashboard/home) en selecteert u het uitbetalings pictogram in de rechter bovenhoek van het scherm:
 
@@ -51,7 +51,7 @@ Raadpleeg de sectie [betalings schema's](./payout-policy-details.md#payment-sche
 
 Deze optie biedt een down load van elk verdienen regel item dat u op de pagina transactie geschiedenis ziet. Dit omvat het type, de datum, de bijbehorende transactie hoeveelheid, de klant, het product en andere transactionele gegevens met betrekking tot het prikkel programma.
 
-| Kolomnaam | Beschrijving |
+| Kolomnaam | Description |
 | --- | --- |
 | earningId | Unieke id voor elk verdienen |
 | participantId | De primaire identiteit van de partner die onder het programma is aangegaan |

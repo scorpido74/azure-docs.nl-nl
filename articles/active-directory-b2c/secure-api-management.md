@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385413"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482835"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Een Azure API Management-API beveiligen met Azure AD B2C
 
@@ -60,7 +60,7 @@ Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuw
 Haal vervolgens de bekende configuratie-URL op voor een van uw Azure AD B2C gebruikers stromen. U hebt ook de token uitgever-eind punt-URI nodig die u wilt ondersteunen in azure API Management.
 
 1. Blader naar uw Azure AD B2C-Tenant in de [Azure Portal](https://portal.azure.com).
-1. Selecteer onder **beleids regels** **gebruikers stromen (beleid)**.
+1. Selecteer **gebruikers stromen**onder **beleids regels**.
 1. Selecteer een bestaand beleid, bijvoorbeeld *B2C_1_signupsignin1*, en selecteer vervolgens **gebruikers stroom uitvoeren**.
 1. Noteer de URL in de Hyper link die wordt weer gegeven onder de kop **gebruikers stroom uitvoeren** in de buurt van de bovenkant van de pagina. Deze URL is het OpenID Connect Connect-bekende detectie-eind punt voor de gebruikers stroom en u gebruikt dit in de volgende sectie wanneer u het inkomende beleid configureert in azure API Management.
 
@@ -126,7 +126,7 @@ Als u de API wilt aanroepen, moet u een toegangs token hebben dat is uitgegeven 
 U hebt eerst een token nodig dat is uitgegeven door Azure AD B2C om in de `Authorization` header in postman te gebruiken. U kunt er een ontvangen met behulp van de functie **nu uitvoeren** van uw gebruikers stroom voor aanmelden/aanmelden. u moet een van de vereisten hebben gemaakt.
 
 1. Blader naar uw Azure AD B2C-Tenant in de [Azure Portal](https://portal.azure.com).
-1. Selecteer onder **beleids regels** **gebruikers stromen (beleid)**.
+1. Selecteer **gebruikers stromen**onder **beleids regels**.
 1. Selecteer een bestaande gebruikers stroom voor registreren/aanmelden, bijvoorbeeld *B2C_1_signupsignin1*.
 1. Selecteer voor **toepassing** *webapp1*.
 1. Kies voor **antwoord**-URL `https://jwt.ms` .

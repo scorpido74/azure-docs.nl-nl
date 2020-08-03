@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757616"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482580"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ De claims in ID-tokens worden niet in een bepaalde volg orde geretourneerd. Nieu
 
 De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-tokens en toegangs tokens die zijn uitgegeven door Azure AD B2C.
 
-| Name | Claim | Voorbeeldwaarde | Description |
+| Name | Claim | Voorbeeldwaarde | Beschrijving |
 | ---- | ----- | ------------- | ----------- |
 | Doelgroep | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identificeert de beoogde ontvanger van het token. Voor Azure AD B2C is de doel groep de toepassings-ID. Uw toepassing moet deze waarde valideren en het token afwijzen als het niet overeenkomt. De doel groep is synoniemen met resources. |
 | Verlener | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de Security Token Service (STS) die het token bouwt en retourneert. Ook wordt de map geïdentificeerd waarin de gebruiker is geverifieerd. Uw toepassing moet de Issuer claim valideren om er zeker van te zijn dat het token afkomstig is van het juiste eind punt. |
@@ -97,7 +97,7 @@ De volgende eigenschappen worden gebruikt voor het [beheren van token compatibil
 
 ## <a name="pass-through"></a>Pass-through
 
-Wanneer het traject van een gebruiker wordt gestart, ontvangt Azure AD B2C een toegangs token van een id-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U [schakelt een claim in uw gebruikers stroom](idp-pass-through-user-flow.md) in of [definieert een claim in uw aangepaste beleid](idp-pass-through-custom.md) om het token door te geven aan de toepassingen die u registreert in azure AD B2C. Uw toepassing moet een v2- [gebruikers stroom](user-flow-versions.md) gebruiken om te profiteren van het door geven van het token als een claim.
+Wanneer het traject van een gebruiker wordt gestart, ontvangt Azure AD B2C een toegangs token van een id-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U [schakelt een claim in uw gebruikers stroom](idp-pass-through-user-flow.md) in of [definieert een claim in uw aangepaste beleid](idp-pass-through-custom.md) om het token door te geven aan de toepassingen die u registreert in azure AD B2C. Uw toepassing moet een [aanbevolen gebruikers stroom](user-flow-versions.md) gebruiken om te profiteren van het door geven van het token als een claim.
 
 Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het toegangs token van OAuth 2,0-id-providers, zoals Facebook en Google. Voor alle andere id-providers wordt de claim leeg geretourneerd.
 

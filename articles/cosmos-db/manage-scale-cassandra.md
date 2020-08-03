@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 447744f0436cb29e849a52694a02600183fd357a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432815"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486507"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 
@@ -38,7 +38,7 @@ Als u de latentie wilt minimaliseren, is er een breed scala aan opties voor het 
 
 In de volgende secties worden de voor-en nadelen van elke benadering uitgelegd. U kunt vervolgens besluiten over de beste strategie om de schaal behoeften van uw systeem, de totale kosten en efficiëntie behoeften voor uw oplossing te verdelen.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>De Azure Portal gebruiken
 
 U kunt de resources in Azure Cosmos DB Cassandra-API-account schalen met behulp van Azure Portal. Zie het artikel over het inrichten van de [door Voer voor containers en data bases](set-throughput.md)voor meer informatie. In dit artikel worden de relatieve voor delen beschreven van het instellen van door Voer op [Data Base](set-throughput.md#set-throughput-on-a-database) -of [container](set-throughput.md#set-throughput-on-a-container) niveau in de Azure Portal. De termen "data base" en "container" die in deze artikelen worden vermeld, worden respectievelijk toegewezen aan "sleutel ruimte" en "tabel" voor de Cassandra-API.
 
@@ -46,7 +46,7 @@ Het voor deel van deze methode is dat het een eenvoudig kant-en-klare manier is 
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Het besturings vlak gebruiken
 
-De API van Azure Cosmos DB voor Cassandra biedt de mogelijkheid om de door Voer programmatisch aan te passen met behulp van de verschillende functies van het controle vlak. Zie de artikelen [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [Power shell](powershell-samples-cassandra.md)en [Azure cli](cli-samples.md) voor hulp en voor beelden.
+De API van Azure Cosmos DB voor Cassandra biedt de mogelijkheid om de door Voer programmatisch aan te passen met behulp van de verschillende functies van het controle vlak. Zie de artikelen [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [Power shell](powershell-samples.md)en [Azure cli](cli-samples.md) voor hulp en voor beelden.
 
 Het voor deel van deze methode is dat u de schaal aanpassing van resources naar boven of beneden kunt automatiseren op basis van een timer voor piek activiteit of peri Oden met een lage activiteit. Bekijk het voor beeld [hier](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) om te zien hoe u dit kunt doen met Azure functions en Power shell.
 

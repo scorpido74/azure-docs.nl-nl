@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 310527d8e98e474faa43f19406f037e1a3835756
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040262"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480404"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies van het resource-forest voor Azure Active Directory Domain Services
 
@@ -23,10 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS) biedt een aanmeldings ervar
 
 Hoewel beveiligde en extra beveiligings voordelen bieden, kunnen sommige organisaties die gebruikers wachtwoorden hashes niet synchroniseren met Azure AD of Azure AD DS. Gebruikers in een organisatie hebben het wacht woord mogelijk niet kennen, omdat ze alleen smartcard verificatie gebruiken. Deze beperkingen verhinderen dat sommige organisaties Azure AD DS gebruiken om on-premises klassieke toepassingen naar Azure te tilleren en te verplaatsen.
 
-U kunt deze behoeften en beperkingen oplossen door een beheerd domein te maken dat gebruikmaakt van een resource-forest. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze andere bronnen vertrouwen om een veilige verificatie methode te bieden. Azure AD DS-resourceforests bevinden zich momenteel in de preview-fase.
-
-> [!IMPORTANT]
-> Azure HDInsight of Azure Files wordt momenteel niet ondersteund voor de resource forests van AD DS De standaard gebruikers forests van Azure AD DS ondersteunen beide extra services.
+U kunt deze behoeften en beperkingen oplossen door een beheerd domein te maken dat gebruikmaakt van een resource-forest. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze andere bronnen vertrouwen om een veilige verificatie methode te bieden.
 
 ## <a name="what-are-forests"></a>Wat zijn forests?
 
@@ -36,7 +33,7 @@ In een door Azure AD DS beheerd domein bevat het forest slechts één domein. On
 
 Standaard wordt een beheerd domein gemaakt als een *gebruikers* forest. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein, bijvoorbeeld om zich aan te melden bij een virtuele machine die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
 
-In een beheerd domein *resource* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met het beheerde domein. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS-resourceforests bevinden zich momenteel in de preview-fase.
+In een beheerd domein *resource* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met het beheerde domein. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd.
 
 Resource forests bieden ook de mogelijkheid om uw toepassingen één onderdeel tegelijk uit te voeren. Veel oudere on-premises toepassingen zijn meerdere lagen, vaak met een webserver of front-end en veel data base-gerelateerde onderdelen. Deze lagen maken het moeilijk om in één stap de volledige toepassing naar de cloud te tillen en te verplaatsen. Met resource-forests kunt u uw toepassing in gefaseerde benadering optillen, waardoor het eenvoudiger wordt om uw toepassing naar Azure te verplaatsen.
 
@@ -116,7 +113,7 @@ Vertrouwens relaties bieden dit mechanisme voor het valideren van verificatie aa
 
 Zie [Hoe kunnen forest-vertrouwens relaties werken in Azure AD DS?][concepts-trust] voor meer informatie over vertrouwens relaties.
 
-Zie [een door Azure AD DS beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een beheerd domein met een bron-forest. U kunt vervolgens [een uitgaande forest-vertrouwens relatie maken met een on-premises domein (preview-versie)][create-forest-trust].
+Zie [een door Azure AD DS beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een beheerd domein met een bron-forest. U kunt vervolgens [een uitgaande forest-vertrouwens relatie maken met een on-premises domein][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/12/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389595"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482852"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
 
@@ -30,13 +30,14 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij Azure Portal.
 2. Als u wilt overschakelen naar uw Azure AD B2C Tenant, selecteert u de map B2C in de rechter bovenhoek van de portal.
-3. Klik op **gebruikers stromen**en selecteer **nieuwe gebruikers stroom**.
-4. Klik op het tabblad **alle** en selecteer **Aanmelden met behulp van ROPC**.
-5. Geef een naam op voor de gebruikers stroom, bijvoorbeeld *ROPC_Auth*.
-6. Klik onder **toepassings claims**op **weer geven**.
-7. Selecteer de toepassings claims die u nodig hebt voor uw toepassing, zoals weergave naam, e-mail adres en ID-provider.
-8. Selecteer **OK**, en selecteer vervolgens **Maken**.
-9. Klik op **gebruikers stroom uitvoeren**.
+3. Selecteer **gebruikers stromen**en selecteer **nieuwe gebruikers stroom**.
+4. Selecteer **Aanmelden met wachtwoord referenties voor de resource-eigenaar (ROPC)**.
+5. Controleer onder **versie**of **Preview** is geselecteerd en selecteer **maken**.
+7. Geef een naam op voor de gebruikers stroom, bijvoorbeeld *ROPC_Auth*.
+8. Klik onder **toepassings claims**op **weer geven**.
+9. Selecteer de toepassings claims die u nodig hebt voor uw toepassing, zoals weergave naam, e-mail adres en ID-provider.
+10. Selecteer **OK**, en selecteer vervolgens **Maken**.
+11. Klik op **gebruikers stroom uitvoeren**.
 
    Vervolgens ziet u een eind punt zoals dit voor beeld:
 
@@ -47,7 +48,7 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
 - Vervang * \<tenant-name> . onmicrosoft.com* door de naam van uw B2C-Tenant.
@@ -131,7 +132,3 @@ Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 De implementatie van de Azure AD B2C voldoet aan de OAuth 2,0-standaarden voor de referenties van het eigenaars wachtwoord voor open bare client bronnen en moet compatibel zijn met de meeste client-Sdk's. We hebben deze stroom uitgebreid getest in productie, met AppAuth voor iOS en AppAuth voor Android. Zie voor de meest recente informatie [systeem eigen app SDK voor OAuth 2,0 en OpenID Connect Connect implementeren moderne Best practices](https://appauth.io/).
 
 Down load Working-voor beelden die zijn geconfigureerd voor gebruik met Azure AD B2C van GitHub, [voor Android](https://aka.ms/aadb2cappauthropc) en [IOS](https://aka.ms/aadb2ciosappauthropc).
-
-
-
-

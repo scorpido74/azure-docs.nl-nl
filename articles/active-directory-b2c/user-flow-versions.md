@@ -7,48 +7,82 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acebf5239bf8a180f637e4c12c4e03509edb93c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67949c31c710d88a05e1e110860fe703caf66d04
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383985"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481322"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Versies van de gebruikers stroom in Azure Active Directory B2C
 
-Gebruikers stromen in Azure Active Directory B2C (Azure AD B2C) helpen u bij het instellen van een gemeen schappelijke [beleids](user-flow-overview.md) regel voor het beschrijven van de ervaring van de klant identiteit. Deze ervaring omvat het aanmelden, aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen. In Azure AD B2C kunt u kiezen uit een verzameling van zowel aanbevolen gebruikers stromen als voor beeld van gebruikers stromen.
+Gebruikers stromen in Azure Active Directory B2C (Azure AD B2C) helpen u bij het instellen van een gemeen schappelijke [beleids](user-flow-overview.md) regel voor het beschrijven van de ervaring van de klant identiteit. Deze ervaring omvat het aanmelden, aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen. In de onderstaande tabellen worden de gebruikers stromen beschreven die beschikbaar zijn in Azure AD B2C.
 
-Nieuwe gebruikers stromen worden toegevoegd als nieuwe versies. Wanneer gebruikers stromen stabiel worden, worden ze aanbevolen voor gebruik. Gebruikers stromen worden gemarkeerd als **Aanbevolen** als ze uitvoerig zijn getest. Gebruikers stromen worden in de preview-fase opgenomen tot ze als aanbevolen zijn gemarkeerd. Gebruik een aanbevolen gebruikers stroom voor een productie toepassing, maar kies uit andere versies om de nieuwe functionaliteit te testen zodra deze beschikbaar wordt. Gebruik geen oudere versies van aanbevolen gebruikers stromen.
+> [!IMPORTANT]
+> We hebben de manier veranderd waarop we verwijzen naar gebruikersstroomversies. Eerder boden we V1-versies (klaar voor productie) en V1.1- en V2-versies (preview) aan. Nu hebben we gebruikers stromen geconsolideerd in twee versies:
+>
+>- **Aanbevolen** gebruikers stromen zijn de nieuwe Preview-versies van gebruikers stromen. Ze zijn uitgebreid getest en combi neren alle functies van de oudere versies van **v2** en **v 1.1** . Als u verdergaat, worden de nieuwe aanbevolen gebruikers stromen gehandhaafd en bijgewerkt. Zodra u bent overstappen op deze nieuwe aanbevolen gebruikers stromen, hebt u toegang tot nieuwe functies wanneer ze worden uitgebracht.
+>- **Standaard** gebruikers stromen, voorheen bekend als **v1**, zijn algemeen beschikbaar, productie-kant-en-klare gebruikers stromen. Als uw gebruikers stroom kritiek zijn en afhankelijk zijn van uiterst stabiele versies, kunt u de standaard gebruikers stromen blijven gebruiken, waardoor deze versies niet behouden blijven en worden bijgewerkt.
+>
+>Alle verouderde preview-gebruikers stromen (V 1.1 en v2) bevinden zich op **1 augustus 2021**in een pad naar afschaffing. Waar mogelijk wordt u ten zeerste aangeraden om zo snel mogelijk [over te scha kelen naar de nieuwe **Aanbevolen** versies](#how-to-switch-to-a-new-recommended-user-flow) , zodat u altijd kunt profiteren van de nieuwste functies en updates. *Deze wijzigingen zijn alleen van toepassing op de open bare Azure-Cloud. Andere omgevingen blijven gebruikmaken van [verouderde versie beheer van de gebruikers stroom](user-flow-versions-legacy.md).*
 
->[!IMPORTANT]
-> Tenzij een gebruikers stroom wordt aangeduid als **Aanbevolen**, wordt deze als *Preview*beschouwd. Gebruik alleen aanbevolen gebruikers stromen voor uw productie toepassingen.
+## <a name="recommended-user-flows"></a>Aanbevolen gebruikers stromen
 
-## <a name="v1"></a>V1
+Aanbevolen gebruikers stromen zijn Preview-versies die nieuwe functies combi neren met verouderde v2-en V 1.1-mogelijkheden. Doorlopend, aanbevolen gebruikers stromen worden behouden en bijgewerkt.
 
-| Gebruikersstroom | Aanbevolen | Description |
+| Gebruikersstroom | Description |
+| --------- | ----------- |
+| Wacht woord opnieuw instellen (preview-versie) | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Profiel bewerken (preview-versie) | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li></ul> |
+| Aanmelden (preview-versie) | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>Aanpassing van de aanmeldings pagina</li></ul> |
+| Registreren (preview-versie) | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Registreren en aanmelden (preview-versie) | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+
+## <a name="standard-user-flows"></a>Standaard gebruikers stromen
+
+Standaard gebruikers stromen (eerder aangeduid als v1) zijn algemeen beschikbaar, productie-kant-en-klare gebruikers stromen. Standaard gebruikers stromen worden niet bijgewerkt.
+
+| Gebruikersstroom | Description |
 | --------- | ----------- | ----------- |
-| Wachtwoord opnieuw instellen | Yes | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
-| Profiel bewerken | Yes | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li></ul> |
-| Aanmelden met ROPC | No | Hiermee kan een gebruiker met een lokaal account zich rechtstreeks aanmelden bij systeem eigen toepassingen (er is geen browser vereist). Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li></ul> |
-| Aanmelden | No | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>Aanmelden blok keren</li><li>Wacht woord opnieuw instellen afdwingen</li><li>Aangemeld blijven (KMSI)</ul><br>U kunt de gebruikers interface niet aanpassen met deze gebruikers stroom. |
-| Aanmelden | No | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
-| Registreren en aanmelden | Yes | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul>|
+| Wachtwoord opnieuw instellen | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Profiel bewerken | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li></ul> |
+| Aanmelden | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>Aanmelden blok keren</li><li>Wacht woord opnieuw instellen afdwingen</li><li>Aangemeld blijven (KMSI)</ul><br>U kunt de gebruikers interface niet aanpassen met deze gebruikers stroom. |
+| Aanmelden | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Registreren en aanmelden | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul>|
 
-## <a name="v11"></a>V 1.1
 
-| Gebruikersstroom | Aanbevolen | Description |
-| --------- | ----------- | ----------- |
-| Wacht woord opnieuw instellen v 1.1 | No | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres (nieuwe pagina-indeling beschikbaar). Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>Overschakelen naar een nieuwe aanbevolen gebruikers stroom
 
-## <a name="v2"></a>V2
+Als u wilt overschakelen van een oudere versie van een gebruikers stroom naar de nieuwe **Aanbevolen** preview-versie, volgt u deze stappen:
 
-| Gebruikersstroom | Aanbevolen | Description |
-| --------- | ----------- | ----------- |
-| Wacht woord opnieuw instellen v2 | No | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
-| Profiel bewerken v2 | Yes | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li></ul> |
-| Aanmelden v2 | No | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>Aanpassing van de aanmeldings pagina</li></ul> |
-| Registreren v2 | No | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
-| Registreren en aanmelden v2 | No | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+1. Maak een nieuw gebruikers stroom beleid door de stappen in de [zelf studie te volgen: gebruikers stromen maken in azure Active Directory](tutorial-create-user-flows.md). Selecteer de **Aanbevolen** versie tijdens het maken van de gebruikers stroom.
+
+3. Configureer uw nieuwe gebruikers stroom met dezelfde instellingen die zijn geconfigureerd in het verouderde beleid.
+
+4. Werk de aanmeldings-URL van uw toepassing bij naar het zojuist gemaakte beleid.
+
+5. Nadat u de gebruikers stroom hebt getest en hebt bevestigd dat deze werkt, verwijdert u de verouderde gebruikers stroom door de volgende stappen uit te voeren:
+   1. Selecteer in het menu Azure AD B2C overzicht tenants de optie **gebruikers stromen**.
+   2. Zoek de gebruikers stroom die u wilt verwijderen.
+   3. Selecteer in de laatste kolom het snelmenu (**...**) en selecteer vervolgens **verwijderen**.
+
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+### <a name="can-i-still-create-legacy-v2-and-v11-user-flows"></a>Kan ik nog steeds oudere v2-en V 1.1-gebruikers stromen maken?
+
+U kunt geen nieuwe gebruikers stromen maken op basis van de oudere versies van v2 en V 1.1, maar het is ook mogelijk om de verouderde v2-en V 1.1-gebruikers stroom die u momenteel gebruikt, te lezen, bij te werken en te verwijderen.
+
+### <a name="is-there-any-reason-to-continue-using-legacy-v2-and-v11-user-flows"></a>Is er een reden om de verouderde gebruikers stromen van v2 en V 1.1 te blijven gebruiken?
+
+Niet echt. De nieuwe **Aanbevolen** Preview-versies bevatten dezelfde functionaliteit als de oudere versies van v2 en v 1.1. Er is niets verwijderd en er zijn nu aanvullende functies beschikbaar.
+
+### <a name="if-i-dont-switch-from-legacy-v2-and-v11-policies-how-will-it-impact-my-application"></a>Als ik geen oudere beleids regels voor v2 en V 1.1 Schakel, wat is het van invloed op mijn toepassing?
+
+Als u een verouderde v2-of V 1.1-gebruikers stroom gebruikt, wordt uw toepassing niet beïnvloed door deze wijziging van de versie. Maar om toegang te krijgen tot nieuwe functies of beleids wijzigingen die worden doorgevoerd, moet u overschakelen naar de nieuwe **Aanbevolen** versies.
+
+### <a name="will-microsoft-still-support-my-legacy-v2-or-v11-user-flow-policy"></a>Wordt micro soft nog steeds ondersteund voor het beleid voor de verouderde versie van v2 of V 1.1?
+
+De oudere versies van gebruikers stromen van v2 en V 1.1 worden nog steeds volledig ondersteund.

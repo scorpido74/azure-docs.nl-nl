@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285455"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486439"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Problemen met live video Analytics op IoT Edge oplossen
 
@@ -234,7 +234,7 @@ Met live video analyses via de HTTP-extensie processor kan de media grafiek word
 
     ![Scherm opname van de actieve status van modules in azure IoT Hub.](./media/troubleshoot-how-to/iot-hub.png)
 
-* Controleer of u gebeurtenissen naar het juiste URL-eind punt verzendt. De externe AI-container maakt een URL en een poort beschikbaar die deze ontvangt en retourneert de gegevens van POST-aanvragen. Deze URL wordt opgegeven als een `endpoint: url` eigenschap voor de HTTP-extensie processor. Zoals in de [topologie-URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)wordt weer gegeven, wordt het eind punt ingesteld op de para meter voor de deactieve URL. Zorg ervoor dat de standaard waarde voor de [para meter](http://yolov3/score) of de door gegeven waarde nauw keurig is. U kunt controleren of het werkt met behulp van de client-URL (krul).  
+* Controleer of u gebeurtenissen naar het juiste URL-eind punt verzendt. De externe AI-container maakt een URL en een poort beschikbaar die deze ontvangt en retourneert de gegevens van POST-aanvragen. Deze URL wordt opgegeven als een `endpoint: url` eigenschap voor de HTTP-extensie processor. Zoals in de [topologie-URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)wordt weer gegeven, wordt het eind punt ingesteld op de para meter voor de deactieve URL. Zorg ervoor dat de standaard waarde voor de para meter of de door gegeven waarde nauw keurig is. U kunt controleren of het werkt met behulp van de client-URL (krul).  
 
     Hier volgt een voor beeld van een Yolo v3-container die wordt uitgevoerd op een lokale computer met het IP-adres 172.17.0.3. Gebruik docker inspecte om het IP-adres te vinden.
 

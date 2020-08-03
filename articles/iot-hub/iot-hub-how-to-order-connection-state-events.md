@@ -7,12 +7,13 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726193"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488125"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Verbindingsgebeurtenissen voor het apparaat aanvragen bij Azure IoT Hub met behulp van Azure Cosmos DB
 
@@ -290,7 +291,7 @@ Nu uw gebeurtenis abonnement is ingesteld, kunt u testen door verbinding te make
 
 2. Selecteer **+ toevoegen** boven aan het deel venster.
 
-3. Geef `Demo-Device-1` op voor **Apparaat-ID**.
+3. Voor **Apparaat-id**, voert u `Demo-Device-1` in.
 
 4. Selecteer **Opslaan**.
 

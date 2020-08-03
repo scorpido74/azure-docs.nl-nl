@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62645e6252256079e27792b1905d60a073c1fa3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c21dab8c1a4c2643db0a56b5052f33243f2f56
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080218"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460050"
 ---
 ## <a name="limitations"></a>Beperkingen
 
@@ -36,63 +36,27 @@ Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf
 > [!IMPORTANT]
 > De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
-#### <a name="cli"></a>CLI
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
 ```azurecli
-
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
-
 ```
 
-#### <a name="powershell"></a>PowerShell
-```azurepowershell-interactive
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+```azurepowershell-interactive
 $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty -MaxSharesCount 2
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
-
 ```
 
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
+# <a name="resource-manager-template"></a>[Resource Manager-sjabloon](#tab/azure-resource-manager)
+
 Vervang `[parameters('dataDiskName')]` ,, `[resourceGroup().location]` en door `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` uw eigen waarden voordat u de volgende sjabloon gebruikt.
 
-```json
-{ 
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "dataDiskName": {
-      "type": "string",
-      "defaultValue": "mySharedDisk"
-    },
-    "dataDiskSizeGB": {
-      "type": "int",
-      "defaultValue": 1024
-    },
-    "maxShares": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Compute/disks",
-      "name": "[parameters('dataDiskName')]",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2019-07-01",
-      "sku": {
-        "name": "Premium_LRS"
-      },
-      "properties": {
-        "creationData": {
-          "createOption": "Empty"
-        },
-        "diskSizeGB": "[parameters('dataDiskSizeGB')]",
-        "maxShares": "[parameters('maxShares')]"
-      }
-    }
-  ] 
-}
-```
+[Sjabloon voor gedeelde schijf Premium-SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
+
+---
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Een ultra schijf implementeren als een gedeelde schijf
 
@@ -101,7 +65,11 @@ Als u een beheerde schijf met de functie gedeelde schijf wilt implementeren, wij
 > [!IMPORTANT]
 > De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
-#### <a name="cli"></a>CLI
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+##### <a name="regional-disk-example"></a>Voor beeld van regionale schijf
+
 ```azurecli
 #Creating an Ultra shared Disk 
 az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1
@@ -113,93 +81,63 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 az disk show -g rg1 -n clidisk
 ```
 
-#### <a name="powershell"></a>PowerShell
-```azurepowershell-interactive
+##### <a name="zonal-disk-example"></a>Voor beeld van zonegebonden-schijf
 
+Dit voor beeld is bijna hetzelfde als het vorige, behalve als er een schijf wordt gemaakt in beschikbaarheids zone 1.
+
+```azurecli
+#Creating an Ultra shared Disk 
+az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1 --zone 1
+
+#Updating an Ultra shared Disk 
+az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-write 300 --set diskIopsReadOnly=100 --set diskMbpsReadOnly=1
+
+#Show shared disk properties:
+az disk show -g rg1 -n clidisk
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+##### <a name="regional-disk-example"></a>Voor beeld van regionale schijf
+
+```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
-
 ```
 
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
+##### <a name="zonal-disk-example"></a>Voor beeld van zonegebonden-schijf
 
-Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, gebruikt u de eigenschap `maxShares` en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
+Dit voor beeld is bijna hetzelfde als het vorige, behalve als er een schijf wordt gemaakt in beschikbaarheids zone 1.
 
-> [!IMPORTANT]
-> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
+```azurepowershell-interactive
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5 -Zone 1
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+```
+
+# <a name="resource-manager-template"></a>[Resource Manager-sjabloon](#tab/azure-resource-manager)
+
+##### <a name="regional-disk-example"></a>Voor beeld van regionale schijf
 
 Vervang,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` en `[parameters('diskMBpsReadOnly')]` door uw eigen waarden voordat u de volgende sjabloon gebruikt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "diskName": {
-      "type": "string",
-      "defaultValue": "uShared30"
-    },
-    "location": {
-        "type": "string",
-        "defaultValue": "westus",
-        "metadata": {
-                "description": "Location for all resources."
-        }
-    },
-    "dataDiskSizeGB": {
-      "type": "int",
-      "defaultValue": 1024
-    },
-    "maxShares": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "diskIOPSReadWrite": {
-      "type": "int",
-      "defaultValue": 2048
-    },
-    "diskMBpsReadWrite": {
-      "type": "int",
-      "defaultValue": 20
-    },    
-    "diskIOPSReadOnly": {
-      "type": "int",
-      "defaultValue": 100
-    },
-    "diskMBpsReadOnly": {
-      "type": "int",
-      "defaultValue": 1
-    }    
-  }, 
-  "resources": [
-    {
-        "type": "Microsoft.Compute/disks",
-        "name": "[parameters('diskName')]",
-        "location": "[parameters('location')]",
-        "apiVersion": "2019-07-01",
-        "sku": {
-            "name": "UltraSSD_LRS"
-        },
-        "properties": {
-            "creationData": {
-                "createOption": "Empty"
-            },
-            "diskSizeGB": "[parameters('dataDiskSizeGB')]",
-            "maxShares": "[parameters('maxShares')]",
-            "diskIOPSReadWrite": "[parameters('diskIOPSReadWrite')]",
-            "diskMBpsReadWrite": "[parameters('diskMBpsReadWrite')]",
-            "diskIOPSReadOnly": "[parameters('diskIOPSReadOnly')]",
-            "diskMBpsReadOnly": "[parameters('diskMBpsReadOnly')]"
-        }
-    }
-  ]
-}
-```
+[Sjabloon voor regionale, gedeelde Ultra schijven](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw Vm's
+##### <a name="zonal-disk-example"></a>Voor beeld van zonegebonden-schijf
+
+Vervang,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` en `[parameters('diskMBpsReadOnly')]` door uw eigen waarden voordat u de volgende sjabloon gebruikt.
+
+[Sjabloon voor gedeelde Ultra schijven zonegebonden](https://aka.ms/SharedUltraDiskARMtemplateZonal)
+
+---
+
+## <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw Vm's
 
 Wanneer u een gedeelde schijf met hebt geïmplementeerd `maxShares>1` , kunt u de schijf koppelen aan een of meer van uw virtuele machines.
+
+> [!NOTE]
+> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie de sectie [Power shell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) of [cli](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) van het artikel over de ultra disk voor meer informatie.
 
 ```azurepowershell-interactive
 
@@ -259,3 +197,8 @@ U moet ook een permanente reserve ring-sleutel opgeven wanneer u PR_RESERVE, PR_
 
 
 ## <a name="next-steps"></a>Volgende stappen
+
+Als u liever Azure Resource Manager sjablonen gebruikt voor het implementeren van uw schijf, zijn de volgende voorbeeld sjablonen beschikbaar:
+- [Premium - SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
+- [Regionale Ultra schijven](https://aka.ms/SharedUltraDiskARMtemplateRegional)
+- [Zonegebonden Ultra schijven](https://aka.ms/SharedUltraDiskARMtemplateZonal)

@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963883"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486813"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Best practices voor het laden van gegevens voor datawarehousing
 
 Aanbevelingen en prestatie optimalisaties voor het laden van gegevens
 
-## <a name="preparing-data-in-azure-storage"></a>Gegevens voorbereiden in Azure Storage
+## <a name="prepare-data-in-azure-storage"></a>Gegevens voorbereiden in Azure Storage
 
 Bepaal uw opslaglaag en uw datawarehouse om de latentie te minimaliseren.
 
@@ -34,13 +34,13 @@ Alle bestandsindelingen hebben verschillende prestatiekenmerken. Gebruik voor he
 
 Splits grote gecomprimeerde bestanden in kleinere gecomprimeerde bestanden.
 
-## <a name="running-loads-with-enough-compute"></a>Laadtaken uitvoeren met voldoende rekenkracht
+## <a name="run-loads-with-enough-compute"></a>Laden uitvoeren met voldoende reken kracht
 
 Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laad taak verwacht, kunt u de SQL-groep vóór de belasting verg Roten of verkleinen.
 
 Als u loads wilt uitvoeren met geschikte rekenresources, maakt u gebruikers voor het laadproces die zijn aangewezen voor het uitvoeren van loads. Wijs elke laad gebruiker toe aan een specifieke resource klasse of werkbelasting groep. Als u een belasting wilt uitvoeren, meldt u zich aan als een van de laad gebruikers en voert u de belasting uit. De load wordt uitgevoerd met de resourceklasse van de gebruiker.  Deze methode is eenvoudiger dan de resourceklasse van een gebruiker aanpassen om te voldoen aan de huidige benodigde resourceklasse.
 
-### <a name="example-of-creating-a-loading-user"></a>Voorbeeld van het maken van een gebruiker voor het laadproces
+### <a name="create-a-loading-user"></a>Een laad gebruiker maken
 
 In dit voorbeeld wordt een gebruiker voor het laadproces gemaakt voor de resourceklasse staticrc20. De eerste stap is **verbinding maken met de master** en een aanmelding maken.
 
@@ -62,7 +62,7 @@ Als u een belasting wilt uitvoeren met resources voor de resource klassen static
 
 Voer loads bij voorkeur uit onder statische en niet onder dynamische resourceklassen. Het gebruik van de statische resource klassen garandeert dezelfde bronnen, ongeacht uw [Data Warehouse-eenheden](resource-consumption-models.md). Als u een dynamische resourceklasse gebruikt, variëren de resources afhankelijk van uw serviceniveau. Voor dynamische klassen betekent een lager serviceniveau dat u waarschijnlijk een grotere resourceklasse moet gebruiken voor uw gebruiker van het laadproces.
 
-## <a name="allowing-multiple-users-to-load"></a>Meerdere gebruikers toestaan te laden
+## <a name="allow-multiple-users-to-load"></a>Meerdere gebruikers toestaan om te laden
 
 Vaak is het nodig dat meerdere gebruikers gegevens kunnen laden in een datawarehouse. Bij het laden met de [Create Table als Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zijn machtigingen vereist van de data base.  De CONTROL-machtiging biedt beheertoegang tot alle schema's. Mogelijk wilt u niet alle gebruikers die laadtaken uitvoeren, beheertoegang tot alle schema's verlenen. Als u machtigingen wilt beperken, kunt u de instructie DENY CONTROL gebruiken.
 
@@ -75,13 +75,13 @@ Denk bijvoorbeeld aan databaseschema's, schema_A voor afdeling A, en schema_B vo
 
 User_A en user_B zijn nu uitgesloten van het schema van de andere afdeling.
 
-## <a name="loading-to-a-staging-table"></a>Laden naar een faseringstabel
+## <a name="load-to-a-staging-table"></a>Laden naar een faseringstabel
 
 De hoogste laadsnelheid voor het verplaatsen van gegevens naar een datawarehousetabel kunt u verkrijgen door gegevens te laden naar een tijdelijke tabel.  Definieer de faseringstabel als een heap en gebruik round-robin voor de distributieoptie.
 
 Bedenk dat laden meestal een proces met twee stappen is waarin u eerst naar een tijdelijke tabel laadt en de gegevens vervolgens in een productiedatawarehousetabel invoegt. Als de productietabel een hash-distributiepunt gebruikt, is de totale tijd voor het laden en invoegen mogelijk sneller als u de faseringstabel met de hash-distributie definieert. Het laden naar de faseringstabel duurt langer, maar de tweede stap van het invoegen van de rijen in de productietabel leidt niet tot de verplaatsing van gegevens in de distributies.
 
-## <a name="loading-to-a-columnstore-index"></a>Laden naar een columnstore-index
+## <a name="load-to-a-columnstore-index"></a>Laden naar een column store-index
 
 Columnstore-indexen vereisen grote hoeveelheden geheugen voor het comprimeren van gegevens tot hoogwaardige rijgroepen. Voor de beste compressie en efficiëntie van de index moet de columnstore-index maximaal 1.048.576 rijen in elke rijgroep comprimeren. Bij geheugenbelasting kan het zijn dat de columnstore-index de maximale compressiesnelheden niet kan halen. Dit kan van invloed op de queryresultaten. Zie voor gedetailleerde informatie [Columnstore geheugenoptimalisaties](data-load-columnstore-compression.md).
 
@@ -92,19 +92,19 @@ Columnstore-indexen vereisen grote hoeveelheden geheugen voor het comprimeren va
 
 Zoals eerder is vermeld, biedt het laden met poly base de hoogste door Voer met Synapse SQL-pool. Als u geen poly Base kunt gebruiken om te laden en u de SQLBulkCopy-API (of BCP) moet gebruiken, kunt u overwegen om de Batch grootte te verg Roten voor een betere door voer. een goede vuist regel is een batch grootte tussen 100.000 en 1M rijen.
 
-## <a name="handling-loading-failures"></a>Afhandeling van fouten bij het laden
+## <a name="manage-loading-failures"></a>Laad fouten beheren
 
 Een load met behulp van een externe tabel kan mislukken met de fout *Query afgebroken--de maximale weigeringsdrempelwaarde is bereikt tijdens het lezen vanuit een externe bron*. Dit bericht geeft aan dat uw externe gegevens vervuilde records bevatten. Een gegevensrecord wordt als 'vervuild' beschouwd als de gegevenstypen en het aantal kolommen niet overeenkomen met de kolomdefinities van de externe tabel of als de gegevens niet overeenkomen met de externe bestandsindeling.
 
 U kunt vervuilde records voorkomen door ervoor te zorgen dat uw externe tabel- en bestandindelingsdefinities correct zijn en uw externe gegevens overeenstemmen met deze definities. Als een subset van externe gegevensrecords ongeldig is, kunt u ervoor kiezen deze records voor uw query's te weigeren door gebruik te maken van de weigeringsopties in CREATE EXTERNAL TABLE.
 
-## <a name="inserting-data-into-a-production-table"></a>Gegevens in een productietabel invoegen
+## <a name="insert-data-into-a-production-table"></a>Gegevens in een productie tabel invoegen
 
 Een eenmalige laadtaak naar een kleine tabel met een [INSERT-instructie](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) of zelfs een periodieke herlaadtaak kan een acceptabel resultaat geven met een instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Het invoegen van singletons is echter niet zo efficiënt als bulksgewijs laden.
 
 Als u de hele dag door duizenden of meerdere enkele gegevens wilt invoeren, voeg de gegevens dan samen tot een batch zodat deze bulksgewijs kunt laden.  Ontwikkel uw processen om de afzonderlijke gegevens aan een bestand toe te voegen en maak vervolgens een ander proces dat het bestand periodiek laadt.
 
-## <a name="creating-statistics-after-the-load"></a>Statistieken maken na het laden
+## <a name="create-statistics-after-the-load"></a>Statistieken maken na het laden
 
 Voor optimale resultaten van uw query's is het belangrijk dat u statistieken maakt voor alle kolommen van alle tabellen nadat de gegevens voor het eerst zijn geladen of wanneer de gegevens substantieel zijn gewijzigd.  Dit kan hand matig worden gedaan of u kunt [automatisch gemaakte statistieken](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)inschakelen.
 

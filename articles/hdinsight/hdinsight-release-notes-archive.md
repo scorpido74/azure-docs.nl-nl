@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/08/2019
-ms.openlocfilehash: b5e26ef72d4be38c021cbedbcaf1fa919d7276d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/31/2020
+ms.openlocfilehash: eb533ef93f012e99d135c49725ef8add77b6f7ec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511973"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484195"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
 
 ## <a name="summary"></a>Samenvatting
 
 Azure HDInsight is onder zakelijke klanten een van de meest populaire services voor open source Apache Hadoop- en Apache Spark-analyses in Azure.
+
+## <a name="release-date-07132020"></a>Release datum: 07/13/2020
+
+Deze release geldt voor HDInsight 3,6 en 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
+
+### <a name="new-features"></a>Nieuwe functies
+#### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Ondersteuning voor Klanten-lockbox voor Microsoft Azure
+Azure HDInsight ondersteunt nu Azure Klanten-lockbox. Het biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Het wordt gebruikt wanneer een micro soft-Engineer toegang heeft tot klant gegevens tijdens een ondersteunings aanvraag. Zie [klanten-lockbox voor Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)voor meer informatie.
+
+#### <a name="service-endpoint-policies-for-storage"></a>Service-eindpunt beleid voor opslag
+Klanten kunnen nu gebruikmaken van het service-eindpunt beleid (SEP) op het subnet van het HDInsight-cluster. Meer informatie over [Azure service Endpoint-beleid](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+
+### <a name="deprecation"></a>Afschaffing
+#### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Afschaffing van Apache Spark 2.1 en 2.2 in HDInsight 3.6 Spark-cluster
+Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,1 en 2,2 op HDInsight 3,6. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om over te stappen op Spark 2,3 op HDInsight 3,6 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
+ 
+#### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Afschaffing van Apache Spark 2.3 in HDInsight 4.0 Spark-cluster
+Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,3 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om de overstap naar Apache Spark 2.4 op HDInsight 4.0 voor 30 juni 2020 te maken om potentiële systeem- en ondersteuningsonderbrekingen te voorkomen.
+ 
+#### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Afschaffing van Kafka 1.1 in HDInsight 4.0 Kafka-cluster
+Vanaf juli 1 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1,1 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om de overstap naar Kafka 2.1 op HDInsight 4.0 voor 30 juni 2020 te maken om potentiële systeem- en ondersteuningsonderbrekingen te voorkomen.
+
+### <a name="behavior-changes"></a>Gedrags wijzigingen
+U hoeft geen aandacht te best Eden aan de wijzigingen.
+
+### <a name="upcoming-changes"></a>Aanstaande wijzigingen
+De volgende wijzigingen worden uitgevoerd in toekomstige releases. 
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper-SKU'S te selecteren voor Spark-, Hadoop-en ML-Services
+HDInsight biedt geen ondersteuning voor het wijzigen van Zookeeper SKU voor cluster typen van Spark, Hadoop en ML Services. Er wordt gebruikgemaakt van A2_v2/a2 SKU voor Zookeeper knooppunten en klanten worden niet in rekening gebracht. In de aanstaande release kunnen klanten de Zookeeper-SKU voor Spark-, Hadoop-en ML-Services zo nodig wijzigen. Zookeeper-knoop punten met een andere SKU dan A2_v2/a2 worden in rekening gebracht. De standaard-SKU wordt nog steeds A2_V2/a2 en gratis.
+
+### <a name="bug-fixes"></a>Opgeloste fouten
+HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
+#### <a name="fixed-hive-warehouse-connector-issue"></a>Probleem met vast Hive Warehouse-connector
+Er is een probleem opgetreden bij de bruikbaarheid van Hive Warehouse-connectors in de vorige versie. Het probleem is opgelost. 
+
+#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>Probleem met vaste Zeppelin-notebook afgebroken voorloop nullen oplossen
+Zeppelin is onjuist afgekapt voor voorloop nullen in de tabel uitvoer voor teken reeks indeling. Dit probleem is opgelost in deze release.
+
+### <a name="component-version-change"></a>Onderdeel versie wijzigen
+Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.
 
 ## <a name="release-date-06112020"></a>Release datum: 06/11/2020
 
@@ -145,7 +186,7 @@ Deze release geldt voor HDInsight 3,6 en 4,0.
 ### <a name="new-features"></a>Nieuwe functies
 
 #### <a name="service-tags"></a>Servicetags
-Service Tags vereenvoudigen de beveiliging van virtuele Azure-machines en virtuele netwerken van Azure, waardoor u eenvoudig netwerk toegang tot de Azure-Services kunt beperken. U kunt service tags in uw NSG-regels (netwerk beveiligings groep) gebruiken om verkeer toe te staan of te weigeren voor een specifieke Azure-service, globaal of per Azure-regio. Azure biedt het onderhoud van IP-adressen die onder elke tag liggen. HDInsight-service tags voor netwerk beveiligings groepen (Nsg's) zijn groepen met IP-adressen voor status-en beheer Services. Deze groepen helpen de complexiteit te minimaliseren voor het maken van de beveiligings regel. HDInsight-klanten kunnen service tags inschakelen via Azure Portal, Power shell en REST API. Zie [NSG-service tags (netwerk beveiligings groep) voor Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)voor meer informatie.
+Service Tags vereenvoudigen de beveiliging van virtuele Azure-machines en virtuele netwerken van Azure, waardoor u eenvoudig netwerk toegang tot de Azure-Services kunt beperken. U kunt service tags in uw NSG-regels (netwerk beveiligings groep) gebruiken om verkeer toe te staan of te weigeren voor een specifieke Azure-service, globaal of per Azure-regio. Azure biedt het onderhoud van IP-adressen die onder elke tag liggen. HDInsight-service tags voor netwerk beveiligings groepen (Nsg's) zijn groepen met IP-adressen voor status-en beheer Services. Deze groepen helpen de complexiteit te minimaliseren voor het maken van de beveiligings regel. HDInsight-klanten kunnen een servicetag inschakelen via Azure Portal, Power shell en REST API. Zie [NSG-service tags (netwerk beveiligings groep) voor Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)voor meer informatie.
 
 #### <a name="custom-ambari-db"></a>Aangepaste Ambari-database
 Met HDInsight kunt u nu uw eigen SQL-Data Base gebruiken voor Apache Ambari. U kunt deze aangepaste Ambari-data base configureren vanuit het Azure Portal of via de Resource Manager-sjabloon.  Met deze functie kunt u de juiste SQL-data base kiezen voor uw verwerkings-en capaciteits behoeften. U kunt ook eenvoudig een upgrade uitvoeren om te voldoen aan de vereisten voor bedrijfs groei. Zie [HDInsight-clusters instellen met een aangepaste AMBARI DB](hdinsight-custom-ambari-db.md)voor meer informatie.
@@ -1529,7 +1570,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 | BUG-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | Automatisch samen voegen mislukt wanneer ' in map invoegen als orcfile '                                      |
 | BUG-98814              | [HDFS-13314](https://issues.apache.org/jira/browse/HDFS-13314)   | NameNode moet eventueel worden afgesloten als FsImage beschadigd wordt gedetecteerd                              |
 
-**Upgrades**
+**Upgraden**
 
 | **Hortonworks-fout-ID** | **Apache JIRA**                                                                                                                | **Samenvatting**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|

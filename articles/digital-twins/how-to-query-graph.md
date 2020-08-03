@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337599"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486648"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
 In dit artikel vindt u voor beelden en meer Details voor het gebruik van de [Azure Digital Apparaatdubbels query Store-taal](concepts-query-language.md) om een query uit te zoeken op de [dubbele grafiek](concepts-twins-graph.md) voor informatie. U voert query's uit in de grafiek met behulp van de Azure Digital Apparaatdubbels- [**query-api's**](how-to-use-apis-sdks.md).
 
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+In de rest van dit artikel vindt u voor beelden van hoe u deze bewerkingen kunt gebruiken.
+
 ## <a name="query-syntax"></a>Querysyntaxis
 
-Hier volgen enkele voor beelden van query's waarmee de structuur van de query taal wordt geïllustreerd en mogelijke query bewerkingen worden uitgevoerd.
+Deze sectie bevat voorbeeld query's waarmee de structuur van de query taal wordt geïllustreerd en mogelijke query bewerkingen worden uitgevoerd.
 
 [Digitale apparaatdubbels](concepts-twins-graph.md) ophalen op basis van eigenschappen (waaronder id en meta gegevens):
 ```sql
@@ -31,16 +35,55 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-Digitale apparaatdubbels op [model](concepts-models.md) ophalen
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > De ID van een digitale dubbele query wordt uitgevoerd met behulp van het veld meta gegevens `$dtId` .
+
+U kunt apparaatdubbels ook ophalen op basis van de bijbehorende *code* -eigenschappen, zoals beschreven in [Tags toevoegen aan digitale apparaatdubbels](how-to-use-tags.md):
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>Bovenste items selecteren
+
+U kunt de verschillende ' top ' items in een query selecteren met behulp van de- `Select TOP` component.
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>Query op model
+
+De `IS_OF_MODEL` operator kan worden gebruikt om te filteren op basis van het dubbele [model](concepts-models.md). Het ondersteunt overname en heeft verschillende overbelasting opties.
+
+Het eenvoudigste gebruik van `IS_OF_MODEL` heeft alleen een `twinTypeName` para meter: `IS_OF_MODEL(twinTypeName)` .
+Hier volgt een query voorbeeld waarin een waarde in deze para meter wordt door gegeven:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+Als u een dubbele verzameling wilt opgeven wanneer er meer dan één moet worden gezocht `JOIN` , voegt u de `twinCollection` para meter: toe als u er meer dan een wilt zoeken `IS_OF_MODEL(twinCollection, twinTypeName)` .
+Hier volgt een query voorbeeld waarmee een waarde voor deze para meter wordt toegevoegd:
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+Als u een exacte overeenkomst wilt, voegt u de `exact` para meter: toe `IS_OF_MODEL(twinTypeName, exact)` .
+Hier volgt een query voorbeeld waarmee een waarde voor deze para meter wordt toegevoegd:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+U kunt ook alle drie de argumenten tegelijk door geven: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
+Hier volgt een query voorbeeld waarin een waarde voor alle drie de para meters wordt opgegeven:
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
 
 ### <a name="query-based-on-relationships"></a>Query op basis van relaties
 
