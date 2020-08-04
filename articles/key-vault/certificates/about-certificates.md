@@ -1,6 +1,6 @@
 ---
-title: Over Azure Key Vault certificaten-Azure Key Vault
-description: Overzicht van Azure Key Vault REST interface en certificaten.
+title: Informatie over Azure Key Vault-certificaten - Azure Key Vault
+description: Overzicht van REST-interface en -certificaten van Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,176 +10,176 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115674"
 ---
-# <a name="about-azure-key-vault-certificates"></a>Over Azure Key Vault certificaten
+# <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
-Key Vault ondersteuning voor certificaten voorziet in het beheer van uw x509-certificaten en het volgende gedrag:  
+Ondersteuning voor Key Vault-certificaten voorziet in het beheer van uw x509-certificaten en het volgende gedrag:  
 
--   Hiermee kan een certificaat eigenaar een certificaat maken met behulp van een Key Vault aanmaak proces of door middel van het importeren van een bestaand certificaat. Bevat zowel zelf-ondertekende als door de certificerings instantie gegenereerde certificaten.
--   Hiermee kan een Key Vault eigenaar van het certificaat beveiligde opslag en beheer van x509-certificaten implementeren zonder interactie met persoonlijke-sleutel materiaal.  
--   Hiermee kan een certificaat eigenaar een beleid maken dat Key Vault doorstuurt om de levens cyclus van een certificaat te beheren.  
--   Staat eigen aren van certificaten toe om contact gegevens op te geven voor meldingen over levenscyclus gebeurtenissen van de verval datum en verlenging van het certificaat.  
--   Ondersteunt automatische verlenging met geselecteerde verleners-Key Vault partner x509-certificaat providers/certificerings instanties.
+-   Hiermee kan een certificaateigenaar een certificaat maken met behulp van een Key Vault-aanmaakproces of door middel van het importeren van een bestaand certificaat. Hierin zijn zowel zelf-ondertekende als door de certificeringsinstantie gegenereerde certificaten inbegrepen.
+-   Hiermee kan de eigenaar van een Key Vault-certificaat de beveiligde opslag en beheer van x509-certificaten implementeren zonder interactie met privésleutelmateriaal.  
+-   Hiermee kan een certificaateigenaar een beleid maken dat Key Vault aanstuurt om de levenscyclus van een certificaat te beheren.  
+-   Hiermee kunnen eigenaren van certificaten contactgegevens opgeven voor meldingen over levenscyclusgebeurtenissen zoals de vervaldatum en verlenging van het certificaat.  
+-   Hiermee wordt ondersteuning geboden voor automatische verlenging met geselecteerde certificaatverleners: x509-certificaatproviders /certificeringsinstanties die Key Vault-partner zijn.
 
 >[!Note]
->Providers/instanties zonder partner zijn ook toegestaan, maar bieden geen ondersteuning voor de functie voor automatisch verlengen.
+>Providers/instanties die geen partner zijn, zijn ook toegestaan, maar bieden geen ondersteuning voor de functie voor automatisch verlengen.
 
-## <a name="composition-of-a-certificate"></a>Samen stelling van een certificaat
+## <a name="composition-of-a-certificate"></a>Samenstelling van een certificaat
 
-Wanneer er een Key Vault certificaat wordt gemaakt, worden er ook een adresseer bare sleutel en een geheim gemaakt met dezelfde naam. Met de Key Vault sleutel kunnen sleutel bewerkingen en het Key Vault geheim ophalen van de certificaat waarde als geheim toestaan. Een Key Vault certificaat bevat ook open bare meta gegevens voor x509-certificaten.  
+Wanneer er een Key Vault-certificaat wordt gemaakt, worden er ook een adresseerbare sleutel en een geheim gemaakt met dezelfde naam. Met de Key Vault sleutel kunnen sleutelbewerkingen worden uitgevoerd en met het Key Vault-geheim kan de certificaatwaarde als geheim worden opgehaald. Een Key Vault-certificaat bevat ook openbare metagegevens voor x509-certificaten.  
 
-De id en de versie van certificaten zijn vergelijkbaar met die van sleutels en geheimen. Een specifieke versie van een adresseer bare sleutel en geheim dat is gemaakt met de Key Vault certificaat versie is beschikbaar in het Key Vault certificaat antwoord.
+De id en de versie van certificaten zijn vergelijkbaar met die van sleutels en geheimen. Er is een specifieke versie beschikbaar van een adresseerbare sleutel en een geheim die met de Key Vault-certificaatversie zijn gemaakt in het Key Vault-certificaatantwoord.
  
 ![Certificaten zijn complexe objecten](../media/azure-key-vault.png)
 
-## <a name="exportable-or-non-exportable-key"></a>Exporteer bare of niet-Exporteer bare sleutel
+## <a name="exportable-or-non-exportable-key"></a>Exporteerbare of niet-exporteerbare sleutel
 
-Wanneer een Key Vault certificaat wordt gemaakt, kan het worden opgehaald uit het adresseer bare geheim met de persoonlijke sleutel in de PFX-of PEM-indeling. Het beleid dat wordt gebruikt voor het maken van het certificaat moet aangeven dat de sleutel exporteerbaar is. Als het beleid aangeeft dat het niet kan worden geëxporteerd, is de persoonlijke sleutel geen onderdeel van de waarde wanneer deze wordt opgehaald als geheim.  
+Wanneer een Key Vault-certificaat wordt gemaakt, kan het worden opgehaald uit het adresseerbare geheim met de privésleutel in een PFX- of PEM-indeling. Het beleid dat wordt gebruikt voor het maken van het certificaat moet aangeven dat de sleutel exporteerbaar is. Als het beleid aangeeft dat het niet kan worden geëxporteerd, is de privésleutel geen onderdeel van de waarde wanneer deze wordt opgehaald als geheim.  
 
-De adresseer bare sleutel wordt relevanter voor niet-Exporteer bare KV-certificaten. De adresseer bare KV-sleutel bewerkingen zijn toegewezen in het veld sleutel *gebruik* van het KV-certificaat beleid dat wordt gebruikt om het KV-certificaat te maken.  
+De adresseerbare sleutel wordt relevanter bij niet-exporteerbare KV-certificaten. De adresseerbare bewerkingen voor de KV-sleutel worden toegewezen uit het veld *keyusage* van het KV-certificaatbeleid dat wordt gebruikt om het KV-certificaat te maken.  
 
-Er worden twee typen sleutels ondersteund: *RSA* of *RSA HSM* met certificaten. Exporteerbaar is alleen toegestaan met RSA, niet ondersteund door RSA HSM.  
+Er worden bij certificaten twee typen sleutels ondersteund: *RSA-* of *RSA HSM*. Exporteerbaar is alleen toegestaan met RSA, en wordt niet ondersteund door RSA HSM.  
 
-## <a name="certificate-attributes-and-tags"></a>Certificaat kenmerken en-Tags
+## <a name="certificate-attributes-and-tags"></a>Certificaatkenmerken en -tags
 
-Naast de meta gegevens van het certificaat, een adresseer bare sleutel en een adresseerbaar geheim, een Key Vault-certificaat bevat ook kenmerken en tags.  
+Naast metagegevens van het certificaat, een adresseerbare sleutel en een adresseerbaar geheim bevat een Key Vault-certificaat ook kenmerken en tags.  
 
 ### <a name="attributes"></a>Kenmerken
 
-De certificaat kenmerken worden gespiegeld met kenmerken van de adresseer bare sleutel en het geheim dat is gemaakt wanneer het KV-certificaat wordt gemaakt.  
+De certificaatkenmerken worden gespiegeld met kenmerken van de adresseerbare sleutel en het geheim dat werd gemaakt toen het KV-certificaat werd gemaakt.  
 
-Een Key Vault certificaat heeft de volgende kenmerken:  
+Een Key Vault-certificaat heeft de volgende kenmerken:  
 
--   *ingeschakeld*: Boole, optioneel, standaard waarde is **True**. Kan worden opgegeven om aan te geven of de certificaat gegevens kunnen worden opgehaald als geheim of bruikbaar als sleutel. Wordt ook gebruikt in combi natie met *NBF* en *exp* wanneer er een bewerking plaatsvindt tussen *NBF* en *exp*, en zal alleen worden toegestaan als ingeschakeld is ingesteld op waar. Bewerkingen buiten het venster *NBF* en *exp* worden automatisch niet toegestaan.  
+-   *enabled*: boolean, optioneel; standaardwaarde is **true**. Kan worden opgegeven om aan te geven of de certificaatgegevens kunnen worden opgehaald als geheim of bruikbaar als sleutel. Wordt tevens gebruikt in combinatie met *nbf* en *exp* wanneer er een bewerking plaatsvindt tussen *nbf* en *exp*, en wordt alleen toegestaan als enabled is ingesteld op true. Bewerkingen buiten het venster van *nbf* en *exp* worden automatisch niet toegestaan.  
 
-Er zijn aanvullende alleen-lezen kenmerken die zijn opgenomen in het antwoord:
+Er zijn aanvullende alleen-lezen kenmerken die zijn opgenomen in de volgende antwoorden:
 
--   *gemaakt*: IntDate: geeft aan wanneer deze versie van het certificaat is gemaakt.  
--   *bijgewerkt*: IntDate: geeft aan wanneer deze versie van het certificaat is bijgewerkt.  
--   *exp*: IntDate: bevat de waarde van de verval datum van het x509-certificaat.  
--   *NBF*: IntDate: bevat de waarde van de datum van het x509-certificaat.  
+-   *created*: IntDate - geeft aan wanneer deze versie van het certificaat is gemaakt.  
+-   *updated*: IntDate - geeft aan wanneer deze versie van het certificaat is bijgewerkt.  
+-   *exp*: IntDate - bevat de waarde van de vervaldatum van het x509-certificaat.  
+-   *nbf*: IntDate - bevat de waarde van de datum van het x509-certificaat.  
 
 > [!Note] 
-> Als een Key Vault certificaat verloopt, is de adresseer bare sleutel en het geheim niet meer bruikbaar.  
+> Als een certificaat van Key Vault verloopt, werken de adresseerbare sleutel en het geheim van het certificaat niet meer.  
 
 ### <a name="tags"></a>Tags
 
- Opgegeven Dictionary van sleutel waarde-paren van client, vergelijkbaar met tags in sleutels en geheimen.  
+ De client heeft een woordenboek opgegeven van sleutel-waardeparen, vergelijkbaar met de tags in sleutels en geheimen.  
 
  > [!Note]
-> Labels kunnen worden gelezen door een beller als ze de *lijst* of *machtiging* voor dat object type (sleutels, geheimen of certificaten) hebben.
+> Labels kunnen worden gelezen door een oproepende functie als ze de machtiging *list* (weergeven) of *get* (ophalen) voor dat objecttype (sleutels, geheimen of certificaten) hebben.
 
-## <a name="certificate-policy"></a>Certificaat beleid
+## <a name="certificate-policy"></a>Certificaatbeleid
 
-Een certificaat beleid bevat informatie over het maken en beheren van de levens cyclus van een Key Vault certificaat. Wanneer een certificaat met een persoonlijke sleutel wordt geïmporteerd in de sleutel kluis, wordt een standaard beleid gemaakt door het x509-certificaat te lezen.  
+Een certificaatbeleid bevat informatie over het maken en beheren van de levenscyclus van een Key Vault-certificaat. Wanneer een certificaat met een privésleutel in de sleutelkluis wordt geïmporteerd, wordt standaardbeleid gemaakt door het x509-certificaat te lezen.  
 
-Wanneer een volledig Key Vault certificaat wordt gemaakt, moet er een beleid worden opgegeven. Het beleid bepaalt hoe u deze Key Vault certificaat versie maakt, of de volgende Key Vault certificaat versie. Als er een beleid is ingesteld, is het niet vereist voor opeenvolgende nieuwe bewerkingen voor toekomstige versies. Er is slechts één exemplaar van een beleid voor alle versies van een Key Vault certificaat.  
+Wanneer een volledig nieuw Key Vault-certificaat wordt gemaakt, moet er een beleid worden aangeleverd. Het beleid bepaalt hoe u deze Key Vault-certificaatversie maakt, of de volgende Key Vault-certificaatversie. Als er beleid is ingesteld, is dit niet nodig bij daaropvolgende nieuwe bewerkingen voor toekomstige versies. Er is slechts één beleidsexemplaar voor alle versies van een Key Vault-certificaat.  
 
-Op hoog niveau bevat een certificaat beleid de volgende informatie:  
+Op hoog niveau bevat certificaatbeleid de volgende informatie (de definities ervan zijn [hier](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0) te vinden):  
 
--   X509-certificaat eigenschappen: bevat onderwerpnaam, alternatieve naam voor onderwerp en andere eigenschappen die worden gebruikt voor het maken van een x509-certificaat aanvraag.  
--   Sleutel eigenschappen: bevat sleutel type, sleutel lengte, exporteerbaar en het opnieuw gebruiken van sleutel velden. Met deze velden wordt de sleutel kluis geïnstrueerd om een sleutel te genereren.  
--   Geheime eigenschappen: bevat geheime eigenschappen, zoals het inhouds type van adresseer bare geheim om de geheime waarde te genereren, voor het ophalen van een certificaat als geheim.  
--   Levensduur acties: bevat levensduur acties voor het KV-certificaat. Elke levensduur actie bevat:  
+-   Eigenschappen X509-certificaat: Bevat de onderwerpnaam, alternatieve onderwerpnamen en andere eigenschappen waarmee de aanvraag van een x509-certificaat wordt gemaakt.  
+-   Sleuteleigenschappen: bevat sleuteltype, sleutellengte, exporteerbare en ReuseKeyOnRenewal-velden. Met deze velden wordt de sleutelkluis geïnstrueerd hoe een sleutel moet worden gegenereerd.  
+-   Geheimeigenschappen: bevat geheimeigenschappen, zoals het inhoudstype van adresseerbare geheim om de geheime waarde te genereren, voor het ophalen van een certificaat als geheim.  
+-   Levensduuracties: bevat levensduuracties voor het KV-certificaat. Elke levensduuractie bevat:  
 
-     - Trigger: opgegeven via dagen vóór het verloop of het percentage van de levens duur  
+     - Een trigger, opgegeven in dagen vóór de vervaldatum of het percentage van de levensduur  
 
-     - Actie: type actie opgeven – *emailContacts* of *autorenew*  
+     - Actie, waarmee het type actie wordt opgegeven: *emailContacts* of *autoRenew*  
 
--   Verlener: para meters over de certificaat verlener die moet worden gebruikt om x509-certificaten uit te geven.  
--   Beleids kenmerken: bevat kenmerken die zijn gekoppeld aan het beleid  
+-   Verlener: Parameters over de certificaatverlener die wordt gebruikt om x509-certificaten uit te geven.  
+-   Beleidskenmerken: bevat kenmerken die zijn gekoppeld aan het beleid  
 
-### <a name="x509-to-key-vault-usage-mapping"></a>X509-toewijzing van Key Vault gebruik
+### <a name="x509-to-key-vault-usage-mapping"></a>Toewijzing van X509 aan Key Vault-gebruik
 
-De volgende tabel geeft de toewijzing van het beleid voor x509-sleutel gebruik aan voor efficiënte sleutel bewerkingen van een sleutel die is gemaakt als onderdeel van het maken van een Key Vault certificaat.
+De volgende tabel geeft de toewijzing van het gebruiksbeleid voor x509-sleutels weer voor geldige sleutelbewerkingen van een sleutel die is gemaakt bij het maken van een Key Vault-certificaat.
 
-|**Gebruiks vlaggen voor x509-sleutel**|**Key Vault Key OPS**|**Standaardgedrag**|
+|**Vlaggen voor X509-sleutelgebruik**|**Key Vault-sleutelbewerkingen**|**Standaardgedrag**|
 |----------|--------|--------|
-|DataEncipherment|versleutelen, ontsleutelen| N.v.t. |
-|DecipherOnly|crypto| N.v.t.  |
-|DigitalSignature|ondertekenen, controleren| Key Vault standaard zonder een gebruiks specificatie op het moment van aanmaken van het certificaat | 
+|DataEncipherment|encrypt, decrypt| N.v.t. |
+|DecipherOnly|decrypt| N.v.t.  |
+|DigitalSignature|sign, verify| Key Vault-standaardinstelling zonder een gebruiksspecificatie op de aanmaaktijd van het certificaat | 
 |EncipherOnly|encrypt| N.v.t. |
-|KeyCertSign|ondertekenen, controleren|N.v.t.|
-|KeyEncipherment|wrapKey, sleutel uitpakken| Key Vault standaard zonder een gebruiks specificatie op het moment van aanmaken van het certificaat | 
-|Authentic|ondertekenen, controleren| N.v.t. |
-|crlsign|ondertekenen, controleren| N.v.t. |
+|KeyCertSign|sign, verify|N.v.t.|
+|KeyEncipherment|wrapKey, unwrapKey| Key Vault-standaardinstelling zonder een gebruiksspecificatie op de aanmaaktijd van het certificaat | 
+|NonRepudiation|sign, verify| N.v.t. |
+|crlsign|sign, verify| N.v.t. |
 
-## <a name="certificate-issuer"></a>Certificaat verlener
+## <a name="certificate-issuer"></a>Certificaatverlener
 
-Een Key Vault certificaat object bevat een configuratie die wordt gebruikt om te communiceren met een geselecteerde certificaat verlener-provider om x509-certificaten te best Ellen.  
+Een Key Vault-certificaatobject bevat een configuratie die wordt gebruikt om te communiceren met een geselecteerde certificaatverlener/-provider om x509-certificaten te bestellen.  
 
--   Key Vault partners met de volgende certificaat verleners voor TLS/SSL-certificaten
+-   Key Vault-partners met de volgende certificaatverleners/-providers van TLS/SSL-certificaten
 
-|**Provider naam**|**Locaties**|
+|**Naam van provider**|**Locaties**|
 |----------|--------|
-|DigiCert|Ondersteund in alle sleutel kluis service locaties in de open bare Cloud en Azure Government|
-|GlobalSign|Ondersteund in alle sleutel kluis service locaties in de open bare Cloud en Azure Government|
+|DigiCert|Ondersteund in alle Key Vault-servicelocaties in de openbare cloud en Azure Government|
+|GlobalSign|Ondersteund in alle Key Vault-servicelocaties in de openbare cloud en Azure Government|
 
-Voordat een certificaat uitgever kan worden gemaakt in een Key Vault, moeten de volgende stappen 1 en 2 worden uitgevoerd.  
+Voordat een certificaatverlener kan worden gemaakt in een Key Vault, moeten de volgende stappen 1 en 2 worden uitgevoerd.  
 
-1. Onboarding voor certificerings instanties (CA)  
+1. Onboarding bij CA-providers (CA: certificeringsinstantie)  
 
-    -   Een beheerder van de organisatie moet het bedrijf (bijvoorbeeld Contoso) met ten minste één CA-provider.  
+    -   Een beheerder van de organisatie moet het bedrijf (bijvoorbeeld Contoso) onboarden met ten minste één CA-provider.  
 
-2. Beheerder maakt referenties voor de aanvrager van Key Vault om TLS/SSL-certificaten in te schrijven (en te vernieuwen)  
+2. De beheerder maakt referenties voor de aanvrager van Key Vault om TLS/SSL-certificaten in te schrijven (en te verlengen)  
 
-    -   Biedt de configuratie die moet worden gebruikt voor het maken van een uitgevers object van de provider in de sleutel kluis  
+    -   Deze biedt de configuratie die moet worden gebruikt voor het maken van een verlenerobject van de provider in de sleutelkluis  
 
-Zie de [blog Key Vault certificaten](https://aka.ms/kvcertsblog) voor meer informatie over het maken van uitgevers objecten van de portal certificaten.  
+Raadpleeg de blog [Key Vault-certificaten](https://aka.ms/kvcertsblog) Voor meer informatie over het maken van verlenerobjecten vanuit de portal Certificaten  
 
-Key Vault maakt het mogelijk meerdere uitgevers objecten te maken met een andere provider configuratie voor de verlener. Zodra een object van de verlener is gemaakt, kan de naam ervan in een of meer certificaat beleidsregels worden verwezen. Als u verwijst naar het Issuer-object, wordt Key Vault het gebruik van configuratie zoals opgegeven in het Issuer-object te gebruiken bij het aanvragen van het x509-certificaat van de CA-provider tijdens het maken en vernieuwen van het certificaat.  
+Met Key Vault kunnen meerdere verlenerobjecten worden gemaakt met een andere verlener-/providerconfiguratie. Zodra een verlenerobject is gemaakt, kan in een of meer certificaatbeleidsregels naar de naam ervan worden verwezen. In referenties naar het verlenerobject wordt Key Vault geïnstrueerd om van de configuratie gebruik te maken zoals die is opgegeven in het verlenerobject bij het aanvragen van het x509-certificaat van de CA-provider tijdens het maken en verlengen van het certificaat.  
 
-Uitgevers objecten worden in de kluis gemaakt en kunnen alleen worden gebruikt met KV-certificaten in dezelfde kluis.  
+Verlenerobjecten worden in de kluis gemaakt en kunnen alleen worden gebruikt bij KV-certificaten in dezelfde kluis.  
 
-## <a name="certificate-contacts"></a>Certificaat contactpersonen
+## <a name="certificate-contacts"></a>Certificaatcontactpersonen
 
-Certificaat contactpersonen bevatten contact gegevens om meldingen te verzenden die worden geactiveerd door de levens duur van het certificaat. De gegevens van de contact persoon worden gedeeld door alle certificaten in de sleutel kluis. Er wordt een melding verzonden naar alle opgegeven contact personen voor een gebeurtenis voor een certificaat in de sleutel kluis.  
+Certificaatcontactpersonen bevatten contactgegevens om meldingen te verzenden die worden geactiveerd door de levensduurgebeurtenissen van het certificaat. De contactpersoongegevens worden gedeeld door alle certificaten in de sleutelkluis. Alle opgegeven contactpersonen krijgen een melding bij een gebeurtenis met betrekking tot een certificaat in de sleutelkluis.  
 
-Als het beleid van een certificaat is ingesteld op automatisch verlengen, wordt er een melding verzonden naar de volgende gebeurtenissen.  
+Als het beleid van een certificaat is ingesteld op automatisch verlengen, wordt er een melding verzonden bij de volgende gebeurtenissen.  
 
-- Vóór het vernieuwen van het certificaat
-- Na het vernieuwen van het certificaat, met de mede deling dat het certificaat is vernieuwd of dat er een fout is opgetreden, moet het certificaat hand matig worden vernieuwd.  
+- Vóór verlenging van het certificaat
+- Na verlenging van het certificaat, met de mededeling dat het certificaat is verlengd of dat er een fout is opgetreden, waarna het certificaat handmatig moet worden vernieuwd.  
 
-  Wanneer een certificaat beleid dat is ingesteld op hand matig wordt vernieuwd (alleen e-mail), wordt er een melding verzonden wanneer het certificaat wordt vernieuwd.  
+  Wanneer een certificaatbeleid dat is ingesteld om handmatig te worden verlengd (alleen e-mail), wordt er een melding verzonden van het tijdstip waarop het certificaat moet worden verlengd.  
 
-## <a name="certificate-access-control"></a>Certificaat Access Control
+## <a name="certificate-access-control"></a>Toegangsbeheer voor certificaten
 
- Toegangs beheer voor certificaten wordt beheerd door Key Vault en wordt gegeven door de Key Vault die de certificaten bevat. Het toegangscontrole beleid voor certificaten verschilt van het toegangs beheer beleid voor sleutels en geheimen in hetzelfde Key Vault. Gebruikers kunnen een of meer kluizen maken voor het bewaren van certificaten, voor het bijhouden van de juiste segmentatie en het beheer van certificaten.  
+ Toegangsbeheer voor certificaten wordt beheerd door Key Vault en wordt gegeven door de Key Vault die deze certificaten bevat. Het beleid voor toegangsbeheer voor certificaten verschilt van het beleid voor sleutels en geheimen in dezelfde sleutelkluis. Gebruikers kunnen een of meer kluizen maken waarin zij certificaten kunnen bewaren en de segmentatie en het beheer van hun scenario naar behoren kunnen bijhouden.  
 
- De volgende machtigingen kunnen per principal worden gebruikt, in de toegangscontrole vermelding geheimen in een sleutel kluis en komt overeen met de bewerkingen die zijn toegestaan voor een geheim object:  
+ De volgende machtigingen kunnen per principal worden gebruikt in de toegangsbeheervermelding voor geheimen van een sleutelkluis en komt nauw overeen met de bewerkingen die zijn toegestaan voor een geheimobject:  
 
-- Machtigingen voor certificaat beheer bewerkingen
-  - *ophalen*: de huidige certificaat versie of een versie van een certificaat ophalen 
-  - *lijst*: de huidige certificaten of versies van een certificaat weer geven  
-  - *bijwerken*: een certificaat bijwerken
-  - *maken*: een Key Vault-certificaat maken
-  - *importeren*: certificaat materiaal importeren in een Key Vault certificaat
-  - *verwijderen*: een certificaat, het bijbehorende beleid en alle versies ervan verwijderen  
-  - *herstellen*: een verwijderd certificaat herstellen
-  - *back-up*: een back-up maken van een certificaat in een sleutel kluis
-  - *herstellen*: een back-up van een certificaat herstellen naar een sleutel kluis
-  - *managecontacts*: Key Vault certificaat contactpersonen beheren  
-  - *manageissuers*: Key Vault certificerings instanties/verleners beheren
-  - *getissuers*: de autoriteiten/verleners van een certificaat ophalen
-  - *listissuers*: de autoriteiten/verleners van een certificaat weer geven  
-  - *setissuers*: de autoriteiten/verleners van een Key Vault certificaat maken of bijwerken  
-  - *deleteissuers*: de instanties/verleners van een Key Vault certificaat verwijderen  
+- Machtigingen voor certificaatbeheerbewerkingen
+  - *get*: De huidige certificaatversie of ongeacht welke certificaatversie ophalen 
+  - *list*: De huidige certificaten of versies van een certificaat weergeven  
+  - *update*: Een certificaat bijwerken
+  - *create*: Key Vault-certificaat maken
+  - *import*: Certificaatmateriaal importeren in een Key Vault certificaat
+  - *delete*: Een certificaat, het bijbehorende beleid en alle versies ervan verwijderen  
+  - *recover*: Een verwijderd certificaat herstellen
+  - *backup*: Een back-up van een certificaat maken in een sleutelkluis
+  - *restore*: Een back-up van een certificaat herstellen in een sleutelkluis
+  - *managecontacts*: Key Vault-certificaatcontactpersonen beheren  
+  - *manageissuers*: Key Vault certificeringsinstanties/-verleners beheren
+  - *getissuers*: De instanties/verleners van een certificaat ophalen
+  - *listissuers*: De instanties/verleners van een certificaat weergeven  
+  - *setissuers*: De instanties/verleners van een Key Vault-certificaat maken of bijwerken  
+  - *deleteissuers*: De instanties/verleners van een Key Vault-certificaat verwijderen  
  
-- Machtigingen voor bevoegde bewerkingen
-  - *opschonen*: een verwijderd certificaat leegmaken (permanent verwijderen)
+- Machtigingen voor bevoorrechte bewerkingen
+  - *purge*: Een verwijderd certificaat opschonen (permanent verwijderen)
 
-Zie voor meer informatie de [certificaat bewerkingen in de naslag informatie over Key Vault rest API](/rest/api/keyvault). Zie voor meer informatie over het instellen van machtigingen [-kluizen-maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [kluizen-toegangs beleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy).
+Raadpleeg de [Certificaatbewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault) voor meer informatie. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Over Key Vault](../general/overview.md)
-- [Over sleutels, geheimen en certificaten](../general/about-keys-secrets-certificates.md)
+- [Informatie over Key Vault](../general/overview.md)
+- [Informatie over sleutels, geheimen en certificaten](../general/about-keys-secrets-certificates.md)
 - [Over sleutels](../keys/about-keys.md)
 - [Over geheimen](../secrets/about-secrets.md)
 - [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md)

@@ -1,52 +1,52 @@
 ---
-title: Bewakings architectuur voor voortdurende patiënten in azure IoT Central | Microsoft Docs
-description: Meer informatie over de architectuur van een continue patiënten-bewakings oplossing.
+title: Continue patiëntbewakingsarchitectuur in Azure IoT Central | Microsoft Docs
+description: Meer informatie over de architectuur van een continue patiëntbewakingsoplossing.
 author: philmea
 ms.author: philmea
-ms.date: 10/24/2019
+ms.date: 7/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 92eb4157abb55b7056952d1fb064c7c7d7500335
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0032f341330ad394241806a4fe61add530253f09
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116863"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Architectuur van continue patiëntbewaking
 
 
 
-Continue patiënten-bewakings oplossingen kunnen worden gebouwd met behulp van de app-sjabloon die is verschaft en met behulp van de architectuur die hieronder wordt beschreven.
+Continue patiëntbewakingsoplossingen kunnen gebouwd worden met behulp van de aangeboden app-sjabloon en met behulp van de architectuur die hieronder wordt beschreven.
 
 >[!div class="mx-imgBorder"] 
 >![CPM-architectuur](media/cpm-architecture.png)
 
-1. Medische apparaten die communiceren met behulp van Bluetooth Low Energy (Bel)
-1. Mobiele telefoon gateway die de gegevens van de trein ontvangt en naar IoT Central stuurt
-1. Voortdurende gegevens export van patiënten-status gegevens naar de Azure API voor FHIR&reg;
+1. Medische apparaten die communiceren met behulp van Bluetooth Low Energy (BLE)
+1. Mobiele telefoongateway die de BLE-gegevens ontvangt en naar IoT Central stuurt
+1. Voortdurende gegevensexport van patiëntstatusgegevens naar de Azure API for FHIR&reg;
 1. Machine learning op basis van interoperabele gegevens
-1. Care team-dash board gebaseerd op FHIR-gegevens
+1. Zorgteam-dashboard gebaseerd op FHIR-gegevens
 
 ## <a name="details"></a>Details
-In deze sectie wordt elk deel van het architectuur diagram uitvoeriger beschreven.
+In deze sectie wordt elk deel van het architectuurdiagram uitvoeriger beschreven.
 
-### <a name="ble-medical-devices"></a>Uitstaande medische apparaten
-Veel medische Wearables die worden gebruikt in de gezondheids zorg, IoT-ruimte zijn Bluetooth Low Energy-apparaten. Ze kunnen niet rechtstreeks aan de Cloud spreken en moeten door een gateway worden door gegeven. Deze architectuur raadt u aan om een mobiele telefoon toepassing te gebruiken als deze gateway.
+### <a name="ble-medical-devices"></a>BLE medische apparaten
+Veel medische wearables die worden gebruikt in de IoT-ruimte van de gezondheidszorg zijn Bluetooth Low Energy-apparaten. Ze kunnen niet rechtstreeks met de cloud communiceren en moeten via een gateway worden doorgegeven. Met deze architectuur is het aan te raden om een mobiele telefoon-toepassing te gebruiken als deze gateway. 
 
 ### <a name="mobile-phone-gateway"></a>Gateway voor mobiele telefoon
-De primaire functie van de mobiele-telefoon toepassing is het opnemen van de gegevens van medische apparaten en het communiceren met Azure IoT Central. Daarnaast kan de app ervoor zorgen dat patiënten via een apparaat worden ingesteld en de stroom wordt ingericht en kunnen ze een overzicht krijgen van hun persoonlijke status gegevens. Andere oplossingen kunnen een Tablet gateway of een statische gateway gebruiken in een ziekenhuis kamer om dezelfde communicatie stroom te krijgen.
+De primaire functie van de mobiele telefoon-toepassing is het opnemen van de BLE-gegevens van medische apparaten en deze aan Azure IoT Central doorgeven. Daarnaast kan de app patiënten door het installatieproces en de inrichtingsstroom van een apparaat leiden en kunnen ze een overzicht krijgen van hun persoonlijke gezondheidsgegevens. Andere oplossingen kunnen een tablet-gateway of een statische gateway gebruiken indien deze zich in een ziekenhuiskamer bevinden om dezelfde communicatiestroom te krijgen. We hebben een open source-voorbeeld van een mobiele toepassing gemaakt dat beschikbaar is voor Android en iOS. U kunt dit voorbeeld gebruiken als uitgangspunt om uw toepassingen te ontwikkelen. Zie [Azure Samples](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/) voor meer informatie over het voorbeeld van een mobiele app voor de doorlopende patiëntbewaking van IoT Central.
 
-### <a name="export-to-azure-api-for-fhirreg"></a>Exporteren naar Azure-API voor FHIR&reg;
-Azure IoT Central is met HIPAA-compatibel en&reg; HITRUST gecertificeerd, maar u kunt ook aan de Azure-API voor FHIR informatie over de status van een patiënt verzenden. De [Azure-API voor FHIR](../../healthcare-apis/overview.md) is een volledig beheerde, op standaarden gebaseerde compatibele API voor klinische status gegevens waarmee u nieuwe systemen van betrokkenheid kunt maken met uw status gegevens. Hiermee kunnen gegevens snel worden uitgewisseld via FHIR Api's, die worden ondersteund door een beheerde platform-as-a-Service (PaaS) in de Cloud. Met de functie continue gegevens export van IoT Central kunt u gegevens verzenden naar de Azure API voor FHIR.
+### <a name="export-to-azure-api-for-fhirreg"></a>Exporteren naar Azure API for FHIR&reg;
+Azure IoT Central is HIPAA-conform en HITRUST&reg;-gecertificeerd, maar u wilt wellicht ook gegevens verzenden die betrekking hebben op de status van patiënten naar de Azure API for FHIR. [Azure API for FHIR](../../healthcare-apis/overview.md) is een volledig beheerde, op standaarden gebaseerde conforme API voor klinische gezondheidsgegevens waarmee u nieuwe betrokkenheidssystemen kunt maken met uw gezondheidsgegevens. Hiermee kunnen gegevens snel worden uitgewisseld via FHIR API's, die worden ondersteund door een beheerd Platform-as-a-Service (PaaS) in de c cloud. Met de functie Continue gegevensexport van IoT Central kunt u gegevens verzenden naar de Azure API for FHIR via de [Azure IoT-connector for FHIR](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart).
 
 ### <a name="machine-learning"></a>Machine learning
-Na het samen voegen van uw gegevens en het vertalen ervan naar de FHIR-indeling, kunt u machine learning modellen bouwen die inzicht kunnen krijgen en slimmere besluit vorming mogelijk maken voor uw Care team. Er zijn verschillende soorten services die kunnen worden gebruikt om machine learning modellen te bouwen, te trainen en te implementeren. Meer informatie over het gebruik van de machine learning-aanbiedingen van Azure vindt u in onze [machine learning documentatie](../../machine-learning/index.yml).
+Nadat u uw gegevens hebt samengevoegd en ze naar de FHIR-indeling hebt vertaald, kunt u machine learning-modellen bouwen die inzichten kunnen verrijken en slimmere besluitvorming mogelijk maken voor uw zorgteam. Er zijn verschillende soorten services die kunnen worden gebruikt om machine learning-modellen te bouwen, te trainen en te implementeren. Meer informatie over het gebruik van de machine learning-aanbiedingen van Azure vindt u in onze [documentatie voor machine learning](../../machine-learning/index.yml).
 
-### <a name="provider-dashboard"></a>Provider dashboard
-De gegevens die zich bevinden in de Azure-API voor FHIR kunnen worden gebruikt voor het bouwen van een patiënt Insights-dash board of kunnen rechtstreeks worden geïntegreerd in een EMR om te zorgen dat teams de status van patiënten visualiseren. Care teams kunnen dit dash board gebruiken om ervoor te zorgen dat patiënten op het gebied van ondersteuning en vroegtijdige waarschuwings signalen moeten worden verslechterd. Voor meer informatie over het bouwen van een Power BI real-time provider-dash board kunt u de [hand leiding](howto-health-data-triage.md)volgen.
+### <a name="provider-dashboard"></a>Provider-dashboard
+De gegevens die zich bevinden in de Azure API for FHIR kunnen worden gebruikt voor het bouwen van een dashboard voor patiëntinzichten of kunnen rechtstreeks worden geïntegreerd in een EMR om teams te helpen de status van patiënten te visualiseren. Zorgteams kunnen dit dashboard gebruiken om patiënten die assistentie nodig hebben te ondersteunen en om vroegtijdige waarschuwingssignalen voor verslechtering van hun situatie te zien. Als u wilt weten hoe u een Power BI real-time provider-dashboard kunt bouwen, volgt u onze [instructiegids](howto-health-data-triage.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over het implementeren van een sjabloon voor continue patiënten-bewakings toepassingen](tutorial-continuous-patient-monitoring.md)
+* [Leer hoe u een toepassingssjabloon voor continue patiëntbewaking kunt implementeren](tutorial-continuous-patient-monitoring.md)

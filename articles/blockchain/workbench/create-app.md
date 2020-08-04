@@ -1,17 +1,17 @@
 ---
-title: Een Block Chain-toepassing maken-Azure Block Chain workbench
-description: Zelf studie over het maken van een Block Chain-toepassing voor Azure Block Chain Workbench preview.
+title: Een blockchain-toepassing maken - Azure Blockchain Workbench
+description: Zelfstudie over het maken van een blockchain-toepassing voor Azure Blockchain Workbench (preview-versie).
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
-ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74324813"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073119"
 ---
-# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Zelf studie: een Block Chain-toepassing maken voor Azure Block Chain workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Zelfstudie: Een blockchain-toepassing maken voor Azure Blockchain Workbench
 
 U kunt Azure Blockchain Workbench gebruiken om een blockchain-toepassing te maken waarmee werkstromen voor meerdere partijen worden gerepresenteerd die door configuratie en slimme-contractcode worden gedefinieerd.
 
@@ -321,21 +321,21 @@ Als u een blockchain-toepassing aan Blockchain Workbench wilt toevoegen, uploadt
 
 1. Ga in een webbrowser naar het webadres van Blockchain Workbench, bijvoorbeeld `https://{workbench URL}.azurewebsites.net/`. De webtoepassing wordt gemaakt als u Blockchain Workbench implementeert. Zie [Web-URL van Blockchain Workbench](deploy.md#blockchain-workbench-web-url) voor informatie over waar u het webadres van Blockchain Workbench kunt vinden
 2. Meld u aan als een [Blockchain Workbench-beheerder](manage-users.md#manage-blockchain-workbench-administrators).
-3. Selecteer **toepassingen** > **Nieuw**. Het deelvenster **Nieuwe toepassing** wordt weergegeven.
-4. Selecteer **uploaden van de contract configuratie** > **Bladeren** om het configuratie bestand **HelloBlockchain. json** te vinden dat u hebt gemaakt. Het configuratiebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
-5. Selecteer **uploaden de contract code** > **Bladeren** om het bestand **HelloBlockchain. Sol** te zoeken. Het codebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
+3. Selecteer **Toepassingen** > **Nieuw**. Het deelvenster **Nieuwe toepassing** wordt weergegeven.
+4. Selecteer **Upload the contract configuration** > **Bladeren** om configuratiebestand **HalloBlockchain.json** te vinden dat u hebt gemaakt. Het configuratiebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
+5. Selecteer **Upload the contract code** > **Bladeren** om bestand **HalloBlockchain.sol** met de slimme-contractcode te vinden. Het codebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
 6. Selecteer **Implementeren** om de blockchain-toepassing te maken op basis van de configuratie- en slimme-contractbestanden.
 
 Het implementeren van de blockchain-toepassing neemt enkele minuten in beslag. Als de implementatie is voltooid, wordt de nieuwe toepassing weergegeven in **Toepassingen**. 
 
 > [!NOTE]
-> U kunt blockchain-toepassingen ook maken met behulp van de [REST API voor Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).
+> U kunt blockchain-toepassingen ook maken met behulp van de [REST API voor Azure Blockchain Workbench](/rest/api/azure-blockchain-workbench).
 
 ## <a name="add-blockchain-application-members"></a>Leden voor blockchain-toepassing toevoegen
 
 Voegen leden voor de toepassing aan uw toepassing toe om acties op contracten te initiëren en uit te voeren. Als u leden wilt toevoegen, moet u een [Blockchain-toepassingbeheerder](manage-users.md#manage-blockchain-workbench-administrators) zijn.
 
-1. Select **Applications** > **Hello, Block Chain!**.
+1. Selecteer **Toepassingen** > **Hallo Blockchain.** .
 2. Het aantal leden dat is gekoppeld aan de toepassing wordt weergegeven in de rechterbovenhoek van de pagina. Voor nieuwe toepassingen is het aantal leden nul.
 3. Selecteer de koppeling **leden** in de rechterbovenhoek van de pagina. De huidige ledenlijst voor de toepassing wordt weergegeven.
 4. Selecteer **Leden toevoegen** in de ledenlijst.

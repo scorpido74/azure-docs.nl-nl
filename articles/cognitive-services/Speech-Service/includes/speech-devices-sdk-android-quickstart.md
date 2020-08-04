@@ -5,80 +5,80 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 04c31a12348fe0059bcfd417682647676dbc8948
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375535"
 ---
-In deze Quick Start leert u hoe u de speech apparaten SDK voor Android kunt gebruiken om een product met spraak herkenning te bouwen of dit te gebruiken als een [conversatie transcriptie](../conversation-transcription-service.md) -apparaat.
+In deze Quick Start leert u hoe u de Speech Devices SDK voor Android kunt gebruiken om een spraakgestuurd product te maken of dit te gebruiken als [gesprektranscriptie](../conversation-transcription-service.md)apparaat.
 
-Deze hand leiding vereist een [Azure Cognitive Services](../get-started.md) -account met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze hulplijn is een [Azure Cognitive Services-account](../get-started.md) met een Spraakservice-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
-De bron code voor de voorbeeld toepassing is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op github](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+De broncode voor de voorbeeldtoepassing is opgenomen in de Speech Devices SDK. Deze is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgende doen:
+Voordat u begint met het gebruik van de Speech Devices SDK, moet u het volgende doen:
 
-- Volg de instructies in uw [Development Kit](../get-speech-devices-sdk.md) om het apparaat in te scha kelen.
+- Volg de instructies in uw [Development Kit](../get-speech-devices-sdk.md) om het apparaat in te schakelen.
 
-- Down load de nieuwste versie van de [Speech apparaten SDK](https://aka.ms/sdsdk-download)en pak het. zip-bestand uit in uw werkmap.
+- Download de nieuwste versie van de [Speech Devices SDK](https://aka.ms/sdsdk-download) en pak het zipbestand uit in uw werkmap.
 
   > [!NOTE]
-  > In deze Snelstartgids wordt ervan uitgegaan dat de app is geëxtraheerd naar C:\SDSDK\Android-Sample-Release
+  > In deze quickstart wordt ervan uitgegaan dat de app is geëxtraheerd naar C:\SDSDK\Android-Sample-Release
 
-- Een Azure- [abonnements sleutel voor spraak service](../get-started.md) ophalen
+- Een [Azure-abonnementssleutel voor Spraakservice](../get-started.md) verkrijgen
 
-- Als u van plan bent om de conversatie transcriptie te gebruiken, moet u een [circulair microfoon apparaat](../get-speech-devices-sdk.md) gebruiken en deze functie is momenteel alleen beschikbaar voor "en-US" en "zh-cn" in regio's, "centraalus" en "EastAsia". U moet een spraak sleutel hebben in een van deze regio's om conversatie transcriptie te kunnen gebruiken.
+- Als u van plan bent om de gesprektranscriptie te gebruiken, moet u een [circulair microfoonapparaat gebruiken](../get-speech-devices-sdk.md) en deze functie is momenteel alleen beschikbaar voor en-US en zh-CN in de regio's centraalus en eastasia. U moet een spraaksleutel hebben in een van deze regio's om gesprektranscriptie te kunnen gebruiken.
 
-- Als u van plan bent de speech-service te gebruiken om de intenties (of acties) te identificeren van de gebruiker uitingen, hebt u een [Luis-abonnement (Language Understanding service)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) nodig. Zie voor meer informatie over LUIS en intentie herkenning [spraak intentie herkennen met Luis, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+- Als u van plan bent de Spraakservice te gebruiken om de intenties (of acties) te identificeren van uitingen van gebruikers, hebt u een [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)-abonnement nodig. Zie [Spraakintenties herkennen met LUIS, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp) voor meer informatie over LUIS en intentieherkenning.
 
-  U kunt [een eenvoudig Luis-model maken](https://docs.microsoft.com/azure/cognitive-services/luis/) of het voor beeld-Luis model gebruiken, Luis-voorbeeld. json. Het voor beeld-LUIS-model is beschikbaar op de [download site van de speech-apparaten SDK](https://aka.ms/sdsdk-luis). Als u het JSON-bestand van uw model wilt uploaden naar de [Luis-Portal](https://www.luis.ai/home), selecteert u **nieuwe app importeren**en selecteert u vervolgens het JSON-bestand.
+  U kunt [een eenvoudig LUIS-model maken](https://docs.microsoft.com/azure/cognitive-services/luis/) of het LUIS-voorbeeldmodel gebruiken, LUIS-example.json. Het LUIS-voorbeeldmodel is beschikbaar op de [downloadsite van Speech Devices SDK](https://aka.ms/sdsdk-luis). Als u het JSON-bestand van uw model wilt uploaden naar de [LUIS-portal](https://www.luis.ai/home), selecteert u **Nieuwe app importeren** en selecteert u vervolgens het JSON-bestand.
 
-- Installeer [Android Studio](https://developer.android.com/studio/) en [VYSOR](https://vysor.io/download/) op uw PC.
+- Installeer [Android Studio](https://developer.android.com/studio/) en [Vysor](https://vysor.io/download/) op uw pc.
 
 ## <a name="set-up-the-device"></a>Het apparaat instellen
 
-1. Vysor op uw computer starten.
+1. Start Vysor op uw computer.
 
    ![Vysor](../media/speech-devices-sdk/qsg-3.png)
 
-1. Uw apparaat moet worden vermeld onder **Kies een apparaat**. Selecteer de knop **weer geven** naast het apparaat.
+1. Uw apparaat moet zijn vermeld onder **Kies een apparaat**. Selecteer de knop **Weergave** naast het apparaat.
 
-1. Maak verbinding met het draadloze netwerk door het mappictogram te selecteren en vervolgens **instellingen**  >  **WLAN**te selecteren.
+1. Maak verbinding met uw draadloze netwerk door het mappictogram te selecteren en vervolgens **Instellingen** > **WLAN** te selecteren.
 
-   ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
+   ![WLAN voor Vysor](../media/speech-devices-sdk/qsg-4.png)
 
    > [!NOTE]
-   > Als uw bedrijf beleid heeft over het verbinden van apparaten met het Wi-Fi-systeem, moet u het MAC-adres verkrijgen en contact opnemen met uw IT-afdeling voor informatie over hoe u deze verbindt met de Wi-Fi van uw bedrijf.
+   > Als uw bedrijf beleidsregels heeft over het verbinden van apparaten met het Wi-Fi-systeem, moet u het MAC-adres verkrijgen en contact opnemen met uw IT-afdeling voor informatie over hoe u verbinding kunt maken met de Wi-Fi van uw bedrijf.
    >
-   > Als u het MAC-adres van de dev Kit wilt vinden, selecteert u het pictogram bestandsmap op het bureau blad van de dev kit.
+   > Als u het MAC-adres van de Development Kit wilt vinden, selecteert u het pictogram van de bestandsmap op het bureaublad van de Development Kit.
    >
-   > ![Vysor-bestandsmap](../media/speech-devices-sdk/qsg-10.png)
+   > ![Bestandsmap Vysor](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Selecteer **Instellingen**. Zoek op Mac-adres en selecteer vervolgens Mac- **adres**  >  **Advanced WLAN**. Noteer het MAC-adres dat onderaan in het dialoog venster wordt weer gegeven.
+   > Selecteer **Instellingen**. Zoek naar 'MAC-adres' en selecteer vervolgens **Mac-adres** > **Geavanceerd WLAN**. Noteer het MAC-adres dat onderaan in het dialoogvenster wordt weergegeven.
    >
-   > ![Vysor MAC-adres](../media/speech-devices-sdk/qsg-11.png)
+   > ![MAC-adres van Vysor](../media/speech-devices-sdk/qsg-11.png)
    >
-   > Sommige bedrijven hebben mogelijk een tijds limiet voor hoe lang een apparaat kan worden verbonden met het Wi-Fi-systeem. Mogelijk moet u de registratie van de dev kit met uw Wi-Fi-systeem na een bepaald aantal dagen uitbreiden.
+   > Sommige bedrijven hebben mogelijk een tijdslimiet voor hoe lang een apparaat verbonden kan blijven met hun Wi-Fi-systeem. Mogelijk moet u de registratie van de Development Kit bij uw Wi-Fi-systeem na een bepaald aantal dagen verlengen.
 
 ## <a name="run-the-sample-application"></a>De voorbeeldtoepassing uitvoeren
 
-Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de voorbeeld toepassing:
+Als u de Setup van de Development Kit wilt valideren, maakt en installeert u de voorbeeldtoepassing:
 
 1. Start Android Studio.
 
 1. Selecteer **Open een bestaand Android Studio project**.
 
-   ![Android Studio-een bestaand project openen](../media/speech-devices-sdk/qsg-5.png)
+   ![Android Studio - Open een bestaand project](../media/speech-devices-sdk/qsg-5.png)
 
-1. Ga naar C:\SDSDK\Android-Sample-Release\example. Selecteer **OK** om het voorbeeld project te openen.
+1. Ga naar C:\SDSDK\Android-Sample-Release\example. Selecteer **OK** om het voorbeeldproject te openen.
 
-1. Configureer gradle om te verwijzen naar de Speech SDK. De volgende bestanden zijn te vinden onder **Gradle-scripts** in Android Studio.
+1. Configureer Gradle om te verwijzen naar de Speech SDK. De volgende bestanden zijn te vinden onder **Gradle-scripts** in Android Studio.
 
-    Werk het **Build. gradle (project: voor beeld)** bij, het blok AllProjects moet hieronder overeenkomen door de Maven-regels toe te voegen.
+    Werk de **build.gradle(Project:example)** bij, zodat het AllProjects-blok met het onderstaande overeenkomt, door de Maven-regels toe te voegen.
 
     ```xml
     allprojects {
@@ -93,15 +93,15 @@ Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de 
     }
     ```
 
-    Werk de **Build. gradle (module: app)** bij door deze regel toe te voegen aan het gedeelte afhankelijkheden. 
+    Werk de **build.gradle(Module:app)** bij door deze regel toe te voegen aan de sectie met afhankelijkheden. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
     ```
     
-1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
+1. Voeg de sleutel van uw Speech-abonnement toe aan de broncode. Als u de intentieherkenning wilt proberen, voegt u ook de sleutel en toepassings-id van uw [Language Understanding Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)-abonnement toe.
 
-   Voor spraak-en LUIS gaat uw informatie over op MainActivity. java:
+   Voor spraak en LUIS gaat uw informatie naar MainActivity.java:
 
    ```java
     // Subscription
@@ -112,71 +112,71 @@ Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de 
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en regio-informatie ook vereist in conversatie. java:
+   Als u gesprektranscriptie gebruikt, zijn uw spraaksleutel en regio-informatie ook vereist in conversation.java:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
    ```
 
-1. Het sleutel woord default is "computer". U kunt ook een van de andere beschik bare tref woorden, zoals ' machine ' of ' assistent ', proberen. De bron bestanden voor deze alternatieve tref woorden bevinden zich in de speech-apparaten-SDK in de map tref woorden. C:\SDSDK\Android-Sample-Release\keyword\Computer bevat bijvoorbeeld de bestanden die worden gebruikt voor het tref woord "computer".
+1. Het standaardtrefwoord is 'computer'. U kunt ook een van de andere beschikbare trefwoorden, zoals 'machine' of 'assistent', proberen. De resourcebestanden voor deze alternatieve trefwoorden bevinden zich in de Speech Devices SDK in de map voor trefwoorden. C:\SDSDK\Android-Sample-Release\keyword\Computer bevat bijvoorbeeld de bestanden die worden gebruikt voor het trefwoord 'computer'.
 
    > [!TIP]
-   > U kunt ook [een aangepast tref woord maken](../speech-devices-sdk-create-kws.md).
+   > U kunt ook [een aangepast trefwoord maken](../speech-devices-sdk-create-kws.md).
 
-   Als u een nieuw tref woord wilt gebruiken, werkt u de volgende twee regels in `MainActivity.java` en kopieert u het trefwoord pakket naar uw app. Als u bijvoorbeeld het tref woord ' machine ' uit het trefwoord pakket KWS-machine. zip wilt gebruiken:
+   Als u een nieuw trefwoord wilt gebruiken, werkt u de volgende twee regels bij in `MainActivity.java`, en kopieert u het trefwoordpakket naar uw app. Als u bijvoorbeeld het trefwoord 'machine' uit het trefwoordpakket kws-machine.zip wilt gebruiken:
 
-   - Kopieer het trefwoord pakket naar de map "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
-   - Werk de `MainActivity.java` met het sleutel woord en de pakket naam bij:
+   - Kopieer het trefwoordpakket naar de map C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\.
+   - Werk de `MainActivity.java` bij met het trefwoord en de pakketnaam:
 
      ```java
      private static final String Keyword = "Machine";
      private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
-1. Werk de volgende regels bij, die de geometrie-instellingen van de microfoon matrix bevatten:
+1. Werk de volgende regels bij, die de geometrie-instellingen van de microfoonmatrix bevatten:
 
    ```java
    private static final String DeviceGeometry = "Circular6+1";
    private static final String SelectedGeometry = "Circular6+1";
    ```
 
-   Deze tabel geeft een lijst van ondersteunde waarden:
+   Deze tabel geeft een lijst van ondersteunde waarden weer:
 
    | Variabele | Betekenis | Beschikbare waarden |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Fysieke microfoon configuratie | Voor een ronde dev kit:`Circular6+1` |
-   |          |         | Voor een lineaire dev kit:`Linear4` |
-   | `SelectedGeometry` | Configuratie van software-microfoon | Voor een ronde dev kit die gebruikmaakt van alle mics:`Circular6+1` |
-   |          |         | Voor een ronde dev kit die gebruikmaakt van vier mics:`Circular3+1` |
-   |          |         | Voor een lineaire dev kit die gebruikmaakt van alle mics:`Linear4` |
-   |          |         | Voor een lineaire dev kit die gebruikmaakt van twee mics:`Linear2` |
+   | `DeviceGeometry` | Fysieke microfoonconfiguratie | Voor een circulaire Development Kit: `Circular6+1` |
+   |          |         | Voor een lineaire Development Kit: `Linear4` |
+   | `SelectedGeometry` | Softwareconfiguratie microfoon | Voor een circulaire Development Kit die gebruikmaakt van alle microfoons: `Circular6+1` |
+   |          |         | Voor een circulaire Development Kit die gebruikmaakt van vier microfoons: `Circular3+1` |
+   |          |         | Voor een lineaire Development Kit die gebruikmaakt van alle microfoons: `Linear4` |
+   |          |         | Voor een lineaire Development Kit die gebruikmaakt van twee microfoons: `Linear2` |
 
-1. Als u de toepassing wilt bouwen, selecteert u in het menu **uitvoeren** de optie **app uitvoeren**. Het dialoog venster **implementatie doel selecteren** wordt weer gegeven.
+1. Als u de toepassing wilt compileren, selecteert u in het menu **Uitvoeren** **'App' uitvoeren**. Het dialoogvenster **Implementatiedoel selecteren** wordt weergegeven.
 
-1. Selecteer uw apparaat en selecteer vervolgens **OK** om de toepassing te implementeren op het apparaat.
+1. Selecteer uw apparaat en selecteer daarna **OK** om de toepassing op het apparaat te implementeren.
 
-   ![Het dialoog venster implementatie doel selecteren](../media/speech-devices-sdk/qsg-7.png)
+   ![Het dialoogvenster Implementatiedoel selecteren](../media/speech-devices-sdk/qsg-7.png)
 
-1. De SDK-voorbeeld toepassing voor spraak apparaten wordt gestart en de volgende opties worden weer gegeven:
+1. De Speech Devices SDK-voorbeeldtoepassing wordt gestart en de volgende opties worden weergegeven:
 
-   ![Voor beeld van de SDK-voorbeeld toepassing en-opties voor spraak apparaten](../media/speech-devices-sdk/qsg-8.png)
+   ![Voorbeeld van de Speech Devices SDK-voorbeeldtoepassing en opties](../media/speech-devices-sdk/qsg-8.png)
 
-1. Probeer de nieuwe transcriptie-demo van de conversatie. Begin met transcriberen met ' sessie starten '. Standaard is iedereen een gast. Als u echter spraak handtekeningen van een deel nemer hebt, kunnen ze in een bestand `/video/participants.properties` op het apparaat worden geplaatst. Als u de spraak handtekening wilt genereren, kijkt u naar [Transcribe-gesprekken (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Probeer de nieuwe demo voor gesprektranscriptie. Begin met transcriberen met 'Sessie starten'. Standaard is iedereen een gast. Als u echter stemkarakteristieken van een deelnemer hebt, kunnen ze in een bestand `/video/participants.properties` op het apparaat worden geplaatst. Als u de stemkarakteristiek wilt genereren, bekijkt u [Gesprekken transcriberen (SDK)](../how-to-use-conversation-transcription-service.md).
 
-   ![Transcriptie-toepassing voor demo gesprekken](../media/speech-devices-sdk/qsg-15.png)
+   ![Demo gesprektranscriptietoepassing](../media/speech-devices-sdk/qsg-15.png)
 
-1. Probeer!
+1. Experiment!
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u geen verbinding kunt maken met het spraak apparaat. Typ de volgende opdracht in een opdracht prompt venster. Er wordt een lijst met apparaten geretourneerd:
+Als u geen verbinding kunt maken met het spraakapparaat. Typ de volgende opdracht in het opdrachtpromptvenster. Er wordt dan een lijst met apparaten geretourneerd:
 
 ```powershell
  adb devices
 ```
 
 > [!NOTE]
-> Deze opdracht maakt gebruik van de Android debug Bridge, `adb.exe` die deel uitmaakt van de Android Studio-installatie. Dit hulp programma bevindt zich in de C:\Users- \[ gebruikers naam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan het pad om het gemakkelijker te kunnen aanroepen `adb` . Anders moet u het volledige pad naar uw installatie van ADB. exe opgeven in elke opdracht die aanroept `adb` .
+> Deze opdracht maakt gebruik van de Android Debug Bridge, `adb.exe`, die deel uitmaakt van de Android Studio-installatie. Dit hulpprogramma bevindt zich in C:\Users\[gebruikersnaam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan uw pad om het gemakkelijker te maken om `adb` aan te roepen. Anders moet u het volledige pad naar uw installatie van adb.exe opgeven in elke opdracht waarin `adb` wordt aangeroepen.
 >
-> Als er een fout optreedt `no devices/emulators found` , controleer dan of de USB-kabel is aangesloten en of er een kabel met een hoge kwaliteit wordt gebruikt.
+> Als u een fout `no devices/emulators found` opmerkt, controleer dan of de USB-kabel is aangesloten en of er een kabel met een hoge kwaliteit wordt gebruikt.

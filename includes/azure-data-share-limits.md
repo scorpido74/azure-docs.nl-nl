@@ -2,27 +2,27 @@
 title: bestand opnemen
 description: bestand opnemen
 services: azure data share
-author: jife
+author: jifems
 ms.service: azure data share
 ms.topic: include
-ms.date: 02/07/2020
+ms.date: 07/30/2020
 ms.author: jife
 ms.custom: include file
-ms.openlocfilehash: e1416b8b99c66daa4a27fa7f9bd7a20dfa9519e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 7c11ace5983ee906ebb12ebb2c60f4567f40e430
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087445"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515326"
 ---
-Met Azure data share kunnen organisaties eenvoudig en veilig gegevens delen met hun klanten en partners.
+Azure Data Share stelt organisaties in staat om eenvoudig en veilig gegevens te delen met hun klanten en partners.
 
-| **Resource** | **Ondergrens** |
+| **Resource** | **Limiet** |
 | --- | --- |
-| Maximum aantal gegevens share bronnen per Azure-abonnement |50 |
-| Maximum aantal verzonden shares per gegevens share bron |100 |
-| Maximum aantal ontvangen shares per gegevens share bron |100 |
-| Maximum aantal uitnodigingen per verzonden share |100 |
-| Maximum aantal share abonnementen per verzonden share |100 |
-| Maximum aantal gegevens sets per share |100 |
-| Maximum aantal momentopname planningen per share |1 |
+| Maximum aantal gegevenssharebronnen per Azure-abonnement |100 |
+| Maximum aantal verzonden shares per gegevensshare bron |200 |
+| Maximum aantal ontvangen shares per gegevenssharebron |100 |
+| Maximum aantal uitnodigingen per verzonden share |200 |
+| Maximum aantal shareabonnementen per verzonden share |200 |
+| Maximum aantal gegevenssets per share |200 |
+| Maximum aantal schema’s voor momentopnamen per share |1 |

@@ -10,7 +10,7 @@ ms.author: jdial
 ms.custom: include file
 ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646382"
@@ -29,4 +29,4 @@ Aan een virtuele Azure-machine zijn een of meer netwerkinterfaces (NIC's) gekopp
 
 Aan elke NIC die aan een virtuele machine is gekoppeld, zijn een of meer IP-configuraties gekoppeld. Aan elke configuratie is één statisch of dynamisch privé-IP-adres toegewezen. Aan elke configuratie kan ook één resource met een openbaar IP-adres zijn gekoppeld. Aan een resource met een openbaar IP-adres is een dynamisch of een statisch openbaar IP-adres toegewezen. In het artikel [IP addresses in Azure](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) (IP-adressen in Azure) vindt u meer informatie over IP-adressen in Azure. 
 
-Er geldt een limiet voor het aantal privé-IP-adressen dat aan een NIC kan worden toegewezen. Er is ook een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een Azure-abonnement. Raadpleeg het artikel [Azure limits](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) (Beperkingen van Azure) voor meer informatie.
+Er geldt een limiet voor het aantal privé-IP-adressen dat aan een NIC kan worden toegewezen. Er is ook een limiet voor het aantal openbare IP-adressen dat kan worden gebruikt in een Azure-abonnement. Raadpleeg het artikel [Azure limits](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) (Beperkingen van Azure) voor meer informatie.

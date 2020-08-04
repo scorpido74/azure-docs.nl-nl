@@ -7,7 +7,7 @@
     - name: Nieuw in Media Services
       displayName: release notes
       href: release-notes.md
-- name: Snelstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Livegebeurtenis met portal en Wirecast
@@ -171,10 +171,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: Schema's van diagnostische logboeken
           href: media-services-diagnostic-logs-schema.md
-    - name: Afspeel-clients
+    - name: Azure Media Player
       items:
-        - name: Azure Media Player
-          href: use-azure-media-player.md
+        - name: Overzicht van Azure Media Player
+          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
     - name: Ontwikkelen met v3-API's
       items:
         - name: Overzicht
@@ -285,7 +285,11 @@
           items:
             - name: Met .NET
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: Aangepaste voorinstellingen encoder
+                  href: customize-encoder-presets-how-to.md
+                - name: Een overlaytransformatie maken
+                  href: how-to-create-overlay.md
             - name: Met CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -355,6 +359,14 @@
           href: download-results-howto.md
         - name: Beschrijvende audio signaleren
           href: signal-descriptive-audio-howto.md
+    - name: Mediaspelers gebruiken
+      items:
+        - name: Volledige installatie van Azure Media Player
+          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+        - name: De Video.js-speler gebruiken
+          href: how-to-video-js-player.md
+        - name: De Shaka-videospeler gebruiken
+          href: how-to-shaka-player.md
 - name: Naslaginformatie
   items:
     - name: OpenAPI-specificatie (Swagger)

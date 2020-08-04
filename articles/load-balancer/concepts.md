@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: cb8b3b58f1029a722121f491d202e245300d1aee
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 40b738c0f074f06b2f15a260cacda876aa78daf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060798"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer-concepten
 
@@ -42,9 +42,9 @@ Zie [De distributiemodus configureren voor Azure Load Balancer](./load-balancer-
 
 Op de volgende afbeelding wordt een hash-distributiepunt weergegeven:
 
-  ![Hash-distributie](./media/load-balancer-overview/load-balancer-distribution.png)
+![Hash-distributie](./media/load-balancer-overview/load-balancer-distribution.png)
 
-  *Afbeelding: Hash-distributie*
+*Afbeelding: Hash-distributie*
 
 ## <a name="application-independence-and-transparency"></a>Toepassingsonafhankelijkheid en -transparantie
 
@@ -54,16 +54,38 @@ Load Balancer communiceert niet rechtstreeks met TCP of UDP of met de toepassing
 * Toepassingsnettoladingen zijn transparant voor de load balancer. Elke UDP- of TCP-toepassing kan worden ondersteund.
 * Omdat de load balancer geen interactie heeft met de TCP-nettolading en TLS-offload levert, kunt u uitgebreide versleutelde scenario's maken. Door load balancer te gebruiken, wordt grote scale-out voor TLS-toepassingen mogelijk door de TLS-verbinding op de VM zelf te beëindigen. De sleutelcapaciteit van de TLS-sessie wordt bijvoorbeeld alleen beperkt door het type en het aantal VM's dat u aan de back-endpool toevoegt.
 
-## <a name="load-balancer-terminology"></a>Load Balancer-terminologie
-| Concept | Wat betekent dit? | Gedetailleerd document |
-| ---------- | ---------- | ----------|
-Uitgaande verbindingen | Stromen van de back-endpool naar openbare IP's worden toegewezen aan de front-end. Azure vertaalt uitgaande verbindingen naar het openbare front-end-IP-adres via de uitgaande regel voor taakverdeling. Deze configuratie heeft de volgende voordelen. Eenvoudig upgraden en herstellen na noodgevallen van services, omdat de front-end dynamisch kan worden toegewezen aan een andere instantie van de service. Gemakkelijker beheer van toegangsbeheerlijst (ACL). ACL's die worden uitgedrukt als front-end-IP-adressen, veranderen niet als services omhoog of omlaag worden geschaald of opnieuw worden geïmplementeerd. Het omzetten van uitgaande verbindingen naar een kleiner aantal IP-adressen dan er machines zijn, vermindert de belasting van het implementeren van lijsten met veilige ontvangers.| Zie [SNAT en Azure Load Balancer](load-balancer-outbound-connections.md) voor meer informatie over het gebruik van Source Network Address Translation (SNAT) en Azure Load Balancer.
-Beschikbaarheidszones | Standard Load Balancer ondersteunt extra mogelijkheden in regio's waar beschikbaarheidszones beschikbaar zijn. Deze functies zijn incrementeel voor alles wat Standard Load Balancer biedt.  Configuraties van beschikbaarheidszones zijn beschikbaar voor beide typen Standard Load Balancer; openbaar en intern. Een zone-redundante front-end overleeft zonestoringen door de toegewezen infrastructuur in alle zones tegelijk te gebruiken. Daarnaast kunt u een front-end garanderen voor een specifieke zone. Een zonegebonden front-end wordt geleverd door een toegewezen infrastructuur in één zone. Taakverdeling in meerdere zones is beschikbaar voor de back-endpool. Elke VM-resource in een virtueel netwerk kan deel uitmaken van een back-endpool. Basic Load Balancer biedt geen ondersteuning voor zones.| Bekijk [gedetailleerde bespreking van aan beschikbaarheidszones gerelateerde vaardigheden](load-balancer-standard-availability-zones.md) en [Overzicht beschikbaarheidszones](../availability-zones/az-overview.md) voor meer informatie.
-| HA-poorten | U kunt de regels voor belastingverdeling van HA-poorten configureren om de toepassing te laten schalen en zeer betrouwbaar te maken. Door deze regels wordt taakverdeling per stroom op kortstondige poorten van het front-end-IP-adres van de interne load balancer verschaft. De functie is nuttig wanneer het niet praktisch of niet wenselijk is om afzonderlijke poorten op te geven. Met de regel voor HA-poorten kunt u actief-passieve of actief-actieve n+1-scenario's maken. Deze scenario's gelden voor virtuele netwerkapparaten en voor alle toepassingen waarvoor grote bereiken van binnenkomende poorten nodig zijn. Een statustest kan worden gebruikt om te bepalen welke back-ends nieuwe stromen moeten ontvangen.  U kunt een netwerkbeveiligingsgroep gebruiken om een scenario met een poortbereik te emuleren. Basic Load Balancer biedt geen ondersteuning voor HA-poorten. | Bestudeer [gedetailleerde bespreking van HA-poorten](load-balancer-ha-ports-overview.md)
-| Meerdere frontends | Load Balancer ondersteunt meerdere regels met meerdere front-ends.  Standard Load Balancer breidt deze mogelijkheid uit naar uitgaande scenario's. Uitgaande regels zijn het tegenovergestelde van een regel voor binnenkomende verbindingen. De uitgaande regel maakt een koppeling voor uitgaande verbindingen. Standard Load Balancer gebruikt alle front-ends die zijn gekoppeld aan een VM-resource via een taakverdelingsregel. Daarnaast kunt u met een parameter op de taakverdelingsregel een taakverdelingsregel onderdrukken voor uitgaande connectiviteit, wat de selectie van specifieke front-ends, inclusief geen, mogelijk maakt. Ter vergelijking: Basic Load Balancer selecteert willekeurig één front-end. Er is geen mogelijkheid om te bepalen welke front-end wordt geselecteerd.|
+## <a name="outbound-connections"></a>Uitgaande verbindingen 
+
+Stromen van de back-endpool naar openbare IP's worden toegewezen aan de front-end. Azure vertaalt uitgaande verbindingen naar het openbare front-end-IP-adres via de uitgaande regel voor taakverdeling. Deze configuratie heeft de volgende voordelen. Eenvoudig upgraden en herstellen na noodgevallen van services, omdat de front-end dynamisch kan worden toegewezen aan een andere instantie van de service. Gemakkelijker beheer van toegangsbeheerlijst (ACL). ACL's die worden uitgedrukt als front-end-IP-adressen, veranderen niet als services omhoog of omlaag worden geschaald of opnieuw worden geïmplementeerd. Het omzetten van uitgaande verbindingen naar een kleiner aantal IP-adressen dan er machines zijn, vermindert de belasting van het implementeren van lijsten met veilige ontvangers. Zie [SNAT en Azure Load Balancer](load-balancer-outbound-connections.md) voor meer informatie over het gebruik van Source Network Address Translation (SNAT) en Azure Load Balancer.
+
+## <a name="availability-zones"></a>Beschikbaarheidszones 
+
+Standard Load Balancer ondersteunt extra mogelijkheden in regio's waar beschikbaarheidszones beschikbaar zijn. Er zijn configuraties voor beschikbaarheidszones beschikbaar voor beide typen Standard Load Balancer, openbaar en intern. Een zone-redundante front-end overleeft zonestoringen door de toegewezen infrastructuur in alle zones tegelijk te gebruiken. Daarnaast kunt u een front-end garanderen voor een specifieke zone. Een zonegebonden front-end wordt geleverd door een toegewezen infrastructuur in één zone. Taakverdeling in meerdere zones is beschikbaar voor de back-endpool. Elke VM-resource in een virtueel netwerk kan deel uitmaken van een back-endpool. Een basisversie van een load balancer biedt geen ondersteuning voor zones. Bekijk [gedetailleerde bespreking van aan beschikbaarheidszones gerelateerde vaardigheden](load-balancer-standard-availability-zones.md) en [Overzicht beschikbaarheidszones](../availability-zones/az-overview.md) voor meer informatie.
+
+## <a name="ha-ports"></a>HA-poorten
+
+U kunt de regels voor belastingverdeling van HA-poorten configureren om de toepassing te laten schalen en zeer betrouwbaar te maken. Door deze regels wordt taakverdeling per stroom op kortstondige poorten van het front-end-IP-adres van de interne load balancer verschaft. De functie is nuttig wanneer het niet praktisch of niet wenselijk is om afzonderlijke poorten op te geven. Met de regel voor HA-poorten kunt u actief-passieve of actief-actieve n+1-scenario's maken. Deze scenario's gelden voor virtuele netwerkapparaten en voor alle toepassingen waarvoor grote bereiken van binnenkomende poorten nodig zijn. Een statustest kan worden gebruikt om te bepalen welke back-ends nieuwe stromen moeten ontvangen.  U kunt een netwerkbeveiligingsgroep gebruiken om een scenario met een poortbereik te emuleren. Basic Load Balancer biedt geen ondersteuning voor HA-poorten. Bestudeer [gedetailleerde bespreking van HA-poorten](load-balancer-ha-ports-overview.md).
+
+## <a name="multiple-frontends"></a>Meerdere frontends 
+
+Load Balancer ondersteunt meerdere regels met meerdere front-ends.  Standard Load Balancer breidt deze mogelijkheid uit naar uitgaande scenario's. Uitgaande regels zijn het tegenovergestelde van een regel voor binnenkomende verbindingen. De uitgaande regel maakt een koppeling voor uitgaande verbindingen. Standard Load Balancer gebruikt alle front-ends die zijn gekoppeld aan een VM-resource via een taakverdelingsregel. Daarnaast kunt u met een parameter op de taakverdelingsregel een taakverdelingsregel onderdrukken voor uitgaande connectiviteit, wat de selectie van specifieke front-ends, inclusief geen, mogelijk maakt. Ter vergelijking: Basic Load Balancer selecteert willekeurig één front-end. Er is geen mogelijkheid om te bepalen welke front-end wordt geselecteerd.
+
+## <a name="floating-ip"></a>Zwevend IP-adres
+
+In sommige toepassingsscenario's is het raadzaam of vereist dat u dezelfde poort gebruikt voor meerdere toepassingsexemplaren op één virtuele machine in de back-endpool. Veelvoorkomende voorbeelden waarin een poort opnieuw wordt gebruikt, zijn clustering voor hoge beschikbaarheid, virtuele netwerkapparaten en meerdere TLS-eindpunten beschikbaar maken zonder herversleuteling. Als u de back-endpoort voor meerdere regels opnieuw wilt gebruiken, moet u Zwevend IP inschakelen in de regeldefinitie.
+
+**Zwevend IP** is in de terminologie van Azure een gedeelte van wat Direct Server Return (DSR) wordt genoemd. DSR bestaat uit twee delen: 
+
+- Een stroomtopologie
+- Een toewijzingsschema voor IP-adressen
+
+Op platformniveau werkt Azure Load Balancer altijd in een DSR-stroomtopologie, ongeacht of Zwevend IP is ingeschakeld of niet. Dit betekent dat het uitgaande deel van een stroom altijd correct wordt herschreven, zodat deze direct naar de oorsprong terugstroomt.
+Zonder Zwevend IP wordt een traditionele toewijzingsschema van IP-adressen voor een taakverdeling weergegeven voor gebruiksgemak (het IP van VM-exemplaren). Als Zwevend IP wordt ingeschakeld, wordt de toewijzing van IP-adressen gewijzigd in het frontend-IP van de load balancer om extra flexibiliteit te bieden. Klik [hier](load-balancer-multivip-overview.md) voor meer informatie.
 
 
 ## <a name="limitations"></a><a name = "limitations"></a>Beperkingen
+
+- Zwevend IP wordt momenteel niet ondersteund voor secundaire IP-configuraties voor scenario's met interne taakverdeling.
 
 - Een regel voor een load balancer kan niet twee virtuele netwerken omvatten.  Front-ends en de bijbehorende back-endinstanties moeten zich in hetzelfde virtuele netwerk bevinden.  
 

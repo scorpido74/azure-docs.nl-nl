@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor het gebruik van Azure-app configuratie Key Vault verwijzingen in een Java Spring boot-app | Microsoft Docs
-description: In deze zelf studie leert u hoe u Key Vault verwijzingen van Azure-app configuratie kunt gebruiken vanuit een Java Spring boot-app
+title: Zelfstudie voor het gebruik van Azure App Configuration Key Vault-verwijzingen in een Java Spring Boot-app | Microsoft Docs
+description: In deze zelfstudie leert u hoe u Key Vault-verwijzingen van Azure App Configuration kunt gebruiken vanuit een Java Spring Boot-app
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -13,94 +13,94 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371155"
 ---
-# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Zelf studie: referenties van Key Vault gebruiken in een Java lente-app
+# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Zelfstudie: Key Vault-referenties gebruiken in een Java Spring-app
 
-In deze zelf studie leert u hoe u de Azure-app Configuration-service kunt gebruiken in combi natie met Azure Key Vault. App-configuratie en Key Vault zijn complementaire services die naast elkaar worden gebruikt in de meeste toepassings implementaties.
+In deze zelfstudie leert u hoe u de Azure App Configuration-service kunt gebruiken in combinatie met Azure Key Vault. App Configuration en Key Vault zijn complementaire services die naast elkaar worden gebruikt in de meeste toepassingsimplementaties.
 
-Met app-configuratie kunt u de services gezamenlijk gebruiken door sleutels te maken die verwijzen naar waarden die zijn opgeslagen in Key Vault. Wanneer de app-configuratie dergelijke sleutels maakt, worden de Uri's van Key Vault waarden opgeslagen in plaats van de waarden zelf.
+Met App Configuration kunt u de services gezamenlijk gebruiken door sleutels te maken die verwijzen naar waarden die zijn opgeslagen in Key Vault. Wanneer App Configuration dergelijke sleutels maakt, worden de URI's van Key Vault-waarden opgeslagen in plaats van de waarden zelf.
 
-In uw toepassing wordt gebruikgemaakt van de client provider voor app-configuratie om Key Vault verwijzingen op te halen, net zoals bij andere sleutels die zijn opgeslagen in de app-configuratie. In dit geval zijn de waarden die zijn opgeslagen in de app-configuratie Uri's die verwijzen naar de waarden in de Key Vault. Ze zijn niet Key Vault waarden of referenties. Omdat de client provider de sleutels als Key Vault verwijzingen herkent, wordt Key Vault gebruikt om de waarden op te halen.
+In uw toepassing wordt gebruikgemaakt van de clientprovider van App Configuration om Key Vault-verwijzingen op te halen, net zoals bij andere sleutels die zijn opgeslagen in App Configuration. In dit geval zijn de waarden die zijn opgeslagen in App Configuration URI's die verwijzen naar de waarden in de Key Vault. Het zijn geen Key Vault-waarden of -referenties. Omdat de clientprovider de sleutels als Key Vault-verwijzingen herkent, wordt Key Vault gebruikt om de waarden op te halen.
 
-Uw toepassing is verantwoordelijk voor het correct verifiëren van de app-configuratie en de Key Vault. De twee services communiceren niet rechtstreeks.
+Uw toepassing is verantwoordelijk voor het correct verifiëren van zowel App Configuration als Key Vault. De twee services communiceren niet rechtstreeks.
 
-In deze zelf studie wordt uitgelegd hoe u Key Vault verwijzingen in uw code implementeert. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een Java-lente-app maken met app-configuratie](./quickstart-java-spring-app.md) .
+In deze zelfstudie wordt uitgelegd hoe u Key Vault-verwijzingen in uw code kunt implementeren. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voor u verdergaat, moet u eerst een [Java Spring-app maken met App Configuration](./quickstart-java-spring-app.md).
 
-U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is bijvoorbeeld een platformoverschrijdende code-editor die beschikbaar is voor de Windows-, macOS-en Linux-besturings systemen.
+U kunt elke code-editor gebruiken om de stappen in deze zelfstudie uit te voeren. [Visual Studio Code](https://code.visualstudio.com/) is bijvoorbeeld een platformoverschrijdende code-editor die beschikbaar is voor Windows-, macOS- en Linux-besturingssystemen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een app-configuratie sleutel maken die verwijst naar een waarde die is opgeslagen in Key Vault.
-> * Toegang tot de waarde van deze sleutel vanuit een Java-lente toepassing.
+> * Een App Configuration-sleutel maken die verwijst naar een waarde die is opgeslagen in Key Vault.
+> * Toegang tot de waarde van deze sleutel vanuit een Java Spring-toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Een ondersteund [jdk (Java Development Kit)](https://docs.microsoft.com/java/azure/jdk) met versie 8.
-* [Apache Maven](https://maven.apache.org/download.cgi) -versie 3,0 of hoger.
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+* Een ondersteunde [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) met versie 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) versie 3.0 of hoger.
 
 ## <a name="create-a-vault"></a>Een kluis maken
 
-1. Selecteer de optie **een resource maken** in de linkerbovenhoek van de Azure portal:
+1. Selecteer de optie **Een resource maken** in de linkerbovenhoek van Azure Portal:
 
-    ![Uitvoer nadat het maken van de sleutel kluis is voltooid](./media/quickstarts/search-services.png)
-1. Voer in het zoekvak **Key Vault**in.
-1. Selecteer in de lijst met resultaten de optie **sleutel kluizen** aan de linkerkant.
-1. Selecteer **toevoegen**in **sleutel kluizen**.
-1. Geef aan de rechter kant in **sleutel kluis maken**de volgende informatie op:
-    * Selecteer **abonnement** om een abonnement te kiezen.
-    * Selecteer in **resource groep**de optie **nieuwe maken** en voer een naam voor de resource groep in.
-    * In de naam van de **sleutel kluis**is een unieke naam vereist. Voer voor deze zelf studie **Contoso-vault2**in.
-    * Kies een locatie in de vervolg keuzelijst **regio** .
-1. Wijzig de andere opties voor **sleutel kluis maken** met de standaard waarden.
+    ![Uitvoer nadat het maken van de Key Vault is voltooid](./media/quickstarts/search-services.png)
+1. Typ **Key Vault** in het zoekvak.
+1. Selecteer in de lijst met resultaten **Key Vaults** aan de linkerkant.
+1. Selecteer **Toevoegen** in **Key Vaults**.
+1. Geef rechts in **Key Vault maken** de volgende gegevens op:
+    * Selecteer **Abonnement** om een abonnement te kiezen.
+    * Selecteer in **Resourcegroep** **Nieuwe maken** en voer een naam in voor de resourcegroep.
+    * In **Key Vault-naam** is een unieke naam vereist. Voer voor deze zelfstudie **Contoso-vault2** in.
+    * Kies een locatie in de vervolgkeuzelijst **Regio**.
+1. Zorg ervoor dat de andere opties in **Key Vault maken** de standaardwaarden hebben.
 1. Selecteer **Maken**.
 
-Op dit moment is uw Azure-account het enige dat is gemachtigd voor toegang tot deze nieuwe kluis.
+Vanaf nu is uw Azure-account als enige gemachtigd om bewerkingen op deze nieuwe Key Vault uit te voeren.
 
-![Uitvoer nadat het maken van de sleutel kluis is voltooid](./media/quickstarts/vault-properties.png)
+![Uitvoer nadat het maken van de Key Vault is voltooid](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Een geheim toevoegen aan Key Vault
 
-Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra stappen uit te voeren. In dit geval voegt u een bericht toe dat u kunt gebruiken om Key Vault ophalen te testen. Het bericht wordt **bericht**genoemd en u slaat de waarde ' Hello from key Vault ' op.
+Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra stappen uit te voeren. In dit geval voegt u een bericht toe dat u kunt gebruiken om het ophalen van Key Vault te testen. Het bericht wordt **Bericht** genoemd en u slaat er de waarde Hello from Key Vault in op.
 
-1. Selecteer op de pagina eigenschappen van Key Vault de optie **geheimen**.
-1. Selecteer **genereren/importeren**.
-1. Voer in het deel venster **een geheim maken** de volgende waarden in:
-    * **Opties voor uploaden**: Voer **hand matig**in.
-    * **Naam**: Voer een **bericht**in.
-    * **Waarde**: Voer een **Hello van Key Vault in**.
-1. Zorg ervoor dat u de andere **geheime eigenschappen maakt** met de standaard waarden.
+1. Selecteer vanuit de eigenschappenpagina's van de Key Vault **Geheimen**.
+1. Selecteer **Genereren/importeren**.
+1. Voer in het deelvenster **Een geheim maken** een van de volgende waarden in:
+    * **Uploadopties**: Voer **Handmatig** in.
+    * **Naam**: **Bericht** invoeren.
+    * **Waarde**: Voer **Hello from Key Vault** in.
+1. Zorg ervoor dat de andere eigenschappen van **Een geheim maken** de standaardwaarden hebben.
 1. Selecteer **Maken**.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault verwijzing toevoegen aan de app-configuratie
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een sleutelkluisverwijzing toevoegen aan App Configuration
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer vervolgens de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources** en selecteer vervolgens de instantie van het App Configuration-archief dat u in de quickstart hebt gemaakt.
 
-1. Selecteer **Configuration Explorer**.
+1. Selecteer **Configuratieverkenner**.
 
-1. Selecteer **+** > **verwijzing naar sleutel kluis**maken en geef vervolgens de volgende waarden op:
-    * **Sleutel**: Selecteer **/Application/config.keyvaultmessage**
-    * **Label**: laat deze waarde leeg.
-    * **Abonnement**, **resource groep**en **sleutel kluis**: Voer de waarden in die overeenkomen met de waarden in de sleutel kluis die u hebt gemaakt in de vorige sectie.
-    * **Geheim**: Selecteer het geheime **bericht** dat u in de vorige sectie hebt gemaakt.
+1. Selecteer **+ Maken** > **Sleutelkluisverwijzing** en geef de volgende waarden op:
+    * **Sleutel**: Selecteer **/application/config.keyvaultmessage**
+    * **Label**: Laat deze waarde leeg.
+    * **Abonnement**, **Resourcegroep** en **Sleutelkluis**: Voer de waarden in die overeenkomen met de waarden in de Key Vault die u in de vorige sectie hebt gemaakt.
+    * **Geheim**: Selecteer het geheim genaamd **Bericht** dat u in de vorige sectie hebt gemaakt.
 
 ## <a name="connect-to-key-vault"></a>Verbinding maken met Key Vault
 
-1. In deze zelf studie gebruikt u een service-principal voor verificatie om Key Vault. Als u deze service-principal wilt maken, gebruikt u de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+1. In deze zelfstudie gebruikt u een service-principal voor verificatie voor Key Vault. Om deze service-principal te maken gebruikt u de Azure CLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac):
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Met deze bewerking wordt een reeks sleutel/waarde-paren geretourneerd:
+    Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd:
 
     ```console
     {
@@ -116,39 +116,39 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     }
     ```
 
-1. Voer de volgende opdracht uit om de Service-Principal toegang te geven tot uw sleutel kluis:
+1. Voer de volgende opdracht uit om de service-principal toegang te geven tot uw Key Vault:
 
     ```console
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
-1. Voer de volgende opdracht uit om de object-id op te halen en vervolgens toe te voegen aan de app-configuratie.
+1. Voer de volgende opdracht uit om de object-id op te halen en vervolgens toe te voegen aan App Configuration.
 
     ```console
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Maak de volgende omgevings variabelen met behulp van de waarden voor de service-principal die in de vorige stap zijn weer gegeven:
+1. Maak de volgende omgevingsvariabelen met behulp van de waarden voor de service-principal die in de vorige stap zijn weergegeven:
 
     * **AZURE_CLIENT_ID**: *clientId*
     * **AZURE_CLIENT_SECRET**: *clientSecret*
     * **AZURE_TENANT_ID**: *tenantId*
 
 > [!NOTE]
-> Deze Key Vault referenties worden alleen in uw toepassing gebruikt.  Uw toepassing verifieert rechtstreeks met Key Vault met behulp van deze referenties zonder de app-configuratie service te gebruiken.  De Key Vault biedt verificatie voor zowel uw toepassing als uw app-configuratie service zonder te delen of sleutels weer te geven.
+> Deze Key Vault-referenties worden alleen in uw toepassing gebruikt.  Uw toepassing verifieert rechtstreeks met Key Vault met behulp van deze referenties zonder de App Configuration-service te gebruiken.  De Key Vault biedt verificatie voor zowel uw toepassing als uw App Configuration-service zonder sleutels te delen of weer te geven.
 
-## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault referentie te gebruiken
+## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault-referentie te gebruiken
 
-1. Maak een omgevings variabele met de naam **APP_CONFIGURATION_ENDPOINT**. Stel de waarde ervan in op het eind punt voor de app-configuratie opslag. U kunt het eind punt vinden op de Blade **toegangs sleutels** in de Azure Portal.
+1. Maak een omgevingsvariabele met de naam **APP_CONFIGURATION_ENDPOINT**. Stel de waarde ervan in op het eindpunt voor de App Configuration-opslag. U kunt het eindpunt vinden op de blade **Toegangssleutels** in Azure Portal.
 
-1. Open *Boots trap. Properties* in de map *resources* . Werk dit bestand bij om het configuratie-eind punt van de app te gebruiken in plaats van een connection string.
+1. Open *bootstrap.properties* in de map *resources*. Werk dit bestand bij om het App Configuration-eindpunt van de app te gebruiken in plaats van een verbindingsreeks.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. Open *MessageProperties. java*. Voeg een nieuwe variabele met de naam *keyVaultMessage*toe:
+1. Open *MessageProperties.java*. Voeg een nieuwe variabele toe met de naam *keyVaultMessage*:
 
     ```java
     private String keyVaultMessage;
@@ -162,7 +162,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     }
     ```
 
-1. Open *HelloController. java*. Werk de methode *GetMessage* bij om het bericht op te halen dat is opgehaald uit Key Vault.
+1. Open *HelloController.java*. Werk de *getMessage*-methode bij om het bericht dat is opgehaald uit Key Vault toe te voegen.
 
     ```java
     @GetMapping
@@ -171,7 +171,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     }
     ```
 
-1. Maak een nieuw bestand met de naam *AzureCredentials. java* en voeg de onderstaande code toe.
+1. Maak een nieuw bestand met de naam *AzureCredentials.java* en voeg de onderstaande code toe.
 
     ```java
     package com.example.demo;
@@ -200,7 +200,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     }
     ```
 
-1. Maak een nieuw bestand met de naam *AppConfiguration. java*. En voeg de onderstaande code toe.
+1. Maak een nieuw bestand met de naam *AppConfiguration.java*. En voeg de onderstaande code toe.
 
     ```java
     package com.example.demo;
@@ -218,27 +218,27 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     }
     ```
 
-1. Maak een nieuw bestand in uw bronnen META-INF-map met de naam *lente. factoryes* en toevoegen.
+1. Maak een nieuw bestand in uw resources META-INF-map met de naam *spring.factories* en voeg deze toe.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
     com.example.demo.AppConfiguration
     ```
 
-1. Maak een Spring boot-toepassing met maven en voer deze uit, bijvoorbeeld:
+1. Maak de Spring Boot-toepassing met Maven en voer deze uit; bijvoorbeeld:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-1. Nadat uw toepassing is uitgevoerd, gebruikt u *krul* om uw toepassing te testen, bijvoorbeeld:
+1. Nadat uw toepassing wordt uitgevoerd, kunt u *curl* gebruiken om uw toepassing te testen; bijvoorbeeld:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
 
-    U ziet het bericht dat u hebt ingevoerd in de app-configuratie opslag. U ziet ook het bericht dat u hebt ingevoerd in Key Vault.
+    Er wordt een bericht weergegeven dat u zich in het archief van App Configuration bevindt. U ziet ook het bericht dat u hebt ingevoerd in Key Vault.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -246,7 +246,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een app-configuratie sleutel gemaakt die verwijst naar een waarde die is opgeslagen in Key Vault. Ga door naar de volgende zelf studie voor meer informatie over het gebruik van functie vlaggen in uw Java-toepassing.
+In deze zelfstudie maakt u een App Configuration-sleutel die verwijst naar een waarde die is opgeslagen in Key Vault. Ga door naar de volgende zelfstudie voor meer informatie over het gebruik van functievlaggen in uw Java Spring-toepassing.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteits integratie](./quickstart-feature-flag-spring-boot.md)
+> [Integratie van beheerde identiteit](./quickstart-feature-flag-spring-boot.md)

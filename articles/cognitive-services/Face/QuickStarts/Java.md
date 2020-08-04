@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: gezichten in een afbeelding detecteren met de Azure REST API en Java'
+title: 'Quickstart: Gezichten in een afbeelding detecteren met de Azure REST API en Java'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u de Azure Face REST API met Java om gezichten in een afbeelding te detecteren.
 services: cognitive-services
@@ -9,36 +9,37 @@ ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: c0ce166c571d54980e0703fd2891c173838a4674
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986578"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325505"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Java
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en Java
 
-In deze Quick Start gebruikt u de Azure face REST API met Java om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met Java om menselijke gezichten in een afbeelding te detecteren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 * Een Java IDE naar keuze.
 
 ## <a name="create-the-java-project"></a>Het Java-project maken
 
-1. Maak een nieuwe opdracht regel-java-app in uw IDE en voeg een **hoofd** klasse met een **hoofd** methode toe.
+1. Maak een nieuwe Java-app met opdrachtregels in uw IDE en voeg een klasse **Main** toe met een methode **main**.
 1. Importeer de volgende bibliotheken in uw Java-project. Als u Maven gebruikt, worden de Maven-coördinaten opgegeven voor elke bibliotheek.
-   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpclient maakt: 4.5.6)
-   - [Apache HTTP core](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpcore: 4.4.10)
+   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
+   - [Apache HTTP-core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
    - [JSON-bibliotheek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Apache Commons-logboek registratie](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons-logboek registratie:/logboek registratie: 1.1.2)
+   - [Apache Commons logging](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons-logging:commons-logging:1.1.2)
 
 ## <a name="add-face-detection-code"></a>Gezichtsdetectiecode toevoegen
 
@@ -68,7 +69,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Essentiële velden toevoegen
 
-Vervang de **hoofd** klasse door de volgende code. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en de `uriBase` teken reeks zodanig wijzigen dat het de juiste eindpunt teken reeks bevat. U kunt ook de waarde `imageWithFaces` instellen voor een pad dat naar een ander afbeeldingsbestand verwijst.
+Vervang de **Hoofdklasse** door de volgende code. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey`-veld bijwerken met de waarde van uw abonnementssleutel en de `uriBase`-tekenreeks zo wijzigen dat deze de juiste eindpunttekenreeks bevat. U kunt ook de waarde `imageWithFaces` instellen voor een pad dat naar een ander afbeeldingsbestand verwijst.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -91,7 +92,7 @@ public class Main {
 
 ### <a name="call-the-face-detection-rest-api"></a>De REST API voor de gezichtsdetectie aanroepen
 
-Voeg de methode **Main** toe met de volgende code. Hiermee wordt een REST-aanroep naar de Face-API gemaakt om informatie over het gezicht te detecteren in de externe afbeelding (de tekenreeks `faceAttributes` geeft aan welke gezichtskenmerken moeten worden opgehaald). Vervolgens worden de uitvoergegevens naar een JSON-tekenreeks geschreven.
+Voeg de **main**-methode toe met de volgende code. Hiermee wordt een REST-aanroep naar de Face-API gemaakt om informatie over het gezicht te detecteren in de externe afbeelding (de tekenreeks `faceAttributes` geeft aan welke gezichtskenmerken moeten worden opgehaald). Vervolgens worden de uitvoergegevens naar een JSON-tekenreeks geschreven.
 
 ```Java
     public static void main(String[] args) {
@@ -125,7 +126,7 @@ Voeg de methode **Main** toe met de volgende code. Hiermee wordt een REST-aanroe
 
 ### <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-Direct onder de vorige code voegt u het volgende blok toe. Hiermee worden de geretourneerde JSON-gegevens omgezet in een meer leesbare indeling voordat ze in de console worden weergegeven. Ten slotte sluit u het try-catch-blok, de **hoofd** methode en de **hoofd** klasse.
+Direct onder de vorige code voegt u het volgende blok toe. Hiermee worden de geretourneerde JSON-gegevens omgezet in een meer leesbare indeling voordat ze in de console worden weergegeven. Sluit als laatste het try-catch-blok, de **main**-methode en de **Hoofdklasse**.
 
 ```Java
             if (entity != null)
@@ -251,7 +252,7 @@ Compileer de code en voer deze uit. Bij een geslaagd antwoord worden de Face-geg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een eenvoudige Java-Console toepassing gemaakt die REST-aanroepen gebruikt naar de Azure-Face-API om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie over de ondersteunde scenario's.
+In deze quickstart hebt u een eenvoudige Java-consoletoepassing gemaakt die gebruikmaakt van REST-aanroepen naar de Azure Face-API voor het detecteren van gezichten in een afbeelding en het retourneren van de kenmerken. Lees het naslagmateriaal bij de Face-API voor meer informatie over de ondersteunde scenario's.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

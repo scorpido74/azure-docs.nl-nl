@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Studio (preview): verbinding maken en Synapse SQL opvragen'
-description: Gebruik Azure Data Studio (preview) om verbinding te maken met en query's uit te Synapse SQL in azure Synapse Analytics.
+title: Verbinding maken met Synapse SQL met Azure Data Studio (preview-versie)
+description: Gebruik Azure Data Studio (preview-versie) om verbinding te maken met en query's uit te voeren op Synapse SQL in Azure Synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187542"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059554"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Verbinding maken met Synapse SQL met Azure Data Studio (preview-versie)
 
@@ -23,61 +23,61 @@ ms.locfileid: "82187542"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](get-started-connect-sqlcmd.md)
+> * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-U kunt [Azure Data Studio (preview)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om verbinding te maken met en query's uit te Synapse SQL in azure Synapse Analytics. 
+U kunt [Azure Data Studio (preview-versie)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om verbinding te maken met en query's uit te voeren op Synapse SQL in Azure Synapse Analytics. 
 
 ## <a name="connect"></a>Verbinding maken
 
-Als u verbinding wilt maken met Synapse SQL, opent u Azure Data Studio en selecteert u **nieuwe verbinding**.
+Als u verbinding wilt maken met Synapse SQL, opent u Azure Data Studio en selecteert u **Nieuwe verbinding**.
 
 ![Azure Data Studio openen](./media/get-started-azure-data-studio/1-start.png)
 
-Kies **Microsoft SQL Server** als het **verbindings type**.
+Kies **Microsoft SQL Server** als **verbindingstype**.
 
-Voor de verbinding zijn de volgende para meters vereist:
+Voor de verbinding zijn de volgende parameters vereist:
 
-* **Server:** Server in de vorm `<Azure Synapse workspace name>`-OnDemand.SQL.azuresynapse.net
-* **Data Base:** Database naam
+* **Server:** Server in de notatie `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net
+* **Database:** Databasenaam
 
 > [!NOTE]
-> Als u **SQL on-demand wilt gebruiken (preview),** ziet de URL er als volgt uit:
+> Als u **SQL op aanvraag (preview-versie)** wilt gebruiken, moet de URL er als volgt uitzien:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> Als u de **SQL-groep** wilt gebruiken, moet de URL er als volgt uitzien:
+> Als u **SQL-pool** wilt gebruiken, moet de URL er als volgt uitzien:
 >
-> - `<Azure Synapse workspace name>`. sql.azuresynapse.net
+> - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
-Kies **Windows-verificatie**, **Azure Active Directory**of **SQL-aanmelding** als **verificatie type**.
+Kies **Windows-verificatie**, **Azure Active Directory** of **SQL-aanmelding** als **verificatietype**.
 
-Als u **SQL-aanmelding** als verificatie type wilt gebruiken, voegt u de para meters voor gebruikers naam/wacht woord toe:
+Als u gebruik wilt maken van **SQL-aanmelding** als verificatietype, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
 
-* **Gebruiker:** Server gebruiker in het formulier`<User>`
-* **Wacht woord:** Wacht woord dat is gekoppeld aan de gebruiker
+* **Gebruiker:** Gebruiker van de server in de notatie `<User>`
+* **Wachtwoord:** Wachtwoord dat is gekoppeld aan de gebruiker.
 
-Als u Azure Active Directory wilt gebruiken, moet u het gewenste verificatie type kiezen.
+Als u Azure Active Directory wilt gebruiken, moet u het gewenste verificatietype kiezen.
 
 ![Microsoft Azure Active Directory-verificatie](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Op de volgende scherm afbeelding ziet u de **verbindings Details** voor **Windows-verificatie**:
+De volgende schermopname toont de **verbindingsgegevens** voor **Windows-verificatie**:
 
 ![Windows-verificatie](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-In de volgende scherm afbeelding ziet u de **verbindings Details** met **SQL-aanmelding**:
+De volgende schermopname toont de **verbindingsgegevens** via **SQL-aanmelding**:
 
 ![SQL-aanmelding](./media/get-started-azure-data-studio/2-database-details.png)
 
-Na een geslaagde aanmelding ziet u een dash board als volgt ![: dash board](./media/get-started-azure-data-studio/4-dashboard.png)
+Na een geslaagde aanmelding ziet u een dashboard zoals hieronder: ![Dashboard](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Query’s uitvoeren
 
-Nadat de verbinding tot stand is gebracht, kunt u een query uitvoeren op Synapse SQL met ondersteunde [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -instructies voor het exemplaar. Selecteer **nieuwe query** in de weer gave dash board om aan de slag te gaan.
+Wanneer verbinding is gemaakt, kunt u met behulp van ondersteunde [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-instructies query's op Synapse SQL uitvoeren aan de hand van het exemplaar. Selecteer **Nieuwe query** in de dashboardweergave om aan de slag te gaan.
 
 ![Nieuwe query](./media/get-started-azure-data-studio/5-new-query.png)
 
-U kunt bijvoorbeeld de volgende Transact-SQL-instructie gebruiken om een [query](query-parquet-files.md) uit te voeren op Parquet-bestanden met behulp van SQL op aanvraag:
+U kunt bijvoorbeeld de volgende Transact-SQL-instructie gebruiken om een [query uit te voeren op de Parquet-bestanden ](query-parquet-files.md) met behulp van SQL on demand:
 
 ```sql
 SELECT COUNT(*)
@@ -93,5 +93,5 @@ Verken andere manieren om verbinding te maken met Synapse SQL:
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Sqlcmd](get-started-connect-sqlcmd.md)
+- [sqlcmd](get-started-connect-sqlcmd.md)
  

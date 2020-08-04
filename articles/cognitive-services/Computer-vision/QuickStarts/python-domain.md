@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: domein-specifieke inhoud-REST, python'
+title: 'Quickstart: Domeinspecifieke inhoud - REST, Python'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u domeinmodellen om beroemdheden en oriëntatiepunten in een afbeelding te identificeren met behulp van de Computer Vision-API met Python.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 1869dbd7d6c323feaed849b3d26a360e28b4f509
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: a470166d0ed172d95e80fadeb26139a702f40bb2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985781"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387452"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Snelstart: Een externe domeinmodel gebruiken met de REST-API en Python in Computer Vision
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Quickstart: Een externe domeinmodel gebruiken met de REST-API en Python in Computer Vision
 
-In deze Snelstartgids gebruikt u een domein model om bezienswaardigheden of, eventueel, beroemdheden in een extern opgeslagen installatie kopie te identificeren met behulp van de Computer Vision REST API. Met de methode [Domeinspecifieke inhoud herkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) past u een domeinspecifiek model toe om inhoud in een afbeelding te herkennen.
+In deze quickstart gebruikt u een domeinmodel om oriëntatiepunten, of eventueel beroemdheden, in een extern opgeslagen afbeelding te identificeren met behulp van de REST API van Computer Vision. Met de methode [Domeinspecifieke inhoud herkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) past u een domeinspecifiek model toe om inhoud in een afbeelding te herkennen.
 
 U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter Notebook op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
 
@@ -28,12 +28,12 @@ U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter Notebook 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
 * [Python](https://www.python.org/downloads/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-landmarks-sample"></a>Het voorbeeld met oriëntatiepunten maken en uitvoeren
 
@@ -90,6 +90,7 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(landmark_name, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response-for-the-landmarks-sample"></a>Het antwoord voor het voorbeeld met de oriëntatiepunten bekijken
@@ -167,6 +168,7 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(celebrity_name, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response-for-the-celebrities-sample"></a>Het antwoord voor het voorbeeld met de beroemdheden bekijken
@@ -205,7 +207,7 @@ Verwijder de bestanden van beide voorbeelden wanneer u deze niet meer nodig hebt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken vervolgens een python-toepassing die Computer Vision gebruikt voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen.
+Een Python-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren; slim bijgesneden miniaturen maken; en visuele kenmerken in een afbeelding detecteren, categoriseren, labelen en beschrijven.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met Python](../Tutorials/PythonTutorial.md)

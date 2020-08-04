@@ -6,32 +6,31 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 07/16/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039460"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-return-azure-data-box-disk"></a>Zelfstudie: Azure Data Box Disk retourneren 
+# <a name="tutorial-return-azure-data-box-disk"></a>Zelfstudie: Azure Data Box Disk retourneren
 
-In deze zelfstudie wordt beschreven hoe u een planning kunt maken om uw Azure Data Box Disk te retourneren. De instructies voor het retourneren zijn afhankelijk van waarvandaan u het apparaat retourneert. 
+In deze zelfstudie wordt beschreven hoe u uw Azure Data Box Disk retourneert. De instructies voor het retourneren zijn afhankelijk van waarvandaan u het apparaat retourneert.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Een Data Box Disk naar Microsoft verzenden
-> * Data Box Disk vanuit verschillende regio's retourneren
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data Box-schijf en deze gegevens controleren](data-box-disk-deploy-copy-data.md).
-
 
 ## <a name="ship-data-box-disk-back"></a>Een Data Box Disk terugsturen
 
@@ -39,7 +38,7 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
 
 ::: zone target="chromeless"
 
-## <a name="return-azure-data-box-disk"></a>Azure Data Box Disk retourneren 
+## <a name="return-azure-data-box-disk"></a>Azure Data Box Disk retourneren
 
 ::: zone-end
 
@@ -51,7 +50,7 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
 
 De volgende stappen zijn afhankelijk van de locatie waarvandaan u het apparaat retourneert. De instructies zijn verschillend voor de VS/Canada, de Europese Unie (EU), Australië of Aziatische regio's/landen.
 
-### <a name="in-us-or-canada"></a>[In de VS of Canada](#tab/in-us-or-canada)
+### <a name="us-or-canada"></a>[VS of Canada](#tab/in-us-or-canada)
 
 Voer de volgende stappen uit als u het apparaat vanuit de VS of Canada retourneert.
 
@@ -67,7 +66,7 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS of Canada retournee
     - Als het trackingnummer niet wordt vermeld, moet u bij het afhalen door UPS extra kosten betalen.
     - In plaats van het ophalen te plannen, kunt u de Data Box Disk ook zelf naar de dichtstbijzijnde inleverlocatie brengen.
 
-### <a name="in-europe"></a>[In Europa](#tab/in-europe)
+### <a name="europe"></a>[Europa](#tab/in-europe)
 
 Voer de volgende stappen uit als u het apparaat vanuit Europa retourneert.
 
@@ -77,18 +76,18 @@ Voer de volgende stappen uit als u het apparaat vanuit Europa retourneert.
 
 2. Verzegel de verpakking en zorg ervoor dat het retourlabel zichtbaar is.
 3. Als u het apparaat in Europa met DHL retourneert, dient u een ophaalverzoek in door op de website van DHL het verzendnummer op te geven.
-4. Ga naar de DHL Express-website voor uw land/regio en kies **Boek een koerier pick-up > Online verzenden**.    
-3. Geef het nummer van de luchtvrachtbrief op en klik op **Boek een koerier** om een ophaalmoment te plannen.
+4. Ga naar de DHL Express-website voor uw land/regio en kies **Boek een koerier pick-up > Online verzenden**.
+5. Geef het nummer van de luchtvrachtbrief op en klik op **Boek een koerier** om een ophaalmoment te plannen.
 
-### <a name="in-australia"></a>[In Australië](#tab/in-australia)
+### <a name="australia"></a>[Australië](#tab/in-australia)
 
 Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle inkomende verzendingen moeten een melding vooraf hebben. Voer de volgende stappen uit voor retourneren vanuit Australië.
 
 1. Gebruik het meegeleverde retourlabel en controleer of de TAU-code (het referentienummer) erop staat. Als het retourlabel ontbreekt of als u andere problemen hebt, kunt u een e-mail sturen naar [Data Box Asia Operations](mailto:adbo@microsoft.com). Geef de ordernaam en details over het probleem op in de onderwerpregel.
-3. Bevestig het label op de doos. 
-4. Boek via de koppeling https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference online een afspraak voor de retourzending. 
+2. Bevestig het label op de doos.
+3. Boek via de koppeling https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference online een afspraak voor de retourzending. 
 
-### <a name="in-japan"></a>[In Japan](#tab/in-japan)
+### <a name="japan"></a>[Japan](#tab/in-japan)
 
 1. Schrijf als gegevens van de afzender uw bedrijfsnaam en adresgegevens op de vrachtbrief.
 2. Stuur een e-mail naar Quantium Solutions met behulp van de volgende e-mailsjabloon.
@@ -99,38 +98,37 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
     Body: 
     - Japan Post Yu-Pack tracking number (reference number)：
     - Requested pickup date：mmdd (Select a requested time slot from below).
-        a. 08：00-13：00 
-        b. 13：00-15：00 
-        c. 15：00-17：00 
-        d. 17：00-19：00 
+        a. 08：00-13：00
+        b. 13：00-15：00
+        c. 15：00-17：00
+        d. 17：00-19：00
     ```
     - **Als u retourneert vanuit Osaka**, wijzigt u het onderwerp in de e-mailsjabloon in: `Pickup request for Microsoft Azure OSA`.
-    - Als er geen vrachtbrief van Japan Post Chakubarai is meegeleverd of ontbreekt, vermeldt u dit in dit e-mail bericht. Quantium Solutions Japan zal Japan Post verzoeken om de vrachtbrief mee te nemen als het pakket wordt opgehaald.
+    - Als er geen vrachtbrief van Japan Post Chakubarai is meegeleverd of ontbreekt, vermeldt u dit in het e-mailbericht. Quantium Solutions Japan zal Japan Post verzoeken om de vrachtbrief mee te nemen als het pakket wordt opgehaald.
     - Als u meerdere orders hebt, moet u een e-mail verzenden om afzonderlijke pakketten te laten ophalen.
 
 3. U ontvangt per e-mail een bevestiging van Quantium Solutions nadat u het ophalen hebt afgesproken. De e-mailbevestiging bevat ook informatie over de Chakubarai-vrachtbrief.
 
 Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in het Japans) via: 
 
-- E-mail：Customerservice.JP@quantiumsolutions.com 
+- E-mail：[Customerservice.JP@quantiumsolutions.com](mailto:Customerservice.JP@quantiumsolutions.com)
 - Telefoon: 03-5755-0150 
 
-### <a name="in-korea"></a>[In Korea](#tab/in-korea)
+### <a name="korea"></a>[Korea](#tab/in-korea)
 
 1. Zorg ervoor dat u de vrachtbrief voor de retourzending bijlevert.
 2. Ophalen pakket aanvragen indien vrachtbrief aanwezig is:
     1. Bel de hotline van *Quantium Solutions International* op 070-8231-1418 (tijdens kantooruren, 10 tot 17 uur, maandag t/m vrijdag). U noemt *Microsoft Azure pickup* en het serviceaanvraagnummer om een ophaalafspraak te maken.  
     2. Als de hotline bezet is, stuurt u een e-mail aan `microsoft@rocketparcel.com`, met als onderwerp *Microsoft Azure Pickup* en het serviceaanvraagnummer als referentie.
-    3. Als de koerier niet komt om het pakket op te halen, belt u de hotline van *Quantium Solutions International* voor een alternatieve oplossing. 
+    3. Als de koerier niet komt om het pakket op te halen, belt u de hotline van *Quantium Solutions International* voor een alternatieve oplossing.
     4. U ontvangt een e-mail ter bevestiging van de ophaalafspraak.
 3. Voer deze stap alleen uit als de vrachtbrief niet aanwezig is. Ophalen aanvragen:
     1. Bel de hotline van *Quantium Solutions International* op 070-8231-1418 (tijdens kantooruren, 10 tot 17 uur, maandag t/m vrijdag). U noemt *Microsoft Azure pickup* en het serviceaanvraagnummer om een ophaalafspraak te maken. Geef op dat u een nieuwe vrachtbrief wilt hebben om een ophaalafspraak te maken. Vermeld de gegevens van de afzender (klant), de ontvanger (Azure-datacenter) en het referentienummer (serviceaanvraagnummer). 
     2. Als de hotline bezet is, stuurt u een e-mail aan `microsoft@rocketparcel.com`, met als onderwerp *Microsoft Azure Pickup* en het serviceaanvraagnummer als referentie.
-    3. Als de koerier niet komt om het pakket op te halen, belt u de hotline van *Quantium Solutions International* voor een alternatieve oplossing. 
+    3. Als de koerier niet komt om het pakket op te halen, belt u de hotline van *Quantium Solutions International* voor een alternatieve oplossing.
     4. U krijgt een mondelinge bevestiging als de aanvraag via de telefoon wordt gedaan.
 
-
-### <a name="in-singapore"></a>[In Singapore](#tab/in-singapore)
+### <a name="singapore"></a>[Singapore](#tab/in-singapore)
 
 1. Druk het verzendlabel af en bevestig het op de doos. Als het label is beschadigd of verloren is gegaan:
     - Ga naar **Overzicht > Verzendlabel downloaden** en download een retourlabel.
@@ -140,8 +138,8 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567 
-    Body: 
+    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Body:
      a.    Requestor name
      b.    Requestor contact number
      c.    Requestor collection address
@@ -150,16 +148,57 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 
    > [!NOTE]
    > Voor boekingsaanvragen op een werkdag:
-   > - Vóór 15.00 uur is de ophaaltijd op de volgende werkdag tussen 09.00 en 13.00.
-   > - Na 15.00 uur is de ophaaltijd op de volgende werkdag tussen 14.00 en 18.00.
+   >
+   > * Vóór 15.00 uur is de ophaaltijd op de volgende werkdag tussen 09.00 en 13.00.
+   > * Na 15.00 uur is de ophaaltijd op de volgende werkdag tussen 14.00 en 18.00.
 
    Als u problemen ondervindt, neemt u contact op met Data Box Operations Asia via adbo@microsoft.com. Geef de naam van de taak op in het onderwerp en het probleem dat is opgetreden.
 
 3. Overhandig het pakket aan de koerier.
 
-### <a name="in-self-managed"></a>[In Zelfbeheerd](#tab/in-selfmanaged)
+### <a name="china"></a>[China](#tab/in-china)
 
-Als u Data Box Disk gebruikt in Japan, Singapore, Korea, West-Europa of India en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies. 
+Voer de volgende stappen uit als het apparaat vanuit China retourneert.
+
+1. Plak het meegeleverde verzendlabel op de doos. Dit label bevat het traceringsnummer. Als het verzendlabel ontbreekt, kunt u een nieuw label downloaden via **Overzicht > Verzendlabel downloaden**.
+
+2. Stuur een e-mail naar FedEx Premier Customer Care met het traceringsnummer (referentienummer van de verzending) om de retournering te regelen. Gebruik hiervoor de volgende e-mailsjabloon:  
+
+   ```output
+   To: ying.bao@fedex.com;739951@fedex.com
+   Subject: Pickup request for Microsoft Azure : Order Name
+   Body: Need pick up for the below shipment
+   * FedEx tracking number (reference number)
+   * Requested pickup date：yyyy/mm/dd; time: HH MM
+   ```
+
+3. Nadat het boeken van de retournering is voltooid, ontvangt u een e-mailbevestiging van FedEx.  
+
+4. Als u problemen hebt, stuurt u een e-mail naar [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) met details van het aangetroffen probleem. Vermeld de ordernaam in de onderwerpregel.
+
+#### <a name="premier-customer-care-contact-information"></a>Contactgegevens van Premier Customer Care
+
+<ins>Primair</ins>
+
+| Contactgegevens | Details |
+|---|---|
+|Naam:       | Bao Ying|
+|Aanduiding | Senior OneCall Representative |
+|Telefoon:      | 400.889.6066 ext. 3693 |
+|E-mail:     | [ying.bao@fedex.com](mailto:ying.bao@fedex.com) |
+
+<ins>Een back-up maken</ins>
+
+| Contactgegevens | Details |
+|---|---|
+|Naam:       | He Xun|
+|Aanduiding | OneCall Representative |
+|Telefoon:      | 400.889.6066 ext. 3603 |
+|E-mail:     | [739951@fedex.com](mailto:739951@fedex.com) |
+
+### <a name="self-managed"></a>[Zelfbeheerd](#tab/in-selfmanaged)
+
+Als u Data Box Disk gebruikt in Japan, Singapore, Korea, West-Europa of India en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies.
 
 1. Ga naar de blade **Overzicht** van uw bestelling in de Azure-portal. Loop de instructies door die worden weergegeven wanneer u **Ophalen plannen**selecteert. U ziet een autorisatiecode die wordt gebruikt op het moment dat de bestelling wordt bezorgd.
 
@@ -168,11 +207,13 @@ Als u Data Box Disk gebruikt in Japan, Singapore, Korea, West-Europa of India en
     ```
     To: adbops@microsoft.com
     Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
-    Body: 
+    Body:
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
     ```
 3. Het Azure Data Box-team werkt samen met u verder om de bezorging bij het Azure-datacentrum te regelen.
+
+---
 
 ::: zone target="docs"
 
@@ -181,13 +222,13 @@ Als u Data Box Disk gebruikt in Japan, Singapore, Korea, West-Europa of India en
 In deze zelfstudie zijn verschillende onderwerpen besproken over de Azure Data Box-schijf, zoals:
 
 > [!div class="checklist"]
+>
 > * Een Data Box Disk naar Microsoft verzenden
-> * Data Box Disk vanuit verschillende regio's retourneren
 
 Ga naar de volgende procedure om te leren hoe u het uploaden van gegevens vanuit Data Box Disk naar het Azure Storage-account kunt controleren.
 
 > [!div class="nextstepaction"]
-> [Gegevens uploaden vanuit Azure Data Box Disk controleren](./data-box-disk-deploy-picked-up.md)
+> [Gegevens uploaden vanuit Azure Data Box Disk controleren](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
 

@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD-rollen beheren
       items:
-        - name: Functie-update
+        - name: Overzicht van de functies
           href: azure-ad-roles-features.md
         - name: PowerShell voor Azure AD-rollen
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: Aangepaste rollen gebruiken
           href: pim-resource-roles-custom-role-policy.md
+    - name: Groepen met uitgebreide toegang (preview-versie) beheren
+      items:
+        - name: Overzicht uitgebreide toegang
+          href: groups-features.md
+        - name: Groepen ontdekken
+          href: groups-discover-groups.md
+        - name: Lid of eigenaar toewijzen
+          href: groups-assign-member-owner.md
+        - name: Aanvragen goedkeuren
+          href: groups-approval-workflow.md
+        - name: Toewijzingen uitbreiden of vernieuwen
+          href: groups-renew-extend.md
+        - name: Rolinstellingen configureren
+          href: groups-role-settings.md
+        - name: Controlegeschiedenis weergeven
+          href: groups-audit.md
     - name: Problemen met PIM oplossen
       href: pim-troubleshoot.md
     - name: Toegangsbeoordelingen

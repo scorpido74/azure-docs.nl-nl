@@ -4,43 +4,43 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 1b8d557d36b0265e9c32d4af6ca7435697531a50
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: ee6b6c29c89c39c72144371af8268760da843170
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637543"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375490"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
-> * Een bot maken die is verbonden met het [directe-lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+> * [Een resource voor de Azure Speech-service maken](../../../../get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
+> * Een bot maken die verbonden is met het [Direct Line Speech-kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
 >
   > [!NOTE]
-  > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
+  > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
 
 ## <a name="setup-your-environment"></a>Uw omgeving instellen
 
-Werk het bestand go. rest met de nieuwste SDK-versie bij door deze regel toe te voegen
+Werk het bestand go.mod bij met de nieuwste SDK-versie door deze regel toe te voegen
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.1
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
 )
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
-Vervang de inhoud van het bron bestand (bijvoorbeeld `quickstart.go` ) door de onderstaande, waaronder:
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
+Vervang de inhoud van het bronbestand (bijvoorbeeld `quickstart.go`) door de onderstaande, die het volgende bevat:
 
-- de hoofd definitie van het pakket
+- definitie van het 'main'-pakket
 - de benodigde modules importeren uit de Speech SDK
-- variabelen voor het opslaan van de bot-informatie die later in deze Quick Start wordt vervangen
-- een eenvoudige implementatie met behulp van de microfoon voor audio-invoer
-- gebeurtenis-handlers voor verschillende gebeurtenissen die plaatsvinden tijdens een spraak interactie
+- variabelen voor het opslaan van de botgegevens die later in deze quickstart worden vervangen
+- een eenvoudige implementatie waarin de microfoon wordt gebruikt voor audio-invoer
+- gebeurtenis-handlers voor verschillende gebeurtenissen die plaatsvinden tijdens spraakinteractie
 
 ```sh
 package main
@@ -96,33 +96,33 @@ func main() {
 }
 ```
 
-Vervang de `YOUR_SUBSCRIPTION_KEY` waarden en door de `YOUR_BOT_REGION` werkelijke waarden van de spraak resource.
+Vervang de waarden `YOUR_SUBSCRIPTION_KEY` en `YOUR_BOT_REGION` door de werkelijke waarden van de Spraak-resource.
 
-- Ga naar het Azure Portal en open uw spraak resource
-- Er zijn twee beschik bare abonnements sleutels onder **sleutels en eind punt** aan de linkerkant.
-    - Gebruik een van beide als `YOUR_SUBSCRIPTION_KEY` vervanging van de waarde
-- Noteer de regio onder het **overzicht** aan de linkerkant en wijs deze toe aan de regio-id
-    - Gebruik de regio-id als `YOUR_BOT_REGION` vervanging van de waarde, bijvoorbeeld: `"westus"` for **VS West**
-
-   > [!NOTE]
-   > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
+- Ga naar Azure Portal en open uw Spraak-resource
+- Onder **Sleutels en Eindpunt** aan de linkerkant bevinden zich twee beschikbare abonnementssleutels
+    - Gebruik een van beide als vervanging van de waarde `YOUR_SUBSCRIPTION_KEY`
+- Noteer de regio onder **Overzicht** aan de linkerkant en wijs deze toe aan de regio-id
+    - Gebruik de regio-id als vervanging van de waarde `YOUR_BOT_REGION`, bijvoorbeeld `"westus"` voor **US - west**
 
    > [!NOTE]
-   > Zie voor meer informatie over het configureren van uw bot de bot Framework-documentatie voor [het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+   > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
 
-## <a name="code-explanation"></a>Uitleg bij code
-De sleutel en de regio voor spraak abonnementen zijn vereist voor het maken van een spraak configuratie object. Het configuratie object is vereist voor het instantiëren van een spraak herkennings object.
+   > [!NOTE]
+   > Zie de Bot Framework-documentatie voor [het Direct Line Speech-kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) voor meer informatie over het configureren van uw bot.
 
-Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voor beeld wordt spraak continu herkend. Deze functionaliteit zorgt ervoor dat de spraak service weet dat u veel zinsdelen verzendt voor herkenning en wanneer het programma stopt met het herkennen van spraak. Als er resultaten worden verkregen, worden deze door de code naar de console geschreven.
+## <a name="code-explanation"></a>Uitleg bij de code
+De sleutel en de regio voor het Spraak-abonnement zijn vereist voor het maken van een spraakconfiguratieobject. Het configuratieobject is vereist voor het instantiëren van een spraakherkenningsobject.
+
+Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voorbeeld wordt spraak continu herkend. Door deze functionaliteit weet de Spraakservice dat u veel frasen ter herkenning verzendt, en dat het herkennen van spraak moet stoppen wanneer het programma wordt beëindigd. Wanneer er resultaten worden verkregen, worden deze door de code naar de console geschreven.
 
 ## <a name="build-and-run"></a>Bouwen en uitvoeren
-U bent nu ingesteld om uw project te bouwen en uw aangepaste spraak assistent te testen met behulp van de spraak service.
-1. Bouw uw project, bijvoorbeeld **' go build '**
-2. Voer de module uit en spreek een zinsdeel of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die als uitvoer wordt weer gegeven.
+U bent nu klaar om uw app te bouwen en uw aangepaste spraakassistent met behulp van de Spraakservice te testen.
+1. Compileer uw project, bijvoorbeeld **'go-build'**
+2. Voer de module uit en spreek enkele woorden of een zin in de microfoon van uw apparaat. De gesproken tekst wordt verzonden naar de Direct Line Speech-service en getranscribeerd naar tekst, die als uitvoer wordt weergegeven.
 
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

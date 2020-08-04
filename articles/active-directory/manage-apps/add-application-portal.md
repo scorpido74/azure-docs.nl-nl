@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145727"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338024"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Een toepassing toevoegen aan uw Azure Active Directory-tenant (Azure AD)
 
@@ -53,7 +53,7 @@ Om een toepassing toevoegen aan uw Azure Active Directory-tenant:
 6. U kunt door de galerie bladeren naar de toepassing die u wilt toevoegen, of de toepassing zoeken door de naam ervan in het zoekvak in te voeren. Selecteer vervolgens de toepassing in de resultaten. U kunt in het formulier de naam van de toepassing bewerken zodat deze overeenkomt met de behoeften in uw organisatie. In dit voorbeeld hebben we GitHub geselecteerd en de naam gewijzigd in **GitHub-test**.
     ![Geeft weer hoe u een toepassing kunt toevoegen vanuit de galerie](media/add-application-portal/create-application.png)
     >[!TIP]
-    >Als de toepassing die u zoekt zich niet in de galerie bevindt, dan kunt u klikken op de koppeling **Uw eigen toepassing maken**. Microsoft heeft al met veel ontwikkelaars van toepassingen samengewerkt om ze voor te configureren voor Azure AD. Dit zijn de apps die in de galerie worden weergegeven. Maar als de app die u wilt toevoegen niet wordt weergegeven, dan kunt u een nieuwe, algemene app maken en deze vervolgens zelf configureren of de richtlijnen van de ontwikkelaar volgen om dat te doen.
+    >Als de toepassing die u zoekt niet in de galerie staat, klikt u op de koppeling **Uw eigen toepassing maken**. Kies vervolgens onder **Wat wilt u met uw toepassing doen?** op **Een toepassing integreren die niet aanwezig is in de galerie**. Microsoft heeft al met veel ontwikkelaars van toepassingen samengewerkt om ze voor te configureren voor Azure AD. Dit zijn de apps die in de galerie worden weergegeven. Maar als de app die u wilt toevoegen niet wordt weergegeven, dan kunt u een nieuwe, algemene app maken en deze vervolgens zelf configureren of de richtlijnen van de ontwikkelaar volgen om dat te doen.
 7. Selecteer **Maken**. Er wordt nu een pagina Aan de slag weergegeven met de opties voor het configureren van de toepassing voor uw organisatie.
 
 U hebt een toepassing toegevoegd. In de volgende quickstart ziet u hoe u het logo kunt wijzigen en andere eigenschappen van de toepassing kunt bewerken.

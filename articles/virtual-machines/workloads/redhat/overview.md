@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Red Hat-workloads op Azure | Microsoft Docs
-description: Meer informatie over de product aanbiedingen van Red Hat die beschikbaar zijn op Azure.
+description: Meer informatie over de productaanbiedingen van Red Hat die beschikbaar zijn op Azure.
 services: virtual-machines-linux
 author: asinn826
 manager: borisb2015
@@ -9,56 +9,56 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052121"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-workloads op Azure
 
-Red Hat-workloads worden ondersteund door diverse aanbiedingen op Azure. Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn de kern van RHEL-workloads, zoals de Red Hat Update infrastructure (RHUI).
+Red Hat-workloads worden ondersteund door diverse aanbiedingen op Azure. Red Hat Enterprise Linux (RHEL)-installatiekopieën zijn de kern van RHEL-workloads, zoals de Red Hat Update Infrastructure (RHUI).
 
-## <a name="red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux installatie kopieën
+## <a name="red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux-installatiekopieën
 
-Azure biedt een breed aanbod aan RHEL-installatie kopieën in Azure. Deze installatie kopieën worden beschikbaar gesteld via twee verschillende licentie modellen: betalen per gebruik en uw eigen abonnement (BYOS). Nieuwe RHEL-installatie kopieën in Azure worden gepubliceerd wanneer nieuwe RHEL-versies in hun levens duur worden uitgebracht en bijgewerkt, indien nodig.
+Azure biedt een breed aanbod aan RHEL-installatiekopieën in Azure. Deze installatiekopieën worden beschikbaar gesteld via twee verschillende licentiemodellen: betalen per gebruik en bring-your-own-subscription (BYOS). Nieuwe RHEL-installatiekopieën in Azure worden gepubliceerd wanneer nieuwe RHEL-versies in hun levensduur worden uitgebracht en bijgewerkt, indien nodig.
 
-### <a name="pay-as-you-go-images"></a>Betalen per gebruik-installatie kopieën
+### <a name="pay-as-you-go-images"></a>Betalen per gebruik-installatiekopieën
 
-Azure biedt een aantal RHEL betalen per gebruik-installatie kopieën. Deze installatie kopieën zijn goed in aanmerking voor RHEL en zijn gekoppeld aan een bron van updates (Red Hat update Infrastructure). Met deze installatie kopieën worden Premium-kosten in rekening gebracht voor het RHEL recht en de updates. RHEL-varianten voor betalen per gebruik zijn onder andere:
+Azure biedt een aantal RHEL betalen per gebruik-installatiekopieën. Deze installatiekopieën zijn geschikt voor RHEL en zijn gekoppeld aan een bron van updates (Red Hat Update Infrastructure). Met deze installatiekopieën worden Premium-kosten in rekening gebracht voor het RHEL-recht en de updates. RHEL-varianten voor betalen per gebruik zijn onder andere:
 
 * Standaard RHEL.
-* RHEL voor SAP.
-* RHEL voor SAP met hoge Beschik baarheid en Update Services.
+* RHEL for SAP.
+* RHEL for SAP met hoge beschikbaarheid en Update Services.
 
-U kunt de betalen per gebruik-installatie kopieën gebruiken als u zich geen zorgen meer wilt maken over het aantal afzonderlijke abonnementen.
+U kunt de betalen per gebruik-installatiekopieën gebruiken als u zich geen zorgen meer wilt maken over het aantal afzonderlijke abonnementen.
 
-### <a name="red-hat-gold-images"></a>Red Hat Gold-installatie kopieën
+### <a name="red-hat-gold-images"></a>Red Hat Gold-installatiekopieën
 
-Azure biedt ook Red Hat Gold-installatie`rhel-byos`kopieën (). Deze installatie kopieën kunnen nuttig zijn voor klanten die bestaande Red Hat-abonnementen hebben en ze willen gebruiken in Azure. U bent verplicht uw bestaande Red Hat-abonnementen voor Red Hat Cloud Access in te scha kelen voordat u deze kunt gebruiken in Azure. Toegang tot deze installatie kopieën wordt automatisch verleend wanneer uw Red Hat-abonnementen zijn ingeschakeld voor Cloud toegang en voldoen aan de vereisten voor de geschiktheid. Door gebruik te maken van deze installatie kopieën kan een klant dubbele facturering voor komen die kan worden gemaakt met behulp van de betalen per gebruik-installatie kopie.
-* Meer informatie over [het inschakelen van uw Red Hat-abonnementen voor Cloud toegang met Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
-* Meer informatie over het [zoeken naar Red Hat Gold-installatie kopieën in de Azure Portal, de Azure CLI of de Power shell-cmdlet](./byos.md).
+Azure biedt ook Red Hat Gold-installatiekopieën (`rhel-byos`). Deze installatiekopieën kunnen nuttig zijn voor klanten die bestaande Red Hat-abonnementen hebben en ze willen gebruiken in Azure. U bent verplicht uw bestaande Red Hat-abonnementen voor Red Hat Cloud Access in te schakelen voordat u deze kunt gebruiken in Azure. Toegang tot deze installatiekopieën wordt automatisch verleend wanneer uw Red Hat-abonnementen zijn ingeschakeld voor Cloudtoegang en voldoen aan de geschiktheidsvereisten. Door gebruik te maken van deze installatiekopieën kan een klant dubbele facturering voorkomen die kan ontstaan door het gebruik van de betalen per gebruik-installatiekopie.
+* Lees hoe u uw [Red Hat-abonnementen kunt gebruiken voor Cloud-toegang met Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
+* Meer informatie over [het vinden van de Red Hat Gold-installatiekopieën in Azure Portal, Azure CLI of de PowerShell-cmdlet](./byos.md).
 
 > [!NOTE]
-> Dubbele facturering wordt gedaan wanneer een gebruiker twee keer betaalt voor RHEL-abonnementen. Dit scenario treedt meestal op wanneer een klant een Red Hat Subscription-Manager gebruikt om een recht te koppelen aan een RHEL-VM met betalen per gebruik. Een klant die bijvoorbeeld gebruikmaakt van abonnement-manager om een recht te koppelen voor SAP-pakketten op een RHEL betalen per gebruik-installatie kopie, wordt indirect dubbel gefactureerd, omdat ze twee keer betalen voor RHEL. Ze betalen eenmaal via de betalen naar gebruik-tarieven en eenmaal via hun SAP-abonnement. Dit scenario heeft geen effect op het BYOS van installatie kopie gebruikers.
+> Dubbele facturering komt voor wanneer een gebruiker twee keer betaalt voor RHEL-abonnementen. Dit scenario treedt meestal op wanneer een klant een Red Hat Subscription-Manager gebruikt om een recht te koppelen aan een RHEL-VM met betalen per gebruik. Een klant die bijvoorbeeld gebruikmaakt van Subscription-Manager om een recht te koppelen voor SAP-pakketten op een RHEL betalen per gebruik-installatiekopie, wordt indirect dubbel gefactureerd, omdat hij twee keer betaalt voor RHEL. Hij betaalt eenmaal via de betalen per gebruik-tarieven en eenmaal via zijn SAP-abonnement. Dit scenario komt niet voor bij gebruikers van de BYOS-installatiekopie.
 
-### <a name="generation-2-images"></a>Installatie kopieën van de 2e generatie
+### <a name="generation-2-images"></a>Installatiekopieën van de 2e generatie
 
-Virtuele machines van de tweede generatie bieden een aantal nieuwere functies vergeleken met virtuele machines van de eerste generatie. Zie de documentatie van de [tweede generatie](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)voor meer informatie. Het belangrijkste verschil van een RHEL-afbeeldings perspectief is dat virtuele machines van de tweede generatie een UEFI gebruiken in plaats van BIOS-Firmware-Interface. Ze gebruiken ook een GUID-partitie tabel (GPT) in plaats van een Master Boot Record (MBR) op de opstart tijd. Het gebruik van een GPT maakt onder andere de grootte van het besturings systeem schijf groter dan 2 TB. Daarnaast worden de Vm's uit de [Mv2-serie](../../mv2-series.md) alleen uitgevoerd op installatie kopieën van de tweede generatie.
+Virtuele machines (VM's) van de 2e generatie bieden een aantal nieuwere functies in vergelijking met virtuele machines van de 1e generatie. Voor meer informatie raadpleegt u de [documentatie over de 2e generatie](../../linux/generation-2.md). Het belangrijkste verschil van een RHEL-installatiekopieperspectief is dat virtuele machines van de 2e generatie een UEFI gebruiken in plaats van BIOS-firmware-interface. Ze gebruiken ook een GUID-partitietabel (GPT) in plaats van een Master Boot Record (MBR) bij het opstarten. Het gebruik van een GPT maakt onder andere een besturingssysteemschijf die groter is dan 2 TB mogelijk. Daarnaast worden de [VM's van de Mv2-serie](../../mv2-series.md) alleen uitgevoerd op installatiekopieën van de 2e generatie.
 
-RHEL Generation 2-installatie kopieën zijn beschikbaar op de Azure Marketplace. Zoek naar ' Gen2 ' in de afbeeldings-SKU in de lijst met alle installatie kopieën die worden weer gegeven wanneer u de Azure CLI gebruikt. Ga naar het tabblad **Geavanceerd** in het implementatie proces van de VM om een virtuele machine van de tweede generatie te implementeren.
+RHEL installatiekopieën van de 2e generatie zijn beschikbaar via Azure Marketplace. Zoek naar Gen2 in de installatiekopie-SKU in de lijst met alle installatiekopieën die worden weergegeven wanneer u Azure CLI gebruikt. Ga naar het tabblad **Geavanceerd** in het implementatieproces van de VM om een virtuele machine van de 2e generatie te implementeren.
 
 ## <a name="red-hat-update-infrastructure"></a>Update-infrastructuur voor Red Hat
 
-Azure biedt alleen een Red Hat update-infra structuur voor RHEL Vm's met betalen per gebruik. RHUI is in feite een mirror van de Red Hat Cdn's, maar is alleen toegankelijk voor de Azure betalen naar gebruik-RHEL Vm's. U hebt toegang tot de juiste pakketten, afhankelijk van de RHEL installatie kopie die u hebt geïmplementeerd. Zo heeft een RHEL voor SAP-installatie kopie ook toegang tot de SAP-pakketten en base RHEL-pakketten.
+Azure biedt alleen een Red Hat Update-infrastructuur voor RHEL VM's met betalen per gebruik. RHUI is in feite een mirror van de Red Hat CDN's, maar is alleen toegankelijk voor de RHEL VM's van Azure betalen per gebruik. U hebt toegang tot de juiste pakketten, afhankelijk van de RHEL-installatiekopie die u hebt geïmplementeerd. Zo heeft een RHEL voor een SAP-installatiekopie ook toegang tot de SAP-pakketten en basis RHEL-pakketten.
 
 ### <a name="rhui-update-behavior"></a>Gedrag van RHUI-updates
 
-RHEL-installatie kopieën die zijn verbonden met RHUI update, zijn standaard de meest recente secundaire `yum update` versie van RHEL wanneer een wordt uitgevoerd. Dit gedrag houdt in dat een RHEL 7,4 VM kan worden bijgewerkt naar RHEL 7,7 als `yum update` er een bewerking wordt uitgevoerd. Dit gedrag is inherent aan het ontwerp voor RHUI. Als u dit upgrade gedrag wilt beperken, schakelt u van normale RHEL-opslag plaatsen naar [uitgebreide ondersteuning voor update-opslag](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)plaatsen.
+RHEL-installatiekopieën die zijn verbonden met RHUI, worden standaard bijgewerkt naar de meest recente secundaire versie van RHEL wanneer een `yum update` wordt uitgevoerd. Dit gedrag houdt in dat een RHEL 7.4-VM kan worden bijgewerkt naar RHEL 7.7 als er een `yum update` bewerking wordt uitgevoerd. Dit gedrag is standaard voor RHUI. Als u dit upgradegedrag wilt beperken, schakelt u over van reguliere RHEL-opslagplaatsen naar [opslagplaatsen met uitgebreide ondersteuning voor bijwerken](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [RHEL-installatie kopieën in azure](./redhat-images.md).
-* Meer informatie over de [infra structuur voor Red Hat-updates](./redhat-rhui.md).
-* Meer informatie over de [aanbieding voor Red Hat Gold`rhel-byos`image ()](./byos.md).
+* Meer informatie over [RHEL-installatiekopieën in Azure](./redhat-images.md).
+* Meer informatie over [Red Hat Update-infrastructuur](./redhat-rhui.md).
+* Meer informatie over de [Red Hat Gold image (`rhel-byos`)-aanbieding](./byos.md).
