@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: Een apparaat met meerdere onderdelen verbinden (Python)
       href: tutorial-multiple-components-python.md
+    - name: MQTT gebruiken om een apparaat te verbinden
+      href: tutorial-use-mqtt.md
 - name: Concepten
   items:
     - name: Architectuur
