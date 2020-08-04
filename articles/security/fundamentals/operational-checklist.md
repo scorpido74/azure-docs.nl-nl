@@ -1,6 +1,6 @@
 ---
 title: Azure-controle lijst voor operationele beveiliging | Microsoft Docs
-description: Dit artikel bevat een set controle lijsten voor Azure Operational Security.
+description: Bekijk deze controle lijst om uw onderneming te helpen bij het bedenken van Azure-operationele beveiligings overwegingen.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c7c44018bb1a010298738d3e46b7b9e7b6c04292
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 656459c4a29a73732b8825e735719731a0979a0e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448309"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542922"
 ---
 # <a name="azure-operational-security-checklist"></a>Controle lijst voor operationele beveiliging van Azure
 Het implementeren van een toepassing op Azure is snel, eenvoudig en voordelig. Voordat u de Cloud toepassing in productie implementeert, is het handig om een controle lijst te hebben voor het evalueren van uw toepassing op basis van een lijst met essentiële en aanbevolen operationele beveiligings acties waarmee u rekening moet houden.

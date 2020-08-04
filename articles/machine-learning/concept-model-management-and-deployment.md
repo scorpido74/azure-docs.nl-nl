@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82929754"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543381"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -74,7 +74,7 @@ Zie de sectie model registreren van [modellen implementeren](how-to-deploy-and-w
 ### <a name="profile-models"></a>Profiel modellen
 
 Azure Machine Learning kunt u meer inzicht krijgen in de vereisten voor de CPU en het geheugen van de service die wordt gemaakt wanneer u uw model implementeert. Profile ring test de service die uw model uitvoert en retourneert informatie zoals het CPU-gebruik, het geheugen gebruik en de reactie latentie. Het biedt ook een aanbeveling van CPU en geheugen op basis van het resource gebruik.
-Zie de sectie Profiler van [modellen implementeren](how-to-deploy-and-where.md#profilemodel)voor meer informatie.
+Zie de sectie Profiler van [modellen implementeren](how-to-deploy-profile-model.md)voor meer informatie.
 
 ### <a name="package-and-debug-models"></a>Pakket-en fout opsporings modellen
 
@@ -94,16 +94,16 @@ Voor meer informatie over ONNX met Azure Machine Learning raadpleegt u het artik
 
 Getrainde machine learning modellen worden geïmplementeerd als webservices in de Cloud of lokaal. U kunt modellen ook implementeren op Azure IoT Edge apparaten. Implementaties gebruiken CPU, GPU of veld-Programmeer bare poort matrices (FPGA) voor het afvoeren. U kunt ook modellen van Power BI gebruiken.
 
-Wanneer u een model als een webservice of IoT Edge apparaat gebruikt, geeft u de volgende items op:
+Wanneer u een model als een webservice of IoT Edge-apparaat gebruikt, geeft u de volgende items op:
 
 * De modellen die worden gebruikt voor het bepalen van de gegevens die naar de service/het apparaat worden verzonden.
 * Een invoerscript. Dit script accepteert aanvragen, maakt gebruik van de model (en) om de gegevens te beoordelen en retourneert een antwoord.
 * Een Azure Machine Learning omgeving waarin de PIP-en Conda-afhankelijkheden worden beschreven die vereist zijn voor de model (len) en het vermeldings script.
 * Alle extra assets, zoals tekst, gegevens, enzovoort, die vereist zijn voor de model (len) en het vermeldings script.
 
-U kunt ook de configuratie van het platform voor doel implementatie opgeven. Bijvoorbeeld, het type van de VM-familie, het beschik bare geheugen en het aantal kernen bij het implementeren naar Azure Kubernetes service.
+U geeft ook de configuratie van het doelimplementatieplatform op. Bijvoorbeeld, het type van de VM-familie, het beschik bare geheugen en het aantal kernen bij het implementeren naar Azure Kubernetes service.
 
-Wanneer de installatie kopie is gemaakt, worden de onderdelen die zijn vereist door Azure Machine Learning ook toegevoegd. Bijvoorbeeld activa die nodig zijn om de webservice uit te voeren en te communiceren met IoT Edge.
+Wanneer de installatiekopie is gemaakt, worden ook de onderdelen toegevoegd die worden vereist door Azure Machine Learning. Bijvoorbeeld assets die nodig zijn om de webservice uit te voeren en te communiceren met IoT Edge.
 
 #### <a name="batch-scoring"></a>Batchscore
 Batch scores worden ondersteund via ML-pijp lijnen. Zie [batch voorspellingen op Big Data](how-to-use-parallel-run-step.md)voor meer informatie.

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077941"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543466"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -66,7 +66,7 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure IoT Hub** | Micro soft. devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Micro soft.-sleutel kluis/-kluizen    | kluis |
-|**Azure Kubernetes Service - Kubernetes API** | Micro soft. container service/managedClusters    | managedCluster |
+|**Azure Kubernetes Service - Kubernetes API** | Micro soft. container service/managedClusters    | beheer |
 |**Azure Search** | Micro soft. Search/searchService| searchService|  
 |**Azure Container Registry** | Micro soft. ContainerRegistry/registers    | registry |
 |**Azure App Configuration** | Micro soft. Appconfiguration/configurationStores    | configurationStores |

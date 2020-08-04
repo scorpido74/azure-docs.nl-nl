@@ -1,6 +1,6 @@
 ---
 title: Azure-infrastructuur beveiliging | Microsoft Docs
-description: In dit artikel wordt beschreven hoe micro soft werkt om onze Azure-data centers te beveiligen.
+description: Meer informatie over hoe micro soft de Azure-data centers kan beveiligen. De data centers worden beheerd, bewaakt en beheerd door micro soft-werk personeel.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72595408"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543925"
 ---
 # <a name="azure-infrastructure-security"></a>Azure-infrastructuur beveiliging
 Microsoft Azure wordt uitgevoerd in data centers die worden beheerd en beheerd door micro soft. Deze geografisch verspreide data centers voldoen aan de belangrijkste industrie normen, zoals ISO/IEC 27001:2013 en NIST SP 800-53, voor beveiliging en betrouw baarheid. De data centers worden beheerd, bewaakt en beheerd door micro soft-werk personeel. De werk nemers hebben jaren ervaring met het leveren van de grootste onlineservices ter wereld met een continuïteit van 24 x 7.
@@ -37,7 +37,7 @@ In deze reeks artikelen vindt u informatie over wat micro soft doet bij het beve
 - [Bewerkingen](infrastructure-operations.md)
 - [Controle](infrastructure-monitoring.md)
 - [Gegevensintegriteit](infrastructure-integrity.md)
-- [Gegevensbescherming](protection-customer-data.md)
+- [Gegevensbeveiliging](protection-customer-data.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
 title: Controle lijst voor Azure data base Security | Microsoft Docs
-description: Dit artikel bevat een set controle lijsten voor Azure data base Security.
+description: Gebruik de controle lijst voor beveiliging van Azure data base om ervoor te zorgen dat u belang rijke beveiligings problemen voor Cloud Computing verhelpt.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021837"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542973"
 ---
 # <a name="azure-database-security-checklist"></a>Controle lijst voor Azure data base-beveiliging
 
@@ -44,7 +44,7 @@ Cloud Computing vereist nieuwe beveiligings modellen die niet bekend zijn bij ve
 We raden u aan het artikel over de [Best practices van Azure data base Security](database-best-practices.md) te lezen voordat u deze controle lijst controleert. U kunt deze controle lijst optimaal benutten wanneer u de aanbevolen procedures begrijpt. U kunt deze controle lijst vervolgens gebruiken om ervoor te zorgen dat u de belang rijke problemen in azure data base Security hebt opgelost.
 
 
-|Controlelijst categorie| Description|
+|Controlelijst categorie| Beschrijving|
 | ------------ | -------- |
 |**Gegevens beveiligen**||
 | <br> Versleuteling in Motion/Transit| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), voor gegevens versleuteling wanneer gegevens worden verplaatst naar de netwerken.</li><li>Data base vereist beveiligde communicatie van clients op basis van het [TDS-protocol (Tabular Data stream)](https://msdn.microsoft.com/library/dd357628.aspx) via TLS (Transport Layer Security).</li></ul> |

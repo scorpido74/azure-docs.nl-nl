@@ -1,20 +1,20 @@
 ---
-title: Azure Disk Encryption voor virtuele machines en virtuele-machine schaal sets
-description: Dit artikel bevat een overzicht van Azure Disk Encryption
+title: Azure Disk Encryption voor virtuele machines en virtuele-machineschaalsets
+description: Meer informatie over Azure Disk Encryption voor virtuele machines (Vm's) en VM-schaal sets. Azure Disk Encryption werkt zowel voor Linux-als Windows-Vm's.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062127"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543670"
 ---
-# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption voor virtuele machines en virtuele-machine schaal sets
+# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption voor virtuele machines en virtuele-machineschaalsets
 
 Azure Disk Encryption kan worden toegepast op virtuele machines met Linux en Windows, en op virtuele-machine schaal sets. 
 
@@ -25,7 +25,7 @@ De volgende artikelen bevatten richt lijnen voor het versleutelen van virtuele L
 ### <a name="current-version-of-azure-disk-encryption"></a>Huidige versie van Azure Disk Encryption
 
 - [Overzicht van Azure Disk Encryption voor Linux-VM's](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Azure Disk Encryption-scenario's voor Linux-VM's](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Azure Disk Encryption-scenario's voor virtuele Linux-machines](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Een virtuele Linux-machine maken en versleutelen met Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)

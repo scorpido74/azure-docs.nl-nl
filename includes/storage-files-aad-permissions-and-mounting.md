@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544967"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545276"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 toegangs machtigingen toewijzen aan een identiteit
 
@@ -28,7 +28,7 @@ We hebben drie ingebouwde rollen geïntroduceerd voor het verlenen van machtigin
 > [!IMPORTANT]
 > Volledig beheer van een bestands share, inclusief de mogelijkheid om eigenaar te worden van een bestand, vereist het gebruik van de sleutel van het opslag account. Beheer beheer wordt niet ondersteund met Azure AD-referenties.
 
-U kunt de Azure Portal, Power shell of Azure CLI gebruiken om de ingebouwde rollen toe te wijzen aan de Azure AD-identiteit van een gebruiker voor het verlenen van machtigingen op share niveau. Houd er rekening mee dat de toewijzing van RBAC-rollen op share niveau enige tijd kan duren. 
+U kunt de Azure Portal, Power shell of Azure CLI gebruiken om de ingebouwde rollen toe te wijzen aan de Azure AD-identiteit van een gebruiker voor het verlenen van machtigingen op share niveau. Houd er rekening mee dat de toewijzing van Azure-rollen op share niveau enige tijd kan duren. 
 
 > [!NOTE]
 > Vergeet niet om [uw AD DS referenties te synchroniseren met Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) als u van plan bent om uw on-premises AD DS voor verificatie te gebruiken. Wachtwoord-hash-synchronisatie van AD DS naar Azure AD is optioneel. Machtigingen op share niveau worden verleend aan de Azure AD-identiteit die is gesynchroniseerd met uw on-premises AD DS.
@@ -36,7 +36,7 @@ U kunt de Azure Portal, Power shell of Azure CLI gebruiken om de ingebouwde roll
 De algemene aanbeveling is om machtigingen op share niveau te gebruiken voor toegangs beheer op hoog niveau tot een AD-groep die een groep gebruikers en identiteiten vertegenwoordigt. vervolgens wordt gebruikgemaakt van NTFS-machtigingen voor gedetailleerd toegangs beheer op Directory-of bestands niveau. 
 
 #### <a name="azure-portal"></a>Azure Portal
-Voer de volgende stappen uit om een RBAC-rol toe te wijzen aan een Azure AD-identiteit met behulp van de [Azure Portal](https://portal.azure.com):
+Voer de volgende stappen uit om een Azure-rol toe te wijzen aan een Azure AD-identiteit met behulp van de [Azure Portal](https://portal.azure.com):
 
 1. Ga in het Azure Portal naar de bestands share of [Maak een bestands share](../articles/storage/files/storage-how-to-create-file-share.md).
 2. Selecteer **Access Control (IAM)**.
@@ -46,7 +46,7 @@ Voer de volgende stappen uit om een RBAC-rol toe te wijzen aan een Azure AD-iden
 
 #### <a name="powershell"></a>PowerShell
 
-In het volgende Power shell-voor beeld ziet u hoe u een RBAC-rol toewijst aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md)voor meer informatie over het toewijzen van RBAC-rollen met Power shell.
+In het volgende Power shell-voor beeld ziet u hoe u een Azure-rol toewijst aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md)voor meer informatie over het toewijzen van Azure-functies met Power shell.
 
 Voordat u het volgende voorbeeld script uitvoert, moet u de waarden van de tijdelijke aanduidingen vervangen door uw eigen waarden.
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>CLI
   
-De volgende CLI 2,0-opdracht laat zien hoe u een RBAC-rol toewijst aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure cli](../articles/role-based-access-control/role-assignments-cli.md)voor meer informatie over het toewijzen van RBAC-rollen met Azure cli. 
+De volgende CLI 2,0-opdracht laat zien hoe u een Azure-rol toewijst aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure cli](../articles/role-based-access-control/role-assignments-cli.md)voor meer informatie over het toewijzen van Azure-rollen met Azure cli. 
 
 Voordat u het volgende voorbeeld script uitvoert, moet u de waarden van de tijdelijke aanduidingen vervangen door uw eigen waarden.
 
@@ -130,7 +130,7 @@ Zie voor meer informatie over het gebruik van icacls voor het instellen van NTFS
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 een bestands share koppelen vanaf een virtuele machine die is gekoppeld aan een domein
 
-Met het volgende proces wordt gecontroleerd of uw bestands share en toegangs machtigingen juist zijn ingesteld en of u toegang hebt tot een Azure-bestands share vanaf een virtuele machine die lid is van een domein. Houd er rekening mee dat de toewijzing van RBAC-rollen op share niveau enige tijd kan duren. 
+Met het volgende proces wordt gecontroleerd of uw bestands share en toegangs machtigingen juist zijn ingesteld en of u toegang hebt tot een Azure-bestands share vanaf een virtuele machine die lid is van een domein. Houd er rekening mee dat de toewijzing van Azure-rollen op share niveau enige tijd kan duren. 
 
 Meld u aan bij de virtuele machine met behulp van de Azure AD-identiteit waaraan u machtigingen hebt verleend, zoals wordt weer gegeven in de volgende afbeelding. Als u on-premises AD DS verificatie voor Azure Files hebt ingeschakeld, gebruikt u uw AD DS referenties. Meld u aan met Azure AD-referenties voor Azure AD DS-verificatie.
 

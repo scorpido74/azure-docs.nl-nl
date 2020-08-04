@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83821514"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545185"
 ---
 Met gestandaardiseerde installatie kopieën van virtuele machines kunnen organisaties migreren naar de Cloud en zorgen voor consistentie in de implementaties. Installatie kopieën bevatten doorgaans vooraf gedefinieerde beveiligings-en configuratie-instellingen en de benodigde software. Voor het instellen van uw eigen Imaging-pijp lijn zijn tijd, infra structuur en configuratie vereist, maar met Azure VM Image Builder kunt u een eenvoudige configuratie bieden waarmee uw installatie kopie wordt beschreven, verzonden naar de service en de installatie kopie wordt gebouwd en gedistribueerd.
  
@@ -41,7 +41,7 @@ De Azure Image Builder-service is beschikbaar voor een preview in deze regio's. 
 - VS - west
 - VS - west 2
 - Europa - noord
-- Europa -west
+- Europa - west
 
 ## <a name="os-support"></a>Ondersteuning voor besturings systeem
 AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieën:
@@ -56,7 +56,7 @@ AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieë
 - Windows 2019
 
 Ondersteuning voor RHEL Iso's wordt niet meer ondersteund.
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 
 ![Conceptuele tekening van Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -97,6 +97,9 @@ Tijdens het maken van de installatie kopie worden bestanden gedownload en opgesl
 Met de opbouw functie voor installatie kopieën wordt een VM gemaakt met behulp van een D1v2 VM-grootte en de opslag en netwerken die nodig zijn voor de virtuele machine. Deze resources duren de duur van het bouw proces en worden verwijderd wanneer de installatie kopie is gemaakt met de opbouw functie voor installatie kopieën. 
  
 De installatie kopie wordt door Azure Image Builder gedistribueerd naar de gekozen regio's. Dit kan leiden tot uitstaande netwerk kosten.
+
+## <a name="hyper-v-generation"></a>Hyper-V genereren
+De opbouw functie voor installatie kopieën biedt momenteel ondersteuning voor Hyper-V-installatie kopieën en virtuele machines.
  
 ## <a name="next-steps"></a>Volgende stappen 
  

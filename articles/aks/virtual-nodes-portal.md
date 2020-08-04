@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8748e4f78582ab133d7e527daba1c126dcb7e7e2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250699"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543704"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
@@ -68,6 +68,7 @@ De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functie
 * [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) implementeert geen peuling voor het virtuele knoop punt
 * Virtuele knoop punten ondersteunen de planning van Linux. U kunt de open source [Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -provider hand matig installeren om Windows Server-containers te plannen voor ACI.
+* Virtuele knoop punten vereisen AKS-clusters met Azure CNI-netwerken
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -77,7 +78,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Selecteer in de linkerbovenhoek van de Azure Portal **een resource**  >  **Kubernetes-service**maken.
 
-Configureer de volgende opties op het tabblad **Basisinstellingen**:
+Configureer op de pagina **Basisprincipes** de volgende opties:
 
 - *Project Details*: Selecteer een Azure-abonnement en selecteer of maak een Azure-resource groep, zoals *myResourceGroup*. Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*.
 - *CLUSTERDETAILS*: selecteer een regio, Kubernetes-versie en DNS-naamvoorvoegsel voor het AKS-cluster.
@@ -90,11 +91,11 @@ Selecteer op de pagina **schalen** de optie *ingeschakeld* onder **virtuele knoo
 
 ![AKS-cluster maken en de virtuele knoop punten inschakelen](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Standaard wordt een Azure Active Directory Service-Principal gemaakt. Deze service-principal wordt gebruikt voor cluster communicatie en integratie met andere Azure-Services. U kunt ook een beheerde identiteit voor machtigingen gebruiken in plaats van een service-principal. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
+Standaard wordt een Azure Active Directory Service-Principal gemaakt. Deze service-principal wordt gebruikt voor cluster communicatie en integratie met andere Azure-Services. U kunt ook een beheerde identiteit voor machtigingen gebruiken in plaats van een service-principal. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie.
 
 Het cluster is ook geconfigureerd voor geavanceerde netwerken. De virtuele knoop punten zijn geconfigureerd voor het gebruik van hun eigen subnet van het virtuele netwerk van Azure. Dit subnet heeft gedelegeerde machtigingen voor het verbinden van Azure-resources tussen het AKS-cluster. Als u nog geen overgedragen subnet hebt, wordt het virtuele Azure-netwerk en-subnet door de Azure Portal gemaakt en geconfigureerd voor gebruik met de virtuele knoop punten.
 
-Selecteer **Controleren en maken**. Nadat de validatie is voltooid, selecteert u **maken**.
+Selecteer **Controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**.
 
 Het duurt enkele minuten om het AKS-cluster te maken en voor te bereiden voor gebruik.
 

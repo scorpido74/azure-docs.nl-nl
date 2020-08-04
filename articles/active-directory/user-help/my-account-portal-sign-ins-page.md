@@ -1,5 +1,5 @@
 ---
-title: Uw recente aanmeldings activiteit bekijken en doorzoeken vanaf de pagina mijn aanmelding (preview)-Azure Active Directory | Microsoft Docs
+title: Bekijk en zoek uw recente aanmeldings activiteit op de pagina Mijn aanmeldingen-Azure Active Directory | Microsoft Docs
 description: Meer informatie over het weer geven en doorzoeken van uw recente aanmeldings activiteit vanaf de pagina Mijn aanmeldingen van de portal mijn account.
 services: active-directory
 author: curtand
@@ -9,58 +9,64 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 738e6507a1642a1ab76938eeaf3294668bcea964
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422284"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543180"
 ---
-# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken via de pagina Mijn aanmeldingen (preview)
+# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken vanaf de pagina Mijn aanmeldingen
 
 U kunt al uw recente aanmeldings activiteiten voor werk-of school accounts bekijken op de pagina **mijn aanmeldingen** van de portal **Mijn account** . Door uw aanmeldings geschiedenis te bekijken, kunt u controleren op ongebruikelijke activiteiten door u te helpen bij het volgende:
 
 - Als iemand probeert uw wacht woord te raden.
-
 - Als een aanvaller zich heeft aangemeld bij uw account en vanaf welke locatie.
-
 - Welke apps de aanvaller probeerde te openen.
 
 ## <a name="view-your-recent-sign-in-activity"></a>Uw recente aanmeldingsactiviteiten bekijken
 
 1. Meld u aan bij uw werk-of school account en ga vervolgens naar de https://myaccount.microsoft.com/ pagina.
 
-2. Selecteer **mijn aanmeldingen (preview)** in het navigatie deel venster links of selecteer de koppeling **recente activiteit controleren** van het blok **mijn aanmeldingen (preview)** .
+2. Selecteer **mijn aanmeldingen** in het navigatie deel venster links of selecteer de koppeling **recente activiteit controleren** van het blok **mijn aanmeldingen** .
 
     ![Pagina Mijn account, met gemarkeerde recente koppelingen met activiteiten](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. Vouw en Controleer elk van de aanmeldings items en zorg ervoor dat u ze herkent. Als u een aanmeldings item vindt dat niet bekend is, raden wij u ten zeerste aan uw wacht woord te wijzigen om uw account te beschermen als dit is aangetast.
+3. Vouw en Controleer elk van de aanmeldings items en zorg ervoor dat u ze herkent. Als u een aanmeldings item vindt dat niet bekend is, wijzigt u uw wacht woord om het account te beveiligen voor het geval dat het is aangetast.
 
-    ![Pagina recente activiteiten met uitgebreide aanmeldings Details](media/my-account-portal/my-account-portal-sign-ins-page.png)
+    ![Pagina recente activiteiten met uitgebreide aanmeldings Details](media/my-account-portal-sign-ins-page/recent-activity.png)
 
 ### <a name="if-you-see-a-successful-sign-in"></a>Als een geslaagde aanmelding wordt weer geven
 
-U moet uw eigen activiteit herkennen als normaal. Als u echter een geslaagde aanmelding van een vreemde locatie, browser of besturings systeem ziet, kan dit betekenen dat een aanvaller toegang tot uw account heeft verkregen. In deze situatie raden wij u aan om uw wacht woord onmiddellijk te wijzigen en gaat u vervolgens naar de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info) om uw beveiligings instellingen bij te werken.
+Soms ziet u bij het controleren van uw eigen normale aanmeldings activiteit mogelijk een geslaagde aanmelding bij een onbekende locatie, browser of besturings systeem. Onbekende aanmeldingen kunnen betekenen dat een aanvaller toegang heeft verkregen tot uw account. Als u een activiteit ziet die u niet hebt geautoriseerd, raden we u aan om uw wacht woord onmiddellijk te wijzigen en vervolgens naar [beveiligings gegevens](https://mysignins.microsoft.com/security-info) te gaan om uw beveiligings instellingen bij te werken.
 
-Voordat u opgeeft dat er iets onjuist is, controleert u of er geen onechte positieve is (waarbij het item wel vraagbaar is). We bepalen bijvoorbeeld uw geschatte locatie en kaart op basis van uw IP-adres. Mobiele netwerken zijn met name moeilijk te lokaliseren, omdat ze het verkeer soms via locaties op afstand routeren. Als u zich dus hebt aangemeld met uw mobiele apparaat in de staat Washington, kan de locatie de aanmelding weer geven die afkomstig is van Californië. Daarom is het raadzaam om meer details dan alleen de locatie te controleren. Zorg er ook voor dat het besturings systeem, de browser en de app allemaal zinvol zijn.
+Voordat u opgeeft dat er iets onjuist is, controleert u of er geen onechte positieve is (waarbij het item wel vraagbaar is). We bepalen bijvoorbeeld uw geschatte locatie en kaart op basis van uw IP-adres. Mobiele netwerken zijn met name moeilijk te lokaliseren, omdat ze het verkeer soms via locaties op afstand routeren. Zelfs als u zich aanmeldt met uw mobiele apparaat in de staat Washington, kan de locatie de aanmelding weer geven die afkomstig is van Californië. We raden u ten zeerste aan om de details te controleren behalve alleen de locatie. Zorg ervoor dat het besturings systeem, de browser en de app allemaal zinvol zijn.
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Als er een mislukte aanmelding wordt weer geven
 
-Een mislukte aanmelding, zonder sessie activiteit, betekent dat uw primaire verificatie methode (gebruikers naam/wacht woord) is mislukt. Dit kan betekenen dat u uw gebruikers naam of wacht woord hebt getypt, maar dit kan ook betekenen dat een aanvaller uw wacht woord wil raden. Als u denkt dat een aanvaller het wacht woord niet succesvol zou proberen te raden, hoeft u uw wacht woord niet te wijzigen, maar we raden u aan om u te registreren voor Azure Multi-Factor Authentication (MFA). Met MFA, zelfs als de hacker uw wacht woord uiteindelijk heeft geraden, is het niet voldoende om toegang te krijgen tot uw account.
+Als u een mislukte aanmelding ziet, kan dit betekenen dat u uw referenties hebt getypt. Het kan ook betekenen dat een aanvaller heeft geprobeerd uw wacht woord te raden. U hoeft uw wacht woord niet te wijzigen, maar we raden u aan om u te registreren voor Azure Multi-Factor Authentication (MFA). Met multi-factor Authentication, zelfs als de hacker uw wacht woord verdient, is het niet voldoende om toegang te krijgen tot het account.
 
-Als er een niet-geslaagde aanmelding wordt weer geven, met een opmerking onder sessie activiteit met de melding dat er een **aanvullende verificatie is mislukt, ongeldige code**, betekent dit dat uw primaire authenticatie (gebruikers naam/wacht woord) is geslaagd, maar MFA is mislukt. Als dit een aanvaller is, raden ze uw wacht woord op de juiste wijze aan, maar kon de MFA-uitdaging nog steeds niet worden door gegeven. In dit geval wordt u aangeraden uw wacht woord nog steeds te wijzigen, omdat de aanvaller dat onderdeel recht heeft gekregen. Ga vervolgens naar de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info) om uw beveiligings instellingen bij te werken.
+![Mislukte aanmeldings tegel](media/my-account-portal-sign-ins-page/unsuccessful.png)
+
+Als er een niet-geslaagde aanmelding wordt weer geven met een opmerking onder **sessie activiteit** met de tekst, `Additional verification failed, invalid code` betekent dit dat uw primaire authenticatie referenties zijn geslaagd, maar multi-factor Authentication is mislukt. Dit kan betekenen dat een aanvaller uw wacht woord correct heeft geraden, maar dat de Challenge voor multi-factor Authentication niet kan worden door gegeven. We raden u aan uw wacht woord nog steeds te wijzigen, want de aanvaller kan dat al hebben gedaan, en ga naar de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info) om uw beveiligings instellingen bij te werken.
 
 ## <a name="search-for-specific-sign-in-activity"></a>Zoeken naar specifieke aanmeldings activiteit
 
 U kunt uw recente aanmeldings activiteit doorzoeken op een van de beschik bare gegevens. U kunt bijvoorbeeld zoeken naar uw recente aanmeldings activiteit per besturings systeem, locatie, app, enzovoort.
 
-1. Typ op de pagina **recente activiteit controleren** de informatie waarnaar u wilt zoeken in de **Zoek** balk. Typ bijvoorbeeld `My Account` om te zoeken naar alle activiteiten die worden verzameld door de app mijn account.
+1. Typ op de pagina **recente activiteit controleren** de informatie waarnaar u wilt zoeken in de **Zoek** balk. Typ bijvoorbeeld `Unsuccessful` om te zoeken naar alle mislukte aanmeld activiteiten die zijn verzameld door de app mijn account.
 
 2. Selecteer de knop **zoeken** om te beginnen met zoeken.
 
-    ![Pagina recente activiteiten, met de gemarkeerde zoek balk, zoek knop en resultaten](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
+    ![Pagina recente activiteiten, met de gemarkeerde zoek balk, zoek knop en resultaten](media/my-account-portal-sign-ins-page/sign-in-search.png)
+
+### <a name="confirm-unusual-activity"></a>Ongebruikelijke activiteiten bevestigen
+
+Aanmeldingen die als ongebruikelijke activiteiten zijn gemarkeerd, kunnen worden bevestigd in de tegel voor die activiteit op de pagina **mijn aanmeldingen** .
+
+![Ongebruikelijke aanmeldings tegel om te bevestigen dat u de aanmelding hebt of niet hebt geprobeerd](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -74,4 +80,4 @@ Nadat u uw recente aanmeldings activiteit hebt bekeken, kunt u het volgende doen
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
 
-- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen
+- Wijzig de [Portalinstellingen van mijn account](my-account-portal-settings.md)

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091943"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544010"
 ---
 # <a name="streaming-policies"></a>Beleid voor streaming
 
@@ -40,7 +40,7 @@ De volgende ' beslissings structuur ' helpt u bij het kiezen van een vooraf gede
 
 Klik op de afbeelding om deze in volledig formaat weer te geven.  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![Diagram met een beslissings structuur die is ontworpen om u te helpen bij het kiezen van een vooraf gedefinieerd streaming-beleid voor uw scenario.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 Als u uw inhoud versleutelt, moet u een [beleid voor inhouds sleutels](content-key-policy-concept.md)maken, het **beleid voor inhouds sleutels** is niet nodig voor het wissen van streams of downloaden. 
 

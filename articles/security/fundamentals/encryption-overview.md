@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure-versleuteling | Microsoft Docs
-description: Meer informatie over de verschillende versleutelings opties in azure
+description: Meer informatie over versleutelings opties in Azure. Zie informatie voor versleuteling op rest, versleuteling in vlucht en sleutel beheer met Azure Key Vault.
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083953"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542956"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -113,7 +113,7 @@ Azure biedt veel mechanismen voor het privé houden van gegevens wanneer deze va
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Data Link-laag versleuteling in azure
 
-Wanneer het verkeer van Azure-klanten tussen data centers wordt verplaatst: buiten de fysieke grenzen die niet worden beheerd door micro soft (of namens micro soft)--een gegevenskoppeling slaag versleutelings methode met behulp van de [IEEE 802.1 AE Mac Security Standards](https://1.ieee802.org/security/802-1ae/) (ook wel bekend als MACsec) wordt toegepast vanaf Point-to-Point over de onderliggende netwerkhardware.  De pakketten worden versleuteld en ontsleuteld op de apparaten voordat ze worden verzonden, waardoor fysieke ' man-in-the-middle ' of bewaak-en wiretapping-aanvallen worden voor komen.  Omdat deze technologie is geïntegreerd op de netwerkhardware zelf, biedt deze een regel frequentie versleuteling op de netwerkhardware zonder meet bare koppelings latentie verhoging.  Deze MACsec-versleuteling is standaard ingeschakeld voor alle Azure-verkeer binnen een regio of tussen regio's, en er is geen actie vereist voor het onderdeel van de klanten om in te scha kelen. 
+Wanneer het verkeer van Azure-klanten tussen data centers wordt verplaatst: buiten de fysieke grenzen die niet worden beheerd door micro soft (of namens micro soft)--een gegevenskoppeling slaag versleutelings methode met behulp van de [IEEE 802.1 AE Mac Security Standards](https://1.ieee802.org/security/802-1ae/) (ook wel bekend als MACsec) wordt toegepast vanaf Point-to-Point over de onderliggende netwerkhardware. De pakketten worden versleuteld en ontsleuteld op de apparaten voordat ze worden verzonden, waardoor fysieke ' man-in-the-middle ' of bewaak-en wiretapping-aanvallen worden voor komen. Omdat deze technologie is geïntegreerd op de netwerkhardware zelf, biedt deze een regel frequentie versleuteling op de netwerkhardware zonder meet bare koppelings latentie verhoging. Deze MACsec-versleuteling is standaard ingeschakeld voor alle Azure-verkeer dat binnen een regio of tussen regio's reist, en er is geen actie vereist voor het onderdeel van de klanten om in te scha kelen. 
 
 ### <a name="tls-encryption-in-azure"></a>TLS-versleuteling in azure
 
@@ -179,7 +179,7 @@ U kunt een site-naar-site-VPN-gateway verbinding gebruiken om uw on-premises net
 
 U kunt een site-naar-site-VPN-verbinding met een virtueel netwerk configureren met behulp van de Azure Portal, Power shell of Azure CLI.
 
-Zie voor meer informatie:
+Raadpleeg voor meer informatie:
 
 [Een site-naar-site-verbinding maken in de Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

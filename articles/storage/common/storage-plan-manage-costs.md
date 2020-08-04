@@ -1,32 +1,28 @@
 ---
-title: Kosten plannen en beheren voor Azure Storage
-description: Meer informatie over het plannen en beheren van de kosten voor Azure Storage met behulp van kosten analyse in Azure Portal.
+title: Kosten voor Azure Blob Storage plannen en beheren
+description: Meer informatie over het plannen en beheren van de kosten voor Azure Blob-opslag met behulp van kosten analyse in Azure Portal.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: aa0b789b31f50c8b1ccf5450700874a02ad4664c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304522"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543092"
 ---
-# <a name="plan-and-manage-costs-for-azure-storage"></a>Kosten plannen en beheren voor Azure Storage
+# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Kosten voor Azure Blob Storage plannen en beheren
 
-In dit artikel wordt beschreven hoe u de kosten voor Azure Storage plant en beheert. Eerst gebruikt u de prijs calculator van Azure om de opslag kosten te plannen voordat u resources toevoegt. Nadat u begint met het gebruik van Azure Storage resources, gebruikt u functies voor kosten beheer om budgetten in te stellen en kosten te bewaken. U kunt ook prognose kosten bekijken en uitgaven trends controleren om gebieden te identificeren waar u mogelijk wilt handelen.
+Dit artikel helpt u bij het plannen en beheren van de kosten voor Azure Blob-opslag. U kunt eerst kosten ramen met behulp van de Azure-prijs calculator. Nadat u uw opslag account hebt gemaakt, optimaliseert u het account zodat u alleen betaalt voor wat u nodig hebt. Gebruik functies voor kosten beheer om budgetten in te stellen en kosten te bewaken. U kunt ook de geraamde kosten bekijken en de uitgaven trends controleren om gebieden te identificeren waar u mogelijk wilt handelen.
 
-Houd er rekening mee dat de kosten voor Azure Storage slechts een deel van de maandelijkse kosten in uw Azure-factuur zijn. Hoewel in dit artikel wordt uitgelegd hoe u de kosten voor Azure Storage plant en beheert, wordt u gefactureerd voor alle Azure-Services en-resources die worden gebruikt voor uw Azure-abonnement, inclusief de services van derden. Nadat u vertrouwd bent met het beheren van de kosten voor Azure Storage, kunt u soort gelijke methoden Toep assen om de kosten te beheren voor alle Azure-Services die in uw abonnement worden gebruikt.
+Houd er rekening mee dat de kosten voor Azure Storage slechts een deel van de maandelijkse kosten in uw Azure-factuur zijn. Hoewel in dit artikel wordt uitgelegd hoe u de kosten voor Azure Storage kunt schatten en beheren, wordt u gefactureerd voor alle Azure-Services en-resources die worden gebruikt voor uw Azure-abonnement, inclusief de services van derden. Nadat u vertrouwd bent met het beheren van de kosten voor Azure Storage, kunt u soort gelijke methoden Toep assen om de kosten te beheren voor alle Azure-Services die in uw abonnement worden gebruikt.
 
-## <a name="prerequisites"></a>Vereisten
-
-Kostenanalyse biedt ondersteuning voor verschillende typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](../../cost-management-billing/costs/understand-cost-mgt-data.md). Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig. Zie [Toegang tot gegevens toewijzen](../../cost-management-billing/costs/assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens in Azure Cost Management.
-
-## <a name="estimate-costs-before-creating-an-azure-storage-account"></a>Kosten schatten voordat u een Azure Storage account maakt
+## <a name="estimate-costs"></a>Kosten schatten
 
 Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voordat u gegevens gaat maken en overdragen naar een Azure Storage-account.
 
@@ -44,7 +40,37 @@ Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calc
 
 4. Wijzig de overige opties om de invloed op uw schatting te zien.
 
-## <a name="use-budgets-and-cost-alerts"></a>Budgetten en kostenwaarschuwingen gebruiken
+## <a name="optimize-costs"></a>Kosten optimaliseren
+
+U kunt deze opties gebruiken om de kosten te verlagen. 
+
+- Opslag capaciteit reserveren
+
+- Gegevens indelen in toegangs lagen
+
+- Gegevens automatisch tussen toegangs lagen verplaatsen
+
+In deze sectie vindt u meer informatie over elke optie. 
+
+#### <a name="reserve-storage-capacity"></a>Opslag capaciteit reserveren
+
+U kunt geld besparen op opslag kosten voor BLOB-gegevens met Azure Storage gereserveerde capaciteit. Azure Storage gereserveerde capaciteit biedt u een korting op capaciteit voor blok-blobs en voor Azure Data Lake Storage Gen2 gegevens in standaard opslag accounts wanneer u een reserve ring voor één of drie jaar doorvoert. Een reserve ring biedt een vaste hoeveelheid opslag capaciteit voor de periode van de reserve ring. Azure Storage gereserveerde capaciteit kan uw capaciteits kosten voor blok-blobs en Azure Data Lake Storage Gen2 gegevens aanzienlijk verminderen. 
+
+Zie [kosten optimaliseren voor Blob Storage met gereserveerde capaciteit](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity)voor meer informatie.
+
+#### <a name="organize-data-into-access-tiers"></a>Gegevens indelen in toegangs lagen
+
+U kunt de kosten verlagen door BLOB-gegevens te plaatsen in de meest rendabele toegangs lagen. U kunt kiezen uit drie lagen die zijn ontworpen om uw kosten te optimaliseren om gegevens te gebruiken. De *warme* laag heeft bijvoorbeeld hogere opslag kosten, maar lagere toegangs kosten. Als u van plan bent om gegevens regel matig te benaderen, is de warme laag mogelijk de meest rendabele keuze. Als u van plan bent om gegevens minder vaak te gebruiken, kan het *koud* of het *Archief* het meest zinvol zijn omdat de kosten van het openen van gegevens worden verhoogd en de kosten voor het opslaan van gegevens worden verminderd.    
+
+Zie [Azure Blob Storage: Hot, cool en Archive Access lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)voor meer informatie.
+
+#### <a name="automatically-move-data-between-access-tiers"></a>Gegevens automatisch tussen toegangs lagen verplaatsen
+
+Gebruik levenscyclus beheer beleid om gegevens periodiek te verplaatsen tussen lagen om het geld op te slaan. Met deze beleids regels kunt u gegevens verplaatsen naar met behulp van regels die u opgeeft. U kunt bijvoorbeeld een regel maken waarmee blobs naar de opslaglaag worden verplaatst als deze Blob in 90 dagen niet is gewijzigd. Door beleids regels te maken waarmee de toegangs tier van uw gegevens wordt aangepast, kunt u de minst dure opslag opties voor uw behoeften ontwerpen.
+
+Zie [de Azure Blob-opslag levenscyclus beheren](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) voor meer informatie.
+
+## <a name="create-budgets"></a>Budgetten maken
 
 U kunt [budgetten](../../cost-management-billing/costs/tutorial-acm-create-budgets.md) maken om kosten te beheren en waarschuwingen te maken waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende uitgaven en het risico om teveel uit te geven. Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten. Budgetten en waarschuwingen worden gemaakt voor Azure-abonnementen en-resource groepen, dus zijn ze nuttig als onderdeel van een strategie voor de kosten bewaking. Ze kunnen echter beperkte functionaliteit hebben voor het beheren van afzonderlijke Azure-service kosten, zoals de kosten van Azure Storage, omdat ze zijn ontworpen om de kosten op een hoger niveau bij te houden.
 
@@ -54,9 +80,12 @@ Wanneer u Azure-resources met Azure Storage gebruikt, worden er kosten in rekeni
 
 Wanneer u kosten analyse gebruikt, kunt u de kosten van Azure Storage in grafieken en tabellen weer geven voor verschillende tijds intervallen. Enkele voor beelden zijn de dag, de huidige en de vorige maand en het jaar. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen naar langere weer gaven kunt u uitgaven trends helpen identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, kunt u ook eenvoudig zien waar ze zijn overschreden.
 
+>[!NOTE]
+> Kostenanalyse biedt ondersteuning voor verschillende typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](../../cost-management-billing/costs/understand-cost-mgt-data.md). Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig. Zie [Toegang tot gegevens toewijzen](../../cost-management-billing/costs/assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens in Azure Cost Management.
+
 Azure Storage kosten voor de kosten analyse weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
@@ -68,7 +97,7 @@ Azure Storage kosten voor de kosten analyse weer geven:
 
    ![De opslag kosten bewaken met het deel venster kosten analyse](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-In het vorige voor beeld ziet u de huidige kosten voor de service. De kosten per Azure-regio (locaties) en per resource groep worden ook weer gegeven.  
+In het vorige voor beeld ziet u de huidige kosten voor de service. De kosten per Azure-regio (locaties) en per resource groep worden ook weer gegeven. U kunt ook andere filters toevoegen (bijvoorbeeld: een filter om de kosten voor specifieke opslag accounts te bekijken).
 
 ## <a name="next-steps"></a>Volgende stappen
 

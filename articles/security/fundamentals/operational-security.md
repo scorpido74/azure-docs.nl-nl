@@ -1,6 +1,6 @@
 ---
 title: Azure-operationele beveiliging | Microsoft Docs
-description: Meer informatie over Microsoft Azure controle logboeken, de bijbehorende services en hoe deze werkt.
+description: Laat u kennismaken met Microsoft Azure controle logboeken, de bijbehorende services en hoe deze werkt door dit overzicht te lezen.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448374"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543330"
 ---
 # <a name="azure-operational-security"></a>Operationele Azure-beveiliging
 ## <a name="introduction"></a>Inleiding
@@ -69,7 +69,7 @@ De kern functionaliteit van Azure Monitor Logboeken wordt verschaft door een set
 | Service  | Beschrijving|
 | :------------- | :-------------|
 | Azure Monitor-logboeken | Bewaak en analyseer de beschikbaarheid en prestaties van verschillende resources, met inbegrip van fysieke en virtuele machines. |
-|Automatisering | Automatiseer handmatige processen en dwing configuraties af voor fysieke en virtuele machines. |
+|Automation | Automatiseer handmatige processen en dwing configuraties af voor fysieke en virtuele machines. |
 | Backup | Back-ups maken van essentiële gegevens en deze herstellen. |
 | Site Recovery | Bied hoge beschikbaarheid voor kritieke toepassingen. |
 
@@ -144,7 +144,7 @@ Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om
 
 -   Uw virtuele machines: gebruikt configuratie-informatie en informatie over beveiligingsgebeurtenissen, zoals Windows-gebeurtenis- en auditlogboeken, IIS-logboeken, syslog-berichten en crashdumpbestanden van uw virtuele machines.
 
-### <a name="data-protection"></a>Gegevensbescherming
+### <a name="data-protection"></a>Gegevensbeveiliging
 
 Om klanten te helpen bedreigingen te voorkomen, te detecteren en erop te reageren, verzamelt en verwerkt Azure Security Center gegevens over beveiliging, zoals configuratie-informatie, metagegevens, gebeurtenislogboeken, crashdumpbestanden en nog veel meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
 

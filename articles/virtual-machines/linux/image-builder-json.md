@@ -3,17 +3,17 @@ title: Een Azure Image Builder-sjabloon maken (preview)
 description: Meer informatie over het maken van een sjabloon voor gebruik met Azure Image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283296"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543602"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -70,7 +70,7 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 - VS - west
 - VS - west 2
 - Europa - noord
-- Europa -west
+- Europa - west
 
 
 ```json
@@ -142,12 +142,13 @@ Voor meer informatie over het implementeren van deze functie raadpleegt u [behee
 
 ## <a name="properties-source"></a>Eigenschappen: Bron
 
-De `source` sectie bevat informatie over de bron installatie kopie die wordt gebruikt door de opbouw functie voor afbeeldingen.
+De opbouw functie voor installatie kopieën biedt momenteel alleen ondersteuning voor hyper-v-afbeeldingen en-Vm's van het i/of de `source` sectie bevat informatie over de bron installatie kopie die wordt gebruikt door de opbouw functie voor afbeeldingen
 
 Voor de API is een source type vereist dat de bron voor de build van de installatie kopie definieert. momenteel zijn er drie typen:
 - PlatformImage: er is aangegeven dat de bron afbeelding een Marketplace-installatie kopie is.
 - ManagedImage: gebruik dit wanneer u vanaf een normale beheerde installatie kopie begint.
 - SharedImageVersion: dit wordt gebruikt wanneer u een installatie kopie versie in een galerie met gedeelde afbeeldingen als de bron gebruikt.
+
 
 > [!NOTE]
 > Wanneer u bestaande Windows-aangepaste installatie kopieën gebruikt, kunt u de Sysprep-opdracht Maxi maal acht keer uitvoeren op één Windows-installatie kopie. Raadpleeg de documentatie van [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) voor meer informatie.
@@ -191,7 +192,10 @@ U kunt ook plan gegevens opgeven, bijvoorbeeld:
 ```
 ### <a name="managedimage-source"></a>ManagedImage-bron
 
-Hiermee stelt u de bron installatie kopie als een bestaande beheerde installatie kopie van een gegeneraliseerde VHD of virtuele machine. De door de bron beheerde installatie kopie moet van een ondersteund besturings systeem zijn en moet zich in dezelfde regio bevinden als de Azure Image Builder-sjabloon. 
+Hiermee stelt u de bron installatie kopie als een bestaande beheerde installatie kopie van een gegeneraliseerde VHD of virtuele machine.
+
+> [!NOTE]
+> De door de bron beheerde installatie kopie moet van een ondersteund besturings systeem zijn en de installatie kopie moet dezelfde regio hebben als uw Azure Image Builder-sjabloon. 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ De `imageId` moet de ResourceID van de beheerde installatie kopie zijn. Gebruike
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion-bron
-Hiermee stelt u de bron afbeelding een versie van een bestaande installatie kopie in een galerie met gedeelde afbeeldingen. De versie van de installatie kopie moet van een ondersteund besturings systeem zijn en de installatie kopie moet worden gerepliceerd naar dezelfde regio als uw Azure Image Builder-sjabloon. 
+Hiermee stelt u de bron afbeelding een versie van een bestaande installatie kopie in een galerie met gedeelde afbeeldingen.
+
+> [!NOTE]
+> De door de bron beheerde installatie kopie moet van een ondersteund besturings systeem zijn en de installatie kopie moet dezelfde regio hebben als uw Azure Image Builder-sjabloon. als dat niet het geval is, repliceert u de installatie kopie versie naar de sjabloon regio voor installatie kopie Builder.
+
 
 ```json
         "source": { 

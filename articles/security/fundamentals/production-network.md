@@ -1,6 +1,6 @@
 ---
 title: Productie netwerk van Azure
-description: Dit artikel bevat een algemene beschrijving van het productie netwerk van Azure.
+description: Meer informatie over het productie netwerk van Azure. Zie methoden voor beveiligings toegang en beveiligings mechanismen voor het tot stand brengen van een verbinding met het netwerk.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68726695"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543806"
 ---
 # <a name="the-azure-production-network"></a>Het Azure-productie netwerk
 De gebruikers van het productie netwerk van Azure bevatten zowel externe klanten die toegang hebben tot hun eigen Azure-toepassingen als interne ondersteunings medewerkers van Azure die het productie netwerk beheren. In dit artikel worden de methoden voor beveiligings toegang en beveiligings mechanismen beschreven voor het tot stand brengen van verbindingen met het productie netwerk van Azure.

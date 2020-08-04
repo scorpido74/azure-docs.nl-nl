@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421736"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543449"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
 
@@ -151,7 +151,8 @@ Azure Cloud Shell uw persoonlijke gegevens ernstig neemt, worden de gegevens die
 ### <a name="export"></a>Exporteren
 Voer de volgende opdrachten uit om de gebruikers instellingen te **exporteren** Cloud shell voor u opslaat, zoals de voorkeurs shell, de teken grootte en het letter type.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Afbeelding met een knop met het label Start Azure Cloud Shell.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Voer de volgende opdrachten uit in bash of Power shell:
 
 Bash
@@ -174,7 +175,8 @@ Voer de volgende opdrachten uit om uw gebruikers instellingen te **verwijderen**
 >[!Note]
 > Als u uw gebruikers instellingen verwijdert, wordt de daad werkelijke Azure Files share niet verwijderd. Ga naar uw Azure Files om deze actie te volt ooien.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Afbeelding met een knop met het label Start Azure Cloud Shell.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Voer de volgende opdrachten uit in bash of Power shell:
 
 Bash

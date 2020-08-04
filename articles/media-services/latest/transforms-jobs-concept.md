@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091925"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543058"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Trans formaties en taken in Media Services
 
@@ -74,7 +74,7 @@ Het volgende diagram toont het object **transform** en de objecten waarnaar het 
 
 Selecteer de afbeelding om de volledige grootte weer te geven.  
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
+[![Diagram met het object Transform en de objecten waarnaar wordt verwezen, met inbegrip van de klasse-Afleidings relaties tussen de objecten.](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>Taken
 
@@ -102,7 +102,7 @@ Het volgende diagram toont het **taak** object en de objecten waarnaar wordt ver
 
 Klik op de afbeelding om deze in volledig formaat weer te geven.  
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
+[![Diagram met het taak object en de objecten waarnaar wordt verwezen, met inbegrip van de klasse-Afleidings relaties tussen de objecten.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>Gereserveerde media-eenheden configureren
 
@@ -114,7 +114,7 @@ Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor m
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Foutcodes](/rest/api/media/jobs/get#joberrorcode)
 * [Filteren, ordenen, paginering van Media Services entiteiten](entities-overview.md)

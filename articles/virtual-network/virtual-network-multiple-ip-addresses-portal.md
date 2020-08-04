@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088203"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543483"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure Portal
 
@@ -48,7 +48,7 @@ U kunt persoonlijke en open bare IP-adressen toevoegen aan een Azure-netwerk int
 
 5. In het deel venster dat wordt weer gegeven voor de NIC die u hebt geselecteerd, klikt u op **IP-configuraties**. Klik op **toevoegen**, voer de stappen in een van de volgende secties uit, op basis van het type IP-adres dat u wilt toevoegen, en klik vervolgens op **OK**. 
 
-### <a name="add-a-private-ip-address"></a>**Een privé-IP-adres toevoegen**
+### <a name="add-a-private-ip-address"></a>Een privé-IP-adres toevoegen
 
 Voer de volgende stappen uit om een nieuw privé-IP-adres toe te voegen:
 

@@ -1,6 +1,6 @@
 ---
 title: Beveiliging van klant gegevens in azure
-description: In dit artikel wordt beschreven hoe Azure klant gegevens beveiligt.
+description: Meer informatie over hoe Azure klant gegevens beveiligt via gegevens scheiding, gegevens redundantie en vernietiging van gegevens.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076288"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543789"
 ---
 # <a name="azure-customer-data-protection"></a>Azure-klant gegevens beveiliging   
 De toegang tot klant gegevens door micro soft Operations en het ondersteunings personeel wordt standaard geweigerd. Wanneer er toegang wordt verleend tot gegevens met betrekking tot een ondersteunings aanvraag, wordt deze alleen verleend met behulp van een just-in-time-model (JIT) met behulp van beleids regels die worden gecontroleerd en gecontroleerd aan de hand van het nalevings-en privacybeleid beleid.  De vereisten voor toegangs beheer worden vastgesteld door het volgende Azure-beveiligings beleid:

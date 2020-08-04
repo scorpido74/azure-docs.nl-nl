@@ -1,6 +1,6 @@
 ---
 title: Documentatie overzicht van micro soft security code Analysis
-description: Dit artikel bevat een overzicht van de uitbrei ding voor de analyse van beveiligings codes van micro soft
+description: Meer informatie over de uitbrei ding voor de analyse van beveiligings codes van micro soft. Met deze extensie kunt u analyse van beveiligings code toevoegen aan Azure DevOps CI/ID-pijp lijnen.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361316"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543007"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informatie over analyse van micro soft-beveiligings code
 

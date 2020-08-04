@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255435"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543364"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -47,6 +47,17 @@ Met *kubenet*ontvangen alleen de knoop punten een IP-adres in het subnet van het
 Azure ondersteunt Maxi maal 400 routes in een UDR, zodat u geen AKS-cluster hebt dat groter is dan 400 knoop punten. Virtuele AKS- [knoop punten][virtual-nodes] en Azure-netwerk beleid worden niet ondersteund met *kubenet*.  U kunt [Calico-netwerk beleid][calico-network-policies]gebruiken, aangezien deze worden ondersteund met kubenet.
 
 Met *Azure cni*ontvangt elke pod een IP-adres in het IP-subnet en kan het rechtstreeks communiceren met andere peulen en services. Uw clusters kunnen zo groot zijn als het IP-adres bereik dat u opgeeft. Het IP-adres bereik moet echter vooraf worden gepland en alle IP-adressen worden gebruikt door de AKS-knoop punten op basis van het maximum aantal peul dat ze kunnen ondersteunen. Geavanceerde netwerk functies en-scenario's, zoals [virtuele knoop punten][virtual-nodes] of netwerk beleid (Azure of Calico), worden ondersteund met *Azure cni*.
+
+### <a name="limitations--considerations-for-kubenet"></a>Beperkingen & overwegingen voor kubenet
+
+* Een extra hop is vereist in het ontwerp van kubenet, waarmee een kleine latentie wordt toegevoegd aan pod-communicatie.
+* Route tabellen en door de gebruiker gedefinieerde routes zijn vereist voor het gebruik van kubenet, waarmee de complexiteit van bewerkingen wordt opgeteld.
+* Direct pod-adressering wordt niet ondersteund voor kubenet vanwege kubenet-ontwerp.
+* In tegens telling tot Azure CNI-clusters kunnen meerdere kubenet-clusters geen subnet delen.
+* Functies die **niet worden ondersteund in kubenet** zijn onder andere:
+   * [Azure-netwerk beleid](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), maar Calico-netwerk beleid wordt ondersteund op kubenet
+   * [Windows-knooppunt groepen](windows-node-limitations.md)
+   * [Virtuele knoop punten toevoegen](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Beschik baarheid en uitputting van IP-adressen
 

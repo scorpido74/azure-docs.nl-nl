@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 30e70e56eb54815c26521829e4baf82dce574e43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432603"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543432"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
@@ -25,7 +25,7 @@ Voer de volgende stappen uit voordat u een machine learning model toevoegt als e
 
 1. Gebruik Azure Machine Learning om [uw model te implementeren als een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. Uw score script moet [voorbeeld invoer en uitvoer](../machine-learning/how-to-deploy-and-where.md#example-entry-script) bevatten die door Azure machine learning worden gebruikt om een schema specificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functie handtekening van uw webservice. U kunt deze voor [beeld-Swagger-definitie](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als referentie gebruiken om ervoor te zorgen dat u deze correct hebt ingesteld.
+2. Uw score script moet [voorbeeld invoer en uitvoer](../machine-learning/how-to-deploy-and-where.md) bevatten die door Azure machine learning worden gebruikt om een schema specificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functie handtekening van uw webservice. U kunt deze voor [beeld-Swagger-definitie](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als referentie gebruiken om ervoor te zorgen dat u deze correct hebt ingesteld.
 
 3. Zorg ervoor dat uw webservice een JSON-geserialiseerde gegevens accepteert en retourneert.
 
@@ -147,7 +147,7 @@ De volgende JSON is een voorbeeld aanvraag van de vorige query:
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimaliseer de prestaties voor Azure Machine Learning Udf's
 
-Wanneer u uw model implementeert in azure Kubernetes service, kunt u [uw model profileren om het resource gebruik te bepalen](../machine-learning/how-to-deploy-and-where.md#profilemodel). U kunt ook [app Insights inschakelen voor uw implementaties om de](../machine-learning/how-to-enable-app-insights.md) aanvraag tarieven, reactie tijden en fout tarieven te begrijpen.
+Wanneer u uw model implementeert in azure Kubernetes service, kunt u [uw model profileren om het resource gebruik te bepalen](../machine-learning/how-to-deploy-profile-model.md). U kunt ook [app Insights inschakelen voor uw implementaties om de](../machine-learning/how-to-enable-app-insights.md) aanvraag tarieven, reactie tijden en fout tarieven te begrijpen.
 
 Als u een scenario met hoge gebeurtenis doorvoer hebt, moet u mogelijk de volgende para meters in Stream Analytics wijzigen om optimale prestaties te krijgen met een lage end-to-end latentie:
 
