@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-voorbeeldscript - Een asset publiceren | Microsoft Docs
-description: In dit artikel wordt gedemonstreerd hoe u het Azure CLI-script kunt gebruiken om een Asset te publiceren.
+description: Dit artikel laat zien hoe u het Azure CLI-script gebruikt om een asset te publiceren.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ccc981af63391527473452e2f53e7abd108fb739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092147"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI-voorbeeld: Een asset publiceren
 
@@ -27,7 +27,7 @@ In het Azure CLI-script in dit artikel ziet u hoe u een streaming-locator kunt m
 
 ## <a name="prerequisites"></a>Vereisten 
 
-[Een Azure Media Services-account maken](create-account-cli-how-to.md).
+[Een Azure Media Services-account maken](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

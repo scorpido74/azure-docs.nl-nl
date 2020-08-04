@@ -1,33 +1,33 @@
 ---
 title: Azure Cosmos DB maken en beheren met behulp van PowerShell
-description: Gebruik Azure PowerShell uw Azure Cosmos-accounts,-data bases,-containers en-door voer te beheren.
+description: Gebruik Azure PowerShell om uw Azure Cosmos-accounts, -databases, -containers en -doorvoer te beheren.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390836"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486473"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-resources beheren met behulp van PowerShell
 
 In de volgende handleiding wordt beschreven hoe u PowerShell kunt gebruiken voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB-resources, waaronder accounts, databases, containers en doorvoer.
 
 > [!NOTE]
-> De voorbeelden in dit artikel maken gebruik van beheer-cmdlets voor [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb). Zie de referentiepagina van [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API voor de nieuwste wijzigingen.
+> De voorbeelden in dit artikel maken gebruik van beheer-cmdlets voor [AZ. CosmosDB](/powershell/module/az.cosmosdb). Zie de referentiepagina van [Az.CosmosDB](/powershell/module/az.cosmosdb) API voor de nieuwste wijzigingen.
 
-Voor platformoverschrijdende beheer van Azure Cosmos DB kunt u de `Az` `Az.CosmosDB` cmdlets en gebruiken met [cross-platform Power shell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell), evenals de [Azure cli](manage-with-cli.md), de [rest API][rp-rest-api]of de [Azure Portal](create-sql-api-dotnet.md#create-account).
+Voor platformoverschrijdend beheer van Azure Cosmos DB kunt u de cmdlets `Az` en `Az.CosmosDB` gebruiken met [platformoverschrijdend PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) en ook [Azure CLI](manage-with-cli.md), de [REST API][rp-rest-api] of de [Azure Portal](create-sql-api-dotnet.md#create-account).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Aan de slag
 
-Volg de instructies in het [installeren en configureren van Azure PowerShell][powershell-install-configure] om uw Azure-account in Power shell te installeren en u aan te melden.
+Volg de instructies in [Azure PowerShell installeren en configureren][powershell-install-configure] om uw Azure-account in PowerShell te installeren en u aan te melden.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos DB-accounts
 
@@ -44,7 +44,7 @@ In de volgende secties ziet u hoe u het Azure Cosmos-account kunt beheren, met i
 * [Verbindingsreeksen voor een Azure Cosmos-account weergeven](#list-connection-strings)
 * [Failover-prioriteit voor een Azure Cosmos-account wijzigen](#modify-failover-priority)
 * [Handmatige failover voor een Azure Cosmos-account activeren](#trigger-manual-failover)
-* [Resource vergrendelingen weer geven voor een Azure Cosmos DB-account](#list-account-locks)
+* [Resourcevergrendelingen op een Azure Cosmos DB-account weergeven](#list-account-locks)
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Een Azure Cosmos-account maken
 
@@ -328,9 +328,9 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
-### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a>Resource vergrendelingen weer geven voor een Azure Cosmos DB-account
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a> Resourcevergrendelingen op een Azure Cosmos DB-account weergeven
 
-Resource vergrendelingen kunnen worden geplaatst op Azure Cosmos DB resources, waaronder data bases en verzamelingen. In het volgende voor beeld ziet u hoe u alle Azure-resource vergrendelingen op een Azure Cosmos DB-account kunt weer geven.
+Resourcevergrendelingen kunnen worden geplaatst op Azure Cosmos DB-resources, met inbegrip van databases en verzamelingen. In het volgende voorbeeld ziet u hoe u alle Azure-resourcevergrendelingen op een Azure Cosmos DB-account kunt weergeven.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -353,8 +353,8 @@ In de volgende secties ziet u hoe u de Azure Cosmos DB-database kunt beheren, me
 * [Alle Azure Cosmos DB-databases in een account weergeven](#list-db)
 * [ Eén Azure Cosmos DB-database ophalen](#get-db)
 * [Een Azure Cosmos DB-database verwijderen](#delete-db)
-* [Een resource vergrendeling maken op een Azure Cosmos DB-Data Base om te voor komen dat deze wordt verwijderd](#create-db-lock)
-* [Een resource vergrendeling verwijderen voor een Azure Cosmos DB Data Base](#remove-db-lock)
+* [Een resourcevergrendeling op een Azure Cosmos DB-database maken om te voorkomen dat deze wordt verwijderd](#create-db-lock)
+* [Een resourcevergrendeling op een Azure Cosmos DB-database verwijderen](#remove-db-lock)
 
 ### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Een Azure Cosmos DB-database maken
 
@@ -434,7 +434,7 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
-### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>Een resource vergrendeling maken op een Azure Cosmos DB-Data Base om te voor komen dat deze wordt verwijderd
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>Een resourcevergrendeling op een Azure Cosmos DB-database maken om te voorkomen dat deze wordt verwijderd
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -453,7 +453,7 @@ New-AzResourceLock `
     -LockLevel $lockLevel
 ```
 
-### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>Een resource vergrendeling verwijderen voor een Azure Cosmos DB Data Base
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>Een resourcevergrendeling op een Azure Cosmos DB-database verwijderen
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -475,6 +475,7 @@ Remove-AzResourceLock `
 In de volgende secties ziet u hoe u de Azure Cosmos DB-container kunt beheren, met inbegrip van:
 
 * [Een Azure Cosmos DB-container maken](#create-container)
+* [Een Azure Cosmos DB-container met automatische schaalaanpassing maken](#create-container-autoscale)
 * [Een Azure Cosmos DB-container met een grote partitiesleutel maken](#create-container-big-pk)
 * [De doorvoer van een Azure Cosmos DB-container ophalen](#get-container-ru)
 * [Een Azure Cosmos DB-container met aangepaste indexering maken](#create-container-custom-index)
@@ -484,8 +485,8 @@ In de volgende secties ziet u hoe u de Azure Cosmos DB-container kunt beheren, m
 * [Alle Azure Cosmos DB-containers in een database weergeven](#list-containers)
 * [Eén Azure Cosmos DB-container in een database ophalen](#get-container)
 * [Een Azure Cosmos DB-container verwijderen](#delete-container)
-* [Een resource vergrendeling op een Azure Cosmos DB container maken om te voor komen dat deze wordt verwijderd](#create-container-lock)
-* [Een resource vergrendeling verwijderen uit een Azure Cosmos DB container](#remove-container-lock)
+* [Een resourcevergrendeling op een Azure Cosmos DB-container maken om te voorkomen dat deze wordt verwijderd](#create-container-lock)
+* [Een resourcevergrendeling op een Azure Cosmos DB-container verwijderen](#remove-container-lock)
 
 ### <a name="create-an-azure-cosmos-db-container"></a><a id="create-container"></a>Een Azure Cosmos DB-container maken
 
@@ -496,6 +497,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -503,7 +505,29 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>Een Azure Cosmos DB-container met automatisch schaalaanpassing maken
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>Een Azure Cosmos DB-container met een grote partitiesleutelgrootte maken
@@ -724,7 +748,7 @@ Remove-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName
 ```
-### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>Een resource vergrendeling op een Azure Cosmos DB container maken om te voor komen dat deze wordt verwijderd
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>Een resourcevergrendeling op een Azure Cosmos DB-container maken om te voorkomen dat deze wordt verwijderd
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -744,7 +768,7 @@ New-AzResourceLock `
     -LockLevel $lockLevel
 ```
 
-### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>Een resource vergrendeling verwijderen uit een Azure Cosmos DB container
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>Een resourcevergrendeling op een Azure Cosmos DB-container verwijderen
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"

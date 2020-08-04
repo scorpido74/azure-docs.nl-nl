@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: c0ca96d1829a73f856de021d1286e53007b03219
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: bc5d4e5a8a9607f74eb8733855a216b83520ff11
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368967"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503702"
 ---
 Azure bevat de volgende ingebouwde Azure-rollen voor het autoriseren van toegang tot blob- en wachtrijgegevens met behulp van Azure AD en OAuth:
 
@@ -28,7 +28,7 @@ Azure bevat de volgende ingebouwde Azure-rollen voor het autoriseren van toegang
 
 Alleen met rollen die expliciet zijn gedefinieerd voor toegang tot gegevens, kan een beveiligingsprincipal toegang krijgen tot blob- of wachtrijgegevens. Met ingebouwde rollen zoals **Eigenaar**, **Inzender**, en **Inzender voor opslagaccounts** kan een beveiligingsprincipal een opslagaccount te beheren, maar heeft geen toegang tot de blob- of wachtrijgegevens binnen dat account via Azure AD. Als een rol echter de **Microsoft.Storage/storageAccounts/listKeys/action** bevat, heeft een gebruiker aan wie die rol is toegewezen, toegang tot gegevens in het opslagaccount via gedeelde-sleutelautorisatie met de accounttoegangssleutels. Zie [Use the Azure portal to access blob or queue data](../articles/storage/common/storage-access-blobs-queues-portal.md) (De Azure-portal gebruiken om toegang te krijgen tot blob- of wachtrijgegevens) voor meer informatie.
 
-Voor gedetailleerde informatie over ingebouwde rollen van Azure voor Azure Storage voor zowel de gegevensservices als de beheerservice raadpleegt u de sectie **Storage** in [Ingebouwde Azure-rollen voor Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage). Zie voor meer informatie over de verschillende soorten rollen die machtigingen bieden in Azure [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-rollen](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
+Voor gedetailleerde informatie over ingebouwde rollen van Azure voor Azure Storage voor zowel de gegevensservices als de beheerservice raadpleegt u de sectie **Storage** in [Ingebouwde Azure-rollen voor Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage). Zie voor meer informatie over de verschillende soorten rollen die machtigingen bieden in Azure [Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-rollen](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
 > [!IMPORTANT]
-> Het kan vijf minuten duren voordat RBAC-roltoewijzingen zijn doorgegeven.
+> Het kan vijf minuten duren voordat Azure-roltoewijzingen zijn doorgegeven.

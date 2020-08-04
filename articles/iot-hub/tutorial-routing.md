@@ -1,6 +1,6 @@
 ---
-title: Bericht routering voor Azure IoT Hub configureren met behulp van Azure CLI
-description: Configureer bericht routering voor Azure IoT Hub met behulp van de Azure CLI en de Azure Portal
+title: Berichtroutering configureren voor Azure IoT Hub met behulp van Azure CLI
+description: Berichtroutering configureren voor Azure IoT Hub met behulp van Azure CLI en de Azure-portal
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,30 +8,33 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom:
+- mvc
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 4af3d00c4f0096199cf914f57b51b04036cec7cf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317889"
 ---
-# <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Zelf studie: Azure CLI en Azure Portal gebruiken om IoT Hub bericht routering te configureren
+# <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Zelfstudie: Azure CLI en de Azure-portal gebruiken om IoT Hub-berichtroutering te configureren
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
 [!INCLUDE [iot-hub-include-routing-create-resources](../../includes/iot-hub-include-routing-create-resources.md)]
 
-## <a name="use-the-azure-cli-to-create-the-base-resources"></a>De Azure CLI gebruiken voor het maken van de basis bronnen
+## <a name="use-the-azure-cli-to-create-the-base-resources"></a>Azure CLI gebruiken om de basisresources te maken
 
-In deze zelf studie wordt gebruikgemaakt van de Azure CLI voor het maken van de basis bronnen en gebruikt de [Azure Portal](https://portal.azure.com) om te laten zien hoe u bericht routering configureert en het virtuele apparaat instelt voor testen.
+In deze zelfstudie wordt Azure CLI gebruikt om de basisresources te maken, en wordt vervolgens de [Azure-portal](https://portal.azure.com) gebruikt om te laten zien hoe u berichtroutering configureert en het virtuele apparaat instelt om te testen.
 
-Kopieer en plak het onderstaande script in Cloud Shell en druk op ENTER. Het script wordt één regel per keer uitgevoerd. Hiermee maakt u de basis resources voor deze zelf studie, met inbegrip van het opslag account, het IoT Hub, de Service Bus naam ruimte en de Service Bus wachtrij.
+Kopieer en plak het onderstaande script in Cloud Shell en druk op Enter. Het script wordt met één regel tegelijk uitgevoerd. Hiermee worden de basisresources voor deze zelfstudie gemaakt, waaronder het opslagaccount, de IoT Hub, de Service Bus-naamruimte en de Service Bus-wachtrij.
 
-Er zijn verschillende resource namen die wereld wijd uniek moeten zijn, zoals de naam van de IoT Hub en de naam van het opslag account. Om dit eenvoudiger te maken, worden deze resource namen toegevoegd met een wille keurige alfanumerieke waarde met de naam *randomValue*. De randomValue wordt eenmaal aan het begin van het script gegenereerd en aan de resource namen toegevoegd, zoals nodig is in het script. Als u niet wilt dat deze wille keurig worden ingesteld, kunt u deze instellen op een lege teken reeks of op een specifieke waarde.
+Er zijn een aantal resourcenamen die wereldwijd uniek moeten zijn, zoals de naam van de IoT Hub en van het opslagaccount. Om dit gemakkelijker te maken, wordt aan die resourcenamen een willekeurige alfanumerieke waarde genaamd *randomValue* toegevoegd. De randomValue wordt bovenaan het script eenmaal gegenereerd en waar nodig aan de resourcenamen in het hele script toegevoegd. Als u niet wilt dat de waarde willekeurig is, kunt u deze instellen op een lege tekenreeks of op een specifieke waarde.
 
 > [!TIP]
-> Een tip over fout opsporing: dit script maakt gebruik van het vervolg symbool `\`(de back slash) om het script beter leesbaar te maken. Als u een probleem hebt met het uitvoeren van het script, controleert u of uw `bash` Cloud shell-sessie wordt uitgevoerd en of er geen spaties na een van de backslashes staan.
+> Een tip over foutopsporing: dit script maakt gebruik van het vervolgsymbool (de backslash `\`) om het script beter leesbaar te maken. Als u problemen ondervindt met het uitvoeren van het script, zorg dan dat uw Cloud Shell-sessie `bash` uitvoert en dat er geen spatie na een backslash staat.
 >
 
 ```azurecli-interactive
@@ -120,35 +123,35 @@ az servicebus queue create --name $sbQueueName \
 
 ```
 
-Nu de basis bronnen zijn ingesteld, kunt u de route ring van berichten configureren in de [Azure Portal](https://portal.azure.com).
+Nu de basisresources zijn ingesteld, kunt u de berichtroutering configureren in de [Azure-portal](https://portal.azure.com).
 
 ## <a name="set-up-message-routing"></a>Berichtroutering instellen
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-### <a name="route-to-a-storage-account"></a>Een opslag account door sturen
+### <a name="route-to-a-storage-account"></a>Routeren naar een opslagaccount
 
-Stel nu de routering in voor het opslagaccount. Ga naar het deelvenster Berichtroutering en voeg een route toe. Definieer bij het toevoegen van de route een nieuw eindpunt voor de route. Nadat deze route ring is ingesteld, worden berichten waarvoor de eigenschap **niveau** is ingesteld op **opslag** automatisch naar een opslag account geschreven. 
+Stel nu de routering in voor het opslagaccount. Ga naar het deelvenster Berichtroutering en voeg een route toe. Definieer bij het toevoegen van de route een nieuw eindpunt voor de route. Nadat u deze routering hebt ingesteld, worden berichten waarvan de eigenschap **Niveau** is ingesteld op **Opslag** automatisch naar een opslagaccount geschreven. 
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-1. Selecteer in het [Azure Portal](https://portal.azure.com) **resource groepen**en selecteer vervolgens de resource groep. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com) de optie **Resourcegroepen** en selecteer vervolgens uw resourcegroep. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**.
 
-2. Selecteer de IoT-hub onder de lijst met resources. In deze zelfstudie wordt gebruikgemaakt van **ContosoTestHub**.
+2. Selecteer de IoT Hub in de lijst met resources. In deze zelfstudie wordt gebruikgemaakt van **ContosoTestHub**.
 
-3. Selecteer **bericht routering**. Selecteer +**toevoegen**in het deel venster **bericht routering** . Selecteer in het deel venster **een route toevoegen** +**toevoegen** naast het veld eind punt om de ondersteunde eind punten weer te geven, zoals wordt weer gegeven in de volgende afbeelding:
+3. Selecteer **Berichtroutering**. Selecteer in het deelvenster **Berichtroutering** de optie **+Toevoegen**. Selecteer in het deelvenster **Een route toevoegen** de optie **+Toevoegen** naast het veld Eindpunt om de ondersteunde eindpunten weer te geven, zoals aangegeven in de onderstaande afbeelding:
 
-   ![Toevoegen van een eind punt voor een route starten](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![Beginnen met het toevoegen van een eindpunt voor een route](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
 
-4. Selecteer **Blob-opslag**. U ziet het deel venster **een opslag eindpunt toevoegen** .
+4. Selecteer **Blob-opslag**. Het deelvenster **Een opslageindpunt toevoegen** wordt weergegeven.
 
-   ![Een eind punt toevoegen](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![Een eindpunt toevoegen](./media/tutorial-routing/message-routing-add-storage-ep.png)
 
-5. Voer een naam in voor het eindpunt. In deze zelf studie wordt gebruikgemaakt van **ContosoStorageEndpoint**.
+5. Voer een naam in voor het eindpunt. In deze zelfstudie wordt gebruikgemaakt van **ContosoStorageEndpoint**.
 
-6. Selecteer **een container kiezen**. Er wordt een lijst met opslagaccounts weergegeven. Selecteer het account dat u hebt ingesteld in de voorbereidende stappen. In deze zelfstudie wordt gebruikgemaakt van **contosostorage**. Er wordt een lijst met containers in die opslagaccount weergegeven. **Selecteer** de container die u in de voorbereidings stappen hebt ingesteld. In deze zelfstudie wordt gebruikgemaakt van **contosoresults**. U gaat terug naar het deel venster **een opslag eindpunt toevoegen** en de selecties die u hebt gemaakt.
+6. Selecteer **Een container kiezen**. Er wordt een lijst met opslagaccounts weergegeven. Selecteer het account dat u hebt ingesteld in de voorbereidende stappen. In deze zelfstudie wordt gebruikgemaakt van **contosostorage**. Er wordt een lijst met containers in die opslagaccount weergegeven. **Selecteer** de container die u hebt ingesteld in de voorbereidende stappen. In deze zelfstudie wordt gebruikgemaakt van **contosoresults**. U keert terug naar het deelvenster **Een opslageindpunt toevoegen** en ziet de selecties die u hebt gemaakt.
 
-7. Stel de code ring in op AVRO of JSON. Gebruik ten behoeve van deze zelfstudie de standaardinstellingen voor de rest van de velden. Dit veld wordt grijs weer gegeven als de geselecteerde regio geen ondersteuning biedt voor JSON-code ring.
+7. Stel de codering in op AVRO of JSON. Gebruik ten behoeve van deze zelfstudie de standaardinstellingen voor de rest van de velden. Dit veld wordt grijs weergegeven als de geselecteerde regio JSON-codering niet ondersteunt.
 
    > [!NOTE]
    > U kunt de indeling van de blob-naam instellen met de **indeling van blobbestandsnaam**. De standaardwaarde is `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`. De indeling moet {iothub}, {partition}, {YYYY}, {MM}, {DD}, {HH}, en {mm} bevatten, in willekeurige volgorde.
@@ -158,65 +161,65 @@ Stel nu de routering in voor het opslagaccount. Ga naar het deelvenster Berichtr
    > De blobs worden geschreven in de Avro-indeling.
    >
 
-8. Selecteer **maken** om het opslag eindpunt te maken en toe te voegen aan de route. U gaat terug naar het deelvenster **Route toevoegen**.
+8. Selecteer **Maken** het opslageindpunt te maken en toe te voegen aan de route. U gaat terug naar het deelvenster **Route toevoegen**.
 
 9. Vul nu de rest van de informatie voor de routeringsquery in. Deze query specificeert de criteria voor het verzenden van berichten naar de opslagcontainer die u zojuist hebt toegevoegd als eindpunt. Vul de velden in op het scherm.
 
-   **Naam**: voer een naam in voor uw routeringsquery. In deze zelf studie wordt gebruikgemaakt van **ContosoStorageRoute**.
+   **Naam**: Voer een naam in voor uw routeringsquery. In deze zelfstudie wordt gebruikgemaakt van **ContosoStorageRoute**.
 
-   **Eindpunt**: geeft het eindpunt weer dat u net hebt ingesteld.
+   **Eindpunt**: Geeft het eindpunt weer dat u net hebt ingesteld.
 
-   **Gegevensbron**: selecteer **Telemetrieberichten apparaat** uit de vervolgkeuzelijst.
+   **Gegevensbron**: Selecteer **Telemetrieberichten apparaat** uit de vervolgkeuzelijst.
 
-   **Route inschakelen**: Zorg ervoor dat dit veld is ingesteld `enabled`op.
+   **Route inschakelen**: Zorg dat dit veld is ingesteld op `enabled`.
    
-   **Routeringsquery**: voer `level="storage"` in als querytekenreeks.
+   **Routeringsquery**: Voer `level="storage"` in als querytekenreeks.
 
-   ![Een routerings query maken voor het opslag account](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
+   ![Een routeringsquery maken voor het opslagaccount](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
    Selecteer **Opslaan**. Wanneer dit is voltooid, gaat u terug naar het deelvenster Berichtroutering, waar u uw nieuwe routeringsquery voor opslag kunt zien. Sluit het deelvenster Routes, waarna u terugkeert naar de pagina Resourcegroep.
 
-### <a name="route-to-a-service-bus-queue"></a>Een Service Bus wachtrij omleiden
+### <a name="route-to-a-service-bus-queue"></a>Routeren naar een Service Bus-wachtrij
 
-Stel nu de routering in voor de Service Bus-wachtrij. Ga naar het deelvenster Berichtroutering en voeg een route toe. Definieer bij het toevoegen van de route een nieuw eindpunt voor de route. Nadat deze route is ingesteld, worden berichten waarvan de eigenschap **niveau** is ingesteld op **kritiek** , naar de service bus wachtrij geschreven, waarmee een logische app wordt geactiveerd, die vervolgens een e-mail bericht met de informatie verzendt.
+Stel nu de routering in voor de Service Bus-wachtrij. Ga naar het deelvenster Berichtroutering en voeg een route toe. Definieer bij het toevoegen van de route een nieuw eindpunt voor de route. Nadat u deze route hebt ingesteld, worden berichten waarvan de eigenschap **Niveau** is ingesteld op **Kritiek** naar de Service Bus-wachtrij geschreven, die een logische app activeert waarmee vervolgens een e-mailbericht met de informatie wordt verzonden.
 
-1. Selecteer uw IoT-hub op de pagina resource groep en selecteer vervolgens **bericht routering**.
+1. Selecteer op de pagina Resourcegroep uw IoT Hub en selecteer vervolgens **Berichtroutering**.
 
-2. Selecteer +**toevoegen**in het deel venster **bericht routering** .
+2. Selecteer in het deelvenster **Berichtroutering** de optie **+Toevoegen**.
 
-3. Selecteer in het deel venster **een route toevoegen** +**toevoegen** naast het veld eind punt. Selecteer een **Service Bus-wachtrij**. Het deelvenster **Service Bus-eindpunt toevoegen** wordt weergegeven.
+3. Selecteer in het deelvenster **Een route toevoegen** de optie **+Toevoegen** naast het veld Eindpunt. Selecteer een **Service Bus-wachtrij**. Het deelvenster **Service Bus-eindpunt toevoegen** wordt weergegeven.
 
-   ![Een service bus-eind punt toevoegen](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
+   ![Een Service Bus-eindpunt toevoegen](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
 
 4. Vul de velden in:
 
-   **Eindpuntnaam**: voer een naam in voor het eindpunt. In deze zelf studie wordt gebruikgemaakt van **ContosoSBQueueEndpoint**.
+   **Naam van het eindpunt**: Voer een naam in voor het eindpunt. In deze zelfstudie wordt gebruikgemaakt van **ContosoSBQueueEndpoint**.
    
-   **Service Bus naam ruimte**: gebruik de vervolg keuzelijst om de service bus-naam ruimte te selecteren die u in de voorbereidings stappen hebt ingesteld. In deze zelfstudie wordt gebruikgemaakt van **ContosoSBNamespace**.
+   **Service Bus-naamruimte**: Gebruik de vervolgkeuzelijst om de Service Bus-naamruimte te selecteren die u hebt ingesteld in de voorbereidende stappen. In deze zelfstudie wordt gebruikgemaakt van **ContosoSBNamespace**.
 
-   **Service Bus wachtrij**: gebruik de vervolg keuzelijst om de service bus wachtrij te selecteren. In deze zelfstudie wordt gebruikgemaakt van **contososbqueue**.
+   **Service Bus-wachtrij**: Gebruik de vervolgkeuzelijst om de Service Bus-wachtrij te selecteren. In deze zelfstudie wordt gebruikgemaakt van **contososbqueue**.
 
-5. Selecteer **maken** om het eind punt van de service bus wachtrij toe te voegen. U gaat terug naar het deelvenster **Route toevoegen**.
+5. Selecteer **Maken** om het Service Bus-wachtrij-eindpunt toe te voegen. U gaat terug naar het deelvenster **Route toevoegen**.
 
 6. Vul nu de rest van de informatie voor de routeringsquery in. Deze query specificeert de criteria voor het verzenden van berichten naar de Service Bus-wachtrij die u zojuist hebt toegevoegd als eindpunt. Vul de velden in op het scherm. 
 
-   **Naam**: voer een naam in voor uw routeringsquery. In deze zelf studie wordt gebruikgemaakt van **ContosoSBQueueRoute**. 
+   **Naam**: Voer een naam in voor uw routeringsquery. In deze zelfstudie wordt gebruikgemaakt van **ContosoSBQueueRoute**. 
 
-   **Eindpunt**: geeft het eindpunt weer dat u net hebt ingesteld.
+   **Eindpunt**: Geeft het eindpunt weer dat u net hebt ingesteld.
 
-   **Gegevensbron**: selecteer **Telemetrieberichten apparaat** uit de vervolgkeuzelijst.
+   **Gegevensbron**: Selecteer **Telemetrieberichten apparaat** uit de vervolgkeuzelijst.
 
-   **Routeringsquery**: voer `level="critical"` in als querytekenreeks. 
+   **Routeringsquery**: Voer `level="critical"` in als querytekenreeks. 
 
-   ![Een routerings query maken voor de Service Bus wachtrij](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+   ![Een routeringsquery maken voor de Service Bus-wachtrij](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
 7. Selecteer **Opslaan**. Wanneer u teruggaat naar het deelvenster Routes, ziet u de twee nieuwe routeringsregels zoals deze hier zijn weergegeven.
 
-   ![De routes die u zojuist hebt ingesteld](./media/tutorial-routing/message-routing-show-both-routes.png)
+   ![De routes die u net hebt ingesteld](./media/tutorial-routing/message-routing-show-both-routes.png)
 
-8. U kunt de aangepaste eind punten die u hebt ingesteld, zien door het tabblad **aangepaste eind punten** te selecteren.
+8. U kunt de aangepaste eindpunten die u hebt ingesteld weergeven door **Aangepaste eindpunten** te selecteren.
 
-   ![Het aangepaste eind punt dat u zojuist hebt ingesteld](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+   ![Het aangepaste eindpunt dat u net hebt ingesteld](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
 
 9. Sluit het deelvenster Berichtroutering, waarna u terugkeert naar het deelvenster Resourcegroep.
 
@@ -226,7 +229,7 @@ Stel nu de routering in voor de Service Bus-wachtrij. Ga naar het deelvenster Be
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de resources hebt ingesteld en de bericht routes hebt geconfigureerd, gaat u naar de volgende zelf studie om te leren hoe u berichten verzendt naar de IoT-hub en hoe deze worden doorgestuurd naar de verschillende bestemmingen. 
+Nu u de resources hebt ingesteld en de berichtroutes hebt geconfigureerd, gaat u door naar de volgende zelfstudie om te leren hoe u berichten naar de IoT Hub verzendt en om te zien hoe ze naar de verschillende bestemmingen worden gerouteerd. 
 
 > [!div class="nextstepaction"]
-> [Deel 2: de routerings resultaten van het bericht weer geven](tutorial-routing-view-message-routing-results.md)
+> [Deel 2 - De resultaten van berichtroutering weergeven](tutorial-routing-view-message-routing-results.md)

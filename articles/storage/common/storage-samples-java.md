@@ -1,36 +1,37 @@
 ---
-title: Voor beelden Azure Storage met Java | Microsoft Docs
-description: Voorbeeld code en toepassingen voor Azure Storage weer geven, downloaden en uitvoeren. Ontdek aan de slag met voor beelden voor blobs, wacht rijen, tabellen en bestanden, met behulp van de client bibliotheken voor Java-opslag.
+title: Azure Storage-voorbeelden met behulp van Java | Microsoft Docs
+description: Lees hier hoe u voorbeeldcode en -toepassingen voor Azure Storage kunt weergeven, downloaden en uitvoeren. Ga aan de slag met voorbeelden voor blobs, wachtrijen, tabellen en bestanden, met behulp van de clientbibliotheken van Storage voor Java.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322224"
 ---
-# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage voor beelden met behulp van V12 Java-client bibliotheken
+# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage-voorbeelden met behulp van v12 van de Java-clientbibliotheken
 
-De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
+De volgende tabel geeft een overzicht van onze opslagplaats met voorbeelden en de scenario's die in elk voorbeeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeldcode weer te geven in GitHub.
 
 > [!NOTE]
-> In deze voor beelden wordt de meest recente Azure Storage Java V12-bibliotheek gebruikt. Zie aan de slag [met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started) in de GitHub-opslag plaats voor verouderde V8-code.
+> In deze voorbeelden wordt de nieuwste Azure Storage Java v12-bibliotheek gebruikt. Zie [Aan de slag met Azure Blob-service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started) in de GitHub-opslagplaats voor informatie over verouderde v8-code.
 
-## <a name="blob-samples"></a>BLOB-voor beelden
+## <a name="blob-samples"></a>Blob-voorbeelden
 
 ### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
+      [Verifiëren met een gedeelde sleutelreferentie](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
    :::column-end:::
    :::column span="":::
-      [Verifiëren met behulp van Azure-identiteit](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
+      [Verifiëren met Azure Identity](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
    :::column-end:::
 :::row-end:::
 
@@ -38,7 +39,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een BLOB-serviceclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
+      [Een blob-serviceclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
    :::column-end:::
    :::column span="":::
       [Containers weergeven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L10)
@@ -54,7 +55,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een BLOB batch-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
+      [Een blob-batchclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
    :::column-end:::
    :::column span="":::
       [Blobs bulksgewijs verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L45)
@@ -62,7 +63,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Toegangs lagen instellen voor een batch blobs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L51)
+      [Toegangslaag instellen voor een batch blobs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L51)
    :::column-end:::
 :::row-end:::
 
@@ -70,7 +71,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een container-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L57)
+      [Een containerclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L57)
    :::column-end:::
    :::column span="":::
       [Een container maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L64)
@@ -81,7 +82,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Blobs vermelden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L112)
    :::column-end:::
    :::column span="":::
-      [Een container verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L123)
+      [Container verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L123)
    :::column-end:::
 :::row-end:::
 
@@ -89,10 +90,10 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een blob uploaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L79)
+      [Blob uploaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L79)
    :::column-end:::
    :::column span="":::
-      [Een blob downloaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L86)
+      [Blob downloaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L86)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -100,23 +101,23 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Een blob verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L118)
    :::column-end:::
    :::column span="":::
-      [Een BLOB uploaden vanuit een groot bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
+      [Een blob uploaden uit een groot bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Een grote BLOB naar een bestand downloaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L100)
+      [Een grote blob downloaden naar een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L100)
    :::column-end:::
 :::row-end:::
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 :::row:::
    :::column span="2":::
-      [Een herstel bare fout activeren met behulp van een container-client](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
+      [Een herstelbare fout activeren met een containerclient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2-voor beelden
+## <a name="data-lake-storage-gen2-samples"></a>Voorbeelden van Data Lake Storage Gen2
 
 ### <a name="data-lake-service"></a>Data Lake-service
 :::row:::
@@ -124,7 +125,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Een Data Lake-serviceclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
    :::column-end:::
    :::column span="":::
-      [Een File System-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L57)
+      [Een bestandssysteemclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L57)
    :::column-end:::
 :::row-end:::
 
@@ -139,23 +140,23 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een bestand en een submap maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L73)
+      [Een bestand en submap maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L73)
    :::column-end:::
    :::column span="":::
-      [Een bestands-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L83)
+      [Een bestandsclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L83)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Paden in een bestands systeem weer geven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L131)
+      [Paden weergeven in een bestandssysteem](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L131)
    :::column-end:::
    :::column span="":::
-      [Een bestands systeem verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L142)
+      [Een bestandssysteem verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L142)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Bestands systemen weer geven in een Azure-opslag account](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
+      [Bestandssystemen weergeven in een Azure-opslagaccount](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
    :::column-end:::
 :::row-end:::
 
@@ -163,7 +164,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een Directory-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
+      [Een mapclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
    :::column-end:::
    :::column span="":::
       [Een bovenliggende map maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L37)
@@ -171,15 +172,15 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een onderliggende Directory maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L44)
+      [Een onderliggende map maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L44)
    :::column-end:::
    :::column span="":::
-      [Een bestand in een onderliggende Directory maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L52)
+      [Een bestand in een onderliggende map maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L52)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Mapeigenschappen ophalen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L68)
+      [Directoryeigenschappen ophalen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L68)
    :::column-end:::
    :::column span="":::
       [Een onderliggende map verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L83)
@@ -195,7 +196,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een bestand maken met een bestands-client](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L93)
+      [Een bestand maken met een bestandsclient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L93)
    :::column-end:::
    :::column span="":::
       [Een bestand verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L137)
@@ -203,29 +204,29 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Toegangs beheer instellen voor een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
+      [Toegangsbeheer instellen voor een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
    :::column-end:::
    :::column span="":::
-      [Besturings elementen voor toegang verkrijgen voor een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
+      [Toegangsbeheer ophalen voor een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
 
 
-## <a name="azure-file-samples"></a>Voor beelden van Azure-bestanden
+## <a name="azure-file-samples"></a>Azure File-voorbeelden
 
 ### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="2":::
-      [Verifiëren met behulp van een connection string](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
+      [Verifiëren met een verbindingsreeks](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
    :::column-end:::
 :::row-end:::
 
-### <a name="file-service"></a>Bestands service
+### <a name="file-service"></a>Bestandsservice
 
 :::row:::
    :::column span="":::
-      [Bestands shares maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
+      [Bestandsshares maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
    :::column-end:::
    :::column span="":::
       [Eigenschappen ophalen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L40)
@@ -233,7 +234,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Shares weer geven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+      [Shares weergeven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
    :::column-end:::
    :::column span="":::
       [Shares verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
@@ -244,7 +245,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een share-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L29)
+      [Een shareclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L29)
    :::column-end:::
    :::column span="":::
       [Een share maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L40)
@@ -255,7 +256,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Een momentopname van de share maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
    :::column-end:::
    :::column span="":::
-      [Een directory maken met behulp van een share-client](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
+      [Een map maken met een shareclient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -263,7 +264,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Eigenschappen van een share ophalen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
    :::column-end:::
    :::column span="":::
-      [Hoofdmap en lijst mappen ophalen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
+      [Hoofdmap ophalen en mappen weergeven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,15 +280,15 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Een bovenliggende map maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L35)
    :::column-end:::
    :::column span="":::
-      [Een onderliggende Directory maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L42)
+      [Een onderliggende map maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L42)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een bestand in een onderliggende Directory maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L50)
+      [Een bestand in een onderliggende map maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L50)
    :::column-end:::
    :::column span="":::
-      [Mappen en bestanden weer geven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
+      [Mappen en bestanden weergeven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -303,7 +304,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een bestands-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L45)
+      [Een bestandsclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L45)
    :::column-end:::
    :::column span="":::
       [Bestand uploaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L90)
@@ -311,10 +312,10 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Bestand downloaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L100)
+      [Een bestand downloaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L100)
    :::column-end:::
    :::column span="":::
-      [Bestandseigenschappen opvragen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L120)
+      [Bestandseigenschappen ophalen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L120)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -324,7 +325,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 
 
-## <a name="queue-samples"></a>Wachtrij voorbeelden
+## <a name="queue-samples"></a>Wachtrijvoorbeelden
 
 ### <a name="authentication"></a>Verificatie
 
@@ -341,12 +342,12 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Een wachtrij maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L20)
    :::column-end:::
    :::column span="":::
-      [Wacht rijen weer geven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
+      [Wachtrijen weergeven](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Wacht rijen verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L27)
+      [Wachtrijen verwijderen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L27)
    :::column-end:::
 :::row-end:::
 
@@ -354,10 +355,10 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 
 :::row:::
    :::column span="":::
-      [Een wachtrij-client maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L25)
+      [Een wachtrijclient maken](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L25)
    :::column-end:::
    :::column span="":::
-      [Berichten toevoegen aan een wachtrij](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L27)
+      [Berichten aan een wachtrij toevoegen](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L27)
    :::column-end:::
 :::row-end:::
 
@@ -393,7 +394,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Tabel voorbeelden (V11)
+## <a name="table-samples-v11"></a>Tabelvoorbeelden (v11)
 
 :::row:::
    :::column span="":::
@@ -405,18 +406,18 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Entiteit invoegen/samen voegen/vervangen](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
+      [Entiteit invoegen/samenvoegen/vervangen](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
    :::column-end:::
    :::column span="":::
-      [Entiteiten opvragen](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L234)
+      [Query uitvoeren op entiteiten](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L234)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Querytabellen](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
+      [Query uitvoeren op tabellen](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
    :::column-end:::
    :::column span="":::
-      [Tabel-ACL/eigenschappen](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
+      [ACL/eigenschappen van tabel](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -425,31 +426,31 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Voorbeeld bibliotheken van Azure-code
+## <a name="azure-code-sample-libraries"></a>Bibliotheken met codevoorbeelden van Azure
 
-Als u de volledige Java-voorbeeld bibliotheken wilt bekijken, gaat u naar:
+Als u de complete bibliotheken met Java-voorbeelden wilt bekijken, gaat u naar:
 
-* [Voor beelden van Azure Blob-code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
-* [Voor beelden van Azure Data Lake code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
-* [Voor beelden van Azure Files code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
-* [Voor beelden van Azure-wachtrij code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+* [Codevoorbeelden van Azure Blob](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+* [Codevoorbeelden van Azure Data Lake](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+* [Codevoorbeelden van Azure Files](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
+* [Codevoorbeelden van Azure Queue](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
 
-U kunt de GitHub-opslag plaats voor elke tape wisselaar door bladeren en klonen.
+U kunt de GitHub-opslagplaats voor elke bibliotheek bekijken en klonen.
 
-## <a name="getting-started-guides"></a>Aan de slag-hand leidingen
+## <a name="getting-started-guides"></a>Introductiehandleidingen
 
-Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het installeren en aan de slag met de Azure Storage-client bibliotheken.
+Bekijk de volgende handleidingen als u op zoek bent naar instructies voor het installeren van de Azure Storage-clientbibliotheken en voor instructies om aan de slag te gaan.
 
-* [Aan de slag met Azure Blob service in Java](../blobs/storage-quickstart-blobs-java.md)
-* [Aan de slag met Azure Queue service in Java](../queues/storage-quickstart-queues-java.md)
+* [Aan de slag met Azure Blob-service in Java](../blobs/storage-quickstart-blobs-java.md)
+* [Aan de slag met Azure Queue-service in Java](../queues/storage-quickstart-queues-java.md)
 * [Aan de slag met de Azure-tabelservice in Java](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Aan de slag met Azure File Service in Java](../files/storage-java-how-to-use-file-storage.md)
+* [Aan de slag met Azure File-service in Java](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor informatie over voor beelden voor andere talen:
+Voor informatie over voorbeelden voor andere talen:
 
-* .NET: voor [beelden Azure Storage met .net](storage-samples-dotnet.md)
-* Python: [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
-* Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
-* Alle andere talen: [Azure Storage](storage-samples.md) -voor beelden
+* .NET: [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
+* Python: [Azure Storage-voorbeelden met behulp van Python](storage-samples-python.md)
+* JavaScript/Node.js: [Azure Storage-voorbeelden met behulp van JavaScript](storage-samples-javascript.md)
+* Alle andere talen: [Voorbeelden van Azure Storage](storage-samples.md)

@@ -1,5 +1,5 @@
 ---
-title: Spark-taken voor prestaties optimaliseren in Azure Synapse Analytics
+title: Spark-taken voor prestaties optimaliseren
 description: Dit artikel bevat een inleiding tot Apache Spark in Azure Synapse Analytics en de verschillende concepten.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089257"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark-taken optimaliseren in Azure Synapse Analytics (preview)
 

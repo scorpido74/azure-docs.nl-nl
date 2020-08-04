@@ -1,17 +1,17 @@
 ---
-title: Jenkins configureren voor een Java-app op Service Fabric in azure
+title: Jenkins voor een Java-app voor Service Fabric in Azure configureren
 description: Deze zelfstudie geeft u informatie over het instellen van continue integratie met Jenkins voor het implementeren van een Java Service Fabric-toepassing.
 author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594760"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320711"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Zelfstudie: Een Jenkins-omgeving configureren om CI/CD in te schakelen voor een Java-toepassing voor Service Fabric
 
@@ -85,11 +85,11 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
    a. Selecteer in het algemene gedeelte het selectievakje voor **GitHub project** en geef de URL van het GitHub-project. Dit is de URL waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins (Continue integratie, Continue implementatie), bijvoorbeeld ``https://github.com/testaccount/dev_test``.
 
-   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de URL van de opslag plaats op die als host fungeert voor de Service Fabric Java-toepassing die u wilt integreren met de Jenkins CI *`https://github.com/testaccount/dev_test.git`*/cd-stroom (bijvoorbeeld). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
+   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de opslagplaats-URL op waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins, (bijvoorbeeld *`https://github.com/testaccount/dev_test.git`* ). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
 
 1. Configureer uw *GitHub* (waar de opslagplaats wordt gehost), zodat deze kan communiceren met Jenkins. Voer de volgende stappen uit:
 
-   a. Ga naar de pagina van de GitHub-opslagplaats. Ga naar **instellingen** > **integraties en-services**.
+   a. Ga naar de pagina van de GitHub-opslagplaats. Ga naar **Instellingen** > **Integraties en services**.
 
    b. Selecteer **Add Service**, typ **Jenkins** en selecteer de **Jenkins-GitHub-invoegtoepassing**.
 
@@ -103,9 +103,9 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
 1. Ga naar de sectie **Build** en selecteer in de vervolgkeuzelijst **Add build step** de optie **Invoke Gradle Script**. Geef in de volgende widget het pad op naar het **hoofdscript** van uw toepassing. Het haalt build.gradle op uit het opgegeven pad en werkt dienovereenkomstig.
 
-    ![Service Fabric Jenkins Build-actie](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
+    ![Service Fabric Jenkins Build action](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-1. Selecteer in de vervolgkeuzelijst **Post-Build Actions** de optie **Post-Build Actions**. Hier moet u clustergegevens opgeven, zoals waar de via Jenkins gecompileerde Service Fabric-toepassing wordt geïmplementeerd. Het pad naar het certificaat is waar het volume was gekoppeld (/ tmp/myCerts).
+1. Selecteer in de vervolgkeuzelijst **Post-Build Actions** de optie **Post-Build Actions**. Hier moet u clustergegevens opgeven, zoals waar de via Jenkins gecompileerde Service Fabric-toepassing wordt geïmplementeerd. Het pad naar het certificaat is waar het volume is gekoppeld (/tmp/myCerts).
 
     U kunt ook aanvullende toepassingsgegevens opgeven. Deze worden gebruikt om de toepassing te implementeren. Bekijk de volgende schermafbeelding voor een voorbeeld van de details van de toepassing:
 
@@ -160,7 +160,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
     </ApplicationManifest>
     ```
 
-1. Update het **Versie**-veld in het **ServiceManifest** en het **Versie**-veld in de **CodePackage**-code in het bestand * Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* naar **2.0.0**.
+1. Update het **Versie**-veld in het **ServiceManifest** en het **Versie**-veld in de **CodePackage**-code in het bestand  *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* naar **2.0.0**.
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">
@@ -178,7 +178,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
     ![Upgrade wordt uitgevoerd](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-1. Als u **http://\<Host-IP->: 8080** bezoekt is de stemtoepassing met volledige functionaliteit nu actief en werkend.
+1. Als u **http://\<Host-IP>:8080** bezoekt, is de stemtoepassing met volledige functionaliteit nu actief en werkend.
 
     ![Lokale stem-app](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

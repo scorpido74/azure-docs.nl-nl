@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510989"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290677"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Zelfstudie: Veranderingen in uw vaardighedenset diagnosticeren, herstellen en doorvoeren
 
@@ -73,7 +73,7 @@ In deze sectie worden Postman en een opgegeven verzameling gebruikt om de gegeve
 1. Selecteer onder **Bestanden** > **Nieuw** de verzameling die u wilt importeren.
 1. Nadat de verzameling is geïmporteerd, vouwt u de lijst met acties uit (...).
 1. Klik op **Bewerken**.
-1. Voer de naam van uw zoekservice in (als het eindpunt bijvoorbeeld https://mydemo.search.windows.net is, is de servicenaam 'mydemo').
+1. Voer de naam van uw zoekservice in (als het eindpunt bijvoorbeeld `https://mydemo.search.windows.net` is, is de servicenaam '`mydemo`').
 1. Voer de apiKey in met de primaire of de secundaire sleutel van uw zoekservice.
 1. Voer de storageConnectionString in op de pagina Sleutels van uw Azure Storage-account.
 1. Voer de containerName in voor de container die u in het opslagaccount hebt gemaakt.
