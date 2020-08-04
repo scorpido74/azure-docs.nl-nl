@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de querytaal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970447"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541818"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -19,13 +19,14 @@ In dit artikel worden de taal onderdelen beschreven die worden ondersteund door 
 - [Resource grafiek tabellen](#resource-graph-tables)
 - [Aangepaste taal elementen van resource grafiek](#resource-graph-custom-language-elements)
 - [Ondersteunde KQL-taal elementen](#supported-kql-language-elements)
+- [Bereik van de query](#query-scope)
 - [Escape tekens](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource grafiek tabellen
 
 Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgeslagen over Azure Resource Manager resource typen en hun eigenschappen. Deze tabellen kunnen met or- `join` `union` Opera tors worden gebruikt voor het ophalen van eigenschappen van gerelateerde resource typen. Hier volgt de lijst met tabellen die beschikbaar zijn in resource grafiek:
 
-|Resource grafiek tabellen |Description |
+|Resource grafiek tabellen |Beschrijving |
 |---|---|
 |Resources |De standaard tabel als niets is gedefinieerd in de query. De resource typen en eigenschappen van Resource Manager zijn hier beschikbaar. |
 |ResourceContainers |Bevat een abonnement (in Preview-- `Microsoft.Resources/subscriptions` ) en resource groep ( `Microsoft.Resources/subscriptions/resourcegroups` )-resource typen en-gegevens. |
@@ -98,7 +99,7 @@ Resource grafiek ondersteunt alle KQL- [gegevens typen](/azure/kusto/query/scala
 
 Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource grafiek met specifieke voor beelden:
 
-|KQL |Voorbeeld query resource grafiek |Notities |
+|KQL |Voorbeeld query resource grafiek |Opmerkingen |
 |---|---|---|
 |[aantal](/azure/kusto/query/countoperator) |[Sleutel kluizen tellen](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[Afzonderlijke waarden voor een specifieke alias tonen](../samples/starter.md#distinct-alias-values) | |
@@ -112,10 +113,35 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 |[project-weg](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
 |[acties](/azure/kusto/query/sortoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van`order` |
 |[samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen de eerste vereenvoudigde pagina |
-|[Houd](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van`limit` |
+|[take](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van`limit` |
 |[top](/azure/kusto/query/topoperator) |[De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](../samples/starter.md#show-sorted) | |
 |[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combineren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel _toegestaan:_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tabel kolom naam_. Maxi maal drie `union` zijden in één query. Het is niet toegestaan om de tabel met fuzzy op te lossen `union` . Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
 |[positie](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
+
+## <a name="query-scope"></a>Querybereik
+
+Het bereik van de abonnementen waaruit resources worden geretourneerd door een query is afhankelijk van de methode voor toegang tot de resource grafiek. Azure CLI en Azure PowerShell vullen de lijst met abonnementen die in de aanvraag moeten worden meegenomen op basis van de context van de geautoriseerde gebruiker. De lijst met abonnementen kan hand matig worden gedefinieerd voor elk met de **abonnementen** en **abonnements** parameters.
+In REST API en alle andere Sdk's moet de lijst met abonnementen waaruit resources moeten worden opgenomen, expliciet worden gedefinieerd als onderdeel van de aanvraag.
+
+Als **Preview**voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als noch de beheer groep of abonnements lijst zijn gedefinieerd, is het query bereik alle bronnen waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep.
+Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId`kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
+
+Voor beeld: een query uitvoeren op alle resources binnen de hiërarchie van de beheer groep met de naam ' My-beheer groep ' met ID ' myMG '.
+
+- REST API-URI
+
+  ```http
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  ```
+
+- Aanvraagtekst
+
+  ```json
+  {
+      "query": "Resources | summarize count()",
+      "managementGroupId": "myMG"
+  }
+  ```
 
 ## <a name="escape-characters"></a>Escape tekens
 

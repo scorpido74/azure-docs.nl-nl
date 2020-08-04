@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208054"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542701"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best practices voor netwerkverbinding en -beveiliging in Azure Kubernetes Service (AKS)
 
@@ -37,13 +37,15 @@ De container Networking interface (CNI) is een Vendor-neutraal protocol waarmee 
 
 ![Diagram met twee knoop punten met bruggen die elk met één Azure VNet verbinden](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-Voor de meeste productie-implementaties moet u Azure CNI-netwerken gebruiken. Dit netwerk model maakt schei ding van beheer en beheer van resources mogelijk. Vanuit een beveiligings perspectief wilt u vaak dat verschillende teams deze bronnen beheren en beveiligen. Met Azure CNI-netwerken kunt u rechtstreeks verbinding maken met bestaande Azure-resources, on-premises resources of andere services via IP-adressen die zijn toegewezen aan elke pod.
+Voor productie-implementaties zijn zowel kubenet als Azure CNI geldige opties.
+
+Een belang rijk voor deel van Azure CNI Networking voor productie is het netwerk model maakt schei ding van beheer en beheer van resources mogelijk. Vanuit een beveiligings perspectief wilt u vaak dat verschillende teams deze bronnen beheren en beveiligen. Met Azure CNI-netwerken kunt u rechtstreeks verbinding maken met bestaande Azure-resources, on-premises resources of andere services via IP-adressen die zijn toegewezen aan elke pod.
 
 Wanneer u Azure CNI-netwerken gebruikt, bevindt de virtuele netwerk resource zich in een afzonderlijke resource groep voor het AKS-cluster. Delegeer machtigingen voor de Service-Principal AKS voor toegang tot en beheer van deze resources. De service-principal die wordt gebruikt door het AKS-cluster moet ten minste [netwerkinzender](../role-based-access-control/built-in-roles.md#network-contributor) machtigingen hebben voor het subnet binnen het virtuele netwerk. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerk bijdrager te gebruiken, zijn de volgende machtigingen vereist:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Zie [toegang tot andere Azure-resources delegeren][sp-delegation]voor meer informatie over delegering van AKS-Service-Principal. In plaats van een Service-Principal kunt u ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
+Zie [toegang tot andere Azure-resources delegeren][sp-delegation]voor meer informatie over delegering van AKS-Service-Principal. In plaats van een Service-Principal kunt u ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie.
 
 Plan de adresbereiken voor de AKS-subnetten, aangezien elk knoop punt en pod zijn eigen IP-adres ontvangen. Het subnet moet groot genoeg zijn om IP-adressen op te geven voor elk knoop punt, elk van beide en netwerk bronnen die u implementeert. Elk AKS-cluster moet in een eigen subnet worden geplaatst. Om verbinding te kunnen maken met on-premises of peered netwerken in azure, kunt u geen IP-adresbereiken gebruiken die overlappen met bestaande netwerk bronnen. Er zijn standaard limieten voor het aantal peulen dat elke knoop punt wordt uitgevoerd met zowel kubenet als Azure CNI-netwerken. Voor het afhandelen van scale-out gebeurtenissen of cluster upgrades moet u ook extra IP-adressen beschikbaar voor gebruik in het toegewezen subnet. Deze extra adres ruimte is vooral belang rijk als u Windows Server-containers gebruikt, omdat voor deze knooppunt groepen een upgrade moet worden uitgevoerd om de meest recente beveiligings patches toe te passen. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over Windows Server-knoop punten.
 

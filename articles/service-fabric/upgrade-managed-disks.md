@@ -3,12 +3,12 @@ title: Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 description: U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255894"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542846"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 
@@ -165,7 +165,7 @@ Hier vindt u de sectie-voor-sectie wijzigingen van de originele cluster implemen
 
 #### <a name="parameters"></a>Parameters
 
-Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nieuwe schaalset. Merk `vmNodeType1Name` op dat uniek is voor de nieuwe schaalset, terwijl de waarden voor aantal en grootte identiek zijn aan de oorspronkelijke schaalset.
+Voeg een para meter toe voor de exemplaar naam van de nieuwe schaalset. Merk `vmNodeType1Name` op dat uniek is voor de nieuwe schaalset, terwijl de waarden voor aantal en grootte identiek zijn aan de oorspronkelijke schaalset.
 
 **Sjabloonbestand**
 
@@ -174,18 +174,7 @@ Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nie
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-},
-"nt1InstanceCount": {
-    "type": "int",
-    "defaultValue": 5,
-    "metadata": {
-        "description": "Instance count for node type"
-    }
-},
-"vmNodeType1Size": {
-    "type": "string",
-    "defaultValue": "Standard_D2_v2"
-},
+}
 ```
 
 **Parameter bestand**
@@ -193,12 +182,6 @@ Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nie
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
-},
-"nt1InstanceCount": {
-    "value": 5
-},
-"vmNodeType1Size": {
-    "value": "Standard_D2_v2"
 }
 ```
 
@@ -216,13 +199,13 @@ Voeg in de sectie implementatie sjabloon `variables` een vermelding toe voor de 
 
 Voeg in de sectie *resources* van de implementatie sjabloon de nieuwe schaalset voor virtuele machines toe en houd daarbij de volgende dingen:
 
-* De nieuwe schaalset verwijst naar hetzelfde knooppunt type als het origineel:
+* De nieuwe schaalset verwijst naar het nieuwe knooppunt type:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
     ```
 
-* De nieuwe schaalset verwijst naar dezelfde load balancer back-end-adres en-subnet (maar gebruikt een andere load balancer binnenkomende NAT-groep):
+* De nieuwe schaalset verwijst naar hetzelfde load balancer back-end-adres en-subnet als het origineel, maar gebruikt een andere load balancer binnenkomende NAT-groep:
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -253,6 +236,33 @@ Voeg in de sectie *resources* van de implementatie sjabloon de nieuwe schaalset 
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
+
+Voeg vervolgens een item toe aan de `nodeTypes` lijst met de resource *micro soft. ServiceFabric/clusters* . Gebruik dezelfde waarden als voor de oorspronkelijke vermelding van het knooppunt type, met uitzonde ring van de `name` , die moet verwijzen naar het nieuwe knooppunt type (*vmNodeType1Name*).
+
+```json
+"nodeTypes": [
+    {
+        "name": "[parameters('vmNodeType0Name')]",
+        ...
+    },
+    {
+        "name": "[parameters('vmNodeType1Name')]",
+        "applicationPorts": {
+            "endPort": "[parameters('nt0applicationEndPort')]",
+            "startPort": "[parameters('nt0applicationStartPort')]"
+        },
+        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+        "durabilityLevel": "Silver",
+        "ephemeralPorts": {
+            "endPort": "[parameters('nt0ephemeralEndPort')]",
+            "startPort": "[parameters('nt0ephemeralStartPort')]"
+        },
+        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+        "isPrimary": true,
+        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+    }
+],
+```
 
 Zodra u alle wijzigingen in de sjabloon en de parameter bestanden hebt geïmplementeerd, gaat u verder met de volgende sectie om uw Key Vault verwijzingen te verkrijgen en de updates te implementeren in uw cluster.
 

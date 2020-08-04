@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 58be0315b272199e74f28654aae315a8c6c5f7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558829"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541920"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -105,7 +105,7 @@ if not result:
     result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL voor iOS en macOS
 
@@ -213,7 +213,7 @@ Opmerkingen
 
 `WithPrompt()`wordt gebruikt om de interactiviteit met de gebruiker te beheren door een prompt op te geven.
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![Afbeelding van de velden in de structuur van de prompt. Deze constante waarden bepalen de interactiviteit met de gebruiker door het type prompt te definiëren dat wordt weer gegeven door de methode WithPrompt ().](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 De klasse definieert de volgende constanten:
 
@@ -374,7 +374,7 @@ if not result:
 
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL voor iOS en macOS
 
@@ -590,7 +590,7 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
 Deze stroom wordt nog niet ondersteund in MSAL python.
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Deze stroom is niet van toepassing op macOS.
 
@@ -913,7 +913,7 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Deze stroom wordt niet ondersteund op MSAL voor macOS.
 
@@ -1144,7 +1144,7 @@ if not result:
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Deze stroom is niet van toepassing op macOS.
 

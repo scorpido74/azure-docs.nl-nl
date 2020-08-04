@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133092"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542022"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppuntgroepen maken en beheren voor een cluster in Azure Kubernetes Service (AKS)
 
@@ -489,6 +489,8 @@ Alleen een van de peulen waarvoor deze tolerantie is toegepast, kan worden gepla
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Een Taint, label of tag voor een knooppunt groep opgeven
 
+### <a name="setting-nodepool-taints"></a>Nodepool taints instellen
+
 Wanneer u een knooppunt groep maakt, kunt u taints, labels of Tags toevoegen aan die knooppunt groep. Wanneer u een Taint, label of tag toevoegt, krijgen alle knoop punten in die knooppunt groep ook de Taint, het label of de tag.
 
 Gebruik [AZ AKS nodepool add][az-aks-nodepool-add]om een knooppunt groep met een Taint te maken. Geef de naam *taintnp* op en gebruik de `--node-taints` para meter om *SKU = GPU: schema* voor de Taint op te geven.
@@ -532,6 +534,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 De Taint-informatie is zichtbaar in Kubernetes voor het afhandelen van plannings regels voor knoop punten.
 
+### <a name="setting-nodepool-labels"></a>Nodepool-labels instellen
+
 U kunt ook labels toevoegen aan een knooppunt groep tijdens het maken van de knooppunt groep. Labels die in de knooppunt groep zijn ingesteld, worden toegevoegd aan elk knoop punt in de knooppunt groep. Deze [labels zijn zichtbaar in Kubernetes][kubernetes-labels] voor het afhandelen van plannings regels voor knoop punten.
 
 Gebruik [AZ AKS nodepool add][az-aks-nodepool-add]om een knooppunt groep met een label te maken. Geef de naam *labelnp* op en gebruik de `--labels` para meter om *Dept = it* en *CostCenter = 9999* voor labels op te geven.
@@ -574,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>Nodepool Azure-Tags instellen
+
 U kunt een Azure-tag Toep assen op knooppunt groepen in uw AKS-cluster. Labels die worden toegepast op een knooppunt groep, worden toegepast op elk knoop punt in de knooppunt groep en blijven behouden via upgrades. Labels worden ook toegepast op nieuwe knoop punten die worden toegevoegd aan een knooppunt groep tijdens scale-out bewerkingen. Het toevoegen van een tag kan helpen bij taken zoals het bijhouden van het beleid of het schatten van de kosten.
+
+Azure Tags heeft sleutels die niet hoofdletter gevoelig zijn voor bewerkingen, zoals bij het ophalen van een tag door te zoeken in de sleutel. In dit geval wordt een tag met de opgegeven sleutel bijgewerkt of opgehaald, ongeacht het hoofdletter gebruik. Label waarden zijn hoofdletter gevoelig.
+
+Als in AKS meerdere labels zijn ingesteld met identieke sleutels, maar met een ander hoofdletter gebruik, wordt de gebruikte tag de eerste in alfabetische volg orde. Bijvoorbeeld `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` resultaten in `Key1` en `val1` worden ingesteld.
 
 Maak een knooppunt groep met behulp van de [AZ AKS nodepool add][az-aks-nodepool-add]. Geef de naam *tagnodepool* op en gebruik de `--tag` para meter om *Dept = it* en *CostCenter = 9999* voor labels op te geven.
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 6ad6ca72f0861324a10e93a1eadbdc11c6104574
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320966"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541121"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren naar Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -96,14 +96,12 @@ Zie [uw modellen implementeren met VS code](tutorial-train-deploy-image-classifi
 > [!IMPORTANT]
 > U hoeft geen ACI-container te maken om vooraf te testen. ACI-containers worden zo nodig gemaakt.
 
-## <a name="update-the-web-service"></a>De webservice bijwerken
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
+* [De webservice bijwerken](how-to-deploy-update-web-service.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)

@@ -1,7 +1,7 @@
 ---
 title: Playbook voor het adresseren van algemene beveiligings vereisten
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: Dit artikel bevat algemene beveiligings vereisten en aanbevolen procedures in Azure SQL Database en Azure SQL Managed instance
+description: Dit artikel bevat algemene beveiligings vereisten en aanbevolen procedures in Azure SQL Database en Azure SQL Managed instance.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371784"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541716"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -255,7 +255,7 @@ De volgende aanbevolen procedures zijn optioneel, maar leiden tot betere beheers
 - Maak en gebruik aangepaste rollen met de exacte machtigingen die nodig zijn. Typische rollen die in de praktijk worden gebruikt:
   - Beveiligings implementatie
   - Beheerder
-  - Ontwikkelaar
+  - Developer
   - Ondersteunings personeel
   - Accountant
   - Geautomatiseerde processen
@@ -291,7 +291,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 - Identificeer een uitgebreide hiërarchie van gebruikers (en geautomatiseerde processen) die toegang hebben tot het systeem.
 
 - Rollen maken op basis van de benodigde gebruikers groepen en machtigingen toewijzen aan rollen.
-  - Voor taken op beheer niveau in Azure Portal of via Power shell-Automation kunt u RBAC-rollen gebruiken. Zoek een ingebouwde rol die overeenkomt met de vereiste of maak een aangepaste Azure-rol met behulp van de beschik bare machtigingen
+  - Voor taken op beheer niveau in Azure Portal of via Power shell-Automation kunt u Azure-rollen gebruiken. Zoek een ingebouwde rol die overeenkomt met de vereiste of maak een aangepaste Azure-rol met behulp van de beschik bare machtigingen
   - Server functies maken voor Server-brede taken (het maken van nieuwe aanmeldingen, data bases) in een beheerd exemplaar.
   - Maak database rollen voor taken op database niveau.
 
@@ -318,7 +318,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 
 - Door de gebruiker gedefinieerde rollen maken en gebruiken wanneer ingebouwde rollen te veel machtigingen of onvoldoende machtigingen verlenen.
 
-- Roltoewijzingen kunnen ook tijdelijk worden uitgevoerd, ook wel bekend als dynamische schei ding van taken (DSD), binnen SQL Agent-taak stappen in T-SQL of met behulp van Azure PIM voor RBAC-rollen.
+- Roltoewijzingen kunnen ook tijdelijk worden uitgevoerd, ook wel bekend als dynamische schei ding van taken (DSD), binnen SQL Agent-taak stappen in T-SQL of met behulp van Azure PIM voor Azure-rollen.
 
 - Zorg ervoor dat Dba's geen toegang hebben tot de versleutelings sleutels of sleutel archieven en dat beveiligings beheerders met toegang tot de sleutels op zijn beurt geen toegang tot de data base hebben. Het gebruik van een [EKM (Extensible Key Management)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) kan deze schei ding gemakkelijker maken. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) kan worden gebruikt om EKM te implementeren.
 
@@ -376,7 +376,7 @@ Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar beva
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 

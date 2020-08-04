@@ -1,7 +1,7 @@
 ---
 title: Opmerkingen bij de release Microsoft Threat Modeling Tool
 titleSuffix: Azure
-description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
+description: Lees de opmerkingen bij de release voor alle updates van de Microsoft Threat Modeling Tool. Bekijk een download koppeling en systeem vereisten.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
-ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db0a68b622b9f4596820918d66860d3ea286981
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80125087"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539064"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool releases
 

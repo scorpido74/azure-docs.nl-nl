@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 27b625dfa31b366d95922e1dd0bad7fda6e86ed4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407027"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540067"
 ---
-# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
+# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
 In dit artikel leert u hoe u Azure Firewall kunt configureren voor gebruik met een Azure Machine Learning-werk ruimte.
+
+> [!IMPORTANT]
+> Hoewel de informatie in dit document is gebaseerd op het gebruik van Azure Firewall, kunt u het gebruiken met andere firewall producten. Als u vragen hebt over het toestaan van communicatie via uw firewall, raadpleegt u de documentatie voor de firewall die u gebruikt.
 
 Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren. Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte. Er zijn verschillende hostnamen die worden gebruikt door de Azure Machine Learning-werk ruimte, die in dit artikel worden beschreven.
 
@@ -53,6 +56,7 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 | **vault.azure.net** | Azure Key Vault |
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | Micro soft Container Registry voor base docker-installatie kopieën |
+| **your-acr-server-name.azurecr.io** | Alleen nodig als uw Azure Container Registry zich achter het virtuele netwerk bevindt. In deze configuratie wordt een persoonlijke koppeling vanuit de micro soft-omgeving gemaakt naar het ACR-exemplaar in uw abonnement. Gebruik de ACR-server naam voor uw Azure Machine Learning-werk ruimte. |
 
 ## <a name="python-hosts"></a>Python-hosts
 

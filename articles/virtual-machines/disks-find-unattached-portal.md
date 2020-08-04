@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085755"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542735"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen-Azure Portal
 
@@ -22,12 +22,12 @@ Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zij
 
 Als u niet-gekoppelde beheerde schijven hebt en de gegevens niet meer nodig hebt, wordt in het volgende proces uitgelegd hoe u deze kunt vinden in de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zoek en selecteer **schijven**.
 
     Op de Blade **schijven** wordt een lijst met alle schijven weer gegeven. Een schijf met ' **-** ' in de kolom **eigenaar** is een niet-gekoppelde schijf.
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![Scherm opname van de Blade Managed disks, als een schijf de eigenaar kolom heeft, is het een niet-gekoppelde schijf.](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. Selecteer de niet-gekoppelde schijf die u wilt verwijderen. Hiermee opent u de Blade van de schijf.
 1. Op de Blade van de schijf kunt u controleren of de status van de schijf niet is gekoppeld en selecteert u vervolgens **verwijderen**.
@@ -40,7 +40,7 @@ Onbeheerde schijven zijn VHD-bestanden die zijn opgeslagen als [pagina-blobs](/r
 
 Als u niet-beheerde schijven hebt die niet zijn gekoppeld aan een virtuele machine, de gegevens niet meer nodig hebben en u deze wilt verwijderen, wordt in het volgende proces uitgelegd hoe u dit kunt doen vanuit de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zoek en selecteer **schijven (klassiek)**.
 
     Er wordt een lijst met al uw onbeheerde schijven weer gegeven. Een schijf met **-** in de kolom **gekoppeld aan** is een niet-gekoppelde schijf.

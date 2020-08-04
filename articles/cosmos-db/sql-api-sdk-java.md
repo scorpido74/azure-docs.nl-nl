@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b8cc0d44c654bd7047bac462ce98126fb4a27334
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461031"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541665"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -260,11 +260,10 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd aan de huidige SDK, omdat het raadzaam is om altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren.
 
 > [!WARNING]
-> Alle versies **1. x** van de SQL-SDK voor Java zullen op **30 mei 2020**worden ingetrokken. Alle versies van de SQL-SDK voor Java vóór versie **1.0.0** zijn ingetrokken op **29 februari 2016**.
-> 
-> 
+> Na 30 mei 2020 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 1. x van de Azure Cosmos DB Java SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 1. x van de SDK blijven geleverd door de Azure Cosmos DB-service.
+>
+> Na 29 februari 2016 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 0. x van de Azure Cosmos DB Java SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 0. x van de SDK blijven geleverd door de Azure Cosmos DB-service.
 
-<br/>
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
@@ -327,6 +326,6 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
 

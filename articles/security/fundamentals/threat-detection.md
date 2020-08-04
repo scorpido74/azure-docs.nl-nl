@@ -1,6 +1,6 @@
 ---
 title: Detectie van Azure Advanced Threat | Microsoft Docs
-description: Meer informatie over Azure AD Identity Protection en de mogelijkheden ervan.
+description: Meer informatie over de ingebouwde geavanceerde detectie functie voor bedreigingen voor Azure, zoals de Azure AD Identity Protection-Service.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503282"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541019"
 ---
 # <a name="azure-advanced-threat-detection"></a>Geavanceerde bedreigingsdetectie van Azure
 
@@ -344,9 +344,9 @@ Met hulpprogramma's om schaduw-IT te onthullen, risico's te beoordelen, beleid a
 | -------- | ----------- |
 | Ontdekken | Onthul Shadow IT met Cloud App Security. Krijg meer inzicht door apps, activiteiten, gebruikers, gegevens en bestanden in uw cloudomgeving te detecteren. Detecteer apps van derden die zijn verbonden met uw cloud.|
 |Onderzoeken | Onderzoek uw cloud-apps met forensische hulpprogramma's voor de cloud om riskante apps, specifieke gebruikers en bestanden in uw netwerk diepgaand te onderzoeken. Vind patronen in de gegevens die vanuit de cloud worden verzameld. U kunt rapporten genereren om uw cloud te bewaken. |
-| Controle | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
+| Beheer | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
 | Beschermen | Gebruik Cloud App Security om toepassingen goed te keuren of te verbieden, preventie van gegevens verlies af te dwingen, machtigingen te beheren en te delen en aangepaste rapporten en waarschuwingen te genereren. |
-| Controle | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
+| Beheer | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
 
 
 ![Cloud App Security diagram](./media/threat-detection/azure-threat-detection-fig14.png)

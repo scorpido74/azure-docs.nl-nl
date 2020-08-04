@@ -4,19 +4,19 @@ description: In dit artikel wordt beschreven hoe u de berekenings-en opslag reso
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/31/2020
-ms.openlocfilehash: 42a4d1288c7daeb4579e481f0258666d8e2cdbce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 39869e74fcb3e8f3deae1273721093f3f85e8d78
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502984"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541682"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
 
@@ -145,7 +145,7 @@ Als u de grootte van de data base van een gerepliceerde secundaire Data Base wil
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11-en P15-beperkingen bij een maximale grootte van meer dan 1 TB
 
-Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, VS-West-Centraal, US DoD regio's en Amerikaanse overheid centraal. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB. De volgende overwegingen en beperkingen zijn van toepassing op P11-en P15-data bases met een maximale grootte van meer dan 1 TB:
+Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal en Duitsland-noordoost. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB. De volgende overwegingen en beperkingen zijn van toepassing op P11-en P15-data bases met een maximale grootte van meer dan 1 TB:
 
 - Als de maximale grootte voor een P11-of P15-data base ooit is ingesteld op een waarde die groter is dan 1 TB, dan kan deze alleen worden teruggezet of gekopieerd naar een P11-of P15-data base.  Vervolgens kan de data base opnieuw worden geschaald naar een andere reken grootte, op voor waarde dat de hoeveelheid toegewezen ruimte op het moment van de bewerking voor opnieuw schalen niet groter is dan de maximale grootte limieten van de nieuwe reken grootte.
 - Voor scenario's met actieve geo-replicatie:

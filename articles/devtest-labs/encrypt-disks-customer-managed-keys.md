@@ -3,17 +3,17 @@ title: BESTURINGSSYSTEEM schijven versleutelen met door de klant beheerde sleute
 description: Meer informatie over het versleutelen van besturings systeem schijven (OS) met door de klant beheerde sleutels in Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 153d27061814969964c9340cd85cad92bfdbc7d2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462341"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542413"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Besturings systemen (OS)-schijven versleutelen met door de klant beheerde sleutels in Azure DevTest Labs
 Met SSE (server side Encryption) beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met SSE worden uw gegevens die zijn opgeslagen op Managed disks in azure (OS-en gegevens schijven), op rest standaard automatisch versleuteld wanneer deze in de cloud worden bewaard. Meer informatie over [schijf versleuteling](../virtual-machines/windows/disk-encryption.md) in Azure. 
 
-In DevTest Labs worden alle besturingssysteem schijven en gegevens schijven die zijn gemaakt als onderdeel van een lab, versleuteld met door het platform beheerde sleutels. Als eigenaar van een lab kunt u echter kiezen voor het versleutelen van de besturingssysteem schijven van de virtuele machine met behulp van uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de **klant beheerde sleutel** opgeven die moet worden gebruikt voor het versleutelen van gegevens in Lab-besturingssysteem schijven. Zie door de [klant beheerde sleutels](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)voor meer informatie over de versleuteling aan de server zijde (SSE) met door de klant beheerde sleutels en andere beheerde schijf versleutelings typen. Zie ook [beperkingen voor het gebruik van door de klant beheerde sleutels](/virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+In DevTest Labs worden alle besturingssysteem schijven en gegevens schijven die zijn gemaakt als onderdeel van een lab, versleuteld met door het platform beheerde sleutels. Als eigenaar van een lab kunt u echter kiezen voor het versleutelen van de besturingssysteem schijven van de virtuele machine met behulp van uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de **klant beheerde sleutel** opgeven die moet worden gebruikt voor het versleutelen van gegevens in Lab-besturingssysteem schijven. Zie door de [klant beheerde sleutels](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)voor meer informatie over de versleuteling aan de server zijde (SSE) met door de klant beheerde sleutels en andere beheerde schijf versleutelings typen. Zie ook [beperkingen voor het gebruik van door de klant beheerde sleutels](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,21 +25,41 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
 
 ## <a name="pre-requisites"></a>Vereisten
 
-- De schijf versleutelings moet zich in dezelfde regio en hetzelfde abonnement bevinden als uw Lab. 
-- Zorg ervoor dat u (eigenaar van het lab) ten minste toegang hebt tot de schijf versleuteling die wordt gebruikt om Lab **-** besturingssysteem schijven te versleutelen. Als u geen schijf versleuteling hebt ingesteld, volgt u dit artikel om [een Key Vault en een schijf versleutelings](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault)in te stellen. 
-- De Lab-eigenaar moet de door het systeem toegewezen identiteit van het lab expliciet verlenen aan de systeemversleutelde set van het lab om de versleuteling van de schijf versleuteling in te stellen. De eigenaar van het Lab kan dit doen door de volgende stappen uit te voeren:
-    1. Zorg ervoor dat u lid bent van de [rol beheerder van gebruikers toegang](/role-based-access-control/built-in-roles.md#user-access-administrator) op het niveau van het Azure-abonnement, zodat u de gebruikers toegang tot Azure-resources kunt beheren. 
+1. Als u geen schijf versleuteling hebt ingesteld, volgt u dit artikel om [een Key Vault en een schijf versleutelings](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault)in te stellen. Houd rekening met de volgende vereisten voor de schijf versleutelings: 
+
+    - De schijf versleutelings moet zich **in dezelfde regio en hetzelfde abonnement bevinden als uw Lab**. 
+    - Zorg ervoor dat u (eigenaar van het lab) ten minste toegang hebt tot de schijf versleuteling die wordt gebruikt om Lab **-** besturingssysteem schijven te versleutelen.  
+2. De Lab-eigenaar moet de door het **systeem toegewezen identiteit** van het lab expliciet verlenen aan de systeemversleutelde set van het lab om de versleuteling van de schijf versleuteling in te stellen. De eigenaar van het Lab kan dit doen door de volgende stappen uit te voeren:
+
+    > [!IMPORTANT]
+    > U moet deze stappen uitvoeren voor Labs die is gemaakt op of na 8/1/2020. Er is geen actie vereist voor Labs die vóór die datum is gemaakt.
+
+    1. Zorg ervoor dat u lid bent van de [rol beheerder van gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) op het niveau van het Azure-abonnement, zodat u de gebruikers toegang tot Azure-resources kunt beheren. 
     1. Selecteer op de pagina **schijf versleuteling instellen** de optie **toegangs beheer (IAM)** in het menu links. 
     1. Selecteer **+ toevoegen** op de werk balk en selecteer **een roltoewijzing toevoegen**.  
 
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Rollen beheer toevoegen-menu":::
-    1. Selecteer de rol van **lezer** of een rol die meer toegang toestaat. 
+    1. Selecteer op de pagina **roltoewijzing toevoegen** de rol van **lezer** of een rol die meer toegang toestaat. 
     1. Typ de naam van het lab waarvoor de schijf versleuteling is ingesteld en selecteer de naam van het lab (door het systeem toegewezen identiteit voor het lab) in de vervolg keuzelijst. 
     
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Door het systeem beheerde identiteit van het lab selecteren":::        
     1. Selecteer **Opslaan** op de werkbalk. 
 
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Roltoewijzing opslaan":::
+3. Voeg de **systeemtoegewezen identiteit** van het test systeem toe aan de rol van **Inzender voor virtuele machines** met behulp van de **Subscription**  ->  **iam-pagina (Subscription Access Control)** . De stappen zijn vergelijkbaar met die in de vorige stappen. 
+
+    > [!IMPORTANT]
+    > U moet deze stappen uitvoeren voor Labs die is gemaakt op of na 8/1/2020. Er is geen actie vereist voor Labs die vóór die datum is gemaakt.
+
+    1. Navigeer naar de pagina **abonnement** in het Azure Portal. 
+    1. Klik op **Toegangsbeheer (IAM)** . 
+    1. Selecteer **+ toevoegen** op de werk balk en selecteer **een roltoewijzing toevoegen**. 
+    
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="De pagina abonnement-> toegangs beheer (IAM)":::
+    1. Selecteer op de pagina **roltoewijzing toevoegen** de optie **Inzender voor virtuele machines** voor de rol.
+    1. Typ de naam van het lab en selecteer de naam van het **Lab** (door het systeem toegewezen identiteit voor het lab) in de vervolg keuzelijst. 
+    1. Selecteer **Opslaan** op de werkbalk. 
+
 ## <a name="encrypt-lab-os-disks-with-a-customer-managed-key"></a>Schijven voor het lab-besturings systeem versleutelen met een door de klant beheerde sleutel 
 
 1. Selecteer op de start pagina voor uw Lab in de Azure Portal **configuratie en beleid** in het menu links. 

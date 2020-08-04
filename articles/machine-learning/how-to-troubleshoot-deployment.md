@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, tracking-python
-ms.openlocfilehash: dcb2a50a91bec70dfe5d9adda7518f3510a8c973
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4741c6348c2a4077776d2d79bee56de26f62e2d1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373195"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540934"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
 
@@ -153,7 +153,7 @@ Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-envi
 Tijdens lokale tests moet u het bestand mogelijk bijwerken `score.py` om logboek registratie toe te voegen of om problemen op te lossen die u hebt gedetecteerd. Als u wijzigingen in het `score.py` bestand wilt laden, gebruikt u `reload()` . Met de volgende code wordt bijvoorbeeld het script voor de service opnieuw geladen en vervolgens worden er gegevens naar verzonden. De gegevens worden beoordeeld aan de hand van het bijgewerkte `score.py` bestand:
 
 > [!IMPORTANT]
-> De `reload` methode is alleen beschikbaar voor lokale implementaties. Zie de sectie Update van [modellen implementeren](how-to-deploy-and-where.md#update)voor meer informatie over het bijwerken van een implementatie naar een ander reken doel.
+> De `reload` methode is alleen beschikbaar voor lokale implementaties. Zie [How to update your webservice](how-to-deploy-update-web-service.md)(Engelstalig) voor meer informatie over het bijwerken van een implementatie naar een ander Compute-doel.
 
 ```python
 service.reload()

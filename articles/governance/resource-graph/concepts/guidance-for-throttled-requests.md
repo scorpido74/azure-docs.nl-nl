@@ -1,14 +1,14 @@
 ---
 title: Richtlijnen voor vertraagde aanvragen
 description: Meer informatie over Group, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
-ms.date: 05/20/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682055"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541835"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 
@@ -29,6 +29,8 @@ In elke query-antwoord voegt Azure-resource grafiek twee beperkings koppen toe:
 
 - `x-ms-user-quota-remaining` (int): Het resterende resourcequotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
 - `x-ms-user-quota-resets-after`(UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
+
+Wanneer een beveiligingsprincipal toegang heeft tot meer dan 5000 abonnementen binnen het [query bereik](./query-language.md#query-scope)van de Tenant of beheer groep, wordt het antwoord beperkt tot de eerste 5000-abonnementen en `x-ms-tenant-subscription-limit-hit` wordt de header geretourneerd als `true` .
 
 Om te laten zien hoe de headers werken, bekijken we een query-antwoord met de koptekst en de waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03` .
 
@@ -185,7 +187,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>Pagin
+## <a name="pagination"></a>Paginering
 
 Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord retourneert, moet u mogelijk uw query's [pagineren](./work-with-data.md#paging-results) om de volledige gegevensset te verkrijgen die u zoekt. Sommige Azure-resource grafiek-clients verwerken de paginering echter anders dan andere.
 

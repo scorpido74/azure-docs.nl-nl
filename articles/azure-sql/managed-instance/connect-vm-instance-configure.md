@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706355"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542650"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Snelstartgids: een Azure-VM configureren om verbinding te maken met een door Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -74,7 +74,7 @@ De eenvoudigste manier om een virtuele client machine met alle benodigde hulppro
 
 1. Zorg ervoor dat u bent aangemeld bij de Azure Portal op een ander browser tabblad. Selecteer vervolgens de volgende knop om een virtuele client machine te maken en Installeer SQL Server Management Studio:
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Afbeelding met een knop met het label implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json)
 
 2. Vul het formulier in met behulp van de informatie in de volgende tabel:
 
@@ -112,7 +112,7 @@ De volgende stappen laten zien hoe u verbinding maakt met uw nieuwe virtuele mac
 
     ![VM](./media/connect-vm-instance-configure/vm.png)  
 
-2. Selecteer **Verbinding maken**.
+2. Selecteer **Verbinden**.
 
    Een Remote Desktop Protocol bestand (RDP-bestand) wordt weer gegeven met het open bare IP-adres en het poort nummer voor de virtuele machine.
 

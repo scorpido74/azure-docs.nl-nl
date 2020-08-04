@@ -1,6 +1,6 @@
 ---
 title: Crypto grafie-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: oplossingen voor bedreigingen die worden blootgesteld aan de Threat Modeling Tool
+description: Meer informatie over de oplossing van crypto grafie voor bedreigingen die worden weer gegeven in de Threat Modeling Tool. Zie informatie over risico beperking en voor beelden van code weer geven.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728195"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539948"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Beveiligings frame: crypto grafie | Oplossingen 
 
@@ -39,7 +39,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -50,7 +50,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -61,7 +61,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -72,7 +72,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -83,7 +83,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -94,7 +94,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -105,7 +105,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -116,7 +116,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Een versleutelings algoritme kiezen](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
@@ -127,7 +127,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [De bron van pakketten met digitale hand tekeningen](https://msdn.microsoft.com/library/ms141174.aspx), [bedreiging en beveiligings problemen (integratie Services)](https://msdn.microsoft.com/library/bb522559.aspx) identificeren |
@@ -138,7 +138,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [HAND tekening toevoegen (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
@@ -149,7 +149,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [SQL Server voor Extensible Key Management (EKM)](https://msdn.microsoft.com/library/bb895340), [uitbreidbaar sleutel beheer met behulp van Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
@@ -160,7 +160,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, MsSQL2016 |
 | **Referenties**              | [Always Encrypted (data base-engine)](https://msdn.microsoft.com/library/mt163865) |
@@ -171,7 +171,7 @@ ms.locfileid: "68728195"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-apparaat | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Device OS-Windows IoT core, connectiviteit van apparaten-Sdk's van Azure IoT-apparaat |
 | **Referenties**              | [TPM op Windows IOT core](https://developer.microsoft.com/windows/iot/docs/tpm), [TPM instellen op Windows IOT core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [Azure IOT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
@@ -194,7 +194,7 @@ Zoals kan worden weer gegeven, is de primaire sleutel van het apparaat niet aanw
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-Cloud gateway | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Gateway keuze-Azure IoT Hub |
 | **Referenties**              | N.v.t.  |
@@ -216,7 +216,7 @@ Zoals kan worden weer gegeven, is de primaire sleutel van het apparaat niet aanw
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Dynamics CRM Outlook-client | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -238,7 +238,7 @@ Zoals kan worden weer gegeven, is de primaire sleutel van het apparaat niet aanw
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Identiteits server | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |

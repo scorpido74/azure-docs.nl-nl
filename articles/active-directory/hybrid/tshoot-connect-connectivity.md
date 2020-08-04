@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356403"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541733"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
 In dit artikel wordt uitgelegd hoe connectiviteit tussen Azure AD Connect en Azure AD werkt en hoe u verbindings problemen kunt oplossen. Deze problemen worden hoogstwaarschijnlijk gezien in een omgeving met een proxy server.
@@ -32,7 +32,7 @@ Azure AD Connect maakt gebruik van moderne verificatie (met behulp van de ADAL-b
 
 In dit artikel laten we zien hoe fabrikam verbinding maakt met Azure AD via de proxy. De proxy server heeft de naam fabrikamproxy en maakt gebruik van poort 8080.
 
-Eerst moeten we controleren of [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd.
+Eerst moeten we controleren of [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd en **Microsoft Azure AD de synchronisatie service** eenmaal opnieuw is opgestart nadat het machine.config bestand is bijgewerkt.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -44,7 +44,7 @@ De proxy server moet ook de vereiste Url's hebben geopend. De officiële lijst w
 
 Van deze Url's is de volgende tabel mini maal de absoluut bare waarde om te kunnen verbinden met Azure AD. Deze lijst bevat geen optionele functies, zoals wacht woord terugschrijven of Azure AD Connect Health. Dit wordt hier beschreven om te helpen bij het oplossen van problemen met de initiële configuratie.
 
-| URL | Poort | Description |
+| URL | Poort | Beschrijving |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Wordt gebruikt voor het downloaden van CRL-lijsten. |
 | \*. verisign.com |HTTP/80 |Wordt gebruikt voor het downloaden van CRL-lijsten. |
@@ -122,7 +122,7 @@ Hier volgt een dump van een echt proxy logboek en de pagina van de wizard instal
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*. microsoftonline.com:443 |
 
-**Configureren**
+**Configureerer**
 
 | Tijd | URL |
 | --- | --- |

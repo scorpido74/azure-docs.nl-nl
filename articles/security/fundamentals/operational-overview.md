@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Operational Security | Microsoft Docs
-description: Dit artikel biedt een overzicht van de operationele beveiliging van Azure.
+description: Meer informatie over Azure-operationele beveiliging in dit overzicht. Operationele beveiliging verwijst naar Asset Protection-Services,-besturings elementen en-functies.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50fb9c597a74a7aa08dfc3d8b7acd9b94760a9df
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674243"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542888"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
@@ -50,7 +50,7 @@ Azure Backup biedt onderdelen die u downloadt en implementeert op de juiste comp
 
 Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-overview#what-can-i-back-up)voor meer informatie.
 
-### <a name="site-recovery"></a>Siteherstel
+### <a name="site-recovery"></a>Site Recovery
 
 [Azure site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) biedt bedrijfs continuïteit door de replicatie van on-premises virtuele en fysieke machines naar Azure of een secundaire site te organiseren. Als uw primaire site niet beschikbaar is, voert u een failover uit naar de secundaire locatie zodat gebruikers kunnen blijven werken. U kunt geen failback uitvoeren wanneer de systemen retour neren naar de werk volgorde. Gebruik Azure Security Center om intelligente en efficiënte detectie van bedreigingen uit te voeren.
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448683"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542358"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn-account verbindingen gegevens delen en toestemming
 
@@ -41,7 +41,7 @@ U moet een Azure Active Directory beheerder zijn om de instelling voor uw organi
 1. Als u de integratie wilt in-of uitschakelen, volgt u de stappen in [toestemming geven aan LinkedIn-integratie voor uw Azure AD-organisatie](linkedin-integration.md).
 2. Wanneer u de LinkedIn-integratie in uw organisatie aankondigt, wijst u uw gebruikers aan de veelgestelde vragen over [LinkedIn-gegevens in micro soft-apps en-services](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Het artikel bevat informatie over waar LinkedIn-informatie wordt weer gegeven, [delen van gegevens en privacy](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400), [het verbinden van accounts](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) en meer.
 
-U moet de LinkedIn-Integratie aankondigen aan uw gebruikers die hen alle informatie geven over het delen van gegevens en de privacy met betrekking tot LinkedIn-integratie. De gebruikers die u licenties gebruiken, kunnen verbinding maken met accounts in de 
+U moet LinkedIn-Integratie aankondigen aan uw gebruikers die hen alle informatie geven over het [delen van gegevens en privacy met LinkedIn-Integratie](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400). 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Toestemming van de gebruiker voor toegang tot gegevens in micro soft en LinkedIn
 

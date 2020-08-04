@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, ophalen, sensor, camera, SDK, diepte, RGB, afbeeldingen, kleur, vastleg ging, oplossing, buffer
-ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277203"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538911"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Azure Kinect-installatie kopie gegevens ophalen
 
-Deze pagina bevat informatie over het ophalen van installatie kopieën van de Azure-Kinect. In dit artikel wordt beschreven hoe u installatie kopieën kunt vastleggen en openen die zijn gecoördineerd tussen de kleur en diepte camera's van het apparaat. apparaat. Als u toegang wilt krijgen tot installatie kopieën, moet u eerst het apparaat openen en configureren. vervolgens kunt u installatie kopieën vastleggen.
+Deze pagina bevat informatie over het ophalen van installatie kopieën van de Azure-Kinect. In dit artikel wordt beschreven hoe u installatie kopieën kunt vastleggen en openen die zijn gecoördineerd tussen de kleur en diepte van het apparaat. Als u toegang wilt krijgen tot installatie kopieën, moet u eerst het apparaat openen en configureren. vervolgens kunt u installatie kopieën vastleggen.
 Voordat u een installatie kopie configureert en vastlegt, moet u het [apparaat zoeken en openen](find-then-open-device.md).
 
 U kunt ook verwijzen naar het [voor beeld van SDK-streaming](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming) dat laat zien hoe u de functies in dit artikel gebruikt.

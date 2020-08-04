@@ -7,12 +7,12 @@ ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431689"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538928"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>URI voor Shared Access-hand tekening ophalen voor uw VM-installatie kopie
 
@@ -31,10 +31,10 @@ Volg de volgende vereisten bij het genereren van SAS-Uri's voor uw Vhd's:
 
 Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
-* **Micro soft Storage Explorer** – grafisch hulp programma dat beschikbaar is in de Azure Portal.
+* **Microsoft Azure Storage Explorer** : grafisch hulp programma dat beschikbaar is in de Azure Portal.
 * **Microsoft Azure cli** : aanbevolen voor niet-Windows-besturings systemen en geautomatiseerde of continue integratie omgevingen.
 
-### <a name="use-microsoft-storage-explorer"></a>Micro soft Storage Explorer gebruiken
+### <a name="use-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer gebruiken
 
 1. Ga naar uw opslag account in de Azure Portal.
 2. Open in het deel venster Verkenner aan de linkerkant het hulp programma **Storage Explorer** (preview).

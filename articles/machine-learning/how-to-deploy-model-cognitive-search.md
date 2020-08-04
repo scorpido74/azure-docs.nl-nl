@@ -10,12 +10,12 @@ ms.author: larryfr
 author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: c8b25e1d3ef2d2b780d88fbf2ba6c6568b4a804d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59671a0520d665d594356a2e6aee46116a8de5d3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744957"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541767"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Een model implementeren voor gebruik met Cognitive Search
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -216,7 +216,7 @@ Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-envi
 De implementatie configuratie definieert de Azure Kubernetes service-hosting omgeving die wordt gebruikt om de webservice uit te voeren.
 
 > [!TIP]
-> Als u niet zeker weet wat het geheugen, de CPU of GPU nodig heeft voor uw implementatie, kunt u een profile ring gebruiken om deze informatie te lezen. Zie [hoe en wanneer u een model implementeert](how-to-deploy-and-where.md#prepare-to-deploy)voor meer informatie.
+> Als u niet zeker weet wat het geheugen, de CPU of GPU nodig heeft voor uw implementatie, kunt u een profile ring gebruiken om deze informatie te lezen. Zie [hoe en wanneer u een model implementeert](how-to-deploy-and-where.md)voor meer informatie.
 
 ```python
 from azureml.core.model import Model
@@ -309,7 +309,7 @@ Het resultaat dat door de service wordt geretourneerd, is vergelijkbaar met de v
 
 Zie voor meer informatie over het gebruik van dit model van Cognitive Search de zelf studie [een aangepaste vaardigheid bouwen en implementeren met Azure machine learning](../search/cognitive-search-tutorial-aml-custom-skill.md) .
 
-## <a name="clean-up-the-resources"></a>De resources opschonen
+## <a name="clean-up-the-resources"></a>Resources opschonen
 
 Als u het AKS-cluster specifiek voor dit voor beeld hebt gemaakt, verwijdert u uw resources Nadat u deze hebt getest met Cognitive Search.
 

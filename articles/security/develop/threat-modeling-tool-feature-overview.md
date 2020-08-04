@@ -1,18 +1,18 @@
 ---
 title: Overzicht van Microsoft Threat Modeling Tool-functies-Azure
-description: Meer informatie over alle functies die beschikbaar zijn in de Threat Modeling Tool
+description: Meer informatie over alle functies die beschikbaar zijn in de Threat Modeling Tool, zoals de analyse weergave en rapporten.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552114"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539999"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Overzicht van Threat Modeling Tool-functies
 
@@ -43,7 +43,7 @@ De ervaring is vergelijkbaar met andere micro soft-producten. Laten we de menu o
 | --------------------------------------- | ------------ |
 | **File** | <ul><li>Bestanden openen, opslaan en sluiten</li><li>Meld u aan en meld u af bij de OneDrive-accounts.</li><li>Koppelingen delen (weer geven en bewerken).</li><li>Bestands gegevens weer geven.</li><li>Pas een nieuwe sjabloon toe op bestaande modellen.</li></ul> |
 | **Bewerken** | Acties ongedaan maken en opnieuw uitvoeren, evenals kopiëren, plakken en verwijderen. |
-| **Weergave** | <ul><li>Scha kelen tussen **analyse** -en **ontwerp** weergaven.</li><li>Open gesloten vensters (bijvoorbeeld stencils, element eigenschappen en berichten).</li><li>De indeling opnieuw instellen op de standaard instellingen.</li></ul> |
+| **Weergeven** | <ul><li>Scha kelen tussen **analyse** -en **ontwerp** weergaven.</li><li>Open gesloten vensters (bijvoorbeeld stencils, element eigenschappen en berichten).</li><li>De indeling opnieuw instellen op de standaard instellingen.</li></ul> |
 | **Diagram** | Diagrammen toevoegen en verwijderen en door tabs met diagrammen bladeren. |
 | **Rapporten** | Maak HTML-rapporten om met anderen te delen. |
 | **Help** | Zoek gidsen voor hulp bij het gebruik van het hulp programma. |
@@ -83,7 +83,7 @@ Op basis van de sjabloon die u selecteert, vindt u alle beschik bare stencils di
 | --------------------------------------- | ------------ |
 | **Proces** | Toepassingen, invoeg toepassingen voor browsers, threads, virtuele machines |
 | **Externe interactie** | Verificatie providers, browsers, gebruikers, webtoepassingen |
-| **Gegevensarchief** | Cache, opslag, configuratie bestanden, data bases, REGI ster |
+| **Gegevens archief** | Cache, opslag, configuratie bestanden, data bases, REGI ster |
 | **Gegevens stroom** | Binary, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, named pipe, RPC/DCOM, SMB, UDP |
 | **Grens lijn/rand vertrouwen** | Bedrijfs netwerken, Internet, computer, sandbox, gebruikers-en kernelmodus-modus |
 
@@ -160,7 +160,7 @@ Als u een bedreigings model maakt en verg eten bent om gegevens stromen naar ele
 
 ![Berichten](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>Notities
+### <a name="notes"></a>Opmerkingen
 
 Als u notities wilt toevoegen aan uw diagram, gaat u naar het tabblad **notities** van het tabblad **berichten** .
 

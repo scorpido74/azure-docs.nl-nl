@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 991ad3afc51cc2f6dc1853a6b26f53bcb2fd1503
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7aa17a7a96bffd0cd6f68f6187038aabd72b8cbd
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326406"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542158"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,6 +92,9 @@ Azure Machine Learning biedt twee manieren om de toegang tot uw webservices te b
 |Token| Niet beschikbaar| Standaard uitgeschakeld |
 
 Wanneer u een aanvraag verzendt naar een service die is beveiligd met een sleutel of token, gebruikt u de __autorisatie__ -header om de sleutel of het token door te geven. De sleutel of het token moet zijn geformatteerd als `Bearer <key-or-token>` , waarbij `<key-or-token>` de sleutel of Token waarde is.
+
+Het belangrijkste verschil tussen sleutels en tokens is dat **sleutels statisch zijn en hand matig opnieuw kunnen worden gegenereerd**en dat **tokens na verloop van tijd moeten worden vernieuwd**. Verificatie op basis van sleutels wordt ondersteund voor Azure container instance en Azure Kubernetes Service geïmplementeerde webservices en verificatie op basis van tokens is **alleen** beschikbaar voor Azure Kubernetes-service-implementaties. Zie verificatie [voor meer](how-to-setup-authentication.md#web-service-authentication) informatie en specifieke code voorbeelden.
+
 
 #### <a name="authentication-with-keys"></a>Verificatie met sleutels
 
@@ -181,7 +184,7 @@ De webservice kan meerdere gegevens sets in één aanvraag accepteren. Er wordt 
 
 ### <a name="binary-data"></a>Binaire gegevens
 
-Zie [binaire gegevens](how-to-deploy-and-where.md#binary)voor meer informatie over het inschakelen van ondersteuning voor binaire gegevens in uw service.
+Zie [binaire gegevens](how-to-deploy-advanced-entry-script.md#binary-data)voor meer informatie over het inschakelen van ondersteuning voor binaire gegevens in uw service.
 
 > [!TIP]
 > Het inschakelen van ondersteuning voor binaire gegevens vindt plaats in het score.py-bestand dat wordt gebruikt door het geïmplementeerde model. Gebruik van de client de HTTP-functionaliteit van uw programmeer taal. Zo verzendt het volgende code fragment de inhoud van een JPG-bestand naar een webservice:
@@ -196,7 +199,7 @@ Zie [binaire gegevens](how-to-deploy-and-where.md#binary)voor meer informatie ov
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Cross-Origin-resource delen (CORS)
 
-Zie [Cross-Origin-resource delen](how-to-deploy-and-where.md#cors)voor meer informatie over het inschakelen van CORS-ondersteuning in uw service.
+Zie [Cross-Origin-resource delen](how-to-deploy-advanced-entry-script.md#cors)voor meer informatie over het inschakelen van CORS-ondersteuning in uw service.
 
 ## <a name="call-the-service-c"></a>De service (C#) aanroepen
 
@@ -518,6 +521,153 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+
+## <a name="web-service-schema-openapi-specification"></a>Web Service-schema (OpenAPI-specificatie)
+
+Als u automatische schema generatie hebt gebruikt met uw implementatie, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Bijvoorbeeld `print(service.swagger_uri)` .) Gebruik een GET-aanvraag of open de URI in een browser om de specificatie op te halen.
+
+Het volgende JSON-document is een voor beeld van een schema (OpenAPI-specificatie) dat is gegenereerd voor een implementatie:
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for Azure Machine Learning myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+Zie [OpenAPI Specification](https://swagger.io/specification/)(Engelstalig) voor meer informatie.
+
+Zie [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen)voor een hulp programma waarmee client bibliotheken kunnen worden gemaakt op basis van de specificatie.
+
+
+> [!TIP]
+> U kunt het schema-JSON-document ophalen nadat u de service hebt geïmplementeerd. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) van de geïmplementeerde webservice (bijvoorbeeld `service.swagger_uri` ) om de URI naar het Swagger-bestand van de lokale webservice op te halen.
 
 ## <a name="consume-the-service-from-power-bi"></a>De service gebruiken vanuit Power BI
 

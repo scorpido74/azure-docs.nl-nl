@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537711"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541648"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Trans formatie Azure Data Factory draai tabel
 
@@ -46,7 +46,7 @@ Beschrijving U kunt een naamgevings patroon met een voor voegsel, Midden en acht
 
 Bijvoorbeeld: het draaien van ' verkoop ' op ' regio ' zou u alleen nieuwe kolom waarden van elke verkoop waarde geven. Bijvoorbeeld: ' 25 ', ' 50 ', ' 1000 ',... Als u echter de waarde voor voor voegsel van ' verkoop ' instelt, wordt ' omzet ' voorafgegaan door de waarden.
 
-<img src="media/data-flow/unpivot3.png" width="400">
+![Afbeelding van de kolommen io, Vendor en fruit voor en na een UniPivot-trans formatie met de kolom fruit als de UniPivot-sleutel.](media/data-flow/unpivot3.png)
 
 Als u de rang schikking van de kolom instelt op normaal, worden alle gedraaide kolommen gegroepeerd met de geaggregeerde waarden. Als u de rang schikking van de kolommen instelt op ' zijdelings ', wordt er een alternatief voor de kolom en waarde.
 

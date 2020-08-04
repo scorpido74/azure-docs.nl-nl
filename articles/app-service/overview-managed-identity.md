@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415037"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542209"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -314,6 +314,9 @@ Er is een eenvoudig REST-protocol voor het verkrijgen van een token in App Servi
 
 ### <a name="using-the-rest-protocol"></a>Het REST-protocol gebruiken
 
+> [!NOTE]
+> Een oudere versie van dit protocol, met behulp van de API-versie 2017-09-01, heeft de `secret` header gebruikt in plaats van `X-IDENTITY-HEADER` en heeft alleen de eigenschap geaccepteerd voor door de `clientid` gebruiker toegewezen. Er wordt ook `expires_on` een time stamp-notatie geretourneerd. MSI_ENDPOINT kan worden gebruikt als een alias voor IDENTITY_ENDPOINT en MSI_SECRET kan worden gebruikt als een alias voor IDENTITY_HEADER. Deze versie van het protocol is momenteel vereist voor hosting plannen voor Linux-verbruik.
+
 Er zijn twee omgevings variabelen gedefinieerd voor een app met een beheerde identiteit:
 
 - IDENTITY_ENDPOINT: de URL naar de lokale token service.
@@ -324,8 +327,8 @@ De **IDENTITY_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvrag
 > | Parameternaam    | In     | Beschrijving                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | Query’s uitvoeren  | De Azure AD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.    |
-> | api-versie       | Query’s uitvoeren  | De versie van de token-API die moet worden gebruikt. Gebruik 2019-08-01 of hoger.                                                                                                                                                                                                                                                                 |
-> | X-IDENTITEIT-HEADER | Header | De waarde van de omgevings variabele IDENTITY_HEADER. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.                                                                                                                                                                                                    |
+> | api-versie       | Query’s uitvoeren  | De versie van de token-API die moet worden gebruikt. Gebruik ' 2019-08-01 ' of hoger (tenzij u Linux-verbruik gebruikt, dat momenteel alleen ' 2017-09-01 ' biedt).                                                                                                                                                                                                                                                                 |
+> | X-IDENTITEIT-HEADER | Koptekst | De waarde van de omgevings variabele IDENTITY_HEADER. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.                                                                                                                                                                                                    |
 > | client_id         | Query’s uitvoeren  | Beschrijving De client-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt voor een aanvraag met `principal_id` , `mi_res_id` of `object_id` . Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt.                                             |
 > | principal_id      | Query’s uitvoeren  | Beschrijving De principal-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. `object_id`is een alias die in plaats daarvan kan worden gebruikt. Kan niet worden gebruikt voor een aanvraag die client_id, mi_res_id of object_id bevat. Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt. |
 > | mi_res_id         | Query’s uitvoeren  | Beschrijving De Azure-Resource-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt voor een aanvraag met `principal_id` , `client_id` of `object_id` . Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt.                                      |
@@ -345,9 +348,6 @@ Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigensch
 > | token_type    | Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is FBearer. Zie voor meer informatie over Bearer-tokens [het OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Dit antwoord is hetzelfde als het [antwoord op de aanvraag van de Azure AD-service-naar-service-toegangs token](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
-
-> [!NOTE]
-> Een oudere versie van dit protocol, met behulp van de API-versie 2017-09-01, heeft de `secret` header gebruikt in plaats van `X-IDENTITY-HEADER` en heeft alleen de eigenschap geaccepteerd voor door de `clientid` gebruiker toegewezen. Er wordt ook `expires_on` een time stamp-notatie geretourneerd. MSI_ENDPOINT kan worden gebruikt als een alias voor IDENTITY_ENDPOINT en MSI_SECRET kan worden gebruikt als een alias voor IDENTITY_HEADER.
 
 ### <a name="rest-protocol-examples"></a>Voor beelden van REST-protocollen
 

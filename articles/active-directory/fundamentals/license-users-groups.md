@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603890"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542107"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licenties toewijzen of verwijderen in de Azure Active Directory Portal
 
@@ -35,7 +35,7 @@ Er zijn verschillende licentie abonnementen beschikbaar voor de Azure AD-service
 
 - Azure AD Premium P2
 
-Zie [welke licentie heb ik nodig](https://azure.microsoft.com/pricing/details/active-directory/)voor specifieke informatie over elk licentie plan en de bijbehorende licentie gegevens?.
+Zie [welke licentie heb ik nodig](https://azure.microsoft.com/pricing/details/active-directory/)voor specifieke informatie over elk licentie plan en de bijbehorende licentie gegevens?. Zie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)voor meer informatie over het registreren van Azure AD Premium-licentie plannen.
 
 Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie kan worden toegewezen aan een groep, moet u de **gebruiks locatie** opgeven voor alle leden. U kunt deze waarde instellen in het gebied **instellingen van Azure Active Directory &gt; gebruikers &gt; profiel &gt; ** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
 

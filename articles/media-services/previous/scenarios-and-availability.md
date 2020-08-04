@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0eec42c0703e7158b478b8297848dc2ee6735cb8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047564"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542375"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
@@ -49,7 +49,7 @@ In de volgende afbeelding ziet u een aantal van de meest gebruikte objecten bij 
 
 Klik op de afbeelding om deze in volledig formaat weer te geven.  
 
-<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
+[![Diagram met enkele van de meest gebruikte objecten bij het ontwikkelen op basis van het object gegevens model van Azure Media Services.](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
 U kunt [hier](https://media.windows.net/API/$metadata?api-version=2.15) het hele model bekijken.  
 
@@ -177,7 +177,7 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-|Naam|Status|Datacenters
+|Name|Status|Datacenters
 |---|---|---|
 |Standard|Algemene beschikbaarheid|Alles|
 |Premium|Algemene beschikbaarheid|Alles|

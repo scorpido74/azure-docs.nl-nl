@@ -1,6 +1,6 @@
 ---
 title: Azure-beveiligings functies die u helpen bij het identiteits beheer | Microsoft Docs
-description: " Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die u helpen bij het identiteits beheer. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen, zodat u extra validatie niveaus kunt instellen, zoals Multi-Factor Authentication en beleid voor voorwaardelijke toegang. "
+description: Meer informatie over de belangrijkste Azure-beveiligings functies die u helpen bij het identiteits beheer. Zie informatie over onderwerpen als eenmalige aanmelding en omgekeerde proxy.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 9de31ba30c4599393d9127c7852cb567cf0258ef
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384528"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542073"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 

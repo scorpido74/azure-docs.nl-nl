@@ -4,19 +4,19 @@ description: Meer informatie over service lagen in het op DTU gebaseerde aankoop
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382692"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541699"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 | **Maximum aantal data bases per pool** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
-> Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, VS-West-Centraal, US DoD regio's en Amerikaanse overheid centraal. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB.  Raadpleeg [P11-P15 huidige beperkingen](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb) voor meer informatie.  
+> Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal en Duitsland-noordoost. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB.  Raadpleeg [P11-P15 huidige beperkingen](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb) voor meer informatie.  
 > [!IMPORTANT]
 > In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](file-space-manage.md)voor meer informatie.
 

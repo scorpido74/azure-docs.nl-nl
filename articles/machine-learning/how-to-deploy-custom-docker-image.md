@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 47bf14a8da8357e0114ef3c5d6cf96185306dd16
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3ffc3883fb4a0d0b725239711bc0163f50998713
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325862"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541047"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ Dit document is onderverdeeld in twee secties:
 * De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster dat toegankelijk is op internet.
-* Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie de sectie ' voor bereiding implementeren ' van [waar u wilt implementeren en hoe](how-to-deploy-and-where.md#prepare-to-deploy).
+* Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie [waar u kunt implementeren en hoe](how-to-deploy-and-where.md).
 
 ## <a name="create-a-custom-base-image"></a>Een aangepaste basis installatie kopie maken
 

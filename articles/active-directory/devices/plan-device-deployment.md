@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165767"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541869"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -227,10 +227,6 @@ Wanneer u uw apparaten hebt geregistreerd of aan Azure AD hebt toegevoegd, gebru
 * [Apparaatinstellingen configureren](device-management-azure-portal.md#configure-device-settings)
 * U moet een lokale beheerder zijn om Windows-apparaten te kunnen beheren. [Azure AD werkt dit lidmaatschap bij van aan Azure AD gekoppelde apparaten](assign-local-admin.md)en voegt deze automatisch toe met de rol Apparaatbeheer als Administrators voor alle gekoppelde apparaten.
 
-* [Apparaten zoeken](device-management-azure-portal.md#locate-devices)
-
-* [Identiteits beheer taken voor apparaten uitvoeren](device-management-azure-portal.md#device-identity-management-tasks)
-
 Zorg ervoor dat u de omgeving schoon blijft door [verouderde apparaten te beheren](manage-stale-devices.md)en uw resources te richten op het beheren van de huidige apparaten.
 
 * [Audit logboeken met betrekking tot het apparaat controleren](device-management-azure-portal.md#audit-logs)
@@ -241,7 +237,7 @@ Beheerders kunnen deze geregistreerde en gekoppelde apparaten beveiligen en verd
 
 Ondersteunde en niet-ondersteunde platforms voor geïntegreerde apparaten bekijken:
 
-| Hulpprogram ma's voor Apparaatbeheer| Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling|
+| Hulpprogramma’s voor apparaatbeheer| Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling|
 | - | - | - | - |
 | [Beheer van mobiele apparaten (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
 | [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |

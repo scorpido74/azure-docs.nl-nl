@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33b3e406e21f5bc2a4128fdd7dc9930fa3e0c32
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447002"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542056"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -125,12 +125,13 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
         </system.net>
     ```
 
+* Als de configuratie van de proxy in een bestaande configuratie wordt uitgevoerd, moet de **Microsoft Azure AD-synchronisatie service** één keer opnieuw worden gestart om de Azure AD Connect de proxy configuratie te lezen en de behviour bij te werken. 
 * Wanneer Azure AD Connect een webverzoek verzendt naar Azure AD als onderdeel van adreslijst synchronisatie, kan het tot vijf minuten duren voordat Azure AD reageert. Het is gebruikelijk dat proxy servers een time-outconfiguratie voor verbinding inactief hebben. Zorg ervoor dat de configuratie is ingesteld op ten minste 6 minuten of langer.
 
 Raadpleeg MSDN over het [standaard proxy-element](https://msdn.microsoft.com/library/kd3cf2ex.aspx)voor meer informatie.
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Overig
+### <a name="other"></a>Anders
 Optioneel: gebruik een test gebruikers account om de synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten

@@ -1,6 +1,6 @@
 ---
 title: Invoer validatie-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: oplossingen voor bedreigingen die worden blootgesteld aan de Threat Modeling Tool
+description: Meer informatie over invoer validatie in de Threat Modeling Tool. Zie informatie over risico beperking en voor beelden van code weer geven.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 8e597fb9208430b8da447768608c48edef049d83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5782c8b96534722a1e03ce619504e513a1c5e048
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653107"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539795"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Beveiligings frame: invoer validatie | Oplossingen 
 | Product/service | Artikel |
@@ -36,7 +36,7 @@ ms.locfileid: "83653107"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [XSLT-beveiliging](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [eigenschap XsltSettings. EnableScript](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
@@ -68,7 +68,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Beveiligings deel van IE8 V: uitgebreide beveiliging](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
@@ -137,7 +137,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Uitbrei ding van XML-entiteit](https://capec.mitre.org/data/definitions/197.html), [XML-denial of service-aanvallen en-](https://msdn.microsoft.com/magazine/ee335713.aspx)beveiliging, [MSXML-beveiligings overzicht](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [Aanbevolen procedures voor het beveiligen van MSXML-code](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), [NSXMLParserDelegate-protocol referentie](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [het oplossen van externe verwijzingen](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
@@ -199,7 +199,7 @@ Houd er rekening mee dat in MSXML6 ProhibitDTD standaard is ingesteld op True (D
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -210,7 +210,7 @@ Houd er rekening mee dat in MSXML6 ProhibitDTD standaard is ingesteld op True (D
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | Niet- [beperkte bestands upload](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), [tabel met bestands handtekeningen](https://www.garykessler.net/library/file_sigs.html) |
@@ -326,7 +326,7 @@ Raadpleeg de onderstaande klasse voor meer informatie over het laatste punt met 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -356,7 +356,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Kenmerken van meta gegevens](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [beveiligings problemen met open bare sleutels](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [volledige hand leiding voor massale toewijzing in ASP.NET MVC](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [aan de slag met EF met MVC](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
@@ -367,7 +367,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Generic, webformulieren, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Cross-site scripting voor komen in ASP.net](https://msdn.microsoft.com/library/ms998274.aspx), [cross-site scripting](https://cwe.mitre.org/data/definitions/79.html), [XSS (cross-site scripting) Cheat-blad voor komen](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
@@ -392,7 +392,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Generic, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Validatie toevoegen](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [model gegevens valideren in een MVC-toepassing](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [leidende principes voor uw ASP.NET MVC-toepassingen](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -403,7 +403,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Onveilige invoer coderen](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML-](https://github.com/mganss/HtmlSanitizer) opschoner |
@@ -414,7 +414,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -436,7 +436,7 @@ Gebruik `innerHtml` in plaats daarvan `innerText` . Op dezelfde manier, in plaat
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Het OAuth 2,0-autorisatie raamwerk-open redirectors](https://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -447,7 +447,7 @@ Gebruik `innerHtml` in plaats daarvan `innerText` . Op dezelfde manier, in plaat
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Generic, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Model gegevens valideren in een MVC-toepassing](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [leidende principes voor uw ASP.NET MVC-toepassingen](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -458,7 +458,7 @@ Gebruik `innerHtml` in plaats daarvan `innerText` . Op dezelfde manier, in plaat
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Generic, webformulieren, MVC5, MVC6  |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Eigenschap DefaultRegexMatchTimeout](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
@@ -476,7 +476,7 @@ Met de volgende configuratie wordt bijvoorbeeld een RegexMatchTimeoutException g
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -501,7 +501,7 @@ Gebruik dit `Html.Raw()` alleen als u opmaak wilt weer geven. Met deze methode w
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -561,7 +561,7 @@ AS
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Model validatie in ASP.NET Web-API](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -618,7 +618,7 @@ namespace MyApi.Controllers
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, MVC 5, MVC 6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Model gegevens valideren in een MVC-toepassing](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [leidende principes voor uw ASP.NET MVC-toepassingen](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -629,7 +629,7 @@ namespace MyApi.Controllers
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -659,7 +659,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure document DB | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Aankondigen van SQL parameterisering in Azure Cosmos DB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -670,7 +670,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
@@ -681,7 +681,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

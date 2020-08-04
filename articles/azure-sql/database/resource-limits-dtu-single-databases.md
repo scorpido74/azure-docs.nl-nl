@@ -4,19 +4,19 @@ description: Op deze pagina worden enkele veelvoorkomende DTU-resource limieten 
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: references_regions
+ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325097"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542684"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,7 +101,7 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 <sup>2</sup> van 1024 gb tot 4096 GB in stappen van 256 GB.
 
 > [!IMPORTANT]
-> Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, VS-West-Centraal, US DoD regio's en Amerikaanse overheid centraal. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB.  Raadpleeg [P11-P15 huidige beperkingen](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb) voor meer informatie.
+> Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal en Duitsland-noordoost. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB.  Raadpleeg [P11-P15 huidige beperkingen](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb) voor meer informatie.
 > [!NOTE]
 > `tempdb`Zie voor limieten [tempdb-limieten](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

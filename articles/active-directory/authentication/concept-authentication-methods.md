@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051309"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540832"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -74,7 +74,7 @@ De verificator-app kan helpen voor komen dat onbevoegde toegang tot accounts en 
 ![Scherm afbeelding van voor beeld webbrowser prompt voor verificator-app-melding voor het volt ooien van het aanmeldings proces](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Als uw organisatie mede werkers heeft in of reist naar China, werkt de *melding via de mobiele app* -methode op Android-apparaten niet in dat land/deze regio. Alternatieve verificatie methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
+> Als uw organisatie mede werkers heeft die in China werken of onderweg zijn, werkt de *melding via de mobiele app* -methode op Android-apparaten niet in dat land/deze regio als Google Play-Services (inclusief push meldingen) in de regio geblokkeerd. IOS-meldingen zijn echter wel werk. Voor Android-apparaten moeten alternatieve verificatie methoden beschikbaar worden gesteld voor deze gebruikers.
 
 ### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 

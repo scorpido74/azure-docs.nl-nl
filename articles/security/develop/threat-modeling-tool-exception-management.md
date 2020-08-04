@@ -1,6 +1,6 @@
 ---
 title: Uitzonderings beheer-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: oplossingen voor bedreigingen die worden blootgesteld aan de Threat Modeling Tool
+description: Meer informatie over uitzonderings beheer in de Threat Modeling Tool. Zie informatie over risico beperking en voor beelden van code weer geven.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05e9e627afecfc95e03eae39eed1183857df8b4b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650081"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539931"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Beveiligings frame: uitzonderings beheer | Oplossingen 
 | Product/service | Artikel |
@@ -34,7 +34,7 @@ ms.locfileid: "83650081"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
@@ -58,7 +58,7 @@ Fout opsporingsgegevens in de service uitschakelen. Dit kan worden bereikt door 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Algemeen, NET Framework 3 |
 | **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
@@ -69,7 +69,7 @@ Fout opsporingsgegevens in de service uitschakelen. Dit kan worden bereikt door 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC 5, MVC 6 |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Afhandeling van uitzonde ringen in ASP.net Web-API](https://www.asp.net/web-api/overview/error-handling/exception-handling), [Model validatie in ASP.net-Web-API](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -187,7 +187,7 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
@@ -198,7 +198,7 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Het dialoogvenster Instellingen voor ASP.NET-foutpagina's bewerken](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
@@ -220,7 +220,7 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Veilig uitvoeren](https://owasp.org/www-community/Fail_securely) |

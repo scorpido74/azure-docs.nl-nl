@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool versie 11/1/2018
 titleSuffix: Azure
-description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
+description: Lees de opmerkingen bij de release voor de update van het hulp programma voor bedreigings modellering dat is uitgebracht op 11/1/2018. Deze release bevat geen nieuwe functionaliteit of oplossingen.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 3d6057c729b2f3f9d7157e91656db1912422f168
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e48e14c13ef2ff171145022f4eafa6e0f80a9b22
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269757"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539013"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool-updaterelease 7.1.51023.1 - 11/1/2018
 

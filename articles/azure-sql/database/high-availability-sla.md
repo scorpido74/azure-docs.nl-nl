@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: d3abd6411197c9e7994e9ae642b07e72a0a24735
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ab3d0a4b33bd2e424141adc9f6b8739380c2947b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496284"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542005"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hoge Beschik baarheid voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,19 +95,18 @@ De zone redundante versie van de architectuur met hoge Beschik baarheid wordt ge
 
 ## <a name="testing-application-fault-resiliency"></a>Toepassings fout tolerantie testen
 
-Hoge Beschik baarheid is een fundamenteel onderdeel van het SQL Database en het SQL Managed instance-platform dat transparant werkt voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op een toepassing voordat u deze implementeert voor productie. U kunt een failover hand matig activeren door een speciale API aan te roepen om een Data Base of een elastische pool opnieuw op te starten. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat client verbindingen worden omgeleid naar de nieuwe primaire in een beschikbaarheids zone die afwijkt van de beschikbaarheids zone van de oude primaire. Naast het testen van de manier waarop failover van invloed is op bestaande database sessies, kunt u ook controleren of de end-to-end-prestaties worden gewijzigd vanwege wijzigingen in de netwerk latentie. Omdat de computer opnieuw moet worden opgestart, is er voor elke Data Base of elastische pool slechts één failover-aanroep elke 30 minuten toegestaan.
+Hoge Beschik baarheid is een fundamenteel onderdeel van het SQL Database en het SQL Managed instance-platform dat transparant werkt voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op een toepassing voordat u deze implementeert voor productie. U kunt een failover hand matig activeren door een speciale API aan te roepen om een Data Base, een elastische pool of een beheerd exemplaar opnieuw te starten. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat client verbindingen worden omgeleid naar de nieuwe primaire in een beschikbaarheids zone die afwijkt van de beschikbaarheids zone van de oude primaire. Naast het testen van de manier waarop failover van invloed is op bestaande database sessies, kunt u ook controleren of de end-to-end-prestaties worden gewijzigd vanwege wijzigingen in de netwerk latentie. Omdat de computer opnieuw moet worden opgestart, is het mogelijk dat er voor elke Data Base, elastische pool of een beheerd exemplaar slechts één failover-aanroep elke 30 minuten wordt toegestaan.
 
 Een failover kan worden gestart met behulp van Power shell, REST API of Azure CLI:
 
 |Implementatie type|PowerShell|REST-API| Azure CLI|
 |:---|:---|:---|:---|
-|Database|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Data base-failover](/rest/api/sql/databases(failover)/failover/)|[AZ rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
-|Elastische pool|[Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Failover van elastische groep](/rest/api/sql/elasticpools(failover)/failover/)|[AZ rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
+|Database|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Data base-failover](/rest/api/sql/databases(failover)/failover/)|[AZ rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) kan worden gebruikt voor het aanroepen van een rest API aanroep vanuit Azure cli|
+|Elastische pool|[Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Failover van elastische groep](/rest/api/sql/elasticpools(failover)/failover/)|[AZ rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) kan worden gebruikt voor het aanroepen van een rest API aanroep vanuit Azure cli|
 |Beheerd exemplaar|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Beheerde instanties-failover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[AZ SQL mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
-
 > [!IMPORTANT]
-> De opdracht failover is momenteel niet beschikbaar in de servicelaag grootschalige.
+> De opdracht failover is niet beschikbaar voor lees bare secundaire replica's van grootschalige-data bases.
 
 ## <a name="conclusion"></a>Conclusie
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ef69c42664165e18be025a641d6c6234c3bec22c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a5292318d2e5432ec7c0a2df7306011c3dea5147
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499004"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542124"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services gebeurtenissen maken en bewaken met Event Grid met behulp van de Azure CLI
 
@@ -42,7 +42,7 @@ Voordat u zich abonneert op de gebeurtenissen voor het Media Services-account, g
 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. Geef in Azure Portal waarden op voor de parameters.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Afbeelding met een knop met het label implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 
 1. De implementatie kan enkele minuten duren. Controleer of uw web-app wordt uitgevoerd nadat de implementatie is voltooid. Navigeer in een webbrowser naar: `https://<your-site-name>.azurewebsites.net`
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d68fc7b01e6204cb9ad00ea60e413c73856d758e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247061"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542443"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 
@@ -301,10 +301,8 @@ Versie 4.0.0 B1 is de eerste preview van onze inspanningen voor het maken van ee
 
 Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert.
 
-Alle aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
-
 > [!WARNING]
-> Alle versies van de python-SDK voor SQL API vóór versie **1.0.0** zijn buiten gebruik gesteld op **29 februari 2016**. En worden alle versies 1. x en 2. x van de python-SDK voor SQL API buiten gebruik gesteld op **30 augustus 2020**.
+> Na 31 augustus 2022 worden er bij Azure Cosmos DB geen problemen meer opgelost, worden nieuwe functies toegevoegd en wordt ondersteuning geboden voor versie 1. x of 2. x van de Azure Cosmos DB python SDK voor SQL API. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanaf versie 1. x en 2. x van de SDK nog steeds door de Azure Cosmos DB-service geleverd.
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |

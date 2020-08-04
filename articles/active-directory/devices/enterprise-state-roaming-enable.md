@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252998"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541886"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Enterprise state roaming inschakelen in Azure Active Directory
 
@@ -31,7 +31,7 @@ Als u Enterprise State Roaming inschakelt, krijgt uw organisatie automatisch een
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming inschakelen
 
 1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com/).
-1. Selecteer **Azure Active Directory** &gt; **apparaten** &gt; **Enterprise State roaming**.
+1. Selecteer **Azure Active Directory**  >  **apparaten**  >  **Enterprise State roaming**.
 1. Selecteer **gebruikers kunnen instellingen en app-gegevens synchroniseren op verschillende apparaten**. Zie [Apparaatinstellingen configureren](/azure/active-directory/device-management-azure-portal)voor meer informatie.
   
    ![afbeelding van de apparaat-instelling met de naam gebruikers kan instellingen en app-gegevens op verschillende apparaten synchroniseren](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -56,7 +56,7 @@ De waarde van het land/de regio is ingesteld als onderdeel van het proces voor h
 Volg deze stappen om een synchronisatie status rapport per gebruiker-apparaat weer te geven.
 
 1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com/).
-1. Selecteer **Azure Active Directory** &gt; **gebruikers** &gt; **alle gebruikers**.
+1. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **alle gebruikers**.
 1. Selecteer de gebruiker en selecteer vervolgens **apparaten**.
 1. Onder **weer geven**selecteert u **apparaten synchroniseren instellingen en app-gegevens** om de synchronisatie status weer te geven.
   
@@ -66,7 +66,7 @@ Volg deze stappen om een synchronisatie status rapport per gebruiker-apparaat we
   
    ![afbeelding van kolom met synchronisatie gegevens van apparaat](./media/enterprise-state-roaming-enable/device-status-row.png)
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 
 Gegevens die zijn gesynchroniseerd met de micro soft-Cloud met Enterprise State Roaming worden bewaard totdat deze hand matig wordt verwijderd of totdat de betreffende gegevens verouderd zijn. 
 
@@ -78,7 +78,7 @@ Expliciet verwijderen is wanneer een Azure-beheerder een gebruiker of een map ve
 * **Verwijderde mappen**: het verwijderen van een volledige map in azure AD is een directe bewerking. Alle instellingen gegevens die aan die map zijn gekoppeld, worden na 90 tot 180 dagen verwijderd. 
 * **Bij het verwijderen van aanvragen**: als de Azure AD-beheerder de gegevens of instellingen gegevens van een specifieke gebruiker hand matig wil verwijderen, kan de beheerder een ticket indienen met [ondersteuning voor Azure](https://azure.microsoft.com/support/). 
 
-### <a name="stale-data-deletion"></a>Verouderde gegevens verwijderen
+### <a name="stale-data-deletion"></a>Verwijdering van verlopen gegevens
 
 Gegevens die gedurende één jaar niet zijn geopend ("de Bewaar periode"), worden behandeld als verouderd en kunnen worden verwijderd uit de micro soft-Cloud. De Bewaar periode is onderhevig aan wijzigingen, maar deze zijn niet minder dan 90 dagen. De verouderde gegevens kunnen een specifieke set instellingen voor Windows/Application of alle instellingen voor een gebruiker zijn. Bijvoorbeeld:
 
@@ -86,7 +86,7 @@ Gegevens die gedurende één jaar niet zijn geopend ("de Bewaar periode"), worde
 * Als een gebruiker instellingen synchronisatie op al hun apparaten heeft uitgeschakeld, wordt geen van de instellingen gegevens geopend en worden alle instellingen voor die gebruiker verouderd en kunnen ze na de Bewaar periode worden verwijderd. 
 * Als de Azure AD-beheerder Enterprise State Roaming uitschakelt voor de hele map, worden alle gebruikers in die map niet meer gesynchroniseerd met instellingen en worden alle instellingen voor alle gebruikers verouderd en kunnen ze na de Bewaar periode worden verwijderd. 
 
-### <a name="deleted-data-recovery"></a>Herstel van gegevens verwijderd
+### <a name="deleted-data-recovery"></a>Herstel van verwijderde gegevens
 
 Het Bewaar beleid voor gegevens kan niet worden geconfigureerd. Zodra de gegevens definitief zijn verwijderd, kan deze niet worden hersteld. De instellingen gegevens worden echter alleen verwijderd uit de micro soft-Cloud, niet vanaf het apparaat van de eind gebruiker. Als een apparaat later opnieuw verbinding maakt met de Enterprise State Roaming-service, worden de instellingen opnieuw gesynchroniseerd en opgeslagen in de micro soft-Cloud.
 

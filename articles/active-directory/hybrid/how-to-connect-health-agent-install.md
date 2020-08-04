@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7267da7db91e153190e98b09e9a3c505837bd042
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c709fca3fbddb6fc16699052c5f01d1255c79dd8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446307"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542090"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -154,6 +154,7 @@ Als u de functie Gebruiksanalyse wilt gebruiken om gegevens te verzamelen en te 
 7. Klik in het deelvenster **Acties** op **Federation Service-eigenschappen** bewerken.
 8. Klik in het dialoog venster **Eigenschappen van Federation service** op het tabblad **gebeurtenissen** .
 9. Schakel de selectievakjes bij **Succesvolle controles en Mislukte controles** in en klik op **OK**.
+10. Uitgebreide logboek registratie kan worden ingeschakeld via Power shell met behulp van de opdracht: ```Set-AdfsProperties -LOGLevel Verbose``` .
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Controle inschakelen voor AD FS in Windows Server 2016
 

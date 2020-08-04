@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082115"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542226"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synchronisatie: kenmerken die zijn gesynchroniseerd met Azure Active Directory
 In dit onderwerp vindt u de kenmerken die worden gesynchroniseerd door Azure AD Connect synchronisatie.  
@@ -64,7 +64,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description | | |X | |
+| beschrijving | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -165,7 +165,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
 | titel |X |X | | |
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
@@ -185,7 +185,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -247,7 +247,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
 | titel |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
@@ -265,7 +265,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | co |X |X | | |
 | bedrijf |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -298,7 +298,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
 | titel |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
@@ -325,7 +325,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
 | genoemd |X | |X | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
@@ -346,7 +346,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
-| description |X |X |X | |
+| beschrijving |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
