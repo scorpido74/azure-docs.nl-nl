@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133720"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534988"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Herstel na nood geval instellen voor SQL Server
 
@@ -47,6 +47,8 @@ SQL Server op een Azure IaaS-VM of on-premises.| Replicatie met Azure Site Recov
 > * U kunt ervoor kiezen om Site Recovery te gebruiken voor elke implementatie op Azure, Hyper-V, VMware of fysieke infra structuur. Volg de richt lijnen aan het einde van dit artikel voor informatie over het [beveiligen van een SQL Server cluster](#how-to-help-protect-a-sql-server-cluster) met site Recovery.
 > * Zorg ervoor dat de wijzigings frequentie voor gegevens die op de computer is waargenomen, binnen [site Recovery limieten](vmware-physical-azure-support-matrix.md#churn-limits)valt. De wijzigings hoeveelheid wordt gemeten in geschreven bytes per seconde. Voor computers waarop Windows wordt uitgevoerd, kunt u dit wijzigings aantal weer geven door het tabblad **prestaties** in taak beheer te selecteren. Bekijk de schrijf snelheid voor elke schijf.
 > * Site Recovery ondersteunt replicatie van exemplaren van failoverclusters op Opslagruimten Direct. Zie [opslagruimten direct-replicatie inschakelen](azure-to-azure-how-to-enable-replication-s2d-vms.md)voor meer informatie.
+> 
+> Wanneer u uw SQL-workload naar Azure migreert, is het raadzaam om de [richt lijnen voor prestaties voor SQL Server op azure virtual machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)toe te passen.
 
 ## <a name="disaster-recovery-of-an-application"></a>Herstel na nood geval van een toepassing
 

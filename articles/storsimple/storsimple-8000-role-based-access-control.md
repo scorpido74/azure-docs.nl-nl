@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 58332be22600620e7a3ff1f455f96fe0d786d846
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500041"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535107"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Access Control op basis van rollen voor StorSimple
 
@@ -29,7 +29,7 @@ Dit artikel is van toepassing op apparaten met de StorSimple 8000-serie waarop u
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>RBAC-rollen voor StorSimple
+## <a name="azure-roles-for-storsimple"></a>Azure-rollen voor StorSimple
 
 RBAC kan worden toegewezen op basis van de rollen. De rollen zorgen voor bepaalde machtigings niveaus op basis van de beschik bare resources in de omgeving. Er zijn twee soorten rollen waaruit StorSimple-gebruikers kunnen kiezen: ingebouwd of aangepast.
 
@@ -58,7 +58,7 @@ In het volgende voor beeld beginnen we met de ingebouwde functie **lezer** waarm
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Open het JSON-bestand in Visual Studio. U ziet dat een typische RBAC-rol bestaat uit drie hoofd secties, **acties**, **intacte**en **AssignableScopes**.
+4. Open het JSON-bestand in Visual Studio. U ziet dat een typische Azure-rol bestaat uit drie hoofd secties, **acties**, **intacte**en **AssignableScopes**.
 
     In de sectie **actie** worden alle toegestane bewerkingen voor deze rol weer gegeven. Elke actie wordt toegewezen van een resource provider. Voor een StorSimple-infrastructuur beheerder gebruikt u de `Microsoft.StorSimple` resource provider.
 
@@ -68,9 +68,9 @@ In het volgende voor beeld beginnen we met de ingebouwde functie **lezer** waarm
 
     U kunt ook controleren op alle beschik bare Power shell-cmdlets om de resource providers te beheren.
 
-    In de secties **intact** worden alle beperkte acties voor een bepaalde RBAC-rol weer gegeven. In dit voor beeld zijn geen acties beperkt.
+    In de secties **intact** worden alle beperkte acties voor een bepaalde Azure-rol weer gegeven. In dit voor beeld zijn geen acties beperkt.
     
-    Onder de **AssignableScopes**worden de abonnements-id's weer gegeven. Zorg ervoor dat de RBAC-rol de expliciete abonnements-ID bevat waarin deze wordt gebruikt. Als de juiste abonnements-ID niet is opgegeven, is het niet toegestaan om de rol in uw abonnement te importeren.
+    Onder de **AssignableScopes**worden de abonnements-id's weer gegeven. Zorg ervoor dat de rol Azure de expliciete abonnements-ID bevat waarin deze wordt gebruikt. Als de juiste abonnements-ID niet is opgegeven, is het niet toegestaan om de rol in uw abonnement te importeren.
 
     Bewerk het bestand om de voor gaande overwegingen te onthouden.
 
@@ -109,7 +109,7 @@ In het volgende voor beeld beginnen we met de ingebouwde functie **lezer** waarm
 
 Deze rol zou nu moeten worden weer gegeven in de lijst met rollen op de Blade **toegangs beheer** .
 
-![RBAC-rollen weer geven](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![Azure-rollen weer geven](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
 Ga voor meer informatie naar [aangepaste rollen](../role-based-access-control/custom-roles.md).
 
@@ -167,7 +167,7 @@ U verleent toegang vanuit de resource en resourcegroep die of het abonnement dat
 
 1. Ga naar **toegangs beheer (IAM)**. Klik op **+ toevoegen** op de Blade toegangs beheer.
 
-    ![Toegang toevoegen aan de RBAC-rol](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![Toegang tot Azure-rol toevoegen](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
 2. Selecteer de rol die u wilt toewijzen. in dit geval is het de beheerder van de **StorSimple-infra structuur**.
 
@@ -175,7 +175,7 @@ U verleent toegang vanuit de resource en resourcegroep die of het abonnement dat
 
 4. Selecteer **Opslaan** om de toewijzing te maken.
 
-    ![Machtigingen toevoegen aan de RBAC-rol](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![Machtigingen toevoegen aan Azure-rol](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
 Met een melding bij het toevoegen van een **gebruiker** wordt de voortgang bijgehouden. Nadat de gebruiker is toegevoegd, wordt de lijst met gebruikers in Access Control bijgewerkt.
 

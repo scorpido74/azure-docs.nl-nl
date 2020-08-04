@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f04671283a4888770e29606b6869c832b22e6a3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499157"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534886"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Toegang verlenen tot BLOB-of wachtrij gegevens met Azure CLI
 
@@ -43,7 +43,7 @@ Als u de `--auth-mode` para meter wilt gebruiken, moet u ervoor zorgen dat u Azu
 
 Wanneer u zich aanmeldt bij Azure CLI met Azure AD-referenties, wordt een OAuth 2,0-toegangs token geretourneerd. Dit token wordt automatisch door Azure CLI gebruikt voor het autoriseren van volgende gegevens bewerkingen op BLOB-of wachtrij opslag. Voor ondersteunde bewerkingen hoeft u geen account sleutel of SAS-token meer door te geven met de opdracht.
 
-U kunt machtigingen toewijzen aan Blob-en wachtrij gegevens aan een Azure AD-beveiligingsprincipal via op rollen gebaseerd toegangs beheer (RBAC). Zie [Manage access rights to Azure Storage Data with RBAC](storage-auth-aad-rbac.md)(Engelstalig) voor meer informatie over RBAC-rollen in azure Storage.
+U kunt machtigingen toewijzen aan Blob-en wachtrij gegevens aan een Azure AD-beveiligingsprincipal via op rollen gebaseerd toegangs beheer (RBAC). Zie [toegangs rechten voor Azure Storage gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie over Azure-rollen in azure Storage.
 
 ### <a name="permissions-for-calling-data-operations"></a>Machtigingen voor het aanroepen van gegevens bewerkingen
 
@@ -55,7 +55,7 @@ Zie [opslag bewerkingen aanroepen met OAuth-tokens](/rest/api/storageservices/au
 
 In het volgende voor beeld ziet u hoe u een container maakt op basis van Azure CLI met behulp van uw Azure AD-referenties. Als u de container wilt maken, moet u zich aanmelden bij de Azure CLI en hebt u een resource groep en een opslag account nodig. Zie [Quick Start: Create, down loads en List blobs with Azure cli](../blobs/storage-quickstart-blobs-cli.md)(Engelstalig) voor meer informatie over het maken van deze resources.
 
-1. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
+1. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van Azure-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Het kan enkele minuten duren voordat Azure-roltoewijzingen zijn door gegeven.
@@ -98,7 +98,7 @@ az storage container create \
 
 U kunt autorisatie parameters opgeven in omgevings variabelen om te voor komen dat ze worden opgenomen in elke aanroep van een Azure Storage gegevens bewerking. De volgende tabel beschrijft de beschik bare omgevings variabelen.
 
-| Omgevingsvariabele                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
+| Omgevingsvariabele                  | Beschrijving                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    De naam van het opslagaccount. Deze variabele moet worden gebruikt in combi natie met de sleutel van het opslag account of een SAS-token. Als er geen van beide aanwezig is, probeert de Azure CLI de toegangs sleutel voor het opslag account op te halen met behulp van het geverifieerde Azure AD-account. Als een groot aantal opdrachten tegelijk wordt uitgevoerd, is het mogelijk dat de Azure Storage Resource provider beperkings limiet is bereikt. Zie [schaalbaarheids-en prestatie doelen voor de resource provider van Azure Storage](scalability-targets-resource-provider.md)voor meer informatie over limieten voor resource providers.             |
 |    AZURE_STORAGE_KEY                  |    De opslagaccountsleutel. Deze variabele moet worden gebruikt in combi natie met de naam van het opslag account.                                                                                                                                                                                                                                                                          |
@@ -108,5 +108,5 @@ U kunt autorisatie parameters opgeven in omgevings variabelen om te voor komen d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure CLI gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](storage-auth-aad-rbac-cli.md)
+- [Azure CLI gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](storage-auth-aad-rbac-cli.md)
 - [Toegang tot Blob-en wachtrij gegevens toestaan met beheerde identiteiten voor Azure-resources](storage-auth-aad-msi.md)

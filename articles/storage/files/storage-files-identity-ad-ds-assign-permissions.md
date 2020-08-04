@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3335bfbed592c9e13d5be437e8013a89ae86e970
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510628"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535090"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Deel twee: machtigingen op share niveau toewijzen aan een identiteit
 
@@ -38,11 +38,11 @@ Er zijn drie ingebouwde rollen voor Azure voor het verlenen van machtigingen op 
 
 U kunt de Azure Portal, Azure PowerShell of de Azure CLI gebruiken om de ingebouwde rollen toe te wijzen aan de Azure AD-identiteit van een gebruiker voor het verlenen van machtigingen op share niveau.
 
-## <a name="assign-an-rbac-role"></a>Een RBAC-rol toewijzen
+## <a name="assign-an-azure-role"></a>Een Azure-rol toewijzen
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Voer de volgende stappen uit om een RBAC-rol toe te wijzen aan een Azure AD-identiteit met behulp van de [Azure Portal](https://portal.azure.com):
+Voer de volgende stappen uit om een Azure-rol toe te wijzen aan een Azure AD-identiteit met behulp van de [Azure Portal](https://portal.azure.com):
 
 1. Ga in het Azure Portal naar de bestands share of [Maak een bestands share](storage-how-to-create-file-share.md).
 1. Selecteer **Access Control (IAM)**.
@@ -52,7 +52,7 @@ Voer de volgende stappen uit om een RBAC-rol toe te wijzen aan een Azure AD-iden
 
 ### <a name="powershell"></a>PowerShell
 
-In het volgende Power shell-voor beeld ziet u hoe u een RBAC-rol toewijst aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie over het toewijzen van RBAC-rollen met Power shell.
+In het volgende Power shell-voor beeld ziet u hoe u een Azure-rol toewijst aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie over het toewijzen van Azure-functies met Power shell.
 
 Voordat u het volgende voorbeeld script uitvoert, vervangt u de waarden van de tijdelijke aanduidingen, inclusief haken, door uw waarden.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-De volgende CLI 2,0-opdracht wijst een RBAC-rol toe aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)voor meer informatie over het toewijzen van RBAC-rollen met Azure cli. 
+De volgende CLI 2,0-opdracht wijst een Azure-rol toe aan een Azure AD-identiteit, op basis van aanmeldings naam. Zie [toegang beheren met RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)voor meer informatie over het toewijzen van Azure-rollen met Azure cli. 
 
 Voordat u het volgende voorbeeld script uitvoert, moet u de waarden van de tijdelijke aanduidingen vervangen door uw eigen waarden.
 

@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5b171c5ff5bc848a0005fad5a2e0b6c0ca548724
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3d0ef8a8641c3814fa7c9964786a7f24f5e54a01
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496070"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534937"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources
 
@@ -26,15 +26,15 @@ U kunt de Azure Storage Resource provider gebruiken om acties uit te voeren, zoa
 
 Micro soft biedt twee REST-Api's voor het werken met Azure Storage-resources. Deze Api's vormen de basis van alle acties die u kunt uitvoeren op basis van Azure Storage. Met de Azure Storage REST API kunt u werken met gegevens in uw opslag account, waaronder blob-, wachtrij-, bestands-en tabel gegevens. Met de Azure Storage Resource provider REST API kunt u werken met het opslag account en gerelateerde resources.
 
-Een aanvraag die BLOB-gegevens leest of schrijft, vereist andere machtigingen dan een aanvraag die een beheer bewerking uitvoert. RBAC biedt nauw keurige controle over machtigingen voor beide typen resources. Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, zorg er dan voor dat u weet welke machtigingen voor de principal worden verleend. Zie [ingebouwde rollen in azure](../../role-based-access-control/built-in-roles.md)voor een gedetailleerde Naslag informatie over de acties die zijn gekoppeld aan elke ingebouwde rol van Azure.
+Een aanvraag die BLOB-gegevens leest of schrijft, vereist andere machtigingen dan een aanvraag die een beheer bewerking uitvoert. RBAC biedt nauw keurige controle over machtigingen voor beide typen resources. Wanneer u een Azure-rol toewijst aan een beveiligingsprincipal, moet u weten welke machtigingen aan de principal worden verleend. Zie [ingebouwde rollen in azure](../../role-based-access-control/built-in-roles.md)voor een gedetailleerde Naslag informatie over de acties die zijn gekoppeld aan elke ingebouwde rol van Azure.
 
-Azure Storage ondersteunt het gebruik van Azure AD om aanvragen voor Blob-en wachtrij opslag te autoriseren. Zie [toegang tot blobs en wacht rijen toestaan met Active Directory](storage-auth-aad.md)voor meer informatie over RBAC-rollen voor Blob-en wachtrij gegevens bewerkingen.
+Azure Storage ondersteunt het gebruik van Azure AD om aanvragen voor Blob-en wachtrij opslag te autoriseren. Zie [toegang tot blobs en wacht rijen toestaan met Active Directory](storage-auth-aad.md)voor meer informatie over Azure-rollen voor Blob-en wachtrij gegevens bewerkingen.
 
 ## <a name="assign-management-permissions-with-role-based-access-control-rbac"></a>Beheer machtigingen toewijzen met op rollen gebaseerd toegangs beheer (RBAC)
 
 Elk Azure-abonnement heeft een bijbehorende Azure Active Directory waarmee gebruikers, groepen en toepassingen worden beheerd. Een gebruiker, groep of toepassing wordt ook wel een beveiligingsprincipal genoemd in de context van het [micro soft Identity-platform](/azure/active-directory/develop/). U kunt toegang verlenen tot bronnen in een abonnement op een beveiligingsprincipal die is gedefinieerd in de Active Directory met behulp van op rollen gebaseerd toegangs beheer (RBAC).
 
-Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, geeft u ook het bereik op waarop de machtigingen die door de rol worden verleend, van kracht zijn. Voor beheer bewerkingen kunt u een rol toewijzen op het niveau van het abonnement, de resource groep of het opslag account. U kunt een RBAC-rol toewijzen aan een beveiligingsprincipal met behulp van de [Azure Portal](https://portal.azure.com/), de [Azure cli-hulpprogram ma's](../../cli-install-nodejs.md), [Power shell](/powershell/azure/)of de [resource provider van Azure Storage rest API](/rest/api/storagerp).
+Wanneer u een Azure-rol toewijst aan een beveiligingsprincipal, geeft u ook het bereik op waarop de machtigingen die door de rol worden verleend, van kracht zijn. Voor beheer bewerkingen kunt u een rol toewijzen op het niveau van het abonnement, de resource groep of het opslag account. U kunt een Azure-rol toewijzen aan een beveiligingsprincipal met behulp van de [Azure Portal](https://portal.azure.com/), de [Azure cli-hulpprogram ma's](../../cli-install-nodejs.md), [Power shell](/powershell/azure/)of de [resource provider van Azure Storage rest API](/rest/api/storagerp).
 
 Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md) voor meer informatie. en [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -44,7 +44,7 @@ Azure biedt ingebouwde rollen die machtigingen verlenen voor het aanroepen van b
 
 Ingebouwde rollen die machtigingen verlenen voor het aanroepen van opslag beheer bewerkingen zijn onder andere de rollen die in de volgende tabel worden beschreven:
 
-|    RBAC-rol    |    Description    |    Inclusief toegang tot account sleutels?    |
+|    Azure-rol    |    Beschrijving    |    Inclusief toegang tot account sleutels?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Eigenaar** | Kan alle opslag resources en toegang tot resources beheren.  | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |
 | **Inzender**  | Kan alle opslag resources beheren, maar kan toewijzing aan resources niet beheren. | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |

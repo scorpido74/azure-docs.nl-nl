@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413099"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535073"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Deel 1: Schakel AD DS verificatie in voor uw Azure-bestands shares 
 
@@ -30,7 +30,7 @@ Met de cmdlets in de AzFilesHybrid Power shell-module worden de nodige wijziging
 
 - [De AzFilesHybrid-module downloaden en uitpakken](https://github.com/Azure-Samples/azure-files-samples/releases) (Ga naar module: v 0.2.0 +)
 - Installeer en voer de module uit in een domein dat is gekoppeld aan een on-premises AD DS met AD DS referenties die machtigingen hebben voor het maken van een account voor service aanmelding of een computer account in de doel-AD.
--  Voer het script uit met behulp van een on-premises AD DS referentie die is gesynchroniseerd met uw Azure AD. De on-premises AD DS referentie moet de eigenaar van het opslag account of de rechten van de rol Inzender RBAC hebben.
+-  Voer het script uit met behulp van een on-premises AD DS referentie die is gesynchroniseerd met uw Azure AD. De referenties van de on-premises AD DS moeten de eigenaar van het opslag account of de Azure-rol van de Inzender hebben.
 
 ### <a name="run-join-azstorageaccountforauth"></a>Deelname uitvoeren-AzStorageAccountForAuth
 

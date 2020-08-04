@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7819b62fb92945a409cab0dff926e281620dd80c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 727a5052b0531cc0a37cc631e11bc498498be5b3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496641"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534971"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Key Vault en de Azure CLI
 
@@ -71,7 +71,7 @@ az login
 
 Gebruik de opdracht Azure CLI [AZ Role Assignment maken](/cli/azure/role/assignment?view=azure-cli-latest) om Key Vault toegang te geven tot uw opslag account. Geef de opdracht de volgende parameter waarden:
 
-- `--role`: Geef de functie ' rol van account sleutel operator voor opslag ' door. Deze rol beperkt de toegangs Scope tot uw opslag account. Geef voor een klassiek opslag account de rol ' klassieke account sleutel operator ' door.
+- `--role`: Geef de Azure-rol van de operator voor de sleutel van het opslag account door. Deze rol beperkt de toegangs Scope tot uw opslag account. Geef voor een klassiek opslag account de rol ' klassieke account sleutel operator ' door.
 - `--assignee`: Geef de waarde op https://vault.azure.net . Dit is de URL voor Key Vault in de open bare Azure-Cloud. (Voor Azure regering Cloud gebruik '--asingee-object-id ' in plaats daarvan raadpleegt u [Service Principal Application id](#service-principal-application-id).)
 - `--scope`: Geef de resource-ID van uw opslag account op in de vorm `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Als u uw abonnement-ID wilt vinden, gebruikt u de opdracht Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
 

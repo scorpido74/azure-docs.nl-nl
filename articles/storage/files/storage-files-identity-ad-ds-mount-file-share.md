@@ -7,18 +7,18 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 40d372eb5569f3a4079acda3ab1e43b3e86cc113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999595"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535056"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Deel vier: een bestands share koppelen vanaf een virtuele machine die lid is van een domein
 
 Voordat u aan dit artikel begint, moet u ervoor zorgen dat u het vorige artikel hebt voltooid, [machtigingen voor mappen en bestands niveau via SMB configureert](storage-files-identity-ad-ds-configure-permissions.md).
 
-Het proces dat in dit artikel wordt beschreven, controleert of uw bestands share en toegangs machtigingen juist zijn ingesteld en dat u toegang hebt tot een Azure-bestands share vanaf een virtuele machine die lid is van een domein. De toewijzing van RBAC-rollen op share niveau kan enige tijd in beslag nemen. 
+Het proces dat in dit artikel wordt beschreven, controleert of uw bestands share en toegangs machtigingen juist zijn ingesteld en dat u toegang hebt tot een Azure-bestands share vanaf een virtuele machine die lid is van een domein. De toewijzing van Azure-rollen op share niveau kan enige tijd in beslag nemen. 
 
 Meld u aan bij de client met behulp van de referenties waaraan u machtigingen hebt verleend, zoals wordt weer gegeven in de volgende afbeelding.
 

@@ -3,12 +3,12 @@ title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259402"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535005"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -27,7 +27,7 @@ U kunt de naam van de beheer groep wijzigen met behulp van de portal, Power shel
 
 ### <a name="change-the-name-in-the-portal"></a>De naam in de portal wijzigen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
@@ -69,12 +69,12 @@ Als u een beheer groep wilt verwijderen, moet aan de volgende vereisten worden v
 
    - Zie [beheer groepen en abonnementen verplaatsen in de hiërarchie](#moving-management-groups-and-subscriptions)als u een abonnement of beheer groep naar een andere beheer groep wilt verplaatsen.
 
-1. U moet schrijf machtigingen hebben voor de beheer groep (eigenaar, Inzender of Inzender voor beheer groepen). Als u wilt zien welke machtigingen u hebt, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie voor meer informatie over RBAC-rollen.  
+1. U moet schrijf machtigingen hebben voor de beheer groep (eigenaar, Inzender of Inzender voor beheer groepen). Als u wilt zien welke machtigingen u hebt, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie voor meer informatie over Azure-rollen.  
    [Toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Verwijderen in de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
@@ -113,11 +113,11 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>Beheer groepen weer geven
 
-U kunt elke beheer groep weer geven waarop u een directe of overgenomen RBAC-rol hebt.  
+U kunt elke beheer groep weer geven waarop u een directe of overgenomen Azure-rol hebt.  
 
 ### <a name="view-in-the-portal"></a>Weer geven in de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
@@ -215,13 +215,13 @@ Als u de verplaatsing wilt uitvoeren, hebt u het volgende nodig:
 
 Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergroep, zijn de verplaatsingsdoelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheergroep waarvan u de rol Eigenaar hebt. U kunt het niet verplaatsen naar een beheergroep waarvan u een Inzender bent, omdat u dan het eigendom van het abonnement kwijtraakt. Als u direct wordt toegewezen aan de rol van eigenaar van het abonnement (niet overgenomen van de beheer groep), kunt u dit verplaatsen naar een beheer groep waar u Inzender bent.
 
-Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie [toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md)voor meer informatie over RBAC-rollen.
+Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie [toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md)voor meer informatie over Azure-rollen.
 
 ## <a name="move-subscriptions"></a>Abonnementen verplaatsen 
 
 ### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Een bestaand abonnement toevoegen aan een beheer groep in de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
@@ -237,7 +237,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 ### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Een abonnement verwijderen uit een beheer groep in de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
@@ -287,7 +287,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ### <a name="move-management-groups-in-the-portal"></a>Beheer groepen verplaatsen in de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**-  >  **beheer groepen**.
 
