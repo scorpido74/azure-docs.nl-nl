@@ -6,7 +6,7 @@
       href: backup-overview.md
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/backup/'
-- name: Snelstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Back-up maken van een VM - Portal
@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: App-consistente back-ups configureren voor Azure-VM's waarop Linux wordt uitgevoerd
               href: backup-azure-linux-app-consistent.md
+            - name: Back-up van selectieve schijf
+              href: selective-disk-backup-restore.md
         - name: Herstellen
           items:
             - name: Over Azure-VM herstellen
