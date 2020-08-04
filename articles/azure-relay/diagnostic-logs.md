@@ -3,12 +3,12 @@ title: Diagnostische logboeken voor Hybride verbindingen
 description: Dit artikel bevat een overzicht van alle activiteiten en Diagnostische logboeken die beschikbaar zijn voor Azure Relay.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314893"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532999"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Diagnostische logboeken inschakelen voor Azure Relay Hybride verbindingen
 Wanneer u begint met het gebruik van uw Azure Relay Hybride verbindingen, wilt u misschien controleren hoe en wanneer uw listeners en afzenders worden geopend en gesloten, en hoe uw Hybride verbindingen worden gemaakt en berichten worden verzonden. Dit artikel bevat een overzicht van activiteiten en Diagnostische logboeken die worden geleverd door de Azure Relay-service. 
@@ -46,13 +46,13 @@ Voer de volgende stappen uit om Diagnostische logboeken in te scha kelen:
         ![Voor beeld van diagnostische instellingen](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. Selecteer **Opslaan** op de werk balk om de instellingen op te slaan.
 
-De nieuwe instellingen worden in ongeveer 10 minuten van kracht. De logboeken worden weer gegeven in het geconfigureerde archiverings doel in het deel venster **Diagnostische logboeken** . Zie het [overzicht van Azure Diagnostics-logboeken](../azure-monitor/platform/diagnostic-logs-overview.md)voor meer informatie over het configureren van diagnostische instellingen.
+De nieuwe instellingen worden in ongeveer 10 minuten van kracht. De logboeken worden weer gegeven in het geconfigureerde archiverings doel in het deel venster **Diagnostische logboeken** . Zie het [overzicht van Azure Diagnostics-logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over het configureren van diagnostische instellingen.
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>Schema voor hybride verbindings gebeurtenissen
 Hybride verbindingen gebeurtenis logboek JSON-teken reeksen bevatten de elementen die in de volgende tabel worden weer gegeven:
 
-| Naam | Description |
+| Naam | Beschrijving |
 | ------- | ------- |
 | ResourceId | Resource-ID Azure Resource Manager |
 | ActivityId | Interne ID, gebruikt om de opgegeven bewerking te identificeren. Kan ook worden aangeduid als ' TrackingId ' |

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201203"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534019"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -34,7 +34,7 @@ Ja. Hoewel Azure Site Recovery gratis is gedurende de eerste 31 dagen van een be
 
 1. [Meer informatie over Azure-naar-Azure-architectuur](azure-to-azure-architecture.md)
 1. [Controleer de ondersteunde en niet-ondersteunde configuraties](azure-to-azure-support-matrix.md)
-1. [Herstel na nood geval instellen voor virtuele Azure-machines](azure-to-azure-how-to-enable-replication.md)
+1. [Stel herstel na noodgevallen in voor Azure-VM's](azure-to-azure-how-to-enable-replication.md)
 1. [Een testfailover uitvoeren](azure-to-azure-tutorial-dr-drill.md)
 1. [Failover en failback naar de primaire regio](azure-to-azure-tutorial-failover-failback.md)
 
@@ -70,6 +70,10 @@ Herstel na nood geval voor [abonnementen](https://azure.microsoft.com/blog/cross
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>Kan ik zone-vastgemaakte virtuele Azure-machines repliceren naar een andere regio?
 
 Ja, u kunt door een [zone vastgemaakte vm's repliceren](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) naar een andere regio.
+
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>Kan ik Vm's in een regio met zones repliceren van niet-zone naar zonegebonden-configuratie?
+
+Nee, dit wordt momenteel niet ondersteund. Als tijdelijke oplossing kunt u de virtuele machine met ASR repliceren naar een zonegebonden-configuratie in een andere regio en vervolgens de replicatie uitschakelen. Schakel vervolgens de replicatie van die regio weer in voor de oorspronkelijke regio en kies een zonegebonden-configuratie voor failover.
 
 ### <a name="can-i-exclude-disks"></a>Kan ik schijven uitsluiten?
 

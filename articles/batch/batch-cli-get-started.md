@@ -4,12 +4,12 @@ description: Een korte inleiding in de Batch-opdrachten in Azure CLI voor het be
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: ea3f91615a488a1013ac4821ce7ba14b2006c14a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494941"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531674"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-resources beheren met Azure CLI
 
@@ -79,7 +79,7 @@ Er zijn twee mogelijkheden voor verificatie van uw Batch-account:
     
     Wanneer u zich interactief aanmeldt bij Azure, zoals beschreven in de vorige sectie, worden uw referenties in de cache opgeslagen, zodat de Azure CLI u met behulp van deze zelfde referenties kan aanmelden bij uw Batch-account. Als u zich aanmeldt bij Azure met behulp van een service-principal, worden deze referenties ook gebruikt voor aanmelding bij uw Batch-account.
 
-    Een voordeel van Azure AD is de ondersteuning voor toegangsbeheer op basis van rollen (RBAC). Met RBAC is de toegang van gebruikers afhankelijk van hun rol, in plaats van of ze wel of niet over de accountsleutels beschikken. U hoeft dus geen accountsleutels te beheren, maar RBAC-rollen, waarna Azure AD de toegang en verificatie afhandelt.  
+    Een voordeel van Azure AD is de ondersteuning voor toegangsbeheer op basis van rollen (RBAC). Met RBAC is de toegang van gebruikers afhankelijk van hun rol, in plaats van of ze wel of niet over de accountsleutels beschikken. In plaats van account sleutels te beheren, kunt u Azure-rollen beheren en toegang en verificatie van Azure AD toestaan.  
 
      Als u zich via Azure AD wilt aanmelden bij uw Batch-account, gebruikt u de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login): 
 
@@ -141,7 +141,7 @@ Wanneer u op de Batch-service een query uitvoert met daarin een `list`-bewerking
 
 De volgende tabel beschrijft de OData-componenten die worden ondersteund door de Batch-service:
 
-| Component | Description |
+| Component | Beschrijving |
 |---|---|
 | `--select-clause [select-clause]` | Retourneert een subset met eigenschappen voor elke entiteit. |
 | `--filter-clause [filter-clause]` | Retourneert alleen entiteiten die overeenkomen met de opgegeven OData-expressie. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 801d3ca383ebde75d6590558638df6820e538249
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324825"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529940"
 ---
 # <a name="payout-policy-details"></a>Details van betaalbeleid
 
@@ -20,7 +20,7 @@ In dit artikel wordt het uitbetalings proces van micro soft beschreven, waar u d
 
 ## <a name="where-to-find-upcoming-payouts"></a>Waar vind ik aanstaande uitbetalingen?
 
-In Partner Center selecteert u **uitbetaling** in de rechter bovenhoek van de portal:
+Selecteer in partner centrum de **uitbetaling** in de rechter bovenhoek van het scherm:
 
 ![Illustreert het uitbetalings pictogram in de rechter bovenhoek van de portal van de partner centrum.](./media/payout-overview.png)
 
@@ -40,24 +40,24 @@ Vanaf 1 mei 2020 wordt ons beleid voor uitbetalingen bijgewerkt met betrekking t
 > [!NOTE]
 > Zie de onderstaande procedure voor het [verwerken van niet-betaalde klanten](#process-for-customer-non-payment) voor de acties die we ondernemen als de klant niet kan betalen, maar we al een uitbetaling aan u hebben verzonden.
 
-| Gebeurtenis  | Date  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\* |
+| Gebeurtenis  | Datum (UTC) | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\* |
 | --- | --- | --- | --- |
 | Trans actie of gebruiks maand | 8/1/2020 – 8/31/2020 | N.v.t. | **Gebruiks rapport**: nieuw verbruik wordt weer gegeven (elke vier uur vernieuwd)<br>**Bestel rapport**: n.v.t. |
 | Einde van de term (maand) | 8/31/2020 | N.v.t. | **Gebruiks rapport**: weer gegeven maand einde verbruik<br>**Bestel rapport**: n.v.t. |
 | Order gegenereerd | 9/3/2020 – 9/7/2020 | N.v.t. | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Het verdienen van uitbetalingen berekenen | 9/4/2020 – 9/10/2020 | Gemarkeerd als niet- **verwerkt** in de transactie geschiedenis van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Maandelijkse uitbetaling | 10/5/2020 | Gemarkeerd als **gepland** in de transactie geschiedenis van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
-| Uitbetalings datum | 10/15/2020 | Gemarkeerd als **verzonden** in transactie geschiedenis en in de sectie betalingen van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
+| Uitbetalings datum\** | 10/15/2020 | Gemarkeerd als **verzonden** in transactie geschiedenis en in de sectie betalingen van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Klant factuur verzameld | 12/1/2020 | Gemarkeerd als **verzonden** in transactie geschiedenis en in de sectie betalingen van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief  |
 |  |  |  |  |
 
-\*Gebruiks-en order rapporten zijn toegankelijk in de sectie analyseren van het partner centrum.
+\*Gebruiks-en order rapporten zijn toegankelijk in de sectie analyseren van het partner centrum.</br>\** De uitbetalings datum is in Pacific (standaard tijd) (PST).
 
 ### <a name="customers-who-pay-using-credit-card-or-invoice"></a>Klanten die betalen met een credit card of factuur
 
 Voor alle aankopen met een credit card of een maandelijkse factuur geldt een periode van 30 dagen om ervoor te zorgen dat de fondsen worden gewist en er geen terugstortingen of verdachte fraude zijn.
 
-| Gebeurtenis  | Date  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
+| Gebeurtenis  | Datum (UTC) | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
 | --- | --- | --- | --- |
 | Trans actie of gebruiks maand | 8/1/2019 - 8/31/2019 | N.v.t. | **Gebruiks rapport**: nieuw verbruik wordt weer gegeven (elke vier uur vernieuwd)<br>**Bestel rapport**: n.v.t. |
 | Einde van de term (maand) | 8/31/2019 | N.v.t. | **Gebruiks rapport**: weer gegeven maand einde verbruik<br>**Bestel rapport**: n.v.t. |
@@ -65,16 +65,16 @@ Voor alle aankopen met een credit card of een maandelijkse factuur geldt een per
 | Klant factuur verzameld | 9/7/2019 – 9/10/2019 | N.v.t. | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Uitbetaling berekenen | 9/8/2019 -9/12/2019 | Gemarkeerd als niet- **verwerkt** in de transactie geschiedenis van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Maandelijkse uitbetaling | 11/5/2019\* | Gemarkeerd als **gepland** in de transactie geschiedenis van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
-| Uitbetalings datum | 11/15/2019 | Gemarkeerd als **verzonden** in de transactie geschiedenis en in de sectie betalingen op het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
+| Uitbetalings datum\** | 11/15/2019 | Gemarkeerd als **verzonden** in de transactie geschiedenis en in de sectie betalingen op het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 |  |  |  |  |
 
-\*Gebruiks-en order rapporten zijn toegankelijk in de sectie analyseren van het partner centrum.
+\*Gebruiks-en order rapporten zijn toegankelijk in de sectie analyseren van het partner centrum.</br>\** De uitbetalings datum is in Pacific (standaard tijd) (PST).
 
 ### <a name="enterprise-agreement-transactions-prior-to-may-1-2020"></a>Enterprise Agreement trans acties vóór 1 mei 2020
 
 Alle aankopen die vóór deze datum plaatsvinden, worden verwerkt en betaald volgens onderstaande planning, nadat micro soft de betaling van klanten heeft verzameld en de kosten voor Marketplace heeft verwerkt.
 
-| Gebeurtenis  | Date  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
+| Gebeurtenis  | Datum (UTC)  | Zicht baarheid van partners: partner centrum uitbetalings rapport  |  Zicht baarheid van partners: Partner Center Analytics\*  |
 | --- | --- | --- | --- |
 | Trans actie of gebruiks maand | 8/1/2019 – 8/31/2019 | N.v.t. | **Gebruiks rapport**: nieuw verbruik wordt weer gegeven (elke vier uur vernieuwd)<br>**Bestel rapport**: n.v.t. |
 | Einde van de term (maand) | 8/31/2019 | N.v.t. | **Gebruiks rapport**: weer gegeven maand einde verbruik<br>**Bestel rapport**: n.v.t. |
@@ -82,10 +82,10 @@ Alle aankopen die vóór deze datum plaatsvinden, worden verwerkt en betaald vol
 | Klant factuur verzameld | 12/1/2019 | N.v.t. | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Uitbetaling berekenen | 12/5/2019 – 12/7/2019 | Gemarkeerd als niet- **verwerkt** in de transactie geschiedenis van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 | Maandelijkse uitbetaling | 1/5/2019 | Gemarkeerd als **gepland** in de transactie geschiedenis van het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
-| Uitbetalings datum | 1/15/2019 | Gemarkeerd als **verzonden** in transactie geschiedenis en in de sectie betalingen op het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
+| Uitbetalings datum\** | 1/15/2019 | Gemarkeerd als **verzonden** in transactie geschiedenis en in de sectie betalingen op het uitbetalings dashboard | **Gebruiks rapport**: verbruik weer gegeven met OrderID/OrderLineItemID<br>**Bestel rapport**: klant orders weer gegeven als actief |
 |  |  |  |  |
 
-\*Gebruiks-en order rapporten zijn toegankelijk in de sectie analyseren van het partner centrum.
+\*Gebruiks-en order rapporten zijn toegankelijk in de sectie analyseren van het partner centrum.</br>\** De uitbetalings datum is in Pacific (standaard tijd) (PST).
 
 ## <a name="process-for-customer-non-payment"></a>Proces voor niet-betaling van klant
 
@@ -109,6 +109,19 @@ Hier volgt een voorbeeld schema:
 | Uitbetaling wordt in mindering gebracht | 3/1/2021 | Er wordt een negatieve trans actie weer geven in de uitbetalings verklaring van partner Center |
 | Uitbetaling wordt Inge houden | 3/15/2021 | Toekomstige uitbetalingen worden weer gegeven in de uitbetalings verklaring van partner Center. De betaling wordt pas ontvangen als het saldo niet langer negatief is.  |
 |||
+
+## <a name="number-of-days-for-payments-to-reach-a-payout-account"></a>Aantal dagen dat betalingen een uitbetalings account bereiken
+
+Normaal gesp roken verstuurt de betaling in een bepaalde maand op de vijftiende dag van die maand, maar neemt het extra tijd in beslag om uw account te bereiken. De hoeveelheid dagen is afhankelijk van de betalings wijze die we voor uw account gebruiken, zoals hieronder wordt beschreven.
+
+> [!NOTE]
+> De dagen die hieronder worden weer gegeven, zijn ongeveer gelijk aan. elke betaling kan een langere of korter tijd duren om uw account te bereiken.
+
+| Betalingswijze     | Aantal dagen voor het bereiken van het uitbetalings account     |
+|--------------------|--------------------------------------------|
+| PayPal             | 1 werkdag                             |
+| ACH/SEPA           | 2-3 werk dagen                          |
+| Overschrijving      | 7-10 werk dagen                         |
 
 ## <a name="next-step"></a>Volgende stap
 

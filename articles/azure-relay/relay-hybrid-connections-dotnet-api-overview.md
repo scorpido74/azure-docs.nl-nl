@@ -3,12 +3,12 @@ title: Overzicht van Azure Relay .NET-standaard-Api's | Microsoft Docs
 description: In dit artikel wordt een overzicht gegeven van een aantal belang rijke Azure Relay Hybride verbindingen .NET Standard API.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d5aeed2ea76f47608ef03103b11fa236ec0362e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316831"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532897"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Overzicht van Azure Relay Hybride verbindingen .NET Standard-API
 
@@ -82,7 +82,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Gegevens ontvangen
 
-De klasse [HybridConnectionStream][HCStream] maakt communicatie in twee richtingen mogelijk. In de meeste gevallen ontvangt u voortdurend van de stroom. Als u tekst uit de stroom wilt lezen, kunt u ook een [StreamReader niet](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) -object gebruiken, waarmee u de gegevens gemakkelijker kunt parseren. U kunt bijvoorbeeld gegevens als tekst lezen, in plaats van als `byte[]` .
+De klasse [HybridConnectionStream][HCStream] maakt communicatie in twee richtingen mogelijk. In de meeste gevallen ontvangt u voortdurend van de stroom. Als u tekst uit de stroom wilt lezen, kunt u ook een [StreamReader niet](/dotnet/api/system.io.streamreader?view=netcore-3.1) -object gebruiken, waarmee u de gegevens gemakkelijker kunt parseren. U kunt bijvoorbeeld gegevens als tekst lezen, in plaats van als `byte[]` .
 
 Met de volgende code worden afzonderlijke tekst regels van de stroom gelezen totdat een annulering wordt aangevraagd:
 
@@ -109,14 +109,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Gegevens verzenden
 
-Zodra er een verbinding tot stand is gebracht, kunt u een bericht verzenden naar het relay-eind punt. Omdat het verbindings object [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)overneemt, verzendt u uw gegevens als een `byte[]` . In het volgende voor beeld ziet u hoe u dit doet:
+Zodra er een verbinding tot stand is gebracht, kunt u een bericht verzenden naar het relay-eind punt. Omdat het verbindings object [Stream](/dotnet/api/system.io.stream?view=netcore-3.1)overneemt, verzendt u uw gegevens als een `byte[]` . In het volgende voor beeld ziet u hoe u dit doet:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Als u echter rechtstreeks tekst wilt verzenden, zonder dat u de teken reeks elke keer hoeft te coderen, kunt u het object laten teruglopen `hybridConnectionStream` met een [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) -object.
+Als u echter rechtstreeks tekst wilt verzenden, zonder dat u de teken reeks elke keer hoeft te coderen, kunt u het object laten teruglopen `hybridConnectionStream` met een [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) -object.
 
 ```csharp
 // The StreamWriter object only needs to be created once

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513074"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533169"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
-Azure NetApp Files ondersteunt NFS-en SMBv3-volumes. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool. In dit artikel wordt beschreven hoe u een SMBv3-volume maakt. Als u een NFS-volume wilt maken, raadpleegt u [een NFS-volume maken voor Azure NetApp files](azure-netapp-files-create-volumes.md). 
+Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van NFS (NFSv3 en NFSv 4.1), SMBv3 of het dubbele Protocol (NFSv3 en SMB). Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool. In dit artikel wordt beschreven hoe u een SMBv3-volume maakt.
 
 ## <a name="before-you-begin"></a>Voordat u begint 
 U dient al een capaciteitspool te hebben ingesteld.   
@@ -197,7 +197,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 2. Klik op **+ Volume toevoegen** om een volume te maken.  
     Het venster een volume maken wordt weer gegeven.
 
-3. Klik in het venster een volume maken op **maken** en geef informatie op voor de volgende velden:   
+3. Klik in het venster een volume maken op **maken** en geef informatie op voor de volgende velden op het tabblad basis beginselen:   
     * **Volume naam**      
         Geef de naam op voor het volume dat u wilt maken.   
 
@@ -230,7 +230,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 
     * Als u een bestaand momentopname beleid wilt Toep assen op het volume, klikt u op de **sectie Geavanceerd weer geven** om deze uit te vouwen en selecteert u een beleid voor moment opnamen in de vervolg keuzelijst. 
 
-        Zie [moment opnamen beheren](azure-netapp-files-manage-snapshots.md)voor meer informatie over het maken van een momentopname beleid.
+        Zie voor meer informatie over het maken van een momentopname beleid [beleid voor moment opnamen beheren](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Geavanceerde selectie weer geven](../media/azure-netapp-files/volume-create-advanced-selection.png)
 

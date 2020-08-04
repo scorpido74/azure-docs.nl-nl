@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086569"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529973"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
 
@@ -21,7 +21,7 @@ Veel bedrijven maken gebruik van big data Analytics voor zakelijke inzichten om 
 * Verificatie
 * Autorisatie
 * Netwerkisolatie
-* Gegevensbescherming
+* Gegevensbeveiliging
 * Controleren
 
 ## <a name="authentication-and-identity-management"></a>Verificatie en identiteits beheer
@@ -46,14 +46,14 @@ Nadat Azure Active Directory een gebruiker verifieert, zodat de gebruiker toegan
 
 Standaard worden vier basis rollen gedefinieerd voor Data Lake Storage Gen1. Met de functies kunnen verschillende bewerkingen worden uitgevoerd op een Data Lake Storage Gen1 account via de Azure Portal, Power shell-cmdlets en REST-Api's. De rollen eigenaar en Inzender kunnen diverse beheer functies op het account uitvoeren. U kunt de rol van lezer toewijzen aan gebruikers die alleen account beheer gegevens weer geven.
 
-![RBAC-rollen](./media/data-lake-store-security-overview/rbac-roles.png "RBAC-rollen")
+![Azure-rollen](./media/data-lake-store-security-overview/rbac-roles.png "Azure-rollen")
 
 Houd er rekening mee dat hoewel rollen zijn toegewezen aan account beheer, sommige functies van invloed zijn op de toegang tot gegevens. U moet Acl's gebruiken voor het beheren van de toegang tot bewerkingen die een gebruiker kan uitvoeren op het bestands systeem. In de volgende tabel ziet u een overzicht van de beheer rechten en gegevens toegangs rechten voor de standaard rollen.
 
 | Rollen | Beheer rechten | Gegevens toegangs rechten | Uitleg |
 | --- | --- | --- | --- |
 | Er is geen rol toegewezen |Geen |Beheerd door ACL |De gebruiker kan de Azure Portal-of Azure PowerShell-cmdlets niet gebruiken om Data Lake Storage Gen1 te bladeren. De gebruiker kan alleen opdracht regel Programma's gebruiken. |
-| Eigenaar |Alle |Alle |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
+| Eigenaar |Alles |Alles |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
 | Lezer |Alleen-lezen |Beheerd door ACL |Met de rol lezer kan alles worden weer gegeven met betrekking tot account beheer, zoals welke gebruiker aan welke rol is toegewezen. De rol van lezer kan geen wijzigingen aanbrengen. |
 | Inzender |Alle behalve functies toevoegen en verwijderen |Beheerd door ACL |De rol Inzender kan sommige aspecten van een account beheren, zoals implementaties en het maken en beheren van waarschuwingen. De rol Inzender kan geen rollen toevoegen of verwijderen. |
 | Beheerder van gebruikerstoegang |Rollen toevoegen en verwijderen |Beheerd door ACL |De rol beheerder van gebruikers toegang kan de gebruikers toegang tot accounts beheren. |
@@ -76,7 +76,7 @@ Gebruik Data Lake Storage Gen1 om de toegang tot uw gegevens archief op netwerk 
 
 Azure Virtual Networks (VNet) Support service tags voor Data Lake gen 1. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen. Zie overzicht van Azure- [service Tags](../virtual-network/service-tags-overview.md)voor meer informatie.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 Data Lake Storage Gen1 beschermt uw gegevens gedurende de hele levens cyclus. Voor gegevens die onderweg zijn, gebruikt Data Lake Storage Gen1 het Protocol van de industrie norm Transport Layer Security (TLS 1,2) om gegevens via het netwerk te beveiligen.
 

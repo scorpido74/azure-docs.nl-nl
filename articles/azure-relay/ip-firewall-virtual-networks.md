@@ -3,12 +3,12 @@ title: Congigure IP-Firewall voor Azure Relay naam ruimte
 description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om verbindingen van bepaalde IP-adressen toe te staan Azure Relay naam ruimten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314851"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533044"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-Firewall configureren voor een Azure Relay naam ruimte
 Relay-naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -17,7 +17,7 @@ Deze functie is handig in scenario's waarin Azure Relay alleen toegankelijk moet
 
 
 > [!IMPORTANT]
-> Deze functie is momenteel in preview. 
+> Deze functie is momenteel beschikbaar als preview-product. 
 
 
 ## <a name="enable-ip-firewall-rules"></a>IP-firewall regels inschakelen
@@ -52,7 +52,7 @@ De sjabloon heeft één para meter: **ipMask**, een enkel IPv4-adres of een blok
 > ```json
 > "defaultAction": "Allow"
 > ```
-> tot
+> in
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -129,4 +129,4 @@ Zie [netwerk beveiliging](network-security.md)voor meer informatie over andere f
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

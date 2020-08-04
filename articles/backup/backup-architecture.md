@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514302"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532489"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -95,8 +95,8 @@ De volgende tabel bevat een overzicht van de ondersteunde functies voor de versc
 **Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
-Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Yes][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Yes][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Yes][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 
@@ -120,16 +120,15 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 - Wanneer een kluis wordt gemaakt, wordt er ook een ' Defaultpolicy bij ' gemaakt en kan deze worden gebruikt voor het maken van een back-up van bronnen.
 - Alle wijzigingen die zijn aangebracht in de Bewaar periode van een back-upbeleid, worden met terugwerkende kracht toegepast op alle oudere herstel punten, van de nieuwe.
 
-### <a name="additional-reference"></a>Aanvullende Naslag informatie 
+### <a name="additional-reference"></a>Aanvullende Naslag informatie
 
--   Azure VM-machine: beleid [maken](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) en [wijzigen](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) ? 
--   SQL Server data base in azure VM machine: beleid [maken](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) en [wijzigen](./manage-monitor-sql-database-backup.md#modify-policy) ? 
--   Azure-bestands share: beleid [maken](./backup-afs.md#discover-file-shares-and-configure-backup) en [wijzigen](./manage-afs-backup.md#modify-policy) ? 
--   SAP HANA: het [maken](./backup-azure-sap-hana-database.md#create-a-backup-policy) en [wijzigen](./sap-hana-db-manage.md#change-policy) van beleid? 
--   MARS: beleid [maken](./backup-windows-with-mars-agent.md#create-a-backup-policy) en [wijzigen](./backup-azure-manage-mars.md#modify-a-backup-policy) ? 
--   [Zijn er beperkingen voor het plannen van back-ups op basis van het type werk belasting?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Wat gebeurt er met de bestaande herstel punten als ik het Bewaar beleid Wijzig?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
+- Azure VM-machine: beleid [maken](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) en [wijzigen](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) .
+- SQL Server data base in azure VM-machine: beleid [maken](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) en [wijzigen](./manage-monitor-sql-database-backup.md#modify-policy) .
+- Azure-bestands share: beleid [maken](./backup-afs.md) en [wijzigen](./manage-afs-backup.md#modify-policy) .
+- SAP HANA: beleid [maken](./backup-azure-sap-hana-database.md#create-a-backup-policy) en [wijzigen](./sap-hana-db-manage.md#change-policy) .
+- MARS: beleid [maken](./backup-windows-with-mars-agent.md#create-a-backup-policy) en [wijzigen](./backup-azure-manage-mars.md#modify-a-backup-policy) .
+- [Zijn er beperkingen voor het plannen van back-ups op basis van het type werk belasting?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Wat gebeurt er met de bestaande herstelpunten als ik het bewaarbeleid wijzig?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM-back-up
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419781"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529106"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -144,7 +144,7 @@ De `provisioningState` van `Succeeded` wordt weer gegeven nadat de uitbrei ding 
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen voor de virtuele machine configureren
 
-Nu u de virtuele machine hebt gemaakt, moet u het Azure RBAC-beleid configureren om te bepalen wie zich kan aanmelden bij de virtuele machine. Er worden twee RBAC-rollen gebruikt voor het autoriseren van de VM-aanmelding:
+Nu u de virtuele machine hebt gemaakt, moet u het Azure RBAC-beleid configureren om te bepalen wie zich kan aanmelden bij de virtuele machine. Er worden twee Azure-rollen gebruikt voor het autoriseren van de VM-aanmelding:
 
 - Aanmelding van de beheerder van de **virtuele machine**: gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele Azure-machine met Administrator bevoegdheden.
 - **Gebruikers aanmelding van de virtuele machine**: gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele Azure-machine met gewone gebruikers bevoegdheden.
@@ -208,7 +208,7 @@ U kunt beleid voor voorwaardelijke toegang afdwingen, zoals multi-factor Authent
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Meld u aan met Azure AD-referenties voor een Windows-VM
 
 > [!IMPORTANT]
-> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn geregistreerd voor Azure AD (mini maal vereiste build is 20H1) of Azure AD is toegevoegd aan **dezelfde** map als de virtuele machine. Daarnaast moet de gebruiker bij RDP met behulp van Azure AD-referenties lid zijn van een van de twee RBAC-rollen, de aanmelding van de virtuele-machine beheerder of de gebruikers aanmelding van de virtuele machine. Als u een Azure AD-geregistreerde Windows 10-PC gebruikt, moet u referenties opgeven in de AzureAD\UPN-indeling (bijvoorbeeld AzureAD\john@contoso.com ). Op dit moment kan Azure Bastion niet worden gebruikt om u aan te melden met behulp van Azure Active Directory-verificatie met de uitbrei ding AADLoginForWindows. alleen directe RDP wordt ondersteund.
+> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn geregistreerd voor Azure AD (mini maal vereiste build is 20H1) of Azure AD is toegevoegd aan **dezelfde** map als de virtuele machine. Daarnaast moet de gebruiker bij RDP met behulp van Azure AD-referenties lid zijn van een van de twee Azure-rollen, de aanmelding van de virtuele-machine beheerder of de gebruikers aanmelding van de virtuele machine. Als u een Azure AD-geregistreerde Windows 10-PC gebruikt, moet u referenties opgeven in de AzureAD\UPN-indeling (bijvoorbeeld AzureAD\john@contoso.com ). Op dit moment kan Azure Bastion niet worden gebruikt om u aan te melden met behulp van Azure Active Directory-verificatie met de uitbrei ding AADLoginForWindows. alleen directe RDP wordt ondersteund.
 
 Meld u als volgt aan bij uw virtuele Windows Server 2019-machine met Azure AD: 
 
@@ -315,13 +315,13 @@ Bij open bare preview is de AADLoginForWindows-extensie alleen bedoeld om te wor
 
 ### <a name="troubleshoot-sign-in-issues"></a>Problemen met aanmelden oplossen
 
-Bij een aantal veelvoorkomende fouten bij het gebruik van RDP met Azure AD-referenties zijn geen RBAC-rollen toegewezen, niet-geautoriseerde client of twee ledige-aanmeldings methode vereist. Gebruik de volgende informatie om deze problemen te verhelpen.
+Enkele veelvoorkomende fouten wanneer u RDP probeert te gebruiken met Azure AD-referenties, zijn geen Azure-rollen toegewezen, niet-geautoriseerde client of twee ledige-aanmeldings methode vereist. Gebruik de volgende informatie om deze problemen te verhelpen.
 
 Het apparaat en de SSO-status kunnen worden weer gegeven door uit te voeren `dsregcmd /status` . Het doel is om de status van het apparaat weer te geven `AzureAdJoined : YES` en `SSO State` weer te geven `AzureAdPrt : YES` .
 
 Daarnaast wordt RDP-aanmelding met Azure AD-accounts vastgelegd in Logboeken onder de gebeurtenis logboeken van AAD\Operational.
 
-#### <a name="rbac-role-not-assigned"></a>De RBAC-rol is niet toegewezen
+#### <a name="azure-role-not-assigned"></a>De Azure-rol is niet toegewezen
 
 Als het volgende fout bericht wordt weer gegeven wanneer u een verbinding met een extern bureau blad met uw VM initieert: 
 

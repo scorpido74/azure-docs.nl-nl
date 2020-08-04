@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-agent (MARS) – Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514064"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533577"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Veelgestelde vragen-agent voor Microsoft Azure Recovery Services (MARS)
 
@@ -23,6 +23,10 @@ De meest recente MARS-agent die wordt gebruikt bij het maken van een back-up van
 ### <a name="how-long-are-vault-credentials-valid"></a>Hoe lang zijn de kluis referenties geldig?
 
 De kluis referenties verlopen na tien dagen. Als het referenties bestand is verlopen, downloadt u het bestand opnieuw vanuit de Azure Portal.
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>Welke tekens zijn toegestaan voor de wachtwoordzin?
+
+De wachtwoordzin moet tekens uit de ASCII-tekenset gebruiken, met ASCII-waarden die kleiner zijn dan of gelijk zijn aan 127.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Vanaf welke stations kan ik back-ups maken van bestanden en mappen?
 
@@ -130,7 +134,7 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
     Net start obengine
     ```
 
-7. Een back-up op aanvraag uitvoeren. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
+7. Een on-demand back-uptaak uitvoeren. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Waar moet de cachemap zich bevinden?
 

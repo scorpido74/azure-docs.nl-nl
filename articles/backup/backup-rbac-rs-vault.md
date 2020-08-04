@@ -4,12 +4,12 @@ description: Gebruik op rollen gebaseerde Access Control voor het beheren van de
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445304"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533458"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren
 
@@ -28,9 +28,9 @@ Als u uw eigen rollen wilt definiëren voor nog meer controle, raadpleegt u [aan
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Ingebouwde functies voor back-ups koppelen aan back-upbeheer acties
 
-In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende minimale RBAC-rol vastgelegd die vereist zijn om die bewerking uit te voeren.
+In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende minimale Azure-rol vastgelegd die is vereist om deze bewerking uit te voeren.
 
-| Beheer bewerking | Mini maal RBAC-rol vereist | Bereik vereist |
+| Beheer bewerking | Mini maal vereiste Azure-rol | Bereik vereist |
 | --- | --- | --- |
 | Een Recovery Services-kluis maken | Back-upinzender | Resource groep met de kluis |
 | Back-ups van virtuele Azure-machines inschakelen | Back-upoperator | Resource groep met de kluis |

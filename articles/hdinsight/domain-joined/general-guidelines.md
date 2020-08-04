@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887898"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530262"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Algemene informatie over Enter prise Security en richt lijnen in azure HDInsight
 
@@ -62,7 +62,7 @@ Wanneer u een beveiligd HDInsight-cluster implementeert, zijn er enkele aanbevol
 Wanneer hiërarchische naam ruimte niet ingeschakeld is:
 
 * Er zijn geen overgenomen machtigingen.
-* Alleen bestandssysteem machtiging die werkt als **opslag gegevens xxxx** RBAC-rol, moet rechtstreeks aan de gebruiker worden toegewezen in azure Portal.
+* Alleen bestandssysteem machtiging die werkt met de **opslag gegevens xxxx** Azure Role, worden rechtstreeks aan de gebruiker toegewezen in azure Portal.
 
 ### <a name="default-hdfs-permissions"></a>Standaard machtigingen voor HDFS
 

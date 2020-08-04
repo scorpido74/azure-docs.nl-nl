@@ -3,12 +3,12 @@ title: Levering van gebeurtenissen met beheerde service-identiteit
 description: In dit artikel wordt beschreven hoe u de beheerde service-identiteit voor een Azure Event grid-onderwerp inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499820"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534240"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Gebeurtenis levering met een beheerde identiteit
 In dit artikel wordt beschreven hoe u een [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor Azure Event grid-onderwerpen of-domeinen inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
@@ -63,20 +63,20 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 De opdracht voor het bijwerken van een bestaand domein is vergelijkbaar ( `az eventgrid domain update` ).
 
-## <a name="supported-destinations-and-rbac-roles"></a>Ondersteunde doelen en RBAC-rollen
+## <a name="supported-destinations-and-azure-roles"></a>Ondersteunde doelen en Azure-rollen
 Nadat u de identiteit voor het onderwerp of het domein van het gebeurtenis raster hebt ingeschakeld, maakt Azure automatisch een identiteit in Azure Active Directory. Voeg deze identiteit toe aan de juiste Azure-rollen zodat het onderwerp of het domein gebeurtenissen naar ondersteunde bestemmingen kan door sturen. U kunt bijvoorbeeld de identiteit toevoegen aan de rol **azure Event hubs data Sender** voor een Azure Event hubs-naam ruimte, zodat het onderwerp Event grid gebeurtenissen kan door sturen naar Event hubs in die naam ruimte. 
 
 Op dit moment ondersteunt Azure Event grid onderwerpen of domeinen die zijn geconfigureerd met een door het systeem toegewezen beheerde identiteit voor het door sturen van gebeurtenissen naar de volgende bestemmingen. In deze tabel vindt u ook de rollen waarin de identiteit zich moet bevinden, zodat het onderwerp de gebeurtenissen kan door sturen.
 
-| Doel | RBAC-rol | 
+| Doel | Azure-rol | 
 | ----------- | --------- | 
 | Service Bus-wacht rijen en-onderwerpen | [Afzender van Azure Service Bus gegevens](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Afzender van Azure Event Hubs gegevens](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob Storage | [Inzender voor Storage BLOB-gegevens](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[Afzender gegevens bericht van opslag wachtrij](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Blob Storage | [Inzender voor Storage BLOB-gegevens](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure Queue Storage |[Afzender gegevens bericht van opslag wachtrij](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
-## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>Een identiteit toevoegen aan RBAC-rollen op bestemmingen
-In deze sectie wordt beschreven hoe u de identiteit voor uw onderwerp of domein toevoegt aan een RBAC-rol. 
+## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Een identiteit toevoegen aan Azure-rollen op bestemmingen
+In deze sectie wordt beschreven hoe u de identiteit voor uw onderwerp of domein toevoegt aan een Azure-rol. 
 
 ### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 U kunt de Azure Portal gebruiken om het onderwerp of de domein-id toe te wijzen aan een geschikte rol, zodat het onderwerp of het domein gebeurtenissen naar de bestemming kan door sturen. 
@@ -94,7 +94,7 @@ In het volgende voor beeld wordt een beheerde identiteit voor een event grid-ond
 De stappen zijn vergelijkbaar voor het toevoegen van een identiteit aan andere rollen die in de tabel worden genoemd. 
 
 ### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
-In het voor beeld in deze sectie wordt beschreven hoe u de Azure CLI gebruikt om een identiteit toe te voegen aan een RBAC-rol. De voorbeeld opdrachten zijn voor Event grid-onderwerpen. De opdrachten voor Event grid-domeinen zijn vergelijkbaar. 
+In het voor beeld in deze sectie wordt beschreven hoe u de Azure CLI gebruikt om een identiteit toe te voegen aan een Azure-rol. De voorbeeld opdrachten zijn voor Event grid-onderwerpen. De opdrachten voor Event grid-domeinen zijn vergelijkbaar. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>De principal-ID voor de systeem identiteit van het onderwerp ophalen 
 Haal eerst de principal-ID op van de door het systeem beheerde identiteit van het onderwerp en wijs de identiteit toe aan de juiste rollen.

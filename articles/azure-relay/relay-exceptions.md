@@ -3,12 +3,12 @@ title: Azure Relay uitzonde ringen en oplossingen oplossen | Microsoft Docs
 description: Lijst met Azure Relay uitzonde ringen en voorgestelde acties die u kunt uitvoeren om ze te helpen oplossen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0bc8a399173331525d62b25929f65ad189ed219b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a644dfe80255c64980400866a5e3d197f75375bd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316866"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532965"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay uitzonde ringen
 
@@ -18,16 +18,16 @@ In dit artikel worden enkele uitzonde ringen vermeld die kunnen worden gegeneree
 
 De relay-Api's genereren uitzonde ringen die in de volgende categorieën kunnen vallen. Ook worden de voorgestelde acties beschreven die u kunt uitvoeren om de uitzonde ringen op te lossen.
 
-*   **Gebruikers coderings fout**: [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System. runtime. serialisatie. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
+*   **Gebruikers coderings fout**: [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1), [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1), [System. runtime. serialisatie. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1). 
 
     **Algemene actie**: Probeer de code te corrigeren voordat u doorgaat.
-*   **Setup/configuratie fout**: [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
+*   **Setup/configuratie fout**: [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1). 
 
     **Algemene actie**: Controleer uw configuratie. Wijzig indien nodig de configuratie.
 *   **Tijdelijke uitzonde ringen**: [micro soft. ServiceBus. Messa ging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [micro soft. ServiceBus. Messa ging. ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [micro soft. ServiceBus. Messa ging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
     **Algemene actie**: Probeer de bewerking opnieuw uit te voeren of gebruikers te informeren.
-*   **Andere uitzonde ringen**: [System. Trans actions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
+*   **Andere uitzonde ringen**: [System. Trans actions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1), [System. TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1). 
 
     **Algemene actie**: specifiek voor het uitzonderings type. Zie de tabel in de volgende sectie. 
 
@@ -37,11 +37,11 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten en de oo
 
 | **Uitzonderingstype** | **Beschrijving** | **Voorgestelde actie** | **Opmerking bij automatische of directe nieuwe poging** |
 | --- | --- | --- | --- |
-| [Time-out](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |De server heeft niet binnen de opgegeven tijd gereageerd op de aangevraagde bewerking, die wordt beheerd door [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). De server heeft mogelijk de aangevraagde bewerking voltooid. Dit kan gebeuren vanwege vertragingen in het netwerk of andere infra structuur. |Controleer de systeem status op consistentie en probeer het vervolgens opnieuw, indien nodig. Zie [TimeoutException](#timeoutexception). |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
-| [Ongeldige bewerking](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |De aangevraagde gebruikers bewerking is niet toegestaan in de server of de service. Zie het uitzonderings bericht voor meer informatie. |Controleer de code en de documentatie. Zorg ervoor dat de aangevraagde bewerking geldig is. |Opnieuw proberen wordt niet geholpen. |
-| [Bewerking is geannuleerd](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Er wordt geprobeerd een bewerking aan te roepen voor een object dat al is gesloten, afgebroken of verwijderd. In zeldzame gevallen is de ambient trans actie al verwijderd. |Controleer de code en zorg ervoor dat deze geen bewerkingen aanroept op een verwijderd object. |Opnieuw proberen wordt niet geholpen. |
-| [Onbevoegde toegang](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |Het [token provider](/dotnet/api/microsoft.servicebus.tokenprovider) -object kan geen token verkrijgen, het token is ongeldig of het token bevat niet de claims die vereist zijn om de bewerking uit te voeren. |Zorg ervoor dat de token provider is gemaakt met de juiste waarden. Controleer de configuratie van de Access Control-service. |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
-| [Argument uitzondering](https://msdn.microsoft.com/library/system.argumentexception.aspx),<br /> [Argument null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx),<br />[Het argument valt buiten het bereik](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |Een of meer van de volgende fout is opgetreden:<br />Een of meer argumenten die zijn opgegeven voor de methode, zijn ongeldig.<br /> De URI die is geleverd aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) bevat een of meer padsegmenten.<br />Het URI-schema dat is opgegeven aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) , is ongeldig. <br />De waarde van de eigenschap is groter dan 32 KB. |Controleer de aanroepende code en controleer of de argumenten juist zijn. |Opnieuw proberen wordt niet geholpen. |
+| [Out](/dotnet/api/system.timeoutexception?view=netcore-3.1) |De server heeft niet binnen de opgegeven tijd gereageerd op de aangevraagde bewerking, die wordt beheerd door [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). De server heeft mogelijk de aangevraagde bewerking voltooid. Dit kan gebeuren vanwege vertragingen in het netwerk of andere infra structuur. |Controleer de systeem status op consistentie en probeer het vervolgens opnieuw, indien nodig. Zie [TimeoutException](#timeoutexception). |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
+| [Ongeldige bewerking](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |De aangevraagde gebruikers bewerking is niet toegestaan in de server of de service. Zie het uitzonderings bericht voor meer informatie. |Controleer de code en de documentatie. Zorg ervoor dat de aangevraagde bewerking geldig is. |Opnieuw proberen wordt niet geholpen. |
+| [Bewerking is geannuleerd](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) |Er wordt geprobeerd een bewerking aan te roepen voor een object dat al is gesloten, afgebroken of verwijderd. In zeldzame gevallen is de ambient trans actie al verwijderd. |Controleer de code en zorg ervoor dat deze geen bewerkingen aanroept op een verwijderd object. |Opnieuw proberen wordt niet geholpen. |
+| [Onbevoegde toegang](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) |Het [token provider](/dotnet/api/microsoft.servicebus.tokenprovider) -object kan geen token verkrijgen, het token is ongeldig of het token bevat niet de claims die vereist zijn om de bewerking uit te voeren. |Zorg ervoor dat de token provider is gemaakt met de juiste waarden. Controleer de configuratie van de Access Control-service. |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
+| [Argument uitzondering](/dotnet/api/system.argumentexception?view=netcore-3.1),<br /> [Argument null](/dotnet/api/system.argumentnullexception?view=netcore-3.1),<br />[Het argument valt buiten het bereik](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) |Een of meer van de volgende fout is opgetreden:<br />Een of meer argumenten die zijn opgegeven voor de methode, zijn ongeldig.<br /> De URI die is geleverd aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) bevat een of meer padsegmenten.<br />Het URI-schema dat is opgegeven aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) , is ongeldig. <br />De waarde van de eigenschap is groter dan 32 KB. |Controleer de aanroepende code en controleer of de argumenten juist zijn. |Opnieuw proberen wordt niet geholpen. |
 | [Server bezet](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |De aanvraag kan op dit moment niet door de service worden verwerkt. |De client kan wachten op een bepaalde tijd en vervolgens de bewerking opnieuw uitvoeren. |De client kan na een bepaald interval opnieuw proberen. Als een nieuwe poging resulteert in een andere uitzonde ring, controleert u het gedrag voor opnieuw proberen van deze uitzonde ring. |
 | [Quotum overschreden](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |De bericht entiteit heeft de Maxi maal toegestane grootte bereikt. |Maak ruimte in de entiteit door berichten van de entiteit of de bijbehorende subwachtrijen te ontvangen. Zie [QuotaExceededException](#quotaexceededexception). |Opnieuw proberen kan helpen als er in de tussen tijd berichten zijn verwijderd. |
 | [De bericht grootte is overschreden](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Een bericht lading overschrijdt de limiet van 256 KB. Houd er rekening mee dat de limiet van 256 KB de totale grootte van het bericht is. De totale bericht grootte kan systeem eigenschappen en eventuele Microsoft .NET overhead bevatten. |Verminder de grootte van de bericht lading en voer de bewerking opnieuw uit. |Opnieuw proberen wordt niet geholpen. |
@@ -50,17 +50,17 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten en de oo
 
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) geeft aan dat een quotum voor een bepaalde entiteit is overschreden.
 
-Voor relay verloopt deze uitzonde ring in het [System. service model. QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), wat aangeeft dat het maximum aantal listeners voor dit eind punt is overschreden. Dit wordt aangegeven in de waarde **MaximumListenersPerEndpoint** van het uitzonderings bericht.
+Voor relay verloopt deze uitzonde ring in het [System. service model. QuotaExceededException](/dotnet/api/system.servicemodel.quotaexceededexception?view=dotnet-plat-ext-3.1), wat aangeeft dat het maximum aantal listeners voor dit eind punt is overschreden. Dit wordt aangegeven in de waarde **MaximumListenersPerEndpoint** van het uitzonderings bericht.
 
 ## <a name="timeoutexception"></a>TimeoutException
-Een [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) geeft aan dat een door de gebruiker geïnitieerde bewerking langer duurt dan de time-out van de bewerking. 
+Een [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) geeft aan dat een door de gebruiker geïnitieerde bewerking langer duurt dan de time-out van de bewerking. 
 
-Controleer de waarde van de eigenschap [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) . Het bereiken van deze limiet kan ook een [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)veroorzaken.
+Controleer de waarde van de eigenschap [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1#System_Net_ServicePointManager_DefaultConnectionLimit) . Het bereiken van deze limiet kan ook een [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1)veroorzaken.
 
 Voor relay kunt u time-outuitzonderingen ontvangen wanneer u voor het eerst een verbinding voor een relay-afzender opent. Er zijn twee veelvoorkomende oorzaken voor deze uitzonde ring:
 
-*   De open [time-](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) outwaarde is mogelijk te klein (als dit een fractie van een seconde is).
-* Een on-premises relay-listener reageert mogelijk niet (of er kunnen problemen met de firewall regels optreden waardoor listeners geen nieuwe client verbindingen meer accepteren). de [Opentime-outwaarde](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) is minder dan ongeveer 20 seconden.
+*   De open [time-](/previous-versions/) outwaarde is mogelijk te klein (als dit een fractie van een seconde is).
+* Een on-premises relay-listener reageert mogelijk niet (of er kunnen problemen met de firewall regels optreden waardoor listeners geen nieuwe client verbindingen meer accepteren). de [Opentime-outwaarde](/previous-versions/) is minder dan ongeveer 20 seconden.
 
 Voorbeeld:
 
@@ -84,4 +84,3 @@ Er zijn twee veelvoorkomende oorzaken voor deze fout:
 * [Een relay-naam ruimte maken](relay-create-namespace-portal.md)
 * [Aan de slag met Azure Relay en .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Aan de slag met Azure Relay en het knoop punt](relay-hybrid-connections-node-get-started.md)
-

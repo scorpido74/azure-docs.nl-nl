@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76939427"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529191"
 ---
 # <a name="azure-private-dns-faq"></a>Veelgestelde vragen over privé-DNS in Azure
 
@@ -38,7 +38,7 @@ Ja. U kunt een privé-DNS-zone koppelen aan duizenden virtuele netwerken. Zie [A
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Kan een virtueel netwerk dat tot een ander abonnement behoort, worden gekoppeld aan een privé zone?
 
-Ja. U moet beschikken over de machtiging schrijf bewerking voor de virtuele netwerken en de particuliere DNS-zone. De schrijf machtiging kan worden toegekend aan verschillende RBAC-rollen. De rol klassieke netwerkinzender RBAC heeft bijvoorbeeld schrijf machtigingen voor virtuele netwerken en de rol Inzender voor Privé-DNS-zones heeft schrijf machtigingen voor de privé-DNS-zones. Zie op [rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md)voor meer informatie over RBAC-rollen.
+Ja. U moet beschikken over de machtiging schrijf bewerking voor de virtuele netwerken en de particuliere DNS-zone. De schrijf machtiging kan worden toegekend aan verschillende Azure-rollen. Zo heeft de Azure-rol klassiek Network Inzender schrijf machtigingen voor virtuele netwerken en de rol Inzender voor Privé-DNS zones heeft schrijf machtigingen voor de privé-DNS-zones. Zie op [rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md)voor meer informatie over Azure-rollen.
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Worden de automatisch geregistreerde DNS-records van virtuele machines in een privé zone automatisch verwijderd wanneer u de virtuele machine verwijdert?
 

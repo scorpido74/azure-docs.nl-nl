@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133160"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534265"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs voor komen
 
@@ -24,7 +24,7 @@ Open bare toegang tot uw BLOB-gegevens is standaard altijd verboden. Met de stan
 
 Wanneer u toegang tot open bare blobs voor het opslag account niet toestaat, worden alle anonieme aanvragen voor dat account door Azure Storage geweigerd. Wanneer open bare toegang niet is toegestaan voor een account, kunnen containers in dat account niet later worden geconfigureerd voor open bare toegang. Alle containers die al zijn geconfigureerd voor open bare toegang, accepteren geen anonieme aanvragen meer. Zie [anonieme open bare Lees toegang voor containers en blobs configureren](anonymous-read-access-configure.md)voor meer informatie.
 
-In dit artikel wordt beschreven hoe u anonieme aanvragen voor een opslag account analyseert en hoe u anonieme toegang voor het hele opslag account of een afzonderlijke container kunt voor komen.
+In dit artikel wordt beschreven hoe u een slepen-Framework (Detection-herstel-audit-governance) gebruikt om de open bare toegang voor uw opslag accounts voortdurend te beheren.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Anonieme aanvragen van client toepassingen detecteren
 
@@ -157,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Controleer de instelling voor open bare toegang voor meerdere accounts
+
+Als u de instelling voor open bare toegang wilt controleren over een set opslag accounts met optimale prestaties, kunt u de Azure resource Graph Explorer gebruiken in de Azure Portal. Voor meer informatie over het gebruik van de resource Graph Explorer raadpleegt u [Quick Start: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer](/azure/governance/resource-graph/first-query-portal).
+
+Als u de volgende query uitvoert in de resource Graph Explorer, wordt een lijst met opslag accounts geretourneerd en wordt de instelling voor open bare toegang voor elk account weer gegeven:
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>Azure Policy gebruiken om te controleren op naleving
+
+Als u een groot aantal opslag accounts hebt, wilt u mogelijk een audit uitvoeren om ervoor te zorgen dat deze accounts zijn geconfigureerd om open bare toegang te voor komen. Gebruik Azure Policy om een set opslag accounts te controleren op naleving. Azure Policy is een service die u kunt gebruiken om beleid te maken, toe te wijzen en te beheren waarmee regels worden toegepast op Azure-resources. Azure Policy helpt u bij het houden van deze resources die voldoen aan uw bedrijfs normen en service overeenkomsten. Zie [Overzicht van Azure Policy](../../governance/policy/overview.md) voor meer informatie.
+
+### <a name="create-a-policy-with-an-audit-effect"></a>Een beleid maken met een controle-effect
+
+Azure Policy ondersteunt effecten die bepalen wat er gebeurt wanneer een beleids regel wordt geëvalueerd op basis van een resource. Het controle-effect maakt een waarschuwing wanneer een resource niet aan het nalevings beleid voldoet, maar de aanvraag niet stopt. Zie [Azure Policy-effecten begrijpen](../../governance/policy/concepts/effects.md)voor meer informatie over effecten.
+
+Voer de volgende stappen uit om een beleid te maken met een controle-effect voor de open bare toegangs instelling voor een opslag account met de Azure Portal:
+
+1. Ga in het Azure Portal naar de Azure Policy-service.
+1. Selecteer in het gedeelte **ontwerpen** de optie **definities**.
+1. Selecteer **beleids definitie toevoegen** om een nieuwe beleids definitie te maken.
+1. Selecteer voor het veld **definitie locatie** de knop **meer** om op te geven waar de bron van het controle beleid zich bevindt.
+1. Geef een naam op voor het beleid. U kunt desgewenst een beschrijving en categorie opgeven.
+1. Voeg onder **beleids regel**de volgende beleids definitie toe aan de sectie **policyRule** .
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. U kunt nu het beleid opslaan.
+
+### <a name="assign-the-policy"></a>Wijs het beleid toe
+
+Wijs vervolgens het beleid toe aan een resource. Het bereik van het beleid komt overeen met die resource en eventuele resources daaronder. Zie [Azure Policy toewijzings structuur](../../governance/policy/concepts/assignment-structure.md)voor meer informatie over het toewijzen van beleid.
+
+Voer de volgende stappen uit om het beleid toe te wijzen met de Azure Portal:
+
+1. Ga in het Azure Portal naar de Azure Policy-service.
+1. Selecteer in het gedeelte **ontwerpen** de optie **toewijzingen**.
+1. Selecteer **beleid toewijzen** om een nieuwe beleids toewijzing te maken.
+1. Selecteer in het veld **bereik** het bereik van de beleids toewijzing.
+1. Selecteer de knop **meer** in het veld **beleids definitie** en selecteer vervolgens het beleid dat u in de vorige sectie hebt gedefinieerd in de lijst.
+1. Geef een naam op voor de beleids toewijzing. De beschrijving is optioneel.
+1. Zorg ervoor dat **beleids afdwinging** is ingesteld op *ingeschakeld*. Deze instelling heeft geen invloed op het controle beleid.
+1. Selecteer **controleren + maken** om de toewijzing te maken.
+
+### <a name="view-compliance-report"></a>Nalevings rapport weer geven
+
+Nadat u het beleid hebt toegewezen, kunt u het nalevings rapport bekijken. Het nalevings rapport voor een controle beleid bevat informatie over de opslag accounts die niet voldoen aan het beleid. Zie [nalevings gegevens voor beleid ophalen](../../governance/policy/how-to/get-compliance-data.md)voor meer informatie.
+
+Het kan enkele minuten duren voordat het nalevings rapport beschikbaar is nadat de beleids toewijzing is gemaakt.
+
+Voer de volgende stappen uit om het nalevings rapport in de Azure Portal weer te geven:
+
+1. Ga in het Azure Portal naar de Azure Policy-service.
+1. Selecteer **naleving**.
+1. Filter de resultaten voor de naam van de beleids toewijzing die u in de vorige stap hebt gemaakt. In het rapport wordt weer gegeven hoeveel resources niet voldoen aan het beleid.
+1. U kunt inzoomen op het rapport voor meer informatie, met inbegrip van een lijst met opslag accounts die niet voldoen aan het beleid.
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Scherm opname van nalevings rapport voor controle beleid voor open bare BLOB-toegang":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>Azure Policy gebruiken om gemachtigde toegang af te dwingen
+
+Azure Policy ondersteunt Cloud governance door ervoor te zorgen dat Azure-resources voldoen aan de vereisten en standaarden. Om ervoor te zorgen dat opslag accounts in uw organisatie alleen geautoriseerde aanvragen toestaan, kunt u een beleid maken waarmee wordt voor komen dat een nieuw opslag account wordt gemaakt met een instelling voor open bare toegang waarmee anonieme aanvragen worden toegestaan. Dit beleid voor komt ook dat alle configuratie wijzigingen voor een bestaand account worden gemaakt als de instelling voor open bare toegang voor dat account niet aan het beleid voldoet.
+
+Het afdwingings beleid gebruikt het deny-effect om te voor komen dat een aanvraag die een opslag account maakt of wijzigt om open bare toegang toe te staan. Zie [Azure Policy-effecten begrijpen](../../governance/policy/concepts/effects.md)voor meer informatie over effecten.
+
+Als u een beleid wilt maken met een weigerings effect voor een open bare toegangs instelling die anonieme aanvragen toestaat, voert u de stappen uit die worden beschreven in [gebruik Azure Policy om te controleren op naleving](#use-azure-policy-to-audit-for-compliance), maar geeft u de volgende JSON op in de sectie **policyRule** van de beleids definitie:
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+Nadat u het beleid met het effect deny hebt gemaakt en aan een bereik hebt toegewezen, kan een gebruiker geen opslag account maken dat open bare toegang toestaat. Ook kan een gebruiker geen wijzigingen aanbrengen in de configuratie van een bestaand opslag account dat toegang tot het publiek toestaat. Als u dit doet, resulteert dit in een fout. De instelling voor open bare toegang voor het opslag account moet zijn ingesteld op **False** om door te gaan met het maken of configureren van accounts.
+
+In de volgende afbeelding ziet u de fout die optreedt wanneer u probeert om een opslag account te maken dat open bare toegang (de standaard waarde voor een nieuw account) toestaat wanneer een beleid met een deny-effect vereist dat open bare toegang niet is toegestaan.
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Scherm opname met de fout die optreedt bij het maken van een opslag account in schending van het beleid":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

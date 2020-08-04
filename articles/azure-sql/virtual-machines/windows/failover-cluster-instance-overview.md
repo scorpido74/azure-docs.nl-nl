@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287360"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533815"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failover-cluster exemplaren met SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,10 +48,10 @@ SQL Server op virtuele machines van Azure biedt verschillende opties als een ged
 
 ||[Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md)|[Premium-bestands shares](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Opslagruimten Direct (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Minimale versie van het besturingssysteem**| Alle |Windows Server 2012|Windows Server 2016|
-|**Minimale SQL Server versie**|Alle|SQL Server 2012|SQL Server 2016|
+|**Minimale versie van het besturingssysteem**| Alles |Windows Server 2012|Windows Server 2016|
+|**Minimale SQL Server versie**|Alles|SQL Server 2012|SQL Server 2016|
 |**Ondersteunde VM-Beschik baarheid** |Beschikbaarheids sets met proximity-plaatsings groepen |Beschikbaarheids sets en beschikbaarheids zones|Beschikbaarheidssets |
-|**Ondersteunt FileStream**|Ja|Nee|Ja |
+|**Ondersteunt FileStream**|Ja|No|Ja |
 |**Azure Blob-cache**|Nee|Nee|Ja|
 
 In de rest van deze sectie vindt u een overzicht van de voor delen en beperkingen van elke opslag optie die beschikbaar is voor SQL Server op Azure-Vm's. 
@@ -98,7 +98,7 @@ Zie [SQL Server failover-cluster exemplaar met gedeelde Azure-schijven](failover
 - Hoge netwerk bandbreedte is vereist voor hoge prestaties vanwege de continue replicatie van de schijf. 
 - Vereist een grotere VM-grootte en dubbele betaling voor opslag, omdat opslag is gekoppeld aan elke virtuele machine. 
 
-Zie [SQL Server failover-cluster exemplaar met opslagruimten direct](failover-cluster-instance-azure-shared-disks-manually-configure.md)om aan de slag te gaan. 
+Zie [SQL Server failover-cluster exemplaar met opslagruimten direct](failover-cluster-instance-storage-spaces-direct-manually-configure.md)om aan de slag te gaan. 
 
 ### <a name="premium-file-share"></a>Premium-bestands share
 
@@ -166,7 +166,7 @@ In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 
 
 Bekijk [Aanbevolen procedures voor cluster configuraties](hadr-cluster-best-practices.md)en u kunt [uw SQL Server-VM voorbereiden voor FCI](failover-cluster-instance-prepare-vm.md). 
 
-Zie voor meer informatie: 
+Raadpleeg voor meer informatie: 
 
 - [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)   
 - [Failover-cluster exemplaren SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

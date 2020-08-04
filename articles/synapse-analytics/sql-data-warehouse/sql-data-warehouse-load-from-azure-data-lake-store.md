@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213292"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533934"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Gegevens laden uit Azure Data Lake Storage voor Synapse SQL
 
@@ -39,7 +39,7 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 U hebt het volgende nodig om deze zelfstudie te volgen:
 
 * Een SQL-groep. Zie [een SQL-groep en query gegevens maken](create-data-warehouse-portal.md).
-* Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Voor dit opslag account moet u een van de volgende referenties configureren of opgeven om te laden: een sleutel voor een opslag account, een SAS-sleutel (Shared Access Signature), een Azure Directory-toepassings gebruiker of een AAD-gebruiker die de juiste RBAC-rol heeft voor het opslag account.
+* Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Voor dit opslag account moet u een van de volgende referenties configureren of opgeven om te laden: een sleutel voor een opslag account, een SAS-sleutel (Shared Access Signature), een Azure Directory-toepassings gebruiker of een AAD-gebruiker die de juiste Azure-rol heeft voor het opslag account.
 
 ## <a name="create-the-target-table"></a>De doeltabel maken
 
@@ -124,7 +124,7 @@ Het volgende voor beeld is een goed uitgangs punt voor het maken van statistieke
 
 ## <a name="achievement-unlocked"></a>Prestaties vergren delen.
 
-U hebt gegevens geladen in uw data warehouse. Fantastische taak!
+U hebt gegevens geladen in uw data warehouse. Helemaal goed!
 
 ## <a name="next-steps"></a>Volgende stappen
 Het laden van gegevens is de eerste stap bij het ontwikkelen van een Data Warehouse-oplossing met behulp van Azure Synapse Analytics. Bekijk onze ontwikkelings bronnen.

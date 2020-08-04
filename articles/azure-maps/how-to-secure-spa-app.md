@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285693"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531342"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Een toepassing met één pagina beveiligen met niet-interactieve aanmelding
 
@@ -102,7 +102,7 @@ Maak een beveiligde web service-toepassing die verantwoordelijk is voor verifica
 
 ## <a name="grant-role-based-access"></a>Toegang op basis van rollen toekennen
 
-U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de door het systeem toegewezen identiteit toe te wijzen aan een of meer Azure-functie definities. Ga naar **toegangs beheer (IAM)** om de RBAC-functie definities weer te geven die beschikbaar zijn voor Azure Maps. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*.
+U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de door het systeem toegewezen identiteit toe te wijzen aan een of meer Azure-functie definities. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*.
 
 1. Ga naar uw **Azure Maps-account**. Selecteer de roltoewijzing van **toegangs beheer (IAM)**  >  **Role assignment**.
 

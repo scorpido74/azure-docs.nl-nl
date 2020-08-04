@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512955"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533135"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -97,11 +97,15 @@ U kunt MB/s converteren naar IOPS met behulp van de volgende formule:
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Hoe kan ik het service niveau van een volume wijzigen?
 
-Het wijzigen van het service niveau van een volume wordt momenteel niet ondersteund.
+U kunt het service niveau van een bestaand volume wijzigen door het volume te verplaatsen naar een andere capaciteits groep die gebruikmaakt van het gewenste [service niveau](azure-netapp-files-service-levels.md) voor het volume. Zie [het service niveau van een volume dynamisch wijzigen](dynamic-change-volume-service-level.md). 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Azure NetApp Files prestaties Hoe kan ik controleren?
 
 Azure NetApp Files biedt meet waarden voor de volume prestaties. U kunt Azure Monitor ook gebruiken voor het bewaken van metrische gegevens over gebruik voor Azure NetApp Files.  Zie de [metrische gegevens voor Azure NetApp files](azure-netapp-files-metrics.md) voor de lijst met metrische gegevens over prestaties voor Azure NetApp files.
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Wat is de invloed van de prestaties van Kerberos op NFSv 4.1?
+
+Zie [prestaties van Kerberos op nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance) voor informatie over beveiligings opties voor nfsv 4.1, de prestatie vectoren die zijn getest en de verwachte gevolgen voor de prestaties. 
 
 ## <a name="nfs-faqs"></a>Veelgestelde vragen over NFS
 
@@ -164,6 +168,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
+
+## <a name="dual-protocol-faqs"></a>Veelgestelde vragen over dual-Protocol
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Ik heb geprobeerd de root-en lokale gebruikers te gebruiken voor toegang tot een Dual-protocol volume met de NTFS-beveiligings stijl op een UNIX-systeem. Waarom is de fout ' toestemming geweigerd ' aangetroffen?   
+
+Een volume met dubbele protocollen ondersteunt zowel de NFS-als de SMB-protocollen.  Wanneer u probeert toegang te krijgen tot het gekoppelde volume op het UNIX-systeem, probeert het systeem de UNIX-gebruiker toe te wijzen die u gebruikt voor een Windows-gebruiker. Als er geen toewijzing wordt gevonden, treedt de fout ' permission denied ' op.  Deze situatie is ook van toepassing wanneer u de gebruiker ' root ' gebruikt voor de toegang.    
+
+Om het probleem ' toestemming geweigerd ' te vermijden, moet u ervoor zorgen dat Windows Active Directory bevat `pcuser` voordat u toegang krijgt tot het koppel punt. Als u toevoegt `pcuser` nadat het probleem ' toestemming geweigerd ' is aangetroffen, wacht u 24 uur totdat de cache vermelding is gewist voordat u de toegang opnieuw probeert.
+
 
 ## <a name="capacity-management-faqs"></a>Veelgestelde vragen over capaciteits beheer
 

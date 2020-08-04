@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386211"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531163"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -38,16 +38,37 @@ Zie [overzicht van beheerde identiteiten](../../active-directory/managed-identit
 
 Voordat u aan de slag gaat met sleutels, geheimen of certificaten in uw sleutel kluis, maakt en beheert u uw sleutel kluis via CLI, Power shell, Resource Manager-sjablonen of REST, zoals beschreven in de volgende artikelen:
 
-- [Sleutel kluizen maken en beheren met CLI](../secrets/quick-create-cli.md)
-- [Sleutel kluizen maken en beheren met Power shell](../secrets/quick-create-powershell.md)
-- [Sleutel kluizen maken en beheren met de Azure Portal](../secrets/quick-create-portal.md)
-- [Sleutel kluizen maken en beheren met python](../secrets/quick-create-python.md)
-- [Sleutel kluizen maken en beheren met Java](../secrets/quick-create-java.md)
-- [Sleutel kluizen maken en beheren met Node.js](../secrets/quick-create-node.md)
-- [Sleutel kluizen maken en beheren met .NET (v4-SDK)](../secrets/quick-create-net.md)
-- [Een sleutel kluis maken en een geheim toevoegen via een Azure Resource Manager sjabloon](../secrets/quick-create-template.md)
-- [Sleutel kluizen maken en beheren met REST](/rest/api/keyvault/)
+- [Sleutel kluizen maken en beheren met CLI](quick-create-cli.md)
+- [Sleutel kluizen maken en beheren met Power shell](quick-create-powershell.md)
+- [Sleutel kluizen maken en beheren met de Azure Portal](quick-create-portal.md)
+- [Sleutel kluizen maken en beheren met REST](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>Geheimen instellen en ophalen
+
+- [Een geheim instellen en ophalen met CLI](../secrets/quick-create-cli.md)
+- [Een geheim instellen en ophalen met Power shell](../secrets/quick-create-powershell.md)
+- [Een geheim instellen en ophalen met de Azure Portal](../secrets/quick-create-portal.md)
+- [Geheimen-bewerkingen met REST](/rest/api/keyvault/#secret-operations)
+- [Een geheim instellen en ophalen met python](../secrets/quick-create-python.md)
+- [Een geheim instellen en ophalen met Java](../secrets/quick-create-java.md)
+- [Een geheim instellen en ophalen met Node.js](../secrets/quick-create-node.md)
+- [Een geheim instellen en ophalen met .NET (v4-SDK)](../secrets/quick-create-net.md)
+- [Een sleutel kluis maken en een geheim toevoegen via een Azure Resource Manager sjabloon](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>Sleutels instellen en ophalen
+
+- [Een sleutel met CLI instellen en ophalen](../keys/quick-create-cli.md)
+- [Een sleutel met Power shell instellen en ophalen](../keys/quick-create-powershell.md)
+- [Een sleutel met de Azure Portal instellen en ophalen](../keys/quick-create-portal.md)
+- [Sleutels bewerkingen met REST](/rest/api/keyvault/#key-operations)
+- [Een sleutel met python instellen en ophalen](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>Certificaten instellen en ophalen
+- [Een certificaat met CLI instellen en ophalen](../certificates/quick-create-cli.md)
+- [Een certificaat instellen en ophalen met Power shell](../certificates/quick-create-powershell.md)
+- [Een certificaat met de Azure Portal instellen en ophalen](../certificates/quick-create-portal.md)
+- [Sleutels bewerkingen met REST](/rest/api/keyvault/#certificate-operations)
+- [Een certificaat met python instellen en ophalen](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Coderen met Key Vault
 
@@ -64,8 +85,6 @@ Al uw Key Vault-resources zijn toegankelijk via de REST-interface. kluizen, sleu
 #### <a name="net"></a>.NET
 
 [Naslag informatie voor .net API voor Key Vault](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
-
-Zie de [release opmerkingen](dotnet2api-release-notes.md)voor meer informatie over de 2. x-versie van de .NET SDK.
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ In Node.js zijn de API voor Key Vault beheer en de API voor Key Vault object ges
 Zie voor meer voor beelden van het gebruik van Key Vault met uw toepassingen:
 
 - Code voorbeelden [Azure Key Vault](https://azure.microsoft.com/resources/samples/?service=key-vault) code voor Azure Key Vault. 
-- [Gebruik Azure Key Vault uit een webtoepassing](../secrets/quick-create-net.md) : zelf studie om u te leren hoe u Azure Key Vault kunt gebruiken vanuit een webtoepassing in Azure. 
 
 ## <a name="how-tos"></a>Procedures
 
@@ -124,7 +142,6 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 
 - [Gedrag bij zacht verwijderen Key Vault](soft-delete-overview.md)) beschrijft een functie waarmee verwijderde objecten kunnen worden hersteld, of het verwijderen per ongeluk of opzettelijk is geslaagd.
 - [Key Vault-client beperking](overview-throttling.md) gaat u naar de basis concepten van beperking en biedt een benadering voor uw app.
-- [Overzicht van sleutels van Key Vault Storage-account](../secrets/overview-storage-keys.md)) Hierin worden de sleutels voor de Key Vault-integratie Azure Storage-accounts beschreven.
 - [Key Vault Security-wereld](overview-security-worlds.md) beschrijft de relaties tussen regio's en beveiligings gebieden.
 
 ## <a name="social"></a>Sociaal netwerken

@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169826"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533195"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportbeleid voor een NFS-volume configureren
 
@@ -43,14 +43,18 @@ U kunt Maxi maal vijf export beleids regels maken.
         * Lezen en schrijven
         * Alleen-lezen
 
+    * **Alleen-lezen** en **lezen/schrijven**  
+        Als u Kerberos-versleuteling met NFSv 4.1 gebruikt, volgt u de instructies in [Configure nfsv 4.1 Kerberos Encryption](configure-kerberos-encryption.md).  Zie [prestaties beïnvloeden van Kerberos op nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance)voor de prestaties van Kerberos. 
+
+        ![Kerberos-beveiligings opties](../media/azure-netapp-files/kerberos-security-options.png) 
+
     * **Hoofd toegang**  
         Geef op of het `root` account toegang heeft tot het volume.  Hoofd toegang is standaard ingesteld **op aan**en het `root` account heeft toegang tot het volume.
 
-        ![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen 
-* [Volumes beheren](azure-netapp-files-manage-volumes.md)
 * [Een volume voor virtuele machines koppelen of ontkoppelen](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Momentopnamen beheren](azure-netapp-files-manage-snapshots.md)

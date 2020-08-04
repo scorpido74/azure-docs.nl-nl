@@ -3,12 +3,12 @@ title: Een beheerde identiteit verifiëren met Azure Active Directory
 description: Dit artikel bevat informatie over het verifiëren van een beheerde identiteit met Azure Active Directory om toegang te krijgen tot Azure Event Hubs-resources
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 4e3460fa4fc3807cda23d6e3835a9f0b843eb36d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 707c93d1f104dcc2982999c4e7461947280918ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537272"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534410"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen
 Azure Event Hubs ondersteunt Azure Active Directory (Azure AD)-verificatie met [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). Beheerde identiteiten voor Azure-resources kunnen toegang tot Event Hubs resources toestaan met behulp van Azure AD-referenties van toepassingen die worden uitgevoerd in azure Virtual Machines (Vm's), functie-apps, Virtual Machine Scale Sets en andere services. Door beheerde identiteiten voor Azure-resources te gebruiken in combi natie met Azure AD-verificatie kunt u voor komen dat referenties worden opgeslagen in uw toepassingen die in de cloud worden uitgevoerd.
@@ -25,9 +25,9 @@ Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om Event Hub
 - [Client bibliotheken Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Machtigingen verlenen aan een beheerde identiteit in azure AD
-Als u een aanvraag wilt indienen voor het Event Hubs service van een beheerde identiteit in uw toepassing, moet u eerst RBAC-instellingen (op rollen gebaseerd toegangs beheer) configureren voor die beheerde identiteit. Met Azure Event Hubs worden RBAC-rollen gedefinieerd die machtigingen bevatten voor het verzenden en lezen van Event Hubs. Wanneer de RBAC-rol is toegewezen aan een beheerde identiteit, krijgt de beheerde identiteit toegang tot Event Hubs gegevens in het juiste bereik.
+Als u een aanvraag wilt indienen voor het Event Hubs service van een beheerde identiteit in uw toepassing, moet u eerst RBAC-instellingen (op rollen gebaseerd toegangs beheer) configureren voor die beheerde identiteit. Azure Event Hubs definieert Azure-rollen die machtigingen omvatten voor het verzenden en lezen van Event Hubs. Wanneer de Azure-rol wordt toegewezen aan een beheerde identiteit, krijgt de beheerde identiteit toegang tot Event Hubs gegevens in het juiste bereik.
 
-Zie [verifiëren met Azure Active Directory voor toegang tot Event hubs bronnen](authorize-access-azure-active-directory.md)voor meer informatie over het toewijzen van RBAC-rollen.
+Zie [verifiëren met Azure Active Directory voor toegang tot Event hubs resources](authorize-access-azure-active-directory.md)voor meer informatie over het toewijzen van Azure-rollen.
 
 ## <a name="use-event-hubs-with-managed-identities"></a>Event Hubs gebruiken met beheerde identiteiten
 Als u Event Hubs met beheerde identiteiten wilt gebruiken, moet u de identiteit van de rol en het juiste bereik toewijzen. De procedure in deze sectie maakt gebruik van een eenvoudige toepassing die wordt uitgevoerd onder een beheerde identiteit en die toegang heeft tot Event Hubs resources.
@@ -46,7 +46,7 @@ Zodra u deze instelling hebt ingeschakeld, wordt er een nieuwe service-identitei
 
 Wijs deze service-identiteit nu toe aan een rol in het vereiste bereik in uw Event Hubs resources.
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>RBAC-rollen toewijzen met behulp van de Azure Portal
+### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure-rollen toewijzen met behulp van de Azure Portal
 Als u een rol wilt toewijzen aan Event Hubs resources, gaat u naar die resource in de Azure Portal. Geef de Access Control (IAM)-instellingen voor de resource weer en volg deze instructies voor het beheren van roltoewijzingen:
 
 > [!NOTE]

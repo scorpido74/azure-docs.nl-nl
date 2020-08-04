@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086670"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530568"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Op rollen gebaseerd toegangsbeheer in Azure Cosmos DB
 
-Azure Cosmos DB biedt ingebouwde op rollen gebaseerd toegangs beheer (RBAC) voor algemene beheer scenario's in Azure Cosmos DB. Een persoon met een profiel in Azure Active Directory kan deze RBAC-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB-resources. Roltoewijzingen zijn alleen gericht op toegangs beheer, waaronder toegang tot Azure Cosmos-accounts, data bases, containers en aanbiedingen (door Voer).
+Azure Cosmos DB biedt ingebouwde op rollen gebaseerd toegangs beheer (RBAC) voor algemene beheer scenario's in Azure Cosmos DB. Een persoon die een profiel in Azure Active Directory heeft, kan deze Azure-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB-resources. Roltoewijzingen zijn alleen gericht op toegangs beheer, waaronder toegang tot Azure Cosmos-accounts, data bases, containers en aanbiedingen (door Voer).
 
 ## <a name="built-in-roles"></a>Ingebouwde rollen
 
@@ -39,13 +39,13 @@ Het deel venster **toegangs beheer (IAM)** in de Azure portal wordt gebruikt voo
 
 ## <a name="custom-roles"></a>Aangepaste rollen
 
-Naast de ingebouwde rollen kunnen gebruikers ook [aangepaste rollen](../role-based-access-control/custom-roles.md) maken in Azure en deze rollen Toep assen op service-principals in alle abonnementen binnen hun Active Directory Tenant. Aangepaste rollen bieden gebruikers een manier om RBAC-roldefinities te maken met een aangepaste set bewerkingen van de resource provider. Als u wilt weten welke bewerkingen beschikbaar zijn voor het maken van aangepaste rollen voor Azure Cosmos DB raadpleegt u [Azure Cosmos DB resource provider bewerkingen](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+Naast de ingebouwde rollen kunnen gebruikers ook [aangepaste rollen](../role-based-access-control/custom-roles.md) maken in Azure en deze rollen Toep assen op service-principals in alle abonnementen binnen hun Active Directory Tenant. Aangepaste rollen bieden gebruikers de mogelijkheid om Azure-roldefinities te maken met een aangepaste set van de bewerkingen van de resource provider. Als u wilt weten welke bewerkingen beschikbaar zijn voor het maken van aangepaste rollen voor Azure Cosmos DB raadpleegt u [Azure Cosmos DB resource provider bewerkingen](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Wijzigingen van de Azure Cosmos DB Sdk's voor komen
 
 De resource provider van Azure Cosmos DB kan worden vergrendeld om te voor komen dat er wijzigingen worden aangebracht in resources van een client die verbinding maken met behulp van de account sleutels (dat wil zeggen toepassingen die verbinding maken via de Azure Cosmos SDK). Dit omvat ook wijzigingen die zijn aangebracht vanuit het Azure Portal. Deze functie kan wenselijk zijn voor gebruikers die een hogere mate van controle en governance voor productie omgevingen willen. Door wijzigingen van de SDK te voor komen, kunt u ook functies als resource vergrendelingen en Diagnostische logboeken voor bewerkingen in het vlak van het besturings element. De clients die verbinding maken vanaf Azure Cosmos DB SDK, kunnen geen eigenschappen wijzigen voor de Azure Cosmos-accounts,-data bases,-containers en-door voer. De bewerkingen met betrekking tot het lezen en schrijven van gegevens naar Cosmos-containers zelf worden niet beïnvloed.
 
-Als deze functie is ingeschakeld, kunnen wijzigingen aan resources alleen worden gemaakt door een gebruiker met de juiste RBAC-rol en Azure Active Directory referenties, inclusief beheerde service-identiteiten.
+Als deze functie is ingeschakeld, kunnen wijzigingen aan resources alleen worden aangebracht van een gebruiker met de juiste Azure-rol en Azure Active Directory referenties, inclusief beheerde service-identiteiten.
 
 > [!WARNING]
 > Het inschakelen van deze functie kan gevolgen hebben voor uw toepassing. Zorg ervoor dat u bekend bent met de gevolgen voordat u deze functie inschakelt.

@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475053"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533534"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -24,13 +24,13 @@ Azure Backup biedt de mogelijkheid om [Azure virtual machines (vm's) en schijven
 
 Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de virtuele machine en kiest u het gewenste herstel punt.
 
-1. Meld u aan bij de [Azure Portal](https://portal.Azure.com) en klik in het linkerdeel venster op **virtuele machines**. Selecteer in de lijst met virtuele machines de virtuele machine om het dash board van de virtuele machine te openen.
+1. Meld u aan bij de [Azure Portal](https://portal.Azure.com) en selecteer **virtuele machines**in het linkerdeel venster. Selecteer in de lijst met virtuele machines de virtuele machine om het dash board van de virtuele machine te openen.
 
-2. Klik in het menu van de virtuele machine op **back-up** om het back-updashboard te openen.
+2. Selecteer in het menu van de virtuele machine de optie **back-up** om het back-updashboard te openen.
 
     ![Back-upitem van Recovery Services kluis openen](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. Klik in het menu back-updashboard op **bestands herstel**.
+3. Selecteer in het menu back-updashboard **File Recovery**.
 
     ![Knop voor bestands herstel](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
@@ -40,7 +40,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
 4. Selecteer in de vervolg keuzelijst **herstel punt selecteren** het herstel punt dat de gewenste bestanden bevat. Het meest recente herstel punt is standaard al geselecteerd.
 
-5. Als u de software wilt downloaden die wordt gebruikt om bestanden van het herstel punt te kopiëren, klikt u op **uitvoerbaar bestand downloaden** (voor Windows Azure-vm's) of het **Download script** (voor virtuele Linux-machines wordt een python-script gegenereerd).
+5. Als u de software wilt downloaden die wordt gebruikt voor het kopiëren van bestanden van het herstel punt, selecteert u **uitvoerbaar bestand downloaden** (voor Windows Azure-vm's) of **Download script** (voor virtuele Linux Azure-machines wordt een python-script gegenereerd).
 
     ![Gegenereerd wacht woord](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -50,7 +50,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
     Om het uitvoer bare bestand of script als beheerder uit te voeren, wordt u geadviseerd om de gedownloade bestanden op uw computer op te slaan.
 
-6. Het uitvoer bare bestand of script is beveiligd met een wacht woord en vereist een wacht woord. Klik in het menu **bestands herstel** op de knop kopiëren om het wacht woord in het geheugen te laden.
+6. Het uitvoer bare bestand of script is beveiligd met een wacht woord en vereist een wacht woord. Selecteer in het menu **bestands herstel** de knop kopiëren om het wacht woord in het geheugen te laden.
 
     ![Gegenereerd wacht woord](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -78,7 +78,7 @@ In Linux worden de volumes van het herstel punt gekoppeld aan de map waarin het 
 
 ## <a name="closing-the-connection"></a>De verbinding sluiten
 
-Nadat u de bestanden hebt geïdentificeerd en deze naar een lokale opslag locatie hebt gekopieerd, moet u de extra schijven verwijderen (of ontkoppelen). Als u de stations wilt ontkoppelen, klikt u in het menu **bestands herstel** in de Azure Portal op **schijven ontkoppelen**.
+Nadat u de bestanden hebt geïdentificeerd en deze naar een lokale opslag locatie hebt gekopieerd, moet u de extra schijven verwijderen (of ontkoppelen). Als u de stations wilt ontkoppelen, selecteert u in het menu **bestands herstel** in het Azure Portal de optie **schijven ontkoppelen**.
 
 ![Schijven ontkoppelen](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -146,7 +146,7 @@ De namen van de volume groepen weer geven:
 pvs -o +vguuid
 ```
 
-Met deze opdracht worden alle fysieke volumes weer gegeven (met inbegrip van de bestanden die aanwezig zijn voordat het script wordt uitgevoerd), de bijbehorende volume groepsnaam en de unieke gebruikers-Id's (UUID) van de volume groep. Hieronder ziet u een voor beeld van de uitvoer van de opdracht.
+Met deze opdracht wordt een lijst weer gegeven met alle fysieke volumes (inclusief de items die aanwezig zijn voordat het script wordt uitgevoerd), de bijbehorende volume groepsnaam en de unieke gebruikers-Id's (UUID) van de volume groep. Hieronder ziet u een voor beeld van de uitvoer van de opdracht.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -162,11 +162,11 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
 ```
 
-De 1e kolom (PV) toont het fysieke volume, de volgende kolommen tonen de relevante naam van de volume groep, de indeling, kenmerken, grootte, beschik bare ruimte en de unieke ID van de volume groep. In de uitvoer van de opdracht worden alle fysieke volumes weer gegeven. Raadpleeg de script uitvoer en Identificeer de volumes die betrekking hebben op de back-up. In het bovenstaande voor beeld zou de uitvoer van het script/dev/sdf en/dev/sdd. weer geven De datavg_db-volume groep behoort dus tot script en de Appvg_new-volume groep behoort tot de computer. Het laatste idee is te controleren of de naam van een unieke volume groep 1 unieke ID moet hebben.
+In de eerste kolom (PV) wordt het fysieke volume weer gegeven, de volgende kolommen bevatten de relevante naam van de volume groep, de indeling, kenmerken, grootte, beschik bare ruimte en de unieke ID van de volume groep. In de uitvoer van de opdracht worden alle fysieke volumes weer gegeven. Raadpleeg de script uitvoer en Identificeer de volumes die betrekking hebben op de back-up. In het bovenstaande voor beeld zou de uitvoer van het script/dev/sdf en/dev/sdd. weer geven De *datavg_db* -volume groep behoort dus tot script en de *Appvg_new* -volume groep behoort tot de computer. Het laatste idee is te controleren of de naam van een unieke volume groep één unieke ID moet hebben.
 
 ###### <a name="duplicate-volume-groups"></a>Dubbele volume groepen
 
-Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en op de back-up-VM hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het onderstaande voor beeld.
+Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en de back-upvm hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het onderstaande voor beeld.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -184,9 +184,9 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
 ```
 
-De script uitvoer zou/dev/SDG,/dev/SDH,/dev/SDM2 als gekoppeld hebben weer gegeven. De bijbehorende VG-namen zijn dus Appvg_new en rootvg. Maar dezelfde namen zijn ook aanwezig in de lijst VG van de machine. We kunnen controleren of 1 VG-naam 2 UUID heeft.
+De script uitvoer zou/dev/SDG,/dev/SDH,/dev/SDM2 als gekoppeld hebben weer gegeven. De bijbehorende VG-namen zijn dus Appvg_new en rootvg. Maar dezelfde namen zijn ook aanwezig in de lijst VG van de machine. We kunnen controleren of één VG-naam twee UUID heeft.
 
-Nu moeten we VG namen wijzigen voor op scripts gebaseerde volumes, dat wil zeggen,/dev/SDG,/dev/SDH,/dev/SDM2. Als u de naam van de volume groep wilt wijzigen, gebruikt u de volgende opdracht:
+Nu moeten we VG namen wijzigen voor op scripts gebaseerde volumes, bijvoorbeeld:/dev/SDG,/dev/SDH,/dev/SDM2. Als u de naam van de volume groep wilt wijzigen, gebruikt u de volgende opdracht:
 
 ```bash
 vgimportclone -n rootvg_new /dev/sdm2
@@ -296,7 +296,7 @@ Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit 
 
 ## <a name="access-requirements"></a>Vereisten voor toegang
 
-Als u het script uitvoert op een computer met beperkte toegang, controleert u of er toegang is tot:
+Als u het script uitvoert op een computer met beperkte toegang, moet u toegang hebben tot:
 
 - `download.microsoft.com`
 - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
@@ -343,7 +343,7 @@ Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de vo
     - node. verbonden [0]. Timeo. noop_out_timeout = 5 naar node. verbonden [0]. Timeo. noop_out_timeout = 30
 - Nadat u de bovenstaande wijziging hebt aangebracht, voert u het script opnieuw uit. Met deze wijzigingen is het zeer waarschijnlijk dat de bestands herstel slaagt.
 - Telkens wanneer een gebruiker een script downloadt, initieert Azure Backup het proces van het voorbereiden van het herstel punt voor down loads. Bij grote schijven neemt dit proces veel tijd in beslag. Als er opeenvolgende bursts van aanvragen zijn, gaat de voor bereiding van het doel naar een down load Spiral. Daarom is het raadzaam om een script te downloaden vanuit Portal/Power shell/CLI, te wachten gedurende 20-30 minuten (een heuristiek) en het vervolgens uit te voeren. Op dit moment wordt verwacht dat het doel gereed is voor verbinding vanuit het script.
-- Nadat het bestand is hersteld, gaat u terug naar de portal en klikt u op **schijven ontkoppelen** voor herstel punten waar u geen volumes meer kunt koppelen. In wezen worden bestaande processen/sessies opgeschoond en wordt de kans op herstel verbeterd.
+- Nadat het bestand is hersteld, gaat u terug naar de portal en selecteert u **schijven loskoppelen** voor herstel punten waar u geen volumes meer kunt koppelen. In wezen worden bestaande processen/sessies opgeschoond en wordt de kans op herstel verbeterd.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -357,7 +357,7 @@ Als u problemen ondervindt tijdens het herstellen van bestanden van de virtuele 
 | Op de computer waarop het exe-programma wordt uitgevoerd: de nieuwe volumes worden niet ontkoppeld nadat u op de knop ontkoppelen hebt geklikt | De iSCSI-initiator op de computer reageert niet/de verbinding met het doel wordt vernieuwd en de cache wordt onderhouden. |  Nadat u op **ontkoppelen**hebt geklikt, wacht u een paar minuten. Als de nieuwe volumes niet worden ontkoppeld, bladert u door alle volumes. Door alle volumes te bladeren, zorgt u ervoor dat de initiator de verbinding vernieuwt. het volume wordt ontkoppeld met een fout bericht dat de schijf niet beschikbaar is.|
 | Exe-uitvoer: het script wordt uitgevoerd, maar nieuwe volumes gekoppeld wordt niet weer gegeven in de script uitvoer |    Dit is een tijdelijke fout    | De volumes zijn al gekoppeld. Open Explorer om te bladeren. Als u dezelfde computer gebruikt voor het uitvoeren van scripts elke keer, overweeg dan om de computer opnieuw op te starten en de lijst moet worden weer gegeven in de volgende exe-uitvoeringen. |
 | Specifiek voor Linux: de gewenste volumes kunnen niet worden weer gegeven | Het besturings systeem van de computer waarop het script wordt uitgevoerd, herkent het onderliggende bestands systeem van de beveiligde virtuele machine mogelijk niet | Controleer of het herstel punt vastloopt en consistent is. Als het bestand consistent is, voert u het script uit op een andere computer waarvan het besturings systeem het bestands systeem van de beveiligde VM herkent. |
-| Windows-specifiek: de gewenste volumes kunnen niet worden weer gegeven | De schijven zijn mogelijk gekoppeld, maar de volumes zijn niet geconfigureerd | Zoek in het scherm schijf beheer de extra schijven die zijn gerelateerd aan het herstel punt. Als een van deze schijven een offline status heeft, kunt u deze online brengen door met de rechter muisknop op de schijf te klikken en op **online**te klikken.|
+| Windows-specifiek: de gewenste volumes kunnen niet worden weer gegeven | De schijven zijn mogelijk gekoppeld, maar de volumes zijn niet geconfigureerd | Zoek in het scherm schijf beheer de extra schijven die zijn gerelateerd aan het herstel punt. Als een van deze schijven een offline status heeft, kunt u deze online brengen door met de rechter muisknop op de schijf te klikken en **online**te selecteren.|
 
 ## <a name="security"></a>Beveiliging
 
@@ -393,7 +393,7 @@ We gebruiken een wederzijdse CHAP-verificatie mechanisme zodat elk onderdeel de 
 
 De gegevens stroom tussen de Recovery-service en de machine wordt beveiligd door een beveiligde TLS-tunnel te bouwen via TCP ([tls 1,2 moet worden ondersteund](#system-requirements) op de computer waarop het script wordt uitgevoerd).
 
-Een bestands Access Control lijst (ACL) die aanwezig is in de bovenliggende/back-up van de virtuele machine, blijft ook behouden in het gekoppelde bestands systeem.
+Een bestands Access Control lijst (ACL) die aanwezig is in de bovenliggende/back-up van de VM, blijft ook behouden in het gekoppelde bestands systeem.
 
 Het script geeft alleen-lezen toegang tot een herstel punt en is slechts 12 uur geldig. Als u de toegang eerder wilt verwijderen, meldt u zich aan bij Azure Portal/Power shell/CLI en voert u de **ontkoppelde schijven** uit voor dat specifieke herstel punt. Het script wordt onmiddellijk ongeldig gemaakt.
 

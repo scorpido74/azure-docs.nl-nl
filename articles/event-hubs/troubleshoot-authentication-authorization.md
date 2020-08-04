@@ -3,12 +3,12 @@ title: Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 description: In dit artikel vindt u informatie over het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502100"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533883"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 Het artikel problemen [met connectiviteit oplossen](troubleshooting-guide.md) bevat tips voor het oplossen van verbindings problemen met Azure Event hubs. In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs. 
@@ -16,13 +16,13 @@ Het artikel problemen [met connectiviteit oplossen](troubleshooting-guide.md) be
 ## <a name="if-you-are-using-azure-active-directory"></a>Als u Azure Active Directory gebruikt
 Als u Azure Active Directory (Azure AD) gebruikt om te verifiëren en autoriseren met Azure Event Hubs, controleert u of de identiteit die toegang heeft tot de Event Hub lid is van de juiste **Azure-rol** bij het juiste **resource bereik** (consumenten groep, Event hub, naam ruimte, resource groep of abonnement).
 
-### <a name="rbac-roles"></a>RBAC-rollen
+### <a name="azure-roles"></a>Azure-rollen
 - De [gegevens eigenaar van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) voor volledige toegang tot Event hubs resources.
 - [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) voor de toegang verzenden.
 - [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) voor de toegang ontvangen.
 
 ### <a name="resource-scopes"></a>Resource bereik
-- **Consumenten groep**: in dit bereik is roltoewijzing alleen van toepassing op deze entiteit. Momenteel biedt de Azure Portal geen ondersteuning voor het toewijzen van een RBAC-rol aan een beveiligingsprincipal op dit niveau. 
+- **Consumenten groep**: in dit bereik is roltoewijzing alleen van toepassing op deze entiteit. Momenteel biedt de Azure Portal geen ondersteuning voor het toewijzen van een Azure-rol aan een beveiligingsprincipal op dit niveau. 
 - **Event hub**: roltoewijzing is van toepassing op de Event hub-entiteit en de Consumer groep daaronder.
 - **Naam ruimte**: roltoewijzing omvat de volledige topologie van Event hubs onder de naam ruimte en aan de Consumer groep die eraan is gekoppeld.
 - **Resource groep**: roltoewijzing is van toepassing op alle Event hubs resources onder de resource groep.

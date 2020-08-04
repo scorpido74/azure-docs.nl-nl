@@ -10,12 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 949347d07fe120c6900f49499e78595b540718a7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 57d1cda2e74cfe4ae3948e55124123d05682591b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368996"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534223"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -27,7 +27,7 @@ Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van 
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Een rol toewijzen aan een Azure AD-beveiligings-principal
 
-Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde Azure-rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de RBAC-rol is toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
+Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde Azure-rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de Azure-rol wordt toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-Tenant
 
@@ -115,7 +115,7 @@ Als u het code voorbeeld wilt uitvoeren, maakt u een opslag account in hetzelfde
 Wijs vervolgens expliciet de rol **Storage BLOB data Inzender** toe aan het gebruikers account waaronder u de voorbeeld code gaat uitvoeren. Zie voor instructies over het toewijzen van deze rol in de Azure Portal [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in de Azure Portal](storage-auth-aad-rbac-portal.md).
 
 > [!NOTE]
-> Wanneer u een Azure Storage-account maakt, worden er niet automatisch machtigingen toegewezen om toegang te krijgen tot gegevens via Azure AD. U moet uzelf expliciet een RBAC-rol toewijzen voor Azure Storage. U kunt deze toewijzen op het niveau van uw abonnement, resource groep, opslag account of container of wachtrij.
+> Wanneer u een Azure Storage-account maakt, worden er niet automatisch machtigingen toegewezen om toegang te krijgen tot gegevens via Azure AD. U moet uzelf expliciet een Azure-rol toewijzen voor Azure Storage. U kunt deze toewijzen op het niveau van uw abonnement, resource groep, opslag account of container of wachtrij.
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Een webtoepassing maken die de toegang tot Blob Storage machtigt met Azure AD
 

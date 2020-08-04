@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091008"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531877"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -77,11 +77,11 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 
 **Back-uptype** | **Linux (goedgekeurd door Azure)**
 --- | ---
-**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Wordt niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
+**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
 **Agent-extensie gebruiken om een back-up te maken van Azure VM waarop Linux wordt uitgevoerd** | App-consistente back-up met [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Herstel op bestandsniveau.<br/><br/> Herstellen door het maken van een VM vanaf een herstelpunt of schijf.
 **DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
 **MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
-**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Wordt niet ondersteund.
+**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Niet ondersteund.
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 
@@ -106,20 +106,17 @@ Azure Backup ondersteunt versleuteling voor in-transit en op rest-gegevens.
 ### <a name="data-security"></a>Gegevensbeveiliging
 
 - Back-upgegevens worden in een versleutelde vorm opgeslagen in de Recovery Services kluis.
-- Alleen u beschikt over de wachtwoordzin waarmee deze gegevens kunnen worden ontgrendeld. De back-upgegevens kunnen niet door Microsoft ontsleuteld.
-
-    > [!WARNING]
-    > Nadat u de kluis hebt ingesteld, hebt alleen u toegang tot de versleutelingssleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
+- Wanneer er een back-up van gegevens van on-premises servers met de MARS-agent wordt gemaakt, worden gegevens versleuteld met een wachtwoordzin voordat ze worden geüpload naar Azure Backup en ontsleuteld nadat deze is gedownload van Azure Backup.
 - Wanneer u een back-up maakt van virtuele Azure-machines, moet u de versleuteling instellen *in* de Virtual Machine.
 - Azure Backup biedt ondersteuning voor Azure Disk Encryption, dat gebruikmaakt van BitLocker op virtuele Windows-machines en **dm-crypt** op virtuele Linux-machines.
 - Op de back-end gebruikt Azure Backup [Azure Storage-service versleuteling](../storage/common/storage-service-encryption.md), waarmee gegevens in rust worden beschermd.
 
 **Machine** | **In-transit** | **Inactief**
 --- | --- | ---
-**On-premises Windows-machines zonder DPM/MABS** | ![Ja][green] | ![Ja][green]
-**Azure-VM's** | ![Ja][green] | ![Ja][green]
-**On-premises Windows-machines of Azure-Vm's met DPM** | ![Ja][green] | ![Ja][green]
-**On-premises Windows-machines of Azure-Vm's met MABS** | ![Ja][green] | ![Ja][green]
+**On-premises Windows-machines zonder DPM/MABS** | ![Ja][green] | ![Yes][green]
+**Azure-VM's** | ![Ja][green] | ![Yes][green]
+**On-premises Windows-machines of Azure-Vm's met DPM** | ![Ja][green] | ![Yes][green]
+**On-premises Windows-machines of Azure-Vm's met MABS** | ![Ja][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Ondersteuning voor compressie
 
@@ -130,9 +127,9 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-**Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Yes][green]
+**Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Ja][green]
 **Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | NA | NA
-**Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
+**Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Bewaarlimieten
 

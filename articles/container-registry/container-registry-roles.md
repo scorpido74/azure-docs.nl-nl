@@ -1,14 +1,14 @@
 ---
-title: RBAC-rollen en-machtigingen
+title: Azure-rollen en-machtigingen
 description: Gebruik op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) en de functie voor identiteits-en toegangs beheer (IAM) om nauw keurige machtigingen te bieden aan bronnen in een Azure container Registry.
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497746"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533305"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Rollen en machtigingen Azure Container Registry
 
@@ -85,7 +85,7 @@ Zie [stappen voor het maken](../role-based-access-control/custom-roles.md#steps-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het toewijzen van RBAC-rollen aan een Azure-identiteit met behulp van de [Azure Portal](../role-based-access-control/role-assignments-portal.md), de [Azure cli](../role-based-access-control/role-assignments-cli.md)of andere Azure-hulpprogram ma's.
+* Meer informatie over het toewijzen van Azure-functies aan een Azure-identiteit met behulp van de [Azure Portal](../role-based-access-control/role-assignments-portal.md), de [Azure cli](../role-based-access-control/role-assignments-cli.md)of andere Azure-hulpprogram ma's.
 
 * Meer informatie over [verificatie opties](container-registry-authentication.md) voor Azure container Registry.
 

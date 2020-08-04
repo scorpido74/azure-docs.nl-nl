@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447358"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533900"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 
@@ -78,7 +78,7 @@ Azure RBAC heeft drie basis rollen die van toepassing zijn op alle resource type
 
 ![Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
-Met de rest van de RBAC-rollen in azure kunt u specifieke Azure-resources beheren. Met de rol Inzender voor virtuele machines kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Deze geeft geen toegang tot de Azure-Virtual Network of het subnet waarmee de virtuele machine verbinding maakt.
+Met de rest van de Azure-rollen in azure kunt u specifieke Azure-resources beheren. Met de rol Inzender voor virtuele machines kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Deze geeft geen toegang tot de Azure-Virtual Network of het subnet waarmee de virtuele machine verbinding maakt.
 
 [Ingebouwde RBAC-rollen](../../role-based-access-control/built-in-roles.md) hebben een lijst van de functies die beschikbaar zijn in Azure. Hiermee geeft u de bewerkingen en het bereik op die elke ingebouwde rol aan gebruikers verleent. Als u uw eigen rollen wilt definiëren voor nog meer controle, raadpleegt u [aangepaste rollen bouwen in azure RBAC](../../role-based-access-control/custom-roles.md).
 
@@ -219,7 +219,7 @@ Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wann
 - [Wire-versleuteling](../../storage/blobs/security-recommendations.md), zoals SMB 3,0-versleuteling voor Azure-bestands shares.
 - [Versleuteling aan de client zijde](../../storage/blobs/security-recommendations.md), voor het versleutelen van de gegevens voordat deze naar de opslag wordt overgebracht en voor het ontsleutelen van de gegevens nadat deze buiten de opslag zijn overgedragen.
 
-#### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
+#### <a name="encryption-at-rest"></a>Versleuteling bij rest
 
 Voor veel organisaties is [gegevens versleuteling in rust](isolation-choices.md) een verplichte stap op het vlak van gegevens privacy, naleving en data soevereiniteit. Er zijn drie Azure-functies voor het versleutelen van gegevens met de waarde ' op rest ':
 

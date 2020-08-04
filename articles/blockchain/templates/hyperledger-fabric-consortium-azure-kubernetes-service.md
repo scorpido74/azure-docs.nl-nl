@@ -4,12 +4,12 @@ description: Het Hyperledger Fabric consortium-netwerk implementeren en configur
 ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286050"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533424"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -28,9 +28,9 @@ Voordat u een oplossings sjabloon gaat gebruiken, moet u uw scenario vergelijken
 
 Optie | Service model | Algemene use-case
 -------|---------------|-----------------
-Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
+Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [Microsoft Q&A-vragenpagina](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 [Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [Microsoft Q&A-vragenpagina](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Consortium architectuur voor Hyperledger Fabric
 
@@ -305,12 +305,12 @@ Geef vanuit de peer-client van de organisatie de opdracht om anker-peer (s) in t
   - Stel `<anchorPeersList>` in als ' Peer1 ' als u alleen Peer1-knoop punt wilt instellen als anker peer.
   - Stel `<anchorPeersList>` in als "Peer1" "peer3" als u het knoop punt Peer1 en peer3 wilt instellen als anker peer.
 
-### <a name="chaincode-management-commands"></a>Chaincode-beheer opdrachten
+## <a name="chaincode-management-commands"></a>Chaincode-beheer opdrachten
 
 >[!NOTE]
 > Voordat u met een chaincode-bewerking begint, moet u ervoor zorgen dat de eerste installatie van de client toepassing wordt uitgevoerd.  
 
-**De onderstaande chaincode-specifieke omgevings variabelen instellen**
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>De onderstaande chaincode-specifieke omgevings variabelen instellen
 
 ```bash
 # peer organization name where chaincode operation is to be performed
@@ -329,14 +329,6 @@ CC_PATH=<chaincodePath>
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
 ```
-
-De onderstaande chaincode-bewerkingen kunnen worden uitgevoerd:  
-
-- [Chaincode installeren](#install-chaincode)  
-- [Chaincode instantiëren](#instantiate-chaincode)  
-- [Chaincode aanroepen](#invoke-chaincode)
-- [Query chaincode](#query-chaincode)
-
 
 ### <a name="install-chaincode"></a>Chaincode installeren  
 
@@ -358,13 +350,13 @@ Volg de stappen:
 Voer vanuit peer-client toepassing de volgende opdracht uit om chaincode op het kanaal te instantiëren.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
+
 Geef de naam van de functie en de spaties gescheiden lijst met argumenten in `<instantiateFunc>` `<instantiateFuncArgs>` respectievelijk door. Bijvoorbeeld in chaincode_example02. go chaincode, voor het instantiëren van de chaincode `<instantiateFunc>` die is ingesteld op `init` `<instantiateFuncArgs>` "a" "2000" "b" "1000".
 
 > [!NOTE]
 > Voer de opdracht uit voor één van de peer-organisaties in het kanaal. Zodra de trans actie is verzonden naar de orderer, wordt deze trans actie door de orderer gedistribueerd naar alle peer-organisaties in het kanaal. Daarom wordt de chaincode geïnstantieerd op alle peer knooppunten op alle peer-organisaties in het kanaal.  
-
 
 ### <a name="invoke-chaincode"></a>Chaincode aanroepen  
 

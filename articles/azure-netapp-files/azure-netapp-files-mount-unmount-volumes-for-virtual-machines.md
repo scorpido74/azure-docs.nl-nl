@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045651"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533084"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen 
 
@@ -43,9 +43,12 @@ U kunt indien nodig een volume koppelen of ontkoppelen voor virtuele Windows-of 
     a. Koppel het volume eerst aan een UNIX-of Linux-VM.  
     b. Voer een `chmod 777` of- `chmod 775` opdracht uit op het volume.  
     c. Koppel het volume via de NFS-client in Windows.
+    
+5. Als u een NFS Kerberos-volume wilt koppelen, raadpleegt u [nfsv 4.1 Kerberos Encryption configureren](configure-kerberos-encryption.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [NFSv4.1-standaarddomein configureren voor Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Veelgestelde vragen over NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [Overzicht Network File System](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [Een NFS Kerberos-volume koppelen](configure-kerberos-encryption.md#kerberos_mount)

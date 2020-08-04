@@ -5,14 +5,14 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077844"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530058"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best practices voor geavanceerde planningsfuncties in Azure Kubernetes Service (AKS)
 
 Wanneer u clusters beheert in azure Kubernetes service (AKS), moet u vaak teams en workloads isoleren. De Kubernetes Scheduler biedt geavanceerde functies waarmee u kunt bepalen welke peulen op bepaalde knoop punten kunnen worden gepland of hoe multi-pod-toepassingen op de juiste manier kunnen worden gedistribueerd over het cluster. 
 
@@ -71,8 +71,6 @@ Wanneer deze pod wordt geïmplementeerd, zoals het gebruik van `kubectl apply -f
 
 Wanneer u taints toepast, moet u samen werken met de ontwikkel aars en eigen aren van uw toepassing, zodat ze de vereiste verdragen in hun implementaties kunnen definiëren.
 
-Zie voor meer informatie over taints en verdragen [Toep assen van taints en verdragen][k8s-taints-tolerations].
-
 Zie [meerdere knooppunt groepen maken en beheren voor een cluster in AKS][use-multiple-node-pools]voor meer informatie over het gebruik van meerdere knooppunt groepen in AKS.
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Gedrag van taints en verdragen in AKS
@@ -80,6 +78,7 @@ Zie [meerdere knooppunt groepen maken en beheren voor een cluster in AKS][use-mu
 Wanneer u een groep van een knoop punt bijwerkt in AKS, volgen taints en toleranties een set patroon wanneer ze worden toegepast op nieuwe knoop punten:
 
 - **Standaard clusters die gebruikmaken van schaal sets voor virtuele machines**
+  - U kunt [een nodepool][taint-node-pool] van de AKS-API Taint, zodat er nieuwe knoop punten worden weer gegeven die API hebben opgegeven taints.
   - We gaan ervan uit dat u een cluster met twee knoop punten *Knooppunt1* en *Knooppunt2*. U werkt de knooppunt groep bij.
   - Er worden twee extra knoop punten gemaakt, *Knooppunt3* en *Knooppunt4*, en de taints worden respectievelijk door gegeven.
   - De oorspronkelijke *Knooppunt1* en *Knooppunt2* worden verwijderd.
@@ -198,3 +197,4 @@ Dit artikel is gericht op geavanceerde functies van Kubernetes scheduler. Zie vo
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

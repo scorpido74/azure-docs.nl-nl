@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127533"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531206"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics beheren met de Azure-portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
 
 ### <a name="create-an-account"></a>Een account maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Klik op **een resource**  >  **Intelligence + Analytics**-  >  **Data Lake Analytics**maken.
 3. Selecteer waarden voor de volgende items: 
    1. **Naam**: de naam van het data Lake Analytics-account.
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
    3. **Resource groep**: de Azure-resource groep waarin het account moet worden gemaakt. 
    4. **Locatie**: het Azure-data centrum voor het data Lake Analytics-account. 
    5. **Data Lake Store**: het standaard archief dat moet worden gebruikt voor het data Lake Analytics-account. Het Azure data Lake Store-account en het data Lake Analytics-account moeten zich op dezelfde locatie bestaan.
-4. Klik op **Create**. 
+4. Klik op **Maken**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Een Data Lake Analytics account verwijderen
 
@@ -95,7 +95,7 @@ U kunt de **wizard gebruiker toevoegen** gebruiken om eenvoudig nieuwe data Lake
 
 Net als andere Azure-Services kunt u op rollen gebaseerde Access Control (RBAC) gebruiken om te bepalen hoe gebruikers met de service communiceren.
 
-De standaard RBAC-rollen hebben de volgende mogelijkheden:
+De standaard functies van Azure hebben de volgende mogelijkheden:
 * **Eigenaar**: kan taken verzenden, taken bewaken, taken van een gebruiker annuleren en het account configureren.
 * **Inzender**: kan taken verzenden, taken bewaken, taken van een gebruiker annuleren en het account configureren.
 * **Lezer**: kan taken bewaken.

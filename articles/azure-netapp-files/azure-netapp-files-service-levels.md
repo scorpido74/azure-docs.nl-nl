@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832587"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533118"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Serviceniveau's voor Azure NetApp Files
 Service niveaus zijn een kenmerk van een capaciteits groep. Service niveaus worden gedefinieerd en onderscheiden van de toegestane maximale door Voer voor een volume in de capaciteits pool op basis van het quotum dat is toegewezen aan het volume.
@@ -56,7 +56,8 @@ In voor beeld 2 hierboven krijgt een volume van een capaciteits pool met de laag
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de [pagina met prijzen van Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/) voor informatie over de prijs van verschillende serviceniveaus
-- Zie het [kosten model voor Azure NetApp files](azure-netapp-files-cost-model.md) voor het berekenen van het capaciteits verbruik in een capaciteits groep 
+- [Pagina met Azure NetApp Files prijzen](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Kostenmodel voor Azure NetApp Files](azure-netapp-files-cost-model.md) 
 - [Een capaciteitspool instellen](azure-netapp-files-set-up-capacity-pool.md)
-- Zie [Service Level Agreement (Sla) voor Azure NetApp files](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Service Level Agreement (SLA) voor Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Het serviceniveau van een volume dynamisch wijzigen](dynamic-change-volume-service-level.md) 

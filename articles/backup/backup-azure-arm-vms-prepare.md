@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439713"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533594"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -51,7 +51,8 @@ Wijzig het type opslag replicatie als volgt:
 1. Selecteer in de nieuwe kluis **Eigenschappen** in de sectie **instellingen** .
 2. In **Eigenschappen**, onder **back-upconfiguratie**, selecteert u **bijwerken**.
 3. Selecteer het type opslag replicatie en selecteer **Opslaan**.
-s ![ de opslag configuratie voor nieuwe kluis instellen](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+      ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > U kunt het type opslag replicatie niet wijzigen nadat de kluis is ingesteld en back-upitems bevat. Als u dit wilt doen, moet u de kluis opnieuw maken.
@@ -145,9 +146,9 @@ De **overdracht van gegevens naar de kluis** fase kan meerdere dagen duren, afha
 
 De taak status kan variëren, afhankelijk van de volgende scenario's:
 
-**Snapshot** | **Gegevens overdragen aan de kluis** | **Taak status**
+**Momentopname** | **Gegevens overdragen aan de kluis** | **Taak status**
 --- | --- | ---
-Voltooid | Wordt uitgevoerd | Wordt uitgevoerd
+Voltooid | Actief | Actief
 Voltooid | Overgeslagen | Voltooid
 Voltooid | Voltooid | Voltooid
 Voltooid | Mislukt | Voltooid met waarschuwing
@@ -166,13 +167,6 @@ Azure Backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te
 --- | ---
 **Windows** | 1. [down load en installeer](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) het MSI-bestand van de agent.<br/><br/> 2. Installeer met beheerders machtigingen op de computer.<br/><br/> 3. Controleer de installatie. Klik in *C:\WindowsAzure\Packages* op de virtuele machine met de rechter muisknop op **WaAppAgent.exe**  >  **Eigenschappen**. Op het tabblad **Details** moet de **product versie** 2.6.1198.718 of hoger zijn.<br/><br/> Als u de agent bijwerkt, moet u ervoor zorgen dat er geen back-upbewerkingen worden uitgevoerd en [installeert u de agent opnieuw](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Installeer met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Dit is de aanbevolen methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](../virtual-machines/linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen. De agent is beschikbaar op [github](https://github.com/Azure/WALinuxAgent), maar we raden niet aan om te installeren.<br/><br/> Als u de agent bijwerkt, zorg er dan voor dat er geen back-upbewerkingen worden uitgevoerd en werk de binaire bestanden bij.
-
->[!NOTE]
-> **Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.**
->
->Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
->
->Als u zich wilt aanmelden voor de preview, schrijft u voorAskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Volgende stappen
 

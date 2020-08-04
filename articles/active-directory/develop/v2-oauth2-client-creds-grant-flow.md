@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bd641b57cfdd7f9481e17a90dbbd81d5e43f8ad2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311106"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529222"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -53,7 +53,7 @@ Een veelvoorkomende use-case is het gebruik van een ACL voor het uitvoeren van t
 Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegang nodig hebben tot gegevens die eigendom zijn van consumenten gebruikers met persoonlijke micro soft-accounts. Voor gegevens die eigendom zijn van organisaties, raden we u aan de vereiste autorisatie te verkrijgen via toepassings machtigingen.
 
 > [!NOTE]
-> Als u dit verificatie patroon op basis van toegangs beheer lijst wilt inschakelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen, zodat alleen app-tokens kunnen worden uitgegeven zonder een `rules` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
+> Als u dit verificatie patroon op basis van toegangs beheer lijst wilt inschakelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen, zodat alleen app-tokens kunnen worden uitgegeven zonder een `roles` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
 
 ### <a name="application-permissions"></a>Toepassings machtigingen
 

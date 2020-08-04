@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126768"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531368"
 ---
 # <a name="secure-a-daemon-application"></a>Een daemon-toepassing beveiligen
 
@@ -100,7 +100,7 @@ Wanneer een niet-Azure-omgeving wordt uitgevoerd, zijn er geen beheerde identite
     * Als uw toepassing gebruikmaakt van server-of toepassings verificatie, gaat u op de pagina app-registratie naar **certificaten & geheimen**. Upload vervolgens een certificaat met een open bare sleutel of maak een wacht woord door **Nieuw client geheim**te selecteren.
 
         > [!div class="mx-imgBorder"]
-        > ![Een client geheim maken](./media/how-to-manage-authentication/app-keys.png)
+        > ![Een clientgeheim maken](./media/how-to-manage-authentication/app-keys.png)
 
     * Nadat u **toevoegen**hebt geselecteerd, kopieert u het geheim en slaat u het veilig op in een service zoals Azure Key Vault. Raadpleeg [Azure Key Vault ontwikkelaars handleiding](https://docs.microsoft.com/azure/key-vault/general/developers-guide) om het certificaat of geheim veilig op te slaan. U gebruikt dit geheim om tokens van Azure AD op te halen.
 
@@ -109,7 +109,7 @@ Wanneer een niet-Azure-omgeving wordt uitgevoerd, zijn er geen beheerde identite
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Op rollen gebaseerde toegang verlenen voor de daemon-toepassing Azure Maps
 
-U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de gemaakte beheerde identiteit of de Service-Principal toe te wijzen aan een of meer Azure Maps rollen definities voor toegangs beheer. Ga naar **toegangs beheer (IAM)** om de RBAC-functie definities weer te geven die beschikbaar zijn voor Azure Maps. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*. Deze Azure Maps rollen zijn de rollen waaraan u toegang kunt verlenen.
+U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de gemaakte beheerde identiteit of de Service-Principal toe te wijzen aan een of meer Azure Maps rollen definities voor toegangs beheer. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*. Deze Azure Maps rollen zijn de rollen waaraan u toegang kunt verlenen.
 
 > [!div class="mx-imgBorder"]
 > ![Beschik bare rollen weer geven](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

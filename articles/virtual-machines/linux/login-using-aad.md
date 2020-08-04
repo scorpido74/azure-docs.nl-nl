@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291139"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534733"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -113,7 +113,7 @@ De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding i
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen voor de virtuele machine configureren
 
-Op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure bepaalt wie zich kan aanmelden bij de virtuele machine. Er worden twee RBAC-rollen gebruikt voor het autoriseren van de VM-aanmelding:
+Op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure bepaalt wie zich kan aanmelden bij de virtuele machine. Er worden twee Azure-rollen gebruikt voor het autoriseren van de VM-aanmelding:
 
 - Aanmelding van de beheerder van de **virtuele machine**: gebruikers met deze rol kunnen zich aanmelden bij een virtuele Azure-machine met Windows-beheerders-of Linux-hoofd gebruikers bevoegdheden.
 - **Gebruikers aanmelding van de virtuele machine**: gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele Azure-machine met gewone gebruikers bevoegdheden.
@@ -181,9 +181,9 @@ Met deze regel:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Problemen met aanmelden oplossen
 
-Enkele veelvoorkomende fouten wanneer u probeert te SSHen met Azure AD-referenties, zijn geen RBAC-rollen toegewezen en herhaalde prompts om zich aan te melden. Gebruik de volgende secties om deze problemen te verhelpen.
+Enkele veelvoorkomende fouten wanneer u een SSH-verbinding probeert te maken met Azure AD-referenties, zijn geen Azure-rollen toegewezen en herhaalde prompts om zich aan te melden. Gebruik de volgende secties om deze problemen te verhelpen.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>De toegang is geweigerd: de RBAC-rol is niet toegewezen
+### <a name="access-denied-azure-role-not-assigned"></a>Toegang geweigerd: Azure-rol is niet toegewezen
 
 Als het volgende fout bericht wordt weer gegeven op de SSH-prompt, controleert u of u RBAC-beleid hebt geconfigureerd voor de virtuele machine die de gebruiker de *aanmeldings naam* van de beheerder of de gebruiker van de *virtuele* machine verleent:
 

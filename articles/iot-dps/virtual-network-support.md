@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531539"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534597"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS)-ondersteuning voor virtuele netwerken
 
@@ -59,7 +59,7 @@ Houd rekening met de volgende actuele beperkingen voor DPS wanneer u persoonlijk
 
 * Privé-eind punten werken niet met DPS wanneer de DPS-resource en de gekoppelde hub zich in verschillende Clouds bevinden. Bijvoorbeeld [Azure Government en wereld wijd Azure](../azure-government/documentation-government-welcome.md).
 
-* Op dit moment werkt [aangepaste toewijzings beleid met Azure functions](how-to-use-custom-allocation-policies.md) voor DPS geen VNET-en privé-eind punten. 
+* [Aangepaste toewijzings beleidsregels met Azure functions](how-to-use-custom-allocation-policies.md) voor DPS werken momenteel niet wanneer de Azure-functie wordt vergrendeld op een VNET-en privé-eind punten. 
 
 * De huidige ondersteuning voor DPS VNET is alleen voor het inkomen van gegevens in DPS. Het uitvallen van gegevens, het verkeer van DPS naar IoT Hub, gebruikt een intern service-to-service-mechanisme in plaats van een toegewezen VNET. Ondersteuning voor volledige op VNET gebaseerde uitstaande vergren deling tussen DPS en IoT Hub is momenteel niet beschikbaar.
 

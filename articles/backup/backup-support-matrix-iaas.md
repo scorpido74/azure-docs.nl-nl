@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289492"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531860"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -32,13 +32,6 @@ Directe back-ups van virtuele Azure-machines (alleen Windows)  | Maak een back-u
 Back-up van Azure VM maken op back-upserver  | Back-ups maken van bestanden/mappen/volumes; systeem status/bare metal bestanden; App-gegevens naar System Center DPM of naar Microsoft Azure Backup-Server (MABS).<br/><br/> DPM-MABS maakt vervolgens een back-up van de back-upkluis. | Installeer de DPM/MABS Protection-agent op de VM. De MARS-agent is geïnstalleerd op DPM-MABS.| Bestanden/mappen/volumes herstellen; systeem status/bare metal bestanden; App-gegevens.
 
 Meer informatie over back-ups [met behulp van een back-upserver](backup-architecture.md#architecture-back-up-to-dpmmabs) en over [ondersteunings vereisten](backup-support-matrix-mabs-dpm.md).
-
->[!NOTE]
-> **Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.**
->
->Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
->
->Als u zich wilt aanmelden voor de preview, schrijft u voorAskAzureBackupTeam@microsoft.com
 
 ## <a name="supported-backup-actions"></a>Ondersteunde back-upacties
 
@@ -201,7 +194,7 @@ Netwerkverkeer naar Azure:
 - Back-upverkeer van servers naar de Recovery Services-kluis wordt versleuteld met behulp van Advanced Encryption Standard 256.
 - Back-upgegevens worden verzonden via een beveiligde HTTPS-koppeling.
 - De back-upgegevens worden versleuteld opgeslagen in de Recovery Services-kluis.
-- Alleen u beschikt over de wachtwoordzin waarmee deze gegevens kunnen worden ontgrendeld. De back-upgegevens kunnen niet door Microsoft ontsleuteld.
+- Alleen u hebt de versleutelings sleutel om deze gegevens te ontgrendelen. De back-upgegevens kunnen niet door Microsoft ontsleuteld.
 
   > [!WARNING]
   > Nadat u de kluis hebt ingesteld, hebt u alleen toegang tot de versleutelings sleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
@@ -230,8 +223,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 --- | --- | ---
 On-premises Windows-machines zonder DPM/MABS | N.v.t. | ![Ja][green]
 Azure-VM's | NA | NA
-On-premises/Azure VM's met DPM | ![Ja][green] | ![Ja][green]
-On-premises/Azure VM's met MABS | ![Ja][green] | ![Ja][green]
+On-premises/Azure VM's met DPM | ![Yes][green] | ![Yes][green]
+On-premises/Azure VM's met MABS | ![Yes][green] | ![Ja][green]
 
 ## <a name="next-steps"></a>Volgende stappen
 

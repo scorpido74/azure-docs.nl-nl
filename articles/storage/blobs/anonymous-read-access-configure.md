@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289248"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534308"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
 
@@ -50,9 +50,11 @@ Het niet toestaan van open bare toegang voor het opslag account voor komt anonie
 > [!IMPORTANT]
 > Het niet toestaan van open bare toegang voor een opslag account heeft voor rang op de instellingen voor open bare toegang voor alle containers in dat opslag account. Wanneer open bare toegang niet is toegestaan voor het opslag account, zullen toekomstige anonieme aanvragen voor dat account mislukken. Voordat u deze instelling wijzigt, moet u weten wat het effect is op client toepassingen die anoniem toegang hebben tot gegevens in uw opslag account. Zie [anonieme open bare Lees toegang tot containers en blobs voor komen](anonymous-read-access-prevent.md)voor meer informatie.
 
-Als u open bare toegang voor een opslag account wilt toestaan of weigeren, gebruikt u de Azure Portal of Azure CLI om de **blobPublicAccess** -eigenschap van het account te configureren. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model. Zie [overzicht van opslag accounts](../common/storage-account-overview.md)voor meer informatie.
+Als u open bare toegang voor een opslag account wilt toestaan of weigeren, configureert u de eigenschap **AllowBlobPublicAccess** van het account. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model. Zie [overzicht van opslag accounts](../common/storage-account-overview.md)voor meer informatie.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+De eigenschap **AllowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** is of wanneer deze **waar**is.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Ga als volgt te werk om open bare toegang voor een opslag account in de Azure Portal toe te staan of niet toe te staan:
 
@@ -62,64 +64,118 @@ Ga als volgt te werk om open bare toegang voor een opslag account in de Azure Po
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Scherm opname van het toestaan of weigeren van open bare BLOB-toegang voor het account":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Als u open bare toegang tot een opslag account met Power shell wilt toestaan of weigeren, installeert u [Azure PowerShell versie 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) of hoger. Configureer vervolgens de eigenschap **AllowBlobPublicAccess** voor een nieuw of bestaand opslag account.
+
+In het volgende voor beeld wordt een opslag account gemaakt en wordt de eigenschap **AllowBlobPublicAccess** expliciet ingesteld op **True**. Vervolgens wordt het opslag account bijgewerkt om de eigenschap **AllowBlobPublicAccess** in te stellen op **False**. In het voor beeld wordt ook de waarde van de eigenschap in elk geval opgehaald. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+
+```powershell
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+$location = "<location>"
+
+# Create a storage account with AllowBlobPublicAccess set to true (or null).
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property for the newly created storage account.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+
+# Set AllowBlobPublicAccess set to false
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+```
+
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u open bare toegang wilt toestaan of weigeren voor een opslag account met Azure CLI, moet u eerst de resource-ID voor uw opslag account ophalen door de opdracht [AZ resource show](/cli/azure/resource#az-resource-show) aan te roepen. Vervolgens roept u de opdracht [AZ resource update](/cli/azure/resource#az-resource-update) aan om de eigenschap **allowBlobPublicAccess** voor het opslag account in te stellen. Als u open bare toegang wilt toestaan, stelt u de eigenschap **allowBlobPublicAccess** in op True (waar). Als u dit niet wilt toestaan, stelt u deze in op **False**.
+Als u open bare toegang tot een opslag account met Azure CLI wilt toestaan of weigeren, installeert u Azure CLI versie 2.9.0 of hoger. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie. Configureer vervolgens de eigenschap **allowBlobPublicAccess** voor een nieuw of bestaand opslag account.
 
-In het volgende voor beeld wordt open bare BLOB-toegang voor het opslag account niet toegestaan. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+In het volgende voor beeld wordt een opslag account gemaakt en wordt de eigenschap **allowBlobPublicAccess** expliciet ingesteld op **True**. Vervolgens wordt het opslag account bijgewerkt om de eigenschap **allowBlobPublicAccess** in te stellen op **False**. In het voor beeld wordt ook de waarde van de eigenschap in elk geval opgehaald. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```azurecli-interactive
-storage_account_id=$(az resource show \
-    --name anonpublicaccess \
-    --resource-group storagesamples-rg \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --kind StorageV2 \
+    --location <location> \
+    --allow-blob-public-access true
 
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowBlobPublicAccess=false
-    ```
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
+
+az storage account update \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --allow-blob-public-access false
+
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
 ```
+
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+Als u open bare toegang voor een opslag account met een sjabloon wilt toestaan of weigeren, maakt u een sjabloon waarvan de eigenschap **AllowBlobPublicAccess** is ingesteld op **waar** of **Onwaar**. In de volgende stappen wordt beschreven hoe u een sjabloon maakt in de Azure Portal.
+
+1. Kies in het Azure Portal **een resource maken**.
+1. Typ in **de Marketplace zoeken de** **sjabloon implementatie**en druk vervolgens op **Enter**.
+1. Kies **Sjabloonimlementatie (implementeren met aangepaste sjablonen) (preview)**, kies **maken**en kies vervolgens **uw eigen sjabloon bouwen in de editor**.
+1. Plak in de sjabloon editor in de volgende JSON om een nieuw account te maken en stel de eigenschap **AllowBlobPublicAccess** in op **waar** of **Onwaar**. Vergeet niet om de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden.
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'template')]"
+        },
+        "resources": [
+            {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "<location>",
+            "properties": {
+                "allowBlobPublicAccess": false
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
+            "tags": {}
+            }
+        ]
+    }
+    ```
+
+1. Sla de sjabloon op.
+1. Geef de para meter van de resource groep op en kies vervolgens de knop **evalueren + maken** om de sjabloon te implementeren en een opslag account te maken met de eigenschap **allowBlobPublicAccess** geconfigureerd.
 
 ---
 
 > [!NOTE]
 > Het niet toestaan van open bare toegang voor een opslag account heeft geen invloed op alle statische websites die worden gehost in dat opslag account. De **$Web** container is altijd openbaar toegankelijk.
+>
+> Nadat u de instelling voor open bare toegang voor het opslag account hebt bijgewerkt, kan het tot 30 seconden duren voordat de wijziging volledig is door gegeven.
 
-## <a name="check-whether-public-access-is-allowed-for-a-storage-account"></a>Controleren of open bare toegang is toegestaan voor een opslag account
+Voor het toestaan of weigeren van open bare blobs is versie 2019-04-01 of hoger van de resource provider Azure Storage vereist. Zie [Azure Storage Resource Provider rest API](/rest/api/storagerp/)voor meer informatie.
 
-Als u wilt controleren of open bare toegang is toegestaan voor een opslag account, haalt u de waarde van de eigenschap **allowBlobPublicAccess** op. Als u deze eigenschap in één keer wilt controleren op een groot aantal opslag accounts, gebruikt u de Azure resource Graph Explorer.
-
-> [!IMPORTANT]
-> De eigenschap **allowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** is of wanneer deze **waar**is.
-
-### <a name="check-whether-public-access-is-allowed-for-a-single-storage-account"></a>Controleren of open bare toegang is toegestaan voor één opslag account
-
-Als u wilt controleren of open bare toegang is toegestaan voor één opslag account met behulp van Azure CLI, roept u de opdracht [AZ resource show](/cli/azure/resource#az-resource-show) en de query voor de eigenschap **allowBlobPublicAccess** aan:
-
-```azurecli-interactive
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowBlobPublicAccess \
-    --output tsv
-```
-
-### <a name="check-whether-public-access-is-allowed-for-a-set-of-storage-accounts"></a>Controleren of open bare toegang is toegestaan voor een set opslag accounts
-
-Als u wilt controleren of open bare toegang is toegestaan in een set opslag accounts met optimale prestaties, kunt u de Azure resource Graph Explorer gebruiken in de Azure Portal. Voor meer informatie over het gebruik van de resource Graph Explorer raadpleegt u [Quick Start: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer](/azure/governance/resource-graph/first-query-portal).
-
-Als u de volgende query uitvoert in de resource Graph Explorer, wordt een lijst met opslag accounts geretourneerd en wordt de waarde van de eigenschap **allowBlobPublicAccess** voor elk account weer gegeven:
-
-```kusto
-resources
-| where type =~ 'Microsoft.Storage/storageAccounts'
-| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
-| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
-| order by subscriptionId, resourceGroup, name asc
-```
+In de voor beelden in deze sectie wordt uitgelegd hoe u de eigenschap **AllowBlobPublicAccess** voor het opslag account kunt lezen om te bepalen of open bare toegang momenteel is toegestaan of niet wordt toegestaan. Zie [anonieme open bare toegang herstellen](anonymous-read-access-prevent.md#remediate-anonymous-public-access)voor meer informatie over het controleren of de open bare toegangs instelling van een account is geconfigureerd om anonieme toegang te voor komen.
 
 ## <a name="set-the-public-access-level-for-a-container"></a>Het niveau van de open bare toegang instellen voor een container
 
@@ -131,11 +187,9 @@ Wanneer open bare toegang is toegestaan voor een opslag account, kunt u een cont
 - **Open bare Lees toegang alleen voor blobs:** Blobs in de container kunnen worden gelezen door anonieme aanvragen, maar de container gegevens zijn niet anoniem beschikbaar. Anonieme clients kunnen de blobs in de container niet inventariseren.
 - **Open bare Lees toegang voor container en de bijbehorende blobs:** Container-en BLOB-gegevens kunnen worden gelezen door anonieme aanvragen, met uitzonde ring van instellingen voor container machtigingen en meta gegevens van containers. Clients kunnen blobs in de container inventariseren door anonieme aanvragen, maar kunnen containers niet inventariseren binnen het opslag account.
 
-U kunt het niveau van de open bare toegang voor een afzonderlijke BLOB niet wijzigen. Niveau van open bare toegang wordt alleen op container niveau ingesteld.
+U kunt het niveau van de open bare toegang voor een afzonderlijke BLOB niet wijzigen. Niveau van open bare toegang wordt alleen op container niveau ingesteld. U kunt het open bare toegangs niveau van de container instellen wanneer u de container maakt, of u kunt de instelling bijwerken op een bestaande container.
 
-Als u het open bare toegangs niveau van een container wilt instellen, gebruikt u de Azure Portal of Azure CLI. U kunt het open bare toegangs niveau van de container instellen wanneer u de container maakt, of deze instelling bijwerken op een bestaande container.
-
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om het niveau van de open bare toegang voor een of meer bestaande containers in de Azure Portal bij te werken:
 
@@ -151,44 +205,81 @@ Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het op
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Scherm opname waarin wordt getoond dat het open bare toegangs niveau van de container wordt geblokkeerd wanneer open bare toegang niet is toegestaan":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Als u het niveau van open bare toegang voor een of meer containers met Power shell wilt bijwerken, roept u de opdracht [set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) aan. Machtig deze bewerking door de account sleutel, een connection string of een Shared Access Signature (SAS) door te geven. De [set container-ACL](/rest/api/storageservices/set-container-acl) -bewerking waarmee het open bare toegangs niveau van de container wordt ingesteld, biedt geen ondersteuning voor autorisatie met Azure AD. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens bewerkingen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie.
+
+In het volgende voor beeld wordt een container gemaakt waarvoor open bare toegang is uitgeschakeld en wordt vervolgens de open bare toegangs instelling van de container bijgewerkt om anonieme toegang tot de container en de blobs toe te staan. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+
+```powershell
+# Set variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Get context object.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+# Create a new container with public access setting set to Off.
+$containerName = "<container>"
+New-AzStorageContainer -Name $containerName -Permission Off -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+
+# Update the container's public access setting to Container.
+Set-AzStorageContainerAcl -Container $containerName -Permission Container -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+```
+
+Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het open bare toegangs niveau van een container niet worden ingesteld. Als u het open bare toegangs niveau van de container probeert in te stellen, retourneert Azure Storage een fout melding die aangeeft dat open bare toegang niet is toegestaan voor het opslag account.
+
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u het niveau van de open bare toegang voor een of meer containers met Azure CLI wilt bijwerken, roept u de opdracht [AZ storage container set permission](/cli/azure/storage/container#az-storage-container-set-permission) aan. Machtig deze bewerking door de account sleutel, een connection string of een Shared Access Signature (SAS) door te geven. De [set container-ACL](/rest/api/storageservices/set-container-acl) -bewerking waarmee het open bare toegangs niveau van de container wordt ingesteld, biedt geen ondersteuning voor autorisatie met Azure AD. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens bewerkingen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie.
 
-In het volgende voor beeld wordt de instelling voor open bare toegang voor een container ingesteld om anonieme toegang tot de container en de blobs in te scha kelen. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+In het volgende voor beeld wordt een container gemaakt waarvoor open bare toegang is uitgeschakeld en wordt vervolgens de open bare toegangs instelling van de container bijgewerkt om anonieme toegang tot de container en de blobs toe te staan. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```azurecli-interactive
+az storage container create \
+    --name <container-name> \
+    --account-name <account-name> \
+    --resource-group <resource-group>
+    --public-access off \
+    --account-key <account-key> \
+    --auth-mode key
+
+az storage container show-permission \
+    --name <container-name> \
+    --account-name <account-name> \
+    --account-key <account-key> \
+    --auth-mode key
+
 az storage container set-permission \
     --name <container-name> \
     --account-name <account-name> \
     --public-access container \
     --account-key <account-key> \
     --auth-mode key
-```
 
-Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het open bare toegangs niveau van een container niet worden ingesteld. Als u het open bare toegangs niveau van de container probeert in te stellen, treedt er een fout op die aangeeft dat open bare toegang niet is toegestaan voor het opslag account.
-
----
-
-## <a name="check-the-container-public-access-setting"></a>Controleer de instelling voor open bare toegang tot de container
-
-Als u de instelling voor open bare toegang voor een of meer containers wilt controleren, kunt u de Azure Portal, Power shell, Azure CLI, een van de Azure Storage-client bibliotheken of de resource provider van Azure Storage gebruiken. De volgende secties bieden enkele voor beelden.  
-
-### <a name="check-the-public-access-setting-for-a-single-container"></a>Controleer de instelling voor open bare toegang voor één container
-
-Als u het niveau van open bare toegang wilt verkrijgen voor een of meer containers met Azure CLI, roept u de opdracht [AZ storage container show permission](/cli/azure/storage/container#az-storage-container-show-permission) aan. Machtig deze bewerking door de account sleutel, een connection string of een Shared Access Signature (SAS) door te geven. De [Get container-ACL](/rest/api/storageservices/get-container-acl) -bewerking die het open bare toegangs niveau van een container retourneert, biedt geen ondersteuning voor autorisatie met Azure AD. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens bewerkingen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie.
-
-In het volgende voor beeld wordt de instelling voor open bare toegang voor een container gelezen. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
-
-```azurecli-interactive
 az storage container show-permission \
     --name <container-name> \
     --account-name <account-name> \
-    --account-key <account-key>
+    --account-key <account-key> \
     --auth-mode key
 ```
 
-### <a name="check-the-public-access-setting-for-a-set-of-containers"></a>Controleer de instelling voor open bare toegang voor een set containers
+Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het open bare toegangs niveau van een container niet worden ingesteld. Als u het open bare toegangs niveau van de container probeert in te stellen, retourneert Azure Storage een fout melding die aangeeft dat open bare toegang niet is toegestaan voor het opslag account.
+
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+N.v.t.
+
+---
+
+## <a name="check-the-public-access-setting-for-a-set-of-containers"></a>Controleer de instelling voor open bare toegang voor een set containers
 
 Het is mogelijk om te controleren welke containers in een of meer opslag accounts zijn geconfigureerd voor open bare toegang door de containers te vermelden en de instelling voor open bare toegang te controleren. Deze benadering is een praktische optie wanneer een opslag account geen groot aantal containers bevat of wanneer u de instelling controleert over een klein aantal opslag accounts. De prestaties kunnen echter afnemen als u probeert een groot aantal containers te inventariseren.
 

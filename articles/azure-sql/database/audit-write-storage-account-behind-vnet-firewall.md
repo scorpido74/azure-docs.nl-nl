@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372158"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530382"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schrijf audit naar een opslag account achter VNet en firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -117,7 +117,7 @@ SQL-controle configureren om gebeurtenissen te schrijven naar een opslag account
    }
    ```
 
-2. Open [Azure Portal](https://portal.azure.com). Ga naar uw opslagaccount. Zoek **Access Control (IAM)** en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor de data base die u bij Azure Active Directory (Azure AD) hebt geregistreerd, zoals in de vorige stap.
+2. Open [Azure Portal](https://portal.azure.com). Ga naar uw opslagaccount. Zoek **Access Control (IAM)** en klik op **roltoewijzing toevoegen**. Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor de data base die u hebt geregistreerd bij Azure Active Directory (Azure AD), zoals in de vorige stap.
 
    > [!NOTE]
    > Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg de [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor verschillende ingebouwde rollen van Azure.

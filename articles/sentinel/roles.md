@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 95a966799b4cb66b74d998df9c58958b9b89ecdb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374215"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534002"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
 Azure Sentinel maakt gebruik [van op rollen gebaseerde Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) om [ingebouwde rollen](../role-based-access-control/built-in-roles.md)te bieden   die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Gebruik RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om de juiste toegang tot Azure Sentinel te verlenen. De verschillende rollen bieden een nauw keurige controle over wat gebruikers van Azure Sentinel kunnen zien en doen. RBAC-rollen kunnen rechtstreeks worden toegewezen in de Azure Sentinel-werk ruimte (Zie de opmerking hieronder) of in een abonnement of resource groep waartoe de werk ruimte behoort, die wordt overgenomen door Azure Sentinel.
+Gebruik RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om de juiste toegang tot Azure Sentinel te verlenen. De verschillende rollen bieden een nauw keurige controle over wat gebruikers van Azure Sentinel kunnen zien en doen. Azure-rollen kunnen rechtstreeks worden toegewezen in de Azure Sentinel-werk ruimte (Zie de opmerking hieronder) of in een abonnement of resource groep waartoe de werk ruimte behoort, die door Azure Sentinel wordt overgenomen.
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Rollen voor het werken in azure-Sentinel
 
@@ -64,7 +64,7 @@ Zie de [onderstaande tabel](#roles-and-allowed-actions)voor een vergelijking naa
 
 ### <a name="other-roles-you-might-see-assigned"></a>Andere functies die u kunt zien, zijn toegewezen
 
-Bij het toewijzen van Azure Sentinel-specifieke RBAC-rollen kunt u andere Azure-en Log Analytics RBAC-rollen vinden die voor andere doel einden aan gebruikers zijn toegewezen. Houd er rekening mee dat deze rollen een bredere set machtigingen verlenen die toegang hebben tot uw Azure Sentinel-werk ruimte en andere resources:
+Bij het toewijzen van Azure Sentinel-specifieke Azure-rollen hebt u mogelijk een ander Azure-en Log Analytics Azure-rollen die mogelijk aan gebruikers zijn toegewezen voor andere doel einden. Houd er rekening mee dat deze rollen een bredere set machtigingen verlenen die toegang hebben tot uw Azure Sentinel-werk ruimte en andere resources:
 
 - **Azure-rollen:** [eigenaar](../role-based-access-control/built-in-roles.md#owner), [bijdrager](../role-based-access-control/built-in-roles.md#contributor)en [lezer](../role-based-access-control/built-in-roles.md#reader). Azure-rollen verlenen toegang tot alle Azure-resources, waaronder Log Analytics-werk ruimten en Azure-Sentinel-resources.
 

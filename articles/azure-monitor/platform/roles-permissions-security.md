@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 8e56c4da0eec3338de7863a2ee158e804cf406c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325556"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533271"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, machtigingen en beveiliging in Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Veel teams moeten de toegang tot bewakings gegevens en-instellingen strikt reguleren. Als u bijvoorbeeld team leden hebt die uitsluitend werken aan bewaking (ondersteunings technici, DevOps Engineers) of als u een beheerde service provider gebruikt, wilt u deze mogelijk alleen toegang geven tot de bewaking van gegevens en de mogelijkheid voor het maken, wijzigen of verwijderen van resources te beperken. In dit artikel wordt beschreven hoe u snel een ingebouwde RBAC-bewakings functie kunt Toep assen op een gebruiker in azure of hoe u uw eigen aangepaste rol bouwt voor een gebruiker die beperkte controle machtigingen nodig heeft. Vervolgens worden de beveiligings overwegingen voor uw Azure Monitor-gerelateerde resources besproken en wordt uitgelegd hoe u de toegang tot de gegevens die ze bevatten, kunt beperken.
+Veel teams moeten de toegang tot bewakings gegevens en-instellingen strikt reguleren. Als u bijvoorbeeld team leden hebt die uitsluitend werken aan bewaking (ondersteunings technici, DevOps Engineers) of als u een beheerde service provider gebruikt, wilt u deze mogelijk alleen toegang geven tot de bewaking van gegevens en de mogelijkheid voor het maken, wijzigen of verwijderen van resources te beperken. In dit artikel wordt beschreven hoe u snel een ingebouwde bewakings functie van Azure toepast op een gebruiker in azure of uw eigen aangepaste rol bouwt voor een gebruiker die beperkte controle machtigingen nodig heeft. Vervolgens worden de beveiligings overwegingen voor uw Azure Monitor-gerelateerde resources besproken en wordt uitgelegd hoe u de toegang tot de gegevens die ze bevatten, kunt beperken.
 
 ## <a name="built-in-monitoring-roles"></a>Ingebouwde bewakingsrollen
 De ingebouwde rollen van Azure Monitor zijn ontworpen om de toegang tot resources in een abonnement te beperken, terwijl ze nog steeds verantwoordelijk zijn voor de bewaking van de infra structuur voor het verkrijgen en configureren van de gegevens die ze nodig hebben. Azure Monitor biedt twee out-of-the-box-rollen: een bewakings lezer en een bewakings bijdrager.

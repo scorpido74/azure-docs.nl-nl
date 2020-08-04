@@ -1,5 +1,5 @@
 ---
-title: Wat is er nieuw?
+title: Wat is nieuw?
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Meer informatie over de nieuwe functies en documentatie verbeteringen voor Azure SQL Database & SQL Managed instance.
 services: sql-database
@@ -11,19 +11,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067417"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533356"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Dit artikel bevat een overzicht van Azure SQL Database en Azure SQL Managed instance-functies die momenteel beschikbaar zijn in de open bare preview. Zie [SQL Database & SQL Managed instance service updates](https://azure.microsoft.com/updates/?product=sql-database)voor SQL database en de updates en verbeteringen van SQL Managed instance. Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbeteringen voor andere Azure-Services.
 
-## <a name="whats-new"></a>Wat is er nieuw?
+## <a name="whats-new"></a>Wat is nieuw?
 
 Documentatie voor Azure SQL Database en Azure SQL Managed instance is in afzonderlijke secties gesplitst. We hebben ook bijgewerkt hoe we verwijzen naar een beheerd exemplaar van *Azure SQL database beheerde* instantie naar *Azure SQL Managed*instance.
 
@@ -137,7 +137,7 @@ In bepaalde omstandigheden kan het wijzigen, uitschakelen of inschakelen van een
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>Machtigingen voor de resource groep zijn niet toegepast op een SQL-beheerd exemplaar
 
-Wanneer de rol Inzender voor SQL Managed instance RBAC wordt toegepast op een resource groep (RG), wordt deze niet toegepast op het beheerde exemplaar van SQL en heeft dit geen effect.
+Wanneer de rol Inzender voor SQL Managed instance wordt toegepast op een resource groep (RG), wordt deze niet toegepast op het beheerde exemplaar van SQL en heeft dit geen effect.
 
 **Tijdelijke oplossing**: Stel een rol van SQL Managed instance in voor gebruikers op abonnements niveau.
 

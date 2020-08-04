@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) installeren
 description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079363"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533475"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
@@ -155,7 +155,7 @@ Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen da
 
     ![Kluis referenties toevoegen met behulp van de wizard Server registreren](./media/backup-configure-vault/register1.png)
 
-1. Geef op de pagina **versleutelings instelling** een wachtwoordzin op die wordt gebruikt voor het versleutelen en ontsleutelen van back-ups voor de machine.
+1. Geef op de pagina **versleutelings instelling** een wachtwoordzin op die wordt gebruikt voor het versleutelen en ontsleutelen van back-ups voor de machine. [Zie hier](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase) voor meer informatie over toegestane wachtwoordzin tekens.
 
     * Sla de wachtwoordzin op een veilige locatie op. U hebt deze nodig om een back-up te herstellen.
     * Als u de wachtwoordzin kwijtraakt of vergeet, kan micro soft u niet helpen bij het herstellen van de back-upgegevens.

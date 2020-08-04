@@ -3,16 +3,16 @@ title: Azure Relay-migreren naar Shared Access Signature autorisatie
 description: Hierin wordt beschreven hoe u Azure Relay toepassingen kunt migreren met behulp van Azure Active Directory Access Control Service om de autorisatie te Shared Access Signature.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314306"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532863"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-migreren van Azure Active Directory Access Control Service naar Shared Access Signature autorisatie
 
-Azure Relay-toepassingen hadden een keuze van het gebruik van twee verschillende autorisatie modellen: het token model [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) dat rechtstreeks door de Relay-service is geleverd en een federatief model waarin het beheer van autorisatie regels wordt beheerd door de [Azure Active Directory](/azure/active-directory/) Access Control service (ACS), en tokens die zijn verkregen van ACS, worden door gegeven aan relay voor het verlenen van toegang tot de gewenste onderdelen.
+Azure Relay-toepassingen hadden een keuze van het gebruik van twee verschillende autorisatie modellen: het token model [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) dat rechtstreeks door de Relay-service is geleverd en een federatief model waarin het beheer van autorisatie regels wordt beheerd door de [Azure Active Directory](../active-directory/index.yml) Access Control service (ACS), en tokens die zijn verkregen van ACS, worden door gegeven aan relay voor het verlenen van toegang tot de gewenste onderdelen.
 
 Het ACS-autorisatie model is al vervangen door [SAS-autorisatie](../service-bus-messaging/service-bus-authentication-and-authorization.md) als het voorkeurs model, en alle documentatie, richt lijnen en voor beelden bevatten exclusief SAS vandaag. Daarnaast kunt u geen nieuwe relay-naam ruimten meer maken die zijn gekoppeld aan ACS.
 
@@ -56,5 +56,3 @@ Zie de volgende onderwerpen voor meer informatie over Azure Relay-verificatie:
 
 * [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md)
 * [Verificatie Service Bus met hand tekeningen voor gedeelde toegang](../service-bus-messaging/service-bus-sas.md)
-
-

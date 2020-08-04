@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f29ed1ad7ba0215e9b4193fd56dd3a32f3e9a2
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 68d40e9dbc2c4da6b298f7245318c95de983edcc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476172"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530143"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -59,12 +59,13 @@ De volgende scenario's worden momenteel niet ondersteund:
 ## <a name="known-issues"></a>Bekende problemen
 
 - U kunt een dynamische groep niet maken of wijzigen wanneer de rol is toegewezen via een groep.
-- Azure Information Protection herkent het lidmaatschap van de rol nog niet via de groep. Directe roltoewijzingen werken nog steeds. Azure Information Protection-Portal (de klassieke Portal) herkent het lidmaatschap van de rol nog niet via groep. Directe roltoewijzingen werken nog steeds. U kunt [migreren naar het Unified sensitivive labeling platform](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) en vervolgens het Office 365 Security & compliance gebruiken om groeps toewijzingen te gebruiken voor het beheren van rollen.
 - De functie **gefaseerde implementatie voor beheerde gebruikers aanmelding inschakelen** biedt geen ondersteuning voor toewijzing via groep.
 - *Alleen klanten met een licentie voor Azure AD P2*: wijs een groep niet als actief toe aan een rol via Azure ad en privileged Identity Management. Dit leidt tot problemen waar gebruikers hun actieve roltoewijzingen niet kunnen zien in de PIM, en de mogelijkheid tot het verwijderen van die PIM-toewijzing. In dit scenario worden in aanmerking komende toewijzingen niet beïnvloed. Als u probeert deze toewijzing te maken, ziet u mogelijk onverwacht gedrag zoals:
   - De eind tijd voor de roltoewijzing kan onjuist worden weer gegeven.
   - In de PIM-portal kunnen **mijn rollen** slechts één roltoewijzing tonen, ongeacht het aantal methoden waarmee de toewijzing wordt verleend (via een of meer groepen en direct).
-- *Alleen klanten met een licentie voor Azure AD P2* Zelfs na het verwijderen van de groep wordt er nog steeds een in aanmerking komend lid van de rol weer gegeven in PIM-gebruikers interface. Er is functioneel geen probleem. het is slechts een cache probleem in de Azure Portal.
+- *Alleen klanten met een licentie voor Azure AD P2* Zelfs na het verwijderen van de groep wordt er nog steeds een in aanmerking komend lid van de rol weer gegeven in PIM-gebruikers interface. Er is functioneel geen probleem. het is slechts een cache probleem in de Azure Portal.  
+- Exchange-beheer centrum herkent het rollidmaatschap niet via de groep, maar de Power shell-cmdlet werkt wel.
+- Azure Information Protection-Portal (de klassieke Portal) herkent het lidmaatschap van de rol nog niet via groep. U kunt [migreren naar het Unified sensitivive labeling platform](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) en vervolgens het Office 365 Security & compliance gebruiken om groeps toewijzingen te gebruiken voor het beheren van rollen.
 
 Deze problemen worden opgelost.
 
@@ -74,5 +75,5 @@ Als u deze functie wilt gebruiken, hebt u een beschik bare Azure AD Premium P1-l
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een door een functie toewijs bare groep maken](roles-groups-create-eligible.md)
+- [Een roltoewijzbare groep maken](roles-groups-create-eligible.md)
 - [Een rol toewijzen aan een door een functie toewijs bare groep](roles-groups-assign-role.md)

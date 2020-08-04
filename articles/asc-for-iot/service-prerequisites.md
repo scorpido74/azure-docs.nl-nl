@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.custom: references_regions
-ms.openlocfilehash: 19e4ea37aa10c90d15a2b7dcdf962c131c8e473d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ce903271accd3f63df7634dc5045932655ac2a7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193218"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531146"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center voor IoT-vereisten
 
@@ -30,7 +30,7 @@ Dit artikel bevat een uitleg van de verschillende onderdelen van de Azure Securi
 ## <a name="minimum-requirements"></a>Minimale vereisten
 
 - IoT Hub Standard-laag
-  - Bevoegdheden van het niveau van de RBAC-rol **eigenaar**
+  - Bevoegdheden **eigenaar** niveau van Azure Role
 - [Log Analytics werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure Security Center (aanbevolen)
   - Het gebruik van Azure Security Center is een aanbeveling en geen vereiste. Zonder Azure Security Center kunt u uw andere Azure-resources niet weer geven binnen IoT Hub.
@@ -43,7 +43,7 @@ Azure Security Center voor IoT Insights en rapportage zijn beschikbaar via Azure
 
 Azure Security Center voor IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure-regio's:
 
-- VS - centraal
+- Central US
 - VS - oost
 - VS - oost 2
 - VS - west-centraal
@@ -54,15 +54,15 @@ Azure Security Center voor IoT wordt momenteel ondersteund voor IoT-hubs in de v
 - Canada - midden
 - Canada - oost
 - Europa - noord
-- Brazilië - zuid
+- Brazil South
 - Frankrijk - centraal
 - Verenigd Koninkrijk West
 - Verenigd Koninkrijk Zuid
-- Europa -west
+- Europa - west
 - Noord-Europa
 - Japan - west
-- Japan - oost
-- Australië - zuidoost
+- Japan East
+- Australia Southeast
 - Australië - oost
 - Azië - oost
 - Azië - zuidoost
