@@ -17,22 +17,22 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 58c234df5babc02fdd0e69a9c806043465293ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72387403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030280"
 ---
-# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Zelf studie: gelokaliseerde push meldingen verzenden naar Windows-apps met behulp van Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Zelfstudie: Gelokaliseerde pushmeldingen verzenden naar Windows-apps met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
-> * [Windows Store C #](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
 ## <a name="overview"></a>Overzicht
 
-Deze zelfstudie laat zien hoe u gelokaliseerde pushmeldingen naar mobiele apparaten kunt versturen die zijn geregistreerd bij de Notification Hubs-service. In de zelfstudie gaat u toepassingen bijwerken die zijn gemaakt in de zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) om ondersteuning te bieden voor de volgende scenario's:
+Deze zelfstudie laat zien hoe u gelokaliseerde pushmeldingen naar mobiele apparaten kunt versturen die zijn geregistreerd bij de Notification Hubs-service. U kunt in de zelfstudie toepassingen bijwerken die zijn gemaakt de [Zelfstudie: Meldingen verzenden naar specifieke apparaten (Universeel Windows-platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) ter ondersteuning van de volgende scenario's:
 
 - In de Windows Store-app kunnen clientapparaten een taal opgeven en zich abonneren op verschillende nieuwscategorieën.
 - De back-endapp verstuurt meldingen met behulp van de **tag**- en **sjabloon**-functies van Azure Notification Hubs.
@@ -48,9 +48,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) voltooien.
+U moet de [Zelfstudie: Meldingen verzenden naar specifieke apparaten (Universeel Windows-platform).](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)
 
-In de zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) bouwt u een app die gebruikmaakt van **tags** om zich te abonneren op meldingen voor verschillende nieuws**categorieën **. In deze zelfstudie gebruikt u de **sjabloon**-functie van Notification Hubs om eenvoudig **gelokaliseerde** meldingen van belangrijk nieuws te bezorgen.
+In de zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) bouwt u een app die gebruikmaakt van **tags** om zich te abonneren op meldingen voor verschillende nieuws**categorieën** . In deze zelfstudie gebruikt u de **sjabloon**-functie van Notification Hubs om eenvoudig **gelokaliseerde** meldingen van belangrijk nieuws te bezorgen.
 
 In deze context zijn sjablonen een manier om de indeling op te geven waarin een specifiek apparaat een melding moet ontvangen. De sjabloon bepaalt de exacte indeling van de payload door te verwijzen naar eigenschappen die deel uitmaken van het bericht dat is verzonden door uw back-endapp. In deze zelfstudie verzendt de back-endtoepassing een bericht met alle ondersteunde talen:
 
@@ -78,7 +78,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
 ## <a name="update-windows-app-to-support-locale-information"></a>Windows-app bijwerken om landinstellingen te ondersteunen
 
-1. Open de Visual Studio-oplossing die u hebt gemaakt voor de zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+1. Open in Visual Studio de oplossing die u hebt gemaakt voor de [Zelfstudie: Meldingen verzenden naar specifieke apparaten (Universeel Windows-platform).](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)
 2. Werk het bestand `MainPage.xaml` van de oplossing bij met een keuzelijst met invoervak voor landinstellingen:
 
     ```xml
@@ -196,7 +196,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
 ## <a name="run-the-uwp-application"></a>De UWP-toepassing uitvoeren
 
-1. Voer de Universeel Windows-platform-toepassing uit. Wacht tot u het bericht ziet dat de **registratie is gelukt**.
+1. Voer de Universal Windows Platform-toepassing uit. Wacht tot u het bericht ziet dat de **registratie is gelukt**.
 
     ![Registratie van mobiele toepassing](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
 2. Selecteer de **categorieën** en **locale** (landinstelling), en klik op **Subscribe**. De app zet de geselecteerde categorieën om in tags en vraagt bij Notification Hubs een nieuwe apparaatregistratie aan voor de geselecteerde tags.
@@ -206,7 +206,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
     ![Abonnementsbericht](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
 
-## <a name="update-console-app-to-send-localized-notifications"></a>De console-app bijwerken om gelokaliseerde meldingen te verzenden
+## <a name="update-console-app-to-send-localized-notifications"></a>Console-app bijwerken om gelokaliseerde meldingen te verzenden
 
 Wanneer u sjabloonmeldingen verstuurt, hoeft u alleen een set eigenschappen op te geven. In deze zelfstudie verstuurt de back-endtoepassing de set eigenschappen met de gelokaliseerde versie van het actuele nieuws, bijvoorbeeld:
 
@@ -259,7 +259,7 @@ private static async void SendTemplateNotificationAsync()
 
 Met deze eenvoudige aanroep wordt het gelokaliseerde nieuwsbericht bezorgd op **alle** apparaten, ongeacht het platform. Dit kan doordat uw Notification Hub de juiste payload voor het platform samenstelt en verstuurt naar alle apparaten die zijn geabonneerd op een bepaalde tag.
 
-## <a name="run-console-app-to-send-localized-notification"></a>Console-app uitvoeren om gelokaliseerde melding te verzenden
+## <a name="run-console-app-to-send-localized-notification"></a>Console-app uitvoeren om gelokaliseerde meldingen te verzenden
 Voer de **console-app** uit om meldingen te verzenden voor elke categorie en in elke ondersteunde taal. Controleer of u alleen een melding krijgt voor de categorieën waarop u zich hebt geabonneerd en of het bericht overeenkomt met de landinstelling die u hebt geselecteerd.
 
 ![Meldingen](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
@@ -296,6 +296,6 @@ In deze zelfstudie hebt u geleerd hoe u gelokaliseerde pushmeldingen kunt verzen
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

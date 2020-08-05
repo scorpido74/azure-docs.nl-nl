@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: aacaec5ff632385a1f1686610370bb92eb63c349
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017547"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Ekarda
 
@@ -151,12 +151,12 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Beheerder** -> **Mijn account**.
 
-    ![Ekarda-configuratie](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda-configuratie](./media/ekarda-tutorial/ekarda.png)    
 
 1. Onder aan de pagina vindt u de sectie **SAML-instellingen** waarin u die SAML-integratie gaat configureren.
 1. Voer op de volgende pagina de volgende stappen uit:
 
-    ![Ekarda-configuratie](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda-configuratie](./media/ekarda-tutorial/ekarda1.png)
 
     a. Klik op de koppeling **Metagegevens van de serviceprovider** en sla het bestand op uw computer op.
 
@@ -186,15 +186,16 @@ Wanneer u op de tegel Ekarda in het toegangsvenster klikt, wordt u automatisch a
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Ekarda met Azure AD](https://aad.portal.azure.com/)
 
+- Gebruik de [enterprise eCard-oplossing van Ekarda](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) om het gewenste aantal medewerkers in te richten om eCards met uw bedrijfslogo naar klanten en collega's te verzenden. Meer informatie over het inrichten van [Ekarda als een SSO-oplossing](https://support.ekarda.com/#SSO-Implementation).
+
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Ekarda beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

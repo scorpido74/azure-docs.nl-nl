@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116921"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Zelfstudie: Locatiegebaseerde pushmeldingen verzenden met Notification Hubs en ruimtelijke Bing-gegevens
 
@@ -63,7 +63,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
     Het pipe-bestand vertegenwoordigt deze entiteit:
 
-    ![Schermafbeelding van de kust van San Francisco met een rode veelhoek die een gebied van de pieren markeert.](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![Schermopname van een kaart van de kust van San Francisco met een rode veelhoek die een gebied van de pieren markeert.](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Voer op de pagina **Upload a data source** de volgende acties uit:
    1. Selecteer **pipe** bij **Data format**.
    2. Bladeren naar en selecteer het bestand `NotificationHubGeofence.pipe` dat u in de vorige stap hebt gemaakt.
@@ -164,7 +164,7 @@ In deze zelfstudie voert u de volgende stappen uit:
     }
     ```
 
-    Zie [Get the user's location](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx) (Locatie van de gebruiker opvragen) voor meer informatie over het opvragen van de locatie van de gebruiker in UWP-apps.
+    Zie [Get the user's location](/windows/uwp/maps-and-location/get-location) (Locatie van de gebruiker opvragen) voor meer informatie over het opvragen van de locatie van de gebruiker in UWP-apps.
 5. Als u wilt controleren of het ophalen van de locatie werkt, opent u de codezijde van de hoofdpagina (`MainPage.xaml.cs`). Maak een nieuwe gebeurtenis-handler voor de gebeurtenis `Loaded` in de constructor `MainPage`.
 
     ```csharp
@@ -393,7 +393,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 Er zijn een aantal stappen die u mogelijk moet uitvoeren om ervoor te zorgen dat de oplossing klaar is voor productie.
 
-1. U moet er ten eerste voor zorgen dat de geofences dynamisch zijn. Hiervoor moet u extra bewerkingen uitvoeren met de Bing-API, zodat u nieuwe grenzen kunt uploaden in de bestaande gegevensbron. Zie voor meer informatie de Engelstalige documentatie over de [Bing Spatial Data Services-API](https://msdn.microsoft.com/library/ff701734.aspx).
+1. U moet er ten eerste voor zorgen dat de geofences dynamisch zijn. Hiervoor moet u extra bewerkingen uitvoeren met de Bing-API, zodat u nieuwe grenzen kunt uploaden in de bestaande gegevensbron. Zie voor meer informatie de Engelstalige documentatie over de [Bing Spatial Data Services-API](/bingmaps/spatial-data-services/).
 2. Ten tweede is het raadzaam de geofences met [tags](notification-hubs-tags-segment-push-message.md) als doel te definiëren omdat u er zeker van wilt zijn dat er aan de juiste deelnemers wordt geleverd.
 
-In de oplossing in deze zelfstudie wordt een scenario beschreven waarin u mogelijk veel verschillende doelplatforms hebt; daarom hebben we geofencing niet beperkt tot systeemspecifieke mogelijkheden. Los daarvan is het wel zo dat het universele Windows-platform [direct na aanschaf](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence) mogelijkheden biedt voor het detecteren van geofences.
+In de oplossing in deze zelfstudie wordt een scenario beschreven waarin u mogelijk veel verschillende doelplatforms hebt; daarom hebben we geofencing niet beperkt tot systeemspecifieke mogelijkheden. Los daarvan is het wel zo dat het universele Windows-platform [direct na aanschaf](/windows/uwp/maps-and-location/set-up-a-geofence) mogelijkheden biedt voor het detecteren van geofences.

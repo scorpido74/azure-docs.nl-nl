@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63f2abe7a3890efbaf4c79186467a3eb20d8afda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0a1a5bf9f192a7128da8843b79b60be0175cec23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092130"
 ---
-# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-voor beeld: de account referenties opnieuw instellen
+# <a name="azure-cli-example-reset-the-account-credentials"></a>Voorbeeld van Azure CLI: De referenties voor het account opnieuw instellen
 
 In het Azure CLI-script in dit artikel ziet u hoe u de referenties van uw account opnieuw kunt instellen en de app.config-instellingen kunt terugkrijgen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Een Azure Media Services-account maken](create-account-cli-how-to.md).
+[Een Azure Media Services-account maken](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -45,5 +45,5 @@ az ams account sp reset-credentials \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [AZ AMS](/cli/azure/ams)
+* [az ams](/cli/azure/ams)
 * [Referenties opnieuw instellen](/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)

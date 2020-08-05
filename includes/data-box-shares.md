@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 06/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b8ebd085edfdb130f44c477d7697807d349e4e5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5aaf0ce747b14b2fa9f2fcd9a65b774aa7d2db3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102602"
 ---
 Data Box maakt op basis van het geselecteerde opslagaccount maximaal:
 
@@ -22,8 +22,8 @@ Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau cont
 
 In de volgende tabel ziet u het UNC-pad naar de shares op uw Data Box en de URL van het Azure Storage-pad waarnaar de gegevens worden geüpload. De uiteindelijke URL van het Azure Storage-pad kan worden afgeleid van het UNC-pad naar de shares.
  
-|                   |                                                            |
-|-------------------|--------------------------------------------------------------------------------|
+| Blobs en bestanden | Paden en URL's |
+| --------------- | -------------- |
 | Azure-blok-blobs | <li>UNC-pad naar shares: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-pagina-blobs  | <li>UNC-pad naar shares: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Azure Files       |<li>UNC-pad naar shares: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536161"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319266"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Zelfstudie: Een labelproject maken voor een afbeeldingsclassificatie met meerdere klassen 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,9 +146,7 @@ In dit gedeelte van de zelfstudie schakelt u over van functie, namelijk van *Pro
 
 1. Selecteer in [Machine Learning Studio](https://ml.azure.com) **Gegevens labelen** aan de linkerkant om het project te vinden.  
 
-1. Selecteer de projectnaam in de lijst.
-
-1. Selecteer onder de projectnaam **Labelgegevens**.
+1. Selecteer **Labelkoppeling** voor het project.
 
 1. Lees de instructies en selecteer vervolgens **Taken**.
 

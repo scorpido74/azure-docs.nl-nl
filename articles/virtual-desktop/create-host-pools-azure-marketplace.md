@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291436"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt. Objecten die u met Windows Virtual Desktop uit het najaar van 2019 maakt, kunnen niet worden beheerd met de Azure-portal.
->
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt. Objecten die u met Windows Virtual Desktop (klassiek) maakt, kunnen niet worden beheerd met Azure Portal.
 
 Hostgroepen zijn een verzameling van een of meer identieke virtuele machines (VM's) in Windows Virtual Desktop-omgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureaublad.
 

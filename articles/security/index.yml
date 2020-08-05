@@ -4,7 +4,7 @@ summary: Beveiliging is geïntegreerd in elk aspect van Azure. Azure biedt u uni
 brand: azure
 metadata:
   title: Documentatie over beveiliging in Azure
-  description: Beveiliging is geïntegreerd in elk aspect van Azure. Azure biedt u unieke beveiligingsvoordelen die voortvloeien uit wereldwijde beveiligingsstatistieken, geavanceerde klantgerichte besturingselementen en een veilige, versterkte infrastructuur. Door deze krachtige combinatie is het eenvoudiger om uw toepassingen en gegevens te beschermen, uw nalevingswerkzaamheden te ondersteunen en op kostenbewuste wijze beveiliging te bieden voor organisaties van elke omvang.
+  description: Meer informatie over beveiliging in Azure. Meer informatie over beveiligingsfundamenten, best practices en patronen en het Azure Security Center.
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115369"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540849"
 highlightedContent:
   items:
   - title: Inleiding tot Azure-beveiliging

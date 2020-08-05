@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ea0b28f5e0f23e0f8bb30e8fe2b0f792bce0709
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517617"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287440"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Wat zijn de nieuwe functies in Azure Application Gateway?
 
@@ -27,7 +27,7 @@ Azure Application Gateway wordt voortdurend bijgewerkt. Om u op de hoogte te hou
 
 |Functie  |Beschrijving  |Datum toegevoegd  |
 |---------|---------|---------|
-| Wildcard-hostnamen in listeners (preview) | U kunt nu wildcard-hostnamen definiëren in een listener voor meerdere sites (maximaal vijf hostnamen per listener). Zie [Wildcard-hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) en [Meerdere sites in Application Gateway te hosten met behulp van Azure Portal](create-multiple-sites-portal.md) voor de stapsgewijze handleiding voor meer informatie. | Juli 2020 |
+| Wildcard-hostnamen in listeners (preview) | U kunt nu wildcard-hostnamen definiëren in een listener voor meerdere sites (maximaal vijf hostnamen per listener). Zie [Hostnamen met jokertekens in listener (preview-versie)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) voor meer informatie | Juli 2020 |
 | URL herschrijven (preview) | U kunt nu het URL-pad en de queryreeksparameters herschrijven met behulp van URL herschrijven. Zie [HTTP-headers en URL herschrijven](rewrite-http-headers-url.md) voor meer informatie en zie [URL herschrijven in Application Gateway met behulp van Azure Portal](rewrite-url-portal.md) voor de stapsgewijze handleiding. | Juli 2020 |
 | Aangepaste poort voor statuscontrole | Application Gateway v2 SKU biedt nu de mogelijkheid om een aangepaste poort op te geven bij de configuratie van de statuscontrole. Zie [Overzicht statuscontrole](application-gateway-probe-overview.md) voor meer informatie | Juli 2020 |
 | AGIC (Application Gateway Ingress Controller) als AKS-invoegtoepassing (preview) |Application Gateway Ingress Controller kan nu met één regel worden geïmplementeerd als een systeemeigen AKS-invoegtoepassing via Azure CLI. Omdat AGIC een AKS-invoegtoepassing is, kan het een volledig beheerde service worden, terwijl het nog steeds wordt uitgevoerd in het AKS-cluster van de klant. Zie [Verschillen tussen AGIC-invoegtoepassingen](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) voor meer informatie. |Juni 2020 |

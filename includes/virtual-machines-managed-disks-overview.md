@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102595"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507139"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voordelen van beheerde schijven
 
@@ -41,7 +41,7 @@ Beheerde schijven ondersteunen [beschikbaarheidszones](../articles/availability-
 
 ### <a name="granular-access-control"></a>Gedetailleerd toegangsbeheer
 
-U kunt [op rollen gebaseerd toegangsbeheer (RBAC)](../articles/role-based-access-control/overview.md) van Azure gebruiken om specifieke machtigingen voor een beheerde schijf aan een of meer gebruikers toe te wijzen. Beheerde schijven bieden verschillende bewerkingen, waaronder lezen, schrijven (maken/bijwerken), verwijderen en ophalen van een [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) voor de schijf. U kunt alleen toegang verlenen tot de bewerkingen die een persoon nodig heeft om de taak uit te voeren. Als u bijvoorbeeld niet wilt dat een persoon een beheerde schijf naar een opslagaccount kopieert, kunt u ervoor kiezen geen toegang te verlenen tot de exportbewerking voor die beheerde schijf. En als u niet wilt dat een gebruiker een SAS-URI gebruikt om een beheerde schijf te kopiëren, kunt u ervoor kiezen deze machtiging niet te verlenen aan de beheerde schijf.
+U kunt [op rollen gebaseerd toegangsbeheer (Azure RBAC)](../articles/role-based-access-control/overview.md) van Azure gebruiken om specifieke machtigingen voor een beheerde schijf aan een of meer gebruikers toe te wijzen. Beheerde schijven bieden verschillende bewerkingen, waaronder lezen, schrijven (maken/bijwerken), verwijderen en ophalen van een [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) voor de schijf. U kunt alleen toegang verlenen tot de bewerkingen die een persoon nodig heeft om de taak uit te voeren. Als u bijvoorbeeld niet wilt dat een persoon een beheerde schijf naar een opslagaccount kopieert, kunt u ervoor kiezen geen toegang te verlenen tot de exportbewerking voor die beheerde schijf. En als u niet wilt dat een gebruiker een SAS-URI gebruikt om een beheerde schijf te kopiëren, kunt u ervoor kiezen deze machtiging niet te verlenen aan de beheerde schijf.
 
 ### <a name="upload-your-vhd"></a>Uw vhd uploaden
 

@@ -335,6 +335,8 @@
           items:
             - name: Door klant beheerde sleutels
               href: search-security-manage-encryption-keys.md
+            - name: Sleutelinformatie ophalen
+              href: search-security-get-encryption-keys.md
         - name: Binnenkomende beveiliging
           items:
             - name: API-toegangssleutels

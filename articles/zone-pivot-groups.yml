@@ -29,7 +29,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-two
@@ -61,7 +61,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
 - id: programming-languages-set-four
   title: Programmeertalen
   prompt: Een programmeertaal kiezen
@@ -83,7 +83,7 @@ groups:
   - id: programming-language-go
     title: Aan de slag
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
   - id: programming-language-ruby
@@ -95,7 +95,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-seven
@@ -131,7 +131,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-java
     title: Java
   - id: programming-language-other
@@ -145,7 +145,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-eleven
@@ -309,7 +309,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-eighteen
@@ -371,7 +371,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-more
     title: Meer talen...
 - id: programming-languages-set-two-with-js-go-spx
@@ -437,7 +437,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-objectivec
     title: Objective-C
 - id: programming-languages-set-nineteen
@@ -488,10 +488,18 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
+- id: aml-control-methods
+  title: Azure Machine Learning-besturingsvlak
+  prompt: Kies een Azure Machine Learning-besturingsvlakinterface
+  pivots:
+  - id: py-sdk
+    title: Python-SDK
+  - id: cli
+    title: Azure CLI
 metadata:
-  ms.openlocfilehash: ec7beebb81bf6a96912ff43a1e071f85d0d8a108
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: a16cb06637b777259e4e5115beb1299e8ed65a6b
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87291846"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87543517"

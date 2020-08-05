@@ -1,6 +1,5 @@
 ---
-title: 'Zelfstudie 1: Kredietrisico voorspellen'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klassiek) zelfstudie: Kredietrisico voorspellen - Azure'
 description: Een gedetailleerde zelfstudie voor het maken van een predictive analytics-oplossing voor kredietrisicobeoordeling in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8e2d0cd0d9aa567cfab9e2fef66ad6363e59d53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324893"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelfstudie 1: Kredietrisico voorspellen – Azure Machine Learning Studio (klassiek)
+
+**VAN TOEPASSING OP:** ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -311,6 +313,6 @@ U bent nu klaar om modellen voor deze gegevens te trainen en te evalueren.
 > [Zelfstudie 2: Modellen trainen en evalueren](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
+[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data

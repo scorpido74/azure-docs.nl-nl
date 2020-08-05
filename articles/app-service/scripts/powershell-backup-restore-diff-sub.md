@@ -1,6 +1,6 @@
 ---
-title: 'Power shell: back-up terugzetten naar een ander abonnement'
-description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een back-up herstelt in een ander abonnement.
+title: 'PowerShell: Back-up terugzetten naar een ander abonnement'
+description: Ontdek hoe u Azure PowerShell kunt gebruiken om implementatie en beheer van App Service kunt automatiseren. In dit voor beeld ziet u hoe u een back-up terugzet in een ander abonnement.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4a22148d4151fd3c80c7be439b5dd281200e5456
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c9dda1f3e011006d1b5072c5b71accb28963aedb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80044577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004865"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Een web-app terugzetten vanuit een back-up in een ander abonnement met behulp van PowerShell
 
 Met dit voorbeeldscript haalt u een eerder voltooide back-up van een bestaande web-app op en zet u deze terug naar een web-app in een ander abonnement. 
 
-Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/overview) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure. 
+Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -48,6 +48,6 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer voorbeelden voor Azure Powershell voor Azure App Service Web Apps vindt u in de [voorbeelden van Azure PowerShell](../samples-powershell.md).

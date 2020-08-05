@@ -1,5 +1,5 @@
 ---
-title: De VHD van een beheerde schijf exporteren/kopiëren naar een opslag account in een andere regio-Power shell-voor beeld
+title: VHD van beheerde schijf naar account in een andere regio (Windows) - PowerShell
 description: 'Voorbeeld van Azure PowerShell-script: VHD van een beheerde schijf exporteren/kopiëren naar een opslagaccount in dezelfde of een andere regio'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: 8388863bb88e3e97d16ad7c80aad6387cf9e03b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b3476dd671c6ee536c3f85408c328f55ba83a47b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010067"
 ---
-# <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>VHD van een beheerde schijf met PowerShell exporteren/kopiëren naar een opslagaccount in een andere regio
+# <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>VHD van een beheerde schijf met PowerShell exporteren/kopiëren naar een opslagaccount in een andere regio (Windows)
 
 Met dit script wordt de VHD van een beheerde schijf geëxporteerd naar een opslagaccount in een andere regio. Eerst wordt de SAS-URI van de beheerde schijf gegenereerd, waarna deze wordt gebruikt om de onderliggende VHD naar een opslagaccount in een andere regio te kopiëren. Gebruik dit script om beheerde schijven naar een andere regio te kopiëren voor regionale uitbreiding.  
 
@@ -41,16 +41,16 @@ Dit script gebruikt de volgende opdrachten voor het genereren van de SAS-URI voo
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Grant-AzDiskAccess](https://docs.microsoft.com/powershell/module/az.compute/grant-azdiskaccess) | Hiermee genereert u de SAS-URI voor een beheerde schijf die wordt gebruikt voor het kopiëren van de onderliggende VHD naar een opslagaccount. |
-| [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Hiermee maakt u de context voor een opslagaccount aan de hand van de accountnaam en de sleutel. Deze context kan worden gebruikt voor het uitvoeren van lees-/schrijfbewerkingen op het opslagaccount. |
-| [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Hiermee kopieert u de onderliggende VHD van een momentopname naar een opslagaccount. |
+| [Grant-AzDiskAccess](/powershell/module/az.compute/grant-azdiskaccess) | Hiermee genereert u de SAS-URI voor een beheerde schijf die wordt gebruikt voor het kopiëren van de onderliggende VHD naar een opslagaccount. |
+| [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) | Hiermee maakt u de context voor een opslagaccount aan de hand van de accountnaam en de sleutel. Deze context kan worden gebruikt voor het uitvoeren van lees-/schrijfbewerkingen op het opslagaccount. |
+| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) | Hiermee kopieert u de onderliggende VHD van een momentopname naar een opslagaccount. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Een beheerde schijf maken op basis van een VHD](virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-[Een virtuele machine maken van een beheerde schijf](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Een virtuele machine maken op basis van een beheerde schijf](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 U kunt extra PowerShell-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Windows-VM's](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

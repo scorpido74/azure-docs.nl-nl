@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: een beheerd Azure AD DS-domein met geavanceerde configuratie maken'
-description: In deze zelfstudie leert u hoe u een door Azure Active Directory Domain Services beheerd domein maakt en configureert en hoe u geavanceerde configuratieopties opgeeft met Azure Portal.
+title: 'Zelfstudie: een aangepast domein maken dat wordt beheerd met Active Directory Domain Services | Microsoft Docs'
+description: In deze zelfstudie leert u hoe u een aangepast domein maakt en configureert dat wordt beheerd met Azure Active Directory Domain Services en hoe u geavanceerde configuratieopties opgeeft met Azure Portal.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518518"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278541"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Zelfstudie: Een door Azure Active Directory Domain Services beheerd domein maken en configureren met geavanceerde configuratieopties
 
@@ -131,7 +131,7 @@ Vul als volgt de velden in het venster *Netwerk* in:
     1. Als u ervoor kiest om een virtueel netwerk te maken, voert u een naam in voor het virtuele netwerk, zoals *myVnet*. Geef vervolgens een adresbereik, zoals *10.0.1.0/24*, op.
     1. Maak een toegewezen subnet met een duidelijke naam, zoals *Domeinservices*. Geef een adresbereik op, zoals *10.0.1.0/24*.
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [ ![Een virtueel netwerk en subnet maken om te gebruiken voor Azure AD Domain Services](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Kies een adresbereik dat binnen uw persoonlijke IP-adresbereik valt. IP-adresbereiken waarvan u geen eigenaar bent en die zich in de openbare adresruimte bevinden, veroorzaken fouten in Azure AD DS.
 
@@ -159,7 +159,7 @@ De wizard maakt automatisch de groep *AAD DC-beheerders* in uw Azure AD-director
 
 ## <a name="configure-synchronization"></a>Synchronisatie configureren
 
-In Azure AD DS kunt u *alle* gebruikers en groepen synchroniseren die beschikbaar zijn in Azure AD, of een synchronisatie *met een bereik* van alleen specifieke groepen. Als u ervoor kiest om *alle* gebruikers en groepen te synchroniseren, kunt u er later niet voor kiezen om alleen een synchronisatie met een bereik uit te voeren. Zie [Synchronisatie met een bereik in Azure AD Domain Services][scoped-sync] voor meer informatie over synchronisatie met een bereik.
+In Azure AD DS kunt u *alle* gebruikers en groepen synchroniseren die beschikbaar zijn in Azure AD, of een synchronisatie *met een bereik* van alleen specifieke groepen. U kunt het synchronisatiebereik nu wijzigen of wanneer het beheerde domein is geïmplementeerd. Zie [Synchronisatie met een bereik in Azure AD Domain Services][scoped-sync] voor meer informatie.
 
 1. Voor deze zelfstudie kiest u ervoor om **alle** gebruikers en groepen te synchroniseren. Deze synchronisatiekeuze is de standaardoptie.
 

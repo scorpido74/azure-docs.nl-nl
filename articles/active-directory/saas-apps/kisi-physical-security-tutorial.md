@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 65062b886000a9a0e19dec7d72bf27ab1e1790eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Kisi Physical Security
 
@@ -85,9 +85,12 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://identity.kms.kisi.io/saml/<DOMAIN>`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://api.kisi.io/saml/metadata`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://identity.kms.kisi.io/saml/<DOMAIN>`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://api.kisi.io/saml/consume/<DOMAIN>`
+
+    > [!NOTE] 
+    > `DOMAIN` is een kleine alfanumerieke id die door Kisi is toegewezen aan de organisatie. Dit is **niet** hetzelfde als de DNS-domeinnaam van de organisatie.*
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -101,14 +104,14 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     ![image](common/default-attributes.png)
 
 1. Bovendien verwacht de Kisi Physical Security-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
-    
+
     | Naam | Bronkenmerk|
     | ---------------| --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
     | Email | user.userprincipalname |
 
-1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
@@ -119,7 +122,7 @@ In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Porta
 1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
-   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
@@ -150,7 +153,7 @@ Als u eenmalige aanmelding wilt configureren in **Kisi Physical Security**, moet
 
 In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Kisi Physical Security. Kisi Physical Security biedt ondersteuning voor Just-In-Time-inrichting van gebruikers, wat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Kisi Physical Security bestaat, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>Eenmalige aanmelding testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 

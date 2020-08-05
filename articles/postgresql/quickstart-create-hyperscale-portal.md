@@ -1,6 +1,6 @@
 ---
-title: Gedistribueerde tabellen maken-grootschalige (Citus)-Azure Database for PostgreSQL
-description: Quick start voor het maken en doorzoeken van gedistribueerde tabellen op Azure Database for PostgreSQL grootschalige (Citus).
+title: Gedistribueerde tabellen maken - Hyperscale (Citus) - Azure Database for PostgreSQL
+description: Quickstart voor het maken en uitvoeren van query's van gedistribueerde tabellen op Azure Database for PostgreSQL Hyperscale (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,34 +8,34 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241512"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387401"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Quick Start: een Azure Database for PostgreSQL-grootschalige (Citus) maken in de Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Quickstart: Een Azure Database for PostgreSQL - Hyperscale (Citus) maken in Azure Portal
 
-Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze Quick start ziet u hoe u een Citus-Server groep (Azure Database for PostgreSQL-grootschalige) maakt met behulp van de Azure Portal. U bekijkt gedistribueerde gegevens: sharding-tabellen tussen knoop punten, opname van voorbeeld gegevens en uitvoeren van query's die worden uitgevoerd op meerdere knoop punten.
+Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze snelstart ontdekt u hoe u een Azure Database for PostgreSQL - Hyperscale (Citus)-servergroep maakt in Azure Portal. U verkent gedistribueerde gegevens: sharding van tabellen over knooppunten, de opname van voorbeeldgegevens en het uitvoeren van query's die op meerdere knooppunten worden uitgevoerd.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="create-and-distribute-tables"></a>Tabellen maken en distribueren
 
-Wanneer u bent verbonden met het grootschalige-coördinator knooppunt met behulp van psql, kunt u een aantal basis taken volt ooien.
+Zodra u met behulp van psql verbinding hebt gemaakt met het hyperscale-coördinatorknooppunt, kunt u een aantal basistaken voltooien.
 
-Binnen grootschalige-servers zijn er drie soorten tabellen:
+Op Hyperscale-servers zijn drie typen tabellen aanwezig:
 
-- Gedistribueerde of Shard tabellen (uitbrei ding om te schalen voor prestaties en parallel Lise ring)
-- Referentie tabellen (meerdere exemplaren worden bewaard)
-- Lokale tabellen (vaak gebruikt voor interne admin-tabellen)
+- Gedistribueerde tabellen of tabellen waarop sharding is toegepast (uitgespreid voor schaalaanpassing voor prestaties en parallellisering)
+- Referentietabellen (meerdere kopieën)
+- Lokale tabellen (vaak gebruikt voor interne beheertabellen)
 
-In deze Quick Start worden voornamelijk de focus op gedistribueerde tabellen toegepast en worden deze vertrouwd.
+In deze quickstart richten we ons met name op gedistribueerde tabellen en proberen we onze bekendheid hiermee te vergroten.
 
-Het gegevens model waarmee we werken, is eenvoudig: gebruikers-en gebeurtenis gegevens van GitHub. Gebeurtenissen zijn onder andere het maken van een Fork, Git-door Voer die betrekking hebben op een organisatie en meer.
+Het gegevensmodel waarmee we gaan werken is eenvoudig: gebruikers- en gebeurtenisgegevens van GitHub. Gebeurtenissen zijn bijvoorbeeld het maken van een fork, git-opmerkingen met betrekking tot een organisatie, enzovoort.
 
-Zodra u verbinding hebt gemaakt via psql, gaan we onze tabellen maken. Voer de volgende handelingen uit in de psql-console:
+Zodra u via psql verbinding hebt gemaakt, gaan we onze tabellen maken. Voer in de psql-console het volgende uit:
 
 ```sql
 CREATE TABLE github_events
@@ -62,30 +62,32 @@ CREATE TABLE github_users
 );
 ```
 
-Het `payload` veld van `github_events` bevat een JSONB-gegevens type. JSONB is het JSON-gegevens type in binaire vorm in post gres. Het gegevens type maakt het eenvoudig om een flexibel schema in één kolom op te slaan.
+Het veld `payload` van `github_events` heeft een JSONB-gegevenstype. JSONB is het JSON-gegevenstype in binaire vorm in Postgres. Door dit gegevenstype is het eenvoudig om een flexibel schema in één kolom op te slaan.
 
-Post gres kan een `GIN` index voor dit type maken, waarmee elke sleutel en waarde erin wordt geïndexeerd. Met een index wordt het snel en eenvoudig om de payload te doorzoeken met verschillende voor waarden. We gaan nu een aantal indexen maken voordat we onze gegevens laden. In psql:
+In Postgres kan een `GIN`-index voor dit type worden gemaakt, waarmee elke sleutel en waarde in dit type worden geïndexeerd. Met een index kunt u snel en gemakkelijk query's uitvoeren op de nettolading met verschillende voorwaarden. Maak nu een aantal indexen voordat we onze gegevens gaan laden. In psql:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Daarna nemen we deze post gres-tabellen op het coördinator knooppunt door en geven ze grootschalige om ze te Shard over de werk nemers. Hiervoor voeren we een query uit voor elke tabel die de sleutel opgeeft waarop deze moet worden Shard. In het huidige voor beeld Shard de tabel Evenementen en gebruikers op `user_id`:
+Vervolgens maken we die Postgres-tabellen op het coördinatorknooppunt en geven we aan Hyperscale door dat ze via sharding naar de werknemers moet worden gestuurd. Hiervoor voeren we een query uit voor elke tabel en geven we de sleutel op waarmee de sharding moet worden uitgevoerd. In het huidige voorbeeld passen we sharding toe op zowel de gebeurtenissen- als de gebruikerstabel op `user_id`:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
-We zijn klaar om gegevens te laden. In psql gaat u naar de bestanden downloaden:
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
+
+We kunnen nu gegevens laden. Blijf in psql en gebruik een shell (???) om de bestanden te downloaden:
 
 ```sql
 \! curl -O https://examples.citusdata.com/users.csv
 \! curl -O https://examples.citusdata.com/events.csv
 ```
 
-Laad vervolgens de gegevens van de bestanden in de gedistribueerde tabellen:
+Hierna laadt u de gegevens uit de bestanden in de gedistribueerde tabellen:
 
 ```sql
 SET CLIENT_ENCODING TO 'utf8';
@@ -96,13 +98,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Query's uitvoeren
 
-Nu is het tijd voor het leuke deel, waarbij sommige query's werkelijk worden uitgevoerd. Laten we beginnen met een eenvoudige `count (*)` om te zien hoeveel gegevens er zijn geladen:
+Nu gaan we over naar het leuke gedeelte: we gaan een aantal query's uitvoeren. We beginnen met een eenvoudige `count (*)` om te zien hoeveel gegevens we hebben geladen:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Dat werkte goed. We gaan terug naar die combi natie van aggregatie in een bit, maar we kijken nu naar een aantal andere query's. In de kolom `payload` JSONB is een goede hoeveelheid gegevens beschikbaar, maar deze is afhankelijk van het gebeurtenis type. `PushEvent`gebeurtenissen bevatten een grootte die het aantal unieke door voeringen voor de push bevat. We kunnen deze gebruiken om het totale aantal door voeringen per uur te vinden:
+Dat ging goed. We komen later terug bij dat soort aggregaties, maar voor nu kijken we eerst naar een aantal andere query's. In de JSONB `payload`-kolom staan vele gegevens, maar het varieert op basis van het gebeurtenistype. `PushEvent`-gebeurtenissen bevatten een grootte met daarin het aantal unieke doorvoeringen voor de push. Hiermee kunnen we het totale aantal doorvoeringen per uur vinden:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +115,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Tot dusver hebben de query's alleen betrekking op\_de GitHub-gebeurtenissen, maar we kunnen deze informatie combi\_neren met github-gebruikers. Omdat we zowel gebruikers als gebeurtenissen op dezelfde id (`user_id`) Shard, worden de rijen van beide tabellen met overeenkomende gebruikers-id's op dezelfde database knooppunten [geplaatst](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) en kunnen ze eenvoudig worden gekoppeld.
+Tot dusver gingen de query's alleen over de github\_-gebeurtenissen, maar we kunnen deze informatie combineren met github\_-gebruikers. Omdat we sharding hebben toegepast op gebruikers en gebeurtenissen met dezelfde id (`user_id`), bevinden de rijen van beide tabellen met overeenkomende gebruikers-id's zich op [dezelfde locatie](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation), namelijk op dezelfde databaseknooppunten, en kunnen ze eenvoudig worden gekoppeld.
 
-Als we eraan deel `user_id`nemen, kunnen grootschalige de uitvoering van de samen voeging naar Shards pushen om parallel te worden uitgevoerd op worker-knoop punten. Laten we bijvoorbeeld de gebruikers vinden die het grootste aantal opslag plaatsen hebben gemaakt:
+Als we naar `user_id` gaan, kan Hyperscale de samenvoegbewerking in shards pushen, zodat ze tegelijkertijd kunnen worden uitgevoerd op werkknooppunten. Laten we bijvoorbeeld de gebruikers zoeken die het grootste aantal opslagplaatsen hebben gemaakt:
 
 ```sql
 SELECT gu.login, count(*)
@@ -130,12 +132,12 @@ SELECT gu.login, count(*)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voor gaande stappen hebt u Azure-resources in een server groep gemaakt. Als u deze resources in de toekomst niet meer nodig hebt, verwijdert u de Server groep. Druk op de knop **verwijderen** op de pagina **overzicht** voor uw server groep. Wanneer u hierom wordt gevraagd, bevestigt u de naam van de Server groep en klikt u op de laatste knop **verwijderen** .
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop **Verwijderen** op de pagina **Overzicht** voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een grootschalige (Citus)-Server groep kunt inrichten. U hebt verbinding gemaakt met het psql, een schema en gedistribueerde gegevens.
+In deze quickstart hebt u geleerd hoe u een Hyperscale (Citus)-servergroep inricht. U hebt psql gebruikt om hiermee verbinding te maken, u hebt een schema gemaakt en u hebt gegevens gedistribueerd.
 
-Volg vervolgens een zelf studie voor het bouwen van schaal bare multi tenant-toepassingen.
+Volg hierna een zelfstudie om schaalbare toepassingen met meerdere tenants te bouwen.
 > [!div class="nextstepaction"]
-> [Een multi tenant-data base ontwerpen](https://aka.ms/hyperscale-tutorial-multi-tenant)
+> [Een database met meerdere tenants ontwerpen](https://aka.ms/hyperscale-tutorial-multi-tenant)

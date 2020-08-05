@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: c21a16d043f972042949d6340985774741b3df6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 365c6a6a10ee79d96c1054416669e84c5392344c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74888595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092164"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI-voorbeeld: Een transformatie maken
 
@@ -27,14 +27,14 @@ In het Azure CLI-script in dit artikel ziet u hoe u een transformatie kunt maken
 
 ## <a name="prerequisites"></a>Vereisten 
 
-[Een Azure Media Services-account maken](create-account-cli-how-to.md).
+[Een Azure Media Services-account maken](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
-> U kunt alleen een pad opgeven naar een aangepaste standaard Encoder voor een JSON-bestand voor [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Zie het voor beeld voor [coderen met een aangepaste transform](custom-preset-cli-howto.md) .
+> U kunt alleen een pad opgeven naar een aangepast, vooraf ingesteld JSON-bestand voor een Standard Encoder voor [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Zie het voorbeeld [Coderen met een aangepaste transformatie](custom-preset-cli-howto.md).
 >
-> U kunt geen bestands naam door geven wanneer u [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)gebruikt.
+> U kunt geen bestandsnaam doorgeven wanneer u [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) gebruikt.
 
 ## <a name="example-script"></a>Voorbeeldscript
 
@@ -42,4 +42,4 @@ In het Azure CLI-script in dit artikel ziet u hoe u een transformatie kunt maken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[AZ AMS Transform (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)
+[az ams transform (CLI)](/cli/azure/ams/transform?view=azure-cli-latest)

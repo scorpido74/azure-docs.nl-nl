@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een webzoekopdracht uitvoeren met Java-Bing Web Search REST API'
+title: 'Quickstart: Een zoekopdracht op internet uitvoeren met Java - REST API voor Bing Web Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Java en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,25 +10,25 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.custom: seodec2018, devx-track-java
+ms.openlocfilehash: a1347364066f4b36256782dd8891390a47bae020
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326763"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Java en het Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Quickstart: Nieuws zoeken met Java en de REST API van Bing News Search
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige Java-toepassing wordt een zoek opdracht voor nieuws naar de API verzonden en wordt het JSON-antwoord weer gegeven.
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Nieuws zoeken-API te maken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het JSON-antwoord weer.
 
-Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java). 
+De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java). 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK) 7 of 8](https://aka.ms/azure-jdks).
+* De [Java Development Kit(JDK) 7 of 8](https://aka.ms/azure-jdks).
 * De [Gson-bibliotheek](https://github.com/google/gson).
 
 
@@ -49,7 +49,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
     import com.google.gson.JsonParser;
     ```
 
-2. Maak een nieuwe klasse. Voeg variabelen toe voor het API-eind punt, uw abonnements sleutel en zoek term. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak een nieuwe klasse. Voeg variabelen toe voor het API-eindpunt, uw abonnementssleutel en zoekterm. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -63,7 +63,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>De zoekopdracht opbouwen en een JSON-antwoord ontvangen
 
-1. Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag op te maken. URL: Codeer uw zoek term voordat u deze toevoegt aan de aanvraag.
+1. Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag te formatteren. Versleutel uw zoekterm met een URL voordat u deze aan de aanvraag toevoegt.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -74,7 +74,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
     }
     ```
 
-2. Het JSON-antwoord van de Bing Nieuws zoeken-API te ontvangen en het resultaat object samen te stellen.
+2. Ontvang het JSON-antwoord van de Bing Nieuws zoeken-API en bouw het resultaatobject op.
 
     ```java
     // receive JSON body
@@ -101,7 +101,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
     return results;
     ```
 
-2. Maak een methode om de JSON-resultaten te parseren en te serialiseren.
+2. Maak een methode om de JSON-resultaten te parseren en reserialiseren.
 
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -113,7 +113,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
     }
     ```
 
-3. In de hoofd methode van uw toepassing roept u de Zoek methode aan en geeft u de resultaten weer.
+3. Roep de zoekmethode aan in de hoofdmethode van uw toepassing en geef de resultaten weer.
 
     ```java
    public static void main (String[] args) {

@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: Handleidingen voor probleemoplossing
       items:
+        - name: Data Factory-gebruikersinterface
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Activiteiten
           href: data-factory-troubleshoot-guide.md
         - name: Connectors

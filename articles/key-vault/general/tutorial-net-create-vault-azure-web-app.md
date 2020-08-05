@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013263"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Zelfstudie: Een beheerde identiteit gebruiken om Key Vault te koppelen met een Azure-web-app met .NET
 
@@ -28,7 +28,7 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 * Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
 * De [.NET Core 3.1 SDK of hoger](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/)
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -51,7 +51,7 @@ Als u een sleutelkluis wilt maken, gebruikt u de opdracht [az keyvault create](/
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Noteer de geretourneerde `vaultUri`, die de notatie 'https://<your-keyvault-name>.vault.azure.net/' heeft. Deze wordt gebruikt in de stap [De code bijwerken](#update-the-code).
+Noteer de geretourneerde `vaultUri`, die de notatie "https://&lt;uw-sleutelkluis-naam&gt;.vault.azure.net/" heeft. Deze wordt gebruikt in de stap [De code bijwerken](#update-the-code).
 
 U kunt nu een geheim in uw sleutelkluis plaatsen met de opdracht [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set). Stel de naam van het geheim in op 'MySecret' en de waarde op 'Success!'.
 

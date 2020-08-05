@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: Windows-Vm's maken en beheren met Azure PowerShell"
+title: "Zelfstudie: Windows-VM's maken en beheren met Azure PowerShell"
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt voor het maken en beheren van virtuele Windows-machines in Azure
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 229df5d2f5186ad7cec08952f2a44790f9220dfe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c896e617346c9bab598044cedfc475b471466cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998847"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Zelfstudie: Windows-VM's maken en beheren met Azure PowerShell
 
-Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines (VM's), zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een VM. Procedures voor:
+Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines (VM's), zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een VM. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
@@ -30,13 +30,13 @@ Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele comp
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep met de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup).
+Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
-Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Voordat een virtuele machine wordt gemaakt, moet een resourcegroep worden gemaakt. In het volgende voor beeld wordt een resource groep met de naam *myResourceGroupVM* gemaakt in de regio *eastus* :
+Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Voordat een virtuele machine wordt gemaakt, moet een resourcegroep worden gemaakt. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupVM* gemaakt in de regio *VS - Oost*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -50,13 +50,13 @@ De resourcegroep wordt opgegeven tijdens het maken of wijzigen van een virtuele 
 
 Wanneer u een VM maakt, zijn er diverse opties beschikbaar, zoals besturingssysteeminstallatiekopie, netwerkconfiguratie en beheerdersreferenties. In dit voorbeeld wordt een VM gemaakt met de naam *myVM*, waarop de standaardversie van Windows Server 2016 Datacenter wordt uitgevoerd.
 
-Stel met [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) de gebruikersnaam en het wachtwoord in die nodig zijn voor het beheerdersaccount op de VM:
+Stel met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) de gebruikersnaam en het wachtwoord in die nodig zijn voor het beheerdersaccount op de VM:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Maak de VM met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
+Maak de VM met [New-AzVM](/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -87,19 +87,19 @@ Gebruik de volgende opdracht op uw lokale machine om een sessie met een extern b
 mstsc /v:<publicIpAddress>
 ```
 
-Selecteer in het venster **Windows-beveiliging****Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam en het wachtwoord die u hebt gemaakt voor de VM en klik vervolgens op **OK**.
+Selecteer in het venster **Windows-beveiliging** **Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam en het wachtwoord die u hebt gemaakt voor de VM en klik vervolgens op **OK**.
 
 ## <a name="understand-marketplace-images"></a>Inzicht krijgen in Marketplace-installatiekopieën
 
 Azure Marketplace bevat vele installatiekopieën die kunnen worden gebruikt voor het maken van een nieuwe VM. In de vorige stappen is een VM gemaakt met behulp van de Windows Server 2016 Datacenter-installatiekopie. In deze stap wordt de PowerShell-module gebruikt om op de Marketplace te zoeken naar andere Windows-installatiekopieën, die ook als basis voor nieuwe virtuele machines kunnen worden gebruikt. Dit proces bestaat uit het vinden van de uitgever, aanbieding, SKU en eventueel een versienummer om de installatiekopie te [identificeren](cli-ps-findimage.md#terminology).
 
-Gebruik de opdracht [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) om een lijst met uitgevers van installatiekopieën te retourneren:
+Gebruik de opdracht [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) om een lijst met uitgevers van installatiekopieën te retourneren:
 
 ```azurepowershell-interactive
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Gebruik de opdracht [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) om een lijst met aanbiedingen van installatiekopieën te retourneren. Met deze opdracht wordt de geretourneerde lijst gefilterd op de opgegeven uitgever met de naam `MicrosoftWindowsServer`:
+Gebruik de opdracht [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) om een lijst met aanbiedingen van installatiekopieën te retourneren. Met deze opdracht wordt de geretourneerde lijst gefilterd op de opgegeven uitgever met de naam `MicrosoftWindowsServer`:
 
 ```azurepowershell-interactive
 Get-AzVMImageOffer `
@@ -117,7 +117,7 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-Met de opdracht [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) wordt vervolgens gefilterd op de naam van de uitgever en de aanbieding, waarna een lijst met namen van installatiekopieën wordt geretourneerd.
+Met de opdracht [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) wordt vervolgens gefilterd op de naam van de uitgever en de aanbieding, waarna een lijst met namen van installatiekopieën wordt geretourneerd.
 
 ```azurepowershell-interactive
 Get-AzVMImageSku `
@@ -175,16 +175,16 @@ In de volgende tabel zijn grootten gecategoriseerd in use-cases.
 
 | Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Algemeen doel](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
-| [Geoptimaliseerde rekenkracht](sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
-| [Geoptimaliseerd geheugen](sizes-memory.md)    | Esv3, Ev3, M, DSv2, dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](sizes-storage.md)      | Lsv2, ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
-| [Hoge prestaties](sizes-hpc.md) | H        | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
+| [Algemeen gebruik](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
+| [Geoptimaliseerde rekenkracht](../sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
+| [Geoptimaliseerd geheugen](../sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerde opslag](../sizes-storage.md)      | Lsv2, Ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
+| [GPU](../sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
+| [Hoge prestaties](../sizes-hpc.md) | H        | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
 
 ### <a name="find-available-vm-sizes"></a>Beschikbare VM-grootten zoeken
 
-Als u een lijst wilt weergeven met de VM-grootten die beschikbaar zijn in een bepaalde regio, gebruikt u de opdracht [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize).
+Als u een lijst wilt weergeven met de VM-grootten die beschikbaar zijn in een bepaalde regio, gebruikt u de opdracht [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize).
 
 ```azurepowershell-interactive
 Get-AzVMSize -Location "EastUS"
@@ -194,7 +194,7 @@ Get-AzVMSize -Location "EastUS"
 
 Nadat een virtuele machine is geïmplementeerd, kan de grootte ervan worden gewijzigd om meer of minder resources toe te wijzen.
 
-Voordat u de grootte van een virtuele machine wijzigt, moet u controleren of de grootte die u wenst, beschikbaar in het huidige VM-cluster. Met de opdracht [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) wordt een lijst met grootten geretourneerd.
+Voordat u de grootte van een virtuele machine wijzigt, moet u controleren of de grootte die u wenst, beschikbaar in het huidige VM-cluster. Met de opdracht [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) wordt een lijst met grootten geretourneerd.
 
 ```azurepowershell-interactive
 Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
@@ -245,7 +245,7 @@ Een Azure VM kan op een van de vele energiestatussen worden ingesteld.
 | - | De energiestatus van de VM is onbekend. |
 
 
-Gebruik de opdracht [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) om de status van een bepaalde virtuele machine op te halen. Zorg ervoor dat u een geldige naam opgeeft voor een VM en een resourcegroep.
+Gebruik de opdracht [Get-AzVM](/powershell/module/az.compute/get-azvm) om de status van een bepaalde virtuele machine op te halen. Zorg ervoor dat u een geldige naam opgeeft voor een VM en een resourcegroep.
 
 ```azurepowershell-interactive
 Get-AzVM `
@@ -268,7 +268,7 @@ Tijdens de levenscyclus van een VM wilt u wellicht beheertaken uitvoeren, zoals 
 
 ### <a name="stop-a-vm"></a>Een VM stoppen
 
-U kunt een VM stoppen en de toewijzing ervan ongedaan maken met de opdracht [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm):
+U kunt een VM stoppen en de toewijzing ervan ongedaan maken met de opdracht [Stop-AzVM](/powershell/module/az.compute/stop-azvm):
 
 ```azurepowershell-interactive
 Stop-AzVM `

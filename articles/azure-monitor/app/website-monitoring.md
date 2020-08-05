@@ -1,48 +1,48 @@
 ---
-title: 'Snelstartgids: websites controleren met Azure Monitor Application Insights'
-description: In deze Quick Start leert u hoe u de bewaking van client/browser-side website met Azure Monitor Application Insights kunt instellen.
+title: 'Quickstart: Websites bewaken met Azure Monitor Application Insights'
+description: In deze quickstart krijgt u informatie over het instellen van client/browser-functies voor het controleren van websites met Azure Monitor Application Insights.
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323431"
 ---
-# <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Quick Start: uw website bewaken met Azure Monitor Application Insights
+# <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Quickstart: Uw website bewaken met Azure Monitor Application Insights
 
-In deze Snelstartgids leert u hoe u de Open Source-Application Insights java script SDK kunt toevoegen aan uw website. U leert ook hoe u beter inzicht krijgt in de client/browser-side-ervaring voor bezoekers van uw website.
+In deze quickstart leert u hoe u de opensource Application Insights JavaScript-SDK aan uw website kunt toevoegen. Ook leert u hoe meer inzicht krijgt in de client-/browserervaring voor bezoekers van uw website.
 
-Met Azure Monitor Application Insights kunt u eenvoudig de beschikbaarheid, de prestaties en het gebruik van een website controleren. U kunt ook snel fouten in de toepassing identificeren en er een diagnose voor uitvoeren, zonder dat u hoeft te wachten totdat een gebruiker ze heeft gerapporteerd. Application Insights biedt bewakings mogelijkheden aan de server zijde en de client/browser-zijde.
+Met Azure Monitor Application Insights kunt u eenvoudig de beschikbaarheid, de prestaties en het gebruik van een website controleren. U kunt ook snel fouten in de toepassing identificeren en er een diagnose voor uitvoeren, zonder dat u hoeft te wachten totdat een gebruiker ze heeft gerapporteerd. Application Insights biedt mogelijkheden voor controles van de server evenals van de browser/client.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Een website waaraan u de Application Insights java script-SDK kunt toevoegen.
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Een website waaraan u de Application Insights JavaScript-SDK kunt toevoegen.
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
-Application Insights kunt telemetriegegevens verzamelen van elke toepassing met Internet verbinding die on-premises of in de Cloud wordt uitgevoerd. Gebruik de volgende stappen om deze gegevens weer te geven:
+Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke toepassing met een internetverbinding, ongeacht of deze on-premises wordt uitgevoerd of in de cloud. Gebruik de volgende stappen om deze gegevens weer te geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Selecteer **een resource** > **beheer hulpprogramma's** > maken**Application Insights**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Selecteer **Een resource maken** > **Hulpprogramma's voor beheer** > **Application Insights**.
 
    > [!NOTE]
-   >Als dit de eerste keer is dat u een Application Insights resource maakt, raadpleegt u [een Application Insights resource maken](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
-1. Wanneer het configuratie venster wordt weer gegeven, gebruikt u de volgende tabel om de invoer velden te volt ooien:
+   >Als dit de eerste keer is dat u een Application Insights-resource maakt, raadpleegt u [Een Application Insights-resource maken](./create-new-resource.md).
+1. Wanneer een configuratiescherm wordt weergegeven, gebruikt u de volgende tabel om de invoervelden in te vullen:
 
     | Instellingen        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Naam**      | Globaal unieke waarde | De naam waarmee de app wordt geïdentificeerd die u bewaken. |
-   | **Resource groep**     | myResourceGroup      | De naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens. Maak een nieuwe resourcegroep of gebruik een bestaande. |
-   | **Locatie** | VS - oost | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+   | **Naam**      | Globaal unieke waarde | De naam die de app identificeert die u wilt controleren. |
+   | **Resourcegroep**     | myResourceGroup      | De naam voor de nieuwe resourcegroep waarin App Insights-gegevens worden gehost. Maak een nieuwe resourcegroep of gebruik een bestaande. |
+   | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost. |
 1. Selecteer **Maken**.
 
 ## <a name="create-an-html-file"></a>Een HTML-bestand maken
 
-1. Maak op uw lokale computer een bestand met de naam ``hello_world.html``. Voor dit voor beeld maakt u het bestand in de hoofdmap van station C zodat het eruit ziet ``C:\hello_world.html``.
+1. Maak op uw lokale computer een bestand met de naam ``hello_world.html``. Maak bijvoorbeeld het bestand in de hoofdmap van station C zodat het er als volgt uitziet: ``C:\hello_world.html``.
 1. Kopieer en plak het volgende script in ``hello_world.html``:
 
     ```html
@@ -58,13 +58,13 @@ Application Insights kunt telemetriegegevens verzamelen van elke toepassing met 
     </html>
     ```
 
-## <a name="configure-application-insights-sdk"></a>Application Insights SDK configureren
+## <a name="configure-application-insights-sdk"></a>Application Insights-SDK configureren
 
-1. Selecteer **overzicht** > **essentiële**elementen en kopieer de **instrumentatie sleutel**van uw toepassing.
+1. Selecteer **Overzicht** > **Essentials** en kopieer de **Instrumentatiesleutel** van uw toepassing.
 
    ![Nieuw Application Insights-resourceformulier](media/website-monitoring/instrumentation-key-001.png)
 
-1. Voeg het volgende script toe aan ``hello_world.html`` het bestand vóór de ``</head>`` afsluitende tag:
+1. Voeg het volgende script toe aan het ``hello_world.html``-bestand vóór de afsluitende ``</head>``-code:
 
    ```javascript
    <script type="text/javascript">
@@ -78,15 +78,15 @@ Application Insights kunt telemetriegegevens verzamelen van elke toepassing met 
 
 1. Bewerk ``hello_world.html`` en voeg de instrumentatiesleutel toe.
 
-1. Open ``hello_world.html`` in een lokale browsersessie. Met deze actie maakt u één pagina weergave. U kunt uw browser vernieuwen om meerdere test pagina weergaven te genereren.
+1. Open ``hello_world.html`` in een lokale browsersessie. Met deze actie maakt u één paginaweergave. U kunt uw browser vernieuwen voor het genereren van meerdere testpaginaweergaven.
 
-## <a name="monitor-your-website-in-the-azure-portal"></a>Controleer uw website in de Azure Portal
+## <a name="monitor-your-website-in-the-azure-portal"></a>Uw website bewaken in Azure Portal
 
-1. Open de pagina **overzicht** van Application Insights in het Azure Portal om de details van de toepassing die momenteel wordt uitgevoerd, weer te geven. Op de **overzichts** pagina wordt de instrumentatie sleutel opgehaald.
+1. Open de pagina **Overzicht** van Application Insights opnieuw in Azure Portal om details weer te geven van de toepassing die momenteel wordt uitgevoerd. De pagina **Overzicht** is de locatie waar u uw instrumentatiesleutel hebt opgehaald.
 
-   De vier standaardgrafieken op de overzichtspagina hebben betrekking op toepassingsgegevens op de server. Omdat we de communicatie tussen de client en de browser met de Java script SDK behandelen, is deze specifieke weer gave niet van toepassing tenzij er ook een SDK aan de server zijde is geïnstalleerd.
+   De vier standaardgrafieken op de overzichtspagina hebben betrekking op toepassingsgegevens op de server. Omdat we de interacties van de browser/client instrumenteren met de JavaScript SDK, is deze specifieke weergave niet van toepassing tenzij er ook een SDK op de server is geïnstalleerd.
 
-1. Het **Analytics** ![pictogram](media/website-monitoring/006.png)van het Analytics-toepassings overzicht selecteren.  Met deze actie wordt de **analyse**geopend. deze biedt een uitgebreide query taal voor het analyseren van alle gegevens die worden verzameld door Application Insights. Voer de volgende query uit om gegevens te bekijken die gerelateerd zijn aan de browser aanvragen aan de client zijde:
+1. Selecteer **Analytics** ![pictogram van toepassingsoverzicht](media/website-monitoring/006.png).  Door deze actie wordt **Analytics** geopend. Dit biedt een uitgebreide querytaal voor het analyseren van alle gegevens die zijn verzameld met Application Insights. Als u gegevens wilt weergeven die betrekking hebben op de browseraanvragen van de client, moet u de volgende query uitvoeren:
 
     ```kusto
     // average pageView duration by name
@@ -105,31 +105,32 @@ Application Insights kunt telemetriegegevens verzamelen van elke toepassing met 
 
    ![Analytics-grafiek met gebruikersaanvragen gedurende een tijdsperiode](./media/website-monitoring/analytics-query.png)
 
-1. Ga terug naar de **overzichtspagina**. Selecteer in de kop **onderzoek** de optie **browser**en selecteer vervolgens **prestaties**.  De metrische gegevens met betrekking tot de prestaties van uw website worden weer gegeven. Er is een overeenkomende weer gave voor het analyseren van fouten en uitzonde ringen in uw website. U kunt voor **beelden** selecteren om toegang te krijgen tot de [end-to-end-transactie gegevens](../../azure-monitor/app/transaction-diagnostics.md).
+1. Ga terug naar de **overzichtspagina**. Selecteer onder de header **Onderzoeken** de optie **Browser** en selecteer vervolgens **Prestaties**.  Er worden metrische gegevens met betrekking tot de prestaties van uw website weergegeven. Er is een overeenkomstige weergave waarmee u fouten en uitzonderingen op uw website kunt analyseren. U kunt **Voorbeelden** selecteren voor toegang tot de [volledige transactiedetails](./transaction-diagnostics.md).
 
    ![Grafiek voor metrische servergegevens](./media/website-monitoring/browser-performance.png)
 
-1. Selecteer in het hoofd menu Application Insights, onder de kop **Usage** , de optie [**gebruikers**](../../azure-monitor/app/usage-segmentation.md) om te beginnen met het verkennen van de [analyse hulpprogramma's voor gebruikers gedrag](../../azure-monitor/app/usage-overview.md). Omdat we testen vanaf één computer, worden er alleen gegevens voor één gebruiker weer gegeven. Voor een live website kan de distributie van gebruikers er als volgt uitzien:
+1. Selecteer in het hoofdmenu van Application Insights, onder de header **Gebruik** de optie [**Gebruikers**](./usage-segmentation.md) om aan de slag te gaan met het verkennen van de [hulpprogramma's voor analyse van het gedrag van gebruikers](./usage-overview.md). Omdat we vanaf één computer testen, zien we alleen gegevens voor één gebruiker. Voor een live website kan de verdeling van gebruikers er als volgt uitzien:
 
      ![Gebruikersgrafiek](./media/website-monitoring/usage-users.png)
 
-1. Voor een complexere website met meerdere pagina's kunt u het hulp programma [**Gebruikersstromen**](../../azure-monitor/app/usage-flows.md) gebruiken om de routes bij te houden die bezoekers door de verschillende onderdelen van uw website door nemen.
+1. Voor een complexere website met meerdere pagina's kunt u het hulpprogramma [**User Flows**](./usage-flows.md) gebruiken om de routes die bezoekers door de verschillende onderdelen van uw website bij te houden.
 
    ![Gebruikersstromen visualiseren](./media/website-monitoring/user-flows.png)
 
-Zie de naslag informatie over [Java script SDK API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)voor meer geavanceerde configuraties voor het controleren van websites.
+Zie de [naslagdocumentatie over de JavaScript SDK API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md) als u meer wilt weten over geavanceerdere configuraties voor het controleren van websites.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met andere Quick starts of zelf studies, kunt u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Gebruik anders de volgende stappen om alle resources te verwijderen die door deze Quick Start in de Azure Portal zijn gemaakt.
+Als u van plan bent om met extra quickstarts of zelfstudies te werken, moet u geen resources opschonen die u in deze quickstart hebt gemaakt. Anders kunt u de volgende stappen gebruiken om alle resources te verwijderen die door deze quickstart in Azure Portal zijn gemaakt.
 
 > [!NOTE]
-> Als u een bestaande resource groep hebt gebruikt, werken de volgende instructies niet. U kunt in plaats daarvan alleen de afzonderlijke Application Insights resource verwijderen. Als u een resource groep verwijdert, worden alle underyling-resources die lid zijn van die groep ook verwijderd.
+> Als u een bestaande resourcegroep gebruikt, werken de volgende instructies niet. In plaats daarvan kunt u gewoon de afzonderlijke Application Insights-resource verwijderen. Houd er rekening mee dat wanneer u een resourcegroep verwijdert, alle onderliggende resources die lid zijn van die groep ook worden verwijderd.
 
-1. Selecteer **resource groepen**in het menu links op het Azure Portal en selecteer vervolgens **myResourceGroup** of de naam van uw tijdelijke resource groep.
-1. Selecteer op de pagina resource groep **verwijderen**, Voer **myResourceGroup** in het tekstvak in en selecteer vervolgens **verwijderen**.
+1. Selecteer in het linkermenu in Azure Portal de optie **Resourcegroepen** en selecteer vervolgens **myResourceGroup** of de naam van uw tijdelijke resourcegroep.
+1. Selecteer op de pagina van uw resourcegroep de optie **Verwijderen**, voer **myResourceGroup** in het tekstvak in en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Prestatieproblemen zoeken en diagnoses uitvoeren](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Prestatieproblemen zoeken en diagnoses uitvoeren](../log-query/log-query-overview.md)
+

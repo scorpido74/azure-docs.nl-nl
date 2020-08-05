@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 035fc4840b08a0a9807c228cb5f63c191efc524a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: effe3125a2d41f0410a1a0b3a87c41da39feb6d9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256880"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291353"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Zelfstudie: Servicewaarschuwingen instellen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
->
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 U kunt Azure Service Health gebruiken om serviceproblemen en statusadviezen voor Windows Virtual Desktop te monitoren. Via Azure Service Health kunt u verschillende soorten meldingen ontvangen (bijvoorbeeld e-mail of sms), inzicht krijgen in de impact van een probleem en op de hoogte worden gehouden tijdens het oplossen van een probleem. Ook kan Azure Service Health u helpen bij het verminderen van downtime en bij de voorbereiding op gepland onderhoud en wijzigingen die de beschikbaarheid van uw bronnen kunnen beïnvloeden.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Java gebruiken om de Bing Web Search aan te roepen REST API'
+title: 'Quickstart: Java gebruiken om de Bing Web Search REST API aan te roepen'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Java en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -10,17 +10,17 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: e6652d28da6bf142125e6ec284af16c849b00b1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322054"
 ---
-# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Snelstartgids: Java gebruiken om op internet te zoeken met de Bing Web Search REST API, een Azure cognitieve service
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Quickstart: Java gebruiken om op internet te zoeken met de Bing Web Search REST API, een cognitieve service van Azure
 
-In deze Quick Start gebruikt u een Java-toepassing om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze Java-toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+In deze quickstart gebruikt u een Java-app om de Bing Web Search API voor het eerst aan te roepen.Deze Java-app verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. This Java application sends a search request to the API, and shows the JSON response. Hoewel deze app in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>GSON declareren in het Maven POM-bestand
 
-Als u maven gebruikt, declareert u Gson in POM. XML. Sla deze stap over als u GSON lokaal hebt geïnstalleerd.
+Als u Maven gebruikt, declareert u Gson in de POM.xml. Sla deze stap over als u GSON lokaal hebt geïnstalleerd.
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ Als u maven gebruikt, declareert u Gson in POM. XML. Sla deze stap over als u GS
 
 ## <a name="declare-the-bingwebsearch-class"></a>De klasse BingWebSearch declareren
 
-Declareer de klasse `BingWebSearch`. Het bevat de meeste code die we in deze Snelstartgids bekijken, inclusief de- `main()` methode.  
+Declareer de klasse `BingWebSearch`. Deze bevat de meeste code die we in deze quickstart bekijken, waaronder de methode `main()`.  
 
 ```java
 public class BingWebSearch {
@@ -73,13 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Met de volgende code wordt de,, en ingesteld `subscriptionKey` `host` `path` `searchTerm` . Voeg deze code toe aan de `BingWebSearch` klasse die wordt beschreven in de vorige sectie:
+Met de volgende code worden `subscriptionKey`, `host`, `path` en `searchTerm` ingesteld. Voeg deze code toe aan de klasse `BingWebSearch`, zoals is beschreven in de vorige sectie:
 
-1. Voor de `host` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource. 
+1. Voor de `host`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in Azure Portal. 
 
 2. Vervang de waarde `subscriptionKey` door een geldige abonnementssleutel uit uw Azure-account. 
 
-3. U kunt de zoek query eventueel aanpassen door de waarde voor te vervangen `searchTerm` . 
+3. U kunt de zoekquery eventueel aanpassen door de waarde voor `searchTerm` te vervangen. 
 
 ```java
 // Enter a valid subscription key.
@@ -97,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>Een aanvraag samenstellen
 
-De `SearchWeb()` methode, die deel uitmaakt van de- `BingWebSearch` klasse, bouwt het `url` -, ontvangt en parseert het antwoord en extraheert Bing-gerelateerde http-headers.  
+Met de methode `SearchWeb()` uit de klasse `BingWebSearch` wordt de `url` samengesteld, wordt het antwoord ontvangen en geparseerd en worden de HTTP-headers voor Bing uitgepakt.  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -143,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>De hoofdmethode declareren
 
-De `main()` methode is vereist en is de eerste methode die wordt aangeroepen wanneer u het programma start. In deze toepassing bevat de code die de `subscriptionKey` , een aanvraag maakt en vervolgens het JSON-antwoord afdrukt.
+De methode `main()` is vereist en is de eerste methode die wordt aangeroepen wanneer u het programma start. In deze app bevat de methode code die de `subscriptionKey` valideert, een aanvraag maakt, en het JSON-antwoord afdrukt.
 
 ```java
 public static void main (String[] args) {
@@ -173,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>Een containerklasse maken voor zoekresultaten
 
-De `SearchResults` container klasse is buiten de klasse gedefinieerd `BingWebSearch` . Het omvat relevante headers en JSON-gegevens voor het antwoord.
+De containerklasse `SearchResults` wordt buiten de klasse `BingWebSearch` gedefinieerd. Het omvat relevante headers en JSON-gegevens voor het antwoord.
 
 ```java
 class SearchResults{
@@ -188,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-De laatste stap is het compileren van uw code en het uitvoeren ervan. Gebruik de volgende opdrachten:
+De laatste stap bestaat uit het compileren en uitvoeren van de code. Gebruik de volgende opdrachten:
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -326,6 +326,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Bing Webzoekopdrachten-API zelf studie voor een app met één pagina](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor de app met één pagina voor de Bing Web Search API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

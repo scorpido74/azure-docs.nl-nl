@@ -1,5 +1,5 @@
 ---
-title: "Overzicht: Query's uitvoeren op gegevens in de opslag met behulp van SQL on-demand (preview)"
+title: Query's uitvoeren op gegevens in de opslag met behulp van SQL on-demand (preview)
 description: In dit artikel wordt beschreven hoe u een query uitvoert op Azure Storage met behulp van de SQL on demand-resource (preview) in Azure Synapse Analytics.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259675"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386653"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL
 
@@ -54,7 +54,7 @@ Lees het artikel [Query uitvoeren op Parquet-bestanden](query-parquet-files.md) 
 
 ## <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
-Gebruik FORMAT = 'CSV' om een query uit te voeren op Parquet-brongegevens. U kunt het schema van het CSV-bestand opgeven als onderdeel van de `OPENROWSET`-functie bij het opvragen van CSV-bestanden:
+Gebruik FORMAT = 'CSV' om een query uit te voeren op CSV-brongegevens. U kunt het schema van het CSV-bestand opgeven als onderdeel van de `OPENROWSET`-functie bij het opvragen van CSV-bestanden:
 
 ```sql
 SELECT * FROM
@@ -186,7 +186,7 @@ De functie `OPENROWSET` zoekt standaard naar overeenkomsten van de bronveldnaam 
 - Als de eigenschap niet kan worden gevonden in de opgegeven kolomnaam, retourneert de functie een fout.
 - Als de eigenschap niet kan worden gevonden in de opgegeven kolomnaam, retourneert de functie, afhankelijk van [Padmodus](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), een fout in de strict-modus of null in de lax-modus.
 
-Raadpleeg de sectie Elementen benaderen vanuit geneste kolommen in het artikel [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md#access-elements-from-nested-columns) voor voorbeelden van query's.
+Raadpleeg de sectie Elementen benaderen vanuit geneste kolommen in het artikel [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md#read-properties-from-nested-object-columns) voor voorbeelden van query's.
 
 #### <a name="access-elements-from-repeated-columns"></a>Elementen benaderen vanuit herhaalde kolommen
 

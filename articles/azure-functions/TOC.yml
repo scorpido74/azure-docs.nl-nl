@@ -345,8 +345,8 @@
       items:
         - name: Problemen met opslag oplossen
           href: functions-recover-storage-account.md
-        - name: Problemen met Python-afhankelijkheden oplossen
-          href: recover-module-not-found.md
+        - name: Problemen met Python-functies oplossen
+          href: recover-python-functions.md
 - name: Naslaginformatie
   items:
     - name: API-referenties

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: 95e3e2be175fa810b1b966a7dda5a0e53e23d780
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116841"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Zelfstudie: Apparaatgegevens ontvangen via Azure IoT Hub
 
@@ -96,7 +96,7 @@ Gebruik uw apparaat (echt of gesimuleerd) om het voorbeeldbericht over hartslag 
 U kunt de FHIR Observation-resource(s) die is/zijn gemaakt door IoT-connector op de Azure API for FHIR met behulp van Postman weergeven. Stel uw [Postman in om toegang te krijgen tot de Azure API for FHIR](access-fhir-postman-tutorial.md) en maak een `GET`-aanvraag naar `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` om Observation FHIR-resources met de hartslagwaarde weer te geven die is verzonden in het bovenstaande voorbeeldbericht.
 
 > [!TIP]
-> Zorg ervoor dat uw usx'er de juiste toegang heeft tot de Azure API for FHIR-gegevensvlak. Gebruik [Op rollen gebaseerd toegangsbeheer van Azure](configure-azure-rbac.md) om gegevenslaagrollen toe te wijzen.
+> Zorg ervoor dat uw gebruiker de juiste toegang heeft tot de Azure API for FHIR-gegevensvlak. Gebruik [Op rollen gebaseerd toegangsbeheer van Azure](configure-azure-rbac.md) om gegevenslaagrollen toe te wijzen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

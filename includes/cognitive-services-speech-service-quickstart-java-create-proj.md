@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fa32668faa72973f765a75d4edc3e4598b43652
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: be62cb9cd9f9e603e60006d5482b59ed37a516ff
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609281"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375644"
 ---
 1. Start Eclipse.
 
@@ -17,25 +17,25 @@ ms.locfileid: "84609281"
 
    ![Schermopname van Eclipse Launcher](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
 
-1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het **welkomst** scherm als er een aanwezig is.
+1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het **welkomstscherm** als dit verschijnt.
 
-1. Maak in de menu balk voor eclips een nieuw project door **bestand**  >  **Nieuw**  >  **project**te kiezen.
+1. Maak via de Eclipse-menubalk een nieuw project aan door **Bestand** > **Nieuw** > **Project** te kiezen.
 
 1. Het dialoogvenster **Nieuw project** wordt weergegeven. Selecteer **Java-project** en vervolgens **Volgende**.
 
    ![Schermopname van het dialoogvenster Nieuw project, met Java-project gemarkeerd](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. De wizard **nieuw Java-project** wordt gestart. Voer in het veld **Projectnaam****quickstart** in en kies **JavaSE-1.8** als uitvoeringsomgeving. Selecteer **Finish**.
+1. De wizard **Nieuw Java-project** wordt gestart. Voer in het veld **Projectnaam** **quickstart** in en kies **JavaSE-1.8** als uitvoeringsomgeving. Selecteer **Finish**.
 
    ![Schermopname van de wizard Nieuw Java-project](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
 1. Als het venster **Gekoppeld perspectief openen?** wordt weergegeven, selecteert u **Perspectief openen**.
 
-1. Klik in de **Package explorer** met de rechtermuisknop op het **quickstart**-project. Kies **Configure**  >  **Convert to Maven project** in het context menu.
+1. Klik in de **Package explorer** met de rechtermuisknop op het **quickstart**-project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**.
 
    ![Schermopname van Package explorer](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Het venster **Nieuw POM maken** wordt weergegeven. Voer in het veld **groeps-id** *com. micro soft. cognitiveservices. speech. samples*in en voer in het veld **artefact-id** *Quick*start in. Selecteer vervolgens **volt ooien**.
+1. Het venster **Nieuw POM maken** wordt weergegeven. Voer in het veld **Groeps-ID***com.microsoft.cognitiveservices.speech.samples* in, en voer in het veld **Artefact-ID** *quickstart* in. Selecteer vervolgens **Voltooien**.
 
    ![Schermopname van het venster Nieuw POM maken](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "84609281"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Voeg ook een `dependencies` -element toe, met de Speech SDK versie 1.12.1 als afhankelijkheid:
+   * Voeg ook een `dependencies`-element toe met de Speech SDK versie 1.13.0 als afhankelijkheid:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

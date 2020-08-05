@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373400"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129029"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory
 
@@ -47,7 +47,7 @@ Als u Application Proxy wilt gebruiken, hebt u een Windows-server nodig waarop W
 Om een hoge beschikbaarheid in uw productieomgeving te realiseren wordt aangeraden meer dan één Windows-server te gebruiken. Voor deze zelfstudie is één Windows-server toereikend.
 
 > [!IMPORTANT]
-> Als u de connector op Windows Server 2019 installeert, moet u HTTP2-protocolondersteuning uitschakelen in het WinHTTP-onderdeel. Dit is standaard uitgeschakeld in eerdere versies van ondersteunde besturingssystemen. U kunt het uitschakelen op Windows Server 2019 door de volgende registersleutel toe te voegen en de server opnieuw te starten. Dit is een machinebrede registersleutel.
+> Als u de connector op Windows Server 2019 installeert, moet u HTTP2-protocolondersteuning uitschakelen in het WinHTTP-onderdeel voor beperkte Kerberos-delegering. Dit is standaard uitgeschakeld in eerdere versies van ondersteunde besturingssystemen. U kunt het uitschakelen op Windows Server 2019 door de volgende registersleutel toe te voegen en de server opnieuw te starten. Dit is een machinebrede registersleutel.
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -88,12 +88,12 @@ TLS 1.2 inschakelen:
 
 1. Start de server opnieuw.
 
-> [!IMPORTANT]
-> Om onze klanten de allerbeste versleuteling te bieden, beperkt de Application Proxy-service de toegang tot alleen TLS 1.2-protocollen. Deze wijzigingen zijn geleidelijk aan geïmplementeerd en van kracht sinds 31 augustus 2019. Zorg ervoor dat al uw client-server- en browser-server-combinaties zijn bijgewerkt en TLS 1.2 gebruiken om verbonden te blijven met de Application Proxy-service. Dit omvat clients die uw gebruikers gebruiken voor toegang tot toepassingen die worden gepubliceerd via Application Proxy. Zie [Voorbereiden voor TLS 1.2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) voor handige naslaginformatie en bronnen.
-
 ## <a name="prepare-your-on-premises-environment"></a>Bereid uw on-premises omgeving voor
 
 Begin door communicatie met Azure-datacenters in te schakelen om uw omgeving voor te bereiden voor Azure AD Application Proxy. Als het pad een firewall bevat, zorg dan dat deze openstaat. Dankzij een open firewall kan de connector HTTPS-aanvragen (TCP) versturen naar Application Proxy.
+
+> [!IMPORTANT]
+> Als de connector voor de Azure Government-cloud installeert, volgt u de [vereisten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) en [installatiestappen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). Hiervoor moet u de toegang tot een andere set URL's en een extra parameter inschakelen om de installatie uit te voeren.
 
 ### <a name="open-ports"></a>Poorten openen
 
@@ -121,6 +121,7 @@ U kunt verbindingen met \*.msappproxy.net en \*.servicebus.windows.net toestaan 
 ## <a name="install-and-register-a-connector"></a>Een connector installeren en registreren
 
 Voor het gebruik van Application Proxy installeert u een connector op elke Windows-server die u gebruikt met de Application Proxy-service. De connector is een agent die de uitgaande verbinding vanaf de on-premises toepassingsservers naar Application Proxy in Azure AD beheert. U kunt een connector installeren op servers waarop ook andere verificatie-agents zijn geïnstalleerd, zoals Azure AD Connect.
+
 
 De connector installeren:
 

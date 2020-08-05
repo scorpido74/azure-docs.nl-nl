@@ -91,7 +91,7 @@
       items:
         - name: Overzicht uitgebreide toegang
           href: groups-features.md
-        - name: Groepen ontdekken
+        - name: Groepen onder beheer brengen
           href: groups-discover-groups.md
         - name: Lid of eigenaar toewijzen
           href: groups-assign-member-owner.md

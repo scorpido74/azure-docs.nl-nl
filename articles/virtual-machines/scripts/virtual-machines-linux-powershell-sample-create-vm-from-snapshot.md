@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine maken op basis van een moment opname-Power shell-voor beeld
+title: Een virtuele machine maken op basis van een momentopname (Linux) - PowerShell-voorbeeld
 description: 'Azure PowerShell-voorbeeldscript: een virtuele machine maken op basis van een momentopname'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 21e31df7552dfe5e6368235173622695078626b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d6bf74b9040ec3f677c23c84f8ece22befb35d56
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75463658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010288"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Een virtuele machine maken van een momentopname met PowerShell
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-linux"></a>Een virtuele machine maken van een momentopname met PowerShell (Linux)
 
 Met dit script maakt u een virtuele machine van een momentopname van een besturingssysteemschijf.
 
@@ -48,18 +48,18 @@ Dit script gebruikt de volgende opdrachten voor het opvragen van de momentopname
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | Hiermee haalt u een momentopname op met de naam van de momentopname. |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | Hiermee maakt u een schijfconfiguratie. Deze configuratie wordt gebruikt bij het maken van de schijf. |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | Hiermee maakt u een beheerde schijf. |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Hiermee maakt u een VM-configuratie. Deze configuratie bevat informatie zoals de naam, het besturingssysteem en de beheerdersreferenties van de virtuele machine. De configuratie wordt gebruikt tijdens het maken van de virtuele machine. |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | Hiermee wordt de beheerde schijf als besturingssysteemschijf gekoppeld aan de virtuele machine |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres. |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u een netwerkinterface. |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine. |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | Hiermee haalt u een momentopname op met de naam van de momentopname. |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Hiermee maakt u een schijfconfiguratie. Deze configuratie wordt gebruikt bij het maken van de schijf. |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Hiermee maakt u een beheerde schijf. |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Hiermee maakt u een VM-configuratie. Deze configuratie bevat informatie zoals de naam, het besturingssysteem en de beheerdersreferenties van de virtuele machine. De configuratie wordt gebruikt tijdens het maken van de virtuele machine. |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | Hiermee wordt de beheerde schijf als besturingssysteemschijf gekoppeld aan de virtuele machine |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres. |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u een netwerkinterface. |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine. |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 U kunt extra PowerShell-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

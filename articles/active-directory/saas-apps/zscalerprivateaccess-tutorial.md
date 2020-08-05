@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Zscaler private Access (ZPA) | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Zscaler private Access (ZPA).
+title: 'Zelfstudie: Integratie van Azure Active Directory met Zscaler Private Access Administrator (ZPA) | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Zscaler Private Access (ZPA).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,161 +16,164 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a1538f640bb4722eca1d4f3a80125837593bab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 07607d6695d1010e5a704ed05608e9ea2587a64b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67085734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016153"
 ---
-# <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Zelf studie: Zscaler private Access (ZPA) integreren met Azure Active Directory
+# <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Zelfstudie: Zscaler Private Access (ZPA) integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u Zscaler private Access (ZPA) kunt integreren met Azure Active Directory (Azure AD). Wanneer u Zscaler private Access (ZPA) integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Zscaler Private Access (ZPA) integreert met Azure Active Directory (Azure AD). Wanneer u Zscaler Private Access (ZPA) integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot Zscaler private Access (ZPA).
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld voor Zscaler private Access (ZPA) met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot Zscaler Private Access (ZPA).
+* Uw gebruikers zich automatisch laten aanmelden bij Zscaler Private Access (ZPA) met hun Azure AD-account.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Zscaler private Access (ZPA) eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Zscaler Private Access-abonnement (ZPA) waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
+
+> [!NOTE]
+> Deze integratie is ook beschikbaar voor gebruik vanuit de Azure AD US Government Cloud-omgeving. U kunt deze toepassing vinden in de toepassingsgalerie van Azure AD US Government Cloud en deze op dezelfde manier configureren als vanuit een openbare cloud.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Zscaler private Access (ZPA) ondersteunt door **SP** geïnitieerde SSO.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. Zscaler private Access (ZPA) ondersteunt door **SP** geïnitieerde SSO.
 
-## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>Zscaler private Access (ZPA) toevoegen vanuit de galerie
+## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>Zscaler Private Access (ZPA) toevoegen vanuit de galerie
 
-Als u de integratie van Zscaler private Access (ZPA) wilt configureren in azure AD, moet u Zscaler private Access (ZPA) uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Zscaler Private Access (ZPA) met Azure AD wilt configureren, dient u Zscaler Private Access (ZPA) vanuit de galerie toe te voegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Zscaler persoonlijke toegang (ZPA)** in het zoekvak.
-1. Selecteer **Zscaler private Access (ZPA)** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. In de sectie **Toevoegen vanuit de galerie** typt u **Zscaler Private Access (ZPA)** in het zoekvak.
+1. Selecteer **Zscaler Private Access (ZPA)** in het deelvenster met resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO configureren en testen met Zscaler private Access (ZPA) met behulp van een test gebruiker met de naam **Julia Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Zscaler private Access (ZPA).
+Configureer en test Azure AD-eenmalige aanmelding met Zscaler Private Access (ZPA) met behulp van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Zscaler Private Access (ZPA).
 
-Als u Azure AD SSO wilt configureren en testen met Zscaler private Access (ZPA), voltooit u de volgende bouw stenen:
+Als u eenmalige aanmelding van Azure AD met Zscaler Private Access (ZPA) wilt configureren en testen, moet u de volgende bouwblokken voltooien:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
-2. **[Zscaler private Access (ZPA) configureren](#configure-zscaler-private-access-zpa)** om de SSO-instellingen aan de kant van de toepassing te configureren.
-3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding voor Azure ad te testen met Julia Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om Julia Simon in staat te stellen om eenmalige aanmelding van Azure ad te gebruiken.
-5. **[Maak Zscaler private Access (ZPA) test gebruiker](#create-zscaler-private-access-zpa-test-user)** een equivalent van Julia Simon in Zscaler private Access (ZPA) die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Zscaler Private Access (ZPA) configureren](#configure-zscaler-private-access-zpa)** om de instellingen voor eenmalige aanmelding aan de zijde van de toepassing te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** voor het testen van eenmalige aanmelding bij Azure AD met Britta Simon.
+4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat Britta Simon gebruik kan maken van eenmalige aanmelding bij Azure AD.
+5. **[Testgebruiker van Zscaler Private Access (ZPA) maken](#create-zscaler-private-access-zpa-test-user)** : als u een equivalent van Britta Simon in Zscaler Private Access (ZPA) wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Zscaler private Access (ZPA)** Application Integration de sectie **Manage (beheren** ) en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Zscaler Private Access (ZPA)** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. Op de pagina **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
     1. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    1. Typ een URL in het vak **Id (Entiteits-id)**: `https://samlsp.private.zscaler.com/auth/metadata`
+    1. Typ een URL in het vak **Id (Entiteits-id)** : `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE]
-    > De waarde **voor de aanmeldings-URL** is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Zscaler private Access (ZPA)](https://help.zscaler.com/zpa-submit-ticket) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde voor **Aanmeldings-URL** is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [Ondersteuningsteam van Zscaler Private Access (ZPA)](https://help.zscaler.com/zpa-submit-ticket) om de waarde op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden en vervolgens op te slaan op de computer.
 
    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer op de sectie **Zscaler private Access (ZPA)** de juiste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **Zscaler Private Access (ZPA) instellen** de juiste URL('s) op basis van uw behoeften.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-zscaler-private-access-zpa"></a>Zscaler private Access (ZPA) configureren
+### <a name="configure-zscaler-private-access-zpa"></a>Zscaler Private Access (ZPA) configureren
 
-1. Als u de configuratie wilt automatiseren binnen Zscaler private Access (ZPA), moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
+1. Als u de configuratie in Zscaler Private Access (ZPA) wilt automatiseren, moet u **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op **Setup Zscaler private Access (ZPA)** naar de Zscaler-toepassing voor persoonlijke toegang (ZPA). Geef de beheerders referenties op om u aan te melden bij Zscaler private Access (ZPA). Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
+2. Nadat u een uitbreiding aan de browser hebt toegevoegd, klikt u op **Zscaler Private Access (ZPA) instellen** zodat u wordt omgeleid naar naar de toepassing Zscaler Private Access (ZPA). Geef hier de Administrator-referenties op om u aan te melden bij Zscaler Private Access (ZPA). In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Instelling configureren](common/setup-sso.png)
 
-3. Als u Zscaler private Access (ZPA) hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij de bedrijfs site van Zscaler private Access (ZPA) als beheerder en voert u de volgende stappen uit:
+3. Als u Zscaler Private Access (ZPA) handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de Zscaler Private Access-bedrijfssite (ZPA). Voer daarna de volgende stappen uit:
 
-4. Klik aan de linkerkant van het menu op **beheer** en ga naar de sectie **verificatie** en klik op **IDP-configuratie**.
+4. Klik aan de linkerkant van het menu op **Beheer**, navigeer naar de sectie **VERIFICATIE** en klik op **IdP-configuratie**.
 
-    ![Beheer van Zscaler private Access-beheerder](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-administration.png)
+    ![Zscaler Private Access Administrator-beheer](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-administration.png)
 
-5. Klik in de rechter bovenhoek op **IDP-configuratie toevoegen**. 
+5. Klik in de rechterbovenhoek op **IdP-configuratie toevoegen**. 
 
-    ![Zscaler private Access Administrator IDP](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-idp.png)
+    ![Zscaler Private Access Administrator-IdP](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-idp.png)
 
-6. Voer de volgende stappen uit op de pagina **IDP-configuratie toevoegen** :
+6. Voer op de pagina **IdP-configuratie toevoegen** de volgende stappen uit:
  
-    ![Zscaler-beheerder voor persoonlijke toegang selecteren](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-select.png)
+    ![Zscaler Private Access Administrator selecteren](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-select.png)
 
-    a. Klik op **bestand selecteren** om het gedownloade meta gegevensbestand te uploaden vanuit Azure AD in het IDP-bestand voor het **uploaden van meta gegevens** .
+    a. Klik op **Bestand selecteren** om het gedownloade metagegevensbestand uit Azure AD te uploaden in het veld **IdP-metagegevensbestand uploaden**.
 
-    b. De **meta gegevens van IDP** worden gelezen uit Azure AD en alle veld gegevens worden ingevuld zoals hieronder wordt weer gegeven.
+    b. De **IdP-metagegevens** uit Azure AD worden gelezen en de overeenkomende velden worden ingevuld, zoals hieronder weergegeven.
 
-    ![Zscaler persoonlijke toegang beheerder config](./media/zscalerprivateaccess-tutorial/config.png)
+    ![Zscaler Private Access Administrator configureren](./media/zscalerprivateaccess-tutorial/config.png)
 
-    c. Selecteer uw domein in het veld **domeinen** .
+    c. Selecteer in het veld **Domeinen** uw domein.
     
     d. Klik op **Opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
+In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`Britta Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Zscaler private Access (ZPA).
+In deze sectie hebt u Britta Simon in staat gesteld gebruik te maken van eenmalige aanmelding van Azure door haar toegang te geven tot Zscaler Private Access (ZPA).
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Zscaler private Access (ZPA)**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in de lijst met toepassingen **Zscaler Private Access (ZPA)** .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-zscaler-private-access-zpa-test-user"></a>Test gebruiker voor Zscaler private Access (ZPA) maken
+### <a name="create-zscaler-private-access-zpa-test-user"></a>Testgebruiker van Zscaler Private Access (ZPA) maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in Zscaler private Access (ZPA). Ga naar het [ondersteunings team van Zscaler private Access (ZPA)](https://help.zscaler.com/zpa-submit-ticket) om de gebruikers toe te voegen in het ZPA-platform (Zscaler private Access).
+In deze sectie maakt u een gebruiker met de naam Britta Simon in Zscaler Private Access (ZPA). Ga naar het ondersteuningsteam van [Zscaler Private Access (ZPA)](https://help.zscaler.com/zpa-submit-ticket) om de gebruikers toe te voegen aan het ZPA-platform (Zscaler Private Access).
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel Zscaler private Access (ZPA) in het toegangs venster selecteert, wordt u automatisch aangemeld bij de Zscaler private Access (ZPA) waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Als u in het toegangsvenster op de tegel Zscaler Private Access (ZPA) klikt, wordt u automatisch aangemeld bij de Zscaler Private Access (ZPA) waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

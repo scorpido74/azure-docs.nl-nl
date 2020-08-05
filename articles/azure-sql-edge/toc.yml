@@ -8,6 +8,8 @@
       href: features.md
     - name: Releaseopmerkingen
       href: release-notes.md
+    - name: Gegevensverzameling van gebruik en diagnostische gegevens
+      href: usage-and-diagnostics-data-configuration.md
 - name: Snelstartgidsen
   expanded: true
   items:

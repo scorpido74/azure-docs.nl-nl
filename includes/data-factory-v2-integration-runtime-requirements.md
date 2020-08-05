@@ -4,18 +4,18 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 07/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 994b8285999bfa52e2aea9a57ad832aefddcfb76
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: 6c348b3dd0005eeab154aa2d74abc617cbd1d0cb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544780"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529382"
 ---
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-Als uw gegevens archief zich in een on-premises netwerk, een virtueel Azure-netwerk of een virtuele particuliere cloud van Amazon bevindt, moet u een [zelf-hostende Integration runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) instellen om er verbinding mee te maken.
+Als uw gegevensarchief zich in een on-premises netwerk, een virtueel Azure-netwerk of een virtuele particuliere cloud van Amazon bevindt, moet u een [zelf-hostende Integration Runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) instellen om er verbinding mee te maken.
 
-Als uw gegevens archief een beheerde Cloud gegevens service is, waarbij de toegang wordt beperkt tot IP-adressen die worden white list in de firewall regels, kunt u Azure Integration runtime gebruiken en [de bijbehorende IP-adressen](../articles/data-factory/azure-integration-runtime-ip-addresses.md) toevoegen aan de acceptatie lijst. 
+Als uw gegevensarchief een beheerde cloudgegevensservice is, kunt u Azure Integration Runtime gebruiken. Als de toegang is beperkt tot IP-adressen op de goedgekeurde lijst in de firewallregels, kunt u ervoor kiezen om de [IP-adressen van Azure Integration Runtime](../articles/data-factory/azure-integration-runtime-ip-addresses.md) toe te voegen aan de acceptatielijst. 
 
-Zie [strategieën voor gegevens toegang](../articles/data-factory/data-access-strategies.md) voor informatie over de netwerk beveiligings mechanismen die door Data Factory worden ondersteund voor toegang tot gegevens archieven in het algemeen.
+Zie [Strategieën voor gegevenstoegang](../articles/data-factory/data-access-strategies.md) voor meer informatie over de netwerkbeveiligingsmechanismen en -opties die door Data Factory worden ondersteund.

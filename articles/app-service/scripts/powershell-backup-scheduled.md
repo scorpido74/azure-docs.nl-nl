@@ -1,6 +1,6 @@
 ---
-title: 'Power shell: een geplande back-up maken'
-description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een geplande back-up maakt voor een app.
+title: 'PowerShell: Een geplande back-up maken'
+description: Ontdek hoe u Azure PowerShell kunt gebruiken om implementatie en beheer van App Service kunt automatiseren. In dit voorbeeld wordt weergegeven hoe u een geplande back-up voor een app maakt.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 24723d442cdc684e109dee3270cdfbc217fd4f4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 636e41afc4d04b6e34a8087302a5d2dcdc31e468
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80044611"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083392"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Een geplande back-up voor een web-app maken met PowerShell
 
 Met dit voorbeeldscript wordt er een web-app gemaakt in App Service, inclusief de bijbehorende resources, en wordt er vervolgens een geplande back-up van de app gemaakt. 
 
-Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/overview) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure. 
+Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -37,11 +37,11 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Hiermee maakt u een opslagaccount. |
 | [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Hiermee wordt een Azure-opslagcontainer gemaakt. |
 | [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Hiermee wordt een SAS-token gegenereerd voor een Azure-opslagcontainer. |
@@ -53,6 +53,6 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer voorbeelden voor Azure Powershell voor Azure App Service Web Apps vindt u in de [voorbeelden van Azure PowerShell](../samples-powershell.md).

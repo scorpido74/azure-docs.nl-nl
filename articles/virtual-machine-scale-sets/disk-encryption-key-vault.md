@@ -9,16 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6350e85552a6c92592dbe2b1a9cf48a35f86a7be
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: acd2ae54d81fb508d5f8c02262cf8c2f0f071fb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198451"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080604"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
-Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijfversleuteling te beheren.  Zie [Aan de slag met Azure Key Vault](../key-vault/key-vault-get-started.md) en [Uw sleutelkluis beveiligen](../key-vault/general/secure-your-key-vault.md) voor meer informatie over sleutelkluizen.
+Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijfversleuteling te beheren.  Zie [Aan de slag met Azure Key Vault](../key-vault/general/overview.md) en [Uw sleutelkluis beveiligen](../key-vault/general/secure-your-key-vault.md) voor meer informatie over sleutelkluizen.
 
 Een sleutelkluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
 
@@ -32,7 +32,7 @@ U kunt eventueel ook een sleutelversleutelingssleutel genereren of importeren (K
 
 ## <a name="install-tools-and-connect-to-azure"></a>Hulpprogramma's installeren en verbinding maken met Azure
 
-U kunt de stappen in dit artikel voltooien met de [Azure CLI](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview) of de [Azure-portal](https://portal.azure.com).
+U kunt de stappen in dit artikel voltooien met de [Azure CLI](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/) of de [Azure-portal](https://portal.azure.com).
 
 ### <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
 

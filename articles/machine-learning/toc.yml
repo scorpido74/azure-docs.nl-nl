@@ -15,28 +15,6 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Studio
-      expanded: true
-      items:
-        - name: Designer (slepen en neerzetten)
-          items:
-            - name: 1. Een regressiemodel trainen
-              displayName: studio
-              href: tutorial-designer-automobile-price-train-score.md
-            - name: 2. Dit model implementeren
-              displayName: studio
-              href: tutorial-designer-automobile-price-deploy.md
-        - name: Geautomatiseerde machine learning (UI)
-          items:
-            - name: Geautomatiseerde ML-experimenten maken
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-first-experiment-automated-ml.md
-            - name: Vraag voorspellen (fietsdeelgegevens)
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-automated-ml-forecast.md
-        - name: Afbeeldingsgegevens labelen
-          displayName: 'tag, tagging, images'
-          href: tutorial-labeling.md
     - name: Python-SDK
       expanded: true
       items:
@@ -64,11 +42,33 @@
         - name: Uw code voorbereiden voor productie
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
+    - name: Studio
+      expanded: true
+      items:
+        - name: Geautomatiseerde machine learning (UI)
+          items:
+            - name: Geautomatiseerde ML-experimenten maken
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: Vraag voorspellen (fietsdeelgegevens)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: Designer (slepen en neerzetten)
+          items:
+            - name: 1. Een regressiemodel trainen
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. Dit model implementeren
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: Afbeeldingsgegevens labelen
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: R SDK
       items:
         - name: Uw eerste Machine Learning-experiment maken (R)
           href: tutorial-1st-r-experiment.md
-    - name: Machine learning-CLI
+    - name: CLI
       items:
         - name: Trainen en implementeren met CLI
           href: tutorial-train-deploy-model-cli.md
@@ -226,9 +226,6 @@
         - name: Privépakketten van Python gebruiken
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-private-python-packages.md
-        - name: Logboekregistratie inschakelen
-          displayName: 'troubleshoot, log, files, tracing'
-          href: how-to-enable-logging.md
         - name: Invoer- en uitvoermappen instellen
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
@@ -309,8 +306,12 @@
             - name: 'Uitvoeringen starten, bewaken of annuleren'
               displayName: 'cancel, fail, status, child run'
               href: how-to-manage-runs.md
-            - name: Metrische gegevens registreren voor trainingsuitvoeringen
+            - name: Logboeken inschakelen
+              displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
+            - name: Logboeken weergeven
+              displayName: 'troubleshoot, log, files, tracing'
+              href: how-to-monitor-view-training-logs.md
             - name: Experimenten bijhouden met MLflow
               displayName: 'log, monitor, metrics, Databricks'
               href: how-to-use-mlflow.md
@@ -363,7 +364,7 @@
         - name: Waar en hoe u implementeert
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Implementatiescenario's
+        - name: Implementatiedoelen
           items:
             - name: Bestaande modellen gebruiken
               displayName: publish existing model
@@ -394,19 +395,37 @@
               href: how-to-deploy-fpga-web-service.md
         - name: Problemen oplossen en fouten opsporen
           href: how-to-troubleshoot-deployment.md
-        - name: Clients maken
+        - name: Webservice gebruiken
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Modellen bewaken
+        - name: Webservice bijwerken
+          displayName: update hot reload model mounting
+          href: how-to-deploy-update-web-service.md
+        - name: Geavanceerde scriptinvoer ontwerpen
+          displayName: swagger inference schema binary cors
+          href: how-to-deploy-advanced-entry-script.md
+        - name: Webservices bewaken
           items:
             - name: Modelgegevens verzamelen en evalueren
               displayName: track production
               href: how-to-enable-data-collection.md
             - name: Controleren met behulp van Application Insights
               href: how-to-enable-app-insights.md
+        - name: Continu modellen implementeren
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: Service voor versleutelde deductie implementeren
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
+        - name: Profielmodellen
+          displayName: profile resource requirement
+          href: how-to-deploy-profile-model.md
+        - name: (Preview) implementatie zonder code
+          displayName: no code
+          href: how-to-deploy-no-code-deployment.md
+        - name: Pakketmodellen
+          displayName: docker file download
+          href: how-to-deploy-package-models.md
     - name: Machine Learning-pijplijnen maken en gebruiken
       displayName: pipelines
       items:
@@ -423,6 +442,9 @@
           href: how-to-debug-pipelines.md
         - name: Fouten met pijplijnen opsporen in Application Insights
           href: how-to-debug-pipelines-application-insights.md
+        - name: Metrische gegevens van het Designer-logboek
+          displayName: 'designer, logging'
+          href: how-to-track-designer-experiments.md
         - name: Gegevens transformeren met Designer
           displayName: pipeline
           href: how-to-designer-transform-data.md
