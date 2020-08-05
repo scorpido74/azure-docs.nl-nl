@@ -4,19 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 66422657aefa5bca2e7f20852a19faca63db5a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1c998c9a4574b31427cd5fdd2a12dbd6f0dd81b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85838882"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406305"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure-spraakservice maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure Speech-service maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 
 ## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
@@ -79,7 +80,7 @@ Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configura
 ```
 ## <a name="create-an-audio-configuration"></a>Een audioconfiguratie maken
 
-Nu moet u een `AudioConfig`-object maken dat verwijst naar het `PushAudioInputStream`. Voeg deze code toe onder uw Speech-configuratie.
+Nu moet u een `AudioConfig`-object maken dat verwijst naar uw `PushAudioInputStream`. Voeg deze code toe onder uw Speech-configuratie.
 
 ```JavaScript
     var audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
@@ -96,7 +97,7 @@ Nu gaan we het `SpeechRecognizer`-object maken met behulp van de `SpeechConfig`-
 ```
 ## <a name="recognize-a-phrase-and-display-results"></a>Een woordgroep herkennen en resultaten weergeven
 
-Vanuit het `SpeechRecognizer`-object roept u de `recognizeOnceAsync()`-methode aan. Met deze methode laat u de Speech-service weten dat u één woordgroep verstuurt voor herkenning en dat er kan worden gestopt met het herkennen van spraak zodra de woordgroep is geïdentificeerd.
+Vanuit het `SpeechRecognizer`-object roept u de methode `recognizeOnceAsync()` aan. Met deze methode laat u de Speech-service weten dat u één woordgroep verstuurt voor herkenning en dat er kan worden gestopt met het herkennen van spraak zodra de woordgroep is geïdentificeerd.
 
 We schrijven ook de geretourneerde tekst, of eventuele fouten, naar de console en sluiten tot slot de herkenner.
 ```JavaScript

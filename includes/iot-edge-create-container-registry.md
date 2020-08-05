@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387609"
+ms.locfileid: "87406708"
 ---
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
@@ -33,7 +33,7 @@ Als u nog geen containerregister hebt, volgt u deze stappen om een nieuw contain
 
 3. Selecteer **Maken**.
 
-4. Nadat u het containerregister hebt gemaakt, bladert u ernaartoe en selecteert u in het linkerdeelvenster **Toegangssleutels** in het menu onder **Instellingen**.
+4. Nadat u het containerregister hebt gemaakt, bladert u ernaartoe en selecteert u in het linkerdeelvenster **Toegangssleutels** in het menu onder **Instellingen**. 
 
 5. Klik om de beheerder in te schakelen om de **gebruikersnaam** en het **wachtwoord** voor het containerregister weer te geven.
 

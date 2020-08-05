@@ -4,19 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4e3b87055246c3060ab9a35e6a112782275633ae
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f41edf3d2d11f9fd881d86d207ce7f9abe2156de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035844"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405212"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure-spraakservice maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure Speech-service maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 
 ## <a name="create-a-new-website-folder"></a>Een nieuwe websitemap maken
@@ -71,7 +72,7 @@ Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.h
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>De voorbeeldtoepassing bouwen en uitvoeren via een webserver
 
-Om uw app te starten, opent u uw favoriete webbrowser en laat u deze wijzen naar de openbare URL waarop u de map host, geeft u uw [regio](../../../../regions.md) op en activeert u synthese van de ingevoerde tekst. Indien dit is geconfigureerd, wordt er een token uit uw tokenbron opgehaald.
+Als u uw app wilt starten, opent u uw favoriete webbrowser en laat u deze wijzen naar de openbare URL waarop u de map host, geeft u uw [regio](../../../../regions.md) op en activeert u synthese van de ingevoerde tekst. Indien dit is geconfigureerd, wordt er een token uit uw tokenbron opgehaald.
 
 
 ## <a name="next-steps"></a>Volgende stappen
