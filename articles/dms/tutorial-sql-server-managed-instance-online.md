@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/10/2020
-ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087659"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553305"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een Azure SQL Managed instance online migreren met behulp van DMS
 
@@ -262,6 +262,9 @@ Nadat de volledige back-up van de data base is hersteld op het doel exemplaar va
 4. Selecteer **Bevestigen** en selecteer vervolgens **Toepassen**.
 
     ![Voltooien van cutover voorbereiden](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
+
+    > [!IMPORTANT]
+    > Na de cutover kan de beschik baarheid van het SQL-beheerde exemplaar met Bedrijfskritiek servicelaag aanzienlijk langer duren dan Algemeen omdat drie secundaire replica's moeten worden geseedd voor de AlwaysOn-groep met hoge Beschik baarheid. De duur van deze bewerking is afhankelijk van de grootte van de gegevens. Zie [beheer bewerkingen duur](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration)voor meer informatie.
 
 5. Wanneer de status van de database migratie **is voltooid**, verbindt u uw toepassingen met het nieuwe doel exemplaar van SQL Managed instance.
 

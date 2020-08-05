@@ -6,7 +6,9 @@
       href: overview.md
     - name: 'Over sleutels, geheimen en certificaten'
       href: about-keys-secrets-certificates.md
-- name: Snelstarts
+    - name: Nieuwe functies
+      href: whats-new.md
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: CLI

@@ -1,15 +1,14 @@
 ---
 title: Problemen met de Azure Backup-Agent oplossen
 description: In dit artikel vindt u informatie over het oplossen van problemen met de installatie en registratie van de Azure Backup-Agent.
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054641"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564109"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -42,7 +41,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 
 | Oorzaak | Aanbevolen acties |
 | ---     | ---    |
-| **De kluis referenties zijn niet geldig** <br/> <br/> De kluis referentie bestanden zijn mogelijk beschadigd of verlopen. (Het is bijvoorbeeld mogelijk dat ze meer dan 48 uur vóór de registratie tijd hebben gedownload.)| Down load nieuwe referenties van Recovery Services kluis op de Azure Portal. (Zie stap 6 in het gedeelte [de Mars-agent downloaden](./install-mars-agent.md#download-the-mars-agent) .) Voer vervolgens de volgende stappen uit: <ul><li> Als u MARS al hebt geïnstalleerd en geregistreerd, opent u de MMC-console Microsoft Azure Backup Agent en selecteert u vervolgens **server registreren** in het deel venster **acties** om de registratie met de nieuwe referenties te volt ooien. <br/> <li> Als de nieuwe installatie mislukt, probeert u opnieuw te installeren met de nieuwe referenties.</ul> **Opmerking**: als er meerdere kluis referentie bestanden zijn gedownload, is alleen het meest recente bestand geldig voor de volgende 48 uur. U wordt aangeraden een nieuw kluis referentie bestand te downloaden.
+| **De kluis referenties zijn niet geldig** <br/> <br/> De kluis referentie bestanden zijn mogelijk beschadigd of verlopen. (Het is bijvoorbeeld mogelijk dat ze meer dan 48 uur vóór de registratie tijd hebben gedownload.)| [Down load nieuwe referenties](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) van de Recovery Services kluis op de Azure Portal. Voer vervolgens de volgende stappen uit: <ul><li> Als u MARS al hebt geïnstalleerd en geregistreerd, opent u de MMC-console Microsoft Azure Backup Agent. Selecteer vervolgens **server registreren** in het deel venster **acties** om de registratie met de nieuwe referenties te volt ooien. <br/> <li> Als de nieuwe installatie mislukt, probeert u opnieuw te installeren met de nieuwe referenties.</ul> **Opmerking**: als er meerdere kluis referentie bestanden zijn gedownload, is alleen het meest recente bestand geldig voor de volgende 48 uur. U wordt aangeraden een nieuw kluis referentie bestand te downloaden.
 | **De registratie van Proxy Server/firewall is geblokkeerd** <br/>of <br/>**Geen Internet verbinding** <br/><br/> Als uw computer of proxy server beperkte internet connectiviteit heeft en u geen toegang hebt tot de benodigde Url's, mislukt de registratie.| Voer de volgende stappen uit:<br/> <ul><li> Werk samen met uw IT-team om te controleren of het systeem verbinding heeft met internet.<li> Als u geen proxy server hebt, moet u ervoor zorgen dat de proxy optie niet is geselecteerd bij het registreren van de agent. [Controleer de proxy-instellingen](#verifying-proxy-settings-for-windows).<li> Als u een firewall/proxy server hebt, moet u samen werken met uw netwerk team om ervoor te zorgen dat deze Url's en IP-adressen toegang hebben:<br/> <br> **URL's**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Probeer de registratie opnieuw uit te voeren nadat u de voor gaande stappen voor probleem oplossing hebt door lopen.<br></br> Als uw verbinding via Azure ExpressRoute is, controleert u of de instellingen zijn geconfigureerd zoals beschreven in [ondersteuning voor Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Registratie wordt geblokkeerd door antivirus software** | Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
@@ -235,7 +234,7 @@ Voor MARS-agent bewerkingen moet de cachemap voldoen aan de onderstaande vereist
 
 ### <a name="increase-shadow-copy-storage"></a>Schaduw kopie opslag verhogen
 
-Back-upbewerkingen kunnen mislukken als er onvoldoende opslag ruimte voor schaduw kopieën is vereist om de gegevens bron te beveiligen. U kunt dit probleem oplossen door de opslag ruimte voor schaduw kopieën op het beveiligde volume met behulp van vssadmin te verhogen, zoals hieronder wordt weer gegeven:
+Back-upbewerkingen kunnen mislukken als er voldoende opslag ruimte voor schaduw kopieën is die vereist is om de gegevens bron te beveiligen. U kunt dit probleem oplossen door de opslag ruimte voor schaduw kopieën op het beveiligde volume met behulp van **vssadmin** te verhogen, zoals hieronder wordt weer gegeven:
 
 - Controleer de huidige schaduw opslag ruimte van de opdracht prompt met verhoogde bevoegdheid:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
@@ -246,8 +245,8 @@ Back-upbewerkingen kunnen mislukken als er onvoldoende opslag ruimte voor schadu
 
 Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen:  
 
-- De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
-- De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+- De map Scratch. De standaard locatie is`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- De bin-map op`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -258,26 +257,26 @@ In deze sectie worden de veelvoorkomende fouten besproken die u tegen komt tijde
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
 Foutbericht | Aanbevolen actie
--- | --
-De Microsoft Azure Recovery Services-agent heeft geen toegang gekregen tot de controlesom van de back-up die is opgeslagen op de scratchlocatie | U kunt dit probleem oplossen door de volgende stappen uit te voeren en de server opnieuw op te starten <br/> - [Controleren of er een anti-virus of andere processen zijn die de Scratch locatie bestanden vergren delen](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Controleer of de Scratch locatie geldig is en toegankelijk is voor Mars-agent.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+--|--
+De Microsoft Azure Recovery Services-agent heeft geen toegang gekregen tot de controlesom van de back-up die is opgeslagen op de scratchlocatie | U kunt dit probleem oplossen door de volgende stappen uit te voeren en de server opnieuw op te starten <br/> - [Controleren of er een anti-virus of andere processen zijn die de Scratch locatie bestanden vergren delen](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Controleer of de Scratch locatie geldig is en toegankelijk is voor de MARS-agent.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Foutbericht | Aanbevolen actie
--- | --
-De Microsoft Azure Recovery Services-agent heeft geen toegang gekregen tot de scratchlocatie om de VHD te initialiseren | U kunt dit probleem oplossen door de volgende stappen uit te voeren en de server opnieuw op te starten <br/> - [Controleren of er een anti-virus of andere processen zijn die de Scratch locatie bestanden vergren delen](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Controleer of de Scratch locatie geldig is en toegankelijk is voor Mars-agent.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+--|--
+De Microsoft Azure Recovery Services-agent heeft geen toegang gekregen tot de scratchlocatie om de VHD te initialiseren | U kunt dit probleem oplossen door de volgende stappen uit te voeren en de server opnieuw op te starten <br/> - [Controleren of de bestanden op de Scratch locatie worden vergrendeld door anti virus of andere processen](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Controleer of de Scratch locatie geldig is en toegankelijk is voor de MARS-agent.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 Foutbericht | Aanbevolen actie
--- | --
-Het maken van de back-up is mislukt vanwege onvoldoende opslag ruimte op het volume waar de Scratch map zich bevindt | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/>- [Controleren of de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
+--|--
+Het maken van de back-up is mislukt vanwege onvoldoende opslag ruimte op het volume waar de Scratch map zich bevindt | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/>- [Zorg ervoor dat de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Foutbericht | Aanbevolen actie
--- | --
-Kan wijzigingen niet vinden in een bestand. Dit kan verschillende redenen hebben. Voer de bewerking opnieuw uit | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/> - [Controleren of de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
+--|--
+Kan wijzigingen niet vinden in een bestand. Dit kan verschillende redenen hebben. Voer de bewerking opnieuw uit | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/> - [Zorg ervoor dat de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
 
 ## <a name="next-steps"></a>Volgende stappen
 

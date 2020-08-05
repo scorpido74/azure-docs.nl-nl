@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128927"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562409"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -44,6 +44,10 @@ Nee, dit scenario wordt niet ondersteund. De standaard instellingen zijn:
 
 - Micro soft AAD Application proxy connector-WAPCSvc-Network Service
 - Microsoft AAD Application Proxy Connector Updater-WAPCUpdaterSvc-NT Authority\System
+
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>Kan een gast gebruiker met de globale beheerder of de rol toepassings beheerder de connector voor de Tenant (gast) registreren?
+
+Nee, dit is op dit moment niet mogelijk. De registratie poging wordt altijd uitgevoerd op de thuis Tenant van de gebruiker.
 
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Mijn back-endtoepassing wordt gehost op meerdere webservers en vereist persistentie van gebruikers sessies (persistentie). Hoe kan ik een sessie persistentie uitvoeren? 
 

@@ -84,6 +84,9 @@
           href: overview-patch-os-runtime.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: app-service-security-controls.md
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsoverzicht
           href: overview-security.md
     - name: Netwerkfuncties

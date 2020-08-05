@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/03/2020
 ms.author: jasteppe
-ms.openlocfilehash: 8c372a865e34b2cbd1b5b3e6d8619c3ef0f438e0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b404fa5322d3afa8cbf71741382d44dd0433d49c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460419"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553679"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Gids voor probleem oplossing van Azure IoT connector voor FHIR (preview)
 
-Dit artikel bevat stappen voor het oplossen van problemen met algemene Azure IoT-connector voor FHIR-fout berichten en-voor waarden.  
+Dit artikel bevat stappen voor het oplossen van problemen met algemene Azure IoT-connector voor FHIR *-fout berichten en-voor waarden.  
 
 U leert ook hoe u kopieën van de Azure IoT-connector voor FHIR kunt maken voor het bewerken en archiveren van buiten de Azure Portal, of voor het leveren van technische ondersteuning van Azure bij het openen van een ondersteunings ticket. 
 
@@ -72,7 +72,7 @@ Het kopiëren van Azure IoT connector voor FHIR toewijzings bestanden kan handig
 Bekijk veelgestelde vragen over de Azure IoT-connector voor FHIR.
 
 >[!div class="nextstepaction"]
->[Veelgestelde vragen over Azure IoT connector voor FHIR (preview)](fhir-faq.md#iot-connector-preview)
+>[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261733"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551996"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Aan de slag met de Azure Maps Power BI Visual
 
@@ -25,9 +25,9 @@ In dit artikel wordt beschreven hoe u de Microsoft Azure kaarten Visual voor Pow
 > [!NOTE]
 > Deze Visual kan worden gemaakt en weer gegeven in zowel Power BI Desktop als de Power BI-service. De stappen en afbeeldingen uit dit artikel zijn gebaseerd op Power BI Desktop.
 
-De Azure Maps Visual for Power BI biedt een uitgebreide set gegevens visualisaties voor ruimtelijke gegevens boven op een kaart. Het is een schatting dat meer dan 80% van de Bedrijfs gegevens een locatie context heeft. De Azure Maps-Visual kan worden gebruikt om inzicht te krijgen in de manier waarop deze locatie context verband houdt met en invloed heeft op uw bedrijfs gegevens.
+De Azure Maps-visual voor Power BI biedt een uitgebreide set gegevensvisualisaties voor ruimtelijke gegevens over een kaart. Naar schatting 80% van de bedrijfsgegevens heeft een geografische context. De Azure Maps-Visual kan worden gebruikt om inzicht te krijgen in de manier waarop deze locatie context verband houdt met en invloed heeft op uw bedrijfs gegevens.
 
-![Power BI bureau blad met het Azure Maps visuele element Bedrijfs gegevens weer geven](media/power-bi-visual/azure-maps-visual-hero.png)
+![Power BI Desktop met de Azure Maps-visual waarop bedrijfsgegevens worden weergegeven](media/power-bi-visual/azure-maps-visual-hero.png)
 
 ## <a name="what-is-sent-to-azure"></a>Wat wordt er naar Azure verzonden?
 
@@ -35,6 +35,9 @@ De Azure Maps Visual maakt verbinding met de Cloud service die wordt gehost in a
 
 -   Details over het gebied waarop de kaart is gericht, worden naar Azure verzonden om de installatie kopieën op te halen die nodig zijn om het kaart doek weer te geven (ook wel kaart tegels genoemd). 
 -   Gegevens in de Bucket locatie, breedte graad en lengte graad kunnen naar Azure worden verzonden om de kaart coördinaten op te halen (een proces dat geocodering wordt genoemd). 
+-   Telemetriegegevens kunnen worden verzameld op de status van het visuele element (dat wil zeggen vastgelopen rapporten), als de telemetrie-optie in Power BI is ingeschakeld.
+
+Met uitzonde ring van de scenario's die hierboven worden beschreven, worden geen andere gegevens op de kaart verzonden naar de Azure Maps-servers. Alle rendering van gegevens gebeurt lokaal binnen de client.
 
 U of uw beheerder moet mogelijk uw firewall bijwerken om toegang te geven tot het Azure Maps platform dat gebruikmaakt van de volgende URL.
 

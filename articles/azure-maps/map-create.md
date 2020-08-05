@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: b7bebfb227de3f9f1c51024845054d2d7a02f923
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 77eaa3e1f4390182ad210ae3aa2ce6a1427d8b0f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285642"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551894"
 ---
 # <a name="create-a-map"></a>Een kaart maken
 
@@ -128,6 +128,47 @@ In de volgende code wordt in het eerste code blok een kaart gemaakt en worden de
 <iframe height='500' scrolling='no' title='Kaart weergave animeren' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/WayvbO/'>kaart weergave</a> van de pen animeren per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+## <a name="request-transforms"></a>Trans formaties aanvragen
+
+Soms is het handig om HTTP-aanvragen te wijzigen die zijn gemaakt door het kaart besturings element. Bijvoorbeeld:
+
+- Voeg extra headers toe aan tegel aanvragen. Dit wordt vaak gedaan voor met wacht woord beveiligde services.
+- Wijzig Url's om aanvragen uit te voeren via een proxy service.
+
+De [Service opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) van de kaart `transformRequest` kunnen worden gebruikt om alle aanvragen te wijzigen die door de kaart worden gemaakt voordat ze worden gemaakt. De `transformRequest` optie is een functie die twee para meters heeft: een teken reeks-URL en een bron type teken reeks die aangeeft waarvoor de aanvraag wordt gebruikt. Deze functie moet een [RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) resultaat retour neren.
+
+```JavaScript
+transformRequest: (url: string, resourceType: string) => RequestParameters
+```
+
+In het volgende voor beeld ziet u hoe u dit kunt gebruiken om alle aanvragen op de grootte aan te passen `https://example.com` door een gebruikers naam en wacht woord toe te voegen als kopteksten aan de aanvraag.
+
+```JavaScript
+var map = new atlas.Map('myMap', {
+    transformRequest: function (url, resourceType) {
+        //Check to see if the request is to the specified endpoint.
+        if (url.indexOf('https://examples.com') > -1) {
+            //Add custom headers to the request.
+            return {
+                url: url,
+                header: {
+                    username: 'myUsername',
+                    password: 'myPassword'
+                }
+            };
+        }
+
+        //Return the URL unchanged by default.
+        return { url: url };
+    },
+
+    authOptions: {
+        authType: 'subscriptionKey',
+        subscriptionKey: '<Your Azure Maps Key>'
+    }
+});
+```
+
 ## <a name="try-out-the-code"></a>De code uitproberen
 
 Bekijk de code voorbeelden. U kunt de Java script-code bewerken op het **tabblad js** en de kaart weergave wijzigingen weer geven op het **tabblad resultaat**. U kunt ook op **Bewerken klikken op CodePen**in de rechter bovenhoek en de code wijzigen in CodePen.
@@ -139,7 +180,7 @@ Bekijk de code voorbeelden. U kunt de Java script-code bewerken op het **tabblad
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)

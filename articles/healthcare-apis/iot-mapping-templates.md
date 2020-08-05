@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: cc8b7d46e1018974c6a88cef9e4f4a9f9a09caa7
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513346"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553644"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Sjablonen voor toewijzing van Azure IoT connector voor FHIR (preview)
 In dit artikel vindt u informatie over het configureren van Azure IoT connector voor FHIR * met toewijzings sjablonen.
@@ -565,7 +565,7 @@ Vertegenwoordigt het [CodeableConcept](http://hl7.org/fhir/datatypes.html#Codeab
 Bekijk veelgestelde vragen over Azure IoT connector voor FHIR (preview).
 
 >[!div class="nextstepaction"]
->[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#iot-connector-preview)
+>[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
 

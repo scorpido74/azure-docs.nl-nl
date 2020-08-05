@@ -2,17 +2,17 @@
 title: Vernieuwen met Logic Apps voor Azure Analysis Services-modellen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u asynchroon vernieuwen voor Azure Analysis Services codeert met behulp van Azure Logic Apps.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025316"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552234"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 

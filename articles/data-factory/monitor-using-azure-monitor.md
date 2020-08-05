@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432427"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563548"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory bewaken en waarschuwen door gebruik te maken van Azure Monitor
 
@@ -146,11 +146,11 @@ Hier volgen enkele van de metrische gegevens die worden verzonden door Azure Dat
 | TriggerCancelledRuns                  | Metrische gegevens over de trigger is geannuleerd            | Aantal    | Totaal                | Het totale aantal uitgevoerde triggers dat binnen een minuut venster is geannuleerd. |
 | TriggerFailedRuns                    | Meet waarden voor uitvoering van mislukte triggers              | Aantal    | Totaal                | Het totale aantal uitvoeringen van triggers dat is mislukt binnen een minuut venster. |
 | TriggerSucceededRuns                 | Meet waarden voor uitvoering van geslaagde triggers           | Aantal    | Totaal                | Het totale aantal uitvoeringen van triggers dat is geslaagd binnen een minuut venster. |
-| SSISIntegrationRuntimeStartCancelled  | Geannuleerde SSIS IR-begin waarden           | Aantal    | Totaal                | Het totale aantal SSIS IR begint dat binnen een minuut venster is geannuleerd. |
-| SSISIntegrationRuntimeStartFailed    | Mislukte SSIS IR-begin waarden             | Aantal    | Totaal                | Het totale aantal SSIS IR-start dat is mislukt binnen een minuut venster. |
-| SSISIntegrationRuntimeStartSucceeded | Geslaagde SSIS IR-begin waarden          | Aantal    | Totaal                | Het totale aantal SSIS IR begint in een minuut venster. |
-| SSISIntegrationRuntimeStopStuck      | Vastgelopen SSIS IR-stop metrieken               | Aantal    | Totaal                | Het totale aantal SSIS IR-stops dat binnen een minuut venster is vastgelopen. |
-| SSISIntegrationRuntimeStopSucceeded  | Geslaagde SSIS IR-stop metrieken           | Aantal    | Totaal                | Het totale aantal SSIS IR-onderbrekingen dat in een minuut venster is geslaagd. |
+| SSISIntegrationRuntimeStartCancelled  | Geannuleerde metrische gegevens voor SSIS Integration runtime starten           | Aantal    | Totaal                | Het totale aantal SSIS-integratie runtime begint met het annuleren binnen een minuut venster. |
+| SSISIntegrationRuntimeStartFailed    | Fout bij starten van metrische gegevens voor SSIS Integration runtime             | Aantal    | Totaal                | Het totale aantal SSIS-integratie runtime begint met een fout in een minuut venster. |
+| SSISIntegrationRuntimeStartSucceeded | Start metrische gegevens van SSIS Integration runtime starten          | Aantal    | Totaal                | Het totale aantal SSIS-integratie runtime begint in een minuut venster. |
+| SSISIntegrationRuntimeStopStuck      | Meet waarden voor stoppen van vastgelopen SSIS Integration runtime               | Aantal    | Totaal                | Het totale aantal SSIS Integration runtime stopt dat binnen een minuut venster is vastgelopen. |
+| SSISIntegrationRuntimeStopSucceeded  | Meet waarden voor stoppen van SSIS Integration runtime           | Aantal    | Totaal                | Het totale aantal SSIS Integration runtime stopt in een minuut venster. |
 | SSISPackageExecutionCancelled         | Metrische uitvoerings gegevens geannuleerd SSIS-pakket  | Aantal    | Totaal                | Het totale aantal uitvoeringen van SSIS-pakketten dat binnen een minuut venster is geannuleerd. |
 | SSISPackageExecutionFailed           | Metrische gegevens voor uitvoering van SSIS-pakket mislukt    | Aantal    | Totaal                | Het totale aantal uitvoeringen SSIS-pakketten dat is mislukt binnen een minuut venster. |
 | SSISPackageExecutionSucceeded        | Metrische uitvoerings gegevens geslaagd SSIS-pakket | Aantal    | Totaal                | Het totale aantal uitvoeringen van SSIS-pakketten dat is voltooid binnen een minuut venster. |
@@ -221,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Headers
+##### <a name="headers"></a>Kopteksten
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.
@@ -278,7 +278,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **hout**| Complex type| De naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, voert u de bewerking Diagnostische instellingen ophalen uit. |
 | **category**| Tekenreeks| Een matrix met logboek categorieën en het Bewaar beleid. |
 | **timeGrain** | Tekenreeks | De granulatie van metrische gegevens, die worden vastgelegd in de ISO 8601-duur notatie. De waarde van de eigenschap moet `PT1M` een minuut zijn. |
-| **ingeschakeld**| Boolean-waarde | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
+| **ingeschakeld**| Booleaans | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
 | **retentionPolicy**| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 |**resterende**| Int| Het aantal dagen dat de metrische gegevens of logboeken moeten worden bewaard. Als de waarde van de eigenschap 0 is, worden de logboeken permanent bewaard. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 
@@ -341,7 +341,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Headers
+##### <a name="headers"></a>Kopteksten
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.

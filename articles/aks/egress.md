@@ -5,12 +5,12 @@ description: Meer informatie over het maken en gebruiken van een statisch openba
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517770"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563242"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een statisch openbaar IP-adres gebruiken voor uitgaand verkeer met een *basis* -SKU Load Balancer in azure Kubernetes service (AKS)
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een statisch openbaar IP-adres maakt en ge
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u de Azure Basic-Load Balancer gebruikt.  We raden u aan [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)te gebruiken en u kunt meer geavanceerde functies gebruiken voor het [beheren van AKS](https://docs.microsoft.com/azure/aks/limit-egress-traffic)uitgaand verkeer.
+In dit artikel wordt ervan uitgegaan dat u de Azure Basic-Load Balancer gebruikt.  We raden u aan [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md)te gebruiken en u kunt meer geavanceerde functies gebruiken voor het [beheren van AKS](./limit-egress-traffic.md)uitgaand verkeer.
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 

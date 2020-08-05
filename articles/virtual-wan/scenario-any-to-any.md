@@ -6,22 +6,43 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecc2b3cf236cb2a78fd595189649e7f6b176d709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568528"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553424"
 ---
 # <a name="scenario-any-to-any"></a>Scenario: any-to-any
 
-Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In een wille keurig scenario kan elke spoke een andere spoke bereiken. Als er meerdere hubs bestaan, is hub-naar-hub-route ring (ook wel inter-hub genoemd) standaard ingeschakeld in standaard virtueel WAN. 
+Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In een wille keurig scenario kan elke spoke een andere spoke bereiken. Als er meerdere hubs bestaan, is hub-naar-hub-route ring (ook wel inter-hub genoemd) standaard ingeschakeld in standaard virtueel WAN. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
-In dit scenario worden VPN-, ExpressRoute-en gebruikers-VPN-verbindingen aan dezelfde route tabel gekoppeld. Alle VPN-, ExpressRoute-en gebruikers-VPN-verbindingen sturen routes door naar dezelfde set route tabellen. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
+## <a name="design"></a><a name="design"></a>Ontwerp
 
-## <a name="scenario-architecture"></a><a name="architecture"></a>Scenario-architectuur
+Om erachter te komen hoeveel route tabellen nodig zijn in een virtueel WAN-scenario, kunt u een verbindings matrix maken waarbij elke cel aangeeft of een bron (rij) kan communiceren met een doel (kolom). De connectiviteits matrix in dit scenario is trivial, maar we hebben deze opgenomen zodat deze consistent zijn met andere scenario's.
+
+| Van |   Tot |  *VNets* | *Vertakkingen* |
+| -------------- | -------- | ---------- | ---|
+| VNets     | &#8594;|      X     |     X    |
+| Vertakkingen   | &#8594;|    X     |     X    |
+
+In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom.
+
+Aangezien alle verbindingen van zowel VNets als filialen (VPN, ExpressRoute en gebruikers VPN) dezelfde connectiviteits vereisten hebben, is er één route tabel vereist. Als gevolg hiervan worden alle verbindingen gekoppeld en door gegeven aan dezelfde route tabel, de standaard route tabel:
+
+* Virtuele netwerken:
+  * Gekoppelde route tabel: **standaard**
+  * Door geven aan route tabellen: **standaard**
+* Sleutel
+  * Gekoppelde route tabel: **standaard**
+  * Door geven aan route tabellen: **standaard**
+
+Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
+
+## <a name="architecture"></a><a name="architecture"></a>Architectuur
 
 In **afbeelding 1**kunnen alle VNets en branches (VPN, EXPRESSROUTE, P2S) elkaar bereiken. In een virtuele hub werken verbindingen als volgt:
 
@@ -35,7 +56,7 @@ Deze verbindingen (standaard bij het maken) zijn gekoppeld aan de standaard rout
 
 :::image type="content" source="./media/routing-scenarios/any-any/figure-1.png" alt-text="afbeelding 1":::
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Scenario werk stroom
+## <a name="workflow"></a><a name="workflow"></a>Werkstroom
 
 Dit scenario is standaard ingeschakeld voor virtuele WAN. Als de instelling voor vertakking-naar-vertakking is uitgeschakeld in de WAN-configuratie, wordt de verbinding tussen vertakkings Spaak niet toegestaan. VPN/ExpressRoute/gebruiker VPN worden beschouwd als vertakkings spaak in virtueel WAN
 

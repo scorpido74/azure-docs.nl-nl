@@ -2,13 +2,13 @@
 title: Metrische waarschuwingen van Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel worden de aanbevolen metrische waarschuwingen weer gegeven die beschikbaar zijn via Azure Monitor voor containers in de open bare preview.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096723"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563361"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Aanbevolen metrische waarschuwingen (preview) van Azure Monitor voor containers
 
@@ -33,7 +33,7 @@ Voordat u begint, controleert u het volgende:
 
     De weer gegeven waarde moet een versie zijn die hoger is dan **ciprod05262020**. Als uw cluster een oudere versie heeft, volgt u de [upgrade-agent op de AKS-cluster](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) stappen om de nieuwste versie op te halen.
     
-    Zie [release geschiedenis van agent](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)voor meer informatie over de agent release. U kunt controleren of de metrische gegevens worden verzameld door Azure Monitor Metrics Explorer te gebruiken **en te controleren** in de **metrische naam ruimte** die wordt weer gegeven. Als dat het geval is, kunt u door gaan met het instellen van de waarschuwingen.
+    Zie [release geschiedenis van agent](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)voor meer informatie over de agent release. U kunt controleren of de metrische gegevens worden verzameld door Azure Monitor Metrics Explorer te gebruiken **en te controleren** in de **metrische naam ruimte** die wordt weer gegeven. Als dat het geval is, kunt u door gaan met het instellen van de waarschuwingen. Als er geen metrische gegevens worden verzameld, ontbreken de benodigde machtigingen voor de Cluster-service-principal of MSI. Als u wilt controleren of de SPN of MSI lid is van de Publisher-rol **bewakings metrieken** , volgt u de stappen die worden beschreven in de sectie [upgrade per cluster met behulp van Azure cli](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) om de roltoewijzing te bevestigen en in te stellen.
 
 ## <a name="alert-rules-overview"></a>Overzicht van waarschuwings regels
 
@@ -106,7 +106,7 @@ Volg deze stappen om de metrische waarschuwingen in Azure Monitor van de Azure P
 
 In deze sectie wordt beschreven hoe u Azure Monitor voor de metrische waarschuwing voor containers (preview) inschakelt vanuit de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Toegang tot de Azure Monitor voor de functie waarschuwing voor metrische gegevens van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal.
 

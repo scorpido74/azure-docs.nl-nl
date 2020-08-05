@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502916"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552472"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
 
@@ -45,7 +45,7 @@ Voor experimenten die u configureert met de python-SDK, kunt u de instelling par
 
 De volgende tabel bevat de geaccepteerde instellingen voor `featurization` in de [AutoMLConfig-klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Parametrisatie-configuratie | Description|
+|Parametrisatie-configuratie | Beschrijving|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Hiermee geeft u op dat, als onderdeel van preverwerking, de [stappen voor gegevens Guardrails en parametrisatie](#featurization) automatisch moeten worden uitgevoerd. Dit is de standaardinstelling.|
 |`"featurization": 'off'`| Hiermee geeft u op dat parametrisatie stappen niet automatisch moeten worden uitgevoerd.|
@@ -60,7 +60,7 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 > [!NOTE]
 > Als u van plan bent om uw door AutoML gemaakte modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangegeven met een asterisk (*) ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Parametrisatie- &nbsp; stappen| Description |
+|Parametrisatie- &nbsp; stappen| Beschrijving |
 | ------------- | ------------- |
 |**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
@@ -161,7 +161,7 @@ text_transformations_used
 > [!NOTE]
 > Onze implementatie van BERT beperkt de totale tekst lengte van een trainings voorbeeld tot 128-tokens. Dit betekent dat alle tekst kolommen bij het samen voegen de meeste 128-tokens lang moeten zijn. In het ideale geval, als er meerdere kolommen aanwezig zijn, moet elke kolom worden verwijderd, zodat aan deze voor waarde wordt voldaan. Als er bijvoorbeeld twee tekst kolommen in de gegevens zijn, moeten beide tekst kolommen worden verwijderd naar de 64-tokens (ervan uitgaande dat u wilt dat beide kolommen gelijkmatig worden weer gegeven in de laatste samengevoegde tekst kolom) voordat de gegevens worden gevoederd in AutoML. Voor samengevoegde kolommen met een lengte >128-tokens, wordt deze invoer door de Tokenizer-laag van BERT afgekapt op 128-tokens.
 
-3. In de stap voor het opruimen van functies vergelijkt AutoML BERT met de basis lijn (een verzameling woorden en getrainde woord insluitingen) op een voor beeld van de gegevens en bepaalt u of BERT nauw keurigere verbeteringen oplevert. Als wordt vastgesteld dat BERT beter presteert dan de basis lijn, gebruikt AutoML vervolgens BERT voor Text parametrisatie als de optimale parametrisatie-strategie en gaat over op de volledige gegevens van featurizing. In dat geval wordt de "PretrainedTextDNNTransformer" in het uiteindelijke model weer geven.
+3. In de stap voor het opruimen van functies vergelijkt AutoML BERT met de basis lijn (verzameling woorden) met een steek proef van de gegevens en wordt bepaald of BERT nauw keurigere verbeteringen zou opleveren. Als wordt vastgesteld dat BERT beter presteert dan de basis lijn, gebruikt AutoML vervolgens BERT voor Text parametrisatie als de optimale parametrisatie-strategie en gaat over op de volledige gegevens van featurizing. In dat geval wordt de "PretrainedTextDNNTransformer" in het uiteindelijke model weer geven.
 
 BERT wordt over het algemeen langer dan de meeste andere featurizers. Dit kan worden sped door meer compute in uw cluster op te geven. AutoML distribueert BERT-training over meerdere knoop punten als deze beschikbaar zijn (Maxi maal 8 knoop punten). U kunt dit doen door [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) hoger dan 1 in te stellen. Voor betere prestaties raden we u aan sku's te gebruiken met RDMA-mogelijkheden (zoals ' STANDARD_NC24r ' of ' STANDARD_NC24rs_V3 ')
 

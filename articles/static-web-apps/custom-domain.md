@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960296"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563344"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Een aangepast domein instellen in de preview-versie van Azure Static Web Apps
 
@@ -37,7 +37,7 @@ Er zijn een aantal verschillende typen DNS-configuraties beschikbaar voor een to
 
 ## <a name="map-a-cname-record"></a>Een CNAME-record toewijzen
 
-Een CNAME-record wijst één domein aan een andere toe. U kunt een CNAME-record gebruiken om `www.example.com` toe te wijzen aan het automatisch gegenereerde domein dat wordt geleverd door Azure Static web apps.
+Een CNAME-record wijst één domein aan een andere toe. U kunt een CNAME-record gebruiken om `www.example.com` , `blog.example.com` of een ander subdomein, toe te wijzen aan het automatisch gegenereerde domein dat wordt geleverd door Azure static web apps.
 
 1. Open de [Azure-portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 70ff1847548c1328a709cf17c02bba3dd25ba213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 82639a19ef728c22a74381d24754992e0f647976
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486647"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562464"
 ---
 ## <a name="query-language-features"></a>Functies voor query taal
 
@@ -19,7 +19,7 @@ Azure Digital Apparaatdubbels biedt uitgebreide query mogelijkheden tegen het du
 > [!NOTE]
 > Alle Azure Digital Apparaatdubbels-query bewerkingen zijn hoofdletter gevoelig.
 
-Hier volgen de bewerkingen die beschikbaar zijn in de Azure Digital Apparaatdubbels query Store-taal.
+Hier volgen de bewerkingen die beschikbaar zijn in de Azure Digital Apparaatdubbels-query taal.
 
 Digitale apparaatdubbels ophalen op basis van hun...
 * model (met behulp van `IS_OF_MODEL` operator)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068218"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562375"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
 
@@ -22,15 +22,20 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 > [!IMPORTANT]
 > U hoeft deze functie niet te gebruiken voor verificatie en autorisatie. U kunt gebruikmaken van de gebundelde beveiligings functies in uw eigen keuze of u kunt uw eigen hulpprogram ma's schrijven. Het is echter belang rijk dat [Chrome 80 een belang rijke wijziging aanbrengt in de implementatie van SameSite voor cookies](https://www.chromestatus.com/feature/5088147346030592) (release date rond maart 2020), en aangepaste externe verificatie of andere scenario's die afhankelijk zijn van het boeken van een cross-site cookie, kunnen afbreken wanneer client-Chrome-browsers worden bijgewerkt. De tijdelijke oplossing is complex omdat deze moet ondersteuning bieden voor verschillende SameSite-gedragingen voor verschillende browsers. 
 >
-> De versies van de ASP.NET Core 2,1 en hoger die door App Service worden gehost, worden al bijgewerkt voor deze breuk wijziging en verwerkten gechrome 80 en oudere browsers op de juiste manier. Daarnaast wordt dezelfde patch voor ASP.NET Framework 4.7.2 geïmplementeerd in het App Service-exemplaar gedurende januari 2020. Zie [Azure app service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)(Engelstalig) voor meer informatie over hoe u weet of uw app de patch heeft ontvangen.
+> De versies van de ASP.NET Core 2,1 en hoger die door App Service worden gehost, worden al bijgewerkt voor deze breuk wijziging en verwerkten gechrome 80 en oudere browsers op de juiste manier. Daarnaast is dezelfde patch voor ASP.NET Framework 4.7.2 geïmplementeerd op de App Service-instanties gedurende januari 2020. Zie [Azure app service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)(Engelstalig) voor meer informatie.
 >
 
 > [!NOTE]
 > De functie voor verificatie/autorisatie wordt ook wel ' eenvoudige verificatie ' genoemd.
 
+> [!NOTE]
+> Als u deze functie inschakelt, worden **alle** niet-beveiligde HTTP-aanvragen voor uw toepassing automatisch omgeleid naar https, ongeacht de app service configuratie-instelling voor het [afdwingen van HTTPS](configure-ssl-bindings.md#enforce-https). Als dat nodig is, kunt u dit uitschakelen via de `requireHttps` instelling in het [configuratie bestand auth-instellingen](app-service-authentication-how-to.md#configuration-file-reference), maar u moet er wel voor zorgen dat er geen beveiligings tokens meer worden verzonden via niet-beveiligde HTTP-verbindingen.
+
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
+
+### <a name="on-windows"></a>In Windows
 
 De module authenticatie en autorisatie wordt uitgevoerd in dezelfde sandbox als de code van uw toepassing. Wanneer deze is ingeschakeld, stuurt elke binnenkomende HTTP-aanvraag deze door voordat deze wordt verwerkt door de code van uw toepassing.
 
@@ -44,6 +49,10 @@ Deze module verwerkt diverse dingen voor uw app:
 - Injecteert identiteits gegevens in aanvraag headers
 
 De module wordt afzonderlijk van uw toepassings code uitgevoerd en wordt geconfigureerd met behulp van app-instellingen. Er zijn geen Sdk's, specifieke talen of wijzigingen in de toepassings code vereist. 
+
+### <a name="on-containers"></a>Op containers
+
+De module verificatie en autorisatie wordt uitgevoerd in een afzonderlijke container, geïsoleerd van uw toepassings code. Met behulp van wat het [ambassadeur-patroon](https://docs.microsoft.com/azure/architecture/patterns/ambassador)wordt genoemd, communiceert het met het binnenkomende verkeer om Vergelijk bare functionaliteit uit te voeren als in Windows. Omdat de service niet in-process wordt uitgevoerd, is geen directe integratie met specifieke taal raamwerken mogelijk. de relevante informatie die uw app nodig heeft, wordt echter door gegeven met behulp van aanvraag headers, zoals hieronder wordt uitgelegd.
 
 ### <a name="userapplication-claims"></a>Gebruikers/toepassings claims
 

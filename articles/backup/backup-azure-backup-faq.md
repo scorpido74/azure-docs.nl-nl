@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532455"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553084"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -196,6 +196,10 @@ Wanneer een nieuw beleid wordt toegepast, worden het schema en de retentie van h
 
 - Als de retentie is uitgebreid, worden de bestaande herstel punten gemarkeerd om ze te bewaren volgens het nieuwe beleid.
 - Als de retentie is beperkt, worden de bestaande herstelpunten gemarkeerd voor verwijdering in de eerstvolgende opschoontaak, en worden ze vervolgens verwijderd.
+
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>Hoe lang blijven gegevens behouden bij het stoppen van back-ups, maar selecteert u de optie voor het bewaren van back-upgegevens?
+
+Wanneer back-ups worden gestopt en de gegevens worden bewaard, worden de bestaande beleids regels voor het weghalen van gegevens niet meer ondersteund en blijven de gegevens oneindig behouden totdat de beheerder de verwijdering heeft gestart.
 
 ## <a name="encryption"></a>Versleuteling
 

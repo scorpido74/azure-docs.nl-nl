@@ -1,7 +1,7 @@
 ---
-title: Configureer bare Azure AD-token levensduur
+title: Configureer bare levens duur van tokens
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het instellen van de levens duur voor tokens die zijn uitgegeven door Azure AD.
+description: Meer informatie over het instellen van de levens duur voor tokens die zijn uitgegeven door het micro soft Identity-platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 23283a44f78522d2b589993c11b494092352cbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478362"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552846"
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
+# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
-U kunt de levensduur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie.
+U kunt de levens duur opgeven van een token dat is uitgegeven door het micro soft Identity-platform. U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie.
 
 > [!IMPORTANT]
 > Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 30 mei 2020 kan geen enkele nieuwe Tenant gebruikmaken van het beleid voor de levens duur van tokens voor het configureren van sessie-en vernieuwings tokens. De afschaffing vindt plaats binnen een aantal maanden na dat, wat betekent dat we de bestaande sessie niet meer zullen door lopen en tokens voor vernieuwen worden vernieuwd. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
@@ -68,12 +68,12 @@ Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een
 > De maximale leeftijds eigenschap is de tijds duur dat één token kan worden gebruikt. 
 
 ### <a name="id-tokens"></a>Id-tokens
-ID-tokens worden door gegeven aan websites en native clients. ID-tokens bevatten profiel informatie over een gebruiker. Een ID-token is gebonden aan een specifieke combi natie van gebruiker en client. ID-tokens worden beschouwd als geldig tot de verval datum. Normaal gesp roken komt een webtoepassing overeen met de levens duur van de sessie van een gebruiker in de toepassing tot de levens duur van het ID-token dat voor de gebruiker is uitgegeven. U kunt de levens duur van een ID-token aanpassen om te bepalen hoe vaak de webtoepassing de toepassings sessie verloopt en hoe vaak de gebruiker opnieuw moet worden geverifieerd met Azure AD (op de achtergrond of interactief).
+ID-tokens worden door gegeven aan websites en native clients. ID-tokens bevatten profiel informatie over een gebruiker. Een ID-token is gebonden aan een specifieke combi natie van gebruiker en client. ID-tokens worden beschouwd als geldig tot de verval datum. Normaal gesp roken komt een webtoepassing overeen met de levens duur van de sessie van een gebruiker in de toepassing tot de levens duur van het ID-token dat voor de gebruiker is uitgegeven. U kunt de levens duur van een ID-token aanpassen om te bepalen hoe vaak de webtoepassing de toepassings sessie verloopt en hoe vaak de gebruiker opnieuw moet worden geverifieerd met het micro soft Identity-platform (op de achtergrond of interactief).
 
 ### <a name="single-sign-on-session-tokens"></a>Sessie tokens voor eenmalige aanmelding
-Wanneer een gebruiker wordt geverifieerd bij Azure AD, wordt een eenmalige aanmelding (SSO) tot stand gebracht met de browser van de gebruiker en Azure AD. De SSO-token, in de vorm van een cookie, vertegenwoordigt deze sessie. Het SSO-sessie token is niet gebonden aan een specifieke bron/client toepassing. SSO-sessie tokens kunnen worden ingetrokken en de geldigheid ervan wordt gecontroleerd elke keer dat ze worden gebruikt.
+Wanneer een gebruiker zich verifieert met het micro soft Identity-platform, wordt één aanmeldings sessie (SSO) tot stand gebracht met de browser van de gebruiker en het micro soft Identity-platform. De SSO-token, in de vorm van een cookie, vertegenwoordigt deze sessie. Het SSO-sessie token is niet gebonden aan een specifieke bron/client toepassing. SSO-sessie tokens kunnen worden ingetrokken en de geldigheid ervan wordt gecontroleerd elke keer dat ze worden gebruikt.
 
-In azure AD worden twee soorten SSO-sessie tokens gebruikt: permanent en niet-persistent. Permanente sessie tokens worden opgeslagen als permanente cookies door de browser. Niet-permanente sessie tokens worden opgeslagen als sessie cookies. (Sessie cookies worden vernietigd wanneer de browser wordt gesloten.) Normaal gesp roken wordt een niet-persistent sessie token opgeslagen. Maar wanneer de gebruiker het selectie vakje **aangemeld blijven** tijdens de verificatie inschakelt, wordt een persistent sessie token opgeslagen.
+Micro soft Identity platform gebruikt twee soorten SSO-sessie tokens: permanent en niet-persistent. Permanente sessie tokens worden opgeslagen als permanente cookies door de browser. Niet-permanente sessie tokens worden opgeslagen als sessie cookies. (Sessie cookies worden vernietigd wanneer de browser wordt gesloten.) Normaal gesp roken wordt een niet-persistent sessie token opgeslagen. Maar wanneer de gebruiker het selectie vakje **aangemeld blijven** tijdens de verificatie inschakelt, wordt een persistent sessie token opgeslagen.
 
 Niet-permanente sessie tokens hebben een levens duur van 24 uur. Permanente tokens hebben een levens duur van 90 dagen. Wanneer een SSO-sessie token wordt gebruikt binnen de geldigheids periode, wordt de geldigheids periode nog eens 24 uur of 90 dagen verlengd, afhankelijk van het type token. Als een SSO-sessie token niet binnen de geldigheids periode wordt gebruikt, wordt dit beschouwd als verlopen en wordt het niet langer geaccepteerd.
 
@@ -102,7 +102,7 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | De maximale inactieve tijd voor het vernieuwen van het token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |90 dagen |
 | Maximale leeftijd van het vernieuwings token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |Until-ingetrokken |
 
-* <sup>1</sup> Federatieve gebruikers die onvoldoende intrekkings gegevens hebben, zijn gebruikers die het kenmerk ' LastPasswordChangeTimestamp ' niet hebben gesynchroniseerd. Deze gebruikers krijgen dit korte maximum leeftijd omdat AAD niet kan verifiëren wanneer tokens worden ingetrokken die zijn gekoppeld aan een oude referentie (zoals een wacht woord dat is gewijzigd) en om ervoor te zorgen dat de gebruiker en de bijbehorende tokens nog steeds in goede staat zijn. Om deze ervaring te verbeteren, moeten Tenant beheerders ervoor zorgen dat ze het kenmerk ' LastPasswordChangeTimestamp ' synchroniseren (dit kan worden ingesteld voor het gebruikers object met behulp van Power shell of via AADSync).
+* <sup>1</sup> federatieve gebruikers die onvoldoende intrekkings gegevens hebben, zijn alle gebruikers die het kenmerk ' LastPasswordChangeTimestamp ' niet hebben gesynchroniseerd. Deze gebruikers krijgen dit korte maximum leeftijd omdat AAD niet kan verifiëren wanneer tokens worden ingetrokken die zijn gekoppeld aan een oude referentie (zoals een wacht woord dat is gewijzigd) en om ervoor te zorgen dat de gebruiker en de bijbehorende tokens nog steeds in goede staat zijn. Om deze ervaring te verbeteren, moeten Tenant beheerders ervoor zorgen dat ze het kenmerk ' LastPasswordChangeTimestamp ' synchroniseren (dit kan worden ingesteld voor het gebruikers object met behulp van Power shell of via AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Beleids evaluatie en prioriteits aanduiding
 U kunt een token levensduur beleid maken en vervolgens toewijzen aan een specifieke toepassing, aan uw organisatie en aan service-principals. Meerdere beleids regels zijn mogelijk van toepassing op een specifieke toepassing. De levens duur van het token beleid dat van kracht is volgt deze regels:
@@ -129,13 +129,13 @@ Alle TimeSpans die hier worden gebruikt, zijn ingedeeld volgens het C# [time](/d
 > * Webtoepassing A is een reguliere webtoepassing en is niet gekoppeld aan een beleid.
 > * Web Application B wordt gebruikt voor zeer gevoelige processen. De Service-Principal is gekoppeld aan het token levensduur beleid 2, dat een sessie token heeft van een maximum leeftijd van 30 minuten.
 >
-> Om 12:00 uur wordt een nieuwe browser sessie gestart en wordt geprobeerd toegang te krijgen tot webtoepassing A. De gebruiker wordt omgeleid naar Azure AD en wordt gevraagd zich aan te melden. Hiermee maakt u een cookie met een sessie token in de browser. De gebruiker wordt teruggeleid naar de webtoepassing A met een ID-token waarmee de gebruiker toegang kan krijgen tot de toepassing.
+> Om 12:00 uur wordt een nieuwe browser sessie gestart en wordt geprobeerd toegang te krijgen tot webtoepassing A. De gebruiker wordt omgeleid naar het micro soft-identiteits platform en wordt gevraagd zich aan te melden. Hiermee maakt u een cookie met een sessie token in de browser. De gebruiker wordt teruggeleid naar de webtoepassing A met een ID-token waarmee de gebruiker toegang kan krijgen tot de toepassing.
 >
-> Om 12:15 uur, probeert de gebruiker toegang tot Web Application B te krijgen. De browser wordt omgeleid naar Azure AD, waardoor de sessie cookie wordt gedetecteerd. De service-principal van Web Application B is gekoppeld aan het token levensduur beleid 2, maar maakt ook deel uit van de bovenliggende organisatie, met het standaard token levensduur beleid 1. Het token levensduur beleid 2 treedt in werking omdat het beleid dat is gekoppeld aan service-principals een hogere prioriteit heeft dan het standaard beleid van de organisatie. Het sessie token is oorspronkelijk in de afgelopen 30 minuten uitgegeven. dit wordt dus als geldig beschouwd. De gebruiker wordt teruggeleid naar Web Application B met een ID-token waarmee ze toegang krijgen.
+> Om 12:15 uur, probeert de gebruiker toegang tot Web Application B te krijgen. De browser wordt omgeleid naar het micro soft Identity-platform, dat de sessie cookie detecteert. De service-principal van Web Application B is gekoppeld aan het token levensduur beleid 2, maar maakt ook deel uit van de bovenliggende organisatie, met het standaard token levensduur beleid 1. Het token levensduur beleid 2 treedt in werking omdat het beleid dat is gekoppeld aan service-principals een hogere prioriteit heeft dan het standaard beleid van de organisatie. Het sessie token is oorspronkelijk in de afgelopen 30 minuten uitgegeven. dit wordt dus als geldig beschouwd. De gebruiker wordt teruggeleid naar Web Application B met een ID-token waarmee ze toegang krijgen.
 >
-> Bij 1:00 uur probeert de gebruiker webtoepassing A te openen. De gebruiker wordt omgeleid naar Azure AD. Webtoepassing A is niet gekoppeld aan een beleid, maar omdat het zich in een organisatie met een standaard token levensduur beleid 1 bevindt, wordt dat beleid van kracht. De sessie cookie die oorspronkelijk in de afgelopen acht uur is uitgegeven, wordt gedetecteerd. De gebruiker wordt op de achtergrond teruggeleid naar de webtoepassing A met een nieuw ID-token. De gebruiker is niet verplicht om te verifiëren.
+> Bij 1:00 uur probeert de gebruiker webtoepassing A te openen. De gebruiker wordt omgeleid naar het micro soft Identity-platform. Webtoepassing A is niet gekoppeld aan een beleid, maar omdat het zich in een organisatie met een standaard token levensduur beleid 1 bevindt, wordt dat beleid van kracht. De sessie cookie die oorspronkelijk in de afgelopen acht uur is uitgegeven, wordt gedetecteerd. De gebruiker wordt op de achtergrond teruggeleid naar de webtoepassing A met een nieuw ID-token. De gebruiker is niet verplicht om te verifiëren.
 >
-> Vervolgens probeert de gebruiker toegang tot Web Application B te krijgen. De gebruiker wordt omgeleid naar Azure AD. Net als voorheen heeft het token levensduur beleid 2 van kracht. Omdat het token meer dan 30 minuten geleden is uitgegeven, wordt de gebruiker gevraagd om de aanmeldings referenties opnieuw in te voeren. Er worden een merk-nieuwe sessie token en ID-token uitgegeven. De gebruiker kan vervolgens toegang tot Web Application B krijgen.
+> Vervolgens probeert de gebruiker toegang tot Web Application B te krijgen. De gebruiker wordt omgeleid naar het micro soft Identity-platform. Net als voorheen heeft het token levensduur beleid 2 van kracht. Omdat het token meer dan 30 minuten geleden is uitgegeven, wordt de gebruiker gevraagd om de aanmeldings referenties opnieuw in te voeren. Er worden een merk-nieuwe sessie token en ID-token uitgegeven. De gebruiker kan vervolgens toegang tot Web Application B krijgen.
 >
 >
 

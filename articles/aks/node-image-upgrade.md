@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 13842512c7d983a70b32132b4a16be37ac0b2b54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050719"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562784"
 ---
 # <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Preview-upgrade van installatie kopie van knoop punt van Azure Kubernetes service (AKS)
 
@@ -47,7 +47,7 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService

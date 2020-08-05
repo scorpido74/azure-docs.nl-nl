@@ -4,13 +4,13 @@ ms.author: cynthn
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+manager: daberry
+ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545185"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554902"
 ---
 Met gestandaardiseerde installatie kopieën van virtuele machines kunnen organisaties migreren naar de Cloud en zorgen voor consistentie in de implementaties. Installatie kopieën bevatten doorgaans vooraf gedefinieerde beveiligings-en configuratie-instellingen en de benodigde software. Voor het instellen van uw eigen Imaging-pijp lijn zijn tijd, infra structuur en configuratie vereist, maar met Azure VM Image Builder kunt u een eenvoudige configuratie bieden waarmee uw installatie kopie wordt beschreven, verzonden naar de service en de installatie kopie wordt gebouwd en gedistribueerd.
  
@@ -56,7 +56,8 @@ AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieë
 - Windows 2019
 
 Ondersteuning voor RHEL Iso's wordt niet meer ondersteund.
-## <a name="how-it-works"></a>Hoe het werkt
+
+## <a name="how-it-works"></a>Hoe werkt het?
 
 
 ![Conceptuele tekening van Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -98,8 +99,8 @@ Met de opbouw functie voor installatie kopieën wordt een VM gemaakt met behulp 
  
 De installatie kopie wordt door Azure Image Builder gedistribueerd naar de gekozen regio's. Dit kan leiden tot uitstaande netwerk kosten.
 
-## <a name="hyper-v-generation"></a>Hyper-V genereren
-De opbouw functie voor installatie kopieën biedt momenteel ondersteuning voor Hyper-V-installatie kopieën en virtuele machines.
+## <a name="hyper-v-generation"></a>Hyper-V generatie
+Image Builder momenteel biedt ondersteuning voor Hyper-V-generatie 1-installatie kopieën en virtuele machines.
  
 ## <a name="next-steps"></a>Volgende stappen 
  

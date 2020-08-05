@@ -1,7 +1,7 @@
 ---
-title: Azure AD-App-SAML-token claims aanpassen
+title: SAML-token claims voor apps aanpassen
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het aanpassen van de claims die zijn uitgegeven in het SAML-token voor zakelijke toepassingen in azure AD.
+description: Meer informatie over het aanpassen van de claims die zijn uitgegeven door het micro soft Identity-platform in het SAML-token voor zakelijke toepassingen.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5cce985e3f63ade94fb626d18bded440caeff1fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274465"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552829"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
-Vandaag, Azure Active Directory (Azure AD), ondersteunt eenmalige aanmelding (SSO) met de meeste zakelijke toepassingen, waaronder toepassingen die vooraf zijn geïntegreerd in de Azure AD-App-galerie en aangepaste toepassingen. Wanneer een gebruiker met behulp van het SAML 2,0-protocol via Azure AD met een toepassing wordt geverifieerd, verzendt Azure AD een token naar de toepassing (via een HTTP-bericht). Vervolgens valideert en gebruikt de toepassing het token voor het registreren van de gebruiker in plaats van een gebruikers naam en wacht woord op te vragen. Deze SAML-tokens bevatten stukjes informatie over de gebruiker die *claims*wordt genoemd.
+Tegenwoordig ondersteunt micro soft Identity platform eenmalige aanmelding (SSO) met de meeste zakelijke toepassingen, waaronder toepassingen die vooraf zijn geïntegreerd in de Azure AD-App-galerie en aangepaste toepassingen. Wanneer een gebruiker via het SAML 2,0-protocol met het micro soft Identity-platform wordt geverifieerd bij een toepassing, stuurt micro soft Identity platform een token naar de toepassing (via een HTTP POST). Vervolgens valideert en gebruikt de toepassing het token voor het registreren van de gebruiker in plaats van een gebruikers naam en wacht woord op te vragen. Deze SAML-tokens bevatten stukjes informatie over de gebruiker die *claims*wordt genoemd.
 
 Een *claim* is informatie die een id-provider staat voor een gebruiker binnen het token dat wordt uitgegeven voor die gebruiker. In het [SAML-token](https://en.wikipedia.org/wiki/SAML_2.0)bevinden deze gegevens zich doorgaans in de instructie SAML Attribute. De unieke ID van de gebruiker wordt gewoonlijk weer gegeven in het SAML-onderwerp, ook wel naam-id genoemd.
 
-Standaard geeft Azure AD een SAML-token aan uw toepassing met een `NameIdentifier` claim met een waarde van de gebruikers naam van de gebruiker (ook wel bekend als de User Principal Name) in azure AD, waarmee de gebruiker uniek kan worden geïdentificeerd. Het SAML-token bevat ook aanvullende claims met het e-mail adres, de voor naam en de achternaam van de gebruiker.
+Het micro soft Identity-platform geeft standaard een SAML-token aan uw toepassing met een `NameIdentifier` claim met een waarde van de gebruikers naam van de gebruiker (ook wel bekend als de User Principal Name) in azure AD, waarmee de gebruiker uniek kan worden geïdentificeerd. Het SAML-token bevat ook aanvullende claims met het e-mail adres, de voor naam en de achternaam van de gebruiker.
 
 Als u de claims die in het SAML-token aan de toepassing zijn uitgegeven, wilt weer geven of bewerken, opent u de toepassing in Azure Portal. Open vervolgens de sectie **gebruikers kenmerken & claims** .
 
@@ -48,19 +48,19 @@ De NameID (naam-id-waarde) bewerken:
 
 ### <a name="nameid-format"></a>NameID-indeling
 
-Als de SAML-aanvraag het element NameIDPolicy met een specifieke indeling bevat, zal Azure AD voldoen aan de indeling in de aanvraag.
+Als de SAML-aanvraag het element NameIDPolicy met een specifieke indeling bevat, zal het micro soft Identity-platform voldoen aan de indeling in de aanvraag.
 
-Als de SAML-aanvraag geen element voor NameIDPolicy bevat, wordt het NameID door Azure AD uitgegeven met de indeling die u opgeeft. Als er geen indeling is opgegeven, gebruikt Azure AD de standaard bron indeling die is gekoppeld aan de geselecteerde claim bron.
+Als de SAML-aanvraag geen element voor NameIDPolicy bevat, wordt het NameID door het micro soft Identity-platform uitgegeven met de indeling die u opgeeft. Als er geen indeling is opgegeven, gebruikt micro soft Identity platform de standaard bron indeling die is gekoppeld aan de geselecteerde claim bron.
 
 U kunt een van de volgende opties selecteren in de vervolg keuzelijst **Kies naam-id-indeling** .
 
 | NameID-indeling | Beschrijving |
 |---------------|-------------|
-| **Standaard** | Azure AD gebruikt de standaard indeling voor de bron. |
-| **Permanent** | Azure AD gebruikt persistent als de NameID-indeling. |
-| **EmailAddress** | Azure AD maakt gebruik van EmailAddress als NameID-indeling. |
-| **Niet opgegeven** | Azure AD gebruikt niet opgegeven als NameID-indeling. |
-| **Gekwalificeerde Windows-domein naam** | Azure AD gebruikt WindowsDomainQualifiedName als NameID-indeling. |
+| **Standaard** | Micro soft Identity platform gebruikt de standaard indeling voor de bron. |
+| **Permanent** | Micro soft Identity platform gebruikt persistent als de NameID-indeling. |
+| **EmailAddress** | Micro soft Identity platform gebruikt EmailAddress als NameID-indeling. |
+| **Niet opgegeven** | Het micro soft Identity-platform wordt niet opgegeven als de NameID-indeling. |
+| **Gekwalificeerde Windows-domein naam** | Micro soft Identity platform gebruikt WindowsDomainQualifiedName als NameID-indeling. |
 
 Tijdelijke NameID wordt ook ondersteund, maar is niet beschikbaar in de vervolg keuzelijst en kan niet worden geconfigureerd op de kant van Azure. Zie het [SAML-protocol voor eenmalige aanmelding](single-sign-on-saml-protocol.md)voor meer informatie over het NameIDPolicy-kenmerk.
 
@@ -169,9 +169,9 @@ Een claim voorwaarde toevoegen:
 
 De volg orde waarin u de voor waarden toevoegt, is belang rijk. Azure AD evalueert de voor waarden van boven naar beneden om te beslissen welke waarde moet worden opgegeven in de claim. 
 
-Zo is Julia Simon een gast gebruiker in de contoso-Tenant. Ze maakt deel uit van een andere organisatie die ook gebruikmaakt van Azure AD. Op basis van de onderstaande configuratie voor de fabrikam-toepassing, wanneer Julia zich probeert aan te melden bij Fabrikam, worden de voor waarden als volgt geëvalueerd door Azure AD.
+Zo is Julia Simon een gast gebruiker in de contoso-Tenant. Ze maakt deel uit van een andere organisatie die ook gebruikmaakt van Azure AD. Op basis van de onderstaande configuratie voor de fabrikam-toepassing, wanneer Julia zich probeert aan te melden bij Fabrikam, worden de voor waarden als volgt geëvalueerd door het micro soft Identity-platform.
 
-Eerst controleert Azure AD of het gebruikers type van de Julia is `All guests` . Aangezien dit het geval is, wijst Azure AD de bron voor de claim toe aan `user.extensionattribute1` . Ten tweede controleert Azure AD of het gebruikers type van Julia is `AAD guests` , omdat dit ook waar is, wijst Azure AD de bron voor de claim toe aan `user.mail` . Ten slotte wordt de claim verzonden met de waarde `user.mail` voor Julia.
+Eerst controleert het micro soft Identity-platform of het gebruikers type van Julia is `All guests` . Aangezien dit het geval is, wijst micro soft Identity platform de bron voor de claim toe aan `user.extensionattribute1` . Ten tweede controleert micro soft Identity platform of het gebruikers type van Julia is `AAD guests` , omdat dit ook het geval is, de bron voor de claim wordt toegewezen aan het micro soft Identity-platform `user.mail` . Ten slotte wordt de claim verzonden met de waarde `user.mail` voor Julia.
 
 ![Voorwaardelijke configuratie van claims](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

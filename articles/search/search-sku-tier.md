@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519730"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553968"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -61,9 +61,18 @@ Meer informatie over de verschillende lagen op de [pagina met prijzen](https://a
 Een oplossing op basis van Azure Cognitive Search kan op de volgende manieren kosten in rekening worden gebracht:
 
 + Kosten van de service zelf, met 24x7, op minimale configuratie (één partitie en replica)
+
 + Capaciteit (replica's of partities) toevoegen
-+ Bandbreedte kosten (uitgaande gegevens overdracht) 
-+ Add-on Services, zoals AI-verrijking (het koppelen van Cognitive Services in vaardig heden die AI-verwerking definiëren, of het gebruik van Azure Storage voor Knowledge Store) of het implementeren van een zoek service in een particulier virtueel netwerk
+
++ Bandbreedte kosten (uitgaande gegevens overdracht)
+
++ Add-on services die zijn vereist voor specifieke mogelijkheden of functies:
+
+  + AI-verrijking (vereist [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/))
+  + kennis archief ( [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)vereist)
+  + incrementele verrijking (vereist [Azure Storage](https://azure.microsoft.com/pricing/details/storage/), is van toepassing op AI-verrijking)
+  + door de klant beheerde sleutels en dubbele versleuteling (hiervoor is [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)vereist)
+  + privé-eind punten voor een model zonder Internet toegang ( [Azure private link](https://azure.microsoft.com/pricing/details/private-link/)vereist)
 
 ### <a name="service-costs"></a>Service kosten
 

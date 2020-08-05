@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-agent (MARS) – Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533577"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563093"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Veelgestelde vragen-agent voor Microsoft Azure Recovery Services (MARS)
 
@@ -19,6 +19,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Waar kan ik de nieuwste versie van de MARS-agent downloaden?
 
 De meest recente MARS-agent die wordt gebruikt bij het maken van een back-up van Windows Server-computers, System Center DPM en Microsoft Azure Backup Server, kan worden [gedownload](https://aka.ms/azurebackup_agent).
+
+### <a name="where-can-i-download-the-vault-credentials-file"></a>Waar kan ik het bestand met kluis referenties downloaden?
+
+Ga in het Azure Portal naar **Eigenschappen** voor uw kluis. Schakel onder **back-upgegevens**het selectie vakje in voor **al gebruik van de nieuwste Recovery Services-agent**. Selecteer **Downloaden**.
+
+![Referenties downloaden](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Hoe lang zijn de kluis referenties geldig?
 
@@ -174,7 +180,7 @@ De Azure Backup-Agent vereist een wachtwoordzin (die u hebt ingevoerd tijdens de
 
 Houd rekening met de volgende voorwaarden:
 
-* Als u de agent op dezelfde oorspronkelijke machine verwijdert en opnieuw registreert met thee
+* Als u de agent op dezelfde oorspronkelijke machine verwijdert en opnieuw registreert met de
   * *Dezelfde wachtwoordzin*; vervolgens kunt u de back-upgegevens herstellen.
   * *Andere wachtwoordzin*, dan kunt u de back-upgegevens niet herstellen.
 * Als u de agent op een *andere computer* installeert met de

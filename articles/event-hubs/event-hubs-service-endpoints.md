@@ -3,12 +3,12 @@ title: Service-eind punten Virtual Network-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het toevoegen van een service-eind punt van micro soft. EventHub aan een virtueel netwerk.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420448"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554070"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Toegang tot Azure Event Hubs-naam ruimten van specifieke virtuele netwerken toestaan 
 
@@ -31,6 +31,7 @@ Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen d
 > De volgende micro soft-services moeten zich in een virtueel netwerk bevinden
 > - Azure Web Apps
 > - Azure Functions
+> - Azure Monitor (diagnostische instelling)
 
 
 > [!IMPORTANT]

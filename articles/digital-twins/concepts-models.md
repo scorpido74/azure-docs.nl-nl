@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2d062ea4f38742129d44be0e2b7ff51fe3ad8dd1
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131630"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562426"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -26,7 +26,7 @@ Modellen worden geschreven met behulp van de op JSON-LD gebaseerde **Digital-def
 
 Modellen voor Azure Digital Apparaatdubbels worden gedefinieerd met behulp van de Digital Apparaatdubbels Definition Language (DTDL). DTDL is gebaseerd op JSON-LD en is onafhankelijk van programmeer taal. DTDL is niet exclusief voor Azure Digital Apparaatdubbels, maar wordt ook gebruikt voor het weer geven van apparaatgegevens in andere IoT-Services, zoals [IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). 
 
-Azure Digital Apparaatdubbels maakt gebruik van DTDL *versie 2*. Voor meer informatie over deze versie van DTDL raadpleegt u de documentatie van de specificatie in GitHub: [*Digital Apparaatdubbels Definition Language (DTDL)-versie 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+Azure Digital Apparaatdubbels maakt gebruik van **DTDL _versie 2_**. Voor meer informatie over deze versie van DTDL raadpleegt u de documentatie van de specificatie in GitHub: [*Digital Apparaatdubbels Definition Language (DTDL)-versie 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Het gebruik van DTDL- _versie 1_ met Azure Digital apparaatdubbels is nu afgeschaft.
 
 > [!TIP] 
 > Niet alle services die gebruikmaken van DTDL, implementeren exact dezelfde functies van DTDL. IoT Plug en Play maakt bijvoorbeeld geen gebruik van de DTDL-functies die voor grafieken gelden, terwijl Azure Digital Apparaatdubbels momenteel geen DTDL-opdrachten implementeert. Voor meer informatie over de DTDL-functies die specifiek zijn voor Azure Digital Apparaatdubbels raadpleegt u de sectie verderop in dit artikel over de [Implementatie Details van Azure Digital APPARAATDUBBELS DTDL](#azure-digital-twins-dtdl-implementation-specifics).
@@ -216,7 +216,7 @@ Meer informatie over de parser-bibliotheek, inclusief gebruiks voorbeelden, vind
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie modellen beheren met de DigitalTwinsModels-Api's:
-* [*Uitleg: Aangepaste modellen beheren*](how-to-manage-model.md)
+* [*Instructies: Aangepaste modellen beheren*](how-to-manage-model.md)
 
 Of leer hoe digitale apparaatdubbels worden gemaakt op basis van modellen:
 * [*Concepten: Digital apparaatdubbels en het dubbele diagram*](concepts-twins-graph.md)

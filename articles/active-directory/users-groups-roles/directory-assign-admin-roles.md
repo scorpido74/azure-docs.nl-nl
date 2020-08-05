@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502474"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551690"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -195,8 +195,7 @@ Gebruikers met deze rol kunnen basis informatie over de Directory lezen. Deze ro
 Niet gebruiken. Deze rol wordt automatisch toegewezen aan de Azure AD Connect-service en is niet bedoeld of wordt niet ondersteund voor andere gebruik.
 
 ### <a name="directory-writers"></a>[Schrijvers van mappen](#directory-writers-permissions)
-
-Dit is een verouderde rol die moet worden toegewezen aan toepassingen die het [toestemmings raamwerk](../develop/quickstart-register-app.md)niet ondersteunen. Het mag niet worden toegewezen aan gebruikers.
+Gebruikers met deze rol kunnen basis informatie van gebruikers, groepen en service-principals lezen en bijwerken. Wijs deze rol alleen toe aan toepassingen die het [toestemmings raamwerk](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)niet ondersteunen. Het mag niet worden toegewezen aan gebruikers.
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365-beheerder/CRM-beheerder](#crm-service-administrator-permissions)
 
@@ -1001,22 +1000,36 @@ Kan basis informatie over de Directory lezen & schrijven. Voor het verlenen van 
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
-| micro soft. map/groepen/maken | Groepen maken in Azure Active Directory. |
-| micro soft. Directory/groepen/createAsOwner | Groepen maken in Azure Active Directory. De Maker wordt toegevoegd als de eerste eigenaar en het gemaakte object telt op het quotum van 250 gemaakte objecten van de maker. |
 | micro soft. Directory/groepen/appRoleAssignments/update | Werk de eigenschap groups. appRoleAssignments bij in Azure Active Directory. |
-| micro soft. Directory/groepen/basis/bijwerken | Basis eigenschappen van groepen in Azure Active Directory bijwerken. |
+| micro soft. Directory/groepen/assignLicense | Licenties beheren op groepen in Azure Active Directory. |
+| micro soft. Directory/groepen/basis/bijwerken | Basis eigenschappen van groepen in Azure Active Directory bijwerken.  |
+| micro soft. Directory/groepen/classificatie/bijwerken | Update de classificatie-eigenschap van de groep in Azure Active Directory. |
+| micro soft. map/groepen/maken | Groepen maken in Azure Active Directory. |
+| micro soft. Directory/groepen/groupType/update | Werk de eigenschap groupType van een groep bij in Azure Active Directory. |
 | micro soft. map/groepen/leden/bijwerken | Werk de eigenschap groups. members bij in Azure Active Directory. |
 | micro soft. Directory/groepen/eigen aren/bijwerken | Werk de eigenschap groups. Owners bij in Azure Active Directory. |
+| micro soft. Directory/groepen/reprocessLicenseAssignment | Licentie toewijzingen voor een groep in Azure Active Directory opnieuw verwerken. |
+| micro soft. Directory/groepen/securityEnabled/update | Werk de eigenschap secutiryEnabled van een groep bij in Azure Active Directory. |
 | micro soft. Directory/groepen/instellingen/bijwerken | Werk de eigenschap groups. settings bij in Azure Active Directory. |
+| micro soft. map/groepen/zicht baarheid/bijwerken | De zichtbaarheids eigenschap van de groep bijwerken |
 | micro soft. Directory/groupSettings/Basic/update | Werk de basis eigenschappen van groupSettings bij in Azure Active Directory. |
-| micro soft. map/groupSettings/maken | Maak groupSettings in Azure Active Directory. |
+| micro soft. map/groupSettings/maken | GroupSettings maken in Azure Active Directory.. |
 | micro soft. Directory/groupSettings/verwijderen | Verwijder groupSettings in Azure Active Directory. |
+| micro soft. Directory/oAuth2PermissionGrants/Basic/update | Basis eigenschappen van oAuth2PermissionGrants in Azure Active Directory bijwerken. |
+| micro soft. map/oAuth2PermissionGrants/maken | Maak oAuth2PermissionGrants in Azure Active Directory. |
+| micro soft. map/servicePrincipals/synchronizationCredentials/beheren | Geheimen en referenties voor het inrichten van toepassingen beheren. |
+| micro soft. map/servicePrincipals/synchronizationJobs/beheren | Synchronisatie taken voor het inrichten van toepassingen starten, opnieuw opstarten en onderbreken. |
+| micro soft. map/servicePrincipals/synchronizationSchema/beheren | Synchronisatie-taken en-schema's voor het inrichten van toepassingen maken en beheren. |
 | micro soft. Directory/Users/appRoleAssignments/update | Werk de eigenschap users. appRoleAssignments bij in Azure Active Directory. |
 | micro soft. Directory/gebruikers/assignLicense | Licenties op gebruikers beheren in Azure Active Directory. |
 | micro soft. map/gebruikers/basis/bijwerken | Basis eigenschappen van gebruikers in Azure Active Directory bijwerken. |
-| micro soft. Directory/gebruikers/invalidateAllRefreshTokens | De tokens voor het vernieuwen van alle gebruikers in Azure Active Directory ongeldig te maken. |
+| micro soft. map/gebruikers/uitschakelen | Een gebruikers account uitschakelen in Azure Active Directory. |
+| micro soft. map/gebruikers/inschakelen | Een gebruikers account inschakelen in Azure Active Directory |
+| micro soft. Directory/gebruikers/invalidateAllRefreshTokens | Alle gebruikers vernieuwings tokens in Azure Active Directory ongeldig maken, zodat gebruikers zich opnieuw moeten verifiëren bij de volgende aanmelding |
 | micro soft. map/gebruikers/Manager/Update | Werk de eigenschap users. Manager bij in Azure Active Directory. |
-| micro soft. map/gebruikers/userPrincipalName/update | Werk de eigenschap users. userPrincipalName bij in Azure Active Directory. |
+| micro soft. Directory/gebruikers/reprocessLicenseAssignment | De licentie toewijzingen voor een gebruiker in Azure Active Directory opnieuw verwerken. |
+| micro soft. map/users/userPrincipalName/update | Werk de eigenschap users. userPrincipalName bij in Azure Active Directory. |
+
 
 ### <a name="exchange-service-administrator-permissions"></a>Beheerders machtigingen voor Exchange-service
 
@@ -1899,7 +1912,7 @@ Apparaatbeheer | Afgeschaft | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Gebruikers van het apparaat | Afgeschaft | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Adreslijst lezers | Adreslijst lezers | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Directory-synchronisatie accounts | Niet weer gegeven omdat deze niet mag worden gebruikt | d29b2b05-8046-44ba-8758-1e26182fcf32
-Schrijvers van mappen | Niet weer gegeven omdat deze niet mag worden gebruikt | 9360feb5-f418-4baa-8175-e2a00bac4301
+Schrijvers van mappen | Schrijvers van mappen | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange service-beheerder | Exchange-beheerder | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Externe ID gebruikers stroom beheerder | Externe ID gebruikers stroom beheerder | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Externe ID gebruikers stroom kenmerk beheerder | Externe ID gebruikers stroom kenmerk beheerder | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

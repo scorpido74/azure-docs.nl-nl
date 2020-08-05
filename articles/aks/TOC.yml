@@ -301,7 +301,7 @@
     - name: Toepassingen ontwikkelen en uitvoeren
       items:
         - name: Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: Bestaande toepassingen installeren met Helm
           href: kubernetes-helm.md
         - name: OpenFaaS gebruiken

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: a92aa304d605242063e0d0484317bc8c051959e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a41fe159f3ac7ef91ba943534aaa6baeeab83001
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317838"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552404"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -379,7 +379,7 @@ Daarnaast kunt u de correlatie tussen de prestaties en waarden van afzonderlijke
 
 [![parallelle coördinaten voor afstemming afstemmen](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-U kunt ook visualiseren van al uw afstemming-afstemmings uitvoeringen in de Azure-webportal. Zie [experimenten volgen](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)voor meer informatie over het weer geven van een experiment in de webportal.
+U kunt ook visualiseren van al uw afstemming-afstemmings uitvoeringen in de Azure-webportal. Zie [experimenten volgen](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)voor meer informatie over het weer geven van een experiment in de webportal.
 
 ## <a name="find-the-best-model"></a>Het beste model zoeken
 

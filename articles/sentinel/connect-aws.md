@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564574"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563055"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel verbinden met AWS CloudTrail
 
-Gebruik de AWS-connector om al uw AWS CloudTrail-gebeurtenissen in azure Sentinel te streamen. Dit verbindings proces delegeert de toegang voor Azure Sentinel naar uw AWS-bron logboeken, waardoor er een vertrouwens relatie tussen AWS CloudTrail en Azure Sentinel wordt gemaakt. Dit wordt bereikt op AWS door een rol te maken waarmee u toegang krijgt tot de AWS-logboeken van Azure.
+Gebruik de AWS-connector om uw AWS CloudTrail Management-gebeurtenissen in azure Sentinel te streamen. Dit verbindings proces delegeert de toegang voor Azure Sentinel naar uw AWS-bron logboeken, waardoor er een vertrouwens relatie tussen AWS CloudTrail en Azure Sentinel wordt gemaakt. Dit wordt bereikt op AWS door een rol te maken waarmee u toegang krijgt tot de AWS-logboeken van Azure.
 
 > [!NOTE]
 > AWS CloudTrail heeft [ingebouwde beperkingen](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) in de LOOKUPEVENTS-API. Het kan Maxi maal twee trans acties per seconde (TPS) per account bevatten en elke query kan Maxi maal 50 records retour neren. Als één Tenant voortdurend meer dan 100 records per seconde in de ene regio genereert, zullen de achterstand en vertragingen in gegevens opname resulteren.
@@ -33,7 +33,7 @@ Gebruik de AWS-connector om al uw AWS CloudTrail-gebeurtenissen in azure Sentine
 U moet schrijf machtiging hebben voor de Azure Sentinel-werk ruimte.
 
 > [!NOTE]
-> Azure Sentinel verzamelt CloudTrail-gebeurtenissen uit alle regio's. Het is raadzaam om geen gebeurtenissen van de ene naar de andere regio te streamen.
+> Azure Sentinel verzamelt CloudTrail-beheer gebeurtenissen uit alle regio's. Het is raadzaam om geen gebeurtenissen van de ene naar de andere regio te streamen.
 
 ## <a name="connect-aws"></a>Verbinding maken met AWS 
 

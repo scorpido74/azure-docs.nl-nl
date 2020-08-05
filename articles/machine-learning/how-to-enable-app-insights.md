@@ -11,17 +11,17 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e12c22d56399ce1690bee678623c58288cf0163b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423810"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552200"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eindpunten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door Azure-toepassing inzichten in te scha kelen via 
+In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door de logboeken te doorzoeken en Azure-toepassing inzichten in te scha kelen via 
 * [Azure Machine Learning python-SDK](#python)
 * [Azure machine learning Studio](#studio) ophttps://ml.azure.com
 
@@ -42,6 +42,18 @@ Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt k
 
 * Een getraind machine learning model dat moet worden geïmplementeerd in azure Kubernetes service (AKS) of Azure container instance (ACI). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md)
 
+## <a name="query-logs-for-deployed-models"></a>Query logboeken voor geïmplementeerde modellen
+
+Als u logboeken van een eerder geïmplementeerde webservice wilt ophalen, laadt u de service en gebruikt u de `get_logs()` functie. De logboeken bevatten mogelijk gedetailleerde informatie over eventuele fouten die zijn opgetreden tijdens de implementatie.
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Meta gegevens en antwoord van de webservice
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt k
 Als u gegevens wilt vastleggen voor een aanvraag voor de webservice, voegt `print` u instructies toe aan uw score.py-bestand. Elke `print` instructie resulteert in één vermelding in de traceer tabel in Application Insights, onder het bericht `STDOUT` . De inhoud van de `print` instructie wordt opgenomen onder `customDimensions` en vervolgens `Contents` in de tracerings tabel. Als u een JSON-teken reeks afdrukt, produceert deze een hiërarchische gegevens structuur in de tracerings uitvoer onder `Contents` .
 
 U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze gegevens of een [continue export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) naar een opslag account instellen voor een langere retentie of verdere verwerking. Model gegevens kunnen vervolgens worden gebruikt in de Azure Machine Learning voor het instellen van labels, retraining, uitleg, gegevens analyse of ander gebruik. 
+
 
 <a name="python"></a>
 
@@ -164,7 +177,7 @@ Om het weer te geven:
 1. Ga naar uw Azure Machine Learning-werk ruimte in de [Studio](https://ml.azure.com/).
 1. Selecteer **eind punten**.
 1. Selecteer de geïmplementeerde service.
-1. Schuif omlaag om de **Application Insights URL** te vinden en klik op de koppeling.
+1. Schuif omlaag om de **Application Insights URL** te vinden en selecteer de koppeling.
 
     [![Application Insights URL zoeken](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 

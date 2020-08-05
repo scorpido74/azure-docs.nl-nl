@@ -9,18 +9,45 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 8546b74401a291a29493164f8b5bebc7d67a9b6f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b1f45cad5def0e7d9a576a05299b065705ff3e30
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531112"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553440"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+## <a name="2020-08-03"></a>2020-08-03
+
+### <a name="azure-machine-learning-sdk-for-python-v1110"></a>Azure Machine Learning SDK voor python v-1.11.0
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **Azure-cli-ml**
+    + Model raamwerk en model Framework herstellen niet door gegeven in het object run in het CLI-model registratie traject
+    + De CLI-amlcompute identiteit weer geven opdracht voor het weer geven van de Tenant-id en Principal-id 
+  + **azureml-train-automl-client**
+    + Get_best_child () is toegevoegd aan AutoMLRun voor het ophalen van de best onderliggende run voor een AutoML-uitvoering zonder het bijbehorende model te downloaden.
+    + Het ModelProxy-object is toegevoegd, waardoor het voors pellen of forecasten kan worden uitgevoerd op een externe trainings omgeving zonder het model lokaal te downloaden.
+    + Niet-verwerkte uitzonde ringen in AutoML verwijzen nu naar een bekende problemen met de HTTP-pagina, waar meer informatie over de fouten kan worden gevonden.
+  + **azureml-core**
+    + Model namen kunnen 255 tekens lang zijn.
+    + Environment. get_image_details ()-retour object type is gewijzigd. `DockerImageDetails`de klasse is vervangen `dict` , de details van de afbeelding zijn beschikbaar via de nieuwe klasse-eigenschappen. Wijzigingen zijn achterwaarts compatibel.
+    + Los de fout voor Environment. from_pip_requirements () op om de afhankelijkheids structuur te behouden
+    + Er is een fout opgelost waarbij log_list mislukt als er een int en double in dezelfde lijst zijn opgenomen.
+    + Wanneer u een persoonlijke koppeling inschakelt voor een bestaande werk ruimte, moet u er rekening mee houden dat als er reken doelen zijn gekoppeld aan de werk ruimte, deze doelen niet werken als ze zich niet achter hetzelfde virtuele netwerk bevinden als het persoonlijke eind punt van de werk ruimte.
+    + `as_named_input`Optioneel gemaakt wanneer gegevens sets worden gebruikt in experimenten en `as_mount` worden toegevoegd en `as_download` aan `FileDataset` . De naam van de invoer wordt automatisch gegenereerd als `as_mount` of `as_download` is aangeroepen.
+  + **azureml-automl-core**
+    + Niet-verwerkte uitzonde ringen in AutoML verwijzen nu naar een bekende problemen met de HTTP-pagina, waar meer informatie over de fouten kan worden gevonden.
+    + Get_best_child () is toegevoegd aan AutoMLRun voor het ophalen van de best onderliggende run voor een AutoML-uitvoering zonder het bijbehorende model te downloaden.
+    + Het ModelProxy-object is toegevoegd, waardoor het voors pellen of forecasten kan worden uitgevoerd op een externe trainings omgeving zonder het model lokaal te downloaden.
+  + **azureml-pipeline-steps**
+    + Toegevoegd `enable_default_model_output` en `enable_default_metrics_output` gemarkeerd aan `AutoMLStep` . Deze vlaggen kunnen worden gebruikt om de standaard uitvoer in-of uit te scha kelen.
+
 
 ## <a name="2020-07-20"></a>2020-07-20
 

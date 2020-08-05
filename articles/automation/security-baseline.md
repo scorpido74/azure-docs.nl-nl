@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447705"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562681"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
@@ -34,7 +34,7 @@ Voor meer isolatie van uw runbooks kunt u Hybrid Runbook Workers gebruiken die w
 
 Als u een specifieke vereiste hebt, kan Azure Firewall ook worden gebruikt om hieraan te voldoen.
 
-* [Virtuele netwerken en virtuele machines in azure](../virtual-machines/windows/network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../virtual-machines/network-overview.md)
 
 * [Een Virtual Network maken](../virtual-network/quick-create-portal.md)
 
@@ -848,7 +848,7 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 
 **Richt lijnen**: toepassingen met een hoog risico die in uw Azure-omgeving zijn geïmplementeerd, kunnen worden geïsoleerd met behulp van afzonderlijke netwerk-en resource containers met behulp van constructs als virtuele netwerken, subnetten, abonnementen, beheer groepen, ze kunnen voldoende worden beveiligd met een Azure firewall, Web Application firewall (WAF) of netwerk beveiligings groep (NSG).
 
-* [Virtuele netwerken en virtuele machines in azure](../virtual-machines/windows/network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../virtual-machines/network-overview.md)
 
 * [Overzicht van Azure Firewall](../firewall/overview.md)
 

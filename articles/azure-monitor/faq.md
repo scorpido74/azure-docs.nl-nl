@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318110"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563837"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -121,7 +121,7 @@ Een actie groep is een verzameling van meldingen en acties die kunnen worden gea
 
 
 ### <a name="what-is-an-action-rule"></a>Wat is een actie regel?
-Met een actie regel kunt u het gedrag wijzigen van een set waarschuwingen die overeenkomen met een bepaald criterium. Zo kunt u dergelijke vereisten uitvoeren als waarschuwings acties uitschakelen tijdens een onderhouds venster. U kunt ook een actie groep Toep assen op een set waarschuwingen in plaats van deze rechtstreeks toe te passen op de waarschuwings regels. Zie [actie regels](platform/alerts-action-rules.md).
+Met een actie regel kunt u het gedrag wijzigen van een set waarschuwingen die overeenkomen met een bepaald criterium. Zo kunt u dergelijke vereisten doen als u waarschuwings acties wilt uitschakelen tijdens een onderhouds venster. U kunt ook een actie groep Toep assen op een set waarschuwingen in plaats van deze rechtstreeks toe te passen op de waarschuwings regels. Zie [actie regels](platform/alerts-action-rules.md).
 
 ## <a name="agents"></a>Agents
 
@@ -137,7 +137,7 @@ Diagnostische Azure-extensie is voor virtuele machines van Azure en verzamelt ge
 Verkeer naar Azure Monitor maakt gebruik van het micro soft peering ExpressRoute-circuit. Raadpleeg de [ExpressRoute-documentatie](../expressroute/expressroute-faqs.md#supported-services) voor een beschrijving van de verschillende soorten ExpressRoute-verkeer. 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Hoe kan ik controleren of de Log Analytics-agent met Azure Monitor kan communiceren?
-Selecteer in het configuratie scherm op de computer van de agent **beveiliging & instellingen**, **micro soft Monitoring Agent** . Op het tabblad **Azure log Analytics (OMS)** wordt met een groen vinkje bevestigd dat de agent kan communiceren met Azure monitor. Een geel waarschuwings pictogram geeft aan dat de agent problemen ondervindt. Een veelvoorkomende reden is dat de service **micro soft Monitoring Agent** is gestopt. Gebruik service besturings beheer om de service opnieuw te starten.
+Selecteer in het configuratie scherm op de computer van de agent **beveiliging & instellingen**, * * micro soft monitoring agent. Op het tabblad **Azure log Analytics (OMS)** wordt met een groen vinkje bevestigd dat de agent kan communiceren met Azure monitor. Een geel waarschuwings pictogram geeft aan dat de agent problemen ondervindt. Een veelvoorkomende reden is dat de service **micro soft Monitoring Agent** is gestopt. Gebruik service besturings beheer om de service opnieuw te starten.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hoe kan ik Log Analytics agent niet meer communiceren met Azure Monitor?
 Voor agents die rechtstreeks met Log Analytics zijn verbonden, opent u het configuratie scherm en selecteert u **instellingen voor beveiliging &**, **micro soft Monitoring Agent**. Verwijder op het tabblad **Azure log Analytics (OMS)** alle weer gegeven werk ruimten. In System Center Operations Manager verwijdert u de computer uit de lijst Log Analytics beheerde computers. Operations Manager werkt de configuratie van de agent bij naar Log Analytics niet meer. 
@@ -207,7 +207,7 @@ De weer gave Designer is alleen beschikbaar voor gebruikers die zijn toegewezen 
 * [Een ASP.NET-Server instellen](app/monitor-performance-live-website-now.md)
 * [Een Java-Server instellen](app/java-agent.md)
 
-*Hoeveel Application Insights moet ik implementeren?:*
+*Hoeveel Application Insights resources moet ik implementeren:*
 
 * [Hoe kunt u uw Application Insights-implementatie ontwerpen: een versus veel Application Insights bronnen?](app/separate-resources.md)
 
@@ -509,6 +509,15 @@ De meeste Application Insights gegevens hebben een latentie van minder dan vijf 
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502-en 503-antwoorden worden niet altijd vastgelegd door Application Insights
+
+de fouten "502 ongeldige gateway" en "503-Service niet beschikbaar" worden niet altijd vastgelegd door Application Insights. Als er alleen Java script aan de client zijde wordt gebruikt voor bewaking, is dit gedrag te verwachten omdat de fout melding wordt geretourneerd vóór de pagina met de HTML-header met het Java script-fragment voor bewaking dat wordt weer gegeven. 
+
+Als het 502-of 503-antwoord is verzonden vanaf een server waarop bewaking aan server zijde is ingeschakeld, worden de fouten verzameld door de Application Insights SDK. 
+
+Er zijn echter nog steeds gevallen waarin zelfs wanneer bewaking aan server zijde is ingeschakeld op de webserver van een toepassing dat er geen 502-of 503-fout wordt vastgelegd door Application Insights. Veel moderne webservers staan niet toe dat een client rechtstreeks communiceert, maar maakt gebruik van oplossingen zoals omgekeerde proxy's om informatie weer te geven tussen de client en de front-end webservers. 
+
+In dit scenario kan een 502-of 503-antwoord worden geretourneerd naar een client vanwege een probleem met de reverse proxy-laag. Dit zou niet out-of-Box worden vastgelegd door Application Insights. Als u problemen op deze laag wilt detecteren, moet u mogelijk Logboeken van uw reverse proxy naar Log Analytics door sturen en een aangepaste regel maken om te controleren op 502/503-antwoorden. Raadpleeg voor meer informatie over veelvoorkomende oorzaken van 502-en 503-fouten het artikel over Azure App Service het [oplossen van problemen met ' 502 bad gateway ' en ' 503-Service niet beschikbaar '](../app-service/troubleshoot-http-502-http-503.md).     
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 

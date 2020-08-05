@@ -1,54 +1,36 @@
 ---
 title: Extensie en functies van virtuele Azure-machines
-description: Meer informatie over Azure VM-extensies en hoe u deze kunt gebruiken met Azure virtual machines
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+description: Meer informatie over Azure VM-extensies
+services: virtual-machines
+author: amjads1
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/12/2019
-ms.author: akjosh
-ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.author: amjads
+ms.openlocfilehash: 73738f339bea3e8e075530e5de564c1c0854d283
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072982"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552047"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Extensie en functies van virtuele Azure-machines
-Azure virtual machine-uitbrei dingen zijn kleine toepassingen die configuratie-en automatiserings taken na de implementatie bieden op Azure-Vm's. u kunt bestaande installatie kopieën gebruiken en deze vervolgens aanpassen als onderdeel van uw implementaties, zodat u geen aangepaste installatie kopieën meer hoeft te maken.
-
-Het Azure-platform fungeert als host voor veel uitbrei dingen die variëren van VM-configuratie, bewaking, beveiliging en hulpprogram ma's. Uitgevers maken gebruik van een toepassing en verpakken deze in een uitbrei ding en vereenvoudigen de installatie, zodat u alleen vereiste para meters hoeft op te geven. 
-
- Er is een grote keuze aan uitbrei dingen van de eerste en derde partij, als de toepassing in de uitbreidings opslagplaats niet bestaat, kunt u de aangepaste script extensie gebruiken en uw virtuele machine configureren met uw eigen scripts en opdrachten.
-
-Voor beelden van belang rijke scenario's voor het gebruik van uitbrei dingen voor:
-* VM-configuratie kunt u Power shell DSC (desired state Configuration), chef, puppet en aangepaste script extensies gebruiken om VM-configuratie agenten te installeren en uw virtuele machine te configureren. 
-* AV-producten, zoals Symantec, ESET.
-* Hulp programma voor VM-beveiligingslek, zoals Qualys, Rapid7, HPE.
-* VM-en app-bewakings programma, zoals DynaTrace, Azure Network Watcher, Site24x7 en Stackify.
-
-Uitbrei dingen kunnen worden gebundeld met een nieuwe VM-implementatie. Ze kunnen bijvoorbeeld deel uitmaken van een grotere implementatie, het configureren van toepassingen op de VM-inrichting of het uitvoeren van een ondersteunde uitbrei ding die wordt gebruikt voor de implementatie van systemen.
+Uitbrei dingen zijn kleine toepassingen die configuratie en automatisering na de implementatie bieden op virtuele machines van Azure. Het Azure-platform fungeert als host voor veel uitbrei dingen die de VM-configuratie, bewakings-, beveiligings-en hulpprogramma toepassingen beslaan Uitgevers maken een toepassing, zetten deze in een uitbrei ding en vereenvoudigen de installatie. U hoeft alleen maar de vereiste para meters op te geven. 
 
 ## <a name="how-can-i-find-what-extensions-are-available"></a>Hoe kan ik vinden welke extensies beschikbaar zijn?
-U kunt beschik bare uitbrei dingen weer geven in de VM-Blade in de portal, onder uitbrei dingen. Dit is slechts een kleine hoeveelheid. voor de volledige lijst kunt u de CLI-hulpprogram ma's gebruiken. Zie [VM-extensies detecteren voor Linux](features-linux.md) en [voor het detecteren van VM-extensies voor Windows](features-windows.md).
+U kunt beschik bare uitbrei dingen weer geven door een virtuele machine te selecteren en de optie **extensies** selecteren in het menu links. Zie [VM-extensies detecteren voor Linux](features-linux.md) en het [detecteren van VM-extensies voor Windows](features-windows.md)voor meer informatie over het ophalen van een volledige lijst met uitbrei dingen.
 
 ## <a name="how-can-i-install-an-extension"></a>Hoe kan ik een uitbrei ding installeren?
-Azure VM-extensies kunnen worden beheerd met behulp van de Azure CLI, Azure PowerShell, Azure Resource Manager sjablonen en de Azure Portal. Als u een uitbrei ding wilt proberen, gaat u naar de Azure Portal, selecteert u de aangepaste script extensie, geeft u een opdracht/script door en voert u de uitbrei dingen uit.
+Azure VM-extensies kunnen worden beheerd met behulp van de Azure CLI, Power shell, Resource Manager-sjablonen en de Azure Portal. Als u een uitbrei ding wilt proberen, gaat u naar de Azure Portal, selecteert u de aangepaste script extensie en voert u een opdracht of script uit om de extensie uit te voeren.
 
-Als u dezelfde extensie wilt toevoegen aan de portal die u hebt toegevoegd via CLI of Resource Manager-sjabloon, raadpleegt u de documentatie voor verschillende uitbrei dingen, zoals [Windows aangepaste script extensie](custom-script-windows.md) en [aangepaste script extensie voor Linux](custom-script-linux.md).
+Zie voor meer informatie [Windows Custom Script extension](custom-script-windows.md) en [Linux Custom Script extension](custom-script-linux.md).
 
 ## <a name="how-do-i-manage-extension-application-lifecycle"></a>De levens cyclus van de extensie toepassing Hoe kan ik beheren?
-U hoeft niet rechtstreeks verbinding te maken met een virtuele machine om de uitbrei ding te installeren of verwijderen. Omdat de levens cyclus van de Azure-extensie toepassing buiten de virtuele machine wordt beheerd en is geïntegreerd in het Azure-platform, krijgt u ook de geïntegreerde status van de uitbrei ding.
+U hoeft niet rechtstreeks verbinding te maken met een virtuele machine om een uitbrei ding te installeren of verwijderen. De levens cyclus van Azure-uitbrei dingen wordt buiten de virtuele machine beheerd en geïntegreerd in het Azure-platform.
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Iets anders zou ik denken te weten over uitbrei dingen?
-Uitbrei dingen installeren toepassingen, zoals toepassingen die aan bepaalde vereisten voldoen, voor uitbrei dingen bevat een lijst met ondersteunde Windows-en Linux-besturings systemen en u moet de Azure VM-agents hebben geïnstalleerd. Sommige individuele VM-extensie toepassingen hebben mogelijk hun eigen omgevings vereisten, zoals toegang tot een eind punt.
+Sommige individuele VM-extensie toepassingen hebben mogelijk hun eigen omgevings vereisten, zoals toegang tot een eind punt. Elke uitbrei ding heeft een artikel met uitleg over eventuele vereisten, waaronder de besturings systemen die worden ondersteund.
 
 ## <a name="troubleshoot-extensions"></a>Problemen met extensies oplossen
 
@@ -69,7 +51,7 @@ Informatie voor probleem oplossing voor elke extensie vindt u in de sectie **pro
 | micro soft. enterprisecloud. monitoring. omsagentforlinux | [Azure Monitor voor Linux](oms-linux.md#troubleshoot-and-support)
 | micro soft. enterprisecloud. monitoring. microsoftmonitoringagent | [Azure Monitor voor Windows](oms-windows.md#troubleshoot-and-support) |
 | stackify. linuxagent. extension. stackifylinuxagentextension | [Stackify opnieuw traceren voor Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
-| vmaccessforlinux. micro soft. ostcextensions | [Wacht woord opnieuw instellen (VMAccess) voor Linux](vmaccess.md#troubleshoot-and-support) |
+| vmaccessforlinux. micro soft. ostcextensions | [Wacht woord opnieuw instellen voor Linux](vmaccess.md#troubleshoot-and-support) |
 | micro soft. Recovery Services. vmsnapshot | [Moment opname voor Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
 | micro soft. Recovery Services. vmsnapshot | [Moment opname voor Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
 

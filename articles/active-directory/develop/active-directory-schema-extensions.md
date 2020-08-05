@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 71dcad908884351950c89b590523ffa91d6d47f9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424766"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552778"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Kenmerken van Directory-schema-extensies in claims gebruiken
 
@@ -41,7 +41,7 @@ De extensie kenmerken van het Directory-schema kunnen op een van de volgende twe
 Kenmerken van Directory-schema-extensies die met AD Connect zijn gemaakt en gesynchroniseerd, worden altijd gekoppeld aan de toepassings-ID die wordt gebruikt door AD Connect. Ze kunnen worden gebruikt als bron voor claims, door ze te configureren als claims in de configuratie van de **bedrijfs toepassingen** in de portal-gebruikers interface voor SAML-toepassingen die zijn geregistreerd met de galerie of de toepassings configuratie van de niet-galerie onder **bedrijfs toepassingen**, en via een claim toewijzings beleid voor toepassingen die zijn geregistreerd via de registratie-ervaring van de toepassing.  Zodra een directory-extensie kenmerk dat is gemaakt via AD Connect zich in de map bevindt, wordt het weer gegeven in de gebruikers interface voor de configuratie van SAML SSO-claims.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Claims verzenden met gegevens van Directory-schema extensie kenmerken die zijn gemaakt voor een toepassing met behulp van Graph of Power shell
-Als een Directory schema-extensie kenmerk is geregistreerd voor een toepassing met behulp van Microsoft Graph of Power shell (via de eerste installatie of het inrichten van een toepassing), kan dezelfde toepassing in Azure Active Directory worden geconfigureerd om gegevens in dat kenmerk te ontvangen van een gebruikers object in een claim wanneer de gebruiker zich aanmeldt.  De toepassing kan worden geconfigureerd voor het ontvangen van gegevens in Directory-schema-uitbrei dingen die zijn geregistreerd op dezelfde toepassing met behulp van [optionele claims](active-directory-optional-claims.md#configuring-directory-extension-optional-claims).  Deze kunnen worden ingesteld in het toepassings manifest.  Hierdoor kan een multi tenant-toepassing de kenmerken van de Directory-schema-extensie registreren voor eigen gebruik. Wanneer de toepassing wordt ingericht in een Tenant, worden de bijbehorende Directory-schema-uitbrei dingen beschikbaar om te worden ingesteld voor gebruikers in die Tenant en worden ze gebruikt.  Zodra de app is geconfigureerd in de Tenant en de toestemming is verleend, kan deze worden gebruikt om gegevens op te slaan en op te halen via Graph en om toe te wijzen aan claims in tokens die Azure AD verzendt naar toepassingen.
+Als een Directory schema-extensie kenmerk is geregistreerd voor een toepassing met behulp van Microsoft Graph of Power shell (via de eerste installatie of het inrichten van een toepassing), kan dezelfde toepassing in Azure Active Directory worden geconfigureerd om gegevens in dat kenmerk te ontvangen van een gebruikers object in een claim wanneer de gebruiker zich aanmeldt.  De toepassing kan worden geconfigureerd voor het ontvangen van gegevens in Directory-schema-uitbrei dingen die zijn geregistreerd op dezelfde toepassing met behulp van [optionele claims](active-directory-optional-claims.md#configuring-directory-extension-optional-claims).  Deze kunnen worden ingesteld in het toepassings manifest.  Hierdoor kan een multi tenant-toepassing de kenmerken van de Directory-schema-extensie registreren voor eigen gebruik. Wanneer de toepassing wordt ingericht in een Tenant, worden de bijbehorende Directory-schema-uitbrei dingen beschikbaar om te worden ingesteld voor gebruikers in die Tenant en worden ze gebruikt.  Zodra de app is geconfigureerd in de Tenant en toestemming is verleend, kan deze worden gebruikt om gegevens op te slaan en op te halen via Graph en te koppelen aan claims in tokens die door micro soft Identity platform worden uitgegeven aan toepassingen.
 
 De extensie kenmerken van het Directory schema kunnen worden geregistreerd en ingevuld voor elke toepassing.
 

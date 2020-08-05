@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 16e390f2c206cb1f81914bc02e15818282a54a5b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537561"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563497"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Reken omgevingen die worden ondersteund door Azure Data Factory versie 1
 > [!NOTE]
@@ -114,7 +114,7 @@ De volgende JSON definieert een gekoppelde HDInsight-service op aanvraag van Lin
 > [!IMPORTANT]
 > Het HDInsight-cluster maakt een *standaard container* in de Azure Blob-opslag die u opgeeft in de JSON **linkedServiceName** -eigenschap. Standaard verwijdert HDInsight deze container niet wanneer het cluster wordt verwijderd. In een gekoppelde HDInsight-service op aanvraag wordt een HDInsight-cluster gemaakt wanneer een segment moet worden verwerkt, tenzij er een bestaand Live cluster (**timeToLive**) is. Het cluster wordt verwijderd wanneer de verwerking is voltooid. 
 >
-> Naarmate er meer segmenten worden verwerkt, ziet u veel containers in uw Blob-opslag. Als u de containers voor het oplossen van problemen niet nodig hebt, kunt u de containers verwijderen om de opslag kosten te verlagen. De namen van deze containers volgen een patroon: `adf<your Data Factory name>-<linked service name>-<date and time>`. U kunt een hulp programma zoals [micro soft Storage Explorer](https://storageexplorer.com/) gebruiken om containers te verwijderen in Blob Storage.
+> Naarmate er meer segmenten worden verwerkt, ziet u veel containers in uw Blob-opslag. Als u de containers voor het oplossen van problemen niet nodig hebt, kunt u de containers verwijderen om de opslag kosten te verlagen. De namen van deze containers volgen een patroon: `adf<your Data Factory name>-<linked service name>-<date and time>`. U kunt een hulp programma als [Microsoft Azure Storage Explorer](https://storageexplorer.com/) gebruiken om containers in Blob Storage te verwijderen.
 >
 > 
 

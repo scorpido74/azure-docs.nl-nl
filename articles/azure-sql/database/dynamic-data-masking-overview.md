@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14ae9103571d72b0a48ee8e1a9c9dc6bb008373b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981387"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552124"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische gegevensmaskering 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -76,7 +76,7 @@ U kunt de REST API gebruiken om beleid en regels voor gegevens maskering program
 
 ### <a name="data-masking-policies"></a>Beleid voor gegevens maskering
 
-- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): Hiermee wordt het gevoeligheids label van de opgegeven kolom gemaakt of bijgewerkt.
+- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): Hiermee wordt een beleid voor database gegevens maskering gemaakt of bijgewerkt.
 - [Ophalen](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Hiermee wordt een beleid voor database gegevens maskering opgehaald. 
 
 ### <a name="data-masking-rules"></a>Regels voor gegevens maskering

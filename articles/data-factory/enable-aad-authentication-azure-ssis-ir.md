@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187673"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563990"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-verificatie inschakelen voor Azure-SSIS Integration Runtime
 
@@ -128,7 +128,7 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
 
    De opdracht moet worden voltooid, waardoor de Inge sloten gebruiker de mogelijkheid heeft om een Data Base (SSISDB) te maken.
 
-10. Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS IR om het te openen, klikt u met de rechter muisknop op **SSISDB** -data base en selecteert u **nieuwe query**.
+10. Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS IR om toegang te krijgen, moet u eerst controleren of de stappen voor het verlenen van machtigingen aan de **hoofd** database zijn voltooid. Klik vervolgens met de rechter muisknop op de **SSISDB** -data base en selecteer **nieuwe query**.
 
 11. Voer de volgende T-SQL-opdracht in het query venster in en selecteer **uitvoeren** op de werk balk.
 
@@ -176,7 +176,7 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
     
     De opdracht moet worden voltooid, waardoor de beheerde identiteit voor uw ADF de mogelijkheid heeft om een Data Base te maken (SSISDB).
 
-6.  Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS IR om het te openen, klikt u met de rechter muisknop op **SSISDB** -data base en selecteert u **nieuwe query**.
+6.  Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS IR om toegang te krijgen, moet u eerst controleren of de stappen voor het verlenen van machtigingen aan de **hoofd** database zijn voltooid. Klik vervolgens met de rechter muisknop op de **SSISDB** -data base en selecteer **nieuwe query**.
 
 7.  Voer de volgende T-SQL-opdracht in het query venster in en selecteer **uitvoeren** op de werk balk.
 

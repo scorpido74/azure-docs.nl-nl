@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b83c60182c311d9b04a205da4ab0c3477dc9b9e
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373234"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563698"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -43,7 +43,7 @@ De gegevensfeed-Api's worden gebruikt voor het beheren van de elementen in uw Az
 * **Query** : de query categorie stelt ontwikkel aars in staat om [sets van digitale apparaatdubbels te vinden in de dubbele grafiek over de](how-to-query-graph.md) relaties.
 * **EventRoutes** : de categorie EventRoutes bevat api's voor het door [sturen van gegevens](concepts-route-events.md), via het systeem en naar downstream-Services.
 
-De meest recente versie van de data vlak-API voor open bare preview is _**2020-05-31-preview**_.
+De meest recente versie van de data vlak-API voor open bare preview is _**2020-05-31-preview**_. De API _-versie 2020-03-01-preview_ voor gegevenslaag bewerkingen is nu afgeschaft.
 
 De data-vlak-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen, door...

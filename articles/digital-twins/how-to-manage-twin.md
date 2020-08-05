@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061604"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563922"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -37,10 +37,10 @@ Als u een digitale dubbele wilt maken, moet u het volgende opgeven:
 
 U kunt desgewenst initiële waarden opgeven voor alle eigenschappen van de digitale twee. 
 
-> [!TIP]
-> Alleen eigenschappen die ten minste eenmaal zijn ingesteld, worden geretourneerd wanneer u een dubbele met GetDigitalTwin ophaalt.  
-
 De waarden van het model en de oorspronkelijke eigenschap worden gegeven via de `initData` para meter, een JSON-teken reeks met de relevante gegevens.
+
+> [!TIP]
+> Na het maken of bijwerken van een dubbele, kan er een latentie van Maxi maal 10 seconden zijn voordat de wijzigingen in [query's](how-to-query-graph.md)worden weer gegeven. De `GetDigitalTwin` API ( [verderop in dit artikel](#get-data-for-a-digital-twin)) heeft deze vertraging niet. Gebruik daarom de API-aanroep in plaats van een query uit te voeren om de zojuist gemaakte apparaatdubbels te zien als u een direct antwoord nodig hebt. 
 
 ### <a name="initialize-properties"></a>Eigenschappen initialiseren
 
@@ -90,6 +90,9 @@ object result = await client.GetDigitalTwin(id);
 ```
 
 Deze aanroep retourneert twee gegevens als een JSON-teken reeks. 
+
+> [!TIP]
+> Alleen eigenschappen die ten minste eenmaal zijn ingesteld, worden geretourneerd wanneer u een dubbele met ophaalt `GetDigitalTwin` .
 
 Als u meerdere apparaatdubbels met één API-aanroep wilt ophalen, raadpleegt u de query-API-voor beelden in [*de instructies: Query's uitvoeren op de dubbele grafiek*](how-to-query-graph.md).
 
@@ -174,7 +177,12 @@ Meer informatie over de hulp klassen voor serialisatie vindt u in [*How to: gebr
 
 Als u de eigenschappen van een digitale dubbele eigenschap wilt bijwerken, schrijft u de gegevens die u wilt vervangen in de indeling van de [JSON-patch](http://jsonpatch.com/) . Op deze manier kunt u meerdere eigenschappen tegelijk vervangen. Vervolgens geeft u het JSON-patch document door aan een `Update` methode:
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+> [!TIP]
+> Na het maken of bijwerken van een dubbele, kan er een latentie van Maxi maal 10 seconden zijn voordat de wijzigingen in [query's](how-to-query-graph.md)worden weer gegeven. De `GetDigitalTwin` API ( [eerder in dit artikel](#get-data-for-a-digital-twin)beschreven) heeft deze vertraging niet. Gebruik daarom de API-aanroep in plaats van een query uit te voeren om de zojuist bijgewerkte apparaatdubbels te zien als u een direct antwoord nodig hebt. 
 
 Hier volgt een voor beeld van de JSON-patch code. Dit document vervangt de *massa* *-en RADIUS-* eigenschaps waarden van de digitale dubbele waarde die wordt toegepast op.
 

@@ -6,14 +6,14 @@ author: hansenms
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 08/03/2020
 ms.author: mihansen
-ms.openlocfilehash: af891935fd474e6f1f83ff1c2ce56ef71cd065c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3838c46dcd5515cca81f41a4b8ac55bc68ffe69
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536722"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552931"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Veelgestelde vragen over de Azure API voor FHIR
 
@@ -49,38 +49,37 @@ Vanuit een ontwikkelings standpunt wordt elke functie eerst geïmplementeerd op 
 SLIMME (Vervang bare medische toepassingen en herbruikbare technologie) op FHIR is een set open specificaties voor het integreren van partner toepassingen met FHIR-servers en andere Health IT-systemen, zoals elektronische status records en informatie uitwisselingen van de status. Door een slimme on FHIR-toepassing te maken, kunt u ervoor zorgen dat uw toepassing toegankelijk is en kan worden gebruikt door een verdwaald van verschillende systemen.
 Verificatie en Azure API voor FHIR. Ga voor meer informatie naar Smart [Health](https://smarthealthit.org/).
 
-
-## <a name="iot-connector-preview"></a>IoT-connector (preview-versie)
+## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT connector voor FHIR (preview-versie)
 
 ### <a name="what-is-iomt"></a>Wat is IoMT?
 IoMT staat voor Internet of medische dingen en is een categorie van IoT-apparaten die status-en Wellness-gegevens vastleggen en uitwisselen met andere IT-systemen in de gezondheids zorg via een netwerk. Enkele voor beelden van IoMT-apparaten zijn: fitness-en klinisch Wearables, bewakings Sens oren, traceerers voor activiteiten, Point of Care-kiosken, of zelfs een slimme Pill.
 
-### <a name="how-many-iot-connectors-do-i-need"></a>Hoeveel IoT-connectors heb ik nodig?
-Eén IoT-connector kan worden gebruikt om gegevens op te nemen uit een groot aantal verschillende typen apparaten. U kunt echter nog steeds kiezen om verschillende connectors te gebruiken om de volgende redenen:
-- **Scale**: voor de open bare preview is de resource capaciteit van de IOT-connector vast en verwacht een door Voer van ongeveer 200 berichten per seconde. U kunt meer IoT-connectors toevoegen als er een hogere door voer nodig is.
-- **Apparaattype**: u kunt een afzonderlijke IOT-connector instellen voor elk type IoMT-apparaat dat u hebt om redenen om Apparaatbeheer te beheren.
+### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>Hoeveel Azure IoT connector voor FHIR (preview) heb ik nodig?
+Eén Azure IoT-connector voor FHIR * kan worden gebruikt om gegevens op te nemen uit een groot aantal verschillende typen apparaten. U kunt echter nog steeds kiezen om verschillende connectors te gebruiken om de volgende redenen:
+- **Scale**: voor een open bare preview is de Azure IOT-connector voor de resource capaciteit van FHIR vast en verwacht om een door Voer van ongeveer 200 berichten per seconde te bieden. U kunt meer Azure IoT-connector voor FHIR toevoegen als een hogere door Voer is vereist.
+- **Apparaattype**: u kunt een afzonderlijke Azure IOT-connector voor FHIR instellen voor elk type IoMT-apparaat dat u hebt om redenen om Apparaatbeheer te beheren.
 
-### <a name="is-there-a-limit-on-number-of-iot-connectors-during-public-preview"></a>Geldt er een limiet voor het aantal IoT-connectors tijdens de open bare preview?
-Ja, u kunt Maxi maal twee IoT-connectors per abonnement maken terwijl de functie in open bare preview is. Deze limiet bestaat om onverwachte kosten te voor komen terwijl de functie gratis beschikbaar is tijdens de preview-versie. Op aanvraag kan deze limiet worden verhoogd tot Maxi maal vijf IoT-connectors.
+### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Geldt er een limiet voor het aantal Azure IoT-connector voor FHIR (preview) tijdens de open bare preview-versie?
+Ja, u kunt slechts twee Azure IoT-connector maken voor FHIR per abonnement terwijl de functie in open bare preview is. Deze limiet bestaat om onverwachte kosten te voor komen terwijl de functie gratis beschikbaar is tijdens de preview-versie. Op aanvraag kan deze limiet worden verhoogd tot Maxi maal vijf Azure IoT-connector voor FHIR.
 
-### <a name="what-azure-regions-iot-connector-feature-is-available-during-public-preview"></a>Welke Azure-regio's IoT-connector functie is beschikbaar tijdens de open bare preview-versie?
-IoT-connector is beschikbaar in alle Azure-regio's waar Azure API voor FHIR beschikbaar is.
+### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>Wat is de Azure-regio Azure IoT connector voor FHIR (preview) beschikbaar tijdens de open bare preview?
+Azure IoT connector voor FHIR is beschikbaar in alle Azure-regio's waar Azure API voor FHIR beschikbaar is.
 
-### <a name="can-i-configure-scaling-capacity-for-iot-connector"></a>Kan ik schaal capaciteit voor IoT-connector configureren?
-Omdat IoT connector gratis is tijdens de open bare preview, is de capaciteit van de schaal vast en beperkt. De configuratie van IoT-connector die beschikbaar is in open bare Preview wordt verwacht een door Voer van ongeveer 200 berichten per seconde te bieden. Een vorm van resource capaciteits configuratie wordt beschikbaar gesteld in algemene Beschik baarheid (GA).
+### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>Kan ik schaal capaciteit configureren voor Azure IoT connector voor FHIR (preview)?
+Omdat Azure IoT connector voor FHIR gratis is tijdens de open bare preview, is de capaciteit van de schaal vast en beperkt. De Azure IoT-connector voor FHIR-configuratie die beschikbaar is in open bare Preview wordt verwacht een door Voer van ongeveer 200 berichten per seconde te bieden. Een vorm van resource capaciteits configuratie wordt beschikbaar gesteld in algemene Beschik baarheid (GA).
 
-### <a name="what-fhir-version-does-iot-connector-support"></a>Welke FHIR-versie ondersteunt IoT-connector?
-IoT-connector ondersteunt momenteel alleen FHIR versie R4. Deze functie is daarom alleen zichtbaar voor de R4-instanties van de Azure API voor FHIR en micro soft is op dit moment niet van plan om versie STU3 te ondersteunen.
+### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>Welke FHIR-versie biedt Azure IoT connector voor FHIR-ondersteuning (preview)?
+Azure IoT connector voor FHIR ondersteunt momenteel alleen FHIR versie R4. Deze functie is daarom alleen zichtbaar voor de R4-instanties van de Azure API voor FHIR en micro soft is op dit moment niet van plan om versie STU3 te ondersteunen.
 
-### <a name="why-cant-i-install-iot-connector-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Waarom kan ik IoT-connector niet installeren als privé-verbinding is ingeschakeld op de Azure-API voor FHIR?
-IoT-connector biedt op dit moment geen ondersteuning voor persoonlijke koppelings mogelijkheden. Als u een persoonlijke koppeling hebt ingeschakeld op de Azure-API voor FHIR, kunt u echter geen IoT-connector installeren en vice versa. Deze beperking is naar verwachting verdwenen als IoT-connector beschikbaar is voor algemene Beschik baarheid (GA).
+### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Waarom kan ik de Azure IoT-connector voor FHIR (preview) niet installeren als persoonlijke koppeling is ingeschakeld op de Azure API voor FHIR?
+Azure IoT connector voor FHIR biedt op dit moment geen ondersteuning voor persoonlijke koppelings mogelijkheden. Als u een persoonlijke koppeling hebt ingeschakeld in azure API voor FHIR, kunt u de Azure IoT-connector niet installeren voor FHIR en vice versa. Deze beperking wordt verwacht als de Azure IoT-connector voor FHIR beschikbaar is voor algemene Beschik baarheid (GA).
 
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-iot-connector-feature-of-azure-api-for-fhir-service"></a>Wat is het verschil tussen de open-source IoMT FHIR-connector voor de Azure-en IoT-connector functie van de Azure API for FHIR-service?
-IoT-connector is een gehoste en beheerde versie van de open-source IoMT FHIR-connector voor Azure. In de beheerde service biedt micro soft alle onderhoud en updates.
+### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Wat is het verschil tussen de open-source IoMT FHIR-connector voor de Azure-en Azure IoT-connector voor de FHIR-functie (preview) van de Azure API for FHIR-service?
+Azure IoT connector voor FHIR is een gehoste en beheerde versie van de open-source IoMT FHIR-connector voor Azure. In de beheerde service biedt micro soft alle onderhoud en updates.
 
 Wanneer u IoMT FHIR-connector voor Azure uitvoert, hebt u rechtstreeks toegang tot de onderliggende resources. Maar u bent ook verantwoordelijk voor het onderhouden en bijwerken van de server en alle vereiste nalevings werkzaamheden als u PHI-gegevens opslaat.
 
-Vanuit een ontwikkelings standpunt wordt elke functie voor het eerst geïmplementeerd op de open-source IoMT FHIR-connector voor Azure. Zodra de app is gevalideerd in open source, wordt deze vrijgegeven aan de PaaS IoT-connector functie van de Azure API for FHIR-service. De tijd tussen de release in open source en PaaS is afhankelijk van de complexiteit van de functie en andere prioriteiten voor de weg-toewijzing.
+Vanuit een ontwikkelings standpunt wordt elke functie voor het eerst geïmplementeerd op de open-source IoMT FHIR-connector voor Azure. Zodra de app is gevalideerd in open source, wordt deze vrijgegeven aan de PaaS Azure IoT-connector voor de FHIR-functie van de Azure API for FHIR-service. De tijd tussen de release in open source en PaaS is afhankelijk van de complexiteit van de functie en andere prioriteiten voor de weg-toewijzing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -88,3 +87,7 @@ In dit artikel hebt u enkele veelgestelde vragen over de Azure API voor FHIR gel
  
 >[!div class="nextstepaction"]
 >[Ondersteunde FHIR-functies](fhir-features-supported.md)
+
+* In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
+
+FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.

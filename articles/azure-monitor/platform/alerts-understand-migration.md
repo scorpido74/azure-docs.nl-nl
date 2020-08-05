@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073628"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564092"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Werking van het hulpprogramma voor migratie
 
@@ -104,7 +104,7 @@ De metrische gegevens van mislukte aanvragen voor Mongo moeten worden opgesplits
 
 ### <a name="classic-compute-metrics"></a>Metrische waarden voor klassieke berekeningen
 
-Waarschuwingen over de klassieke reken metrieken worden niet gemigreerd met het migratie hulpprogramma, omdat klassieke Compute-resources nog niet worden ondersteund met nieuwe waarschuwingen. Ondersteuning voor nieuwe waarschuwingen voor deze resource typen wordt in de toekomst toegevoegd. Zodra deze beschikbaar is, moeten klanten vóór 2020 juni nieuwe gelijkwaardige waarschuwings regels maken op basis van hun klassieke waarschuwings regels.
+Waarschuwingen over de klassieke reken metrieken worden niet gemigreerd met het migratie hulpprogramma, omdat klassieke Compute-resources nog niet worden ondersteund met nieuwe waarschuwingen. Ondersteuning voor nieuwe waarschuwingen voor deze resource typen is momenteel beschikbaar als open bare preview-versie en klanten kunnen nieuwe gelijkwaardige waarschuwings regels opnieuw maken op basis van hun klassieke waarschuwings regels.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klassieke waarschuwings regels voor gedeprecieerde metrische gegevens
 

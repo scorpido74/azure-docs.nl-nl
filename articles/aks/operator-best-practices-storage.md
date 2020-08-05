@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor de cluster opera
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80877895"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562835"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service (AKS)
 
@@ -35,8 +35,8 @@ De volgende tabel bevat een overzicht van de beschik bare opslag typen en hun mo
 | Toepassing | Volume-invoeg toepassing | Eenmaal lezen/schrijven | Alleen-lezen veel | Veel lezen/schrijven | Ondersteuning voor Windows Server-container |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Gedeelde configuratie       | Azure Files   | Ja | Ja | Ja | Ja |
-| Gestructureerde app-gegevens        | Azure-schijven   | Yes | Nee  | Nee  | Yes |
-| Ongestructureerde gegevens, bestandssysteem bewerkingen | [BlobFuse][blobfuse] | Ja | Ja | Ja | No |
+| Gestructureerde app-gegevens        | Azure-schijven   | Ja | Nee  | Nee  | Ja |
+| Ongestructureerde gegevens, bestandssysteem bewerkingen | [BlobFuse][blobfuse] | Ja | Ja | Ja | Nee |
 
 De twee primaire typen opslag die voor volumes in AKS worden gegeven, worden ondersteund door Azure disks of Azure Files. Om de beveiliging te verbeteren, gebruiken beide typen opslag standaard SSE (Azure Storage service Encryption) waarmee gegevens in rust worden versleuteld. Schijven kunnen momenteel niet worden versleuteld met Azure Disk Encryption op knooppunt niveau AKS.
 
@@ -104,7 +104,7 @@ Dit artikel is gericht op Aanbevolen procedures voor opslag in AKS. Zie [opslag 
 
 <!-- LINKS - Internal -->
 [aks-concepts-storage]: concepts-storage.md
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [dynamic-disks]: azure-disks-dynamic-pv.md
 [dynamic-files]: azure-files-dynamic-pv.md
 [reclaim-policy]: concepts-storage.md#storage-classes

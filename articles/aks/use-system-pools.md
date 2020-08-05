@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 2994a616d60258e81cbd5a409690abc18538183a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c808bda624cca3bd7bd28c6adfbdfb52fa2c068
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015524"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562817"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
@@ -66,7 +66,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* 
 az group create --name myResourceGroup --location eastus
 ```
 
-Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voor beeld wordt een cluster met de naam *myAKSCluster* gemaakt met één specifieke systeem groep met één knoop punt. Zorg ervoor dat u voor de werk belasting van uw productie gebruikmaakt van systeem knooppunt groepen met ten minste drie knoop punten. Het volt ooien van deze bewerking kan enkele minuten duren.
+Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voor beeld wordt een cluster met de naam *myAKSCluster* gemaakt met één specifieke systeem groep met één knoop punt. Zorg ervoor dat u voor de werk belasting van uw productie gebruikmaakt van systeem knooppunt groepen met ten minste drie knoop punten. Deze bewerking kan enkele minuten duren.
 
 ```azurecli-interactive
 # Create a new AKS cluster with a single system pool
@@ -213,6 +213,6 @@ In dit artikel hebt u geleerd hoe u systeem knooppunt groepen kunt maken en behe
 [supported-versions]: supported-kubernetes-versions.md
 [tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

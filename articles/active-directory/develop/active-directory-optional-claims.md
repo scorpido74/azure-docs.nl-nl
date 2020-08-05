@@ -1,7 +1,7 @@
 ---
 title: Optionele claims voor Azure AD-apps bieden
 titleSuffix: Microsoft identity platform
-description: Aangepaste of extra claims toevoegen aan de SAML-tokens (2,0) en JSON Web tokens (JWT) die zijn uitgegeven door Azure Active Directory.
+description: Aangepaste of extra claims toevoegen aan de SAML-tokens (2,0 en JSON Web tokens) die zijn uitgegeven door het micro soft Identity-platform.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445586"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552863"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Procedure: optionele claims voor uw Azure AD-App opgeven
+# <a name="how-to-provide-optional-claims-to-your-app"></a>Procedure: optionele claims voor uw app opgeven
 
 Ontwikkel aars van toepassingen kunnen optionele claims in hun Azure AD-toepassingen gebruiken om op te geven welke claims ze willen in tokens die naar hun toepassing worden verzonden.
 
 U kunt optionele claims gebruiken voor het volgende:
 
 - Selecteer extra claims die moeten worden toegevoegd aan de tokens voor uw toepassing.
-- Wijzig het gedrag van bepaalde claims die Azure AD retourneert in tokens.
+- Wijzig het gedrag van bepaalde claims die micro soft Identity platform retourneert in tokens.
 - Aangepaste claims toevoegen en openen voor uw toepassing.
 
 Zie de documentatie voor [toegangs tokens](access-tokens.md) en [id_token](id-tokens.md) claims voor de lijsten met standaard claims.
@@ -49,7 +49,7 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 
 **Tabel 2: v 1.0 en v 2.0 optionele claim sets**
 
-| Naam                       |  Beschrijving   | Token type | Gebruikers type | Opmerkingen  |
+| Naam                       |  Beschrijving   | Token type | Gebruikers type | Notities  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tijdstip waarop de laatste verificatie van de gebruiker is gestart. Zie OpenID Connect Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | De regio van de resource-Tenant | JWT        |           | |
@@ -77,7 +77,7 @@ Deze claims zijn altijd opgenomen in de Azure AD-tokens v 1.0, maar zijn niet op
 
 **Tabel 3: alleen optionele claims voor v 2.0**
 
-| JWT-claim     | Naam                            | Beschrijving                                | Opmerkingen |
+| JWT-claim     | Naam                            | Beschrijving                                | Notities |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adres                      | Het IP-adres van de client die is aangemeld bij.   |       |
 | `onprem_sid`  | Lokale beveiligings-id |                                             |       |
@@ -125,7 +125,7 @@ Dit OptionalClaims-object zorgt ervoor dat het ID-token dat naar de client wordt
 
 U kunt optionele claims voor uw toepassing configureren via de gebruikers interface of het toepassings manifest.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek naar **Azure Active Directory** en selecteer deze optie.
+1. Ga naar [Azure Portal](https://portal.azure.com). Zoek en selecteer de optie **Azure Active Directory**.
 1. Selecteer in de sectie **beheren** de optie **app-registraties**.
 1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
 

@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501488"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553951"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
-In dit artikel worden de belangrijkste beveiligings functies in azure Cognitive Search beschreven waarmee u inhoud en bewerkingen kunt beveiligen. 
+In dit artikel worden de belangrijkste beveiligings functies in azure Cognitive Search beschreven waarmee u inhoud en bewerkingen kunt beveiligen.
 
-+ Op de opslaglaag is encryption-at-rest een gegeven op platform niveau, maar Cognitive Search biedt via Azure Key Vault door de klant beheerde sleutels voor een extra versleutelings laag.
++ Op het niveau van de opslaglaag is encryption-at-rest ingebouwd voor alle door service beheerde inhoud die op schijf wordt opgeslagen, inclusief indexen, synoniemen en de definities van Indexeer functies, gegevens bronnen en vaardig heden. Azure Cognitive Search biedt ook ondersteuning voor het toevoegen van door de klant beheerde sleutels (CMK) voor een bijkomende versleuteling van geïndexeerde inhoud. Voor services die na augustus 1 2020 zijn gemaakt, wordt CMK-versleuteling uitgebreid naar gegevens op tijdelijke schijven, voor een volledige dubbele versleuteling van geïndexeerde inhoud.
 
 + Inkomende beveiliging beveiligt het eind punt van de zoek service op toenemende niveaus van beveiliging: van API-sleutels op de aanvraag, tot binnenkomende regels in de firewall, tot privé-eind punten die uw service volledig kunnen afschermen via het open bare Internet.
 
@@ -29,29 +30,41 @@ Bekijk deze video met snel tempo voor een overzicht van de beveiligings architec
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>Versleutelde verzen dingen en opslag
 
-Versleuteling is een betrouwbaar Azure-Cognitive Search, te beginnen met verbindingen en verzen dingen, tot inhoud die is opgeslagen op schijf. Voor zoek services op het open bare Internet luistert Azure Cognitive Search op HTTPS-poort 443. Alle client-naar-service-verbindingen gebruiken TLS 1,2-versleuteling. Eerdere versies (1,0 of 1,1) worden niet ondersteund.
+In azure Cognitive Search begint versleuteling met verbindingen en verzen dingen, en wordt uitgebreid naar inhoud die is opgeslagen op schijf. Voor zoek services op het open bare Internet luistert Azure Cognitive Search op HTTPS-poort 443. Alle client-naar-service-verbindingen gebruiken TLS 1,2-versleuteling. Eerdere versies (1,0 of 1,1) worden niet ondersteund.
 
-### <a name="data-encryption-at-rest"></a>Gegevensversleuteling in rust
+Voor gegevens die intern door de zoek service worden verwerkt, worden de [gegevens versleutelings modellen](../security/fundamentals/encryption-atrest.md#data-encryption-models)beschreven in de volgende tabel. Sommige functies, zoals kennis opslag, incrementele verrijking en indexering gebaseerd indexering, lezen van of schrijven naar gegevens structuren in andere Azure-Services. Deze services hebben hun eigen coderings niveaus gescheiden van Azure Cognitive Search.
 
-In azure Cognitive Search worden index definities en inhoud, definities van gegevens bronnen, Indexer definities, definities van vaardig heden en synoniemen opgeslagen.
+| Model | Subknooppuntsleutels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Vereiste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beperkingen | Van toepassing op |
+|------------------|-------|-------------|--------------|------------|
+| versleuteling aan de server zijde | Door micro soft beheerde sleutels | Geen (ingebouwd) | Geen, beschikbaar op alle lagen, in alle regio's, voor inhoud die is gemaakt na januari 24 2018. | Inhoud (indices en synoniemen kaarten) en definities (Indexeer functies, gegevens bronnen, vaardig heden) |
+| versleuteling aan de server zijde | door de klant beheerde sleutels | Azure Key Vault | Beschikbaar op factureer bare lagen, in alle regio's, voor inhoud die is gemaakt na januari 2019. | Inhoud (indices en synoniemen toewijzingen) op gegevens schijven |
+| dubbele versleuteling aan de server zijde | door de klant beheerde sleutels | Azure Key Vault | Beschikbaar op factureer bare lagen, in geselecteerde regio's, op zoek Services na augustus 1 2020. | Inhoud (indexen en synoniemen) op gegevens schijven en tijdelijke schijven |
 
-In de opslaglaag worden gegevens op schijf versleuteld met sleutels die worden beheerd door micro soft. U kunt versleuteling niet in-of uitschakelen, of versleutelings instellingen weer geven in de portal of via een programma. Versleuteling is volledig intern, zonder meetbaar effect op het indexeren van tijd tot voltooiing of index grootte. Deze fout treedt automatisch op bij alle indexeringen, met inbegrip van incrementele updates van een index die niet volledig is versleuteld (gemaakt vóór 2018 januari).
+### <a name="service-managed-keys"></a>Door service beheerde sleutels
 
-Intern is versleuteling gebaseerd op [Azure Storage-service versleuteling](../storage/common/storage-service-encryption.md), met behulp van 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
+Door service beheerde versleuteling is een micro soft-interne bewerking, gebaseerd op [Azure Storage-service versleuteling](../storage/common/storage-service-encryption.md), met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). Deze fout treedt automatisch op bij alle indexeringen, met inbegrip van incrementele updates voor indexen die niet volledig zijn versleuteld (gemaakt vóór 2018 januari).
 
-> [!NOTE]
-> Versleuteling op rest werd aangekondigd in 24 januari 2018 en is van toepassing op alle service lagen, inclusief de gratis laag, in alle regio's. Voor volledige versleuteling moet de indexen die vóór die datum zijn gemaakt, worden verwijderd en opnieuw worden opgebouwd om versleuteling te laten plaatsvinden. Anders worden alleen nieuwe gegevens die na 24 januari worden toegevoegd, versleuteld.
+### <a name="customer-managed-keys-cmk"></a>Door de klant beheerde sleutels (CMK)
 
-### <a name="customer-managed-key-cmk-encryption"></a>Versleuteling van door de klant beheerde sleutel (CMK)
+Voor door de klant beheerde sleutels is een extra factureer bare service vereist, Azure Key Vault, die zich in een andere regio kan bevinden, maar onder hetzelfde abonnement als Azure Cognitive Search. Het inschakelen van CMK-versleuteling verhoogt de index grootte en vermindert de query prestaties. Op basis van waarnemingen tot heden kunt u verwachten dat er in query tijden een toename van 30%-60% wordt weer geven, hoewel de werkelijke prestaties afhankelijk zijn van de index definitie en typen query's. Als gevolg van deze invloed van prestaties raden we u aan deze functie alleen in te scha kelen voor indexen die echt nodig zijn. Zie voor meer informatie door de [klant beheerde versleutelings sleutels configureren in Azure Cognitive Search](search-security-manage-encryption-keys.md).
 
-Klanten die extra opslag beveiliging willen, kunnen gegevens en objecten versleutelen voordat ze worden opgeslagen en versleuteld op schijf. Deze benadering is gebaseerd op een sleutel van een gebruiker, die wordt beheerd en opgeslagen via Azure Key Vault, onafhankelijk van micro soft. Het versleutelen van inhoud voordat de schijf wordt versleuteld, wordt ' dubbele versleuteling ' genoemd. Op dit moment kunt u op selectieve wijze dubbele indexen en synoniemen versleutelen. Zie door de [klant beheerde versleutelings sleutels in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> CMK-versleuteling is algemeen beschikbaar voor zoek services die zijn gemaakt na januari 2019. Het wordt niet ondersteund op gratis (gedeelde) Services. 
->
->Als u deze functie inschakelt, wordt de index grootte verhoogd en wordt de query prestaties verkleind. Op basis van waarnemingen tot heden kunt u verwachten dat er in query tijden een toename van 30%-60% wordt weer geven, hoewel de werkelijke prestaties afhankelijk zijn van de index definitie en typen query's. Als gevolg van deze invloed van prestaties raden we u aan deze functie alleen in te scha kelen voor indexen die echt nodig zijn.
+### <a name="double-encryption"></a>Dubbele versleuteling 
+
+In azure Cognitive Search is dubbele versleuteling een uitbrei ding van CMK. Het is gezien als twee-fold versleuteling (eenmaal per CMK, en opnieuw door door de service beheerde sleutels) en uitgebreid in het bereik, met lange termijn opslag die is geschreven naar een gegevens schijf en opslag op korte termijn die naar tijdelijke schijven wordt geschreven. Het verschil tussen CMK vóór augustus 1 2020 en after, en wat CMK een functie met dubbele code ring maakt in azure Cognitive Search, is de extra versleuteling van gegevens op rest op tijdelijke schijven.
+
+Dubbele versleuteling is momenteel beschikbaar op nieuwe services die na 1 augustus zijn gemaakt in deze regio's:
+
++ US - west 2
++ VS - oost
++ VS - zuid-centraal
++ VS (overheid) - Virginia
++ VS (overheid) - Arizona
 
 <a name="service-access-and-authentication"></a>
 
@@ -107,7 +120,7 @@ Hoe een gebruiker toegang heeft tot een index en andere objecten, wordt bepaald 
 
 Als u nauw keuriger controle per gebruiker met de zoek resultaten nodig hebt, kunt u beveiligings filters voor uw query's maken en documenten retour neren die zijn gekoppeld aan een bepaalde beveiligings identiteit. In plaats van vooraf gedefinieerde rollen en roltoewijzingen, wordt toegangs beheer op basis van een id geïmplementeerd als een *filter* waarmee Zoek resultaten van documenten en inhoud worden verkleind op basis van identiteiten. In de volgende tabel worden twee benaderingen beschreven waarmee Zoek resultaten van niet-geautoriseerde inhoud worden bijgesneden.
 
-| Methode | Description |
+| Methode | Beschrijving |
 |----------|-------------|
 |[Beveiligings beperking op basis van identiteits filters](search-security-trimming-for-azure-search.md)  | Documenteert de basis werk stroom voor het implementeren van toegangs beheer voor gebruikers identiteit. Het onderwerp bevat het toevoegen van beveiligings-id's aan een index en legt vervolgens een overzicht van de filtering uit voor dat veld om de resultaten van verboden inhoud te kunnen knippen. |
 |[Beveiligings beperking op basis van Azure Active Directory-identiteiten](search-security-trimming-for-azure-search-with-aad.md)  | In dit artikel wordt het vorige artikel uitgebreid met stappen voor het ophalen van identiteiten van Azure Active Directory (AAD), een van de [gratis services](https://azure.microsoft.com/free/) in het Azure-Cloud platform. |

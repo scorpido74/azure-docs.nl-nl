@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7aab7f5db6256d2f2525ff4a58c10ff5aa517f7
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999578"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553169"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Overzicht-on-premises Active Directory Domain Services authenticatie via SMB voor Azure-bestands shares
 
@@ -46,6 +46,8 @@ Voordat u AD DS verificatie voor Azure-bestands shares inschakelt, moet u ervoor
     U kunt de functie inschakelen op een nieuwe of bestaande on-premises AD DS omgeving. Identiteiten die worden gebruikt voor toegang moeten worden gesynchroniseerd met Azure AD. De Azure AD-Tenant en de bestands share die u wilt openen, moeten zijn gekoppeld aan hetzelfde abonnement.
 
 - Domein: lid worden van een on-premises machine of een Azure-VM naar een on-premises AD DS. Zie lid worden van [een computer aan een domein](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain)voor meer informatie over het koppelen van een domein.
+
+    Als uw computer geen lid is van een domein dat is gekoppeld aan een AD DS, kunt u mogelijk nog steeds AD-referenties gebruiken voor verificatie als uw computer een regel van het gezichts vermogen van de AD-domein controller heeft.
 
 - Selecteer of maak een Azure-opslag account.  Voor optimale prestaties raden we u aan het opslag account in dezelfde regio te implementeren als de client van waaruit u toegang wilt krijgen tot de share. Koppel vervolgens [de Azure-bestands share](storage-how-to-use-files-windows.md) aan de sleutel van uw opslag account. Bij het koppelen met de sleutel van het opslag account wordt de verbinding gecontroleerd.
 

@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170374"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564007"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -189,7 +189,7 @@ def main(req: func.HttpRequest,
 Wanneer de functie wordt aangeroepen, wordt de HTTP-aanvraag door gegeven aan de functie als `req` . Er wordt een item opgehaald uit de Azure-Blob Storage op basis van de id in de route _-_ URL en beschikbaar gemaakt als `obj` in de hoofd tekst van de functie.  Hier is het opgegeven opslag account het connection string gevonden in de app-instelling AzureWebJobsStorage. Dit is hetzelfde opslag account dat wordt gebruikt door de functie-app.
 
 
-## <a name="outputs"></a>Uitvoer
+## <a name="outputs"></a>Uitvoerwaarden
 
 Output kan worden uitgedrukt in retour waarde en uitvoer parameters. Als er slechts één uitvoer is, raden we u aan de retour waarde te gebruiken. Voor meerdere uitvoer moet u uitvoer parameters gebruiken.
 
@@ -434,8 +434,8 @@ U kunt ook Azure-pijp lijnen gebruiken om uw afhankelijkheden te maken en te pub
 
 ### <a name="remote-build"></a>Externe build
 
-Bij het gebruik van externe builden worden afhankelijkheden die zijn hersteld op de server en native afhankelijkheden overeenkomen met de productie omgeving. Dit resulteert in een kleiner implementatie pakket dat moet worden geüpload. Gebruik externe build bij het ontwikkelen van python-apps in Windows. Als uw project aangepaste afhankelijkheden heeft, kunt u [externe build gebruiken met extra index-URL](#remote-build-with-extra-index-url). 
- 
+Bij het gebruik van externe builden worden afhankelijkheden die zijn hersteld op de server en native afhankelijkheden overeenkomen met de productie omgeving. Dit resulteert in een kleiner implementatie pakket dat moet worden geüpload. Gebruik externe build bij het ontwikkelen van python-apps in Windows. Als uw project aangepaste afhankelijkheden heeft, kunt u [externe build gebruiken met extra index-URL](#remote-build-with-extra-index-url).
+
 Afhankelijkheden worden op afstand opgehaald op basis van de inhoud van het requirements.txt-bestand. [Externe build](functions-deployment-technologies.md#remote-build) is de aanbevolen methode build. Standaard vraagt de Azure Functions Core Tools een externe build aan wanneer u de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht gebruikt om uw python-project naar Azure te publiceren.
 
 ```bash
@@ -456,7 +456,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 Vervang door `<APP_NAME>` de naam van uw functie-app in Azure.
 
-Met behulp `--build local` van de optie worden Project afhankelijkheden uit het requirements.txt-bestand gelezen en worden deze afhankelijke pakketten lokaal gedownload en geïnstalleerd. Project bestanden en afhankelijkheden worden geïmplementeerd vanaf uw lokale computer naar Azure. Dit leidt ertoe dat een groter implementatie pakket wordt geüpload naar Azure. Als u om de een of andere reden geen afhankelijkheden in uw requirements.txt bestand kunt verkrijgen, moet u de optie aangepaste afhankelijkheden gebruiken voor het publiceren. 
+Met behulp `--build local` van de optie worden Project afhankelijkheden uit het requirements.txt-bestand gelezen en worden deze afhankelijke pakketten lokaal gedownload en geïnstalleerd. Project bestanden en afhankelijkheden worden geïmplementeerd vanaf uw lokale computer naar Azure. Dit leidt ertoe dat een groter implementatie pakket wordt geüpload naar Azure. Als u om de een of andere reden geen afhankelijkheden in uw requirements.txt bestand kunt verkrijgen, moet u de optie aangepaste afhankelijkheden gebruiken voor het publiceren.
 
 Het is niet raadzaam om lokale builds te gebruiken bij het ontwikkelen van lokaal op Windows.
 
@@ -466,7 +466,7 @@ Wanneer het project geen afhankelijkheden heeft gevonden in de [python-pakket in
 
 #### <a name="remote-build-with-extra-index-url"></a>Externe build met extra index-URL
 
-Gebruik een externe build als uw pakketten beschikbaar zijn vanuit een toegankelijke aangepaste pakket index. Zorg ervoor dat u [een app-instelling met de naam maakt](functions-how-to-use-azure-function-app-settings.md#settings) voordat u publiceert `PIP_EXTRA_INDEX_URL` . De waarde voor deze instelling is de URL van de aangepaste pakket index. Met deze instelling geeft u aan dat de externe build moet worden uitgevoerd `pip install` met behulp van de `--extra-index-url` optie. Zie de [installatie documentatie voor python pip](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)voor meer informatie. 
+Gebruik een externe build als uw pakketten beschikbaar zijn vanuit een toegankelijke aangepaste pakket index. Zorg ervoor dat u [een app-instelling met de naam maakt](functions-how-to-use-azure-function-app-settings.md#settings) voordat u publiceert `PIP_EXTRA_INDEX_URL` . De waarde voor deze instelling is de URL van de aangepaste pakket index. Met deze instelling geeft u aan dat de externe build moet worden uitgevoerd `pip install` met behulp van de `--extra-index-url` optie. Zie de [installatie documentatie voor python pip](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)voor meer informatie.
 
 U kunt ook basis verificatie referenties gebruiken met de extra pakket index-Url's. Zie voor meer informatie [basis verificatie referenties](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) in python-documentatie.
 
@@ -658,11 +658,14 @@ Als u de volledige details van de lijst met deze bibliotheken wilt bekijken, gaa
 
 Voor de functie python Worker is een specifieke set bibliotheken vereist. U kunt deze bibliotheken ook gebruiken in uw functies, maar ze maken geen deel uit van de python-standaard. Als uw functies afhankelijk zijn van een van deze bibliotheken, zijn ze mogelijk niet beschikbaar voor uw code wanneer ze buiten Azure Functions worden uitgevoerd. U vindt een gedetailleerde lijst met afhankelijkheden in het gedeelte **install \_ vereist** in het bestand [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) .
 
+> [!NOTE]
+> Als uw functie-app requirements.txt een `azure-functions-worker` vermelding bevat, verwijdert u deze. De werk nemer functions wordt automatisch beheerd door Azure Functions platform en we werken deze regel matig bij met nieuwe functies en oplossingen voor problemen. Het hand matig installeren van een oude versie van de werk stroom in requirements.txt kan onverwachte problemen veroorzaken.
+
 ### <a name="azure-functions-python-library"></a>Python-bibliotheek Azure Functions
 
 Elke python worker-update bevat een nieuwe versie van [Azure functions python-bibliotheek (Azure. functions)](https://github.com/Azure/azure-functions-python-library). Deze aanpak maakt het eenvoudiger om uw python-functie-apps bij te werken, omdat elke update achterwaarts compatibel is. Een lijst met versies van deze bibliotheek vindt u in [Azure-functions PyPi](https://pypi.org/project/azure-functions/#history).
 
-De versie van de runtime bibliotheek wordt opgelost door Azure en kan niet worden overschreven door requirements.txt. De `azure-functions` invoer in requirements.txt is alleen voor linting en klant bewustzijn. 
+De versie van de runtime bibliotheek wordt opgelost door Azure en kan niet worden overschreven door requirements.txt. De `azure-functions` invoer in requirements.txt is alleen voor linting en klant bewustzijn.
 
 Gebruik de volgende code om de daad werkelijke versie van de python-functies bibliotheek in uw runtime bij te houden:
 
@@ -689,7 +692,8 @@ CORS wordt volledig ondersteund voor python-functie-apps.
 
 Hieronder vindt u een lijst met richt lijnen voor probleem oplossing voor veelvoorkomende problemen:
 
-* [ModuleNotFoundError en ImportError](recover-module-not-found.md)
+* [ModuleNotFoundError en ImportError](recover-python-functions.md#troubleshoot-modulenotfounderror)
+* [Kan cygrpc niet importeren](recover-python-functions.md#troubleshoot-cannot-import-cygrpc)
 
 Alle bekende problemen en functie aanvragen worden bijgehouden met de lijst met [github-problemen](https://github.com/Azure/azure-functions-python-worker/issues) . Als u een probleem ondervindt en u het probleem niet kunt vinden in GitHub, opent u een nieuw probleem en voegt u een gedetailleerde beschrijving van het probleem toe.
 
