@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248608"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386569"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
+# <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop?
 
 Windows Virtual Desktop is een virtualisatieservice voor desktops en apps die in de cloud wordt uitgevoerd.
 
@@ -78,7 +78,7 @@ Uw infrastructuur heeft de volgende zaken nodig om Windows Virtual Desktop te on
   * Azure AD Connect (voor hybride organisaties)
   * Azure AD Domain Services (voor hybride of cloudorganisaties)
 * Een Azure-abonnement met een virtueel netwerk dat de Windows Server Active Directory bevat of ermee is verbonden
-  
+
 De virtuele Azure-machines die u maakt voor Windows Virtual Desktop moeten:
 
 * [toegevoegd zijn aan een Standard-domein](../active-directory-domain-services/active-directory-ds-comparison.md) of [toegevoegd zijn aan Hybrid AD](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuele machines kunnen mogen niet toegevoegd zijn aan Azure AD.
@@ -105,7 +105,7 @@ De volgende Extern bureaublad-clients bieden ondersteuning voor Windows Virtual 
 * [Web](connect-web.md)
 * [MacOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (preview)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Windows Virtual Desktop biedt geen ondersteuning voor de client voor RemoteApp- en bureaubladverbindingen of de client voor verbinding met extern bureaublad.
@@ -128,7 +128,7 @@ Windows Virtual Desktop biedt ondersteuning voor de volgende installatiekopieën
 
 Windows Virtual Desktop biedt geen ondersteuning voor installatiekopieën van x86- (32-bits), Windows 10 Enterprise N- of Windows 10 Enterprise-besturingssystemen. Windows 7 biedt ook geen ondersteuning voor VHD- of VHDX-gebaseerde profieloplossingen die gehost worden op beheerde Azure Storage omwille van een beperking van de sectorgrootte.
 
-De beschikbare opties voor automatisering en implementatie zijn afhankelijk van het besturingssysteem en de versie die u kiest, zoals te zien is in de volgende tabel: 
+De beschikbare opties voor automatisering en implementatie zijn afhankelijk van het besturingssysteem en de versie die u kiest, zoals te zien is in de volgende tabel:
 
 |Besturingssysteem|Azure Image Gallery|Handmatige VM-implementatie|Integratie van Azure Resource Manager-sjabloon|Inrichting hostgroepen in Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
@@ -143,9 +143,9 @@ De beschikbare opties voor automatisering en implementatie zijn afhankelijk van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u de Windows Virtual Desktop-versie van het najaar 2019 gebruikt, ga dan aan de slag met onze zelfstudie op [Een tenant maken in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+Als u de Windows Virtual Desktop-versie (klassiek) gebruikt, ga dan aan de slag met onze zelfstudie op [Een tenant maken in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
 
-Als u de Windows Virtual Desktop-versie van het voorjaar 2020 gebruikt, dan moet u in de plaats daarvan een hostgroep maken. Ga naar de volgende zelfstudie om te beginnen.
+Als u de Windows Virtual Desktop in combinatie met Azure Resource Manager-integratie gebruikt, dan moet u in de plaats daarvan een hostgroep maken. Ga naar de volgende zelfstudie om te beginnen.
 
 > [!div class="nextstepaction"]
 > [Een hostpool maken met de Azure-portal](create-host-pools-azure-marketplace.md)

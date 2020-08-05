@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 03/26/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025588"
 ---
 # <a name="what-is-a-device-identity"></a>Wat is een apparaat-id?
 
@@ -45,9 +45,9 @@ U kunt een apparaat op verschillende manieren in Azure AD ophalen:
 - **Toegevoegd aan Azure AD**
    - Apparaten die zijn toegevoegd aan Azure AD zijn het eigendom van een organisatie en zijn aangemeld met een Azure AD-account dat bij die organisatie hoort. Ze bestaan alleen in de cloud.
       - Windows 10 
-      - [Windows Server 2019 Virtual Machines die worden uitgevoerd in Azure] (./howto-vm-sign-in-azure-ad-windows.md) (Server Core wordt niet ondersteund)
+      - [Virtuele Windows Server 2019-machines die worden uitgevoerd in Azure](howto-vm-sign-in-azure-ad-windows.md) (serverkern wordt niet ondersteund)
 - **lid is van hybride Azure Active Directory**
-   - Apparaten die zijn gekoppeld aan Hybrid Azure AD zijn het eigendom van een organisatie en zijn aangemeld met een Azure AD-account dat bij die organisatie hoort. Ze bevinden zich in de cloud en on-premises.
+   - Apparaten die zijn gekoppeld aan hybride Azure AD zijn het eigendom van een organisatie en zijn aangemeld met een Azure Active Directory Domain Services-account dat bij die organisatie hoort. Ze bevinden zich in de cloud en on-premises.
       - Windows 7, 8.1 of 10
       - Windows Server 2008 of hoger
 

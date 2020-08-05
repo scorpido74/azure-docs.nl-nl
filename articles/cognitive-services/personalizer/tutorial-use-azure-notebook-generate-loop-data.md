@@ -1,107 +1,105 @@
 ---
-title: 'Zelf studie: Azure notebook-Personaler'
+title: 'Zelfstudie: Azure Notebook - Personalizer'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie wordt een aangepaste lus _system in een Azure-notebook gesimuleerd, waarmee wordt voorgesteld welk type koffie een klant moet best Ellen. De gebruikers en hun voor keuren worden opgeslagen in een gegevensset van een gebruiker. Informatie over de koffie is ook beschikbaar en opgeslagen in een koffie-gegevensset.
+description: In deze zelfstudie wordt een Personalizer-lussysteem in een Azure Notebook gesimuleerd, waarmee wordt voorgesteld welk type koffie een klant moet bestellen. De gebruikers en hun voorkeuren worden opgeslagen in een gebruikersgegevensset. Informatie over de koffie is ook beschikbaar en opgeslagen in een koffie-gegevensset.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
 ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608482"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131970"
 ---
-# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelf studie: persoonlijker gebruiken in azure notebook
+# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelfstudie: Personalizer gebruiken in Azure Notebook
 
-In deze zelf studie wordt een aangepaste lus in een Azure-notitie blok uitgevoerd, waarbij de end-to-end levenscyclus van een Personaler-lus wordt aangetoond.
+In deze zelfstudie wordt een Personalizer-lus in een Azure Notebook uitgevoerd, waarbij de end-to-end levenscyclus van een Personalizer-lus wordt gedemonstreerd.
 
-De lus geeft aan welk type koffie een klant moet best Ellen. De gebruikers en hun voor keuren worden opgeslagen in een gegevensset van een gebruiker. Informatie over de koffie wordt opgeslagen in een koffie-gegevensset.
+De lus geeft aan welk type koffie een klant moet bestellen. De gebruikers en hun voorkeuren worden opgeslagen in een gebruikersgegevensset. Informatie over de koffie wordt opgeslagen in een koffie-gegevensset.
 
 ## <a name="users-and-coffee"></a>Gebruikers en koffie
 
-De notebook, gebruikers interactie met een website simuleren, selecteert een wille keurige gebruiker, tijdstip van de dag en type weer van de gegevensset. Een samen vatting van de gebruikers gegevens is:
+Het notebook, dat gebruikersinteractie met een website simuleert, selecteert een willekeurige gebruiker, tijdstip van de dag en type weer door middel van de gegevensset. Een samenvatting van de gebruikersgegevens is:
 
-|Klanten-context functies|Tijdstippen van de dag|Typen weer|
+|Klant - contextfuncties|Tijdstippen van de dag|Typen weer|
 |--|--|--|
-|Robert<br>Bob<br>Cathy<br>Dave|Ochtend<br>'S<br>'S avonds|Zon<br>Regen achtig<br>Besneeuwde|
+|Alice<br>Bob<br>Cathy<br>Dave|Ochtend<br>Middag<br>Avond|Zonnig<br>Regenachtig<br>Sneeuw|
 
-Om persoonlijker te kunnen leren, weet het _systeem_ ook meer over de koffie selectie voor elke persoon.
+Om Personalizer te helpen met leren, heeft het _systeem_ ook informatie over de koffieselectie voor elke persoon.
 
-|Functies van de koffie actie|Typen Tempe ratuur|Plaatsen van oorsprong|Typen koffie|organisch|
+|Koffie - actiekenmerken|Typen temperatuur|Plaatsen van oorsprong|Typen branding|Biologisch|
 |--|--|--|--|--|
-|Cappacino|Warm|Kenia|Donker|organisch|
-|Koud Brew|Koud|Brazilië|Licht|organisch|
+|Cappuccino|Warm|Kenia|Donker|Biologisch|
+|Cold brew|Koud|Brazilië|Licht|Biologisch|
 |Iced mocha|Koud|Ethiopië|Licht|Niet biologisch|
 |Latte|Warm|Brazilië|Donker|Niet biologisch|
 
-Het **doel** van de aangepaste lus is het vinden van de beste overeenkomst tussen de gebruikers en de koffie, zo veel mogelijk tijd.
+Het **doel** van de Personalizer-lus is om zo vaak mogelijk de beste overeenkomst te vinden tussen de gebruikers en de koffie.
 
-De code voor deze zelf studie is beschikbaar in de [github-opslag plaats voor beelden van personaler](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook).
+De code voor deze zelfstudie is beschikbaar in de [GitHub-opslagplaats met Personalizer-voorbeelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook).
 
-## <a name="how-the-simulation-works"></a>De werking van simulatie
+## <a name="how-the-simulation-works"></a>Zo werkt de simulatie
 
-Aan het begin van het actieve systeem zijn de suggesties van Personaler alleen geslaagd tussen 20% en 30%. Dit succes wordt aangegeven door de vergoeding terug te sturen naar de belonings-API van Personaler, met een Score van 1. Na sommige positie-en belonings aanroepen wordt het systeem verbeterd.
+Aan het begin van het actieve systeem zijn de suggesties van Personalizer slechts 20% tot 30% van de tijd juist. Dit succes wordt aangegeven door de reward die wordt teruggestuurd naar de Reward API van Personalizer, met een score van 1. Na een aantal Rank- en Reward-aanroepen wordt het systeem verbeterd.
 
-Voer na de eerste aanvragen een offline-evaluatie uit. Hierdoor kunnen persoonlijke instellingen de gegevens bekijken en een beter leer beleid Voorst Ellen. Pas het nieuwe leer beleid toe en voer het notitie blok opnieuw uit met 20% van het vorige aantal aanvragen. De lus wordt beter uitgevoerd met het nieuwe leer beleid.
+Voer na de eerste aanvragen een offline evaluatie uit. Hierdoor kan Personalizer de gegevens beoordelen en een beter leerbeleid voorstellen. Pas het nieuwe leerbeleid toe en voer het notebook opnieuw uit met 20% van de eerdere aanvragen. De lus presteert beter met het nieuwe leerbeleid.
 
-## <a name="rank-and-reward-calls"></a>Rang en beloning-aanroepen
+## <a name="rank-and-reward-calls"></a>Rank- en Reward-aanroepen
 
-Voor elk paar duizenden aanroepen naar de Personaler-service stuurt de Azure-notebook de **rang** aanvraag naar de rest API:
+Voor elk van de duizenden aanroepen naar de Personalizer-service stuurt Azure Notebook de **Rank**-aanvraag naar de REST API:
 
-* Een unieke ID voor de positie/aanvraag gebeurtenis
-* Context functies: een wille keurige keuze van de gebruiker, het weer en het tijdstip van de dag waarop een gebruiker op een website of mobiel apparaat wordt gesimuleerd
-* Acties met functies: _alle_ koffie gegevens-waaruit een suggestie voor een persoonlijke voor keur wordt gemaakt
+* Een unieke id voor de Rank/Aanvraag-gebeurtenis
+* Contextfuncties: een willekeurige keuze van de gebruiker, het weer en het tijdstip van de dag. Hierop wordt een gebruiker op een website of mobiel apparaat gesimuleerd
+* Acties met functies - _Alle_ koffiegegevens - waaruit Personalizer een suggestie doet
 
-Het systeem ontvangt de aanvraag en vergelijkt deze voor spelling met de bekende keuze van de gebruiker voor hetzelfde tijdstip van de dag en weer. Als de bekende keuze hetzelfde is als de voorspelde keuze, wordt de **vergoeding** van 1 teruggestuurd naar personaler. Anders is de terug te sturen vergoeding 0.
+Het systeem ontvangt de aanvraag en vergelijkt deze voorspelling met de bekende keuze van de gebruiker voor hetzelfde tijdstip van de dag en het weer. Als de bekende keuze hetzelfde is als de voorspelde keuze, wordt de **Reward** van 1 teruggestuurd naar Personalizer. Anders is de terug te sturen reward 0.
 
 > [!Note]
-> Dit is een simulatie zodat het algoritme voor de beloning eenvoudig is. In een praktijk scenario moet het algoritme bedrijfs logica gebruiken, mogelijk met gewichten voor verschillende aspecten van de ervaring van de klant, om de belonings score te bepalen.
+> Dit is een simulatie, daardoor is het algoritme voor de reward eenvoudig. In een praktijkscenario moet het algoritme bedrijfslogica gebruiken, mogelijk met gewichten voor verschillende aspecten van de klantervaring, om de reward-score te bepalen.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [Azure notebook](https://notebooks.azure.com/) -account.
-* Een [Azure personaler-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
-    * Als u de persoonlijke resource al hebt gebruikt, moet u ervoor zorgen dat u [de gegevens](how-to-settings.md#clear-data-for-your-learning-loop) in de Azure portal voor de resource wist.
-* Upload alle bestanden voor [dit voor beeld](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) naar een Azure notebook-project.
+* Een [Azure Notebook](https://notebooks.azure.com/)-account.
+* Een [Azure Personalizer-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
+    * Als u de Personalizer-resource al hebt gebruikt, moet u ervoor zorgen dat de [gegevens in Azure Portal voor de resource zijn gewist](how-to-settings.md#clear-data-for-your-learning-loop).
+* Upload alle bestanden voor [dit voorbeeld](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) in een Azure Notebook-project.
 
-Bestands beschrijvingen:
+Bestandsbeschrijvingen:
 
-* [Personaler. ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) is de Jupyter-notebook voor deze zelf studie.
-* [Gebruikers gegevensset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) wordt opgeslagen in een JSON-object.
-* Een [koffie gegevensset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) wordt opgeslagen in een JSON-object.
-* [Voorbeeld aanvraag JSON](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) is de verwachte indeling voor een post-aanvraag naar de classificatie-API.
+* [Personalizer.ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) is de Jupyter-notebook voor deze zelfstudie.
+* [Gebruikersgegevensset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) wordt opgeslagen in een JSON-object.
+* [Koffiegegevensset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) wordt opgeslagen in een JSON-object.
+* [Voorbeeldaanvraag JSON](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) is de verwachte indeling voor een POST-aanvraag naar de Rank-API.
 
-## <a name="configure-personalizer-resource"></a>Personaler-resource configureren
+## <a name="configure-personalizer-resource"></a>Azure Personalizer-resource configureren
 
-Configureer in de Azure Portal uw [persoonlijke resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) met de frequentie van het **Update model** ingesteld op 15 seconden en een **wacht tijd** van vijf tien seconden. Deze waarden zijn te vinden op de **[configuratie](how-to-settings.md#configure-service-settings-in-the-azure-portal)** pagina.
+Configureer in Azure Portal uw [Personalizer-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) met de **frequentie voor het updatemodel** ingesteld op 15 seconden en een **reward-wachttijd** van 15 seconden. Deze waarden zijn te vinden op de pagina **[configuratie](how-to-settings.md#configure-service-settings-in-the-azure-portal)** .
 
 |Instelling|Waarde|
 |--|--|
-|model frequentie bijwerken|15 seconden|
-|wacht tijd op beloning|15 seconden|
+|modelfrequentie bijwerken|15 seconden|
+|wachttijd voor reward|15 seconden|
 
-Deze waarden hebben een zeer korte duur om wijzigingen in deze zelf studie weer te geven. Deze waarden mogen niet worden gebruikt in een productie scenario zonder te valideren dat ze uw doel hebben met uw Personaler-lus.
+Deze waarden hebben een zeer korte duur, zodat wijzigingen in deze zelfstudie kunnen worden weergegeven. Deze waarden mogen niet worden gebruikt in een productiescenario zonder te valideren dat ze uw doel bereiken met uw Personalizer-lus.
 
-## <a name="set-up-the-azure-notebook"></a>De Azure-notebook instellen
+## <a name="set-up-the-azure-notebook"></a>Azure Notebook instellen
 
-1. Wijzig de kernel in `Python 3.6` .
+1. Wijzig de kernel in `Python 3.6`.
 1. Open het `Personalizer.ipynb`-bestand.
 
 ## <a name="run-notebook-cells"></a>Notebook-cellen uitvoeren
 
-Voer elke uitvoer bare cel uit en wacht totdat deze is geretourneerd. U weet dat het wordt uitgevoerd wanneer de haakjes naast de cel een getal weer geven in plaats van een `*` . In de volgende secties wordt uitgelegd wat elke cel programmatisch en wat u kunt verwachten voor de uitvoer.
+Voer elke uitvoerbare cel uit en wacht totdat deze is geretourneerd. U weet dat de bewerking is voltooid wanneer binnen de brackets naast de cel een getal wordt weergegeven in plaats van een `*`. In de volgende secties wordt uitgelegd wat elke cel programmatisch doet en wat u kunt verwachten voor de uitvoer.
 
 ### <a name="include-the-python-modules"></a>De python-modules toevoegen
 
-Neem de vereiste python-modules op. De cel heeft geen uitvoer.
+Voeg de vereiste python-modules toe. De cel heeft geen uitvoer.
 
 ```python
 import json
@@ -112,9 +110,9 @@ import time
 import uuid
 ```
 
-### <a name="set-personalizer-resource-key-and-name"></a>Sleutel en naam van de persoonlijker-resource instellen
+### <a name="set-personalizer-resource-key-and-name"></a>Resourcesleutel en naam van de Personalizer instellen
 
-Zoek in de Azure Portal uw sleutel en eind punt op de pagina **Quick** start van uw persoonlijke resource. Wijzig de waarde van `<your-resource-name>` in de naam van uw personaler-resource. Wijzig de waarde van `<your-resource-key>` in uw persoonlijke sleutel.
+Zoek in Azure Portal uw sleutel en eindpunt op via de pagina **Snelstart** van uw Personalizer-resource. Wijzig de waarde van `<your-resource-name>` in de naam van uw Personalizer-resource. Wijzig de waarde van `<your-resource-key>` naar uw Personalizer-sleutel.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -123,7 +121,7 @@ resource_key = "<your-resource-key>"
 ```
 
 ### <a name="print-current-date-and-time"></a>Huidige datum en tijd afdrukken
-Gebruik deze functie om de begin-en eind tijd van de iteratieve functie en herhalingen te noteren.
+Gebruik deze functie om de begin- en eindtijd van de iteratieve functie en iteraties te noteren.
 
 Deze cellen hebben geen uitvoer. De functie voert de huidige datum en tijd uit als deze wordt aangeroepen.
 
@@ -134,13 +132,13 @@ def currentDateTime():
     print (str(currentDT))
 ```
 
-### <a name="get-the-last-model-update-time"></a>De laatste tijd voor het bijwerken van het model ophalen
+### <a name="get-the-last-model-update-time"></a>De laatste updatetijd van het model ophalen
 
-Wanneer de functie, `get_last_updated` , wordt aangeroepen, wordt de datum en tijd afgedrukt waarop het model is bijgewerkt.
+Wanneer de functie, `get_last_updated`, wordt aangeroepen, wordt in de functie de datum en tijd afgedrukt waarop het model voor het laatst is bijgewerkt.
 
-Deze cellen hebben geen uitvoer. De functie voert de laatste model trainings datum uit als deze wordt aangeroepen.
+Deze cellen hebben geen uitvoer. De functie voert de laatste modeltrainingsdatum uit als deze wordt aangeroepen.
 
-De functie maakt gebruik van een GET REST API om [model eigenschappen](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties)op te halen.
+De functie maakt gebruik van een GET REST API om [modeleigenschappen op te halen](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties).
 
 ```python
 # ititialize variable for model's last modified date
@@ -166,11 +164,11 @@ def get_last_updated(currentModifiedDate):
         print(f'-----model updated: {lastModifiedTime}')
 ```
 
-### <a name="get-policy-and-service-configuration"></a>Beleid en service configuratie ophalen
+### <a name="get-policy-and-service-configuration"></a>Beleids- en serviceconfiguratie ophalen
 
 Valideer de status van de service met deze twee REST-aanroepen.
 
-Deze cellen hebben geen uitvoer. De functie voert de service waarden uit als deze wordt aangeroepen.
+Deze cellen hebben geen uitvoer. De functie voert de servicewaarden uit als hij wordt aangeroepen.
 
 ```python
 def get_service_settings():
@@ -190,18 +188,18 @@ def get_service_settings():
     print(response.json())
 ```
 
-### <a name="construct-urls-and-read-json-data-files"></a>Url's maken en JSON-gegevens bestanden lezen
+### <a name="construct-urls-and-read-json-data-files"></a>URL's maken en JSON-gegevensbestanden lezen
 
-Deze cel
+Met deze cel
 
-* bouwt de Url's die worden gebruikt in REST-aanroepen
-* Hiermee stelt u de beveiligingskop tekst in met uw persoonlijke-resource sleutel
-* Hiermee wordt de wille keurige Seed ingesteld voor de positie gebeurtenis-ID
-* Lees bewerkingen in de JSON-gegevens bestanden
-* calls `get_last_updated` -methode-Learning-beleid is verwijderd in voorbeeld uitvoer
-* methode aanroepen `get_service_settings`
+* bouwt u de URL's die worden gebruikt in REST-aanroepen
+* stelt u de beveiligingskoptekst in met uw Personalizer-resourcesleutel
+* stelt u de willekeurige seed in voor de gebeurtenis-id van de Rank
+* leest u bewerkingen in de JSON-gegevensbestanden
+* roept u de `get_last_updated` methode aan - leerbeleid is verwijderd in voorbeelduitvoer
+* roept u `get_service_settings` methode aan
 
-De cel heeft uitvoer van de aanroep naar `get_last_updated` en `get_service_settings` functions.
+De cel heeft uitvoer van de aanroep van `get_last_updated`- en `get_service_settings`-functies.
 
 ```python
 # build URLs
@@ -245,7 +243,7 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Controleer of de uitvoer `rewardWaitTime` en `modelExportFrequency` beide zijn ingesteld op 15 seconden.
+Controleer of de `rewardWaitTime` en `modelExportFrequency` van de uitvoer beide zijn ingesteld op 15 seconden.
 
 ```console
 -----checking model
@@ -263,29 +261,29 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Problemen met de eerste REST-aanroep oplossen
 
-Deze vorige cel is de eerste cel die aan persoonlijke voor keuren wordt door gebeld. Zorg ervoor dat de REST-status code in de uitvoer is `<Response [200]>` . Als er een fout optreedt, zoals 404, maar u zeker weet dat de bron sleutel en de naam juist zijn, laadt u het notitie blok opnieuw.
+Deze vorige cel is de eerste cel die Personalizer aanroept. Zorg ervoor dat de REST-statuscode in de uitvoer `<Response [200]>` is. Als er een fout optreedt, zoals 404, maar u zeker weet dat de resourcesleutel en de naam juist zijn, laadt u het notebook opnieuw.
 
-Zorg ervoor dat het aantal koffie en gebruikers beide vier zijn. Als er een fout optreedt, controleert u of u alle drie de JSON-bestanden hebt geüpload.
+Zorg ervoor dat het aantal koffiebereiding en het aantal gebruikers beide 4 is. Als er een fout optreedt, controleert u of u alle 3 de JSON-bestanden hebt geüpload.
 
 ### <a name="set-up-metric-chart-in-azure-portal"></a>Een metrische grafiek instellen in Azure Portal
 
-Verderop in deze zelf studie wordt het langlopende proces van 10.000-aanvragen weer gegeven in de browser met een tekstvak voor bijwerken. Het kan beter zijn om te zien in een grafiek of als een totale som wanneer het langlopende proces wordt beëindigd. Als u deze informatie wilt weer geven, gebruikt u de metrische gegevens die bij de resource zijn meegeleverd. U kunt de grafiek nu maken, zodat u een aanvraag voor de service hebt voltooid, en vervolgens de grafiek vervolgens periodiek kunt vernieuwen terwijl het langlopende proces wordt uitgevoerd.
+Verderop in deze zelfstudie wordt het langdurige proces van 10.000 aanvragen weergegeven in de browser met een tekstvak dat steeds wordt bijgewerkt. Het kan eenvoudiger zijn om het in een grafiek of als een totaalsom te bekijken wanneer het langdurige proces wordt beëindigd. Als u deze informatie wilt weergeven, gebruikt u de metrische gegevens die bij de resource zijn meegeleverd. Nu u een aanvraag voor de service hebt voltooid kunt u de grafiek maken. Vervolgens moet u de grafiek periodiek vernieuwen terwijl het langdurige proces wordt uitgevoerd.
 
-1. Selecteer uw persoonlijke resource in het Azure Portal.
-1. Selecteer in de resource navigatie de optie **metrische gegevens** onder bewaking.
-1. Selecteer **metrische gegevens toevoegen**in de grafiek.
-1. De resource-en metrische naam ruimte zijn al ingesteld. U hoeft alleen de metrische gegevens voor **geslaagde aanroepen** en de aggregatie van de **som**te selecteren.
-1. Wijzig het tijd filter in de laatste vier uur.
+1. Selecteer uw Personalizer-resource in Azure Portal.
+1. Selecteer in de resourcenavigatie **Metrische gegevens** onder Monitoring.
+1. Selecteer in de grafiek **Metrische gegevens toevoegen**.
+1. De naamruimte voor de resource en metrische gegevens is al ingesteld. U hoeft alleen de metrische gegevens van **geslaagde aanroepen** en de aggregatie van **sum** te selecteren.
+1. Wijzig het tijdfilter in de afgelopen 4 uur.
 
-    ![Stel een metrische grafiek in Azure Portal in om de laatste vier uur metrische gegevens toe te voegen voor geslaagde aanroepen.](./media/tutorial-azure-notebook/metric-chart-setting.png)
+    ![Stel een metrische grafiek in Azure Portal in waarbij u de metrische gegevens van de geslaagde aanroepen van de afgelopen 4 uur toevoegt.](./media/tutorial-azure-notebook/metric-chart-setting.png)
 
     U ziet nu drie geslaagde aanroepen in de grafiek.
 
-### <a name="generate-a-unique-event-id"></a>Een unieke gebeurtenis-ID genereren
+### <a name="generate-a-unique-event-id"></a>Een unieke gebeurtenis-id genereren
 
-Deze functie genereert een unieke ID voor elke positie aanroep. De ID wordt gebruikt om de positie en belonings informatie te identificeren. Deze waarde kan afkomstig zijn van een bedrijfs proces, zoals een webweergave-ID of een trans actie-ID.
+Met deze functie genereert u een unieke id voor elke Rank-aanroep. De id wordt gebruikt om de Rank- en Reward-informatie te identificeren. Deze waarde kan afkomstig zijn van een bedrijfsproces, zoals een webweergave-id of een transactie-id.
 
-De cel heeft geen uitvoer. De functie voert de unieke ID uit als deze wordt aangeroepen.
+De cel heeft geen uitvoer. Met de functie wordt de unieke id uitgevoerd als deze wordt aangeroepen.
 
 ```python
 def add_event_id(rankjsonobj):
@@ -294,13 +292,13 @@ def add_event_id(rankjsonobj):
     return eventid
 ```
 
-### <a name="get-random-user-weather-and-time-of-day"></a>Wille keurige gebruiker, weer gave en tijdstip van dag ophalen
+### <a name="get-random-user-weather-and-time-of-day"></a>Willekeurige gebruiker, weergave en tijdstip van de dag ophalen
 
-Met deze functie worden een unieke gebruiker, het weer en het tijdstip van de dag geselecteerd. vervolgens worden deze items aan het JSON-object toegevoegd om te verzenden naar de rang aanvraag.
+Met deze functie worden een unieke gebruiker, het weer en het tijdstip van de dag geselecteerd. Vervolgens worden deze items aan het JSON-object toegevoegd om te verzenden naar de Rank-aanvraag.
 
-De cel heeft geen uitvoer. Wanneer de functie wordt aangeroepen, wordt de naam van de wille keurige gebruiker, wille keurig weer en wille keurige tijd van de dag geretourneerd.
+De cel heeft geen uitvoer. Wanneer de functie wordt aangeroepen, wordt de naam van de willekeurige gebruiker, het willekeurige weer en de willekeurige tijd van de dag geretourneerd.
 
-De lijst met vier gebruikers en hun voor keuren: alleen enkele voor keuren worden weer gegeven voor het boog gebruik.
+De lijst met 4 gebruikers en hun voorkeuren: slechts een paar voorkeuren worden weergegeven voor de overzichtelijkheid:
 
 ```json
 {
@@ -345,14 +343,14 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 ```
 
 
-### <a name="add-all-coffee-data"></a>Alle koffie gegevens toevoegen
+### <a name="add-all-coffee-data"></a>Alle koffiegegevens toevoegen
 
-Deze functie voegt de volledige lijst met koffie toe aan het JSON-object dat naar de rang aanvraag verzendt.
+Met deze functie voegt u de volledige lijst met koffie toe aan het JSON-object dat naar de Rank-aanvraag wordt verzonden.
 
-De cel heeft geen uitvoer. De functie wijzigt de `rankjsonobj` indien aangeroepen.
+De cel heeft geen uitvoer. Met de functie wijzigt u de `rankjsonobj` als deze wordt aangeroepen.
 
 
-Het voor beeld van de functies van één koffie is:
+Het voorbeeld van de functies van één koffie is:
 
 ```json
 {
@@ -373,11 +371,11 @@ def add_action_features(rankjsonobj):
     rankjsonobj["actions"] = actionfeaturesobj
 ```
 
-### <a name="compare-prediction-with-known-user-preference"></a>Voor spellingen vergelijken met bekende gebruikers voorkeur
+### <a name="compare-prediction-with-known-user-preference"></a>Voorspellingen vergelijken met bekende gebruikersvoorkeuren
 
-Deze functie wordt aangeroepen nadat de rangorde API is aangeroepen, voor elke iteratie.
+Deze functie wordt aangeroepen nadat de Rank-API is aangeroepen, voor elke iteratie.
 
-Deze functie vergelijkt de voor keuren van de gebruiker voor koffie, op basis van weer en tijdstip, met de suggestie van de persoonlijke voor keur voor de gebruiker voor deze filters. Als het voor stel overeenkomt, wordt er een Score van 1 geretourneerd, anders is de score 0. De cel heeft geen uitvoer. De functie voert de Score uit als deze wordt aangeroepen.
+Met deze functie vergelijkt u de voorkeuren van de gebruiker voor koffie, op basis van weer en tijdstip, met de suggestie van de Personalizer voor de gebruiker voor deze filters. Als het voorstel overeenkomt, wordt er een score van 1 geretourneerd, anders is de score 0. De cel heeft geen uitvoer. Met de functie voert u de score uit als deze wordt aangeroepen.
 
 ```python
 def get_reward_from_simulated_data(name, weather, timeofday, prediction):
@@ -386,15 +384,15 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
     return 0
 ```
 
-### <a name="loop-through-calls-to-rank-and-reward"></a>Door loop-aanroepen naar positie en beloning
+### <a name="loop-through-calls-to-rank-and-reward"></a>Doorloop aanroepen naar Rank en Reward
 
-De volgende cel is het _belangrijkste_ werk van het notitie blok, het ophalen van een wille keurige gebruiker, het ophalen van de lijst met koffie en het verzenden van beide naar de classificatie-API. Vergelijking van de voor spelling met de bekende voor keuren van de gebruiker en vervolgens terugsturen naar de Personaler-service.
+De volgende cel is het _belangrijkste_ werk van het Notebook, het ophalen van een willekeurige gebruiker, de lijst met koffie en het verzenden van beide naar de Rank-API. Vergelijking van de voorspelling met de bekende gebruikersvoorkeuren en deze vervolgens terugsturen naar de Personalizer-service.
 
-De lus wordt uitgevoerd voor `num_requests` tijden. Persoonlijkere het maken van een model vereist een paar duizend aanroepen om te rangschikken.
+De lus wordt `num_requests` keer uitgevoerd. Voor Personalizer zijn een paar duizend aanroepen naar Rank en Reward vereist om een model te kunnen creëren.
 
-Hier volgt een voor beeld van de JSON die wordt verzonden naar de Rank-API. De lijst met koffie is niet volledig, voor een beknoptere keuze. U kunt de volledige JSON voor koffie in bekijken `coffee.json` .
+Hier volgt een voorbeeld van de JSON die wordt verzonden naar de Rank-API. De lijst met koffie is niet volledig met het oog op beknoptheid. U kunt de volledige JSON voor koffie bekijken in `coffee.json`.
 
-JSON verzonden naar de positie-API:
+JSON verzonden naar de Rank-API:
 
 ```json
 {
@@ -427,7 +425,7 @@ JSON verzonden naar de positie-API:
 }
 ```
 
-JSON-antwoord van de positie-API:
+JSON-antwoord van de Rank-API:
 
 ```json
 {
@@ -442,7 +440,7 @@ JSON-antwoord van de positie-API:
 }
 ```
 
-Ten slotte toont elke lus de wille keurige selectie van de gebruiker, het weer, het tijdstip en de vastgestelde beloning. De beloning van 1 geeft aan dat de persoonlijke resource de juiste koffie-type heeft geselecteerd voor de gegeven gebruiker, het weer en het tijdstip van de dag.
+Ten slotte toont elke lus de willekeurige selectie van de gebruiker, het weer, het tijdstip en de vastgestelde reward. De reward 1 geeft aan dat de Personalizer-resource de juiste koffiesoort heeft geselecteerd voor de geselecteerde gebruiker, het weer en het tijdstip van de dag.
 
 ```console
 1 Alice Rainy Morning Latte 1
@@ -450,8 +448,8 @@ Ten slotte toont elke lus de wille keurige selectie van de gebruiker, het weer, 
 
 De functie gebruikt:
 
-* Positie: een bericht REST API om de [positie te krijgen](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
-* Beloning: een bericht REST API om [beloningen te rapporteren](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
+* Rank: een POST REST API om [Rank op te halen](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
+* Reward: een POST REST API om [Reward te rapporteren](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
 
 ```python
 def iterations(n, modelCheck, jsonFormat):
@@ -529,8 +527,8 @@ def iterations(n, modelCheck, jsonFormat):
     return [count, rewards]
 ```
 
-## <a name="run-for-10000-iterations"></a>Uitvoeren voor 10.000 herhalingen
-Voer de Personaler-lus uit voor 10.000 iteraties. Dit is een langlopende gebeurtenis. Sluit de browser niet die het notitie blok uitvoert. Vernieuw de grafiek met metrische gegevens in de Azure Portal regel matig om de totale aanroepen naar de service te bekijken. Wanneer u circa 20.000-aanroepen hebt, worden er voor elke herhaling van de lus een rangings-en belonings oproep gedaan.
+## <a name="run-for-10000-iterations"></a>10.000 iteraties uitvoeren
+Voer voor de Personalizer-lus 10.000 iteraties uit. Dit is een langdurige gebeurtenis. Sluit de browser waarin het Notebook wordt uitgevoerd niet. Vernieuw de grafiek met metrische gegevens in Azure Portal regelmatig om het totale aantal aanroepen naar de service te bekijken. Wanneer u circa 20.000 aanroepen hebt, wordt er voor elke iteratie van de lus een Rank- en Reward-aanroep gedaan.
 
 ```python
 # max iterations
@@ -547,9 +545,9 @@ jsonTemplate = rankactionsjsonobj
 
 
 
-## <a name="chart-results-to-see-improvement"></a>Grafiek resultaten om de verbeteringen te bekijken
+## <a name="chart-results-to-see-improvement"></a>Bekijk de resultaten in een grafiek om de verbeteringen te zien
 
-Maak een grafiek van de `count` en `rewards` .
+Een grafiek maken op basis van de `count` en `rewards`.
 
 ```python
 def createChart(x, y):
@@ -561,7 +559,7 @@ def createChart(x, y):
 
 ## <a name="run-chart-for-10000-rank-requests"></a>Grafiek uitvoeren voor 10.000 Rank-aanvragen
 
-Voer de `createChart` functie uit.
+Voer de functie `createChart` uit.
 
 ```python
 createChart(count,rewards)
@@ -569,46 +567,46 @@ createChart(count,rewards)
 
 ## <a name="reading-the-chart"></a>De grafiek lezen
 
-Dit diagram toont het succes van het model voor het huidige standaard Learning-beleid.
+Dit diagram toont het succes van het model voor het huidige standaard leerbeleid.
 
-![Dit diagram toont het succes van het huidige leer beleid voor de duur van de test.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
+![Dit diagram toont het succes van het huidige leerbeleid voor de duur van de test.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Het ideale doel dat aan het einde van de test is, is het gemiddelde van een succes percentage dat dicht bij 100 procent min de exploratie ligt. De standaard waarde voor verkennen is 20%.
+Het ideale doel dat aan het einde van de test wordt bereikt, is een gemiddeld succespercentage dat dicht bij 100 procent ligt, met aftrek van de exploratie. De standaard waarde voor exploratie is 20%.
 
 `100-20=80`
 
-Deze waarde voor verkennen vindt u op de pagina **configuratie** van de Azure portal voor de personaler-resource.
+Deze waarde voor exploratie vindt u in Azure Portal voor de Personalizer-resource op de **Configuratiepagina**.
 
-Als u een beter leer beleid wilt vinden op basis van uw gegevens naar de Rank API, voert u een [offline-evaluatie](how-to-offline-evaluation.md) uit in de portal voor uw personaler-lus.
+Als u een beter leerbeleid wilt vinden op basis van uw gegevens naar de Rank-API, voert u een [offline evaluatie](how-to-offline-evaluation.md) uit in de portal voor uw Personalizer-lus.
 
 ## <a name="run-an-offline-evaluation"></a>Een offline-evaluatie uitvoeren
 
-1. Open de pagina **evaluaties** van de persoonlijke resource In het Azure Portal.
-1. Selecteer **evaluatie maken**.
-1. Voer de vereiste gegevens van de evaluatie naam en het datum bereik voor de lus-evaluatie in. Het datum bereik moet alleen de dagen bevatten waarop u bent gericht voor uw evaluatie.
-    ![Open de pagina evaluaties van de persoonlijke resource in het Azure Portal. Selecteer evaluatie maken. Voer de naam van de evaluatie en het datum bereik in.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+1. Open in Azure Portal de pagina **Evaluaties** van de Personalizer-resource.
+1. Selecteer **Evaluatie maken**.
+1. Voer de vereiste gegevens in, namelijk de naam van de evaluatie en het datumbereik voor de lus-evaluatie. Het datumbereik moet alleen de dagen bevatten die u wilt opnemen in de evaluatie.
+    ![Open de pagina Evaluaties van de Personalizer-resource in Azure Portal. Selecteer Evaluatie maken. Voer de naam van de evaluatie en het datumbereik in.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Het doel van deze offline-evaluatie is om te bepalen of er een beter leer beleid is voor de functies en acties die in deze lus worden gebruikt. Zorg ervoor dat **Optimalisatie detectie** is ingeschakeld om het betere leer beleid te vinden.
+    Het doel van deze offline-evaluatie is om te bepalen of er een beter leerbeleid is voor de functies en acties die in deze lus worden gebruikt. Zorg ervoor dat **Optimalisatie detecteren** is ingeschakeld om het betere leerbeleid te vinden.
 
 1. Selecteer **OK** om de evaluatie te starten.
-1. Deze **evaluaties** pagina bevat een lijst met de nieuwe evaluatie versie en de huidige status. Afhankelijk van hoeveel gegevens u hebt, kan deze evaluatie enige tijd duren. U kunt na een paar minuten terugkeren naar deze pagina om de resultaten te bekijken.
-1. Wanneer de evaluatie is voltooid, selecteert u de evaluatie en selecteert u vervolgens **vergelijking van verschillende leer beleidsregels**. Hier ziet u het beschik bare leer beleid en hoe ze zich gedragen met de gegevens.
-1. Selecteer het hoogste trainings beleid in de tabel en selecteer **Toep assen**. Hiermee wordt het _beste_ leer beleid toegepast op uw model en worden opnieuw getraind.
+1. Deze **Evaluatie**pagina bevat de nieuwe evaluatie en de huidige status. Afhankelijk van hoeveel gegevens u hebt, kan deze evaluatie enige tijd in beslag nemen. U kunt na een paar minuten terugkeren naar deze pagina om de resultaten te bekijken.
+1. Wanneer de evaluatie is voltooid, selecteert u de evaluatie en selecteert u **Vergelijken met ander leerbeleid**. Hier ziet u de beschikbare leerbeleidsregels en hoe die zich zouden gedragen met de gegevens.
+1. Selecteer het bovenste trainingsbeleid in de tabel en selecteer **Toepassen**. Hiermee wordt het _beste_ leerbeleid toegepast op uw model en wordt het opnieuw getraind.
 
-## <a name="change-update-model-frequency-to-5-minutes"></a>De frequentie van het update model wijzigen in 5 minuten
+## <a name="change-update-model-frequency-to-5-minutes"></a>De frequentie van het updatemodel wijzigen in 5 minuten
 
-1. Selecteer de pagina **configuratie** in het Azure Portal nog steeds op de persoonlijke resource.
-1. Wijzig de **verwerkings frequentie** van het model en stel de **belonings tijd** in op 5 minuten en selecteer **Opslaan**.
+1. Selecteer de pagina **Configuratie** in Azure Portal, terwijl u nog steeds op de Personalizer-resource bent.
+1. Wijzig de **updatefrequentie van het model** en de **reward-wachttijd** in 5 minuten en selecteer **Opslaan**.
 
-Meer informatie over de [wacht tijd](concept-rewards.md#reward-wait-time) en de [frequentie](how-to-settings.md#model-update-frequency)van het bijwerken van het model.
+Meer informatie over de [reward-wachttijd](concept-rewards.md#reward-wait-time) en [updatefrequentie van het model](how-to-settings.md#model-update-frequency).
 
 ```python
 #Verify new learning policy and times
 get_service_settings()
 ```
 
-Controleer of de uitvoer `rewardWaitTime` en `modelExportFrequency` beide zijn ingesteld op 5 minuten.
+Controleer of de `rewardWaitTime` en `modelExportFrequency` van de uitvoer beide zijn ingesteld op 5 minuten.
 ```console
 -----checking model
 <Response [200]>
@@ -623,9 +621,9 @@ User count 4
 Coffee count 4
 ```
 
-## <a name="validate-new-learning-policy"></a>Nieuw leer beleid valideren
+## <a name="validate-new-learning-policy"></a>Nieuw leerbeleid valideren
 
-Ga terug naar de Azure-notebook en ga door met dezelfde lus, maar alleen voor 2.000 iteraties. Vernieuw de grafiek met metrische gegevens in de Azure Portal regel matig om de totale aanroepen naar de service te bekijken. Wanneer u circa 4.000-aanroepen hebt, worden er voor elke herhaling van de lus een rangings-en belonings oproep gedaan.
+Ga terug naar het Azure-notebook en ga door met het uitvoeren van dezelfde lus, maar slechts voor 2.000 iteraties. Vernieuw de grafiek met metrische gegevens in Azure Portal regelmatig om het totale aantal aanroepen naar de service te bekijken. Wanneer u circa 4.000 aanroepen hebt, wordt er voor elke iteratie van de lus een Rank- en Reward-aanroep gedaan.
 
 ```python
 # max iterations
@@ -642,7 +640,7 @@ jsonTemplate2 = rankactionsjsonobj
 
 ## <a name="run-chart-for-2000-rank-requests"></a>Grafiek uitvoeren voor 2.000 Rank-aanvragen
 
-Voer de `createChart` functie uit.
+Voer de functie `createChart` uit.
 
 ```python
 createChart(count2,rewards2)
@@ -650,18 +648,18 @@ createChart(count2,rewards2)
 
 ## <a name="review-the-second-chart"></a>De tweede grafiek bekijken
 
-In de tweede grafiek ziet u een zicht bare toename van de positie van voor spellingen die met gebruikers voorkeuren worden uitgelijnd.
+In de tweede grafiek ziet u een zichtbare toename van de Rank-voorspellingen die met gebruikersvoorkeuren worden uitgelijnd.
 
-![In de tweede grafiek ziet u een zicht bare toename van de positie van voor spellingen die met gebruikers voorkeuren worden uitgelijnd.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
+![In de tweede grafiek ziet u een zichtbare toename van de Rank-voorspellingen die met gebruikersvoorkeuren worden uitgelijnd.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u niet van plan bent om door te gaan met de reeks zelf studies, moet u de volgende resources opschonen:
+Als u niet van plan bent om door te gaan met de reeks zelfstudies, moet u de volgende resources opschonen:
 
-* Verwijder uw Azure notebook-project.
-* Verwijder uw persoonlijke resource.
+* Verwijder uw Azure Notebook-project.
+* Verwijder uw Personalizer-resource.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De [Jupyter-notebook en gegevens bestanden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) die in dit voor beeld worden gebruikt, zijn beschikbaar op de GitHub-opslag plaats voor personaler.
+De [Jupyter notebook- en gegevensbestanden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) die in dit voorbeeld worden gebruikt, zijn beschikbaar in de GitHub-opslagplaats voor Personalizer.
 

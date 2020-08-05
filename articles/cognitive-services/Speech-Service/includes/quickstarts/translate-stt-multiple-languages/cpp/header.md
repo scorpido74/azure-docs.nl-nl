@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: spraak vertalen naar meerdere talen, C++-Speech-Service'
+title: 'Quickstart: Spraak omzetten naar meerdere talen, C++ - Spraakservice'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 9534d277dc65534c0f65a23ae2f249fc70ae12b0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 35a79ad13cc9f7178c183fec6cb96e6abc1c8a07
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102611"
 ---
-Als u liever direct aan de slag gaat, kunt u alle <a href="https://aka.ms/speech/github-cpp">Speech SDK C++</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-cpp">C++-voorbeelden van de Speech SDK</a> op GitHub bekijken of downloaden. 

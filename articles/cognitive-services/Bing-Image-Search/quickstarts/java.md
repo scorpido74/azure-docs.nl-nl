@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en Java'
+title: 'Quickstart: Afbeeldingen zoeken met de REST API voor Bing Image Search en Java'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Java en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a41a448a344325c2e3820a891017a078ae1532c5
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 79e5b5e0562c86668c276a94ab28835c13433eb8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603414"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327239"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Snelstartgids: zoeken naar installatie kopieën met de Bing Afbeeldingen zoeken-API en Java 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Quickstart: Afbeeldingen zoeken met de Bing Image Search-API en Java 
 
-Gebruik deze Quick Start om te leren hoe u Zoek opdrachten kunt verzenden naar de Bing Afbeeldingen zoeken-API in azure Cognitive Services. Deze Java-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze quickstart om te leren hoe u zoekaanvragen verzendt naar de Bing Image Search-API in Azure Cognitive Services. Deze Java-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) met aanvullende fout afhandeling en annotaties.
+De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) met extra foutafhandeling en aantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,7 +48,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
     import com.google.gson.JsonParser;
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. Voor `host` kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. Voor `host` kunt u het volgende globale eindpunt of het eindpunt [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -59,7 +59,7 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
 
 ## <a name="construct-the-search-request-and-query"></a>De zoekopdracht en query compileren
 
-Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag op te maken. URL: de zoek term coderen voordat u deze toevoegt aan de aanvraag.
+Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag te formatteren. Versleutel de zoekterm met een URL voordat u deze aan de aanvraag toevoegt.
 
 ```java
 // construct the search request URL (in the form of endpoint + query string)
@@ -70,7 +70,7 @@ connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
 ## <a name="receive-and-process-the-json-response"></a>Het JSON-antwoord ontvangen en verwerken
 
-1. Het JSON-antwoord van de Bing Afbeeldingen zoeken-API te ontvangen en het resultaat object samen te stellen.
+1. Ontvang het JSON-antwoord van de Bing Image Search-API en bouw het resultaatobject.
 
     ```java
     // receive JSON body
@@ -79,7 +79,7 @@ connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
-2. Scheid de Bing-gerelateerde HTTP-headers van de JSON-hoofd tekst.
+2. Scheid de Bing-gerelateerde HTTP-headers van de JSON-hoofdtekst.
 
     ```java
     // extract Bing-related HTTP headers
@@ -92,7 +92,7 @@ connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
     }
     ```
 
-3. Sluit de stroom en parseer het antwoord. Haal het totale aantal geretourneerde Zoek resultaten en de URL van de miniatuur naar het eerste resultaat van de afbeelding.
+3. Sluit de stroom en parseer het antwoord. Haal het totale aantal geretourneerde zoekresultaten en de URL van de miniatuur op voor het eerste afbeeldingsresultaat.
 
     ```java
     stream.close();
@@ -161,8 +161,8 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden gereto
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is de Bing Afbeeldingen zoeken-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wat is de Bing Image Search-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
-* [Prijs informatie voor de Bing Zoeken-API's](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* [Prijsinformatie voor Bing Search-API's](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 * [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

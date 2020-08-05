@@ -5,18 +5,18 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
-ms.translationtype: MT
+ms.openlocfilehash: f4b42f2ed43da68daabb3bd334a362071202be42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073718"
 ---
 # <a name="app-service-overview"></a>Overzicht van App Service
 
-*Azure app service* is een HTTP-gebaseerde service voor het hosten van webtoepassingen, rest-api's en mobiele back-ends. U kunt er in uw favoriete taal programmeren, of het nu .NET, .NET Core, Java, Ruby, Node.js, PHP of Python is. Toepassingen kunnen eenvoudig worden uitgevoerd en geschaald in op Windows en Linux gebaseerde omgevingen. Voor op Linux gebaseerde omgevingen bekijkt u [App Service in Linux](containers/app-service-linux-intro.md). 
+*Azure App Service* is een op HTTP gebaseerde service voor het hosten van webtoepassingen, REST API's en mobiele back-ends. U kunt er in uw favoriete taal programmeren, of het nu .NET, .NET Core, Java, Ruby, Node.js, PHP of Python is. Toepassingen kunnen eenvoudig worden uitgevoerd en geschaald in op Windows en Linux gebaseerde omgevingen. Voor op Linux gebaseerde omgevingen bekijkt u [App Service in Linux](containers/app-service-linux-intro.md). 
 
-App Service voegt niet alleen de kracht van Microsoft Azure aan uw toepassing toe, zoals beveiliging, taakverdeling, automatisch schalen en geautomatiseerd beheer. U kunt ook profiteren van de DevOps-mogelijkheden, zoals continue implementatie vanuit Azure DevOps, GitHub, docker hub en andere bronnen, pakket beheer, faserings omgevingen, aangepaste domeinen en TLS/SSL-certificaten. 
+App Service voegt niet alleen de kracht van Microsoft Azure aan uw toepassing toe, zoals beveiliging, taakverdeling, automatisch schalen en geautomatiseerd beheer. U kunt ook profiteren van de DevOps-mogelijkheden, zoals continue implementatie van Azure DevOps, GitHub, Docker Hub en andere bronnen, pakketbeheer, faseringsomgevingen, aangepast domein en TLS/SSL-certificaten. 
 
 Met App Service betaalt u voor de Azure-rekenresources die u gebruikt. De rekenresources die u gebruikt, zijn vastgesteld door het _App Service-plan_ waarmee u uw apps uitvoert. Zie [Overzicht van Azure App Service-plannen](overview-hosting-plans.md) voor meer informatie.
 
@@ -25,8 +25,8 @@ Met App Service betaalt u voor de Azure-rekenresources die u gebruikt. De rekenr
 Hier volgen enkele belangrijke functies van App Service:
 
 * **Meerdere talen en frameworks**: App Service biedt uitstekende ondersteuning voor ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP of Python. U kunt ook [PowerShell en andere scripts of uitvoerbare bestanden](webjobs-create.md) als achtergrondservices uitvoeren.
-* **Beheerde productie omgeving** : app service automatisch [patches en onderhoudt het besturings systeem en de taal raamwerken](overview-patch-os-runtime.md) voor u. Besteed tijd aan het schrijven van fantastische apps en laat Azure een probleem met het platform.
-* **DevOps-optimalisatie**: stel [continue integratie en implementatie](deploy-continuous-deployment.md) in met Azure DevOps, GitHub, BitBucket, Docker Hub of Azure Container Registry. Verhoog updateniveaus via [test- en faseringsomgevingen](deploy-staging-slots.md). Beheer uw apps in App Service met [Azure PowerShell](/powershell/azureps-cmdlets-docs) of de [platformoverschrijdende opdrachtregelinterface (CLI)](/cli/azure/install-azure-cli).
+* **Beheerde productieomgeving**: in App Service worden automatisch [patches gemaakt en het besturingssysteem en taalframeworks onderhouden](overview-patch-os-runtime.md). Besteed uw tijd aan het schrijven van geweldige apps en laat het platform aan Azure over.
+* **DevOps-optimalisatie**: stel [continue integratie en implementatie](deploy-continuous-deployment.md) in met Azure DevOps, GitHub, BitBucket, Docker Hub of Azure Container Registry. Verhoog updateniveaus via [test- en faseringsomgevingen](deploy-staging-slots.md). Beheer uw apps in App Service met [Azure PowerShell](/powershell/azure/) of de [platformoverschrijdende opdrachtregelinterface (CLI)](/cli/azure/install-azure-cli).
 * **Globale schaling met hoge beschikbaarheid**: u kunt handmatig of automatisch [omhoog](manage-scale-up.md) schalen of [uit](../monitoring-and-diagnostics/insights-how-to-scale.md)schalen. U kunt uw apps overal in de globale datacenterinfrastructuur van Microsoft hosten; de [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) van App Service belooft hoge beschikbaarheid.
 * **Verbindingen met SaaS-platforms en on-premises gegevens**: u kunt kiezen uit meer dan 50 [connectors](../connectors/apis-list.md) voor bedrijfssystemen (zoals SAP), SaaS-services (zoals Salesforce) en internetservices (zoals Facebook). Toegang tot on-premises gegevens met [hybride verbindingen](app-service-hybrid-connections.md) en [Azure Virtual Networks](web-sites-integrate-with-vnet.md).
 * **Beveiliging en naleving**: App Service voldoet aan de vereisten van [ISO, SOC en PCI](https://www.microsoft.com/en-us/trustcenter). Verifieer gebruikers met [Azure Active Directory](configure-authentication-provider-aad.md) of via sociaal aanmelden ([Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md) en [Microsoft](configure-authentication-provider-microsoft.md)). Maak [IP-adresbeperkingen](app-service-ip-restrictions.md) en [ beheer service-identiteiten](overview-managed-identity.md).

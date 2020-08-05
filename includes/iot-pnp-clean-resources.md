@@ -1,25 +1,26 @@
 ---
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dominicbetts
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: d88d166e001e71cabdabc3a3d344adc4da19aa8c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6cd983b6421fc821853aa22d4dc2c297f672d292
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453715"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336889"
 ---
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om door te gaan met aanvullende IoT Plug en Play-artikelen, kunt u de resources die u in deze Quick Start hebt gebruikt, behouden en opnieuw gebruiken. Anders kunt u de resources die u in deze Quick Start hebt gemaakt, verwijderen om te voor komen dat er extra kosten in rekening worden gebracht.
+Als u van plan bent om door te gaan met aanvullende IoT Plug en Play-artikelen, kunt u de resources die u in dit artikel hebt gebruikt, behouden en opnieuw gebruiken. Als dat niet het geval is, kunt u de resources die u in dit artikel hebt gemaakt, verwijderen om extra kosten te vermijden.
 
-U kunt zowel de hub als het geregistreerde apparaat tegelijk verwijderen door de hele resource groep te verwijderen met de volgende opdracht voor Azure CLI. (Gebruik dit niet, maar als deze resources een resource groep delen met andere resources die u voor verschillende doel einden hebt.)
+U kunt zowel de hub als het geregistreerde apparaat tegelijk verwijderen door met de volgende Azure CLI-opdracht de hele resourcegroep te verwijderen. Gebruik deze opdracht niet als deze resources een resourcegroep delen met andere resources die u wilt houden.
 
 ```azurecli-interactive
 az group delete --name <YourResourceGroupName>
 ```
+
 Als u alleen de IoT-hub wilt verwijderen, voert u de volgende opdracht uit met behulp van Azure CLI:
 
 ```azurecli-interactive
@@ -32,4 +33,4 @@ Als u alleen de apparaat-id wilt verwijderen die u hebt geregistreerd bij de IoT
 az iot hub device-identity delete --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Mogelijk wilt u ook de gekloonde voorbeeld bestanden verwijderen van uw ontwikkel computer.
+Mogelijk wilt u ook de gekloonde voorbeeldbestanden verwijderen van uw ontwikkelcomputer.

@@ -1,29 +1,29 @@
 ---
-title: 'Snelstartgids: Text Analytics-client bibliotheek v3 | Microsoft Docs'
+title: 'Quickstart: Text Analytics-clientbibliotheek v3 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om uw toepassingen te verbinden met de Text Analytics-API van Azure Cognitive Services.
+description: Gebruik deze quickstart om uw toepassingen te verbinden met de Text Analytics-API van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: f31ac8b36134548c3a7ecc4b0bf37d28a8ab7e4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291738"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: De Text Analytics-clientbibliotheek gebruiken
 
-Aan de slag met de Text Analytics-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
+Aan de slag met de Text Analytics-clientbibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen.
 
-De Text Analytics-client bibliotheek gebruiken om uit te voeren:
+Gebruik de Text Analytics-clientbibliotheek om het volgende uit te voeren:
 
 * Sentimentanalyse
 * Taaldetectie
@@ -33,9 +33,9 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
+> * De meest recente stabiele versie van de Text Analytics-API is `3.0`.
 >    * Volg alleen de instructies voor de versie die u gebruikt.
-> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud. Voor productiescenario's wordt aanbevolen om de batch-asynchrone methoden te gebruiken voor prestaties en schaalbaarheid. Zie de referentiedocumentatie hieronder.
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
@@ -44,8 +44,8 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
-> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
+> * De meest recente stabiele versie van de Text Analytics-API is `3.0`.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud. Voor productiescenario's wordt aanbevolen om de batch-asynchrone methoden te gebruiken voor prestaties en schaalbaarheid. Zie de referentiedocumentatie hieronder.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
@@ -54,10 +54,10 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
+> * De meest recente stabiele versie van de Text Analytics-API is `3.0`.
 >    * Volg alleen de instructies voor de versie die u gebruikt.
-> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
-> * U kunt deze versie ook uitvoeren van de Text Analytics-client bibliotheek [in uw browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud. Voor productiescenario's wordt aanbevolen om de batch-asynchrone methoden te gebruiken voor prestaties en schaalbaarheid. Zie de referentiedocumentatie hieronder.
+> * U kunt deze versie van de Text Analytics-clientbibliotheek ook uitvoeren [in de browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
 
 [!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
 
@@ -66,9 +66,9 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
+> * De meest recente stabiele versie van de Text Analytics-API is `3.0`.
 >    * Volg alleen de instructies voor de versie die u gebruikt.
-> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie. 
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud. Voor productiescenario's wordt aanbevolen om de batch-asynchrone methoden te gebruiken voor prestaties en schaalbaarheid. Zie de referentiedocumentatie hieronder. 
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
@@ -76,20 +76,20 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 
 ::: zone pivot="programming-language-other"
 
-## <a name="additional-language-support"></a>Aanvullende taal ondersteuning
+## <a name="additional-language-support"></a>Aanvullende computertaalondersteuning
 
-Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in uw favoriete programmeer taal. U hebt geen zorgen. er zijn nog meer Quick starts beschikbaar. Gebruik de tabel om het juiste voor beeld voor uw programmeer taal te vinden.
+Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen quickstart in uw favoriete computertaal. Maakt u zich geen zorgen. Er zijn nog meer quickstarts beschikbaar. Gebruik de tabel om het juiste voorbeeld voor uw programmeertaal te vinden.
 
-| Taal | Beschik bare versie | 
+| Taal | Beschikbare versie | 
 |----------|------------------------|
-| Ruby     | [Versie 2,1](ruby-sdk.md) | 
-| Go       | [Versie 2,1](go-sdk.md) | 
+| Ruby     | [Versie 2.1](ruby-sdk.md) | 
+| Aan de slag       | [Versie 2.1](go-sdk.md) | 
 
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -100,7 +100,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 > [Een oplossing verkennen](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
 * [Overzicht van Text Analytics](../overview.md)
-* [Sentiment analyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entiteit herkenning](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Herkenning van entiteiten](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Taal detecteren](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Taal herkenning](../how-tos/text-analytics-how-to-language-detection.md)
+* [Taalherkenning](../how-tos/text-analytics-how-to-language-detection.md)

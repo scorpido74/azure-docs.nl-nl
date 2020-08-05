@@ -4,17 +4,17 @@ description: bestand opnemen
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 05/06/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 25922efcaf9afdf8145ec963f470acc8fc642e31
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: c5cd57fb1df2ccde532f473b0dce3b5c1ab3a330
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588930"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375254"
 ---
-Deze utterances zijn alleen bedoeld voor demonstratiedoeleinden. Een echte app moet ten minste 15-30 [uitingen](../luis-concept-utterance.md) met een verschillende lengte, woord volgorde, tien tallen, grammatica correctie, lees tekens en aantal woorden.
+Deze utterances zijn alleen bedoeld voor demonstratiedoeleinden. Een app moet minstens 15-30 [uitingen](../luis-concept-utterance.md) hebben met verschillende lengten, woordvolgordes, werkwoordtijden, grammaticale juistheid, interpunctie en aantal woorden.

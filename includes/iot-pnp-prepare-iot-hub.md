@@ -1,23 +1,24 @@
 ---
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
-ms.date: 10/24/2019
-ms.openlocfilehash: a3340eb9e53afa83c35109bad7d22f81413dd644
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 03/17/2020
+ms.custom: references_regions
+ms.openlocfilehash: adc621f932462422202d9f16fd539f5ecc7c3d8e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234251"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336890"
 ---
 ## <a name="prepare-an-iot-hub"></a>Een IoT-hub voorbereiden
 
-U hebt ook een Azure IoT hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. Als u geen IoT-hub hebt, volgt u [deze instructies om er een te maken](../articles/iot-hub/iot-hub-create-using-cli.md).
+U hebt ook een Iot-hub van Azure in uw Azure-abonnement nodig om de stappen in dit artikel uit te voeren. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Als u de Azure CLI lokaal gebruikt, meldt u zich eerst aan bij uw Azure `az login`-abonnement met behulp van. Als u deze opdrachten uitvoert in de Azure Cloud Shell, bent u automatisch aangemeld.
+Als u de Azure CLI lokaal gebruikt, meldt u zich eerst aan bij uw Azure-abonnement met behulp van `az login`. Als u deze opdrachten uitvoert in de Azure Cloud Shell, bent u automatisch aangemeld.
 
-Als u de Azure CLI lokaal gebruikt, moet de `az` versie **2.0.73** of hoger zijn. de Azure Cloud Shell maakt gebruik van de nieuwste versie. Gebruik de `az --version` opdracht om de versie te controleren die op uw computer is geïnstalleerd.
+Als u de Azure CLI lokaal gebruikt, moet de `az`-versie **2.8.0** of hoger zijn. De Azure Cloud Shell maakt gebruik van de nieuwste versie. Gebruik de opdracht `az --version` om de versie te controleren die op uw computer is geïnstalleerd.
 
 Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw exemplaar:
 
@@ -25,14 +26,20 @@ Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI 
 az extension add --name azure-iot
 ```
 
-Voer de volgende opdracht uit om de apparaat-id in uw IoT-hub te maken. Vervang de tijdelijke aanduidingen **YourIoTHubName** en **YourDeviceID** door uw eigen _IOT hub naam_ en de _apparaat-id_ van uw keuze.
+Als u nog geen IoT-hub hebt om te gebruiken, voert u de volgende opdrachten uit om een resourcegroep en een IoT-hub met een gratis laag in uw abonnement te maken. Vervang `<YourIoTHubName>` door een hub-naam van uw keuze:
+
+```azurecli-interactive
+az group create --name my-pnp-resourcegroup \
+    --location centralus
+az iot hub create --name <YourIoTHubName> \
+    --resource-group my-pnp-resourcegroup --sku F1
+```
+
+> [!NOTE]
+> IoT Plug en Play is momenteel beschikbaar in IoT-hubs die zijn gemaakt in de regio's VS - centraal, Europa - noord en Japan - oost. IoT Plug en Play-ondersteuning is niet opgenomen in de basislaag van IoT-hubs.
+
+Voer de volgende opdracht uit om de apparaat-id in uw IoT-hub te maken. Vervang de tijdelijke aanduidingen `<YourIoTHubName>` en `<YourDeviceID>` door uw eigen _IoT Hub-naam_ en een _apparaat-id_ van uw keuze.
 
 ```azurecli-interactive
 az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
-```
-
-Voer de volgende opdracht uit om de _apparaat-Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd (Houd er rekening mee voor later gebruik):
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
 ```

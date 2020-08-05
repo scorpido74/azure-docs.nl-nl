@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027712"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373518"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Quickstart: Een ASP.NET Core-app maken met Azure-app-configuratie
 
@@ -242,6 +242,8 @@ Als u werkt in Azure Cloud Shell, selecteert u de knop *Web-preview* gevolgd doo
 ![De knop Web-preview zoeken](./media/quickstarts/cloud-shell-web-preview.png)
 
 Wanneer u wordt gevraagd om de poort voor de preview te configureren, voert u 5000 in en selecteert u *Openen en bladeren*.  Op de webpagina staat Gegevens van Azure App Configuration.
+
+![Quickstart-app starten](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

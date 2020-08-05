@@ -1,27 +1,27 @@
 ---
-title: Azure PowerShell-voorbeeld script-WAF aangepaste regels maken
-description: Azure PowerShell-voorbeeld script-aangepaste regels voor Web Application firewall maken
+title: Voorbeeld van Azure PowerShell-script - Aangepaste WAF-regels maken
+description: Voorbeeld van Azure PowerShell-script - Aangepaste Web Application Firewall-regels maken
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083137"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Aangepaste WAF-regels maken met Azure PowerShell
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Aangepaste WAF-regels (Web Application Firewall) maken met Azure PowerShell
 
-Met dit script maakt u een Application Gateway Web Application firewall waarin aangepaste regels worden gebruikt. De aangepaste regel blokkeert het verkeer als de aanvraag header de *evilbot*van de gebruikers agent bevat.
+Met dit script maakt u een Web Application Firewall van Application Gateway waarvoor aangepaste regels worden gebruikt. Met de aangepaste regel wordt verkeer geblokkeerd als de aanvraagheader User-Agent *evilbot* bevat.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell-module
 
-Als u ervoor kiest om Azure PowerShell lokaal te installeren en te gebruiken, is voor dit script de Azure PowerShell module versie 2.1.0 of hoger vereist.
+Als u Azure PowerShell lokaal wilt installeren en gebruiken, is voor dit script moduleversie 2.1.0 of hoger van Azure PowerShell vereist.
 
 1. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 2. Voer `Connect-AzAccount` uit om een verbinding met Azure tot stand te brengen.
@@ -46,7 +46,7 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u de subnetconfiguratie. |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u het virtuele netwerk met de subnetconfiguraties. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u het openbare IP-adres voor de toepassingsgateway. |
@@ -57,18 +57,18 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) | Hiermee configureert u instellingen voor een back-endpool. |
 | [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) | Hiermee maakt u een listener. |
 | [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) | Hiermee maakt u een routeringsregel. |
-| [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) | Geef de laag en capaciteit voor een toepassingsgateway op. |
-| [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) | Hiermee maakt u een toepassingsgateway. |
+| [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) | Hiermee geeft u de laag en capaciteit voor een toepassingsgateway op. |
+| [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) | Maak een toepassingsgateway. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
-|[New-AzApplicationGatewayAutoscaleConfiguration](/powershell/module/az.network/New-AzApplicationGatewayAutoscaleConfiguration)|Hiermee maakt u een configuratie voor automatisch schalen voor de Application Gateway.|
-|[New-AzApplicationGatewayFirewallMatchVariable](/powershell/module/az.network/New-AzApplicationGatewayFirewallMatchVariable)|Hiermee maakt u een overeenkomende variabele voor de firewall voorwaarde.|
-|[New-AzApplicationGatewayFirewallCondition](/powershell/module/az.network/New-AzApplicationGatewayFirewallCondition)|Hiermee maakt u een match-voor waarde voor aangepaste regel.|
-|[New-AzApplicationGatewayFirewallCustomRule](/powershell/module/az.network/New-AzApplicationGatewayFirewallCustomRule)|Hiermee maakt u een nieuwe aangepaste regel voor het firewall beleid van Application Gateway.|
-|[New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/New-AzApplicationGatewayFirewallPolicy)|Hiermee maakt u een Application gateway-firewall beleid.|
-|[New-AzApplicationGatewayWebApplicationFirewallConfiguration](/powershell/module/az.network/New-AzApplicationGatewayWebApplicationFirewallConfiguration)|Hiermee maakt u een WAF-configuratie voor een toepassings gateway.|
+|[New-AzApplicationGatewayAutoscaleConfiguration](/powershell/module/az.network/New-AzApplicationGatewayAutoscaleConfiguration)|Hiermee maakt u een configuratie voor automatisch schalen voor de toepassingsgateway.|
+|[New-AzApplicationGatewayFirewallMatchVariable](/powershell/module/az.network/New-AzApplicationGatewayFirewallMatchVariable)|Hiermee maakt u een vergelijkingsvariabele voor de firewallvoorwaarde.|
+|[New-AzApplicationGatewayFirewallCondition](/powershell/module/az.network/New-AzApplicationGatewayFirewallCondition)|Hiermee maakt u een vergelijkingsvoorwaarde voor de aangepaste regel.|
+|[New-AzApplicationGatewayFirewallCustomRule](/powershell/module/az.network/New-AzApplicationGatewayFirewallCustomRule)|Hiermee maakt u een nieuwe aangepaste regel voor het firewallbeleid van de toepassingsgateway.|
+|[New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/New-AzApplicationGatewayFirewallPolicy)|Hiermee maakt u een firewallbeleid voor de toepassingsgateway.|
+|[New-AzApplicationGatewayWebApplicationFirewallConfiguration](/powershell/module/az.network/New-AzApplicationGatewayWebApplicationFirewallConfiguration)|Hiermee maakt u een WAF-configuratie voor een toepassingsgateway.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [aangepaste regels voor Web Application firewall](../custom-waf-rules-overview.md) voor meer informatie over aangepaste regels voor WAF.
-- Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+- Zie [Aangepaste regels voor Web Application Firewall](../custom-waf-rules-overview.md) voor meer informatie over aangepaste WAF-regels
+- Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 - Voorbeelden van extra PowerShell-voorbeeldscripts voor de toepassingsgateway zijn te vinden in de [documentatie over Azure Application Gateway](../powershell-samples.md).

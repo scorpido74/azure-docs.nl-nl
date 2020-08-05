@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak samen te brengen in audio bestand-Speech-Service'
+title: 'Quickstart: Spraak overzetten naar een audiobestand - Spraakservice'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d6c30205aecaa87fffbd9b1b947d90fafe6ff678
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: bf796fc7a3d5477fd7228a02ac4bb9c78c041cfd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75468832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102621"
 ---
-Als u liever meteen aan de slag gaat, kunt u alle voor <a href="https://aka.ms/speech/github-python">beelden van Speech SDK python</a> bekijken of downloaden op github. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-python">Python-voorbeelden van de Speech SDK</a> op GitHub bekijken of downloaden. 

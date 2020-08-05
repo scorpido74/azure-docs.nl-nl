@@ -1,96 +1,96 @@
 ---
-title: Overzicht van Azure Active Directory verificatie
-description: Meer informatie over de verschillende verificatie methoden en beveiligings functies voor gebruikers aanmeldingen met Azure Active Directory.
+title: Overzicht van Azure Active Directory-verificatie
+description: Krijg meer informatie over de verschillende verificatiemethoden en beveiligingsfuncties voor aanmeldingen van gebruikers met Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 01/17/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a6b5c22e2988ed33e6dc15a4729e7bfe938c5f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035108"
 ---
-# <a name="what-is-azure-active-directory-authentication"></a>Wat is Azure Active Directory verificatie?
+# <a name="what-is-azure-active-directory-authentication"></a>Wat is Azure Active Directory-verificatie?
 
-Een van de belangrijkste functies van een identiteits platform is het verifiëren of *verifiëren*van referenties wanneer een gebruiker zich aanmeldt bij een apparaat, toepassing of service. In Azure Active Directory (Azure AD) omvat de verificatie meer dan alleen de verificatie van een gebruikers naam en wacht woord. Azure AD-verificatie omvat de volgende onderdelen om de beveiliging te verbeteren en de nood zaak van helpdesk ondersteuning te verminderen:
+Een van de belangrijkste functies van een identiteitsplatform is het *verifiëren* van referenties wanneer een gebruiker zich bij een apparaat, toepassing of service aanmeldt. In Azure Active Directory (Azure AD) betreft verificatie meer dan alleen de controle van een gebruikersnaam en wachtwoord. Voor een betere beveiliging en minder behoefte aan hulp van een helpdesk, omvat Azure AD-verificatie de volgende onderdelen:
 
-* Self-service voor wachtwoordherstel
+* Self-service voor wachtwoord opnieuw instellen
 * Azure Multi-Factor Authentication
-* Hybride integratie om wachtwoord wijzigingen terug te schrijven naar de on-premises omgeving
-* Hybride integratie voor het afdwingen van wachtwoord beveiligings beleid voor een on-premises omgeving
+* Hybride integratie om wachtwoordwijzigingen terug te schrijven naar de on-premises omgeving
+* Hybride integratie om beveiligingsbeleid voor wachtwoorden af te dwingen voor een on-premises omgeving
 * Verificatie zonder wachtwoord
 
-## <a name="improve-the-end-user-experience"></a>De ervaring van de eind gebruiker verbeteren
+## <a name="improve-the-end-user-experience"></a>De ervaring voor de eindgebruiker verbeteren
 
-Azure AD helpt bij het beschermen van de identiteit van een gebruiker en het vereenvoudigen van de aanmeldings ervaring. Met functies als selfservice voor wachtwoord herstel kunnen gebruikers hun wacht woorden bijwerken of wijzigen met behulp van een webbrowser op elk apparaat. Deze functie is vooral nuttig wanneer de gebruiker het wacht woord vergeet of het account is vergrendeld. Zonder te wachten tot een Help Desk of beheerder ondersteuning biedt, kan een gebruiker zichzelf deblokkeren en blijven werken.
+Azure AD helpt de identiteit van gebruikers beschermen en hun aanmeldervaring vereenvoudigen. Met behulp van functies zoals een self-service voor wachtwoordherstel kunnen gebruikers wachtwoorden via een webbrowser bijwerken of wijzigen, vanaf elk apparaat. Deze functie is met name handig wanneer gebruikers hun wachtwoord zijn vergeten of als hun account is vergrendeld. Zonder te hoeven wachten op ondersteuning van een helpdesk of beheerder kunnen gebruikers zelf de blokkering opheffen en verdergaan met hun werk.
 
-Met Azure Multi-Factor Authentication kunnen gebruikers een extra verificatie vorm kiezen tijdens het aanmelden, zoals een telefoon gesprek of een melding voor mobiele apps. Deze mogelijkheid vermindert de vereiste voor één vaste vorm van secundaire authenticatie, zoals een hardware-token. Als de gebruiker momenteel niet beschikt over één vorm van aanvullende verificatie, kan deze een andere methode kiezen en blijven werken.
+Met behulp van Azure Multi-Factor Authentication kunnen gebruikers een extra verificatiemethode kiezen tijdens het aanmelden, zoals worden gebeld of een melding krijgen via een mobiele app. Dankzij deze mogelijkheid is er geen vaste vorm van secundaire verificatie meer vereist, zoals een hardwaretoken. Als gebruikers momenteel niet één vorm van aanvullende verificatie hebben, kunnen ze een andere methode kiezen en doorgaan met hun werk.
 
-![Verificatie methoden die in gebruik zijn op het aanmeldings scherm](media/concept-authentication-methods/overview-login.png)
+![Gebruikte verificatiemethoden op het aanmeldscherm](media/concept-authentication-methods/overview-login.png)
 
-Met een wacht woord-authenticatie wordt de gebruiker niet meer nodig om een veilig wacht woord te maken en te onthouden. Met mogelijkheden als Windows hello voor bedrijven-of FIDO2-beveiligings sleutels kunnen gebruikers zich zonder wacht woord aanmelden bij een apparaat of toepassing. Deze mogelijkheid kan de complexiteit van het beheer van wacht woorden in verschillende omgevingen verminderen.
+Door verificatie zonder wachtwoord hoeven gebruikers helemaal geen veilig wachtwoord meer te maken en te onthouden. Mogelijkheden zoals Windows Hello for Business of FIDO2-beveiligingssleutels stellen gebruikers in staat zich bij een apparaat of toepassing aan te melden zonder een wachtwoord. Deze mogelijkheid kan de complexiteit van het beheren van wachtwoorden in verschillende omgevingen verminderen.
 
-## <a name="self-service-password-reset"></a>Self-service voor wachtwoordherstel
+## <a name="self-service-password-reset"></a>Self-service voor wachtwoord opnieuw instellen
 
-Selfservice voor wachtwoord herstel biedt gebruikers de mogelijkheid om hun wacht woord te wijzigen of opnieuw in te stellen, zonder de rol van beheerder of Help Desk. Als het account van een gebruiker is vergrendeld of als het wacht woord is verg eten, kunnen ze de aanwijzingen volgen om zichzelf te deblokkeren en terug te gaan naar het werk. Deze mogelijkheid vermindert helpdesk oproepen en productiviteits verlies wanneer een gebruiker zich niet kan aanmelden bij hun apparaat of een toepassing.
+Self-service voor wachtwoordherstel biedt gebruikers de mogelijkheid hun wachtwoord te wijzigen of opnieuw in te stellen zonder tussenkomst van een beheerder of helpdesk. Als het account van een gebruiker is vergrendeld of als deze zijn of haar wachtwoord is vergeten, kan de gebruiker de vergrendeling aan de hand van instructies zelf ongedaan maken en weer aan het werk gaan. Op deze manier wordt het aantal telefoontjes naar de helpdesk en productieverlies verminderd wanneer een gebruiker zich niet kan aanmelden bij een apparaat of toepassing.
 
-Self-service voor wacht woord opnieuw instellen werkt in de volgende scenario's:
+De self-service voor wachtwoordherstel werkt in de volgende scenario's:
 
-* **Wachtwoord wijziging:** wanneer een gebruiker het wacht woord kent, maar wil dit wijzigen in een nieuwe waarde.
-* **Wacht woord opnieuw instellen:** wanneer een gebruiker zich niet kan aanmelden, bijvoorbeeld wanneer het wacht woord is verg eten en het wacht woord opnieuw wilt instellen.
-* **Account ontgrendelen:** wanneer een gebruiker zich niet kan aanmelden omdat het account is vergrendeld en u het account wilt ontgrendelen.
+* **Wachtwoord wijzigen**: wanneer gebruikers hun wachtwoord wel weten, maar deze in een nieuw wachtwoord willen wijzigen.
+* **Wachtwoord opnieuw instellen**: wanneer gebruikers zich niet kunnen aanmelden, wanneer ze bijvoorbeeld hun wachtwoord zijn vergeten en hun wachtwoord opnieuw willen instellen.
+* **Account ontgrendelen**: wanneer gebruikers zich niet kunnen aanmelden omdat hun account is vergrendeld en ze hun account willen ontgrendelen.
 
-Wanneer een gebruiker het wacht woord bijwerkt of opnieuw instelt met behulp van selfservice voor wachtwoord herstel, kan dat wacht woord ook worden teruggeschreven naar een on-premises Active Directory omgeving. Met wacht woord terugschrijven zorgt u ervoor dat een gebruiker de bijgewerkte referenties direct kan gebruiken met on-premises apparaten en toepassingen.
+Wanneer gebruikers hun wachtwoord bijwerken of opnieuw instellen met behulp van de self-service voor wachtwoordherstel, kan dat wachtwoord ook worden teruggeschreven naar een on-premises Active Directory-omgeving. Door het kunnen terugschrijven van wachtwoorden kunnen gebruikers direct gebruikmaken van hun bijgewerkte referenties met on-premises apparaten en toepassingen.
 
 ## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-Multi-factor Authentication is een proces waarbij een gebruiker wordt gevraagd tijdens het aanmeldings proces om een extra vorm van identificatie, zoals het invoeren van een code op hun cellphone of voor het bieden van een vingerafdruk scan.
+Meervoudige verificatie is een proces waarbij gebruikers tijdens het aanmeldproces om een aanvullende vorm van identificatie wordt gevraagd, zoals het invoeren van een code op hun mobiele telefoon of het uitvoeren van een vingerafdrukscan.
 
-Als u alleen een wacht woord gebruikt om een gebruiker te verifiëren, blijft er een onveilige vector voor aanvallen. Als het wacht woord zwak is of elders is weer gegeven, is het echt de gebruiker die zich aanmeldt met de gebruikers naam en het wacht woord of is het een aanvaller? Wanneer u een tweede vorm van verificatie nodig hebt, wordt de beveiliging verhoogd omdat deze extra factor niet duidelijk is voor een aanvaller om te voor komen dat deze wordt opgehaald of gedupliceerd.
+Als u alleen een wachtwoord gebruikt om gebruikers te verifiëren, is dit een onveilige aanvalsvector. Als het wachtwoord zwak is of elders is weergegeven, is het dan wel echt de gebruiker die zich met de gebruikersnaam en het wachtwoord aanmeldt, of is het een aanvaller? Wanneer u een tweede vorm van verificatie vereist, neemt de beveiliging toe omdat deze aanvullende factor niet eenvoudig door een aanvaller kan worden verkregen of gedupliceerd.
 
-![Conceptuele afbeelding van de verschillende vormen van multi-factor Authentication](./media/concept-mfa-howitworks/methods.png)
+![Conceptafbeelding van de verschillende vormen van meervoudige verificatie](./media/concept-mfa-howitworks/methods.png)
 
-Azure Multi-Factor Authentication werkt door twee of meer van de volgende verificatie methoden te vereisen:
+Azure Multi-Factor Authentication werkt door twee van de volgende verificatiemethoden te vereisen:
 
-* Iets wat u kent, doorgaans een wacht woord.
-* Iets wat u hebt, zoals een vertrouwd apparaat dat niet eenvoudig kan worden gedupliceerd, zoals een telefoon-of hardware-sleutel.
-* Iets wat u wilt: biometrie, zoals een vinger afdruk of een gezichts scan.
+* Iets dat u weet, zoals een wachtwoord.
+* Iets dat u hebt, zoals een vertrouwd apparaat dat niet eenvoudig kan worden gedupliceerd, zoals een telefoon of hardwaresleutel.
+* Iets dat u bent: biometrische gegevens zoals een vingerafdruk of gezichtsscan.
 
-Gebruikers kunnen zich registreren voor selfservice voor wachtwoord herstel en Azure Multi-Factor Authentication in één stap om de on-board ervaring te vereenvoudigen. Beheerders kunnen definiëren welke vormen van secundaire authenticatie kunnen worden gebruikt. Azure Multi-Factor Authentication kan ook vereist zijn wanneer gebruikers een self-service voor wachtwoord herstel moeten uitvoeren om dat proces verder te beveiligen.
+Gebruikers kunnen zichzelf registreren voor zowel de self-service voor wachtwoordherstel als Azure Multi-Factor Authentication. Dit gebeurt in één stap, voor een eenvoudigere onboardingervaring. Beheerders kunnen definiëren welke vormen van secundaire verificatie kunnen worden gebruikt. Azure Multi-Factor Authentication kan ook vereist zijn wanneer gebruikers een self-service voor wachtwoordherstel uitvoeren om dat proces nog verder te beveiligen.
 
 ## <a name="password-protection"></a>Wachtwoordbeveiliging
 
-Azure AD blokkeert standaard zwakke wacht woorden, zoals *Wachtwoord1*. Er wordt automatisch een lijst met verboden wacht woorden bijgewerkt en afgedwongen met bekende zwakke wachtwoord typen. Als een Azure AD-gebruiker het wacht woord probeert in te stellen op een van deze zwakke wacht woorden, wordt een melding weer gegeven om een veiligere wacht woord te kiezen.
+Standaard blokkeert Azure AD zwakke wachtwoorden zoals *Wachtwoord1*. Een wereldwijde lijst met verboden, bekende zwakke wachtwoorden wordt automatisch bijgewerkt en afgedwongen. Als Azure AD-gebruikers proberen hun wachtwoord in te stellen op een van deze zwakke wachtwoorden, krijgen ze een melding dat ze een veiliger wachtwoord moeten kiezen.
 
-U kunt de beveiliging verbeteren door aangepaste beleids regels voor wachtwoord beveiliging te definiëren. Deze beleids regels kunnen filters gebruiken om de variatie te blok keren van een wacht woord dat een naam bevat zoals *Contoso* of een locatie zoals *Londen*.
+U kunt de beveiliging verhogen door aangepaste beleidsregels voor wachtwoordbeveiliging te definiëren. Voor deze beleidsregels kunnen filters worden gebruikt voor het blokkeren van variaties op een wachtwoord met een naam zoals *Contoso* of een locatie zoals *Londen*.
 
-Voor hybride beveiliging kunt u Azure AD-wachtwoord beveiliging integreren met een on-premises Active Directory omgeving. Een onderdeel dat in de on-premises omgeving is geïnstalleerd, ontvangt de globale verboden wachtwoord lijst en aangepaste beleids regels voor wachtwoord beveiliging van Azure AD, en domein controllers gebruiken ze om wachtwoord wijzigings gebeurtenissen te verwerken. Deze hybride aanpak zorgt ervoor dat het gebruik van sterke wacht woorden afdwingt, ongeacht hoe of waar een gebruiker hun referenties wijzigt.
+Voor hybride beveiliging kunt u Azure AD-wachtwoordbeveiliging integreren in een on-premises Active Directory-omgeving. De wereldwijde lijst met verboden wachtwoorden en de aangepaste beleidsregels voor wachtwoordbeveiliging van Azure AD worden naar een onderdeel gestuurd dat in de on-premises omgeving is geïnstalleerd; deze worden door domeincontrollers gebruikt om wijzigingen van wachtwoorden te verwerken. Door deze hybride methode weet u zeker dat het gebruik van sterke wachtwoorden wordt afgedwongen, ongeacht hoe of waar gebruikers hun referenties wijzigen.
 
 ## <a name="passwordless-authentication"></a>Verificatie zonder wachtwoord
 
-Het eind doel voor veel omgevingen is het gebruik van wacht woorden te verwijderen als onderdeel van aanmeldings gebeurtenissen. Functies zoals Azure-wachtwoord beveiliging of Azure Multi-Factor Authentication helpen de beveiliging te verbeteren, maar een gebruikers naam en wacht woord blijven een zwakke vorm van verificatie die beschikbaar kan worden gesteld of kunnen worden aangetast.
+Het einddoel voor veel omgevingen is het verwijderen van het gebruik van wachtwoorden als onderdelen van aanmeldingen. Functies zoals Azure-wachtwoordbeveiliging of Azure Multi-Factor Authentication helpen de beveiliging verbeteren, maar een gebruikersnaam en wachtwoord blijven een zwakke vorm van verificatie die kan worden blootgesteld of worden aangevallen.
 
-![Beveiliging versus gebruiks gemak met het verificatie proces dat is gekoppeld aan een wacht woord](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+![Beveiliging versus gemak met het verificatieproces op weg naar een leven zonder wachtwoorden](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-Wanneer u zich aanmeldt met een methode zonder wacht woord, worden er referenties gegeven via het gebruik van methoden als biometrie met Windows hello voor bedrijven of een FIDO2-beveiligings sleutel. Deze verificatie methoden kunnen niet eenvoudig worden gedupliceerd door een aanvaller.
+Wanneer u zich aanmeldt via een methode zonder wachtwoorden, worden referenties opgegeven met behulp van methoden zoals biometrische gegevens met Windows Hello for Business of een FIDO2-beveiligingssleutel. Deze verificatiemethoden kunnen niet eenvoudig door een aanvaller worden gedupliceerd.
 
-Azure AD biedt manieren om op eigen wijze te verifiëren met behulp van methoden met een wacht woord om de aanmeldings ervaring voor gebruikers te vereenvoudigen en het risico op aanvallen te verminderen.
+Azure AD biedt verschillende manieren om verificatie via het systeem uit te voeren met methoden zonder wachtwoord om de aanmeldervaring voor gebruikers te vereenvoudigen en het risico van aanvallen te verminderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u aan de slag wilt gaan, raadpleegt u de [zelf studie voor selfservice voor wachtwoord herstel (SSPR)][tutorial-sspr] en [Azure multi-factor Authentication][tutorial-azure-mfa].
+Zie de [zelfstudie voor self-service voor wachtwoordherstel (SSPR)][tutorial-sspr] en [Azure Multi-Factor Authentication][tutorial-azure-mfa] om aan de slag te gaan.
 
-Zie [hoe Azure AD self-service password reset werkt][concept-sspr]voor meer informatie over de concepten van self-service voor het opnieuw instellen van wacht woorden.
+Zie [Zo werkt de self-service voor wachtwoordherstel van Azure AD][concept-sspr] voor meer informatie over concepten voor de self-service voor het opnieuw instellen van wachtwoorden.
 
-Zie [hoe Azure multi-factor Authentication werkt][concept-mfa]voor meer informatie over multi-factor Authentication-concepten.
+Zie [Zo werkt Azure Multi-Factor Authentication][concept-mfa] voor meer informatie over concepten voor meervoudige verificatie.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

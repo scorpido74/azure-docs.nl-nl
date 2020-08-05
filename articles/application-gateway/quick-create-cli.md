@@ -1,39 +1,39 @@
 ---
-title: 'Quick Start: direct webverkeer via CLI'
+title: 'Quickstart: Webverkeer omleiden met behulp van CLI'
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het gebruik van de Azure CLI om een Azure-toepassing gateway te maken waarmee webverkeer wordt doorgestuurd naar virtuele machines in een back-end-groep.
+description: Lees hoe u de Azure CLI gebruikt om een Azure-toepassingsgateway te maken die webverkeer omleidt naar virtuele machines in een back-endpool.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: b36b5b1700df1767ad4323fed72ee05fdb05321f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290973"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Snelstart: webverkeer omleiden met Azure Application Gateway - Azure CLI
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure CLI
 
-In deze Quick Start gebruikt u Azure CLI om een toepassings gateway te maken. Vervolgens test u de app om te controleren of deze correct werkt. 
+In deze quickstart gebruikt u Azure CLI om een toepassingsgateway te maken. Vervolgens test u de toepassing om te controleren of alles correct werkt. 
 
-De toepassings gateway stuurt webverkeer van toepassingen naar specifieke bronnen in een back-end-pool. U wijst listeners toe aan poorten, maakt regels en voegt resources toe aan een back-end-groep. Voor het gemak maakt dit artikel gebruik van een eenvoudige configuratie met een openbaar front-end-IP, een basis-listener voor het hosten van één site op de toepassings gateway, een basis regel voor aanvraag Routering en twee virtuele machines in de back-end-pool.
+De toepassingsgateway stuurt webverkeer van toepassingen naar specifieke resources in een back-endpool. U wijst listeners toe aan poorten, maakt regels en voegt resources toe aan een back-endpool. Dit artikel gebruikt een eenvoudige configuratie met een openbaar front-end-IP, een eenvoudige listener om een enkele site op de toepassingsgateway te hosten, een eenvoudige regel voor doorsturen van aanvragen en twee virtuele machines in de back-endpool.
 
-U kunt deze Snelstartgids ook volt ooien met behulp van [Azure PowerShell](quick-create-powershell.md) of de [Azure Portal](quick-create-portal.md).
+U kunt deze quickstart ook uitvoeren met [Azure PowerShell](quick-create-powershell.md) of [Azure Portal](quick-create-portal.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure CLI-versie 2.0.4 of hoger](/cli/azure/install-azure-cli) (als u Azure cli lokaal uitvoert).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- [Azure CLI versie 2.0.4 of hoger](/cli/azure/install-azure-cli) (als u Azure CLI lokaal uitvoert).
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-In Azure kunt u verwante resources toewijzen aan een resourcegroep. Maak een resource groep met behulp `az group create`van. 
+In Azure kunt u verwante resources toewijzen aan een resourcegroep. Maak een resourcegroep met behulp van `az group create`. 
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -43,9 +43,9 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken 
 
-Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt.  Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.  U kunt een nieuw subnet maken voor Application Gateway of een bestaande gebruiken. In dit voor beeld maakt u twee subnetten: één voor de toepassings gateway en een andere voor de back-endservers. U kunt het frontend-IP-adres van de Application Gateway zo configureren dat het openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP-adres.
+Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt.  Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.  U kunt een nieuw subnet maken voor Application Gateway of een bestaand subnet gebruiken. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers. Afhankelijk van uw toepassing kunt u het IP-adres voor de front-end van de toepassingsgateway als openbaar of privé configureren. In dit voorbeeld kiest u voor een openbaar IP-adres voor de front-end.
 
-Gebruik `az network vnet create`om het virtuele netwerk en het subnet te maken. Voer `az network public-ip create` uit om het open bare IP-adres te maken.
+Gebruik `az network vnet create` om het virtuele netwerk en subnet te maken. Voer `az network public-ip create` uit om het openbare IP-adres te maken.
 
 ```azurecli-interactive
 az network vnet create \
@@ -69,11 +69,11 @@ az network public-ip create \
 
 ## <a name="create-the-backend-servers"></a>De back-endservers maken
 
-Een back-end kan Nic's, virtuele-machine schaal sets, open bare Ip's, interne Ip's, FQDN-namen (Fully Qualified Domain names) en multi tenant back-ends hebben als Azure App Service. In dit voor beeld maakt u twee virtuele machines die moeten worden gebruikt als back-endservers voor de toepassings gateway. U installeert ook IIS op de virtuele machines om de toepassings gateway te testen.
+Een back-end kan NIC's, virtuele-machineschaalsets, openbare IP-adressen, interne IP-adressen, FQDN's (Fully Qualified Domain Name) en multitenant back-ends, zoals Azure App Service, bevatten. In dit voorbeeld maakt u twee virtuele machines die worden gebruikt als back-endservers voor de toepassingsgateway. U installeert ook IIS op de virtuele machines om de toepassingsgateway te testen.
 
 #### <a name="create-two-virtual-machines"></a>Twee virtuele machines maken
 
-U installeert ook de NGINX-webserver op de virtuele machines om te controleren of de toepassingsgateway is gemaakt. U kunt een cloud-init-configuratiebestand maken om NGINX te installeren en een 'Hallo wereld' Node.js-app uit te voeren op een virtuele Linux-machine. Zie [Cloud-init-ondersteuning voor virtuele machines in Azure](../virtual-machines/linux/using-cloud-init.md) voor meer informatie over cloud-init.
+Installeer de NGINX-webserver op de virtuele machines om te controleren of de toepassingsgateway is gemaakt. U kunt een cloud-init-configuratiebestand maken om NGINX te installeren en een 'Hallo wereld' Node.js-app uit te voeren op een virtuele Linux-machine. Zie [Cloud-init-ondersteuning voor virtuele machines in Azure](../virtual-machines/linux/using-cloud-init.md) voor meer informatie over cloud-init.
 
 Kopieer in uw Azure Cloud Shell de volgende configuratie en plak deze in een bestand met de naam *cloud-init.txt*. Voer *editor cloud-init.txt* in om het bestand te maken.
 
@@ -119,7 +119,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Maak de netwerk interfaces met `az network nic create`. Als u de virtuele machines wilt maken, `az vm create`gebruikt u.
+Maak de netwerkinterfaces met `az network nic create`. Voor het maken van de virtuele machines gebruikt u `az vm create`.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -141,7 +141,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>De toepassingsgateway maken
 
-Maak een toepassings gateway met `az network application-gateway create`behulp van. Als u met de Azure CLI een toepassingsgateway maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. Azure voegt dan de privé-IP-adressen van de netwerkinterfaces toe als servers in de back-endpool van de toepassingsgateway.
+Maak een toepassingsgateway met `az network application-gateway create`. Als u met de Azure CLI een toepassingsgateway maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. Azure voegt dan de privé-IP-adressen van de netwerkinterfaces toe als servers in de back-endpool van de toepassingsgateway.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -161,15 +161,15 @@ az network application-gateway create \
 
 Het kan tot 30 minuten duren om de toepassingsgateway te maken in Azure. Wanneer deze is gemaakt, kunt u de volgende instellingen bekijken in het gedeelte **Instellingen** van de pagina **Toepassingsgateway**:
 
-- **appGatewayBackendPool**: bevindt zich op de pagina met **Back-upgroepen** . Hier is te zien wat de vereiste back-endpool is.
-- **appGatewayBackendHttpSettings**: bevindt zich op de pagina **http-instellingen** . Hier wordt aangegeven dat de toepassingsgateway voor communicatie gebruikmaakt van poort 80 en het HTTP-protocol.
-- **appGatewayHttpListener**: bevindt zich op de **pagina listeners**. Hier staat wat de standaard-listener is die aan **appGatewayBackendPool** is gekoppeld.
-- **appGatewayFrontendIP**: bevindt zich op de pagina **frontend IP-configuraties** . *MyAGPublicIPAddress* wordt toegewezen aan **appGatewayHttpListener**.
-- **firewallregel1**: bevindt zich op de pagina **regels** . Hier wordt aangegeven welke standaardrouteringsregel aan **appGatewayHttpListener** is gekoppeld.
+- **appGatewayBackendPool**: Staat op de pagina **back-endpools**. Hier is te zien wat de vereiste back-endpool is.
+- **appGatewayBackendHttpSettings**: Staat op de pagina **HTTP-instellingen**. Hier wordt aangegeven dat de toepassingsgateway voor communicatie gebruikmaakt van poort 80 en het HTTP-protocol.
+- **appGatewayHttpListener**: Staat op de **pagina Listeners**. Hier staat wat de standaard-listener is die aan **appGatewayBackendPool** is gekoppeld.
+- **appGatewayFrontendIP**: Staat op de pagina **Front-end-IP-configuraties**. Hiermee wordt *myAGPublicIPAddress* aan **appGatewayHttpListener** toegewezen.
+- **rule1**: Staat op de pagina **Regels**. Hier wordt aangegeven welke standaardrouteringsregel aan **appGatewayHttpListener** is gekoppeld.
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Het is in Azure niet nodig een NGINX-webserver te installeren om de toepassingsgateway te maken, maar u hebt de server in deze quickstart geïnstalleerd om te controleren of het maken van de toepassingsgateway in Azure is geslaagd. Als u het open bare IP-adres van de nieuwe toepassings gateway `az network public-ip show`wilt ophalen, gebruikt u. 
+Het is in Azure niet nodig een NGINX-webserver te installeren om de toepassingsgateway te maken, maar u hebt de server in deze quickstart geïnstalleerd om te controleren of het maken van de toepassingsgateway in Azure is geslaagd. Gebruik `az network public-ip show` om het openbare IP-adres van de nieuwe toepassingsgateway op te halen. 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -183,11 +183,11 @@ Kopieer het openbare IP-adres en plak het in de adresbalk van de browser.
     
 ![Toepassingsgateway testen](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-Als u de browser vernieuwt, ziet u de naam van de tweede VM. Dit geeft aan dat de toepassings gateway is gemaakt en verbinding kan maken met de back-end.
+Als u de browser vernieuwt, ziet u de naam van de tweede VM. Dit geeft aan dat de toepassingsgateway is gemaakt en dat deze verbinding kan maken met de back-end.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de resources die u hebt gemaakt met de Application Gateway niet meer nodig hebt, `az group delete` gebruikt u de opdracht om de resource groep te verwijderen. Wanneer u de resource groep verwijdert, verwijdert u ook de toepassings gateway en alle gerelateerde resources.
+Wanneer u de resources die u bij de toepassingsgateway hebt gemaakt niet meer nodig hebt, gebruikt u de opdracht `az group delete` om de resourcegroep te verwijderen. Wanneer u de resourcegroep verwijdert, verwijdert u ook de toepassingsgateway en alle resources die hieraan zijn gerelateerd.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG

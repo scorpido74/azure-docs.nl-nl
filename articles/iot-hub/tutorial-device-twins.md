@@ -1,6 +1,6 @@
 ---
 title: Apparaatstatus synchroniseren vanuit Azure IoT Hub | Microsoft Docs
-description: Meer informatie over hoe u apparaatdubbels kunt gebruiken om uw apparaten te configureren vanuit de Cloud en om status-en compatibiliteits gegevens van uw apparaten te ontvangen.
+description: Ontdek hoe u apparaatdubbels kunt gebruiken om uw apparaten te configureren vanuit de cloud en om status- en nalevingsgegevens van uw apparaten te ontvangen.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -11,12 +11,14 @@ ms.date: 06/21/2019
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: fe93344005e2676046bd6b73f9d51b617100a961
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81767825"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325896"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -41,9 +43,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U hebt node. js V10 toevoegen. x. x of hoger nodig op uw ontwikkel machine.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. Node.js v10.x.x of hoger moet zijn geïnstalleerd op uw ontwikkelcomputer.
 
-U kunt node. js voor meerdere platforms downloaden vanuit [nodejs.org](https://nodejs.org).
+U kunt Node.js voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
 
 Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcomputer te controleren:
 
@@ -53,7 +55,7 @@ node --version
 
 Download het Node.js-voorbeeldproject van https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip en pak het ZIP-archief uit.
 
-Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+Zorg ervoor dat de poort 8883 is geopend in de firewall. In het apparaatvoorbeeld in deze zelfstudie wordt het MQTT-protocol gebruikt, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="set-up-azure-resources"></a>Azure-resources instellen
 
@@ -240,7 +242,7 @@ De volgende schermafbeelding toont de uitvoer van de gesimuleerd apparaattoepass
 
 ![Gesimuleerd apparaat](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-In de volgende scherm afbeelding ziet u de uitvoer van de back-endtoepassing en wordt uitgelegd hoe de toepassing een gerapporteerde eigenschaps update van een apparaat ontvangt en verwerkt:
+De volgende schermafbeelding toont de uitvoer van de back-endtoepassing en laat zien hoe deze een update voor de gerapporteerde eigenschap van een apparaat ontvangt en verwerkt:
 
 ![Back-endtoepassing](./media/tutorial-device-twins/BackEnd2.png)
 

@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067543"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Gegevens verzamelen van een virtuele Azure-machine met Azure Monitor
 
-[Azure Monitor](../overview.md) kan gegevens rechtstreeks vanuit uw virtuele Azure-machines verzamelen en onderbrengen in een Log Analytics-werkruimte voor uitvoerige analyse en correlatie. Als u de Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) en [Linux](../../virtual-machines/extensions/oms-linux.md) installeert, kan Azure Monitor gegevens van uw virtuele Azure-machines verzamelen. In deze quickstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Azure Linux- of Windows-VM’s configureert en verzamelt met behulp van de VM-extensie.  
+[Azure Monitor](../overview.md) kan gegevens rechtstreeks vanuit uw virtuele Azure-machines verzamelen en onderbrengen in een Log Analytics-werkruimte voor analyse van details en correlatie. Als u de Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) en [Linux](../../virtual-machines/extensions/oms-linux.md) installeert, kan Azure Monitor gegevens van uw virtuele Azure-machines verzamelen. In deze quickstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Azure Linux- of Windows-VM’s configureert en verzamelt met behulp van de VM-extensie.  
  
 In deze Quick Start wordt ervan uitgegaan dat u een bestaande Azure-VM hebt. Als u geen [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) of [Linux-VM](../../virtual-machines/linux/quick-create-cli.md) kunt maken, raadpleeg dan onze Quick Starts voor VM’s.
 
@@ -141,4 +141,4 @@ Nu u bezig bent met het verzamelen van operationele gegevens en prestatiegegeven
 Voor informatie over het weergeven en analyseren van de gegevens gaat u verder met de zelfstudie.
 
 > [!div class="nextstepaction"]
-> [Gegevens weergeven of analyseren in Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Gegevens weergeven of analyseren in Log Analytics](../log-query/get-started-portal.md)

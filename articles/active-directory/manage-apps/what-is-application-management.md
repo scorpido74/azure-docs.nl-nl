@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055202"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386007"
 ---
 # <a name="what-is-application-management"></a>Wat is toepassingsbeheer?
 
@@ -63,7 +63,7 @@ Er zijn vier hoofdtypen toepassingen die u kunt toevoegen aan **Bedrijfstoepassi
 
 - **Aangepaste toepassingen**: wanneer u uw eigen LOB-toepassingen bouwt, kunt u deze integreren met Azure AD voor de ondersteuning van eenmalige aanmelding. Door uw toepassing te registreren bij Azure AD, hebt u controle over het verificatiebeleid voor de toepassing. Zie de [richtlijnen voor ontwikkelaars](developer-guidance-for-integrating-applications.md) voor meer informatie.
 
-- **Toepassingen niet in galerie**: neem uw eigen toepassingen mee. Biedt ondersteuning voor eenmalige aanmelding voor andere apps door deze toe te voegen aan Azure AD. Er zijn meerdere manieren om een toepassing te integreren, een paar hiervan worden hieronder weergegeven. Zie [Wachtwoord voor eenmalige aanmelding configureren voor een toepassing buiten de galerie](configure-single-sign-on-non-gallery-applications.md) voor meer informatie.
+- **Toepassingen niet in galerie**: neem uw eigen toepassingen mee. Biedt ondersteuning voor eenmalige aanmelding voor andere apps door deze toe te voegen aan Azure AD. Er zijn meerdere manieren om een toepassing te integreren, een paar hiervan worden hieronder weergegeven. Zie [Eenmalige aanmelding op basis van SAML configureren](configure-saml-single-sign-on.md) voor meer informatie.
 
 >[!TIP]
 >U kunt Azure AD integreren met een toepassing, zelfs als deze nog niet vooraf is geconfigureerd en niet in de app-galerie staat. U kunt **Azure AD integreren met een** van de volgende
@@ -93,8 +93,6 @@ Voor toepassingen die gericht zijn op human resources of andere toepassingen met
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassingen weergeven die al zijn geconfigureerd in uw Azure AD-Tenant](view-applications-portal.md)
-- [Snelstart: Een galerietoepassing toevoegen aan uw Azure AD-tenant](add-application-portal.md)
-- [Een galerietoepassing toevoegen aan uw Azure AD-organisatie](add-gallery-app.md)
+- [Quickstartreeks over app-beheer in Azure AD](view-applications-portal.md)
 - [Aan de slag met toepassingsintegratie](plan-an-application-integration.md)
 - [Meer informatie over het automatiseren van inrichting](../app-provisioning/user-provisioning.md)

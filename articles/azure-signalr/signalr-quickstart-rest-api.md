@@ -1,19 +1,19 @@
 ---
 title: 'Snelstart: Azure SignalR Service REST-API'
-description: Meer informatie over het gebruik van REST API met de Azure signalerings service volgende voor beelden. Details van REST API specificatie zoeken.
+description: Ontdek hoe u REST API met de volgende Azure SignalR Service-voorbeelden gebruikt. Zoek detail van REST API-specificatie.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80548133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045005"
 ---
-# <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snelstartgids: Realtimeberichten verzenden via de console-app
+# <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Quickstart: In realtime berichten verzenden via de console-app
 
 Azure SignalR-service biedt [REST-API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md) ter ondersteuning van server-naar-client-communicatie, zoals broadcasting. U kunt elke programmeertaal kiezen die een REST-API kan aanroepen. U kunt berichten verzenden naar alle verbonden clients, een specifieke client op basis van naam of een groep clients.
 
@@ -21,7 +21,7 @@ In deze snelstartgids leert u hoe u in C# berichten via een opdrachtregel-app ku
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze snelstartgids kan worden uitgevoerd op macOS, Windows of Linux.
+Deze quickstart kan worden uitgevoerd op macOS, Windows of Linux.
 
 * [.NET Core-SDK](https://www.microsoft.com/net/download/core)
 * Een teksteditor of code-editor naar keuze.
@@ -126,22 +126,22 @@ Versie | API-status | Door | Specifiek
 
 De lijst met beschikbare API's voor elke specifieke versie is beschikbaar in de volgende lijst.
 
-API | `1.0-preview` | `1.0`
+API | 1.0-preview | 1.0
 --- | --- | ---
 [Uitzenden naar alle](#broadcast) | **&#x2713;** | **&#x2713;**
 [Uitzenden naar een groep](#broadcast-group) | **&#x2713;** | **&#x2713;**
 Uitzenden naar bepaalde groepen | **&#x2713;** (afgeschaft) | `N / A`
-[Verzenden naar een gebruiker](#send-user) | **&#x2713;** | **&#x2713;**
+[Naar een gebruiker verzenden](#send-user) | **&#x2713;** | **&#x2713;**
 Verzenden naar bepaalde gebruikers | **&#x2713;** (afgeschaft) | `N / A`
 [Een gebruiker aan een groep toevoegen](#add-user-to-group) | `N / A` | **&#x2713;**
 [Een gebruiker uit een groep verwijderen](#remove-user-from-group) | `N / A` | **&#x2713;**
-[Aanwezigheid van gebruikers controleren](#check-user-existence) | `N / A` | **&#x2713;**
-[Een gebruiker verwijderen uit alle groepen](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
-[Verzenden naar een verbinding](#send-connection) | `N / A` | **&#x2713;**
-[Een verbinding toevoegen aan een groep](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Het bestaan van de gebruiker controleren](#check-user-existence) | `N / A` | **&#x2713;**
+[Een gebruiker uit alle groepen verwijderen](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Naar een verbinding verzenden](#send-connection) | `N / A` | **&#x2713;**
+[Een verbinding aan een groep toevoegen](#add-connection-to-group) | `N / A` | **&#x2713;**
 [Een verbinding uit een groep verwijderen](#remove-connection-from-group) | `N / A` | **&#x2713;**
-[Een client verbinding sluiten](#close-connection) | `N / A` | **&#x2713;**
-[Service Health](#service-health) | `N / A` | **&#x2713;**
+[Een clientverbinding sluiten](#close-connection) | `N / A` | **&#x2713;**
+[Status van service](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Uitzenden naar iedereen
@@ -160,7 +160,7 @@ Versie | API HTTP-methode | Aanvraag-URL | Aanvraagbody
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Hetzelfde als hierboven
 
 <a name="send-user"> </a>
-### <a name="sending-to-a-user"></a>Verzenden naar een gebruiker
+### <a name="sending-to-a-user"></a>Wordt verzonden naar een gebruiker
 
 Versie | API HTTP-methode | Aanvraag-URL | Aanvraagbody
 --- | --- | --- | ---
@@ -182,7 +182,7 @@ Versie | API HTTP-methode | Aanvraag-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
-### <a name="check-user-existence-in-a-group"></a>De aanwezigheid van gebruikers in een groep controleren
+### <a name="check-user-existence-in-a-group"></a>Het bestaan van de gebruiker in een groep controleren
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
@@ -195,21 +195,21 @@ Statuscode respons | Beschrijving
 `404` | Gebruiker bestaat niet
 
 <a name="remove-user-from-all-groups"> </a>
-### <a name="remove-a-user-from-all-groups"></a>Een gebruiker verwijderen uit alle groepen
+### <a name="remove-a-user-from-all-groups"></a>Een gebruiker uit alle groepen verwijderen
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
 
 <a name="send-connection"> </a>
-### <a name="send-message-to-a-connection"></a>Bericht verzenden naar een verbinding
+### <a name="send-message-to-a-connection"></a>Een bericht naar een verbinding verzenden
 
 API-versie | API HTTP-methode | Aanvraag-URL | Aanvraagtekst
 ---|---|---|---
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
 
 <a name="add-connection-to-group"> </a>
-### <a name="add-a-connection-to-a-group"></a>Een verbinding toevoegen aan een groep
+### <a name="add-a-connection-to-a-group"></a>Een verbinding aan een groep toevoegen
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
@@ -225,7 +225,7 @@ API-versie | API HTTP-methode | Aanvraag-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="close-connection"> </a>
-### <a name="close-a-client-connection"></a>Een client verbinding sluiten
+### <a name="close-a-client-connection"></a>Een clientverbinding sluiten
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
@@ -242,13 +242,13 @@ API-versie | API HTTP-methode | Aanvraag-URL
 Statuscode respons | Beschrijving
 ---|---
 `200` | Service goed
-`503` | Service niet beschikbaar
+`5xx` | Servicefout
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u REST API kunt gebruiken om real-time berichten van de signaal service te verzenden naar clients. Vervolgens vindt u meer informatie over het ontwikkelen en implementeren van Azure Functions met de service binding van de signalering, die boven op REST API is gebouwd.
+In deze quickstart hebt u geleerd hoe u een REST API gebruikt om een realtime bericht van SignalR Service naar clients te verzenden. Krijg vervolgens meer informatie over de manier waarop u Azure-functies ontwikkelt en implementeert met een SignalR Service-binding, die boven op de REST API is gebouwd.
 
 > [!div class="nextstepaction"]
-> [Azure Functions ontwikkelen met behulp van Azure signalerings service bindingen](signalr-quickstart-azure-functions-csharp.md)
+> [Azure-functies ontwikkelen met Azure SignalR Service-bindingen](signalr-quickstart-azure-functions-csharp.md)

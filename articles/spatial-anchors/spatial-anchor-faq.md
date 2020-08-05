@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296666"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091484"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Veelgestelde vragen over Azure Spatial Anchors
 
@@ -88,9 +88,9 @@ Azure Spatial Anchors voldoet aan de [voorwaarden van de serviceovereenkomst van
 
 Dit betekent dat er zowel rekenkracht als opslagcapaciteit voor deze service zijn in deze regio’s. Echter, er zijn geen beperkingen aan waar uw klanten zich bevinden. 
 
-**V: Worden er kosten in rekening gebracht voor Azure Spatial Anchors? Nu of in de toekomst?**
+**V: Worden er kosten in rekening gebracht voor Azure Spatial Anchors?**
 
-**A:** Meer informatie over de prijzen tijdens de preview-fase vindt u op onze [pagina met prijzen](https://azure.microsoft.com/pricing/details/spatial-anchors/).
+**A:** Meer informatie over de prijzen vindt u op onze [pagina met prijzen](https://azure.microsoft.com/pricing/details/spatial-anchors/).
 
 ## <a name="technical-faqs"></a>Veelgestelde technische vragen
 

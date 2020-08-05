@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een miniatuur maken - REST, Java'
+title: 'Quickstart: Een miniatuur genereren - REST, Java'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart maakt u een miniatuur van een afbeelding met behulp van de Computer Vision-API en Java.
 services: cognitive-services
@@ -10,26 +10,26 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 355a450cbdcf44d79cf73904e3b932afb62b7f55
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-java
+ms.openlocfilehash: a1057fa04d5834b0bebb98d9d66a35a21f1a4558
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325488"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en Java
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Quickstart: Een miniatuur maken met de REST API van Computer Vision en Java
 
-In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. U geeft de hoogte en breedte op. Deze mag afwijken van de hoogte-breedteverhouding van de ingevoerde afbeelding. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
+In deze quickstart maakt u een miniatuur van een afbeelding met behulp van de REST API van Computer Vision. U geeft de hoogte en breedte op. Deze waarden mogen afwijken van de hoogte-breedteverhouding van de invoerafbeelding. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* [Java &trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
+* [Java&trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -37,10 +37,10 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
 1. Maak een nieuw Java-project in uw favoriete IDE of editor. Als de optie beschikbaar is, maakt u het Java-project vanuit een toepassingssjabloon met opdrachtregel.
 1. Importeer de volgende bibliotheken in uw Java-project. Als u Maven gebruikt, worden de Maven-coördinaten opgegeven voor elke bibliotheek.
-   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpclient maakt: 4.5. X)
-   - [Apache HTTP core](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpcore: 4.4. X)
+   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.X)
+   - [Apache HTTP-core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.X)
    - [JSON-bibliotheek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-1. Voeg de volgende- `import` instructies toe aan uw hoofd klasse: 
+1. Voeg de volgende instructies voor `import` toe aan uw hoofdklasse: 
 
    ```java
     import java.awt.*;
@@ -60,11 +60,11 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
     import org.json.JSONObject;
    ```
 
-1. Voeg de rest van de voorbeeld code hieronder toe, onder de Imports (Wijzig indien nodig de naam van de klasse).
-1. Voeg uw Computer Vision-abonnements sleutel en-eind punt toe aan de omgevings variabelen.
-1. U kunt de waarde van vervangen door `imageToAnalyze` de URL van uw eigen afbeelding.
+1. Voeg de rest van de onderstaande voorbeeldcode toe, onder de geïmporteerde items (wijzig deze in de naam van uw klasse als dat nodig is).
+1. Voeg uw Computer Vision-abonnementssleutel en -eindpunt toe aan uw omgevingsvariabelen.
+1. (Optioneel): vervang de waarde van `imageToAnalyze` door de URL van uw eigen afbeelding.
 1. Sla vervolgens het Java-project op en bouw het.
-1. Als u een IDE gebruikt, voert u `GenerateThumbnail` uit. Voer anders uit vanaf de opdracht regel (opdrachten hieronder).
+1. Als u een IDE gebruikt, voert u `GenerateThumbnail` uit. Voer dit anders uit vanaf de opdrachtregel (opdrachten hieronder).
 
 ```java
 /**
@@ -170,7 +170,7 @@ Een geslaagd antwoord wordt geretourneerd als binaire gegevens - deze staan voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken een Java-Swing-toepassing die gebruikmaakt van Computer Vision voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen.
+Een Java Swing-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren; slim bijgesneden miniaturen maken; en visuele kenmerken in een afbeelding detecteren, categoriseren, labelen en beschrijven.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met Java](../Tutorials/java-tutorial.md)
