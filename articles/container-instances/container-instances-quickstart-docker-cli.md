@@ -3,13 +3,13 @@ title: 'Quickstart: Docker-container implementeren naar een containerinstantie m
 description: In deze quickstart gebruikt u de Docker CLI om snel een in een container geplaatste web-app te implementeren die wordt uitgevoerd in een geïsoleerde instantie van een Azure-container.
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.custom: ''
-ms.openlocfilehash: 684bb3537d26b60afb0fc0796a94e1a134aa50c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0e4569904ef6aee304518ce012889d10dc2ecbce
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100949"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408081"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Quickstart: Een containerinstantie in Azure implementeren met behulp van de Docker CLI
 

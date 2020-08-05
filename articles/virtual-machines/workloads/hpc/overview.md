@@ -1,6 +1,6 @@
 ---
-title: High-Performance Computing op virtuele machines uit de H-serie-Azure Virtual Machines
-description: Meer informatie over de functies en mogelijkheden van virtuele machines van de H-serie die zijn geoptimaliseerd voor HPC.
+title: High Performance Computing op VM's uit de H-serie - Azure Virtual Machines
+description: Meer informatie over de functies en mogelijkheden van VM's uit de H-serie die zijn geoptimaliseerd voor HPC.
 author: vermagit
 ms.author: amverma
 tags: azure-resource-manager
@@ -8,47 +8,47 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083426"
 ---
-# <a name="high-performance-computing-on-h-series-vms"></a>High-Performance Computing op virtuele machines uit de H-serie
+# <a name="high-performance-computing-on-h-series-vms"></a>High Performance Computing op VM's uit de H-serie
 
-High Performance Computing (HPC) op Vm's uit de HB-serie en HC-serie bieden de meest geoptimaliseerde HPC-prestaties van alle Vm's op Azure. Met HPC geoptimaliseerde Vm's worden de meest moeilijke wiskundige problemen opgelost, zoals: vloeistof dynamiek, olie-en gasmotoren-simulaties en weer modellen.
+High Performance Computing (HPC) op VM's uit de HB- en HC-serie met de meest geoptimaliseerde HPC-prestaties van alle VM's op Azure. Voor HPC geoptimaliseerde VM's worden gebruikt om de moeilijkste wiskundige problemen op te lossen, zoals: vloeistofdynamica, olie- en gassimulaties en weermodellen.
 
-Dit artikel heeft betrekking op enkele belang rijke functies van Vm's uit de HB-serie en HC-serie, waarom deze Vm's goed pres teren in HPC-scenario's en hoe u aan de slag kunt gaan.
+In dit artikel komen enkele belangrijke functies van VM's uit de HB- en HC-serie aan bod en wordt uitgelegd waarom deze VM's goed presteren in HPC-scenario's en hoe u aan de slag kunt gaan.
 
 ## <a name="features-and-capabilities"></a>Functies en mogelijkheden
 
-Virtuele machines uit de HB-serie en HC-serie zijn ontworpen om de beste HPC-prestaties, een MPI-schaal baarheid (Message Passing Interface) en kosten efficiëntie te bieden voor HPC-workloads.
+VM's uit de HB- en HC-serie leveren de beste HPC-prestaties en MPI-schaalbaarheid (Message Passing Interface) en bieden de beste kostenefficiëntie voor HPC-workloads.
 
-### <a name="message-passing-interface"></a>Berichten door geven interface
+### <a name="message-passing-interface"></a>Message Passing Interface
 
-HB-Series en HC-serie ondersteunen bijna alle MPI-typen en-versies. Enkele van de meest voorkomende, ondersteunde MPI-typen zijn: OpenMPI, MVAPICH2, platform MPI, Intel MPI en alle RDMA-werk woorden (Remote Direct Memory Access). Zie voor meer informatie [instellen Message Passing Interface voor HPC](setup-mpi.md).
+De HB- en HC-serie ondersteunen bijna alle MPI-typen en -versies. Enkele van de meest voorkomende ondersteunde MPI-typen zijn: OpenMPI, MVAPICH2, Platform MPI, Intel MPI en alle RDMA-bewerkingen (Remote Direct Memory Access). Zie [Message Passing Interface instellen voor HPC](setup-mpi.md) voor meer informatie.
 
 ### <a name="rdma-and-infiniband"></a>RDMA en InfiniBand
 
-De RDMA-interface is standaard op Vm's uit de HB-serie en HC-serie. RDMA-compatibele instanties communiceren via een InfiniBand-netwerk, op uitgebreide gegevens tarieven (EDR) voor virtuele machines uit de HB-serie en HC-serie. RDMA-compatibele instanties kunnen de schaal baarheid en prestaties van sommige MPI-toepassingen verhogen.
+De RDMA-interface is de standaardinterface op VM's uit de HB-serie en HC-serie. Voor RDMA geschikte instanties communiceren via een InfiniBand-netwerk, met hoge datasnelheden (EDR) voor VM's uit de HB- en HC-serie. Voor RDMA geschikte instanties kunnen de schaalbaarheid en prestaties van sommige MPI-toepassingen verhogen.
 
-De InfiniBand-configuratie die virtuele machines uit de HB-serie en HC-serie ondersteunt, is niet-blokkerende Fat-structuren met een ontwerp met een lage diameter voor consistente RDMA-prestaties.
+De InfiniBand-configuratie die VM's uit de HB- en HC-serie ondersteunt, bestaat uit niet-blokkerende FAT-structuren met een ontwerp met een lage diameter voor consistente RDMA-prestaties.
 
-Zie [InfiniBand inschakelen](enable-infiniband.md) voor meer informatie over het instellen van Infiniband op uw virtuele machines uit de HB-of HC-serie.
+Zie [InfiniBand inschakelen](enable-infiniband.md) voor meer informatie over het instellen van InfiniBand op uw virtuele machines uit de HB- of HC-serie.
 
 ## <a name="get-started"></a>Aan de slag
 
-Bepaal eerst welke H-serie-VM u wilt gebruiken. Zie overzicht van de [HB-serie](hb-series-overview.md) en [het HC-serie-overzicht](hc-series-overview.md)voor meer informatie over geoptimaliseerde HPC-vm's. Zie [High Performance Compute VM sizes](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)voor specificaties.
+Bepaal eerst welke H-serie-VM u wilt gebruiken. Zie [Overzicht van de HB-serie](hb-series-overview.md) en [Overzicht van de HC-serie](hc-series-overview.md) voor meer informatie over voor HPC geoptimaliseerde VM's. Zie [High Performance Compute VM-grootten](../../sizes-hpc.md).
 
-Wanneer u een virtuele machine voor uw toepassing hebt geselecteerd en gemaakt, moet u deze configureren door middel van InfiniBand. Zie [Enable InfiniBand](enable-infiniband.md)voor meer informatie over het inschakelen van Infiniband op virtuele Windows-en Linux-machines.
+Zodra u een VM voor uw toepassing hebt geselecteerd en gemaakt, moet u deze configureren door InfiniBand in te schakelen. Zie [InfiniBand inschakelen](enable-infiniband.md) voor meer informatie over het inschakelen van InfiniBand op virtuele Windows- en Linux-machines.
 
-Een essentieel onderdeel van HPC-workloads is MPI. HB-Series en HC-serie ondersteunen bijna alle MPI-typen en-versies. Zie voor meer informatie [instellen Message Passing Interface voor HPC](setup-mpi.md).
+Een essentieel onderdeel van HPC-workloads is MPI. De HB- en HC-serie ondersteunen bijna alle MPI-typen en -versies. Zie [Message Passing Interface instellen voor HPC](setup-mpi.md) voor meer informatie.
 
-Nadat u uw VM-serie hebt gekozen, stelt u Infiniband en MPI in, u kunt nu beginnen met het bouwen van uw HPC-workloads.
+Zodra u uw VM-serie hebt gekozen en Infiniband en MPI hebt ingesteld, kunt u beginnen met het bouwen van uw HPC-workloads.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk het [overzicht van de HB-serie](hb-series-overview.md) en het [HC-serie-overzicht](hc-series-overview.md) voor meer informatie over belang rijke verschillen en specificaties.
+- Bekijk het [Overzicht van de HB-serie](hb-series-overview.md) en [Overzicht van de HC-serie](hc-series-overview.md) voor meer informatie over belangrijke verschillen en specificaties.
 
-- Zie [High Performance Computing (HPC) in azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)voor een hoger niveau, de architectuur weergave voor het uitvoeren van HPC-workloads.
+- Zie [High Performance Computing (HPC) op Azure](/azure/architecture/topics/high-performance-computing/) voor een gedetailleerdere architectuurweergave van HPC-workloads die worden uitgevoerd.

@@ -3,23 +3,20 @@ title: 'Quickstart: Azure Blob-opslagbibliotheek v12 - .NET'
 description: In deze quickstart leert u hoe u de Azure Blob Storage-clientbibliotheek versie 12 voor .NET kunt gebruiken om een container en een blob-in-blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d1a16da5582e874cecc27443ff62878349c24575
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711864"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424185"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Quickstart: Azure Blob Storage-clientbibliotheek v12 voor .NET
 
 Aan de slag met de Azure Blob Storage-clientbibliotheek v12 voor .NET. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
-
-> [!NOTE]
-> Om aan de slag te gaan met de vorige SDK-versie, raadpleegt u [Quickstart: Azure Blob Storage-clientbibliotheek voor .NET](storage-quickstart-blobs-dotnet-legacy.md).
 
 Gebruik de Azure Blob Storage-clientbibliotheek v12 voor .NET voor het volgende:
 
@@ -29,7 +26,12 @@ Gebruik de Azure Blob Storage-clientbibliotheek v12 voor .NET voor het volgende:
 * De blob downloaden op uw lokale computer
 * Een container verwijderen
 
-[API-referentiedocumentatie](/dotnet/api/azure.storage.blobs) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [Samples](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Aanvullende bronnen:
+
+* [API-referentiedocumentatie](/dotnet/api/azure.storage.blobs)
+* [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [Voorbeelden](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -228,9 +230,9 @@ Voeg deze code toe aan het einde van de `Main`-methode:
 
 ```csharp
 // Download the blob to a local file
-// Append the string "DOWNLOAD" before the .txt extension 
+// Append the string "DOWNLOADED" before the .txt extension 
 // so you can compare the files in the data directory
-string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
+string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOADED.txt");
 
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 

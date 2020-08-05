@@ -3,12 +3,12 @@ title: 'Quickstart: Blob Storage-gebeurtenissen verzenden naar een webeindpunt â
 description: 'Quickstart: Gebruik Azure Event Grid en Azure Portal om een Blob-opslagaccount te maken en u aan te melden voor de gebeurtenissen ervan. De gebeurtenissen naar een webhook verzenden.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103632"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421600"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Quickstart: Blob Storage-gebeurtenissen routeren naar een webeindpunt met Azure Portal
 
@@ -50,7 +50,7 @@ Voordat u zich kunt abonneren op gebeurtenissen voor de Blob-opslag, moet u het 
 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. Voer op de pagina **Aangepaste implementatie** de volgende stappen uit: 
     1. Selecteer voor **Resourcegroep** de resourcegroep die u hebt gemaakt toen u het opslagaccount maakte. Het is voor u eenvoudiger om op te schonen door de resourcegroep te verwijderen wanneer u klaar bent met de zelfstudie.  
     2. Voer in het vak **Sitenaam** een naam in voor de web-app.

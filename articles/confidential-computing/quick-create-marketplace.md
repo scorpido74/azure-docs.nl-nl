@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een virtuele machine voor Azure-computers met de Marketplace maken'
-description: Ga aan de slag met uw implementaties door te leren hoe u snel een computer met een vertrouwelijke computing maakt met Marketplace.
+title: 'Quickstart: een Azure VM met Confidential Computing maken met Marketplace'
+description: Ga aan de slag met uw implementaties door te leren hoe u snel een virtuele machine met Confidential Computing kunt maken met Marketplace.
 author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
@@ -8,96 +8,96 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 62ee8ddb03c00ba7d6ae495ee360c708b00c615c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d892d04eddb572ab644693503e454e9f00e0b39c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208632"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281086"
 ---
-# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Snelstartgids: een Azure vertrouwelijk computing-VM implementeren in Marketplace
+# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Quickstart: een VM met Azure Confidential Computing implementeren in de Marketplace
 
-Ga aan de slag met Azure vertrouwelijk computing door Azure Marketplace te gebruiken voor het maken van een virtuele machine (VM) die wordt ondersteund door Intel SGX. Vervolgens installeert u de open enclave Software Development Kit (SDK) om uw ontwikkel omgeving in te stellen. 
+Ga aan de slag met Azure Confidential Computing met behulp van Azure Marketplace om een virtuele machine (VM) te maken die wordt ondersteund door Intel SGX. Vervolgens installeert u de Open Enclave Software Development Kit (SDK) om uw ontwikkelomgeving in te stellen. 
 
-Deze zelf studie wordt aanbevolen als u snel een virtuele machine voor vertrouwelijke computing wilt implementeren. De virtuele machines worden uitgevoerd op speciale hardware en vereisen dat specifieke configuratie-ingangen worden uitgevoerd zoals bedoeld. De Marketplace-aanbieding die in deze Quick Start wordt beschreven, maakt het gemakkelijker om te implementeren door gebruikers invoer te beperken.
+Deze zelfstudie wordt aanbevolen als u snel een virtuele machine voor confidential computing wilt implementeren. De VM's worden uitgevoerd op speciale hardware en vereisen specifieke configuratie-invoer om op de juist wijze te kunnen worden uitgevoerd. De Marketplace-aanbieding die in deze quickstart wordt beschreven, maakt het gemakkelijker om te implementeren door gebruikersinvoer te beperken.
 
-Als u geïnteresseerd bent in de implementatie van een computer met een vertrouwelijke Compute-machine met een meer aangepaste configuratie, volgt u de stappen voor de implementatie van de [Azure Portal vertrouwelijk Compute virtual machine](quick-create-portal.md).
+Als u geïnteresseerd bent in het implementeren van een VM met confidential computing met een aangepaste configuratie, volgt u de [stappen voor het implementeren van een VM met confidential computing in Azure Portal](quick-create-portal.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) voordat u begint.
 
 > [!NOTE]
-> Accounts voor gratis proef versies hebben geen toegang tot de virtuele machines die in deze zelf studie worden gebruikt. Voer een upgrade uit naar een abonnement met betalen per gebruik.
+> Accounts voor gratis proefversies hebben geen toegang tot de virtuele machines die in deze zelfstudie worden gebruikt. U moet upgraden naar een abonnement met betalen per gebruik.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Typ bovenaan **Azure vertrouwelijk computing** in de zoek balk.
+1. Typ bovenaan **Azure confidential computing** in de zoekbalk.
 
-1. Selecteer **Azure vertrouwelijk Computing (virtuele machine)** in het gedeelte **Marketplace** . 
+1. Selecteer **Azure confidential computing (Virtual Machine)** in de sectie **Marketplace**. 
 
     ![Marketplace selecteren](media/quick-create-marketplace/portal-search-marketplace.png)    
 
-1. Selecteer op de pagina start van de Azure-onderrekender **maken**.
+1. Selecteer op de landingspagina voor implementatie van Azure confidential computing de optie **Maken**.
  
 
 ## <a name="configure-your-virtual-machine"></a>Uw virtuele machine configureren
 
-1. Selecteer in het tabblad **Basisinformatie** uw **Abonnement** en **Resourcegroep**. De resource groep moet leeg zijn om een virtuele machine uit deze sjabloon te kunnen implementeren.
+1. Selecteer in het tabblad **Basisinformatie** uw **Abonnement** en **Resourcegroep**. De resourcegroep moet leeg zijn om een virtuele machine uit deze sjabloon te kunnen implementeren.
 
 1. Typ of selecteer de volgende waarden:
 
-   * **Regio**: Selecteer de Azure-regio die het meest geschikt is voor u.
+   * **Regio**: selecteer de Azure-regio die het beste bij u past.
 
         > [!NOTE]
-        > Virtuele machines met een vertrouwelijke reken kracht worden alleen uitgevoerd op gespecialiseerde hardware die beschikbaar is in bepaalde regio's. Zie [beschik bare regio's](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)voor de meest recente beschik bare regio's voor vm's uit de DCsv2-serie.
+        > Virtuele machines met Confidential Computing kunnen alleen worden uitgevoerd op gespecialiseerde hardware die beschikbaar is in bepaalde regio's. Zie [beschikbare regio's](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) voor de meest recente beschikbare regio's voor VM's uit de DCsv2-serie.
     
-    * **Afbeelding kiezen**: Selecteer een wille keurige afbeelding. Als u deze specifieke zelf studie wilt volt ooien, selecteert u Ubuntu 18,04 (Gen 2). Anders wordt u omgeleid aan de hand van de onderstaande stappen. 
+    * **Installatiekopie kiezen**: Selecteer een van de installatiekopieën. Als u deze specifieke zelfstudie wilt voltooien, selecteert u Ubuntu 18.04 (Gen 2). Anders wordt u omgeleid aan de hand van de onderstaande stappen. 
 
-    * De naam van de **virtuele machine**, voer een naam in voor de nieuwe VM.
+    * Voer een naam in voor uw nieuwe VM bij **Naam virtuele machine**.
 
-    * **Verificatie type**: Selecteer de **open bare SSH-sleutel** als u een virtuele Linux-machine maakt. 
+    * **Verificatietype**: Selecteer **Openbare SSH-sleutel** als u een virtuele Linux-machine maakt. 
 
          > [!NOTE]
-         > U hebt de keuze om voor de verificatie een openbare SSH-sleutel of een wachtwoord te gebruiken. SSH is veiliger. Zie [SSH-sleutels maken in Linux en Mac voor virtuele Linux-machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys) voor instructies over het maken van een SSH-sleutel.
+         > U hebt de keuze om voor de verificatie een openbare SSH-sleutel of een wachtwoord te gebruiken. SSH is veiliger. Zie [SSH-sleutels maken in Linux en Mac voor virtuele Linux-machines in Azure](../virtual-machines/linux/mac-create-ssh-keys.md) voor instructies over het maken van een SSH-sleutel.
 
-    * **Gebruikers naam**: Voer de naam van de beheerder voor de virtuele machine in.
+    * **Gebruikersnaam**: voer de naam van de beheerder voor de VM in.
 
-    * **Open bare SSH-sleutel**: Voer, indien van toepassing, de open bare RSA-sleutel in.
+    * **Openbare SSH-sleutel**: Voer, indien van toepassing, uw openbare RSA-sleutel in.
     
-    * **Wacht woord**: Voer uw wacht woord in voor verificatie, indien van toepassing.
+    * **Wachtwoord**: Voer, indien van toepassing, uw wachtwoord voor verificatie in.
  
-1. Selecteer de knop **volgende: virtuele-machine instellingen** onder aan het scherm.
+1. Selecteer de knop **Volgende: De knop voor de instellingen van de virtuele machine** onderaan het scherm.
 
     > [!IMPORTANT]
-    > Wacht tot de pagina is bijgewerkt. Het is *niet* mogelijk dat er een bericht wordt weer gegeven met de tekst "er zijn DCsv2 vm's in een beperkt aantal regio's beschikbaar." Als dit bericht blijft bestaan, gaat u terug naar de vorige pagina en selecteert u een beschik bare DCsv2-serie.
+    > Wacht tot de pagina is bijgewerkt. U moet *geen* bericht te zien krijgen met de tekst "Confidential Computing DCsv2-serie VM's zijn beschikbaar in een beperkt aantal regio's". Als dit bericht opnieuw wordt weergegeven, keert u terug naar de vorige pagina en selecteert u een beschikbare regio voor een DCsv2-serie.
 
-1. Voor **wijzigings grootte**kiest u een virtuele machine met vertrouwelijke reken mogelijkheden in de grootte kiezer. 
+1. Kies voor **Grootte wijzigen** een VM met confidential computing-mogelijkheden in de groottekiezer. 
 
     > [!TIP]
-    > U ziet de grootten **DC1s_v2**, **DC2s_v2**, **DC4s_V2**en **DC8_v2**. Dit zijn de enige grootte van virtuele machines die op dit moment vertrouwelijke computing ondersteunen. [Meer informatie](virtual-machine-solutions.md).
+    > U ziet grootten **DC1s_v2**, **DC2s_v2**, **DC4s_V2** en **DC8_v2**. Dit zijn de enige VM-grootten die op dit moment Confidential Computing ondersteunen. [Meer informatie](virtual-machine-solutions.md).
 
-1. Selecteer een schijf type voor het **schijf type van het besturings systeem**.
+1. Selecteer voor **Schijftype van besturingssysteem** een schijftype.
 
-1. Maak voor **Virtual Network**een nieuw item of kies uit een bestaande resource.
+1. Voor **Virtueel netwerk** maakt u een nieuw item of kiest u een bestaande resource.
 
-1. Maak voor **subnet**een nieuw item of kies uit een bestaande resource.
+1. Voor **Subnet** maakt u een nieuw item of kiest u een bestaande resource.
 
-1. Kies voor **open bare binnenkomende poorten selecteren** **SSH (Linux)/RDP (Windows)**. In deze Quick start is deze stap nodig om verbinding te maken met de virtuele machine en de open enclave SDK-configuratie te volt ooien. 
+1. Kies voor **Openbare binnenkomende poorten selecteren** de optie **SSH(Linux)/RDP(Windows)** . Deze stap is nodig in deze quickstart om verbinding te maken met de VM en de Open Enclave SDK-configuratie te voltooien. 
 
-1. Voor **Diagnostische gegevens over opstarten**, moet u deze uitschakelen voor deze Quick Start. 
+1. Laat **Diagnostische gegevens over opstarten** uitgeschakeld voor deze quickstart. 
 
-1. Selecteer **controleren + maken**.
+1. Selecteer **Controleren + maken**.
 
 1. Selecteer in het deelvenster **Controleren + maken** de optie **Maken**.
 
 > [!NOTE]
-> Ga verder naar de volgende sectie en ga door met deze zelf studie als u een virtuele Linux-machine hebt geïmplementeerd. Als u een virtuele Windows-machine hebt geïmplementeerd, [volgt u deze stappen om verbinding te maken met uw Windows-VM](../virtual-machines/windows/connect-logon.md) en vervolgens [de OE SDK op Windows te installeren](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md).
+> Ga verder naar de volgende sectie en ga door met deze zelfstudie als u een virtuele Linux-machine hebt geïmplementeerd. Als u een virtuele Windows-machine hebt geïmplementeerd, [volgt u deze stappen om verbinding te maken met uw Windows-VM](../virtual-machines/windows/connect-logon.md). U kunt dan vervolgens [de OE SDK installeren op Windows](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md).
 
 
-## <a name="connect-to-the-linux-vm"></a> Verbinding maken met de virtuele Linux-machine
+## <a name="connect-to-the-linux-vm"></a>Verbinding maken met de virtuele Linux-machine
 
 Als u al een BASH-shell gebruikt, moet u verbinding maken met de virtuele Azure-machine via de opdracht **ssh**. In de volgende opdracht vervangt u de VM-gebruikersnaam en het IP-adres om verbinding te maken met uw virtuele Linux-machine.
 
@@ -105,7 +105,7 @@ Als u al een BASH-shell gebruikt, moet u verbinding maken met de virtuele Azure-
 ssh azureadmin@40.55.55.555
 ```
 
-U vindt het open bare IP-adres van uw virtuele machine in de Azure Portal, onder de sectie Overzicht van uw virtuele machines.
+U vindt het openbare IP-adres van uw virtuele machine in Azure Portal, onder het gedeelte Overzicht van uw virtuele machine.
 
 ![IP-adres in Azure Portal](media/quick-create-portal/public-ip-virtual-machine.png)
 
@@ -124,13 +124,13 @@ Zie [Een virtuele Linux-machine in Azure maken met behulp van de portal](../virt
 > [!NOTE]
 > Als er een PuTTY-beveiligingswaarschuwing wordt weergegeven dat de hostsleutel van de server niet in het register wordt opgeslagen, kunt u uit de volgende opties kiezen. Als u deze host vertrouwt, selecteert u **Ja** om de sleutel aan de PuTTy-cache toe te voegen en door te gaan met verbinding maken. Als u eenmalig verbinding wilt maken, zonder de sleutel aan de cache toe te voegen, selecteert u **Nee**. Als u deze host niet vertrouwt, selecteert u **Annuleren** om de verbinding te verbreken.
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>De open enclave SDK (OE SDK) installeren<a id="Install"></a>
+## <a name="install-the-open-enclave-sdk-oe-sdk"></a>De Open Enclave SDK (OE SDK) installeren <a id="Install"></a>
 
-Volg de stapsgewijze instructies voor het installeren van de [OE SDK](https://github.com/openenclave/openenclave) op uw virtuele machine met de DCsv2-serie waarop een Ubuntu 18,04 LTS gen 2-installatie kopie wordt uitgevoerd. 
+Volg de stapsgewijze instructies om de [OE SDK](https://github.com/openenclave/openenclave) te installeren op uw virtuele machine uit de DCsv2-serie waarop een Ubuntu 18.04 LTS Gen 2-installatiekopie wordt uitgevoerd. 
 
-Als uw virtuele machine wordt uitgevoerd op Ubuntu 16,04 LTS gen 2, moet u de [installatie-instructies voor Ubuntu 16,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)volgen. 
+Als uw virtuele machine wordt uitgevoerd op Ubuntu 16.04 LTS Gen 2, volgt u de [installatie-instructies voor Ubuntu 16.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md). 
 
-#### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1. Configureer de Intel-en micro soft APT-opslag plaatsen
+#### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1. De Intel- en Microsoft APT-opslagplaatsen configureren
 
 ```bash
 echo 'deb [arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/intel-sgx.list
@@ -143,7 +143,7 @@ echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic m
 wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 ```
 
-#### <a name="2-install-the-intel-sgx-dcap-driver"></a>2. Installeer het Intel SGX DCAP-stuur programma
+#### <a name="2-install-the-intel-sgx-dcap-driver"></a>2. Het Intel SGX DCAP-stuurprogramma installeren
 
 ```bash
 sudo apt update
@@ -154,34 +154,34 @@ sudo ./sgx_linux_x64_driver.bin
 ```
 
 > [!WARNING]
-> Gebruik het meest recente Intel SGX DCAP-stuur programma van [de SGX-site van Intel](https://01.org/intel-software-guard-extensions/downloads).
+> Gebruik het meest recente Intel SGX DCAP-stuurprogramma van [de SGX-site](https://01.org/intel-software-guard-extensions/downloads) van Intel.
 
-#### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3. Installeer de Intel-en open enclave-pakketten en-afhankelijkheden
+#### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3. Installeer de Intel- en Open Enclave-pakketten en -afhankelijkheden
 
 ```bash
 sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
 ```
 
 > [!NOTE] 
-> Met deze stap wordt ook het [AZ-dcap-client-](https://github.com/microsoft/azure-dcap-client) pakket geïnstalleerd dat nodig is voor het uitvoeren van externe Attestation in Azure.
+> Met deze stap wordt ook het pakket [az-dcap-client](https://github.com/microsoft/azure-dcap-client) geïnstalleerd dat nodig is om externe attestation uit te voeren in Azure.
 
-#### <a name="4-verify-the-open-enclave-sdk-install"></a>4. **Controleer de open ENCLAVE SDK-installatie**
+#### <a name="4-verify-the-open-enclave-sdk-install"></a>4. **De Open Enclave SDK-installatie verifiëren**
 
-Zie [de open ENCLAVE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/Linux_using_oe_sdk.md) op github gebruiken voor het controleren en gebruiken van de geïnstalleerde SDK.
+Zie [De Open Enclave SDK gebruiken](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/Linux_using_oe_sdk.md) op GitHub om de geïnstalleerde SDK te verifiëren en gebruiken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u de VM niet meer nodig hebt, kunt u de resourcegroep, de machine zelf én alle gerelateerde resources verwijderen. 
 
-Selecteer de resource groep voor de virtuele machine en selecteer vervolgens **verwijderen**. Bevestig de naam van de resource groep om het verwijderen van de resources te volt ooien.
+Selecteer de resourcegroep voor de virtuele machine en klik op **Verwijderen**. Bevestig de naam van de resourcegroep om het verwijderen van de resources te voltooien.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een computer voor vertrouwelijke computing geïmplementeerd en de open enclave-SDK geïnstalleerd. Zie [oplossingen op virtual machines](virtual-machine-solutions.md)voor meer informatie over virtuele machines met vertrouwelijke computing in Azure. 
+In deze quickstart hebt u een VM met Confidential Computing geïmplementeerd en hebt u de Open Enclave SDK geïnstalleerd. Zie [Oplossingen op Virtual Machines](virtual-machine-solutions.md) voor meer informatie over virtuele machines met Confidential Computing in Azure. 
 
-Als u een virtuele Windows-machine hebt geïmplementeerd, leert u hoe u toepassingen kunt bouwen met de [OE SDK-voor beelden voor Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) op github. 
+Als u een virtuele Windows-machine hebt geïmplementeerd, leert u hoe u toepassingen kunt bouwen met de [OE SDK-voorbeelden voor Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) op GitHub. 
 
-Ontdek hoe u vertrouwelijke computing toepassingen kunt bouwen op Linux door door te gaan met de open enclave SDK Linux-voor beelden op GitHub. 
+Ga door naar de Open Enclave SDK-voorbeelden voor Linux op GitHub en ontdek hoe u toepassingen met Confidential Computing kunt bouwen op Linux. 
 
 > [!div class="nextstepaction"]
-> [Open enclave SDK-voor beelden bouwen op Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Open Enclave SDK-voorbeelden bouwen op Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)

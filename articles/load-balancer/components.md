@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205411"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421770"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-componenten
 
@@ -75,7 +75,7 @@ Een taakverdelingsregel wordt gebruikt om te bepalen hoe inkomend verkeer wordt 
 Gebruik bijvoorbeeld een taakverdelingsregel voor poort 80 om verkeer door te sturen van uw frontend-IP-adres naar poort 80 van uw back-end-exemplaren.
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Taakverdelingsregels">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Taakverdelingsregels">
 </p>
 
 *Afbeelding: Taakverdelingsregels*
@@ -97,7 +97,7 @@ Er wordt per stroom een beslissing voor taakverdeling gemaakt. Deze actie is geb
 De taakverdelingsregels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge beschikbaarheid en schaal aanpassen voor NVA's (Network Virtual Appliance) in virtuele netwerken. De functie kan helpen wanneer over een groot aantal poorten taakverdeling moet worden uitgevoerd.
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA-poortregels">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="HA-poortregels">
 </p>
 
 *Afbeelding: HA-poortregels*
@@ -111,7 +111,7 @@ Via een inkomende NAT-regel wordt binnenkomend verkeer naar een combinatie van e
 Als u bijvoorbeeld wilt dat Remote Desktop Protocol (RDP) of SSH-sessies (Secure Shell) VM-instanties in een back-end-pool scheidt. Meerdere interne eindpunten kunnen worden toegewezen aan de verschillende poorten op hetzelfde front-end-IP-adres. De front-end-IP-adressen kunnen worden gebruikt voor het extern beheren van uw VM's zonder een extra jump box.
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Inkomende NAT-regels">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Inkomende NAT-regels">
 </p>
 
 *Afbeelding: Inkomende NAT-regels*

@@ -3,12 +3,12 @@ title: 'Quickstart: Aangepaste gebeurtenissen verzenden naar het webeindpunt - E
 description: 'Quickstart: Gebruik Azure Event Grid en Azure Portal om een aangepast onderwerp te publiceren en u op gebeurtenissen voor dat onderwerp te abonneren. De gebeurtenissen worden verwerkt door een web-app.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115227"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421039"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Quickstart: Aangepaste gebeurtenissen routeren naar het webeindpunt met behulp van Azure Portal en Event Grid
 
@@ -44,7 +44,8 @@ Een Event Grid-onderwerp biedt een door de gebruiker gedefinieerd eindpunt waaro
 5. Typ na het voltooien van de implementatie **Event Grid-onderwerpen** in de zoekbalk en selecteer **Event Grid-onderwerpen** in de vervolgkeuzelijst zoals u dat eerder hebt gedaan. 
 6. Selecteer in de lijst het onderwerp dat u hebt gemaakt. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Selecteer uw onderwerp in de lijst":::  
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Selecteer uw onderwerp in de lijst":::
+
 7. U ziet de pagina **Event Grid-onderwerp** voor uw onderwerp. Laat deze pagina geopend. U gebruikt deze later in de quickstart. 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Startpagina van Event Grid-onderwerp":::
@@ -54,7 +55,7 @@ Voordat u een abonnement voor het aangepaste onderwerp maakt, moet u een eindpun
 
 1. Selecteer **Implementeren in Azure** op de artikelpagina om de oplossing voor uw abonnement te implementeren. Geef in Azure Portal waarden op voor de parameters.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 1. De implementatie kan enkele minuten duren. Controleer of uw web-app wordt uitgevoerd nadat de implementatie is voltooid. Navigeer in een webbrowser naar: `https://<your-site-name>.azurewebsites.net`
 
     Controleer het foutbericht als de implementatie mislukt. Mogelijk wordt dit veroorzaakt doordat de naam van de website al wordt gebruikt. Implementeer de sjabloon opnieuw en kies een andere naam voor de site. 

@@ -8,12 +8,13 @@ ms.topic: sample
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: deb0ca935cd01a0d86eea007711f65e439d4da00
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61330595"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421974"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Een app bouwen met behulp van Node.js en de API voor MongoDB van Azure Cosmos DB 
 > [!div class="op_single_selector"]
@@ -115,7 +116,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
     });
     ```
     
-    **Optioneel**: als u het **MongoDB Node.js 2.2-stuurprogramma** gebruikt, vervangt u het volgende codefragment:
+    **Optioneel**: Als u het **MongoDB Node.js 2.2-stuurprogramma** gebruikt, vervangt u het volgende codefragment:
 
     Oorspronkelijk:
 
@@ -157,7 +158,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
     > [!IMPORTANT]
     > Voor het **MongoDB Node.js 3.0-stuurprogramma** is codering vereist van speciale tekens in het Cosmos DB-wachtwoord. Zorg ervoor dat u de tekens '=' codeert als %3D
     >
-    > Voorbeeld: het wachtwoord *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* wordt gecodeerd naar *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*
+    > Voorbeeld: Het wachtwoord *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* wordt gecodeerd naar *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*
     >
     > Voor het **MongoDB Node.js 2.2-stuurprogramma** is geen codering vereist van speciale tekens in het Cosmos DB-wachtwoord.
     >
