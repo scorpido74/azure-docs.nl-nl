@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252433"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385773"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Quickstart: Een budget opstellen met een ARM-sjabloon
 
@@ -29,13 +29,31 @@ Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van A
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Het ARM-sjabloon ondersteunt alleen Azure-abonnementen voor Enterprise Agreements (EA). Andere typen abonnementen worden niet ondersteund door de sjabloon.
-
-Als u budgetten wilt maken en beheren, moet u de machtiging Inzender hebben. U kunt afzonderlijke budgetten voor EA-abonnementen en resourcegroepen maken. U kunt echter geen budgetten voor EA-factureringsrekeningen maken. Voor Azure EA-abonnementen moet u leestoegang hebben om budgetten weer te geven.
-
-Nadat een budget is gemaakt, hebt u minimaal leestoegang voor uw Azure-account nodig als u budgetten wilt weergeven.
-
 Als u een nieuw abonnement hebt, kunt u niet direct een budget maken of andere Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
+
+Budgetten worden ondersteund voor de volgende Azure-accounttypen en -bereiken:
+
+- Bereiken voor toegangsbeheer op basis van rollen in Azure
+    - Beheergroepen
+    - Abonnement
+- Enterprise Agreement-bereiken
+    - Factureringsaccount
+    - Afdeling
+    - Inschrijvingsaccount
+- Afzonderlijke overeenkomsten
+    - Factureringsaccount
+- Microsoft-klantovereenkomst-bereiken
+    - Factureringsaccount
+    - Factureringsprofiel
+    - Factuursectie
+    - Klant
+- AWS-bereiken
+    - Extern account
+    - Extern abonnement
+
+Als u budgetten wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
+
+Voor Azure EA-abonnementen moet u leestoegang hebben om budgetten weer te geven. Als u budgetten wilt maken en beheren, moet u de machtiging Inzender hebben.
 
 In abonnementen worden de volgende Azure-machtigingen, of bereiken, ondersteund voor budgetten voor gebruikers en groepen. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 
@@ -49,7 +67,7 @@ Zie [Toegang tot gegevens van Cost Management toewijzen](assign-access-acm-data.
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/create-budget).
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 Er is één Azure-resource gedefinieerd in de sjabloon:
 
@@ -63,27 +81,29 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
 
 2. Typ of selecteer de volgende waarden.
 
-   [![Resource Manager-sjabloon, budget maken, portal implementeren](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager-sjabloon, budget maken, portal implementeren]" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * **Abonnement**: selecteer een Azure-abonnement.
-    * **Resourcegroep**: selecteer **Nieuwe maken**, geef een unieke naam op voor de nieuwe resourcegroep en klik vervolgens op **OK**, of selecteer een bestaande resourcegroep.
-    * **Locatie**: selecteer een locatie. Bijvoorbeeld **VS - centraal**.
+    * **Resourcegroep**: selecteer indien mogelijk een bestaande resourcegroep of **maak een nieuwe resourcegroep**.
+    * **Regio**: selecteer een Azure-regio. Bijvoorbeeld **VS - centraal**.
     * **Budgetnaam**: voer een naam in voor het budget. Deze moet uniek zijn binnen de resourcegroep. Alleen alfanumerieke tekens, onderstrepingstekens en streepjes zijn toegestaan.
-    * **Hoeveelheid**: voer de totale kosten of het gebruik in dat met behulp van het budget moet worden bijgehouden.
-    * **Budgetcategorie**: selecteer de categorie van het budget (of het budget **Kosten** of **Gebruik** bijhoudt).
+    * **Hoeveelheid**: voer de totale kosten in die met behulp van het budget moet worden bijgehouden.
     * **Tijdsinterval**: voer de periode in die het budget dekt. Toegestane waarden zijn maandelijks, per kwartaal of per jaar. Het budget wordt aan het einde van de tijdsinterval opnieuw ingesteld.
     * **Begindatum**: voer de begindatum in, uitgaande van de eerste dag van de maand, in de notatie JJJJ-MM-DD. Een toekomstige begindatum mag niet meer dan drie maanden in de toekomstig liggen vanaf vandaag. U kunt een eerdere begindatum opgeven met de periode van de tijdsinterval.
-    * **Einddatum**: Geef de einddatum voor het budget op in de notatie JJJJ-MM-DD. Als dat niet is opgegeven, wordt dit standaard ingesteld op 10 jaar na de begindatum.
-    * **Operator**: selecteer een vergelijkingsoperator. Mogelijke waarden zijn EqualTo, GreaterThan en GreaterThanOrEqualTo.
-    * **Drempelwaarde**: voer een drempelwaarde in voor de melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
-    * **Contact-e-mails** voer een lijst met e-mailadressen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. De verwachte indeling is `["user1@domain.com","user2@domain.com"]`.
+    * **Einddatum**: Geef de einddatum voor het budget op in de notatie JJJJ-MM-DD. 
+    * **Eerste drempelwaarde**: voer een drempelwaarde in voor de eerste melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
+    * **Tweede drempelwaarde**: voer een drempelwaarde in voor de tweede melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
     * **Contactrollen**: voer een lijst met contactrollen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Standaardwaarden zijn Eigenaar, Inzender en Lezer. De verwachte indeling is `["Owner","Contributor","Reader"]`.
+    * **Contact-e-mails** voer een lijst met e-mailadressen in waarnaar de budgetmelding moet worden verzonden wanneer een drempelwaarde wordt overschreden. De verwachte indeling is `["user1@domain.com","user2@domain.com"]`.
     * **Contactgroepen**: voer een lijst met resource-id's van actiegroepen in als volledige resource-URI's waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Dit veld accepteert een matrix van tekenreeksen. De verwachte indeling is `["action group resource ID1","action group resource ID2"]`. Als u geen actiegroepen wilt gebruiken, voert u `[]` in.
-    * **Resourcefilter**: voer een lijst met filters voor resources in. De verwachte indeling is `["Resource Filter Name1","Resource Filter Name2"]`. Als u geen filter wilt toepassen, voert u `[]` in. Als u een resourcefilter invoert, moet u ook waarden voor **meterfilters** invoeren.
-    * **Meterfilter**: voer een lijst met filters voor meters in. Dit is verplicht voor budgetten met de budgetcategorie **Gebruik**. De verwachte indeling is `["Meter Filter Name1","Meter Filter Name2"]`. Als u geen **resourcefilter** hebt ingevoerd, voert u `[]` in.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.
+    * **Filterwaarden van resourcegroep:** voer een lijst met namen van resourcegroepen in om te filteren. De verwachte indeling is `["Resource Group Name1","Resource Group Name2"]`. Als u geen filter wilt toepassen, voert u `[]` in. 
+    * **De waarden van de metercategoriefilter:** voer een lijst met Azure-servicemetercategorieën in. De verwachte indeling is `["Meter Category1","Meter Category2"]`. Als u geen filter wilt toepassen, voert u `[]` in.
+   
+3. Voer een van de volgende acties uit, afhankelijk van het type Azure-abonnement:
+   - Selecteer **Controleren + maken**.
+   - Controleer de voorwaarden en schakel het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in en selecteer **Aankoop**.
 
-3. Selecteer **Aankoop**. Wanneer het budget correct is geïmplementeerd, ontvangt u een melding:
+4. Als u **Beoordelen en maken** hebt geselecteerd, wordt uw sjabloon gevalideerd. Selecteer **Maken**.  
 
    ![Resource Manager-sjabloon, budget, portalmelding implementeren](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

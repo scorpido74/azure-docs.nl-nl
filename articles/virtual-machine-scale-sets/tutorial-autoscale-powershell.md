@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011028"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een virtuele-machineschaalset automatisch schalen met Azure PowerShell
 
@@ -99,7 +99,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-autoscale-in"></a>Een regel maken voor automatisch inschalen
 In het weekend of 's avonds kan de vraag voor uw toepassing afnemen. Als deze afgenomen belasting consistent is gedurende een bepaalde periode, kunt u regels voor automatisch schalen configureren om het aantal VM-exemplaren in de schaalset te verlagen. Deze inschaalactie reduceert de kosten voor het uitvoeren van uw schaalset, aangezien u alleen het aantal exemplaren uitvoert dat vereist is om te voldoen aan de actuele vraag.
 
-We gaan nu met [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) een regel maken waarmee het aantal VM-exemplaren in een schaalset wordt verlaagd wanneer de gemiddelde CPU-belasting gedurende een periode van vijf minuten lager dan 30% is. Wanneer de regel wordt geactiveerd, wordt het aantal VM-exemplaren met één verlaagd. In het volgende voorbeeld wordt een object met de naam *myRuleScaleDown* gemaakt dat deze regel voor terugschalen bevat. De parameter *-MetricResourceId* gebruikt de variabelen die eerder zijn gedefinieerd voor de abonnements-id, de naam van een resourcegroep en de naam van de schaalset:
+We gaan nu met [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) een regel maken waarmee het aantal VM-exemplaren in een schaalset wordt verlaagd wanneer de gemiddelde CPU-belasting gedurende een periode van vijf minuten lager dan 30% is. Wanneer de regel wordt geactiveerd, wordt het aantal VM-exemplaren met een verlaagd. In het volgende voorbeeld wordt een object met de naam *myRuleScaledown* gemaakt dat deze regel voor omlaag schalen bevat. De parameter *-MetricResourceId* gebruikt de variabelen die eerder zijn gedefinieerd voor de abonnements-id, de naam van een resourcegroep en de naam van de schaalset:
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `

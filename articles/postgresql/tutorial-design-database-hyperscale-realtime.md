@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een real-time dash board ontwerpen-grootschalige (Citus)-Azure Database for PostgreSQL'
-description: In deze zelf studie ziet u hoe u gedistribueerde tabellen maakt, vult en doorzoekt op Azure Database for PostgreSQL grootschalige (Citus).
+title: 'Zelfstudie: Een realtime database ontwerpen - Hyperscale (Citus) - Azure Database for PostgreSQL'
+description: In deze zelfstudie ziet u hoe u gedistribueerde tabellen op Azure Database for PostgreSQL Hyperscale (Citus) maakt en invult en hoe u hier query's op uitvoert.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,33 +8,33 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76716325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387571"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelf studie: een real-time analyse dashboard ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus)
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelfstudie: Zelfstudie: een database met realtime analyses ontwerpen met behulp van Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In deze zelf studie gebruikt u Azure Database for PostgreSQL-grootschalige (Citus) voor meer informatie over het volgende:
+In deze zelfstudie gebruikt u Azure Database for PostgreSQL - Hyperscale (Citus) om te leren hoe u de volgende bewerkingen uitvoert:
 
 > [!div class="checklist"]
 > * Een Hyperscale (Citus)-servergroep maken
-> * Het hulp programma psql gebruiken om een schema te maken
-> * Shard-tabellen tussen knoop punten
+> * Het hulpprogramma psql gebruiken om een schema te maken
+> * Sharding toepassen op tabellen tussen knooppunten
 > * Voorbeeldgegevens genereren
 > * Rollups uitvoeren
 > * Query's uitvoeren op onbewerkte en geaggregeerde gegevens
-> * Verlopen gegevens
+> * Gegevens laten verlopen
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Het hulp programma psql gebruiken om een schema te maken
+## <a name="use-psql-utility-to-create-a-schema"></a>Het hulpprogramma psql gebruiken om een schema te maken
 
-Nadat u verbinding hebt gemaakt met de Azure Database for PostgreSQL-grootschalige (Citus) met behulp van psql, kunt u een aantal basis taken volt ooien. In deze zelf studie wordt uitgelegd hoe u verkeers gegevens opneemt vanuit Web Analytics en vervolgens de gegevens samenvoegt om in realtime Dash boards te bieden op basis van die gegevens.
+Zodra u verbinding hebt gemaakt met de Azure Database for PostgreSQL - Hyperscale (Citus) met behulp van psql, kunt u een aantal basistaken voltooien. In deze zelfstudie wordt uitgelegd hoe u verkeersgegevens opneemt vanuit Web Analytics en vervolgens de gegevens samenvoegt om dashboards in realtime te bieden op basis van die gegevens.
 
 We gaan een tabel maken waarin al onze onbewerkte webverkeersgegevens worden gebruikt. Voer de volgende opdrachten uit in de psql-terminal:
 
@@ -52,7 +52,7 @@ CREATE TABLE http_request (
 );
 ```
 
-U gaat ook een tabel maken waarin onze aggregaties per minuut worden bewaard, en een tabel die de positie van de laatste Rollup behoudt. Voer de volgende opdrachten in psql ook uit:
+U gaat ook een tabel maken waarin onze aggregaties per minuut worden bewaard, en een tabel die de positie van onze laatste rollup behoudt. Voer de volgende opdrachten ook in psql uit:
 
 ```sql
 CREATE TABLE http_request_1min (
@@ -76,26 +76,28 @@ CREATE TABLE latest_rollup (
 );
 ```
 
-U kunt de zojuist gemaakte tabellen nu bekijken in de lijst met tabellen met de volgende psql-opdracht:
+U kunt de zojuist gemaakte tabellen nu in de lijst met tabellen in psql zien met deze psql-opdracht:
 
 ```postgres
 \dt
 ```
 
-## <a name="shard-tables-across-nodes"></a>Shard-tabellen tussen knoop punten
+## <a name="shard-tables-across-nodes"></a>Sharding toepassen op tabellen tussen knooppunten
 
-In een grootschalige-implementatie worden tabel rijen op verschillende knoop punten opgeslagen op basis van de waarde van een door de gebruiker opgegeven kolom. Deze ' distributie kolom ' markeert hoe gegevens worden Shard tussen knoop punten.
+In een hyperscale-implementatie worden tabelrijen op verschillende knooppunten opgeslagen op basis van de waarde van een door de gebruiker opgegeven kolom. Deze 'distributiekolom' markeert hoe sharding op deze gegevens worden toegepast tussen knooppunten.
 
-Laten we de distributie kolom instellen op site\_-id, de Shard-sleutel. Voer in psql de volgende functies uit:
+We gaan de distributiekolom instellen als site\_id, de shardsleutel. Voer in psql deze functies uit:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
 SELECT create_distributed_table('http_request_1min', 'site_id');
 ```
 
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
+
 ## <a name="generate-sample-data"></a>Voorbeeldgegevens genereren
 
-Nu moet onze server groep gereed zijn om gegevens op te nemen. We kunnen het volgende lokaal uitvoeren vanuit onze `psql` verbinding om continu gegevens in te voegen.
+Nu moet onze servergroep gereed zijn om gegevens op te nemen. We kunnen het volgende lokaal uitvoeren vanaf onze verbinding `psql` om continu gegevens in te voegen.
 
 ```sql
 DO $$
@@ -122,18 +124,18 @@ DO $$
 END $$;
 ```
 
-De query voegt elke seconde ongeveer acht rijen in. De rijen worden op verschillende werk knooppunten opgeslagen, zoals wordt `site_id`aangegeven door de kolom distributie.
+De query voegt elke seconde ongeveer acht rijen in. De rijen worden op verschillende werkknooppunten opgeslagen, aangestuurd door het distributiekolom, `site_id`.
 
    > [!NOTE]
-   > Verlaat de query voor het genereren van gegevens en open een tweede psql-verbinding voor de resterende opdrachten in deze zelf studie.
+   > Laat de query voor het genereren van gegevens lopen en open een tweede psql-verbinding voor de resterende opdrachten in deze zelfstudie.
    >
 
 ## <a name="query"></a>Query’s uitvoeren
 
-Met de optie voor het hosten van grootschalige kunnen meerdere knoop punten gelijktijdig query's verwerken voor snelheid. De data base berekent bijvoorbeeld aggregaties zoals SUM en COUNT op worker-knoop punten en combineert de resultaten in een eind antwoord.
+Met de optie voor hyperscale hosten kunnen meerdere knooppunten gelijktijdig query's verwerken om het proces sneller te laten verlopen. De database berekent bijvoorbeeld aggregaties zoals SUM en COUNT op werkknooppunten en combineert de resultaten in een eindantwoord.
 
 Hier volgt een query voor het tellen van webaanvragen per minuut, samen met een aantal statistieken.
-Probeer het programma uit te voeren in psql en Bekijk de resultaten.
+Probeer de query in psql uit te voeren en bekijk de resultaten.
 
 ```sql
 SELECT
@@ -149,13 +151,13 @@ GROUP BY site_id, minute
 ORDER BY minute ASC;
 ```
 
-## <a name="rolling-up-data"></a>Gegevens inrollen
+## <a name="rolling-up-data"></a>Rollup van gegevens
 
 De vorige query werkt in de vroege stadia prima, maar de prestaties verslechteren naarmate uw gegevens worden geschaald. Zelfs bij gedistribueerde verwerking is het sneller om de gegevens vooraf te berekenen dan om deze herhaaldelijk opnieuw te berekenen.
 
-We kunnen het dash board snel blijven door de onbewerkte gegevens regel matig in een samengevoegde tabel te verdelen. U kunt experimenteren met de aggregatie duur. We hebben een samenvoegings tabel per minuut gebruikt, maar u kunt gegevens in plaats daarvan in vijf, 15 of 60 minuten afsplitsen.
+We kunnen zorgen het dashboard snel blijft werken door de onbewerkte gegevens regelmatig in een aggregatietabel te verdelen. U kunt experimenteren met de aggregatieduur. We hebben een aggregatietabel per minuut gebruikt, maar u kunt gegevens in plaats daarvan in vijf, 15 of 60 minuten indelen.
 
-Als u deze rollup eenvoudiger wilt uitvoeren, gaan we deze in een plpgsql-functie plaatsen. Voer deze opdrachten uit in psql om de `rollup_http_request` functie te maken.
+Als u deze rollup eenvoudiger wilt uitvoeren, gaan we deze in een plpgsql-functie plaatsen. Voer deze opdrachten uit in psql om de functie `rollup_http_request` te maken.
 
 ```sql
 -- initialize to a time long ago
@@ -190,13 +192,13 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-Als onze functie is geïmplementeerd, voert u deze uit om de gegevens samen te voegen:
+Als onze functie is geïmplementeerd, voert u deze uit om de gegevens samen te tellen:
 
 ```sql
 SELECT rollup_http_request();
 ```
 
-En met onze gegevens in een vooraf geaggregeerd formulier kunnen we een query uitvoeren op de samenvouw tabel om hetzelfde rapport te verkrijgen als eerder. Voer de volgende query uit:
+En met onze gegevens in een vooraf geaggregeerd formulier kunnen we een query uitvoeren op het rolluptabel om hetzelfde rapport te verkrijgen als eerder. Voer de volgende query uit:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -205,25 +207,25 @@ SELECT site_id, ingest_time as minute, request_count,
  WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
-## <a name="expiring-old-data"></a>Oude gegevens verlopen
+## <a name="expiring-old-data"></a>Oude gegevens laten verlopen
 
-De rollups maken query's sneller, maar we moeten nog steeds oude gegevens laten verlopen om ongebonden opslag kosten te voor komen. Bepaal hoe lang u gegevens voor elke granulatie wilt behouden en gebruik standaard query's om verlopen gegevens te verwijderen. In het volgende voor beeld hebben we besloten om onbewerkte gegevens voor één dag en per minuut aggregaties gedurende één maand te houden:
+De rollups maken query's sneller, maar we moeten nog steeds oude gegevens laten verlopen om overmatige opslagkosten te voorkomen. Bepaal hoelang u gegevens voor elke granulariteit wilt behouden en gebruik standaardquery's om verlopen gegevens te verwijderen. In het volgende voorbeeld hebben we besloten om onbewerkte gegevens voor één dag en aggregaties per minuut gedurende één maand te houden:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';
 DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 ```
 
-In productie kunt u deze query's in een functie laten teruglopen en deze elke minuut aanroepen in een cron-taak.
+Tijdens de productie kunt u deze query's in een functie laten teruglopen en deze elke minuut aanroepen in een cron-taak.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voor gaande stappen hebt u Azure-resources in een server groep gemaakt. Als u deze resources in de toekomst niet meer nodig hebt, verwijdert u de Server groep. Druk op de knop *verwijderen* op de pagina *overzicht* voor uw server groep. Wanneer u hierom wordt gevraagd, bevestigt u de naam van de Server groep en klikt u op de laatste knop *verwijderen* .
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop *verwijderen* op de pagina *Overzicht* voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop *Verwijderen*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een grootschalige (Citus)-Server groep inricht. U hebt verbinding gemaakt met het psql, een schema en gedistribueerde gegevens. U hebt geleerd hoe u gegevens in het onbewerkte formulier opvraagt, regel matig de gegevens samenvoegt, query's uitvoert op de geaggregeerde tabellen en oude gegevens verloopt.
+In deze zelfstudie hebt u geleerd hoe u een Hyperscale (Citus)-servergroep inricht. U hebt psql gebruikt om hiermee verbinding te maken, u hebt een schema gemaakt en u hebt gegevens gedistribueerd. U hebt geleerd hoe u gegevens in onbewerkte vorm opvraagt, regelmatig de gegevens aggregeert, query's uitvoert op de geaggregeerde tabellen en oude gegevens laat verlopen.
 
-Vervolgens leert u meer over de concepten van grootschalige.
+Hierna krijgt u meer informatie over de hyperscale-concepten.
 > [!div class="nextstepaction"]
-> [Grootschalige-knooppunt typen](https://aka.ms/hyperscale-concepts)
+> [Knooppunttypen met hyperscale](https://aka.ms/hyperscale-concepts)

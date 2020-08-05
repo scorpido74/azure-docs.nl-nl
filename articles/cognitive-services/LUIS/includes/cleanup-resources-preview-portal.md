@@ -4,17 +4,17 @@ description: bestand opnemen
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.date: 03/02/2020
 ms.author: diberry
-ms.openlocfilehash: c32f919441379f3d5322348e7684538ee8d2039f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 6997f17ee6fc70f9b72b379f12f45620fe999b9a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250555"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375685"
 ---
-Wanneer u de LUIS-app niet meer nodig hebt, kunt u deze verwijderen. Hiertoe selecteert u **mijn apps** in het menu linksboven. Selecteer de naam van de app in de lijst met apps en selecteer vervolgens **verwijderen** in het context menu. Selecteer **OK**in het pop-updialoogvenster **app verwijderen**.
+Wanneer u de LUIS-app niet meer nodig hebt, kunt u deze verwijderen. Hiertoe selecteert u **Mijn apps** in het menu linksboven. Selecteer de naam van de app in de lijst met apps en selecteer vervolgens **Verwijderen** in het contextmenu. Selecteer in het pop-upvenster **App verwijderen** de optie **Ok**.

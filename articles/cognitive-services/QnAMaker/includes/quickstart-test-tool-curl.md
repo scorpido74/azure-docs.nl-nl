@@ -2,47 +2,45 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237673"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132881"
 ---
-In deze op krul gebaseerde Snelstartgids wordt u begeleid bij het verkrijgen van een antwoord uit uw Knowledge Base.
+Deze snelstart op basis van cURL begeleidt u bij het ophalen van een antwoord uit een knowledge base.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Meest recente [**krul**](https://curl.haxx.se/).
-* U moet beschikken over
+* Nieuwste [**cURL**](https://curl.haxx.se/).
+* U moet het volgende hebben
     * Een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)
-    * Een getrainde en gepubliceerde kennis database met vragen en antwoorden, van de vorige [Snelstartgids](../Quickstarts/add-question-metadata-portal.md), geconfigureerd met meta gegevens en Chit Chat.
+    * Een getrainde en gepubliceerde knowledge base met vragen en antwoorden, van de vorige [quickstart](../Quickstarts/add-question-metadata-portal.md), geconfigureerd met metagegevens en weergepraat.
 
 > [!NOTE]
-> Wanneer u klaar bent voor het genereren van een antwoord op een vraag uit uw Knowledge Base, moet u uw kennis basis [trainen](../Quickstarts/create-publish-knowledge-base.md#save-and-train) en [publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) . Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. Op het tabblad **krul** worden de instellingen weer gegeven die nodig zijn om een antwoord te genereren vanuit het opdracht regel programma.
+> Wanneer u klaar bent voor het genereren van een antwoord op een vraag uit uw knowledge base, moet u uw knowledge base [trainen](../Quickstarts/create-publish-knowledge-base.md#save-and-train) en [publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base). Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. Het tabblad **cURL** toont de instellingen die vereist zijn voor het genereren van een antwoord uit hulpprogramma voor opdrachtregels.
 
-## <a name="use-metadata-to-filter-answer"></a>Meta gegevens gebruiken om antwoord te filteren
+## <a name="use-metadata-to-filter-answer"></a>Metagegevens gebruiken om antwoord te filteren
 
-Gebruik de Knowledge Base van de vorige snel om een antwoord te zoeken op basis van meta gegevens.
+Gebruik de knowledge base van de vorige quickstart om een antwoord te zoeken op basis van metagegevens.
 
-1. Selecteer op de pagina **instellingen** van de Knowledge Base het tabblad **krul** om een voor beeld van een krul opdracht te zien die wordt gebruikt voor het genereren van een antwoord uit de Knowledge Base.
-1. Kopieer de opdracht naar een Bewerk bare omgeving (zoals een tekst bestand), zodat u de opdracht kunt bewerken. Bewerk de waarde van de vraag als volgt zodat de meta gegevens van `service:qna_maker` worden gebruikt als een filter voor de QnA-paren.
+1. Selecteer op de pagina **Instellingen** van de knowledge base het tabblad **cURL** om een voorbeeld van een cURL-opdracht te zien die wordt gebruikt voor het genereren van een antwoord uit de knowledge base.
+1. Kopieer de opdracht naar een bewerkbare omgeving (zoals een tekstbestand), zodat u de opdracht kunt bewerken. Bewerk de waarde van de vraag als volgt zodat de metagegevens van `service:qna_maker` worden gebruikt als een filter voor de QnA-paren.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    De vraag is slechts één woord, `size` waardoor een van de twee QnA-paren kan worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen de `qna_maker` antwoorden.
+    De vraag is slechts één woord, `size`, waarmee een van de twee QnA-paren kan worden geretourneerd. De matrix `strictFilters` vertelt u de respons om alleen de `qna_maker`-antwoorden te verminderen.
 
-1. Het antwoord bevat alleen het antwoord dat voldoet aan de filter criteria. De volgende krul reactie is opgemaakt voor de Lees baarheid:
+1. Het respons bevat alleen het antwoord dat voldoet aan de filtercriteria. De volgende cURL-respons is opgemaakt voor betere leesbaarheid:
 
     ```JSON
     {
@@ -77,25 +75,25 @@ Gebruik de Knowledge Base van de vorige snel om een antwoord te zoeken op basis 
     }
     ```
 
-    Als er een vraag-en antwoord paar is dat niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt het niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
+    Als er een vraag-en-antwoordpaar is dat niet voldoet aan de zoekterm maar wel aan het filter voldoet, wordt het niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
 
-## <a name="use-debug-query-property"></a>Eigenschap debug query gebruiken
+## <a name="use-debug-query-property"></a>Query-eigenschap fouten opsporen gebruiken
 > [!NOTE]
->Het gebruik van de eigenschap debug voor een afhankelijkheid wordt niet aanbevolen. Deze eigenschap is toegevoegd om het product team te helpen bij het oplossen van problemen.
+>Het gebruik van de eigenschap fouten opsporen voor een afhankelijkheid wordt niet aanbevolen. Deze eigenschap is toegevoegd om het productteam te helpen bij het oplossen van problemen.
 
-Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de `debug` eigenschap toe:
+Informatie over foutopsporing geeft u inzicht in hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de eigenschap `debug` toe:
 
 ```json
 Debug: {Enable:true}
 ```
 
-1. Bewerk de krul opdracht zodat u de eigenschap debug kunt gebruiken om meer informatie weer te geven.
+1. Bewerk de cURL-opdracht zodat u de eigenschap debug kunt gebruiken om meer informatie weer te geven.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
 
-1. Het antwoord bevat de relevante informatie over het antwoord. In de volgende JSON-uitvoer zijn een aantal fout opsporingsgegevens vervangen door het weglatings teken.
+1. De respons bevat de relevante informatie over het antwoord. In de volgende JSON-uitvoer zijn een aantal foutopsporingsgegevens vervangen door het weglatingsteken om het korter te houden.
 
     ```console
     {
@@ -185,36 +183,36 @@ Debug: {Enable:true}
     }
     ```
 
-## <a name="use-test-knowledge-base"></a>Test kennis basis gebruiken
+## <a name="use-test-knowledge-base"></a>Test-knowledge base gebruiken
 
-Als u een antwoord wilt ontvangen van de test Knowledge Base, gebruikt u de `isTest` eigenschap Body.
+Als u een antwoord wilt ontvangen van de test-knowledge base, gebruikt u de hoofdteksteigenschap `isTest`.
 
-De eigenschap is een Booleaanse waarde.
+De eigenschap is een booleaanse waarde.
 
 ```json
 isTest:true
 ```
 
-De krul opdracht ziet er als volgt uit:
+De cURL-opdracht ziet er als volgt uit:
 
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
 
-In het JSON-antwoord wordt hetzelfde schema gebruikt als voor de gepubliceerde Knowledge Base-query.
+In de JSON-respons wordt hetzelfde schema gebruikt als voor de gepubliceerde knowledge base-query.
 
 > [!NOTE]
-> Als de test en de gepubliceerde kennis bases exact hetzelfde zijn, kan er nog een kleine variatie optreden omdat de test index wordt gedeeld tussen alle kennis grondslagen in de resource.
+> Als de test en de gepubliceerde knowledge bases exact hetzelfde zijn, kan er nog een kleine variatie optreden omdat de testindex wordt gedeeld tussen alle knowledge bases in de resource.
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Krul gebruiken om te zoeken naar een Chit-Chat-antwoord
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>cURL gebruiken om te zoeken naar een heen- en weergepraatantwoord
 
-1. Gebruik in de met krul geactiveerde Terminal een bot-instructie voor het beëindigen van de gebruiker, zoals `Thank you` de vraag. Er zijn geen andere eigenschappen om in te stellen.
+1. Gebruik in de voor cURL ingeschakelde terminal een botinstructie van de gebruiker die het gesprek beëindigt, zoals `Thank you` als de vraag. Er zijn geen andere eigenschappen om in te stellen.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
 
-1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord.
+1. Voer de cURL-opdracht uit en ontvang het JSON-antwoord inclusief de score en het antwoord.
 
     ```json
     {
@@ -296,19 +294,19 @@ In het JSON-antwoord wordt hetzelfde schema gebruikt als voor de gepubliceerde K
     }
     ```
 
-    Omdat de vraag `Thank you` precies overeenkwam met een heen- en weergepraatvraag, is QnA Maker volledig zeker met de score van 100. QnA Maker heeft ook alle gerelateerde vragen geretourneerd, evenals de meta gegevens eigenschap met de Chit-Chat-meta gegevens code gegevens.
+    Omdat de vraag `Thank you` precies overeenkwam met een heen- en weergepraatvraag, is QnA Maker volledig zeker met de score van 100. QnA Maker heeft ook alle gerelateerde vragen geretourneerd, evenals de metagegevenseigenschap met de informatie over de tag met heen- en weergepraatmetagegevens.
 
-## <a name="use-threshold-and-default-answer"></a>Drempel en standaard antwoord gebruiken
+## <a name="use-threshold-and-default-answer"></a>Drempel en standaardantwoord gebruiken
 
-U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt voldaan aan de drempel waarde, wordt het standaard antwoord geretourneerd.
+U kunt een minimale drempelwaarde voor het antwoord aanvragen. Als niet wordt voldaan aan de drempelwaarde, wordt het standaardantwoord geretourneerd.
 
-1. Voeg de `threshold` eigenschap toe om te vragen om een antwoord `size` met een drempel van 80% of hoger. De Knowledge Base mag dat antwoord niet vinden omdat de Score van de vraag 71% is. Het resultaat retourneert het standaard antwoord dat u hebt gegeven tijdens het maken van de Knowledge Base.
+1. Voeg de eigenschap `threshold` toe om te vragen om een antwoord op `size` met een drempel van 80% of hoger. De knowledge base mag dat antwoord niet vinden omdat de score van de vraag 71% is. Het resultaat retourneert het standaardantwoord dat u hebt gegeven tijdens het maken van de knowledge base.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
 
-1. Voer de opdracht krul uit en ontvang het JSON-antwoord.
+1. Voer de cURL-opdracht uit en ontvang het JSON-antwoord.
 
     ```json
     {
@@ -327,9 +325,9 @@ U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt v
     }
     ```
 
-    QnA Maker heeft een score geretourneerd van `0` , wat betekent dat u geen betrouw baarheid hebt. Ook wordt het standaard antwoord geretourneerd.
+    QnA Maker heeft een score geretourneerd van `0`, wat geen betrouwbaarheid betekent. Ook wordt het standaardantwoord geretourneerd.
 
-1. Wijzig de drempel waarde in 60% en vraag de query opnieuw aan:
+1. Wijzig de drempelwaarde in 60% en vraag de query opnieuw aan:
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"

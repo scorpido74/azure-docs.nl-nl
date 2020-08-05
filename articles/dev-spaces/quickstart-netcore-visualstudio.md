@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995935"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007001"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen op Kubernetes: Visual Studio en .NET Core - Azure Dev Spaces
 
@@ -84,15 +84,15 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 In uw project, selecteert u **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen zoals hieronder wordt weergegeven.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Schermopname van de gebruikersinterface van Visual Studio met de optie IIS Express gemarkeerd en geselecteerd en de optie Azure Dev Spaces gemarkeerd.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 Selecteer in het dialoogvenster Azure Dev Spaces uw *Abonnement* en *Azure Kubernetes-cluster*. Laat *Ruimte* ingesteld op *Standaard* en schakel het selectievakje *Openbaar toegankelijk* in. Klik op *OK*.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![Schermopname van het dialoogvenster Azure Dev Spaces.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
 Met dit proces wordt uw service geïmplementeerd naar de *standaard* ontwikkelruimte met een openbaar toegankelijke URL. Als u een cluster kiest dat niet is geconfigureerd om te werken met Azure Dev Spaces, ziet u een bericht waarin wordt gevraagd of u dit wilt configureren. Klik op *OK*.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Schermopname van het dialoogvenster voor het toevoegen van een resource in Azure Dev Spaces.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 De openbare URL voor de service die wordt uitgevoerd in de *standaard* ontwikkelruimte wordt weergegeven in het venster *Uitvoer*:
 

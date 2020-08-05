@@ -1,5 +1,5 @@
 ---
-title: Een toepassings certificaat toevoegen aan een cluster in Power shell
+title: Een toepassingscertificaat toevoegen aan een cluster in PowerShell
 description: 'Azure PowerShell-voorbeeldscript: een toepassingscertificaat toevoegen aan een Service Fabric-cluster.'
 services: service-fabric
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: d657ef8d28b36d93bc923036254e446c7be4c2c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0093aa2a058621981eb0e42d8b1a2220d4578979
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076185"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Een toepassingscertificaat toevoegen aan een Service Fabric-cluster
 
-In dit voorbeeld script wordt uitgelegd hoe u een certificaat in Key Vault maakt en hoe u het implementeert op een van de virtuele-machine schaal sets waarop uw cluster wordt uitgevoerd. Dit scenario maakt geen gebruik van Service Fabric rechtstreeks, maar is afhankelijk van Key Vault en virtuele-machine schaal sets.
+In dit voorbeeldscript wordt uitgelegd hoe u een certificaat in Key Vault maakt en hoe u het certificaat implementeert op een van de virtuele-machineschaalsets waarop uw cluster wordt uitgevoerd. Dit scenario maakt niet rechtstreeks gebruik van Service Fabric, maar is afhankelijk van Key Vault en virtuele-machineschaalsets.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructie in de `Connect-AzAccount` [Azure PowerShell Guide](/powershell/azure/overview) en voert u uit om een verbinding te maken met Azure. 
+Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/) en voer vervolgens `Connect-AzAccount` uit om verbinding maken met Azure. 
 
 ## <a name="create-a-certificate-in-key-vault"></a>Een certificaat maken in Key Vault
 
@@ -65,7 +65,7 @@ $Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValu
 
 ```
 
-## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Profiel voor virtuele-machine schaal sets bijwerken met certificaat
+## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Profiel voor virtuele-machineschaalsets bijwerken met certificaat
 
 ```powershell
 $ResourceGroupName = ""
@@ -87,12 +87,12 @@ $VMSS.virtualmachineprofile.osProfile.secrets[0].vaultCertificates.Add($certConf
 $VMSS = Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId (Get-AzKeyVault -VaultName $VaultName).ResourceId  -VaultCertificate $CertConfig
 ```
 
-## <a name="update-the-virtual-machine-scale-set"></a>De schaalset voor de virtuele machine bijwerken
+## <a name="update-the-virtual-machine-scale-set"></a>De virtuele-machineschaalset bijwerken
 ```powershell
 Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMSS -VMScaleSetName $VMSSName
 ```
 
-> Als u het certificaat op meerdere knooppunt typen in uw cluster wilt plaatsen, moeten de tweede en derde delen van dit script worden herhaald voor elk knooppunt type dat het certificaat moet bevatten.
+> Als u het certificaat op meerdere typen knooppunten in uw cluster wilt plaatsen, moeten het tweede en derde gedeelte van dit script worden herhaald voor elk knooppunttype dat het certificaat moet bevatten.
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
@@ -101,15 +101,15 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Hiermee maakt u een beleid in het geheugen dat het certificaat vertegenwoordigt |
-| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Hiermee wordt het beleid geïmplementeerd voor Key Vault certificaten |
-| [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/Set-AzKeyVaultSecret)| Hiermee wordt het beleid geïmplementeerd voor Key Vault geheimen |
-| [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Hiermee maakt u een configuratie in het geheugen die het certificaat in een VM vertegenwoordigt |
+| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Hiermee wordt het beleid geïmplementeerd in Key Vault-certificaten |
+| [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/Set-AzKeyVaultSecret)| Hiermee wordt het beleid geïmplementeerd in Key Vault-geheimen |
+| [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Hiermee maakt u een configuratie in het geheugen dat het certificaat in een VM vertegenwoordigt |
 | [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
-| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Voegt het certificaat toe aan de definitie in het geheugen van de schaalset voor virtuele machines |
-| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Hiermee wordt de nieuwe definitie van de schaalset voor virtuele machines geïmplementeerd |
+| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Hiermee wordt het certificaat toegevoegd aan de definitie in het geheugen van de virtuele-machineschaalset |
+| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Hiermee wordt de nieuwe definitie van de virtuele-machineschaalset geïmplementeerd |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer voorbeelden voor Azure Powershell voor Azure Service Fabric vindt u in de [voorbeelden van Azure PowerShell](../service-fabric-powershell-samples.md).

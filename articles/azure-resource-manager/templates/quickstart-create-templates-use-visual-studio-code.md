@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040511"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code
 
@@ -102,7 +102,7 @@ Selecteer `New` > `All Parameters` > Selecteer een naam en locatie voor het para
 
 Met deze actie wordt een nieuw parameterbestand gemaakt en toegewezen aan de sjabloon waaruit het is gemaakt. U kunt de huidige sjabloon-/parametertoewijzing zien en wijzigen in de statusbalk van Visual Studio Code terwijl de sjabloon is geselecteerd.
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![Afbeelding van de sjabloon/parameterbestandstoewijzing in de statusbalk van Visual Studio Code.](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 Nu het parameterbestand aan de sjabloon is toegewezen, valideert de extensie zowel de sjabloon als het parameterbestand samen. Als u deze validatie in de praktijk wilt zien, voegt u een waarde van twee tekens toe aan de parameter `storageAccountName` in het parameterbestand en slaat u het bestand op.
 

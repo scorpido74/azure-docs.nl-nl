@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8d33756e1c28247c48d0b4c0a734e604c4e9eab0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851608"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280814"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Zelfstudie: Wereldwijde distributie van Azure Cosmos DB instellen met behulp van de SQL-API
 
@@ -28,34 +28,35 @@ Dit artikel behandelt de volgende taken:
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> Verbinding maken met een voorkeursregio met behulp van de SQL-API
 
-Om te profiteren van [wereldwijde distributie](distribute-data-globally.md), kunnen clienttoepassingen de geordende voorkeurslijst met regio's opgeven die moet worden gebruikt voor het uitvoeren van documentbewerkingen. Dat kan worden gedaan door het verbindingsbeleid in te stellen. Op basis van de Azure Cosmos DB-accountconfiguratie, de huidige regionale beschikbaarheid en de opgegeven voorkeurslijst wordt het optimale eindpunt door de SQL-SDK gekozen voor het uitvoeren van schrijf- en leesbewerkingen.
+Om te profiteren van [wereldwijde distributie](distribute-data-globally.md), kunnen clienttoepassingen de geordende voorkeurslijst met regio's opgeven die moet worden gebruikt voor het uitvoeren van documentbewerkingen. Op basis van de Azure Cosmos DB-accountconfiguratie, de huidige regionale beschikbaarheid en de opgegeven voorkeurslijst wordt het optimale eindpunt door de SQL-SDK gekozen voor het uitvoeren van schrijf- en leesbewerkingen.
 
-Deze voorkeurslijst wordt opgegeven bij het initialiseren van een verbinding met de SQL-SDK's. De SDK's accepteren de optionele parameter 'PreferredLocations', die een geordende lijst met Azure-regio's bevat.
+Deze voorkeurslijst wordt opgegeven bij het initialiseren van een verbinding met de SQL-SDK's. Met SDK's wordt de optionele parameter `PreferredLocations` geaccepteerd, die een geordende lijst met Azure-regio's bevat.
 
-De SDK verzendt alle schrijfbewerkingen automatisch naar de huidige schrijfregio.
+De SDK verzendt alle schrijfbewerkingen automatisch naar de huidige schrijfregio. Alle leesbewerkingen worden verzonden naar de eerst beschikbare regio in de lijst met voorkeurslocaties. Als de aanvraag mislukt, gaat de client naar de volgende regio in de lijst.
 
-Alle leesbewerkingen worden verzonden naar de eerst beschikbare regio in de lijst PreferredLocations. Als de aanvraag mislukt, gaat de client naar de volgende regio in de lijst, enzovoort.
+Met SDK wordt alleen geprobeerd om de regio's te lezen die zijn opgegeven in de lijst met voorkeurslocaties. Dus als bijvoorbeeld het Azure Cosmos-account in vier verschillende regio's beschikbaar is, maar de client alleen twee leesregio's (waarnaar niet kan worden geschreven) in `PreferredLocations` opgeeft, worden er geen leesbewerkingen geleverd vanuit de leesregio die niet is opgegeven in `PreferredLocations`. Als de leesregio's die zijn opgegeven in de lijst van `PreferredLocations` niet beschikbaar zijn, worden leesbewerkingen geleverd vanuit de schrijfregio.
 
-De SDK's proberen alleen de regio's te lezen die zijn opgegeven in PreferredLocations. Dus als bijvoorbeeld het databaseaccount in vier verschillende regio's beschikbaar is, maar de client alleen twee leesregio's (waarnaar niet kan worden geschreven) voor PreferredLocations opgeeft, worden er geen leesbewerkingen geleverd vanuit de leesregio die niet is opgegeven in PreferredLocations. Als de leesregio's die zijn opgegeven in PreferredLocations niet beschikbaar zijn, worden leesbewerkingen geleverd vanuit de schrijfregio.
+De toepassing kan het huidige, door de SDK gekozen eindpunt voor lezen en eindpunt voor schrijven verifiëren door het controleren van de twee eigenschappen, `WriteEndpoint` en `ReadEndpoint`, die beschikbaar zijn in SDK-versie 1.8 en hoger. Als de eigenschap `PreferredLocations` niet is ingesteld, worden alle aanvragen verwerkt vanuit de huidige schrijfregio.
 
-De toepassing kan het huidige, door de SDK gekozen eindpunt voor lezen en eindpunt voor schrijven verifiëren door het controleren van de twee eigenschappen, WriteEndpoint en ReadEndpoint, die beschikbaar zijn in SDK-versie 1.8 en hoger.
-
-Als de eigenschap PreferredLocations niet is ingesteld, worden alle aanvragen verwerkt vanuit de huidige schrijfregio.
+Als u geen voorkeurslocaties hebt opgegeven maar de `setCurrentLocation` methode hebt gebruikt, worden met de SDK de voorkeurslocaties automatisch ingevuld op basis van de huidige regio waarin de-client wordt uitgevoerd. De regio's worden met de SDK gerangschikt op basis van de nabijheid van een regio ten opzicht van de huidige regio.
 
 ## <a name="net-sdk"></a>.NET SDK
+
 De SDK kan worden gebruikt zonder codewijzigingen. In dit geval stuurt de SDK alle lees- en schrijfbewerkingen automatisch door naar de huidige schrijfregio.
 
-In versie 1.8 en hoger van de .NET SDK heeft de ConnectionPolicy-parameter voor de DocumentClient-constructor de eigenschap Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Deze eigenschap is van het type Verzameling `<string>`, die een lijst met regionamen moet bevatten. De tekenreekswaarden zijn opgemaakt volgens de kolom Regionaam op de pagina [Azure-regio's][regions], zonder spaties vóór, respectievelijk na het eerste en laatste teken.
+In versie 1.8 en hoger van de .NET SDK heeft de ConnectionPolicy-parameter voor de DocumentClient-constructor de eigenschap Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Deze eigenschap is van het type Verzameling `<string>`, die een lijst met regionamen moet bevatten. De tekenreekswaarden zijn opgemaakt volgens de kolom voor de regionaam op de pagina [Azure-regio's][regions], zonder spaties vóór, respectievelijk na het eerste en laatste teken.
 
 De huidige eindpunten voor schrijven en lezen zijn beschikbaar in respectievelijk DocumentClient.WriteEndpoint en DocumentClient.ReadEndpoint.
 
 > [!NOTE]
 > De URL's voor de eindpunten moeten niet worden beschouwd als constanten met een lange levensduur. De service kan deze op elk gewenst moment bijwerken. De SDK verwerkt deze wijziging automatisch.
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+Als u met de .NET V2 SDK werkt, gebruikt u de eigenschap `PreferredLocations` om de voorkeursregio in te stellen.
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+U kunt ook de eigenschap `SetCurrentLocation` gebruiken en de voorkeurslocatie door de SDK laten bepalen op basis van nabijheid.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+Als u met de .NET V3 SDK werkt, gebruikt u de eigenschap `ApplicationPreferredRegions` om de voorkeursregio in te stellen.
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+U kunt ook de eigenschap `ApplicationRegion` gebruiken en de voorkeurslocatie door de SDK laten bepalen op basis van nabijheid.
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js/JavaScript
 

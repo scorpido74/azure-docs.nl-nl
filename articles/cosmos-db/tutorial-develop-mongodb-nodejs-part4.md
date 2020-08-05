@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e1b67a5fc7b687804eb30c615648ab06bc308ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067275"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Een Cosmos-account maken
 
@@ -61,7 +61,7 @@ Het duurt mogelijk enkele minuten voor de opdracht is voltooid. Wanneer de opdra
 
 Zodra het Azure Cosmos DB-account is gemaakt:
 1. Open een nieuw browservenster en ga naar [https://portal.azure.com](https://portal.azure.com)
-1. Klik op het logo van Azure Cosmos DB ![Azure Cosmos DB-pictogram in Azure Portal](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) in de linkerbalk en toont alle de Azure Cosmos DB’s die u hebt.
+1. Klik op het Azure Cosmos DB-logo :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: in de linkerbalk. Hier ziet u alle Azure Cosmos DB's die u hebt.
 1. Klik op het Azure Cosmos DB-account dat u zojuist hebt gemaakt, selecteer het tabblad **Overzicht** en scrol omlaag naar de kaart waarop de database zich bevindt. 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Nieuw Azure Cosmos DB-account in de Azure-portal":::

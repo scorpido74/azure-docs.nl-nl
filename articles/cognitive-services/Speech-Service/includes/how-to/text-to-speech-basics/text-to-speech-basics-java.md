@@ -3,28 +3,29 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
+ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: e0c2554162d54af6c0a483e26f708838c3045a03
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: f83c2078358c7f35c5de45a5ac17d43750457562
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80986245"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375705"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak service-abonnement hebt. Als u geen account en abonnement hebt, [kunt u de spraak service gratis uitproberen](../../../get-started.md).
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
 Voordat u iets kunt doen, moet u de Speech SDK installeren. Gebruik de volgende instructies, afhankelijk van uw platform:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java-runtime<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java Runtime <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="import-dependencies"></a>Afhankelijkheden importeren
 
-Als u de voor beelden in dit artikel wilt uitvoeren, voegt u de volgende import instructies toe boven aan het script.
+Als u de voorbeelden in dit artikel wilt uitvoeren, voegt u de volgende importinstructies toe bovenaan het script.
 
 ```java
 import com.microsoft.cognitiveservices.speech.AudioDataStream;
@@ -38,21 +39,21 @@ import java.io.*;
 import java.util.Scanner;
 ```
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Als u de spraak service wilt aanroepen met behulp van de Speech SDK [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable), moet u een maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
+Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
 
 > [!NOTE]
-> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
+> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
 
-Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)kunt initialiseren:
+Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) kunt initialiseren:
 
-* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
-* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
-* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
-* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
+* Met een abonnement: geef een sleutel en de bijbehorende regio door.
+* Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
+* Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
+* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-In dit voor beeld maakt u een [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) met een abonnements sleutel en-regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden. U maakt ook een algemene standaard code voor gebruik voor de rest van dit artikel, die u voor verschillende aanpassingen wijzigt.
+In dit voorbeeld maakt u een [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) met behulp van een abonnementssleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden. U schrijft ook wat eenvoudige standaardcode voor gebruik in de rest van dit artikel. U gaat de code voor verschillende aanpassingen wijzigen.
 
 ```java
 public class Program 
@@ -63,11 +64,11 @@ public class Program
 }
 ```
 
-## <a name="synthesize-speech-to-a-file"></a>Spraak op een bestand synthesizer
+## <a name="synthesize-speech-to-a-file"></a>Spraak synthetiseren naar een bestand
 
-Vervolgens maakt u een [`SpeechSynthesizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable) -object, waarmee conversie van tekst naar spraak en uitvoer naar luid sprekers, bestanden of andere uitvoer stromen worden uitgevoerd. De [`SpeechSynthesizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable) accepteren als params het [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) object dat in de vorige stap is gemaakt en [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) een object dat opgeeft hoe uitvoer resultaten moeten worden verwerkt.
+Vervolgens maakt u een [`SpeechSynthesizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable)-object, waarmee tekst-naar-spraakconversies en uitvoer naar luidsprekers, bestanden of andere uitvoerstromen worden uitgevoerd. De [`SpeechSynthesizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable) accepteert als parameters het [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)-object dat in de vorige stap is gemaakt en tevens een [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable)-object dat aangeeft hoe uitvoerresultaten moeten worden verwerkt.
 
-Als u wilt beginnen, `AudioConfig` maakt u een om de uitvoer automatisch `.wav` naar een bestand `fromWavFileOutput()` te schrijven met behulp van de statische functie.
+Eerst maakt u een `AudioConfig` om de uitvoer automatisch naar een `.wav`-bestand te schrijven met behulp van de statische functie `fromWavFileOutput()`.
 
 ```java
 public static void main(String[] args) {
@@ -76,7 +77,7 @@ public static void main(String[] args) {
 }
 ```
 
-Vervolgens maakt u een `SpeechSynthesizer` door geven `speechConfig` van uw object `audioConfig` en het object als params. Vervolgens wordt het uitvoeren van een spraak-synthese en het schrijven naar een bestand net `SpeakText()` zo eenvoudig als met een teken reeks.
+Vervolgens instantieert u een `SpeechSynthesizer`, terwijl het `speechConfig`-object en het `audioConfig`-object als parameters worden doorgegeven. Daarna is het uitvoeren van spraaksynthese en het schrijven naar een bestand net zo eenvoudig als het uitvoeren van `SpeakText()` met een regel tekst.
 
 ```java
 public static void main(String[] args) {
@@ -88,11 +89,11 @@ public static void main(String[] args) {
 }
 ```
 
-Voer het programma uit en een gesynthesizerd `.wav` bestand wordt geschreven naar de locatie die u hebt opgegeven. Dit is een goed voor beeld van het meest eenvoudige gebruik, maar vervolgens bekijkt u de uitvoer en het verwerken van de uitvoer respons als een stroom in het geheugen voor het werken met aangepaste scenario's.
+Voer het programma uit. Er wordt een gesynthetiseerd `.wav`-bestand geschreven naar de locatie die u hebt opgegeven. Dit is een goed voorbeeld van het eenvoudigste gebruik, maar hierna gaat u de uitvoer aanpassen en de uitvoerrespons verwerken als een in-memory stroom om met aangepaste scenario's te kunnen werken.
 
-## <a name="synthesize-to-speaker-output"></a>Naar de uitvoer van de spreker
+## <a name="synthesize-to-speaker-output"></a>Synthetiseren naar de uitvoer van de luidspreker
 
-In sommige gevallen wilt u mogelijk rechtstreeks de gesynthesizerde spraak rechtstreeks naar een spreker uitvoeren. Als u dit wilt doen, `AudioConfig` moet u `fromDefaultSpeakerOutput()` de functie static gebruiken. Hiermee wordt naar het huidige actieve uitvoer apparaat uitgevoerd.
+In sommige gevallen kunt u gesynthetiseerde spraak rechtstreeks naar een luidspreker uitvoeren. Als u dit wilt doen, moet u `AudioConfig` instantiëren met behulp van de statische functie `fromDefaultSpeakerOutput()`. Hiermee wordt de uitvoer naar het huidige, actieve uitvoerapparaat gestuurd.
 
 ```java
 public static void main(String[] args) {
@@ -104,20 +105,20 @@ public static void main(String[] args) {
 }
 ```
 
-## <a name="get-result-as-an-in-memory-stream"></a>Resultaat ophalen als een in-Memory stroom
+## <a name="get-result-as-an-in-memory-stream"></a>Resultaat ophalen als een in-memory stroom
 
-Voor veel scenario's in het ontwikkelen van spraak toepassingen hebt u waarschijnlijk de resulterende audio gegevens als een in-Memory stroom nodig, in plaats van rechtstreeks naar een bestand te schrijven. Zo kunt u aangepast gedrag maken, waaronder:
+Voor veel scenario's in het ontwikkelen van spraaktoepassingen hebt u waarschijnlijk de resulterende audiogegevens als een in-memory stroom nodig, in plaats dat u rechtstreeks naar een bestand gaat schrijven. Zo kunt u aangepast gedrag maken, waaronder:
 
-* De resulterende byte matrix samen vatting als Zoek bare stroom voor aangepaste downstream-Services.
-* Integreer het resultaat met andere API'S of services.
-* Wijzig de audio gegevens, schrijf aangepaste `.wav` kopteksten, enzovoort.
+* Vat de resulterende bytematrix samen als een doorzoekbare stroom voor aangepaste downstreamservices.
+* Integreer het resultaat met andere API's of services.
+* Wijzig de audiogegevens, schrijf aangepaste `.wav`-headers, enzovoort.
 
-Het is eenvoudig om deze wijziging van het vorige voor beeld uit te voeren. Verwijder eerst het `AudioConfig` blok, omdat u het uitvoer gedrag hand matig vanaf dit punt gaat beheren voor een betere controle. Geef vervolgens `null` de `AudioConfig` functie in de `SpeechSynthesizer` constructor door. 
+U kunt deze wijziging eenvoudig met behulp van het voorgaande voorbeeld uitvoeren. Verwijder eerst het `AudioConfig`-blok, omdat u het uitvoergedrag vanaf dit punt handmatig gaat beheren voor een betere controle. Geef vervolgens `null` door voor de `AudioConfig` in de `SpeechSynthesizer`-constructor. 
 
 > [!NOTE]
-> `null` Als u de `AudioConfig`in plaats van het weglaten als in het bovenstaande voor beeld van de spreker, wordt de audio niet standaard afgespeeld op het huidige actieve uitvoer apparaat.
+> Als `null` voor de `AudioConfig` wordt doorgegeven in plaats van dat deze wordt weggelaten, zoals in het bovenstaande voorbeeld met de luidspreker, wordt de audio niet standaard afgespeeld op het huidige actieve uitvoerapparaat.
 
-Deze keer slaat u het resultaat op in een [`SpeechSynthesisResult`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult?view=azure-java-stable) variabele. De `SpeechSynthesisResult.getAudioData()` functie retourneert een `byte []` van de uitvoer gegevens. U kunt dit `byte []` hand matig doen, of u kunt de [`AudioDataStream`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?view=azure-java-stable) klasse gebruiken om de stroom in het geheugen te beheren. In dit voor beeld gebruikt u `AudioDataStream.fromResult()` de statische functie om een stroom van het resultaat op te halen.
+Deze keer slaat u het resultaat op in een [`SpeechSynthesisResult`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult?view=azure-java-stable)-variabele. De functie `SpeechSynthesisResult.getAudioData()` retourneert een `byte []` van de uitvoergegevens. U kunt handmatig met deze `byte []` werken, of u kunt de [`AudioDataStream`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?view=azure-java-stable)-klasse gebruiken om de stroom in het geheugen te beheren. In dit voorbeeld gebruikt u de statische functie `AudioDataStream.fromResult()` om een stroom van het resultaat op te halen.
 
 ```java
 public static void main(String[] args) {
@@ -130,21 +131,21 @@ public static void main(String[] args) {
 }
 ```
 
-Hier kunt u aangepaste gedragingen implementeren met behulp van `stream` het resulterende object.
+Hierna kunt u aangepast gedrag implementeren met behulp van het resulterende `stream`-object.
 
 ## <a name="customize-audio-format"></a>Audio-indeling aanpassen
 
-In de volgende sectie ziet u hoe u audio-uitvoer kenmerken kunt aanpassen, zoals:
+In de volgende sectie ziet u hoe u kenmerken van audio-uitvoer kunt aanpassen, zoals:
 
-* Type audio bestand
-* Sample-rate
-* Bit-depth
+* Audiobestandstype
+* Samplefrequentie
+* Bitdiepte
 
-Als u de audio-indeling wilt wijzigen, `setSpeechSynthesisOutputFormat()` gebruikt u de `SpeechConfig` functie voor het object. Deze functie verwacht een `enum` van de [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-java-stable)typen, die u gebruikt om de uitvoer indeling te selecteren. Zie de documentatie van de naslag informatie voor een [lijst met](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet) beschik bare audio-indelingen.
+Als u de audio-indeling wilt wijzigen, gebruikt u de functie `setSpeechSynthesisOutputFormat()` op het `SpeechConfig`-object. Deze functie verwacht een `enum` van het type [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-java-stable), die u gebruikt om de uitvoerindeling te selecteren. Zie de naslagdocumenten voor een [lijst met audio-indelingen](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet) die beschikbaar zijn.
 
-Er zijn verschillende opties voor verschillende bestands typen, afhankelijk van uw vereisten. Houd er rekening mee dat RAW-indelingen `Raw24Khz16BitMonoPcm` , zoals geen audio koppen, per definitie zijn. Gebruik RAW-indelingen alleen wanneer u weet dat uw stroomafwaartse implementatie een onbewerkte bitstream kan decoderen of als u van plan bent om headers hand matig te bouwen op basis van de bitdiepte, sample frequentie, aantal kanalen, enzovoort.
+Voor verschillende bestandstypen zijn er diverse opties mogelijk, afhankelijk van uw vereisten. Houd er rekening mee dat raw-indelingen als `Raw24Khz16BitMonoPcm` geen audio-headers bevatten. Gebruik raw-indelingen alleen als u weet dat uw stroomafwaartse implementatie een onbewerkte bitstream kan decoderen of als u van plan bent om headers handmatig te bouwen op basis van bitdiepte, samplefrequentie, aantal kanalen, enzovoort.
 
-In dit voor beeld geeft u een met een hoge betrouw `Riff24Khz16BitMonoPcm` bare RIFF- `SpeechSynthesisOutputFormat` indeling op `SpeechConfig` door de in te stellen op het object. Net als in het voor beeld in de vorige sectie gebruikt [`AudioDataStream`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?view=azure-java-stable) u voor het ophalen van een stroom in het geheugen van het resultaat en schrijft u deze naar een bestand.
+In dit voorbeeld geeft u een RIFF-indeling met hoge kwaliteit `Riff24Khz16BitMonoPcm` op door `SpeechSynthesisOutputFormat` in te stellen voor het `SpeechConfig`-object. Net als in het voorbeeld in de vorige sectie, gebruikt u [`AudioDataStream`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?view=azure-java-stable) om een stroom in het geheugen van het resultaat te verkrijgen en vervolgens naar een bestand te schrijven.
 
 ```java
 public static void main(String[] args) {
@@ -160,14 +161,14 @@ public static void main(String[] args) {
 }
 ```
 
-Als u het programma opnieuw uitvoert, `.wav` wordt een bestand naar het opgegeven pad geschreven.
+Als u het programma opnieuw uitvoert, wordt een `.wav`-bestand naar het opgegeven pad geschreven.
 
-## <a name="use-ssml-to-customize-speech-characteristics"></a>SSML gebruiken om spraak kenmerken aan te passen
+## <a name="use-ssml-to-customize-speech-characteristics"></a>SSML gebruiken om spraakkenmerken aan te passen
 
-Met SSML (Speech synthese Markup Language) kunt u de hoogte, de uitspraak, de spreek snelheid, het volume en meer van de tekst-naar-spraak-uitvoer nauw keuriger instellen door uw aanvragen van een XML-schema te verzenden. In deze sectie vindt u enkele praktische gebruiks voorbeelden, maar voor een meer gedetailleerde hand leiding raadpleegt u het [artikel SSML How-to](../../../speech-synthesis-markup.md).
+Met SSML (Speech Synthesis Markup Language) kunt u de toonhoogte, de uitspraak, de spreeksnelheid, het volume en meer van tekst-naar-spraakuitvoer nauwkeuriger instellen door uw aanvragen vanaf een XML-schema te verzenden. In deze sectie vindt u enkele praktische gebruik voorbeelden, maar voor een meer gedetailleerde handleiding raadpleegt u het [Instructieartikel over SSML](../../../speech-synthesis-markup.md).
 
-Als u SSML wilt gaan gebruiken voor aanpassing, maakt u een eenvoudige wijziging die de stem wijzigt.
-Maak eerst een nieuw XML-bestand voor de SSML-configuratie in de hoofdmap van het project, in `ssml.xml`dit voor beeld. Het hoofd element is altijd `<speak>`en door de tekst in een `<voice>` -element op te maken, kunt u de stem `name` wijzigen met behulp van de para meter. In dit voor beeld wordt de stem gewijzigd in een Engelse (UK)-stem. Houd er rekening mee dat deze stem een **standaard** stem is die verschillende prijzen en beschik baarheid heeft dan **Neural** stemmen. Bekijk de [volledige lijst](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) met ondersteunde **standaard** stemmen.
+Als u SSML voor aanpassing wilt gaan gebruiken, brengt u een eenvoudige wijziging aan die de stem wisselt.
+Maak eerst een nieuw XML-bestand voor de SSML-configuratie in de hoofdmap van het project, in dit voorbeeld `ssml.xml`. Het hoofdelement is altijd `<speak>`, en wanneer u de tekst in een `<voice>`-element verpakt, kunt u de stem wijzigen met behulp van de parameter `name`. In dit voorbeeld wordt de stem gewijzigd in een Engelse (UK), mannelijke stem. Merk op dat deze stem een **standaardstem** is, waarvoor andere prijzen en beschikbaarheid gelden dan **neurale** stemmen. Zie de [volledige lijst](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) met ondersteunde **standaardstemmen**.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -177,7 +178,7 @@ Maak eerst een nieuw XML-bestand voor de SSML-configuratie in de hoofdmap van he
 </speak>
 ```
 
-Vervolgens moet u de aanvraag voor spraak synthese wijzigen om te verwijzen naar uw XML-bestand. De aanvraag is doorgaans hetzelfde, maar in plaats van de `SpeakText()` functie te gebruiken, gebruikt `SpeakSsml()`u. Deze functie verwacht een XML-teken reeks, dus eerst maakt u een functie voor het laden van een XML-bestand en retourneert u dit als een teken reeks.
+Vervolgens moet u de aanvraag voor spraaksynthese wijzigen om te verwijzen naar uw XML-bestand. De aanvraag is doorgaans hetzelfde, maar in plaats van de functie `SpeakText()` gebruikt u `SpeakSsml()`. Deze functie verwacht een XML-tekenreeks, dus eerst maakt u een functie om een XML-bestand te laden en als een tekenreeks te retourneren.
 
 ```java
 private static String xmlToString(String filePath) {
@@ -195,7 +196,7 @@ private static String xmlToString(String filePath) {
 }
 ```
 
-Hier is het resultaat object precies hetzelfde als de vorige voor beelden.
+Hier is het resultaatobject precies hetzelfde als in de vorige voorbeelden.
 
 ```java
 public static void main(String[] args) {
@@ -209,7 +210,7 @@ public static void main(String[] args) {
 }
 ```
 
-De uitvoer werkt, maar er zijn enkele eenvoudige wijzigingen die u kunt aanbrengen om de IT-mede werkers meer natuurlijker te maken. De totale spreek snelheid is te snel. Daarom gaan we een `<prosody>` tag toevoegen en de snelheid tot **90%** van de standaard snelheid verlagen. Bovendien is de pauze na de komma in de zin een beetje te kort en onnatuurlijk. U kunt dit probleem oplossen door een `<break>` tag toe te voegen om de spraak vertraging te vertraagen en de tijd parameter in te stellen op **200ms**. Voer de synthese opnieuw uit om te zien hoe deze aanpassingen van invloed zijn op de uitvoer.
+De uitvoer werkt, maar er zijn enkele eenvoudige wijzigingen die u kunt aanbrengen om het natuurlijker te laten klinken. De gemiddelde spreeksnelheid is iets te snel, dus we voegen een `<prosody>`-tag toe en verminderen de snelheid tot **90%** van de standaardsnelheid. Bovendien is de pauze na de komma in de zin een beetje te kort en klinkt onnatuurlijk. U kunt dit probleem oplossen door een `<break>`-tag toe te voegen om de spraaksnelheid te vertragen en de tijdparameter in te stellen op **200 ms**. Voer de synthese opnieuw uit om te zien hoe deze aanpassingen van invloed zijn op de uitvoer.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -221,14 +222,14 @@ De uitvoer werkt, maar er zijn enkele eenvoudige wijzigingen die u kunt aanbreng
 </speak>
 ```
 
-## <a name="neural-voices"></a>Neural stemmen
+## <a name="neural-voices"></a>Neurale stemmen
 
-Neural stemmen zijn spraak synthese-algoritmen die worden aangedreven door diepe Neural-netwerken. Wanneer u een Neural-stem gebruikt, is de gesynthesizerde spraak bijna niet van de menselijke opnamen onderscheiden. Met het menselijke net zoals natuurlijke prosody en heldere afbakening van woorden, verlaagt Neural stemmen aanzienlijk op het Luis teren van vermoeidheid wanneer gebruikers met AI-systemen communiceren.
+Neurale stemmen zijn spraaksynthesealgoritmen die worden aangestuurd door Deep Neural Networks. Als u een neurale stem gebruikt, is de gesynthetiseerde spraak bijna niet van de menselijke opnamen te onderscheiden. Dankzij de menselijke, natuurlijke prosodie en duidelijke articulatie verminderen neurale stemmen de bij het luisteren optredende vermoeidheid wanneer gebruikers met AI-systemen communiceren.
 
-Als u wilt overschakelen naar een neurale stem `name` , wijzigt u de in een van de [Neural-stem opties](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Voeg vervolgens een XML-naam ruimte `mstts`toe voor en verpakken de tekst `<mstts:express-as>` in de tag. Gebruik de `style` para meter om de spreek stijl aan te passen. In dit voor `cheerful`beeld wordt gebruikt, maar u `customerservice` kunt `chat` deze instelling instellen op of om het verschil in de sprekende stijl te bekijken.
+Als u wilt overschakelen naar een neurale stem, wijzigt u de `name` in een van de [opties voor neurale stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Voeg vervolgens een XML-naamruimte voor `mstts` toe en verpak uw tekst in de `<mstts:express-as>`-tag. Gebruik parameter `style` om de spreekstijl aan te passen. In dit voorbeeld wordt `cheerful` gebruikt, maar u kunt deze aanpassen naar `customerservice` of `chat` om het verschil in spreekstijl te horen.
 
 > [!IMPORTANT]
-> Neural stemmen worden **alleen** ondersteund voor spraak bronnen die zijn gemaakt in *VS-Oost*, *Zuid-Azië-Oost*en *Europa-West* regio's.
+> Neurale stemmen worden **alleen** ondersteund voor spraakbronnen die zijn gemaakt in de regio's *US - oost*, *Azië - zuidoost* en *Europa - west*.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

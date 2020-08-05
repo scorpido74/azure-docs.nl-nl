@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 07/27/2020
+ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698305"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281341"
 ---
 # <a name="changelog"></a>Wijzigingenlogboek #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 (officiële update 1 juni 2020)
+
+### <a name="bug-fixes-235"></a>Opgeloste fouten 2.3.5
+
+- [Toegankelijkheid] ESC-toetslistener in deelvenster Opties is gekoppeld aan document
+- [Toegankelijkheid] Voorkomen dat de gebruikersinterface van de speler wordt weergegeven als de besturingsbalk of het menu opties focus bevat
+- De controlebalk toont een onjuiste kloktijd wanneer de Instellingen voor de Weergave van de Kloktijd zijn ingeschakeld
+
+### <a name="changes-235"></a>Wijzigingen 2.3.5
+
+- Er is een foutbericht toegevoegd voor de foutcode 0x00400005 en gedocumenteerd
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 (officiële update 4 maart 2020)
+
+### <a name="bug-fixes-234"></a>Opgeloste fouten 2.3.4
+
+- Kan PlayReady overrideLicenseAcquistionUrl niet instellen
+- Kan bepaalde inhoud met discontinuïteiten niet afspelen
+- [Toegankelijkheid] De waarde van het kenmerk ID voor schermlezerswaarschuwing moet uniek zijn
+- [Toegankelijkheid] Tijdens het navigeren in het dialoogvenster Instellingen voor Ondertiteling wordt de focus verplaatst van het dialoogvenster
+
+### <a name="changes-234"></a>Wijzigingen 2.3.4
+
+- Logboekinhoud: lengte na een succesvolle download om te helpen bij het analyseren van ontsleutelingsfouten 2.3.3 (officiële update 12 november 2019)
+
+### <a name="features-234"></a>Functies 2.3.4
+
+- Er is ondersteuning toegevoegd voor het weergeven van de kloktijd van een video als overlay, en op de besturingsbalk
+
+### <a name="bug-fixes-234"></a>Opgeloste fouten 2.3.4
+
+- Het schakelen tussen audionummers werkt, maar er is een fout opgetreden in de uitvoer van IE11 en Windows7 'Het object ondersteunt voor de eigenschap of methode niet 'ingeschakeld''
+- Schakelen tussen audionummers mislukt wanneer de buffer volledig is geladen
+- Het schakelen tussen audionummers mislukt wanneer de gebruiker de video pauzeert en zeer snel tussen audionummers schakelt
+- [Toegankelijkheid] Knopinfo niet gedefinieerd voor video-besturingselement onder Videospeler
+- Er ontbreken volumeknoppen op Html5, afhankelijk van wanneer 'loadstart' is ontvangen
+- [Toegankelijkheid] Geen manier om de alternatieve tekst voor de posterafbeelding in te stellen
+- [Toegankelijkheid] De toepassingsfocus gaat verloren nadat u 'Gereed' in het dialoogvenster instellingen voor ondertiteling hebt geselecteerd
+- [Toegankelijkheid] Er zijn onjuiste ARIA-kenmerken gedefinieerd voor 'video' onder 'preview van segmenten'
+
+### <a name="changes-234"></a>Wijzigingen 2.3.4
+
+- Leeg ondertitelingslabel/nummer verwijderd bij het afspelen van HLS op iOS en MacOS Safari
+- Het aantal 412s voor IMSC1-ondertitels is verminderd
+- Uitvoerwaarschuwing in de console voor 10 opeenvolgende lege IMSC1-ondertitels voor het oplossen van problemen met live foutopsporing
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 (officiële update 9 oktober 2019)
+
+### <a name="features"></a>Functies
+
+\- Toegevoegde PlayReady-ondersteuning voor het afspelen van DASH voor de Chromium Edge-browser
+
+### <a name="bug-fixes-232"></a>Opgeloste fouten 2.3.2
+
+- De huidige afspeelsnelheid wordt niet visueel weergegeven in het menu afspeelsnelheid, tenzij de gebruiker deze handmatig instelt
+- [Toegankelijkheid] Het deelvenster 'Instellingen' wordt niet samengevouwen met 'Esc'-toets
+- [Toegankelijkheid] AMP-sneltoets 'M' werkt niet als Verteller is ingeschakeld
+
+### <a name="changes-232"></a>Wijzigingen 2.3.2
+
+- Voor browsers die geen ondersteuning bieden voor E-AC3 audio-codec, worden E-AC3-audionummers verborgen in het menu audionummer
+- Voor browsers die ondersteuning bieden voor E-AC3 audio-codec, is standaard een E-AC3-audionummer geselecteerd
+- Voor browsers die geen ondersteuning bieden voor audio-codecs, worden audionummers met een andere codec dan het geselecteerde nummer verborgen in het menu audionummer
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 (officiële update 12 augustus 2019)
+
+### <a name="features-231"></a>Functies 2.3.1
+
+- Een gebeurtenis laten zien wanneer er emsg-vakken worden ontvangen in DASH-afspelen -Toegevoegde ondersteuning voor het weergeven van EC-3-audionummers in het audiomenu van browsers die EC-3 ondersteunen en het omschakelen van audionummer van AAC naar EC3 en vice versa alleen in de Chromimum-gebaseerde Edge-browser
+
+### <a name="bug-fixes-231"></a>Opgeloste fouten 2.3.1
+
+- Het menu audionummers is beschadigd nadat u de EC-3-nummers hebt verwijderd
+- De huidige tijd kan groter zijn dan de duur van de video
+- Het instellen van de afspeelsnelheid via initialSpeed werkt niet
+- Soms lijkt de speler vast te lopen
+- Wanneer u op Edge en Internet Explorer op een aanraakscherm drukt, wordt het juiste segment van de video niet nauwkeurig weergegeven wanneer u inzoomt op een pagina
+- [Toegankelijkheid] Het label Aria voor afspelen/onderbreken beschrijft niet videospeler. Live segment niet gevonden fout voor flashSS wordt niet aan de correcte amp-fout toegewezen
+- [Toegankelijkheid] Aria-rollen die worden gebruikt voor afspelen/onderbreken moeten voldoen aan geldige waarden (. vjs-text-track-display)
+- [Toegankelijkheid] Bepaalde ARIA-rollen moeten zijn opgenomen in bepaalde bovenliggende items
+- [Toegankelijkheid] Er is geen knopinfo gedefinieerd voor de knop afspelen/pauzeren van de IMSC1-ondertitels van de videospeler kunnen verdwijnen na het zoeken in de huidige video/audio-buffer
+
+### <a name="changes-231"></a>Wijzigingen 2.3.1
+
+- Bij het ophalen van een segmentDecryptError en als de speler zich al op de live edge bevindt, vernieuwt de speler nu het manifest in plaats van het volgende segment te proberen
+- Meer logboekregistratie toegevoegd voor diagnose
+- Bijgewerkte documentatie met FairPlay-ondersteuning voor iOS Safari
+- Er is een voorbeeld toegevoegd voor de optie 'srclang' van IMSC1
+- Opvulling, textPadding, boxShadow onderdrukkingen voor tekstnummer toegevoegd.
+- Er is een foutcode (0x0020025B) toegevoegd om te differentiëren dat het segment kan worden gedownload vanwege gebrek aan internet in plaats van alleen 0x00200259
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 (officiële release 30 april 2019)
+
+### <a name="features-230"></a>Functies 2.3.0
+
+- Ondersteuning toegevoegd voor IMSC1-ondertitels voor DASH
+- Ondersteuning toegevoegd voor alleen video-assets voor DASH
+- API-presentatie TimeOffsetInSec toegevoegd
+
+### <a name="bug-fixes-230"></a>Opgeloste fouten 2.3.0
+
+- Het AMP-profiel van de LowLatency-heuristiek kan problemen veroorzaken bij afspeelfuncties 'dempen' en 'dempen opheffen' van iOS-video en sommige talen hebben onjuiste vertalingen
+- De aria-valuenow-waarde van de voortgangsbalk-schuifrelegaar is soms onjuist
+- De waarde van de ariarol van tekstnummerweergave is onjuist
+
+### <a name="changes-230"></a>Wijzigingen 2.3.0
+
+- De logboeken bevatten nu de grootte van de gedownloade mediafragmenten
+- De ondersteuning voor IE 9 en IE 10 is verwijderd
+- Bijgewerkt CEA708-voorbeeld om links uitgelijnde ondertiteling weer te geven
+- MediaError.message toegevoegd aan logboeken voor afspeelfouten
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4 (officiële update 22 februari 2019) ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "83698305"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (officiële update 9 januari 2019) ##
 
-### <a name="features"></a>Functies ###
+### <a name="features-223"></a>Functies 2.2.3 ###
 
 - [Functie][HLS] Het audionummermenu is toegevoegd voor Safari HLS-afspelen
 
@@ -72,7 +184,7 @@ ms.locfileid: "83698305"
 
 ### <a name="changes"></a>Wijzigingen ###
 
-- [Wijziging][Live-ondertiteling] API-naam voor CEA-bijschriften gewijzigd van 608 in 708. Zie [CEA708 Captions Settings](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)--> (Engelstalig) voor meer informatie
+- [Wijziging][Live-ondertiteling] API-naam voor CEA-bijschriften gewijzigd van 608 in 708. Zie [CEA708 Captions Settings](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)--> (Engelstalig) voor meer informatie
 
 ## <a name="220-official-release"></a>2.2.0 (officiële versie) ##
 

@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520626"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288875"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,13 +27,13 @@ Met ParallelRunStep kunt u eenvoudig offline deducties omhoog schalen naar grote
 
 In dit artikel komen de volgende taken aan bod:
 
-> * Resources voor machine learning instellen.
-> * Gegevensinvoer en -uitvoer voor batchdeductie configureren.
-> * Het vooraf getrainde afbeeldingsclassificatiemodel voorbereiden op basis van de [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/)-gegevensset. 
-> * Uw deductiescript schrijven.
-> * Een [pijplijn voor machine learning](concept-ml-pipelines.md) maken met ParallelRunStep en batchdeductie uitvoeren op MNIST-testafbeeldingen. 
-> * Een batchdeductie opnieuw verzenden met nieuwe gegevensinvoer en parameters. 
-> * Bekijk de resultaten.
+> 1. Resources voor machine learning instellen.
+> 1. Gegevensinvoer en -uitvoer voor batchdeductie configureren.
+> 1. Het vooraf getrainde afbeeldingsclassificatiemodel voorbereiden op basis van de [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/)-gegevensset. 
+> 1.  Uw deductiescript schrijven.
+> 1. Een [pijplijn voor machine learning](concept-ml-pipelines.md) maken met ParallelRunStep en batchdeductie uitvoeren op MNIST-testafbeeldingen. 
+> 1. Een batchdeductie opnieuw verzenden met nieuwe gegevensinvoer en parameters. 
+> 1. Bekijk de resultaten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -100,6 +100,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ## <a name="configure-inputs-and-output"></a>Invoer en uitvoer configureren
 
@@ -203,16 +205,16 @@ model = Model.register(model_path="models/",
 Het script *moet* twee functies bevatten:
 - `init()`: Gebruik deze functie voor een kostbare of algemene voorbereiding voor latere deductie. Gebruik het bijvoorbeeld om het model in een algemeen object te laden. Deze functie wordt slecht één keer aangeroepen, aan het begin van het proces.
 -  `run(mini_batch)`: De functie wordt uitgevoerd voor elk exemplaar van `mini_batch`.
-    -  `mini_batch`: ParallelRunStep roept de uitvoermethode aan en geeft een lijst of Pandas DataFrame op als argument aan de methode. Elk element in mini_batch is - een bestandspad als een invoer een FileDataset is, of een Pandas DataFrame als de invoer een TabularDataset is.
-    -  `response`: run()-methode moet resulteren in een Pandas DataFrame of een matrix. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoerbestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoeracties geeft elk geretourneerde uitvoerelement een geslaagde uitvoering van een invoerelement in de mini-batch aan. Zorg dat er voldoende gegevens worden opgenomen in het resultaat van de uitvoering om invoer toe te wijzen aan de uitvoerresultaten. Uitvoer wordt naar het uitvoerbestand geschreven en bevindt zich niet altijd in de juiste volgorde. Gebruik een sleutel in de uitvoer om deze toe te wijzen aan de invoer.
+    -  `mini_batch`: `ParallelRunStep` roept de uitvoermethode aan en geeft een lijst of pandas-`DataFrame` op als argument aan de methode. Elke vermelding in mini_batch is een bestandspad als de invoer een `FileDataset` is, of een pandas-`DataFrame` als de invoer een `TabularDataset` is.
+    -  `response`: run()-methode moet resulteren in een pandas-`DataFrame` of een matrix. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoerbestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoeracties geeft elk geretourneerde uitvoerelement een geslaagde uitvoering van een invoerelement in de mini-batch aan. Zorg dat er voldoende gegevens worden opgenomen in het resultaat van de uitvoering om invoer toe te wijzen aan de uitvoerresultaten. Uitvoer wordt naar het uitvoerbestand geschreven en bevindt zich niet altijd in de juiste volgorde. Gebruik een sleutel in de uitvoer om deze toe te wijzen aan de invoer.
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -287,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig` is de voornaamste configuratie voor `ParallelRunStep`-exemplaar in de Azure Machine Learning-pijplijn. U gebruikt dit om uw script te verpakken en de nodige parameters te configureren, waaronder alle volgende vermeldingen:
 - `entry_script`: Een gebruikersscript als een lokaal bestandspad dat parallel wordt uitgevoerd op meerdere knooppunten. Als `source_directory` aanwezig is, gebruikt dan een relatief pad. Zoniet, gebruik dan een pad dat toegankelijk is op de machine.
-- `mini_batch_size`: De grootte van de mini-batch die is doorgegeven aan een enkele `run()`-aanroep. (optioneel; de standaardwaarde is `10` bestanden voor FileDataset en `1MB` voor TabularDataset.)
+- `mini_batch_size`: De grootte van de mini-batch die is doorgegeven aan een enkele `run()`-aanroep. (optioneel; de standaardwaarde is `10`-bestanden voor `FileDataset` en `1MB` voor `TabularDataset`.)
     - Voor `FileDataset` is dit het aantal bestanden met een minimumwaarde `1`. U kunt meerdere bestanden combineren in één mini-batch.
     - Voor `TabularDataset` is dit de grootte van de gegevens. Voorbeeldwaarden zijn `1024`, `1024KB`, `10MB` en `1GB`. De aanbevolen waarde is `1MB`. De mini-batch van `TabularDataset` zal nooit bestandsgrenzen overschrijden. Als u bijvoorbeeld een .csv-bestand heeft met verschillende groottes, dan is het kleinste bestan 100 KB en het grootste 10 MB. Als u `mini_batch_size = 1MB` instelt, worden bestanden met een grootte van minder dan 1 MB beschouwd als één mini-batch. Bestanden met een grootte van meer dan 1 MB, worden in verschillende mini-batches opgedeeld.
 - `error_threshold`: Het aantal recordfouten voor `TabularDataset` en bestandsfouten voor `FileDataset` die tijdens de verwerking genegeerd mogen worden. Als het aantal fouten voor de volledige invoer boven deze waarde komt, wordt de taak afgebroken. De drempelwaarde voor fouten geldt voor de volledige invoer, niet voor afzonderlijke mini-batches die naar de `run()`-methode verzonden worden. Het bereik is `[-1, int.max]`. Het deel `-1` geeft aan dat alle fouten tijdens de verwerking genegeerd worden.
@@ -304,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: De aanroeptime-out voor de `run()`-methode in seconden. (optioneel; standaardwaarde is `60`)
 - `run_max_try`: Maximum aantal pogingen van `run()` voor een mini-batch. Een `run()` is mislukt als er een uitzondering wordt gegenereerd of er niets wordt geretourneerd wanneer `run_invocation_timeout` is bereikt (optioneel; de standaardwaarde is `3`). 
 
-U kunt `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` en `run_max_try` als `PipelineParameter` opgeven, zodat u de parameterwaarden kunt aanpassen wanneer u een pijplijnuitvoering opnieuw verzendt. In dit voorbeeld gebruikt u PipelineParameter voor `mini_batch_size` en `Process_count_per_node`. Wanneer u later een uitvoering opnieuw verzendt, verandert u deze waarden. 
+U kunt `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` en `run_max_try` als `PipelineParameter` opgeven, zodat u de parameterwaarden kunt aanpassen wanneer u een pijplijnuitvoering opnieuw verzendt. In dit voorbeeld gebruikt u `PipelineParameter` voor `mini_batch_size` en `Process_count_per_node`. Wanneer u later een uitvoering opnieuw verzendt, verandert u deze waarden. 
 
 In dit voorbeeld wordt ervan uitgegaan dat u het `digit_identification.py`-script gebruikt dat eerder besproken werd. Als u uw eigen script gebruikt, wijzigt u de parameters `source_directory` en `entry_script`.
 
@@ -394,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>De resultaten bekijken
 
-De resultaten van de bovenstaande uitvoering worden als uitvoergegevens geschreven naar het gegevensarchief dat is opgegeven in het PipelineData-object, dat in dit geval de naam *inferences* heeft. De resultaten worden opgeslagen in de standaard-blobcontainer. U kunt naar uw opslagaccount navigeren en de resultaten bekijken via Storage Explorer. Het bestandspad is azureml-blobstore-*GUID*/azureml/*RunId*/*uitvoermap*.
+De resultaten van de bovenstaande uitvoering worden als uitvoergegevens geschreven naar het `DataStore` dat is opgegeven in het `PipelineData`-object, dat in dit geval *inferences* wordt genoemd. De resultaten worden opgeslagen in de standaard-blobcontainer. U kunt naar uw opslagaccount navigeren en de resultaten bekijken via Storage Explorer. Het bestandspad is azureml-blobstore-*GUID*/azureml/*RunId*/*uitvoermap*.
 
 U kunt deze gegevens ook downloaden om de resultaten te bekijken. Hieronder ziet u de voorbeeldcode om de eerste tien rijen weer te geven.
 

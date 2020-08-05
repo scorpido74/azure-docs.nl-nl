@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496045"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387333"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Gedeelde Azure Synapse Analytics-metagegevens
 
@@ -40,7 +40,7 @@ Het gedeelde metagegevensmodel ondersteunt het moderne datawarehousepatroon op d
 
 Objectsynchronisatie vindt asynchroon plaats. Er is een lichte vertraging van enkele seconden tot objecten worden weergegeven in de SQL-context. Zodra ze worden weergegeven, kunnen er query's op worden uitgevoerd. Ze kunnen echter niet worden bijgewerkt of gewijzigd door de SQL-engines die er toegang toe hebben.
 
-## <a name="which-metadata-objects-are-shared"></a>Welke metagegevensobjecten worden gedeeld?
+## <a name="shared-metadata-objects"></a>Gedeelde metagegevensobjecten
 
 Met Spark kunt u databases, externe tabellen, beheerde tabellen en weergaven maken. Aangezien voor Spark-weergaven een Spark-engine nodig is voor het verwerken van de definiërende Spark SQL-instructie en deze niet kan worden verwerkt door een SQL-engine, worden alleen databases en de bijbehorende externe en beheerde tabellen die gebruikmaken van de Parquet-opslagindeling gedeeld met de werkruimte-SQL-engine. Spark-weergaven worden alleen gedeeld tussen exemplaren van de Spark-pool.
 

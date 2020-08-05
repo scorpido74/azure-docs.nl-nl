@@ -2,56 +2,54 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237664"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132880"
 ---
 Deze snelstart op basis van Postman begeleidt u bij het ophalen van een antwoord uit een knowledge base.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Meest recente [**Postman**](https://www.getpostman.com/).
-* U moet beschikken over
+* U moet het volgende hebben
     * Een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)
-    * Een getrainde en gepubliceerde [kennis database met vragen en antwoorden die](../Quickstarts/add-question-metadata-portal.md) zijn gebouwd op basis van de Quick start is geconfigureerd met meta gegevens en Chit Chat.
+    * Een getrainde en gepubliceerde [knowledge base met vragen en antwoorden](../Quickstarts/add-question-metadata-portal.md), gebouwd op basis van de vorige quickstart, is geconfigureerd met metagegevens en weergepraat.
 
 > [!NOTE]
-> Wanneer u klaar bent voor het genereren van een antwoord op een vraag uit uw Knowledge Base, moet u uw kennis basis [trainen](../Quickstarts/create-publish-knowledge-base.md#save-and-train) en [publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) . Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. Het tabblad **postman** bevat de instellingen die nodig zijn voor het genereren van een antwoord.
+> Wanneer u klaar bent voor het genereren van een antwoord op een vraag uit uw knowledge base, moet u uw knowledge base [trainen](../Quickstarts/create-publish-knowledge-base.md#save-and-train) en [publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base). Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. Het tabblad **Postman** toont de instellingen die vereist zijn voor het genereren van een antwoord.
 
 ## <a name="set-up-postman-for-requests"></a>Postman voor aanvragen instellen
 
-Deze Snelstartgids maakt gebruik van dezelfde instellingen voor **de post van** postman en vervolgens wordt geconfigureerd voor de JSON van de hoofd tekst die naar de service wordt verzonden op basis van waarvoor u een query wilt uitvoeren.
+Deze quickstart maakt gebruik van dezelfde instellingen voor de Postman-aanvraag **POST** en configureert vervolgens naar de hoofdtekst van de JSON die wordt verzonden naar de service op basis van waarvoor u een query wilt uitvoeren.
 
-Gebruik deze procedure voor het configureren van Postman en lees elke volgende sectie om de JSON van de hoofd tekst te configureren.
+Gebruik deze procedure voor het configureren van Postman en lees elke volgende sectie om de JSON van de hoofdtekst te configureren.
 
-1. Selecteer op de pagina **instellingen** van de Knowledge Base het tabblad **postman** voor een overzicht van de configuratie die wordt gebruikt voor het genereren van een antwoord uit de Knowledge Base. Kopieer de volgende informatie om te gebruiken in postman.
+1. Selecteer op de pagina **Instellingen** van de knowledge base het tabblad **Postman** om de configuratie te zien die wordt gebruikt voor het genereren van een antwoord uit de knowledge base. Kopieer de volgende informatie om te gebruiken in Postman.
 
-    |Name|Instelling|Doel en waarde|
+    |Naam|Instelling|Doel en waarde|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Dit is de HTTP-methode en route voor de URL.|
-    |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Dit is de host van de URL. Voeg de host en post-waarden toe om de volledige generateAnswer-URL op te halen.|
-    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|De waarde van de header voor om uw aanvraag in azure te autoriseren. |
-    |`Content-type`|`application/json`|De waarde voor de header van uw inhoud.|
-    ||`{"question":"<Your question>"}`|De hoofd tekst van de POST-aanvraag als een JSON-object. Deze waarde wordt in elk van de volgende secties gewijzigd, afhankelijk van de bedoeling van de query.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Dit is de host van de URL. Voeg de Host en Post-waarden toe om de volledige generateAnswer-URL op te halen.|
+    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|De waarde van de header om uw aanvraag in Azure te autoriseren. |
+    |`Content-type`|`application/json`|De headerwaarde van uw inhoud.|
+    ||`{"question":"<Your question>"}`|De hoofdtekst van de POST-aanvraag als een JSON-object. Deze waarde wordt in elk van de volgende secties gewijzigd, afhankelijk van de bedoeling van de query.|
 
-1. Open postman en maak een nieuwe Basic **post** -aanvraag met uw gepubliceerde Knowledge Base-instellingen. Wijzig in de volgende secties de JSON POST Body om de query te wijzigen in uw Knowledge Base.
+1. Open Postman en maak een nieuwe basis **POST**-aanvraag met uw gepubliceerde knowledge base-instellingen. Wijzig in de volgende secties de JSON POST-hoofdtekst om de query te wijzigen in uw knowledge base.
 
-## <a name="use-metadata-to-filter-answer"></a>Meta gegevens gebruiken om antwoord te filteren
+## <a name="use-metadata-to-filter-answer"></a>Metagegevens gebruiken om antwoord te filteren
 
-In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om onderscheid te maken tussen twee verschillende vragen. Voeg de meta gegevens toe aan de query om het filter te beperken tot alleen het relevante QnA-paar.
+In een vorige quickstart zijn metagegevens toegevoegd aan twee QnA-paren om onderscheid te maken tussen twee verschillende vragen. Voeg de metagegevens toe aan de query om het filter te beperken tot alleen het relevante QnA-paar.
 
-1. Wijzig in postman alleen de query JSON door de `strictFilters` eigenschap met het paar naam/waarde van toe te voegen `service:qna_maker` . De JSON van de hoofd tekst moet:
+1. Wijzig in Postman alleen de query JSON door de eigenschap `strictFilters` toe te voegen met de combinatie van naam/waarde van `service:qna_maker`. De JSON van de hoofdtekst moet het volgende zijn:
 
     ```json
     {
@@ -64,11 +62,11 @@ In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om 
     }
     ```
 
-    De vraag is slechts één woord, `size` waarmee een van de twee vraag-en antwoord paren kunnen worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen de `qna_maker` antwoorden.
+    De vraag is slechts één woord, `size`, waarmee een van de twee paren vragen en antwoorden kan worden geretourneerd. De matrix `strictFilters` vertelt u de respons om alleen de `qna_maker`-antwoorden te verminderen.
 
-1. Het antwoord bevat alleen het antwoord dat voldoet aan de filter criteria.
+1. Het respons bevat alleen het antwoord dat voldoet aan de filtercriteria.
 
-    Het volgende antwoord is opgemaakt voor de Lees baarheid:
+    Het volgende antwoord is opgemaakt voor betere leesbaarheid:
 
     ```JSON
     {
@@ -103,16 +101,16 @@ In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om 
     }
     ```
 
-    Als er een vraag-en antwoord paar is dat niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt het niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
+    Als er een vraag-en-antwoordpaar is dat niet voldoet aan de zoekterm maar wel aan het filter voldoet, wordt het niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
 
-## <a name="use-debug-query-property"></a>Eigenschap debug query gebruiken
+## <a name="use-debug-query-property"></a>Query-eigenschap fouten opsporen gebruiken
 
 > [!NOTE]
->Het gebruik van de eigenschap debug voor een afhankelijkheid wordt niet aanbevolen. Deze eigenschap is toegevoegd om het product team te helpen bij het oplossen van problemen.
+>Het gebruik van de eigenschap fouten opsporen voor een afhankelijkheid wordt niet aanbevolen. Deze eigenschap is toegevoegd om het productteam te helpen bij het oplossen van problemen.
 
-Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de `debug` eigenschap toe:
+Informatie over foutopsporing geeft u inzicht in hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de eigenschap `debug` toe:
 
-1. Wijzig in postman alleen de JSON van de hoofd tekst door de eigenschap toe te voegen `debug` . De JSON moet zijn:
+1. Wijzig in Postman alleen de JSON van de hoofdtekst door de eigenschap `debug` toe te voegen. De JSON moet het volgende zijn:
 
     ```json
     {
@@ -124,7 +122,7 @@ Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwo
     }
     ```
 
-1. Het antwoord bevat de relevante informatie over het antwoord. In de volgende JSON-uitvoer zijn bepaalde foutopsporingsinformatie-gegevens vervangen door weglatings tekens.
+1. De respons bevat de relevante informatie over het antwoord. In de volgende JSON-uitvoer zijn een aantal foutopsporingsgegevens vervangen door het weglatingsteken.
 
     ```console
     {
@@ -214,11 +212,11 @@ Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwo
     }
     ```
 
-## <a name="use-test-knowledge-base"></a>Test kennis basis gebruiken
+## <a name="use-test-knowledge-base"></a>Test-knowledge base gebruiken
 
-Als u een antwoord wilt ontvangen van de test Knowledge Base, gebruikt u de `isTest` eigenschap Body.
+Als u een antwoord wilt ontvangen van de test-knowledge base, gebruikt u de hoofdteksteigenschap `isTest`.
 
-Wijzig in postman alleen de JSON van de hoofd tekst door de eigenschap toe te voegen `isTest` . De JSON moet zijn:
+Wijzig in Postman alleen de JSON van de hoofdtekst door de eigenschap `isTest` toe te voegen. De JSON moet het volgende zijn:
 
 ```json
 {
@@ -227,14 +225,14 @@ Wijzig in postman alleen de JSON van de hoofd tekst door de eigenschap toe te vo
 }
 ```
 
-In het JSON-antwoord wordt hetzelfde schema gebruikt als voor de gepubliceerde Knowledge Base-query.
+In de JSON-respons wordt hetzelfde schema gebruikt als voor de gepubliceerde knowledge base-query.
 
 > [!NOTE]
-> Als de test en de gepubliceerde kennis bases exact hetzelfde zijn, kan er nog een kleine variatie optreden omdat de test index wordt gedeeld tussen alle kennis grondslagen in de resource.
+> Als de test en de gepubliceerde knowledge bases exact hetzelfde zijn, kan er nog een kleine variatie optreden omdat de testindex wordt gedeeld tussen alle knowledge bases in de resource.
 
-## <a name="query-for-a-chit-chat-answer"></a>Een query uitvoeren voor een Chit-Chat-antwoord
+## <a name="query-for-a-chit-chat-answer"></a>Zoeken naar een heen- en weergepraatantwoord
 
-1. Wijzig in postman alleen de JSON van de hoofd tekst in een instructie voor het beëindigen van een conversatie van de gebruiker. De JSON moet zijn:
+1. Wijzig in Postman alleen de JSON van de hoofdtekst in een instructie voor het beëindigen van een gesprek van de gebruiker. De JSON moet het volgende zijn:
 
     ```json
     {
@@ -242,7 +240,7 @@ In het JSON-antwoord wordt hetzelfde schema gebruikt als voor de gepubliceerde K
     }
     ```
 
-1. Het antwoord bevat de score en het antwoord.
+1. De respons bevat de score en het antwoord.
 
     ```json
     {
@@ -324,13 +322,13 @@ In het JSON-antwoord wordt hetzelfde schema gebruikt als voor de gepubliceerde K
     }
     ```
 
-    Omdat de vraag `Thank you` precies overeenkwam met een heen- en weergepraatvraag, is QnA Maker volledig zeker met de score van 100. QnA Maker heeft ook alle gerelateerde vragen geretourneerd, evenals de meta gegevens eigenschap met de Chit-Chat-meta gegevens code gegevens.
+    Omdat de vraag `Thank you` precies overeenkwam met een heen- en weergepraatvraag, is QnA Maker volledig zeker met de score van 100. QnA Maker heeft ook alle gerelateerde vragen geretourneerd, evenals de metagegevenseigenschap met de informatie over de tag met heen- en weergepraatmetagegevens.
 
-## <a name="use-threshold-and-default-answer"></a>Drempel en standaard antwoord gebruiken
+## <a name="use-threshold-and-default-answer"></a>Drempel en standaardantwoord gebruiken
 
-U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt voldaan aan de drempel waarde, wordt het standaard antwoord geretourneerd.
+U kunt een minimale drempelwaarde voor het antwoord aanvragen. Als niet wordt voldaan aan de drempelwaarde, wordt het standaardantwoord geretourneerd.
 
-1. Wijzig in postman alleen de JSON van de hoofd tekst in een instructie voor het beëindigen van een conversatie van de gebruiker. De JSON moet zijn:
+1. Wijzig in Postman alleen de JSON van de hoofdtekst in een instructie voor het beëindigen van een gesprek van de gebruiker. De JSON moet het volgende zijn:
 
     ```json
     {
@@ -339,9 +337,9 @@ U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt v
     }
     ```
 
-    De Knowledge Base mag dat antwoord niet vinden omdat de Score van de vraag 71% is en het standaard antwoord dat u hebt ingevoerd tijdens het maken van de Knowledge Base, in plaats daarvan wordt geretourneerd.
+    De knowledge base mag dat antwoord niet vinden omdat de score van de vraag 71% is en het standaardantwoord dat u hebt ingevoerd tijdens het maken van de Knowledge Base, in plaats daarvan wordt geretourneerd.
 
-    Het geretourneerde JSON-antwoord, inclusief de score en het antwoord is:
+    Het geretourneerde JSON-response, inclusief de score en het antwoord is:
 
     ```json
     {
@@ -360,9 +358,9 @@ U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt v
     }
     ```
 
-    QnA Maker heeft een score geretourneerd van `0` , wat betekent dat u geen betrouw baarheid hebt. Ook wordt het standaard antwoord geretourneerd.
+    QnA Maker heeft een score geretourneerd van `0`, wat geen betrouwbaarheid betekent. Ook wordt het standaardantwoord geretourneerd.
 
-1. Wijzig de drempel waarde in 60% en vraag de query opnieuw aan:
+1. Wijzig de drempelwaarde in 60% en vraag de query opnieuw aan:
 
     ```json
     {

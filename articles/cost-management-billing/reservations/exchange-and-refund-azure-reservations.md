@@ -3,26 +3,25 @@ title: Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen
 description: Meer informatie over hoe u Azure-reserveringen kunt inwisselen of retourneren.
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 3f41f26e6934e156ab38340a74e2c070b26cefb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807686"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287649"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inruilen en retourneren voor Azure Reservations
 
-Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoeften. U kunt een reservering voor een andere reservering van hetzelfde type omruilen; dat wil zeggen: u kunt een reservering voor een virtuele machine inruilen om een reservering aan te schaffen voor een virtuele machine van welke grootte of in welke regio dan ook. Op vergelijkbare wijze kan een SQL PaaS Database-reservering worden ingeruild om een reservering aan te schaffen voor een SQL PaaS Database van welk type of in welke regio dan ook. U kunt ook het geld voor reserveringen terugkrijgen, maar het totaal aan geannuleerde reserveringstoezeggingen mag niet hoger zijn dan USD 50.000 in een voortschrijdende periode van 12 maanden. Gereserveerde Azure Databricks-capaciteit, Azure VMware-oplossingen via een CloudSimple-reservering, Azure Red Hat Open Shift-reserveringen, Red Hat-plannen en SUSE Linux-plannen komen niet in aanmerking voor restitutie.
+Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoeften. U kunt een reservering inwisselen voor een andere reservering van hetzelfde type. U kunt bijvoorbeeld een virtuele machinereservering omruilen om een andere reservering te kopen voor elke andere VM-grootte of -regio. Op vergelijkbare wijze kan een SQL PaaS Database-reservering worden ingeruild om elke reservering aan te schaffen voor een SQL PaaS Database van welk type of in welke regio dan ook. U kunt ook reserveringen terugbetalen, maar het totaal van alle geannuleerde reserveringen in uw factureringsbereik (zoals EA, Microsoft Customer Agreement en Microsoft Partner-klantovereenkomst) mag niet hoger zijn dan USD 50.000 in een doorlopende periode van 12 maanden. Gereserveerde Azure Databricks-capaciteit, Azure VMware-oplossingen via een CloudSimple-reservering, Azure Red Hat Open Shift-reserveringen, Red Hat-plannen en SUSE Linux-plannen komen niet in aanmerking voor restitutie.
 
 De selfserviceoptie voor inwisselen en annuleren is niet beschikbaar voor Enterprise Agreement-klanten van de Amerikaanse overheid. Andere abonnementstypen voor de Amerikaanse overheid, zoals Betalen per gebruik en CSP, (Cloud Solution Provider) worden wel ondersteund.
 
-U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reservering in te wisselen of er een restitutie voor te krijgen. U kunt [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
-
 > [!NOTE]
-> Microsoft brengt momenteel geen kosten in rekening voor vroegtijdige beëindiging voor restitutie van reserveringen. Mogelijk worden in de toekomst wel kosten voor restituties in rekening gebracht. Momenteel staat er geen datum voor het inschakelen van de kosten gepland.
+> - **U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reservering in te wisselen of er een restitutie voor te krijgen.** U kunt [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - Microsoft brengt momenteel geen kosten in rekening voor vroegtijdige beëindiging voor restitutie van reserveringen. Mogelijk worden in de toekomst wel kosten voor restituties in rekening gebracht. Momenteel staat er geen datum voor het inschakelen van de kosten gepland.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Een bestaande reservering inwisselen of restitueren
 
@@ -76,7 +75,8 @@ Azure heeft de volgende beleidsregels voor annuleringen, inwisselingen en restit
 **Restitutiebeleid**
 
 - Momenteel worden geen kosten voor vroegtijdige beëindiging in rekening gebracht, maar mogelijk geldt in de toekomst bij annuleringen een tarief van 12% voor vroegtijdige beëindiging.
-- De totaal geannuleerde toezegging mag niet groter zijn dan USD 50.000 in een voortschrijdende periode van 12 maanden. Bijvoorbeeld: voor een reservering van drie jaar à USD 100 per maand die in de 18e maand is terugbetaald, bedraagt de geannuleerde toezegging USD 1800. Na de terugbetaling is uw nieuwe beschikbare limiet voor restitutie USD 48.200. Binnen 365 dagen na deze restitutie wordt de limiet van USD 48.200 met USD 1800 verhoogd en heeft uw nieuwe pool een waarde van USD 50.000. Elke andere annulering van een reservering wordt van dezelfde pool afgetrokken en dezelfde aanvullingslogica wordt toegepast.
+- De totale geannuleerde toezegging mag niet groter zijn dan 50.000 USD in een doorlopende periode van 12 maanden voor een factureringsprofiel of één inschrijving. Bijvoorbeeld: voor een reservering van drie jaar à USD 100 per maand en die in de 18e maand is terugbetaald, bedraagt de geannuleerde toezegging USD 1800. Na de terugbetaling is uw nieuwe beschikbare limiet voor restitutie USD 48.200. Binnen 365 dagen na de restitutie wordt de limiet van USD 48.200 met USD 1800 verhoogd en heeft uw nieuwe pool een waarde van USD 50.000. Elke andere annulering van een reservering voor het factureringsprofiel of de EA-inschrijving wordt van dezelfde pool afgetrokken en dezelfde aanvullingslogica wordt toegepast.
+- In Azure wordt geen terugbetaling verwerkt die de limiet van 50.000 USD overschrijdt in een periode van twaalf maanden voor een factureringsprofiel of EA-inschrijving.
 - Restituties worden berekend op basis van de laagste prijs, zijnde de aankoopprijs of de huidige prijs van de reservering, welke het laagste is.
 - Alleen eigenaren van reserveringsorders kunnen een restitutie verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 

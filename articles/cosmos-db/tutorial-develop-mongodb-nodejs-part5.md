@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f77c20faa87adf28a2dda43412a59867309c7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066914"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Mongoose gebruiken om verbinding te maken met Cosmos DB
 
@@ -230,7 +230,7 @@ Laten we de bovenstaande code nog eens even bekijken. We hebben eerst het bestan
 
 Voer nu de app uit door de volgende stappen te volgen:
 
-1. Sla alle wijzigingen op in Visual Studio Code. Selecteer aan de linkerkant de knop **Debug**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) en selecteer vervolgens de knop **Start Debugging**![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+1. Sla alle wijzigingen op in Visual Studio Code. Selecteer de knop **Fouten opsporen** aan de linkerkant :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png":::, en selecteer vervolgens de knop **Foutopsporing starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png":::.
 
 1. Schakel nu over naar de browser. Open de **hulpprogramma's voor ontwikkelaars** en ga naar het tabblad **Network**. Ga naar `http://localhost:3000` en daar ziet u de toepassing.
 

@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002024"
 ---
 ## <a name="create-a-device-template"></a>Een apparaatsjabloon maken
 
@@ -79,12 +79,11 @@ Voeg in uw Azure IoT Central-toepassing een echt apparaat toe aan de apparaatsja
 
 1. Selecteer op de pagina **Apparaten** de apparaatsjabloon **Omgevingssensor**.
 
-    > [!TIP]
-    > Zorg ervoor dat u de sjabloon selecteert die u wilt gebruiken voordat u **+ Nieuw** selecteert, anders maakt u een niet-gekoppeld apparaat.
-
 1. Selecteer **+ Nieuw**.
 
-1. Zorg ervoor dat **Gesimuleerd** **Uit** is. Selecteer vervolgens **Maken**.
+1. Zorg ervoor dat in het dialoogvenster **Een nieuw apparaat maken** het sjabloontype **Omgevingssensor** is en dat **Dit apparaat simuleren?** is ingesteld op **Nee**.
+
+1. Selecteer vervolgens **Maken**.
 
 Klik op de apparaatnaam en selecteer vervolgens **Verbinding maken**. Noteer de verbindingsgegevens voor het apparaat op de pagina **Apparaatverbinding** - **Id-bereik**, **Apparaat-id** en **Primaire sleutel**. U hebt deze waarden nodig wanneer u uw apparaatcode maakt:
 

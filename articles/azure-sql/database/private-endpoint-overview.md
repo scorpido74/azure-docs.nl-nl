@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063271"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link voor Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ In het resultaat ziet u dat één IP-adres actief is. dat overeenkomt met het IP
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Controleer de connectiviteit met behulp van SQL Server Management Studio (SSMS)
 > [!NOTE]
-> Gebruik de **FQDN (Fully Qualified Domain Name)** van de server in verbindingstekenreeksen voor uw clients. Aanmeldingspogingen rechtstreeks naar het IP-adres zullen falen. Dit gedrag is inherent aan het ontwerp, omdat het privé-eindpunt verkeer naar de SQL-gateway in de regio routeert en de FQDN moet worden opgegeven voor aanmeldingen om te slagen.
+> Gebruik de **FQDN (Fully Qualified Domain Name)** van de server in verbindingstekenreeksen voor uw clients (`<server>.database.windows.net`). Aanmeldingspogingen rechtstreeks naar het IP-adres of met behulp van de FQDN van de privékoppeling (`<server>.privatelink.database.windows.net`) zullen falen. Dit gedrag is inherent aan het ontwerp, omdat het privé-eindpunt verkeer naar de SQL-gateway in de regio routeert en de juiste FQDN moet worden opgegeven om aanmeldingen te laten slagen.
 
 Volg de onderstaande stappen voor gebruik van [SSMS om verbinding te maken met de SQL Database](connect-query-ssms.md). Nadat u verbinding hebt gemaakt met de SQL Database met behulp van SSMS, controleert u of u verbinding maakt vanaf het privé-IP-adres van de Azure VM door de volgende query uit te voeren:
 

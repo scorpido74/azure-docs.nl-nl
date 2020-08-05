@@ -1,6 +1,6 @@
 ---
 title: Meldingen verzenden naar Universal Windows Platform-apps met behulp van Azure Notification Hubs | Microsoft Docs
-description: Lean Azure Notification Hubs gebruiken om meldingen te pushen naar een Windows Universal platform-toepassing.
+description: Leer hoe u Azure Notification Hubs gebruikt om meldingen naar een UWP-toepassing (universeel Windows-platform) te pushen.
 services: notification-hubs
 documentationcenter: windows
 author: sethmanheim
@@ -15,23 +15,23 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127059"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076694"
 ---
-# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Zelf studie: meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs
+# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Zelfstudie: Meldingen verzenden naar UWP-apps met behulp van Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-In deze zelfstudie maakt u een Notification Hub om pushmeldingen te verzenden naar een UWP-app (Universal Windows Platform). U maakt een lege Windows Store-app die pushmeldingen ontvangt via Windows Push Notification Service (WNS). Daarna kunt u de notification hub gebruiken om Push meldingen uit te zenden naar alle apparaten waarop uw app wordt uitgevoerd.
+In deze zelfstudie maakt u een Notification Hub om pushmeldingen te verzenden naar een UWP-app (Universal Windows Platform). U maakt een lege Windows Store-app die pushmeldingen ontvangt via Windows Push Notification Service (WNS). Vervolgens gebruikt u uw Notification Hub om pushmeldingen te verzenden naar alle apparaten waarop uw app wordt uitgevoerd.
 
 > [!NOTE]
 > De volledige code voor deze zelfstudie vindt u op [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample).
 
-Voer de volgende stappen uit:
+U voert de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Een app maken in Windows Store
@@ -42,14 +42,14 @@ Voer de volgende stappen uit:
 ## <a name="prerequisites"></a>Vereisten
 
 - **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-- Micro soft Visual Studio 2017 of hoger. In het voor beeld in deze zelf studie wordt [Visual Studio 2019](https://www.visualstudio.com/products)gebruikt.
-- [Ontwikkelhulpprogramma's voor UWP-apps geïnstalleerd](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- Microsoft Visual Studio 2017 of hoger. In het voorbeelden in deze zelfstudie wordt [Visual Studio 2019](https://www.visualstudio.com/products) gebruikt.
+- [Ontwikkelhulpprogramma's voor UWP-apps geïnstalleerd](/windows/uwp/get-started/get-set-up)
 - Een actief Windows Store-account
-- Controleer of de instelling **meldingen ontvangen van apps en andere afzenders** is ingeschakeld. 
-    - Start het venster **instellingen** op de computer.
-    - Selecteer de **systeem** tegel.
-    - Selecteer **meldingen & acties** in het menu links. 
-    - Controleer of de instelling **meldingen ontvangen van apps en andere afzenders** is ingeschakeld. Als de functie niet is ingeschakeld, schakelt u deze in.
+- Controleer of **Meldingen van apps en andere afzenders ontvangen** is ingeschakeld. 
+    - Open het venster **Instellingen** op de computer.
+    - Selecteer de tegel **Systeem**.
+    - Selecteer **Meldingen en acties** in het menu aan de linkerkant. 
+    - Controleer of de instelling **Meldingen van apps en andere afzenders ontvangen** is ingeschakeld. Als dat niet het geval is, schakelt u deze in.
 
 Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification Hubs-zelfstudies voor UWP-apps.
 
@@ -63,10 +63,10 @@ Als u pushmeldingen naar UWP-apps wilt verzenden, koppelt u uw app aan de Window
 2. Typ een naam voor uw app en selecteer **Productnaam reserveren**. Hiermee maakt u een nieuwe Windows Store-registratie voor uw app.
 
     ![Naam van de Store-app](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-3. Vouw **product beheer**uit, selecteer **wns/MPNS**en selecteer vervolgens **Live Services-site**. Meld u aan bij uw Microsoft-account. De pagina Toepassings registratie wordt geopend op een nieuw tabblad. u kunt ook rechtstreeks naar de pagina [mijn toepassingen](https://apps.dev.microsoft.com) navigeren en de naam van uw toepassing selecteren om naar deze pagina te gaan.
+3. Vouw **Productbeheer** uit, selecteer **WNS/MPNS** en vervolgens **Live Services-site**. Meld u aan bij uw Microsoft-account. De toepassingsregistratiepagina wordt in een nieuw tabblad geopend. U kunt ook rechtstreeks naar de pagina [Mijn toepassingen](https://apps.dev.microsoft.com) gaan en daar de naam van uw toepassing selecteren om deze pagina te openen.
 
     ![WNS MPNS-pagina](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. Noteer het wacht woord voor **toepassings geheimen** en de **beveiligings-id (sid)** van het pakket.
+4. Noteer het wachtwoord voor **Toepassingsgeheim** en de **beveiligings-id (SID) van uw pakket**.
 
     >[!WARNING]
     >Het toepassingsgeheim en de pakket-SID zijn belangrijke beveiligingsreferenties. Deel deze waarden met niemand en distribueer ze niet met uw app.
@@ -77,7 +77,7 @@ Als u pushmeldingen naar UWP-apps wilt verzenden, koppelt u uw app aan de Window
 
 ### <a name="configure-wns-settings-for-the-hub"></a>WNS-instellingen voor de hub configureren
 
-1. Selecteer in de categorie **MELDINGSINSTELLINGEN** de optie **Windows (WNS)**.
+1. Selecteer in de categorie **MELDINGSINSTELLINGEN** de optie **Windows (WNS)** .
 2. Voer waarden in voor **pakket-SID** en **Beveiligingssleutel** die u in de vorige sectie hebt genoteerd.
 3. Klik op **Opslaan** op de werkbalk.
 
@@ -88,18 +88,18 @@ De Notification Hub is nu geconfigureerd om met WNS te kunnen werken. U hebt de 
 ## <a name="create-a-sample-windows-app"></a>Een voorbeeld-app voor Windows maken
 
 1. Open in Visual Studio het menu **File** en selecteer **New** en vervolgens **Project**.
-2. Voer in het dialoog venster **Nieuw project maken** de volgende stappen uit:
+2. Voer in het dialoogvenster **Een nieuw project maken** de volgende stappen uit:
 
-    1. In het zoekvak bovenaan typt u **Windows Universal**.
-    2. Selecteer in de zoek resultaten **lege app (Universal Windows)** en selecteer vervolgens **volgende**.
+    1. Typ **Windows Universal** in het zoekvak bovenaan.
+    2. Selecteer in de zoekresultaten **Lege app (Universeel Windows)** en selecteer vervolgens **Volgende**.
 
        ![Het dialoogvenster Nieuw project](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
 
-    3. Voer in het dialoog venster **uw nieuwe project configureren** een **project naam**in en een **locatie** voor de project bestanden.
+    3. Voer in het dialoogvenster **Uw nieuwe project configureren** een **projectnaam in** en een **locatie** voor de projectbestanden in.
     4. Selecteer **Maken**.
 
 3. Accepteer de standaardwaarden voor het **doel** en de **minimale** platformversies en selecteer **OK**.
-4. Klik in Solution Explorer met de rechter muisknop op het Windows Store-app-project, selecteer **publiceren**en selecteer vervolgens **App koppelen aan de Store**. Hierop wordt de wizard **Uw app koppelen aan Windows Store** weergegeven.
+4. Klik in Solution Explorer met de rechtermuisknop op het Windows Store-app-project, selecteer **Publiceren** en klik vervolgens op **App aan de Store koppelen**. Hierop wordt de wizard **Uw app koppelen aan Windows Store** weergegeven.
 5. Meld u in de wizard aan met uw Microsoft-account.
 6. Selecteer de app die u in stap 2 hebt geregistreerd, selecteer **Volgende** en selecteer vervolgens **koppelen**. Hierdoor worden de vereiste registratiegegevens voor Windows Store toegevoegd aan het toepassingsmanifest.
 7. Klik met de rechtermuisknop op de oplossing in Visual Studio en selecteer **Manage NuGet Packages**. Het venster **Manage NuGet Packages** wordt geopend.
@@ -116,7 +116,7 @@ De Notification Hub is nu geconfigureerd om met WNS te kunnen werken. U hebt de 
     using Windows.UI.Popups;
     ```
 
-10. Zoek de `App.xaml.cs` `App` klasse in het bestand van het project en voeg de volgende `InitNotificationsAsync` methode definitie toe. Vervang `<your hub name>` door de naam van de notification hub die u hebt gemaakt in de Azure Portal en `<Your DefaultListenSharedAccessSignature connection string>` Vervang door `DefaultListenSharedAccessSignature` de Connection String van de pagina **toegangs beleid** van uw notification hub:
+10. Zoek in het bestand `App.xaml.cs` van het project de klasse `App` en voeg de volgende `InitNotificationsAsync`-methodedefinitie toe. Vervang `<your hub name>` door de naam van de Notification Hub die u hebt gemaakt in de Azure-portal, en vervang `<Your DefaultListenSharedAccessSignature connection string>` door de verbindingsreeks `DefaultListenSharedAccessSignature` van de pagina **Toegangsbeleid** van uw Notification Hub:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -171,12 +171,12 @@ U kunt het ontvangen van meldingen in de app snel testen door meldingen te verze
 3. Bekijk het resultaat van de verzendbewerking in de lijst **Resultaat** onder in het venster. U ziet ook een waarschuwingsbericht.
 
     ![Resultaat van de verzendbewerking](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
-4. U ziet de melding **Testbericht** op het bureaublad.
+4. U ziet de melding: **Testbericht** op het bureaublad.
 
     ![Melding](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt broadcast meldingen verzonden naar al uw Windows-apparaten via de portal of een console-app. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
+U hebt meldingen verzonden naar al uw Windows-apparaten via de portal of een console-app. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
 
 > [!div class="nextstepaction"]
 >[Pushmeldingen verzenden naar specifieke apparaten](
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

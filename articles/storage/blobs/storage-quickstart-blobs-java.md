@@ -1,46 +1,49 @@
 ---
-title: 'Snelstartgids: Azure Blob-opslag bibliotheek V12-java'
-description: In deze Quick Start leert u hoe u de Azure Blob Storage-client bibliotheek versie 12 voor Java kunt gebruiken om een container en een BLOB in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
+title: 'Quickstart: Azure Blob-opslagbibliotheek v12 - Java'
+description: In deze quickstart leert u hoe u de Azure Blob Storage-clientbibliotheek versie 12 voor Java kunt gebruiken om een container en een blob-in-blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 01/27/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d30260f8718d061473dfa4b29b7c35e33b27390d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: 7c0b8d6ea772d3d655eb6fbe39afa5ef9edafc11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319810"
 ---
-# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Quick Start: blobs beheren met Java V12 SDK
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Quickstart: Blobs beheren met Java v12 SDK
 
-In deze Quick Start leert u hoe u blobs beheert met behulp van Java. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden en u kunt containers maken en verwijderen.
+In deze quickstart leert u hoe u blobs beheert met behulp van Java. Blobs zijn objecten die grote hoeveelheden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en archiefgegevens. U kunt blob, downloaden uploaden en weergeven en u kunt containers maken en verwijderen.
 
-[API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | Voor[beelden](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) van de API-referentie[bibliotheek broncode](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | 
+Aanvullende bronnen:
+
+* [API-referentiedocumentatie](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)
+* [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+* [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+* [Voorbeelden](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Een Azure Storage-account. [Maak een opslag account](../common/storage-account-create.md).
-- JDK-versie 8 of hoger van [Java Development Kit](/java/azure/jdk/?view=azure-java-stable) .
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) versie 8 of hoger.
 - [Apache Maven](https://maven.apache.org/download.cgi).
-
-> [!NOTE]
-> Zie [Quick Start: blobs beheren met Java V8 SDK](storage-quickstart-blobs-java-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Instellen
 
-In deze sectie wordt uitgelegd hoe u een project voorbereidt voor gebruik met de Azure Blob Storage-client bibliotheek V12 voor Java.
+In dit gedeelte wordt uitgelegd hoe u een project voorbereidt voor gebruik met de Azure Blob Storage-clientbibliotheek v12 voor Java.
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak een Java-toepassing *met de naam BLOB-Quick Start-V12*.
+Maak een Java-toepassing met de naam *blob-quickstart-v12*.
 
-1. In een console venster (zoals cmd, Power shell of bash), gebruikt u maven om een nieuwe console-app te maken met de naam *BLOB-Quick Start-V12*. Typ de volgende **MVN** -opdracht voor het maken van een Hello World! Java-project.
+1. Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) Maven om een nieuwe console-app te maken met de naam *blob-quickstart-v12*. Typ de volgende **mvn**-opdracht om een 'Hallo wereld!' te maken. Java-project.
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -50,7 +53,7 @@ Maak een Java-toepassing *met de naam BLOB-Quick Start-V12*.
                           -DinteractiveMode=false
    ```
 
-1. De uitvoer van het project genereren ziet er ongeveer als volgt uit:
+1. De uitvoer van het project zou er ongeveer als volgt moeten uitzien:
 
     ```console
     [INFO] Scanning for projects...
@@ -93,7 +96,7 @@ Maak een Java-toepassing *met de naam BLOB-Quick Start-V12*.
    cd blob-quickstart-v12
    ```
 
-1. Maak in de Directory *BLOB-Quick Start-V12* een andere map met de naam *Data*. Hier worden de BLOB-gegevens bestanden gemaakt en opgeslagen.
+1. Maak een andere map met de naam *gegevens* aan in de map *blob-quickstart-v12*. Hier worden de blob-gegevensbestanden gemaakt en opgeslagen.
 
     ```console
     mkdir data
@@ -101,7 +104,7 @@ Maak een Java-toepassing *met de naam BLOB-Quick Start-V12*.
 
 ### <a name="install-the-package"></a>Het pakket installeren
 
-Open het bestand *pom. XML* in de tekst editor. Voeg het volgende afhankelijkheids element toe aan de groep met afhankelijkheden.
+Open het bestand *pom.xml* in uw teksteditor. Voeg het volgende afhankelijkheidselement toe aan de groep met afhankelijkheden.
 
 ```xml
 <dependency>
@@ -111,14 +114,14 @@ Open het bestand *pom. XML* in de tekst editor. Voeg het volgende afhankelijkhei
 </dependency>
 ```
 
-### <a name="set-up-the-app-framework"></a>Het app-Framework instellen
+### <a name="set-up-the-app-framework"></a>Het app-framework instellen
 
-Vanuit de projectmap:
+Ga als volgt te werk vanuit de projectmap:
 
-1. Ga naar de map */src/main/Java/com/blobs/QuickStart*
-1. Open het *app. java* -bestand in uw editor
-1. De `System.out.println("Hello world!");` instructie verwijderen
-1. Instructies `import` toevoegen
+1. Ga naar de map */src/main/java/com/blobs/quickstart*
+1. Open het bestand *App.java* in uw editor
+1. Verwijder de `System.out.println("Hello world!");`-instructie
+1. Voeg `import`-instructies toe
 
 Hier volgt de code:
 
@@ -142,13 +145,13 @@ public class App
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-Azure Blob-opslag is geoptimaliseerd voor het opslaan van enorme hoeveel heden ongestructureerde gegevens. Ongestructureerde gegevens zijn gegevens die niet voldoen aan een bepaald gegevensmodel of bepaalde definitie, zoals tekst of binaire gegevens. Er zijn drie typen resources voor blobopslag:
+Azure Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens. Ongestructureerde gegevens zijn gegevens die niet voldoen aan een bepaald gegevensmodel of bepaalde definitie, zoals tekst of binaire gegevens. Er zijn drie typen resources voor blobopslag:
 
-* Het opslag account
+* Het opslagaccount
 * Een container in het opslagaccount
-* Een BLOB in de container
+* Een blob in de container
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
@@ -156,28 +159,28 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende Java-klassen om te communiceren met deze resources:
 
-* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): met `BlobServiceClient` de klasse kunt u Azure storage resources en BLOB-containers bewerken. Het opslag account biedt de naam ruimte op het hoogste niveau voor de Blob service.
-* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): de `BlobServiceClientBuilder` klasse biedt een interface van Fluent Builder om de configuratie en instantiëring van `BlobServiceClient` objecten te helpen ondersteunen.
-* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): met `BlobContainerClient` de klasse kunt u Azure Storage containers en de bijbehorende blobs bewerken.
-* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): met `BlobClient` de klasse kunt u Azure Storage blobs bewerken.
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): de `BlobItem` klasse vertegenwoordigt afzonderlijke blobs die `listBlobsFlat`zijn geretourneerd door een aanroep van.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): Met de klasse `BlobServiceClient` kunt u Azure Storage-resources en blob-containers bewerken. Het opslagaccount biedt de naamruimte op het hoogste niveau voor de Blob service.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): De klasse `BlobServiceClientBuilder` biedt een fluent builder-API ter ondersteuning van het configureren en instantiëren van `BlobServiceClient`-objecten.
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): Met de klasse `BlobContainerClient` kunt u Azure Storage-containers en de bijbehorende blobs bewerken.
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): Met de klasse `BlobClient` kunt u Azure Storage-blobs bewerken.
+* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): De klasse `BlobItem` vertegenwoordigt afzonderlijke blobs die worden geretourneerd door een aanroep van `listBlobsFlat`.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor Java:
+Deze voorbeeldcodefragmenten laten zien hoe u de volgende acties kunt uitvoeren met de Azure Blob Storage-clientbibliotheek voor Java:
 
 * [De verbindingsreeks ophalen](#get-the-connection-string)
 * [Een container maken](#create-a-container)
 * [Blobs uploaden naar een container](#upload-blobs-to-a-container)
-* [De blobs in een container in een lijst weergeven](#list-the-blobs-in-a-container)
+* [De blobs in een container weergeven](#list-the-blobs-in-a-container)
 * [Blobs downloaden](#download-blobs)
-* [Een container verwijderen](#delete-a-container)
+* [Container verwijderen](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>De verbindingsreeks ophalen
 
-De onderstaande code haalt de connection string voor het opslag account op uit de omgevings variabele die in de sectie [uw opslag Connection String configureren](#configure-your-storage-connection-string) is gemaakt.
+De onderstaande code haalt de verbindingstekenreeks voor het opslagaccount op van de omgevingsvariabele die is gemaakt in de sectie [De opslagverbindingsreeks configureren](#configure-your-storage-connection-string).
 
-Voeg deze code toe in `Main` de-methode:
+Voeg deze code toe in de methode `Main`:
 
 ```java
 System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
@@ -193,14 +196,14 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-container"></a>Een container maken
 
-Kies een naam voor de nieuwe container. De onderstaande code voegt een UUID-waarde toe aan de container naam om ervoor te zorgen dat deze uniek is.
+Verzin een naam voor de nieuwe container. Met de onderstaande code wordt een UUID-waarde aan de containernaam toegevoegd om te verzekeren dat deze uniek is.
 
 > [!IMPORTANT]
 > Containernamen moeten uit kleine letters bestaan. Zie [Containers, blobs en metagegevens een naam geven en hiernaar verwijderen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de naamgeving van containers en blobs.
 
-Maak vervolgens een instantie van de klasse [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) en roep vervolgens de [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) -methode aan om de container in uw opslag account te maken.
+Maak vervolgens een exemplaar van de klasse [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) en roep de methode [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) aan om de container in uw opslagaccount daadwerkelijk te maken.
 
-Voeg deze code toe aan het einde van `Main` de methode:
+Voeg deze code toe aan het einde van de `Main`-methode:
 
 ```java
 // Create a BlobServiceClient object which will be used to create a container client
@@ -215,13 +218,13 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 
 ### <a name="upload-blobs-to-a-container"></a>Blobs uploaden naar een container
 
-Het volgende code fragment:
+Het volgende codefragment:
 
-1. Hiermee maakt u een tekst bestand in de lokale *gegevens* Directory.
-1. Hiermee wordt een verwijzing naar een [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) -object opgehaald door de methode [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) in de container aan te roepen vanuit de sectie [een container maken](#create-a-container) .
-1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de methode [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) aan te roepen. Met deze methode wordt de BLOB gemaakt als deze nog niet bestaat, maar wordt deze niet overschreven als dat wel het geval is.
+1. Hiermee maakt u een tekstbestand in de lokale map *gegevens*.
+1. Hiermee wordt een verwijzing naar een [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html)-object opgehaald door de methode [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) aan te roepen voor de container vanuit de sectie [Een container maken](#create-a-container).
+1. Hiermee wordt het lokale tekstbestand geüpload naar de blob door de methode [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) aan te roepen. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, maar niet overschreven als dat wel het geval is.
 
-Voeg deze code toe aan het einde van `Main` de methode:
+Voeg deze code toe aan het einde van de `Main`-methode:
 
 ```java
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -245,9 +248,9 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Vermeld de blobs in de container door de methode [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) aan te roepen. In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
+Hiermee worden de blobs in de container weergegeven door de methode [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) aan te roepen. In dit geval is slechts één blob aan de container toegevoegd, zodat met de weergavebewerking alleen die ene blob wordt geretourneerd.
 
-Voeg deze code toe aan het einde van `Main` de methode:
+Voeg deze code toe aan het einde van de `Main`-methode:
 
 ```java
 System.out.println("\nListing blobs...");
@@ -260,9 +263,9 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Down load de eerder gemaakte BLOB door de methode [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) aan te roepen. De voorbeeld code voegt het achtervoegsel ' downloaden ' toe aan de naam van het bestand, zodat u beide bestanden in het lokale bestands systeem kunt zien.
+Download de eerder gemaakte blob door de methode [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) aan te roepen. De voorbeeldcode voegt het achtervoegsel 'DOWNLOAD' toe aan de naam van het bestand, zodat u beide bestanden in het lokale bestandssysteem kunt zien.
 
-Voeg deze code toe aan het einde van `Main` de methode:
+Voeg deze code toe aan het einde van de `Main`-methode:
 
 ```java
 // Download the blob to a local file
@@ -277,11 +280,11 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Een container verwijderen
 
-Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met de methode [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) . Ook worden de lokale bestanden verwijderd die zijn gemaakt door de app.
+De volgende code ruimt de resources die door de app zijn gemaakt op door de hele container te verwijderen met behulp van de methode [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--). Ook worden de lokale bestanden verwijderd die door de app zijn gemaakt.
 
-De app wordt gepauzeerd voor gebruikers invoer `System.console().readLine()` door aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources correct zijn gemaakt voordat ze worden verwijderd.
+De app pauzeert voor gebruikersinvoer door `System.console().readLine()` aan te roepen voordat deze de blob, container en lokale bestanden verwijdert. Dit is een goede gelegenheid om te controleren dat de resources correct zijn gemaakt, voordat ze worden verwijderd.
 
-Voeg deze code toe aan het einde van `Main` de methode:
+Voeg deze code toe aan het einde van de `Main`-methode:
 
 ```java
 // Clean up
@@ -300,9 +303,9 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-Met deze app wordt een test bestand gemaakt in uw lokale map en geüpload naar Blob Storage. In het voor beeld worden de blobs in de container weer gegeven en wordt het bestand met een nieuwe naam gedownload, zodat u de oude en nieuwe bestanden kunt vergelijken.
+Met deze app wordt een testbestand gemaakt in uw lokale map en geüpload naar de Blob-opslag. Vervolgens wordt een lijst gemaakt van de blobs in de container en wordt het bestand gedownload met een nieuwe naam, zodat u het oude en nieuwe bestand kunt vergelijken.
 
-Navigeer naar de map met het bestand *pom. XML* en compileer het project met behulp van `mvn` de volgende opdracht.
+Navigeer naar de map die het bestand *pom.xml* bevat en compileer het project met behulp van de volgende `mvn`-opdracht.
 
 ```console
 mvn compile
@@ -314,13 +317,13 @@ Bouw vervolgens het pakket.
 mvn package
 ```
 
-Voer de volgende `mvn` opdracht uit om de app uit te voeren.
+Voer de volgende `mvn`-opdracht uit om de app uit te voeren.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
 ```
 
-De uitvoer van de app is vergelijkbaar met het volgende voor beeld:
+De uitvoer van de app lijkt op die in het volgende voorbeeld:
 
 ```output
 Azure Blob storage v12 - Java quickstart sample
@@ -341,18 +344,18 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-Controleer voordat u begint met het opschonen de map *Data* voor de twee bestanden. Als u ze opent, ziet u dat ze identiek zijn.
+Voordat u begint met opschonen, controleert u of de twee bestanden zich in de map *gegevens* bevinden. Als u ze opent, ziet u dat ze identiek zijn.
 
-Nadat u de bestanden hebt gecontroleerd, drukt u op **Enter** om de test bestanden te verwijderen en de demo te volt ooien.
+Nadat u de bestanden hebt gecontroleerd, drukt u op **Enter** om de testbestanden te verwijderen en het voorbeeld te voltooien.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u blobs kunt uploaden, downloaden en vermelden met behulp van Java.
+In deze quickstart hebt u geleerd hoe u blobs kunt uploaden, downloaden en er een lijst van maken met behulp van Java.
 
-Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u door naar:
+Als u voorbeeld-apps voor Blob-opslag wilt zien, ga dan naar:
 
 > [!div class="nextstepaction"]
-> [V12 Java-voor beelden voor Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Azure Blob-opslag-SDK v12 Java-voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* Zie de [Azure SDK voor Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)voor meer informatie.
-* Voor zelf studies, voor beelden, Quick starts en andere documentatie gaat u naar [Azure voor ontwikkel aars van Java-Clouds](/azure/developer/java/).
+* Zie de [Azure SDK voor Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md) voor meer informatie.
+* Ga naar [Azure voor Java-cloudontwikkelaars](/azure/developer/java/) voor zelfstudies, voorbeelden, quickstarts en andere documentatie.

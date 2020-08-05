@@ -1,43 +1,43 @@
 ---
-title: 'Zelf studie: een node. js-Web-API beveiligen met Azure AD B2C en toegang verlenen tot een toepassing met één pagina (SPA)'
+title: 'Zelfstudie: EenNode.js-web-API beveiligen met Azure AD B2C en toegang verlenen tot een toepassing met één pagina (SPA)'
 titleSuffix: Azure AD B2C
-description: In deze zelf studie leert u hoe u Active Directory B2C kunt gebruiken om een node. js-Web-API te beveiligen en deze aan te roepen vanuit een toepassing met één pagina.
+description: In deze zelfstudie leert u hoe u Active Directory B2C gebruikt om een Node.js-web-API te beveiligen en aan te roepen vanuit een toepassing met één pagina.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 50524159186987b7a30015c878fa3fac949afc79
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f01ef1a4cf5bc5b805da3dd4d825ef17f81ce53e
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875667"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170197"
 ---
-# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Zelf studie: een node. js-Web-API beveiligen en toegang verlenen vanuit een toepassing met één pagina met Azure AD B2C
+# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Zelfstudie: Een Node.js-web-API beveiligen en toegang verlenen vanuit een toepassing met één pagina met Azure AD B2C
 
-In deze zelf studie wordt uitgelegd hoe u een met Azure Active Directory B2C (Azure AD B2C) beveiligde node. js-Web-API aanroept vanuit een toepassing met één pagina.
+Deze zelfstudie laat zien hoe u een met Azure Active Directory B2C (Azure AD B2C) beveiligde Node.js-web-API vanuit een toepassing met één pagina kunt aanroepen.
 
-In deze zelf studie wordt de tweede in een reeks van twee delen:
+Deze zelfstudie, de tweede in een tweedelige serie, bevat:
 
 > [!div class="checklist"]
-> * Een web-API-toepassings registratie maken in uw Azure AD B2C-Tenant
-> * Scopes configureren voor de Web-API
+> * Een web-API-toepassingsregistratie maken in uw Azure AD B2C-tenant
+> * Bereiken voor de web-API configureren
 > * Machtigingen verlenen aan de web-API
-> * Een voor beeld van een web-API-code wijzigen om samen te werken met uw Tenant
+> * Een web-API-codevoorbeeld wijzigen voor samenwerking met uw tenant
 
-In de [eerste zelf studie](tutorial-single-page-app.md) in deze reeks hebt u het code voorbeeld gedownload en gewijzigd om gebruikers aan te melden met een gebruikers stroom in uw Azure AD B2C-Tenant.
+In de [eerste zelfstudie](tutorial-single-page-app.md) in deze reeks hebt u het codevoorbeeld gedownload en gewijzigd om gebruikers aan te melden met een gebruikersstroom in uw Azure AD B2C-tenant.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volg de stappen en vereisten in [zelf studie: verificatie inschakelen in een toepassing met één pagina met Azure AD B2C](tutorial-single-page-app.md)
-* [Visual Studio code](https://code.visualstudio.com/) of een andere code-editor
+* Voltooi de stappen en de vereisten in [Zelfstudie: Verificatie inschakelen in een toepassing met één pagina met Azure AD B2C](tutorial-single-page-app.md)
+* [Visual Studio Code](https://code.visualstudio.com/) of een andere code-editor
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="add-a-web-api-application"></a>Een web-API-toepassing toevoegen
@@ -46,27 +46,27 @@ In de [eerste zelf studie](tutorial-single-page-app.md) in deze reeks hebt u het
 
 ## <a name="configure-scopes"></a>Bereiken configureren
 
-Bereiken bieden een manier om toegang tot beveiligde resources te reguleren. Bereiken worden door de web-API gebruikt om toegangsbeheer op basis van een bereik te implementeren. Sommige gebruikers kunnen bijvoorbeeld zowel lees- als schrijftoegang hebben, terwijl andere gebruikers mogelijk alleen-lezen-machtigingen hebben. In deze zelf studie definieert u zowel lees-als schrijf machtigingen voor de Web-API.
+Bereiken bieden een manier om toegang tot beveiligde resources te reguleren. Bereiken worden door de web-API gebruikt om toegangsbeheer op basis van een bereik te implementeren. Sommige gebruikers kunnen bijvoorbeeld zowel lees- als schrijftoegang hebben, terwijl andere gebruikers mogelijk alleen-lezen-machtigingen hebben. In deze zelfstudie gaat u lees- en schrijfmachtigingen definiëren voor de web-API.
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Noteer de waarde onder **scopes** voor het `demo.read` bereik dat u in een latere stap wilt gebruiken wanneer u de toepassing met één pagina configureert. De volledige bereik waarde is vergelijkbaar met `https://contosob2c.onmicrosoft.com/api/demo.read`.
+Noteer de waarde onder **Bereiken** voor het bereik `demo.read` voor gebruik in een latere stap wanneer u de toepassing met één pagina configureert. De volledige bereikwaarde is vergelijkbaar met `https://contosob2c.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen
 
-Als u een beveiligde web-API wilt aanroepen vanuit een andere toepassing, moet u die toepassings machtigingen toewijzen aan de Web-API.
+Als u een beveiligde web-API wilt aanroepen vanuit een andere toepassing, moet u uw toepassing machtigingen geven voor de web-API.
 
-In de hand leiding voor vereisten hebt u een webtoepassing gemaakt met de naam *webapp1*. In deze zelf studie configureert u die toepassing om de Web-API aan te roepen die u hebt gemaakt in een vorige sectie, *webapi1*.
+In de vereiste zelfstudie hebt u een webtoepassing gemaakt met de naam *webapp1*. In deze zelfstudie configureert u die toepassing om de web-API aan te roepen die u in een vorige sectie hebt gemaakt, *webapi1*.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Aan uw webtoepassing met één pagina zijn nu machtigingen voor de beveiligde web-API voor de opgegeven scopes verleend. Een gebruiker wordt geverifieerd met Azure AD B2C om de toepassing met één pagina te gebruiken. De app met één pagina gebruikt de autorisatie subsidie stroom om toegang te krijgen tot de beveiligde web-API met een toegangs token dat is geretourneerd door Azure AD B2C.
+Aan uw webtoepassing met één pagina zijn nu machtigingen voor de beveiligde web-API verleend voor de opgegeven bereiken. Een gebruiker voert een verificatie uit bij Azure AD B2C om de toepassing met één pagina te kunnen gebruiken. De app met één pagina gebruikt de stroom autorisatietoekenningen om toegang te krijgen tot de beveiligde web-API met een toegangstoken dat door Azure AD B2C is geretourneerd.
 
-## <a name="configure-the-sample"></a>Configureren van het voorbeeld
+## <a name="configure-the-sample"></a>Voorbeeld configureren
 
-Nu de Web-API is geregistreerd en u bereiken hebt gedefinieerd, moet u de Web-API-code configureren zodat deze samenwerkt met uw Azure AD B2C-Tenant. In deze zelf studie configureert u een voor beeld van een node. js-Web-API die u hebt gedownload van GitHub.
+Nu de web-API is geregistreerd en u bereiken hebt gedefinieerd, moet u de web-API-code configureren om deze met uw Azure AD B2C-tenant te kunnen laten werken. In deze zelfstudie gaat u een Node.js web-API configureren die u kunt downloaden op GitHub.
 
-[Down load \*een zip-archief](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) of kloon het voor beeld-Web-API-project van github. U kunt ook rechtstreeks naar het project [Azure-samples/Active-Directory-B2C-java script-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) bladeren op github.
+[Download een \*.zip-archief](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) of kloon het web-API-voorbeeldproject op GitHub. U kunt ook rechtstreeks naar het project [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) op GitHub bladeren.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
@@ -75,7 +75,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 ### <a name="configure-the-web-api"></a>De web-API configureren
 
 1. Open het bestand *config. js* in de code-editor.
-1. Wijzig de variabelen waarden zodat deze overeenkomen met die van de registratie van de toepassing die u eerder hebt gemaakt. Werk ook de `policyName` bij met de gebruikers stroom die u hebt gemaakt als onderdeel van de vereisten. Bijvoorbeeld *B2C_1_signupsignin1*.
+1. Wijzig de variabele waarden zodat deze overeenkomen met die van de registratie van de toepassing die u eerder hebt gemaakt. Werk ook `policyName` bij met de gebruikersstroom die u hebt gemaakt als onderdeel van de vereisten. Bijvoorbeeld *B2C_1_signupsignin1*.
 
     ```javascript
     const clientID = "<your-webapi-application-ID>"; // Application (client) ID
@@ -86,9 +86,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 #### <a name="enable-cors"></a>CORS inschakelen
 
-Als u wilt toestaan dat de toepassing met één pagina de node. js-Web-API aanroept, moet u [CORS](https://expressjs.com/en/resources/middleware/cors.html) inschakelen in de Web-API. In een productie toepassing moet u voorzichtig zijn met het domein dat de aanvraag doet, maar in deze zelf studie worden aanvragen van elk domein toegestaan.
+Schakel [CORS](https://expressjs.com/en/resources/middleware/cors.html) in de web-API in zodat de toepassing met één pagina de Node.js-web-API kan aanroepen. In een productietoepassing moet u opletten welk domein de aanvraag doet, maar in deze zelfstudie worden aanvragen van elk domein toegestaan.
 
-Gebruik de volgende middleware om CORS in te scha kelen. In het voor beeld van de Web-API-code van node. js in deze zelf studie is het al toegevoegd aan het bestand *index. js* .
+Gebruik de volgende middleware om CORS in te schakelen. In de voorbeeldcode van de Node.js-web-API in deze zelfstudie is deze al toegevoegd aan het bestand *index.js*.
 
 ```javascript
 app.use((req, res, next) => {
@@ -100,20 +100,20 @@ app.use((req, res, next) => {
 
 ### <a name="configure-the-single-page-application"></a>De toepassing met één pagina configureren
 
-De toepassing met één pagina (SPA) uit de [vorige zelf studie](tutorial-single-page-app.md) in de reeks gebruikt Azure AD B2C voor gebruikers registratie en aanmelding, en roept standaard de node. js-Web-API aan die wordt beveiligd door de *fabrikamb2c* -demo Tenant.
+De toepassing met één pagina (SPA) uit de [vorige zelfstudie](tutorial-single-page-app.md) in de reeks maakt gebruik van Azure AD B2C voor het registreren en aanmelden van gebruikers, en roept standaard de Node.js-web-API aan die door de demotenant *fabrikamb2c* wordt beveiligd.
 
-In deze sectie werkt u de webtoepassing met één pagina bij om de node. js-Web-API aan te roepen die wordt beveiligd door *uw* Azure AD B2C-Tenant (en die u op uw lokale computer uitvoert).
+In deze sectie werkt u de webtoepassing met één pagina bij om de Node.js-web-API aan te roepen die wordt beveiligd door *uw* Azure AD B2C-tenant (en die u op uw lokale computer uitvoert).
 
-Als u de instellingen in de beveiligd-wachtwoord verificatie wilt wijzigen:
+Instellingen in de SPA wijzigen:
 
-1. Open het bestand *apiConfig. js* in de map *JavaScriptSPA* van het project [Active Directory-B2C-java script-msal-singlepageapp][github-js-spa] dat u in de vorige zelf studie hebt gedownload of gekloond.
-1. Configureer het voor beeld met de URI voor de *demo. Lees* bereik dat u eerder hebt gemaakt en de URL van de Web-API.
-    1. Vervang in `apiConfig` de definitie de `b2cScopes` waarde door de volledige URI voor de *demo. Lees* bereik (de waarde van het **bereik** dat u eerder hebt vastgelegd).
-    1. Wijzig het domein in de `webApi` waarde in de omleidings-URI die u hebt toegevoegd toen u de Web-API-toepassing in een eerdere stap hebt geregistreerd.
+1. Open in het project [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa], dat u in de vorige zelfstudie hebt gedownload of gekloond, het bestand *apiConfig.js* in de map *JavaScriptSPA*.
+1. Configureer het voorbeeld met de URI voor het bereik *demo.read* dat u eerder hebt gemaakt en de URL van de web-API.
+    1. Vervang in de `apiConfig`-definitie de `b2cScopes`-waarde door de volledige URI voor het bereik *demo.read* (de waarde **Bereik** die u eerder hebt vastgelegd).
+    1. Wijzig het domein in de `webApi`-waarde in de omleidings-URI die u hebt toegevoegd toen u de web-API-toepassing in een eerdere stap hebt geregistreerd.
 
-    Omdat de API toegankelijk is op het `/hello` eind punt, moet u */Hello* in de URI laten staan.
+    De API is toegankelijk is op het `/hello`-eindpunt, dus laat */hello* in de URI staan.
 
-    De `apiConfig` definitie moet er ongeveer uitzien als in het volgende code blok, maar met de naam van uw B2C- `<your-tenant-name>`Tenant in de plaats van:
+    De `apiConfig`-definitie moet er ongeveer uitzien als in het volgende codeblok, maar met de naam van uw B2C-tenant op de plaats van `<your-tenant-name>`:
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -123,15 +123,15 @@ Als u de instellingen in de beveiligd-wachtwoord verificatie wilt wijzigen:
     };
     ```
 
-## <a name="run-the-spa-and-web-api"></a>De SPA-en Web-API uitvoeren
+## <a name="run-the-spa-and-web-api"></a>De SPA en web-API uitvoeren
 
-U bent nu klaar om de toegang tot de API van de app met één pagina te testen. Voer de node. js-Web-API en de voor beeld java script-toepassing met één pagina op uw lokale computer uit. Meld u vervolgens aan bij de toepassing met één pagina en selecteer de knop **API aanroepen** om een aanvraag naar de beveiligde API te initiëren.
+U bent nu klaar om de toegang gerelateerd aan een bereik van de toepassing met één pagina tot de API testen. Voer de Node.js-web-API en het JavaScript-toepassingsvoorbeeld met één pagina op de lokale computer uit. Meld u vervolgens aan bij de toepassing met één pagina en selecteer de knop **Aanroep-API** om een aanvraag naar de beveiligde API te initiëren.
 
-Hoewel beide toepassingen lokaal worden uitgevoerd wanneer u deze zelf studie volgt, hebt u deze geconfigureerd voor het gebruik van Azure AD B2C voor veilig aanmelden/aanmelden en het verlenen van toegang tot de beveiligde web-API.
+Hoewel beide toepassingen lokaal worden uitgevoerd wanneer u deze zelfstudie volgt, hebt u deze geconfigureerd voor het gebruik met Azure AD B2C voor veilig registreren /aanmelden en het verlenen van toegang tot de beveiligde web-API.
 
-### <a name="run-the-nodejs-web-api"></a>De node. js-Web-API uitvoeren
+### <a name="run-the-nodejs-web-api"></a>Voer de web-API van Node.js uit
 
-1. Open een console venster en ga naar de map met het node. js-Web-API-voor beeld. Bijvoorbeeld:
+1. Open een consolevenster en ga naar de map met het Node.js-web-API-voorbeeld. Bijvoorbeeld:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -144,7 +144,7 @@ Hoewel beide toepassingen lokaal worden uitgevoerd wanneer u deze zelf studie vo
     node index.js
     ```
 
-    In het console venster wordt het poort nummer weer gegeven waarop de toepassing wordt gehost.
+    Het consolevenster geeft het poortnummer waar de app wordt gehost.
 
     ```console
     Listening on port 5000...
@@ -152,7 +152,7 @@ Hoewel beide toepassingen lokaal worden uitgevoerd wanneer u deze zelf studie vo
 
 ### <a name="run-the-single-page-app"></a>De app met één pagina uitvoeren
 
-1. Open een ander console venster en ga naar de map met het Java script SPA-voor beeld. Bijvoorbeeld:
+1. Open een ander consolevenster en ga naar de map met het JavaScript SPA-voorbeeld. Bijvoorbeeld:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -171,29 +171,29 @@ Hoewel beide toepassingen lokaal worden uitgevoerd wanneer u deze zelf studie vo
     Listening on port 6420...
     ```
 
-1. Ga `http://localhost:6420` in uw browser naar om de toepassing weer te geven.
+1. Ga in de browser naar `http://localhost:6420` om de toepassing te bekijken.
 
-    ![Voor beeld-app met één pagina die wordt weer gegeven in de browser](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
+    ![Voorbeeld-app met één pagina weergegeven in de browser](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
 
-1. Meld u aan met het e-mail adres en het wacht woord dat u in de [vorige zelf studie](tutorial-single-page-app.md)hebt gebruikt. Wanneer de aanmelding is geslaagd, wordt het `User 'Your Username' logged-in` bericht weer gegeven.
-1. Selecteer de knop **API aanroepen** . De beveiligd-wachtwoord verificatie verkrijgt een machtigings toekenning van Azure AD B2C en opent vervolgens de beveiligde web-API om de naam van de aangemelde gebruiker weer te geven:
+1. Meld u aan met het e-mailadres en wachtwoord dat u in de [vorige zelfstudie](tutorial-single-page-app.md) hebt gebruikt. Na aanmelden wordt het bericht `User 'Your Username' logged-in` weergegeven.
+1. Klik op de knop **API aanroepen**. De SPA verkrijgt een autorisatietoekenning van Azure AD B2C en opent vervolgens de beveiligde web-API om de naam van de aangemelde gebruiker weer te geven:
 
-    ![Toepassing met één pagina in de browser die het JSON-resultaat van de gebruikers naam heeft geretourneerd door de API](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
+    ![Toepassing met één pagina in de browser met het JSON-resultaat met de gebruikersnaam die door de API is geretourneerd](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * De registratie van een web-API-toepassing in uw Azure AD B2C Tenant is gemaakt
-> * Geconfigureerde bereiken voor de Web-API
-> * Machtigingen verleend aan de Web-API
-> * Een voor beeld van een web-API-code gewijzigd om samen te werken met uw Tenant
+> * Een web-API-toepassingsregistratie in uw Azure AD B2C-tenant gemaakt
+> * Bereiken voor de web-API geconfigureerd
+> * Machtigingen aan de web-API verleend
+> * Een web-API-codevoorbeeld gewijzigd voor samenwerking met uw tenant
 
-Nu u een beveiligd-wachtwoord verificatie-verzoek hebt gezien vanuit een beveiligde web-API, krijgt u een beter inzicht in hoe deze toepassings typen met elkaar en met Azure AD B2C werken.
+U hebt gezien hoe een SPA een resource heeft aangevraagd vanuit een beveiligde web-API. U kunt nu nog meer inzicht krijgen in hoe deze toepassingstypen met elkaar en met Azure AD B2C werken.
 
 > [!div class="nextstepaction"]
-> [Toepassings typen die kunnen worden gebruikt in Active Directory B2C >](application-types.md)
+> [Toepassingstypen die kunnen worden gebruikt in Active Directory B2C >](application-types.md)
 
 <!-- Links - EXTERNAL -->
 [github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536540"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125187"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een load balancer maken om taken van VM's te verdelen via de Azure-portal
 
@@ -111,7 +111,7 @@ Maak een statustest genaamd **myHealthProbe** om de status van de VM's te bewake
     | Drempelwaarde voor beschadigde status | Selecteer **2** als het aantal voor de **Drempelwaarde voor beschadigde status** of het aantal opeenvolgende mislukte tests dat moet optreden voordat wordt besloten dat een VM een beschadigde status heeft.|
     | | |
 
-3. Selecteer **OK**.
+3. Laat de overige standaardwaarden staan en selecteer **OK**.
 
 ### <a name="create-a-load-balancer-rule"></a>Een load balancer-regel maken
 
@@ -140,7 +140,7 @@ In deze sectie maakt u een load balancer-regel:
     | Back-endpoort | Voer **80** in. |
     | Back-end-pool | Selecteer **myBackendPool**.|
     | Statustest | Selecteer **myHealthProbe**. |
-    | Impliciete uitgaande regels maken | Selecteer **Ja**. </br> Zie voor meer informatie en geavanceerde configuratie van uitgaande regels: </br> [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) </br> [Taakverdeling en uitgaande regels in Standard Load Balancer configureren via de Azure-portal](configure-load-balancer-outbound-portal.md)
+    | Impliciete uitgaande regels maken | Selecteer **Nee**.
 
 4. Laat de overige standaardwaarden staan en selecteer **OK**.
 
@@ -237,6 +237,49 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | Beschikbaarheidszone | **2** |**3**|
     | Netwerkbeveiligingsgroep | Het bestaande **myNSG** selecteren| Het bestaande **myNSG** selecteren|
 
+## <a name="create-outbound-rule-configuration"></a>Configuratie voor uitgaande regel maken
+Uitgaande regels van load balancers configureren uitgaande SNAT voor virtuele machines in de back-endgroep. 
+
+Zie [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) voor meer informatie over uitgaande verbindingen.
+
+### <a name="create-outbound-rule"></a>Uitgaande regel maken
+
+1. Selecteer **Alle services** in het linkermenu en selecteer **Alle resources**. Selecteer vervolgens **myLoadBalancer** en in de lijst met resources.
+
+2. Selecteer onder **Instellingen** **Uitgaande regels** en selecteer vervolgens **Toevoegen**.
+
+3. Gebruik deze waarden om de uitgaande regels te configureren:
+
+    | Instelling | Waarde |
+    | ------- | ----- |
+    | Naam | Voer **myOutboundRule** in. |
+    | IP-adres voor front-end | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de waarde **LoadBalancerFrontEndOutbound** in. </br> Selecteer **IP-adres** of **IP-voorvoegsel**. </br> Selecteer **Nieuw maken** bij **Openbaar IP-adres** of **Openbaar IP-voorvoegsel**. </br> Voer als naam **myPublicIPOutbound** of **myPublicIPPrefixOutbound** in. </br> Selecteer **OK**. </br> Selecteer **Toevoegen**.|
+    | Time-out voor inactiviteit (minuten) | Verplaats de schuifregelaar naar **15 minuten**.|
+    | TCP opnieuw instellen | Selecteer **Ingeschakeld**.|
+    | Back-end-pool | Selecteer **Nieuw maken**. </br> Voer **myBackendPoolOutbound** in bij **Naam**. </br> Selecteer **Toevoegen**. |
+    | Poorttoewijzing -> Poorttoewijzing | Selecteer **Handmatig het aantal uitgaande poorten kiezen** |
+    | Uitgaande poorten-> Kiezen op | Selecteer **Poorten per exemplaar** |
+    | Uitgaande poorten-> Poorten per exemplaar | Voer **10.000** in. |
+
+4. Selecteer **Toevoegen**.
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Virtuele machines toevoegen aan uitgaande groep
+
+1. Selecteer **Alle services** in het linkermenu en selecteer **Alle resources**. Selecteer vervolgens **myLoadBalancer** en in de lijst met resources.
+
+2. Selecteer **Back-endgroepen** in **Instellingen**.
+
+3. Selecteer **myBackendPoolOutbound**.
+
+4. Selecteer bij **Virtueel netwerk** de optie **myVNet**.
+
+5. Selecteer bij **Virtuele machines** de optie **+ Toevoegen**.
+
+6. Schakel de selectievakjes naast **myVM1**, **myVM2**en **myVM3** in. 
+
+7. Selecteer **Toevoegen**.
+
+8. Selecteer **Opslaan**.
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[Optie 2: Een load balancer (Basic SKU) maken](#tab/option-1-create-load-balancer-basic)
 
@@ -441,9 +484,10 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | Naam |  **myVM2** |**myVM3**|
     | Beschikbaarheidsset| **myAvailabilitySet** selecteren | **myAvailabilitySet** selecteren|
     | Netwerkbeveiligingsgroep | Het bestaande **myNSG** selecteren| Het bestaande **myNSG** selecteren|
+
 ---
 
-### <a name="install-iis"></a>IIS installeren
+## <a name="install-iis"></a>IIS installeren
 
 1. Selecteer in het linkermenu **Alle services**, selecteer vervolgens **Alle resources** en selecteer daarna in de lijst met resources **myVM1**, die zich in de resourcegroep **myResourceGroupLB** bevindt.
 

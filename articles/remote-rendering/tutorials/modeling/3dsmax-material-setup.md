@@ -1,29 +1,29 @@
 ---
-title: Fysiek gebaseerde renderingmaterialen instellen in 3DSMax
-description: In deze zelfstudie wordt uitgelegd hoe u fysiek gebaseerde renderingmaterialen instelt in 3DSMax en deze exporteert in een FBX-indeling.
+title: PBR-materialen instellen in 3ds Max
+description: In deze zelfstudie wordt uitgelegd hoe u PBR-materialen instelt in 3ds Max, en deze exporteert in een FBX-indeling.
 author: muxanickms
 ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: df4be8963c93199f9fad23ab3f709f691e1da768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078039"
 ---
-# <a name="tutorial-set-up-physically-based-rendering-materials-in-3d-studio-max"></a>Zelfstudie: Fysiek gebaseerde renderingmaterialen instellen in 3D Studio Max
+# <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Zelfstudie: PBT-materialen instellen in 3ds Max
 
 ## <a name="overview"></a>Overzicht
 In deze zelfstudie leert u het volgende:
 
 >[!div class="checklist"]
 >
-> * Materialen met geavanceerde belichting toewijzen aan objecten in de scène.
+> * Materialen met geavanceerde belichting toewijzen aan objecten in een scène.
 > * Objecten en materialen ruimtelijk weergeven.
 > * Een scène exporteren naar een FBX-indeling en belangrijke opties selecteren.
 
-Het maken van [fysiek gebaseerde rendering-materialen (PBR)](../../overview/features/pbr-materials.md) in 3D Studio Max (3DSMax) is een relatief eenvoudige taak. Het is in veel opzichten vergelijkbaar met het instellen van PBR in andere apps voor het maken van inhoud, zoals Maya. Deze zelfstudie is een handleiding voor de installatie van een eenvoudige PBR-shader en FBX-export voor Azure Remote Rendering-projecten.
+Het maken van [PBR-materialen (Physically Based Rendering)](../../overview/features/pbr-materials.md) in 3ds Max is een eenvoudige taak. Het is in veel opzichten vergelijkbaar met het instellen van PBR in andere apps voor het maken van inhoud, zoals Maya. Deze zelfstudie is een handleiding voor de installatie van een eenvoudige PBR-shader en FBX-export voor Azure Remote Rendering-projecten.
 
 De voorbeeldscène in deze zelfstudie bevat een aantal polygone box-objecten. Er worden verschillende materialen aan toegewezen, zoals hout, metaal, geverfd metaal, plastic en rubber. In brede zin bevat elk materiaal alle of de meeste van de volgende patronen:
 
@@ -31,176 +31,197 @@ De voorbeeldscène in deze zelfstudie bevat een aantal polygone box-objecten. Er
 * **Metaligheid**, bepaalt of een materiaal van metaal is en welke delen van metaal zijn. 
 * **Ruwheid**, bepaalt hoe ruw of glad een oppervlak is.
 Dit is ook van invloed op de scherpte of wazigheid van de reflecties en glanspunten op een oppervlak.
-* **Normaal**, wat details toevoegt aan een oppervlak zonder dat er noodzakelijkerwijs meer polygonen worden toegevoegd. Voorbeelden van details kunnen putjes en deukjes in een metalen oppervlak of de nerf in hout zijn.
-* **Omgevingsocclusie**, wordt gebruikt om zachte schaduwen en contactschaduwen aan een model toe te voegen. Het is een kaart in grijstinten die aangeeft welke gebieden van een model volledige belichting (wit) of volledige schaduw (zwart) krijgen.
+* **Normaal**, wat details toevoegt aan een oppervlak zonder dat er meer polygonen worden toegevoegd. Voorbeelden van details zijn putjes en deukjes in een metalen oppervlak of de nerf in hout.
+* **Omgevingsocclusie**, wordt gebruikt om zachte schaduwen en contactschaduwen aan een model toe te voegen. Het is een kaart in grijstinten die aangeeft welke gebieden van het model volledige belichting (wit) of volledige schaduw (zwart) krijgen.
 
 ## <a name="prepare-the-scene"></a>De scène voorbereiden
-In **3D Studio Max** gaat het instellen van PBR-materiaal als volgt.
+In 3ds Max gaat het instellen van een PBR-materiaal als volgt.
 
-Zoals te zien is in de voorbeeldscène, hebben we een aantal kubusobjecten gemaakt die elk een ander type materiaal vertegenwoordigen:
-
->[!TIP]
->Voordat we beginnen met het maken van assets voor ARR, is het de moeite waard te vermelden dat er wordt gemeten in **meters**.  
->Daarom is het raadzaam om de **systeemeenheden** voor uw scène in te stellen op **meters**. Ook is het bij het exporteren raadzaam om eenheden in te stellen op meters in de FBX-exportinstellingen.
-
-In de volgende afbeelding ziet u de stappen voor het instellen van de systeemeenheden op meters in 3D Studio Max. Ga in het hoofdmenu naar **Aanpassen** > **Eenheden instellen** > **Systeemeenheden instellen** en klik in de vervolgkeuzelijst **Systeemeenhedenschaal** op **Meters**. 
-![systeemeenheden](media/3dsmax/system-units.jpg)
-
-Als de systeemeenheden zijn ingesteld op meters, kunnen we onze modellen gaan maken. In onze voorbeeldscène maken we diverse vakobjecten die elk een ander materiaaltype vertegenwoordigen, bijvoorbeeld metaal, rubber, plastic enzovoort. 
+Eerst maken we een aantal vakobjecten. Elk object vertegenwoordigt een ander type materiaal.
 
 >[!TIP]
->Het is raadzaam om bij het maken van assets deze assets een geschikte naam te geven. Zo kunt u ze later gemakkelijker vinden als de scène veel objecten bevat
+>Voordat u begint met het maken van assets voor Remote Rendering, is het handig te weten dat er wordt gemeten in meters.  
+>
+>Het is daarom een goed idee om de systeemeenheden van uw scène in te stellen op meters. Het is ook een goed idee om **Eenheden** in te stellen op meters in de FBX-exportinstellingen BX wanneer u een scène exporteert.
 
-![rename-objects](media/3dsmax/rename-objects.jpg)
+In de volgende schermopname ziet u de stappen voor het instellen van de systeemeenheden op meters in 3ds Max. 
+
+1. Ga in het hoofdmenu naar **Aanpassen** > **Instelling van eenheden** > **Instelling van systeemeenheden**. Selecteer in **Schaal van systeemeenheid** de optie **Meters**: ![Schermopname waarin wordt weergegeven hoe u systeemeenheden instelt.](media/3dsmax/system-units.jpg)
+
+1. U kunt nu beginnen met het maken van de modellen. In de voorbeeldscène maken we diverse vakobjecten. Elk object vertegenwoordigt een ander materiaaltype. Bijvoorbeeld metaal, rubber en plastic. 
+
+   >[!TIP]
+   >Wanneer u assets maakt, wordt aanbevolen deze een passende naam te geven. Zo kunt u ze later gemakkelijker vinden als de scène veel objecten bevat.
+
+1. Wijzig de namen van de objecten zoals wordt weergegeven in de volgende schermopname: 
+
+   ![Schermopname waarin wordt weergegeven hoe u de namen van objecten wijzigt.](media/3dsmax/rename-objects.jpg)
 
 ## <a name="assign-materials"></a>Materialen toewijzen
 
-Als er objecten zijn gemaakt in onze scène, in dit geval een aantal kubussen, kunnen we starten met het instellen van PBR:
+Nu de scène wat objecten bevat, in dit geval een aantal kubussen, kunnen we starten met het instellen van PBR:
 
-* Klik in de hoofdwerkbalk op het pictogram van de **materiaaleditor**, zoals wordt weergegeven in de volgende afbeelding. U kunt ook op **M** op het toetsenbord drukken om de editor te openen. De materiaaleditor heeft twee modi die kunnen worden geselecteerd in de vervolgkeuzelijst **Modi**: de modus voor de **compacte materiaaleditor** en de modus voor **slate-materiaal**. Omdat deze scène betrekkelijk eenvoudig is, gebruiken we de **compacte modus**.
+1. Selecteer in de hoofdwerkbalk het pictogram van de **materiaaleditor**, zoals wordt weergegeven in de volgende schermopname. U kunt ook **M** op het toetsenbord selecteren om de editor te openen. De materiaaleditor heeft twee modi die u kunt selecteren in de lijst **Modi**: De modus **Compacte materiaaleditor** en de modus **Slate-materiaaleditor**. Omdat deze scène betrekkelijk eenvoudig is, gebruiken we de compacte modus.
 
-* In de materiaaleditor ziet u een aantal bollen: deze bollen zijn onze materialen. Aan elk object (vak) in de scène wordt één materiaal toegewezen. Voor het toewijzen selecteert u om te beginnen een van de objecten in de hoofd-viewport. Zodra deze selectie is gemaakt, klikt u op de eerste bol in het venster van de materiaaleditor. Zodra deze bol is toegewezen aan een object, wordt het geselecteerde materiaal gemarkeerd, zoals in de volgende afbeelding wordt weergegeven.
+1. In de materiaaleditor ziet u een aantal bollen. Deze bollen zijn de materialen. Aan elk object (elk vak) in de scène wordt één materiaal toegewezen. Om de materialen toe te wijzen selecteert u om te beginnen een van de objecten in de hoofd-viewport. Selecteer vervolgens de eerste bol in de materiaaleditor. Nadat deze bol is toegewezen aan een object, wordt het geselecteerde materiaal gemarkeerd, zoals wordt weergegeven in de volgende afbeelding.
 
-* Klik op de knop **Materiaal aan selectie toewijzen** zoals wordt weergegeven. Het geselecteerde materiaal is nu toegewezen aan het geselecteerde object.
-![assign-material](media/3dsmax/assign-material.jpg)
+1. Selecteer **Materiaal toewijzen aan selectie**, zoals weergegeven. Het materiaal is nu toegewezen aan het geselecteerde object.
 
-In de materiaaleditor kunt u typen materialen selecteren (de keus is enorm), afhankelijk van uw gebruikscase. Normaal gesproken wordt het type materiaal standaard ingesteld op **Standaard**. Dit materiaal is een basismateriaal dat niet geschikt is voor het instellen van PBR. Daarom moeten we het materiaaltype wijzigen in een PBR-materiaal. Het favoriete **3DSMax**-materiaal voor de Azure Remote Rendering-projecten is het **fysieke materiaal**.
+   ![Schermopname waarin wordt weergegeven hoe u materialen toewijst.](media/3dsmax/assign-material.jpg)
 
-* Klik in de materiaaleditor op het tabblad **Standaard** en selecteer in de materiaal-/kaartbrowser die wordt geopend **Fysiek materiaal**. Met deze actie wordt het toegewezen **standaard**materiaal geconverteerd naar een **fysiek PBR-materiaal**.
-![physical-material](media/3dsmax/physical-material.jpg)
+    In de materiaaleditor kunt u kiezen uit een brede selectie materiaaltypen, afhankelijk van uw behoeften. Normaal gesproken wordt het type materiaal standaard ingesteld op **Standaard**. Dit materiaal is een basismateriaal dat niet geschikt is voor het instellen van PBR. Daarom moeten we het materiaaltype wijzigen in een PBR-materiaal. Het 3ds Max-voorkeursmateriaal voor Azure Remote Rendering-projecten is het fysieke materiaal.
 
-* In de materiaaleditor ziet u nu de eigenschappen van het fysieke materiaal (zie hieronder) en kunnen we patronen aan de asset gaan toewijzen.
-![textures-list](media/3dsmax/textures-list.jpg)
+1. Selecteer in de materiaaleditor het tabblad **Standaard**. Selecteer in de **Materiaal-/kaartenbrowser** de optie **Fysiek materiaal**. Met deze actie wordt het toegewezen **Standaard**materiaal geconverteerd naar een fysiek PBR-materiaal.
 
-Zoals u kunt zien in de bovenstaande afbeelding, zijn er vele kaarten en patronen die aan het materiaal kunnen worden toegevoegd. In dit geval gaan we echter slechts vijf patronen in het materiaal gebruiken.
+   ![Schermopname waarin wordt weergegeven hoe u materiaal toewijst.](media/3dsmax/physical-material.jpg)
+
+    In de materiaaleditor ziet u nu de eigenschappen voor het fysieke materiaal, zoals wordt weergegeven in de volgende schermopname. U kunt nu beginnen met het toewijzen van patronen aan de asset.
+
+   ![Schermopname waarin de lijst met patronen wordt weergegeven.](media/3dsmax/textures-list.jpg)
+
+Zoals u kunt zien, is er een breed scala aan kaarten en patronen die u kunt toevoegen aan het materiaal. Voor deze zelfstudie gebruiken we slechts vijf patroonsleuven in het materiaal.
 
 >[!TIP]
->Het is een goed idee om uw materialen een handige naam te geven, zoals wordt weergegeven in de bovenstaande afbeelding.
+>Het is een goed idee om uw materialen een handige naam te geven, zoals wordt weergegeven in de vorige schermopname.
 
-We kunnen nu beginnen met het toewijzen van patronen aan ons materiaal. Hoe u patronen genereert, kan variëren afhankelijk van uw voorkeuren of zelfs afhankelijk zijn van het gebruik. Zo kunt u bijvoorbeeld tegelpatronen gebruiken die kunnen worden toegepast op elke asset, of mogelijk moeten specifieke onderdelen van een project/asset worden voorzien van een eigen, aangepaste set patronen. U kunt gebruikmaken van algemene tegelpatronen die u online verkrijgt, of u kunt ze zelf maken in apps zoals **Photoshop**, **Quixel Suite**, **Substance Suite**, enzovoort. 
+Hoe u patronen genereert, kan variëren afhankelijk van uw voorkeur of gebruik. U kunt bijvoorbeeld tegelpatronen gebruiken die kunnen worden toegepast op elke willekeurige asset. Of misschien wilt u dat specifieke onderdelen van een project of asset hun eigen aangepaste sets patronen hebben. U wilt mogelijk algemene tegelpatronen gebruiken die u online kunt verkrijgen. U kunt ze ook zelf maken in apps zoals Photoshop, Quixel Suite en Substance Suite.
 
-Voordat we de patronen gaan toewijzen, moet u nadenken over de assetpatrooncoördinaten (UVW). Hoewel het bij het toepassen van patronen op een model best practice is om ervoor te zorgen dat het model is uitgepakt (patronen worden niet goed weergegeven zonder op de juiste manier te zijn uitgepakt), is het in dit geval belangrijk als we van plan zijn om een **omgevingsocclusiekaart** te gebruiken voor het model. Waar **Stingray Shader** beschikbaar is in **Maya**, is **Fysiek materiaal** beschikbaar in **3DSMax**, maar dit programma beschikt niet over een speciaal patroonslot voor **omgevingsocclusie**. Daarom wordt de AO-kaart toegepast op een ander slot en zorgen we ervoor dat deze afzonderlijk van de andere patronen kan worden gebruikt (zoals tegelpatronen). Hiervoor wijzen we deze aan een eigen UVW-kaartkanaal toe. 
+Voordat we patronen gaan toewijzen, kijken we naar de patrooncoördinaten (UVW) van de asset. Het is een aanbevolen procedure wanneer u patronen toepast op een model om ervoor te zorgen dat het model is uitgepakt. (Patronen worden niet juist weergegeven zonder dat het model juist is uitgepakt met UV.) Dit is met name belangrijk voor onze doeleinden, omdat we een AO-kaart (Ambient Occlusion) willen gebruiken in ons model. In tegenstelling tot Stingray Shader in Maya heeft fysiek materiaal in 3ds Max geen toegewezen AO-patroonsleuf. Daarom passen we de AO-kaart toe op een andere sleuf. Om ervoor te zorgen dat deze afzonderlijk van de andere patronen (zoals tegelpatronen) kan worden gebruikt, wijzen we deze toe aan een eigen UVW-kaartkanaal. 
 
-We beginnen met het toewijzen van een **UVW-aanpassingsfunctie voor uitpakken** aan ons model, zoals hieronder wordt weergegeven:
+Eerst wijzen we een UVW-wijzigingsfunctie voor uitpakken toe aan het model, zoals wordt weergegeven in de volgende schermopname. 
 
-* Klik in de eigenschappeneditor voor geselecteerde objecten op de lijst van de aanpassingsfunctie. Schuif dan in de vervolgkeuzelijst die wordt geopend omlaag en selecteer UVW uitpakken. Met deze actie wordt een UVW-aanpassingsfunctie voor uitpakken toegepast op onze asset.
-![unwrap-modifier](media/3dsmax/unwrap-modifier.jpg)
+- In de geselecteerde editor voor objecteigenschappen selecteer u de wijzigingsfunctielijst. Schuif naar beneden in de vervolgkeuzelijst die wordt weergegeven, en selecteer **UVW voor uitpakken**. Met deze actie wordt een UVW-wijzigingsfunctie voor uitpakken toegepast op de asset.
+![Schermopname waarin wordt weergegeven hoe u UVW voor uitpakken selecteert.](media/3dsmax/unwrap-modifier.jpg)
 
-* Het kaartkanaal is ingesteld op één. In kaartkanaal één wordt meestal het uitpakken uitgevoerd. In ons geval is het object uitgepakt zonder overlappende patrooncoördinaten (UV).
-![unwrapped-uvw](media/3dsmax/unwrapped-uvw.jpg)
+  Het kaartkanaal is ingesteld op 1. Normaal gesproken voert u het belangrijkste uitpakken uit op kaartkanaal 1. In dit geval is het object uitgepakt zonder overlappende patrooncoördinaten (UV).
+![Schermopname waarin uitgepakte patrooncoördinaten (UVW) worden weergegeven.](media/3dsmax/unwrapped-uvw.jpg)
 
 De volgende stap is het maken van een tweede UV-kaartkanaal.
 
-* Sluit de UV-editor als deze is geopend en wijzig in het kanaalgedeelte van het menu **UV's bewerken** het kanaalnummer in twee. Kaartkanaal 2 is het verwachte kanaal voor omgevingsocclusiekaarten. 
+1. Sluit de UV-editor als deze is geopend. Wijzig in de sectie **Kanaal** van het menu **UV’s bewerken** het kanaalnummer in **2**. Kaartkanaal 2 is het verwachte kanaal voor AO-kaarten. 
 
-* In het dialoogvenster **Waarschuwing over kanaalwijziging** dat wordt geopend, krijgt u de mogelijkheid om de bestaande UV's in kanaal 1 te **verplaatsen** naar het nieuwe kanaal 2 of om de bestaande UV's te **verlaten**, waardoor er automatisch een nieuwe **UV-uitpaktaak** wordt gemaakt. Selecteer **Verlaten** alleen als u van plan bent om een nieuwe **UV-uitpaktaak** te maken voor de omgevingsocclusiekaart die verschilt van de UV's in kaartkanaal 1 (bijvoorbeeld als u tegelpatronen wilt gebruiken in kanaal 1). In dit geval gaan we de UV's **verplaatsen** van kanaal 1 naar kanaal 2, omdat het nieuwe UV-kanaal niet hoeft te worden bewerkt.
+1. In het dialoogvenster **Waarschuwing over kanaalwijziging** kunt u de bestaande UV's in kanaal 1 **Verplaatsen** naar het nieuwe kanaal 2, of de bestaande UV's **Verlaten**, waardoor er automatisch een nieuwe UV-uitpaktaak wordt gemaakt. Selecteer **Verlaten** alleen als u van plan bent een nieuwe UV-uitpaktaak voor de AO-kaart te maken die verschilt van de UV’s in kaartkanaal 1. (Bijvoorbeeld als u tegelpatronen wilt gebruiken in kanaal 1.) In deze zelfstudie verplaatsen we de UV’s van kanaal 1 naar kanaal 2, omdat het nieuwe UV-kanaal niet hoeft te worden bewerkt.
 
->[!NOTE]
->Zelfs als u de UV-uitpaktaak hebt gekopieerd (**verplaatst**) van kaartkanaal 1 naar kaartkanaal 2, kunt u nog wijzigingen aanbrengen aan de nieuwe kanaal-UV's zonder dat dit van invloed is op het oorspronkelijke kaartkanaal.
+   >[!NOTE]
+   >Zelfs als u de UV-uitpaktaak hebt gekopieerd (verplaatst) van kaartkanaal 1 naar kaartkanaal 2, kunt u nog wijzigingen aanbrengen aan de nieuwe kanaal-UV's zonder dat dit van invloed is op het oorspronkelijke kaartkanaal.
 
-![channel-change](media/3dsmax/channel-change.jpg)
+   ![Schermopname waarin Waarschuwing over kanaalwijziging wordt weergegeven.](media/3dsmax/channel-change.jpg)
 
-Wanneer het nieuwe kaartkanaal is gemaakt, kunnen we teruggaan naar het fysieke materiaal in de materiaaleditor en aan de slag gaan met het toevoegen van onze patronen. Eerst voegen we de omgevingsocclusie (**AO**) toe, omdat er nog een stap moet worden uitgevoerd om ervoor te zorgen dat deze goed werkt. Zodra de AO-kaart is gekoppeld aan ons materiaal, moeten we de kaart instrueren om kanaal 2 te gebruiken.
+Nu we het nieuwe kaartkanaal hebben gemaakt, kunnen we teruggaan naar het fysieke materiaal in de materiaaleditor en beginnen met toevoegen van de patronen. Eerst voegen we de AO-kaart toe, omdat er nog een stap is om ervoor te zorgen dat deze juist werkt. Nadat de AO-kaart is gekoppeld aan ons materiaal, moeten we deze configureren om kanaal 2 te gebruiken.
 
-* Zoals eerder vermeld, is er geen toegewezen slot voor AO-kaarten in het **fysieke materiaal van 3DSMax**. In plaats daarvan wordt de AO-kaart toegepast op het slot **Diffuse ruwheid**.
+Zoals eerder is vermeld, is er geen toegewezen slot voor AO-kaarten in het fysieke materiaal van 3ds Max. In plaats hiervan wordt de AO-kaart toegepast op de sleuf **Diffuse ruwheid**.
 
-* Klik in de lijst **Algemene kaarten** van het fysieke materiaal op **Diffuse ruwheid** bij het slot **Geen kaart** en laad uw AO-kaart.
+1. Selecteer in de lijst **Algemene kaarten** van het fysieke materiaal de sleuf **Geen kaart** naast **Diffuse ruwheid**, en laad de AO-kaart.
 
-* In de eigenschappen van het AO-patroon ziet u dat het kaartkanaal standaard is ingesteld op **1**. Wijzig deze waarde in **2**. Met deze actie worden de stappen voltooid die nodig zijn om uw omgevingsocclusiekaart toe te voegen.
+1. In de eigenschappen van het AO-patroon is het kaartkanaal standaard ingesteld op **1**. Wijzig deze waarde in **2**. Met deze actie worden de stappen voltooid die nodig zijn om de AO-kaart toe te voegen.
+
+   >[!IMPORTANT]
+   >Dit is een belangrijke stap, met name als uw UV's in kanaal 2 verschillen van die in kanaal 1, aangezien de AO niet juist in kaart wordt gebracht als het verkeerde kanaal is geselecteerd.
+
+   ![Schermopname waarin wordt weergegeven hoe u een AO-kaart toewijst.](media/3dsmax/assign-ao-map.jpg)
+
+We wijzen nu de normale kaart toe aan het PBR-materiaal. Deze actie wijkt enigszins af van het proces in Maya. De normale kaart wordt niet rechtstreeks toegepast op de bump-kaartsleuf. (Er is geen normale kaartsleuf in het fysieke materiaal van 3ds Max.) In plaats hiervan voegt u de normale kaart toe aan een normale kaartwijzigingsfunctie die zelf is aangesloten op de normale sleuf.
+
+1. Selecteer in de sectie **Speciale kaarten** van de eigenschappen van het fysieke materiaal (in de materiaaleditor) de sleuf **Geen kaart** naast **Bump-kaart**. 
+
+1. Zoek en selecteer in de **Materiaal-/kaartbrowser** de optie **Normale bump**. Met deze actie wordt een **Normale bump**-wijzigingsfunctie toegevoegd aan het materiaal.
+
+1. Selecteer in de **Normale bump**-wijzigingsfunctie de optie **Geen kaart** naast **Normaal**. Zoek en laad de normale kaart.
+
+1. Zorg ervoor dat de methode is ingesteld op **Tangens**. (Dit is standaard ingesteld.) Schakel, indien nodig, **Groen spiegelen (Y)** in of uit.
+
+   ![Schermopname waarin wordt weergegeven hoe u Normale bump selecteert.](media/3dsmax/normal-bump.jpg)
+   ![Schermopname waarin het laden van de normale kaart wordt weergegeven.](media/3dsmax/load-normal-map.jpg)
+
+Nu de normale kaart juist is toegewezen, kunnen we de resterende patronen toewijzen om het instellen van het fysieke materiaal te voltooien. Dit is een eenvoudig proces. Er zijn geen speciale instellingen om rekening mee te houden. In de volgende schermopname wordt de volledige set patronen weergegeven die is toegewezen aan het materiaal: 
+
+![Schermopname waarin de volledige set patronen wordt weergegeven die is toegewezen aan het materiaal.](media/3dsmax/all-textures.jpg)
+
+Nu de PBR-materialen zijn gemaakt en ingesteld, kunt u zich richten op het instantiëren van objecten in de scène. Zoek vergelijkbare objecten in de scène, zoals bouten, moeren, schroeven en sluitringen. Alle gelijke objecten kunnen zorgen voor een aanzienlijke vermindering van de bestandsgrootte. Instanties van een hoofdobject kunnen hun eigen schaal, draaiing en transformaties hebben, zodat u deze naar behoefte in de scène kunt plaatsen. In 3ds Max is het instantiëringsproces eenvoudig.
+
+1. Selecteer in de hoofd-viewport het object of de objecten die u wilt exporteren.
+
+1. Houd **Shift** ingedrukt en sleep de assets omhoog met het transformatieprogramma (voor verplaatsen). 
+
+1. Stel in het dialoogvenster **Opties klonen** de optie **Object** in op **Instantie**, en selecteer **OK**:
+
+   ![Schermopname van het dialoogvenster Opties klonen.](media/3dsmax/instance-object.jpg)
+
+Met deze actie wordt een instantie van uw object gemaakt dat u onafhankelijk van het bovenliggende item en andere instanties van dit bovenliggende item kunt verplaatsen, draaien of schalen.
 
 >[!IMPORTANT]
->Dit is een belangrijke stap, met name als uw UV's in kanaal 2 verschillen van die in kanaal 1, omdat de AO niet correct in kaart wordt gebracht als het onjuiste kanaal is geselecteerd.
-
-![assign-ao-map](media/3dsmax/assign-ao-map.jpg)
-
-We gaan nu de normale kaart toewijzen aan het PBR-materiaal. Deze actie verschilt van de actie in **Maya** omdat normal-map niet rechtstreeks wordt toegepast op de bumpkaartslot (er is geen slot normal-map in het **fysieke materiaal van 3DSMax**). In plaats daarvan wordt de kaart toegevoegd aan een normal-map-modifier die op zijn beurt wordt gekoppeld aan het slot **normals**.
-
-* Klik in het gedeelte **Speciale kaarten** van de eigenschappen van het fysieke materiaal (in de materiaaleditor) op **Bumpkaart** bij het slot **Geen kaart**. 
-
-* Zoek in de materialen-/kaartbrowser naar de optie **Normale bump** en klik hierop. Met deze actie wordt een **normale bump**-aanpassing aan ons materiaal toegevoegd.
-
-* Klik in de **normale bump**-aanpassing op **Normaal** bij **Geen kaart** en zoek en laad dan uw normale kaart (normal-map).
-
-* Controleer of de methode is ingesteld op **Taaklijn** (dit moet standaard het geval zijn) en stel indien nodig de schakelaar in op **groen (Y)** .
-
-![normal-bump](media/3dsmax/normal-bump.jpg)
-![load-normal-map](media/3dsmax/load-normal-map.jpg)
-
-Als normal-map goed wordt toegewezen, kunnen we verder met het toewijzen van de resterende patronen om het instellen van het fysieke materiaal te voltooien. Dit proces is eenvoudig; er hoeft geen rekening te worden gehouden met speciale instellingen. In de volgende afbeelding ziet u de volledige set met patronen die aan ons materiaal zijn toegewezen: ![all-textures](media/3dsmax/all-textures.jpg)
-
-Als uw PBR-materialen zijn gemaakt en ingesteld, is het de moeite waard om na te denken over het instantiëren van objecten in uw scène. Het instantiëren van vergelijkbare objecten in uw scène, zoals moeren, bouten en schroeven, sluitringen en alle objecten die hetzelfde zijn, kan aanzienlijke besparingen opleveren wat betreft de bestandsgrootte. Instanties van een masterobject kunnen hun eigen schaal, draaiing en transformaties krijgen, zodat deze naar behoefte in uw scène kunnen worden geplaatst. In **3D Studio Max** is het **instantiëringsproces** eenvoudig.
-
-* Selecteer in de hoofd-viewport het object of de objecten die u wilt exporteren.
-
-* Houd **Shift** ingedrukt en versleep de assets omhoog met het hulpprogramma Transformeren (verplaatsen) 
-
-* In het dialoogvenster **Opties klonen** dat wordt geopend, stelt u **Object** in op **Instantie** en klikt u op **OK**. 
-![instance-object](media/3dsmax/instance-object.jpg)
-
-Met deze actie wordt een instantie van uw object gemaakt dat onafhankelijk van het bovenliggende item en andere instanties van dat bovenliggende item kan worden gedraaid of geschaald.
-
->[!IMPORTANT]
->Wijzigingen die u in de sub-objectmodus aanbrengt in een instantie worden echter verzonden naar alle instanties van uw object. Als u dus werkt met geïnstantieerde objectonderdelen, zoals hoekpunten en polygoonvlakken, moet u zich ervan bewust zijn dat de wijzigingen die u aanbrengt, van invloed zijn op al deze instanties. Houd er rekening mee dat elk geïnstantieerd object op elk gewenst moment kan worden veranderd in een uniek object. 
+>Eventuele wijzigingen die u aanbrengt in een instantie terwijl u in de subobjectmodus bent, worden doorgevoerd voor alle instanties van het object. Als u werkt met de onderdelen van een geïnstantieerd object, zoals hoekpunten en zijden van veelhoeken, moet u dus zeker weten dat u eventuele wijzigingen wilt toepassen op alle instanties. Houd er rekening mee dat elk geïnstantieerd object op elk gewenst moment kan worden veranderd in een uniek object. 
 
 >[!TIP]
->De best practice voor instantiëren in uw scène is om deze instanties gaandeweg te maken, omdat het vervangen van **kopieën** door geïnstantieerde objecten later bijzonder moeilijk is. 
+>Bij het instantiëren van de scène is het een goed idee om tijdens het proces instanties te maken. Het is lastig om later nog kopieën te vervangen door geïnstantieerde objecten. 
 
-Een van de laatste dingen die u moet overwegen voordat we verdergaan met het exportproces is hoe u uw scène/asset kunt inpakken voor delen. In het ideale geval is het zo dat als u de asset doorgeeft aan een klant of een teamlid, u hen de assets wilt kunnen laten openen en weergeven met een minimale hoeveelheid rompslomp. Het is dan ook belangrijk dat u de patroonpaden van uw assets afstemt op het scènebestand. Als de patroonpaden voor uw asset verwijzen naar een lokaal station of een absoluut pad/absolute locatie, worden ze niet geladen in de scène als deze wordt geopend op een andere computer, zelfs niet als het **.max**-bestand in dezelfde map staat als de patronen. Als u de patroonpaden relatief maakt in 3D Studio Max, wordt dit probleem redelijk eenvoudig opgelost.
+Een van de laatste dingen om te overwegen, voordat we verdergaan met het exportproces, is hoe u uw scène/asset gaat inpakken voor delen. In het ideale geval geeft u de asset door aan klanten of teamleden, waarna zij deze met een minimale hoeveelheid rompslomp kunnen openen en weergeven. Daarom is het belangrijk dat u de patroonpaden van de assets afstemt op het scènebestand. Als de patroonpaden voor de asset verwijzen naar een lokaal station of een absoluut pad/absolute locatie, worden ze niet geladen in de scène als deze is geopend op een andere computer, zelfs niet als het .max-bestand zich in dezelfde map bevindt als de patronen. Als u de patroonpaden relatief maakt in 3ds Max, kan dit probleem redelijk eenvoudig worden opgelost.
 
-* Ga in de hoofdwerkbalk naar **Bestand** > **Verwijzing** > **Assets bijhouden**. 
+1. Ga in de hoofdwerkbalk naar **Bestand** > **Verwijzing** > **Assets bijhouden**. 
 
-* In de browser voor het bijhouden van assets die wordt geopend, ziet u (bijna) alle patronen die u hebt toegepast op uw PBR-materialen die worden vermeld in de kolom **Kaarten/shaders**.
+1. In het venster Assets bijhouden worden (bijna) alle patronen die u hebt toegepast op uw PBR-materialen, weergegeven in de kolom **Kaarten/shaders**.
 
-* Hiernaast, in de kolom **Volledig pad**, ziet u het bestandspad voor de locatie van de patronen (waarschijnlijk de locatie op uw lokale computer).
+1. Ernaast, in de kolom **Volledig pad**, ziet u het pad naar de locatie van de patronen. Dit is waarschijnlijk het pad naar de locatie op uw lokale computer.
 
-* Ten slotte ziet u een kolom met de naam **Status**. In deze kolom wordt aangegeven of een bepaald patroon is gevonden en toegepast op uw scène, en wordt dit patroon gemarkeerd met een van de volgende termen: **OK**, **Gevonden** of **Bestand ontbreekt**. De eerste twee geven aan dat het bestand is gevonden en geladen, terwijl de laatste betekent dat de tracker een bestand niet heeft gevonden.
-![texture-paths](media/3dsmax/texture-paths.jpg)
+1. Ten slotte ziet u een kolom met de naam **Status**. In deze kolom wordt aangegeven of een bepaald patroon is gevonden en toegepast op de scène. De structuur wordt gemarkeerd met een van de volgende termen: **OK**, **Gevonden** of **Bestand ontbreekt**. De eerste twee geven aan dat het bestand is gevonden en geladen. De laatste term duidt erop dat de tracker het bestand niet heeft gevonden.
+ 
+   ![Schermopname van het venster Assets bijhouden.](media/3dsmax/texture-paths.jpg)
 
-U zult merken dat niet alle patronen worden weergegeven in de assettracker wanneer u deze voor het eerst opent. U hoeft zich nergens zorgen over te maken, omdat u meestal alle scènepatronen wel kunt vinden als u het proces voor het vinden van paden een of twee keer uitvoert. Het proces voor het zoeken van paden is als volgt: 
+U merkt wellicht dat niet alle patronen worden weergegeven in het venster Assets bijhouden wanneer u deze voor het eerst opent. Hier hoeft zich geen zorgen over te maken. Meestal kunt u alle scènepatronen wel vinden als u het proces voor het vinden van alle patronen een of twee keer uitvoert. Het proces voor het zoeken van paden is als volgt: 
 
-* In het asset-trackervenster houdt u **Shift** ingedrukt en +**klikt** u op het bovenste patroon in de lijst **Kaarten/shaders**. Houd Shift ingedrukt en klik op het laatste patroon in de lijst. Met deze actie worden alle patronen in de lijst geselecteerd. De geselecteerde patronen worden nu in het blauw gemarkeerd (zie de bovenstaande afbeelding).
+1. Houd in het venster Assets bijhouden **Shift** ingedrukt, en selecteer het bovenste patroon in de lijst **Kaarten/shaders**. Houd **Shift** nog steeds ingedrukt en selecteer vervolgens het laatste patroon in de lijst. Met deze actie worden alle patronen in de lijst geselecteerd. De geselecteerde patronen worden blauw gemarkeerd. (Bekijk de vorige schermopname.)
 
-* Klik met de rechtermuisknop op de selectie en selecteer in het pop-upmenu dat wordt geopend **Pad instellen**.
+1. Klik met de rechtermuisknop op de selectie en selecteer **Pad instellen**.
 
-* Selecteer in het vak **Assetpad opgeven** dat wordt geopend het lokale pad naar de weergegeven patronen. Vervang het pad door het volgende `.\` en klik op **OK**. 
+1. Selecteer in het vak **Assetpad opgeven** het lokale pad naar uw patronen en vervang deze door `.\`.  Selecteer **OK**. 
 
-* Na een bepaalde periode (die afhankelijk is van het aantal patronen in uw scène en hoe groot uw scène is), moet de asset-tracker alles als volgt omzetten (zie de afbeelding).
-![resolve-textures](media/3dsmax/resolve-textures.jpg)
+    Het venster Assets bijhouden wordt bijgewerkt zoals weergegeven in de volgende schermopname. Deze update kan enige tijd duren, afhankelijk van het aantal patronen in uw scène en hoe groot uw scène is.
+![Schermopname waarin het bijgewerkte het venster Assets bijhouden wordt weergegeven.](media/3dsmax/resolve-textures.jpg)
 
-De kolom **Volledig pad** is nu leeg. Dit betekent dat de scène niet langer zoekt naar de relevante patronen op een specifieke (absolute) locatie, maar dat deze ze altijd vindt als het max-bestand of het bijbehorende FBX-bestand zich in dezelfde map bevindt als de patronen. 
+De kolom **Volledig pad** is nu leeg. Dit betekent dat de scène niet meer naar de relevante patronen op een specifieke (absolute) locatie kijkt. De patronen worden altijd gevonden zoals het .max-bestand of gerelateerde FBX-bestand zich in dezelfde map bevindt als de patronen. 
 
 >[!NOTE]
->Het kan gebeuren dat u dit proces een paar keer moet herhalen om alle patronen en paden te vinden en om te zetten. Daar is niets te doen. Herhaal deze procedure gewoon totdat alle relevante assets zijn verwerkt. Het kan ook gebeuren dat sommige bestanden niet meer te vinden zijn. In dit geval selecteert u alle assets in de lijst en klikt u op **Ontbrekende paden verwijderen** (zie de afbeelding hierboven)
+>Mogelijk moet u dit proces een paar keer herhalen om alle patronen en paden te vinden en om te zetten. Hier hoeft zich geen zorgen over te maken. Herhaal dit proces gewoon totdat alle relevante assets zijn gevonden. In sommige gevallen worden bepaalde bestanden niet gevonden. In dit geval selecteert u alle assets in de lijst en selecteert u vervolgens **Ontbrekende paden verwijderen**. (Zie de vorige afbeelding.)
 
 ## <a name="fbx-export"></a>FBX-export
 
-Wanneer het traceren van assets is voltooid, kunnen we doorgaan met de FBX-export. Dit proces is eenvoudig en kan op verschillende manieren worden uitgevoerd. 
+Nu we de patroonpaden relatief hebt gemaakt, kunnen we beginnen met de FBX-export. Ook dit proces is eenvoudig en kan op verschillende manieren worden uitgevoerd. 
 
 >[!TIP]
->Tenzij u uw hele scène wilt exporteren, is het raadzaam alleen de assets te selecteren die nodig zijn. Bij scènes waarvoor veel resources nodig zijn, kan het exporteren lang duren. Het is dus logisch om alleen te exporteren wat u nodig hebt
+>Tenzij u de hele scène wilt exporteren, is het een goed idee om alleen de assets te selecteren die u nodig hebt. In resource-intensieve scènes kan het enige tijd duren voordat het exporteren is voltooid.
 >
->Als u modifiers hebt gebruikt zoals **Turbosmooth** of **Open SubDiv**, is het raadzaam deze samen te vouwen voordat u exporteert, omdat deze tijdens het exporteren tot problemen kunnen leiden. Sla uw scène altijd op voordat u dit doet. 
+>Als u wijzigingsfuncties hebt gebruikt zoals Turbosmooth of Open SubDiv, is het raadzaam om deze samen te vouwen voordat u exporteert, omdat deze tot problemen kunnen leiden tijdens het exporteren. Zorg ervoor dat u de scène opslaat voordat u deze samenvouwt. 
 
-* Selecteer in de scène de assets die u wilt exporteren en ga in de hoofdwerkbalk naar **Bestand** > **Exporteren** > **Geselecteerde export**
+1. Selecteer in de scène de assets die u wilt exporteren. Ga op de hoofdwerkbalk naar **Bestand** > **Exporteren** > **Selectie exporteren**.
 
-* Typ of selecteer in het dialoogvenster **Bestand selecteren om te exporteren** de naam van het uitvoerbestand en selecteer in de opties **Opslaan als type** **Autodesk (*.fbx)** . Met deze actie wordt het FBX-exportmenu geopend. 
+1. Typ of selecteer in het dialoogvenster **Bestand selecteren om te exporteren** de naam van een uitvoerbestand. Selecteer in de lijst **Opslaan als type** de optie **Autodesk (*.fbx)** . Met deze actie wordt het venster FBX exporteren geopend.
 
-* Houd er rekening mee dat, als u instanties in uw scène hebt gemaakt, het belangrijk is dat **Instanties behouden** wordt ingeschakeld in de exportinstellingen voor FBX. 
-![fbx-export](media/3dsmax/fbx-export.jpg)
+  >[!IMPORTANT] 
+  >Als u instanties hebt gemaakt in de scène, is het belangrijk om **Instanties behouden** te selecteren in de FBX-exportinstellingen. 
 
-Er is eerder gezegd dat er verschillende manieren zijn om een bestand te exporteren. Als het de bedoeling is dat de FBX wordt gedeeld met de patroonbestanden in een map, moeten de instellingen in de onderstaande afbeelding worden toegepast en goed werken. Wanneer u de instellingen hebt geselecteerd, klikt u op **OK**.
-![fbx-settings](media/3dsmax/fbx-settings.jpg)
+  ![Schermopname waarin wordt weergegeven hoe u exporteert naar FBX.](media/3dsmax/fbx-export.jpg)
 
-Als u echter liever geen grote mappen met patronen met de FBX wilt delen, kunt u ervoor kiezen om de patronen **in te sluiten** in de FBX. Dit betekent dat de volledige asset (inclusief patronen) wordt toegevoegd aan één FBX. Houd er echter rekening mee dat uw export wordt gecombineerd tot één enkele asset en dat het FBX-bestand als gevolg redelijk groot zal zijn.
+  Onthoud dat er verschillende manieren zijn om het bestand te exporteren. Als u de FBX wilt delen samen met de bijbehorende patroonbestanden in een map, zijn de instellingen in de volgende schermopname geschikt. 
 
->[!IMPORTANT]
->Als het FBX-bestand groter is dan 2,4 GB, moet de minimale versie van de FBX-exportinstellingen (zie hierboven) 2016 of hoger zijn. Nieuwere versies bieden ondersteuning voor 64 bits en ondersteunen dus grotere bestanden.
+   Als u liever geen grote mappen met patronen samen met de FBX wilt delen, kunt u ervoor kiezen om de patronen in te sluiten in de FBX. Als u de patronen insluit, wordt de hele asset, inclusief patronen toegevoegd aan één FBX. Als u dit doet, wordt de export gecombineerd tot één enkele asset, maar het FBX-bestand is als gevolg hiervan redelijk groot.
 
-* In de FBX-exportinstellingen schakelt u **Media insluiten in en daarna klikt u op **OK** om te exporteren met de patronen erbij. 
+   >[!IMPORTANT]
+   >Als het resulterende FBX-bestand groter is dan 2,4 GB, moet de minimale versie die is opgegeven in de FBX-exportinstellingen, 2016 of hoger zijn. (Bekijk de vorige schermopname.) Nieuwere versies bieden ondersteuning voor 64 bits en ondersteunen dus grotere bestanden.
 
-Als u tijdens het gebruik van het fysieke materiaal naar FBX exporteert, ziet u waarschijnlijk de volgende waarschuwing nadat u op OK hebt geklikt in het exporteerdialoogvenster: ![export-warnings](media/3dsmax/export-warnings.jpg)
+1. Als u de scène wilt exporteren inclusief de patronen, selecteert u in het venster *FBX exporteren de optie **Media insluiten**. 
 
-Met deze waarschuwing wordt de gebruiker erover geïnformeerd dat het geëxporteerde materiaal mogelijk niet compatibel is met andere softwarepakketten. Omdat het fysieke materiaal compatibel is met Azure Remote Rendering, hoeft u zich geen zorgen te maken. Klik op **OK** om het proces te voltooien en het venster te sluiten.
+1. Selecteer de overige instellingen en selecteer vervolgens **OK**:
+
+    ![Schermopname waarin de FBX-exportinstellingen worden weergegeven.](media/3dsmax/fbx-settings.jpg)
+
+
+   Wanneer u exporteert naar FBX terwijl u een fysiek materiaal gebruikt, ziet u, nadat u **OK** hebt geselecteerd, waarschijnlijk de volgende waarschuwing in het venster FBX exporteren: 
+
+   ![Schermopname waarin een waarschuwing wordt weergegeven over het mislukken van een materiaalexport.](media/3dsmax/export-warnings.jpg)
+
+   Deze waarschuwing laat u weten dat het geëxporteerde materiaal mogelijk niet compatibel is met andere softwarepakketten. Omdat het fysieke materiaal compatibel is met Azure Remote Rendering, hoeft u zich geen zorgen te maken over deze waarschuwing. 
+
+1. Selecteer **OK** om het proces te voltooien en het venster te sluiten.
 
 ## <a name="conclusion"></a>Conclusie
 
@@ -208,7 +229,7 @@ Over het algemeen lijken materialen van dit type realistisch, omdat ze zijn geba
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U weet nu hoe u materialen kunt instellen met geavanceerde belichting voor objecten in een scène. U weet ook hoe u de objecten kunt exporteren naar de FBX-indeling die wordt ondersteund door Azure Remote Rendering. De volgende stap bestaat uit het converteren van het FBX-bestand en visualiseren in Azure Remote Rendering.
+U weet nu hoe u materialen kunt instellen met geavanceerde belichting voor objecten in een scène. U weet ook hoe u objecten kunt exporteren naar de FBX-indeling die wordt ondersteund voor Azure Remote Rendering. De volgende stap bestaat uit het converteren van het FBX-bestand en visualiseren in Azure Remote Rendering.
 
 >[!div class="nextstepaction"]
 >[Snelstart: een model converteren voor rendering](../../quickstarts\convert-model.md)

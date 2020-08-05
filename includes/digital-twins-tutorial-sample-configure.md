@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277828"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124549"
 ---
 ## <a name="configure-the-sample-project"></a>Het voorbeeldproject configureren
 
-Stel vervolgens een voorbeeldclienttoepassing in die gaat communiceren met uw instantie van Azure Digital Twins. Als u het voorbeeldproject nog niet hebt gedownload, download u het nu van de landingspagina [Azure Digital Twins-voorbeelden](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) door de knop *ZIP downloaden* onderaan de titel te selecteren.
+Stel vervolgens een voorbeeldclienttoepassing in die gaat communiceren met uw instantie van Azure Digital Twins. Als u het voorbeeldproject nog niet hebt gedownload, downloadt u het nu op de landingspagina [*Azure Digital Twins-voorbeelden*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) door de knop *ZIP downloaden* onderaan de titel te selecteren.
 
 Navigeer naar het gedownloade bestand op uw computer en pak het uit.
 

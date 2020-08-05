@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een query naar de API verzenden met behulp van Java-Bing lokale zakelijke zoek opdracht'
+title: 'Quickstart: een query naar de API verzenden met behulp van Java - Bing Local Business Search'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service.
+description: Gebruik deze quickstart om aanvragen te verzenden naar de Bing Local Business Search-API, een Azure Cognitive Service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,29 +9,30 @@ ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: eb236c77fb9b5e2d5da16ff980693d1c9fce3d8d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: 8780caae20b779997e32750ed7829afd7d969a02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611214"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320235"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Snelstartgids: een query naar de Bing Local Business Search-API verzenden met behulp van Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Quickstart: Een query verzenden naar de Bing Local Business Search-API met behulp van Java
 
-Gebruik deze Quick Start om te leren hoe u aanvragen verzendt naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing wordt geschreven in Java, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
+Gebruik deze quickstart om te leren hoe u aanvragen verzendt naar de Bing Local Business Search-API, een Azure Cognitive Service. Hoewel deze eenvoudige toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met elke programmeertaal die HTTP-aanvragen kan doen en JSON kan parseren.
 
-In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor een zoek query.
+In deze voorbeeldtoepassing worden lokale antwoordgegevens opgehaald uit de API voor een zoekquery.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
 * De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Een Bing Search-resource maken"  target="_blank">maakt u een Bing Search-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
 
 ## <a name="create-the-request"></a>De aanvraag maken 
 
-Met de volgende code maakt u een `WebRequest` , stelt de kop van de toegangs sleutel in en voegt een query reeks voor *Hotel toe in Bellevue*.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
+Met de volgende code wordt een `WebRequest` gemaakt, de koptekst van de toegangssleutel ingesteld en een query-tekenreeks toegevoegd voor *hotel in Bellevue*.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
 
 ```java
     // construct URL of search request (endpoint + query string)
@@ -49,7 +50,7 @@ Met de volgende code maakt u een `WebRequest` , stelt de kop van de toegangs sle
 
 ## <a name="run-the-complete-application"></a>De volledige toepassing uitvoeren
 
-De volgende code gebruikt de Bing lokale Business Search-API om Zoek resultaten te retour neren van de Bing zoek machine. Voer deze code uit door de volgende stappen uit te voeren:
+De volgende code gebruikt de Bing Local Business Search-API om zoekresultaten te retourneren van de Bing-zoekmachine. Volg de volgende stappen om deze code uit te voeren:
 1. Download of installeer de gson-bibliotheek.
 2. Maak een nieuw Java-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
@@ -163,6 +164,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Lokale zakelijke zoek acties C# Quick Start](local-quickstart.md)
-- [Zoeken in lokale zakelijke Node.js Snelstartgids](local-search-node-quickstart.md)
-- [Snelstartgids voor lokale zakelijke Zoek opdrachten python](local-search-python-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met C#](local-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met Node.js](local-search-node-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met Python](local-search-python-quickstart.md)

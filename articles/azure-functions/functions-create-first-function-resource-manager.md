@@ -1,24 +1,28 @@
 ---
 title: Uw eerste functie maken met behulp van Azure Resource Manager-sjablonen
-description: Maak en implementeer in Azure een eenvoudige met HTTP geactiveerde serverloze functie, door gebruik te maken van een Azure Resource Manager-sjabloon.
+description: Maak en implementeer in Azure een eenvoudige met HTTP geactiveerde serverloze functie, door gebruik te maken van een ARM-sjabloon (Azure Resource Manager).
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081709"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>Quickstart: Azure Functions-resources maken en implementeren vanuit een Resource Manager-sjabloon
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Quickstart: Azure Functions-resources maken en implementeren vanuit een ARM-sjabloon
 
-In dit artikel gebruikt u een Azure Resource Manager-sjabloon om een functie te maken die reageert op HTTP-aanvragen. 
+In dit artikel gebruikt u een ARM-sjabloon (Azure Resource Manager) om een functie te maken die reageert op HTTP-aanvragen. 
 
 Voor het voltooien van deze quickstart worden kosten van een paar dollarcent of minder in rekening gebracht bij uw Azure-account. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,13 +52,11 @@ Kies een van de volgende tabbladen, klik op de koppeling en voltooi de sectie om
 
 Nadat u het project lokaal hebt gemaakt, maakt u de resources die zijn vereist om de nieuwe functie uit te voeren in Azure. 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>Een serverloze functie-app maken in Azure
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/).
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic).
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 De volgende vier Azure-resources worden gemaakt met deze sjabloon:
 
@@ -63,7 +65,7 @@ De volgende vier Azure-resources worden gemaakt met deze sjabloon:
 + [**Microsoft.Web/sites**](/azure/templates/microsoft.web/sites): een functie-app maken.
 + [**microsoft.insights/components**](/azure/templates/microsoft.insights/components): een Application Insights-instantie maken voor bewaking.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 ```azurecli-interactive

@@ -1,26 +1,25 @@
 ---
-title: Azure PowerShell-voor beelden voor Azure-toepassing gateway
-description: Dit artikel bevat koppelingen naar Azure PowerShell voor beelden, zodat u Azure-toepassing gateway snel op verschillende manieren kunt implementeren.
+title: Azure PowerShell-voorbeelden voor Azure Application Gateway
+description: Dit artikel bevat koppelingen naar Azure PowerShell-voorbeelden, zodat u snel Azure Application Gateway op verschillende manieren kunt implementeren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d45fd7bf88e6988b83a621eda2689c10356441a4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 045009f695197277ab576c8ff41f36af43957be7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74129742"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067763"
 ---
-# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure PowerShell-voor beelden voor Azure-toepassing gateway
+# <a name="azure-powershell-examples-for-azure-application-gateway-ag"></a>Azure PowerShell-voorbeelden voor Azure Application Gateway (AG)
 
-De volgende tabel bevat koppelingen naar Azure PowerShell script voorbeelden voor Azure-toepassing gateway.
+De volgende tabel bevat koppelingen naar Azure PowerShell-scriptvoorbeelden voor Azure Application Gateway.
 
-| | |
-|---|---|
-| [Webverkeer beheren](./scripts/create-vmss-powershell.md) | Hiermee maakt u een Application Gateway en alle gerelateerde resources.|
-| [Webverkeer beperken](./scripts/create-vmss-waf-powershell.md) | Hiermee maakt u een Application Gateway die verkeer beperkt met OWASP-regels.|
-|[Aangepaste regels voor WAF v2](scripts/waf-custom-rules-powershell.md)|Hiermee maakt u een Application Gateway Web Application Firewall versie 2 met aangepaste regels.
-| | |
+| Voorbeeld | Beschrijving |
+|-------- | ----------- |
+| [Webverkeer beheren](./scripts/create-vmss-powershell.md) | Hiermee maakt u een toepassingsgateway en alle gerelateerde resources.|
+| [Webverkeer beperken](./scripts/create-vmss-waf-powershell.md) | Hiermee maakt u een toepassingsgateway die verkeer beperkt met behulp van OWASP-regels.|
+|[Aangepaste WAF v2-regels](scripts/waf-custom-rules-powershell.md)|Hiermee maakt u een Web Application Firewall v2 van Application Gateway met aangepaste regels.|

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een sleutel van Azure Key Vault instellen en ophalen'
-description: Quick Start laat zien hoe u een sleutel van Azure Key Vault kunt instellen en ophalen met behulp van Azure CLI
+title: 'Kenmerken van een sleutel in Azure Key Vault maken en ophalen: Azure CLI'
+description: Quickstart waarin wordt getoond hoe u een sleutel instelt in Azure Key Vault en daaruit ophaalt met behulp van Azure CLI
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: defc5317c127d771786989748e404285ca0c0584
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e9d56f0ad2da696eb683ea393ad75254ba3ce954
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061306"
 ---
-# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Snelstartgids: een sleutel van Azure Key Vault instellen en ophalen met behulp van Azure CLI
+# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Quickstart: Een sleutel instellen in Azure Key Vault en daaruit ophalen met behulp van Azure CLI
 
-In deze Quick Start maakt u een sleutel kluis in Azure Key Vault met Azure CLI. Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. U kunt het [Overzicht](../general/overview.md) raadplegen voor meer informatie over Key Vault. Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources met behulp van opdrachten of scripts. Zodra u klaar bent, slaat u een sleutel op.
+In deze quickstart maakt u een sleutelkluis in Azure Key Vault met behulp van de Azure CLI. Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. U kunt het [Overzicht](../general/overview.md) raadplegen voor meer informatie over Key Vault. Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources met behulp van opdrachten of scripts. Nadat u dat hebt gedaan, slaat u een sleutel op.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -49,7 +49,7 @@ az group create --name "ContosoResourceGroup" --location eastus
 Vervolgens maakt u een sleutelkluis in de resourcegroep die u in de vorige stap hebt gemaakt. U moet enkele gegevens verstrekken:
 
 - Voor deze snelstart gebruiken we **Contoso-vault2**. U moet in de test een unieke naam opgeven.
-- De naam van de resource groep **ContosoResourceGroup**.
+- Naam van resourcegroep **ContosoResourceGroup**.
 - De locatie **VS - oost**.
 
 ```azurecli
@@ -59,13 +59,13 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelkluis. Let op de onderstaande twee eigenschappen:
 
 - **Kluisnaam**: in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere Key Vault-opdrachten.
-- **Vault URI**: In het voorbeeld is dit https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+- **Kluis-URI**: in het voorbeeld is dat https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op deze nieuwe kluis uit te voeren.
 
 ## <a name="add-a-key-to-key-vault"></a>Een sleutel toevoegen aan Key Vault
 
-Als u een sleutel wilt toevoegen aan de kluis, hoeft u alleen maar een paar extra stappen uit te voeren. Deze sleutel kan worden gebruikt door een toepassing. 
+Als u een sleutel wilt toevoegen aan de kluis, hoeft u maar een paar extra stappen uit te voeren. Deze sleutel zou kunnen worden gebruikt door een toepassing. 
 
 Typ de onderstaande opdrachten om een aangeroepen **ExampleKey** te maken:
 
@@ -73,16 +73,16 @@ Typ de onderstaande opdrachten om een aangeroepen **ExampleKey** te maken:
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
 ```
 
-U kunt nu verwijzen naar deze sleutel die u aan Azure Key Vault hebt toegevoegd met behulp van de bijbehorende URI. Gebruiken **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** om de huidige versie op te halen. 
+U kunt nu naar deze sleutel die u aan Azure Key Vault hebt toegevoegd, verwijzen met behulp van de URI ervan. Gebruik **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** om de huidige versie op te halen. 
 
-Eerder opgeslagen sleutel weer geven:
+Een eerder opgeslagen sleutel weergeven:
 
 ```azurecli
 
 az keyvault key show --name "ExampleKey" --vault-name "Contoso-Vault2"
 ```
 
-U hebt nu een Key Vault gemaakt, een sleutel opgeslagen en deze opgehaald.
+U hebt nu een sleutelkluis gemaakt, een sleutel opgeslagen en deze vervolgens opgehaald.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -95,8 +95,8 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Key Vault gemaakt en een sleutel in het bestand opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
+In deze quickstart hebt u een sleutelkluis gemaakt en daar een sleutel in opgeslagen. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
-- Een [overzicht van Azure Key Vault](../general/overview.md) lezen
-- Zie de naslag informatie voor de [Azure cli AZ](/cli/azure/keyvault?view=azure-cli-latest) -sleutel kluis-opdrachten
-- [Azure Key Vault aanbevolen procedures](../general/best-practices.md) controleren
+- Lees een [Overzicht van Azure Key Vault](../general/overview.md)
+- Raadpleeg de naslaginformatie voor de [az keyvault-opdrachten van de Azure CLI](/cli/azure/keyvault?view=azure-cli-latest)
+- Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

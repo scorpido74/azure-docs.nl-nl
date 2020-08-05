@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met F5 | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en F5.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met F5 | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en F5.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,459 +16,459 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 341be30c30f7b4a2a53f70f18e1c2a3a30de1cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034412"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met F5
+# <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Zelfstudie: Eenmalige aanmelding (SSO) configureren tussen Azure Active Directory en F5
 
-In deze zelf studie leert u hoe u F5 kunt integreren met Azure Active Directory (Azure AD). Wanneer u F5 integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u F5 integreert met Azure Active Directory (Azure AD). Wanneer u F5 integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot F5.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij F5 met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot F5.
+* Uw gebruikers zich met hun Azure AD-account automatisch laten aanmelden bij F5.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [eenmalige aanmelding bij toepassingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van SaaS-apps met eenmalige aanmelding in azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met eenmalige aanmelding in Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 
-* F5-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een abonnement op F5 waarvoor eenmalige aanmelding is ingeschakeld.
 
 * Voor de implementatie van de gezamenlijke oplossing is de volgende licentie vereist:
 
-    * F5 BIG-IP-® beste bundel (of) 
+    * F5 BIG-IP® Best-bundel (of) 
 
-    * F5 BIG-IP Access Policy Manager™ (APM) zelfstandige licentie 
+    * Zelfstandige licentie voor F5 BIG-IP Access Policy Manager™ (APM) 
 
-    * F5 BIG-IP Access Policy Manager™ (APM)-invoeg toepassing voor een bestaande BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM).
+    * Invoegtoepassingslicentie voor F5 BIG-IP Access Policy Manager™ (APM) in een bestaande BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM).
 
-    * Naast de bovenstaande licentie kan het F5-systeem ook worden gelicentieerd met: 
+    * Naast de bovenstaande licentie kan het F5-systeem ook in licentie worden verkregen met: 
 
-        * Een URL-filter abonnement voor het gebruik van de URL-categorie database
+        * Een abonnement op URL-filtering voor het gebruik van de URL-categoriedatabase
 
-        * Een F5 IP Intelligence-abonnement voor het detecteren en blok keren van bekende aanvallers en schadelijk verkeer
+        * Een F5 IP Intelligence-abonnement voor het detecteren en blokkeren van bekende aanvallers en schadelijk verkeer
      
-        * Een HSM (Hardware Security module) voor het beveiligen en beheren van digitale sleutels voor sterke verificatie
+        * Een netwerk-HSM (Hardware Security module) voor het beveiligen en beheren van digitale sleutels voor sterke verificatie
 
-* F5 BIG-IP-systeem is ingericht met APM-modules (LTM is optioneel)
+* Het F5 BIG-IP-systeem is ingericht met APM-modules (LTM is optioneel)
 
-* Hoewel dit optioneel is, is het raadzaam om de F5-systemen te implementeren in een [groep voor synchronisatie/failover-apparaten](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), die het actieve stand-by-paar omvat, met een zwevend IP-adres voor hoge beschik BAARHEID (ha). U kunt verdere interface redundantie bereiken met behulp van het Link Aggregation Control Protocol (LACP). LACP beheert de verbonden fysieke interfaces als één virtuele interface (statistische groep) en detecteert interface fouten binnen de groep.
+* Hoewel dit optioneel is, is het raadzaam om de F5-systemen te implementeren in een [synchronisatie/failover-apparaatgroep](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), die het actieve stand-by-paar omvat, met een zwevend IP-adres voor hoge beschikbaarheid. U kunt verdere interfaceredundantie bereiken met behulp van het Link Aggregation Control Protocol (LACP). LACP beheert de verbonden fysieke interfaces als één virtuele interface (statistische groep) en detecteert interfacefouten binnen de groep.
 
-* Voor Kerberos-toepassingen, een on-premises AD-service account voor beperkte delegering.  Raadpleeg de [F5-documentatie](https://support.f5.com/csp/article/K43063049) voor het maken van een AD delegering-account.
+* Voor Kerberos-toepassingen, een on-premises AD-serviceaccount voor beperkte delegatie.  Raadpleeg de [documentatie bij F5](https://support.f5.com/csp/article/K43063049) voor het maken van een AD-delegatieaccount.
 
-## <a name="access-guided-configuration"></a>Begeleide configuratie voor toegang
+## <a name="access-guided-configuration"></a>Begeleide toegangsconfiguratie
 
-* De begeleide configuratie voor toegang wordt ondersteund op F5 TMOS-versie 13.1.0.8 en hoger. Als op uw BIG-IP-systeem een versie onder 13.1.0.8 wordt uitgevoerd, raadpleegt u de sectie **Geavanceerde configuratie** .
+* Begeleide toegangsconfiguratie wordt ondersteund in F5 TMOS-versie 13.1.0.8 en hoger. Als op uw BIG-IP-systeem een versie wordt uitgevoerd die lager is dan 13.1.0.8, raadpleegt u de sectie **Geavanceerde configuratie**.
 
-* De configuratie van de begeleide toegang biedt een volledig nieuwe en gestroomlijnde gebruikers ervaring. Deze architectuur op basis van een werk stroom biedt intuïtieve, herhaalde configuratie stappen die zijn afgestemd op de geselecteerde topologie.
+* Begeleide toegangsconfiguratie biedt een volledig nieuwe en gestroomlijnde gebruikerservaring. Deze architectuur op basis van een werkstroom biedt intuïtieve, herhaalde configuratiestappen die zijn afgestemd op de geselecteerde topologie.
 
-* Voordat u doorgaat met de configuratie, moet u de begeleide configuratie bijwerken door het meest recente use-case Pack te downloaden van [downloads.F5.com](https://login.f5.com/resource/login.jsp?ctx=719748). Volg de onderstaande procedure om een upgrade uit te voeren.
+* Voordat u doorgaat met de configuratie, moet u de begeleide configuratie bijwerken door het meest recente gebruiksscenariopakket te downloaden van [downloads.f5.com](https://login.f5.com/resource/login.jsp?ctx=719748). Volg de onderstaande procedure om een upgrade uit te voeren.
 
     >[!NOTE]
-    >De onderstaande scherm afbeeldingen zijn voor de meest recente versie (BIG-IP 15,0 met AGC versie 5,0). De onderstaande configuratie stappen zijn geldig voor deze use case in van 13.1.0.8 tot de nieuwste BIG-IP-versie.
+    >De onderstaande schermopnamen zijn voor de meest recente versie (BIG-IP 15.0 met AGC versie 5.0). De onderstaande configuratiestappen zijn geldig voor dit gebruiksscenario van 13.1.0.8 tot de nieuwste BIG-IP-versie.
 
-1. Klik in de F5 BIG-IP-webgebruikersinterface op **toegang >> Guide-configuratie**.
+1. Klik in de F5 BIG-IP-webgebruikersinterface op **Access >> Guide Configuration**.
 
-1. Klik op de pagina **begeleide configuratie** op **begeleide configuratie bijwerken** in de linkerbovenhoek.
+1. Klik op de pagina **Guided Configuration** op **Upgrade Guided Configuration** in de linkerbovenhoek.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure14.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure14.png) 
 
-1. Selecteer in het pop-upvenster configuratie van upgrade gids de **optie bestand kiezen** om het gedownloade use-case Pack te uploaden en klik op de knop **uploaden en installeren** .
+1. Selecteer in het pop-upvenster Upgrade Guide Configuration op de optie **Choose File** om het gedownloade gebruiksscenariopakket te uploaden en klik op de knop **Upload and Install**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure15.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure15.png) 
 
-1. Wanneer de upgrade is voltooid, klikt u op de knop **door gaan** .
+1. Wanneer de upgrade is voltooid, klikt u op de knop **Continue**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure16.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* F5 SSO kan op drie verschillende manieren worden geconfigureerd.
+* Eenmalige aanmelding bij F5 kan op drie verschillende manieren worden geconfigureerd.
 
-- [Eenmalige aanmelding voor F5 configureren voor een toepassing op basis van koptekst](#configure-f5-single-sign-on-for-header-based-application)
+- [Eenmalige aanmelding bij F5 configureren voor op een header gebaseerde toepassing](#configure-f5-single-sign-on-for-header-based-application)
 
-- [Eenmalige aanmelding voor F5 configureren voor Kerberos-toepassing](kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 
-- [Eenmalige aanmelding voor F5 configureren voor de geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
 
-### <a name="key-authentication-scenarios"></a>Scenario's voor sleutel verificatie
+### <a name="key-authentication-scenarios"></a>Belangrijkste verificatiescenario's
 
-* Afgezien van Azure Active Directory systeem eigen integratie ondersteuning voor moderne verificatie protocollen zoals Open ID Connect, SAML en WS-voeder, wordt met F5 beveiligde toegang uitgebreid voor op verouderde gebaseerde verificatie-apps voor zowel interne als externe toegang met Azure AD, waardoor moderne scenario's (zoals wacht woord-minder toegang) worden ingeschakeld voor deze toepassingen. Dit zijn onder andere:
+* Naast dat het systeemeigen integratie van Azure Active Directory voor moderne verificatieprotocollen zoals Open ID Connect, SAML en WS-Fed ondersteunt, breidt F5 beveiligde toegang uit voor op verouderde verificatietoepassingen voor zowel interne als externe toegang met Azure AD, waardoor moderne scenario's (zoals toegang zonder wachtwoord) mogelijk worden voor deze toepassingen. Dit zijn onder meer:
 
-* Op headers gebaseerde verificatie-apps
+* Op headers gebaseerde verificatietoepassingen
 
-* Kerberos-verificatie-apps
+* Kerberos-verificatietoepassingen
 
-* Anonieme verificatie of geen ingebouwde verificatie-apps
+* Anonieme verificatie of apps zonder ingebouwde verificatie
 
-* NTLM-verificatie-apps (beveiliging met dubbele prompts voor de gebruiker)
+* NTLM-verificatietoepassingen (beveiliging met dubbele prompts voor de gebruiker)
 
 * Op formulieren gebaseerde toepassing (beveiliging met dubbele prompts voor de gebruiker)
 
 ## <a name="adding-f5-from-the-gallery"></a>F5 toevoegen vanuit de galerie
 
-Als u de integratie van F5 wilt configureren in azure AD, moet u F5 toevoegen vanuit de galerie naar uw lijst met beheerde SaaS-apps.
+Als u de integratie van F5 in Azure AD wilt configureren, moet u F5 vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **F5** in het zoekvak.
-1. Selecteer **F5** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen vanuit de galerie** **F5** in het zoekvak.
+1. Selecteer **F5** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Eenmalige aanmelding voor Azure AD voor F5 configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Eenmalige aanmelding van Azure AD configureren en testen voor F5
 
-Azure AD SSO met F5 configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker op F5.
+Configureer en test eenmalige aanmelding van Azure AD met F5 met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in F5.
 
-Als u Azure AD SSO met F5 wilt configureren en testen, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding bij F5 met Azure AD te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[F5 SSO configureren](#configure-f5-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een gebruiker van F5 test](#create-f5-test-user)** : als u een tegen hanger wilt hebben van B. Simon in F5 dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij F5 configureren](#configure-f5-sso)** : om de instellingen voor eenmalige aanmelding aan de toepassingszijde te configureren.
+    1. **[Een testgebruiker voor F5 maken](#create-f5-test-user)** : als u een tegenhanger van B.Simon in F5 wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor de integratie van de **F5** -toepassing, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **F5** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://<YourCustomFQDN>.f5.com/`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YourCustomFQDN>.f5.com/`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) van de client om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [F5-ondersteuningsteam](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en het **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en **Certificaat (base64)** en selecteer **Downloaden** om het certificaat te downloaden. Sla het certificaat vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer op de sectie **F5 instellen** de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **F5 instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan F5.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot F5.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **F5**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **F5** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
-1. Klik op **voorwaardelijke toegang** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik op **Voorwaardelijke toegang**.
 1. Klik op **Nieuw beleid**.
-1. U kunt nu uw F5-app zien als een resource voor CA-beleid en voorwaardelijke toegang Toep assen, waaronder multi-factor Authentication, Toegangs beheer op basis van apparaten of beleid voor identiteits beveiliging.
+1. U kunt uw F5-app nu zien als een resource voor CA-beleid en voorwaardelijke toegang toepassen, waaronder meervoudige verificatie, toegangsbeheer op basis van apparaten of beleid voor identiteitsbeveiliging.
 
-## <a name="configure-f5-sso"></a>F5 SSO configureren
+## <a name="configure-f5-sso"></a>Eenmalige aanmelding bij F5 configureren
 
-- [Eenmalige aanmelding voor F5 configureren voor Kerberos-toepassing](kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 
-- [Eenmalige aanmelding voor F5 configureren voor de geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
 
-### <a name="configure-f5-single-sign-on-for-header-based-application"></a>Eenmalige aanmelding voor F5 configureren voor een toepassing op basis van koptekst
+### <a name="configure-f5-single-sign-on-for-header-based-application"></a>Eenmalige aanmelding bij F5 configureren voor een op een header gebaseerde toepassing
 
 ### <a name="guided-configuration"></a>Begeleide configuratie
 
-1. Open een nieuw webbrowser venster en meld u aan bij uw bedrijfs site van F5 (op basis van de koptekst) als beheerder en voer de volgende stappen uit:
+1. Open een nieuw webbrowservenster en meld u als beheerder bij uw bedrijfssite van F5 (gebaseerd op header) aan en voer de volgende stappen uit:
 
-1. Navigeer naar **System > Certificate management > Traffic Certificate management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Geef een **certificaat naam** op (later in de configuratie waarnaar wordt verwezen). Selecteer in de bron van het **certificaat**uploaden bestand Geef het certificaat op dat u van Azure hebt gedownload bij het configureren van eenmalige aanmelding voor SAML. Klik op **importeren**.
+1. Navigeer naar **System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Geef een **certificaatnaam op** (verderop in de configuratie wordt hiernaar verwezen). Selecteer bij **Certificate Source** de optie Upload File en geef het certificaat op dat u van Azure hebt gedownload tijdens het configureren van eenmalige aanmelding met SAML. Klik op **Import**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure12.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure12.png)
  
-1. Daarnaast hebt u **een SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Het **import type** is **PKCS 12 (IIS)**. Geef een **sleutel naam** op (hiernaar wordt verwezen verderop in de configuratie) en geef het pfx-bestand op. Geef het **wacht woord** voor de pfx op. Klik op **importeren**.
+1. Daarnaast hebt u het **SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Het **Import Type** wordt **PKCS 12 (IIS)** . Geef een **Key Name** op (verderop in de configuratie wordt hiernaar verwezen) en geef het PFX-bestand op. Geef het **Password** voor de PFX op. Klik op **Import**.
 
     >[!NOTE]
-    >In het voor beeld van de naam `Headerapp.superdemo.live`van de app gebruiken we een Joker certificaat met de naam `WildCard-SuperDemo.live`.
+    >In het voorbeeld is `Headerapp.superdemo.live` de naam van onze app. We gebruiken een wildcardcertificaat en onze keyname is `WildCard-SuperDemo.live`.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure13.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure13.png)
 
-1. We gebruiken de begeleide ervaring voor het instellen van de Azure AD-Federatie en de toegang tot toepassingen. Ga naar – F5 BIG-IP **Main** en selecteer **toegang > begeleide configuratie > Federatie > SAML-service provider**. Klik op **volgende** en klik vervolgens op **volgende** om te beginnen met de configuratie.
+1. We gebruiken de begeleide ervaring voor het instellen van de Azure AD-federatie en -toepassingstoegang. Ga naar F5 BIG-IP **Main** en selecteer **Access > Guided Configuration > Federation > SAML Service Provider**. Klik op **Next** klik vervolgens op **Next** om de configuratie te starten.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure01.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure01.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure02.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure02.png)
  
-1. Geef een **naam**op voor de configuratie. Geef de **entiteit-id** op (hetzelfde als wat u hebt geconfigureerd op de configuratie van de Azure AD-toepassing). Geef de **hostnaam**op. Voeg een **Beschrijving** voor de verwijzing toe. Accepteer de overige standaard vermeldingen en selecteer en klik vervolgens op **opslaan & volgende**.
+1. Geef een **Configuration Name** op. Geef de **Entity ID** op (dezelfde als die u hebt geconfigureerd in de configuratie van de Azure AD-toepassing). Geef de **Host name** op. Voeg een **Description** toe ter referentie. Accepteer de overige standaardgegevens en selecteer en klik op **Save & Next**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure03.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure03.png) 
 
-1. In dit voor beeld maken we een nieuwe virtuele server als 192.168.30.20 met poort 443. Geef het IP-adres van de virtuele server op in het **doel adres**. Selecteer het client- **SSL-profiel**, selecteer nieuwe maken. Geef eerder geüpload toepassings certificaat op (het Joker certificaat in dit voor beeld) en de bijbehorende sleutel, en klik vervolgens op **& volgende opslaan**.
+1. In dit voorbeeld maken we een nieuwe virtuele server als 192.168.30.20 met poort 443. Geef het IP-adres van de virtuele server op bij **Destination Address**. Selecteer het **SSL Profile** van de client en selecteer Create new. Geef het eerder geüploade toepassingscertificaat (het wildcardcertificaat in dit voorbeeld) en de bijbehorende sleutel op en klik op **Save & Next**.
 
     >[!NOTE]
-    >in dit voor beeld wordt onze interne webserver uitgevoerd op poort 888 en willen we deze publiceren met 443.
+    >In dit voorbeeld wordt onze interne webserver uitgevoerd op poort 888 en willen we deze publiceren met 443.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure04.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure04.png) 
 
-1. Geef bij **methode selecteren om uw IDP-connector te configureren de**meta gegevens op, klik op bestand kiezen en upload het XML-bestand met meta gegevens dat u eerder hebt gedownload van Azure AD. Geef een unieke **naam** op voor de SAML IDP-connector. Kies het **handtekening certificaat voor meta gegevens** dat eerder is geüpload. Klik op **opslaan & volgende**.
+1. Geef bij **Select method to configure your IdP connector** de optie Metadata op, klik op Choose File en upload het XML-bestand met metagegevens dat u eerder hebt gedownload van Azure AD. Geef een unieke **naam** op voor de SAML IDP-connector. Kies het **Metadata Signing Certificate** dat eerder is geüpload. Klik op **Save & Next**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure05.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure05.png)
  
-1. Geef onder **een pool selecteren de optie** **Nieuw maken** op (Selecteer eventueel een pool die al bestaat). Geef een andere waarde op als standaard. Onder pool servers typt u het IP-adres onder **IP-adres/knooppunt naam**. Geef de **poort**op. Klik op **opslaan & volgende**.
+1. Selecteer onder **Select a Pool** de optie **Create New** (u kunt ook een pool selecteren die al bestaat). Laat andere waarden op de standaardwaarde ingesteld. Typ onder Pool Servers het IP-adres onder **IP Address/Node Name**. Geef de **Port** op. Klik op **Save & Next**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure06.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure06.png)
 
-1. Selecteer op het scherm instellingen voor eenmalige aanmelding de optie **eenmalige aanmelding inschakelen**. Kies onder geselecteerd type eenmalige aanmelding de optie **http-header**. Vervang **sessie. SAML. Last. Identity** met **Session. SAML. Last. attr. name. Identity** onder username source (deze variabele is ingesteld met behulp van claim toewijzing in azure AD). Onder SSO-headers.
+1. Selecteer in het scherm Single Sign-On Settings de optie **Enable Single Sign-On**. Kies onder Selected Single Sign-On Type de optie **HTTP header-based**. Vervang **session.saml.last.Identity** door **session.saml.last.attr.name.Identity** onder Username Source (deze variabele is ingesteld met behulp van claimtoewijzing in Azure AD). Onder SSO Headers.
 
-    * **Kopnaam: MyAuthorization**
+    * **HeaderName: MyAuthorization**
 
-    * **Header waarde:% {Session. SAML. Last. attr. name. Identity}**
+    * **Header Value : %{session.saml.last.attr.name.Identity}**
 
-    * Klik op **opslaan & volgende**
+    * Klik op **Save & Next**
 
-    Raadpleeg de bijlage voor een volledige lijst met variabelen en waarden. U kunt indien nodig meer headers toevoegen.
+    Raadpleeg de bijlage voor een volledige lijst met variabelen en waarden. U kunt desgewenst meer headers toevoegen.
 
     >[!NOTE]
-    >Account naam is het account voor F5 delegering dat is gemaakt (Raadpleeg de F5-documentatie).
+    >Account Name is het F5-delegatieaccount dat is gemaakt (raadpleeg de documentatie van F5).
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure07.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure07.png) 
 
-1. In het kader van deze richt lijnen worden de eindpunt controles overs Laan.  Raadpleeg de documentatie van F5 voor meer informatie. Selecteer **& volgende opslaan**.
+1. In het kader van deze richtlijnen slaan we eindpuntcontroles over.  Raadpleeg de documentatie van F5 voor meer informatie. Selecteer **Save & Next**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure08.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure08.png)
 
-1. Accepteer de standaard instellingen en klik op **& volgende opslaan**. Raadpleeg de F5-documentatie voor meer informatie over de instellingen voor SAML-sessie beheer.
+1. Accepteer de standaardwaarden voor schijven en klik op **Save & Next**. Raadpleeg de documentatie van F5 voor meer informatie over de instellingen voor het beheer van SAML-sessies.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure09.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure09.png)
 
-1. Bekijk het scherm samen vatting en selecteer **implementeren** om het Big-IP-adres te configureren. Klik op **volt ooien**.
+1. Bekijk het overzichtsscherm en selecteer **Deploy** om de BIG-IP te configureren. Klik op **Finish**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure10.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure10.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure11.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure11.png)
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie
 
-Deze sectie is bedoeld om te worden gebruikt als u de begeleide configuratie niet kunt gebruiken of als u extra para meters wilt toevoegen of wijzigen. U hebt een TLS/SSL-certificaat voor de hostnaam van de toepassing nodig.
+Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u extra parameters wilt toevoegen of wijzigen. U hebt een TLS/SSL-certificaat voor de hostnaam van de toepassing nodig.
 
-1. Navigeer naar **System > Certificate management > Traffic Certificate management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Het **import type** is **PKCS 12 (IIS)**. Geef een **sleutel naam** op (hiernaar wordt verwezen verderop in de configuratie) en geef het pfx-bestand op. Geef het **wacht woord** voor de pfx op. Klik op **importeren**.
+1. Navigeer naar **System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Het **Import Type** wordt **PKCS 12 (IIS)** . Geef een **Key Name** op (verderop in de configuratie wordt hiernaar verwezen) en geef het PFX-bestand op. Geef het **Password** voor de PFX op. Klik op **Import**.
 
     >[!NOTE]
-    >In het voor beeld van de naam `Headerapp.superdemo.live`van de app gebruiken we een Joker certificaat met de naam `WildCard-SuperDemo.live`.
+    >In het voorbeeld is `Headerapp.superdemo.live` de naam van onze app. We gebruiken een wildcardcertificaat en onze keyname is `WildCard-SuperDemo.live`.
   
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure17.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure17.png)
 
 ### <a name="adding-a-new-web-server-to-bigip-f5"></a>Een nieuwe webserver toevoegen aan BigIP-F5
 
-1. Klik op **Main > IApps > Toepassingsservices > toepassing > maken**.
+1. Klik op **Main > IApps > Application Services > Application > Create**.
 
-1. Geef de **naam** op en kies onder **sjabloon** **F5. http**.
+1. Geef de **naam** op en kies onder **Template** de optie **f5.http**.
  
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure18.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure18.png)
 
-1. We zullen onze HeaderApp2 extern publiceren als HTTPS in dit geval, **Hoe moet het Big-IP-systeem SSL-verkeer afhandelen**? we opgeven **SSL beëindigen van client, lees bare tekst naar servers (SSL-offload)**. Geef uw certificaat en sleutel op onder **welk SSL-certificaat wilt u gebruiken?** en **welke SSL-persoonlijke sleutel wilt u gebruiken?**. Geef het IP-adres van de virtuele server op onder **welke IP-adressen wilt u gebruiken voor de virtuele server?**. 
+1. We gaan in dit geval onze HeaderApp2 extern publiceren als HTTPS, **hoe moet het BIG-IP-systeem SSL-verkeer afhandelen**? We geven **Terminate SSL from Client, Plaintext to servers (SSL Offload)** op. Geef uw certificaat en sleutel op onder **Which SSL certificate do you want to use?** en **Which SSL private key do you want to use?** . Geef het IP-adres van de virtuele server op onder **What IP Address do you want to use for the Virtual Server?** . 
 
     * **Andere details opgeven**
 
         * FQDN  
 
-        * Geef de groep voor het afsluiten van de app op of maak een nieuwe.
+        * Geef een bestaande app-pool op of maak een nieuwe.
 
-        * Als u een nieuwe app-server maakt, geeft u een **intern IP-adres** en **poort nummer**op.
+        * Als u een nieuwe app-server maakt, geeft u het **interne IP-adres** en **poortnummer** op.
 
-        ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure19.png) 
+        ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure19.png) 
 
-1. Klik op **voltooid**.
+1. Klik op **Finished**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure20.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure20.png) 
 
-1. Zorg ervoor dat de app-eigenschappen kunnen worden gewijzigd. Klik op **Main > IApps > toepassingsservices: Applications >> HeaderApp2**. Schakel **strikte updates** uit (er wordt een aantal instellingen buiten de gebruikers interface gewijzigd). Klik op de knop **bijwerken** .
+1. Zorg ervoor dat de app-eigenschappen kunnen worden gewijzigd. Klik op **Main > IApps > Application Services: Applications >> HeaderApp2**. Schakel het selectievakje **Strict Updates** uit (er worden enkele instellingen buiten de gebruikersinterface gewijzigd). Klik op de knop **Update**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure21.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure21.png) 
 
-1. Op dit moment moet u de virtuele server kunnen doorzoeken.
+1. Op dit moment moet u kunnen bladeren naar de virtuele server.
 
-### <a name="configuring-f5-as-sp-and-azure-as-idp"></a>F5 als SP en Azure configureren als IDP
+### <a name="configuring-f5-as-sp-and-azure-as-idp"></a>F5 als SP en Azure als IDP configureren
 
-1.  Klik op **toegang > Federation> SAML-Service Provider > lokale SP-service > op maken of + ondertekenen**.
+1.  Klik op **Access > Federation> SAML Service Provider > Local SP Service > klik op Create of het +-teken**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure22.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure22.png)
 
-1. Geef details op voor de service provider service. Geef de **naam** op die staat voor een F5 SP-configuratie. Geef de **entiteit-id** op (meestal hetzelfde als de URL van de toepassing).
+1. Geef details op voor de serviceproviderservice. Geef de **naam** op die de SP-configuratie van F5 vertegenwoordigt. Geef de **entiteit-ID** op (meestal hetzelfde als de URL van de toepassing).
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure23.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure23.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure24.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure24.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure25.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure25.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure26.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure26.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure27.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure27.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure28.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure28.png)
 
-### <a name="create-idp-connector"></a>IDP-connector maken
+### <a name="create-idp-connector"></a>IdP-connector maken
 
-1. Klik op de knop **verbinden/losmaken IDP connectors** , selecteer **nieuwe IDP-connector maken** en kies uit de optie voor **meta gegevens** en voer vervolgens de volgende stappen uit:
+1. Klik op de knop **Bind/Unbind IdP Connectors**, selecteer **Create New IdP Connector** en maak een keuze bij de optie **Metadata**. Voer vervolgens de volgende stappen uit:
  
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure29.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure29.png)
 
-    a. Blader naar het meta gegevensbestand. XML-bestand dat u hebt gedownload van Azure AD en geef een naam op voor de **ID-provider**.
+    a. Blader naar het bestand metadata.xml dat u hebt gedownload van Azure AD en geef een **Identity Provider Name** op.
 
     b. Klik op **OK**.
 
-    c. De connector wordt gemaakt en het certificaat is automatisch gereed vanuit het XML-bestand met meta gegevens.
+    c. De connector wordt gemaakt en het certificaat is automatisch gereed vanuit het bestand metadata.xml.
     
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure30.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure30.png)
 
-    d. Configureer F5BIG-IP om alle aanvragen te verzenden naar Azure AD.
+    d. Configureer F5BIG-IP om alle aanvragen naar Azure AD te verzenden.
 
-    e. Klik op **nieuwe rij toevoegen**, kies **AzureIDP** (zoals gemaakt in de vorige stappen) 
+    e. Klik op **Add New Row**, kies **AzureIDP** (zoals gemaakt in de vorige stappen) 
 
-    f. **Overeenkomende bron =% {Session. server. landinguri}** 
+    f. **Matching Source   =  %{session.server.landinguri}** 
 
-    g. **Overeenkomende waarde =/***
+    g. **Matching Value     = /** *
 
-    h. Klik op **bijwerken**
+    h. Klik op **Update**
 
     i. Klik op **OK**
 
-    j. **Setup van SAML IDP is voltooid**
+    j. **Het instellen van SAML IDP is voltooid**
     
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure31.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure31.png)
 
 ### <a name="configure-f5-policy-to-redirect-users-to-azure-saml-idp"></a>F5-beleid configureren om gebruikers om te leiden naar Azure SAML IDP
 
 1. Voer de volgende stappen uit om F5-beleid te configureren om gebruikers om te leiden naar Azure SAML IDP:
 
-    a. Klik op **Main > access > profiel/policies > Access Profiles**.
+    a. Klik op **Main > Access > Profile/Policies > Access Profiles**.
 
-    b. Klik op de knop **maken** .
+    b. Klik op de knop **Create**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure32.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure32.png)
  
-    c. Geef een **naam** op (HeaderAppAzureSAMLPolicy in het voor beeld).
+    c. Geef de **naam** op (HeaderAppAzureSAMLPolicy in het voorbeeld).
 
-    d. U kunt andere instellingen aanpassen Raadpleeg de F5-documentatie.
+    d. U kunt andere instellingen aanpassen. Raadpleeg de documentatie van F5.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure33.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure33.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure34.png) 
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure34.png) 
 
-    e. Klik op **voltooid**.
+    e. Klik op **Finished**.
 
-    f. Nadat het beleid is gemaakt, klikt u op het beleid en gaat u naar het tabblad **toegangs beleid** .
+    f. Nadat het beleid is gemaakt, klikt u op het beleid en gaat u naar het tabblad **Access Policy**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure35.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure35.png)
  
-    g. Klik op **Editor voor visuele beleids regels**, **toegangs beleid voor profiel** koppeling bewerken.
+    g. Klik op de **Visual Policy editor** en bewerk de koppeling **Access Policy for Profile**.
 
-    h. Klik op het plus teken in de editor voor visuele beleids regels en kies **SAML auth**.
+    h. Klik op het plusteken in de Visual Policy editor en kies **SAML Auth**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure36.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure36.png)
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure37.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure37.png)
  
-    i. Klik op **item toevoegen**.
+    i. Klik op **Add Item**.
 
-    j. Onder **Eigenschappen** **naam** opgeven en onder **AAA server** de eerder geconfigureerde SP selecteren, klikt u op **Opslaan**.
+    j. Geef onder **Properties** een **naam** op en selecteer onder **AAA Server** de eerder geconfigureerde SP. Klik op **SAVE**.
  
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure38.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure38.png)
 
-    k. Het basis beleid is gereed. u kunt het beleid aanpassen om extra bronnen/kenmerk archieven op te nemen.
+    k. Het basisbeleid is gereed. U kunt het beleid aanpassen om extra bronnen/kenmerkarchieven op te nemen.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure39.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure39.png)
  
-    l. Zorg ervoor dat u op de koppeling **toegangs beleid Toep assen** klikt.
+    l. Zorg ervoor dat u op de koppeling **Apply Access Policy** bovenaan klikt.
 
-### <a name="apply-access-profile-to-the-virtual-server"></a>Toegangs profiel Toep assen op de virtuele server
+### <a name="apply-access-profile-to-the-virtual-server"></a>Toegangsprofiel toepassen op de virtuele server
 
-1. Wijs het toegangs profiel toe aan de virtuele server om F5 BIG-IP APM te gebruiken om de profiel instellingen toe te passen op binnenkomend verkeer en voer het eerder gedefinieerde toegangs beleid uit.
+1. Wijs het toegangsprofiel toe aan de virtuele server om F5 BIG-IP APM te gebruiken om de profielinstellingen toe te passen op binnenkomend verkeer en het eerder gedefinieerde toegangsbeleid uit te voeren.
 
-    a. Klik op **hoofd** > -**lokale verkeer** > **virtuele servers**.
+    a. Klik op **Main** > **Local Traffic** > **Virtual Servers**.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure40.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure40.png)
  
-    b. Klik op de virtuele server, blader naar het gedeelte **toegangs beleid** , in de vervolg keuzelijst voor het **toegangs profiel** en selecteer het SAML-beleid dat is gemaakt (in het voor beeld HeaderAppAzureSAMLPolicy)
+    b. Klik op de virtuele server, blader naar de sectie **Access Policy** in de vervolgkeuzelijst **Access Profile** en selecteer het SAML-beleid dat is gemaakt (in het voorbeeld HeaderAppAzureSAMLPolicy)
 
-    c. Klik op **bijwerken**
+    c. Klik op **Update**
  
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure41.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure41.png)
 
-    d. Maak een F5-iRule® voor het extra heren van de aangepaste SAML-kenmerken van de binnenkomende bevestiging en geef ze door als HTTP-headers voor de test toepassing voor de back-end. Klik op **hoofd > lokaal verkeer > lijst iRules > iRule > Klik op maken**
+    d. Maak een F5-iRule® voor het extraheren van de aangepaste SAML-kenmerken van de binnenkomende bevestiging en geef ze door als HTTP-headers voor de testtoepassing voor de back-end. Klik op **Main > Local Traffic > iRules > iRule List > klik op Create**
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure42.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure42.png)
  
-    e. Plak de F5 BIG-IP iRule-tekst hieronder in het definitie venster.
+    e. Plak de tekst van F5 BIG-IP iRule hieronder in het definitievenster.
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure43.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure43.png)
  
-    Wanneer RULE_INIT {set static::d ebug 0} wanneer ACCESS_ACL_ALLOWED {
+    when RULE_INIT {  set static::debug 0  }  when ACCESS_ACL_ALLOWED {
 
-    Stel AZUREAD_USERNAME [ACCESS:: session data Get "session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" in als {$static::d ebug} {log local0. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} als {! ( [HTTP:: header bestaat "AZUREAD_USERNAME"]) } {HTTP:: header Insert "AZUREAD_USERNAME" $AZUREAD _USERNAME}
+    set AZUREAD_USERNAME [ACCESS::session data get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] if { $static::debug } { log local0. "AZUREAD_USERNAME = $AZUREAD_USERNAME" } if { !([HTTP::header exists "AZUREAD_USERNAME"]) } { HTTP::header insert "AZUREAD_USERNAME" $AZUREAD_USERNAME }
 
-    Stel AZUREAD_DISPLAYNAME [ACCESS:: session data Get "session.saml.last.attr.name.http://schemas.microsoft.com/identity/claims/displayname" in als {$static::d ebug} {log local0. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} als {! ( [HTTP:: header bestaat "AZUREAD_DISPLAYNAME"]) } {HTTP:: header Insert "AZUREAD_DISPLAYNAME" $AZUREAD _DISPLAYNAME}
+    set AZUREAD_DISPLAYNAME [ACCESS::session data get "session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/displayname"] if { $static::debug } { log local0. "AZUREAD_DISPLAYNAME = $AZUREAD_DISPLAYNAME" } if { !([HTTP::header exists "AZUREAD_DISPLAYNAME"]) } { HTTP::header insert "AZUREAD_DISPLAYNAME" $AZUREAD_DISPLAYNAME }
 
-    Stel AZUREAD_EMAILADDRESS [ACCESS:: session data Get "session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" in als {$static::d ebug} {log local0. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} als {! ( [HTTP:: header bestaat "AZUREAD_EMAILADDRESS"]) } {HTTP:: header Insert "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
+    set AZUREAD_EMAILADDRESS [ACCESS::session data get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] if { $static::debug } { log local0. "AZUREAD_EMAILADDRESS = $AZUREAD_EMAILADDRESS" } if { !([HTTP::header exists "AZUREAD_EMAILADDRESS"]) } { HTTP::header insert "AZUREAD_EMAILADDRESS" $AZUREAD_EMAILADDRESS }}
 
-    **Voorbeeld uitvoer hieronder**
+    **Voorbeelduitvoer hieronder**
 
-    ![F5-configuratie (op basis van koptekst)](./media/headerf5-tutorial/configure44.png)
+    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure44.png)
  
-### <a name="create-f5-test-user"></a>Een F5 test gebruiker maken
+### <a name="create-f5-test-user"></a>Een F5-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in F5. Werk samen met het [ondersteunings team voor F5-clients](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen op het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+In dit gedeelte maakt u in F5 een gebruiker met de naam B.Simon. Werk samen met het  [ondersteuningsteam van F5 Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen in het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de F5-tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij de F5 waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel F5 in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van F5 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer F5 met Azure AD](https://aad.portal.azure.com/)
+- [F5 proberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Eenmalige aanmelding voor F5 configureren voor Kerberos-toepassing](kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 
-- [Eenmalige aanmelding voor F5 configureren voor de geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
 

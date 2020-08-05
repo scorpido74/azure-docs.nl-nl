@@ -7,13 +7,13 @@ ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/27/2020
+ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065738"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322024"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Uw Azure-gebruik en -kosten weergeven en downloaden
 
@@ -21,7 +21,7 @@ U kunt een dagelijkse uitsplitsing van uw Azure-gebruiksgegevens en -kosten down
 
 Als u een Microsoft-klantovereenkomst (MCA) hebt, moet u een eigenaar, inzender, lezer van het factureringsprofiel of een factuurbeheerder zijn om uw Azure-gebruik en -kosten te kunnen bekijken.  Als u een Microsoft Partner-overeenkomst (MPA) hebt, kan alleen de rol Globale beheerder en de rol Beheerderagent in de partnerorganisatie Azure-gebruiksgegevens en -kosten bekijken en downloaden. [Controleer uw type factureringsrekening in de Azure-portal ](#check-your-billing-account-type).
 
-Op basis van het type abonnement dat u gebruikt, variëren de opties voor het downloaden van uw gebruik en de kosten. 
+Op basis van het type abonnement dat u gebruikt, variëren de opties voor het downloaden van uw gebruik en de kosten.
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Gebruiksgegevens downloaden vanuit de Azure-portal (CSV)
 
@@ -34,7 +34,6 @@ Op basis van het type abonnement dat u gebruikt, variëren de opties voor het do
 1. Selecteer het **downloadpictogram** of het beletselteken (`...`) aan de rechterkant.  
   ![Schermopname van de downloadlocatie voor Gebruik en kosten](./media/download-azure-daily-usage/download-usage-others.png)  
 1. Het deelvenster Downloaden wordt geopend aan de rechterkant. Selecteer **Downloaden** in de sectie **Gebruiksgegevens**.  
-
 
 ## <a name="download-usage-for-ea-customers"></a>Gebruiksgegevens downloaden voor EA-klanten
 
@@ -54,10 +53,9 @@ Als u een Microsoft-klantovereenkomst hebt, kunt u het gebruik van de maand tot 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek naar *Kostenbeheer en facturering*.
 3. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
-4. Zoek in het gebied **Overzicht** de downloadkoppelingen onder de kosten (maand tot heden).
-5. Selecteer **Azure-gebruik en -kosten**.
-
-    ![Schermopname waarop downloaden uit Overzicht wordt weergegeven](./media/download-azure-daily-usage/open-usage01.png)
+4. Zoek in het gebied **Overzicht** de downloadkoppelingen onder de kosten (recent).
+5. Selecteer **Gebruiksgegevens en prijzen downloaden**.  
+    :::image type="content" source="./media/download-azure-daily-usage/open-usage01.png" alt-text="Schermopname waarop downloaden uit Overzicht wordt weergegeven" lightbox="./media/download-azure-daily-usage/open-usage01.png" :::
 
 ## <a name="check-your-billing-account-type"></a>Uw type factureringsrekening controleren
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

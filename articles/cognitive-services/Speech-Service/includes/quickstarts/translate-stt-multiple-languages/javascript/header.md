@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: spraak omzetten naar meerdere talen, java script-spraak service'
+title: 'Quickstart: Spraak vertalen naar meerdere talen, Javascript - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 83a9055c2f260ada42fd313b5f84136f7002aec1
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 4d3a7241e771289b5e9099dbb446b4a9ec961041
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102609"
 ---
-Als u liever direct aan de slag gaat, kunt u alle <a href="https://aka.ms/speech/github-javascript">Speech SDK java script</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+U kunt alle <a href="https://aka.ms/speech/github-javascript">JavaScript-voorbeelden van de Speech SDK</a> bekijken of downloaden op GitHub. 

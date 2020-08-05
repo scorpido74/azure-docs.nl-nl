@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio gebruikt om fouten op te sporen en snel een .NET Core-toepassing te herhalen in Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090787"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Een Kubernetes-ontwikkelaarsruimte maken: Visual Studio en .NET Core met Azure Dev Spaces
 
@@ -23,7 +23,7 @@ In deze handleiding leert u het volgende:
 - Twee afzonderlijke services ontwikkelen en de DNS-servicedetectie van Kubernetes gebruiken om een andere service aan te roepen.
 - Uw code op een productieve manier ontwikkelen en testen in een teamomgeving.
 
-> [!Note]
+> [!NOTE]
 > **Als u op enig moment niet verder kunt**, kunt u de [probleemoplossingssectie](troubleshooting.md) raadplegen.
 
 ## <a name="install-the-azure-cli"></a>Azure-CLI installeren
@@ -36,7 +36,7 @@ Meld u aan bij Azure. Typ de volgende opdracht in een terminalvenster:
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
@@ -91,31 +91,31 @@ In deze sectie maakt u een ASP.NET Core-web-app en voert u deze uit in een conta
 
 Maak een nieuw project in Visual Studio. Op dit moment moet het project een **ASP.NET Core-webtoepassing** zijn. Geef het project de naam **webfrontend**.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+![In het dialoogvenster ‘Nieuw project’ geeft het maken van een C sharp-webtoepassing met de naam 'webfrontend' op locatie C:\Source\Repos weer. In de vervolgkeuzelijst ‘Oplossing’ vindt u de optie ‘Nieuwe oplossing maken’ en het selectievakje ‘Map maken voor oplossing’ is ingeschakeld.](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 Selecteer de sjabloon **Web Application (Model-View-Controller)** en selecteer **.NET Core** en **ASP.NET Core 2.0** in de twee vervolgkeuzelijsten boven in het dialoogvenster. Klik op **OK** om het project aan te maken.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![In het dialoogvenster 'NIEUWE A S P dot NET Core Web Application ', geven twee vervolgkeuzelijsten ' dot NET Core' en 'A S P dot NET Core 2 point 0 ' weer. De sjabloon webtoepassing (Model-Weergave-Controller) is geselecteerd in een matrix met de knoppen van projectsjablonen onder de keuzelijsten. Het selectievakje 'Ondersteuning voor docker inschakelen' is niet ingeschakeld.](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>Dev Spaces inschakelen voor een AKS-cluster
 
 Met het project dat u zojuist hebt gemaakt, selecteert u **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen, zoals hieronder wordt weergegeven.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![De vervolgkeuzelijst bevindt zich bovenaan een venster met de naam Microsoft Visual Studio Int Preview. 'Azure Dev Spaces' is geselecteerd.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 Controleer in het dialoogvenster dat vervolgens wordt weergegeven, of u bent aangemeld bij het juiste account, en selecteer vervolgens een bestaand Kubernetes-cluster.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![Het dialoogvenster Azure Dev Spaces bevat deze vakken: ‘Abonnement,’ ‘Azure Kubernetes Service-cluster’ en ‘Ruimte’.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 Laat de waarde in de vervolgkeuzelijst **Space** voorlopig op `default` staan. Later besteden we meer aandacht aan deze optie. Schakel het selectievakje **Publicly Accessible** in zodat de web-app toegankelijk is via een openbaar eindpunt. Deze instelling is niet vereist, maar is wel handig om verderop in dit scenario enkele dingen te demonstreren. Maar u hoeft u geen zorgen te maken, want in beide gevallen kunt u fouten op de website opsporen met Visual Studio.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![Het selectievakje Openbaar toegankelijk is ingeschakeld.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 Klik op **OK** om het cluster te selecteren of een cluster te maken.
 
 Als u een cluster kiest dat niet is ingeschakeld om te werken met Azure Dev Spaces, ziet u een bericht waarin u wordt gevraagd of u dit cluster wilt configureren.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Het bericht geeft het volgende weer: ‘Azure Dev Spaces-resource toevoegen? Het geselecteerde A K S-cluster moet worden geconfigureerd voor het gebruik van Azure Dev Spaces voordat het kan worden gebruikt. Wilt u dit doen?’ U kunt kiezen uit de knopen ‘O K’ en ‘Annuleren’.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 Kies **OK**.
 
@@ -124,9 +124,9 @@ Kies **OK**.
 
  Er wordt een achtergrondtaak gestart om dit te doen. Het uitvoeren van deze taak duurt enkele minuten. Als u wilt zien of de taak nog steeds actief is, plaatst u de muisaanwijzer op het pictogram **Background tasks** in de linkerhoek onder in de statusbalk, zoals wordt weergegeven in de volgende afbeelding.
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![In het pop-upvenster dat wordt weergegeven bij de muisaanwijzer ziet u 'Mijn A K S maken' in de resourcegroep.'](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > U kunt pas fouten in een toepassing oplossen wanneer de ontwikkelomgeving is gemaakt.
 
 ### <a name="look-at-the-files-added-to-project"></a>Bestanden bekijken die zijn toegevoegd aan het project
@@ -138,7 +138,7 @@ U ziet dat er een bestand met de naam `Dockerfile` is toegevoegd. Dit bestand be
 
 Tot slot ziet u een bestand met de naam `azds.yaml`. Dit bestand bevat configuratie over de ontwikkeltijd die de ontwikkelomgeving nodig heeft.
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+![Het bestand ' z d s dot yaml ' wordt weergegeven in de oplossing webfrontend in het venster Solution Explorer.](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Fouten opsporen in een Kubernetes-container
 Zodra de ontwikkelomgeving is gemaakt, kunt u fouten oplossen voor de toepassing. Stel een onderbrekingspunt in de code in, bijvoorbeeld op regel 20 in het bestand `HomeController.cs`, waarbij de variabele `Message` wordt ingesteld. Druk op **F5** om de foutopsporing te starten. 

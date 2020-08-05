@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28f666fe295b2b49fb6795306e9fad489c867517
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496023"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387214"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Gedeelde Azure Synapse Analytics-metagegevenstabellen
 
@@ -24,7 +24,7 @@ Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkrui
 
 Wanneer een database is gemaakt met een Spark-taak, kunt u er tabellen in maken met Spark waarin Parquet als de opslagindeling wordt gebruikt. Deze tabellen zijn direct beschikbaar voor het uitvoeren van query's door een Spark-pool van de Azure Synapse-werkruimte. Ze kunnen ook worden gebruikt vanuit een van de Spark-taken waarvoor machtigingen gelden.
 
-De door Spark gemaakte, beheerde en externe tabellen worden ook beschikbaar gemaakt als externe tabellen met dezelfde naam in de bijbehorende gesynchroniseerde database in SQL on-demand. In [Exposing a Spark table in SQL](#exposing-a-spark-table-in-sql) (Een Spark-tabel in SQL weergeven) vindt u meer informatie over tabelsynchronisatie.
+De door Spark gemaakte, beheerde en externe tabellen worden ook beschikbaar gemaakt als externe tabellen met dezelfde naam in de bijbehorende gesynchroniseerde database in SQL on-demand. In [Exposing a Spark table in SQL](#expose-a-spark-table-in-sql) (Een Spark-tabel in SQL weergeven) vindt u meer informatie over tabelsynchronisatie.
 
 Omdat de tabellen asynchroon worden gesynchroniseerd naar SQL on-demand, is er een kleine vertraging voordat ze worden weergegeven.
 
@@ -34,9 +34,9 @@ Gebruik Spark voor het beheren van met Spark gemaakte databases. U kunt een data
 
 Als u objecten in een dergelijke database van SQL on-demand maakt of de database verwijdert, wordt de bewerking uitgevoerd, maar wordt de oorspronkelijke Spark-database niet gewijzigd.
 
-## <a name="exposing-a-spark-table-in-sql"></a>Een Spark-tabel in SQL weergeven
+## <a name="expose-a-spark-table-in-sql"></a>Een Spark-tabel beschikbaar maken in SQL
 
-### <a name="which-spark-tables-are-shared"></a>Spark-tabellen die worden gedeeld
+### <a name="shared-spark-tables"></a>Gedeelde Spark-tabellen
 
 Spark biedt twee typen tabellen die Azure Synapse automatisch beschikbaar maakt in SQL:
 
@@ -50,7 +50,7 @@ Spark biedt twee typen tabellen die Azure Synapse automatisch beschikbaar maakt 
 
 Azure Synapse deelt momenteel alleen beheerde en externe Spark-tabellen waarvan de gegevens worden opgeslagen in de Parquet-indeling met de SQL-engines. Tabellen die worden ondersteund door andere indelingen, worden niet automatisch gesynchroniseerd. U kunt dergelijke tabellen mogelijk expliciet als een externe tabel in uw eigen SQL-database synchroniseren als de SQL-engine de onderliggende indeling van de tabel ondersteunt.
 
-### <a name="how-are-spark-tables-shared"></a>De manier waarop Spark-tabellen worden gedeeld
+### <a name="share-spark-tables"></a>Spark-tabellen delen
 
 De deelbaar beheerde en externe Spark-tabellen die worden weergegeven in de SQL-engine als externe tabellen met de volgende eigenschappen:
 
@@ -96,7 +96,7 @@ Zie [Gedeelde database van Azure Synapse Analytics](database.md)voor meer inform
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Een beheerde tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit SQL on-demand
 
-In dit scenario hebt u een Spark-database met de naam `mytestdb`. Zie [Een database maken en verbinden met Spark - SQL on-demand](database.md#create--connect-to-spark-database---sql-on-demand).
+In dit scenario hebt u een Spark-database met de naam `mytestdb`. Zie [Een Spark-database maken en verbinden met SQL on demand](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
 
 Maak een beheerde Spark-tabel met SparkSQL door de volgende opdracht uit te voeren:
 
@@ -153,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>Een externe tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit SQL on-demand
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Een externe tabel maken die wordt ondersteund door Parquet in Spark en een query uitvoeren vanuit SQL on demand
 
 In dit voorbeeld maakt u een externe Spark-tabel via de Parquet-gegevensbestanden die zijn gemaakt in het vorige voorbeeld voor de beheerde tabel.
 

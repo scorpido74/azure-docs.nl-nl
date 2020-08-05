@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een module ontwikkelen voor Linux-apparaten met behulp van Azure IoT Edge'
-description: In deze zelf studie wordt uitgelegd hoe u uw ontwikkel computer en cloud resources instelt om IoT Edge modules te ontwikkelen met Linux-containers voor Linux-apparaten
+title: 'Zelfstudie: een module ontwikkelen voor Linux-apparaten met behulp van Azure IoT Edge'
+description: In deze zelfstudie wordt uitgelegd hoe u uw ontwikkelcomputer en cloudresources instelt om IoT Edge modules te ontwikkelen met Linux-containers voor Linux-apparaten
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,326 +9,332 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 924654dace53b326e3a29bb834f773122b0476ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80384361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081114"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelf studie: IoT Edge-modules voor Linux-apparaten ontwikkelen
+# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Linux-apparaten
 
-Gebruik Visual Studio code voor het ontwikkelen en implementeren van code voor Linux-apparaten met IoT Edge.
+Visual Studio Code gebruiken voor het ontwikkelen en implementeren van code voor Linux-apparaten met IoT Edge.
 
-In de Quick Start hebt u een IoT Edge apparaat gemaakt met behulp van een virtuele Linux-machine en een module geïmplementeerd vanuit Azure Marketplace. In deze zelf studie wordt uitgelegd hoe u uw eigen code ontwikkelt en implementeert op een IoT Edge apparaat. Dit artikel is een nuttige vereiste voor de andere zelf studies, die meer details over specifieke programmeer talen of Azure-Services gaan.
+In de quickstart hebt u een IoT Edge-apparaat gemaakt met behulp van een virtuele Linux-machine en een module geïmplementeerd vanuit Azure Marketplace. In deze zelfstudie wordt uitgelegd hoe u uw eigen code ontwikkelt en implementeert op een IoT Edge-apparaat. Het is handig dit artikel door te nemen voor de andere zelfstudies, die dieper ingaan op specifieke programmeertalen of Azure-services.
 
-In deze zelf studie wordt het voor beeld van de implementatie van een **C#-module op een Linux-apparaat**gebruikt. Dit voor beeld is gekozen omdat het het meest voorkomende ontwikkelaars scenario is voor IoT Edge oplossingen. Ook als u van plan bent een andere taal te gebruiken of een Azure-service te implementeren, is deze zelf studie nog steeds nuttig voor meer informatie over de ontwikkel hulpprogramma's en-concepten. Voltooi deze inleiding in het ontwikkelings proces en kies vervolgens de gewenste taal of Azure-service om de details te bekijken.
+In deze zelfstudie wordt gebruikgemaakt van het voorbeeld van de implementatie van een **C#-module op een Linux-apparaat**. Dit voorbeeld is gekozen omdat dit het meest voorkomende ontwikkelaarsscenario voor IoT Edge oplossingen is. Ook als u van plan bent een andere taal te gebruiken of een Azure-service te implementeren, is deze zelfstudie nog steeds nuttig om meer te leren over de ontwikkelhulpprogramma's en -concepten. Voltooi deze inleiding tot het ontwikkelproces en kies vervolgens de gewenste taal of Azure-service om de details te bekijken.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Stel uw ontwikkel machine in.
-> * Gebruik de IoT Edge-hulpprogram ma's voor Visual Studio code om een nieuw project te maken.
-> * Bouw uw project als een container en sla het op in een Azure container Registry.
-> * Implementeer uw code op een IoT Edge apparaat.
+> * Uw ontwikkelcomputer instellen.
+> * De IoT Edge Tools voor Visual Studio Code gebruiken om een nieuw project te maken.
+> * Uw project bouwen als een container en het opslaan in een Azure-containerregister.
+> * Uw code implementeren op een IoT Edge-apparaat.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="key-concepts"></a>Belangrijkste concepten
 
-In deze zelf studie wordt de ontwikkeling van een IoT Edge module door lopen. Een *IOT Edge module*, of soms alleen *module* voor kort, is een container met uitvoer bare code. U kunt een of meer modules implementeren op een IoT Edge apparaat. Met modules worden specifieke taken uitgevoerd, zoals het opnemen van gegevens uit Sens oren, het opschonen en analyseren van gegevens, of het verzenden van berichten naar een IoT-hub. Zie voor meer informatie [Azure IOT Edge modules begrijpen](iot-edge-modules.md).
+In deze zelfstudie doorloopt u de ontwikkeling van een IoT Edge-module. Een *IoT Edge-module*, of soms kortweg *module* genoemd, is een container met uitvoerbare code. U kunt een of meer modules implementeren op een IoT Edge-apparaat. Modules voeren specifieke taken uit, zoals het opnemen van gegevens van sensoren, het opschonen en analyseren van gegevens of het verzenden van berichten naar een IoT-hub. Zie [Informatie over Azure IoT Edge-modules](iot-edge-modules.md) voor meer informatie.
 
-Wanneer u IoT Edge modules ontwikkelt, is het belang rijk dat u begrijpt wat het verschil is tussen de ontwikkelings machine en het doel IoT Edge apparaat waar de module uiteindelijk zal worden geïmplementeerd. De container die u voor de module code bouwt, moet overeenkomen met het besturings systeem (OS) van het *doel apparaat*. Zo is het meest voorkomende scenario dat iemand die een module ontwikkelt op een Windows-computer voornemens is een Linux-apparaat met IoT Edge te richten. In dat geval zou het besturings systeem van de container Linux zijn. Wanneer u deze zelf studie doorloopt, moet u het verschil tussen het *besturings systeem van de ontwikkel machine* en het *container besturingssysteem*onthouden.
+Bij het ontwikkelen van IoT Edge-modules is het belangrijk dat u begrijpt wat het verschil is tussen de ontwikkelcomputer en het IoT Edge doelapparaat waarop de module uiteindelijk zal worden geïmplementeerd. De container die u voor de modulecode bouwt, moet overeenkomen met het besturingssysteem van het *doelapparaat*. Zo is het meest voorkomende scenario dat iemand een module ontwikkelt op een Windows-computer met het doel deze op een Linux-apparaat met IoT Edge te implementeren. In dat geval zou het besturingssysteem van de container Linux zijn. Als u deze zelfstudie doorloopt, moet u rekening houden met het verschil tussen het *besturingssysteem van de ontwikkelcomputer* en het *besturingssysteem van de container*.
 
-In deze zelf studie worden Linux-apparaten met IoT Edge als doel gebruikt. U kunt uw favoriete besturings systeem gebruiken zolang de ontwikkel machine Linux-containers uitvoert. We raden u aan om Visual Studio code te gebruiken voor het ontwikkelen van Linux-apparaten, zodat deze zelf studie wordt gebruikt. U kunt ook Visual Studio gebruiken, hoewel er verschillen zijn in ondersteuning tussen de twee hulpprogram ma's.
+Deze zelfstudie richt zich op Linux-apparaten met IoT Edge. Als de ontwikkelcomputer Linux-containers uitvoert, kunt u uw favoriete besturingssysteem gebruiken. We raden u aan om Visual Studio Code te gebruiken voor het ontwikkelen voor Linux-apparaten, en dat wordt dan ook in deze zelfstudie gebruikt. U kunt ook Visual Studio gebruiken, maar er zijn wel verschillen in ondersteuning tussen de twee hulpprogramma's.
 
-De volgende tabel geeft een overzicht van de ondersteunde ontwikkelings scenario's voor **Linux-containers** in Visual Studio code en Visual Studio.
+De volgende tabel bevat een overzicht van de ondersteunde ontwikkelscenario's voor **Linux-containers** in Visual Studio Code en Visual Studio.
 
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Architectuur van Linux-apparaat** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
 | **Azure-services** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Talen** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **Meer informatie** | [Azure IoT Edge voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge-Hulpprogram Ma's voor Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge-Hulpprogram Ma's voor Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+| **Meer informatie** | [Azure IoT Edge voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools voor Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge Tools voor Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
 >[!NOTE]
->Ondersteuning voor Linux ARM64-apparaten is beschikbaar in de [open bare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Zie voor meer informatie [ARM64-modules ontwikkelen en fouten opsporen IOT Edge in Visual Studio code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Ondersteuning voor Linux ARM64-apparaten is beschikbaar in [openbare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Zie [ARM64 IoT Edge-modules ontwikkelen in Visual Studio Code en er fouten in opsporen (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) voor meer informatie.
 
-In deze zelf studie leert u de ontwikkelings stappen voor Visual Studio code. Als u liever Visual Studio gebruikt, raadpleegt u de instructies in [use Visual studio 2019 voor het ontwikkelen en opsporen van fouten in modules voor Azure IOT Edge](how-to-visual-studio-develop-module.md).
+In deze zelfstudie leert u de ontwikkelstappen voor Visual Studio Code. Als u liever Visual Studio gebruikt, raadpleegt u de instructies in [Visual Studio 2019 gebruiken voor het ontwikkelen van en opsporen van fouten in modules voor Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een ontwikkel computer:
+Een ontwikkelcomputer:
 
-* U kunt uw eigen computer of een virtuele machine gebruiken, afhankelijk van uw ontwikkelings voorkeuren.
-  * Zorg ervoor dat uw ontwikkel computer geneste virtualisatie ondersteunt. Deze mogelijkheid is nodig voor het uitvoeren van een container engine, die u in de volgende sectie installeert.
-* De meeste besturings systemen waarop een container engine kan worden uitgevoerd, kunnen worden gebruikt voor het ontwikkelen van IoT Edge-modules voor Linux-apparaten. In deze zelf studie wordt gebruikgemaakt van een Windows-computer, maar punten bekende verschillen in MacOS of Linux.
-* Installeer [Git](https://git-scm.com/)voor het ophalen van module sjabloon pakketten verderop in deze zelf studie.  
+* U kunt uw eigen computer of een virtuele machine gebruiken, afhankelijk van uw ontwikkelvoorkeuren.
+  * Zorg ervoor dat uw ontwikkelcomputer ondersteuning biedt voor geneste virtualisatie. Deze mogelijkheid is nodig voor het uitvoeren van een container-engine, die u in de volgende sectie installeert.
+* De meeste besturingssystemen waarop een container-engine kan worden uitgevoerd, kunnen worden gebruikt voor het ontwikkelen van IoT Edge-modules voor Linux-apparaten. In deze zelfstudie wordt gebruikgemaakt van een Windows-computer. Er wordt echter gewezen op bekende verschillen in MacOS of Linux.
+* Installeer [Git](https://git-scm.com/) om verderop in deze zelfstudie modulesjabloonpakketten op te halen.  
 * [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
-Een Azure IoT Edge apparaat in Linux:
+Een Azure IoT Edge-apparaat op Linux:
 
-* Het is raadzaam om IoT Edge niet uit te voeren op uw ontwikkel computer, maar u kunt in plaats daarvan een afzonderlijk apparaat gebruiken. Dit onderscheid tussen de ontwikkel machine en het IoT Edge apparaat is nauw keuriger in een echt implementatie scenario en helpt de verschillende concepten direct te blijven gebruiken.
-* Als er nog geen tweede apparaat beschikbaar is, gebruikt u het Quick Start-artikel om een IoT Edge apparaat in azure te maken met een [virtuele Linux-machine](quickstart-linux.md).
+* We raden u aan om IoT Edge niet uit te voeren op uw ontwikkelcomputer, maar een afzonderlijk apparaat te gebruiken. Dit onderscheid tussen ontwikkelcomputer en IoT Edge apparaat sluit nauwer aan op een echt implementatiescenario en helpt om de verschillende concepten uit elkaar te houden.
+* Als u geen tweede apparaat beschikbaar hebt, gebruikt u het quickstart-artikel om een IoT Edge-apparaat in Azure te maken met een [virtuele Linux-machine](quickstart-linux.md).
 
 Cloudresources:
 
-* Een gratis of een IOT- [hub](../iot-hub/iot-hub-create-through-portal.md) met een standaard laag in Azure.
+* Een gratis of standaard [IoT-hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 
-## <a name="install-container-engine"></a>Container Engine installeren
+## <a name="install-container-engine"></a>Container-engine installeren
 
-IoT Edge-modules worden verpakt als containers, dus u hebt een container engine op uw ontwikkel computer nodig om deze te bouwen en te beheren. Het is aan te raden docker Desktop voor ontwikkeling te gebruiken vanwege de ondersteuning en populariteit van de functies. Met docker desktop in Windows kunt u scha kelen tussen Linux-containers en Windows-containers, zodat u eenvoudig modules kunt ontwikkelen voor verschillende soorten IoT Edge apparaten.
+IoT Edge-modules worden verpakt als container. U hebt dus een container-engine op uw ontwikkelcomputer nodig om modules te bouwen en te beheren. We raden aan Docker Desktop te gebruiken voor ontwikkeling vanwege de ondersteuning en populariteit van de functies. Met Docker Desktop in Windows kunt u schakelen tussen Linux-containers en Windows-containers, en kunt u dus eenvoudig modules ontwikkelen voor verschillende soorten IoT Edge apparaten.
 
-Gebruik de docker-documentatie om te installeren op uw ontwikkel computer:
+Gebruik de Docker-documentatie om Docker Desktop te installeren op uw ontwikkelcomputer:
 
 * [Docker Desktop voor Windows installeren](https://docs.docker.com/docker-for-windows/install/)
 
-  * Wanneer u docker Desktop voor Windows installeert, wordt u gevraagd of u Linux-of Windows-containers wilt gebruiken. Deze beslissing kan op elk gewenst moment worden gewijzigd met een eenvoudige switch. Voor deze zelf studie gebruiken we Linux-containers omdat onze modules zijn gericht op Linux-apparaten. Zie [scha kelen tussen Windows-en Linux-containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)voor meer informatie.
+  * Wanneer u Docker Desktop voor Windows installeert, wordt u gevraagd of u Linux- of Windows-containers wilt gebruiken. Deze beslissing kan op elk gewenst moment worden gewijzigd met een eenvoudige schakeloptie. Voor deze zelfstudie gebruiken we Linux-containers omdat onze modules gericht zijn op Linux-apparaten. Zie [Schakelen tussen Windows- en Linux-containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) voor meer informatie.
 
 * [Docker Desktop voor Mac installeren](https://docs.docker.com/docker-for-mac/install/)
 
-* Meer informatie [over docker CE](https://docs.docker.com/install/) voor installatie gegevens op verschillende Linux-platforms.
-  * Installeer docker Desktop voor Windows voor het Windows-subsysteem voor Linux (WSL).
+* Lees [About Docker CE](https://docs.docker.com/install/) voor informatie over de installatie op verschillende Linux-platforms.
+  * Installeer Docker Desktop voor Windows voor het Windows-subsysteem voor Linux (WSL).
 
-## <a name="set-up-vs-code-and-tools"></a>VS code en hulpprogram ma's instellen
+## <a name="set-up-vs-code-and-tools"></a>VS Code en hulpprogramma's instellen
 
-Gebruik de IoT-extensies voor Visual Studio code voor het ontwikkelen van IoT Edge-modules. Deze uitbrei dingen bieden project sjablonen, automatiseren het maken van het implementatie manifest en bieden u de mogelijkheid om IoT Edge apparaten te bewaken en te beheren. In deze sectie installeert u Visual Studio code en de IoT-uitbrei ding. vervolgens stelt u uw Azure-account in voor het beheren van IoT Hub resources vanuit Visual Studio code.
+Gebruik de IoT-extensies voor Visual Studio Code voor het ontwikkelen van IoT Edge-modules. Deze extensies bieden projectsjablonen, automatiseren het maken van het implementatiemanifest en bieden u de mogelijkheid om IoT Edge apparaten te bewaken en te beheren. In deze sectie installeert u Visual Studio Code en de IoT-extensie. Vervolgens stelt u uw Azure-account in voor het beheren van IoT Hub-resources vanuit Visual Studio Code.
 
-1. Installeer [Visual Studio code](https://code.visualstudio.com/) op uw ontwikkel computer.
+1. Installeer [Visual Studio Code](https://code.visualstudio.com/) op uw ontwikkelcomputer.
 
-2. Als de installatie is voltooid, selecteert u**uitbrei dingen** **weer geven** > .
+2. Wanneer de installatie is voltooid, selecteert u **View** > **Extensions**.
 
-3. Zoek naar **Azure IOT-Hulpprogram ma's**. Dit is eigenlijk een verzameling extensies waarmee u kunt communiceren met IOT hub-en IOT-apparaten, en voor het ontwikkelen van IOT Edge-modules.
+3. Zoek naar **Azure IoT Tools**. Dit is feitelijk een verzameling extensies waarmee u kunt communiceren met IoT-hub- en IoT-apparaten, en IoT Edge-modules kunt ontwikkelen.
 
-4. Selecteer **Installeren**. Elke opgenomen extensie wordt afzonderlijk geïnstalleerd.
+4. Selecteer **Installeren**. Elke extensie die wordt opgenomen, wordt afzonderlijk geïnstalleerd.
 
-5. Wanneer de uitbrei dingen zijn geïnstalleerd, opent u het opdracht palet door het**opdracht palet** **weer geven** > te selecteren.
+5. Wanneer de extensies zijn geïnstalleerd, opent u het opdrachtpalet door **View** > **Command Palette** te selecteren.
 
-6. In het opdracht palet zoekt en selecteert u **Azure: Meld**u aan. Volg de aanwijzingen om u aan te melden bij uw Azure-account.
+6. In het opdrachtenpalet zoekt en selecteert u **Azure: Aanmelden** en voer deze uit. Volg de aanwijzingen om u aan te melden bij uw Azure-account.
 
-7. In het opdracht palet zoekt en selecteert u **Azure IOT hub: selecteer IOT hub**. Volg de aanwijzingen om uw Azure-abonnement en IoT-hub te selecteren.
+7. Weer in het opdrachtenpalet zoekt en selecteert u **Azure IoT Hub: Select IoT Hub**. Volg de aanwijzingen om uw Azure-abonnement en IoT-hub te selecteren.
 
-8. Open de sectie Explorer van Visual Studio code door het pictogram te selecteren in de activiteiten balk aan de linkerkant of door **weer gave** > **Verkenner**te selecteren.
+8. Open de sectie Explorer van Visual Studio Code door het pictogram te selecteren in de activiteitenbalk aan de linkerkant of door **View** > **Explorer** te selecteren.
 
-9. Onder aan de sectie Explorer vouwt u het menu samengevouwen **Azure IOT Hub-apparaten** uit. Als het goed is, ziet u de apparaten en IoT Edge apparaten die zijn gekoppeld aan de IoT-hub die u hebt geselecteerd in het opdracht palet.
+9. Onder aan de sectie Explorer vouwt u het samengevouwen menu **Azure IoT Hub Devices** uit. Als het goed is, ziet u nu de apparaten en IoT Edge-apparaten die zijn gekoppeld aan de IoT-hub die u hebt geselecteerd in het opdrachtenpalet.
 
-   ![Apparaten weer geven in uw IoT-hub](./media/tutorial-develop-for-linux/view-iot-hub-devices.png)
+   ![Apparaten weergeven in uw IoT-hub](./media/tutorial-develop-for-linux/view-iot-hub-devices.png)
 
 [!INCLUDE [iot-edge-create-container-registry](../../includes/iot-edge-create-container-registry.md)]
 
-## <a name="create-a-new-module-project"></a>Een nieuw module project maken
+## <a name="create-a-new-module-project"></a>Een nieuw moduleproject maken
 
-De uitbrei ding Azure IoT tools biedt project sjablonen voor alle ondersteunde IoT Edge module talen in Visual Studio code. Deze sjablonen hebben alle bestanden en code die u nodig hebt om een Working-module te implementeren om IoT Edge te testen. u kunt ook een begin punt geven om de sjabloon aan te passen met uw eigen bedrijfs logica.
+De extensie voor Azure IoT-hulpprogramma's biedt projectsjablonen voor alle ondersteunde IoT Edge-moduletalen in Visual Studio Code. Deze sjablonen bevatten alle bestanden en code die u nodig hebt om een werkende module te implementeren om IoT Edge te testen of bieden u een uitgangspunt om de sjabloon aan te passen met uw eigen bedrijfslogica.
 
-Voor deze zelf studie gebruiken we de sjabloon C#-module omdat dit de meestgebruikte sjabloon is.
+Voor deze zelfstudie gebruiken we de C#-modulesjabloon omdat deze de meestgebruikte sjabloon is.
 
-### <a name="create-a-project-template"></a>Een project sjabloon maken
+### <a name="create-a-project-template"></a>Een projectsjabloon maken
 
-In het Visual Studio code-opdracht palet zoekt en selecteert u **Azure IOT Edge: nieuwe IOT EDGE oplossing**. Volg de aanwijzingen en gebruik de volgende waarden om uw oplossing te maken:
+Zoek en selecteer in het Visual Studio Code-opdrachtenpalet de optie **Azure IoT Edge: New IoT Edge Solution**. Volg de aanwijzingen en gebruik de volgende waarden om uw oplossing te maken:
 
    | Veld | Waarde |
    | ----- | ----- |
    | Map selecteren | Kies de locatie op uw ontwikkelcomputer waar VS Code de oplossingsbestanden moet maken. |
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor de oplossing in of accepteer de standaardnaam **EdgeSolution**. |
    | Modulesjabloon selecteren | Kies **C# Module**. |
-   | Een modulenaam opgeven | Accepteer de standaard **SampleModule**. |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de naam die u in de laatste stap hebt opgegeven. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke afbeeldings opslagplaats ziet \<eruit als\>register naam. azurecr.io/samplemodule. |
+   | Een modulenaam opgeven | Accepteer de standaardwaarde **SampleModule**. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de naam die u in de laatste stap hebt opgegeven. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke opslagplaats voor de installatiekopie ziet er als volgt uit: \<registry name\>.azurecr.io/nodemodule. |
 
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/tutorial-develop-for-linux/image-repository.png)
 
-Zodra de nieuwe oplossing in het Visual Studio-code venster is geladen, neemt u even de tijd om vertrouwd te raken met de bestanden die zijn gemaakt:
+Zodra de nieuwe oplossing in het Visual Studio Code-venster is geladen, neemt u even de tijd om vertrouwd te raken met de bestanden die zijn gemaakt:
 
-* De map **. vscode** bevat een bestand met de naam **Launch. json**, dat wordt gebruikt voor het opsporen van fouten in modules.
-* De map **modules** bevat een map voor elke module in uw oplossing. Dit is op dit moment alleen **SampleModule**of de naam die u aan de module hebt gegeven. De map SampleModule bevat de belangrijkste programma code, de meta gegevens van de module en verschillende docker-bestanden.
-* Het **. env** -bestand bevat de referenties voor het container register. Deze referenties worden gedeeld met uw IoT Edge-apparaat, zodat het toegang heeft tot het ophalen van de container installatie kopieën.
-* De **implementatie. debug. sjabloon. json** bestand en **implementatie. bestand sjabloon. json** zijn sjablonen die u helpen bij het maken van een implementatie manifest. Een *implementatie manifest* is een bestand dat precies aangeeft welke modules u wilt implementeren op een apparaat, hoe ze moeten worden geconfigureerd en hoe ze met elkaar en de Cloud kunnen communiceren. De sjabloon bestanden gebruiken verwijzingen voor bepaalde waarden. Wanneer u de sjabloon transformeert in een waar implementatie manifest, worden de aanwijzers vervangen door waarden die zijn overgenomen uit andere oplossings bestanden. Zoek de twee gebruikelijke tijdelijke aanduidingen in uw implementatie sjabloon:
+* De map **.vscode** bevat een bestand met de naam **launch.json**, dat wordt gebruikt voor het opsporen van fouten in modules.
+* De map **modules** bevat een map voor elke module in uw oplossing. Op dit moment moet dit alleen **SampleModule** zijn, of een andere naam die u aan de module hebt gegeven. De map SampleModule bevat de belangrijkste programmacode, de metagegevens van de module en verschillende Docker-bestanden.
+* Het bestand **.env** bevat de referenties voor uw containerregister. Deze referenties worden gedeeld met uw IoT Edge-apparaat, zodat het de containerinstallatiekopieën kan ophalen.
+* Het bestand **deployment.debug.template.json** en het bestand **deployment.template.json** zijn sjablonen die u helpen bij het maken van een implementatiemanifest. Een *implementatiemanifest* is een bestand dat precies aangeeft welke modules u wilt implementeren op een apparaat, hoe ze moeten worden geconfigureerd en hoe ze met elkaar en de cloud kunnen communiceren. De sjabloonbestanden gebruiken aanwijzers voor bepaalde waarden. Wanneer u de sjabloon omzet in een echt implementatiemanifest, worden de aanwijzers vervangen door waarden die zijn overgenomen uit andere oplossingsbestanden. Zoek de twee gebruikelijke tijdelijke aanduidingen in uw implementatiesjabloon:
 
-  * In de sectie register referenties wordt het adres aangevuld met de informatie die u hebt ingevoerd tijdens het maken van de oplossing. De gebruikers naam en het wacht woord verwijzen echter naar de variabelen die zijn opgeslagen in het. env-bestand. Deze configuratie is voor beveiliging, omdat het. env-bestand Git wordt genegeerd, maar de implementatie sjabloon niet.
-  * In de sectie SampleModule is de container installatie kopie niet ingevuld, ook al hebt u de opslag plaats voor de installatie kopie opgegeven tijdens het maken van de oplossing. Deze tijdelijke aanduiding verwijst naar het bestand **module. json** in de map SampleModule. Als u naar dat bestand gaat, ziet u dat het veld image de opslag plaats bevat, maar ook een label waarde die bestaat uit de versie en het platform van de container. U kunt de versie hand matig herhalen als onderdeel van de ontwikkelings cyclus en u selecteert het container platform met een schakelaar die verderop in deze sectie wordt geïntroduceerd.
+  * In de sectie met registerreferenties wordt het adres automatisch ingevuld op basis van de informatie die u hebt ingevoerd tijdens het maken van de oplossing. De gebruikersnaam en het wachtwoord verwijzen echter naar de variabelen die zijn opgeslagen in het .env-bestand. Deze configuratie is om beveiligingsredenen, omdat het .env-bestand door Git wordt genegeerd, maar de implementatiesjabloon niet.
+  * In de sectie SampleModule is de containerinstallatiekopie niet ingevuld, zelfs als u de opslagplaats voor de installatiekopie tijdens het maken van de oplossing hebt opgegeven. Deze tijdelijke aanduiding verwijst naar het bestand **module.json** in de map SampleModule. Als u naar dat bestand gaat, ziet u dat het installatiekopieveld de opslagplaats bevat, maar ook een tagwaarde die uit de versie en het platform van de container bestaat. U kunt de versie handmatig implementeren als onderdeel van de ontwikkelcyclus en u selecteert het containerplatform met behulp van een schakelaar die verderop in deze sectie wordt geïntroduceerd.
 
-### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Geef uw register referenties voor de IoT Edge-agent op
+### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Uw registerreferenties voor de IoT Edge-agent opgeven
 
-In het omgevingsbestand worden de referenties voor het containerregister opgeslagen. Deze referenties worden gedeeld met de IoT Edge-runtime. De runtime heeft deze referenties nodig om de container installatie kopieën op het IoT Edge-apparaat te halen.
+In het omgevingsbestand worden de referenties voor het containerregister opgeslagen. Deze referenties worden gedeeld met de IoT Edge-runtime. De runtime heeft deze referenties nodig om uw containerinstallatiekopieën naar het IoT Edge-apparaat te halen.
 
-De uitbrei ding van de IoT Edge probeert uw container register referenties van Azure op te halen en deze in het omgevings bestand in te vullen. Controleer of uw referenties al zijn opgenomen. Als dat niet het geval is, voegt u ze nu toe:
+De IoT Edge-extensie probeert uw containerregisterreferenties van Azure op te halen en deze in het omgevingsbestand in te vullen. Controleer of uw referenties al zijn toegevoegd. Als dat niet het geval is, voegt u ze nu toe:
 
-1. Open het **. env** -bestand in de module oplossing.
-2. Voeg de waarden van de **gebruikers naam** en het **wacht woord** toe die u hebt gekopieerd uit uw Azure container Registry.
-3. Sla de wijzigingen in het. env-bestand op.
+1. Open het **.env**-bestand in uw moduleoplossing.
+2. Voeg de waarden voor **gebruikersnaam** en **wachtwoord** toe die u hebt gekopieerd uit het Azure-containerregister.
+3. Sla de wijzigingen in het .env-bestand op.
 
-### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
+### <a name="select-your-target-architecture"></a>Uw doelarchitectuur selecteren
 
-Momenteel kan Visual Studio code C#-modules ontwikkelen voor Linux AMD64-en ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat dit van invloed is op hoe de container wordt gebouwd en wordt uitgevoerd. De standaard waarde is Linux AMD64.
+Momenteel kunt u met Visual Studio Code C#-modules ontwikkelen voor Linux AMD64- en ARM32v7-apparaten. U moet voor elke oplossing selecteren op welke architectuur u zich richt, omdat dit beïnvloedt hoe de container wordt opgebouwd en uitgevoerd. De standaardinstelling is Linux AMD64.
 
-1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor de rand oplossing**in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster.
+1. Open het opdrachtpalet en zoek **Azure IoT Edge: standaarddoelplatform voor Edge-oplossing instellen** of selecteer het snelkoppelingspictogram onderaan het venster.
 
-   ![Architectuur pictogram selecteren in de zijkants balk](./media/tutorial-develop-for-linux/select-architecture.png)
+   ![Pictogram Architectuur selecteren in zijbalk](./media/tutorial-develop-for-linux/select-architecture.png)
 
-2. Selecteer in het opdracht palet de doel architectuur in de lijst met opties. Voor deze zelf studie gebruiken we een virtuele machine van Ubuntu als het IoT Edge-apparaat, zodat de standaard **amd64**wordt bewaard.
+2. Selecteer in het opdrachtpalet de doelarchitectuur in de lijst met opties. In deze zelfstudie gebruiken we een virtuele Ubuntu-machine als het IoT Edge-apparaat, dus laten we de standaardinstelling **amd64** staan.
 
-### <a name="review-the-sample-code"></a>De voorbeeld code bekijken
+### <a name="review-the-sample-code"></a>De voorbeeldcode bekijken
 
-De oplossings sjabloon die u hebt gemaakt, bevat voorbeeld code voor een IoT Edge module. In deze voorbeeld module worden berichten gewoon ontvangen en vervolgens door gegeven aan. Met de pijplijn functionaliteit wordt een belang rijk concept in IoT Edge gedemonstreerd, waarmee modules met elkaar communiceren.
+De oplossingssjabloon die u hebt gemaakt, bevat voorbeeldcode voor een IoT Edge-module. In deze voorbeeldmodule worden berichten eenvoudigweg ontvangen en vervolgens doorgegeven. Met de pijplijnfunctionaliteit wordt een belangrijk concept in IoT Edge gedemonstreerd, waarmee modules met elkaar communiceren.
 
-Voor elke module kunnen meerdere *invoer* -en *uitvoer* wachtrijen worden gedeclareerd in de code. Met de IoT Edge hub die op het apparaat wordt uitgevoerd, worden berichten gerouteerd van de uitvoer van een module naar de invoer van een of meer modules. De specifieke taal voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is hetzelfde voor alle modules. Zie voor meer informatie over route ring tussen modules [routes declareren](module-composition.md#declare-routes).
+Elke module kan meerdere *invoer*- en *uitvoer*wachtrijen hebben die in hun code zijn gedeclareerd. Met de IoT Edge-hub die op het apparaat wordt uitgevoerd, worden berichten van de uitvoer van een module naar de invoer van een of meer modules gerouteerd. De specifieke taal voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is voor alle modules hetzelfde. Zie [Routes declareren](module-composition.md#declare-routes) voor meer informatie over routering tussen modules.
 
-De C#-voorbeeld code die wordt geleverd met de project sjabloon maakt gebruik van de [ModuleClient-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) van de IOT hub SDK voor .net.
+De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) van de IoT Hub SDK voor .NET.
 
-1. Open het **Program.cs** -bestand, dat zich in de **modules/SampleModule/** map bevindt.
+1. Open het bestand **Program.cs**, dat zich in de map **modules/SampleModule/** bevindt.
 
-2. Zoek in program.cs de methode **SetInputMessageHandlerAsync** .
+2. Zoek in program.cs de methode **SetInputMessageHandlerAsync**.
 
-3. Met de methode [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) wordt een invoer wachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en Bekijk hoe het een invoer wachtrij initialiseert met de naam **input1**.
+3. Met de methode [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
 
-   ![De invoer naam zoeken in de SetInputMessageCallback-constructor](./media/tutorial-develop-for-linux/declare-input-queue.png)
+   ![De invoernaam zoeken in de SetInputMessageCallback-constructor](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
-4. Zoek vervolgens de methode **SendEventAsync** .
+4. Zoek vervolgens de methode **SendEventAsync**.
 
-5. De methode [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) verwerkt berichten ontvangen en stelt een uitvoer wachtrij in om deze aan te geven. Bekijk deze methode en controleer of het een uitvoer wachtrij initialiseert met de naam **output1**.
+5. Met de methode [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
 
-   ![De naam van de uitvoer in SendEventToOutputAsync zoeken](./media/tutorial-develop-for-linux/declare-output-queue.png)
+   ![De uitvoernaam zoeken in SendEventToOutputAsync](./media/tutorial-develop-for-linux/declare-output-queue.png)
 
-6. Open het bestand **Deployment. Temp late. json** .
+6. Open het bestand **deployment.template.json**.
 
-7. Zoek de eigenschap **modules** van de gewenste eigenschappen van de $edgeAgent.
+7. Zoek de eigenschap **modules** van de gewenste eigenschappen van $edgeAgent.
 
-   Er moeten twee modules worden weer gegeven. De eerste is **SimulatedTemperatureSensor**, die is opgenomen in alle sjablonen standaard om gesimuleerde temperatuur gegevens te bieden die u kunt gebruiken om uw modules te testen. De tweede is de **SampleModule** -module die u hebt gemaakt als onderdeel van deze oplossing.
+   Er moeten hier twee modules worden weergegeven. De eerste is **SimulatedTemperatureSensor**, die standaard is opgenomen in alle sjablonen om gesimuleerde temperatuurgegevens te bieden die u kunt gebruiken om uw modules te testen. De tweede is de module **SampleModule** die u als onderdeel van deze oplossing hebt gemaakt.
 
-8. Zoek de gewenste eigenschappen voor de module **$edgeHub** aan de onderkant van het bestand.
+8. Zoek onder aan het bestand de gewenste eigenschappen voor de module **$edgeHub**.
 
-   Een van de functies van de IoT Edge hub-module is het routeren van berichten tussen alle modules in een implementatie. Controleer de waarden in de eigenschap **routes** . De eerste route, **SampleModuleToIoTHub**, gebruikt een Joker teken (**\***) om berichten te geven die afkomstig zijn uit uitvoer wachtrijen in de SampleModule-module. Deze berichten gaan naar *$upstream*. Dit is een gereserveerde naam die IOT hub aangeeft. De tweede route, sensorToSampleModule, haalt berichten uit de SimulatedTemperatureSensor-module op en stuurt deze door naar de *input1* -invoer wachtrij die u in de SampleModule-code hebt geïnitialiseerd.
+   Een van de functies van de IoT Edge hub-module bestaat uit het routeren van berichten tussen alle modules in een implementatie. Bekijk de waarden in de eigenschap **routes**. De eerste route, **SampleModuleToIoTHub**, gebruikt een jokerteken ( **\*** ) om berichten aan te geven die afkomstig zijn uit uitvoerwachtrijen in de SampleModule-module. Deze berichten gaan naar *$upstream*, een gereserveerde naam die IoT Hub aangeeft. De tweede route, sensorToSampleModule, neemt berichten over van de SimulatedTemperatureSensor-module en stuurt deze door naar de invoerwachtrij *input1* die in de SampleModule-code is geïnitialiseerd.
 
-   ![Routes bekijken in implementatie. sjabloon. json](./media/tutorial-develop-for-linux/deployment-routes.png)
+   ![Routes bekijken in deployment.template.json](./media/tutorial-develop-for-linux/deployment-routes.png)
 
 ## <a name="build-and-push-your-solution"></a>De oplossing bouwen en pushen
 
-U hebt de module code en de implementatie sjabloon gecontroleerd om enkele belang rijke concepten van de implementatie te begrijpen. U bent nu klaar om de SampleModule-container installatie kopie te bouwen en deze naar uw container register te pushen. Met de extensie voor IoT-hulpprogram ma's voor Visual Studio code genereert deze stap ook het implementatie manifest op basis van de informatie in het sjabloon bestand en de module gegevens van de oplossings bestanden.
+U hebt de modulecode en de implementatiesjabloon gecontroleerd om inzicht te krijgen in enkele belangrijke concepten van de implementatie. Nu moet u de SampleModule-containerinstallatiekopie bouwen en naar het containerregister pushen. Met de extensie voor IoT-hulpprogramma's voor Visual Studio Code worden in deze stap ook het implementatiemanifest op basis van de informatie in het sjabloonbestand en de modulegegevens van de oplossingsbestanden gegenereerd.
 
-### <a name="sign-in-to-docker"></a>Aanmelden bij docker
+### <a name="sign-in-to-docker"></a>Aanmelden bij Docker
 
-Geef de container register referenties op voor docker, zodat de container installatie kopie kan worden pusht voor opslag in het REGI ster.
+Geef de containerregisterreferenties op voor Docker, zodat de containerinstallatiekopie voor opslag in het register kan worden gepusht.
 
-1. Open de Visual Studio code-geïntegreerde Terminal door **weer gave** > -**Terminal**te selecteren.
+1. Open de in Visual Studio Code geïntegreerde terminal door **View** > **Terminal** te selecteren.
 
-2. Meld u aan bij docker met de Azure container Registry-referenties die u hebt opgeslagen nadat u het REGI ster hebt gemaakt.
+2. Meld u aan bij Docker met de Azure-containerregisterreferenties die u hebt opgeslagen nadat u het register hebt gemaakt.
 
    ```cmd/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Mogelijk wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het `--password-stdin`gebruik van te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de [koppeling naar docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Mogelijk wordt een beveiligingswaarschuwing weergegeven waarin het gebruik van `--password-stdin` wordt aanbevolen. Hoewel dit wordt aanbevolen voor productiescenario's, valt het buiten het bereik van deze zelfstudie. Zie de documentatie voor [aanmelding bij Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) voor meer informatie.
+   
+3. Inloggen in Azure Container Registry
+
+   ```cmd/sh
+   az acr login -n <ACR registry name>
+   ```
 
 ### <a name="build-and-push"></a>Bouwen en pushen
 
-Visual Studio code heeft nu toegang tot uw container register, dus is het tijd om de oplossings code in te scha kelen in een container installatie kopie.
+Visual Studio Code heeft nu toegang tot uw containerregister, dus is het tijd om de oplossingscode in te schakelen in een containerinstallatiekopie.
 
-1. Klik in Visual Studio code Explorer met de rechter muisknop op het bestand **Deployment. sjabloon. json** en selecteer **Build and push IOT Edge Solution**.
+1. Klik in de Visual Studio Code Explorer met de rechtermuisknop op het bestand **deployment.template.json** en selecteer **Build and Push IoT Edge Solution**.
 
-   ![IoT Edge modules bouwen en pushen](./media/tutorial-develop-for-linux/build-and-push-modules.png)
+   ![IoT Edge-modules bouwen en pushen](./media/tutorial-develop-for-linux/build-and-push-modules.png)
 
-   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing **config** met het volledige implementatie manifest, gebaseerd op de gegevens in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` de container installatie kopie gemaakt op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` de opslag plaats voor de installatie kopie naar het container register pusht.
+   Met de opdracht voor bouwen en pushen worden drie bewerkingen gestart. Eerst wordt er een nieuwe map met de naam **config** in de oplossing gemaakt die het volledige implementatiemanifest bevat, op basis van de informatie in de implementatiesjabloon en andere oplossingsbestanden. Daarna wordt `docker build` uitgevoerd om de containerinstallatiekopie te bouwen op basis van de juiste dockerfile voor uw doelarchitectuur. Vervolgens wordt `docker push` uitgevoerd om de opslagplaats van de installatiekopie naar het containerregister te pushen.
 
-   Dit proces kan enkele minuten de eerste keer duren, maar de volgende keer dat u de opdrachten uitvoert, wordt sneller uitgevoerd.
+   Dit proces kan de eerste keer enkele minuten duren, maar de volgende keer dat u de opdrachten uitvoert, wordt het sneller uitgevoerd.
 
-2. Open het bestand **Deployment. amd64. json** in de zojuist gemaakte map Config. De bestands naam weerspiegelt de doel architectuur, zodat deze anders is als u een andere architectuur hebt gekozen.
+2. Open het bestand **deployment.amd64.json** in de zojuist gemaakte configuratiemap. De bestandsnaam geeft de doelarchitectuur aan. Deze is dus anders als u een andere architectuur hebt gekozen.
 
-3. U ziet dat de twee para meters met een tijdelijke aanduiding nu zijn ingevuld met de juiste waarden. In de sectie **registryCredentials** zijn de gebruikers naam en het wacht woord van het REGI ster opgehaald uit het. env-bestand. De **SampleModule** heeft de volledige opslag plaats van de installatie kopie met de naam, versie en architectuur label van het bestand module. json.
+3. U ziet dat de twee parameters met een tijdelijke aanduiding nu de juiste waarden bevatten. In het gedeelte **registryCredentials** zijn de gebruikersnaam en wachtwoord voor het register opgehaald uit het .env-bestand. De **SampleModule** bevat de volledige installatiekopieopslagplaats met de naam, versie en architectuurtag van het module.json-bestand.
 
-4. Open het bestand **module. json** in de map SampleModule.
+4. Open het bestand **module.json** in de map SampleModule.
 
-5. Het versie nummer voor de module installatie kopie wijzigen. (De versie, niet de $schema-versie.) Verhoog bijvoorbeeld het versie nummer van de patch naar **0.0.2** , alsof er een kleine oplossing in de module code is gemaakt.
+5. Wijzig het versienummer voor de installatiekopie van de module. (De versie, niet de $schema-version.) Verhoog bijvoorbeeld het versienummer van de patch naar **0.0.2**, alsof er een kleine correctie in de modulecode is aangebracht.
 
    >[!TIP]
-   >Met module versies kunt u versie beheer inschakelen en kunt u wijzigingen in een kleine set apparaten testen voordat u updates voor de productie implementeert. Als u de module versie niet verhoogt voordat u bouwt en pusht, overschrijft u de opslag plaats in het container register.
+   >Moduleversies bieden ondersteuning voor versiebeheer en bieden u de mogelijkheid wijzigingen te testen op een klein aantal apparaten voordat u updates in een productieomgeving implementeert. Als u de moduleversie niet verhoogt voordat u bouwt en pusht, overschrijft u de opslagplaats in uw containerregister.
 
-6. Sla de wijzigingen op in het bestand module. json.
+6. Sla de wijzigingen op in het bestand module.json.
 
-7. Klik opnieuw met de rechter muisknop op het bestand **Deployment. template. json** en selecteer vervolgens **Build and push IOT Edge Solution**.
+7. Klik opnieuw met de rechtermuisknop op het bestand **deployment.template.json** en selecteer opnieuw **Build and Push IoT Edge solution**.
 
-8. Open het bestand **implement. amd64. json** opnieuw. U ziet dat een nieuw bestand niet is gemaakt tijdens het uitvoeren van de opdracht build en push. In plaats daarvan is hetzelfde bestand bijgewerkt om de wijzigingen weer te geven. De SampleModule-installatie kopie verwijst nu naar de 0.0.2-versie van de container.
+8. Open het bestand **deployment.amd64.json** opnieuw. U ziet dat er geen nieuw bestand is gemaakt tijdens het uitvoeren van de opdracht voor het bouwen en pushen. Hetzelfde bestand is bijgewerkt met de wijzigingen. De SampleModule-installatiekopie verwijst nu naar de versie 0.0.2 van de container.
 
-9. Ga naar het [Azure Portal](https://portal.azure.com) en navigeer naar het container register om verder te controleren wat de opbouw en de push opdracht hebben ondervonden.
+9. Ga naar [Azure Portal](https://portal.azure.com) en navigeer naar het containerregister om verder te controleren wat de opdracht voor het bouwen en pushen heeft gedaan.
 
-10. Selecteer in het container register **opslag** plaatsen en vervolgens **samplemodule**. Controleer of beide versies van de installatie kopie naar het REGI ster zijn gepusht.
+10. Selecteer in het containerregister **Opslagplaatsen** en vervolgens **samplemodule**. Controleer of beide versies van de installatiekopie naar het register zijn gepusht.
 
-    ![Beide afbeeldings versies in container Registry weer geven](./media/tutorial-develop-for-linux/view-repository-versions.png)
+    ![Beide installatiekopieversies in containerregister weergeven](./media/tutorial-develop-for-linux/view-repository-versions.png)
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Als er fouten optreden bij het bouwen en pushen van de installatie kopie van de module, moet u vaak met docker-configuratie op uw ontwikkel computer. Gebruik de volgende controles om uw configuratie te controleren:
+Als er fouten optreden bij het bouwen en pushen van de installatiekopie van de module, heeft dit vaak te maken met Docker-configuratie op uw ontwikkelcomputer. Gebruik de volgende controles om uw configuratie te controleren:
 
-* Hebt u de `docker login` opdracht uitgevoerd met behulp van de referenties die u hebt gekopieerd uit het container register? Deze referenties zijn anders dan degene die u gebruikt om u aan te melden bij Azure.
-* Hebt u de juiste containeropslagplaats? Heeft het de juiste naam voor het container register en de juiste module naam? Open het bestand **module. json** in de map SampleModule om dit te controleren. De waarde van de opslag plaats moet er als ** \<register naam\>. azurecr.io/samplemodule**uitzien.
-* Als u een andere naam hebt gebruikt dan **SampleModule** voor uw module, is die naam consistent in de oplossing?
-* Voert de computer uit van hetzelfde type containers dat u bouwt? Deze zelf studie is voor Linux IoT Edge-apparaten, zodat Visual Studio code moet zeggen **amd64** of **arm32v7** in de zijbalk, en op docker Desktop moet Linux-containers worden uitgevoerd.  
+* Hebt u de opdracht `docker login` uitgevoerd met behulp van de referenties die u uit het containerregister hebt gekopieerd? Deze referenties zijn anders dan de referenties die u gebruikt om u aan te melden bij Azure.
+* Hebt u de juiste containeropslagplaats? Heeft deze de juiste containerregisternaam en de juiste modulenaam? Open het bestand **module.json** in de map SampleModule om dit te controleren. De waarde van de opslagplaats moet eruitzien als **\<registry name\>.azurecr.io/samplemodule**.
+* Als u een andere naam dan **SampleModule** voor uw module hebt gebruikt, is die naam dan wel consistent in de hele oplossing?
+* Worden op de computer hetzelfde type containers uitgevoerd als die u bouwt? Deze zelfstudie is voor Linux IoT Edge-apparaten en daarom moet in de zijbalk van Visual Studio Code **amd64** of **arm32v7** worden vermeld, en moeten op Docker Desktop Linux-containers worden uitgevoerd.  
 
-## <a name="deploy-modules-to-device"></a>Modules implementeren op het apparaat
+## <a name="deploy-modules-to-device"></a>Modules op het apparaat implementeren
 
-U hebt gecontroleerd of de gemaakte container installatie kopieën zijn opgeslagen in het container register, dus het is tijd om ze te implementeren op een apparaat. Zorg ervoor dat uw IoT Edge-apparaat actief is.
+U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen in het containerregister, dus het is tijd om ze te implementeren op een apparaat. Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
-1. Vouw in Visual Studio code Explorer het gedeelte Azure IoT Hub-apparaten uit.
+1. Vouw in Visual Studio Code Explorer de sectie Azure IoT Hub Devices uit.
 
-2. Klik met de rechter muisknop op het IoT Edge apparaat waarop u wilt implementeren en selecteer vervolgens **implementatie maken voor één apparaat**.
+2. Klik met de rechtermuisknop op de naam van het IoT Edge-apparaat dat u wilt implementeren en selecteer **Create Deployment for Single Device**.
 
    ![Implementatie voor één apparaat maken](./media/tutorial-develop-for-linux/create-deployment.png)
 
-3. Ga in Verkenner naar de map **config** en selecteer vervolgens het bestand **Deployment. amd64. json** .
+3. Ga in de bestandsverkenner naar de map **config** en selecteer vervolgens het bestand **deployment.amd64.json**.
 
-   Gebruik niet het bestand Deployment. Temp late. json, dat geen container register referenties of module-installatie kopie waarden bevat. Als u bent gericht op een Linux ARM32-apparaat, wordt het implementatie manifest Deployment. arm32v7. json genoemd.
+   Gebruik niet het bestand deployment.template.json, dat geen containerregisterreferenties of module-installatiekopiewaarden bevat. Als u ontwikkelt voor een Linux ARM32-apparaat, wordt het implementatiemanifest deployment.arm32v7.json genoemd.
 
-4. Vouw de details van uw IoT Edge-apparaat uit en vouw vervolgens de lijst met **modules** voor uw apparaat uit.
+4. Vouw de details voor uw IoT Edge-apparaat uit en vouw vervolgens de lijst **Modules** voor uw apparaat uit.
 
-5. Gebruik de knop Vernieuwen om de weer gave van het apparaat bij te werken totdat u de SimulatedTemperatureSensor-en SampleModule-modules ziet die op het apparaat worden uitgevoerd.
+5. Gebruik de vernieuwknop om de weergave van het apparaat bij te werken totdat u ziet dat de modules SimulatedTemperatureSensor en SampleModule op het apparaat worden uitgevoerd.
 
-   Het kan enkele minuten duren voordat beide modules worden gestart. De IoT Edge runtime moet het nieuwe implementatie manifest ontvangen, de module-installatie kopieën uit de container runtime ophalen en vervolgens elke nieuwe module starten.
+   Het kan enkele minuten duren voordat beide modules worden gestart. De IoT Edge-runtime moet het nieuwe implementatiemanifest ontvangen, de module-installatiekopieën uit de containerruntime ophalen en vervolgens elke nieuwe module starten.
 
-   ![Modules weer geven die worden uitgevoerd op uw IoT Edge apparaat](./media/tutorial-develop-for-linux/view-running-modules.png)
+   ![Modules weergeven die op uw IoT Edge-apparaat worden uitgevoerd](./media/tutorial-develop-for-linux/view-running-modules.png)
 
-## <a name="view-messages-from-device"></a>Berichten van het apparaat weer geven
+## <a name="view-messages-from-device"></a>Berichten van het apparaat weergeven
 
-De SampleModule code ontvangt berichten via de invoer wachtrij en geeft deze door aan de uitvoer wachtrij. Het implementatie manifest heeft gedeclareerde routes waarmee berichten worden door gegeven aan SampleModule van SimulatedTemperatureSensor en vervolgens doorgestuurde berichten van SampleModule naar IoT Hub. Met de Azure IoT-hulpprogram ma's voor Visual Studio code kunt u berichten zien wanneer ze op IoT Hub van uw afzonderlijke apparaten arriveren.
+De SampleModule-code ontvangt berichten via de invoerwachtrij en geeft deze door aan de uitvoerwachtrij. Het implementatiemanifest heeft routes gedeclareerd die berichten hebben doorgegeven aan SampleModule van SimulatedTemperatureSensor en berichten vervolgens hebben doorgestuurd van SampleModule naar IoT Hub. Met de Azure IoT Tools voor Visual Studio Code kunt u berichten zien wanneer ze vanaf uw afzonderlijke apparaten op IoT Hub arriveren.
 
-1. Klik in Visual Studio code Explorer met de rechter muisknop op het IoT Edge apparaat dat u wilt bewaken en selecteer vervolgens controle van het **ingebouwde gebeurtenis starten**.
+1. Klik in de Visual Studio Code Explorer met de rechtermuisknop op de naam van het IoT Edge-apparaat dat u wilt controleren en selecteer **Start Monitoring Built-in Event Endpoint**.
 
-2. Bekijk het uitvoer venster in Visual Studio code om berichten te zien die binnenkomen op uw IoT-hub.
+2. Bekijk het uitvoervenster in Visual Studio Code om berichten te zien die binnenkomen op uw IoT-hub.
 
-   ![Binnenkomend apparaat naar Cloud berichten weer geven](./media/tutorial-develop-for-linux/view-d2c-messages.png)
+   ![Inkomende apparaat-naar-cloudberichten weergeven](./media/tutorial-develop-for-linux/view-d2c-messages.png)
 
-## <a name="view-changes-on-device"></a>Wijzigingen op apparaat weer geven
+## <a name="view-changes-on-device"></a>Wijzigingen op apparaat weergeven
 
-Als u wilt zien wat er gebeurt op uw apparaat zelf, gebruikt u de opdrachten in deze sectie om de IoT Edge runtime en modules op uw apparaat te controleren.
+Als u wilt zien wat er gebeurt op uw apparaat zelf, gebruikt u de opdrachten in deze sectie om de IoT Edge-runtime en -modules op uw apparaat te controleren.
 
-De opdrachten in deze sectie zijn voor uw IoT Edge apparaat, niet voor uw ontwikkel computer. Als u een virtuele machine voor uw IoT Edge-apparaat gebruikt, kunt u er nu verbinding mee maken. Ga in azure naar de overzichts pagina van de virtuele machine en selecteer **verbinding maken** voor toegang tot de beveiligde shell-verbinding.
+De opdrachten in deze sectie zijn voor uw IoT Edge apparaat, niet voor uw ontwikkelcomputer. Als u een virtuele machine voor uw IoT Edge-apparaat gebruikt, kunt u er nu verbinding mee maken. Ga in Azure naar de overzichtspagina van de virtuele machine en selecteer **Verbinding maken** voor toegang tot de beveiligde shell-verbinding.
 
-* Bekijk alle modules die op het apparaat zijn geïmplementeerd en controleer hun status:
+* Bekijk alle modules die op het apparaat zijn geïmplementeerd en controleer de status ervan:
 
    ```bash
    iotedge list
    ```
 
-   U ziet vier modules: de twee IoT Edge runtime modules, SimulatedTemperatureSensor en SampleModule. Alle vier moeten worden weer gegeven als actief.
+   U moet vier modules zien: de twee IoT Edge-runtime-modules, SimulatedTemperatureSensor en SampleModule. Alle vier moeten worden weergegeven als actief.
 
-* Inspecteer de logboeken voor een specifieke module:
+* Controleer de logboeken voor een specifieke module:
 
    ```bash
    iotedge logs <module name>
    ```
 
-   IoT Edge modules zijn hoofdletter gevoelig.
+   IoT Edge-modules zijn hoofdlettergevoelig.
 
-   De SimulatedTemperatureSensor-en SampleModule-logboeken moeten de berichten weer geven die ze verwerken. De edgeAgent-module is verantwoordelijk voor het starten van de andere modules, zodat de logboeken hiervan informatie bevatten over het implementeren van het implementatie manifest. Als een module niet wordt vermeld of niet wordt uitgevoerd, hebben de edgeAgent-logboeken waarschijnlijk de fouten. De edgeHub-module is verantwoordelijk voor de communicatie tussen de modules en IoT Hub. Als de modules actief zijn, maar de berichten niet op uw IoT-hub arriveren, hebben de edgeHub-logboeken waarschijnlijk de fouten.
+   De SimulatedTemperatureSensor- en SampleModule-logboeken moeten de berichten weergeven die ze verwerken. De edgeAgent-module is verantwoordelijk voor het starten van de andere modules, dus de logboeken hiervan bevatten informatie over het implementeren van het implementatiemanifest. Als een module niet wordt vermeld of niet wordt uitgevoerd, bevatten de edgeAgent-logboeken waarschijnlijk de fouten. De edgeHub-module is verantwoordelijk voor de communicatie tussen de modules en IoT Hub. Als de modules actief zijn, maar de berichten niet op uw IoT-hub arriveren, bevatten de edgeHub-logboeken waarschijnlijk de fouten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie stelt u Visual Studio code in op uw ontwikkel computer en implementeert u uw eerste IoT Edge-module. Nu u de basis concepten kent, kunt u de functionaliteit toevoegen aan een module, zodat de gegevens kunnen worden geanalyseerd die worden door gegeven. Kies de taal van uw voor keur:
+In deze zelfstudie hebt u Visual Studio Code op uw ontwikkelcomputer ingesteld en uw eerste IoT Edge-module geïmplementeerd. Nu u de basisconcepten kent, kunt u functionaliteit toevoegen aan een module, zodat de gegevens die worden doorgegeven, kunnen worden geanalyseerd. Kies uw voorkeurstaal:
 
 > [!div class="nextstepaction"]
 > [C](tutorial-c-module.md)
 > [C#](tutorial-csharp-module.md)
-> 
-> [Python](tutorial-python-module.md) [Java](tutorial-java-module.md)Java node[. js](tutorial-node-module.md)python
-> 
+> [Java](tutorial-java-module.md)
+> [Node.js](tutorial-node-module.md)
+> [Python](tutorial-python-module.md)

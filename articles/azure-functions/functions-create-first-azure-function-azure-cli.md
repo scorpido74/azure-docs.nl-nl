@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506346"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081726"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quickstart: Een functie in Azure maken die reageert op HTTP-aanvragen
 
@@ -111,6 +111,9 @@ Geef de volgende waarden op als daarom wordt gevraagd:
 Typ `Y` of druk op Enter om te bevestigen.
 
 Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_; in dit voorbeeld is dat `fabrikam-functions`. 
+
+Voor uitvoering op Java 11 in Azure, moet u de waarden in het bestand pom.xml wijzigen. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. 
+
 ::: zone-end  
 Navigeer naar de projectmap:
 
@@ -157,6 +160,8 @@ Instellingen voor de Azure-resources die zijn gemaakt voor het hosten van uw app
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 U kunt deze instellingen wijzigen om te bepalen hoe resources worden gemaakt in Azure, zoals door `runtime.os` van `windows` te wijzigen in `linux` vóór de eerste implementatie. Zie de [Configuratiedetails](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)voor een volledige lijst met instellingen die worden ondersteund door de Maven-invoegtoepassing.
+
+Als u uw functie-app op Java 11 in plaats van Java 8 wilt uitvoeren, moet u het bestand pom.xml handmatig bijwerken met Java 11-waarden. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. Bij uitvoering op Java 11 moet u zorgen voor het volgende:  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 

@@ -9,18 +9,21 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 03/04/2020
-ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 07/10/2020
+ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047817"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In deze zelfstudie leert u hoe u een eenvoudig classificatiemodel maakt zonder ook maar één regel code te schrijven, met de geautomatiseerde machine learning-interface van Azure Machine Learning. Dit classificatiemodel voorspelt of een klant een termijnrekening zal openen bij een financiële instelling.
+In deze zelfstudie leert u hoe u een eenvoudig classificatiemodel maakt zonder ook maar één regel code te schrijven, met de geautomatiseerde machine learning in de Azure Machine Learning Studio. Dit classificatiemodel voorspelt of een klant een termijnrekening zal openen bij een financiële instelling.
+
+>[!IMPORTANT]
+> De geautomatiseerde machine learning-ervaring in Azure Machine Learning Studio is een preview-versie. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.
 
 Met geautomatiseerde machine learning kunt u tijdsintensieve taken automatiseren. Geautomatiseerde machine learning doorloopt of itereert snel allerlei combinaties van algoritmen en hyperparameters om het beste model te vinden op basis van uw maatstaaf voor succes.
 
@@ -44,20 +47,20 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
 
-U maakt een werkruimte via het Azure-portal, een webconsole om uw Azure-resources te beheren.
+U maakt een **Enterprise-editie**-werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 >[!IMPORTANT] 
-> Noteer uw **werkruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u uw experiment op de juiste plek aanmaakt. 
+> Noteer uw **werkruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u uw experiment op de juiste plek maakt. 
 
-## <a name="create-and-run-the-experiment"></a>Het experiment aanmaken en uitvoeren
+## <a name="get-started-in-azure-machine-learning-studio"></a>Aan de slag met Azure Machine Learning Studio
 
-U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het experiment via Azure Machine Learning op https://ml.azure.com, een geconsolideerde webinterface met hulpmiddelen voor machine learning waar gegevenswetenschappers, ongeacht hun vaardigheidsniveaus, scenario's kunnen uitvoeren. Deze interface wordt niet ondersteund in Internet Explorer-browsers.
+U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het experiment via de Azure Machine Learning Studio op https://ml.azure.com, een geconsolideerde webinterface met hulpmiddelen voor machine learning waar gegevenswetenschappers, ongeacht hun vaardigheidsniveaus, scenario's kunnen uitvoeren. De Studio wordt niet ondersteund in Internet Explorer-browsers.
 
-1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
-1. Selecteer uw abonnement en de werkruimte die u heeft gecreëerd.
+1. Selecteer uw abonnement en de werkruimte die u hebt gecreëerd.
 
 1. Selecteer **Aan de slag**.
 
@@ -68,6 +71,10 @@ U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het exper
    ![Pagina Aan de slag](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. Selecteer **Nieuwe geautomatiseerde ML-uitvoering**. 
+
+## <a name="create-and-load-dataset"></a>Gegevensset maken en laden
+
+Voordat u uw experiment gaat configureren, uploadt u uw gegevensbestand naar uw werkruimte in de vorm van een Azure Machine Learning-gegevensset. Als u dit doet, kunt u ervoor zorgen dat uw gegevens op de juiste wijze zijn opgemaakt voor uw experiment.
 
 1. Maak een nieuwe gegevensset door **Uit lokale bestanden** te selecteren in de vervolgkeuzelijst **+Gegevensset maken**. 
 
@@ -91,54 +98,63 @@ U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het exper
         
         Veld|Beschrijving| Waarde voor zelfstudie
         ---|---|---
-        Bestandsindeling|Definieert de indeling en het type van gegevens opgeslagen in een bestand.| Met scheidingstekens
+        Bestandsindeling|Definieert de indeling en het type gegevens dat is opgeslagen in een bestand.| Met scheidingstekens
         Scheidingsteken|Een of meer tekens die de grens aangeven tussen &nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevensstromen. |Komma
         Encoding|Identificeert welke bit-naar-tekenschematabel er moet gebruikt worden om uw gegevensset te lezen.| UTF-8
         Kolomkoppen| Geeft aan hoe eventuele koppen van de gegevensset worden behandeld.| Alle bestanden hebben dezelfde koppen
-        Rijen overslaan | Geeft aan hoeveel eventuele rijen er worden overgeslagen in de gegevensset.| Geen
+        Rijen overslaan | Geeft aan hoeveel rijen er eventueel worden overgeslagen in de gegevensset.| Geen
 
     1. Met het formulier **Schema** kunt u uw gegevens verder configureren voor dit experiment. Selecteer voor dit voorbeeld de schakeloptie voor de functie **day_of_week** zodat deze geen deel uitmaakt van dit experiment. Selecteer **Next**.
 
         ![Voorbeeld tabblad configuratie](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
-    1. Controleer of de informatie in het formulier **Details bevestigen** overeenkomt met wat voorheen in de formulieren **Basisinformatie** en **Instellingen en voorbeeld** werd ingevuld.
+    1. Controleer of de informatie in het formulier **Details bevestigen** overeenkomt met wat voorheen in de formulieren **Basisinformatie, Gegevensarchief en bestandselectie** en **Instellingen en voorbeeld** is ingevuld.
+    
     1. Selecteren **Maken** om uw gegevensset te voltooien.
+    
     1. Selecteer uw gegevensset wanneer deze verschijnt in de lijst.
+    
     1. Controleer het **Voorbeeld van de gegevens** om te controleren dat u **day_of_week** niet heeft opgenomen en selecteer vervolgens **OK.**
 
     1. Selecteer **Volgende**.
+
+## <a name="configure-experiment-run"></a>Uitgevoerde experiment configureren
+
+Nadat u uw gegevens hebt geladen en geconfigureerd, kunt u uw experiment instellen. Dit installatieprogramma bevat ontwerptaken voor het experiment, zoals, het selecteren van de grootte van uw rekenomgeving en het opgeven van de kolom die u wilt voorspellen. 
 
 1. Vul het formulier **Uitvoering configureren** als volgt in:
     1. Voer de naam van het nieuwe experiment in: `my-1st-automl-experiment`
 
     1. Selecteer **y** als doelkolom, wat u wilt voorspellen. Deze kolom geeft aan of de klant een termijnrekening heeft geopend of niet.
+    
     1. Selecteer **Een nieuwe berekening maken** en configureer uw rekendoel. Een rekendoel is een resource-omgeving, lokaal of in de cloud, die gebruikt wordt om uw trainingsscript uit te voeren of uw service-implementatie te hosten. Voor dit experiment gebruiken we berekening in de cloud. 
 
         Veld | Beschrijving | Waarde voor zelfstudie
         ----|---|---
         Naam berekening |Een unieke naam die de context van uw berekening identificeert.|automl-compute
+        Virtuele&nbsp;machine&nbsp;type| Selecteer het type van de virtuele machine voor uw berekening.|CPU (Central Processing Unit, centrale verwerkingseenheid)
         Grootte&nbsp;virtuele&nbsp;machine| Selecteer de grootte van de virtuele machine voor uw berekening.|Standard_DS12_V2
-        Min. / max. knooppunten (in Geavanceerde instellingen)| Om gegevens te profileren moet u één of meer knooppunten opgeven.|Min. knooppunten: 1<br>Max. knooppunten: 6
-  
+        Min / Max knooppunten| U moet u één of meer knooppunten opgeven om gegevens te profileren.|Min. knooppunten: 1<br>Max. knooppunten: 6
+        Seconden wachten voor omlaag schalen | Niet-actieve tijd voordat het cluster automatisch omlaag wordt geschaald naar het minimum aantal knooppunten.|120 (standaardinstelling)
+        Geavanceerde instellingen | Instellingen voor het configureren en autoriseren van een virtueel netwerk voor uw experiment.| Geen
         1. Selecteer **Maken** om het rekendoel op te halen. 
 
             **Dit duurt enkele minuten.** 
 
-        1. Wanneer dit voltooid is, selecteert u uw nieuwe rekendoel uit de vervolgkeuzelijst.
+        1. Wanneer dit is voltooid, selecteert u uw nieuwe rekendoel uit de vervolgkeuzelijst.
 
     1. Selecteer **Next**.
 
-1. Selecteer **Classificatie** als het machine learning-taaktype op het formulier **Taaktype en -instellingen**.
+1. Voltooi de installatie voor uw automatische ML-experiment op het formulier **Taaktype en -instellingen** door het taaktype en de configuratie-instellingen van de machine learning op te geven.
+    
+    1.  Selecteer **Classificatie** als het machine learning-taaktype.
 
     1. Selecteer **Aanvullende configuratie-instellingen weergeven** en vul de velden als volgt in. Dankzij deze instellingen kunt u de trainingstaak beter controleren. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment.
 
-        >[!NOTE]
-        > In deze zelfstudie stelt u geen drempelwaarde voor metrische score of maximumscore per iteratie in. U blokkeert ook geen algoritmes om te voorkomen dat ze worden getest.
-   
         Aanvullende&nbsp;configuraties|Beschrijving|Waarde&nbsp;voor&nbsp;zelfstudie
         ------|---------|---
-        Primaire metrische waarde| Evaluatiewaarde waarmee het machine learning-algoritme wordt gemeten.|AUC_weighted
-        Automatische featurization| Schakelt voorverwerking in. Dit omvat automatische opschoning, voorbereiding en transformatie van gegevens om synthetische functies te genereren.| Inschakelen
+        Primaire metrische gegevens| Evaluatiewaarde waarmee het machine learning-algoritme wordt gemeten.|AUC_weighted
+        Uitleg geven over het beste model| Hiermee wordt automatisch uitleg gegeven over het beste model dat is gemaakt met geautomatiseerde ML.| Inschakelen
         Geblokkeerde algoritmen | Algoritmen die u niet wilt opnemen in de trainingstaak| Geen
         Criterium voor afsluiten| Als er aan een criterium is voldaan, wordt de trainingstaak gestopt. |Tijd voor&nbsp;trainingstaak&nbsp; (uur): 1 <br> Drempelwaarde voor metrische &nbsp;score&nbsp;: Geen
         Validatie | Kies een kruisvalidatietype en een aantal tests.|Validatietype:<br>&nbsp;k-voudige&nbsp;kruisvalidatie <br> <br> Aantal validaties: 2
@@ -161,7 +177,7 @@ Ga naar het tabblad **Modellen** om de geteste algoritmen (modellen) te bekijken
 
 Terwijl u wacht tot alle experimentmodellen voltooid zijn, kunt u de **Algoritmenaam** van een volledig model selecteren om de prestatiedetails te bekijken. 
 
-Vervolgens kunt u naar de tabbladen **Modeldetails** en **Visualisaties** gaan om de eigenschappen, metrische gegevens en prestatiegrafieken van het geselecteerde model te bekijken. 
+In het volgende gedeelte kunt u naar de tabbladen **Details** en **Metrische gegevens** gaan om de eigenschappen, metrische gegevens en prestatiegrafieken van het geselecteerde model te bekijken. 
 
 ![Details van uitvoeringsiteratie](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
@@ -171,11 +187,15 @@ In de geautomatiseerde machine learning-interface kunt u met enkele stappen het 
 
 Voor dit experiment betekent de implementatie naar een webservice dat de financiële instelling nu een iteratieve en schaalbare weboplossing heeft om potentiële klanten voor termijnrekeningen te identificeren. 
 
-Zodra de uitvoering is voltooid, gaat u terug naar de pagina **Details van de uitvoering** en selecteert u het tabblad **Modellen**.
+Controleer of de uitvoering van uw experimentele uitvoerbewerking is voltooid. Om dit te doen, gaat u terug naar de bovenliggende uitvoeringspagina door **1 uitvoeren** aan de bovenkant van het scherm te selecteren. In de linkerbovenhoek van het scherm wordt de status **Voltooid** weergegeven. 
 
-In de context van dit experiment is **VotingEnsemble** het beste model op basis van de metrische waarde **AUC_weighted**.  We implementeren dit model, maar houd er rekening mee dat implementatie ongeveer 20 minuten duurt. Het implementatieproces omvat verschillende stappen, waaronder het model registreren, resources genereren en ze configureren voor de webservice.
+Zodra de uitvoering van het experiment is voltooid, wordt op de pagina **Details** een sectie met **Beste modeloverzicht** ingevuld. In de context van dit experiment is **VotingEnsemble** het beste model op basis van de metrische waarde **AUC_weighted**.  
 
-1. Selecteer de knop **Beste model implementeren** in de linkerbenedenhoek.
+We implementeren dit model, maar houd er rekening mee dat implementatie ongeveer 20 minuten duurt. Het implementatieproces omvat verschillende stappen, waaronder het model registreren, resources genereren en ze configureren voor de webservice.
+
+1. Selecteer **VotingEnsemble** om de model-specifieke pagina te openen.
+
+1. Selecteer de knop **Implementeren** in de linkerbovenhoek.
 
 1. Vul het deelvenster **Een model implementeren** als volgt in:
 
@@ -191,7 +211,7 @@ In de context van dit experiment is **VotingEnsemble** het beste model op basis 
 
 1. Selecteer **Implementeren**.  
 
-    Er verschijnt een groen succesbericht bovenaan het scherm **Uitvoering**. In het deelvenster **Aanbevolen model** verschijnt een statusbericht onder **Implementatiestatus**. Selecteer regelmatig **Vernieuwen** om de implementatiestatus te controleren.
+    Er verschijnt een groen succesbericht bovenaan het scherm **Uitvoering**. In het deelvenster **Modeloverzicht** verschijnt een statusbericht onder **Implementatiestatus**. Selecteer regelmatig **Vernieuwen** om de implementatiestatus te controleren.
     
 U hebt nu een operationele webservice om voorspellingen te genereren. 
 
@@ -199,7 +219,7 @@ Ga verder met de [**Volgende stappen**](#next-steps) voor meer informatie over h
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Implementatiebestanden zijn groter dan gegevens- en experimentbestanden. Daarom kost het meer om ze op te slaan. Verwijder enkel de implementatiebestanden om de kosten voor uw account te beperken, of als u uw werkruimte en experimentbestanden wilt behouden. Zoniet, verwijder dan de volledige resourcegroep als u geen enkel bestand wilt gebruiken.  
+Implementatiebestanden zijn groter dan gegevens- en experimentbestanden. Daarom kost het meer om ze op te slaan. Verwijder alleen de implementatiebestanden om de kosten voor uw account te beperken, of als u uw werkruimte en experimentbestanden wilt behouden. Zo niet, verwijder dan de volledige resourcegroep als u geen enkel bestand wilt gebruiken.  
 
 ### <a name="delete-the-deployment-instance"></a>Het implementatie-exemplaar verwijderen
 

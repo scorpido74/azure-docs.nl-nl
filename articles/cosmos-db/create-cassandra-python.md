@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a388cde60e0d19aed1af9620f82b7baa6d5b08fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067316"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Quickstart: een Cassandra-app bouwen met de Python SDK en Azure Cosmos DB
 
@@ -137,9 +137,9 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
 
-1. Gebruik de ![knop Kopiëren](./media/create-cassandra-python/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
+1. Gebruik de knop :::image type="icon" source="./media/create-cassandra-python/copy.png"::: aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren. 
 
-    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Een gebruikersnaam, wachtwoord en contactpunt voor toegang in Azure Portal weergeven en kopiëren, blade Verbindingsreeks":::
+   :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Een gebruikersnaam, wachtwoord en contactpunt voor toegang in Azure Portal weergeven en kopiëren, blade Verbindingsreeks":::
 
 1. Open het bestand *config.py*. 
 

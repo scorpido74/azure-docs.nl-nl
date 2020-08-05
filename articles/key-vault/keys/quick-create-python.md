@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Azure Key Vault-clientbibliotheek voor Python'
+title: 'Quickstart: Azure Key Vault Python-clientbibliotheek - sleutels beheren'
 description: Meer informatie over het maken, ophalen en verwijderen van sleutels van een Azure-sleutelkluis met behulp van de clientbibliotheek voor Python
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 5335d629ef6778cbab7273200652c19998c9c19d
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: fe88cfc71959cfa0e78c9e6129853afee248fd37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125173"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060993"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Quickstart: Azure Key Vault-clientbibliotheek voor Python
+# <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Quickstart: Azure Key Vault-sleutelclientbibliotheek voor Python
 
 Aan de slag met de Azure Key Vault-clientbibliotheek voor Python. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
 
@@ -33,7 +33,7 @@ Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen
 
 - Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
 - Python 2.7, 3.5.3 of hoger
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/)
 
 In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) uitvoert in een Linux-terminalvenster.
 
@@ -47,7 +47,7 @@ Installeer vanuit het consolevenster de Azure Key Vault-sleutelbibliotheek voor 
 pip install azure-keyvault-keys
 ```
 
-Voor deze quickstart moet u ook het azure.identity-pakket:
+Voor deze quickstart moet u ook het azure.identity-pakket installeren:
 
 ```console
 pip install azure.identity
@@ -122,7 +122,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objectmodel
 
-Met de Azure Key Vault-client bibliotheek voor Python kunt u sleutels en gerelateerde assets, zoals certificaten en geheimen, beheren. In de onderstaande codevoorbeelden ziet u hoe u een client maakt, een sleutel maakt, een sleutel ophaalt en een sleutel verwijdert.
+Met de Azure Key Vault-clientbibliotheek voor Python kunt u sleutels en gerelateerde assets, zoals certificaten en geheimen, beheren. In de onderstaande codevoorbeelden ziet u hoe u een client maakt, een sleutel maakt, een sleutel ophaalt en een sleutel verwijdert.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 

@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 595440dc727f3faf1fa475266825a671f00d9153
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 2e22ac4601384508869ff43d473dd191f405cd43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092266"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Geautomatiseerde machine learning gebruiken om taxitarieven te voorspellen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -863,12 +863,12 @@ Als u automatisch een model wilt trainen, voert u de volgende stappen uit:
 
 ### <a name="define-training-settings"></a>Trainingsinstellingen definiëren
 
-Definieer de experimentparameter en modelinstellingen voor training. Bekijk de volledige lijst met [instellingen](how-to-configure-auto-train.md). Het verzenden van het experiment met deze standaardinstellingen duurt ongeveer 5-20 minuten. Als u een kortere uitvoeringstijd wilt, verkleint u de waarde van parameter `experiment_timeout_minutes`.
+Definieer de experimentparameter en modelinstellingen voor training. Bekijk de volledige lijst met [instellingen](how-to-configure-auto-train.md). Het verzenden van het experiment met deze standaardinstellingen duurt ongeveer 5-20 minuten. Als u een kortere uitvoeringstijd wilt, verkleint u de waarde van parameter `experiment_timeout_hours`.
 
 |Eigenschap| Waarde in deze zelfstudie |Beschrijving|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Tijdslimiet in minuten voor elke iteratie. Verklein deze waarde als u de totale uitvoeringstijd wilt verminderen.|
-|**experiment_timeout_minutes**|20|Maximale tijdsduur in minuten dat de combinatie van alle iteraties voordat het experiment wordt beëindigd, kan duren.|
+|**experiment_timeout_hours**|0,3|Maximale tijdsduur in uren dat de combinatie van alle iteraties voordat het experiment wordt beëindigd, kan duren.|
 |**enable_early_stopping**|True|Vlag om vroegtijdige beëindiging in te schakelen als de score niet op korte termijn verbetert.|
 |**primary_metric**| spearman_correlation | De metrische gegevens die u wilt optimaliseren. Het optimale model wordt gekozen op basis van deze metrische waarde.|
 |**featurization**| auto | Door **auto** te gebruiken, kunnen de invoergegevens (afhandeling van ontbrekende gegevens, conversie van tekst naar numerieke waarden, enzovoort) voor het experiment worden voorverwerkt.|
@@ -880,7 +880,7 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "experiment_timeout_minutes": 20,
+    "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
     "featurization": 'auto',
@@ -984,7 +984,9 @@ print(fitted_model)
 Gebruik het beste model om voorspellingen uit te voeren op de testgegevensset om taxitarieven te voorspellen. De functie `predict` maakt gebruik van het beste model en voorspelt de waarden van y (**ritkosten**) uit de gegevensset `x_test` voorspeld. Druk de eerste 10 voorspelde kostenwaarden uit `y_predict` af.
 
 ```python
-y_predict = fitted_model.predict(x_test.values)
+y_test = x_test.pop("totalAmount")
+
+y_predict = fitted_model.predict(x_test)
 print(y_predict[:10])
 ```
 

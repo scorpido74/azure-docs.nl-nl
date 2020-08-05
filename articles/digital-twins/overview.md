@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281052"
 ---
 # <a name="what-is-azure-digital-twins"></a>Wat is Azure Digital Twins?
 
-**Azure Digital Twins** is een IoT-platform dat het maken van uitgebreide digitale modellen van hele omgevingen mogelijk maakt. Deze omgevingen kunnen gebouwen, fabrieken, boerderijen, energienetwerken, spoorwegen, stadiums en meer zijn, zelfs steden. Deze digitale modellen kunnen worden gebruikt om inzichten te verkrijgen die betere producten, geoptimaliseerde bewerkingen, lagere kosten en baanbrekende klantervaringen opleveren.
+**Azure Digital Twins** is een PaaS-aanbieding (Platform as a Service) dat het maken van uitgebreide digitale modellen van hele omgevingen mogelijk maakt. Deze omgevingen kunnen gebouwen, fabrieken, boerderijen, energienetwerken, spoorwegen, stadiums en meer zijn, zelfs steden. Deze digitale modellen kunnen worden gebruikt om inzichten te verkrijgen die betere producten, geoptimaliseerde bewerkingen, lagere kosten en baanbrekende klantervaringen opleveren.
 
 Maak gebruik van uw domeinexpertise bovenop Azure Digital Twins om aangepaste, verbonden oplossingen te bouwen die:
 * Elke omgeving maken en Digital Twins op een schaalbare en veilige manier realiseren
@@ -44,7 +44,7 @@ DTDL wordt gebruikt voor gegevensmodellen in andere Azure IoT-services, waaronde
 
 Digitale modellen in Azure Digital Twins zijn live, actuele weergaven van de echte wereld. Met de relaties in uw aangepaste DTDL-modellen verbindt u apparaatdubbels met een **live grafiek** die uw omgeving weergeeft.
 
-U kunt een visualisatie van uw Azure Digital Twins-grafiek bekijken met behulp van een voorbeeldtoepassing, [**Azure Digital Twins-verkenner**](https://github.com/Azure-Samples/digital-twins-explorer).
+U kunt een visualisatie van uw Azure Digital Twins-grafiek bekijken met behulp van een voorbeeldtoepassing, [**Azure Digital Twins-verkenner**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
 Hier ziet u hoe de voorbeeldvisualisatie eruitziet:
 
@@ -94,16 +94,16 @@ In de volgende grafiek ziet u waar Azure Digital Twins zich bevindt in de contex
 
 > [!IMPORTANT]
 > Azure Digital Twins is momenteel beschikbaar als openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [*Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Voor een lijst van de beperkingen van Azure Digital Twins tijdens een openbare preview, zie [Referentie: Servicebeperkingen van de openbare preview](reference-service-limits.md).
+Voor een lijst van de beperkingen van Azure Digital Twins tijdens een openbare preview, raadpleegt u [*Referentie: Servicebeperkingen van de openbare preview*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u met de vorige preview-versie van Azure Digital Twins hebt gewerkt, leest u hier wat er is gewijzigd:
-* [Overzicht: Verschillen met de vorige versie](overview-differences.md)
+* [*Overzicht: Verschillen met de vorige versie*](overview-differences.md)
 
 U kunt ook direct aan de slag met Azure Digital Twins door de eerste zelfstudie te volgen:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een client-app coderen](tutorial-code.md)
+> [*Zelfstudie: Een client-app coderen*](tutorial-code.md)

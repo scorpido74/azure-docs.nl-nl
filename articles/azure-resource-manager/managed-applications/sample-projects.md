@@ -1,24 +1,23 @@
 ---
-title: Voorbeeld projecten
-description: Hierin wordt een overzicht gegeven van de voorbeeld projecten die beschikbaar zijn voor Azure Managed Applications.
+title: Voorbeeldprojecten
+description: Biedt een overzicht van de voorbeeldprojecten voor met Azure beheerde toepassingen.
 author: tfitzmac
 ms.topic: sample
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c04f5d78f742eda70e71d9bee9ce4482c48f0f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2ce9ac925cce96af8a0017a5e97b3f52dc8e5669
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040972"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Voorbeeldprojecten voor met Azure beheerde toepassingen
 
 De volgende tabel is gekoppeld aan met Azure beheerde voorbeeldtoepassingen in GitHub.
 
-|  |  |
+| Voorbeeld | Beschrijving |
 | --- | --- |
-| **Voorbeelden** | |
 | [Beheerde toepassing (proef-of productieversie) in een nieuw of bestaand virtueel netwerk](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet) | Laat zien hoe u flexibele implementatieopties kunt maken voor klanten. Deze beheerde toepassing kan worden geïmplementeerd in een nieuw virtueel netwerk of in een bestaand virtueel netwerk. Klanten kunnen een proef- of productieversie van de beheerde toepassingen opgeven. |
 | [Beheerd Azure Storage-account](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account) | Hiermee wordt een enkel opslagaccount geïmplementeerd. Gebruik dit voorbeeldproject als inleiding tot het maken van beheerde toepassingen. |
 | [Beheerd Service Fabric-cluster met Azure-beheerservices](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-service-fabric) | Hiermee worden een Service Fabric-cluster en virtuele-machineschaalsets geïmplementeerd. Omvat opslagaccounts voor logboekregistratie en diagnose. |

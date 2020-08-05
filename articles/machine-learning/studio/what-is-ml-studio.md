@@ -1,7 +1,6 @@
 ---
-title: Wat is ML Studio (klassiek)
-titleSuffix: Azure
-description: Azure Machine Learning Studio (klassiek) is een hulp programma voor slepen en neerzetten waarmee u snel modellen kunt bouwen op basis van een kant-en-klare bibliotheek met algoritmen en modules.
+title: Wat is ML Studio (klassiek)? - Azure
+description: Azure Machine Learning Studio (klassiek) is een hulpprogramma waarmee u met slepen en neerzetten snel modellen kunt ontwikkelen met behulp van een kant-en-klare bibliotheek van algoritmen en modules.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,41 +10,43 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0b0e09cfe855e017c297cbad1667eef81726d3da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371979"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326202"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Wat is Machine Learning Studio (klassiek)?
 
+**VAN TOEPASSING OP:** ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) 
+
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Microsoft Azure Machine Learning Studio (klassiek) is een hulp programma voor het slepen en neerzetten dat u kunt gebruiken voor het bouwen, testen en implementeren van predictive analytics oplossingen voor uw gegevens. Azure Machine Learning Studio (klassiek) publiceert modellen als webservices die eenvoudig kunnen worden gebruikt door aangepaste apps of BI-hulpprogram ma's zoals Excel.
+Microsoft Azure Machine Learning Studio (klassiek) is een hulpprogramma met functionaliteit op basis van slepen en neerzetten, waarmee u in samenwerkingsverband predictive analytics-oplossingen voor uw gegevens kunt ontwikkelen, testen en implementeren. Azure Machine Learning Studio (klassiek) publiceert modellen als webservices die eenvoudig kunnen worden gebruikt door aangepaste apps of BI-hulpprogramma's zoals Excel.
 
-Machine Learning Studio (klassiek) is waar data Science, predictive analytics, cloud resources en uw gegevens aan voldoen.
+In Machine Learning Studio (klassiek) komen gegevens, wetenschap, predictive analytics, cloudresources en uw gegevens samen.
 
-## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>De interactieve werk ruimte Machine Learning Studio (klassiek)
+## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>De interactieve werkruimte van Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Voor het ontwikkelen van een voorspellend analyse model gebruikt u doorgaans gegevens uit een of meer bronnen, transformeert en analyseert u die gegevens via verschillende gegevens manipulatie en statistische functies en genereert u een set resultaten. Het ontwikkelen van een model als dit is een iteratief proces. Terwijl u de verschillende functies en de bijbehorende parameters aanpast, worden de resultaten geconvergeerd tot u een afdoende getraind en doeltreffend model hebt.
+Wanneer u een predictive analytics-model ontwikkelt, gebruikt u doorgaans gegevens uit een of meer bronnen. U transformeert en analyseert deze gegevens met diverse functies voor gegevensmanipulatie en statistische functies, en genereert een set resultaten. Het ontwikkelen van een model als dit is een iteratief proces. Terwijl u de verschillende functies en de bijbehorende parameters aanpast, worden de resultaten geconvergeerd tot u een afdoende getraind en doeltreffend model hebt.
 
-Azure Machine Learning Studio (klassiek) biedt een interactieve, visuele werk ruimte om eenvoudig een voorspellend analyse model te bouwen, te testen en te herhalen. U sleept ***gegevens sets*** en analyse ***modules*** naar een interactief canvas en verbindt deze met elkaar om een ***experiment***te vormen, dat u in machine learning Studio (klassiek) uitvoert. Als u het modelontwerp wilt herhalen, kunt u het experiment bewerken, desgewenst een kopie ervan opslaan en het opnieuw uitvoeren. Wanneer u klaar bent, kunt u het ***trainingsexperiment*** converteren naar een ***voorspellend experiment*** en dit vervolgens publish als ***webservice***, zodat het model ook voor anderen toegankelijk is.
+Azure Machine Learning Studio (klassiek) beschikt over een interactieve, visuele werkruimte om eenvoudig een predictive analytics-model te bouwen, te testen en te herhalen. U sleept ***gegevenssets*** en ***modules*** voor analyse naar een interactief canvas en verbindt deze met elkaar om een ***experiment*** op te zetten, dat u vervolgens uitvoert in Machine Learning Studio (klassiek). Als u het modelontwerp wilt herhalen, kunt u het experiment bewerken, desgewenst een kopie ervan opslaan en het opnieuw uitvoeren. Wanneer u klaar bent, kunt u het ***trainingsexperiment*** converteren naar een ***voorspellend experiment*** en dit vervolgens publish als ***webservice***, zodat het model ook voor anderen toegankelijk is.
 
-Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbinden om uw voorspellende analyse model samen te stellen.
+U hoeft niets te programmeren. U hoeft alleen de gegevenssets en modules visueel met elkaar te verbinden om een predictive analytics-model op te zetten.
 
-![Diagram van Azure Machine Learning Studio (klassiek): experimenten maken, gegevens lezen voor veel bronnen, gescoorde gegevens schrijven, modellen schrijven.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Diagram voor Azure Machine Learning Studio (klassiek): Zet experimenten op, lees gegevens uit verschillende bronnen, schrijf beoordeelde gegevens weg, maak modellen.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
-## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Het overzichts diagram van de Machine Learning Studio (klassiek) downloaden
-Down load het overzichts diagram van de **mogelijkheden van Microsoft Azure machine learning Studio (klassiek)** en krijg een weer gave op hoog niveau van de mogelijkheden van machine learning Studio (klassiek). Als u het diagram altijd bij de hand wilt hebben, kunt u het in A3-formaat afdrukken.
+## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Het overzichtsdiagram voor Machine Learning Studio (klassiek) downloaden
+Download het diagram **Overzicht van de mogelijkheden van Microsoft Azure Machine Learning Studio (klassiek)** voor een algemeen overzicht van de mogelijkheden van Machine Learning Studio (klassiek). Als u het diagram altijd bij de hand wilt hebben, kunt u het in A3-formaat afdrukken.
 
-**Down load het diagram hier: [Microsoft Azure machine learning Studio (klassiek) mogelijkheden overzicht](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-![Microsoft Azure machine learning Studio (klassiek)-overzicht](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+**Download het diagram hier: [Overzicht van de mogelijkheden van Microsoft Azure Machine Learning Studio (klassiek)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
+![Overzicht van de mogelijkheden van Microsoft Azure Machine Learning Studio (klassiek)](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 
-## <a name="components-of-a-studio-classic--experiment"></a>Onderdelen van een studio-experiment (klassiek)
+## <a name="components-of-a-studio-classic--experiment"></a>Onderdelen van een experiment van studio (klassiek)
 Een experiment bestaat uit gegevenssets die gegevens leveren aan analytische modules. Deze kunt u met elkaar verbinden in een predictive analytics-model. Een geldig experiment heeft de volgende kenmerken:
 
 * Het experiment heeft minimaal één gegevensset en één module
@@ -56,37 +57,37 @@ Een experiment bestaat uit gegevenssets die gegevens leveren aan analytische mod
 
 U kunt een geheel nieuw experiment maken, maar u kunt ook een bestaand voorbeeldexperiment als sjabloon gebruiken. Zie [Voorbeeldexperimenten kopiëren om nieuwe experimenten voor Machine Learning te maken](sample-experiments.md) voor meer informatie.
 
-Zie [een eenvoudig experiment maken in azure machine learning Studio (klassiek)](create-experiment.md)voor een voor beeld van het maken van een experiment.
+Zie [Een eenvoudig experiment maken in Azure Machine Learning Studio (klassiek)](create-experiment.md) voor een voorbeeld van het maken van een experiment.
 
-Zie [een voorspellende oplossing ontwikkelen met Azure machine learning Studio (klassiek)](tutorial-part1-credit-risk.md)voor een volledig overzicht van het maken van een Predictive Analytics oplossing.
+Zie [Een predictive analytics-oplossing maken met Azure Machine Learning Studio (klassiek)](tutorial-part1-credit-risk.md) voor de volledige procedure voor het maken van een predictive analytics-oplossing.
 
 ### <a name="datasets"></a>Gegevenssets
-Een gegevensset is gegevens die zijn geüpload naar Machine Learning Studio (klassiek), zodat deze kan worden gebruikt in het model proces. Er zijn een aantal voorbeeld gegevens sets opgenomen in de Machine Learning Studio (klassiek) waarmee u kunt experimenteren, en u hebt meer gegevens sets nodig als u deze wilt. Hier volgen enkele voorbeelden van opgenomen gegevenssets:
+Een gegevensset bestaat uit gegevens die zijn geüpload naar Machine Learning Studio (klassiek), zodat ze kunnen worden gebruikt in het modelleringsproces. In Machine Learning Studio (klassiek) is een aantal voorbeeldgegevenssets opgenomen waarmee u kunt experimenteren. U kunt meer gegevenssets uploaden als dat nodig is. Hier volgen enkele voorbeelden van opgenomen gegevenssets:
 
 * **MPG-gegevens voor verschillende auto's**: MPG-waarden (mijl per gallon) voor auto's, geïdentificeerd met het aantal cilinders, paardenkracht, enzovoort.
 * **Borstkankergegevens**: gegevens voor borstkankerdiagnose.
 * **Bosbrandgegevens**: omvang van bosbranden in het noordoosten van Portugal.
 
-Wanneer u een experiment bouwt, kunt u kiezen uit de lijst met gegevens sets die aan de linkerkant van het canvas beschikbaar zijn.
+Wanneer u een experiment maakt, kunt u links in het canvas kiezen uit de lijst met beschikbare gegevenssets.
 
-Zie voor een lijst met voor beelden van gegevens sets die zijn opgenomen in Machine Learning Studio (klassiek) [de voorbeeld gegevenssets gebruiken in azure machine learning Studio (klassiek)](use-sample-datasets.md).
+Zie [De voorbeeldgegevenssets in Azure Machine Learning Studio (klassiek)](use-sample-datasets.md) gebruiken voor een lijst van voorbeeldgegevenssets die zijn opgenomen in Machine Learning Studio (klassiek).
 
 ### <a name="modules"></a>Modules
-Een module is een algoritme dat u met uw gegevens kunt uitvoeren. Azure Machine Learning Studio (klassiek) heeft een aantal modules die variëren van de functies voor het inkomen van gegevens tot trainings-, Score-en validatie processen. Hier volgen enkele voorbeelden van opgenomen modules:
+Een module is een algoritme dat u met uw gegevens kunt uitvoeren. Azure Machine Learning Studio (klassiek) beschikt over diverse modules, variërend van functies voor inkomende gegevens tot processen voor training, beoordeling en validatie. Hier volgen enkele voorbeelden van opgenomen modules:
 
-* [Convert to ARFF][convert-to-arff]: converteert een geserialiseerde .NET-gegevensset naar Attribute-Relation File Format (ARFF).
-* [Compute Elementary Statistics][elementary-statistics]: berekent elementaire statistieken, zoals het gemiddelde, de standaardafwijking, enzovoort.
-* [Linear Regression][linear-regression]: maakt een online lineair regressiemodel met daalgradiënt.
-* [Score Model][score-model]: beoordeelt een getraind classificatie- of regressiemodel.
+* [Converteren naar ARFF][convert-to-arff]: hiermee wordt een geserialiseerde .NET-gegevensset geconverteerd naar de indeling Attribute-Relation File Format (ARFF).
+* [Elementaire statistieken berekenen][elementary-statistics]: hiermee worden elementaire statistieken berekend, zoals het gemiddelde, de standaardafwijking enzovoort.
+* [Lineaire regressie][linear-regression]: hiermee wordt een online lineair regressiemodel met daalgradiënt gemaakt.
+* [Scoremodel][score-model]: hier wordt een getraind classificatie- of regressiemodel beoordeeld.
 
-Wanneer u een experiment bouwt, kunt u kiezen uit de lijst met modules die aan de linkerkant van het canvas beschikbaar zijn.
+Wanneer u een experiment maakt, kunt u links in het canvas kiezen uit de lijst met beschikbare modules.
 
 Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de parameters van de module weergegeven in het deelvenster **Properties**, rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen.
 
-Raadpleeg [How to choose algorithms for Microsoft Azure machine learning Studio (klassiek)](algorithm-choice.md)voor meer informatie over het navigeren door de grote bibliotheek met machine learning algoritmen.
+Zie [Algoritmen kiezen voor Microsoft Azure Machine Learning Studio (klassiek)](algorithm-choice.md) voor hulp bij het navigeren door de uitgebreide verzameling beschikbare machine learning-algoritmen.
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Een predictive analytics-web service implementeren
-Zodra uw predictive analytics model klaar is, kunt u het implementeren als een webservice-recht vanuit Machine Learning Studio (klassiek). Zie [een Azure machine learning-webservice implementeren](deploy-a-machine-learning-web-service.md)voor meer informatie over dit proces.
+Wanneer uw predictive analytics-model klaar is, kunt u het direct vanuit Machine Learning Studio (klassiek) implementeren als webservice. Zie [Een Azure Machine Learning-webservice implementeren](deploy-a-machine-learning-web-service.md) voor meer informatie over dit proces.
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt zich de basiskennis van predictive analytics en machine learning eigen maken aan de hand van een [Stapsgewijze quickstart](create-experiment.md) en [door voorbeelden verder uit te werken](sample-experiments.md).

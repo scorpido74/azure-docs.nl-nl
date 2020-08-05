@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Video Search java-client bibliotheek
+title: Quickstart voor Java-clientbibliotheek Bing Video Search
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -7,15 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8124afef1aa12dbf3ec51e10597cb1567fc85551
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 2b3d4993406f150b2983d4d820f7d070b5de1e96
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289768"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374803"
 ---
-Gebruik deze Quick Start om te beginnen met zoeken naar nieuws met de Bing Video Search-client bibliotheek voor Java. Hoewel Bing Video Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), met aanvullende aantekeningen en functies.
+Gebruik deze quickstart om aan de slag te gaan met de Bing Video Search-clientbibliotheek voor Java om nieuws te zoeken. Hoewel Bing Video Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), met extra aantekeningen en functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +26,7 @@ Gebruik deze Quick Start om te beginnen met zoeken naar nieuws met de Bing Video
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-Installeer de Bing Video Search-client bibliotheek afhankelijkheden met behulp van Maven, Gradle of een ander afhankelijk beheer systeem. Het Maven-POM-bestand vereist de volgende declaratie:
+Installeer de afhankelijkheden van de Bing Video Search-clientbibliotheek met behulp van Maven, Gradle of een ander systeem voor afhankelijkheidsbeheer. Het Maven-POM-bestand vereist de volgende declaratie:
 
 ```xml
   <dependencies>
@@ -111,7 +112,7 @@ Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgen
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Een zoek opdracht verzenden en het antwoord ontvangen 
+## <a name="send-a-search-request-and-receive-the-response"></a>Een zoekopdracht verzenden en het antwoord ontvangen 
 
 1. Maak een functie met de naam `VideoSearch()` die uw abonnementssleutel als een tekenreeks neemt. Instantieer de zoekclient die eerder is gemaakt.
     
@@ -160,4 +161,4 @@ Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgen
 ## <a name="see-also"></a>Zie ook 
 
 * [Wat is de Bing Video's zoeken-API?](../../overview.md)
-* [Voor beelden van cognitieve Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* [Voorbeelden voor Cognitive Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

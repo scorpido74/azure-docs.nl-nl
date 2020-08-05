@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met F5 | Microsoft Docs'
+title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure AD met F5 | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en F5.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232182"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017345"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met F5
 
@@ -282,45 +282,45 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 U configureert een Active Directory AAA-server in Access Policy Manager (APM) om domeincontrollers en referenties op te geven voor APM, die moeten worden gebruikt voor de verificatie van gebruikers.
 
-1.    Klik op het tabblad Main op **Access Policy > AAA Servers > Active Directory**. Het scherm met de lijst Active Directory Servers wordt geopend.
+1. Klik op het tabblad Main op **Access Policy > AAA Servers > Active Directory**. Het scherm met de lijst Active Directory Servers wordt geopend.
 
-2.    Klik op **Create**. Het scherm New Server properties wordt geopend.
+2. Klik op **Create**. Het scherm New Server properties wordt geopend.
 
-3.    Typ in het veld **Name** een unieke naam voor de verificatieserver.
+3. Typ in het veld **Name** een unieke naam voor de verificatieserver.
 
-4.    Typ in het veld **Domain Name** de naam van het Windows-domein.
+4. Typ in het veld **Domain Name** de naam van het Windows-domein.
 
-5.    Selecteer een van de volgende opties voor de instelling **Server Connection**:
+5. Selecteer een van de volgende opties voor de instelling **Server Connection**:
 
-    * Selecteer **Use Pool** om hoge beschikbaarheid in te stellen voor de AAA-server.
+   * Selecteer **Use Pool** om hoge beschikbaarheid in te stellen voor de AAA-server.
 
-    * Selecteer **Direct** om de AAA-server in te stellen voor zelfstandige functionaliteit.
+   * Selecteer **Direct** om de AAA-server in te stellen voor zelfstandige functionaliteit.
 
-6.    Als u **Direct** hebt geselecteerd, typt u een naam in het veld **Domain Controller**.
+6. Als u **Direct** hebt geselecteerd, typt u een naam in het veld **Domain Controller**.
 
-7.    Als u **Use Pool** gebruiken hebt geselecteerd, configureert u de pool:
+7. Als u **Use Pool** gebruiken hebt geselecteerd, configureert u de pool:
 
-    * Typ een naam in het veld **Domain Controller Pool Name**.
+   * Typ een naam in het veld **Domain Controller Pool Name**.
 
-    * Geef de **Domain Controllers** in de pool op door het IP-adres en de hostnaam voor elke domeincontroller te typen en op de knop **Add** te klikken.
+   * Geef de **Domain Controllers** in de pool op door het IP-adres en de hostnaam voor elke domeincontroller te typen en op de knop **Add** te klikken.
 
-    * Als u de status van de AAA-server wilt bewaken, kunt u een statusmonitor selecteren: alleen de monitor **gateway_icmp** is in dit geval geschikt. U kunt deze selecteren in de lijst **Server Pool Monitor**.
+   * Als u de status van de AAA-server wilt bewaken, kunt u een statusmonitor selecteren: alleen de monitor **gateway_icmp** is in dit geval geschikt. U kunt deze selecteren in de lijst **Server Pool Monitor**.
 
-8.    Typ in het veld **Admin Name** een hoofdlettergevoelige naam voor een beheerder die beheerdersmachtigingen voor Active Directory heeft. APM gebruikt de informatie in de velden **Admin Name** en **Admin Password** voor een AD-query. Als Active Directory is geconfigureerd voor anonieme query's, hoeft u geen beheerdersnaam op te geven. Anders heeft APM een account met voldoende bevoegdheden nodig om verbinding te maken met een Active Directory-server, informatie over gebruikersgroepen op te halen en Active Directory-wachtwoordbeleid op te halen ter ondersteuning van wachtwoordfunctionaliteit. (APM moet wachtwoordbeleid ophalen, bijvoorbeeld als u de optie Prompt user to change password before expiration in een AD-query selecteert.) Als u geen beheerdersaccountgegevens in deze configuratie opgeeft, gebruikt APM het gebruikersaccount om gegevens op te halen. Dit werkt als het gebruikersaccount over voldoende bevoegdheden beschikt.
+8. Typ in het veld **Admin Name** een hoofdlettergevoelige naam voor een beheerder die beheerdersmachtigingen voor Active Directory heeft. APM gebruikt de informatie in de velden **Admin Name** en **Admin Password** voor een AD-query. Als Active Directory is geconfigureerd voor anonieme query's, hoeft u geen beheerdersnaam op te geven. Anders heeft APM een account met voldoende bevoegdheden nodig om verbinding te maken met een Active Directory-server, informatie over gebruikersgroepen op te halen en Active Directory-wachtwoordbeleid op te halen ter ondersteuning van wachtwoordfunctionaliteit. (APM moet wachtwoordbeleid ophalen, bijvoorbeeld als u de optie Prompt user to change password before expiration in een AD-query selecteert.) Als u geen beheerdersaccountgegevens in deze configuratie opgeeft, gebruikt APM het gebruikersaccount om gegevens op te halen. Dit werkt als het gebruikersaccount over voldoende bevoegdheden beschikt.
 
-9.    Typ in het veld **Admin Password** het beheerderswachtwoord dat aan de domeinnaam is gekoppeld.
+9. Typ in het veld **Admin Password** het beheerderswachtwoord dat aan de domeinnaam is gekoppeld.
 
-10.    Typ in het veld **Verify Admin Password** het beheerderswachtwoord dat is gekoppeld aan de instelling voor de **domeinnaam** nog een keer.
+10. Typ in het veld **Verify Admin Password** het beheerderswachtwoord dat is gekoppeld aan de instelling voor de **domeinnaam** nog een keer.
 
-11.    Typ het aantal dagen in het veld **Group Cache Lifetime**. De standaardlevensduur is 30 dagen.
+11. Typ het aantal dagen in het veld **Group Cache Lifetime**. De standaardlevensduur is 30 dagen.
 
-12.    Typ het aantal dagen in het veld **Password Security Object Cache Lifetime**. De standaardlevensduur is 30 dagen.
+12. Typ het aantal dagen in het veld **Password Security Object Cache Lifetime**. De standaardlevensduur is 30 dagen.
 
-13.    Selecteer een versleutelingstype in de lijst **Kerberos Preauthentication Encryption Type**. De standaardwaarde is **None**. Als u een versleutelingstype opgeeft, bevat het BIG-IP-systeem Kerberos-gegevens voor verificatie vooraf binnen het eerste pakket voor verificatieserviceaanvragen (AS-REQ).
+13. Selecteer een versleutelingstype in de lijst **Kerberos Preauthentication Encryption Type**. De standaardwaarde is **None**. Als u een versleutelingstype opgeeft, bevat het BIG-IP-systeem Kerberos-gegevens voor verificatie vooraf binnen het eerste pakket voor verificatieserviceaanvragen (AS-REQ).
 
-14.    Typ in het veld **Timeout** een time-outinterval (in seconden) voor de AAA-server. (Deze instelling is optioneel.)
+14. Typ in het veld **Timeout** een time-outinterval (in seconden) voor de AAA-server. (Deze instelling is optioneel.)
 
-15.    Klik op **Finished**. De nieuwe server wordt weergegeven in de lijst. Hiermee voegt u de nieuwe Active Directory-server toe aan de lijst met Active Directory-servers.
+15. Klik op **Finished**. De nieuwe server wordt weergegeven in de lijst. Hiermee voegt u de nieuwe Active Directory-server toe aan de lijst met Active Directory-servers.
 
     ![Configuratie van F5 (Kerberos)](./media/kerbf5-tutorial/configure17.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie gegevensanalyse: SQL on-demand (preview) gebruiken voor het analyseren van Azure Open Datasets in Azure Synapse Studio (preview)'
+title: SQL on-demand (preview) gebruiken voor het analyseren van Azure Open Datasets in Azure Synapse Studio (preview)
 description: In deze zelfstudie leert u hoe u eenvoudig verkennende gegevensanalyse kunt uitvoeren door verschillende Azure Open Datasets te combineren met behulp van SQL on-demand en de resultaten in Azure Synapse Studio kunt analyseren.
 services: synapse-analytics
 author: azaricstefan
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089138"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Gebruik SQL on-demand (preview) voor het analyseren van Azure Open Datasets en visualiseer resultaten in Azure Synapse Studio (preview)
+# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Gebruik SQL on-demand voor het analyseren van Azure Open Datasets en visualiseer resultaten in Azure Synapse Studio
 
 In deze zelfstudie leert u hoe u verkennende gegevensanalyse kunt uitvoeren door verschillende Azure Open Datasets te combineren met behulp van SQL on-demand en de resultaten in Azure Synapse Studio kunt analyseren.
 

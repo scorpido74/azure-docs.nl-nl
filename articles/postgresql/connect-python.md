@@ -8,16 +8,20 @@ ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9bb94ee63873dea321af252a4380a7aab10df6ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071473"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - individuele server
 
 In deze quickstart werkt u met een Azure Database for PostgreSQL-exemplaar met behulp van Python in macOS, Ubuntu Linux of Windows. In de quickstart ziet u hoe u verbinding kunt maken met de database en SQL-instructies kunt gebruiken om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met Python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.
+
+> [!TIP]
+> Als u een Django-toepassing met PostgreSQL wilt maken, raadpleegt u de zelfstudie [Tutorial: Deploy a Django web app with PostgreSQL](../app-service/containers/tutorial-python-postgresql-app.md) (Engelstalig).
+
 
 ## <a name="prerequisites"></a>Vereisten
 

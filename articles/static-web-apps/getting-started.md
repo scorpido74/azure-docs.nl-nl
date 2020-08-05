@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089495"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Quickstart: Uw eerste statische web-app bouwen
 
@@ -68,9 +68,9 @@ Nu de opslagplaats is gemaakt, kunt u een statische web-app maken in de Azure-po
 
 - Ga naar [Azure Portal](https://portal.azure.com)
 - Klik op **Een resource maken**
-- Zoek **Static Web Apps**
-- Klik op **Static Web Apps (preview)**
-- Klik op **Maken**.
+- Zoek naar **Static Web Apps**
+- Klik op **Static Web Apps (preview-versie)**
+- Klik op **Maken**
 
 ### <a name="basics"></a>Basisbeginselen
 
@@ -97,7 +97,10 @@ Nadat u zich hebt aangemeld bij GitHub, voert u de gegevens van de opslagplaats 
 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Knop Volgende Build":::
 
-### <a name="build"></a>Ontwikkelen
+> [!NOTE]
+>  Als u geen opslagplaatsen ziet, moet u mogelijk Azure Static Web Apps autoriseren in GitHub. Ga naar de GitHub-opslagplaats en ga naar **Instellingen > Toepassingen > Geautoriseerde OAuth-apps**, selecteer **Azure Static Web Apps**en selecteer **Verlenen**. Voor organisatie-opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
+
+### <a name="build"></a>Build
 
 Voeg vervolgens configuratiegegevens toe die specifiek zijn voor het front-end-framework van uw keuze.
 

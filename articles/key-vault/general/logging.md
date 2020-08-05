@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090583"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -43,7 +43,7 @@ Zie [Wat is Azure Key Vault?](overview.md) voor algemene informatie over Key Vau
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Een bestaande sleutelkluis die u hebt gebruikt.  
-* Azure PowerShell, minimaal versie 1.0.0. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren en te koppelen aan uw Azure-abonnement. Als u Azure PowerShell al hebt geïnstalleerd, maar niet weet welke versie u hebt, typt u `$PSVersionTable.PSVersion` in de Azure PowerShell-console.  
+* Azure PowerShell, minimaal versie 1.0.0. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) om Azure PowerShell te installeren en te koppelen aan uw Azure-abonnement. Als u Azure PowerShell al hebt geïnstalleerd, maar niet weet welke versie u hebt, typt u `$PSVersionTable.PSVersion` in de Azure PowerShell-console.  
 * Voldoende opslagruimte op Azure voor uw Sleutelkluis-logboeken.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Verbinding maken met uw sleutelkluisabonnement
@@ -70,7 +70,7 @@ Geef vervolgens op welk abonnement is gekoppeld aan de sleutelkluis waarvoor u l
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-PowerShell laten wijzen naar het juiste abonnement is een belangrijke stap, vooral als er meerdere abonnementen zijn gekoppeld aan uw account. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie over het configureren van Azure PowerShell.
+PowerShell laten wijzen naar het juiste abonnement is een belangrijke stap, vooral als er meerdere abonnementen zijn gekoppeld aan uw account. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor meer informatie over het configureren van Azure PowerShell.
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Een opslagaccount voor uw logboeken maken
 
@@ -97,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Logboekregistratie inschakelen met Azure PowerShell
 
-Als u logboekregistratie wilt inschakelen voor Key Vault, gebruikt u de cmdlet **Set-AzDiagnosticSetting**, samen met de variabelen die we voor het nieuwe opslagaccount en de sleutelkluis hebben gemaakt. We moeten de markering **-Ingeschakeld** instellen op **$true** en de categorie instellen op **AuditEvent** (de enige categorie voor logboekregistratie van Key Vault):
+Als u logboekregistratie wilt inschakelen voor Key Vault, gebruikt u de cmdlet **Set-AzDiagnosticSetting**, samen met de variabelen die we voor het nieuwe opslagaccount en de sleutelkluis hebben gemaakt. We moeten de vlag **-Enabled** instellen op **$true** en de categorie instellen op `AuditEvent` (de enige categorie voor logboekregistratie van Key Vault):
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -271,7 +271,7 @@ De volgende tabel bevat de namen en beschrijvingen van velden:
 | **resourceId** |Azure Resource Manager-resource-id. Voor Key Vault-logboeken is dit altijd de Key Vault-resource-id. |
 | **operationName** |Naam van de bewerking, zoals beschreven in de volgende tabel. |
 | **operationVersion** |REST-API-versie die door de client is aangevraagd. |
-| **category** |Type resultaat. Voor Key Vault-logboeken is **AuditEvent** de enige beschikbare waarde. |
+| **category** |Type resultaat. Voor Key Vault-logboeken is `AuditEvent` de enige beschikbare waarde. |
 | **resultType** |Resultaat van de REST-API-aanvraag. |
 | **resultSignature** |HTTP-status. |
 | **resultDescription** |Extra beschrijving van het resultaat, indien beschikbaar. |
@@ -279,7 +279,7 @@ De volgende tabel bevat de namen en beschrijvingen van velden:
 | **callerIpAddress** |IP-adres van de client die de aanvraag heeft ingediend. |
 | **correlationId** |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
 | **identity** |De identiteit van het token dat is opgegeven in de REST-API-aanvraag. Dit is meestal ‘user’, ‘service principal’ of de combinatie ‘user+appId’, bijvoorbeeld bij een aanvraag via een Azure PowerShell-cmdlet. |
-| **properties** |Gegevens die variëren op basis van de bewerking (**operationName**). In de meeste gevallen bevat dit veld clientgegevens (de useragent-tekenreeks die door de client wordt doorgegeven), de exacte URI voor de REST-API-aanvraag en de HTTP-statuscode. Als een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **KeyCreate** of **VaultGet**), bevat dit veld ook de sleutel-URI (als 'id'), kluis-URI of geheim-URI. |
+| **properties** |Gegevens die variëren op basis van de bewerking (**operationName**). In de meeste gevallen bevat dit veld clientgegevens (de useragent-tekenreeks die door de client wordt doorgegeven), de exacte URI voor de REST-API-aanvraag en de HTTP-statuscode. Als een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **KeyCreate** of **VaultGet**), bevat dit veld ook de sleutel-URI (als `id`), kluis-URI of geheim-URI. |
 
 De veldwaarden voor **operationName** hebben de *ObjectVerb*-indeling. Bijvoorbeeld:
 
@@ -321,9 +321,9 @@ De volgende tabel bevat de **operationName**-waarden en de bijbehorende REST-API
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor-logboeken gebruiken
 
-Met de Key Vault-oplossing in Azure Monitor-logboeken kunt u de **AuditEvent**-logboeken van Key Vault controleren. In Azure Monitor-logboeken kunt u logboekquery’s gebruiken om gegevens te analyseren en de informatie op te halen die u nodig hebt. 
+Met de Key Vault-oplossing in Azure Monitor-logboeken kunt u de `AuditEvent`-logboeken van Key Vault controleren. In Azure Monitor-logboeken kunt u logboekquery’s gebruiken om gegevens te analyseren en de informatie op te halen die u nodig hebt. 
 
-Zie [Azure Key Vault-oplossing in Azure Monitor-logboeken](../../azure-monitor/insights/azure-key-vault.md) voor meer informatie. Dit artikel bevat ook instructies voor als u moet migreren van de oude Key Vault-oplossing die tijdens de preview van Azure Monitor-logboeken werd aangeboden en waarbij u uw logboeken eerst moest doorsturen naar een Azure-opslagaccount en Azure Monitor-logboeken moest configureren om van daaruit te lezen.
+Zie [Azure Key Vault in Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md) voor meer informatie.
 
 ## <a name="next-steps"></a><a id="next"></a>Volgende stappen
 

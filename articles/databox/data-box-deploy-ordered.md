@@ -2,18 +2,18 @@
 title: Zelfstudie voor Azure Data Box bestellen | Microsoft Docs
 description: Ontdek wat de implementatievereisten zijn en hoe u een Azure Data Box kunt bestellen
 services: databox
-author: alkohli
+author: priestlg
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/23/2019
-ms.author: alkohli
-ms.openlocfilehash: cfb95f2fb02544197f9b2796a705844e33eca201
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/21/2020
+ms.author: v-grpr
+ms.openlocfilehash: fd841dee5f3a845d793255f5e13b416fb1add4f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007388"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Zelfstudie: Azure Data Box bestellen
 
@@ -49,11 +49,15 @@ U kunt u aanmelden bij Azure en Azure CLI-opdrachten uitvoeren. Dit kan op twee 
 
 Voor de zelfstudie gebruiken we Azure CLI via Windows PowerShell, maar het staat u vrij om een van beide opties te kiezen.
 
-### <a name="install-the-cli-locally"></a>De CLI lokaal installeren
+### <a name="for-azure-cli"></a>Voor Azure CLI
+
+Zorg voordat u begint voor het volgende:
+
+#### <a name="install-the-cli-locally"></a>De CLI lokaal installeren
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (versie 2.0.67 of hoger) installeren. U kunt ook [installeren met behulp van MSI](https://aka.ms/installazurecliwindows).
 
-#### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+**Aanmelden bij Azure**
 
 Open een Windows PowerShell-opdrachtvenster en meld u aan bij Azure met de opdracht [az login](/cli/azure/reference-index#az-login):
 
@@ -83,7 +87,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 ]
 ```
 
-#### <a name="install-the-azure-data-box-cli-extension"></a>De Azure Data Box CLI-extensie installeren
+**De Azure Data Box CLI-extensie installeren**
 
 Voordat u de Azure Data Box CLI-opdrachten kunt gebruiken, moet u de extensie installeren. Azure CLI-extensies geven u toegang tot experimentele opdrachten en opdrachten in een evaluatieversie die nog niet zijn verzonden als onderdeel van de kern-CLI. Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie over extensies.
 
@@ -115,82 +119,90 @@ Als de extensie is geïnstalleerd, ziet u de volgende uitvoer:
         Please let us know how we are doing: https://aka.ms/clihats
 ```
 
-### <a name="use-azure-cloud-shell"></a>Azure Cloud Shell gebruiken
+#### <a name="use-azure-cloud-shell"></a>Azure Cloud Shell gebruiken
 
-U kunt [Azure Cloud Shell](https://shell.azure.com/), een door Azure gehoste interactieve shell-omgeving, gebruiken via uw browser om CLI-opdrachten uit te voeren. Azure Cloud Shell biedt ondersteuning voor Bash of Windows PowerShell met Azure-services. De Azure CLI is vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Klik op de knop Cloud Shell in het menu in het gedeelte rechtsboven in Azure Portal:
+U kunt [Azure Cloud Shell](https://shell.azure.com/), een door Azure gehoste interactieve shell-omgeving, gebruiken via uw browser om CLI-opdrachten uit te voeren. Azure Cloud Shell biedt ondersteuning voor Bash of Windows PowerShell met Azure-services. De Azure CLI is vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer de knop Cloud Shell in het menu in het gedeelte rechtsboven in Azure Portal:
 
 ![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 Met de knop start u een interactieve shell waarmee u alle stappen in dit instructieartikel kunt uitvoeren.
 
-<!-- To start Azure Cloud Shell:
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
 
-| Option | Example/Link |
-|-----------------------------------------------|---|
-| Select **Try It** in the upper-right corner of a code block. Selecting **Try It** doesn't automatically copy the code to Cloud Shell. | ![Example of Try It for Azure Cloud Shell](../../includes/media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Go to [https://shell.azure.com](https://shell.azure.com), or select the **Launch Cloud Shell** button to open Cloud Shell in your browser. | [![Launch Cloud Shell in a new window](../../includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| Select the **Cloud Shell** button on the menu bar at the upper right in the [Azure portal](https://portal.azure.com). | ![Cloud Shell button in the Azure portal](../../includes/media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
+[!INCLUDE [Prerequisites](../../includes/data-box-deploy-ordered-prerequisites.md)]
 
-To run the code in this article in Azure Cloud Shell:
+### <a name="for-azure-powershell"></a>Voor Azure PowerShell
 
-1. Start Cloud Shell.
+Zorg voordat u begint dat u het volgende hebt gedaan:
 
-2. Select the **Copy** button on a code block to copy the code.
+* Windows PowerShell 6.2.4 of hoger installeren.
+* De AZ-module van Azure PowerShell installeren.
+* De Azure Data Box-module (Az.DataBox) installeren.
+* Aanmelden bij Azure.
 
-3. Paste the code into the Cloud Shell session by selecting **Ctrl**+**Shift**+**V** on Windows and Linux or by selecting **Cmd**+**Shift**+**V** on macOS.
+#### <a name="install-azure-powershell-and-modules-locally"></a>Azure PowerShell en modules lokaal installeren
 
-4. Select **Enter** to run the code.
+**Windows PowerShell installeren of bijwerken**
 
-For this tutorial, we use Windows PowerShell command prompt to run Azure CLI commands. -->
+U moet Windows PowerShell-versie 6.2.4 of hoger hebben geïnstalleerd. Als u wilt weten welke versie van PowerShell u hebt geïnstalleerd, voert u de volgende opdracht uit: `$PSVersionTable`.
 
-<!-- This goes away, we'll show this later when we show how to order a Data Box. -->
-<!-- ## Change the output format type
+U ziet de volgende uitvoer:
 
-All Azure CLI commands will use json as the output format by default unless you change it. You can change the output format by using the global parameter `--output <output-format>`. -->
-
-<!-- ```azurecli
-
-az databox job <command> --output <output-format>
-
+```azurepowershell
+    PS C:\users\gusp> $PSVersionTable
+    
+    Name                           Value
+    ----                           -----
+    PSVersion                      6.2.3
+    PSEdition                      Core
+    GitCommitId                    6.2.3
+    OS                             Microsoft Windows 10.0.18363
+    Platform                       Win32NT
+    PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+    PSRemotingProtocolVersion      2.3
+    SerializationVersion           1.1.0.1
+    WSManStackVersion              3.0
 ```
 
-Azure Data Box CLI commands support the following output formats:
+Als uw versie lager is dan 6.2.4, moet u een upgrade uitvoeren van uw versie van Windows PowerShell. Zie [Azure PowerShell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7) voor informatie over het installeren van de meest recente versie van Windows PowerShell.
 
-* json (default setting)
-* jsonc
-* table
-* tsv
-* yaml
-* yamlc
-* none
+**Azure PowerShell- en Data Box-modules installeren**
 
-You can use the parameter `--output` with all Azure Data Box CLI commands. -->
+U moet de Azure PowerShell-modules installeren om Azure PowerShell te gebruiken om een Azure Data Box te bestellen. Ga als volgt te werk om de Azure PowerShell-modules te installeren:
 
-<!-- To set the output format to yaml: -->
+1. Installeer de [Azure PowerShell Az-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+2. Installeer vervolgens Az.DataBox met behulp van de opdracht `Install-Module -Name Az.DataBox`.
 
-<!-- ```azurecli
-PS C:\Windows>az databox job show --resource-group "myresourcegroup" --name "mydataboxorder" --output "yaml"
+```azurepowershell
+PS C:\PowerShell\Modules> Install-Module -Name Az.DataBox
+PS C:\PowerShell\Modules> Get-InstalledModule -Name "Az.DataBox"
 
-``` -->
-<!-- 
-To set the out format to tabular form (easier to read):
+Version              Name                                Repository           Description
+-------              ----                                ----------           -----------
+0.1.1                Az.DataBox                          PSGallery            Microsoft Azure PowerShell - DataBox ser…
+```
 
-```azurecli
-PS C:\Windows>az databox job show --resource-group "myresourcegroup" --name "mydataboxorder" --output "table"
+#### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-``` -->
+Open een Windows PowerShell-opdrachtvenster en meld u aan bij Azure met de opdracht [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount):
 
-<!-- Here's the example output of `az databox job show` after changing the output format to table:
+```azurepowershell
+PS C:\Windows> Connect-AzAccount
+```
 
-```azurecli
-PS C:\WINDOWS\system32> az databox job show --resource-group "GDPTest" --name "mydataboxtest3" --output "table"
-Command group 'databox job' is experimental and not covered by customer support. Please use with discretion.
+Dit is de uitvoer bij een geslaagde aanmelding:
 
-DeliveryType    IsCancellable    IsCancellableWithoutFee    IsDeletable    IsShippingAddressEditable    Location    Name            ResourceGroup    StartTime                         Status
---------------  ---------------  -------------------------  -------------  ---------------------------  ----------  --------------  ---------------  --------------------------------  -------------
-NonScheduled    True             True                       False          True                         westus      mydataboxorder  myresourcegroup          2020-06-11T22:05:49.436622+00:00  DeviceOrdered
+```output
+WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FSBFZMBKC to authenticate.
 
-``` -->
+Account              SubscriptionName                          TenantId                             Environment
+-------              ----------------                          --------                             -----------
+gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa AzureCloud
+
+PS C:\Windows\System32>
+```
+
+Zie [Aanmelden met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) voor meer informatie over het aanmelden bij Azure met behulp van Windows PowerShell.
 
 ---
 
@@ -201,61 +213,87 @@ NonScheduled    True             True                       False          True 
 Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
 
 1. Gebruik uw Microsoft Azure-referenties om u aan te melden op deze URL: [https://portal.azure.com](https://portal.azure.com).
-2. Klik op **+ Een resource maken** en zoek naar *Azure Data Box*. Klik op **Azure Data Box**.
+2. Selecteer **+ Een resource maken** en zoek naar *Azure Data Box*. Selecteer **Azure Data Box**.
 
-   [![Zoek naar Azure Data Box 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
+   ![Azure Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Klik op **Create**.
+3. Selecteer **Maken**.
+
+   ![Azure Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Controleer of de Data Box-service beschikbaar is in uw regio. Voer de volgende gegevens in of selecteer deze en selecteer **Toepassen**.
 
     |Instelling  |Waarde  |
     |---------|---------|
-    |Abonnement     | Selecteer een EA-, CSP- of Azure Sponsorship-abonnement voor de Data Box-service. <br> Het abonnement is gekoppeld aan uw factureringsrekening.       |
     |Type overdracht     | Selecteer **Importeren in Azure**.        |
+    |Abonnement     | Selecteer een EA-, CSP- of Azure Sponsorship-abonnement voor de Data Box-service. <br> Het abonnement is gekoppeld aan uw factureringsrekening.       |
+    |Resourcegroep | Selecteer een bestaande resourcegroep. Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd. |
     |Bronland/-regio    |    Selecteer het land/de regio waar uw gegevens zich momenteel bevinden.         |
-    |Doel-Azure-regio     |     Selecteer de Azure-regio waarnaar u uw gegevens wilt overdragen.        |
+    |Doel-Azure-regio     |     Selecteer de Azure-regio waarnaar u uw gegevens wilt overdragen. <br> Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.            |
+
+    [![Azure Data Box-importorder](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. Selecteer **Data Box**. De maximale bruikbare capaciteit voor één bestelling is 80 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
 
-      [![Selecteer Data Box optie 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+    ![Optie 1 voor Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. Voer in **Bestellen** de **Orderdetails** in. Voer de volgende gegevens in of selecteer deze en selecteer **Volgende**.
+6. Ga in **Bestelling** naar het tabblad **Basisinformatie**. Voer de volgende gegevens in of selecteer deze en selecteer **Volgende: Gegevensbestemming>** .
 
     |Instelling  |Waarde  |
     |---------|---------|
-    |Naam     |  Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
-    |Resourcegroep     |    Gebruik een bestaande of maak een nieuwe. <br> Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd.         |
-    |Doel-Azure-regio     | Selecteer een regio voor uw opslagaccount. <br> Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.        |
-    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box kan worden gekoppeld aan maximaal 10 opslagaccounts. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure Data Box toevoegen als een vertrouwde service](../storage/common/storage-network-security.md#exceptions) voor meer informatie.|
+    |Abonnement      | Het abonnement wordt automatisch ingevuld op basis van uw eerdere selectie.|
+    |Resourcegroep    | De resourcegroep die u eerder hebt geselecteerd. |
+    |Naam van importorder | Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.    |
 
-    Als u een opslagaccount selecteert als de opslaglocatie, ziet u het volgende scherm:
+    ![Optie 1 voor Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
-    ![Data Box-bestelling voor opslagaccount](media/data-box-deploy-ordered/order-storage-account.png)
+    Het wachtwoord voor het ontgrendelen van het apparaat wordt standaard versleuteld met een door Microsoft beheerde sleutel. Nadat u de bestelling hebt voltooid, kunt u een door de klant beheerde sleutel toevoegen. Met een door de klant beheerde sleutel kunt u de eigen sleutel van een Azure-sleutelkluissleutel gebruiken om uw wachtwoord voor het ontgrendelen van apparaten te beveiligen. Zie [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box](data-box-customer-managed-encryption-key-portal.md) voor meer informatie.
 
-    Als u Data Box gebruikt om beheerde schijven te maken op basis van de on-premises VHD's (virtuele harde schijven), moet u ook de volgende informatie opgeven:
+7. Selecteer op het tabblad **Gegevensbestemming** de optie **Gegevensbestemming**.
+
+    Als u een **opslagaccount** selecteert als de opslaglocatie, ziet u het volgende scherm:
+
+    ![Azure Data Box-gegevensbestemming](media/data-box-deploy-ordered/select-data-box-import-07.png)
+
+    Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box kan worden gekoppeld aan maximaal 10 opslagaccounts. U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken.
+
+    Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure Data Box toevoegen als een vertrouwde service](../storage/common/storage-network-security.md#exceptions) voor meer informatie.
+
+    Als u Data Box gebruikt om **beheerde schijven** te maken op basis van de on-premises VHD's (virtuele harde schijven), moet u ook de volgende informatie opgeven:
 
     |Instelling  |Waarde  |
     |---------|---------|
     |Resourcegroepen     | Maak nieuwe resourcegroepen als u beheerde schijven wilt maken van on-premises virtuele harde schijven. U kunt alleen een bestaande resourcegroep gebruiken als de resourcegroep eerder is gemaakt en beschikbaar was op het moment van het plaatsen van een Data Box-bestelling voor een beheerde schijf door de Data Box-service. <br> U kunt meerdere resourcegroepen opgeven door de namen te scheiden met een puntkomma. Er worden maximaal tien resourcegroepen ondersteund.|
 
-    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/order-managed-disks.png)
+    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Het opslagaccount dat is opgegeven voor beheerde schijven wordt gebruikt als een opslagaccount waarin de gegevens worden klaargezet. De Data Box-service uploadt de virtuele harde schijven als pagina-blobs naar dit opslagaccount waarna de schijven worden omgezet in beheerde schijven en naar de resourcegroepen worden verplaatst. Zie [Uploaden van gegevens naar Azure controleren](data-box-deploy-picked-up.md#verify-data-upload-to-azure) voor meer informatie.
 
-7. Bij **Verzendadres** geeft u uw voor- en achternaam, de naam en het postadres van het bedrijf en een geldig telefoonnummer op. Klik op **Adres valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding.
+    Selecteer **Volgende: Contactgegevens** om verder te gaan.
+
+8. Selecteer in **Contactgegevens** de optie **+ Verzendadres toevoegen**.
+
+    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+
+9. Bij **Verzendadres** geeft u uw voor- en achternaam, de naam en het postadres van het bedrijf en een geldig telefoonnummer op. Selecteer **Adres valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding.
+
+   ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Als u zelfbeheerde verzending hebt geselecteerd, ontvangt u een e-mailmelding nadat de bestelling is geplaatst. Zie [Zelfbeheerde verzending gebruiken](data-box-portal-customer-managed-shipping.md) voor meer informatie over zelfbeheerde verzendingen.
 
-8. Klik op **Volgende** zodra de verzendgegevens zijn gevalideerd.
+10. Selecteer **Verzendadres toevoegen** zodra de verzendgegevens zijn gevalideerd. U gaat terug naar het tabblad **Contactgegevens**.
 
-9. In de **Meldingsdetails** geeft u een e-mailadres op. De service stuurt e-mailmeldingen naar het opgegeven e-mailadres over updates van de bestelstatus.
+11. Als u terug bent op het tabblad **Contactgegevens** kunt u een of meer e-mailadressen toevoegen. De service stuurt e-mailmeldingen naar het opgegeven e-mailadres over updates van de bestelstatus.
 
     We raden u aan een e-mailadres van een groep te gebruiken, zodat u meldingen blijft ontvangen als een beheerder de groep verlaat.
 
-10. Bekijk de gegevens met betrekking tot de bestelling, het contact, de meldingen en de privacyvoorwaarden in **Samenvatting**. Vink het selectievakje aan waarmee u akkoord gaat met de privacyvoorwaarden.
+    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
-11. Klik op **Bestellen**. Het duurt een paar minuten voordat de bestelling is gemaakt.
+12. Bekijk de gegevens met betrekking tot de bestelling, het contact, de meldingen en de privacyvoorwaarden in **Controleren en bestellen**. Vink het selectievakje aan waarmee u akkoord gaat met de privacyvoorwaarden.
+
+13. Selecteer **Bestellen**. Het duurt een paar minuten voordat de bestelling is gemaakt.
+
+    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -370,6 +408,64 @@ Voer de volgende stappen uit met behulp van Azure CLI om een apparaat te bestell
 
     ```
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+Voer de volgende stappen uit met behulp van Azure PowerShell om een apparaat te bestellen:
+
+1. Voordat u de importbestelling maakt, moet u uw opslagaccount ophalen en het opslagaccountobject in een variabele opslaan.
+
+   ```azurepowershell
+    $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
+   ```
+
+2. Noteer uw instellingen voor uw Data Box-bestelling. Deze instellingen omvatten uw persoonlijke/zakelijke gegevens, abonnementsnaam, apparaatgegevens en verzendgegevens. U moet deze instellingen als parameters gebruiken bij het uitvoeren van de PowerShell-opdracht om de Data Box-bestelling te maken. In de volgende tabel ziet u de parameterinstellingen die worden gebruikt voor [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob).
+
+    | Instelling (parameter) | Beschrijving |  Voorbeeldwaarde |
+    |---|---|---|
+    |ResourceGroupName [vereist]| Gebruik een bestaande resourcegroep. Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd. | "myresourcegroup"|
+    |Name [vereist]| De naam van de bestelling die u maakt. | "mydataboxorder"|
+    |ContactName [vereist]| De naam die is gekoppeld aan het verzendadres. | "Gus Poland"|
+    |PhoneNumber [vereist]| Het telefoonnummer van de persoon die of het bedrijf dat de bestelling zal ontvangen.| "14255551234"
+    |Location [vereist]| De dichtstbijzijnde Azure-regio voor u waaruit uw apparaat wordt verzonden.| "WestUS"|
+    |DataBoxType [vereist]| Het specifieke Data Box-apparaat dat u bestelt. Geldige waarden zijn: "DataBox", "DataBoxDisk" en "DataBoxHeavy"| "DataBox" |
+    |EmailId [vereist]| De e-mailadressen die zijn gekoppeld aan de bestelling.| "gusp@contoso.com" |
+    |StreetAddress1 [vereist]| Het adres waarnaar de bestelling wordt verzonden. | "15700 NE 39th St" |
+    |StreetAddress2| De secundaire adresgegevens, zoals het appartementnummer of het gebouwnummer. | "Bld 123" |
+    |StreetAddress3| De derde adresgegevens. | |
+    |City [vereist]| De plaats waarnaar het apparaat wordt verzonden. | "Redmond" |
+    |StateOrProvinceCode [vereist]| De staat/provincie waarnaar het apparaat wordt verzonden.| "WA" |
+    |CountryCode [vereist]| Het land waarnaar het apparaat wordt verzonden. | "United States" |
+    |PostalCode [vereist]| De postcode die is gekoppeld aan het verzendadres.| "98052"|
+    |CompanyName| De naam van het bedrijf waarvoor u werkt.| "Contoso, LTD" |
+    |StorageAccountResourceId [vereist]| De id van het Azure Storage-account waaruit u gegevens wilt importeren.| <AzStorageAccount>.id |
+
+3. Gebruik in de opdrachtprompt van uw keuze of terminal de opdracht [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) om uw Azure Data Box-bestelling te maken.
+
+   ```azurepowershell
+    PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
+    PS> New-AzDataBoxJob -Location "WestUS" \
+                         -StreetAddress1 "15700 NE 39th St" \
+                         -PostalCode "98052" \
+                         -City "Redmond" \
+                         -StateOrProvinceCode "WA" \
+                         -CountryCode "US" \
+                         -EmailId "gusp@contoso.com" \
+                         -PhoneNumber 4255551234 \
+                         -ContactName "Gus Poland" \
+                         -StorageAccount $storAcct.id \
+                         -DataBoxType DataBox \
+                         -ResourceGroupName "myresourcegroup" \
+                         -Name "myDataBoxOrderPSTest"
+   ```
+
+   Dit is de uitvoer van het uitvoeren van de opdracht:
+
+   ```output
+    jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+    ----------------     -------------------- ------------------ --------------------- -------------------- -------------
+    myDataBoxOrderPSTest DataBox              DeviceOrdered      07-06-2020 05:25:30   westus               myresourcegroup
+   ```
+
 ---
 
 ## <a name="track-the-order"></a>De bestelling volgen
@@ -469,13 +565,77 @@ In de volgende tabel ziet u de parameterinformatie voor `az databox job list`:
    Command group 'databox job' is experimental and not covered by customer support. Please use with discretion.
    CancellationReason                                               DeliveryType    IsCancellable    IsCancellableWithoutFee    IsDeletable    IsShippingAddressEditable    Location    Name                 ResourceGroup    StartTime                         Status
    ---------------------- ----------------------------------------  --------------  ---------------  -------------------------  -------------  ---------------------------  ----------  -------------------  ---------------  --------------------------------  -------------
-   OtherReason This was a test order for documentation purposes.    NonScheduled    False            False                      True           False                        westus      gdpImportTest        GDPTest          2020-05-26T23:20:57.464075+00:00  Cancelled
-   NoLongerNeeded This order was created for documentation purposes.NonScheduled    False            False                      True           False                        westus      mydataboxExportTest  GDPTest          2020-05-27T00:04:16.640397+00:00  Cancelled
-   IncorrectOrder                                                   NonScheduled    False            False                      True           False                        westus      mydataboxtest2       GDPTest          2020-06-10T16:54:23.509181+00:00  Cancelled
-                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest3       GDPTest          2020-06-11T22:05:49.436622+00:00  DeviceOrdered
-                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest4       GDPTest          2020-06-18T03:48:00.905893+00:00  DeviceOrdered
+   OtherReason This was a test order for documentation purposes.    NonScheduled    False            False                      True           False                        westus      gdpImportTest        MyResGrp         2020-05-26T23:20:57.464075+00:00  Cancelled
+   NoLongerNeeded This order was created for documentation purposes.NonScheduled    False            False                      True           False                        westus      mydataboxExportTest  MyResGrp         2020-05-27T00:04:16.640397+00:00  Cancelled
+   IncorrectOrder                                                   NonScheduled    False            False                      True           False                        westus      mydataboxtest2       MyResGrp         2020-06-10T16:54:23.509181+00:00  Cancelled
+                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest3       MyResGrp         2020-06-11T22:05:49.436622+00:00  DeviceOrdered
+                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest4       MyResGrp         2020-06-18T03:48:00.905893+00:00  DeviceOrdered
    PS C:\WINDOWS\system32>
    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+### <a name="track-a-single-order"></a>Eén bestelling volgen
+
+Als u informatie wilt ophalen over een enkele, bestaande Azure Data Box-bestelling, voert u [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) uit. De opdracht geeft informatie weer over de bestelling, zoals, maar niet beperkt tot: naam, resourcegroep, traceringsinformatie, abonnements-ID, contactgegevens, type verzending en apparaat-SKU.
+
+> [!NOTE]
+> `Get-AzDataBoxJob` wordt gebruikt voor het weergeven van zowel één als meerdere bestellingen. Het verschil is dat u de naam van de bestelling opgeeft als u één bestelling weergeeft.
+
+   ```azurepowershell
+    Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
+   ```
+
+   In de volgende tabel ziet u de parameterinformatie voor `Get-AzDataBoxJob`:
+
+   | Parameter | Beschrijving |  Voorbeeldwaarde |
+   |---|---|---|
+   |ResourceGroup [vereist]| De naam van de resourcegroep die is gekoppeld aan de bestelling. Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd. | "myresourcegroup"|
+   |Name [vereist]| De naam van bestelling waarvoor informatie moet worden opgehaald. | "mydataboxorder"|
+   |ResourceId| De id van de resource die is gekoppeld aan de bestelling. |  |
+
+   Hier volgt een voorbeeld van de opdracht met uitvoer:
+
+   ```azurepowershell
+    PS C:\WINDOWS\system32> Get-AzDataBoxJob -ResourceGroupName "myResourceGroup" -Name "myDataBoxOrderPSTest"
+   ```
+
+   Dit is de uitvoer van het uitvoeren van de opdracht:
+
+   ```output
+   jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+   ----------------     -------------------- ------------------ --------------------- -------------------- -------------
+   myDataBoxOrderPSTest DataBox              DeviceOrdered      7/7/2020 12:37:16 AM  WestUS               myResourceGroup
+   ```
+
+### <a name="list-all-orders"></a>Alle bestellingen weergeven
+
+Als u meerdere apparaten hebt besteld, kunt u [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) uitvoeren om al uw Azure Data Box-bestellingen weer te geven. Met de opdracht wordt een lijst weergegeven met alle bestellingen die deel uitmaken van een specifieke resourcegroep. Het volgende wordt ook weergegeven in de uitvoer: naam van bestelling, status van verzending, Azure-regio, leveringstype, status van bestelling. Geannuleerde orders worden ook opgenomen in de lijst.
+De opdracht geeft ook tijdstempels van elke bestelling weer.
+
+```azurepowershell
+Get-AzDataBoxJob -ResourceGroupName <String>
+```
+
+Hier volgt een voorbeeld van de opdracht:
+
+```azurepowershell
+PS C:\WINDOWS\system32> Get-AzDataBoxJob -ResourceGroupName "myResourceGroup"
+```
+
+Dit is de uitvoer van het uitvoeren van de opdracht:
+
+```output
+jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+----------------     -------------------- ------------------ --------------------- -------------------- -------------
+guspImportTest       DataBox              Cancelled          5/26/2020 11:20:57 PM WestUS               myResourceGroup
+mydataboxExportTest  DataBox              Cancelled          5/27/2020 12:04:16 AM WestUS               myResourceGroup
+mydataboximport1     DataBox              Cancelled          6/26/2020 11:00:34 PM WestUS               myResourceGroup
+myDataBoxOrderPSTest DataBox              Cancelled          7/07/2020 12:37:16 AM WestUS               myResourceGroup
+mydataboxtest2       DataBox              Cancelled          6/10/2020 4:54:23  PM WestUS               myResourceGroup
+mydataboxtest4       DataBox              DeviceOrdered      6/18/2020 3:48:00  AM WestUS               myResourceGroup
+PS C:\WINDOWS\system32>
+```
 
 ---
 
@@ -564,6 +724,74 @@ Hier volgt een voorbeeld van de opdracht met uitvoer:
    command ran in 1.142 seconds.
    PS C:\Windows>
    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+### <a name="cancel-an-order"></a>Een order annuleren
+
+Als u een Azure Data Box-bestelling wilt annuleren, voert u [Stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob) uit. U moet een reden opgeven voor het annuleren van de bestelling.
+
+```azurepowershell
+Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
+```
+
+In de volgende tabel ziet u de parameterinformatie voor `Stop-AzDataBoxJob`:
+
+| Parameter | Beschrijving |  Voorbeeldwaarde |
+|---|---|---|
+|ResourceGroup [vereist]| De naam van de resourcegroep die is gekoppeld aan de bestelling die moet worden geannuleerd. Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd. | "myresourcegroup"|
+|Name [vereist]| De naam van de bestelling die moet worden verwijderd. | "mydataboxorder"|
+|Reden [vereist]| De reden voor het annuleren van de bestelling. | "Ik heb onjuiste informatie ingevoerd en wil de bestelling annuleren." |
+|Force | Hiermee wordt de cmdlet geforceerd uitgevoerd zonder bevestiging van de gebruiker. | -Force |
+
+Hier volgt een voorbeeld van de opdracht met uitvoer:
+
+```azurepowershell
+PS C:\PowerShell\Modules> Stop-AzDataBoxJob -ResourceGroupName myResourceGroup \
+                                            -Name "myDataBoxOrderPSTest" \
+                                            -Reason "I entered erroneous information and had to cancel."
+```
+
+Dit is de uitvoer van het uitvoeren van de opdracht:
+
+```output
+Confirm
+"Cancelling Databox Job "myDataBoxOrderPSTest
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\WINDOWS\system32>
+```
+
+### <a name="delete-an-order"></a>Een bestelling verwijderen
+
+Als u een Azure Data Box-bestelling hebt geannuleerd, kunt u [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) uitvoeren om de bestelling te verwijderen.
+
+```azurepowershell
+Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>
+```
+
+In de volgende tabel ziet u de parameterinformatie voor `Remove-AzDataBoxJob`:
+
+| Parameter | Beschrijving |  Voorbeeldwaarde |
+|---|---|---|
+|ResourceGroup [vereist]| De naam van de resourcegroep die is gekoppeld aan de bestelling die moet worden verwijderd. Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd. | "myresourcegroup"|
+|Name [vereist]| De naam van de bestelling die moet worden verwijderd. | "mydataboxorder"|
+|Force | Hiermee wordt de cmdlet geforceerd uitgevoerd zonder bevestiging van de gebruiker. | -Force |
+
+Hier volgt een voorbeeld van de opdracht met uitvoer:
+
+```azurepowershell
+PS C:\Windows> Remove-AzDataBoxJob -ResourceGroup "myresourcegroup" \
+                                   -Name "mydataboxtest3"
+```
+
+Dit is de uitvoer van het uitvoeren van de opdracht:
+
+```output
+Confirm
+"Removing Databox Job "mydataboxtest3
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\Windows>
+```
 
 ---
 

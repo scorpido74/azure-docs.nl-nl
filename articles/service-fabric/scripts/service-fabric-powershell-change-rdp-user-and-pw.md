@@ -1,5 +1,5 @@
 ---
-title: De RDP-gebruikers naam en het wacht woord bijwerken in Power shell
+title: RDP-gebruikersnaam en -wachtwoord bijwerken in PowerShell
 description: Azure PowerShell-voorbeeldscript - RDP-gebruikersnaam en -wachtwoord bijwerken voor alle Service Fabric-clusterknooppunten van een bepaald knooppunttype.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bcf619e2251f5c1b641190549da45f721835ce0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80984926"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076159"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Gebruikersnaam en wachtwoord van de beheerder van de VM's in een cluster bijwerken
 
@@ -27,7 +27,7 @@ Elk [knooppunttype](../service-fabric-cluster-nodetypes.md) in een Service Fabri
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installeer zo nodig Azure PowerShell met behulp van de instructies in de [Azure PowerShell-handleiding](/powershell/azure/overview). 
+Installeer zo nodig Azure PowerShell met behulp van de instructies in de [Azure PowerShell-handleiding](/powershell/azure/). 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -45,10 +45,10 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 
 ## <a name="duration"></a>Duur
 
-Een enkel knooppunt type met vijf knoop punten, bijvoorbeeld heeft een duur van 45 tot 60 minuten voor het wijzigen van de gebruikers naam of het wacht woord. 
+Zo kan het bij een enkelvoudig knooppunttype met vijf knooppunten 45 tot 60 minuten duren om de gebruikersnaam of het wachtwoord te wijzigen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer voorbeelden voor Azure Powershell voor Azure Service Fabric vindt u in de [voorbeelden van Azure PowerShell](../service-fabric-powershell-samples.md).

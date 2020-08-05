@@ -3,12 +3,12 @@ title: Uw resources organiseren met beheergroepen - Azure Governance
 description: Informatie over de managementgroepen, hoe hun machtigingen werken en hoe u ze gebruikt.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963679"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132922"
 ---
 # <a name="what-are-azure-management-groups"></a>Wat zijn Azure-beheergroepen?
 
@@ -100,9 +100,9 @@ In de volgende tabel staat een lijst met rollen en de acties die worden onderste
 \*: Met de rollen Beheergroep-inzender en Beheergroep-lezer kunnen gebruikers deze acties alleen uitvoeren op beheergroepniveau.  
 \*\*: Bij roltoewijzingen hoeft er geen abonnement of beheergroep van of naar de hoofdbeheergroep te worden verplaatst. Zie [Uw resources beheren met beheergroepen](manage.md) voor meer informatie over het verplaatsen van items binnen de hiërarchie.
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Aangepaste definities en toewijzingen van RBAC-rollen
+## <a name="azure-custom-role-definition-and-assignment"></a>Aangepaste roldefinitie en -toewijzing van Azure
 
-Ondersteuning van aangepaste RBAC-rollen voor beheergroepen is momenteel in de preview-versie beschikbaar met enkele [beperkingen](#limitations). U kunt het bereik van de beheergroep definiëren in het toewijsbare bereik van de roldefinitie. Die aangepaste RBAC-rol is dan beschikbaar voor toewijzing in die beheergroep en alle beheergroepen, abonnementen, resourcegroepen en resources daaronder. Deze aangepaste rol neemt machtigingen over in de hiërarchie op dezelfde manier als een ingebouwde rol.  
+Ondersteuning voor aangepaste rollen van Azure voor beheergroepen is momenteel in de preview-versie beschikbaar met enkele [beperkingen](#limitations). U kunt het bereik van de beheergroep definiëren in het toewijsbare bereik van de roldefinitie. Die aangepaste rol van Azure is dan beschikbaar voor toewijzing in die beheergroep en alle beheergroepen, abonnementen, resourcegroepen en resources daaronder. Deze aangepaste rol neemt machtigingen over in de hiërarchie op dezelfde manier als een ingebouwde rol.  
 
 ### <a name="example-definition"></a>Voorbeelddefinitie
 

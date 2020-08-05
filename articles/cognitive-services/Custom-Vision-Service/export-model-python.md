@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: TensorFlow-model uitvoeren in Python - Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: Leer hoe u een TensorFlow-model uitvoert in Python. Dit artikel is alleen van toepassing op modellen die zijn geëxporteerd uit afbeeldings classificatie projecten in de Custom Vision-service.
+description: Leer hoe u een TensorFlow-model uitvoert in Python. Dit artikel is alleen van toepassing op modellen die zijn geëxporteerd uit afbeeldingsclassificatieprojecten in de Custom Vision-service.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 46ed55e5d6a9156d9ea7909925e92d6c39c8e89d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 8e2df90c2e0d3c0d6fd24884a46156de55ac55ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079219"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Zelfstudie: TensorFlow-model uitvoeren in Python
 
 Nadat u [uw TensorFlow-model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) hebt geëxporteerd uit de Custom Vision Service, wordt in deze snelstartgids beschreven hoe u dit model lokaal kunt gebruiken voor het classificeren van afbeeldingen.
 
 > [!NOTE]
-> Deze zelf studie is alleen van toepassing op modellen die zijn geëxporteerd uit afbeeldings classificatie projecten.
+> Deze zelfstudie is alleen van toepassing op modellen die zijn geëxporteerd uit afbeeldingsclassificatieprojecten.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u de zelfstudie wilt gebruiken, moet u het volgende doen:
 
-- Installeer Python 2.7 + of Python 3.5 +.
-- Installeer pip.
+- Python 2.7 of hoger of Python 3.5 of hoger installeren.
+- Pip installeren.
 
 Vervolgens moet u de volgende pakketten installeren:
 
@@ -69,7 +69,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Een afbeelding voorbereiden voor voorspelling
 
-Er zijn een paar stappen die u moet uitvoeren om de installatie kopie voor te bereiden voor de voor spelling. Deze stappen bootsen de afbeeldingsbewerking na die wordt uitgevoerd tijdens de training:
+Er zijn een paar stappen die u moet uitvoeren om de afbeelding voor te bereiden voor de voorspelling. Deze stappen bootsen de afbeeldingsbewerking na die wordt uitgevoerd tijdens de training:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Open het bestand en maak een afbeelding in de BGR-kleurruimte
 
@@ -89,7 +89,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Afbeeldingen verwerken met een dimensie >1600
+### <a name="handle-images-with-a-dimension-1600"></a>Afbeeldingen gebruiken die groter zijn dan 1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -173,7 +173,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Een afbeelding voorspellen
 
-Zodra de afbeelding is voor bereid als een tensor, kunnen we deze via het model verzenden voor een voor spelling:
+Als de afbeelding is voorbereid als een tensor, kunnen we het langs het model laten lopen voor een voorspelling:
 
 ```Python
 
@@ -184,7 +184,7 @@ input_node = 'Placeholder:0'
 with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+        predictions = sess.run(prob_tensor, {input_node: [augmented_image] })
     except KeyError:
         print ("Couldn't find classification output layer: " + output_layer + ".")
         print ("Verify this a model exported from an Object Detection project.")
@@ -211,7 +211,7 @@ De resultaten van het verwerken van de afbeeldingstensor door het model moet ver
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens leert u hoe u uw model in een mobiele toepassing kunt inpakken:
+Vervolgens leert u hoe u uw model in een mobiele toepassing kunt integreren:
 * [Geëxporteerd Tensorflow-model gebruiken in een Android-toepassing](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Geëxporteerd CoreML-model gebruiken in een Swift iOS-toepassing](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Geëxporteerd CoreML-model gebruiken in een iOS-toepassing met Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

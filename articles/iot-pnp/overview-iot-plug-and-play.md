@@ -1,91 +1,75 @@
 ---
-title: Inleiding tot IoT Plug en Play preview | Microsoft Docs
-description: Meer informatie over de preview-versie van IoT Plug en Play. IoT Plug en Play is gebaseerd op een open model taal waarmee IoT-apparaten hun mogelijkheden kunnen declareren. IoT-apparaten presen teren een functionaliteits model voor apparaten, wanneer ze verbinding maken met cloud oplossingen zoals Azure IoT Central of partner toepassingen. De Cloud oplossing kan vervolgens automatisch inzicht krijgen in het apparaat en ermee werken, zonder dat u code hoeft te schrijven.
-author: Philmea
-ms.author: philmea
-ms.date: 12/23/2019
+title: Inleiding voor IoT Plug en Play Preview | Microsoft Docs
+description: Lees meer over IoT Plug en Play Preview. IoT Plug en Play is gebaseerd op een open modeltaal waarmee slimme IoT-apparaten hun mogelijkheden kunnen declareren. IoT-apparaten presenteren die declaratie, een apparaatmodel genoemd, wanneer er verbinding wordt gemaakt met cloudoplossingen. Vervolgens kan met de cloudoplossing automatisch inzicht worden verkregen in het apparaat en kan interactie worden gestart zonder dat u code hoeft te schrijven.
+author: rido-min
+ms.author: rmpablos
+ms.date: 07/06/2020
 ms.topic: overview
-ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: philmea
-ms.openlocfilehash: 12f3febac2c5c8ed01b9b156a64dc77f6ed0704f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+manager: eliotgra
+ms.custom: references_regions
+ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770439"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337650"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play preview?
+# <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play Preview?
 
-Met IoT Plug en Play Preview kunnen ontwikkel aars van oplossingen apparaten met hun oplossingen integreren zonder Inge sloten code te hoeven schrijven. De kern van IoT Plug en Play is een schema voor het _capaciteits model_ van het apparaat dat de mogelijkheden van apparaten beschrijft. Dit schema is een JSON-document dat is gestructureerd als een reeks interfaces die definities bevatten van:
+Met IoT Plug en Play Preview kunnen ontwikkelaars slimme apparaten in hun oplossingen integreren zonder handmatige configuratie. De kern van IoT Plug en Play omvat een apparaat_model_ dat kan worden gebruikt voor een apparaat om de mogelijkheden van het apparaat aan te kondigen bij een IoT Plug en Play-toepassing. Dit model is gestructureerd als een set elementen waarmee het volgende wordt gedefinieerd:
 
-- _Eigenschappen_ die de status alleen-lezen en lezen/schrijven van een apparaat of andere entiteit vertegenwoordigen. Een serie nummer van een apparaat kan bijvoorbeeld een alleen-lezen eigenschap zijn en een doel temperatuur op een thermo staat kan een lezen/schrijven-eigenschap zijn.
-- _Telemetrie_ die de gegevens is die door een apparaat worden verzonden, ongeacht of de gegevens een gewone stroom van sensor leesingen, incidentele fout of informatie bericht zijn.
-- _Opdrachten_ die een functie of bewerking beschrijven die op een apparaat kan worden uitgevoerd. Een opdracht kan bijvoorbeeld een gateway opnieuw opstarten of een foto nemen met een externe camera.
+- _Eigenschappen_ die de alleen-lezen- of schrijfbare status van apparaat of andere entiteit vertegenwoordigen. Een serienummer van een apparaat kan bijvoorbeeld een alleen-lezeneigenschap zijn en een doeltemperatuur op een thermostaat kan een schrijfbare eigenschap zijn.
+- _Telemetrie_ ofwel de gegevens die door een apparaat worden verzonden, ongeacht of het gaat om gegevens van een normale stroom met sensorwaarden, een incidentele fout of een informatiebericht.
+- _Opdrachten_ waarmee functies of bewerkingen die op het apparaat kunnen worden uitgevoerd, worden beschreven. Met een opdracht kan bijvoorbeeld een gateway opnieuw worden opgestart of een foto worden gemaakt met een externe camera.
 
-U kunt interfaces hergebruiken over hulp modellen voor apparaten om samen werking eenvoudiger te maken en de ontwikkeling te versnellen.
+U kunt deze elementen groeperen in interfaces om de elementen opnieuw te gebruiken in verschillende modellen waardoor samenwerking eenvoudiger wordt en ontwikkeling sneller verloopt.
 
-Om IoT Plug en Play naadloos te laten werken met [Azure Digital apparaatdubbels](../digital-twins/about-digital-twins.md), wordt het IOT Plug en Play-schema gedefinieerd met behulp van de [Digital-taal voor dubbele definitie (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT Plug en Play en de DTDL zijn geopend voor de community en micro soft is van de samen werking met klanten, partners en de branche. Beide zijn gebaseerd op open W3C-standaarden, zoals JSON-LD en RDF, waarmee u eenvoudiger kunt aannemen tussen services en hulp middelen. Daarnaast zijn er geen extra kosten verbonden aan het gebruik van IoT Plug en Play en DTDL. De standaard tarieven voor [azure IOT hub](../iot-hub/about-iot-hub.md), [Azure IOT Central](../iot-central/core/overview-iot-central.md)en andere Azure-Services blijven hetzelfde.
+Als u IoT Plug en Play wilt gebruiken met [Azure Digital Twins](../digital-twins/about-digital-twins.md), definieert u modellen en interfaces met behulp van [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl). IoT Plug en Play en DTDL zijn beschikbaar voor de community en Microsoft verwelkomt de samenwerking met klanten, partners en de branche. Beide zijn gebaseerd op open W3C-standaarden, zoals JSON-LD en RDF, de voorzien in vereenvoudiging van ingebruikname in verschillende services en hulpprogramma's.
 
-Oplossingen op basis van IoT Hub of IoT Central kunnen profiteren van IoT Plug en Play.
+Er zijn geen extra kosten verbonden aan het gebruik van IoT Plug en Play en DTDL. De standaardtarieven voor [Azure IoT Hub](../iot-hub/about-iot-hub.md) en andere Azure-services blijven gelijk.
 
-Dit artikel geeft een overzicht van:
+In dit artikel wordt een overzicht gegeven van:
 
-- De typische rollen die zijn gekoppeld aan een project dat IoT-Plug en Play gebruikt.
-- IoT Plug en Play-apparaten gebruiken in uw toepassing.
-- Het ontwikkelen van een IoT-Device-toepassing die ondersteuning biedt voor IoT Plug en Play.
-- Een IoT Plug en Play-apparaat certificeren en publiceren naar de [certificerings instantie voor IOT-apparaten](https://catalog.azureiotsolutions.com/).
+- De gebruikelijke rollen die zijn gekoppeld aan een project waarvoor IoT Plug en Play wordt gebruikt.
+- De wijze waarop u IoT Plug en Play-apparaten kunt gebruiken in uw toepassing.
+- De wijze waarop u een IoT-apparaattoepassing kunt ontwikkelen die ondersteuning biedt voor IoT Plug en Play.
 
 ## <a name="user-roles"></a>Gebruikersrollen
 
-IoT Plug en Play is handig voor twee typen ontwikkel aars:
+IoT Plug en Play is handig voor twee typen ontwikkelaars:
 
-- Een _oplossings ontwikkelaar_ is verantwoordelijk voor het ontwikkelen van een IOT-oplossing met Azure IOT en andere Azure-resources en voor het identificeren van IOT-apparaten om te integreren.
-- Een _ontwikkelaar_ van het apparaat maakt de code die wordt uitgevoerd op een apparaat dat is verbonden met uw oplossing.
+- Een _oplossingsontwikkelaar_ is verantwoordelijk voor het ontwikkelen van een IoT-oplossing met behulp van Azure IoT Hub en andere Azure-resources en voor het identificeren van IoT-apparaten die moeten worden geïntegreerd.
+- Een _apparaatontwikkelaar_ schrijft de code die wordt uitgevoerd op een apparaat dat is verbonden met uw toepassing.
 
 ## <a name="use-iot-plug-and-play-devices"></a>IoT Plug en Play-apparaten gebruiken
 
-Als oplossings ontwikkelaar kunt u een IoT-oplossing in de Cloud ontwikkelen die gebruikmaakt van IoT Plug en Play-apparaten. U kunt een van de volgende Azure-Services gebruiken:
+Als oplossingsontwikkelaar kunt u een in de cloud gehoste IoT-oplossing ontwikkelen die gebruikmaakt van IoT Plug en Play-apparaten. U kunt gebruikmaken van [IoT Hub](../iot-hub/about-iot-hub.md), een beheerde service die fungeert als een centrale berichtenhub voor veilige bidirectionele communicatie tussen uw IoT-toepassing en apparaten.
 
-- [IOT Central](../iot-central/core/overview-iot-central.md) -een volledig beheerde IOT-software-as-a-service-oplossing waarmee u eenvoudig producten kunt maken die de fysieke en digitale werelden verbinden.
-- [IOT hub](../iot-hub/about-iot-hub.md) : een beheerde Cloud service die fungeert als een Message hub voor beveiligde, bidirectionele communicatie tussen uw IOT-toepassing en uw apparaten.
+Wanneer u een IoT Plug and Play-apparaat verbindt met een IoT-hub, kunt u het hulpprogramma [Azure IoT Explorer](./howto-use-iot-explorer.md) gebruiken voor het weergeven de telemetrie, eigenschappen en opdrachten die zijn gedefinieerd in de interfaces waarmee het model is samengesteld.
 
-U vindt IoT Plug en Play-apparaten met behulp van de Azure Certified voor IoT-apparaat Catalog. Elk IoT Plug en Play-apparaat in de catalogus is gevalideerd en heeft een functionaliteits model voor apparaten. Bekijk het mogelijkheidsprofiel om inzicht te krijgen in de functionaliteit van het apparaat of gebruik het voor het simuleren van het apparaat in azure IoT Central.
+## <a name="develop-an-iot-device-application"></a>Een IoT-apparaattoepassing ontwikkelen
 
-Wanneer u verbinding maakt met een IoT Plug en Play-apparaat, kunt u het hulp model van het apparaat weer geven, de interfaces die zijn opgenomen in het model en de telemetrie, eigenschappen en opdrachten die in deze interfaces zijn gedefinieerd.
+Als apparaatontwikkelaar kunt u een IoT-hardwareproduct ontwikkelen dat ondersteuning biedt voor IoT Plug en Play. Het proces omvat drie belangrijke stappen:
 
-## <a name="develop-an-iot-device-application"></a>Een IoT Device-toepassing ontwikkelen
+1. Definieer het apparaatmodel. U maakt een set JSON-bestanden waarmee de mogelijkheden van uw apparaat worden gedefinieerd met behulp van [DTDL](https://github.com/Azure/opendigitaltwins-dtdl). Met een model wordt een volledige entiteit, bijvoorbeeld een fysiek product, beschreven en wordt de set met interfaces gedefinieerd die door die entiteit worden geïmplementeerd. Interfaces zijn gedeelde contracten voor unieke identificatie van de telemetrie, eigenschappen en opdrachten die door een apparaat worden ondersteund. Interfaces kunnen opnieuw worden gebruikt voor verschillende modellen.
 
-Als ontwikkelaar van apparaten kunt u een IoT-hardware-product ontwikkelen dat IoT-Plug en Play ondersteunt. Het proces bestaat uit twee belang rijke stappen:
+1. Zorg dat u de software of firmware van het apparaat zo ontwerpt dat de telemetrie, eigenschappen en opdrachten de IoT Plug en Play-conventies volgen.
 
-1. Definieer het functionaliteits model en de interfaces van het apparaat. U maakt een set JSON-bestanden die de mogelijkheden van uw apparaat declareren met de [DTDL](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). Een mogelijkheidsprofiel beschrijft een volledige entiteit, zoals een fysiek product, en definieert de set interfaces die door die entiteit worden geïmplementeerd. Interfaces zijn gedeelde contracten die een unieke identificatie vormen van de telemetrie, eigenschappen en opdrachten die door een apparaat worden ondersteund. Interfaces kunnen opnieuw worden gebruikt voor verschillende hulp modellen van apparaten.
+1. Het apparaat kondigt de model-id aan als onderdeel van de MQTT-verbinding. De Azure IoT SDK bevat nieuwe constructies waarmee de model-id op het moment van verbinding kan worden opgegeven.
 
-1. De software of firmware van het apparaat ontwerpen die de mogelijkheden implementeert die zijn gedeclareerd in het mogelijkheidsprofiel en de interfaces van het apparaat. De Azure IoT SDK bevat Api's voor het implementeren van Capability-modellen.
-
-De [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket biedt veel functies om u te helpen. Als ontwikkel aars van apparaten kunt u bijvoorbeeld een uitbrei ding gebruiken om een skelet C-project uit een mogelijkheidsprofiel te genereren. U kunt echter een IDE gebruiken om hulp modellen voor apparaten te ontwerpen en implementeren.
-
-## <a name="certify-an-iot-plug-and-play-device"></a>Een IoT Plug en Play-apparaat certificeren
-
-Als ontwikkelaar van apparaten kunt u IoT-hardwareproducten verzenden voor certificering. U kunt een gecertificeerd apparaat publiceren in de catalogus met gecertificeerde voor IoT-apparaten. De stappen voor het certificerings proces zijn:
-
-- Word lid van de [Microsoft Partner Network](https://partner.microsoft.com).
-- Onboarding naar de Certified voor Azure IoT-Portal.
-- Een IoT Plug en Play-mogelijkheidsprofiel en marketing gegevens verzenden om een nieuwe apparaat-record te maken.
-- Automatische set validatie tests voor het apparaat door geven.
-- Publiceer naar de catalogus met gecertificeerde voor IoT-apparaten.
+> [!Important]
+> IoT Plug en Play-apparaten moeten gebruikmaken van MQTT of MQTT via WebSockets. Andere protocollen, zoals AMQP of HTTP, zijn niet geldig voor het implementeren van IoT Plug en Play-apparaten.
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Tijdens de open bare preview is IoT Plug en Play in alle regio's beschikbaar.
-
-## <a name="message-quotas-in-iot-hub"></a>Bericht quota's in IoT Hub
-Tijdens de open bare preview verzenden IoT Plug en Play-apparaten afzonderlijke berichten per interface, waardoor het aantal berichten dat kan worden meegeteld voor uw [bericht quotum](../iot-hub/iot-hub-devguide-quotas-throttling.md), kan toenemen.
+Deze vernieuwde IoT Plug en Play Preview is momenteel beschikbaar in IoT-hubs die zijn gemaakt in de regio's VS - centraal, Europa - noord en Japan - oost.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een overzicht van IoT Plug en Play hebt, is de voorgestelde volgende stap het uitproberen van een van de Quick starts:
+Nu u een overzicht van IoT Plug en Play hebt gekregen, is de voorgestelde volgende stap het uitproberen van een van de quickstart:
 
-- [Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken](./quickstart-create-pnp-device-windows.md)
-- [Een apparaat verbinden met IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
-- [Verbinding maken met een apparaat in uw oplossing](./quickstart-connect-pnp-device-solution-node.md)
+- [Een apparaat verbinden met IoT Hub (C)](./quickstart-connect-device-c.md)
+- [Interactie met een apparaat vanuit uw oplossing (Node.js)](./quickstart-service-node.md)
+

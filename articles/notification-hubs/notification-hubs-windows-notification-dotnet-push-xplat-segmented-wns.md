@@ -17,29 +17,29 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: be20cd583be7c9c87d9f3a3cebc6609764384c9a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72385606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084225"
 ---
-# <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Zelf studie: meldingen verzenden naar specifieke apparaten met Universeel Windows-platform-toepassingen
+# <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Zelfstudie: Meldingen verzenden naar specifieke apparaten met Universal Windows Platform-toepassingen
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelf studie leert u hoe u Azure Notification Hubs kunt gebruiken om de uittellingen van nieuws berichten te verzenden. In deze zelf studie worden de toepassingen Windows Store of Windows Phone 8,1 (niet-Silverlight) besproken. Als u Windows Phone 8,1 Silverlight hebt, raadpleegt u [Push meldingen naar specifieke Windows Phone apparaten met behulp van Azure notification hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs meldingen voor belangrijk nieuws verzendt. In deze zelfstudie worden de toepassingen Windows Store of Windows Phone 8.1 (niet-Silverlight) besproken. Als uw doel Windows Phone 8.1 Silverlight is, raadpleegt u [Pushmeldingen verzenden naar specifieke Windows Phone-apps met Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
-In deze zelf studie leert u hoe u Azure Notification Hubs kunt gebruiken om meldingen te pushen naar specifieke Windows-apparaten met een Universeel Windows-platform-toepassing (UWP). Nadat u de zelf studie hebt voltooid, kunt u zich registreren voor de laatste nieuws categorieën waarin u bent geïnteresseerd. U ontvangt alleen push meldingen voor deze categorieën.
+In deze zelfstudie leert u hoe u Azure Notification Hubs gebruikt om pushmeldingen te versturen naar specifieke Windows-apparaten waarop een UWP-toepassing (Universal Windows Platform) wordt uitgevoerd. Nadat u de zelfstudie hebt voltooid, kunt u zich registreren voor de laatste nieuwscategorieën waarin u bent geïnteresseerd. U ontvangt alleen pushmeldingen voor deze categorieën.
 
-Als u uitzend scenario's wilt inschakelen, neemt u een of meer *Tags* op wanneer u een registratie maakt in de notification hub. Wanneer meldingen naar een tag worden verzonden, ontvangen alle apparaten die zijn geregistreerd voor het label de melding. Zie [route ring en label expressies](notification-hubs-tags-segment-push-message.md)voor meer informatie over tags.
+Om Broadcast-scenario's mogelijk te maken, voegt u een of meer *tags* (of labels) toe wanneer u een registratie maakt in Notifications Hub. Wanneer meldingen worden verzonden naar een tag, ontvangen alle apparaten die zijn geregistreerd voor de tag de melding. Zie [Routering en tagexpressies](notification-hubs-tags-segment-push-message.md) voor meer informatie over tags.
 
 > [!NOTE]
-> Windows Store en Windows Phone project versies 8,1 en lager worden niet ondersteund in Visual Studio 2019. Zie [Visual Studio 2019-platform doelen en-compatibiliteit](/visualstudio/releases/2019/compatibility)voor meer informatie.
+> Projectversies 8.1 en lager van Windows Store en Windows Phone worden niet ondersteund in Visual Studio 2019. Zie [Geschikte platforms voor Visual Studio 2019 en compatibiliteit](/visualstudio/releases/2019/compatibility) voor meer informatie.
 
-In deze zelf studie voert u de volgende taken uit:
+In deze zelfstudie gaat u de volgende taken uitvoeren:
 
 > [!div class="checklist"]
 > * Categorieselectie toevoegen aan de mobiele app
@@ -49,13 +49,13 @@ In deze zelf studie voert u de volgende taken uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet de zelfstudie [Meldingen verzenden naar Universal Windows Platform-apps met behulp van Azure Notification Hubs][get-started] hebben voltooid voordat u aan deze zelfstudie begint.  
+U moet de [Zelfstudie: Meldingen verzenden naar Universal Windows Platform-apps met behulp van Azure Notification Hubs][get-started] hebben voltooid voordat u aan deze zelfstudie begint.  
 
 ## <a name="add-category-selection-to-the-app"></a>Categorieselectie toevoegen aan de app
 
-De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdpagina, zodat gebruikers categorieën kunnen selecteren waarvoor ze zich willen registreren. De geselecteerde categorieën worden op het apparaat opgeslagen. Wanneer de app wordt gestart, maakt deze een apparaatregistratie in uw notification hub, met de geselecteerde categorieën als Tags.
+De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdpagina, zodat gebruikers categorieën kunnen selecteren waarvoor ze zich willen registreren. De geselecteerde categorieën worden op het apparaat opgeslagen. Wanneer de app wordt gestart, wordt er een apparaatregistratie gemaakt in uw meldingshub, met de geselecteerde categorieën als tags.
 
-1. Open het project bestand *MainPage. xaml* en kopieer de volgende code in het `Grid` element:
+1. Open het projectbestand *MainPage.xaml* en kopieer de volgende code naar het `Grid`-element:
 
     ```xml
     <Grid>
@@ -81,9 +81,9 @@ De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdpagina, z
     </Grid>
     ```
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project en selecteer**klasse** **toevoegen** > . Geef in **Nieuw item toevoegen**de klasse- *meldingen*een naam en selecteer **toevoegen**. Voeg, indien nodig, `public` de modificator toe aan de klassedefinitie.
+1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Toevoegen** > **Klasse**. Geef in **Nieuw item toevoegen**de klasse de naam *Meldingen*en selecteer **Toevoegen**. Voeg indien nodig de modifier `public` toe aan de klassedefinitie.
 
-1. Voeg de volgende `using` -instructies toe aan het nieuwe bestand:
+1. Voegde volgende `using`-instructies toe aan het nieuwe codebestand:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -136,14 +136,14 @@ De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdpagina, z
 
     Deze klasse gebruik de lokale opslag voor het opslaan van de nieuwscategorieën die dit apparaat moet ontvangen. In plaats van de methode `RegisterNativeAsync` aan te roepen, verstuurt u een aanroep naar `RegisterTemplateAsync` om u te registreren voor de categorieën met behulp van een registratiesjabloon.
 
-    Als u meer dan één sjabloon wilt registreren, geeft u een sjabloon naam op, bijvoorbeeld *simpleWNSTemplateExample*. U geef de sjablonen een naam zodat u ze kunt bijwerken of verwijderen. U kunt meer dan één sjabloon registreren voor pop-upmeldingen en één voor tegels.
+    Als u meer dan één sjabloon wilt registreren, geeft u een sjabloonnaam op (zoals *VoorbeeldEenvoudigWNSsjabloon*). U geef de sjablonen een naam zodat u ze kunt bijwerken of verwijderen. U kunt meer dan één sjabloon registreren voor pop-upmeldingen en één voor tegels.
 
     >[!NOTE]
-    > Met Notification Hubs kan een apparaat meerdere sjablonen registreren met behulp van dezelfde tag. In dit geval wordt een inkomend bericht dat de tag bedoelt, in meerdere meldingen bezorgd bij het apparaat, één voor elke sjabloon. Met dit proces kunt u hetzelfde bericht weer geven in meerdere visuele meldingen, zoals een badge en als een pop-upmelding in een Windows Store-app.
+    > Met Notification Hubs kan een apparaat meerdere sjablonen registreren met behulp van dezelfde tag. In dit geval wordt een inkomend bericht dat gericht is op de tag in meerdere meldingen bezorgd bij het apparaat, één voor elke sjabloon. Met dit proces kunt u hetzelfde bericht weergeven in meerdere visuele meldingen, zoals een badge en als een pop-upmelding in een Windows Store-app.
 
     Zie [Sjablonen](notification-hubs-templates-cross-platform-push-messages.md) voor meer informatie.
 
-1. Voeg in het project bestand *app.xaml.cs* de volgende eigenschap toe aan de `App` klasse:
+1. Voeg in het projectbestand *App.xaml.cs* de volgende eigenschap toe aan de `App`-klasse:
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -183,7 +183,7 @@ De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdpagina, z
     }
     ```
 
-    Met deze methode maakt u een lijst met categorieën en gebruikt u de klasse `Notifications` om de lijst op te slaan in de lokale opslag. Daarnaast worden de bijbehorende tags geregistreerd bij uw meldingshub. Wanneer de categorieën worden gewijzigd, wordt de registratie opnieuw gemaakt met de nieuwe categorieën.
+    Met deze methode maakt u een lijst met categorieën en gebruikt u de klasse `Notifications` om de lijst op te slaan in de lokale opslag. Daarnaast worden de bijbehorende tags geregistreerd bij uw meldingshub. Wanneer de categorieën wijzigen, wordt de registratie opnieuw gemaakt met de nieuwe categorieën.
 
 Uw app kan nu een set categorieën opslaan in de lokale opslag op het apparaat. De app wordt geregistreerd bij de meldingshub wanneer gebruikers de categorieselectie wijzigen.
 
@@ -192,9 +192,9 @@ Uw app kan nu een set categorieën opslaan in de lokale opslag op het apparaat. 
 In dit gedeelte registreert u zich tijdens het opstarten bij de meldingshub met behulp van de categorieën die u hebt opgeslagen in de lokale opslag.
 
 > [!NOTE]
-> Omdat de kanaal-URI die wordt toegewezen door WNS (Windows Notification Service) op elk moment kan veranderen, moet u zich regelmatig registreren voor meldingen om fouten te voorkomen. In dit voorbeeld wordt er elke keer dat de app wordt gestart een registratie voor meldingen vastgelegd. Voor apps die u regel matig uitvoert, kunt u meer dan één keer per dag de registratie overs Laan als er minder dan een dag is verstreken sinds de vorige registratie.
+> Omdat de kanaal-URI die wordt toegewezen door WNS (Windows Notification Service) op elk moment kan veranderen, moet u zich regelmatig registreren voor meldingen om fouten te voorkomen. In dit voorbeeld wordt er elke keer dat de app wordt gestart een registratie voor meldingen vastgelegd. Voor apps die u regelmatig uitvoert (bijv., meer dan één keer per dag), kunt u de registratie waarschijnlijk overslaan om bandbreedte te besparen als er minder dan een dag is verstreken sinds de vorige registratie.
 
-1. Als u de `notifications` klasse wilt gebruiken om u te abonneren op basis van categorieën, opent u het *app.xaml.cs* -bestand en werkt u de `InitNotificationsAsync` methode bij.
+1. Als u de klasse `notifications` wilt gebruiken om u te abonneren op basis van categorieën, opent u het bestand *App.xaml.cs* en werkt u vervolgens de `InitNotificationsAsync`-methode bij.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -205,8 +205,8 @@ In dit gedeelte registreert u zich tijdens het opstarten bij de meldingshub met 
     var result = await notifications.SubscribeToCategories();
     ```
 
-    Dit proces zorgt ervoor dat bij het starten van de app de categorieën worden opgehaald uit de lokale opslag. Vervolgens wordt de registratie van deze categorieën opgevraagd. U hebt de `InitNotificationsAsync` methode gemaakt als onderdeel van het [verzenden van meldingen naar universeel Windows-platform-apps met behulp][get-started] van de notification hubs zelf studie van Azure.
-2. In het project bestand *MainPage.xaml.cs* voegt u de volgende code toe aan `OnNavigatedTo` de methode:
+    Dit proces zorgt ervoor dat wanneer de app wordt gestart, de categorieën worden opgehaald uit de lokale opslag. Vervolgens wordt de registratie van deze categorieën aangevraagd. U heeft de methode `InitNotificationsAsync` gemaakt als deel van de zelfstudie [Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs][get-started].
+2. Voeg in het projectbestand *MainPage.xaml.cs* de volgende code toe aan de methode `OnNavigatedTo`:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -224,7 +224,7 @@ In dit gedeelte registreert u zich tijdens het opstarten bij de meldingshub met 
 
     Met deze code wordt de hoofdpagina bijgewerkt op basis van de status van eerder opgeslagen categorieën.
 
-De app is nu klaar Hiermee kan een set categorieën worden opgeslagen in de lokale opslag van het apparaat. Wanneer gebruikers de categorie selectie wijzigen, worden de opgeslagen categorieën gebruikt voor registratie bij de notification hub. In het volgende gedeelte definieert u een back-end die categoriemeldingen naar deze app kan verzenden.
+De app is nu klaar Het kan nu een set categorieën opslaan in de lokale opslag op het apparaat. Wanneer gebruikers de categorieselectie wijzigen, worden de opgeslagen categorieën gebruikt voor registratie bij de meldingshub. In het volgende gedeelte definieert u een back-end die categoriemeldingen naar deze app kan verzenden.
 
 ## <a name="run-the-uwp-app"></a>De UWP-app uitvoeren
 
@@ -232,23 +232,23 @@ De app is nu klaar Hiermee kan een set categorieën worden opgeslagen in de loka
 
    ![De app Breaking News](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
-1. Schakel een of meer categorie in of uit en selecteer vervolgens **Abonneren**.
+1. Zet een of meer categorieën op On en selecteer vervolgens **Subscribe**.
 
-   De app zet de geselecteerde categorieën om in tags en vraagt bij Notification Hubs een nieuwe apparaatregistratie aan voor de geselecteerde tags. In de app worden de geregistreerde categorieën in een dialoog venster weer gegeven.
+   De app zet de geselecteerde categorieën om in tags en vraagt bij Notification Hubs een nieuwe apparaatregistratie aan voor de geselecteerde tags. In de app worden de geregistreerde categorieën in een dialoogvenster weergegeven.
 
     ![Schakelopties voor categorieën en de knop Subscribe](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast.png)
 
-## <a name="create-a-console-app-to-send-tagged-notifications"></a>Een console-app maken om gelabelde meldingen te verzenden
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Een console-app maken om getagde meldingen te verzenden
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-console-app-to-send-tagged-notifications"></a>De console-app uitvoeren om gelabelde meldingen te verzenden
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>Console-app uitvoeren om getagde meldingen te verzenden
 
 Voer de app uit die u in de vorige sectie hebt gemaakt. Meldingen voor de geselecteerde categorieën worden weergegeven als pop-upmeldingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u belangrijk nieuws per categorie kunt broadcasten. De back-endtoepassing pusht gelabelde meldingen naar apparaten die zijn geregistreerd voor het ontvangen van meldingen voor die tag. Ga door naar de volgende zelf studie voor meer informatie over het pushen van meldingen naar specifieke gebruikers, onafhankelijk van het apparaat dat ze gebruiken:
+In dit artikel hebt u geleerd hoe u belangrijk nieuws per categorie kunt broadcasten. De back-endtoepassing verstuurt getagde pushmeldingen naar apparaten die zich hebben geregistreerd voor het ontvangen van meldingen voor die tag. Als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke gebruikers, ongeacht welk apparaat ze gebruiken, gaat u verder met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
 > [Gelokaliseerde pushmeldingen verzenden naar Windows-apps met Azure Notification Hubs](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -265,8 +265,8 @@ In dit artikel hebt u geleerd hoe u belangrijk nieuws per categorie kunt broadca
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

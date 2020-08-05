@@ -4,39 +4,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: c43194db6d1d629003079db7248223aee52ffa70
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 99540e8518aa31a2221844aa954ff665609d8217
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609625"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374672"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
-> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+> * [Een resource voor de Azure-spraakservice maken](../../../../get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
+> * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 ## <a name="setup-your-environment"></a>Uw omgeving instellen
 
-Werk het bestand go. rest met de nieuwste SDK-versie bij door deze regel toe te voegen
+Werk het bestand go.mod bij met de nieuwste SDK-versie door deze regel toe te voegen
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.1
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
 )
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
-1. Vervang de inhoud van het bron bestand (bijvoorbeeld `sr-quickstart.go` ) door de onderstaande, waaronder:
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
+1. Vervang de inhoud van het bronbestand (bijvoorbeeld `sr-quickstart.go`) door de onderstaande, die het volgende bevat:
 
-- de hoofd definitie van het pakket
-- de benodigde modules importeren uit de Speech SDK
-- variabelen voor het opslaan van de abonnements gegevens die later in deze Snelstartgids zullen worden vervangen
-- een eenvoudige implementatie met behulp van de microfoon voor audio-invoer
-- gebeurtenis-handlers voor verschillende gebeurtenissen die plaatsvinden tijdens een spraak herkenning
+- definitie van het 'main'-pakket
+- de benodigde modules importeren uit de Spraak-SDK
+- variabelen voor het opslaan van de abonnementsgegevens die later in deze quickstart worden vervangen
+- een eenvoudige implementatie waarin de microfoon wordt gebruikt voor audio-invoer
+- gebeurtenis-handlers voor verschillende gebeurtenissen die plaatsvinden tijdens spraakherkenning
 
 ```sh
 package recognizer
@@ -96,27 +96,27 @@ func main() {
 }
 ```
 
-Vervang de `YOUR_SUBSCRIPTION_KEY` waarden en door de `YOUR_SUBSCRIPTIONKEY_REGION` werkelijke waarden van de spraak resource.
+Vervang de waarden `YOUR_SUBSCRIPTION_KEY` en `YOUR_SUBSCRIPTIONKEY_REGION` door de werkelijke waarden van de Spraak-resource.
 
-- Ga naar het Azure Portal en open de spraak resource
-- Er zijn twee beschik bare abonnements sleutels onder de **sleutels** aan de linkerkant.
-    - Gebruik een van beide als `YOUR_SUBSCRIPTION_KEY` vervanging van de waarde
-- Noteer de regio onder het **overzicht** aan de linkerkant en wijs deze toe aan de regio-id
-- Gebruik de regio-id als `YOUR_SUBSCRIPTIONKEY_REGION` vervanging van de waarde, bijvoorbeeld: `"westus"` for **VS West**
+- Ga naar de Azure-portal en open de Spraak-resource
+- Onder de **Sleutels** aan de linkerkant bevinden zich twee beschikbare abonnementssleutels
+    - Gebruik een van beide als vervanging van de waarde `YOUR_SUBSCRIPTION_KEY`
+- Noteer de regio onder **Overzicht** aan de linkerkant en wijs deze toe aan de regio-id
+- Gebruik de regio-id als vervanging van de waarde `YOUR_SUBSCRIPTIONKEY_REGION`, bijvoorbeeld `"westus"` voor **US - west**
 
-## <a name="code-explanation"></a>Uitleg bij code
-De sleutel en de regio voor spraak abonnementen zijn vereist voor het maken van een spraak configuratie object. Het configuratie object is vereist voor het instantiëren van een spraak herkennings object.
+## <a name="code-explanation"></a>Uitleg bij de code
+De sleutel en de regio voor het Spraak-abonnement zijn vereist voor het maken van een spraakconfiguratieobject. Het configuratieobject is vereist voor het instantiëren van een spraakherkenningsobject.
 
-Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voor beeld wordt spraak continu herkend. Deze functionaliteit zorgt ervoor dat de spraak service weet dat u veel zinsdelen verzendt voor herkenning en wanneer het programma stopt met het herkennen van spraak. Als er resultaten worden verkregen, worden deze door de code naar de console geschreven.
+Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voorbeeld wordt spraak continu herkend. Door deze functionaliteit weet de Spraak-service dat u veel frasen ter herkenning verzendt, en dat het herkennen van spraak moet stoppen wanneer het programma wordt beëindigd. Wanneer er resultaten worden verkregen, worden deze door de code naar de console geschreven.
 
 ## <a name="build-and-run"></a>Bouwen en uitvoeren
-U kunt nu uw project bouwen en spraak herkenning testen met behulp van de speech-service.
-1. Bouw uw project, bijvoorbeeld **' go build '**
-2. Voer de module uit en spreek een zinsdeel of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar de speech-service en getranscribeerd naar tekst, die wordt weer gegeven in de uitvoer.
+U bent nu klaar om uw app te bouwen en de spraakherkenning met behulp van de Spraak-service te testen.
+1. Compileer uw project, bijvoorbeeld **"go-build"**
+2. Voer de module uit en spreek enkele woorden of een zin in de microfoon van uw apparaat. Uw gesproken tekst wordt verzonden naar de Spraak-service en getranscribeerd naar tekst, die in de uitvoer wordt weergegeven.
 
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 
 ## <a name="next-steps"></a>Volgende stappen

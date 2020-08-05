@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een aangepaste spraak assistent maken, Java-spraak service'
+title: 'Quickstart: Een Custom Voice-assistent maken, Java - Spraakservice'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: trrwilson
@@ -8,17 +8,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 03/20/2020
+ms.custom: devx-track-java
 ms.author: travisw
-ms.openlocfilehash: 42c835a42bf9172e602d9425659243aff3e118a0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: f2a4f7881eaaac5093200f130c360bfb6b8c64d7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241155"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375776"
 ---
-**Kies uw doel omgeving**
+**Uw doelomgeving kiezen**
 
-# <a name="java-runtime"></a>[Java-runtime](#tab/jre)
+# <a name="java-runtime"></a>[Java Runtime](#tab/jre)
 
 [!INCLUDE [JRE](./jre.md)]
 

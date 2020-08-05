@@ -1,99 +1,99 @@
 ---
-title: 'Overzicht: wat is Azure Time Series Insights? -Azure Time Series Insights | Microsoft Docs'
+title: 'Overzicht: Wat is Azure Time Series Insights? - Azure Time Series Insights | Microsoft Docs'
 description: Inleiding tot Azure Time Series Insights, een nieuwe service voor de analyse van tijdreeksgegevens en IoT-oplossingen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 59149b2ca598104d8aca9b4e5e60194a8f6398bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1ab17e2c24d106e1aec0b546a6efd05ac4c3e32f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81269955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020522"
 ---
-# <a name="what-is-azure-time-series-insights"></a>Wat is Azure Time Series Insights?
+# <a name="what-is-azure-time-series-insights-gen1"></a>Wat is Azure Time Series Insights Gen1?
 
-Azure Time Series Insights is ontworpen om grote hoeveel heden tijdreeks gegevens op te slaan, te visualiseren en op te vragen, zoals die zijn gegenereerd door IoT-apparaten. Als u tijdreeksgegevens wilt opslaan, beheren, opvragen of visualiseren in de cloud, is Time Series Insights waarschijnlijk de juiste keuze voor u.
+Azure Time Series Insights is gebouwd om grote volumes gegenereerde tijdreeksgegevens van IoT-apparaten op te slaan en te visualiseren of er query's op uit te voeren. Als u tijdreeksgegevens wilt opslaan, beheren, opvragen of visualiseren in de cloud, is Azure Time Series Insights waarschijnlijk de juiste keuze voor u.
 
-[![Stroomdiagram van Time Series Insights](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
+[![Stroomdiagram van Azure Time Series Insights](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
 
-Time Series Insights heeft vier belangrijke taken:
+Azure Time Series Insights heeft vier belangrijke taken:
 
-- Het is volledig geïntegreerd met Cloud gateways zoals Azure IoT Hub en Azure Event Hubs. Hierdoor kan er eenvoudig verbinding worden maakt met deze gebeurtenisbronnen en kan er JSON worden geparseerd uit berichten en structuren met gegevens in overzichtelijke rijen en kolommen. Metagegevens worden samengevoegd met telemetriegegevens en de gegevens worden geïndexeerd in een columnar store.
-- Time Series Insights beheert de opslag van uw gegevens. Om ervoor te zorgen dat de gegevens altijd gemakkelijk toegankelijk zijn, worden uw gegevens in het geheugen en Ssd's tot 400 dagen bewaard. U kunt binnen enkele seconden op aanvraag miljarden gebeurtenissen opvragen.
-- Time Series Insights biedt een out-of-the-box visualisatie via de Time Series Insights Explorer.
-- Time Series Insights biedt een query service, zowel in de Time Series Insights Verkenner als door gebruik te maken van Api's die eenvoudig zijn te integreren om uw tijdreeks gegevens in te sluiten in aangepaste toepassingen.
+- De service is volledig geïntegreerd met cloudgateways zoals Azure IoT Hub en Azure Event Hubs. Hierdoor kan er eenvoudig verbinding worden maakt met deze gebeurtenisbronnen en kan er JSON worden geparseerd uit berichten en structuren met gegevens in overzichtelijke rijen en kolommen. Metagegevens worden samengevoegd met telemetriegegevens en de gegevens worden geïndexeerd in een columnar store.
+- Azure Time Series Insights beheert de opslag van uw gegevens. Om te zorgen dat gegevens altijd eenvoudig toegankelijk zijn, worden uw gegevens gedurende maximaal 400 dagen opgeslagen in het geheugen en op SSD's. U kunt binnen enkele seconden interactief miljarden gebeurtenissen opvragen.
+- Azure Time Series Insights biedt een out-of-the-box visualisatie via de Azure Time Series Insights Explorer.
+- Azure Time Series Insights biedt een queryservice, zowel in de Azure Time Series Insights Explorer die eenvoudig kunnen worden geïntegreerd voor het insluiten van tijdreeksgegevens in aangepaste toepassingen.
 
-Als u een toepassing bouwt voor intern verbruik of voor gebruik door externe klanten, kunt u Time Series Insights als een back-end gebruiken. U kunt deze gebruiken om time series-gegevens te indexeren, op te slaan en samen te voegen. Als u een aangepaste visualisatie en gebruikers ervaring bovenaan wilt maken, gebruikt u de [client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Time Series Insights is ook voorzien van verschillende [query-api's](how-to-shape-query-json.md) om deze aangepaste scenario's mogelijk te maken.
+Als u een toepassing bouwt voor intern verbruik of voor gebruik door externe klanten, kunt u Azure Time Series Insights als een back-end gebruiken. U kunt deze gebruiken om tijdreeksgegevens te indexeren, op te slaan en samen te voegen. Om een aangepaste visualisatie en gebruikerservaring samen te stellen, gebruikt u de [Client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Azure Time Series Insights is ook voorzien van verschillende [Query-Api's](how-to-shape-query-json.md) om deze aangepaste scenario's mogelijk te maken.
 
-Tijdreeksgegevens tonen aan hoe een asset of proces verandert in de loop der tijd. Tijdreeks gegevens worden geïndexeerd door tijds tempels en tijd is de meest relevante as waarmee dergelijke gegevens zijn ingedeeld. Tijdreeks gegevens arriveren doorgaans in sequentiële volg orde, zodat deze worden behandeld als een invoeg toepassing in plaats van een update voor uw data base.
+Tijdreeksgegevens tonen aan hoe een asset of proces verandert in de loop der tijd. Tijdreeksgegevens worden geïndexeerd door timestamps en tijd is de meest relevante as waarmee dergelijke gegevens zijn ingedeeld. Tijdreeksgegevens komen meestal binnen op volgorde en worden daarom doorgaans behandeld als een invoeging in plaats van een update van de database.
 
-Het kan een uitdaging zijn om tijd reeks gegevens in grote volumes op te slaan, te indexeren, op te vragen, te analyseren en te visualiseren.
-Azure Time Series Insights legt een nieuwe gebeurtenis vast en slaat deze op in de loop van de tijd. Als gevolg hiervan kunt u in het verleden achterwaarts zoeken naar inzichten om toekomstige wijzigingen te voors pellen.
+Het kan een uitdaging zijn om tijdreeksgegevens in grote volumes op te slaan, te indexeren, op te vragen, te analyseren en te visualiseren.
+Azure Time Series Insights legt een nieuwe gebeurtenis vast en slaat deze op als een rij en veranderingen worden efficiënt bijgehouden. Als gevolg hiervan kunt u in het verleden achterwaarts zoeken naar inzichten om toekomstige wijzigingen te voorspellen.
 
 ## <a name="video"></a>Video
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Meer informatie over Azure Time Series Insights, het op de cloud gebaseerde IoT Analytics-platform.</br>
 
-[![HARDWARE](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[![VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Primaire scenario's
 
-- Time Series-gegevens op een schaal bare manier opslaan.
+- Tijdreeksgegevens opslaan op een schaalbare manier.
 
-   De basis van Time Series Insights is een database die speciaal is ontworpen voor het werken met tijdreeksgegevens. Omdat het een schaalbaar en volledig beheerd Time Series Insights, wordt het werk van het opslaan en beheren van gebeurtenissen verwerkt.
+   De basis van Azure Time Series Insights is een database die speciaal is ontworpen voor het werken met tijdreeksgegevens. Omdat de database schaalbaar en volledig beheerd is, verzorgt Azure Time Series Insights het opslaan en beheren van gebeurtenissen.
 
-- Verken gegevens bijna in realtime.
+- Gegevens bijna in realtime verkennen.
 
-   Time Series Insights biedt een Explorer-Verkenner waarmee alle gegevens die in een omgeving worden gestreamd worden gevisualiseerd. Kort nadat u verbinding hebt gemaakt met een gebeurtenis bron, kunt u gebeurtenis gegevens in Time Series Insights bekijken, verkennen en er query's op uitvoeren. De gegevens helpen u om te controleren of een apparaat gegevens verzendt zoals verwacht en om een IoT-activum te bewaken voor status, productiviteit en algehele effectiviteit.
+   Azure Time Series Insights biedt een verkenner die alle gegevens visualiseert die in een omgeving binnenkomen. Kort nadat u verbinding hebt gemaakt met een gebeurtenisbron, kunt u gebeurtenisgegevens bekijken, verkennen en opvragen binnen Azure Time Series Insights. De gegevens helpt u om te valideren of een apparaat op de verwachte manier gegevens uitzendt en om een IoT-asset te controleren op status, productiviteit en algehele effectiviteit.
 
-- Voer een analyse van de hoofd oorzaak uit en detectie afwijkingen.
+- Analyse van de hoofdoorzaak uitvoeren en afwijkingen detecteren.
 
-   Time Series Insights heeft hulpprogram ma's zoals patronen en perspectief weergaven voor het uitvoeren en opslaan van analyse van de hoofd oorzaak van meerdere stappen. Time Series Insights werkt ook met waarschuwings services zoals Azure Stream Analytics, zodat u waarschuwingen en gedetecteerde afwijkingen in bijna realtime kunt bekijken in de Time Series Insights Verkenner.
+   Azure Time Series Insights bevat hulpprogramma's zoals patronen en perspectiefweergaven voor het uitvoeren en opslaan van een hoofdoorzaakanalyse (root-cause analysis) die uit meerdere stappen bestaat. Azure Time Series Insights werkt ook met waarschuwingsservices zoals Azure Stream Analytics, zodat waarschuwingen en gedetecteerde afwijkingen in bijna realtime kunnen worden weergegeven in de Azure Time Series Insights Explorer.
 
-- Krijg een globaal overzicht van de tijdreeks gegevens die stromen van verschillende locaties voor vergelijking tussen meerdere assets en sites.
+- Verkrijg een globale weergave van tijdreeksgegevens die vanaf verschillende locaties binnenkomen voor vergelijking van meerdere assets of sites.
 
-   U kunt meerdere bronnen van gebeurtenissen verbinden met een Time Series Insights-omgeving. Op deze manier kunt u gegevens weer geven die in vrijwel realtime worden gestreamd vanaf meerdere, ongelijksoortige locaties. Gebruikers kunnen profiteren van deze zicht baarheid om gegevens met bedrijfs leiders te delen. Ze kunnen beter samen werken met domein experts die hun expertise kunnen helpen bij het oplossen van problemen, het Toep assen van aanbevolen procedures en het delen van informatie.
+   U kunt meerdere bronnen van gebeurtenissen verbinden met een Azure Time Series Insights-omgeving. Op deze manier kunt u gegevens weergeven die in vrijwel realtime worden gestreamd vanaf meerdere, ongelijksoortige locaties. Gebruikers kunnen profiteren van deze zichtbaarheid om gegevens met bedrijfsleiders te delen. Ze kunnen beter samenwerken met domeinexperts die hun expertise kunnen helpen bij het oplossen van problemen, het toepassen van aanbevolen procedures en het delen van informatie.
 
-- Bouw een klant toepassing bovenop Time Series Insights.
+- Klanttoepassing bouwen op basis van Azure Time Series Insights.
 
-   Time Series Insights maakt REST query-Api's die u kunt gebruiken om toepassingen te bouwen die gebruikmaken van tijdreeks gegevens.
+   Azure Time Series Insights beschikt over REST-query-API's, zodat u toepassingen kunt ontwikkelen die gebruikmaken van tijdreeksgegevens.
 
 ## <a name="capabilities"></a>Functionaliteit
 
-- **Snel aan de slag**: Azure time series Insights vereist geen voorafe gegevens voorbereiding, zodat u snel verbinding kunt maken met miljoenen gebeurtenissen in uw IOT-hub of event hub. Nadat u verbinding hebt gemaakt, kunt u sensor gegevens visualiseren en ermee werken om uw IoT-oplossingen snel te valideren. U kunt met uw gegevens werken zonder code te schrijven en u hoeft geen nieuwe taal te leren kennen. Time Series Insights biedt een gedetailleerd onderliggend, vrije-tekst query vlak voor geavanceerde gebruikers en Point-and-Klik verkennen.
+- **Snel aan de slag**: Voor Azure Time Series Insights is geen gegevensvoorbereiding vooraf vereist, zodat u snel verbinding kunt maken met miljoenen gebeurtenissen in uw IoT-hub of Event Hub. Na hu de verbinding tot stand hebt gebracht, kunt u sensorgegevens visualiseren en bewerken om uw IoT-oplossingen snel te valideren. U kunt met uw gegevens werken zonder code te schrijven en u hoeft geen nieuwe taal te leren. Azure Time Series Insights biedt een gedetailleerde queryruimte voor vrije tekst voor ervaren gebruikers, evenals een wijs-en-klik-mogelijkheid.
 
-- **Nabije real-time inzichten**: Time Series Insights kunnen miljoenen sensor gebeurtenissen per dag opnemen, met een latentie van één minuut. Time Series Insights helpt u bij het verkrijgen van inzicht in uw sensor gegevens. Gebruik het om trends en afwijkingen op te sporen, de oorzaak van analyses uit te voeren en dure uitval tijd te voor komen. Kruis correlatie tussen realtime en historische gegevens helpt u bij het vinden van verborgen trends in de gegevens.
+- **Inzichten in bijna realtime**: Azure Time Series Insights kan miljoenen sensorgebeurtenissen per dag opnemen, met slechts één minuut latentie. Azure Time Series Insights helpt u bij het verkrijgen van inzicht in uw sensorgegevens. Gebruik het om trends en afwijkingen op te sporen, de analyses van hoofdoorzaken uit te voeren en dure downtime te voorkomen. Kruiscorrelatie tussen realtime en historische gegevens, stelt u in staat om verborgen trends in uw gegevens te vinden.
 
-- **Bouw aangepaste oplossingen**: Azure time series Insights gegevens insluiten in uw bestaande toepassingen. U kunt ook nieuwe aangepaste oplossingen maken met de Time Series Insights REST Api's. U kunt bovendien persoonlijke weergaven maken die u kunt delen met anderen om zo uw inzichten breder beschikbaar te maken.
+- **Aangepaste oplossingen ontwikkelen**: Azure Time Series Insights-gegevens insluiten in uw bestaande toepassingen. U kunt ook nieuwe aangepaste oplossingen maken met de Azure Time Series Insights REST API's. U kunt bovendien persoonlijke weergaven maken die u kunt delen met anderen om zo uw inzichten breder beschikbaar te maken.
 
-- **Schaal baarheid**: Time Series Insights is ontworpen om IOT op schaal te ondersteunen. De service kan 1 miljoen tot 100 miljoen gebeurtenissen per dag worden opnemen, met een standaardbewaarperiode van 31 dagen. U kunt live gegevens stromen in bijna realtime visualiseren en analyseren, naast historische gegevens.
+- **Schaalbaarheid**: Azure Time Series Insights kan zeer grote hoeveelheden IoT-gegevens opnemen. De service kan 1 miljoen tot 100 miljoen gebeurtenissen per dag worden opnemen, met een standaardbewaarperiode van 31 dagen. U hebt de mogelijkheid om live gegevensstromen bijna in realtime te visualiseren en te analyseren, naast historische gegevens.
 
 ## <a name="get-started"></a>Aan de slag
 
-Voer de volgende stappen uit om aan de slag te gaan.
+Volg deze stappen om aan de slag te gaan.
 
-1. Een Time Series Insights omgeving inrichten in de Azure Portal.
-1. Verbinding maken met een gebeurtenis bron, zoals een IoT-hub of een Event Hub.
-1. Upload referentie gegevens. Dit is geen aanvullende service.
-1. Uw gegevens in enkele minuten bekijken en weer geven met de Time Series Insights Explorer.
+1. Een Azure Time Series Insights-omgeving in de Azure-portal inrichten.
+1. Maak verbinding met een gebeurtenisbron zoals Azure-IoT Hub of een Event Hub.
+1. Verwijzingsgegevens uploaden. Dit is geen aanvullende service.
+1. Bekijk en geef uw gegevens snel weer met de Azure Time Series Insights Explorer.
 
-## <a name="explorer"></a>Verkenner
+## <a name="explorer"></a>Explorer
 
 Bekijk, analyseer en ontdek trends in uw gegevens met behulp van de Azure Time Series Insights Explorer.
 
-![Verkenner van Time Series Insights](media/overview/time-series-insights-explorer-panel.png)
+![Azure Time Series Insights Explorer](media/overview/time-series-insights-explorer-panel.png)
 
-Meer informatie over het gebruik van de [Azure time series Insights Explorer](time-series-insights-explorer.md) en het tekenen van inzichten op basis van uw gegevens.
+Meer informatie over het gebruik van de [Azure Time Series Insights Explorer](time-series-insights-explorer.md) en het verkrijgen van inzichten uit uw gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Verken de [gratis demonstratie omgeving](./time-series-quickstart.md)van Azure time series Insights algemene Beschik baarheid.
+- Verken de [demo-omgeving](./time-series-quickstart.md) van Azure Time Series Insights Gen1.
 
-- Meer informatie over het [plannen van uw time series Insights](time-series-insights-environment-planning.md) -omgeving.
+- Meer informatie over het [plannen van uw Azure Time Series Insights](time-series-insights-environment-planning.md)-omgeving.

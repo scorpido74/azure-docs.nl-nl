@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-Azure Security Center gebruiken voor Linux-Vm's in azure
+title: 'Zelfstudie: Azure Security Center gebruiken voor virtuele Linux-machines in Azure'
 description: In deze zelfstudie krijgt u informatie over de functies van Azure Security Center die helpen uw virtuele Linux-machines in Azure te beschermen en te beveiligen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080094"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
 
@@ -29,7 +29,7 @@ Met Azure Security Center kunt u meer inzicht krijgen in de beveiliging van uw A
 > * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen controleren
+> * Gedetecteerde bedreigingen kunt controleren
 
 ## <a name="security-center-overview"></a>Overzicht van Security Center
 
@@ -57,7 +57,7 @@ Vervolgens wordt de Security Center-agent voor gegevensverzameling op alle VM's 
 
 ## <a name="set-up-a-security-policy"></a>Een beveiligingsbeleid instellen
 
-Een beveiligingsbeleid wordt gebruikt voor het definiëren van de items waarvoor Security Center gegevens verzamelt en aanbevelingen doet. U kunt verschillende soorten beveiligingsbeleid toepassen op verschillende sets van Azure-resources. Hoewel Azure-resources standaard voor alle beleidsitems worden geëvalueerd, kunt u afzonderlijke beleidsitems uitschakelen voor alle Azure-resources of voor een resourcegroep. Zie [Beveiligingsbeleid instellen in Azure Security Center](../../security-center/security-center-policies.md) voor gedetailleerde informatie over Security Center-beveiligingsbeleid. 
+Een beveiligingsbeleid wordt gebruikt voor het definiëren van de items waarvoor Security Center gegevens verzamelt en aanbevelingen doet. U kunt verschillende soorten beveiligingsbeleid toepassen op verschillende sets van Azure-resources. Hoewel Azure-resources standaard voor alle beleidsitems worden geëvalueerd, kunt u afzonderlijke beleidsitems uitschakelen voor alle Azure-resources of voor een resourcegroep. Zie [Beveiligingsbeleid instellen in Azure Security Center](../../security-center/tutorial-security-policy.md) voor gedetailleerde informatie over Security Center-beveiligingsbeleid. 
 
 Een beveiligingsbeleid voor een volledig abonnement instellen:
 
@@ -102,14 +102,14 @@ Wanneer aanbevelingen worden doorgevoerd, worden ze als opgelost gemarkeerd.
 
 ## <a name="view-detected-threats"></a>Gedetecteerde bedreigingen bekijken
 
-Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie [How Security Center bedreigingen detecteren?](../../security-center/security-center-alerts-overview.md#detect-threats)voor uitgebreide informatie over de detectie mogelijkheden van Security Center bedreigingen.
+Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Lees [How does Security Center detect threats?](../../security-center/security-center-alerts-overview.md#detect-threats) (Hoe detecteert Security Center bedreigingen?) voor gedetailleerdere informatie over de detectiemogelijkheden van Security Center.
 
 De functie voor beveiligingsmeldingen vereist dat de Security Center-prijscategorie wordt verhoogd van *Gratis* naar *Standard*. Er is een **gratis proefversie** beschikbaar wanneer u naar deze hogere prijscategorie overstapt. 
 
 De prijscategorie wijzigen:  
 
 1. Klik in het Security Center-dashboard op **Beveiligingsbeleid** en selecteer vervolgens uw abonnement.
-2. Selecteer de **prijs categorie**.
+2. Selecteer **Prijscategorie**.
 3. Selecteer **Standard** en klik vervolgens op **Opslaan** boven in de blade.
 
 
@@ -128,10 +128,9 @@ In deze zelfstudie hebt u Azure Security Center ingesteld en vervolgens VM's in 
 > * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen controleren
+> * Gedetecteerde bedreigingen kunt controleren
 
 Ga naar de volgende zelfstudie voor meer informatie over het maken van een CI/CD-pijplijn met Jenkins, GitHub en Docker.
 
 > [!div class="nextstepaction"]
 > [Een CI/CD-infrastructuur maken met Jenkins, GitHub en Docker](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
-

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076096"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
 
@@ -82,8 +82,9 @@ De volgende stappen laten zien hoe u de virtuele machine voorbereidt voor het ve
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Maak de kluis in elke gewenste regio, met uitzondering van de bronregio
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-1. Selecteer **Een resource maken** > **Beheerhulpprogramma's** > **Backup en Site Recovery**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Typ Recovery Services in het zoekvak > klik op Recovery Services-kluizen
+1. Klik in het menu Recovery Services-kluizen op +Toevoegen.
 1. Bij **Naam** geeft u de beschrijvende naam **ContosoVMVault** op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak de resourcegroep met de naam **ContosoRG**.
 1. Geef een Azure-regio op. Bekijk de geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om te controleren welke regio's worden ondersteund.

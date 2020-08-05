@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045141"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124337"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure Enterprise-rollen beheren
 
@@ -32,7 +32,7 @@ De eerste inschrijvingsbeheerder die wordt ingesteld tijdens het inrichten van d
 
 Als het initiële verificatietype bijvoorbeeld is ingesteld op Gemengd, wordt de EA als een Microsoft-account toegevoegd en krijgt de factuurcontact alleen-lezen EA-beheerdersbevoegdheden. Als de EA-beheerder de Microsoft-accountautorisatie voor een bestaand factuurcontact niet goedkeurt, kan de EA-beheerder de betreffende gebruiker verwijderen en de klant vragen de gebruiker weer toe te voegen als een alleen-lezen beheerder met een werk- of schoolaccount dat alleen is ingesteld op inschrijvingsniveau in de EA-portal.
 
-Deze rollen zijn specifiek voor het beheren van Azure Enterprise Agreements en zijn een aanvulling op de ingebouwde rollen waarover Azure beschikt om toegang tot resources te beheren. Zie [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md) voor meer informatie.
+Deze rollen zijn specifiek voor het beheren van Azure Enterprise Agreements en zijn een aanvulling op de ingebouwde rollen waarover Azure beschikt om toegang tot resources te beheren. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie.
 
 In de volgende secties worden de beperkingen en mogelijkheden van elke rol beschreven.
 
@@ -121,4 +121,4 @@ U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via d
 
 - [Toegang tot factureringsgegevens beheren voor Azure](manage-billing-access.md)
 - [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md)
-- [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)
+- [Ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md)

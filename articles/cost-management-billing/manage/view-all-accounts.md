@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: 75529d03435e92dfff26dac81f4f7e59585b6fe9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 8afa0b1b068aa03bb1add7f029c731b4fc9a4724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039684"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Factureringsaccounts en -bereiken in de Azure-portal
 
@@ -39,7 +39,7 @@ Een bereik is een knooppunt binnen een factureringsaccount waar u facturen kunt 
 
 |Bereik  |Definitie  |
 |---------|---------|
-|Factureringsaccount     | Vertegenwoordigt een overeenkomst dat een klant akkoord gaat met het gebruik van Azure. Bevat een of meer abonnementen.  |
+|Factureringsaccount     | Vertegenwoordigt een overeenkomst dat een klant akkoord gaat met het gebruik van Azure. Dit account bevat een of meer abonnementen.  |
 |Abonnement     |  Verwijst naar een groepering van Azure-resources. De factuur wordt gegenereerd in dit bereik. Andere factureringsgegevens, zoals betalingswijzen en gebruiksadres, worden aan dit bereik gekoppeld.|
 
 ### <a name="enterprise-agreement"></a>Enterprise Agreement

@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067159"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - De gebruikersinterface maken met Angular
 
@@ -41,7 +41,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
 
 ## <a name="build-the-ui"></a>De gebruikersinterface bouwen
 
-1. Klik in Visual Studio Code op de knop Stop ![Knop Stop in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) om de Node-app te stoppen.
+1. Klik in Visual Studio Code op de knop Stop :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png"::: om de app Node te stoppen. 
 
 2. Voer in de Windows-opdrachtprompt of in het Mac-terminalvenster de volgende opdracht in om een heroes-component te genereren. In deze code is g=genereren, c=component en heroes=naam van de component, en er wordt een platte bestandsstructuur (--flat) gebruikt zodat er geen submap wordt gemaakt.
 
@@ -486,7 +486,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
     Nu gaan we de app uitvoeren.
 
-2. Klik in Visual Studio Code aan de linkerkant op de knop **Debug**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) en klik vervolgens op de knop **Start Debugging**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. Klik in Visual Studio Code op de knop **Debug** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: aan de linkerkant en klik vervolgens op de knop **Start Debugging** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png":::.
 
 3. Open vervolgens een internetbrowser en ga naar **localhost:3000** om te zien hoe de app lokaal wordt uitgevoerd.
 

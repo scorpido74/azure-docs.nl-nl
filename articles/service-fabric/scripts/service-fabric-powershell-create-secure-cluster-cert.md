@@ -1,6 +1,6 @@
 ---
-title: Een Service Fabric-cluster maken in Power shell
-description: 'Azure PowerShell-voorbeeld script: een Service Fabric cluster maken dat is beveiligd met een X. 509-certificaat.'
+title: Een Service Fabric-cluster maken in Powershell
+description: Azure PowerShell-voorbeeldscript - Een Service Fabric-cluster maken dat wordt beveiligd met een X.509-certificaat.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f6b900bba178d4180d48ed3b89ec1e4d6cb49d7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076127"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Een Service Fabric-cluster maken
 
@@ -27,7 +27,7 @@ Met dit voorbeeldscript wordt een Service Fabric-cluster met vijf knooppunten ge
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructie in de `Connect-AzAccount` [Azure PowerShell Guide](/powershell/azure/overview) en voert u uit om een verbinding te maken met Azure. 
+Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/) en voer vervolgens `Connect-AzAccount` uit om verbinding maken met Azure. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -Name $groupname -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -52,6 +52,6 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
+Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/).
 
 Meer voorbeelden voor Azure Powershell voor Azure Service Fabric vindt u in de [voorbeelden van Azure PowerShell](../service-fabric-powershell-samples.md).

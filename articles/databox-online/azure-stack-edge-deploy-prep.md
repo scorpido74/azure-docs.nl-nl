@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652059"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131834"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge  
 
@@ -57,32 +57,35 @@ Zorg voordat u begint voor het volgende:
 
 * U hebt toegang als eigenaar of inzender op het niveau van de resourcegroep voor de Azure Stack Edge/Data Box Gateway, IoT Hub en Azure Storage-resources.
 
-  * Als u een Azure Stack Eedge / Data Box Gateway resource wilt maken, moet u machtigingen hebben als inzender (of hoger) op het niveau van de resourcegroep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Ga voor meer informatie over het registreren naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * U moet een **Eigenaar** op abonnementsniveau zijn om Inzender-toegang te verlenen. Als u Inzender-toegang wilt verlenen aan iemand anders, gaat u in de Azure-portal naar **Alle services** > **Abonnementen** > **Access Control (IAM)**  >  **+Toevoegen** > **Roltoewijzing toevoegen**. Zie [Zelfstudie: Toegang tot Azure-resources verlenen aan een gebruiker met behulp van de Azure-portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+
+  * Als u een Azure Stack Eedge / Data Box Gateway resource wilt maken, moet u machtigingen hebben als inzender (of hoger) op het niveau van de resourcegroep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge`-resourceprovider is geregistreerd. Ga voor meer informatie over het registreren van een resourceprovider naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Als u een IoT Hub-resource wilt maken, moet u ervoor zorgen dat de provider Microsoft.Devices is geregistreerd. Ga voor meer informatie over het registreren naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Als u een resource voor een Storage-account wilt maken, moet u een toegangsbereik van een inzender of hoger hebben op het niveau van de resourcegroep. Azure Storage is standaard een geregistreerde resourceprovider.
 * U hebt beheerder-of gebruikerstoegang tot Azure Active Directory Graph API. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) voor meer informatie.
 * U hebt een Microsoft Azure Storage-account met toegangsreferenties.
+* U bent niet geblokkeerd door een Azure-beleid dat door uw systeembeheerder is ingesteld. Zie voor meer informatie over beleid [Quickstart: Een beleidstoewijzing maken om niet-conforme resources te identificeren](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
 
 ### <a name="for-the-azure-stack-edge-device"></a>Voor het Azure Stack Edge-apparaat
 
 Voordat u een fysiek apparaat implementeert, controleert u of:
 
-- U hebt de beveiligingsgegevens die zijn opgenomen in het verzendpakket gecontroleerd.
-- Er een 1U-sleuf beschikbaar is in een standaard 19-inch rek in uw datacenter om het apparaat te plaatsen.
-- U beschikt over een vlak, stabiel en horizontaal werkoppervlak waar u het apparaat veilig kunt neerleggen.
-- De locatie waar u het apparaat wilt neerzetten, beschikt over reguliere wisselstroom van een onafhankelijke bron of over een vermogenseenheid (PDU) met noodvoeding (UPS).
-- U hebt toegang tot een fysiek apparaat.
+* U hebt de beveiligingsgegevens die zijn opgenomen in het verzendpakket gecontroleerd.
+* Er een 1U-sleuf beschikbaar is in een standaard 19-inch rek in uw datacenter om het apparaat te plaatsen.
+* U beschikt over een vlak, stabiel en horizontaal werkoppervlak waar u het apparaat veilig kunt neerleggen.
+* De locatie waar u het apparaat wilt neerzetten, beschikt over reguliere wisselstroom van een onafhankelijke bron of over een vermogenseenheid (PDU) met noodvoeding (UPS).
+* U hebt toegang tot een fysiek apparaat.
 
 ### <a name="for-the-datacenter-network"></a>Voor datacenternetwerk
 
 Zorg voordat u begint voor het volgende:
 
-- Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Azure Stack Edge-apparaat. Zie [Systeemvereisten voor Azure Stack Edge](azure-stack-edge-system-requirements.md) voor meer informatie.
+* Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Azure Stack Edge-apparaat. Zie [Systeemvereisten voor Azure Stack Edge](azure-stack-edge-system-requirements.md) voor meer informatie.
 
-- Voor normale bedrijfsomstandigheden van uw Azure Stack Edge hebt u het volgende nodig:
+* Voor normale bedrijfsomstandigheden van uw Azure Stack Edge hebt u het volgende nodig:
 
-    - Minimaal 10 Mbps downloadbandbreedte om ervoor te zorgen dat het apparaat bijgewerkt blijft.
-    - Minimaal 20 Mbps toegewezen upload- en downloadbandbreedte voor het overdragen van bestanden.
+  * Minimaal 10 Mbps downloadbandbreedte om ervoor te zorgen dat het apparaat bijgewerkt blijft.
+  * Minimaal 20 Mbps toegewezen upload- en downloadbandbreedte voor het overdragen van bestanden.
 
 ## <a name="create-a-new-resource"></a>Een nieuwe resource maken
 
@@ -173,6 +176,3 @@ Ga naar de volgende zelfstudie om te lezen hoe u Azure Stack Edge installeert.
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge installeren](./azure-stack-edge-deploy-install.md)
-
-
-

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194481"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065629"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Zelfstudie: Apache Spark-taakdefinitie maken in Synapse Studio
 
@@ -24,7 +24,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 * Een Apache Spark-taakdefinitie maken voor PySpark (Python)
 * Een Apache Spark-taakdefinitie maken voor Spark (Scala)
-* Een Apache Spark-taakdefinitie maken voor .NET Spark (C#)
+* Een Apache Spark-taakdefinitie maken voor .NET Spark (C#/F#)
 * Een Apache Spark-taakdefinitie verzenden als batchtaak
 * Een Apache Spark-taakdefinitie toevoegen aan de pijplijn
 
@@ -42,7 +42,7 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor PySpark (Python).
 
 1. Open [Azure Synapse Studio](https://web.azuresynapse.net/).
 
-2. U kunt naar de [voorbeeldbestanden voor het maken van Apache Spark-taakdefinities](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) gaan om **wordcount.jar** en **shakespear.txt** te downloaden. Uploadt deze bestanden vervolgens naar Azure Storage: Klik op **Gegevens**, selecteer **Opslagaccounts** en upload de bijbehorende bestanden naar uw ADLS Gen2-bestandssysteem. Sla deze stap over als uw bestanden zich al in de Azure-opslag bevinden. 
+2. U kunt naar de [voorbeeldbestanden voor het maken van Apache Spark-taakdefinities](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) gaan om **wordcount.py** en **shakespear.txt** te downloaden. Uploadt deze bestanden vervolgens naar Azure Storage: Klik op **Gegevens**, selecteer **Opslagaccounts** en upload de bijbehorende bestanden naar uw ADLS Gen2-bestandssysteem. Sla deze stap over als uw bestanden zich al in de Azure-opslag bevinden. 
 
      ![python-bestand uploaden](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor PySpark (Python).
      |  Eigenschap   | Beschrijving   |  
      | ----- | ----- |  
      |Naam van taakdefinitie| Voer een naam in voor de Apache Spark-taakdefinitie. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd. Voorbeeld: `job definition sample`|
-     |Primair definitiebestand| Het primaire bestand dat wordt gebruikt voor de taak. Selecteer een PY-bestand uit uw opslag. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |Opdrachtregelargumenten| Optionele argumenten voor de taak. Voorbeeld: `shakespeare.txt`|
-     |Verwijzingsbestanden| Aanvullende bestanden die worden gebruikt voor verwijzingen in het hoofddefinitiebestand. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |Primair definitiebestand| Het primaire bestand dat wordt gebruikt voor de taak. Selecteer een PY-bestand uit uw opslag. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://…/path/to/wordcount.py`|
+     |Opdrachtregelargumenten| Optionele argumenten voor de taak. Voorbeeld: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Verwijzingsbestanden| Aanvullende bestanden die worden gebruikt voor verwijzingen in het hoofddefinitiebestand. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. |
      |Spark-pool| De taak wordt verzonden naar de geselecteerde Apache Spark-pool.|
      |Spark-versie| De versie van Apache Spark waarin de Apache Spark-pool wordt uitgevoerd.|
      |Uitvoerders| Aantal uitvoerders dat moet worden opgegeven in de gespecificeerde Apache Spark-pool voor de taak.|
@@ -92,9 +92,9 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor Apache Spark (Scala).
      |  Eigenschap   | Beschrijving   |  
      | ----- | ----- |  
      |Naam van taakdefinitie| Voer een naam in voor de Apache Spark-taakdefinitie. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd. Voorbeeld: `job definition sample`|
-     |Primair definitiebestand| Het primaire bestand dat wordt gebruikt voor de taak. Selecteer een JAR-bestand uit uw opslag. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |Primair definitiebestand| Het primaire bestand dat wordt gebruikt voor de taak. Selecteer een JAR-bestand uit uw opslag. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://…/path/to/wordcount.jar`|
      |Hoofdklassenaam| De volledig gekwalificeerde id of de hoofdklasse die zich in het hoofddefinitiebestand bevindt. Voorbeeld: `WordCount`|
-     |Opdrachtregelargumenten| Optionele argumenten voor de taak. Voorbeeld: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |Opdrachtregelargumenten| Optionele argumenten voor de taak. Voorbeeld: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Verwijzingsbestanden| Aanvullende bestanden die worden gebruikt voor verwijzingen in het hoofddefinitiebestand. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount.|
      |Spark-pool| De taak wordt verzonden naar de geselecteerde Apache Spark-pool.|
      |Spark-versie| De versie van Apache Spark waarin de Apache Spark-pool wordt uitgevoerd.|
@@ -109,9 +109,9 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor Apache Spark (Scala).
      ![scala-definitie publiceren](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>Een Apache Spark-taakdefinitie maken voor .NET Spark (C#)
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>Een Apache Spark-taakdefinitie maken voor .NET Spark (C#/F#)
 
-In deze sectie maakt u een Apache Spark-taakdefinitie voor .NET Spark(C#).
+In deze sectie maakt u een Apache Spark-taakdefinitie voor .NET Spark(C#/F#).
  1. Open [Azure Synapse Studio](https://web.azuresynapse.net/).
 
  2. U kunt naar de [voorbeeldbestanden voor het maken van Apache Spark-taakdefinities](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) gaan om **wordcount.zip** en **shakespear.txt** te downloaden. Uploadt deze bestanden vervolgens naar Azure Storage: Klik op **Gegevens**, selecteer **Opslagaccounts** en upload de bijbehorende bestanden naar uw ADLS Gen2-bestandssysteem. Sla deze stap over als uw bestanden zich al in de Azure-opslag bevinden. 
@@ -125,12 +125,13 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor .NET Spark(C#).
  4. Selecteer **.NET Spark(C#/F#)** in de vervolgkeuzelijst Taal in het hoofdvenster van de Apache Spark-taakdefinitie.
 
  5. Vul de gegevens in voor de Apache Spark-taakdefinitie. U kunt de voorbeeldgegevens kopiëren.
+    
      |  Eigenschap   | Beschrijving   |  
      | ----- | ----- |  
      |Naam van taakdefinitie| Voer een naam in voor de Apache Spark-taakdefinitie. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd. Voorbeeld: `job definition sample`|
-     |Primair definitiebestand| Het primaire bestand dat wordt gebruikt voor de taak. Selecteer een ZIP-bestand dat uw .NET voor Apache Spark-toepassing bevat (dat wil zeggen, het belangrijkste uitvoerbare bestand, DLL's met door de gebruiker gedefinieerde functies en andere vereiste bestanden) van uw opslag. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |Primair definitiebestand| Het primaire bestand dat wordt gebruikt voor de taak. Selecteer een ZIP-bestand dat uw .NET voor Apache Spark-toepassing bevat (dat wil zeggen, het belangrijkste uitvoerbare bestand, DLL's met door de gebruiker gedefinieerde functies en andere vereiste bestanden) van uw opslag. U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount. Voorbeeld: `abfss://…/path/to/wordcount.zip`|
      |Uitvoerbaar hoofdbestand| Het belangrijkste uitvoerbare bestand in het primaire ZIP-definitiebestand. Voorbeeld: `WordCount`|
-     |Opdrachtregelargumenten| Optionele argumenten voor de taak. Voorbeeld: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |Opdrachtregelargumenten| Optionele argumenten voor de taak. Voorbeeld: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Verwijzingsbestanden| Aanvullende bestanden die nodig zijn voor de werkknooppunten voor het uitvoeren van de .NET voor Apache Spark-toepassing die niet is opgenomen in het bestand met de primaire definitie (dat wil zeggen, afhankelijke JAR's, aanvullende door de gebruiker gedefinieerde functie-DLL's en andere configuratiebestanden). U kunt **Bestand uploaden** selecteren om het bestand te uploaden naar een opslagaccount.|
      |Spark-pool| De taak wordt verzonden naar de geselecteerde Apache Spark-pool.|
      |Spark-versie| De versie van Apache Spark waarin de Apache Spark-pool wordt uitgevoerd.|

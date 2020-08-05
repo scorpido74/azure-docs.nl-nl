@@ -1,81 +1,82 @@
 ---
-title: 'Quick Start: een toepassing starten met maven met Azure veer Cloud'
-description: In deze Snelstartgids start u een voorbeeld toepassing met behulp van Maven
+title: 'Quickstart: een toepassing starten met behulp van Maven met Azure Spring Cloud'
+description: In deze quickstart start u een voorbeeldtoepassing met behulp van Maven
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: f374e0611b887e2a2c787569d9fe58bc1a5c84e9
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.custom: devx-track-java
+ms.openlocfilehash: 9ae6524dc1d53580d0dc7de1179ccf9db8cebc61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594063"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086129"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Quickstart: een Azure Spring Cloud-toepassing starten met behulp van de Maven-invoegtoepassing
 
-Met de Azure veer Cloud maven-invoeg toepassing kunt u eenvoudig uw Azure lente-Cloud toepassingen maken en bijwerken. Door een configuratie vooraf te definiëren, kunt u toepassingen implementeren in uw bestaande Azure lente-Cloud service. In dit artikel gebruikt u een voorbeeld toepassing met de naam PiggyMetrics om deze functie te demonstreren.
+Met de Maven-invoegtoepassing van Azure Spring Cloud kunt u eenvoudig uw Azure Spring Cloud-toepassingen maken en bijwerken. Door vooraf een configuratie te definiëren, kunt u toepassingen implementeren in uw bestaande Azure Spring Cloud-service. In dit artikel gebruikt u een voorbeeldtoepassing met de naam PiggyMetrics om deze functie te demonstreren.
 
-In deze Quick Start leert u het volgende:
+In deze quickstart leert u het volgende:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten
-> * Een configuratie server voor een exemplaar instellen
-> * Micro Services-toepassing lokaal klonen en bouwen
-> * Implementeer elke micro service
-> * Een openbaar eind punt toewijzen voor uw toepassing
+> * Een configuratieserver instellen voor een exemplaar
+> * Een microservicetoepassing lokaal klonen en bouwen
+> * Alle microservices implementeren
+> * Een openbaar eindpunt voor uw toepassing toewijzen
 
 >[!Note]
-> Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) voor meer informatie.
+> Azure Spring Cloud wordt momenteel aangeboden als openbare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Voor meer informatie over ondersteuning tijdens previews kunt u onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) raadplegen of een [Ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) indienen.
 
 
 >[!TIP]
-> Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdrachten in dit artikel uit te voeren. Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud shell](https://shell.azure.com). Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md)voor meer informatie.
+> Azure Cloud Shell is een gratis interactieve shell waarmee u de opdrachten in dit artikel kunt uitvoeren. Deze bevat vooraf geïnstalleerde algemene Azure-hulpprogramma's, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), Maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud Shell](https://shell.azure.com). Zie [Overzicht van Azure Cloud Shell](../cloud-shell/overview.md) voor meer informatie.
 
 Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 1. [Installeer Git](https://git-scm.com/).
-2. [Installeer jdk 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
-3. [Installeer Maven 3,0 of hoger](https://maven.apache.org/download.cgi).
-4. [Meld u aan voor een gratis Azure-abonnement](https://azure.microsoft.com/free/).
+2. [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
+3. [Maven 3.0 of hoger installeren](https://maven.apache.org/download.cgi).
+4. [Aanmelden aan voor een gratis proefversie van Azure](https://azure.microsoft.com/free/).
 
-## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten op het Azure Portal
+## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten in Azure Portal
 
-1. Open in een webbrowser [deze koppeling naar Azure lente-Cloud in het Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)en meld u aan bij uw account.
+1. Open in een webbrowser [deze koppeling naar Azure Spring Cloud in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform) en meld u aan bij uw account.
 
-1. Geef de **Project Details** voor de voorbeeld toepassing als volgt op:
+1. Geef de **projectdetails** voor de voorbeeldtoepassing als volgt op:
 
-    1. Selecteer het **abonnement** waarmee de toepassing wordt gekoppeld.
-    1. Selecteer of maak een resource groep voor de toepassing. We raden u aan een nieuwe resource groep te maken.  In het onderstaande voor beeld ziet u een nieuwe `myspringservice`resource groep met de naam.
-    1. Geef een naam op voor de nieuwe Azure lente-Cloud service.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.  De service in het onderstaande voor beeld heeft de `contosospringcloud`naam.
-    1. Selecteer een locatie voor uw toepassing uit de beschik bare opties.  In dit voor beeld selecteren `East US`we.
-    1. Selecteer **beoordeling + maken** om een samen vatting van de nieuwe service te bekijken.  Als alles er goed uitziet, selecteert u **maken**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Selecteer controleren + maken](media/maven-qs-review-create.jpg)
-
-Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat de service is geïmplementeerd, selecteert **u Ga naar resource** en de pagina **overzicht** voor het service-exemplaar wordt weer gegeven.
-
-> [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
-
-## <a name="set-up-your-configuration-server"></a>De configuratie server instellen
-
-1. Selecteer op de pagina service **overzicht** de optie **Configuratie server**.
-1. Stel in de sectie **standaard opslagplaats** de **URI** optie URI **https://github.com/Azure-Samples/piggymetrics-config**in op en selecteer vervolgens **Toep assen** om uw wijzigingen op te slaan.
+    1. Selecteer het **abonnement** waaraan de toepassing wordt gekoppeld.
+    1. Selecteer of maak een resourcegroep voor de toepassing. We raden u aan om een nieuwe resourcegroep te maken.  In het onderstaande voorbeeld ziet u een nieuwe resourcegroep met de naam `myspringservice`.
+    1. Geef een naam op voor de nieuwe Azure Spring Cloud-service.  De naam moet tussen de 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten. Het eerste teken van de servicenaam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.  De service in het onderstaande voorbeeld heeft de naam `contosospringcloud`.
+    1. Selecteer een locatie voor uw toepassing uit de beschikbare opties.  In dit voorbeeld selecteren we `East US`.
+    1. Selecteer **Beoordelen en maken** om een overzicht van de nieuwe service te bekijken.  Als alles er goed uitziet, selecteert u **Maken**.
 
     > [!div class="mx-imgBorder"]
-    > ![Configuratie-instellingen definiëren en Toep assen](media/maven-qs-apply-config.jpg)
+    > ![Beoordelen en maken](media/maven-qs-review-create.jpg) selecteren
+
+Het implementeren van de service duurt ongeveer vijf minuten. Nadat de service is geïmplementeerd, selecteert u **Ga naar resource**. De pagina **Overzicht** voor het service-exemplaar wordt dan weergegeven.
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
 
-## <a name="clone-and-build-the-sample-application-repository"></a>De voor beeld-toepassings opslagplaats klonen en bouwen
+## <a name="set-up-your-configuration-server"></a>Uw configuratieserver instellen
 
-1. Start de [Azure Cloud shell](https://shell.azure.com).
+1. Selecteer op de pagina **Overzicht** van de service de optie **Config Server**.
+1. Stel in de sectie **Standaardopslagplaats** de **URI** in op **https://github.com/Azure-Samples/piggymetrics-config** en selecteer vervolgens **Toepassen** om uw wijzigingen op te slaan.
 
-1. Kloon de Git-opslag plaats door de volgende opdracht uit te voeren:
+    > [!div class="mx-imgBorder"]
+    > ![Configuratie-instellingen definiëren en toepassen](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
+
+## <a name="clone-and-build-the-sample-application-repository"></a>De voorbeeldtoepassingsopslagplaats klonen en bouwen
+
+1. Start de [Azure Cloud Shell](https://shell.azure.com).
+
+1. Voer de volgende opdracht uit om de Git-opslagplaats te klonen:
 
     ```console
     git clone https://github.com/Azure-Samples/PiggyMetrics
@@ -88,39 +89,39 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Configuraties genereren en implementeren in de Azure lente-Cloud
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Configuraties genereren en implementeren in de Azure Spring Cloud
 
-1. Genereer configuraties door de volgende opdracht uit te voeren in de hoofdmap van PiggyMetrics met de bovenliggende POM:
+1. Genereer configuraties door de volgende opdracht uit te voeren in de hoofdmap van PiggyMetrics die de bovenliggende POM bevat:
 
     ```console
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
-    a. Selecteer de modules `gateway`,`auth-service`en `account-service`.
+    a. Selecteer de modules `gateway`, `auth-service` en `account-service`.
 
-    b. Selecteer uw abonnement en Azure lente-Cloud service cluster.
+    b. Selecteer uw abonnement en Azure Spring Cloud-servicecluster.
 
-    c. Voer in de lijst met opgegeven projecten het nummer in dat overeenkomt `gateway` met om de open bare toegang te geven.
+    c. Voer in de lijst met opgegeven projecten het getal in dat overeenkomt met `gateway` om het openbare toegang te verlenen.
     
     d. Bevestig de configuratie.
 
-1. De POM bevat nu de afhankelijkheden en configuraties van de invoeg toepassing. Implementeer de apps met behulp van de volgende opdracht:
+1. De POM bevat nu de afhankelijkheden en configuraties van de invoegtoepassing. Implementeer de toepassingen met behulp van de volgende opdracht:
 
    ```console
    mvn azure-spring-cloud:deploy
    ```
 
-1. Nadat de implementatie is voltooid, kunt u toegang krijgen tot PiggyMetrics met behulp van de URL die wordt vermeld in de uitvoer van de voor gaande opdracht.
+1. Nadat de implementatie is voltooid, kunt u toegang krijgen tot PiggyMetrics met behulp van de URL die wordt vermeld in de uitvoer van de voorgaande opdracht.
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een lente-Cloud toepassing geïmplementeerd vanuit een Maven-opslag plaats. Voor meer informatie over Azure lente-Cloud gaat u verder met de zelf studie over het voorbereiden van uw app voor implementatie.
+In deze quickstart hebt u een Spring Cloud-toepassing geïmplementeerd vanuit een Maven-opslagplaats. Ga verder met de zelfstudie over het voorbereiden van uw app voor implementatie voor meer informatie over Azure Spring Cloud.
 
 > [!div class="nextstepaction"]
-> [De Azure lente-Cloud toepassing voorbereiden voor implementatie](spring-cloud-tutorial-prepare-app-deployment.md)
-> meer[informatie over maven-invoeg toepassingen voor Azure](https://github.com/microsoft/azure-maven-plugins)
+> [Uw Azure Spring Cloud-toepassing voorbereiden voor implementatie](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Meer informatie over Maven-invoegtoepassingen voor Azure](https://github.com/microsoft/azure-maven-plugins)
 
-Meer voor beelden zijn beschikbaar op GitHub: [Azure lente-Cloud voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).
+Meer voorbeelden zijn beschikbaar in GitHub: [Azure Spring Cloud-voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

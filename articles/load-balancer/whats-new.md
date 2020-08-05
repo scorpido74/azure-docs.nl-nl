@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 4725aaaf7a2c1e0aa49ea8dbe046b720727a5d54
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078691"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Wat is er nieuw in Azure Load Balancer?
 
@@ -25,14 +25,15 @@ Azure Load Balancer wordt regelmatig bijgewerkt. Blijf op de hoogte van de laats
 
 [Hier](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) vindt u de meest recente updates voor Azure Load Balancer en kunt u zich abonneren op de RSS-feed.
 
-## <a name="new-features"></a>Nieuwe functies
+## <a name="recent-releases"></a>Recente releases
 
-|Functie  |Beschrijving  |Datum toegevoegd  |
-|---------|---------|---------|
-| Ondersteuning voor IP-gebaseerd beheer van back-endpools (preview) | Azure Load Balancer biedt ondersteuning voor het toevoegen en verwijderen van resources uit een back-endpool via een IPv4-of IPv6-adres. Dit stelt u in staat om containers, virtuele machines en virtuele-machineschaalset voor Load Balancer eenvoudig te beheren. Ook kunnen IP-adressen worden gereserveerd als onderdeel van een back-endpool voordat de gekoppelde resources worden aangemaakt. | Juli 2020 |
-| Inzichten Azure Load Balancer-inzichten met Azure Monitor | Het is ontworpen als onderdeel van Azure Monitor voor netwerken, en biedt klanten topologische kaarten voor al hun Load Balancer-configuraties en statusdashboards voor Standard Load Balancers die zijn vooraf zijn geconfigureerd met metrische gegevens in het Azure-portal. [Aan de slag en meer informatie](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Juni 2020 |
-| IPv6-ondersteuning voor Azure Load Balancer (algemeen beschikbaar) | U kunt IPv6-adressen gebruiken als front-end voor uw Azure Load Balancers. Meer informatie over het [maken van een dual stack-toepassing hier](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |April 2020|
-| Opnieuw instellen van TCP bij Time-out voor inactiviteit (algemeen beschikbaar)| Gebruik Opnieuw instellen van TCP om he gedrag van de toepassing voorspelbaarder te maken. [Meer informatie](load-balancer-tcp-reset.md)| Februari 2020 |
+| Type |Naam |Beschrijving  |Datum toegevoegd  |
+| ------ |---------|---------|---------|
+| Functie | Ondersteuning voor IP-gebaseerd beheer van back-endpools (preview) | Azure Load Balancer biedt ondersteuning voor het toevoegen en verwijderen van resources uit een back-endpool via een IPv4-of IPv6-adres. Dit stelt u in staat om containers, virtuele machines en virtuele-machineschaalset voor Load Balancer eenvoudig te beheren. Ook kunnen IP-adressen worden gereserveerd als onderdeel van een back-endpool voordat de gekoppelde resources worden aangemaakt. Klik [hier](backend-pool-management.md) voor meer informatie|Juli 2020 |
+| Functie| Inzichten Azure Load Balancer-inzichten met Azure Monitor | Het is ontworpen als onderdeel van Azure Monitor voor netwerken, en biedt klanten topologische kaarten voor al hun Load Balancer-configuraties en statusdashboards voor Standard Load Balancers die zijn vooraf zijn geconfigureerd met metrische gegevens in het Azure-portal. [Aan de slag en meer informatie](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Juni 2020 |
+| Validatie | Aanvulling van validatie voor HA-poorten | Er is een validatie toegevoegd om ervoor te zorgen dat HA-poortregels en niet-HA-poortregels alleen kunnen worden geconfigureerd wanneer Zwevend IP-adres is ingeschakeld. Voorheen zou deze configuratie worden geaccepteerd maar niet werken zoals de bedoeling is. Er zijn geen wijzigingen aangebracht in de functionaliteit. Klik [hier](load-balancer-ha-ports-overview.md#limitations) voor meer informatie| Juni 2020 |
+| Functie| IPv6-ondersteuning voor Azure Load Balancer (algemeen beschikbaar) | U kunt IPv6-adressen gebruiken als front-end voor uw Azure Load Balancers. Meer informatie over het [maken van een dual stack-toepassing hier](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |April 2020|
+| Functie| Opnieuw instellen van TCP bij Time-out voor inactiviteit (algemeen beschikbaar)| Gebruik Opnieuw instellen van TCP om he gedrag van de toepassing voorspelbaarder te maken. [Meer informatie](load-balancer-tcp-reset.md)| Februari 2020 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

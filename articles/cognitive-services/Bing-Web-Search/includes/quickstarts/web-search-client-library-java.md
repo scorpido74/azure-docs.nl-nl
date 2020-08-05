@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Web Search java-client bibliotheek
+title: Quickstart voor Bing Web Search-clientbibliotheek voor Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -7,17 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78924837"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375297"
 ---
-Met de Bing Web Search-client bibliotheek kunt u Bing Web Search eenvoudig integreren in uw Java-toepassing. In deze snelstartgids leert u hoe u een aanvraag verzendt, een JSON-antwoord ontvangt en de resultaten filtert en parseert.
+Met de Bing Web Search-clientbibliotheek kunt u Bing Web Search eenvoudig integreren in uw Java-toepassing. In deze snelstartgids leert u hoe u een aanvraag verzendt, een JSON-antwoord ontvangt en de resultaten filtert en parseert.
 
-Wilt u de code nu zien? Voor beelden voor de [Bing Search-client bibliotheken voor Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) zijn beschikbaar op github.
+Wilt u de code nu zien? Voorbeelden voor de [Bing Search-clientbibliotheken voor Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) zijn beschikbaar op GitHub.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +32,7 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Een project maken en uw POM-bestand instellen
 
-Maak een nieuw Java-project met behulp van Maven of uw favoriete hulpprogramma voor het automatiseren van builds. Ervan uitgaande dat u maven gebruikt, voegt u de volgende regels toe aan uw [pom-bestand (project object model)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) . Vervang alle instanties van `mainClass` door uw toepassing.
+Maak een nieuw Java-project met behulp van Maven of uw favoriete hulpprogramma voor het automatiseren van builds. Ervan uitgaande dat u Maven gebruikt, moet u de volgende regels toevoegen aan het bestand [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html). Vervang alle instanties van `mainClass` door uw toepassing.
 
 ```xml
 <build>

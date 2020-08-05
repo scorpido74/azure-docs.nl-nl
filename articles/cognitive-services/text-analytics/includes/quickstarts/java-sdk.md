@@ -1,53 +1,54 @@
 ---
-title: 'Snelstartgids: Text Analytics v3-client bibliotheek voor Java | Microsoft Docs'
-description: Ga aan de slag met de V3-Text Analytics-client bibliotheek voor Java.
+title: 'Quickstart: Text Analytics v3-clientbibliotheek voor Java | Microsoft Docs'
+description: Aan de slag met de v3 Text Analytics-clientbibliotheek voor Java.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 07/27/2020
+ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: bd070300427716634d786e685cfe1cf8e45a246c
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 6e8e00d7f9f529010cf99ae5a180c1ecb0a74177
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140703"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375210"
 ---
 <a name="HOLTop"></a>
 
-[Referentie documentatie](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Bron code](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics)  |  van bibliotheek [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referentiedocumentatie](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) met versie 8 of hoger
-* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" maakt u een Text Analytics resource Maak "  target="_blank"> een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen.  Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Een Text Analytics-resource maken"  target="_blank">maakt u een Text Analytics-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen.  Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Text Analytics-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="add-the-client-library"></a>De client bibliotheek toevoegen
+### <a name="add-the-client-library"></a>De clientbibliotheek toevoegen
 
-Maak een Maven-project in uw favoriete IDE-of ontwikkel omgeving. Voeg vervolgens de volgende afhankelijkheden toe aan het bestand *pom. XML* van het project. U kunt de implementatie syntaxis [voor andere build-hulpprogram ma's](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4) online vinden.
+Maak een Maven-project in uw favoriete IDE of ontwikkelomgeving. Voeg vervolgens de volgende afhankelijkheid toe aan het *pom.xml*-bestand van uw project. U kunt de implementatiesyntaxis [voor andere compilatieprogramma's](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0) online vinden.
 
 ```xml
 <dependencies>
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.5</version>
+        <version>5.0.0</version>
     </dependency>
 </dependencies>
 ```
 
 > [!TIP]
-> Wilt u het volledige Quick Start-code bestand tegelijk weer geven? U kunt het vinden [op github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), dat de code voorbeelden in deze Snelstartgids bevat. 
+> Wilt u het volledige quickstartcodebestand ineens weergeven? U kunt het vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), dat de codevoorbeelden in deze quickstart bevat. 
 
-Maak een Java-bestand met de naam `TextAnalyticsSamples.java` . Open het bestand en voeg de volgende- `import` instructies toe:
+Maak een Java-bestand met de naam `TextAnalyticsSamples.java`. Open het bestand en voeg de volgende `import`-instructies toe:
 
 ```java
 import com.azure.core.credential.AzureKeyCredential;
@@ -56,7 +57,7 @@ import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
 
-Voeg in het Java-bestand een nieuwe klasse toe en voeg de sleutel en het eind punt van uw Azure-resource toe zoals hieronder wordt weer gegeven.
+Voeg in het Java-bestand een nieuwe klasse toe en voeg de sleutel en het eindpunt van uw Azure-resource toe, zoals hieronder wordt weergegeven.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -67,7 +68,7 @@ public class TextAnalyticsSamples {
 }
 ```
 
-Voeg de volgende hoofd methode toe aan de klasse. U definieert de methoden die hier later worden genoemd.
+Voeg de volgende hoofdmethode aan de klasse toe. U definieert de methoden die hier later worden aangeroepen.
 
 ```java
 public static void main(String[] args) {
@@ -82,22 +83,22 @@ public static void main(String[] args) {
 }
 ```
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-De Text Analytics-client is een `TextAnalyticsClient` object dat met uw sleutel wordt geverifieerd bij Azure, en biedt functies om tekst als afzonderlijke teken reeksen of als batch te accepteren. U kunt tekst synchroon of asynchroon verzenden naar de API. Het antwoord object bevat de analyse-informatie voor elk document dat u verzendt. 
+De Text Analytics-client is een `TextAnalyticsClient`-object dat wordt geverifieerd bij Azure met behulp van uw sleutel. De client biedt functies om tekst als afzonderlijke tekenreeksen of als een batch te accepteren. U kunt tekst synchroon of asynchroon naar de API verzenden. Het antwoordobject bevat de analyse-informatie voor elk document dat u verzendt. 
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
 * [De client verifiëren](#authenticate-the-client)
 * [Sentimentanalyse](#sentiment-analysis) 
-* [Taal detectie](#language-detection)
+* [Taaldetectie](#language-detection)
 * [Herkenning van benoemde entiteiten](#named-entity-recognition-ner) 
-* [Entiteit koppelen](#entity-linking)
-* [Extractie van sleutel woorden](#key-phrase-extraction)
+* [Entiteiten koppelen](#entity-linking)
+* [Sleuteltermextractie](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak een methode om het object te instantiëren `TextAnalyticsClient` met de sleutel en het eind punt voor uw Text Analytics-resource.
+Maak een methode voor het instantiëren van het `TextAnalyticsClient`-object met de sleutel en het eindpunt voor uw Text Analytics-resource.
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
@@ -108,11 +109,11 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 }
 ```
 
-In de methode van uw programma `main()` roept u de verificatie methode op om de client te instantiëren.
+In de `main()`-methode van uw programma roept u de verificatiemethode op om de client te instantiëren.
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-Maak een nieuwe functie `sentimentAnalysisExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `analyzeSentiment()` functie op. Het geretourneerde `AnalyzeSentimentResult` object bevat `documentSentiment` en `sentenceSentiments` als dit is geslaagd, of een `errorMessage` als dat niet het geval is. 
+Maak een nieuwe functie met de naam `sentimentAnalysisExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `analyzeSentiment()`-functie aan. Het geretourneerde `AnalyzeSentimentResult`-object bevat `documentSentiment` en `sentenceSentiments` indien succesvol, of een `errorMessage` als dat niet het geval is. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -149,10 +150,10 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 ## <a name="language-detection"></a>Taaldetectie
 
-Maak een nieuwe functie `detectLanguageExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `detectLanguage()` functie op. Het geretourneerde `DetectLanguageResult` object bevat een primaire taal, een lijst met andere talen die zijn gedetecteerd als dit is geslaagd, of een `errorMessage` als dat niet het geval is.
+Maak een nieuwe functie met de naam `detectLanguageExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `detectLanguage()`-functie aan. Het geretourneerde `DetectLanguageResult`-object bevat een primaire taal, een lijst met andere talen die zijn gedetecteerd, indien succesvol, of een `errorMessage` als dat niet het geval is.
 
 > [!Tip]
-> In sommige gevallen kan het lastig zijn om talen te dubbel zinnigheid op basis van de invoer. U kunt de `countryHint` para meter gebruiken om een land nummer van twee letters op te geven. Standaard gebruikt de API de standaard countryHint om dit gedrag te verwijderen, kunt u deze para meter opnieuw instellen door deze waarde in te stellen op een lege teken reeks `countryHint = ""` . Als u een andere standaard instelling wilt instellen, stelt u de `TextAnalyticsClientOptions.DefaultCountryHint` eigenschap in en geeft u deze door tijdens de initialisatie van de client.
+> In sommige gevallen kan het lastig zijn om talen ondubbelzinnig te karakteriseren op basis van de invoer. U kunt de parameter `countryHint` gebruiken om een landnummer van twee letters op te geven. Standaard gebruikt de API de standaard-countryHint US. Als u dit gedrag wilt verwijderen, kunt u deze parameter opnieuw instellen door deze waarde in te stellen op de lege tekenreeks `countryHint = ""`. Als u een andere standaardwaarde wilt instellen, stelt u eigenschap `TextAnalyticsClientOptions.DefaultCountryHint` in en geeft u deze door tijdens de initialisatie van de client.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -176,11 +177,11 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ## <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
 
 > [!NOTE]
-> In versie `3.0` :
-> * NER bevat afzonderlijke methoden voor het detecteren van persoonlijke gegevens. 
-> * Entiteits koppeling is een afzonderlijke aanvraag dan NER.
+> In versie `3.0`:
+> * NER omvat afzonderlijke methoden voor het detecteren van persoonlijke gegevens. 
+> * Entiteitskoppeling is een aanvraag die los staat van NER.
 
-Maak een nieuwe functie `recognizeEntitiesExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `recognizeEntities()` functie op. Het geretourneerde `RecognizeEntitiesResult` object bevat een lijst met `NamedEntity` geslaagde of mislukte aanmeldingen `errorMessage` .
+Maak een nieuwe functie met de naam `recognizeEntitiesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `recognizeEntities()`-functie aan. Het geretourneerde `RecognizeEntitiesResult`-object bevat een lijst met `NamedEntity` indien succesvol, of een `errorMessage` als dat niet het geval is.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -207,9 +208,9 @@ Recognized entity: Seattle, entity category: Location, entity sub-category: GPE,
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
-## <a name="entity-linking"></a>Entiteit koppelen
+## <a name="entity-linking"></a>Entiteiten koppelen
 
-Maak een nieuwe functie `recognizeLinkedEntitiesExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `recognizeLinkedEntities()` functie op. Het geretourneerde `RecognizeLinkedEntitiesResult` object bevat een lijst met `LinkedEntity` geslaagde of mislukte aanmeldingen `errorMessage` . Aangezien gekoppelde entiteiten uniek worden geïdentificeerd, worden exemplaren van dezelfde entiteit gegroepeerd onder een `LinkedEntity` object als een lijst met `LinkedEntityMatch` objecten.
+Maak een nieuwe functie met de naam `recognizeLinkedEntitiesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `recognizeLinkedEntities()`-functie aan. Het geretourneerde `RecognizeLinkedEntitiesResult`-object bevat een lijst met `LinkedEntity` indien succesvol, of een `errorMessage` als dat niet het geval is. Aangezien gekoppelde entiteiten uniek worden geïdentificeerd, worden exemplaren van dezelfde entiteit gegroepeerd onder een `LinkedEntity`-object als een lijst met `LinkedEntityMatch`-objecten.
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
@@ -265,7 +266,7 @@ Text: BASIC, Score: 0.33
 ```
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-Maak een nieuwe functie `extractKeyPhrasesExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `extractKeyPhrases()` functie op. Het geretourneerde `ExtractKeyPhraseResult` object bevat een lijst met sleutel zinnen als dit is geslaagd, of een `errorMessage` als dat niet het geval is.
+Maak een nieuwe functie met de naam `extractKeyPhrasesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `extractKeyPhrases()`-functie aan. Het geretourneerde `ExtractKeyPhraseResult`-object bevat een lijst met sleuteltermen indien succesvol, of een `errorMessage` als dat niet het geval is.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)

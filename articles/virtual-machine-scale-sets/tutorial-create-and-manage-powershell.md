@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een schaalset voor virtuele Azure-machines maken en beheren
+title: 'Zelfstudie: Een virtuele-Azure-machineschaalset maken en beheren - Azure PowerShell'
 description: Ontdek hoe u met Azure PowerShell een schaalset met virtuele Azure-machines maakt. Leer daarnaast hoe u enkele veelvoorkomende beheertaken uitvoert, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a657f8a4fd7b92aeb858b919052ca732bf630ae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735350"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091331"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een virtuele-machineschaalset maken met Azure PowerShell
 
@@ -45,7 +45,7 @@ De naam van de resourcegroep moet worden opgegeven als u ergens in deze zelfstud
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-Stel eerst een beheerdersnaam en -wachtwoord in voor de VM-exemplaren met behulp van [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Stel eerst een beheerdersnaam en -wachtwoord in voor de VM-exemplaren met behulp van [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -66,6 +66,9 @@ New-AzVmss `
 ```
 
 Het duurt enkele minuten om alle schaalsetresources en VM-exemplaren te maken en te configureren.
+
+> [!IMPORTANT]
+> Als u geen verbinding kunt maken met uw schaalset, moet u mogelijk een netwerkbeveiligingsgroep maken door de parameter *[-SecurityGroupName 'mySecurityGroup’](/powershell/module/az.compute/new-azvmss)* toe te voegen.
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>De VM-exemplaren in een schaalset bekijken
@@ -192,7 +195,7 @@ New-AzVmss `
 ```
 
 > [!IMPORTANT]
-> We raden u aan de *meest recente* installatiekopieversie te gebruiken. Geef 'meest recente' op om de nieuwste versie van een installatiekopie te gebruiken die beschikbaar is op het moment van implementatie. Zelfs als u 'meest recente' gebruikt, wordt de VM-installatiekopie niet automatisch bijgewerkt na de implementatie, zelfs niet als er een nieuwe versie beschikbaar wordt.
+> We raden u aan de *meest recente* installatiekopieversie te gebruiken. Specificeer 'nieuwste' om de nieuwste versie van een installatiekopie te gebruiken die beschikbaar is op de implementatietijd. Zelfs als u 'meest recente' gebruikt, wordt de VM-installatiekopie niet automatisch bijgewerkt na de implementatie, zelfs niet als er een nieuwe versie beschikbaar wordt.
 
 ## <a name="understand-vm-instance-sizes"></a>VM-exemplaargrootten begrijpen
 De grootte van een VM-exemplaar, of *SKU*, bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en geheugen die beschikbaar worden gesteld aan het VM-exemplaar. VM-exemplaren in een schaalset moeten de juiste grootte krijgen voor de verwachte werkbelasting.
@@ -202,12 +205,12 @@ In de volgende tabel worden enkele veelgebruikte VM-grootten gecategoriseerd naa
 
 | Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Algemeen doel](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
-| [Geoptimaliseerd geheugen](../virtual-machines/windows/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](../virtual-machines/windows/sizes-storage.md)      | Ls                | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
-| [Hoge prestaties](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. 
+| [Algemeen doel](../virtual-machines/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/sizes-compute.md)   | Fs, F             | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
+| [Geoptimaliseerd geheugen](../virtual-machines/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerde opslag](../virtual-machines/sizes-storage.md)      | Ls                | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
+| [Hoge prestaties](../virtual-machines/sizes-hpc.md) | H, A8-11          | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Beschikbare VM-exemplaargrootten zoeken
 Als u een lijst wilt weergeven met de VM-exemplaargrootten die beschikbaar zijn in een bepaalde regio, gebruikt u de opdracht [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize). 

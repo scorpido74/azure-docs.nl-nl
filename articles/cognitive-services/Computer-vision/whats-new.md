@@ -10,41 +10,53 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 75d191c9d65cc639522c3fbba5b8c438b8b83448
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560123"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280831"
 ---
-# <a name="whats-new-in-computer-vision"></a>Wat is er nieuw in Computer Vision
+# <a name="whats-new-in-computer-vision"></a>Wat is er nieuw in Computer Vision?
 
-Meer informatie over nieuwe functies in de service. Deze items kunnen opmerkingen bij de release, Video's, blog berichten en andere soorten informatie zijn. Bladwijzer deze pagina om up-to-date te blijven met de service.
+Meer informatie over nieuwe functies in de service. Dit kunnen opmerkingen bij de release, video's, blogposts en andere soorten informatie zijn. Voeg een bladwijzer toe voor deze pagina om up-to-date te blijven over de service.
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>Lees-API v3.1-preview.1 voegt ondersteuning toe voor vereenvoudigd Chinees
+Lees-API v3.1-preview.1 voegt ondersteuning toe voor vereenvoudigd Chinees van Computer Vision.
+
+* Deze preview-versie van de lees-API ondersteunt de talen Engels, Nederlands, Frans, Duits, Italiaans, Portugees, vereenvoudigd Chinees en Spaans.
+
+Zie het [Lees-API: overzicht](concept-recognizing-text.md) voor meer informatie.
+
+> [!div class="nextstepaction"]
+> [Meer informatie over de Lees-API v3.1-preview.1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mei 2020
-Computer Vision-API v 3.0 is in algemene Beschik baarheid ingevoerd, met updates voor het lezen van de [API](concept-recognizing-text.md):
+Computer Vision API v3.0 is nu algemeen beschikbaar, met updates voor de [lees-API](concept-recognizing-text.md):
 
 * Ondersteuning voor Engels, Nederlands, Frans, Duits, Italiaans, Portugees en Spaans
-* Verbeterde nauw keurigheid
-* Betrouwbaarheids score voor elk geëxtraheerd woord
-* Nieuwe uitvoer indeling
+* Verbeterde nauwkeurigheid
+* Betrouwbaarheidsscore voor elk geëxtraheerd woord
+* Nieuwe uitvoerindeling
 
 ## <a name="march-2020"></a>Maart 2020
 
-* TLS 1,2 wordt nu afgedwongen voor alle HTTP-aanvragen voor deze service. Zie [Azure Cognitive Services Security](../cognitive-services-security.md)(Engelstalig) voor meer informatie.
+* TLS 1.2 wordt nu afgedwongen voor alle HTTP-aanvragen bij deze service. Zie [Beveiliging van Azure Cognitive Services](../cognitive-services-security.md) voor meer informatie.
 
-## <a name="january-2020"></a>januari 2020
+## <a name="january-2020"></a>Januari 2020
 
-### <a name="read-api-30-preview"></a>Lees API 3,0 Preview
+### <a name="read-api-30-public-preview"></a>Openbare preview van lees-API 3.0
 
-U hebt nu de mogelijkheid om versie 3,0 van de Lees-API te gebruiken voor het extra heren van gedrukte of handgeschreven tekst uit afbeeldingen. Vergeleken met eerdere versies biedt 3,0 de volgende mogelijkheden:
-* Verbeterde nauw keurigheid
-* Nieuwe uitvoer indeling
-* Betrouwbaarheids score voor elk geëxtraheerd woord
-* Ondersteuning voor zowel Spaans als Engelse talen met de para meter extra taal
+U hebt nu de mogelijkheid om versie 3.0 van de lees-API te gebruiken voor het extraheren van gedrukte of handgeschreven tekst uit afbeeldingen. Vergeleken met eerdere versies biedt 3.0 de volgende mogelijkheden:
+* Verbeterde nauwkeurigheid
+* Nieuwe uitvoerindeling
+* Betrouwbaarheidsscore voor elk geëxtraheerd woord
+* Ondersteuning voor Spaans en Engels met de extra taalparameter
 
-Volg de [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) om te beginnen met de 3,0-API.
+Volg een [quickstart over tekstextractie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) om aan de slag te gaan met de 3.0-API.
 
-## <a name="cognitive-service-updates"></a>Updates van de cognitieve service
+## <a name="cognitive-service-updates"></a>Updates van Cognitive Services
 
-[Meldingen voor Azure update voor Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Meldingen van Azure-updates voor Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

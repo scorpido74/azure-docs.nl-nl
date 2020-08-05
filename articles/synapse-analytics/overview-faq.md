@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807873"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287507"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (preview-versie van werkruimten)
 
@@ -32,6 +32,8 @@ A: Azure Synapse is een geïntegreerd gegevensplatform voor BI, AI en doorlopend
 - U kunt eenvoudig en gebeurtenissen in uw werkruimte-activiteiten bewaken en snel optimaliseren, reageren en fouten opsporen die zich op elke laag voordoen.
 - Uw metagegevens voor alle engines beheren. Maak een Spark-tabel en deze is automatisch beschikbaar in uw Azure Synapse-databases.
 - Interactie met de gegevens via een uniforme gebruikerservaring. Synapse Studio brengt Big data-ontwikkelaars, gegevenstechnici, DBA's, gegevensanalisten en gegevenswetenschappers samen op hetzelfde platform.
+
+Zie [Wat is Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is) voor meer informatie.
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>V: Wat zijn de belangrijkste onderdelen van Azure Synapse Analytics
 

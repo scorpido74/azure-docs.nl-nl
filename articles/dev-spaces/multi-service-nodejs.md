@@ -1,18 +1,18 @@
 ---
-title: 'Meerdere afhankelijke services uitvoeren: node. js & Visual Studio code'
+title: 'Meerdere afhankelijke services uitvoeren: Node.js en Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen in een multi-service node. js-toepassing in azure Kubernetes service
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio Code gebruikt om fouten op te sporen in een Node.js-toepassing met meerdere services in Azure Kubernetes Service
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
+ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006979"
 ---
-# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: node. js en Visual Studio code met Azure dev Spaces
+# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: Node.js en Visual Studio Code met Azure Dev Spaces
 
 In deze zelfstudie leert u hoe u toepassingen met meerdere services ontwikkelt met Azure Dev Spaces, samen met enkele aanvullende voordelen van Azure Dev Spaces.
 
@@ -20,16 +20,16 @@ In deze zelfstudie leert u hoe u toepassingen met meerdere services ontwikkelt m
 
 In deze sectie maakt u een tweede service, `mywebapi`, en laat u deze aanroepen in `webfrontend`. Elke service wordt uitgevoerd in een afzonderlijke container. Vervolgens spoort u fouten op in beide containers.
 
-![](media/common/multi-container.png)
+![Het diagram toont de webfrontend-service die de mywebapi-service aanroept (zoals aangegeven door een pijl).](media/common/multi-container.png)
 
 ### <a name="open-sample-code-for-mywebapi"></a>Voorbeeldcode openen voor *mywebapi*
-U moet de `mywebapi` voorbeeld code voor deze hand leiding al hebben in een map met `samples` de naam (als dat niet https://github.com/Azure/dev-spaces het geval is, gaat u naar en selecteert u **klonen of downloaden** om de GitHub-opslag plaats te downloaden.) De code voor deze sectie is in `samples/nodejs/getting-started/mywebapi`.
+U beschikt al over voorbeeldcode voor `mywebapi` voor deze handleiding in een map met de naam `samples`. (Zo niet, dan gaat u naar https://github.com/Azure/dev-spaces en selecteert u **Clone or Download** om de GitHub-opslagplaats te downloaden.) De code voor deze sectie bevindt zich in `samples/nodejs/getting-started/mywebapi`.
 
 ### <a name="run-mywebapi"></a>*mywebapi* uitvoeren
 1. Open de map `mywebapi` in een *afzonderlijk VS Code-venster*.
 1. Open het **Opdrachtenpalet** (via het menu **Beeld | Opdrachtenpalet**), en gebruik automatisch aanvullen om te typen en deze opdracht te selecteren: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Deze opdracht moet niet worden verward met de opdracht `azds prep`, waarmee u het project configureert voor implementatie.
-1. Druk op F5 en wacht tot de service is gebouwd en geïmplementeerd. U weet dat deze klaar is wanneer het bericht *Luis teren naar poort 80* wordt weer gegeven in de console voor fout opsporing.
-1. Noteer de URL van het eindpunt. Deze ziet er ongeveer als volgt uit: `http://localhost:<portnumber>`. **Tip: de status balk VS-code wordt oranje en een klikbare URL weer gegeven.** Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in de ontwikkelomgeving in Azure. Het localhost-adres is te zien omdat er nog geen openbare eindpunten zijn gedefinieerd in `mywebapi` en toegang daarom alleen mogelijk is binnen het Kubernetes-exemplaar. Voor uw gemak en om interactie met de privésessie mogelijk te maken vanaf de lokale computer wordt in Azure Dev Spaces een tijdelijke SSH-tunnel gemaakt naar de container die wordt uitgevoerd in Azure.
+1. Druk op F5 en wacht tot de service is gebouwd en geïmplementeerd. U weet dat dit gereed is wanneer het bericht *Luistert op poort 80* in de foutopsporingsconsole verschijnt.
+1. Noteer de URL van het eindpunt. Deze ziet er ongeveer als volgt uit: `http://localhost:<portnumber>`. **Tip: De statusbalk van VS Code wordt oranje en toont een klikbare URL.** Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in de ontwikkelomgeving in Azure. Het localhost-adres is te zien omdat er nog geen openbare eindpunten zijn gedefinieerd in `mywebapi` en toegang daarom alleen mogelijk is binnen het Kubernetes-exemplaar. Voor uw gemak en om interactie met de privésessie mogelijk te maken vanaf de lokale computer wordt in Azure Dev Spaces een tijdelijke SSH-tunnel gemaakt naar de container die wordt uitgevoerd in Azure.
 1. Wanneer `mywebapi` klaar is, opent u de browser naar het localhost-adres. U ziet nu een reactie van de `mywebapi`-service. (Hello from mywebapi).
 
 
@@ -62,10 +62,10 @@ In het vorige codevoorbeeld wordt de `azds-route-as`-header van de binnenkomende
 
 ### <a name="debug-across-multiple-services"></a>Foutopsporing in meerdere services
 1. Op dit punt moet `mywebapi` nog steeds worden uitgevoerd met het bijgevoegde foutopsporingsprogramma. Als dit niet het geval is, drukt u op F5 in het `mywebapi`-project.
-1. Stel een onderbrekings punt in de `/` standaard Get-handler [in `server.js`op regel 8 van ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
+1. Stel een onderbrekingspunt in de standaard-GET `/`-handler[ in op regel 8 van `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
 1. Stel in het `webfrontend`-project een onderbrekingspunt in vlak voordat een GET-aanvraag wordt verzonden naar `http://mywebapi`.
 1. Druk op F5 in het `webfrontend`-project.
-1. Open de web-app en analyseer de code in beide services. Als het goed is, wordt nu een bericht weergegeven dat is samengesteld uit de twee services: Hello from webfrontend en Hello from mywebapi.
+1. Open de web-app en analyseer de code in beide services. In de web-app moet nu een bericht worden weergegeven dat is samengevoegd door de twee services: "Hello from webfrontend and Hello from mywebapi."
 
 ### <a name="well-done"></a>Dat is dus gelukt.
 U hebt nu een toepassing met meerdere containers waarin elke container afzonderlijk kan worden ontwikkeld en geïmplementeerd.

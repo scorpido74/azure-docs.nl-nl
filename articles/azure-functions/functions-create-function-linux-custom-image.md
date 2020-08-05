@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d5dd74c55f1f355c95da93d8d42e6637f1fa78fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055995"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met een aangepaste container
 
@@ -106,6 +106,8 @@ Geef de volgende waarden op als daarom wordt gevraagd:
 Typ `Y` of druk op Enter om te bevestigen.
 
 Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_; in dit voorbeeld is dat `fabrikam-functions`. 
+
+Voor uitvoering op Java 11 in Azure, moet u de waarden in het bestand pom.xml wijzigen. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie.
 ::: zone-end
 Met de optie `--docker` wordt een `Dockerfile` voor het project gegenereerd. Hiermee wordt een geschikte aangepaste container gedefinieerd voor gebruik met Azure Functions en de geselecteerde runtime.
 
@@ -156,7 +158,15 @@ Gebruik **Ctrl**-**C** om de host te stoppen.
 
 ## <a name="build-the-container-image-and-test-locally"></a>De containerinstallatiekopie samenstellen en lokaal testen
 
-(Optioneel) Bekijk het Dockerfile in de hoofdmap van het project. Het Dockerfile beschrijft de omgeving die vereist is om de functie-app uit te voeren in Linux.  De complete lijst met ondersteunde basisinstallatiekopieën voor Azure Functions vindt u op [deze pagina over basisinstallatiekopieën van Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+(Optioneel) Bekijk het *Dockerfile* in de hoofdmap van het project. Het Dockerfile beschrijft de omgeving die vereist is om de functie-app uit te voeren in Linux.  De complete lijst met ondersteunde basisinstallatiekopieën voor Azure Functions vindt u op [deze pagina over basisinstallatiekopieën van Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+
+::: zone pivot="programming-language-java"  
+Als u met Java 11 (preview-versie) werkt, wijzigt u het buildargument `JAVA_VERSION` in het gegenereerde Dockerfile in het volgende: 
+
+```docker
+ARG JAVA_VERSION=11
+```
+::: zone-end
     
 Voer in de hoofdmap van het project de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) uit en geef een naam, `azurefunctionsimage` en een tag, `v1.0.0`, op. Vervang `<DOCKER_ID>` door de ID van uw Docker Hub-account. Met deze opdracht wordt de Docker-installatiekopie voor de container gebouwd.
 

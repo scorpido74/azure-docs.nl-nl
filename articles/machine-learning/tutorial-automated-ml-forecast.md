@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: vraagprognose en AutoML'
+title: 'Zelfstudie: Vraagprognose en AutoML'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het trainen en implementeren van een vraagprognosemodel met geautomatiseerde machine learning in Azure Machine Learning Studio.
 services: machine-learning
@@ -9,18 +9,21 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 06/04/2020
-ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 07/10/2020
+ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092278"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Zelfstudie: Vraag voorspellen met automatische machine learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 In deze zelfstudie gebruikt u geautomatiseerde machine learning, of geautomatiseerde ML, in de Azure Machine Learning Studio om een prognosemodel voor tijdreeksen te maken om de huurvraag voor een service voor het delen van fietsen te voorspellen.
+
+>[!IMPORTANT]
+> De automatische ML-ervaring in Azure Machine Learning Studio is een preview-versie. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.
 
 Voor een voorbeeld van een classificatiemodel, zie [zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
@@ -41,7 +44,7 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Aan de slag met Azure Machine Learning Studio
 
-Voor deze zelfstudie maakt u een geautomatiseerd ML-experiment in Azure Machine Learning Studio, een geconsolideerde interface met hulpmiddelen voor machine learning waar gegevenswetenschappers, ongeacht hun vaardigheidsniveaus, scenario's kunnen uitvoeren. De Studio wordt niet ondersteund in Internet Explorer-browsers.
+Voor deze zelfstudie maakt u een geautomatiseerd ML-experiment in Azure Machine Learning Studio, een geconsolideerde webinterface met hulpmiddelen voor machine learning waar gegevenswetenschappers, ongeacht hun vaardigheidsniveaus, scenario's kunnen uitvoeren. De Studio wordt niet ondersteund in Internet Explorer-browsers.
 
 1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
@@ -113,8 +116,11 @@ Nadat u uw gegevens hebt geladen en geconfigureerd, stelt u uw externe rekendoel
         Veld | Beschrijving | Waarde voor zelfstudie
         ----|---|---
         Naam berekening |Een unieke naam die de context van uw berekening identificeert.|bike-compute
+        Virtuele&nbsp;machine&nbsp;type|Selecteer het type van de virtuele machine voor uw berekening.|CPU (Central Processing Unit, centrale verwerkingseenheid)
         Grootte&nbsp;virtuele&nbsp;machine| Selecteer de grootte van de virtuele machine voor uw berekening.|Standard_DS12_V2
-        Min. / max. knooppunten (in Geavanceerde instellingen)| U moet u één of meer knooppunten opgeven om gegevens te profileren.|Min. knooppunten: 1<br>Max. knooppunten: 6
+        Min / Max knooppunten| U moet u één of meer knooppunten opgeven om gegevens te profileren.|Min. knooppunten: 1<br>Max. knooppunten: 6
+        Seconden wachten voor omlaag schalen | Niet-actieve tijd voordat het cluster automatisch omlaag wordt geschaald naar het minimum aantal knooppunten.|120 (standaardinstelling)
+        Geavanceerde instellingen | Instellingen voor het configureren en autoriseren van een virtueel netwerk voor uw experiment.| Geen
   
         1. Selecteer **Maken** om het rekendoel op te halen. 
 
@@ -130,23 +136,23 @@ Voltooi de installatie voor uw automatische ML-experiment door het taaktype en d
 
 1. Selecteer op het formulier **Taaktype en instellingen** de optie **Prognose tijdreeks** als het type machine learning-taak.
 
-1. Selecteer **datum** als uw **Tijdkolom** en laat **Groeperen op kolom(men)** leeg. 
+1. Selecteer **datum** als uw **Tijdkolom** en laat **Tijdreeks-id’s** leeg. 
 
-    1. Selecteer **Aanvullende configuratie-instellingen weergeven** en vul de velden als volgt in. Deze instellingen zijn bedoeld om de trainingstaak beter te besturen en om instellingen voor uw prognose op te geven. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment.
+1. De **prognoseperiode** is hoe ver in de toekomst u voorspellingen wilt maken.  Hef de selectie automatische detectie op en typ 14 in het veld. 
 
-  
-        Aanvullende&nbsp;configuraties|Beschrijving|Waarde&nbsp;voor&nbsp;zelfstudie
-        ------|---------|---
-        Primaire metrische gegevens| Evaluatiewaarde waarmee het machine learning-algoritme wordt gemeten.|Genormaliseerde wortel gemiddelde kwadraatfout
-        Automatische featurization| Schakelt voorverwerking in. Dit omvat automatische opschoning, voorbereiding en transformatie van gegevens om synthetische functies te genereren.| Inschakelen
-        Aanbevolen model uitleggen (preview)| Hiermee wordt automatisch uitleg gegeven over het beste model dat is gemaakt met geautomatiseerde ML.| Inschakelen
-        Geblokkeerde algoritmen | Algoritmen die u niet wilt opnemen in de trainingstaak| Extreme willekeurige structuren
-        Aanvullende prognose-instellingen| Deze instellingen helpen de nauwkeurigheid van het model te verbeteren <br><br> _**Prognoseperiode**_: hoe ver in de toekomst u voorspellingen wilt maken <br> _**Doelvertragingen voor prognose:**_ hoe ver terug u de vertragingen van een doelvariabele wilt maken <br> _**Doorlopend doel**_: hiermee geeft u de grootte van het doorlopende venster op waarover de functies, zoals de *Max, min* en *Som*, worden gegenereerd. |Prognoseperiode: 14 <br> Doelvertragingen &nbsp;voor&nbsp;prognose: Geen <br> Formaat&nbsp;doorlopende &nbsp;doelgrootte&nbsp;: Geen
-        Criterium voor afsluiten| Als er aan een criterium is voldaan, wordt de trainingstaak gestopt. |Tijd voor&nbsp;trainingstaak&nbsp; (uur): 3 <br> Drempelwaarde&nbsp;metrische&nbsp;score: Geen
-        Validatie | Kies een kruisvalidatietype en een aantal tests.|Validatietype:<br>&nbsp;k-voudige&nbsp;kruisvalidatie <br> <br> Aantal validaties: 5
-        Gelijktijdigheid| Het maximum aantal parallelle iteraties uitgevoerd per iteratie| Maximumaantal&nbsp;gelijktijdige&nbsp;iteraties: 6
-        
-        Selecteer **Opslaan**.
+1. Selecteer **Aanvullende configuratie-instellingen weergeven** en vul de velden als volgt in. Deze instellingen zijn bedoeld om de trainingstaak beter te besturen en om instellingen voor uw prognose op te geven. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment.
+
+    Aanvullende&nbsp;configuraties|Beschrijving|Waarde&nbsp;voor&nbsp;zelfstudie
+    ------|---------|---
+    Primaire metrische gegevens| Evaluatiewaarde waarmee het machine learning-algoritme wordt gemeten.|Genormaliseerde wortel gemiddelde kwadraatfout
+    Uitleg geven over het beste model| Hiermee wordt automatisch uitleg gegeven over het beste model dat is gemaakt met geautomatiseerde ML.| Inschakelen
+    Geblokkeerde algoritmen | Algoritmen die u niet wilt opnemen in de trainingstaak| Extreme willekeurige structuren
+    Aanvullende prognose-instellingen| Deze instellingen helpen de nauwkeurigheid van het model te verbeteren <br><br> _**Doelvertragingen voor prognose:**_ hoe ver terug u de vertragingen van de doelvariabele wilt maken <br> _**Doorlopend doel**_: hiermee geeft u de grootte van het doorlopende venster op waarover de functies, zoals de *Max, min* en *Som*, worden gegenereerd. | <br><br>Doelvertragingen &nbsp;voor&nbsp;prognose: Geen <br> Formaat&nbsp;doorlopende &nbsp;doelgrootte&nbsp;: Geen
+    Criterium voor afsluiten| Als er aan een criterium is voldaan, wordt de trainingstaak gestopt. |Tijd voor&nbsp;trainingstaak&nbsp; (uur): 3 <br> Drempelwaarde&nbsp;metrische&nbsp;score: Geen
+    Validatie | Kies een kruisvalidatietype en een aantal tests.|Validatietype:<br>&nbsp;k-voudige&nbsp;kruisvalidatie <br> <br> Aantal validaties: 5
+    Gelijktijdigheid| Het maximum aantal parallelle iteraties uitgevoerd per iteratie| Maximumaantal&nbsp;gelijktijdige&nbsp;iteraties: 6
+    
+    Selecteer **Opslaan**.
 
 ## <a name="run-experiment"></a>Experiment uitvoeren
 
@@ -163,7 +169,7 @@ Ga naar het tabblad **Modellen** om de geteste algoritmen (modellen) te bekijken
 
 Terwijl u wacht tot alle experimentmodellen zijn voltooid, kunt u de **Algoritmenaam** van een volledig model selecteren om de prestatiedetails te bekijken. 
 
-In het volgende voorbeeld kunt u naar de tabbladen **Modeldetails** en **Visualisaties** gaan om de eigenschappen, metrische gegevens en prestatiegrafieken van het geselecteerde model te bekijken. 
+In het volgende voorbeeld kunt u naar de tabbladen **Details** en **Metrische gegevens** gaan om de eigenschappen, metrische gegevens en prestatiegrafieken van het geselecteerde model te bekijken. 
 
 ![Uitvoeringsdetails](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
 
@@ -173,11 +179,15 @@ Met geautomatiseerde machine learning in Azure Machine Learning Studio kunt u me
 
 Voor dit experiment houdt het implementeren naar een webservice in dat het BikeShare-bedrijf nu een iteratieve en schaalbare weboplossing heeft voor het voorspellen van de vraag naar het huren van fietsen. 
 
-Zodra de uitvoering is voltooid, gaat u terug naar de pagina **Details van de uitvoering** en selecteert u het tabblad **Modellen**.
+Zodra de uitvoering is voltooid, gaat u terug naar bovenliggende uitvoeringspagina door **1 uitvoeren** aan de bovenkant van het scherm te selecteren.
 
-In dit experiment wordt **StackEnsemble** beschouwd als het beste model, op basis van de metrische gegevens **genormaliseerde wortel gemiddelde kwadraatfout**.  We implementeren dit model, maar houd er rekening mee dat implementatie ongeveer 20 minuten duurt. Het implementatieproces omvat verschillende stappen, waaronder het model registreren, resources genereren en ze configureren voor de webservice.
+In de sectie **Beste modeloverzicht** wordt **StackEnsemble** beschouwd in context van dit experiment, op basis van de metrische gegevens **genormaliseerde wortel gemiddelde kwadraatfout**.  
 
-1. Selecteer de knop **Beste model implementeren** in de linkerbenedenhoek.
+We implementeren dit model, maar houd er rekening mee dat implementatie ongeveer 20 minuten duurt. Het implementatieproces omvat verschillende stappen, waaronder het model registreren, resources genereren en ze configureren voor de webservice.
+
+1. Selecteer **StackEnsemble** om de model-specifieke pagina te openen.
+
+1. Selecteer de knop **Implementeren** in het gedeelte linksboven in het scherm.
 
 1. Vul het deelvenster **Een model implementeren** als volgt in:
 
@@ -193,8 +203,7 @@ In dit experiment wordt **StackEnsemble** beschouwd als het beste model, op basi
 
 1. Selecteer **Implementeren**.  
 
-    Bovenaan het scherm **Uitvoeren** wordt een groen bericht weergegeven dat de implementatie is gestart. De voortgang van de implementatie kan worden gevonden  
-    in het deelvenster **Aanbevolen model** onder **Implementatiestatus**.
+    Bovenaan het scherm **Uitvoeren** wordt een groen bericht weergegeven dat de implementatie is gestart. De voortgang van de implementatie kan u vinden in het deelvenster **Modeloverzicht** onder **Status implementen**.
     
 Zodra de implementatie is voltooid, hebt u een operationele webservice om voorspellingen te genereren. 
 

@@ -1,5 +1,5 @@
 ---
-title: Apache Spark synchroniseren voor externe Azure Synapse-tabeldefinities in SQL on-demand (preview)
+title: Apache Spark synchroniseren voor externe tabeldefinities in SQL on demand (preview)
 description: Overzicht van hoe u query’s kunt uitvoeren op Spark-tabellen met behulp van SQL on-demand (preview)
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046842"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>Apache Spark synchroniseren voor externe Azure Synapse-tabeldefinities in SQL on-demand (preview)
 
@@ -22,7 +22,7 @@ Met SQL on-demand (preview) kunnen automatisch metagegevens worden gesynchronise
 
 Voor elke externe Spark-tabel die is gebaseerd op Parquet en zich in Azure Storage bevindt, wordt een externe tabel gemaakt in de SQL on-demand-database. Op deze manier kunt u uw Spark-pools afsluiten en nog steeds query’s uitvoeren op externe Spark-tabellen vanuit SQL on-demand.
 
-Wanneer een tabel is gepartitioneerd in Spark, worden de bestanden in de opslag geordend in mappen. SQL on-demand maakt gebruik van partitiemetagegevens en is alleen gericht op relevante mappen en bestanden voor uw query.
+Wanneer een tabel is gepartitioneerd in Spark, worden de bestanden in de opslag geordend in mappen. SQL on demand maakt gebruik van partitiemetagegevens en werkt alleen met relevante mappen en bestanden voor uw query.
 
 Synchronisatie van metagegevens wordt automatisch geconfigureerd voor elke Spark-pool die is ingericht in de Azure Synapse-werkruimte. U kunt direct beginnen met het uitvoeren van query’s op externe Spark-tabellen.
 
@@ -35,7 +35,7 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> Externe tabelkolom van Spark toevoegen, verwijderen of wijzigen wordt niet weergegeven in externe tabel in SQL on-demand.
+> Toevoegen, verwijderen of wijzigen van externe Spark-tabelopdrachten voor een kolom wordt niet weerspiegeld de in externe tabel in SQL on demand.
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark-gegevenstypen toewijzen aan SQL-gegevenstypen
 

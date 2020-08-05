@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: Vm's maken met een SQL, IIS, .NET stack in azure"
+title: "Zelfstudie: VM's maken waarop een SQL-, IIS-, .NET-stack wordt uitgevoerd in Azure"
 description: In deze zelfstudie leert u hoe de Azure SQL, IIS, .NET-stack installeert op een virtuele Windows-machine in Azure.
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027849"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Zelfstudie: De SQL-, IIS-, .NET-stack installeren op een Windows-VM met Azure PowerShell
 
@@ -29,11 +29,11 @@ In deze zelfstudie installeren we een SQL-, IIS-, .NET-stack met Azure PowerShel
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-## <a name="create-an-iis-vm"></a>Een IIS-VM maken 
+## <a name="create-an-iis-vm"></a>Een virtuele IIS-machine maken 
 
-In dit voorbeeld gebruiken we de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) in PowerShell Cloud Shell om snel een Windows Server 2016-VM te maken en vervolgens IIS en .NET Framework te installeren. De virtuele IIS en SQL-machines delen een resourcegroep en een virtueel netwerk, dus voor deze namen maken we variabelen.
+In dit voorbeeld gebruiken we de cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) in PowerShell Cloud Shell om snel een Windows Server 2016-VM te maken en vervolgens IIS en .NET Framework te installeren. De virtuele IIS en SQL-machines delen een resourcegroep en een virtueel netwerk, dus voor deze namen maken we variabelen.
 
 
 ```azurepowershell-interactive
@@ -52,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-Installeer IIS en .NET Framework met behulp van de aangepaste scriptextensie met de cmdlet [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+Installeer IIS en .NET Framework met behulp van de aangepaste scriptextensie met de cmdlet [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension).
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -76,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-Maak een configuratie voor het subnet met behulp van [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig).
+Maak een configuratie voor het subnet met behulp van [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig).
 
 
 ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-Werk het VNet bij met de nieuwe subnetgegevens met behulp van [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork)
+Werk het VNet bij met de nieuwe subnetgegevens met behulp van [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -111,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-Gebruik [Set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) om de [SQL Server-extensie](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) toe te voegen aan de SQL-VM.
+Gebruik [Set-AzVMSqlServerExtension](/powershell/module/az.compute/set-azvmsqlserverextension) om de [SQL Server-extensie](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md) toe te voegen aan de SQL-VM.
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -131,8 +131,7 @@ In deze zelfstudie hebt u een SQL&#92;IIS&#92;.NET-stack geïnstalleerd met behu
 > * Een VM maken waarop SQL Server wordt uitgevoerd
 > * De SQL Server-extensie installeren
 
-Ga naar de volgende zelf studie voor meer informatie over het beveiligen van de IIS-webserver met TLS/SSL-certificaten.
+Ga door naar de volgende zelfstudie om te leren hoe u een IIS-webserver kunt beveiligen met behulp van TLS-/SSL-certificaten.
 
 > [!div class="nextstepaction"]
-> [Een IIS-webserver beveiligen met TLS/SSL-certificaten](tutorial-secure-web-server.md)
-
+> [Een IIS-webserver beveiligen met TSL-/SSL-certificaten](tutorial-secure-web-server.md)

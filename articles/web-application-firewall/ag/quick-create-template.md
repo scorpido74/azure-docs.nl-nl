@@ -1,75 +1,77 @@
 ---
-title: 'Quick Start: een Azure WAF v2 maken op Application Gateway-Resource Manager-sjabloon'
+title: 'Quickstart: Een Azure WAF v2 maken op Application Gateway - Azure Resource Manager-sjabloon'
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het gebruik van een resource manager-sjabloon voor het maken van een Web Application firewall v2 op Azure-toepassing gateway.
+description: Leer hoe u een ARM-sjabloon (Azure Resource Manager-sjabloon) kunt gebruiken om een Web Application Firewall v2 te maken op Azure Application Gateway.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
-ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 081bab0cd930d90ca0d359461e4a41b15ba4911b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81617987"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075504"
 ---
-# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>Quick Start: een Azure WAF v2 maken op Application Gateway-Resource Manager-sjabloon
+# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Quickstart: Een Azure WAF v2 maken op Application Gateway met behulp van een ARM-sjabloon
 
-In deze Quick Start gebruikt u een resource manager-sjabloon om een Azure Web Application-firewall v2 te maken op Application Gateway.
+In deze quickstart gebruikt u een ARM-sjabloon (Azure Resource Manager-sjabloon) om een Azure Web Application Firewall v2 te maken op Application Gateway.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-a-web-application-firewall"></a>Een Web Application firewall maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-Met deze sjabloon maakt u een eenvoudige Web Application firewall v2 op Azure-toepassing gateway. Dit omvat een openbaar IP-frontend-IP-adres, HTTP-instellingen, een regel met een Basic-listener op poort 80 en een back-end-pool. Er wordt een WAF-beleid met een aangepaste regel gemaakt om het verkeer naar de back-end-groep te blok keren op basis van een overeenkomend type voor een IP-adres.
+Met deze sjabloon maakt u een eenvoudige Web Application Firewall v2 op Azure Application Gateway. Dit omvat een openbaar IP-frontend-IP-adres, HTTP-instellingen, een regel met een eenvoudige listener op poort 80 en een back-end-pool. Er wordt een WAF-beleid met een aangepaste regel gemaakt om het verkeer naar de back-end-pool te blokkeren op basis van een overeenkomend type voor een IP-adres.
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-wafv2/azuredeploy.json) start-sjablonen
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/).
 
 :::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json" range="001-404" highlight="314-358":::
 
-Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
+Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 
-- [**Micro soft. Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
-- [**Micro soft. Network/ApplicationGatewayWebApplicationFirewallPolicies**](/azure/templates/microsoft.network/ApplicationGatewayWebApplicationFirewallPolicies)
-- [**Micro soft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses) : een voor de toepassings gateway en twee voor de virtuele machines.
-- [**Micro soft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Micro soft. Compute/informatie**](/azure/templates/microsoft.compute/virtualmachines) : twee virtuele machines
-- [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : twee voor de virtuele machines
-- [**Micro soft. Compute/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS en de webpagina's configureren
+- [**Microsoft.Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
+- [**Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies**](/azure/templates/microsoft.network/ApplicationGatewayWebApplicationFirewallPolicies)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses) : een voor de toepassingsgateway en twee voor de virtuele machines.
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : twee virtuele machines
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : twee voor de virtuele machines
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : om IIS en de webpagina’s te configureren
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Resource Manager-sjabloon implementeren in Azure:
+Het ARM-sjabloon implementeren in Azure:
 
-1. Selecteer **implementeren naar Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een toepassings gateway, de netwerk infrastructuur en twee virtuele machines in de back-end-groep met IIS.
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u een toepassingsgateway, de netwerkinfrastructuur, en twee virtuele machines in de back-endpool waarop IIS wordt uitgevoerd.
 
    [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
 
-2. Selecteer of maak een resource groep.
-3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden** en selecteer vervolgens **kopen**. Het volt ooien van de implementatie kan 10 minuten of langer duren.
+2. Selecteer of maak een resourcegroep.
+3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**. De implementatie kan 10 minuten of langer duren.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Hoewel IIS niet is vereist voor het maken van de toepassings gateway, wordt het geïnstalleerd op de back-endservers om te controleren of Azure een WAF v2 heeft gemaakt op de Application Gateway. 
+Hoewel IIS niet vereist is om de toepassingsgateway te maken, wordt het op de back-end-servers geïnstalleerd om te controleren of het maken van de WAF v2 op de toepassingsgateway in Azure is geslaagd.
 
 Gebruik IIS om de toepassingsgateway te testen:
 
-1. Zoek het open bare IP-adres voor de toepassings gateway op de pagina **overzicht** . ![Neem het open bare IP-](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) adres van de toepassings gateway op of u kunt **alle resources**selecteren, *myAGPublicIPAddress* invoeren in het zoekvak en deze vervolgens selecteren in de zoek resultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
-2. Kopieer het open bare IP-adres en plak het in de adres balk van uw browser om door dat IP-adres te bladeren.
-3. Controleer het antwoord. Een **403 verboden** antwoord controleert of de WAF is gemaakt en blokkeert verbindingen met de back-end-groep.
-4. Wijzig de aangepaste regel om **verkeer toe te staan**.
-  Voer het volgende Azure PowerShell script uit, waarbij u de naam van de resource groep vervangt:
+1. Zoek het openbare IP-adres voor de toepassingsgateway op de bijbehorende pagina **Overzicht**.![Noteer het openbare IP-adres van de toepassingsgateway](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png). Of selecteer **Alle bronnen**, voer in het zoekvak *myAGPublicIPAddress* in en selecteer het adres vervolgens in de zoekresultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
+2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser om het IP-adres te bekijken.
+3. Controleer het antwoord. Het antwoord **403 Verboden** geeft aan dat de WAF is gemaakt en verbindingen met de back-end-pool blokkeert.
+4. Wijzig de aangepaste regel in **Verkeer toestaan**.
+  Voer het volgende Azure PowerShell-script uit, waarbij u de naam van de resourcegroep vervangt:
    ```azurepowershell
    $rg = "<your resource group name>"
    $AppGW = Get-AzApplicationGateway -Name myAppGateway -ResourceGroupName $rg
@@ -81,13 +83,13 @@ Gebruik IIS om de toepassingsgateway te testen:
    Set-AzApplicationGateway -ApplicationGateway $AppGW
    ```
 
-   Vernieuw de browser meerdere keren en controleer de verbindingen met zowel myVM1 als myVM2.
+   Vernieuw uw browser meerdere keren. Als het goed is, ziet u nu verbindingen naar myVM1 en myVM2.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources die u hebt gemaakt met de Application Gateway niet meer nodig hebt, verwijdert u de resource groep. Hiermee verwijdert u de toepassings gateway en alle gerelateerde resources.
+Wanneer u de bij de toepassingsgateway gemaakte resources niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee verwijdert u de toepassingsgateway en alle gerelateerde resources.
 
-Als u de resource groep wilt verwijderen, `Remove-AzResourceGroup` roept u de cmdlet aan:
+Als u de resourcegroep wilt verwijderen, roept u de cmdlet `Remove-AzResourceGroup` aan:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"
@@ -96,4 +98,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een toepassings gateway maken met een firewall voor webtoepassingen met behulp van de Azure Portal](application-gateway-web-application-firewall-portal.md)
+> [Zelfstudie: Een toepassingsgateway met een Web Application Firewall maken met behulp van de Azure-portal](application-gateway-web-application-firewall-portal.md)

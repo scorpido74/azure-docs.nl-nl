@@ -1,30 +1,34 @@
 ---
-title: Een SQL Server-VM server maken (Azure Resource Manager-sjabloon)
-description: Meer informatie over het maken van een SQL Server op Azure Virtual Machine (VM) met behulp van een Azure Resource Manager-sjabloon.
+title: SQL Server-VM maken met behulp van een ARM-sjabloon
+description: Meer informatie over het maken van een SQL-server op een Azure-VM (virtuele machine) met behulp van een ARM-sjabloon (Azure Resource Manager).
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1b6f54c823f59bb654ac86f041eefe80af3eb5ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003846"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>Een SQL Server-VM server maken (Azure Resource Manager-sjabloon)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Quickstart: SQL Server-VM maken met behulp van een ARM-sjabloon
 
-Gebruik deze Azure Resource Manager-sjabloon om een SQL Server te implementeren op Azure Virtual Machine (VM). 
+Gebruik deze ARM-sjabloon (Azure Resource Manager) om een SQL-server te implementeren op een Azure-VM (virtuele machine). 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor de ARM-sjabloon van SQL Server-VM is het volgende vereist:
 
-- De nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) en/of [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- De nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli) en/of [PowerShell](/powershell/scripting/install/installing-powershell). 
 - Een vooraf geconfigureerde [resourcegroep](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) met een voorbereid [virtueel netwerk](../../../virtual-network/quick-create-portal.md) en [subnet](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet).
 - Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
@@ -43,7 +47,7 @@ Er worden vijf Azure-resources gedefinieerd in de sjabloon:
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Maakt een virtuele machine in Azure. 
 - [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): registreert de virtuele machine bij de resourceprovider van de SQL-VM. 
 
-Meer SQL Server op Azure VM-sjablonen vindt u in de [galerie met quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine).
+Meer SQL Server op Azure VM-sjablonen vindt u in de [galerie met quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
@@ -116,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste Azure Resource Manager-sjabloon maken en implementeren](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Raadpleeg de volgende bronnen voor andere manieren om een SQL Server-VM te implementeren: 
 - [Azure-portal](create-sql-vm-portal.md)

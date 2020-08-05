@@ -3,12 +3,12 @@ title: Fysieke servers beoordelen voor migratie naar Azure met Azure Migrate-ser
 description: 'Beschrijft hoe u met behulp van de service Azure Migrate: Serverevaluatie on-premises fysieke servers kunt detecteren en evalueren voor migratie naar Azure.'
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5b4d5241e4236d4c11f2e2a5a8feb7c73258cba0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080771"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171386"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Fysieke servers evalueren met Azure Migrate: serverevaluatie
 
@@ -179,13 +179,14 @@ Het apparaat voor de eerste keer instellen.
 Maak nu verbinding vanaf het apparaat met de fysieke servers die moeten worden gedetecteerd en start de detectie.
 
 1. Klik op **Referenties toevoegen** om de accountreferenties op te geven die door het apparaat worden gebruikt om servers te detecteren.  
-2. Geef het **besturingssysteem**, een beschrijvende naam voor de referenties en de gebruikersnaam en het wachtwoord op. Klik vervolgens op **Toevoegen**.
+2. Meld u aan met gebruikersnaam en wachtwoord. Aanmelden met een sleutel wordt niet ondersteund. De gebruiker moet ook een basisaanmelder of een deel van de lokale beheerdersgroep zijn.
+3. Geef het **besturingssysteem**, een beschrijvende naam voor de referenties en de gebruikersnaam en het wachtwoord op. Klik vervolgens op **Toevoegen**.
 U kunt voor Windows-en Linux-servers meerdere referenties toevoegen.
 4. Klik op **Server toevoegen** en geef serverdetails-FQDN/IP-adres en beschrijvende naam van referenties (één vermelding per rij) op om verbinding te maken met de server.
-3. Klik op **Valideren**. Na validatie wordt de lijst met servers weergegeven die kunnen worden gedetecteerd.
+5. Klik op **Valideren**. Na validatie wordt de lijst met servers weergegeven die kunnen worden gedetecteerd.
     - Als de validatie mislukt voor een server, raadpleegt u de fout door te klikken op het pictogram in de kolom **Status**. Los problemen op en valideer opnieuw.
     - Als u een server wilt verwijderen, selecteert u > **Verwijderen**.
-4. Klik na validatie op **Opslaan en detectie starten** om het detectieproces te starten.
+6. Klik na validatie op **Opslaan en detectie starten** om het detectieproces te starten.
 
 De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per server voordat de metagegevens van de gedetecteerde server worden weergegeven in de Azure-portal.
 

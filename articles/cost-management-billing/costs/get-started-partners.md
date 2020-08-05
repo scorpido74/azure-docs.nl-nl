@@ -3,17 +3,17 @@ title: Aan de slag met Azure Cost Management voor partners
 description: In dit artikel wordt uitgelegd hoe partners Azure Cost Management-functies gebruiken en hoe ze toegang tot Cost Management voor hun klanten mogelijk maken.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849845"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372141"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -123,9 +123,9 @@ Ongeacht het beleid kunnen globale beheerders en beheerdersagenten van de provid
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Het beleid inschakelen voor het weergeven van Azure-gebruiks kosten
 
-Partners gebruiken de volgende informatie om het beleid in te schakelen voor het weergeven van Azure-gebruikskosten voor hun klanten.
+U moet lid zijn van de groep **beheerdersagent** om het beleid weer te geven en bij te werken. Gebruik de volgende informatie om het beleid in te schakelen waarmee klanten Azure-gebruikskosten kunnen weergeven.
 
-Meld u aan bij de partner-tenant in de Azure-portal en selecteer **Cost Management + Facturering**. Selecteer de relevante factureringsrekening van Microsoft Partner-overeenkomst en selecteer vervolgens **Klanten**. De lijst met klanten is gekoppeld aan de factureringsrekening.
+Meld u aan bij de partner-tenant in de Azure-portal en selecteer **Cost Management + Facturering**. Selecteer het relevante factureringsbereik in het gebied voor het factureringsbereik en selecteer vervolgens **Klanten**. De lijst met klanten is gekoppeld aan de factureringsrekening.
 
 Selecteer in de lijst met klanten de klant waarvoor u de kosten wilt weergeven.
 

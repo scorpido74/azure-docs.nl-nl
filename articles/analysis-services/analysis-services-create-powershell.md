@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: Azure Analysis Services maken met behulp van Power shell-Azure Analysis Services | Microsoft Docs'
+title: 'Quickstart: een Azure Analysis Services-server maken met behulp van PowerShell | Microsoft Docs'
 description: Leer hoe u een Azure Analysis Services-server maakt met behulp van PowerShell
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,14 +7,15 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 375d72c8de0aa16d2c10da701fb9670a9c87b79f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80409941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015456"
 ---
-# <a name="quickstart-create-a-server---powershell"></a>Snelstart: Een server maken - PowerShell
+# <a name="quickstart-create-a-server---powershell"></a>Quickstart: Een server maken - PowerShell
 
 In deze snelstart wordt beschreven hoe u PowerShell vanaf de opdrachtregel kunt gebruiken om een Azure Analysis Services-server te maken in uw Azure-abonnement.
 
@@ -22,9 +23,9 @@ In deze snelstart wordt beschreven hoe u PowerShell vanaf de opdrachtregel kunt 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-abonnement**: ga naar [gratis proefversie van Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) om een account te maken.
-- **Azure Active Directory**: uw abonnement moet worden gekoppeld aan een Azure Active Directory-tenant en u moet een account hebben in de betreffende map. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
-- **Azure PowerShell**. Voer `Get-Module -ListAvailable Az` uit om te zien welke versie is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps) om de module te installeren of te upgraden.
+- **Azure-abonnement**: Ga naar [gratis proefversie van Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) om een account te maken.
+- **Azure Active Directory**: Uw abonnement moet zijn gekoppeld aan een Azure Active Directory-tenant en u moet een account hebben in de betreffende map. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
+- **Azure PowerShell**. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps) om de module te installeren of te upgraden.
 
 ## <a name="import-azanalysisservices-module"></a>Az.AnalysisServices-module importeren
 
@@ -72,6 +73,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 In deze snelstart hebt u geleerd hoe u een server in uw Azure-abonnement maakt met behulp van PowerShell. Nu u een server hebt gemaakt, kunt u deze beveiligen door een serverfirewall te configureren. (Optioneel) U kunt ook rechtstreeks vanuit de portal een eenvoudig voorbeeldgegevensmodel toevoegen aan de server. Een voorbeeldmodel is handig als u meer wilt weten over het configureren van modeldatabaserollen en het testen van clientverbindingen. Als u meer wilt weten, gaat u verder met de zelfstudie waarin u leert een voorbeeldmodel toe te voegen.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Server firewall configureren-Portal](analysis-services-qs-firewall.md)      
+> [Snelstartgids: Een serverfirewall configureren - Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Zelfstudie: Een voorbeeldmodel toevoegen aan uw server](analysis-services-create-sample-model.md)

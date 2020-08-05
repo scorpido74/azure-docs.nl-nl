@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206549"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131732"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Een end-to-end-oplossing bouwen
 
@@ -26,6 +26,9 @@ In deze zelfstudie gaat u...
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>Een Cloud Shell-sessie instellen
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -90,7 +93,7 @@ De volgende stap is het instellen van een [Azure Functions-app-](../azure-functi
 * *ProcessHubToDTEvents*: verwerkt inkomende IoT Hub-gegevens en werkt Azure Digital Twins dienovereenkomstig bij
 * *ProcessDTRoutedData*: verwerkt gegevens van digitale tweelingen en werkt de bovenliggende tweelingen in Azure Digital Twins dienovereenkomstig bij
 
-In deze sectie publiceert u de vooraf geschreven functie-app en zorgt u ervoor dat de functie-app toegang kan krijgen tot Azure Digital Twins door hieraan een Azure Active Directory (AAD)-identiteit toe te wijzen. Door deze stappen uit te voeren, kan de rest van de zelfstudie gebruikmaken van de functies in de functie-app. 
+In deze sectie publiceert u de vooraf geschreven functie-app en zorgt u ervoor dat de functie-app toegang kan krijgen tot Azure Digital Twins door hieraan een AAD-identiteit (Azure Active Directory) toe te wijzen. Door deze stappen uit te voeren, kan de rest van de zelfstudie gebruikmaken van de functies in de functie-app. 
 
 ### <a name="publish-the-app"></a>De app publiceren
 
@@ -138,7 +141,7 @@ Controleer in het deelvenster *Publish* dat wordt geopend in het hoofdvenster va
 
 ### <a name="assign-permissions-to-the-function-app"></a>Machtigingen toewijzen aan de functie-app
 
-De volgende stap is de functie-app toegang te geven tot Azure Digital Twins door een app-instelling te configureren, de app een door het systeem beheerde AAD-identiteit toe te wijzen, en deze identiteit *eigenaar*srechten te geven in de Azure Digital Twins-instantie.
+De volgende stap is de functie-app toegang te geven tot Azure Digital Twins door een app-instelling te configureren, de app een door het systeem beheerde Azure AD-identiteit toe te wijzen, en deze identiteit *eigenaarsrechten* te geven in de Azure Digital Twins-instantie.
 
 Gebruik in Azure Cloud Shell de volgende opdracht om een toepassingsinstelling in te stellen die door uw functie-app wordt gebruikt om te verwijzen naar uw digitale-tweelinginstantie.
 
@@ -420,7 +423,7 @@ Met behulp van Azure Cloud Shell kunt u alle Azure-resources in een resourcegroe
 az group delete --name <your-resource-group>
 ```
 
-Verwijder vervolgens de AAD-app-registratie die u voor uw client-app hebt gemaakt met deze opdracht:
+Verwijder vervolgens de Azure AD-app-registratie die u voor uw client-app hebt gemaakt, met deze opdracht:
 
 ```azurecli
 az ad app delete --id <your-application-ID>
@@ -433,7 +436,7 @@ Verwijder ten slotte de voorbeeldprojectmap die u hebt gedownload van uw lokale 
 In deze zelfstudie hebt u een end-to-end scenario gemaakt dat laat zien hoe Azure Digital Twins wordt aangedreven door live apparaatgegevens.
 
 Ga vervolgens naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt:
-* [Concepten: aangepaste modellen](concepts-models.md)
+* [*Concepten: Aangepaste modellen*](concepts-models.md)
 
 Of ga dieper in op de processen in deze zelfstudie door de instructieartikelen te lezen:
-* [Uitleg: De Azure Digital Twins-CLI gebruiken](how-to-use-cli.md)
+* [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)

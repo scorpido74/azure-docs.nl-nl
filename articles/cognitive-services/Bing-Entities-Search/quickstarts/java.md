@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht naar de REST API verzenden met behulp van Java Bing Entity Search'
+title: 'Quickstart: Een zoekaanvraag verzenden naar de REST API met Java - Bing Entiteiten zoeken'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de REST API van Bing Entiteiten zoeken te verzenden via Java en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -9,19 +9,20 @@ ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 6d4e7297ba0b325aa0045c16620d716ceb1418b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 3afc19e93e400894a66e659d79d834b8a83132a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650255"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319283"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Snelstartgids: een zoek opdracht verzenden naar de Bing Entity Search REST API met behulp van Java
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Quickstart: Een zoekaanvraag verzenden naar de Bing Entiteiten zoeken-REST API met Java
 
-Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
+Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
 
-Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,7 +51,7 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
    import com.google.gson.JsonParser;
    ```
 
-2. Maak in een nieuwe klasse variabelen voor het API-eindpunt, uw abonnementssleutel en een zoekquery. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak in een nieuwe klasse variabelen voor het API-eindpunt, uw abonnementssleutel en een zoekquery. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
    ```java
    public class EntitySearch {
@@ -68,7 +69,7 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
 
 ## <a name="construct-a-search-request-string"></a>Een tekenreeks voor de zoekaanvraag maken
 
-1. Maak een functie met de naam `search()` die een JSON `String` retourneert. Voer een URL-codering uit voor uw query en voeg deze toe aan een parametertekenreeks met `&q=`. Voeg uw markt toe aan de parameter teken reeks met `?mkt=` .
+1. Maak een functie met de naam `search()` die een JSON `String` retourneert. Voer een URL-codering uit voor uw query en voeg deze toe aan een parametertekenreeks met `&q=`. Voeg uw markt toe aan de parameterreeks met `?mkt=`.
  
 2. Maak een URL-object met uw host, pad en parametertekenreeksen.
     
@@ -104,7 +105,7 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
     //...
     ```
 
-3. Maak een `String`-object voor het opslaan van de antwoord van de `BufferedReader`. Doorloop deze en voeg elke regel toe aan de tekenreeks. Sluit vervolgens de lezer en retour neer het antwoord. 
+3. Maak een `String`-object voor het opslaan van de antwoord van de `BufferedReader`. Doorloop deze en voeg elke regel toe aan de tekenreeks. Sluit vervolgens de lezer en retourneer het resultaat. 
     
     ```java
     String line;
@@ -119,9 +120,9 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
 
 ## <a name="format-the-json-response"></a>Het JSON-antwoord indelen
 
-1. Maak een nieuwe functie met de naam `prettify` om het JSON-antwoord in te delen. Maak een nieuwe `JsonParser` oproep `parse()` op de JSON-tekst en sla deze op als een JSON-object. 
+1. Maak een nieuwe functie met de naam `prettify` om het JSON-antwoord in te delen. Maak een nieuwe `JsonParser`, roep `parse()` in de JSON-tekst aan en sla deze vervolgens op als een JSON-object. 
 
-2. Gebruik de Gson-bibliotheek om een nieuwe te maken `GsonBuilder()` , gebruik `setPrettyPrinting().create()` om de JSON te Format teren en vervolgens te retour neren.    
+2. Gebruik de Gson-bibliotheek om een nieuwe `GsonBuilder()` te maken en gebruik `setPrettyPrinting().create()` om de JSON in te delen en vervolgens te retourneren.    
   
    ```java
    //...
@@ -218,7 +219,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md).
 
 * [Wat is de Bing Entiteiten zoeken-API?](../overview.md)
-* [Bing entiteiten zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

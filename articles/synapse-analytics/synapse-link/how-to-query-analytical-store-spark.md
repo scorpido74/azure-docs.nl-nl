@@ -1,5 +1,5 @@
 ---
-title: Query uitvoeren op de analytische opslag van Azure Cosmos DB (preview) met Apache Spark voor Azure Synapse Analytics
+title: Query uitvoeren op de analytische opslag van Azure Cosmos DB (preview) met Apache Spark
 description: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 399aa00be3d585b1d37bab95d8108ee8a09a8791
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: a7ee04c922e4373414dc27ed2b7c98be605280e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85195008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089104"
 ---
 # <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Query uitvoeren op de analytische opslag van Azure Cosmos DB (preview) met Apache Spark voor Azure Synapse Analytics
 

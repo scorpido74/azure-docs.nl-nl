@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401ca1a22b47555f530e1785e25653269403812c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1c16f83be4cd10f53705633b9c4f4eb522c8408e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Whimsical
 
@@ -37,7 +37,7 @@ Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Activ
 U hebt het volgende nodig om aan de slag te gaan:
 
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
-* Whimsical-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
+* Whimsical-teamwerkruimte.
 
 > [!NOTE]
 > De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
@@ -93,7 +93,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://whimsical.com/@<TENANT_NAME>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van Whimsical](mailto:help@whimsical.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Uw specifieke waarden worden weergegeven op het SAML-instellingenscherm in de instellingen voor de Whimsical-werkruimte. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. In de Whimsical-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -146,7 +146,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-whimsical-sso"></a>Eenmalige aanmelding voor Whimsical configureren
 
-Als u eenmalige aanmelding aan de zijde van **Whimsical** wilt configureren, moet u de gedownloade **XML met federatieve metagegevens** en de correcte uit de Microsoft Azure-portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Whimsical](mailto:help@whimsical.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant van **Whimsical**, moet u de **federatieve metagegevens-XML** uploaden die u zojuist hebt gedownload naar uw [werkruimte-instellingen](https://whimsical.com/workspace/settings).
+
+![SAML-installatie van Whimsical-werkruimte](media/whimsical-tutorial/saml-setup.png)
+
+Het uploaden van de **federatieve metagegevens-XML** behoort de enige stap te zijn die u in Whimsical moet uitvoeren om de SAML SSO-verbinding in te stellen.
 
 ### <a name="create-whimsical-test-user"></a>Testgebruiker voor Whimsical maken
 

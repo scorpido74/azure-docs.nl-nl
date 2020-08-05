@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034993"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Zelfstudie: Risicodetectie voor gebruikersaanmeldingen gebruiken als trigger voor Azure Multi-Factor Authentication of het wijzigen van wachtwoorden
 
-Ter bescherming van gebruikers kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren in Azure Active Directory (Azure AD) die automatisch op risicovol gedrag reageren. Azure AD Identity Protection-beleid kan automatisch een aanmeldingspoging blokkeren of extra actie vereisen, zoals een wachtwoordwijziging of Azure Multi-Factor Authentication. Deze beleidsregels werken met bestaande beleidsregels voor voorwaardelijke toegang van Azure AD als extra beveiligingslaag voor organisaties. Gebruikers activeren mogelijk nooit riskant gedrag in een van deze beleidsregels, maar uw organisatie is beschermd wanneer er inbraakpoging op uw beleid wordt gedaan.
+Ter bescherming van gebruikers kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren in Azure Active Directory (Azure AD) die automatisch op risicovol gedrag reageren. Azure AD Identity Protection-beleid kan automatisch een aanmeldingspoging blokkeren of extra actie vereisen, zoals een wachtwoordwijziging of Azure Multi-Factor Authentication. Deze beleidsregels werken met bestaande beleidsregels voor voorwaardelijke toegang van Azure AD als extra beveiligingslaag voor uw organisatie. Gebruikers activeren mogelijk nooit riskant gedrag in een van deze beleidsregels, maar uw organisatie is beschermd wanneer er inbraakpoging op uw beleid wordt gedaan.
+
+> [!IMPORTANT]
+> Deze zelfstudie laat zien hoe een beheerder Azure Multi-Factor Authentication op basis van risico's kan inschakelen.
+>
+> Neem voor hulp contact op met de helpdesk als uw IT-team de mogelijkheid om Azure Multi-Factor Authentication te gebruiken niet heeft ingeschakeld of als u problemen ondervindt tijdens het aanmelden.
 
 In deze zelfstudie leert u het volgende:
 

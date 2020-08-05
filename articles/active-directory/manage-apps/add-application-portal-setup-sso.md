@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223326"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387282"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eenmalige aanmelding (SSO) instellen voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -55,6 +55,8 @@ Eenmalige aanmelding voor een toepassing instellen:
 
 1. Het proces voor het configureren van een toepassing om Azure AD te gebruiken voor SSO op basis van SAML is afhankelijk van de toepassing. Er staat koppeling naar de richtlijnen voor GitHub. Zie [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/) voor handleidingen voor andere apps.
 1. Volg de handleiding om SSO in te stellen voor de toepassing. Veel toepassingen hebben specifieke abonnementsvereisten voor SSO-functionaliteit. GitHub vereist bijvoorbeeld een Enterprise-abonnement.
+    > [!TIP]
+    > Raadpleeg [eenmalige aanmelding op basis van SAML configureren](configure-saml-single-sign-on.md) voor meer informatie over de configuratieopties voor SAML.
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Schermopname toont de optie voor eenmalige aanmelding in het Enterprise-abonnement op de pagina met GitHub-prijzen.":::
 

@@ -6,116 +6,110 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: db866da43310f5407ce4daae1cade2c7512b91ea
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171266"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369247"
 ---
-Gebruik de voor Spellings-client bibliotheek van Language Understanding (LUIS) voor python voor het volgende:
+Gebruik de clientbibliotheek met voorspellingen van LUIS (Language Understanding) voor Python voor het volgende:
 
-* Voor spelling per sleuf ophalen
-* Voor spellingen ophalen op basis van versie
+* Voorspelling per sleuf ophalen
+* Voorspelling per versie ophalen
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  van bibliotheek [Voorspellings runtime pakket (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  Voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[Referentiedocumentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [Voorspellingsruntimepakket (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Language Understanding-Portal account (LUIS): [Maak er gratis een](https://www.luis.ai) .
-* [Python 3. x](https://www.python.org/)
-* Een LUIS-App-ID: gebruik de open bare IoT-App-ID van `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . De gebruikers query die in de Quick Start code wordt gebruikt, is specifiek voor die app.
+* Language Understanding (LUIS)-portalaccount - [Maak er een gratis](https://www.luis.ai)
+* [Python 3.x](https://www.python.org/)
+* Een LUIS-app-id: gebruik de openbare IoT-app-id van `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. De gebruikersquery die in de code van de quickstart wordt gebruikt, is specifiek voor die app.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="get-your-language-understanding-luis-runtime-key"></a>De runtime sleutel van uw Language Understanding (LUIS) ophalen
+### <a name="get-your-language-understanding-luis-runtime-key"></a>De runtime-sleutel van Language Understanding (LUIS) ophalen
 
-Down load uw [runtime sleutel](../luis-how-to-azure-subscription.md) door een Luis-runtime bron te maken. Behoud uw sleutel en het eind punt van de sleutel voor de volgende stap.
+Haal de [runtime-sleutel](../luis-how-to-azure-subscription.md) op door een LUIS-runtime-resource te maken. Bewaar de sleutel en het eindpunt van de sleutel voor de volgende stap.
 
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
+### <a name="create-a-new-python-file"></a>Een nieuw Python-bestand maken
 
-### <a name="create-a-new-python-file"></a>Een nieuw python-bestand maken
-
-Maak een nieuw python-bestand in uw voorkeurs editor of IDE, met de naam `prediction_quickstart.py` .
+Maak een nieuw Python-bestand in uw favoriete editor of IDE en geef het de naam `prediction_quickstart.py`.
 
 ### <a name="install-the-sdk"></a>De SDK installeren
 
-Installeer in de toepassingsmap de Language Understanding (LUIS) prediction runtime-client bibliotheek voor python met de volgende opdracht:
+Installeer in de toepassingsmap de voorspellingsruntime-clientbibliotheek van Language Understanding (LUIS) voor Python met de volgende opdracht:
 
 ```python
 python -m pip install azure-cognitiveservices-language-luis
 ```
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-De Language Understanding (LUIS) prediction runtime-client is een [LUISRuntimeClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-python) -object dat wordt geverifieerd bij Azure, dat de bron sleutel bevat.
+De voorspellingsruntime-client van Language Understanding (LUIS) is een [LUISRuntimeClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-python)-object dat wordt geverifieerd bij Azure, dat de bronsleutel bevat.
 
-Nadat de client is gemaakt, gebruikt u deze client voor toegang tot de functionaliteit, waaronder:
+Als de client is gemaakt, gebruikt u deze client voor toegang tot de functionaliteit, waaronder:
 
-* Voor spelling door [staging of productie sleuf](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
-* Voor spelling per [versie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-version-prediction-app-id--version-id--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
+* Voorspelling per [fasering of productiesleuf](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
+* Voorspelling per [versie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-version-prediction-app-id--version-id--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u het volgende kunt doen met de Language Understanding (LUIS) prediction runtime-client bibliotheek voor python:
+Deze codefragmenten laten zien hoe u het volgende kunt doen met de voorspellingsruntime-clientbibliotheek van Language Understanding (LUIS) voor Python:
 
-* [Voor spelling per sleuf](#get-prediction-from-runtime)
+* [Voorspelling per sleuf](#get-prediction-from-runtime)
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open het bestand in de map van het project `prediction_quickstart.py` in uw voorkeurs editor of IDE. Voeg de volgende afhankelijkheden toe:
+Open vanuit de projectmap bestand `prediction_quickstart.py` in uw favoriete editor of IDE. Voeg de volgende afhankelijkheden toe:
 
 [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-1. Maak variabelen voor uw eigen vereiste LUIS-informatie:
-
-    Voeg variabelen toe om de Voorspellings sleutel te beheren die wordt opgehaald uit een omgevings variabele met de naam `LUIS_RUNTIME_KEY` . Als u de omgevings variabele hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden later gemaakt.
-
-    Maak een variabele voor de naam van uw resource `LUIS_RUNTIME_ENDPOINT` .
+1. Maak variabelen voor uw eigen vereiste LUIS-informatie: de voorspellingssleutel en het voorspellingseindpunt.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. Maak een variabele voor de App-ID als een omgevings variabele met de naam `LUIS_APP_ID` . Stel de omgevings variabele in op de open bare IoT-app **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Maak een variabele om de gepubliceerde sleuf in te stellen `production` .
+1. Maak een variabele voor de app-id die is ingesteld op de openbare IoT-app, **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Maak een variabele om de gepubliceerde sleuf `production` in te stellen.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Maak een referenties-object met uw sleutel en gebruik dit met uw eind punt om een [LUISRuntimeClientConfiguration]-object te maken https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() .
+1. Maak een referenties-object met uw sleutel en gebruik dit met uw eindpunt om een [LUISRuntimeClientConfiguration](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python)-object te maken.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 
-## <a name="get-prediction-from-runtime"></a>Voor spelling van runtime ophalen
+## <a name="get-prediction-from-runtime"></a>Voorspelling uit runtime ophalen
 
-Voeg de volgende methode toe om de aanvraag te maken voor de Voorspellings runtime.
+Voeg de volgende methode toe om de aanvraag aan de voorspellingsruntime te maken.
 
-De gebruiker utterance maakt deel uit van het [prediction_request](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-python) -object.
+De uiting van de gebruiker maakt deel uit van het [prediction_request](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-python)-object.
 
-De **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** methode heeft verschillende para meters nodig, zoals de App-ID, de naam van de sleuf en het aanvraag object voor de voor spelling om te voldoen aan de aanvraag. De andere opties, zoals uitgebreid, alle intenten weer geven en logboeken zijn optioneel. De aanvraag retourneert een [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) -object.
+De **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** -methode heeft verschillende parameters nodig, zoals de app-id, de naam van de sleuf en het voorspellingsaanvraagobject, om aan de aanvraag te voldoen. De andere opties, zoals verbose, show all intents en log, zijn optioneel. De aanvraag retourneert een [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python)-object.
 
 [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=predict)]
 
-## <a name="main-code-for-the-prediction"></a>Hoofd code voor de voor spelling
+## <a name="main-code-for-the-prediction"></a>Hoofdcode voor de voorspelling
 
-Gebruik de volgende methode om de variabelen en methoden samen te koppelen om de voor spelling te verkrijgen.
+Gebruik de volgende hoofdmethode om de variabelen en methoden samen te koppelen om de voorspelling op te halen.
 
 ```python
 predict(luisAppID, luisSlotName)
 ```
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `python prediction_quickstart.py` opdracht uit de toepassingsmap.
+Voer de toepassing uit vanuit uw toepassingsmap met de opdracht `python prediction_quickstart.py`.
 
 ```console
 python prediction_quickstart.py
 ```
 
-In de Quick Start-console wordt de uitvoer weer gegeven:
+In de quickstart-console wordt de uitvoer weergegeven:
 
 ```console
 Top intent: HomeAutomation.TurnOn
@@ -127,4 +121,4 @@ Entities: {'HomeAutomation.Operation': ['on']}
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met de voor spelling, kunt u het werk van deze Quick Start opschonen door het bestand en de submappen ervan te verwijderen.
+Wanneer u klaar bent met de voorspellingen, kunt u het werk van deze quickstart opschonen door het bestand en de submappen ervan te verwijderen.

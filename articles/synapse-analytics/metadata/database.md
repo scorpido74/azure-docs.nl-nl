@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496006"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385531"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gedeelde Azure Synapse Analytics-databases
 
@@ -34,7 +34,7 @@ Gebruik Spark voor het beheren van met Spark gemaakte databases. U kunt een data
 
 Als u objecten in een met Spark gemaakte database maakt met SQL on-demand, of als u de database probeert te verwijderen, wordt de bewerking uitgevoerd. De oorspronkelijke Spark-database wordt echter niet gewijzigd.
 
-## <a name="handling-of-name-conflicts"></a>Verwerking van naamconflicten
+## <a name="how-name-conflicts-are-handled"></a>Hoe naamconflicten worden verwerkt
 
 Als de naam van een Spark-database een conflict veroorzaakt met de naam van een bestaande SQL on-demand-database, wordt een achtervoegsel toegevoegd aan SQL on-demand in de Spark-database. Het achtervoegsel in SQL on-demand is `_<workspace name>-ondemand-DefaultSparkConnector`.
 
@@ -57,7 +57,7 @@ Als voor een beveiligingsprincipal is vereist dat objecten moeten kunnen worden 
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Een database maken en verbinden met Spark - SQL on-demand
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>Spark-database maken en verbinden met SQL on demand
 
 Maak eerst een nieuwe Spark-database met de naam `mytestdb` met behulp van een Spark-cluster dat u al hebt gemaakt in uw werkruimte. U kunt bijvoorbeeld een Spark C#-notebook gebruiken met de volgende .NET for Spark-instructie:
 

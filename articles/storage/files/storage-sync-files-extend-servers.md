@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77597895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037096"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Zelfstudie: Windows-bestandsservers uitbreiden met Azure File Sync
 
-In dit artikel worden de basis stappen beschreven voor het uitbreiden van de opslag capaciteit van een Windows-Server met behulp van Azure File Sync. Hoewel de zelf studie Windows Server als een virtuele machine (VM) van Azure heeft, zou u dit proces doorgaans voor uw on-premises servers uitvoeren. Instructies voor het implementeren van Azure File Sync in uw eigen omgeving vindt u in het artikel [Azure File Sync implementeren](storage-sync-files-deployment-guide.md).
+In dit artikel worden de basisstappen getoond voor het uitbreiden van de opslagcapaciteit van een Windows-server met Azure File Sync. Hoewel in deze zelfstudie een Windows Server als een virtuele Azure-machine (VM) wordt gebruikt, voert u dit proces gewoonlijk uit voor uw on-premises servers. Instructies voor het implementeren van Azure File Sync in uw eigen omgeving vindt u in het artikel [Azure File Sync implementeren](storage-sync-files-deployment-guide.md).
 
 > [!div class="checklist"]
 > * Opslagsynchronisatieservice implementeren
@@ -57,7 +57,7 @@ Nadat u een Azure-opslagaccount hebt geïmplementeerd, kunt u een bestandsshare 
 
     ![Bestanden selecteren](./media/storage-sync-files-extend-servers/click-files.png)
 
-1. Selecteer **+ Bestands share**.
+1. Selecteer **+ Bestandsshare**.
 
     ![De knop Bestandsshare toevoegen selecteren](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
@@ -79,7 +79,7 @@ U hebt nu een opslagaccount gemaakt en een bestandsshare met één bestand. U ga
 
 1. Ga naar de Microsoft Azure-portal en vouw het menu aan de linkerkant uit. Kies in de linkerbovenhoek **Een resource maken**.
 1. Zoek via het zoekvak boven de lijst met **Microsoft Azure Marketplace**-resources naar **Windows Server 2016 Datacenter** en selecteer dit in de resultaten. Kies **Maken**.
-1. Ga naar het tabblad **basis principes** . Selecteer onder **Project Details**de resource groep die u hebt gemaakt voor deze zelf studie.
+1. Ga naar het tabblad **Basis**. Selecteer onder **Projectdetails** de resourcegroep die u voor deze zelfstudie hebt gemaakt.
 
    ![Basisinformatie over uw virtuele machine invoeren op de portalblade](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
@@ -97,12 +97,12 @@ U hebt nu een opslagaccount gemaakt en een bestandsshare met één bestand. U ga
    1. Behoud op het tabblad **Schijven**, onder **Schijfopties**, de standaardinstellingen.
    1. Selecteer onder **GEGEVENSSCHIJVEN** de optie **Een nieuwe schijf maken en koppelen**.
 
-   1. Behoud de standaardinstellingen, behalve voor **Grootte (GiB)**, die u voor deze zelfstudie kunt wijzigen in **1 GB**.
+   1. Behoud de standaardinstellingen, behalve voor **Grootte (GiB)** , die u voor deze zelfstudie kunt wijzigen in **1 GB**.
 
       ![Details van gegevensschijf](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
    1. Selecteer **OK**.
-1. Selecteer **controleren + maken**.
+1. Selecteer **Controleren + maken**.
 1. Selecteer **Maken**.
 
    U kunt het pictogram **Meldingen** selecteren om de **implementatievoortgang** zien. Het duurt enkele minuten voordat de nieuwe VM is voltooid.
@@ -124,7 +124,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. M
    ![Het RDP-bestand downloaden](./media/storage-sync-files-extend-servers/download-rdp.png)
 
 1. Open het gedownloade RDP-bestand en selecteer **Verbinden** wanneer dit wordt gevraagd.
-1. Selecteer in het venster **Windows-beveiliging****Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam als *localhost\username*, voer het wachtwoord in dat u voor de virtuele machine hebt gemaakt en selecteer vervolgens **OK**.
+1. Selecteer in het venster **Windows-beveiliging** **Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam als *localhost\username*, voer het wachtwoord in dat u voor de virtuele machine hebt gemaakt en selecteer vervolgens **OK**.
 
    ![Meer keuzes](./media/storage-sync-files-extend-servers/local-host2.png)
 
@@ -134,7 +134,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. M
 
 Schakel Verbeterde beveiliging van Internet Explorer uit voor de Windows Server 2016 Datacenter-server. Deze step is alleen noodzakelijk als u de server voor het eerst registreert. U kunt de optie opnieuw inschakelen nadat de server is geregistreerd.
 
-Op de virtuele machine met Windows Server 2016 Datacenter wordt Serverbeheer automatisch geopend.  Als Serverbeheer niet standaard wordt geopend, zoekt u deze in het menu Start.
+Op de virtuele machine met Windows Server 2016 Datacenter wordt Serverbeheer automatisch geopend.  Als Serverbeheer niet standaard wordt geopend, kunt u er naar zoeken in het menu Start.
 
 1. Selecteer in **Serverbeheer** de optie **Lokale server**.
 
@@ -164,9 +164,9 @@ U kunt nu de gegevensschijf aan de VM toevoegen.
    U hebt nu de schijf online gebracht en een volume gemaakt. Open Verkenner op de virtuele machine met Windows Server om de aanwezigheid van de onlangs toegevoegde gegevensschijf te bevestigen.
 
 1. Vouw in Verkenner op de VM **Deze pc** uit en open het nieuwe station. In dit voorbeeld is dat het F-station.
-1. Klik met de rechter muisknop en selecteer **nieuwe** > **map**. Geef de map de naam _FilesToSync_.
+1. Klik er met de rechtermuisknop op en selecteer **Nieuw** > **Map**. Geef de map de naam _FilesToSync_.
 1. Open de map **FilesToSync**.
-1. Klik met de rechter muisknop en selecteer **Nieuw** > **tekst document**. Geef het tekstbestand de naam _MyTestFile_.
+1. Klik er met de rechtermuisknop op en selecteer **Nieuw** > **Tekstdocument**. Geef het tekstbestand de naam _MyTestFile_.
 
     ![Een nieuw tekstbestand toevoegen](media/storage-sync-files-extend-servers/new-file.png)
 
@@ -238,7 +238,7 @@ De Azure File Sync-agent is een downloadbaar pakket waardoor Windows Server met 
 
    ![Agent selecteren](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. Selecteer **toestaan wanneer** > **uitvoeren** > is**geopend**.
+1. Selecteer **Eenmaal toestaan** > **Uitvoeren** > **Openen**.
 1. Sluit het PowerShell-venster als u dat nog niet hebt gedaan.
 1. Accepteer de standaardwaarden in de **Storage Sync Agent Setup Wizard**.
 1. Selecteer **Installeren**.
@@ -259,11 +259,10 @@ De gebruikersinterface van de serverregistratie moet automatisch worden geopend 
 
    ![Schermafbeelding van de gebruikersinterface van de serverregistratie](media/storage-sync-files-extend-servers/signin.png)
 
-   | | |
-   | ----- | ----- |
    | Waarde | Beschrijving |
+   | ----- | ----- |
    | **Azure-abonnement** | Het abonnement dat de opslagsynchronisatieservice voor deze zelfstudie bevat. |
-   | **Resource groep** | De resourcegroep die de opslagsynchronisatieservice bevat. Gebruik voor deze zelfstudie _afsresgroup101918_. |
+   | **Resourcegroep** | De resourcegroep die de opslagsynchronisatieservice bevat. Gebruik voor deze zelfstudie _afsresgroup101918_. |
    | **Opslagsynchronisatieservice** | De naam van de opslagsynchronisatieservice. Gebruik voor deze zelfstudie _afssyncservice02_. |
 
 1. Selecteer **Registreren** om de serverregistratie te voltooien.
@@ -284,8 +283,8 @@ Een synchronisatiegroep definieert de synchronisatietopologie voor een verzameli
    | ----- | ----- |
    | **Naam synchronisatiegroep** | Deze naam moet uniek zijn binnen de opslagsynchronisatieservice, maar het mag een willekeurige naam zijn die u makkelijk kunt onthouden. Gebruik voor deze zelfstudie *afssyncgroup*.|
    | **Abonnement** | Het abonnement waar u de opslagsynchronisatieservice voor deze zelfstudie hebt geïmplementeerd. |
-   | **Storage-account** | Kies **Opslagaccount selecteren**. Selecteer in het deelvenster dat verschijnt het opslagaccount met de Azure-bestandsshare die u hebt gemaakt. Gebruik voor deze zelfstudie *afsstoracct101918*. |
-   | **Azure-bestands share** | De naam van de Azure-bestandsshare die u hebt gemaakt. Gebruik voor deze zelfstudie *afsfileshare*. |
+   | **Opslagaccount** | Kies **Opslagaccount selecteren**. Selecteer in het deelvenster dat verschijnt het opslagaccount met de Azure-bestandsshare die u hebt gemaakt. Gebruik voor deze zelfstudie *afsstoracct101918*. |
+   | **Azure-bestandsshare** | De naam van de Azure-bestandsshare die u hebt gemaakt. Gebruik voor deze zelfstudie *afsfileshare*. |
 
 1. Selecteer **Maken**.
 
@@ -301,9 +300,8 @@ Een servereindpunt vertegenwoordigt een specifieke locatie op een geregistreerde
 
 1. Voer in het deelvenster **Servereindpunt toevoegen** de volgende gegevens in om een servereindpunt te maken:
 
-   | | |
-   | ----- | ----- |
    | Waarde | Beschrijving |
+   | ----- | ----- |
    | **Geregistreerde server** | De naam van de server die u hebt gemaakt. Gebruik voor deze zelfstudie *afsvm101918*. |
    | **Pad** | Het Windows Server-pad naar het station dat u hebt gemaakt. Gebruik in deze zelfstudie *f:\filestosync*. |
    | **Cloudopslaglagen** | Voor deze zelfstudie uitgeschakeld laten. |
@@ -321,7 +319,7 @@ Uw bestanden zijn nu gesynchroniseerd met uw Azure-bestandsshare en Windows Serv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u de basis stappen geleerd voor het uitbreiden van de opslag capaciteit van een Windows-Server met behulp van Azure File Sync. Zie voor een uitgebreidere weer gave bij het plannen van een Azure File Sync-implementatie:
+In deze zelfstudie hebt u de basisstappen geleerd voor het uitbreiden van de opslagcapaciteit van een Windows-server met Azure File Sync. Zie voor meer inzicht in het plannen van een Azure File Sync-implementatie:
 
 > [!div class="nextstepaction"]
 > [Planning voor de implementatie van Azure File Sync](./storage-sync-files-planning.md)

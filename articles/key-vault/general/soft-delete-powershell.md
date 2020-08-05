@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202117"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386075"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell
 
@@ -27,7 +27,7 @@ Met de functie voor voorlopig verwijderen van Azure Key Vault kunt u verwijderde
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Azure PowerShell 1.0.0 of hoger: als u dit nog niet hebt geïnstalleerd, installeert u Azure PowerShell en koppelt u het aan uw Azure-abonnement. Zie [Azure PowerShell installeren en configureren](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 1.0.0 of hoger: als u dit nog niet hebt geïnstalleerd, installeert u Azure PowerShell en koppelt u het aan uw Azure-abonnement. Zie [Azure PowerShell installeren en configureren](https://docs.microsoft.com/powershell/azure/). 
 
 >[!NOTE]
 > Er bestaat een verouderde versie van het PowerShell-uitvoerindelingsbestand voor Key Vault dat **mogelijk** in uw omgeving kan worden geladen in plaats van de juiste versie. We wachten op een bijgewerkte versie van PowerShell die de benodigde correctie voor de uitvoerindeling bevat en we zullen dit onderwerp op dat moment bijwerken. De huidige tijdelijke oplossing als dit probleem zich voordoet is:
@@ -206,7 +206,7 @@ Net als sleutels worden geheimen beheerd met hun eigen opdrachten:
 
 U kunt certificaten beheren aan de hand van de onderstaande opdrachten:
 
-- Een certificaat met de naam SQLPassword verwijderen: 
+- Een certificaat verwijderen: 
   ```powershell
   Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
   ```
@@ -285,5 +285,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Meer informatie
 
-- Zie [Azure Key Vault: overzicht van voorlopig verwijderen](overview-soft-delete.md) voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
+- Zie [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-overview.md) voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
 - Zie [Wat is Azure Key Vault?](overview.md) voor een algemeen overzicht van het gebruik van Azure Key Vault.

@@ -5,19 +5,15 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: a456709fffd8b4bc0f1c7eb25281980daea2edb6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 29c386b7e12c24e712ee24e887b8e25609ffaeeb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537413"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124550"
 ---
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar voorbereiden
 
-U hebt voor het uitvoeren van deze zelfstudie een **Azure Digital Twins-exemplaar** nodig dat kan worden gebruikt voor het programmeren. 
+U hebt voor het uitvoeren van deze zelfstudie een **Azure Digital Twins-exemplaar** nodig dat kan worden gebruikt voor het programmeren. Als u al een Azure Digital Twins-exemplaar hebt ingesteld voor een eerdere opdracht, kunt u dat exemplaar gebruiken en doorgaan naar de volgende sectie.
 
-Als u al een Azure Digital Twins-exemplaar hebt ingesteld voor een eerdere opdracht, kunt u dat exemplaar gebruiken en doorgaan naar de volgende sectie.
-
-Voer anders de volgende stappen uit om uw exemplaar in te stellen:
-1. **Maak een exemplaar** met behulp van de instructies in [*Instructies: Een Azure Digital Twins-exemplaar maken*](../articles/digital-twins/how-to-set-up-instance.md). 
-2. **Stel een Azure Active Directory-app-registratie in voor uw exemplaar** met het gedeelte *Een app-registratie maken* van [*Procedure: Een clienttoepassing verifiëren*](../articles/digital-twins/how-to-authenticate-client.md#create-an-app-registration).
+Als u dit niet doet, moet u **een exemplaar en verificatie instellen** met behulp van de instructies in [*Instructies: een exemplaar en verificatie instellen*](../articles/digital-twins/how-to-set-up-instance-scripted.md). De instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
