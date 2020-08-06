@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 1f6624c454364ca19c8ce112cb1cbbef134f162d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567978"
+ms.locfileid: "87759611"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Gegevens configuratie voor het gebruik van Azure SQL Edge en diagnose
 
@@ -87,7 +87,7 @@ Het lokale controle onderdeel van het verzamelen van Azure SQL Edge-en diagnosti
 
 Lokale controle-en diagnostische gegevens voor Azure SQL Edge inschakelen
 
-1. Maak een doelmap voor een nieuwe lokale audit logboek opslag. Deze doel directory moet worden gemaakt in hetzelfde koppel volume dat is toegewezen aan het/var/opt/MSSQL/-pad op de SQL-rand.
+1. Maak een doelmap voor een nieuwe lokale audit logboek opslag. Deze doelmap kan zich op de host of in de container bevinden. In het onderstaande voor beeld wordt de doelmap gemaakt in hetzelfde koppel volume dat is toegewezen aan het/var/opt/MSSQL/-pad op de SQL-rand.
 
    ```bash
    sudo mkdir <host mount path>/audit
@@ -95,14 +95,14 @@ Lokale controle-en diagnostische gegevens voor Azure SQL Edge inschakelen
 
 2. Configureer de controle van gebruiks-en diagnostische gegevens met behulp van omgevings variabelen of het bestand MSSQL. conf.
 
-   - Omgevings variabelen gebruiken: Voeg de volgende omgevings variabele toe aan de implementatie van SQL Edge.
+   - Omgevings variabelen gebruiken: Voeg de volgende omgevings variabele toe aan de implementatie van SQL Edge en geef de doelmap voor de audit bestanden op.
    
-     `*MSSQL_TELEMETRY_DIR = /var/opt/mssql/audit*`
+     `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - Het bestand MSSQL. conf gebruiken: Voeg de volgende regels toe aan het bestand MSSQL. conf.
+   - Het bestand MSSQL. conf gebruiken: Voeg de volgende regels toe aan het bestand MSSQL. conf en geef de doelmap voor de audit bestanden op.
        ```ini
        [telemetry]
-       userrequestedlocalauditdirectory  = /var/opt/mssql/audit
+       userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
 ## <a name="next-steps"></a>Volgende stappen

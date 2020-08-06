@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688888"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760903"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA installeren op een Windows-failovercluster en gedeelde schijf voor een SAP ASCS/SCS-exemplaar in azure
 
@@ -225,7 +225,7 @@ Voeg eerst een nieuwe profiel parameter toe. De profiel parameter voor komt dat 
 
 Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
 
-1. Voeg deze profiel parameter toe aan het SAP-exemplaar profiel voor ASCS/SCS:
+1. Voeg deze profiel parameter toe aan het SAP-exemplaar profiel voor ASCS/SCS als u gebruikmaakt van ENSA1.
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
    Bijvoorbeeld naar het SAP SCS-exemplaar profiel en het bijbehorende pad:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   Voor zowel ENSA1 als ENSA2, moet u ervoor zorgen dat de `keepalive` OS-para meters zijn ingesteld zoals beschreven in SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).   
 
 2. Start de SAP ASCS/SCS-instantie opnieuw op om de wijzigingen toe te passen.
 

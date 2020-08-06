@@ -5,14 +5,14 @@ services: vpn-gateway
 author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 08/04/2020
 ms.author: alzam
-ms.openlocfilehash: cf978f9551e5b2db885ca28d14f66586c029d913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082219"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761175"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocolverbindingen: Azure Active Directory-verificatie
 
@@ -88,11 +88,11 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Selecteer de weglatings tekens naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![verwijderen](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
-    ![verwijderen](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Een verbinding maken
 
@@ -250,6 +250,15 @@ U kunt het gedownloade XML-profiel bestand wijzigen ** \<excluderoutes> \<route>
 </clientconfig>
 </azvpnprofile>
 ```
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Kan ik het profiel vanuit een opdracht regel prompt importeren?
+
+U kunt het profiel vanuit een opdracht regel prompt importeren door het gedownloade **azurevpnconfig.xml** -bestand in de map **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** te plaatsen en de volgende opdracht uit te voeren:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+Gebruik de schakel optie **-f** ook als u wilt afdwingen dat het import proces wordt gebruikt
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

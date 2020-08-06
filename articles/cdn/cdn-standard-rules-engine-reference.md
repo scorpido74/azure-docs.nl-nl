@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559300"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760087"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Naslaginformatie over standaardregelengine voor Azure CDN
 
@@ -59,15 +59,7 @@ Een procent teken wordt gebruikt om URL-code ring aan te geven (bijvoorbeeld `%2
 
 ### <a name="wildcard-values"></a>Joker teken waarden
 
-Tekst die wordt geïnterpreteerd als een Joker teken, wijst extra betekenissen toe aan speciale tekens. In de volgende tabel wordt beschreven hoe specifieke speciale tekens worden geïnterpreteerd in de standaard regels-engine:
-
-Teken | Description
-----------|------------
-\ | Een back slash wordt gebruikt om een van de tekens die in deze tabel zijn opgegeven, te escapepen. Een back slash moet direct voor het speciale teken worden opgegeven. De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
-% | Een procent teken wordt gebruikt om URL-code ring aan te geven (bijvoorbeeld `%20` ).
-\* | Een asterisk is een Joker teken dat bestaat uit een of meer tekens.
-schijfruimte | Een spatie geeft aan dat aan een voor waarde voor een overeenkomst kan worden voldaan door een van de opgegeven waarden of patronen.
-enkele aanhalings tekens | Een enkel aanhalings teken heeft geen speciale betekenis. Een reeks enkele aanhalings tekens geeft echter aan dat een waarde moet worden behandeld als een letterlijke waarde. Enkele aanhalings tekens kunnen op de volgende manieren worden gebruikt:<ul><li>Om aan te geven dat aan een match-voor waarde wordt voldaan wanneer de opgegeven waarde overeenkomt met een deel van de vergelijkings waarde.  Bijvoorbeeld, `'ma'` komt overeen met een van de volgende teken reeksen: <ul><li>/Business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template. **ma**p</li></ul><li>Als u wilt toestaan dat een speciaal teken wordt opgegeven als een letterlijke teken. U kunt bijvoorbeeld een letterlijke spatie opgeven door een spatie tussen enkele aanhalings tekens ( `' '` of) te zetten `'<sample value>'` .</li><li>Om toe te staan dat een lege waarde wordt opgegeven. Geef een lege waarde op door een paar enkele aanhalings tekens (**' '**) op te geven.</li></ul>**Belang rijk**:<br /><ul><li>Als de opgegeven waarde geen joker teken bevat, wordt de waarde automatisch beschouwd als een letterlijke waarde. U hoeft geen set met enkele aanhalings tekens voor een letterlijke waarde op te geven.</li><li>Als een back slash niet wordt gebruikt om een ander teken in deze tabel te escapeel, wordt de back slash genegeerd als deze is opgegeven in een reeks enkele aanhalings tekens.</li><li>Een andere manier om een speciaal teken als letterlijke teken op te geven, is door een back slash () te gebruiken `\` .</li></ul>
+Momenteel wordt het Joker teken ondersteund in de **UrlPath match-voor waarde** in de standaard regels-engine. Het \* teken is een sterretje dat bestaat uit een of meer tekens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

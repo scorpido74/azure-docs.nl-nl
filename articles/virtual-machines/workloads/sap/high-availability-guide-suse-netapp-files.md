@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 261db7d90824aea61ebc974f91eb8f772f8fc68a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75573cb49bcc0aca206ad8f13f060121e70a0621
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082083"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760614"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
 
@@ -644,9 +644,11 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    </code></pre>
+
+   Voor zowel ENSA1 als ENSA2, moet u ervoor zorgen dat de `keepalive` OS-para meters zijn ingesteld zoals beschreven in SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).  
 
    * ERS-profiel
 
@@ -668,8 +670,6 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 6. **[A]** Keep Alive configureren
 
    De communicatie tussen de SAP NetWeaver-toepassings server en de ASCS/SCS wordt doorgestuurd via een software load balancer. De load balancer verbreekt inactieve verbindingen na een Configureer bare time-out. Om dit te voor komen, moet u een para meter instellen in het SAP NetWeaver ASCS/SCS-profiel en de Linux-systeem instellingen wijzigen. Lees [SAP-opmerking 1410736][1410736] voor meer informatie.
-
-   De ASCS/SCS-profiel parameter enque/encni/set_so_keepalive is al toegevoegd in de laatste stap.
 
    <pre><code>
    # Change the Linux system configuration

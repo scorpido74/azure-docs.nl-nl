@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 08/04/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420648"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761158"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -319,7 +319,12 @@ In de details van de index voortgang wordt het percentage voortgang van de huidi
 
 Ongeacht de waarde die is opgegeven voor de eigenschap **achtergrond** index, worden index updates altijd op de achtergrond uitgevoerd. Omdat index updates gebruikmaken van aanvraag eenheden (RUs) met een lagere prioriteit dan andere database bewerkingen, hebben index wijzigingen geen invloed op uitval voor schrijf bewerkingen, updates of verwijderingen.
 
-Wanneer u een nieuwe index toevoegt, zullen query's onmiddellijk de index gebruiken. Dit betekent dat query's mogelijk niet alle overeenkomende resultaten retour neren en dit doen zonder dat er fouten worden geretourneerd. Wanneer de index transformatie is voltooid, zijn de resultaten van de query consistent. U kunt de voortgang van de [index bijhouden](#track-index-progress).
+Er is geen invloed op de Lees Beschik baarheid bij het toevoegen van een nieuwe index. Met query's worden alleen nieuwe indexen gebruikt wanneer de index transformatie is voltooid. Tijdens de index transformatie zal de query-engine bestaande indexen blijven gebruiken. u ziet dan vergelijk bare Lees prestaties tijdens de indexerings transformatie om te zien wat u hebt gezien voordat de index wijziging werd geïnitieerd. Bij het toevoegen van nieuwe indexen is er ook geen risico van onvolledige of inconsistente query resultaten.
+
+Bij het verwijderen van indexen en het direct uitvoeren van query's zijn de filters op de verwijderde indexen mogelijk inconsistent en onvolledig, totdat de index transformatie is voltooid. Als u indexen verwijdert, garandeert de query-engine geen consistente of volledige resultaten wanneer query's filteren op deze onlangs verwijderde indexen. De meeste ontwikkel aars verwijderen geen indexen en proberen deze vervolgens onmiddellijk te doorzoeken, zodat deze situatie in de praktijk niet waarschijnlijk is.
+
+> [!NOTE]
+> U kunt de voortgang van de [index bijhouden](#track-index-progress).
 
 ## <a name="migrate-collections-with-indexes"></a>Verzamelingen migreren met indexen
 
