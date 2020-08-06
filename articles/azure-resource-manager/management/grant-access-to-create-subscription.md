@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057616"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824474"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Toegang verlenen voor het maken van Azure Enter prise-abonnementen (preview-versie)
 
-Als Azure-klant op [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)kunt u een andere gebruiker of Service-Principal toestemming geven om abonnementen te maken die aan uw account worden gefactureerd. In dit artikel leert u hoe u op [rollen gebaseerde Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) kunt gebruiken voor het delen van abonnementen en het maken van een abonnement. U moet de rol van eigenaar hebben voor het account dat u wilt delen.
+Als Azure-klant op [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)kunt u een andere gebruiker of Service-Principal toestemming geven om abonnementen te maken die aan uw account worden gefactureerd. In dit artikel leert u hoe u [Azure RBAC (op rollen gebaseerd toegangs beheer)](../../role-based-access-control/role-assignments-portal.md) kunt gebruiken om abonnementen te maken, en hoe u een abonnement kunt controleren. U moet de rol van eigenaar hebben voor het account dat u wilt delen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

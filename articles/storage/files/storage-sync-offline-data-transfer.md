@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514389"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827891"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Bulkgegevens migreren in Azure File Sync met Azure DataBox
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
@@ -88,6 +88,13 @@ Schakel de offline modus voor gegevens overdracht alleen uit wanneer de status i
 
 > [!IMPORTANT]
 > Nadat u de offline modus voor gegevens overdracht hebt uitgeschakeld, kunt u deze niet meer inschakelen, zelfs niet als de faserings share van de bulk migratie nog steeds beschikbaar is.
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>Azure File Sync en vooraf geseede bestanden in de Cloud
+
+Als u geseede bestanden in een Azure-bestands share hebt op een andere manier dan DataBox, bijvoorbeeld via AzCopy, RoboCopy vanuit een Cloud back-up of een andere methode, moet u nog steeds het [Offline gegevensoverdracht proces](#process-for-offline-data-transfer) volgen dat in dit artikel wordt beschreven. U hoeft DataBox alleen te negeren als de methode die uw bestanden overzetten naar de Cloud. Het is echter van cruciaal belang om ervoor te zorgen dat u nog steeds het proces van het seeden van de bestanden naar een *staging-share* en niet de uiteindelijke, Azure file sync verbonden share.
+
+> [!WARNING]
+> **Volg het proces van het seeden van bestanden naar een staging-share en niet de uiteindelijke**, Azure file sync verbonden share. Als dat niet het geval is, kunnen er bestands conflicten optreden (beide bestands versies worden opgeslagen) en bestanden die op de live server worden verwijderd, kunnen terugkomen als ze nog steeds aanwezig zijn in uw oudere, seeded set bestanden. Daarnaast worden wijzigingen in mappen samen met elkaar samengevoegd, waardoor het zeer moeilijk is om de naam ruimte na een dergelijke fout te scheiden.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)

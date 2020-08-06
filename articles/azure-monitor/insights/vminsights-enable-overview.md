@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323941"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824763"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
 
@@ -80,7 +80,7 @@ Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van ee
 
 De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen die Azure Monitor voor VM's ondersteunt. Verderop in dit gedeelte vindt u een volledige lijst met informatie over de belangrijkste en secundaire versie van het Linux-besturings systeem en de ondersteunde kernel-versies.
 
-|Besturingssysteemversie |Prestaties |Kaarten |
+|Besturingssysteemversie |Prestaties |Maps |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
@@ -112,23 +112,23 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 | Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 7,6 | 3.10.0-957 |
-| 7,5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
+| 7.5 | 3.10.0-862 |
 | 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 6,10 | 2.6.32-754 |
-| 6,9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
+| 6.9 | 2.6.32-696 |
 
 #### <a name="centosplus"></a>CentOSPlus
 
 | Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6,9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
+| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
+| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -150,7 +150,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 | Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 9 | 4,9 | 
+| 9 | 4.9 | 
 
 ## <a name="supported-azure-arc-machines"></a>Ondersteunde Azure-Arc-machines
 Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld in regio's waar de Arc extension-service beschikbaar is. U moet versie 0,9 of hoger van de Arc-agent uitvoeren.
@@ -174,10 +174,10 @@ Hier volgen meerdere methoden voor het implementeren van deze agents.
 
 | Methode | Beschrijving |
 |:---|:---|
-| [Azure-portal](vminsights-enable-single-vm.md) | Installeer beide agents op één virtuele machine, virtuele-machine schaalset of hybride virtuele machines die zijn verbonden met Azure Arc. |
+| [Azure-portal](./vminsights-enable-portal.md) | Installeer beide agents op één virtuele machine, virtuele-machine schaalset of hybride virtuele machines die zijn verbonden met Azure Arc. |
 | [Resource Manager-sjablonen](vminsights-enable-powershell.md) | Installeer beide agents met behulp van een van de ondersteunde methoden om een resource manager-sjabloon te implementeren, waaronder CLI en Power shell. |
-| [Azure Policy](vminsights-enable-at-scale-policy.md) | Wijs Azure Policy initiatief toe om automatisch de agents te installeren wanneer een virtuele machine of virtuele-machine schaalset wordt gemaakt. |
-| [Hand matige installatie](vminsights-enable-hybrid-cloud.md) | Installeer de agents in het gast besturingssysteem op computers die buiten Azure worden gehost, inclusief in uw Data Center of andere Cloud omgevingen. |
+| [Azure Policy](./vminsights-enable-policy.md) | Wijs Azure Policy initiatief toe om automatisch de agents te installeren wanneer een virtuele machine of virtuele-machine schaalset wordt gemaakt. |
+| [Hand matige installatie](./vminsights-enable-hybrid.md) | Installeer de agents in het gast besturingssysteem op computers die buiten Azure worden gehost, inclusief in uw Data Center of andere Cloud omgevingen. |
 
 
 
@@ -200,4 +200,3 @@ Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Azure monitor voor VM's prestaties weer geven](vminsights-performance.md)voor meer informatie over het gebruik van de functie voor prestatie bewaking. Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven.
-

@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283228"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827449"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager-sjabloon
 
@@ -274,7 +274,7 @@ Als u deze eigenschap wilt instellen, moet de netwerk interface aanwezig zijn. D
 
 Er worden verschillende profiel elementen gebruikt bij het definiëren van een virtuele-machine bron. Sommige zijn vereist en sommige zijn optioneel. De elementen hardwareProfile, osProfile, storageProfile en networkProfile zijn bijvoorbeeld vereist, maar de diagnosticsProfile is optioneel. Deze profielen definiëren instellingen zoals:
    
-- [size](sizes.md)
+- [size](../sizes.md)
 - [naam](/azure/architecture/best-practices/resource-naming) en referenties
 - instellingen voor schijf en [besturings systeem](cli-ps-findimage.md)
 - [netwerk interface](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ Als u een virtuele machine wilt maken op basis van een beheerde installatie kopi
 
 ### <a name="attach-data-disks"></a>Gegevens schijven koppelen
 
-U kunt eventueel ook gegevens schijven toevoegen aan de Vm's. Het [aantal schijven](sizes.md) is afhankelijk van de grootte van de besturingssysteem schijf die u gebruikt. Met de grootte van de virtuele machines die zijn ingesteld op Standard_DS1_v2, is het maximum aantal gegevens schijven dat kan worden toegevoegd aan de Vm's twee. In het voor beeld wordt één beheerde gegevens schijf aan elke virtuele machine toegevoegd:
+U kunt eventueel ook gegevens schijven toevoegen aan de Vm's. Het [aantal schijven](../sizes.md) is afhankelijk van de grootte van de besturingssysteem schijf die u gebruikt. Met de grootte van de virtuele machines die zijn ingesteld op Standard_DS1_v2, is het maximum aantal gegevens schijven dat kan worden toegevoegd aan de Vm's twee. In het voor beeld wordt één beheerde gegevens schijf aan elke virtuele machine toegevoegd:
 
 ```json
 "dataDisks": [

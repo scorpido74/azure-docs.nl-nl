@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 58f77eaba7cd0c29899a81352f5550becb0e4128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508590"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825239"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Een virtuele Windows-machine maken in een beschikbaarheidszone met PowerShell
 
@@ -32,7 +32,7 @@ Connect-AzAccount
 ```
 
 ## <a name="check-vm-sku-availability"></a>Beschikbaarheid van VM-SKU controleren
-De beschikbaarheid van VM-grootten, of SKU's, kan verschillen per regio en zone. Als hulp bij de planning voor het gebruik van de beschikbaarheidszones kunt u een overzicht maken van de beschikbare VM-SKU's per Azure-regio en zone. Hiermee zorgt u ervoor dat u een correcte VM-grootte kiest en de gewenste tolerantie in zones verkrijgt. Voor meer informatie over de verschillende VM-typen en -grootten raadpleegt u het [Overzicht van de VM-grootten](sizes.md).
+De beschikbaarheid van VM-grootten, of SKU's, kan verschillen per regio en zone. Als hulp bij de planning voor het gebruik van de beschikbaarheidszones kunt u een overzicht maken van de beschikbare VM-SKU's per Azure-regio en zone. Hiermee zorgt u ervoor dat u een correcte VM-grootte kiest en de gewenste tolerantie in zones verkrijgt. Voor meer informatie over de verschillende VM-typen en -grootten raadpleegt u het [Overzicht van de VM-grootten](../sizes.md).
 
 U kunt de beschikbare VM-SKU's bekijken met de opdracht [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku). Met het volgende voorbeeld wordt een lijst weergegeven van de beschikbare VM-SKU's in de regio *eastus2*:
 
@@ -170,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [Beschik baarheid](availability.md) voor virtuele Azure-machines.
+In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [Beschik baarheid](../availability.md) voor virtuele Azure-machines.

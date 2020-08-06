@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 071baacd375cb5595bc99eeead7e818a35c4539b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d074c3f806b36ff530396fbafcb3c7c6f9661fcf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500409"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827568"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -262,7 +262,7 @@ tagsList | Tags die zijn opgemaakt als een JSON-matrix voor eenvoudiger programm
 versie | Versie van de VM-installatie kopie | 2017-04-02
 vmId | De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine | 2017-04-02
 vmScaleSetName | [Naam van de schaalset voor virtuele machines](../../virtual-machine-scale-sets/overview.md) van de schaalset voor virtuele machines | 2017-12-01
-vmSize | [VM-grootte](sizes.md) | 2017-04-02
+vmSize | [VM-grootte](../sizes.md) | 2017-04-02
 zone | [Beschikbaarheids zone](../../availability-zones/az-overview.md) van uw virtuele machine | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>Voor beeld 1: een virtuele machine volgen die wordt uitgevoerd op Azure
@@ -922,4 +922,4 @@ Gebruik het probleem type `Management` en selecteer `Instance Metadata Service` 
 
 Meer informatie over:
 1.  [Verkrijg een toegangs token voor de virtuele machine](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
-2.  [Geplande gebeurtenissen](scheduled-events.md)
+2.  [Scheduled Events](scheduled-events.md)

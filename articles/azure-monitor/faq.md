@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563837"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828503"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -670,7 +670,7 @@ Als uw virtuele machines al zijn verbonden met een Log Analytics-werk ruimte, ku
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kan ik onboarding uitvoeren op een nieuwe werk ruimte? 
 Als uw Vm's momenteel niet zijn verbonden met een bestaande Log Analytics-werk ruimte, moet u een nieuwe werk ruimte maken om uw gegevens op te slaan. Het maken van een nieuwe standaardwerk ruimte wordt automatisch uitgevoerd als u een enkele Azure-VM voor Azure Monitor voor VM's configureert via de Azure Portal.
 
-Als u ervoor kiest de op scripts gebaseerde methode te gebruiken, worden deze stappen behandeld in het artikel [Azure monitor voor VM's inschakelen met behulp van Azure PowerShell of Resource Manager-sjabloon](insights/vminsights-enable-at-scale-powershell.md) . 
+Als u ervoor kiest de op scripts gebaseerde methode te gebruiken, worden deze stappen behandeld in het artikel [Azure monitor voor VM's inschakelen met behulp van Azure PowerShell of Resource Manager-sjabloon](./insights/vminsights-enable-powershell.md) . 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wat moet ik doen als mijn VM al rapporteert aan een bestaande werk ruimte?
 Als u al gegevens van uw virtuele machines verzamelt, is het mogelijk dat u deze al hebt geconfigureerd om gegevens te rapporteren aan een bestaande Log Analytics-werk ruimte.  Als die werk ruimte zich in een van de ondersteunde regio's bevindt, kunt u Azure Monitor voor VM's inschakelen voor die bestaande werk ruimte.  Als de werk ruimte die u al gebruikt, zich niet in een van de ondersteunde regio's bevindt, kunt u op dit moment niet op de Azure Monitor voor VM's.  We werken actief ter ondersteuning van extra regio's.
@@ -691,7 +691,7 @@ Als u onboarding hebt gestart en berichten ziet met de melding dat de virtuele m
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Ik zie geen enkele of alle gegevens in de prestatie grafieken voor mijn VM
 Onze prestatie grafieken zijn bijgewerkt voor het gebruik van gegevens die zijn opgeslagen in de tabel *InsightsMetrics* .  Als u gegevens in deze grafieken wilt weer geven, moet u een upgrade uitvoeren om de nieuwe VM Insights-oplossing te gebruiken.  Raadpleeg onze Ga naar de [Veelgestelde vragen](insights/vminsights-ga-release-faq.md) voor meer informatie.
 
-Als u geen prestatie gegevens in de tabel schijf of in een aantal prestatie grafieken ziet, zijn de prestatie meter items mogelijk niet geconfigureerd in de werk ruimte. Voer het volgende [Power shell-script](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)uit om het probleem op te lossen.
+Als u geen prestatie gegevens in de tabel schijf of in een aantal prestatie grafieken ziet, zijn de prestatie meter items mogelijk niet geconfigureerd in de werk ruimte. Voer het volgende [Power shell-script](./insights/vminsights-enable-powershell.md)uit om het probleem op te lossen.
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hoe verschilt Azure Monitor voor VM's kaart functie van Servicetoewijzing?

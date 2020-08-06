@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04536836c4d061249201c82f738aa41501f0847e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387707"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828860"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
 Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../cost-management-billing/understand/review-individual-bill.md).
@@ -35,7 +35,7 @@ Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inz
 | Verbruikt| De hoeveelheid van de resource die voor die dag is verbruikt. Voor Compute worden voor elke minuut voor de VM een bepaald uur gefactureerd (Maxi maal 6 decimalen nauw keurigheid).| `1, 0.5`|
 | Resource Location  | Hiermee wordt het datacenter geïdentificeerd waarop de resource wordt uitgevoerd.| `JA East`|
 | Consumed Service | De Azure-platform service die u hebt gebruikt.| `Microsoft.Compute`|
-| Resourcegroep | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) voor meer informatie.|`MyRG`|
+| Resourcegroep | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md) voor meer informatie.|`MyRG`|
 | Instance ID | De id voor de resource. De id bevat de naam die u voor de resource opgeeft wanneer deze wordt gemaakt. Voor Vm's bevat de exemplaar-ID de SubscriptionId, ResourceGroupName en VMName (of de naam van de schaalset voor het gebruik van schaal sets).| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>of<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Tags| Label dat u toewijst aan de resource. Tags gebruiken om factureringsrecords te groeperen. Meer informatie over [het coderen van uw virtual machines.](tag.md) Dit is alleen beschikbaar voor virtuele machines van Resource Manager.| `{"myDepartment":"RD","myUser":"myName"}`|
 | Aanvullende informatie | Servicespecifieke metagegevens. Voor Vm's vullen we de volgende gegevens in het veld aanvullende gegevens in: <br><br> Afbeeldings type-specifieke installatie kopie die u hebt uitgevoerd. Zoek de volledige lijst met ondersteunde teken reeksen onder afbeeldings typen.<br><br> Service type: de grootte die u hebt geïmplementeerd.<br><br> VMName: naam van de virtuele machine. Dit veld wordt alleen ingevuld voor virtuele machines met schaal sets. Als u de VM-naam voor virtuele machines van de schaalset nodig hebt, kunt u deze vinden in de bovenstaande teken reeks voor exemplaar-ID.<br><br> UsageType: Hiermee geeft u het type gebruik op dat dit vertegenwoordigt.<br><br> ComputeHR is het reken uren-gebruik voor de onderliggende VM, zoals Standard_D1_v2.<br><br> ComputeHR_SW is de Premium-software kosten als de virtuele machine Premium-software gebruikt, zoals Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtuele-machineschaalsets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium-software<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
@@ -77,7 +77,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 | chinanorth | China - noord|
 | eastasia | Azië - oost|
 | eastus | VS - oost|
-| eastus2 | US - oost 2|
+| eastus2 | VS - oost 2|
 | GermanyCentral | DE - centraal|
 | GermanyNortheast | DE - noordoost|
 | japaneast | JA - oost|
@@ -86,7 +86,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 | KoreaSouth | KR - zuid|
 | northcentralus | VS - noord-centraal|
 | northeurope | Europa - noord|
-| southcentralus | VS - zuid-centraal|
+| southcentralus | South Central US|
 | southeastasia | Azië - zuidoost|
 | SouthIndia | IN - zuid|
 | UKNorth | VS Noord|

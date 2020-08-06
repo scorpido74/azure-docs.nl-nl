@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534988"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824525"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Herstel na nood geval instellen voor SQL Server
 
@@ -48,7 +48,7 @@ SQL Server op een Azure IaaS-VM of on-premises.| Replicatie met Azure Site Recov
 > * Zorg ervoor dat de wijzigings frequentie voor gegevens die op de computer is waargenomen, binnen [site Recovery limieten](vmware-physical-azure-support-matrix.md#churn-limits)valt. De wijzigings hoeveelheid wordt gemeten in geschreven bytes per seconde. Voor computers waarop Windows wordt uitgevoerd, kunt u dit wijzigings aantal weer geven door het tabblad **prestaties** in taak beheer te selecteren. Bekijk de schrijf snelheid voor elke schijf.
 > * Site Recovery ondersteunt replicatie van exemplaren van failoverclusters op Opslagruimten Direct. Zie [opslagruimten direct-replicatie inschakelen](azure-to-azure-how-to-enable-replication-s2d-vms.md)voor meer informatie.
 > 
-> Wanneer u uw SQL-workload naar Azure migreert, is het raadzaam om de [richt lijnen voor prestaties voor SQL Server op azure virtual machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)toe te passen.
+> Wanneer u uw SQL-workload naar Azure migreert, is het raadzaam om de [richt lijnen voor prestaties voor SQL Server op azure virtual machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)toe te passen.
 
 ## <a name="disaster-recovery-of-an-application"></a>Herstel na nood geval van een toepassing
 

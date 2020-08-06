@@ -1,7 +1,7 @@
 ---
 title: Upgraden naar een V2-opslagaccount voor algemeen gebruik
 titleSuffix: Azure Storage
-description: Voer een upgrade uit naar v2-opslag accounts voor algemeen gebruik.
+description: Voer een upgrade uit naar v2-opslag accounts voor algemeen gebruik met de Azure Portal, Power shell of de Azure CLI. Geef een toegangs laag op voor BLOB-gegevens.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ba2478bbfb2a26951d682ab12cb5b98df73be97
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 029753ecb0afd0cdd02a2f4594a0708cbda06efc
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497967"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828214"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgraden naar een V2-opslagaccount voor algemeen gebruik
 
@@ -27,7 +27,7 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
 3. Klik in de sectie **instellingen** op **configuratie**.
 4. Klik onder **Soort account** op **Upgrade**.

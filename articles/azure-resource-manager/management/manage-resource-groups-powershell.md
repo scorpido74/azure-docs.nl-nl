@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 79674b359bc2058f11895b3291c0ce16ef5b1a16
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326831"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827073"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager resource groepen beheren met Azure PowerShell
 
@@ -217,7 +217,7 @@ Zie voor meer informatie [het exporteren van één en meerdere resources naar sj
 
 ## <a name="manage-access-to-resource-groups"></a>Toegang tot resource groepen beheren
 
-[Op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md) is een manier om de toegang tot resources in azure te beheren. Zie [toegang beheren met RBAC en Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [toegang beheren met RBAC en Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

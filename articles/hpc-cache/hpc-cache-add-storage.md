@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532591"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826701"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -112,7 +112,7 @@ Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>De toegangs beheer rollen toevoegen aan uw account
 
-Azure HPC cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
+Azure HPC cache maakt gebruik van [Azure RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/index) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
 
 De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker ' HPC-cache resource provider ' toevoegen.
 
@@ -147,7 +147,7 @@ Stappen voor het toevoegen van de Azure-rollen:
 
 Voordat u een Blob-opslag doel toevoegt, controleert u of de cache de juiste rollen heeft voor toegang tot het opslag account en of de firewall instellingen het maken van het opslag doel toestaan.
 
-Azure HPC cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/index.yml) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
+Azure HPC cache maakt gebruik van [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
 
 De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](../role-based-access-control/built-in-roles.md#storage-account-contributor) en de [blobgegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) voor de gebruiker ' HPC-cache resource provider ' toevoegen.
 

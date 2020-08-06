@@ -1,7 +1,7 @@
 ---
 title: De gegevensredundantie
 titleSuffix: Azure Storage
-description: Gegevens in uw Microsoft Azure Storage-account worden gerepliceerd voor duurzaamheid en maximale Beschik baarheid. Redundantie configuraties zijn lokaal redundante opslag (LRS), zone-redundante opslag (ZRS), geografisch redundante opslag (GRS), geografisch redundante opslag met lees toegang (RA-GRS), geo-zone-redundante opslag (GZRS) en geo-zone-redundante opslag met lees toegang (RA-GZRS).
+description: Meer informatie over gegevens redundantie in Azure Storage. Gegevens in uw Microsoft Azure Storage-account worden gerepliceerd voor duurzaamheid en maximale Beschik baarheid.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036723"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827840"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -59,7 +59,7 @@ Micro soft raadt aan om ZRS te gebruiken in de primaire regio voor scenario's di
 
 In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welke regio's:
 
-| Type opslagaccount | Ondersteunde regio's | Ondersteunde services |
+| Type opslagaccount | Ondersteunde regio’s | Ondersteunde services |
 |--|--|--|
 | Algemeen gebruik v2<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan East<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2 | Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
 | BlockBlobStorage<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost | Alleen Premium-blok-blobs |
@@ -164,7 +164,7 @@ In de volgende tabel wordt aangegeven of uw gegevens duurzaam zijn en beschikbaa
 | Storings scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | Een knoop punt in een Data Center wordt niet meer beschikbaar | Ja | Ja | Ja | Ja |
-| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar | No | Yes | Ja<sup>1</sup> | Yes |
+| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar | Nee | Ja | Ja<sup>1</sup> | Ja |
 | Er treedt een storing op de hele regio op in de primaire regio | Nee | Nee | Ja<sup>1</sup> | Ja<sup>1</sup> |
 | Lees toegang tot de secundaire regio is beschikbaar als de primaire regio niet beschikbaar is | Nee | Nee | Ja (met RA-GRS) | Ja (met RA-GZRS) |
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261181"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824593"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Capaciteits planning en schalen voor Azure Service Fabric
 
@@ -18,8 +18,8 @@ Voordat u Azure Service Fabric cluster of schaal Compute-resources maakt die uw 
 
 Naast het knooppunt type en de cluster kenmerken, moet u er rekening mee houden dat de schaal bewerkingen langer dan een uur duren voordat een productie omgeving is voltooid. Deze overweging is waar, ongeacht het aantal Vm's dat u toevoegt.
 
-## <a name="autoscaling"></a>Automatische schaalaanpassing
-U moet schaal bewerkingen uitvoeren via Azure Resource Manager sjablonen, omdat dit de best practice is om [bron configuraties als code]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)te behandelen. 
+## <a name="autoscaling"></a>Automatisch schalen
+U moet schaal bewerkingen uitvoeren via Azure Resource Manager sjablonen, omdat dit de best practice is om [bron configuraties als code](./service-fabric-best-practices-infrastructure-as-code.md)te behandelen. 
 
 Door het gebruik van automatische schaling via schaal sets voor virtuele machines wordt uw versie van de Resource Manager-sjabloon voor de virtuele-machine schaal sets onnauwkeurig gedefinieerd. Met een onjuiste definitie wordt het risico verhoogd dat toekomstige implementaties leiden tot onbedoelde schaal bewerkingen. In het algemeen moet u automatisch schalen gebruiken als:
 
@@ -72,7 +72,7 @@ Als de knooppunt eigenschappen en plaatsings beperkingen zijn gedeclareerd, voer
 5. Zodra alle Vm's zijn verdwenen (weer gegeven als ' omlaag '), wordt in de fabric:/System/InfrastructureService/[naam van knoop punt] een fout status weer gegeven. Vervolgens kunt u de cluster bron bijwerken om het knooppunt type te verwijderen. U kunt de implementatie van de ARM-sjabloon gebruiken of de cluster bron bewerken via [Azure Resource Manager](https://resources.azure.com). Hiermee wordt een cluster upgrade gestart waarmee de service Fabric:/System/InfrastructureService/[node type] met de fout status wordt verwijderd.
  6. Nadat u de VMScaleSet eventueel kunt verwijderen, ziet u de knoop punten nog steeds als ' down ' in de weer gave Service Fabric Explorer. De laatste stap is het opschonen van de `Remove-ServiceFabricNodeState` opdracht.
 
-## <a name="horizontal-scaling"></a>Horizontaal schalen
+## <a name="horizontal-scaling"></a>Horizontale schaalaanpassing
 
 U kunt horizon taal schalen ofwel [hand matig](./service-fabric-cluster-scale-in-out.md) of [programmatisch](./service-fabric-cluster-programmatic-scaling.md)uitvoeren.
 

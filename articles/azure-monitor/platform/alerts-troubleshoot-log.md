@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321102"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828452"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Problemen met logboek waarschuwingen in Azure Monitor oplossen  
 
@@ -190,7 +190,7 @@ Elke waarschuwings regel voor logboeken die in Azure Monitor is gemaakt als onde
 
 ## <a name="alert-rule-quota-was-reached"></a>Het quotum voor waarschuwings regels is bereikt
 
-Het aantal waarschuwings regels voor logboek zoeken per abonnement en resource zijn afhankelijk van de quotum limieten die [hier](https://docs.microsoft.com/azure/azure-monitor/service-limits)worden beschreven.
+Het aantal waarschuwings regels voor logboek zoeken per abonnement en resource zijn afhankelijk van de quotum limieten die [hier](../service-limits.md)worden beschreven.
 
 ### <a name="recommended-steps"></a>Aanbevolen stappen
     
@@ -201,7 +201,7 @@ Als u de quotum limiet hebt bereikt, kunnen de volgende stappen u helpen om het 
 
     - Abonnement-id('s) waarvan de quotumlimiet moet(en) worden verhoogd
     - Reden voor toename van quotum
-    - Het resource type voor de quota verhoging: **log Analytics**, **Application Insights** .
+    - Resource type voor de quota verhoging: **log Analytics**, **Application Insights**, enzovoort.
     - Aangevraagde quotumlimiet
 
 
@@ -226,4 +226,3 @@ Als u de quotum limiet hebt bereikt, kunnen de volgende stappen u helpen om het 
 - Meer informatie over [logboek waarschuwingen in azure](./alerts-unified-log.md).
 - Meer informatie over [Application Insights](../log-query/log-query-overview.md).
 - Meer informatie over [logboek query's](../log-query/log-query-overview.md).
-

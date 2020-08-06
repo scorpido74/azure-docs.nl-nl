@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 59dbe7f1a41c7241843362018909e9b65efe7b0e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 484539a9c41f055d2b215e6f5a1326d06faca82d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292450"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829217"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- en Easv4-serie
 
@@ -83,7 +83,7 @@ De grootte van de Easv4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 
 
 Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
 
-Meer informatie over schijven typen: [schijf typen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Meer informatie over schijven typen: [schijf typen](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Volgende stappen
 

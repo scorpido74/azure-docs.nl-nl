@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage-gebeurtenissen naar web endpoint verzenden-Power shell | Microsoft Docs
-description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van Blob Storage.
+description: Gebruik Azure Event Grid om u te abonneren op Blob Storage-gebeurtenissen, een gebeurtenis te activeren en het resultaat weer te geven. Gebruik Azure PowerShell om opslag gebeurtenissen door te sturen naar een webeindpunt.
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,12 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 809ab593d4d3f58fa3c91b896e5df3a0db7865f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68847167"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824508"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Snelstartgids: opslag gebeurtenissen naar een webeindpunt door sturen met Power shell
 
@@ -29,7 +29,7 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Voor dit artikel moet u de nieuwste versie van Azure PowerShell uitvoeren. Als u wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
+Voor dit artikel moet u de nieuwste versie van Azure PowerShell uitvoeren. Zie [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps) als u de toepassing nog moet installeren of een upgrade moet uitvoeren.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

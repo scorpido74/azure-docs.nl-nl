@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660754"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827857"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
 
@@ -81,7 +81,7 @@ Een scenario zonder een koppeling heeft nog geen gepubliceerde migratie handleid
 | Bron | Doel: </br>Hybride implementatie | Doel: </br>Implementatie in de Cloud |
 |:---|:--|:--|
 | | Combi natie van gereedschap:| Combi natie van gereedschap: |
-| Windows Server 2012 R2 en hoger | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync en Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure File Sync-en opslag migratie service</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync en Data Box</li><li>Azure File Sync-en opslag migratie service</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 en hoger | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync en Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Azure File Sync en vooraf geseede bestanden in de Cloud](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure File Sync-en opslag migratie service</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync en Data Box</li><li>Azure File Sync-en opslag migratie service</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 en lager | <ul><li>Azure File Sync en Data Box</li><li>Azure File Sync-en opslag migratie service</li></ul> | <ul><li>Azure File Sync-en opslag migratie service</li><li>RoboCopy</li></ul> |
 | NAS (Network-Attached Storage) | <ul><li>[Azure File Sync en RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux of samba | <ul><li>[Azure File Sync en RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
@@ -152,5 +152,5 @@ De geteste versie van het hulp programma is versie 4.4.1. Het is compatibel met 
 Hier vindt u meer informatie over de Azure Files technologieën die in dit artikel worden vermeld:
 
 * [Overzicht van de Azure-bestands share](storage-files-introduction.md)
-* [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+* [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
 * [Azure File Sync: Cloud lagen](storage-sync-cloud-tiering.md)

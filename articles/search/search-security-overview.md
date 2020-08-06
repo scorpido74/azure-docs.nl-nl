@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553951"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829285"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
@@ -60,7 +60,7 @@ In azure Cognitive Search is dubbele versleuteling een uitbrei ding van CMK. Het
 
 Dubbele versleuteling is momenteel beschikbaar op nieuwe services die na 1 augustus zijn gemaakt in deze regio's:
 
-+ US - west 2
++ West US 2
 + VS - oost
 + VS - zuid-centraal
 + VS (overheid) - Virginia
@@ -127,7 +127,7 @@ Als u nauw keuriger controle per gebruiker met de zoek resultaten nodig hebt, ku
 
 ## <a name="administrative-rights"></a>Beheer rechten
 
-Op [rollen gebaseerde toegang (RBAC)](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. In azure Cognitive Search wordt Resource Manager gebruikt om de service te maken of te verwijderen, de API-sleutels te beheren en de service te schalen. Als zodanig bepalen Azure-roltoewijzingen dat deze taken kunnen worden uitgevoerd, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. In azure Cognitive Search wordt Resource Manager gebruikt om de service te maken of te verwijderen, de API-sleutels te beheren en de service te schalen. Als zodanig bepalen Azure-roltoewijzingen dat deze taken kunnen worden uitgevoerd, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken.
 
 Beheerders rechten voor inhoud die in de service wordt gehost, zoals de mogelijkheid om een index te maken of verwijderen, worden daarentegen door de API-sleutels uitgesteld zoals beschreven in de [vorige sectie](#index-access).
 
@@ -144,7 +144,7 @@ Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beh
 
 Voor Azure Cognitive Search is er momenteel één ingebouwde definitie. Het is voor diagnostische logboek registratie. Met deze ingebouwde kunt u een beleid toewijzen dat een wille keurige zoek service identificeert waarvoor diagnostische logboek registratie ontbreekt en vervolgens weer wordt ingeschakeld. Zie [Azure Policy regulerende nalevings controles voor Azure Cognitive Search](security-controls-policy.md)voor meer informatie.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Basisbeginselen van Azure Security](../security/fundamentals/index.yml)
 + [Azure-beveiliging](https://azure.microsoft.com/overview/security)

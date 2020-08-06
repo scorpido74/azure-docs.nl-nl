@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421056"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827619"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Grootten voor virtuele machines in azure
 
@@ -31,7 +31,7 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 - Zie de pagina met prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) of [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)voor meer informatie over de prijzen van de verschillende grootten.
 - Zie [producten beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor beschik BAARHEID van VM-grootten in azure-regio's.
 - Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor algemene limieten voor virtuele Azure-machines.
-- Zie [grootte conventies voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.
+- Zie [grootte conventies voor virtuele machines van Azure](./vm-naming-conventions.md)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.
 
 ## <a name="rest-api"></a>REST-API
 

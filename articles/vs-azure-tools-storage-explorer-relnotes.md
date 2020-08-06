@@ -1,6 +1,6 @@
 ---
 title: Opmerkingen bij de release Microsoft Azure Storage Explorer
-description: Release opmerkingen voor Microsoft Azure Storage Explorer
+description: Lees de opmerkingen bij de release voor de nieuwste versie van Microsoft Azure Storage Explorer. De release opmerkingen voor eerdere versies worden ook weer gegeven.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80351065"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828775"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Opmerkingen bij de release Microsoft Azure Storage Explorer
 
@@ -753,7 +753,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Het verbreken van leases kan nu alleen op één BLOB tegelijk worden uitgevoerd. Daarnaast moet u de naam van de BLOB invoeren waarvan u de lease wilt opdelen. Deze wijziging is doorgevoerd om de kans te verminderen dat een lease per ongeluk wordt verbroken, met name voor Vm's. #394
 * Als u ooit aanmeldings problemen ondervindt, kunt u de verificatie nu opnieuw instellen. Ga naar het menu Help en klik op opnieuw instellen om toegang te krijgen tot deze functie. #419
 
-### <a name="fix"></a>Fix
+### <a name="fix"></a>Herstellen
 
 * Na sterke feedback van gebruikers is het knoop punt standaard emulator weer ingeschakeld. U kunt nog steeds extra emulator-verbindingen toevoegen via het dialoog venster verbinding maken, maar als uw emulator is geconfigureerd voor het gebruik van de standaard poorten, kunt u ook het knoop punt emulator * standaard poorten onder lokale & gekoppelde/opslag accounts gebruiken. #669
 * Met Storage Explorer kunt u geen waarden voor BLOB-meta gegevens instellen die voor loop-of volg spaties hebben. #760

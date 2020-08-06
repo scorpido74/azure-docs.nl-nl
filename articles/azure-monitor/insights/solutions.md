@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325998"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824780"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
@@ -21,7 +21,7 @@ Bewakings oplossingen maken gebruik van services in azure voor een extra analyse
 
 Open de pagina **overzicht** in azure monitor om een tegel weer te geven voor elke oplossing die in de werk ruimte is geïnstalleerd.
 
-1. Ga naar de [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **monitor**.
+1. Ga naar [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **monitor**.
 1. Selecteer in het menu **inzichten** **meer**.
 1. Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om de werk ruimte of het tijds bereik te wijzigen dat wordt gebruikt voor de tegels.
 1. Klik op de tegel voor een oplossing om de bijbehorende weer gave te openen met meer gedetailleerde analyse van de verzamelde gegevens.
@@ -36,7 +36,7 @@ Bewakings oplossingen kunnen meerdere typen Azure-resources bevatten en u kunt a
 
 Gebruik de volgende procedure om de bewakings oplossingen weer te geven die in uw abonnement zijn geïnstalleerd.
 
-1. Ga naar de [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **oplossingen**.
+1. Ga naar [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **oplossingen**.
 1. Oplossingen die in al uw werk ruimten zijn geïnstalleerd, worden weer gegeven. De naam van de oplossing wordt gevolgd door de naam van de werk ruimte waarin deze is geïnstalleerd.
 1. Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om te filteren op abonnement of resource groep.
 
@@ -85,7 +85,7 @@ Leden van de community kunnen beheer oplossingen verzenden naar Azure Quick Star
 2. Ga naar de [Azure Quick](https://azure.microsoft.com/documentation/templates/)start-sjablonen.
 3. Zoek naar een oplossing waarin u bent geïnteresseerd.
 4. Selecteer de oplossing in de resultaten om de details ervan weer te geven.
-5. Klik op de knop **implementeren naar Azure** .
+5. Klik op de knop **Implementeren in Azure**.
 6. U wordt gevraagd om informatie op te geven, zoals de resource groep en de locatie, naast de waarden voor eventuele para meters in de oplossing.
 7. Klik op **kopen** om de oplossing te installeren.
 
@@ -192,7 +192,6 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een [lijst met bewakings oplossingen van micro soft](/azure/azure-monitor/monitor-reference)ophalen.
+* Een [lijst met bewakings oplossingen van micro soft](../monitor-reference.md)ophalen.
 * Meer informatie over het [maken van query's](../log-query/log-query-overview.md) voor het analyseren van gegevens die zijn verzameld door bewakings oplossingen.
 * Bekijk alle [Azure cli-opdrachten voor Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
-

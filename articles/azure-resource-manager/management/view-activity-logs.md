@@ -3,12 +3,12 @@ title: Activiteiten logboeken van Azure weer geven voor het bewaken van resource
 description: Gebruik de activiteiten Logboeken om de gebruikers acties en-fouten te controleren. Toont Azure Portal Power shell, Azure CLI en REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75478134"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827058"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteiten logboeken weer geven om acties op resources te controleren
 
@@ -191,7 +191,7 @@ De REST-bewerkingen voor het werken met het activiteitenlogboek maken deel uit v
 ## <a name="next-steps"></a>Volgende stappen
 
 * Azure-activiteiten logboeken kunnen worden gebruikt met Power BI om meer inzicht te krijgen in de acties in uw abonnement. Zie [Azure-activiteiten logboeken weer geven en analyseren in Power bi en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Zie [Access Control op basis van rollen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van beveiligings beleid.
+* Zie voor meer informatie over het instellen van beveiligings beleid [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Zie [toepassings wijzigingen in azure monitor gebruiken](../../azure-monitor/app/change-analysis.md)voor meer informatie over de wijzigingen in uw toepassingen vanuit de laag van de infra structuur voor de implementatie van toepassingen.
 * Zie [implementatie bewerkingen weer geven](../templates/deployment-history.md)voor meer informatie over de opdrachten voor het weer geven van implementatie bewerkingen.
 * Zie [resources vergren delen met Azure Resource Manager](lock-resources.md)voor meer informatie over het voor komen van het verwijderen van een resource voor alle gebruikers.

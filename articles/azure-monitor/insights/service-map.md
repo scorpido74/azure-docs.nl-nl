@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326066"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825358"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing gebruiken in Azure
 
@@ -35,7 +35,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 ## <a name="enable-service-map"></a>Servicetoewijzing inschakelen
 
 1. Schakel de Servicetoewijzing-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) of via het proces dat wordt beschreven in [bewakings oplossingen toevoegen van de Oplossingengalerie](solutions.md).
-1. [Installeer de afhankelijkheids agent in Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) of [Installeer de afhankelijkheids agent op Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) op elke computer waar u gegevens wilt ophalen. De agent voor afhankelijkheden kan verbindingen met computers in de directe nabijheid controleren, zodat er wellicht geen agent op elke computer nodig is.
+1. [Installeer de afhankelijkheids agent in Windows](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows) of [Installeer de afhankelijkheids agent op Linux](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux) op elke computer waar u gegevens wilt ophalen. De agent voor afhankelijkheden kan verbindingen met computers in de directe nabijheid controleren, zodat er wellicht geen agent op elke computer nodig is.
 
 U opent Servicetoewijzing in de Azure Portal vanuit uw Log Analytics-werk ruimte en selecteert de optie **oplossingen** in het linkerdeel venster.<br><br> ![Selecteer de optie oplossingen in de werk ruimte ](./media/service-map/select-solution-from-workspace.png) .<br> Selecteer in de lijst met oplossingen **ServiceMap (werkruimtenaam)** en klik op de overzichts pagina van de servicetoewijzing oplossing op de tegel servicetoewijzing samen vatting.<br><br> ![Tegel Servicetoewijzing overzicht ](./media/service-map/service-map-summary-tile.png) .
 
@@ -552,7 +552,7 @@ Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.
 
 Meer informatie over [Zoek opdrachten in Logboeken](../log-query/log-query-overview.md) in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Als u problemen hebt met het installeren of uitvoeren van Servicetoewijzing, kan deze sectie u helpen. Als u het probleem nog steeds niet kunt oplossen, neem dan contact op met Microsoft Ondersteuning.
 
@@ -603,4 +603,3 @@ Controleer de `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file
 ## <a name="suggestions"></a>Suggesties
 
 Hebt u feedback over Servicetoewijzing of deze documentatie?  Bezoek onze [pagina met gebruikers spraak](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), waar u de functies kunt Voorst Ellen of bestaande suggesties aan het stemt.
-

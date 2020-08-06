@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: 00b7f675e7dd8fb347399ee7740318e129f12746
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504174"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826531"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -135,7 +135,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
   
 ## <a name="permissions"></a>Machtigingen
 
-Machtigingen voor een failovergroep worden beheerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). De rol [SQL Server Inzender](../../role-based-access-control/built-in-roles.md#sql-server-contributor) heeft alle benodigde machtigingen voor het beheren van failover-groepen.
+Machtigingen voor een failovergroep worden beheerd via [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md). De rol [SQL Server Inzender](../../role-based-access-control/built-in-roles.md#sql-server-contributor) heeft alle benodigde machtigingen voor het beheren van failover-groepen.
 
 ### <a name="create-failover-group"></a>Failovergroep maken
 
@@ -415,7 +415,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 | [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -425,7 +425,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | Description |
+| API | Beschrijving |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
 | [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -453,7 +453,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 | [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -463,7 +463,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | Description |
+| API | Beschrijving |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt de configuratie van een failovergroep gemaakt of bijgewerkt |
 | [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee verwijdert u een failover-groep uit het exemplaar |

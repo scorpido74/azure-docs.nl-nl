@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525463"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827415"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -174,7 +174,7 @@ Een Azure Storage-account is een administratieve constructie en ook een onderwer
 
 Voor standaard opslag moet u er rekening mee houden dat de IOPS per opslag account beperkt is. Bekijk de rij met de **totale aanvraag snelheid** in het artikel [Azure Storage schaal baarheid en prestatie doelen](../../../storage/common/scalability-targets-standard-account.md). Er is ook een aanvankelijke limiet voor het aantal opslag accounts per Azure-abonnement. Verdeel Vhd's voor het grotere SAP-landschap in verschillende opslag accounts om te voor komen dat deze opslag accounts worden beperkt. Dit is omslachtig als u op een paar honderd virtuele machines met meer dan duizend Vhd's spreekt.
 
-Het gebruik van standaard opslag voor DBMS-implementaties in combi natie met een SAP-werk belasting wordt niet aanbevolen, verwijzingen en aanbevelingen voor standaard opslag zijn beperkt tot dit korte [artikel](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
+Het gebruik van standaard opslag voor DBMS-implementaties in combi natie met een SAP-werk belasting wordt niet aanbevolen, verwijzingen en aanbevelingen voor standaard opslag zijn beperkt tot dit korte [artikel](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
 
 Micro soft heeft [Azure-Managed disks](https://azure.microsoft.com/services/managed-disks/) geïntroduceerd in 2017 om te voor komen dat het administratieve werk van het plannen en implementeren van vhd's in verschillende Azure-opslag accounts. Beheerde schijven zijn beschikbaar voor standaard opslag en Premium-opslag. De belangrijkste voor delen van beheerde schijven vergeleken met niet-beheerde schijven zijn:
 
@@ -327,7 +327,7 @@ De load balancer biedt een optie van DirectServerReturn. Als deze optie is gecon
 
 We raden u aan om DirectServerReturn te configureren in combi natie met load balancers die tussen de SAP-toepassingslaag en de DBMS-laag worden geplaatst. Deze configuratie vermindert de netwerk latentie tussen de twee lagen.
 
-Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)voor een voor beeld van het instellen van deze configuratie met SQL Server always on.
+Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)voor een voor beeld van het instellen van deze configuratie met SQL Server always on.
 
 Als u gepubliceerde GitHub JSON-sjablonen gebruikt als referentie voor uw SAP-infrastructuur implementaties in azure, kunt u deze [sjabloon bestuderen voor een SAP-systeem met drie lagen](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). In deze sjabloon ziet u ook de juiste instellingen voor de load balancer.
 

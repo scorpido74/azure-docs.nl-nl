@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: c5be90cfd107dfa66eb31597818d93ef092b5258
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8bafde086febce78ca2715ab77c8a071467b986b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502857"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825460"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Lees de volgende tips voordat u schijven aan uw virtuele machine koppelt:
 
-* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
+* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
 * Schijven die zijn gekoppeld aan virtuele machines zijn eigenlijk VHD-bestanden die zijn opgeslagen in Azure. Zie onze [Inleiding tot Managed disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
 * Nadat u de schijf hebt gekoppeld, moet u [verbinding maken met de Linux-VM om de nieuwe schijf te koppelen](#connect-to-the-linux-vm-to-mount-the-new-disk).
 

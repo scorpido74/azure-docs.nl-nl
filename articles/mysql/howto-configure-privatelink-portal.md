@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206667"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825970"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met behulp van portal
 
 Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren. In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MySQL-server met een persoonlijk Azure-eind punt.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MySQL de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen ondersteunt.
+> De functie voor persoonlijke koppelingen is alleen beschikbaar voor Azure Database for MySQL servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de database server zich in een van deze prijs categorieën bevindt.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
@@ -110,11 +110,11 @@ In deze sectie maakt u een Azure Database for MySQL-server in Azure.
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.|
     | **Servergegevens** |  |
     |Servernaam  | Voer *mijn server*in. Als deze naam al wordt gebruikt, maakt u een unieke naam.|
-    | Gebruikers naam beheerder| Voer de naam van de beheerder van uw keuze in. |
+    | Gebruikersnaam van beheerder| Voer de naam van de beheerder van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 8 tekens lang zijn en moet voldoen aan de vooraf gedefinieerde vereisten. |
     | Locatie | Selecteer een Azure-regio waar u wilt dat de MySQL-server zich bevindt. |
     |Versie  | Selecteer de database versie van de MySQL-server die is vereist.|
-    | Compute + Storage| Selecteer de prijs categorie die nodig is voor de server op basis van de werk belasting. |
+    | Compute en opslag| Selecteer de prijs categorie die nodig is voor de server op basis van de werk belasting. |
     |||
  
 7. Selecteer **OK**. 
@@ -237,7 +237,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
     |SSL|Selecteer **vereist**.|
     ||
 
-5. Selecteer Verbinden.
+5. Selecteer Verbinding maken.
 
 6. Blader in het menu aan de linkerkant door databases.
 

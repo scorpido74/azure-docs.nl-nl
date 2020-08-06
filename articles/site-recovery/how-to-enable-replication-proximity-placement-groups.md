@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: bd7619f000d16a55e1cfb31cc3b9cfb3b6d33502
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432620"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827670"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Virtuele Azure-machines repliceren die worden uitgevoerd in proximity-plaatsings groepen naar een andere regio
 
@@ -42,7 +42,7 @@ In een typisch scenario is het mogelijk dat uw virtuele machines worden uitgevoe
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Site Recovery instellen voor Virtual Machines in proximity-plaatsings groep
 
 > [!NOTE]
-> Zorg ervoor dat u beschikt over de unieke ID van de plaatsings groep voor doel gerichte nabijheid. Als u een nieuwe proximity-plaatsings groep wilt maken, controleert u de opdracht [hier](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) en als u een bestaande proximity-plaatsings groep gebruikt, gebruikt u de opdracht [hier](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups).
+> Zorg ervoor dat u beschikt over de unieke ID van de plaatsings groep voor doel gerichte nabijheid. Als u een nieuwe proximity-plaatsings groep wilt maken, controleert u de opdracht [hier](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) en als u een bestaande proximity-plaatsings groep gebruikt, gebruikt u de opdracht [hier](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups).
 
 ### <a name="azure-to-azure"></a>Azure naar Azure
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9eaca2ac394e58f45c7a7a0e7920fcb86f2278b4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484586"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827109"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-resource groepen beheren met behulp van Azure CLI
 
@@ -145,7 +145,7 @@ Zie voor meer informatie [het exporteren van één en meerdere resources naar sj
 
 ## <a name="manage-access-to-resource-groups"></a>Toegang tot resource groepen beheren
 
-[Op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md) is een manier om de toegang tot resources in azure te beheren. Zie [toegang beheren met RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)voor meer informatie.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [toegang beheren met RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

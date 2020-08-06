@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327477"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824559"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -110,7 +110,7 @@ Metrische waarschuwingen zijn standaard stateful en daarom worden er geen extra 
 
 Wanneer u een metrische waarschuwings regel maakt, wordt de naam van de metrische gegevens gevalideerd op basis van de [API voor metrische definities](/rest/api/monitor/metricdefinitions/list) om er zeker van te zijn dat deze bestaat. In sommige gevallen wilt u een waarschuwings regel maken voor een aangepaste metriek, zelfs voordat deze wordt verzonden. Bijvoorbeeld bij het maken (met een ARM-sjabloon) een Application Insights resource die een aangepaste metriek zal genereren, samen met een waarschuwings regel die de metrische gegevens bewaakt.
 
-Als u wilt voor komen dat de implementatie mislukt wanneer u probeert de definities van de aangepaste metrische gegevens te valideren, kunt u de para meter *skipMetricValidation* gebruiken in het gedeelte criteria van de waarschuwings regel, waardoor de metrische validatie wordt overgeslagen. Zie het volgende voor beeld voor het gebruik van deze para meter in een ARM-sjabloon (Zie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)voor voor beelden van volledige arm-sjablonen voor het maken van regels voor metrische waarschuwingen).
+Als u wilt voor komen dat de implementatie mislukt wanneer u probeert de definities van de aangepaste metrische gegevens te valideren, kunt u de para meter *skipMetricValidation* gebruiken in het gedeelte criteria van de waarschuwings regel, waardoor de metrische validatie wordt overgeslagen. Zie het volgende voor beeld voor het gebruik van deze para meter in een ARM-sjabloon (Zie [hier]( ./alerts-metric-create-templates.md)voor voor beelden van volledige arm-sjablonen voor het maken van regels voor metrische waarschuwingen).
 
 ```json
 "criteria": {
@@ -247,4 +247,3 @@ Bijvoorbeeld:
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [problemen oplossen in azure monitor-waarschuwingen](alerts-troubleshoot.md)voor algemene informatie over het oplossen van problemen met waarschuwingen en meldingen.
-

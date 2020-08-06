@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501548"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825256"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Bespaar kosten met Azure dedicated host Reservations
 
@@ -24,7 +24,7 @@ Wanneer u een gereserveerd exemplaar van voor Azure toegewezen hosts doorvoert, 
 
 Voordat u een reserve ring koopt, moet u bepalen welke specifieke host u nodig hebt. Er wordt een SKU gedefinieerd voor een toegewezen host die de VM-reeksen en het type vertegenwoordigt. 
 
-Ga eerst naar de ondersteunde grootten voor [virtuele Windows-machines](./windows/sizes.md) of [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om de VM-serie te identificeren.
+Ga eerst naar de ondersteunde grootten voor [virtuele Windows-machines](./sizes.md) of [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om de VM-serie te identificeren.
 
 Controleer vervolgens of het wordt ondersteund op met Azure toegewezen hosts. De pagina prijs informatie voor [Azure dedicated hosts](https://aka.ms/ADHPricing) bevat de volledige lijst met gereserveerde hosts sku's, hun CPU-gegevens en diverse prijs opties (inclusief gereserveerde instanties).
 
@@ -70,7 +70,7 @@ Als u een EA-overeenkomst hebt, kunt u de **optie meer toevoegen**gebruiken   
 
 | **Veld**           | **Beschrijving**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Abonnement        | Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. De betalings wijze voor het abonnement wordt in rekening gebracht voor de kosten voor de reserve ring. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een micro soft-klant overeenkomst of een afzonderlijk abonnement met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). De kosten worden afgetrokken van het saldo van de monetaire toezeg ging, indien beschikbaar, of in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement. |
+| Abonnement        | Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. Via de betalingswijze voor het abonnement worden de kosten voor de reservering in rekening gebracht. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een micro soft-klant overeenkomst of een afzonderlijk abonnement met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). De kosten worden in mindering gebracht op het saldo van het reserveringsbedrag, indien beschikbaar, of in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement. |
 | Bereik               | Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Regio              | De Azure-regio die wordt gedekt door de reserve ring.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Toegewezen grootte van host | De grootte van de toegewezen exemplaren van de host.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

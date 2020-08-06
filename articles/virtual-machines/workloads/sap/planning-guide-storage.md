@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042304"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825001"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
 Azure heeft talloze opslag typen die in de mogelijkheden, door Voer, latentie en prijzen aanzienlijk verschillen. Sommige opslag typen zijn niet of zijn beperkt bruikbaar voor SAP-scenario's. Dat zijn verschillende Azure Storage-typen goed geschikt of geoptimaliseerd voor specifieke SAP-werkbelasting scenario's. Met name voor SAP HANA hebben sommige Azure Storage-typen gecertificeerd voor het gebruik met SAP HANA. In dit document gaan we de verschillende soorten opslag door lopen en de mogelijkheden en bruikbaarheid van SAP-workloads en SAP-onderdelen beschrijven.
@@ -146,7 +146,7 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | Latentie | laag naar normaal | - |
 | SLA VOOR IOPS | JA | - |
 | IOPS lineaire tot capaciteit | halve lineaire tussen haakjes  | [Prijzen beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Maximum aantal IOPS per schijf | 20.000 [afhankelijk van de schijf grootte](https://azure.microsoft.com/pricing/details/managed-disks/) | VM- [limieten](../../linux/sizes.md) ook overwegen |
+| Maximum aantal IOPS per schijf | 20.000 [afhankelijk van de schijf grootte](https://azure.microsoft.com/pricing/details/managed-disks/) | VM- [limieten](../../sizes.md) ook overwegen |
 | SLA voor door Voer | JA | - |
 | Door Voer lineair naar capaciteit | halve lineaire tussen haakjes | [Prijzen beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | HANA-gecertificeerd | JA | [speciaal voor SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
@@ -335,11 +335,11 @@ In het tegenovergestelde van on-premises scenario's speelt het afzonderlijke VM-
 
 | Opslagtype| Linux | Windows | Opmerkingen |
 | --- | --- | --- | --- |
-| Standard - HDD | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
-| Standard - SSD | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
-| Premium Storage | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
-| Ultra Disk-opslag | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
-| Azure NetApp Files | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | Opslag verkeer maakt gebruik van netwerk doorvoer bandbreedte en geen opslag bandbreedte. |
+| Standard - HDD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Standard - SSD | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Premium Storage | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
+| Ultra Disk-opslag | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
+| Azure NetApp Files | [Grootten voor virtuele Linux-machines in azure](../../sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../sizes.md) | Opslag verkeer maakt gebruik van netwerk doorvoer bandbreedte en geen opslag bandbreedte. |
 
 Als beperkingen kunt u het volgende weten:
 

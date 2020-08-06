@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082627"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829081"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -36,7 +36,7 @@ Er zijn verschillende verschillende Azure VM-extensies beschikbaar, elk met een 
 
 - Pas Power shell desired state configurations toe aan een virtuele machine met de DSC-extensie voor Windows. Zie [Azure desired state Configuration extension](dsc-overview.md)(Engelstalig) voor meer informatie.
 - De bewaking van een virtuele machine configureren met de VM-extensie Log Analytics agent. Zie [Azure Vm's verbinden met Azure monitor-logboeken](../../azure-monitor/learn/quick-collect-azurevm.md)voor meer informatie.
-- Configureer een virtuele Azure-machine met behulp van chef. Zie [Azure VM-implementatie automatiseren met chef](../../chef/chef-automation.md)voor meer informatie.
+- Configureer een virtuele Azure-machine met behulp van chef. Zie [Azure VM-implementatie automatiseren met chef](/azure/developer/chef/windows-vm-configure)voor meer informatie.
 - Configureer de bewaking van uw Azure-infra structuur met de Datadog-extensie. Zie de [Datadog-blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)voor meer informatie.
 
 

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e68dbbf86c5bda1758a6331f4c6fc0797df4557
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368350"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828996"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Een virtuele Linux-machine maken in een beschikbaarheids zone met de Azure CLI
 
@@ -23,7 +23,7 @@ Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-az-cli2) hebt geïn
 
 
 ## <a name="check-vm-sku-availability"></a>Beschikbaarheid van VM-SKU controleren
-De beschikbaarheid van VM-grootten, of SKU's, kan verschillen per regio en zone. Als hulp bij de planning voor het gebruik van de beschikbaarheidszones kunt u een overzicht maken van de beschikbare VM-SKU's per Azure-regio en zone. Hiermee zorgt u ervoor dat u een correcte VM-grootte kiest en de gewenste tolerantie in zones verkrijgt. Voor meer informatie over de verschillende VM-typen en -grootten raadpleegt u het [Overzicht van de VM-grootten](sizes.md).
+De beschikbaarheid van VM-grootten, of SKU's, kan verschillen per regio en zone. Als hulp bij de planning voor het gebruik van de beschikbaarheidszones kunt u een overzicht maken van de beschikbare VM-SKU's per Azure-regio en zone. Hiermee zorgt u ervoor dat u een correcte VM-grootte kiest en de gewenste tolerantie in zones verkrijgt. Voor meer informatie over de verschillende VM-typen en -grootten raadpleegt u het [Overzicht van de VM-grootten](../sizes.md).
 
 U kunt de beschik bare VM-Sku's weer geven met de opdracht [AZ VM List-sku's](/cli/azure/vm) . Met het volgende voorbeeld wordt een lijst weergegeven van de beschikbare VM-SKU's in de regio *eastus2*:
 
@@ -189,7 +189,3 @@ In de uitvoer ziet u dat het IP-adres zich in dezelfde beschikbaarheids zone bev
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [Beschik baarheid](../availability.md) voor virtuele Azure-machines.
-
-
-
-

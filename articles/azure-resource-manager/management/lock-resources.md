@@ -4,12 +4,12 @@ description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of 
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 30a74960113951327f7f89eddc07f8f90a5028c6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484773"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827279"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -22,7 +22,7 @@ Als beheerder kan het nodig zijn om een ​​abonnement, resourcegroep of resou
 
 Wanneer u een vergren deling toepast op een bovenliggend bereik, nemen alle resources binnen die scope dezelfde vergren deling. Zelfs resources die u later toevoegt, nemen de vergren deling van het bovenliggende knoop punt over. De meest beperkende vergren deling in de overname heeft prioriteit.
 
-In tegenstelling tot op rollen gebaseerd toegangsbeheer wordt met beheervergrendelingen een beperking toegepast op alle gebruikers en rollen. Zie [Access Control op basis van rollen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van machtigingen voor gebruikers en rollen.
+In tegenstelling tot op rollen gebaseerd toegangsbeheer wordt met beheervergrendelingen een beperking toegepast op alle gebruikers en rollen. Zie voor meer informatie over het instellen van machtigingen voor gebruikers en rollen [het toegangs beheer op basis van rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
 Vergrendelingen van Resource Manager gelden alleen voor bewerkingen die zich op beheerniveau voordoen, wat bewerkingen zijn die worden verzonden naar `https://management.azure.com`. De vergrendelingen hebben geen invloed op hoe resources hun eigen functies uitvoeren. Resourcewijzigingen worden beperkt, maar resourcebewerkingen worden niet beperkt. Een alleen-lezen vergrendeling op een SQL Database voor komt dat u de Data Base kunt verwijderen of wijzigen. U kunt echter wel gegevens in de database maken, bijwerken of verwijderen. Gegevenstransacties zijn toegestaan omdat deze bewerkingen niet naar `https://management.azure.com` worden verzonden.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039156"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826208"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logische app-resources verplaatsen naar andere Azure-resource groepen,-regio's of-abonnementen
 
@@ -31,7 +31,7 @@ Als u uw logische app of gerelateerde resources wilt migreren naar een andere Az
 
 * Hetzelfde Azure-abonnement dat is gebruikt voor het maken van de logische app of het integratie account dat u wilt verplaatsen
 
-* Resource-eigenaar machtigingen om de gewenste resources te verplaatsen en in te stellen. Meer informatie over [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/built-in-roles.md#owner).
+* Resource-eigenaar machtigingen om de gewenste resources te verplaatsen en in te stellen. Meer informatie over [toegangs beheer op basis van rollen (Azure RBAC)](../role-based-access-control/built-in-roles.md#owner).
 
 <a name="move-subscription"></a>
 

@@ -3,12 +3,12 @@ title: Onboarding als een Azure Event Grid partner
 description: Onboarding als een type Azure Event Grid partner onderwerp. Meer informatie over het resource model en de publicatie stroom voor de onderwerpen van partners.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461252"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826786"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als een Azure Event Grid partner
 
@@ -91,7 +91,7 @@ Het volgende resource model is voor onderwerpen over partners.
 ### <a name="partner-topic-types"></a>Typen partner onderwerpen
 * Resource`partnerTopicTypes`
 * Gebruikt door: klanten
-* Beschrijving: typen partner onderwerpen zijn tenantwide-bron typen waarmee klanten de lijst met goedgekeurde typen partner onderwerpen kunnen detecteren. De URL ziet eruit alshttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Beschrijving: typen partners voor de hele Tenant zijn bron typen voor het gehele netwerk waarmee klanten de lijst met goedgekeurde partner typen kunnen detecteren. De URL ziet eruit alshttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Bereik: globaal
 
 ## <a name="publish-events-to-event-grid"></a>Gebeurtenissen publiceren naar Event Grid
@@ -153,7 +153,7 @@ Nadat u naar het partnerNamespace-eind punt hebt gepost, ontvangt u een antwoord
 ## <a name="references"></a>Verwijzingen
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM-sjabloon](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sjabloon schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST-API's](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLI-extensie](/cli/azure/ext/eventgrid/?view=azure-cli-latest)

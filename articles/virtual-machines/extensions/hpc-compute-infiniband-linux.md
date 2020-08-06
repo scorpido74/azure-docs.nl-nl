@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097453"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829047"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>InfiniBand-stuur programma-uitbrei ding voor Linux
 
 Met deze uitbrei ding worden InfiniBand OFED-Stuur Programma's geïnstalleerd op InfiniBand en SR-IOV-ingeschakeld (r-grootten) [H-Series](../sizes-hpc.md) en Vm's met [N-serie](../sizes-gpu.md) waarop Linux wordt uitgevoerd. Afhankelijk van de VM-serie installeert de extensie de juiste Stuur Programma's voor de Connect-X-NIC.
 
-Instructies voor de hand matige installatie van de OFED-Stuur Programma's zijn [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed)beschikbaar.
+Instructies voor de hand matige installatie van de OFED-Stuur Programma's zijn [hier](../workloads/hpc/enable-infiniband.md#manual-installation)beschikbaar.
 
 Er is ook een uitbrei ding beschikbaar voor het installeren van InfiniBand-Stuur Programma's voor [Windows-vm's](hpc-compute-infiniband-windows.md).
 
@@ -72,8 +72,8 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Micro soft. HpcCompute | tekenreeks |
-| type | InfiniBandDriverLinux | tekenreeks |
+| publisher | Micro soft. HpcCompute | string |
+| type | InfiniBandDriverLinux | string |
 | typeHandlerVersion | 1.1 | int |
 
 

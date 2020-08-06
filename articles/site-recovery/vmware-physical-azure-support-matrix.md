@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 56c86993e4e98764bc7e3ce04180f9e870cc612d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 595f12f9204dff58af0bfebb60402cc89ffb386a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87458022"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826242"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -53,9 +53,9 @@ Besturingssysteem  | Windows Server 2012 R2 of Windows Server 2016 met bureaubla
 Landinstelling van het besturingssysteem | Engels (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niet nodig voor de configuratie Server versie [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) of hoger.
 Windows Server-functies | Schakel Active Directory Domain Services niet in. Internet Information Services (IIS) of Hyper-V.
-Groeps beleid| -Toegang tot de opdracht prompt voor komen. <br/> -Toegang tot register bewerkings Programma's verhinderen. <br/> -Logica vertrouwen voor bestands bijlagen. <br/> -Schakel uitvoering van script in. <br/> - [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
-IIS | Zorg ervoor dat:<br/><br/> -Geen vooraf bestaande standaard website hebben <br/> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br/> - [Fastcgi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -instelling inschakelen  <br/> -Geen vooraf bestaande website/app Luis teren op poort 443<br/>
-NIC-type | VMXNET3 (wanneer geïmplementeerd als een VMware-VM)
+Groepsbeleidsregels| - Toegang tot de opdrachtprompt voorkomen. <br/> - Toegang tot registerbewerkingsprogramma's voorkomen. <br/> - Op logica vertrouwen voor bestandsbijlagen. <br/> - Uitvoering van script inschakelen. <br/> - [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+IIS | Zorg ervoor dat:<br/><br/> -Geen vooraf bestaande standaard website hebben <br/> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br/> - Instelling [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) inschakelen  <br/> -Geen vooraf bestaande website/app Luis teren op poort 443<br/>
+Type NIC | VMXNET3 (wanneer geïmplementeerd als een VMware-VM)
 Type IP-adres | Statisch
 Poorten | 443 gebruikt voor het beheren van de kanaal indeling<br/>9443 voor gegevens transport
 
@@ -229,7 +229,7 @@ Gast/server-schijf uitsluiten | Ja
 Meerdere paden gast/server (MPIO) | Nee
 GPT/server-GUID-partities | Er worden vijf partities ondersteund van [Update pakket 37](https://support.microsoft.com/help/4508614/) (versie 9,25 van de Mobility-service). Eerder vier werden ondersteund.
 ReFS | Flexibel bestands systeem wordt ondersteund met Mobility Service versie 9,23 of hoger
-EFI/UEFI-opstart procedure voor gast/server | -Wordt ondersteund voor alle [UEFI-besturings systemen van Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) met site Recovery Mobility agent versie 9,30 en hoger. <br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+EFI/UEFI-opstart procedure voor gast/server | -Wordt ondersteund voor alle [UEFI-besturings systemen van Azure Marketplace](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) met site Recovery Mobility agent versie 9,30 en hoger. <br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replicatie kanalen
 

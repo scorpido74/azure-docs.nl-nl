@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: 5bddb1d141b461eec794de0849b6234c6a5c6102
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 02a1db47a194f4604534f0b96eb836a33009be85
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284452"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827466"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-Vm's maken en beheren in azure met behulp van python
 
@@ -464,7 +464,7 @@ U kunt een virtuele machine stoppen en alle instellingen behouden, maar er nog s
 
 ### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](sizes.md)voor meer informatie.
+Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](../sizes.md)voor meer informatie.
 
 1. Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze functie toe na de variabelen in het. py-bestand:
 

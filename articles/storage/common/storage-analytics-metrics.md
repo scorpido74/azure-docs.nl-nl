@@ -1,6 +1,6 @@
 ---
 title: Azure Opslaganalyse metrische gegevens (klassiek)
-description: Meer informatie over het gebruik van Opslaganalyse metrische gegevens in Azure Storage.
+description: Meer informatie over het gebruik van Opslaganalyse metrische gegevens in Azure Storage. Meer informatie over metrische gegevens over trans acties en capaciteit, hoe metrische gegevens worden opgeslagen, metrische gegevens inschakelen en meer.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087268"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828044"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Opslaganalyse metrische gegevens (klassiek)
 

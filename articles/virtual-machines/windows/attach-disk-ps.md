@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6be91be4d1189fb99ffa39ec96d555d4534cdb2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da4f9fd9fd4305029f42dbe63326c8782d22d907
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005732"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825443"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Een gegevens schijf koppelen aan een virtuele Windows-machine met Power shell
 
@@ -20,7 +20,7 @@ Dit artikel laat u zien hoe u met behulp van Power shell zowel nieuwe als bestaa
 
 Lees eerst de volgende tips:
 
-* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
+* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
 * Als u Premium Ssd's wilt gebruiken, moet u een [VM-type met Premium-opslag capaciteit](../sizes-memory.md)hebben, zoals de virtuele machine van de DS-serie of GS-serie.
 
 In dit artikel wordt Power shell gebruikt in de [Azure Cloud shell](../../cloud-shell/overview.md), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **Probeer het** bovenaan een willekeurig codeblok.

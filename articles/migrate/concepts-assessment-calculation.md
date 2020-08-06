@@ -3,12 +3,12 @@ title: Evaluaties van Azure VM in Azure Migrate server-evaluatie
 description: Meer informatie over evaluaties in Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107998"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825987"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-evaluaties in Azure Migrate: Server evaluatie
 
@@ -25,16 +25,16 @@ Een evaluatie met het hulp programma voor Server evaluatie meet de gereedheid en
 
 Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server-evaluatie.
 
-**Beoordelings type** | **Details**
+**Evaluatietype** | **Details**
 --- | --- 
-**Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type.
-**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Evaluaties om uw on-premises servers te migreren naar virtuele Azure-machine. <br/><br/> U kunt uw on-premises [VMware-VM's](how-to-set-up-appliance-vmware.md), [Hyper-V-VM's](how-to-set-up-appliance-hyper-v.md) en [fysieke servers](how-to-set-up-appliance-physical.md) evalueren voor migratie naar Azure met dit evaluatietype.
+**Azure VMware Solution (AVS)** | Evaluaties om uw on-premises servers te migreren naar [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [VMware-VM’s](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware Solution (AVS) met dit evaluatietype. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Beoordelingen die u maakt met server evaluatie zijn een tijdgebonden moment opname van gegevens. Een evaluatie van de Azure-VM in Server beoordeling biedt twee opties voor het instellen van de grootte:
 
 **Evaluatietype** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | De aanbeveling van de VM-grootte is gebaseerd op de CPU-en RAM-gebruiks gegevens.<br/><br/> De aanbeveling van het schijf type is gebaseerd op de invoer/uitvoer-bewerkingen per seconde (IOPS) en de door Voer van de on-premises schijven. Schijf typen zijn Azure-Standard-HDD, Azure Standard-SSD en Azure Premium-schijven.
+**Op basis van prestaties** | Evaluaties die aanbevelingen doen op basis van verzamelde prestatiegegevens | De aanbeveling van de VM-grootte is gebaseerd op de CPU-en RAM-gebruiks gegevens.<br/><br/> De aanbeveling van het schijf type is gebaseerd op de invoer/uitvoer-bewerkingen per seconde (IOPS) en de door Voer van de on-premises schijven. Schijf typen zijn Azure-Standard-HDD, Azure Standard-SSD en Azure Premium-schijven.
 **As-is on-premises** | Beoordelingen die geen prestatie gegevens gebruiken om aanbevelingen te doen | De aanbeveling van de VM-grootte is gebaseerd op de grootte van de on-premises VM.<br/><br> Het aanbevolen schijf type is gebaseerd op het geselecteerde opslag type voor de evaluatie.
 
 ## <a name="how-do-i-run-an-assessment"></a>Hoe kan ik een evaluatie uit te voeren?
@@ -114,17 +114,17 @@ Dit is what's opgenomen in een Azure VM-evaluatie in Server evaluatie:
 
 **Eigenschap** | **Details**
 --- | ---
-**Doel locatie** | De locatie waarnaar u wilt migreren. Server analyse ondersteunt momenteel deze Azure-doel regio's:<br/><br/> Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, VS-Oost 2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US gov-Texas US gov-Virginia , West-Centraal VS, Europa-west, West-India, VS-West en VS-West 2.
+**Doellocatie** | De locatie waarnaar u wilt migreren. Server analyse ondersteunt momenteel deze Azure-doel regio's:<br/><br/> Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, VS-Oost 2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US gov-Texas US gov-Virginia , West-Centraal VS, Europa-west, West-India, VS-West en VS-West 2.
 **Doel opslag schijf (in grootte)** | Het type schijf dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doel opslag schijf op als Premium beheerd, Standard-SSD beheerd of Standard-HDD beheerd.
 **Doel opslag schijf (grootte op basis van prestaties)** | Hiermee geeft u het type doel opslag schijf op als automatische, door een Standard-HDD beheerd of door Standard-SSD beheerd beheer.<br/><br/> **Automatisch**: de aanbevolen schijf is gebaseerd op de prestatie gegevens van de schijven, wat de IOPS en door Voer is.<br/><br/>**Premium of Standard**: de evaluatie beveelt een schijf-SKU aan binnen het geselecteerde opslag type.<br/><br/> Als u een VM met één exemplaar van 99,9% wilt maken, kunt u overwegen om Premium-beheerde schijven te gebruiken. Dit gebruik zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven.<br/><br/> Azure Migrate ondersteunt alleen beheerde schijven voor migratie beoordeling.
 **Azure Reserved VM Instances** | Hiermee worden [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) opgegeven, zodat rekening wordt gehouden met kosten ramingen in de evaluatie.<br/><br/> Wanneer u gereserveerde instanties selecteert, wordt de korting (%) de eigenschappen van de uptime van de VM zijn niet van toepassing.<br/><br/> Azure Migrate ondersteunt momenteel alleen Azure Reserved VM Instances voor aanbiedingen met betalen per gebruik.
-**Grootte criteria** | Wordt gebruikt voor het optimaliseren van de Azure-VM.<br/><br/> Gebruiken als is formaat of op basis van de prestaties.
+**Criteria voor het aanpassen van de grootte** | Wordt gebruikt voor het optimaliseren van de Azure-VM.<br/><br/> Gebruiken als is formaat of op basis van de prestaties.
 **Prestatiegeschiedenis** | Wordt gebruikt met een grootte op basis van prestaties. Met de prestatie geschiedenis wordt de duur opgegeven die wordt gebruikt wanneer prestatie gegevens worden geëvalueerd.
 **Percentiel gebruik** | Wordt gebruikt met een grootte op basis van prestaties. Percentiel gebruik geeft de percentiel waarde van het voor beeld van de prestaties die wordt gebruikt voor supportte.
 **VM-reeks** | De Azure-VM-reeks die u wilt overwegen voor supportte. Als u bijvoorbeeld geen productie omgeving hebt die virtuele machines van de A-serie nodig heeft in azure, kunt u een-serie uitsluiten van de lijst met reeksen.
 **Comfortfactor** | De buffer die wordt gebruikt tijdens de evaluatie. Deze wordt toegepast op de CPU-, RAM-, schijf-en netwerk gebruiks gegevens voor Vm's. IT-accounts voor problemen zoals seizoen gebruik, korte prestatie geschiedenis en waarschijnlijk toename van toekomstig gebruik.<br/><br/> Zo resulteert een virtuele machine met 10 kern met 20% gebruik doorgaans in een virtuele machine met twee kernen. Met een comfort factor van 2,0 is het resultaat een virtuele machine met vier kernen.
 **Aanbieding** | De [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) waarin u bent Inge schreven. Met server evaluatie worden de kosten voor die aanbieding geschat.
-**Valuta** | De facturerings valuta voor uw account.
+**Gelijktijdig** | De facturerings valuta voor uw account.
 **Korting (%)** | Alle abonnements kortingen die u boven op de Azure-aanbieding ontvangt. De standaardinstelling is 0%.
 **VM tijd actief** | De duur in dagen per maand en uur per dag voor virtuele Azure-machines die niet continu worden uitgevoerd. Kosten ramingen zijn gebaseerd op die duur.<br/><br/> De standaard waarden zijn 31 dagen per maand en 24 uur per dag.
 **Azure Hybrid Benefit** | Hiermee geeft u op of u Software Assurance hebt en in aanmerking komt voor [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Als de instelling de standaard waarde Ja heeft, worden de Azure-prijzen voor andere besturings systemen dan Windows in aanmerking genomen voor Windows-Vm's.
@@ -150,10 +150,10 @@ Voor een evaluatie van de Azure-VM controleert server assessment de volgende eig
 
 Eigenschap | Details | Status van Azure-gereedheid
 --- | --- | ---
-**Opstart type** | Azure ondersteunt Vm's met een opstart type BIOS, niet voor UEFI. | Voorwaardelijk gereed als het opstart type UEFI is
+**Opstarttype** | Azure ondersteunt Vm's met een opstart type BIOS, niet voor UEFI. | Voorwaardelijk gereed als het opstart type UEFI is
 **Kernen** | Elke computer mag niet meer dan 128 kernen hebben. Dit is het maximum aantal dat door een Azure-VM wordt ondersteund.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, worden de gebruikte kernen Azure Migrate beschouwd als vergelijking. Als de evaluatie-instellingen een comfort factor opgeven, wordt het aantal gebruikte kernen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als het aantal kern geheugens binnen de limiet ligt
-**NODIG** | Elke machine mag Maxi maal 3.892 GB RAM-geheugen hebben. Dit is de maximale grootte van een Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM ondersteunt. [Meer informatie](../virtual-machines/windows/sizes.md).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte RAM-geheugen voor vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte RAM vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen RAM-geheugen gebruikt zonder toepassing van een comfort factor.<br/><br/> | Gereed als de hoeveelheid RAM-geheugen binnen de limiet ligt
-**Opslag schijf** | De toegewezen grootte van een schijf mag niet groter zijn dan 32 TB. Azure biedt ondersteuning voor 64-TB schijven met Azure Ultra-SSD-schijven, Azure Migrate: door server evaluatie wordt momenteel gecontroleerd op 32 TB als de grootte van de schijf omvang, omdat deze nog geen Ultra-SSD ondersteunt. <br/><br/> Het aantal schijven dat is gekoppeld aan de computer, met inbegrip van de besturingssysteem schijf, moet 65 of minder zijn. | Gereed als de schijf grootte en het-nummer binnen de limieten vallen
+**RAM** | Elke machine mag Maxi maal 3.892 GB RAM-geheugen hebben. Dit is de maximale grootte van een Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM ondersteunt. [Meer informatie](../virtual-machines/sizes.md).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte RAM-geheugen voor vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte RAM vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen RAM-geheugen gebruikt zonder toepassing van een comfort factor.<br/><br/> | Gereed als de hoeveelheid RAM-geheugen binnen de limiet ligt
+**Opslagschijf** | De toegewezen grootte van een schijf mag niet groter zijn dan 32 TB. Azure biedt ondersteuning voor 64-TB schijven met Azure Ultra-SSD-schijven, Azure Migrate: door server evaluatie wordt momenteel gecontroleerd op 32 TB als de grootte van de schijf omvang, omdat deze nog geen Ultra-SSD ondersteunt. <br/><br/> Het aantal schijven dat is gekoppeld aan de computer, met inbegrip van de besturingssysteem schijf, moet 65 of minder zijn. | Gereed als de schijf grootte en het-nummer binnen de limieten vallen
 **Netwerken** | Aan een machine mogen niet meer dan 32 netwerk interfaces (Nic's) zijn gekoppeld. | Gereed als het aantal Nic's binnen de limiet ligt
 
 ### <a name="guest-operating-system"></a>Gastbesturingssysteem
@@ -168,20 +168,20 @@ Server assessment maakt gebruik van de volgende logica om de Azure-gereedheid op
 
 **Besturingssysteem** | **Details** | **Status van Azure-gereedheid**
 --- | --- | ---
-Windows Server 2016 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure.
-Windows Server 2012 R2 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure.
-Windows Server 2012 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure.
+Windows Server 2016 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure.
+Windows Server 2012 R2 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure.
+Windows Server 2012 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure.
 Windows Server 2008 R2 met alle SPs | Azure biedt volledige ondersteuning.| Gereed voor Azure.
-Windows Server 2008 (32-bits en 64 bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure.
+Windows Server 2008 (32-bits en 64-bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure.
 Windows Server 2003 en Windows Server 2003 R2 | Deze besturings systemen hebben hun end-of-support-datums door lopen en hebben een [aangepaste ondersteunings overeenkomst (CSA)](https://aka.ms/WSosstatement) nodig voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem te upgraden voordat u naar Azure migreert.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 en MS-DOS | Deze besturings systemen hebben hun end-of-support-datums door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
 Windows 7, Windows 8 en Windows 10 | Azure biedt alleen ondersteuning voor een [Visual Studio-abonnement.](../virtual-machines/windows/client-images.md) | Voorwaardelijk gereed voor Azure.
-Windows 10 Pro | Azure biedt ondersteuning voor [multi tenant-hosting rechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure.
+Windows 10 Pro | Azure biedt ondersteuning met [multitenant-hostingrechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure.
 Windows Vista en Windows XP Professional | Deze besturings systemen hebben hun end-of-support-datums door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
-Linux | Zie de [Linux-besturings systemen](../virtual-machines/linux/endorsed-distros.md) die door Azure worden goedgekeurd. Andere Linux-besturings systemen kunnen worden gestart in Azure. Het is echter raadzaam dat u het besturings systeem bijwerkt naar een officiële versie voordat u naar Azure migreert. | Gereed voor Azure als de versie wordt goedgekeurd.<br/><br/>Voorwaardelijk gereed als de versie niet wordt goedgekeurd.
-Andere besturings systemen, zoals Oracle Solaris, Apple macOS en FreeBSD | Deze besturings systemen worden niet door Azure goedgekeurd. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. U wordt aangeraden een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  
-Besturings systeem opgegeven als een **andere** in vCenter Server | Azure Migrate kan het besturings systeem in dit geval niet identificeren. | Onbekende gereedheid. Zorg ervoor dat Azure ondersteuning biedt voor het besturings systeem dat wordt uitgevoerd in de virtuele machine.
-32-bits besturings systemen | De machine kan worden gestart in azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk gereed voor Azure. U kunt een upgrade uitvoeren naar een 64-bits besturings systeem voordat u naar Azure migreert.
+Linux | Zie de [Linux-besturings systemen](../virtual-machines/linux/endorsed-distros.md) die door Azure worden goedgekeurd. Andere Linux-besturings systemen kunnen worden gestart in Azure. Het is echter raadzaam dat u het besturings systeem bijwerkt naar een officiële versie voordat u naar Azure migreert. | Gereed voor Azure als de versie goedgekeurd is.<br/><br/>Voorwaardelijk gereed als de versie niet wordt goedgekeurd.
+Andere besturings systemen, zoals Oracle Solaris, Apple macOS en FreeBSD | Deze besturingssystemen worden niet door Azure goedgekeurd. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. U wordt aangeraden een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  
+Besturingssysteem dat is opgegeven als **Anders** in vCenter Server | Azure Migrate kan het besturings systeem in dit geval niet identificeren. | Gereedheid onbekend. Zorg ervoor dat Azure ondersteuning biedt voor het besturings systeem dat wordt uitgevoerd in de virtuele machine.
+32-bits besturingssystemen | De machine kan worden gestart in azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk gereed voor Azure. U kunt een upgrade uitvoeren naar een 64-bits besturings systeem voordat u naar Azure migreert.
 
 ## <a name="calculating-sizing"></a>Grootte berekenen
 

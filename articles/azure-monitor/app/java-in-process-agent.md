@@ -3,12 +3,12 @@ title: Java-toepassingen bewaken op elke omgeving-Azure Monitor Application Insi
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c719f7f0310a6894d2289bdb0ac8fc64170df307
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541852"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824848"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
 
@@ -128,17 +128,17 @@ We ondersteunen micrometer, OpenTelemetry-API en de populaire logboek registrati
 
 ### <a name="supported-custom-telemetry"></a>Ondersteunde aangepaste telemetrie
 
-De volgende tabel bevat momenteel ondersteunde aangepaste typen telemetrie die u kunt inschakelen om de Java 3,0-agent aan te vullen. Om samen te vatten worden aangepaste metrische gegevens ondersteund via micrometer, aangepaste uitzonde ringen en traceringen kunnen worden ingeschakeld via logging frameworks, en elk type van de aangepaste telemetrie wordt ondersteund via de [Application Insights Java 2. x SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x). 
+De volgende tabel bevat momenteel ondersteunde aangepaste typen telemetrie die u kunt inschakelen om de Java 3,0-agent aan te vullen. Om samen te vatten worden aangepaste metrische gegevens ondersteund via micrometer, aangepaste uitzonde ringen en traceringen kunnen worden ingeschakeld via logging frameworks, en elk type van de aangepaste telemetrie wordt ondersteund via de [Application Insights Java 2. x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x). 
 
 
 |                 | Micrometer | Log4j, logback, JUL | 2. x SDK |
 |-----------------|------------|---------------------|---------|
-| Aangepaste gebeurtenissen   |            |                     |  Yes    |
+| Aangepaste gebeurtenissen   |            |                     |  Ja    |
 | Aangepaste metrische gegevens  |  Ja       |                     |  Ja    |
-| Afhankelijkheden    |            |                     |  Yes    |
+| Afhankelijkheden    |            |                     |  Ja    |
 | Uitzonderingen      |            |  Ja                |  Ja    |   
-| Paginaweergaven      |            |                     |  Yes    |
-| Aanvragen        |            |                     |  Yes    |
+| Paginaweergaven      |            |                     |  Ja    |
+| Aanvragen        |            |                     |  Ja    |
 | Traceringen          |            |  Ja                |  Ja    |
 
 Er is op dit moment geen planning voor het vrijgeven van een SDK met Application Insights 3,0.

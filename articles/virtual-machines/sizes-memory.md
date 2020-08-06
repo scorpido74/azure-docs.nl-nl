@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 688508df8b13e00b21da78c1274400ea4b18484a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ea58eeac5a77f2e1eaf2a7756de6d36a3fc0626b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421328"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825494"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines geoptimaliseerd voor geheugen
 
@@ -57,4 +57,4 @@ Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een spec
 
 Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 
-Zie [grootte conventies voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.
+Zie [grootte conventies voor virtuele machines van Azure](./vm-naming-conventions.md)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.

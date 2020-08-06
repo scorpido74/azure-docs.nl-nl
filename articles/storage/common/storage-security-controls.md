@@ -1,7 +1,7 @@
 ---
 title: Beveiligingsmaatregelen
 titleSuffix: Azure Storage
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure Storage.
+description: Controle lijsten voor beveiligings controle weer geven voor het evalueren van Azure Storage. De behorende gebieden zijn gegevens beveiliging, netwerk, bewaking en logboek registratie, identiteit en configuratie.
 services: storage
 author: msmbaldwin
 ms.author: mbaldwin
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b816e7bd5e00b21700bc994fc0860195d39f2915
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128024"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826514"
 ---
 # <a name="security-controls-for-azure-storage"></a>Beveiligings controles voor Azure Storage
 
@@ -22,7 +22,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|

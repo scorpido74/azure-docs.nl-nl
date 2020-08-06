@@ -4,12 +4,12 @@ description: Meer informatie over het container plaatsen van uw Service Fabric R
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186afb87b4668ad575208beeeb19643e6a11cedd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466181"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824542"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Uw Reliable Services en Reliable Actors van Service Fabric in Windows in een container plaatsen
 
@@ -93,7 +93,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
    </Policies>
    ```
 
-9. Zie [isolatie modus configureren]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)voor meer informatie over het configureren van de isolatie modus voor containers. Windows ondersteunt twee isolatiemodi voor containers: proces en Hyper-V. De volgende fragmenten laten zien hoe de isolatie modus is opgegeven in het manifest bestand van de toepassing.
+9. Zie [isolatie modus configureren]( ./service-fabric-get-started-containers.md#configure-isolation-mode)voor meer informatie over het configureren van de isolatie modus voor containers. Windows ondersteunt twee isolatiemodi voor containers: proces en Hyper-V. De volgende fragmenten laten zien hoe de isolatie modus is opgegeven in het manifest bestand van de toepassing.
 
    ```xml
    <Policies>

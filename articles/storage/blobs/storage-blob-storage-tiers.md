@@ -1,6 +1,6 @@
 ---
 title: Dynamische, coole en archief toegangs lagen voor blobs-Azure Storage
-description: Dynamische, coole en archief toegangs lagen voor Azure Storage-accounts.
+description: Meer informatie over de toegangs lagen hot, cool en Archive voor Azure Blob Storage. Bekijk opslag accounts die ondersteuning bieden voor lagen. Opties voor blok keren van blog opslag vergelijken.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 17df78f846d8422c0200ce5fc75b4722d21d35df
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011342"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828269"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
@@ -42,14 +42,14 @@ De gegevenslaag van object opslag tussen hot, cool en Archive wordt alleen onder
 
 Blob Storage-en GPv2-accounts bieden het kenmerk **toegangs niveau** op account niveau. Met dit kenmerk kunt u de standaardlaag voor toegang voor een BLOB opgeven die niet expliciet is ingesteld op object niveau. Voor objecten met de laag die op object niveau is ingesteld, is de laag van de account niet van toepassing. De archief laag kan alleen op object niveau worden toegepast. U kunt op elk gewenst moment scha kelen tussen deze toegangs lagen.
 
-## <a name="hot-access-tier"></a>Hot Storage-toegangslaag
+## <a name="hot-access-tier"></a>Dynamische-toegangslaag
 
 De laag Hot Access heeft hogere opslag kosten dan cool-en Archive-lagen, maar de laagste toegangs kosten. Voor beelden van gebruiks scenario's voor de laag Hot Access zijn:
 
 - Gegevens die in actief gebruik zijn of waarvan wordt verwacht dat ze regel matig worden geopend (gelezen en geschreven naar).
 - Gegevens die worden voor bereid voor verwerking en uiteindelijk de migratie naar de laag voor coole toegang.
 
-## <a name="cool-access-tier"></a>Cool Storage-toegangslaag
+## <a name="cool-access-tier"></a>Statische-toegangslaag
 
 De laag voor coole toegang heeft lagere opslag kosten en hogere toegangs kosten in vergelijking met de warme opslag. Deze laag is bedoeld voor gegevens die ten minste dertig dagen in de Cold Storage verblijven. Voor beelden van gebruiks scenario's voor de laag cool zijn:
 
@@ -57,7 +57,7 @@ De laag voor coole toegang heeft lagere opslag kosten en hogere toegangs kosten 
 - Oudere media-inhoud die niet meer regelmatig wordt bekeken, maar onmiddellijk beschikbaar moet zijn wanneer deze wordt geopend.
 - Grote gegevenssets die voordelig moeten worden opgeslagen, terwijl er meer gegevens worden verzameld voor toekomstige verwerking. (*Bijvoorbeeld*: langetermijnopslag van wetenschappelijke gegevens, onbewerkte telemetriegegevens van een productiefaciliteit)
 
-## <a name="archive-access-tier"></a>Archive-toegangslaag
+## <a name="archive-access-tier"></a>Archieftoegangslaag
 
 De toegangs laag voor het archief heeft de laagste opslag kosten. Maar het heeft een hogere kosten voor het ophalen van gegevens vergeleken met de warme en coole lagen. Gegevens moeten gedurende ten minste 180 dagen in de archief laag blijven of onderhevig zijn aan de kosten voor een vroege verwijdering. Het ophalen van gegevens in de archief laag kan enkele uren duren, afhankelijk van de prioriteit van de rehydratatie. Voor kleine objecten kan een met een hoge prioriteit gehydrateerd object binnen één uur worden opgehaald uit het archief. Zie [BLOB-gegevens opnieuw inbreken van de archief laag](storage-blob-rehydration.md) voor meer informatie.
 

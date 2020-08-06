@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: dcb5277773be1fc45a3d2b0901cf9fda177b7054
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512649"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825562"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-sleutels gebruiken met Windows op Azure
 
@@ -45,7 +45,7 @@ Recente versies van Windows 10 bevatten [openssh-client opdrachten](https://blog
 
 U kunt bash ook gebruiken in de [Azure Cloud shell](../../cloud-shell/overview.md) om verbinding te maken met uw VM. U kunt Cloud Shell gebruiken in een [webbrowser](https://shell.azure.com/bash), vanuit de [Azure Portal](https://portal.azure.com)of als een terminal in Visual Studio code met behulp van de [Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
-U kunt ook het [Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/about) installeren om via SSH verbinding te maken met uw virtuele machine en andere systeem eigen Linux-hulpprogram ma's gebruiken in een bash-shell.
+U kunt ook het [Windows-subsysteem voor Linux](/windows/wsl/about) installeren om via SSH verbinding te maken met uw virtuele machine en andere systeem eigen Linux-hulpprogram ma's gebruiken in een bash-shell.
 
 ## <a name="create-an-ssh-key-pair"></a>Een SSH-sleutelpaar maken
 

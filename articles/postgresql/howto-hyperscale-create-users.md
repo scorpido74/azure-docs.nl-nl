@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116961"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825953"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
 
 > [!NOTE]
-> De term ' gebruikers ' verwijst naar gebruikers in een grootschalige (Citus)-Server groep. Voor meer informatie over Azure-abonnements gebruikers en hun bevoegdheden gaat u naar het [artikel op basis van Azure Role Access Control (RBAC)](../role-based-access-control/built-in-roles.md) of raadpleegt u [How to Customize roles](../role-based-access-control/custom-roles.md).
+> De term ' gebruikers ' verwijst naar gebruikers in een grootschalige (Citus)-Server groep. Ga naar het [artikel over toegangs beheer op basis van rollen (Azure RBAC)](../role-based-access-control/built-in-roles.md) van Azure of Lees [hoe u rollen kunt aanpassen](../role-based-access-control/custom-roles.md)voor meer informatie over Azure-abonnements gebruikers en hun bevoegdheden.
 
 ## <a name="the-server-admin-account"></a>Het beheerdersaccount voor de server
 

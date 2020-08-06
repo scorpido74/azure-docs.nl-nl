@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529786"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828622"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -82,7 +82,7 @@ Zie [Wat is Azure AD privileged Identity Management?](pim-configure.md)voor meer
 
 **Azure AD-rollen** : deze rollen bevinden zich allemaal in azure Active Directory (zoals globale beheerder, Exchange-beheerder en beveiligings beheerder). Meer informatie over de rollen en hun functionaliteit vindt u in de [beheerders bevoegdheden in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Zie [minst geprivilegieerde rollen per taak](../users-groups-roles/roles-delegate-by-task.md)voor hulp bij het bepalen van de rollen die aan uw beheerders worden toegewezen.
 
-**Azure-resource rollen** : deze rollen zijn gekoppeld aan een Azure-resource, resource groep, abonnement of beheer groep. Privileged Identity Management biedt just-in-time-toegang tot zowel ingebouwde rollen als eigenaar, beheerder van gebruikers toegang en Inzender, evenals [aangepaste rollen](../../role-based-access-control/custom-roles.md). Zie [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md)voor meer informatie over Azure-resource rollen.
+**Azure-resource rollen** : deze rollen zijn gekoppeld aan een Azure-resource, resource groep, abonnement of beheer groep. Privileged Identity Management biedt just-in-time-toegang tot zowel ingebouwde rollen als eigenaar, beheerder van gebruikers toegang en Inzender, evenals [aangepaste rollen](../../role-based-access-control/custom-roles.md). Zie voor meer informatie over Azure-resource rollen Azure [op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
 Zie [rollen die u niet kunt beheren in privileged Identity Management](pim-roles.md)voor meer informatie.
 
@@ -100,7 +100,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure AD-rollen
 
-| Name | Rol | Bewerking |
+| Naam | Rol | Actie |
 | --- | --- | --- |
 | Naam en e-mail adres | **Identiteits architect of Azure Global-beheerder**<br/>Een vertegenwoordiger van het team voor identiteits beheer dat verantwoordelijk is voor het bepalen van de manier waarop deze wijziging wordt afgestemd op de infra structuur voor identiteits beheer in uw organisatie. | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van service/regel beheer**<br/>Een vertegenwoordiger van de IT-eigen aars van een service of een groep services. Ze zijn belang rijk voor het nemen van beslissingen en het helpen bij het inrollen van Privileged Identity Management voor hun team. | SO/R/I |
@@ -110,7 +110,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure-resource rollen
 
-| Name | Rol | Bewerking |
+| Naam | Rol | Actie |
 | --- | --- | --- |
 | Naam en e-mail adres | **Eigenaar van abonnement/resource**<br/>Een vertegenwoordiger van de IT-eigen aars van elk abonnement of resource dat u wilt implementeren Privileged Identity Management voor | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van beveiliging**<br/>Een vertegenwoordiger van het beveiligings team dat zich kan afmelden dat het plan voldoet aan de beveiligings vereisten van uw organisatie. | SO/R |
@@ -351,7 +351,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **rollen**.
 1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatings teken (**...**) voor alle gebruikers met een in aanmerking komende toewijzing.
@@ -359,7 +359,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure-resources** en klik vervolgens op een abonnement of resource die u wilt terugzetten.
 1. Klik op **rollen**.
@@ -374,7 +374,7 @@ Het implementeren van Privileged Identity Management in productie is een belang 
 
 Gebruik de ingebouwde waarschuwings functionaliteit van Privileged Identity Management om uw organisatie beter te beveiligen. Zie [Security Alerts](pim-how-to-configure-security-alerts.md#security-alerts)(Engelstalig) voor meer informatie. Deze waarschuwingen omvatten: beheerders die geen geprivilegieerde rollen gebruiken, de rollen worden toegewezen buiten Privileged Identity Management, worden de rollen te vaak geactiveerd. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **waarschuwingen**.
 

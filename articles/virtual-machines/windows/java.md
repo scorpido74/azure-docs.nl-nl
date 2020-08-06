@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: d4ad1c46aa023f30a2d33ef11e576aa29607b273
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325420"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827483"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Virtuele Windows-machines maken en beheren in azure met behulp van Java
 
@@ -413,7 +413,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](sizes.md)voor meer informatie.  
+Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](../sizes.md)voor meer informatie.  
 
 Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze code toe aan het blok try in de methode Main:
 

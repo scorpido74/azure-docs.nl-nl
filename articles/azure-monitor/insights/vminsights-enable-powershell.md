@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328234"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824576"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>Azure Monitor voor VM's inschakelen met behulp van Power shell
 In dit artikel wordt beschreven hoe u Azure Monitor voor VM's op virtuele Azure-machines inschakelt met behulp van Power shell. Deze procedure kan worden gebruikt voor het volgende:
@@ -35,7 +35,7 @@ Als u Azure Monitor voor VM's wilt inschakelen voor meerdere Vm's of virtuele-ma
 
 Voor elke virtuele machine of virtuele-machine schaalset wordt door het script gecontroleerd of de VM-extensie voor de Log Analytics agent en de afhankelijkheids agent al zijn geïnstalleerd. Als beide uitbrei dingen zijn geïnstalleerd, probeert het script het opnieuw te installeren. Als beide extensies niet zijn geïnstalleerd, wordt deze door het script geïnstalleerd.
 
-Controleer of u Azure PowerShell-module AZ version 1.0.0 of later gebruikt met `Enable-AzureRM` compatibiliteits aliassen ingeschakeld. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Controleer of u Azure PowerShell-module AZ version 1.0.0 of later gebruikt met `Enable-AzureRM` compatibiliteits aliassen ingeschakeld. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 Als u een lijst wilt ophalen met de argument Details van het script en het gebruiks voorbeeld, voert u uit `Get-Help` .
 

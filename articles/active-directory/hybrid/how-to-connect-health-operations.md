@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359157"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828792"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health bewerkingen
 In dit onderwerp worden de verschillende bewerkingen beschreven die u kunt uitvoeren met behulp van Azure Active Directory (Azure AD) Connect Health.
@@ -104,7 +104,7 @@ Wanneer u een service-exemplaar verwijdert, moet u rekening houden met het volge
 
 [//]: # (Het gedeelte voor het starten van RBAC)
 ## <a name="manage-access-with-role-based-access-control"></a>Toegang beheren met op rollen gebaseerd toegangsbeheer
-Op [rollen gebaseerde Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) voor Azure AD Connect Health biedt toegang tot gebruikers en groepen, met uitzonde ring van globale beheerders. RBAC wijst rollen toe aan de beoogde gebruikers en groepen en biedt een mechanisme voor het beperken van de globale beheerders in uw Directory.
+[Toegangs beheer op basis van rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor Azure AD Connect Health biedt toegang tot gebruikers en groepen, met uitzonde ring van globale beheerders. RBAC wijst rollen toe aan de beoogde gebruikers en groepen en biedt een mechanisme voor het beperken van de globale beheerders in uw Directory.
 
 ### <a name="roles"></a>Rollen
 Azure AD Connect Health ondersteunt de volgende ingebouwde rollen:

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf16ee0af1c5816822f6a201ad1d5a70127082db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658205"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825375"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure Managed disks-opslag converteren van Standard naar Premium of Premium naar Standard
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u Managed disks converteert van Standard naa
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Alle beheerde schijven van een virtuele machine overschakelen tussen Premium en Standard
 
-In dit voor beeld ziet u hoe u alle schijven van een virtuele machine converteert van Standard naar Premium-opslag of van Premium naar standaard opslag. Als u Premium Managed disks wilt gebruiken, moet uw virtuele machine gebruikmaken van een [VM-grootte](sizes.md) die Premium-opslag ondersteunt. In dit voor beeld wordt ook overgeschakeld naar een grootte die ondersteuning biedt voor Premium-opslag.
+In dit voor beeld ziet u hoe u alle schijven van een virtuele machine converteert van Standard naar Premium-opslag of van Premium naar standaard opslag. Als u Premium Managed disks wilt gebruiken, moet uw virtuele machine gebruikmaken van een [VM-grootte](../sizes.md) die Premium-opslag ondersteunt. In dit voor beeld wordt ook overgeschakeld naar een grootte die ondersteuning biedt voor Premium-opslag.
 
  ```azurecli
 
@@ -67,7 +67,7 @@ az vm start --name $vmName --resource-group $rgName
 ```
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Afzonderlijke beheerde schijven wisselen tussen Standard en Premium
 
-Voor uw werk belasting voor ontwikkelen en testen wilt u mogelijk een combi natie van de standaard-en Premium-schijven om uw kosten te verlagen. U kunt ervoor kiezen om alleen die schijven bij te werken waarvoor betere prestaties nodig zijn. In dit voor beeld ziet u hoe u een enkele VM-schijf converteert van Standard naar Premium-opslag of van Premium naar standaard opslag. Als u Premium Managed disks wilt gebruiken, moet uw virtuele machine gebruikmaken van een [VM-grootte](sizes.md) die Premium-opslag ondersteunt. In dit voor beeld wordt ook overgeschakeld naar een grootte die ondersteuning biedt voor Premium-opslag.
+Voor uw werk belasting voor ontwikkelen en testen wilt u mogelijk een combi natie van de standaard-en Premium-schijven om uw kosten te verlagen. U kunt ervoor kiezen om alleen die schijven bij te werken waarvoor betere prestaties nodig zijn. In dit voor beeld ziet u hoe u een enkele VM-schijf converteert van Standard naar Premium-opslag of van Premium naar standaard opslag. Als u Premium Managed disks wilt gebruiken, moet uw virtuele machine gebruikmaken van een [VM-grootte](../sizes.md) die Premium-opslag ondersteunt. In dit voor beeld wordt ook overgeschakeld naar een grootte die ondersteuning biedt voor Premium-opslag.
 
  ```azurecli
 

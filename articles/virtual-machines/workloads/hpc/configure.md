@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c49286f370691c39c3d14d589f2657d6e0bb3c04
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542328"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825137"
 ---
-# <a name="configure-and-optimize-vms"></a>Vm's configureren en optimaliseren
+# <a name="configure-and-optimize-vms"></a>VM's configureren en optimaliseren
 
 In dit artikel worden bekende technieken gedeeld voor het configureren en optimaliseren van de met InfiniBand ingeschakelde [H-Series](../../sizes-hpc.md) en [N-Series](../../sizes-gpu.md) vm's voor HPC.
 
 ## <a name="vm-images"></a>VM-installatiekopieën
-Op InfiniBand ingeschakelde Vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. Op Linux worden de CentOS-HPC-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Het is ook raadzaam om [aangepaste VM-installatie kopieën](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) te maken met de juiste Stuur Programma's en configuratie en deze herhaaldelijk te hergebruiken.
+Op InfiniBand ingeschakelde Vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. Op Linux worden de CentOS-HPC-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Het is ook raadzaam om [aangepaste VM-installatie kopieën](../../linux/tutorial-custom-images.md) te maken met de juiste Stuur Programma's en configuratie en deze herhaaldelijk te hergebruiken.
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM-installatie kopieën
 Voor [RDMA-compatibele](../../sizes-hpc.md#rdma-capable-instances), op SR-IOV geschikte vm's, CENTOS-HPC-versie 6,5 of hoger, is er een geschikte versie van 7,5 in Marketplace. Een voor beeld: voor [vm's uit de H16-serie](../../h-series.md)wordt versie 7,1 tot 7,5 aanbevolen. Deze VM-installatie kopieën worden vooraf geladen met de netwerk directe Stuur Programma's voor RDMA en Intel MPI versie 5,1.
@@ -53,7 +53,7 @@ Hier volgen enkele optionele optimalisatie-instellingen voor verbeterde prestati
 
 ### <a name="update-lis"></a>LIS bijwerken
 
-Indien nodig voor functionaliteit of prestaties, kunnen [Lis-Stuur programma's (Linux Integration Services)](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) worden geïnstalleerd of bijgewerkt op ondersteunde OS distributies, met name voor de implementatie met behulp van een aangepaste installatie kopie of een oudere versie van het besturings systeem, zoals CENTOS/RHEL 6. x of een eerdere versie van 7. x.
+Indien nodig voor functionaliteit of prestaties, kunnen [Lis-Stuur programma's (Linux Integration Services)](../../linux/endorsed-distros.md) worden geïnstalleerd of bijgewerkt op ondersteunde OS distributies, met name voor de implementatie met behulp van een aangepaste installatie kopie of een oudere versie van het besturings systeem, zoals CENTOS/RHEL 6. x of een eerdere versie van 7. x.
 
 ```bash
 wget https://aka.ms/lis

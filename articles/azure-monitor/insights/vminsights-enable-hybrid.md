@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417111"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828401"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Azure Monitor voor VM's inschakelen voor een hybride virtuele machine
 In dit artikel wordt beschreven hoe u Azure Monitor voor VM's inschakelt voor een virtuele machine buiten Azure, met inbegrip van on-premises en andere Cloud omgevingen.
@@ -41,7 +41,7 @@ De firewall vereisten voor de Log Analytics-agent vindt u in [log Analytics Over
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| File | OS | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
@@ -92,7 +92,7 @@ Als de afhankelijkheids agent niet kan worden gestart, raadpleegt u de logboeken
 
 Bestanden voor de afhankelijkheids agent worden in de volgende directory's geplaatst:
 
-| Bestanden | Locatie |
+| Files | Locatie |
 |:--|:--|
 | Kernbestanden | /opt/microsoft/dependency-agent |
 | Logboekbestanden | /var/opt/microsoft/dependency-agent/log |
@@ -146,7 +146,7 @@ configuration VMInsights {
 
 
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="vm-doesnt-appear-on-the-map"></a>De virtuele machine wordt niet weer gegeven op de kaart
 
@@ -158,7 +158,7 @@ Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer
 
     **Linux**: zoek naar het actieve proces ' micro soft-dependency-agent '.
 
-2. Bevindt u zich op de [prijs categorie gratis van log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Het gratis abonnement staat Maxi maal vijf unieke computers toe. Eventuele volgende computers worden niet weer gegeven op de kaart, zelfs als de voor gaande vijf geen gegevens meer verzenden.
+2. Bevindt u zich op de [prijs categorie gratis van log Analytics](./solutions.md)? Het gratis abonnement staat Maxi maal vijf unieke computers toe. Eventuele volgende computers worden niet weer gegeven op de kaart, zelfs als de voor gaande vijf geen gegevens meer verzenden.
 
 3. Stuurt de computer logboek-en prestatie gegevens naar Azure Monitor logboeken? Voer de volgende query uit voor uw computer:
 

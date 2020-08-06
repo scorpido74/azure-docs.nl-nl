@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 5e3cd30f2ed523584ae827f51d19c6acebf72abf
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 051361860a6a2d9ad70aa81e313857ec86cacfb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055508"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827042"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure Portal
 
@@ -114,7 +114,7 @@ U kunt het speld pictogram in de rechter bovenhoek van de grafieken selecteren o
 
 ## <a name="manage-access-to-resources"></a>Toegang tot resources beheren
 
-[Op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md) is een manier om de toegang tot resources in azure te beheren. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
