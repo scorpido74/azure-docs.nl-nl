@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260676"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475648"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster maken
 
@@ -33,42 +33,12 @@ Als u een Azure Red Hat OpenShift-cluster wilt maken, controleert u of u de volg
 |**Beheerder van gebruikerstoegang**|X|X| |
 |**Inzender**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>De extensie `az aro` installeren
-Met de `az aro`-extensie kunt u Azure Red Hat OpenShift-clusters rechtstreeks met de opdrachtregel maken, openen en verwijderen met behulp van de Azure CLI.
-
-Voer de volgende opdracht uit om de `az aro`-extensie te installeren.
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Als de extensie al is geïnstalleerd, kunt u deze bijwerken met de volgende opdracht.
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>De resourceprovider registreren
 
 Vervolgens moet u de resourceprovider `Microsoft.RedHatOpenShift` registreren in uw abonnement.
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Controleer of de extensie is geregistreerd.
-
-```azurecli-interactive
-az -v
-```
-
-  Als het goed is, wordt ongeveer de volgende uitvoer weergegeven.
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Een pull-geheim voor Red Hat ophalen (optioneel)

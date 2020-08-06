@@ -3,12 +3,12 @@ title: Herstel na noodgevallen voor aangepaste onderwerpen in Azure Event Grid
 description: In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een regio niet goed functioneert.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115077"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461677"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Uw eigen herstel na noodgevallen bouwen voor aangepaste onderwerpen in Azure Event Grid
 Herstel na noodgevallen is gericht op het herstellen van een ernstig verlies van de functionaliteit van de toepassing. In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een bepaalde regio niet goed functioneert.
@@ -26,7 +26,7 @@ Ter vereenvoudiging van de test gaat u een [vooraf gebouwde web-app](https://git
 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. Geef in Azure Portal waarden op voor de parameters.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. De implementatie kan enkele minuten duren. Controleer of uw web-app wordt uitgevoerd nadat de implementatie is voltooid. Navigeer in een webbrowser naar: `https://<your-site-name>.azurewebsites.net`
 Schrijf deze URL op, want u hebt deze later nodig.
@@ -207,4 +207,4 @@ U kunt ook failback-logica implementeren op basis van uw behoeften. Als u het be
 
 - Informatie over het [ontvangen van gebeurtenissen op een HTTP-eindpunt](./receive-events.md)
 - Leer [gebeurtenissen routeren naar Hybride verbindingen](./custom-event-to-hybrid-connection.md)
-- Informatie over [herstel na noodgevallen met Azure DNS en Traffic Manager](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- Informatie over [herstel na noodgevallen met Azure DNS en Traffic Manager](../networking/disaster-recovery-dns-traffic-manager.md)

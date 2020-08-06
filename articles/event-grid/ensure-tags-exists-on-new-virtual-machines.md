@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114513"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462000"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Zelfstudie: Azure Automation integreren met Event Grid en Microsoft-Teams
 
@@ -33,7 +33,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Voor het volgen van deze zelfstudie is een [Azure Automation-account](../automation/automation-offering-get-started.md) vereist voor het opslaan van het runbook dat wordt geactiveerd vanuit het Azure Event Grid-abonnement.
+Voor het volgen van deze zelfstudie is een [Azure Automation-account](../automation/index.yml) vereist voor het opslaan van het runbook dat wordt geactiveerd vanuit het Azure Event Grid-abonnement.
 
 * De `AzureRM.Tags`module moet worden geladen in uw Automation-account. Zie [Modules in Azure Automation importeren](../automation/automation-update-azure-modules.md) voor informatie over het importeren van modules in Azure Automation.
 
