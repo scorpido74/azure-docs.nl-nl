@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136150"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836068"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor Insights voor virtuele WAN (preview-versie)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87136150"
 De metrische gegevens van het virtuele WAN-resource niveau worden verzameld en weer gegeven via een vooraf verpakte virtuele WAN-meet werkmap die de metrische gegevens op een virtueel WAN, een hub, een gateway en een verbindings niveau weergeeft. In dit artikel worden de stappen beschreven voor het gebruik van Azure Monitor Insights voor virtuele WAN om uw virtuele WAN-topologie en metrische gegevens op één plek weer te geven.
 
 > [!NOTE]
-> Het menu inzichten is in het proces van uitrollen voor deze preview.
+> De menu optie inzichten in de virtuele WAN-Portal is in het proces van uitrollen. Terwijl het menu inzichten voor het virtuele WAN wordt geïmplementeerd, is de werkmap Virtual WAN-topologie en metrics direct toegankelijk via Azure Montor voor netwerken. Zie [Azure monitor Insights](../azure-monitor/insights/network-insights-overview.md) voor meer informatie. 
 >
 
 ## <a name="before-you-begin"></a>Voordat u begint

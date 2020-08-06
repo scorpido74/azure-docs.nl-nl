@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421430"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835881"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
 
@@ -51,7 +51,7 @@ Probeer toegang te krijgen tot de DNS-server vanaf de virtuele machine. Als de D
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Probleem 2: configuratie van Site Recovery is mislukt (151196)
 
 > [!NOTE]
-> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](../load-balancer/configure-load-balancer-outbound-cli.md).
+> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration).
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7298e935da8b4c81bfb0a7b07d9f94f7c100b2b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038780"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831733"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Live streamen leveren met Azure Media Services
 
@@ -27,7 +27,7 @@ ms.locfileid: "87038780"
 
 Microsoft Azure Media Services biedt Api's die aanvragen verzenden naar Media Services om bewerkingen te starten (bijvoorbeeld: een kanaal maken, starten, stoppen of verwijderen). Deze bewerkingen worden uitgevoerd.
 
-De Media Services .NET SDK biedt Api's die de aanvraag verzenden en wachten op het volt ooien van de bewerking (intern worden de Api's gecontroleerd op de voortgang van de bewerking). Wanneer u bijvoorbeeld een kanaal aanroept. Start (), de methode wordt geretourneerd nadat het kanaal is gestart. U kunt ook de asynchrone versie gebruiken: await Channel. StartAsync () (Zie [tikken](/azure/media-services/previous/media-services-mes-schema)) (voor informatie over asynchroon patroon op basis van een taak). Api's die een bewerkings aanvraag verzenden en vervolgens naar de status pollen totdat de bewerking is voltooid, worden ' polling methoden ' genoemd. Deze methoden (met name de async-versie) worden aanbevolen voor uitgebreide client toepassingen en/of stateful Services.
+De Media Services .NET SDK biedt Api's die de aanvraag verzenden en wachten op het volt ooien van de bewerking (intern worden de Api's gecontroleerd op de voortgang van de bewerking). Wanneer u bijvoorbeeld een kanaal aanroept. Start (), de methode wordt geretourneerd nadat het kanaal is gestart. U kunt ook de asynchrone versie gebruiken: await Channel. StartAsync () (Zie [tikken](./media-services-mes-schema.md)) (voor informatie over asynchroon patroon op basis van een taak). Api's die een bewerkings aanvraag verzenden en vervolgens naar de status pollen totdat de bewerking is voltooid, worden ' polling methoden ' genoemd. Deze methoden (met name de async-versie) worden aanbevolen voor uitgebreide client toepassingen en/of stateful Services.
 
 Er zijn scenario's waarin een toepassing niet kan wachten op een langlopende HTTP-aanvraag en wil hand matig pollen voor de voortgang van de bewerking. Een typisch voor beeld is een browser interactie met een stateless webservice: wanneer de browser een kanaal wil maken, wordt een langlopende bewerking door de webservice gestart en wordt de bewerkings-ID naar de browser geretourneerd. De browser kan vervolgens de webservice vragen de bewerkings status op te halen op basis van de ID. De Media Services .NET SDK biedt Api's die nuttig zijn voor dit scenario. Deze Api's worden "niet-polling methoden" genoemd.
 De "niet-polling methoden" hebben het volgende naamgevings patroon: de bewerking voor het verzenden van de*bewerking*(bijvoorbeeld SendCreateOperation). De bewerkings methoden van de verzend*bewerking*retour neren het **IOperation** -object; het geretourneerde object bevat informatie die kan worden gebruikt om de bewerking bij te houden. De OperationAsync-methoden van de verzend*bewerking*retour neren een **taak \<IOperation> **.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051517"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829693"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -100,7 +100,7 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
 | givenName |name. naam |
-| jobTitle |title |
+| jobTitle |titel |
 | mail |e-mail berichten [type EQ "werk]. waarde |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
@@ -745,7 +745,7 @@ Minimale staaf voor TLS 1,2-coderings suites:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-bereiken
-De Azure AD-inrichtings service kan momenteel worden gebruikt onder een Azure IP-bereik. Er wordt gewerkt aan het consolideren van de set IP-bereiken waarmee de service wordt uitgevoerd. Dit document wordt bijgewerkt zodra de lijst met IP-adresbereiken is geconsolideerd. 
+De Azure AD-inrichtings service werkt momenteel onder het IP-bereik voor AzureActiveDirectory en AzureActiveDirectoryDomainServices, zoals [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)wordt weer gegeven. Het werk wordt uitgevoerd om alleen de IP-bereiken onder AzureActiveDirectory te consolideren. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 
@@ -1187,7 +1187,7 @@ Volg de onderstaande controle lijst om ervoor te zorgen dat uw toepassing voorbe
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorisatie voor het inrichten van connectors in de toepassings galerie
 De SCIM spec definieert geen SCIM-specifiek schema voor verificatie en autorisatie. Het is afhankelijk van het gebruik van bestaande industrie normen. De Azure AD-inrichtings client ondersteunt twee autorisatie methoden voor toepassingen in de galerie. 
 
-|Autorisatie methode|Voordelen|Nadelen|Ondersteuning|
+|Verificatiemethode|Voordelen|Nadelen|Ondersteuning|
 |--|--|--|--|
 |Gebruikers naam en wacht woord (niet aanbevolen of niet ondersteund door Azure AD)|Eenvoudig te implementeren|Onveilig: [uw PA $ $Word is niet van belang](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Per geval ondersteund voor galerij-apps. Niet ondersteund voor niet-galerij-apps.|
 |Token met lange levens drager|Voor tokens met een lange levens duur hoeft geen gebruiker aanwezig te zijn. Ze kunnen eenvoudig worden gebruikt bij het instellen van de inrichting.|Tokens met een lange levens duur kunnen moeilijk worden gedeeld met een beheerder zonder gebruik te maken van onveilige methoden zoals e-mail. |Ondersteund voor Gallery-en niet-galerij-apps. |

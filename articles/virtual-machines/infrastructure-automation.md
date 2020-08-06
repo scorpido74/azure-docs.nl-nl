@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292384"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830543"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastructuur Automation-hulpprogram ma's gebruiken met virtuele machines in azure
 
@@ -34,9 +34,9 @@ Om Azure virtual machines (Vm's) op een consistente manier te maken en te behere
 
 Leer hoe u het volgende doet:
 
-- [Ansible op Linux installeren en configureren voor gebruik met Azure](../ansible/ansible-install-configure.md).
-- [Maak een virtuele Linux-machine](../ansible/ansible-create-vm.md).
-- [Een virtuele Linux-machine beheren](../ansible/ansible-manage-linux-vm.md).
+- [Ansible op Linux installeren en configureren voor gebruik met Azure](/azure/developer/ansible/install-on-linux-vm).
+- [Maak een virtuele Linux-machine](/azure/developer/ansible/vm-configure).
+- [Een virtuele Linux-machine beheren](/azure/developer/ansible/vm-manage).
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ Leer hoe u het volgende doet:
 Leer hoe u het volgende doet:
 
 - [Implementeer chef automatiseren vanuit Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Installeer chef in Windows en maak Azure-vm's](../chef/chef-automation.md).
+- [Installeer chef in Windows en maak Azure-vm's](/azure/developer/chef/windows-vm-configure).
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ Leer hoe u het volgende doet:
 
 
 ## <a name="azure-custom-script-extension"></a>Aangepaste scriptextensie voor Azure
-De aangepaste script extensie van Azure voor [Linux](./linux/extensions-customscript.md) of [Windows](./windows/extensions-customscript.md) downloadt en voert scripts uit op Azure vm's. U kunt de uitbrei ding gebruiken wanneer u een virtuele machine maakt of wanneer de virtuele machine in gebruik is.
+De aangepaste script extensie van Azure voor [Linux](./extensions/custom-script-linux.md) of [Windows](./extensions/custom-script-windows.md) downloadt en voert scripts uit op Azure vm's. U kunt de uitbrei ding gebruiken wanneer u een virtuele machine maakt of wanneer de virtuele machine in gebruik is.
 
 Scripts kunnen worden gedownload uit Azure Storage of een open bare locatie, zoals een GitHub-opslag plaats. Met de aangepaste script extensie kunt u scripts schrijven in elke taal die op de bron-VM wordt uitgevoerd. Deze scripts kunnen worden gebruikt voor het installeren van toepassingen of het configureren van de virtuele machine naar wens. Als u referenties wilt beveiligen, kunnen gevoelige gegevens, zoals wacht woorden, worden opgeslagen in een beveiligde configuratie. Deze referenties worden alleen in de virtuele machine ontsleuteld.
 
@@ -116,7 +116,7 @@ Azure Automation biedt ook een desired state Configuration (DSC)-service waarmee
 
 Leer hoe u het volgende doet:
 
-- [Een Power shell-Runbook maken](../automation/automation-first-runbook-textual-powershell.md).
+- [Een Power shell-Runbook maken](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
 - [Gebruik Hybrid Runbook worker om on-premises resources te beheren](../automation/automation-hybrid-runbook-worker.md).
 - [Gebruik Azure Automation DSC](../automation/automation-dsc-getting-started.md).
 
@@ -126,7 +126,7 @@ Leer hoe u het volgende doet:
 
 Meer informatie over:
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ Meer informatie over:
 
 Leer hoe u het volgende doet:
 
-- [Maak een ontwikkel infrastructuur op een virtuele Linux-machine in azure met Jenkins, github en docker](../jenkins/tutorial-jenkins-github-docker-cicd.md).
+- [Maak een ontwikkel infrastructuur op een virtuele Linux-machine in azure met Jenkins, github en docker](/azure/developer/jenkins/pipeline-with-github-and-docker).
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
@@ -149,4 +149,3 @@ Leer hoe u het volgende doet:
 
 ## <a name="next-steps"></a>Volgende stappen
 Er zijn veel verschillende opties voor het gebruik van infrastructuur Automation-hulpprogram ma's in Azure. U hebt de vrijheid om de oplossing te gebruiken die het beste past bij uw behoeften en omgeving. Zie de aanpassing van een [Linux](./linux/tutorial-automate-vm-deployment.md) -of [Windows](./windows/tutorial-automate-vm-deployment.md) -VM automatiseren om aan de slag te gaan en enkele van de hulpprogram ma's in azure uit te proberen.
-

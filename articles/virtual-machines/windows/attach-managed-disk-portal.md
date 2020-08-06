@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e8fd330fdb6e0c7d857ea99f6d51b05436c17d1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657177"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836221"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Een beheerde gegevens schijf koppelen aan een virtuele Windows-machine met behulp van de Azure Portal
 
-In dit artikel wordt beschreven hoe u een nieuwe beheerde gegevens schijf kunt koppelen aan een virtuele Windows-machine (VM) met behulp van de Azure Portal. De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](sizes.md)voor meer informatie.
+In dit artikel wordt beschreven hoe u een nieuwe beheerde gegevens schijf kunt koppelen aan een virtuele Windows-machine (VM) met behulp van de Azure Portal. De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](../sizes.md)voor meer informatie.
 
 
 ## <a name="add-a-data-disk"></a>Een gegevens schijf toevoegen
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u een nieuwe beheerde gegevens schijf kunt k
 3. Selecteer op de pagina **virtuele machine** de optie **schijven**.
 4. Selecteer op de pagina **schijven** de optie **gegevens schijf toevoegen**.
 5. Selecteer in de vervolg keuzelijst voor de nieuwe schijf de optie **schijf maken**.
-6. Typ op de pagina **Managed Disk maken** een naam voor de schijf en pas de andere instellingen zo nodig aan. Selecteer **Maken** als u klaar bent.
+6. Typ op de pagina **Managed Disk maken** een naam voor de schijf en pas de andere instellingen zo nodig aan. Als u gereed bent, selecteert u **Maken**.
 7. Selecteer op de pagina **schijven** de optie **Opslaan** om de nieuwe schijf configuratie voor de virtuele machine op te slaan.
 8. Nadat Azure de schijf heeft gemaakt en deze aan de virtuele machine is gekoppeld, wordt de nieuwe schijf weer gegeven in de schijf instellingen van de virtuele machine onder **gegevens schijven**.
 

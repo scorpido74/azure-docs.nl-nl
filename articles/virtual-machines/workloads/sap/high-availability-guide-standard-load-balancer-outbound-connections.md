@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082134"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836119"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -100,7 +100,7 @@ De configuratie zou er als volgt uitzien:
 2. Maak de back- **MyBackendPoolOfPublicILB** en voeg de vm's toe.  
    1. Het virtuele netwerk selecteren  
    1. Selecteer de Vm's en hun IP-adressen en voeg deze toe aan de back-end-groep  
-3. [Uitgaande regels maken](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule). Het is momenteel niet mogelijk om uitgaande regels te maken op basis van de Azure Portal. U kunt regels voor uitgaande verbindingen maken met [Azure cli](../../../cloud-shell/overview.md?view=azure-cli-latest).  
+3. [Uitgaande regels maken](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration). Het is momenteel niet mogelijk om uitgaande regels te maken op basis van de Azure Portal. U kunt regels voor uitgaande verbindingen maken met [Azure cli](../../../cloud-shell/overview.md?view=azure-cli-latest).  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup

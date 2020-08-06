@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318382"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829591"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problemen met grafieken met metrische gegevens oplossen
 
@@ -42,7 +42,7 @@ U kunt alleen metrische gegevens verkennen als de resourceprovider *Microsoft.In
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>U hebt niet voldoende toegangsrechten voor uw resource
 
-In Azure wordt de toegang tot metrische gegevens geregeld via [op rollen gebaseerd toegangsbeheer (RBAC)](../../role-based-access-control/overview.md). U moet een [controlelezer](../../role-based-access-control/built-in-roles.md#monitoring-reader), [controlebijdrager](../../role-based-access-control/built-in-roles.md#monitoring-contributor) of [inzender](../../role-based-access-control/built-in-roles.md#contributor) zijn om metrische gegevens voor een resource te kunnen verkennen.
+In azure wordt de toegang tot metrische gegevens bepaald door [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md). U moet een [controlelezer](../../role-based-access-control/built-in-roles.md#monitoring-reader), [controlebijdrager](../../role-based-access-control/built-in-roles.md#monitoring-contributor) of [inzender](../../role-based-access-control/built-in-roles.md#contributor) zijn om metrische gegevens voor een resource te kunnen verkennen.
 
 **Oplossing:** Zorg ervoor dat u voldoende machtigingen hebt voor de resource van waaruit u de metrische gegevens wilt verkennen.
 
@@ -118,4 +118,3 @@ Metrische gegevens van het gastbesturingssysteem worden standaard opgeslagen in 
 * [Meer informatie over geavanceerde functies van metrische Explorer](metrics-charts.md)
 * [Een lijst met beschikbare metrische gegevens voor Azure-services zien](metrics-supported.md)
 * [Voorbeelden van geconfigureerde grafieken zien](metric-chart-samples.md)
-

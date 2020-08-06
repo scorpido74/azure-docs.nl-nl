@@ -8,51 +8,53 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 1e2a4f7a7bc5db1b6a49f085821f7fa2bde54229
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b706b5d5ec68daa10fd6eac237b7b7416764167b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830101"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-time-snapshot
 
-Azure-app configuratie houdt een record bij van wijzigingen die zijn aangebracht in sleutel-waardeparen. Deze record bevat een tijd lijn met belang rijke wijzigingen. U kunt de geschiedenis van een wille keurige sleutel waarde opnieuw samen stellen en de bijbehorende waarde op elk moment in de afgelopen zeven dagen opgeven. Met deze functie kunt u ' time-reizen ' achterwaarts maken en een oude sleutel waarde ophalen. U kunt bijvoorbeeld de configuratie-instellingen herstellen die voor de meest recente implementatie zijn gebruikt om de toepassing terug te zetten naar de vorige configuratie.
+Azure-app configuratie houdt een record bij van wijzigingen die zijn aangebracht in sleutel waarden. Deze record bevat een tijd lijn met belang rijke wijzigingen. U kunt de geschiedenis van een wille keurige sleutel waarde opnieuw samen stellen en de bijbehorende waarde op elk moment in de sleutel geschiedenis periode (7 dagen voor gratis laag winkels of 30 dagen voor de Standard-laag) opgeven. Met deze functie kunt u ' time-reizen ' achterwaarts maken en een oude sleutel waarde ophalen. U kunt bijvoorbeeld de configuratie-instellingen herstellen die voor de meest recente implementatie zijn gebruikt om de toepassing terug te zetten naar de vorige configuratie.
 
 ## <a name="key-value-retrieval"></a>Sleutel/waarde ophalen
 
-U kunt Azure PowerShell gebruiken om vorige sleutel waarden op te halen.  Gebruik `az appconfig revision list` en voeg de juiste para meters toe om de vereiste waarden op te halen.  Geef het Azure-app configuratie-exemplaar op door de naam van de winkel op te geven ( `--name {app-config-store-name}` ) of door een Connection String () te gebruiken `--connection-string {your-connection-string}` . De uitvoer beperken door een bepaald punt in de tijd () op te geven `--datetime` en door het maximum aantal items op te geven dat moet worden geretourneerd ( `--top` ).
+U kunt Azure Portal of CLI gebruiken om vorige sleutel waarden op te halen. Gebruik in azure CLI `az appconfig revision list` om de juiste para meters toe te voegen om de vereiste waarden op te halen.  Geef het Azure-app configuratie-exemplaar op door de naam van de winkel op te geven ( `--name <app-config-store-name>` ) of door een Connection String () te gebruiken `--connection-string <your-connection-string>` . De uitvoer beperken door een bepaald punt in de tijd () op te geven `--datetime` en door het maximum aantal items op te geven dat moet worden geretourneerd ( `--top` ).
+
+Als Azure CLI niet lokaal is geïnstalleerd, kunt u eventueel Azure Cloud Shell gebruiken.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Alle vastgelegde wijzigingen in uw sleutel waarden ophalen.
 
-```azurepowershell
-az appconfig revision list --name {your-app-config-store-name}.
+```azurecli-interactive
+az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 Alle vastgelegde wijzigingen voor de sleutel `environment` en de labels `test` en worden opgehaald `prod` .
 
-```azurepowershell
-az appconfig revision list --name {your-app-config-store-name} --key environment --label test,prod
+```azurecli-interactive
+az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 Alle vastgelegde wijzigingen in de hiërarchische sleutel ruimte ophalen `environment:prod` .
 
-```azurepowershell
-az appconfig revision list --name {your-app-config-store-name} --key environment:prod:* 
+```azurecli-interactive
+az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 Alle vastgelegde wijzigingen voor de sleutel `color` op een specifiek tijdstip ophalen.
 
-```azurepowershell
-az appconfig revision list --connection-string {your-app-config-connection-string} --key color --datetime "2019-05-01T11:24:12Z" 
+```azurecli-interactive
+az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 
-De laatste 10 vastgelegde wijzigingen in uw sleutel waarden ophalen en alleen de waarden voor `key` , `label` en `last-modified` tijds tempel retour neren.
+De laatste 10 vastgelegde wijzigingen in uw sleutel waarden ophalen en alleen de waarden voor `key` , `label` en `last_modified` tijds tempel retour neren.
 
-```azurepowershell
-az appconfig revision list --name {your-app-config-store-name} --top 10 --fields key,label,last-modified
+```azurecli-interactive
+az appconfig revision list --name <your-app-config-store-name> --top 10 --fields key label last_modified
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

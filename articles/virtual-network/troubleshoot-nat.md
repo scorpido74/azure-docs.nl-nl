@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688278"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836102"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problemen met Azure Virtual Network NAT-verbindingen oplossen
 
@@ -195,6 +195,14 @@ _**Oplossing:**_
 Het is niet nodig om een virtuele machine opnieuw op te starten wanneer u een subnet voor een NAT-gatewayresource configureert.  Als een virtuele machine opnieuw wordt opgestart, wordt de verbindingsstatus echter gewist.  Wanneer de verbindingsstatus is gewist, gaan alle verbindingen de IP-adressen van de NAT-gatewayresource gebruiken.  Dit is echter een neveneffect van het opnieuw opstarten van de virtuele machine en niet een indicator dat de virtuele machine opnieuw moet worden opgestart.
 
 Als u nog steeds problemen ondervindt, opent u een ondersteuningsaanvraag zodat het probleem nader kan worden onderzocht.
+
+### <a name="connection-setup-time"></a>Setup-tijd van verbinding
+
+Omdat Load Balancer uitgaande regels statische Pools toewijst van SNAT-poorten aan specifieke virtuele machines, is het maken van nieuwe uitgaande stromen sneller dan het gebruik van Virtual Network NAT. Wanneer u overschakelt van Load Balancer regels voor uitgaande verbindingen, ziet u daarom mogelijk verhoogde latentie bij het maken van een nieuwe uitgaande verbinding. Zoals eerder is uitgelegd, kunt u de prestaties van uw toepassing maximaliseren door lange levens stromen te gebruiken (bijvoorbeeld hergebruikte TCP-verbindingen).
+
+_**Oplossing:**_
+
+Als u voornamelijk geïnteresseerd bent in een minimale verbindings-installatie latentie, gebruikt u Load Balancer uitgaande regels.
 
 ## <a name="next-steps"></a>Volgende stappen
 

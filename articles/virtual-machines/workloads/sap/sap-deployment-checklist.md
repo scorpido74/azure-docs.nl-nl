@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495655"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836340"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -63,7 +63,7 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
         - Bepaal op basis van RTO en RPO hoe de architectuur voor hoge Beschik baarheid en herstel na nood gevallen moet worden weer geven.
         - Voor maximale Beschik baarheid binnen een zone, controleert u wat de gewenste DBMS in azure moet aanbieden. De meeste DBMS-pakketten bieden synchrone methoden van een synchrone hot stand-by, die we aanraden voor productie systemen. Raadpleeg ook de SAP-gerelateerde documentatie voor verschillende data bases, te beginnen met [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belastingen](./dbms_guide_general.md) en gerelateerde documenten.
            Het gebruik van Windows Server failover clustering met een gedeelde schijf configuratie voor de DBMS-laag als bijvoorbeeld [beschreven voor SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017), wordt niet ondersteund. Gebruik in plaats daarvan oplossingen zoals:
-           - [SQL Server Always On](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server Always On](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA-systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - Bekijk voor herstel na nood gevallen tussen Azure-regio's de oplossingen die worden aangeboden door verschillende DBMS-leveranciers. De meeste hiervan ondersteunen asynchrone replicatie of logboek verzending.
@@ -103,8 +103,8 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
         - Bekijk de resources in SAP-ondersteunings notities, in de SAP HANA hardware-map en de SAP PAM-module opnieuw. Zorg ervoor dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde versies van besturings systemen voor deze VM-typen en ondersteunde SAP-en DBMS-releases.
         - Valideer opnieuw de grootte van uw toepassing en de infra structuur die u in azure implementeert. Als u bestaande toepassingen verplaatst, kunt u vaak de benodigde SAP'S afleiden van de infra structuur die u gebruikt en de [SAP-benchmark pagina](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) en deze vergelijken met de sap's-nummers die worden vermeld in de [SAP-ondersteunings Opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533). Houd [dit artikel ook bij op sap's-classificaties](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) .
         - Evalueer en test de grootte van uw Azure-Vm's met betrekking tot de maximale opslag doorvoer en netwerk doorvoer van de VM-typen die u tijdens de plannings fase hebt gekozen. U kunt de gegevens hier vinden:
-           -  [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
-           -  [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
+           -  [Grootten voor virtuele Windows-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
+           -  [Grootten voor virtuele Linux-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
    2. Opslag.
         - Gebruik ten minste [Azure Standard-SSD Storage](../../windows/disks-types.md#standard-ssd) voor virtuele machines die een SAP-toepassings lagen vertegenwoordigen en voor de implementatie van DBMSs die geen prestatie gevoelig zijn.
         - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](../../windows/disks-types.md#standard-hdd)niet aangeraden.
@@ -207,8 +207,8 @@ Tijdens deze fase implementeert u doorgaans Ontwikkel systemen, eenheids test sy
 11. Zorg ervoor dat uw virtuele machines worden geïmplementeerd in de juiste [Azure proximity-plaatsings groep](../../linux/co-location.md), zoals beschreven in [Azure-plaatsings groepen voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
 11. Voer alle andere controles uit die worden vermeld voor de concept fase testen voordat u de werk belasting toepast.
 12. Als de werk belasting van toepassing is, noteert u het Resource verbruik van de systemen in Azure. Vergelijk dit verbruik met records van uw oude platform. Pas de VM-grootte van toekomstige implementaties aan als u ziet dat er grote verschillen zijn. Houd er rekening mee dat bij het krimpen, opslag en netwerk bandbreedte van Vm's ook worden gereduceerd.
-    - [Grootten voor Windows Virtual Machines in Azure](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Sizes for Linux virtual machines in Azure](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [Grootten voor Windows Virtual Machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Sizes for Linux virtual machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Experimenteer met de functionaliteit en processen van systeem kopieën. Het doel is om het eenvoudig te maken om een ontwikkelings systeem of een test systeem te kopiëren, zodat project teams snel nieuwe systemen kunnen verkrijgen. Overweeg het gebruik van [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) voor deze taken.
 14. Optimaliseer en verwerk de op rollen gebaseerde toegang, machtigingen en processen van uw team om ervoor te zorgen dat u een schei ding van taken hebt. Op hetzelfde moment moet u ervoor zorgen dat alle teams hun taken in de Azure-infra structuur kunnen uitvoeren.
 15. Ontwikkel, test en documenteer procedures voor hoge Beschik baarheid en herstel na nood gevallen om uw mede werkers in staat te stellen deze taken uit te voeren. Identificeer tekortkomingen en pas nieuwe Azure-functionaliteit aan die u integreert in uw implementaties.

@@ -3,12 +3,12 @@ title: Controle lijst voor productie voorbereiding van Azure Service Fabric
 description: Down load uw Service Fabric-toepassing en cluster productie gereed door de aanbevolen procedures te volgen.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282055"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835864"
 ---
 # <a name="production-readiness-checklist"></a>Controlelijst voor productiegereedheid
 
@@ -35,7 +35,7 @@ Is uw toepassing en cluster klaar om productie verkeer te nemen? Het uitvoeren e
 1. Stel een beoogd herstel punt (RPO) in voor uw service en installeer een [nood herstel proces](service-fabric-disaster-recovery.md) en test het.
 1. Plan uw cluster hand matig of via een programma te [schalen](service-fabric-cluster-scaling.md) .
 1. Plan voor het [patchen](service-fabric-patch-orchestration-application.md) van uw cluster knooppunten. 
-1. Stel een CI/CD-pijp lijn in zodat uw meest recente wijzigingen continu worden getest. Bijvoorbeeld met behulp van [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) of [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. Stel een CI/CD-pijp lijn in zodat uw meest recente wijzigingen continu worden getest. Bijvoorbeeld met behulp van [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) of [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. Test uw ontwikkeling & faserings clusters onder belasting met de [fout Analysis-Service](service-fabric-testability-overview.md) en stel beheerde [chaos](service-fabric-controlled-chaos.md). 
 1. Plan uw toepassingen te [schalen](service-fabric-concepts-scalability.md) . 
 

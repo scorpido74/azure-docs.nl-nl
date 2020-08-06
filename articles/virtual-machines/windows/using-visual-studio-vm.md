@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: Visual Studio
-ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525531"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836153"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
 Het gebruik van Visual Studio in een vooraf geconfigureerde Azure virtual machine (VM) is een snelle en eenvoudige manier om van niets naar een ontwikkel omgeving te gaan. Systeem kopieën met verschillende Visual Studio-configuraties zijn beschikbaar op de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -31,7 +31,7 @@ Installatie kopieën voor de meest recente primaire versies, Visual Studio 2019,
 | Release versie                                                                                                                                                | Edities              | Productversie   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019: nieuwste (versie 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.5.4    |
-| Visual Studio 2019: RTW                         | Enterprise | Versie 16.0.13    |
+| Visual Studio 2019: RTW                         | Onderneming | Versie 16.0.13    |
 | Visual Studio 2017: nieuwste (versie 15,9)           | Enter prise, Community | Versie 15.9.22   |
 | Visual Studio 2017: RTW                             | Enter prise, Community | Versie 15.0.28  |
 | Visual Studio 2015: nieuwste (update 3)               | Enter prise, Community | Versie 14.0.25431.01 |
@@ -77,7 +77,7 @@ Azure biedt een breed scala aan grootten voor virtuele machines. Omdat Visual St
    * Standard_D2S_v2
    * Standard_D3_v2
     
-Zie [grootten voor virtuele Windows-machines in azure](./sizes.md)voor meer informatie over de meest recente computer grootten.
+Zie [grootten voor virtuele Windows-machines in azure](../sizes.md)voor meer informatie over de meest recente computer grootten.
 
 Met Azure kunt u uw oorspronkelijke keuze herverdelen door de grootte van de virtuele machine te wijzigen. U kunt een nieuwe VM inrichten met een meer geschikte grootte of het formaat van uw bestaande virtuele machine aanpassen aan andere onderliggende hardware. Zie [het formaat van een Windows-VM wijzigen](./resize-vm.md)voor meer informatie.
 

@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: f25bda1a450919264c7ddba3886554381009c546
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1ae627a7ee1a7e2a704cc17cc8ec9ccc9846c109
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119596"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829302"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Gebruikers maken in Azure Database for PostgreSQL-één server
 
 In dit artikel wordt beschreven hoe u gebruikers kunt maken binnen een Azure Database for PostgreSQL-server.
 
-Als u meer wilt weten over het maken en beheren van Azure-abonnements gebruikers en hun bevoegdheden, kunt u het [artikel Azure Role based Access Control (RBAC)](../role-based-access-control/built-in-roles.md) bezoeken of de [rollen aanpassen](../role-based-access-control/custom-roles.md).
+Als u meer wilt weten over het maken en beheren van Azure-abonnements gebruikers en hun bevoegdheden, gaat u naar het [artikel over toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/built-in-roles.md) of bekijkt u [hoe u rollen kunt aanpassen](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Het beheerdersaccount voor de server
 

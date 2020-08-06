@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421889"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835949"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 
@@ -56,7 +56,7 @@ Met betrekking tot toegang tot het eind punt heeft iedereen die toegang heeft to
 * Alleen-lezen toegang tot de service is query rechten, die meestal worden verleend aan een client toepassing door de URL en een query-API-sleutel op te geven.
 * Lees-/schrijftoegang biedt de mogelijkheid om Server objecten toe te voegen, te verwijderen of te wijzigen, met inbegrip van API-sleutels, indexen, Indexeer functies, gegevens bronnen en schema's. Toegang voor lezen-schrijven wordt verleend door de URL, een beheer-API-sleutel te geven.
 
-Rechten voor service-inrichtings toestellen worden verleend via roltoewijzingen. Op [rollen gebaseerde toegang (RBAC)](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. 
+Rechten voor service-inrichtings toestellen worden verleend via roltoewijzingen. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. 
 
 In de context van Azure Cognitive Search bepaalt [Azure-roltoewijzingen](search-security-rbac.md) wie taken kan uitvoeren, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken:
 

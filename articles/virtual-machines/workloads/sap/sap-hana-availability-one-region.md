@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035856"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833314"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
 In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
@@ -82,7 +82,7 @@ De architectuur ziet er als volgt uit:
 
 Deze installatie is niet geschikt voor het bereiken van geweldige beoogde herstel punten (RPO) en RTO (Recovery Time objectief). RTO keer dat de volledige data base volledig moet worden hersteld met behulp van de gekopieerde back-ups. Deze installatie is echter handig voor het herstellen van onbedoelde gegevens verwijdering op de belangrijkste instanties. Met deze installatie kunt u op elk gewenst moment herstellen naar een bepaald tijdstip, de gegevens extra heren en de verwijderde gegevens importeren in uw hoofd instantie. Daarom kan het zinvol zijn om een methode voor het kopiëren van back-ups te gebruiken in combi natie met andere functionaliteit voor hoge Beschik baarheid. 
 
-Terwijl back-ups worden gekopieerd, kunt u mogelijk een kleinere virtuele machine gebruiken dan de hoofd-VM waarop het SAP HANA-exemplaar wordt uitgevoerd. Houd er rekening mee dat u een kleiner aantal Vhd's kunt koppelen aan kleinere Vm's. Zie [grootten voor virtuele Linux-machines in azure](../../linux/sizes.md)voor meer informatie over de limieten van afzonderlijke VM-typen.
+Terwijl back-ups worden gekopieerd, kunt u mogelijk een kleinere virtuele machine gebruiken dan de hoofd-VM waarop het SAP HANA-exemplaar wordt uitgevoerd. Houd er rekening mee dat u een kleiner aantal Vhd's kunt koppelen aan kleinere Vm's. Zie [grootten voor virtuele Linux-machines in azure](../../sizes.md)voor meer informatie over de limieten van afzonderlijke VM-typen.
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Systeem replicatie SAP HANA zonder automatische failover
 

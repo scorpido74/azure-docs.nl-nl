@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327273"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829506"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure-gebeurtenisschema in het activiteitenlogboek
 Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel worden de categorieën en het schema voor activiteiten Logboeken beschreven. 
@@ -796,7 +796,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hub, volgen de gegevens het schema van het [resource logboek](./resource-logs-schema.md). De volgende tabel bevat een overzicht van de eigenschappen van de bovenstaande schema's aan het schema voor bron Logboeken.
 
 > [!IMPORTANT]
-> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](/azure/azure-monitor/platform/resource-logs-blob-format) voor meer informatie over deze indelings wijziging.
+> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](./resource-logs-blob-format.md) voor meer informatie over deze indelings wijziging.
 
 
 | Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
@@ -885,4 +885,3 @@ Hieronder volgt een voor beeld van een gebeurtenis die gebruikmaakt van dit sche
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over het activiteiten logboek](platform-logs-overview.md)
 * [Een diagnostische instelling maken om het activiteiten logboek te verzenden naar Log Analytics-werk ruimte, Azure-opslag of event hubs](diagnostic-settings.md)
-

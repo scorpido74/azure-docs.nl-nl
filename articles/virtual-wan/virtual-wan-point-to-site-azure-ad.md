@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077488"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832515"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory-verificatie voor gebruikers-VPN configureren
 
@@ -23,14 +23,14 @@ Voor dit soort verbinding moet een client op de clientcomputer worden geconfigur
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een WAN maken
-> * Een hub maken
-> * Een P2S-configuratie maken
-> * Een VPN-clientprofiel downloaden
-> * P2S-configuratie toepassen op een hub
-> * Een VNet verbinden met een hub
-> * Een configuratie voor een VPN-client downloaden en toepassen
-> * Uw virtuele WAN weergeven
+> * Een virtueel WAN maken
+> * Een virtuele hub maken
+> * Een VPN-gebruikers configuratie maken
+> * Een VPN-profiel voor virtuele WAN-gebruikers downloaden
+> * VPN-configuratie voor gebruiker Toep assen op een virtuele hub
+> * Een VNet verbinden met een virtuele hub
+> * De configuratie van de gebruiker VPN-client downloaden en Toep assen
+> * Uw virtuele WAN weer geven
 
 ![Virtual WAN-diagram](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -81,9 +81,9 @@ Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan
 3. Klik op **Controleren + maken**.
 4. Klik op de pagina **door gegeven validatie** op **maken**.
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Een nieuwe P2S-configuratie maken
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>Een nieuwe gebruiker VPN-configuratie maken
 
-Een P2S-configuratie definieert de parameters om verbinding te maken met externe clients.
+Een VPN-gebruikers configuratie definieert de para meters voor het verbinden van externe clients.
 
 1. Onder uw virtuele WAN selecteert u **VPN-configuraties voor gebruikers**.
 
@@ -93,7 +93,16 @@ Een P2S-configuratie definieert de parameters om verbinding te maken met externe
 
    ![nieuwe configuratie](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. Voer de gegevens in en klik op **maken**
+3. Voer de gegevens in en klik op **maken**.
+
+   * **Configuratie naam** : Voer de naam in die u wilt aanroepen van de VPN-gebruikers configuratie.
+   * **Tunnel Type** : Selecteer openvpn.
+   * **Verificatie methode** : Selecteer Azure Active Directory.
+   * **Doel groep** : Typ de toepassings-id van de [Azure VPN](openvpn-azure-ad-tenant.md) Enter prise-toepassing die in uw Azure AD-Tenant is geregistreerd. 
+   * **Verlener** - `https://sts.windows.net/<your Directory ID>/`
+   * **AAD-Tenant** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![nieuwe configuratie](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,7 +120,7 @@ Een P2S-configuratie definieert de parameters om verbinding te maken met externe
 6. Klik op **Bevestigen**.
 7. Het kan tot 30 minuten duren voordat de bewerking is voltooid.
 
-## <a name="download-vpn-profile"></a><a name="device"></a>VPN-profiel downloaden
+## <a name="download-user-vpn-profile"></a><a name="device"></a>VPN-gebruikers profiel downloaden
 
 Gebruik het VPN-profiel om uw clients te configureren.
 
@@ -158,11 +167,11 @@ Gebruik deze [koppeling](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 
 1. Selecteer het beletsel teken (...) naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![verwijderen](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
-    ![verwijderen](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Problemen met de verbinding vaststellen
 
@@ -188,13 +197,12 @@ Gebruik deze [koppeling](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 2. Op de pagina Overzicht vertegenwoordigt elk punt op de kaart een hub.
 3. In de sectie Hubs en verbindingen vindt u informatie over de hubstatus, site, regio, VPN-verbindingsstatus en verzonden en ontvangen bytes.
 
-
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Resources opschonen
 
-U kunt de opdracht [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) gebruiken om de resourcegroep en alle resources die deze bevat te verwijderen, wanneer u deze niet meer nodig hebt. Vervangen 'myResourceGroup' door de naam van uw resourcegroep en voer de volgende PowerShell-opdracht uit:
+Wanneer u deze resources niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat, te verwijderen. Vervangen 'myResourceGroup' door de naam van uw resourcegroep en voer de volgende PowerShell-opdracht uit:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

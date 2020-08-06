@@ -4,15 +4,15 @@ description: Azure File Sync bewaken.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515200"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832617"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -20,7 +20,11 @@ Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files 
 
 In dit artikel wordt beschreven hoe u uw Azure File Sync-implementatie bewaakt met behulp van Azure Monitor, de opslag synchronisatie service en Windows Server.
 
-De volgende bewakings opties zijn momenteel beschikbaar.
+In deze hand leiding worden de volgende scenario's behandeld: 
+- Azure File Sync metrische gegevens weer geven in Azure Monitor.
+- Maak waarschuwingen in Azure Monitor om u proactief te informeren over kritieke omstandigheden.
+- Bewaak de status van uw Azure File Sync-implementatie met behulp van de Azure Portal.
+- De gebeurtenis logboeken en prestatie meter items op uw Windows-servers gebruiken om de status van uw Azure File Sync-implementatie te controleren. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -34,7 +38,7 @@ Als u Azure File Sync metrische gegevens in Azure Monitor wilt weer geven, selec
 
 De volgende metrische gegevens voor Azure File Sync zijn beschikbaar in Azure Monitor:
 
-| Naam van metrische gegevens | Description |
+| Naam van meetwaarde | Beschrijving |
 |-|-|
 | Gesynchroniseerde bytes | Grootte van de overgedragen gegevens (uploaden en downloaden).<br><br>Eenheid: bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensies: naam server eindpunt, synchronisatie richting, naam synchronisatie groep |
 | Cloud lagen intrekken | De grootte van de gegevens die worden ingetrokken.<br><br>**Opmerking**: deze metrische gegevens worden in de toekomst verwijderd. Gebruik de grootte van de Cloud-laag voor het intrekken van de grootte van gegevens die zijn ingetrokken.<br><br>Eenheid: bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensie: Server naam |
@@ -48,7 +52,19 @@ De volgende metrische gegevens voor Azure File Sync zijn beschikbaar in Azure Mo
 
 ### <a name="alerts"></a>Waarschuwingen
 
-Als u waarschuwingen in Azure Monitor wilt configureren, selecteert u de opslag synchronisatie service en selecteert u vervolgens de [Azure file sync metriek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) die voor de waarschuwing moet worden gebruikt.  
+Waarschuwingen geven u proactief op de hoogte wanneer er belang rijke voor waarden worden gevonden in uw bewakings gegevens. Zie [overzicht van waarschuwingen in Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
+
+**Waarschuwingen voor Azure File Sync maken**
+
+- Ga naar de **opslag synchronisatie service** in de **Azure Portal**. 
+- Klik in het gedeelte bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+- Klik op **voor waarde selecteren** en geef de volgende informatie op voor de waarschuwing: 
+    - **Meting**
+    - **Dimensie naam**
+    - **Waarschuwings logica**
+- Klik op **actie groep selecteren** en voeg een actie groep (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+- Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+- Klik op **waarschuwings regel maken** om de waarschuwing te maken.  
 
 De volgende tabel bevat enkele voor beelden van scenario's om te controleren en de juiste meet waarde voor de waarschuwing:
 
@@ -58,8 +74,6 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 | Bestanden kunnen niet worden gesynchroniseerd met een server of een eind punt in de Cloud | Bestanden die niet worden gesynchroniseerd |
 | De geregistreerde server kan niet communiceren met de opslag synchronisatie service | Online status van de server |
 | De grootte van het intrekken van Cloud lagen is 500GiB op een dag overschreden  | Grootte van intrekken Cloud lagen |
-
-Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
 
 ## <a name="storage-sync-service"></a>Opslagsynchronisatieservice
 
@@ -79,7 +93,7 @@ Als u de status van de geregistreerde server, de status van de server eindpunt e
 
 - De volgende metrische grafieken kunnen worden weer gegeven in de portal van de opslag synchronisatie service:
 
-  | Naam van metrische gegevens | Description | Naam Blade |
+  | Naam van meetwaarde | Beschrijving | Naam Blade |
   |-|-|-|
   | Gesynchroniseerde bytes | Grootte van overgedragen gegevens (uploaden en downloaden) | Synchronisatie groep, Server eindpunt |
   | Cloud lagen intrekken | Grootte van gegevens die zijn ingetrokken | Geregistreerde servers |
@@ -136,7 +150,7 @@ Als u de prestatie meter items van Azure File Sync op de server wilt weer geven,
 
 De volgende prestatie meter items voor Azure File Sync zijn beschikbaar in prestatie meter:
 
-| Object\Counter naam van prestaties | Description |
+| Object\Counter naam van prestaties | Beschrijving |
 |-|-|
 | AFS bytes Transferred\Downloaded bytes per seconde | Aantal gedownloade bytes per seconde. |
 | AFS bytes Transferred\Uploaded bytes per seconde | Aantal geüploade bytes per seconde. |
@@ -146,8 +160,8 @@ De volgende prestatie meter items voor Azure File Sync zijn beschikbaar in prest
 | Bewerking van Operations\Total voor AFS-synchronisatie bestanden per seconde | Totaal aantal gesynchroniseerde bestanden (uploaden en downloaden). |
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
 - [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
-- [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
-- [Problemen met Azure Files Sync oplossen](storage-sync-files-troubleshoot.md)
+- [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
+- [Problemen oplossen met Azure File Sync](storage-sync-files-troubleshoot.md)
 - [Veelgestelde vragen over Azure Files](storage-files-faq.md)

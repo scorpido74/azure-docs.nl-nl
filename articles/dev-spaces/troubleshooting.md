@@ -1,16 +1,16 @@
 ---
-title: Problemen oplossen
+title: Probleemoplossing
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534393"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835694"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -267,7 +267,7 @@ Deze fout treedt op omdat Azure dev Spaces momenteel geen builds van meerdere fa
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Netwerk verkeer wordt niet doorgestuurd naar uw AKS-cluster bij het verbinden van uw ontwikkel computer
 
-Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](how-to/local-process-kubernetes-vs-code.md), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
+Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](https://code.visualstudio.com/docs/containers/local-process-kubernetes), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
 
 Wanneer u uw ontwikkel machine verbindt met uw AKS-cluster, stuurt Azure dev Spaces het netwerk verkeer tussen uw AKS-cluster en uw ontwikkel computer door het bestand van uw ontwikkel machine te wijzigen `hosts` . Met Azure dev Spaces maakt u een vermelding in het `hosts` adres van de Kubernetes-service die u vervangt als een hostnaam. Dit item wordt gebruikt bij het door sturen van poorten om het netwerk verkeer tussen uw ontwikkel computer en het AKS-cluster te omleiden. Als een service op uw ontwikkel computer een conflict veroorzaakt met de poort van de Kubernetes-service die u vervangt, kunnen Azure-ontwikkel ruimten geen netwerk verkeer door sturen voor de Kubernetes-service. De *Windows BranchCache* -service is bijvoorbeeld doorgaans gebonden aan *0.0.0.0:80*, wat conflicten veroorzaakt voor poort 80 op alle lokale IP-adressen.
 

@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525769"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835541"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
-Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
+Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](../sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -73,7 +73,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 Doorgaans maakt u ook een [netwerk beveiligings groep](../../virtual-network/security-overview.md) om het netwerk verkeer naar de virtuele machine te filteren en een [Load Balancer](../../load-balancer/load-balancer-overview.md) om verkeer over meerdere vm's te distribueren.
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
-Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een limiet voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Zie [Windows VM-grootten](sizes.md)voor meer informatie.
+Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een limiet voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Zie [Windows VM-grootten](../sizes.md)voor meer informatie.
 
 1. Stel uw VM-referenties als volgt in op de `$cred` variabele:
 
@@ -119,7 +119,7 @@ Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een li
 6. Voeg routes voor secundaire Nic's toe aan het besturings systeem door de stappen in [het besturings systeem configureren voor meerdere nic's](#configure-guest-os-for-multiple-nics)te volt ooien.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Een NIC toevoegen aan een bestaande virtuele machine
-U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toewijzing van de VM ongedaan te maken, de virtuele NIC toe te voegen en vervolgens de VM te starten. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](resize-vm.md).
+U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toewijzing van de VM ongedaan te maken, de virtuele NIC toe te voegen en vervolgens de VM te starten. Verschillende [VM-grootten](../sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](resize-vm.md).
 
 1. Hef de toewijzing van de virtuele machine op met [AzVM](/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
 
@@ -288,4 +288,4 @@ Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface
     De route die wordt vermeld bij *192.168.1.1* onder **Gateway**, is de route die standaard is voor de primaire netwerk interface. De route met *192.168.2.1* onder **Gateway**is de route die u hebt toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Controleer de [grootte van Windows-vm's](sizes.md) wanneer u een VM met meerdere nic's wilt maken. Let op het maximum aantal Nic's dat elke VM-grootte ondersteunt. 
+Controleer de [grootte van Windows-vm's](../sizes.md) wanneer u een VM met meerdere nic's wilt maken. Let op het maximum aantal Nic's dat elke VM-grootte ondersteunt. 

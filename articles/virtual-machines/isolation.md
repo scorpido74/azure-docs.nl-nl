@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 7732f83dfd44cbf686e2d076c665c980962b19d5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292369"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831444"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Isolatie van virtuele machines in azure
 
@@ -59,12 +59,12 @@ Net als geïsoleerde VM-grootten zijn hardwarematige grootten een periode van 12
 **A**: de officiële afschaffing van de geïsoleerde omvang is een periode van 12 maanden van tevoren.
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>V: Ik ben een Azure Service Fabric klant die afhankelijk is van de laag met Silver of Gold-duurzaamheid. Is dit van invloed op mijn wijzigingen?
-**A**: Nee. De garanties die worden geboden door de [duurzaamheids lagen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) van service Fabric blijven werken, zelfs na deze wijziging. Als u voor andere redenen fysieke hardware-isolatie nodig hebt, moet u mogelijk nog een van de hierboven beschreven acties uitvoeren. 
+**A**: Nee. De garanties die worden geboden door de [duurzaamheids lagen](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) van service Fabric blijven werken, zelfs na deze wijziging. Als u voor andere redenen fysieke hardware-isolatie nodig hebt, moet u mogelijk nog een van de hierboven beschreven acties uitvoeren. 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>V: wat zijn de mijl palen voor D15_v2 of DS15_v2 buiten gebruik stellen? 
 **A**: 
  
-| Date | Bewerking |
+| Date | Actie |
 |---|---| 
 | 18 november 2019 | Beschik baarheid van D/DS15i_v2 (PAYG, 1-jarige RI) | 
 | 14 mei 2020 | Laatste dag tot aankoop D/DS15i_v2 1 jaar RI | 

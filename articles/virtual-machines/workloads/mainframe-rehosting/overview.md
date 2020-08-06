@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507876"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835524"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframe herhosten op Azure virtual machines
 
@@ -72,7 +72,7 @@ De IBM DB2 pureScale-omgeving biedt een database cluster voor Azure. Het is niet
 
 Zie [IBM DB2 pureScale in azure](../../linux/ibm-db2-purescale-azure.md)om aan de slag te gaan.
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 Wanneer u mainframe-workloads migreert naar Azure Infrastructure as a Service (IaaS), kunt u kiezen uit verschillende soorten, schaal bare computer bronnen op aanvraag, waaronder Azure-Vm's. Azure biedt een scala aan [Linux](../../linux/overview.md) -en [Windows](../../windows/overview.md) -vm's.
 
@@ -90,15 +90,15 @@ Met Azure IaaS, zoals een virtuele machine, bieden specifieke systeem functies f
 
 ### <a name="scalability"></a>Schaalbaarheid
 
-Mainframes worden doorgaans geschaald, terwijl Cloud omgevingen uitschalen. Azure biedt een scala aan [Linux](../../linux/sizes.md) -en [Windows](../../windows/sizes.md) -grootten die aan uw behoeften voldoen. De Cloud wordt ook omhoog of omlaag geschaald, zodat deze overeenkomt met de exacte specificaties van de gebruiker. Reken kracht, opslag en services kunnen op aanvraag worden [geschaald](/azure/architecture/best-practices/auto-scaling) onder een facturerings model op basis van gebruik.
+Mainframes worden doorgaans geschaald, terwijl Cloud omgevingen uitschalen. Azure biedt een scala aan [Linux](../../sizes.md) -en [Windows](../../sizes.md) -grootten die aan uw behoeften voldoen. De Cloud wordt ook omhoog of omlaag geschaald, zodat deze overeenkomt met de exacte specificaties van de gebruiker. Reken kracht, opslag en services kunnen op aanvraag worden [geschaald](/azure/architecture/best-practices/auto-scaling) onder een facturerings model op basis van gebruik.
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 
 In de Cloud hebt u diverse flexibele, schaal bare opslag opties en betaalt u alleen voor wat u nodig hebt. [Azure Storage](../../../storage/common/storage-introduction.md) biedt een zeer schaal bare object opslag voor gegevens objecten, een File System-Service voor de Cloud, een betrouw bare berichten opslag en een NoSQL-archief. Voor Vm's, beheerde en onbeheerde schijven bieden permanente, beveiligde schijf opslag.
 
 Meer informatie over het [verplaatsen van mainframe-opslag naar Azure](./concepts/mainframe-storage-azure.md).
 
-### <a name="backup-and-recovery"></a>Back-up en herstel
+### <a name="backup-and-recovery"></a>Back-ups maken en herstellen
 
 Het onderhoud van uw eigen nood herstel site kan een dure toegevoegde zijn. Azure heeft eenvoudig te implementeren en rendabele opties voor [back-up](../../../backup/backup-overview.md), [herstel](../../../site-recovery/site-recovery-overview.md)en [Redundantie](../../../storage/common/storage-redundancy.md) op lokaal of regionaal niveau, of via Geo-redundantie.
 

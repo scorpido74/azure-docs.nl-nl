@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1551bd3a6caedb61750b28120c222a57b491640e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372617"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830441"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -34,7 +34,7 @@ Meer informatie over de basis principes van Azure Disk Encryption voor Linux in 
 
 ### <a name="supported-vms"></a>Ondersteunde Vm's
 
-Virtuele Linux-machines zijn beschikbaar in [verschillende grootten](sizes.md). Azure Disk Encryption is niet beschikbaar op [de Basic-, a-Series vm's](https://azure.microsoft.com/pricing/details/virtual-machines/series/)of op virtuele machines die niet voldoen aan deze minimale geheugen vereisten:
+Virtuele Linux-machines zijn beschikbaar in [verschillende grootten](../sizes.md). Azure Disk Encryption is niet beschikbaar op [de Basic-, a-Series vm's](https://azure.microsoft.com/pricing/details/virtual-machines/series/)of op virtuele machines die niet voldoen aan deze minimale geheugen vereisten:
 
 | Virtuele machine | Minimale geheugen vereiste |
 |--|--|
@@ -66,8 +66,8 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7,7: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,7 | 7-LVM | RedHat: RHEL: 7-LVM: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RedHat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7,6: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7,6: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7.5 | 7.5 | RedHat: RHEL: 7.5: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,3 | 7.3 | RedHat: RHEL: 7.3: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
@@ -75,8 +75,8 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6,7: nieuwste | Gegevens schijf (zie opmerking hieronder) |
 | OpenLogic | CentOS 7,7 | 7,7 | Open Logic: CentOS: 7,7: nieuwste | Besturings systeem en gegevens schijf |
 | OpenLogic | CentOS 7,7 | 7-LVM | Open Logic: CentOS: 7-LVM: nieuwste | Besturings systeem en gegevens schijf |
-| OpenLogic | CentOS 7,6 | 7,6 | Open Logic: CentOS: 7,6: nieuwste | Besturings systeem en gegevens schijf |
-| OpenLogic | CentOS 7.5 | 7,5 | Open Logic: CentOS: 7.5: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7,6 | 7.6 | Open Logic: CentOS: 7,6: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7.5 | 7.5 | Open Logic: CentOS: 7.5: nieuwste | Besturings systeem en gegevens schijf |
 | OpenLogic | CentOS 7.4 | 7.4 | Open Logic: CentOS: 7.4: nieuwste | Besturings systeem en gegevens schijf |
 | OpenLogic | CentOS 7,3 | 7.3 | Open Logic: CentOS: 7.3: nieuwste | Besturings systeem en gegevens schijf |
 | OpenLogic | CentOS 7.2 n | 7,2 n | Open Logic: CentOS: 7,2 n: nieuwste | Besturings systeem en gegevens schijf |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367398"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835898"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control
 
@@ -195,7 +195,7 @@ Organisaties die geen extra lagen van identiteits beveiliging toevoegen, zoals v
 
 ## <a name="use-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer gebruiken
 
-Toegangs beheer voor cloud resources is van cruciaal belang voor alle organisaties die gebruikmaken van de Cloud. Met [op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview)kunt u beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met deze resources en op welke gebieden ze toegang hebben.
+Toegangs beheer voor cloud resources is van cruciaal belang voor alle organisaties die gebruikmaken van de Cloud. Met [op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](/azure/role-based-access-control/overview)kunt u beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met deze resources en op welke gebieden ze toegang hebben.
 
 Het aanwijzen van groepen of afzonderlijke rollen die verantwoordelijk zijn voor specifieke functies in azure, helpt Verwar ring te voor komen die kan leiden tot mensen-en automatiserings fouten die beveiligings Risico's veroorzaken. Het beperken van de toegang op basis van de beveiligings principes van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties [die beveiligings beleid](https://en.wikipedia.org/wiki/Principle_of_least_privilege) voor gegevens toegang willen afdwingen.
 

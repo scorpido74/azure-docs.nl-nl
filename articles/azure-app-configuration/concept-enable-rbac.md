@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: d399a9f51eca6298cc829001a2da3b85ba001f27
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8889e7270127aa3991adb3c0575a4bce96090db2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528983"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830068"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Toegang tot Azure-app configuratie machtigen met behulp van Azure Active Directory
 Naast het gebruik van op hash gebaseerde Message Authentication Code (HMAC), ondersteunt Azure-app configuratie het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor app-configuratie-exemplaren.  Met Azure AD kunt u toegangs beheer op basis van rollen (RBAC) gebruiken om machtigingen toe te kennen aan een beveiligings-principal.  Een beveiligingsprincipal kan een gebruiker, een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) of een [Application Service-Principal](../active-directory/develop/app-objects-and-service-principals.md)zijn.  Zie voor meer informatie over rollen en roltoewijzingen [wat verschillende rollen zijn](../role-based-access-control/overview.md).
@@ -26,7 +26,7 @@ De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs 
 De autorisatie stap vereist dat er een of meer Azure-rollen aan de beveiligingsprincipal worden toegewezen. Azure-app-configuratie biedt Azure-rollen die sets machtigingen voor app-configuratie resources omvatten. De rollen die zijn toegewezen aan een beveiligingsprincipal bepalen de machtigingen die aan de principal worden gegeven. Zie voor meer informatie over Azure-rollen [ingebouwde rollen van Azure voor Azure-app configuratie](#azure-built-in-roles-for-azure-app-configuration). 
 
 ## <a name="assign-azure-roles-for-access-rights"></a>Azure-rollen toewijzen voor toegangs rechten
-Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md).
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [toegangs beheer op basis van rollen (Azure RBAC)](../role-based-access-control/overview.md).
 
 Wanneer een Azure-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang tot de configuratie bron van de app wordt beperkt. Een beveiligings-principal van Azure AD kan een gebruiker of een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)zijn.
 

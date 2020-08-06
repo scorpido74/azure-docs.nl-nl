@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029430"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830679"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
 **Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze:: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
@@ -23,7 +23,7 @@ ms.locfileid: "87029430"
 Hieronder vindt u enkele dingen die u moet overwegen:
 
 * Hoeveel Vcpu's heeft elke VM en wordt u elke vCPU geladen?
-  Het voor gaande voor beeld van Azure Quick Start-sjabloon bevat een do_work. php-script, waarmee één vCPU wordt geladen. Als u een virtuele machine gebruikt die groter is dan een VM-grootte van één vCPU, zoals Standard_A1 of D1, moet u deze belasting meerdere keren uitvoeren. Het aantal Vcpu's voor uw Vm's controleren door grootten te controleren op [virtuele Windows-machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+  Het voor gaande voor beeld van Azure Quick Start-sjabloon bevat een do_work. php-script, waarmee één vCPU wordt geladen. Als u een virtuele machine gebruikt die groter is dan een VM-grootte van één vCPU, zoals Standard_A1 of D1, moet u deze belasting meerdere keren uitvoeren. Het aantal Vcpu's voor uw Vm's controleren door grootten te controleren op [virtuele Windows-machines in azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * Hoeveel Vm's in de schaalset voor virtuele machines voert u uit op elk gewenst werk schema?
   
     Een uitzonderings gebeurtenis treedt alleen op wanneer de gemiddelde CPU voor **alle** virtuele machines in een schaalset de drempel waarde overschrijdt, in de tijd die is gedefinieerd in de regels voor automatisch schalen.

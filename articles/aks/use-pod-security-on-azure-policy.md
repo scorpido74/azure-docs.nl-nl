@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5677cb3d240381e06c76ed73354981f782bdb0dd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050461"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830220"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Alles beveiligen met Azure Policy (preview-versie)
 
@@ -47,7 +47,7 @@ In dit document wordt ervan uitgegaan dat u het volgende hebt, dat wordt geïmpl
 
 In een AKS-cluster wordt een toegangs controller gebruikt om aanvragen voor de API-server te onderscheppen wanneer een bron moet worden gemaakt en bijgewerkt. De toegangs controller kan vervolgens de resource aanvraag *valideren* op basis van een set regels of deze moet worden gemaakt.
 
-Voorheen werd het [beveiligings beleid voor de functie pod (preview)](use-pod-security-policies.md) ingeschakeld via het Kubernetes-project om te beperken wat er kan worden geïmplementeerd. Deze functie is niet langer actief in de ontwikkeling van het Kubernetes-project.
+Voorheen werd het [beveiligings beleid voor de functie pod (preview)](use-pod-security-policies.md) ingeschakeld via het Kubernetes-project om te beperken wat er kan worden geïmplementeerd.
 
 Door de Azure Policy-invoeg toepassing te gebruiken, kan een AKS-cluster ingebouwde Azure-beleids regels gebruiken die van Peule en andere Kubernetes-bronnen worden beveiligd die vergelijkbaar zijn met Pod-beveiligings beleid. De Azure Policy-invoeg toepassing voor AKS installeert een beheerd exemplaar van [gate keeper](https://github.com/open-policy-agent/gatekeeper), een validatie van de toegangs controller. Azure Policy voor Kubernetes is gebaseerd op de open-source Open Policy Agent, die afhankelijk is van de taal van het [Rego-beleid](../governance/policy/concepts/policy-for-kubernetes.md#policy-language).
 
@@ -87,8 +87,8 @@ Beide ingebouwde initiatieven zijn gebaseerd op definities die worden gebruikt i
 |Gebruik van het host-bestands systeem beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
 |Linux-mogelijkheden beperken tot de [standaardset](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
 |Gebruik van gedefinieerde volume typen beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ja, toegestane volume typen zijn `configMap` , `emptyDir` , `projected` , `downwardAPI` ,`persistentVolumeClaim`|
-|Escalatie van bevoegdheden naar hoofdmap|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
-|De gebruikers-en groeps-Id's van de container beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
+|Escalatie van bevoegdheden naar hoofdmap|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Ja |
+|De gebruikers-en groeps-Id's van de container beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja|
 |Het toewijzen van een FSGroup die eigenaar is van de volumes van de pod beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja, toegestane regels zijn `runAsUser: mustRunAsNonRoot` , `supplementalGroup: mustRunAs 1:65536` , `fsGroup: mustRunAs 1:65535` , `runAsGroup: mustRunAs 1:65535` .  |
 |Vereist seccomp-profiel|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Ja, allowedProfiles zijn * `docker/default` of`runtime/default` |
 

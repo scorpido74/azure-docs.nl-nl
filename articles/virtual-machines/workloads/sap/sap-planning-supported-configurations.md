@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079805"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833331"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-workload in scenario's met virtuele Azure-machines
 Het ontwerpen van de architectuur van SAP NetWeaver, Business One `Hybris` of S/4HANA Systems in azure opent een groot aantal verschillende mogelijkheden voor verschillende architecturen en hulpprogram ma's die u kunt gebruiken om een schaal bare, efficiënte en Maxi maal beschik bare implementatie te verkrijgen. Afhankelijk van het gebruikte besturings systeem of DBMS, zijn er beperkingen. Daarnaast worden niet alle scenario's die on-premises worden ondersteund, op dezelfde manier ondersteund in Azure. In dit document wordt gebruikgemaakt van de ondersteunde configuraties voor niet-hoge Beschik baarheid en configuraties met hoge Beschik baarheid en architecturen met alleen Azure Vm's. Raadpleeg het artikel [ondersteunde scenario's voor Hana grote instanties](./hana-supported-scenario.md)voor scenario's die worden ondersteund met een [grote hoeveelheid Hana-exemplaren](./hana-overview-architecture.md). 
@@ -246,7 +246,7 @@ Het wordt ondersteund om een kleinere virtuele machine als doel exemplaar te geb
 - Het opnieuw instellen van de grootte van VM-families kan een probleem zijn wanneer de verschillende virtuele machines worden verzameld in één Azure-Beschikbaarheidsset of wanneer de hergrootte moet plaatsvinden tussen de M-serie en de Mv2-serie Vm's
 - CPU-en geheugen gebruik voor het data base-exemplaar waarmee de stroom van wijzigingen met minimale vertraging en voldoende CPU-en geheugen bronnen kan worden ontvangen om deze wijzigingen toe te passen met minimale vertraging van de gegevens  
 
-Meer informatie over de beperkingen van verschillende VM-grootten vindt u [hier](../../linux/sizes.md) 
+Meer informatie over de beperkingen van verschillende VM-grootten vindt u [hier](../../sizes.md) 
 
 Een andere ondersteunde methode voor het implementeren van een DR-doel is dat er een tweede DBMS-exemplaar is geïnstalleerd op een virtuele machine waarop een niet-productie-DBMS-exemplaar van een niet-productie-SAP-instantie wordt uitgevoerd. Dit kan een beetje lastiger zijn omdat u moet weten welke geheugen, CPU-bronnen, netwerk bandbreedte en opslag bandbreedte nodig zijn voor de specifieke doel instanties die in het nood geval moeten functioneren als hoofd instantie. Met name in HANA wordt het ten zeerste aanbevolen dat u de instantie die fungeert als een DR-doel op een gedeelde host configureert, zodat de gegevens niet vooraf in het doel exemplaar van de nood herstel server worden geladen.
 

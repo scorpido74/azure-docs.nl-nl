@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543823"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835932"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -60,7 +60,7 @@ Afhankelijk van het Cloud service model, is er een variabele verantwoordelijkhei
 
 De ingebouwde mogelijkheden zijn ingedeeld in zes functionele gebieden: bewerkingen, toepassingen, opslag, netwerken, compute en identiteit. Meer details over de functies en mogelijkheden die beschikbaar zijn in het Azure-platform in deze zes gebieden worden verstrekt via samenvattings informatie.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 Deze sectie bevat aanvullende informatie over belang rijke functies in beveiligings bewerkingen en overzichts informatie over deze mogelijkheden.
 
 ### <a name="security-and-audit-dashboard"></a>Beveiliging en audit dash board
@@ -285,7 +285,7 @@ U kunt de volgende diagnostische logboek categorieën inschakelen voor Nsg's:
 
 -   Regel teller: bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan.
 
-### <a name="security-center"></a>Beveiligingscentrum
+### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-intro.md) de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er [aanbevelingen](../../security-center/security-center-recommendations.md) gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
 
 ## <a name="compute"></a>Compute
@@ -336,7 +336,7 @@ Micro soft maakt gebruik van meerdere beveiligings procedures en-technologieën 
 
 -   [Met verificatie op basis van tokens](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) kunt u verificatie via Azure Active Directory.
 
--   Met op [rollen gebaseerd toegangs beheer (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) kunt u toegang verlenen op basis van de toegewezen rol van de gebruiker, zodat u gebruikers eenvoudig de benodigde toegangs rechten kunt geven om hun taken uit te voeren. U kunt RBAC aanpassen volgens het bedrijfs model en de risico tolerantie van uw organisatie.
+-   Met [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) kunt u toegang verlenen op basis van de toegewezen rol van de gebruiker, zodat u gebruikers eenvoudig de benodigde toegangs rechten voor hun taak kunt geven. U kunt RBAC aanpassen volgens het bedrijfs model en de risico tolerantie van uw organisatie.
 
 -   Met [geïntegreerde identiteits beheer (hybride identiteit)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) kunt u de toegang van gebruikers tot de interne data centers en Cloud platforms beheren en één gebruikers identiteit voor verificatie en autorisatie voor alle resources maken.
 

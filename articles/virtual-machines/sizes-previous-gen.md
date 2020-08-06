@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289713"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831291"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties virtuele machine grootten
 
@@ -80,7 +80,7 @@ Elke GPU in NVv2-exemplaren wordt geleverd met een GRID-licentie. Deze licentie 
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>Oudere generaties virtuele-machine grootten
 
-Deze sectie bevat informatie over oudere generaties virtuele machine grootten. Deze grootten worden nog steeds ondersteund, maar er is geen aanvullende capaciteit. Er zijn nieuwe nieuwere of alternatieve grootten die algemeen beschikbaar zijn. Zie [grootten voor virtuele Linux-machines in azure](linux/sizes.md) om te kiezen welke VM-grootten het meest geschikt is voor uw behoeften.  
+Deze sectie bevat informatie over oudere generaties virtuele machine grootten. Deze grootten worden nog steeds ondersteund, maar er is geen aanvullende capaciteit. Er zijn nieuwe nieuwere of alternatieve grootten die algemeen beschikbaar zijn. Zie [grootten voor virtuele Linux-machines in azure](./sizes.md) om te kiezen welke VM-grootten het meest geschikt is voor uw behoeften.  
 
 Zie [het formaat van een virtuele Linux-machine wijzigen](linux/change-vm-size.md)voor meer informatie over het wijzigen van het formaat van een virtuele Linux-machine.  
 

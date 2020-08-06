@@ -1,18 +1,18 @@
 ---
 title: Azure Files met Linux gebruiken | Microsoft Docs
-description: Meer informatie over het koppelen van een Azure-bestands share via SMB op Linux.
+description: Meer informatie over het koppelen van een Azure-bestands share via SMB op Linux. Bekijk de lijst met vereisten. Bekijk SMB-beveiligings overwegingen op Linux-clients.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089342"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835711"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [SMB-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In dit artikel ziet u twee manieren om een Azure-bestands share te koppelen: op aanvraag met de `mount` opdracht en aan-opstarten door een item in te maken `/etc/fstab` .
@@ -248,22 +248,22 @@ Vanaf Linux kernel 4,18, de SMB-kernel-module, die wordt aangeroepen `cifs` om v
 
 | Distributie | Kan SMB 1 uitschakelen |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE Schrikkel 15,0 | No |
-| openSUSE Schrikkel 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enter prise 11. x-12. x | No |
-| SUSE Linux Enter prise 15 | No |
-| SUSE Linux Enter prise 15,1 | No |
+| Ubuntu 14.04-16.04 | Nee |
+| Ubuntu 18.04 | Ja |
+| Ubuntu 19.04 + | Ja |
+| Debian 8-9 | Nee |
+| Debian 10 + | Ja |
+| Fedora 29 + | Ja |
+| CentOS 7 | Nee | 
+| CentOS 8 + | Ja |
+| Red Hat Enterprise Linux 6. x-7. x | Nee |
+| Red Hat Enterprise Linux 8 + | Ja |
+| openSUSE Schrikkel 15,0 | Nee |
+| openSUSE Schrikkel 15.1 + | Ja |
+| openSUSE Tumbleweed | Ja |
+| SUSE Linux Enter prise 11. x-12. x | Nee |
+| SUSE Linux Enter prise 15 | Nee |
+| SUSE Linux Enter prise 15,1 | Nee |
 
 U kunt controleren of uw Linux-distributie de `disable_legacy_dialects` module parameter ondersteunt met behulp van de volgende opdracht.
 

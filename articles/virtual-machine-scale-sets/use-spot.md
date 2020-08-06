@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: 2898364811616c16a0c33ea26dcaacace9c2c4ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491796"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832634"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -40,6 +40,11 @@ Als u wilt dat uw instanties in uw schaalset worden verwijderd wanneer ze worden
 
 Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md). Hiermee wordt u op de hoogte gesteld als uw Vm's worden verwijderd en u 30 seconden hebt om taken te volt ooien en afsluit taken uit te voeren vóór de verwijdering. 
 
+## <a name="placement-groups"></a>Plaatsings groepen
+Plaatsing groep is een construct die vergelijkbaar is met een Azure-beschikbaarheidsset, met een eigen fout domeinen en upgrade domeinen. Standaard bestaat een schaalset uit één plaatsingsgroep met een omvang van maximaal 100 virtuele machines. Als de eigenschap Scale set met de naam `singlePlacementGroup` is ingesteld op *False*, kan de schaalset bestaan uit meerdere plaatsings groepen en een bereik van 0-1000 vm's hebben. 
+
+> [!IMPORTANT]
+> Tenzij u InfiniBand met HPC gebruikt, wordt het ten zeerste aanbevolen de eigenschap Scale set `singlePlacementGroup` in te stellen op *False* om meerdere plaatsings groepen in te scha kelen voor een betere schaal baarheid in de regio of zone. 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Implementatie-Vm's in schaal sets implementeren
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). 
 
-Gebruik of hoger voor implementaties van steun sjablonen `"apiVersion": "2019-03-01"` . Voeg de `priority` `evictionPolicy` Eigenschappen en toe `billingProfile` aan de `"virtualMachineProfile":` sectie in de sjabloon: 
+Gebruik of hoger voor implementaties van steun sjablonen `"apiVersion": "2019-03-01"` . 
+
+Voeg de `priority` Eigenschappen en toe `evictionPolicy` `billingProfile` aan de `"virtualMachineProfile":` sectie en de `"singlePlacementGroup": false,` eigenschap aan de `"Microsoft.Compute/virtualMachineScaleSets"` sectie in de sjabloon:
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionPolicy` u de para meter in `Delete` .
@@ -156,11 +174,11 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionP
 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
-| Enterprise Agreement         | Yes                               |
-| Betalen naar gebruik                | Yes                               |
+| Enterprise Agreement         | Ja                               |
+| Betalen naar gebruik                | Ja                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Yes                               |
+| Gesponsorde                    | Ja                               |
 | Gratis proefversie                   | Niet beschikbaar                     |
 
 

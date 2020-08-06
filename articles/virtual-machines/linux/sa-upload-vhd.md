@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d667ff3949fcf58affc72b5d75a40abd8ca0dcb6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292264"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830305"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Het doel-opslag account moet hetzelfde zijn als de locatie waar u de virtuele schijf hebt geüpload. U moet ook vragen opgeven, of antwoord geven op alle aanvullende para meters die vereist zijn voor de opdracht **AZ VM Create** , zoals virtueel netwerk, openbaar IP-adres, gebruikers naam en SSH-sleutels. Meer informatie over de [beschik bare klassieke cli-Resource Manager-para meters](../azure-cli-arm-commands.md#virtual-machines)kunt u lezen.
+Het doel-opslag account moet hetzelfde zijn als de locatie waar u de virtuele schijf hebt geüpload. U moet ook vragen opgeven, of antwoord geven op alle aanvullende para meters die vereist zijn voor de opdracht **AZ VM Create** , zoals virtueel netwerk, openbaar IP-adres, gebruikers naam en SSH-sleutels. Meer informatie over de [beschik bare klassieke cli-Resource Manager-para meters](/previous-versions/azure/virtual-machines/azure-cli-arm-commands#virtual-machines)kunt u lezen.
 
 ## <a name="requirements"></a>Vereisten
 Als u de volgende stappen wilt uitvoeren, moet u:

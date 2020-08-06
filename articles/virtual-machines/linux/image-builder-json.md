@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543602"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830339"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -70,7 +70,7 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 - VS - west
 - VS - west 2
 - Europa - noord
-- Europa - west
+- Europa -west
 
 
 ```json
@@ -116,7 +116,7 @@ Deze optionele sectie kan worden gebruikt om ervoor te zorgen dat afhankelijkhed
     "dependsOn": [],
 ```
 
-Zie [resource afhankelijkheden definiëren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)voor meer informatie.
+Zie [resource afhankelijkheden definiëren](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)voor meer informatie.
 
 ## <a name="identity"></a>Identiteit
 
@@ -137,8 +137,8 @@ Image Builder-ondersteuning voor een door de gebruiker toegewezen identiteit:
 * Ondersteunt slechts één identiteit
 * Biedt geen ondersteuning voor aangepaste domein namen
 
-Zie [Wat is beheerde identiteiten voor Azure-resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie.
-Voor meer informatie over het implementeren van deze functie raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Azure cli](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Zie [Wat is beheerde identiteiten voor Azure-resources?](../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
+Voor meer informatie over het implementeren van deze functie raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Azure cli](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity).
 
 ## <a name="properties-source"></a>Eigenschappen: Bron
 
@@ -151,10 +151,10 @@ Voor de API is een source type vereist dat de bron voor de build van de installa
 
 
 > [!NOTE]
-> Wanneer u bestaande Windows-aangepaste installatie kopieën gebruikt, kunt u de Sysprep-opdracht Maxi maal acht keer uitvoeren op één Windows-installatie kopie. Raadpleeg de documentatie van [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) voor meer informatie.
+> Wanneer u bestaande Windows-aangepaste installatie kopieën gebruikt, kunt u de Sysprep-opdracht Maxi maal acht keer uitvoeren op één Windows-installatie kopie. Raadpleeg de documentatie van [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) voor meer informatie.
 
 ### <a name="platformimage-source"></a>PlatformImage-bron 
-Azure Image Builder biedt ondersteuning voor Windows Server-en client-en Linux Azure Marketplace-installatie kopieën. Zie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) voor de volledige lijst. 
+Azure Image Builder biedt ondersteuning voor Windows Server-en client-en Linux Azure Marketplace-installatie kopieën. Zie [hier](../windows/image-builder-overview.md#os-support) voor de volledige lijst. 
 
 ```json
         "source": {
@@ -373,7 +373,7 @@ Eigenschappen aanpassen:
 - **validExitCodes** – optioneel, geldige codes die kunnen worden geretourneerd door de script/inline opdracht, waardoor het mislukken van de script/inline-opdracht wordt voor komen.
 - **runElevated** : optioneel, Booleaans, ondersteuning voor het uitvoeren van opdrachten en scripts met verhoogde machtigingen.
 - **sha256Checksum** -waarde van de sha256-controlesom van het bestand, u genereert dit lokaal en vervolgens wordt de opbouw functie voor installatie kopieën gecontroleerd en gevalideerd.
-    * De sha256Checksum genereren met behulp van een Power shell op Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * De sha256Checksum genereren met behulp van een Power shell op Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
 
 
 ### <a name="file-customizer"></a>Bestands aanpassing
@@ -567,7 +567,7 @@ Een galerie met gedeelde afbeeldingen bestaat uit:
 - Afbeeldings definities: een conceptuele groepering voor installatie kopieën. 
 - Installatie kopie versies: dit is een afbeeldings type dat wordt gebruikt voor het implementeren van een virtuele machine of schaalset. Installatie kopie versies kunnen worden gerepliceerd naar andere regio's waar Vm's moeten worden geïmplementeerd.
  
-Voordat u naar de galerie met installatie kopieën kunt distribueren, moet u een galerie en een definitie van een installatie kopie maken. Zie [gedeelde installatie kopieën](shared-images.md). 
+Voordat u naar de galerie met installatie kopieën kunt distribueren, moet u een galerie en een definitie van een installatie kopie maken. Zie [gedeelde installatie kopieën](../shared-images-cli.md). 
 
 ```json
 {

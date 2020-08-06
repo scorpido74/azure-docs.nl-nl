@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247027"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836391"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -254,7 +254,9 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonieme pull-toegang Hoe kan ik inschakelen?
 
-Het instellen van een Azure container Registry voor anonieme toegang (openbaar) is momenteel een preview-functie. Als u open bare toegang wilt inschakelen, opent u een ondersteunings ticket op https://aka.ms/acr/support/create-ticket . Zie het [Feedback forum van Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)voor meer informatie.
+Het instellen van een Azure container Registry voor anonieme toegang (openbaar) is momenteel een preview-functie. Als u een [bereik toewijzing (gebruiker) of Token bronnen](https://aka.ms/acr/repo-permissions) in uw REGI ster hebt, moet u deze verwijderen voordat u een ondersteunings ticket gaat maken (systeem bereik toewijzingen kunnen worden genegeerd). Als u open bare toegang wilt inschakelen, opent u een ondersteunings ticket op https://aka.ms/acr/support/create-ticket . Zie het [Feedback forum van Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)voor meer informatie.
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnose-en status controles

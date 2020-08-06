@@ -1,5 +1,5 @@
 ---
-title: Verdeling-problemen in machine learning modellen beoordelen en verhelpen (preview)
+title: Verdeling in machine learning modellen beperken (preview-versie)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over verdeling in machine learning-modellen en hoe het python-pakket van Fairlearn u kan helpen om eerlijke modellen te bouwen.
 services: machine-learning
@@ -8,22 +8,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207292"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829370"
 ---
-# <a name="build-fairer-machine-learning-models-preview"></a>Machine learning modellen van billijker bouwen (preview-versie)
+# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Verdeling in machine learning modellen beperken (preview-versie)
 
-Meer informatie over verdeling in machine learning en hoe het open-source python-pakket van [Fairlearn](https://fairlearn.github.io/) u kan helpen bij het bouwen van modellen die billijker zijn. Als u geen moeite hebt om verdeling problemen te begrijpen en verdeling te beoordelen bij het bouwen van machine learning modellen, kunt u modellen bouwen die oneerlijke resultaten opleveren. 
+Meer informatie over verdeling in machine learning en hoe u met het open-source python-pakket van [Fairlearn](https://fairlearn.github.io/) verdeling problemen in machine learning modellen kunt oplossen. Als u geen moeite hebt om verdeling problemen te begrijpen en verdeling te beoordelen bij het bouwen van machine learning modellen, kunt u modellen bouwen die oneerlijke resultaten opleveren.
 
 In de volgende samen vatting van de [Gebruikers handleiding](https://fairlearn.github.io/user_guide/index.html) voor het open-source pakket Fairlearn wordt beschreven hoe u dit kunt gebruiken om de verdeling te beoordelen van de AI-systemen die u bouwt.  Het open-source pakket Fairlearn kan ook opties bieden voor het beperken of helpen verminderen van verdeling-problemen die u kunt waarnemen.  Bekijk de [instructies](how-to-machine-learning-fairness-aml.md) en voor [beelden van notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) voor het inschakelen van verdeling-evaluatie van AI-systemen tijdens de training van Azure machine learning.
 
 
-## <a name="what-is-fairness-in-machine-learning-systems"></a>Wat is verdeling in machine learning systemen?
+## <a name="what-is-fairness-in-machine-learning-models"></a>Wat is verdeling in machine learning modellen?
 
 >[!NOTE]
 > Verdeling is een sociaal-Technical uitdaging. Veel aspecten van verdeling, zoals rechtvaardigheid en het verval proces, worden niet vastgelegd in kwantitatieve verdeling-metrische gegevens. Daarnaast kunnen veel kwantitatieve verdeling-metrische gegevens niet tegelijkertijd aan de criteria voldoen. Het doel van het open-source pakket voor Fairlearn is om mensen te helpen verschillende impact-en risico strategieën te beoordelen. Uiteindelijk is het goed voor de menselijke gebruikers om kunst matige intelligentie en machine learning modellen te bouwen, zodat deze geschikt zijn voor hun scenario.
@@ -38,7 +38,6 @@ Twee veelvoorkomende typen AI-oorzaken zijn:
 
 Om oneerlijke werking in AI-systemen te verminderen, moet u deze Risico's beoordelen en beperken.
 
-
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Verdeling-evaluatie en-oplossing met Fairlearn
 
 Fairlearn is een open-source python-pakket dat machine learning systeem ontwikkelaars in staat stelt hun systemen verdeling te beoordelen en de waargenomen verdeling-problemen te verhelpen.
@@ -50,7 +49,8 @@ Het open-source pakket Fairlearn heeft twee onderdelen:
 
 Met deze onderdelen kunnen gegevens wetenschappers en bedrijfs leiders alle trans acties tussen verdeling en prestaties door lopen en de risico beperkings strategie selecteren die het beste bij hun behoeften past.
 
-## <a name="fairness-assessment"></a>Verdeling-evaluatie
+## <a name="assess-fairness-in-machine-learning-models"></a>Verdeling evalueren in machine learning modellen
+
 In het open-source pakket Fairlearn wordt verdeling geconceptueeleerd, maar ook wel **groeps verdeling**, waarin wordt gevraagd: welke groepen personen risico lopen voor het optreden van het probleem? De relevante groepen, ook wel subpopulaties genoemd, worden gedefinieerd door middel van **gevoelige functies** of gevoelige kenmerken. Gevoelige functies worden door gegeven aan een estimator in het open-source pakket Fairlearn als een vector of matrix met de naam `sensitive_features` . De term impliceert dat de systeem ontwerper gevoelig moet zijn voor deze functies bij het bepalen van de groeps verdeling. 
 
 Als mindful is, is het van belang of deze functies privacy-implicaties hebben vanwege persoonlijke gegevens. Maar het woord ' gevoelig ' impliceert niet dat deze functies mogen worden gebruikt voor het maken van voor spellingen.
@@ -72,7 +72,7 @@ Tijdens de evaluatie fase wordt verdeling gekwantificeerd via de metrische gegev
 
 - Verschillen in selectie criterium: deze metriek bevat het verschil in selectie verhouding tussen verschillende subgroepen. Een voor beeld hiervan is het verschil in de goedkeurings frequentie voor leningen. Selectie percentage betekent de Fractie van data Points in elke klasse die is geclassificeerd als 1 (in binaire classificatie) of distributie van voorspellings waarden (in regressie).
 
-## <a name="unfairness-mitigation"></a>Beperking van oneerlijkheid
+## <a name="mitigate-unfairness-in-machine-learning-models"></a>Oneerlijkheid in machine learning modellen beperken
 
 ### <a name="parity-constraints"></a>Pariteits beperkingen
 

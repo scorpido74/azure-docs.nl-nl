@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250444"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830254"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Noodherstel implementeren met back-up en herstellen van services in Azure API Management
 
@@ -169,19 +169,24 @@ Stel de waarde van de `Content-Type` aanvraag header in op `application/json` .
 
 Het maken van een back-up is een langlopende bewerking die langer dan een minuut kan duren. Als de aanvraag is voltooid en het back-upproces is gestart, ontvangt u een `202 Accepted` antwoord status code met een `Location` header. Stel GET-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl de back-up wordt uitgevoerd, blijft de status code ' 202 geaccepteerd ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de back-upbewerking is voltooid.
 
-Houd rekening met de volgende beperkingen bij het maken van een back-up-of herstel aanvraag:
+#### <a name="constraints-when-making-backup-or-restore-request"></a>Beperkingen bij het maken van een back-up-of herstel aanvraag
 
 -   De in de hoofd tekst van de aanvraag opgegeven **container** **moet bestaan**.
 -   Terwijl de back-up wordt uitgevoerd, kunt u **beheer wijzigingen in de service voor komen** , zoals SKU-upgrade of downgrade, wijzigt u in domein naam en nog veel meer.
 -   Het terugzetten van een **back-up wordt alleen 30 dagen** na het moment van maken gegarandeerd.
--   **Gebruiks gegevens** die worden gebruikt voor het maken van analyse rapporten, worden **niet opgenomen** in de back-up. Gebruik [Azure API Management rest API][azure api management rest api] om periodiek analyse rapporten op te halen voor het bewaren van gegevens.
--   Daarnaast maken de volgende items geen deel uit van de back-upgegevens: TLS/SSL-certificaten voor aangepaste domeinen en alle tussenliggende of basis certificaten die zijn geüpload door de klant, de inhoud van de ontwikkelaars Portal en de integratie-instellingen van het virtuele netwerk.
--   De frequentie waarmee u Service back-ups uitvoert, is van invloed op uw Recovery Point Objective. Om het te minimaliseren, wordt u aangeraden regel matige back-ups te implementeren en back-ups op aanvraag uit te voeren nadat u wijzigingen hebt aangebracht in uw API Management-service.
 -   **Wijzigingen** in de service configuratie, (bijvoorbeeld api's, beleids regels en ontwikkelaars Portal) terwijl de back-upbewerking wordt uitgevoerd, wordt **mogelijk uitgesloten van de back-up en gaat verloren**.
--   Toegang **toestaan** vanuit het beheer vlak naar Azure Storage account, als er een [firewall][azure-storage-ip-firewall] is ingeschakeld. De klant moet de set met [IP-adressen van Azure API Management Control vlak][control-plane-ip-address] op hun opslag account openen voor back-up of herstel van. 
+-   Toegang **toestaan** vanuit het beheer vlak naar Azure Storage account, als er een [firewall][azure-storage-ip-firewall] is ingeschakeld. De klant moet de set met [IP-adressen van Azure API Management Control vlak][control-plane-ip-address] op hun opslag account openen voor back-up of herstel van. Dit komt doordat de aanvragen voor Azure Storage niet worden omgezet naar een openbaar IP-adres van Compute > (beheer vlak van Azure API Management). De opslag aanvraag voor meerdere regio's wordt omgezet.
 
-> [!NOTE]
-> Als u probeert een back-up/herstel uit te voeren van/naar een API Management-service met een opslag account waarvoor [firewall][azure-storage-ip-firewall] is ingeschakeld, in dezelfde Azure-regio, werkt dit niet. Dit komt doordat de aanvragen voor Azure Storage niet worden omgezet naar een openbaar IP-adres van Compute > (beheer vlak van Azure API Management). De opslag aanvraag voor meerdere regio's wordt omgezet.
+#### <a name="what-is-not-backed-up"></a>Waarvan wordt geen back-up gemaakt?
+-   **Gebruiks gegevens** die worden gebruikt voor het maken van analyse rapporten, worden **niet opgenomen** in de back-up. Gebruik [Azure API Management rest API][azure api management rest api] om periodiek analyse rapporten op te halen voor het bewaren van gegevens.
+-   [TLS/SSL-certificaten voor aangepast domein](configure-custom-domain.md)
+-   [Aangepast CA-certificaat](api-management-howto-ca-certificates.md) met tussenliggende of basis certificaten die zijn geüpload door de klant
+-   Instellingen voor integratie met [virtuele netwerken](api-management-using-with-vnet.md) .
+-   Configuratie van [beheerde identiteit](api-management-howto-use-managed-service-identity.md) .
+-   [Azure monitor diagnose](api-management-howto-use-azure-monitor.md) Configuratie.
+-   [Protocollen en coderings](api-management-howto-manage-protocols-ciphers.md) instellingen.
+
+De frequentie waarmee u Service back-ups uitvoert, is van invloed op uw Recovery Point Objective. Om het te minimaliseren, wordt u aangeraden regel matige back-ups te implementeren en back-ups op aanvraag uit te voeren nadat u wijzigingen hebt aangebracht in uw API Management-service.
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>Een API Management-service herstellen
 

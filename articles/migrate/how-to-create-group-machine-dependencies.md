@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse op basis van een agent instellen in de evaluatie
 description: In dit artikel wordt beschreven hoe u een afhankelijkheids analyse op basis van een agent instelt in Azure Migrate server-evaluatie.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321204"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829914"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
 
@@ -104,7 +104,7 @@ De MMA op een Linux-computer installeren:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Meer informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheidsagent te installeren.
+- [Meer informatie](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) over hoe u scripts kunt gebruiken om de afhankelijkheidsagent te installeren.
 - Meer [informatie](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) over de besturings systemen die worden ondersteund door de afhankelijkheids agent.
 
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>Volgende stappen
 
 [Een evaluatie](how-to-create-assessment.md) voor een groep maken.
-
-

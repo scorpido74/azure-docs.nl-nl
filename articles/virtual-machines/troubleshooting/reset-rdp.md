@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088577"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832447"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Extern bureaublad-services of het beheerders wachtwoord opnieuw instellen in een Windows-VM
 Als u geen verbinding kunt maken met een virtuele Windows-machine (VM), kunt u het lokale beheerders wachtwoord opnieuw instellen of de Extern bureaublad-services configuratie opnieuw instellen (niet ondersteund op Windows-domein controllers). Voor het opnieuw instellen van het wachtwoord gebruikt u de Azure-portal of de VM-toegangsextensie in Azure PowerShell. Wanneer u zich bij de VM hebt aangemeld, stelt u het wachtwoord van die lokale beheerder opnieuw in.  
-Als u Power shell gebruikt, moet u ervoor zorgen dat de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/) en dat u bent aangemeld bij uw Azure-abonnement. U kunt [deze stappen ook uitvoeren voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel](/azure/virtual-machines/windows/classic/reset-rdp).
+Als u Power shell gebruikt, moet u ervoor zorgen dat de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/) en dat u bent aangemeld bij uw Azure-abonnement. U kunt [deze stappen ook uitvoeren voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp).
 
 U kunt Extern bureaublad-services en de referenties op de volgende manieren opnieuw instellen:
 

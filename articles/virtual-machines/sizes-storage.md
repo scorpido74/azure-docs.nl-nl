@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8e99ebfe53763811a86c04c53381c502cb1c25a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421073"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835575"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines die zijn geoptimaliseerd voor opslag
 
@@ -37,4 +37,4 @@ Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij he
 
 Meer informatie over het optimaliseren van de prestaties van de virtuele machines uit de Lsv2-serie voor [Windows](windows/storage-performance.md) of [Linux](linux/storage-performance.md).
 
-Zie [grootte conventies voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.
+Zie [grootte conventies voor virtuele machines van Azure](./vm-naming-conventions.md)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.

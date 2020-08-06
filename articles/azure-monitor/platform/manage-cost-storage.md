@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: bbc6b4c1317ac31d6262892ac32e2d45cf4863db
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dd152bd3a1f3e550b5e0b87e6d9c9784e5853aa3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449088"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830764"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u uw kosten voor Azure Monitor-logboeken begrijpt en beheert. Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen. Alle prijzen en kosten die in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. 
+> In dit artikel wordt beschreven hoe u uw kosten voor Azure Monitor-logboeken begrijpt en beheert. Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](./usage-estimated-costs.md) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen. Alle prijzen en kosten die in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. 
 
 Azure Monitor-Logboeken is ontworpen voor het schalen en ondersteunen van het verzamelen, indexeren en opslaan van enorme hoeveel heden gegevens per dag vanuit elke bron in uw onderneming of die in Azure is geïmplementeerd.  Hoewel dit een primair stuur programma voor uw organisatie is, is de kosten efficiëntie uiteindelijk het onderliggende stuur programma. Daarom is het belang rijk te weten dat de kosten van een Log Analytics werk ruimte alleen gebaseerd zijn op het volume van verzamelde gegevens, dat ook afhankelijk is van het geselecteerde plan en hoe lang u ervoor hebt gekozen om gegevens op te slaan die zijn gegenereerd op basis van uw verbonden bronnen.  
 
@@ -40,17 +40,17 @@ De standaard prijs voor Log Analytics is een model voor **betalen naar gebruik**
   
 Naast het betalen naar gebruik-model is Log Analytics **capaciteits reserverings** lagen waarmee u Maxi maal 25% kunt besparen op basis van de betalen naar gebruik-prijs. Met de prijzen voor capaciteits reservering kunt u een reserve ring kopen vanaf 100 GB per dag. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De lagen voor capaciteits reservering hebben een toezeggings periode van 31 dagen. Tijdens de toezeggings periode kunt u overschakelen naar een reserverings tier op een hoger niveau (waardoor de dag van 31 dagen opnieuw wordt opgestart), maar u kunt niet teruggaan naar betalen naar gebruik of naar een reserverings laag met een lagere capaciteit totdat de toezeggings periode is voltooid. Facturering voor de reserverings lagen voor capaciteit wordt dagelijks uitgevoerd. Meer [informatie](https://azure.microsoft.com/pricing/details/monitor/) over log Analytics prijzen voor betalen per gebruik en capaciteits reservering. 
 
-In alle prijs categorieën wordt de gegevens grootte van een gebeurtenis berekend op basis van een teken reeks representatie van de eigenschappen die in Log Analytics voor deze gebeurtenis zijn opgeslagen, ongeacht of de gegevens worden verzonden vanuit een agent of worden toegevoegd tijdens het opname proces. Dit omvat alle [aangepaste velden](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) die worden toegevoegd wanneer gegevens worden verzameld en vervolgens worden opgeslagen in log Analytics. Diverse eigenschappen die worden gebruikt voor alle gegevens typen, inclusief enkele [log Analytics standaard eigenschappen](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties), worden uitgesloten in de berekening van de gebeurtenis grootte. Dit omvat `_ResourceId` , `_ItemId` , `_IsBillable` en `_BilledSize` `Type` . Alle andere eigenschappen die zijn opgeslagen in Log Analytics, worden opgenomen in de berekening van de gebeurtenis grootte. Sommige gegevens typen zijn gratis van gegevens opname kosten, bijvoorbeeld de AzureActivity-, heartbeat-en gebruiks typen. Als u wilt bepalen of een gebeurtenis is uitgesloten van facturering voor gegevens opname, kunt u de `_IsBillable` eigenschap gebruiken zoals [hieronder](#data-volume-for-specific-events)wordt weer gegeven. Gebruik wordt gerapporteerd in GB (1.0 E9 bytes). 
+In alle prijs categorieën wordt de gegevens grootte van een gebeurtenis berekend op basis van een teken reeks representatie van de eigenschappen die in Log Analytics voor deze gebeurtenis zijn opgeslagen, ongeacht of de gegevens worden verzonden vanuit een agent of worden toegevoegd tijdens het opname proces. Dit omvat alle [aangepaste velden](./custom-fields.md) die worden toegevoegd wanneer gegevens worden verzameld en vervolgens worden opgeslagen in log Analytics. Diverse eigenschappen die worden gebruikt voor alle gegevens typen, inclusief enkele [log Analytics standaard eigenschappen](./log-standard-properties.md), worden uitgesloten in de berekening van de gebeurtenis grootte. Dit omvat `_ResourceId` , `_ItemId` , `_IsBillable` en `_BilledSize` `Type` . Alle andere eigenschappen die zijn opgeslagen in Log Analytics, worden opgenomen in de berekening van de gebeurtenis grootte. Sommige gegevens typen zijn gratis van gegevens opname kosten, bijvoorbeeld de AzureActivity-, heartbeat-en gebruiks typen. Als u wilt bepalen of een gebeurtenis is uitgesloten van facturering voor gegevens opname, kunt u de `_IsBillable` eigenschap gebruiken zoals [hieronder](#data-volume-for-specific-events)wordt weer gegeven. Gebruik wordt gerapporteerd in GB (1.0 E9 bytes). 
 
 Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) en [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) hun eigen prijs modellen hebben. 
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics toegewezen clusters
 
-Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Log Analytics toegewezen clusters bieden alleen ondersteuning voor een prijs model voor capaciteits reservering, te beginnen bij 1000 GB/dag met een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Meer informatie over het [maken van een log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) en [het koppelen van werk ruimten aan het](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)cluster.  
+Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](./customer-managed-keys.md).  Log Analytics toegewezen clusters bieden alleen ondersteuning voor een prijs model voor capaciteits reservering, te beginnen bij 1000 GB/dag met een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Meer informatie over het [maken van een log Analytics clusters](./customer-managed-keys.md#create-cluster-resource) en [het koppelen van werk ruimten aan het](./customer-managed-keys.md#workspace-association-to-cluster-resource)cluster.  
 
-Het reserverings niveau voor cluster capaciteit wordt geconfigureerd via programmatisch met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit wordt [hier](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)beschreven. Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+Het reserverings niveau voor cluster capaciteit wordt geconfigureerd via programmatisch met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit wordt [hier](./customer-managed-keys.md#create-cluster-resource)beschreven. Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
-Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het [configureren van uw cluster](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#cmk-manage). De twee modi zijn: 
+Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het [configureren van uw cluster](./customer-managed-keys.md#cmk-management). De twee modi zijn: 
 
 1. **Cluster**: in dit geval (dit is de standaard instelling), wordt de facturering voor opgenomen gegevens uitgevoerd op het cluster niveau. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. Houd er rekening mee dat toewijzingen per knoop punt van [Azure Security Center](../../security-center/index.yml) worden toegepast op het niveau van de werk ruimte vóór deze aggregatie van geaggregeerde gegevens in alle werk ruimten in het cluster. 
 
@@ -60,7 +60,7 @@ In de facturerings opties van het cluster wordt het bewaren van gegevens op het 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schatting van de kosten voor het beheren van uw omgeving 
 
-Als u Azure Monitor-logboeken nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van log Analytics te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Log Analytics in de vervolg keuzelijst Type.  Hier kunt u het aantal Vm's en de GB aan gegevens opgeven die u naar verwachting van elke VM wilt verzamelen. Doorgaans is 1 tot 3 GB gegevens maand opgenomen van een typische Azure-VM. Als u Azure Monitor logboeken al evalueert, kunt u uw gegevens statistieken uit uw eigen omgeving gebruiken. Hieronder vindt u informatie over het bepalen [van het aantal bewaakte vm's](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) en het [volume van de gegevens die in uw werk ruimte worden](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)opgenomen. 
+Als u Azure Monitor-logboeken nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van log Analytics te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Log Analytics in de vervolg keuzelijst Type.  Hier kunt u het aantal Vm's en de GB aan gegevens opgeven die u naar verwachting van elke VM wilt verzamelen. Doorgaans is 1 tot 3 GB gegevens maand opgenomen van een typische Azure-VM. Als u Azure Monitor logboeken al evalueert, kunt u uw gegevens statistieken uit uw eigen omgeving gebruiken. Hieronder vindt u informatie over het bepalen [van het aantal bewaakte vm's](#understanding-nodes-sending-data) en het [volume van de gegevens die in uw werk ruimte worden](#understanding-ingested-data-volume)opgenomen. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
@@ -94,7 +94,7 @@ Als u de Log Analytics prijs categorie van uw werk ruimte wilt wijzigen,
 
 3. Als u de prijs categorie hebt gecontroleerd op basis van de laatste 31 dagen van gebruik, klikt u op **selecteren**.  
 
-U kunt [de prijs categorie ook instellen via Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp `sku` van de para meter ( `pricingTier` in de Azure Resource Manager sjabloon). 
+U kunt [de prijs categorie ook instellen via Azure Resource Manager](./template-workspace-configuration.md#configure-a-log-analytics-workspace) met behulp `sku` van de para meter ( `pricingTier` in de Azure Resource Manager sjabloon). 
 
 ## <a name="legacy-pricing-tiers"></a>Verouderde prijs Categorieën
 
@@ -119,7 +119,7 @@ Er zijn ook enkele gedragingen tussen het gebruik van verouderde Log Analytics l
 2. Als de werk ruimte zich in de laag verouderd per knoop punt bevindt, wordt Azure Security Center gefactureerd op basis van het huidige [Azure Security Center op knoop punt gebaseerde prijs model](https://azure.microsoft.com/pricing/details/security-center/). 
 3. In andere prijs categorieën (inclusief capaciteits reserveringen), als Azure Security Center is ingeschakeld vóór 19 juni 2017, wordt Azure Security Center alleen gefactureerd voor Log Analytics gegevens opname. Anders wordt Azure Security Center gefactureerd met het huidige prijs model voor Azure Security Center op basis van knoop punten.
 
-[Hier](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)vindt u meer informatie over de beperkingen van de prijs categorie.
+[Hier](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)vindt u meer informatie over de beperkingen van de prijs categorie.
 
 > [!NOTE]
 > Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
@@ -140,7 +140,7 @@ Als u de standaard retentie voor uw werk ruimte wilt instellen,
 
 Als de retentie is verlaagd, is er een respijt periode van een enkele dag voordat de gegevens die ouder zijn dan de nieuwe Bewaar instelling worden verwijderd. 
 
-De retentie kan ook [via Azure Resource Manager worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de `retentionInDays` para meter. Wanneer u de Bewaar periode van de gegevens instelt op 30 dagen, kunt u een onmiddellijke verwijdering van oudere gegevens activeren met behulp van de `immediatePurgeDataOn30Days` para meter (waardoor de enige dag wordt uitgesteld). Dit kan handig zijn voor nalevings scenario's waarbij onmiddellijke gegevens verwijdering nood zakelijk is. Deze functie direct opschonen wordt alleen weer gegeven via Azure Resource Manager. 
+De retentie kan ook [via Azure Resource Manager worden ingesteld](./template-workspace-configuration.md#configure-a-log-analytics-workspace) met behulp van de `retentionInDays` para meter. Wanneer u de Bewaar periode van de gegevens instelt op 30 dagen, kunt u een onmiddellijke verwijdering van oudere gegevens activeren met behulp van de `immediatePurgeDataOn30Days` para meter (waardoor de enige dag wordt uitgesteld). Dit kan handig zijn voor nalevings scenario's waarbij onmiddellijke gegevens verwijdering nood zakelijk is. Deze functie direct opschonen wordt alleen weer gegeven via Azure Resource Manager. 
 
 Werk ruimten met een Bewaar periode van 30 dagen kunnen de gegevens gedurende 31 dagen werkelijk bewaren. Als het van cruciaal belang is dat gegevens slechts gedurende 30 dagen worden bewaard, gebruikt u de Azure Resource Manager om de Bewaar periode in te stellen op 30 dagen en met de `immediatePurgeDataOn30Days` para meter.  
 
@@ -150,7 +150,7 @@ Gegevens typen van Application Insights resources (,,,,,,,, en) op basis van een
 
 ### <a name="retention-by-data-type"></a>Bewaren op gegevens type
 
-Het is ook mogelijk om verschillende Bewaar instellingen op te geven voor afzonderlijke gegevens typen van 30 tot 730 dagen (met uitzonde ring van werk ruimten in de prijs categorie verouderde gratis). Elk gegevens type is een subresource van de werk ruimte. De SecurityEvent-tabel kan bijvoorbeeld als volgt worden behandeld in [Azure Resource Manager](/azure/azure-resource-manager/management/overview) :
+Het is ook mogelijk om verschillende Bewaar instellingen op te geven voor afzonderlijke gegevens typen van 30 tot 730 dagen (met uitzonde ring van werk ruimten in de prijs categorie verouderde gratis). Elk gegevens type is een subresource van de werk ruimte. De SecurityEvent-tabel kan bijvoorbeeld als volgt worden behandeld in [Azure Resource Manager](../../azure-resource-manager/management/overview.md) :
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -280,7 +280,7 @@ union *
 ```
 
 > [!TIP]
-> Gebruik deze `union *` query's spaarzaam als scans over gegevens typen [veel resources](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) zijn om uit te voeren. Als u geen resultaten **per computer** nodig hebt, voert u een query uit op het type gebruiks gegevens (zie hieronder).
+> Gebruik deze `union *` query's spaarzaam als scans over gegevens typen [veel resources](../log-query/query-optimization.md#query-performance-pane) zijn om uit te voeren. Als u geen resultaten **per computer** nodig hebt, voert u een query uit op het type gebruiks gegevens (zie hieronder).
 
 ## <a name="understanding-ingested-data-volume"></a>Meer informatie over opgenomen gegevens volume
 
@@ -364,7 +364,7 @@ union *
 ```
 
 > [!TIP]
-> Gebruik deze `union  *` query's spaarzaam als scans over gegevens typen [veel resources](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) zijn om uit te voeren. Als u geen resultaten **per computer** nodig hebt, voert u een query uit op het gegevens type gebruik.
+> Gebruik deze `union  *` query's spaarzaam als scans over gegevens typen [veel resources](../log-query/query-optimization.md#query-performance-pane) zijn om uit te voeren. Als u geen resultaten **per computer** nodig hebt, voert u een query uit op het gegevens type gebruik.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Gegevens volume per Azure-resource, resource groep of abonnement
 
@@ -407,7 +407,7 @@ U kunt ook de `_ResourceId` volledigere, indien nodig, parseren en gebruiken
 ```
 
 > [!TIP]
-> Gebruik deze `union  *` query's spaarzaam als scans over gegevens typen [veel resources](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) zijn om uit te voeren. Als u geen resultaten per abonnement, resource groep of bron naam nodig hebt, voert u vervolgens een query uit op het gegevens type gebruik.
+> Gebruik deze `union  *` query's spaarzaam als scans over gegevens typen [veel resources](../log-query/query-optimization.md#query-performance-pane) zijn om uit te voeren. Als u geen resultaten per abonnement, resource groep of bron naam nodig hebt, voert u vervolgens een query uit op het gegevens type gebruik.
 
 > [!WARNING]
 > Sommige velden van het gegevens type gebruik, terwijl ze nog steeds in het schema zijn, zijn afgeschaft en hun waarden worden niet meer ingevuld. Dit zijn zowel **computers** als velden met betrekking tot opname (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** en **AverageProcessingTimeMs**.
@@ -418,7 +418,7 @@ U kunt ook de `_ResourceId` volledigere, indien nodig, parseren en gebruiken
 Als u meer wilt weten over de gegevens bron voor een bepaald gegevens type, vindt u hier enkele nuttige voorbeeld query's:
 
 + **Application Insights resources op basis van een werk ruimte**
-  - meer informatie [vindt u hier](https://docs.microsoft.com/azure/azure-monitor/app/pricing#data-volume-for-workspace-based-application-insights-resources)
+  - meer informatie [vindt u hier](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources)
 + **Beveiligingsoplossing**
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + **Logboekbeheeroplossing**
@@ -441,7 +441,7 @@ Hieronder vindt u enkele suggesties voor het verkleinen van het aantal logboeken
 
 | Bron van hoog gegevensvolume | Het gegevensvolume verminderen |
 | -------------------------- | ------------------------- |
-| Container inzichten         | [Configureer container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) om alleen de gegevens te verzamelen die u nodig hebt. |
+| Container inzichten         | [Configureer container Insights](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost) om alleen de gegevens te verzamelen die u nodig hebt. |
 | Beveiligingsgebeurtenissen            | Selecteer [normale of minimale beveiligingsgebeurtenissen](../../security-center/security-center-enable-data-collection.md#data-collection-tier) <br> Wijzig het beleid voor beveiligingscontrole zodat alleen de gewenste gebeurtenissen worden verzameld. Controleer vooral de noodzaak voor het verzamelen van gebeurtenissen voor <br> - [filterplatform controleren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [register controleren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v=ws.10))<br> - [bestandssysteem controleren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v=ws.10))<br> - [kernel-object controleren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v=ws.10))<br> - [greepbewerking controleren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v=ws.10))<br> -Verwissel bare opslag controleren |
 | Prestatiemeteritems       | Wijzig de [Prestatiemeteritemconfiguratie](data-sources-performance-counters.md) in: <br> - Frequentie van het verzamelen van gegevens beperken <br> - Aantal prestatiemeteritems beperken |
 | Gebeurtenislogboeken                 | Wijzig [Configuratie van gebeurtenislogboek](data-sources-windows-events.md) in: <br> - Aantal verzamelde gebeurtenislogboeken beperken <br> - Alleen vereiste gebeurtenisniveaus verzamelen. Bijvoorbeeld, gebeurtenissen op *informatie*niveau niet verzamelen |
@@ -572,7 +572,7 @@ Deze query is geen exacte replicatie van de manier waarop het gebruik wordt bere
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Een waarschuwing maken wanneer het verzamelen van gegevens hoog is
 
-In deze sectie wordt beschreven hoe u een waarschuwing maakt het gegevens volume in de afgelopen 24 uur een opgegeven hoeveelheid overschrijdt, met behulp van Azure Monitor [logboek waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log). 
+In deze sectie wordt beschreven hoe u een waarschuwing maakt het gegevens volume in de afgelopen 24 uur een opgegeven hoeveelheid overschrijdt, met behulp van Azure Monitor [logboek waarschuwingen](./alerts-unified-log.md). 
 
 Voer de volgende stappen uit om te waarschuwen als het gefactureerde gegevens volume dat in de afgelopen 24 uur is opgenomen, groter is dan 50 GB: 
 
@@ -581,7 +581,7 @@ Voer de volgende stappen uit om te waarschuwen als het gefactureerde gegevens vo
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
    - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
    - **Waarschuwingslogica** is **Gebaseerd op het ** *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
-   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** voor elke *1440* minutesto één keer per dag uitgevoerd.
+   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** tot elke *1440* minuten om één keer per dag uit te voeren.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:
    - **Naam** aan *factureer bare gegevens volume groter dan 50 GB in 24 uur*
    - **Ernst** op *Waarschuwing*
@@ -592,7 +592,7 @@ Wanneer u een waarschuwing ontvangt, gebruikt u de stappen in de bovenstaande se
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Kosten voor gegevens overdracht met behulp van Log Analytics
 
-Bij het verzenden van gegevens naar Log Analytics kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor Log Analytics gegevens opname. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)te helpen begrijpen.   
+Bij het verzenden van gegevens naar Log Analytics kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor Log Analytics gegevens opname. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](#understanding-ingested-data-volume)te helpen begrijpen.   
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Problemen oplossen waarom Log Analytics geen gegevens meer verzamelt
@@ -615,7 +615,7 @@ Als u een melding wilt ontvangen wanneer het verzamelen van gegevens wordt gesto
 
 ## <a name="limits-summary"></a>Limieten overzicht
 
-Er zijn enkele aanvullende Log Analytics limieten, waarvan sommige afhankelijk zijn van de Log Analytics prijs categorie. Deze worden [hier](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)beschreven.
+Er zijn enkele aanvullende Log Analytics limieten, waarvan sommige afhankelijk zijn van de Log Analytics prijs categorie. Deze worden [hier](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)beschreven.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -627,4 +627,3 @@ Er zijn enkele aanvullende Log Analytics limieten, waarvan sommige afhankelijk z
 - Wijzig de [prestatiemeteritemconfiguratie](data-sources-performance-counters.md).
 - Controleer de [configuratie van gebeurtenis logboeken](data-sources-windows-events.md)om de instellingen van uw gebeurtenis verzameling te wijzigen.
 - Bekijk [syslog-configuratie](data-sources-syslog.md)om de instellingen van uw syslog-verzameling te wijzigen.
-

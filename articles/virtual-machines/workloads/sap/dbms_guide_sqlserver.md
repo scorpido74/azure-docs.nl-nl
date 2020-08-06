@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1771b0b55301fe4beaf2049859ebf3b9642fdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077345"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831053"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver
 
@@ -336,7 +336,7 @@ In overeenstemming met de algemene beschrijving moeten SQL Server uitvoer bare b
 
 
 * Met alle SAP-gecertificeerde VM-typen (Zie SAP-opmerking [1928533]), met uitzonde ring van vm's van de A-serie, tempdb-gegevens en logboek bestanden kunnen worden geplaatst op de niet-persistente D:\ stationsletter. 
-* Het is echter raadzaam om meerdere TempDB-gegevens bestanden te gebruiken. Let op D:\ de volumes van het station wijken af op basis van het VM-type. Voor exacte grootte van de D:\ van de verschillende Vm's, controleert u de artikel [grootten voor virtuele Windows-machines in azure](../../windows/sizes.md).
+* Het is echter raadzaam om meerdere TempDB-gegevens bestanden te gebruiken. Let op D:\ de volumes van het station wijken af op basis van het VM-type. Voor exacte grootte van de D:\ van de verschillende Vm's, controleert u de artikel [grootten voor virtuele Windows-machines in azure](../../sizes.md).
 
 Met deze configuraties kan TempDB meer ruimte verbruiken dan het systeem station kan bieden. De niet-permanente D:\ Station biedt ook betere I/O-latentie en door Voer (met uitzonde ring van Vm's van de A-serie). Als u de juiste TempDB-grootte wilt bepalen, kunt u de tempdb-grootte op bestaande systemen controleren. 
 
@@ -379,7 +379,7 @@ SQL Server 2014 en hoger geeft u de mogelijkheid om database bestanden rechtstre
 
 * Het gebruikte opslag account moet zich in dezelfde Azure-regio bevinden als de locatie die wordt gebruikt voor het implementeren van de virtuele machine SQL Server wordt uitgevoerd in.
 * De eerder vermelde overwegingen met betrekking tot de verdeling van Vhd's via verschillende Azure Storage-accounts zijn ook van toepassing op deze implementatie methode. Betekent dat het aantal I/O-bewerkingen overeenkomt met de limieten van het Azure Storage-account.
-* In plaats van rekening houdend met de opslag-I/O-quota van de virtuele machine, wordt het verkeer voor opslag-blobs die de SQL Server gegevens en logboek bestanden vertegenwoordigen, verwerkt in de netwerk bandbreedte van de virtuele machine van het specifieke VM-type. Voor netwerk-en opslag bandbreedte van een bepaald VM-type raadpleegt u de artikel [grootten voor virtuele Windows-machines in azure](../../windows/sizes.md).
+* In plaats van rekening houdend met de opslag-I/O-quota van de virtuele machine, wordt het verkeer voor opslag-blobs die de SQL Server gegevens en logboek bestanden vertegenwoordigen, verwerkt in de netwerk bandbreedte van de virtuele machine van het specifieke VM-type. Voor netwerk-en opslag bandbreedte van een bepaald VM-type raadpleegt u de artikel [grootten voor virtuele Windows-machines in azure](../../sizes.md).
 * Als gevolg van het pushen van bestands-I/O via het netwerk quotum, bent u de opslag quota voornamelijk en met die de totale band breedte van de virtuele machine slechts gedeeltelijk gebruiken.
 * De prestatie doelen IOPS en I/O-doorvoer snelheid die Azure Premium Storage heeft voor de verschillende schijf grootten, zijn niet meer van toepassing. Zelfs als de blobs die u hebt gemaakt, zich bevinden op Azure Premium Storage. De doelen zijn een documentatie van het artikel [high-performance Premium Storage en Managed disks voor vm's](../../windows/disks-types.md#premium-ssd). Als gevolg van het plaatsen van SQL Server gegevens bestanden en logboek bestanden rechtstreeks op blobs die zijn opgeslagen in azure Premium Storage, kunnen de prestatie kenmerken verschillen ten opzichte van Vhd's in azure Premium Storage.
 * Op de host gebaseerde caching als beschikbaar voor Azure Premium Storage schijven is niet beschikbaar wanneer u SQL Server gegevens bestanden rechtstreeks op Azure-blobs plaatst.

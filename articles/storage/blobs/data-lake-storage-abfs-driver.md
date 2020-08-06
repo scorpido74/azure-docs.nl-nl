@@ -1,6 +1,6 @@
 ---
 title: Het Azure Blob-bestandssysteem stuur programma voor Azure Data Lake Storage Gen2
-description: Het ABFS Hadoop-bestandssysteem stuur programma
+description: Meer informatie over het Azure Blob-bestandssysteem stuur programma (ABFS), een speciaal Azure Storage stuur programma voor Hadoop. Toegang tot gegevens in Azure Data Lake Storage Gen2 met dit stuur programma.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75970280"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836357"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop
 
@@ -53,7 +53,7 @@ Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoo
    > [!NOTE]
    > Azure Data Lake Storage Gen2 ondersteunt alleen Azure AD v 1.0-eind punten.
 
-### <a name="configuration"></a>Configuratie
+### <a name="configuration"></a>Configuration
 
 Alle configuratie voor het ABFS-stuur programma wordt opgeslagen in het <code>core-site.xml</code> configuratie bestand. Bij Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met de webportal of Ambari rest API.
 

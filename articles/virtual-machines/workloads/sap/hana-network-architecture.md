@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 585dfcd437357c638a3544a4cb74ad386f8cb218
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b99e744fb949f707467286c3d79de0f4e76a49c6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085194"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835507"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Netwerk architectuur van SAP HANA (grote exemplaren)
 
@@ -148,7 +148,7 @@ De transitieve route ring werkt standaard niet in deze scenario's:
 Er zijn drie manieren om transitieve route ring in te scha kelen in deze scenario's:
 
 - Een reverse-proxy om gegevens te routeren naar en van. Bijvoorbeeld: F5 BIG-IP, NGINX met Traffic Manager geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en on-premises als een oplossing voor virtuele firewall/verkeers routering.
-- Het gebruik van [iptables-regels](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) in een Linux-VM om route ring mogelijk te maken tussen on-premises locaties en Hana grote instantie-eenheden, of tussen Hana grote instantie-eenheden in verschillende regio's. De VM met IPTables moet worden geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en on-premises. De VM moet dienovereenkomstig worden aangepast, zodat de netwerk doorvoer van de virtuele machine voldoende is voor het verwachte netwerk verkeer. Voor meer informatie over VM-netwerk bandbreedte raadpleegt u de artikel [grootten van virtuele Linux-machines in azure](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Het gebruik van [iptables-regels](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) in een Linux-VM om route ring mogelijk te maken tussen on-premises locaties en Hana grote instantie-eenheden, of tussen Hana grote instantie-eenheden in verschillende regio's. De VM met IPTables moet worden geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en on-premises. De VM moet dienovereenkomstig worden aangepast, zodat de netwerk doorvoer van de virtuele machine voldoende is voor het verwachte netwerk verkeer. Voor meer informatie over VM-netwerk bandbreedte raadpleegt u de artikel [grootten van virtuele Linux-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - [Azure firewall](https://azure.microsoft.com/services/azure-firewall/) zou een andere oplossing zijn om direct verkeer tussen on-premises en Hana grote instantie-eenheden in te scha kelen. 
 
 Al het verkeer van deze oplossingen wordt doorgestuurd via een virtueel Azure-netwerk en het verkeer kan ook worden beperkt door de gebruikte apparaten of door Azure-netwerk beveiligings groepen, zodat bepaalde IP-adressen of IP-adresbereiken van on-premises kunnen worden geblokkeerd of expliciet worden toegestaan toegang te krijgen tot HANA grote instanties. 

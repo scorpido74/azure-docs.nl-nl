@@ -4,14 +4,14 @@ description: Meer informatie over het configureren van door de klant beheerde sl
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092598"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836506"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -64,6 +64,8 @@ Als u een bestaand Azure Key Vault exemplaar gebruikt, kunt u controleren of dez
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Selecteer de Azure Cosmos DB-Principal":::
 
 1. Selecteer **toevoegen** om het nieuwe toegangs beleid toe te voegen.
+
+1. Selecteer **Opslaan** in het Key Vault-exemplaar om alle wijzigingen op te slaan.
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Een sleutel in Azure Key Vault genereren
 

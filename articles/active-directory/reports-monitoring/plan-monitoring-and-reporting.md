@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829626"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Een Azure Active Directory rapportage en bewakings implementatie plannen
 
@@ -99,7 +99,7 @@ Rapportage en bewaking worden gebruikt om te voldoen aan uw bedrijfs vereisten, 
 * Mooi om te voldoen aan de behoeften van uw bedrijf
 * Niet van toepassing
 
-|Onderwerp |Beschrijving |
+|Gebied |Beschrijving |
 |-|-|
 |Bewaartermijn| Het **bewaren van meer dan 30 dagen vastleggen**. Vanwege wettelijke of zakelijke vereisten is het vereist om audit logboeken op te slaan en logboeken van Azure AD langer dan 30 dagen te registreren. |
 |Analyse| **De logboeken moeten doorzoekbaar zijn**. De opgeslagen logboeken moeten kunnen worden doorzocht met analytische hulpprogram ma's. |
@@ -149,7 +149,7 @@ De volgende rollen kunnen Azure AD-rapporten lezen:
 
 * Beveiligingslezer
 
-* Rapport lezer
+* Rapportlezer
 
 Meer informatie over [Azure AD-beheerders rollen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
 
@@ -193,6 +193,4 @@ Afhankelijk van de beslissingen die u eerder hebt gemaakt met behulp van de bove
 
 Overweeg het implementeren van [privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
 
-Overweeg [het implementeren van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
-
- 
+Overweeg [het implementeren van op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)

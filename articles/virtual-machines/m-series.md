@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: f3876ad98bd937c4e0fcbd55ca2a2c0a5b497542
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0039480c24e96f39ec2b464984a84e672b5bffa1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288365"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832600"
 ---
 # <a name="m-series"></a>M-serie
 
@@ -66,7 +66,7 @@ Write Accelerator: [ondersteund](./windows/how-to-enable-write-accelerator.md)
 
 Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
 
-Meer informatie over schijven typen: [schijf typen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Meer informatie over schijven typen: [schijf typen](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Volgende stappen

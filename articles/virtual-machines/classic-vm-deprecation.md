@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: d86805975b082136879c0a98ce2817f4f491a9a0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 16ca4ad1204301542ffaa0177d88b2c2800f13b4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461201"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836272"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migreer uw IaaS-resources naar Azure Resource Manager op 1 maart 2023 
 
-In 2014 heeft micro soft IaaS op Azure Resource Manager gestart en zijn de mogelijkheden van ooit verbeterd. Omdat [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nu volledige IaaS-mogelijkheden en andere voor uitgangen heeft, is het beheer van IaaS-Vm's via Azure Service Manager op 28 februari 2020 afgeschaft en is deze functionaliteit volledig buiten gebruik gesteld op 1 maart 2023. 
+In 2014 heeft micro soft IaaS op Azure Resource Manager gestart en zijn de mogelijkheden van ooit verbeterd. Omdat [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nu volledige IaaS-mogelijkheden en andere voor uitgangen heeft, is het beheer van IaaS-Vm's via [Azure Service Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) op 28 februari 2020 afgeschaft en is deze functionaliteit volledig buiten gebruik gesteld op 1 maart 2023. 
 
 Vandaag 90% van de virtuele machines van IaaS gebruikt Azure Resource Manager. Als u IaaS-resources gebruikt via Azure Service Manager (ASM), start u uw migratie nu en voltooit u deze op 1 maart 2023 om te profiteren van [Azure Resource Manager](../azure-resource-manager/management/index.yml).
 
@@ -25,9 +25,9 @@ Klassieke Vm's volgen het [moderne levenscyclus beleid](https://support.microsof
 
 ## <a name="how-does-this-affect-me"></a>Wat betekent dit voor mij? 
 
-1) Met ingang van 28 februari 2020 kunnen klanten die IaaS Vm's via Azure Service Manager (ASM) niet gebruiken in de maand van februari 2020 geen klassieke Vm's meer maken. 
-2) Op 1 maart 2023 kunnen klanten geen IaaS Vm's meer starten met behulp van Azure Service Manager en worden er nog steeds actieve of toegewezen gebruikers worden gestopt en wordt de toewijzing ervan ongedaan gemaakt. 
-2) Op 1 maart 2023 worden abonnementen die niet zijn gemigreerd naar Azure Resource Manager, op de hoogte gesteld van tijd lijnen voor het verwijderen van alle resterende klassieke Vm's.  
+- Met ingang van 28 februari 2020 kunnen klanten die IaaS Vm's via Azure Service Manager (ASM) niet gebruiken in de maand van februari 2020 geen klassieke Vm's meer maken. 
+- Op 1 maart 2023 kunnen klanten geen IaaS Vm's meer starten met behulp van Azure Service Manager en worden er nog steeds actieve of toegewezen gebruikers worden gestopt en wordt de toewijzing ervan ongedaan gemaakt. 
+- Op 1 maart 2023 worden abonnementen die niet naar Azure Resource Manager worden gemigreerd, op de hoogte gesteld van tijd lijnen voor het verwijderen van alle resterende klassieke Vm's.  
 
 De volgende Azure-Services en-functionaliteit worden **niet** beïnvloed door dit buiten gebruik stellen: 
 - Cloud Services 
@@ -45,6 +45,17 @@ De volgende Azure-Services en-functionaliteit worden **niet** beïnvloed door di
 
 - [Neem contact op met de ondersteuning](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})voor technische vragen, problemen en abonnementen toevoegen aan de acceptatie lijst.
 
-- [Neem contact op met de migratie ondersteuning](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}) voor hulp tijdens de migratie
-
 - Voor andere vragen die geen deel uitmaken van veelgestelde vragen en feedback, opmerking hieronder.
+
+- Voltooi de migratie zo snel mogelijk om bedrijfs impact te voor komen en te profiteren van verbeterde prestaties, beveiliging & nieuwe functies van Azure Resource Manager. 
+
+## <a name="what-resources-are-provided-to-me-for-this-migration"></a>Welke resources worden er voor deze migratie aan mij aangeboden?
+
+- [Micro soft Q&A](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html): micro soft & Community-ondersteuning voor migratie
+
+- [Azure-migratie ondersteuning](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): toegewijd ondersteunings team voor technische hulp tijdens de migratie
+
+- [Micro soft Fast track](https://www.microsoft.com/fasttrack): micro soft Fast track-team kan technische hulp bieden tijdens de migratie naar in aanmerking komende klanten. 
+
+- Als uw bedrijf/organisatie is gekoppeld aan micro soft en/of met micro soft representatief is, zoals (TAMs (Cloud Solution architect), Technical Account Manager (CSA)), kunt u het beste met hen samen werken voor aanvullende bronnen voor migratie. 
+

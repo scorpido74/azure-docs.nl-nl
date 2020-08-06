@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509151"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831359"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proactief garanderen dat u toegang hebt tot GRUB en SYSRQ u veel tijd bespaart
 
@@ -437,4 +437,4 @@ Zie [dit document](./serial-console-grub-single-user-mode.md#general-single-user
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [Azure Serial console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+Meer informatie over [Azure Serial console]( ./serial-console-linux.md)

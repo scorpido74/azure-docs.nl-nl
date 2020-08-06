@@ -3,12 +3,12 @@ title: Onderwerpen over Azure Event Grid partners
 description: Verzend gebeurtenissen van derden Event Grid SaaS-en PaaS-partners rechtstreeks naar Azure-Services met Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e56055c55a3b30c5d13736b9838257f3c0bbec10
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115992"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831903"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Onderwerpen over partners in Azure Event Grid (preview-versie)
 Met behulp van partner onderwerpen kunt u rechtstreeks verbinding maken met gebeurtenis bronnen van derden op Azure Event Grid. Met deze integratie kunt u zich abonneren op gebeurtenissen van partners op dezelfde manier als u zich abonneert op gebeurtenissen van Azure-Services. 
@@ -22,7 +22,7 @@ De eerste partner die beschikbaar is via Event Grid-partner onderwerpen is Auth0
 Partner onderwerpen worden in rekening gebracht op hetzelfde bewerkings tarief als systeem onderwerpen.
 
 ## <a name="limits"></a>Limieten
-De onderwerpen van de partner zijn beschikbaar als open bare preview. Tijdens de open bare preview zijn de onderwerpen van partners onderhevig aan [dezelfde limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits) als systeem onderwerpen en aangepaste onderwerpen.
+De onderwerpen van de partner zijn beschikbaar als open bare preview. Tijdens de open bare preview zijn de onderwerpen van partners onderhevig aan [dezelfde limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits) als systeem onderwerpen en aangepaste onderwerpen.
 
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Hoe kan ik een Event Grid partner worden?
 De infra structuur die is gemaakt ter ondersteuning van deze start, maakt het eenvoudig en snel voor nieuwe partners om hun gebeurtenis mogelijkheden te integreren met Event Grid. Zie voor meer informatie de documentatie voor het [voorbereiden van partners](partner-onboarding-overview.md).

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963203"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835983"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -126,7 +126,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimumwaarde**|**Maximumwaarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
@@ -197,6 +197,21 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server
 |Geoptimaliseerd geheugen|8|0|0|134217728|
 |Geoptimaliseerd geheugen|16|0|0|134217728|
 |Geoptimaliseerd geheugen|32|0|0|134217728|
+
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+De lower_case_table_name is standaard ingesteld op 1 en u kunt deze para meter bijwerken in MySQL 5,6 en MySQL 5,7
+
+Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names) voor meer informatie over deze para meter.
+
+> [!NOTE]
+> In MySQL 8,0 is de lower_case_table_name standaard ingesteld op 1 en kunt u deze niet wijzigen.
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met het ' Rijgrootte is te groot (> 8126) ', kunt u de para meter **INNODB_STRICT_MODE**uitschakelen. De **innodb_strict_mode** van de server parameter mag niet globaal worden gewijzigd op server niveau omdat de grootte van de gegevensrij groter is dan 8k, worden de gegevens afgekapt zonder dat er een fout optreedt bij mogelijk gegevens verlies. Het is raadzaam om het schema aan te passen aan de limiet voor de pagina grootte. 
+
+Deze para meter kan worden ingesteld op sessie niveau met `init_connect` . Als u **innodb_strict_mode** wilt instellen op sessie niveau, raadpleegt u de [instellings parameter wordt niet weer gegeven](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

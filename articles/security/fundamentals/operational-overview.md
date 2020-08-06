@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 50fb9c597a74a7aa08dfc3d8b7acd9b94760a9df
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542888"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835915"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
@@ -50,7 +50,7 @@ Azure Backup biedt onderdelen die u downloadt en implementeert op de juiste comp
 
 Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-overview#what-can-i-back-up)voor meer informatie.
 
-### <a name="site-recovery"></a>Site Recovery
+### <a name="site-recovery"></a>Siteherstel
 
 [Azure site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) biedt bedrijfs continuïteit door de replicatie van on-premises virtuele en fysieke machines naar Azure of een secundaire site te organiseren. Als uw primaire site niet beschikbaar is, voert u een failover uit naar de secundaire locatie zodat gebruikers kunnen blijven werken. U kunt geen failback uitvoeren wanneer de systemen retour neren naar de werk volgorde. Gebruik Azure Security Center om intelligente en efficiënte detectie van bedreigingen uit te voeren.
 
@@ -87,7 +87,7 @@ Met Azure Active Directory hebben alle toepassingen die u publiceert voor uw par
 - Validatie van schijf versleuteling.
 - Aanvallen op het netwerk.
 
-Security Center maakt gebruik [van op rollen gebaseerde Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC biedt [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
+Security Center maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC biedt [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
 Security Center evalueert de configuratie van uw resources om beveiligings problemen en beveiligings lekken te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
 

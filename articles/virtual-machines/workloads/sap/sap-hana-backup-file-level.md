@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035737"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833382"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Azure Backup op bestands niveau SAP HANA
 
@@ -25,7 +25,7 @@ ms.locfileid: "87035737"
 
 Dit artikel is een verwant artikel voor het maken van een [back-upgids voor SAP Hana op Azure virtual machines](./sap-hana-backup-guide.md), dat een overzicht en informatie bevat over het aan de slag gaan en meer informatie over Azure backup service-en opslag momentopnamen. 
 
-Verschillende VM-typen in azure staan een ander aantal aangesloten Vhd's toe. De exacte details worden gedocumenteerd in [grootten voor virtuele Linux-machines in azure](../../linux/sizes.md). Voor de tests waarnaar in deze documentatie wordt verwezen, hebben we een Azure VM GS5 gebruikt, waarmee 64 gekoppelde gegevens schijven kunnen worden gekoppeld. Voor grotere SAP HANA systemen is er mogelijk al een groot aantal schijven gemaakt voor gegevens-en logboek bestanden, mogelijk in combi natie met software striping voor optimale IO-door Voer van de schijf. Lees het artikel [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md)voor meer informatie over aanbevolen schijf configuraties voor SAP Hana implementaties op Azure-vm's. De aanbevelingen die worden gedaan, zijn ook inclusief schijf ruimte aanbevelingen voor lokale back-ups.
+Verschillende VM-typen in azure staan een ander aantal aangesloten Vhd's toe. De exacte details worden gedocumenteerd in [grootten voor virtuele Linux-machines in azure](../../sizes.md). Voor de tests waarnaar in deze documentatie wordt verwezen, hebben we een Azure VM GS5 gebruikt, waarmee 64 gekoppelde gegevens schijven kunnen worden gekoppeld. Voor grotere SAP HANA systemen is er mogelijk al een groot aantal schijven gemaakt voor gegevens-en logboek bestanden, mogelijk in combi natie met software striping voor optimale IO-door Voer van de schijf. Lees het artikel [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md)voor meer informatie over aanbevolen schijf configuraties voor SAP Hana implementaties op Azure-vm's. De aanbevelingen die worden gedaan, zijn ook inclusief schijf ruimte aanbevelingen voor lokale back-ups.
 
 De standaard methode voor het beheren van back-ups/herstellen op bestands niveau is een back-up op basis van bestanden via SAP HANA Studio of via SAP HANA SQL-instructies. Lees voor meer informatie het artikel [SAP Hana verwijzing naar SQL-en systeem weergaven](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
 

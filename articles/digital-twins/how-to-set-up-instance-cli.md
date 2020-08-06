@@ -1,5 +1,5 @@
 ---
-title: Een instantie en authenticatie instellen (CLI)
+title: Een exemplaar en verificatie instellen (CLI)
 titleSuffix: Azure Digital Twins
 description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen met behulp van de CLI
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ba03acabb3325045a71d55f583343a26b4d121ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408287"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832337"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Een Azure Digital Apparaatdubbels-exemplaar en-authenticatie (CLI) instellen
 
@@ -27,7 +27,7 @@ Deze versie van dit artikel doorloopt deze stappen hand matig, één voor één,
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 [!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
 
-## <a name="set-up-cloud-shell-session"></a>Cloud Shell sessie instellen
+## <a name="set-up-cloud-shell-session"></a>Een Cloud Shell-sessie instellen
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Het Azure Digital Apparaatdubbels-exemplaar maken
@@ -46,7 +46,7 @@ Gebruik deze waarden in de volgende opdracht om het exemplaar te maken:
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>Controleren geslaagd
+### <a name="verify-success-and-collect-important-values"></a>Geslaagde pogingen controleren en belang rijke waarden verzamelen
 
 Als het exemplaar is gemaakt, wordt het resultaat in Cloud Shell er ongeveer als volgt uitzien: het uitvoeren van informatie over de resource die u hebt gemaakt.
 
@@ -71,12 +71,16 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Het resultaat van deze opdracht is een gegenereerde informatie over de roltoewijzing die is gemaakt.
 
-> [!TIP]
-> Als u in plaats daarvan een *400: onjuiste aanvraag* -fout krijgt, voert u de volgende opdracht uit om de *ObjectID* voor de gebruiker op te halen:
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> Herhaal vervolgens de opdracht roltoewijzing met de *object-id* van de gebruiker in plaats van hun e-mail adres.
+> [!NOTE]
+> Als met deze opdracht een fout wordt geretourneerd die aangeeft dat de CLI **geen gebruiker of service-principal kan vinden in Graph data base**:
+>
+> Gebruik de *object-id* van de gebruiker in plaats van het e-mail adres. Dit kan gebeuren voor gebruikers op persoonlijke [micro soft-accounts (msa's)](https://account.microsoft.com/account). 
+>
+> Gebruik de [pagina Azure portal van Azure Active Directory gebruikers](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) om het gebruikers account te selecteren en de bijbehorende gegevens te openen. De *ObjectID*van de gebruiker kopiëren:
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="Weer gave van de gebruikers pagina in Azure Portal markeren van de GUID in het veld object-ID" lightbox="media/includes/user-id.png":::
+>
+> Vervolgens herhaalt u de opdracht lijst voor roltoewijzing met de *object-id* van de gebruiker in plaats van de e-mail.
 
 ### <a name="verify-success"></a>Controleren geslaagd
 
@@ -117,7 +121,7 @@ Ga naar de *manifest.js* die u zojuist hebt gemaakt en klik op openen.
 Voer vervolgens de volgende opdracht uit om een app-registratie te maken (waar nodig tijdelijke aanduidingen vervangen):
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 Hier volgt een fragment van de uitvoer van deze opdracht, met informatie over de registratie die u hebt gemaakt:

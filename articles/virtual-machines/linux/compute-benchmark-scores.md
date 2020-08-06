@@ -5,12 +5,12 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373416"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830526"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Benchmark scores berekenen voor virtuele Linux-machines
 De volgende coopmerkingen-benchmark scores tonen reken prestaties voor de hoge prestaties van de VM-reeks van Azure waarop Ubuntu wordt uitgevoerd. Er zijn ook Compute-benchmark scores beschikbaar voor [virtuele Windows-machines](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -469,6 +469,5 @@ De volgende coopmerkingen-benchmark scores tonen reken prestaties voor de hoge p
 Linux-nummers zijn berekend door de uitvoering van [coopmerking](https://www.eembc.org/coremark/faq.php) op Ubuntu. Coopmerking is geconfigureerd met het aantal threads dat is ingesteld op het aantal virtuele Cpu's en de gelijktijdigheid die is ingesteld op PThreads. Het doel aantal herhalingen is aangepast op basis van de verwachte prestaties om ten minste 20 seconden een runtime te leveren (meestal veel langer). De laatste score geeft het aantal iteraties aan dat is voltooid, gedeeld door het aantal seconden dat het heeft geduurd om de test uit te voeren. Elke test is ten minste zeven keer uitgevoerd op elke VM. Test uitvoerings datums hierboven weer gegeven. Tests die worden uitgevoerd op meerdere virtuele machines in open bare Azure-regio's, werd de virtuele machine ondersteund op de datum waarop de VM wordt uitgevoerd. De reeks Basic A en B (Burstable) wordt niet weer gegeven omdat de prestaties variabel zijn. N reeksen worden niet weer gegeven omdat ze GPU-georiënteerd zijn en coopmerking GPU-prestaties niet meten.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over de opslag capaciteit, schijf Details en aanvullende overwegingen voor het kiezen van de VM-grootten.
+* Zie [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over de opslag capaciteit, schijf Details en aanvullende overwegingen voor het kiezen van de VM-grootten.
 * Als u de coopmerkingen-scripts op Linux Vm's wilt uitvoeren, downloadt u het [pakket met coopmerkingen](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
-

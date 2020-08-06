@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086605"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833892"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
 
@@ -128,7 +128,7 @@ Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in ee
 
 * Standaard plaatst het SAP-installatie programma de assembly bestanden in de standaardmap voor installatie. U moet de volgende assembly bestanden naar een andere locatie kopiëren, op basis van uw scenario:
 
-  Voor Logic apps die worden uitgevoerd in een ISE, volgt u de stappen die worden beschreven in de vereisten voor de [integratie service omgeving](#sap-ise). Voor logische apps die worden uitgevoerd in een multi tenant Azure en de on-premises gegevens gateway te gebruiken, kopieert u de assembly bestanden uit de standaardinstallatiemap naar de installatiemap van de gegevens gateway. Als u problemen ondervindt met de gegevens gateway, raadpleegt u de volgende problemen:
+  * Voor Logic apps die worden uitgevoerd in een ISE, volgt u de stappen die worden beschreven in de vereisten voor de [integratie service omgeving](#sap-ise). Voor logische apps die worden uitgevoerd in een multi tenant Azure en de on-premises gegevens gateway te gebruiken, kopieert u de assembly bestanden uit de standaardinstallatiemap naar de installatiemap van de gegevens gateway. Als u problemen ondervindt met de gegevens gateway, raadpleegt u de volgende problemen:
 
   * U moet de 64-bits versie voor de SAP-client bibliotheek installeren omdat de gegevens gateway alleen op 64-bits systemen kan worden uitgevoerd. Anders krijgt u een fout bericht over een onjuiste afbeelding omdat de data gateway-hostservice geen 32-bits-assembly's ondersteunt.
 
@@ -193,7 +193,7 @@ In dit voor beeld maakt u een logische app met een eind punt in azure, zodat u *
 
 1. Maak in de [Azure Portal](https://portal.azure.com)een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend.
 
-1. Voer in het zoekvak in `http request` als uw filter. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Voer in het zoekvak `http request` als uw filter in. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
    ![HTTP-aanvraag trigger toevoegen](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
@@ -213,7 +213,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
    ![Nieuwe stap toevoegen aan logische app](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. Voer in het zoekvak in `sap` als uw filter. Selecteer in de lijst **acties** de optie **bericht naar SAP verzenden**.
+1. Voer in het zoekvak `sap` als uw filter in. Selecteer in de lijst **acties** de optie **bericht naar SAP verzenden**.
   
    ![Selecteer de actie bericht verzenden naar SAP](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
@@ -284,7 +284,7 @@ Voeg nu een reactie actie toe aan de werk stroom van uw logische app en neem de 
 
 1. Selecteer in de ontwerp functie van de Logic app, onder de actie SAP, de optie **nieuwe stap**.
 
-1. Voer in het zoekvak in `response` als uw filter. Selecteer in de lijst **acties** de optie **antwoord**.
+1. Voer in het zoekvak `response` als uw filter in. Selecteer in de lijst **acties** de optie **antwoord**.
 
 1. Klik in het vak **hoofd tekst** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst onder **bericht naar SAP verzenden**het veld **hoofd tekst** .
 
@@ -352,7 +352,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
 1. Maak in de Azure Portal een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend.
 
-1. Voer in het zoekvak in `sap` als uw filter. Selecteer in de lijst **Triggers** **Wanneer een bericht wordt ontvangen van SAP**.
+1. Voer in het zoekvak `sap` als uw filter in. Selecteer in de lijst **Triggers** **Wanneer een bericht wordt ontvangen van SAP**.
 
    ![SAP-trigger toevoegen](./media/logic-apps-using-sap-connector/add-sap-trigger-logic-app.png)
 
@@ -431,7 +431,7 @@ Wanneer u het matrix filter instelt, ontvangt de trigger alleen berichten van de
 
 SAP-actie filters worden uitgevoerd op het niveau van de SAP-adapter voor uw on-premises gegevens gateway. Zie [test IDocs verzenden naar Logic apps vanuit SAP](#send-idocs-from-sap)voor meer informatie.
 
-Als u geen IDoc-pakketten van SAP kunt verzenden naar de trigger van de logische app, raadpleegt u het afkeurings bericht voor transactionele RFC (tRFC)-oproep in het dialoog venster SAP tRFC (T-code SM58). In de SAP-interface worden mogelijk de volgende fout berichten weer geven die zijn afgekapt als gevolg van de limieten voor de subtekenreeksen van het veld **status tekst** .
+Als u geen IDoc-pakketten van SAP kunt verzenden naar de trigger van de logische app, raadpleegt u het afkeurings bericht voor transactionele RFC (tRFC)-oproep in het dialoog venster SAP tRFC (T-code SM58). In de SAP-interface worden mogelijk de volgende fout berichten weer geven die zijn afgekapt als gevolg van de limieten voor subtekenreeksen in het veld **status tekst** .
 
 * `The RequestContext on the IReplyChannel was closed without a reply being`: Onverwachte fouten treden op wanneer de catch-all-handler voor het kanaal het kanaal beëindigt vanwege een fout en het kanaal opnieuw opbouwt om andere berichten te verwerken.
 
@@ -516,7 +516,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
     
     * Op het tabblad **Unicode** , voor **communicatie type met doel systeem**, selecteert u **Unicode**.
 
-1. Sla uw wijzigingen op.
+1. Sla de wijzigingen op.
 
 1. Registreer uw nieuwe **programma-id** bij Azure Logic apps.
 
@@ -530,9 +530,9 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Voor **RFC-doel**voert u de id in voor [het test-SAP-systeem](#create-rfc-destination).
 
-1. Sla uw wijzigingen op.
+1. Sla de wijzigingen op.
 
-1. Als u de verbinding wilt testen, selecteert u **verbindings test** .
+1. Als u de verbinding wilt testen, selecteert u **verbindings test**.
 
 #### <a name="create-receiver-port"></a>Ontvanger poort maken
 
@@ -540,11 +540,11 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
 
-1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer een **naam**in voor de test poort. Sla uw wijzigingen op.
+1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer een **naam**in voor de test poort. Sla de wijzigingen op.
 
 1. In de instellingen voor uw nieuwe ontvanger poort, voor **RFC-doel**, voert u de id in voor [de test-RFC-bestemming](#create-rfc-destination).
 
-1. Sla uw wijzigingen op.
+1. Sla de wijzigingen op.
 
 #### <a name="create-sender-port"></a>Poort van afzender maken
 
@@ -552,11 +552,11 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
 
-1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer voor uw test poort een **naam** in die begint met **SAP**. Alle poort namen van de afzender moeten beginnen met de letters **SAP**, bijvoorbeeld **SAPTEST**. Sla uw wijzigingen op.
+1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer voor uw test poort een **naam** in die begint met **SAP**. Alle poort namen van de afzender moeten beginnen met de letters **SAP**, bijvoorbeeld **SAPTEST**. Sla de wijzigingen op.
 
 1. Voer in de instellingen voor de nieuwe zender poort voor **RFC-doel**de id in voor [uw ABAP-verbinding](#create-abap-connection).
 
-1. Sla uw wijzigingen op.
+1. Sla de wijzigingen op.
 
 #### <a name="create-logical-system-partner"></a>Een logische systeem partner maken
 
@@ -566,7 +566,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Selecteer in de lijst met de bestaande logische systemen **nieuwe vermeldingen**.
 
-1. Voer voor het nieuwe logische systeem een **Log.System** -id en een korte **naam** beschrijving in. Sla uw wijzigingen op.
+1. Voer voor het nieuwe logische systeem een **Log.System** -id en een korte **naam** beschrijving in. Sla de wijzigingen op.
 
 1. Wanneer de **prompt voor Workbench** wordt weer gegeven, maakt u een nieuwe aanvraag door een beschrijving op te geven, of als u al een aanvraag hebt gemaakt, slaat u deze stap over.
 
@@ -588,7 +588,7 @@ Voor productie omgevingen moet u twee partner profielen maken. Het eerste profie
 
     * Voer voor **agent**de id in voor het SAP-gebruikers account dat moet worden gebruikt wanneer u programma-id's registreert voor Azure Logic apps of andere niet-SAP-systemen.
 
-1. Sla uw wijzigingen op. Als u [de logische systeem partner](#create-logical-system-partner)nog niet hebt gemaakt, krijgt u de fout melding **een geldig partner nummer**.
+1. Sla de wijzigingen op. Als u [de logische systeem partner](#create-logical-system-partner)nog niet hebt gemaakt, krijgt u de fout melding **een geldig partner nummer**.
 
 1. Selecteer in de instellingen van uw partner profiel onder **uitgaande parmtrs.** de optie **uitgaande para meter maken**.
 
@@ -600,7 +600,7 @@ Voor productie omgevingen moet u twee partner profielen maken. Het eerste profie
 
     * Voer een IDoc-grootte in voor het **pakket. Grootte**. Als u [IDocs een voor een wilt verzenden vanuit SAP](#receive-idoc-packets-from-sap), selecteert u **onmiddellijk door geven IDOC**.
 
-1. Sla uw wijzigingen op.
+1. Sla de wijzigingen op.
 
 #### <a name="test-sending-messages"></a>Testen van berichten verzenden
 
@@ -727,7 +727,10 @@ Het volgende voor beeld is een RFC-aanroep met een tabel parameter die een anoni
 
 ```
 
-Het volgende voor beeld bevat voor voegsels voor de naam ruimten. U kunt alle voor voegsels tegelijk declareren, maar u kunt ook een wille keurig aantal voor voegsels declareren als kenmerken van een knoop punt. De naam ruimte-alias van de RFC `ns0` wordt gebruikt als de hoofd-en-para meters voor het basis type. Houd er rekening mee dat complexe typen worden gedeclareerd onder een andere naam ruimte voor typen RFC'S met de alias `ns3` in plaats van de reguliere RFC-naam ruimte met de alias `ns0` .
+Het volgende voor beeld bevat voor voegsels voor de naam ruimten. U kunt alle voor voegsels tegelijk declareren of u kunt een wille keurig aantal voor voegsels declareren als kenmerken van een knoop punt. De naam ruimte-alias van de RFC `ns0` wordt gebruikt als de hoofd-en-para meters voor het basis type.
+
+> [!NOTE]
+> complexe typen worden gedeclareerd onder een andere naam ruimte voor typen RFC'S met de alias `ns3` in plaats van de reguliere RFC-naam ruimte met de alias `ns0` .
 
 ```xml
 
@@ -883,7 +886,7 @@ Het volgende voor beeld is een voorbeeld gegevens record met gewone segmenten. I
 
 ```
 
-Het volgende voor beeld is een gegevens record met gegroepeerde segmenten. Dit omvat een bovenliggend knoop punt van de groep, `E2EDKT1002GRP` en meerdere onderliggende knoop punten, inclusief `E2EDKT1002` en `E2EDKT2001` . 
+Het volgende voor beeld is een gegevens record met gegroepeerde segmenten. De record bevat een bovenliggend knoop punt van de groep, `E2EDKT1002GRP` en meerdere onderliggende knoop punten, inclusief `E2EDKT1002` en `E2EDKT2001` . 
 
 ```xml
 
@@ -900,7 +903,7 @@ Het volgende voor beeld is een gegevens record met gegroepeerde segmenten. Dit o
 
 ```
 
-De aanbevolen methode is om een IDoc-id te maken voor gebruik met tRFC. U kunt deze trans actie-id instellen `tid` met behulp van de [bewerking IDOC verzenden](https://docs.microsoft.com/connectors/sap/#send-idoc) in de API van de SAP-connector.
+De aanbevolen methode is om een IDoc-id te maken voor gebruik met tRFC. U kunt deze trans actie-id instellen `tid` met behulp van de [bewerking IDOC verzenden](/connectors/sap/#send-idoc) in de API van de SAP-connector.
 
 Het volgende voor beeld is een alternatieve methode voor het instellen van de trans actie-id of `tid` . In dit voor beeld worden het laatste knoop punt van het gegevens record segment en het gegevens knooppunt IDoc gesloten. Vervolgens wordt de GUID, `guid` , die wordt gebruikt als de tRFC-id voor het detecteren van duplicaten. 
 
@@ -917,7 +920,7 @@ Het volgende voor beeld is een alternatieve methode voor het instellen van de tr
 
 1. Maak in de Azure Portal een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend.
 
-1. Voer in het zoekvak in `http request` als uw filter. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Voer in het zoekvak `http request` als uw filter in. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
    ![HTTP-aanvraag trigger toevoegen](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
@@ -934,7 +937,7 @@ Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    ![Nieuwe stap toevoegen aan logische app](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. Voer in het zoekvak in `sap` als uw filter. Selecteer in de lijst **acties** de optie **schema's genereren**.
+1. Voer in het zoekvak `sap` als uw filter in. Selecteer in de lijst **acties** de optie **schema's genereren**.
   
    ![Actie ' schema's genereren ' toevoegen aan logische app](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -1000,7 +1003,7 @@ U kunt de gegenereerde schema's ook downloaden of opslaan in opslag plaatsen, zo
 
 1. Selecteer in de Logic app Designer onder de trigger **nieuwe stap**.
 
-1. Voer in het zoekvak in `Resource Manager` als uw filter. Selecteer **een resource maken of bijwerken**.
+1. Voer in het zoekvak `Resource Manager` als uw filter in. Selecteer **een resource maken of bijwerken**.
 
    ![Azure Resource Manager actie selecteren](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
 

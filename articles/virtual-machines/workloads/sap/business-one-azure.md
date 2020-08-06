@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088288"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831104"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
 Dit document bevat richt lijnen voor het implementeren van SAP Business One in azure Virtual Machines. De documentatie is geen vervanging voor de installatie documentatie van Business One voor SAP. De documentatie moet betrekking hebben op elementaire plannings-en implementatie richtlijnen voor de Azure-infra structuur voor het uitvoeren van één toepassing op.
@@ -149,7 +149,7 @@ Voor SAP HANA strategieën voor back-up en herstel moet u de document [back-upgi
 ### <a name="business-one-client-server"></a>Bedrijf met één client server
 Overwegingen voor de opslag van deze onderdelen zijn niet het belangrijkste probleem. Niettemin wilt u echter een betrouwbaar platform hebben. Daarom moet u Azure Premium Storage voor deze VM gebruiken, zelfs voor de basis-VHD. Het formaat van de virtuele machine wijzigen, met de gegevens die zijn opgegeven in [SAP Business One hardware requirements Guide (Engelstalig](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)). Voor Azure moet u zich richten op en berekenen met de vereisten die zijn vermeld in hoofd stuk 2,4 van het document. Bij het berekenen van de vereisten moet u deze vergelijken met de volgende documenten om de ideale virtuele machine voor u te vinden:
 
-- [Grootten voor Windows Virtual Machines in Azure](../../windows/sizes.md)
+- [Grootten voor Windows Virtual Machines in Azure](../../sizes.md)
 - [SAP-notitie #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 Vergelijkt het aantal Cpu's en het geheugen dat nodig is voor wat door micro soft wordt gedocumenteerd. Houd bij het kiezen van de virtuele machines ook netwerk doorvoer in acht.

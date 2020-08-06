@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319232"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832974"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mail, contactpersonen en agenda's beheren in Office 365 Outlook met behulp van Azure Logic Apps
 
@@ -41,14 +41,14 @@ Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een ge
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer in het zoekvak in `office 365 outlook` als uw filter. In dit voor beeld **wordt geselecteerd wanneer een geplande gebeurtenis binnenkort wordt gestart**.
+1. Voer in het zoekvak `office 365 outlook` als uw filter in. In dit voor beeld **wordt geselecteerd wanneer een geplande gebeurtenis binnenkort wordt gestart**.
    
    ![Selecteer trigger om uw logische app te starten](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
 1. Als u wordt gevraagd om u aan te melden, geeft u uw Office 365-referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie voor de eigenschappen van de trigger op.
 
    > [!NOTE]
-   > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md)voor meer informatie.
+   > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)voor meer informatie.
 
    In dit voor beeld wordt de agenda geselecteerd die door de trigger wordt gecontroleerd, bijvoorbeeld:
 
@@ -74,14 +74,14 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
    Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak in `office 365 outlook` als uw filter. In dit voor beeld wordt **contact maken**geselecteerd.
+1. Voer in het zoekvak `office 365 outlook` als uw filter in. In dit voor beeld wordt **contact maken**geselecteerd.
 
    ![Selecteer de actie die moet worden uitgevoerd in uw logische app](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
 1. Als u wordt gevraagd om u aan te melden, geeft u uw Office 365-referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie op voor de eigenschappen van de actie.
 
    > [!NOTE]
-   > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md)voor meer informatie.
+   > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)voor meer informatie.
 
    In dit voor beeld wordt de map Contacts geselecteerd waarin de actie de nieuwe contact persoon maakt, bijvoorbeeld:
 

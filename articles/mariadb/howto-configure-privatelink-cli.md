@@ -7,19 +7,19 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 794f9feaaa201ade6c824852e3609be6489a8513
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504633"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833178"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren met CLI
 
 Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren. In dit artikel leert u hoe u de Azure CLI gebruikt om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MariaDB-server met een persoonlijk Azure-eind punt.
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MariaDB de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen ondersteunt.
+> De functie voor persoonlijke koppelingen is alleen beschikbaar voor Azure Database for MariaDB servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de database server zich in een van deze prijs categorieën bevindt.
 
 ## <a name="prerequisites"></a>Vereisten
 

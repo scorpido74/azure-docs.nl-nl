@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f3265e70159cd4c27f698d00d85dce7d4cb49b95
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0e8ea218aa9c557fb109aee0dba318cfd5f605c7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286152"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836238"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption met Azure AD voor Windows-Vm's (vorige versie)
 
@@ -74,7 +74,7 @@ In dit scenario kunt u versleuteling inschakelen met behulp van een sjabloon, Po
 
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a>Versleuteling inschakelen op bestaande of actieve Vm's met Azure PowerShell 
-Gebruik de cmdlet [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) om versleuteling in te scha kelen op een actieve IaaS-virtuele machine in Azure. Voor informatie over het inschakelen van versleuteling met Azure Disk Encryption met behulp van Power shell-cmdlets raadpleegt u de blog berichten [verkennen Azure Disk Encryption met Azure PowerShell-deel 1](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) en [bekijkt u Azure Disk Encryption met Azure PowerShell-deel 2](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx).
+Gebruik de cmdlet [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) om versleuteling in te scha kelen op een actieve IaaS-virtuele machine in Azure. Voor informatie over het inschakelen van versleuteling met Azure Disk Encryption met behulp van Power shell-cmdlets raadpleegt u de blog berichten [verkennen Azure Disk Encryption met Azure PowerShell-deel 1](/archive/blogs/azuresecurity/explore-azure-disk-encryption-with-azure-powershell) en [bekijkt u Azure Disk Encryption met Azure PowerShell-deel 2](/archive/blogs/azuresecurity/explore-azure-disk-encryption-with-azure-powershell-part-2).
 
 -  **Een actieve VM versleutelen met behulp van een client geheim:** Het onderstaande script initialiseert uw variabelen en voert de cmdlet Set-AzVMDiskEncryptionExtension uit. De resource groep, de VM, de sleutel kluis, de AAD-app en het client geheim moeten al zijn gemaakt als vereisten. Vervang MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, MySecureVault, my-AAD-client-ID en My-AAD-client-Secret door uw waarden.
      ```azurepowershell

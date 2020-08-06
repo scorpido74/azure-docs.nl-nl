@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: ac9c8b0fe974c0a4dfebf1bcc303a379e2bd07ed
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268030"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831410"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale op Azure
 
@@ -67,7 +67,7 @@ Deze architectuur voert de toepassings-, opslag-en gegevens lagen uit op virtuel
 
 -   Een DB2 pureScale-cluster. Het type reken resources dat u nodig hebt in azure, is afhankelijk van uw installatie. In het algemeen kunt u twee benaderingen gebruiken:
 
-    -   Gebruik een HPC-netwerk (High-Performance Computing) met meerdere knoop punten waarbij kleine tot middel grote instanties toegang krijgen tot gedeelde opslag. Voor dit HPC-type configuratie bieden de door Azure-geheugen geoptimaliseerde E-Series of door opslag geoptimaliseerde [virtuele machines](../windows/sizes.md) van de L-serie de benodigde reken kracht.
+    -   Gebruik een HPC-netwerk (High-Performance Computing) met meerdere knoop punten waarbij kleine tot middel grote instanties toegang krijgen tot gedeelde opslag. Voor dit HPC-type configuratie bieden de door Azure-geheugen geoptimaliseerde E-Series of door opslag geoptimaliseerde [virtuele machines](../sizes.md) van de L-serie de benodigde reken kracht.
 
     -   Gebruik minder grote instanties van virtuele machines voor de data-engines. Voor grote instanties zijn de grootste, door het geheugen geoptimaliseerde [M-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuele machines ideaal voor zware werk belastingen in het geheugen. U hebt mogelijk een toegewezen exemplaar nodig, afhankelijk van de grootte van de logische partitie (LPAR) die wordt gebruikt om DB2 uit te voeren.
 

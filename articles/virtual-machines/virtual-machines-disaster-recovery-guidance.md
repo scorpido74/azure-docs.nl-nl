@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 43e7cb0906fc6008e8bdbfafec84ecfd8e8be6b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289679"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831138"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Wat gebeurt er als de onderbreking van een Azure-service gevolgen heeft voor Azure Vm's
 Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.
 
 Micro soft biedt een Service Level Agreement (SLA) voor zijn services als een toezeg ging voor de uptime en connectiviteit. De SLA voor afzonderlijke Azure-Services vindt u op [Azure Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
 
-Azure biedt al veel ingebouwde platform functies die ondersteuning bieden voor Maxi maal beschik bare toepassingen. Lees [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over deze services.
+Azure biedt al veel ingebouwde platform functies die ondersteuning bieden voor Maxi maal beschik bare toepassingen. Lees [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](/azure/architecture/framework/resiliency/backup-and-recovery)voor meer informatie over deze services.
 
 In dit artikel wordt een scenario voor herstel na nood gevallen beschreven, wanneer een hele regio een storing veroorzaakt door een grote natuur ramp of een uitgebreide service onderbreking. Dit zijn zeldzame gevallen, maar u moet er wel voor bereid zijn dat er een storing optreedt in een hele regio. Als een hele regio een onderbreking van de service ondervindt, zijn de lokaal redundante kopieën van uw gegevens tijdelijk niet beschikbaar. Als u geo-replicatie hebt ingeschakeld, worden er drie extra kopieën van uw Azure Storage-blobs en-tabellen in een andere regio opgeslagen. In het geval van een volledige regionale onderbreking of nood gevallen waarin de primaire regio niet kan worden hersteld, wijst Azure alle DNS-vermeldingen toe aan de regio met geo-replicatie.
 
@@ -43,7 +43,7 @@ Dit is de beste optie als u geen Azure Site Recovery, geografisch redundante ops
 
 - [Het beveiligen van uw toepassingen die worden uitgevoerd op virtuele machines van Azure](https://aka.ms/a2a-getting-started) met Azure site Recovery starten
 
-- Zie [herstel na nood gevallen en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over het implementeren van een strategie voor herstel na nood gevallen en hoge Beschik baarheid.
+- Zie [herstel na nood gevallen en hoge Beschik baarheid voor Azure-toepassingen](/azure/architecture/framework/resiliency/backup-and-recovery)voor meer informatie over het implementeren van een strategie voor herstel na nood gevallen en hoge Beschik baarheid.
 
 - Zie [technische richt lijnen voor Azure](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
 
