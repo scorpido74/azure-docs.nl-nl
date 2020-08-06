@@ -3,12 +3,13 @@ title: 'Zelfstudie: back-ups van de SAP HANA-database in Azure maken met behulp 
 description: In deze zelfstudie ontdekt u hoe u een back-up maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd, naar een Azure Backup Recovery Services-kluis met behulp van Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 30e1f9fbda16841bbabf1407ef1f3d6ef658ecf9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003451"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489500"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: Back-ups maken van SAP HANA-databases in een virtuele Azure-machine met behulp van Azure CLI
 

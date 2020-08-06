@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120480"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503443"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Zelfstudie: E-mailmeldingen over gebeurtenissen van Azure IoT Hub verzenden met Event Grid en Logic Apps
 
@@ -24,12 +25,12 @@ In dit artikel wordt u stapsgewijs begeleid bij het maken van een voorbeeldconfi
 
 * Een actief Azure-abonnement. Als u geen abonnement hebt, kunt u [een gratis Azure-account maken](https://azure.microsoft.com/pricing/free-trial/).
 
-* Een e-mailaccount van een e-mailprovider die door Azure Logic Apps wordt ondersteund, bijvoorbeeld Office 365 Outlook, Outlook.com of Gmail. Dit e-mailaccount wordt gebruikt voor het verzenden van de gebeurtenismeldingen. Zie [Overzicht van connectors](https://docs.microsoft.com/connectors/) voor een volledige lijst met ondersteunde Logic App-connectors.
+* Een e-mailaccount van een e-mailprovider die door Azure Logic Apps wordt ondersteund, bijvoorbeeld Office 365 Outlook, Outlook.com of Gmail. Dit e-mailaccount wordt gebruikt voor het verzenden van de gebeurtenismeldingen. Zie [Overzicht van connectors](/connectors/) voor een volledige lijst met ondersteunde Logic App-connectors.
 
   > [!IMPORTANT]
-  > Voordat u Gmail gebruikt, controleert u of u een G Suite-bedrijfsaccount hebt (e-mailadres met een aangepast domein) of een Gmail-consumentenaccount (e-mailadres met @gmail.com of @googlemail.com). Alleen bedrijfsaccounts van G Suite kunnen de Gmail-connector zonder beperkingen gebruiken met andere connectors in logische apps. Als u een Gmail-consumentenaccount hebt, kunt u de Gmail-connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
+  > Voordat u Gmail gebruikt, controleert u of u een G Suite-bedrijfsaccount hebt (e-mailadres met een aangepast domein) of een Gmail-consumentenaccount (e-mailadres met @gmail.com of @googlemail.com). Alleen bedrijfsaccounts van G Suite kunnen de Gmail-connector zonder beperkingen gebruiken met andere connectors in logische apps. Als u een Gmail-consumentenaccount hebt, kunt u de Gmail-connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
-* Een IoT Hub in Azure. Als u nog geen hub hebt gemaakt, leest u [Get started with IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md) (Aan de slag met IoT Hub) voor stapsgewijze instructies.
+* Een IoT Hub in Azure. Als u nog geen hub hebt gemaakt, leest u [Get started with IoT Hub](../iot-hub/quickstart-send-telemetry-dotnet.md) (Aan de slag met IoT Hub) voor stapsgewijze instructies.
 
 ## <a name="create-a-logic-app"></a>Een logische app maken
 
@@ -247,7 +248,7 @@ Test de logische app door een nieuw apparaat te maken om zo een e-mail voor meld
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In plaats van Azure Portal te gebruiken, kunt u de stappen voor IoT Hub ook uitvoeren met de Azure CLI. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenisabonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IoT-apparaat](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity) voor meer informatie.
+In plaats van Azure Portal te gebruiken, kunt u de stappen voor IoT Hub ook uitvoeren met de Azure CLI. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenisabonnement](/cli/azure/eventgrid/event-subscription) en het [maken van een IoT-apparaat](/cli/azure/ext/azure-iot/iot/hub/device-identity) voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

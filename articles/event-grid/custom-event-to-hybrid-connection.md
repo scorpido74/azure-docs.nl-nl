@@ -3,12 +3,13 @@ title: 'Zelfstudie: Aangepaste gebeurtenissen verzenden naar hybride verbinding 
 description: 'Zelfstudie: Gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een hybride verbinding wordt gebruikt voor het eindpunt.'
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 679cccf892d7b30964881d9a6146e02f3ee5dc90
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114870"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503171"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Zelfstudie: Aangepaste gebeurtenissen naar Azure Relay Hybrid Connections routeren met behulp van Azure CLI en Event Grid
 
@@ -16,7 +17,7 @@ Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Relay Hybrid Con
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u al een hybride verbinding en een listener-toepassing hebt. Zie [Aan de slag met Relay Hybrid Connections - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) of [Aan de slag met Relay Hybrid Connections - knooppunt](../service-bus-relay/relay-hybrid-connections-node-get-started.md) als u wilt beginnen met hybride verbindingen.
+In dit artikel wordt ervan uitgegaan dat u al een hybride verbinding en een listener-toepassing hebt. Zie [Aan de slag met Relay Hybrid Connections - .NET](/azure/azure-relay/relay-hybrid-connections-dotnet-get-started) of [Aan de slag met Relay Hybrid Connections - knooppunt](/azure/azure-relay/relay-hybrid-connections-node-get-started) als u wilt beginnen met hybride verbindingen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

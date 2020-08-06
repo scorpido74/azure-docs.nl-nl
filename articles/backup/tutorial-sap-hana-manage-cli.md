@@ -3,12 +3,13 @@ title: 'Zelfstudie: Back-up van SAP HANA-database beheren met CLI'
 description: In deze zelfstudie leert u hoe u met behulp van Azure CLI back-ups beheert van SAP HANA-databases die op een Azure-VM worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 40cfb46faf993a995248d79d60c62de912bd88ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538136"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489432"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: SAP HANA-databases op een Azure-VM beheren met Azure CLI
 

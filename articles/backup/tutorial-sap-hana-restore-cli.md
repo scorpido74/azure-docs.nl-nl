@@ -3,12 +3,13 @@ title: 'Zelfstudie: SAP HANA-database herstellen in Azure met behulp van CLI'
 description: In deze zelfstudie leert u hoe u SAP HANA-databases die worden uitgevoerd op een virtuele Azure-machine herstelt vanuit een Azure Backup Recovery Services-kluis met behulp van Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 617c21d8c62ed83678f6fc99741409e82eb3c0b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 282f0ee61ffae455d6d3e49ea445d5ddc2fe56ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023922"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500824"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: SAP HANA-databases op een virtuele Azure-machine herstellen met behulp van Azure CLI
 

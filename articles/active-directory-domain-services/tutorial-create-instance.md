@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 28c56b7ece51e39d72c4ddff39d681eeb57d2252
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: dc225cef2981bd6307a919d52b75d3e0791e46cf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024720"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490997"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Maak en configureer een door Azure Active Directory Domain Services beheerd domein
 
@@ -99,7 +99,7 @@ Vul de velden in het venster *Basisinstellingen* van het Azure-portal in om een 
     Voor deze zelfstudie selecteert u de *Standaard*-SKU.
 1. Een *forest* is een logische constructie die door Active Directory Domain Services wordt gebruikt om een of meer domeinen te groeperen. Een beheerd domein wordt standaard gemaakt als een *Gebruikersforest*. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving.
 
-    Met een *resourceforest* worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Resourceforests zijn momenteel beschikbaar als preview-versie. Raadpleeg [Overzicht van Azure AD DS-resourceforests][resource-forests] voor meer informatie over *resourceforests*, waaronder redenen om deze te gebruiken en hoe u forestvertrouwensrelaties maakt met on-premises AD DS-domeinen.
+    Met een *resourceforest* worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Raadpleeg [Overzicht van Azure AD DS-resourceforests][resource-forests] voor meer informatie over *resourceforests*, waaronder redenen om deze te gebruiken en hoe u forestvertrouwensrelaties maakt met on-premises AD DS-domeinen.
 
     Voor deze zelfstudie kiest u voor het maken van een *gebruikersforest*.
 
