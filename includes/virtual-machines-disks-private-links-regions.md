@@ -7,18 +7,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: c564db3d454c138a62cae1adcd9971d305ec15ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: references_regions
+ms.openlocfilehash: 57e8c2cab69e68d10eb57afa01a9968041bb5906
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535519"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771056"
 ---
 Privékoppelingen voor het importeren of exporteren van beheerde schijven zijn momenteel alleen beschikbaar in:
 
-- US - oost
-- US - west 2
-- VS - zuid-centraal
-- VS (overheid) - Virginia
-- VS (overheid) - Arizona
+- VS - noord-centraal

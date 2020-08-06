@@ -4,12 +4,12 @@ description: Dit artikel bevat een voorbeeld van een Azure PowerShell-script dat
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 89917554da3d5b338ae17332ea8847d6313ca534
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: f37a90b84e5e55298efc0b3cd53812db95e4d86d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171173"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460725"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>Abonneren op gebeurtenissen voor een aangepaste onderwerp met PowerShell
 
@@ -37,9 +37,9 @@ In dit script wordt de volgende opdracht gebruikt om het abonnement op de gebeur
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Hiermee wordt een Event Grid-abonnement gemaakt. |
+| [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | Hiermee wordt een Event Grid-abonnement gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Overzicht van door Azure beheerde toepassingen](../overview.md) voor algemene informatie over beheerde toepassingen.
-* Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie over PowerShell.
+* Zie [Documentatie over Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie over PowerShell.

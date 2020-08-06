@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 01841b1e6d6fed684137e1327dd77e276650803c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340607"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430642"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Quickstart: Service Bus-wachtrijen in Azure gebruiken met Node.js en het azure-sb-pakket
 In deze zelfstudie leert u hoe u Node.js-toepassingen kunt maken om berichten te verzenden naar en te ontvangen van een Azure Service Bus-wachtrij met behulp van het [azure-sb-pakket](https://www.npmjs.com/package/azure-sb). De voorbeelden zijn geschreven in JavaScript en maken gebruik van de [Azure-module](https://www.npmjs.com/package/azure) van Node.js, die intern gebruikmaakt van het azure-sb-pakket.

@@ -3,12 +3,12 @@ title: Blob Storage-gebeurtenissen verzenden naar een webeindpunt - sjabloon
 description: Gebruik Azure Event Grid en een Azure Resource Manager-sjabloon om een Blob-opslagaccount te maken en u te abonneren op de gebeurtenissen ervan. Verstuur de gebeurtenissen naar een webhook.
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103310"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460436"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Blob Storage-gebeurtenissen naar een webeindpunt routeren met behulp van een ARM-sjabloon
 
@@ -86,7 +86,7 @@ Wanneer u het bestand uploadt naar de Azure Blob-opslag, stuurt Event Grid een b
 
 Zie de volgende artikelen voor meer informatie over de Azure Resource Manager-sjablonen:
 
-* [Documentatie voor Azure Resource Manager](/azure/azure-resource-manager)
+* [Documentatie voor Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Resources definiëren in Azure Resource Manager-sjablonen](/azure/templates/)
 * [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).
