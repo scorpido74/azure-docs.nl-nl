@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85798150"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760869"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
@@ -173,7 +173,6 @@ Zolang één filter predicaat een van de index typen gebruikt, evalueert de quer
 * Met de bovenstaande query wordt eerst gefilterd op vermeldingen waarbij voor naam "Andrew" met behulp van de index. Vervolgens worden alle voor naam = "Andrew" vermeldingen door gegeven aan een volgende pijp lijn om het CONTAINs-filter predicaat te evalueren.
 
 * U kunt query's versnellen en volledige container scans voor komen met behulp van functies die de index niet gebruiken (bijvoorbeeld CONTAINs) door extra filter predikaten toe te voegen die de index gebruiken. De volg orde van de filter componenten is niet belang rijk. De query-engine geeft aan welke predikaten meer selectief zijn en voeren de query dienovereenkomstig uit.
-
 
 ## <a name="querying-with-indexes"></a>Query's uitvoeren met indexen
 

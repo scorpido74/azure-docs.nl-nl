@@ -1,24 +1,24 @@
 ---
 title: Ondersteuning voor netwerk bestandssysteem 3,0 in Azure Blob-opslag (preview) | Microsoft Docs
-description: Blob-opslag ondersteunt nu het NFS-protocol (Network File System) 3,0. Met deze ondersteuning kunnen Linux-clients een container koppelen in Blob Storage vanaf een virtuele Azure-machine (VM) of een computer on-premises.
+description: Blob-opslag ondersteunt nu het NFS-protocol (Network File System) 3,0. Met deze ondersteuning kunnen Windows-en Linux-clients een container koppelen in Blob Storage vanaf een virtuele Azure-machine (VM) of een computer die on-premises wordt uitgevoerd.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372889"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760920"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Ondersteuning voor het protocol Network File System (NFS) 3,0 in Azure Blob-opslag (preview-versie)
 
-Blob-opslag ondersteunt nu het NFS-protocol (Network File System) 3,0. Met deze ondersteuning kunnen Linux-clients een container koppelen in Blob Storage vanaf een virtuele Azure-machine (VM) of een computer on-premises. 
+Blob-opslag ondersteunt nu het NFS-protocol (Network File System) 3,0. Met deze ondersteuning kunnen Windows-of Linux-clients een container koppelen in Blob Storage vanaf een virtuele Azure-machine (VM) of een computer on-premises. 
 
 > [!NOTE]
 > Ondersteuning voor NFS 3,0-protocol in Azure Blob-opslag is in open bare preview en is beschikbaar in de volgende regio's: VS Oost, VS Centraal en Canada-centraal.
@@ -41,7 +41,7 @@ Als u een opslag account container wilt koppelen, moet u deze dingen doen.
 
 7. Koppel de container.
 
-Zie [Blob Storage in Linux koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)](network-file-system-protocol-support-how-to.md)voor stapsgewijze instructies.
+Zie [Blob Storage koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)](network-file-system-protocol-support-how-to.md)voor stapsgewijze instructies.
 
 > [!IMPORTANT]
 > Het is belang rijk om deze taken uit te voeren in de juiste volg orde. U kunt geen containers koppelen die u maakt voordat u het NFS 3,0-protocol inschakelt voor uw account. Nadat u het NFS 3,0-protocol hebt ingeschakeld voor uw account, kunt u dit ook niet uitschakelen.
@@ -113,7 +113,7 @@ Tijdens de preview-periode worden er geen kosten in rekening gebracht. Prijzen v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Blob Storage in Linux koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)](network-file-system-protocol-support-how-to.md)om aan de slag te gaan.
+Zie [Blob Storage koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)](network-file-system-protocol-support-how-to.md)om aan de slag te gaan.
 
 
 

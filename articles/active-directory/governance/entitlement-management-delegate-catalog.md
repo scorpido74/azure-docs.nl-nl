@@ -3,7 +3,7 @@ title: Delegeren toegang tot de catalogus makers in het beheer van rechten van A
 description: Meer informatie over het overdragen van het toegangs beheer van IT-beheerders naar het catalogiseren van makers en project managers, zodat ze de toegang zelf kunnen beheren.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02f44543f78789284e7b8d39471d1346ca7b8e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078377"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798423"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Beheer van toegang tot catalogussen van de maker van het Azure AD-recht
 
@@ -33,9 +33,9 @@ Als u wilt delegeren aan gebruikers die geen beheerder zijn, zodat ze hun eigen 
 
 Volg deze stappen om een gebruiker toe te wijzen aan de maker van de catalogus.
 
-**Vereiste rol:** Globale beheerder of gebruikers beheerder
+**Vereiste rol:** bedrijfsbeheerder of gebruikersbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links in het gedeelte **beheer rechten** op **instellingen**.
 
@@ -53,7 +53,7 @@ Volg deze stappen om een gebruiker toe te wijzen aan de maker van de catalogus.
 
 Als u gedelegeerde functies, zoals catalogus makers en toegangs pakket beheerders, wilt toestaan om toegang te krijgen tot de Azure Portal voor het beheren van toegangs pakketten, moet u de instelling van de beheer Portal controleren.
 
-**Vereiste rol:** Globale beheerder of gebruikers beheerder
+**Vereiste rol:** bedrijfsbeheerder of gebruikersbeheerder
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **gebruikers**.
 

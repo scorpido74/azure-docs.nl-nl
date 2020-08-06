@@ -3,7 +3,7 @@ title: Wat is op groepen gebaseerde licentie verlening-Azure Active Directory | 
 description: Meer informatie over het Azure Active Directory op groepen gebaseerde licentie verlening, met inbegrip van de werking en aanbevolen procedures.
 services: active-directory
 keywords: Azure AD-licenties
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ce0d543f11a1dcc61616d8a386176272ab44aee
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561558"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797267"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?
 

@@ -4,14 +4,14 @@ description: Meer informatie over het configureren en wijzigen van het standaard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636322"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760818"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ In Azure Cosmos DB heeft elke container een indexerings beleid dat bepaalt hoe d
 In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus*in te stellen en *eigenschaps paden*op te nemen of uit te sluiten.
 
 > [!NOTE]
-> De methode voor het bijwerken van het indexerings beleid dat in dit artikel wordt beschreven, is alleen van toepassing op de SQL-API (core) van Azure Cosmos DB.
+> De methode voor het bijwerken van het indexerings beleid dat in dit artikel wordt beschreven, is alleen van toepassing op de SQL-API (core) van Azure Cosmos DB. Meer informatie over indexering in [de API van Azure Cosmos DB voor MongoDb](mongodb-indexing.md)
 
 ## <a name="indexing-mode"></a>Indexerings modus
 
@@ -36,7 +36,7 @@ Indexerings beleid is standaard ingesteld op `automatic` . Het wordt bereikt doo
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Eigenschaps paden opnemen en uitsluiten
 
-Een aangepast indexerings beleid kan eigenschaps paden opgeven die expliciet worden opgenomen of uitgesloten van indexeren. Door het aantal geïndexeerde paden te optimaliseren, kunt u de hoeveelheid opslag die wordt gebruikt door uw container verlagen en de latentie van schrijf bewerkingen verbeteren. Deze paden worden gedefinieerd volgens [de methode die wordt beschreven in de sectie Overzicht indexering](index-overview.md#from-trees-to-property-paths) met de volgende toevoegingen:
+Een aangepast indexerings beleid kan eigenschaps paden opgeven die expliciet worden opgenomen of uitgesloten van indexeren. Door het aantal geïndexeerde paden te optimaliseren, kunt u de latentie en de RU-kosten van schrijf bewerkingen aanzienlijk verminderen. Deze paden worden gedefinieerd volgens [de methode die wordt beschreven in de sectie Overzicht indexering](index-overview.md#from-trees-to-property-paths) met de volgende toevoegingen:
 
 - een pad dat leidt naar een scalaire waarde (teken reeks of getal) eindigt op`/?`
 - elementen uit een matrix worden samen met de `/[]` notatie (in plaats van `/0` , `/1` enzovoort) beschreven.
@@ -89,7 +89,7 @@ Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 
 Als deze eigenschap niet is opgegeven, hebben deze eigenschappen de volgende standaard waarden:
 
-| **Eigenschaps naam**     | **Standaardwaarde** |
+| **Eigenschaps naam**     | **Standaard waarde** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
@@ -129,7 +129,7 @@ Wanneer u een ruimtelijk pad definieert in het indexerings beleid, moet u defini
 
 * Lines Tring
 
-Met Azure Cosmos DB worden standaard geen ruimtelijke indexen gemaakt. Als u ruimtelijke SQL-functies wilt gebruiken, moet u een ruimtelijke index maken op basis van de vereiste eigenschappen. Zie [deze sectie](geospatial.md) voor voor beelden van indexerings beleid voor het toevoegen van ruimtelijke indexen.
+Met Azure Cosmos DB worden standaard geen ruimtelijke indexen gemaakt. Als u ruimtelijke SQL-functies wilt gebruiken, moet u een ruimtelijke index maken op basis van de vereiste eigenschappen. Zie [deze sectie](sql-query-geospatial-index.md) voor voor beelden van indexerings beleid voor het toevoegen van ruimtelijke indexen.
 
 ## <a name="composite-indexes"></a>Samengestelde indexen
 
@@ -259,16 +259,23 @@ De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen
 
 ## <a name="modifying-the-indexing-policy"></a>Het indexerings beleid wijzigen
 
-Het indexerings beleid van een container kan op elk gewenst moment worden bijgewerkt [met behulp van de Azure portal of een van de ondersteunde sdk's](how-to-manage-indexing-policy.md). Een update voor het indexerings beleid activeert een trans formatie van de oude index naar de nieuwe, die online en op locatie wordt uitgevoerd (zodat er geen extra opslag ruimte wordt verbruikt tijdens de bewerking). De oude beleids index is efficiënt getransformeerd naar het nieuwe beleid zonder dat dit van invloed is op de schrijf Beschik baarheid of de door Voer ingericht op de container. Index transformatie is een asynchrone bewerking en de tijd die nodig is om te volt ooien, is afhankelijk van de ingerichte door Voer, het aantal items en de grootte ervan.
+Het indexerings beleid van een container kan op elk gewenst moment worden bijgewerkt [met behulp van de Azure portal of een van de ondersteunde sdk's](how-to-manage-indexing-policy.md). Een update voor het indexerings beleid activeert een trans formatie van de oude index naar de nieuwe, die online en in-place wordt uitgevoerd (zodat er geen extra opslag ruimte wordt verbruikt tijdens de bewerking). De oude beleids index is efficiënt getransformeerd naar het nieuwe beleid, zonder dat dit van invloed is op de beschik baarheid voor schrijven, lees Beschik baarheid of de door Voer die is ingericht op de container. Index transformatie is een asynchrone bewerking en de tijd die nodig is om te volt ooien, is afhankelijk van de ingerichte door Voer, het aantal items en de grootte ervan.
 
 > [!NOTE]
-> Bij het toevoegen van een bereik-of ruimtelijke index, retour neren query's mogelijk niet alle overeenkomende resultaten en worden deze zonder fouten geretourneerd. Dit betekent dat query resultaten mogelijk niet consistent zijn totdat de index transformatie is voltooid. Het is mogelijk om de voortgang van de index transformatie [te volgen met behulp van een van de sdk's](how-to-manage-indexing-policy.md).
+> Het is mogelijk om de voortgang van de index transformatie [te volgen met behulp van een van de sdk's](how-to-manage-indexing-policy.md).
 
-Als de modus nieuw indexerings beleid is ingesteld op consistent, kan er geen andere wijziging van het indexerings beleid worden toegepast terwijl de index transformatie wordt uitgevoerd. Een actieve index transformatie kan worden geannuleerd door de modus van het indexerings beleid in te stellen op geen (waardoor de index onmiddellijk wordt verwijderd).
+Er zijn geen gevolgen voor het schrijven van de beschik baarheid tijdens index transformaties. De index transformatie gebruikt uw ingerichte RUs, maar met een lagere prioriteit dan uw ruwe bewerkingen of query's.
+
+Er is geen invloed op de Lees Beschik baarheid bij het toevoegen van een nieuwe index. Met query's worden alleen nieuwe indexen gebruikt wanneer de index transformatie is voltooid. Tijdens de index transformatie zal de query-engine bestaande indexen blijven gebruiken. u ziet dan vergelijk bare Lees prestaties tijdens de indexerings transformatie om te zien wat u hebt gezien voordat de index wijziging werd geïnitieerd. Bij het toevoegen van nieuwe indexen is er ook geen risico van onvolledige of inconsistente query resultaten.
+
+Bij het verwijderen van indexen en het direct uitvoeren van query's die filteren op de verwijderde indexen, is er geen garantie voor consistente of volledige query resultaten. Als u meerdere indexen verwijdert en dit doet in één wijziging van het indexerings beleid, garandeert de query-engine consistente en volledige resultaten tijdens de index transformatie. Als u indexen verwijdert via meerdere wijzigingen in het indexerings beleid, garandeert de query-engine echter geen consistente of volledige resultaten totdat alle index transformaties zijn voltooid. De meeste ontwikkel aars kunnen geen indexen verwijderen en vervolgens onmiddellijk proberen om query's uit te voeren die gebruikmaken van deze indexen, zodat deze situatie in de praktijk niet waarschijnlijk is.
+
+> [!NOTE]
+> Waar mogelijk moet u altijd proberen meerdere index wijzigingen in één wijziging in een indexerings beleid te groeperen
 
 ## <a name="indexing-policies-and-ttl"></a>Indexerings beleid en TTL
 
-Voor de [functie time-to-Live (TTL)](time-to-live.md) moet indexering actief zijn op de container waarop deze is ingeschakeld. Dit betekent dat:
+Het gebruik van de [functie time-to-Live (TTL)](time-to-live.md) vereist indexering. Dit betekent dat:
 
 - het is niet mogelijk om TTL te activeren voor een container waarbij de indexerings modus is ingesteld op geen,
 - het is niet mogelijk om de indexerings modus in te stellen op geen in een container waarin TTL wordt geactiveerd.

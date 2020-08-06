@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: fe05a474f4f6ee70c07e0e19621487d51d92966d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490623"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760308"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Documenten indexeren in Azure Data Lake Storage Gen2
 
 > [!IMPORTANT] 
-> Azure Data Lake Storage Gen2-ondersteuning is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2020-06-30-preview](search-api-preview.md) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Azure Data Lake Storage Gen2-ondersteuning is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2020-06-30-preview](search-api-preview.md) en Portal bieden deze functie. Er is momenteel geen .NET SDK-ondersteuning.
 
 
 Wanneer u een Azure Storage-account instelt, hebt u de mogelijkheid om een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)in te scha kelen. Hierdoor kan het verzamelen van inhoud in een account worden georganiseerd in een hiërarchie van directory's en geneste submappen. Door hiërarchische naam ruimte in te scha kelen, schakelt u [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)in.
@@ -38,7 +38,7 @@ Meld u aan voor de Data Lake Storage Gen2 Preview voor indexering door [dit form
 
 Zodra u een bevestiging hebt ontvangen dat uw Preview-Registratie is geslaagd, bent u klaar om de Indexing-pijp lijn te maken.
 
-U kunt inhoud en meta gegevens indexeren van Data Lake Storage Gen2 met behulp van de [rest API versie 2020-06-30-preview](search-api-preview.md). Er is op dit moment geen portal-of .NET SDK-ondersteuning.
+U kunt inhoud en meta gegevens indexeren van Data Lake Storage Gen2 met behulp van de [rest API versie 2020-06-30-preview](search-api-preview.md) of de portal. Er is op dit moment geen .NET SDK-ondersteuning.
 
 Het indexeren van inhoud in Data Lake Storage Gen2 is identiek aan het indexeren van inhoud in Azure Blob-opslag. Als u wilt weten hoe u de Data Lake Storage Gen2 gegevens bron, index en Indexeer functie kunt instellen, raadpleegt u [documenten in azure Blob Storage indexeren met azure Cognitive Search](search-howto-indexing-azure-blob-storage.md). Het artikel Blob Storage bevat ook informatie over welke document indelingen worden ondersteund, welke eigenschappen van BLOB-meta gegevens worden geëxtraheerd, incrementeel indexeren en nog veel meer. Deze informatie is hetzelfde voor Data Lake Storage Gen2.
 

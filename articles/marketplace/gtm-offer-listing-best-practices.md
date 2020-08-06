@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 388fb7e36a823d7f6e9ee1d58220d3a1008d8cec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498039"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798117"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -119,9 +119,9 @@ Tref woorden kunnen klanten helpen bij het zoeken naar uw aanbieding. Bepaal de 
 ## <a name="storefront-marketing-details"></a>Marketing Details van winkel
 | Winkel instelling | Best practice |
 |:--- |:--- |  
-| Logo van aanbieding (PNG-indeling, 48 &nbsp; &times; &nbsp; 48): zoek pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de zoek pagina van uw aanbieding. |
-| Logo van aanbieding (PNG-indeling, 216 &nbsp; &times; &nbsp; 216): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. |
-| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden: <ul> <li> technische documenten, </li> <li> brochures </li> <li> controle lijsten of </li> <li> Power Point-presentaties.</li> </ul>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen. <br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
+| Logo van aanbieding (PNG-indeling, tussen 216 × 216 en 350 x 350 pixels): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. Het formaat van het partner centrum wordt gewijzigd in de vereiste logo grootten. |
+| Logo van aanbieding (PNG-indeling, 48 x 48 pixels): zoek pagina | Het partner centrum genereert dit logo van het grote logo dat u hebt geüpload. U kunt dit eventueel vervangen door een andere afbeelding. |
+| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden:<ul><li>technische documenten</li><li> brochures</li><li>controle lijsten of</li><li> Power Point-presentaties</li></ul><br>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen.<br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
 | Video's: AppSource, Consulting Services en SaaS biedt alleen | De krach tigste Video's communiceren de waarde van uw aanbieding in een verhalende vorm:<ul> <li> Maak uw klant, niet uw bedrijf, de held van het verhaal. </li> <li> Uw video moet de belangrijkste uitdagingen en doel stellingen van uw doel klant aanpakken. </li> <li> Aanbevolen lengte: 60-90 seconden.</li> <li> Belang rijke Zoek woorden opnemen die de naam van de Video's gebruiken. </li> <li> Overweeg extra Video's toe te voegen, zoals een procedure, aan de slag of klant ervaringen. </li> </ul> |
 | Scherm afbeeldingen (1280 &nbsp; &times; &nbsp; 720) | Maxi maal vijf scherm opnamen toevoegen:<br>Belang rijke Zoek woorden opnemen in de bestands namen. |
 

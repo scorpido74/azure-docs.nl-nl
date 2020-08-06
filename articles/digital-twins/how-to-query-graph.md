@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543347"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760393"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -172,7 +172,7 @@ Er kan een vertraging van Maxi maal tien seconden zijn voordat wijzigingen in uw
 Er zijn extra beperkingen voor het gebruik van `JOIN` tijdens de preview-versie.
 * Er worden geen subquery's ondersteund in de `FROM` instructie.
 * `OUTER JOIN`semantische waarden worden niet ondersteund, wat betekent dat als de relatie een positie van nul heeft, de hele rij wordt verwijderd uit de uitvoer resultaatset.
-* Tijdens de open bare preview is de diepte van de grafiek traversal beperkt: er is slechts één `JOIN` toegestaan per query.
+* Tijdens de preview-periode is de diepte van de grafiek traverser beperkt tot vijf `JOIN` niveaus per query.
 * De bron voor `JOIN` bewerkingen is beperkt: de query moet de apparaatdubbels declareren waar de query wordt gestart.
 
 ## <a name="query-best-practices"></a>Aanbevolen procedures voor query’s

@@ -3,7 +3,7 @@ title: Toegangs aanvragen goed keuren of weigeren-Azure AD-rechts beheer
 description: Meer informatie over het gebruik van de portal mijn toegang voor het goed keuren of weigeren van aanvragen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078101"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798355"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer
 

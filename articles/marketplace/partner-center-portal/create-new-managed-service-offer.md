@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ae079fce02f58d6c6457d7fe6401526f4002662f
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405242"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798185"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -133,23 +133,17 @@ In deze sectie kunt u logo's en installatie kopieën opgeven die worden gebruikt
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
-#### <a name="marketplace-logos"></a>Marketplace-logo's
+#### <a name="store-logos"></a>Winkel logo's
 
-Geef het logo van uw aanbod op in vier pixel grootten:
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
+
+Alle drie de logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
 
 - **Klein** (48 x 48)
 - **Gemiddeld** (90 x 90)
-- **Groot** (216 x 216)
-- **Breed** (255 x 115)
+- **Groot** (tussen 216 x 216 en 350 x 350)
 
-Volg deze richt lijnen voor uw logo's:
-
-- Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Beperk het aantal primaire en secundaire kleuren in uw logo.
-- De themakleuren van de portal zijn wit en zwart. Gebruik deze kleuren niet als de achtergrondkleur voor uw logo. Gebruik een kleur waardoor uw logo opvalt in de portal. We adviseren eenvoudige primaire kleuren.
-- Als u een transparante achtergrond gebruikt, moeten het logo en de tekst niet wit, zwart of blauw zijn.
-- Het uiterlijk van uw logo moet plat zijn, zonder kleurovergangen. Gebruik geen achtergrond met een kleurovergang in het logo.
-- Plaats geen tekst in het logo, ook niet de naam van uw bedrijf of merk.
-- Zorg ervoor dat het logo niet is uitgerekt.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

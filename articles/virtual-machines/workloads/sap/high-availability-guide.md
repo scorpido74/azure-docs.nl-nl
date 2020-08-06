@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5b105bf6fea8b78a11f77d73918376670be9ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf483d5a9b6a75ccad48908701d89d1c40206208
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052574"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759866"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hoge Beschik baarheid voor SAP net-Weaver op Azure-Vm's
 
@@ -1449,7 +1449,7 @@ U moet een nieuwe profiel parameter toevoegen. De profiel parameter voor komt da
 
 Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
 
-1. Voeg deze profiel parameter toe aan het SAP-exemplaar profiel voor ASCS/SCS:
+1. Voeg deze profiel parameter toe aan het SAP-exemplaar profiel voor ASCS/SCS als u gebruikmaakt van ENSA1:
 
    ```
    enque/encni/set_so_keepalive = true
@@ -1461,6 +1461,8 @@ Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
    Bijvoorbeeld naar het SAP SCS-exemplaar profiel en het bijbehorende pad:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+
+   Voor zowel ENSA1 als ENSA2, moet u ervoor zorgen dat de `keepalive` OS-para meters zijn ingesteld zoals beschreven in SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).  
 
 2. Start de SAP ASCS/SCS-instantie opnieuw op om de wijzigingen toe te passen.
 

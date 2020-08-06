@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280950"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797862"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -86,12 +86,12 @@ Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende 
 Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](become-publisher.md)voor een volledige controle lijst met registratie vereisten. 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Uw publicatie artefacten voorbereiden
-Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden. 
+Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden.
 
 |Installatie voor nieuwe uitgevers  |
 |---------|
 |MPN-id     |
-|Bedrijfs logo's (48 x 48, 216 x 216 pixels)     |
+|Bedrijfs logo's: 48 x 48 pixels (optioneel), 216 x 216 pixels-350 x 350 pixels (vereist)  |
 |Doel van de lead     |
 ||
 

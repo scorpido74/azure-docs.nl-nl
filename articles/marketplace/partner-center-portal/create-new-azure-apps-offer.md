@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326666"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797884"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -247,14 +247,15 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef in de volgende drie pixel grootten PNG-bestanden van het logo van uw aanbieding op:
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
+
+Alle drie de formaten van het logo zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
 
 - **Klein** (48 x 48)
 - **Gemiddeld** (90 x 90)
-- **Groot** (216 x 216)
-- **Breed** (255 x 115)
+- **Groot** (tussen 216 x 216 en 350 x 350)
 
-Alle drie de logo's zijn vereist en worden op verschillende plaatsen in de lijst gebruikt.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 
@@ -512,7 +513,7 @@ Geef aan wie beheer toegang moet hebben tot deze beheerde toepassing in elke ond
 
 **Autorisaties** : voeg de Azure Active Directory object-id toe van de gebruiker, groep of toepassing waaraan u machtigingen wilt verlenen voor de beheerde resource groep. Identificeer de gebruiker op basis van de principal-ID, die u kunt vinden op de [blade Azure Active Directory gebruikers op de Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
-Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor meer informatie. Zie [aan de slag met RBAC in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
+Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie. Zie [aan de slag met RBAC in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
 
 >[!Note]
 >Hoewel u Maxi maal 100 autorisaties per Cloud kunt toevoegen, is het over het algemeen eenvoudiger om een Active Directory gebruikers groep te maken en de ID op te geven in de principal-ID. Hierdoor kunt u meer gebruikers toevoegen aan de beheer groep nadat het plan is geïmplementeerd en de nood zaak voor het bijwerken van het plan beperken om meer autorisaties toe te voegen.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809480"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760410"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -30,7 +30,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de functies en fun
 
 ### <a name="what-is-azure-front-door"></a>Wat is Azure Front Door?
 
-Azure front deur is een Application Delivery Network (ADN) als een service, met verschillende mogelijkheden voor de taak verdeling van laag 7 voor uw toepassingen. Het biedt dynamische site versnelling (DSA) samen met globale taak verdeling met een nabije realtime failover. Het is een Maxi maal beschik bare en schaal bare service die volledig wordt beheerd door Azure.
+Azure front deur is een Application Delivery Network (ADN) als een service, met verschillende mogelijkheden voor de taak verdeling van laag 7 voor uw toepassingen. Deze service biedt dynamische siteversnelling (DSA) samen met wereldwijde taakverdeling met failover in bijna realtime. Het is een maximaal beschikbare en schaalbare service die volledig wordt beheerd door Azure.
 
 ### <a name="what-features-does-azure-front-door-support"></a>Welke functies worden ondersteund door Azure front-deur?
 
@@ -123,7 +123,7 @@ Opmerking: aangepaste TLS/SSL-certificaat updates nemen ongeveer 30 minuten in b
 Eventuele updates van routes of back-end-Pools, enzovoort, zijn naadloos en veroorzaken geen downtime (als de nieuwe configuratie juist is). Certificaat updates zijn ook atomisch en veroorzaken geen storingen, tenzij u overschakelt van ' AFD Managed ' naar ' uw eigen certificaat gebruiken ' of andersom.
 
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Kan de taak verdeling van de voor deur van Azure voor de voor grond zijn of verkeer binnen een virtueel netwerk routeren?
 
@@ -159,9 +159,12 @@ Voor de optie beheerd certificaat voor de voor deur worden de certificaten autom
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Wat zijn de huidige coderings suites die worden ondersteund door de Azure front-deur?
 
-Voor TLS 1.2 worden de volgende coderings suites ondersteund
+Voor TLS 1.2 worden de volgende coderings suites ondersteund: 
 
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
 Wanneer u aangepaste domeinen met TLS 1.0/1.1 gebruikt, worden de volgende coderings suites ondersteund:
 

@@ -3,7 +3,7 @@ title: Hulp zoeken en een ondersteunings ticket openen-Azure Active Directory | 
 description: Instructies voor het verkrijgen van hulp en het openen van een ondersteunings ticket voor Azure Active Directory.
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799361"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797284"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Hulp zoeken en een ondersteunings ticket openen voor Azure Active Directory
 Micro soft biedt wereld wijde technische, voor verkoop-, facturerings-en abonnements ondersteuning voor Azure Active Directory (Azure AD). Ondersteuning is online en telefonisch beschikbaar voor Microsoft Azure betaalde en proef abonnementen. Telefonische ondersteuning en online-ondersteuning bij factureren zijn in meer talen beschikbaar. 

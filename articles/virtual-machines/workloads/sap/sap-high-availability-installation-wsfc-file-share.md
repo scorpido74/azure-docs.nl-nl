@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617334"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760886"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Een hoge Beschik baarheid van SAP NetWeaver installeren op een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-exemplaren in azure
 
@@ -320,9 +320,10 @@ Werk de para meters bij in het SAP ASCS/SCS-exemplaar profiel \<SID> _ASCS/SCS \
 | Parameternaam | Parameterwaarde |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **true** |
+| enque/encni/set_so_keepalive  | **echte** |
 | Service/ha_check_node | **1** |
 
+De para meter `enque/encni/set_so_keepalive` is alleen nodig als ENSA1 wordt gebruikt.  
 Start het SAP ASCS/SCS-exemplaar opnieuw op. `KeepAlive`Para meters instellen op beide SAP ASCS/SCS-cluster knooppunten volgen de instructies voor [het instellen van Register vermeldingen op de cluster knooppunten van het SAP ASCS/SCS-exemplaar][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-exemplaar en SAP-toepassings servers installeren

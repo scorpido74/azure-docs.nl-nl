@@ -5,27 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289092"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759730"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Aangepaste weer gaven maken met behulp van de weer gave designer in Azure Monitor
 Met behulp van View designer in Azure Monitor kunt u verschillende aangepaste weer gaven maken in de Azure Portal die u kan helpen bij het visualiseren van gegevens in uw Log Analytics-werk ruimte. Dit artikel bevat een overzicht van de ontwerp functies en-procedures voor het maken en bewerken van aangepaste weer gaven.
 
 > [!IMPORTANT]
-> Weer gaven in Azure Monitor worden gefaseerd uit-en vervangen door [werkmappen](workbooks-overview.md) die extra functionaliteit bieden. Zie de [alternatieve hand leiding Azure monitor weergave Designer voor werkmappen](view-designer-conversion-overview.md) voor meer informatie over het converteren van uw bestaande weer gaven naar werkmappen. Raadpleeg de volgende tabel voor de stappen die in de komende maanden zullen worden uitgevoerd.
-> 
-> | Wijziging | Wat betekent dit | Verwachte datum |
-> |:---|:---|:---|
-> | Het maken van nieuwe weer gaven die zijn gemaakt via de weer gave Designer uitschakelen. | U kunt geen nieuwe aangepaste weer gaven meer maken en opslaan in de Azure Portal.| November 2020 |
-> | Schakel de bewerkings functie voor bestaande weer gaven met de Designer weer geven uit. | U kunt de bestaande aangepaste weer gaven niet meer wijzigen en wijzigingen opslaan. | November 2020 |
-> | De implementatie van weer gaven voor Log Analytics werk ruimten uitschakelen | U kunt geen aangepaste weer gaven meer implementeren met behulp van ARM om werk ruimten te Log Analytics. | 2021 maart |
-> | View Designer is niet meer beschikbaar in de Azure Portal | De portal-ervaring biedt geen ondersteuning meer voor de weer gave Designer. | Juni 2021 |
-> | Aangepaste weer gaven die zijn verwijderd uit de samen vatting van de werk ruimte | U hebt geen toegang meer tot uw aangepaste weergave gegevens. | December 2021 |
+> Weer gaven in Azure Monitor zijn overgegaan naar [werkmappen](workbooks-overview.md) die extra functionaliteit bieden. Zie de [alternatieve hand leiding Azure monitor weergave Designer voor werkmappen](view-designer-conversion-overview.md) voor meer informatie over het converteren van uw bestaande weer gaven naar werkmappen.
  
 
 

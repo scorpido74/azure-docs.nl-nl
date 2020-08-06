@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d2262017b257e9d7540d8dc640123ab584223d6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718595"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797148"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
@@ -32,6 +32,8 @@ In deze zelf studie worden de stappen beschreven die u moet uitvoeren op zowel d
 > * Gebruikers in werk plek verwijderen via Facebook wanneer ze geen toegang meer nodig hebben
 > * Gebruikers kenmerken gesynchroniseerd blijven tussen Azure AD en werk plek via Facebook
 > * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) bij werk plek via Facebook (aanbevolen)
+
+>[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -110,8 +112,8 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
    |---|---|
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
-   |actief|Boolean-waarde|
-   |titel|Boolean-waarde|
+   |actief|Booleaans|
+   |titel|Booleaans|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
@@ -157,7 +159,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 *  Als een gebruiker niet met succes is gemaakt en er een controle logboek gebeurtenis is met de code ' 1789003 ', betekent dit dat de gebruiker afkomstig is van een niet-geverifieerd domein.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

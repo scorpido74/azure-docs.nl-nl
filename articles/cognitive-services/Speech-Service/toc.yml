@@ -88,7 +88,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -185,7 +185,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -249,7 +249,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -295,7 +295,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -350,7 +350,7 @@
                 - name: Java
                   displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javaref'
-                - name: Javascript
+                - name: JavaScript
                   displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javascriptref'
                 - name: Objective-C
@@ -494,10 +494,8 @@
       items:
         - name: Overzicht van aangepaste trefwoorden
           href: custom-keyword-overview.md
-        - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Aangepaste trefwoordherkenning
-          href: speech-devices-sdk-create-kws.md
+        - name: Basisbeginselen van aangepaste trefwoorden
+          href: custom-keyword-basics.md
 - name: Speaker Recognition
   items:
     - name: Overzicht
@@ -577,7 +575,7 @@
           href: 'https://aka.ms/csspeech/csharpref'
         - name: Java
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
           href: 'https://aka.ms/csspeech/objectivecref'

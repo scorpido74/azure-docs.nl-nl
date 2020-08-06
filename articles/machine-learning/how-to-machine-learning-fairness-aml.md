@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 5e6f241fcf30d4090a1af9a26441a5a10b939972
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 107b1103b5662decd8da0937ac84e0e8bab3f8eb
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307060"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760767"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Gebruik Azure Machine Learning met het open-source pakket Fairlearn om de verdeling van ML-modellen te beoordelen (preview-versie)
 
@@ -142,7 +142,7 @@ In het volgende voor beeld ziet u hoe u het verdeling-pakket gebruikt om model v
         return registered_model.id
 
     # Call the register_model function 
-    lr_reg_id = register_model("fairness_linear_regression", unmitigated_predictor)
+    lr_reg_id = register_model("fairness_linear_regression", lr_predictor)
     ```
 
 3. Metrische gegevens van precompute verdeling.
@@ -152,7 +152,7 @@ In het volgende voor beeld ziet u hoe u het verdeling-pakket gebruikt om model v
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
     sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
-    ys_pred = unmitigated_predictor.predict(X_test)
+    ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
     dash_dict = _create_group_metric_set(y_true=Y_test,
@@ -207,7 +207,7 @@ In het volgende voor beeld ziet u hoe u het verdeling-pakket gebruikt om model v
 
     Raadpleeg de [Gebruikers handleiding](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)van Fairlearn voor meer informatie over het visualisatie dashboard en wat het bevat.
 
-s # # upload verdeling Insights voor meerdere modellen
+## <a name="upload-fairness-insights-for-multiple-models"></a>Verdeling Insights voor meerdere modellen uploaden
 
 Als u geïnteresseerd bent in het vergelijken van meerdere modellen en u wilt zien hoe de verdeling-evaluaties verschillen, kunt u meer dan één model door geven aan het visualisatie dashboard en de prestaties van verdeling traden door lopen.
 

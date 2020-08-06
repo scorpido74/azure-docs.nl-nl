@@ -2,7 +2,7 @@
 title: Een basisgroep maken en leden toevoegen - Azure Active Directory | Microsoft Docs
 description: Instructies over het maken van een basisgroep met behulp van Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4539fe1d8f5fbfab8e73de3a9ac35baa154b142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604349"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797658"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Een basisgroep maken en leden toevoegen met Azure Active Directory
 U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azure AD). Voor de toepassing van dit artikel wordt een basisgroep toegevoegd aan één resource door de resource-eigenaar (administrator) en deze bevat specifieke leden (werknemers) die toegang nodig hebben tot die resource. Voor complexere scenario's, met inbegrip van dynamische lidmaatschappen en regels maken, zie de [Azure Active Directory gebruiker beheerdocumentatie](../users-groups-roles/index.yml).
@@ -28,7 +28,7 @@ Er zijn verschillende typen groepen en lidmaatschappen. De volgende informatie b
 
 ### <a name="group-types"></a>Groeps typen:
 - **Beveiliging**. Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen. Een beveiligings groep kan gebruikers, apparaten, groepen en service-principals als leden en gebruikers en service-principals als eigen aren hebben. Zie voor meer informatie over het beheren van toegang tot resources [Toegang tot resources beheren met Azure Active Directory-groepen](active-directory-manage-groups.md).
-- **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Met deze optie kunt u ook personen van buiten uw organisatie toegang verlenen tot de groep. Een Office 365-groep kan alleen gebruikers als leden hebben. Zowel gebruikers als service-principals kunnen eigen aren van een Office 365-groep zijn. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep. Een Office 365-groep kan alleen gebruikers als leden hebben. Zowel gebruikers als service-principals kunnen eigen aren van een Office 365-groep zijn. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Lidmaatschaps typen:
 - **Assign.** Hiermee kunt u specifieke gebruikers lid maken van deze groep en hen unieke machtigingen geven. Voor de doeleinden van dit artikel gebruiken we deze optie.
@@ -43,7 +43,7 @@ U kunt op hetzelfde moment een basisgroep maken en leden toevoegen. Gebruik de v
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met het account van een globale administrator voor de map.
 
-1. Zoek naar **Azure Active Directory** en selecteer deze optie.
+1. Zoek en selecteer de optie **Azure Active Directory**.
 
 1. Selecteer op de pagina **Active Directory** **groepen** en selecteer vervolgens **nieuwe groep**.
 
@@ -59,7 +59,7 @@ U kunt op hetzelfde moment een basisgroep maken en leden toevoegen. Gebruik de v
 
 1. Voeg een **e-mail adres** voor de groep toe voor de groep of behoud het e-mail adres dat automatisch wordt ingevuld.
 
-1. **Groepsbeschrijving.** Voeg een optionele beschrijving toe aan uw groep.
+1. **Groeps beschrijving.** Voeg een optionele beschrijving toe aan uw groep.
 
 1. Selecteer een vooraf gedefinieerd **type lidmaatschap (vereist).** Zie voor meer informatie over lidmaatschaps typen [groeps-en lidmaatschaps typen](#membership-types).
 

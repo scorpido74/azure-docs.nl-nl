@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202210"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760941"
 ---
 # <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
 
 Persoonlijke koppelings service van Azure is de verwijzing naar uw eigen service die wordt aangestuurd door een persoonlijke Azure-koppeling. De service die wordt uitgevoerd achter [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) kan worden ingeschakeld voor toegang tot persoonlijke koppelingen, zodat gebruikers die toegang hebben tot uw service, privé kunnen zijn vanuit hun eigen VNets. Uw klanten kunnen een persoonlijk eind punt in hun VNet maken en aan deze service toewijzen. In dit artikel worden de concepten beschreven die betrekking hebben op de kant van de service provider. 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Werk stroom van persoonlijke koppelings service" border="true":::
+
+*Afbeelding: persoonlijke Azure-koppelings service.*
+
 ## <a name="workflow"></a>Werkstroom
 
 ![Werk stroom van persoonlijke koppelings service](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*Afbeelding: werk stroom van Azure Private Link service.*
 
 ### <a name="create-your-private-link-service"></a>Uw persoonlijke koppelings service maken
 

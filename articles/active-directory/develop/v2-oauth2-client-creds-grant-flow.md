@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529222"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759067"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -64,19 +64,11 @@ In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set **toepassing
 * E-mail verzenden als gebruiker
 * Mapgegevens lezen
 
-Raadpleeg de [documentatie voor toestemming en machtigingen](v2-permissions-and-consent.md#permission-types)voor meer informatie over toepassings machtigingen.
+Als u toepassings machtigingen met uw eigen API (in plaats van Microsoft Graph) wilt gebruiken, moet u [de API eerst zichtbaar](quickstart-configure-app-expose-web-apis.md) maken door scopes in de app-registratie van de API in de Azure portal te definiëren. Vervolgens kunt u [de toegang tot de API configureren](quickstart-configure-app-access-web-apis.md) door die machtigingen te selecteren in de app-registratie van uw client toepassing. Als u geen scopes hebt weer gegeven in de app-registratie van uw API, kunt u geen toepassings machtigingen voor die API opgeven in de app-registratie van uw client toepassing in de Azure Portal.
 
-Als u toepassings machtigingen wilt gebruiken in uw app, volgt u de stappen die in de volgende secties worden besproken.
+Bij verificatie als een toepassing (in plaats van een gebruiker) kunt u geen *gedelegeerde machtigingen* bereiken die door een gebruiker worden verleend. U moet toepassings machtigingen, ook wel bekend als rollen, gebruiken die door een beheerder voor de toepassing worden verleend of via vooraf-autorisatie door de Web-API.
 
-> [!NOTE]
-> Bij verificatie als een toepassing, in tegens telling tot een gebruiker, kunt u geen ' gedelegeerde machtigingen ' gebruiken (bereiken die worden verleend door een gebruiker).  U moet toepassings machtigingen gebruiken, ook wel ' rollen ' genoemd, die worden verleend door een beheerder voor de toepassing (of via vooraf-autorisatie door de Web-API).
-
-#### <a name="request-the-permissions-in-the-app-registration-portal"></a>De machtigingen aanvragen in de portal voor app-registratie
-
-1. Registreer en maak een app via de nieuwe [app-registraties-ervaring (preview-versie)](quickstart-register-app.md).
-2. Ga naar uw toepassing in de ervaring App-registraties (preview). Ga naar de sectie **certificaten & geheimen** en voeg een **Nieuw client geheim**toe, omdat u ten minste één client geheim nodig hebt om een token aan te vragen.
-3. Ga naar de sectie **API-machtigingen** en voeg de **toepassings machtigingen** toe die voor uw app zijn vereist.
-4. **Sla** de app-registratie op.
+Zie [machtigingen en toestemming](v2-permissions-and-consent.md#permission-types)voor meer informatie over toepassings machtigingen.
 
 #### <a name="recommended-sign-the-user-into-your-app"></a>Aanbevolen: Onderteken de gebruiker in uw app
 

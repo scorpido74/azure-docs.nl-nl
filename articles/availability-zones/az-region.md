@@ -4,15 +4,15 @@ description: Als u Maxi maal beschik bare en flexibele toepassingen in azure wil
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: b031b2a26f81c34f1699e530c8d0bb8839454c89
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e13d7a1cb35d2b0c9544a8be36f834efc6970501
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543874"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759645"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Regio's die ondersteuning bieden voor Beschikbaarheidszones in azure
 
@@ -52,18 +52,17 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 | **Integratie**                     |            |              |           |           |                |              |          |             |            |                |                |
 | Service Bus (alleen Premium-laag) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |  &#10003;              |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
-| **Identiteit**                     |            |              |           |           |                |              |          |             |            |                |                |
+| **Persoon**                     |            |              |           |           |                |              |          |             |            |                |                |
 | Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
 
 Azure biedt ook Beschikbaarheidszones ondersteuning in de volgende regio's:
 
 - VS (overheid) - Virginia
-- Australië - oost
 - Zuid-Afrika - noord
-- VS - zuid-centraal
+- South Central US
 - Canada - midden
 
-Neem contact op met uw micro soft-verkoop-of klant vertegenwoordiger of open een technische ondersteunings aanvraag voor meer informatie over de ondersteuning van Beschikbaarheidszones in deze vijf regio's.
+Neem contact op met uw micro soft-verkoop-of klant vertegenwoordiger of open een technische ondersteunings aanvraag voor meer informatie over de ondersteuning van Beschikbaarheidszones in deze vier regio's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

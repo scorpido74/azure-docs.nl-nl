@@ -9,18 +9,18 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543092"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760733"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Kosten voor Azure Blob Storage plannen en beheren
 
 Dit artikel helpt u bij het plannen en beheren van de kosten voor Azure Blob-opslag. U kunt eerst kosten ramen met behulp van de Azure-prijs calculator. Nadat u uw opslag account hebt gemaakt, optimaliseert u het account zodat u alleen betaalt voor wat u nodig hebt. Gebruik functies voor kosten beheer om budgetten in te stellen en kosten te bewaken. U kunt ook de geraamde kosten bekijken en de uitgaven trends controleren om gebieden te identificeren waar u mogelijk wilt handelen.
 
-Houd er rekening mee dat de kosten voor Azure Storage slechts een deel van de maandelijkse kosten in uw Azure-factuur zijn. Hoewel in dit artikel wordt uitgelegd hoe u de kosten voor Azure Storage kunt schatten en beheren, wordt u gefactureerd voor alle Azure-Services en-resources die worden gebruikt voor uw Azure-abonnement, inclusief de services van derden. Nadat u vertrouwd bent met het beheren van de kosten voor Azure Storage, kunt u soort gelijke methoden Toep assen om de kosten te beheren voor alle Azure-Services die in uw abonnement worden gebruikt.
+Houd er rekening mee dat de kosten voor Blob-opslag slechts een deel van de maandelijkse kosten in uw Azure-factuur zijn. Hoewel in dit artikel wordt uitgelegd hoe u kosten voor Blob Storage kunt schatten en beheren, wordt u gefactureerd voor alle Azure-Services en-resources die worden gebruikt voor uw Azure-abonnement, inclusief de services van derden. Nadat u vertrouwd bent met het beheren van de kosten voor Blob-opslag, kunt u soort gelijke methoden Toep assen om de kosten te beheren voor alle Azure-Services die in uw abonnement worden gebruikt.
 
 ## <a name="estimate-costs"></a>Kosten schatten
 

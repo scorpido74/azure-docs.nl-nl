@@ -4,76 +4,47 @@ description: Down load een Linux-VHD met behulp van de Azure CLI en de Azure Por
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 08/21/2019
+ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289775"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761047"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Een Linux-VHD downloaden vanuit Azure
 
-In dit artikel leert u hoe u een virtueel VHD-bestand (virtuele harde schijf) van Linux kunt downloaden van Azure met behulp van Azure CLI en Azure Portal. 
-
-Als u dit nog niet hebt gedaan, installeert u [Azure cli](/cli/azure/install-az-cli2).
+In dit artikel leert u hoe u een virtueel VHD-bestand (virtuele harde schijf) van Linux kunt downloaden van Azure met behulp van de Azure Portal. 
 
 ## <a name="stop-the-vm"></a>De virtuele machine stoppen
 
-Een VHD kan niet worden gedownload van Azure als deze is gekoppeld aan een actieve VM. U moet de virtuele machine stoppen om een VHD te downloaden. Als u een VHD als [installatie kopie](tutorial-custom-images.md) wilt gebruiken om andere virtuele machines met nieuwe schijven te maken, moet u het besturings systeem dat in het bestand is opgenomen en generaliseren en de virtuele machine stoppen. Als u de VHD als schijf wilt gebruiken voor een nieuw exemplaar van een bestaande virtuele machine of gegevens schijf, hoeft u de virtuele machine alleen te stoppen en toe te wijzen.
+Een VHD kan niet worden gedownload van Azure als deze is gekoppeld aan een actieve VM. U moet de virtuele machine stoppen om de VHD te downloaden. 
 
-Voer de volgende stappen uit om de VHD als een installatie kopie te gebruiken om andere Vm's te maken:
-
-1. Gebruik SSH, de account naam en het open bare IP-adres van de virtuele machine om er verbinding mee te maken en de inrichting uit te sluiten. U kunt het open bare IP-adres vinden met [AZ Network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). De +-gebruikers parameter verwijdert ook de laatste ingerichte gebruikers account. Als u Baking-account referenties hebt in bij de VM, moet u deze + gebruikers parameter weglaten. In het volgende voor beeld wordt het laatste ingerichte gebruikers account verwijderd:
-
-    ```bash
-    ssh azureuser@<publicIpAddress>
-    sudo waagent -deprovision+user -force
-    exit 
-    ```
-
-2. Meld u aan bij uw Azure-account met [AZ login](/cli/azure/reference-index).
-3. Stop de toewijzing van de virtuele machine en hef deze op.
-
-    ```azurecli
-    az vm deallocate --resource-group myResourceGroup --name myVM
-    ```
-
-4. Generaliseer de virtuele machine. 
-
-    ```azurecli
-    az vm generalize --resource-group myResourceGroup --name myVM
-    ``` 
-
-Voer de volgende stappen uit om de VHD als schijf te gebruiken voor een nieuw exemplaar van een bestaande virtuele machine of gegevens schijf:
-
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2.  Selecteer **virtual machines**in het linkermenu.
 3.  Selecteer de virtuele machine in de lijst.
 4.  Selecteer op de pagina voor de virtuele machine **stoppen**.
 
-    ![VM stoppen](./media/download-vhd/export-stop.png)
+    :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Hiermee wordt de menu knop voor het stoppen van de virtuele machine weer gegeven.":::
 
 ## <a name="generate-sas-url"></a>SAS-URL genereren
 
 Als u het VHD-bestand wilt downloaden, moet u een [SAS-URL (Shared Access Signature)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) genereren. Wanneer de URL wordt gegenereerd, wordt een verloop tijd toegewezen aan de URL.
 
-1.  Selecteer **schijven**in het menu van de pagina voor de virtuele machine.
-2.  Selecteer de schijf met het besturings systeem voor de virtuele machine en selecteer vervolgens **schijf exporteren**.
-3.  Selecteer **URL genereren**.
-
-    ![URL genereren](./media/download-vhd/export-generate.png)
-
+1. Selecteer **schijven**in het menu van de pagina voor de virtuele machine.
+2. Selecteer de schijf met het besturings systeem voor de virtuele machine en selecteer vervolgens **schijf exporteren**.
+1. Als het nodig is, werkt u de waarde van **URL verloopt over (seconden)** om u voldoende tijd te geven om het downloaden te volt ooien. De standaard waarde is 3600 seconden (één uur).
+3. Selecteer **URL genereren**.
+ 
+      
 ## <a name="download-vhd"></a>VHD downloaden
 
 1.  Selecteer onder de gegenereerde URL **het VHD-bestand downloaden**.
-**
-    ![VHD downloaden](./media/download-vhd/export-download.png)
+
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Toont de knop voor het downloaden van de VHD.":::
 
 2.  Mogelijk moet u **Opslaan** in de browser selecteren om het downloaden te starten. De standaard naam voor het VHD-bestand is *ABCD*.
-
-    ![Selecteer opslaan in de browser](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,24 +1,24 @@
 ---
-title: Azure Blob-opslag in Linux koppelen met behulp van het NFS 3,0-protocol (preview) | Microsoft Docs
-description: Meer informatie over het koppelen van een container in Blob Storage vanuit een Azure virtual machine (VM) op basis van Linux of een Linux-systeem dat on-premises wordt uitgevoerd met behulp van het NFS 3,0-protocol.
+title: Azure Blob-opslag koppelen met behulp van het NFS 3,0-protocol (preview) | Microsoft Docs
+description: Meer informatie over het koppelen van een container in Blob Storage vanaf een virtuele Azure-machine (VM) of een client die on-premises wordt uitgevoerd met behulp van het NFS 3,0-protocol.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372906"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760788"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Blob-opslag in Linux koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Blob Storage koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)
 
-U kunt een container koppelen in Blob Storage vanaf een virtuele Linux-machine (VM) of een Linux-systeem dat on-premises wordt uitgevoerd met behulp van het NFS 3,0-protocol. In dit artikel vindt u stapsgewijze richt lijnen. Zie [Network File System (NFS) 3,0-protocol ondersteuning in Azure Blob-opslag (preview)](network-file-system-protocol-support.md)voor meer informatie over NFS 3,0-protocol ondersteuning in Blob Storage.
+U kunt een container in Blob Storage koppelen vanaf een op Windows of Linux gebaseerde Azure virtual machine (VM) of een Windows-of Linux-systeem dat on-premises wordt uitgevoerd met het NFS 3,0-protocol. In dit artikel vindt u stapsgewijze richt lijnen. Zie [Network File System (NFS) 3,0-protocol ondersteuning in Azure Blob-opslag (preview)](network-file-system-protocol-support.md)voor meer informatie over NFS 3,0-protocol ondersteuning in Blob Storage.
 
 > [!NOTE]
 > Ondersteuning voor NFS 3,0-protocol in Azure Blob-opslag is in open bare preview en is beschikbaar in de volgende regio's: VS Oost, VS Centraal en Canada-centraal.
@@ -98,7 +98,7 @@ Kies bij het configureren van het account deze waarden:
 |Replicatie|Lokaal redundante opslag (LRS)|
 |Verbindingsmethode|Openbaar eind punt (geselecteerde netwerken) of persoonlijk eind punt|
 |Veilige overdracht vereist|Uitgeschakeld|
-|Hiërarchische naam ruimte|Ingeschakeld|
+|Hiërarchische naamruimte|Ingeschakeld|
 |NFS V3|Ingeschakeld|
 
 U kunt de standaard waarden voor alle andere instellingen accepteren. 
@@ -117,6 +117,10 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 
 ## <a name="step-7-mount-the-container"></a>Stap 7: de container koppelen
 
+Maak een map in uw Windows-of Linux-systeem en koppel vervolgens een container in het opslag account.
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. Maak een directory op een Linux-systeem.
 
    ```
@@ -133,14 +137,33 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 
    - Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
 
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. Open het dialoog venster **Windows-onderdelen** en schakel vervolgens de functie **client voor NFS** in. 
+
+   ![Functie client voor Network File System](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. Koppel een container met behulp van de [koppelings](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) opdracht.
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - Vervang de `<storage-account-name>` tijdelijke aanduiding die wordt weer gegeven in deze opdracht door de naam van uw opslag account.  
+
+   - Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
+
+---
+
 ## <a name="resolve-common-issues"></a>Veelvoorkomende problemen oplossen
 
 |Probleem/fout | Oplossing|
 |---|---|
 |`Access denied by server while mounting`|Zorg ervoor dat de client wordt uitgevoerd in een ondersteund subnet. Bekijk de [ondersteunde netwerk locaties](network-file-system-protocol-support.md#supported-network-connections).|
-|`No such file or directory`| Zorg ervoor dat de container die u koppelt, is gemaakt nadat u hebt gecontroleerd of de functie is geregistreerd. Zie [stap 2: controleren of de functie is geregistreerd](#step-2-verify-that-the-feature-is-registered). Zorg er ook voor dat u de koppel opdracht en de para meters rechtstreeks in de Terminal typt. Als u een deel van deze opdracht kopieert en in de Terminal plakt vanuit een andere toepassing, kunnen verborgen tekens in de geplakte gegevens ervoor zorgen dat deze fout wordt weer gegeven.|
+|`No such file or directory`| Zorg ervoor dat de container die u koppelt, is gemaakt nadat u hebt gecontroleerd of de functie is geregistreerd. Zie [stap 2: controleren of de functie is geregistreerd](#step-2-verify-that-the-feature-is-registered). Zorg er ook voor dat u de koppel opdracht en de para meters rechtstreeks in de Terminal typt. Als u een deel van deze opdracht vanuit een andere toepassing in de terminal kopieert, kunnen verborgen tekens in de gekopieerde gegevens deze fout veroorzaken.|
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Ondersteuning voor het protocol Network File System (NFS) 3,0 in Azure Blob-opslag (preview-versie)](network-file-system-protocol-support.md)
 

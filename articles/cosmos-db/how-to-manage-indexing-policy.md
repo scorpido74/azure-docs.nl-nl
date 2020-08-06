@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van indexerings beleid, het opneme
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: tracking-python, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: ccee172f4b8df8d930bc06faca929e5206f8765e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b3234d524adc8256373acce7480319a8fd4b76ac
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498443"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761103"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB beheren
 
@@ -344,13 +344,13 @@ In Azure Cosmos DB kan het indexerings beleid worden bijgewerkt met behulp van e
 Met een [indexerings beleid-update](index-policy.md#modifying-the-indexing-policy) wordt een index transformatie gegenereerd. De voortgang van deze trans formatie kan ook worden bijgehouden van de Sdk's.
 
 > [!NOTE]
-> Wanneer u het indexerings beleid bijwerkt, wordt de schrijf bewerking naar Azure Cosmos DB onderbroken. Tijdens het opnieuw indexeren kunnen query's gedeeltelijke resultaten retour neren als de index wordt bijgewerkt.
+> Wanneer u het indexerings beleid bijwerkt, wordt de schrijf bewerking naar Azure Cosmos DB onderbroken. Meer informatie over het [indexeren van trans formaties](indexing-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 Azure Cosmos-containers slaan hun indexerings beleid op als een JSON-document waarmee u de Azure Portal rechtstreeks kunt bewerken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Maak een nieuw Azure Cosmos DB-account of selecteer een bestaand account.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2b3f9b0a4bec76f1f5f9b1f42ec33fdf5e2678bf
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284248"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760155"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
@@ -123,7 +123,7 @@ De Lees bewerking biedt nu alleen ondersteuning voor het extra heren van handges
 
 ### <a name="printed-text-in-supported-languages"></a>Gedrukte tekst in ondersteunde talen
 
-De Lees 3,0-API biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. [Lees 3,1-Preview. 1 API open bare preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u het overzicht van de OCR API in dit document. Raadpleeg de lijst met alle talen die door [OCR worden ondersteund](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)
+De Lees 3,0-API biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. [Lees 3,1 API open bare preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u het overzicht van de OCR API in dit document. Raadpleeg de lijst met alle talen die door [OCR worden ondersteund](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)
 
 ![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/supported-languages-example.png)
 
@@ -149,5 +149,5 @@ De [OCR-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [lees 3,0-rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
-- Meer informatie over de [lees 3,1-Preview. 1 rest API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees.
+- Meer informatie over de [open bare preview-versie van 3,1 lees rest API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees.
 - Volg de Snelstartgids voor het [uitpakken van tekst](./QuickStarts/CSharp-hand-text.md) voor het implementeren van OCR met C#, Java, java script of python samen met rest API.

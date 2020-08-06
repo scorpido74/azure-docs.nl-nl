@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 62cabf06c5c0255437324acae43950cd13b96537
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a8503f701a36d7197f85f2c86e37272ccf1cab48
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065122"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760716"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen
 
@@ -589,9 +589,11 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    ```
+
+   Voor zowel ENSA1 als ENSA2, moet u ervoor zorgen dat de `keepalive` OS-para meters zijn ingesteld zoals beschreven in SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).  
 
    * ERS-profiel
 
@@ -610,8 +612,6 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 1. **[A]** Keep Alive configureren
 
    De communicatie tussen de SAP NetWeaver-toepassings server en de ASCS/SCS wordt doorgestuurd via een software load balancer. De load balancer verbreekt inactieve verbindingen na een Configureer bare time-out. Om dit te voor komen, moet u een para meter instellen in het SAP NetWeaver ASCS/SCS-profiel en de Linux-systeem instellingen wijzigen. Lees [SAP-opmerking 1410736][1410736] voor meer informatie.
-
-   De ASCS/SCS-profiel parameter enque/encni/set_so_keepalive is al toegevoegd in de laatste stap.
 
    ```
    # Change the Linux system configuration

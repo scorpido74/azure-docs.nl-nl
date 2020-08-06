@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291508"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760665"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -202,12 +202,12 @@ Als uw app gebruikmaakt van een certificaat dat niet openbaar of zelfondertekend
 
 1. Klik met de rechter muisknop op het pakket en selecteer **Eigenschappen**.
 2. In het venster dat wordt weer gegeven, selecteert u het tabblad **digitale hand tekeningen** . Er mag slechts één item in de lijst staan op het tabblad, zoals wordt weer gegeven in de volgende afbeelding. Selecteer het item dat u wilt markeren en selecteer vervolgens **Details**.
-3. Wanneer het venster Details van digitale hand tekening wordt weer gegeven, selecteert u het tabblad **Algemeen** en selecteert u **certificaat installeren**.
+3. Wanneer het venster Details van digitale hand tekening wordt weer gegeven, selecteert u het tabblad **Algemeen** en selecteert u **certificaat weer geven**en selecteert u **certificaat installeren**.
 4. Wanneer het installatie programma wordt geopend, selecteert u **lokale computer** als uw opslag locatie en selecteert u vervolgens **volgende**.
 5. Als het installatie programma u vraagt of u wilt toestaan dat de app wijzigingen in uw apparaat aanbrengt, selecteert u **Ja**.
 6. Selecteer **alle certificaten in het onderstaande archief opslaan**en selecteer vervolgens **Bladeren**.
 7. Wanneer het venster certificaat archief selecteren wordt weer gegeven, selecteert u **vertrouwde personen**en selecteert u **OK**.
-8. Selecteer **Voltooien**.
+8. Selecteer **volgende** en **volt ooien**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Power shell-scripts voorbereiden voor MSIX-app attach
 

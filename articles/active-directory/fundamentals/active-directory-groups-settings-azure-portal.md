@@ -2,7 +2,7 @@
 title: Uw groeps gegevens bewerken-Azure Active Directory | Microsoft Docs
 description: Instructies voor het bewerken van de gegevens van uw groep met behulp van Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 410570798e468244763c05b3275801427dc4b2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604230"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797522"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Uw groeps gegevens bewerken met behulp van Azure Active Directory
 
@@ -47,7 +47,7 @@ Met Azure Active Directory (Azure AD) kunt u de instellingen van een groep bewer
 
     - **Groeps naam.** Bewerk de bestaande groeps naam.
     
-    - **Groepsbeschrijving.** Bewerk de beschrijving van de bestaande groep.
+    - **Groeps beschrijving.** Bewerk de beschrijving van de bestaande groep.
 
     - **Groeps type.** U kunt het type van de groep niet wijzigen nadat deze is gemaakt. Als u het **groeps type**wilt wijzigen, moet u de groep verwijderen en een nieuwe maken.
     

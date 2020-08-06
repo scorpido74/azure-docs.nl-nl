@@ -2,7 +2,7 @@
 title: Gebruikers profiel informatie toevoegen of bijwerken-Azure AD
 description: Instructies voor het toevoegen van informatie aan het profiel van een gebruiker in Azure Active Directory, met inbegrip van een afbeeldings-en taak gegevens.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604009"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797234"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>De profielgegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory
 Gebruikers profiel gegevens toevoegen, met inbegrip van een profiel afbeelding, specifieke informatie over de taak en enkele instellingen met behulp van Azure Active Directory (Azure AD). Voor meer informatie over het toevoegen van nieuwe gebruikers raadpleegt [u gebruikers toevoegen of verwijderen in azure Active Directory](add-users-azure-active-directory.md).

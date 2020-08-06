@@ -2,7 +2,7 @@
 title: Een huis stijl toevoegen aan de aanmeldings pagina van uw organisatie-Azure AD
 description: Instructies voor het toevoegen van de huis stijl van uw organisatie op de aanmeldings pagina van Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603907"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796791"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Een huis stijl toevoegen aan de Azure Active Directory aanmeldings pagina van uw organisatie
 Gebruik het logo van uw organisatie en aangepaste kleuren schema's om een consistent uiterlijk te geven op uw aanmeldings pagina's van Azure Active Directory (Azure AD). Uw aanmeldings pagina's worden weer gegeven wanneer gebruikers zich aanmelden bij de op het web gebaseerde apps van uw organisatie, zoals Office 365, die Azure AD als uw ID-provider gebruikt.

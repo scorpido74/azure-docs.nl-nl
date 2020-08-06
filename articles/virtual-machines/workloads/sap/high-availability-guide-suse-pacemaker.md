@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074001"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797743"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker instellen voor SUSE Linux Enterprise Server in azure
 
@@ -221,17 +221,17 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the second iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.18:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.18:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the third iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.19:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.19:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
    Zorg ervoor dat de iSCSI-apparaten beschikbaar zijn en noteer de naam van het apparaat (in het volgende voor beeld/dev/SDE)
@@ -447,9 +447,14 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
-   Vervang het IP-adres en de hostnaam in de volgende opdrachten. Het voor deel van het gebruik van bestand/etc/hosts is dat uw cluster onafhankelijk van DNS wordt. Dit kan ook een enkel storings punt zijn.
+   Vervang het IP-adres en de hostnaam in de volgende opdrachten.
 
+   >[!IMPORTANT]
+   > Als u hostnamen in de cluster configuratie gebruikt, is het essentieel dat u een betrouw bare naam omzetting voor hostnamen hebt. De cluster communicatie mislukt als de namen niet beschikbaar zijn en die kunnen leiden tot vertragingen in de failover van het cluster.
+   > Het voor deel van het gebruik van bestand/etc/hosts is dat uw cluster onafhankelijk van DNS wordt. Dit kan ook een enkel storings punt zijn.  
+     
    <pre><code>sudo vi /etc/hosts
+
    </code></pre>
 
    Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving   

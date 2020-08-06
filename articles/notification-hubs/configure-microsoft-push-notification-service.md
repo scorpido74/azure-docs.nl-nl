@@ -4,34 +4,34 @@ description: Meer informatie over het configureren van instellingen voor micro s
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 99f29e7910fe6070c6202f6a936173455f979732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127330"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760988"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>Instellingen voor micro soft Push Notification Service (MPNS) configureren in de Azure Portal
 
-In dit artikel wordt beschreven hoe u instellingen voor micro soft Push Notification Service (MPNS) voor een Azure notification hub configureert met behulp van de Azure Portal. 
+In dit artikel wordt beschreven hoe u instellingen voor micro soft Push Notification Service (MPNS) voor een Azure notification hub configureert met behulp van de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
-Maak nu een notification hub als u dat nog niet hebt gedaan. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie. 
+
+Maak nu een notification hub als u dat nog niet hebt gedaan. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie.
 
 ## <a name="configure-microsoft-push-notification-service-mpns"></a>Micro soft Push Notification Service (MPNS) configureren
 
-De volgende procedure bevat stappen voor het configureren van instellingen voor micro soft Push Notification Service (MPNS) voor een notification hub: 
+In de volgende procedure wordt beschreven hoe u instellingen voor micro soft Push Notification Service (MPNS) configureert voor een notification hub:
 
 1. Selecteer in de Azure Portal op de pagina **Notification Hub** **Windows Phone (MPNS)** in het menu links.
-1. Niet-geverifieerde of geverifieerde pushmeldingen inschakelen:
+2. Niet-geverifieerde of geverifieerde pushmeldingen inschakelen:
 
    a. Selecteer **Niet-geverifieerde push inschakelen** > **Opslaan** om niet-geverifieerde pushmeldingen in te schakelen.
 
@@ -45,5 +45,5 @@ De volgende procedure bevat stappen voor het configureren van instellingen voor 
       * Selecteer **Opslaan** op de pagina **Windows Phone (MPNS)** .
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor een zelf studie met stapsgewijze instructies voor het pushen van meldingen naar Windows Phone apparaten met behulp van Azure Notification Hubs en micro soft Push Notification Service (MPNS), raadpleegt [u push meldingen voor het Windows Phone van apps met behulp van Notification hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
 
+Zie [Push meldingen verzenden naar Windows Phone-apps met behulp van Notification hubs](notification-hubs-windows-mobile-push-notifications-mpns.md)voor een zelf studie met stapsgewijze instructies voor het pushen van meldingen naar Windows Phone apparaten met behulp van Azure notification hubs en micro soft Push Notification Service (MPNS).

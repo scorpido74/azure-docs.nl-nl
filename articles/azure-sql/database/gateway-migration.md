@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373484"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759696"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,20 +26,23 @@ Klanten worden op de hoogte gesteld via e-mail en in het Azure Portal goed van e
 
 ## <a name="status-updates"></a>Status updates
 
-# <a name="in-progress"></a>[Wordt uitgevoerd](#tab/in-progress-ip)
+# <a name="in-progress"></a>[Actief](#tab/in-progress-ip)
 ### <a name="september-2020"></a>September 2020
 
-Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's:
+Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's. Deze SQL-gateways beginnen het accepteren van klant verkeer op 10 september 2020:
+
+- West-Centraal VS: 13.78.248.43 
+- Zuid-Afrika-noord: 102.133.120.2  
+
+Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's. Deze SQL-gateways beginnen het accepteren van klant verkeer op 1 september 2020:
 
 - Europa-noord: 13.74.104.113 
 - West-VS2:40.78.248.10 
 - Europa-west: 52.236.184.163 
 - Zuid-Centraal VS: 20.45.121.1, 20.49.88.1 
 
-Bestaande SQL-gateways gaan verkeer accepteren in de volgende regio's:
+Bestaande SQL-gateways gaan het verkeer accepteren in de volgende regio's. Deze SQL-gateways beginnen het accepteren van klant verkeer op 1 september 2020. :
 - Japan-Oost: 40.79.184.8, 40.79.192.5
-
-Deze SQL-gateways beginnen het accepteren van klant verkeer op 1 september 2020. 
 
 ### <a name="august-2020"></a>2020 augustus
 
@@ -62,7 +65,7 @@ De volgende gateway migraties zijn voltooid:
 - VS - oost
 - Central US
 - Azië - zuidoost
-- VS - zuid-centraal
+- South Central US
 - Europa - noord
 - VS - noord-centraal
 - Japan - west
@@ -82,7 +85,7 @@ U hebt mogelijk gevolgen voor het volgende:
 - De [redundante zone configuratie](high-availability-sla.md#zone-redundant-configuration) voor uw data base gebruiken
 
 U hebt de volgende gevolgen:
-
+ 
 - Omleiding als verbindings beleid
 - Verbindingen met SQL Database van binnen Azure en met behulp van service Tags
 - Verbindingen die zijn gemaakt met ondersteunde versies van het JDBC-stuur programma voor SQL Server, zien geen invloed. Zie [micro soft JDBC-stuur programma voor SQL Server downloaden](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)voor een ondersteunde versie van JDBC.

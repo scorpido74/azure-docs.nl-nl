@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 60bcdac0d7e19c424b007980294898638814d586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044880"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760546"
 ---
 # <a name="what-is-a-keyword"></a>Wat is een tref woord?
 
@@ -35,6 +35,23 @@ Met de aanpassings-, prestatie-en integratie functies van het aangepaste sleutel
 
 * Zie [basis beginselen van tref woorden](custom-keyword-basics.md) voor basis gebruik en ontwerp patronen.
 * Hoe u [uw product kunt activeren met de Speech SDK met behulp van C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="choose-an-effective-keyword"></a>Een effectief tref woord kiezen
+
+Het maken van een effectief sleutel woord is essentieel om ervoor te zorgen dat uw apparaat consistent en nauw keurig reageert. Het aanpassen van uw tref woord is een efficiënte manier om uw apparaat te onderscheiden en uw huis stijl te versterken. Houd rekening met de volgende richt lijnen wanneer u een tref woord kiest:
+
+> [!div class="checklist"]
+> * Het sleutel woord moet een Engels woord of woord groep zijn.
+> * Het duurt niet langer dan twee seconden om te zeggen.
+> * Woorden van 4 tot 7 letter grepen werken het beste. "Hoi computer" is bijvoorbeeld een goed tref woord. Alleen een ' Hoi ' is een slechte versie.
+> * Tref woorden moeten volgen op algemene regels voor de uitspraak van het Engels.
+> * Een uniek of zelfs een opgesteld woord dat voldoet aan de algemene Engelse regels voor uitspraak, kan fout-positieven verminderen. Zo kan ' computerama ' een goed tref woord zijn.
+> * Kies geen algemeen woord. "Eten" en "Go" zijn bijvoorbeeld woorden die mensen vaak in een gewone conversatie hebben gedicteerd. Ze kunnen worden ingesteld op ONWAAR voor uw apparaat.
+> * Vermijd het gebruik van een tref woord dat mogelijk alternatieve uitspraak heeft. Gebruikers moeten de uitspraak van het ' recht ' weten om hun apparaat te laten reageren. "509" kan bijvoorbeeld "5 0 9," "5 0 9," of "509" worden uitgesp roken. "R.E.I." kan worden uitgesp roken "r-e-i" of "Ray". ' Live ' kan worden uitgesp roken '/līv/' of '/Liv/'.
+> * Gebruik geen speciale tekens, symbolen of cijfers. Bijvoorbeeld ' go # ' en ' 20 + katten ' kunnen problematische tref woorden zijn. ' Go Sharp ' of ' twintig plus katten ' kan echter wel werken. U kunt nog steeds de symbolen in uw huis stijl gebruiken en marketing en documentatie gebruiken om de juiste uitspraak te versterken.
+
+> [!NOTE]
+> Als u een woord in handels merk kiest als uw tref woord, zorg er dan voor dat u eigenaar bent van het handels merk of dat u toestemming hebt van de eigenaar van het handels merk om het woord te gebruiken. Micro soft is niet aansprakelijk voor juridische problemen die kunnen voortvloeien uit uw keuze aan tref woorden.
 
 ## <a name="see-samples-on-github"></a>Bekijk de voor beelden op GitHub
 

@@ -5,20 +5,20 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259949"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760121"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Acties in de standaard regels-engine voor Azure CDN
 
 In de [standaard regels-engine](cdn-standard-rules-engine.md) voor Azure Content Delivery Network (Azure CDN) bestaat een regel uit een of meer match-voor waarden en een actie. In dit artikel vindt u gedetailleerde beschrijvingen van de acties die u kunt gebruiken in de Standard Rules engine voor Azure CDN.
 
-Het tweede deel van een regel is een actie. Een actie definieert het gedrag dat wordt toegepast op het aanvraag type dat overeenkomt met de voor waarde of set van match-voor waarden.
+Het tweede deel van een regel is een actie. Een actie definieert het gedrag dat wordt toegepast op het aanvraagtype dat overeenkomt met de voorwaarde of een set voorwaarden van overeenkomst.
 
 ## <a name="actions"></a>Acties
 
@@ -30,11 +30,11 @@ Gebruik deze actie om de TTL-waarde (time to Live) van het eind punt te overschr
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Cache gedrag |  Description              
+Cachegedrag |  Beschrijving              
 ---------------|----------------
 Cache overs Laan | Als deze optie is geselecteerd en de regel overeenkomt, wordt de inhoud niet in de cache opgeslagen.
-Onderdrukken | Als deze optie is geselecteerd en de regel overeenkomt, wordt de TTL-waarde die wordt geretourneerd door uw oorsprong overschreven door de waarde die is opgegeven in de actie.
-Instellen als ontbreekt | Als deze optie is geselecteerd en de regel overeenkomt, wordt de TTL ingesteld op de waarde die is opgegeven in de actie als er geen TTL-waarde is geretourneerd van uw oorsprong.
+Onderdrukken | Als deze optie is geselecteerd en de regel overeenkomt, wordt de TTL-waarde die wordt geretourneerd door uw oorsprong overschreven door de waarde die is opgegeven in de actie. Dit gedrag wordt alleen toegepast als het antwoord in de cache kan worden opgeslagen. Voor de reactie header van het cache-besturings element met de waarden ' no-cache ', ' private ', ' No-Store ', is de actie niet van toepassing.
+Instellen als ontbreekt | Als deze optie is geselecteerd en de regel overeenkomt, wordt de TTL ingesteld op de waarde die is opgegeven in de actie als er geen TTL-waarde is geretourneerd van uw oorsprong. Dit gedrag wordt alleen toegepast als het antwoord in de cache kan worden opgeslagen. Voor de reactie header van het cache-besturings element met de waarden ' no-cache ', ' private ', ' No-Store ', is de actie niet van toepassing.
 
 #### <a name="additional-fields"></a>Aanvullende velden
 
@@ -48,36 +48,36 @@ Gebruik deze actie om de cache sleutel te wijzigen op basis van query teken reek
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Gedrag | Description
+Gedrag | Beschrijving
 ---------|------------
 Opnemen | Als deze optie is geselecteerd en de regel overeenkomt, worden in de para meters opgegeven query reeksen opgenomen wanneer de cache sleutel wordt gegenereerd. 
 Elke unieke URL in de cache opslaan | Als deze optie is geselecteerd en de regel overeenkomt, heeft elke unieke URL een eigen cache sleutel. 
 Exclude | Als deze optie is geselecteerd en de regel overeenkomt, worden query reeksen die zijn opgegeven in de para meters uitgesloten wanneer de cache sleutel wordt gegenereerd.
 Queryreeksen negeren | Als deze optie is geselecteerd en de regel overeenkomt, worden query reeksen niet meegenomen wanneer de cache sleutel wordt gegenereerd. 
 
-### <a name="modify-request-header"></a>Aanvraag header wijzigen
+### <a name="modify-request-header"></a>Aanvraagheader wijzigen
 
-Gebruik deze actie om kopteksten te wijzigen die aanwezig zijn in aanvragen die worden verzonden naar uw oorsprong.
-
-#### <a name="required-fields"></a>Vereiste velden
-
-Bewerking | Naam van HTTP-header | Waarde
--------|------------------|------
-Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de naam van de **header** toegevoegd aan de aanvraag met de opgegeven waarde. Als de header al aanwezig is, wordt de waarde toegevoegd aan de bestaande waarde. | Tekenreeks
-Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de naam van de **header** toegevoegd aan de aanvraag met de opgegeven waarde. Als de header al aanwezig is, overschrijft de opgegeven waarde de bestaande waarde. | Tekenreeks
-Verwijderen | Als deze optie is geselecteerd, de regel komt overeen met de opgegeven koptekst in de regel, wordt de header uit de aanvraag verwijderd. | Tekenreeks
-
-### <a name="modify-response-header"></a>Antwoord header wijzigen
-
-Gebruik deze actie om kopteksten te wijzigen die aanwezig zijn in antwoorden die aan uw clients worden geretourneerd.
+Gebruik deze actie om headers te wijzigen die aanwezig zijn in aanvragen die naar uw herkomst worden verzonden.
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Bewerking | Naam van HTTP-header | Waarde
+Bewerking | HTTP-headernaam | Waarde
 -------|------------------|------
-Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de **header naam** , aan het antwoord toegevoegd met behulp van de opgegeven **waarde**. Als de header al aanwezig is, wordt de **waarde** aan de bestaande waarde toegevoegd. | Tekenreeks
-Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in de **header naam** , aan het antwoord toegevoegd met behulp van de opgegeven **waarde**. Als de header al aanwezig is, overschrijft de **waarde** de bestaande waarde. | Tekenreeks
-Verwijderen | Als deze optie is geselecteerd, de regel komt overeen met de opgegeven koptekst in de regel, wordt de header uit het antwoord verwijderd. | Tekenreeks
+Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan de aanvraag toegevoegd met de opgegeven waarde. Als er al een header aanwezig is, wordt de waarde toegevoegd aan de bestaande waarde. | Tekenreeks
+Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan de aanvraag toegevoegd met de opgegeven waarde. Als er al een header aanwezig is, overschrijft de opgegeven waarde de bestaande waarde. | Tekenreeks
+Verwijderen | Als deze optie is geselecteerd, de regel overeenkomt en de opgegeven header aanwezig is, wordt de header uit de aanvraag verwijderd. | Tekenreeks
+
+### <a name="modify-response-header"></a>Antwoordheader wijzigen
+
+Gebruik deze actie om headers te wijzigen die aanwezig zijn in antwoorden die aan uw clients worden geretourneerd.
+
+#### <a name="required-fields"></a>Vereiste velden
+
+Bewerking | HTTP-headernaam | Waarde
+-------|------------------|------
+Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan het antwoord toegevoegd met de opgegeven **waarde**. Als de header al aanwezig is, wordt de **waarde** toegevoegd aan de bestaande waarde. | Tekenreeks
+Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan het antwoord toegevoegd met de opgegeven **waarde**. Als de header al aanwezig is, overschrijft de **waarde** de bestaande waarde overschrijft. | Tekenreeks
+Verwijderen | Als deze optie is geselecteerd, de regel overeenkomt en de opgegeven header aanwezig is, wordt de header uit het antwoord verwijderd. | Tekenreeks
 
 ### <a name="url-redirect"></a>URL-omleiding
 
@@ -87,18 +87,18 @@ Gebruik deze actie om clients om te leiden naar een nieuwe URL.
 
 Veld | Beschrijving 
 ------|------------
-Type | Selecteer het antwoord type dat u wilt terugsturen naar de aanvrager: gevonden (302), verplaatst (301), tijdelijke omleiding (307) en permanente omleiding (308).
+Type | Selecteer het antwoordtype dat u wilt retourneren aan de aanvrager: Gevonden (302), Verplaatst (301), Tijdelijke omleiding (307) en Permanente omleiding (308).
 Protocol | Match-aanvraag, HTTP, HTTPS.
-Hostnaam | Selecteer de hostnaam waarvan u de aanvraag wilt omleiden. Laat het veld leeg om de binnenkomende host te bewaren.
-Pad | Definieer het pad dat in de omleiding moet worden gebruikt. Laat het veld leeg als u het binnenkomende pad wilt behouden.  
-Queryreeks | Definieer de query teken reeks die in de omleiding wordt gebruikt. Laat het veld leeg om de binnenkomende query reeks te bewaren. 
-Fragment | Definieer het fragment dat in de omleiding moet worden gebruikt. Laat het veld leeg om het binnenkomende fragment te bewaren. 
+Hostnaam | Selecteer de hostnaam waarnaar u de aanvraag wilt omleiden. Laat het veld leeg om de binnenkomende host te behouden.
+Pad | Geef het pad op dat in de omleiding moet worden gebruikt. Laat het veld leeg als u het binnenkomende pad wilt behouden.  
+Queryreeksen | Geef de queryreeks op die in de omleiding wordt gebruikt. Laat het veld leeg om de binnenkomende queryreeks te behouden. 
+Fragment | Geef het fragment op dat in de omleiding moet worden gebruikt. Laat het veld leeg om het binnenkomende fragment te behouden. 
 
 We raden u ten zeerste aan een absolute URL te gebruiken. Het gebruik van een relatieve URL kan Azure CDN Url's omleiden naar een ongeldig pad. 
 
 ### <a name="url-rewrite"></a>URL opnieuw genereren
 
-Gebruik deze actie om het pad van een aanvraag die naar uw oorsprong is doorgestuurd, opnieuw te schrijven.
+Gebruik deze actie om het pad van een aanvraag die naar uw oorsprong wordt doorgestuurd, opnieuw te genereren.
 
 #### <a name="required-fields"></a>Vereiste velden
 

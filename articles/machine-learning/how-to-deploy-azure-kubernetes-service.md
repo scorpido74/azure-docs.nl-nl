@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: bc53a243a58522a76be63536aa721f269ed4759a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544044"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758880"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -185,6 +185,9 @@ cluster_name = 'myexistingcluster'
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
+
+# Wait for the attach process to complete
+aks_target.wait_for_completion(show_output = True)
 ```
 
 Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
@@ -428,7 +431,7 @@ print(token)
 * [Veilig experimenteren en dezicht in een virtueel netwerk](how-to-enable-virtual-network.md)
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Web-service bijwerken](how-to-deploy-update-web-service.md)
+* [Webservice bijwerken](how-to-deploy-update-web-service.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317770"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798219"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -101,7 +101,7 @@ Op deze pagina kunt u het primaire product instellen dat door uw consulting serv
     - Analyse
     - App-modernisatie
     - Archiveren
-    - AI + Machine Learning
+    - AI en Machine Learning
     - Backup
     - Big data
     - Gegevens platform
@@ -207,12 +207,14 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende pixel grootten:
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) te maken. U kunt dit eventueel vervangen door een andere afbeelding.
 
-- **Klein (48 x 48)**
-- **Groot (216 x 216)**
+Beide logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
 
-Alle logo's zijn vereist en worden op verschillende plaatsen in de Marketplace-vermelding gebruikt.
+- **Klein** (48 x 48)
+- **Groot** (tussen 216 x 216 en 350 x 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 

@@ -2,7 +2,7 @@
 title: Uw aangepaste domein Azure Active Directory toevoegen | Microsoft Docs
 description: Instructies voor het toevoegen van een aangepast domein met behulp van Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603958"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796808"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Uw aangepaste domein naam toevoegen met behulp van de Azure Active Directory Portal
 
@@ -54,7 +54,7 @@ Nadat u uw adres lijst hebt gemaakt, kunt u uw aangepaste domein naam toevoegen.
 
     ![Pagina aangepaste domein namen, met weer gegeven aangepast domein toevoegen](media/add-custom-domain/add-custom-domain.png)
 
-1. Voer in **aangepaste domein naam**de nieuwe naam van uw organisatie in, in dit voor beeld *contoso.com*. Selecteer **Add domain**.
+1. Voer in **aangepaste domein naam**de nieuwe naam van uw organisatie in, in dit voor beeld *contoso.com*. Selecteer **Domein toevoegen**.
 
     ![Pagina aangepaste domein namen, met de pagina aangepaste domein toevoegen](media/add-custom-domain/add-custom-domain-blade.png)
 
@@ -65,7 +65,7 @@ Nadat u uw adres lijst hebt gemaakt, kunt u uw aangepaste domein naam toevoegen.
 
     ![Contoso-pagina met informatie over DNS-vermelding](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
-## <a name="add-your-dns-information-to-the-domain-registrar"></a>Uw DNS-gegevens toevoegen aan het domein registratie service
+## <a name="add-your-dns-information-to-the-domain-registrar"></a>Uw DNS-informatie toevoegen aan de domeinregistrar
 
 Nadat u uw aangepaste domein naam aan Azure AD hebt toegevoegd, moet u terugkeren naar uw domein registratie service en de Azure AD DNS-informatie toevoegen uit uw gekopieerde TXT-bestand. Als u deze TXT-record voor uw domein maakt, wordt het eigendom van uw domein naam gecontroleerd.
 

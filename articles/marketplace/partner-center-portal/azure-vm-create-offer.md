@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386432"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798066"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -245,16 +245,17 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de https://upload.xboxlive.com service die wordt gebruikt door het partner centrum niet blokkeert.
 
-#### <a name="azure-marketplace-logos"></a>Azure Marketplace-logo's
+#### <a name="store-logos"></a>Winkel logo's
 
-Geef PNG-bestanden van het logo van uw aanbieding op met de volgende vier afbeeldings dimensies:
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
 
-- **Klein** (48 &times; 48 pixels)
-- **Gemiddeld** (90 &times; 90 pixels)
-- **Groot** (216 &times; 216 pixels)
-- **Breed** (255 &times; 115 pixels)
+Alle drie de logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
 
-Alle vier de logo's zijn vereist en worden weer gegeven in verschillende Azure Marketplace-vermeldingen.
+- **Klein** (48 x 48)
+- **Gemiddeld** (90 x 90)
+- **Groot** (tussen 216 x 216 en 350 x 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 
