@@ -1,5 +1,5 @@
 ---
-title: Een exemplaar en authenticatie instellen (Portal)
+title: Een exemplaar en verificatie instellen (portal)
 titleSuffix: Azure Digital Twins
 description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen met behulp van de Azure Portal
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408320"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836935"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -62,7 +62,7 @@ Vul op de pagina de volgende *resource maken* de waarden in die hieronder zijn o
 
 Wanneer u klaar bent, selecteert u _controleren + maken_. Hiermee gaat u naar een overzichts pagina waar u de exemplaar gegevens kunt bekijken die u hebt ingevoerd en op _maken_hebt geklikt. 
 
-### <a name="verify-success"></a>Controleren geslaagd
+### <a name="verify-success-and-collect-important-values"></a>Geslaagde pogingen controleren en belang rijke waarden verzamelen
 
 Nadat u het *maken*hebt gepusht, kunt u de status van de implementatie van uw exemplaar bekijken in uw Azure-meldingen via de portal pictogram balk. De melding geeft aan wanneer de implementatie is voltooid en u kunt de knop _Ga naar resource_ selecteren om uw gemaakte exemplaar weer te geven.
 

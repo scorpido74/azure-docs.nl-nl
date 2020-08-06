@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080434"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837173"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meldingen voor gepland onderhoud voor virtuele-machineschaalsets
 
@@ -84,7 +84,7 @@ De kolom **self-service onderhoud** wordt nu weer gegeven in de lijst met virtue
 | Waarde | Beschrijving |
 |-------|-------------|
 | Ja | Ten minste één VM in de schaalset voor virtuele machines bevindt zich in een self-service venster. U kunt onderhoud starten op elk gewenst moment tijdens dit selfservice venster. | 
-| No | Er bevinden zich geen Vm's in een self-service venster in de desbetreffende schaalset voor virtuele machines. | 
+| Nee | Er bevinden zich geen Vm's in een self-service venster in de desbetreffende schaalset voor virtuele machines. | 
 | - | Uw schaal sets voor virtuele machines maken geen deel uit van een geplande onderhouds Golf.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Meldingen en waarschuwingen in de portal
@@ -181,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** Virtuele machines die zijn geïmplementeerd in een beschikbaarheidsset of in virtuele-machine schaal sets gebruiken update domeinen. Bij het uitvoeren van onderhoud voldoet Azure aan de beperking van het update domein en worden de Vm's van een ander update domein (binnen dezelfde beschikbaarheidsset) niet opnieuw opgestart. Azure wacht nog ten minste 30 minuten voordat u overstapt op de volgende groep Vm's. 
 
-Zie [regio's en beschik baarheid voor virtuele machines in azure](../virtual-machines/windows/availability.md)voor meer informatie over maximale Beschik baarheid.
+Zie [regio's en beschik baarheid voor virtuele machines in azure](../virtual-machines/availability.md)voor meer informatie over maximale Beschik baarheid.
 
 **V: hoe kan ik een melding ontvangen over gepland onderhoud?**
 

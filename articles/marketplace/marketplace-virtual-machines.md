@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065654"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837341"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Publicatie handleiding voor aanbiedingen van virtuele machines
 
@@ -29,7 +29,7 @@ Als u gebruikers de mogelijkheid wilt bieden om uw aanbieding te testen, moet u 
 
 U kunt een of meer virtuele machines implementeren met behulp van IaaS (Infrastructure as a Service) of SaaS-apps (Software as a Service). Een voor deel van de *test drive* publicatie optie is de geautomatiseerde installatie van een virtuele machine of een volledige oplossing, onder geleid door een door een partner gehoste rond leiding. Met een test drive kunnen uw klanten Vm's evalueren zonder extra kosten. Een klant hoeft geen bestaande Azure-klant te zijn om te kunnen samen werken met de proef ervaring. 
 
-Als u aan de slag wilt gaan, kunt u contact met ons opnemen via e-mail op [amp-Testdrive](mailto:amp-testdrive@microsoft.com). 
+Zie [Wat is een test drive?](what-is-test-drive.md) voor meer informatie over test stations.
 
 |Vereisten  |Details |
 |---------|---------|

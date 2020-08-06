@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052844"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836442"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatuurweergaven genereren met Media Encoder Standard met .NET 
 
@@ -282,7 +282,7 @@ Let op het gebruik van de macro {resolution} in de bestands naam; Hiermee wordt 
 Hoewel al deze voor beelden hebben besproken hoe u een coderings taak kunt verzenden die alleen installatie kopieën produceert, kunt u ook video-en audio codering combi neren met het genereren van miniaturen. Met de volgende vooraf ingestelde JSON en XML wordt **Media Encoder Standard** een miniatuur tijdens het coderen te genereren.
 
 ### <a name="json-preset"></a><a id="json"></a>JSON-voor instelling
-Zie dit artikel voor meer informatie over [het](/azure/media-services/previous/media-services-mes-schema) schema.
+Zie dit artikel voor meer informatie over [het](./media-services-mes-schema.md) schema.
 
 ```json
     {
@@ -347,7 +347,7 @@ Zie dit artikel voor meer informatie over [het](/azure/media-services/previous/m
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML-voor instelling
-Zie dit artikel voor meer informatie over [het](/azure/media-services/previous/media-services-mes-schema) schema.
+Zie dit artikel voor meer informatie over [het](./media-services-mes-schema.md) schema.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -556,7 +556,7 @@ De volgende overwegingen zijn van toepassing:
   
   * Frame nummer als het een niet-negatief geheel getal is, bijvoorbeeld "Start": "120",
   * Ten opzichte van bron duur als%-achtervoegsel, bijvoorbeeld "Start": "15%" of
-  * Tijds tempel indien uitgedrukt als uu: MM: SS... Formatteer. Bijvoorbeeld "Start": "00:01:00"
+  * Tijds tempel indien uitgedrukt als uu: MM: SS... als indeling. Bijvoorbeeld "Start": "00:01:00"
     
     U kunt de notaties combi neren en vergelijken.
     

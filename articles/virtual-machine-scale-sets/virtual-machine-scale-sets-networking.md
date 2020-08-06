@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080400"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837156"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -244,7 +244,7 @@ Voorbeeld van uitvoer van de [Azure Resource Explorer](https://resources.azure.c
 Aan elke NIC die aan een virtuele machine in een schaalset is gekoppeld, zijn een of meer IP-configuraties gekoppeld. Aan elke configuratie is één privé-IP-adres toegewezen. Aan elke configuratie kan ook één resource met een openbaar IP-adres zijn gekoppeld. Om te begrijpen hoeveel IP adressen kunnen worden toegewezen aan een NIC en hoeveel openbare IP-adressen u kunt gebruiken in een Azure-abonnement, bekijkt u de [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="multiple-nics-per-virtual-machine"></a>Meerdere NIC's per virtuele machine
-U kunt maximaal 8 NIC's per virtuele machine hebben, afhankelijk van de grootte van de machine. Het maximale aantal NIC's per computer is beschikbaar in het artikel [VM-grootte](../virtual-machines/windows/sizes.md). Alle NIC's die zijn verbonden met een VM-exemplaar moeten verbinding maken met hetzelfde virtuele netwerk. De NIC's kunnen verbinding maken met verschillende subnetten, maar alle subnetten moeten deel uitmaken van hetzelfde virtuele netwerk.
+U kunt maximaal 8 NIC's per virtuele machine hebben, afhankelijk van de grootte van de machine. Het maximale aantal NIC's per computer is beschikbaar in het artikel [VM-grootte](../virtual-machines/sizes.md). Alle NIC's die zijn verbonden met een VM-exemplaar moeten verbinding maken met hetzelfde virtuele netwerk. De NIC's kunnen verbinding maken met verschillende subnetten, maar alle subnetten moeten deel uitmaken van hetzelfde virtuele netwerk.
 
 Het volgende voorbeeld is een netwerkprofiel van een schaalset met meerdere NIC-vermeldingen en meerdere openbare IP-adressen per virtuele machine:
 

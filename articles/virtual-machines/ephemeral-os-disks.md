@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387724"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837105"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Tijdelijke besturingssysteem schijven voor virtuele Azure-machines
 
@@ -35,7 +35,7 @@ Belangrijkste verschillen tussen permanente en tijdelijke besturingssysteem schi
 |                             | Permanente besturingssysteem schijf                          | Kortstondige besturingssysteemschijf                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **Maximale grootte voor de besturingssysteem schijf**      | 2 TiB                                                                                        | De cache grootte voor de VM-grootte of 2TiB, afhankelijk van wat kleiner is. Zie [DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)en [GS](sizes-previous-gen.md#gs-series) voor de **cache grootte in GiB**              |
-| **VM-grootten worden ondersteund**          | Alle                                                                                          | VM-grootten die ondersteuning bieden voor Premium-opslag, zoals DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
+| **VM-grootten worden ondersteund**          | Alles                                                                                          | VM-grootten die ondersteuning bieden voor Premium-opslag, zoals DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
 | **Ondersteuning voor schijf type**           | Beheerde en onbeheerde besturingssysteem schijf                                                                | Alleen beheerde besturingssysteem schijf                                                               |
 | **Ondersteuning voor regio**              | Alle regio's                                                                                  | Alle regio's                              |
 | **Gegevens persistentie**            | De schijf gegevens van het besturings systeem die naar de besturingssysteem schijf zijn geschreven, worden opgeslagen in Azure Storage                                  | Gegevens die naar de besturingssysteem schijf zijn geschreven, worden opgeslagen in de lokale VM-opslag en worden niet bewaard om Azure Storage. |
@@ -51,7 +51,7 @@ U kunt installatie kopieën van VM'S en instanties implementeren tot de grootte 
 Voor tijdelijke schijven is het ook vereist dat de VM-grootte Premium-opslag ondersteunt. De grootten zijn meestal (maar niet altijd) `s` met de naam, zoals DSv2 en EsV3. Zie [Azure VM-grootten](sizes.md) voor meer informatie over welke grootten Premium-opslag worden ondersteund.
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Voor beeld-tijdelijke besturingssysteem schijven kunnen nu worden opgeslagen op tijdelijke schijven
-Tijdelijke besturingssysteem schijven kunnen nu naast de VM-cache worden opgeslagen op een tijdelijke virtuele machine/bron schijf. U kunt nu tijdelijke besturingssysteem schijven gebruiken met een VM die geen cache heeft of onvoldoende cache heeft, maar wel een tijdelijke/bron schijf heeft voor het opslaan van de tijdelijke besturingssysteem schijf, zoals Dav3, Dav4, Eav4 en Eav3. Als een virtuele machine voldoende cache-en tijdelijke ruimte heeft, kunt u nu ook opgeven waar u de tijdelijke besturingssysteem schijf wilt opslaan met behulp van een nieuwe eigenschap met de naam [DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement). Deze functie is momenteel beschikbaar als preview-product. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. [Vraag toegang](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)aan om aan de slag te gaan.
+Tijdelijke besturingssysteem schijven kunnen nu naast de VM-cache worden opgeslagen op een tijdelijke virtuele machine/bron schijf. U kunt nu tijdelijke besturingssysteem schijven gebruiken met een VM die geen cache heeft of onvoldoende cache heeft, maar wel een tijdelijke/bron schijf heeft voor het opslaan van de tijdelijke besturingssysteem schijf, zoals Dav3, Dav4, Eav4 en Eav3. Als een virtuele machine voldoende cache-en tijdelijke ruimte heeft, kunt u nu ook opgeven waar u de tijdelijke besturingssysteem schijf wilt opslaan met behulp van een nieuwe eigenschap met de naam [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement). Deze functie is momenteel beschikbaar als preview-product. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. [Vraag toegang](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)aan om aan de slag te gaan.
 
 ## <a name="powershell"></a>PowerShell
 

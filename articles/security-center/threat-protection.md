@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037185"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836799"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -54,11 +54,15 @@ Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde 
 
     Wanneer micro soft Defender ATP een bedreiging detecteert, wordt er een waarschuwing gegenereerd. De waarschuwing wordt weer gegeven op het Security Center dash board. Vanuit het dash board kunt u naar de micro soft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Zie voor meer informatie over micro soft Defender ATP [servers onboarding voor de micro soft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* Detectie van bestanden met een **aanval** <a name="windows-fileless"></a> -Aanvallen die gericht zijn op uw eind punten, zijn gebruikelijk. Om detectie te voor komen, worden met aanvallen zonder bestanden schadelijke nettoladingen in het geheugen geïnjecteerd. Nettoladingen van aanvallers blijven aanwezig in het geheugen van verdachte processen en kunnen een breed scala aan schadelijke activiteiten uitvoeren.
+* Detectie van bestanden met een **aanval** <a name="windows-fileless"></a> -Aanvallen zonder bestanden voeren schadelijke nettoladingen in het geheugen in om detectie door op schijf gebaseerde scan technieken te voor komen. De nettolading van de aanvaller bevindt zich vervolgens in het geheugen van verdachte processen en voert een breed scala aan schadelijke activiteiten uit.
 
-    Met de aanvals detectie op basis van een bestand, identificeren forensische-technieken met geautomatiseerd geheugen aanvals Toolkit, technieken en gedragingen. Met deze oplossing wordt uw machine periodiek gescand tijdens runtime en worden inzichten direct opgehaald uit het geheugen van essentiële beveiligings processen.
+    Met de aanvals detectie op basis van een bestand, identificeren forensische-technieken met geautomatiseerd geheugen aanvals Toolkit, technieken en gedragingen. Met deze oplossing wordt uw machine periodiek gescand tijdens runtime en worden inzichten direct opgehaald uit het geheugen van processen. Specifieke inzichten voor Linux bevatten de identificatie van: 
 
-    Er wordt bewezen van exploitatie, code injectie en de uitvoering van schadelijke nettoladingen. Detectie van een aanval met een bestand genereert gedetailleerde beveiligings waarschuwingen voor het versnellen van waarschuwings sorteren, correlatie en downstream-reactie tijd. Deze aanpak is een aanvulling op op gebeurtenissen gebaseerde EDR-oplossingen, waardoor er meer detectie dekking is.
+    - Bekende tool kits en crypto analyse-software 
+    - Shell code, een klein stukje code dat doorgaans wordt gebruikt als de payload bij de exploitatie van een software beveiligings probleem.
+    - Geïnjecteerd schadelijk uitvoerbaar bestand in het proces geheugen
+
+    Detectie van een aanval met een bestand genereert gedetailleerde beveiligings waarschuwingen met de beschrijvingen met aanvullende proces meta gegevens, zoals netwerk activiteit. Dit versnelt de reactie tijd van de waarschuwing sorteren, correlatie en downstream. Deze benadering vormt een aanvulling op op gebeurtenissen gebaseerde EDR-oplossingen en biedt meer detectie dekking.
 
     Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-windows)voor meer informatie over de waarschuwingen voor detectie van aanvals bestanden.
 

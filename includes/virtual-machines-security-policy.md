@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9310fd5c9a66fbd39e32c4756c5037567963912d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458660"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841879"
 ---
 Het is belang rijk om uw virtuele machine (VM) te beveiligen voor de toepassingen die u uitvoert. Het beveiligen van uw Vm's kan bestaan uit een of meer Azure-Services en-functies die beveiligde toegang bieden tot uw Vm's en beveiligde opslag van uw gegevens. In dit artikel vindt u informatie waarmee u uw virtuele machines en toepassingen kunt beveiligen.
 
@@ -63,7 +63,7 @@ Dit probleem wordt opgelost met de functie Beheerde identiteiten voor Azure-reso
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Met [op rollen gebaseerd toegangs beheer (RBAC)](../articles/role-based-access-control/overview.md)kunt u de taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers op uw virtuele machine die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen voor de virtuele machine te geven, kunt u alleen bepaalde acties toestaan. U kunt toegangs beheer voor de virtuele machine configureren in het [Azure Portal](../articles/role-based-access-control/role-assignments-portal.md), met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/role)of[Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
+Met [op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../articles/role-based-access-control/overview.md)kunt u taken in uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers op uw virtuele machine die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen voor de virtuele machine te geven, kunt u alleen bepaalde acties toestaan. U kunt toegangs beheer voor de virtuele machine configureren in het [Azure Portal](../articles/role-based-access-control/role-assignments-portal.md), met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/role)of[Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen

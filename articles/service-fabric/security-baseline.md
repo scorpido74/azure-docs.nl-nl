@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460674"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836714"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-beveiligings basislijn voor Service Fabric
 
 De Azure-beveiligings basislijn voor Service Fabric bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
 **Richt lijnen**: Zorg ervoor dat alle implementaties van Virtual Network subnet een netwerk beveiligings groep hebben die wordt toegepast op de vertrouwde poorten en bronnen van uw toepassing.
 
-* [Azure Firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template)
+* [Azure Firewall implementeren met behulp van een sjabloon](../firewall/deploy-template.md)
 
-* [Perimeter netwerken maken met behulp van Azure-netwerk beveiligings groepen (Nsg's)](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices#use-network-isolation-and-security-with-azure-service-fabric)
+* [Perimeter netwerken maken met behulp van Azure-netwerk beveiligings groepen (Nsg's)](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
-* [Uw Azure Service Fabric-cluster integreren met een bestaand virtueel netwerk](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)
+* [Uw Azure Service Fabric-cluster integreren met een bestaand virtueel netwerk](./service-fabric-patterns-networking.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -46,11 +46,11 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 **Hulp**: gebruik Azure Security Center en herstel aanbevelingen voor netwerk beveiliging voor het virtuele netwerk, het subnet en de netwerk beveiligings groep die wordt gebruikt voor het beveiligen van uw Azure service Fabric-cluster. Schakel de stroom logboeken voor netwerk beveiligings groepen (NSG) in en verzend logboeken naar een Azure Storage account naar verkeers controle. U kunt ook NSG-stroom logboeken naar een Azure Log Analytics-werk ruimte verzenden en Azure Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Azure Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-* [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Azure Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure Traffic Analytics inschakelen en gebruiken](../network-watcher/traffic-analytics.md)
 
-* [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -62,11 +62,11 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 Overweeg het implementeren van Azure Web Application firewall (WAF) voor essentiële webtoepassingen voor extra inspectie van inkomend verkeer. Schakel de diagnostische instelling voor WAF-en opname Logboeken in een opslag account, Event hub of Log Analytics werk ruimte in.
 
-* [Overzicht van Service Fabric met Azure API Management](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)
+* [Overzicht van Service Fabric met Azure API Management](./service-fabric-api-management-overview.md)
 
-* [API Management integreren in een intern VNET met Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [API Management integreren in een intern VNET met Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure WAF implementeren](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF implementeren](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -76,9 +76,9 @@ Overweeg het implementeren van Azure Web Application firewall (WAF) voor essenti
 
 **Richt lijnen**: voor beveiliging van DDoS-aanvallen schakelt u Azure DDoS Standard-beveiliging in op het virtuele netwerk waar uw Azure service Fabric-cluster wordt geïmplementeerd. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
 
-* [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -88,11 +88,11 @@ Overweeg het implementeren van Azure Web Application firewall (WAF) voor essenti
 
 **Hulp**: Schakel de stroom logboeken voor netwerk beveiligings groepen (NSG) in voor de NSG die zijn gekoppeld aan het subnet dat wordt gebruikt om uw Azure service Fabric-cluster te beveiligen. Registreer de NSG-stroom Logboeken in een Azure Storage-account om stroom records te genereren. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Azure Network Watcher pakket vastleggen in.
 
-* [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Network Watcher inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Network Watcher inschakelen](../network-watcher/network-watcher-create.md)
 
-* [Traffic Analytics gebruiken om NSG-stroom logboeken te visualiseren](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics gebruiken om NSG-stroom logboeken te visualiseren](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -106,9 +106,9 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Waarschuwingen configureren met Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Waarschuwingen configureren met Azure Firewall](../firewall/threat-intel.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -118,11 +118,11 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 **Richt lijnen**: Azure-toepassing Gateway implementeren voor webtoepassingen waarvoor https/SSL is ingeschakeld voor vertrouwde certificaten.
 
-* [Application Gateway implementeren](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway implementeren](../application-gateway/quick-create-portal.md)
 
-* [Application Gateway configureren voor het gebruik van HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [Application Gateway configureren voor het gebruik van HTTPS](../application-gateway/create-ssl-portal.md)
 
-* [De taak verdeling van laag 7 met Azure Web Application-gateways begrijpen](https://docs.microsoft.com/azure/application-gateway/overview)
+* [De taak verdeling van laag 7 met Azure Web Application-gateways begrijpen](../application-gateway/overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -132,9 +132,9 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 **Richt lijnen**: gebruik Tags voor virtuele netwerken om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen (NSG) die zijn gekoppeld aan het subnet waarin uw Azure service Fabric-cluster is geïmplementeerd. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-* [Service tags van virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Service tags van virtueel netwerk](../virtual-network/service-tags-overview.md)
 
-* [Aanbevolen procedures voor netwerken Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-networking)
+* [Aanbevolen procedures voor netwerken Service Fabric](./service-fabric-best-practices-networking.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -146,11 +146,11 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door het verpakken van sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en-beleid, in één blauw druk-definitie. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
-* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een Azure Blueprint maken](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -164,11 +164,11 @@ Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op l
 
 U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om op basis van hun labels acties op te zoeken of uit te voeren op resources.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-* [Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Een virtueel netwerk maken](../virtual-network/quick-create-portal.md)
 
-* [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -178,9 +178,9 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure service Fabric-implementaties. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -188,13 +188,13 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
 **Richt lijnen**: micro soft onderhoudt tijd bronnen voor Azure service Fabric cluster-onderdelen, u kunt de tijd synchronisatie voor uw reken implementaties bijwerken.
 
-* [Tijd synchronisatie configureren voor Azure Compute-resources](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Tijd synchronisatie configureren voor Azure Compute-resources](../virtual-machines/windows/time-sync.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -204,11 +204,11 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: u kunt uw Azure service Fabric-cluster onboarden naar Azure monitor voor het verzamelen van beveiligings gegevens die door het cluster zijn gegenereerd. Bekijk voor beelden van diagnostische problemen en oplossingen met Service Fabric.
 
-* [Integratie van Azure Monitor logboeken configureren met Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Integratie van Azure Monitor logboeken configureren met Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Algemene Service Fabric scenario's diagnosticeren](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-common-scenarios)
+* [Algemene Service Fabric scenario's diagnosticeren](./service-fabric-diagnostics-common-scenarios.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -218,13 +218,13 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: Schakel Azure monitor in voor het service Fabric cluster, stuur het naar een log Analytics-werk ruimte. Hiermee worden relevante cluster informatie en metrische gegevens van het besturings systeem geregistreerd voor alle Azure Service Fabric cluster knooppunten.
 
-* [Integratie van Azure Monitor logboeken configureren met Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Integratie van Azure Monitor logboeken configureren met Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [De Log Analytics-agent implementeren op uw knoop punten](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [De Log Analytics-agent implementeren op uw knoop punten](./service-fabric-diagnostics-oms-agent.md)
 
-* [Zoek opdrachten in logboek Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Zoek opdrachten in logboek Log Analytics](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -234,13 +234,13 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: de Azure service Fabric-cluster onboarden naar Azure monitor. Zorg ervoor dat in de Log Analytics-werk ruimte de Bewaar periode voor logboek registratie is ingesteld op basis van de nalevings voorschriften van uw organisatie.
 
-* [Integratie van Azure Monitor logboeken configureren met Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Integratie van Azure Monitor logboeken configureren met Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [De Log Analytics-agent implementeren op uw knoop punten](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [De Log Analytics-agent implementeren op uw knoop punten](./service-fabric-diagnostics-oms-agent.md)
 
-* [De Bewaar periode van Log Analytics Workspace configureren](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [De Bewaar periode van Log Analytics Workspace configureren](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -250,13 +250,13 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: de Azure service Fabric-cluster onboarden naar Azure monitor. Zorg ervoor dat in de Log Analytics-werk ruimte de Bewaar periode voor logboek registratie is ingesteld op basis van de nalevings voorschriften van uw organisatie.
 
-* [Integratie van Azure Monitor logboeken configureren met Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Integratie van Azure Monitor logboeken configureren met Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor logboeken instellen voor het bewaken van containers in azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [De Log Analytics-agent implementeren op uw knoop punten](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [De Log Analytics-agent implementeren op uw knoop punten](./service-fabric-diagnostics-oms-agent.md)
 
-* [De Bewaar periode van Log Analytics Workspace configureren](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [De Bewaar periode van Log Analytics Workspace configureren](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -266,7 +266,7 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: gebruik Azure log Analytics Workspace-Query's om Azure service Fabric-logboeken te doorzoeken.
 
-* [Zoek opdrachten in logboek Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Zoek opdrachten in logboek Log Analytics](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -276,9 +276,9 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Hulp**: gebruik Azure log Analytics-werk ruimte voor het bewaken en waarschuwen over afwijkende activiteiten in beveiligings logboeken en gebeurtenissen die betrekking hebben op uw Azure service Fabric-cluster.
 
-* [Waarschuwingen beheren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Waarschuwingen beheren in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Een waarschuwing over logboek gegevens van log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Een waarschuwing over logboek gegevens van log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -288,7 +288,7 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 **Richt lijnen**: standaard is Windows Defender geïnstalleerd op windows server 2016. Raadpleeg de Antimaleware-documentatie voor configuratie regels als u geen gebruik maakt van Windows Defender. Windows Defender wordt niet ondersteund in Linux.
 
-* [Zie Windows Defender anti virus op Windows Server 2016 voor meer informatie.](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Zie Windows Defender anti virus op Windows Server 2016 voor meer informatie.](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -312,7 +312,7 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteits-en toegangs beheer](/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
@@ -320,11 +320,11 @@ U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om 
 
 Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toegangs beheer gebruiken.
 
-* [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Identiteit en toegang controleren met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identiteit en toegang controleren met Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -334,7 +334,7 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Richt lijnen**: bij het inrichten van een cluster moet u voor Azure nieuwe wacht woorden maken voor de webportal. Er zijn geen standaard wachtwoorden om te wijzigen, maar u kunt ook verschillende wacht woorden opgeven voor toegang tot de webportal.
 
-* [Maken in Azure-portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
+* [Maken in Azure-portal](./service-fabric-cluster-creation-via-portal.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -346,9 +346,9 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toegangs beheer gebruiken.
 
-* [Clientverificatie via Azure Active Directory instellen](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-windows-cluster#set-up-azure-active-directory-client-authentication)
+* [Clientverificatie via Azure Active Directory instellen](./service-fabric-tutorial-create-vnet-and-windows-cluster.md#set-up-azure-active-directory-client-authentication)
 
-* [Identiteit en toegang controleren met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identiteit en toegang controleren met Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -358,7 +358,7 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Richt lijnen**: gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zelfstandige referenties per service te configureren. Gebruik Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-* [Informatie over eenmalige aanmelding met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Informatie over eenmalige aanmelding met Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -368,9 +368,9 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Richt lijnen**: Schakel Azure AD MFA in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-* [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -380,9 +380,9 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Hulp**: gebruik paw's (privileged Access workstations) met multi-factor Authentication (MFA) die is geconfigureerd om u aan te melden en uw Azure service Fabric-clusters en gerelateerde resources te configureren.
 
-* [Meer informatie over privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Meer informatie over privileged Access workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -392,9 +392,9 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Hulp**: gebruik Azure Active Directory (AD) PRIVILEGED Identity Management (PIM) voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijken over Risk ante gebruikers gedrag.
 
-* [Privileged Identity Management implementeren (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Meer informatie over Azure AD-risico detectie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -404,7 +404,7 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-* [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -414,9 +414,9 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Hulp**: gebruik Azure Active Directory (Aad) als centrale verificatie-en autorisatie systeem om de toegang tot beheer eindpunten van Azure service Fabric-clusters te beveiligen. AAD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en tijdens de overdracht. AAD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-* [Een AAD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Een AAD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Azure Active Directory instellen voor Service Fabric-client verificatie](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+* [Azure Active Directory instellen voor Service Fabric-client verificatie](./service-fabric-cluster-creation-setup-aad.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -426,7 +426,7 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 **Hulp**: gebruik Azure Active Directory (Aad)-verificatie met uw Azure service Fabric-cluster. AAD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. De toegang van de gebruiker kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-* [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -438,7 +438,7 @@ Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toega
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruikers accounts te maken, de audit logboeken en aanmeldings logboeken te verzenden naar een Azure Log Analytics-werk ruimte. Gewenste waarschuwingen configureren in azure Log Analytics-werk ruimte.
 
-* [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -448,11 +448,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruik
 
 **Richt lijnen**: Azure AD-functies voor risico-en identiteits beveiliging gebruiken om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-* [Risk ante aanmeldingen voor Azure AD weer geven](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -462,21 +462,21 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruik
 
 **Richt lijnen**: niet beschikbaar; Klanten-lockbox nog niet ondersteund voor Azure Service Fabric.
 
-* [Lijst met door Klanten-lockbox ondersteunde services](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Lijst met door Klanten-lockbox ondersteunde services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
 **Hulp**: Gebruik labels voor bronnen die betrekking hebben op uw Azure service Fabric-cluster implementaties om te helpen bij het bijhouden van Azure-resources die gevoelige informatie opslaan of verwerken.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -486,19 +486,19 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruik
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Resources moeten worden gescheiden door VNet/subnet, op de juiste wijze worden gelabeld en beveiligd door een NSG of Azure Firewall. Resources die gevoelige gegevens opslaan of verwerken, moeten voldoende geïsoleerd zijn. Voor Virtual Machines het opslaan of verwerken van gevoelige gegevens, implementeert u beleid en procedure (s) om ze uit te scha kelen wanneer ze niet worden gebruikt.
 
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Beheergroepen maken](../governance/management-groups/create.md)
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-* [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Een virtueel netwerk maken](../virtual-network/quick-create-portal.md)
 
-* [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Waarschuwing of waarschuwing configureren en weigeren met Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Waarschuwing of waarschuwing configureren en weigeren met Azure Firewall](../firewall/threat-intel.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -512,7 +512,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 bieden.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -524,9 +524,9 @@ bieden.
 
 Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-* [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Meer informatie over versleuteling in transit met Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Beveiligings scenario's voor Service Fabric cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+* [Beveiligings scenario's voor Service Fabric cluster](./service-fabric-cluster-security.md)
 
 * [Service Fabric probleemoplossings gids voor TLS-configuratie](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
@@ -540,7 +540,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -560,7 +560,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -570,13 +570,13 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Hulp**: Gebruik versleuteling in rust voor alle Azure-resources. Micro soft raadt u aan Azure te laten beheren van uw versleutelings sleutels, maar in sommige gevallen kunt u ook uw eigen sleutels beheren.
 
-* [Meer informatie over versleuteling in de rest van Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Meer informatie over versleuteling in de rest van Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Door de klant beheerde versleutelings sleutels configureren](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+* [Door de klant beheerde versleutelings sleutels configureren](../storage/common/storage-encryption-keys-portal.md)
 
-* [Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-windows)
+* [Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Windows](./service-fabric-enable-azure-disk-encryption-windows.md)
 
-* [Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-linux)
+* [Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Linux](./service-fabric-enable-azure-disk-encryption-linux.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -586,7 +586,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer wijzigingen worden doorgevoerd in essentiële Azure-resources.
 
-* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -594,7 +594,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -604,11 +604,11 @@ Volg de aanbevelingen van Azure Security Center over het uitvoeren van beveiligi
 
 Gebruik een oplossing van derden voor het uitvoeren van evaluatie van beveiligings problemen op netwerk apparaten en webtoepassingen. Gebruik bij het uitvoeren van externe scans geen enkele, permanente, beheerders account. Overweeg de implementatie van JIT-inrichtings methodologie voor het account van de scan. Referenties voor het Scan account moeten worden beveiligd, gecontroleerd en alleen worden gebruikt voor het scannen van beveiligings problemen.
 
-* [Inleiding tot Service Fabric-fout analyse service](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)
+* [Inleiding tot Service Fabric-fout analyse service](./service-fabric-testability-overview.md)
 
-* [Beheerde chaos in Service Fabric clusters induceren](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
+* [Beheerde chaos in Service Fabric clusters induceren](./service-fabric-controlled-chaos.md)
 
-* [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -620,13 +620,13 @@ Gebruik een oplossing van derden voor het uitvoeren van evaluatie van beveiligin
 
 U kunt ook de hand matige trigger voor upgrades van installatie kopieën van de schaalset gebruiken om de patches voor het besturings systeem eerst te testen voordat u naar de productie gaat. Houd er rekening mee dat de optie hand matige trigger geen ingebouwde terugdraai actie biedt. BESTURINGSSYSTEEM patches bewaken met behulp van Updatebeheer van Azure Automation.
 
-* [Patch beheer voor Service Fabric cluster knooppunten](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Patch beheer voor Service Fabric cluster knooppunten](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Automatische installatie kopieën van besturings systemen met virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Automatische installatie kopieën van besturings systemen met virtuele-machine schaal sets van Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Vm's up-to-date zetten met het nieuwste model voor schaal sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+* [Vm's up-to-date zetten met het nieuwste model voor schaal sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Overzicht van Azure Automation Updatebeheer](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
+* [Overzicht van Azure Automation Updatebeheer](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -636,11 +636,11 @@ U kunt ook de hand matige trigger voor upgrades van installatie kopieën van de 
 
 **Hulp**bij het automatisch bijwerken van installatie kopieën van besturings systemen op de schaal sets voor virtuele machines van uw Azure service Fabric-cluster. Patch Orchestration Application (POA) is een alternatieve oplossing die is bedoeld voor Service Fabric clusters die buiten Azure worden gehost. POA kan worden gebruikt met Azure-clusters, met een extra hosting overhead.
 
-* [Patch beheer voor Service Fabric cluster knooppunten](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Patch beheer voor Service Fabric cluster knooppunten](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Automatische installatie kopieën van besturings systemen met virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Automatische installatie kopieën van besturings systemen met virtuele-machine schaal sets van Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Het patch schema voor het besturings systeem voor Service Fabric clusters configureren](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
+* [Het patch schema voor het besturings systeem voor Service Fabric clusters configureren](./service-fabric-patch-orchestration-application.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -664,7 +664,7 @@ U kunt ook de hand matige trigger voor upgrades van installatie kopieën van de 
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
@@ -672,11 +672,11 @@ U kunt ook de hand matige trigger voor upgrades van installatie kopieën van de 
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-* [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -686,7 +686,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -696,11 +696,11 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Beheergroepen maken](../governance/management-groups/create.md)
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -724,9 +724,9 @@ Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -744,7 +744,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: Azure resource Graph gebruiken voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, poorten en protocollen enz.), inclusief Azure service Fabric-clusters, binnen uw abonnement (en). Verwijder alle niet-goedgekeurde Azure-resources die u ontdekt. Voor Azure Service Fabric cluster knooppunten implementeert u een oplossing van derden om niet-goedgekeurde software te verwijderen of te waarschuwen.
 
-* [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -762,9 +762,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik Azure Policy om te beperken welke services u in uw omgeving kunt inrichten.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -782,7 +782,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik de voorwaardelijke toegang van Azure om de mogelijkheden van gebruikers om te communiceren met Azure Resources Manager te beperken door ' toegang blok keren ' te configureren voor de app Microsoft Azure management.
 
-* [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -792,7 +792,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik specifieke configuraties van besturings systemen of bronnen van derden om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure Compute-resources te beperken.
 
-* [Bijvoorbeeld hoe u de uitvoering van Power shell-scripts kunt beheren in Windows-omgevingen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Bijvoorbeeld hoe u de uitvoering van Power shell-scripts kunt beheren in Windows-omgevingen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -802,9 +802,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Richt lijnen**: software die vereist is voor bedrijfs activiteiten, maar die een groter risico voor de organisatie kan opleveren, moet worden geïsoleerd binnen een eigen virtuele machine en/of virtueel netwerk en voldoende beveiligd zijn met een Azure firewall of netwerk beveiligings groep.
 
-* [Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Een virtueel netwerk maken](../virtual-network/quick-create-portal.md)
 
-* [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -812,15 +812,15 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. ServiceFabric ' om aangepaste beleids regels te maken om de netwerk configuratie van uw service Fabric cluster te controleren of af te dwingen.
 
-* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -838,9 +838,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] om beveiligde instellingen af te dwingen voor uw Azure service Fabric-clusters en gerelateerde resources.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effecten begrijpen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy effecten begrijpen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -858,9 +858,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-* [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -870,11 +870,11 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Richt lijnen**: als u aangepaste installatie kopieën gebruikt, moet u RBAC gebruiken om ervoor te zorgen dat alleen gemachtigde gebruikers toegang kunnen krijgen tot de installatie kopieën. Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Wat is RBAC voor Container Registry?](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Wat is RBAC voor Container Registry?](../container-registry/container-registry-roles.md)
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -884,7 +884,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. ServiceFabric ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -902,9 +902,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. ServiceFabric ' om aangepaste beleids regels te maken om de configuratie van uw service Fabric cluster te controleren of af te dwingen.
 
-* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -914,7 +914,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik Azure Security Center voor het uitvoeren van basislijn scans voor OS-en docker-instellingen voor containers.
 
-* [Aanbevelingen van Azure Security Center voor containers](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Aanbevelingen van Azure Security Center voor containers](../security-center/container-security.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -924,13 +924,13 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen.
 
-* [Beheerde identiteiten gebruiken voor Azure met Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Beheerde identiteiten gebruiken voor Azure met Service Fabric](./concepts-managed-identity.md)
 
-* [Ondersteuning voor beheerde identiteiten configureren voor een nieuw Service Fabric cluster](https://docs.microsoft.com/azure/service-fabric/configure-new-azure-service-fabric-enable-managed-identity)
+* [Ondersteuning voor beheerde identiteiten configureren voor een nieuw Service Fabric cluster](./configure-new-azure-service-fabric-enable-managed-identity.md)
 
-* [Beheerde identiteit gebruiken met een Service Fabric-toepassing](https://docs.microsoft.com/azure/service-fabric/how-to-managed-identity-service-fabric-app-code)
+* [Beheerde identiteit gebruiken met een Service Fabric-toepassing](./how-to-managed-identity-service-fabric-app-code.md)
 
-* [KeyVaultReference-ondersteuning voor Service Fabric toepassingen](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+* [KeyVaultReference-ondersteuning voor Service Fabric toepassingen](./service-fabric-keyvault-references.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -940,7 +940,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 **Hulp**: beheerde identiteiten kunnen worden gebruikt in door Azure geïmplementeerde service Fabric clusters en voor toepassingen die als Azure-resources worden geïmplementeerd. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-* [Beheerde identiteiten gebruiken voor Azure met Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Beheerde identiteiten gebruiken voor Azure met Service Fabric](./concepts-managed-identity.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -954,7 +954,7 @@ Gebruik Azure Key Vault om Service Fabric cluster certificaten automatisch te dr
 
 * [Referentie scanner instellen](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-* [Certificaat beheer in Service Fabric clusters](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#certificate-rotation)
+* [Certificaat beheer in Service Fabric clusters](./cluster-security-certificate-management.md#certificate-rotation)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -962,7 +962,7 @@ Gebruik Azure Key Vault om Service Fabric cluster certificaten automatisch te dr
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -970,7 +970,7 @@ Gebruik Azure Key Vault om Service Fabric cluster certificaten automatisch te dr
 
 Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u geen gebruik maakt van Windows Defender. Windows Defender wordt niet ondersteund in Linux.
 
-* [Informatie over Windows Defender anti virus op Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Informatie over Windows Defender anti virus op Windows Server 2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -994,13 +994,13 @@ Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u gee
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
 **Hulp**: de service voor back-up en herstel in service Fabric maakt eenvoudige en automatische back-ups mogelijk van gegevens die zijn opgeslagen in stateful Services. Het maken van een back-up van toepassings gegevens op periodieke basis is essentieel voor de beveiliging tegen gegevens verlies en service niet beschikbaar. Service Fabric biedt een optionele service voor back-up en herstel, waarmee u periodieke back-ups kunt configureren van stateful Reliable Services (inclusief actor Services) zonder dat u extra code hoeft te schrijven. Het vereenvoudigt ook het herstellen van eerder gemaakte back-ups.
 
-* [Periodieke back-ups maken en herstellen in een Azure Service Fabric-cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Periodieke back-ups maken en herstellen in een Azure Service Fabric-cluster](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1010,11 +1010,11 @@ Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u gee
 
 **Hulp**bij het inschakelen van de service voor het terugzetten van back-ups in uw service Fabric-cluster en het maken van een back-upbeleid om stateful Services periodiek en op aanvraag uit te voeren. Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
-* [Periodieke back-ups maken en herstellen in een Azure Service Fabric-cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Periodieke back-ups maken en herstellen in een Azure Service Fabric-cluster](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
-* [Informatie over periodieke back-upconfiguratie in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Informatie over periodieke back-upconfiguratie in azure Service Fabric](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1024,11 +1024,11 @@ Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u gee
 
 **Hulp**: Zorg ervoor dat u de herstel service van de back-up kunt herstellen door regel matig informatie over de back-upconfiguratie en beschik bare back-ups te controleren. Het herstellen van een back-up van door de klant beheerde sleutels testen.
 
-* [Informatie over periodieke back-upconfiguratie in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Informatie over periodieke back-upconfiguratie in azure Service Fabric](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Back-up herstellen in azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backup-restore-service-trigger-restore)
+* [Back-up herstellen in azure Service Fabric](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1040,9 +1040,9 @@ Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u gee
 
 Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat de functie voor zacht verwijderen in Key Vault is ingeschakeld om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-* [Versleuteling-at-rest in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Versleuteling-at-rest in Azure Storage](../storage/common/storage-service-encryption.md)
 
-* [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1050,7 +1050,7 @@ Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat de functie vo
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -1072,9 +1072,9 @@ Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat de functie vo
 
 Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het identificeren en categoriseren van Azure-resources, met name voor de verwerking van gevoelige gegevens. Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
-* [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Labels gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1094,7 +1094,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-* [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1104,9 +1104,9 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
 
-* [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Continue export configureren](../security-center/continuous-export.md)
 
-* [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1116,7 +1116,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
 
-* [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1124,7 +1124,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -1140,5 +1140,5 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

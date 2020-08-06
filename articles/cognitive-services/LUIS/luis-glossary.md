@@ -3,12 +3,12 @@ title: Woorden lijst-LUIS
 description: In de woorden lijst worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS API-service.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056375"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836408"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
 In de woorden lijst Language Understanding (LUIS) worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS-service.
@@ -72,7 +72,7 @@ In batch testen is precisie (ook wel positieve Voorspellings waarde genoemd) de 
 
 Een voor beeld van een dierlijke batch test is het aantal schapen dat is voor speld, gedeeld door het totale aantal dieren (schaap en niet-schaap).
 
-### <a name="recall"></a>Terughalen
+### <a name="recall"></a>Relevante overeenkomsten
 
 In batch testen, intrekken (ook wel gevoeligheid genoemd), is de mogelijkheid om LUIS te generaliseren.
 
@@ -94,11 +94,11 @@ Een [intentie](#intent) is een voor beeld van een classificatie.
 
 ## <a name="collaborator"></a>Samenwerker
 
-Een samen werker is conceptueel hetzelfde als een [mede werker](#contributor). Een samen werker krijgt toegang wanneer een eigenaar het e-mail adres van de mede werker toevoegt aan een app die niet wordt beheerd met op rollen gebaseerde toegang (RBAC). Als u nog steeds deel nemers gebruikt, moet u uw LUIS-account migreren en LUIS-ontwerp resources gebruiken om inzenders te beheren met RBAC.
+Een samen werker is conceptueel hetzelfde als een [mede werker](#contributor). Aan een samen werker wordt toegang verleend wanneer een eigenaar het e-mail adres van de mede werker toevoegt aan een app die niet wordt beheerd met Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Als u nog steeds deel nemers gebruikt, moet u uw LUIS-account migreren en LUIS-ontwerp resources gebruiken om inzenders te beheren met RBAC.
 
 ## <a name="contributor"></a>Inzender
 
-Een bijdrager is niet de [eigenaar](#owner) van de app, maar heeft dezelfde machtigingen voor het toevoegen, bewerken en verwijderen van de intenties, entiteiten, uitingen. Een Inzender biedt op rollen gebaseerde toegang (RBAC) voor een LUIS-app.
+Een bijdrager is niet de [eigenaar](#owner) van de app, maar heeft dezelfde machtigingen voor het toevoegen, bewerken en verwijderen van de intenties, entiteiten, uitingen. Een Inzender biedt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) voor een LUIS-app.
 
 Zie ook:
 * [How-to](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource) Mede werkers toevoegen
@@ -107,7 +107,7 @@ Zie ook:
 
 Een descriptor is de term die voorheen werd gebruikt voor een machine learning- [functie](#features).
 
-## <a name="domain"></a>Domain
+## <a name="domain"></a>Domein
 
 In de context van LUIS is een domein een kennis gebied. Uw domein is specifiek voor uw scenario. Verschillende domeinen gebruiken een specifieke taal en terminologie die in de context van het domein betekenis heeft. Als u bijvoorbeeld een toepassing bouwt voor het afspelen van muziek, heeft uw toepassing voor waarden en talen die specifiek zijn voor muziek: woorden als "nummer, track, album, Song teksten, b-zijde, artiest". Zie voor voor beelden van domeinen [vooraf ontwikkelde domeinen](#prebuilt-domain).
 
@@ -284,7 +284,7 @@ In LUIS [lijst entiteiten](reference-entity-list.md)kunt u een genormaliseerde w
 |Waarde Nomalized| Synoniemen|
 |--|--|
 |Klein| de kleine, 8 ounce|
-|Normaal| normaal, 12 ounce|
+|Middelgroot| normaal, 12 ounce|
 |Groot| Big, 16 ounce|
 |Xtra groot| de grootste, 24 ounce|
 
@@ -305,7 +305,7 @@ Een [token](luis-language-support.md#tokenization) is de kleinste tekst eenheid 
 
 Voor **Engels**is een token een doorlopende periode (geen spaties of lees tekens) van letters en cijfers. Een spatie is geen token.
 
-|Zinsned|Aantal tokens|Uitleg|
+|Woordgroep|Aantal tokens|Uitleg|
 |--|--|--|
 |`Dog`|1|Eén woord zonder Lees tekens of spaties.|
 |`RMT33W`|1|Een record locator-nummer. De waarde mag cijfers en letters bevatten, maar heeft geen interpunctie.|

@@ -1,6 +1,6 @@
 ---
 title: Azure Storage bewaken | Microsoft Docs
-description: Meer informatie over het bewaken van de prestaties en beschik baarheid van Azure Storage.
+description: Meer informatie over het bewaken van de prestaties en beschik baarheid van Azure Storage. Bewaak Azure Storage gegevens, meer informatie over de configuratie en het analyseren van metrische gegevens en logbestanden.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182709"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836663"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage bewaken
 
@@ -74,7 +74,7 @@ Aanvragen die worden gedaan door de opslag service zelf, zoals het maken of verw
 
 Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Zie voor een volledige lijst met geregistreerde gegevens opslag logboeken [en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [opslag logboek indeling](monitor-storage-reference.md).
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 De metrische gegevens van het platform en het activiteiten logboek worden automatisch verzameld, maar u moet een diagnostische instelling maken om bron logboeken te verzamelen of deze buiten Azure Monitor door te sturen. Zie [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md)voor het proces voor het maken van een diagnostische instelling met behulp van de Azure Portal, de Azure CLI of Power shell.
 
@@ -86,9 +86,9 @@ U moet ook de categorieën van bewerkingen opgeven waarvoor u logboeken wilt ver
 
 | Categorie | Beschrijving |
 |:---|:---|
-| StorageRead | Lees bewerkingen op blobs. |
-| StorageWrite | Schrijf bewerkingen op blobs. |
-| StorageDelete | Verwijder bewerkingen op blobs. |
+| StorageRead | Lees bewerkingen voor objecten. |
+| StorageWrite | Schrijf bewerkingen op objecten. |
+| StorageDelete | Bewerkingen op objecten verwijderen. |
 
 ## <a name="analyze-metric-data"></a>Metrische gegevens analyseren
 
@@ -142,7 +142,7 @@ U kunt metrische waarden op account niveau van uw opslag account of de afzonderl
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>De metrische definitie op account niveau weer geven
 

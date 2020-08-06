@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 07fde5a8e7e3d542ed3fa3bc54b761d5434ac710
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284860"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836876"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>MySQL installeren op een virtuele machine met OpenSUSE Linux in azure
 
@@ -32,7 +32,7 @@ Maak eerst een resource groep. In dit voor beeld heeft de resource groep de naam
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Maak de virtuele machine. In dit voor beeld heeft de virtuele machine de naam *myVM* en is de VM-grootte *Standard_D2s_v3*, maar u moet de [VM-grootte](sizes.md) kiezen die het meest geschikt is voor uw werk belasting.
+Maak de virtuele machine. In dit voor beeld heeft de virtuele machine de naam *myVM* en is de VM-grootte *Standard_D2s_v3*, maar u moet de [VM-grootte](../sizes.md) kiezen die het meest geschikt is voor uw werk belasting.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -157,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [MySQL-documentatie](https://dev.mysql.com/doc)voor meer informatie over MySQL.
-
-
-
-

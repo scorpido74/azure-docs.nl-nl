@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986940"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836680"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparante gegevens versleuteling voor SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84986940"
 
 TDE voert realtime-I/O-versleuteling en ontsleuteling van de gegevens op pagina niveau uit. Elke pagina wordt ontsleuteld wanneer deze wordt ingelezen in het geheugen en vervolgens versleuteld voordat deze naar een schijf wordt geschreven. TDE versleutelt de opslag van een volledige data base met behulp van een symmetrische sleutel die de database versleutelings sleutel (DEK) wordt genoemd. Bij het opstarten van de data base wordt de versleutelde DEK ontsleuteld en vervolgens gebruikt voor ontsleuteling en opnieuw versleutelen van de database bestanden in het proces van de SQL Server data base-engine. DEK wordt beveiligd door de TDE-Protector. TDE Protector is een door een service beheerd certificaat (door de service beheerde transparante gegevens versleuteling) of een asymmetrische sleutel die is opgeslagen in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (door de klant beheerde transparante gegevens versleuteling).
 
-Voor Azure SQL Database en Azure Synapse wordt de TDE-Protector ingesteld op [Server](logical-servers.md) niveau en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor Azure SQL Managed instance (BYOK-functie in Preview) wordt de TDE-Protector ingesteld op het niveau van de instantie en overgenomen door alle versleutelde data bases op dat exemplaar. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
+Voor Azure SQL Database en Azure Synapse wordt de TDE-Protector ingesteld op [Server](logical-servers.md) niveau en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor Azure SQL Managed instance wordt de TDE-Protector ingesteld op het niveau van de instantie en wordt deze overgenomen door alle versleutelde data bases op die instantie. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 
 > [!IMPORTANT]
 > Alle nieuw gemaakte data bases in SQL Database worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande data bases van SQL Managed instances die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. SQL Managed instance-data bases die zijn gemaakt via herstellen, nemen versleutelings status van de bron over.
@@ -99,7 +99,7 @@ Als u TDE via Power shell wilt configureren, moet u zijn verbonden met de Azure-
 
 Gebruik de volgende cmdlets voor Azure SQL Database en Azure Synapse:
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Hiermee wordt de transparante gegevens versleuteling voor een data base in-of uitgeschakeld.|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Hiermee wordt de transparante status van gegevens versleuteling opgehaald voor een Data Base. |

@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: d4beec60a2cd705884ee79296c9afab2afc08c2e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 09b6bf6db5927c49950fc5b2a6d1753d53364380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534495"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836646"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 **Implementatie** |  **Ondersteuning**
 --- | ---
-**Azure Portal** | Ondersteund.
+**Azure-portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
 **REST API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
@@ -170,7 +170,7 @@ SUSE Linux Enterprise Server 15 en 15 SP1 | 9,32 | Standaard worden alle [Stock-
 
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
-Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/windows/sizes.md).
+Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/sizes.md).
 Beschikbaarheidssets | Ondersteund | Als u replicatie inschakelt voor een virtuele machine van Azure met de standaard opties, wordt er automatisch een beschikbaarheidsset gemaakt, op basis van de instellingen van de bron regio. U kunt deze instellingen wijzigen.
 Beschikbaarheidszones | Ondersteund |
 Voor deel voor hybride gebruik (HUB) | Ondersteund | Als op de bron-VM een HUB-licentie is ingeschakeld, gebruikt een testfailover of een failover van de VM ook de HUB-licentie.
@@ -205,7 +205,7 @@ Maximale grootte van de besturingssysteem schijf | 2048 GB | Meer [informatie](.
 Tijdelijke schijf | Niet ondersteund | De tijdelijke schijf wordt altijd uitgesloten van replicatie.<br/><br/> Sla geen permanente gegevens op de tijdelijke schijf op. [Meer informatie](../virtual-machines/windows/managed-disks-overview.md).
 Maximale grootte van gegevens schijf | 8192 GB voor beheerde schijven<br></br>4095 GB voor niet-beheerde schijven|
 Minimale grootte van gegevens schijf | Geen beperking voor niet-beheerde schijven. 2 GB voor beheerde schijven |
-Maximum aantal gegevens schijven | Maxi maal 64, in overeenstemming met de ondersteuning voor een specifieke Azure VM-grootte | Meer [informatie](../virtual-machines/windows/sizes.md) over VM-grootten.
+Maximum aantal gegevens schijven | Maxi maal 64, in overeenstemming met de ondersteuning voor een specifieke Azure VM-grootte | Meer [informatie](../virtual-machines/sizes.md) over VM-grootten.
 Wijzigings frequentie van gegevens schijven | Maxi maal 20 MBps per schijf voor Premium-opslag. Maxi maal 2 MBps per schijf voor standaard opslag. | Als de gemiddelde waarde voor het wijzigen van de gegevens op de schijf continu hoger is dan het maximum, wordt de replicatie niet opvangen.<br/><br/>  Als het maximum echter sporadisch wordt overschreden, kan het zijn dat de replicatie kan worden vertraagd.
 Gegevens schijf-Standard-opslag account | Ondersteund |
 Gegevens schijf-Premium-opslag account | Ondersteund | Als een virtuele machine schijven heeft verspreid over Premium-en Standard-opslag accounts, kunt u een ander doel opslag account voor elke schijf selecteren om ervoor te zorgen dat u dezelfde opslag configuratie in de doel regio hebt.
@@ -219,7 +219,7 @@ Versleuteling op rest (SSE) | Ondersteund | SSE is de standaard instelling voor 
 Versleuteling in rust (CMK) | Ondersteund | Zowel software-als HSM-sleutels worden ondersteund voor beheerde schijven
 Dubbele versleuteling bij rest | Ondersteund | Meer informatie over ondersteunde regio's voor [Windows](../virtual-machines/windows/disk-encryption.md) en [Linux](../virtual-machines/linux/disk-encryption.md)
 Azure Disk Encryption (ADE) voor Windows-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. <br/><br/> Het versleutelen van afzonderlijke volumes op één schijf wordt niet ondersteund. |
-Azure Disk Encryption (ADE) voor Linux-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. <br/><br/> Het versleutelen van afzonderlijke volumes op één schijf wordt niet ondersteund. <br><br> Bekend probleem bij het inschakelen van replicatie. [Meer informatie.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137) |
+Azure Disk Encryption (ADE) voor Linux-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. <br/><br/> Het versleutelen van afzonderlijke volumes op één schijf wordt niet ondersteund. <br><br> Bekend probleem bij het inschakelen van replicatie. [Meer informatie.](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 Rotatie van SAS-sleutel | Niet ondersteund | Als de SAS-sleutel voor opslag accounts is geroteerd, moet de klant de replicatie uitschakelen en opnieuw inschakelen. |
 Hot add    | Ondersteund | Het inschakelen van replicatie voor een gegevens schijf die u toevoegt aan een gerepliceerde Azure-VM wordt ondersteund voor virtuele machines die gebruikmaken van beheerde schijven. <br/><br/> Er kan slechts één schijf dynamisch worden toegevoegd aan een virtuele machine van Azure. Het gelijktijdig toevoegen van meerdere schijven wordt niet ondersteund. |
 Hot Remove-schijf    | Niet ondersteund | Als u de gegevens schijf op de virtuele machine verwijdert, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen voor de virtuele machine.
@@ -290,4 +290,3 @@ Persoonlijke koppelings toegang tot Site Recovery service | Ondersteund | [Meer 
 
 - Lees de [netwerk richtlijnen](./azure-to-azure-about-networking.md) voor het repliceren van virtuele Azure-machines.
 - Implementeer herstel na nood gevallen door [Azure vm's te repliceren](./azure-to-azure-quickstart.md).
-

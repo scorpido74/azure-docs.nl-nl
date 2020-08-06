@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078206"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837377"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migreer uw apps en oplossingen van BizTalk Services naar Azure Logic Apps
 
@@ -35,7 +35,7 @@ Deze tabel wijst BizTalk Services mogelijkheden toe aan Logic Apps.
 | BizTalk Services   | Logic Apps            | Doel                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Connector          | Connector             | Gegevens verzenden en ontvangen   |
-| Brug             | Logische apps             | Pijplijn processor           |
+| Bridge             | Logische apps             | Pijplijn processor           |
 | Fase valideren     | XML-validatie actie | Een XML-document valideren op basis van een schema | 
 | Verrijk fase       | Gegevens tokens           | Eigenschappen promo veren naar berichten of beslissingen voor route ring |
 | Transformatie fase    | Trans formatie actie      | XML-berichten van de ene indeling naar de andere converteren |
@@ -103,7 +103,7 @@ Bij BizTalk Services verwerking voegt het verrijkte stadium eigenschappen toe aa
 
 ### <a name="run-custom-code"></a>Aangepaste code uitvoeren
 
-Met BizTalk Services kunt u [aangepaste code uitvoeren](/previous-versions/azure/dn232389(v=azure.100)) die is geüpload in uw eigen assembly's. Deze functionaliteit wordt geïmplementeerd door de [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) -interface. Elke fase in de Bridge bevat twee eigenschappen (op ENTER en op de Exitcontrole functie) die het .NET-type opgeven dat u hebt gemaakt en die deze interface implementeert. Met aangepaste code kunt u complexere verwerking uitvoeren op gegevens en kunt u bestaande code opnieuw gebruiken in assembly's die algemene bedrijfs logica uitvoeren. 
+Met BizTalk Services kunt u [aangepaste code uitvoeren](/previous-versions/azure/dn232389(v=azure.100)) die is geüpload in uw eigen assembly's. Deze functionaliteit wordt geïmplementeerd door de [IMessageInspector]() -interface. Elke fase in de Bridge bevat twee eigenschappen (op ENTER en op de Exitcontrole functie) die het .NET-type opgeven dat u hebt gemaakt en die deze interface implementeert. Met aangepaste code kunt u complexere verwerking uitvoeren op gegevens en kunt u bestaande code opnieuw gebruiken in assembly's die algemene bedrijfs logica uitvoeren. 
 
 Logic Apps biedt twee primaire manieren om aangepaste code uit te voeren: Azure Functions en API Apps. Azure Functions kunnen worden gemaakt en worden aangeroepen vanuit Logic apps. Zie [aangepaste code toevoegen en uitvoeren voor logische apps via Azure functions](../logic-apps/logic-apps-azure-functions.md). Gebruik API Apps, onderdeel van Azure App Service, om uw eigen triggers en acties te maken. Meer informatie over het [maken van een aangepaste API voor het gebruik van Logic apps](../logic-apps/logic-apps-create-api-app.md). 
 

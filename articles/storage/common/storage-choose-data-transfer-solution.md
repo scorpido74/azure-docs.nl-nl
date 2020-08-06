@@ -1,6 +1,6 @@
 ---
 title: Een Azure-oplossing kiezen voor gegevens overdracht | Microsoft Docs
-description: Meer informatie over het kiezen van een Azure-oplossing voor gegevens overdracht op basis van de gegevens grootte en de beschik bare netwerk bandbreedte in uw omgeving
+description: Meer informatie over het kiezen van een Azure-oplossing voor gegevens overdracht op basis van de gegevens grootte en de beschik bare netwerk bandbreedte in uw omgeving.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,14 +8,14 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836595"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing kiezen voor gegevens overdracht
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing voor gegevensoverdracht kiezen
 
 Dit artikel bevat een overzicht van een aantal algemene oplossingen voor Azure-gegevens overdracht. Het artikel is ook gekoppeld aan de aanbevolen opties, afhankelijk van de netwerk bandbreedte in uw omgeving en de grootte van de gegevens die u wilt overdragen.
 
@@ -72,7 +72,7 @@ U kunt ook naar uw Azure Storage-account gaan in Azure Portal en de functie voor
 
 - [Krijg een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Lees een overzicht van AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
-- [Quick Start: blobs uploaden, downloaden en vermelden met Power shell](../blobs/storage-quickstart-blobs-powershell.md)
+- [Quickstart: Blobs uploaden, downloaden en vermelden met PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 - [Quickstart: Blobs maken, downloaden, uploaden en weergeven met Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Meer informatie over:
 

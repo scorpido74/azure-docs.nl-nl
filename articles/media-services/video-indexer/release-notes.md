@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042629"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837306"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
@@ -29,6 +29,28 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 * Bekende problemen
 * Opgeloste fouten
 * Afgeschafte functionaliteit
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="ga-for-multi-language-identification"></a>GA voor multi-language-identificatie
+
+Multi-language-identificatie wordt verplaatst van preview naar GA en klaar voor productief gebruik.
+
+Er zijn geen prijs wijzigingen die betrekking hebben op de overgang ' preview to GA '.
+
+### <a name="video-indexer-website-improvements"></a>Verbeterde website Video Indexer
+
+#### <a name="adjustments-in-the-video-gallery"></a>Aanpassingen in de video galerie
+
+Nieuwe zoek balk voor uitgebreid inzicht zoeken met extra filter mogelijkheden is toegevoegd. De zoek resultaten zijn ook verbeterd.
+
+Nieuwe lijst weergave met de mogelijkheid om een video archief met meerdere bestanden te sorteren en te beheren.
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>Nieuw paneel voor eenvoudige selectie en configuratie
+
+Side Panel voor eenvoudige selectie en gebruikers configuratie is toegevoegd, waardoor eenvoudig en snel accounts kunnen worden gemaakt en gedeeld, en configuratie kan worden ingesteld.
+
+Side Panel wordt ook gebruikt voor gebruikers voorkeuren en Help.
 
 ## <a name="june-2020"></a>Juni 2020
 

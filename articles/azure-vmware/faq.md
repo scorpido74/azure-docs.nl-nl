@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003420"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836578"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
 
@@ -25,7 +25,7 @@ Als ondernemingen de strategie voor modernisatie verhogen om de flexibiliteit va
 
 **Waar is de AVS vandaag beschikbaar?**
 
-Tijdens de preview is het beschikbaar in VS Oost in Noord-Amerika en in Amsterdam in West-Europa.
+De service wordt doorlopend toegevoegd aan nieuwe regio's, dus Bekijk de [meest recente informatie over de service-Beschik baarheid](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) voor meer informatie. 
 
 **Kunnen werk belastingen die worden uitgevoerd in een exemplaar van de Azure VMware-oplossing (AVS) worden gebruikt of worden geïntegreerd met Azure-Services?**
 
@@ -65,7 +65,7 @@ Er is geen wijziging in de bestaande Azure VMware-oplossing door CloudSimple. We
 
 **Kan ik migreren van een Azure VMware-oplossing door CloudSimple naar deze nieuwe oplossing?**
 
-Ja, de Azure VMware-oplossing ondersteunt migratie met behulp van vertrouwde VMware-hulpprogram ma's, zoals HCX. Voor klanten die willen migreren naar de nieuwe oplossing, kunt u het beste contact met uw Microsoft-account team vinden om opties en beschik bare ondersteuning te verkennen.
+Ja, de Azure VMware-oplossing ondersteunt migratie met behulp van vertrouwde VMware-hulpprogram ma's, zoals HCX. Voor klanten die willen migreren naar de nieuwe oplossing, kunt u samen werken met uw Microsoft-account-team om opties en beschik bare ondersteuning te verkennen.
 
 
 
@@ -89,7 +89,7 @@ Elke ESXi-host heeft twee vSAN-diskgroups met een capaciteits laag van 15,2 TB e
 
 **Hoeveel netwerk bandbreedte is beschikbaar op elke ESXi-host?**
 
-ESXi-hosts ondersteunen connectiviteits bandbreedte van Maxi maal 25 Gbps.
+Elke ESXi-host is AVS geconfigureerd met 4 25 Gbps Nic's, met twee Nic's die zijn ingericht voor ESXi-systeem verkeer en twee Nic's die zijn ingericht voor werkbelasting verkeer. 
 
 **Worden gegevens opgeslagen op de vSAN-data stores die zijn versleuteld op rest?**
 

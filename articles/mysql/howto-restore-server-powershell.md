@@ -8,12 +8,12 @@ ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f85283ad90f219dfbf404c437a843e1191b19fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498732"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837272"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up maken van een Azure Database for MySQL-server en deze herstellen met Power shell
 
@@ -133,4 +133,4 @@ De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Azure Database for MySQL server parameters aanpassen met behulp van Power shell](howto-configure-server-parameters-using-powershell.md)
+> [Een Azure Database for MySQL connection string genereren met Power shell](howto-connection-string-powershell.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283262"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836918"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten
 
@@ -79,9 +79,9 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Een virtuele machine maken en de Nic's koppelen
-Wanneer u de virtuele machine maakt, geeft u de Nic's op waarmee u hebt gemaakt `--nics` . U moet er ook voor zorgen dat u de VM-grootte selecteert. Er zijn limieten voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Meer informatie over de [grootten van Linux VM](sizes.md).
+Wanneer u de virtuele machine maakt, geeft u de Nic's op waarmee u hebt gemaakt `--nics` . U moet er ook voor zorgen dat u de VM-grootte selecteert. Er zijn limieten voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Meer informatie over de [grootten van Linux VM](../sizes.md).
 
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
 
 ```azurecli
 az vm create \
@@ -97,7 +97,7 @@ az vm create \
 Voeg routerings tabellen toe aan het gast besturingssysteem door de stappen in [het gast besturingssysteem configureren voor meerdere nic's](#configure-guest-os-for-multiple-nics)uit te voeren.
 
 ## <a name="add-a-nic-to-a-vm"></a>Een NIC toevoegen aan een VM
-In de vorige stappen is een virtuele machine met meerdere Nic's gemaakt. U kunt ook Nic's toevoegen aan een bestaande virtuele machine met de Azure CLI. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](change-vm-size.md).
+In de vorige stappen is een virtuele machine met meerdere Nic's gemaakt. U kunt ook Nic's toevoegen aan een bestaande virtuele machine met de Azure CLI. Verschillende [VM-grootten](../sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](change-vm-size.md).
 
 Maak een andere NIC met [AZ Network NIC Create](/cli/azure/network/nic). In het volgende voor beeld wordt een NIC gemaakt met de naam *myNic3* die is verbonden met het back-end-subnet en de netwerk beveiligings groep die in de vorige stappen is gemaakt:
 
@@ -242,6 +242,6 @@ ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Controleer de [grootte van Linux VM](sizes.md) bij het maken van een virtuele machine met meerdere nic's. Let op het maximum aantal Nic's dat elke VM-grootte ondersteunt.
+Controleer de [grootte van Linux VM](../sizes.md) bij het maken van een virtuele machine met meerdere nic's. Let op het maximum aantal Nic's dat elke VM-grootte ondersteunt.
 
 Gebruik just-in-time-VM-toegang om uw Vm's verder te beveiligen. Met deze functie worden de regels voor de netwerk beveiligings groep voor SSH-verkeer geopend wanneer dit nodig is, en gedurende een bepaalde periode. Zie [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (VM-toegang beheren met behulp van JIT) voor meer informatie.

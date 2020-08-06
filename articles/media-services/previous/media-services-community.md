@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e8318b480cfa0d399a7fb2a0e7f6ebed1488397
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836427"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836493"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-community  
 
@@ -36,7 +36,7 @@ Deze Azure Media Services (AMS) community-pagina bespreekt verschillende maniere
 ## <a name="provide-feedback-and-make-suggestions"></a>Feedback geven en suggesties doen
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Gevoerd
+## <a name="discussion"></a>Discussie
 
 ### <a name="twitter"></a>Twitter
 
@@ -48,13 +48,13 @@ De volgende forums kunnen worden gebruikt voor het stellen van vragen over huidi
 
 Op dit moment is MSDN Media Services het primaire Community-Forum van het team.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 Het team bewaakt ook vragen die zijn gelabeld op Stack Overflow met ' Azure-Media-Services '.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="need-help"></a>Hulp nodig?
+## <a name="need-help"></a>Hebt u hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
