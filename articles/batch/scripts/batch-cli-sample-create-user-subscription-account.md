@@ -3,12 +3,13 @@ title: Azure CLI-voorbeeldscript - Batch-account maken - gebruikersabonnement
 description: Met dit script wordt een Azure Batch-account gemaakt in gebruikersabonnementmodus. In dit account worden rekenknooppunten toegewezen aan uw abonnement.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: e589361da8442107f06a0933a1f1ac79a88945ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1c60b9c3de5f2370d7bbc557d36db61d23d32ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964066"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494392"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI-voorbeeld: Een Batch-account maken in gebruikersabonnementmodus
 

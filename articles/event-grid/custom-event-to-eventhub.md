@@ -3,12 +3,13 @@ title: 'Quickstart: Aangepaste gebeurtenissen verzenden naar Event Hubs - Event 
 description: 'Quickstart: Gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een event hub wordt gebruikt voor het eindpunt.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0965963e6527e625d0684821b977b05cb9f28657
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104092"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497351"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Quickstart: Aangepaste gebeurtenissen naar Azure Event Hubs routeren met behulp van Azure CLI en Event Grid
 
@@ -97,8 +98,8 @@ Navigeer naar de event hub in de portal en u ziet dat Event Grid deze drie gebeu
 
 Doorgaans wordt er een toepassing gemaakt die de gebeurtenissen ophaalt uit de event hub. Voor het maken van een toepassing die berichten van een event hub ontvangt, zie:
 
-* [Aan de slag met het ontvangen van berichten met de Event Processor Host in .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Gebeurtenissen ontvangen van Azure Event Hubs met behulp van Java](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* [Aan de slag met het ontvangen van berichten met de Event Processor Host in .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Gebeurtenissen ontvangen van Azure Event Hubs met behulp van Java](../event-hubs/event-hubs-java-get-started-send.md)
 * [Gebeurtenissen ontvangen van Event Hubs met behulp van Apache Storm](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>Resources opschonen

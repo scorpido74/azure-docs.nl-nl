@@ -3,12 +3,13 @@ title: 'Quickstart: Nieuwe beleidstoewijzing met Azure CLI'
 description: In deze quickstart gebruikt u Azure CLI om een Azure Policy-toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: 33db6b4098dc0a69f4dabbea62fc9627cdc948eb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2c289aa01362fcf0ede24bc1da7e8aef9e9be072
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558941"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496692"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Quickstart: Een beleidstoewijzing maken om niet-conforme resources met Azure CLI te identificeren
 

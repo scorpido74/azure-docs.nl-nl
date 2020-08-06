@@ -3,12 +3,13 @@ title: 'Quickstart: Aangepaste gebeurtenissen verzenden met Event Grid en Azure 
 description: 'Quickstart: gebruik Azure Event Grid en Azure CLI om een aangepast onderwerp te publiceren en u op gebeurtenissen voor dat onderwerp te abonneren. De gebeurtenissen worden verwerkt door een web-app.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: ecf7e753df4f6fb3de6095ba295a07fd57b458cf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 46341a9cd4f7880333cb2653691328f4969f1fb4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101678"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497372"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Quickstart: Aangepaste gebeurtenissen naar het webeindpunt routeren met behulp van Azure CLI en Event Grid
 
