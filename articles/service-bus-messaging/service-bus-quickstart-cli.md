@@ -6,13 +6,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-java
-ms.openlocfilehash: 26748b6847ab7061b0038ef9ca18f1b721d320e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: e962047c08dec336ba293aee96eadc0c96d1fc0f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320762"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504463"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Quickstart: De Azure-CLI gebruiken om een Service Bus-wachtrij te maken
 In deze quickstart wordt beschreven hoe u berichten verzendt en ontvangt met Service Bus met behulp van Azure CLI en de Service Bus-Java-bibliotheek. Als u ook bent geïnteresseerd in meer technische informatie, dan kunt u [de uitleg lezen](#understand-the-sample-code) van de belangrijkste elementen van de voorbeeldcode.

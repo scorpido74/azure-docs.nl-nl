@@ -9,12 +9,13 @@ ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: aa7cba00d865bb7b2c1e0fd1f0059fb35ffff690
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bfda6c5315e11a4a924b82dc3eacdf692357827b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80060835"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503681"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Aen Azure Storage-account maken en de accounttoegangssleutels draaien
 
@@ -42,13 +43,13 @@ In dit script worden de volgende opdrachten gebruikt om het opslagaccount te mak
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az storage account create](/cli/azure/storage/account) | Hiermee maakt u een Azure Storage-account in de opgegeven resourcegroep. |
 | [az storage account keys list](/cli/azure/storage/account/keys) | Hiermee geeft u de toegangssleutels voor het opgegeven opslagaccount weer. |
 | [az storage account keys renew](/cli/azure/storage/account/keys) | Hiermee wordt de primaire of secundaire toegangssleutel van het opslagaccount opnieuw gegenereerd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer CLI-voorbeeldscripts voor Storage vindt u in de [Azure CLI-voorbeelden voor Azure Blob Storage](../blobs/storage-samples-blobs-cli.md).

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013263"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513329"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Zelfstudie: Een beheerde identiteit gebruiken om Key Vault te koppelen met een Azure-web-app met .NET
 
@@ -53,11 +53,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 Noteer de geretourneerde `vaultUri`, die de notatie "https://&lt;uw-sleutelkluis-naam&gt;.vault.azure.net/" heeft. Deze wordt gebruikt in de stap [De code bijwerken](#update-the-code).
 
-U kunt nu een geheim in uw sleutelkluis plaatsen met de opdracht [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set). Stel de naam van het geheim in op 'MySecret' en de waarde op 'Success!'.
-
-```azurecli-interactive
-az keyvault secret set --vault-name "<your-keyvault-name>" --name "MySecret" --value "Success!"
-```
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-net-web-app"></a>Een .NET-web-app maken
 
