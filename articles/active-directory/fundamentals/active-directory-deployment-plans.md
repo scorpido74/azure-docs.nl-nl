@@ -2,7 +2,7 @@
 title: Implementatie plannen-Azure Active Directory | Microsoft Docs
 description: End-to-end-richt lijnen over het implementeren van veel Azure Active Directory mogelijkheden.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386331"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799052"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -29,7 +29,7 @@ Wanneer u begint met het plannen van uw implementatie voor een nieuwe functie, i
 
 Rollen kunnen de volgende zijn: 
 
-|Rol |Description |
+|Rol |Beschrijving |
 |-|-|
 |Eind gebruiker|Een representatieve groep gebruikers waarvoor de functionaliteit wordt geïmplementeerd. Bekijkt vaak een voor beeld van de wijzigingen in een test programma.
 |IT-ondersteunings Manager|De IT-afdeling ondersteunt organisaties die in het perspectief van een helpdesk medewerker invoer kunnen bieden over de ondersteuning van deze wijziging.  
@@ -71,7 +71,7 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | Mogelijkheid | Beschrijving|
 | -| - |
 | [Eenmalige aanmelding](../manage-apps/plan-sso-deployment.md)| Met eenmalige aanmelding kunnen uw gebruikers toegang krijgen tot de apps en bronnen die ze nodig hebben om zaken te doen terwijl ze zich slechts één keer aanmelden. Nadat ze zich hebben aangemeld, kunnen ze van Microsoft Office naar Sales Force naar interne toepassingen gaan zonder dat ze een tweede keer referenties hoeven in te voeren. |
-| [Toegangs venster](../manage-apps/access-panel-deployment-plan.md)| Bied uw gebruikers een eenvoudige hub voor het detecteren en openen van al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
+| [Toegangsvenster](../manage-apps/access-panel-deployment-plan.md)| Bied uw gebruikers een eenvoudige hub voor het detecteren en openen van al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
 | [Apparaten](../devices/plan-device-deployment.md) | Dit artikel helpt u bij het evalueren van de methoden om uw apparaat te integreren met Azure AD, het implementatie plan te kiezen en de belangrijkste koppelingen naar ondersteunde hulpprogram ma's voor Apparaatbeheer. |
 
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97bda09870949846e333cc2845286512fd5d6386
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063219"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809898"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten (preview-versie)
-Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om werk nemers in te richten op SuccessFactors-werk nemers centraal in Azure Active Directory, met een optionele write-back van e-mail adres naar SuccessFactors. Deze integratie is in open bare preview en ondersteunt het ophalen van meer dan [70 + gebruikers kenmerken](../app-provisioning/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central. 
+# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten
+Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om werk nemers in te richten op SuccessFactors-werk nemers centraal in Azure Active Directory, met een optionele write-back van e-mail adres naar SuccessFactors. 
 
 >[!NOTE]
 >Gebruik deze zelf studie als de gebruikers die u wilt inrichten via SuccessFactors alleen Cloud gebruikers zijn die geen on-premises AD-account nodig hebben. Als de gebruikers alleen een on-premises AD-account of AD-en Azure AD-account nodig hebben, raadpleegt u de zelf studie over het [configureren van SAP SuccessFactors om](sap-successfactors-inbound-provisioning-tutorial.md#overview) de gebruikers inrichting te Active Directory. 
@@ -79,7 +79,7 @@ Het configureren van in de Cloud HR gestuurde gebruikers inrichten van SuccessFa
 * Kenmerk transformatie 
 * Bereikfilters
 
-Raadpleeg het [implementatie plan voor Cloud HR](../app-provisioning/plan-cloud-hr-provision.md) voor uitgebreide richt lijnen rond deze onderwerpen. 
+Raadpleeg het [implementatie plan voor Cloud HR](../app-provisioning/plan-cloud-hr-provision.md) voor uitgebreide richt lijnen rond deze onderwerpen. Raadpleeg de [SAP SuccessFactors-integratie referentie](../app-provisioning/sap-successfactors-integration-reference.md) voor meer informatie over de ondersteunde entiteiten, verwerkings gegevens en het aanpassen van de integratie voor verschillende HR-scenario's. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>SuccessFactors configureren voor de integratie
 

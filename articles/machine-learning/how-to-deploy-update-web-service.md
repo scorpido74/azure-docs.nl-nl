@@ -5,12 +5,12 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: a561a5fd865eba88f63690d39969961a87335def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 66c53c7485041ec9abaf72396efcfa3325a13732
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544557"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799903"
 ---
 # <a name="update-a-deployed-web-service"></a>Een geïmplementeerde webservice bijwerken
 
@@ -20,9 +20,13 @@ In dit artikel wordt beschreven hoe u een webservice implementeert die is geïmp
 
 In deze zelf studie wordt ervan uitgegaan dat u al een webservice met Azure Machine Learning hebt geïmplementeerd. Als u wilt weten hoe u een webservice implementeert, [voert u de volgende stappen uit](how-to-deploy-and-where.md).
 
-## <a name="update-web-service"></a>Web-service bijwerken
+## <a name="update-web-service"></a>Webservice bijwerken
 
 Als u een webservice wilt bijwerken, gebruikt u de- `update` methode. U kunt de webservice bijwerken voor het gebruik van een nieuw model, een nieuw invoer script of nieuwe afhankelijkheden die kunnen worden opgegeven in een Afleidings configuratie. Zie de documentatie voor [webservice-update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)voor meer informatie.
+
+Zie de [AKS-service-update methode.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#update-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
+
+Zie de [service-update methode ACI.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#update-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
 
 > [!IMPORTANT]
 > Wanneer u een nieuwe versie van een model maakt, moet u elke service die u wilt gebruiken hand matig bijwerken.

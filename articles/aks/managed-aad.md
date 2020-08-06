@@ -2,16 +2,15 @@
 title: Azure AD gebruiken in azure Kubernetes service
 description: Meer informatie over het gebruik van Azure AD in azure Kubernetes service (AKS)
 services: container-service
-manager: gwallace
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448128"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799854"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-beheerde Azure Active Directory-integratie
 
@@ -36,11 +35,6 @@ AKS-beheerde Azure Active Directory integratie is beschikbaar in open bare regio
 * niet-RBAC ingeschakelde clusters worden niet ondersteund voor door AKS beheerde AAD-integratie
 * Het wijzigen van de Azure AD-Tenant die is gekoppeld aan AKS beheerde AAD-integratie wordt niet ondersteund
 
-> [!IMPORTANT]
-> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie: 
-> - [AKS-ondersteunings beleid](support-policies.md) 
-> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
-
 ## <a name="prerequisites"></a>Vereisten
 
 * De Azure CLI-versie 2.9.0 of hoger
@@ -57,22 +51,6 @@ kubectl version --client
 ```
 
 Gebruik [deze instructies](https://kubernetes.io/docs/tasks/tools/install-kubectl/) voor andere besturings systemen.
-
-```azurecli-interactive 
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService    
-``` 
-
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) : 
-
-```azurecli-interactive 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"    
-``` 
-
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :    
-
-```azurecli-interactive 
-az provider register --namespace Microsoft.ContainerService 
-``` 
 
 
 ## <a name="before-you-begin"></a>Voordat u begint

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077096"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800497"
 ---
 # <a name="azure-resource-logs"></a>Azure-resourcelogboeken
 Azure-resource logboeken zijn [platform logboeken](platform-logs-overview.md) die inzicht bieden in bewerkingen die zijn uitgevoerd in een Azure-resource. De inhoud van bron Logboeken is afhankelijk van de Azure-service en het resource type. Bron logboeken worden niet standaard verzameld. U moet een diagnostische instelling maken voor elke Azure-resource om de resource logboeken te verzenden naar een Log Analytics-werk ruimte die u wilt gebruiken met [Azure monitor-logboeken](data-platform-logs.md), Azure Event hubs om buiten Azure door te sturen of om te Azure Storage voor archivering.
 
-Zie [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md) voor meer informatie over het maken van een diagnostische instelling en het [implementeren van Azure monitor op schaal met behulp van Azure Policy](deploy-scale.md) voor meer informatie over het gebruik van Azure Policy om automatisch een diagnostische instelling te maken voor elke Azure-resource die u maakt.
+Zie [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md) voor meer informatie over het maken van een diagnostische instelling en het [implementeren van Azure monitor op schaal met behulp van Azure Policy](../deploy-scale.md) voor meer informatie over het gebruik van Azure Policy om automatisch een diagnostische instelling te maken voor elke Azure-resource die u maakt.
 
 ## <a name="send-to-log-analytics-workspace"></a>Verzenden naar Log Analytics-werkruimte
  Verzend resource logboeken naar een Log Analytics-werk ruimte om de functies van [Azure monitor logboeken](data-platform-logs.md) in te scha kelen. Dit omvat het volgende:

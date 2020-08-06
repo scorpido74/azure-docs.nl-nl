@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327392"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799919"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Controle lijst voor het maken van SaaS-aanbiedingen in partner centrum
 
@@ -79,9 +79,9 @@ Op de pagina eigenschappen definieert u de categorieën en industrieën die word
 De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wanneer ze de aanbieding van uw aanbieding op Marketplace bekijken. 
 
 | **Veldnaam**    | **Opmerkingen**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | Naam  | Vereist, Maxi maal 50 tekens. |
-| Samenvatting  | Vereist, Maxi maal 100 tekens. | 
+| Samenvatting  | Vereist, Maxi maal 100 tekens. |
 | Beschrijving  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
@@ -91,7 +91,7 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 | Titel van handige koppelingen + URL  | Optioneel. |
 | Titel van ondersteunende documenten + bestand  | Vereist, min 1 en Maxi maal 3. Moet PDF-bestands indeling zijn. |
 | Schermopnamen  | Vereist, min 1 scherm afbeelding en maximum 5; vier of meer aanbevolen. Moet 1280 X 720 zijn in PNG-indeling. |
-| Archief logo's (klein, normaal, groot, breed)  | Klein (48 X 48) en groot (216 X 216) vereist; andere grootten zijn optioneel, maar aanbevolen: gemiddeld (90 x 90), breed (255 x 115). Moet in zijn. PNG-indeling. |
+| Winkel logo's (klein, normaal, groot)  | Het grote logo (216 x 216) is vereist. In het partner centrum wordt dit gebruikt om een klein logo (48 x 48 pixels) en een middel groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën. Logo's moeten de PNG-indeling hebben. |
 | Video's naam + URL + miniatuur  | Optioneel, aanbevolen, Maxi maal 4 Video's. De miniatuur moet 1280 x 720 zijn in PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 | Contacts (CSP-programma, techniek, ondersteuning)  | Technische hulp en ondersteuning vereist (naam, e-mail adres en telefoon nummer); CSP-programma contact opnemen optioneel, maar aanbevolen. |
 | Ondersteunings-URL  | Vereist. |
@@ -100,11 +100,11 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 Op de voorbeeld pagina kunt u opgeven dat de doel groep toegang heeft tot uw Preview-voor beeld om te controleren of de aanbieding aan al uw vereisten voldoet voordat deze live gaat. 
 
-| **Veldnaam**    | **Opmerkingen**   | 
-| :---------------- | :-----------| 
+| **Veldnaam**    | **Opmerkingen**   |
+| :---------------- | :-----------|
 | AAD/MSA e-mail + beschrijving | Vereist, min 1 en maximum 10 als deze hand matig worden ingevoerd of Maxi maal 20 als een CSV-bestand wordt geüpload. |
 
-## <a name="technical-configuration-page"></a>Pagina technische configuratie 
+## <a name="technical-configuration-page"></a>Pagina technische configuratie
 
 Op de pagina technische configuratie kunt u de technische gegevens opgeven die door micro soft worden gebruikt om verbinding te maken met uw aanbieding. Deze pagina is niet zichtbaar voor u als u ervoor hebt gekozen om niet via micro soft te verkopen.
 

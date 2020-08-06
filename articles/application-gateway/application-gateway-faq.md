@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506567"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810000"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -353,7 +353,7 @@ Zie hieronder voor Application Gateway specifieke informatie.
 Als u een certificaat gebruikt dat is uitgegeven door een van de ingetrokken ICAs, kan de beschik baarheid van uw toepassing worden onderbroken en afhankelijk van uw toepassing, kunnen er diverse fout berichten worden weer gegeven, inclusief, maar niet beperkt tot: 
 
 1.  Ongeldig certificaat/ingetrokken certificaat
-2.  Time-out bij verbinding
+2.  Time-out opgetreden voor verbinding
 3.  HTTP 502
 
 U moet de volgende acties uitvoeren om te voor komen dat uw toepassing wordt onderbroken wegens dit probleem, of om een ingetrokken certificerings instantie opnieuw te verlenen: 
@@ -466,30 +466,6 @@ Ja. Als uw configuratie overeenkomt met het volgende scenario, ziet u geen toege
 - U hebt Application Gateway v2 geïmplementeerd
 - U hebt een NSG op het toepassings gateway-subnet
 - U hebt NSG-stroom logboeken ingeschakeld op die NSG
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Application Gateway v2 met alleen het persoonlijke frontend-IP-adres Hoe kan ik gebruiken?
-
-Application Gateway v2 biedt momenteel geen ondersteuning voor de modus Private IP. Het ondersteunt de volgende combi Naties
-* Privé-IP en open bare IP
-* Alleen openbaar IP
-
-Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres, kunt u het onderstaande proces volgen:
-1. Een Application Gateway maken met zowel het open bare als het persoonlijke frontend-IP-adres
-2. Maak geen listeners voor het open bare frontend-IP-adres. Application Gateway luistert niet naar verkeer op het open bare IP-adres als er geen listeners worden gemaakt.
-3. Maak en koppel een [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het subnet Application Gateway met de volgende configuratie in volg orde van prioriteit:
-    
-    a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535**. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
-    
-    b. Verkeer toestaan van bron als **AzureLoadBalancer** -service label en-doel **Any** poort
-    
-    c. Alle binnenkomend verkeer van de bron als de tag en de doel poort van **de** **Internet verbinding** weigeren. Geef deze regel de *minste prioriteit* in de regels voor binnenkomende verbindingen
-    
-    d. Behoud de standaard regels zoals het toestaan van VirtualNetwork inkomend zodat de toegang op privé-IP-adres niet wordt geblokkeerd
-    
-    e. De uitgaande Internet verbinding kan niet worden geblokkeerd. Anders worden er problemen met logboek registratie, metrische gegevens, enzovoort.
-
-Voor beeld van NSG-configuratie voor alleen persoonlijke IP-toegang: ![ Application Gateway v2 NSG configuratie alleen voor privé-IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

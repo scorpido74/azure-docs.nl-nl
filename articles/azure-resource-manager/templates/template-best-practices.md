@@ -3,12 +3,12 @@ title: Aanbevolen procedures voor sjablonen
 description: Hierin worden aanbevolen benaderingen beschreven voor het ontwerpen van Azure Resource Manager sjablonen. Biedt suggesties om veelvoorkomende problemen te voor komen bij het gebruik van sjablonen.
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248914"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809252"
 ---
 # <a name="arm-template-best-practices"></a>Aanbevolen procedures voor ARM-sjablonen
 
@@ -32,7 +32,7 @@ U kunt enkele sjabloon limieten overschrijden met behulp van een geneste sjabloo
 
 Wanneer u resources implementeert voor een resource groep, slaat de resource groep meta gegevens over de resources op. De meta gegevens worden opgeslagen op de locatie van de resource groep.
 
-Als de regio van de resource groep tijdelijk niet beschikbaar is, kunt u resources in de resource groep niet bijwerken omdat de meta gegevens niet beschikbaar zijn. De resources in andere regio's zullen nog steeds werken zoals verwacht, maar u kunt ze niet bijwerken. Als u het risico wilt minimaliseren, zoekt u de resource groep en de resources in dezelfde regio.
+Als de regio van de resourcegroep tijdelijk niet beschikbaar is, kunt u resources in de resourcegroep niet bijwerken, omdat de metagegevens niet beschikbaar zijn. De resources in andere regio's werken nog steeds zoals verwacht, maar u kunt ze niet bijwerken. Als u het risico wilt minimaliseren, zoekt u de resource groep en de resources in dezelfde regio.
 
 ## <a name="parameters"></a>Parameters
 
@@ -226,7 +226,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](template-syntax
    
      Zie voor meer informatie over het maken van verbinding met virtuele machines:
    
-   * [Vm's uitvoeren voor een architectuur met meerdere lagen in azure](../../guidance/guidance-compute-n-tier-vm.md)
+   * [Vm's uitvoeren voor een architectuur met meerdere lagen in azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [WinRM-toegang instellen voor virtuele machines in Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Externe toegang tot uw virtuele machine toestaan met behulp van de Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Externe toegang tot uw virtuele machine toestaan met behulp van Power shell](../../virtual-machines/windows/nsg-quickstart-powershell.md)

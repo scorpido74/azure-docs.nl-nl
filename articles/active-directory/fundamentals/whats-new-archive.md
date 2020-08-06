@@ -2,7 +2,7 @@
 title: Wilt u archiveren wat er nieuw is in Azure Active Directory? | Microsoft Docs
 description: De opmerkingen bij de release van wat is er nieuw in het gedeelte Overzicht van deze inhoudsset, bevat zes maanden aan activiteit. Na zes maanden worden de items uit het hoofd artikel verwijderd en in dit archief artikel geplaatst.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e8b09293f80b5aee2dd76abba3f165a50a5eeee5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483906"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799137"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -152,7 +152,7 @@ Zie wat zijn de standaard beveiligings [instellingen?](https://docs.microsoft.co
 
 ---
 
-## <a name="november-2019"></a>november 2019
+## <a name="november-2019"></a>November 2019
 
 ### <a name="support-for-the-samesite-attribute-and-chrome-80"></a>Ondersteuning voor het kenmerk SameSite en Chrome 80
 
@@ -2049,7 +2049,7 @@ De volgende apps zijn te vinden op de lijst met [goedgekeurde client-apps](https
 
 - Microsoft Stream
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
@@ -2713,7 +2713,7 @@ Zie [Azure AD B2C: toegangs tokens aanvragen](https://docs.microsoft.com/azure/a
 
 Bij het configureren van op SAML gebaseerde SSO-toepassingen kunt u de integratie op de pagina configuratie testen. Als er een fout optreedt tijdens het aanmelden, kunt u de fout in de test ervaring opgeven en Azure AD voorziet in oplossings stappen om het specifieke probleem op te lossen.
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Configuring single sign-on to applications that are not in the Azure Active Directory application gallery](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps) (Eenmalige aanmelding configureren voor toepassingen die zich niet in de Azure Active Directory-toepassingsgalerie bevinden)
 - [Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
@@ -2838,7 +2838,7 @@ Zie [Azure AD-wacht woord opnieuw instellen in het aanmeldings scherm](https://d
 
 ---
 
-## <a name="march-2018"></a>maart 2018
+## <a name="march-2018"></a>Maart 2018
 
 ### <a name="certificate-expire-notification"></a>Melding dat het certificaat verloopt
 
@@ -2848,7 +2848,7 @@ Azure AD verzendt een melding wanneer een certificaat voor een galerie of niet-g
 
 Sommige gebruikers hebben geen meldingen ontvangen voor bedrijfs toepassingen die zijn geconfigureerd voor eenmalige aanmelding op basis van SAML. Dit probleem is opgelost. Azure AD verzendt een melding voor certificaten die verlopen zijn in 7, 30 en 60 dagen. U kunt deze gebeurtenis zien in de audit Logboeken.
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Certificaten beheren voor federatieve eenmalige aanmelding in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
 - [Controleactiviteitenrapporten in Azure Active Directory Portal](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
@@ -2877,7 +2877,7 @@ Zie [Wat is Azure AD B2B-samen werking?](https://docs.microsoft.com/azure/active
 
 Meer informatie hierover vindt u in onze [blog post](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Voorwaardelijke toegang op basis van toepassingen instellen](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
@@ -3015,7 +3015,7 @@ Zie [Wat is Azure AD-toepassingsproxy-connectors](https://docs.microsoft.com/azu
 
 ---
 
-## <a name="february-2018"></a>februari 2018
+## <a name="february-2018"></a>Februari 2018
 
 ### <a name="improved-navigation-for-managing-users-and-groups"></a>Verbeterde navigatie voor het beheren van gebruikers en groepen
 
@@ -3194,7 +3194,7 @@ De volgende toepassingen worden toegevoegd aan het einde van februari:
 
 - Microsoft Invoicing
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
@@ -3209,7 +3209,7 @@ Wanneer de gebruiks voorwaarden worden weer gegeven, kunt u nu klikken op **prob
 
 ---
 
-## <a name="january-2018"></a>januari 2018
+## <a name="january-2018"></a>Januari 2018
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Nieuwe federatieve apps die beschikbaar zijn in de Azure AD-App-galerie
 
@@ -3291,7 +3291,7 @@ Met de algemene Beschik baarheid van de nieuwe Azure Active Directory-beheer con
 
 Als onderdeel van de overgang naar de nieuwe beheer console hebben we twee nieuwe Api's beschikbaar gesteld voor het ophalen van Azure AD-activiteiten Logboeken. De nieuwe set Api's biedt uitgebreide filter-en sorteer functies, naast het bieden van uitgebreide controle-en aanmeldings activiteiten. De gegevens die eerder via de beveiligings rapporten beschikbaar zijn, kunnen nu worden geopend via de API voor risico detectie van identiteits beveiliging in Microsoft Graph.
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Aan de slag met de API voor Azure Active Directory rapportage](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
@@ -3452,7 +3452,7 @@ De volgende apps zijn te vinden op de lijst met [goedgekeurde client-apps](https
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
@@ -3534,7 +3534,7 @@ U kunt macOS in uw beleid voor voorwaardelijke toegang van Azure AD nu opnemen (
 - **Zorg ervoor dat macOS-apparaten voldoen aan het nalevings beleid van uw organisatie dat is gedefinieerd in intune.** U kunt in intune op het Azure Portal nu nalevings beleid instellen voor macOS-apparaten.
 - **Beperk de toegang tot toepassingen in azure AD tot alleen compatibele macOS-apparaten.** Het ontwerp van het beleid voor voorwaardelijke toegang heeft macOS als een afzonderlijke platform optie. Nu kunt u macOS-specifiek beleid voor voorwaardelijke toegang ontwerpen voor de doel toepassing die in Azure is ingesteld.
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Een apparaatnalevingsbeleid maken voor macOS-apparaten in Intune](https://aka.ms/macoscompliancepolicy)
 - [Voorwaardelijke toegang in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
@@ -3581,7 +3581,7 @@ De volgende apps zijn toegevoegd aan de lijst met [goedgekeurde client-apps](htt
 - Microsoft Planner
 - Azure Information Protection
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 - [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)

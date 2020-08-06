@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: 4aac13bf34394c359837ecd7a85abd78495bc4b4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283109"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808453"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Hoe Azure Active Directory inrichting kan worden geïntegreerd met SAP-SuccessFactors 
 
@@ -33,7 +33,7 @@ De Azure AD-inrichtings service maakt gebruik van basis verificatie om verbindin
 Als u de verbinding tussen Azure AD Provisioning Service en SuccessFactors wilt verbeteren, kunt u de IP-adresbereiken van Azure AD toevoegen aan de lijst met SuccessFactors IP-adressen met behulp van de stappen die hieronder worden beschreven:
 
 1. De [meest recente IP-bereiken](https://www.microsoft.com/download/details.aspx?id=56519) voor de open bare Azure-Cloud downloaden 
-1. Open het bestand en zoek naar labels **AzureActiveDirectory** en **AzureActiveDirectoryDomainServices** 
+1. Open het bestand en zoek naar tag **AzureActiveDirectory** 
 
    >[!div class="mx-imgBorder"] 
    >![Azure AD IP-bereik](media/sap-successfactors-integration-reference/azure-active-directory-ip-range.png)

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502644"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810221"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Verschuiving van Express.js naar Azure Functions
 
@@ -27,7 +27,7 @@ Bij het migreren van code naar een serverloze architectuur, is het herstructurer
 - **Configuratie en conventies**: een functions-app gebruikt de _function.jsin_ het bestand voor het definiëren van http-termen, het definiëren van beveiligings beleid en het configureren van de [invoer en uitvoer](./functions-triggers-bindings.md)van de functie. Standaard wordt de naam van de map die de functie bestanden bevat de naam van het eind punt gedefinieerd, maar u kunt de naam wijzigen via de `route` eigenschap in de [function.jsin](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) het bestand.
 
 > [!TIP]
-> Meer informatie vindt u in de interactieve zelf studie [Node.js en snelle api's naar serverloze api's met Azure functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/).
+> Meer informatie vindt u in de interactieve zelf studie [Node.js en snelle api's naar serverloze api's met Azure functions](/learn/modules/shift-nodejs-express-apis-serverless/).
 
 ## <a name="example"></a>Voorbeeld
 
@@ -138,4 +138,4 @@ De volgende _function.jsin_ het bestand bevatten configuratie-informatie voor de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de interactieve zelf studie [Node.js en snelle api's naar serverloze api's met Azure functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)
+- Meer informatie over de interactieve zelf studie [Node.js en snelle api's naar serverloze api's met Azure functions](/learn/modules/shift-nodejs-express-apis-serverless/)

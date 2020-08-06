@@ -3,7 +3,7 @@ title: Resource rollen wijzigen voor een toegangs pakket in het beheer van recht
 description: Meer informatie over het wijzigen van de resource rollen voor een bestaand toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550312"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798632"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -35,9 +35,9 @@ In deze video vindt u een overzicht van hoe u een toegangs pakket wijzigt.
 
 Als u resources aan een toegangs pakket moet toevoegen, moet u controleren of de resources die nodig zijn in de catalogus beschikbaar zijn. Als u een Access package manager bent, kunt u geen resources toevoegen aan een catalogus, zelfs niet als u ze bezit. U bent beperkt tot het gebruik van de beschik bare resources in de catalogus.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogus** en open vervolgens de catalogus.
 
@@ -51,9 +51,9 @@ Als u resources aan een toegangs pakket moet toevoegen, moet u controleren of de
 
 Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar maakt voor gebruikers, is door resource rollen toe te voegen aan uw toegangs pakket. U kunt resource rollen toevoegen voor groepen, teams, toepassingen en share point-sites.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -90,7 +90,7 @@ Zie groepen en [Office 365-groepen en micro soft teams](https://docs.microsoft.c
 
     Wanneer u de groep of het team selecteert, wordt in de kolom **subtype** een van de volgende subtypen weer geven:
 
-    | Subtype | Description |
+    | Subtype | Beschrijving |
     | --- | --- |
     | Beveiliging | Wordt gebruikt voor het verlenen van toegang tot resources. |
     | Distributie | Wordt gebruikt voor het verzenden van meldingen naar een groep personen. |
@@ -160,9 +160,9 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
 ## <a name="remove-resource-roles"></a>Resource rollen verwijderen
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 

@@ -2,7 +2,7 @@
 title: Identiteits gegevens opslag voor Australische en Nieuw-Zeelandse klanten-Azure AD
 description: Meer informatie over waar Azure Active Directory identiteits gegevens voor de Australische klanten opslaat.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d651a1a6ce8ef412c148f16d0aa4412df94cb0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77370287"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799545"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Identiteits gegevens opslag voor Australische en Nieuw-Zeelandse klanten in Azure Active Directory
 

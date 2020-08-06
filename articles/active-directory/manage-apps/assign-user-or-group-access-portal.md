@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763734"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799499"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Een gebruiker of groep toewijzen aan een bedrijfs-app in Azure Active Directory
 
@@ -26,6 +26,9 @@ In dit artikel wordt beschreven hoe u gebruikers of groepen toewijst aan bedrijf
 Voor meer controle kunnen bepaalde typen bedrijfs toepassingen worden geconfigureerd voor het vereisen van een [gebruikers toewijzing](#configure-an-application-to-require-user-assignment). 
 
 Als u [een gebruiker of groep aan een bedrijfs-app wilt toewijzen](#assign-users-or-groups-to-an-app-via-the-azure-portal), moet u zich aanmelden als een globale beheerder, toepassings beheerder, Cloud toepassings beheerder of de toegewezen eigenaar van de Enter prise-app.
+
+> [!IMPORTANT]
+> Wanneer u een groep aan een toepassing toewijst, hebben alleen gebruikers in de groep toegang. De toewijzing cascadet niet aan geneste groepen.
 
 > [!NOTE]
 > Voor een toewijzing op basis van een groep is Azure Active Directory Premium P1 of P2 Edition vereist. Toewijzing op basis van een groep wordt alleen ondersteund voor beveiligings groepen. Geneste groepslid maatschappen en Office 365-groepen worden momenteel niet ondersteund. Zie de [pagina met prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory)voor meer informatie over de licentie vereisten voor de functies die in dit artikel worden besproken. 

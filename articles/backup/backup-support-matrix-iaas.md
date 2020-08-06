@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531860"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810459"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -137,7 +137,7 @@ VM herstellen in een ander virtueel netwerk |Ondersteund.<br/><br/> Het virtuele
 
 **Compute** | **Ondersteuning**
 --- | ---
-VM-grootte |Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM-geheugen.<br/><br/> [Meer informatie.](../virtual-machines/windows/sizes.md)
+VM-grootte |Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM-geheugen.<br/><br/> [Meer informatie.](../virtual-machines/sizes.md)
 Back-ups maken van Vm's in [beschikbaarheids sets](../virtual-machines/availability.md#availability-sets) | Ondersteund.<br/><br/> U kunt een virtuele machine niet herstellen in een beschik bare set met behulp van de optie om snel een virtuele machine te maken. In plaats daarvan moet u, wanneer u de virtuele machine herstelt, de schijf herstellen en gebruiken om een virtuele machine te implementeren, of een schijf herstellen en gebruiken om een bestaande schijf te vervangen.
 Back-ups maken van Vm's die zijn geïmplementeerd met het [voor deel voor hybride gebruik (hub)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Ondersteund.
 Back-ups maken van virtuele machines die zijn geïmplementeerd in een [schaalset](../virtual-machine-scale-sets/overview.md) |Ondersteund. De [Orchestration-modus](../virtual-machine-scale-sets/orchestration-modes.md) moet worden ingesteld op 2 voor het fout domein. De beschikbaarheidsset wordt niet ondersteund.
@@ -223,8 +223,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 --- | --- | ---
 On-premises Windows-machines zonder DPM/MABS | N.v.t. | ![Ja][green]
 Azure-VM's | NA | NA
-On-premises/Azure VM's met DPM | ![Yes][green] | ![Yes][green]
-On-premises/Azure VM's met MABS | ![Yes][green] | ![Ja][green]
+On-premises/Azure VM's met DPM | ![Ja][green] | ![Ja][green]
+On-premises/Azure VM's met MABS | ![Ja][green] | ![Ja][green]
 
 ## <a name="next-steps"></a>Volgende stappen
 

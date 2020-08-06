@@ -2,36 +2,37 @@
 title: Naslag informatie over SAP SuccessFactors-kenmerken
 description: Meer informatie over de kenmerken van SuccessFactors die worden ondersteund door SuccessFactors-HR ingericht inrichten
 services: active-directory
-author: kenwith
+author: cmmdesai
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/06/2019
-ms.author: kenwith
+ms.date: 08/05/2020
+ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781545"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808504"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Naslag informatie over SAP SuccessFactors-kenmerken
 
 In dit artikel vindt u informatie over:
 
-- [Ondersteunde SuccessFactors-entiteiten en-kenmerken](#supported-successfactors-entities-and-attributes)
+- [SuccessFactors entiteiten en kenmerken](#supported-successfactors-entities-and-attributes)
 - [Toewijzing van standaard kenmerk](#default-attribute-mapping)
 
 ## <a name="supported-successfactors-entities-and-attributes"></a>Ondersteunde SuccessFactors-entiteiten en-kenmerken
 
-In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden ondersteund door de volgende twee Provisioning-apps vastgelegd:
+In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die standaard zijn opgenomen in de volgende twee Provisioning-apps vastgelegd:
 
 - [SuccessFactors Active Directory gebruikers inrichten](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 - [SuccessFactors naar Azure AD-gebruikers inrichten](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
+Raadpleeg de [Naslag informatie over SAP SuccessFactors-integratie](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) om het schema uit te breiden voor extra kenmerken. 
 
 | \# | SuccessFactors entiteit                  | SuccessFactors-kenmerk     | Bewerkings type |
 |----|----------------------------------------|------------------------------|----------------|
@@ -68,7 +69,7 @@ In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden 
 | 31 | Gebruiker                                   | empId                        | Lezen           |
 | 32 | Gebruiker                                   | homePhone                    | Lezen           |
 | 33 | Gebruiker                                   | jobFamily                    | Lezen           |
-| 34 | Gebruiker                                   | naam                     | Lezen           |
+| 34 | Gebruiker                                   | bijnaam                     | Lezen           |
 | 35 | Gebruiker                                   | state                        | Lezen           |
 | 36 | Gebruiker                                   | timeZone                     | Lezen           |
 | 37 | Gebruiker                                   | gebruikersnaam                     | Lezen           |

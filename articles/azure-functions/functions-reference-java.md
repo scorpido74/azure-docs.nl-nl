@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372413"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810085"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -19,7 +19,7 @@ Als Java-ontwikkelaar, als u geen ervaring hebt met Azure Functions, kunt u eers
 
 | Aan de slag | Concepten| 
 | -- | -- |  
-| <ul><li>[Java-functie met Visual Studio code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Java/maven-functie met Terminal/opdracht prompt](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Java-functie met Gradle](functions-create-first-java-gradle.md)</li><li>[Java-functie met eclips](functions-create-maven-eclipse.md)</li><li>[Een Java-functie met IntelliJ-idee](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> |
+| <ul><li>[Java-functie met Visual Studio code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java/maven-functie met Terminal/opdracht prompt](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-functie met Gradle](functions-create-first-java-gradle.md)</li><li>[Java-functie met eclips](functions-create-maven-eclipse.md)</li><li>[Een Java-functie met IntelliJ-idee](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Basis beginselen van Java-functies
 
@@ -210,7 +210,7 @@ Gebruik het [tabblad toepassings instellingen](functions-how-to-use-azure-functi
 
 U kunt de opdracht [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) gebruiken om in te stellen `JAVA_OPTS` , zoals in het volgende voor beeld:
 
-#### <a name="consumption-plan"></a>[Verbruiksabonnement](#tab/consumption)
+#### <a name="consumption-plan"></a>[Verbruiks abonnement](#tab/consumption)
 ```azurecli-interactive
 az functionapp config appsettings set \
 --settings "JAVA_OPTS=-Djava.awt.headless=true" \

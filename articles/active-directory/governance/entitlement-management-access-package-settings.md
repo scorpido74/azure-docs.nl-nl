@@ -3,7 +3,7 @@ title: Koppeling delen om een toegangs pakket aan te vragen in het beheer van re
 description: Meer informatie over het delen van een koppeling voor het aanvragen van een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a29f0a0231cdea5a73b7798088002e63ec93324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078556"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798543"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Koppeling delen om een toegangs pakket aan te vragen in het beheer van rechten van Azure AD
 
@@ -31,15 +31,15 @@ Zolang de catalogus voor het toegangs pakket is [ingeschakeld voor externe gebru
 
 ## <a name="share-link-to-request-an-access-package"></a>Koppeling delen om een toegangs pakket aan te vragen
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
 1. Op de pagina overzicht kopieert u de **koppeling naar de portal van mijn toegang**.
 
-    ![Overzicht van toegangs pakketten-koppeling naar mijn Access-Portal](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Overzicht van toegangspakket - Koppeling voor de portal Mijn toegang](./media/entitlement-management-shared/my-access-portal-link.png)
 
     Het is belang rijk dat u de volledige koppeling naar de portal van mijn Access kopieert wanneer u deze naar een interne zakelijke partner verzendt. Dit zorgt ervoor dat de partner toegang krijgt tot de portal van uw Directory om de aanvraag te doen. De koppeling begint met `myaccess` , bevat een directory-hint en eindigt met een toegangs pakket-id.  (Voor de Amerikaanse overheid is het domein in de koppeling naar de portal van mijn toegang `myaccess.microsoft.us` .)
 

@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324740"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809762"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -23,7 +23,7 @@ De meest voorkomende back-upfouten kunnen automatisch worden opgelost door de vo
 
 ### <a name="step-1-check-azure-vm-health"></a>Stap 1: de status van de Azure VM controleren
 
-- **Zorg ervoor dat de inrichtings status van de Azure-VM wordt uitgevoerd**: als de [inrichtings status](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states) van de VM de status **gestopt/** ongedaan maken/bijwerken heeft, wordt de back-upbewerking verstoord. Open *Azure Portal > vm > overzicht >* en controleer de status van de virtuele machine om ervoor te zorgen dat deze **wordt uitgevoerd** en voer de back-upbewerking opnieuw uit.
+- **Zorg ervoor dat de inrichtings status van de Azure-VM wordt uitgevoerd**: als de [inrichtings status](../virtual-machines/windows/states-lifecycle.md#provisioning-states) van de VM de status **gestopt/** ongedaan maken/bijwerken heeft, wordt de back-upbewerking verstoord. Open *Azure Portal > vm > overzicht >* en controleer de status van de virtuele machine om ervoor te zorgen dat deze **wordt uitgevoerd** en voer de back-upbewerking opnieuw uit.
 - **In behandeling zijnde besturingssysteem updates controleren of opnieuw opstarten**: Controleer of er geen besturingssysteem update in behandeling is of moet opnieuw worden opgestart op de VM.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Stap 2: de status van de Azure VM Guest Agent-service controleren
@@ -31,18 +31,18 @@ De meest voorkomende back-upfouten kunnen automatisch worden opgelost door de vo
 - **Controleer of de Azure VM Guest Agent-service is gestart en up-to-date is**:
   - Op een Windows-VM:
     - Navigeer naar **Services. msc** en zorg ervoor dat de **Windows Azure VM Guest Agent-service** actief is. Zorg er ook voor dat de [meest recente versie](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) is geïnstalleerd. Zie problemen met de [Windows VM-gast agent](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)voor meer informatie.
-    - De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit de Azure Marketplace-installatie kopie vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon. Een [hand matige installatie van de agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die is geïmplementeerd in Azure.
+    - De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit de Azure Marketplace-installatie kopie vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon. Een [hand matige installatie van de agent](../virtual-machines/extensions/agent-windows.md#manual-installation) kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die is geïmplementeerd in Azure.
     - Bekijk de ondersteunings matrix om te controleren of de VM wordt uitgevoerd op het [ondersteunde Windows-besturings systeem](backup-support-matrix-iaas.md#operating-system-support-windows).
   - Op Linux VM,
-    - Zorg ervoor dat de Azure VM Guest Agent-service wordt uitgevoerd door de opdracht uit te voeren `ps-e` . Zorg er ook voor dat de [meest recente versie](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) is geïnstalleerd. Zie problemen met de [gast agent van Linux VM](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)voor meer informatie.
-    - Zorg ervoor dat de [afhankelijkheden van de Linux VM-agent op systeem pakketten](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) de ondersteunde configuratie hebben. Bijvoorbeeld: de ondersteunde python-versie is 2,6 en hoger.
+    - Zorg ervoor dat de Azure VM Guest Agent-service wordt uitgevoerd door de opdracht uit te voeren `ps-e` . Zorg er ook voor dat de [meest recente versie](../virtual-machines/extensions/update-linux-agent.md) is geïnstalleerd. Zie problemen met de [gast agent van Linux VM](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)voor meer informatie.
+    - Zorg ervoor dat de [afhankelijkheden van de Linux VM-agent op systeem pakketten](../virtual-machines/extensions/agent-linux.md#requirements) de ondersteunde configuratie hebben. Bijvoorbeeld: de ondersteunde python-versie is 2,6 en hoger.
     - Bekijk de ondersteunings matrix om te controleren of de VM wordt uitgevoerd op het [ondersteunde Linux-besturings systeem.](backup-support-matrix-iaas.md#operating-system-support-linux)
 
 ### <a name="step-3-check-azure-vm-extension-health"></a>Stap 3: de status van de Azure VM-extensie controleren
 
 - **Zorg ervoor dat alle Azure VM-extensies de status Provisioning geslaagd hebben**: als een uitbrei ding een mislukte status heeft, kan dit de back-up belemmeren.
 - *Open Azure Portal > VM > instellingen > extensies > uitbrei dingen status* en controleer of alle uitbrei dingen de status **geslaagd** hebben.
-- Zorg ervoor dat alle [extensie problemen](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions) zijn opgelost en voer de back-upbewerking opnieuw uit.
+- Zorg ervoor dat alle [extensie problemen](../virtual-machines/extensions/overview.md#troubleshoot-extensions) zijn opgelost en voer de back-upbewerking opnieuw uit.
 - **Controleer of de com+-systeem toepassing** actief is. Daarnaast moet de **Distributed Transaction Coordinator-service** worden uitgevoerd als **netwerk service account**. Volg de stappen in dit artikel om problemen [met com+ en MSDTC op te lossen](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error).
 
 ### <a name="step-4-check-azure-backup-vm-extension-health"></a>Stap 4: de status van de VM-extensie controleren Azure Backup
@@ -57,9 +57,9 @@ Azure Backup maakt gebruik van de extensie van de VM-moment opname om een toepas
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **Controleer of netwerk toegang is vereist**: extensie pakketten worden gedownload uit de Azure Storage extensie opslagplaats en de uitbreidings status uploads worden naar Azure Storage gepost. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+- **Controleer of netwerk toegang is vereist**: extensie pakketten worden gedownload uit de Azure Storage extensie opslagplaats en de uitbreidings status uploads worden naar Azure Storage gepost. [Meer informatie](../virtual-machines/extensions/features-windows.md#network-access).
   - Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
-  - Als u de toegang tot `168.63.129.16` het gebruik van de gast firewall of met een proxy hebt geblokkeerd, zullen uitbrei dingen mislukken, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist. meer [informatie](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+  - Als u de toegang tot `168.63.129.16` het gebruik van de gast firewall of met een proxy hebt geblokkeerd, zullen uitbrei dingen mislukken, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist. meer [informatie](../virtual-machines/extensions/features-windows.md#network-access).
 
 - **Zorg ervoor dat DHCP is ingeschakeld in de gast-VM**: dit is vereist voor het ophalen van de host of het infrastructuur adres van DHCP voor het werken met de back-up van de IaaS-VM. Als u een statisch privé IP-adres nodig hebt, moet u dit configureren via de Azure Portal of Power shell en ervoor zorgen dat de DHCP-optie in de virtuele machine is ingeschakeld, [meer informatie](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken).
 
@@ -277,7 +277,7 @@ De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` .
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
@@ -306,7 +306,7 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, wat niet wordt gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)

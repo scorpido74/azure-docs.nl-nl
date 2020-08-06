@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537507"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800463"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * `endpoint-name`Hiermee wordt een eind punt geïdentificeerd, zoals een event hub, Event grid of service bus. Deze eind punten moeten in uw abonnement worden gemaakt en aan Azure Digital Apparaatdubbels gekoppeld met behulp van Control-Api's voordat u deze registratie oproep doet.
 
-Het gebeurtenis route object dat is door gegeven aan `EventRoutes.Add` , heeft ook een [ **filter** parameter](./how-to-manage-routes.md#filter-events), die kan worden gebruikt om de typen gebeurtenissen te beperken die volgen op deze route.
+Het gebeurtenis route object dat is door gegeven aan `EventRoutes.Add` , heeft ook een [ **filter** parameter](./how-to-manage-routes-apis-cli.md#filter-events), die kan worden gebruikt om de typen gebeurtenissen te beperken die volgen op deze route.
 
 Routes kunnen ook worden gemaakt met behulp van de [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
 
@@ -90,7 +90,7 @@ Verschillende typen gebeurtenissen in IoT Hub en Azure Digital Apparaatdubbels g
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie een gebeurtenis route instellen en beheren:
-* [*Instructies: eind punten en routes beheren*](how-to-manage-routes.md)
+* [*Instructies: eind punten en routes beheren*](how-to-manage-routes-apis-cli.md)
 
 U kunt ook zien hoe u Azure Functions gebruikt voor het routeren van gebeurtenissen in azure Digital Apparaatdubbels:
 * [*Instructies: een Azure-functie voor het verwerken van gegevens instellen*](how-to-create-azure-function.md)

@@ -3,7 +3,7 @@ title: Toegangs pakket verbergen of verwijderen in rechten beheer-Azure AD
 description: Meer informatie over het verbergen of verwijderen van een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da450a2dfc4351f5bd2c3c759b483cea0c110d9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22aa97c6e627c2072636ca2e079877ff0f608b68
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078802"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798797"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Een toegangs pakket verbergen of verwijderen in het beheer van rechten van Azure AD
 
@@ -33,9 +33,9 @@ In dit artikel wordt beschreven hoe u een toegangs pakket kunt verbergen of verw
 
 Volg deze stappen om de **verborgen** instelling voor een toegangs pakket te wijzigen.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -51,9 +51,9 @@ Volg deze stappen om de **verborgen** instelling voor een toegangs pakket te wij
 
 Een toegangs pakket kan alleen worden verwijderd als er geen actieve gebruikers toewijzingen zijn. Volg deze stappen voor het verwijderen van een toegangs pakket.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 

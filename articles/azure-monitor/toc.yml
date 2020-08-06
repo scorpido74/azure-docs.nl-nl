@@ -171,10 +171,14 @@
         - name: Virtuele Azure-machine bewaken
           href: insights/monitor-vm-azure.md
           displayname: VM
+    - name: Implementeren
+      items:
+        - name: Azure Monitor implementeren
+          href: deploy.md
+        - name: Op schaal implementeren
+          href: deploy-scale.md
     - name: Beheren en configureren
       items:
-        - name: Op schaal implementeren
-          href: platform/deploy-scale.md
         - name: Rolmachtigingen en -beveiliging
           href: platform/roles-permissions-security.md
         - name: IP-adressen

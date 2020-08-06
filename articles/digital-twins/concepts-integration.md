@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367432"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800480"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Apparaatdubbels integreren met andere services
 
@@ -33,7 +33,7 @@ Azure Digital Apparaatdubbels kan gegevens verzenden naar verbonden **eind punte
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Eind punten worden aan Azure Digital Apparaatdubbels gekoppeld met behulp van beheer-Api's of de Azure Portal. Meer informatie over het koppelen van een eind punt aan Azure Digital Apparaatdubbels in [*procedures: eind punten en routes beheren*](how-to-manage-routes.md).
+Eind punten worden aan Azure Digital Apparaatdubbels gekoppeld met behulp van beheer-Api's of de Azure Portal. Meer informatie over het koppelen van een eind punt aan Azure Digital Apparaatdubbels in [*procedures: eind punten en routes beheren*](how-to-manage-routes-apis-cli.md).
 
 Er zijn veel andere services waar u uw gegevens uiteindelijk wilt door sturen, zoals [Azure Storage](../storage/common/storage-introduction.md) of [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md). Als u uw gegevens naar Services wilt verzenden, koppelt u de doel service aan een eind punt.
 

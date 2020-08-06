@@ -3,7 +3,7 @@ title: Toewijzingen voor een toegangs pakket in azure AD-rechten beheer weer gev
 description: Meer informatie over het weer geven, toevoegen en verwijderen van toewijzingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78bed4f5c600bfa0218f924dc4444119e9729e28
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078831"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798746"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangs pakket in azure AD-rechts beheer weer geven, toevoegen en verwijderen
 
@@ -32,13 +32,13 @@ In het beheer van rechten van Azure AD kunt u zien wie er toegang tot pakketten,
 Als u het rechten beheer van Azure AD wilt gebruiken en gebruikers wilt toewijzen voor toegang tot pakketten, hebt u een van de volgende licenties nodig:
 
 - Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5-licentie
+- Licentie voor Enterprise Mobility + Security (EMS) E5
 
 ## <a name="view-who-has-an-assignment"></a>Weer geven wie een toewijzing heeft
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -64,9 +64,9 @@ U kunt ook toewijzingen in een toegangs pakket ophalen met behulp van Microsoft 
 
 In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen aan een toegangs pakket, zodat gebruikers niet hoeven door te gaan met het proces van het aanvragen van het toegangs pakket. Om gebruikers rechtstreeks toe te wijzen, moet het toegangs pakket beschikken over een beleid waarmee beheerders direct toewijzingen kunnen toestaan.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -94,9 +94,9 @@ U kunt ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket met behu
 
 ## <a name="remove-an-assignment"></a>Een toewijzing verwijderen
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 

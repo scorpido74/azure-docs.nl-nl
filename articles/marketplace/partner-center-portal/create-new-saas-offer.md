@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317712"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800333"
 ---
 # <a name="create-a-saas-offer"></a>Een SaaS-aanbieding maken
 
@@ -282,12 +282,16 @@ Dit veld is vereist.
 #### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
 - **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, van ten minste één en Maxi maal drie documenten per aanbieding.
-- **Afbeeldingen** (optioneel): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven in de Marketplace ('s), zodat de volgende pixel grootten in de PNG-indeling zijn vereist:
+- **Installatie kopieën** (vereist): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven in de Marketplace ('s). Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën. Het toevoegen van een **breed** logo is optioneel.
 
-  - **Klein** (48 x 48, vereist)
-  - **Gemiddeld** (90 x 90, vereist)
-  - **Groot** (216 x 216, vereist)
-  - **Breed** (255 x 115)
+    Er zijn drie logo grootten vereist voor gebruik op verschillende plaatsen in de lijst. een is optioneel:
+
+    - **Klein** (48 x 48)
+    - **Gemiddeld** (90 x 90)
+    - **Groot** (tussen 216 x 216 en 350 x 350)
+    - **Breed** (255 x 115), *optioneel*
+
+    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 - **Scherm afbeeldingen** (vereist): Voeg een maximum van vijf scherm opnamen toe, met een grootte van 1280 x 720 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.

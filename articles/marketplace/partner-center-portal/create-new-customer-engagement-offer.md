@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121925"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800004"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -137,10 +137,10 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Ondersteunings adres (koppeling)
 5. Gebruiksvoorwaarden adres (koppeling)
 6. Naam van aanbieding
-7. Description
+7. Beschrijving
 8. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -148,7 +148,7 @@ De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de a
 
 Geef een korte beschrijving van uw aanbieding, Maxi maal 100 tekens. Deze beschrijving kan worden gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -195,10 +195,14 @@ Bied logo's en installatie kopieën voor uw aanbieding. Alle installatie kopieë
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef het logo van uw aanbod op in drie pixel grootten:
-- **Klein** (vereist; 48 x 48)
-- **Groot** (vereist; 216 x 216)
-- **Breed** (optioneel; 255 x 115)
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) te maken. U kunt dit eventueel vervangen door een andere afbeelding.
+
+Beide logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+
+- **Klein** (48 x 48)
+- **Groot** (tussen 216 x 216 en 350 x 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

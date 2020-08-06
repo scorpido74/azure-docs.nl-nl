@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 122a3e243f314395ea7b1d32b88a5e20b0965eef
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d0344247ba4dfffee275782bc2db83142d34cff3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512003"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800242"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -52,8 +52,7 @@ Met deze interface kunnen de RDMA-compatibele instanties communiceren via een In
 
    U kunt [Azure PowerShell](/powershell/azure/) -cmdlets gebruiken om de VM-extensie toe te voegen aan een virtuele machine. Zie [extensies en functies van virtuele machines](./extensions/overview.md)voor meer informatie. U kunt ook werken met uitbrei dingen voor virtuele machines die zijn geïmplementeerd in het [klassieke implementatie model](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
-- **Mpi** : met de VM-grootten van SR-IOV op Azure (HBV2, HB, HC, NCv3, NDv2) is bijna elke basis van mpi in combi natie met Mellanox OFED toegestaan.
-Op Vm's waarvoor geen SR-IOV is ingeschakeld, wordt in ondersteunde MPI-implementaties de micro soft Network direct (ND)-interface gebruikt voor communicatie tussen Vm's. Daarom worden alleen micro soft MPI (MS-MPI) 2012 R2 of hoger en Intel MPI 5. x-versies ondersteund. Latere versies (2017, 2018) van de Intel MPI runtime-bibliotheek kunnen al dan niet compatibel zijn met de Azure RDMA-Stuur Programma's.
+- **Mpi** : met de VM-grootten van SR-IOV op Azure (HBV2, HB, HC, NCv3, NDv2) is bijna elke basis van mpi in combi natie met Mellanox OFED toegestaan. Op Vm's waarvoor geen SR-IOV is ingeschakeld, wordt in ondersteunde MPI-implementaties de micro soft Network direct (ND)-interface gebruikt voor communicatie tussen Vm's. Daarom worden alleen micro soft MPI (MS-MPI) 2012 R2 of hoger en Intel MPI 5. x-versies ondersteund. Latere versies (2017, 2018) van de Intel MPI runtime-bibliotheek kunnen al dan niet compatibel zijn met de Azure RDMA-Stuur Programma's. Zie [Setup mpi voor HPC](./workloads/hpc/setup-mpi.md) voor meer informatie over het instellen van MPI op HPC-Vm's in Azure.
 
 - **RDMA-netwerk adres ruimte** : het RDMA-netwerk in azure behoudt de adres ruimte 172.16.0.0/16. Als u MPI-toepassingen wilt uitvoeren op instanties die zijn geïmplementeerd in een virtueel Azure-netwerk, moet u ervoor zorgen dat de adres ruimte van het virtuele netwerk het RDMA-netwerk niet overlapt.
 

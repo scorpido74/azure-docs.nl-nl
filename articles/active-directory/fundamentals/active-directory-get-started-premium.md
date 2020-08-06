@@ -2,7 +2,7 @@
 title: Registreren voor Premium-edities - Azure Active Directory | Microsoft Docs
 description: Instructies voor aanmelden voor de Azure Active Directory Premium-edities.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c146640112190fe08bb1b3b806c95a2854da9083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 9f2e3e9376c26bae2c0b3c0dda06b781b5f2f7c4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604451"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799154"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registreren voor Azure Active Directory Premium-edities
 U kunt Azure Active Directory (Azure AD) Premium-edities kopen en deze koppelen aan uw Azure-abonnement. Als u een nieuw Azure-abonnement moet maken, moet u ook uw licentieabonnement en toegang tot de Azure AD-service activeren.
@@ -67,7 +67,7 @@ Als u zich hebt aangemeld met behulp van een nieuw Azure AD-licentieplan, moet u
    
     ![Bevestigings-e-mail met aanmeld-en registratie koppelingen](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - **Aanmelden.** Als u een bestaande tenant hebt, klikt u op deze link, en vervolgens meldt u zich aan met uw bestaande administrator-account. U moet een globale beheerder zijn van de tenant waarin de licenties worden geactiveerd.
+    - **Meld u aan.** Als u een bestaande tenant hebt, klikt u op deze link, en vervolgens meldt u zich aan met uw bestaande administrator-account. U moet een globale beheerder zijn van de tenant waarin de licenties worden geactiveerd.
 
     - **Aanmelden.** Als u een nieuwe Azure AD-tenant wilt maken voor gebruik met uw licentieplan, klikt u op deze link om de pagina **Accountprofiel maken** te openen.
 

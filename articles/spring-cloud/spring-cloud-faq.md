@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037505"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800366"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -161,6 +161,21 @@ Wanneer u bestaande lente-Cloud micro Services migreert naar Azure lente-Cloud, 
 * U wordt aangeraden officiële, stabiele Pivot-veer bibliotheken te gebruiken. Niet-officiële, bèta-of gevorkeerde versies van Pivot-lente bibliotheken hebben geen SLA-ondersteuning (Service Level Agreement).
 
 Controleer na de migratie de CPU/RAM-metrische gegevens en het netwerk verkeer om ervoor te zorgen dat de toepassings exemplaren op de juiste wijze worden geschaald.
+
+## <a name="trouble-shooting"></a>Problemen oplossen
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Wat zijn de gevolgen van het service register zelden niet beschikbaar?
+
+In sommige gevallen is er zelden een fout opgetreden, zoals 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+vanuit uw logboeken van toepassingen. Dit probleem is geïntroduceerd in een lente-Framework met een zeer laag aantal als gevolg van onstabiele netwerken of andere netwerk problemen. 
+
+Er mogen zich geen gevolgen voor de gebruikers ervaring voordoen, de Eureka-client beschikt over het beleid voor levens onderhoud en het opnieuw proberen. U kunt dit beschouwen als één tijdelijke fout en het veilig overs Laan.
+
+We zullen dit onderdeel verbeteren en deze fout voor komen van toepassingen van gebruikers in korte toekomst.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

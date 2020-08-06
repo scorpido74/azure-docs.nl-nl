@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554036"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810263"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -26,22 +26,38 @@ ms.locfileid: "87554036"
 
 ## <a name="what-is-a-database-backup"></a>Wat is een back-up van de data base?
 
-Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat ze uw gegevens beschermen tegen beschadiging of verwijdering.
+Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat ze uw gegevens beschermen tegen beschadiging of verwijdering. Deze back-ups maken het herstellen van data bases mogelijk op een bepaald moment binnen de geconfigureerde Bewaar periode. Als uw regels voor gegevens bescherming vereisen dat uw back-ups langere tijd beschikbaar zijn (tot tien jaar), kunt u de [lange termijn retentie](long-term-retention-overview.md) voor zowel één als gepoolde data bases configureren.
+
+### <a name="backup-frequency"></a>Back-upfrequentie
 
 Zowel SQL Database als SQL Managed instance gebruiken SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) -ups elke 12-24 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de vijf tot tien minuten. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
 
 Wanneer u een Data Base herstelt, bepaalt de service welke volledige, differentiële en transactie logboek back-ups moeten worden hersteld.
 
-Deze back-ups maken het herstellen van data bases mogelijk op een bepaald moment binnen de geconfigureerde Bewaar periode. De back-ups worden opgeslagen als [Ra-GRS-opslag-blobs](../../storage/common/storage-redundancy.md) die worden gerepliceerd naar een [gepaard gebied](../../best-practices-availability-paired-regions.md) voor beveiliging tegen storingen die invloed hebben op back-upopslag in de primaire regio. 
+### <a name="backup-storage-redundancy"></a>Opslag redundantie van back-ups
 
-Als uw regels voor gegevens bescherming vereisen dat uw back-ups langere tijd beschikbaar zijn (tot tien jaar), kunt u de [lange termijn retentie](long-term-retention-overview.md) voor zowel één als gepoolde data bases configureren.
+> [!IMPORTANT]
+> Configureer bare opslag redundantie voor back-ups is momenteel alleen beschikbaar voor SQL Managed instance en kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+
+De optie voor het configureren van redundantie opslag voor back-ups biedt de flexibiliteit om te kiezen tussen lokaal redundante (LRS), zone redundante (ZRS) of geografisch redundante (RA-GRS) [opslag-blobs](../../storage/common/storage-redundancy.md). Opslag redundantie mechanismen slaan meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen of enorme natuur rampen. Deze functie is momenteel alleen beschikbaar voor SQL Managed instance.
+
+RA-GRS-opslag-blobs worden gerepliceerd naar een [gekoppeld gebied](../../best-practices-availability-paired-regions.md) om te beschermen tegen storingen die van invloed zijn op de back-upopslag in de primaire regio en u in staat stellen om uw server te herstellen naar een andere regio in het geval van een ramp. 
+
+LRS-en ZRS-opslag-blobs zorgen ervoor dat uw gegevens binnen dezelfde regio blijven waar uw SQL Database of SQL Managed instance wordt geïmplementeerd. Zone-redundante opslag (ZRS) is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage).
+
+> [!IMPORTANT]
+> In het SQL Managed instance wordt de geconfigureerde back-upredundantie toegepast op de instellingen voor retentie van back-ups op korte termijn die worden gebruikt voor herstel van een punt in tijd (PITR) en back-ups voor lange termijn retentie die worden gebruikt voor langdurige back-ups (LTR).
+
+### <a name="backup-usage"></a>Back-upgebruik
 
 U kunt deze back-ups gebruiken om:
 
-- [Een bestaande data base herstellen naar een bepaald tijdstip in het verleden](recovery-using-backups.md#point-in-time-restore) binnen de retentie periode met behulp van Azure Portal, Azure PowerShell, Azure CLI of rest API. Voor afzonderlijke en gepoolde data bases maakt deze bewerking een nieuwe Data Base op dezelfde server als de oorspronkelijke Data Base, maar onder een andere naam om te voor komen dat de oorspronkelijke Data Base wordt overschreven. Nadat het herstellen is voltooid, kunt u de oorspronkelijke data base verwijderen of de [naam ervan wijzigen](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) , en de naam van de herstelde data base wijzigen in de oorspronkelijke data base. Op een beheerd exemplaar kan deze bewerking op dezelfde manier een kopie maken van de Data Base op hetzelfde of een ander beheerd exemplaar onder hetzelfde abonnement en in dezelfde regio.
-- [Een verwijderde data base herstellen naar het tijdstip van de verwijdering](recovery-using-backups.md#deleted-database-restore) of naar een bepaald tijdstip binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op een server of een beheerd exemplaar waarop de oorspronkelijke Data Base is gemaakt. Bij het verwijderen van een Data Base neemt de service een definitieve back-up van transactie logboeken voordat deze wordt verwijderd, om verlies van gegevens te voor komen.
-- [Een Data Base herstellen naar een andere geografische regio](recovery-using-backups.md#geo-restore). Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw data base of back-ups in de primaire regio. Er wordt in elke Azure-regio een nieuwe data base gemaakt op een bestaande server of een beheerd exemplaar.
-- [Een Data Base herstellen op basis van een specifieke lange termijn back-up](long-term-retention-overview.md) van een enkele data base of gepoolde data base, als de data base is geconfigureerd met een lange termijn retentie beleid (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
+- **Herstel naar een bepaald tijdstip van een bestaande data base**  -  [Een bestaande data base herstellen naar een bepaald tijdstip in het verleden](recovery-using-backups.md#point-in-time-restore) binnen de retentie periode met behulp van Azure Portal, Azure PowerShell, Azure CLI of rest API. Voor SQL Database maakt deze bewerking een nieuwe Data Base op dezelfde server als de oorspronkelijke Data Base, maar gebruikt een andere naam om te voor komen dat de oorspronkelijke Data Base wordt overschreven. Nadat het herstellen is voltooid, kunt u de oorspronkelijke data base verwijderen. U kunt ook de naam [van](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) de oorspronkelijke data base wijzigen en vervolgens de naam van de herstelde data base wijzigen in de oorspronkelijke data base. Op dezelfde manier maakt deze bewerking voor een SQL Managed instance een kopie van de Data Base op hetzelfde of een ander beheerd exemplaar in hetzelfde abonnement en dezelfde regio.
+- **Herstel naar een bepaald tijdstip van een verwijderde data base**  -  [Een verwijderde data base herstellen naar het tijdstip van de verwijdering](recovery-using-backups.md#deleted-database-restore) of naar een bepaald tijdstip binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op een server of een beheerd exemplaar waarop de oorspronkelijke Data Base is gemaakt. Bij het verwijderen van een Data Base neemt de service een definitieve back-up van transactie logboeken voordat deze wordt verwijderd, om verlies van gegevens te voor komen.
+- **Geo-herstel**  -  [Een Data Base herstellen naar een andere geografische regio](recovery-using-backups.md#geo-restore). Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw data base of back-ups in de primaire regio. Er wordt in elke Azure-regio een nieuwe data base gemaakt op een bestaande server of een beheerd exemplaar.
+   > [!IMPORTANT]
+   > Geo-Restore is alleen beschikbaar voor beheerde exemplaren met geconfigureerde geo-redundante (RA-GRS) back-upopslag.
+- **Herstellen vanaf back-up**  -  op lange termijn [Een Data Base herstellen op basis van een specifieke lange termijn back-up](long-term-retention-overview.md) van een enkele data base of gepoolde data base, als de data base is geconfigureerd met een lange termijn retentie beleid (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
 
 Zie [Data Base terugzetten van back-ups](recovery-using-backups.md)om een herstel bewerking uit te voeren.
 
@@ -50,13 +66,13 @@ Zie [Data Base terugzetten van back-ups](recovery-using-backups.md)om een herste
 
 U kunt back-ups van de configuratie-en herstel bewerkingen proberen met de volgende voor beelden:
 
-| | Azure Portal | Azure PowerShell |
+| Bewerking | Azure Portal | Azure PowerShell |
 |---|---|---|
-| **Retentie van back-ups wijzigen** | [Eén data base](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Beheerd exemplaar](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Eén data base](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **Lange termijn retentie van back-ups wijzigen** | [Eén data base](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Beheerd exemplaar-N.v.t.  | [Eén data base](long-term-backup-retention-configure.md)<br/>Beheerd exemplaar-N.v.t.  |
-| **Een Data Base vanaf een bepaald moment herstellen** | [Eén data base](recovery-using-backups.md#point-in-time-restore) | [Eén data base](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Een verwijderde database herstellen** | [Eén data base](recovery-using-backups.md) | [Eén data base](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Een Data Base herstellen vanuit Azure Blob-opslag** | Eén data base-N.v.t. <br/>Beheerd exemplaar-N.v.t.  | Eén data base-N.v.t. <br/>[Beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Retentie van back-ups wijzigen** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Lange termijn retentie van back-ups wijzigen** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Door SQL beheerd exemplaar-N.v.t.  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Een Data Base vanaf een bepaald moment herstellen** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Een verwijderde database herstellen** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Een Data Base herstellen vanuit Azure Blob-opslag** | SQL Database-N.v.t. <br/>Door SQL beheerd exemplaar-N.v.t.  | SQL Database-N.v.t. <br/>[SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Back-upplanning
 
@@ -98,6 +114,7 @@ Voor het verbruik van back-upopslag tot de maximale gegevens grootte voor een Da
 - Overweeg het gebruik van [geclusterde column Store-indexen](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) en de volgende gerelateerde [Aanbevolen procedures](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance), en/of verklein het aantal niet-geclusterde indexen voor bewerkingen voor grote gegevens belasting.
 - In de servicelaag Algemeen is de ingerichte gegevens opslag minder duur dan de prijs van de back-upopslag. Als u voortdurend veel overtollige back-upopslagkosten hebt, kunt u overwegen gegevens opslag te verg Roten om op te slaan in de back-upopslag.
 - Gebruik TempDB in plaats van permanente tabellen in uw toepassings logica om tijdelijke resultaten en/of tijdelijke gegevens op te slaan.
+- Gebruik waar mogelijk lokaal redundante back-upopslag (bijvoorbeeld ontwikkel-en test omgevingen)
 
 ## <a name="backup-retention"></a>Retentie van back-ups
 
@@ -112,15 +129,13 @@ De retentie van back-ups voor PITR in de afgelopen 1-35 dagen wordt soms een ret
 
 ### <a name="long-term-retention"></a>Lange bewaartermijn
 
-Voor enkelvoudige en gegroepeerde Data bases en beheerde exemplaren kunt u de lange termijn retentie (LTR) van volledige back-ups configureren voor Maxi maal tien jaar in Azure Blob-opslag. Als u een LTR-beleid inschakelt, worden de wekelijkse volledige back-ups automatisch gekopieerd naar een andere RA-GRS-opslag container. Om aan verschillende nalevings vereisten te voldoen, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse volledige back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie van V.L.N.R.-back-ups en de retentie periode of-peri Oden. U kunt de [LTR-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) gebruiken om de kosten van v.l.n.r.-opslag te schatten.
-
-Net als bij PITR-back-ups worden LTR-back-ups beschermd met geografisch redundante opslag. Zie [Redundantie in Azure Storage](../../storage/common/storage-redundancy.md) voor meer informatie.
+Voor zowel SQL Database als SQL Managed Instance kunt u een volledige back-up voor de lange termijn (LTR) voor de hele periode configureren in Azure Blob-opslag. Nadat het LTR-beleid is geconfigureerd, worden volledige back-ups automatisch wekelijks naar een andere opslag container gekopieerd. Om aan verschillende nalevings vereisten te voldoen, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse volledige back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie en de retentie perioden van V.L.N.R.-back-ups. U kunt de [LTR-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) gebruiken om de kosten van v.l.n.r.-opslag te schatten.
 
 Voor meer informatie over LTR, Zie [lange termijn retentie van back-ups](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Opslagkosten
 
-De prijs voor back-upopslag is afhankelijk van of u het DTU-model of het vCore-model gebruikt en ook in uw regio. De back-upopslag wordt in rekening gebracht per GB/maand verbruikt voor prijzen Zie [Azure SQL database prijs](https://azure.microsoft.com/pricing/details/sql-database/single/) pagina en [prijs pagina Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) .
+De prijs voor back-upopslag varieert en is afhankelijk van uw aankoop model (DTU of vCore), de gekozen optie voor opslag redundantie van back-ups en ook in uw regio. De back-upopslag wordt in rekening gebracht per GB/maand verbruikt voor prijzen Zie [Azure SQL database prijs](https://azure.microsoft.com/pricing/details/sql-database/single/) pagina en [prijs pagina Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) .
 
 ### <a name="dtu-model"></a>DTU-model
 
@@ -153,6 +168,18 @@ Nu is een complexere voor beeld. Stel dat voor dezelfde niet-actieve Data Base d
 De daad werkelijke facturerings scenario's voor back-ups zijn complexer. Omdat de frequentie van de wijzigingen in de data base afhankelijk is van de werk belasting en de variabele gedurende een bepaalde periode, is de grootte van elke differentiële back-up en logboek registratie ook afhankelijk, waardoor het verbruik van de back-upopslag per uur dienovereenkomstig wordt geschommeld. Daarnaast bevat elke differentiële back-up alle wijzigingen die zijn aangebracht in de data base sinds de laatste volledige back-up, waardoor de totale grootte van alle differentiële back-ups geleidelijk in de loop van een week toeneemt en vervolgens weer wordt versneld als er een oudere set van volledige, differentiële en logboek back-ups wordt weer gegeven. Als er bijvoorbeeld een zware schrijf activiteit zoals het opnieuw opbouwen van de index is uitgevoerd nadat een volledige back-up is voltooid, worden de wijzigingen die zijn aangebracht door het opnieuw opbouwen van de index opgenomen in de back-ups van de transactie logboeken die zijn gemaakt tijdens het opnieuw opbouwen, in de volgende differentiële back-up en in elke differentiële back-up die tot de volgende volledige back-up wordt Voor het laatste scenario in grotere data bases maakt een optimalisatie in de service een volledige back-up in plaats van een differentiële back-up als een differentiële back-up uitzonderlijk groot zou zijn. Dit beperkt de grootte van alle differentiële back-ups tot de volgende volledige back-up.
 
 U kunt het totale opslag verbruik van back-ups voor elk back-uptype (volledig, Differentieel, transactie logboek) in de loop van de tijd bewaken, zoals beschreven in het [monitor gebruik](#monitor-consumption).
+
+### <a name="backup-storage-redundancy"></a>Opslag redundantie van back-ups
+
+Opslag redundantie van back-ups heeft gevolgen voor back-upkosten op de volgende manier:
+- LRS prijs = x
+- ZRS prijs = 1,25 x
+- RA-GRS prijs = 2x
+
+Ga voor meer informatie over prijzen voor back-upopslag naar [Azure SQL database prijs pagina](https://azure.microsoft.com/pricing/details/sql-database/single/) en de [pagina met prijzen voor Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+
+> [!IMPORTANT]
+> Configureer bare opslag redundantie voor back-ups is momenteel alleen beschikbaar voor SQL Managed instance en kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
 
 ### <a name="monitor-costs"></a>Kosten bewaken
 
@@ -300,6 +327,54 @@ Status code: 200
 ```
 
 Zie [retentie van back-ups rest API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
+
+#### <a name="sample-request"></a>Voorbeeld aanvraag
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
+```
+
+#### <a name="request-body"></a>Aanvraagbody
+
+```json
+{
+  "properties":{
+    "retentionDays":28
+  }
+}
+```
+
+#### <a name="sample-response"></a>Voorbeeldantwoord
+
+Status code: 200
+
+```json
+{
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+  }
+}
+```
+
+Zie [retentie van back-ups rest API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
+
+## <a name="configure-backup-storage-redundancy"></a>Opslag redundantie voor back-ups configureren
+
+> [!NOTE]
+> Configureer bare opslag redundantie voor back-ups is momenteel alleen beschikbaar voor SQL Managed instance en kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+
+Een opslag redundantie van een back-up van een beheerd exemplaar kan worden ingesteld tijdens het maken van een exemplaar. De standaard waarde is geografisch redundante opslag (RA-GRS). Zie de [pagina met prijzen voor Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)(Engelstalig) voor verschillen in de prijs van een LRS (Local-redundante), zone-redundante (ZRS) en geo-redundante (RA-GRS)-back-upopslag.
+
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Opslag redundantie voor back-ups configureren met behulp van de Azure Portal
+
+In de Azure Portal, de optie voor het wijzigen van de redundantie van back-upopslag bevindt zich op de Blade **Compute + Storage** die toegankelijk is via de optie **Managed instance configureren** op het tabblad **basis beginselen** wanneer u uw SQL Managed instance maakt.
+![Berekenings-en opslag configuratie openen-Blade](./media/automated-backups-overview/open-configuration-blade-mi.png)
+
+Zoek de optie voor het selecteren van back-upopslag redundantie op de Blade **reken kracht en opslag** .
+![Opslag redundantie voor back-ups configureren](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

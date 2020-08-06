@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het gebruik van Azure RBAC voor Kubernetes-autorisatie met Azure Kubernetes service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498103"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799358"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
 
@@ -33,29 +33,25 @@ De mogelijkheid om RBAC voor Kubernetes-resources van Azure te beheren biedt u d
 
 ### <a name="prerequisites"></a>Vereisten 
 - Meld u aan voor de preview-versie <https://aka.ms/aad-rbac-sign-up-form> .
+- Zorg ervoor dat u de Azure CLI-versie 2.9.0 of hoger hebt
 - Zorg ervoor dat de `EnableAzureRBACPreview` functie vlag is ingeschakeld.
-- Zorg ervoor dat de `AAD-V2` functie vlag is ingeschakeld.
 - Controleer of u de `aks-preview` [cli-extensie][az-extension-add] v 0.4.55 of hoger hebt geïnstalleerd
 - Zorg ervoor dat u [kubectl v 1.18.3 +][az-aks-install-cli]hebt geïnstalleerd.
 
-#### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>`EnableAzureRBACPreview`Functies registreren en `AAD-V2` bekijken
+#### <a name="register-enableazurerbacpreview-preview-feature"></a>`EnableAzureRBACPreview`Preview-functie registreren
 
-Als u een AKS-cluster wilt maken dat gebruikmaakt van Azure RBAC voor Kubernetes-autorisatie, moet u de- `EnableAzureRBACPreview` en- `AAD-V2` functie vlaggen inschakelen voor uw abonnement.
+Als u een AKS-cluster wilt maken dat gebruikmaakt van Azure RBAC voor Kubernetes-autorisatie, moet u de `EnableAzureRBACPreview` functie vlag inschakelen voor uw abonnement.
 
-Registreer de `EnableAzureRBACPreview` en `AAD-V2` functie vlaggen met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
+Registreer de `EnableAzureRBACPreview` functie vlag met de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-
-az feature register --namespace "Microsoft.ContainerService"  --name "AAD-V2"
 ```
 
 Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
 Als u klaar bent, vernieuwt u de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster] [AZ-provider-REGI ster]:

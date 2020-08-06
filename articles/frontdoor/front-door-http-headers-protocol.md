@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471673"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799120"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protocol ondersteuning voor HTTP-headers in azure front-deur
 Dit artikel bevat een overzicht van het protocol dat front-deur ondersteunt met delen van het aanroepende pad (zie afbeelding). De volgende secties bevatten meer informatie over HTTP-headers die worden ondersteund door de voor deur.
@@ -44,6 +44,7 @@ De voor deur bevat headers uit een binnenkomende aanvraag, tenzij deze worden ve
 | X-doorgestuurd-host | X-doorgestuurd-host: contoso.azurefd.net </br> Het veld X-forward-host-HTTP-header is een gemeen schappelijke methode voor het identificeren van de oorspronkelijke host die door de client is aangevraagd in de HTTP-aanvraag header van de host. Dit komt doordat de hostnaam van de voor deur afwijkt van de back-endserver waarbij de aanvraag wordt verwerkt. |
 | X-doorgestuurd-proto | X-doorgestuurd-proto: http </br> Het veld HTTP-header X-doorgestuurd-proto wordt vaak gebruikt om het oorspronkelijke protocol van een HTTP-aanvraag te identificeren omdat de voor deur, op basis van de configuratie, kan communiceren met de back-end met behulp van HTTPS. Dit geldt ook als de aanvraag voor de omgekeerde proxy HTTP is. |
 | X-FD-HealthProbe | X-FD-HealthProbe HTTP-koptekst veld wordt gebruikt om de status test van de voor deur te identificeren. Als deze header is ingesteld op 1, is de status test van de aanvraag. U kunt gebruiken wanneer u de toegang wilt beperken tot een bepaalde front-deur met X-doorgestuurd-host-header veld. |
+|X-Azure-FDID | X-Azure-FDID-header: 437c82cd-360a-4a54-94c3-5ff707647783 </br> Dit veld bevat frontdoorID die kunnen worden gebruikt voor het identificeren van de voor deur van de inkomende aanvraag. Dit veld wordt ingevuld door de voor deur-service. | 
 
 ## <a name="front-door-to-client"></a>Voor deur aan client
 

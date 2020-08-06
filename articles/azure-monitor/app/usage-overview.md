@@ -3,16 +3,18 @@ title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
 description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323550"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800208"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
 Welke functies van uw web-of mobiele app zijn het meest populair? Bereiken uw gebruikers hun doel stellingen met uw app? Vallen ze op bepaalde punten uit en retour neren ze later?  [Azure-toepassing Insights](./app-insights-overview.md) helpt u krachtige inzichten te krijgen in de manier waarop mensen uw app gebruiken. Telkens wanneer u uw app bijwerkt, kunt u bepalen hoe goed het werkt voor gebruikers. Met deze kennis kunt u op gegevens gebaseerde beslissingen nemen over uw volgende ontwikkelings cycli.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>Telemetrie verzenden vanuit uw app
 

@@ -3,7 +3,7 @@ title: Toegang tot een toegangs pakket controleren in het beheer van rechten van
 description: Meer informatie over het volt ooien van een toegangs beoordeling van rechten voor beheer toegangs pakketten in Azure Active Directory toegangs beoordelingen (preview).
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078573"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798594"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Toegang tot een toegangs pakket controleren in het beheer van rechten van Azure AD
 
@@ -34,7 +34,7 @@ Als u de actieve toegangs pakket toewijzingen van gebruikers wilt beoordelen, mo
 - Globale beheerder
 - Aangewezen gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-Zie [licentie vereisten](entitlement-management-overview.md#license-requirements)voor meer informatie.
+Zie [Licentievereisten](entitlement-management-overview.md#license-requirements) voor meer informatie.
 
 
 ## <a name="open-the-access-review"></a>Open de toegangs beoordeling

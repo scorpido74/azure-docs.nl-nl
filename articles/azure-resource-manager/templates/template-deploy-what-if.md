@@ -3,23 +3,23 @@ title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888741"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810068"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
-Voordat u een Azure Resource Manager-sjabloon (ARM) implementeert, kunt u een voor beeld bekijken van de wijzigingen die zich voordoen. Azure Resource Manager biedt de What-if-bewerking om te laten zien hoe resources worden gewijzigd als u de sjabloon implementeert. Met de bewerking What-if worden geen wijzigingen aangebracht in bestaande resources. In plaats daarvan worden de wijzigingen voor speld als de opgegeven sjabloon wordt geïmplementeerd.
+Voordat u een Azure Resource Manager sjabloon (ARM-sjabloon) implementeert, kunt u een voor beeld bekijken van de wijzigingen die zich voordoen. Azure Resource Manager biedt de What-if-bewerking om te laten zien hoe resources worden gewijzigd als u de sjabloon implementeert. Met de bewerking What-if worden geen wijzigingen aangebracht in bestaande resources. In plaats daarvan worden de wijzigingen voor speld als de opgegeven sjabloon wordt geïmplementeerd.
 
 > [!NOTE]
 > De What-if-bewerking is momenteel beschikbaar als preview-versie. In het geval van een preview-versie kunnen de resultaten soms aangeven dat een resource wordt gewijzigd wanneer er niets wordt gewijzigd. We werken eraan om deze problemen te reduceren, maar we hebben uw hulp nodig. Meld deze problemen op [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-U kunt de What-if-bewerking met Azure PowerShell, Azure CLI of REST API-bewerkingen gebruiken. Wat-als wordt ondersteund voor implementaties van resource groep en abonnements niveau.
+U kunt de What-if-bewerking met Azure PowerShell, Azure CLI of REST API-bewerkingen gebruiken. Wat-als wordt ondersteund voor implementaties van resource groep, abonnement, beheer groep en Tenant niveau.
 
 ## <a name="install-azure-powershell-module"></a>Azure PowerShell module installeren
 
@@ -125,20 +125,23 @@ De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig k
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u [AZ Deployment Group What-if](/cli/azure/deployment/group#az-deployment-group-what-if) of [AZ Deployment sub What-if](/cli/azure/deployment/sub#az-deployment-sub-what-if).
+Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u:
 
-* `az deployment group what-if`voor implementaties van resource groepen
-* `az deployment sub what-if`voor implementaties op abonnements niveau
+* [AZ-implementatie groep wat-als](/cli/azure/deployment/group#az-deployment-group-what-if) voor de implementatie van resource groepen
+* [AZ-implementatie sub What-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) voor implementaties op abonnements niveau
+* [AZ Deployment mg What-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) voor implementaties van beheer groepen
+* [AZ implementatie Tenant What-if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) voor Tenant implementaties
 
-U kunt de `--confirm-with-what-if` Switch (of het bijbehorende korte formulier `-c` ) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie. Voeg deze switch toe aan [AZ-implementatie groep Create](/cli/azure/deployment/group#az-deployment-group-create) of [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
+U kunt de `--confirm-with-what-if` Switch (of het bijbehorende korte formulier `-c` ) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie. Voeg deze schakel optie toe aan:
 
-* `az deployment group create --confirm-with-what-if`of `-c` voor implementaties van resource groepen
-* `az deployment sub create --confirm-with-what-if`of `-c` voor implementaties op abonnements niveau
+* [AZ-implementatie groep maken](/cli/azure/deployment/group#az-deployment-group-create)
+* [AZ-implementatie subcreate](/cli/azure/deployment/sub#az-deployment-sub-create).
+* [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Als u een JSON-object wilt ophalen dat u programmatisch kunt controleren op wijzigingen, gebruikt u:
+Bijvoorbeeld gebruiken `az deployment group create --confirm-with-what-if` of `-c` voor implementaties van resource groepen.
 
-* `az deployment group what-if --no-pretty-print`voor implementaties van resource groepen
-* `az deployment sub what-if --no-pretty-print`voor implementaties op abonnements niveau
+De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Als u een JSON-object wilt ophalen dat u programmatisch kunt controleren op wijzigingen, gebruikt u de `--no-pretty-print` Switch. Gebruik bijvoorbeeld `az deployment group what-if --no-pretty-print` voor implementaties van resource groepen.
 
 Als u de resultaten zonder kleuren wilt retour neren, opent u het configuratie bestand van [Azure cli](/cli/azure/azure-cli-configuration) . Stel **no_color** in op **Ja**.
 
@@ -147,7 +150,9 @@ Als u de resultaten zonder kleuren wilt retour neren, opent u het configuratie b
 Voor REST API gebruikt u:
 
 * [Implementaties-What if](/rest/api/resources/deployments/whatif) voor implementaties van resource groepen
-* [Implementaties-What if op abonnements bereik](/rest/api/resources/deployments/whatifatsubscriptionscope) voor implementaties op abonnements niveau
+* [Implementaties-What if op abonnements bereik](/rest/api/resources/deployments/whatifatsubscriptionscope) voor implementaties van abonnementen
+* [Implementaties-What if in het bereik van de beheer groep](/rest/api/resources/deployments/whatifatmanagementgroupscope) voor implementaties van beheer groepen
+* [Implementaties-What if op Tenant bereik](/rest/api/resources/deployments/whatifattenantscope) voor Tenant implementaties.
 
 ## <a name="change-types"></a>Wijzigings typen
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 Boven aan de uitvoer wordt aangegeven dat kleuren worden gedefinieerd om het type wijzigingen aan te geven.
 
-Onder aan de uitvoer ziet u dat de tag-eigenaar is verwijderd. Het adres voorvoegsel is gewijzigd van 10.0.0.0/16 naar 10.0.0.0/15. Het subnet met de naam subnet001 is verwijderd. Houd er rekening mee dat deze wijzigingen niet daad werkelijk zijn geïmplementeerd. U ziet een voor beeld van de wijzigingen die zich voordoen als u de sjabloon implementeert.
+Onder aan de uitvoer ziet u dat de tag-eigenaar is verwijderd. Het adres voorvoegsel is gewijzigd van 10.0.0.0/16 naar 10.0.0.0/15. Het subnet met de naam subnet001 is verwijderd. Houd er rekening mee dat deze wijzigingen niet zijn geïmplementeerd. U ziet een voor beeld van de wijzigingen die zich voordoen als u de sjabloon implementeert.
 
 Sommige van de eigenschappen die worden weer gegeven als verwijderd, worden niet daad werkelijk gewijzigd. Eigenschappen kunnen niet worden gerapporteerd als verwijderd als ze niet in de sjabloon staan, maar worden tijdens de implementatie automatisch ingesteld als standaard waarden. Dit resultaat wordt als ' ruis ' beschouwd in het wat-als-antwoord. Voor de uiteindelijke geïmplementeerde resource zijn de waarden ingesteld voor de eigenschappen. Als de ' wat als'-bewerking is verouderd, worden deze eigenschappen uit het resultaat gefilterd.
 

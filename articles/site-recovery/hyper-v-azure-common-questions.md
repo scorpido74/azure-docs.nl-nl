@@ -3,12 +3,12 @@ title: Veelgestelde vragen over herstel na nood gevallen voor Hyper-V met Azure 
 description: In dit artikel vindt u een overzicht van algemene vragen over het instellen van herstel na nood gevallen voor on-premises virtuele Hyper-V-machines naar Azure met behulp van de Azure Site Recovery-site.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132655"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799885"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Algemene vragen - Herstel na noodgevallen van Hyper-V naar Azure
 
@@ -156,6 +156,10 @@ Wanneer u naar Azure repliceert, bereikt het replicatie verkeer de open bare ein
 ### <a name="what-are-the-replicated-vm-requirements"></a>Wat zijn de vereisten voor de replicatie van de virtuele machine?
 
 Voor replicatie moet een Hyper-V-VM worden uitgevoerd op een ondersteund besturings systeem. Daarnaast moet de virtuele machine voldoen aan de vereisten voor virtuele Azure-machines. Meer [informatie vindt](hyper-v-azure-support-matrix.md#replicated-vms) u in de ondersteunings matrix.
+
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>Waarom is een extra standaard-opslag account vereist als ik mijn virtuele-machine schijven repliceer naar Premium Storage?
+
+Wanneer u uw on-premises virtuele machines/fysieke servers naar Premium Storage repliceert, worden alle gegevens op de schijven van de beveiligde computer gerepliceerd naar het Premium-opslag account. Er is een extra standaard opslag account vereist voor het opslaan van replicatie Logboeken. Nadat de eerste fase van het repliceren van de schijf gegevens is voltooid, worden alle wijzigingen in de on-premises schijf gegevens doorlopend bijgehouden en opgeslagen als replicatie Logboeken in dit extra standaard opslag account.
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Hoe vaak kan ik repliceren naar Azure?
 

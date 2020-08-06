@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503222"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799171"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure-container aanbieding maken in azure Marketplace
 
@@ -133,7 +133,7 @@ Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegev
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -151,7 +151,7 @@ Een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn
 
 Een gedetailleerde beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -195,14 +195,15 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
- Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende vier pixel grootten:
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
+
+Alle drie de logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
 
 - **Klein** (48 x 48)
-- **Gemiddeld** (90 X 90)
-- **Groot** (216 x 216)
-- **Breed** (255 X 115)
+- **Gemiddeld** (90 x 90)
+- **Groot** (tussen 216 x 216 en 350 x 350)
 
-Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Marketplace-vermelding.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 

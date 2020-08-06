@@ -70,7 +70,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: Javascript
+        - name: JavaScript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -263,7 +263,7 @@
         - name: On-premises functies
           href: functions-runtime-install.md
         - name: De Jenkins-invoegtoepassing implementeren
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: Configureren
       items:

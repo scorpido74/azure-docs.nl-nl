@@ -4,12 +4,12 @@ description: Biedt een lijst met algemene Azure-abonnementen en service limieten
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515853"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810476"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service
 
@@ -375,11 +375,11 @@ Zie [Azure files schaal baarheid en prestatie doelen](../../storage/files/storag
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Zie [grootten van virtuele machines](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
+Zie [grootten van virtuele machines](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
 
 #### <a name="disk-encryption-sets"></a>Schijf versleutelings sets
 
-Er is een limiet van 50 schijf versleutelings sets per regio, per abonnement. Zie de documentatie over versleuteling voor virtuele [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) -of [Windows](/azure/virtual-machines/windows/disk-encryption#restrictions) -machines voor meer informatie. Neem contact op met de ondersteuning van Azure als u het quotum wilt verhogen.
+Er is een limiet van 50 schijf versleutelings sets per regio, per abonnement. Zie de documentatie over versleuteling voor virtuele [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) -of [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) -machines voor meer informatie. Neem contact op met de ondersteuning van Azure als u het quotum wilt verhogen.
 
 ### <a name="managed-virtual-machine-disks"></a>Beheerde schijven van virtuele machines
 
@@ -426,6 +426,6 @@ Er zijn limieten, per abonnement, voor het implementeren van resources met behul
 ## <a name="see-also"></a>Zie tevens
 
 * [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Grootten van virtuele machines en Cloud Services voor Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Grootten van virtuele machines en Cloud Services voor Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Grootten voor Azure Cloud Services](../../cloud-services/cloud-services-sizes-specs.md)
 * [Naamgevingsregels en -beperkingen voor Azure-resources](resource-name-rules.md)

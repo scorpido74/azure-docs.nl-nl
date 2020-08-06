@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 6efe6392c32221f979a9ac319b4385b4b94b1235
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171322"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799835"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -22,7 +22,7 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het configureren van Az
 
 ## <a name="setting-the-azure-ad-admin-user"></a>De gebruiker van de Azure AD-beheerder instellen
 
-Alleen een gebruiker van Azure AD-beheerder kan gebruikers maken/inschakelen voor verificatie op basis van Azure AD. Voer de volgende stappen uit om een gebruiker met Azure AD-beheerder te maken:
+Alleen een gebruiker van Azure AD-beheerder kan gebruikers maken/inschakelen voor verificatie op basis van Azure AD. Voer de volgende stappen uit om een Azure AD-beheerders gebruiker te maken:
 
 1. Selecteer in de Azure Portal het exemplaar van Azure Database for MySQL dat u wilt inschakelen voor Azure AD.
 2. Selecteer onder instellingen de optie Active Directory beheerder:

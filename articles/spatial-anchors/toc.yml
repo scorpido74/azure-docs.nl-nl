@@ -4,7 +4,7 @@
   items:
     - name: Over Spatial Anchors
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een Unity-app maken
@@ -60,7 +60,7 @@
           href: how-tos/create-locate-anchors-cpp-winrt.md
     - name: Gebruik coarse-relokalisatie om dichtbijzijnde ankers te ontdekken
       items:
-        - name: 'In C#/Unity'
+        - name: In C#/Unity
           href: how-tos/set-up-coarse-reloc-unity.md
         - name: In Objective-C
           href: how-tos/set-up-coarse-reloc-objc.md
@@ -72,6 +72,12 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: In C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: Instellen van het project
+      items:
+        - name: C++/WinRT
+          href: how-tos/setup-cpp-winrt-project.md
+        - name: Unity
+          href: how-tos/setup-unity-project.md
 - name: Voorbeelden
   items:
     - name: Voorbeelden van Azure Spatial Anchors (GitHub)

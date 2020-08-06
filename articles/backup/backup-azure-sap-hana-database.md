@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 2f42b119c361eaddcb84dda738b50c8accc84f9c
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439750"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809133"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -67,7 +67,7 @@ Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -
 
 1. Klik op **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
-U kunt ook NSG uitgaande beveiligings regels maken voor Azure Storage en Azure AD. Zie [dit artikel](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)voor meer informatie over service tags.
+U kunt ook NSG uitgaande beveiligings regels maken voor Azure Storage en Azure AD. Zie [dit artikel](../virtual-network/service-tags-overview.md)voor meer informatie over service tags.
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall Tags
 

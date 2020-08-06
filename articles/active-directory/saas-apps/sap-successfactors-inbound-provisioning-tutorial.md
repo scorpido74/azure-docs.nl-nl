@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016969"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809949"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor het inrichten van Active Directory gebruikers (preview-versie)
-Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gebruikers in te richten vanuit SuccessFactors Employee Central in Active Directory (AD) en Azure AD, met een optionele write-back van e-mail adres naar SuccessFactors. Deze integratie is in open bare preview en ondersteunt het ophalen van meer dan [70 + gebruikers kenmerken](../app-provisioning/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central.
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Zelf studie: SAP SuccessFactors configureren voor Active Directory gebruikers inrichting 
+Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gebruikers in te richten vanuit SuccessFactors Employee Central in Active Directory (AD) en Azure AD, met een optionele write-back van e-mail adres naar SuccessFactors. 
 
 >[!NOTE]
 >Gebruik deze zelf studie als u wilt dat de gebruikers die u wilt inrichten vanuit SuccessFactors een on-premises AD-account en optioneel een Azure AD-account nodig hebben. Als de gebruikers van SuccessFactors alleen een Azure AD-account nodig hebben (alleen Cloud gebruikers), raadpleegt u de zelf studie over het [configureren van SAP SuccessFactors naar Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) -gebruikers inrichting. 
@@ -82,7 +82,7 @@ Het configureren van in de Cloud HR gestuurde gebruikers inrichten van SuccessFa
 * Aantal SuccessFactors aan AD-gebruikers die apps moeten inrichten
 * Overeenkomende ID, kenmerk toewijzing, trans formatie en bereik filters
 
-Raadpleeg het [implementatie plan voor Cloud HR](../app-provisioning/plan-cloud-hr-provision.md) voor uitgebreide richt lijnen rond deze onderwerpen. 
+Raadpleeg het [implementatie plan voor Cloud HR](../app-provisioning/plan-cloud-hr-provision.md) voor uitgebreide richt lijnen rond deze onderwerpen. Raadpleeg de [SAP SuccessFactors-integratie referentie](../app-provisioning/sap-successfactors-integration-reference.md) voor meer informatie over de ondersteunde entiteiten, verwerkings gegevens en het aanpassen van de integratie voor verschillende HR-scenario's. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>SuccessFactors configureren voor de integratie
 

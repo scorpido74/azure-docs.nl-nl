@@ -3,14 +3,14 @@ title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 1f57f5cd5822e9acf59462c9ecd6d0fda359b5a0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6c57f3523ca8f3f4ad1565d18791d24c0e698ad6
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054369"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808334"
 ---
-# <a name="resource-providers-for-azure-services"></a>Resource providers voor Azure-Services
+# <a name="resource-providers-for-azure-services"></a>Resource providers for Azure services (Resourceproviders voor Azure-services)
 
 In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden toegewezen aan Azure-Services.
 
@@ -55,7 +55,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. ClassicSubscription<sup>1</sup> | Klassiek implementatiemodel |
 | Microsoft.CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Micro soft. commerce<sup>1</sup> | baan |
-| Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtuele-machineschaalsets](../../virtual-machine-scale-sets/index.yml) |
+| Microsoft.Compute | [Virtuele machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
 | Micro soft. verbruik<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Micro soft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
@@ -92,7 +92,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. features<sup>1</sup> | [Azure Resource Manager](../index.yml) |
 | Micro soft. GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
 | Micro soft. HanaOnAzure | [SAP HANA on Azure Large Instances](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
-| Micro soft. HardwareSecurityModules | [Azure toegewezen HSM](../../dedicated-hsm/index.yml) |
+| Micro soft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Micro soft. HealthcareApis | [Azure-API voor FHIR](../../healthcare-apis/index.yml) |
 | Micro soft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
@@ -128,7 +128,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Micro soft. peering | [Azure Peering Service](../../peering-service/index.yml) |
-| Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
+| Micro soft. PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Micro soft. Portal<sup>1</sup> | [Azure-portal](../../azure-portal/index.yml) |
 | Micro soft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Micro soft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
@@ -143,7 +143,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. SaaS | baan |
 | Microsoft.Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft.Search | [Azure Cognitive Search](../../search/index.yml) |
-| Microsoft.Security | [Beveiligingscentrum](../../security-center/index.yml) |
+| Microsoft.Security | [Security Center](../../security-center/index.yml) |
 | Micro soft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
 | Micro soft. SerialConsole<sup>1</sup> | [Azure Serial console voor Windows](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
@@ -164,10 +164,10 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Micro soft. TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Micro soft. token | Token |
-| Micro soft. VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
+| Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
 | micro soft. Visual Studio | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Micro soft. VMware | [Azure VMware Solution](../../azure-vmware/index.yml) |
-| Micro soft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
+| Micro soft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
 | Micro soft. VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Micro soft. WindowsESU | Uitgebreide beveiligings updates |

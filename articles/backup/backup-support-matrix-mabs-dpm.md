@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 938fb751de90112dc206779a36b88f95f1d7d508
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289455"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810425"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -24,7 +24,7 @@ MABS is gebaseerd op System Center DPM en biedt vergelijk bare functionaliteit m
 
 - Er is geen System Center-licentie vereist om MABS uit te voeren.
 - Voor zowel MABS als DPM biedt Azure lange termijn back-upopslag. Daarnaast kunt u met DPM back-ups maken van gegevens voor lange termijn opslag op tape. MABS biedt deze functionaliteit niet.
-- [U kunt een back-up maken van een primaire DPM-server met een secundaire DPM-server](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). De secundaire server beveiligt de database van de primaire server en de gegevensbronreplica's die op de primaire server zijn opgeslagen. Als de primaire server mislukt, kan de secundaire server werkbelastingen blijven beveiligen die door de primaire server worden beveiligd, totdat de primaire server weer beschikbaar is.  MABS biedt deze functionaliteit niet.
+- [U kunt een back-up maken van een primaire DPM-server met een secundaire DPM-server](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). De secundaire server beveiligt de database van de primaire server en de gegevensbronreplica's die op de primaire server zijn opgeslagen. Als de primaire server mislukt, kan de secundaire server werkbelastingen blijven beveiligen die door de primaire server worden beveiligd, totdat de primaire server weer beschikbaar is.  MABS biedt deze functionaliteit niet.
 
 U kunt MABS downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=57520). Het kan on-premises of op een virtuele machine van Azure worden uitgevoerd.
 

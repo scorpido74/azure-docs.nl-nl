@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 27b625dfa31b366d95922e1dd0bad7fda6e86ed4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540067"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808113"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
@@ -34,7 +34,7 @@ Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit
 > [!TIP]
 > Wanneer u de netwerk regel toevoegt, stelt u het __protocol__ in op wille keurige en de poorten `*` .
 >
-> Zie [Azure firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)voor meer informatie over het configureren van Azure firewall.
+> Zie [Azure firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)voor meer informatie over het configureren van Azure firewall.
 
 ## <a name="microsoft-hosts"></a>Micro soft-hosts
 
@@ -57,7 +57,7 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | Micro soft Container Registry voor base docker-installatie kopieën |
 | **your-acr-server-name.azurecr.io** | Alleen nodig als uw Azure Container Registry zich achter het virtuele netwerk bevindt. In deze configuratie wordt een persoonlijke koppeling vanuit de micro soft-omgeving gemaakt naar het ACR-exemplaar in uw abonnement. Gebruik de ACR-server naam voor uw Azure Machine Learning-werk ruimte. |
-
+| **\*. notebooks.azure.net** | Vereist door de notitie blokken in Azure Machine Learning Studio. |
 ## <a name="python-hosts"></a>Python-hosts
 
 De hosts in deze sectie worden gebruikt voor het installeren van Python-pakketten. Ze zijn vereist tijdens de ontwikkeling, training en implementatie. 

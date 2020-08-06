@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/16/2020
+ms.date: 08/04/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171653"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800345"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -104,6 +104,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 08/04/2020: wijziging in het [instellen van pacemaker op sles in azure](./high-availability-guide-suse-pacemaker.md) en het [instellen van pacemaker op RHEL in azure](./high-availability-guide-rhel-pacemaker.md) om het belang van een betrouw bare naam omzetting voor pacemaker-clusters te benadrukken
+- 08/04/2020: wijziging in [SAP NW ha op WFCS met bestands share](./sap-high-availability-installation-wsfc-file-share.md), [SAP NW ha op WFCS met gedeelde schijf](./sap-high-availability-installation-wsfc-shared-disk.md), [ha voor SAP NW op Azure-VM'S](./high-availability-guide.md), [ha voor SAP NW op Azure VM'S op SLES](./high-availability-guide-suse.md), [ha voor SAP NW op Azure VM'S op SLES met ANF](./high-availability-guide-suse-netapp-files.md), [ha voor SAP NW op Azure vm's op SLES multi-sid Guide](./high-availability-guide-suse-multi-sid.md), [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op RHEL](./high-availability-guide-rhel.md), [ha voor SAP NW op virtuele machines in azure op RHEL met ANF](./high-availability-guide-rhel-netapp-files.md) en ha voor SAP NW op Azure vm's in de [RHEL multi-sid-hand leiding](./high-availability-guide-rhel-multi-sid.md) om het gebruik van para meter`enque/encni/set_so_keepalive`
 - 07/23/2020: de functie [opslaan op SAP Hana large instances is toegevoegd aan een Azure reservation](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) -artikel waarin wordt uitgelegd wat u moet weten voordat u een SAP Hana large instances reservering koopt en hoe u de aankoop kunt doen
 - 07/16/2020: beschrijving van het gebruik van Azure PowerShell voor het installeren van een nieuwe VM-extensie voor SAP in de [implementatie handleiding](deployment-guide.md)
 - 7/04/2020: release van [Azure monitor voor SAP-oplossingen (preview-versie)](./azure-monitor-overview.md)
@@ -130,7 +132,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 - 03/31/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SLES](./sap-hana-high-availability.md) en [hoge Beschik baarheid van SAP Hana op Azure vm's op RHEL](./sap-hana-high-availability-rhel.md) om instructies toe te voegen hoe Stripe-grootte moet worden opgegeven bij het maken van striped volumes
 - 03/27/2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md) om de opties voor het bestands systeem koppelen af te stemmen op NetApp TR-4746 (de optie voor synchronisatie koppeling verwijderen)
 - 03/26/2020: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's in de SLES-hand leiding voor multi-sid](./high-availability-guide-suse-multi-sid.md) om referentie toe te voegen aan NetApp TR-4746
-- 03/26/2020: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SLES voor SAP-toepassingen](./high-availability-guide-suse.md), [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SLES met Azure NetApp files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md), [hoge Beschik baarheid voor NFS op Azure vm's op SLES](./high-availability-guide-suse-nfs.md), [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's in de SLES-hand leiding voor meerdere sid's](./high-availability-guide-suse-multi-sid.md), hoge [Beschik baarheid voor SAP NetWeaver op Azure Vm's op RHEL voor SAP-toepassingen en](./high-availability-guide-rhel.md) hoge [beschik BAARHEID voor sap netweaver op Azure vm's op RHEL met Azure NetApp files voor SAP-toepassingen voor](./high-availability-guide-rhel-netapp-files.md) het bijwerken van diagrammen Azure Load Balancer
+- 03/26/2020: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SLES voor SAP-toepassingen](./high-availability-guide-suse.md), [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SLES met Azure NetApp files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md), [hoge Beschik baarheid voor NFS op Azure vm's op SLES](./high-availability-guide-suse-nfs.md), [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's in de RHEL-hand leiding voor meerdere sid's](./high-availability-guide-suse-multi-sid.md), hoge [Beschik baarheid voor SAP NetWeaver op Azure Vm's op RHEL voor SAP-toepassingen en](./high-availability-guide-rhel.md) hoge [beschik BAARHEID voor sap netweaver op Azure vm's op RHEL met Azure NetApp files voor SAP-toepassingen voor](./high-availability-guide-rhel-netapp-files.md) het bijwerken van diagrammen Azure Load Balancer
 - 03/19/2020: belang rijke revisie van document [Quick Start: hand matige installatie van SAP Hana met één exemplaar op azure virtual machines](./hana-get-started.md) voor de [installatie van SAP HANA op Azure virtual machines](./hana-get-started.md)
 - 03/17/2020: wijziging in instellen van [pacemaker op SuSE Linux Enterprise Server in azure](./high-availability-guide-suse-pacemaker.md) voor het verwijderen van de SBD-configuratie-instelling die niet meer nodig is
 - 03/16/2020: uitleg van het scenario voor kolom certificering in SAP HANA IaaS gecertificeerd platform in [welke SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md)

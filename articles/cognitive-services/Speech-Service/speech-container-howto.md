@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974650"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808657"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
@@ -39,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De volgende vereisten voordat u spraak containers gebruikt:
 
-| Vereist | Functie |
+| Vereist | Doel |
 |--|--|
 | Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
 | Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten. |
@@ -354,7 +354,7 @@ ApiKey={API_KEY}
 Met deze opdracht gebeurt het volgende:
 
 * Voert een *tekst-naar-spraak* -container uit vanuit de container installatie kopie.
-* Wijst twee CPU-kernen en een gigabyte (GB) aan geheugen toe.
+* Wijst 1 CPU-kern en 2 GB aan geheugen toe.
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
@@ -394,7 +394,7 @@ ApiKey={API_KEY}
 Met deze opdracht gebeurt het volgende:
 
 * Hiermee wordt een *aangepaste tekst-naar-spraak-* container uitgevoerd vanuit de container installatie kopie.
-* Wijst twee CPU-kernen en een gigabyte (GB) aan geheugen toe.
+* Wijst 1 CPU-kern en 2 GB aan geheugen toe.
 * Hiermee wordt het *aangepaste tekst-naar-spraak* -model geladen vanuit de volume-invoer koppeling, bijvoorbeeld *C:\CustomVoice*.
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Hiermee downloadt u het model `ModelId` op basis van (indien niet gevonden op het volume koppel).
@@ -406,7 +406,7 @@ Met deze opdracht gebeurt het volgende:
 > [!IMPORTANT]
 > De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
+## <a name="query-the-containers-prediction-endpoint"></a>Een query uitvoeren op het voorspellingseindpunt van de container
 
 > [!NOTE]
 > Gebruik een uniek poort nummer als u meerdere containers uitvoert.
@@ -551,7 +551,7 @@ U kunt deze container en een andere Azure Cognitive Services-container die samen
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Wanneer u de container start of uitvoert, kunnen er problemen optreden. Gebruik een uitvoer [koppeling](speech-container-configuration.md#mount-settings) en schakel logboek registratie in. Als u dit doet, kan de container logboek bestanden genereren die handig zijn bij het oplossen van problemen.
 

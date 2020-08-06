@@ -3,7 +3,7 @@ title: Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pak
 description: Meer informatie over het wijzigen van de aanvraag-en goedkeurings instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf38013efb14e412fbcd43e06dcf17e61c3bc4a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078804"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798763"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -50,9 +50,9 @@ Zie [meerdere beleids regels](entitlement-management-troubleshoot.md#multiple-po
 
 Als u de aanvraag-en goedkeurings instellingen voor een toegangs pakket wilt wijzigen, moet u het bijbehorende beleid openen. Volg deze stappen om de aanvraag-en goedkeurings instellingen voor een toegangs pakket te openen.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -74,9 +74,9 @@ Als u de aanvraag-en goedkeurings instellingen voor een toegangs pakket wilt wij
 
 Als u een set gebruikers hebt met verschillende aanvraag-en goedkeurings instellingen, moet u waarschijnlijk een nieuw beleid maken. Volg deze stappen om een nieuw beleid toe te voegen aan een bestaand toegangs pakket.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -86,7 +86,7 @@ Als u een set gebruikers hebt met verschillende aanvraag-en goedkeurings instell
 
     ![Beleid maken met de naam en beschrijving](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
-1. Klik op **volgende** om het tabblad **aanvragen** te openen.
+1. Klik op **Volgende** om het tabblad **Aanvragen** te openen.
 
 1. Voer de stappen in een van de volgende aanvraag secties uit.
 

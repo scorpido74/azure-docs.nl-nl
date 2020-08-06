@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 5181cc0f6457c5eb98cca828ecb91c52f47f3fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273516"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809928"
 ---
-# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors-preview"></a>Zelf studie: kenmerk write-back van Azure AD naar SAP SuccessFactors (preview) configureren
+# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Zelf studie: kenmerk write-back van Azure AD naar SAP SuccessFactors configureren
 Het doel van deze zelf studie is het weer geven van de stappen voor het terugschrijven van kenmerken van Azure AD naar SAP SuccessFactors Employee Central. 
 
 ## <a name="overview"></a>Overzicht
@@ -258,7 +258,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
    | 4 | waar | emailIsPrimary | Gebruik dit kenmerk om zakelijke e-mail in te stellen als primair in SuccessFactors. Als zakelijk e-mail adres niet primair is, stelt u deze vlag in op ONWAAR. |
    | 5 | userPrincipalName | [custom01 – custom15] | Met een **nieuwe toewijzing toevoegen**kunt u optioneel userPrincipalName of een Azure AD-kenmerk schrijven naar een aangepast kenmerk dat beschikbaar is in het SuccessFactors-gebruikers object.  |
    | 6 | on-premises-samAccountName | gebruikersnaam | Met een **nieuwe toewijzing toevoegen**kunt u optioneel een on-premises sAMAccountName toewijzen aan het kenmerk SuccessFactors username. |
-   | 7 | SSO | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
+   | 7 | Eenmalige aanmelding | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
    | 8 | telephoneNumber | businessPhoneNumber | Gebruik deze toewijzing om *telephoneNumber* uit te stromen van Azure AD naar SuccessFactors Business/Work-telefoon nummer. |
    | 9 | 10605 | businessPhoneType | Deze constante waarde is de SuccessFactors ID-waarde gekoppeld aan de zakelijke telefoon. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor phoneType](#retrieve-constant-value-for-phonetype) voor de stappen om deze waarde in te stellen. |
    | 10 | waar | businessPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het zakelijke telefoon nummer in te stellen. Geldige waarden zijn True of false. |
