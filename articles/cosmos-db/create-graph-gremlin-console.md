@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0d8c153bb95ee4eda109d8d7d6ce8ae40dae19e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260728"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543772"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Quickstart: Gebruik de Gremlin-console om een Azure Cosmos DB-grafiekdatabase te maken, er query’s op uit te voeren en erdoorheen te gaan
 
@@ -81,7 +81,7 @@ U moet ook de [Gremlin-console](https://tinkerpop.apache.org/downloads.html) ins
    connectionPool: {
      enableSsl: true
    }
-   serializer: { className: org.apache.tinkerpop.gremlin.driver.   ser.GraphSONMessageSerializerV2d0, config: {    serializeResultToString: true }}
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
    ```
 
    zorg dat u de waarde van parameter hosts tussen vierkante haken [] plaatst. 

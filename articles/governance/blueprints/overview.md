@@ -3,12 +3,12 @@ title: Overzicht van Azure Blueprints
 description: Azure Blueprints is een service in waarmee u artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970923"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530391"
 ---
 # <a name="what-is-azure-blueprints"></a>Wat is Azure Blueprints?
 
@@ -39,7 +39,7 @@ Een blauwdruk is een pakket of container voor het samenstellen van focusspecifie
 
 Een [beleid](../policy/overview.md) is een systeem voor standaard toestaan en expliciet weigeren dat is gericht op resource-eigenschappen tijdens implementatie en voor reeds bestaande resources. Het ondersteunt cloudgovernance door te valideren dat resources binnen een abonnement voldoen aan vereisten en normen.
 
-Door een beleid in een blauwdruk op te nemen, kunnen tijdens de toewijzing van de blauwdruk het juiste patroon of ontwerp worden gemaakt. Door een beleid op te nemen, wordt ervoor gezorgd dat alleen goedgekeurde of verwachte wijzigingen kunnen worden aangebracht in de omgeving, om continue naleving van de intentie van de blauwdruk te beschermen.
+Door een beleid op te nemen in een blauwdruk kan het juiste patroon of ontwerp worden gemaakt tijdens het toewijzen van de blauwdruk. Door een beleid op te nemen, wordt ervoor gezorgd dat alleen goedgekeurde of verwachte wijzigingen kunnen worden aangebracht in de omgeving, om continue naleving van de intentie van de blauwdruk te beschermen.
 
 Een beleid kan worden opgenomen als een van de vele _artefacten_ in de definitie van een blauwdruk. Blauwdrukken ondersteunen ook het gebruik van parameters in beleid en initiatieven.
 
@@ -103,7 +103,7 @@ Als u een blauwdruk wilt toewijzen of de toewijzing ongedaan wilt maken, heeft u
 
 De volgende ingebouwde rollen zijn beschikbaar:
 
-|RBAC-rol | Beschrijving |
+|Azure-rol | Beschrijving |
 |-|-|
 |[Eigenaar](../../role-based-access-control/built-in-roles.md#owner) | Eigenaren hebben onder alle Azure Blueprint-gerelateerde machtigingen. |
 |[Inzender](../../role-based-access-control/built-in-roles.md#contributor) | Inzenders kunnen onder meer blauwdrukdefinities maken en verwijderen, maar beschikken niet over machtigingen om blauwdrukken toe te wijzen. |

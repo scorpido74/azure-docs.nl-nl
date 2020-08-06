@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 165f3dab2413afc09a67175bb10471c2bd53ea32
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129165"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552676"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Quickstart: Aanmelden met OpenID Connect bij een Node.js-webtoepassing toevoegen
 
@@ -52,7 +52,7 @@ Als u dit voorbeeld wilt uitvoeren, hebt u het volgende nodig:
 
 1. Selecteer in de lijst met pagina’s voor de app de optie **Verificatie**.
     - Selecteer in de sectie **Omleidings-URI's** de optie **Web** in de keuzelijst en voer de volgende omleidings-URI in: `http://localhost:3000/auth/openid/return`
-    - Bij **Geavanceerde instellingen** stelt u de **afmeldings-URL** in op `http://localhost:3000`.
+    - Bij **Geavanceerde instellingen** stelt u de **afmeldings-URL** in op `https://localhost:3000`.
     - Schakel in de sectie **Geavanceerde instellingen > Impliciete toekenning** de optie **ID-tokens** in, aangezien voor dit voorbeeld vereist is dat de [Impliciete toekenningsstroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) is ingeschakeld om aanmelding van de gebruiker mogelijk te maken.
 
 1. Selecteer **Opslaan**.
