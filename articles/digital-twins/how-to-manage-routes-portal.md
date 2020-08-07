@@ -7,12 +7,12 @@ ms.author: v-lakast
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7786f970f612d2856948e2286ed234e2b0895072
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d563c7706529c6f3e280f7d138c0d6ba0dfc849
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836956"
+ms.locfileid: "87902188"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Portal)
 
@@ -129,44 +129,49 @@ Voor **waarde: u**moet eind punten maken zoals eerder in dit artikel wordt besch
 
 ### <a name="create-an-event-route"></a>Een gebeurtenis route maken 
 
-Een definitie van een gebeurtenis route kan deze elementen bevatten:
-* De route-ID die u wilt gebruiken
+Een definitie van een gebeurtenis route bevat deze elementen:
+* De naam van de route die u wilt gebruiken
 * De naam van het eind punt dat u wilt gebruiken
 * Een filter dat definieert welke gebeurtenissen naar het eind punt worden verzonden
+    - Als u de route wilt uitschakelen zodat er geen gebeurtenissen worden verzonden, gebruikt u een filter waarde van`false`
+    - Als u een route wilt inschakelen die geen specifieke filters heeft, gebruikt u een filter waarde van`true`
+    - Zie de sectie [*filter gebeurtenissen*](#filter-events) hieronder voor meer informatie over elk ander type filter.
 
-Als er geen route-ID is, worden er geen berichten meer doorgestuurd buiten Azure Digital Apparaatdubbels.
-Als er een route-ID en het filter is `true` , worden alle berichten naar het eind punt doorgestuurd.
-Als er een route-ID en een ander filter worden toegevoegd, worden berichten gefilterd op basis van het filter.
-
-Voor één route moeten meerdere meldingen en gebeurtenis typen worden geselecteerd.
+U kunt meerdere meldingen en gebeurtenis typen toestaan om één route te selecteren.
 
 Als u een gebeurtenis route wilt maken, gaat u naar de pagina Details van uw Azure Digital Apparaatdubbels-exemplaar in de [Azure Portal](https://portal.azure.com) (u kunt het exemplaar vinden door de naam ervan in te voeren in de zoek balk van de portal).
 
 Selecteer in het menu exemplaar _gebeurtenis routes_. Selecteer vervolgens op de pagina *gebeurtenis routes* die volgt op *+ een gebeurtenis route maken*. 
 
-Op de pagina *een route voor gebeurtenis maken* die wordt geopend, kiest u in het veld _naam_ ten minste een naam voor uw route en selecteert u het _eind punt_ dat u wilt gebruiken om een route te maken vanuit de vervolg keuzelijst.
+Kies op de pagina *een route voor een gebeurtenis maken* die wordt geopend mini maal:
+* Een naam voor uw route in het veld _naam_
+* Het _eind punt_ dat u wilt gebruiken om de route te maken 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Scherm opname van het maken van gebeurtenis routes voor uw exemplaar.":::
+Als u de route wilt inschakelen, moet u ook **een gebeurtenis route filter** van ten minste toevoegen `true` . (Als u de standaard waarde van weglaat `false` , wordt de route gemaakt, maar er worden geen gebeurtenissen naar verzonden.) U doet dit door de schakel optie voor de _Geavanceerde editor_ in te scha kelen en te schrijven `true` in het vak *filter* .
+
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Scherm opname van het maken van gebeurtenis routes voor uw exemplaar." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 Wanneer u klaar bent, klikt u op de knop _Opslaan_ om uw gebeurtenis route te maken.
 
 ### <a name="filter-events"></a>Gebeurtenissen filteren
 
-Als u geen filtert, ontvangen eind punten diverse gebeurtenissen van Azure Digital Apparaatdubbels:
+Zoals hierboven beschreven, hebben routes een **filter** veld. Als de filter waarde voor uw route is `false` , worden er geen gebeurtenissen naar uw eind punt verzonden. 
+
+Nadat het minimale filter van `true` is ingeschakeld, ontvangen eind punten diverse gebeurtenissen van Azure Digital apparaatdubbels:
 * Telemetrie die wordt geactiveerd door [Digital apparaatdubbels](concepts-twins-graph.md) met de Azure Digital APPARAATDUBBELS Service API
 * Dubbele eigenschaps wijzigings meldingen, die worden geactiveerd bij wijzigingen in de eigenschappen voor elke dubbele in het Azure Digital Apparaatdubbels-exemplaar
 * Levenscyclus gebeurtenissen, die worden geactiveerd wanneer apparaatdubbels of relaties worden gemaakt of verwijderd
 * Model wijzigings gebeurtenissen, die worden geactiveerd wanneer [modellen](concepts-models.md) die zijn geconfigureerd in een Azure Digital apparaatdubbels-exemplaar worden toegevoegd of verwijderd
 
-U kunt de verzonden gebeurtenissen beperken door een **filter** voor een eind punt toe te voegen aan de route van uw gebeurtenis.
+U kunt de typen gebeurtenissen die worden verzonden beperken door een specifiek filter te definiëren.
 
-Als u een filter wilt toevoegen tijdens het maken van een gebeurtenis route, gebruikt u de sectie _een filter voor gebeurtenis routes toevoegen_ van de pagina *een gebeurtenis route maken* . 
+Als u een gebeurtenis filter wilt toevoegen tijdens het maken van een gebeurtenis route, gebruikt u de sectie _een filter voor gebeurtenis routes toevoegen_ van de pagina *een gebeurtenis route maken* . 
 
 U kunt een of meer algemene filter opties selecteren of de geavanceerde filter opties gebruiken om uw eigen aangepaste filters te schrijven.
 
 #### <a name="use-the-basic-filters"></a>De basis filters gebruiken
 
-Als u de basis filters wilt gebruiken, vouwt u de optie _gebeurtenis typen_ uit en selecteert u de selectie vakjes die overeenkomen met de gebeurtenissen waarop u wilt filteren. 
+Als u de basis filters wilt gebruiken, vouwt u de optie _gebeurtenis typen_ uit en selecteert u de selectie vakjes die overeenkomen met de gebeurtenissen die u naar het eind punt wilt verzenden. 
 
 :::row:::
     :::column:::

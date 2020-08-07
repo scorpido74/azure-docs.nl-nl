@@ -3,7 +3,7 @@ title: Een toegangs beoordeling van groepen & toepassingen volt ooien-Azure AD
 description: Meer informatie over het volt ooien van een toegangs beoordeling van groeps leden of toegang tot toepassingen in Azure Active Directory toegangs Beoordelingen.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251ca1dc2b288d3448cdcda0f28335a92c54b431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078862"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798831"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling van groepen en toepassingen in azure AD-toegangs beoordelingen volt ooien
 
@@ -34,7 +34,7 @@ Als beheerder [maakt u een toegangs beoordeling van groepen of toepassingen](cre
 - Azure AD Premium P2
 - Globale beheerder, gebruikers beheerder, beveiligings beheerder of beveiligings lezer
 
-Zie [licentie vereisten](access-reviews-overview.md#license-requirements)voor meer informatie.
+Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor meer informatie.
 
 ## <a name="view-an-access-review"></a>Een toegangs beoordeling weer geven
 
@@ -90,5 +90,5 @@ Als u alle resultaten van een toegangs beoordeling wilt ophalen, klikt u op de k
 
 - [Gebruikerstoegang beheren met Azure AD-toegangsbeoordelingen](manage-user-access-with-access-reviews.md)
 - [Gasttoegang beheren met Azure AD-toegangsbeoordelingen](manage-guest-access-with-access-reviews.md)
-- [Een toegangs beoordeling van groepen of toepassingen maken](create-access-review.md)
+- [Een toegangsbeoordeling van groepen of toepassingen maken](create-access-review.md)
 - [Een toegangsbeoordeling maken van gebruikers met een Azure AD-beheerderrol](../privileged-identity-management/pim-how-to-start-security-review.md)

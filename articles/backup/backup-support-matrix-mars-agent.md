@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538646"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872409"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -54,7 +54,7 @@ Locatie wijzigingen | U kunt de locatie van de cache wijzigen door de back-upeng
 
 De MARS-agent moet toegang hebben tot deze Url's:
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
@@ -79,7 +79,7 @@ Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/a
 - `.microsoftonline.com`
 - `.windows.net`
 
-Bij micro soft-peering moet u de volgende services/regio's en relevante Community-waarden selecteren:
+Selecteer bij micro soft-peering de volgende services/regio's en relevante Community-waarden:
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
@@ -89,6 +89,16 @@ Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-rou
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
+
+### <a name="private-endpoint-support"></a>Ondersteuning voor privé-eind punten
+
+U kunt nu persoonlijke eind punten gebruiken om een back-up te maken van uw gegevens op een veilige manier van servers naar uw Recovery Services kluis. Omdat Azure Active Directory momenteel geen persoonlijke eind punten ondersteunt, moeten Ip's en FQDN-adressen die vereist zijn voor Azure Active Directory, afzonderlijke uitgaande toegang hebben.
+
+Wanneer u de MARS-agent gebruikt voor het maken van een back-up van uw on-premises bronnen, moet u ervoor zorgen dat uw on-premises netwerk (met uw resources waarvan u een back-up wilt maken) is gekoppeld aan het Azure-VNet dat een persoonlijk eind punt voor de kluis bevat. U kunt vervolgens door gaan met het installeren van de MARS-agent en het configureren van de back-up. U moet er echter voor zorgen dat alle communicatie voor back-ups alleen via het peered netwerk plaatsvindt.
+
+Als u privé-eind punten voor de kluis verwijdert nadat er een MARS-agent is geregistreerd, moet u de container opnieuw registreren bij de kluis. U hoeft de beveiliging niet te stoppen.
+
+Lees meer over [privé-eind punten voor Azure backup](private-endpoints.md).
 
 ### <a name="throttling-support"></a>Ondersteuning voor beperking
 
@@ -124,7 +134,7 @@ Zie [supported MABS and DPM Operating Systems](backup-support-matrix-mabs-dpm.md
 
 ### <a name="operating-systems-at-end-of-support"></a>Besturings systemen aan het einde van de ondersteuning
 
-De volgende besturings systemen zijn aan het einde van de ondersteuning en het wordt ten zeerste aanbevolen om het besturings systeem bij te werken om te blijven beveiligd.
+De volgende besturings systemen zijn aan het einde van de ondersteuning en het wordt ten zeerste aanbevolen om het besturings systeem bij te werken om de beveiliging te blijven gebruiken.
 
 Als bestaande verplichtingen voor komen dat het besturings systeem wordt geüpgraded, kunt u overwegen om de Windows-servers te migreren naar Azure-Vm's en Azure VM-back-ups te gebruiken om de beveiliging te blijven gebruiken. Ga hier naar de [pagina migratie](https://azure.microsoft.com/migration/windows-server/) voor meer informatie over het migreren van uw Windows-Server.
 
@@ -162,13 +172,13 @@ Decodeer<sup>*</sup>| Ondersteund.
 Gecomprimeerd | Ondersteund.
 Sparse | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
-Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
-Reparsepunt| Wordt niet ondersteund. Genegeerd.
-Versleuteld en verspreid |Wordt niet ondersteund. Genegeerd.
-Gecomprimeerde stroom| Wordt niet ondersteund. Genegeerd.
-Sparse stream| Wordt niet ondersteund. Genegeerd.
-OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
-Mappen met DSF-replicatie ingeschakeld | Wordt niet ondersteund.
+Vaste koppelingen| Niet ondersteund. Genegeerd.
+Reparsepunt| Niet ondersteund. Genegeerd.
+Versleuteld en verspreid |Niet ondersteund. Genegeerd.
+Gecomprimeerde stroom| Niet ondersteund. Genegeerd.
+Sparse stream| Niet ondersteund. Genegeerd.
+OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Niet ondersteund.
+Mappen met DSF-replicatie ingeschakeld | Niet ondersteund.
 
 \*Zorg ervoor dat de MARS-agent toegang heeft tot de vereiste certificaten om toegang te krijgen tot de versleutelde bestanden. Niet-toegankelijke bestanden worden overgeslagen.
 

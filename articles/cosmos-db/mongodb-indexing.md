@@ -1,20 +1,20 @@
 ---
 title: Indexering beheren in de API van Azure Cosmos DB voor MongoDB
-description: Dit artikel bevat een overzicht van Azure Cosmos DB indexerings mogelijkheden met behulp van de MongoDB-API.
+description: Dit artikel bevat een overzicht van Azure Cosmos DB indexerings mogelijkheden met behulp van de API van Azure Cosmos DB voor MongoDB
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761158"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843807"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -315,7 +315,7 @@ In de details van de index voortgang wordt het percentage voortgang van de huidi
    }
    ```
 
-### <a name="background-index-updates"></a>Achtergrond-index updates
+## <a name="background-index-updates"></a>Achtergrond-index updates
 
 Ongeacht de waarde die is opgegeven voor de eigenschap **achtergrond** index, worden index updates altijd op de achtergrond uitgevoerd. Omdat index updates gebruikmaken van aanvraag eenheden (RUs) met een lagere prioriteit dan andere database bewerkingen, hebben index wijzigingen geen invloed op uitval voor schrijf bewerkingen, updates of verwijderingen.
 

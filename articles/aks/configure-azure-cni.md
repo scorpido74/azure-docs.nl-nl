@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van Azure CNI (Advanced)-netw
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416848"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872426"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI-netwerken configureren in azure Kubernetes service (AKS)
 
@@ -26,7 +26,7 @@ Dit artikel laat u zien hoe u met *Azure cni* Networking een subnet voor een vir
 * De service-principal die wordt gebruikt door het AKS-cluster moet ten minste [netwerkinzender](../role-based-access-control/built-in-roles.md#network-contributor) machtigingen hebben voor het subnet binnen het virtuele netwerk. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerk bijdrager te gebruiken, zijn de volgende machtigingen vereist:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* In plaats van een Service-Principal kunt u de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
+* In plaats van een Service-Principal kunt u de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie.
 * Het subnet dat is toegewezen aan de AKS-knooppunt groep mag geen [gedelegeerd subnet](../virtual-network/subnet-delegation-overview.md)zijn.
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>IP-adres sering voor uw cluster plannen
@@ -63,7 +63,7 @@ Het maximum aantal peulen per knoop punt in een AKS-cluster is 250. Het *maximum
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ja (Maxi maal 250) |
 | Resource Manager-sjabloon | 110 | 30 | Ja (Maxi maal 250) |
-| Portal | 110 | 30 | No |
+| Portal | 110 | 30 | Nee |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximum aantal nieuwe clusters configureren
 
@@ -87,7 +87,7 @@ Een minimum waarde voor het maximale aantal peulen per knoop punt wordt afgedwon
 
 ### <a name="configure-maximum---existing-clusters"></a>Maxi maal bestaande clusters configureren
 
-De instelling maxPod per knoop punt kan worden gedefinieerd wanneer u een nieuwe knooppunt groep maakt. Als u de maxPod per knooppunt instelling wilt verhogen op een bestaand cluster, voegt u een nieuwe knooppunt groep toe met het nieuwe gewenste maxPod aantal. Nadat u uw peul hebt gemigreerd naar de nieuwe groep, verwijdert u de oudere groep. Als u een oudere groep in een cluster wilt verwijderen, moet u ervoor zorgen dat u de instellingen van de groep knoop punten instelt zoals gedefinieerd in de [groeps beleidssysteem voor het systeem knooppunt,[knoop punt-groepen].
+De instelling maxPod per knoop punt kan worden gedefinieerd wanneer u een nieuwe knooppunt groep maakt. Als u de maxPod per knooppunt instelling wilt verhogen op een bestaand cluster, voegt u een nieuwe knooppunt groep toe met het nieuwe gewenste maxPod aantal. Nadat u uw peul hebt gemigreerd naar de nieuwe groep, verwijdert u de oudere groep. Als u een oudere groep in een cluster wilt verwijderen, moet u ervoor zorgen dat u de modi van de groep knoop punten instelt zoals gedefinieerd in het [document met groeps beleidspunten][system-node-pools].
 
 ## <a name="deployment-parameters"></a>Implementatieparameters
 
@@ -214,4 +214,4 @@ Kubernetes-clusters die zijn gemaakt met AKS-engine ondersteunen zowel de [kuben
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
-[systeem-node-Pools]: use-system-pools.md
+[system-node-pools]: use-system-pools.md

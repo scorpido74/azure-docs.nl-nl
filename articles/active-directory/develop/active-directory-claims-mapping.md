@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428004"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902470"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -261,13 +261,15 @@ Als u wilt bepalen welke claims worden verzonden en waar de gegevens vandaan kom
 **Gegevens type:** JSON-blob met een of meer claim schema vermeldingen
 
 **Samen vatting:** Met deze eigenschap wordt gedefinieerd welke claims aanwezig zijn in de tokens die door het beleid worden beïnvloed, naast de set met basis claims en de kern claimset.
-Voor elke claim schema vermelding die in deze eigenschap is gedefinieerd, is bepaalde informatie vereist. Geef op waar de gegevens vandaan komen (**waarde** of **bron/id-paar**) en welke claim de gegevens worden verzonden als (**claim type**).
+Voor elke claim schema vermelding die in deze eigenschap is gedefinieerd, is bepaalde informatie vereist. Geef op waar de gegevens vandaan komen (**waarde**, **bron/id-paar**of **bron-ExtensionID**) en welke claim de gegevens worden verzonden als (**claim type**).
 
 ### <a name="claim-schema-entry-elements"></a>Elementen van claim schema vermeldingen
 
 **Waarde:** Het element waarde definieert een statische waarde als de gegevens die moeten worden verzonden in de claim.
 
-**Bron/ID-paar:** De bron-en ID-elementen bepalen waar de gegevens in de claim worden gebrond. 
+**Bron/ID-paar:** De bron-en ID-elementen bepalen waar de gegevens in de claim worden gebrond.  
+
+**Bron-ExtensionID-paar:** De bron-en ExtensionID-elementen definiëren het kenmerk Directory schema-uitbrei ding waaruit de gegevens in de claim afkomstig zijn. Zie [kenmerken van Directory-schema uitbreidingen gebruiken in claims](active-directory-schema-extensions.md)voor meer informatie.
 
 Stel het bron element in op een van de volgende waarden: 
 
@@ -321,7 +323,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Status |
+| Gebruiker | state | Staat |
 | Gebruiker | jobtitle | Functie |
 | Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
@@ -528,7 +530,7 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.
 - Zie voor meer informatie over extensie kenmerken de [kenmerken van Directory-schema-extensies gebruiken in claims](active-directory-schema-extensions.md).

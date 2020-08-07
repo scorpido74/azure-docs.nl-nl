@@ -10,13 +10,13 @@ ms.subservice: anomaly-detector
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.custom: tracking-python
-ms.openlocfilehash: d872e4486bdc8fcd3629feb452b0d436872c70d8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-python
+ms.openlocfilehash: b29fa17c21b2cdb2e764c905af3819142d8c341e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189418"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844062"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: voor speld onderhoud met de Cognitive Services voor Big Data
 
@@ -30,14 +30,14 @@ De gegevens kunnen in wille keurige frequentie uitbijten. In dat geval worden de
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/)
 * [Azure Synapse-werk ruimte](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) die is geconfigureerd met een [Spark-groep](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
 
 ## <a name="setup"></a>Instellen
 
 ### <a name="create-an-anomaly-detector-resource"></a>Een afwijkende detector-resource maken
 
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Een resource voor Translator maken met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli). U kunt ook het volgende doen:
+Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Een resource voor Translator maken met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli). U kunt ook het volgende doen:
 
 - Bekijk een bestaande resource in de [Azure Portal](https://portal.azure.com/).
 

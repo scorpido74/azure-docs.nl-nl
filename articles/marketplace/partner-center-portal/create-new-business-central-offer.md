@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121942"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800395"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -131,10 +131,10 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 6. Privacybeleid
 7. Naam van aanbieding
 8. Samenvatting
-9. Description
+9. Beschrijving
 10. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -142,7 +142,7 @@ De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de a
 
 Geef een korte beschrijving van uw aanbieding, Maxi maal 100 tekens. Deze beschrijving kan worden gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -180,15 +180,19 @@ In het gedeelte **ondersteuning voor contact opnemen** moet u ook de **ondersteu
 
 Geef hier ten minste één (en Maxi maal drie) gerelateerde marketing documenten op, zoals witboeken, brochures, controle lijsten of presentaties. Deze documenten moeten de PDF-indeling hebben.
 
-### <a name="marketplace-images"></a>Marketplace-installatie kopieën
+### <a name="store-logos"></a>Winkel logo's
 
-Bied logo's en installatie kopieën voor uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Upload uw aanbiedings logo in twee grootten:
+Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) te maken. U kunt dit eventueel vervangen door een andere afbeelding.
 
-* **Klein** (48 x 48 pixels)
-* **Groot** (216 x 216 pixels)
+Beide logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+
+- **Klein** (48 x 48)
+- **Groot** (tussen 216 x 216 en 350 x 350)
 
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door `https://upload.xboxlive.com` Partner Center gebruikte service niet blokkeert.
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

@@ -1,6 +1,6 @@
 ---
 title: Expressies voor Azure API Management-beleid | Microsoft Docs
-description: Meer informatie over beleids expressies in azure API Management.
+description: Meer informatie over beleids expressies in azure API Management. Bekijk voor beelden en Bekijk extra beschik bare resources.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249815"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844237"
 ---
 # <a name="api-management-policy-expressions"></a>API Management-beleids expressies
 In dit artikel wordt de syntaxis van beleids expressies in C# 7 beschreven. Elke expressie heeft toegang tot de impliciet verschafte [context](api-management-policy-expressions.md#ContextVariables) variabele en een toegestane [subset](api-management-policy-expressions.md#CLRTypes) van .NET Framework typen.
