@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361486"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926175"
 ---
 # <a name="authentication-and-user-permissions"></a>Verificatie en gebruikersmachtigingen
 
@@ -68,7 +68,7 @@ Excel-gebruikers kunnen verbinding maken met een server met behulp van een Windo
 
 ![Toegangs beheer in Azure Portal](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moeten uitvoeren die kunnen worden uitgevoerd in de portal of met behulp van Azure Resource Manager sjablonen. Zie [Access Control op basis van rollen](../role-based-access-control/overview.md)voor meer informatie. 
+Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moeten uitvoeren die kunnen worden uitgevoerd in de portal of met behulp van Azure Resource Manager sjablonen. Zie op [rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)](../role-based-access-control/overview.md)voor meer informatie. 
 
 ## <a name="database-roles"></a>Database rollen
 
@@ -81,4 +81,4 @@ Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moe
 [Toegang tot resources beheren met Azure Active Directory groepen](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Database rollen en-gebruikers beheren](analysis-services-database-users.md)  
 [Serverbeheerders beheren](analysis-services-server-admins.md)  
-[Access Control op basis van rollen](../role-based-access-control/overview.md)  
+[Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../role-based-access-control/overview.md)  

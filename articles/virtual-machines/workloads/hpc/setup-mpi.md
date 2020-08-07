@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1b2d707569221a79ad53f04bcc379f5067ed9b04
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905530"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926515"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Bericht interface voor het door geven van HPC instellen
 
@@ -95,11 +95,24 @@ Controleer de hierboven vermelde partitie sleutel.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Down load Intel mpi](https://software.intel.com/mpi-library/choose-download).
+Down load de gewenste versie van [Intel mpi](https://software.intel.com/mpi-library/choose-download). Wijzig de I_MPI_FABRICS omgevings variabele, afhankelijk van de versie. Voor Intel MPI 2018, gebruik `I_MPI_FABRICS=shm:ofa` en voor 2019, gebruikt u `I_MPI_FABRICS=shm:ofi` .
 
-Wijzig de I_MPI_FABRICS omgevings variabele, afhankelijk van de versie. Voor Intel MPI 2018, gebruik `I_MPI_FABRICS=shm:ofa` en voor 2019, gebruikt u `I_MPI_FABRICS=shm:ofi` .
+### <a name="non-sr-iov-vms"></a>Virtuele machines die niet zijn SR-IOV
+Voor niet-SR-IOV-Vm's is een voor beeld van het downloaden van de [gratis evaluatie versie](https://registrationcenter.intel.com/en/forms/?productid=1740) van 5. x als volgt:
+```bash
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+```
+Zie de installatie handleiding voor de [Intel mpi-bibliotheek](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)voor installatie stappen.
+U kunt eventueel ook ptrace inschakelen voor niet-hoofd processen zonder fout opsporing (vereist voor de meest recente versies van Intel MPI).
+```bash
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
-Proces vastmaken werkt standaard goed voor 15, 30 en 60 PPN.
+### <a name="suse-linux"></a>SUSE Linux
+Voor SUSE Linux Enterprise Server VM-installatie kopie versies-SLES 12 SP3 voor HPC, SLES 12 SP3 voor HPC (Premium), SLES 12 SP1 voor HPC, SLES 12 SP1 voor HPC (Premium), SLES 12 SP4 en SLES 15, worden de RDMA-Stuur Programma's geïnstalleerd en worden Intel MPI-pakketten gedistribueerd op de VM. Installeer Intel MPI door de volgende opdracht uit te voeren:
+```bash
+sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+```
 
 ## <a name="mpich"></a>MPICH
 

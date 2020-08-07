@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041316"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921211"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,11 +25,11 @@ U kunt de Azure Portal gebruiken om prestatie aanbevelingen te vinden die de pre
 
 ## <a name="viewing-recommendations"></a>Aanbevelingen weer geven
 
-Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de juiste machtigingen [op rollen gebaseerd toegangs beheer](../../role-based-access-control/overview.md) in azure nodig. **Reader**Voor het weer geven van de aanbevelingen en de **eigenaar**van de **SQL DB-Inzender** **zijn machtigingen vereist** voor het uitvoeren van acties. indexen maken of verwijderen en het maken van de index annuleren.
+Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de juiste machtigingen voor Azure [op rollen gebaseerde toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) nodig in Azure. **Reader**Voor het weer geven van de aanbevelingen en de **eigenaar**van de **SQL DB-Inzender** **zijn machtigingen vereist** voor het uitvoeren van acties. indexen maken of verwijderen en het maken van de index annuleren.
 
 Gebruik de volgende stappen om aanbevelingen voor prestaties te vinden op het Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar **alle services**  >  **SQL-data bases**en selecteer uw data base.
 3. Navigeer naar **Aanbevolen prestaties** om de beschik bare aanbevelingen voor de geselecteerde Data Base weer te geven.
 
@@ -39,11 +39,11 @@ Aanbevelingen voor prestaties worden weer gegeven in de tabel zoals die wordt we
 
 Aanbevelingen worden gesorteerd op de mogelijke invloed op de prestaties van de volgende categorieën:
 
-| Impact | Description |
+| Impact | Beschrijving |
 |:--- |:--- |
 | Hoog |Aanbevelingen met hoge impact moeten de belangrijkste prestatie-impact bieden. |
-| Normaal |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
-| Laag |De aanbevelingen met weinig effect moeten betere prestaties leveren dan zonder, maar de verbeteringen zijn mogelijk niet aanzienlijk. |
+| Middelgroot |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
+| Beperkt |De aanbevelingen met weinig effect moeten betere prestaties leveren dan zonder, maar de verbeteringen zijn mogelijk niet aanzienlijk. |
 
 > [!NOTE]
 > Azure SQL Database moet activiteiten ten minste een dag bewaken om enkele aanbevelingen te kunnen identificeren. Het Azure SQL Database kan gemakkelijker worden geoptimaliseerd voor consistente query patronen dan voor wille keurige spotty-bursts. Als er momenteel geen aanbevelingen beschikbaar zijn, wordt op de pagina **prestatie aanbeveling** een bericht weer gegeven waarin wordt uitgelegd waarom.
@@ -171,5 +171,5 @@ Controleer uw aanbevelingen en pas deze toe om de prestaties te verfijnen. Data 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md)
+* [INDEX MAKEN](https://msdn.microsoft.com/library/ms188783.aspx)
+* [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/overview.md)

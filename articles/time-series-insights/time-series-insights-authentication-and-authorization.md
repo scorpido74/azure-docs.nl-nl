@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3441a540cb00dc9b85de54543484b1723fa4226e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080754"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922639"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -84,7 +84,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
    1. In C# kan de volgende code het token namens de toepassing verkrijgen. Lees [query gegevens met C#](time-series-insights-query-data-csharp.md)voor een volledig voor beeld over het opvragen van gegevens uit een gen1-omgeving.
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
+        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
    1. Het token kan vervolgens worden door gegeven in de `Authorization` header wanneer de toepassing de Azure time series Insights-API aanroept.
 

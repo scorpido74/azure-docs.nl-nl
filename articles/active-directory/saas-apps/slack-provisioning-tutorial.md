@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9aa97595f9a6ab2a866a8c8ebccde7e53854dbd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016300"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924543"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
 
@@ -68,7 +68,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor toegestane vertraging in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -107,12 +107,12 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
    |Kenmerk|Type|
    |---|---|
-   |actief|Boolean|
+   |actief|Booleaans|
    |externalId|Tekenreeks|
    |displayName|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |name. naam|Tekenreeks|
-   |title|Tekenreeks|
+   |titel|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |userName|Tekenreeks|
    |Naam|Tekenreeks|
@@ -131,7 +131,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
    |tijd zone|Tekenreeks|
    |User type|Tekenreeks|
    |urn: scim: schemas: extensie: Enter prise: 1.0. Department|Tekenreeks|
-   |urn: scim: schemas: extensie: Enter prise: 1.0. Manager|Verwijzing|
+   |urn: scim: schemas: extensie: Enter prise: 1.0. Manager|Naslaginformatie|
    |urn: scim: schemas: extension: Enter prise: 1.0. employeeNumber|Tekenreeks|
    |urn: scim: schemas: extension: Enter prise: 1.0. costCenter|Tekenreeks|
    |urn: scim: schemas: extension: Enter prise: 1.0. Organization|Tekenreeks|
@@ -144,7 +144,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
       |Kenmerk|Type|
       |---|---|
       |displayName|Tekenreeks|
-      |leden|Verwijzing|
+      |leden|Naslaginformatie|
 
 14. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -166,7 +166,7 @@ Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle geb
 Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
 
 1. De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
-2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
+2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
 3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing

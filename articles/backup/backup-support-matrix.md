@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531877"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922313"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -32,7 +32,7 @@ In de volgende tabel worden de functies van Recovery Services kluizen beschreven
 **Functie** | **Details**
 --- | ---
 **Kluizen in het abonnement** | Maximaal 500 Recovery Services-kluizen in één abonnement.
-**Machines in een kluis** | Maxi maal 1.000 Azure-Vm's in één kluis.<br/><br/> Maxi maal 50 MABS-servers kunnen worden geregistreerd in één kluis.
+**Machines in een kluis** | Maxi maal 2000 gegevens bronnen in alle werk belastingen (zoals Azure-Vm's, SQL Server-VM, MABS-servers, enzovoort) kunnen in één kluis worden beveiligd.<br><br>Maxi maal 1.000 Azure-Vm's in één kluis.<br/><br/> Maxi maal 50 MABS-servers kunnen worden geregistreerd in één kluis.
 **Gegevensbronnen** | De maximale grootte van een afzonderlijke [gegevens bron](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) is 54.400 GB. Deze limiet is niet van toepassing op back-ups van Azure-VM'S. Er gelden geen limieten voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken naar de kluis.
 **Back-ups naar kluis** | **Azure-vm's:** Eenmaal per dag.<br/><br/>**Machines die worden beveiligd door DPM-MABS:** Twee keer per dag.<br/><br/> **Machines maken rechtstreeks back-ups met behulp van de Mars-agent:** Drie keer per dag.
 **Back-ups tussen kluizen** | De back-up bevindt zich in een regio.<br/><br/> U hebt een kluis nodig in elke Azure-regio die virtuele machines bevat waarvan u een back-up wilt maken. U kunt geen back-up maken naar een andere regio.
@@ -113,10 +113,10 @@ Azure Backup ondersteunt versleuteling voor in-transit en op rest-gegevens.
 
 **Machine** | **In-transit** | **Inactief**
 --- | --- | ---
-**On-premises Windows-machines zonder DPM/MABS** | ![Ja][green] | ![Yes][green]
-**Azure-VM's** | ![Ja][green] | ![Yes][green]
-**On-premises Windows-machines of Azure-Vm's met DPM** | ![Ja][green] | ![Yes][green]
-**On-premises Windows-machines of Azure-Vm's met MABS** | ![Ja][green] | ![Yes][green]
+**On-premises Windows-machines zonder DPM/MABS** | ![Ja][green] | ![Ja][green]
+**Azure-VM's** | ![Ja][green] | ![Ja][green]
+**On-premises Windows-machines of Azure-Vm's met DPM** | ![Ja][green] | ![Ja][green]
+**On-premises Windows-machines of Azure-Vm's met MABS** | ![Ja][green] | ![Ja][green]
 
 ## <a name="compression-support"></a>Ondersteuning voor compressie
 
@@ -129,7 +129,7 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 --- | --- | ---
 **Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Ja][green]
 **Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | NA | NA
-**Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Yes][green]
+**Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
 
 ## <a name="retention-limits"></a>Bewaarlimieten
 
@@ -150,9 +150,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's.  |
-| MARS-agent/on-premises | No                                                           | N.v.t.               |
-| SQL-/SAP HANA          | No                                                           | N.v.t.               |
-| AFS                    | No                                                           | N.v.t.               |
+| MARS-agent/on-premises | Nee                                                           | N.v.t.               |
+| SQL-/SAP HANA          | Nee                                                           | N.v.t.               |
+| AFS                    | Nee                                                           | N.v.t.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

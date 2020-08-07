@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401047"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921415"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Wat is een uitwisseling van meerdere apparaten (preview-versie)?
 
@@ -60,7 +60,7 @@ Realtime-transcriptie en-vertalingen kunnen ervoor zorgen dat discussies toegank
 U kunt ook bijschriften bieden voor presentaties en lezingen op het scherm en op de eigen apparaten van de doel groep. Nadat de doel groep is gekoppeld aan de conversatie code, kunnen ze de transcripten zien in hun Voorkeurs taal, op hun eigen apparaat.
 
 > [!NOTE]
-> Als u een voor beeld wilt bekijken, bekijkt u de [presentatie-vertaler](https://www.microsoft.com/translator/apps/presentation-translator/), een Power Point-invoeg toepassing die gebruikmaakt van de multi-device-conversatie service. U kunt het artikel [hier](https://www.microsoft.com/download/details.aspx?id=55024) downloaden.
+> Als u een voor beeld wilt bekijken, bekijkt u de [presentatie-vertaler](https://www.microsoft.com/translator/apps/presentation-translator/), een Power Point-invoeg toepassing die gebruikmaakt van de multi-device-conversatie service. U kunt het artikel [hier](https://download.cnet.com/s/powerpoint-add-in/) downloaden.
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 

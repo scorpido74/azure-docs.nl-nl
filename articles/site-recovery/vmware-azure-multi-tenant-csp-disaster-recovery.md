@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292839"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924577"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>VMware-nood herstel instellen in een omgeving met meerdere pacht met het provider programma voor cloud oplossingen
 
@@ -98,7 +98,7 @@ Er zijn drie belang rijke multi tenant-modellen:
 Door Tenant abonnementen in te stellen, zoals beschreven in dit artikel, kunt u snel aan de slag gaan met het inschakelen van klanten in een van de relevante multi tenant-modellen. U vindt [hier](vmware-azure-multi-tenant-overview.md)meer informatie over de verschillende multi tenant-modellen en het inschakelen van on-premises toegangs beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over op [rollen gebaseerd toegangs beheer](site-recovery-role-based-linked-access-control.md) om Azure site Recovery-implementaties te beheren.
+- Meer informatie over [toegangs beheer op basis van rollen (Azure RBAC) voor Azure](site-recovery-role-based-linked-access-control.md) om Azure site Recovery-implementaties te beheren.
 - Meer informatie over de [replicatie architectuur](vmware-azure-architecture.md)van VMware naar Azure.
 - [Bekijk de zelf studie voor het](vmware-azure-tutorial.md) repliceren van virtuele VMware-machines naar Azure.
 Meer informatie over [omgevingen met meerdere tenants](vmware-azure-multi-tenant-overview.md) voor het repliceren van virtuele VMware-machines naar Azure.

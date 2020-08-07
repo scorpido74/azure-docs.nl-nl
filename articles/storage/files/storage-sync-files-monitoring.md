@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1d7b29bbd508223888c6f205e25008c0b29fecea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903524"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922931"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -72,10 +72,12 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 | Scenario | De metrische waarde die voor de waarschuwing moet worden gebruikt |
 |-|-|
-| Status van server eindpunt in de portal = fout | Resultaat van synchronisatie sessie |
+| De status van het server eindpunt bevat een fout in de portal | Resultaat van synchronisatie sessie |
 | Bestanden kunnen niet worden gesynchroniseerd met een server of een eind punt in de Cloud | Bestanden die niet worden gesynchroniseerd |
 | De geregistreerde server kan niet communiceren met de opslag synchronisatie service | Online status van de server |
 | De grootte van het intrekken van Cloud lagen is 500GiB op een dag overschreden  | Grootte van intrekken Cloud lagen |
+
+Zie de sectie voor [beelden van waarschuwingen](#alert-examples) voor instructies over het maken van waarschuwingen voor deze scenario's.
 
 ## <a name="storage-sync-service"></a>Opslagsynchronisatieservice
 
@@ -110,7 +112,7 @@ Als u de status van de geregistreerde server, de status van de server eindpunt e
 
 ## <a name="windows-server"></a>Windows Server
 
-Op Windows Server kunt u Cloud lagen, geregistreerde servers en synchronisatie status weer geven.
+Op de Windows-Server waarop de Azure File Sync-agent is geïnstalleerd, kunt u Cloud lagen, geregistreerde servers en synchronisatie status weer geven.
 
 ### <a name="event-logs"></a>Gebeurtenislogboeken
 
@@ -162,6 +164,100 @@ De volgende prestatie meter items voor Azure File Sync zijn beschikbaar in prest
 | Operations\Downloaded-synchronisatie bestanden voor AFS-synchronisatie per seconde | Het aantal bestanden dat per seconde wordt gedownload. |
 | Operations\Uploaded-synchronisatie bestanden voor AFS-synchronisatie per seconde | Het aantal bestanden dat per seconde is geüpload. |
 | Bewerking van Operations\Total voor AFS-synchronisatie bestanden per seconde | Totaal aantal gesynchroniseerde bestanden (uploaden en downloaden). |
+
+## <a name="alert-examples"></a>Waarschuwings voorbeelden
+Deze sectie bevat enkele voor beelden van waarschuwingen voor Azure File Sync.
+
+  > [!Note]  
+  > Als u een waarschuwing maakt en er te veel ruis is, past u de drempel waarde en de logica van de waarschuwing aan.
+  
+### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Een waarschuwing maken als de eindpunt status van de server een fout in de portal weergeeft
+
+1. Ga in het **Azure Portal**naar de betreffende **opslag synchronisatie service**. 
+2. Ga naar de sectie **bewaking** en klik op **waarschuwingen**. 
+3. Klik op **+ nieuwe waarschuwings regel** om een nieuwe waarschuwings regel te maken. 
+4. Configureer de voor waarde door te klikken op **voor waarde selecteren**.
+5. Klik in de Blade **signaal logica configureren** op **synchronisatie sessie resultaat** onder signaal naam.  
+6. Selecteer de volgende dimensie configuratie: 
+    - Dimensie naam: **naam van server eindpunt**  
+    - And**=** 
+    - Dimensie waarden: **alle huidige en toekomstige waarden**  
+7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
+    - Drempel ingesteld op **statisch** 
+    - Operator: **kleiner dan** 
+    - Aggregatie type: **maximum**  
+    - Drempel waarde: **1** 
+    - Geëvalueerd op basis van: aggregatie granulatie = **24 uur** | Frequentie van evaluatie = **elk uur** 
+    - Klik op **gereed.** 
+8. Klik op **actie groep selecteren** om een actie groep (E-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+9. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+10. Klik op **Waarschuwingsregel maken**. 
+
+### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>Een waarschuwing maken als bestanden niet kunnen worden gesynchroniseerd met een server of een eind punt in de Cloud
+
+1. Ga in het **Azure Portal**naar de betreffende **opslag synchronisatie service**. 
+2. Ga naar de sectie **bewaking** en klik op **waarschuwingen**. 
+3. Klik op **+ nieuwe waarschuwings regel** om een nieuwe waarschuwings regel te maken. 
+4. Configureer de voor waarde door te klikken op **voor waarde selecteren**.
+5. Klik in de Blade **signaal logica configureren** op **bestanden niet synchroniseren** onder signaal naam.  
+6. Selecteer de volgende dimensie configuratie: 
+     - Dimensie naam: **naam van server eindpunt**  
+     - And**=** 
+     - Dimensie waarden: **alle huidige en toekomstige waarden**  
+7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
+     - Drempel ingesteld op **statisch** 
+     - Operator: **groter dan** 
+     - Aggregatie type: **totaal**  
+     - Drempel waarde: **100** 
+     - Geëvalueerd op basis van: aggregatie granulatie = **5 minuten** | Evaluatie frequentie = **elke 5 minuten** 
+     - Klik op **gereed.** 
+8. Klik op **actie groep selecteren** om een actie groep (E-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+9. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+10. Klik op **Waarschuwingsregel maken**. 
+
+### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>Een waarschuwing maken als een geregistreerde server niet kan communiceren met de opslag synchronisatie service
+
+1. Ga in het **Azure Portal**naar de betreffende **opslag synchronisatie service**. 
+2. Ga naar de sectie **bewaking** en klik op **waarschuwingen**. 
+3. Klik op **+ nieuwe waarschuwings regel** om een nieuwe waarschuwings regel te maken. 
+4. Configureer de voor waarde door te klikken op **voor waarde selecteren**.
+5. Klik in de Blade **signaal logica configureren** op **server online status** onder signaal naam.  
+6. Selecteer de volgende dimensie configuratie: 
+     - Dimensie naam: **Server naam**  
+     - And**=** 
+     - Dimensie waarden: **alle huidige en toekomstige waarden**  
+7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
+     - Drempel ingesteld op **statisch** 
+     - Operator: **kleiner dan** 
+     - Aggregatie type: **maximum**  
+     - Drempel waarde (in bytes): **1** 
+     - Geëvalueerd op basis van: aggregatie granulatie = **1 uur** | Evaluatie frequentie = **elke 30 minuten** 
+     - Klik op **gereed.** 
+8. Klik op **actie groep selecteren** om een actie groep (E-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+9. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+10. Klik op **Waarschuwingsregel maken**. 
+
+### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>Een waarschuwing maken als de intrek grootte van de Cloud lagen 500GiB op een dag is overschreden
+
+1. Ga in het **Azure Portal**naar de betreffende **opslag synchronisatie service**. 
+2. Ga naar de sectie **bewaking** en klik op **waarschuwingen**. 
+3. Klik op **+ nieuwe waarschuwings regel** om een nieuwe waarschuwings regel te maken. 
+4. Configureer de voor waarde door te klikken op **voor waarde selecteren**.
+5. Klik in de Blade **signaal logica configureren** op **Cloud lagen terughalen grootte** onder signaal naam.  
+6. Selecteer de volgende dimensie configuratie: 
+     - Dimensie naam: **Server naam**  
+     - And**=** 
+     - Dimensie waarden: **alle huidige en toekomstige waarden**  
+7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
+     - Drempel ingesteld op **statisch** 
+     - Operator: **groter dan** 
+     - Aggregatie type: **totaal**  
+     - Drempel waarde (in bytes): **67108864000** 
+     - Geëvalueerd op basis van: aggregatie granulatie = **24 uur** | Frequentie van evaluatie = **elk uur** 
+    - Klik op **gereed.** 
+8. Klik op **actie groep selecteren** om een actie groep (E-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+9. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+10. Klik op **Waarschuwingsregel maken**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905717"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923608"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>De status van de Import/Export-taken in Azure bekijken
 
@@ -73,7 +73,7 @@ De hoeveelheid tijd die nodig is voor het verwerken van een import/export-taak i
 -  Taak type en grootte van de gegevens die worden gekopieerd
 -  Aantal schijven in een taak. 
 
-Import/export-service heeft geen SLA, maar de service streeft naar het volt ooien van de kopie in 7 tot 10 dagen nadat de schijven zijn ontvangen. Naast de status die in azure Portal is gepubliceerd, kunnen REST Api's worden gebruikt om de voortgang van de taak bij te houden. De para meter percentage voltooid in de API-aanroep van de [lijst Jobs](/previous-versions/azure/dn529083(v=azure.100)) bevat de voortgang van het percentage kopiëren.
+Import/export-service heeft geen SLA, maar de service streeft naar het volt ooien van de kopie in 7 tot 10 dagen nadat de schijven zijn ontvangen. Naast de status die op Azure Portal is gepost, kunnen REST-Api's worden gebruikt om de voortgang van de taak bij te houden. De para meter percentage voltooid in de API-aanroep van de [lijst Jobs](/previous-versions/azure/dn529083(v=azure.100)) bevat de voortgang van het percentage kopiëren.
 
 
 ## <a name="next-steps"></a>Volgende stappen

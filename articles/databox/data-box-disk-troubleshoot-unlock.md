@@ -1,6 +1,6 @@
 ---
 title: Problemen met het ontgrendelen van schijven Azure Data Box Disk oplossen | Microsoft Docs
-description: Hierin wordt beschreven hoe u problemen in Azure Data Box Disk oplost.
+description: Meer informatie over de werk stromen voor het oplossen van problemen met het hulp programma voor ontgrendelen met Azure Data Box Disk. Raadpleeg Data Box Disk fouten van het hulp programma voor ontgrendelen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 61f6da7df09f9569af1746563dc3be2922f4e2c1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833564"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925558"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Problemen met het ontgrendelen van schijven oplossen in Azure Data Box Disk
 

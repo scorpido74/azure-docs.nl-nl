@@ -1,6 +1,6 @@
 ---
 title: Bekabelingsopties van Azure Data Box| Microsoft Docs
-description: Hier worden de diverse bekabelingsopties voor uw Azure Data Box beschreven.
+description: Meer informatie over de verschillende manieren om uw Azure Data Box te bekabelen voor gegevens overdracht met behulp van beheer poort of gegevens poort.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920634"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925206"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Bekabelingsopties voor uw Azure Data Box
 

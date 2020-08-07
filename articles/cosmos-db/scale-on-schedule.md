@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503732"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923652"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Cosmos DB door Voer schalen met behulp van Azure Functions timer trigger
 
@@ -23,7 +23,7 @@ U kunt de door Voer instellen via [Azure Resource Manager sjablonen](resource-ma
 
 Om het proces voor het schalen van Azure Cosmos DB op basis van een planning te vereenvoudigen, hebben we een voorbeeld project gemaakt met de naam [scheduler Azure Cosmos-door Voer](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler). Dit project is een Azure Functions-app met twee timer triggers: ' ScaleUpTrigger ' en ' ScaleDownTrigger '. De triggers voeren een Power shell-script uit waarmee de door Voer voor elke resource wordt ingesteld, zoals gedefinieerd in het `resources.json` bestand in elke trigger. De ScaleUpTrigger is geconfigureerd om te worden uitgevoerd op 8 uur UTC en de ScaleDownTrigger is zo geconfigureerd dat deze wordt uitgevoerd op 6 uur UTC en deze tijden kunnen eenvoudig worden bijgewerkt in het `function.json` bestand voor elke trigger.
 
-U kunt dit project lokaal klonen, wijzigen om de Azure Cosmos DB resources op te geven die u omhoog en omlaag wilt schalen en het schema dat moet worden uitgevoerd. Later kunt u deze implementeren in een Azure-abonnement en deze beveiligen met behulp van de beheerde service-identiteit met [op rollen gebaseerde Access Control](role-based-access-control.md) (RBAC)-machtigingen met de rol ' Azure Cosmos DB operator ' om de door Voer in te stellen voor uw Azure Cosmos-accounts.
+U kunt dit project lokaal klonen, wijzigen om de Azure Cosmos DB resources op te geven die u omhoog en omlaag wilt schalen en het schema dat moet worden uitgevoerd. Later kunt u de app implementeren in een Azure-abonnement en deze beveiligen met behulp van de beheerde service-identiteit met [Azure RBAC-machtigingen (op rollen gebaseerd toegangs beheer)](role-based-access-control.md) met de rol ' Azure Cosmos DB operator ' om de door Voer in te stellen voor uw Azure Cosmos-accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
 

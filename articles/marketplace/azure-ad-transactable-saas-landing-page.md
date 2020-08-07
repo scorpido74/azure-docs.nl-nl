@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328314"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921263"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw voor transactable SaaS-aanbieding in de commerciële Marketplace
 
@@ -56,7 +56,7 @@ Volg de instructies voor het [registreren van een nieuwe toepassing](https://doc
 
 Als u van plan bent om de Microsoft Graph-API te doorzoeken, [moet u uw nieuwe toepassing configureren voor toegang tot Web-api's](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Wanneer u de API-machtigingen voor deze toepassing selecteert, is de standaard instelling **gebruiker. Read** voldoende voor het verzamelen van basis informatie over de koper om het voorbereidings proces soepel en automatisch uit te voeren. U kunt geen API-machtigingen aanvragen waaraan **beheerders toestemming**wordt gevraagd, omdat alle niet-beheerders gebruikers de landings pagina niet kunnen bezoeken.
 
-Als u verhoogde machtigingen nodig hebt als onderdeel van het voorbereidings-of inrichtings proces, kunt u overwegen om de functionaliteit voor [incrementele toestemming](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis) van Azure ad te gebruiken, zodat alle kopers die vanaf de Marketplace worden verzonden, in eerste instantie met de landings pagina kunnen communiceren.
+Als u verhoogde machtigingen nodig hebt als onderdeel van het voorbereidings-of inrichtings proces, kunt u overwegen om de functionaliteit voor [incrementele toestemming](https://aka.ms/incremental-consent) van Azure ad te gebruiken, zodat alle kopers die vanaf de Marketplace worden verzonden, in eerste instantie met de landings pagina kunnen communiceren.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Een voor beeld van een code gebruiken als uitgangs punt
 
@@ -90,16 +90,7 @@ Als u uw toepassing wilt verifiëren met de SaaS-fulfillment-Api's, hebt u een t
 
 ### <a name="call-the-resolve-endpoint"></a>Het oplossen van het eind punt aanroepen
 
-De SaaS-fulfillment-Api's implementeren het [omzettings](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) eindpunt dat kan worden aangeroepen om de geldigheid van het Marketplace-token te bevestigen en om informatie over het abonnement te retour neren, met inbegrip van de waarden die in deze tabel worden weer gegeven.
-
-| Waarde | Beschrijving |
-| ------------ | ------------- |
-| Id | De unieke id (GUID) voor dit abonnement. U hebt deze waarde nodig in toekomstige aanroepen van de SaaS-fulfillment-Api's. |
-| subscriptionName | De naam van het abonnement dat is ingesteld toen de aanbieding werd toegevoegd aan het partner centrum. |
-| offerId | Id voor de specifieke aanbieding (ingesteld wanneer de aanbieding is toegevoegd). |
-| planId | Id voor het specifieke abonnement voor de aanbieding (ingesteld wanneer de aanbieding is toegevoegd). |
-| Aantal | Hoeveelheids invoer door de koper tijdens de aankoop. |
-|||
+De SaaS-fulfillment-Api's implementeren het [omzettings](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) eindpunt dat kan worden aangeroepen om de geldigheid van het Marketplace-token te bevestigen en om informatie over het abonnement te retour neren.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Lees de informatie van claims die zijn gecodeerd in het ID-token
 
@@ -110,7 +101,7 @@ Als onderdeel van de [OpenID Connect Connect](https://docs.microsoft.com/azure/a
 | aud | Beoogde doel groep voor dit token. In dit geval moet deze overeenkomen met uw toepassings-ID en worden gevalideerd. |
 | preferred_username | Primaire gebruikers naam van de bezochte gebruiker. Dit kan een e-mail adres, telefoon nummer of andere id zijn. |
 | e-mail | E-mail adres van de gebruiker. Houd er rekening mee dat dit veld mogelijk leeg is. |
-| name | Lees bare waarde waarmee het onderwerp van het token wordt geïdentificeerd. In dit geval is de naam van de koper. |
+| naam | Lees bare waarde waarmee het onderwerp van het token wordt geïdentificeerd. In dit geval is de naam van de koper. |
 | nogmaals | Id in het micro soft-identiteits systeem waarmee de gebruiker in verschillende toepassingen kan worden geïdentificeerd. Microsoft Graph wordt deze waarde geretourneerd als de eigenschap ID voor een gegeven gebruikers account. |
 | TID | De id die de Azure AD-Tenant vertegenwoordigt waarvan de koper afkomstig is. In het geval van een MSA-identiteit is dit altijd ``9188040d-6c67-4c5b-b112-36a304b66dad`` . Zie de opmerking in de volgende sectie: de Microsoft Graph-API gebruiken voor meer informatie. |
 | sub | De unieke id van de gebruiker in deze specifieke toepassing. |

@@ -1,6 +1,6 @@
 ---
 title: Uw Azure Stack edge-apparaat retour neren | Microsoft Docs
-description: Hierin wordt beschreven hoe u het Azure Stack edge-apparaat retourneert.
+description: Meer informatie over het wissen van de gegevens en het retour neren van uw Azure Stack edge-apparaat en het verwijderen van de bron die aan het apparaat is gekoppeld.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283857"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923948"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren
 
@@ -107,7 +107,7 @@ Als u een ophaling wilt plannen, voert u de volgende stappen uit.
 5. Breng het verzend label op dat u hebt ontvangen van Azure op het pakket.
 6. Maak een afspraak met een transportbedrijf voor het ophalen van de zending. Als u het apparaat in ons retourneert, kan uw provider UPS of FedEx zijn. Een ophaling plannen met UPS:
 
-    1. Bel met UPS (gratis land-/regiospecifiek nummer).
+    1. Bel met UPS in de buurt (gratis land-/regiospecifiek nummer).
     2. Neem in uw gesprek het tracerings nummer van omgekeerde verzen ding op zoals op het afgedrukte label wordt weer gegeven.
     3. Als het tracking nummer niet wordt vermeld, moet u een extra kosten betalen tijdens het ophalen.
 

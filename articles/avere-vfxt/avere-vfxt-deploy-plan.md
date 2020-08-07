@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754387"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922673"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Uw Avere vFXT-systeem plannen
 
@@ -75,8 +75,8 @@ Volg deze richt lijnen bij het plannen van de netwerk infrastructuur van uw aver
   |----------|-----------|----------|
   | Resourcegroep | Ja, indien leeg | Moet leeg zijn|
   | Storage-account | **Ja** als er verbinding wordt gemaakt met een bestaande BLOB-container na het maken van het cluster <br/>  **Nee** , als u een nieuwe BLOB-container maakt tijdens het maken van het cluster | Bestaande BLOB-container moet leeg zijn <br/> &nbsp; |
-  | Virtueel netwerk | Yes | Moet een service-eind punt voor opslag bevatten als er een nieuwe Azure Blob-container wordt gemaakt |
-  | Subnet | Yes | Kan geen andere resources bevatten |
+  | Virtueel netwerk | Ja | Moet een service-eind punt voor opslag bevatten als er een nieuwe Azure Blob-container wordt gemaakt |
+  | Subnet | Ja | Kan geen andere resources bevatten |
 
 ## <a name="ip-address-requirements"></a>Vereisten voor IP-adressen
 
@@ -166,7 +166,7 @@ Wanneer u het cluster maakt, kunt u kiezen of u een openbaar IP-adres op de clus
 
 ## <a name="vm-access-roles"></a>VM-toegangs rollen
 
-Azure gebruikt op [rollen gebaseerd toegangs beheer](../role-based-access-control/index.yml) (RBAC) om de cluster-vm's te autoriseren om bepaalde taken uit te voeren. Zo moet de cluster controller autorisatie hebben om de virtuele machines van het cluster knooppunt te maken en te configureren. Cluster knooppunten moeten IP-adressen toewijzen of opnieuw toewijzen aan andere cluster knooppunten.
+Azure maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/index.yml) om de cluster-vm's te machtigen om bepaalde taken uit te voeren. Zo moet de cluster controller autorisatie hebben om de virtuele machines van het cluster knooppunt te maken en te configureren. Cluster knooppunten moeten IP-adressen toewijzen of opnieuw toewijzen aan andere cluster knooppunten.
 
 Er worden twee ingebouwde Azure-rollen gebruikt voor de virtuele avere-machines van vFXT:
 

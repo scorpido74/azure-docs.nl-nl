@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058105"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923727"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
@@ -28,8 +28,8 @@ Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of all
 | **Primaire doel groep** | Alleen geschikt voor Cloud-en hybride organisaties. |
 |   | Van toepassing op alle gebruikers in een organisatie |
 | **Apparaateigendom** | Organisatie |
-| **Besturings systemen** | Alle Windows 10-apparaten |
-|   | [Windows Server 2019 virtual machines uitgevoerd in azure](howto-vm-sign-in-azure-ad-windows.md) (Server Core wordt niet ondersteund) |
+| **Besturings systemen** | Alle Windows 10-apparaten behalve Windows 10 Home |
+|   | [Virtuele Windows Server 2019-machines die worden uitgevoerd in Azure](howto-vm-sign-in-azure-ad-windows.md) (serverkern wordt niet ondersteund) |
 | **Inrichten** | Self-service: Windows OOBE of instellingen |
 |   | Bulkinschrijving |
 |   | Windows Autopilot |
@@ -62,7 +62,7 @@ Hoewel Azure AD-koppeling voornamelijk is bedoeld voor organisaties die geen on-
 - U een groep gebruikers in Azure AD wilt beheren in plaats van in Active Directory. Dit scenario kan bijvoorbeeld van toepassing zijn op seizoen arbeiders, aannemers of studenten.
 - U koppelingsmogelijkheden wilt bieden aan medewerkers in externe filialen met beperkte on-premises infrastructuur.
 
-U kunt Azure AD-gekoppelde apparaten configureren voor Windows 10-apparaten.
+U kunt apparaten die zijn toegevoegd aan Azure AD configureren voor alle Windows 10-apparaten, met uitzonde ring van Windows 10 Home.
 
 Het doel van Azure AD-gekoppelde apparaten is vereenvoudiging van:
 

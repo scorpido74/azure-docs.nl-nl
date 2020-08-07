@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169609"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927433"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Instances implementeren vanuit Azure Container Registry
 
@@ -25,7 +25,7 @@ ms.locfileid: "86169609"
 
 ## <a name="configure-registry-authentication"></a>Registerverificatie configureren
 
-In een productie scenario waarbij u toegang krijgt tot ' headless ' Services en toepassingen, is het raadzaam om register toegang te configureren met behulp van een [Service-Principal](../container-registry/container-registry-auth-service-principal.md). Met een Service-Principal kunt u [toegangs beheer op basis van rollen](../container-registry/container-registry-roles.md) bieden voor uw container installatie kopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
+In een productie scenario waarbij u toegang krijgt tot ' headless ' Services en toepassingen, is het raadzaam om register toegang te configureren met behulp van een [Service-Principal](../container-registry/container-registry-auth-service-principal.md). Met een Service-Principal kunt u op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../container-registry/container-registry-roles.md) bieden voor uw container installatie kopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
 
 Azure Container Registry biedt aanvullende [verificatie opties](../container-registry/container-registry-authentication.md).
 
@@ -83,8 +83,8 @@ az keyvault secret set \
 
 U hebt een Azure-sleutelkluis gemaakt en er twee geheimen in opgeslagen:
 
-* `$ACR_NAME-pull-usr`: de service principal-ID, voor gebruik als de **gebruikersnaam** van het containerregister.
-* `$ACR_NAME-pull-pwd`: het service principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
+* `$ACR_NAME-pull-usr`: De service-principal-id, voor gebruik als de **gebruikersnaam** van het containerregister.
+* `$ACR_NAME-pull-pwd`: Het service-principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
 
 U kunt nu op naam naar deze geheime gegevens verwijzen wanneer u of uw toepassingen en services installatiekopieën uit het register halen.
 
@@ -98,7 +98,7 @@ Haal eerst de naam van de aanmeldings server van het REGI ster op met behulp van
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
 ```
 
-Voer de volgende [az container create][az-container-create]-opdracht in om een containerinstantie te implementeren. De opdracht gebruikt de referenties van de service-principal die zijn opgeslagen in Azure Key Vault om te verifiëren bij het container register en gaat ervan uit dat u de installatie kopie van [ACI-HelloWorld](container-instances-quickstart.md) eerder hebt gepusht naar uw REGI ster. Werk de `--image` waarde bij als u een andere installatie kopie wilt gebruiken uit het REGI ster.
+Voer de volgende op [az container create][az-container-create] uit om een containerinstantie te implementeren. De opdracht gebruikt de referenties van de service-principal die zijn opgeslagen in Azure Key Vault om te verifiëren bij het container register en gaat ervan uit dat u de installatie kopie van [ACI-HelloWorld](container-instances-quickstart.md) eerder hebt gepusht naar uw REGI ster. Werk de `--image` waarde bij als u een andere installatie kopie wilt gebruiken uit het REGI ster.
 
 ```azurecli
 az container create \

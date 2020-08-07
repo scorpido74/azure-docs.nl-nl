@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: d360b890023c1a14f80d9fc8efc703abd7544710
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328330"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921381"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw gratis of proef SaaS-aanbieding in de commerciële Marketplace
 
@@ -53,7 +53,7 @@ Volg de instructies voor het [registreren van een nieuwe toepassing](https://doc
 
 Als u van plan bent om de Microsoft Graph-API te doorzoeken, [moet u uw nieuwe toepassing configureren voor toegang tot Web-api's](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Wanneer u de API-machtigingen voor deze toepassing selecteert, is de standaard instelling **gebruiker. Read** voldoende voor het verzamelen van basis informatie over de gebruiker om het voorbereidings proces soepel en automatisch uit te voeren. U kunt geen API-machtigingen aanvragen waaraan **beheerders toestemming**wordt gevraagd, omdat alle niet-beheerders gebruikers de landings pagina niet kunnen bezoeken.
 
-Als u verhoogde machtigingen nodig hebt als onderdeel van het voorbereidings-of inrichtings proces, kunt u overwegen om de functionaliteit voor [incrementele toestemming](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#incremental-and-dynamic-consent) van Azure ad te gebruiken, zodat alle gebruikers die vanaf de Marketplace worden verzonden, in eerste instantie met de landings pagina kunnen communiceren.
+Als u verhoogde machtigingen nodig hebt als onderdeel van het voorbereidings-of inrichtings proces, kunt u overwegen om de functionaliteit voor [incrementele toestemming](https://aka.ms/incremental-consent) van Azure ad te gebruiken, zodat alle gebruikers die vanaf de Marketplace worden verzonden, in eerste instantie met de landings pagina kunnen communiceren.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Een voor beeld van een code gebruiken als uitgangs punt
 
@@ -74,7 +74,7 @@ Als onderdeel van de [OpenID Connect Connect](https://docs.microsoft.com/azure/a
 | aud | Beoogde doel groep voor dit token. In dit geval moet deze overeenkomen met uw toepassings-ID en worden gevalideerd. |
 | preferred_username | Primaire gebruikers naam van de bezochte gebruiker. Dit kan een e-mail adres, telefoon nummer of andere id zijn. |
 | e-mail | E-mail adres van de gebruiker. Houd er rekening mee dat dit veld mogelijk leeg is. |
-| name | Lees bare waarde waarmee het onderwerp van het token wordt geïdentificeerd. In dit geval is de naam van de gebruiker. |
+| naam | Lees bare waarde waarmee het onderwerp van het token wordt geïdentificeerd. In dit geval is de naam van de gebruiker. |
 | nogmaals | Id in het micro soft-identiteits systeem waarmee de gebruiker in verschillende toepassingen kan worden geïdentificeerd. Microsoft Graph wordt deze waarde geretourneerd als de eigenschap ID voor een gegeven gebruikers account. |
 | TID | De id die de Azure AD-Tenant vertegenwoordigt waarvan de gebruiker afkomstig is. In het geval van een MSA-identiteit is dit altijd `9188040d-6c67-4c5b-b112-36a304b66dad` . Zie de opmerking in de volgende sectie: use Microsoft Graph API (Engelstalig) voor meer informatie. |
 | sub | De unieke id van de gebruiker in deze specifieke toepassing. |

@@ -12,17 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504064"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920119"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transactionele replicatie met Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Transactionele replicatie is een functie van Azure SQL Managed instance en SQL Server waarmee u gegevens kunt repliceren uit een tabel in Azure SQL Managed instance of een SQL Server-exemplaar naar tabellen die zijn geplaatst op externe data bases. Met deze functie kunt u meerdere tabellen in verschillende data bases synchroniseren.
+Transactionele replicatie is een functie van Azure SQL Managed instance en SQL Server waarmee u gegevens kunt repliceren uit een tabel in Azure SQL Managed instance of een SQL Server-exemplaar naar tabellen die zijn geplaatst op externe data bases. Met deze functie kunt u meerdere tabellen in verschillende data bases synchroniseren. 
+
+Transactionele replicatie is momenteel beschikbaar als open bare Preview voor SQL Managed instance. 
 
 ## <a name="overview"></a>Overzicht
 
@@ -197,7 +199,7 @@ Zie de volgende zelf studies voor meer informatie over het configureren van tran
 - [Maak een publicatie](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 - [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de server naam als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de data base in Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks**). )
 
-## <a name="see-also"></a>Zie tevens  
+## <a name="see-also"></a>Zie ook  
 
 - [Replicatie met een door SQL beheerd exemplaar en een failovergroep](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replicatie naar SQL Database](../database/replication-to-sql-database.md)

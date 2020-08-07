@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a3293cac15636ddf29df24cc1eff471aee25ec1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417001"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926532"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -306,7 +306,7 @@ Verkeersweergave prijzen zijn gebaseerd op het aantal gegevens punten dat wordt 
 
 Het gebruik van eind punten van meerdere abonnementen is niet mogelijk met Azure Web Apps. Voor Azure Web Apps is vereist dat alle aangepaste domein namen die worden gebruikt met Web Apps alleen worden gebruikt binnen één abonnement. Het is niet mogelijk om Web Apps te gebruiken uit meerdere abonnementen met dezelfde domein naam.
 
-Voor andere eindpunt typen is het mogelijk om Traffic Manager te gebruiken met eind punten van meer dan één abonnement. In Resource Manager kunnen eind punten van elk abonnement worden toegevoegd aan Traffic Manager, mits de persoon die het Traffic Manager profiel heeft geconfigureerd Lees toegang heeft tot het eind punt. Deze machtigingen kunnen worden verleend met [Azure Resource Manager op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/role-assignments-portal.md). Eind punten van andere abonnementen kunnen worden toegevoegd met behulp van [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) of de [Azure cli](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
+Voor andere eindpunt typen is het mogelijk om Traffic Manager te gebruiken met eind punten van meer dan één abonnement. In Resource Manager kunnen eind punten van elk abonnement worden toegevoegd aan Traffic Manager, mits de persoon die het Traffic Manager profiel heeft geconfigureerd Lees toegang heeft tot het eind punt. Deze machtigingen kunnen worden verleend met behulp [van toegangs beheer op basis van rollen (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Eind punten van andere abonnementen kunnen worden toegevoegd met behulp van [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) of de [Azure cli](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kan ik Traffic Manager gebruiken met staging-sleuven van Cloud service?
 
@@ -497,7 +497,7 @@ Het bovenliggende profiel voert niet rechtstreeks status controles uit op het ki
 
 In de volgende tabel wordt het gedrag van Traffic Manager status controles voor een genest eind punt beschreven.
 
-| Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Notities |
+| Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
 | --- | --- | --- |
 | Uitgeschakeld. Het onderliggende profiel is uitgeschakeld. |Gestopt |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |

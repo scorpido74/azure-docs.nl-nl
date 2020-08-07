@@ -3,14 +3,14 @@ title: SQL Server data bases herstellen op een virtuele Azure-machine
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054577"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921143"
 ---
-# <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server data bases herstellen op virtuele Azure-machines
+# <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-databases herstellen in Azure-VM's
 
 In dit artikel wordt beschreven hoe u een SQL Server-Data Base die wordt uitgevoerd op een virtuele machine van Azure (VM) herstelt waarvan de [Azure backup](backup-overview.md) -service een back-up heeft gemaakt naar een Azure backup Recovery Services kluis.
 
@@ -30,6 +30,7 @@ Let op het volgende voordat u een Data Base herstelt:
 - U kunt de database herstellen naar een exemplaar van SQL Server in dezelfde Azure-regio.
 - De doel server moet zijn geregistreerd bij dezelfde kluis als de bron.
 - Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
+- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) ingeschakelde data bases moeten worden hersteld met de optie [herstellen als bestanden](#restore-as-files) .
 - Voordat u de data base ' Master ' herstelt, start u het SQL Server-exemplaar in de modus voor één gebruiker met behulp van de opstart optie **-m AzureWorkloadBackup**.
   - De waarde voor **-m** is de naam van de client.
   - Alleen de opgegeven client naam kan de verbinding openen.

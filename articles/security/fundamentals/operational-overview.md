@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835915"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925308"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
@@ -68,7 +68,7 @@ Azure AD omvat ook een volledige reeks [mogelijkheden voor identiteits beheer](/
 - [Wachtwoordbeheer via selfservice](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self-service groeps beheer](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Privileged account management](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Op rollen gebaseerd toegangsbeheer](/azure/role-based-access-control/overview)
+- [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](/azure/role-based-access-control/overview)
 - [Bewaking van toepassings gebruik](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Uitgebreide controle](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Beveiligings bewaking en waarschuwingen](/azure/operations-management-suite/oms-security-responding-alerts)

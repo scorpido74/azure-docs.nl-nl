@@ -1,6 +1,6 @@
 ---
 title: Problemen in Azure Data Box Disk oplossen | Microsoft Docs
-description: Hierin wordt beschreven hoe u problemen in Azure Data Box Disk oplost.
+description: Informatie over het gebruik van Logboeken voor het oplossen van problemen met validatie problemen die kunnen optreden wanneer u Azure Data Box Disk implementeert.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564994"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925539"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Logboeken gebruiken om problemen met validatie in Azure Data Box Disk op te lossen
 
@@ -73,7 +73,7 @@ Als u meerdere sessies voor validatie uitvoert, wordt er per sessie één fouten
 
 De fouten die zijn opgetreden in de *error.xml* met de bijbehorende aanbevolen acties, worden in de volgende tabel samenvatten.
 
-| Foutcode| Description                       | Aanbevolen acties               |
+| Foutcode| Beschrijving                       | Aanbevolen acties               |
 |------------|--------------------------|-----------------------------------|
 | `None` | De gegevens zijn gevalideerd. | Geen actie vereist. |
 | `InvalidXmlCharsInPath` |Kan geen manifest bestand maken omdat het bestandspad ongeldige tekens bevat. | Verwijder deze tekens om door te gaan.  |

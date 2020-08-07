@@ -3,12 +3,12 @@ title: Een back-up van SQL Server-databases maken in Azure
 description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Server naar Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: df8543d7f083dd2bf9d2421b4808de5b60a51e30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28644065619771069e556c941d2c5a77626e1ba6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513775"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922894"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -40,7 +40,7 @@ Deze oplossing maakt gebruik van de SQL Native Api's om back-ups te maken van uw
 Voordat u begint, controleert u het onderstaande:
 
 1. Zorg ervoor dat er een SQL Server-exemplaar wordt uitgevoerd in Azure. U kunt [snel een SQL Server-exemplaar maken](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md) in de marketplace.
-2. Bekijk de ondersteuning voor de [functie](sql-support-matrix.md#feature-consideration-and-limitations) en het [scenario](sql-support-matrix.md#scenario-support).
+2. Bekijk de [functie overwegingen](sql-support-matrix.md#feature-considerations-and-limitations) en [scenario ondersteuning](sql-support-matrix.md#scenario-support).
 3. [Lees de veelgestelde vragen](faq-backup-sql-server.md) over dit scenario.
 
 ## <a name="set-vm-permissions"></a>VM-machtigingen instellen

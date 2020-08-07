@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901739"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927212"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -305,27 +305,27 @@ U kunt dit probleem oplossen door de register waarde **DirectoryCacheEntrySizeMa
  
 U kunt dit bijvoorbeeld instellen op 0x100000 en zien of de prestaties beter worden.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fout AadDsTenantNotFound bij het inschakelen van de verificatie van de Azure Active Directory Domain Service (AAD DS) voor Azure Files ' kan geen actieve tenants vinden met de Tenant-id Aad-Tenant-id '
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fout AadDsTenantNotFound bij het inschakelen van de verificatie van Azure Active Directory Domain Service (Azure AD DS) voor Azure Files ' kan geen actieve tenants vinden met de Tenant-ID Aad-Tenant-id '
 
 ### <a name="cause"></a>Oorzaak
 
-Fout AadDsTenantNotFound treedt op wanneer u probeert [Azure Active Directory Domain Services-verificatie (Azure AD DS) in azure files in te scha kelen](storage-files-identity-auth-active-directory-domain-service-enable.md) op een opslag account waarin Aad [-domein service (Aad DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) niet is gemaakt op de Aad-Tenant van het gekoppelde abonnement.  
+Fout AadDsTenantNotFound treedt op wanneer u probeert [Azure Active Directory Domain Services-verificatie (azure AD DS) in azure files in te scha kelen](storage-files-identity-auth-active-directory-domain-service-enable.md) op een opslag account waarin Azure [ad Domain Service (Azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) niet is gemaakt op de Azure AD-Tenant van het gekoppelde abonnement.  
 
 ### <a name="solution"></a>Oplossing
 
-Schakel AAD DS in op de AAD-Tenant van het abonnement waarop uw opslag account is geïmplementeerd. U hebt beheerders bevoegdheden van de AAD-Tenant nodig om een beheerd domein te maken. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Schakel Azure AD DS in op de Azure AD-Tenant van het abonnement waarop uw opslag account is geïmplementeerd. U hebt beheerders bevoegdheden nodig van de Azure AD-Tenant om een beheerd domein te maken. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Fout: systeem fout 1359 is opgetreden. Er is een interne fout ontvangen over SMB-toegang tot bestands shares waarvoor AAD DS-verificatie (Azure Active Directory Domain Service) is ingeschakeld
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Fout: systeem fout 1359 is opgetreden. Er is een interne fout ontvangen over SMB-toegang tot bestands shares met Azure Active Directory Domain Service (Azure AD DS)-verificatie ingeschakeld
 
 ### <a name="cause"></a>Oorzaak
 
-Fout: systeem fout 1359 is opgetreden. Er treedt een interne fout op wanneer u verbinding probeert te maken met uw bestands share waarbij AAD DS-verificatie is ingeschakeld voor een AAD DS met domein-DNS-naam, beginnend met een numeriek teken. Als de DNS-naam van uw AAD DS-domein bijvoorbeeld ' 1domain ' is, krijgt u deze fout melding wanneer u probeert de bestands share te koppelen aan de hand van AAD-referenties. 
+Fout: systeem fout 1359 is opgetreden. Er treedt een interne fout op wanneer u verbinding probeert te maken met uw bestands share met Azure AD DS authenticatie is ingeschakeld voor een Azure-AD DS met een domein-DNS-naam die begint met een numeriek teken. Als de DNS-naam van uw Azure AD DS domein bijvoorbeeld ' 1domain ' is, krijgt u deze fout melding wanneer u probeert de bestands share te koppelen met behulp van Azure AD-referenties. 
 
 ### <a name="solution"></a>Oplossing
 
-Op dit moment kunt u overwegen om uw AAD DS opnieuw te implementeren met een nieuwe DNS-domein naam die van toepassing is op de volgende regels:
+U kunt op dit moment overwegen uw Azure-AD DS opnieuw te implementeren met behulp van een nieuwe DNS-naam voor het domein die van toepassing is op de volgende regels:
 - Namen mogen niet beginnen met een numeriek teken.
 - Namen moeten tussen de 3 en 63 tekens lang zijn.
 
@@ -350,7 +350,7 @@ De cmdlet voert deze controles hieronder uit, en biedt richt lijnen voor fouten:
 4. CheckGetKerberosTicket: er wordt geprobeerd een Kerberos-ticket op te halen om verbinding te maken met het opslag account 
 5. CheckADObjectPasswordIsCorrect: Zorg ervoor dat het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel kerb1 of kerb2 van het opslag account.
 6. CheckSidHasAadUser: Controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD. Als u wilt controleren of een specifieke AD-gebruiker is gesynchroniseerd met Azure AD, kunt u de-gebruikers naam en-domein opgeven in de invoer parameters.
-7. CheckAadUserHasSid: Controleer of een Azure AD-gebruiker een SID heeft in AD. deze controle vereist dat gebruiker de object-id van de Azure AD-gebruiker met para meter-ObjectId opgeeft. 
+7. CheckAadUserHasSid: Controleer of een Azure AD-gebruiker een SID heeft in AD. deze controle vereist dat gebruiker de object-ID van de Azure AD-gebruiker met para meter-ObjectId opgeeft. 
 8. CheckStorageAccountDomainJoined: Controleer de eigenschappen van het opslag account om te zien of AD-verificatie is ingeschakeld en of de AD-eigenschappen van het account zijn ingevuld.
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Kan de machtigingen voor mappen en bestands niveau (Windows-Acl's) niet configureren met Windows bestanden Verkenner
