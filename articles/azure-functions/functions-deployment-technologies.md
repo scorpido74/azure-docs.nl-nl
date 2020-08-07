@@ -4,16 +4,30 @@ description: Meer informatie over de verschillende manieren waarop u code kunt i
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562936"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905122"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
-U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions project code te implementeren in Azure. In dit artikel vindt u een limitatieve lijst van deze technologieën, waarin wordt beschreven welke technologieën beschikbaar zijn voor welke functies van functions, wat er gebeurt wanneer u elke methode gebruikt en aanbevelingen biedt voor de beste methode voor gebruik in verschillende scenario's. De verschillende hulpprogram ma's die ondersteuning bieden voor de implementatie van Azure Functions, zijn afgestemd op de juiste technologie op basis van hun context. Over het algemeen is zip-implementatie de aanbevolen implementatie technologie voor Azure Functions.
+U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions project code te implementeren in Azure. Dit artikel bevat een overzicht van de implementatie methoden die voor u beschikbaar zijn en aanbevelingen voor de beste manier om te gebruiken in verschillende scenario's. Het bevat ook een volledig overzicht van de essentiële informatie over de implementatie technologieën van underlyng. 
+
+## <a name="deployment-methods"></a>Implementatie methoden
+
+De implementatie technologie die u gebruikt om code naar Azure te publiceren, wordt doorgaans bepaald door de manier waarop u uw app publiceert. De juiste implementatie methode wordt bepaald aan de hand van specifieke behoeften en het punt in de ontwikkelings cyclus. Tijdens het ontwikkelen en testen kunt u bijvoorbeeld rechtstreeks vanuit uw ontwikkel programma implementeren, zoals Visual Studio code. Wanneer uw app in productie is genomen, is het waarschijnlijker dat u niet doorlopend publiceert vanuit broncode beheer of met behulp van een automatische publicatie pijplijn, die aanvullende validatie en tests bevat.  
+
+In de volgende tabel worden de beschik bare implementatie methoden voor uw functie project beschreven.
+
+| Implementatie &nbsp; type | Methoden | Beste voor... |
+| -- | -- | -- |
+| Op basis van hulpprogram ma's | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; code &nbsp; Publish](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio publiceren](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Basis Hulpprogramma's publiceren](functions-run-local.md#publish) | Implementaties tijdens de ontwikkeling en andere implementaties van AD-Hock. Implementaties worden lokaal beheerd door het hulp programma. | 
+| App Service beheerd| &bull;&nbsp;[Implementatie &nbsp; centrum &nbsp; (CI/cd)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Container &nbsp; implementaties](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Continue implementatie (CI/CD) van broncode beheer of vanuit een container register. Implementaties worden beheerd door het App Service platform (kudu).|
+| Externe pijp lijnen|&bull;&nbsp;[DevOps-pijp lijnen](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-acties](functions-how-to-github-actions.md) | Productie-en DevOps-pijp lijnen die extra validatie, testen en andere acties omvatten, worden uitgevoerd als onderdeel van een geautomatiseerde implementatie. Implementaties worden beheerd door de pijp lijn. |
+
+Hoewel de implementaties van specifieke functies gebruikmaken van de beste technologie op basis van hun context, zijn de meeste implementatie methoden gebaseerd op de [zip-implementatie](#zip-deploy).
 
 ## <a name="deployment-technology-availability"></a>Beschik baarheid implementatie technologie
 

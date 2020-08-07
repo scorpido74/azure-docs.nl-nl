@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: how-to, contperfq4, devx-track-python
+ms.openlocfilehash: 9d49ea99b97411e15d3f264057c865219e4d63c4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420529"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853497"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ U kunt ook [persoonlijke Azure-koppelingen inschakelen](how-to-configure-private
 > [!TIP]
 > U kunt een virtueel netwerk en een persoonlijke koppeling samen combi neren om de communicatie tussen uw werk ruimte en andere Azure-resources te beveiligen. Voor sommige combi Naties is echter een Enter prise Edition-werk ruimte vereist. Gebruik de volgende tabel om te begrijpen welke scenario's Enter prise Edition vereist:
 >
-> | Scenario | Enterprise</br>editie | Basic</br>editie |
+> | Scenario | Onderneming</br>editie | Basic</br>editie |
 > | ----- |:-----:|:-----:| 
 > | Geen virtueel netwerk of privé-koppeling | ✔ | ✔ |
 > | Werk ruimte zonder persoonlijke koppeling. Andere resources (met uitzonde ring van Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
@@ -228,7 +228,7 @@ De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijk
 - JSON 
 - Parquet
 - SQL
-- Bestand
+- File
 
 Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
 

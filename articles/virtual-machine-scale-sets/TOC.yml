@@ -117,7 +117,7 @@
     - name: Installatiekopieën
       href: shared-image-galleries.md
     - name: VM-typen en -groottes
-      href: ../virtual-machines/windows/sizes.md
+      href: ../virtual-machines/sizes.md
       items:
         - name: Algemeen doel
           href: ../virtual-machines/sizes-general.md
@@ -193,10 +193,10 @@
           href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
           maintainContext: true
     - name: Netwerken
-      href: ../virtual-machines/windows/network-overview.md
+      href: ../virtual-machines/network-overview.md
       maintainContext: true
     - name: Automatisering van infrastructuur
-      href: ../virtual-machines/windows/infrastructure-automation.md
+      href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
     - name: Beveiliging
       items:
@@ -378,13 +378,13 @@
     - name: Ansible gebruiken
       items:
         - name: Schaalsets maken en beheren
-          href: /azure/ansible/ansible-create-configure-vmss
+          href: /azure/developer/ansible/vm-scale-set-configure
           maintainContext: true
         - name: Apps implementeren in schaalsets
-          href: /azure/ansible/ansible-deploy-app-vmss
+          href: /azure/developer/ansible/vm-scale-set-deploy-app
           maintainContext: true
         - name: Een schaalset automatisch schalen
-          href: /azure/ansible/ansible-auto-scale-vmss
+          href: /azure/developer/ansible/vm-scale-set-auto-scale
           maintainContext: true
 - name: Naslaginformatie
   items:

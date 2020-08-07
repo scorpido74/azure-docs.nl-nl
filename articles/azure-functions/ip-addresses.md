@@ -3,12 +3,12 @@ title: IP-adressen in Azure Functions
 description: Meer informatie over het vinden van binnenkomende en uitgaande IP-adressen voor functie-apps en wat ertoe leidt dat deze worden gewijzigd.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656770"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874075"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adressen in Azure Functions
 
@@ -49,12 +49,13 @@ Een alternatieve manier om de beschik bare uitgaande IP-adressen te vinden, is m
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> Wanneer een functie-app die wordt uitgevoerd op het [verbruiks abonnement](functions-scale.md#consumption-plan) , wordt geschaald, kan er een nieuw bereik van uitgaande IP-adressen worden toegewezen. Wanneer u het verbruiks abonnement uitvoert, moet u mogelijk het hele Data Center white list.
+> Wanneer een functie-app die wordt uitgevoerd op het [verbruiks abonnement](functions-scale.md#consumption-plan) , wordt geschaald, kan er een nieuw bereik van uitgaande IP-adressen worden toegewezen. Wanneer u het verbruiks abonnement uitvoert, moet u mogelijk het hele Data Center toevoegen aan een acceptatie lijst.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Uitgaande IP-adressen van data centers
 
-Als u de uitgaande IP-adressen wilt white list die worden gebruikt door uw functie-apps, is een andere optie de functie-apps Data Center (Azure Region) te white list. U kunt [een JSON-bestand downloaden met een lijst met IP-adressen voor alle Azure-data centers](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Zoek vervolgens het JSON-fragment dat van toepassing is op de regio waarin uw functie-app wordt uitgevoerd.
+Als u de uitgaande IP-adressen die worden gebruikt door uw functie-Apps wilt toevoegen aan een acceptatie lijst, is een andere optie het toevoegen van de functie-apps Data Center (Azure Region) aan een acceptatie lijst. U kunt [een JSON-bestand downloaden met een lijst met IP-adressen voor alle Azure-data centers](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Zoek vervolgens het JSON-fragment dat van toepassing is op de regio waarin uw functie-app wordt uitgevoerd.
 
 Dit is bijvoorbeeld het JSON-fragment West-Europa dat er ongeveer als volgt uitziet:
 

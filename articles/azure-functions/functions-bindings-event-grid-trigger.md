@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: 8876677a9ab4470875e6a311a62ce32598465fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: fasttrack-edit, devx-track-python
+ms.openlocfilehash: 78b15e0ba73743f6d88d28b03c99ca64d73dfae1
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848431"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid trigger voor Azure Functions
 
@@ -311,7 +311,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 |---------|---------|
 | **type** | Vereist: moet worden ingesteld op `eventGridTrigger` . |
 | **direction** | Vereist: moet worden ingesteld op `in` . |
-| **naam** | Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de para meter waarmee de gebeurtenis gegevens worden ontvangen. |
+| **name** | Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de para meter waarmee de gebeurtenis gegevens worden ontvangen. |
 
 ## <a name="usage"></a>Gebruik
 
