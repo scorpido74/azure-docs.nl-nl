@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999307"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903320"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-oplossingspatronen
 
@@ -86,17 +86,12 @@ Zie dit voor beeld van een [lineaire regressie](stream-analytics-high-frequency-
 
 ![ASA Machine Learning-app](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>Bijna realtime gegevens opslag
+## <a name="real-time-data-warehousing"></a>Real-time gegevens opslag
 
-Een ander algemeen patroon is real-time gegevens opslag, ook wel streaming data warehouse genoemd. Naast gebeurtenissen die op Event Hubs en IoT Hub uit uw toepassing arriveren, kunnen [Azure stream Analytics die op IOT Edge wordt uitgevoerd](stream-analytics-edge.md) , worden gebruikt om te voldoen aan het opschonen van gegevens, gegevens reductie en gegevens opslag en doorstuur behoeften. Stream Analytics die op IoT Edge wordt uitgevoerd, kunnen de bandbreedte limiet en verbindings problemen in het systeem op de juiste manier verwerken. De SQL-uitvoer adapter kan worden gebruikt om naar SQL Data Warehouse te worden uitgevoerd. de maximale door Voer is echter beperkt tot 10 MB/s.
+Een ander algemeen patroon is real-time gegevens opslag, ook wel streaming data warehouse genoemd. Naast gebeurtenissen die op Event Hubs en IoT Hub uit uw toepassing arriveren, kunnen [Azure stream Analytics die op IOT Edge wordt uitgevoerd](stream-analytics-edge.md) , worden gebruikt om te voldoen aan het opschonen van gegevens, gegevens reductie en gegevens opslag en doorstuur behoeften. Stream Analytics die op IoT Edge wordt uitgevoerd, kunnen de bandbreedte limiet en verbindings problemen in het systeem op de juiste manier verwerken. Stream Analytics kunnen doorvoer tarieven van Maxi maal 200 MB per seconde ondersteunen tijdens het schrijven naar Azure Synapse Analytics.
 
 ![ASA data warehousing](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-Een manier om de door voer te verbeteren met enkele latentie balans is het archiveren van de gebeurtenissen in Azure Blob-opslag en deze vervolgens te [importeren in SQL data warehouse met poly base](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). U moet de uitvoer hand matig combi neren van Stream Analytics naar Blob-opslag en invoer van Blob Storage naar SQL Data Warehouse door [de gegevens te archiveren op tijds tempel](stream-analytics-custom-path-patterns-blob-storage-output.md) en regel matig te importeren.
-
-In dit gebruiks patroon wordt Azure Stream Analytics gebruikt als een nabije realtime ETL-engine. Nieuwe inkomende gebeurtenissen worden continu getransformeerd en opgeslagen voor het downstream Analytics-Service verbruik.
-
-![Gegevens opslag met hoge door Voer van ASA](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Real-time gegevens archiveren voor analyse
 

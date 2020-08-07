@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760393"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905586"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -130,6 +130,22 @@ AND R.reportedCondition = 'clean'
 ```
 
 In het bovenstaande voor beeld ziet u hoe *reportedCondition* een eigenschap is van de *servicedBy* -relatie zelf (niet van een digitale dubbele verbinding met een *servicedBy* -relatie).
+
+### <a name="query-with-multiple-joins"></a>Query met meerdere samen voegingen
+
+Momenteel wordt een preview-versie van Maxi maal vijf `JOIN` s ondersteund in één query. Zo kunt u meerdere niveaus van relaties tegelijk door lopen.
+
+Hier volgt een voor beeld van een meervoudige samenvoeg query, waarmee alle gloei lampen in de licht panelen in de ruimten 1 en 2 worden opgehaald.
+
+```sql
+SELECT LightBulb 
+FROM DIGITALTWINS Room 
+JOIN LightPanel RELATED Room.contains 
+JOIN LightBulb RELATED LightPanel.contains 
+WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
+AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
+AND Room.$dtId IN [‘room1’, ‘room2’] 
+```
 
 ## <a name="run-queries-with-an-api-call"></a>Query's uitvoeren met een API-aanroep
 

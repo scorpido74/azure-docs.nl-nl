@@ -4,17 +4,17 @@ description: Klassieke waarschuwingen worden afgeschaft. Met waarschuwingen kunt
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 56dd601e8d961d65ec21eefcc2dd5fed5c75f9fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322360"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844110"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](./alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. 
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](./alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen.
 >
 
 Met waarschuwingen kunt u voor waarden voor gegevens configureren en op de hoogte worden gesteld wanneer de voor waarden overeenkomen met de meest recente bewakings gegevens.

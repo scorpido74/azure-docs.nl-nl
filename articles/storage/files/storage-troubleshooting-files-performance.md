@@ -1,18 +1,18 @@
 ---
 title: Gids voor het oplossen van problemen met Azure Files
-description: Bekende prestatie problemen met Azure-bestands shares en bijbehorende tijdelijke oplossingen.
+description: Los problemen met bekende prestaties op met Azure-bestands shares. Ontdek mogelijke oorzaken en bijbehorende tijdelijke oplossingen wanneer deze problemen optreden.
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c0d7e5c7c021f8cdad8980bd7659d819b85f899
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511959"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905011"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 

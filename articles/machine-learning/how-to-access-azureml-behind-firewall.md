@@ -10,22 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873633"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
-In dit artikel leert u hoe u Azure Firewall kunt configureren voor gebruik met een Azure Machine Learning-werk ruimte.
+In dit artikel vindt u informatie over het configureren van Azure Firewall voor het beheren van de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet.   Zie [Enter prise Security for Azure machine learning](concept-enterprise-security.md) voor meer informatie over het beveiligen van Azure machine learning.
 
-> [!IMPORTANT]
-> Hoewel de informatie in dit document is gebaseerd op het gebruik van Azure Firewall, kunt u het gebruiken met andere firewall producten. Als u vragen hebt over het toestaan van communicatie via uw firewall, raadpleegt u de documentatie voor de firewall die u gebruikt.
-
-Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren. Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte. Er zijn verschillende hostnamen die worden gebruikt door de Azure Machine Learning-werk ruimte, die in dit artikel worden beschreven.
+Hoewel de informatie in dit document is gebaseerd op het gebruik van [Azure firewall](../firewall/tutorial-firewall-deploy-portal.md), kunt u het gebruiken met andere firewall producten. Als u vragen hebt over het toestaan van communicatie via uw firewall, raadpleegt u de documentatie voor de firewall die u gebruikt.
 
 ## <a name="network-rules"></a>Netwerk regels
 
@@ -37,6 +34,8 @@ Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit
 > Zie [Azure firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)voor meer informatie over het configureren van Azure firewall.
 
 ## <a name="microsoft-hosts"></a>Micro soft-hosts
+
+Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte. Er zijn verschillende hostnamen die worden gebruikt door de Azure Machine Learning-werk ruimte.
 
 De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodig zijn om uw werk ruimte goed te laten functioneren.
 
@@ -58,6 +57,7 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 | **mcr.microsoft.com** | Micro soft Container Registry voor base docker-installatie kopieën |
 | **your-acr-server-name.azurecr.io** | Alleen nodig als uw Azure Container Registry zich achter het virtuele netwerk bevindt. In deze configuratie wordt een persoonlijke koppeling vanuit de micro soft-omgeving gemaakt naar het ACR-exemplaar in uw abonnement. Gebruik de ACR-server naam voor uw Azure Machine Learning-werk ruimte. |
 | **\*. notebooks.azure.net** | Vereist door de notitie blokken in Azure Machine Learning Studio. |
+
 ## <a name="python-hosts"></a>Python-hosts
 
 De hosts in deze sectie worden gebruikt voor het installeren van Python-pakketten. Ze zijn vereist tijdens de ontwikkeling, training en implementatie. 
@@ -79,7 +79,7 @@ De hosts in deze sectie worden gebruikt voor het installeren van R-pakketten. Ze
 | ---- | ---- |
 | **cloud.r-project.org** | Wordt gebruikt bij het installeren van KRANs pakketten. |
 
-Volgende stappen
+## <a name="next-steps"></a>Volgende stappen
 
-* [[Azure firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md)]
+* [Zelfstudie: Azure Firewall implementeren en configureren met Azure Portal](../firewall/tutorial-firewall-deploy-portal.md)
 * [Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen](how-to-enable-virtual-network.md)

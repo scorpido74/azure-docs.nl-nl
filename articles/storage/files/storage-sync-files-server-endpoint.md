@@ -1,18 +1,18 @@
 ---
 title: Een Azure File Sync server-eind punt toevoegen/verwijderen | Microsoft Docs
-description: Meer informatie over hoe u rekening moet houden bij het plannen van een Azure Files-implementatie.
+description: Meer informatie over het toevoegen of verwijderen van een server eindpunt met Azure File Sync. Een server eindpunt is een bepaalde locatie op een geregistreerde server, zoals een map op een server volume.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509469"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905054"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Een Azure File Sync server-eind punt toevoegen/verwijderen
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
@@ -73,5 +73,5 @@ Het server eindpunt verwijderen:
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een server met Azure File Sync registreren of de registratie ervan opheffen](storage-sync-files-server-registration.md)
-- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

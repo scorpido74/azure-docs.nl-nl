@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373688"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905493"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -131,7 +131,7 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
 
     U kunt ook init-scripts gebruiken als u problemen ondervindt bij de installatie van python-bibliotheken. Deze aanpak wordt niet officieel ondersteund. Zie voor meer informatie [cluster-scoped init-scripts](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks import-fout: kan de naam ' timedelta ' niet importeren uit ' Pandas. _libs. tslibs '**: als u deze fout ziet wanneer u automatische machine learning gebruikt, voert u de twee volgende regels uit in uw notitie blok:
+* **Databricks import-fout: kan naam niet importeren `Timedelta` van `pandas._libs.tslibs` **: als u deze fout ziet wanneer u automatische machine learning gebruikt, voert u de twee volgende regels uit in uw notitie blok:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -219,7 +219,7 @@ Beperkingen en bekende problemen voor gegevens drift-monitors:
     | Categorische gegevens | teken reeks, BOOL, int, float | Het aantal unieke waarden in de functie is kleiner dan 100 en minder dan 5% van het aantal rijen. | NULL wordt beschouwd als een eigen categorie. | 
     | Cijfer | int, float | De waarden in de functie zijn van een numeriek gegevens type en voldoen niet aan de voor waarde voor een categorische-functie. | De functie is verwijderd als >15% van de waarden null zijn. | 
 
-* Wanneer u [een datadrift-monitor hebt gemaakt](how-to-monitor-datasets.md) maar geen gegevens ziet op de pagina **gegevensset monitors** in azure machine learning Studio, probeert u het volgende.
+* Wanneer u [een gegevensdrijf monitor hebt gemaakt](how-to-monitor-datasets.md) , maar de gegevens op de pagina **gegevensset** controleren in azure machine learning Studio niet kunt zien, kunt u het volgende proberen.
 
     1. Controleer of u het juiste datum bereik hebt geselecteerd boven aan de pagina.  
     1. Op het tabblad **gegevensset monitors** selecteert u de koppeling experiment om de uitvoerings status te controleren.  Deze koppeling bevindt zich helemaal rechts in de tabel.
@@ -373,7 +373,7 @@ U ontvangt bijvoorbeeld een fout melding als u een reken doel probeert te maken 
 
 Toegangs beheer op basis van rollen kan worden gebruikt om acties te beperken die u kunt uitvoeren met Azure Machine Learning. Deze beperkingen kunnen voor komen dat gebruikers interface-items in de Azure Machine Learning Studio worden weer gegeven. Als u bijvoorbeeld een rol krijgt die geen reken exemplaar kan maken, wordt de optie voor het maken van een reken instantie niet weer gegeven in de Studio.
 
-Zie [gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie.
+Zie [Gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -382,5 +382,5 @@ Meer artikelen over het oplossen van problemen met Azure Machine Learning bekijk
 * [Problemen met docker-implementatie oplossen met Azure Machine Learning](how-to-troubleshoot-deployment.md)
 * [Fout opsporing machine learning pijp lijnen](how-to-debug-pipelines.md)
 * [Fouten opsporen in de ParallelRunStep-klasse vanuit de Azure Machine Learning SDK](how-to-debug-parallel-run-step.md)
-* [Interactieve fout opsporing van een machine learning Compute-exemplaar met VS-code](how-to-set-up-vs-code-remote.md)
+* [Interactieve fout opsporing van een machine learning Compute-exemplaar met VS-code](how-to-debug-visual-studio-code.md)
 * [Application Insights gebruiken om fouten in machine learning pijp lijnen op te sporen](how-to-debug-pipelines-application-insights.md)

@@ -1,18 +1,19 @@
 ---
 title: Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor Azure API voor FHIR configureren
 description: In dit artikel wordt beschreven hoe u Azure RBAC kunt configureren voor de Azure API voor FHIR-gegevens vlak
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: 8e4b5fdecfc5b9fcb2deb68a482b084a6e6ed6d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: matjazl
+ms.reviewer: dseven
+ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496165"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845934"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Azure RBAC configureren voor FHIR 
 

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505173"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799953"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen
 [Platform logboeken](platform-logs-overview.md) in azure, met inbegrip van het Azure-activiteiten logboek en de resource logboeken, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. [Metrische platform gegevens](data-platform-metrics.md) worden standaard verzameld en worden meestal opgeslagen in de data base met Azure monitor gegevens. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzenden van platform metrieken en platform logboeken naar verschillende bestemmingen.
@@ -58,7 +58,7 @@ Alle doelen voor de diagnostische instelling moeten worden gemaakt met de vereis
 [Maak een nieuwe werk ruimte](../learn/quick-create-workspace.md) als u er nog geen hebt. De werk ruimte hoeft zich niet in hetzelfde abonnement te bevinden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
 
 ### <a name="event-hub"></a>Event Hub
-[Maak een event hub](../../event-hubs/event-hubs-create.md) als u er nog geen hebt. De naam ruimte van de Event Hubs hoeft zich niet te bevinden in hetzelfde abonnement als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert, de juiste RBAC-toegang heeft tot beide abonnementen en beide abonnementen zich in dezelfde AAD-Tenant bevinden.
+[Maak een event hub](../../event-hubs/event-hubs-create.md) als u er nog geen hebt. De Event Hubs naam ruimte hoeft zich niet te bevinden in hetzelfde abonnement als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen en beide abonnementen zich in dezelfde Tenant bevinden.
 
 Het beleid voor gedeelde toegang voor de naam ruimte definieert de machtigingen die het streaming-mechanisme heeft. Streaming naar Event Hubs vereist machtigingen voor beheren, verzenden en Luis teren. U kunt beleid voor gedeelde toegang maken of wijzigen in de Azure Portal op het tabblad configureren voor uw Event Hubs naam ruimte. Als u de diagnostische instelling wilt bijwerken zodat deze streaming bevat, moet u de machtiging ListKey hebben voor die Event Hubs autorisatie regel. 
 
@@ -182,7 +182,7 @@ Zie [voor beelden van Resource Manager-sjablonen voor Diagnostische instellingen
 Zie [Diagnostische instellingen](/rest/api/monitor/diagnosticsettings) voor het maken of bijwerken van diagnostische instellingen met behulp van de [Azure monitor rest API](/rest/api/monitor/).
 
 ## <a name="create-using-azure-policy"></a>Maken met behulp van Azure Policy
-Omdat een diagnostische instelling moet worden gemaakt voor elke Azure-resource, kan Azure Policy worden gebruikt om automatisch een diagnostische instelling te maken wanneer elke resource wordt gemaakt. Zie [Azure monitor op schaal implementeren met behulp van Azure Policy](deploy-scale.md) voor meer informatie.
+Omdat een diagnostische instelling moet worden gemaakt voor elke Azure-resource, kan Azure Policy worden gebruikt om automatisch een diagnostische instelling te maken wanneer elke resource wordt gemaakt. Zie [Azure monitor op schaal implementeren met behulp van Azure Policy](../deploy-scale.md) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

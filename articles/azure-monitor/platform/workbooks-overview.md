@@ -8,16 +8,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 044786d6a6aa4f9f3d163090c0edfa3832023b10
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116955"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799562"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
 Werkmappen bieden een flexibel canvas voor gegevens analyse en het maken van uitgebreide visuele rapporten in de Azure Portal. Hiermee kunt u in meerdere gegevens bronnen in azure tikken en deze combi neren in Unified Interactive-ervaringen. 
+
+Hier volgt een video-overzicht van het maken van werkmappen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>Gegevensbronnen
 

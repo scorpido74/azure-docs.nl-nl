@@ -3,20 +3,20 @@ title: 'Quickstart: Antwoord uit knowledge base ophalen - REST, Python - QnA Mak
 description: Deze Python REST-quickstart begeleidt u bij het programmatisch ophalen van een antwoord uit een knowledge base.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, tracking-python
+ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: d985bafe3303acdaf8b47e70a9d5368e3b26335c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2d693a63360890b9f658baa1a37d251f311d5617
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610131"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875010"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Snelstartgids: Krijg antwoorden op een vraag van een kennis database met python
 
 In deze quickstart wordt beschreven hoe u programmatisch een antwoord uit een gepubliceerde QnA Maker-knowledge base kunt ophalen. De Knowledge Base bevat vragen en antwoorden van [gegevens bronnen](../Concepts/knowledge-base.md) , zoals Veelgestelde vragen. De [vraag](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wordt verzonden naar de QnA Maker-service. Het [antwoord](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) bevat het meest voorspelde antwoord.
 
-[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
+[Referentiedocumentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Voorbeeld](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/05/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203116"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903779"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData-$orderby syntaxis in azure Cognitive Search
 
@@ -50,7 +50,9 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 > [!NOTE]
 > Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Elke component heeft Sorteer criteria, eventueel gevolgd door een sorteer richting ( `asc` voor oplopend of `desc` aflopend). Als u geen richting opgeeft, wordt de standaard waarde Oplopend. De sorteer criteria kunnen het pad van een veld zijn `sortable` of een aanroep van de- [`geo.distance`](search-query-odata-geo-spatial-functions.md) of- [`search.score`](search-query-odata-search-score-function.md) functies.
+Elke component heeft Sorteer criteria, eventueel gevolgd door een sorteer richting ( `asc` voor oplopend of `desc` aflopend). Als u geen richting opgeeft, wordt de standaard waarde Oplopend. Als het veld null-waarden bevat, worden de Null-waarden eerst weer gegeven als de sorteer bewerking is `asc` en laatste als de sorteer bewerking is `desc` .
+
+De sorteer criteria kunnen het pad van een veld zijn `sortable` of een aanroep van de- [`geo.distance`](search-query-odata-geo-spatial-functions.md) of- [`search.score`](search-query-odata-search-score-function.md) functies.
 
 Als meerdere documenten dezelfde Sorteer criteria hebben en de `search.score` functie niet wordt gebruikt (bijvoorbeeld als u op een numeriek veld sorteert `Rating` en drie documenten met een classificatie van vier), worden de punten door de document Score in aflopende volg orde afgebroken. Wanneer de document scores hetzelfde zijn (bijvoorbeeld wanneer er geen zoek opdracht voor volledige tekst in de aanvraag is opgegeven), is de relatieve volg orde van de gekoppelde documenten onbepaald.
 
