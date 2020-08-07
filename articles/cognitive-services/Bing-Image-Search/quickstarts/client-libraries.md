@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de Bing Image Search-client bibliotheek gebruiken'
+title: 'Quickstart: De Bing Visual Search-clientbibliotheek gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De Afbeeldingen zoeken-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
+description: De Afbeeldingen zoeken-API biedt clientbibliotheken aan waarmee u eenvoudig zoekmogelijkheden in uw toepassingen kunt integreren. Gebruik deze quickstart om zoekaanvragen te sturen en resultaten terug te krijgen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: 430558049aecd6dbf6ccb504a93e8a20f9038bf2
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 6bf6d2407a4389c291f4bf3081ebaedb73ce8595
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606714"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407219"
 ---
-# <a name="quickstart-use-the-bing-image-search-client-library"></a>Snelstartgids: de Bing Image Search-client bibliotheek gebruiken
+# <a name="quickstart-use-the-bing-image-search-client-library"></a>Quickstart: De Bing Visual Search-clientbibliotheek gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

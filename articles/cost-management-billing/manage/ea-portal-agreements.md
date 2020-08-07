@@ -3,16 +3,16 @@ title: Azure EA-overeenkomsten en -aanpassingen
 description: In dit wordt uitleg gegeven over hoe de Azure EA-overeenkomsten en -aanpassingen van invloed zijn op uw gebruik van Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537796"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563480"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-overeenkomsten en -aanpassingen
 
@@ -20,7 +20,7 @@ In het artikel wordt beschreven hoe Azure EA-overeenkomsten en -aanpassingen van
 
 ## <a name="enrollment-provisioning-status"></a>De inrichtingsstatus voor inschrijving
 
-De begindatum van een nieuwe Azure-vooruitbetaling wordt gedefinieerd op basis van de datum waarop het regionale Operations Center de vooruitbetaling verwerkt. Omdat orders voor Azure-vooruitbetaling via Azure EA Portal worden verwerkt in de tijdzone UTC, kan er enige vertraging optreden als uw inkooporder voor Azure-vooruitbetaling in een andere regio is verwerkt. De begindatum van de dekking op de inkooporder bij https://www.explore.ms staat gelijk aan de begindatum van de Azure-vooruitbetaling. De begindatum van de dekking is dezelfde datum als de datum waarop de Azure-vooruitbetaling wordt weergegeven in Azure EA Portal.
+De begindatum van een nieuwe Azure-vooruitbetaling wordt gedefinieerd op basis van de datum waarop het regionale Operations Center de vooruitbetaling verwerkt. Omdat orders voor Azure-vooruitbetaling via Azure EA Portal worden verwerkt in de tijdzone UTC, kan er enige vertraging optreden als uw inkooporder voor Azure-vooruitbetaling in een andere regio is verwerkt. De begindatum van de dekking op de inkooporder staat gelijk aan de begindatum van de Azure-vooruitbetaling. De begindatum van de dekking is dezelfde datum als de datum waarop de Azure-vooruitbetaling wordt weergegeven in Azure EA Portal.
 
 ## <a name="support-for-enterprise-customers"></a>Ondersteuning voor Enterprise-klanten
 
@@ -43,7 +43,7 @@ Een inschrijving heeft één van de volgende statuswaarden. Elke waarde bepaalt 
 
 **Verlopen**: de EA-inschrijving verloopt wanneer de einddatum van de Enterprise Agreement is bereikt. De EA-klant wordt uitgeschreven voor de verlengde termijn en alle services worden uitgeschakeld.
 
-Vanaf 1 augustus 2019 worden de nieuwe uitschrijvingsformulieren niet geaccepteerd voor commerciële klanten van Azure. In plaats daarvan worden alle inschrijvingen voor onbepaalde tijd verlengd. Als u de Azure-services niet meer wilt gebruiken, zegt u uw abonnement via [Azure Portal](https://portal.azure.com) op. Uw partner kan ook via https://www.explore.ms een beëindigingsaanvraag indienen. Er zijn geen wijzigingen voor klanten met een overeenkomst van het overheidstype.
+Vanaf 1 augustus 2019 worden de nieuwe uitschrijvingsformulieren niet geaccepteerd voor commerciële klanten van Azure. In plaats daarvan worden alle inschrijvingen voor onbepaalde tijd verlengd. Als u de Azure-services niet meer wilt gebruiken, zegt u uw abonnement via [Azure Portal](https://portal.azure.com) op. Uw partner kan ook een beëindigingsaanvraag indienen. Er zijn geen wijzigingen voor klanten met een overeenkomst van het overheidstype.
 
 **Overgedragen**: de status Overgedragen wordt toegepast op inschrijvingen waarvan de bijbehorende accounts en services zijn overgedragen naar een nieuwe inschrijving. Inschrijvingen worden niet automatisch overgedragen als er tijdens het verlengen een nieuw inschrijvingsnummer wordt gegenereerd. Het voorafgaande inschrijvingsnummer moet worden opgenomen in de verlengingsaanvraag van de klant voor een automatische overdracht.
 

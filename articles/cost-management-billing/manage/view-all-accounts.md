@@ -1,18 +1,18 @@
 ---
 title: Factureringsaccounts in de Azure-portal weergeven
-description: Meer informatie over het weergeven van uw factureringsaccounts in de Azure-portal.
+description: Ontdek hoe u uw factureringsaccounts kunt weergeven in de Azure-portal. Bekijk bereikinformatie voor Enterprise, Microsoft Customer en Microsoft Partner Agreements.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: 8afa0b1b068aa03bb1add7f029c731b4fc9a4724
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7763340831f1ffbc5ae33b5cc7bff5696d7a9b96
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039684"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461694"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Factureringsaccounts en -bereiken in de Azure-portal
 

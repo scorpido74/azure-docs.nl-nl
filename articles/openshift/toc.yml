@@ -28,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: Azure Active Directory-verificatie (portal) configureren
           href: configure-azure-ad-ui.md
+    - name: Een back-up maken en een toepassing herstellen met Velero
+      items:
+        - name: Een back-up maken van een clustertoepassing met Velero
+          href: howto-create-a-backup.md
+        - name: Een herstel maken van een clustertoepassing met Velero
+          href: howto-create-a-restore.md
     - name: Bewaking en logboekregistratie voor Azure Red Hat OpenShift 4
       items:
         - name: Azure Monitor voor containers in Azure Red Hat OpenShift 4 (preview-versie)

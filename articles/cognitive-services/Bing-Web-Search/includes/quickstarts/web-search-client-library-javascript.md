@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Web Search java script-client bibliotheek
+title: Quickstart voor de Bing Web Search-clientbibliotheek voor JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,21 +8,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925650"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406368"
 ---
-De Bing Web Search-client bibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw node. js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
+Met de Bing Web Search-clientbibliotheek kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
-Wilt u de code nu zien? Voor beelden voor de [Bing Search-client bibliotheken voor Java script](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) zijn beschikbaar op github.
+Wilt u de code nu zien? Voorbeelden voor de [Bing Search-clientbibliotheken voor JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) zijn beschikbaar op GitHub.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [Node. js 6](https://nodejs.org/en/download/) of hoger
+* [Node.js 6](https://nodejs.org/en/download/) of later
 * Een abonnementssleutel  
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]

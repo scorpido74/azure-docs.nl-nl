@@ -1,17 +1,17 @@
 ---
 title: Gratis services maken met een gratis Azure-account
-description: Leer services te maken die zijn inbegrepen bij een gratis Azure-account.
+description: Leer services te maken die zijn inbegrepen bij een gratis Azure-account. U kunt deze services maken in elke regio waar ze beschikbaar zijn.
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 1d2c4ed141aeff97f5987b0b23ff1e6201e53c6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 540988892a5f5f650a8594b74792e45d25ca9036
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200877"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460946"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Services maken die zijn inbegrepen bij een gratis Azure-account
 
@@ -30,7 +30,7 @@ Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/servic
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>Meerdere service-instanties maken binnen toegestane limieten
 U kunt gratis meerdere service-instanties maken, zolang de som van het gebruik binnen de gebruikslimiet valt. U krijgt bijvoorbeeld elke maand 750 uur gratis voor een virtuele B1S Windows-machine bij uw gratis Azure-account. U kunt die 750 uur in elke gewenste combinatie gebruiken. U kunt bijvoorbeeld vijf virtuele B1S Windows-machines maken en elk daarvan 150 uur gebruiken.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

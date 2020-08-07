@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Computer Vision-client bibliotheek voor Node.js'
-description: Aan de slag met de Computer Vision-client bibliotheek voor Node.js met deze Snelstartgids
+title: 'Quickstart: Computer Vision-clientbibliotheek voor Node.js'
+description: Ga met deze quickstart aan de slag met de Computer Vision-clientbibliotheek voor Node.js
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,59 +9,60 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 556e56991d59eb65f789fde4d705706a03a63be9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: dc01600d052752d4558e22fe5c5ca48fb84a8121
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073264"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405485"
 ---
 <a name="HOLTop"></a>
 
-[Referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  van bibliotheek [Pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  Voor [beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Referentiedocumentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [Pakket (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [Voorbeelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
 * De huidige versie van [Node.js](https://nodejs.org/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="setting-up"></a>Instellen
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
-Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar.
+Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor de app, en navigeer naar deze map.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voer de `npm init` opdracht uit om een knooppunt toepassing met een `package.json` bestand te maken.
+Voer de opdracht `npm init` uit om een knooppunttoepassing te maken met een `package.json`-bestand.
 
 ```console
 npm init
 ```
 
-### <a name="install-the-client-library"></a>De client bibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Installeer de `ms-rest-azure` en `@azure/cognitiveservices-computervision` NPM-pakketten:
+Installeer als volgt de NPM-pakketten `ms-rest-azure` en `@azure/cognitiveservices-computervision`:
 
 ```console
 npm install @azure/cognitiveservices-computervision
 ```
 
-Het bestand van uw app `package.json` wordt bijgewerkt met de afhankelijkheden.
+Het `package.json`-bestand van uw app wordt bijgewerkt met de afhankelijkheden.
 
-### <a name="prepare-the-nodejs-script"></a>Het Node.js script voorbereiden
+### <a name="prepare-the-nodejs-script"></a>Het Node.js-script voorbereiden
 
-Maak een nieuw bestand *index.js*en open het in een tekst editor. Voeg de volgende import-instructies toe.
+Maak een nieuw bestand, *index.js* en open dit in een tekstbewerkingsprogramma. Voeg de volgende importeerinstructies toe.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-Definieer vervolgens een functie `computerVision` en Declareer een async-serie met de functie Primary en call back. U voegt uw Snelstartgids-code toe aan de primaire functie en roept `computerVision` deze aan onder aan het script.
+Definieer vervolgens een functie `computerVision` en declareer een asynchrone serie met een primaire functie en een callback-functie. U voegt uw quickstartcode toe aan de primaire functie en roept `computerVision`, onder aan het script, aan.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
@@ -69,174 +70,174 @@ Definieer vervolgens een functie `computerVision` en Declareer een async-serie m
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Computer Vision Node.js SDK.
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Computer Vision-SDK voor Node.js.
 
 |Naam|Beschrijving|
 |---|---|
-| [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Deze klasse is nodig voor alle Computer Vision functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om de meeste installatie kopieën uit te voeren.|
-|[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Deze opsomming definieert de verschillende typen afbeeldings analyse die kunnen worden uitgevoerd in een standaard analyse bewerking. U geeft een set **VisualFeatureTypes** -waarden op, afhankelijk van uw behoeften. |
+| [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Deze klasse is nodig voor alle Computer Vision-functionaliteit. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om de meeste afbeeldingsbewerkingen uit te voeren.|
+|[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Deze opsomming definieert de verschillende typen afbeeldingsanalyse die kunnen worden uitgevoerd in een standaard analysebewerking. U geeft een set **VisualFeatureTypes**-waarden op, afhankelijk van uw behoeften. |
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Computer Vision-client bibliotheek voor Node.js:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Computer Vision-clientbibliotheek voor Node.js:
 
 * [De client verifiëren](#authenticate-the-client)
 * [Een afbeelding analyseren](#analyze-an-image)
-* [Gedrukte en handgeschreven tekst lezen](#read-printed-and-handwritten-text)
+* [Afgedrukte en handgeschreven tekst lezen](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
+Maak variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
-Exemplaar een client met uw eind punt en sleutel. Maak een [ApiKeyCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python) -object met uw sleutel en eind punt, en gebruik het om een [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) -object te maken.
+Instantieer een client met uw eindpunt en sleutel. Maak een [ApiKeyCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python)-object met uw sleutel en eindpunt en maak hiermee een [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest)-object.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>Een afbeelding analyseren
 
-De code in deze sectie analyseert externe installatie kopieën om verschillende visuele functies uit te pakken. U kunt deze bewerkingen uitvoeren als onderdeel van de methode **analyzeImage** van het client object, of u kunt ze aanroepen met behulp van afzonderlijke methoden. Raadpleeg de [referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) voor meer informatie.
+De code in deze sectie wordt gebruikt om externe afbeeldingen te analyseren om verschillende visuele functies te extraheren. U kunt deze bewerkingen uitvoeren als onderdeel van de **analyzeImage**-methode van het clientobject, of u kunt ze aanroepen met behulp van afzonderlijke methoden. Raadpleeg de [referentiedocumentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) voor meer informatie.
 
 > [!NOTE]
-> U kunt ook een lokale installatie kopie analyseren. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) voor scenario's met betrekking tot lokale installatie kopieën.
+> U kunt ook een lokale afbeelding analyseren. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="get-image-description"></a>Beschrijving van afbeelding ophalen
 
-Met de volgende code wordt de lijst met gegenereerde bijschriften voor de afbeelding opgehaald. Zie [afbeeldingen beschrijven](../../concept-describing-images.md) voor meer informatie.
+Met de volgende code wordt de lijst met gegenereerde bijschriften voor de afbeelding opgehaald. Zie [Afbeeldingen beschrijven](../../concept-describing-images.md) voor meer informatie.
 
-Definieer eerst de URL van een afbeelding die moet worden geanalyseerd:
+Definieer eerst de URL van de afbeelding die u wilt analyseren:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_describe_image)]
 
-Voeg vervolgens de volgende code toe om de beschrijving van de afbeelding op te halen en af te drukken naar de-console.
+Voeg daarna de volgende code toe om de afbeeldingsbeschrijving op te halen en deze via de console af te drukken.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_describe)]
 
-### <a name="get-image-category"></a>Categorie van installatie kopie ophalen
+### <a name="get-image-category"></a>Categorie van de afbeelding ophalen
 
-Met de volgende code wordt de gedetecteerde categorie van de afbeelding opgehaald. Zie [installatie kopieën categoriseren](../../concept-categorizing-images.md) voor meer informatie.
+Met de volgende code wordt de gedetecteerde categorie van de afbeelding opgehaald. Zie [Afbeeldingen categoriseren](../../concept-categorizing-images.md) voor meer informatie.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories)]
 
-Definieer de hulp functie `formatCategories` :
+Definieer de hulpfunctie `formatCategories`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories_format)]
 
-### <a name="get-image-tags"></a>Afbeeldings Tags ophalen
+### <a name="get-image-tags"></a>Afbeeldingstags ophalen
 
-Met de volgende code wordt de set gedetecteerde labels in de afbeelding opgehaald. Zie [inhouds Tags](../../concept-tagging-images.md) voor meer informatie.
+Met de volgende code wordt de set met gedetecteerde tags in de afbeelding opgehaald. Zie [Inhoudstags](../../concept-tagging-images.md) voor meer informatie.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tags)]
 
-Definieer de hulp functie `formatTags` :
+Definieer de hulpfunctie `formatTags`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tagsformat)]
 
 ### <a name="detect-objects"></a>Objecten detecteren
 
-Met de volgende code worden algemene objecten in de installatie kopie gedetecteerd en worden deze in de-console afgedrukt. Zie [object detectie](../../concept-object-detection.md) voor meer informatie.
+Met de volgende code worden algemene objecten in de afbeelding gedetecteerd en worden deze in de console afgedrukt. Zie [Objectdetectie](../../concept-object-detection.md) voor meer informatie.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-Definieer de hulp functie `formatRectObjects` :
+Definieer de hulpfunctie `formatRectObjects`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
 ### <a name="detect-brands"></a>Merken detecteren
 
-Met de volgende code worden de bedrijfs merken en-logo's in de installatie kopie gedetecteerd en afgedrukt in de-console. Zie [merk detectie](../../concept-brand-detection.md) voor meer informatie.
+Met de volgende code worden bedrijfsmerken en -logo's in de afbeelding gedetecteerd en worden deze in de console afgedrukt. Zie [Merkdetectie](../../concept-brand-detection.md) voor meer informatie.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>Gezichten detecteren
 
-Met de volgende code worden de gedetecteerde gezichten in de afbeelding met hun rechthoek coördinaten als resultaat gegeven en selecteert u face Attributes. Zie [gezichts detectie](../../concept-detecting-faces.md) voor meer informatie.
+Met de volgende code worden de gedetecteerde gezichten in de afbeelding met hun rechthoekcoördinaten als resultaat gegeven en worden gezichtskenmerken geselecteerd. Zie [Gezichtsdetectie](../../concept-detecting-faces.md) voor meer informatie.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_faces)]
 
-Definieer de hulp functie `formatRectFaces` :
+Definieer de hulpfunctie `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-racy-or-gory-content"></a>Inhoud voor volwassenen, ongepaste of benchmarks detecteren
+### <a name="detect-adult-racy-or-gory-content"></a>Inhoud voor volwassenen, of ongepaste of bloederige inhoud detecteren
 
-Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen afgedrukt in de installatie kopie. Zie [inhoud voor volwassenen, ongepaste, benchmarks](../../concept-detecting-adult-content.md) voor meer informatie.
+Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen afgedrukt in de afbeelding. Zie [Inhoud voor volwassenen, of ongepaste, bloederige inhoud](../../concept-detecting-adult-content.md) voor meer informatie.
 
-Definieer de URL van de afbeelding die moet worden gebruikt:
+Definieer de URL van de afbeelding die u wilt gebruiken:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)]
 
-Voeg vervolgens de volgende code toe om inhoud voor volwassenen te detecteren en de resultaten in de-console af te drukken.
+Voeg vervolgens de volgende code toe om inhoud voor volwassenen te detecteren en de resultaten af te drukken via de console.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)]
 
-### <a name="get-image-color-scheme"></a>Kleuren schema afbeelding ophalen
+### <a name="get-image-color-scheme"></a>Kleurenschema van de afbeelding ophalen
 
-Met de volgende code worden de gedetecteerde kleur kenmerken in de afbeelding afgedrukt, zoals de dominante kleuren en accent kleur. Zie [kleuren schema's](../../concept-detecting-color-schemes.md) voor meer informatie.
+Met de volgende code worden de gedetecteerde kleurkenmerken in de afbeelding afgedrukt, zoals de dominante kleuren en accentkleur. Zie [Kleurenschema's](../../concept-detecting-color-schemes.md) voor meer informatie.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors)]
 
-Definieer de hulp functie `printColorScheme` om de details van het kleuren schema af te drukken op de-console.
+Definieer de hulpfunctie `printColorScheme` om de details van het kleurenschema via de console af te drukken.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors_print)]
 
-### <a name="get-domain-specific-content"></a>Domein-specifieke inhoud ophalen
+### <a name="get-domain-specific-content"></a>Domeinspecifieke inhoud ophalen
 
-Computer Vision kunt een speciaal model gebruiken om verdere analyse van installatie kopieën uit te voeren. Zie [Domain-specifieke inhoud](../../concept-detecting-domain-content.md) voor meer informatie.
+Computer Vision kan een speciaal model gebruiken om verdere analyse van afbeeldingen uit te voeren. Zie [Domeinspecifieke inhoud](../../concept-detecting-domain-content.md) voor meer informatie.
 
-Definieer eerst de URL van een afbeelding die moet worden geanalyseerd:
+Definieer eerst de URL van de afbeelding die u wilt analyseren:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_domain_image)]
 
-Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in de installatie kopie geparseerd.
+Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in de afbeelding geparseerd.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks)]
 
-Definieer de hulp functie `formatRectDomain` om de locatie gegevens over gedetecteerde bezienswaardigheden te parseren.
+Definieer de hulpfunctie `formatRectDomain` om de locatiegegevens over gedetecteerde bezienswaardigheden te parseren.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks_rect)]
 
-### <a name="get-the-image-type"></a>Het afbeeldings type ophalen
+### <a name="get-the-image-type"></a>Het afbeeldingstype ophalen
 
-Met de volgende code wordt informatie over het type afbeelding afgedrukt &mdash; , ongeacht of het een illustratie of lijn tekening is.
+Met de volgende code wordt informatie over het type afbeelding afgedrukt&mdash;, of het een illustratie of lijntekening is.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
 
-Definieer de hulp functie `describeType` :
+Definieer de hulpfunctie `describeType`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>Gedrukte en handgeschreven tekst lezen
+## <a name="read-printed-and-handwritten-text"></a>Afgedrukte en handgeschreven tekst lezen
 
-Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom.
+Computer Vision kan zichtbare tekst in een afbeelding lezen en deze converteren naar een tekenstroom.
 
 > [!NOTE]
-> U kunt ook tekst uit een lokale installatie kopie lezen. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) voor scenario's met betrekking tot lokale installatie kopieën.
+> U kunt ook tekst lezen uit een lokale afbeelding. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) voor scenario's met betrekking tot lokale afbeeldingen.
 
-### <a name="set-up-test-images"></a>Test installatie kopieën instellen
+### <a name="set-up-test-images"></a>Testafbeeldingen instellen
 
-Sla een verwijzing op naar de URL van de afbeeldingen waaruit u tekst wilt extra heren.
+Sla een verwijzing op van de URL van de afbeeldingen waaruit u tekst wilt extraheren.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>De recognize API aanroepen
+### <a name="call-the-recognize-api"></a>De Recognizer-API aanroepen
 
-Voeg de onderstaande code toe, waarmee de `recognizeText` functie wordt aangeroepen voor de opgegeven installatie kopieën.
+Voeg de onderstaande code toe. Hiermee wordt de `recognizeText`-functie aangeroepen voor de opgegeven afbeeldingen.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Definieer de `recognizeText` functie. Hiermee wordt de methode **recognizeText** op het client object aangeroepen, die een bewerkings-id retourneert en een asynchroon proces start om de inhoud van de installatie kopie te lezen. Vervolgens wordt de bewerkings-ID gebruikt om de bewerking met een interval van één seconde te controleren totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde resultaten geretourneerd.
+Definieer de `recognizeText`-functie. Hiermee roept u de **recognizeText**-methode aan op het clientobject en wordt een bewerkings-id geretourneerd. Ook wordt een asynchroon proces gestart om de inhoud van de afbeelding te lezen. Vervolgens wordt de bewerkings-id gebruikt om de bewerking te controleren met een interval van één seconde totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde resultaten geretourneerd.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Definieer vervolgens de functie Help `printRecText` , waarmee de resultaten van een herkennings bewerking worden afgedrukt op de-console.
+Definieer nu de hulpfunctie `printRecText`, waarmee de resultaten van een herkenbewerking worden afgedrukt via de console.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `node` opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de opdracht `node` in uw quickstart-bestand.
 
 ```console
 node index.js
@@ -244,7 +245,7 @@ node index.js
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -252,7 +253,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Computer Vision-API referentie (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+>[Referentie voor de Computer Vision-API (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
 * [Wat is Computer Vision?](../../Home.md)
-* De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).

@@ -1,18 +1,18 @@
 ---
 title: Inzicht in beheerdersrollen voor Enterprise in Azure
-description: Meer informatie over zakelijke beheerdersrollen in Azure.
+description: Meer informatie over zakelijke beheerdersrollen in Azure. U kunt vijf afzonderlijke beheerdersrollen toewijzen.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124337"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531486"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure Enterprise-rollen beheren
 
@@ -103,9 +103,9 @@ Mogelijk ziet u verschillende prijzen in Azure Portal, afhankelijk van uw beheer
 
 Zie [Toegang tot factureringsgegevens beheren voor Azure](manage-billing-access.md) voor informatie over de manier waarop u deze beleidsregels instelt.
 
-In de volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerdersrollen, het weergavekostenbeleid, de RBCA-rol (op rollen gebaseerde toegangscontrole) in Azure Portal en de prijzen die u ziet in Azure Portal. De zakelijke beheerder ziet altijd gebruiksgegevens op basis van de EA-prijzen van de organisatie. De afdelingsbeheerder en de accounteigenaar zien echter verschillende prijsweergaven op basis van het weergavekostenbeleid en hun RBAC-rol. De afdelingsbeheerdersrol die in de volgende tabel wordt vermeld, verwijst naar zowel de rol van afdelingsbeheerder als de rol van afdelingsbeheerder (alleen lezen).
+In de volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerdersrollen, het weergavekostenbeleid, de Azure-rol in de Azure-portal en de prijzen die u ziet in de Azure-portal. De zakelijke beheerder ziet altijd gebruiksgegevens op basis van de EA-prijzen van de organisatie. De afdelingsbeheerder en de accounteigenaar zien echter verschillende prijsweergaven op basis van het weergavekostenbeleid en hun Azure-rol. De afdelingsbeheerdersrol die in de volgende tabel wordt vermeld, verwijst naar zowel de rol van afdelingsbeheerder als de rol van afdelingsbeheerder (alleen lezen).
 
-|Enterprise Agreement-beheerdersrol|Weergavekostenbeleid voor rol|RBAC-rol|Prijsweergave|
+|Enterprise Agreement-beheerdersrol|Weergavekostenbeleid voor rol|Azure-rol|Prijsweergave|
 |---|---|---|---|
 |Accounteigenaar of afdelingsbeheerder|✔ Ingeschakeld|Eigenaar|EA-prijzen van de organisatie|
 |Accounteigenaar of afdelingsbeheerder|✘ Uitgeschakeld|Eigenaar|Retailprijzen|
@@ -113,7 +113,7 @@ In de volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerders
 |Accounteigenaar of afdelingsbeheerder|✘ Uitgeschakeld |geen|Geen prijzen|
 |Geen|Niet van toepassing |Eigenaar|Retailprijzen|
 
-U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De RBAC-rol kan worden bijgewerkt in Azure Portal. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De Azure-rol kan worden bijgewerkt in de Azure-portal. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 
 

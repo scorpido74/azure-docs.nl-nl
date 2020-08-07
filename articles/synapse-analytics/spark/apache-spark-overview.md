@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0fce972b6b0ceb426ab4b08ab26e664d068af16f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089274"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498919"
 ---
-# <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Wat is Apache Spark in Azure Synapse Analytics?
+# <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark in Azure Synapse Analytics
 
 Apache Spark is een framework voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. Apache Spark in Azure Synapse Analytics is een van de implementaties van Apache Spark van Microsoft in de cloud. Met Azure Synapse kunt u eenvoudig een Spark-pool (preview) maken en configureren in Azure. Spark-pools in Azure Synapse zijn compatibel met opslag van de tweede generatie in Azure Storage en Azure Data Lake. Dit betekent dat u Azure Spark-pools kunt gebruiken om gegevens te verwerken die zijn opgeslagen in Azure.
 

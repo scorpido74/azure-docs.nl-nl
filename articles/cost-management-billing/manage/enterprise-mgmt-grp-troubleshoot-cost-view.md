@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 6c4fe563057e8d7fedbd68280bc8059867d997ed
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d96a2ed9f0aab03a0073519e08cf03d43d7ac2b7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120242"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503154"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Problemen met kostenweergaven van Enterprise oplossen
 
-Enterprise-inschrijvingen hebben verschillende instellingen die tot gevolg kunnen hebben dat gebruikers geen kosten zien binnen de inschrijving.  Deze instellingen worden beheerd door de inschrijvingsbeheerder. Als de inschrijving niet rechtstreeks via Microsoft is gekocht, worden de instellingen beheerd door de partner.  Dit artikel beschrijft wat deze instellingen zijn en hoe deze van invloed zijn op de inschrijving. Deze instellingen staan los van de rollen van op rollen gebaseerd toegangsbeheer (RBAC) van Azure.
+Enterprise-inschrijvingen hebben verschillende instellingen die tot gevolg kunnen hebben dat gebruikers geen kosten zien binnen de inschrijving.  Deze instellingen worden beheerd door de inschrijvingsbeheerder. Als de inschrijving niet rechtstreeks via Microsoft is gekocht, worden de instellingen beheerd door de partner.  Dit artikel beschrijft wat deze instellingen zijn en hoe deze van invloed zijn op de inschrijving. Deze instellingen staan los van de Azure-rollen.
 
 ## <a name="enable-access-to-costs"></a>Toegang tot kosten inschakelen
 

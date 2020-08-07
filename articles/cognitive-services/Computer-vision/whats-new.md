@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280831"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759203"
 ---
 # <a name="whats-new-in-computer-vision"></a>Wat is er nieuw in Computer Vision?
 
@@ -23,15 +23,15 @@ Meer informatie over nieuwe functies in de service. Dit kunnen opmerkingen bij d
 
 ## <a name="july-2020"></a>Juli 2020
 
-### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>Lees-API v3.1-preview.1 voegt ondersteuning toe voor vereenvoudigd Chinees
-Lees-API v3.1-preview.1 voegt ondersteuning toe voor vereenvoudigd Chinees van Computer Vision.
+### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>Lees-API v3.1 (openbare preview-versie) voegt ondersteuning toe voor vereenvoudigd Chinees
+Lees-API v3.1 (openbare preview-versie) voegt ondersteuning toe voor vereenvoudigd Chinees van Computer Vision.
 
 * Deze preview-versie van de lees-API ondersteunt de talen Engels, Nederlands, Frans, Duits, Italiaans, Portugees, vereenvoudigd Chinees en Spaans.
 
 Zie het [Lees-API: overzicht](concept-recognizing-text.md) voor meer informatie.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de Lees-API v3.1-preview.1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [Meer informatie over de Lees-API v3.1 (openbare preview-versie)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mei 2020
 Computer Vision API v3.0 is nu algemeen beschikbaar, met updates voor de [lees-API](concept-recognizing-text.md):

@@ -7,13 +7,15 @@
     - name: Berichtenservices vergelijken
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: Service Bus gebruiken met Java Message Service (JMS) 2.0 (preview)
+      href: how-to-use-java-message-service-20.md
 - name: Snelstartgidsen
   items:
     - name: Service Bus-wachtrijen
       items:
         - name: Een Service Bus-wachtrij maken
           items:
-            - name: Azure-portal
+            - name: Azure Portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -127,6 +129,8 @@
           items:
             - name: 'Wachtrijen, onderwerpen en abonnementen'
               href: service-bus-queues-topics-subscriptions.md
+            - name: Java Message Services (JMS) 2.0-entiteiten (preview)
+              href: java-message-service-20-entities.md
             - name: 'Berichten, nettoladingen en serialisatie'
               href: service-bus-messages-payloads.md
             - name: 'Berichten overdragen, vergrendelen en verwerken'

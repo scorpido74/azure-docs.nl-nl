@@ -3,12 +3,12 @@ title: Overzicht van het CAF Foundation-blauwdrukvoorbeeld
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901304"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852341"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -35,7 +35,7 @@ Deze implementatie omvat verschillende Azure-services die worden gebruikt om een
   - Veilige overdrachtversleuteling voor Azure-opslagaccount vereisen
   - Resourcetypen weigeren (kiezen tijdens implementeren)  
 - Initiatieven
-  - Bewaken in Azure Security Center inschakelen (89 beleidsregels)
+  - Bewaking in Azure Security Center inschakelen (meer dan 100 beleidsdefinities)
 
 Al deze elementen voldoen aan de aanbevolen procedures zoals gepubliceerd in [Azure Architecture Center - Referentiearchitecturen](/azure/architecture/reference-architectures/).
 

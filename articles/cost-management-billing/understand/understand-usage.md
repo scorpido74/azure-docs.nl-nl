@@ -1,6 +1,6 @@
 ---
 title: Informatie over uw gedetailleerde gebruik en kosten | Microsoft Docs
-description: Meer informatie over het lezen en begrijpen van uw gedetailleerde gebruik en kosten
+description: Ontdek hoe u het bestand met uw gedetailleerde gebruik en kosten kunt lezen en begrijpen. Bekijk een lijst met termen en beschrijvingen die in het bestand worden gebruikt.
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065646"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460283"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten
 

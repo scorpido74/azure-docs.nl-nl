@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ca13cbd8bdba911882f7452e34c45cbc7918dd7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b02296d5d9aed5866c0efcdf85fa1c9946617d0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077702"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501896"
 ---
 # <a name="introduction"></a>Inleiding
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 De instructies voor importeren zijn niet vereist, ze worden vooraf geïmporteerd voor de notebookervaring.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-pool die is gekoppeld aan de werkruimte
+### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-pool die is gekoppeld aan de werkruimte
 
 > [!NOTE]
 > **Importeren niet vereist in notebookervaring**
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database buiten de werkruimte
+### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database buiten de werkruimte
 
 > [!NOTE]
 > Importeren niet vereist in notebookervaring
@@ -160,7 +160,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>SQL-verificatie gebruiken in plaats van AAD
+### <a name="use-sql-auth-instead-of-aad"></a>SQL-verificatie gebruiken in plaats van AAD
 
 #### <a name="read-api"></a>API lezen
 
@@ -184,7 +184,7 @@ option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-the-pyspark-connector"></a>De PySpark-connector gebruiken
+### <a name="use-the-pyspark-connector"></a>De PySpark-connector gebruiken
 
 > [!NOTE]
 > In dit voorbeeld is alleen gericht op de notebookervaring.
@@ -208,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Lees in het leesscenario de gegevens met behulp van Scala en schrijf deze in een tijdelijke tabel, en gebruik Spark SQL in PySpark om de tijdelijke tabel in een dataframe aan te vragen.
 
-## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Andere gebruikers toestaan om de connector van Azure Synapse Apache Spark naar Synapse SQL in uw werkruimte te gebruiken
+## <a name="allow-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Andere gebruikers toestaan om de connector van Azure Synapse Apache Spark naar Synapse SQL in uw werkruimte te gebruiken
 
 U moet de eigenaar van de opslagblobgegevens zijn op het ADLS Gen2-opslagaccount dat is verbonden met de werkruimte om ontbrekende machtigingen voor anderen te wijzigen. Zorg ervoor dat de gebruiker toegang heeft tot de werkruimte en de machtigingen voor het uitvoeren van notebooks.
 

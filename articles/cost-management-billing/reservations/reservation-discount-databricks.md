@@ -1,18 +1,18 @@
 ---
 title: Azure Databricks-korting bij aankoop vooraf toepassen
-description: Lees hoe Azure Databricks-korting bij aankoop vooraf wordt toegepast op uw gebruik.
+description: Lees hoe Azure Databricks-korting bij aankoop vooraf wordt toegepast op uw gebruik. U kunt deze Databricks op elk gewenst moment tijdens de aankooptermijn gebruiken.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380c4c7fdcccf45d83adaf355c2cc12da0b327fc
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200313"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460317"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks-korting bij aankoop vooraf toepassen
 
@@ -42,7 +42,7 @@ Als u het gebruik van uw DBCU-abonnement wilt bepalen, gaat u naar de Azure-port
 
 Wanneer de korting bij aankoop vooraf van toepassing is op uw Databricks-gebruik, worden on-demand kosten als nul weergegeven in de gebruiksgegevens. Zie [Kosten en gebruik van Enterprise Agreement-reserveringen ophalen](understand-reserved-instance-usage-ea.md) voor meer informatie over reserveringskosten en gebruik.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

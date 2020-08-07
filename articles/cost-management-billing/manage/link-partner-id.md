@@ -7,28 +7,28 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281783"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529906"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
 Microsoft-partners bieden services waarmee klanten bedrijfs- en missiedoelen kunnen bereiken met behulp van Microsoft-producten. Wanneer partnergebruikers namens de klant Azure-services beheren, configureren en ondersteunen, hebben ze toegang tot de omgeving van de klant nodig. Met behulp van PAL (Partner Admin Link) kunnen partners hun partnernetwerk-id koppelen aan de referenties die zijn gebruikt voor het leveren van de service.
 
-PAL stelt Microsoft in staat om partners te identificeren en te herkennen die Azure-klanten helpen succes te boeken. Microsoft kan invloed en in Azure verbruikte omzet toerekenen aan uw organisatie, op basis van de machtigingen (RBAC-rol) en het bereik (abonnement, resourcegroep, resource) van het account.
+PAL stelt Microsoft in staat om partners te identificeren en te herkennen die Azure-klanten helpen succes te boeken. Microsoft kan invloed en in Azure verbruikte omzet toerekenen aan uw organisatie, op basis van de machtigingen (Azure-rol) en het bereik (abonnement, resourcegroep, resource) van het account.
 
 ## <a name="get-access-from-your-customer"></a>Toegang van uw klant krijgen
 
 Voordat u uw partner-id koppelt, moet uw klant u toegang geven tot hun Azure-resources door een van de volgende opties te gebruiken:
 
-- **Gastgebruiker**: Uw klant kan u als gastgebruiker toevoegen en elke willekeurige RBAC-rol (Role-Based Access Control) aan u toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) voor meer informatie.
+- **Gastgebruiker**: Uw klant kan u als gastgebruiker toevoegen en elke willekeurige Azure-rol aan u toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) voor meer informatie.
 
-- **Directoryaccount**: Uw klant kan een gebruikersaccount voor u maken in zijn eigen directory en elke willekeurige RBAC-rol aan u toewijzen.
+- **Directoryaccount**: Uw klant kan een gebruikersaccount voor u maken in zijn eigen directory en elke willekeurige Azure-rol aan u toewijzen.
 
-- **Service-principal**: Uw klant kan een app of script uit uw organisatie in zijn directory toevoegen en elke willekeurige RBAC-rol aan u toewijzen. De identiteit van de app of het script staat bekend als een service-principal.
+- **Service-principal**: Uw klant kan een app of script uit uw organisatie in zijn directory toevoegen en elke willekeurige Azure-rol aan u toewijzen. De identiteit van de app of het script staat bekend als een service-principal.
 
 - **Azure Lighthouse**: Uw klant kan een abonnement (of resourcegroep) delegeren zodat uw gebruikers ermee kunnen werken vanuit de tenant. Zie [gedelegeerd resourcebeheer van Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) voor meer informatie.
 
@@ -168,9 +168,8 @@ Met Partner Admin Link (PAL) kan Microsoft die partners identificeren en herkenn
 
 **Welke gegevens worden door PAL verzameld?**
 
-De PAL-koppeling met bestaande referenties bieden Microsoft geen nieuwe klantgegevens. Het biedt Microsoft simpelweg de telemetrie waar een partner actief is betrokken bij de Azure-omgeving van een klant. Microsoft kan invloed uitoefenen en in Azure verbruikte omzet uit de omgeving van de klant toerekenen aan de organisatie van een partner op basis van de machtigingen (RBAC-rol) en het bereik (beheergroep, abonnement, resourcegroep, resource) van het account dat de klant aan de partner heeft gegeven. 
+De PAL-koppeling met bestaande referenties bieden Microsoft geen nieuwe klantgegevens. Het biedt Microsoft simpelweg de telemetrie waar een partner actief is betrokken bij de Azure-omgeving van een klant. Microsoft kan invloed uitoefenen en in Azure verbruikte omzet uit de omgeving van de klant toerekenen aan de organisatie van een partner op basis van de machtigingen (Azure-rol) en het bereik (beheergroep, abonnement, resourcegroep, resource) van het account dat de klant aan de partner heeft gegeven. 
 
 **Heeft dit invloed op de beveiliging van een de Azure-omgeving van een klant?**
 
-Door de koppeling met PAL wordt alleen het MPN-id van de partner toegevoegd aan de referenties die al zijn ingericht; eventuele machtigingen (RBAC-rol) worden niet gewijzigd en er worden geen aanvullende Azure-servicegegevens aan de partner of aan Microsoft gegeven. 
-
+Door de koppeling met PAL wordt alleen het MPN-id van de partner toegevoegd aan de referenties die al zijn ingericht; eventuele machtigingen (Azure-rol) worden niet gewijzigd en er worden geen aanvullende Azure-servicegegevens aan de partner of aan Microsoft gegeven. 

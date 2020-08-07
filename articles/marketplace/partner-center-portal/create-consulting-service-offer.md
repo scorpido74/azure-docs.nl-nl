@@ -160,7 +160,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 8. Scherm afbeeldingen/Video's
 9. Documenten
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 

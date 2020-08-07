@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286594"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553475"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>De contactgegevens voor uw Azure-account wijzigen
 
@@ -24,7 +24,7 @@ Dit artikel helpt u om de contactgegevens voor uw account bij te werken in het A
 
 *Factureringsadres*: het factureringsadres is het adres en de contactinformatie van de organisatie of de persoon die verantwoordelijk is voor facturen die gegenereerd worden voor een factureringsaccount. Een factureringsaccount voor een Microsoft Online Subscription-programma (MOSP) heeft één factureringsadres dat wordt weergegeven op alle facturen die gegenereerd worden voor de rekening. Een factureringsaccount voor een Microsoft-klantovereenkomst (MCA) heeft een factureringsadres voor elk factureringsprofiel. Dit wordt weergegeven op facturen die gegenereerd worden voor dat factureringsprofiel.
 
-*E-mailadres voor service- en marketinge-mails*: u kunt een e-mailadres opgeven dat verschilt van datgene waarmee u zich aanmeldt om belangrijke meldingen omtrent facturering, service en aanbevelingen over uw Azure-account te ontvangen.  
+*E-mailadres voor service- en marketinge-mails*: u kunt een e-mailadres opgeven dat verschilt van datgene waarmee u zich aanmeldt om belangrijke meldingen omtrent facturering, service en aanbevelingen over uw Azure-account te ontvangen. Servicemeldingen, bijvoorbeeld over urgente beveiligingsproblemen, prijsveranderingen of wijzigingen in door uw account gebruikte services die fouten veroorzaken, worden altijd naar uw aanmeldingsadres verzonden.
 
 ## <a name="update-an-mosp-billing-account-address"></a>Een MOSP-factureringsadres bijwerken
 

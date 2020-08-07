@@ -7,15 +7,15 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: 94ffc22cc7e8e44e99d5eb42518030ff41267996
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 07/30/2020
+ms.openlocfilehash: 55bc13caec8a48ed058ea38bdc0ebe487839eef3
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133813"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461099"
 ---
-[Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -94,37 +94,37 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Per
 
 Open vanuit de projectmap het bestand **Program.cs** in uw favoriete editor of IDE. Vervang de bestaande `using`-code door de volgende `using`-instructies:
 
-[!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
+[!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Informatie over Personalizer-resource toevoegen
 
-Maak in de klasse **Programma** variabelen voor de Azure-sleutel en het eindpunt van de resource die uit de omgevingsvariabelen zijn opgehaald. Deze hebben de namen `PERSONALIZER_RESOURCE_KEY` en `PERSONALIZER_RESOURCE_ENDPOINT`. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw laden om toegang te krijgen tot de variabele. De methoden worden verderop in deze quickstart gemaakt.
+Bewerk in de **Programma**-klasse de sleutel- en eindpuntvariabelen boven aan het codebestand bij voor de Azure-sleutel en het Azure-eindpunt van uw resource. 
 
-[!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
+[!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Personalizer-client maken
 
 Maak vervolgens een methode voor het retourneren van een Personalizer-client. De parameter voor de methode is `PERSONALIZER_RESOURCE_ENDPOINT` en de ApiKey is `PERSONALIZER_RESOURCE_KEY`.
 
-[!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
+[!code-csharp[Create the Personalizer client](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=authorization)]
 
 ## <a name="get-food-items-as-rankable-actions"></a>Levensmiddelen ophalen als te rangschikken acties
 
 Acties vertegenwoordigen de inhoudskeuzes waaruit Personalizer het beste inhoudsitem moet selecteren. Voeg de volgende methoden aan de klasse Programma toe om de reeks acties en hun functies te representeren. 
 
-[!code-csharp[Food items as actions](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createAction)]
+[!code-csharp[Food items as actions](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createAction)]
 
 ## <a name="get-user-preferences-for-context"></a>Gebruikersvoorkeuren voor context ophalen
 
 Voeg de volgende methoden aan de klasse Programma toe om vanaf de opdrachtregel de invoer van een gebruiker op te halen voor het tijdstip van de dag en de huidige voedselvoorkeur. Deze worden als contextkenmerken gebruikt.
 
-[!code-csharp[Present time out day preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTimeOfDay)]
+[!code-csharp[Present time out day preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTimeOfDay)]
 
-[!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
+[!code-csharp[Present food taste preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTastePreference)]
 
 Beide methoden maken gebruik van de methode `GetKey` om de vanaf de opdrachtregel selectie van de gebruiker te lezen.
 
-[!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
+[!code-csharp[Read user's choice from the command line](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=readCommandLine)]
 
 ## <a name="create-the-learning-loop"></a>De leerlus maken
 
@@ -132,7 +132,7 @@ De Personalizer-leerlus is een cyclus van [Positie](#request-the-best-action)- e
 
 Met de volgende code wordt herhaaldelijk vanaf de opdrachtregel de cyclus voor het vragen naar de voorkeuren van de gebruiker doorlopen. Deze gegevens worden naar Personalizer gestuurd om de beste actie te selecteren, waarbij de selectie aan de klant in een lijst wordt gepresenteerd om een keuze te kunnen maken. Vervolgens wordt er een beloningsscore naar Personalizer verzonden waarmee wordt aangegeven hoe goed de service de selectie heeft uitgevoerd.
 
-[!code-csharp[Learning loop](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=mainLoop)]
+[!code-csharp[Learning loop](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=mainLoop)]
 
 Voeg de volgende methoden toe, waarmee [de inhoudskeuzes worden opgehaald](#get-food-items-as-rankable-actions), voordat u het codebestand uitvoert:
 
@@ -147,7 +147,7 @@ Als u de Positie-aanvraag wilt voltooien, wordt naar de voorkeuren van de gebrui
 
 Deze quickstart bevat eenvoudige contextkenmerken over het tijdstip van de dag en de voedselvoorkeur van de gebruiker. In productiesystemen kan het bepalen en [evalueren](../concept-feature-evaluation.md) van [acties en kenmerken](../concepts-features.md) een ingewikkelde zaak zijn.
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=rank)]
+[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=rank)]
 
 ## <a name="send-a-reward"></a>Een beloning verzenden
 
@@ -155,7 +155,7 @@ Om ervoor te zorgen dat de beloningsscore de Beloning-aanvraag instuurt, haalt h
 
 In deze quickstart wordt een eenvoudig getal, een 0 of een 1, aan een beloningsscore toegewezen. In productiesystemen kan het bepalen van wanneer en wat er naar de [Beloning](../concept-rewards.md)-oproep moet worden gezonden een ingewikkelde zaak zijn, afhankelijk van uw specifieke behoeften.
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=reward)]
+[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=reward)]
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 
@@ -167,4 +167,4 @@ dotnet run
 
 ![Het quickstart-programma stelt een aantal vragen om gebruikersvoorkeuren te verzamelen, zogenaamde kenmerken. Vervolgens wordt de beste actie geboden.](../media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
-De [broncode voor deze quickstart](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/csharp/PersonalizerExample/Program.cs) is beschikbaar in de GitHub-opslagplaats met Personalizer-voorbeelden.
+De [broncode voor deze quickstart](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer) is beschikbaar.

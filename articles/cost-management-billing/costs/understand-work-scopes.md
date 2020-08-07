@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077155"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501522"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -93,8 +93,8 @@ Hoewel governance-bereiken zijn gebonden aan één map, zijn EA-factureringsbere
 
 EA-factureringsbereiken ondersteunen de volgende rollen:
 
-- **Enterprise admin** - Kan instellingen en toegang van de factureringsrekening beheren, kan alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is het EA-factureringsbereik hetzelfde als de [Rol van de Cost Management Inzender van Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Enterprise alleen-lezen gebruiker** – Kan instellingen voor de factureringsrekening, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. In functie is het EA-factureringsbereik hetzelfde als de [Rol van de Cost Management Lezer van Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Enterprise admin** - Kan instellingen en toegang van de factureringsrekening beheren, kan alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is het EA-factureringsbereik hetzelfde als de [Azure-rol Cost Management-inzender](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Enterprise alleen-lezen gebruiker** – Kan instellingen voor de factureringsrekening, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. In functie is het EA-factureringsbereik hetzelfde als de [Azure-rol Cost Management-lezer](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Afdelingsbeheerder** – Kan afdelingsinstellingen, zoals kostencentrum, beheren en alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports.  De instellingen van de **DA kosten bekijken**-factureringsrekening moeten zijn ingeschakeld voor afdelingsbeheerders en alleen-lezen gebruikers om de kosten te bekijken. Als **DA kosten bekijken** is uitgeschakeld, kunnen de afdelingsgebruikers geen kosten op elk niveau zien, zelfs niet als ze een account of abonnementseigenaar zijn.
 - **Enterprise alleen-lezen gebruiker** – Kan afdelingsinstellingen, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. Als **DA kosten bekijken** is uitgeschakeld, kunnen de afdelingsgebruikers geen kosten op elk niveau zien, zelfs niet als ze een account of abonnementseigenaar zijn.
 - **Accounteigenaar** – Kan instellingen voor het inschrijvingsaccount beheren (zoals het kostencentrum), alle kosten bekijken en de kostenconfiguratie (zoals budgetten en exporten) voor het inschrijvingsaccount beheren. De instellingen van de **DA kosten bekijken**-factureringsrekening moeten zijn ingeschakeld voor afdelingsbeheerders en RBAC-gebruikers om de kosten te bekijken.
@@ -141,10 +141,10 @@ Factureringsbereiken van klantovereenkomsten gelden niet voor partners. Partnerr
 
 Factureringsbereiken van klantovereenkomsten ondersteunen de volgende rollen:
 
-- **Eigenaar** – Kan factureringsinstellingen en toegang beheren, alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is het factureringsbereik van klantovereenkomsten hetzelfde als de [Rol van de Cost Management Inzender van Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Inzender** – Kan factureringsinstellingen en toegang beheren, alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is het factureringsbereik van klantovereenkomsten hetzelfde als de [Rol van de Cost Management Inzender van Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Lezer** – Kan factureringsinstellingen, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. In functie is het factureringsbereik van klantovereenkomsten hetzelfde als de [Rol van de Cost Management Lezer van Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Factuurbeheerder** – Kan facturen bekijken en betalen en kan kosten gegevens en-configuratie bekijken. Bijvoorbeeld budgetten en exports. In functie is het factureringsbereik van klantovereenkomsten hetzelfde als de [Rol van de Cost Management Lezer van Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Eigenaar** – Kan factureringsinstellingen en toegang beheren, alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is dit Customer Agreement-factureringsbereik hetzelfde als de [Azure-rol Cost Management-inzender](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Inzender** – Kan factureringsinstellingen en toegang beheren, alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is dit Customer Agreement-factureringsbereik hetzelfde als de [Azure-rol Cost Management-inzender](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Lezer** – Kan factureringsinstellingen, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. In functie is dit Customer Agreement-factureringsbereik hetzelfde als de [Azure-rol Cost Management-lezer](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Factuurbeheerder** – Kan facturen bekijken en betalen en kan kosten gegevens en-configuratie bekijken. Bijvoorbeeld budgetten en exports. In functie is dit Customer Agreement-factureringsbereik hetzelfde als de [Azure-rol Cost Management-lezer](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Maker van Azure-abonnement** – Kan Azure-abonnementen maken, kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports. In functie is dit factuurbereik voor klantenovereenkomsten hetzelfde als de rol van de accounteigenaar van de EA-inschrijving.
 
 Azure-abonnementen zijn genest onder factuursecties, zoals hoe ze onder EA-inschrijvingsaccounts vallen. Factureringsgebruikers hebben toegang tot kostengegevens voor de abonnementen en resourcegroepen die zich onder hun respectieve bereik bevinden. Ze hebben echter geen toegang tot het weergeven of beheren van resources in de Azure-portal. Factureringsgebruikers kunnen kosten weergeven door te navigeren naar **Cost Management + facturering** in de Azure-portal-lijst met services. Vervolgens kunnen ze de kosten filteren voor de specifieke abonnementen en resourcegroepen die ze nodig hebben om te rapporteren.

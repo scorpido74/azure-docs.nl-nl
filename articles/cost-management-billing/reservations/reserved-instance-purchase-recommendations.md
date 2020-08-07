@@ -1,20 +1,20 @@
 ---
-title: Hoe reserveringsaanbevelingen van Azure worden gemaakt
-description: Lees hier hoe reserveringsaanbevelingen van Azure voor virtuele machines worden gemaakt.
+title: Aanbevelingen voor Azure-reserveringen
+description: Ontdek meer over aanbevelingen voor Azure-reserveringen.
 author: banders
 ms.author: banders
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 90967e740b87c2f93bd46bfb78684af96f36193a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.date: 08/04/2020
+ms.openlocfilehash: 661e3bfa149718eb2893c5722ab3931a8a9f9afe
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508476"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797931"
 ---
-# <a name="how-reservation-recommendations-are-created"></a>Hoe reserveringsaanbevelingen worden gemaakt
+# <a name="reservation-recommendations"></a>Aanbevelingen voor reserveringen
 
 Aankoopaanbevelingen voor gereserveerde Azure-instanties (RI) worden aangeboden via de Azure Consumption [Reservation Recommendation-API](/rest/api/consumption/reservationrecommendations), [Azure Advisor](../../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs) en de ervaring voor de aankoop van reserveringen in de Azure-portal.
 
@@ -25,12 +25,36 @@ In de volgende stappen wordt gedefinieerd hoe de aanbevelingen worden berekend:
 3. De kosten worden gesimuleerd voor verschillende hoeveelheden. De hoeveelheid waarvoor de besparingen het grootst zijn, wordt aanbevolen.
 4. Als uw resources regelmatig worden afgesloten, vindt de simulatie geen besparingen en worden er geen aankoopaanbevelingen gedaan.
 
+## <a name="recommendations-in-the-azure-portal"></a>Aanbevelingen in de Azure-portal
+
+Aanbevelingen voor reserveringsaankopen worden ook weergegeven in de Azure-portal in de aankoopervaring. Aanbevelingen worden weergegeven met de **Aanbevolen hoeveelheid**. De hoeveelheid die Azure aanbeveelt, zal de best mogelijke besparingen opleveren na aankoop. U kunt elke hoeveelheid kopen die u maar wilt, maar als u een andere hoeveelheid koopt, zullen uw besparingen niet optimaal zijn.
+
+Laten we enkele voorbeelden bekijken om te zien waarom dat zo is.
+
+In de volgende voorbeeldafbeelding voor de geselecteerde aanbeveling beveelt Azure een aankoophoeveelheid van 6 aan.
+
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" alt-text="Voorbeeld van een aanbeveling voor een reserveringsaankoop" lightbox="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" :::
+
+Meer informatie over de aanbeveling wordt weergegeven wanneer u de koppeling **Details bekijken** selecteert. In de volgende afbeelding worden details over de aanbeveling weergegeven. De aanbevolen hoeveelheid wordt berekend voor het hoogst mogelijke gebruik, gebaseerd op uw historische gebruik. Uw aanbeveling is mogelijk niet voor 100% gebruik als uw gebruik inconsistent is. In het voorbeeld ziet u dat het gebruik in de loop der tijd fluctueerde. De kosten van de reservering, mogelijke besparingen en het gebruikspercentage worden weergegeven.
+
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="Voorbeeld van details van een aanbeveling voor een reserveringsaankoop" :::
+
+Wanneer u een hogere of lagere reserveringshoeveelheid dan de aanbeveling selecteert, veranderen de grafiek en de geschatte waarden. Als u de reserveringshoeveelheid verhoogt, nemen uw besparingen af omdat het reserveringsgebruik lager zal zijn. Met andere woorden, u zult betalen voor reserveringen die niet volledig worden gebruikt.
+
+Als u de reserveringshoeveelheid verlaagt, nemen uw besparingen ook af. Hoewel het gebruik hoger zal zijn, zullen er waarschijnlijk perioden zijn wanneer uw reserveringen uw gebruik niet volledig zullen dekken. Als het gebruik uw reserveringshoeveelheid overschrijdt, worden daar duurdere Pay-As-You-Go-bronnen voor gebruikt. De volgende voorbeeldafbeelding illustreert dit. We hebben de reserveringshoeveelheid handmatig verlaagd naar 4. Het reserveringsgebruik wordt verhoogd, maar de algehele besparingen nemen af omdat er Pay-As-You-Go-kosten aanwezig zijn.
+
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details-changed.png" alt-text="Voorbeeld van gewijzigde details van een aanbeveling voor een reserveringsaankoop" :::
+
+Probeer reserveringen zo dicht mogelijk bij de aanbeveling te kopen voor optimale besparingen.
+
 ## <a name="recommendations-in-azure-advisor"></a>Aanbevelingen in Azure Advisor
 
-Aankoopaanbevelingen voor reserveringen voor virtuele machines zijn beschikbaar in Azure Advisor. Houd rekening met de volgende belangrijke punten:
+Aanbevelingen voor reserveringsaankopen zijn beschikbaar in Azure Advisor. Houd rekening met de volgende belangrijke punten:
 
 - Advisor heeft alleen aanbevelingen voor bereiken van één abonnement.
-- Aanbevelingen die worden berekend op basis van de afgelopen 30 dagen, zijn beschikbaar in Advisor.
+- Aanbevelingen worden berekend door de gebruikstrend van de afgelopen 30 dagen in acht te nemen.
+- De aanbevelingshoeveelheid en besparingen zijn voor een 3-jarige reservering, indien beschikbaar. Als er geen 3-jarige reservering wordt verkocht voor de service, wordt de aanbeveling berekend op basis van de prijs voor een 1-jarige reservering.
+- Aanbevelingen voor reserveringen houden rekening met eventuele speciale kortingen die u hebt op uw gebruikstarieven op aanvraag.
 - Als u een reservering met gedeeld bereik aanschaft, kan het tot 30 dagen duren voordat aankoopaanbelingen voor reserveringen van Advisor zijn verdwenen.
 
 ## <a name="other-expected-api-behavior"></a>Ander verwacht API-gedrag

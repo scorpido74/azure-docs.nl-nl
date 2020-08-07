@@ -75,7 +75,7 @@
       href: ./policy-samples.md
 - name: Concepten
   items:
-    - name: Sleutel-waardearchief
+    - name: Sleutels en waarden
       href: concept-key-value.md
     - name: Point-in-time-snapshot
       href: concept-point-time-snapshot.md

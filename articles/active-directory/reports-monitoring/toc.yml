@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: Wat is Azure AD Monitoring?
       href: overview-monitoring.md
-- name: Snelstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een aanmeldrapport downloaden
@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: Logboeken naar Event Hub streamen
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Log Analytics-wizard
+      href: tutorial-log-analytics-wizard.md
 - name: Concepten
   items:
     - name: Een implementatie van rapportage en bewaking plannen

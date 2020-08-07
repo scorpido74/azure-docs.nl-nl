@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: ddf16334830b64c57e9d09a75dfc80fc319a9ccd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: include file, devx-track-javascript
+ms.date: 07/30/2020
+ms.openlocfilehash: 4f57d3a6c959a8ec912722a617496c52f412c13f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133811"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461102"
 ---
-[Referentiedocumentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Referentiedocumentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -91,27 +91,27 @@ Maak een nieuwe Node.jse-toepassing in uw favoriete editor of IDE genaamd `sampl
 
 Open het bestand **sample.js** in uw voorkeurseditor of IDE. Voeg de volgende `requires` toe om de NPM-pakketten toe te voegen:
 
-[!code-javascript[Add module dependencies](~/samples-personalizer/quickstarts/node/sample.js?name=Dependencies)]
+[!code-javascript[Add module dependencies](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Informatie over Personalizer-resource toevoegen
 
-Maak variabelen voor de Azure-sleutel en het eindpunt van de resource die uit de omgevingsvariabelen zijn opgehaald. Deze hebben de namen `PERSONALIZER_KEY` en `PERSONALIZER_ENDPOINT`. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw laden om toegang te krijgen tot de variabele. De methoden worden verderop in deze quickstart gemaakt.
+Bewerk de sleutel- en eindpuntvariabelen boven aan het codebestand bij voor de Azure-sleutel en het Azure-eindpunt van uw resource. 
 
-[!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
+[!code-javascript[Add Personalizer resource information](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Personalizer-client maken
 
 Maak vervolgens een methode voor het retourneren van een Personalizer-client. De parameter voor de methode is `PERSONALIZER_RESOURCE_ENDPOINT` en de ApiKey is `PERSONALIZER_RESOURCE_KEY`.
 
-[!code-javascript[Create a Personalizer client](~/samples-personalizer/quickstarts/node/sample.js?name=Client)]
+[!code-javascript[Create a Personalizer client](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=Client)]
 
 ## <a name="get-content-choices-represented-as-actions"></a>Inhoudskeuzes ophalen die worden weergegeven als acties
 
 Acties vertegenwoordigen de inhoudskeuzes waaruit Personalizer het beste inhoudsitem moet selecteren. Voeg de volgende methoden aan de klasse Programma toe om de reeks acties en hun functies te representeren.
 
-[!code-javascript[Create user features](~/samples-personalizer/quickstarts/node/sample.js?name=createUserFeatureTimeOfDay)]
+[!code-javascript[Create user features](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=createUserFeatureTimeOfDay)]
 
-[!code-javascript[Create actions](~/samples-personalizer/quickstarts/node/sample.js?name=getActions)]
+[!code-javascript[Create actions](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=getActions)]
 
 ## <a name="create-the-learning-loop"></a>De leerlus maken
 
@@ -119,7 +119,7 @@ De Personalizer-leerlus is een cyclus van [Positie](#request-the-best-action)- e
 
 Met de volgende code wordt herhaaldelijk vanaf de opdrachtregel de cyclus voor het vragen naar de voorkeuren van de gebruiker doorlopen. Deze gegevens worden naar Personalizer gestuurd om de beste actie te selecteren, waarbij de selectie aan de klant in een lijst wordt gepresenteerd om een keuze te kunnen maken. Vervolgens wordt er een beloning naar Personalizer verzonden waarmee wordt aangegeven hoe goed de service de selectie heeft uitgevoerd.
 
-[!code-javascript[Create the learning loop](~/samples-personalizer/quickstarts/node/sample.js?name=mainLoop)]
+[!code-javascript[Create the learning loop](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=mainLoop)]
 
 Bekijk de Rank- en Reward-aanroepen in de volgende secties.
 
@@ -134,7 +134,7 @@ Als u de Positie-aanvraag wilt voltooien, wordt naar de voorkeuren van de gebrui
 
 Deze quickstart bevat eenvoudige contextkenmerken over het tijdstip van de dag en de voedselvoorkeur van de gebruiker. In productiesystemen kan het bepalen en [evalueren](../concept-feature-evaluation.md) van [acties en kenmerken](../concepts-features.md) een ingewikkelde zaak zijn.
 
-[!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
+[!code-javascript[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=rank)]
 
 ## <a name="send-a-reward"></a>Een beloning verzenden
 
@@ -143,7 +143,7 @@ Om ervoor te zorgen dat de beloningsscore de Beloning-aanvraag instuurt, haalt h
 
 In deze quickstart wordt een eenvoudig getal, een 0 of een 1, aan een beloningsscore toegewezen. In productiesystemen kan het bepalen van wanneer en wat er naar de [Beloning](../concept-rewards.md)-oproep moet worden gezonden een ingewikkelde zaak zijn, afhankelijk van uw specifieke behoeften.
 
-[!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
+[!code-javascript[The Personalizer learning loop sends a reward.](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=reward)]
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 

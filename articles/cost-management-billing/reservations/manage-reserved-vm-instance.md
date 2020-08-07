@@ -1,18 +1,18 @@
 ---
 title: Azure-reserveringen beheren
-description: Meer informatie over het beheren van Azure-reserveringen.
+description: Ontdek hoe u Azure-reserveringen kunt beheren. Bekijk stappen om het reserveringsbereik te wijzigen, een reservering te splitsen en het gebruik van een reservering te optimaliseren.
 ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c0af39becf172b6d663cb9ffb0a815e529698283
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f3e4a772382606178d6cd5b0dcb92b0d1bc28695
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461813"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Reserveringen voor Azure-resources beheren
 

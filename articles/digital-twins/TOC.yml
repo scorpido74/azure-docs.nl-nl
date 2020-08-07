@@ -70,8 +70,6 @@
           href: how-to-create-azure-function.md
         - name: Query uitvoeren op de tweelinggrafiek
           href: how-to-query-graph.md
-        - name: Metrische gegevens weergeven in Azure Monitor
-          href: how-to-view-metrics.md
     - name: Invoer verbinden
       items:
         - name: Telemetrie opnemen vanuit IoT Hub
@@ -79,13 +77,19 @@
     - name: Uitvoer verbinden
       items:
         - name: Eindpunten en routes beheren
-          href: how-to-manage-routes.md
+          items:
+            - name: API- en CLI-versie
+              href: how-to-manage-routes-apis-cli.md
+            - name: Portalversie
+              href: how-to-manage-routes-portal.md
         - name: Integreren met Azure Maps
           href: how-to-integrate-maps.md
         - name: Integreren met Azure Time Series Insights
           href: how-to-integrate-time-series-insights.md
     - name: Problemen oplossen
       items:
+        - name: Metrische gegevens weergeven in Azure Monitor
+          href: troubleshoot-metrics.md
         - name: Diagnostische logboeken inschakelen
           href: troubleshoot-diagnostics.md
         - name: Bekende problemen

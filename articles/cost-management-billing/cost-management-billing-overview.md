@@ -1,23 +1,36 @@
 ---
-title: Overzicht van Azure Kostenbeheer en facturering | Microsoft Docs
-description: U gebruikt functies van Azure Kostenbeheer en facturering voor het uitvoeren van administratieve taken en het beheren van factureringstoegang tot kosten. Daarnaast zijn er ook functies om Azure-uitgaven te controleren en om het gebruik van Azure-resources te optimaliseren.
+title: Overzicht van Azure Kostenbeheer en facturering
+description: U gebruikt functies van Azure Kostenbeheer en facturering voor het uitvoeren van administratieve taken en het beheren van factureringstoegang tot kosten. Er zijn ook functies voor het bewaken en controleren van Azure-uitgaven en voor het optimaliseren van het resourcegebruik van Azure.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 07/29/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 76121dd8126922de2843e430a4e01cae1c7c0d53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879085"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412997"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>Wat is Azure Kostenbeheer en facturering?
+# <a name="what-is-azure-cost-management--billing"></a>Wat is Azure Kostenbeheer en facturering?
 
-Bij producten en services van Azure is het zo dat u alleen betaalt voor wat u gebruikt. Als u Azure-resources maakt en gebruikt, worden er kosten in rekening gebracht voor de resources. U gebruikt functies van Azure Kostenbeheer en facturering voor het uitvoeren van administratieve taken en het beheren van factureringstoegang tot kosten. U kunt ook functies gebruiken voor het bewaken en controleren van Azure-uitgaven en voor het optimaliseren van het resourcegebruik van Azure.
+Door de Microsoft-cloud te gebruiken, kunt u de technische prestaties van uw zakelijke workloads aanzienlijk verbeteren. Het kan ook uw kosten verlagen, evenals de overhead die nodig is om organisatie-assets te beheren. De zakelijke kans creëert echter een risico vanwege de potentiële verspilling en inefficiënties die in uw cloudimplementaties worden geïntroduceerd. Azure Kostenbeheer en facturering is een door Microsoft geleverde reeks hulpprogramma’s die u helpen de kosten van uw workloads te analyseren, beheren en optimaliseren. Door de reeks te gebruiken, helpt u te verzekeren dat uw organisatie profiteert van de voordelen die de cloud biedt.
+
+U kunt uw Azure-workloads beschouwen als de lampen in uw woning. Wanneer u de deur uitgaat, laat u de lampen dan aan? Zou u andere lampen kunnen gebruiken die efficiënter zijn, om uw maandelijkse energierekening te helpen verlagen? Hebt u in een bepaalde kamer meer lampen dan nodig is? U kunt Azure Kostenbeheer en facturering gebruiken om een vergelijkbare gedachtegang toe te passen op de workloads die door uw organisatie worden gebruikt.
+
+Bij producten en services van Azure is het zo dat u alleen betaalt voor wat u gebruikt. Als u Azure-resources maakt en gebruikt, worden er kosten in rekening gebracht voor de resources. Omdat nieuwe resources zo gemakkelijk kunnen worden geïmplementeerd, kunnen de kosten van uw workloads aanzienlijk oplopen zonder goede analyse en bewaking. U gebruikt functies van Azure Kostenbeheer en facturering voor:
+
+- Het uitvoeren van administratieve taken zoals het betalen van uw rekening
+- Het beheren van factureringstoegang tot kosten
+- Het downloaden van kosten- en gebruiksgegevens die zijn gebruikt om uw maandelijkse factuur te genereren
+- Het proactief toepassen van gegevensanalyse op uw kosten
+- Het instellen van uitgavendrempels
+- Het identificeren van kansen voor workloadwijzigingen die uw uitgaven kunnen optimaliseren
+
+Lees het artikel [Azure Cost Management best practices](./costs/cost-mgt-best-practices.md) voor meer informatie over kostenbeheer in een bedrijf.
 
 ## <a name="understand-azure-billing"></a>Informatie over Azure-facturering
 
@@ -36,7 +49,7 @@ De Azure-portal ondersteunt momenteel de volgende typen factureringsaccounts:
 - **Microsoft-klantovereenkomst**: Er wordt een factureringsaccount voor een Microsoft-klantovereenkomst aangemaakt, wanneer uw organisatie samenwerkt met een Microsoft-vertegenwoordiger om een Microsoft-klantovereenkomst te ondertekenen. Sommige klanten in bepaalde regio's, die zich via de Azure-website aanmelden voor een [account met tarieven op gebruiksbasis](https://azure.microsoft.com/offers/ms-azr-0003p/) of die hun [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/) upgraden, hebben mogelijk ook een factureringsaccount voor een Microsoft-klantovereenkomst. Voor meer informatie, zie [Aan de slag met uw factureringsaccount voor een Microsoft-klantovereenkomst](./understand/mca-overview.md).
 
 ### <a name="scopes-for-billing-accounts"></a>Bereiken voor factureringsaccounts
-Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weergeven en beheren. Dit de plek waar u factureringsgegevens, betalingen en facturen beheert en algemeen accountbeheer uitvoert.
+Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weergeven en beheren. Dit is de plek waar u factureringsgegevens, betalingen en facturen beheert en algemeen accountbeheer uitvoert.
 
 #### <a name="microsoft-online-services-program"></a>Microsoft Online Services-programma
 
@@ -44,7 +57,6 @@ Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weer
 |---------|---------|
 |Factureringsaccount     | Verwijst naar een enkele eigenaar (accountbeheerder) voor één of meer Azure abonnementen. Een accountbeheerder is gemachtigd om verschillende factureringstaken uit te voeren, zoals abonnementen maken, facturen inzien of de facturering voor abonnementen wijzigen.  |
 |Abonnement     |  Verwijst naar een groepering van Azure-resources. Er wordt een factuur gegenereerd voor het abonnementsbereik. Het heeft zijn eigen betalingswijzen die worden gebruikt om de factuur te betalen.|
-
 
 #### <a name="enterprise-agreement"></a>Enterprise Agreement
 
@@ -54,7 +66,6 @@ Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weer
 |Afdeling     |  Optionele groepering van inschrijvingsaccounts.      |
 |Inschrijvingsaccount     |  Verwijst naar een enkele accounteigenaar. Azure-abonnementen worden gemaakt voor het bereik van het inschrijvingsaccount.  |
 
-
 #### <a name="microsoft-customer-agreement"></a>Microsoft-klantovereenkomst
 
 |Bereik  |Taken  |
@@ -63,19 +74,17 @@ Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weer
 |Factureringsprofiel     |  Verwijst naar een factuur en de bijbehorende betalingswijzen. De factuur wordt gegenereerd in dit bereik. Het factureringsprofiel kan meerdere factuursecties hebben.      |
 |Factuursectie     |   Verwijst naar een kostengroep op een factuur. Abonnementen en andere aankopen worden gekoppeld aan de factuursectie.    |
 
-
 ## <a name="understand-azure-cost-management"></a>Inzicht in het werken met Azure Kostenbeheer
-Kostenbeheer is het proces waarmee u effectief de kosten voor uw bedrijf kunt plannen en beheren. Kostenbeheertaken worden normaal gesproken uitgevoerd door de financiële, management- en app-teams. Azure Kostenbeheer en facturering helpt organisaties bij het plannen door rekening te houden met kosten. Het helpt ook effectief kosten te analyseren en actie te ondernemen om clouduitgaven te optimaliseren. Lees het artikel [Azure Cost Management best practices](./costs/cost-mgt-best-practices.md) voor meer informatie over kostenbeheer in een bedrijf.
-
-Bekijk de video [met een overzicht van Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) voor een beknopt overzicht van hoe Azure Cost Management u kan helpen geld te besparen in Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
-
->[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Facturering is wel gerelateerd, maar verschilt van kostenbeheer. Facturering is het proces van facturen versturen naar klanten voor geleverde goederen of diensten en de commerciële relatie beheren.
 
 Cost Management toont organisatorische kosten en gebruikspatronen aan met geavanceerde analyses. Rapporten in Cost Management tonen de verbruikskosten die worden toegerekend aan Azure-services en aanbiedingen op Marketplace van derden. De kosten zijn gebaseerd op de overeengekomen prijzen en er wordt rekening gehouden met kortingen voor reserveringen en Azure Hybrid Benefit. Gezamenlijk tonen de rapporten uw intern en externe kosten voor gebruik en kosten voor Azure Marketplace. Andere kosten, zoals reserveringskosten, ondersteuning en belasting worden nog niet in rapporten getoond. De rapporten helpen u grip te krijgen op uw uitgaven en resource-gebruik en kunnen helpen afwijkingen te vinden in uitgaven. Voorspellende analyses zijn ook beschikbaar. Cost Management gebruikt Azure managementgroepen, budgetten en aanbevelingen om duidelijk aan te tonen hoe uw uitgaven zijn ingedeeld en hoe u kosten kunt reduceren.
 
 U kunt de Azure Portal of verschillende API’s gebruiken voor geautomatiseerde export om kostengegevens te integreren met externe systemen en processen. Geautomatiseerde factureringsgegevensexport en geplande rapporten zijn ook beschikbaar.
+
+Bekijk de video [met een overzicht van Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) voor een beknopt overzicht van hoe Azure Cost Management u kan helpen geld te besparen in Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 ### <a name="plan-and-control-expenses"></a>Uitgaven plannen en beheren
 
@@ -105,7 +114,6 @@ Azure heeft andere hulpprogramma’s die geen onderdeel uitmaken van de functies
 - [Azure Migrate](../migrate/migrate-overview.md), beoordeel de werkbelasting van uw huidige gegevenscentrum voor inzicht in wat er nodig is van een Azure-vervangingsoplossing.
 - [Azure Advisor](../advisor/advisor-overview.md), identificeer ongebruikte VM’s en ontvang aanbevelingen over aankopen van Azure gereserveerde instanties.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), gebruik uw huidige on-premises Windows Server- of SQL Server-licenties voor VM’s in Azure om te besparen.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

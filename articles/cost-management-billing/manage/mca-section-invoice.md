@@ -1,18 +1,18 @@
 ---
 title: Uw factuur organiseren op basis van uw behoeften - Azure
-description: Meer informatie over hoe u de kosten op uw factuur kunt organiseren.
+description: Ontdek hoe u de kosten op uw factuur kunt organiseren. U kunt uw factureringsaccount aanpassen door factureringsprofielen en factuursecties te maken.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 553263ebac3c64e27a7711b4407a7d4ba573998c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200741"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460028"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Kosten organiseren door uw factureringsrekening aan te passen
 
@@ -72,13 +72,13 @@ Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-section-invoice/search-cmb.png)
 
 3. Selecteer in het linkerdeelvenster de optie **Factureringsprofielen**. Selecteer een factureringsprofiel in de lijst. De nieuwe sectie wordt weergegeven op de factuur van het geselecteerde factureringsprofiel.
 
-   [![Schermopname met lijst van factureringsprofielen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Schermopname van de lijst met factureringsprofielen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. Selecteer **Factuursecties** in het linkerdeelvenster en selecteer vervolgens **Toevoegen** boven aan de pagina.
 
@@ -100,13 +100,13 @@ Als u een factureringsprofiel wilt maken, moet u een **factureringsrekening-eige
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-section-invoice/search-cmb.png)
 
 3. Selecteer **Factureringsprofielen** in het linkerdeelvenster en selecteer vervolgens **Toevoegen** boven aan de pagina.
 
-   [![Schermopname met lijst van factureringsprofielen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Schermopname van de lijst met factureringsprofielen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -118,7 +118,7 @@ Als u een factureringsprofiel wilt maken, moet u een **factureringsrekening-eige
 
     |Veld  |Definitie  |
     |---------|---------|
-    |Name     | Een weergavenaam die u helpt om het factureringsprofiel in de Azure-portal gemakkelijk te kunnen identificeren.  |
+    |Naam     | Een weergavenaam die u helpt om het factureringsprofiel in de Azure-portal gemakkelijk te kunnen identificeren.  |
     |Inkoopordernummer    | Een optioneel inkoopordernummer. Het inkoopordernummer wordt weergegeven op de facturen die voor het factureringsprofiel worden gegenereerd. |
     |Factuuradres   | Het factuuradres wordt weergegeven op de facturen die voor het factureringsprofiel worden gegenereerd. |
     |E-mailfactuur   | Schakel het selectievakje E-mailfactuur in om de facturen voor dit factureringsprofiel per e-mail te ontvangen. Als u zich niet aanmeldt, kunt u de facturen in de Azure-portal bekijken en downloaden.|
@@ -163,7 +163,7 @@ Als u beschikt over bestaande Azure-abonnementen of andere producten, zoals Azur
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
    ![Schermopname van zoekopdracht in portal naar abonnementen](./media/mca-section-invoice/search-cmb.png)
 
@@ -232,12 +232,12 @@ In de bovenstaande afbeelding heeft Contoso twee abonnementen. Het voordeel van 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een extra Azure-abonnement maken voor een Microsoft-klantovereenkomst](create-subscription.md)
+- [Een extra Azure-abonnement voor Microsoft-klantovereenkomst maken](create-subscription.md)
 - [Factureringsrollen beheren in de Azure-portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 - [Factureringseigenaar worden van Azure-abonnementen van andere gebruikers in andere factureringsaccounts](mca-request-billing-ownership.md)

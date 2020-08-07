@@ -13,10 +13,10 @@
       items:
         - name: Een app registreren
           href: quickstart-register-app.md
-        - name: Een app configureren voor toegang tot web-API's
-          href: quickstart-configure-app-access-web-apis.md
-        - name: Een app configureren om web-API's beschikbaar te stellen
+        - name: App configureren om een web-API weer te geven
           href: quickstart-configure-app-expose-web-apis.md
+        - name: App configureren om een web-API te openen
+          href: quickstart-configure-app-access-web-apis.md
         - name: Accounts aanpassen die door een app worden ondersteund
           href: quickstart-modify-supported-accounts.md
         - name: Een app verwijderen

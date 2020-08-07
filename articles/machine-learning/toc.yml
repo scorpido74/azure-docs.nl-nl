@@ -229,7 +229,7 @@
         - name: Invoer- en uitvoermappen instellen
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: Interactieve foutopsporing
+        - name: Visual Studio Code
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
         - name: Git-integratie
@@ -437,26 +437,28 @@
           href: how-to-schedule-pipelines.md
         - name: Een pijplijn activeren
           href: how-to-trigger-published-pipeline.md
+        - name: Designer (slepen en neerzetten)
+          items:
+            - name: Metrische logboekgegevens
+              displayName: 'designer, logging'
+              href: how-to-track-designer-experiments.md
+            - name: Gegevens transformeren
+              displayName: pipeline
+              href: how-to-designer-transform-data.md
+            - name: Opnieuw trainen met behulp van gepubliceerde pijplijnen
+              displayName: 'retrain, designer, published pipeline'
+              href: how-to-retrain-designer.md
+            - name: Batch-voorspellingen
+              displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+              href: how-to-run-batch-predictions-designer.md
+            - name: Python-code uitvoeren
+              displayName: 'feature extraction, feature engineering'
+              href: how-to-designer-python.md
         - name: Problemen met pijplijnen opsporen en oplossen
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Fouten met pijplijnen opsporen in Application Insights
           href: how-to-debug-pipelines-application-insights.md
-        - name: Metrische gegevens van het Designer-logboek
-          displayName: 'designer, logging'
-          href: how-to-track-designer-experiments.md
-        - name: Gegevens transformeren met Designer
-          displayName: pipeline
-          href: how-to-designer-transform-data.md
-        - name: Designer opnieuw trainen met gepubliceerde pijplijnen
-          displayName: 'retrain, designer, published pipeline'
-          href: how-to-retrain-designer.md
-        - name: Batch-voorspellingen ontwerpen
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-        - name: Python-code uitvoeren met Designer
-          displayName: 'feature extraction, feature engineering'
-          href: how-to-designer-python.md
         - name: Parallelle uitvoerstap gebruiken
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
@@ -475,6 +477,9 @@
     - name: Bronnen beheren voor VS Code
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
+    - name: Interactieve foutopsporing in VS Code
+      displayName: 'vscode,remote,debug,pipelines,deployments,ssh'
+      href: how-to-debug-visual-studio-code.md
     - name: Gegevens exporteren en verwijderen
       displayName: GDPR
       href: how-to-export-delete-data.md

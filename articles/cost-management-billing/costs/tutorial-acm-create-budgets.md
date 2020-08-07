@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a48e4b594b82f6e910db26fc2319032fbef30b6b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044984"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446005"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
@@ -40,7 +40,7 @@ In deze zelfstudie leert u het volgende:
 
 Budgetten worden ondersteund voor de volgende Azure-accounttypen en -bereiken:
 
-- Bereiken voor toegangsbeheer op basis van rollen in Azure
+- Azure RBAC-bereiken (op rollen gebaseerd toegangsbeheer)
     - Beheergroepen
     - Abonnement
 - Enterprise Agreement-bereiken

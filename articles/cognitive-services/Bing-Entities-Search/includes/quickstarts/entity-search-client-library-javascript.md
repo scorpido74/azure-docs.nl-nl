@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Entity Search java script-client bibliotheek
+title: Quickstart voor Bing Entity Search-clientbibliotheek voor JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,14 +8,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.openlocfilehash: ac2f83c824014e16cfbe9ab18483b914ed8b077d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136765"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405060"
 ---
-Gebruik deze Quick Start om te beginnen met zoeken naar entiteiten met de Bing Entity Search-client bibliotheek voor Java script. Hoewel Bing Entity Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search-clientbibliotheek voor JavaScript. Hoewel Bing Entity Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
 
 ## <a name="prerequisites"></a>Vereisten
 

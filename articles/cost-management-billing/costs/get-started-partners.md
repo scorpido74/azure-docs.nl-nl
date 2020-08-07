@@ -3,17 +3,17 @@ title: Aan de slag met Azure Cost Management voor partners
 description: In dit artikel wordt uitgelegd hoe partners Azure Cost Management-functies gebruiken en hoe ze toegang tot Cost Management voor hun klanten mogelijk maken.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372141"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563939"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -140,7 +140,7 @@ Wanneer het beleid is ingesteld op **Nee**, is Azure Cost Management niet beschi
 
 Wanneer het kostenbeleid is ingesteld op **Ja**, kunnen abonnementsgebruikers die zijn gekoppeld aan de tenant van de klant, de gebruikskosten bekijken bij Betalen naar gebruik-tarieven.
 
-Wanneer het beleid voor het berekenen van de kosten is ingeschakeld, worden voor alle services waarvoor het abonnementsgebruik geldt, kosten op basis van Betalen naar gebruik-tarieven weergegeven. Het gebruik van de reservering wordt weergegeven met nul kosten voor de werkelijke en afgeschreven kosten. Aankopen en rechten zijn niet gekoppeld aan een specifiek abonnement. Aankopen worden dus niet weergegeven in het abonnementsbereik.
+Wanneer het beleid voor het berekenen van de kosten is ingeschakeld, worden voor alle services waarvoor het abonnementsgebruik geldt, kosten op basis van Betalen naar gebruik-tarieven weergegeven. Het gebruik van de reservering wordt weergegeven met nul kosten voor de werkelijke en afgeschreven kosten. Aankopen en rechten zijn niet gekoppeld aan een specifiek abonnement. Aankopen worden dus niet weergegeven in het abonnementsbereik. De globale beheerder/beheerderagent van een directe partner of een indirecte provider kan ook de [Update Customer-API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) gebruiken om het beleid voor kostenzichtbaarheid van elke klant op schaal in te stellen.
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Abonnementskosten bekijken in de tenant van de klant
 
