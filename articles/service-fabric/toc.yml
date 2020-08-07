@@ -635,7 +635,7 @@
             - name: Continue integratie met Azure-pijplijnen instellen
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Uw Linux-toepassingen implementeren met behulp van Jenkins
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: Omgekeerde proxy instellen en configureren
       items:
         - name: Omgekeerde proxy instellen en configureren

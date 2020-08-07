@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489874"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904535"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,6 +36,9 @@ Ongeacht welk verificatie type wordt gebruikt, wordt op rollen gebaseerd toegang
 * [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning-notebook-VM](concept-azure-machine-learning-architecture.md#compute-instance) met de SDK die al is geïnstalleerd.
 
 ## <a name="interactive-authentication"></a>Interactieve verificatie
+
+> [!IMPORTANT]
+> Interactieve verificatie maakt gebruik van uw browser en vereist cookies (inclusief cookies van derden). Als u cookies hebt uitgeschakeld, wordt er mogelijk een fout bericht weer gegeven zoals ' we kunnen u niet aanmelden '. Deze fout kan ook optreden als u [Azure multi-factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)hebt ingeschakeld.
 
 De meeste voor beelden in de documentatie en voor beelden gebruiken interactieve verificatie. Wanneer u de SDK gebruikt, zijn er bijvoorbeeld twee functie aanroepen waarmee automatisch een verificatie stroom op basis van een gebruikers interface wordt gevraagd:
 
@@ -85,7 +88,7 @@ De eenvoudigste manier om een SP te maken en toegang te verlenen tot uw werk rui
     az login
     ```
 
-    Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de instructies op de opdracht regel volgen. De instructies moeten bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en een autorisatie code invoeren.
+    Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de aanwijzingen op de opdrachtregel volgen. Dit omvat het bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en het invoeren van een autorisatiecode.
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 

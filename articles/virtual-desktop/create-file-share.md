@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027389"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842906"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -39,7 +39,7 @@ Een opslag account instellen:
 
 4. Voer de volgende gegevens in op de pagina **opslag account maken** :
 
-    - Maak een nieuwe resourcegroep.
+    - Een nieuwe resourcegroep maken.
     - Voer een unieke naam in voor het opslagaccount.
     - Voor de **locatie**raden we u aan om dezelfde locatie te kiezen als de Windows-hostgroep voor virtueel bureau blad.
     - Selecteer bij **Prestaties** de optie **Standaard**. (Afhankelijk van uw IOPS-vereisten. Zie [opslag opties voor FSLogix-profiel containers in Windows Virtual Desktop](store-fslogix-profile.md)voor meer informatie.)
@@ -190,8 +190,6 @@ Uw NTFS-machtigingen configureren:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-5. Selecteer **Toepassen**.
-
 ## <a name="configure-fslogix-on-session-host-vms"></a>FSLogix configureren op Vm's van de host van sessies
 
 In deze sectie wordt uitgelegd hoe u een virtuele machine configureert met FSLogix. U moet deze instructies volgen telkens wanneer u een sessiehost configureert. Voordat u begint met configureren, volgt u de instructies in [FSLogix downloaden en installeren](/fslogix/install-ht). Er zijn verschillende opties beschikbaar om ervoor te zorgen dat de registersleutels zijn ingesteld op alle sessiehosts. U kunt deze opties instellen in een installatiekopie of een groepsbeleid configureren.
@@ -214,7 +212,7 @@ Zo configureert u FSLogix op de VM van uw sessiehost:
 
     - Stel de waarde van **VHDLocations** in op het UNC-pad dat u hebt gegenereerd in [het UNC-pad ophalen](#get-the-unc-path).
 
-6. Start de VM opnieuw.
+6. Start de VM opnieuw op.
 
 ## <a name="testing"></a>Testen
 

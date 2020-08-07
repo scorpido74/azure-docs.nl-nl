@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 542e16bc061b563a6e05dd55c0dc3a30b48a3c85
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 706635e019f77fe31c5efb609c6f4028a0304446
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835592"
+ms.locfileid: "87874297"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemene doel einden
 
 VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en geheugen. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. Dit artikel bevat informatie over de aanbiedingen voor algemeen gebruik.
+
+
+Er wordt een lijn toegevoegd voor het testen. Een [koppeling](https://aka.ms/computecontentrequest) voor testen toevoegen. Een **vetgedrukte** instructie voor testen toevoegen
 
 - De virtuele machines uit de [Av2-serie](av2-series.md) kunnen worden geïmplementeerd op diverse typen hardware en processors. Vm's uit de A-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte is afhankelijk van de hardware, zodat er consistente processorprestaties voor het actieve exemplaar kunnen worden geboden, ongeacht de hardware waarop deze is geïmplementeerd. Om de fysieke hardware te bepalen waarop deze grootte is geïmplementeerd, vraagt u vanuit de virtuele machine gegevens over de virtuele hardware op. Voor beelden van use cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine tot middel grote data bases, controle van concepten en code opslagplaatsen.
 

@@ -3,18 +3,18 @@ title: Samen werken op Knowledge Base-QnA Maker
 description: Met QnA Maker kunnen meerdere personen samen werken aan een Knowledge Base. Deze functie wordt meegeleverd met het toegangs beheer op basis van rollen (Azure RBAC) van Azure.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446946"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837428"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Samen werking met auteurs en editors
 
 Samen werking wordt op het QnA Maker resource niveau gegeven, zodat u de toegang van mede werkers kunt beperken op basis van de rol van de mede werker. Meer informatie over de [concepten](../Concepts/role-based-access-control.md)van QnA Maker-samen werker-authenticatie.
 
-## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Op rollen gebaseerde toegang (RBAC) toevoegen aan uw QnA Maker-resource
+## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>Op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure toevoegen aan uw QnA Maker-resource
 
 Met QnA Maker kunnen meerdere mensen samen werken aan alle kennis grondslagen in dezelfde QnA Maker resource. Deze functie wordt meegeleverd met de [op rollen gebaseerde Access Control](../../../active-directory/role-based-access-control-configure.md)van Azure.
 

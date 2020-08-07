@@ -1,6 +1,6 @@
 ---
 title: Gebeurtenissen vastleggen in azure Event Hubs in azure API Management | Microsoft Docs
-description: Meer informatie over het vastleggen van gebeurtenissen in azure Event Hubs in azure API Management.
+description: Meer informatie over het vastleggen van gebeurtenissen in azure Event Hubs in azure API Management. Event Hubs is een zeer schaal bare service voor gegevens ingang.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024959"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903388"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen vastleggen in azure Event Hubs in azure API Management
 Azure Event Hubs is een zeer schaalbare service voor inkomende gegevens die miljoenen gebeurtenissen per seconde kan opnemen, voor verwerking en analyse van de enorme hoeveelheden gegevens die worden geproduceerd door verbonden apparaten en toepassingen. Event Hubs fungeert als de "front deur" voor een gebeurtenis pijplijn en wanneer gegevens worden verzameld in een Event Hub, kan deze worden getransformeerd en opgeslagen met behulp van een realtime analyse provider of batches/opslag adapters. Event Hubs koppelt de productie van een gebeurtenissenstroom los van het gebruik van deze gebeurtenissen, zodat de consumenten ervan toegang hebben tot de gebeurtenissen op basis van hun eigen planning.
@@ -63,7 +63,7 @@ Zodra uw logboek is geconfigureerd in API Management, kunt u het beleid voor eve
 ```
 Vervang door `logger-id` de waarde die u hebt gebruikt `{loggerId}` in de aanvraag-URL om de logger in de vorige stap te maken.
 
-U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van het `log-to-eventhub` element. In dit voor beeld wordt een teken reeks in JSON-indeling met de datum en tijd, de service naam, de aanvraag-id, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
+U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van het `log-to-eventhub` element. In dit voor beeld wordt een teken reeks in JSON-indeling met de datum en tijd, de service naam, de aanvraag-ID, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
 
 Klik op **Opslaan** om de bijgewerkte beleids configuratie op te slaan. Zodra het beleid is opgeslagen, is het actief en worden gebeurtenissen geregistreerd in de aangewezen Event hub.
 

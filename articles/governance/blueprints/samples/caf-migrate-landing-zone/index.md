@@ -3,12 +3,12 @@ title: Overzicht van het CAF-blauwdrukvoorbeeld voor de migratielandingszone
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor blauwdrukvoorbeeld van Azure Migration-landingszone.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044818"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852307"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Overzicht van het Microsoft Cloud Adoption Framework-blauwdrukvoorbeeld voor de Azure-migratielandingszone
 
@@ -26,7 +26,6 @@ Deze omgeving bestaat uit diverse Azure-services die een veilige, volledig bewaa
 
 - Een [Azure Key Vault](../../../../key-vault/general/overview.md)-exemplaar om de geheimen te bewaren voor de certificaten, sleutels en geheimen die in de omgeving met gedeelde services worden geïmplementeerd
 - [Log Analytics](../../../../azure-monitor/overview.md) wordt geïmplementeerd om te garanderen dat op een centrale locatie logboeken worden bijgehouden voor alle acties en services zodra u met de migratie begint
-- Implementeer [Azure Security Center](../../../../security-center/security-center-intro.md) (standaardversie). Dit biedt beveiliging tegen bedreigingen voor uw gemigreerde workloads.
 - Implementeer [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md). Dit biedt een geïsoleerd netwerk en subnetten voor uw virtuele machine.
 - Implementeer het [Azure Migrate-project](../../../../migrate/migrate-services-overview.md) voor detectie en evaluatie. Er worden hulpprogramma's toegevoegd voor serverevaluatie, servermigratie, database-evaluatie en databasemigratie.  
 

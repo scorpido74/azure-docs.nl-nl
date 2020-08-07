@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028257"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905088"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Een trainings gegevensverzameling voor een aangepast model bouwen
 
@@ -42,7 +42,7 @@ Zorg ervoor dat uw trainings gegevensverzameling ook voldoet aan de invoer verei
 
 ## <a name="upload-your-training-data"></a>Uw trainings gegevens uploaden
 
-Wanneer u de set formulier documenten die u voor training gebruikt, hebt samengesteld, moet u deze uploaden naar een Azure Blob Storage-container. Als u niet weet hoe u een Azure-opslag account maakt met een container, volgt u de [Azure Storage Snelstartgids voor Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Wanneer u de set formulier documenten die u voor training gebruikt, hebt samengesteld, moet u deze uploaden naar een Azure Blob Storage-container. Als u niet weet hoe u een Azure-opslag account maakt met een container, volgt u de [Azure Storage Snelstartgids voor Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). De Standard-prestatie-laag gebruiken.
 
 Als u hand matig gelabelde gegevens wilt gebruiken, moet u ook de *.labels.js* uploaden en *.ocr.jsop* bestanden die overeenkomen met uw trainings documenten. U kunt het voor [beeld-label programma](./quickstarts/label-tool.md) (of uw eigen gebruikers interface) gebruiken om deze bestanden te genereren.
 

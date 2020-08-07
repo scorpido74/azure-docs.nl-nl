@@ -8,18 +8,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4443c92fad2510b6bc4bc1214840aca5553556a5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553458"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831019"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scenario: aangepaste isolatie voor VNets
 
 Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In een aangepast isolatie scenario voor VNets is het doel om te voor komen dat specifieke sets van VNets een andere set VNets kunnen bereiken. De VNets zijn echter vereist om alle branches te bereiken (VPN/er/gebruikers-VPN). Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
-## <a name="scenario-design"></a><a name="design"></a>Scenario ontwerp
+## <a name="design"></a><a name="design"></a>Ontwerpen
 
 Als u wilt weten hoeveel route tabellen er nodig zijn, kunt u een verbindings matrix maken. In dit scenario ziet het er als volgt uit, waarbij elke cel aangeeft of een bron (rij) kan communiceren met een doel (kolom):
 
@@ -53,7 +53,7 @@ De vertakkingen moeten de voor voegsels van zowel de rode als de blauwe VNets le
 
 Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
-## <a name="scenario-workflow"></a><a name="architecture"></a>Scenario werk stroom
+## <a name="workflow"></a><a name="architecture"></a>Werkstroom
 
 In **afbeelding 1**zijn er blauwe en rode VNet-verbindingen.
 

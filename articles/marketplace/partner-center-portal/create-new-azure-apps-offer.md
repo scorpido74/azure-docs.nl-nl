@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797884"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904510"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -56,12 +56,12 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 
 De video [buil ding Solution-sjablonen en beheerde toepassingen voor Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) bieden een uitgebreide inleiding tot het type Azure-toepassings aanbieding:
 
-* Welke typen aanbieding beschikbaar zijn,
-* Welke technische middelen zijn vereist;
-* Een Azure Resource Manager sjabloon ontwerpen;
-* De gebruikers interface van de App ontwikkelen en testen;
-* Het publiceren van de app-aanbieding;
-* Het controle proces van de toepassing.
+* Welke typen aanbieding beschikbaar zijn
+* Welke technische middelen zijn vereist
+* Een Azure Resource Manager sjabloon ontwerpen
+* De gebruikers interface van de App ontwikkelen en testen
+* De app-aanbieding publiceren
+* Het beoordelings proces van de toepassing
 
 ### <a name="suggested-tools"></a>Aanbevolen hulpprogram ma's
 
@@ -247,15 +247,14 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
-
-Alle drie de formaten van het logo zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+Geef in de volgende drie pixel grootten PNG-bestanden van het logo van uw aanbieding op:
 
 - **Klein** (48 x 48)
 - **Gemiddeld** (90 x 90)
-- **Groot** (tussen 216 x 216 en 350 x 350)
+- **Groot** (216 x 216)
+- **Breed** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Alle drie de logo's zijn vereist en worden op verschillende plaatsen in de lijst gebruikt.
 
 #### <a name="screenshots"></a>Schermopnamen
 
@@ -283,7 +282,7 @@ Uw preview-doel groep wordt geïdentificeerd door de Azure-abonnements-ID-GUID'S
 Voeg ten minste één Azure-abonnements-ID afzonderlijk toe (Maxi maal 10) of door een CSV-bestand te uploaden (Maxi maal 100). Door deze abonnement-Id's toe te voegen, definieert u wie een voor beeld van uw aanbieding kan bekijken voordat deze Live wordt gepubliceerd. Als uw aanbieding al Live is, kunt u nog steeds een preview-doel opgeven voor het testen van wijzigingen in de aanbieding of updates voor uw aanbieding.
 
 > [!NOTE]
-> Een preview-doel groep wijkt af van een persoonlijke doel groep. Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze Live wordt gepubliceerd in de Marketplace. Ze kunnen alle plannen bekijken en valideren, met inbegrip van de abonnementen die alleen beschikbaar zijn voor een privé publiek nadat uw aanbieding volledig naar de Marketplace is gepubliceerd. Een persoonlijke doel groep (gedefinieerd in het tabblad **prijs en beschik baarheid** van abonnementen) heeft exclusieve toegang tot een bepaald abonnement.
+> Een preview-doel groep wijkt af van een persoonlijke doel groep. Een preview-doel groep heeft toegang tot uw aanbieding *voordat* deze Live wordt gepubliceerd in de Marketplace. Ze kunnen alle plannen bekijken en valideren, met inbegrip van de abonnementen die alleen beschikbaar zijn voor een privé publiek nadat uw aanbieding volledig naar de Marketplace is gepubliceerd. Een persoonlijke doel groep (gedefinieerd in het tabblad **prijs en beschik baarheid** van abonnementen) heeft exclusieve toegang tot een bepaald abonnement.
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -324,7 +323,7 @@ Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik b
 
 ***Plan-id*** : Maak een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Deze ID kan niet worden gewijzigd nadat de maken is geselecteerd.
 
-***Plan naam*** : klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld aanbiedings naam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
+***Plan naam*** : klanten krijgen deze naam te zien wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld aanbiedings naam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Installatie plannen
 
@@ -335,7 +334,7 @@ Selecteer het type abonnement voor uw aanbieding. Een **oplossings sjabloon** pl
 
 #### <a name="re-use-technical-configuration"></a>Technische configuratie opnieuw gebruiken
 
-Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u het abonnement selecteren om **pakketten van een ander abonnement**opnieuw te gebruiken.  Wanneer u deze optie selecteert, kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren om pakketten opnieuw te gebruiken. 
+Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u het abonnement selecteren om **pakketten van een ander abonnement**opnieuw te gebruiken.  Wanneer u deze optie selecteert, kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren om pakketten opnieuw te gebruiken.
 
 >[!Note]
 >Wanneer u pakketten uit een ander abonnement opnieuw gebruikt, verdwijnt het hele tabblad technische configuratie van dit abonnement. De technische configuratie details van het andere abonnement, inclusief eventuele updates die u in de toekomst maakt, worden ook voor dit abonnement gebruikt.<br><br>Deze instelling kan niet worden gewijzigd nadat dit abonnement is gepubliceerd.
@@ -416,9 +415,9 @@ Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (
 
 Geef de prijs per maand voor dit abonnement op.  Deze prijs is een aanvulling op de kosten van een Azure-infra structuur of een betalen per gebruik-software die wordt gemaakt door de resources die door deze oplossing worden geïmplementeerd.
 
-Naast de prijs per maand kunt u ook prijzen voor het verbruik van niet-standaard eenheden instellen met behulp van [facturering via een Data limiet](./azure-app-metered-billing.md).  U kunt de prijs per maand instellen op nul en kosten in rekening gebracht als u wilt. 
+Naast de prijs per maand kunt u ook prijzen voor het verbruik van niet-standaard eenheden instellen met behulp van [facturering via een Data limiet](./azure-app-metered-billing.md).  U kunt de prijs per maand instellen op nul en kosten in rekening gebracht als u wilt.
 
-Prijzen die zijn ingesteld in USD (USD = Verenigde Staten dollar) worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen wanneer deze worden opgeslagen. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. 
+Prijzen die zijn ingesteld in USD (USD = Verenigde Staten dollar) worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen wanneer deze worden opgeslagen. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad.
 
 >[!Note]
 >U moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.
@@ -442,8 +441,7 @@ Als u het abonnement privé maakt, voert u een **Azure-abonnement-id** en de bes
 >[!Note]
 >Persoonlijke aanbiedingen worden niet ondersteund met Azure-abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider-programma (CSP).
 
-
-### <a name="technical-configuration"></a>Technische configuratie 
+### <a name="technical-configuration"></a>Technische configuratie
 
 Op dit tabblad kunt u het implementatie pakket uploaden waarmee klanten uw plan kunnen implementeren.
 
@@ -501,15 +499,15 @@ Geef een HTTPS-webhook-eind punt op om meldingen over alle ruwe bewerkingen op b
 
 #### <a name="customize-allowed-customer-actions"></a>Toegestane klant acties aanpassen
 
-Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de `*/read` acties die standaard beschikbaar zijn. 
+Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de `*/read` acties die standaard beschikbaar zijn.
 
-Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md).  Zie [Bewerkingen voor de resourceprovider van Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) voor beschikbare acties. Als u bijvoorbeeld wilt toestaan dat consumenten virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties.
+Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md). Zie [Bewerkingen voor de resourceprovider van Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) voor beschikbare acties. Als u bijvoorbeeld wilt toestaan dat consumenten virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties.
 
 #### <a name="global-azure--azure-government-cloud"></a>Wereld wijd Azure/Azure Government-Cloud
 
-Geef aan wie beheer toegang moet hebben tot deze beheerde toepassing in elke ondersteunde Cloud. Gebruikers, groepen of toepassingen waaraan u machtigingen wilt verlenen voor de beheerde resource groep, worden geïdentificeerd aan de hand van Azure Active Directory (AAD)-identiteiten.
+Geef aan wie beheer toegang moet hebben tot deze beheerde toepassing in elke ondersteunde Cloud. Gebruikers, groepen of toepassingen waaraan u machtigingen voor de beheerde resource groep wilt verlenen, worden geïdentificeerd met behulp van Azure Active Directory (AD)-identiteiten.
 
-**Azure Active Directory TENANT-** id: de Aad-Tenant-id (ook wel Directory-id genoemd) die de identiteiten bevat van de gebruikers, groepen of toepassingen waaraan u machtigingen wilt verlenen. U vindt uw AAD-Tenant-ID op het Azure Portal in [Eigenschappen voor Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+**Azure Active Directory TENANT-** id: de id van de Azure AD-Tenant (ook wel bekend als Directory-id) die de identiteiten bevat van de gebruikers, groepen of toepassingen waaraan u machtigingen wilt verlenen. U kunt uw Azure AD-Tenant-ID vinden op de Azure Portal, in [Eigenschappen voor Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 
 **Autorisaties** : voeg de Azure Active Directory object-id toe van de gebruiker, groep of toepassing waaraan u machtigingen wilt verlenen voor de beheerde resource groep. Identificeer de gebruiker op basis van de principal-ID, die u kunt vinden op de [blade Azure Active Directory gebruikers op de Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
@@ -579,9 +577,9 @@ Selecteer **concept opslaan** voordat u doorgaat.
 Wanneer u alle vereiste secties van de aanbieding hebt ingevuld, selecteert u **controleren en publiceren** in de rechter bovenhoek van de portal.
 
 Bekijk de voltooiings status voor elke sectie van de aanbieding.
-    - *Niet gestart* : de sectie is niet gerakend en moet worden voltooid.
+    - *Niet gestart* : geeft aan dat de sectie niet is geraken en moet worden voltooid.
     - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
-    - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
+    - *Voltooid* – betekent dat de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er geen fouten zijn. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 
 Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het certificerings team voorzien van test instructies om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
 

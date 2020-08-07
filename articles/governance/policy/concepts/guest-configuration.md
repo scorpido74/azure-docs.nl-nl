@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072816"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901977"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -74,7 +74,26 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in az
 
 Aangepaste installatie kopieën van virtuele machines worden ondersteund door gast configuratie beleidsregels, zolang ze een van de besturings systemen in de bovenstaande tabel zijn.
 
-## <a name="guest-configuration-extension-network-requirements"></a>Netwerk vereisten gast configuratie uitbreiding
+## <a name="network-requirements"></a>Netwerkvereisten
+
+Virtuele machines in azure kunnen de lokale netwerk adapter of een persoonlijke koppeling gebruiken om te communiceren met de gast configuratie service.
+
+Azure-computers verbinden met behulp van de on-premises netwerk infrastructuur om Azure-Services te bereiken en de nalevings status van het rapport te rapporteren.
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>Communiceren via virtuele netwerken in azure
+
+Voor virtuele machines die gebruikmaken van virtuele netwerken voor communicatie is uitgaande toegang tot Azure-data centers op poort vereist `443` . Als u een particulier virtueel netwerk in azure gebruikt dat geen uitgaand verkeer toestaat, moet u uitzonde ringen configureren met de regels voor de netwerk beveiligings groep. De servicetag ' GuestAndHybridManagement ' kan worden gebruikt om te verwijzen naar de gast configuratie service.
+
+### <a name="communicate-over-private-link-in-azure"></a>Communiceren via een persoonlijke koppeling in azure
+
+Virtuele machines kunnen een [persoonlijke koppeling](../../../private-link/private-link-overview.md) gebruiken voor communicatie met de gast configuratie service. Pas tag toe met de naam `EnablePrivateNeworkGC` en waarde `TRUE` om deze functie in te scha kelen. De tag kan worden toegepast vóór of nadat het gast configuratie beleid is toegepast op de computer.
+
+Verkeer wordt gerouteerd met behulp van het [virtuele openbaar IP-adres](../../../virtual-network/what-is-ip-address-168-63-129-16.md) van Azure om een beveiligd, geverifieerd kanaal met Azure-platform bronnen te maken.
+
+### <a name="azure-arc-connected-machines"></a>Verbonden Azure Arc-machines
+
+Knoop punten die zich buiten Azure bevinden en die zijn verbonden met Azure Arc, vereisen connectiviteit met de gast configuratie service.
+Details over netwerk-en proxy vereisten in de [documentatie van Azure Arc](../../../azure-arc/servers/overview.md).
 
 Voor de communicatie met de provider van de gast configuratie resource in azure, hebben computers uitgaande toegang tot Azure-data centers op poort **443**. Als een netwerk in azure geen uitgaand verkeer toestaat, moet u uitzonde ringen configureren met de regels voor de [netwerk beveiligings groep](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . De [servicetag ' GuestAndHybridManagement ' kan](../../../virtual-network/service-tags-overview.md) worden gebruikt om te verwijzen naar de gast configuratie service.
 

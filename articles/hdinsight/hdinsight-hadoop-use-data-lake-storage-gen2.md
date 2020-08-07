@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534580"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849978"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -36,7 +36,7 @@ Als u een HDInsight-cluster wilt maken dat gebruikmaakt van Data Lake Storage Ge
 
 Maak een door de gebruiker toegewezen beheerde identiteit als u deze nog niet hebt.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ door de **gebruiker toegewezen** in het zoekvak en klik op door de **gebruiker toegewezen beheerde identiteit**.
 1. Klik op **Maken**.
@@ -51,7 +51,7 @@ Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)v
 
 Een Azure Data Lake Storage Gen2-opslagaccount maken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ **opslag** in het zoekvak en klik op **opslag account**.
 1. Klik op **Maken**.
@@ -106,6 +106,7 @@ U kunt [een voorbeeld sjabloon bestand downloaden](https://github.com/Azure-Samp
 | `<RESOURCEGROUPNAME>` | De resource groep waar u het nieuwe cluster en opslag account wilt maken. |
 | `<MANAGEDIDENTITYNAME>` | De naam van de beheerde identiteit die machtigingen krijgt voor uw Azure Data Lake Storage Gen2-account. |
 | `<STORAGEACCOUNTNAME>` | Het nieuwe Azure Data Lake Storage Gen2-account dat wordt gemaakt. |
+| `<FILESYSTEMNAME>`  | De naam van het bestands systeem dat dit cluster moet gebruiken in het opslag account. |
 | `<CLUSTERNAME>` | De naam van uw HDInsight-cluster. |
 | `<PASSWORD>` | Het wacht woord dat u hebt gekozen voor het aanmelden bij het cluster met behulp van SSH en het Ambari-dash board. |
 
@@ -138,7 +139,8 @@ az storage account create --name <STORAGEACCOUNTNAME> \
 
 Meld u vervolgens aan bij de portal. Voeg de nieuwe door de gebruiker toegewezen beheerde identiteit toe aan de rol van **Inzender voor blobgegevens** op het opslag account. Deze stap wordt beschreven in stap 3 onder [het gebruik van de Azure Portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
-Nadat u de rol hebt toegewezen aan de door de gebruiker toegewezen beheerde identiteit, implementeert u de sjabloon met behulp van het volgende code fragment.
+ > [!IMPORTANT]
+ > Zorg ervoor dat uw opslag account de door de gebruiker toegewezen identiteit met de machtigingen van de rol **Storage BLOB data Inzender** heeft, anders kan het maken van het cluster mislukken.
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \

@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083777"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905274"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Het gegevens systeem van het common data model (CDM) maakt het mogelijk om gegevens en de betekenis ervan eenvoudig te delen tussen toepassingen en bedrijfs processen. Zie het overzicht van [common data model](https://docs.microsoft.com/common-data-model/) voor meer informatie.
 
-In Azure Data Factory kunnen gebruikers transformeren naar en van CDM-entiteiten die zijn opgeslagen in [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) met toewijzing van gegevens stromen. U kunt kiezen uit model.js-en manifest stijl CDM-bronnen en schrijven naar CDM-manifest bestanden.
+In Azure Data Factory kunnen gebruikers gegevens transformeren van CDM-entiteiten in zowel model.jsop als manifest formulier opgeslagen in [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) met toewijzing van gegevens stromen. U kunt gegevens in de CDM-indeling ook opvangen met een CDM-entiteits verwijzing waarmee uw gegevens in de gepartitioneerde mappen in de CSV-of Parquet worden ingedeeld. 
 
 > [!NOTE]
 > De standaard-connector voor gegevens modellen (CDM) voor ADF-gegevens stromen is momenteel beschikbaar als open bare preview.
@@ -29,7 +29,7 @@ In Azure Data Factory kunnen gebruikers transformeren naar en van CDM-entiteiten
 Het common data model is beschikbaar als een [inline-gegevensset](data-flow-source.md#inline-datasets) in het toewijzen van gegevens stromen als een bron en een sink.
 
 > [!NOTE]
-> Bij het schrijven van CDM-entiteiten moet er al een bestaande CDM-entiteits definitie (meta gegevens schema) zijn gedefinieerd. Met de Sink van de ADF-gegevens stroom wordt dat bestand van de CDM-entiteit gelezen en wordt het schema in uw Sink voor veld toewijzing geïmporteerd.
+> Bij het schrijven van CDM-entiteiten moet er al een bestaande CDM-entiteits definitie (meta gegevens schema) zijn gedefinieerd die als referentie kan worden gebruikt. Met de Sink van de ADF-gegevens stroom wordt dat bestand van de CDM-entiteit gelezen en wordt het schema in uw Sink voor veld toewijzing geïmporteerd.
 
 ### <a name="source-properties"></a>Bron eigenschappen
 
@@ -38,11 +38,11 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Indeling | Indeling moet`cdm` | ja | `cdm` | indeling |
-| Meta gegevens indeling | Waar de entiteits verwijzing naar de gegevens zich bevindt. Als u CDM versie 1,0 gebruikt, kiest u Manifest. Als u vóór 1,0 een CDM-versie gebruikt, kiest u model.jsop. | Yes | `'manifest'` of `'model'` | manifestType |
+| Meta gegevens indeling | Waar de entiteits verwijzing naar de gegevens zich bevindt. Als u CDM versie 1,0 gebruikt, kiest u Manifest. Als u vóór 1,0 een CDM-versie gebruikt, kiest u model.jsop. | Ja | `'manifest'` of `'model'` | manifestType |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
 | Manifest bestand: pad naar entiteit | Mappad van de entiteit binnen de hoofdmap | nee | Tekenreeks | entityPath |
-| Manifest bestand: manifest naam | De naam van het manifest bestand. Standaard waarde is ' default '  | No | Tekenreeks | manifestnaam |
+| Manifest bestand: manifest naam | De naam van het manifest bestand. Standaard waarde is ' default '  | Nee | Tekenreeks | manifestnaam |
 | Filteren op laatst gewijzigd | Kiezen of bestanden moeten worden gefilterd op basis van het tijdstip waarop deze voor het laatst zijn gewijzigd | nee | Tijdstempel | modifiedAfter <br> modifiedBefore | 
 | Gekoppelde schema service | De gekoppelde service waar de verzameling zich bevindt | Ja, als u een manifest gebruikt | `'adlsgen2'` of `'github'` | corpusStore | 
 | Container voor entiteits verwijzing | Container verzameling is in | Ja, als u Manifest en verzameling in ADLS Gen2 gebruikt | Tekenreeks | adlsgen2_fileSystem |
@@ -52,9 +52,28 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Verzameling entiteit | Pad naar entiteits verwijzing | ja | Tekenreeks | vennootschap |
 | Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
+### <a name="sink-settings"></a>Sink-instellingen
+
+* Wijs naar het CDM-entiteits bestand met de definitie van de entiteit die u wilt schrijven.
+
+![entiteits instellingen](media/data-flow/common-data-model-111.png "Referentie entiteit")
+
+* Definieer het quotapad en de indeling van de uitvoer bestanden die u wilt gebruiken voor het schrijven van uw entiteiten.
+
+![indeling van entiteit](media/data-flow/common-data-model-222.png "Indeling van entiteit")
+
+* Stel de locatie van het uitvoer bestand en de locatie en naam van het manifest bestand in.
+
+![CDM-locatie](media/data-flow/common-data-model-333.png "CDM-locatie")
+
+
 #### <a name="import-schema"></a>Schema importeren
 
 CDM is alleen beschikbaar als een inline-gegevensset en heeft standaard geen bijbehorend schema. Als u kolom meta gegevens wilt ophalen, klikt u op de knop **schema importeren** op het tabblad **projectie** . Hiermee kunt u verwijzen naar de kolom namen en gegevens typen die door de verzameling zijn opgegeven. Als u het schema wilt importeren, moet een foutopsporingssessie voor [gegevens stromen](concepts-data-flow-debug-mode.md) actief zijn en moet u een bestaand CDM-entiteits definitie bestand hebben om naar te verwijzen.
+
+Wanneer u gegevens stroom kolommen aan entiteits eigenschappen in de Sink-trans formatie wilt toewijzen, klikt u op het tabblad toewijzing en selecteert u schema importeren. ADF leest de verwijzing naar de entiteit waarnaar u in uw Sink-opties wijst, zodat u kunt toewijzen aan het doel-CDM-schema.
+
+![Instellingen voor CDM-Sink](media/data-flow/common-data-model-444.png "CDM-toewijzing")
 
 > [!NOTE]
 >  Wanneer u model.jsgebruikt voor het bron type dat afkomstig is van Power BI of het Power platform gegevens stromen, kan het zijn dat het fout verzameling pad is null of leeg is van de bron transformatie. Dit komt waarschijnlijk door het format teren van problemen met het pad van de partitie locatie in de model.jsin het bestand. Voer de volgende stappen uit om dit probleem op te lossen: 
@@ -99,7 +118,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
 | Manifest bestand: pad naar entiteit | Mappad van de entiteit binnen de hoofdmap | nee | Tekenreeks | entityPath |
-| Manifest bestand: manifest naam | De naam van het manifest bestand. Standaard waarde is ' default ' | No | Tekenreeks | manifestnaam |
+| Manifest bestand: manifest naam | De naam van het manifest bestand. Standaard waarde is ' default ' | Nee | Tekenreeks | manifestnaam |
 | Gekoppelde schema service | De gekoppelde service waar de verzameling zich bevindt | ja | `'adlsgen2'` of `'github'` | corpusStore | 
 | Container voor entiteits verwijzing | Container verzameling is in | Ja, als verzameling in ADLS Gen2 | Tekenreeks | adlsgen2_fileSystem |
 | Opslag plaats voor entiteit verwijzing | Naam van de GitHub-opslagplaats | Ja, als verzameling in GitHub | Tekenreeks | github_repository |

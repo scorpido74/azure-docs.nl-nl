@@ -3,13 +3,13 @@ title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installa
 description: Aangepaste installatie kopie groepen zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-python
+ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147283"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852409"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
 
@@ -203,7 +203,7 @@ client.pool.add(new_pool)
 
 Gebruik de volgende stappen om een groep te maken op basis van een gedeelde installatie kopie in de Azure Portal.
 
-1. Open [Azure Portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 1. Ga naar **batch-accounts** en selecteer uw account.
 1. Selecteer **Pools** en voeg vervolgens **toe** om een nieuwe groep te maken.
 1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën**.

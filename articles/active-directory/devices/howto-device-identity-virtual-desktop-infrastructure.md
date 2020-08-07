@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419798"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903150"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
 
@@ -77,7 +77,7 @@ Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (syspre
 
 Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te maken, moet u ervoor zorgen dat de moment opname niet afkomstig is van een VM die al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
 
-Bij het implementeren van niet-persistente VDI, moeten IT-beheerders bijna de aandacht best Eden aan het beheer van verouderde apparaten in azure AD. Micro soft adviseert IT-beheerders de volgende instructies uit te voeren. Als u dit niet doet, zal uw directory veel verouderde Hybrid Azure AD-apparaten hebben die zijn geregistreerd bij het niet-permanente VDI-platform.
+Hybride Azure AD-deelname voor niet-permanente VDI wordt niet ondersteund in de huidige versies van Windows. Bij het implementeren van niet-persistente VDI voor Windows-niveau, moeten IT-beheerders de aandacht best Eden aan het beheer van verouderde apparaten in azure AD. Micro soft adviseert IT-beheerders de volgende instructies uit te voeren. Als u dit niet doet, zal uw directory veel verouderde Hybrid Azure AD-apparaten hebben die zijn geregistreerd bij het niet-permanente VDI-platform.
 
 - Maak en gebruik een voor voegsel voor de weergave naam van de computer die het bureau blad als VDI-gebaseerd geeft.
 - Implementeer de volgende opdracht als onderdeel van het afmeldings script. Met deze opdracht wordt een beste poging tot Azure AD geactiveerd om het apparaat te verwijderen.

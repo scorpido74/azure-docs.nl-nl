@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: tracking-python
-ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 51a340c2fb32de60f20c678e0bc23f2420261e44
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559597"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849876"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
 
@@ -29,7 +29,7 @@ Voor een Azure App Service werk stroom heeft het bestand drie secties:
 |Sectie  |Taken  |
 |---------|---------|
 |**Verificatie** | 1. een Service-Principal definiëren <br /> 2. een GitHub-geheim maken |
-|**Ontwikkelen** | 1. de omgeving instellen <br /> 2. de web-app bouwen |
+|**PE** | 1. de omgeving instellen <br /> 2. de web-app bouwen |
 |**Implementeren** | 1. de web-app implementeren |
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
@@ -283,7 +283,7 @@ U vindt onze set acties die zijn gegroepeerd in verschillende opslag plaatsen op
 
 - [Aanmelden/afmelden bij docker](https://github.com/Azure/docker-login)
 
-- [Gebeurtenissen waarmee werk stromen worden geactiveerd](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Gebeurtenissen die workflows activeren](https://help.github.com/en/articles/events-that-trigger-workflows)
 
 - [K8s implementeren](https://github.com/Azure/k8s-deploy)
 
